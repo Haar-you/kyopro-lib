@@ -39,10 +39,12 @@ layout: default
 ### Mylib/DataStructure/UnionFind
 
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Mylib/DataStructure/UnionFind/unionfind.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/UnionFind/weighted_unionfind.cpp.html">Mylib/DataStructure/UnionFind/weighted_unionfind.cpp</a>
 
 
 ## Verify Files
 
+* :heavy_check_mark: <a href="verify/test/aoj/DSL_1_B/main.test.cpp.html">test/aoj/DSL_1_B/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/unionfind/main.test.cpp.html">test/yosupo-judge/unionfind/main.test.cpp</a>
 
 
