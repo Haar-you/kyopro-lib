@@ -34,10 +34,61 @@ layout: default
 
 ## Library Files
 
+<div id="b9ce8b1117f3871719e4d3859e7574c9"></div>
+
+### Mylib/AlgebraicStructure/Monoid
+
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/and_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/and_monoid.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/gcd_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/gcd_monoid.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/lcm_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/lcm_monoid.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/max_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/max_monoid.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/max_partial_sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/max_partial_sum_monoid.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp.html">Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/or_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/or_monoid.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/ordering_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/ordering_monoid.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/pair_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/pair_monoid.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/parallel_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/parallel_monoid.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/product_matrix_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/product_matrix_monoid.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/product_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/product_monoid.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/sum_matrix_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_matrix_monoid.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/transformation_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/transformation_monoid.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/trivial_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/trivial_monoid.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/update_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/update_monoid.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/with_count.cpp.html">Mylib/AlgebraicStructure/Monoid/with_count.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/with_index.cpp.html">Mylib/AlgebraicStructure/Monoid/with_index.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/xor_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/xor_monoid.cpp</a>
+
+
+<div id="51d0b2ed49c1a9da73d4d3864cf91f26"></div>
+
+### Mylib/DataStructure/RangeTree
+
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/RangeTree/range_tree.cpp.html">Mylib/DataStructure/RangeTree/range_tree.cpp</a>
+
+
+<div id="ca42c2f4d81b13ae1e33bd4dfd939e89"></div>
+
+### Mylib/DataStructure/SegmentTree/Static/Dual
+
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp.html">Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp</a>
+
+
+<div id="dd4a4f8515bcc75e971952e726133342"></div>
+
+### Mylib/DataStructure/SegmentTree/Static/Normal
+
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp</a>
+
+
 <div id="3ff74e8366c88d06b530f361450b1117"></div>
 
 ### Mylib/DataStructure/UnionFind
 
+* :warning: <a href="library/Mylib/DataStructure/UnionFind/partially_persistent_unionfind.cpp.html">部分永続Unionfind <small>(Mylib/DataStructure/UnionFind/partially_persistent_unionfind.cpp)</small></a>
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Mylib/DataStructure/UnionFind/unionfind.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/UnionFind/weighted_unionfind.cpp.html">Mylib/DataStructure/UnionFind/weighted_unionfind.cpp</a>
 
@@ -45,6 +96,11 @@ layout: default
 ## Verify Files
 
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_1_B/main.test.cpp.html">test/aoj/DSL_1_B/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DSL_2_A/main.test.cpp.html">test/aoj/DSL_2_A/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DSL_2_B/main.test.cpp.html">test/aoj/DSL_2_B/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DSL_2_C/main.test.cpp.html">test/aoj/DSL_2_C/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DSL_2_D/main.test.cpp.html">test/aoj/DSL_2_D/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DSL_2_E/main.test.cpp.html">test/aoj/DSL_2_E/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/unionfind/main.test.cpp.html">test/yosupo-judge/unionfind/main.test.cpp</a>
 
 
