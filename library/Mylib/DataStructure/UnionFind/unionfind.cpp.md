@@ -1,0 +1,145 @@
+---
+layout: default
+---
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: { equationNumbers: { autoNumber: "AMS" }},
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { matchFontHeight: false },
+    displayAlign: "left",
+    displayIndent: "2em"
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-balloon-js@1.1.2/jquery.balloon.min.js" integrity="sha256-ZEYs9VrgAeNuPvs15E39OsyOJaIkXEEt10fzxJ20+2I=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../../../assets/js/copy-button.js"></script>
+<link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
+
+
+# :heavy_check_mark: Mylib/DataStructure/UnionFind/unionfind.cpp
+
+<a href="../../../../index.html">Back to top page</a>
+
+* category: <a href="../../../../index.html#3ff74e8366c88d06b530f361450b1117">Mylib/DataStructure/UnionFind</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/UnionFind/unionfind.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-31 03:38:39+09:00
+
+
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/unionfind/main.test.cpp.html">test/yosupo-judge/unionfind/main.test.cpp</a>
+
+
+## Code
+
+<a id="unbundled"></a>
+{% raw %}
+```cpp
+#pragma once
+#include <vector>
+#include <numeric>
+
+class UnionFind{
+  std::vector<int> parent, depth, size;
+  int count;
+
+public:
+  UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
+    std::iota(parent.begin(), parent.end(), 0);
+  }
+  
+  inline int get_root(int i){
+    if(parent[i] == i) return i;
+    else return parent[i] = get_root(parent[i]);
+  }
+  
+  inline bool is_same(int i, int j){return get_root(i) == get_root(j);}
+
+  inline int merge(int i, int j){
+    int ri = get_root(i), rj = get_root(j);
+    if(ri == rj) return ri;
+    else{
+      --count;
+      if(depth[ri] < depth[rj]){
+        parent[ri] = rj;
+        size[rj] += size[ri];
+        return rj;
+      }else{
+        parent[rj] = ri;
+        size[ri] += size[rj];
+        if(depth[ri] == depth[rj]) ++depth[ri];
+        return ri;
+      }
+    }
+  }
+
+  inline int get_size(int i){return size[get_root(i)];}
+
+  inline int count_group(){return count;}
+};
+
+```
+{% endraw %}
+
+<a id="bundled"></a>
+{% raw %}
+```cpp
+#line 2 "Mylib/DataStructure/UnionFind/unionfind.cpp"
+#include <vector>
+#include <numeric>
+
+class UnionFind{
+  std::vector<int> parent, depth, size;
+  int count;
+
+public:
+  UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
+    std::iota(parent.begin(), parent.end(), 0);
+  }
+  
+  inline int get_root(int i){
+    if(parent[i] == i) return i;
+    else return parent[i] = get_root(parent[i]);
+  }
+  
+  inline bool is_same(int i, int j){return get_root(i) == get_root(j);}
+
+  inline int merge(int i, int j){
+    int ri = get_root(i), rj = get_root(j);
+    if(ri == rj) return ri;
+    else{
+      --count;
+      if(depth[ri] < depth[rj]){
+        parent[ri] = rj;
+        size[rj] += size[ri];
+        return rj;
+      }else{
+        parent[rj] = ri;
+        size[ri] += size[rj];
+        if(depth[ri] == depth[rj]) ++depth[ri];
+        return ri;
+      }
+    }
+  }
+
+  inline int get_size(int i){return size[get_root(i)];}
+
+  inline int count_group(){return count;}
+};
+
+```
+{% endraw %}
+
+<a href="../../../../index.html">Back to top page</a>
+
