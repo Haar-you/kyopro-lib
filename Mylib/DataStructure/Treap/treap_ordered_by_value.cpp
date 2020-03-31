@@ -1,6 +1,6 @@
 #pragma once
 #include <algorithm>
-#include "Mylib/DataStrcture/Treap/treap_ordered_by_index.cpp"
+#include "Mylib/DataStructure/Treap/treap_ordered_by_index.cpp"
 
 namespace treap{
   template <typename Monoid>
