@@ -36,8 +36,16 @@ layout: default
 
 
 
+## Required by
+
+* :warning: <a href="../../Graph/BipartiteGraph/construct_bipartite_graph.cpp.html">Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp</a>
+* :heavy_check_mark: <a href="../../Graph/MinimumSpanningTree/kruskal.cpp.html">Mylib/Graph/MinimumSpanningTree/kruskal.cpp</a>
+* :warning: <a href="../../Graph/TreeUtils/forest.cpp.html">Mylib/Graph/TreeUtils/forest.cpp</a>
+
+
 ## Verified with
 
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_2_A/main.kruskal.test.cpp.html">test/aoj/GRL_2_A/main.kruskal.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/unionfind/main.test.cpp.html">test/yosupo-judge/unionfind/main.test.cpp</a>
 
 
