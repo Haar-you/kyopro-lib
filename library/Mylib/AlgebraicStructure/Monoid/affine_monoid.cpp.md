@@ -38,6 +38,11 @@ layout: default
 * see: <a href="https://judge.yosupo.jp/submission/2048">https://judge.yosupo.jp/submission/2048</a>
 
 
+## Required by
+
+* :warning: <a href="../MonoidAction/affine_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp</a>
+
+
 ## Code
 
 <a id="unbundled"></a>

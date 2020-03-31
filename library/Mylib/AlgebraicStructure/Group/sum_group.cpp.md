@@ -25,21 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/Monoid/product_monoid.cpp
+# :heavy_check_mark: Mylib/AlgebraicStructure/Group/sum_group.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/product_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 06:18:07+09:00
+* category: <a href="../../../../index.html#a11cf6f4bd6e76e33e4d7136e3eb98bc">Mylib/AlgebraicStructure/Group</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Group/sum_group.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-31 08:05:29+09:00
 
 
 
 
-## Required by
+## Verified with
 
-* :warning: <a href="../MonoidAction/multiply_product.cpp.html">Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp</a>
-* :warning: <a href="../MonoidAction/multiply_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/multiply_sum.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp.html">test/aoj/DSL_2_B/main.fenwick_tree.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
 
 
 ## Code
@@ -50,10 +50,12 @@ layout: default
 #pragma once
 
 template <typename T>
-struct ProductMonoid{
+struct SumGroup{
   using value_type = T;
-  constexpr inline static value_type id(){return 1;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a * b;}
+
+  static value_type id(){return 0;}
+  static value_type op(const value_type &a, const value_type &b){return a + b;}
+  static value_type inv(const value_type &a, const value_type &b){return a - b;}
 };
 
 ```
@@ -62,13 +64,15 @@ struct ProductMonoid{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/product_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Group/sum_group.cpp"
 
 template <typename T>
-struct ProductMonoid{
+struct SumGroup{
   using value_type = T;
-  constexpr inline static value_type id(){return 1;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a * b;}
+
+  static value_type id(){return 0;}
+  static value_type op(const value_type &a, const value_type &b){return a + b;}
+  static value_type inv(const value_type &a, const value_type &b){return a - b;}
 };
 
 ```

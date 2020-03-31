@@ -25,21 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/Monoid/or_monoid.cpp
+# :warning: Mylib/AlgebraicStructure/MonoidAction/or_or.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/or_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 06:18:07+09:00
+* category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/or_or.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-03-31 07:44:02+09:00
 
 
 
 
-## Required by
+## Depends on
 
-* :warning: <a href="../MonoidAction/or_or.cpp.html">Mylib/AlgebraicStructure/MonoidAction/or_or.cpp</a>
-* :warning: <a href="../MonoidAction/update_or.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_or.cpp</a>
+* :warning: <a href="../Monoid/or_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/or_monoid.cpp</a>
 
 
 ## Code
@@ -48,12 +47,18 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
+#include "Mylib/AlgebraicStructure/Monoid/or_monoid.cpp"
 
-template <typename T>
-struct OrMonoid{
-  using value_type = T;
-  constexpr inline static value_type id(){return 0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a | b;}
+template <typename T, typename U>
+struct OrOr{
+  using monoid_get = OrMonoid<T>;
+  using monoid_update = OrMonoid<U>;
+  using value_type_get = typename monoid_get::value_type;
+  using value_type_update = typename monoid_update::value_type;
+
+  constexpr inline static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
+    return a | b;
+  }
 };
 
 ```
@@ -69,6 +74,19 @@ struct OrMonoid{
   using value_type = T;
   constexpr inline static value_type id(){return 0;}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return a | b;}
+};
+#line 3 "Mylib/AlgebraicStructure/MonoidAction/or_or.cpp"
+
+template <typename T, typename U>
+struct OrOr{
+  using monoid_get = OrMonoid<T>;
+  using monoid_update = OrMonoid<U>;
+  using value_type_get = typename monoid_get::value_type;
+  using value_type_update = typename monoid_update::value_type;
+
+  constexpr inline static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
+    return a | b;
+  }
 };
 
 ```

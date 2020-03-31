@@ -34,6 +34,13 @@ layout: default
 
 ## Library Files
 
+<div id="a11cf6f4bd6e76e33e4d7136e3eb98bc"></div>
+
+### Mylib/AlgebraicStructure/Group
+
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Group/sum_group.cpp.html">Mylib/AlgebraicStructure/Group/sum_group.cpp</a>
+
+
 <div id="b9ce8b1117f3871719e4d3859e7574c9"></div>
 
 ### Mylib/AlgebraicStructure/Monoid
@@ -63,11 +70,83 @@ layout: default
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/xor_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/xor_monoid.cpp</a>
 
 
+<div id="7bd9a37defae28fe1746a7ffe2a62491"></div>
+
+### Mylib/AlgebraicStructure/MonoidAction
+
+* :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/add_max.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_max.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/MonoidAction/add_min.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_min.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp.html">Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/multiply_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/multiply_sum.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/or_or.cpp.html">Mylib/AlgebraicStructure/MonoidAction/or_or.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/MonoidAction/update_min.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_min.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/update_or.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_or.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/xor_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/xor_sum.cpp</a>
+
+
+<div id="3df95940e092844fc072dd50b6844b29"></div>
+
+### Mylib/AlgebraicStructure/Semiring
+
+* :warning: <a href="library/Mylib/AlgebraicStructure/Semiring/add_mul_semiring.cpp.html">Mylib/AlgebraicStructure/Semiring/add_mul_semiring.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Semiring/tropical_semiring.cpp.html">Mylib/AlgebraicStructure/Semiring/tropical_semiring.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Semiring/xor_and_semiring.cpp.html">Mylib/AlgebraicStructure/Semiring/xor_and_semiring.cpp</a>
+
+
+<div id="2f58e2c328298747e7665b6f6b5791ad"></div>
+
+### Mylib/DataStructure/FenwickTree
+
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">Mylib/DataStructure/FenwickTree/fenwick_tree.cpp</a>
+* :warning: <a href="library/Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp.html">Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp.html">Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp</a>
+
+
+<div id="f151d59e79c7ff7f731ff52cf9b782e4"></div>
+
+### Mylib/DataStructure/Heap
+
+* :warning: <a href="library/Mylib/DataStructure/Heap/leftist_heap.cpp.html">Mylib/DataStructure/Heap/leftist_heap.cpp</a>
+* :warning: <a href="library/Mylib/DataStructure/Heap/skew_heap.cpp.html">Mylib/DataStructure/Heap/skew_heap.cpp</a>
+
+
+<div id="a178be27fdfe56586a4fa516e8dee442"></div>
+
+### Mylib/DataStructure/LinkCutTree
+
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp.html">Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp</a>
+
+
+<div id="6b1c73113eb1a95c1a861edccc8def0a"></div>
+
+### Mylib/DataStructure/Queue
+
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/Queue/persistent_queue.cpp.html">Mylib/DataStructure/Queue/persistent_queue.cpp</a>
+
+
 <div id="51d0b2ed49c1a9da73d4d3864cf91f26"></div>
 
 ### Mylib/DataStructure/RangeTree
 
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/RangeTree/range_tree.cpp.html">Mylib/DataStructure/RangeTree/range_tree.cpp</a>
+
+
+<div id="8db11aac103ae486542368bc2b65dfc8"></div>
+
+### Mylib/DataStructure/SegmentTree/Dynamic
+
+* :warning: <a href="library/Mylib/DataStructure/SegmentTree/Dynamic/dynamic_dual_segment_tree.cpp.html">Mylib/DataStructure/SegmentTree/Dynamic/dynamic_dual_segment_tree.cpp</a>
+* :warning: <a href="library/Mylib/DataStructure/SegmentTree/Dynamic/dynamic_segment_tree.cpp.html">Mylib/DataStructure/SegmentTree/Dynamic/dynamic_segment_tree.cpp</a>
+
+
+<div id="c064675a3a07889d09282378899fe2ce"></div>
+
+### Mylib/DataStructure/SegmentTree/Static/Beats
+
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/Static/Beats/segment_tree_beats.cpp.html">Mylib/DataStructure/SegmentTree/Static/Beats/segment_tree_beats.cpp</a>
 
 
 <div id="ca42c2f4d81b13ae1e33bd4dfd939e89"></div>
@@ -77,11 +156,58 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp.html">Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp</a>
 
 
+<div id="de8a5606096431aaa412f7e202a14bf5"></div>
+
+### Mylib/DataStructure/SegmentTree/Static/Lazy
+
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp.html">Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp</a>
+
+
 <div id="dd4a4f8515bcc75e971952e726133342"></div>
 
 ### Mylib/DataStructure/SegmentTree/Static/Normal
 
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp</a>
+* :warning: <a href="library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_2d.cpp.html">Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_2d.cpp</a>
+* :warning: <a href="library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_both_foldable.cpp.html">Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_both_foldable.cpp</a>
+* :warning: <a href="library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_on_segment_tree.cpp.html">Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_on_segment_tree.cpp</a>
+
+
+<div id="9f519a6857abe7364ea5fbe97ba369aa"></div>
+
+### Mylib/DataStructure/SparseTable
+
+* :warning: <a href="library/Mylib/DataStructure/SparseTable/sparse_table.cpp.html">Mylib/DataStructure/SparseTable/sparse_table.cpp</a>
+* :warning: <a href="library/Mylib/DataStructure/SparseTable/sparse_table_2d.cpp.html">Mylib/DataStructure/SparseTable/sparse_table_2d.cpp</a>
+
+
+<div id="de940accc238379dfea959424e331579"></div>
+
+### Mylib/DataStructure/SplayTree
+
+* :warning: <a href="library/Mylib/DataStructure/SplayTree/splay_tree.cpp.html">Mylib/DataStructure/SplayTree/splay_tree.cpp</a>
+
+
+<div id="12526f91d29b13109723e3d0cc6a4265"></div>
+
+### Mylib/DataStructure/Stack
+
+* :warning: <a href="library/Mylib/DataStructure/Stack/persistent_stack.cpp.html">Mylib/DataStructure/Stack/persistent_stack.cpp</a>
+
+
+<div id="f1faa641fd949a91e292dddd575fe73e"></div>
+
+### Mylib/DataStructure/Treap
+
+* :warning: <a href="library/Mylib/DataStructure/Treap/treap_ordered_by_index.cpp.html">Mylib/DataStructure/Treap/treap_ordered_by_index.cpp</a>
+* :warning: <a href="library/Mylib/DataStructure/Treap/treap_ordered_by_value.cpp.html">Mylib/DataStructure/Treap/treap_ordered_by_value.cpp</a>
+
+
+<div id="aacfe2e228752c2f7bc46438cb1a6bd5"></div>
+
+### Mylib/DataStructure/Trie
+
+* :warning: <a href="library/Mylib/DataStructure/Trie/binary_trie.cpp.html">Mylib/DataStructure/Trie/binary_trie.cpp</a>
 
 
 <div id="3ff74e8366c88d06b530f361450b1117"></div>
@@ -93,14 +219,37 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/UnionFind/weighted_unionfind.cpp.html">Mylib/DataStructure/UnionFind/weighted_unionfind.cpp</a>
 
 
+<div id="def74daadbbb39361c0a507a6463f6db"></div>
+
+### Mylib/DataStructure/WaveletMatrix
+
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/WaveletMatrix/prev_next_value.cpp.html">Mylib/DataStructure/WaveletMatrix/prev_next_value.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/WaveletMatrix/range_freq.cpp.html">Mylib/DataStructure/WaveletMatrix/range_freq.cpp</a>
+* :warning: <a href="library/Mylib/DataStructure/WaveletMatrix/range_freq_list.cpp.html">Mylib/DataStructure/WaveletMatrix/range_freq_list.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp</a>
+* :warning: <a href="library/Mylib/DataStructure/WaveletMatrix/top_k.cpp.html">Mylib/DataStructure/WaveletMatrix/top_k.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp</a>
+
+
 ## Verify Files
 
+* :heavy_check_mark: <a href="verify/test/aoj/1549/main.test.cpp.html">test/aoj/1549/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/2674/main.test.cpp.html">test/aoj/2674/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_1_B/main.test.cpp.html">test/aoj/DSL_1_B/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_A/main.test.cpp.html">test/aoj/DSL_2_A/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp.html">test/aoj/DSL_2_B/main.fenwick_tree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_B/main.test.cpp.html">test/aoj/DSL_2_B/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_C/main.test.cpp.html">test/aoj/DSL_2_C/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_D/main.test.cpp.html">test/aoj/DSL_2_D/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/DSL_2_E/main.test.cpp.html">test/aoj/DSL_2_E/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DSL_2_F/main.test.cpp.html">test/aoj/DSL_2_F/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DSL_2_G/main.test.cpp.html">test/aoj/DSL_2_G/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DSL_2_H/main.test.cpp.html">test/aoj/DSL_2_H/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DSL_2_I/main.test.cpp.html">test/aoj/DSL_2_I/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp.html">test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/persistent_queue/main.test.cpp.html">test/yosupo-judge/persistent_queue/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp.html">test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/unionfind/main.test.cpp.html">test/yosupo-judge/unionfind/main.test.cpp</a>
 
 
