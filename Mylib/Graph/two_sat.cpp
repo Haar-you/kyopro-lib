@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <optional>
+#include <cassert>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 #include "Mylib/Graph/TopologicalSort/topological_sort.cpp"
