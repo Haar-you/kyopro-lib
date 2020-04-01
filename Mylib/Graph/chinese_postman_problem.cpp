@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <algorithm>
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
@@ -18,7 +19,7 @@ template <typename T> T chinese_postman_problem(const Graph<T> &g){
   for(int i = 0; i < n; ++i){
     for(auto &e : g[i]){
       if(dist[e.from][e.to] == -1) dist[e.from][e.to] = e.cost;
-      else chmin(dist[e.from][e.to], e.cost);
+      else dist[e.from][e.to] = std::min(dist[e.from][e.to], e.cost);
     }
   }
 
@@ -27,7 +28,7 @@ template <typename T> T chinese_postman_problem(const Graph<T> &g){
       for(int j = 0; j < n; ++j){
         if(dist[i][k] >= 0 and dist[k][j] >= 0){
           if(dist[i][j] == -1) dist[i][j] = dist[i][k] + dist[k][j];
-          else chmin(dist[i][j], dist[i][k] + dist[k][j]);
+          else dist[i][j] = std::min(dist[i][j], dist[i][k] + dist[k][j]);
         }
       }
     }
@@ -50,7 +51,7 @@ template <typename T> T chinese_postman_problem(const Graph<T> &g){
       for(int k = 0; k < j; ++k){
         if((i & (1<<j)) and (i & (1<<k))){
           if(dp[i] == -1) dp[i] = dp[i ^ (1<<j) ^ (1<<k)] + dist[odd[j]][odd[k]];
-          else chmin(dp[i], dp[i ^ (1<<j) ^ (1<<k)] + dist[odd[j]][odd[k]]);
+          else dp[i] = std::min(dp[i], dp[i ^ (1<<j) ^ (1<<k)] + dist[odd[j]][odd[k]]);
         }
       }
     }
