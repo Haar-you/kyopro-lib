@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../Graph/graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :heavy_check_mark: <a href="../Graph/graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
 * :warning: <a href="grid.cpp.html">Mylib/Grid/grid.cpp</a>
 
 

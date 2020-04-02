@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Convolution/fast_mobius_transform_superset.cpp
+# :heavy_check_mark: Mylib/Convolution/fast_mobius_transform_superset.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -39,6 +39,11 @@ layout: default
 ## Required by
 
 * :warning: <a href="convolution_and.cpp.html">Mylib/Convolution/convolution_and.cpp</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/aoj/3119/main.test.cpp.html">test/aoj/3119/main.test.cpp</a>
 
 
 ## Code

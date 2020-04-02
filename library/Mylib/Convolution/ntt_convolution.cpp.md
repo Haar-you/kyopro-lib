@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Mylib/Convolution/ntt_convolution.cpp
+# :heavy_check_mark: Mylib/Convolution/ntt_convolution.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -38,15 +38,15 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../Number/Mod/mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
-* :question: <a href="../Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
+* :heavy_check_mark: <a href="../Number/Mod/mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
+* :heavy_check_mark: <a href="../Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/yosupo-judge/convolution_mod/main.test.cpp.html">test/yosupo-judge/convolution_mod/main.test.cpp</a>
-* :x: <a href="../../../verify/test/yosupo-judge/convolution_mod_1000000007/main.test.cpp.html">test/yosupo-judge/convolution_mod_1000000007/main.test.cpp</a>
-* :x: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/convolution_mod/main.test.cpp.html">test/yosupo-judge/convolution_mod/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/convolution_mod_1000000007/main.test.cpp.html">test/yosupo-judge/convolution_mod_1000000007/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
 
 
 ## Code

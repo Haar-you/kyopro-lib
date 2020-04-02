@@ -25,21 +25,22 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_5_I/main.table.test.cpp
+# :heavy_check_mark: test/aoj/3119/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#b72df8ce0758bb7606e41650e28ebb6a">test/aoj/DPL_5_I</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_I/main.table.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 15:31:27+09:00
+* category: <a href="../../../../index.html#59b3322e8805b9ff175a68f1a5d31d67">test/aoj/3119</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3119/main.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-02 13:17:39+09:00
 
 
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I</a>
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/stirling_number_table.cpp.html">Mylib/Combinatorics/stirling_number_table.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_mobius_transform_superset.cpp.html">Mylib/Convolution/fast_mobius_transform_superset.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_zeta_transform_superset.cpp.html">Mylib/Convolution/fast_zeta_transform_superset.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Mylib/Number/Mint/mint.cpp</a>
 
 
@@ -48,21 +49,33 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I"
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119"
 
 #include <iostream>
+#include <vector>
 #include "Mylib/Number/Mint/mint.cpp"
-#include "Mylib/Combinatorics/stirling_number_table.cpp"
+#include "Mylib/Convolution/fast_zeta_transform_superset.cpp"
+#include "Mylib/Convolution/fast_mobius_transform_superset.cpp"
 
 using mint = ModInt<1000000007>;
 
 int main(){
-  int N, K; std::cin >> N >> K;
+  int n; std::cin >> n;
+  std::vector<int> a(n);
+  for(int i = 0; i < n; ++i) std::cin >> a[i];
 
-  auto table = stirling_number_table<mint>(std::max(N, K));
+  std::vector<int> dp(1<<20);
+  for(auto x : a) dp[x] += 1;
 
-  std::cout << table[N][K] << std::endl;
+  dp = fast_zeta_transform_superset(dp);
 
+  std::vector<mint> f(1<<20);
+  for(int i = 0; i < 1<<20; ++i) f[i] = mint::power(2, dp[i]) - 1;
+
+  auto ans = fast_mobius_transform_superset(f);
+
+  std::cout << ans[0] << std::endl;
+  
   return 0;
 }
 
@@ -72,10 +85,11 @@ int main(){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/aoj/DPL_5_I/main.table.test.cpp"
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I"
+#line 1 "test/aoj/3119/main.test.cpp"
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119"
 
 #include <iostream>
+#include <vector>
 #line 3 "Mylib/Number/Mint/mint.cpp"
 #include <utility>
 
@@ -154,39 +168,57 @@ public:
     return value;
   }
 };
-#line 2 "Mylib/Combinatorics/stirling_number_table.cpp"
-#include <vector>
+#line 3 "Mylib/Convolution/fast_zeta_transform_superset.cpp"
+#include <functional>
 
 /**
- * @attention time complexity O(N^2)
+ * @see https://codeforces.com/contest/1208/submission/59501702 (最大値2つを保持)
+ * @note f(S) = ∑_{S⊆T} g(T)
  */
-template <typename T>
-auto stirling_number_table(int n){
-  std::vector<std::vector<T>> ret(n+1, std::vector<T>(n+1));
-
-  ret[0][0] = 1;
-
-  for(int i = 1; i <= n; ++i) ret[i][1] = ret[i][i] = 1;
-
-  for(int i = 3; i <= n; ++i){
-    for(int j = 2; j < i; ++j){
-      ret[i][j] = ret[i-1][j-1] + j * ret[i-1][j];
+template <typename T, typename Func = std::plus<T>>
+std::vector<T> fast_zeta_transform_superset(std::vector<T> f, const Func &op = std::plus<T>()){
+  for(int i = 0; (1<<i) < (int)f.size(); ++i){
+    for(int j = 0; j < (int)f.size(); ++j){
+      if(!(j & (1<<i))) f[j] = op(f[j], f[j ^ (1<<i)]);
     }
   }
-
-  return ret;
+  return f;
 }
-#line 6 "test/aoj/DPL_5_I/main.table.test.cpp"
+#line 4 "Mylib/Convolution/fast_mobius_transform_superset.cpp"
+
+/**
+ * @note f(S) = ∑_{S⊆T} g(T) * (-1)^(|T|-|S|)
+ */
+template <typename T, typename Func = std::minus<T>>
+std::vector<T> fast_mobius_transform_superset(std::vector<T> f, const Func &op = std::minus<T>()){
+  for(int i = 0; (1<<i) < (int)f.size(); ++i){
+    for(int j = 0; j < (int)f.size(); ++j){
+      if(!(j & (1<<i))) f[j] = op(f[j], f[j ^ (1<<i)]);
+    }
+  }
+  return f;
+}
+#line 8 "test/aoj/3119/main.test.cpp"
 
 using mint = ModInt<1000000007>;
 
 int main(){
-  int N, K; std::cin >> N >> K;
+  int n; std::cin >> n;
+  std::vector<int> a(n);
+  for(int i = 0; i < n; ++i) std::cin >> a[i];
 
-  auto table = stirling_number_table<mint>(std::max(N, K));
+  std::vector<int> dp(1<<20);
+  for(auto x : a) dp[x] += 1;
 
-  std::cout << table[N][K] << std::endl;
+  dp = fast_zeta_transform_superset(dp);
 
+  std::vector<mint> f(1<<20);
+  for(int i = 0; i < 1<<20; ++i) f[i] = mint::power(2, dp[i]) - 1;
+
+  auto ans = fast_mobius_transform_superset(f);
+
+  std::cout << ans[0] << std::endl;
+  
   return 0;
 }
 

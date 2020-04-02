@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Mylib/Graph/two_sat.cpp
+# :heavy_check_mark: Mylib/Graph/two_sat.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -41,14 +41,14 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="GraphUtils/strongly_connected_components.cpp.html">Mylib/Graph/GraphUtils/strongly_connected_components.cpp</a>
-* :question: <a href="TopologicalSort/topological_sort.cpp.html">Mylib/Graph/TopologicalSort/topological_sort.cpp</a>
-* :question: <a href="graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :heavy_check_mark: <a href="GraphUtils/strongly_connected_components.cpp.html">Mylib/Graph/GraphUtils/strongly_connected_components.cpp</a>
+* :heavy_check_mark: <a href="TopologicalSort/topological_sort.cpp.html">Mylib/Graph/TopologicalSort/topological_sort.cpp</a>
+* :heavy_check_mark: <a href="graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
 
 
 ## Code

@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/DPL_3_C/main.test.cpp
+# :heavy_check_mark: test/aoj/DPL_3_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle_in_histogram.cpp.html">ヒストグラム中の最大面積長方形の面積</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle_in_histogram.cpp.html">ヒストグラム中の最大面積長方形の面積</a>
 
 
 ## Code

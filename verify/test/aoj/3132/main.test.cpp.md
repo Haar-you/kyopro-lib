@@ -25,21 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_2_B/main.test.cpp
+# :heavy_check_mark: test/aoj/3132/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#082039b3153b4a2410d6e14e04aca1cc">test/aoj/DSL_2_B</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 06:18:07+09:00
+* category: <a href="../../../../index.html#5df7098d8629f5dad4d475167fe60fb9">test/aoj/3132</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3132/main.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-02 13:17:39+09:00
 
 
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B</a>
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3132">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3132</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/product_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/product_monoid.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp</a>
 
 
@@ -48,29 +48,42 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B"
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3132"
+#define ERROR 1e-7
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iomanip>
+#include "Mylib/AlgebraicStructure/Monoid/product_monoid.cpp"
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
+
 
 int main(){
-  int n, q; std::cin >> n >> q;
-
-  auto seg = SegmentTree<SumMonoid<int>>(n);
-
-  for(int i = 0; i < q; ++i){
-    int type; std::cin >> type;
-
-    if(type == 0){
-      int x,y; std::cin >> x >> y;
-      seg.update(x-1, seg[x-1] + y);
-    }else{
-      int x,y; std::cin >> x >> y;
-      std::cout << seg.get(x-1, y) << std::endl;
-    }
-  }
+  int N; std::cin >> N;
   
+  auto seg = SegmentTree<ProductMonoid<double>>(N);
+  
+  std::vector<int> T(N), A(N);
+  for(int i = 0; i < N; ++i) std::cin >> T[i] >> A[i];
+  
+  for(int i = 0; i < N; ++i){
+    seg.update(i, 0.1 * (10 - A[i]));
+  }
+
+  int Q; std::cin >> Q;
+
+  while(Q--){
+    int L, R; std::cin >> L >> R;
+
+    int l = std::lower_bound(T.begin(), T.end(), L) - T.begin();
+    int r = std::lower_bound(T.begin(), T.end(), R) - T.begin();
+    
+    auto ans = seg.get(l, r) * 1e9;
+    
+    std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
+  }
+
   return 0;
 }
 
@@ -80,12 +93,23 @@ int main(){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/aoj/DSL_2_B/main.test.cpp"
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B"
+#line 1 "test/aoj/3132/main.test.cpp"
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3132"
+#define ERROR 1e-7
 
 #include <iostream>
-#line 2 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
 #include <vector>
+#include <algorithm>
+#include <iomanip>
+#line 2 "Mylib/AlgebraicStructure/Monoid/product_monoid.cpp"
+
+template <typename T>
+struct ProductMonoid{
+  using value_type = T;
+  constexpr inline static value_type id(){return 1;}
+  constexpr inline static value_type op(const value_type &a, const value_type &b){return a * b;}
+};
+#line 3 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
 
 template <typename Monoid>
 class SegmentTree{
@@ -137,33 +161,34 @@ public:
     init_with_vector(std::vector<value_type>(hsize, val));
   }  
 };
-#line 2 "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
+#line 10 "test/aoj/3132/main.test.cpp"
 
-template <typename T>
-struct SumMonoid{
-  using value_type = T;
-  constexpr inline static value_type id(){return 0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a + b;}
-};
-#line 6 "test/aoj/DSL_2_B/main.test.cpp"
 
 int main(){
-  int n, q; std::cin >> n >> q;
-
-  auto seg = SegmentTree<SumMonoid<int>>(n);
-
-  for(int i = 0; i < q; ++i){
-    int type; std::cin >> type;
-
-    if(type == 0){
-      int x,y; std::cin >> x >> y;
-      seg.update(x-1, seg[x-1] + y);
-    }else{
-      int x,y; std::cin >> x >> y;
-      std::cout << seg.get(x-1, y) << std::endl;
-    }
-  }
+  int N; std::cin >> N;
   
+  auto seg = SegmentTree<ProductMonoid<double>>(N);
+  
+  std::vector<int> T(N), A(N);
+  for(int i = 0; i < N; ++i) std::cin >> T[i] >> A[i];
+  
+  for(int i = 0; i < N; ++i){
+    seg.update(i, 0.1 * (10 - A[i]));
+  }
+
+  int Q; std::cin >> Q;
+
+  while(Q--){
+    int L, R; std::cin >> L >> R;
+
+    int l = std::lower_bound(T.begin(), T.end(), L) - T.begin();
+    int r = std::lower_bound(T.begin(), T.end(), R) - T.begin();
+    
+    auto ans = seg.get(l, r) * 1e9;
+    
+    std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
+  }
+
   return 0;
 }
 

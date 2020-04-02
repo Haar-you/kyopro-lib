@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :question: Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp
+# :heavy_check_mark: Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -42,14 +42,14 @@ layout: default
 * :heavy_check_mark: <a href="range_freq.cpp.html">Mylib/DataStructure/WaveletMatrix/range_freq.cpp</a>
 * :warning: <a href="range_freq_list.cpp.html">Mylib/DataStructure/WaveletMatrix/range_freq_list.cpp</a>
 * :warning: <a href="top_k.cpp.html">Mylib/DataStructure/WaveletMatrix/top_k.cpp</a>
-* :question: <a href="wavelet_matrix.cpp.html">Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp</a>
+* :heavy_check_mark: <a href="wavelet_matrix.cpp.html">Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/1549/main.test.cpp.html">test/aoj/1549/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2674/main.test.cpp.html">test/aoj/2674/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/yosupo-judge/range_kth_smallest/main.test.cpp.html">test/yosupo-judge/range_kth_smallest/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/range_kth_smallest/main.test.cpp.html">test/yosupo-judge/range_kth_smallest/main.test.cpp</a>
 
 
 ## Code

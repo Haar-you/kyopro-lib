@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: 個数の制約が小さい0-1ナップサック問題 (半分全列挙)
+# :heavy_check_mark: 個数の制約が小さい0-1ナップサック問題 (半分全列挙)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#4bc951e5ca9130b2259fc85dc53eb972">Mylib/TypicalProblem/KnapsackProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/KnapsackProblem/knapsack_small_quantity.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-02 13:17:39+09:00
 
 
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/DPL_1_H/main.test.cpp.html">test/aoj/DPL_1_H/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/DPL_1_H/main.test.cpp.html">test/aoj/DPL_1_H/main.test.cpp</a>
 
 
 ## Code
@@ -94,7 +94,7 @@ Value knapsack_small_quantity(int N, Weight W, const std::vector<Weight> &w, con
       }
     }
 
-    auto itr = a.upper_bound(std::max(0LL, W-weight));
+    auto itr = a.upper_bound(std::max((Weight)0, W-weight));
     
     itr = std::prev(itr);
     if(weight + itr->first <= W) ret = std::max(ret, value + itr->second);
@@ -157,7 +157,7 @@ Value knapsack_small_quantity(int N, Weight W, const std::vector<Weight> &w, con
       }
     }
 
-    auto itr = a.upper_bound(std::max(0LL, W-weight));
+    auto itr = a.upper_bound(std::max((Weight)0, W-weight));
     
     itr = std::prev(itr);
     if(weight + itr->first <= W) ret = std::max(ret, value + itr->second);

@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/Monoid/product_monoid.cpp
+# :heavy_check_mark: Mylib/AlgebraicStructure/Monoid/product_monoid.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -40,6 +40,11 @@ layout: default
 
 * :warning: <a href="../MonoidAction/multiply_product.cpp.html">Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp</a>
 * :warning: <a href="../MonoidAction/multiply_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/multiply_sum.cpp</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/3132/main.test.cpp.html">test/aoj/3132/main.test.cpp</a>
 
 
 ## Code

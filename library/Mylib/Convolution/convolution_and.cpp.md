@@ -38,8 +38,8 @@ layout: default
 
 ## Depends on
 
-* :warning: <a href="fast_mobius_transform_superset.cpp.html">Mylib/Convolution/fast_mobius_transform_superset.cpp</a>
-* :warning: <a href="fast_zeta_transform_superset.cpp.html">Mylib/Convolution/fast_zeta_transform_superset.cpp</a>
+* :heavy_check_mark: <a href="fast_mobius_transform_superset.cpp.html">Mylib/Convolution/fast_mobius_transform_superset.cpp</a>
+* :heavy_check_mark: <a href="fast_zeta_transform_superset.cpp.html">Mylib/Convolution/fast_zeta_transform_superset.cpp</a>
 
 
 ## Code

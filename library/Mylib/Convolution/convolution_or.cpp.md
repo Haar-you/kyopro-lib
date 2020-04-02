@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="fast_mobius_transform_subset.cpp.html">Mylib/Convolution/fast_mobius_transform_subset.cpp</a>
-* :warning: <a href="fast_zeta_transform_subset.cpp.html">Mylib/Convolution/fast_zeta_transform_subset.cpp</a>
+* :heavy_check_mark: <a href="fast_zeta_transform_subset.cpp.html">Mylib/Convolution/fast_zeta_transform_subset.cpp</a>
 
 
 ## Code

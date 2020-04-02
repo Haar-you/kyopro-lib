@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/power.cpp.html">Mylib/LinearAlgebra/Square/power.cpp</a>
-* :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Mylib/LinearAlgebra/Square/square_matrix.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Mylib/LinearAlgebra/Square/square_matrix.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">Mylib/Number/Mint/runtime_mint.cpp</a>
 
 

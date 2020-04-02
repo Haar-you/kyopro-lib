@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_log.cpp.html">Mylib/Number/Mod/mod_log.cpp</a>
-* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
 
 
 ## Code

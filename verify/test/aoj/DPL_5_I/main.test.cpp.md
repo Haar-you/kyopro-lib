@@ -41,7 +41,7 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/combinatorics.cpp.html">Mylib/Combinatorics/combinatorics.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/stirling_number.cpp.html">Mylib/Combinatorics/stirling_number.cpp</a>
-* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Mylib/Number/Mint/mint.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Mylib/Number/Mint/mint.cpp</a>
 
 
 ## Code

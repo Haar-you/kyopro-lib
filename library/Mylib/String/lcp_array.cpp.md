@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="suffix_array.cpp.html">Mylib/String/suffix_array.cpp</a>
+* :heavy_check_mark: <a href="suffix_array.cpp.html">Mylib/String/suffix_array.cpp</a>
 
 
 ## Code

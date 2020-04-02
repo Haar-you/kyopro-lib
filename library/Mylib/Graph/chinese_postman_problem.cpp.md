@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :heavy_check_mark: <a href="graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
 
 
 ## Verified with

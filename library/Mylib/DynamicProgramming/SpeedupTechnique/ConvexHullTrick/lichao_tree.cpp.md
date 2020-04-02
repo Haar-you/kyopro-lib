@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../../assets/css/copy-button.css" />
 
 
-# :x: Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick/lichao_tree.cpp
+# :heavy_check_mark: Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick/lichao_tree.cpp
 
 <a href="../../../../../index.html">Back to top page</a>
 
@@ -40,8 +40,8 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../../verify/test/yosupo-judge/line_add_get_min/main.test.cpp.html">test/yosupo-judge/line_add_get_min/main.test.cpp</a>
-* :x: <a href="../../../../../verify/test/yosupo-judge/segment_add_get_min/main.test.cpp.html">test/yosupo-judge/segment_add_get_min/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../../verify/test/yosupo-judge/line_add_get_min/main.test.cpp.html">test/yosupo-judge/line_add_get_min/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../../verify/test/yosupo-judge/segment_add_get_min/main.test.cpp.html">test/yosupo-judge/segment_add_get_min/main.test.cpp</a>
 
 
 ## Code

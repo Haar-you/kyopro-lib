@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="max_rectangle_in_histogram.cpp.html">ヒストグラム中の最大面積長方形の面積</a>
+* :heavy_check_mark: <a href="max_rectangle_in_histogram.cpp.html">ヒストグラム中の最大面積長方形の面積</a>
 
 
 ## Verified with

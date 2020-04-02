@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Convolution/fast_zeta_transform_subset.cpp
+# :heavy_check_mark: Mylib/Convolution/fast_zeta_transform_subset.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -40,6 +40,11 @@ layout: default
 ## Required by
 
 * :warning: <a href="convolution_or.cpp.html">Mylib/Convolution/convolution_or.cpp</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/aoj/3134/main.test.cpp.html">test/aoj/3134/main.test.cpp</a>
 
 
 ## Code
