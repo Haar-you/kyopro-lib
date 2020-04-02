@@ -46,7 +46,7 @@ Value knapsack_small_quantity(int N, Weight W, const std::vector<Weight> &w, con
       }
     }
 
-    auto itr = a.upper_bound(std::max(0LL, W-weight));
+    auto itr = a.upper_bound(std::max((Weight)0, W-weight));
     
     itr = std::prev(itr);
     if(weight + itr->first <= W) ret = std::max(ret, value + itr->second);
