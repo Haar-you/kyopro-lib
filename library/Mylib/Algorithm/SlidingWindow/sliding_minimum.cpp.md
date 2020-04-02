@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp
+# :heavy_check_mark: スライド最小値
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1d0203f9a0b34121f2fb0bb17b094d0f">Mylib/Algorithm/SlidingWindow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 11:59:58+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="https://codeforces.com/contest/1195/submission/57565778">https://codeforces.com/contest/1195/submission/57565778</a>
@@ -52,6 +52,7 @@ layout: default
 #include <deque>
 
 /**
+ * @title スライド最小値
  * @see https://codeforces.com/contest/1195/submission/57565778
  */
 template <typename T>
@@ -96,6 +97,7 @@ std::vector<T> sliding_minimum(const std::vector<T> &a, int k){
 #include <deque>
 
 /**
+ * @title スライド最小値
  * @see https://codeforces.com/contest/1195/submission/57565778
  */
 template <typename T>

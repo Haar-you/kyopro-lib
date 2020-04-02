@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Graph/Flow/ford_fulkerson.cpp
+# :heavy_check_mark: Ford-Fulkerson法
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ecd047c70c23d80351a9f133b49a4638">Mylib/Graph/Flow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Flow/ford_fulkerson.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 
@@ -56,6 +56,9 @@ layout: default
 #include <vector>
 #include <algorithm>
 
+/**
+ * @title Ford-Fulkerson法
+ */
 template <typename T, T INF> class FordFulkerson{
 public:
   struct edge{
@@ -132,6 +135,9 @@ public:
 #include <vector>
 #include <algorithm>
 
+/**
+ * @title Ford-Fulkerson法
+ */
 template <typename T, T INF> class FordFulkerson{
 public:
   struct edge{

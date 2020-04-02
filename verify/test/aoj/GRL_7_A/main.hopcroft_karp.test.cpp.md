@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#806a528feab938cddc13c96a5d63d020">test/aoj/GRL_7_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_7_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_7_A</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/hopcroft_karp.cpp.html">Mylib/Graph/Matching/hopcroft_karp.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/hopcroft_karp.cpp.html">Hopcroft-Karp法</a>
 
 
 ## Code
@@ -86,6 +86,7 @@ int main(){
 #include <cassert>
 
 /**
+ * @title Hopcroft-Karp法
  * @see https://judge.yosupo.jp/submission/1096
  * @attention O(E√V)
  */

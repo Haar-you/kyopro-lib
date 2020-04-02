@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :question: Mylib/Graph/graph_template.cpp
+# :question: グラフ用テンプレート
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/graph_template.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 
@@ -47,17 +47,17 @@ layout: default
 * :warning: <a href="GraphUtils/decompose_pseudotree.cpp.html">Mylib/Graph/GraphUtils/decompose_pseudotree.cpp</a>
 * :question: <a href="GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
 * :x: <a href="GraphUtils/two_edge_connected_components.cpp.html">二重辺連結成分分解</a>
-* :heavy_check_mark: <a href="MinimumSpanningTree/kruskal.cpp.html">Mylib/Graph/MinimumSpanningTree/kruskal.cpp</a>
-* :heavy_check_mark: <a href="MinimumSpanningTree/prim.cpp.html">Mylib/Graph/MinimumSpanningTree/prim.cpp</a>
+* :heavy_check_mark: <a href="MinimumSpanningTree/kruskal.cpp.html">Kruskal法</a>
+* :heavy_check_mark: <a href="MinimumSpanningTree/prim.cpp.html">Prim法</a>
 * :warning: <a href="ShortestCycle/directed_shortest_cycle.cpp.html">有向グラフの最小閉路</a>
 * :warning: <a href="ShortestCycle/undirected_shortest_cycle.cpp.html">無向グラフの最小閉路</a>
-* :heavy_check_mark: <a href="ShortestPath/bellman_ford.cpp.html">Mylib/Graph/ShortestPath/bellman_ford.cpp</a>
-* :warning: <a href="ShortestPath/bfs_0_1.cpp.html">Mylib/Graph/ShortestPath/bfs_0_1.cpp</a>
-* :warning: <a href="ShortestPath/bfs_shortest_path.cpp.html">Mylib/Graph/ShortestPath/bfs_shortest_path.cpp</a>
-* :heavy_check_mark: <a href="ShortestPath/dijkstra.cpp.html">Mylib/Graph/ShortestPath/dijkstra.cpp</a>
-* :heavy_check_mark: <a href="ShortestPath/warshall_floyd.cpp.html">Mylib/Graph/ShortestPath/warshall_floyd.cpp</a>
-* :x: <a href="TopologicalSort/topological_sort.cpp.html">Mylib/Graph/TopologicalSort/topological_sort.cpp</a>
-* :warning: <a href="TopologicalSort/topological_sort_lexicographical.cpp.html">Mylib/Graph/TopologicalSort/topological_sort_lexicographical.cpp</a>
+* :heavy_check_mark: <a href="ShortestPath/bellman_ford.cpp.html">Bellman-Ford法</a>
+* :warning: <a href="ShortestPath/bfs_0_1.cpp.html">0-1 BFS</a>
+* :warning: <a href="ShortestPath/bfs_shortest_path.cpp.html">BFS最小路</a>
+* :heavy_check_mark: <a href="ShortestPath/dijkstra.cpp.html">Dijkstra法</a>
+* :heavy_check_mark: <a href="ShortestPath/warshall_floyd.cpp.html">Warshall-Floyd法</a>
+* :x: <a href="TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
+* :warning: <a href="TopologicalSort/topological_sort_lexicographical.cpp.html">辞書順最小のトポロジカルソート</a>
 * :warning: <a href="TreeUtils/centroid.cpp.html">重心列挙</a>
 * :warning: <a href="TreeUtils/centroid_decomposition.cpp.html">重心分解</a>
 * :warning: <a href="TreeUtils/euler_tour_bfs.cpp.html">BFS Euler tour</a>
@@ -71,7 +71,7 @@ layout: default
 * :heavy_check_mark: <a href="chinese_postman_problem.cpp.html">中国人郵便配達問題</a>
 * :heavy_check_mark: <a href="travelling_salesman_problem.cpp.html">巡回セールスマン問題</a>
 * :x: <a href="two_sat.cpp.html">2-SAT</a>
-* :warning: <a href="../Grid/grid_to_graph.cpp.html">Mylib/Grid/grid_to_graph.cpp</a>
+* :warning: <a href="../Grid/grid_to_graph.cpp.html">グリッドをグラフに変換する</a>
 
 
 ## Verified with
@@ -109,6 +109,9 @@ layout: default
 #include <vector>
 #include <iostream>
 
+/**
+ * @title グラフ用テンプレート
+ */
 template <typename Cost = int> class Edge{
 public:
   int from,to;
@@ -147,6 +150,9 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 #include <vector>
 #include <iostream>
 
+/**
+ * @title グラフ用テンプレート
+ */
 template <typename Cost = int> class Edge{
 public:
   int from,to;

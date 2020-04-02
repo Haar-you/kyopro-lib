@@ -45,9 +45,9 @@ layout: default
 
 ### Mylib/AlgebraicStructure/Monoid
 
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp</a>
+* :question: <a href="library/Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/and_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/and_monoid.cpp</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp</a>
+* :question: <a href="library/Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/gcd_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/gcd_monoid.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/lcm_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/lcm_monoid.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/max_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/max_monoid.cpp</a>
@@ -108,54 +108,54 @@ layout: default
 
 ### Mylib/Algorithm/Imos
 
-* :heavy_check_mark: <a href="library/Mylib/Algorithm/Imos/imos_1d.cpp.html">Mylib/Algorithm/Imos/imos_1d.cpp</a>
-* :heavy_check_mark: <a href="library/Mylib/Algorithm/Imos/imos_2d.cpp.html">Mylib/Algorithm/Imos/imos_2d.cpp</a>
-* :warning: <a href="library/Mylib/Algorithm/Imos/linear_imos_1d.cpp.html">Mylib/Algorithm/Imos/linear_imos_1d.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/Algorithm/Imos/imos_1d.cpp.html">一次元Imos法</a>
+* :heavy_check_mark: <a href="library/Mylib/Algorithm/Imos/imos_2d.cpp.html">二次元Imos法</a>
+* :warning: <a href="library/Mylib/Algorithm/Imos/linear_imos_1d.cpp.html">線形加算一次元Imos法</a>
 
 
 <div id="1534504632931a6652ca965283803a2e"></div>
 
 ### Mylib/Algorithm/Mo
 
-* :warning: <a href="library/Mylib/Algorithm/Mo/mo_algorithm.cpp.html">Mylib/Algorithm/Mo/mo_algorithm.cpp</a>
+* :warning: <a href="library/Mylib/Algorithm/Mo/mo_algorithm.cpp.html">Moのアルゴリズム</a>
 
 
 <div id="f3e3957dafbf526c46359105e1a71d64"></div>
 
 ### Mylib/Algorithm/Query
 
-* :warning: <a href="library/Mylib/Algorithm/Query/range_mode_query.cpp.html">Mylib/Algorithm/Query/range_mode_query.cpp</a>
+* :warning: <a href="library/Mylib/Algorithm/Query/range_mode_query.cpp.html">区間最頻値クエリ</a>
 
 
 <div id="1d0203f9a0b34121f2fb0bb17b094d0f"></div>
 
 ### Mylib/Algorithm/SlidingWindow
 
-* :warning: <a href="library/Mylib/Algorithm/SlidingWindow/sliding_maximum.cpp.html">Mylib/Algorithm/SlidingWindow/sliding_maximum.cpp</a>
-* :heavy_check_mark: <a href="library/Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp.html">Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp</a>
-* :warning: <a href="library/Mylib/Algorithm/SlidingWindow/sliding_minmax.cpp.html">Mylib/Algorithm/SlidingWindow/sliding_minmax.cpp</a>
-* :x: <a href="library/Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp.html">Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp</a>
+* :warning: <a href="library/Mylib/Algorithm/SlidingWindow/sliding_maximum.cpp.html">スライド最大値</a>
+* :heavy_check_mark: <a href="library/Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp.html">スライド最小値</a>
+* :warning: <a href="library/Mylib/Algorithm/SlidingWindow/sliding_minmax.cpp.html">スライド最小値・最大値</a>
+* :heavy_check_mark: <a href="library/Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp.html">Sliding Window Aggregation</a>
 
 
 <div id="c78b3868045887a7ae97845e4050078a"></div>
 
 ### Mylib/Algorithm/SqrtDecomposition
 
-* :warning: <a href="library/Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp.html">Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp</a>
+* :warning: <a href="library/Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp.html">平方分割</a>
 
 
 <div id="fe4a83e4dc2a7f834ed4cd85d6972a53"></div>
 
 ### Mylib/Bit
 
-* :warning: <a href="library/Mylib/Bit/bit_reverse.cpp.html">Mylib/Bit/bit_reverse.cpp</a>
+* :warning: <a href="library/Mylib/Bit/bit_reverse.cpp.html">ビット逆転</a>
 * :warning: <a href="library/Mylib/Bit/for_each_subset_asc.cpp.html">Mylib/Bit/for_each_subset_asc.cpp</a>
 * :warning: <a href="library/Mylib/Bit/for_each_subset_between.cpp.html">Mylib/Bit/for_each_subset_between.cpp</a>
 * :warning: <a href="library/Mylib/Bit/for_each_subset_desc.cpp.html">Mylib/Bit/for_each_subset_desc.cpp</a>
 * :warning: <a href="library/Mylib/Bit/for_each_superset_asc.cpp.html">Mylib/Bit/for_each_superset_asc.cpp</a>
 * :warning: <a href="library/Mylib/Bit/for_each_superset_desc.cpp.html">Mylib/Bit/for_each_superset_desc.cpp</a>
 * :warning: <a href="library/Mylib/Bit/for_subsets_of_size_k.cpp.html">Mylib/Bit/for_subsets_of_size_k.cpp</a>
-* :warning: <a href="library/Mylib/Bit/gray_code.cpp.html">Mylib/Bit/gray_code.cpp</a>
+* :warning: <a href="library/Mylib/Bit/gray_code.cpp.html">Grayコード</a>
 
 
 <div id="8fcb53b240254087f9d87015c4533bd0"></div>
@@ -348,7 +348,7 @@ layout: default
 ### Mylib/Graph
 
 * :heavy_check_mark: <a href="library/Mylib/Graph/chinese_postman_problem.cpp.html">中国人郵便配達問題</a>
-* :question: <a href="library/Mylib/Graph/graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/maximum_independent_set.cpp.html">最大独立集合</a>
 * :warning: <a href="library/Mylib/Graph/project_selection_problem.cpp.html">Mylib/Graph/project_selection_problem.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/travelling_salesman_problem.cpp.html">巡回セールスマン問題</a>
@@ -375,7 +375,7 @@ layout: default
 
 ### Mylib/Graph/DAG
 
-* :warning: <a href="library/Mylib/Graph/DAG/dag_longest_path.cpp.html">Mylib/Graph/DAG/dag_longest_path.cpp</a>
+* :warning: <a href="library/Mylib/Graph/DAG/dag_longest_path.cpp.html">DAGの最長パス</a>
 
 
 <div id="b40e1d8162bf14ce6637a69e4e4fb68d"></div>
@@ -390,9 +390,9 @@ layout: default
 
 ### Mylib/Graph/Flow
 
-* :heavy_check_mark: <a href="library/Mylib/Graph/Flow/dinic.cpp.html">Mylib/Graph/Flow/dinic.cpp</a>
-* :heavy_check_mark: <a href="library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Mylib/Graph/Flow/ford_fulkerson.cpp</a>
-* :heavy_check_mark: <a href="library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">Mylib/Graph/Flow/minimum_cost_flow.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/Flow/dinic.cpp.html">Dinic法</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson法</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">最小費用流</a>
 
 
 <div id="0520734517f09caa086d1aa01fa4b9e4"></div>
@@ -411,7 +411,7 @@ layout: default
 ### Mylib/Graph/Matching
 
 * :heavy_check_mark: <a href="library/Mylib/Graph/Matching/bipartite_matching.cpp.html">二部マッチング</a>
-* :heavy_check_mark: <a href="library/Mylib/Graph/Matching/hopcroft_karp.cpp.html">Mylib/Graph/Matching/hopcroft_karp.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/Matching/hopcroft_karp.cpp.html">Hopcroft-Karp法</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/Matching/weighted_bipartite_matching.cpp.html">重み付き二部マッチング</a>
 
 
@@ -419,8 +419,8 @@ layout: default
 
 ### Mylib/Graph/MinimumSpanningTree
 
-* :heavy_check_mark: <a href="library/Mylib/Graph/MinimumSpanningTree/kruskal.cpp.html">Mylib/Graph/MinimumSpanningTree/kruskal.cpp</a>
-* :heavy_check_mark: <a href="library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Mylib/Graph/MinimumSpanningTree/prim.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal法</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim法</a>
 
 
 <div id="ac2a729ce4878019d16697115af3ef73"></div>
@@ -435,12 +435,12 @@ layout: default
 
 ### Mylib/Graph/ShortestPath
 
-* :heavy_check_mark: <a href="library/Mylib/Graph/ShortestPath/bellman_ford.cpp.html">Mylib/Graph/ShortestPath/bellman_ford.cpp</a>
-* :warning: <a href="library/Mylib/Graph/ShortestPath/bfs_0_1.cpp.html">Mylib/Graph/ShortestPath/bfs_0_1.cpp</a>
-* :warning: <a href="library/Mylib/Graph/ShortestPath/bfs_shortest_path.cpp.html">Mylib/Graph/ShortestPath/bfs_shortest_path.cpp</a>
-* :heavy_check_mark: <a href="library/Mylib/Graph/ShortestPath/dijkstra.cpp.html">Mylib/Graph/ShortestPath/dijkstra.cpp</a>
-* :heavy_check_mark: <a href="library/Mylib/Graph/ShortestPath/warshall_floyd.cpp.html">Mylib/Graph/ShortestPath/warshall_floyd.cpp</a>
-* :heavy_check_mark: <a href="library/Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp.html">Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/ShortestPath/bellman_ford.cpp.html">Bellman-Ford法</a>
+* :warning: <a href="library/Mylib/Graph/ShortestPath/bfs_0_1.cpp.html">0-1 BFS</a>
+* :warning: <a href="library/Mylib/Graph/ShortestPath/bfs_shortest_path.cpp.html">BFS最小路</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/ShortestPath/dijkstra.cpp.html">Dijkstra法</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/ShortestPath/warshall_floyd.cpp.html">Warshall-Floyd法</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp.html">隣接行列グラフでのWarshall-Floyd法</a>
 
 
 <div id="5cfab8f1bec9f4a2c22b88bddb7720db"></div>
@@ -448,8 +448,8 @@ layout: default
 ### Mylib/Graph/TopologicalSort
 
 * :warning: <a href="library/Mylib/Graph/TopologicalSort/count_topological_sort.cpp.html">トポロジカルソートの数え上げ</a>
-* :x: <a href="library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">Mylib/Graph/TopologicalSort/topological_sort.cpp</a>
-* :warning: <a href="library/Mylib/Graph/TopologicalSort/topological_sort_lexicographical.cpp.html">Mylib/Graph/TopologicalSort/topological_sort_lexicographical.cpp</a>
+* :x: <a href="library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
+* :warning: <a href="library/Mylib/Graph/TopologicalSort/topological_sort_lexicographical.cpp.html">辞書順最小のトポロジカルソート</a>
 
 
 <div id="a41ea9974466d4f509bcbf59f2ee921e"></div>
@@ -472,9 +472,9 @@ layout: default
 
 ### Mylib/Grid
 
-* :warning: <a href="library/Mylib/Grid/grid.cpp.html">Mylib/Grid/grid.cpp</a>
-* :warning: <a href="library/Mylib/Grid/grid_bfs.cpp.html">Mylib/Grid/grid_bfs.cpp</a>
-* :warning: <a href="library/Mylib/Grid/grid_to_graph.cpp.html">Mylib/Grid/grid_to_graph.cpp</a>
+* :warning: <a href="library/Mylib/Grid/grid.cpp.html">グリッド用テンプレート</a>
+* :warning: <a href="library/Mylib/Grid/grid_bfs.cpp.html">グリッド上BFS</a>
+* :warning: <a href="library/Mylib/Grid/grid_to_graph.cpp.html">グリッドをグラフに変換する</a>
 
 
 <div id="c3630e6b34f6bdce63eb71de0fb5bdd6"></div>
@@ -524,7 +524,7 @@ layout: default
 * :warning: <a href="library/Mylib/Misc/dice.cpp.html">サイコロ</a>
 * :warning: <a href="library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
 * :heavy_check_mark: <a href="library/Mylib/Misc/inverse_number.cpp.html">転倒数</a>
-* :warning: <a href="library/Mylib/Misc/run_length_encode.cpp.html">Mylib/Misc/run_length_encode.cpp</a>
+* :warning: <a href="library/Mylib/Misc/run_length_encode.cpp.html">連長圧縮</a>
 * :warning: <a href="library/Mylib/Misc/sort_all.cpp.html">Mylib/Misc/sort_all.cpp</a>
 * :warning: <a href="library/Mylib/Misc/xor_shift.cpp.html">Mylib/Misc/xor_shift.cpp</a>
 
@@ -536,12 +536,12 @@ layout: default
 * :warning: <a href="library/Mylib/Number/chinese_remainder_algorithm.cpp.html">中国剰余定理</a>
 * :warning: <a href="library/Mylib/Number/euler_phi_function.cpp.html">Eulerのトーシェント関数</a>
 * :warning: <a href="library/Mylib/Number/extended_gcd.cpp.html">拡張Euclidの互除法</a>
-* :warning: <a href="library/Mylib/Number/floor_ceil.cpp.html">Mylib/Number/floor_ceil.cpp</a>
-* :warning: <a href="library/Mylib/Number/garner.cpp.html">Mylib/Number/garner.cpp</a>
-* :warning: <a href="library/Mylib/Number/gcd_lcm.cpp.html">Mylib/Number/gcd_lcm.cpp</a>
+* :warning: <a href="library/Mylib/Number/floor_ceil.cpp.html">床関数・天井関数</a>
+* :warning: <a href="library/Mylib/Number/garner.cpp.html">Garner法</a>
+* :warning: <a href="library/Mylib/Number/gcd_lcm.cpp.html">最大公約数・最小公倍数</a>
 * :warning: <a href="library/Mylib/Number/is_square.cpp.html">平方数判定</a>
 * :warning: <a href="library/Mylib/Number/mobius_function.cpp.html">Möbius関数</a>
-* :warning: <a href="library/Mylib/Number/power.cpp.html">Mylib/Number/power.cpp</a>
+* :warning: <a href="library/Mylib/Number/power.cpp.html">二分累乗法</a>
 * :warning: <a href="library/Mylib/Number/sign_function.cpp.html">符号関数</a>
 
 
@@ -724,8 +724,8 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/montmort_number_mod/main.test.cpp.html">test/yosupo-judge/montmort_number_mod/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/partition_function/main.test.cpp.html">test/yosupo-judge/partition_function/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/persistent_queue/main.test.cpp.html">test/yosupo-judge/persistent_queue/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
 * :x: <a href="verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp.html">test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/range_kth_smallest/main.test.cpp.html">test/yosupo-judge/range_kth_smallest/main.test.cpp</a>

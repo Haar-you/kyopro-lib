@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Graph/ShortestPath/bfs_0_1.cpp
+# :warning: 0-1 BFS
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9a0780c4ad89eac4e850657d1e57c23a">Mylib/Graph/ShortestPath</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestPath/bfs_0_1.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -51,6 +51,9 @@ layout: default
 #include <deque>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title 0-1 BFS
+ */
 std::vector<int> bfs_0_1(const Graph<int> &g, const std::vector<int> &src){
   int n = g.size();
   std::vector<int> ret(n, INT_MAX);
@@ -90,6 +93,9 @@ std::vector<int> bfs_0_1(const Graph<int> &g, const std::vector<int> &src){
 #line 3 "Mylib/Graph/graph_template.cpp"
 #include <iostream>
 
+/**
+ * @title グラフ用テンプレート
+ */
 template <typename Cost = int> class Edge{
 public:
   int from,to;
@@ -119,6 +125,9 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 }
 #line 5 "Mylib/Graph/ShortestPath/bfs_0_1.cpp"
 
+/**
+ * @title 0-1 BFS
+ */
 std::vector<int> bfs_0_1(const Graph<int> &g, const std::vector<int> &src){
   int n = g.size();
   std::vector<int> ret(n, INT_MAX);

@@ -39,7 +39,7 @@ layout: default
 ## Required by
 
 * :warning: <a href="../../Graph/BipartiteGraph/construct_bipartite_graph.cpp.html">Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp</a>
-* :heavy_check_mark: <a href="../../Graph/MinimumSpanningTree/kruskal.cpp.html">Mylib/Graph/MinimumSpanningTree/kruskal.cpp</a>
+* :heavy_check_mark: <a href="../../Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal法</a>
 * :warning: <a href="../../Graph/TreeUtils/forest.cpp.html">Mylib/Graph/TreeUtils/forest.cpp</a>
 
 

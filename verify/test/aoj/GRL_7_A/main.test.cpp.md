@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#806a528feab938cddc13c96a5d63d020">test/aoj/GRL_7_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_7_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_7_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_7_A</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Mylib/Graph/Flow/ford_fulkerson.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson法</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/bipartite_matching.cpp.html">二部マッチング</a>
 
 
@@ -88,6 +88,9 @@ int main(){
 #line 3 "Mylib/Graph/Flow/ford_fulkerson.cpp"
 #include <algorithm>
 
+/**
+ * @title Ford-Fulkerson法
+ */
 template <typename T, T INF> class FordFulkerson{
 public:
   struct edge{

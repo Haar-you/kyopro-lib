@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Algorithm/SlidingWindow/sliding_minmax.cpp
+# :warning: スライド最小値・最大値
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1d0203f9a0b34121f2fb0bb17b094d0f">Mylib/Algorithm/SlidingWindow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/SlidingWindow/sliding_minmax.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 11:59:58+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 
@@ -46,6 +46,9 @@ layout: default
 #include <deque>
 #include <utility>
 
+/**
+ * @title スライド最小値・最大値
+ */
 template <typename T> std::vector<std::pair<T,T>> sliding_minmax(const std::vector<T> &a, int k){
   int n = a.size();
   std::deque<int> dq_min, dq_max;
@@ -102,6 +105,9 @@ template <typename T> std::vector<std::pair<T,T>> sliding_minmax(const std::vect
 #include <deque>
 #include <utility>
 
+/**
+ * @title スライド最小値・最大値
+ */
 template <typename T> std::vector<std::pair<T,T>> sliding_minmax(const std::vector<T> &a, int k){
   int n = a.size();
   std::deque<int> dq_min, dq_max;

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#81ed75a9aa7f4e6edc886499b1a67fa4">test/aoj/GRL_2_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_2_A/main.prim.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Mylib/Graph/MinimumSpanningTree/prim.cpp</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim法</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -86,6 +86,9 @@ int main(){
 #include <vector>
 #line 4 "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title グラフ用テンプレート
+ */
 template <typename Cost = int> class Edge{
 public:
   int from,to;
@@ -117,6 +120,9 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 #include <queue>
 #line 5 "Mylib/Graph/MinimumSpanningTree/prim.cpp"
 
+/**
+ * @title Prim法
+ */
 template <typename T>
 std::vector<Edge<T>> prim(const Graph<T> &graph){
   int n = graph.size();

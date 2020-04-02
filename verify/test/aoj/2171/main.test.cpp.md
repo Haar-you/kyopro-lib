@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4195ec8e967880acfa32ac4f42872403">test/aoj/2171</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2171/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2171">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2171</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp.html">Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp.html">隣接行列グラフでのWarshall-Floyd法</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp.html">浮動小数点数での連立線形方程式</a>
 
 
@@ -156,6 +156,9 @@ int main(){
 #line 3 "Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp"
 #include <optional>
 
+/**
+ * @title 隣接行列グラフでのWarshall-Floyd法
+ */
 template <typename T, T INVALID>
 struct WarshallFloyd{
   const int n;

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Number/floor_ceil.cpp
+# :warning: 床関数・天井関数
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/floor_ceil.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 07:59:09+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 
@@ -43,6 +43,9 @@ layout: default
 ```cpp
 #pragma once
 
+/**
+ * @title 床関数・天井関数
+ */
 int64_t ceil(int64_t a, int64_t b){
   if((a <= 0 and b < 0) or (a >= 0 and b > 0)) return (abs(a) + abs(b) - 1) / abs(b);
   return - (abs(a) / abs(b));
@@ -61,6 +64,9 @@ int64_t floor(int64_t a, int64_t b){
 ```cpp
 #line 2 "Mylib/Number/floor_ceil.cpp"
 
+/**
+ * @title 床関数・天井関数
+ */
 int64_t ceil(int64_t a, int64_t b){
   if((a <= 0 and b < 0) or (a >= 0 and b > 0)) return (abs(a) + abs(b) - 1) / abs(b);
   return - (abs(a) / abs(b));

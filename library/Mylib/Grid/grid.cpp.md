@@ -25,21 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Grid/grid.cpp
+# :warning: グリッド用テンプレート
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#437b04c37f52e5b35f1d2c24c546c491">Mylib/Grid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Grid/grid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 09:09:11+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 
 
 ## Required by
 
-* :warning: <a href="grid_bfs.cpp.html">Mylib/Grid/grid_bfs.cpp</a>
-* :warning: <a href="grid_to_graph.cpp.html">Mylib/Grid/grid_to_graph.cpp</a>
+* :warning: <a href="grid_bfs.cpp.html">グリッド上BFS</a>
+* :warning: <a href="grid_to_graph.cpp.html">グリッドをグラフに変換する</a>
 
 
 ## Code
@@ -52,6 +52,9 @@ layout: default
 #include <iostream>
 #include <utility>
 
+/**
+ * @title グリッド用テンプレート
+ */
 struct Point{
   int x, y;
   Point(): x(0), y(0){}
@@ -95,6 +98,9 @@ namespace grid{
 #include <iostream>
 #include <utility>
 
+/**
+ * @title グリッド用テンプレート
+ */
 struct Point{
   int x, y;
   Point(): x(0), y(0){}

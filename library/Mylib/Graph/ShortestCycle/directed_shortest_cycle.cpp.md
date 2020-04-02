@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#ac2a729ce4878019d16697115af3ef73">Mylib/Graph/ShortestCycle</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestCycle/directed_shortest_cycle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/abc142/submissions/7772344">https://atcoder.jp/contests/abc142/submissions/7772344</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -128,6 +128,9 @@ struct DirectShortestCycle{
 #line 3 "Mylib/Graph/graph_template.cpp"
 #include <iostream>
 
+/**
+ * @title グラフ用テンプレート
+ */
 template <typename Cost = int> class Edge{
 public:
   int from,to;

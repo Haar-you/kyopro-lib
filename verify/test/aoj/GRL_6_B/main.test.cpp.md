@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#e115c29591c600d5517beaef47c7a0b8">test/aoj/GRL_6_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_6_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_B</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">Mylib/Graph/Flow/minimum_cost_flow.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">最小費用流</a>
 
 
 ## Code
@@ -92,6 +92,9 @@ int main(){
 #include <algorithm>
 #include <tuple>
 
+/**
+ * @title 最小費用流
+ */
 template <typename T, typename U> class MinimumCostFlow{
 public:
   struct edge{

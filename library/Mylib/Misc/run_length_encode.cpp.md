@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Misc/run_length_encode.cpp
+# :warning: 連長圧縮
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/run_length_encode.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 
@@ -45,6 +45,9 @@ layout: default
 #include <vector>
 #include <utility>
 
+/**
+ * @title 連長圧縮
+ */
 template <typename Container, typename T = typename Container::value_type>
 auto run_length_encode(const Container &v){
   std::vector<std::pair<T,int64_t>> ret;
@@ -68,6 +71,9 @@ auto run_length_encode(const Container &v){
 #include <vector>
 #include <utility>
 
+/**
+ * @title 連長圧縮
+ */
 template <typename Container, typename T = typename Container::value_type>
 auto run_length_encode(const Container &v){
   std::vector<std::pair<T,int64_t>> ret;

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/two_sat.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/274 https://yukicoder.me/submissions/340917/source">https://yukicoder.me/problems/no/274 https://yukicoder.me/submissions/340917/source</a>
@@ -42,8 +42,8 @@ layout: default
 ## Depends on
 
 * :question: <a href="GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
-* :x: <a href="TopologicalSort/topological_sort.cpp.html">Mylib/Graph/TopologicalSort/topological_sort.cpp</a>
-* :question: <a href="graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :x: <a href="TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
+* :question: <a href="graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with
@@ -153,6 +153,9 @@ public:
 #line 3 "Mylib/Graph/graph_template.cpp"
 #include <iostream>
 
+/**
+ * @title グラフ用テンプレート
+ */
 template <typename Cost = int> class Edge{
 public:
   int from,to;
@@ -235,6 +238,9 @@ public:
 #include <queue>
 #line 6 "Mylib/Graph/TopologicalSort/topological_sort.cpp"
 
+/**
+ * @title トポロジカルソート
+ */
 template <typename T>
 std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
   const int n = g.size();

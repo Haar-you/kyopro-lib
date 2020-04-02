@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Graph/Flow/minimum_cost_flow.cpp
+# :heavy_check_mark: 最小費用流
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ecd047c70c23d80351a9f133b49a4638">Mylib/Graph/Flow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Flow/minimum_cost_flow.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 
@@ -60,6 +60,9 @@ layout: default
 #include <algorithm>
 #include <tuple>
 
+/**
+ * @title 最小費用流
+ */
 template <typename T, typename U> class MinimumCostFlow{
 public:
   struct edge{
@@ -167,6 +170,9 @@ public:
 #include <algorithm>
 #include <tuple>
 
+/**
+ * @title 最小費用流
+ */
 template <typename T, typename U> class MinimumCostFlow{
 public:
   struct edge{

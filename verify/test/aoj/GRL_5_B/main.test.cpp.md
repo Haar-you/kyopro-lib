@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#367e4e2ab0e36321fe2845cd3c3216ef">test/aoj/GRL_5_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_5_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_B</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_utils.cpp.html">Mylib/Graph/TreeUtils/tree_utils.cpp</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -84,6 +84,9 @@ int main(){
 #include <vector>
 #line 4 "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title グラフ用テンプレート
+ */
 template <typename Cost = int> class Edge{
 public:
   int from,to;

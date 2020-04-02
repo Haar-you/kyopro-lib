@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Graph/DAG/dag_longest_path.cpp
+# :warning: DAGの最長パス
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#65714f932d9658b7e9e55eb052732de1">Mylib/Graph/DAG</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/DAG/dag_longest_path.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 
@@ -45,6 +45,9 @@ layout: default
 #include <vector>
 #include <algorithm>
 
+/**
+ * @title DAGの最長パス
+ */
 int dag_longest_path(const std::vector<std::vector<int>> &g){
   int n = g.size();
   std::vector<int> ret(n);
@@ -77,6 +80,9 @@ int dag_longest_path(const std::vector<std::vector<int>> &g){
 #include <vector>
 #include <algorithm>
 
+/**
+ * @title DAGの最長パス
+ */
 int dag_longest_path(const std::vector<std::vector<int>> &g){
   int n = g.size();
   std::vector<int> ret(n);

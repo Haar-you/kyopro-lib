@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b40e1d8162bf14ce6637a69e4e4fb68d">Mylib/Graph/EulerianPath</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/EulerianPath/undirected_eulerian_path.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="https://codeforces.com/contest/1152/submission/53310405">https://codeforces.com/contest/1152/submission/53310405</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -139,6 +139,9 @@ public:
 #line 3 "Mylib/Graph/graph_template.cpp"
 #include <iostream>
 
+/**
+ * @title グラフ用テンプレート
+ */
 template <typename Cost = int> class Edge{
 public:
   int from,to;

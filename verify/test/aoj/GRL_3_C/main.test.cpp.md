@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f4ad592153fe633f58e350fdd102799a">test/aoj/GRL_3_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_3_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_C</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :question: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -90,6 +90,9 @@ int main(){
 #include <vector>
 #line 4 "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title グラフ用テンプレート
+ */
 template <typename Cost = int> class Edge{
 public:
   int from,to;

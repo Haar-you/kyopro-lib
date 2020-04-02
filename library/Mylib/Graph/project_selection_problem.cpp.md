@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/project_selection_problem.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="https://kimiyuki.net/blog/2017/12/05/minimum-cut-and-project-selection-problem/">https://kimiyuki.net/blog/2017/12/05/minimum-cut-and-project-selection-problem/</a>
@@ -44,7 +44,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="Flow/dinic.cpp.html">Mylib/Graph/Flow/dinic.cpp</a>
+* :heavy_check_mark: <a href="Flow/dinic.cpp.html">Dinic法</a>
 
 
 ## Code
@@ -163,6 +163,9 @@ public:
 #include <deque>
 #include <algorithm>
 
+/**
+ * @title Dinic法
+ */
 template <typename T, T INF> class Dinic{
 private:
   std::vector<std::vector<std::pair<int,T>>> graph;

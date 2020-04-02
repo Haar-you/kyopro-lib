@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Bit/gray_code.cpp
+# :warning: Grayコード
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#fe4a83e4dc2a7f834ed4cd85d6972a53">Mylib/Bit</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/gray_code.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 09:18:14+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 
@@ -43,6 +43,9 @@ layout: default
 ```cpp
 #pragma once
 
+/**
+ * @title Grayコード
+ */
 template <typename Func>
 void gray_code(int n, const Func &f){
   for(int i = 0; i < (1 << n); ++i){
@@ -58,6 +61,9 @@ void gray_code(int n, const Func &f){
 ```cpp
 #line 2 "Mylib/Bit/gray_code.cpp"
 
+/**
+ * @title Grayコード
+ */
 template <typename Func>
 void gray_code(int n, const Func &f){
   for(int i = 0; i < (1 << n); ++i){

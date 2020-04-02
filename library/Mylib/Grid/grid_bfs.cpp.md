@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Grid/grid_bfs.cpp
+# :warning: グリッド上BFS
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#437b04c37f52e5b35f1d2c24c546c491">Mylib/Grid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Grid/grid_bfs.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 09:09:11+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/agc033/submissions/7429070">https://atcoder.jp/contests/agc033/submissions/7429070</a>
@@ -40,7 +40,7 @@ layout: default
 
 ## Depends on
 
-* :warning: <a href="grid.cpp.html">Mylib/Grid/grid.cpp</a>
+* :warning: <a href="grid.cpp.html">グリッド用テンプレート</a>
 
 
 ## Code
@@ -54,6 +54,7 @@ layout: default
 #include "Mylib/Grid/grid.cpp"
 
 /**
+ * @title グリッド上BFS
  * @see https://atcoder.jp/contests/agc033/submissions/7429070
  * @see https://atcoder.jp/contests/qupc2018/submissions/7429448
  */
@@ -112,6 +113,9 @@ std::vector<std::vector<int>> bfs_grid(const int H, const int W,
 #include <iostream>
 #include <utility>
 
+/**
+ * @title グリッド用テンプレート
+ */
 struct Point{
   int x, y;
   Point(): x(0), y(0){}
@@ -146,6 +150,7 @@ namespace grid{
 #line 5 "Mylib/Grid/grid_bfs.cpp"
 
 /**
+ * @title グリッド上BFS
  * @see https://atcoder.jp/contests/agc033/submissions/7429070
  * @see https://atcoder.jp/contests/qupc2018/submissions/7429448
  */

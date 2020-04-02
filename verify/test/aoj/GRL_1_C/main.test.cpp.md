@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#52520cdd925fa3dd96b0b332cb95e6a5">test/aoj/GRL_1_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_1_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/warshall_floyd.cpp.html">Mylib/Graph/ShortestPath/warshall_floyd.cpp</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/warshall_floyd.cpp.html">Warshall-Floyd法</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -98,6 +98,9 @@ int main(){
 #include <vector>
 #line 4 "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title グラフ用テンプレート
+ */
 template <typename Cost = int> class Edge{
 public:
   int from,to;
@@ -129,6 +132,9 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 #include <optional>
 #line 5 "Mylib/Graph/ShortestPath/warshall_floyd.cpp"
 
+/**
+ * @title Warshall-Floyd法
+ */
 template <typename T>
 struct WarshallFloyd{
   const int n;

@@ -25,16 +25,17 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Algorithm/Query/range_mode_query.cpp
+# :warning: 区間最頻値クエリ
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f3e3957dafbf526c46359105e1a71d64">Mylib/Algorithm/Query</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Query/range_mode_query.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 11:59:58+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="https://www.spoj.com/problems/FREQ2/">https://www.spoj.com/problems/FREQ2/</a>
+* see: <a href="https://scrapbox.io/data-structures/Range_Mode_Query">https://scrapbox.io/data-structures/Range_Mode_Query</a>
 
 
 ## Code
@@ -48,7 +49,9 @@ layout: default
 #include <utility>
 
 /**
+ * @title 区間最頻値クエリ
  * @see https://www.spoj.com/problems/FREQ2/
+ * @see https://scrapbox.io/data-structures/Range_Mode_Query
  */
 template <typename T>
 class RangeModeQuery{
@@ -170,7 +173,9 @@ public:
 #include <utility>
 
 /**
+ * @title 区間最頻値クエリ
  * @see https://www.spoj.com/problems/FREQ2/
+ * @see https://scrapbox.io/data-structures/Range_Mode_Query
  */
 template <typename T>
 class RangeModeQuery{

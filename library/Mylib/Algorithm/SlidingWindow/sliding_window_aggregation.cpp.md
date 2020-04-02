@@ -25,20 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp
+# :heavy_check_mark: Sliding Window Aggregation
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1d0203f9a0b34121f2fb0bb17b094d0f">Mylib/Algorithm/SlidingWindow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 11:59:58+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
+* see: <a href="https://scrapbox.io/data-structures/Sliding_Window_Aggregation">https://scrapbox.io/data-structures/Sliding_Window_Aggregation</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
 
 
 ## Code
@@ -51,6 +52,10 @@ layout: default
 #include <stack>
 #include <optional>
 
+/**
+ * @title Sliding Window Aggregation
+ * @see https://scrapbox.io/data-structures/Sliding_Window_Aggregation
+ */
 template <typename T, typename F>
 class SlidingWindowAggregation{
   std::stack<T> front_stack, back_stack;
@@ -115,6 +120,10 @@ public:
 #include <stack>
 #include <optional>
 
+/**
+ * @title Sliding Window Aggregation
+ * @see https://scrapbox.io/data-structures/Sliding_Window_Aggregation
+ */
 template <typename T, typename F>
 class SlidingWindowAggregation{
   std::stack<T> front_stack, back_stack;

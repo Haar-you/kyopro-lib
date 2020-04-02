@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7db45eeebe50ebaff0e32d268a51d554">test/yosupo-judge/assignment</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/assignment/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/assignment">https://judge.yosupo.jp/problem/assignment</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">Mylib/Graph/Flow/minimum_cost_flow.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">最小費用流</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/weighted_bipartite_matching.cpp.html">重み付き二部マッチング</a>
 
 
@@ -108,6 +108,9 @@ int main(){
 #include <algorithm>
 #line 8 "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 
+/**
+ * @title 最小費用流
+ */
 template <typename T, typename U> class MinimumCostFlow{
 public:
   struct edge{

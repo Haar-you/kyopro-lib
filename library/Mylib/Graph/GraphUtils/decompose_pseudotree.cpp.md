@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../../index.html#0520734517f09caa086d1aa01fa4b9e4">Mylib/Graph/GraphUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/GraphUtils/decompose_pseudotree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -127,6 +127,9 @@ struct PseudoTree{
 #line 3 "Mylib/Graph/graph_template.cpp"
 #include <iostream>
 
+/**
+ * @title グラフ用テンプレート
+ */
 template <typename Cost = int> class Edge{
 public:
   int from,to;

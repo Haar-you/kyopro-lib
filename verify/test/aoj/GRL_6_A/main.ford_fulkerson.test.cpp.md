@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#d22130300c64d313f1c5481cac7c3c1c">test/aoj/GRL_6_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Mylib/Graph/Flow/ford_fulkerson.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson法</a>
 
 
 ## Code
@@ -85,6 +85,9 @@ int main(){
 #include <vector>
 #include <algorithm>
 
+/**
+ * @title Ford-Fulkerson法
+ */
 template <typename T, T INF> class FordFulkerson{
 public:
   struct edge{

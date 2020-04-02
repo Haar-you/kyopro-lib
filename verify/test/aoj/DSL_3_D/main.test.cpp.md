@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#701acb68cf3d7eb2875e08c5c295c84f">test/aoj/DSL_3_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_3_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 11:59:58+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_3_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_3_D</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp.html">Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp.html">スライド最小値</a>
 
 
 ## Code
@@ -85,6 +85,7 @@ int main(){
 #include <deque>
 
 /**
+ * @title スライド最小値
  * @see https://codeforces.com/contest/1195/submission/57565778
  */
 template <typename T>

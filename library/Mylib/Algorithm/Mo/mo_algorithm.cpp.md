@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Algorithm/Mo/mo_algorithm.cpp
+# :warning: Moのアルゴリズム
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1534504632931a6652ca965283803a2e">Mylib/Algorithm/Mo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Mo/mo_algorithm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 11:59:58+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="https://codeforces.com/contest/86/submission/62912624 (出現数)">https://codeforces.com/contest/86/submission/62912624 (出現数)</a>
@@ -52,6 +52,7 @@ layout: default
 #include <cassert>
 
 /**
+ * @title Moのアルゴリズム
  * @see https://codeforces.com/contest/86/submission/62912624 (出現数)
  * @see https://www.spoj.com/problems/DQUERY/ (種類数)
  * @see https://atcoder.jp/contests/dwacon2017-honsen/submissions/8017651 (積の約数の個数)
@@ -141,6 +142,7 @@ auto make_mo(int N, int Q, F append, G remove, H query){
 #include <cassert>
 
 /**
+ * @title Moのアルゴリズム
  * @see https://codeforces.com/contest/86/submission/62912624 (出現数)
  * @see https://www.spoj.com/problems/DQUERY/ (種類数)
  * @see https://atcoder.jp/contests/dwacon2017-honsen/submissions/8017651 (積の約数の個数)

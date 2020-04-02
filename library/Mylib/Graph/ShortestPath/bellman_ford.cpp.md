@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Graph/ShortestPath/bellman_ford.cpp
+# :heavy_check_mark: Bellman-Ford法
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9a0780c4ad89eac4e850657d1e57c23a">Mylib/Graph/ShortestPath</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestPath/bellman_ford.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with
@@ -56,6 +56,9 @@ layout: default
 #include <algorithm>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title Bellman-Ford法
+ */
 template <typename T>
 struct BellmanFord{
   struct Result{
@@ -128,6 +131,9 @@ struct BellmanFord{
 #line 3 "Mylib/Graph/graph_template.cpp"
 #include <iostream>
 
+/**
+ * @title グラフ用テンプレート
+ */
 template <typename Cost = int> class Edge{
 public:
   int from,to;
@@ -157,6 +163,9 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 }
 #line 5 "Mylib/Graph/ShortestPath/bellman_ford.cpp"
 
+/**
+ * @title Bellman-Ford法
+ */
 template <typename T>
 struct BellmanFord{
   struct Result{

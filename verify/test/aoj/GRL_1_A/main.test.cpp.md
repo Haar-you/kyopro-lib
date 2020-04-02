@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#653494e934116182fd158eb8385c6547">test/aoj/GRL_1_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_1_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/dijkstra.cpp.html">Mylib/Graph/ShortestPath/dijkstra.cpp</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/dijkstra.cpp.html">Dijkstra法</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -91,6 +91,9 @@ int main(){
 #include <vector>
 #line 4 "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title グラフ用テンプレート
+ */
 template <typename Cost = int> class Edge{
 public:
   int from,to;
@@ -125,6 +128,9 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 #include <functional>
 #line 8 "Mylib/Graph/ShortestPath/dijkstra.cpp"
 
+/**
+ * @title Dijkstra法
+ */
 template <typename T>
 class Dijkstra{
 public:

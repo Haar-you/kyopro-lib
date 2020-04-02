@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#09186009013fcd05167f7dbee66a64e6">test/aoj/DSL_5_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_5_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 11:59:58+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Imos/imos_2d.cpp.html">Mylib/Algorithm/Imos/imos_2d.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Imos/imos_2d.cpp.html">二次元Imos法</a>
 
 
 ## Code
@@ -90,6 +90,9 @@ int main(){
 #line 2 "Mylib/Algorithm/Imos/imos_2d.cpp"
 #include <vector>
 
+/**
+ * @title 二次元Imos法
+ */
 template <typename T> struct Imos2D{
   std::vector<std::vector<T>> vec;
   int n, m;

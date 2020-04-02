@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#e93cc7e7edd1deb522641737d913fca6">test/yosupo-judge/two_sat</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/two_sat/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/two_sat">https://judge.yosupo.jp/problem/two_sat</a>
@@ -40,8 +40,8 @@ layout: default
 ## Depends on
 
 * :question: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
-* :x: <a href="../../../../library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">Mylib/Graph/TopologicalSort/topological_sort.cpp</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :x: <a href="../../../../library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 * :x: <a href="../../../../library/Mylib/Graph/two_sat.cpp.html">2-SAT</a>
 
 
@@ -102,6 +102,9 @@ int main(){
 #include <cassert>
 #line 4 "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title グラフ用テンプレート
+ */
 template <typename Cost = int> class Edge{
 public:
   int from,to;
@@ -184,6 +187,9 @@ public:
 #include <queue>
 #line 6 "Mylib/Graph/TopologicalSort/topological_sort.cpp"
 
+/**
+ * @title トポロジカルソート
+ */
 template <typename T>
 std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
   const int n = g.size();

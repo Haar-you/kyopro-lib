@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Algorithm/Imos/linear_imos_1d.cpp
+# :warning: 線形加算一次元Imos法
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6dc6d5a2cac82b39a08fd9ff32ab6e48">Mylib/Algorithm/Imos</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Imos/linear_imos_1d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 11:59:58+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/arc077/submissions/6507967">https://atcoder.jp/contests/arc077/submissions/6507967</a>
@@ -46,6 +46,7 @@ layout: default
 #include <vector>
 
 /**
+ * @title 線形加算一次元Imos法
  * @see https://atcoder.jp/contests/arc077/submissions/6507967
  */
 template <typename T> struct LinearImos1D{
@@ -87,6 +88,7 @@ template <typename T> struct LinearImos1D{
 #include <vector>
 
 /**
+ * @title 線形加算一次元Imos法
  * @see https://atcoder.jp/contests/arc077/submissions/6507967
  */
 template <typename T> struct LinearImos1D{

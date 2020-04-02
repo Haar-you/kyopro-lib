@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Number/gcd_lcm.cpp
+# :warning: 最大公約数・最小公倍数
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/gcd_lcm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 07:59:09+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 
@@ -44,6 +44,9 @@ layout: default
 #pragma once
 #include <utility>
 
+/**
+ * @title 最大公約数・最小公倍数
+ */
 int64_t gcd(int64_t a, int64_t b){
   if(a < b) std::swap(a, b);
   if(b == 0) return a;
@@ -64,6 +67,9 @@ int64_t lcm(int64_t a, int64_t b){
 #line 2 "Mylib/Number/gcd_lcm.cpp"
 #include <utility>
 
+/**
+ * @title 最大公約数・最小公倍数
+ */
 int64_t gcd(int64_t a, int64_t b){
   if(a < b) std::swap(a, b);
   if(b == 0) return a;

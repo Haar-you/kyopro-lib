@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Graph/TopologicalSort/topological_sort_lexicographical.cpp
+# :warning: 辞書順最小のトポロジカルソート
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#5cfab8f1bec9f4a2c22b88bddb7720db">Mylib/Graph/TopologicalSort</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TopologicalSort/topological_sort_lexicographical.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/tenka1-2016-quala/submissions/4016830">https://atcoder.jp/contests/tenka1-2016-quala/submissions/4016830</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -54,6 +54,7 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
+ * @title 辞書順最小のトポロジカルソート
  * @see https://atcoder.jp/contests/tenka1-2016-quala/submissions/4016830
  */
 template <typename T>
@@ -104,6 +105,9 @@ std::optional<std::vector<int>> topological_sort_lexicographical(const Graph<T> 
 #line 3 "Mylib/Graph/graph_template.cpp"
 #include <iostream>
 
+/**
+ * @title グラフ用テンプレート
+ */
 template <typename Cost = int> class Edge{
 public:
   int from,to;
@@ -134,6 +138,7 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 #line 6 "Mylib/Graph/TopologicalSort/topological_sort_lexicographical.cpp"
 
 /**
+ * @title 辞書順最小のトポロジカルソート
  * @see https://atcoder.jp/contests/tenka1-2016-quala/submissions/4016830
  */
 template <typename T>

@@ -40,7 +40,7 @@ layout: default
 
 * :heavy_check_mark: <a href="../../Convolution/ntt_convolution.cpp.html">Mylib/Convolution/ntt_convolution.cpp</a>
 * :heavy_check_mark: <a href="mod_log.cpp.html">Mylib/Number/Mod/mod_log.cpp</a>
-* :warning: <a href="../garner.cpp.html">Mylib/Number/garner.cpp</a>
+* :warning: <a href="../garner.cpp.html">Garner法</a>
 
 
 ## Verified with

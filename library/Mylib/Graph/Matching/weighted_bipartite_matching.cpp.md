@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#65eb1c5db2b1bd726d58cf661f149e7c">Mylib/Graph/Matching</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Matching/weighted_bipartite_matching.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-02 18:35:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2429">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2429</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../Flow/minimum_cost_flow.cpp.html">Mylib/Graph/Flow/minimum_cost_flow.cpp</a>
+* :heavy_check_mark: <a href="../Flow/minimum_cost_flow.cpp.html">最小費用流</a>
 
 
 ## Verified with
@@ -114,6 +114,9 @@ public:
 #include <algorithm>
 #line 8 "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 
+/**
+ * @title 最小費用流
+ */
 template <typename T, typename U> class MinimumCostFlow{
 public:
   struct edge{
