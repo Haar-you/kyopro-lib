@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp
+# :heavy_check_mark: Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -34,6 +34,11 @@ layout: default
     - Last commit date: 2020-04-01 05:19:32+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2171/main.test.cpp.html">test/aoj/2171/main.test.cpp</a>
 
 
 ## Code

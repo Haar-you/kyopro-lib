@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/stirling_number_table.cpp.html">Mylib/Combinatorics/stirling_number_table.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Mylib/Number/Mint/mint.cpp</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Mylib/Number/Mint/mint.cpp</a>
 
 
 ## Code

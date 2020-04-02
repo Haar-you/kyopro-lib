@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp
+# :question: Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp
 
 <a href="../../../../../../index.html">Back to top page</a>
 
@@ -38,10 +38,12 @@ layout: default
 
 ## Verified with
 
+* :heavy_check_mark: <a href="../../../../../../verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../../../verify/test/aoj/DSL_2_F/main.test.cpp.html">test/aoj/DSL_2_F/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../../../verify/test/aoj/DSL_2_G/main.test.cpp.html">test/aoj/DSL_2_G/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../../../verify/test/aoj/DSL_2_H/main.test.cpp.html">test/aoj/DSL_2_H/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../../../verify/test/aoj/DSL_2_I/main.test.cpp.html">test/aoj/DSL_2_I/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
 
 
 ## Code

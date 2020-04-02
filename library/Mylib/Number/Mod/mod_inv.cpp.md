@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Number/Mod/mod_inv.cpp
+# :question: Mylib/Number/Mod/mod_inv.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,13 +38,17 @@ layout: default
 
 ## Required by
 
+* :x: <a href="../../Convolution/ntt_convolution.cpp.html">Mylib/Convolution/ntt_convolution.cpp</a>
 * :heavy_check_mark: <a href="mod_log.cpp.html">Mylib/Number/Mod/mod_log.cpp</a>
 * :warning: <a href="../garner.cpp.html">Mylib/Number/garner.cpp</a>
 
 
 ## Verified with
 
+* :x: <a href="../../../../verify/test/yosupo-judge/convolution_mod/main.test.cpp.html">test/yosupo-judge/convolution_mod/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/convolution_mod_1000000007/main.test.cpp.html">test/yosupo-judge/convolution_mod_1000000007/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
 
 
 ## Code

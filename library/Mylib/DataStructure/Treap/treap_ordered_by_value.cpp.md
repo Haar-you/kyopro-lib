@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :warning: <a href="treap_ordered_by_index.cpp.html">Mylib/DataStructure/Treap/treap_ordered_by_index.cpp</a>
+* :heavy_check_mark: <a href="treap_ordered_by_index.cpp.html">Mylib/DataStructure/Treap/treap_ordered_by_index.cpp</a>
 
 
 ## Code

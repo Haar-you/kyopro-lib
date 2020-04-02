@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Graph/TopologicalSort/topological_sort.cpp
+# :question: Mylib/Graph/TopologicalSort/topological_sort.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,17 +38,18 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="../graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
 
 
 ## Required by
 
-* :warning: <a href="../two_sat.cpp.html">Mylib/Graph/two_sat.cpp</a>
+* :x: <a href="../two_sat.cpp.html">Mylib/Graph/two_sat.cpp</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
 
 
 ## Code

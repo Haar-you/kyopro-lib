@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Graph/travelling_salesman_problem.cpp
+# :heavy_check_mark: Mylib/Graph/travelling_salesman_problem.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -39,7 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_2_A/main.test.cpp.html">test/aoj/DPL_2_A/main.test.cpp</a>
 
 
 ## Code

@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
+* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_sqrt.cpp.html">Mylib/Number/Mod/mod_sqrt.cpp</a>
 
 

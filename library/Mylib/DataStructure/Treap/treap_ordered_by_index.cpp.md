@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/DataStructure/Treap/treap_ordered_by_index.cpp
+# :heavy_check_mark: Mylib/DataStructure/Treap/treap_ordered_by_index.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,6 +39,11 @@ layout: default
 ## Required by
 
 * :warning: <a href="treap_ordered_by_value.cpp.html">Mylib/DataStructure/Treap/treap_ordered_by_value.cpp</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/1508/main.treap.test.cpp.html">test/aoj/1508/main.treap.test.cpp</a>
 
 
 ## Code

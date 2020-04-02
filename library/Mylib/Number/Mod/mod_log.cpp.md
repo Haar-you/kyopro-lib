@@ -38,8 +38,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
-* :heavy_check_mark: <a href="mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
+* :question: <a href="mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
+* :question: <a href="mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
 
 
 ## Verified with

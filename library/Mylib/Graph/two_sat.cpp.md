@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Graph/two_sat.cpp
+# :x: Mylib/Graph/two_sat.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/two_sat.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-01 09:09:11+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/274 https://yukicoder.me/submissions/340917/source">https://yukicoder.me/problems/no/274 https://yukicoder.me/submissions/340917/source</a>
@@ -41,9 +41,14 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="GraphUtils/strongly_connected_components.cpp.html">Mylib/Graph/GraphUtils/strongly_connected_components.cpp</a>
-* :heavy_check_mark: <a href="TopologicalSort/topological_sort.cpp.html">Mylib/Graph/TopologicalSort/topological_sort.cpp</a>
-* :heavy_check_mark: <a href="graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="GraphUtils/strongly_connected_components.cpp.html">Mylib/Graph/GraphUtils/strongly_connected_components.cpp</a>
+* :question: <a href="TopologicalSort/topological_sort.cpp.html">Mylib/Graph/TopologicalSort/topological_sort.cpp</a>
+* :question: <a href="graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+
+
+## Verified with
+
+* :x: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
 
 
 ## Code
@@ -54,6 +59,7 @@ layout: default
 #pragma once
 #include <vector>
 #include <optional>
+#include <cassert>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 #include "Mylib/Graph/TopologicalSort/topological_sort.cpp"
@@ -142,6 +148,7 @@ public:
 #line 2 "Mylib/Graph/two_sat.cpp"
 #include <vector>
 #include <optional>
+#include <cassert>
 #line 3 "Mylib/Graph/graph_template.cpp"
 #include <iostream>
 
@@ -258,7 +265,7 @@ std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
     return std::nullopt;
   }
 }
-#line 7 "Mylib/Graph/two_sat.cpp"
+#line 8 "Mylib/Graph/two_sat.cpp"
 
 /**
  * @see https://yukicoder.me/problems/no/274 https://yukicoder.me/submissions/340917/source

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Graph/chinese_postman_problem.cpp
+# :heavy_check_mark: Mylib/Graph/chinese_postman_problem.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/chinese_postman_problem.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 08:41:26+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B</a>
@@ -39,7 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_2_B/main.test.cpp.html">test/aoj/DPL_2_B/main.test.cpp</a>
 
 
 ## Code
@@ -49,6 +54,7 @@ layout: default
 ```cpp
 #pragma once
 #include <vector>
+#include <algorithm>
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
@@ -67,7 +73,7 @@ template <typename T> T chinese_postman_problem(const Graph<T> &g){
   for(int i = 0; i < n; ++i){
     for(auto &e : g[i]){
       if(dist[e.from][e.to] == -1) dist[e.from][e.to] = e.cost;
-      else chmin(dist[e.from][e.to], e.cost);
+      else dist[e.from][e.to] = std::min(dist[e.from][e.to], e.cost);
     }
   }
 
@@ -76,7 +82,7 @@ template <typename T> T chinese_postman_problem(const Graph<T> &g){
       for(int j = 0; j < n; ++j){
         if(dist[i][k] >= 0 and dist[k][j] >= 0){
           if(dist[i][j] == -1) dist[i][j] = dist[i][k] + dist[k][j];
-          else chmin(dist[i][j], dist[i][k] + dist[k][j]);
+          else dist[i][j] = std::min(dist[i][j], dist[i][k] + dist[k][j]);
         }
       }
     }
@@ -99,7 +105,7 @@ template <typename T> T chinese_postman_problem(const Graph<T> &g){
       for(int k = 0; k < j; ++k){
         if((i & (1<<j)) and (i & (1<<k))){
           if(dp[i] == -1) dp[i] = dp[i ^ (1<<j) ^ (1<<k)] + dist[odd[j]][odd[k]];
-          else chmin(dp[i], dp[i ^ (1<<j) ^ (1<<k)] + dist[odd[j]][odd[k]]);
+          else dp[i] = std::min(dp[i], dp[i ^ (1<<j) ^ (1<<k)] + dist[odd[j]][odd[k]]);
         }
       }
     }
@@ -123,6 +129,7 @@ template <typename T> T chinese_postman_problem(const Graph<T> &g){
 ```cpp
 #line 2 "Mylib/Graph/chinese_postman_problem.cpp"
 #include <vector>
+#include <algorithm>
 #line 3 "Mylib/Graph/graph_template.cpp"
 #include <iostream>
 
@@ -153,7 +160,7 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
   add_edge(g, a, b, w);
   add_edge(g, b, a, w);
 }
-#line 4 "Mylib/Graph/chinese_postman_problem.cpp"
+#line 5 "Mylib/Graph/chinese_postman_problem.cpp"
 
 /**
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B
@@ -171,7 +178,7 @@ template <typename T> T chinese_postman_problem(const Graph<T> &g){
   for(int i = 0; i < n; ++i){
     for(auto &e : g[i]){
       if(dist[e.from][e.to] == -1) dist[e.from][e.to] = e.cost;
-      else chmin(dist[e.from][e.to], e.cost);
+      else dist[e.from][e.to] = std::min(dist[e.from][e.to], e.cost);
     }
   }
 
@@ -180,7 +187,7 @@ template <typename T> T chinese_postman_problem(const Graph<T> &g){
       for(int j = 0; j < n; ++j){
         if(dist[i][k] >= 0 and dist[k][j] >= 0){
           if(dist[i][j] == -1) dist[i][j] = dist[i][k] + dist[k][j];
-          else chmin(dist[i][j], dist[i][k] + dist[k][j]);
+          else dist[i][j] = std::min(dist[i][j], dist[i][k] + dist[k][j]);
         }
       }
     }
@@ -203,7 +210,7 @@ template <typename T> T chinese_postman_problem(const Graph<T> &g){
       for(int k = 0; k < j; ++k){
         if((i & (1<<j)) and (i & (1<<k))){
           if(dp[i] == -1) dp[i] = dp[i ^ (1<<j) ^ (1<<k)] + dist[odd[j]][odd[k]];
-          else chmin(dp[i], dp[i ^ (1<<j) ^ (1<<k)] + dist[odd[j]][odd[k]]);
+          else dp[i] = std::min(dp[i], dp[i ^ (1<<j) ^ (1<<k)] + dist[odd[j]][odd[k]]);
         }
       }
     }

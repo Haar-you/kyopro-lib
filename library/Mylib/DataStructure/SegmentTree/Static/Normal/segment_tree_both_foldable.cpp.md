@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_both_foldable.cpp
+# :x: Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_both_foldable.cpp
 
 <a href="../../../../../../index.html">Back to top page</a>
 
@@ -34,6 +34,11 @@ layout: default
     - Last commit date: 2020-03-31 09:03:11+09:00
 
 
+
+
+## Verified with
+
+* :x: <a href="../../../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
 
 
 ## Code

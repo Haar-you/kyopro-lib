@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/DataStructure/SplayTree/splay_tree.cpp
+# :heavy_check_mark: Mylib/DataStructure/SplayTree/splay_tree.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -34,6 +34,11 @@ layout: default
     - Last commit date: 2020-03-31 09:40:21+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/1508/main.splay_tree.test.cpp.html">test/aoj/1508/main.splay_tree.test.cpp</a>
 
 
 ## Code

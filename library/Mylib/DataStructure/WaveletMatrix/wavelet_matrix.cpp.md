@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp
+# :question: Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -41,7 +41,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="succinct_dictionary.cpp.html">Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp</a>
+* :question: <a href="succinct_dictionary.cpp.html">Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp</a>
 
 
 ## Required by
@@ -56,6 +56,7 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/1549/main.test.cpp.html">test/aoj/1549/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2674/main.test.cpp.html">test/aoj/2674/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/range_kth_smallest/main.test.cpp.html">test/yosupo-judge/range_kth_smallest/main.test.cpp</a>
 
 
 ## Code
