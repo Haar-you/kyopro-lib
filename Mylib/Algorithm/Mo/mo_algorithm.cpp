@@ -4,6 +4,7 @@
 #include <cassert>
 
 /**
+ * @title Moのアルゴリズム
  * @see https://codeforces.com/contest/86/submission/62912624 (出現数)
  * @see https://www.spoj.com/problems/DQUERY/ (種類数)
  * @see https://atcoder.jp/contests/dwacon2017-honsen/submissions/8017651 (積の約数の個数)

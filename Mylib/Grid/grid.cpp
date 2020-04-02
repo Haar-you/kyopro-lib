@@ -3,6 +3,9 @@
 #include <iostream>
 #include <utility>
 
+/**
+ * @title グリッド用テンプレート
+ */
 struct Point{
   int x, y;
   Point(): x(0), y(0){}

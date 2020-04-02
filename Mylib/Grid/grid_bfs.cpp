@@ -4,6 +4,7 @@
 #include "Mylib/Grid/grid.cpp"
 
 /**
+ * @title グリッド上BFS
  * @see https://atcoder.jp/contests/agc033/submissions/7429070
  * @see https://atcoder.jp/contests/qupc2018/submissions/7429448
  */

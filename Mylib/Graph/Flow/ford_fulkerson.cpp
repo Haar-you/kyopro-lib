@@ -2,6 +2,9 @@
 #include <vector>
 #include <algorithm>
 
+/**
+ * @title Ford-Fulkerson法
+ */
 template <typename T, T INF> class FordFulkerson{
 public:
   struct edge{

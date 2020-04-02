@@ -4,6 +4,9 @@
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
+/**
+ * @title Kruskal法
+ */
 template <typename T>
 std::vector<Edge<T>> kruskal(const Graph<T> &graph){
   int n = graph.size();

@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @title ビット逆転
+ */
 int32_t bit_reverse(int32_t a){
   a = ((a & 0x55555555) << 1) | ((a & 0xaaaaaaaa) >> 1);
   a = ((a & 0x33333333) << 2) | ((a & 0xcccccccc) >> 2);

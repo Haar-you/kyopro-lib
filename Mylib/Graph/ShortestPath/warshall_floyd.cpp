@@ -3,6 +3,9 @@
 #include <optional>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title Warshall-Floyd法
+ */
 template <typename T>
 struct WarshallFloyd{
   const int n;

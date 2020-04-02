@@ -4,6 +4,9 @@
 #include <queue>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title BFS最小路
+ */
 template <typename T>
 std::vector<std::optional<int>> bfs_shortest_path(const Graph<T> &g, const std::vector<int> &src){
   const int n = g.size();

@@ -3,6 +3,7 @@
 #include <deque>
 
 /**
+ * @title スライド最小値
  * @see https://codeforces.com/contest/1195/submission/57565778
  */
 template <typename T>

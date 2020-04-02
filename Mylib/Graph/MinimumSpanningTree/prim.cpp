@@ -3,6 +3,9 @@
 #include <queue>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title Prim法
+ */
 template <typename T>
 std::vector<Edge<T>> prim(const Graph<T> &graph){
   int n = graph.size();

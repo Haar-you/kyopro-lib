@@ -4,6 +4,9 @@
 #include <deque>
 #include <algorithm>
 
+/**
+ * @title Dinic法
+ */
 template <typename T, T INF> class Dinic{
 private:
   std::vector<std::vector<std::pair<int,T>>> graph;

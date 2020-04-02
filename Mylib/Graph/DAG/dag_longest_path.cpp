@@ -2,6 +2,9 @@
 #include <vector>
 #include <algorithm>
 
+/**
+ * @title DAGの最長パス
+ */
 int dag_longest_path(const std::vector<std::vector<int>> &g){
   int n = g.size();
   std::vector<int> ret(n);

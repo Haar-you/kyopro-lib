@@ -3,6 +3,9 @@
 #include "Mylib/Grid/grid.cpp"
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title グリッドをグラフに変換する
+ */
 template <typename T, typename Directions, typename Checker, typename Generator>
 Graph<T> grid_to_graph(int H, int W,
                        const Directions &dir,

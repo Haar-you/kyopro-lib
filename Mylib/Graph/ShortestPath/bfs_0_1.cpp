@@ -3,6 +3,9 @@
 #include <deque>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title 0-1 BFS
+ */
 std::vector<int> bfs_0_1(const Graph<int> &g, const std::vector<int> &src){
   int n = g.size();
   std::vector<int> ret(n, INT_MAX);

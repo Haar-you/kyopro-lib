@@ -3,6 +3,10 @@
 #include <stack>
 #include <optional>
 
+/**
+ * @title Sliding Window Aggregation
+ * @see https://scrapbox.io/data-structures/Sliding_Window_Aggregation
+ */
 template <typename T, typename F>
 class SlidingWindowAggregation{
   std::stack<T> front_stack, back_stack;

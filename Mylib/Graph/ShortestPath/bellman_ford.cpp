@@ -3,6 +3,9 @@
 #include <algorithm>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title Bellman-Ford法
+ */
 template <typename T>
 struct BellmanFord{
   struct Result{

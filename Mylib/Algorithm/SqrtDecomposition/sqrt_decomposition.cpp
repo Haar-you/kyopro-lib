@@ -1,6 +1,9 @@
 #pragma once
 #include <algorithm>
 
+/**
+ * @title 平方分割
+ */
 struct SqrtDecomposition{
   const int N;
   const int BLOCK_SIZE;

@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 
+/**
+ * @title 一次元Imos法
+ */
 template <typename T> struct Imos1D{
   std::vector<T> data;
   Imos1D(int n): data(n+1){}

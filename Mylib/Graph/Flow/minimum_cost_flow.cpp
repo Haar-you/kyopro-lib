@@ -6,6 +6,9 @@
 #include <algorithm>
 #include <tuple>
 
+/**
+ * @title 最小費用流
+ */
 template <typename T, typename U> class MinimumCostFlow{
 public:
   struct edge{

@@ -4,7 +4,9 @@
 #include <utility>
 
 /**
+ * @title 区間最頻値クエリ
  * @see https://www.spoj.com/problems/FREQ2/
+ * @see https://scrapbox.io/data-structures/Range_Mode_Query
  */
 template <typename T>
 class RangeModeQuery{

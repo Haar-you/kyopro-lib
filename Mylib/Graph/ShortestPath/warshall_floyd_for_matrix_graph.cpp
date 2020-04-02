@@ -2,6 +2,9 @@
 #include <vector>
 #include <optional>
 
+/**
+ * @title 隣接行列グラフでのWarshall-Floyd法
+ */
 template <typename T, T INVALID>
 struct WarshallFloyd{
   const int n;

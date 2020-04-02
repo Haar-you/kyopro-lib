@@ -6,6 +6,9 @@
 #include <functional>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title Dijkstra法
+ */
 template <typename T>
 class Dijkstra{
 public:

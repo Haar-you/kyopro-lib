@@ -3,6 +3,9 @@
 #include <deque>
 #include <utility>
 
+/**
+ * @title スライド最小値・最大値
+ */
 template <typename T> std::vector<std::pair<T,T>> sliding_minmax(const std::vector<T> &a, int k){
   int n = a.size();
   std::deque<int> dq_min, dq_max;

@@ -3,6 +3,7 @@
 #include <deque>
 
 /**
+ * @title スライド最大値
  * @see https://atcoder.jp/contests/cf16-tournament-round3-open/submissions/6875142
  */
 template <typename T>

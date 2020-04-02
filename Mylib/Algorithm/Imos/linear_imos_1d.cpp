@@ -2,6 +2,7 @@
 #include <vector>
 
 /**
+ * @title 線形加算一次元Imos法
  * @see https://atcoder.jp/contests/arc077/submissions/6507967
  */
 template <typename T> struct LinearImos1D{
