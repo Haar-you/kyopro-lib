@@ -6,6 +6,7 @@
 
 
 /**
+ * @title Li Chao tree
  * @see https://judge.yosupo.jp/submission/3426
  * @see https://judge.yosupo.jp/submission/3427
  * @note Comparator = less<T> : Minクエリ

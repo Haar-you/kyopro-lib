@@ -6,6 +6,9 @@
 #include "Mylib/Number/Mod/mod_power.cpp"
 #include "Mylib/Number/Mod/mod_inv.cpp"
 
+/**
+ * @title Number Theoretic Transform
+ */
 template <int MOD, int PRIM_ROOT, int MAX_SIZE>
 class NumberTheoreticTransform{
   const int MAX_POWER;

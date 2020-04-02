@@ -1,6 +1,9 @@
 #pragma once
 #include <string>
 
+/**
+ * @title ends_with
+ */
 bool ends_with(const std::string &str, const std::string &suffix){
   if(str.size() < suffix.size()) return false;
   int n = str.size(), m = suffix.size();

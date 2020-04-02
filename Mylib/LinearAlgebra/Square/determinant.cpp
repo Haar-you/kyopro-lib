@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @title 行列式
+ */
 template <typename M, typename T = typename M::value_type>
 T determinant(M m){
   const int N = m.size();

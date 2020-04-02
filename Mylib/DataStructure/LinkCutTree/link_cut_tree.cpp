@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 
+/**
+ * @title Link-Cut tree
+ */
 template <typename Monoid>
 struct LinkCutNode{
   using value_type = typename Monoid::value_type;

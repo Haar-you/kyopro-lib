@@ -2,6 +2,9 @@
 #include <vector>
 #include "Mylib/String/suffix_array.cpp"
 
+/**
+ * @title LCP(Longest Common Prefix)配列
+ */
 template <typename T>
 struct LCPArray{
   const int n;

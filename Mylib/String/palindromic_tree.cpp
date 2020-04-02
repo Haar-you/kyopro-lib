@@ -5,6 +5,7 @@
 #include <algorithm>
 
 /**
+ * @title 回文木
  * @see https://www.spoj.com/problems/LPS/ (最長回文部分列)
  * @see https://www.spoj.com/problems/NUMOFPAL/ (回文部分列の個数)
  */

@@ -1,6 +1,9 @@
 #pragma once
 #include <utility>
 
+/**
+ * @title 逆行列
+ */
 template <typename M, typename T = typename M::value_type>
 bool inverse_matrix(M m, M &ret){
   const int N = m.size();

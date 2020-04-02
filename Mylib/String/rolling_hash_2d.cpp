@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 
+/**
+ * @title Rolling Hash 2D
+ */
 template <typename T, int64_t BASEW, int64_t BASEH, int64_t MOD>
 class RollingHash2D{
   static std::vector<int64_t> pow_w, pow_h;

@@ -3,6 +3,9 @@
 #include <vector>
 #include <algorithm>
 
+/**
+ * @title Z-algorithm
+ */
 std::vector<int> z_algorithm(const std::string &s){
   const int n = s.size();
   std::vector<int> ret(n, 0);

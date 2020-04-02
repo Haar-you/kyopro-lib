@@ -2,6 +2,9 @@
 #include <vector>
 #include <numeric>
 
+/**
+ * @title unionfind
+ */
 class UnionFind{
   std::vector<int> parent, depth, size;
   int count;

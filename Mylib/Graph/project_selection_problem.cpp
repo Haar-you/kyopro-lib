@@ -5,6 +5,7 @@
 #include "Mylib/Graph/Flow/dinic.cpp"
 
 /*
+ * @title Project Selection Problem
  * @see https://kimiyuki.net/blog/2017/12/05/minimum-cut-and-project-selection-problem/
  * @see https://ei1333.github.io/luzhiled/snippets/memo/project-selection.html
  * @see https://ferin-tech.hatenablog.com/entry/2019/10/28/%E7%87%83%E3%82%84%E3%81%99%E5%9F%8B%E3%82%81%E3%82%8B%E5%95%8F%E9%A1%8C

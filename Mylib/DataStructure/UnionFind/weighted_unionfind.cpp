@@ -3,6 +3,7 @@
 #include <numeric>
 
 /**
+ * @title 重み付きunionfind
  * @see https://atcoder.jp/contests/abc087/submissions/6544778
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1330
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B

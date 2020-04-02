@@ -2,6 +2,7 @@
 #include <vector>
 
 /**
+ * @title Rolling Hash
  * @see https://yukicoder.me/submissions/347187
  */
 template <typename T, int64_t BASE, int64_t MOD>

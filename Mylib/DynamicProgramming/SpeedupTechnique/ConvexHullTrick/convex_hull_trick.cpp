@@ -4,6 +4,7 @@
 #include <functional>
 
 /**
+ * @title Convex Hull Trick
  * @see https://atcoder.jp/contests/dp/tasks/dp_z (Minクエリ)
  * @see https://codeforces.com/contest/939/problem/E (Maxクエリ)
  * @note Comparator = greater<T> : 傾き => 単調減少, クエリ座標 => 単調増加, クエリ => Min

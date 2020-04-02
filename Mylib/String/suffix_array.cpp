@@ -3,6 +3,7 @@
 #include <tuple>
 
 /**
+ * @title 接尾辞配列
  * @see https://yukicoder.me/submissions/347188
  */
 template <typename T> class SuffixArray{

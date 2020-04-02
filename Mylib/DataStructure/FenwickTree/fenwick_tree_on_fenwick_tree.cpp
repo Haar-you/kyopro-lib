@@ -5,6 +5,9 @@
 
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
 
+/**
+ * @title Fenwick木にFenwick木を乗せる
+ */
 template <typename AbelianGroup>
 class FenwickTree2D{
   using value_type = typename AbelianGroup::value_type;

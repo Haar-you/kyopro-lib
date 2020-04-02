@@ -6,6 +6,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
+ * @title 非連結グラフの二部グラフ判定
  * @see https://atcoder.jp/contests/maximum-cup-2018/submissions/4199048
  * @see https://atcoder.jp/contests/arc099/submissions/7457350
  */

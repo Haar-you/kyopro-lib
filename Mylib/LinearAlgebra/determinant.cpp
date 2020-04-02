@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 
+/**
+ * @title 行列式
+ */
 template <typename T> T determinant(std::vector<std::vector<T>> m){
   const int n = m.size();
   int s = 0;

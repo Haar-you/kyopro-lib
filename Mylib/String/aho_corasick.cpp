@@ -5,6 +5,7 @@
 #include <queue>
 
 /**
+ * @title Aho-Corasick法
  * @note https://yukicoder.me/submissions/347348
  */
 class AhoCorasick{

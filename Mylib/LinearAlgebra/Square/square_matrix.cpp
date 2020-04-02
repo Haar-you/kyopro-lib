@@ -2,6 +2,9 @@
 #include <vector>
 #include <utility>
 
+/**
+ * @title 正方行列
+ */
 template <typename T> struct SquareMatrix{
   using value_type = T;
   

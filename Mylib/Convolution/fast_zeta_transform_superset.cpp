@@ -3,6 +3,7 @@
 #include <functional>
 
 /**
+ * @title 上位集合に対する高速Zeta変換
  * @see https://codeforces.com/contest/1208/submission/59501702 (最大値2つを保持)
  * @note f(S) = ∑_{S⊆T} g(T)
  */

@@ -2,6 +2,7 @@
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
 /**
+ * @title Unionfindによる二部グラフ判定
  * @see https://atcoder.jp/contests/code-festival-2017-qualb/submissions/4508202
  * @see https://atcoder.jp/contests/arc036/submissions/4199773
  */

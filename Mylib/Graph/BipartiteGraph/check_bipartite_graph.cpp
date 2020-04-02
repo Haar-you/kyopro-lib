@@ -4,6 +4,9 @@
 #include <stack>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title 連結グラフの二部グラフ判定
+ */
 template <typename T>
 std::optional<std::vector<int>> is_bipartite_graph(const Graph<T> &graph){
   std::vector<int> check(graph.size(), -1);

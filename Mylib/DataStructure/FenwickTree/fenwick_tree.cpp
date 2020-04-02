@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 
+/**
+ * @title Fenwick木
+ */
 template <typename AbelianGroup>
 class FenwickTree{
   using value_type = typename AbelianGroup::value_type;

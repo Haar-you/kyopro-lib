@@ -3,6 +3,9 @@
 #include <cmath>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title ダブリング実装の最小共通祖先
+ */
 template <typename T> class LCA{
 private:
   std::vector<std::vector<int>> parent;

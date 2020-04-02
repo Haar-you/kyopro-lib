@@ -3,6 +3,9 @@
 #include <utility>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title HLD実装の最小共通祖先
+ */
 template <typename T> class LCA{
   int n;
   std::vector<int> sub, par, head, id;

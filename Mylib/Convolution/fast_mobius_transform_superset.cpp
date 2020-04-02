@@ -3,6 +3,7 @@
 #include <functional>
 
 /**
+ * @title 上位集合に対する高速Möbius変換
  * @note f(S) = ∑_{S⊆T} g(T) * (-1)^(|T|-|S|)
  */
 template <typename T, typename Func = std::minus<T>>
