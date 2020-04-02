@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#3c72a5f9e51247cad1bcbc8d30f4715f">test/yosupo-judge/partition_function</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/partition_function/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 15:31:27+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/partition_function">https://judge.yosupo.jp/problem/partition_function</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/partition_number_n.cpp.html">Mylib/Combinatorics/partition_number_n.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Mylib/Number/Mint/mint.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/partition_number_n.cpp.html">分割数の列挙</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -81,6 +81,9 @@ int main(){
 #line 3 "Mylib/Number/Mint/mint.cpp"
 #include <utility>
 
+/**
+ * @title modint
+ */
 template <uint32_t M> class ModInt{
 public:
   uint64_t val;
@@ -161,6 +164,7 @@ public:
 #include <vector>
 
 /**
+ * @title 分割数の列挙
  * @see https://judge.yosupo.jp/submission/1223
  * @attention time-complexity O(N√N)
  */

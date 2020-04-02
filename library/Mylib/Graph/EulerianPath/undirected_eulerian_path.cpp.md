@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Graph/EulerianPath/undirected_eulerian_path.cpp
+# :warning: 無向Euler路
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b40e1d8162bf14ce6637a69e4e4fb68d">Mylib/Graph/EulerianPath</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/EulerianPath/undirected_eulerian_path.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="https://codeforces.com/contest/1152/submission/53310405">https://codeforces.com/contest/1152/submission/53310405</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="../graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
 
 
 ## Code
@@ -54,6 +54,7 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
+ * @title 無向Euler路
  * @see https://codeforces.com/contest/1152/submission/53310405
  */
 class UndirectedEulerianPath{
@@ -168,6 +169,7 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 #line 6 "Mylib/Graph/EulerianPath/undirected_eulerian_path.cpp"
 
 /**
+ * @title 無向Euler路
  * @see https://codeforces.com/contest/1152/submission/53310405
  */
 class UndirectedEulerianPath{

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b72df8ce0758bb7606e41650e28ebb6a">test/aoj/DPL_5_I</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_I/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 15:31:27+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/combinatorics.cpp.html">Mylib/Combinatorics/combinatorics.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/stirling_number.cpp.html">Mylib/Combinatorics/stirling_number.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Mylib/Number/Mint/mint.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/stirling_number.cpp.html">第2種Stirling数</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -81,6 +81,9 @@ int main(){
 #line 3 "Mylib/Number/Mint/mint.cpp"
 #include <utility>
 
+/**
+ * @title modint
+ */
 template <uint32_t M> class ModInt{
 public:
   uint64_t val;
@@ -161,6 +164,7 @@ public:
 #include <cassert>
 
 /**
+ * @title 組み合わせ計算用の前計算クラス
  * @attention 使用前にinit関数を呼び出す
  */
 template <typename T> class Combinatorics{
@@ -222,6 +226,7 @@ template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
 #line 3 "Mylib/Combinatorics/stirling_number.cpp"
 
 /**
+ * @title 第2種Stirling数
  * @note n個の区別するボールをk個の区別しない箱に分配する(但し、すべての箱には1つ以上のボールがある)ような方法の総数。
  * @attention O(k log n)
  */

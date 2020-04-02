@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#9ebe5796a1fd941d1f273efb97ed22d8">test/yosupo-judge/persistent_queue</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/persistent_queue/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 08:22:27+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/persistent_queue">https://judge.yosupo.jp/problem/persistent_queue</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/Queue/persistent_queue.cpp.html">Mylib/DataStructure/Queue/persistent_queue.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/Queue/persistent_queue.cpp.html">永続Queue</a>
 
 
 ## Code
@@ -96,6 +96,7 @@ int main(){
 #include <array>
 
 /**
+ * @title 永続Queue
  * @attention time complexity of push(value) and pop() : O(MAX_SIZE_2)
  */
 template <typename T>

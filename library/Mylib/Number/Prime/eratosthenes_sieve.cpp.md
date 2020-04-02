@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Number/Prime/eratosthenes_sieve.cpp
+# :warning: Eratosthenesの篩
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/eratosthenes_sieve.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 07:59:09+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
 
 ## Required by
 
-* :warning: <a href="../mobius_function.cpp.html">Mylib/Number/mobius_function.cpp</a>
+* :warning: <a href="../mobius_function.cpp.html">Möbius関数</a>
 
 
 ## Code
@@ -49,6 +49,9 @@ layout: default
 #pragma once
 #include <bitset>
 
+/**
+ * @title Eratosthenesの篩
+ */
 namespace eratosthenes_sieve{
   constexpr int MAX = 1000000;
   std::bitset<MAX+1> is_prime;
@@ -76,6 +79,9 @@ namespace eratosthenes_sieve{
 #line 2 "Mylib/Number/Prime/eratosthenes_sieve.cpp"
 #include <bitset>
 
+/**
+ * @title Eratosthenesの篩
+ */
 namespace eratosthenes_sieve{
   constexpr int MAX = 1000000;
   std::bitset<MAX+1> is_prime;

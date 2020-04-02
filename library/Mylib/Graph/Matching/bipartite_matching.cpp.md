@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Graph/Matching/bipartite_matching.cpp
+# :heavy_check_mark: 二部マッチング
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#65eb1c5db2b1bd726d58cf661f149e7c">Mylib/Graph/Matching</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Matching/bipartite_matching.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
@@ -58,6 +58,9 @@ layout: default
 #include <cassert>
 #include "Mylib/Graph/Flow/ford_fulkerson.cpp"
 
+/**
+ * @title 二部マッチング
+ */
 class BipartiteMatching{
   int x, y;
   FordFulkerson<int, INT_MAX> f;
@@ -173,6 +176,9 @@ public:
 };
 #line 7 "Mylib/Graph/Matching/bipartite_matching.cpp"
 
+/**
+ * @title 二部マッチング
+ */
 class BipartiteMatching{
   int x, y;
   FordFulkerson<int, INT_MAX> f;

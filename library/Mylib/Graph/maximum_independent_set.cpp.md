@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Graph/maximum_independent_set.cpp
+# :heavy_check_mark: 最大独立集合
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/maximum_independent_set.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="https://code-thanks-festival-2017-open.contest.atcoder.jp/submissions/4071345">https://code-thanks-festival-2017-open.contest.atcoder.jp/submissions/4071345</a>
@@ -53,6 +53,7 @@ layout: default
 #include <vector>
 
 /**
+ * @title 最大独立集合
  * @see https://code-thanks-festival-2017-open.contest.atcoder.jp/submissions/4071345
  * @see https://codeforces.com/contest/1105/submission/48777508
  * @see https://judge.yosupo.jp/submission/1229
@@ -160,6 +161,7 @@ int64_t maximum_independent_set(const std::vector<std::vector<int>> &graph){
 #include <vector>
 
 /**
+ * @title 最大独立集合
  * @see https://code-thanks-festival-2017-open.contest.atcoder.jp/submissions/4071345
  * @see https://codeforces.com/contest/1105/submission/48777508
  * @see https://judge.yosupo.jp/submission/1229

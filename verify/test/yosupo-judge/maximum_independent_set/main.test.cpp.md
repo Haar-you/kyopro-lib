@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#c23632d9cb1ef08c66b41109b76404c6">test/yosupo-judge/maximum_independent_set</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/maximum_independent_set/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/maximum_independent_set">https://judge.yosupo.jp/problem/maximum_independent_set</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/maximum_independent_set.cpp.html">Mylib/Graph/maximum_independent_set.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/maximum_independent_set.cpp.html">最大独立集合</a>
 
 
 ## Code
@@ -90,6 +90,7 @@ int main(){
 #line 3 "Mylib/Graph/maximum_independent_set.cpp"
 
 /**
+ * @title 最大独立集合
  * @see https://code-thanks-festival-2017-open.contest.atcoder.jp/submissions/4071345
  * @see https://codeforces.com/contest/1105/submission/48777508
  * @see https://judge.yosupo.jp/submission/1229

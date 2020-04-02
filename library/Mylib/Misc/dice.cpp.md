@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Misc/dice.cpp
+# :warning: サイコロ
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/dice.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
@@ -43,6 +43,9 @@ layout: default
 ```cpp
 #pragma once
 
+/**
+ * @title サイコロ
+ */
 struct Dice{
   int top, bottom, left, right, front, back;
 
@@ -75,6 +78,9 @@ struct Dice{
 ```cpp
 #line 2 "Mylib/Misc/dice.cpp"
 
+/**
+ * @title サイコロ
+ */
 struct Dice{
   int top, bottom, left, right, front, back;
 

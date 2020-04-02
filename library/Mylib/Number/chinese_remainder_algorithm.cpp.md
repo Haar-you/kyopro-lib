@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Number/chinese_remainder_algorithm.cpp
+# :warning: 中国剰余定理
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/chinese_remainder_algorithm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 07:59:09+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
 
 ## Depends on
 
-* :warning: <a href="extended_gcd.cpp.html">Mylib/Number/extended_gcd.cpp</a>
+* :warning: <a href="extended_gcd.cpp.html">拡張Euclidの互除法</a>
 
 
 ## Code
@@ -51,6 +51,9 @@ layout: default
 #include <tuple>
 #include "Mylib/Number/extended_gcd.cpp"
 
+/**
+ * @title 中国剰余定理
+ */
 bool CRA(int64_t b1, int64_t m1, int64_t b2, int64_t m2, int64_t &r, int64_t &m){
   int64_t p,q,d;
   std::tie(d,p,q) = extGCD(m1,m2);
@@ -83,6 +86,9 @@ bool CRA(const std::vector<int64_t> &bs, const std::vector<int64_t> &ms, int64_t
 #include <tuple>
 #line 3 "Mylib/Number/extended_gcd.cpp"
 
+/**
+ * @title 拡張Euclidの互除法
+ */
 std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
   if(b == 0) return std::make_tuple(a,1,0);
   int64_t d,p,q;
@@ -91,6 +97,9 @@ std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
 }
 #line 5 "Mylib/Number/chinese_remainder_algorithm.cpp"
 
+/**
+ * @title 中国剰余定理
+ */
 bool CRA(int64_t b1, int64_t m1, int64_t b2, int64_t m2, int64_t &r, int64_t &m){
   int64_t p,q,d;
   std::tie(d,p,q) = extGCD(m1,m2);

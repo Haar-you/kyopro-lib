@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_2d.cpp
+# :warning: 2Dセグメント木
 
 <a href="../../../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../../../index.html#dd4a4f8515bcc75e971952e726133342">Mylib/DataStructure/SegmentTree/Static/Normal</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_2d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 09:03:11+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="https://codeforces.com/contest/1301/submission/71853921">https://codeforces.com/contest/1301/submission/71853921</a>
@@ -46,6 +46,7 @@ layout: default
 #include <vector>
 
 /**
+ * @title 2Dセグメント木
  * @see https://codeforces.com/contest/1301/submission/71853921
  */
 template <typename Monoid> class SegmentTree2D{
@@ -129,6 +130,7 @@ public:
 #include <vector>
 
 /**
+ * @title 2Dセグメント木
  * @see https://codeforces.com/contest/1301/submission/71853921
  */
 template <typename Monoid> class SegmentTree2D{

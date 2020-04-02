@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Graph/chinese_postman_problem.cpp
+# :heavy_check_mark: 中国人郵便配達問題
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/chinese_postman_problem.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
 
 
 ## Verified with
@@ -58,6 +58,7 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
+ * @title 中国人郵便配達問題
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B
  * @attention 時間計算量 O(n^2 2^n)
  */
@@ -163,6 +164,7 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 #line 5 "Mylib/Graph/chinese_postman_problem.cpp"
 
 /**
+ * @title 中国人郵便配達問題
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B
  * @attention 時間計算量 O(n^2 2^n)
  */

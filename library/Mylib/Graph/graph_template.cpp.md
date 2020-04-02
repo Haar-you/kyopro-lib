@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Graph/graph_template.cpp
+# :question: Mylib/Graph/graph_template.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -40,37 +40,37 @@ layout: default
 
 * :warning: <a href="BipartiteGraph/check_bipartite_graph.cpp.html">Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp</a>
 * :warning: <a href="BipartiteGraph/check_bipartite_graph_disconnected.cpp.html">Mylib/Graph/BipartiteGraph/check_bipartite_graph_disconnected.cpp</a>
-* :warning: <a href="EulerianPath/directed_eulerian_path.cpp.html">Mylib/Graph/EulerianPath/directed_eulerian_path.cpp</a>
-* :warning: <a href="EulerianPath/undirected_eulerian_path.cpp.html">Mylib/Graph/EulerianPath/undirected_eulerian_path.cpp</a>
-* :heavy_check_mark: <a href="GraphUtils/articulation_points.cpp.html">Mylib/Graph/GraphUtils/articulation_points.cpp</a>
-* :heavy_check_mark: <a href="GraphUtils/bridges.cpp.html">Mylib/Graph/GraphUtils/bridges.cpp</a>
+* :warning: <a href="EulerianPath/directed_eulerian_path.cpp.html">有向Euler路</a>
+* :warning: <a href="EulerianPath/undirected_eulerian_path.cpp.html">無向Euler路</a>
+* :heavy_check_mark: <a href="GraphUtils/articulation_points.cpp.html">間接点列挙</a>
+* :heavy_check_mark: <a href="GraphUtils/bridges.cpp.html">橋列挙</a>
 * :warning: <a href="GraphUtils/decompose_pseudotree.cpp.html">Mylib/Graph/GraphUtils/decompose_pseudotree.cpp</a>
-* :heavy_check_mark: <a href="GraphUtils/strongly_connected_components.cpp.html">Mylib/Graph/GraphUtils/strongly_connected_components.cpp</a>
-* :heavy_check_mark: <a href="GraphUtils/two_edge_connected_components.cpp.html">Mylib/Graph/GraphUtils/two_edge_connected_components.cpp</a>
+* :question: <a href="GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
+* :x: <a href="GraphUtils/two_edge_connected_components.cpp.html">二重辺連結成分分解</a>
 * :heavy_check_mark: <a href="MinimumSpanningTree/kruskal.cpp.html">Mylib/Graph/MinimumSpanningTree/kruskal.cpp</a>
 * :heavy_check_mark: <a href="MinimumSpanningTree/prim.cpp.html">Mylib/Graph/MinimumSpanningTree/prim.cpp</a>
-* :warning: <a href="ShortestCycle/directed_shortest_cycle.cpp.html">Mylib/Graph/ShortestCycle/directed_shortest_cycle.cpp</a>
-* :warning: <a href="ShortestCycle/undirected_shortest_cycle.cpp.html">Mylib/Graph/ShortestCycle/undirected_shortest_cycle.cpp</a>
+* :warning: <a href="ShortestCycle/directed_shortest_cycle.cpp.html">有向グラフの最小閉路</a>
+* :warning: <a href="ShortestCycle/undirected_shortest_cycle.cpp.html">無向グラフの最小閉路</a>
 * :heavy_check_mark: <a href="ShortestPath/bellman_ford.cpp.html">Mylib/Graph/ShortestPath/bellman_ford.cpp</a>
 * :warning: <a href="ShortestPath/bfs_0_1.cpp.html">Mylib/Graph/ShortestPath/bfs_0_1.cpp</a>
 * :warning: <a href="ShortestPath/bfs_shortest_path.cpp.html">Mylib/Graph/ShortestPath/bfs_shortest_path.cpp</a>
 * :heavy_check_mark: <a href="ShortestPath/dijkstra.cpp.html">Mylib/Graph/ShortestPath/dijkstra.cpp</a>
 * :heavy_check_mark: <a href="ShortestPath/warshall_floyd.cpp.html">Mylib/Graph/ShortestPath/warshall_floyd.cpp</a>
-* :heavy_check_mark: <a href="TopologicalSort/topological_sort.cpp.html">Mylib/Graph/TopologicalSort/topological_sort.cpp</a>
+* :x: <a href="TopologicalSort/topological_sort.cpp.html">Mylib/Graph/TopologicalSort/topological_sort.cpp</a>
 * :warning: <a href="TopologicalSort/topological_sort_lexicographical.cpp.html">Mylib/Graph/TopologicalSort/topological_sort_lexicographical.cpp</a>
-* :warning: <a href="TreeUtils/centroid.cpp.html">Mylib/Graph/TreeUtils/centroid.cpp</a>
-* :warning: <a href="TreeUtils/centroid_decomposition.cpp.html">Mylib/Graph/TreeUtils/centroid_decomposition.cpp</a>
-* :warning: <a href="TreeUtils/euler_tour_bfs.cpp.html">Mylib/Graph/TreeUtils/euler_tour_bfs.cpp</a>
-* :heavy_check_mark: <a href="TreeUtils/euler_tour_vertex.cpp.html">Mylib/Graph/TreeUtils/euler_tour_vertex.cpp</a>
+* :warning: <a href="TreeUtils/centroid.cpp.html">重心列挙</a>
+* :warning: <a href="TreeUtils/centroid_decomposition.cpp.html">重心分解</a>
+* :warning: <a href="TreeUtils/euler_tour_bfs.cpp.html">BFS Euler tour</a>
+* :x: <a href="TreeUtils/euler_tour_vertex.cpp.html">頂点Euler tour</a>
 * :warning: <a href="TreeUtils/forest.cpp.html">Mylib/Graph/TreeUtils/forest.cpp</a>
-* :heavy_check_mark: <a href="TreeUtils/heavy_light_decomposition.cpp.html">Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp</a>
+* :question: <a href="TreeUtils/heavy_light_decomposition.cpp.html">重軽分解</a>
 * :heavy_check_mark: <a href="TreeUtils/lca_based_on_doubling.cpp.html">Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp</a>
 * :heavy_check_mark: <a href="TreeUtils/lca_based_on_hld.cpp.html">Mylib/Graph/TreeUtils/lca_based_on_hld.cpp</a>
-* :warning: <a href="TreeUtils/rooting.cpp.html">Mylib/Graph/TreeUtils/rooting.cpp</a>
+* :warning: <a href="TreeUtils/rooting.cpp.html">根付き木</a>
 * :heavy_check_mark: <a href="TreeUtils/tree_utils.cpp.html">Mylib/Graph/TreeUtils/tree_utils.cpp</a>
-* :heavy_check_mark: <a href="chinese_postman_problem.cpp.html">Mylib/Graph/chinese_postman_problem.cpp</a>
-* :heavy_check_mark: <a href="travelling_salesman_problem.cpp.html">Mylib/Graph/travelling_salesman_problem.cpp</a>
-* :heavy_check_mark: <a href="two_sat.cpp.html">Mylib/Graph/two_sat.cpp</a>
+* :heavy_check_mark: <a href="chinese_postman_problem.cpp.html">中国人郵便配達問題</a>
+* :heavy_check_mark: <a href="travelling_salesman_problem.cpp.html">巡回セールスマン問題</a>
+* :x: <a href="two_sat.cpp.html">2-SAT</a>
 * :warning: <a href="../Grid/grid_to_graph.cpp.html">Mylib/Grid/grid_to_graph.cpp</a>
 
 
@@ -91,13 +91,13 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_5_B/main.test.cpp.html">test/aoj/GRL_5_B/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_5_C/main.doubling.test.cpp.html">test/aoj/GRL_5_C/main.doubling.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_5_C/main.hld.test.cpp.html">test/aoj/GRL_5_C/main.hld.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/two_edge_connected_components/main.test.cpp.html">test/yosupo-judge/two_edge_connected_components/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/two_edge_connected_components/main.test.cpp.html">test/yosupo-judge/two_edge_connected_components/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
 
 
 ## Code

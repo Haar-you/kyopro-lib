@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/DataStructure/Stack/persistent_stack.cpp
+# :warning: 永続Stack
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#12526f91d29b13109723e3d0cc6a4265">Mylib/DataStructure/Stack</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Stack/persistent_stack.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 09:40:40+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
@@ -43,6 +43,9 @@ layout: default
 ```cpp
 #pragma once
 
+/**
+ * @title 永続Stack
+ */
 template <typename T> struct PersistentStack{
 protected:
   struct node{
@@ -84,6 +87,9 @@ public:
 ```cpp
 #line 2 "Mylib/DataStructure/Stack/persistent_stack.cpp"
 
+/**
+ * @title 永続Stack
+ */
 template <typename T> struct PersistentStack{
 protected:
   struct node{

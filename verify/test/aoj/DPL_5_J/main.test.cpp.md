@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#8ea6691460c4e97105f99a36e4c646db">test/aoj/DPL_5_J</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_J/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 15:31:27+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_J">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_J</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/partition_number.cpp.html">Mylib/Combinatorics/partition_number.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Mylib/Number/Mint/mint.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/partition_number.cpp.html">K個以下への分割数の列挙</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -79,6 +79,9 @@ int main(){
 #line 3 "Mylib/Number/Mint/mint.cpp"
 #include <utility>
 
+/**
+ * @title modint
+ */
 template <uint32_t M> class ModInt{
 public:
   uint64_t val;
@@ -158,6 +161,7 @@ public:
 #include <vector>
 
 /**
+ * @title K個以下への分割数の列挙
  * @see https://mathtrain.jp/bunkatsu
  * @see http://drken1215.hatenablog.com/entry/2018/01/16/222843
  * @note 自然数nをk個以下の1以上の整数に分割する方法。
@@ -176,7 +180,6 @@ auto partition_number(int n, int k){
 
   return dp;
 }
-
 #line 6 "test/aoj/DPL_5_J/main.test.cpp"
 
 using mint = ModInt<1000000007>;

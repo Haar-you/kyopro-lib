@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/LinearAlgebra/GaussianElimination/binary_gaussian_elimination.cpp
+# :warning: Mod2体上での掃き出し法
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#4efd5e2a9807175bf43e4c1857b5bc52">Mylib/LinearAlgebra/GaussianElimination</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/GaussianElimination/binary_gaussian_elimination.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 04:55:54+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/bitflyer2018-final-open/tasks/bitflyer2018_final_d">https://atcoder.jp/contests/bitflyer2018-final-open/tasks/bitflyer2018_final_d</a>
@@ -49,6 +49,7 @@ layout: default
 #include <utility>
 
 /**
+ * @title Mod2体上での掃き出し法
  * @see https://atcoder.jp/contests/bitflyer2018-final-open/tasks/bitflyer2018_final_d
  * @see https://csacademy.com/contest/archive/task/xor-closure/
  */
@@ -91,6 +92,7 @@ template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &m){
 #include <utility>
 
 /**
+ * @title Mod2体上での掃き出し法
  * @see https://atcoder.jp/contests/bitflyer2018-final-open/tasks/bitflyer2018_final_d
  * @see https://csacademy.com/contest/archive/task/xor-closure/
  */

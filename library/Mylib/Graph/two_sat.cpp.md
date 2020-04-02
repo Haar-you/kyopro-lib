@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Graph/two_sat.cpp
+# :x: 2-SAT
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/two_sat.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 09:09:11+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/274 https://yukicoder.me/submissions/340917/source">https://yukicoder.me/problems/no/274 https://yukicoder.me/submissions/340917/source</a>
@@ -41,14 +41,14 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="GraphUtils/strongly_connected_components.cpp.html">Mylib/Graph/GraphUtils/strongly_connected_components.cpp</a>
-* :heavy_check_mark: <a href="TopologicalSort/topological_sort.cpp.html">Mylib/Graph/TopologicalSort/topological_sort.cpp</a>
-* :heavy_check_mark: <a href="graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
+* :x: <a href="TopologicalSort/topological_sort.cpp.html">Mylib/Graph/TopologicalSort/topological_sort.cpp</a>
+* :question: <a href="graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
 
 
 ## Code
@@ -65,6 +65,7 @@ layout: default
 #include "Mylib/Graph/TopologicalSort/topological_sort.cpp"
 
 /**
+ * @title 2-SAT
  * @see https://yukicoder.me/problems/no/274 https://yukicoder.me/submissions/340917/source
  * @see https://yukicoder.me/problems/no/470 https://yukicoder.me/submissions/383028/source
  * @see https://atcoder.jp/contests/arc069/submissions/8830581
@@ -183,6 +184,9 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 #include <algorithm>
 #line 5 "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 
+/**
+ * @title 強連結成分分解
+ */
 template <typename T>
 struct SCC{
   std::vector<int> result;
@@ -268,6 +272,7 @@ std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
 #line 8 "Mylib/Graph/two_sat.cpp"
 
 /**
+ * @title 2-SAT
  * @see https://yukicoder.me/problems/no/274 https://yukicoder.me/submissions/340917/source
  * @see https://yukicoder.me/problems/no/470 https://yukicoder.me/submissions/383028/source
  * @see https://atcoder.jp/contests/arc069/submissions/8830581

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Graph/Matching/weighted_bipartite_matching.cpp
+# :heavy_check_mark: 重み付き二部マッチング
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#65eb1c5db2b1bd726d58cf661f149e7c">Mylib/Graph/Matching</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Matching/weighted_bipartite_matching.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2429">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2429</a>
@@ -58,6 +58,7 @@ layout: default
 #include "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 
 /**
+ * @title 重み付き二部マッチング
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2429
  */
 template <typename T>
@@ -208,6 +209,7 @@ public:
 #line 5 "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
 
 /**
+ * @title 重み付き二部マッチング
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2429
  */
 template <typename T>

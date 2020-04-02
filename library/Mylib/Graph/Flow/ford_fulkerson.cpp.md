@@ -38,7 +38,7 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="../Matching/bipartite_matching.cpp.html">Mylib/Graph/Matching/bipartite_matching.cpp</a>
+* :heavy_check_mark: <a href="../Matching/bipartite_matching.cpp.html">二部マッチング</a>
 
 
 ## Verified with

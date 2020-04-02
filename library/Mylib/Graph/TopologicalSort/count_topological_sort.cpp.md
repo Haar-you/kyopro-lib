@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Graph/TopologicalSort/count_topological_sort.cpp
+# :warning: トポロジカルソートの数え上げ
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#5cfab8f1bec9f4a2c22b88bddb7720db">Mylib/Graph/TopologicalSort</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TopologicalSort/count_topological_sort.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/abc041/submissions/6549684">https://atcoder.jp/contests/abc041/submissions/6549684</a>
@@ -46,6 +46,7 @@ layout: default
 #include <vector>
 
 /**
+ * @title トポロジカルソートの数え上げ
  * @see https://atcoder.jp/contests/abc041/submissions/6549684
  * @attention 時間計算量 O(n2^n)
  */
@@ -77,6 +78,7 @@ int64_t count_topological_sort(const std::vector<int> &g){
 #include <vector>
 
 /**
+ * @title トポロジカルソートの数え上げ
  * @see https://atcoder.jp/contests/abc041/submissions/6549684
  * @attention 時間計算量 O(n2^n)
  */

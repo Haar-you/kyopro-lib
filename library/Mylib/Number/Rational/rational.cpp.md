@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Number/Rational/rational.cpp
+# :warning: 有理数クラス
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#e55110d6133c602b43ca77c4caba1f06">Mylib/Number/Rational</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Rational/rational.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 07:59:09+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
@@ -45,6 +45,9 @@ layout: default
 #include <numeric>
 #include <iostream>
 
+/**
+ * @title 有理数クラス
+ */
 class Rational{
 public:
   int64_t nume, deno;
@@ -108,6 +111,9 @@ Rational abs(const Rational &a){return Rational(abs(a.nume), abs(a.deno));}
 #include <numeric>
 #include <iostream>
 
+/**
+ * @title 有理数クラス
+ */
 class Rational{
 public:
   int64_t nume, deno;

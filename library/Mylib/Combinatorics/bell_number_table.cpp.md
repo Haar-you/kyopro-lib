@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Combinatorics/bell_number_table.cpp
+# :heavy_check_mark: Bell数の列挙
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/bell_number_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 15:31:27+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
@@ -50,6 +50,7 @@ layout: default
 #include <vector>
 
 /**
+ * @title Bell数の列挙
  * @attention time complexity O(N^2)
  */
 template <typename T>
@@ -85,6 +86,7 @@ auto bell_number_table(int n){
 #include <vector>
 
 /**
+ * @title Bell数の列挙
  * @attention time complexity O(N^2)
  */
 template <typename T>

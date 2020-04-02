@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Combinatorics/montmort_number.cpp
+# :heavy_check_mark: Montmort数
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/montmort_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 15:31:27+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/arc009/tasks/arc009_3">https://atcoder.jp/contests/arc009/tasks/arc009_3</a>
@@ -51,6 +51,7 @@ layout: default
 #include <vector>
 
 /**
+ * @title Montmort数
  * @see https://atcoder.jp/contests/arc009/tasks/arc009_3
  * @note 完全順列,撹乱順列の個数
  * @note 1..nの順列を並び変えた時にどの要素も元の要素と異なるような並び替えの総数。
@@ -80,6 +81,7 @@ auto montmort_number(int n){
 #include <vector>
 
 /**
+ * @title Montmort数
  * @see https://atcoder.jp/contests/arc009/tasks/arc009_3
  * @note 完全順列,撹乱順列の個数
  * @note 1..nの順列を並び変えた時にどの要素も元の要素と異なるような並び替えの総数。

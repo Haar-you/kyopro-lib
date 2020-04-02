@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#910a463805ae5ab8a646512f693c1fa3">test/yosupo-judge/montmort_number_mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/montmort_number_mod/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 15:31:27+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/montmort_number_mod">https://judge.yosupo.jp/problem/montmort_number_mod</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/montmort_number.cpp.html">Mylib/Combinatorics/montmort_number.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">Mylib/Number/Mint/runtime_mint.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/montmort_number.cpp.html">Montmort数</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">実行時mod指定modint</a>
 
 
 ## Code
@@ -84,6 +84,7 @@ int main(){
 #include <utility>
 
 /**
+ * @title 実行時mod指定modint
  * @attention 使用前にstatic変数Mを設定する。
  */
 class RuntimeModInt{
@@ -154,6 +155,7 @@ std::ostream& operator<<(std::ostream &os, const RuntimeModInt &a){os << a.val; 
 #include <vector>
 
 /**
+ * @title Montmort数
  * @see https://atcoder.jp/contests/arc009/tasks/arc009_3
  * @note 完全順列,撹乱順列の個数
  * @note 1..nの順列を並び変えた時にどの要素も元の要素と異なるような並び替えの総数。

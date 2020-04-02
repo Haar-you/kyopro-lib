@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp
+# :heavy_check_mark: Mod2体上の連立線形方程式
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0f2e8b5b008805076abcf42bbba8c8c1">Mylib/LinearAlgebra/SimultaneousLinearEquations</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 04:55:54+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1308">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1308</a>
@@ -55,6 +55,7 @@ layout: default
 #include <bitset>
 
 /**
+ * @title Mod2体上の連立線形方程式
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1308
  */
 namespace binary_simultaneous_linear_equations{
@@ -124,6 +125,7 @@ namespace binary_simultaneous_linear_equations{
 #include <bitset>
 
 /**
+ * @title Mod2体上の連立線形方程式
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1308
  */
 namespace binary_simultaneous_linear_equations{

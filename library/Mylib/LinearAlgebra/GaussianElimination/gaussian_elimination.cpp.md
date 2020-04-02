@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp
+# :warning: 掃き出し法
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#4efd5e2a9807175bf43e4c1857b5bc52">Mylib/LinearAlgebra/GaussianElimination</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 04:55:54+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
@@ -45,6 +45,9 @@ layout: default
 #include <vector>
 #include <utility>
 
+/**
+ * @title 掃き出し法
+ */
 template <typename T> int gaussian_elimination(std::vector<std::vector<T>> &a){
   const int h = a.size();
   const int w = a[0].size();
@@ -91,6 +94,9 @@ template <typename T> int gaussian_elimination(std::vector<std::vector<T>> &a){
 #include <vector>
 #include <utility>
 
+/**
+ * @title 掃き出し法
+ */
 template <typename T> int gaussian_elimination(std::vector<std::vector<T>> &a){
   const int h = a.size();
   const int w = a[0].size();

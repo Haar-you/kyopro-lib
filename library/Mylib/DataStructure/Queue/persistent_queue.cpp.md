@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/DataStructure/Queue/persistent_queue.cpp
+# :heavy_check_mark: 永続Queue
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6b1c73113eb1a95c1a861edccc8def0a">Mylib/DataStructure/Queue</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Queue/persistent_queue.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 08:22:27+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
@@ -50,6 +50,7 @@ layout: default
 #include <array>
 
 /**
+ * @title 永続Queue
  * @attention time complexity of push(value) and pop() : O(MAX_SIZE_2)
  */
 template <typename T>
@@ -139,6 +140,7 @@ public:
 #include <array>
 
 /**
+ * @title 永続Queue
  * @attention time complexity of push(value) and pop() : O(MAX_SIZE_2)
  */
 template <typename T>

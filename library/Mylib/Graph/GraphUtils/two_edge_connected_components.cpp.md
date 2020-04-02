@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Graph/GraphUtils/two_edge_connected_components.cpp
+# :x: 二重辺連結成分分解
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0520734517f09caa086d1aa01fa4b9e4">Mylib/Graph/GraphUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/GraphUtils/two_edge_connected_components.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="../graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/two_edge_connected_components/main.test.cpp.html">test/yosupo-judge/two_edge_connected_components/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/two_edge_connected_components/main.test.cpp.html">test/yosupo-judge/two_edge_connected_components/main.test.cpp</a>
 
 
 ## Code
@@ -56,6 +56,9 @@ layout: default
 #include <stack>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title 二重辺連結成分分解
+ */
 template <typename T>
 auto two_edge_connected_components(const Graph<T> &graph){
   const int n = graph.size();
@@ -154,6 +157,9 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 }
 #line 5 "Mylib/Graph/GraphUtils/two_edge_connected_components.cpp"
 
+/**
+ * @title 二重辺連結成分分解
+ */
 template <typename T>
 auto two_edge_connected_components(const Graph<T> &graph){
   const int n = graph.size();

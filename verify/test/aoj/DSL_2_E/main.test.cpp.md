@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#5d35c06ff9ff8df734499811915aeac0">test/aoj/DSL_2_E</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_E/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 06:18:07+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp.html">Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp.html">双対セグメント木</a>
 
 
 ## Code
@@ -87,6 +87,9 @@ int main(){
 #line 2 "Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp"
 #include <vector>
 
+/**
+ * @title 双対セグメント木
+ */
 template <typename Monoid>
 class DualSegmentTree{
   using value_type = typename Monoid::value_type;

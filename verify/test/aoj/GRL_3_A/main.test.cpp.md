@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#aef3de7eebed1830b43d31dc4a561484">test/aoj/GRL_3_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_3_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A&lang=ja">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A&lang=ja</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/GraphUtils/articulation_points.cpp.html">Mylib/Graph/GraphUtils/articulation_points.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/GraphUtils/articulation_points.cpp.html">間接点列挙</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
 
 
 ## Code
@@ -116,6 +116,9 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 #include <algorithm>
 #line 5 "Mylib/Graph/GraphUtils/articulation_points.cpp"
 
+/**
+ * @title 間接点列挙
+ */
 template <typename T> std::vector<int> articulation_points(const Graph<T> &graph){
   int n = graph.size();
   std::vector<int> visit(n, -1), low(n, -1), ret;

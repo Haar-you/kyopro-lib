@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/DataStructure/SegmentTree/Dynamic/dynamic_dual_segment_tree.cpp
+# :warning: 動的双対セグメント木
 
 <a href="../../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../../index.html#8db11aac103ae486542368bc2b65dfc8">Mylib/DataStructure/SegmentTree/Dynamic</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/Dynamic/dynamic_dual_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 09:03:11+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
@@ -44,6 +44,9 @@ layout: default
 #pragma once
 #include <unordered_map>
 
+/**
+ * @title 動的双対セグメント木
+ */
 template <typename Monoid>
 class DynamicDualSegmentTree{
   using value_type = typename Monoid::value_type;
@@ -125,6 +128,9 @@ public:
 #line 2 "Mylib/DataStructure/SegmentTree/Dynamic/dynamic_dual_segment_tree.cpp"
 #include <unordered_map>
 
+/**
+ * @title 動的双対セグメント木
+ */
 template <typename Monoid>
 class DynamicDualSegmentTree{
   using value_type = typename Monoid::value_type;

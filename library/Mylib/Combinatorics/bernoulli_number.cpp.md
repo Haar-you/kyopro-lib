@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Combinatorics/bernoulli_number.cpp
+# :warning: Bernoulli数
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/bernoulli_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 15:31:27+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="combinatorics.cpp.html">Mylib/Combinatorics/combinatorics.cpp</a>
+* :heavy_check_mark: <a href="combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
 
 
 ## Code
@@ -51,6 +51,7 @@ layout: default
 #include "Mylib/Combinatorics/combinatorics.cpp"
 
 /**
+ * @title Bernoulli数
  * @attention O(n^2 logn)
  */
 template <typename T>
@@ -82,6 +83,7 @@ auto Combinatorics<T>::bernoulli_number(int64_t n){
 #include <cassert>
 
 /**
+ * @title 組み合わせ計算用の前計算クラス
  * @attention 使用前にinit関数を呼び出す
  */
 template <typename T> class Combinatorics{
@@ -143,6 +145,7 @@ template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
 #line 4 "Mylib/Combinatorics/bernoulli_number.cpp"
 
 /**
+ * @title Bernoulli数
  * @attention O(n^2 logn)
  */
 template <typename T>

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#806a528feab938cddc13c96a5d63d020">test/aoj/GRL_7_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_7_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_7_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_7_A</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Mylib/Graph/Flow/ford_fulkerson.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/bipartite_matching.cpp.html">Mylib/Graph/Matching/bipartite_matching.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/bipartite_matching.cpp.html">二部マッチング</a>
 
 
 ## Code
@@ -155,6 +155,9 @@ public:
 };
 #line 7 "Mylib/Graph/Matching/bipartite_matching.cpp"
 
+/**
+ * @title 二部マッチング
+ */
 class BipartiteMatching{
   int x, y;
   FordFulkerson<int, INT_MAX> f;

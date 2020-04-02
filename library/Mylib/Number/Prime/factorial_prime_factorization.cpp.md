@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Number/Prime/factorial_prime_factorization.cpp
+# :warning: a!の素因数pの個数
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/factorial_prime_factorization.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 07:59:09+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="https://codeforces.com/contest/1228/submission/62232341">https://codeforces.com/contest/1228/submission/62232341</a>
@@ -45,8 +45,8 @@ layout: default
 #pragma once
 
 /**
+ * @title a!の素因数pの個数
  * @see https://codeforces.com/contest/1228/submission/62232341
- * @note a!に素因数pが幾つ含まれるか?
  */
 int64_t factorial_prime_factorization(int64_t a, int64_t p){
   int64_t ret = 0, q = p;
@@ -73,8 +73,8 @@ int64_t factorial_prime_factorization(int64_t a, int64_t p){
 #line 2 "Mylib/Number/Prime/factorial_prime_factorization.cpp"
 
 /**
+ * @title a!の素因数pの個数
  * @see https://codeforces.com/contest/1228/submission/62232341
- * @note a!に素因数pが幾つ含まれるか?
  */
 int64_t factorial_prime_factorization(int64_t a, int64_t p){
   int64_t ret = 0, q = p;

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Number/Prime/is_prime.cpp
+# :warning: 試し割り素数判定
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/is_prime.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 07:59:09+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
@@ -43,6 +43,9 @@ layout: default
 ```cpp
 #pragma once
 
+/**
+ * @title 試し割り素数判定
+ */
 bool is_prime(int n){
   if(n <= 1) return false;
   for(int i = 2; i * i <= n; ++i){
@@ -59,6 +62,9 @@ bool is_prime(int n){
 ```cpp
 #line 2 "Mylib/Number/Prime/is_prime.cpp"
 
+/**
+ * @title 試し割り素数判定
+ */
 bool is_prime(int n){
   if(n <= 1) return false;
   for(int i = 2; i * i <= n; ++i){

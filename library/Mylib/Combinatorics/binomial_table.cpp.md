@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Combinatorics/binomial_table.cpp
+# :warning: 二項係数の列挙
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/binomial_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 15:31:27+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
@@ -45,6 +45,7 @@ layout: default
 #include <vector>
 
 /**
+ * @title 二項係数の列挙
  * @note 除算を行わないので、MODが素数である必要がない。
  */
 template <typename T>
@@ -73,6 +74,7 @@ auto binomial_pascal(int n, int k){
 #include <vector>
 
 /**
+ * @title 二項係数の列挙
  * @note 除算を行わないので、MODが素数である必要がない。
  */
 template <typename T>

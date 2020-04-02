@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#9a3b4a53b7b2b8e6ef2197e51a686fad">test/aoj/ALDS1_5_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_5_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/inverse_number.cpp.html">Mylib/Misc/inverse_number.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/inverse_number.cpp.html">転倒数</a>
 
 
 ## Code
@@ -79,6 +79,9 @@ int main(){
 #include <functional>
 #line 3 "Mylib/Misc/inverse_number.cpp"
 
+/**
+ * @title 転倒数
+ */
 namespace inverse_number{
   template <typename T, typename Compare>
   int64_t rec(std::vector<T> &a, const Compare &compare){

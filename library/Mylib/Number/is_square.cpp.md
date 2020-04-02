@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Number/is_square.cpp
+# :warning: 平方数判定
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/is_square.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 07:59:09+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
@@ -43,6 +43,9 @@ layout: default
 ```cpp
 #pragma once
 
+/**
+ * @title 平方数判定
+ */
 template <typename T> bool is_square(T n){T rt = sqrt(n); return rt * rt == n;}
 
 ```
@@ -53,6 +56,9 @@ template <typename T> bool is_square(T n){T rt = sqrt(n); return rt * rt == n;}
 ```cpp
 #line 2 "Mylib/Number/is_square.cpp"
 
+/**
+ * @title 平方数判定
+ */
 template <typename T> bool is_square(T n){T rt = sqrt(n); return rt * rt == n;}
 
 ```

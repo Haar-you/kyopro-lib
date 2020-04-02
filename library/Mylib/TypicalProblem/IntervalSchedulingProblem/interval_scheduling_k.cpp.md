@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp
+# :warning: 重複要素をk個まで許容する区間スケジューリング問題
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a1062884f064c2b3be412505b6627108">Mylib/TypicalProblem/IntervalSchedulingProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
@@ -48,6 +48,9 @@ layout: default
 #include <algorithm>
 #include <utility>
 
+/**
+ * @title 重複要素をk個まで許容する区間スケジューリング問題
+ */
 std::vector<std::pair<int,int>> interval_scheduling_k(std::vector<std::pair<int,int>> s, int k){
   std::sort(s.begin(), s.end(), [](const auto &a, const auto &b){
                              return a.second == b.second ? a.first < b.first : a.second < b.second;
@@ -86,6 +89,9 @@ std::vector<std::pair<int,int>> interval_scheduling_k(std::vector<std::pair<int,
 #include <algorithm>
 #include <utility>
 
+/**
+ * @title 重複要素をk個まで許容する区間スケジューリング問題
+ */
 std::vector<std::pair<int,int>> interval_scheduling_k(std::vector<std::pair<int,int>> s, int k){
   std::sort(s.begin(), s.end(), [](const auto &a, const auto &b){
                              return a.second == b.second ? a.first < b.first : a.second < b.second;

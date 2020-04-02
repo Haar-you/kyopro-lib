@@ -39,7 +39,7 @@ layout: default
 ## Required by
 
 * :heavy_check_mark: <a href="../../Convolution/ntt_convolution.cpp.html">Mylib/Convolution/ntt_convolution.cpp</a>
-* :warning: <a href="../../Graph/Coloring/chromatic_number.cpp.html">Mylib/Graph/Coloring/chromatic_number.cpp</a>
+* :warning: <a href="../../Graph/Coloring/chromatic_number.cpp.html">グラフ頂点彩色数</a>
 * :heavy_check_mark: <a href="mod_log.cpp.html">Mylib/Number/Mod/mod_log.cpp</a>
 * :heavy_check_mark: <a href="mod_sqrt.cpp.html">Mylib/Number/Mod/mod_sqrt.cpp</a>
 

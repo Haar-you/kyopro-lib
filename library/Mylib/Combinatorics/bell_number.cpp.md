@@ -25,21 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Combinatorics/bell_number.cpp
+# :heavy_check_mark: Bell数
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/bell_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 15:31:27+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="combinatorics.cpp.html">Mylib/Combinatorics/combinatorics.cpp</a>
-* :heavy_check_mark: <a href="stirling_number.cpp.html">Mylib/Combinatorics/stirling_number.cpp</a>
+* :heavy_check_mark: <a href="combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
+* :heavy_check_mark: <a href="stirling_number.cpp.html">第2種Stirling数</a>
 
 
 ## Verified with
@@ -59,6 +59,7 @@ layout: default
 #include "Mylib/Combinatorics/stirling_number.cpp"
 
 /**
+ * @title Bell数
  * @note n個の区別するボールをk個の区別しない箱に分配するような方法の総数。
  * @attention O(min(k, n) log n)
  */
@@ -96,6 +97,7 @@ T Combinatorics<T>::bell_number(int64_t n, int64_t k){
 #include <cassert>
 
 /**
+ * @title 組み合わせ計算用の前計算クラス
  * @attention 使用前にinit関数を呼び出す
  */
 template <typename T> class Combinatorics{
@@ -157,6 +159,7 @@ template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
 #line 3 "Mylib/Combinatorics/stirling_number.cpp"
 
 /**
+ * @title 第2種Stirling数
  * @note n個の区別するボールをk個の区別しない箱に分配する(但し、すべての箱には1つ以上のボールがある)ような方法の総数。
  * @attention O(k log n)
  */
@@ -175,6 +178,7 @@ T Combinatorics<T>::stirling_number(int64_t n, int64_t k){
 #line 6 "Mylib/Combinatorics/bell_number.cpp"
 
 /**
+ * @title Bell数
  * @note n個の区別するボールをk個の区別しない箱に分配するような方法の総数。
  * @attention O(min(k, n) log n)
  */

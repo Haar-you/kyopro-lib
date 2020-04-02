@@ -25,23 +25,23 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Combinatorics/combinatorics.cpp
+# :heavy_check_mark: 組み合わせ計算用の前計算クラス
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/combinatorics.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 15:31:27+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="bell_number.cpp.html">Mylib/Combinatorics/bell_number.cpp</a>
-* :warning: <a href="bernoulli_number.cpp.html">Mylib/Combinatorics/bernoulli_number.cpp</a>
-* :warning: <a href="catalan_number.cpp.html">Mylib/Combinatorics/catalan_number.cpp</a>
-* :heavy_check_mark: <a href="stirling_number.cpp.html">Mylib/Combinatorics/stirling_number.cpp</a>
+* :heavy_check_mark: <a href="bell_number.cpp.html">Bell数</a>
+* :warning: <a href="bernoulli_number.cpp.html">Bernoulli数</a>
+* :warning: <a href="catalan_number.cpp.html">Catalan数</a>
+* :heavy_check_mark: <a href="stirling_number.cpp.html">第2種Stirling数</a>
 
 
 ## Verified with
@@ -60,6 +60,7 @@ layout: default
 #include <cassert>
 
 /**
+ * @title 組み合わせ計算用の前計算クラス
  * @attention 使用前にinit関数を呼び出す
  */
 template <typename T> class Combinatorics{
@@ -130,6 +131,7 @@ template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
 #include <cassert>
 
 /**
+ * @title 組み合わせ計算用の前計算クラス
  * @attention 使用前にinit関数を呼び出す
  */
 template <typename T> class Combinatorics{

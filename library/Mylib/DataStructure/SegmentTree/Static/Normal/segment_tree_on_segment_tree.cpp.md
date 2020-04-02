@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_on_segment_tree.cpp
+# :warning: セグメント木にセグメント木を乗せる
 
 <a href="../../../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../../../index.html#dd4a4f8515bcc75e971952e726133342">Mylib/DataStructure/SegmentTree/Static/Normal</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_on_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 09:03:11+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
@@ -45,6 +45,9 @@ layout: default
 #include <vector>
 #include <algorithm>
 
+/**
+ * @title セグメント木にセグメント木を乗せる
+ */
 template <typename Monoid>
 class SegmentTree2D{
   using value_type = typename Monoid::value_type;
@@ -155,6 +158,9 @@ public:
 #include <vector>
 #include <algorithm>
 
+/**
+ * @title セグメント木にセグメント木を乗せる
+ */
 template <typename Monoid>
 class SegmentTree2D{
   using value_type = typename Monoid::value_type;

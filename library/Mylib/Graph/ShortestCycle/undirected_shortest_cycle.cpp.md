@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Graph/ShortestCycle/undirected_shortest_cycle.cpp
+# :warning: 無向グラフの最小閉路
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ac2a729ce4878019d16697115af3ef73">Mylib/Graph/ShortestCycle</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestCycle/undirected_shortest_cycle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="https://codeforces.com/contest/1325/submission/74308951">https://codeforces.com/contest/1325/submission/74308951</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="../graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
 
 
 ## Code
@@ -54,6 +54,7 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
+ * @title 無向グラフの最小閉路
  * @see https://codeforces.com/contest/1325/submission/74308951
  * @note src始点の最小閉路を検出する。
  * @attention time complexity O(E)
@@ -144,6 +145,7 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 #line 6 "Mylib/Graph/ShortestCycle/undirected_shortest_cycle.cpp"
 
 /**
+ * @title 無向グラフの最小閉路
  * @see https://codeforces.com/contest/1325/submission/74308951
  * @note src始点の最小閉路を検出する。
  * @attention time complexity O(E)

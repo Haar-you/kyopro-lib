@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/two_sat/main.test.cpp
+# :x: test/yosupo-judge/two_sat/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#e93cc7e7edd1deb522641737d913fca6">test/yosupo-judge/two_sat</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/two_sat/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 09:18:14+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/two_sat">https://judge.yosupo.jp/problem/two_sat</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">Mylib/Graph/GraphUtils/strongly_connected_components.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">Mylib/Graph/TopologicalSort/topological_sort.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/two_sat.cpp.html">Mylib/Graph/two_sat.cpp</a>
+* :question: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
+* :x: <a href="../../../../library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">Mylib/Graph/TopologicalSort/topological_sort.cpp</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :x: <a href="../../../../library/Mylib/Graph/two_sat.cpp.html">2-SAT</a>
 
 
 ## Code
@@ -133,6 +133,9 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 #include <algorithm>
 #line 5 "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 
+/**
+ * @title 強連結成分分解
+ */
 template <typename T>
 struct SCC{
   std::vector<int> result;
@@ -218,6 +221,7 @@ std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
 #line 8 "Mylib/Graph/two_sat.cpp"
 
 /**
+ * @title 2-SAT
  * @see https://yukicoder.me/problems/no/274 https://yukicoder.me/submissions/340917/source
  * @see https://yukicoder.me/problems/no/470 https://yukicoder.me/submissions/383028/source
  * @see https://atcoder.jp/contests/arc069/submissions/8830581

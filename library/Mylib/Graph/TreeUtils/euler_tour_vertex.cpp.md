@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Graph/TreeUtils/euler_tour_vertex.cpp
+# :x: 頂点Euler tour
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/euler_tour_vertex.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="../graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
 
 
 ## Code
@@ -55,6 +55,9 @@ layout: default
 #include <vector>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title 頂点Euler tour
+ */
 template <typename T> class EulerTourVertex{
   int pos = 0;
   std::vector<int> begin, end;
@@ -126,6 +129,9 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 }
 #line 4 "Mylib/Graph/TreeUtils/euler_tour_vertex.cpp"
 
+/**
+ * @title 頂点Euler tour
+ */
 template <typename T> class EulerTourVertex{
   int pos = 0;
   std::vector<int> begin, end;

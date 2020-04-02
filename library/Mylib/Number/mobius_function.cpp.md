@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Number/mobius_function.cpp
+# :warning: Möbius関数
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/mobius_function.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 07:59:09+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="https://codeforces.com/contest/1139/problem/D">https://codeforces.com/contest/1139/problem/D</a>
@@ -40,7 +40,7 @@ layout: default
 
 ## Depends on
 
-* :warning: <a href="Prime/eratosthenes_sieve.cpp.html">Mylib/Number/Prime/eratosthenes_sieve.cpp</a>
+* :warning: <a href="Prime/eratosthenes_sieve.cpp.html">Eratosthenesの篩</a>
 
 
 ## Code
@@ -53,6 +53,7 @@ layout: default
 #include "Mylib/Number/Prime/eratosthenes_sieve.cpp"
 
 /**
+ * @title Möbius関数
  * @see https://codeforces.com/contest/1139/problem/D
  * @see https://en.wikipedia.org/wiki/M%C3%B6bius_function
  */
@@ -88,6 +89,9 @@ std::vector<int> mobius_function(int n){
 #line 2 "Mylib/Number/Prime/eratosthenes_sieve.cpp"
 #include <bitset>
 
+/**
+ * @title Eratosthenesの篩
+ */
 namespace eratosthenes_sieve{
   constexpr int MAX = 1000000;
   std::bitset<MAX+1> is_prime;
@@ -108,6 +112,7 @@ namespace eratosthenes_sieve{
 #line 4 "Mylib/Number/mobius_function.cpp"
 
 /**
+ * @title Möbius関数
  * @see https://codeforces.com/contest/1139/problem/D
  * @see https://en.wikipedia.org/wiki/M%C3%B6bius_function
  */

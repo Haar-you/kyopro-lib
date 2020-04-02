@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Graph/Coloring/chromatic_number.cpp
+# :warning: グラフ頂点彩色数
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#acf9ec20eaed2eb3d3c1a731ebc2fbe1">Mylib/Graph/Coloring</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Coloring/chromatic_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 07:59:09+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136</a>
@@ -53,6 +53,7 @@ layout: default
 #include "Mylib/Number/Mod/mod_power.cpp"
 
 /**
+ * @title グラフ頂点彩色数
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1254
  * @attention 時間計算量 O(2^n log^2 n)
@@ -124,6 +125,7 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 #line 4 "Mylib/Graph/Coloring/chromatic_number.cpp"
 
 /**
+ * @title グラフ頂点彩色数
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1254
  * @attention 時間計算量 O(2^n log^2 n)

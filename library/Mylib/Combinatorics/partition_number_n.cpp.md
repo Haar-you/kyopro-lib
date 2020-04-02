@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Combinatorics/partition_number_n.cpp
+# :heavy_check_mark: 分割数の列挙
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/partition_number_n.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 15:31:27+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/submission/1223">https://judge.yosupo.jp/submission/1223</a>
@@ -52,6 +52,7 @@ layout: default
 #include <vector>
 
 /**
+ * @title 分割数の列挙
  * @see https://judge.yosupo.jp/submission/1223
  * @attention time-complexity O(N√N)
  */
@@ -87,6 +88,7 @@ auto partition_number(int N){
 #include <vector>
 
 /**
+ * @title 分割数の列挙
  * @see https://judge.yosupo.jp/submission/1223
  * @attention time-complexity O(N√N)
  */

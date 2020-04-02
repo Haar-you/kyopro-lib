@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Combinatorics/catalan_number.cpp
+# :warning: Catalan数
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/catalan_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 15:31:27+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="combinatorics.cpp.html">Mylib/Combinatorics/combinatorics.cpp</a>
+* :heavy_check_mark: <a href="combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
 
 
 ## Code
@@ -50,6 +50,7 @@ layout: default
 #include "Mylib/Combinatorics/combinatorics.cpp"
 
 /**
+ * @title Catalan数
  * @note c_0 = 1, c_{n+1} = ∑_{i=0}^n c_i * c_{n-i} を満たす数列の第n項。
  * @note 長さ2nの対応の取れた括弧列の総数はc_n通り。
  */
@@ -68,6 +69,7 @@ template <typename T> T Combinatorics<T>::catalan_number(int64_t n){
 #include <cassert>
 
 /**
+ * @title 組み合わせ計算用の前計算クラス
  * @attention 使用前にinit関数を呼び出す
  */
 template <typename T> class Combinatorics{
@@ -129,6 +131,7 @@ template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
 #line 3 "Mylib/Combinatorics/catalan_number.cpp"
 
 /**
+ * @title Catalan数
  * @note c_0 = 1, c_{n+1} = ∑_{i=0}^n c_i * c_{n-i} を満たす数列の第n項。
  * @note 長さ2nの対応の取れた括弧列の総数はc_n通り。
  */

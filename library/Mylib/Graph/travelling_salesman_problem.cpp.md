@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Graph/travelling_salesman_problem.cpp
+# :heavy_check_mark: 巡回セールスマン問題
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/travelling_salesman_problem.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
+* :question: <a href="graph_template.cpp.html">Mylib/Graph/graph_template.cpp</a>
 
 
 ## Verified with
@@ -59,6 +59,7 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
+ * @title 巡回セールスマン問題
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A
  * @attention 時間計算量 O(n^2 2^n)
  */
@@ -140,6 +141,7 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 #line 6 "Mylib/Graph/travelling_salesman_problem.cpp"
 
 /**
+ * @title 巡回セールスマン問題
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A
  * @attention 時間計算量 O(n^2 2^n)
  */

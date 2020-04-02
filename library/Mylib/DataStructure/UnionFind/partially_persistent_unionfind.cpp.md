@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 部分永続Unionfind <small>(Mylib/DataStructure/UnionFind/partially_persistent_unionfind.cpp)</small>
+# :warning: 部分永続Unionfind
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3ff74e8366c88d06b530f361450b1117">Mylib/DataStructure/UnionFind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/UnionFind/partially_persistent_unionfind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 06:18:07+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/code-thanks-festival-2017-open/submissions/7720761">https://atcoder.jp/contests/code-thanks-festival-2017-open/submissions/7720761</a>
@@ -51,7 +51,7 @@ layout: default
 #include <numeric>
 
 /**
- * @brief 部分永続Unionfind
+ * @title 部分永続Unionfind
  * @see https://atcoder.jp/contests/code-thanks-festival-2017-open/submissions/7720761
  * @see https://atcoder.jp/contests/agc002/submissions/7720745
  */
@@ -122,7 +122,7 @@ public:
 #include <numeric>
 
 /**
- * @brief 部分永続Unionfind
+ * @title 部分永続Unionfind
  * @see https://atcoder.jp/contests/code-thanks-festival-2017-open/submissions/7720761
  * @see https://atcoder.jp/contests/agc002/submissions/7720745
  */

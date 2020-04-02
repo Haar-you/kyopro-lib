@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_both_foldable.cpp
+# :x: 双方向のセグメント木
 
 <a href="../../../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../../../index.html#dd4a4f8515bcc75e971952e726133342">Mylib/DataStructure/SegmentTree/Static/Normal</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_both_foldable.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 09:03:11+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
 
 
 ## Code
@@ -49,6 +49,9 @@ layout: default
 #pragma once
 #include <vector>
 
+/**
+ * @title 双方向のセグメント木
+ */
 template <typename Monoid>
 class SegmentTreeBothFoldable{
   using value_type = typename Monoid::value_type;
@@ -137,6 +140,9 @@ public:
 #line 2 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_both_foldable.cpp"
 #include <vector>
 
+/**
+ * @title 双方向のセグメント木
+ */
 template <typename Monoid>
 class SegmentTreeBothFoldable{
   using value_type = typename Monoid::value_type;

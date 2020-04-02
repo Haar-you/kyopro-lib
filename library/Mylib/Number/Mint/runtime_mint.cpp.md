@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Number/Mint/runtime_mint.cpp
+# :heavy_check_mark: 実行時mod指定modint
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ed8374f4a8b62e2301eb75f9564224fe">Mylib/Number/Mint</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mint/runtime_mint.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 11:59:58+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
@@ -52,6 +52,7 @@ layout: default
 #include <utility>
 
 /**
+ * @title 実行時mod指定modint
  * @attention 使用前にstatic変数Mを設定する。
  */
 class RuntimeModInt{
@@ -130,6 +131,7 @@ std::ostream& operator<<(std::ostream &os, const RuntimeModInt &a){os << a.val; 
 #include <utility>
 
 /**
+ * @title 実行時mod指定modint
  * @attention 使用前にstatic変数Mを設定する。
  */
 class RuntimeModInt{

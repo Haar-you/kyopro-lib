@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp
+# :heavy_check_mark: 双対セグメント木
 
 <a href="../../../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../../../index.html#ca42c2f4d81b13ae1e33bd4dfd939e89">Mylib/DataStructure/SegmentTree/Static/Dual</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 06:18:07+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
@@ -50,6 +50,9 @@ layout: default
 #pragma once
 #include <vector>
 
+/**
+ * @title 双対セグメント木
+ */
 template <typename Monoid>
 class DualSegmentTree{
   using value_type = typename Monoid::value_type;
@@ -123,6 +126,9 @@ public:
 #line 2 "Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp"
 #include <vector>
 
+/**
+ * @title 双対セグメント木
+ */
 template <typename Monoid>
 class DualSegmentTree{
   using value_type = typename Monoid::value_type;

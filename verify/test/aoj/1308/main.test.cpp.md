@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#91fd4443c2280843651bf249ceada703">test/aoj/1308</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1308/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 04:55:54+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1308">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1308</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp.html">Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp.html">Mod2体上の連立線形方程式</a>
 
 
 ## Code
@@ -121,6 +121,7 @@ int main(){
 #line 6 "Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp"
 
 /**
+ * @title Mod2体上の連立線形方程式
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1308
  */
 namespace binary_simultaneous_linear_equations{

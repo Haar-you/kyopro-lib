@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Number/Prime/count_coprime.cpp
+# :warning: \[1,n\]を満たす自然数でmと互いに素であるものの個数
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/count_coprime.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 07:59:09+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
@@ -44,7 +44,7 @@ layout: default
 #pragma once
 
 /**
- * @note [1,n]を満たす自然数でmと互いに素であるものの個数
+ * @title [1,n]を満たす自然数でmと互いに素であるものの個数
  */
 int64_t count_coprime(int64_t n, int64_t m){
   const auto p = prime_factorize(m);
@@ -75,7 +75,7 @@ int64_t count_coprime(int64_t n, int64_t m){
 #line 2 "Mylib/Number/Prime/count_coprime.cpp"
 
 /**
- * @note [1,n]を満たす自然数でmと互いに素であるものの個数
+ * @title [1,n]を満たす自然数でmと互いに素であるものの個数
  */
 int64_t count_coprime(int64_t n, int64_t m){
   const auto p = prime_factorize(m);

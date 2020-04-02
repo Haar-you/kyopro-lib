@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Misc/inverse_number.cpp
+# :heavy_check_mark: 転倒数
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/inverse_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-02 16:54:34+09:00
 
 
 
@@ -49,6 +49,9 @@ layout: default
 #pragma once
 #include <vector>
 
+/**
+ * @title 転倒数
+ */
 namespace inverse_number{
   template <typename T, typename Compare>
   int64_t rec(std::vector<T> &a, const Compare &compare){
@@ -95,6 +98,9 @@ namespace inverse_number{
 #line 2 "Mylib/Misc/inverse_number.cpp"
 #include <vector>
 
+/**
+ * @title 転倒数
+ */
 namespace inverse_number{
   template <typename T, typename Compare>
   int64_t rec(std::vector<T> &a, const Compare &compare){
