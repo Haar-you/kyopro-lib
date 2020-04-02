@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @title サイコロ
+ */
 struct Dice{
   int top, bottom, left, right, front, back;
 

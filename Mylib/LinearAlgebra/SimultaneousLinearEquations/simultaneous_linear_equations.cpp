@@ -3,6 +3,9 @@
 #include <optional>
 #include <utility>
 
+/**
+ * @title 連立線形方程式
+ */
 namespace simulaneous_linear_equations{
   template <typename T>
   struct Result{

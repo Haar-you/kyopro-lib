@@ -2,6 +2,7 @@
 #include <vector>
 
 /**
+ * @title 最大独立集合
  * @see https://code-thanks-festival-2017-open.contest.atcoder.jp/submissions/4071345
  * @see https://codeforces.com/contest/1105/submission/48777508
  * @see https://judge.yosupo.jp/submission/1229

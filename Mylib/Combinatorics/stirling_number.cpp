@@ -2,6 +2,7 @@
 #include "Mylib/Combinatorics/combinatorics.cpp"
 
 /**
+ * @title 第2種Stirling数
  * @note n個の区別するボールをk個の区別しない箱に分配する(但し、すべての箱には1つ以上のボールがある)ような方法の総数。
  * @attention O(k log n)
  */

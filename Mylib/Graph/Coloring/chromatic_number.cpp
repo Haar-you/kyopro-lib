@@ -3,6 +3,7 @@
 #include "Mylib/Number/Mod/mod_power.cpp"
 
 /**
+ * @title グラフ頂点彩色数
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1254
  * @attention 時間計算量 O(2^n log^2 n)

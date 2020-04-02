@@ -3,6 +3,9 @@
 #include <algorithm>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title 強連結成分分解
+ */
 template <typename T>
 struct SCC{
   std::vector<int> result;

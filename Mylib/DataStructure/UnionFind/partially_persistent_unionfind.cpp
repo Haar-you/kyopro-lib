@@ -6,7 +6,7 @@
 #include <numeric>
 
 /**
- * @brief 部分永続Unionfind
+ * @title 部分永続Unionfind
  * @see https://atcoder.jp/contests/code-thanks-festival-2017-open/submissions/7720761
  * @see https://atcoder.jp/contests/agc002/submissions/7720745
  */

@@ -2,6 +2,9 @@
 #include <vector>
 #include <utility>
 
+/**
+ * @title 素因数分解
+ */
 auto prime_factorize(int64_t n){
   std::vector<std::pair<int64_t,int64_t>> ret;
   for(int64_t i = 2LL; i * i <= n; ++i){

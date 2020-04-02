@@ -3,6 +3,9 @@
 #include <functional>
 #include <cassert>
 
+/**
+ * @title 二次元累積和
+ */
 template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
 class CumulativeSum2D{
   std::vector<std::vector<T>> data;

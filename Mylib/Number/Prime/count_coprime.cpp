@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @note [1,n]を満たす自然数でmと互いに素であるものの個数
+ * @title [1,n]を満たす自然数でmと互いに素であるものの個数
  */
 int64_t count_coprime(int64_t n, int64_t m){
   const auto p = prime_factorize(m);

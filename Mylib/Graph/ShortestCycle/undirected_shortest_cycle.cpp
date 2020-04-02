@@ -5,6 +5,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
+ * @title 無向グラフの最小閉路
  * @see https://codeforces.com/contest/1325/submission/74308951
  * @note src始点の最小閉路を検出する。
  * @attention time complexity O(E)

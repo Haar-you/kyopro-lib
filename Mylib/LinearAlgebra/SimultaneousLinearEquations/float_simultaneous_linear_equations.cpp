@@ -3,6 +3,9 @@
 #include <optional>
 #include <utility>
 
+/**
+ * @title 浮動小数点数での連立線形方程式
+ */
 namespace float_simultaneous_linear_equations{
   template <typename T>
   struct Result{

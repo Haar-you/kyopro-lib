@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @title 永続Stack
+ */
 template <typename T> struct PersistentStack{
 protected:
   struct node{

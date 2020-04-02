@@ -5,6 +5,7 @@
 #include "Mylib/Combinatorics/stirling_number.cpp"
 
 /**
+ * @title Bell数
  * @note n個の区別するボールをk個の区別しない箱に分配するような方法の総数。
  * @attention O(min(k, n) log n)
  */

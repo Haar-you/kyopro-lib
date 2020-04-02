@@ -2,6 +2,7 @@
 #include <vector>
 
 /**
+ * @title 2Dセグメント木
  * @see https://codeforces.com/contest/1301/submission/71853921
  */
 template <typename Monoid> class SegmentTree2D{

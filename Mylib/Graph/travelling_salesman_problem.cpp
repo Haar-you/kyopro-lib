@@ -5,6 +5,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
+ * @title 巡回セールスマン問題
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A
  * @attention 時間計算量 O(n^2 2^n)
  */

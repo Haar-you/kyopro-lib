@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 
+/**
+ * @title 転倒数
+ */
 namespace inverse_number{
   template <typename T, typename Compare>
   int64_t rec(std::vector<T> &a, const Compare &compare){

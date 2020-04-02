@@ -5,6 +5,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
+ * @title 有向Euler路
  * @see https://codeforces.com/contest/508/submission/60462378
  */
 class DirectedEulerianPath{

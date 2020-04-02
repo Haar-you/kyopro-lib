@@ -3,6 +3,7 @@
 #include "Mylib/Combinatorics/combinatorics.cpp"
 
 /**
+ * @title Bernoulli数
  * @attention O(n^2 logn)
  */
 template <typename T>

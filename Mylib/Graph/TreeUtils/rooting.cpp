@@ -1,6 +1,9 @@
 #pragma once
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title 根付き木
+ */
 template <typename T>
 void rooting(Tree<T> &tree, int cur, int par = -1){
   if(par != -1){

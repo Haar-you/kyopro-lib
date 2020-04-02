@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 
+/**
+ * @title 進数変換
+ */
 std::vector<int64_t> convert_base_to(int64_t val, int64_t base){
   if(val == 0) return {0};
 

@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 
+/**
+ * @title 双対セグメント木
+ */
 template <typename Monoid>
 class DualSegmentTree{
   using value_type = typename Monoid::value_type;

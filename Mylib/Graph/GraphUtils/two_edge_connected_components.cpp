@@ -3,6 +3,9 @@
 #include <stack>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title 二重辺連結成分分解
+ */
 template <typename T>
 auto two_edge_connected_components(const Graph<T> &graph){
   const int n = graph.size();

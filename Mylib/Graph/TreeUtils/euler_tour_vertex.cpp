@@ -2,6 +2,9 @@
 #include <vector>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title 頂点Euler tour
+ */
 template <typename T> class EulerTourVertex{
   int pos = 0;
   std::vector<int> begin, end;

@@ -3,6 +3,7 @@
 #include "Mylib/Number/Prime/eratosthenes_sieve.cpp"
 
 /**
+ * @title Möbius関数
  * @see https://codeforces.com/contest/1139/problem/D
  * @see https://en.wikipedia.org/wiki/M%C3%B6bius_function
  */

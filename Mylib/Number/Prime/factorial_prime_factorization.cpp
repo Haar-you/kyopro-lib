@@ -1,8 +1,8 @@
 #pragma once
 
 /**
+ * @title a!の素因数pの個数
  * @see https://codeforces.com/contest/1228/submission/62232341
- * @note a!に素因数pが幾つ含まれるか?
  */
 int64_t factorial_prime_factorization(int64_t a, int64_t p){
   int64_t ret = 0, q = p;

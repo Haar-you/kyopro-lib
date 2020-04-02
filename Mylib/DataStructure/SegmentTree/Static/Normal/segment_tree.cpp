@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 
+/**
+ * @title セグメント木
+ */
 template <typename Monoid>
 class SegmentTree{
   using value_type = typename Monoid::value_type;

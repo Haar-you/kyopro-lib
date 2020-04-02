@@ -5,6 +5,9 @@
 #include <cassert>
 #include "Mylib/Graph/Flow/ford_fulkerson.cpp"
 
+/**
+ * @title 二部マッチング
+ */
 class BipartiteMatching{
   int x, y;
   FordFulkerson<int, INT_MAX> f;

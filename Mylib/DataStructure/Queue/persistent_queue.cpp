@@ -2,6 +2,7 @@
 #include <array>
 
 /**
+ * @title 永続Queue
  * @attention time complexity of push(value) and pop() : O(MAX_SIZE_2)
  */
 template <typename T>

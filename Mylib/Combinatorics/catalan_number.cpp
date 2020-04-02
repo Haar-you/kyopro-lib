@@ -2,6 +2,7 @@
 #include "Mylib/Combinatorics/combinatorics.cpp"
 
 /**
+ * @title Catalan数
  * @note c_0 = 1, c_{n+1} = ∑_{i=0}^n c_i * c_{n-i} を満たす数列の第n項。
  * @note 長さ2nの対応の取れた括弧列の総数はc_n通り。
  */

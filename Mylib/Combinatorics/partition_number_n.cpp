@@ -3,6 +3,7 @@
 #include <vector>
 
 /**
+ * @title 分割数の列挙
  * @see https://judge.yosupo.jp/submission/1223
  * @attention time-complexity O(N√N)
  */

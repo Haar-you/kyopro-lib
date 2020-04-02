@@ -2,6 +2,9 @@
 #include <vector>
 #include <algorithm>
 
+/**
+ * @title 約数列挙
+ */
 std::vector<std::int64_t> divisor_list(std::int64_t n){
   std::vector<std::int64_t> temp, ret;
 

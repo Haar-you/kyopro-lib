@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 
+/**
+ * @title 双方向のセグメント木
+ */
 template <typename Monoid>
 class SegmentTreeBothFoldable{
   using value_type = typename Monoid::value_type;

@@ -2,6 +2,9 @@
 #include <vector>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title 重心列挙
+ */
 template <typename T>
 class Centroid{
 public:

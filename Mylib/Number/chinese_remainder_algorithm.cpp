@@ -3,6 +3,9 @@
 #include <tuple>
 #include "Mylib/Number/extended_gcd.cpp"
 
+/**
+ * @title 中国剰余定理
+ */
 bool CRA(int64_t b1, int64_t m1, int64_t b2, int64_t m2, int64_t &r, int64_t &m){
   int64_t p,q,d;
   std::tie(d,p,q) = extGCD(m1,m2);

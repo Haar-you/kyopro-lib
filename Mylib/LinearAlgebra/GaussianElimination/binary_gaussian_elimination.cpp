@@ -4,6 +4,7 @@
 #include <utility>
 
 /**
+ * @title Mod2体上での掃き出し法
  * @see https://atcoder.jp/contests/bitflyer2018-final-open/tasks/bitflyer2018_final_d
  * @see https://csacademy.com/contest/archive/task/xor-closure/
  */

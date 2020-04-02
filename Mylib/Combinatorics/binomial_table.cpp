@@ -2,6 +2,7 @@
 #include <vector>
 
 /**
+ * @title 二項係数の列挙
  * @note 除算を行わないので、MODが素数である必要がない。
  */
 template <typename T>

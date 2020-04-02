@@ -2,6 +2,9 @@
 #include <vector>
 #include <algorithm>
 
+/**
+ * @title セグメント木にセグメント木を乗せる
+ */
 template <typename Monoid>
 class SegmentTree2D{
   using value_type = typename Monoid::value_type;

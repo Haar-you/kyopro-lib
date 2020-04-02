@@ -6,6 +6,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
+ * @title 有向グラフの最小閉路
  * @see https://atcoder.jp/contests/abc142/submissions/7772344
  */
 template <typename T>

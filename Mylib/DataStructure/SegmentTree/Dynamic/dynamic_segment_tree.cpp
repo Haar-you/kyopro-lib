@@ -1,6 +1,7 @@
 #pragma once
 
 /**
+ * @title 動的セグメント木
  * @see https://yukicoder.me/submissions/427657
  */
 template <typename Monoid>

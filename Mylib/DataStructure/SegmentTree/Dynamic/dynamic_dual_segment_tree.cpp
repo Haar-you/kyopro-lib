@@ -1,6 +1,9 @@
 #pragma once
 #include <unordered_map>
 
+/**
+ * @title 動的双対セグメント木
+ */
 template <typename Monoid>
 class DynamicDualSegmentTree{
   using value_type = typename Monoid::value_type;

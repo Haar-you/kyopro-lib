@@ -5,6 +5,9 @@
 #include <algorithm>
 #include <utility>
 
+/**
+ * @title 重複要素をk個まで許容する区間スケジューリング問題
+ */
 std::vector<std::pair<int,int>> interval_scheduling_k(std::vector<std::pair<int,int>> s, int k){
   std::sort(s.begin(), s.end(), [](const auto &a, const auto &b){
                              return a.second == b.second ? a.first < b.first : a.second < b.second;

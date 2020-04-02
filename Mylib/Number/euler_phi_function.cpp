@@ -3,6 +3,7 @@
 #include <numeric>
 
 /**
+ * @title Eulerのトーシェント関数
  * @see https://codeforces.com/contest/1208/submission/59824476
  * @note phi(nm) = phi(n) * phi(m) if nとmが互いに素
  */

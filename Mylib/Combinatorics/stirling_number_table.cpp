@@ -2,6 +2,7 @@
 #include <vector>
 
 /**
+ * @title 第2種Stirling数の列挙
  * @attention time complexity O(N^2)
  */
 template <typename T>

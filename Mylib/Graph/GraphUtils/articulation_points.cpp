@@ -3,6 +3,9 @@
 #include <algorithm>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title 間接点列挙
+ */
 template <typename T> std::vector<int> articulation_points(const Graph<T> &graph){
   int n = graph.size();
   std::vector<int> visit(n, -1), low(n, -1), ret;

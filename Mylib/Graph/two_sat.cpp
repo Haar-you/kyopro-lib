@@ -7,6 +7,7 @@
 #include "Mylib/Graph/TopologicalSort/topological_sort.cpp"
 
 /**
+ * @title 2-SAT
  * @see https://yukicoder.me/problems/no/274 https://yukicoder.me/submissions/340917/source
  * @see https://yukicoder.me/problems/no/470 https://yukicoder.me/submissions/383028/source
  * @see https://atcoder.jp/contests/arc069/submissions/8830581

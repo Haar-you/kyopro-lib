@@ -4,6 +4,7 @@
 #include "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 
 /**
+ * @title 重み付き二部マッチング
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2429
  */
 template <typename T>

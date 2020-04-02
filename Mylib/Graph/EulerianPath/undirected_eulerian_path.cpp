@@ -5,6 +5,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
+ * @title 無向Euler路
  * @see https://codeforces.com/contest/1152/submission/53310405
  */
 class UndirectedEulerianPath{

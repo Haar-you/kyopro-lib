@@ -2,6 +2,9 @@
 #include <numeric>
 #include <iostream>
 
+/**
+ * @title 有理数クラス
+ */
 class Rational{
 public:
   int64_t nume, deno;

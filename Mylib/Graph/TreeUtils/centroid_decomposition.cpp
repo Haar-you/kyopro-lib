@@ -2,6 +2,9 @@
 #include <vector>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title 重心分解
+ */
 template <typename T>
 struct CentroidDecomposition{
   Tree<T> tree;

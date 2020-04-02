@@ -1,6 +1,9 @@
 #pragma once
 #include <bitset>
 
+/**
+ * @title Eratosthenesの篩
+ */
 namespace eratosthenes_sieve{
   constexpr int MAX = 1000000;
   std::bitset<MAX+1> is_prime;

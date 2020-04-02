@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 
+/**
+ * @title 遅延セグメント木
+ */
 template <typename Monoid>
 class LazySegmentTree{
   using value_type_get = typename Monoid::value_type_get;

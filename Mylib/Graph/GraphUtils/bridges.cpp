@@ -3,6 +3,9 @@
 #include <algorithm>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title 橋列挙
+ */
 template <typename T>
 auto bridges(const Graph<T> &graph){
   const int n = graph.size();

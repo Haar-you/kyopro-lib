@@ -2,6 +2,7 @@
 #include <vector>
 
 /**
+ * @title K個以下への分割数の列挙
  * @see https://mathtrain.jp/bunkatsu
  * @see http://drken1215.hatenablog.com/entry/2018/01/16/222843
  * @note 自然数nをk個以下の1以上の整数に分割する方法。
@@ -20,4 +21,3 @@ auto partition_number(int n, int k){
 
   return dp;
 }
-
