@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp
+# :heavy_check_mark: Link-Cut tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a178be27fdfe56586a4fa516e8dee442">Mylib/DataStructure/LinkCutTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 08:32:15+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 
@@ -49,6 +49,9 @@ layout: default
 #pragma once
 #include <vector>
 
+/**
+ * @title Link-Cut tree
+ */
 template <typename Monoid>
 struct LinkCutNode{
   using value_type = typename Monoid::value_type;
@@ -253,6 +256,9 @@ public:
 #line 2 "Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp"
 #include <vector>
 
+/**
+ * @title Link-Cut tree
+ */
 template <typename Monoid>
 struct LinkCutNode{
   using value_type = typename Monoid::value_type;

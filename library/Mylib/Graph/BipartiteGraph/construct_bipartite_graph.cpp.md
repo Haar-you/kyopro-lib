@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp
+# :warning: Unionfindによる二部グラフ判定
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3b87eee7aef75da88610c966a8da844f">Mylib/Graph/BipartiteGraph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 05:19:32+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/code-festival-2017-qualb/submissions/4508202">https://atcoder.jp/contests/code-festival-2017-qualb/submissions/4508202</a>
@@ -40,7 +40,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Mylib/DataStructure/UnionFind/unionfind.cpp</a>
+* :question: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">unionfind</a>
 
 
 ## Code
@@ -52,6 +52,7 @@ layout: default
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
 /**
+ * @title Unionfindによる二部グラフ判定
  * @see https://atcoder.jp/contests/code-festival-2017-qualb/submissions/4508202
  * @see https://atcoder.jp/contests/arc036/submissions/4199773
  */
@@ -91,6 +92,9 @@ public:
 #include <vector>
 #include <numeric>
 
+/**
+ * @title unionfind
+ */
 class UnionFind{
   std::vector<int> parent, depth, size;
   int count;
@@ -132,6 +136,7 @@ public:
 #line 3 "Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp"
 
 /**
+ * @title Unionfindによる二部グラフ判定
  * @see https://atcoder.jp/contests/code-festival-2017-qualb/submissions/4508202
  * @see https://atcoder.jp/contests/arc036/submissions/4199773
  */

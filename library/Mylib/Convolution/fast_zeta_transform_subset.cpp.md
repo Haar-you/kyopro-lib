@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Convolution/fast_zeta_transform_subset.cpp
+# :heavy_check_mark: 下位集合に対する高速Zeta変換
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/fast_zeta_transform_subset.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 14:34:53+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/arc100/submissions/4581560 (演算がやや特殊)">https://atcoder.jp/contests/arc100/submissions/4581560 (演算がやや特殊)</a>
@@ -57,6 +57,7 @@ layout: default
 #include <functional>
 
 /**
+ * @title 下位集合に対する高速Zeta変換
  * @see https://atcoder.jp/contests/arc100/submissions/4581560 (演算がやや特殊)
  * @note f(S) = ∑_{T⊆S} g(T)
  */
@@ -81,6 +82,7 @@ std::vector<T> fast_zeta_transform_subset(std::vector<T> f, const Func &op = std
 #include <functional>
 
 /**
+ * @title 下位集合に対する高速Zeta変換
  * @see https://atcoder.jp/contests/arc100/submissions/4581560 (演算がやや特殊)
  * @note f(S) = ∑_{T⊆S} g(T)
  */

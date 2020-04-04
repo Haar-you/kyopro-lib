@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/LinearAlgebra/determinant.cpp
+# :warning: 行列式 (02)
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#c3630e6b34f6bdce63eb71de0fb5bdd6">Mylib/LinearAlgebra</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/determinant.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 04:55:54+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 
@@ -44,6 +44,9 @@ layout: default
 #pragma once
 #include <vector>
 
+/**
+ * @title 行列式
+ */
 template <typename T> T determinant(std::vector<std::vector<T>> m){
   const int n = m.size();
   int s = 0;
@@ -80,6 +83,9 @@ template <typename T> T determinant(std::vector<std::vector<T>> m){
 #line 2 "Mylib/LinearAlgebra/determinant.cpp"
 #include <vector>
 
+/**
+ * @title 行列式
+ */
 template <typename T> T determinant(std::vector<std::vector<T>> m){
   const int n = m.size();
   int s = 0;

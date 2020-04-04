@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#6ed7f5103dd44c87e247853bfe87329e">test/aoj/ALDS1_14_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_14_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 12:42:55+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/rolling_hash.cpp.html">Mylib/String/rolling_hash.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/String/rolling_hash.cpp.html">Rolling Hash</a>
 
 
 ## Code
@@ -87,6 +87,7 @@ int main(){
 #include <vector>
 
 /**
+ * @title Rolling Hash
  * @see https://yukicoder.me/submissions/347187
  */
 template <typename T, int64_t BASE, int64_t MOD>

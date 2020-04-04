@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/String/rolling_hash_2d.cpp
+# :heavy_check_mark: Rolling Hash 2D
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/rolling_hash_2d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 12:42:55+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 
@@ -49,6 +49,9 @@ layout: default
 #pragma once
 #include <vector>
 
+/**
+ * @title Rolling Hash 2D
+ */
 template <typename T, int64_t BASEW, int64_t BASEH, int64_t MOD>
 class RollingHash2D{
   static std::vector<int64_t> pow_w, pow_h;
@@ -121,6 +124,9 @@ std::vector<int64_t> RollingHash2D<T,BASEW,BASEH,MOD>::pow_h;
 #line 2 "Mylib/String/rolling_hash_2d.cpp"
 #include <vector>
 
+/**
+ * @title Rolling Hash 2D
+ */
 template <typename T, int64_t BASEW, int64_t BASEH, int64_t MOD>
 class RollingHash2D{
   static std::vector<int64_t> pow_w, pow_h;

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Graph/project_selection_problem.cpp
+# :warning: Project Selection Problem
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/project_selection_problem.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="https://kimiyuki.net/blog/2017/12/05/minimum-cut-and-project-selection-problem/">https://kimiyuki.net/blog/2017/12/05/minimum-cut-and-project-selection-problem/</a>
@@ -59,6 +59,7 @@ layout: default
 #include "Mylib/Graph/Flow/dinic.cpp"
 
 /*
+ * @title Project Selection Problem
  * @see https://kimiyuki.net/blog/2017/12/05/minimum-cut-and-project-selection-problem/
  * @see https://ei1333.github.io/luzhiled/snippets/memo/project-selection.html
  * @see https://ferin-tech.hatenablog.com/entry/2019/10/28/%E7%87%83%E3%82%84%E3%81%99%E5%9F%8B%E3%82%81%E3%82%8B%E5%95%8F%E9%A1%8C
@@ -251,6 +252,7 @@ public:
 #line 6 "Mylib/Graph/project_selection_problem.cpp"
 
 /*
+ * @title Project Selection Problem
  * @see https://kimiyuki.net/blog/2017/12/05/minimum-cut-and-project-selection-problem/
  * @see https://ei1333.github.io/luzhiled/snippets/memo/project-selection.html
  * @see https://ferin-tech.hatenablog.com/entry/2019/10/28/%E7%87%83%E3%82%84%E3%81%99%E5%9F%8B%E3%82%81%E3%82%8B%E5%95%8F%E9%A1%8C

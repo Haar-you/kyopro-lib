@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/String/aho_corasick.cpp
+# :warning: Aho-Corasick法
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/aho_corasick.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 12:42:55+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 
@@ -48,6 +48,7 @@ layout: default
 #include <queue>
 
 /**
+ * @title Aho-Corasick法
  * @note https://yukicoder.me/submissions/347348
  */
 class AhoCorasick{
@@ -160,6 +161,7 @@ public:
 #include <queue>
 
 /**
+ * @title Aho-Corasick法
  * @note https://yukicoder.me/submissions/347348
  */
 class AhoCorasick{

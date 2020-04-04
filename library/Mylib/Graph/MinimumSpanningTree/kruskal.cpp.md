@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../../index.html#cb5ed95d97b7ee8efcbdf177a47dc7b7">Mylib/Graph/MinimumSpanningTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/MinimumSpanningTree/kruskal.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Mylib/DataStructure/UnionFind/unionfind.cpp</a>
+* :question: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">unionfind</a>
 * :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
@@ -132,6 +132,9 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 #line 3 "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include <numeric>
 
+/**
+ * @title unionfind
+ */
 class UnionFind{
   std::vector<int> parent, depth, size;
   int count;

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/forest.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="https://yukicoder.me/submissions/398023/source">https://yukicoder.me/submissions/398023/source</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Mylib/DataStructure/UnionFind/unionfind.cpp</a>
+* :question: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">unionfind</a>
 * :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
@@ -171,6 +171,9 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 #line 3 "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include <numeric>
 
+/**
+ * @title unionfind
+ */
 class UnionFind{
   std::vector<int> parent, depth, size;
   int count;

@@ -38,7 +38,7 @@ layout: default
 
 ## Required by
 
-* :warning: <a href="../project_selection_problem.cpp.html">Mylib/Graph/project_selection_problem.cpp</a>
+* :warning: <a href="../project_selection_problem.cpp.html">Project Selection Problem</a>
 
 
 ## Verified with

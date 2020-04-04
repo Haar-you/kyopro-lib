@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp
+# :warning: 連結グラフの二部グラフ判定
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3b87eee7aef75da88610c966a8da844f">Mylib/Graph/BipartiteGraph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 
@@ -52,6 +52,9 @@ layout: default
 #include <stack>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title 連結グラフの二部グラフ判定
+ */
 template <typename T>
 std::optional<std::vector<int>> is_bipartite_graph(const Graph<T> &graph){
   std::vector<int> check(graph.size(), -1);
@@ -127,6 +130,9 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 }
 #line 6 "Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp"
 
+/**
+ * @title 連結グラフの二部グラフ判定
+ */
 template <typename T>
 std::optional<std::vector<int>> is_bipartite_graph(const Graph<T> &graph){
   std::vector<int> check(graph.size(), -1);

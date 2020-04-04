@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/String/manacher.cpp
+# :warning: Manacher法
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/manacher.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 12:42:55+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/ukuku09/submissions/8413843">https://atcoder.jp/contests/ukuku09/submissions/8413843</a>
@@ -47,6 +47,7 @@ layout: default
 #include <string>
 
 /**
+ * @title Manacher法
  * @see https://atcoder.jp/contests/ukuku09/submissions/8413843
  * @return 位置iを中心とした最長奇数長回文の片側長さ(回文長Lに対してL/2+1)の配列
  */
@@ -82,6 +83,7 @@ std::vector<int> manacher(const std::string &s){
 #include <string>
 
 /**
+ * @title Manacher法
  * @see https://atcoder.jp/contests/ukuku09/submissions/8413843
  * @return 位置iを中心とした最長奇数長回文の片側長さ(回文長Lに対してL/2+1)の配列
  */

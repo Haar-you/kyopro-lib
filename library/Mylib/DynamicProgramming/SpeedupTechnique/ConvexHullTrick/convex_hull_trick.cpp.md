@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick/convex_hull_trick.cpp
+# :warning: Convex Hull Trick
 
 <a href="../../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../../index.html#7e10cb4eef4fe46e217959a10aea6a72">Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick/convex_hull_trick.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 11:15:16+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/dp/tasks/dp_z (Minクエリ)">https://atcoder.jp/contests/dp/tasks/dp_z (Minクエリ)</a>
@@ -49,6 +49,7 @@ layout: default
 #include <functional>
 
 /**
+ * @title Convex Hull Trick
  * @see https://atcoder.jp/contests/dp/tasks/dp_z (Minクエリ)
  * @see https://codeforces.com/contest/939/problem/E (Maxクエリ)
  * @note Comparator = greater<T> : 傾き => 単調減少, クエリ座標 => 単調増加, クエリ => Min
@@ -105,6 +106,7 @@ public:
 #include <functional>
 
 /**
+ * @title Convex Hull Trick
  * @see https://atcoder.jp/contests/dp/tasks/dp_z (Minクエリ)
  * @see https://codeforces.com/contest/939/problem/E (Maxクエリ)
  * @note Comparator = greater<T> : 傾き => 単調減少, クエリ座標 => 単調増加, クエリ => Min

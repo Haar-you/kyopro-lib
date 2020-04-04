@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Convolution/fast_fourier_transform.cpp
+# :warning: 高速Fourier変換
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/fast_fourier_transform.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 14:34:53+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/atc001/submissions/6527777">https://atcoder.jp/contests/atc001/submissions/6527777</a>
@@ -49,6 +49,7 @@ layout: default
 #include <utility>
 
 /**
+ * @title 高速Fourier変換
  * @see https://atcoder.jp/contests/atc001/submissions/6527777
  */
 template <typename T = double, bool INVERSE = false>
@@ -117,6 +118,7 @@ std::vector<std::complex<T>> fft_convolution(std::vector<std::complex<T>> f, std
 #include <utility>
 
 /**
+ * @title 高速Fourier変換
  * @see https://atcoder.jp/contests/atc001/submissions/6527777
  */
 template <typename T = double, bool INVERSE = false>

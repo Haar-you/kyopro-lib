@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#502e31dec0efb369b23aee4c6aa81a7e">test/aoj/GRL_5_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_5_C/main.doubling.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp.html">Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp.html">ダブリング実装の最小共通祖先</a>
 * :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
@@ -126,6 +126,9 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 #include <cmath>
 #line 5 "Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp"
 
+/**
+ * @title ダブリング実装の最小共通祖先
+ */
 template <typename T> class LCA{
 private:
   std::vector<std::vector<int>> parent;

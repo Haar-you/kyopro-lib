@@ -31,15 +31,15 @@ layout: default
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/convolution_and.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 14:34:53+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="fast_mobius_transform_superset.cpp.html">Mylib/Convolution/fast_mobius_transform_superset.cpp</a>
-* :heavy_check_mark: <a href="fast_zeta_transform_superset.cpp.html">Mylib/Convolution/fast_zeta_transform_superset.cpp</a>
+* :heavy_check_mark: <a href="fast_mobius_transform_superset.cpp.html">上位集合に対する高速Möbius変換</a>
+* :heavy_check_mark: <a href="fast_zeta_transform_superset.cpp.html">上位集合に対する高速Zeta変換</a>
 
 
 ## Code
@@ -76,6 +76,7 @@ std::vector<T> convolution_and(std::vector<T> f, std::vector<T> g){
 #include <functional>
 
 /**
+ * @title 上位集合に対する高速Zeta変換
  * @see https://codeforces.com/contest/1208/submission/59501702 (最大値2つを保持)
  * @note f(S) = ∑_{S⊆T} g(T)
  */
@@ -91,6 +92,7 @@ std::vector<T> fast_zeta_transform_superset(std::vector<T> f, const Func &op = s
 #line 4 "Mylib/Convolution/fast_mobius_transform_superset.cpp"
 
 /**
+ * @title 上位集合に対する高速Möbius変換
  * @note f(S) = ∑_{S⊆T} g(T) * (-1)^(|T|-|S|)
  */
 template <typename T, typename Func = std::minus<T>>

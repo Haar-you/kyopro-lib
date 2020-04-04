@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/matrix_det/main.test.cpp
+# :x: test/yosupo-judge/matrix_det/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f56272346ebd60cefe0da1df8f0209d6">test/yosupo-judge/matrix_det</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/matrix_det/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/matrix_det">https://judge.yosupo.jp/problem/matrix_det</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/determinant.cpp.html">Mylib/LinearAlgebra/Square/determinant.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Mylib/LinearAlgebra/Square/square_matrix.cpp</a>
+* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/determinant.cpp.html">行列式 (01)</a>
+* :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">正方行列</a>
 * :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
@@ -172,6 +172,9 @@ public:
 #include <vector>
 #line 4 "Mylib/LinearAlgebra/Square/square_matrix.cpp"
 
+/**
+ * @title 正方行列
+ */
 template <typename T> struct SquareMatrix{
   using value_type = T;
   
@@ -225,6 +228,9 @@ template <typename T> struct SquareMatrix{
 };
 #line 2 "Mylib/LinearAlgebra/Square/determinant.cpp"
 
+/**
+ * @title 行列式
+ */
 template <typename M, typename T = typename M::value_type>
 T determinant(M m){
   const int N = m.size();

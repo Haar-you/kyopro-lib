@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Number/Mod/mod_power.cpp
+# :question: Mylib/Number/Mod/mod_power.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,7 +38,7 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="../../Convolution/ntt_convolution.cpp.html">Mylib/Convolution/ntt_convolution.cpp</a>
+* :question: <a href="../../Convolution/ntt_convolution.cpp.html">Number Theoretic Transform</a>
 * :warning: <a href="../../Graph/Coloring/chromatic_number.cpp.html">グラフ頂点彩色数</a>
 * :heavy_check_mark: <a href="mod_log.cpp.html">Mylib/Number/Mod/mod_log.cpp</a>
 * :heavy_check_mark: <a href="mod_sqrt.cpp.html">Mylib/Number/Mod/mod_sqrt.cpp</a>
@@ -51,7 +51,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/convolution_mod_1000000007/main.test.cpp.html">test/yosupo-judge/convolution_mod_1000000007/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
 
 
 ## Code

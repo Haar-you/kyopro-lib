@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/String/lcp_array.cpp
+# :warning: LCP(Longest Common Prefix)配列
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/lcp_array.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 12:42:55+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="suffix_array.cpp.html">Mylib/String/suffix_array.cpp</a>
+* :x: <a href="suffix_array.cpp.html">接尾辞配列</a>
 
 
 ## Code
@@ -50,6 +50,9 @@ layout: default
 #include <vector>
 #include "Mylib/String/suffix_array.cpp"
 
+/**
+ * @title LCP(Longest Common Prefix)配列
+ */
 template <typename T>
 struct LCPArray{
   const int n;
@@ -86,6 +89,7 @@ struct LCPArray{
 #include <tuple>
 
 /**
+ * @title 接尾辞配列
  * @see https://yukicoder.me/submissions/347188
  */
 template <typename T> class SuffixArray{
@@ -209,6 +213,9 @@ public:
 };
 #line 4 "Mylib/String/lcp_array.cpp"
 
+/**
+ * @title LCP(Longest Common Prefix)配列
+ */
 template <typename T>
 struct LCPArray{
   const int n;

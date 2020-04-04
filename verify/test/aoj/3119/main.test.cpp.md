@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#59b3322e8805b9ff175a68f1a5d31d67">test/aoj/3119</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3119/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_mobius_transform_superset.cpp.html">Mylib/Convolution/fast_mobius_transform_superset.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_zeta_transform_superset.cpp.html">Mylib/Convolution/fast_zeta_transform_superset.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_mobius_transform_superset.cpp.html">上位集合に対する高速Möbius変換</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_zeta_transform_superset.cpp.html">上位集合に対する高速Zeta変換</a>
 * :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
@@ -175,6 +175,7 @@ public:
 #include <functional>
 
 /**
+ * @title 上位集合に対する高速Zeta変換
  * @see https://codeforces.com/contest/1208/submission/59501702 (最大値2つを保持)
  * @note f(S) = ∑_{S⊆T} g(T)
  */
@@ -190,6 +191,7 @@ std::vector<T> fast_zeta_transform_superset(std::vector<T> f, const Func &op = s
 #line 4 "Mylib/Convolution/fast_mobius_transform_superset.cpp"
 
 /**
+ * @title 上位集合に対する高速Möbius変換
  * @note f(S) = ∑_{S⊆T} g(T) * (-1)^(|T|-|S|)
  */
 template <typename T, typename Func = std::minus<T>>

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/String/palindromic_tree.cpp
+# :warning: 回文木
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/palindromic_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 12:42:55+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="https://www.spoj.com/problems/LPS/ (最長回文部分列)">https://www.spoj.com/problems/LPS/ (最長回文部分列)</a>
@@ -50,6 +50,7 @@ layout: default
 #include <algorithm>
 
 /**
+ * @title 回文木
  * @see https://www.spoj.com/problems/LPS/ (最長回文部分列)
  * @see https://www.spoj.com/problems/NUMOFPAL/ (回文部分列の個数)
  */
@@ -180,6 +181,7 @@ public:
 #include <algorithm>
 
 /**
+ * @title 回文木
  * @see https://www.spoj.com/problems/LPS/ (最長回文部分列)
  * @see https://www.spoj.com/problems/NUMOFPAL/ (回文部分列の個数)
  */

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp
+# :heavy_check_mark: ダブリング実装の最小共通祖先
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 
@@ -56,6 +56,9 @@ layout: default
 #include <cmath>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title ダブリング実装の最小共通祖先
+ */
 template <typename T> class LCA{
 private:
   std::vector<std::vector<int>> parent;
@@ -149,6 +152,9 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 }
 #line 5 "Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp"
 
+/**
+ * @title ダブリング実装の最小共通祖先
+ */
 template <typename T> class LCA{
 private:
   std::vector<std::vector<int>> parent;

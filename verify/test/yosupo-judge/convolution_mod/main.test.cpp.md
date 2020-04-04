@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#8dac0df2b87704e7ea660cabc39eb365">test/yosupo-judge/convolution_mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/convolution_mod/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 14:34:53+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/convolution_mod">https://judge.yosupo.jp/problem/convolution_mod</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Mylib/Convolution/ntt_convolution.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
+* :question: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number Theoretic Transform</a>
+* :question: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
+* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
 
 
 ## Code
@@ -121,6 +121,9 @@ int64_t mod_inv(int64_t a, int64_t m){
 }
 #line 8 "Mylib/Convolution/ntt_convolution.cpp"
 
+/**
+ * @title Number Theoretic Transform
+ */
 template <int MOD, int PRIM_ROOT, int MAX_SIZE>
 class NumberTheoreticTransform{
   const int MAX_POWER;

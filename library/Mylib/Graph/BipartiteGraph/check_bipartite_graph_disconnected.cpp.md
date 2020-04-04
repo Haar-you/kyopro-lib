@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Graph/BipartiteGraph/check_bipartite_graph_disconnected.cpp
+# :warning: 非連結グラフの二部グラフ判定
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3b87eee7aef75da88610c966a8da844f">Mylib/Graph/BipartiteGraph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/BipartiteGraph/check_bipartite_graph_disconnected.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/maximum-cup-2018/submissions/4199048">https://atcoder.jp/contests/maximum-cup-2018/submissions/4199048</a>
@@ -56,6 +56,7 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
+ * @title 非連結グラフの二部グラフ判定
  * @see https://atcoder.jp/contests/maximum-cup-2018/submissions/4199048
  * @see https://atcoder.jp/contests/arc099/submissions/7457350
  */
@@ -161,6 +162,7 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 #line 7 "Mylib/Graph/BipartiteGraph/check_bipartite_graph_disconnected.cpp"
 
 /**
+ * @title 非連結グラフの二部グラフ判定
  * @see https://atcoder.jp/contests/maximum-cup-2018/submissions/4199048
  * @see https://atcoder.jp/contests/arc099/submissions/7457350
  */

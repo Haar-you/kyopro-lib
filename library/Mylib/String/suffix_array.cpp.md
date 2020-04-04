@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/String/suffix_array.cpp
+# :x: 接尾辞配列
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/suffix_array.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 12:42:55+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="https://yukicoder.me/submissions/347188">https://yukicoder.me/submissions/347188</a>
@@ -39,12 +39,12 @@ layout: default
 
 ## Required by
 
-* :warning: <a href="lcp_array.cpp.html">Mylib/String/lcp_array.cpp</a>
+* :warning: <a href="lcp_array.cpp.html">LCP(Longest Common Prefix)配列</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/suffixarray/main.test.cpp.html">test/yosupo-judge/suffixarray/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/suffixarray/main.test.cpp.html">test/yosupo-judge/suffixarray/main.test.cpp</a>
 
 
 ## Code
@@ -57,6 +57,7 @@ layout: default
 #include <tuple>
 
 /**
+ * @title 接尾辞配列
  * @see https://yukicoder.me/submissions/347188
  */
 template <typename T> class SuffixArray{
@@ -190,6 +191,7 @@ public:
 #include <tuple>
 
 /**
+ * @title 接尾辞配列
  * @see https://yukicoder.me/submissions/347188
  */
 template <typename T> class SuffixArray{

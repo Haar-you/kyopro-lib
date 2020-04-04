@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0bdfbad106799ccca05cbd57bfdddfd4">test/aoj/1327</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1327/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/power.cpp.html">Mylib/LinearAlgebra/Square/power.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Mylib/LinearAlgebra/Square/square_matrix.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/power.cpp.html">行列累乗</a>
+* :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">正方行列</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">実行時mod指定modint</a>
 
 
@@ -180,6 +180,9 @@ std::istream& operator>>(std::istream &is, RuntimeModInt &a){is >> a.val; return
 std::ostream& operator<<(std::ostream &os, const RuntimeModInt &a){os << a.val; return os;}
 #line 4 "Mylib/LinearAlgebra/Square/square_matrix.cpp"
 
+/**
+ * @title 正方行列
+ */
 template <typename T> struct SquareMatrix{
   using value_type = T;
   
@@ -233,6 +236,9 @@ template <typename T> struct SquareMatrix{
 };
 #line 2 "Mylib/LinearAlgebra/Square/power.cpp"
 
+/**
+ * @title 行列累乗
+ */
 template <typename M, typename T = typename M::value_type>
 M power(M a, uint64_t p){
   const int N = a.size();

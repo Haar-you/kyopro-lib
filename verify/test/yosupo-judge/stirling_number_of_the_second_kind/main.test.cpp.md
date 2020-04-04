@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
+# :x: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f546c969ceb14dcb37f380879c54e41c">test/yosupo-judge/stirling_number_of_the_second_kind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 14:34:53+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/stirling_number_of_the_second_kind">https://judge.yosupo.jp/problem/stirling_number_of_the_second_kind</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Mylib/Convolution/ntt_convolution.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
+* :question: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number Theoretic Transform</a>
+* :question: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
+* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
 
 
 ## Code
@@ -134,6 +134,9 @@ int64_t mod_inv(int64_t a, int64_t m){
 }
 #line 8 "Mylib/Convolution/ntt_convolution.cpp"
 
+/**
+ * @title Number Theoretic Transform
+ */
 template <int MOD, int PRIM_ROOT, int MAX_SIZE>
 class NumberTheoreticTransform{
   const int MAX_POWER;

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#d968eb1568785f4a9e284aeb2f04bd97">test/aoj/DSL_1_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_1_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 04:47:58+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/weighted_unionfind.cpp.html">Mylib/DataStructure/UnionFind/weighted_unionfind.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/weighted_unionfind.cpp.html">重み付きunionfind</a>
 
 
 ## Code
@@ -92,6 +92,7 @@ int main(){
 #include <numeric>
 
 /**
+ * @title 重み付きunionfind
  * @see https://atcoder.jp/contests/abc087/submissions/6544778
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1330
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B

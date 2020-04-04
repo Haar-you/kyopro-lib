@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/LinearAlgebra/Square/inverse_matrix.cpp
+# :warning: 逆行列
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b58b3fdb1287502881e9117a37552614">Mylib/LinearAlgebra/Square</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/Square/inverse_matrix.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 04:55:54+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 
@@ -44,6 +44,9 @@ layout: default
 #pragma once
 #include <utility>
 
+/**
+ * @title 逆行列
+ */
 template <typename M, typename T = typename M::value_type>
 bool inverse_matrix(M m, M &ret){
   const int N = m.size();
@@ -95,6 +98,9 @@ bool inverse_matrix(M m, M &ret){
 #line 2 "Mylib/LinearAlgebra/Square/inverse_matrix.cpp"
 #include <utility>
 
+/**
+ * @title 逆行列
+ */
 template <typename M, typename T = typename M::value_type>
 bool inverse_matrix(M m, M &ret){
   const int N = m.size();

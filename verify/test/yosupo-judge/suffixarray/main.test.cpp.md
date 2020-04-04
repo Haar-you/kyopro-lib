@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/suffixarray/main.test.cpp
+# :x: test/yosupo-judge/suffixarray/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1a3b4838010325a1a7a9bbb6eb794296">test/yosupo-judge/suffixarray</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/suffixarray/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 12:42:55+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/suffixarray">https://judge.yosupo.jp/problem/suffixarray</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/suffix_array.cpp.html">Mylib/String/suffix_array.cpp</a>
+* :x: <a href="../../../../library/Mylib/String/suffix_array.cpp.html">接尾辞配列</a>
 
 
 ## Code
@@ -87,6 +87,7 @@ int main(){
 #include <tuple>
 
 /**
+ * @title 接尾辞配列
  * @see https://yukicoder.me/submissions/347188
  */
 template <typename T> class SuffixArray{

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#5326787223290b45db8eae567be7c0f8">test/aoj/2446</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2446/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 14:34:53+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2446">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2446</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_mobius_transform_subset.cpp.html">Mylib/Convolution/fast_mobius_transform_subset.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_mobius_transform_subset.cpp.html">下位集合に対する高速Möbius変換</a>
 
 
 ## Code
@@ -123,6 +123,7 @@ int main(){
 #include <functional>
 
 /**
+ * @title 下位集合に対する高速Möbius変換
  * @see https://onlinejudge.u-aizu.ac.jp/challenges/search/volumes/2446 (包除原理への応用)
  * @note f(S) = ∑_{T⊆S} g(T) * (-1)^(|S|-|T|)
  */

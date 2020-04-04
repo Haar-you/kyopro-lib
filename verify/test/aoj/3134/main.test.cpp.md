@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4f0d05e27521ea76d6aad8fca840629e">test/aoj/3134</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3134/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 13:17:39+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3134">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3134</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_zeta_transform_subset.cpp.html">Mylib/Convolution/fast_zeta_transform_subset.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_zeta_transform_subset.cpp.html">下位集合に対する高速Zeta変換</a>
 
 
 ## Code
@@ -107,6 +107,7 @@ int main(){
 #line 4 "Mylib/Convolution/fast_zeta_transform_subset.cpp"
 
 /**
+ * @title 下位集合に対する高速Zeta変換
  * @see https://atcoder.jp/contests/arc100/submissions/4581560 (演算がやや特殊)
  * @note f(S) = ∑_{T⊆S} g(T)
  */

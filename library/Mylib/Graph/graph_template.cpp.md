@@ -38,8 +38,8 @@ layout: default
 
 ## Required by
 
-* :warning: <a href="BipartiteGraph/check_bipartite_graph.cpp.html">Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp</a>
-* :warning: <a href="BipartiteGraph/check_bipartite_graph_disconnected.cpp.html">Mylib/Graph/BipartiteGraph/check_bipartite_graph_disconnected.cpp</a>
+* :warning: <a href="BipartiteGraph/check_bipartite_graph.cpp.html">連結グラフの二部グラフ判定</a>
+* :warning: <a href="BipartiteGraph/check_bipartite_graph_disconnected.cpp.html">非連結グラフの二部グラフ判定</a>
 * :warning: <a href="EulerianPath/directed_eulerian_path.cpp.html">有向Euler路</a>
 * :warning: <a href="EulerianPath/undirected_eulerian_path.cpp.html">無向Euler路</a>
 * :heavy_check_mark: <a href="GraphUtils/articulation_points.cpp.html">間接点列挙</a>
@@ -64,8 +64,8 @@ layout: default
 * :x: <a href="TreeUtils/euler_tour_vertex.cpp.html">頂点Euler tour</a>
 * :warning: <a href="TreeUtils/forest.cpp.html">Mylib/Graph/TreeUtils/forest.cpp</a>
 * :question: <a href="TreeUtils/heavy_light_decomposition.cpp.html">重軽分解</a>
-* :heavy_check_mark: <a href="TreeUtils/lca_based_on_doubling.cpp.html">Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp</a>
-* :heavy_check_mark: <a href="TreeUtils/lca_based_on_hld.cpp.html">Mylib/Graph/TreeUtils/lca_based_on_hld.cpp</a>
+* :heavy_check_mark: <a href="TreeUtils/lca_based_on_doubling.cpp.html">ダブリング実装の最小共通祖先</a>
+* :heavy_check_mark: <a href="TreeUtils/lca_based_on_hld.cpp.html">HLD実装の最小共通祖先</a>
 * :warning: <a href="TreeUtils/rooting.cpp.html">根付き木</a>
 * :heavy_check_mark: <a href="TreeUtils/tree_utils.cpp.html">Mylib/Graph/TreeUtils/tree_utils.cpp</a>
 * :heavy_check_mark: <a href="chinese_postman_problem.cpp.html">中国人郵便配達問題</a>

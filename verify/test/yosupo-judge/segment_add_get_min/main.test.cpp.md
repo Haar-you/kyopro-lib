@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/segment_add_get_min/main.test.cpp
+# :x: test/yosupo-judge/segment_add_get_min/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#721e0ea68f32b7a24f161978d9526983">test/yosupo-judge/segment_add_get_min</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/segment_add_get_min/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 11:15:16+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/segment_add_get_min">https://judge.yosupo.jp/problem/segment_add_get_min</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick/lichao_tree.cpp.html">Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick/lichao_tree.cpp</a>
+* :x: <a href="../../../../library/Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick/lichao_tree.cpp.html">Li Chao tree</a>
 
 
 ## Code
@@ -140,6 +140,7 @@ int main(){
 
 
 /**
+ * @title Li Chao tree
  * @see https://judge.yosupo.jp/submission/3426
  * @see https://judge.yosupo.jp/submission/3427
  * @note Comparator = less<T> : Minクエリ

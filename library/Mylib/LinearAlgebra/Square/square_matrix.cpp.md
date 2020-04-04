@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/LinearAlgebra/Square/square_matrix.cpp
+# :question: 正方行列
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b58b3fdb1287502881e9117a37552614">Mylib/LinearAlgebra/Square</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/Square/square_matrix.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 04:55:54+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 
@@ -39,7 +39,7 @@ layout: default
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/1327/main.test.cpp.html">test/aoj/1327/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/matrix_det/main.test.cpp.html">test/yosupo-judge/matrix_det/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/matrix_det/main.test.cpp.html">test/yosupo-judge/matrix_det/main.test.cpp</a>
 
 
 ## Code
@@ -51,6 +51,9 @@ layout: default
 #include <vector>
 #include <utility>
 
+/**
+ * @title 正方行列
+ */
 template <typename T> struct SquareMatrix{
   using value_type = T;
   
@@ -113,6 +116,9 @@ template <typename T> struct SquareMatrix{
 #include <vector>
 #include <utility>
 
+/**
+ * @title 正方行列
+ */
 template <typename T> struct SquareMatrix{
   using value_type = T;
   

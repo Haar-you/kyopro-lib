@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/String/z_algorithm.cpp
+# :x: Z-algorithm
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/z_algorithm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 12:42:55+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/zalgorithm/main.test.cpp.html">test/yosupo-judge/zalgorithm/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/zalgorithm/main.test.cpp.html">test/yosupo-judge/zalgorithm/main.test.cpp</a>
 
 
 ## Code
@@ -51,6 +51,9 @@ layout: default
 #include <vector>
 #include <algorithm>
 
+/**
+ * @title Z-algorithm
+ */
 std::vector<int> z_algorithm(const std::string &s){
   const int n = s.size();
   std::vector<int> ret(n, 0);
@@ -83,6 +86,9 @@ std::vector<int> z_algorithm(const std::string &s){
 #include <vector>
 #include <algorithm>
 
+/**
+ * @title Z-algorithm
+ */
 std::vector<int> z_algorithm(const std::string &s){
   const int n = s.size();
   std::vector<int> ret(n, 0);

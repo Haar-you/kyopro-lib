@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp
+# :warning: 固定サイズの正方行列
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b58b3fdb1287502881e9117a37552614">Mylib/LinearAlgebra/Square</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 04:55:54+09:00
+    - Last commit date: 2020-04-03 01:42:28+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/abc129/submissions/7098355">https://atcoder.jp/contests/abc129/submissions/7098355</a>
@@ -48,6 +48,7 @@ layout: default
 #include <utility>
 
 /**
+ * @title 固定サイズの正方行列
  * @see https://atcoder.jp/contests/abc129/submissions/7098355
  */
 template <typename T, int N> struct SquareMatrixConst{
@@ -123,6 +124,7 @@ template <typename T, int N> struct SquareMatrixConst{
 #include <utility>
 
 /**
+ * @title 固定サイズの正方行列
  * @see https://atcoder.jp/contests/abc129/submissions/7098355
  */
 template <typename T, int N> struct SquareMatrixConst{
