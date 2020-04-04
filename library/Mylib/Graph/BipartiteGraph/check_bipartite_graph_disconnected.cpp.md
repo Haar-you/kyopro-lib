@@ -40,7 +40,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code

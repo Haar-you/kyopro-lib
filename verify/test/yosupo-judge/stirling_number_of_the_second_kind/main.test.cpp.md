@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
+# :heavy_check_mark: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number Theoretic Transform</a>
-* :question: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
-* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number Theoretic Transform</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
 
 
 ## Code

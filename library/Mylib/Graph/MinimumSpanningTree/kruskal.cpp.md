@@ -38,8 +38,8 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">unionfind</a>
-* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">unionfind</a>
+* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with

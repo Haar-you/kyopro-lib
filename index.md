@@ -38,16 +38,16 @@ layout: default
 
 ### Mylib/AlgebraicStructure/Group
 
-* :question: <a href="library/Mylib/AlgebraicStructure/Group/sum_group.cpp.html">Mylib/AlgebraicStructure/Group/sum_group.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Group/sum_group.cpp.html">Mylib/AlgebraicStructure/Group/sum_group.cpp</a>
 
 
 <div id="b9ce8b1117f3871719e4d3859e7574c9"></div>
 
 ### Mylib/AlgebraicStructure/Monoid
 
-* :question: <a href="library/Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/and_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/and_monoid.cpp</a>
-* :question: <a href="library/Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/gcd_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/gcd_monoid.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/lcm_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/lcm_monoid.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/max_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/max_monoid.cpp</a>
@@ -61,7 +61,7 @@ layout: default
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/product_matrix_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/product_matrix_monoid.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/product_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/product_monoid.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/sum_matrix_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_matrix_monoid.cpp</a>
-* :question: <a href="library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/transformation_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/transformation_monoid.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/trivial_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/trivial_monoid.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/update_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/update_monoid.cpp</a>
@@ -77,7 +77,7 @@ layout: default
 * :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/add_max.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_max.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/MonoidAction/add_min.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_min.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp.html">Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/multiply_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/multiply_sum.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/or_or.cpp.html">Mylib/AlgebraicStructure/MonoidAction/or_or.cpp</a>
@@ -186,16 +186,16 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/Convolution/fast_mobius_transform_superset.cpp.html">上位集合に対する高速Möbius変換</a>
 * :heavy_check_mark: <a href="library/Mylib/Convolution/fast_zeta_transform_subset.cpp.html">下位集合に対する高速Zeta変換</a>
 * :heavy_check_mark: <a href="library/Mylib/Convolution/fast_zeta_transform_superset.cpp.html">上位集合に対する高速Zeta変換</a>
-* :question: <a href="library/Mylib/Convolution/ntt_convolution.cpp.html">Number Theoretic Transform</a>
+* :heavy_check_mark: <a href="library/Mylib/Convolution/ntt_convolution.cpp.html">Number Theoretic Transform</a>
 
 
 <div id="2f58e2c328298747e7665b6f6b5791ad"></div>
 
 ### Mylib/DataStructure/FenwickTree
 
-* :question: <a href="library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">Fenwick木</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">Fenwick木</a>
 * :warning: <a href="library/Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp.html">2DFenwick木</a>
-* :x: <a href="library/Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp.html">Fenwick木にFenwick木を乗せる</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp.html">Fenwick木にFenwick木を乗せる</a>
 
 
 <div id="f151d59e79c7ff7f731ff52cf9b782e4"></div>
@@ -253,16 +253,16 @@ layout: default
 
 ### Mylib/DataStructure/SegmentTree/Static/Lazy
 
-* :question: <a href="library/Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp.html">遅延セグメント木</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp.html">遅延セグメント木</a>
 
 
 <div id="dd4a4f8515bcc75e971952e726133342"></div>
 
 ### Mylib/DataStructure/SegmentTree/Static/Normal
 
-* :question: <a href="library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
 * :warning: <a href="library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_2d.cpp.html">2Dセグメント木</a>
-* :x: <a href="library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_both_foldable.cpp.html">双方向のセグメント木</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_both_foldable.cpp.html">双方向のセグメント木</a>
 * :warning: <a href="library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_on_segment_tree.cpp.html">セグメント木にセグメント木を乗せる</a>
 
 
@@ -308,7 +308,7 @@ layout: default
 ### Mylib/DataStructure/UnionFind
 
 * :warning: <a href="library/Mylib/DataStructure/UnionFind/partially_persistent_unionfind.cpp.html">部分永続Unionfind</a>
-* :question: <a href="library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">unionfind</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">unionfind</a>
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/UnionFind/weighted_unionfind.cpp.html">重み付きunionfind</a>
 
 
@@ -340,7 +340,7 @@ layout: default
 ### Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick
 
 * :warning: <a href="library/Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick/convex_hull_trick.cpp.html">Convex Hull Trick</a>
-* :x: <a href="library/Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick/lichao_tree.cpp.html">Li Chao tree</a>
+* :heavy_check_mark: <a href="library/Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick/lichao_tree.cpp.html">Li Chao tree</a>
 
 
 <div id="090220fbd726178f7b9d402d3ae3f683"></div>
@@ -379,11 +379,11 @@ layout: default
 ### Mylib/Graph
 
 * :heavy_check_mark: <a href="library/Mylib/Graph/chinese_postman_problem.cpp.html">中国人郵便配達問題</a>
-* :question: <a href="library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/maximum_independent_set.cpp.html">最大独立集合</a>
 * :warning: <a href="library/Mylib/Graph/project_selection_problem.cpp.html">Project Selection Problem</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/travelling_salesman_problem.cpp.html">巡回セールスマン問題</a>
-* :x: <a href="library/Mylib/Graph/two_sat.cpp.html">2-SAT</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/two_sat.cpp.html">2-SAT</a>
 
 
 <div id="3b87eee7aef75da88610c966a8da844f"></div>
@@ -399,7 +399,7 @@ layout: default
 
 ### Mylib/Graph/Coloring
 
-* :warning: <a href="library/Mylib/Graph/Coloring/chromatic_number.cpp.html">グラフ頂点彩色数</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/Coloring/chromatic_number.cpp.html">グラフ頂点彩色数</a>
 
 
 <div id="65714f932d9658b7e9e55eb052732de1"></div>
@@ -433,8 +433,8 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/Graph/GraphUtils/articulation_points.cpp.html">間接点列挙</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/GraphUtils/bridges.cpp.html">橋列挙</a>
 * :warning: <a href="library/Mylib/Graph/GraphUtils/decompose_pseudotree.cpp.html">Mylib/Graph/GraphUtils/decompose_pseudotree.cpp</a>
-* :question: <a href="library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
-* :x: <a href="library/Mylib/Graph/GraphUtils/two_edge_connected_components.cpp.html">二重辺連結成分分解</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/GraphUtils/two_edge_connected_components.cpp.html">二重辺連結成分分解</a>
 
 
 <div id="65eb1c5db2b1bd726d58cf661f149e7c"></div>
@@ -479,7 +479,7 @@ layout: default
 ### Mylib/Graph/TopologicalSort
 
 * :warning: <a href="library/Mylib/Graph/TopologicalSort/count_topological_sort.cpp.html">トポロジカルソートの数え上げ</a>
-* :x: <a href="library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
 * :warning: <a href="library/Mylib/Graph/TopologicalSort/topological_sort_lexicographical.cpp.html">辞書順最小のトポロジカルソート</a>
 
 
@@ -490,9 +490,9 @@ layout: default
 * :warning: <a href="library/Mylib/Graph/TreeUtils/centroid.cpp.html">重心列挙</a>
 * :warning: <a href="library/Mylib/Graph/TreeUtils/centroid_decomposition.cpp.html">重心分解</a>
 * :warning: <a href="library/Mylib/Graph/TreeUtils/euler_tour_bfs.cpp.html">BFS Euler tour</a>
-* :x: <a href="library/Mylib/Graph/TreeUtils/euler_tour_vertex.cpp.html">頂点Euler tour</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/euler_tour_vertex.cpp.html">頂点Euler tour</a>
 * :warning: <a href="library/Mylib/Graph/TreeUtils/forest.cpp.html">Mylib/Graph/TreeUtils/forest.cpp</a>
-* :question: <a href="library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">重軽分解</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">重軽分解</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp.html">ダブリング実装の最小共通祖先</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/lca_based_on_hld.cpp.html">HLD実装の最小共通祖先</a>
 * :warning: <a href="library/Mylib/Graph/TreeUtils/rooting.cpp.html">根付き木</a>
@@ -529,18 +529,18 @@ layout: default
 
 * :heavy_check_mark: <a href="library/Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp.html">Mod2体上の連立線形方程式</a>
 * :heavy_check_mark: <a href="library/Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp.html">浮動小数点数での連立線形方程式</a>
-* :x: <a href="library/Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp.html">連立線形方程式</a>
+* :heavy_check_mark: <a href="library/Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp.html">連立線形方程式</a>
 
 
 <div id="b58b3fdb1287502881e9117a37552614"></div>
 
 ### Mylib/LinearAlgebra/Square
 
-* :x: <a href="library/Mylib/LinearAlgebra/Square/determinant.cpp.html">行列式 (01)</a>
+* :heavy_check_mark: <a href="library/Mylib/LinearAlgebra/Square/determinant.cpp.html">行列式 (01)</a>
 * :warning: <a href="library/Mylib/LinearAlgebra/Square/inverse_matrix.cpp.html">逆行列</a>
 * :heavy_check_mark: <a href="library/Mylib/LinearAlgebra/Square/power.cpp.html">行列累乗</a>
 * :warning: <a href="library/Mylib/LinearAlgebra/Square/show_matrix.cpp.html">Mylib/LinearAlgebra/Square/show_matrix.cpp</a>
-* :question: <a href="library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">正方行列</a>
+* :heavy_check_mark: <a href="library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">正方行列</a>
 * :warning: <a href="library/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp.html">固定サイズの正方行列</a>
 * :warning: <a href="library/Mylib/LinearAlgebra/Square/square_matrix_const_size_semiring.cpp.html">Mylib/LinearAlgebra/Square/square_matrix_const_size_semiring.cpp</a>
 * :warning: <a href="library/Mylib/LinearAlgebra/Square/square_matrix_semiring.cpp.html">Mylib/LinearAlgebra/Square/square_matrix_semiring.cpp</a>
@@ -588,7 +588,7 @@ layout: default
 
 ### Mylib/Number/Mint
 
-* :question: <a href="library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :heavy_check_mark: <a href="library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 * :heavy_check_mark: <a href="library/Mylib/Number/Mint/runtime_mint.cpp.html">実行時mod指定modint</a>
 
 
@@ -596,9 +596,9 @@ layout: default
 
 ### Mylib/Number/Mod
 
-* :question: <a href="library/Mylib/Number/Mod/mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/Number/Mod/mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/Number/Mod/mod_log.cpp.html">Mylib/Number/Mod/mod_log.cpp</a>
-* :question: <a href="library/Mylib/Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/Number/Mod/mod_sqrt.cpp.html">Mylib/Number/Mod/mod_sqrt.cpp</a>
 
 
@@ -632,8 +632,8 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/String/rolling_hash.cpp.html">Rolling Hash</a>
 * :heavy_check_mark: <a href="library/Mylib/String/rolling_hash_2d.cpp.html">Rolling Hash 2D</a>
 * :warning: <a href="library/Mylib/String/starts_with.cpp.html">starts_with</a>
-* :x: <a href="library/Mylib/String/suffix_array.cpp.html">接尾辞配列</a>
-* :x: <a href="library/Mylib/String/z_algorithm.cpp.html">Z-algorithm</a>
+* :heavy_check_mark: <a href="library/Mylib/String/suffix_array.cpp.html">接尾辞配列</a>
+* :heavy_check_mark: <a href="library/Mylib/String/z_algorithm.cpp.html">Z-algorithm</a>
 
 
 <div id="a1062884f064c2b3be412505b6627108"></div>
@@ -681,6 +681,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/1508/main.splay_tree.test.cpp.html">test/aoj/1508/main.splay_tree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/1508/main.treap.test.cpp.html">test/aoj/1508/main.treap.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/1549/main.test.cpp.html">test/aoj/1549/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/2136/main.test.cpp.html">test/aoj/2136/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/2171/main.test.cpp.html">test/aoj/2171/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/2446/main.test.cpp.html">test/aoj/2446/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/2530/main.test.cpp.html">test/aoj/2530/main.test.cpp</a>
@@ -769,31 +770,31 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/convolution_mod_1000000007/main.test.cpp.html">test/yosupo-judge/convolution_mod_1000000007/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp.html">test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/line_add_get_min/main.test.cpp.html">test/yosupo-judge/line_add_get_min/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/matrix_det/main.test.cpp.html">test/yosupo-judge/matrix_det/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/line_add_get_min/main.test.cpp.html">test/yosupo-judge/line_add_get_min/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/matrix_det/main.test.cpp.html">test/yosupo-judge/matrix_det/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/maximum_independent_set/main.test.cpp.html">test/yosupo-judge/maximum_independent_set/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/montmort_number_mod/main.test.cpp.html">test/yosupo-judge/montmort_number_mod/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/partition_function/main.test.cpp.html">test/yosupo-judge/partition_function/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/persistent_queue/main.test.cpp.html">test/yosupo-judge/persistent_queue/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp.html">test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/range_kth_smallest/main.test.cpp.html">test/yosupo-judge/range_kth_smallest/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/segment_add_get_min/main.test.cpp.html">test/yosupo-judge/segment_add_get_min/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/segment_add_get_min/main.test.cpp.html">test/yosupo-judge/segment_add_get_min/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/suffixarray/main.test.cpp.html">test/yosupo-judge/suffixarray/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/system_of_linear_equations/main.test.cpp.html">test/yosupo-judge/system_of_linear_equations/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/two_edge_connected_components/main.test.cpp.html">test/yosupo-judge/two_edge_connected_components/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/unionfind/main.test.cpp.html">test/yosupo-judge/unionfind/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/zalgorithm/main.test.cpp.html">test/yosupo-judge/zalgorithm/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/suffixarray/main.test.cpp.html">test/yosupo-judge/suffixarray/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/system_of_linear_equations/main.test.cpp.html">test/yosupo-judge/system_of_linear_equations/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/two_edge_connected_components/main.test.cpp.html">test/yosupo-judge/two_edge_connected_components/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/unionfind/main.test.cpp.html">test/yosupo-judge/unionfind/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/zalgorithm/main.test.cpp.html">test/yosupo-judge/zalgorithm/main.test.cpp</a>
 
 
