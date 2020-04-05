@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#21b2d97411100b8521da1b9c251ad9c2">test/aoj/1508</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1508/main.splay_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 10:19:17+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SplayTree/splay_tree.cpp.html">Mylib/DataStructure/SplayTree/splay_tree.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SplayTree/splay_tree.cpp.html">スプレー木</a>
 
 
 ## Code
@@ -96,6 +96,9 @@ int main(){
 #include <utility>
 #include <tuple>
 
+/**
+ * @title スプレー木
+ */
 namespace splay_tree{
   template <typename Monoid>
   struct SplayNode{

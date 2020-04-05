@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/project_selection_problem.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-05 13:51:54+09:00
 
 
 * see: <a href="https://kimiyuki.net/blog/2017/12/05/minimum-cut-and-project-selection-problem/">https://kimiyuki.net/blog/2017/12/05/minimum-cut-and-project-selection-problem/</a>
@@ -167,7 +167,7 @@ public:
 /**
  * @title Dinic法
  */
-template <typename T, T INF> class Dinic{
+template <typename T> class Dinic{
 private:
   std::vector<std::vector<std::pair<int,T>>> graph;
   int size, s, t;
@@ -192,7 +192,7 @@ private:
     if(path.empty()) return;
     int cur = path.back();
     if(cur == t){
-      T f = INF;
+      T f = std::numeric_limits<T>::max();
       for(int i = 1; i < (int)path.size(); ++i) f = std::min(f, cap[path[i-1]][path[i]]);
       for(int i = 1; i < (int)path.size(); ++i){
         cap[path[i-1]][path[i]] -= f;

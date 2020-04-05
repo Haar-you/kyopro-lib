@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/DataStructure/Trie/binary_trie.cpp
+# :warning: Binary trie
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#aacfe2e228752c2f7bc46438cb1a6bd5">Mylib/DataStructure/Trie</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Trie/binary_trie.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 09:40:59+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
 * see: <a href="https://beta.atcoder.jp/contests/dwacon5th-final-open/tasks/dwacon5th_final_b">https://beta.atcoder.jp/contests/dwacon5th-final-open/tasks/dwacon5th_final_b</a>
@@ -46,9 +46,9 @@ layout: default
 #include <vector>
 
 /**
+ * @title Binary trie
  * @see https://beta.atcoder.jp/contests/dwacon5th-final-open/tasks/dwacon5th_final_b
  */
-
 template <typename T, unsigned int B> class BinaryTrie{
 protected:
   struct node{
@@ -193,9 +193,9 @@ public:
 #include <vector>
 
 /**
+ * @title Binary trie
  * @see https://beta.atcoder.jp/contests/dwacon5th-final-open/tasks/dwacon5th_final_b
  */
-
 template <typename T, unsigned int B> class BinaryTrie{
 protected:
   struct node{

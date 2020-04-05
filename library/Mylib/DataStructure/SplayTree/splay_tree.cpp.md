@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/DataStructure/SplayTree/splay_tree.cpp
+# :heavy_check_mark: スプレー木
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#de940accc238379dfea959424e331579">Mylib/DataStructure/SplayTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SplayTree/splay_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 09:40:21+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
 
@@ -50,6 +50,9 @@ layout: default
 #include <utility>
 #include <tuple>
 
+/**
+ * @title スプレー木
+ */
 namespace splay_tree{
   template <typename Monoid>
   struct SplayNode{
@@ -277,6 +280,9 @@ namespace splay_tree{
 #include <utility>
 #include <tuple>
 
+/**
+ * @title スプレー木
+ */
 namespace splay_tree{
   template <typename Monoid>
   struct SplayNode{

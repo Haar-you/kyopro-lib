@@ -44,7 +44,7 @@ layout: default
 * :warning: <a href="EulerianPath/undirected_eulerian_path.cpp.html">無向Euler路</a>
 * :heavy_check_mark: <a href="GraphUtils/articulation_points.cpp.html">間接点列挙</a>
 * :heavy_check_mark: <a href="GraphUtils/bridges.cpp.html">橋列挙</a>
-* :warning: <a href="GraphUtils/decompose_pseudotree.cpp.html">Mylib/Graph/GraphUtils/decompose_pseudotree.cpp</a>
+* :warning: <a href="GraphUtils/decompose_pseudotree.cpp.html">Pseudotreeの分解</a>
 * :heavy_check_mark: <a href="GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
 * :heavy_check_mark: <a href="GraphUtils/two_edge_connected_components.cpp.html">二重辺連結成分分解</a>
 * :heavy_check_mark: <a href="MinimumSpanningTree/kruskal.cpp.html">Kruskal法</a>

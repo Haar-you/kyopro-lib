@@ -39,7 +39,7 @@ layout: default
 
 ## Required by
 
-* :warning: <a href="convolution_and.cpp.html">Mylib/Convolution/convolution_and.cpp</a>
+* :warning: <a href="convolution_and.cpp.html">添字BitAnd畳み込み</a>
 
 
 ## Verified with

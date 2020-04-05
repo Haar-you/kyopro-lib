@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#d22130300c64d313f1c5481cac7c3c1c">test/aoj/GRL_6_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_6_A/main.dinic.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-04-05 13:51:54+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A</a>
@@ -56,7 +56,7 @@ layout: default
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Dinic<int, INT_MAX> f(V);
+  Dinic<int> f(V);
   for(int i = 0; i < E; ++i){
     int s, t, c; std::cin >> s >> t >> c;
 
@@ -89,7 +89,7 @@ int main(){
 /**
  * @title Dinic法
  */
-template <typename T, T INF> class Dinic{
+template <typename T> class Dinic{
 private:
   std::vector<std::vector<std::pair<int,T>>> graph;
   int size, s, t;
@@ -114,7 +114,7 @@ private:
     if(path.empty()) return;
     int cur = path.back();
     if(cur == t){
-      T f = INF;
+      T f = std::numeric_limits<T>::max();
       for(int i = 1; i < (int)path.size(); ++i) f = std::min(f, cap[path[i-1]][path[i]]);
       for(int i = 1; i < (int)path.size(); ++i){
         cap[path[i-1]][path[i]] -= f;
@@ -176,7 +176,7 @@ public:
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Dinic<int, INT_MAX> f(V);
+  Dinic<int> f(V);
   for(int i = 0; i < E; ++i){
     int s, t, c; std::cin >> s >> t >> c;
 

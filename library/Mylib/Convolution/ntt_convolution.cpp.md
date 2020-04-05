@@ -31,15 +31,15 @@ layout: default
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/ntt_convolution.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../Number/Mod/mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
-* :heavy_check_mark: <a href="../Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
+* :heavy_check_mark: <a href="../Number/Mod/mod_inv.cpp.html">mod逆数</a>
+* :heavy_check_mark: <a href="../Number/Mod/mod_power.cpp.html">mod累乗</a>
 
 
 ## Verified with
@@ -202,6 +202,9 @@ std::vector<int64_t> ntt_convolution(std::vector<int64_t> f, std::vector<int64_t
 #include <algorithm>
 #line 2 "Mylib/Number/Mod/mod_power.cpp"
 
+/**
+ * @title mod累乗
+ */
 int64_t power(int64_t n, int64_t p, int64_t m){
   int64_t ret = 1;
   while(p > 0){
@@ -213,6 +216,10 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 }
 #line 3 "Mylib/Number/Mod/mod_inv.cpp"
 
+/**
+ * @title mod逆数
+ * @attention gcd(a, m) = 1
+ */
 int64_t mod_inv(int64_t a, int64_t m){
   int64_t b = m, u = 1, v = 0;
 

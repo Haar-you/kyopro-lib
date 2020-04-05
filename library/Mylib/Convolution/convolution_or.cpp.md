@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Convolution/convolution_or.cpp
+# :warning: 添字BitOr畳み込み
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/convolution_or.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
 * see: <a href="https://csacademy.com/contest/archive/task/maxor/">https://csacademy.com/contest/archive/task/maxor/</a>
@@ -54,6 +54,7 @@ layout: default
 #include "Mylib/Convolution/fast_mobius_transform_subset.cpp"
 
 /**
+ * @title 添字BitOr畳み込み
  * @note h_k = ∑_{k=i∪j} f(i) * g(j)
  * @see https://csacademy.com/contest/archive/task/maxor/
  */
@@ -65,7 +66,6 @@ std::vector<T> convolution_or(std::vector<T> f, std::vector<T> g){
   f = fast_mobius_transform_subset(f);
   return f;
 }
-
 
 ```
 {% endraw %}
@@ -111,6 +111,7 @@ std::vector<T> fast_mobius_transform_subset(std::vector<T> f, const Func &op = s
 #line 5 "Mylib/Convolution/convolution_or.cpp"
 
 /**
+ * @title 添字BitOr畳み込み
  * @note h_k = ∑_{k=i∪j} f(i) * g(j)
  * @see https://csacademy.com/contest/archive/task/maxor/
  */
@@ -122,7 +123,6 @@ std::vector<T> convolution_or(std::vector<T> f, std::vector<T> g){
   f = fast_mobius_transform_subset(f);
   return f;
 }
-
 
 ```
 {% endraw %}

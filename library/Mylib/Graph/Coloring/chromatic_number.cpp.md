@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#acf9ec20eaed2eb3d3c1a731ebc2fbe1">Mylib/Graph/Coloring</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Coloring/chromatic_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136</a>
@@ -40,7 +40,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
+* :heavy_check_mark: <a href="../../Number/Mod/mod_power.cpp.html">mod累乗</a>
 
 
 ## Verified with
@@ -118,6 +118,9 @@ int chromatic_number(const std::vector<std::vector<int>> &graph){
 #include <vector>
 #line 2 "Mylib/Number/Mod/mod_power.cpp"
 
+/**
+ * @title mod累乗
+ */
 int64_t power(int64_t n, int64_t p, int64_t m){
   int64_t ret = 1;
   while(p > 0){

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/DataStructure/SparseTable/sparse_table_2d.cpp
+# :warning: Sparse table 2D
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9f519a6857abe7364ea5fbe97ba369aa">Mylib/DataStructure/SparseTable</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SparseTable/sparse_table_2d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 08:35:29+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
 
@@ -46,6 +46,9 @@ layout: default
 #include <utility>
 #include <algorithm>
 
+/**
+ * @title Sparse table 2D
+ */
 template <typename Semilattice>
 class SparseTable2D{
   using value_type = typename Semilattice::value_type;
@@ -114,6 +117,9 @@ public:
 #include <utility>
 #include <algorithm>
 
+/**
+ * @title Sparse table 2D
+ */
 template <typename Semilattice>
 class SparseTable2D{
   using value_type = typename Semilattice::value_type;

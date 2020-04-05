@@ -25,27 +25,22 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 最小費用流
+# :heavy_check_mark: test/aoj/2293/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#ecd047c70c23d80351a9f133b49a4638">Mylib/Graph/Flow</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Flow/minimum_cost_flow.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+* category: <a href="../../../../index.html#deff10b29878501929a52ba1088ce342">test/aoj/2293</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2293/main.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-05 13:03:25+09:00
 
 
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2293">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2293</a>
 
 
-## Required by
+## Depends on
 
-* :heavy_check_mark: <a href="../Matching/weighted_bipartite_matching.cpp.html">重み付き二部マッチング</a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/2293/main.test.cpp.html">test/aoj/2293/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_6_B/main.test.cpp.html">test/aoj/GRL_6_B/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/assignment/main.test.cpp.html">test/yosupo-judge/assignment/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">最小費用流</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/weighted_bipartite_matching.cpp.html">重み付き二部マッチング</a>
 
 
 ## Code
@@ -53,109 +48,44 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#pragma once
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2293"
+
+#include <iostream>
 #include <vector>
-#include <queue>
-#include <utility>
-#include <functional>
-#include <algorithm>
-#include <tuple>
+#include "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
 
-/**
- * @title 最小費用流
- */
-template <typename T, typename U> class MinimumCostFlow{
-public:
-  struct edge{
-    int from, to;
-    T cap;
-    U cost;
-    int rev;
-    bool is_rev;
-    edge(int from, int to, T cap, U cost, int rev, bool is_rev):
-      from(from), to(to), cap(cap), cost(cost), rev(rev), is_rev(is_rev){}
-  };
+int main(){
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
 
-private:
-  int size;
-  std::vector<std::vector<edge>> g;
-
-public:
-  MinimumCostFlow(int size): size(size), g(size){}
-
-  void add_edge(int from, int to, T cap, U cost){
-    g[from].emplace_back(from, to, cap, cost, g[to].size(), false);
-    g[to].emplace_back(to, from, 0, -cost, g[from].size()-1, true);
+  int n; std::cin >> n;
+  
+  std::vector<int> A(n), B(n);
+  for(int i = 0; i < n; ++i){
+    std::cin >> A[i] >> B[i];
   }
 
-  T solve(int src, int dst, const T &f, U &ret){
-    ret = 0;
-    T flow = f;
-    std::vector<U> h(size,0), cost(size);
-    std::vector<bool> is_inf(size, true);
-    std::vector<int> prev_node(size), prev_edge(size);
-    std::priority_queue<std::pair<U,int>, std::vector<std::pair<U,int>>, std::greater<std::pair<U,int>>> pq;
-    
-    while(flow > 0){
-      std::fill(is_inf.begin(), is_inf.end(), true);
+  std::vector<int> ls(A);
+  ls.insert(ls.end(), B.begin(), B.end());
 
-      // src -> dst の最小コスト経路を探索する。 (dijkstra algorithm)
-      cost[src] = 0;
-      pq.emplace(0, src);
-      is_inf[src] = false;
+  std::sort(ls.begin(), ls.end());
+  ls.erase(std::unique(ls.begin(), ls.end()), ls.end());
 
-      while(!pq.empty()){
-        U c;
-        int v;
-        std::tie(c,v) = pq.top(); pq.pop();
+  WeightedBipartiteMatching<int> m(n, ls.size());
 
-        if(cost[v] < c) continue;
-	
-        for(int i = 0; i < (int)g[v].size(); ++i){
-          edge &e = g[v][i];
-          int w = e.to;
-          T cap = e.cap;
-          U cst = e.cost;
-          if(cap > 0){
-            if(is_inf[w] or cost[w] + h[w] > cost[v] + h[v] + cst){
-              is_inf[w] = false;
-              cost[w] = cost[v] + cst + h[v] - h[w];
-              prev_node[w] = v;
-              prev_edge[w] = i;
-              pq.emplace(cost[w], w);
-            }
-          }
-        }
-      }
-
-      if(is_inf[dst]) return f-flow; // dstへ到達不可能
-      
-      for(int i = 0; i < size; ++i) h[i] += cost[i];
-
-      // src -> dst の最小コスト経路へ流せる量(df)を決定する。
-      T df = flow;
-      for(int cur = dst; cur != src; cur = prev_node[cur]){
-        df = std::min(df, g[prev_node[cur]][prev_edge[cur]].cap);
-      }
-
-      flow -= df;
-      ret += df * h[dst];
-
-      // capの更新
-      for(int cur = dst; cur != src; cur = prev_node[cur]){
-        edge &e = g[prev_node[cur]][prev_edge[cur]];
-        e.cap -= df;
-        g[cur][e.rev].cap += df;	
-      }
-    }
-
-    return f;
+  for(int i = 0; i < n; ++i){
+    m.add_edge(i, std::lower_bound(ls.begin(), ls.end(), A[i]) - ls.begin(), -B[i]);
+    m.add_edge(i, std::lower_bound(ls.begin(), ls.end(), B[i]) - ls.begin(), -A[i]);
   }
 
-  const std::vector<std::vector<edge>>& get_graph(){
-    return g;
-  }
-};
+  m.f.add_edge(m.s, m.t, std::numeric_limits<int>::max(), 0);
+
+  int ans = -m.solve(n);
+
+  std::cout << ans << std::endl;
+  
+  return 0;
+}
 
 ```
 {% endraw %}
@@ -163,13 +93,19 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Graph/Flow/minimum_cost_flow.cpp"
+#line 1 "test/aoj/2293/main.test.cpp"
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2293"
+
+#include <iostream>
 #include <vector>
+#line 3 "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
+#include <tuple>
+#line 3 "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 #include <queue>
 #include <utility>
 #include <functional>
 #include <algorithm>
-#include <tuple>
+#line 8 "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 
 /**
  * @title 最小費用流
@@ -266,6 +202,82 @@ public:
     return g;
   }
 };
+#line 5 "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
+
+/**
+ * @title 重み付き二部マッチング
+ * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2429
+ */
+template <typename T>
+class WeightedBipartiteMatching{
+public:
+  const int left, right, s, t;
+  MinimumCostFlow<int,T> f;
+ 
+  WeightedBipartiteMatching(int left, int right):
+    left(left), right(right), s(left+right), t(s+1), f(left+right+2)
+  {
+    for(int i = 0; i < left; ++i) f.add_edge(s, i, 1, 0);
+    for(int i = 0; i < right; ++i) f.add_edge(left+i, t, 1, 0);
+  }
+ 
+  void add_edge(int from, int to, T cost){
+    f.add_edge(from, left+to, 1, cost);
+  }
+ 
+  T solve(int flow){
+    T ret;
+    f.solve(s, t, flow, ret);
+    return ret;
+  }
+ 
+  std::vector<std::tuple<int,int,T>> get_matching_edges(){
+    auto g = f.get_graph();
+    std::vector<std::tuple<int,int,T>> ret;
+ 
+    for(int i = 0; i < left; ++i){
+      for(auto &e : g[i]){
+        if(not e.is_rev and e.to != t and e.cap == 0) ret.emplace_back(i, e.to-left, e.cost);
+      }
+    }
+ 
+    return ret;
+  }
+};
+#line 6 "test/aoj/2293/main.test.cpp"
+
+int main(){
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
+  int n; std::cin >> n;
+  
+  std::vector<int> A(n), B(n);
+  for(int i = 0; i < n; ++i){
+    std::cin >> A[i] >> B[i];
+  }
+
+  std::vector<int> ls(A);
+  ls.insert(ls.end(), B.begin(), B.end());
+
+  std::sort(ls.begin(), ls.end());
+  ls.erase(std::unique(ls.begin(), ls.end()), ls.end());
+
+  WeightedBipartiteMatching<int> m(n, ls.size());
+
+  for(int i = 0; i < n; ++i){
+    m.add_edge(i, std::lower_bound(ls.begin(), ls.end(), A[i]) - ls.begin(), -B[i]);
+    m.add_edge(i, std::lower_bound(ls.begin(), ls.end(), B[i]) - ls.begin(), -A[i]);
+  }
+
+  m.f.add_edge(m.s, m.t, std::numeric_limits<int>::max(), 0);
+
+  int ans = -m.solve(n);
+
+  std::cout << ans << std::endl;
+  
+  return 0;
+}
 
 ```
 {% endraw %}

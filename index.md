@@ -179,8 +179,8 @@ layout: default
 
 ### Mylib/Convolution
 
-* :warning: <a href="library/Mylib/Convolution/convolution_and.cpp.html">Mylib/Convolution/convolution_and.cpp</a>
-* :warning: <a href="library/Mylib/Convolution/convolution_or.cpp.html">Mylib/Convolution/convolution_or.cpp</a>
+* :warning: <a href="library/Mylib/Convolution/convolution_and.cpp.html">添字BitAnd畳み込み</a>
+* :warning: <a href="library/Mylib/Convolution/convolution_or.cpp.html">添字BitOr畳み込み</a>
 * :warning: <a href="library/Mylib/Convolution/fast_fourier_transform.cpp.html">高速Fourier変換</a>
 * :heavy_check_mark: <a href="library/Mylib/Convolution/fast_mobius_transform_subset.cpp.html">下位集合に対する高速Möbius変換</a>
 * :heavy_check_mark: <a href="library/Mylib/Convolution/fast_mobius_transform_superset.cpp.html">上位集合に対する高速Möbius変換</a>
@@ -239,7 +239,7 @@ layout: default
 
 ### Mylib/DataStructure/SegmentTree/Static/Beats
 
-* :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/Static/Beats/segment_tree_beats.cpp.html">Mylib/DataStructure/SegmentTree/Static/Beats/segment_tree_beats.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/Static/Beats/segment_tree_beats.cpp.html">Segment tree beats</a>
 
 
 <div id="ca42c2f4d81b13ae1e33bd4dfd939e89"></div>
@@ -270,15 +270,15 @@ layout: default
 
 ### Mylib/DataStructure/SparseTable
 
-* :warning: <a href="library/Mylib/DataStructure/SparseTable/sparse_table.cpp.html">Mylib/DataStructure/SparseTable/sparse_table.cpp</a>
-* :warning: <a href="library/Mylib/DataStructure/SparseTable/sparse_table_2d.cpp.html">Mylib/DataStructure/SparseTable/sparse_table_2d.cpp</a>
+* :warning: <a href="library/Mylib/DataStructure/SparseTable/sparse_table.cpp.html">Sparse table</a>
+* :warning: <a href="library/Mylib/DataStructure/SparseTable/sparse_table_2d.cpp.html">Sparse table 2D</a>
 
 
 <div id="de940accc238379dfea959424e331579"></div>
 
 ### Mylib/DataStructure/SplayTree
 
-* :heavy_check_mark: <a href="library/Mylib/DataStructure/SplayTree/splay_tree.cpp.html">Mylib/DataStructure/SplayTree/splay_tree.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/SplayTree/splay_tree.cpp.html">スプレー木</a>
 
 
 <div id="12526f91d29b13109723e3d0cc6a4265"></div>
@@ -292,15 +292,15 @@ layout: default
 
 ### Mylib/DataStructure/Treap
 
-* :heavy_check_mark: <a href="library/Mylib/DataStructure/Treap/treap_ordered_by_index.cpp.html">Mylib/DataStructure/Treap/treap_ordered_by_index.cpp</a>
-* :warning: <a href="library/Mylib/DataStructure/Treap/treap_ordered_by_value.cpp.html">Mylib/DataStructure/Treap/treap_ordered_by_value.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/Treap/treap_ordered_by_index.cpp.html">Treap</a>
+* :warning: <a href="library/Mylib/DataStructure/Treap/treap_ordered_by_value.cpp.html">OrderedSet型 Treap</a>
 
 
 <div id="aacfe2e228752c2f7bc46438cb1a6bd5"></div>
 
 ### Mylib/DataStructure/Trie
 
-* :warning: <a href="library/Mylib/DataStructure/Trie/binary_trie.cpp.html">Mylib/DataStructure/Trie/binary_trie.cpp</a>
+* :warning: <a href="library/Mylib/DataStructure/Trie/binary_trie.cpp.html">Binary trie</a>
 
 
 <div id="3ff74e8366c88d06b530f361450b1117"></div>
@@ -328,7 +328,7 @@ layout: default
 
 ### Mylib/DynamicProgramming
 
-* :heavy_check_mark: <a href="library/Mylib/DynamicProgramming/bitonic_tour.cpp.html">Mylib/DynamicProgramming/bitonic_tour.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/DynamicProgramming/bitonic_tour.cpp.html">Bitonic tour</a>
 * :heavy_check_mark: <a href="library/Mylib/DynamicProgramming/levenshtein_distance.cpp.html">Levenshtein距離 / 編集距離</a>
 * :heavy_check_mark: <a href="library/Mylib/DynamicProgramming/longest_common_subsequence.cpp.html">最長共通部分列</a>
 * :heavy_check_mark: <a href="library/Mylib/DynamicProgramming/longest_increasing_subsequence.cpp.html">最長増加部分列</a>
@@ -432,7 +432,7 @@ layout: default
 
 * :heavy_check_mark: <a href="library/Mylib/Graph/GraphUtils/articulation_points.cpp.html">間接点列挙</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/GraphUtils/bridges.cpp.html">橋列挙</a>
-* :warning: <a href="library/Mylib/Graph/GraphUtils/decompose_pseudotree.cpp.html">Mylib/Graph/GraphUtils/decompose_pseudotree.cpp</a>
+* :warning: <a href="library/Mylib/Graph/GraphUtils/decompose_pseudotree.cpp.html">Pseudotreeの分解</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/GraphUtils/two_edge_connected_components.cpp.html">二重辺連結成分分解</a>
 
@@ -557,7 +557,7 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/Misc/inverse_number.cpp.html">転倒数</a>
 * :warning: <a href="library/Mylib/Misc/run_length_encode.cpp.html">連長圧縮</a>
 * :warning: <a href="library/Mylib/Misc/sort_all.cpp.html">Mylib/Misc/sort_all.cpp</a>
-* :warning: <a href="library/Mylib/Misc/xor_shift.cpp.html">Mylib/Misc/xor_shift.cpp</a>
+* :warning: <a href="library/Mylib/Misc/xor_shift.cpp.html">XorShift</a>
 
 
 <div id="5fda78fda98ef9fc0f87c6b50d529f19"></div>
@@ -596,10 +596,10 @@ layout: default
 
 ### Mylib/Number/Mod
 
-* :heavy_check_mark: <a href="library/Mylib/Number/Mod/mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
-* :heavy_check_mark: <a href="library/Mylib/Number/Mod/mod_log.cpp.html">Mylib/Number/Mod/mod_log.cpp</a>
-* :heavy_check_mark: <a href="library/Mylib/Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
-* :heavy_check_mark: <a href="library/Mylib/Number/Mod/mod_sqrt.cpp.html">Mylib/Number/Mod/mod_sqrt.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/Number/Mod/mod_inv.cpp.html">mod逆数</a>
+* :heavy_check_mark: <a href="library/Mylib/Number/Mod/mod_log.cpp.html">離散対数</a>
+* :heavy_check_mark: <a href="library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
+* :heavy_check_mark: <a href="library/Mylib/Number/Mod/mod_sqrt.cpp.html">平方剰余</a>
 
 
 <div id="26f1f261bc4e83492156752f5caf0111"></div>
@@ -683,6 +683,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/1549/main.test.cpp.html">test/aoj/1549/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/2136/main.test.cpp.html">test/aoj/2136/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/2171/main.test.cpp.html">test/aoj/2171/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/2293/main.test.cpp.html">test/aoj/2293/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/2446/main.test.cpp.html">test/aoj/2446/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/2530/main.test.cpp.html">test/aoj/2530/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>

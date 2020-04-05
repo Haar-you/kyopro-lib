@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#806a528feab938cddc13c96a5d63d020">test/aoj/GRL_7_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_7_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-04-05 13:51:54+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_7_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_7_A</a>
@@ -91,7 +91,7 @@ int main(){
 /**
  * @title Ford-Fulkerson法
  */
-template <typename T, T INF> class FordFulkerson{
+template <typename T> class FordFulkerson{
 public:
   struct edge{
     int to, rev;
@@ -146,7 +146,7 @@ public:
 
     while(1){
       visit.assign(size, false);
-      T flow = dfs(s,t,INF);
+      T flow = dfs(s, t, std::numeric_limits<T>::max());
       if(flow == 0) return ret;
       ret += flow;
     }
@@ -163,7 +163,7 @@ public:
  */
 class BipartiteMatching{
   int x, y;
-  FordFulkerson<int, INT_MAX> f;
+  FordFulkerson<int> f;
   int s, t;
   
 public:

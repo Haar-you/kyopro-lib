@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#447515698a63d3c08450ac7bb86adc9d">test/yosupo-judge/convolution_mod_1000000007</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/convolution_mod_1000000007/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/convolution_mod_1000000007">https://judge.yosupo.jp/problem/convolution_mod_1000000007</a>
@@ -40,8 +40,8 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number Theoretic Transform</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">mod逆数</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
 
 
 ## Code
@@ -91,6 +91,9 @@ int main(){
 #include <algorithm>
 #line 2 "Mylib/Number/Mod/mod_power.cpp"
 
+/**
+ * @title mod累乗
+ */
 int64_t power(int64_t n, int64_t p, int64_t m){
   int64_t ret = 1;
   while(p > 0){
@@ -102,6 +105,10 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 }
 #line 3 "Mylib/Number/Mod/mod_inv.cpp"
 
+/**
+ * @title mod逆数
+ * @attention gcd(a, m) = 1
+ */
 int64_t mod_inv(int64_t a, int64_t m){
   int64_t b = m, u = 1, v = 0;
 

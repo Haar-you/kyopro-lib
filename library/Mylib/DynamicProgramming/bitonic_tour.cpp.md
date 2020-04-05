@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/DynamicProgramming/bitonic_tour.cpp
+# :heavy_check_mark: Bitonic tour
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3a96c66483797c15eff4c0c3d8733619">Mylib/DynamicProgramming</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/bitonic_tour.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_C</a>
@@ -54,6 +54,7 @@ layout: default
 #include <cmath>
 
 /**
+ * @title Bitonic tour
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_C
  */
 template <typename T>
@@ -101,6 +102,7 @@ double bitonic_tour(int n, const std::vector<T> &x, const std::vector<T> &y){
 #include <cmath>
 
 /**
+ * @title Bitonic tour
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_C
  */
 template <typename T>

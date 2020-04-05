@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0a1953e1c2bd6e0f6d5a522af5f0929c">test/yosupo-judge/sqrt_mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/sqrt_mod/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 07:59:09+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/sqrt_mod">https://judge.yosupo.jp/problem/sqrt_mod</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_sqrt.cpp.html">Mylib/Number/Mod/mod_sqrt.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_sqrt.cpp.html">平方剰余</a>
 
 
 ## Code
@@ -81,6 +81,9 @@ int main(){
 #include <optional>
 #line 2 "Mylib/Number/Mod/mod_power.cpp"
 
+/**
+ * @title mod累乗
+ */
 int64_t power(int64_t n, int64_t p, int64_t m){
   int64_t ret = 1;
   while(p > 0){
@@ -92,6 +95,12 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 }
 #line 5 "Mylib/Number/Mod/mod_sqrt.cpp"
 
+/**
+ * @title 平方剰余
+ * @note x^2 = a (mod p)
+ * @see https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%96%B9%E5%89%B0%E4%BD%99%E3%81%AE%E7%9B%B8%E4%BA%92%E6%B3%95%E5%89%87
+ * @see https://qiita.com/drken/items/3b4fdf0a78e7a138cd9a
+ */
 std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
   if(p == 2) return a % 2;
   if(a == 0) return 0;

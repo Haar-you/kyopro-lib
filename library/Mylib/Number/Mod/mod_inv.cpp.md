@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Number/Mod/mod_inv.cpp
+# :heavy_check_mark: mod逆数
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#795ab137908c82fc28acbcffe5b1c757">Mylib/Number/Mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mod/mod_inv.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 07:59:09+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
 
@@ -39,7 +39,7 @@ layout: default
 ## Required by
 
 * :heavy_check_mark: <a href="../../Convolution/ntt_convolution.cpp.html">Number Theoretic Transform</a>
-* :heavy_check_mark: <a href="mod_log.cpp.html">Mylib/Number/Mod/mod_log.cpp</a>
+* :heavy_check_mark: <a href="mod_log.cpp.html">離散対数</a>
 * :warning: <a href="../garner.cpp.html">Garner法</a>
 
 
@@ -59,6 +59,10 @@ layout: default
 #pragma once
 #include <utility>
 
+/**
+ * @title mod逆数
+ * @attention gcd(a, m) = 1
+ */
 int64_t mod_inv(int64_t a, int64_t m){
   int64_t b = m, u = 1, v = 0;
 
@@ -83,6 +87,10 @@ int64_t mod_inv(int64_t a, int64_t m){
 #line 2 "Mylib/Number/Mod/mod_inv.cpp"
 #include <utility>
 
+/**
+ * @title mod逆数
+ * @attention gcd(a, m) = 1
+ */
 int64_t mod_inv(int64_t a, int64_t m){
   int64_t b = m, u = 1, v = 0;
 

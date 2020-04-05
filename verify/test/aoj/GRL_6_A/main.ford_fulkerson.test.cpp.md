@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#d22130300c64d313f1c5481cac7c3c1c">test/aoj/GRL_6_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-04-05 13:51:54+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A</a>
@@ -56,7 +56,7 @@ layout: default
 int main(){
   int V, E; std::cin >> V >> E;
 
-  FordFulkerson<int, INT_MAX> f(V);
+  FordFulkerson<int> f(V);
   for(int i = 0; i < E; ++i){
     int s, t, c; std::cin >> s >> t >> c;
 
@@ -88,7 +88,7 @@ int main(){
 /**
  * @title Ford-Fulkerson法
  */
-template <typename T, T INF> class FordFulkerson{
+template <typename T> class FordFulkerson{
 public:
   struct edge{
     int to, rev;
@@ -143,7 +143,7 @@ public:
 
     while(1){
       visit.assign(size, false);
-      T flow = dfs(s,t,INF);
+      T flow = dfs(s, t, std::numeric_limits<T>::max());
       if(flow == 0) return ret;
       ret += flow;
     }
@@ -158,7 +158,7 @@ public:
 int main(){
   int V, E; std::cin >> V >> E;
 
-  FordFulkerson<int, INT_MAX> f(V);
+  FordFulkerson<int> f(V);
   for(int i = 0; i < E; ++i){
     int s, t, c; std::cin >> s >> t >> c;
 

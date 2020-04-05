@@ -25,21 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Number/Mod/mod_log.cpp
+# :heavy_check_mark: 離散対数
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#795ab137908c82fc28acbcffe5b1c757">Mylib/Number/Mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mod/mod_log.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 07:59:09+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="mod_inv.cpp.html">Mylib/Number/Mod/mod_inv.cpp</a>
-* :heavy_check_mark: <a href="mod_power.cpp.html">Mylib/Number/Mod/mod_power.cpp</a>
+* :heavy_check_mark: <a href="mod_inv.cpp.html">mod逆数</a>
+* :heavy_check_mark: <a href="mod_power.cpp.html">mod累乗</a>
 
 
 ## Verified with
@@ -61,6 +61,7 @@ layout: default
 #include "Mylib/Number/Mod/mod_inv.cpp"
 
 /**
+ * @title 離散対数
  * @note a^x = b (mod m)
  * @attention time complexity O(√m)
  */
@@ -127,6 +128,9 @@ std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
 #include <cmath>
 #line 2 "Mylib/Number/Mod/mod_power.cpp"
 
+/**
+ * @title mod累乗
+ */
 int64_t power(int64_t n, int64_t p, int64_t m){
   int64_t ret = 1;
   while(p > 0){
@@ -139,6 +143,10 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 #line 2 "Mylib/Number/Mod/mod_inv.cpp"
 #include <utility>
 
+/**
+ * @title mod逆数
+ * @attention gcd(a, m) = 1
+ */
 int64_t mod_inv(int64_t a, int64_t m){
   int64_t b = m, u = 1, v = 0;
 
@@ -156,6 +164,7 @@ int64_t mod_inv(int64_t a, int64_t m){
 #line 8 "Mylib/Number/Mod/mod_log.cpp"
 
 /**
+ * @title 離散対数
  * @note a^x = b (mod m)
  * @attention time complexity O(√m)
  */

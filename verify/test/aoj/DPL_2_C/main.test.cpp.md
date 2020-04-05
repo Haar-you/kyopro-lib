@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#ca30339b964798e13b3846ad3753f829">test/aoj/DPL_2_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_2_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_C</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DynamicProgramming/bitonic_tour.cpp.html">Mylib/DynamicProgramming/bitonic_tour.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DynamicProgramming/bitonic_tour.cpp.html">Bitonic tour</a>
 
 
 ## Code
@@ -90,6 +90,7 @@ int main(){
 #include <cmath>
 
 /**
+ * @title Bitonic tour
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_C
  */
 template <typename T>

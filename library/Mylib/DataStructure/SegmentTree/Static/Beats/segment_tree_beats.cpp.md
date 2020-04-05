@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/DataStructure/SegmentTree/Static/Beats/segment_tree_beats.cpp
+# :heavy_check_mark: Segment tree beats
 
 <a href="../../../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../../../index.html#c064675a3a07889d09282378899fe2ce">Mylib/DataStructure/SegmentTree/Static/Beats</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/Static/Beats/segment_tree_beats.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 09:03:11+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/submission/5293 (chmin, chmax, add, sum)">https://judge.yosupo.jp/submission/5293 (chmin, chmax, add, sum)</a>
@@ -53,6 +53,7 @@ layout: default
 #include <algorithm>
 
 /**
+ * @title Segment tree beats
  * @see https://judge.yosupo.jp/submission/5293 (chmin, chmax, add, sum)
  */
 class SegmentTreeBeats{
@@ -268,6 +269,7 @@ public:
 #include <algorithm>
 
 /**
+ * @title Segment tree beats
  * @see https://judge.yosupo.jp/submission/5293 (chmin, chmax, add, sum)
  */
 class SegmentTreeBeats{

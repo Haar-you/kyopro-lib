@@ -25,15 +25,16 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Graph/GraphUtils/decompose_pseudotree.cpp
+# :warning: Pseudotreeの分解
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0520734517f09caa086d1aa01fa4b9e4">Mylib/Graph/GraphUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/GraphUtils/decompose_pseudotree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
+* see: <a href="https://en.wikipedia.org/wiki/Pseudoforest">https://en.wikipedia.org/wiki/Pseudoforest</a>
 
 
 ## Depends on
@@ -51,6 +52,11 @@ layout: default
 #include <queue>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title Pseudotreeの分解
+ * @see https://en.wikipedia.org/wiki/Pseudoforest
+ * @brief 閉路を丁度1つだけもつ無向グラフを閉路と森に分解する。
+ */
 template <typename T>
 struct PseudoTree{
   const int n;
@@ -159,6 +165,11 @@ template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
 }
 #line 5 "Mylib/Graph/GraphUtils/decompose_pseudotree.cpp"
 
+/**
+ * @title Pseudotreeの分解
+ * @see https://en.wikipedia.org/wiki/Pseudoforest
+ * @brief 閉路を丁度1つだけもつ無向グラフを閉路と森に分解する。
+ */
 template <typename T>
 struct PseudoTree{
   const int n;

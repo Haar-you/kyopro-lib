@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/DataStructure/Treap/treap_ordered_by_value.cpp
+# :warning: OrderedSet型 Treap
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f1faa641fd949a91e292dddd575fe73e">Mylib/DataStructure/Treap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Treap/treap_ordered_by_value.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 10:19:12+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="treap_ordered_by_index.cpp.html">Mylib/DataStructure/Treap/treap_ordered_by_index.cpp</a>
+* :heavy_check_mark: <a href="treap_ordered_by_index.cpp.html">Treap</a>
 
 
 ## Code
@@ -50,6 +50,9 @@ layout: default
 #include <algorithm>
 #include "Mylib/DataStructure/Treap/treap_ordered_by_index.cpp"
 
+/**
+ * @title OrderedSet型 Treap
+ */
 namespace treap{
   template <typename Monoid>
   class OrderedTreap : public Treap<Monoid>{
@@ -124,6 +127,9 @@ namespace treap{
 #include <utility>
 #include <tuple>
 
+/**
+ * @title Treap
+ */
 namespace treap{
   template <typename Monoid>
   struct TreapNode{
@@ -311,6 +317,9 @@ namespace treap{
 }
 #line 4 "Mylib/DataStructure/Treap/treap_ordered_by_value.cpp"
 
+/**
+ * @title OrderedSet型 Treap
+ */
 namespace treap{
   template <typename Monoid>
   class OrderedTreap : public Treap<Monoid>{

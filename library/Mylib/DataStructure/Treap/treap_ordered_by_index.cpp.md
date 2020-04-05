@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/DataStructure/Treap/treap_ordered_by_index.cpp
+# :heavy_check_mark: Treap
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f1faa641fd949a91e292dddd575fe73e">Mylib/DataStructure/Treap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Treap/treap_ordered_by_index.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 09:40:21+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
 
 
 ## Required by
 
-* :warning: <a href="treap_ordered_by_value.cpp.html">Mylib/DataStructure/Treap/treap_ordered_by_value.cpp</a>
+* :warning: <a href="treap_ordered_by_value.cpp.html">OrderedSet型 Treap</a>
 
 
 ## Verified with
@@ -56,6 +56,9 @@ layout: default
 #include <utility>
 #include <tuple>
 
+/**
+ * @title Treap
+ */
 namespace treap{
   template <typename Monoid>
   struct TreapNode{
@@ -253,6 +256,9 @@ namespace treap{
 #include <utility>
 #include <tuple>
 
+/**
+ * @title Treap
+ */
 namespace treap{
   template <typename Monoid>
   struct TreapNode{

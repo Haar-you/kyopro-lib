@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#65eb1c5db2b1bd726d58cf661f149e7c">Mylib/Graph/Matching</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Matching/bipartite_matching.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-04-05 13:51:54+09:00
 
 
 
@@ -63,7 +63,7 @@ layout: default
  */
 class BipartiteMatching{
   int x, y;
-  FordFulkerson<int, INT_MAX> f;
+  FordFulkerson<int> f;
   int s, t;
   
 public:
@@ -112,7 +112,7 @@ public:
 /**
  * @title Ford-Fulkerson法
  */
-template <typename T, T INF> class FordFulkerson{
+template <typename T> class FordFulkerson{
 public:
   struct edge{
     int to, rev;
@@ -167,7 +167,7 @@ public:
 
     while(1){
       visit.assign(size, false);
-      T flow = dfs(s,t,INF);
+      T flow = dfs(s, t, std::numeric_limits<T>::max());
       if(flow == 0) return ret;
       ret += flow;
     }
@@ -184,7 +184,7 @@ public:
  */
 class BipartiteMatching{
   int x, y;
-  FordFulkerson<int, INT_MAX> f;
+  FordFulkerson<int> f;
   int s, t;
   
 public:

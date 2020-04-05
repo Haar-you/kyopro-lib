@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Convolution/convolution_and.cpp
+# :warning: 添字BitAnd畳み込み
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/convolution_and.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-05 15:40:57+09:00
 
 
 
@@ -53,6 +53,7 @@ layout: default
 #include "Mylib/Convolution/fast_mobius_transform_superset.cpp"
 
 /**
+ * @title 添字BitAnd畳み込み
  * @note h_k = ∑_{k=i∩j} f(i) * g(j)
  */
 template <typename T>
@@ -107,6 +108,7 @@ std::vector<T> fast_mobius_transform_superset(std::vector<T> f, const Func &op =
 #line 5 "Mylib/Convolution/convolution_and.cpp"
 
 /**
+ * @title 添字BitAnd畳み込み
  * @note h_k = ∑_{k=i∩j} f(i) * g(j)
  */
 template <typename T>
