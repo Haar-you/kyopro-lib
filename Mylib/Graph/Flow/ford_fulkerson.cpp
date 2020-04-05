@@ -5,7 +5,7 @@
 /**
  * @title Ford-Fulkerson法
  */
-template <typename T, T INF> class FordFulkerson{
+template <typename T> class FordFulkerson{
 public:
   struct edge{
     int to, rev;
@@ -60,7 +60,7 @@ public:
 
     while(1){
       visit.assign(size, false);
-      T flow = dfs(s,t,INF);
+      T flow = dfs(s, t, std::numeric_limits<T>::max());
       if(flow == 0) return ret;
       ret += flow;
     }

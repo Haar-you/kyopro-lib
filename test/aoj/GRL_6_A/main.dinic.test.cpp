@@ -7,7 +7,7 @@
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Dinic<int, INT_MAX> f(V);
+  Dinic<int> f(V);
   for(int i = 0; i < E; ++i){
     int s, t, c; std::cin >> s >> t >> c;
 

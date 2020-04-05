@@ -10,7 +10,7 @@
  */
 class BipartiteMatching{
   int x, y;
-  FordFulkerson<int, INT_MAX> f;
+  FordFulkerson<int> f;
   int s, t;
   
 public:
