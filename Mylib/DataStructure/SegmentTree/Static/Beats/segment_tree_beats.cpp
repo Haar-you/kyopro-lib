@@ -4,6 +4,7 @@
 #include <algorithm>
 
 /**
+ * @title Segment tree beats
  * @see https://judge.yosupo.jp/submission/5293 (chmin, chmax, add, sum)
  */
 class SegmentTreeBeats{

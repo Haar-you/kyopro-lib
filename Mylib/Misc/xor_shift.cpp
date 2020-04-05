@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @title XorShift
+ */
 struct XorShift{
   static uint64_t rand(){
     static uint64_t x = 1234567889, y = 362436069, z = 521288629, w = 88675123;

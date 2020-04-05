@@ -2,6 +2,9 @@
 #include <utility>
 #include <tuple>
 
+/**
+ * @title スプレー木
+ */
 namespace splay_tree{
   template <typename Monoid>
   struct SplayNode{

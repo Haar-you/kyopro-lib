@@ -4,6 +4,7 @@
 #include "Mylib/Convolution/fast_mobius_transform_superset.cpp"
 
 /**
+ * @title 添字BitAnd畳み込み
  * @note h_k = ∑_{k=i∩j} f(i) * g(j)
  */
 template <typename T>

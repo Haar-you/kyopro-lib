@@ -3,6 +3,9 @@
 #include <utility>
 #include <algorithm>
 
+/**
+ * @title Sparse table 2D
+ */
 template <typename Semilattice>
 class SparseTable2D{
   using value_type = typename Semilattice::value_type;

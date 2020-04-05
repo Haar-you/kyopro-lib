@@ -4,6 +4,7 @@
 #include "Mylib/Convolution/fast_mobius_transform_subset.cpp"
 
 /**
+ * @title 添字BitOr畳み込み
  * @note h_k = ∑_{k=i∪j} f(i) * g(j)
  * @see https://csacademy.com/contest/archive/task/maxor/
  */
@@ -15,4 +16,3 @@ std::vector<T> convolution_or(std::vector<T> f, std::vector<T> g){
   f = fast_mobius_transform_subset(f);
   return f;
 }
-

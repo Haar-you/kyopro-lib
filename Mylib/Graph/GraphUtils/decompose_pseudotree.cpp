@@ -3,6 +3,11 @@
 #include <queue>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title Pseudotreeの分解
+ * @see https://en.wikipedia.org/wiki/Pseudoforest
+ * @brief 閉路を丁度1つだけもつ無向グラフを閉路と森に分解する。
+ */
 template <typename T>
 struct PseudoTree{
   const int n;

@@ -2,6 +2,9 @@
 #include <algorithm>
 #include "Mylib/DataStructure/Treap/treap_ordered_by_index.cpp"
 
+/**
+ * @title OrderedSet型 Treap
+ */
 namespace treap{
   template <typename Monoid>
   class OrderedTreap : public Treap<Monoid>{

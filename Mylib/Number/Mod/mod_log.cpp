@@ -7,6 +7,7 @@
 #include "Mylib/Number/Mod/mod_inv.cpp"
 
 /**
+ * @title 離散対数
  * @note a^x = b (mod m)
  * @attention time complexity O(√m)
  */

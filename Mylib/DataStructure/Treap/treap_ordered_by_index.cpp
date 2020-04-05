@@ -3,6 +3,9 @@
 #include <utility>
 #include <tuple>
 
+/**
+ * @title Treap
+ */
 namespace treap{
   template <typename Monoid>
   struct TreapNode{

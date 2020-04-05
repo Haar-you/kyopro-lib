@@ -5,6 +5,7 @@
 #include <cmath>
 
 /**
+ * @title Bitonic tour
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_C
  */
 template <typename T>

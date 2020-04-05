@@ -2,9 +2,9 @@
 #include <vector>
 
 /**
+ * @title Binary trie
  * @see https://beta.atcoder.jp/contests/dwacon5th-final-open/tasks/dwacon5th_final_b
  */
-
 template <typename T, unsigned int B> class BinaryTrie{
 protected:
   struct node{
