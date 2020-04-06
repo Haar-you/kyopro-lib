@@ -4,7 +4,7 @@
 #include "Mylib/Geometry/Float/intersect_circle_segment.cpp"
 
 /**
- * @title 円と多角形の共通面積
+ * @title 円と多角形の共通部分の面積
  * @see https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_H
  */
 template <typename T>
