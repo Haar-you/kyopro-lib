@@ -25,26 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 素因数分解
+# :heavy_check_mark: test/aoj/NTL_1_A/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/prime_factorize.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+* category: <a href="../../../../index.html#3008ead005d9a504d0a3e077716b71c1">test/aoj/NTL_1_A</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/NTL_1_A/main.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-06 20:21:28+09:00
 
 
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A</a>
 
 
-## Required by
+## Depends on
 
-* :heavy_check_mark: <a href="count_coprime.cpp.html">\[1,n\]を満たす自然数でmと互いに素であるものの個数</a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/NTL_1_A/main.test.cpp.html">test/aoj/NTL_1_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/NTL_1_D/main.test.cpp.html">test/aoj/NTL_1_D/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/prime_factorize.cpp.html">素因数分解</a>
 
 
 ## Code
@@ -52,27 +47,27 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#pragma once
-#include <vector>
-#include <utility>
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A"
 
-/**
- * @title 素因数分解
- */
-auto prime_factorize(int64_t n){
-  std::vector<std::pair<int64_t,int64_t>> ret;
-  for(int64_t i = 2LL; i * i <= n; ++i){
-    if(n % i == 0){
-      int64_t c = 0;
-      while(n % i == 0){
-        n /= i;
-        ++c;
-      }
-      ret.emplace_back(i, c);
+#include <iostream>
+#include "Mylib/Number/Prime/prime_factorize.cpp"
+
+int main(){
+  int n; std::cin >> n;
+
+  auto res = prime_factorize(n);
+
+  std::cout << n << ":";
+
+  for(auto &[x, c] : res){
+    for(int i = 0; i < c; ++i){
+      std::cout << " " << x;
     }
   }
-  if(n != 1) ret.emplace_back(n, 1);
-  return ret;
+
+  std::cout << std::endl;
+
+  return 0;
 }
 
 ```
@@ -81,6 +76,10 @@ auto prime_factorize(int64_t n){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 1 "test/aoj/NTL_1_A/main.test.cpp"
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A"
+
+#include <iostream>
 #line 2 "Mylib/Number/Prime/prime_factorize.cpp"
 #include <vector>
 #include <utility>
@@ -102,6 +101,25 @@ auto prime_factorize(int64_t n){
   }
   if(n != 1) ret.emplace_back(n, 1);
   return ret;
+}
+#line 5 "test/aoj/NTL_1_A/main.test.cpp"
+
+int main(){
+  int n; std::cin >> n;
+
+  auto res = prime_factorize(n);
+
+  std::cout << n << ":";
+
+  for(auto &[x, c] : res){
+    for(int i = 0; i < c; ++i){
+      std::cout << " " << x;
+    }
+  }
+
+  std::cout << std::endl;
+
+  return 0;
 }
 
 ```

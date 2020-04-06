@@ -21,29 +21,26 @@ layout: default
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-balloon-js@1.1.2/jquery.balloon.min.js" integrity="sha256-ZEYs9VrgAeNuPvs15E39OsyOJaIkXEEt10fzxJ20+2I=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../../../assets/js/copy-button.js"></script>
-<link rel="stylesheet" href="../../../assets/css/copy-button.css" />
+<script type="text/javascript" src="../../../../assets/js/copy-button.js"></script>
+<link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: LCP(Longest Common Prefix)配列
+# :heavy_check_mark: test/yosupo-judge/number_of_substrings/main.test.cpp
 
-<a href="../../../index.html">Back to top page</a>
+<a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/lcp_array.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+* category: <a href="../../../../index.html#04f6960be805b227af3e57d2b0b34522">test/yosupo-judge/number_of_substrings</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/number_of_substrings/main.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-06 20:21:28+09:00
 
 
+* see: <a href="https://judge.yosupo.jp/problem/number_of_substrings">https://judge.yosupo.jp/problem/number_of_substrings</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="suffix_array.cpp.html">接尾辞配列</a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/number_of_substrings/main.test.cpp.html">test/yosupo-judge/number_of_substrings/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/String/lcp_array.cpp.html">LCP(Longest Common Prefix)配列</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/String/suffix_array.cpp.html">接尾辞配列</a>
 
 
 ## Code
@@ -51,36 +48,39 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#pragma once
-#include <vector>
+#define PROBLEM "https://judge.yosupo.jp/problem/number_of_substrings"
+
+#include <iostream>
+#include <string>
+
 #include "Mylib/String/suffix_array.cpp"
+#include "Mylib/String/lcp_array.cpp"
 
-/**
- * @title LCP(Longest Common Prefix)配列
- */
-template <typename T>
-struct LCPArray{
-  const int n;
-  std::vector<int> rank, lcp_array;
 
-  LCPArray(const SuffixArray<T> &sa): n(sa.n), rank(n), lcp_array(n-1){
-    for(int i = 0; i < n; ++i) rank[sa[i]] = i;
+int main(){
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  std::string s; std::cin >> s;
+  const int N = s.size();
 
-    int h = 0;
-    for(int i = 0; i < n; ++i){
-      if(rank[i] == 0) continue;
-      int j = sa[rank[i]-1];
+  SuffixArray sa(s);
+  LCPArray lcp(sa);
 
-      if(h) --h;
-      while(j+h < n and i+h < n){
-        if(sa.str[j+h] != sa.str[i+h]) break;
-        ++h;
-      }
+  int64_t ans = 0;
 
-      lcp_array[rank[i]-1] = h;
+  for(int i = 0; i < N; ++i){
+    ans += N - sa.suffix_array[i];
+
+    if(i){
+      ans -= lcp.lcp_array[i-1];
     }
   }
-};
+
+  std::cout << ans << std::endl;
+
+  return 0;
+}
 
 ```
 {% endraw %}
@@ -88,9 +88,14 @@ struct LCPArray{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/String/lcp_array.cpp"
+#line 1 "test/yosupo-judge/number_of_substrings/main.test.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/number_of_substrings"
+
+#include <iostream>
+#include <string>
+
+#line 2 "Mylib/String/suffix_array.cpp"
 #include <vector>
-#line 3 "Mylib/String/suffix_array.cpp"
 #include <tuple>
 
 /**
@@ -244,9 +249,36 @@ struct LCPArray{
     }
   }
 };
+#line 8 "test/yosupo-judge/number_of_substrings/main.test.cpp"
+
+
+int main(){
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  std::string s; std::cin >> s;
+  const int N = s.size();
+
+  SuffixArray sa(s);
+  LCPArray lcp(sa);
+
+  int64_t ans = 0;
+
+  for(int i = 0; i < N; ++i){
+    ans += N - sa.suffix_array[i];
+
+    if(i){
+      ans -= lcp.lcp_array[i-1];
+    }
+  }
+
+  std::cout << ans << std::endl;
+
+  return 0;
+}
 
 ```
 {% endraw %}
 
-<a href="../../../index.html">Back to top page</a>
+<a href="../../../../index.html">Back to top page</a>
 

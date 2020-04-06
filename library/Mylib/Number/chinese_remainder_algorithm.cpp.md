@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :warning: <a href="extended_gcd.cpp.html">拡張Euclidの互除法</a>
+* :heavy_check_mark: <a href="extended_gcd.cpp.html">拡張Euclidの互除法</a>
 
 
 ## Code

@@ -42,6 +42,11 @@ layout: default
 * :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
 
 
+## Required by
+
+* :warning: <a href="area_intersection_of_circles.cpp.html">2円の共通部分の面積</a>
+
+
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_A/main.test.cpp.html">test/aoj/CGL_7_A/main.test.cpp</a>

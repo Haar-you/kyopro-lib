@@ -25,31 +25,22 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 円と線分の交差
+# :warning: 2円の共通部分の面積
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/intersect_circle_segment.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/area_intersection_of_circles.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-06 17:41:22+09:00
 
 
+* see: <a href="https://codeforces.com/contest/600/problem/D">https://codeforces.com/contest/600/problem/D</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="distance_segment_point.cpp.html">線分・点間の距離</a>
 * :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
-
-
-## Required by
-
-* :heavy_check_mark: <a href="area_intersection_of_circle_and_polygon.cpp.html">円と多角形の共通部分の面積</a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
+* :heavy_check_mark: <a href="intersect_circles.cpp.html">円同士の交差</a>
 
 
 ## Code
@@ -58,69 +49,50 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include <vector>
 #include <cmath>
 #include "Mylib/Geometry/Float/geometry_template.cpp"
-#include "Mylib/Geometry/Float/distance_segment_point.cpp"
+#include "Mylib/Geometry/Float/intersect_circles.cpp"
 
 /**
- * @title 円と線分の交差
+ * @title 2円の共通部分の面積
+ * @see https://codeforces.com/contest/600/problem/D
  */
-namespace intersect_circle_segment{
-  enum Status{
-              INSIDE         = 0b00001,
-              OUTSIDE        = 0b00010,
-              TANGENT        = 0b00100,
-              ONE_CROSSPOINT = 0b01000,
-              TWO_CROSSPOINT = 0b10000
-  };
+template <typename T, typename U = typename T::value_type>
+T area_of_intersection_of_circles(const Circle<T> &a, const Circle<T> &b){
+  auto [s, p] = intersect_circles::check(a, b);
+  
+  switch(s){
+  case intersect_circles::SAME: {
+    return a.radius * a.radius * M_PI;
+  }
+  case intersect_circles::INSIDE:
+  case intersect_circles::INSCRIBED: {
+    return std::min(a.radius * a.radius * M_PI, b.radius * b.radius * M_PI);
+  }
+  case intersect_circles::INTERSECT: {
+    T ret = 0;
 
-  template <typename T>
-  struct Result{
-    Status status;
-    std::vector<Point<T>> crosspoints;
-  };
+    auto d = (a.center - b.center).size();
 
-  template <typename T, typename U = typename T::value_type>
-  auto check(const Circle<T> &cl, const Line<T> &s){
-    Result<T> ret;
+    {
+      T ang = std::acos((U)((a.radius * a.radius + d * d - b.radius * b.radius) / (a.radius * d * 2.0)));
+      ret += (ang - std::sin((U)(ang * 2.0)) / 2.0) * a.radius * a.radius;
+    }
+
+    {
+      T ang = std::acos((U)((b.radius * b.radius + d * d - a.radius * a.radius) / (b.radius * d * 2.0)));
+      ret += (ang - std::sin((U)(ang * 2.0)) / 2.0) * b.radius * b.radius;
+    }
     
-    const T r = cl.radius;
-    const auto &c = cl.center;
-
-    const T d1 = (c - s.from).size();
-    const T d2 = (c - s.to).size();
-    const T v = distance_segment_point(s, c);
-    const T m = std::sqrt((U)(r*r - v*v));
-    const auto n = normal(s.diff());
-    const auto k = s.from + s.diff() * cross(n, c + n - s.from) / cross(n, s.diff());
-
-    if(d1 < r and d2 < r){ // if inside
-      ret.status = INSIDE;
-    }
-    else if(v == r){ // if tangent
-      ret.crosspoints.emplace_back(k);
-      ret.status = TANGENT;
-    }
-    else if(v > r){ // if outside
-      ret.status = OUTSIDE;
-    }
-    else if(d1 >= r and d2 >= r){ // if two crosspoints exist
-      ret.crosspoints.emplace_back(k - unit(s.diff()) * m);
-      ret.crosspoints.emplace_back(k + unit(s.diff()) * m);
-      ret.status = TWO_CROSSPOINT;
-    }
-    else{ // if one crosspoint exists
-      const T b = dot(unit(s.diff()), s.from - c);
-      const T a = (s.from - c).size_sq() - r*r;
-      const T x = std::sqrt((U)(b*b - a));
-      ret.crosspoints.emplace_back(s.from + unit(s.diff()) * (-b-x >= 0 ? -b-x : -b+x));
-      ret.status = ONE_CROSSPOINT;
-    }
-
     return ret;
   }
-};
+  case intersect_circles::CIRCUMSCRIBED:
+  case intersect_circles::OUTSIDE: {
+    return 0;
+  }
+  }
+  return 0;
+}
 
 ```
 {% endraw %}
@@ -128,12 +100,12 @@ namespace intersect_circle_segment{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Geometry/Float/intersect_circle_segment.cpp"
-#include <vector>
+#line 2 "Mylib/Geometry/Float/area_intersection_of_circles.cpp"
 #include <cmath>
 #line 2 "Mylib/Geometry/Float/geometry_template.cpp"
 #include <iostream>
-#line 5 "Mylib/Geometry/Float/geometry_template.cpp"
+#line 4 "Mylib/Geometry/Float/geometry_template.cpp"
+#include <vector>
 
 /**
  * @title 幾何基本セット
@@ -219,29 +191,20 @@ template <typename T> struct Circle{
   Circle(): center(), radius(0){}
   Circle(const Point<T> &center, T radius): center(center), radius(radius){}
 };
-#line 3 "Mylib/Geometry/Float/distance_segment_point.cpp"
+#line 5 "Mylib/Geometry/Float/intersect_circles.cpp"
 
 /**
- * @title 線分・点間の距離
+ * @title 円同士の交差
+ * @see https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A
  */
-template <typename T, typename U = typename T::value_type>
-T distance_segment_point(const Line<T> &l, const Point<T> &p){
-  if(dot(l.diff(), p-l.from) < 0) return (p-l.from).size();
-  if(dot(-l.diff(), p-l.to) < 0) return (p-l.to).size();
-  return (T)std::abs((U)cross(l.diff(), p-l.from)) / l.size();
-}
-#line 6 "Mylib/Geometry/Float/intersect_circle_segment.cpp"
-
-/**
- * @title 円と線分の交差
- */
-namespace intersect_circle_segment{
+namespace intersect_circles{
   enum Status{
-              INSIDE         = 0b00001,
-              OUTSIDE        = 0b00010,
-              TANGENT        = 0b00100,
-              ONE_CROSSPOINT = 0b01000,
-              TWO_CROSSPOINT = 0b10000
+              SAME          = 0b000001,
+              INSIDE        = 0b000010,
+              INSCRIBED     = 0b000100,
+              INTERSECT     = 0b001000,
+              CIRCUMSCRIBED = 0b010000,
+              OUTSIDE       = 0b100000
   };
 
   template <typename T>
@@ -249,47 +212,83 @@ namespace intersect_circle_segment{
     Status status;
     std::vector<Point<T>> crosspoints;
   };
-
+  
   template <typename T, typename U = typename T::value_type>
-  auto check(const Circle<T> &cl, const Line<T> &s){
+  auto check(const Circle<T> &a, const Circle<T> &b){
     Result<T> ret;
     
-    const T r = cl.radius;
-    const auto &c = cl.center;
-
-    const T d1 = (c - s.from).size();
-    const T d2 = (c - s.to).size();
-    const T v = distance_segment_point(s, c);
-    const T m = std::sqrt((U)(r*r - v*v));
-    const auto n = normal(s.diff());
-    const auto k = s.from + s.diff() * cross(n, c + n - s.from) / cross(n, s.diff());
-
-    if(d1 < r and d2 < r){ // if inside
-      ret.status = INSIDE;
+    const T d = (a.center - b.center).size();
+    const T x = std::acos((U)((a.radius * a.radius + d * d - b.radius * b.radius) / ((T)2.0 * d * a.radius)));
+    const T t = std::atan2((U)(b.center.y - a.center.y), (U)(b.center.x - a.center.x));
+    
+    if(a.radius + b.radius == d){
+      ret.crosspoints.emplace_back(a.center + Vec<T>::polar(a.radius, t)); // if circumscribed
+      ret.status = CIRCUMSCRIBED;
     }
-    else if(v == r){ // if tangent
-      ret.crosspoints.emplace_back(k);
-      ret.status = TANGENT;
+    else if((T)std::fabs((U)(a.radius - b.radius)) == d){
+      ret.crosspoints.emplace_back(a.center + Vec<T>::polar(a.radius, t)); // if inscribed
+      ret.status = INSCRIBED;
     }
-    else if(v > r){ // if outside
+    else if(a.radius + b.radius > d and d > (T)std::fabs((U)(a.radius - b.radius))){ // if intersect
+      ret.crosspoints.emplace_back(a.center + Vec<T>::polar(a.radius, t+x));
+      ret.crosspoints.emplace_back(a.center + Vec<T>::polar(a.radius, t-x));
+      ret.status = INTERSECT;
+    }
+    else if(a.radius + b.radius < d){
       ret.status = OUTSIDE;
     }
-    else if(d1 >= r and d2 >= r){ // if two crosspoints exist
-      ret.crosspoints.emplace_back(k - unit(s.diff()) * m);
-      ret.crosspoints.emplace_back(k + unit(s.diff()) * m);
-      ret.status = TWO_CROSSPOINT;
+    else if((T)std::fabs((U)(a.radius - b.radius)) > d){
+      ret.status = INSIDE;
     }
-    else{ // if one crosspoint exists
-      const T b = dot(unit(s.diff()), s.from - c);
-      const T a = (s.from - c).size_sq() - r*r;
-      const T x = std::sqrt((U)(b*b - a));
-      ret.crosspoints.emplace_back(s.from + unit(s.diff()) * (-b-x >= 0 ? -b-x : -b+x));
-      ret.status = ONE_CROSSPOINT;
+    else{
+      ret.status = SAME;
     }
-
+    
     return ret;
   }
-};
+}
+#line 5 "Mylib/Geometry/Float/area_intersection_of_circles.cpp"
+
+/**
+ * @title 2円の共通部分の面積
+ * @see https://codeforces.com/contest/600/problem/D
+ */
+template <typename T, typename U = typename T::value_type>
+T area_of_intersection_of_circles(const Circle<T> &a, const Circle<T> &b){
+  auto [s, p] = intersect_circles::check(a, b);
+  
+  switch(s){
+  case intersect_circles::SAME: {
+    return a.radius * a.radius * M_PI;
+  }
+  case intersect_circles::INSIDE:
+  case intersect_circles::INSCRIBED: {
+    return std::min(a.radius * a.radius * M_PI, b.radius * b.radius * M_PI);
+  }
+  case intersect_circles::INTERSECT: {
+    T ret = 0;
+
+    auto d = (a.center - b.center).size();
+
+    {
+      T ang = std::acos((U)((a.radius * a.radius + d * d - b.radius * b.radius) / (a.radius * d * 2.0)));
+      ret += (ang - std::sin((U)(ang * 2.0)) / 2.0) * a.radius * a.radius;
+    }
+
+    {
+      T ang = std::acos((U)((b.radius * b.radius + d * d - a.radius * a.radius) / (b.radius * d * 2.0)));
+      ret += (ang - std::sin((U)(ang * 2.0)) / 2.0) * b.radius * b.radius;
+    }
+    
+    return ret;
+  }
+  case intersect_circles::CIRCUMSCRIBED:
+  case intersect_circles::OUTSIDE: {
+    return 0;
+  }
+  }
+  return 0;
+}
 
 ```
 {% endraw %}

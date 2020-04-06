@@ -25,33 +25,23 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 線分・点間の距離
+# :warning: 最小包含円
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/distance_segment_point.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/minimum_covering_circle.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-06 17:41:22+09:00
 
 
+* see: <a href="https://tubo28.me/compprog/algorithm/minball/">https://tubo28.me/compprog/algorithm/minball/</a>
+* see: <a href="https://atcoder.jp/contests/abc151/tasks/abc151_f">https://atcoder.jp/contests/abc151/tasks/abc151_f</a>
 
 
 ## Depends on
 
+* :warning: <a href="circumscribed_circle_of_triangle.cpp.html">三角形の外接円</a>
 * :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
-
-
-## Required by
-
-* :heavy_check_mark: <a href="area_intersection_of_circle_and_polygon.cpp.html">円と多角形の共通部分の面積</a>
-* :heavy_check_mark: <a href="distance_segments.cpp.html">線分間の距離</a>
-* :heavy_check_mark: <a href="intersect_circle_segment.cpp.html">円と線分の交差</a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_2_D/main.test.cpp.html">test/aoj/CGL_2_D/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
 
 
 ## Code
@@ -60,16 +50,56 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include "Mylib/Geometry/Float/geometry_template.cpp"
+#include <vector>
+#include <random>
+#include <algorithm>
+#include "Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp"
 
 /**
- * @title 線分・点間の距離
+ * @title 最小包含円
+ * @see https://tubo28.me/compprog/algorithm/minball/
+ * @see https://atcoder.jp/contests/abc151/tasks/abc151_f
  */
-template <typename T, typename U = typename T::value_type>
-T distance_segment_point(const Line<T> &l, const Point<T> &p){
-  if(dot(l.diff(), p-l.from) < 0) return (p-l.from).size();
-  if(dot(-l.diff(), p-l.to) < 0) return (p-l.to).size();
-  return (T)std::abs((U)cross(l.diff(), p-l.from)) / l.size();
+template <typename T>
+Circle<T> minimum_covering_circle(std::vector<Point<T>> ps, int seed = 0){
+  const int N = ps.size();
+
+  std::mt19937 rand(seed);
+  std::shuffle(ps.begin(), ps.end(), rand);
+
+  auto make_circle_2 = [&](const auto &p, const auto &q){
+                    const auto c = (p + q) / 2.0;
+                    return Circle<T>(c, (p - c).size());
+                  };
+
+
+  auto check = [](const auto &p, const auto &c){
+                 return (c.center - p).size() <= c.radius;
+               };
+
+
+  Circle<T> ret = make_circle_2(ps[0], ps[1]);
+  
+  for(int i = 2; i < N; ++i){
+    if(check(ps[i], ret)) continue;
+
+    ret = make_circle_2(ps[0], ps[i]);
+
+    for(int j = 1; j < i; ++j){
+      if(check(ps[j], ret)) continue;
+
+      ret = make_circle_2(ps[i], ps[j]);
+
+      for(int k = 0; k < j; ++k){
+        if(check(ps[k], ret)) continue;
+        if(i == j or j == k or k == i) continue;
+
+        ret = circumscribed_circle_of_triangle(ps[i], ps[j], ps[k]);
+      }
+    }
+  }
+
+  return ret;
 }
 
 ```
@@ -78,10 +108,15 @@ T distance_segment_point(const Line<T> &l, const Point<T> &p){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 2 "Mylib/Geometry/Float/minimum_covering_circle.cpp"
+#include <vector>
+#include <random>
+#include <algorithm>
+#line 2 "Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp"
+#include <cmath>
 #line 2 "Mylib/Geometry/Float/geometry_template.cpp"
 #include <iostream>
-#include <cmath>
-#include <vector>
+#line 5 "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
  * @title 幾何基本セット
@@ -167,16 +202,69 @@ template <typename T> struct Circle{
   Circle(): center(), radius(0){}
   Circle(const Point<T> &center, T radius): center(center), radius(radius){}
 };
-#line 3 "Mylib/Geometry/Float/distance_segment_point.cpp"
+#line 4 "Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp"
 
 /**
- * @title 線分・点間の距離
+ * @title 三角形の外接円
  */
 template <typename T, typename U = typename T::value_type>
-T distance_segment_point(const Line<T> &l, const Point<T> &p){
-  if(dot(l.diff(), p-l.from) < 0) return (p-l.from).size();
-  if(dot(-l.diff(), p-l.to) < 0) return (p-l.to).size();
-  return (T)std::abs((U)cross(l.diff(), p-l.from)) / l.size();
+Circle<T> circumscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b, const Point<T> &c){
+  T A = (b-c).size_sq(), B = (a-c).size_sq(), C = (a-b).size_sq();
+  T x = std::sqrt((U)A), y = std::sqrt((U)B), z = std::sqrt((U)C);
+
+  return Circle<T>
+    (
+     (A*(B+C-A)*a + B*(C+A-B)*b + C*(A+B-C)*c) / (A*(B+C-A) + B*(C+A-B) + C*(A+B-C)),
+     x * y * z / std::sqrt((U)((x+y+z)*(-x+y+z)*(x-y+z)*(x+y-z)))
+     );
+}
+#line 6 "Mylib/Geometry/Float/minimum_covering_circle.cpp"
+
+/**
+ * @title 最小包含円
+ * @see https://tubo28.me/compprog/algorithm/minball/
+ * @see https://atcoder.jp/contests/abc151/tasks/abc151_f
+ */
+template <typename T>
+Circle<T> minimum_covering_circle(std::vector<Point<T>> ps, int seed = 0){
+  const int N = ps.size();
+
+  std::mt19937 rand(seed);
+  std::shuffle(ps.begin(), ps.end(), rand);
+
+  auto make_circle_2 = [&](const auto &p, const auto &q){
+                    const auto c = (p + q) / 2.0;
+                    return Circle<T>(c, (p - c).size());
+                  };
+
+
+  auto check = [](const auto &p, const auto &c){
+                 return (c.center - p).size() <= c.radius;
+               };
+
+
+  Circle<T> ret = make_circle_2(ps[0], ps[1]);
+  
+  for(int i = 2; i < N; ++i){
+    if(check(ps[i], ret)) continue;
+
+    ret = make_circle_2(ps[0], ps[i]);
+
+    for(int j = 1; j < i; ++j){
+      if(check(ps[j], ret)) continue;
+
+      ret = make_circle_2(ps[i], ps[j]);
+
+      for(int k = 0; k < j; ++k){
+        if(check(ps[k], ret)) continue;
+        if(i == j or j == k or k == i) continue;
+
+        ret = circumscribed_circle_of_triangle(ps[i], ps[j], ps[k]);
+      }
+    }
+  }
+
+  return ret;
 }
 
 ```

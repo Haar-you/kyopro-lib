@@ -38,9 +38,11 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="area_intersection_of_circle_and_polygon.cpp.html">円と多角形の共通面積</a>
+* :heavy_check_mark: <a href="area_intersection_of_circle_and_polygon.cpp.html">円と多角形の共通部分の面積</a>
+* :warning: <a href="area_intersection_of_circles.cpp.html">2円の共通部分の面積</a>
 * :heavy_check_mark: <a href="area_polygon.cpp.html">多角形の面積</a>
 * :heavy_check_mark: <a href="ccw.cpp.html">clockwise-counterclockwise判定</a>
+* :warning: <a href="circumscribed_circle_of_triangle.cpp.html">三角形の外接円</a>
 * :heavy_check_mark: <a href="closest_pair.cpp.html">最近点対</a>
 * :heavy_check_mark: <a href="common_tangent_of_circles.cpp.html">2円の共通接線</a>
 * :heavy_check_mark: <a href="convex_cut.cpp.html">凸多角形の切断</a>
@@ -56,6 +58,7 @@ layout: default
 * :heavy_check_mark: <a href="intersect_segments.cpp.html">線分同士の交差</a>
 * :heavy_check_mark: <a href="is_convex.cpp.html">凸多角形判定</a>
 * :heavy_check_mark: <a href="is_point_in_polygon.cpp.html">点・多角形の包含関係</a>
+* :warning: <a href="minimum_covering_circle.cpp.html">最小包含円</a>
 * :heavy_check_mark: <a href="orthogonal.cpp.html">直行判定</a>
 * :heavy_check_mark: <a href="parallel.cpp.html">平行判定</a>
 * :heavy_check_mark: <a href="projection.cpp.html">射影</a>

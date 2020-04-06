@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 線分・点間の距離
+# :warning: 三角形の外接円
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/distance_segment_point.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-06 17:41:22+09:00
 
 
 
@@ -43,15 +43,7 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="area_intersection_of_circle_and_polygon.cpp.html">円と多角形の共通部分の面積</a>
-* :heavy_check_mark: <a href="distance_segments.cpp.html">線分間の距離</a>
-* :heavy_check_mark: <a href="intersect_circle_segment.cpp.html">円と線分の交差</a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_2_D/main.test.cpp.html">test/aoj/CGL_2_D/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
+* :warning: <a href="minimum_covering_circle.cpp.html">最小包含円</a>
 
 
 ## Code
@@ -60,16 +52,22 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
+#include <cmath>
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 線分・点間の距離
+ * @title 三角形の外接円
  */
 template <typename T, typename U = typename T::value_type>
-T distance_segment_point(const Line<T> &l, const Point<T> &p){
-  if(dot(l.diff(), p-l.from) < 0) return (p-l.from).size();
-  if(dot(-l.diff(), p-l.to) < 0) return (p-l.to).size();
-  return (T)std::abs((U)cross(l.diff(), p-l.from)) / l.size();
+Circle<T> circumscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b, const Point<T> &c){
+  T A = (b-c).size_sq(), B = (a-c).size_sq(), C = (a-b).size_sq();
+  T x = std::sqrt((U)A), y = std::sqrt((U)B), z = std::sqrt((U)C);
+
+  return Circle<T>
+    (
+     (A*(B+C-A)*a + B*(C+A-B)*b + C*(A+B-C)*c) / (A*(B+C-A) + B*(C+A-B) + C*(A+B-C)),
+     x * y * z / std::sqrt((U)((x+y+z)*(-x+y+z)*(x-y+z)*(x+y-z)))
+     );
 }
 
 ```
@@ -78,9 +76,11 @@ T distance_segment_point(const Line<T> &l, const Point<T> &p){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 2 "Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp"
+#include <cmath>
 #line 2 "Mylib/Geometry/Float/geometry_template.cpp"
 #include <iostream>
-#include <cmath>
+#line 4 "Mylib/Geometry/Float/geometry_template.cpp"
 #include <vector>
 
 /**
@@ -167,16 +167,21 @@ template <typename T> struct Circle{
   Circle(): center(), radius(0){}
   Circle(const Point<T> &center, T radius): center(center), radius(radius){}
 };
-#line 3 "Mylib/Geometry/Float/distance_segment_point.cpp"
+#line 4 "Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp"
 
 /**
- * @title 線分・点間の距離
+ * @title 三角形の外接円
  */
 template <typename T, typename U = typename T::value_type>
-T distance_segment_point(const Line<T> &l, const Point<T> &p){
-  if(dot(l.diff(), p-l.from) < 0) return (p-l.from).size();
-  if(dot(-l.diff(), p-l.to) < 0) return (p-l.to).size();
-  return (T)std::abs((U)cross(l.diff(), p-l.from)) / l.size();
+Circle<T> circumscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b, const Point<T> &c){
+  T A = (b-c).size_sq(), B = (a-c).size_sq(), C = (a-b).size_sq();
+  T x = std::sqrt((U)A), y = std::sqrt((U)B), z = std::sqrt((U)C);
+
+  return Circle<T>
+    (
+     (A*(B+C-A)*a + B*(C+A-B)*b + C*(A+B-C)*c) / (A*(B+C-A) + B*(C+A-B) + C*(A+B-C)),
+     x * y * z / std::sqrt((U)((x+y+z)*(-x+y+z)*(x-y+z)*(x+y-z)))
+     );
 }
 
 ```

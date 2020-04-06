@@ -25,25 +25,22 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: \[1,n\]を満たす自然数でmと互いに素であるものの個数
+# :heavy_check_mark: test/aoj/NTL_1_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/count_coprime.cpp">View this file on GitHub</a>
+* category: <a href="../../../../index.html#2f883b12bcaccb309536ea11ea7e4a50">test/aoj/NTL_1_D</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/NTL_1_D/main.test.cpp">View this file on GitHub</a>
     - Last commit date: 2020-04-06 20:21:28+09:00
 
 
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="prime_factorize.cpp.html">素因数分解</a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/NTL_1_D/main.test.cpp.html">test/aoj/NTL_1_D/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/count_coprime.cpp.html">\[1,n\]を満たす自然数でmと互いに素であるものの個数</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/prime_factorize.cpp.html">素因数分解</a>
 
 
 ## Code
@@ -51,31 +48,17 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#pragma once
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D"
 
-#include "Mylib/Number/Prime/prime_factorize.cpp"
+#include <iostream>
+#include "Mylib/Number/Prime/count_coprime.cpp"
 
-/**
- * @title [1,n]を満たす自然数でmと互いに素であるものの個数
- */
-int64_t count_coprime(int64_t n, int64_t m){
-  const auto p = prime_factorize(m);
-  int k = p.size();
+int main(){
+  int n; std::cin >> n;
 
-  int64_t ret = 0;
+  std::cout << count_coprime(n, n) << std::endl;
 
-  for(int i = 0; i < 1<<k; ++i){
-    int64_t s = 1;
-    
-    for(int j = 0; j < k; ++j){
-      if(i & (1 << j)) s *= p[j].first;
-    }
-
-    if(__builtin_popcount(i) % 2 == 1) ret -= n / s;
-    else ret += n / s;
-  }
-  
-  return ret;
+  return 0;
 }
 
 ```
@@ -84,6 +67,10 @@ int64_t count_coprime(int64_t n, int64_t m){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 1 "test/aoj/NTL_1_D/main.test.cpp"
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D"
+
+#include <iostream>
 #line 2 "Mylib/Number/Prime/count_coprime.cpp"
 
 #line 2 "Mylib/Number/Prime/prime_factorize.cpp"
@@ -131,6 +118,15 @@ int64_t count_coprime(int64_t n, int64_t m){
   }
   
   return ret;
+}
+#line 5 "test/aoj/NTL_1_D/main.test.cpp"
+
+int main(){
+  int n; std::cin >> n;
+
+  std::cout << count_coprime(n, n) << std::endl;
+
+  return 0;
 }
 
 ```

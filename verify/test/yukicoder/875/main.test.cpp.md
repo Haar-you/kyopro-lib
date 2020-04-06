@@ -25,21 +25,22 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_2_A/main.test.cpp
+# :x: test/yukicoder/875/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#dad2ef36fe327d04dfb89ce81ab51ef9">test/aoj/DSL_2_A</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+* category: <a href="../../../../index.html#85bd684f532fe6c6e7e3dd42beff3eb5">test/yukicoder/875</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/875/main.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-06 17:42:20+09:00
 
 
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A</a>
+* see: <a href="https://yukicoder.me/problems/no/875">https://yukicoder.me/problems/no/875</a>
 
 
 ## Depends on
 
 * :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/with_index.cpp.html">Mylib/AlgebraicStructure/Monoid/with_index.cpp</a>
 * :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
 
 
@@ -48,26 +49,54 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A"
+#define PROBLEM "https://yukicoder.me/problems/no/875"
 
-#include <iostream>
+#include <vector>
+#include <utility>
+
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/with_index.cpp"
+
+using Mon = WithIndex<MinMonoid<int>, MinMonoid<int>>;
 
 int main(){
-  int n, q; std::cin >> n >> q;
+  int N, Q; scanf("%d %d", &N, &Q);
 
-  SegmentTree<MinMonoid<int>> seg(n);
-  
-  while(q--){
-    int type; std::cin >> type;
+  SegmentTree<Mon> seg(N);
 
-    if(type == 0){
-      int x, y; std::cin >> x >> y;
-      seg.update(x, y);
-    }else{
-      int x, y; std::cin >> x >> y;
-      std::cout << seg.get(x, y + 1) << std::endl;
+  std::vector<Mon::value_type> a(N);
+  for(int i = 0; i < N; ++i){
+    int x; scanf("%d", &x);
+    a[i] = std::make_pair(x, i);
+  }
+
+  seg.init_with_vector(a);
+
+  for(int i = 0; i < Q; ++i){
+    int type; scanf("%d", &type);
+    
+    switch(type){
+    case 1: {
+      int l, r; scanf("%d %d", &l, &r);
+      --l, --r;
+
+      auto x = seg[l].first;
+      auto y = seg[r].first;
+
+      seg.update(l, std::make_pair(y, l));
+      seg.update(r, std::make_pair(x, r));
+
+      break;
+    }
+    case 2: {
+      int l, r; scanf("%d %d", &l, &r);
+      --l, --r;
+
+      printf("%d\n", seg.get(l, r+1).second + 1);
+
+      break;
+    }
     }
   }
 
@@ -80,12 +109,13 @@ int main(){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/aoj/DSL_2_A/main.test.cpp"
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A"
+#line 1 "test/yukicoder/875/main.test.cpp"
+#define PROBLEM "https://yukicoder.me/problems/no/875"
 
-#include <iostream>
-#line 2 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
 #include <vector>
+#include <utility>
+
+#line 3 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
 
 /**
  * @title セグメント木
@@ -149,22 +179,63 @@ struct MinMonoid{
   constexpr inline static value_type id(){return std::numeric_limits<T>::max();}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return std::min(a, b);}
 };
-#line 6 "test/aoj/DSL_2_A/main.test.cpp"
+#line 3 "Mylib/AlgebraicStructure/Monoid/with_index.cpp"
+
+template <typename Monoid, typename Index>
+struct WithIndex{
+  using value_type = std::pair<typename Monoid::value_type, typename Index::value_type>;
+
+  constexpr inline static value_type id(){
+    return {Monoid::id(), Index::id()};
+  }
+
+  constexpr inline static value_type op(const value_type &a, const value_type &b){
+    if(a.first == b.first) return {a.first, Index::op(a.second, b.second)};
+    if(Monoid::op(a.first, b.first) == a.first) return a;
+    else return b;
+  }
+};
+#line 9 "test/yukicoder/875/main.test.cpp"
+
+using Mon = WithIndex<MinMonoid<int>, MinMonoid<int>>;
 
 int main(){
-  int n, q; std::cin >> n >> q;
+  int N, Q; scanf("%d %d", &N, &Q);
 
-  SegmentTree<MinMonoid<int>> seg(n);
-  
-  while(q--){
-    int type; std::cin >> type;
+  SegmentTree<Mon> seg(N);
 
-    if(type == 0){
-      int x, y; std::cin >> x >> y;
-      seg.update(x, y);
-    }else{
-      int x, y; std::cin >> x >> y;
-      std::cout << seg.get(x, y + 1) << std::endl;
+  std::vector<Mon::value_type> a(N);
+  for(int i = 0; i < N; ++i){
+    int x; scanf("%d", &x);
+    a[i] = std::make_pair(x, i);
+  }
+
+  seg.init_with_vector(a);
+
+  for(int i = 0; i < Q; ++i){
+    int type; scanf("%d", &type);
+    
+    switch(type){
+    case 1: {
+      int l, r; scanf("%d %d", &l, &r);
+      --l, --r;
+
+      auto x = seg[l].first;
+      auto y = seg[r].first;
+
+      seg.update(l, std::make_pair(y, l));
+      seg.update(r, std::make_pair(x, r));
+
+      break;
+    }
+    case 2: {
+      int l, r; scanf("%d %d", &l, &r);
+      --l, --r;
+
+      printf("%d\n", seg.get(l, r+1).second + 1);
+
+      break;
+    }
     }
   }
 
