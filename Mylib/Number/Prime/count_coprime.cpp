@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Mylib/Number/Prime/prime_factorize.cpp"
+
 /**
  * @title [1,n]を満たす自然数でmと互いに素であるものの個数
  */
@@ -16,8 +18,8 @@ int64_t count_coprime(int64_t n, int64_t m){
       if(i & (1 << j)) s *= p[j].first;
     }
 
-    if(__builtin_popcount(i) % 2 == 1) ret += n / s;
-    else ret -= n / s;
+    if(__builtin_popcount(i) % 2 == 1) ret -= n / s;
+    else ret += n / s;
   }
   
   return ret;
