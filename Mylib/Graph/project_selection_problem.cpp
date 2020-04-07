@@ -2,7 +2,7 @@
 #include <vector>
 #include <utility>
 #include <cassert>
-#include "Mylib/Graph/Flow/dinic.cpp"
+#include <limits>
 
 /*
  * @title Project Selection Problem
@@ -14,11 +14,13 @@
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3058
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2903
  */
-template <typename T, T INF>
+template <typename T, typename Flow>
 class ProjectSelectionProblem{
   int N, s, t;
   std::vector<std::vector<std::pair<int,T>>> graph;
   T default_gain;
+
+  constexpr static T INF = std::numeric_limits<T>::max();
 
 public:
   ProjectSelectionProblem(int N): N(N), s(N), t(N+1), graph(N+2), default_gain(0){}
@@ -91,7 +93,7 @@ public:
   }
 
   T solve(){
-    Dinic<T,INF> flow(graph);
+    Flow flow(graph);
     return default_gain - flow.solve(s, t);
   }
 };

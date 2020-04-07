@@ -36,7 +36,16 @@ private:
     return 0;
   }
   
-public:  
+public:
+  FordFulkerson(const std::vector<std::vector<std::pair<int,T>>> &g):
+    size(g.size()), graph(size), visit(size)
+  {
+    for(int i = 0; i < size; ++i){
+      for(auto &[j, c] : g[i]){
+        add_edge(i, j, c);
+      }
+    }  
+  }
   FordFulkerson(int size): size(size), graph(size), visit(size){}
 
   void add_edge(int from, int to, const T &cap){
