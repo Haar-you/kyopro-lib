@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f4368c57ad8f64bd0caa562818234830">test/aoj/DPL_5_G</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_G/main.table.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-07 19:24:13+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_G">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_G</a>
@@ -116,7 +116,7 @@ public:
   inline constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
     
-    int64_t ret = 1, e = n;
+    int64_t ret = 1, e = n % M;
     for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
     return ret;
   }
@@ -156,6 +156,9 @@ public:
     static auto value = inv(N);
     return value;
   }
+
+  explicit operator int32_t() const noexcept {return val;}
+  explicit operator int64_t() const noexcept {return val;}
 };
 #line 2 "Mylib/Combinatorics/bell_number_table.cpp"
 #include <vector>

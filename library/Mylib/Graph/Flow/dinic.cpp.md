@@ -31,14 +31,9 @@ layout: default
 
 * category: <a href="../../../../index.html#ecd047c70c23d80351a9f133b49a4638">Mylib/Graph/Flow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Flow/dinic.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 13:51:54+09:00
+    - Last commit date: 2020-04-07 13:24:38+09:00
 
 
-
-
-## Required by
-
-* :warning: <a href="../project_selection_problem.cpp.html">Project Selection Problem</a>
 
 
 ## Verified with
@@ -54,7 +49,7 @@ layout: default
 #pragma once
 #include <vector>
 #include <utility>
-#include <deque>
+#include <queue>
 #include <algorithm>
 
 /**
@@ -62,26 +57,27 @@ layout: default
  */
 template <typename T> class Dinic{
 private:
-  std::vector<std::vector<std::pair<int,T>>> graph;
-  int size, s, t;
+  int size;
   std::vector<std::vector<T>> cap;
   std::vector<int> level;
   
-  bool buildLevel(){
+  bool build_level(int s, int t){
     std::fill(level.begin(), level.end(), 0);
     level[s] = 1;
-    std::deque<int> deq = {s};
-    while(not deq.empty()){
-      int cur = deq.front(); deq.pop_front();
+    std::queue<int> q;
+    q.push(s);
+    while(not q.empty()){
+      int cur = q.front(); q.pop();
       for(int i = 0; i < size; ++i)
         if(level[i] == 0 and cap[cur][i] > 0){
           level[i] = level[cur] + 1;
-          deq.push_back(i);
+          q.push(i);
         }
     }
     return level[t] != 0;
   }
-  void dfs(std::vector<int> &path, T &flow){
+  
+  void dfs(std::vector<int> &path, T &flow, int t){
     if(path.empty()) return;
     int cur = path.back();
     if(cur == t){
@@ -96,50 +92,38 @@ private:
       for(int i = 0; i < size; ++i){
         if(cap[cur][i] > 0 and level[i] > level[cur]){
           path.push_back(i);
-          dfs(path, flow);
+          dfs(path, flow, t);
           path.pop_back();
         }
       }
     }
   }
-  
-  T augment(){
-    T f = 0;
-    std::vector<int> path = {s};
-    dfs(path, f);
-    return f;
-  }
-  
-  T loop(){
-    T f = 0;
-    while(buildLevel()) f += augment();
-    return f;
-  }
  
 public:
-  Dinic(std::vector<std::vector<std::pair<int,T>>> &_graph): graph(_graph), size(graph.size()) {}
-  Dinic(int size): graph(size), size(size){}
+  Dinic(const std::vector<std::vector<std::pair<int,T>>> &g):
+    size(g.size()), cap(size, std::vector<T>(size)), level(size){
+    for(int i = 0; i < size; ++i){
+      for(auto &[j, c] : g[i]){
+        add_edge(i, j, c);
+      }
+    }
+  }
+  Dinic(int size): size(size), cap(size, std::vector<T>(size)), level(size){}
   Dinic(){}
  
-  void add_edge(int from, int to, const T &cap){
-    graph[from].push_back({to, cap});
+  void add_edge(int from, int to, const T &c){
+    cap[from][to] += c;
   }
   
-  T solve(int _s, int _t){
-    cap = std::vector<std::vector<T>>(size, std::vector<T>(size, 0));
-    level = std::vector<int>(size, 0);
- 
-    for(int i = 0; i < size; ++i)
-      for(auto &p : graph[i]){
-        int j = p.first;
-        T d = p.second;
-        cap[i][j] += d;
-      }
- 
-    s = _s;
-    t = _t;
- 
-    return loop();
+  T solve(int s, int t){
+    T f = 0;
+    while(build_level(s, t)){
+      T a = 0;
+      std::vector<int> path = {s};
+      dfs(path, a, t);
+      f += a;
+    }
+    return f;
   }
 };
 
@@ -152,7 +136,7 @@ public:
 #line 2 "Mylib/Graph/Flow/dinic.cpp"
 #include <vector>
 #include <utility>
-#include <deque>
+#include <queue>
 #include <algorithm>
 
 /**
@@ -160,26 +144,27 @@ public:
  */
 template <typename T> class Dinic{
 private:
-  std::vector<std::vector<std::pair<int,T>>> graph;
-  int size, s, t;
+  int size;
   std::vector<std::vector<T>> cap;
   std::vector<int> level;
   
-  bool buildLevel(){
+  bool build_level(int s, int t){
     std::fill(level.begin(), level.end(), 0);
     level[s] = 1;
-    std::deque<int> deq = {s};
-    while(not deq.empty()){
-      int cur = deq.front(); deq.pop_front();
+    std::queue<int> q;
+    q.push(s);
+    while(not q.empty()){
+      int cur = q.front(); q.pop();
       for(int i = 0; i < size; ++i)
         if(level[i] == 0 and cap[cur][i] > 0){
           level[i] = level[cur] + 1;
-          deq.push_back(i);
+          q.push(i);
         }
     }
     return level[t] != 0;
   }
-  void dfs(std::vector<int> &path, T &flow){
+  
+  void dfs(std::vector<int> &path, T &flow, int t){
     if(path.empty()) return;
     int cur = path.back();
     if(cur == t){
@@ -194,50 +179,38 @@ private:
       for(int i = 0; i < size; ++i){
         if(cap[cur][i] > 0 and level[i] > level[cur]){
           path.push_back(i);
-          dfs(path, flow);
+          dfs(path, flow, t);
           path.pop_back();
         }
       }
     }
   }
-  
-  T augment(){
-    T f = 0;
-    std::vector<int> path = {s};
-    dfs(path, f);
-    return f;
-  }
-  
-  T loop(){
-    T f = 0;
-    while(buildLevel()) f += augment();
-    return f;
-  }
  
 public:
-  Dinic(std::vector<std::vector<std::pair<int,T>>> &_graph): graph(_graph), size(graph.size()) {}
-  Dinic(int size): graph(size), size(size){}
+  Dinic(const std::vector<std::vector<std::pair<int,T>>> &g):
+    size(g.size()), cap(size, std::vector<T>(size)), level(size){
+    for(int i = 0; i < size; ++i){
+      for(auto &[j, c] : g[i]){
+        add_edge(i, j, c);
+      }
+    }
+  }
+  Dinic(int size): size(size), cap(size, std::vector<T>(size)), level(size){}
   Dinic(){}
  
-  void add_edge(int from, int to, const T &cap){
-    graph[from].push_back({to, cap});
+  void add_edge(int from, int to, const T &c){
+    cap[from][to] += c;
   }
   
-  T solve(int _s, int _t){
-    cap = std::vector<std::vector<T>>(size, std::vector<T>(size, 0));
-    level = std::vector<int>(size, 0);
- 
-    for(int i = 0; i < size; ++i)
-      for(auto &p : graph[i]){
-        int j = p.first;
-        T d = p.second;
-        cap[i][j] += d;
-      }
- 
-    s = _s;
-    t = _t;
- 
-    return loop();
+  T solve(int s, int t){
+    T f = 0;
+    while(build_level(s, t)){
+      T a = 0;
+      std::vector<int> path = {s};
+      dfs(path, a, t);
+      f += a;
+    }
+    return f;
   }
 };
 

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#65eb1c5db2b1bd726d58cf661f149e7c">Mylib/Graph/Matching</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Matching/bipartite_matching.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 13:51:54+09:00
+    - Last commit date: 2020-04-07 13:24:38+09:00
 
 
 
@@ -143,7 +143,16 @@ private:
     return 0;
   }
   
-public:  
+public:
+  FordFulkerson(const std::vector<std::vector<std::pair<int,T>>> &g):
+    size(g.size()), graph(size), visit(size)
+  {
+    for(int i = 0; i < size; ++i){
+      for(auto &[j, c] : g[i]){
+        add_edge(i, j, c);
+      }
+    }  
+  }
   FordFulkerson(int size): size(size), graph(size), visit(size){}
 
   void add_edge(int from, int to, const T &cap){

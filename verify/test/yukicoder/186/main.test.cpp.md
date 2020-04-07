@@ -21,29 +21,26 @@ layout: default
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-balloon-js@1.1.2/jquery.balloon.min.js" integrity="sha256-ZEYs9VrgAeNuPvs15E39OsyOJaIkXEEt10fzxJ20+2I=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../../../assets/js/copy-button.js"></script>
-<link rel="stylesheet" href="../../../assets/css/copy-button.css" />
+<script type="text/javascript" src="../../../../assets/js/copy-button.js"></script>
+<link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 中国剰余定理
+# :heavy_check_mark: test/yukicoder/186/main.test.cpp
 
-<a href="../../../index.html">Back to top page</a>
+<a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/chinese_remainder_algorithm.cpp">View this file on GitHub</a>
+* category: <a href="../../../../index.html#0bd636f7c7da7cc28e18f9f04b1f4152">test/yukicoder/186</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/186/main.test.cpp">View this file on GitHub</a>
     - Last commit date: 2020-04-07 19:24:13+09:00
 
 
+* see: <a href="https://yukicoder.me/problems/447">https://yukicoder.me/problems/447</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="extended_gcd.cpp.html">拡張Euclidの互除法</a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/186/main.test.cpp.html">test/yukicoder/186/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/chinese_remainder_algorithm.cpp.html">中国剰余定理</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/extended_gcd.cpp.html">拡張Euclidの互除法</a>
 
 
 ## Code
@@ -51,34 +48,24 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#pragma once
-#include <vector>
-#include <tuple>
-#include "Mylib/Number/extended_gcd.cpp"
+#define PROBLEM "https://yukicoder.me/problems/447"
 
-/**
- * @title 中国剰余定理
- */
-bool CRA(int64_t b1, int64_t m1, int64_t b2, int64_t m2, int64_t &r, int64_t &m){
-  int64_t p,q,d;
-  std::tie(d,p,q) = ext_gcd(m1,m2);
-  if((b2-b1) % d != 0) return false;
-  m = m1 * m2 / d;
-  int64_t t = ((b2-b1) * p / d) % (m2 / d);
-  r = (b1 + m1 * t + m) % m;
-  return true;
-}
+#include <iostream>
+#include "Mylib/Number/chinese_remainder_algorithm.cpp"
 
-bool CRA(const std::vector<int64_t> &bs, const std::vector<int64_t> &ms, int64_t &r, int64_t &m){
-  int64_t R = 0, M = 1;
-  for(int i = 0; i < (int)bs.size(); ++i){
-    if(not CRA(R,M,bs[i],ms[i],r,m)) return false;
-    R = r;
-    M = m;
+int main(){
+  int64_t x1, y1, x2, y2, x3, y3; std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+
+  int64_t m, r;
+  
+  if(CRA({x1, x2, x3}, {y1, y2, y3}, r, m)){
+    std::cout << (r == 0 ? m : r) << std::endl;
+  }else{
+    std::cout << -1 << std::endl;
   }
-  return true;
-}
 
+  return 0;
+}
 
 ```
 {% endraw %}
@@ -86,6 +73,10 @@ bool CRA(const std::vector<int64_t> &bs, const std::vector<int64_t> &ms, int64_t
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 1 "test/yukicoder/186/main.test.cpp"
+#define PROBLEM "https://yukicoder.me/problems/447"
+
+#include <iostream>
 #line 2 "Mylib/Number/chinese_remainder_algorithm.cpp"
 #include <vector>
 #include <tuple>
@@ -125,9 +116,24 @@ bool CRA(const std::vector<int64_t> &bs, const std::vector<int64_t> &ms, int64_t
   return true;
 }
 
+#line 5 "test/yukicoder/186/main.test.cpp"
+
+int main(){
+  int64_t x1, y1, x2, y2, x3, y3; std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+
+  int64_t m, r;
+  
+  if(CRA({x1, x2, x3}, {y1, y2, y3}, r, m)){
+    std::cout << (r == 0 ? m : r) << std::endl;
+  }else{
+    std::cout << -1 << std::endl;
+  }
+
+  return 0;
+}
 
 ```
 {% endraw %}
 
-<a href="../../../index.html">Back to top page</a>
+<a href="../../../../index.html">Back to top page</a>
 

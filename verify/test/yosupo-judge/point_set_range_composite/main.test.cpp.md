@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4d6b83f34c17c15b5343ef482a3d7447">test/yosupo-judge/point_set_range_composite</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/point_set_range_composite/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-07 19:24:13+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_set_range_composite">https://judge.yosupo.jp/problem/point_set_range_composite</a>
@@ -41,7 +41,7 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp</a>
-* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
@@ -215,7 +215,7 @@ public:
   inline constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
     
-    int64_t ret = 1, e = n;
+    int64_t ret = 1, e = n % M;
     for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
     return ret;
   }
@@ -255,6 +255,9 @@ public:
     static auto value = inv(N);
     return value;
   }
+
+  explicit operator int32_t() const noexcept {return val;}
+  explicit operator int64_t() const noexcept {return val;}
 };
 #line 9 "test/yosupo-judge/point_set_range_composite/main.test.cpp"
 

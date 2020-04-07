@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Bernoulli数
+# :heavy_check_mark: Bernoulli数
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/bernoulli_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-07 19:24:13+09:00
 
 
 
@@ -39,6 +39,11 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/yukicoder/665/main.test.cpp.html">test/yukicoder/665/main.test.cpp</a>
 
 
 ## Code
@@ -55,12 +60,12 @@ layout: default
  * @attention O(n^2 logn)
  */
 template <typename T>
-auto Combinatorics<T>::bernoulli_number(int64_t n){
+std::vector<T> Combinatorics<T>::bernoulli_number(int64_t n){
   std::vector<T> ret(n+1);
 
   ret[0] = 1;
 
-  for(int i = 1; i <= n; ++i){
+  for(int64_t i = 1; i <= n; ++i){
     for(int k = 0; k <= i-1; ++k){
       ret[i] += C(i+1,k) * ret[k];
     }
@@ -149,12 +154,12 @@ template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
  * @attention O(n^2 logn)
  */
 template <typename T>
-auto Combinatorics<T>::bernoulli_number(int64_t n){
+std::vector<T> Combinatorics<T>::bernoulli_number(int64_t n){
   std::vector<T> ret(n+1);
 
   ret[0] = 1;
 
-  for(int i = 1; i <= n; ++i){
+  for(int64_t i = 1; i <= n; ++i){
     for(int k = 0; k <= i-1; ++k){
       ret[i] += C(i+1,k) * ret[k];
     }

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f56272346ebd60cefe0da1df8f0209d6">test/yosupo-judge/matrix_det</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/matrix_det/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-07 19:24:13+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/matrix_det">https://judge.yosupo.jp/problem/matrix_det</a>
@@ -127,7 +127,7 @@ public:
   inline constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
     
-    int64_t ret = 1, e = n;
+    int64_t ret = 1, e = n % M;
     for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
     return ret;
   }
@@ -167,6 +167,9 @@ public:
     static auto value = inv(N);
     return value;
   }
+
+  explicit operator int32_t() const noexcept {return val;}
+  explicit operator int64_t() const noexcept {return val;}
 };
 #line 2 "Mylib/LinearAlgebra/Square/square_matrix.cpp"
 #include <vector>

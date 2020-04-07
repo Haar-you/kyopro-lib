@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yukicoder/875/main.test.cpp
+# :heavy_check_mark: test/yukicoder/875/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#85bd684f532fe6c6e7e3dd42beff3eb5">test/yukicoder/875</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/875/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-06 17:42:20+09:00
+    - Last commit date: 2020-04-06 20:40:01+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/875">https://yukicoder.me/problems/no/875</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
-* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/with_index.cpp.html">Mylib/AlgebraicStructure/Monoid/with_index.cpp</a>
-* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/with_index.cpp.html">Mylib/AlgebraicStructure/Monoid/with_index.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
 
 
 ## Code
@@ -51,6 +51,7 @@ layout: default
 ```cpp
 #define PROBLEM "https://yukicoder.me/problems/no/875"
 
+#include <iostream>
 #include <vector>
 #include <utility>
 
@@ -112,6 +113,7 @@ int main(){
 #line 1 "test/yukicoder/875/main.test.cpp"
 #define PROBLEM "https://yukicoder.me/problems/no/875"
 
+#include <iostream>
 #include <vector>
 #include <utility>
 
@@ -195,7 +197,7 @@ struct WithIndex{
     else return b;
   }
 };
-#line 9 "test/yukicoder/875/main.test.cpp"
+#line 10 "test/yukicoder/875/main.test.cpp"
 
 using Mon = WithIndex<MinMonoid<int>, MinMonoid<int>>;
 

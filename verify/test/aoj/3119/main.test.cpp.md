@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#59b3322e8805b9ff175a68f1a5d31d67">test/aoj/3119</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3119/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-07 19:24:13+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119</a>
@@ -130,7 +130,7 @@ public:
   inline constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
     
-    int64_t ret = 1, e = n;
+    int64_t ret = 1, e = n % M;
     for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
     return ret;
   }
@@ -170,6 +170,9 @@ public:
     static auto value = inv(N);
     return value;
   }
+
+  explicit operator int32_t() const noexcept {return val;}
+  explicit operator int64_t() const noexcept {return val;}
 };
 #line 3 "Mylib/Convolution/fast_zeta_transform_superset.cpp"
 #include <functional>

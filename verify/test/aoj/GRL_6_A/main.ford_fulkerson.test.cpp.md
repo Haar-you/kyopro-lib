@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#d22130300c64d313f1c5481cac7c3c1c">test/aoj/GRL_6_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 13:51:54+09:00
+    - Last commit date: 2020-04-07 13:24:38+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A</a>
@@ -119,7 +119,16 @@ private:
     return 0;
   }
   
-public:  
+public:
+  FordFulkerson(const std::vector<std::vector<std::pair<int,T>>> &g):
+    size(g.size()), graph(size), visit(size)
+  {
+    for(int i = 0; i < size; ++i){
+      for(auto &[j, c] : g[i]){
+        add_edge(i, j, c);
+      }
+    }  
+  }
   FordFulkerson(int size): size(size), graph(size), visit(size){}
 
   void add_edge(int from, int to, const T &cap){

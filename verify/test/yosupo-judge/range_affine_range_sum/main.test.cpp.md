@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7561f7b6847dbe0c0f95d39dd0066b92">test/yosupo-judge/range_affine_range_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/range_affine_range_sum/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-07 19:24:13+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_affine_range_sum">https://judge.yosupo.jp/problem/range_affine_range_sum</a>
@@ -252,7 +252,7 @@ public:
   inline constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
     
-    int64_t ret = 1, e = n;
+    int64_t ret = 1, e = n % M;
     for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
     return ret;
   }
@@ -292,6 +292,9 @@ public:
     static auto value = inv(N);
     return value;
   }
+
+  explicit operator int32_t() const noexcept {return val;}
+  explicit operator int64_t() const noexcept {return val;}
 };
 #line 10 "test/yosupo-judge/range_affine_range_sum/main.test.cpp"
 

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#ecd047c70c23d80351a9f133b49a4638">Mylib/Graph/Flow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Flow/ford_fulkerson.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 13:51:54+09:00
+    - Last commit date: 2020-04-07 13:24:38+09:00
 
 
 
@@ -43,6 +43,8 @@ layout: default
 
 ## Verified with
 
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2903/main.test.cpp.html">test/aoj/2903/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/3058/main.test.cpp.html">test/aoj/3058/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp.html">test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
 
@@ -90,7 +92,16 @@ private:
     return 0;
   }
   
-public:  
+public:
+  FordFulkerson(const std::vector<std::vector<std::pair<int,T>>> &g):
+    size(g.size()), graph(size), visit(size)
+  {
+    for(int i = 0; i < size; ++i){
+      for(auto &[j, c] : g[i]){
+        add_edge(i, j, c);
+      }
+    }  
+  }
   FordFulkerson(int size): size(size), graph(size), visit(size){}
 
   void add_edge(int from, int to, const T &cap){
@@ -169,7 +180,16 @@ private:
     return 0;
   }
   
-public:  
+public:
+  FordFulkerson(const std::vector<std::vector<std::pair<int,T>>> &g):
+    size(g.size()), graph(size), visit(size)
+  {
+    for(int i = 0; i < size; ++i){
+      for(auto &[j, c] : g[i]){
+        add_edge(i, j, c);
+      }
+    }  
+  }
   FordFulkerson(int size): size(size), graph(size), visit(size){}
 
   void add_edge(int from, int to, const T &cap){

@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SplayTree/splay_tree.cpp.html">スプレー木</a>
 
 

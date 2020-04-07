@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4074bf88980bb06d903e38d47fb81c08">test/yosupo-judge/vertex_set_path_composite</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/vertex_set_path_composite/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-04-07 19:24:13+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/vertex_set_path_composite">https://judge.yosupo.jp/problem/vertex_set_path_composite</a>
@@ -173,7 +173,7 @@ public:
   inline constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
     
-    int64_t ret = 1, e = n;
+    int64_t ret = 1, e = n % M;
     for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
     return ret;
   }
@@ -213,6 +213,9 @@ public:
     static auto value = inv(N);
     return value;
   }
+
+  explicit operator int32_t() const noexcept {return val;}
+  explicit operator int64_t() const noexcept {return val;}
 };
 #line 4 "Mylib/Graph/graph_template.cpp"
 

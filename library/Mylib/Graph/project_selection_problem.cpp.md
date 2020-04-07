@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Project Selection Problem
+# :heavy_check_mark: Project Selection Problem
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/project_selection_problem.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 13:51:54+09:00
+    - Last commit date: 2020-04-07 13:24:38+09:00
 
 
 * see: <a href="https://kimiyuki.net/blog/2017/12/05/minimum-cut-and-project-selection-problem/">https://kimiyuki.net/blog/2017/12/05/minimum-cut-and-project-selection-problem/</a>
@@ -42,9 +42,10 @@ layout: default
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2903">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2903</a>
 
 
-## Depends on
+## Verified with
 
-* :heavy_check_mark: <a href="Flow/dinic.cpp.html">Dinic法</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/2903/main.test.cpp.html">test/aoj/2903/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/3058/main.test.cpp.html">test/aoj/3058/main.test.cpp</a>
 
 
 ## Code
@@ -56,7 +57,7 @@ layout: default
 #include <vector>
 #include <utility>
 #include <cassert>
-#include "Mylib/Graph/Flow/dinic.cpp"
+#include <limits>
 
 /*
  * @title Project Selection Problem
@@ -68,11 +69,13 @@ layout: default
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3058
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2903
  */
-template <typename T, T INF>
+template <typename T, typename Flow>
 class ProjectSelectionProblem{
   int N, s, t;
   std::vector<std::vector<std::pair<int,T>>> graph;
   T default_gain;
+
+  constexpr static T INF = std::numeric_limits<T>::max();
 
 public:
   ProjectSelectionProblem(int N): N(N), s(N), t(N+1), graph(N+2), default_gain(0){}
@@ -145,7 +148,7 @@ public:
   }
 
   T solve(){
-    Dinic<T,INF> flow(graph);
+    Flow flow(graph);
     return default_gain - flow.solve(s, t);
   }
 };
@@ -160,96 +163,7 @@ public:
 #include <vector>
 #include <utility>
 #include <cassert>
-#line 4 "Mylib/Graph/Flow/dinic.cpp"
-#include <deque>
-#include <algorithm>
-
-/**
- * @title Dinic法
- */
-template <typename T> class Dinic{
-private:
-  std::vector<std::vector<std::pair<int,T>>> graph;
-  int size, s, t;
-  std::vector<std::vector<T>> cap;
-  std::vector<int> level;
-  
-  bool buildLevel(){
-    std::fill(level.begin(), level.end(), 0);
-    level[s] = 1;
-    std::deque<int> deq = {s};
-    while(not deq.empty()){
-      int cur = deq.front(); deq.pop_front();
-      for(int i = 0; i < size; ++i)
-        if(level[i] == 0 and cap[cur][i] > 0){
-          level[i] = level[cur] + 1;
-          deq.push_back(i);
-        }
-    }
-    return level[t] != 0;
-  }
-  void dfs(std::vector<int> &path, T &flow){
-    if(path.empty()) return;
-    int cur = path.back();
-    if(cur == t){
-      T f = std::numeric_limits<T>::max();
-      for(int i = 1; i < (int)path.size(); ++i) f = std::min(f, cap[path[i-1]][path[i]]);
-      for(int i = 1; i < (int)path.size(); ++i){
-        cap[path[i-1]][path[i]] -= f;
-        cap[path[i]][path[i-1]] += f;
-      }
-      flow += f;
-    }else{
-      for(int i = 0; i < size; ++i){
-        if(cap[cur][i] > 0 and level[i] > level[cur]){
-          path.push_back(i);
-          dfs(path, flow);
-          path.pop_back();
-        }
-      }
-    }
-  }
-  
-  T augment(){
-    T f = 0;
-    std::vector<int> path = {s};
-    dfs(path, f);
-    return f;
-  }
-  
-  T loop(){
-    T f = 0;
-    while(buildLevel()) f += augment();
-    return f;
-  }
- 
-public:
-  Dinic(std::vector<std::vector<std::pair<int,T>>> &_graph): graph(_graph), size(graph.size()) {}
-  Dinic(int size): graph(size), size(size){}
-  Dinic(){}
- 
-  void add_edge(int from, int to, const T &cap){
-    graph[from].push_back({to, cap});
-  }
-  
-  T solve(int _s, int _t){
-    cap = std::vector<std::vector<T>>(size, std::vector<T>(size, 0));
-    level = std::vector<int>(size, 0);
- 
-    for(int i = 0; i < size; ++i)
-      for(auto &p : graph[i]){
-        int j = p.first;
-        T d = p.second;
-        cap[i][j] += d;
-      }
- 
-    s = _s;
-    t = _t;
- 
-    return loop();
-  }
-};
-#line 6 "Mylib/Graph/project_selection_problem.cpp"
+#include <limits>
 
 /*
  * @title Project Selection Problem
@@ -261,11 +175,13 @@ public:
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3058
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2903
  */
-template <typename T, T INF>
+template <typename T, typename Flow>
 class ProjectSelectionProblem{
   int N, s, t;
   std::vector<std::vector<std::pair<int,T>>> graph;
   T default_gain;
+
+  constexpr static T INF = std::numeric_limits<T>::max();
 
 public:
   ProjectSelectionProblem(int N): N(N), s(N), t(N+1), graph(N+2), default_gain(0){}
@@ -338,7 +254,7 @@ public:
   }
 
   T solve(){
-    Dinic<T,INF> flow(graph);
+    Flow flow(graph);
     return default_gain - flow.solve(s, t);
   }
 };
