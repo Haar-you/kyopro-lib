@@ -8,7 +8,7 @@
  */
 bool CRA(int64_t b1, int64_t m1, int64_t b2, int64_t m2, int64_t &r, int64_t &m){
   int64_t p,q,d;
-  std::tie(d,p,q) = extGCD(m1,m2);
+  std::tie(d,p,q) = ext_gcd(m1,m2);
   if((b2-b1) % d != 0) return false;
   m = m1 * m2 / d;
   int64_t t = ((b2-b1) * p / d) % (m2 / d);
