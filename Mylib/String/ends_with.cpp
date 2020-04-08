@@ -1,10 +1,10 @@
 #pragma once
-#include <string>
 
 /**
  * @title ends_with
  */
-bool ends_with(const std::string &str, const std::string &suffix){
+template <typename Container, typename T = typename Container::value_type>
+bool ends_with(const Container &str, const Container &suffix){
   if(str.size() < suffix.size()) return false;
   int n = str.size(), m = suffix.size();
   for(size_t i = 0; i < suffix.size(); ++i){

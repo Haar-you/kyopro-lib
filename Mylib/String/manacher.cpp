@@ -1,13 +1,13 @@
 #pragma once
 #include <vector>
-#include <string>
 
 /**
  * @title Manacher法
  * @see https://atcoder.jp/contests/ukuku09/submissions/8413843
  * @return 位置iを中心とした最長奇数長回文の片側長さ(回文長Lに対してL/2+1)の配列
  */
-std::vector<int> manacher(const std::string &s){
+template <typename Container, typename T = typename Container::value_type>
+std::vector<int> manacher(const Container &s){
   const int n = s.size();
   std::vector<int> ret(n);
   int center = 0;

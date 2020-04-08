@@ -1,12 +1,12 @@
 #pragma once
-#include <string>
 #include <vector>
 #include <algorithm>
 
 /**
  * @title Z-algorithm
  */
-std::vector<int> z_algorithm(const std::string &s){
+template <typename Container, typename T = typename Container::value_type>
+std::vector<int> z_algorithm(const Container &s){
   const int n = s.size();
   std::vector<int> ret(n, 0);
   int j = 0;
