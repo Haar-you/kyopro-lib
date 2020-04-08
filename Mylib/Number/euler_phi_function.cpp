@@ -1,23 +1,19 @@
 #pragma once
-#include <vector>
-#include <numeric>
 
 /**
  * @title Eulerのトーシェント関数
- * @see https://codeforces.com/contest/1208/submission/59824476
- * @note phi(nm) = phi(n) * phi(m) if nとmが互いに素
  */
-auto phi_function(int n){
-  std::vector<int> ret(n+1);
-  std::iota(ret.begin(), ret.end(), 0);
+int64_t totient(int64_t n){
+  int64_t ret = n;
 
-  for(int i = 2; i <= n; ++i){
-    if(ret[i] == i){
-      for(int j = i; j <= n; j += i){
-        ret[j] = ret[j] / i * (i-1);
-      }
+  for(int64_t i = 2; i * i <= n; ++i){
+    if(n % i == 0){
+      ret -= ret / i;
+      while(n % i == 0) n /= i;
     }
   }
-  
+
+  if(n != 1) ret -= ret / n;
+
   return ret;
 }
