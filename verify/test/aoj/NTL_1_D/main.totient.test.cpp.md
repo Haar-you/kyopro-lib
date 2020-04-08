@@ -25,12 +25,12 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/NTL_1_D/main.test.cpp
+# :heavy_check_mark: test/aoj/NTL_1_D/main.totient.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2f883b12bcaccb309536ea11ea7e4a50">test/aoj/NTL_1_D</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/NTL_1_D/main.test.cpp">View this file on GitHub</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/NTL_1_D/main.totient.test.cpp">View this file on GitHub</a>
     - Last commit date: 2020-04-08 17:37:41+09:00
 
 
@@ -39,8 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/count_coprime.cpp.html">互いに素な自然数の個数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/prime_factorize.cpp.html">素因数分解</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/euler_phi_function.cpp.html">Eulerのトーシェント関数</a>
 
 
 ## Code
@@ -51,12 +50,12 @@ layout: default
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D"
 
 #include <iostream>
-#include "Mylib/Number/Prime/count_coprime.cpp"
+#include "Mylib/Number/euler_phi_function.cpp"
 
 int main(){
   int n; std::cin >> n;
 
-  std::cout << count_coprime(n, n) << std::endl;
+  std::cout << totient(n) << std::endl;
 
   return 0;
 }
@@ -67,65 +66,35 @@ int main(){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/aoj/NTL_1_D/main.test.cpp"
+#line 1 "test/aoj/NTL_1_D/main.totient.test.cpp"
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D"
 
 #include <iostream>
-#line 2 "Mylib/Number/Prime/count_coprime.cpp"
-
-#line 2 "Mylib/Number/Prime/prime_factorize.cpp"
-#include <vector>
-#include <utility>
+#line 2 "Mylib/Number/euler_phi_function.cpp"
 
 /**
- * @title 素因数分解
+ * @title Eulerのトーシェント関数
  */
-auto prime_factorize(int64_t n){
-  std::vector<std::pair<int64_t,int64_t>> ret;
-  for(int64_t i = 2LL; i * i <= n; ++i){
+int64_t totient(int64_t n){
+  int64_t ret = n;
+
+  for(int64_t i = 2; i * i <= n; ++i){
     if(n % i == 0){
-      int64_t c = 0;
-      while(n % i == 0){
-        n /= i;
-        ++c;
-      }
-      ret.emplace_back(i, c);
+      ret -= ret / i;
+      while(n % i == 0) n /= i;
     }
   }
-  if(n != 1) ret.emplace_back(n, 1);
+
+  if(n != 1) ret -= ret / n;
+
   return ret;
 }
-#line 4 "Mylib/Number/Prime/count_coprime.cpp"
-
-/**
- * @title 互いに素な自然数の個数
- * @brief [1,n]を満たす自然数でmと互いに素であるものの個数
- */
-int64_t count_coprime(int64_t n, int64_t m){
-  const auto p = prime_factorize(m);
-  int k = p.size();
-
-  int64_t ret = 0;
-
-  for(int i = 0; i < 1<<k; ++i){
-    int64_t s = 1;
-    
-    for(int j = 0; j < k; ++j){
-      if(i & (1 << j)) s *= p[j].first;
-    }
-
-    if(__builtin_popcount(i) % 2 == 1) ret -= n / s;
-    else ret += n / s;
-  }
-  
-  return ret;
-}
-#line 5 "test/aoj/NTL_1_D/main.test.cpp"
+#line 5 "test/aoj/NTL_1_D/main.totient.test.cpp"
 
 int main(){
   int n; std::cin >> n;
 
-  std::cout << count_coprime(n, n) << std::endl;
+  std::cout << totient(n) << std::endl;
 
   return 0;
 }

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#851bd501caf05418a029865ccd3f2b9f">test/aoj/2674</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2674/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 09:56:17+09:00
+    - Last commit date: 2020-04-08 16:48:10+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/range_freq.cpp.html">Mylib/DataStructure/WaveletMatrix/range_freq.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/range_freq.cpp.html">range_freq</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">簡潔辞書</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Wavelet matrix</a>
 
 
 ## Code
@@ -108,6 +108,10 @@ int main(){
 #include <tuple>
 #include <cassert>
 #line 3 "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
+
+/**
+ * @title 簡潔辞書
+ */
 
 struct SuccinctDict{
   int N;
@@ -213,10 +217,12 @@ struct SuccinctDict{
 #line 7 "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 
 /**
+ * @title Wavelet matrix
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1549 (prev_value, next_value)
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674 (range_freq)
  * @see https://www.spoj.com/problems/MKTHNUM/ (quantile)
  */
+
 template <typename T, int B>
 class WaveletMatrix{
   const int N;
@@ -369,6 +375,10 @@ WaveletMatrix<uint32_t,32> make_wavelet_matrix_int(const std::vector<uint32_t> &
   return WaveletMatrix<uint32_t, 32>(data);
 }
 #line 3 "Mylib/DataStructure/WaveletMatrix/range_freq.cpp"
+
+/**
+ * @title range_freq
+ */
 
 template <typename T, int B>
 int WaveletMatrix<T,B>::range_freq_lt(int l, int r, T ub) const {

@@ -25,24 +25,24 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp
+# :heavy_check_mark: 簡潔辞書
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#def74daadbbb39361c0a507a6463f6db">Mylib/DataStructure/WaveletMatrix</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 09:56:17+09:00
+    - Last commit date: 2020-04-08 16:48:10+09:00
 
 
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="prev_next_value.cpp.html">Mylib/DataStructure/WaveletMatrix/prev_next_value.cpp</a>
-* :heavy_check_mark: <a href="range_freq.cpp.html">Mylib/DataStructure/WaveletMatrix/range_freq.cpp</a>
-* :warning: <a href="range_freq_list.cpp.html">Mylib/DataStructure/WaveletMatrix/range_freq_list.cpp</a>
-* :warning: <a href="top_k.cpp.html">Mylib/DataStructure/WaveletMatrix/top_k.cpp</a>
-* :heavy_check_mark: <a href="wavelet_matrix.cpp.html">Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp</a>
+* :heavy_check_mark: <a href="prev_next_value.cpp.html">prev_value / next_value</a>
+* :heavy_check_mark: <a href="range_freq.cpp.html">range_freq</a>
+* :warning: <a href="range_freq_list.cpp.html">range_freq_list</a>
+* :warning: <a href="top_k.cpp.html">top_k</a>
+* :heavy_check_mark: <a href="wavelet_matrix.cpp.html">Wavelet matrix</a>
 
 
 ## Verified with
@@ -59,6 +59,10 @@ layout: default
 ```cpp
 #pragma once
 #include <vector>
+
+/**
+ * @title 簡潔辞書
+ */
 
 struct SuccinctDict{
   int N;
@@ -170,6 +174,10 @@ struct SuccinctDict{
 ```cpp
 #line 2 "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
 #include <vector>
+
+/**
+ * @title 簡潔辞書
+ */
 
 struct SuccinctDict{
   int N;

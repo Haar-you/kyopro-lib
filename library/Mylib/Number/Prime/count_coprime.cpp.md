@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: \[1,n\]を満たす自然数でmと互いに素であるものの個数
+# :heavy_check_mark: 互いに素な自然数の個数
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/count_coprime.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-06 20:21:28+09:00
+    - Last commit date: 2020-04-08 17:37:41+09:00
 
 
 
@@ -56,7 +56,8 @@ layout: default
 #include "Mylib/Number/Prime/prime_factorize.cpp"
 
 /**
- * @title [1,n]を満たす自然数でmと互いに素であるものの個数
+ * @title 互いに素な自然数の個数
+ * @brief [1,n]を満たす自然数でmと互いに素であるものの個数
  */
 int64_t count_coprime(int64_t n, int64_t m){
   const auto p = prime_factorize(m);
@@ -111,7 +112,8 @@ auto prime_factorize(int64_t n){
 #line 4 "Mylib/Number/Prime/count_coprime.cpp"
 
 /**
- * @title [1,n]を満たす自然数でmと互いに素であるものの個数
+ * @title 互いに素な自然数の個数
+ * @brief [1,n]を満たす自然数でmと互いに素であるものの個数
  */
 int64_t count_coprime(int64_t n, int64_t m){
   const auto p = prime_factorize(m);

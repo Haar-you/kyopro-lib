@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/starts_with.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-08 18:28:01+09:00
 
 
 
@@ -42,12 +42,12 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include <string>
 
 /**
  * @title starts_with
  */
-bool starts_with(const std::string &str, const std::string &prefix){
+template <typename Container, typename T = typename Container::value_type>
+bool starts_with(const Container &str, const Container &prefix){
   if(str.size() < prefix.size()) return false;
   for(size_t i = 0; i < prefix.size(); ++i){
     if(str[i] != prefix[i]) return false;
@@ -62,12 +62,12 @@ bool starts_with(const std::string &str, const std::string &prefix){
 {% raw %}
 ```cpp
 #line 2 "Mylib/String/starts_with.cpp"
-#include <string>
 
 /**
  * @title starts_with
  */
-bool starts_with(const std::string &str, const std::string &prefix){
+template <typename Container, typename T = typename Container::value_type>
+bool starts_with(const Container &str, const Container &prefix){
   if(str.size() < prefix.size()) return false;
   for(size_t i = 0; i < prefix.size(); ++i){
     if(str[i] != prefix[i]) return false;

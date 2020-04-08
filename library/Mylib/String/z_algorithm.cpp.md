@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/z_algorithm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-08 18:28:01+09:00
 
 
 
@@ -47,14 +47,14 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include <string>
 #include <vector>
 #include <algorithm>
 
 /**
  * @title Z-algorithm
  */
-std::vector<int> z_algorithm(const std::string &s){
+template <typename Container, typename T = typename Container::value_type>
+std::vector<int> z_algorithm(const Container &s){
   const int n = s.size();
   std::vector<int> ret(n, 0);
   int j = 0;
@@ -82,14 +82,14 @@ std::vector<int> z_algorithm(const std::string &s){
 {% raw %}
 ```cpp
 #line 2 "Mylib/String/z_algorithm.cpp"
-#include <string>
 #include <vector>
 #include <algorithm>
 
 /**
  * @title Z-algorithm
  */
-std::vector<int> z_algorithm(const std::string &s){
+template <typename Container, typename T = typename Container::value_type>
+std::vector<int> z_algorithm(const Container &s){
   const int n = s.size();
   std::vector<int> ret(n, 0);
   int j = 0;

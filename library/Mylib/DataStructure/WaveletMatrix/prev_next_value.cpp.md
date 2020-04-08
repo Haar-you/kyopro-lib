@@ -25,22 +25,22 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/DataStructure/WaveletMatrix/prev_next_value.cpp
+# :heavy_check_mark: prev_value / next_value
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#def74daadbbb39361c0a507a6463f6db">Mylib/DataStructure/WaveletMatrix</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/WaveletMatrix/prev_next_value.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 09:56:17+09:00
+    - Last commit date: 2020-04-08 16:48:10+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="range_freq.cpp.html">Mylib/DataStructure/WaveletMatrix/range_freq.cpp</a>
-* :heavy_check_mark: <a href="succinct_dictionary.cpp.html">Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp</a>
-* :heavy_check_mark: <a href="wavelet_matrix.cpp.html">Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp</a>
+* :heavy_check_mark: <a href="range_freq.cpp.html">range_freq</a>
+* :heavy_check_mark: <a href="succinct_dictionary.cpp.html">簡潔辞書</a>
+* :heavy_check_mark: <a href="wavelet_matrix.cpp.html">Wavelet matrix</a>
 
 
 ## Verified with
@@ -57,7 +57,9 @@ layout: default
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 #include "Mylib/DataStructure/WaveletMatrix/range_freq.cpp"
 
-// BEGIN
+/**
+ * @title prev_value / next_value
+ */
 
 /**
  * @return data[l, r)のlb以上で最小の値
@@ -90,6 +92,10 @@ T WaveletMatrix<T,B>::prev_value(int l, int r, T ub) const {
 #include <tuple>
 #include <cassert>
 #line 3 "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
+
+/**
+ * @title 簡潔辞書
+ */
 
 struct SuccinctDict{
   int N;
@@ -195,10 +201,12 @@ struct SuccinctDict{
 #line 7 "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 
 /**
+ * @title Wavelet matrix
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1549 (prev_value, next_value)
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674 (range_freq)
  * @see https://www.spoj.com/problems/MKTHNUM/ (quantile)
  */
+
 template <typename T, int B>
 class WaveletMatrix{
   const int N;
@@ -352,6 +360,10 @@ WaveletMatrix<uint32_t,32> make_wavelet_matrix_int(const std::vector<uint32_t> &
 }
 #line 3 "Mylib/DataStructure/WaveletMatrix/range_freq.cpp"
 
+/**
+ * @title range_freq
+ */
+
 template <typename T, int B>
 int WaveletMatrix<T,B>::range_freq_lt(int l, int r, T ub) const {
   int ret = 0;
@@ -379,7 +391,9 @@ int WaveletMatrix<T,B>::range_freq(int l, int r, T lb, T ub) const {
 }
 #line 4 "Mylib/DataStructure/WaveletMatrix/prev_next_value.cpp"
 
-// BEGIN
+/**
+ * @title prev_value / next_value
+ */
 
 /**
  * @return data[l, r)のlb以上で最小の値

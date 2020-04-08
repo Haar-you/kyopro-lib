@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0b6beed70553311fed26bd78c31ce008">test/yosupo-judge/range_kth_smallest</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/range_kth_smallest/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 10:19:17+09:00
+    - Last commit date: 2020-04-08 16:48:10+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_kth_smallest">https://judge.yosupo.jp/problem/range_kth_smallest</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">簡潔辞書</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Wavelet matrix</a>
 
 
 ## Code
@@ -88,6 +88,10 @@ int main(){
 #include <tuple>
 #include <cassert>
 #line 3 "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
+
+/**
+ * @title 簡潔辞書
+ */
 
 struct SuccinctDict{
   int N;
@@ -193,10 +197,12 @@ struct SuccinctDict{
 #line 7 "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 
 /**
+ * @title Wavelet matrix
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1549 (prev_value, next_value)
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674 (range_freq)
  * @see https://www.spoj.com/problems/MKTHNUM/ (quantile)
  */
+
 template <typename T, int B>
 class WaveletMatrix{
   const int N;

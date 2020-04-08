@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/manacher.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-08 18:28:01+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/ukuku09/submissions/8413843">https://atcoder.jp/contests/ukuku09/submissions/8413843</a>
@@ -44,14 +44,14 @@ layout: default
 ```cpp
 #pragma once
 #include <vector>
-#include <string>
 
 /**
  * @title Manacher法
  * @see https://atcoder.jp/contests/ukuku09/submissions/8413843
  * @return 位置iを中心とした最長奇数長回文の片側長さ(回文長Lに対してL/2+1)の配列
  */
-std::vector<int> manacher(const std::string &s){
+template <typename Container, typename T = typename Container::value_type>
+std::vector<int> manacher(const Container &s){
   const int n = s.size();
   std::vector<int> ret(n);
   int center = 0;
@@ -80,14 +80,14 @@ std::vector<int> manacher(const std::string &s){
 ```cpp
 #line 2 "Mylib/String/manacher.cpp"
 #include <vector>
-#include <string>
 
 /**
  * @title Manacher法
  * @see https://atcoder.jp/contests/ukuku09/submissions/8413843
  * @return 位置iを中心とした最長奇数長回文の片側長さ(回文長Lに対してL/2+1)の配列
  */
-std::vector<int> manacher(const std::string &s){
+template <typename Container, typename T = typename Container::value_type>
+std::vector<int> manacher(const Container &s){
   const int n = s.size();
   std::vector<int> ret(n);
   int center = 0;

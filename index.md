@@ -316,12 +316,12 @@ layout: default
 
 ### Mylib/DataStructure/WaveletMatrix
 
-* :heavy_check_mark: <a href="library/Mylib/DataStructure/WaveletMatrix/prev_next_value.cpp.html">Mylib/DataStructure/WaveletMatrix/prev_next_value.cpp</a>
-* :heavy_check_mark: <a href="library/Mylib/DataStructure/WaveletMatrix/range_freq.cpp.html">Mylib/DataStructure/WaveletMatrix/range_freq.cpp</a>
-* :warning: <a href="library/Mylib/DataStructure/WaveletMatrix/range_freq_list.cpp.html">Mylib/DataStructure/WaveletMatrix/range_freq_list.cpp</a>
-* :heavy_check_mark: <a href="library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp</a>
-* :warning: <a href="library/Mylib/DataStructure/WaveletMatrix/top_k.cpp.html">Mylib/DataStructure/WaveletMatrix/top_k.cpp</a>
-* :heavy_check_mark: <a href="library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/WaveletMatrix/prev_next_value.cpp.html">prev_value / next_value</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/WaveletMatrix/range_freq.cpp.html">range_freq</a>
+* :warning: <a href="library/Mylib/DataStructure/WaveletMatrix/range_freq_list.cpp.html">range_freq_list</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">簡潔辞書</a>
+* :warning: <a href="library/Mylib/DataStructure/WaveletMatrix/top_k.cpp.html">top_k</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Wavelet matrix</a>
 
 
 <div id="3a96c66483797c15eff4c0c3d8733619"></div>
@@ -540,7 +540,7 @@ layout: default
 ### Mylib/LinearAlgebra/Square
 
 * :heavy_check_mark: <a href="library/Mylib/LinearAlgebra/Square/determinant.cpp.html">行列式 (01)</a>
-* :warning: <a href="library/Mylib/LinearAlgebra/Square/inverse_matrix.cpp.html">逆行列</a>
+* :heavy_check_mark: <a href="library/Mylib/LinearAlgebra/Square/inverse_matrix.cpp.html">逆行列</a>
 * :heavy_check_mark: <a href="library/Mylib/LinearAlgebra/Square/power.cpp.html">行列累乗</a>
 * :warning: <a href="library/Mylib/LinearAlgebra/Square/show_matrix.cpp.html">Mylib/LinearAlgebra/Square/show_matrix.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">正方行列</a>
@@ -557,6 +557,7 @@ layout: default
 * :warning: <a href="library/Mylib/Misc/convert_base.cpp.html">進数変換</a>
 * :warning: <a href="library/Mylib/Misc/dice.cpp.html">サイコロ</a>
 * :warning: <a href="library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
+* :heavy_check_mark: <a href="library/Mylib/Misc/int128.cpp.html">128bit整数型</a>
 * :heavy_check_mark: <a href="library/Mylib/Misc/inverse_number.cpp.html">転倒数</a>
 * :warning: <a href="library/Mylib/Misc/run_length_encode.cpp.html">連長圧縮</a>
 * :warning: <a href="library/Mylib/Misc/sort_all.cpp.html">Mylib/Misc/sort_all.cpp</a>
@@ -568,7 +569,8 @@ layout: default
 ### Mylib/Number
 
 * :heavy_check_mark: <a href="library/Mylib/Number/chinese_remainder_algorithm.cpp.html">中国剰余定理</a>
-* :warning: <a href="library/Mylib/Number/euler_phi_function.cpp.html">Eulerのトーシェント関数</a>
+* :heavy_check_mark: <a href="library/Mylib/Number/euler_phi_function.cpp.html">Eulerのトーシェント関数</a>
+* :warning: <a href="library/Mylib/Number/euler_phi_function_table.cpp.html">Eulerのトーシェント関数の列挙</a>
 * :heavy_check_mark: <a href="library/Mylib/Number/extended_gcd.cpp.html">拡張Euclidの互除法</a>
 * :warning: <a href="library/Mylib/Number/floor_ceil.cpp.html">床関数・天井関数</a>
 * :warning: <a href="library/Mylib/Number/garner.cpp.html">Garner法</a>
@@ -609,10 +611,11 @@ layout: default
 
 ### Mylib/Number/Prime
 
-* :heavy_check_mark: <a href="library/Mylib/Number/Prime/count_coprime.cpp.html">\[1,n\]を満たす自然数でmと互いに素であるものの個数</a>
+* :heavy_check_mark: <a href="library/Mylib/Number/Prime/count_coprime.cpp.html">互いに素な自然数の個数</a>
 * :warning: <a href="library/Mylib/Number/Prime/eratosthenes_sieve.cpp.html">Eratosthenesの篩</a>
 * :warning: <a href="library/Mylib/Number/Prime/factorial_prime_factorization.cpp.html">a!の素因数pの個数</a>
 * :warning: <a href="library/Mylib/Number/Prime/is_prime.cpp.html">試し割り素数判定</a>
+* :heavy_check_mark: <a href="library/Mylib/Number/Prime/miller_rabin.cpp.html">Miller-Rabin素数判定法</a>
 * :heavy_check_mark: <a href="library/Mylib/Number/Prime/prime_factorize.cpp.html">素因数分解</a>
 
 
@@ -772,6 +775,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/NTL_1_A/main.test.cpp.html">test/aoj/NTL_1_A/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/NTL_1_D/main.test.cpp.html">test/aoj/NTL_1_D/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/NTL_1_D/main.totient.test.cpp.html">test/aoj/NTL_1_D/main.totient.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/NTL_1_E/main.test.cpp.html">test/aoj/NTL_1_E/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/assignment/main.test.cpp.html">test/yosupo-judge/assignment/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/bipartitematching/main.test.cpp.html">test/yosupo-judge/bipartitematching/main.test.cpp</a>
@@ -809,6 +813,8 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/zalgorithm/main.test.cpp.html">test/yosupo-judge/zalgorithm/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/117/main.test.cpp.html">test/yukicoder/117/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/186/main.test.cpp.html">test/yukicoder/186/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/194/main.test.cpp.html">test/yukicoder/194/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/3030/main.test.cpp.html">test/yukicoder/3030/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/430/main.aho_corasick.test.cpp.html">test/yukicoder/430/main.aho_corasick.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/665/main.test.cpp.html">test/yukicoder/665/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/776/main.test.cpp.html">test/yukicoder/776/main.test.cpp</a>

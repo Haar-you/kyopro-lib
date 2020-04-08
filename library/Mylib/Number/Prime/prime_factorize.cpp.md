@@ -38,7 +38,7 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="count_coprime.cpp.html">\[1,n\]を満たす自然数でmと互いに素であるものの個数</a>
+* :heavy_check_mark: <a href="count_coprime.cpp.html">互いに素な自然数の個数</a>
 
 
 ## Verified with

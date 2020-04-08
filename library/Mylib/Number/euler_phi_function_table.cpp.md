@@ -25,20 +25,16 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Eulerのトーシェント関数
+# :warning: Eulerのトーシェント関数の列挙
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/euler_phi_function.cpp">View this file on GitHub</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/euler_phi_function_table.cpp">View this file on GitHub</a>
     - Last commit date: 2020-04-08 17:37:41+09:00
 
 
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../verify/test/aoj/NTL_1_D/main.totient.test.cpp.html">test/aoj/NTL_1_D/main.totient.test.cpp</a>
+* see: <a href="https://codeforces.com/contest/1208/submission/59824476">https://codeforces.com/contest/1208/submission/59824476</a>
 
 
 ## Code
@@ -47,22 +43,26 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
+#include <vector>
+#include <numeric>
 
 /**
- * @title Eulerのトーシェント関数
+ * @title Eulerのトーシェント関数の列挙
+ * @see https://codeforces.com/contest/1208/submission/59824476
+ * @note phi(nm) = phi(n) * phi(m) if nとmが互いに素
  */
-int64_t totient(int64_t n){
-  int64_t ret = n;
+auto totient_table(int n){
+  std::vector<int> ret(n+1);
+  std::iota(ret.begin(), ret.end(), 0);
 
-  for(int64_t i = 2; i * i <= n; ++i){
-    if(n % i == 0){
-      ret -= ret / i;
-      while(n % i == 0) n /= i;
+  for(int i = 2; i <= n; ++i){
+    if(ret[i] == i){
+      for(int j = i; j <= n; j += i){
+        ret[j] = ret[j] / i * (i-1);
+      }
     }
   }
-
-  if(n != 1) ret -= ret / n;
-
+  
   return ret;
 }
 
@@ -72,23 +72,27 @@ int64_t totient(int64_t n){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Number/euler_phi_function.cpp"
+#line 2 "Mylib/Number/euler_phi_function_table.cpp"
+#include <vector>
+#include <numeric>
 
 /**
- * @title Eulerのトーシェント関数
+ * @title Eulerのトーシェント関数の列挙
+ * @see https://codeforces.com/contest/1208/submission/59824476
+ * @note phi(nm) = phi(n) * phi(m) if nとmが互いに素
  */
-int64_t totient(int64_t n){
-  int64_t ret = n;
+auto totient_table(int n){
+  std::vector<int> ret(n+1);
+  std::iota(ret.begin(), ret.end(), 0);
 
-  for(int64_t i = 2; i * i <= n; ++i){
-    if(n % i == 0){
-      ret -= ret / i;
-      while(n % i == 0) n /= i;
+  for(int i = 2; i <= n; ++i){
+    if(ret[i] == i){
+      for(int j = i; j <= n; j += i){
+        ret[j] = ret[j] / i * (i-1);
+      }
     }
   }
-
-  if(n != 1) ret -= ret / n;
-
+  
   return ret;
 }
 

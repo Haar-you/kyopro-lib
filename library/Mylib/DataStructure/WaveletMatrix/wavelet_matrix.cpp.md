@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp
+# :heavy_check_mark: Wavelet matrix
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#def74daadbbb39361c0a507a6463f6db">Mylib/DataStructure/WaveletMatrix</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 09:56:17+09:00
+    - Last commit date: 2020-04-08 16:48:10+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1549 (prev_value, next_value)">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1549 (prev_value, next_value)</a>
@@ -41,15 +41,15 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="succinct_dictionary.cpp.html">Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp</a>
+* :heavy_check_mark: <a href="succinct_dictionary.cpp.html">簡潔辞書</a>
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="prev_next_value.cpp.html">Mylib/DataStructure/WaveletMatrix/prev_next_value.cpp</a>
-* :heavy_check_mark: <a href="range_freq.cpp.html">Mylib/DataStructure/WaveletMatrix/range_freq.cpp</a>
-* :warning: <a href="range_freq_list.cpp.html">Mylib/DataStructure/WaveletMatrix/range_freq_list.cpp</a>
-* :warning: <a href="top_k.cpp.html">Mylib/DataStructure/WaveletMatrix/top_k.cpp</a>
+* :heavy_check_mark: <a href="prev_next_value.cpp.html">prev_value / next_value</a>
+* :heavy_check_mark: <a href="range_freq.cpp.html">range_freq</a>
+* :warning: <a href="range_freq_list.cpp.html">range_freq_list</a>
+* :warning: <a href="top_k.cpp.html">top_k</a>
 
 
 ## Verified with
@@ -72,10 +72,12 @@ layout: default
 #include "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
 
 /**
+ * @title Wavelet matrix
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1549 (prev_value, next_value)
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674 (range_freq)
  * @see https://www.spoj.com/problems/MKTHNUM/ (quantile)
  */
+
 template <typename T, int B>
 class WaveletMatrix{
   const int N;
@@ -241,6 +243,10 @@ WaveletMatrix<uint32_t,32> make_wavelet_matrix_int(const std::vector<uint32_t> &
 #include <cassert>
 #line 3 "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
 
+/**
+ * @title 簡潔辞書
+ */
+
 struct SuccinctDict{
   int N;
 
@@ -345,10 +351,12 @@ struct SuccinctDict{
 #line 7 "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 
 /**
+ * @title Wavelet matrix
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1549 (prev_value, next_value)
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674 (range_freq)
  * @see https://www.spoj.com/problems/MKTHNUM/ (quantile)
  */
+
 template <typename T, int B>
 class WaveletMatrix{
   const int N;

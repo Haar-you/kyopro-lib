@@ -25,21 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/DataStructure/WaveletMatrix/range_freq_list.cpp
+# :warning: range_freq_list
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#def74daadbbb39361c0a507a6463f6db">Mylib/DataStructure/WaveletMatrix</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/WaveletMatrix/range_freq_list.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 09:56:17+09:00
+    - Last commit date: 2020-04-08 16:48:10+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="succinct_dictionary.cpp.html">Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp</a>
-* :heavy_check_mark: <a href="wavelet_matrix.cpp.html">Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp</a>
+* :heavy_check_mark: <a href="succinct_dictionary.cpp.html">簡潔辞書</a>
+* :heavy_check_mark: <a href="wavelet_matrix.cpp.html">Wavelet matrix</a>
 
 
 ## Code
@@ -54,6 +54,7 @@ layout: default
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 
 /**
+ * @title range_freq_list
  * @return data[l, r)で[lb, ub)を満たすものを出現頻度と値のpairで返す。
  */
 template <typename T, int B>
@@ -112,6 +113,10 @@ std::vector<std::pair<int, T>> WaveletMatrix<T,B>::range_freq_list(int l, int r,
 #line 5 "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 #include <cassert>
 #line 3 "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
+
+/**
+ * @title 簡潔辞書
+ */
 
 struct SuccinctDict{
   int N;
@@ -217,10 +222,12 @@ struct SuccinctDict{
 #line 7 "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 
 /**
+ * @title Wavelet matrix
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1549 (prev_value, next_value)
  * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674 (range_freq)
  * @see https://www.spoj.com/problems/MKTHNUM/ (quantile)
  */
+
 template <typename T, int B>
 class WaveletMatrix{
   const int N;
@@ -375,6 +382,7 @@ WaveletMatrix<uint32_t,32> make_wavelet_matrix_int(const std::vector<uint32_t> &
 #line 6 "Mylib/DataStructure/WaveletMatrix/range_freq_list.cpp"
 
 /**
+ * @title range_freq_list
  * @return data[l, r)で[lb, ub)を満たすものを出現頻度と値のpairで返す。
  */
 template <typename T, int B>
