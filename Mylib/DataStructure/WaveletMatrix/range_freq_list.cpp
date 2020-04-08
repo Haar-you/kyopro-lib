@@ -5,6 +5,7 @@
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 
 /**
+ * @title range_freq_list
  * @return data[l, r)で[lb, ub)を満たすものを出現頻度と値のpairで返す。
  */
 template <typename T, int B>

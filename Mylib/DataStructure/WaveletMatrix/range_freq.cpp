@@ -1,6 +1,10 @@
 #pragma once
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 
+/**
+ * @title range_freq
+ */
+
 template <typename T, int B>
 int WaveletMatrix<T,B>::range_freq_lt(int l, int r, T ub) const {
   int ret = 0;

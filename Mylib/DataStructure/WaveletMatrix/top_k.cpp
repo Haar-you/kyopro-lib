@@ -6,6 +6,7 @@
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 
 /**
+ * @title top_k
  * @return data[l, r)で出現頻度が高い順にk個を返す
  */
 template <typename T, int B>

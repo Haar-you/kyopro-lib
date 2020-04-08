@@ -2,7 +2,9 @@
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 #include "Mylib/DataStructure/WaveletMatrix/range_freq.cpp"
 
-// BEGIN
+/**
+ * @title prev_value / next_value
+ */
 
 /**
  * @return data[l, r)のlb以上で最小の値

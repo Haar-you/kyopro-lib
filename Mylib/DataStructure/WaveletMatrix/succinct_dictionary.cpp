@@ -1,6 +1,10 @@
 #pragma once
 #include <vector>
 
+/**
+ * @title 簡潔辞書
+ */
+
 struct SuccinctDict{
   int N;
 
