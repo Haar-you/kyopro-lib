@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3a96c66483797c15eff4c0c3d8733619">Mylib/DynamicProgramming</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/levenshtein_distance.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-09 17:21:47+09:00
 
 
 
@@ -53,7 +53,8 @@ layout: default
 /**
  * @title Levenshtein距離 / 編集距離
  */
-template <typename T> int levenshtein_distance(const T &a, const T &b){
+template <typename Container, typename T = typename Container::value_type>
+int levenshtein_distance(const Container &a, const Container &b){
   int n = a.size(), m = b.size();
   std::vector<std::vector<int>> dp(n+1, std::vector<int>(m+1, 0));
   
@@ -87,7 +88,8 @@ template <typename T> int levenshtein_distance(const T &a, const T &b){
 /**
  * @title Levenshtein距離 / 編集距離
  */
-template <typename T> int levenshtein_distance(const T &a, const T &b){
+template <typename Container, typename T = typename Container::value_type>
+int levenshtein_distance(const Container &a, const Container &b){
   int n = a.size(), m = b.size();
   std::vector<std::vector<int>> dp(n+1, std::vector<int>(m+1, 0));
   

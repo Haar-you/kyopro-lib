@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#ff011c241521fe723b9ada74a9467695">test/aoj/DPL_1_E</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_1_E/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-09 17:21:47+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_E">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_E</a>
@@ -81,7 +81,8 @@ int main(){
 /**
  * @title Levenshtein距離 / 編集距離
  */
-template <typename T> int levenshtein_distance(const T &a, const T &b){
+template <typename Container, typename T = typename Container::value_type>
+int levenshtein_distance(const Container &a, const Container &b){
   int n = a.size(), m = b.size();
   std::vector<std::vector<int>> dp(n+1, std::vector<int>(m+1, 0));
   

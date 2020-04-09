@@ -25,25 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Eratosthenesの篩
+# :heavy_check_mark: test/yukicoder/843/main.eratosthenes.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/eratosthenes_sieve.cpp">View this file on GitHub</a>
+* category: <a href="../../../../index.html#05b6faf184ccb3df7524a3ce68064b76">test/yukicoder/843</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/843/main.eratosthenes.test.cpp">View this file on GitHub</a>
     - Last commit date: 2020-04-09 17:11:56+09:00
 
 
+* see: <a href="https://yukicoder.me/problems/no/843">https://yukicoder.me/problems/no/843</a>
 
 
-## Required by
+## Depends on
 
-* :warning: <a href="../mobius_function.cpp.html">Möbius関数</a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/843/main.eratosthenes.test.cpp.html">test/yukicoder/843/main.eratosthenes.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/eratosthenes_sieve.cpp.html">Eratosthenesの篩</a>
 
 
 ## Code
@@ -51,31 +47,36 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#pragma once
-#include <bitset>
+#define PROBLEM "https://yukicoder.me/problems/no/843"
 
-/**
- * @title Eratosthenesの篩
- */
-template <int MAX>
-struct EratosthenesSieve{
-  static std::bitset<MAX+1> is_prime;
+#include <iostream>
+#include "Mylib/Number/Prime/eratosthenes_sieve.cpp"
+
+using P = EratosthenesSieve<500000>;
+
+int main(){
+  P::init();
   
-  static void init(){
-    is_prime.flip();
-    is_prime[0] = is_prime[1] = false;
-    
-    for(int i = 2; i <= MAX; ++i){
-      if(is_prime[i]){
-        for(int j = 2*i; j <= MAX; j += i){
-          is_prime[j] = false;
-        }
-      }
-    }
-  }
-};
+  int N; std::cin >> N;
 
-template <int MAX> std::bitset<MAX+1> EratosthenesSieve<MAX>::is_prime;
+  int64_t ans = 0;
+
+  if(N >= 2){
+    ans += 1;
+
+    int t = 0;
+    for(int64_t r = 3; r <= N; ++r){
+      int64_t q = r * r - 2;
+      if(q <= N and P::is_prime[r] and P::is_prime[q]) ++t;
+    }
+
+    ans += t * 2;
+  }
+  
+  std::cout << ans << std::endl;
+
+  return 0;
+}
 
 ```
 {% endraw %}
@@ -83,6 +84,10 @@ template <int MAX> std::bitset<MAX+1> EratosthenesSieve<MAX>::is_prime;
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 1 "test/yukicoder/843/main.eratosthenes.test.cpp"
+#define PROBLEM "https://yukicoder.me/problems/no/843"
+
+#include <iostream>
 #line 2 "Mylib/Number/Prime/eratosthenes_sieve.cpp"
 #include <bitset>
 
@@ -108,6 +113,33 @@ struct EratosthenesSieve{
 };
 
 template <int MAX> std::bitset<MAX+1> EratosthenesSieve<MAX>::is_prime;
+#line 5 "test/yukicoder/843/main.eratosthenes.test.cpp"
+
+using P = EratosthenesSieve<500000>;
+
+int main(){
+  P::init();
+  
+  int N; std::cin >> N;
+
+  int64_t ans = 0;
+
+  if(N >= 2){
+    ans += 1;
+
+    int t = 0;
+    for(int64_t r = 3; r <= N; ++r){
+      int64_t q = r * r - 2;
+      if(q <= N and P::is_prime[r] and P::is_prime[q]) ++t;
+    }
+
+    ans += t * 2;
+  }
+  
+  std::cout << ans << std::endl;
+
+  return 0;
+}
 
 ```
 {% endraw %}

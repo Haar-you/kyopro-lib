@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/mobius_function.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-09 17:11:56+09:00
 
 
 * see: <a href="https://codeforces.com/contest/1139/problem/D">https://codeforces.com/contest/1139/problem/D</a>
@@ -40,7 +40,7 @@ layout: default
 
 ## Depends on
 
-* :warning: <a href="Prime/eratosthenes_sieve.cpp.html">Eratosthenesの篩</a>
+* :heavy_check_mark: <a href="Prime/eratosthenes_sieve.cpp.html">Eratosthenesの篩</a>
 
 
 ## Code
@@ -92,11 +92,11 @@ std::vector<int> mobius_function(int n){
 /**
  * @title Eratosthenesの篩
  */
-namespace eratosthenes_sieve{
-  constexpr int MAX = 1000000;
-  std::bitset<MAX+1> is_prime;
-
-  __attribute__((constructor)) void init(){
+template <int MAX>
+struct EratosthenesSieve{
+  static std::bitset<MAX+1> is_prime;
+  
+  static void init(){
     is_prime.flip();
     is_prime[0] = is_prime[1] = false;
     
@@ -108,7 +108,9 @@ namespace eratosthenes_sieve{
       }
     }
   }
-}
+};
+
+template <int MAX> std::bitset<MAX+1> EratosthenesSieve<MAX>::is_prime;
 #line 4 "Mylib/Number/mobius_function.cpp"
 
 /**

@@ -611,10 +611,11 @@ layout: default
 
 ### Mylib/Number/Prime
 
+* :heavy_check_mark: <a href="library/Mylib/Number/Prime/atkin_sieve.cpp.html">Atkinの篩</a>
 * :heavy_check_mark: <a href="library/Mylib/Number/Prime/count_coprime.cpp.html">互いに素な自然数の個数</a>
-* :warning: <a href="library/Mylib/Number/Prime/eratosthenes_sieve.cpp.html">Eratosthenesの篩</a>
+* :heavy_check_mark: <a href="library/Mylib/Number/Prime/eratosthenes_sieve.cpp.html">Eratosthenesの篩</a>
 * :warning: <a href="library/Mylib/Number/Prime/factorial_prime_factorization.cpp.html">a!の素因数pの個数</a>
-* :warning: <a href="library/Mylib/Number/Prime/is_prime.cpp.html">試し割り素数判定</a>
+* :heavy_check_mark: <a href="library/Mylib/Number/Prime/is_prime.cpp.html">試し割り素数判定</a>
 * :heavy_check_mark: <a href="library/Mylib/Number/Prime/miller_rabin.cpp.html">Miller-Rabin素数判定法</a>
 * :heavy_check_mark: <a href="library/Mylib/Number/Prime/prime_factorize.cpp.html">素因数分解</a>
 
@@ -704,6 +705,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/ALDS1_14_B/main.test.cpp.html">test/aoj/ALDS1_14_B/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/ALDS1_14_C/main.test.cpp.html">test/aoj/ALDS1_14_C/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/ALDS1_15_C/main.test.cpp.html">test/aoj/ALDS1_15_C/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/ALDS1_1_C/main.test.cpp.html">test/aoj/ALDS1_1_C/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/ALDS1_5_D/main.test.cpp.html">test/aoj/ALDS1_5_D/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/CGL_1_A/main.test.cpp.html">test/aoj/CGL_1_A/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/CGL_1_B/main.test.cpp.html">test/aoj/CGL_1_B/main.test.cpp</a>
@@ -819,6 +821,8 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yukicoder/665/main.test.cpp.html">test/yukicoder/665/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/776/main.test.cpp.html">test/yukicoder/776/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/789/main.test.cpp.html">test/yukicoder/789/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/843/main.atkin.test.cpp.html">test/yukicoder/843/main.atkin.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/843/main.eratosthenes.test.cpp.html">test/yukicoder/843/main.eratosthenes.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/875/main.test.cpp.html">test/yukicoder/875/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
 

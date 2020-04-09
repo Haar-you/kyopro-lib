@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#5ffb9908d171cb12894511e5d6b7ae00">test/aoj/DPL_1_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_1_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-09 17:21:47+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_D</a>
@@ -81,8 +81,8 @@ int main(){
 /**
  * @title 最長増加部分列
  */
-template <typename T>
-int lis(std::vector<T> &xs){
+template <typename Container, typename T = typename Container::value_type>
+int lis(const Container &xs){
   std::vector<T> dp;
   dp.reserve(xs.size());
   

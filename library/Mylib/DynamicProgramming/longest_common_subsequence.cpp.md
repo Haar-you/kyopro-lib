@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3a96c66483797c15eff4c0c3d8733619">Mylib/DynamicProgramming</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/longest_common_subsequence.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-09 17:21:47+09:00
 
 
 
@@ -54,8 +54,8 @@ layout: default
  * @title 最長共通部分列
  * @attention 時間計算量 O(nm)
  */
-template <typename T>
-int lcs(const T &a, const T &b){
+template <typename Container, typename T = typename Container::value_type>
+int lcs(const Container &a, const Container &b){
   const int n = a.size(), m = b.size();
   
   std::vector<std::vector<int>> dp(n+1, std::vector<int>(m+1, 0));
@@ -82,8 +82,8 @@ int lcs(const T &a, const T &b){
  * @title 最長共通部分列
  * @attention 時間計算量 O(nm)
  */
-template <typename T>
-int lcs(const T &a, const T &b){
+template <typename Container, typename T = typename Container::value_type>
+int lcs(const Container &a, const Container &b){
   const int n = a.size(), m = b.size();
   
   std::vector<std::vector<int>> dp(n+1, std::vector<int>(m+1, 0));

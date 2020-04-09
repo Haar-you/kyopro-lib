@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3a96c66483797c15eff4c0c3d8733619">Mylib/DynamicProgramming</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/longest_increasing_subsequence.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-09 17:21:47+09:00
 
 
 
@@ -53,8 +53,8 @@ layout: default
 /**
  * @title 最長増加部分列
  */
-template <typename T>
-int lis(std::vector<T> &xs){
+template <typename Container, typename T = typename Container::value_type>
+int lis(const Container &xs){
   std::vector<T> dp;
   dp.reserve(xs.size());
   
@@ -82,8 +82,8 @@ int lis(std::vector<T> &xs){
 /**
  * @title 最長増加部分列
  */
-template <typename T>
-int lis(std::vector<T> &xs){
+template <typename Container, typename T = typename Container::value_type>
+int lis(const Container &xs){
   std::vector<T> dp;
   dp.reserve(xs.size());
   

@@ -25,20 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 試し割り素数判定
+# :heavy_check_mark: test/aoj/ALDS1_1_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/is_prime.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+* category: <a href="../../../../index.html#a8a6d8e3138deb7c2a3646b5ea12ddc2">test/aoj/ALDS1_1_C</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_1_C/main.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-09 17:11:56+09:00
 
 
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C</a>
 
 
-## Verified with
+## Depends on
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/ALDS1_1_C/main.test.cpp.html">test/aoj/ALDS1_1_C/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/is_prime.cpp.html">試し割り素数判定</a>
 
 
 ## Code
@@ -46,17 +47,24 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#pragma once
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C"
 
-/**
- * @title 試し割り素数判定
- */
-bool is_prime(int n){
-  if(n <= 1) return false;
-  for(int i = 2; i * i <= n; ++i){
-    if(n % i == 0) return false;
+#include <iostream>
+#include "Mylib/Number/Prime/is_prime.cpp"
+
+int main(){
+  int N; std::cin >> N;
+
+  int ans = 0;
+  
+  while(N--){
+    int x; std::cin >> x;
+    if(is_prime(x)) ++ans;
   }
-  return true;
+
+  std::cout << ans << std::endl;
+
+  return 0;
 }
 
 ```
@@ -65,6 +73,10 @@ bool is_prime(int n){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 1 "test/aoj/ALDS1_1_C/main.test.cpp"
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C"
+
+#include <iostream>
 #line 2 "Mylib/Number/Prime/is_prime.cpp"
 
 /**
@@ -76,6 +88,22 @@ bool is_prime(int n){
     if(n % i == 0) return false;
   }
   return true;
+}
+#line 5 "test/aoj/ALDS1_1_C/main.test.cpp"
+
+int main(){
+  int N; std::cin >> N;
+
+  int ans = 0;
+  
+  while(N--){
+    int x; std::cin >> x;
+    if(is_prime(x)) ++ans;
+  }
+
+  std::cout << ans << std::endl;
+
+  return 0;
 }
 
 ```
