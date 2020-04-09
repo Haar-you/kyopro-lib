@@ -6,8 +6,8 @@
  * @title 最長共通部分列
  * @attention 時間計算量 O(nm)
  */
-template <typename T>
-int lcs(const T &a, const T &b){
+template <typename Container, typename T = typename Container::value_type>
+int lcs(const Container &a, const Container &b){
   const int n = a.size(), m = b.size();
   
   std::vector<std::vector<int>> dp(n+1, std::vector<int>(m+1, 0));

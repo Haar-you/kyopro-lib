@@ -5,8 +5,8 @@
 /**
  * @title 最長増加部分列
  */
-template <typename T>
-int lis(std::vector<T> &xs){
+template <typename Container, typename T = typename Container::value_type>
+int lis(const Container &xs){
   std::vector<T> dp;
   dp.reserve(xs.size());
   

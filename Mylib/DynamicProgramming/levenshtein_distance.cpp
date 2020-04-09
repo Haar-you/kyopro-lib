@@ -5,7 +5,8 @@
 /**
  * @title Levenshtein距離 / 編集距離
  */
-template <typename T> int levenshtein_distance(const T &a, const T &b){
+template <typename Container, typename T = typename Container::value_type>
+int levenshtein_distance(const Container &a, const Container &b){
   int n = a.size(), m = b.size();
   std::vector<std::vector<int>> dp(n+1, std::vector<int>(m+1, 0));
   
