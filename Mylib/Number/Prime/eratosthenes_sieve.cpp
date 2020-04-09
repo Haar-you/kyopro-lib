@@ -4,11 +4,11 @@
 /**
  * @title Eratosthenesの篩
  */
-namespace eratosthenes_sieve{
-  constexpr int MAX = 1000000;
-  std::bitset<MAX+1> is_prime;
-
-  __attribute__((constructor)) void init(){
+template <int MAX>
+struct EratosthenesSieve{
+  static std::bitset<MAX+1> is_prime;
+  
+  static void init(){
     is_prime.flip();
     is_prime[0] = is_prime[1] = false;
     
@@ -20,4 +20,6 @@ namespace eratosthenes_sieve{
       }
     }
   }
-}
+};
+
+template <int MAX> std::bitset<MAX+1> EratosthenesSieve<MAX>::is_prime;
