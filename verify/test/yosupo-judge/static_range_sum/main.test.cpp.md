@@ -25,20 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 一次元累積和
+# :heavy_check_mark: test/yosupo-judge/static_range_sum/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#606b6851a96c8708fa4cdcf98aebb7c1">Mylib/Algorithm/CumulativeSum</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+* category: <a href="../../../../index.html#e057ba653ff4e1918cbb7491bf73d8e0">test/yosupo-judge/static_range_sum</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/static_range_sum/main.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-11 03:29:13+09:00
 
 
+* see: <a href="https://judge.yosupo.jp/problem/static_range_sum">https://judge.yosupo.jp/problem/static_range_sum</a>
 
 
-## Verified with
+## Depends on
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/static_range_sum/main.test.cpp.html">test/yosupo-judge/static_range_sum/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp.html">一次元累積和</a>
 
 
 ## Code
@@ -46,56 +47,29 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#pragma once
-#include <vector>
-#include <functional>
-#include <cassert>
+#define PROBLEM "https://judge.yosupo.jp/problem/static_range_sum"
 
-/**
- * @title 一次元累積和
- */
-template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
-class CumulativeSum1D{
-  std::vector<T> data;
-  const int N;
-  const Add add;
-  const Minus minus;
-  bool is_built = false;
+#include <iostream>
+#include "Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp"
 
-public:
-  CumulativeSum1D(const std::vector<T> &a, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
-    N(a.size()), add(add), minus(minus)
-  {
-    data.assign(N+1, e);
-    for(int i = 0; i < N; ++i) data[i+1] = a[i];
-  }
-
-  CumulativeSum1D(int N, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
-    N(N), add(add), minus(minus)
-  {
-    data.assign(N+1, e);
-  }
-
-  inline void update(int i, const T &val){
-    assert(not is_built);
-    data[i+1] = add(data[i+1], val);
-  }
-
-  inline void build(){
-    assert(not is_built);
-    for(int i = 0; i < N; ++i) data[i+1] = add(data[i+1], data[i]);
-    is_built = true;
-  }
+int main(){
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
   
-  /**
-   * @attention [i, j)
-   */
-  inline T get(int i, int j) const {
-    assert(is_built);
-    return minus(data[j], data[i]);
-  }
-};
+  int N, Q; std::cin >> N >> Q;
+  std::vector<int64_t> a(N);
+  for(int i = 0; i < N; ++i) std::cin >> a[i];
 
+  auto c = CumulativeSum1D(a);
+  c.build();
+
+  while(Q--){
+    int l, r; std::cin >> l >> r;
+    std::cout << c.get(l, r) << "\n";
+  }
+
+  return 0;
+}
 
 ```
 {% endraw %}
@@ -103,6 +77,10 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 1 "test/yosupo-judge/static_range_sum/main.test.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/static_range_sum"
+
+#include <iostream>
 #line 2 "Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp"
 #include <vector>
 #include <functional>
@@ -153,6 +131,26 @@ public:
   }
 };
 
+#line 5 "test/yosupo-judge/static_range_sum/main.test.cpp"
+
+int main(){
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N, Q; std::cin >> N >> Q;
+  std::vector<int64_t> a(N);
+  for(int i = 0; i < N; ++i) std::cin >> a[i];
+
+  auto c = CumulativeSum1D(a);
+  c.build();
+
+  while(Q--){
+    int l, r; std::cin >> l >> r;
+    std::cout << c.get(l, r) << "\n";
+  }
+
+  return 0;
+}
 
 ```
 {% endraw %}

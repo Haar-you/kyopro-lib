@@ -100,7 +100,7 @@ layout: default
 
 ### Mylib/Algorithm/CumulativeSum
 
-* :warning: <a href="library/Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp.html">一次元累積和</a>
+* :heavy_check_mark: <a href="library/Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp.html">一次元累積和</a>
 * :warning: <a href="library/Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp.html">二次元累積和</a>
 
 
@@ -125,6 +125,16 @@ layout: default
 ### Mylib/Algorithm/Query
 
 * :warning: <a href="library/Mylib/Algorithm/Query/range_mode_query.cpp.html">区間最頻値クエリ</a>
+
+
+<div id="a7582795d3062b8fdf2ece0fd4f2d90d"></div>
+
+### Mylib/Algorithm/Search
+
+* :x: <a href="library/Mylib/Algorithm/Search/golden_section_search_downwards.cpp.html">下に凸の黄金分割探索</a>
+* :x: <a href="library/Mylib/Algorithm/Search/golden_section_search_upwards.cpp.html">上に凸の黄金分割探索</a>
+* :heavy_check_mark: <a href="library/Mylib/Algorithm/Search/ternary_search_downwards.cpp.html">下に凸の三分探索</a>
+* :heavy_check_mark: <a href="library/Mylib/Algorithm/Search/ternary_search_upwards.cpp.html">上に凸の三分探索</a>
 
 
 <div id="1d0203f9a0b34121f2fb0bb17b094d0f"></div>
@@ -638,6 +648,7 @@ layout: default
 * :warning: <a href="library/Mylib/String/palindromic_tree.cpp.html">回文木</a>
 * :heavy_check_mark: <a href="library/Mylib/String/rolling_hash.cpp.html">Rolling Hash</a>
 * :heavy_check_mark: <a href="library/Mylib/String/rolling_hash_2d.cpp.html">Rolling Hash 2D</a>
+* :heavy_check_mark: <a href="library/Mylib/String/run_enumerate.cpp.html">run enumerate</a>
 * :warning: <a href="library/Mylib/String/starts_with.cpp.html">starts_with</a>
 * :heavy_check_mark: <a href="library/Mylib/String/suffix_array.cpp.html">接尾辞配列</a>
 * :heavy_check_mark: <a href="library/Mylib/String/z_algorithm.cpp.html">Z-algorithm</a>
@@ -683,6 +694,8 @@ layout: default
 
 ## Verify Files
 
+* :x: <a href="verify/test/aoj/0323/main.golden.test.cpp.html">test/aoj/0323/main.golden.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/0323/main.ternary.test.cpp.html">test/aoj/0323/main.ternary.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/1308/main.test.cpp.html">test/aoj/1308/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/1327/main.test.cpp.html">test/aoj/1327/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/1508/main.splay_tree.test.cpp.html">test/aoj/1508/main.splay_tree.test.cpp</a>
@@ -798,9 +811,11 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp.html">test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/range_kth_smallest/main.test.cpp.html">test/yosupo-judge/range_kth_smallest/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/runenumerate/main.test.cpp.html">test/yosupo-judge/runenumerate/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/segment_add_get_min/main.test.cpp.html">test/yosupo-judge/segment_add_get_min/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/static_range_sum/main.test.cpp.html">test/yosupo-judge/static_range_sum/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/staticrmq/main.sparse_table.test.cpp.html">test/yosupo-judge/staticrmq/main.sparse_table.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/suffixarray/main.test.cpp.html">test/yosupo-judge/suffixarray/main.test.cpp</a>
@@ -817,6 +832,8 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yukicoder/186/main.test.cpp.html">test/yukicoder/186/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/194/main.test.cpp.html">test/yukicoder/194/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/3030/main.test.cpp.html">test/yukicoder/3030/main.test.cpp</a>
+* :x: <a href="verify/test/yukicoder/306/main.golden.test.cpp.html">test/yukicoder/306/main.golden.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/306/main.ternary.test.cpp.html">test/yukicoder/306/main.ternary.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/430/main.aho_corasick.test.cpp.html">test/yukicoder/430/main.aho_corasick.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/665/main.test.cpp.html">test/yukicoder/665/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/776/main.test.cpp.html">test/yukicoder/776/main.test.cpp</a>
