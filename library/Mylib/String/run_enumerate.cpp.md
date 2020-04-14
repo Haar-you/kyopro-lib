@@ -31,9 +31,10 @@ layout: default
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/run_enumerate.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-13 18:38:00+09:00
+    - Last commit date: 2020-04-15 00:08:57+09:00
 
 
+* see: <a href="http://pazzle1230.hatenablog.com/entry/2019/11/27/234632">http://pazzle1230.hatenablog.com/entry/2019/11/27/234632</a>
 
 
 ## Depends on
@@ -61,6 +62,7 @@ layout: default
 
 /**
  * @title run enumerate
+ * @see http://pazzle1230.hatenablog.com/entry/2019/11/27/234632
  */
 struct RunEnumerate{
   std::vector<std::tuple<int,int,int>> result;
@@ -212,6 +214,7 @@ std::vector<int> z_algorithm(const Container &s){
 
 /**
  * @title run enumerate
+ * @see http://pazzle1230.hatenablog.com/entry/2019/11/27/234632
  */
 struct RunEnumerate{
   std::vector<std::tuple<int,int,int>> result;

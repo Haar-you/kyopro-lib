@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a7582795d3062b8fdf2ece0fd4f2d90d">Mylib/Algorithm/Search</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Search/golden_section_search_upwards.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-13 17:55:09+09:00
+    - Last commit date: 2020-04-15 00:08:08+09:00
 
 
 
@@ -48,13 +48,14 @@ layout: default
 ```cpp
 #pragma once
 #include <functional>
+#include <cmath>
 
 /**
  * @title 上に凸の黄金分割探索
  */
 template <typename T = double, typename Func = std::function<T(T)>>
 T golden_section_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
-  constexpr T phi = (1.0 + sqrt(5)) / 2;
+  constexpr T phi = (1.0 + std::sqrt(5)) / 2;
   
   T t1, t2;
 
@@ -80,13 +81,14 @@ T golden_section_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100)
 ```cpp
 #line 2 "Mylib/Algorithm/Search/golden_section_search_upwards.cpp"
 #include <functional>
+#include <cmath>
 
 /**
  * @title 上に凸の黄金分割探索
  */
 template <typename T = double, typename Func = std::function<T(T)>>
 T golden_section_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
-  constexpr T phi = (1.0 + sqrt(5)) / 2;
+  constexpr T phi = (1.0 + std::sqrt(5)) / 2;
   
   T t1, t2;
 
