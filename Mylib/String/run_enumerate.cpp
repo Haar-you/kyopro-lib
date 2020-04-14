@@ -8,6 +8,7 @@
 
 /**
  * @title run enumerate
+ * @see http://pazzle1230.hatenablog.com/entry/2019/11/27/234632
  */
 struct RunEnumerate{
   std::vector<std::tuple<int,int,int>> result;
