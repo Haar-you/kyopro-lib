@@ -131,8 +131,8 @@ layout: default
 
 ### Mylib/Algorithm/Search
 
-* :x: <a href="library/Mylib/Algorithm/Search/golden_section_search_downwards.cpp.html">下に凸の黄金分割探索</a>
-* :x: <a href="library/Mylib/Algorithm/Search/golden_section_search_upwards.cpp.html">上に凸の黄金分割探索</a>
+* :heavy_check_mark: <a href="library/Mylib/Algorithm/Search/golden_section_search_downwards.cpp.html">下に凸の黄金分割探索</a>
+* :heavy_check_mark: <a href="library/Mylib/Algorithm/Search/golden_section_search_upwards.cpp.html">上に凸の黄金分割探索</a>
 * :heavy_check_mark: <a href="library/Mylib/Algorithm/Search/ternary_search_downwards.cpp.html">下に凸の三分探索</a>
 * :heavy_check_mark: <a href="library/Mylib/Algorithm/Search/ternary_search_upwards.cpp.html">上に凸の三分探索</a>
 
@@ -159,7 +159,7 @@ layout: default
 ### Mylib/Bit
 
 * :warning: <a href="library/Mylib/Bit/bit_reverse.cpp.html">ビット逆転</a>
-* :warning: <a href="library/Mylib/Bit/for_each_subset_asc.cpp.html">Mylib/Bit/for_each_subset_asc.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/Bit/for_each_subset_asc.cpp.html">Mylib/Bit/for_each_subset_asc.cpp</a>
 * :warning: <a href="library/Mylib/Bit/for_each_subset_between.cpp.html">Mylib/Bit/for_each_subset_between.cpp</a>
 * :warning: <a href="library/Mylib/Bit/for_each_subset_desc.cpp.html">Mylib/Bit/for_each_subset_desc.cpp</a>
 * :warning: <a href="library/Mylib/Bit/for_each_superset_asc.cpp.html">Mylib/Bit/for_each_superset_asc.cpp</a>
@@ -368,7 +368,7 @@ layout: default
 * :warning: <a href="library/Mylib/Geometry/Float/area_intersection_of_circles.cpp.html">2円の共通部分の面積</a>
 * :heavy_check_mark: <a href="library/Mylib/Geometry/Float/area_polygon.cpp.html">多角形の面積</a>
 * :heavy_check_mark: <a href="library/Mylib/Geometry/Float/ccw.cpp.html">clockwise-counterclockwise判定</a>
-* :warning: <a href="library/Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp.html">三角形の外接円</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp.html">三角形の外接円</a>
 * :heavy_check_mark: <a href="library/Mylib/Geometry/Float/closest_pair.cpp.html">最近点対</a>
 * :heavy_check_mark: <a href="library/Mylib/Geometry/Float/common_tangent_of_circles.cpp.html">2円の共通接線</a>
 * :heavy_check_mark: <a href="library/Mylib/Geometry/Float/convex_cut.cpp.html">凸多角形の切断</a>
@@ -386,7 +386,7 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/Geometry/Float/intersect_segments.cpp.html">線分同士の交差</a>
 * :heavy_check_mark: <a href="library/Mylib/Geometry/Float/is_convex.cpp.html">凸多角形判定</a>
 * :heavy_check_mark: <a href="library/Mylib/Geometry/Float/is_point_in_polygon.cpp.html">点・多角形の包含関係</a>
-* :warning: <a href="library/Mylib/Geometry/Float/minimum_covering_circle.cpp.html">最小包含円</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/minimum_covering_circle.cpp.html">最小包含円</a>
 * :heavy_check_mark: <a href="library/Mylib/Geometry/Float/orthogonal.cpp.html">直行判定</a>
 * :heavy_check_mark: <a href="library/Mylib/Geometry/Float/parallel.cpp.html">平行判定</a>
 * :heavy_check_mark: <a href="library/Mylib/Geometry/Float/projection.cpp.html">射影</a>
@@ -515,6 +515,7 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">重軽分解</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp.html">ダブリング実装の最小共通祖先</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/lca_based_on_hld.cpp.html">HLD実装の最小共通祖先</a>
+* :warning: <a href="library/Mylib/Graph/TreeUtils/rerooting.cpp.html">全方位木dp</a>
 * :warning: <a href="library/Mylib/Graph/TreeUtils/rooting.cpp.html">根付き木</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/tree_utils.cpp.html">Mylib/Graph/TreeUtils/tree_utils.cpp</a>
 
@@ -566,6 +567,13 @@ layout: default
 * :warning: <a href="library/Mylib/LinearAlgebra/Square/square_matrix_semiring.cpp.html">Mylib/LinearAlgebra/Square/square_matrix_semiring.cpp</a>
 
 
+<div id="c20232aa0a6a3c1c77a782d17f007d0b"></div>
+
+### Mylib/Math
+
+* :warning: <a href="library/Mylib/Math/quadratic_equation.cpp.html">二次方程式の実数解</a>
+
+
 <div id="3aaad417c82174440088b5eea559262a"></div>
 
 ### Mylib/Misc
@@ -573,7 +581,7 @@ layout: default
 * :warning: <a href="library/Mylib/Misc/compressor.cpp.html">座標圧縮</a>
 * :warning: <a href="library/Mylib/Misc/convert_base.cpp.html">進数変換</a>
 * :warning: <a href="library/Mylib/Misc/dice.cpp.html">サイコロ</a>
-* :warning: <a href="library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
+* :heavy_check_mark: <a href="library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
 * :heavy_check_mark: <a href="library/Mylib/Misc/int128.cpp.html">128bit整数型</a>
 * :heavy_check_mark: <a href="library/Mylib/Misc/inverse_number.cpp.html">転倒数</a>
 * :warning: <a href="library/Mylib/Misc/run_length_encode.cpp.html">連長圧縮</a>
@@ -701,7 +709,7 @@ layout: default
 
 ## Verify Files
 
-* :x: <a href="verify/test/aoj/0323/main.golden.test.cpp.html">test/aoj/0323/main.golden.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/0323/main.golden.test.cpp.html">test/aoj/0323/main.golden.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/0323/main.ternary.test.cpp.html">test/aoj/0323/main.ternary.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/1308/main.test.cpp.html">test/aoj/1308/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/1327/main.test.cpp.html">test/aoj/1327/main.test.cpp</a>
@@ -717,6 +725,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/2674/main.test.cpp.html">test/aoj/2674/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/2903/main.test.cpp.html">test/aoj/2903/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/2955/main.test.cpp.html">test/aoj/2955/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/3058/main.test.cpp.html">test/aoj/3058/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/3119/main.test.cpp.html">test/aoj/3119/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/3132/main.test.cpp.html">test/aoj/3132/main.test.cpp</a>
@@ -839,7 +848,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yukicoder/186/main.test.cpp.html">test/yukicoder/186/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/194/main.test.cpp.html">test/yukicoder/194/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/3030/main.test.cpp.html">test/yukicoder/3030/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/306/main.golden.test.cpp.html">test/yukicoder/306/main.golden.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/306/main.golden.test.cpp.html">test/yukicoder/306/main.golden.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/306/main.ternary.test.cpp.html">test/yukicoder/306/main.ternary.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/430/main.aho_corasick.test.cpp.html">test/yukicoder/430/main.aho_corasick.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/665/main.test.cpp.html">test/yukicoder/665/main.test.cpp</a>

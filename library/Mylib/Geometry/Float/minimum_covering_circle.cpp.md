@@ -25,23 +25,29 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 最小包含円
+# :heavy_check_mark: 最小包含円
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/minimum_covering_circle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-06 17:41:22+09:00
+    - Last commit date: 2020-04-16 02:06:46+09:00
 
 
 * see: <a href="https://tubo28.me/compprog/algorithm/minball/">https://tubo28.me/compprog/algorithm/minball/</a>
 * see: <a href="https://atcoder.jp/contests/abc151/tasks/abc151_f">https://atcoder.jp/contests/abc151/tasks/abc151_f</a>
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034</a>
 
 
 ## Depends on
 
-* :warning: <a href="circumscribed_circle_of_triangle.cpp.html">三角形の外接円</a>
+* :heavy_check_mark: <a href="circumscribed_circle_of_triangle.cpp.html">三角形の外接円</a>
 * :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
 
 
 ## Code
@@ -59,9 +65,13 @@ layout: default
  * @title 最小包含円
  * @see https://tubo28.me/compprog/algorithm/minball/
  * @see https://atcoder.jp/contests/abc151/tasks/abc151_f
+ * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034
  */
 template <typename T>
 Circle<T> minimum_covering_circle(std::vector<Point<T>> ps, int seed = 0){
+  if(ps.empty()) return Circle<T>();
+  if(ps.size() == 1) return Circle<T>(ps[0], 0);
+
   const int N = ps.size();
 
   std::mt19937 rand(seed);
@@ -224,9 +234,13 @@ Circle<T> circumscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b,
  * @title 最小包含円
  * @see https://tubo28.me/compprog/algorithm/minball/
  * @see https://atcoder.jp/contests/abc151/tasks/abc151_f
+ * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034
  */
 template <typename T>
 Circle<T> minimum_covering_circle(std::vector<Point<T>> ps, int seed = 0){
+  if(ps.empty()) return Circle<T>();
+  if(ps.size() == 1) return Circle<T>(ps[0], 0);
+
   const int N = ps.size();
 
   std::mt19937 rand(seed);

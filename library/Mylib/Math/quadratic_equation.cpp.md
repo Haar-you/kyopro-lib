@@ -25,20 +25,15 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Bit/for_each_subset_asc.cpp
+# :warning: 二次方程式の実数解
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#fe4a83e4dc2a7f834ed4cd85d6972a53">Mylib/Bit</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/for_each_subset_asc.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 09:18:14+09:00
+* category: <a href="../../../index.html#c20232aa0a6a3c1c77a782d17f007d0b">Mylib/Math</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Math/quadratic_equation.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-15 20:46:25+09:00
 
 
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
 
 
 ## Code
@@ -47,13 +42,19 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
+#include <cmath>
+#include <vector>
 
-template <typename Func>
-void for_each_subset_asc(int a, const Func &f){
-  for(int t=0; ; t=(t-a)&a){
-    f(t);
-    if(t==a) break;
-  }
+/**
+ * @title 二次方程式の実数解
+ */
+std::vector<double> quadratic_equation(double a, double b, double c){
+  double d = b*b - 4*a*c;
+  if(d < 0) return {};
+  
+  double x1 = (-b - std::sqrt(d)) / (2 * a);
+  double x2 = (-b + std::sqrt(d)) / (2 * a);
+  return {x1, x2};
 }
 
 ```
@@ -62,14 +63,20 @@ void for_each_subset_asc(int a, const Func &f){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Bit/for_each_subset_asc.cpp"
+#line 2 "Mylib/Math/quadratic_equation.cpp"
+#include <cmath>
+#include <vector>
 
-template <typename Func>
-void for_each_subset_asc(int a, const Func &f){
-  for(int t=0; ; t=(t-a)&a){
-    f(t);
-    if(t==a) break;
-  }
+/**
+ * @title 二次方程式の実数解
+ */
+std::vector<double> quadratic_equation(double a, double b, double c){
+  double d = b*b - 4*a*c;
+  if(d < 0) return {};
+  
+  double x1 = (-b - std::sqrt(d)) / (2 * a);
+  double x2 = (-b + std::sqrt(d)) / (2 * a);
+  return {x1, x2};
 }
 
 ```

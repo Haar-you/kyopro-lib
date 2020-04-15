@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 三角形の外接円
+# :heavy_check_mark: 三角形の外接円
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -43,7 +43,12 @@ layout: default
 
 ## Required by
 
-* :warning: <a href="minimum_covering_circle.cpp.html">最小包含円</a>
+* :heavy_check_mark: <a href="minimum_covering_circle.cpp.html">最小包含円</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
 
 
 ## Code

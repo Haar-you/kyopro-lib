@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yukicoder/306/main.golden.test.cpp
+# :heavy_check_mark: test/yukicoder/306/main.golden.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#94d4e5c879e40488003ae32a119b6352">test/yukicoder/306</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/306/main.golden.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-15 00:08:08+09:00
+    - Last commit date: 2020-04-16 01:06:32+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/306">https://yukicoder.me/problems/no/306</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Algorithm/Search/golden_section_search_downwards.cpp.html">下に凸の黄金分割探索</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Search/golden_section_search_downwards.cpp.html">下に凸の黄金分割探索</a>
 
 
 ## Code
@@ -93,7 +93,7 @@ int main(){
  */
 template <typename T = double, typename Func = std::function<T(T)>>
 T golden_section_search_downwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
-  constexpr T phi = (1.0 + std::sqrt(5)) / 2;
+  static const T phi = (1.0 + std::sqrt(5)) / 2;
   
   T t1, t2;
 
