@@ -22,12 +22,12 @@ public:
 
   inline int get_index(const T &val) const {return std::lower_bound(data.begin(), data.end(), val) - data.begin();}
 
-  inline void compress(vector<T> &vals) const {for(auto &x : vals) x = get_index(x);}
+  inline void compress(std::vector<T> &vals) const {for(auto &x : vals) x = get_index(x);}
   inline void compress(T &val) const {val = get_index(val);}
   template <typename U> inline void compress_all(U &val) const {compress(val);}
   template <typename U, typename ...Args> inline void compress_all(U &val, Args&... args) const {compress(val); compress_all(args...);}
 
-  inline void decompress(vector<T> &vals) const {for(auto &x : vals) x = data[x];}
+  inline void decompress(std::vector<T> &vals) const {for(auto &x : vals) x = data[x];}
   inline void decompress(T &val) const {val = data[val];}
   template <typename U> inline void decompress_all(U &val) const {decompress(val);}
   template <typename U, typename ...Args> inline void decompress_all(U &val, Args&... args) const {decompress(val); decompress_all(args...);}
