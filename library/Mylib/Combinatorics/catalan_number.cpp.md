@@ -25,20 +25,27 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Catalan数
+# :heavy_check_mark: Catalan数
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/catalan_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-17 20:21:15+09:00
 
 
+* see: <a href="https://en.wikipedia.org/wiki/Catalan_number">https://en.wikipedia.org/wiki/Catalan_number</a>
+* see: <a href="https://mathtrain.jp/catalan">https://mathtrain.jp/catalan</a>
 
 
 ## Depends on
 
 * :heavy_check_mark: <a href="combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/yukicoder/660/main.test.cpp.html">test/yukicoder/660/main.test.cpp</a>
 
 
 ## Code
@@ -51,8 +58,9 @@ layout: default
 
 /**
  * @title Catalan数
+ * @see https://en.wikipedia.org/wiki/Catalan_number
+ * @see https://mathtrain.jp/catalan
  * @note c_0 = 1, c_{n+1} = ∑_{i=0}^n c_i * c_{n-i} を満たす数列の第n項。
- * @note 長さ2nの対応の取れた括弧列の総数はc_n通り。
  */
 template <typename T> T Combinatorics<T>::catalan_number(int64_t n){
   return C(2*n,n) - C(2*n,n-1);
@@ -132,8 +140,9 @@ template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
 
 /**
  * @title Catalan数
+ * @see https://en.wikipedia.org/wiki/Catalan_number
+ * @see https://mathtrain.jp/catalan
  * @note c_0 = 1, c_{n+1} = ∑_{i=0}^n c_i * c_{n-i} を満たす数列の第n項。
- * @note 長さ2nの対応の取れた括弧列の総数はc_n通り。
  */
 template <typename T> T Combinatorics<T>::catalan_number(int64_t n){
   return C(2*n,n) - C(2*n,n-1);

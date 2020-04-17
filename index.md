@@ -52,6 +52,7 @@ layout: default
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/lcm_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/lcm_monoid.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/max_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/max_monoid.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/max_partial_sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/max_partial_sum_monoid.cpp</a>
+* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp.html">Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/or_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/or_monoid.cpp</a>
@@ -176,7 +177,7 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/Combinatorics/bell_number_table.cpp.html">Bell数の列挙</a>
 * :heavy_check_mark: <a href="library/Mylib/Combinatorics/bernoulli_number.cpp.html">Bernoulli数</a>
 * :warning: <a href="library/Mylib/Combinatorics/binomial_table.cpp.html">二項係数の列挙</a>
-* :warning: <a href="library/Mylib/Combinatorics/catalan_number.cpp.html">Catalan数</a>
+* :heavy_check_mark: <a href="library/Mylib/Combinatorics/catalan_number.cpp.html">Catalan数</a>
 * :heavy_check_mark: <a href="library/Mylib/Combinatorics/combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
 * :heavy_check_mark: <a href="library/Mylib/Combinatorics/montmort_number.cpp.html">Montmort数</a>
 * :heavy_check_mark: <a href="library/Mylib/Combinatorics/partition_number.cpp.html">K個以下への分割数の列挙</a>
@@ -211,7 +212,7 @@ layout: default
 ### Mylib/DataStructure/FenwickTree
 
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">Fenwick木</a>
-* :warning: <a href="library/Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp.html">2DFenwick木</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp.html">2DFenwick木</a>
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp.html">Fenwick木にFenwick木を乗せる</a>
 
 
@@ -278,7 +279,7 @@ layout: default
 ### Mylib/DataStructure/SegmentTree/Static/Normal
 
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
-* :warning: <a href="library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_2d.cpp.html">2Dセグメント木</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_2d.cpp.html">2Dセグメント木</a>
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_both_foldable.cpp.html">双方向のセグメント木</a>
 * :warning: <a href="library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_on_segment_tree.cpp.html">セグメント木にセグメント木を乗せる</a>
 
@@ -515,7 +516,7 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">重軽分解</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp.html">ダブリング実装の最小共通祖先</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/lca_based_on_hld.cpp.html">HLD実装の最小共通祖先</a>
-* :warning: <a href="library/Mylib/Graph/TreeUtils/rerooting.cpp.html">全方位木dp</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/rerooting.cpp.html">全方位木dp</a>
 * :warning: <a href="library/Mylib/Graph/TreeUtils/rooting.cpp.html">根付き木</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/tree_utils.cpp.html">Mylib/Graph/TreeUtils/tree_utils.cpp</a>
 
@@ -716,6 +717,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/1508/main.splay_tree.test.cpp.html">test/aoj/1508/main.splay_tree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/1508/main.treap.test.cpp.html">test/aoj/1508/main.treap.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/1549/main.test.cpp.html">test/aoj/1549/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/1595/main.test.cpp.html">test/aoj/1595/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/2136/main.test.cpp.html">test/aoj/2136/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/2171/main.test.cpp.html">test/aoj/2171/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/2293/main.test.cpp.html">test/aoj/2293/main.test.cpp</a>
@@ -723,6 +725,8 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/2530/main.test.cpp.html">test/aoj/2530/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/2674/main.test.cpp.html">test/aoj/2674/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/2842/main.fenwick_tree.test.cpp.html">test/aoj/2842/main.fenwick_tree.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/2842/main.segment_tree.test.cpp.html">test/aoj/2842/main.segment_tree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/2903/main.test.cpp.html">test/aoj/2903/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/2955/main.test.cpp.html">test/aoj/2955/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
@@ -851,6 +855,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yukicoder/306/main.golden.test.cpp.html">test/yukicoder/306/main.golden.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/306/main.ternary.test.cpp.html">test/yukicoder/306/main.ternary.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/430/main.aho_corasick.test.cpp.html">test/yukicoder/430/main.aho_corasick.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/660/main.test.cpp.html">test/yukicoder/660/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/665/main.test.cpp.html">test/yukicoder/665/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/776/main.test.cpp.html">test/yukicoder/776/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/789/main.test.cpp.html">test/yukicoder/789/main.test.cpp</a>

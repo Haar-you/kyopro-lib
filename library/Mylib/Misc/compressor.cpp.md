@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/compressor.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-17 19:17:10+09:00
 
 
 
@@ -65,12 +65,12 @@ public:
 
   inline int get_index(const T &val) const {return std::lower_bound(data.begin(), data.end(), val) - data.begin();}
 
-  inline void compress(vector<T> &vals) const {for(auto &x : vals) x = get_index(x);}
+  inline void compress(std::vector<T> &vals) const {for(auto &x : vals) x = get_index(x);}
   inline void compress(T &val) const {val = get_index(val);}
   template <typename U> inline void compress_all(U &val) const {compress(val);}
   template <typename U, typename ...Args> inline void compress_all(U &val, Args&... args) const {compress(val); compress_all(args...);}
 
-  inline void decompress(vector<T> &vals) const {for(auto &x : vals) x = data[x];}
+  inline void decompress(std::vector<T> &vals) const {for(auto &x : vals) x = data[x];}
   inline void decompress(T &val) const {val = data[val];}
   template <typename U> inline void decompress_all(U &val) const {decompress(val);}
   template <typename U, typename ...Args> inline void decompress_all(U &val, Args&... args) const {decompress(val); decompress_all(args...);}
@@ -109,12 +109,12 @@ public:
 
   inline int get_index(const T &val) const {return std::lower_bound(data.begin(), data.end(), val) - data.begin();}
 
-  inline void compress(vector<T> &vals) const {for(auto &x : vals) x = get_index(x);}
+  inline void compress(std::vector<T> &vals) const {for(auto &x : vals) x = get_index(x);}
   inline void compress(T &val) const {val = get_index(val);}
   template <typename U> inline void compress_all(U &val) const {compress(val);}
   template <typename U, typename ...Args> inline void compress_all(U &val, Args&... args) const {compress(val); compress_all(args...);}
 
-  inline void decompress(vector<T> &vals) const {for(auto &x : vals) x = data[x];}
+  inline void decompress(std::vector<T> &vals) const {for(auto &x : vals) x = data[x];}
   inline void decompress(T &val) const {val = data[val];}
   template <typename U> inline void decompress_all(U &val) const {decompress(val);}
   template <typename U, typename ...Args> inline void decompress_all(U &val, Args&... args) const {decompress(val); decompress_all(args...);}

@@ -25,32 +25,22 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 全方位木dp
+# :heavy_check_mark: test/aoj/1595/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/rerooting.cpp">View this file on GitHub</a>
+* category: <a href="../../../../index.html#56f0b2628838f5e87f16daf710f380b1">test/aoj/1595</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1595/main.test.cpp">View this file on GitHub</a>
     - Last commit date: 2020-04-17 19:16:49+09:00
 
 
-* see: <a href="https://null-mn.hatenablog.com/entry/2020/04/14/124151">https://null-mn.hatenablog.com/entry/2020/04/14/124151</a>
-* see: <a href="https://qiita.com/keymoon/items/2a52f1b0fb7ef67fb89e#step0-%E6%9C%A8%E6%A7%8B%E9%80%A0%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%A8%98%E9%8C%B2%E3%81%99%E3%82%8B">https://qiita.com/keymoon/items/2a52f1b0fb7ef67fb89e#step0-%E6%9C%A8%E6%A7%8B%E9%80%A0%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%A8%98%E9%8C%B2%E3%81%99%E3%82%8B</a>
-* see: <a href="https://kuretchi.github.io/blog/entries/rerooting/">https://kuretchi.github.io/blog/entries/rerooting/</a>
-* see: <a href="https://atcoder.jp/contests/dp/submissions/11952346">https://atcoder.jp/contests/dp/submissions/11952346</a>
-* see: <a href="https://codeforces.com/contest/1324/submission/76798350">https://codeforces.com/contest/1324/submission/76798350</a>
-* see: <a href="https://atcoder.jp/contests/abc160/submissions/11960089">https://atcoder.jp/contests/abc160/submissions/11960089</a>
-* see: <a href="https://atcoder.jp/contests/arc028/submissions/11961543">https://atcoder.jp/contests/arc028/submissions/11961543</a>
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1595">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1595</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/1595/main.test.cpp.html">test/aoj/1595/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/rerooting.cpp.html">全方位木dp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -58,97 +48,33 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#pragma once
-#include <vector>
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1595"
+
+#include <iostream>
 #include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/TreeUtils/rerooting.cpp"
 
-/**
- * @title 全方位木dp
- * @see https://null-mn.hatenablog.com/entry/2020/04/14/124151
- * @see https://qiita.com/keymoon/items/2a52f1b0fb7ef67fb89e#step0-%E6%9C%A8%E6%A7%8B%E9%80%A0%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%A8%98%E9%8C%B2%E3%81%99%E3%82%8B
- * @see https://kuretchi.github.io/blog/entries/rerooting/
+int main(){
+  int N; std::cin >> N;
+  Tree<int> tree(N);
 
- * @see https://atcoder.jp/contests/dp/submissions/11952346
- * @see https://codeforces.com/contest/1324/submission/76798350
- * @see https://atcoder.jp/contests/abc160/submissions/11960089
- * @see https://atcoder.jp/contests/arc028/submissions/11961543
-
- * @note https://atcoder.jp/contests/s8pc-4/tasks/s8pc_4_d (これで解けるか不明)
- */
-
-template <typename T, typename U, typename Merge, typename EdgeF, typename VertexF>
-struct Rerooting{
-  int N;
-  T tree;
-  U id;
-  Merge merge;
-  EdgeF f;
-  VertexF g;
-  
-  std::vector<std::vector<U>> dp;
-  std::vector<U> result;
-  
-  Rerooting(T tree, U id, Merge merge, EdgeF f, VertexF g):
-    N(tree.size()), tree(tree), id(id), merge(merge), f(f), g(g), dp(N), result(N, id)
-  {
-    for(int i = 0; i < N; ++i) dp[i].assign((int)tree[i].size(), id);
-    rec1(0);
-    rec2(0, -1, id);
-    for(int i = 0; i < N; ++i){
-      for(int j = 0; j < (int)tree[i].size(); ++j){
-        result[i] = merge(result[i], f(dp[i][j], tree[i][j]));
-      }
-      
-      result[i] = g(result[i], i);
-    }
+  for(int i = 0; i < N-1; ++i){
+    int u, v; std::cin >> u >> v;
+    --u, --v;
+    add_undirected(tree, u, v, 1);
   }
 
-  U rec1(int cur, int par = -1){
-    U acc = id;
-    
-    for(int i = 0; i < (int)tree[cur].size(); ++i){
-      auto &e = tree[cur][i];
-      if(e.to == par) continue;
-      dp[cur][i] = rec1(e.to, cur);
-      acc = merge(acc, f(dp[cur][i], e));
-    }
+  auto merge = [](const auto &a, const auto &b){return std::max(a, b);};
+  auto f = [](const auto &a, const auto &){return a + 1;};
+  auto g = [](const auto &a, int){return a;};
 
-    return g(acc, cur);
+  auto r = make_rerooting<int>(tree, 0, merge, f, g);
+
+  for(auto &x : r.result){
+    std::cout << 2 * (N-1) - x << std::endl;
   }
 
-  void rec2(int cur, int par, U value){
-    const int l = tree[cur].size();
-
-    for(int i = 0; i < l; ++i){
-      if(tree[cur][i].to == par){
-        dp[cur][i] = value;
-      }
-    }
-
-    std::vector<U> left(l+1, id), right(l+1, id);
-
-    for(int i = 0; i < l-1; ++i){
-      const auto &e = tree[cur][i];
-      left[i+1] = merge(left[i], f(dp[cur][i], e));
-    }
-
-    for(int i = l-1; i >= 1; --i){
-      const auto &e = tree[cur][i];
-      right[i-1] = merge(right[i], f(dp[cur][i], e));
-    }
-
-    for(int i = 0; i < l; ++i){
-      const auto &e = tree[cur][i];
-      if(e.to == par) continue;
-
-      rec2(e.to, cur, g(merge(left[i], right[i]), cur));
-    }
-  }
-};
-
-template <typename T, typename G, typename Merge, typename EdgeF, typename VertexF>
-auto make_rerooting(const G &tree, T id, Merge merge, EdgeF f, VertexF g){
-  return Rerooting<G,T,Merge,EdgeF,VertexF>(tree, id, merge, f, g);
+  return 0;
 }
 
 ```
@@ -157,10 +83,13 @@ auto make_rerooting(const G &tree, T id, Merge merge, EdgeF f, VertexF g){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Graph/TreeUtils/rerooting.cpp"
-#include <vector>
-#line 3 "Mylib/Graph/graph_template.cpp"
+#line 1 "test/aoj/1595/main.test.cpp"
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1595"
+
 #include <iostream>
+#line 2 "Mylib/Graph/graph_template.cpp"
+#include <vector>
+#line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
  * @title グラフ用テンプレート
@@ -281,6 +210,30 @@ struct Rerooting{
 template <typename T, typename G, typename Merge, typename EdgeF, typename VertexF>
 auto make_rerooting(const G &tree, T id, Merge merge, EdgeF f, VertexF g){
   return Rerooting<G,T,Merge,EdgeF,VertexF>(tree, id, merge, f, g);
+}
+#line 6 "test/aoj/1595/main.test.cpp"
+
+int main(){
+  int N; std::cin >> N;
+  Tree<int> tree(N);
+
+  for(int i = 0; i < N-1; ++i){
+    int u, v; std::cin >> u >> v;
+    --u, --v;
+    add_undirected(tree, u, v, 1);
+  }
+
+  auto merge = [](const auto &a, const auto &b){return std::max(a, b);};
+  auto f = [](const auto &a, const auto &){return a + 1;};
+  auto g = [](const auto &a, int){return a;};
+
+  auto r = make_rerooting<int>(tree, 0, merge, f, g);
+
+  for(auto &x : r.result){
+    std::cout << 2 * (N-1) - x << std::endl;
+  }
+
+  return 0;
 }
 
 ```

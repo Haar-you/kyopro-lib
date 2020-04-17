@@ -66,6 +66,7 @@ layout: default
 * :heavy_check_mark: <a href="TreeUtils/heavy_light_decomposition.cpp.html">重軽分解</a>
 * :heavy_check_mark: <a href="TreeUtils/lca_based_on_doubling.cpp.html">ダブリング実装の最小共通祖先</a>
 * :heavy_check_mark: <a href="TreeUtils/lca_based_on_hld.cpp.html">HLD実装の最小共通祖先</a>
+* :heavy_check_mark: <a href="TreeUtils/rerooting.cpp.html">全方位木dp</a>
 * :warning: <a href="TreeUtils/rooting.cpp.html">根付き木</a>
 * :heavy_check_mark: <a href="TreeUtils/tree_utils.cpp.html">Mylib/Graph/TreeUtils/tree_utils.cpp</a>
 * :heavy_check_mark: <a href="chinese_postman_problem.cpp.html">中国人郵便配達問題</a>
@@ -76,6 +77,7 @@ layout: default
 
 ## Verified with
 
+* :heavy_check_mark: <a href="../../../verify/test/aoj/1595/main.test.cpp.html">test/aoj/1595/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_2_A/main.test.cpp.html">test/aoj/DPL_2_A/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_2_B/main.test.cpp.html">test/aoj/DPL_2_B/main.test.cpp</a>

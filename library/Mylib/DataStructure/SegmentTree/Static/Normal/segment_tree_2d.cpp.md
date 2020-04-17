@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../../../assets/css/copy-button.css" />
 
 
-# :warning: 2Dセグメント木
+# :heavy_check_mark: 2Dセグメント木
 
 <a href="../../../../../../index.html">Back to top page</a>
 
@@ -35,6 +35,11 @@ layout: default
 
 
 * see: <a href="https://codeforces.com/contest/1301/submission/71853921">https://codeforces.com/contest/1301/submission/71853921</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../../../verify/test/aoj/2842/main.segment_tree.test.cpp.html">test/aoj/2842/main.segment_tree.test.cpp</a>
 
 
 ## Code
