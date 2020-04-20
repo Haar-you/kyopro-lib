@@ -40,7 +40,7 @@ public:
     std::reverse(check.begin(), check.end());
     
     Graph<T> rgraph(n);
-    for(int i = 0; i < n; ++i) for(auto &e : graph[i]) rgraph[e.to].push_back(e.rev());
+    for(int i = 0; i < n; ++i) for(auto &e : graph[i]) rgraph[e.to].emplace_back(e.to, e.from, e.cost);
 
     int i = 0;
     for(auto c : check) if(result[c] == -1) {rdfs(c,i,rgraph); ++i;}

@@ -42,10 +42,10 @@ int main(){
       };
 
     // 親の親
-    res.query_at(res.get_parent(res.get_parent(x)), f);
+    res.query_at(res.get_ancestor(x, 2), f);
 
     // 親
-    res.query_at(res.get_parent(x), f);
+    res.query_at(res.get_ancestor(x, 1), f);
     
     // 親の子
     res.query_children(res.get_parent(x), 1, f);

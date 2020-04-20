@@ -5,6 +5,9 @@
 #include "Mylib/Graph/ShortestPath/dijkstra.cpp"
 
 int main(){
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
   int V, E, r; std::cin >> V >> E >> r;
 
   Graph<int64_t> g(V);

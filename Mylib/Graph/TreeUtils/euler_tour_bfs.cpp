@@ -62,7 +62,6 @@ template <typename T> struct EulerTourBFS{
   }
 
 public:
-
   template <typename Func>
   inline void query_children(int i, int d, const Func &f) const {
     if(i != -1){
@@ -87,5 +86,14 @@ public:
   inline int get_parent(int i) const {
     if(i == -1) return -1;
     return parent[i];
+  }
+
+  inline int get_ancestor(int i, int k) const {
+    int ret = i;
+    for(int i = 0; i < k; ++i){
+      ret = get_parent(ret);
+      if(ret == -1) break;
+    }
+    return ret;
   }
 };
