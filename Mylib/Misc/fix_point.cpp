@@ -18,3 +18,8 @@ template <typename F>
 static inline constexpr decltype(auto) make_fix_point(F &&f){
   return FixPoint<F>(std::forward<F>(f));
 }
+
+template <typename F>
+static inline constexpr decltype(auto) make_fix_point(F &f){
+  return FixPoint<F>(std::forward<F>(f));
+}
