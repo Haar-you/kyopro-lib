@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#52520cdd925fa3dd96b0b332cb95e6a5">test/aoj/GRL_1_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_1_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-04-20 09:17:56+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C</a>
@@ -108,25 +108,18 @@ public:
   Edge() {}
   Edge(int to, Cost cost): to(to), cost(cost){}
   Edge(int from, int to, Cost cost): from(from), to(to), cost(cost){}
-
-  Edge rev() const {return Edge(to,from,cost);}
-  
-  friend std::ostream& operator<<(std::ostream &os, const Edge &e){
-    os << "(FROM: " << e.from << "," << "TO: " << e.to << "," << "COST: " << e.cost << ")";
-    return os;
-  }
 };
 
 template <typename T> using Graph = std::vector<std::vector<Edge<T>>>;
 template <typename T> using Tree = std::vector<std::vector<Edge<T>>>;
 
-template <typename C, typename T> void add_edge(C &g, int from, int to, T w){
+template <typename T, typename C> void add_edge(C &g, int from, int to, T w = 1){
   g[from].emplace_back(from, to, w);
 }
 
-template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
-  add_edge(g, a, b, w);
-  add_edge(g, b, a, w);
+template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 1){
+  add_edge<T, C>(g, a, b, w);
+  add_edge<T, C>(g, b, a, w);
 }
 #line 3 "Mylib/Graph/ShortestPath/warshall_floyd.cpp"
 #include <optional>

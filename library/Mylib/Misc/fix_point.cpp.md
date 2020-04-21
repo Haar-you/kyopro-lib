@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/fix_point.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-22 05:49:57+09:00
 
 
 
@@ -67,6 +67,11 @@ static inline constexpr decltype(auto) make_fix_point(F &&f){
   return FixPoint<F>(std::forward<F>(f));
 }
 
+template <typename F>
+static inline constexpr decltype(auto) make_fix_point(F &f){
+  return FixPoint<F>(std::forward<F>(f));
+}
+
 ```
 {% endraw %}
 
@@ -91,6 +96,11 @@ struct FixPoint : F{
 
 template <typename F>
 static inline constexpr decltype(auto) make_fix_point(F &&f){
+  return FixPoint<F>(std::forward<F>(f));
+}
+
+template <typename F>
+static inline constexpr decltype(auto) make_fix_point(F &f){
   return FixPoint<F>(std::forward<F>(f));
 }
 

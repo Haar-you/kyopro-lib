@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#502e31dec0efb369b23aee4c6aa81a7e">test/aoj/GRL_5_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_5_C/main.doubling.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-20 09:17:56+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C</a>
@@ -102,25 +102,18 @@ public:
   Edge() {}
   Edge(int to, Cost cost): to(to), cost(cost){}
   Edge(int from, int to, Cost cost): from(from), to(to), cost(cost){}
-
-  Edge rev() const {return Edge(to,from,cost);}
-  
-  friend std::ostream& operator<<(std::ostream &os, const Edge &e){
-    os << "(FROM: " << e.from << "," << "TO: " << e.to << "," << "COST: " << e.cost << ")";
-    return os;
-  }
 };
 
 template <typename T> using Graph = std::vector<std::vector<Edge<T>>>;
 template <typename T> using Tree = std::vector<std::vector<Edge<T>>>;
 
-template <typename C, typename T> void add_edge(C &g, int from, int to, T w){
+template <typename T, typename C> void add_edge(C &g, int from, int to, T w = 1){
   g[from].emplace_back(from, to, w);
 }
 
-template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
-  add_edge(g, a, b, w);
-  add_edge(g, b, a, w);
+template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 1){
+  add_edge<T, C>(g, a, b, w);
+  add_edge<T, C>(g, b, a, w);
 }
 #line 3 "Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp"
 #include <cmath>

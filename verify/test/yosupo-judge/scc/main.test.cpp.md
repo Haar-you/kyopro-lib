@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#6ffd15f8d9c15c119e35f664edb2d617">test/yosupo-judge/scc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/scc/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-04-20 09:17:56+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/scc">https://judge.yosupo.jp/problem/scc</a>
@@ -118,25 +118,18 @@ public:
   Edge() {}
   Edge(int to, Cost cost): to(to), cost(cost){}
   Edge(int from, int to, Cost cost): from(from), to(to), cost(cost){}
-
-  Edge rev() const {return Edge(to,from,cost);}
-  
-  friend std::ostream& operator<<(std::ostream &os, const Edge &e){
-    os << "(FROM: " << e.from << "," << "TO: " << e.to << "," << "COST: " << e.cost << ")";
-    return os;
-  }
 };
 
 template <typename T> using Graph = std::vector<std::vector<Edge<T>>>;
 template <typename T> using Tree = std::vector<std::vector<Edge<T>>>;
 
-template <typename C, typename T> void add_edge(C &g, int from, int to, T w){
+template <typename T, typename C> void add_edge(C &g, int from, int to, T w = 1){
   g[from].emplace_back(from, to, w);
 }
 
-template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
-  add_edge(g, a, b, w);
-  add_edge(g, b, a, w);
+template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 1){
+  add_edge<T, C>(g, a, b, w);
+  add_edge<T, C>(g, b, a, w);
 }
 #line 3 "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 #include <algorithm>
@@ -179,7 +172,7 @@ public:
     std::reverse(check.begin(), check.end());
     
     Graph<T> rgraph(n);
-    for(int i = 0; i < n; ++i) for(auto &e : graph[i]) rgraph[e.to].push_back(e.rev());
+    for(int i = 0; i < n; ++i) for(auto &e : graph[i]) rgraph[e.to].emplace_back(e.to, e.from, e.cost);
 
     int i = 0;
     for(auto c : check) if(result[c] == -1) {rdfs(c,i,rgraph); ++i;}

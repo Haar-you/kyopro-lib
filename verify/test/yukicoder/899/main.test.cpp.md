@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#dbd13c44c1e9ae40565e636bcb62bc45">test/yukicoder/899</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/899/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-06 17:42:20+09:00
+    - Last commit date: 2020-04-20 09:17:56+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/899">https://yukicoder.me/problems/no/899</a>
@@ -96,10 +96,10 @@ int main(){
       };
 
     // 親の親
-    res.query_at(res.get_parent(res.get_parent(x)), f);
+    res.query_at(res.get_ancestor(x, 2), f);
 
     // 親
-    res.query_at(res.get_parent(x), f);
+    res.query_at(res.get_ancestor(x, 1), f);
     
     // 親の子
     res.query_children(res.get_parent(x), 1, f);
@@ -146,25 +146,18 @@ public:
   Edge() {}
   Edge(int to, Cost cost): to(to), cost(cost){}
   Edge(int from, int to, Cost cost): from(from), to(to), cost(cost){}
-
-  Edge rev() const {return Edge(to,from,cost);}
-  
-  friend std::ostream& operator<<(std::ostream &os, const Edge &e){
-    os << "(FROM: " << e.from << "," << "TO: " << e.to << "," << "COST: " << e.cost << ")";
-    return os;
-  }
 };
 
 template <typename T> using Graph = std::vector<std::vector<Edge<T>>>;
 template <typename T> using Tree = std::vector<std::vector<Edge<T>>>;
 
-template <typename C, typename T> void add_edge(C &g, int from, int to, T w){
+template <typename T, typename C> void add_edge(C &g, int from, int to, T w = 1){
   g[from].emplace_back(from, to, w);
 }
 
-template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
-  add_edge(g, a, b, w);
-  add_edge(g, b, a, w);
+template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 1){
+  add_edge<T, C>(g, a, b, w);
+  add_edge<T, C>(g, b, a, w);
 }
 #line 3 "Mylib/Graph/TreeUtils/euler_tour_bfs.cpp"
 #include <queue>
@@ -229,7 +222,6 @@ template <typename T> struct EulerTourBFS{
   }
 
 public:
-
   template <typename Func>
   inline void query_children(int i, int d, const Func &f) const {
     if(i != -1){
@@ -254,6 +246,15 @@ public:
   inline int get_parent(int i) const {
     if(i == -1) return -1;
     return parent[i];
+  }
+
+  inline int get_ancestor(int i, int k) const {
+    int ret = i;
+    for(int i = 0; i < k; ++i){
+      ret = get_parent(ret);
+      if(ret == -1) break;
+    }
+    return ret;
   }
 };
 #line 3 "Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp"
@@ -396,10 +397,10 @@ int main(){
       };
 
     // 親の親
-    res.query_at(res.get_parent(res.get_parent(x)), f);
+    res.query_at(res.get_ancestor(x, 2), f);
 
     // 親
-    res.query_at(res.get_parent(x), f);
+    res.query_at(res.get_ancestor(x, 1), f);
     
     // 親の子
     res.query_children(res.get_parent(x), 1, f);

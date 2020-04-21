@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#607ede2caa7064ff1cf75c22fd3209d4">test/aoj/3034</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3034/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-16 02:06:46+09:00
+    - Last commit date: 2020-04-22 05:49:57+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034</a>
@@ -367,6 +367,11 @@ struct FixPoint : F{
 
 template <typename F>
 static inline constexpr decltype(auto) make_fix_point(F &&f){
+  return FixPoint<F>(std::forward<F>(f));
+}
+
+template <typename F>
+static inline constexpr decltype(auto) make_fix_point(F &f){
   return FixPoint<F>(std::forward<F>(f));
 }
 #line 2 "Mylib/Bit/for_each_subset_asc.cpp"

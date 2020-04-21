@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#3b87eee7aef75da88610c966a8da844f">Mylib/Graph/BipartiteGraph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/BipartiteGraph/check_bipartite_graph_disconnected.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-20 09:17:56+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/maximum-cup-2018/submissions/4199048">https://atcoder.jp/contests/maximum-cup-2018/submissions/4199048</a>
@@ -139,25 +139,18 @@ public:
   Edge() {}
   Edge(int to, Cost cost): to(to), cost(cost){}
   Edge(int from, int to, Cost cost): from(from), to(to), cost(cost){}
-
-  Edge rev() const {return Edge(to,from,cost);}
-  
-  friend std::ostream& operator<<(std::ostream &os, const Edge &e){
-    os << "(FROM: " << e.from << "," << "TO: " << e.to << "," << "COST: " << e.cost << ")";
-    return os;
-  }
 };
 
 template <typename T> using Graph = std::vector<std::vector<Edge<T>>>;
 template <typename T> using Tree = std::vector<std::vector<Edge<T>>>;
 
-template <typename C, typename T> void add_edge(C &g, int from, int to, T w){
+template <typename T, typename C> void add_edge(C &g, int from, int to, T w = 1){
   g[from].emplace_back(from, to, w);
 }
 
-template <typename C, typename T> void add_undirected(C &g, int a, int b, T w){
-  add_edge(g, a, b, w);
-  add_edge(g, b, a, w);
+template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 1){
+  add_edge<T, C>(g, a, b, w);
+  add_edge<T, C>(g, b, a, w);
 }
 #line 7 "Mylib/Graph/BipartiteGraph/check_bipartite_graph_disconnected.cpp"
 
