@@ -11,11 +11,11 @@ int main(){
   std::vector<uint32_t> a(N);
   for(int i = 0; i < N; ++i) scanf("%d", &a[i]);
 
-  auto wv = make_wavelet_matrix_int(a);
+  auto wm = make_wavelet_matrix_int(a);
 
   while(Q--){
     int l, r, k; scanf("%d%d%d", &l, &r, &k);
-    auto ans = wv.quantile(l, r, k+1);
+    auto ans = *quantile(wm, l, r, k+1);
     printf("%d\n", ans);
   }
   

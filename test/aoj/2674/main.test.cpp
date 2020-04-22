@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <climits>
+#include <limits>
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 #include "Mylib/DataStructure/WaveletMatrix/range_freq.cpp"
 
@@ -30,8 +30,8 @@ int main(){
 
     int ans = 0;
 
-    ans += wm.range_freq(l, r+1, 0, std::max(0, a-e));
-    ans += wm.range_freq(l, r+1, b+e+1, INT_MAX);
+    ans += range_freq(wm, l, r+1, 0u, (uint32_t)std::max(0, a-e));
+    ans += range_freq(wm, l, r+1, (uint32_t)(b+e+1), std::numeric_limits<uint32_t>::max());
 
     std::cout << ans << std::endl;
   }

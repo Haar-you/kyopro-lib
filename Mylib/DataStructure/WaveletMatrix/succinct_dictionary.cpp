@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <optional>
 
 /**
  * @title 簡潔辞書
@@ -69,10 +70,10 @@ struct SuccinctDict{
   }
   
   /**
-   * @return [s, e)のbの個数
+   * @return [l, r)のbの個数
    */
-  inline int count(int s, int e, int b) const {
-    return rank(e, b) - rank(s, b);
+  inline int count(int l, int r, int b) const {
+    return rank(r, b) - rank(l, b);
   }
 
   /**
@@ -84,13 +85,12 @@ struct SuccinctDict{
 
   /**
    * @note n in [1, N]
-   * @retval 0<= 先頭からn番目のbの位置
-   * @retval -1 n番目のbが存在しない
+   * @return 先頭からn番目のbの位置
    */
-  inline int select(int n, int b) const {
+  inline std::optional<int> select(int n, int b) const {
     assert(n >= 1);
     
-    if(rank(N, b) < n) return -1;
+    if(rank(N, b) < n) return {};
 
     int lb = -1, ub = N;
     while(abs(lb-ub) > 1){
@@ -103,6 +103,6 @@ struct SuccinctDict{
       }
     }
 
-    return lb;
+    return {lb};
   }
 };

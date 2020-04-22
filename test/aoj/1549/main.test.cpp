@@ -18,22 +18,21 @@ int main(){
   int Q; std::cin >> Q;
 
   while(Q--){
-    int l, r, d; std::cin >> l >> r >> d;
+    uint32_t l, r, d; std::cin >> l >> r >> d;
 
     ++r;
 
     int ans = INT_MAX;
 
     {
-      int x = wm.prev_value(l, r, d);
-      if(x != -1) ans = std::min(ans, std::abs(x - d));
+      auto x = prev_value(wm, l, r, d);
+      if(x) ans = std::min(ans, std::abs((int)*x - (int)d));
     }
 
     {
-      int x = wm.next_value(l, r, d);
-      if(x != -1) ans = std::min(ans, std::abs(x - d));
+      auto x = next_value(wm, l, r, d);
+      if(x) ans = std::min(ans, std::abs((int)*x - (int)d));
     }
-
 
     std::cout << ans << std::endl;
   }

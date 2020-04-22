@@ -3,6 +3,7 @@
 #include <utility>
 #include <tuple>
 #include <cassert>
+#include <optional>
 #include "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
 
 /**
@@ -14,12 +15,12 @@
 
 template <typename T, int B>
 class WaveletMatrix{
+public:
   const int N;
 
   SuccinctDict sdict[B];
   int zero_pos[B];
 
-public:
   WaveletMatrix(std::vector<T> data): N(data.size()){
     std::vector<bool> s(N);
 
@@ -42,122 +43,114 @@ public:
       data.insert(data.end(), right.begin(), right.end());
     }
   }
-
-public:
-  /**
-   * @return data[index]
-   */
-  inline T access(int index) const {
-    T ret = 0;
-
-    int p = index;
-    for(int i = 0; i < B; ++i){
-      int t = sdict[i].access(p);
-      ret |= ((T)t << (B-1-i));
-      p = sdict[i].rank(p, t) + t * zero_pos[i];
-    }
-    
-    return ret;
-  }
-
-private:
-  inline std::pair<int,int> rank_aux(int index, const T &val) const {
-    int l = 0, r = index;
-
-    for(int i = 0; i < B; ++i){
-      int t = (val >> (B-i-1)) & 1;
-      l = sdict[i].rank(l, t) + t * zero_pos[i];
-      r = sdict[i].rank(r, t) + t * zero_pos[i];
-    }
-
-    return std::make_pair(l, r);
-  }
-
-public:
-  /**
-   * @return data[0,index)に含まれるvalの個数
-   */
-  inline int rank(int index, const T &val) const {
-    int l, r; std::tie(l, r) = rank_aux(index, val);
-    return r - l;
-  }
-
-public:
-  /*
-   * @return data[s,e)に含まれるvalの個数
-   */
-  inline int count(int s, int e, const T &val) const {
-    return rank(e, val) - rank(s, val);
-  }
-  
-public:
-  /**
-   * @retval 0<= count番目のvalの位置
-   * @retval -1 count番目のvalが存在しない
-   */
-  int select(int count, const T &val) const {
-    if(count <= 0) return -1;
-    
-    int l, r; std::tie(l, r) = rank_aux(N, val);
-    if(r - l < count) return -1;
-
-    int p = l + count - 1;
-
-    for(int i = B-1; i >= 0; --i){
-      int t = (val >> (B-i-1)) & 1;
-      p = sdict[i].select(p - t * zero_pos[i] + 1, t);
-    }
-    
-    return p;
-  }
-
-public:
-  /**
-   * @return data[l,r)でk(1-index)番目に小さい値
-   */
-  T quantile(int l, int r, int k) const {
-    assert(0 <= l and l < r and r <= N);
-    if(k == 0) return -1;
-
-    T ret = 0;
-
-    for(int i = 0; i < B; ++i){
-      const int count_1 = sdict[i].rank(r, 1) - sdict[i].rank(l, 1);
-      const int count_0 = r - l - count_1;
-
-      int t = 0;
-
-      if(k > count_0){
-        t = 1;
-        ret |= ((T)t << (B-i-1));
-        k -= count_0;
-      }
-      
-      l = sdict[i].rank(l, t) + t * zero_pos[i];
-      r = sdict[i].rank(r, t) + t * zero_pos[i];
-    }
-    
-    return ret;
-  }
-
-public:
-  T maximum(int s, int e) const {
-    return quantile(s, e, e-s);
-  }
-
-public:
-  T minimum(int s, int e) const {
-    return quantile(s, e, 1);
-  }
-
-public:
-  int range_freq_lt(int, int, T) const;
-  int range_freq(int, int, T, T) const;
-  std::vector<std::pair<int,T>> range_freq_list(int, int, T, T) const;
-  T next_value(int, int, T) const;
-  T prev_value(int, int, T) const;
-  std::vector<std::pair<int,T>> top_k(int, int, int) const;
 };
+
+
+/**
+ * @return data[index]
+ */
+template <typename T, int B>
+inline T access(const WaveletMatrix<T, B> &wm, int index){
+  T ret = 0;
+
+  int p = index;
+  for(int i = 0; i < B; ++i){
+    int t = wm.sdict[i].access(p);
+    ret |= ((T)t << (B-1-i));
+    p = wm.sdict[i].rank(p, t) + t * wm.zero_pos[i];
+  }
+    
+  return ret;
+}
+
+template <typename T, int B>
+inline std::pair<int,int> rank_aux(const WaveletMatrix<T, B> &wm, int index, const T &val){
+  int l = 0, r = index;
+
+  for(int i = 0; i < B; ++i){
+    int t = (val >> (B-i-1)) & 1;
+    l = wm.sdict[i].rank(l, t) + t * wm.zero_pos[i];
+    r = wm.sdict[i].rank(r, t) + t * wm.zero_pos[i];
+  }
+
+  return std::make_pair(l, r);
+}
+
+/**
+ * @return data[0, index)に含まれるvalの個数
+ */
+template <typename T, int B>
+inline int rank(const WaveletMatrix<T, B> &wm, int index, const T &val){
+  int l, r; std::tie(l, r) = rank_aux(wm, index, val);
+  return r - l;
+}
+
+/*
+ * @return data[l, r)に含まれるvalの個数
+ */
+template <typename T, int B>
+inline int count(const WaveletMatrix<T, B> &wm, int l, int r, const T &val){
+  return rank(wm, r, val) - rank(wm, l, val);
+}
+  
+/**
+ * @return count番目のvalの位置
+ */
+template <typename T, int B>
+std::optional<int> select(const WaveletMatrix<T, B> &wm, int count, const T &val){
+  if(count <= 0) return {};
+    
+  int l, r; std::tie(l, r) = rank_aux(wm, wm.N, val);
+  if(r - l < count) return {};
+
+  int p = l + count - 1;
+
+  for(int i = B-1; i >= 0; --i){
+    int t = (val >> (B-i-1)) & 1;
+    p = *wm.sdict[i].select(p - t * wm.zero_pos[i] + 1, t);
+  }
+    
+  return {p};
+}
+
+/**
+ * @return data[l, r)でk(1-index)番目に小さい値
+ */
+template <typename T, int B>
+std::optional<T> quantile(const WaveletMatrix<T, B> &wm, int l, int r, int k){
+  assert(0 <= l and l < r and r <= wm.N);
+  if(k == 0) return {};
+
+  T ret = 0;
+
+  for(int i = 0; i < B; ++i){
+    const int count_1 = wm.sdict[i].rank(r, 1) - wm.sdict[i].rank(l, 1);
+    const int count_0 = r - l - count_1;
+
+    int t = 0;
+
+    if(k > count_0){
+      t = 1;
+      ret |= ((T)t << (B-i-1));
+      k -= count_0;
+    }
+      
+    l = wm.sdict[i].rank(l, t) + t * wm.zero_pos[i];
+    r = wm.sdict[i].rank(r, t) + t * wm.zero_pos[i];
+  }
+    
+  return {ret};
+}
+
+template <typename T, int B>
+T maximum(const WaveletMatrix<T, B> &wm, int l, int r){
+  return *quantile(wm, l, r, r-l);
+}
+
+template <typename T, int B>
+T minimum(const WaveletMatrix<T, B> &wm, int l, int r){
+  return *quantile(wm, l, r, 1);
+}
 
 
 WaveletMatrix<uint32_t,32> make_wavelet_matrix_int(const std::vector<uint32_t> &data){
