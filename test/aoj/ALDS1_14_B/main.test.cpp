@@ -4,18 +4,16 @@
 #include <string>
 #include "Mylib/String/rolling_hash.cpp"
 
-using RH = RollingHash<std::string, 30, 1000000007>;
-
 int main(){
-  RH::init(1000000);
+  auto rh = make_rh(1000000, 1000000007);
   
   std::string t, p; std::cin >> t >> p;
   
-  auto t_hashs = RH::gen_hash_table(t);
-  auto p_hash = RH::gen_hash(p);
+  auto t_hashes = rh.gen_hash_table(t);
+  auto p_hash = rh.gen_hash(p);
 
   for(int i = 0; i < (int)t.size(); ++i){
-    if(i + p.size() <= t.size() and t_hashs.get(i, i + p.size()) == p_hash){
+    if(i + p.size() <= t.size() and rh.get(t_hashes, i, i + p.size()) == p_hash){
       std::cout << i << std::endl;
     }
   }
