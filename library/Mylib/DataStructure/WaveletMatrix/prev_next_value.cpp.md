@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#def74daadbbb39361c0a507a6463f6db">Mylib/DataStructure/WaveletMatrix</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/WaveletMatrix/prev_next_value.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-08 16:48:10+09:00
+    - Last commit date: 2020-04-23 02:56:58+09:00
 
 
 
@@ -54,6 +54,7 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
+#include <optional>
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 #include "Mylib/DataStructure/WaveletMatrix/range_freq.cpp"
 
@@ -65,20 +66,19 @@ layout: default
  * @return data[l, r)のlb以上で最小の値
  */
 template <typename T, int B>
-T WaveletMatrix<T,B>::next_value(int l, int r, T lb) const {
-  int c = range_freq_lt(l, r, lb);
-  return quantile(l, r, c+1);
+std::optional<T> next_value(const WaveletMatrix<T, B> &wm, int l, int r, T lb){
+  int c = range_freq_lt(wm, l, r, lb);
+  return quantile(wm, l, r, c+1);
 }
   
 /**
  * @return data[l, r)のub未満で最大の値
  */
 template <typename T, int B>
-T WaveletMatrix<T,B>::prev_value(int l, int r, T ub) const {
-  int c = range_freq_lt(l, r, ub);
-  return quantile(l, r, c);
+std::optional<T> prev_value(const WaveletMatrix<T, B> &wm, int l, int r, T ub){
+  int c = range_freq_lt(wm, l, r, ub);
+  return quantile(wm, l, r, c);
 }
-
 
 ```
 {% endraw %}
@@ -86,12 +86,16 @@ T WaveletMatrix<T,B>::prev_value(int l, int r, T ub) const {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 2 "Mylib/DataStructure/WaveletMatrix/prev_next_value.cpp"
+#include <optional>
 #line 2 "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 #include <vector>
 #include <utility>
 #include <tuple>
 #include <cassert>
+#include <optional>
 #line 3 "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
+#include <optional>
 
 /**
  * @title 簡潔辞書
@@ -161,10 +165,10 @@ struct SuccinctDict{
   }
   
   /**
-   * @return [s, e)のbの個数
+   * @return [l, r)のbの個数
    */
-  inline int count(int s, int e, int b) const {
-    return rank(e, b) - rank(s, b);
+  inline int count(int l, int r, int b) const {
+    return rank(r, b) - rank(l, b);
   }
 
   /**
@@ -176,13 +180,12 @@ struct SuccinctDict{
 
   /**
    * @note n in [1, N]
-   * @retval 0<= 先頭からn番目のbの位置
-   * @retval -1 n番目のbが存在しない
+   * @return 先頭からn番目のbの位置
    */
-  inline int select(int n, int b) const {
+  inline std::optional<int> select(int n, int b) const {
     assert(n >= 1);
     
-    if(rank(N, b) < n) return -1;
+    if(rank(N, b) < n) return {};
 
     int lb = -1, ub = N;
     while(abs(lb-ub) > 1){
@@ -195,10 +198,10 @@ struct SuccinctDict{
       }
     }
 
-    return lb;
+    return {lb};
   }
 };
-#line 7 "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
+#line 8 "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 
 /**
  * @title Wavelet matrix
@@ -209,12 +212,12 @@ struct SuccinctDict{
 
 template <typename T, int B>
 class WaveletMatrix{
+public:
   const int N;
 
   SuccinctDict sdict[B];
   int zero_pos[B];
 
-public:
   WaveletMatrix(std::vector<T> data): N(data.size()){
     std::vector<bool> s(N);
 
@@ -237,122 +240,114 @@ public:
       data.insert(data.end(), right.begin(), right.end());
     }
   }
-
-public:
-  /**
-   * @return data[index]
-   */
-  inline T access(int index) const {
-    T ret = 0;
-
-    int p = index;
-    for(int i = 0; i < B; ++i){
-      int t = sdict[i].access(p);
-      ret |= ((T)t << (B-1-i));
-      p = sdict[i].rank(p, t) + t * zero_pos[i];
-    }
-    
-    return ret;
-  }
-
-private:
-  inline std::pair<int,int> rank_aux(int index, const T &val) const {
-    int l = 0, r = index;
-
-    for(int i = 0; i < B; ++i){
-      int t = (val >> (B-i-1)) & 1;
-      l = sdict[i].rank(l, t) + t * zero_pos[i];
-      r = sdict[i].rank(r, t) + t * zero_pos[i];
-    }
-
-    return std::make_pair(l, r);
-  }
-
-public:
-  /**
-   * @return data[0,index)に含まれるvalの個数
-   */
-  inline int rank(int index, const T &val) const {
-    int l, r; std::tie(l, r) = rank_aux(index, val);
-    return r - l;
-  }
-
-public:
-  /*
-   * @return data[s,e)に含まれるvalの個数
-   */
-  inline int count(int s, int e, const T &val) const {
-    return rank(e, val) - rank(s, val);
-  }
-  
-public:
-  /**
-   * @retval 0<= count番目のvalの位置
-   * @retval -1 count番目のvalが存在しない
-   */
-  int select(int count, const T &val) const {
-    if(count <= 0) return -1;
-    
-    int l, r; std::tie(l, r) = rank_aux(N, val);
-    if(r - l < count) return -1;
-
-    int p = l + count - 1;
-
-    for(int i = B-1; i >= 0; --i){
-      int t = (val >> (B-i-1)) & 1;
-      p = sdict[i].select(p - t * zero_pos[i] + 1, t);
-    }
-    
-    return p;
-  }
-
-public:
-  /**
-   * @return data[l,r)でk(1-index)番目に小さい値
-   */
-  T quantile(int l, int r, int k) const {
-    assert(0 <= l and l < r and r <= N);
-    if(k == 0) return -1;
-
-    T ret = 0;
-
-    for(int i = 0; i < B; ++i){
-      const int count_1 = sdict[i].rank(r, 1) - sdict[i].rank(l, 1);
-      const int count_0 = r - l - count_1;
-
-      int t = 0;
-
-      if(k > count_0){
-        t = 1;
-        ret |= ((T)t << (B-i-1));
-        k -= count_0;
-      }
-      
-      l = sdict[i].rank(l, t) + t * zero_pos[i];
-      r = sdict[i].rank(r, t) + t * zero_pos[i];
-    }
-    
-    return ret;
-  }
-
-public:
-  T maximum(int s, int e) const {
-    return quantile(s, e, e-s);
-  }
-
-public:
-  T minimum(int s, int e) const {
-    return quantile(s, e, 1);
-  }
-
-public:
-  int range_freq_lt(int, int, T) const;
-  int range_freq(int, int, T, T) const;
-  std::vector<std::pair<int,T>> range_freq_list(int, int, T, T) const;
-  T next_value(int, int, T) const;
-  T prev_value(int, int, T) const;
-  std::vector<std::pair<int,T>> top_k(int, int, int) const;
 };
+
+
+/**
+ * @return data[index]
+ */
+template <typename T, int B>
+inline T access(const WaveletMatrix<T, B> &wm, int index){
+  T ret = 0;
+
+  int p = index;
+  for(int i = 0; i < B; ++i){
+    int t = wm.sdict[i].access(p);
+    ret |= ((T)t << (B-1-i));
+    p = wm.sdict[i].rank(p, t) + t * wm.zero_pos[i];
+  }
+    
+  return ret;
+}
+
+template <typename T, int B>
+inline std::pair<int,int> rank_aux(const WaveletMatrix<T, B> &wm, int index, const T &val){
+  int l = 0, r = index;
+
+  for(int i = 0; i < B; ++i){
+    int t = (val >> (B-i-1)) & 1;
+    l = wm.sdict[i].rank(l, t) + t * wm.zero_pos[i];
+    r = wm.sdict[i].rank(r, t) + t * wm.zero_pos[i];
+  }
+
+  return std::make_pair(l, r);
+}
+
+/**
+ * @return data[0, index)に含まれるvalの個数
+ */
+template <typename T, int B>
+inline int rank(const WaveletMatrix<T, B> &wm, int index, const T &val){
+  int l, r; std::tie(l, r) = rank_aux(wm, index, val);
+  return r - l;
+}
+
+/*
+ * @return data[l, r)に含まれるvalの個数
+ */
+template <typename T, int B>
+inline int count(const WaveletMatrix<T, B> &wm, int l, int r, const T &val){
+  return rank(wm, r, val) - rank(wm, l, val);
+}
+  
+/**
+ * @return count番目のvalの位置
+ */
+template <typename T, int B>
+std::optional<int> select(const WaveletMatrix<T, B> &wm, int count, const T &val){
+  if(count <= 0) return {};
+    
+  int l, r; std::tie(l, r) = rank_aux(wm, wm.N, val);
+  if(r - l < count) return {};
+
+  int p = l + count - 1;
+
+  for(int i = B-1; i >= 0; --i){
+    int t = (val >> (B-i-1)) & 1;
+    p = *wm.sdict[i].select(p - t * wm.zero_pos[i] + 1, t);
+  }
+    
+  return {p};
+}
+
+/**
+ * @return data[l, r)でk(1-index)番目に小さい値
+ */
+template <typename T, int B>
+std::optional<T> quantile(const WaveletMatrix<T, B> &wm, int l, int r, int k){
+  assert(0 <= l and l < r and r <= wm.N);
+  if(k == 0) return {};
+
+  T ret = 0;
+
+  for(int i = 0; i < B; ++i){
+    const int count_1 = wm.sdict[i].rank(r, 1) - wm.sdict[i].rank(l, 1);
+    const int count_0 = r - l - count_1;
+
+    int t = 0;
+
+    if(k > count_0){
+      t = 1;
+      ret |= ((T)t << (B-i-1));
+      k -= count_0;
+    }
+      
+    l = wm.sdict[i].rank(l, t) + t * wm.zero_pos[i];
+    r = wm.sdict[i].rank(r, t) + t * wm.zero_pos[i];
+  }
+    
+  return {ret};
+}
+
+template <typename T, int B>
+T maximum(const WaveletMatrix<T, B> &wm, int l, int r){
+  return *quantile(wm, l, r, r-l);
+}
+
+template <typename T, int B>
+T minimum(const WaveletMatrix<T, B> &wm, int l, int r){
+  return *quantile(wm, l, r, 1);
+}
 
 
 WaveletMatrix<uint32_t,32> make_wavelet_matrix_int(const std::vector<uint32_t> &data){
@@ -365,18 +360,18 @@ WaveletMatrix<uint32_t,32> make_wavelet_matrix_int(const std::vector<uint32_t> &
  */
 
 template <typename T, int B>
-int WaveletMatrix<T,B>::range_freq_lt(int l, int r, T ub) const {
+int range_freq_lt(const WaveletMatrix<T, B> &wm, int l, int r, T ub){
   int ret = 0;
 
   for(int i = 0; i < B; ++i){
     int t = (ub >> (B-i-1)) & 1;
 
     if(t){
-      ret += sdict[i].count(l, r, 0);
+      ret += wm.sdict[i].count(l, r, 0);
     }
 
-    l = sdict[i].rank(l, t) + t * zero_pos[i];
-    r = sdict[i].rank(r, t) + t * zero_pos[i];
+    l = wm.sdict[i].rank(l, t) + t * wm.zero_pos[i];
+    r = wm.sdict[i].rank(r, t) + t * wm.zero_pos[i];
   }
     
   return ret;
@@ -386,10 +381,10 @@ int WaveletMatrix<T,B>::range_freq_lt(int l, int r, T ub) const {
  * @return data[l, r)内で[lb, ub)であるような値の個数
  */
 template <typename T, int B>
-int WaveletMatrix<T,B>::range_freq(int l, int r, T lb, T ub) const {
-  return range_freq_lt(l, r, ub) - range_freq_lt(l, r, lb);
+int range_freq(const WaveletMatrix<T, B> &wm, int l, int r, T lb, T ub){
+  return range_freq_lt(wm, l, r, ub) - range_freq_lt(wm, l, r, lb);
 }
-#line 4 "Mylib/DataStructure/WaveletMatrix/prev_next_value.cpp"
+#line 5 "Mylib/DataStructure/WaveletMatrix/prev_next_value.cpp"
 
 /**
  * @title prev_value / next_value
@@ -399,20 +394,19 @@ int WaveletMatrix<T,B>::range_freq(int l, int r, T lb, T ub) const {
  * @return data[l, r)のlb以上で最小の値
  */
 template <typename T, int B>
-T WaveletMatrix<T,B>::next_value(int l, int r, T lb) const {
-  int c = range_freq_lt(l, r, lb);
-  return quantile(l, r, c+1);
+std::optional<T> next_value(const WaveletMatrix<T, B> &wm, int l, int r, T lb){
+  int c = range_freq_lt(wm, l, r, lb);
+  return quantile(wm, l, r, c+1);
 }
   
 /**
  * @return data[l, r)のub未満で最大の値
  */
 template <typename T, int B>
-T WaveletMatrix<T,B>::prev_value(int l, int r, T ub) const {
-  int c = range_freq_lt(l, r, ub);
-  return quantile(l, r, c);
+std::optional<T> prev_value(const WaveletMatrix<T, B> &wm, int l, int r, T ub){
+  int c = range_freq_lt(wm, l, r, ub);
+  return quantile(wm, l, r, c);
 }
-
 
 ```
 {% endraw %}

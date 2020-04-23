@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#6ed7f5103dd44c87e247853bfe87329e">test/aoj/ALDS1_14_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_14_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-24 03:19:18+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B</a>
@@ -53,18 +53,16 @@ layout: default
 #include <string>
 #include "Mylib/String/rolling_hash.cpp"
 
-using RH = RollingHash<std::string, 30, 1000000007>;
-
 int main(){
-  RH::init(1000000);
+  auto rh = make_rh(1000000, 1000000007);
   
   std::string t, p; std::cin >> t >> p;
   
-  auto t_hashs = RH::gen_hash_table(t);
-  auto p_hash = RH::gen_hash(p);
+  auto t_hashes = rh.gen_hash_table(t);
+  auto p_hash = rh.gen_hash(p);
 
   for(int i = 0; i < (int)t.size(); ++i){
-    if(i + p.size() <= t.size() and t_hashs.get(i, i + p.size()) == p_hash){
+    if(i + p.size() <= t.size() and rh.get(t_hashes, i, i + p.size()) == p_hash){
       std::cout << i << std::endl;
     }
   }
@@ -85,32 +83,32 @@ int main(){
 #include <string>
 #line 2 "Mylib/String/rolling_hash.cpp"
 #include <vector>
+#include <random>
 
 /**
  * @title Rolling Hash
  * @see https://yukicoder.me/submissions/347187
  */
-template <typename T, int64_t BASE, int64_t MOD>
 class RollingHash{
-  static std::vector<int64_t> pow;
-
+  std::vector<int64_t> pow;
+  int64_t MOD, BASE;
+  
 public:
-  std::vector<int64_t> table;
-
-  static void init(int size){
+  RollingHash(int size, int MOD, int BASE): MOD(MOD), BASE(BASE){
     pow.resize(size + 1);
     pow[0] = 1;
     for(int i = 1; i <= size; ++i) pow[i] = pow[i-1] * BASE % MOD;
   }
 
-  static auto gen_hash_table(const T &s){
-    RollingHash ret;
-    ret.table.resize(s.size() + 1, 0);
-    for(int i = 1; i <= (int)s.size(); ++i) ret.table[i] = (ret.table[i-1] * BASE + s[i-1]) % MOD;
+  template <typename T>
+  auto gen_hash_table(const T &s) const {
+    std::vector<int64_t> ret(s.size() + 1);
+    for(int i = 0; i < (int)s.size(); ++i) ret[i+1] = (ret[i] * BASE + s[i]) % MOD;
     return ret;
   }
 
-  static auto gen_hash(const T &s){
+  template <typename T>
+  auto gen_hash(const T &s) const {
     int64_t ret = 0;
     for(int i = 0; i < (int)s.size(); ++i) ret = (ret * BASE + s[i]) % MOD;
     return ret;
@@ -119,27 +117,28 @@ public:
   /**
    * @attention [l, r)
    */
-  int64_t get(int l, int r) const {
-    return (table[r] - table[l] * pow[r-l] + MOD * MOD) % MOD;
+  int64_t get(const std::vector<int64_t> &table, int l, int r) const {
+    return (table[r] - table[l] * pow[r-l] % MOD + MOD * MOD) % MOD;
   }
 };
 
-template <typename T, int64_t BASE, int64_t MOD>
-std::vector<int64_t> RollingHash<T,BASE,MOD>::pow;
+auto make_rh(int size, int MOD, int seed = 0){
+  std::mt19937 rnd(seed);
+  std::uniform_int_distribution<> dist(2, MOD-2);
+  return RollingHash(size, dist(rnd), MOD);
+}
 #line 6 "test/aoj/ALDS1_14_B/main.test.cpp"
 
-using RH = RollingHash<std::string, 30, 1000000007>;
-
 int main(){
-  RH::init(1000000);
+  auto rh = make_rh(1000000, 1000000007);
   
   std::string t, p; std::cin >> t >> p;
   
-  auto t_hashs = RH::gen_hash_table(t);
-  auto p_hash = RH::gen_hash(p);
+  auto t_hashes = rh.gen_hash_table(t);
+  auto p_hash = rh.gen_hash(p);
 
   for(int i = 0; i < (int)t.size(); ++i){
-    if(i + p.size() <= t.size() and t_hashs.get(i, i + p.size()) == p_hash){
+    if(i + p.size() <= t.size() and rh.get(t_hashes, i, i + p.size()) == p_hash){
       std::cout << i << std::endl;
     }
   }

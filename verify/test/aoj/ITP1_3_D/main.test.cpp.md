@@ -25,20 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 約数列挙
+# :heavy_check_mark: test/aoj/ITP1_3_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#e1d7bebd3991495167778e37d1d75d40">Mylib/Number/Divisor</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Divisor/divisor_list.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+* category: <a href="../../../../index.html#8d38fbe7bd169996a63c214260a5e34a">test/aoj/ITP1_3_D</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ITP1_3_D/main.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-23 06:00:37+09:00
 
 
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D&lang=ja">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D&lang=ja</a>
 
 
-## Verified with
+## Depends on
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/ITP1_3_D/main.test.cpp.html">test/aoj/ITP1_3_D/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Divisor/divisor_list.cpp.html">約数列挙</a>
 
 
 ## Code
@@ -46,31 +47,23 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#pragma once
-#include <vector>
-#include <algorithm>
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D&lang=ja"
 
-/**
- * @title 約数列挙
- */
-std::vector<std::int64_t> divisor_list(std::int64_t n){
-  std::vector<std::int64_t> temp, ret;
+#include <iostream>
+#include "Mylib/Number/Divisor/divisor_list.cpp"
 
-  {
-    std::int64_t i;
-    for(i = 1LL; i * i < n; ++i){
-      if(n%i == 0){
-        temp.push_back(n / i);
-        ret.push_back(i);
-      }
-    }
-    if(i * i == n) ret.push_back(i);
+int main(){
+  int a, b, c; std::cin >> a >> b >> c;
+
+  int ans = 0;
+
+  for(auto d : divisor_list(c)){
+    if(a <= d and d <= b) ++ans;
   }
 
-  std::reverse(temp.begin(), temp.end());
-  ret.insert(ret.end(), temp.begin(), temp.end());
-  
-  return ret;
+  std::cout << ans << std::endl;
+
+  return 0;
 }
 
 ```
@@ -79,6 +72,10 @@ std::vector<std::int64_t> divisor_list(std::int64_t n){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 1 "test/aoj/ITP1_3_D/main.test.cpp"
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D&lang=ja"
+
+#include <iostream>
 #line 2 "Mylib/Number/Divisor/divisor_list.cpp"
 #include <vector>
 #include <algorithm>
@@ -104,6 +101,21 @@ std::vector<std::int64_t> divisor_list(std::int64_t n){
   ret.insert(ret.end(), temp.begin(), temp.end());
   
   return ret;
+}
+#line 5 "test/aoj/ITP1_3_D/main.test.cpp"
+
+int main(){
+  int a, b, c; std::cin >> a >> b >> c;
+
+  int ans = 0;
+
+  for(auto d : divisor_list(c)){
+    if(a <= d and d <= b) ++ans;
+  }
+
+  std::cout << ans << std::endl;
+
+  return 0;
 }
 
 ```

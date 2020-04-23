@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#def74daadbbb39361c0a507a6463f6db">Mylib/DataStructure/WaveletMatrix</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-08 16:48:10+09:00
+    - Last commit date: 2020-04-23 02:56:58+09:00
 
 
 
@@ -59,6 +59,7 @@ layout: default
 ```cpp
 #pragma once
 #include <vector>
+#include <optional>
 
 /**
  * @title 簡潔辞書
@@ -128,10 +129,10 @@ struct SuccinctDict{
   }
   
   /**
-   * @return [s, e)のbの個数
+   * @return [l, r)のbの個数
    */
-  inline int count(int s, int e, int b) const {
-    return rank(e, b) - rank(s, b);
+  inline int count(int l, int r, int b) const {
+    return rank(r, b) - rank(l, b);
   }
 
   /**
@@ -143,13 +144,12 @@ struct SuccinctDict{
 
   /**
    * @note n in [1, N]
-   * @retval 0<= 先頭からn番目のbの位置
-   * @retval -1 n番目のbが存在しない
+   * @return 先頭からn番目のbの位置
    */
-  inline int select(int n, int b) const {
+  inline std::optional<int> select(int n, int b) const {
     assert(n >= 1);
     
-    if(rank(N, b) < n) return -1;
+    if(rank(N, b) < n) return {};
 
     int lb = -1, ub = N;
     while(abs(lb-ub) > 1){
@@ -162,7 +162,7 @@ struct SuccinctDict{
       }
     }
 
-    return lb;
+    return {lb};
   }
 };
 
@@ -174,6 +174,7 @@ struct SuccinctDict{
 ```cpp
 #line 2 "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
 #include <vector>
+#include <optional>
 
 /**
  * @title 簡潔辞書
@@ -243,10 +244,10 @@ struct SuccinctDict{
   }
   
   /**
-   * @return [s, e)のbの個数
+   * @return [l, r)のbの個数
    */
-  inline int count(int s, int e, int b) const {
-    return rank(e, b) - rank(s, b);
+  inline int count(int l, int r, int b) const {
+    return rank(r, b) - rank(l, b);
   }
 
   /**
@@ -258,13 +259,12 @@ struct SuccinctDict{
 
   /**
    * @note n in [1, N]
-   * @retval 0<= 先頭からn番目のbの位置
-   * @retval -1 n番目のbが存在しない
+   * @return 先頭からn番目のbの位置
    */
-  inline int select(int n, int b) const {
+  inline std::optional<int> select(int n, int b) const {
     assert(n >= 1);
     
-    if(rank(N, b) < n) return -1;
+    if(rank(N, b) < n) return {};
 
     int lb = -1, ub = N;
     while(abs(lb-ub) > 1){
@@ -277,7 +277,7 @@ struct SuccinctDict{
       }
     }
 
-    return lb;
+    return {lb};
   }
 };
 

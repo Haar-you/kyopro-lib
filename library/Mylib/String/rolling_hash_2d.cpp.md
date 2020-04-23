@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/rolling_hash_2d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-24 03:19:18+09:00
 
 
 
@@ -48,43 +48,45 @@ layout: default
 ```cpp
 #pragma once
 #include <vector>
+#include <random>
 
 /**
  * @title Rolling Hash 2D
  */
-template <typename T, int64_t BASEW, int64_t BASEH, int64_t MOD>
 class RollingHash2D{
-  static std::vector<int64_t> pow_w, pow_h;
+  std::vector<int64_t> pow_w, pow_h;
+  int64_t MOD, BASEW, BASEH;
 
 public:
-  std::vector<std::vector<int64_t>> table;
-  
-  static void init(int width, int height){
+  RollingHash2D(int width, int height, int MOD, int BASEW, int BASEH): MOD(MOD), BASEW(BASEW), BASEH(BASEH){
     pow_w.resize(width + 1);
     pow_h.resize(height + 1);
     pow_w[0] = pow_h[0] = 1;
     for(int i = 1; i <= width; ++i) pow_w[i] = pow_w[i-1] * BASEW % MOD;
     for(int i = 1; i <= height; ++i) pow_h[i] = pow_h[i-1] * BASEH % MOD;
   }
-  
-  static auto gen_hash_table(const T &s){
+
+  template <typename T>
+  auto gen_hash_table(const T &s){
     const int n = s.size(), m = s[0].size();
-    RollingHash2D ret;
-    ret.table = std::vector<std::vector<int64_t>>(n+1, std::vector<int64_t>(m+1));
-    for(int i = 1; i <= n; ++i){
-      for(int j = 1; j <= m; ++j){
-        ret.table[i][j] = (ret.table[i][j-1] * BASEW + s[i-1][j-1]) % MOD;
+    std::vector<std::vector<int64_t>> ret(n+1, std::vector<int64_t>(m+1));
+
+    for(int i = 0; i < n; ++i){
+      for(int j = 0; j < m; ++j){
+        ret[i+1][j+1] = (ret[i+1][j] * BASEW + s[i][j]) % MOD;
       }
     }
-    for(int i = 1; i <= n; ++i){
-      for(int j = 1; j <= m; ++j){
-        ret.table[i][j] = (ret.table[i-1][j] * BASEH + ret.table[i][j]) % MOD;
+    for(int i = 0; i < n; ++i){
+      for(int j = 0; j < m; ++j){
+        ret[i+1][j+1] = (ret[i][j+1] * BASEH + ret[i+1][j+1]) % MOD;
       }
     }
+    
     return ret;
   }
 
-  static auto gen_hash(const T &s){
+  template <typename T>
+  auto gen_hash(const T &s){
     const int n = s.size(), m = s[0].size();
     int64_t ret = 0;
     for(int i = 0; i < n; ++i){
@@ -100,7 +102,7 @@ public:
   /**
    * @attention [i1, i2), [j1, j2)
    */
-  int64_t get(int i1, int j1, int i2, int j2) const {
+  int64_t get(const std::vector<std::vector<int64_t>> &table, int i1, int j1, int i2, int j2) const {
     const auto a = table[i2][j2];
     const auto b = table[i1][j2] * pow_h[i2-i1] % MOD;
     const auto c = table[i2][j1] * pow_w[j2-j1] % MOD;
@@ -110,10 +112,11 @@ public:
   }
 };
 
-template <typename T, int64_t BASEW, int64_t BASEH, int64_t MOD>
-std::vector<int64_t> RollingHash2D<T,BASEW,BASEH,MOD>::pow_w;
-template <typename T, int64_t BASEW, int64_t BASEH, int64_t MOD>
-std::vector<int64_t> RollingHash2D<T,BASEW,BASEH,MOD>::pow_h;
+auto make_rh_2d(int width, int height, int MOD, int seed = 0){
+  std::mt19937 rnd(seed);
+  std::uniform_int_distribution<> dist(2, MOD-2);
+  return RollingHash2D(width, height, dist(rnd), dist(rnd), MOD);
+}
 
 ```
 {% endraw %}
@@ -123,43 +126,45 @@ std::vector<int64_t> RollingHash2D<T,BASEW,BASEH,MOD>::pow_h;
 ```cpp
 #line 2 "Mylib/String/rolling_hash_2d.cpp"
 #include <vector>
+#include <random>
 
 /**
  * @title Rolling Hash 2D
  */
-template <typename T, int64_t BASEW, int64_t BASEH, int64_t MOD>
 class RollingHash2D{
-  static std::vector<int64_t> pow_w, pow_h;
+  std::vector<int64_t> pow_w, pow_h;
+  int64_t MOD, BASEW, BASEH;
 
 public:
-  std::vector<std::vector<int64_t>> table;
-  
-  static void init(int width, int height){
+  RollingHash2D(int width, int height, int MOD, int BASEW, int BASEH): MOD(MOD), BASEW(BASEW), BASEH(BASEH){
     pow_w.resize(width + 1);
     pow_h.resize(height + 1);
     pow_w[0] = pow_h[0] = 1;
     for(int i = 1; i <= width; ++i) pow_w[i] = pow_w[i-1] * BASEW % MOD;
     for(int i = 1; i <= height; ++i) pow_h[i] = pow_h[i-1] * BASEH % MOD;
   }
-  
-  static auto gen_hash_table(const T &s){
+
+  template <typename T>
+  auto gen_hash_table(const T &s){
     const int n = s.size(), m = s[0].size();
-    RollingHash2D ret;
-    ret.table = std::vector<std::vector<int64_t>>(n+1, std::vector<int64_t>(m+1));
-    for(int i = 1; i <= n; ++i){
-      for(int j = 1; j <= m; ++j){
-        ret.table[i][j] = (ret.table[i][j-1] * BASEW + s[i-1][j-1]) % MOD;
+    std::vector<std::vector<int64_t>> ret(n+1, std::vector<int64_t>(m+1));
+
+    for(int i = 0; i < n; ++i){
+      for(int j = 0; j < m; ++j){
+        ret[i+1][j+1] = (ret[i+1][j] * BASEW + s[i][j]) % MOD;
       }
     }
-    for(int i = 1; i <= n; ++i){
-      for(int j = 1; j <= m; ++j){
-        ret.table[i][j] = (ret.table[i-1][j] * BASEH + ret.table[i][j]) % MOD;
+    for(int i = 0; i < n; ++i){
+      for(int j = 0; j < m; ++j){
+        ret[i+1][j+1] = (ret[i][j+1] * BASEH + ret[i+1][j+1]) % MOD;
       }
     }
+    
     return ret;
   }
 
-  static auto gen_hash(const T &s){
+  template <typename T>
+  auto gen_hash(const T &s){
     const int n = s.size(), m = s[0].size();
     int64_t ret = 0;
     for(int i = 0; i < n; ++i){
@@ -175,7 +180,7 @@ public:
   /**
    * @attention [i1, i2), [j1, j2)
    */
-  int64_t get(int i1, int j1, int i2, int j2) const {
+  int64_t get(const std::vector<std::vector<int64_t>> &table, int i1, int j1, int i2, int j2) const {
     const auto a = table[i2][j2];
     const auto b = table[i1][j2] * pow_h[i2-i1] % MOD;
     const auto c = table[i2][j1] * pow_w[j2-j1] % MOD;
@@ -185,10 +190,11 @@ public:
   }
 };
 
-template <typename T, int64_t BASEW, int64_t BASEH, int64_t MOD>
-std::vector<int64_t> RollingHash2D<T,BASEW,BASEH,MOD>::pow_w;
-template <typename T, int64_t BASEW, int64_t BASEH, int64_t MOD>
-std::vector<int64_t> RollingHash2D<T,BASEW,BASEH,MOD>::pow_h;
+auto make_rh_2d(int width, int height, int MOD, int seed = 0){
+  std::mt19937 rnd(seed);
+  std::uniform_int_distribution<> dist(2, MOD-2);
+  return RollingHash2D(width, height, dist(rnd), dist(rnd), MOD);
+}
 
 ```
 {% endraw %}

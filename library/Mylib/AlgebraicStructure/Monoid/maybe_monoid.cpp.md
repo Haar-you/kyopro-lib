@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp
+# :heavy_check_mark: Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -34,6 +34,11 @@ layout: default
     - Last commit date: 2020-04-18 02:38:53+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
 
 
 ## Code
