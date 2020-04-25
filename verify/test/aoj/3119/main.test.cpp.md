@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#59b3322e8805b9ff175a68f1a5d31d67">test/aoj/3119</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3119/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-07 19:24:13+09:00
+    - Last commit date: 2020-04-25 21:56:55+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119</a>
@@ -98,6 +98,7 @@ int main(){
  */
 template <uint32_t M> class ModInt{
 public:
+  constexpr static uint32_t MOD = M;
   uint64_t val;
   
   constexpr ModInt(): val(0){}

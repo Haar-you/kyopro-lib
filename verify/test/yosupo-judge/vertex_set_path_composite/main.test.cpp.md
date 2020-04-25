@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4074bf88980bb06d903e38d47fb81c08">test/yosupo-judge/vertex_set_path_composite</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/vertex_set_path_composite/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-04-25 21:56:55+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/vertex_set_path_composite">https://judge.yosupo.jp/problem/vertex_set_path_composite</a>
@@ -141,6 +141,7 @@ int main(){
  */
 template <uint32_t M> class ModInt{
 public:
+  constexpr static uint32_t MOD = M;
   uint64_t val;
   
   constexpr ModInt(): val(0){}

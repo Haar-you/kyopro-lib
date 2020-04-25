@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7561f7b6847dbe0c0f95d39dd0066b92">test/yosupo-judge/range_affine_range_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/range_affine_range_sum/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-07 19:24:13+09:00
+    - Last commit date: 2020-04-25 21:56:55+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_affine_range_sum">https://judge.yosupo.jp/problem/range_affine_range_sum</a>
@@ -220,6 +220,7 @@ struct AffineSum{
  */
 template <uint32_t M> class ModInt{
 public:
+  constexpr static uint32_t MOD = M;
   uint64_t val;
   
   constexpr ModInt(): val(0){}

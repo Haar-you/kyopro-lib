@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#c8d31b5139983c6742fe36acb5e1ac81">test/yosupo-judge/queue_operate_all_composite</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/queue_operate_all_composite/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-07 19:24:13+09:00
+    - Last commit date: 2020-04-25 21:56:55+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/queue_operate_all_composite">https://judge.yosupo.jp/problem/queue_operate_all_composite</a>
@@ -112,6 +112,7 @@ int main(){
  */
 template <uint32_t M> class ModInt{
 public:
+  constexpr static uint32_t MOD = M;
   uint64_t val;
   
   constexpr ModInt(): val(0){}

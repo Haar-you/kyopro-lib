@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4d6b83f34c17c15b5343ef482a3d7447">test/yosupo-judge/point_set_range_composite</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/point_set_range_composite/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-07 19:24:13+09:00
+    - Last commit date: 2020-04-25 21:56:55+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_set_range_composite">https://judge.yosupo.jp/problem/point_set_range_composite</a>
@@ -183,6 +183,7 @@ struct DualMonoid{
  */
 template <uint32_t M> class ModInt{
 public:
+  constexpr static uint32_t MOD = M;
   uint64_t val;
   
   constexpr ModInt(): val(0){}
