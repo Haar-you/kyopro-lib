@@ -7,6 +7,7 @@
  */
 template <uint32_t M> class ModInt{
 public:
+  constexpr static uint32_t MOD = M;
   uint64_t val;
   
   constexpr ModInt(): val(0){}
