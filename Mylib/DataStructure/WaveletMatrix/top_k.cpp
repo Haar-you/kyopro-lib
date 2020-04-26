@@ -8,9 +8,10 @@
 /**
  * @title top_k
  * @return data[l, r)で出現頻度が高い順にk個を返す
+ * @docs wavelet_matrix.md
  */
 template <typename T, int B>
-auto top_k(int l, int r, int k) const {
+auto top_k(const WaveletMatrix<T, B> &wm, int l, int r, int k) const {
   std::priority_queue<std::tuple<int,int,int,int,T>> q;
   std::vector<std::pair<int,T>> ret;
 

@@ -5,6 +5,7 @@
 
 /**
  * @title prev_value / next_value
+ * @docs wavelet_matrix.md
  */
 
 /**

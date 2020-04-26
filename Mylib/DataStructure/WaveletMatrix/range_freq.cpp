@@ -3,6 +3,7 @@
 
 /**
  * @title range_freq
+ * @docs wavelet_matrix.md
  */
 
 template <typename T, int B>

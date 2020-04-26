@@ -7,6 +7,7 @@
 /**
  * @title range_freq_list
  * @return data[l, r)で[lb, ub)を満たすものを出現頻度と値のpairで返す。
+ * @docs wavelet_matrix.md
  */
 template <typename T, int B>
 auto range_freq_list(const WaveletMatrix<T, B> &wm, int l, int r, T lb, T ub){

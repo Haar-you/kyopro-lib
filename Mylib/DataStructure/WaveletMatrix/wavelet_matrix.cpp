@@ -8,9 +8,7 @@
 
 /**
  * @title Wavelet matrix
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1549 (prev_value, next_value)
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674 (range_freq)
- * @see https://www.spoj.com/problems/MKTHNUM/ (quantile)
+ * @docs wavelet_matrix.md
  */
 
 template <typename T, int B>
