@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0b6beed70553311fed26bd78c31ce008">test/yosupo-judge/range_kth_smallest</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/range_kth_smallest/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-23 02:56:58+09:00
+    - Last commit date: 2020-04-26 17:51:10+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_kth_smallest">https://judge.yosupo.jp/problem/range_kth_smallest</a>
@@ -199,9 +199,7 @@ struct SuccinctDict{
 
 /**
  * @title Wavelet matrix
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1549 (prev_value, next_value)
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674 (range_freq)
- * @see https://www.spoj.com/problems/MKTHNUM/ (quantile)
+ * @docs wavelet_matrix.md
  */
 
 template <typename T, int B>

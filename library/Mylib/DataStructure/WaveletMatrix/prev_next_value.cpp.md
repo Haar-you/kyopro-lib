@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#def74daadbbb39361c0a507a6463f6db">Mylib/DataStructure/WaveletMatrix</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/WaveletMatrix/prev_next_value.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-23 02:56:58+09:00
+    - Last commit date: 2020-04-26 17:51:10+09:00
 
 
 
@@ -60,6 +60,7 @@ layout: default
 
 /**
  * @title prev_value / next_value
+ * @docs wavelet_matrix.md
  */
 
 /**
@@ -205,9 +206,7 @@ struct SuccinctDict{
 
 /**
  * @title Wavelet matrix
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1549 (prev_value, next_value)
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674 (range_freq)
- * @see https://www.spoj.com/problems/MKTHNUM/ (quantile)
+ * @docs wavelet_matrix.md
  */
 
 template <typename T, int B>
@@ -357,6 +356,7 @@ WaveletMatrix<uint32_t,32> make_wavelet_matrix_int(const std::vector<uint32_t> &
 
 /**
  * @title range_freq
+ * @docs wavelet_matrix.md
  */
 
 template <typename T, int B>
@@ -388,6 +388,7 @@ int range_freq(const WaveletMatrix<T, B> &wm, int l, int r, T lb, T ub){
 
 /**
  * @title prev_value / next_value
+ * @docs wavelet_matrix.md
  */
 
 /**
