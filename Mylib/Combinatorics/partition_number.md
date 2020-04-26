@@ -1,6 +1,6 @@
 ## Operations
 
-- $\mathtt{partition\_number(int\ n,\ int\ k)}$
+- `partition_number(int n, int k)`
 	- $P(0,0)$ ~ $P(n,k)$を列挙する。
 	- Time complexity $O(nk)$
 

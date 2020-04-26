@@ -1,6 +1,6 @@
 ## Operations
 
-- $\mathtt{bernoulli\_number(int\ n)}$
+- `bernoulli_number(int n)`
 	- $B_0$ ~ $B_n$を列挙する。
 	- Time complexity $O(N^2)$
 
