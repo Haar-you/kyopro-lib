@@ -31,9 +31,21 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/combinatorics.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-26 15:25:30+09:00
 
 
+
+
+## Operations
+
+- $\mathtt{init(int\ N)}$
+	- $0!$ ~ $N!$とその逆数を計算する。
+	- Time complexity $O(N)$
+- $\mathtt{f(int\ i)}$ : return $i!$
+- $\mathtt{finv(int\ i)}$ : return $\frac{1}{i!}$
+- $\mathtt{P(int\ n,\ int\ k)}$ : return $_nP_k$
+- $\mathtt{C(int\ n,\ int\ k)}$ : return $_nC_k$
+- $\mathtt{H(int\ n,\ int\ k)}$ : return $_nH_k = _{n+k-1}C_k$
 
 
 ## Required by
@@ -64,6 +76,7 @@ layout: default
 
 /**
  * @title 組み合わせ計算用の前計算クラス
+ * @docs combinatorics.md
  * @attention 使用前にinit関数を呼び出す
  */
 template <typename T> class Combinatorics{
@@ -135,6 +148,7 @@ template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
 
 /**
  * @title 組み合わせ計算用の前計算クラス
+ * @docs combinatorics.md
  * @attention 使用前にinit関数を呼び出す
  */
 template <typename T> class Combinatorics{

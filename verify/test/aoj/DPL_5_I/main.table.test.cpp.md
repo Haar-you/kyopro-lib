@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b72df8ce0758bb7606e41650e28ebb6a">test/aoj/DPL_5_I</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_I/main.table.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-25 21:56:55+09:00
+    - Last commit date: 2020-04-26 15:25:30+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I</a>
@@ -166,7 +166,7 @@ public:
 
 /**
  * @title 第2種Stirling数の列挙
- * @attention time complexity O(N^2)
+ * @docs stirling_number_table.md 
  */
 template <typename T>
 auto stirling_number_table(int n){

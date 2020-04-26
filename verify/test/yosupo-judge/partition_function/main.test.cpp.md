@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#3c72a5f9e51247cad1bcbc8d30f4715f">test/yosupo-judge/partition_function</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/partition_function/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-25 21:56:55+09:00
+    - Last commit date: 2020-04-26 15:25:30+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/partition_function">https://judge.yosupo.jp/problem/partition_function</a>
@@ -169,8 +169,7 @@ public:
 
 /**
  * @title 分割数の列挙
- * @see https://judge.yosupo.jp/submission/1223
- * @attention time-complexity O(N√N)
+ * @docs partition_number_n.md
  */
 template <typename T>
 auto partition_number(int N){

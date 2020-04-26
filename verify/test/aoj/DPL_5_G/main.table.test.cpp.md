@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f4368c57ad8f64bd0caa562818234830">test/aoj/DPL_5_G</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_G/main.table.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-25 21:56:55+09:00
+    - Last commit date: 2020-04-26 15:25:30+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_G">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_G</a>
@@ -166,7 +166,7 @@ public:
 
 /**
  * @title Bell数の列挙
- * @attention time complexity O(N^2)
+ * @docs bell_number_table.md
  */
 template <typename T>
 auto bell_number_table(int n){

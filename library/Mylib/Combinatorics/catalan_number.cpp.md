@@ -31,11 +31,25 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/catalan_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-17 20:21:15+09:00
+    - Last commit date: 2020-04-26 15:25:30+09:00
 
 
-* see: <a href="https://en.wikipedia.org/wiki/Catalan_number">https://en.wikipedia.org/wiki/Catalan_number</a>
-* see: <a href="https://mathtrain.jp/catalan">https://mathtrain.jp/catalan</a>
+
+
+## Operations
+
+- $\mathtt{catalan\_number(int\ n)}$
+	-  $c_0 = 1, c_{n+1} = ∑_{i=0}^n c_i * c_{n-i}$ を満たす数列の第n項を返す。
+
+## Problems
+
+- [KUPC2019 D - Maximin Game](https://atcoder.jp/contests/kupc2019/tasks/kupc2019_d)
+- [yukicoder No.660 家を通り過ぎないランダムウォーク問題](https://yukicoder.me/problems/no/660)
+
+## References
+
+- [https://en.wikipedia.org/wiki/Catalan_number](https://en.wikipedia.org/wiki/Catalan_number)
+- [https://mathtrain.jp/catalan](https://mathtrain.jp/catalan)
 
 
 ## Depends on
@@ -58,9 +72,7 @@ layout: default
 
 /**
  * @title Catalan数
- * @see https://en.wikipedia.org/wiki/Catalan_number
- * @see https://mathtrain.jp/catalan
- * @note c_0 = 1, c_{n+1} = ∑_{i=0}^n c_i * c_{n-i} を満たす数列の第n項。
+ * @docs catalan_number.md
  */
 template <typename T> T Combinatorics<T>::catalan_number(int64_t n){
   return C(2*n,n) - C(2*n,n-1);
@@ -78,6 +90,7 @@ template <typename T> T Combinatorics<T>::catalan_number(int64_t n){
 
 /**
  * @title 組み合わせ計算用の前計算クラス
+ * @docs combinatorics.md
  * @attention 使用前にinit関数を呼び出す
  */
 template <typename T> class Combinatorics{
@@ -140,9 +153,7 @@ template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
 
 /**
  * @title Catalan数
- * @see https://en.wikipedia.org/wiki/Catalan_number
- * @see https://mathtrain.jp/catalan
- * @note c_0 = 1, c_{n+1} = ∑_{i=0}^n c_i * c_{n-i} を満たす数列の第n項。
+ * @docs catalan_number.md
  */
 template <typename T> T Combinatorics<T>::catalan_number(int64_t n){
   return C(2*n,n) - C(2*n,n-1);

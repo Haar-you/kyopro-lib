@@ -31,9 +31,20 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/stirling_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-26 15:25:30+09:00
 
 
+
+
+## Operations
+
+- $\mathtt{stirling\_number(int\ n,\ int\ k)}$
+	- n個の区別するボールをk個の区別しない箱に分配する(但し、すべての箱には1つ以上のボールが入る)ような方法の総数。
+	- Time complexity $O(k\log n)$
+
+## References
+
+- [drken1215.hatenablog.com/entry/2018/02/01/200628](drken1215.hatenablog.com/entry/2018/02/01/200628)
 
 
 ## Depends on
@@ -62,8 +73,7 @@ layout: default
 
 /**
  * @title 第2種Stirling数
- * @note n個の区別するボールをk個の区別しない箱に分配する(但し、すべての箱には1つ以上のボールがある)ような方法の総数。
- * @attention O(k log n)
+ * @docs stirling_number.md
  */
 template <typename T>
 T Combinatorics<T>::stirling_number(int64_t n, int64_t k){
@@ -90,6 +100,7 @@ T Combinatorics<T>::stirling_number(int64_t n, int64_t k){
 
 /**
  * @title 組み合わせ計算用の前計算クラス
+ * @docs combinatorics.md
  * @attention 使用前にinit関数を呼び出す
  */
 template <typename T> class Combinatorics{
@@ -152,8 +163,7 @@ template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
 
 /**
  * @title 第2種Stirling数
- * @note n個の区別するボールをk個の区別しない箱に分配する(但し、すべての箱には1つ以上のボールがある)ような方法の総数。
- * @attention O(k log n)
+ * @docs stirling_number.md
  */
 template <typename T>
 T Combinatorics<T>::stirling_number(int64_t n, int64_t k){

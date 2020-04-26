@@ -31,9 +31,16 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/stirling_number_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-26 15:25:30+09:00
 
 
+
+
+## Operations
+
+- $\mathtt{stirling\_number\_table(int\ n)}$
+	- $S(0,0)$ ~ $S(n,n)$を列挙する。
+	- Time complexity $O(n^2)$
 
 
 ## Verified with
@@ -51,7 +58,7 @@ layout: default
 
 /**
  * @title 第2種Stirling数の列挙
- * @attention time complexity O(N^2)
+ * @docs stirling_number_table.md 
  */
 template <typename T>
 auto stirling_number_table(int n){
@@ -81,7 +88,7 @@ auto stirling_number_table(int n){
 
 /**
  * @title 第2種Stirling数の列挙
- * @attention time complexity O(N^2)
+ * @docs stirling_number_table.md 
  */
 template <typename T>
 auto stirling_number_table(int n){

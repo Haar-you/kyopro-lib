@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b3da1893b88bc8e75fe410f0e869b337">test/yukicoder/665</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/665/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-25 21:56:55+09:00
+    - Last commit date: 2020-04-26 15:25:30+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/665">https://yukicoder.me/problems/no/665</a>
@@ -184,6 +184,7 @@ public:
 
 /**
  * @title 組み合わせ計算用の前計算クラス
+ * @docs combinatorics.md
  * @attention 使用前にinit関数を呼び出す
  */
 template <typename T> class Combinatorics{
@@ -246,7 +247,7 @@ template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
 
 /**
  * @title Bernoulli数
- * @attention O(n^2 logn)
+ * @docs bernoulli_number.md
  */
 template <typename T>
 std::vector<T> Combinatorics<T>::bernoulli_number(int64_t n){

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f01f019f5d83aaae637417bc3568edb5">test/yukicoder/117</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/117/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-25 21:56:55+09:00
+    - Last commit date: 2020-04-26 15:25:30+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/117">https://yukicoder.me/problems/no/117</a>
@@ -180,6 +180,7 @@ public:
 
 /**
  * @title 組み合わせ計算用の前計算クラス
+ * @docs combinatorics.md
  * @attention 使用前にinit関数を呼び出す
  */
 template <typename T> class Combinatorics{

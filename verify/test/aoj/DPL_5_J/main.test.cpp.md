@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#8ea6691460c4e97105f99a36e4c646db">test/aoj/DPL_5_J</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_J/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-25 21:56:55+09:00
+    - Last commit date: 2020-04-26 15:25:30+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_J">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_J</a>
@@ -166,9 +166,7 @@ public:
 
 /**
  * @title K個以下への分割数の列挙
- * @see https://mathtrain.jp/bunkatsu
- * @see http://drken1215.hatenablog.com/entry/2018/01/16/222843
- * @note 自然数nをk個以下の1以上の整数に分割する方法。
+ * @docs partition_number.md
  */
 template <typename T>
 auto partition_number(int n, int k){

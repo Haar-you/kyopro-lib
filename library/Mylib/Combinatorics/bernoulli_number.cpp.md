@@ -31,9 +31,20 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/bernoulli_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-07 19:24:13+09:00
+    - Last commit date: 2020-04-26 15:25:30+09:00
 
 
+
+
+## Operations
+
+- $\mathtt{bernoulli\_number(int\ n)}$
+	- $B_0$ ~ $B_n$を列挙する。
+	- Time complexity $O(N^2)$
+
+## References
+
+- [https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%AB%E3%83%8C%E3%83%BC%E3%82%A4%E6%95%B0](https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%AB%E3%83%8C%E3%83%BC%E3%82%A4%E6%95%B0)
 
 
 ## Depends on
@@ -57,7 +68,7 @@ layout: default
 
 /**
  * @title Bernoulli数
- * @attention O(n^2 logn)
+ * @docs bernoulli_number.md
  */
 template <typename T>
 std::vector<T> Combinatorics<T>::bernoulli_number(int64_t n){
@@ -89,6 +100,7 @@ std::vector<T> Combinatorics<T>::bernoulli_number(int64_t n){
 
 /**
  * @title 組み合わせ計算用の前計算クラス
+ * @docs combinatorics.md
  * @attention 使用前にinit関数を呼び出す
  */
 template <typename T> class Combinatorics{
@@ -151,7 +163,7 @@ template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
 
 /**
  * @title Bernoulli数
- * @attention O(n^2 logn)
+ * @docs bernoulli_number.md
  */
 template <typename T>
 std::vector<T> Combinatorics<T>::bernoulli_number(int64_t n){

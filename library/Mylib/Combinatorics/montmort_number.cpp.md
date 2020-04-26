@@ -31,10 +31,28 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/montmort_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-26 15:25:30+09:00
 
 
-* see: <a href="https://atcoder.jp/contests/arc009/tasks/arc009_3">https://atcoder.jp/contests/arc009/tasks/arc009_3</a>
+
+
+## Operations
+
+- $\mathtt{montmort\_number(int\ n)}$
+	- 長さ$0$~$n$の完全順列の個数を列挙する。
+	- Time complexity $O(n)$
+
+
+## Problems
+
+- [ARC009 C - 高橋君、24歳](https://atcoder.jp/contests/arc009/tasks/arc009_3)
+- [Montmort Number](https://judge.yosupo.jp/problem/montmort_number_mod)
+
+## References
+
+- [https://ja.wikipedia.org/wiki/%E5%AE%8C%E5%85%A8%E9%A0%86%E5%88%97](https://ja.wikipedia.org/wiki/%E5%AE%8C%E5%85%A8%E9%A0%86%E5%88%97)
+- [https://oeis.org/A000166](https://oeis.org/A000166)
+
 
 
 ## Verified with
@@ -52,9 +70,7 @@ layout: default
 
 /**
  * @title Montmort数
- * @see https://atcoder.jp/contests/arc009/tasks/arc009_3
- * @note 完全順列,撹乱順列の個数
- * @note 1..nの順列を並び変えた時にどの要素も元の要素と異なるような並び替えの総数。
+ * @docs montmort_number.md
  */
 template <typename T>
 auto montmort_number(int n){
@@ -82,9 +98,7 @@ auto montmort_number(int n){
 
 /**
  * @title Montmort数
- * @see https://atcoder.jp/contests/arc009/tasks/arc009_3
- * @note 完全順列,撹乱順列の個数
- * @note 1..nの順列を並び変えた時にどの要素も元の要素と異なるような並び替えの総数。
+ * @docs montmort_number.md
  */
 template <typename T>
 auto montmort_number(int n){

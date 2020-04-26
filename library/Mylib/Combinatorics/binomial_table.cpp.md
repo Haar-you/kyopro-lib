@@ -31,9 +31,16 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/binomial_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-26 15:25:30+09:00
 
 
+
+
+## Operations
+
+- $\mathtt{binomial\_table(int\ n, \ int\ k)}$
+	- $\binom{0}{0}$ ~ $\binom{n}{k}$を列挙する。
+	- Time complexity $O(nk)$
 
 
 ## Code
@@ -46,10 +53,11 @@ layout: default
 
 /**
  * @title 二項係数の列挙
+ * @docs binomial_table.md
  * @note 除算を行わないので、MODが素数である必要がない。
  */
 template <typename T>
-auto binomial_pascal(int n, int k){
+auto binomial_table(int n, int k){
   std::vector<std::vector<T>> ret(n+1, std::vector<T>(k+1));
   ret[0][0] = 1;
   
@@ -75,10 +83,11 @@ auto binomial_pascal(int n, int k){
 
 /**
  * @title 二項係数の列挙
+ * @docs binomial_table.md
  * @note 除算を行わないので、MODが素数である必要がない。
  */
 template <typename T>
-auto binomial_pascal(int n, int k){
+auto binomial_table(int n, int k){
   std::vector<std::vector<T>> ret(n+1, std::vector<T>(k+1));
   ret[0][0] = 1;
   

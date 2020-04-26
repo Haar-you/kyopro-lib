@@ -31,9 +31,16 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/bell_number_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-26 15:25:30+09:00
 
 
+
+
+## Operations
+
+- $\mathtt{bell\_number\_table(int\ n)}$
+	- $B(0,0)$ ~ $B(N,N)$を列挙する
+	- Time complexity $O(n^2)$
 
 
 ## Verified with
@@ -51,7 +58,7 @@ layout: default
 
 /**
  * @title Bell数の列挙
- * @attention time complexity O(N^2)
+ * @docs bell_number_table.md
  */
 template <typename T>
 auto bell_number_table(int n){
@@ -87,7 +94,7 @@ auto bell_number_table(int n){
 
 /**
  * @title Bell数の列挙
- * @attention time complexity O(N^2)
+ * @docs bell_number_table.md
  */
 template <typename T>
 auto bell_number_table(int n){

@@ -31,11 +31,21 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/partition_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-26 15:25:30+09:00
 
 
-* see: <a href="https://mathtrain.jp/bunkatsu">https://mathtrain.jp/bunkatsu</a>
-* see: <a href="http://drken1215.hatenablog.com/entry/2018/01/16/222843">http://drken1215.hatenablog.com/entry/2018/01/16/222843</a>
+
+
+## Operations
+
+- $\mathtt{partition\_number(int\ n,\ int\ k)}$
+	- $P(0,0)$ ~ $P(n,k)$を列挙する。
+	- Time complexity $O(nk)$
+
+## References
+
+- [http://drken1215.hatenablog.com/entry/2018/01/16/222843](http://drken1215.hatenablog.com/entry/2018/01/16/222843)
+- [https://mathtrain.jp/bunkatsu](https://mathtrain.jp/bunkatsu)
 
 
 ## Verified with
@@ -53,9 +63,7 @@ layout: default
 
 /**
  * @title K個以下への分割数の列挙
- * @see https://mathtrain.jp/bunkatsu
- * @see http://drken1215.hatenablog.com/entry/2018/01/16/222843
- * @note 自然数nをk個以下の1以上の整数に分割する方法。
+ * @docs partition_number.md
  */
 template <typename T>
 auto partition_number(int n, int k){
@@ -83,9 +91,7 @@ auto partition_number(int n, int k){
 
 /**
  * @title K個以下への分割数の列挙
- * @see https://mathtrain.jp/bunkatsu
- * @see http://drken1215.hatenablog.com/entry/2018/01/16/222843
- * @note 自然数nをk個以下の1以上の整数に分割する方法。
+ * @docs partition_number.md
  */
 template <typename T>
 auto partition_number(int n, int k){

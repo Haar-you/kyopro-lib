@@ -31,10 +31,20 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/partition_number_n.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-26 15:25:30+09:00
 
 
-* see: <a href="https://judge.yosupo.jp/submission/1223">https://judge.yosupo.jp/submission/1223</a>
+
+
+## Operations
+
+- $\mathtt{partition\_number(int\ n)}$
+	- $P(0)$ ~ $P(n)$を列挙する。
+	- Time complexity $O(n\sqrt{n})$
+
+## Problems
+
+- [Partition Function](https://judge.yosupo.jp/problem/partition_function)
 
 
 ## Verified with
@@ -53,8 +63,7 @@ layout: default
 
 /**
  * @title 分割数の列挙
- * @see https://judge.yosupo.jp/submission/1223
- * @attention time-complexity O(N√N)
+ * @docs partition_number_n.md
  */
 template <typename T>
 auto partition_number(int N){
@@ -89,8 +98,7 @@ auto partition_number(int N){
 
 /**
  * @title 分割数の列挙
- * @see https://judge.yosupo.jp/submission/1223
- * @attention time-complexity O(N√N)
+ * @docs partition_number_n.md
  */
 template <typename T>
 auto partition_number(int N){
