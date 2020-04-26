@@ -3,8 +3,7 @@
 
 /**
  * @title 第2種Stirling数
- * @note n個の区別するボールをk個の区別しない箱に分配する(但し、すべての箱には1つ以上のボールがある)ような方法の総数。
- * @attention O(k log n)
+ * @docs stirling_number.md
  */
 template <typename T>
 T Combinatorics<T>::stirling_number(int64_t n, int64_t k){

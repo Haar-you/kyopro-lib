@@ -3,9 +3,7 @@
 
 /**
  * @title Montmort数
- * @see https://atcoder.jp/contests/arc009/tasks/arc009_3
- * @note 完全順列,撹乱順列の個数
- * @note 1..nの順列を並び変えた時にどの要素も元の要素と異なるような並び替えの総数。
+ * @docs montmort_number.md
  */
 template <typename T>
 auto montmort_number(int n){

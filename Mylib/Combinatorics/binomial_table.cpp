@@ -3,10 +3,11 @@
 
 /**
  * @title 二項係数の列挙
+ * @docs binomial_table.md
  * @note 除算を行わないので、MODが素数である必要がない。
  */
 template <typename T>
-auto binomial_pascal(int n, int k){
+auto binomial_table(int n, int k){
   std::vector<std::vector<T>> ret(n+1, std::vector<T>(k+1));
   ret[0][0] = 1;
   

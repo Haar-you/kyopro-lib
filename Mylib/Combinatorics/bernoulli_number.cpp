@@ -4,7 +4,7 @@
 
 /**
  * @title Bernoulli数
- * @attention O(n^2 logn)
+ * @docs bernoulli_number.md
  */
 template <typename T>
 std::vector<T> Combinatorics<T>::bernoulli_number(int64_t n){

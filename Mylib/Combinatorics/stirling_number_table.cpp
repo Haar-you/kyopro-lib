@@ -3,7 +3,7 @@
 
 /**
  * @title 第2種Stirling数の列挙
- * @attention time complexity O(N^2)
+ * @docs stirling_number_table.md 
  */
 template <typename T>
 auto stirling_number_table(int n){

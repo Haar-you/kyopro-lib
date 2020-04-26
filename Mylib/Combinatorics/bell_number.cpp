@@ -6,8 +6,7 @@
 
 /**
  * @title Bell数
- * @note n個の区別するボールをk個の区別しない箱に分配するような方法の総数。
- * @attention O(min(k, n) log n)
+ * @docs bell_number.md
  */
 template <typename T>
 T Combinatorics<T>::bell_number(int64_t n, int64_t k){

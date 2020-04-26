@@ -3,7 +3,7 @@
 
 /**
  * @title Bell数の列挙
- * @attention time complexity O(N^2)
+ * @docs bell_number_table.md
  */
 template <typename T>
 auto bell_number_table(int n){
