@@ -31,9 +31,30 @@ layout: default
 
 * category: <a href="../../../../index.html#51d0b2ed49c1a9da73d4d3864cf91f26">Mylib/DataStructure/RangeTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/RangeTree/range_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 06:18:07+09:00
+    - Last commit date: 2020-04-27 20:58:13+09:00
 
 
+
+
+## Operations
+
+- `add(int x, int y)`
+	- 点`(x, y)`を追加する。
+- `build()`
+	- `RangeTree`を構築する。
+	- Time complexity $O(N \log N)$
+- `get(int sx, int sy, int tx, int ty)`
+	- `[sx, tx), [sy, ty)`内の点を列挙する。
+	- Time complexity $O(\log^2 N + K)$
+
+## Requirements
+
+- `build`は唯一回だけ呼び出される。
+- 必ず`add`, `build`, `get`の順で実行する。
+
+## Problems
+
+- [AOJ DSL_2_C Range Search (kD Tree)](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_C)
 
 
 ## Verified with
@@ -52,6 +73,9 @@ layout: default
 #include <algorithm>
 #include <iterator>
 
+/**
+ * @docs range_tree.md
+ */
 class RangeTree{
   int N = 0;
   std::vector<int64_t> xs, ys;
@@ -69,9 +93,6 @@ public:
     ys.push_back(y);
   }
 
-  /**
-   * @attention time complexity O(N log N)
-   */
   void build(){
     c_xs = xs;
     std::sort(c_xs.begin(), c_xs.end());
@@ -100,7 +121,6 @@ public:
   }
 
   /**
-   * @attention time complexity O(log^2 N + K)
    * @attention [sx, tx), [sy, ty)
    */
   std::vector<std::pair<int64_t, int64_t>> get(int64_t sx, int64_t sy, int64_t tx, int64_t ty) const {
@@ -161,6 +181,9 @@ public:
 #include <algorithm>
 #include <iterator>
 
+/**
+ * @docs range_tree.md
+ */
 class RangeTree{
   int N = 0;
   std::vector<int64_t> xs, ys;
@@ -178,9 +201,6 @@ public:
     ys.push_back(y);
   }
 
-  /**
-   * @attention time complexity O(N log N)
-   */
   void build(){
     c_xs = xs;
     std::sort(c_xs.begin(), c_xs.end());
@@ -209,7 +229,6 @@ public:
   }
 
   /**
-   * @attention time complexity O(log^2 N + K)
    * @attention [sx, tx), [sy, ty)
    */
   std::vector<std::pair<int64_t, int64_t>> get(int64_t sx, int64_t sy, int64_t tx, int64_t ty) const {

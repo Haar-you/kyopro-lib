@@ -25,18 +25,22 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 重み付きunionfind
+# :heavy_check_mark: 重み付きUnionFind
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3ff74e8366c88d06b530f361450b1117">Mylib/DataStructure/UnionFind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/UnionFind/weighted_unionfind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-27 20:58:13+09:00
 
 
-* see: <a href="https://atcoder.jp/contests/abc087/submissions/6544778">https://atcoder.jp/contests/abc087/submissions/6544778</a>
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1330">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1330</a>
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B</a>
+
+
+## Problems
+
+- [ABC 087 D - People on a Line](https://atcoder.jp/contests/abc087/tasks/arc090_b)
+- [AOJ 1330 Never Wait for Weights](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1330)
+- [AOJ DSL_1_B Weighted Union Find Trees](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B)
 
 
 ## Verified with
@@ -54,10 +58,8 @@ layout: default
 #include <numeric>
 
 /**
- * @title 重み付きunionfind
- * @see https://atcoder.jp/contests/abc087/submissions/6544778
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1330
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B
+ * @title 重み付きUnionFind
+ * @docs weighted_unionfind.md
  */
 
 template <typename T> class WeightedUnionFind{
@@ -113,10 +115,8 @@ public:
 #include <numeric>
 
 /**
- * @title 重み付きunionfind
- * @see https://atcoder.jp/contests/abc087/submissions/6544778
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1330
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B
+ * @title 重み付きUnionFind
+ * @docs weighted_unionfind.md
  */
 
 template <typename T> class WeightedUnionFind{

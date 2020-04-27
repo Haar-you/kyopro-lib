@@ -31,9 +31,23 @@ layout: default
 
 * category: <a href="../../../../index.html#9f519a6857abe7364ea5fbe97ba369aa">Mylib/DataStructure/SparseTable</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SparseTable/sparse_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-04-27 20:58:13+09:00
 
 
+
+
+## Operations
+
+- `SparseTable(v)`
+	- Time complexity $O(|\mathtt{v}| \log |\mathtt{v}|)$
+- `get(int s, int t)`
+	- `[s, t)`を`Semilattice::op`でfoldする。
+	- Time complexity $O(1)$
+
+## Requirements
+
+- `Semilattice`は冪等性・可換性・結合性を満たす`op`を持つ。
+	- `max`, `min`, `gcd`, `lcm`, `and`, `or`など
 
 
 ## Verified with
@@ -53,6 +67,7 @@ layout: default
 
 /**
  * @title Sparse table
+ * @docs sparse_table.md
  */
 template <typename Semilattice>
 class SparseTable{
@@ -116,6 +131,7 @@ public:
 
 /**
  * @title Sparse table
+ * @docs sparse_table.md
  */
 template <typename Semilattice>
 class SparseTable{

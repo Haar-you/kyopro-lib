@@ -25,17 +25,37 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 部分永続Unionfind
+# :warning: 部分永続UnionFind
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3ff74e8366c88d06b530f361450b1117">Mylib/DataStructure/UnionFind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/UnionFind/partially_persistent_unionfind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-04-27 20:58:13+09:00
 
 
-* see: <a href="https://atcoder.jp/contests/code-thanks-festival-2017-open/submissions/7720761">https://atcoder.jp/contests/code-thanks-festival-2017-open/submissions/7720761</a>
-* see: <a href="https://atcoder.jp/contests/agc002/submissions/7720745">https://atcoder.jp/contests/agc002/submissions/7720745</a>
+
+
+## Operations
+
+- `PartiallyPersistentUnionFind(N)`
+- `get_root(int i, int t)`
+	- 時刻`t`での`i`の属する連結成分のrootを返す。
+- `is_same(int u, int v, int t)`
+	- 時刻`t`での`u`と`v`が同じ連結成分に属するかを判定する。
+- `size(int u, int t)`
+	- 時刻`t`での`u`が属する連結成分の大きさを返す。
+- `merge(int u, int v)`
+	- 最新の状態で`u`と`v`を連結する。
+
+## Problems
+
+- [CODE THANKS FESTIVAL 2017 H - Union Sets](https://atcoder.jp/contests/code-thanks-festival-2017-open/tasks/code_thanks_festival_2017_h)
+- [AGC 002 D - Stamp Rally](https://atcoder.jp/contests/agc002/tasks/agc002_d)
+
+## References
+
+- [https://camypaper.bitbucket.io/2016/12/18/adc2016/](https://camypaper.bitbucket.io/2016/12/18/adc2016/)
 
 
 ## Code
@@ -51,9 +71,8 @@ layout: default
 #include <numeric>
 
 /**
- * @title 部分永続Unionfind
- * @see https://atcoder.jp/contests/code-thanks-festival-2017-open/submissions/7720761
- * @see https://atcoder.jp/contests/agc002/submissions/7720745
+ * @title 部分永続UnionFind
+ * @docs partially_persistent_unionfind.md
  */
 class PartiallyPersistentUnionFind{
   int N;
@@ -91,7 +110,7 @@ public:
     v = get_root(v,T);
     ++T;
 
-    if(u==v) return;
+    if(u == v) return;
 
     int s = size(u,T-1) + size(v,T-1);
     
@@ -122,9 +141,8 @@ public:
 #include <numeric>
 
 /**
- * @title 部分永続Unionfind
- * @see https://atcoder.jp/contests/code-thanks-festival-2017-open/submissions/7720761
- * @see https://atcoder.jp/contests/agc002/submissions/7720745
+ * @title 部分永続UnionFind
+ * @docs partially_persistent_unionfind.md
  */
 class PartiallyPersistentUnionFind{
   int N;
@@ -162,7 +180,7 @@ public:
     v = get_root(v,T);
     ++T;
 
-    if(u==v) return;
+    if(u == v) return;
 
     int s = size(u,T-1) + size(v,T-1);
     

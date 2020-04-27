@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#5aa16257c29c51dffa0b4e5427dcc272">test/yosupo-judge/unionfind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/unionfind/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-27 20:58:13+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/unionfind">https://judge.yosupo.jp/problem/unionfind</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">unionfind</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">UnionFind</a>
 
 
 ## Code
@@ -88,7 +88,7 @@ int main(){
 #include <numeric>
 
 /**
- * @title unionfind
+ * @title UnionFind
  */
 class UnionFind{
   std::vector<int> parent, depth, size;

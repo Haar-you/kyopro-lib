@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#5680c9d4a5622c4318d3dde130a2c657">test/yosupo-judge/staticrmq</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/staticrmq/main.sparse_table.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-07 19:24:13+09:00
+    - Last commit date: 2020-04-27 20:58:13+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/staticrmq">https://judge.yosupo.jp/problem/staticrmq</a>
@@ -94,6 +94,7 @@ int main(){
 
 /**
  * @title Sparse table
+ * @docs sparse_table.md
  */
 template <typename Semilattice>
 class SparseTable{

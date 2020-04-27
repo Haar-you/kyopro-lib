@@ -25,30 +25,22 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 永続配列
+# :heavy_check_mark: test/yosupo-judge/persistent_unionfind/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#0d7e284bb2256ddef55e56b25bfaf3f1">Mylib/DataStructure/Array</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Array/persistent_array.cpp">View this file on GitHub</a>
+* category: <a href="../../../../index.html#f0d4a2f821c524efe4216afab062275c">test/yosupo-judge/persistent_unionfind</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/persistent_unionfind/main.test.cpp">View this file on GitHub</a>
     - Last commit date: 2020-04-27 20:58:13+09:00
 
 
+* see: <a href="https://judge.yosupo.jp/problem/persistent_unionfind">https://judge.yosupo.jp/problem/persistent_unionfind</a>
 
 
-## Problems
+## Depends on
 
-- [Codeforces Round #368 (Div. 2) D. Persistent Bookcase](https://codeforces.com/contest/707/problem/D)
-
-
-## Required by
-
-* :heavy_check_mark: <a href="../UnionFind/persistent_unionfind.cpp.html">永続UnionFind</a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/persistent_unionfind/main.test.cpp.html">test/yosupo-judge/persistent_unionfind/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/Array/persistent_array.cpp.html">永続配列</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/persistent_unionfind.cpp.html">永続UnionFind</a>
 
 
 ## Code
@@ -56,149 +48,36 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#pragma once
-#include <memory>
+#define PROBLEM "https://judge.yosupo.jp/problem/persistent_unionfind"
+
+#include <iostream>
 #include <vector>
+#include "Mylib/DataStructure/UnionFind/persistent_unionfind.cpp"
 
-/**
- * @title 永続配列
- * @docs persistent_array.md
- */
-template <typename T>
-class PersistentArray{
-  struct node{
-    bool is_terminal;
-    int size = 1;
-    node *left = nullptr, *right = nullptr;
-    std::unique_ptr<T> value;
+int main(){
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N, Q; std::cin >> N >> Q;
 
-    node(): is_terminal(false){}
-    node(T v): is_terminal(true), value(new T(v)){}
-  };
+  std::vector<PersistentUnionFind> G(Q+1);
 
-  size_t size;
-  int depth;
+  G[0] = PersistentUnionFind(N);
 
-  node* root = nullptr;
+  for(int i = 1; i <= Q; ++i){
+    int t; std::cin >> t;
+    int k, u, v; std::cin >> k >> u >> v;
+    ++k;
 
-  int get_size(node *t) const {
-    return !t ? 0 : t->size;
-  }
-
-  node* init(int s, int d){
-    if(s == 0) return nullptr;
-    if(d == depth){
-      return new node(T());
+    if(t == 0){
+      G[i] = G[k].merge(u, v);
     }else{
-      node *t = new node();
-      t->left = init(s/2, d+1);
-      t->right = init(s-s/2, d+1);
-      t->size = get_size(t->left) + get_size(t->right);
-      return t;
+      std::cout << G[k].is_same(u, v) << "\n";
     }
   }
 
-  void apply_init(node *t, const std::vector<T> &ret, int &i) {
-    if(!t) return;
-
-    if(t->is_terminal){
-      *(t->value) = ret[i];
-      ++i;
-      return;
-    }
-    
-    apply_init(t->left, ret, i);
-    apply_init(t->right, ret, i);
-  }
-  
-  PersistentArray(node *root): root(root){}
-
-  void calc_depth(int size){
-    depth = 1;
-    while((int)size > (1<<depth)) depth += 1;
-    depth += 1;
-  }
-
-public:
-  PersistentArray(){}
-  PersistentArray(size_t size): size(size){
-    calc_depth(size);
-    root = init(size, 1);
-  }
-  
-  PersistentArray(const std::vector<T> &v): size(v.size()){
-    calc_depth(size);
-    root = init(size, 1);
-
-    int i = 0;
-    apply_init(root, v, i);
-  }
-
-  PersistentArray(const PersistentArray &v){
-    this->root = v.root;
-    this->size = v.size;
-    this->depth = v.depth;
-  }
-  
-protected:
-  T get(node *t, int i) const {
-    if(t->is_terminal) return *(t->value);
-
-    int k = get_size(t->left);
-    if(i < k) return get(t->left, i);
-    else return get(t->right, i-k);
-  }
-  
-public:
-  T get(int i) const {
-    return get(root, i);
-  }
-
-protected:
-  node* update(node *prev, int i, const T &val) const {
-    if(prev->is_terminal) return new node(val);
-
-    int k = get_size(prev->left);
-
-    node *t = new node();
-    if(i < k){
-      t->right = prev->right;
-      t->left = update(prev->left, i, val);
-      t->size = get_size(t->right) + get_size(t->left);
-    }else{
-      t->left = prev->left;
-      t->right = update(prev->right, i-k, val);
-      t->size = get_size(t->right) + get_size(t->left);
-    }
-    return t;
-  }
-
-public:
-  PersistentArray update(int i, const T &val) const {
-    node *ret = update(root, i, val);
-    return PersistentArray(ret);
-  }
-  
-protected:
-  void traverse(node *t, std::vector<T> &ret) const {
-    if(!t) return;
-
-    if(t->is_terminal){
-      ret.push_back(*(t->value));
-      return;
-    }
-
-    traverse(t->left, ret);
-    traverse(t->right, ret);
-  }
-  
-public:
-  std::vector<T> traverse() const {
-    std::vector<T> ret;
-    traverse(root, ret);
-    return ret;
-  }
-};
+  return 0;
+}
 
 ```
 {% endraw %}
@@ -206,9 +85,14 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
+#line 1 "test/yosupo-judge/persistent_unionfind/main.test.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/persistent_unionfind"
+
+#include <iostream>
+#include <vector>
 #line 2 "Mylib/DataStructure/Array/persistent_array.cpp"
 #include <memory>
-#include <vector>
+#line 4 "Mylib/DataStructure/Array/persistent_array.cpp"
 
 /**
  * @title 永続配列
@@ -349,6 +233,81 @@ public:
     return ret;
   }
 };
+#line 4 "Mylib/DataStructure/UnionFind/persistent_unionfind.cpp"
+
+/**
+ * @title 永続UnionFind
+ * @docs persistent_unionfind.md
+ */
+class PersistentUnionFind{
+  PersistentArray<int> par;
+
+  PersistentUnionFind(PersistentArray<int> par): par(par){}
+
+public:
+  PersistentUnionFind(){}
+  PersistentUnionFind(int n): par(PersistentArray<int>(std::vector<int>(n, -1))){}
+  
+  int get_root(int i) const {
+    int p = par.get(i);
+    if(p < 0) return i;
+    return get_root(p);
+  }
+  
+  bool is_same(int i, int j) const {
+    return get_root(i) == get_root(j);
+  }
+
+  int size(int i) const {
+    return -par.get(get_root(i));
+  }
+  
+  PersistentUnionFind merge(int i, int j) const {
+    int ri = get_root(i), rj = get_root(j);
+    if(ri == rj) return *this;
+
+    int size_i = -par.get(ri);
+    int size_j = -par.get(rj);
+
+    PersistentArray<int> ret = par;
+
+    if(size_i > size_j){
+      ret = ret.update(ri, -(size_i + size_j));
+      ret = ret.update(rj, ri);
+    }else{
+      ret = ret.update(rj, -(size_i + size_j));
+      ret = ret.update(ri, rj);
+    }
+    
+    return PersistentUnionFind(ret);
+  }
+};
+#line 6 "test/yosupo-judge/persistent_unionfind/main.test.cpp"
+
+int main(){
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N, Q; std::cin >> N >> Q;
+
+  std::vector<PersistentUnionFind> G(Q+1);
+
+  G[0] = PersistentUnionFind(N);
+
+  for(int i = 1; i <= Q; ++i){
+    int t; std::cin >> t;
+    int k, u, v; std::cin >> k >> u >> v;
+    ++k;
+
+    if(t == 0){
+      G[i] = G[k].merge(u, v);
+    }else{
+      std::cout << G[k].is_same(u, v) << "\n";
+    }
+  }
+
+  return 0;
+}
 
 ```
 {% endraw %}

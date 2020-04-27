@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#3b87eee7aef75da88610c966a8da844f">Mylib/Graph/BipartiteGraph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-27 20:58:13+09:00
 
 
 * see: <a href="https://atcoder.jp/contests/code-festival-2017-qualb/submissions/4508202">https://atcoder.jp/contests/code-festival-2017-qualb/submissions/4508202</a>
@@ -40,7 +40,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">unionfind</a>
+* :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">UnionFind</a>
 
 
 ## Code
@@ -93,7 +93,7 @@ public:
 #include <numeric>
 
 /**
- * @title unionfind
+ * @title UnionFind
  */
 class UnionFind{
   std::vector<int> parent, depth, size;

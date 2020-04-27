@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#2bc6b10df76ee628f0328e9237d1fcac">test/aoj/DSL_2_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 06:18:07+09:00
+    - Last commit date: 2020-04-27 20:58:13+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_C</a>
@@ -105,6 +105,9 @@ int main(){
 #include <algorithm>
 #include <iterator>
 
+/**
+ * @docs range_tree.md
+ */
 class RangeTree{
   int N = 0;
   std::vector<int64_t> xs, ys;
@@ -122,9 +125,6 @@ public:
     ys.push_back(y);
   }
 
-  /**
-   * @attention time complexity O(N log N)
-   */
   void build(){
     c_xs = xs;
     std::sort(c_xs.begin(), c_xs.end());
@@ -153,7 +153,6 @@ public:
   }
 
   /**
-   * @attention time complexity O(log^2 N + K)
    * @attention [sx, tx), [sy, ty)
    */
   std::vector<std::pair<int64_t, int64_t>> get(int64_t sx, int64_t sy, int64_t tx, int64_t ty) const {

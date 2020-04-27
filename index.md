@@ -204,7 +204,7 @@ layout: default
 
 ### Mylib/DataStructure/Array
 
-* :warning: <a href="library/Mylib/DataStructure/Array/persistent_array.cpp.html">永続配列</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/Array/persistent_array.cpp.html">永続配列</a>
 
 
 <div id="2f58e2c328298747e7665b6f6b5791ad"></div>
@@ -325,9 +325,10 @@ layout: default
 
 ### Mylib/DataStructure/UnionFind
 
-* :warning: <a href="library/Mylib/DataStructure/UnionFind/partially_persistent_unionfind.cpp.html">部分永続Unionfind</a>
-* :heavy_check_mark: <a href="library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">unionfind</a>
-* :heavy_check_mark: <a href="library/Mylib/DataStructure/UnionFind/weighted_unionfind.cpp.html">重み付きunionfind</a>
+* :warning: <a href="library/Mylib/DataStructure/UnionFind/partially_persistent_unionfind.cpp.html">部分永続UnionFind</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/UnionFind/persistent_unionfind.cpp.html">永続UnionFind</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">UnionFind</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/UnionFind/weighted_unionfind.cpp.html">重み付きUnionFind</a>
 
 
 <div id="def74daadbbb39361c0a507a6463f6db"></div>
@@ -838,6 +839,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/number_of_substrings/main.test.cpp.html">test/yosupo-judge/number_of_substrings/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/partition_function/main.test.cpp.html">test/yosupo-judge/partition_function/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/persistent_queue/main.test.cpp.html">test/yosupo-judge/persistent_queue/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/persistent_unionfind/main.test.cpp.html">test/yosupo-judge/persistent_unionfind/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
