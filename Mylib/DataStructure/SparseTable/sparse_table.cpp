@@ -5,6 +5,7 @@
 
 /**
  * @title Sparse table
+ * @docs sparse_table.md
  */
 template <typename Semilattice>
 class SparseTable{

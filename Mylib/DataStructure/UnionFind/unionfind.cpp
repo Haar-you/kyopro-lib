@@ -3,7 +3,7 @@
 #include <numeric>
 
 /**
- * @title unionfind
+ * @title UnionFind
  */
 class UnionFind{
   std::vector<int> parent, depth, size;

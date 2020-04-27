@@ -4,6 +4,9 @@
 #include <algorithm>
 #include <iterator>
 
+/**
+ * @docs range_tree.md
+ */
 class RangeTree{
   int N = 0;
   std::vector<int64_t> xs, ys;
@@ -21,9 +24,6 @@ public:
     ys.push_back(y);
   }
 
-  /**
-   * @attention time complexity O(N log N)
-   */
   void build(){
     c_xs = xs;
     std::sort(c_xs.begin(), c_xs.end());
@@ -52,7 +52,6 @@ public:
   }
 
   /**
-   * @attention time complexity O(log^2 N + K)
    * @attention [sx, tx), [sy, ty)
    */
   std::vector<std::pair<int64_t, int64_t>> get(int64_t sx, int64_t sy, int64_t tx, int64_t ty) const {

@@ -3,10 +3,8 @@
 #include <numeric>
 
 /**
- * @title 重み付きunionfind
- * @see https://atcoder.jp/contests/abc087/submissions/6544778
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1330
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B
+ * @title 重み付きUnionFind
+ * @docs weighted_unionfind.md
  */
 
 template <typename T> class WeightedUnionFind{

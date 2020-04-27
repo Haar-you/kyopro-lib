@@ -6,9 +6,8 @@
 #include <numeric>
 
 /**
- * @title 部分永続Unionfind
- * @see https://atcoder.jp/contests/code-thanks-festival-2017-open/submissions/7720761
- * @see https://atcoder.jp/contests/agc002/submissions/7720745
+ * @title 部分永続UnionFind
+ * @docs partially_persistent_unionfind.md
  */
 class PartiallyPersistentUnionFind{
   int N;
@@ -46,7 +45,7 @@ public:
     v = get_root(v,T);
     ++T;
 
-    if(u==v) return;
+    if(u == v) return;
 
     int s = size(u,T-1) + size(v,T-1);
     

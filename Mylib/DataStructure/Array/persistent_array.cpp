@@ -4,7 +4,7 @@
 
 /**
  * @title 永続配列
- * @see https://codeforces.com/contest/707/problem/D
+ * @docs persistent_array.md
  */
 template <typename T>
 class PersistentArray{
@@ -62,6 +62,7 @@ class PersistentArray{
   }
 
 public:
+  PersistentArray(){}
   PersistentArray(size_t size): size(size){
     calc_depth(size);
     root = init(size, 1);
@@ -73,6 +74,12 @@ public:
 
     int i = 0;
     apply_init(root, v, i);
+  }
+
+  PersistentArray(const PersistentArray &v){
+    this->root = v.root;
+    this->size = v.size;
+    this->depth = v.depth;
   }
   
 protected:
@@ -90,7 +97,7 @@ public:
   }
 
 protected:
-  node* update(node *prev, int i, const T &val){
+  node* update(node *prev, int i, const T &val) const {
     if(prev->is_terminal) return new node(val);
 
     int k = get_size(prev->left);
@@ -109,7 +116,7 @@ protected:
   }
 
 public:
-  PersistentArray update(int i, const T &val){
+  PersistentArray update(int i, const T &val) const {
     node *ret = update(root, i, val);
     return PersistentArray(ret);
   }
