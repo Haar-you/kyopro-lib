@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Dynamic/dynamic_segment_tree.cpp.html">動的セグメント木</a>
 
 

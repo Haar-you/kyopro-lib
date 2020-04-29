@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#cea1c4a75215bab49202f95330eeee2b">test/aoj/DPL_2_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_2_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/chinese_postman_problem.cpp.html">中国人郵便配達問題</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -112,11 +112,10 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title 中国人郵便配達問題
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B
- * @attention 時間計算量 O(n^2 2^n)
+ * @docs chinese_postman_problem.cpp
  */
 template <typename T> T chinese_postman_problem(const Graph<T> &g){
-  int n = g.size();
+  const int n = g.size();
   T ret = 0;
 
   // 頂点間の最短距離を求める。
@@ -148,7 +147,7 @@ template <typename T> T chinese_postman_problem(const Graph<T> &g){
     if(g[i].size() % 2) odd.push_back(i);
   }
 
-  int m = odd.size();
+  const int m = odd.size();
 
   // 奇数次数の頂点間の最小マッチングを求める。
   std::vector<T> dp(1<<m, -1);

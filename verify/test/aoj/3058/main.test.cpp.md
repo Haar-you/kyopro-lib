@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7e98db48dc3a2f2f4bf10921a7d3d1f5">test/aoj/3058</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3058/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-07 13:24:38+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3058">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3058</a>
@@ -110,13 +110,7 @@ int main(){
 
 /*
  * @title Project Selection Problem
- * @see https://kimiyuki.net/blog/2017/12/05/minimum-cut-and-project-selection-problem/
- * @see https://ei1333.github.io/luzhiled/snippets/memo/project-selection.html
- * @see https://ferin-tech.hatenablog.com/entry/2019/10/28/%E7%87%83%E3%82%84%E3%81%99%E5%9F%8B%E3%82%81%E3%82%8B%E5%95%8F%E9%A1%8C
- 
- * @see https://atcoder.jp/contests/arc085/submissions/8399754
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3058
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2903
+ * @docs project_selection_problem.md
  */
 template <typename T, typename Flow>
 class ProjectSelectionProblem{
@@ -131,51 +125,65 @@ public:
 
   void penalty_if_red(int i, T c){
     assert(c >= 0);
+    assert(0 <= i and i < N);
     graph[i].emplace_back(t, c);
   }
 
   void gain_if_red(int i, T c){
     assert(c >= 0);
+    assert(0 <= i and i < N);
     default_gain += c;
     penalty_if_blue(i, c);
   }
   
   void penalty_if_blue(int i, T c){
     assert(c >= 0);
+    assert(0 <= i and i < N);
     graph[s].emplace_back(i, c);
   }
 
   void gain_if_blue(int i, T c){
     assert(c >= 0);
+    assert(0 <= i and i < N);
     default_gain += c;
     penalty_if_red(i, c);
   }
 
   void penalty_if_red_blue(int i, int j, T c){
     assert(c >= 0);
+    assert(0 <= i and i < N);
+    assert(0 <= j and j < N);
     graph[i].emplace_back(j, c);
   }
 
   void penalty_if_different(int i, int j, T c){
     assert(c >= 0);
+    assert(0 <= i and i < N);
+    assert(0 <= j and j < N);
     graph[i].emplace_back(j, c);
     graph[j].emplace_back(i, c);
   }
 
   void must_be_red(int i){
+    assert(0 <= i and i < N);
     penalty_if_blue(i, INF);
   }
 
   void must_be_blue(int i){
+    assert(0 <= i and i < N);
     penalty_if_red(i, INF);
   }
 
   void if_red_then_must_be_red(int i, int j){
+    assert(0 <= i and i < N);
+    assert(0 <= j and j < N);
     penalty_if_red_blue(i, j, INF);
   }
 
   void gain_if_red_red(int i, int j, T c){
     assert(c >= 0);
+    assert(0 <= i and i < N);
+    assert(0 <= j and j < N);
     default_gain += c;
     int w = graph.size();
     graph.push_back({});
@@ -187,6 +195,8 @@ public:
 
   void gain_if_blue_blue(int i, int j, T c){
     assert(c >= 0);
+    assert(0 <= i and i < N);
+    assert(0 <= j and j < N);
     default_gain += c;
     int w = graph.size();
     graph.push_back({});

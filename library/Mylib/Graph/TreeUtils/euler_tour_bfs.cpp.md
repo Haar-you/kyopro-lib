@@ -25,26 +25,56 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: BFS Euler tour
+# :x: BFS Euler tour
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/euler_tour_bfs.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
-* see: <a href="https://yukicoder.me/submissions/390077">https://yukicoder.me/submissions/390077</a>
+
+
+## Operations
+
+- `EulerTourBFS(tree, int root)`
+- `query_children(int i, int d, f)`
+	- `i`の`d`個下の子孫に`f`を適用する。
+- `query_at(int i, f)`
+	- `query_children(i, 0, f)`と同等。
+- `get_parent`
+	- `i`の親を返す。
+- `get_ancestor(int i, int k)`
+	- `i`の`k`個遡った祖先を返す。
+	- `get_ancestor(i, 0) = i`
+	- `get_ancestor(i, 1) = get_parent(i)`
+	- Time complexity $O(k)$
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [yukicoder No.899 γatheree](https://yukicoder.me/problems/no/899)
+
+## References
+
+- [https://niuez.hatenablog.com/entry/2019/10/05/002503](https://niuez.hatenablog.com/entry/2019/10/05/002503)
+- [https://niuez.github.io/2020/03/dfs_bfs_et/](https://niuez.github.io/2020/03/dfs_bfs_et/)
+
+
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
 
 
 ## Code
@@ -59,7 +89,7 @@ layout: default
 
 /**
  * @title BFS Euler tour
- * @see https://yukicoder.me/submissions/390077
+ * @docs euler_tour_bfs.md
  */
 template <typename T> struct EulerTourBFS{
   int N;
@@ -191,7 +221,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title BFS Euler tour
- * @see https://yukicoder.me/submissions/390077
+ * @docs euler_tour_bfs.md
  */
 template <typename T> struct EulerTourBFS{
   int N;

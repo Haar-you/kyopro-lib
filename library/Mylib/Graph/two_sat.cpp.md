@@ -31,19 +31,44 @@ layout: default
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/two_sat.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
-* see: <a href="https://yukicoder.me/problems/no/274 https://yukicoder.me/submissions/340917/source">https://yukicoder.me/problems/no/274 https://yukicoder.me/submissions/340917/source</a>
-* see: <a href="https://yukicoder.me/problems/no/470 https://yukicoder.me/submissions/383028/source">https://yukicoder.me/problems/no/470 https://yukicoder.me/submissions/383028/source</a>
-* see: <a href="https://atcoder.jp/contests/arc069/submissions/8830581">https://atcoder.jp/contests/arc069/submissions/8830581</a>
+
+
+## Operations
+
+- `TwoSat(int n)`
+- `add_if(int a, int b)`
+	- $a \rightarrow b$を導入する。
+- `add_or(int a, int b)`
+	- $a \lor b$を導入する。
+- `not_coexist(int a, int b)`
+	- $\lnot (a \land b)$を導入する。
+- `solve()`
+	- 与えられた論理式をすべて`True`にするような変数の真偽値の割り当てを返す。
+	- Time complexity $O(V + E)$
+
+## Requirements
+
+- `add_if`, `add_or`, `not_coexist`の引数は`[1, n]`または`[-n, -1]`を満たさなければならない。
+	- 正数`i`は$x_i$を、負数`-i`は$\lnot x_i$を表す。
+
+## Problems
+
+- [yukicoder No.274 The Wall](https://yukicoder.me/problems/no/274)
+- [yukicoder No.470 Inverse S+T Problem](https://yukicoder.me/problems/no/470)
+- [ARC 069 F - Flags](https://atcoder.jp/contests/arc069/tasks/arc069_d)
+
+## References
+
 
 
 ## Depends on
 
 * :heavy_check_mark: <a href="GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
 * :heavy_check_mark: <a href="TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
-* :heavy_check_mark: <a href="graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with
@@ -66,9 +91,7 @@ layout: default
 
 /**
  * @title 2-SAT
- * @see https://yukicoder.me/problems/no/274 https://yukicoder.me/submissions/340917/source
- * @see https://yukicoder.me/problems/no/470 https://yukicoder.me/submissions/383028/source
- * @see https://atcoder.jp/contests/arc069/submissions/8830581
+ * @docs two_sat.md
  */
 class TwoSat{
   const int n;
@@ -272,9 +295,7 @@ std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
 
 /**
  * @title 2-SAT
- * @see https://yukicoder.me/problems/no/274 https://yukicoder.me/submissions/340917/source
- * @see https://yukicoder.me/problems/no/470 https://yukicoder.me/submissions/383028/source
- * @see https://atcoder.jp/contests/arc069/submissions/8830581
+ * @docs two_sat.md
  */
 class TwoSat{
   const int n;

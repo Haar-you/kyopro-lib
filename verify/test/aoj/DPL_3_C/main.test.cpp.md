@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#acc0c5805d321988fbdcefb0f7160988">test/aoj/DPL_3_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_3_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_C</a>
@@ -83,7 +83,7 @@ int main(){
 
 /**
  * @title ヒストグラム中の最大面積長方形の面積
- * @attention time complexity O(|h|)
+ * @docs max_rectangle_in_histogram.md
  */
 template <typename T>
 T max_rectangle_in_histogram(const std::vector<T> &h){

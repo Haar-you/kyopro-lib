@@ -31,15 +31,33 @@ layout: default
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/travelling_salesman_problem.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A</a>
+
+
+## Operations
+
+- `travelling_salesman_problem(g, int src)`
+	- `src`始点の全頂点を丁度一度だけ通る最小閉路の距離を返す。
+	- Time complexity $O(n^2 2^n)$
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [AOJ DPL_2_A Traveling Salesman Problem](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A)
+
+## References
+
+- [https://ja.wikipedia.org/wiki/%E5%B7%A1%E5%9B%9E%E3%82%BB%E3%83%BC%E3%83%AB%E3%82%B9%E3%83%9E%E3%83%B3%E5%95%8F%E9%A1%8C](https://ja.wikipedia.org/wiki/%E5%B7%A1%E5%9B%9E%E3%82%BB%E3%83%BC%E3%83%AB%E3%82%B9%E3%83%9E%E3%83%B3%E5%95%8F%E9%A1%8C)
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with
@@ -60,8 +78,7 @@ layout: default
 
 /**
  * @title 巡回セールスマン問題
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A
- * @attention 時間計算量 O(n^2 2^n)
+ * @docs travelling_salesman_problem.md
  */
 template <typename Cost>
 std::optional<Cost> travelling_salesman_problem(const Graph<Cost> &g, int src){
@@ -138,8 +155,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title 巡回セールスマン問題
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A
- * @attention 時間計算量 O(n^2 2^n)
+ * @docs travelling_salesman_problem.md
  */
 template <typename Cost>
 std::optional<Cost> travelling_salesman_problem(const Graph<Cost> &g, int src){

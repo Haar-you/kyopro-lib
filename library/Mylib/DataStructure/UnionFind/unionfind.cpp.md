@@ -31,9 +31,24 @@ layout: default
 
 * category: <a href="../../../../index.html#3ff74e8366c88d06b530f361450b1117">Mylib/DataStructure/UnionFind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/UnionFind/unionfind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-27 20:58:13+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
+
+
+## Operations
+
+- `UnionFind(n)`
+- `get_root(int i)`
+	- `i`のrootを得る。
+- `is_same(int i, int j)`
+	- `i`と`j`が同じ連結成分かどうかを判定する。
+- `merge(int i, int j)`
+	- `i`と`j`を同じ連結成分にし、その連結成分のrootを返す。
+- `get_size(int i)`
+	- `i`の属する連結成分の大きさ。
+- `count_group()`
+	- 連結成分の個数を返す。
 
 
 ## Required by
@@ -61,6 +76,7 @@ layout: default
 
 /**
  * @title UnionFind
+ * @docs unionfind.md
  */
 class UnionFind{
   std::vector<int> parent, depth, size;
@@ -113,6 +129,7 @@ public:
 
 /**
  * @title UnionFind
+ * @docs unionfind.md
  */
 class UnionFind{
   std::vector<int> parent, depth, size;

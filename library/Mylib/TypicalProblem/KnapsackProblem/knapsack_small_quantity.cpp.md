@@ -31,8 +31,24 @@ layout: default
 
 * category: <a href="../../../../index.html#4bc951e5ca9130b2259fc85dc53eb972">Mylib/TypicalProblem/KnapsackProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/KnapsackProblem/knapsack_small_quantity.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 13:17:39+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
+
+
+
+## Operations
+
+- `knapsack_small_quantity(int N, Weight cap, Weight w[N], Value v[N])`
+	- 0-1ナップサック問題を解く。
+	- Time complexity $O(2^{N/2} N)$
+
+## Requirements
+
+## Problems
+
+- [AOJ DPL_1_H Huge Knapsack Problem](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_H)
+
+## References
 
 
 
@@ -54,10 +70,10 @@ layout: default
 
 /**
  * @title 個数の制約が小さい0-1ナップサック問題 (半分全列挙)
- * @attention 時間計算量 O(2^(N/2) log(2^(N/2)))
+ * @docs knapsack_small_quantity.md
  */
 template <typename Weight, typename Value>
-Value knapsack_small_quantity(int N, Weight W, const std::vector<Weight> &w, const std::vector<Value> &v){
+Value knapsack_small_quantity(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
   Value ret = 0;
 
   int p = N/2;
@@ -94,10 +110,10 @@ Value knapsack_small_quantity(int N, Weight W, const std::vector<Weight> &w, con
       }
     }
 
-    auto itr = a.upper_bound(std::max((Weight)0, W-weight));
+    auto itr = a.upper_bound(std::max((Weight)0, cap-weight));
     
     itr = std::prev(itr);
-    if(weight + itr->first <= W) ret = std::max(ret, value + itr->second);
+    if(weight + itr->first <= cap) ret = std::max(ret, value + itr->second);
   }
 
   return ret;
@@ -117,10 +133,10 @@ Value knapsack_small_quantity(int N, Weight W, const std::vector<Weight> &w, con
 
 /**
  * @title 個数の制約が小さい0-1ナップサック問題 (半分全列挙)
- * @attention 時間計算量 O(2^(N/2) log(2^(N/2)))
+ * @docs knapsack_small_quantity.md
  */
 template <typename Weight, typename Value>
-Value knapsack_small_quantity(int N, Weight W, const std::vector<Weight> &w, const std::vector<Value> &v){
+Value knapsack_small_quantity(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
   Value ret = 0;
 
   int p = N/2;
@@ -157,10 +173,10 @@ Value knapsack_small_quantity(int N, Weight W, const std::vector<Weight> &w, con
       }
     }
 
-    auto itr = a.upper_bound(std::max((Weight)0, W-weight));
+    auto itr = a.upper_bound(std::max((Weight)0, cap-weight));
     
     itr = std::prev(itr);
-    if(weight + itr->first <= W) ret = std::max(ret, value + itr->second);
+    if(weight + itr->first <= cap) ret = std::max(ret, value + itr->second);
   }
 
   return ret;

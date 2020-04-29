@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f1466abfa075f1547bf443d1976f4e75">test/aoj/2136</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2136/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-04-30 00:04:32+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136</a>
@@ -368,9 +368,7 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 
 /**
  * @title グラフ頂点彩色数
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1254
- * @attention 時間計算量 O(2^n log^2 n)
+ * @docs chromatic_number.md
  */
 int chromatic_number(const std::vector<std::vector<int>> &graph){
   const int mod = 1000000007;

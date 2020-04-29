@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#d7859a8f41cb711fe2876b3f2c82daaf">test/aoj/DPL_1_G</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_1_G/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G</a>
@@ -83,15 +83,15 @@ int main(){
 
 /**
  * @title 個数制限付きナップサック問題
- * @attention 時間計算量 O(NWlog(MaxM))
+ * @docs knapsack_limited.md
  */
 template <typename Weight, typename Value>
-Value knapsack_limited(int N, Weight W, const std::vector<Weight> &w, const std::vector<Value> &v, const std::vector<int> &m){
-  std::vector<Value> dp(W+1);
+Value knapsack_limited(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v, const std::vector<int> &m){
+  std::vector<Value> dp(cap+1);
 
   for(int i = 0; i < N; ++i){
     for(int64_t a = 1, x = m[i], k; k = std::min(x,a), x > 0; x -= k, a *= 2){
-      for(int j = W; j >= 0; --j){
+      for(int j = cap; j >= 0; --j){
         if(j-k*w[i] >= 0){
           dp[j] = std::max(dp[j], dp[j-k*w[i]] + (Weight)k*v[i]);
         }
@@ -99,7 +99,7 @@ Value knapsack_limited(int N, Weight W, const std::vector<Weight> &w, const std:
     }
   }
 
-  return dp[W];
+  return dp[cap];
 }
 #line 6 "test/aoj/DPL_1_G/main.test.cpp"
 

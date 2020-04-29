@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max_partial_sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/max_partial_sum_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
 
 
 ## Code

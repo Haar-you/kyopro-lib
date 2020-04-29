@@ -31,11 +31,26 @@ layout: default
 
 * category: <a href="../../../../index.html#f3e3957dafbf526c46359105e1a71d64">Mylib/Algorithm/Query</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Query/range_mode_query.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
-* see: <a href="https://www.spoj.com/problems/FREQ2/">https://www.spoj.com/problems/FREQ2/</a>
-* see: <a href="https://scrapbox.io/data-structures/Range_Mode_Query">https://scrapbox.io/data-structures/Range_Mode_Query</a>
+
+
+## Operations
+
+- `RangeModeQuery(a)`
+- `query(int l, int r)`
+	- `[l, r)`での最頻値とその頻度を返す。
+	- Time complexity $O(\sqrt{N})$
+
+## Problems
+
+- [SPOJ FREQ2](https://www.spoj.com/problems/FREQ2/)
+
+## References
+
+- [https://scrapbox.io/data-structures/Range_Mode_Query
+](https://scrapbox.io/data-structures/Range_Mode_Query)
 
 
 ## Code
@@ -50,8 +65,7 @@ layout: default
 
 /**
  * @title 区間最頻値クエリ
- * @see https://www.spoj.com/problems/FREQ2/
- * @see https://scrapbox.io/data-structures/Range_Mode_Query
+ * @docs range_mode_query.md
  */
 template <typename T>
 class RangeModeQuery{
@@ -112,7 +126,7 @@ public:
     }
   }
 
-  std::pair<int,T> query(int l, int r){ // [l, r)
+  std::pair<int, T> query(int l, int r){ // [l, r)
     std::pair<int, T> ret = std::make_pair(0, 0);
 
     int span_l = (l + block_size - 1) / block_size, span_r = r / block_size - 1;
@@ -174,8 +188,7 @@ public:
 
 /**
  * @title 区間最頻値クエリ
- * @see https://www.spoj.com/problems/FREQ2/
- * @see https://scrapbox.io/data-structures/Range_Mode_Query
+ * @docs range_mode_query.md
  */
 template <typename T>
 class RangeModeQuery{
@@ -236,7 +249,7 @@ public:
     }
   }
 
-  std::pair<int,T> query(int l, int r){ // [l, r)
+  std::pair<int, T> query(int l, int r){ // [l, r)
     std::pair<int, T> ret = std::make_pair(0, 0);
 
     int span_l = (l + block_size - 1) / block_size, span_r = r / block_size - 1;

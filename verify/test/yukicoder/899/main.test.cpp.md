@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/899/main.test.cpp
+# :x: test/yukicoder/899/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#dbd13c44c1e9ae40565e636bcb62bc45">test/yukicoder/899</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/899/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/899">https://yukicoder.me/problems/no/899</a>
@@ -39,12 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/update_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/update_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp.html">遅延セグメント木</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/euler_tour_bfs.cpp.html">BFS Euler tour</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/update_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/update_monoid.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp.html">遅延セグメント木</a>
+* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/euler_tour_bfs.cpp.html">BFS Euler tour</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -165,7 +165,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title BFS Euler tour
- * @see https://yukicoder.me/submissions/390077
+ * @docs euler_tour_bfs.md
  */
 template <typename T> struct EulerTourBFS{
   int N;

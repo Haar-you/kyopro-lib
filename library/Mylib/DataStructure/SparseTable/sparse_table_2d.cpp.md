@@ -31,9 +31,31 @@ layout: default
 
 * category: <a href="../../../../index.html#9f519a6857abe7364ea5fbe97ba369aa">Mylib/DataStructure/SparseTable</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SparseTable/sparse_table_2d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
+
+
+## Operations
+
+- `SparseTable2D(v[n][m])`
+	- Time complexity $O(nm\log n \log m)$
+- `get(int r1, int c1, int r2, int c2)`
+	- `[r1, r2), [c1, c2)`を`Semilattice::op`でfoldする。
+	- Time complexity $O(1)$
+
+## Requirements
+
+- `Semilattice`は冪等性・可換性・結合性を満たす`op`を持つ。
+	- `max`, `min`, `gcd`, `lcm`, `and`, `or`など
+
+## Problems
+
+- [Codeforces Round #619 (Div. 2) E. Nanosoft](https://codeforces.com/contest/1301/problem/E)
+
+## References
+
+- [https://codeforces.com/blog/entry/45485](https://codeforces.com/blog/entry/45485)
 
 
 ## Code
@@ -48,6 +70,7 @@ layout: default
 
 /**
  * @title Sparse table 2D
+ * @docs sparse_table_2d.md
  */
 template <typename Semilattice>
 class SparseTable2D{
@@ -119,6 +142,7 @@ public:
 
 /**
  * @title Sparse table 2D
+ * @docs sparse_table_2d.md
  */
 template <typename Semilattice>
 class SparseTable2D{

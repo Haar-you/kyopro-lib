@@ -31,11 +31,24 @@ layout: default
 
 * category: <a href="../../../../index.html#3b87eee7aef75da88610c966a8da844f">Mylib/Graph/BipartiteGraph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-27 20:58:13+09:00
+    - Last commit date: 2020-04-30 00:04:32+09:00
 
 
-* see: <a href="https://atcoder.jp/contests/code-festival-2017-qualb/submissions/4508202">https://atcoder.jp/contests/code-festival-2017-qualb/submissions/4508202</a>
-* see: <a href="https://atcoder.jp/contests/arc036/submissions/4199773">https://atcoder.jp/contests/arc036/submissions/4199773</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [CODE FESTIVAL 2017 qual B C - 3 Steps](https://atcoder.jp/contests/code-festival-2017-qualb/tasks/code_festival_2017_qualb_c)
+- [ARC 036 D - 偶数メートル](https://atcoder.jp/contests/arc036/tasks/arc036_d)
+
+## References
+
 
 
 ## Depends on
@@ -53,8 +66,7 @@ layout: default
 
 /**
  * @title Unionfindによる二部グラフ判定
- * @see https://atcoder.jp/contests/code-festival-2017-qualb/submissions/4508202
- * @see https://atcoder.jp/contests/arc036/submissions/4199773
+ * @docs construct_bipartite_graph.md
  */
 class BipartiteGraph{
   int n;
@@ -94,6 +106,7 @@ public:
 
 /**
  * @title UnionFind
+ * @docs unionfind.md
  */
 class UnionFind{
   std::vector<int> parent, depth, size;
@@ -137,8 +150,7 @@ public:
 
 /**
  * @title Unionfindによる二部グラフ判定
- * @see https://atcoder.jp/contests/code-festival-2017-qualb/submissions/4508202
- * @see https://atcoder.jp/contests/arc036/submissions/4199773
+ * @docs construct_bipartite_graph.md
  */
 class BipartiteGraph{
   int n;

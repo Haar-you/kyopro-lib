@@ -31,10 +31,24 @@ layout: default
 
 * category: <a href="../../../../index.html#4bc951e5ca9130b2259fc85dc53eb972">Mylib/TypicalProblem/KnapsackProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/KnapsackProblem/knapsack_small_weight.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
-* see: <a href="https://atcoder.jp/contests/dp/submissions/6394556">https://atcoder.jp/contests/dp/submissions/6394556</a>
+
+
+## Operations
+
+- `knapsack_small_weight(int N, Weight cap, Weight w[N], Value v[N])`
+	- 0-1ナップサック問題を解く。
+	- Time complexity $O(N * cap)$
+
+## Requirements
+
+## Problems
+
+- [EDPC D - Knapsack 1](https://atcoder.jp/contests/dp/tasks/dp_d)
+
+## References
 
 
 ## Verified with
@@ -53,8 +67,7 @@ layout: default
 
 /**
  * @title 重さの制約が小さい0-1ナップサック問題
- * @attention 時間計算量 O(NW)
- * @see https://atcoder.jp/contests/dp/submissions/6394556
+ * @docs knapsack_small_weight.md
  */
 template <typename Weight, typename Value>
 Value knapsack_small_weight(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
@@ -82,8 +95,7 @@ Value knapsack_small_weight(int N, Weight cap, const std::vector<Weight> &w, con
 
 /**
  * @title 重さの制約が小さい0-1ナップサック問題
- * @attention 時間計算量 O(NW)
- * @see https://atcoder.jp/contests/dp/submissions/6394556
+ * @docs knapsack_small_weight.md
  */
 template <typename Weight, typename Value>
 Value knapsack_small_weight(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){

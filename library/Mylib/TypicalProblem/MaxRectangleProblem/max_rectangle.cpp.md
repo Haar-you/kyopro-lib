@@ -31,10 +31,24 @@ layout: default
 
 * category: <a href="../../../../index.html#e5c03cf251a1c8b45af0c48200d5638e">Mylib/TypicalProblem/MaxRectangleProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
-* see: <a href="https://atcoder.jp/contests/arc081/submissions/5708645 ((w+1)*(h+1)の最大値を求める変種)">https://atcoder.jp/contests/arc081/submissions/5708645 ((w+1)*(h+1)の最大値を求める変種)</a>
+
+
+## Operations
+- `max_rectangle_in_histogram(T h[H][W])`
+	- Time complexity $O(HW)$
+
+## Requirements
+
+## Problems
+
+- [AOJ DPL_3_B Largest Rectangle](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_B)
+- [ARC 081 F - Flip and Rectangles](https://atcoder.jp/contests/arc081/tasks/arc081_d) ((w+1)(h+1)の最大値を求める変種)
+
+## References
+
 
 
 ## Depends on
@@ -59,8 +73,7 @@ layout: default
 
 /**
  * @title 最大面積長方形の面積
- * @attention time complexity O(HW)
- * @see https://atcoder.jp/contests/arc081/submissions/5708645 ((w+1)*(h+1)の最大値を求める変種)
+ * @docs max_rectangle.md
  */
 int max_rectangle(const std::vector<std::vector<int>> &d){
   int H = d.size();
@@ -99,7 +112,7 @@ int max_rectangle(const std::vector<std::vector<int>> &d){
 
 /**
  * @title ヒストグラム中の最大面積長方形の面積
- * @attention time complexity O(|h|)
+ * @docs max_rectangle_in_histogram.md
  */
 template <typename T>
 T max_rectangle_in_histogram(const std::vector<T> &h){
@@ -133,8 +146,7 @@ T max_rectangle_in_histogram(const std::vector<T> &h){
 
 /**
  * @title 最大面積長方形の面積
- * @attention time complexity O(HW)
- * @see https://atcoder.jp/contests/arc081/submissions/5708645 ((w+1)*(h+1)の最大値を求める変種)
+ * @docs max_rectangle.md
  */
 int max_rectangle(const std::vector<std::vector<int>> &d){
   int H = d.size();

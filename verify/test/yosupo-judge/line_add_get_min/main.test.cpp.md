@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#41749cc077979299e644c18a01e43785">test/yosupo-judge/line_add_get_min</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/line_add_get_min/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/line_add_get_min">https://judge.yosupo.jp/problem/line_add_get_min</a>
@@ -129,13 +129,9 @@ int main(){
 #include <algorithm>
 #include <optional>
 
-
 /**
  * @title Li Chao tree
- * @see https://judge.yosupo.jp/submission/3426
- * @see https://judge.yosupo.jp/submission/3427
- * @note Comparator = less<T> : Minクエリ
- * @note Comparator = greater<T> : Maxクエリ
+ * @docs lichao_tree.md
  */
 template <typename T, typename Comparator>
 class LiChaoSegmentTree{
@@ -149,7 +145,7 @@ class LiChaoSegmentTree{
   std::vector<std::pair<int,int>> range;
 
   inline T chm(const T &a, const T &b) const {
-    return cmp(a,b) ? a : b;
+    return cmp(a, b) ? a : b;
   }
 
   void init_range(int i, int left, int right){
@@ -184,7 +180,7 @@ public:
 
 private:
   void update(int i, line new_line, int l, int r){
-    if(data[i] == std::nullopt){
+    if(not data[i]){
       data[i] = new_line;
       return;
     }
@@ -254,8 +250,8 @@ public:
     std::optional<T> ret;
 
     while(k > 0){
-      if(data[k] != std::nullopt){
-        if(ret == std::nullopt) ret = apply(*data[k], xs[i]);
+      if(data[k]){
+        if(not ret) ret = apply(*data[k], xs[i]);
         else ret = chm(*ret, apply(*data[k], xs[i]));
       }
       k >>= 1;

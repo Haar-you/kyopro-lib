@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/centroid_decomposition.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -52,6 +52,7 @@ layout: default
 
 /**
  * @title 重心分解
+ * @docs centroid_decomposition.md
  */
 template <typename T>
 struct CentroidDecomposition{
@@ -141,6 +142,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title 重心分解
+ * @docs centroid_decomposition.md
  */
 template <typename T>
 struct CentroidDecomposition{

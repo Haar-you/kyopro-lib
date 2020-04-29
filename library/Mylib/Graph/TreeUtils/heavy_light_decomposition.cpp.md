@@ -25,35 +25,70 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 重軽分解
+# :question: HL分解
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
-* see: <a href="https://yukicoder.me/submissions/320138 (パスに対する頂点クエリ)">https://yukicoder.me/submissions/320138 (パスに対する頂点クエリ)</a>
-* see: <a href="https://atcoder.jp/contests/cf16-tournament-round1-open/submissions/6875967 (パスに対する辺クエリ)">https://atcoder.jp/contests/cf16-tournament-round1-open/submissions/6875967 (パスに対する辺クエリ)</a>
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2667 (パス・部分木に対する辺クエリ)">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2667 (パス・部分木に対する辺クエリ)</a>
-* see: <a href="https://codeforces.com/contest/593/submission/58692123 (パスに対する辺クエリ)">https://codeforces.com/contest/593/submission/58692123 (パスに対する辺クエリ)</a>
-* see: <a href="https://yukicoder.me/submissions/377852 (パスに対する辺クエリ)">https://yukicoder.me/submissions/377852 (パスに対する辺クエリ)</a>
-* see: <a href="https://codeforces.com/contest/343/submission/61314485 (パス・部分木に対する頂点クエリ)">https://codeforces.com/contest/343/submission/61314485 (パス・部分木に対する頂点クエリ)</a>
+
+
+## Operations
+
+- `HLDecomposition(tree, root)`
+- `path_query_vertex(int x, int y, f)`
+	- `x`, `y`間のパス上の頂点に`f`を適用する。
+- `path_query_vertex(int x, int y, f, g)`
+- `path_query_edge(int x, int y, f)`
+	- `x`, `y`間のパス上の辺に`f`を適用する。
+- `subtree_query_vertext(int x, f)`
+	- `x`の部分木の頂点に`f`を適用する。
+- `subtree_query_edge(int x, f)`
+	- `x`の部分木の辺に`f`を適用する。
+- `get_edge_id(int u, int v)`
+	- 辺`(u, v)`に対応するidを返す。
+- `parent(int x)`
+	- `x`の親を返す。
+- `lca(int u, int v)`
+	- `u`と`v`の最小共通祖先を返す。
+- `get_id(int x)`
+	- 頂点`x`に対応する`id[x]`を返す。
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [yukicoder No.399 動的な領主](https://yukicoder.me/problems/no/399) (パスに対する頂点クエリ)
+- [AOJ 2667 Tree](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2667) (パス・部分木に対する辺クエリ)
+- [Codeforces Round #329 (Div. 2) D. Happy Tree Party](https://codeforces.com/contest/593/problem/D) (パスに対する辺クエリ)
+- [yukicoder No.650 行列木クエリ](https://yukicoder.me/problems/no/650) (パスに対する辺クエリ)
+- [Codeforces Round #200 (Div. 1) D. Water Tree](https://codeforces.com/contest/343/problem/D) (パス・部分木に対する頂点クエリ)
+
+## References
+
+- [https://math314.hateblo.jp/entry/2014/06/24/220107](https://math314.hateblo.jp/entry/2014/06/24/220107)
+- [https://beet-aizu.hatenablog.com/entry/2017/12/12/235950](https://beet-aizu.hatenablog.com/entry/2017/12/12/235950)
+- [https://www.hamayanhamayan.com/entry/2017/04/10/172636](https://www.hamayanhamayan.com/entry/2017/04/10/172636)
+
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
 
 
 ## Code
@@ -68,13 +103,8 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 重軽分解
- * @see https://yukicoder.me/submissions/320138 (パスに対する頂点クエリ)
- * @see https://atcoder.jp/contests/cf16-tournament-round1-open/submissions/6875967 (パスに対する辺クエリ)
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2667 (パス・部分木に対する辺クエリ)
- * @see https://codeforces.com/contest/593/submission/58692123 (パスに対する辺クエリ)
- * @see https://yukicoder.me/submissions/377852 (パスに対する辺クエリ)
- * @see https://codeforces.com/contest/343/submission/61314485 (パス・部分木に対する頂点クエリ)
+ * @title HL分解
+ * @docs heavy_light_decomposition.md
  */
 template <typename T> class HLDecomposition{
   Tree<T> tree;
@@ -242,13 +272,8 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 6 "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 
 /**
- * @title 重軽分解
- * @see https://yukicoder.me/submissions/320138 (パスに対する頂点クエリ)
- * @see https://atcoder.jp/contests/cf16-tournament-round1-open/submissions/6875967 (パスに対する辺クエリ)
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2667 (パス・部分木に対する辺クエリ)
- * @see https://codeforces.com/contest/593/submission/58692123 (パスに対する辺クエリ)
- * @see https://yukicoder.me/submissions/377852 (パスに対する辺クエリ)
- * @see https://codeforces.com/contest/343/submission/61314485 (パス・部分木に対する頂点クエリ)
+ * @title HL分解
+ * @docs heavy_light_decomposition.md
  */
 template <typename T> class HLDecomposition{
   Tree<T> tree;

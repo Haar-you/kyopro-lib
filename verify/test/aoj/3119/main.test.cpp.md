@@ -41,7 +41,7 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_mobius_transform_superset.cpp.html">上位集合に対する高速Möbius変換</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_zeta_transform_superset.cpp.html">上位集合に対する高速Zeta変換</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code

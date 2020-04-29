@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_hld.cpp.html">HLD実装の最小共通祖先</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code

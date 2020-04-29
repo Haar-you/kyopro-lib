@@ -31,15 +31,28 @@ layout: default
 
 * category: <a href="../../../../index.html#b40e1d8162bf14ce6637a69e4e4fb68d">Mylib/Graph/EulerianPath</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/EulerianPath/directed_eulerian_path.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-04-30 00:04:32+09:00
 
 
-* see: <a href="https://codeforces.com/contest/508/submission/60462378">https://codeforces.com/contest/508/submission/60462378</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [Codeforces Round #288 (Div. 2) D. Tanya and Password](https://codeforces.com/contest/508/problem/D)
+
+## References
+
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -55,7 +68,7 @@ layout: default
 
 /**
  * @title 有向Euler路
- * @see https://codeforces.com/contest/508/submission/60462378
+ * @docs directed_eulerian_path.md
  */
 class DirectedEulerianPath{
   const int n; // node count
@@ -167,7 +180,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title 有向Euler路
- * @see https://codeforces.com/contest/508/submission/60462378
+ * @docs directed_eulerian_path.md
  */
 class DirectedEulerianPath{
   const int n; // node count

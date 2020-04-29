@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#ae5415aafc03e8f08c8f632e7ef1d421">test/aoj/DPL_2_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_2_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/travelling_salesman_problem.cpp.html">巡回セールスマン問題</a>
 
 
@@ -113,8 +113,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title 巡回セールスマン問題
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A
- * @attention 時間計算量 O(n^2 2^n)
+ * @docs travelling_salesman_problem.md
  */
 template <typename Cost>
 std::optional<Cost> travelling_salesman_problem(const Graph<Cost> &g, int src){

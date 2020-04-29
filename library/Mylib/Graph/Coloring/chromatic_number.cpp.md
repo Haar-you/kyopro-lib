@@ -31,11 +31,27 @@ layout: default
 
 * category: <a href="../../../../index.html#acf9ec20eaed2eb3d3c1a731ebc2fbe1">Mylib/Graph/Coloring</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Coloring/chromatic_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-04-30 00:04:32+09:00
 
 
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136</a>
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1254">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1254</a>
+
+
+## Operations
+
+- `chromatic_number(g)`
+	- Time complexity $O(2^n \log^2 n)$
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [AOJ 2136 Webby Subway](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136)
+- [AOJ 1254 Color the Map](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1254)
+
+## References
+
 
 
 ## Depends on
@@ -59,9 +75,7 @@ layout: default
 
 /**
  * @title グラフ頂点彩色数
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1254
- * @attention 時間計算量 O(2^n log^2 n)
+ * @docs chromatic_number.md
  */
 int chromatic_number(const std::vector<std::vector<int>> &graph){
   const int mod = 1000000007;
@@ -134,9 +148,7 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 
 /**
  * @title グラフ頂点彩色数
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1254
- * @attention 時間計算量 O(2^n log^2 n)
+ * @docs chromatic_number.md
  */
 int chromatic_number(const std::vector<std::vector<int>> &graph){
   const int mod = 1000000007;

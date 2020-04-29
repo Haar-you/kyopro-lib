@@ -31,10 +31,26 @@ layout: default
 
 * category: <a href="../../../../../../index.html#c064675a3a07889d09282378899fe2ce">Mylib/DataStructure/SegmentTree/Static/Beats</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/Static/Beats/segment_tree_beats.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
-* see: <a href="https://judge.yosupo.jp/submission/5293 (chmin, chmax, add, sum)">https://judge.yosupo.jp/submission/5293 (chmin, chmax, add, sum)</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [Range Chmin Chmax Add Range Sum](https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum)
+
+## References
+
+- [https://codeforces.com/blog/entry/57319](https://codeforces.com/blog/entry/57319)
+- [https://smijake3.hatenablog.com/entry/2019/04/28/021457](https://smijake3.hatenablog.com/entry/2019/04/28/021457)
+
 
 
 ## Verified with
@@ -54,7 +70,7 @@ layout: default
 
 /**
  * @title Segment tree beats
- * @see https://judge.yosupo.jp/submission/5293 (chmin, chmax, add, sum)
+ * @docs segment_tree_beats.md
  */
 class SegmentTreeBeats{
   using value_type = int64_t;
@@ -270,7 +286,7 @@ public:
 
 /**
  * @title Segment tree beats
- * @see https://judge.yosupo.jp/submission/5293 (chmin, chmax, add, sum)
+ * @docs segment_tree_beats.md
  */
 class SegmentTreeBeats{
   using value_type = int64_t;

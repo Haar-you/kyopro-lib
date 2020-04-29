@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+# :x: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#4074bf88980bb06d903e38d47fb81c08">test/yosupo-judge/vertex_set_path_composite</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/vertex_set_path_composite/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-25 21:56:55+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/vertex_set_path_composite">https://judge.yosupo.jp/problem/vertex_set_path_composite</a>
@@ -39,12 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_both_foldable.cpp.html">双方向のセグメント木</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">重軽分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_both_foldable.cpp.html">双方向のセグメント木</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -248,13 +248,8 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 6 "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 
 /**
- * @title 重軽分解
- * @see https://yukicoder.me/submissions/320138 (パスに対する頂点クエリ)
- * @see https://atcoder.jp/contests/cf16-tournament-round1-open/submissions/6875967 (パスに対する辺クエリ)
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2667 (パス・部分木に対する辺クエリ)
- * @see https://codeforces.com/contest/593/submission/58692123 (パスに対する辺クエリ)
- * @see https://yukicoder.me/submissions/377852 (パスに対する辺クエリ)
- * @see https://codeforces.com/contest/343/submission/61314485 (パス・部分木に対する頂点クエリ)
+ * @title HL分解
+ * @docs heavy_light_decomposition.md
  */
 template <typename T> class HLDecomposition{
   Tree<T> tree;

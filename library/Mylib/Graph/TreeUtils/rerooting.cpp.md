@@ -31,21 +31,34 @@ layout: default
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/rerooting.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
-* see: <a href="https://null-mn.hatenablog.com/entry/2020/04/14/124151">https://null-mn.hatenablog.com/entry/2020/04/14/124151</a>
-* see: <a href="https://qiita.com/keymoon/items/2a52f1b0fb7ef67fb89e#step0-%E6%9C%A8%E6%A7%8B%E9%80%A0%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%A8%98%E9%8C%B2%E3%81%99%E3%82%8B">https://qiita.com/keymoon/items/2a52f1b0fb7ef67fb89e#step0-%E6%9C%A8%E6%A7%8B%E9%80%A0%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%A8%98%E9%8C%B2%E3%81%99%E3%82%8B</a>
-* see: <a href="https://kuretchi.github.io/blog/entries/rerooting/">https://kuretchi.github.io/blog/entries/rerooting/</a>
-* see: <a href="https://atcoder.jp/contests/dp/submissions/11952346">https://atcoder.jp/contests/dp/submissions/11952346</a>
-* see: <a href="https://codeforces.com/contest/1324/submission/76798350">https://codeforces.com/contest/1324/submission/76798350</a>
-* see: <a href="https://atcoder.jp/contests/abc160/submissions/11960089">https://atcoder.jp/contests/abc160/submissions/11960089</a>
-* see: <a href="https://atcoder.jp/contests/arc028/submissions/11961543">https://atcoder.jp/contests/arc028/submissions/11961543</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [EDPC V - Subtree](https://atcoder.jp/contests/dp/tasks/dp_v)
+- [Codeforces Round #627 (Div. 3) F. Maximum White Subtree](https://codeforces.com/contest/1324/problem/F)
+- [ABC 160 F - Distributing Integers](https://atcoder.jp/contests/abc160/tasks/abc160_f)
+- [ARC 028 C - 高橋王国の分割統治 ](https://atcoder.jp/contests/arc028/tasks/arc028_3)
+- [s8pc #4 D - Driving on a Tree](https://atcoder.jp/contests/s8pc-4/tasks/s8pc_4_d) (これで解けるか不明)
+
+## References
+- [https://null-mn.hatenablog.com/entry/2020/04/14/124151](https://null-mn.hatenablog.com/entry/2020/04/14/124151)
+- [https://qiita.com/keymoon/items/2a52f1b0fb7ef67fb89e](https://qiita.com/keymoon/items/2a52f1b0fb7ef67fb89e)
+- [https://kuretchi.github.io/blog/entries/rerooting/](https://kuretchi.github.io/blog/entries/rerooting/)
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with
@@ -64,16 +77,7 @@ layout: default
 
 /**
  * @title 全方位木dp
- * @see https://null-mn.hatenablog.com/entry/2020/04/14/124151
- * @see https://qiita.com/keymoon/items/2a52f1b0fb7ef67fb89e#step0-%E6%9C%A8%E6%A7%8B%E9%80%A0%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%A8%98%E9%8C%B2%E3%81%99%E3%82%8B
- * @see https://kuretchi.github.io/blog/entries/rerooting/
-
- * @see https://atcoder.jp/contests/dp/submissions/11952346
- * @see https://codeforces.com/contest/1324/submission/76798350
- * @see https://atcoder.jp/contests/abc160/submissions/11960089
- * @see https://atcoder.jp/contests/arc028/submissions/11961543
-
- * @note https://atcoder.jp/contests/s8pc-4/tasks/s8pc_4_d (これで解けるか不明)
+ * @docs rerooting.md
  */
 
 template <typename T, typename U, typename Merge, typename EdgeF, typename VertexF>
@@ -189,16 +193,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title 全方位木dp
- * @see https://null-mn.hatenablog.com/entry/2020/04/14/124151
- * @see https://qiita.com/keymoon/items/2a52f1b0fb7ef67fb89e#step0-%E6%9C%A8%E6%A7%8B%E9%80%A0%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%A8%98%E9%8C%B2%E3%81%99%E3%82%8B
- * @see https://kuretchi.github.io/blog/entries/rerooting/
-
- * @see https://atcoder.jp/contests/dp/submissions/11952346
- * @see https://codeforces.com/contest/1324/submission/76798350
- * @see https://atcoder.jp/contests/abc160/submissions/11960089
- * @see https://atcoder.jp/contests/arc028/submissions/11961543
-
- * @note https://atcoder.jp/contests/s8pc-4/tasks/s8pc_4_d (これで解けるか不明)
+ * @docs rerooting.md
  */
 
 template <typename T, typename U, typename Merge, typename EdgeF, typename VertexF>

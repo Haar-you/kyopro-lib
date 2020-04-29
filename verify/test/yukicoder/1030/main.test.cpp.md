@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/1030/main.test.cpp
+# :x: test/yukicoder/1030/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#fce7f5311a6094c5e355d46a4ec1ba92">test/yukicoder/1030</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/1030/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-23 05:56:22+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/1030">https://yukicoder.me/problems/no/1030</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/max_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">重軽分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/max_monoid.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -170,13 +170,8 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 6 "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 
 /**
- * @title 重軽分解
- * @see https://yukicoder.me/submissions/320138 (パスに対する頂点クエリ)
- * @see https://atcoder.jp/contests/cf16-tournament-round1-open/submissions/6875967 (パスに対する辺クエリ)
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2667 (パス・部分木に対する辺クエリ)
- * @see https://codeforces.com/contest/593/submission/58692123 (パスに対する辺クエリ)
- * @see https://yukicoder.me/submissions/377852 (パスに対する辺クエリ)
- * @see https://codeforces.com/contest/343/submission/61314485 (パス・部分木に対する頂点クエリ)
+ * @title HL分解
+ * @docs heavy_light_decomposition.md
  */
 template <typename T> class HLDecomposition{
   Tree<T> tree;

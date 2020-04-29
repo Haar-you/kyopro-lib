@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 双方向のセグメント木
+# :x: 双方向のセグメント木
 
 <a href="../../../../../../index.html">Back to top page</a>
 
@@ -38,7 +38,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
 
 
 ## Code

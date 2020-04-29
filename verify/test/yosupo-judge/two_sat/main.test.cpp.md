@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#e93cc7e7edd1deb522641737d913fca6">test/yosupo-judge/two_sat</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/two_sat/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/two_sat">https://judge.yosupo.jp/problem/two_sat</a>
@@ -41,7 +41,7 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/two_sat.cpp.html">2-SAT</a>
 
 
@@ -221,9 +221,7 @@ std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
 
 /**
  * @title 2-SAT
- * @see https://yukicoder.me/problems/no/274 https://yukicoder.me/submissions/340917/source
- * @see https://yukicoder.me/problems/no/470 https://yukicoder.me/submissions/383028/source
- * @see https://atcoder.jp/contests/arc069/submissions/8830581
+ * @docs two_sat.md
  */
 class TwoSat{
   const int n;

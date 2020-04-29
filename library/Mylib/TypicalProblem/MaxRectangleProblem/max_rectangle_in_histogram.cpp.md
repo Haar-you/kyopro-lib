@@ -31,8 +31,22 @@ layout: default
 
 * category: <a href="../../../../index.html#e5c03cf251a1c8b45af0c48200d5638e">Mylib/TypicalProblem/MaxRectangleProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle_in_histogram.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
+
+
+
+## Operations
+- `max_rectangle_in_histogram(T h[N])`
+	- Time complexity $O(N)$
+
+## Requirements
+
+## Problems
+
+- [AOJ DPL_3_C Largest Rectangle in a Histogram](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_C)
+
+## References
 
 
 
@@ -59,7 +73,7 @@ layout: default
 
 /**
  * @title ヒストグラム中の最大面積長方形の面積
- * @attention time complexity O(|h|)
+ * @docs max_rectangle_in_histogram.md
  */
 template <typename T>
 T max_rectangle_in_histogram(const std::vector<T> &h){
@@ -103,7 +117,7 @@ T max_rectangle_in_histogram(const std::vector<T> &h){
 
 /**
  * @title ヒストグラム中の最大面積長方形の面積
- * @attention time complexity O(|h|)
+ * @docs max_rectangle_in_histogram.md
  */
 template <typename T>
 T max_rectangle_in_histogram(const std::vector<T> &h){

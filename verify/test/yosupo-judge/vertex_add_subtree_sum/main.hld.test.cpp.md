@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
+# :x: test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#5182f60ed9f69992a8eee7b8b1003f24">test/yosupo-judge/vertex_add_subtree_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/vertex_add_subtree_sum">https://judge.yosupo.jp/problem/vertex_add_subtree_sum</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">重軽分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -141,13 +141,8 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 6 "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 
 /**
- * @title 重軽分解
- * @see https://yukicoder.me/submissions/320138 (パスに対する頂点クエリ)
- * @see https://atcoder.jp/contests/cf16-tournament-round1-open/submissions/6875967 (パスに対する辺クエリ)
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2667 (パス・部分木に対する辺クエリ)
- * @see https://codeforces.com/contest/593/submission/58692123 (パスに対する辺クエリ)
- * @see https://yukicoder.me/submissions/377852 (パスに対する辺クエリ)
- * @see https://codeforces.com/contest/343/submission/61314485 (パス・部分木に対する頂点クエリ)
+ * @title HL分解
+ * @docs heavy_light_decomposition.md
  */
 template <typename T> class HLDecomposition{
   Tree<T> tree;

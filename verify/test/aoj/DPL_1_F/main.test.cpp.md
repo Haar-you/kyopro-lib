@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#957906ba4d4b0f9584675f3244cffcf8">test/aoj/DPL_1_F</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_1_F/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_F">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_F</a>
@@ -88,8 +88,7 @@ int main(){
 
 /**
  * @title 価値の制約が小さい0-1ナップサック問題
- * @attention 時間計算量 O(N∑v)
- * @see https://atcoder.jp/contests/dp/submissions/6395607
+ * @docs knapsack_small_value.md
  */
 template <typename Weight, typename Value>
 Value knapsack_small_value(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#72c367391a592066d7074720e48b0693">test/aoj/2955</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2955/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-27 20:58:13+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2955">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2955</a>
@@ -131,6 +131,7 @@ bool subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vect
 
 /**
  * @title UnionFind
+ * @docs unionfind.md
  */
 class UnionFind{
   std::vector<int> parent, depth, size;

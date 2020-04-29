@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0eb662a8a4a1c93b539f9938a9be975d">test/yosupo-judge/range_chmin_chmax_add_range_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-04-29 20:22:17+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum">https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum</a>
@@ -115,7 +115,7 @@ int main(){
 
 /**
  * @title Segment tree beats
- * @see https://judge.yosupo.jp/submission/5293 (chmin, chmax, add, sum)
+ * @docs segment_tree_beats.md
  */
 class SegmentTreeBeats{
   using value_type = int64_t;

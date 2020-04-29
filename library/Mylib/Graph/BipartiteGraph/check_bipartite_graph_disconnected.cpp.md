@@ -31,16 +31,29 @@ layout: default
 
 * category: <a href="../../../../index.html#3b87eee7aef75da88610c966a8da844f">Mylib/Graph/BipartiteGraph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/BipartiteGraph/check_bipartite_graph_disconnected.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-04-30 00:04:32+09:00
 
 
-* see: <a href="https://atcoder.jp/contests/maximum-cup-2018/submissions/4199048">https://atcoder.jp/contests/maximum-cup-2018/submissions/4199048</a>
-* see: <a href="https://atcoder.jp/contests/arc099/submissions/7457350">https://atcoder.jp/contests/arc099/submissions/7457350</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [Maximum-Cup 2018 C - 嘘つきな天使たち](https://atcoder.jp/contests/maximum-cup-2018/tasks/maximum_cup_2018_c)
+- [ARC 099 E - Independence](https://atcoder.jp/contests/arc099/tasks/arc099_c)
+
+## References
+
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -57,8 +70,7 @@ layout: default
 
 /**
  * @title 非連結グラフの二部グラフ判定
- * @see https://atcoder.jp/contests/maximum-cup-2018/submissions/4199048
- * @see https://atcoder.jp/contests/arc099/submissions/7457350
+ * @docs check_bipartite_graph_disconnected.md
  */
 template <typename T> struct CheckBipartiteGraph{
   std::vector<std::optional<std::pair<int,int>>> results;
@@ -156,8 +168,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title 非連結グラフの二部グラフ判定
- * @see https://atcoder.jp/contests/maximum-cup-2018/submissions/4199048
- * @see https://atcoder.jp/contests/arc099/submissions/7457350
+ * @docs check_bipartite_graph_disconnected.md
  */
 template <typename T> struct CheckBipartiteGraph{
   std::vector<std::optional<std::pair<int,int>>> results;

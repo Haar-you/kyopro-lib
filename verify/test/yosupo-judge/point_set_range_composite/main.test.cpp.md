@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code

@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp
+# :question: Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,7 +39,7 @@ layout: default
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
 
 
 ## Code

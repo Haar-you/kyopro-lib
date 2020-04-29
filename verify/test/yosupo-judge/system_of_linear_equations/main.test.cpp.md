@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp.html">連立線形方程式</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
