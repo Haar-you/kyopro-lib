@@ -5,7 +5,7 @@
 
 /**
  * @title Segment tree beats
- * @see https://judge.yosupo.jp/submission/5293 (chmin, chmax, add, sum)
+ * @docs segment_tree_beats.md
  */
 class SegmentTreeBeats{
   using value_type = int64_t;

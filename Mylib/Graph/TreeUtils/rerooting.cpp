@@ -4,16 +4,7 @@
 
 /**
  * @title 全方位木dp
- * @see https://null-mn.hatenablog.com/entry/2020/04/14/124151
- * @see https://qiita.com/keymoon/items/2a52f1b0fb7ef67fb89e#step0-%E6%9C%A8%E6%A7%8B%E9%80%A0%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%A8%98%E9%8C%B2%E3%81%99%E3%82%8B
- * @see https://kuretchi.github.io/blog/entries/rerooting/
-
- * @see https://atcoder.jp/contests/dp/submissions/11952346
- * @see https://codeforces.com/contest/1324/submission/76798350
- * @see https://atcoder.jp/contests/abc160/submissions/11960089
- * @see https://atcoder.jp/contests/arc028/submissions/11961543
-
- * @note https://atcoder.jp/contests/s8pc-4/tasks/s8pc_4_d (これで解けるか不明)
+ * @docs rerooting.md
  */
 
 template <typename T, typename U, typename Merge, typename EdgeF, typename VertexF>

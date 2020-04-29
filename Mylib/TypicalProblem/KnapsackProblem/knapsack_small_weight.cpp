@@ -4,8 +4,7 @@
 
 /**
  * @title 重さの制約が小さい0-1ナップサック問題
- * @attention 時間計算量 O(NW)
- * @see https://atcoder.jp/contests/dp/submissions/6394556
+ * @docs knapsack_small_weight.md
  */
 template <typename Weight, typename Value>
 Value knapsack_small_weight(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){

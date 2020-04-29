@@ -5,11 +5,10 @@
 
 /**
  * @title 中国人郵便配達問題
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B
- * @attention 時間計算量 O(n^2 2^n)
+ * @docs chinese_postman_problem.cpp
  */
 template <typename T> T chinese_postman_problem(const Graph<T> &g){
-  int n = g.size();
+  const int n = g.size();
   T ret = 0;
 
   // 頂点間の最短距離を求める。
@@ -41,7 +40,7 @@ template <typename T> T chinese_postman_problem(const Graph<T> &g){
     if(g[i].size() % 2) odd.push_back(i);
   }
 
-  int m = odd.size();
+  const int m = odd.size();
 
   // 奇数次数の頂点間の最小マッチングを求める。
   std::vector<T> dp(1<<m, -1);

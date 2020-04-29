@@ -4,6 +4,7 @@
 
 /**
  * @title UnionFind
+ * @docs unionfind.md
  */
 class UnionFind{
   std::vector<int> parent, depth, size;

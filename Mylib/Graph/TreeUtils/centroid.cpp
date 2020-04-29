@@ -4,6 +4,7 @@
 
 /**
  * @title 重心列挙
+ * @docs centroid.md
  */
 template <typename T>
 class Centroid{

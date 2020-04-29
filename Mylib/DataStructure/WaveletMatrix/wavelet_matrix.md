@@ -3,7 +3,7 @@
 - `access(wm, int i)`
     - `i`番目(0-indexed)の要素を取得
 - `rank(wm, int i, T val)`
-    - `[0,i)`に含まれる`val`の個数
+    - `[0, i)`に含まれる`val`の個数
 - `count(wm, int l, int r, T val)`
     - `[l, r)`に含まれる`val`の個数
 - `select(wm, int count, T val)`
@@ -30,3 +30,8 @@
 - [AOJ1549 Hard Beans](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1549) (prev_value, next_value)
 - [AOJ2674 Disordered Data Detection](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674) (range_freq)
 - [SPOJ MKTHNUM](https://www.spoj.com/problems/MKTHNUM/) (quantile)
+
+## References
+
+- [http://miti-7.hatenablog.com/entry/2018/04/28/152259](http://miti-7.hatenablog.com/entry/2018/04/28/152259)
+- [https://www.hamayanhamayan.com/entry/2017/06/13/103352](https://www.hamayanhamayan.com/entry/2017/06/13/103352)

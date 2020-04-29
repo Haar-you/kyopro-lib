@@ -3,26 +3,30 @@
 
 /**
  * @title 最大独立集合
- * @see https://code-thanks-festival-2017-open.contest.atcoder.jp/submissions/4071345
- * @see https://codeforces.com/contest/1105/submission/48777508
- * @see https://judge.yosupo.jp/submission/1229
- * @attention 時間計算量はO(n*2^(n/2)) なのでn<=40程度まで許容
- * @attention 二部グラフでは、(最大独立集合の大きさ) = (グラフの大きさ) - (最大二部マッチングの大きさ)となるので、最大二部マッチングを用いる。
+ * @docs maximum_independent_set.md
  */
-int64_t maximum_independent_set(const std::vector<std::vector<int>> &graph){
-  int n = graph.size();
-  int h1 = n/2; //V1
-  int h2 = n-h1; //V2
+int64_t maximum_independent_set(const std::vector<std::vector<int>> &g){
+  const int n = g.size();
+
+  for(int i = 0; i < n; ++i){
+    for(int j = 0; j < n; ++j){
+      assert((int)g[i].size() == n);
+      assert(g[i][j] == g[j][i]);
+    }
+  }
+  
+  const int h1 = n/2; // V1
+  const int h2 = n-h1; // V2
 
   std::vector<bool> dp1(1<<h1, true); // dp1[S] := Sが独立集合か?
   for(int i = 0; i < h1; ++i){
-    for(auto j : graph[i]){
-      if(j < h1) dp1[(1<<i) | (1<<j)] = false;
+    for(int j = 0; j < h1; ++j){
+      if(g[i][j]) dp1[(1<<i) | (1<<j)] = false;
     }
   }
   
   for(int s = 0; s < (1<<h1); ++s){
-    if(!dp1[s]){
+    if(not dp1[s]){
       for(int j = 0; j < h1; ++j){
         dp1[s | (1<<j)] = false;
       }
@@ -31,8 +35,8 @@ int64_t maximum_independent_set(const std::vector<std::vector<int>> &graph){
 
   std::vector<bool> dp2(1<<h2, true); // dp2[S] := Sが独立集合か?
   for(int i = h1; i < n; ++i){
-    for(auto j : graph[i]){
-      if(j >= h1) dp2[(1<<(i-h1)) | (1<<(j-h1))] = false;
+    for(int j = h1; j < n; ++j){
+      if(g[i][j]) dp2[(1<<(i-h1)) | (1<<(j-h1))] = false;
     }
   }
 
@@ -48,8 +52,8 @@ int64_t maximum_independent_set(const std::vector<std::vector<int>> &graph){
   dp3[0] = (1<<h2)-1;
   for(int i = 0; i < h1; ++i){
     int t = 0;
-    for(auto j : graph[i]){
-      if(j >= h1){
+    for(int j = h1; j < n; ++j){
+      if(g[i][j]){
         t |= (1<<(j-h1));
       }
     }

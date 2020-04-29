@@ -4,6 +4,7 @@
 
 /**
  * @title 頂点Euler tour
+ * @docs euler_tour_vertex.md
  */
 template <typename T> class EulerTourVertex{
   int pos = 0;

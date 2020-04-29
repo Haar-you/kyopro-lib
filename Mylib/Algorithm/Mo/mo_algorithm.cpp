@@ -5,11 +5,7 @@
 
 /**
  * @title Moのアルゴリズム
- * @see https://codeforces.com/contest/86/submission/62912624 (出現数)
- * @see https://www.spoj.com/problems/DQUERY/ (種類数)
- * @see https://atcoder.jp/contests/dwacon2017-honsen/submissions/8017651 (積の約数の個数)
- * @see https://codeforces.com/contest/375/submission/73875627 (部分木 / 出現数k以上の種類数)
- * @see https://www.hackerrank.com/contests/university-codesprint-4/challenges/unique-art/problem (出現数1の種類数)
+ * @docs mo_algorithm.md
  */
 template <typename F, typename G, typename H>
 class MoAlgorithm{
@@ -53,10 +49,7 @@ public:
     is_built = true;
   }
 
-  /**
-   * @attention time complexity O(N√Q)
-   */
-  inline void process(){
+  inline void run(){
     assert(is_built);
     
     int q = 0;

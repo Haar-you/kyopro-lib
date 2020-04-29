@@ -6,8 +6,7 @@
 
 /**
  * @title 価値の制約が小さい0-1ナップサック問題
- * @attention 時間計算量 O(N∑v)
- * @see https://atcoder.jp/contests/dp/submissions/6395607
+ * @docs knapsack_small_value.md
  */
 template <typename Weight, typename Value>
 Value knapsack_small_value(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){

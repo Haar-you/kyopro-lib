@@ -5,8 +5,7 @@
 
 /**
  * @title 区間最頻値クエリ
- * @see https://www.spoj.com/problems/FREQ2/
- * @see https://scrapbox.io/data-structures/Range_Mode_Query
+ * @docs range_mode_query.md
  */
 template <typename T>
 class RangeModeQuery{
@@ -67,7 +66,7 @@ public:
     }
   }
 
-  std::pair<int,T> query(int l, int r){ // [l, r)
+  std::pair<int, T> query(int l, int r){ // [l, r)
     std::pair<int, T> ret = std::make_pair(0, 0);
 
     int span_l = (l + block_size - 1) / block_size, span_r = r / block_size - 1;

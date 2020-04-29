@@ -6,10 +6,10 @@
 
 /**
  * @title 個数の制約が小さい0-1ナップサック問題 (半分全列挙)
- * @attention 時間計算量 O(2^(N/2) log(2^(N/2)))
+ * @docs knapsack_small_quantity.md
  */
 template <typename Weight, typename Value>
-Value knapsack_small_quantity(int N, Weight W, const std::vector<Weight> &w, const std::vector<Value> &v){
+Value knapsack_small_quantity(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
   Value ret = 0;
 
   int p = N/2;
@@ -46,10 +46,10 @@ Value knapsack_small_quantity(int N, Weight W, const std::vector<Weight> &w, con
       }
     }
 
-    auto itr = a.upper_bound(std::max((Weight)0, W-weight));
+    auto itr = a.upper_bound(std::max((Weight)0, cap-weight));
     
     itr = std::prev(itr);
-    if(weight + itr->first <= W) ret = std::max(ret, value + itr->second);
+    if(weight + itr->first <= cap) ret = std::max(ret, value + itr->second);
   }
 
   return ret;

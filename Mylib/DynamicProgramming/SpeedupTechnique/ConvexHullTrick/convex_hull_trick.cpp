@@ -5,10 +5,7 @@
 
 /**
  * @title Convex Hull Trick
- * @see https://atcoder.jp/contests/dp/tasks/dp_z (Minクエリ)
- * @see https://codeforces.com/contest/939/problem/E (Maxクエリ)
- * @note Comparator = greater<T> : 傾き => 単調減少, クエリ座標 => 単調増加, クエリ => Min
- * @note Comparator = less<T> : 傾き => 単調増加, クエリ座標 => 単調増加, クエリ => Max
+ * @docs convex_hull_trick.md
  */
 template <typename T, typename Comparator = std::greater<T>>
 class ConvexHullTrick{

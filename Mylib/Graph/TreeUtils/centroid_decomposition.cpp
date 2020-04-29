@@ -4,6 +4,7 @@
 
 /**
  * @title 重心分解
+ * @docs centroid_decomposition.md
  */
 template <typename T>
 struct CentroidDecomposition{

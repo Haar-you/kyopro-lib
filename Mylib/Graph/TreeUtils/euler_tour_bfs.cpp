@@ -5,7 +5,7 @@
 
 /**
  * @title BFS Euler tour
- * @see https://yukicoder.me/submissions/390077
+ * @docs euler_tour_bfs.md
  */
 template <typename T> struct EulerTourBFS{
   int N;

@@ -4,13 +4,9 @@
 #include <algorithm>
 #include <optional>
 
-
 /**
  * @title Li Chao tree
- * @see https://judge.yosupo.jp/submission/3426
- * @see https://judge.yosupo.jp/submission/3427
- * @note Comparator = less<T> : Minクエリ
- * @note Comparator = greater<T> : Maxクエリ
+ * @docs lichao_tree.md
  */
 template <typename T, typename Comparator>
 class LiChaoSegmentTree{
@@ -24,7 +20,7 @@ class LiChaoSegmentTree{
   std::vector<std::pair<int,int>> range;
 
   inline T chm(const T &a, const T &b) const {
-    return cmp(a,b) ? a : b;
+    return cmp(a, b) ? a : b;
   }
 
   void init_range(int i, int left, int right){
@@ -59,7 +55,7 @@ public:
 
 private:
   void update(int i, line new_line, int l, int r){
-    if(data[i] == std::nullopt){
+    if(not data[i]){
       data[i] = new_line;
       return;
     }
@@ -129,8 +125,8 @@ public:
     std::optional<T> ret;
 
     while(k > 0){
-      if(data[k] != std::nullopt){
-        if(ret == std::nullopt) ret = apply(*data[k], xs[i]);
+      if(data[k]){
+        if(not ret) ret = apply(*data[k], xs[i]);
         else ret = chm(*ret, apply(*data[k], xs[i]));
       }
       k >>= 1;

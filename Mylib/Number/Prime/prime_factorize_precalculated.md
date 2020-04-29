@@ -1,9 +1,9 @@
 ## Operations
 
-- $\mathtt{PrimeFactorize(int\ N)}$
-  + $\mathtt{p[i] := (\texttt{iの最小の素因数})}$
-  + Time complexity $O(N log N)$
+- `PrimeFactorize(int N)`
+	- `p[i]` = (`i`の最小の素因数)
+	- Time complexity $O(N log N)$
 
-- $\mathtt{factorize(int\ N)}$
-  + $N$の素因数を昇順に列挙する。
-  + 素因数の個数だけループが回る。
+- `factorize(int N)`
+	- `N`の素因数を昇順に列挙する。
+	- 素因数の個数だけループが回る。

@@ -3,7 +3,7 @@
 
 /**
  * @title 永続Queue
- * @attention time complexity of push(value) and pop() : O(MAX_SIZE_2)
+ * @docs persistent_queue.md
  */
 template <typename T>
 class PersistentQueue{
@@ -19,16 +19,15 @@ class PersistentQueue{
 
   PersistentQueue(node* front_node, node* back_node): front_node(front_node), back_node(back_node){}
   
-  
 public:
-  PersistentQueue() {}
+  PersistentQueue(){}
   PersistentQueue(const T &value){
     node *t = new node();
     t->value = value;
     back_node = front_node = t;
   }
   
-  PersistentQueue push(const T &value){
+  PersistentQueue push(const T &value) const {
     node *t = new node();
 
     t->value = value;
@@ -45,7 +44,7 @@ public:
     return PersistentQueue(front_node ? front_node : t, t);
   }
 
-  PersistentQueue pop(){
+  PersistentQueue pop() const {
     if(back_node->depth == front_node->depth){
       return PersistentQueue(nullptr, nullptr);
     }

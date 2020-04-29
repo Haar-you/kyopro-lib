@@ -5,8 +5,7 @@
 
 /**
  * @title 最大面積長方形の面積
- * @attention time complexity O(HW)
- * @see https://atcoder.jp/contests/arc081/submissions/5708645 ((w+1)*(h+1)の最大値を求める変種)
+ * @docs max_rectangle.md
  */
 int max_rectangle(const std::vector<std::vector<int>> &d){
   int H = d.size();

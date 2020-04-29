@@ -5,13 +5,8 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 重軽分解
- * @see https://yukicoder.me/submissions/320138 (パスに対する頂点クエリ)
- * @see https://atcoder.jp/contests/cf16-tournament-round1-open/submissions/6875967 (パスに対する辺クエリ)
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2667 (パス・部分木に対する辺クエリ)
- * @see https://codeforces.com/contest/593/submission/58692123 (パスに対する辺クエリ)
- * @see https://yukicoder.me/submissions/377852 (パスに対する辺クエリ)
- * @see https://codeforces.com/contest/343/submission/61314485 (パス・部分木に対する頂点クエリ)
+ * @title HL分解
+ * @docs heavy_light_decomposition.md
  */
 template <typename T> class HLDecomposition{
   Tree<T> tree;
