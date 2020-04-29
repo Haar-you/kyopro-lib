@@ -6,11 +6,10 @@
 
 int main(){
   int N,M; std::cin >> N >> M;
-  std::vector<std::vector<int>> g(N);
+  std::vector<std::vector<int>> g(N, std::vector<int>(N));
   for(int i = 0; i < M; ++i){
     int u,v; std::cin >> u >> v;
-    g[u].push_back(v);
-    g[v].push_back(u);
+    g[u][v] = g[v][u] = 1;
   }
 
   auto res = maximum_independent_set(g);

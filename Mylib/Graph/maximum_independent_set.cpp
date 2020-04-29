@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <cassert>
 
 /**
  * @title 最大独立集合
