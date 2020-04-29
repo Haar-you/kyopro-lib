@@ -4,9 +4,7 @@
 
 /**
  * @title グラフ頂点彩色数
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1254
- * @attention 時間計算量 O(2^n log^2 n)
+ * @docs chromatic_number.md
  */
 int chromatic_number(const std::vector<std::vector<int>> &graph){
   const int mod = 1000000007;

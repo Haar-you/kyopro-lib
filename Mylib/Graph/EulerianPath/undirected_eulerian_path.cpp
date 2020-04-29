@@ -6,7 +6,7 @@
 
 /**
  * @title 無向Euler路
- * @see https://codeforces.com/contest/1152/submission/53310405
+ * @docs undirected_eulerian_path.md
  */
 class UndirectedEulerianPath{
   const int n; // node count

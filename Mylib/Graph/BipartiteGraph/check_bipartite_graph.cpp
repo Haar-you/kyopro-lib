@@ -6,6 +6,7 @@
 
 /**
  * @title 連結グラフの二部グラフ判定
+ * @docs check_bipartite_graph.md
  */
 template <typename T>
 std::optional<std::vector<int>> is_bipartite_graph(const Graph<T> &graph){

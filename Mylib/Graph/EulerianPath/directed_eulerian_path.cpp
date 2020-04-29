@@ -6,7 +6,7 @@
 
 /**
  * @title 有向Euler路
- * @see https://codeforces.com/contest/508/submission/60462378
+ * @docs directed_eulerian_path.md
  */
 class DirectedEulerianPath{
   const int n; // node count

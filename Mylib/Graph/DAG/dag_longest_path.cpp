@@ -4,6 +4,7 @@
 
 /**
  * @title DAGの最長パス
+ * @docs dag_longest_path.cpp
  */
 int dag_longest_path(const std::vector<std::vector<int>> &g){
   int n = g.size();
