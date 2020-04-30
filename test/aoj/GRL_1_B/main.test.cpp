@@ -29,7 +29,7 @@ int main(){
       if(x.is_unreachable()){
         std::cout << "INF" << std::endl;
       }else{
-        std::cout << x.value << std::endl;
+        std::cout << x.value() << std::endl;
       }
     }
   }
