@@ -31,9 +31,24 @@ layout: default
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/fast_mobius_transform_superset.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-30 20:34:51+09:00
 
 
+
+
+## Operations
+
+- `fast_mobius_transform_superset(f[N], op = std::minus())`
+	- `N`は2の累乗
+	- $f(S) = \sum_{S\subseteq T} g(T) * (-1)^{\left|S\right|-\left|T\right|}$
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References
 
 
 ## Required by
@@ -57,7 +72,7 @@ layout: default
 
 /**
  * @title 上位集合に対する高速Möbius変換
- * @note f(S) = ∑_{S⊆T} g(T) * (-1)^(|T|-|S|)
+ * @docs fast_mobius_transform_superset.md
  */
 template <typename T, typename Func = std::minus<T>>
 std::vector<T> fast_mobius_transform_superset(std::vector<T> f, const Func &op = std::minus<T>()){
@@ -81,7 +96,7 @@ std::vector<T> fast_mobius_transform_superset(std::vector<T> f, const Func &op =
 
 /**
  * @title 上位集合に対する高速Möbius変換
- * @note f(S) = ∑_{S⊆T} g(T) * (-1)^(|T|-|S|)
+ * @docs fast_mobius_transform_superset.md
  */
 template <typename T, typename Func = std::minus<T>>
 std::vector<T> fast_mobius_transform_superset(std::vector<T> f, const Func &op = std::minus<T>()){

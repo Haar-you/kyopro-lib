@@ -25,23 +25,23 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_2_H/main.test.cpp
+# :heavy_check_mark: test/yukicoder/631/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#dff63cd4dbbcc206af021772ba80d157">test/aoj/DSL_2_H</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_H/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+* category: <a href="../../../../index.html#0b2f27755ad8078580256305f9366a63">test/yukicoder/631</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/631/main.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-04-30 21:52:04+09:00
 
 
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H</a>
+* see: <a href="https://yukicoder.me/problems/no/631">https://yukicoder.me/problems/no/631</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/max_monoid.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/add_min.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_min.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/add_max.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_max.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp.html">遅延セグメント木</a>
 
 
@@ -50,29 +50,41 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H"
+#define PROBLEM "https://yukicoder.me/problems/no/631"
 
 #include <iostream>
+#include <vector>
+
 #include "Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/MonoidAction/add_min.cpp"
+#include "Mylib/AlgebraicStructure/MonoidAction/add_max.cpp"
 
 int main(){
-  int n, q; std::cin >> n >> q;
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N;
+  while(std::cin >> N){
+    auto seg = LazySegmentTree<AddMax<int64_t,int64_t>>(N-1);
+        
+    std::vector<int64_t> T(N-1);
+    for(auto &x : T) std::cin >> x;
+    
+    for(int i = 0; i < N-1; ++i){
+      T[i] += 3 * (N-1-i);
+    }
 
-  LazySegmentTree<AddMin<int64_t,int64_t>> seg(n);
-  seg.init(0);
+    seg.init_with_vector(T);
+    
+    int M; std::cin >> M;
 
-  while(q--){
-    int type; std::cin >> type;
+    for(int i = 0; i < M; ++i){
+      int L, R, D; std::cin >> L >> R >> D;
+      --L, --R;
 
-    if(type == 0){
-      int s,t,x; std::cin >> s >> t >> x;
-
-      seg.update(s, t+1, x);
-    }else{
-      int s,t; std::cin >> s >> t;
-
-      std::cout << seg.get(s, t+1) << std::endl;
+      seg.update(L, R+1, D);
+      
+      auto ans = seg.get(0, N-1);
+      std::cout << ans << std::endl;
     }
   }
 
@@ -85,12 +97,13 @@ int main(){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/aoj/DSL_2_H/main.test.cpp"
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H"
+#line 1 "test/yukicoder/631/main.test.cpp"
+#define PROBLEM "https://yukicoder.me/problems/no/631"
 
 #include <iostream>
-#line 2 "Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp"
 #include <vector>
+
+#line 3 "Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp"
 
 /**
  * @title 遅延セグメント木
@@ -171,20 +184,20 @@ struct SumMonoid{
   constexpr inline static value_type id(){return 0;}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return a + b;}
 };
-#line 2 "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/max_monoid.cpp"
 #include <algorithm>
 
 template <typename T>
-struct MinMonoid{
+struct MaxMonoid{
   using value_type = T;
-  constexpr inline static value_type id(){return std::numeric_limits<T>::max();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::min(a, b);}
+  constexpr inline static value_type id(){return std::numeric_limits<T>::lowest();}
+  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::max(a, b);}
 };
-#line 4 "Mylib/AlgebraicStructure/MonoidAction/add_min.cpp"
+#line 4 "Mylib/AlgebraicStructure/MonoidAction/add_max.cpp"
 
 template <typename T, typename U>
-struct AddMin{
-  using monoid_get = MinMonoid<T>;
+struct AddMax{
+  using monoid_get = MaxMonoid<T>;
   using monoid_update = SumMonoid<U>;
   using value_type_get = typename monoid_get::value_type;
   using value_type_update = typename monoid_update::value_type;
@@ -193,25 +206,35 @@ struct AddMin{
     return a + b;
   }
 };
-#line 6 "test/aoj/DSL_2_H/main.test.cpp"
+#line 8 "test/yukicoder/631/main.test.cpp"
 
 int main(){
-  int n, q; std::cin >> n >> q;
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N;
+  while(std::cin >> N){
+    auto seg = LazySegmentTree<AddMax<int64_t,int64_t>>(N-1);
+        
+    std::vector<int64_t> T(N-1);
+    for(auto &x : T) std::cin >> x;
+    
+    for(int i = 0; i < N-1; ++i){
+      T[i] += 3 * (N-1-i);
+    }
 
-  LazySegmentTree<AddMin<int64_t,int64_t>> seg(n);
-  seg.init(0);
+    seg.init_with_vector(T);
+    
+    int M; std::cin >> M;
 
-  while(q--){
-    int type; std::cin >> type;
+    for(int i = 0; i < M; ++i){
+      int L, R, D; std::cin >> L >> R >> D;
+      --L, --R;
 
-    if(type == 0){
-      int s,t,x; std::cin >> s >> t >> x;
-
-      seg.update(s, t+1, x);
-    }else{
-      int s,t; std::cin >> s >> t;
-
-      std::cout << seg.get(s, t+1) << std::endl;
+      seg.update(L, R+1, D);
+      
+      auto ans = seg.get(0, N-1);
+      std::cout << ans << std::endl;
     }
   }
 

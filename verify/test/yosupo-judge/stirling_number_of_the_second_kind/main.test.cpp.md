@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f546c969ceb14dcb37f380879c54e41c">test/yosupo-judge/stirling_number_of_the_second_kind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-26 00:11:48+09:00
+    - Last commit date: 2020-04-30 20:34:51+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/stirling_number_of_the_second_kind">https://judge.yosupo.jp/problem/stirling_number_of_the_second_kind</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number Theoretic Transform</a>
-* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -211,6 +211,7 @@ public:
 
 /**
  * @title Number Theoretic Transform
+ * @docs ntt_convolution.md
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>
 class NumberTheoreticTransform{

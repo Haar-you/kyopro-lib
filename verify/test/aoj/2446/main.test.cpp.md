@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#5326787223290b45db8eae567be7c0f8">test/aoj/2446</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2446/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-30 20:34:51+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2446">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2446</a>
@@ -124,8 +124,7 @@ int main(){
 
 /**
  * @title 下位集合に対する高速Möbius変換
- * @see https://onlinejudge.u-aizu.ac.jp/challenges/search/volumes/2446 (包除原理への応用)
- * @note f(S) = ∑_{T⊆S} g(T) * (-1)^(|S|-|T|)
+ * @docs fast_mobius_transform_subset.md
  */
 template <typename T, typename Func = std::minus<T>>
 std::vector<T> fast_mobius_transform_subset(std::vector<T> f, const Func &op = std::minus<T>()){

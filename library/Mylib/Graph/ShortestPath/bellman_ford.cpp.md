@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../../index.html#9a0780c4ad89eac4e850657d1e57c23a">Mylib/Graph/ShortestPath</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestPath/bellman_ford.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-04-30 15:12:20+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with
@@ -54,25 +54,33 @@ layout: default
 #pragma once
 #include <vector>
 #include <algorithm>
+#include <cassert>
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
  * @title Bellman-Ford法
+ * @docs bellman_ford.md
  */
 template <typename T>
 struct BellmanFord{
   struct Result{
     enum class Tag {OK, NEGLOOP, UNREACHABLE} tag;
-    T value;
+    T val;
 
+  public:
     static auto unreachable() {return Result(Tag::UNREACHABLE);}
     static auto negloop() {return Result(Tag::NEGLOOP);}
     Result(Tag tag): tag(tag){}
-    Result(T value): tag(Tag::OK), value(value){}
+    Result(T val): tag(Tag::OK), val(val){}
 
     bool is_unreachable() const {return tag == Tag::UNREACHABLE;}
     bool is_negloop() const {return tag == Tag::NEGLOOP;}
     bool is_ok() const {return tag == Tag::OK;}
+
+    T value() const {
+      assert(tag == Tag::OK);
+      return val;
+    }
   };
   
   int n;
@@ -90,16 +98,16 @@ struct BellmanFord{
           int t = e.to;
           T d = e.cost;
           
-          if(not dist[s].is_unreachable() and
-             not dist[t].is_unreachable() and
-             dist[s].value + d < dist[t].value and i == n-1){
+          if(dist[s].is_ok() and
+             dist[t].is_ok() and
+             dist[s].value() + d < dist[t].value() and i == n-1){
             dist[t] = Result::negloop();
           }else{
             if(dist[s].is_ok()){
               if(dist[t].is_unreachable()){
-                dist[t] = dist[s].value + d;
-              }else{
-                dist[t] = std::min(dist[t].value, dist[s].value + d);
+                dist[t] = dist[s].value() + d;
+              }else if(dist[t].is_ok()){
+                dist[t] = std::min(dist[t].value(), dist[s].value() + d);
               }
             }
           }
@@ -128,6 +136,7 @@ struct BellmanFord{
 #line 2 "Mylib/Graph/ShortestPath/bellman_ford.cpp"
 #include <vector>
 #include <algorithm>
+#include <cassert>
 #line 3 "Mylib/Graph/graph_template.cpp"
 #include <iostream>
 
@@ -154,25 +163,32 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
   add_edge<T, C>(g, a, b, w);
   add_edge<T, C>(g, b, a, w);
 }
-#line 5 "Mylib/Graph/ShortestPath/bellman_ford.cpp"
+#line 6 "Mylib/Graph/ShortestPath/bellman_ford.cpp"
 
 /**
  * @title Bellman-Ford法
+ * @docs bellman_ford.md
  */
 template <typename T>
 struct BellmanFord{
   struct Result{
     enum class Tag {OK, NEGLOOP, UNREACHABLE} tag;
-    T value;
+    T val;
 
+  public:
     static auto unreachable() {return Result(Tag::UNREACHABLE);}
     static auto negloop() {return Result(Tag::NEGLOOP);}
     Result(Tag tag): tag(tag){}
-    Result(T value): tag(Tag::OK), value(value){}
+    Result(T val): tag(Tag::OK), val(val){}
 
     bool is_unreachable() const {return tag == Tag::UNREACHABLE;}
     bool is_negloop() const {return tag == Tag::NEGLOOP;}
     bool is_ok() const {return tag == Tag::OK;}
+
+    T value() const {
+      assert(tag == Tag::OK);
+      return val;
+    }
   };
   
   int n;
@@ -190,16 +206,16 @@ struct BellmanFord{
           int t = e.to;
           T d = e.cost;
           
-          if(not dist[s].is_unreachable() and
-             not dist[t].is_unreachable() and
-             dist[s].value + d < dist[t].value and i == n-1){
+          if(dist[s].is_ok() and
+             dist[t].is_ok() and
+             dist[s].value() + d < dist[t].value() and i == n-1){
             dist[t] = Result::negloop();
           }else{
             if(dist[s].is_ok()){
               if(dist[t].is_unreachable()){
-                dist[t] = dist[s].value + d;
-              }else{
-                dist[t] = std::min(dist[t].value, dist[s].value + d);
+                dist[t] = dist[s].value() + d;
+              }else if(dist[t].is_ok()){
+                dist[t] = std::min(dist[t].value(), dist[s].value() + d);
               }
             }
           }

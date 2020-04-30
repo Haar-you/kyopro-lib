@@ -31,9 +31,24 @@ layout: default
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/convolution_and.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-04-30 20:34:51+09:00
 
 
+
+
+## Operations
+
+- `convolution_and(f[N], g[N])`
+	- `N`は2の累乗
+	- `k in [0, N)`について、$h_k = \sum_{k=i \cap j} f_i * g_j$を求める。
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References
 
 
 ## Depends on
@@ -54,7 +69,7 @@ layout: default
 
 /**
  * @title 添字BitAnd畳み込み
- * @note h_k = ∑_{k=i∩j} f(i) * g(j)
+ * @docs convolution_and.md
  */
 template <typename T>
 std::vector<T> convolution_and(std::vector<T> f, std::vector<T> g){
@@ -78,8 +93,7 @@ std::vector<T> convolution_and(std::vector<T> f, std::vector<T> g){
 
 /**
  * @title 上位集合に対する高速Zeta変換
- * @see https://codeforces.com/contest/1208/submission/59501702 (最大値2つを保持)
- * @note f(S) = ∑_{S⊆T} g(T)
+ * @docs fast_zeta_transform_superset.md
  */
 template <typename T, typename Func = std::plus<T>>
 std::vector<T> fast_zeta_transform_superset(std::vector<T> f, const Func &op = std::plus<T>()){
@@ -94,7 +108,7 @@ std::vector<T> fast_zeta_transform_superset(std::vector<T> f, const Func &op = s
 
 /**
  * @title 上位集合に対する高速Möbius変換
- * @note f(S) = ∑_{S⊆T} g(T) * (-1)^(|T|-|S|)
+ * @docs fast_mobius_transform_superset.md
  */
 template <typename T, typename Func = std::minus<T>>
 std::vector<T> fast_mobius_transform_superset(std::vector<T> f, const Func &op = std::minus<T>()){
@@ -109,7 +123,7 @@ std::vector<T> fast_mobius_transform_superset(std::vector<T> f, const Func &op =
 
 /**
  * @title 添字BitAnd畳み込み
- * @note h_k = ∑_{k=i∩j} f(i) * g(j)
+ * @docs convolution_and.md
  */
 template <typename T>
 std::vector<T> convolution_and(std::vector<T> f, std::vector<T> g){

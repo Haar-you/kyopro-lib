@@ -68,7 +68,7 @@ layout: default
 
 * :heavy_check_mark: <a href="GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
 * :heavy_check_mark: <a href="TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
-* :question: <a href="graph_template.cpp.html">グラフ用テンプレート</a>
+* :heavy_check_mark: <a href="graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with

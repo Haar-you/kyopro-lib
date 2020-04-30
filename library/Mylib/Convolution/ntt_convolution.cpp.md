@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/ntt_convolution.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-25 21:56:55+09:00
+    - Last commit date: 2020-04-30 20:34:51+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../Number/Mint/mint.cpp.html">modint</a>
+* :heavy_check_mark: <a href="../Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Verified with
@@ -62,6 +62,7 @@ layout: default
 
 /**
  * @title Number Theoretic Transform
+ * @docs ntt_convolution.md
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>
 class NumberTheoreticTransform{
@@ -281,6 +282,7 @@ public:
 
 /**
  * @title Number Theoretic Transform
+ * @docs ntt_convolution.md
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>
 class NumberTheoreticTransform{

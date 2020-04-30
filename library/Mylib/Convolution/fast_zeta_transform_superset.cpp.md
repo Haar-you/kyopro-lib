@@ -31,10 +31,26 @@ layout: default
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/fast_zeta_transform_superset.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-30 20:34:51+09:00
 
 
-* see: <a href="https://codeforces.com/contest/1208/submission/59501702 (最大値2つを保持)">https://codeforces.com/contest/1208/submission/59501702 (最大値2つを保持)</a>
+
+
+## Operations
+
+- `fast_zeta_transform_superset(f[N], op = std::plus())`
+	- `N`は2の累乗
+	- $f(S) = \sum_{S\subseteq T} g(T)$
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [Manthan, Codefest 19 F. Bits And Pieces](https://codeforces.com/contest/1208/problem/F) (最大値2つを保持)
+
+## References
 
 
 ## Required by
@@ -58,8 +74,7 @@ layout: default
 
 /**
  * @title 上位集合に対する高速Zeta変換
- * @see https://codeforces.com/contest/1208/submission/59501702 (最大値2つを保持)
- * @note f(S) = ∑_{S⊆T} g(T)
+ * @docs fast_zeta_transform_superset.md
  */
 template <typename T, typename Func = std::plus<T>>
 std::vector<T> fast_zeta_transform_superset(std::vector<T> f, const Func &op = std::plus<T>()){
@@ -83,8 +98,7 @@ std::vector<T> fast_zeta_transform_superset(std::vector<T> f, const Func &op = s
 
 /**
  * @title 上位集合に対する高速Zeta変換
- * @see https://codeforces.com/contest/1208/submission/59501702 (最大値2つを保持)
- * @note f(S) = ∑_{S⊆T} g(T)
+ * @docs fast_zeta_transform_superset.md
  */
 template <typename T, typename Func = std::plus<T>>
 std::vector<T> fast_zeta_transform_superset(std::vector<T> f, const Func &op = std::plus<T>()){

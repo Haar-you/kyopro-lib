@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f1313a8dcf51d21dc3fedcd116b5c80b">test/aoj/GRL_1_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_1_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-04-30 15:12:20+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/bellman_ford.cpp.html">Bellman-Ford法</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -79,7 +79,7 @@ int main(){
       if(x.is_unreachable()){
         std::cout << "INF" << std::endl;
       }else{
-        std::cout << x.value << std::endl;
+        std::cout << x.value() << std::endl;
       }
     }
   }
@@ -126,25 +126,33 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 }
 #line 3 "Mylib/Graph/ShortestPath/bellman_ford.cpp"
 #include <algorithm>
-#line 5 "Mylib/Graph/ShortestPath/bellman_ford.cpp"
+#include <cassert>
+#line 6 "Mylib/Graph/ShortestPath/bellman_ford.cpp"
 
 /**
  * @title Bellman-Ford法
+ * @docs bellman_ford.md
  */
 template <typename T>
 struct BellmanFord{
   struct Result{
     enum class Tag {OK, NEGLOOP, UNREACHABLE} tag;
-    T value;
+    T val;
 
+  public:
     static auto unreachable() {return Result(Tag::UNREACHABLE);}
     static auto negloop() {return Result(Tag::NEGLOOP);}
     Result(Tag tag): tag(tag){}
-    Result(T value): tag(Tag::OK), value(value){}
+    Result(T val): tag(Tag::OK), val(val){}
 
     bool is_unreachable() const {return tag == Tag::UNREACHABLE;}
     bool is_negloop() const {return tag == Tag::NEGLOOP;}
     bool is_ok() const {return tag == Tag::OK;}
+
+    T value() const {
+      assert(tag == Tag::OK);
+      return val;
+    }
   };
   
   int n;
@@ -162,16 +170,16 @@ struct BellmanFord{
           int t = e.to;
           T d = e.cost;
           
-          if(not dist[s].is_unreachable() and
-             not dist[t].is_unreachable() and
-             dist[s].value + d < dist[t].value and i == n-1){
+          if(dist[s].is_ok() and
+             dist[t].is_ok() and
+             dist[s].value() + d < dist[t].value() and i == n-1){
             dist[t] = Result::negloop();
           }else{
             if(dist[s].is_ok()){
               if(dist[t].is_unreachable()){
-                dist[t] = dist[s].value + d;
-              }else{
-                dist[t] = std::min(dist[t].value, dist[s].value + d);
+                dist[t] = dist[s].value() + d;
+              }else if(dist[t].is_ok()){
+                dist[t] = std::min(dist[t].value(), dist[s].value() + d);
               }
             }
           }
@@ -217,7 +225,7 @@ int main(){
       if(x.is_unreachable()){
         std::cout << "INF" << std::endl;
       }else{
-        std::cout << x.value << std::endl;
+        std::cout << x.value() << std::endl;
       }
     }
   }

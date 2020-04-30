@@ -31,10 +31,26 @@ layout: default
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/fast_zeta_transform_subset.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-04-30 20:34:51+09:00
 
 
-* see: <a href="https://atcoder.jp/contests/arc100/submissions/4581560 (演算がやや特殊)">https://atcoder.jp/contests/arc100/submissions/4581560 (演算がやや特殊)</a>
+
+
+## Operations
+
+- `fast_zeta_transform_subset(f[N], op = std::plus())`
+	- `N`は2の累乗
+	- $f(S) = \sum_{T\subseteq S} g(T)$
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [ARC 100 E - Or Plus Max](https://atcoder.jp/contests/arc100/tasks/arc100_c) (演算がやや特殊)
+
+## References
 
 
 ## Required by
@@ -58,8 +74,7 @@ layout: default
 
 /**
  * @title 下位集合に対する高速Zeta変換
- * @see https://atcoder.jp/contests/arc100/submissions/4581560 (演算がやや特殊)
- * @note f(S) = ∑_{T⊆S} g(T)
+ * @docs fast_zeta_transform_subset.md
  */
 template <typename T, typename Func = std::plus<T>>
 std::vector<T> fast_zeta_transform_subset(std::vector<T> f, const Func &op = std::plus<T>()){
@@ -83,8 +98,7 @@ std::vector<T> fast_zeta_transform_subset(std::vector<T> f, const Func &op = std
 
 /**
  * @title 下位集合に対する高速Zeta変換
- * @see https://atcoder.jp/contests/arc100/submissions/4581560 (演算がやや特殊)
- * @note f(S) = ∑_{T⊆S} g(T)
+ * @docs fast_zeta_transform_subset.md
  */
 template <typename T, typename Func = std::plus<T>>
 std::vector<T> fast_zeta_transform_subset(std::vector<T> f, const Func &op = std::plus<T>()){
