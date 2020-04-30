@@ -4,8 +4,7 @@
 
 /**
  * @title 下位集合に対する高速Möbius変換
- * @see https://onlinejudge.u-aizu.ac.jp/challenges/search/volumes/2446 (包除原理への応用)
- * @note f(S) = ∑_{T⊆S} g(T) * (-1)^(|S|-|T|)
+ * @docs fast_mobius_transform_subset.md
  */
 template <typename T, typename Func = std::minus<T>>
 std::vector<T> fast_mobius_transform_subset(std::vector<T> f, const Func &op = std::minus<T>()){

@@ -4,7 +4,7 @@
 
 /**
  * @title 上位集合に対する高速Möbius変換
- * @note f(S) = ∑_{S⊆T} g(T) * (-1)^(|T|-|S|)
+ * @docs fast_mobius_transform_superset.md
  */
 template <typename T, typename Func = std::minus<T>>
 std::vector<T> fast_mobius_transform_superset(std::vector<T> f, const Func &op = std::minus<T>()){

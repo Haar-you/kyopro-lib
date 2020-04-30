@@ -5,8 +5,7 @@
 
 /**
  * @title 添字BitOr畳み込み
- * @note h_k = ∑_{k=i∪j} f(i) * g(j)
- * @see https://csacademy.com/contest/archive/task/maxor/
+ * @docs convolution_or.md
  */
 template <typename T>
 std::vector<T> convolution_or(std::vector<T> f, std::vector<T> g){

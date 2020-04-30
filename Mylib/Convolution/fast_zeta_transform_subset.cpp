@@ -4,8 +4,7 @@
 
 /**
  * @title 下位集合に対する高速Zeta変換
- * @see https://atcoder.jp/contests/arc100/submissions/4581560 (演算がやや特殊)
- * @note f(S) = ∑_{T⊆S} g(T)
+ * @docs fast_zeta_transform_subset.md
  */
 template <typename T, typename Func = std::plus<T>>
 std::vector<T> fast_zeta_transform_subset(std::vector<T> f, const Func &op = std::plus<T>()){

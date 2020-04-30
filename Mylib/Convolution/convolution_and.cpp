@@ -5,7 +5,7 @@
 
 /**
  * @title 添字BitAnd畳み込み
- * @note h_k = ∑_{k=i∩j} f(i) * g(j)
+ * @docs convolution_and.md
  */
 template <typename T>
 std::vector<T> convolution_and(std::vector<T> f, std::vector<T> g){

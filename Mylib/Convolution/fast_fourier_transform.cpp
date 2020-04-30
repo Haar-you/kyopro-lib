@@ -6,7 +6,7 @@
 
 /**
  * @title 高速Fourier変換
- * @see https://atcoder.jp/contests/atc001/submissions/6527777
+ * @docs fast_fourier_transform.md
  */
 template <typename T = double, bool INVERSE = false>
 auto fast_fourier_transform(std::vector<std::complex<T>> f){

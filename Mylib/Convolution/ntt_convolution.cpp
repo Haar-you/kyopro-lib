@@ -7,6 +7,7 @@
 
 /**
  * @title Number Theoretic Transform
+ * @docs ntt_convolution.md
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>
 class NumberTheoreticTransform{
