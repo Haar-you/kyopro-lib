@@ -1,6 +1,9 @@
 #pragma once
 #include <utility>
 
+/**
+ * @docs with_index.md
+ */
 template <typename Monoid, typename Index>
 struct WithIndex{
   using value_type = std::pair<typename Monoid::value_type, typename Index::value_type>;

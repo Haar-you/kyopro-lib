@@ -1,6 +1,9 @@
 #pragma once
 #include "Mylib/AlgebraicStructure/Monoid/or_monoid.cpp"
 
+/**
+ * @docs or_or.md
+ */
 template <typename T, typename U>
 struct OrOr{
   using monoid_get = OrMonoid<T>;

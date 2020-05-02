@@ -2,7 +2,8 @@
 #include <vector>
 
 /**
- * @title 双方向のセグメント木
+ * @title SegmentTree (双方向Foldable)
+ * @docs segment_tree_both_foldable.md
  */
 template <typename Monoid>
 class SegmentTreeBothFoldable{

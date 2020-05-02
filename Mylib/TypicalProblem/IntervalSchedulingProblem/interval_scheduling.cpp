@@ -7,9 +7,7 @@
 
 /**
  * @title 区間スケジューリング問題
- * @see https://atcoder.jp/contests/kupc2015/submissions/6604297
- * @see https://codeforces.com/contest/528/submission/57933292
- * @attention time complexity O(N log N)
+ * @docs interval_scheduling.md
  */
 template <typename T>
 std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &left, const std::vector<T> &right){ // 区間は[a,b]

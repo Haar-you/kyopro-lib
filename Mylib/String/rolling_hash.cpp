@@ -4,7 +4,7 @@
 
 /**
  * @title Rolling Hash
- * @see https://yukicoder.me/submissions/347187
+ * @docs rolling_hash.md
  */
 class RollingHash{
   std::vector<int64_t> pow;

@@ -2,10 +2,8 @@
 #include <utility>
 
 /**
- * @see https://atcoder.jp/contests/arc008/submissions/7996520
- * @see https://judge.yosupo.jp/submission/2048
+ * @docs affine_monoid.md
  */
-
 template <typename T>
 struct AffineMonoid{
   using value_type = std::pair<T, T>;

@@ -4,8 +4,7 @@
 
 /**
  * @title Eulerのトーシェント関数の列挙
- * @see https://codeforces.com/contest/1208/submission/59824476
- * @note phi(nm) = phi(n) * phi(m) if nとmが互いに素
+ * @docs euler_phi_function_table.md
  */
 auto totient_table(int n){
   std::vector<int> ret(n+1);

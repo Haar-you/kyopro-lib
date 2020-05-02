@@ -2,6 +2,9 @@
 #include "Mylib/AlgebraicStructure/Monoid/product_monoid.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp"
 
+/**
+ * @docs multiply_product.md
+ */
 template <typename T, typename U>
 struct MultiplyProduct{
   using monoid_get = ProductMonoid<T>;

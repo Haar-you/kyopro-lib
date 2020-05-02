@@ -4,6 +4,7 @@
 
 /**
  * @title 三角形の外接円
+ * @docs circumscribed_circle_of_triangle.md
  */
 template <typename T, typename U = typename T::value_type>
 Circle<T> circumscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b, const Point<T> &c){

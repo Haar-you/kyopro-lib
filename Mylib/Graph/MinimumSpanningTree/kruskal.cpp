@@ -6,6 +6,7 @@
 
 /**
  * @title Kruskal法
+ * @docs kruskal.md
  */
 template <typename T>
 std::vector<Edge<T>> kruskal(const Graph<T> &graph){

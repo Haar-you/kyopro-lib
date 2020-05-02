@@ -5,7 +5,7 @@
 
 /**
  * @title 円と多角形の共通部分の面積
- * @see https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_H
+ * @docs area_intersection_of_circle_and_polygon.md
  */
 template <typename T>
 T area_intersection_of_circle_and_polygon(const Circle<T> &cl, const Polygon<T> &ps){

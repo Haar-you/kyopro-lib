@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @docs xor_monoid.md
+ */
 template <typename T>
 struct XorMonoid{
   using value_type = T;

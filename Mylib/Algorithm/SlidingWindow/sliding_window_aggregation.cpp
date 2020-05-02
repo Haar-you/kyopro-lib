@@ -5,7 +5,7 @@
 
 /**
  * @title Sliding Window Aggregation
- * @see https://scrapbox.io/data-structures/Sliding_Window_Aggregation
+ * @docs sliding_window_aggregation.md
  */
 template <typename T, typename F>
 class SlidingWindowAggregation{

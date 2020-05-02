@@ -3,7 +3,7 @@
 
 /**
  * @title mod逆数
- * @attention gcd(a, m) = 1
+ * @docs mod_inv.md
  */
 int64_t mod_inv(int64_t a, int64_t m){
   int64_t b = m, u = 1, v = 0;

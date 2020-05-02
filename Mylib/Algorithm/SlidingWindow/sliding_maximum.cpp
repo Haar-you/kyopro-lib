@@ -4,7 +4,7 @@
 
 /**
  * @title スライド最大値
- * @see https://atcoder.jp/contests/cf16-tournament-round3-open/submissions/6875142
+ * @docs sliding_maximum.md
  */
 template <typename T>
 std::vector<T> sliding_maximum(const std::vector<T> &a, int k){

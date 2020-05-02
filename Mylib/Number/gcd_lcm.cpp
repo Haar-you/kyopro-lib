@@ -3,6 +3,7 @@
 
 /**
  * @title 最大公約数・最小公倍数
+ * @docs gcd_lcm.md
  */
 int64_t gcd(int64_t a, int64_t b){
   if(a < b) std::swap(a, b);

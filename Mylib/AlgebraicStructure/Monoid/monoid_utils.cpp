@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @docs monoid_utils.md
+ */
 template <typename M, typename value_type = typename M::value_type>
 value_type times(value_type a, int64_t p){
   auto ret = M::id();

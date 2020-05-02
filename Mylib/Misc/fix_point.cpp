@@ -3,6 +3,7 @@
 
 /**
  * @title 不動点コンビネータ
+ * @docs fix_point.md
  */
 template <typename F>
 struct FixPoint : F{

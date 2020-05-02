@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @docs xor_and_semiring.md
+ */
 template <typename T>
 struct XorAndSemiring{
   using value_type = T;

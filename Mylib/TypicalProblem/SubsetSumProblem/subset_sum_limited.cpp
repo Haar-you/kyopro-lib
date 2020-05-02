@@ -3,8 +3,7 @@
 
 /**
  * @title 個数制限付き部分和問題
- * @attention 時間計算量 O(NK)
- * @see https://onlinejudge.u-aizu.ac.jp/beta/room.html#HUPC2019Day2/problems/D
+ * @docs subset_sum_limited.md
  */
 bool subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vector<int> &m){
   std::vector<int> dp(K+1, -1);

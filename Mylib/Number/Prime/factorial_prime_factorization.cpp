@@ -2,7 +2,7 @@
 
 /**
  * @title a!の素因数pの個数
- * @see https://codeforces.com/contest/1228/submission/62232341
+ * @docs factorial_prime_factorization.md
  */
 int64_t factorial_prime_factorization(int64_t a, int64_t p){
   int64_t ret = 0, q = p;

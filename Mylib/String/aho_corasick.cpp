@@ -6,7 +6,7 @@
 
 /**
  * @title Aho-Corasick法
- * @note https://yukicoder.me/submissions/347348
+ * @docs aho_corasick.md
  */
 class AhoCorasick{
 public:

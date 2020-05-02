@@ -2,6 +2,9 @@
 #include <optional>
 #include <algorithm>
 
+/**
+ * @docs tropical_semiring.md
+ */
 template <typename T>
 struct TropicalSemiring{
   using value_type = std::optional<T>;

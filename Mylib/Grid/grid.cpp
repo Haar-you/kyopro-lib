@@ -5,6 +5,7 @@
 
 /**
  * @title グリッド用テンプレート
+ * @docs grid.md
  */
 struct Point{
   int x, y;

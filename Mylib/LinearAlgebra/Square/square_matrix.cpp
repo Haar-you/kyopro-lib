@@ -4,6 +4,7 @@
 
 /**
  * @title 正方行列
+ * @docs square_matrix.md
  */
 template <typename T> struct SquareMatrix{
   using value_type = T;

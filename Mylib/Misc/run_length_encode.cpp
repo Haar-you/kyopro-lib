@@ -4,6 +4,7 @@
 
 /**
  * @title 連長圧縮
+ * @docs run_length_encode.md
  */
 template <typename Container, typename T = typename Container::value_type>
 auto run_length_encode(const Container &v){

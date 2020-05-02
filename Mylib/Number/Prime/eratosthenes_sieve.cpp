@@ -3,6 +3,7 @@
 
 /**
  * @title Eratosthenesの篩
+ * @docs eratosthenes_sieve.md
  */
 template <int MAX>
 struct EratosthenesSieve{

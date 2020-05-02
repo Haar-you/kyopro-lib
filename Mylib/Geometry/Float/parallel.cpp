@@ -4,6 +4,7 @@
 
 /**
  * @title 平行判定
+ * @docs parallel.md
  */
 template <typename T, typename U = typename T::value_type>
 bool parallel(const Line<T> &a, const Line<T> &b){

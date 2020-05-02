@@ -4,6 +4,7 @@
 
 /**
  * @title Z-algorithm
+ * @docs z_algorithm
  */
 template <typename Container, typename T = typename Container::value_type>
 std::vector<int> z_algorithm(const Container &s){

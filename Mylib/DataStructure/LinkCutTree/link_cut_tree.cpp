@@ -3,6 +3,7 @@
 
 /**
  * @title Link-Cut tree
+ * @docs link_cut_tree.md
  */
 template <typename Monoid>
 struct LinkCutNode{

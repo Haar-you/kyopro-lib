@@ -4,6 +4,7 @@
 
 /**
  * @title 簡潔辞書
+ * @docs succinct_dictionary.md
  */
 
 struct SuccinctDict{

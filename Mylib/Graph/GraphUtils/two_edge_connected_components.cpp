@@ -5,6 +5,7 @@
 
 /**
  * @title 二重辺連結成分分解
+ * @docs two_edge_connected_components.md
  */
 template <typename T>
 auto two_edge_connected_components(const Graph<T> &graph){

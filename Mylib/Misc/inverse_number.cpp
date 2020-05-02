@@ -3,6 +3,7 @@
 
 /**
  * @title 転倒数
+ * @docs inverse_number.md
  */
 namespace inverse_number{
   template <typename T, typename Compare>

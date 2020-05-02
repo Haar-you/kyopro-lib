@@ -1,6 +1,9 @@
 #pragma once
 #include <functional>
 
+/**
+ * @docs leftist_heap.md
+ */
 template <typename T, class Compare = std::less<T>>
 class LeftistHeap{
   struct node{

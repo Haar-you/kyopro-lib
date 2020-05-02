@@ -2,6 +2,7 @@
 
 /**
  * @title 128bit整数型
+ * @docs int128.md
  */
 #ifdef __SIZEOF_INT128__
 using uint128_t = __uint128_t;

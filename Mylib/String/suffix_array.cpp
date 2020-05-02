@@ -4,7 +4,7 @@
 
 /**
  * @title 接尾辞配列
- * @see https://yukicoder.me/submissions/347188
+ * @docs suffix_array.md
  */
 template <typename T> class SuffixArray{
 public:

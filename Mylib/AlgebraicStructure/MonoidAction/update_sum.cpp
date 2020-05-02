@@ -2,6 +2,9 @@
 #include "Mylib/AlgebraicStructure/Monoid/update_monoid.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 
+/**
+ * @docs update_sum.md
+ */
 template <typename T, typename U>
 struct UpdateSum{
   using monoid_get = SumMonoid<T>;

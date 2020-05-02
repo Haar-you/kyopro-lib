@@ -4,6 +4,7 @@
 
 /**
  * @title Ford-Fulkerson法
+ * @docs ford_fulkerson.md
  */
 template <typename T> class FordFulkerson{
 public:

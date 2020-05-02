@@ -4,6 +4,7 @@
 
 /**
  * @title Atkinの篩
+ * @docs atkin_sieve.md
  */
 template <int MAX>
 struct AtkinSieve{

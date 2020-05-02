@@ -2,6 +2,9 @@
 #include "Mylib/AlgebraicStructure/Monoid/update_monoid.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/or_monoid.cpp"
 
+/**
+ * @docs update_or.md
+ */
 template <typename T, typename U>
 struct UpdateOr{
   using monoid_get = OrMonoid<T>;

@@ -4,6 +4,7 @@
 
 /**
  * @title スプレー木
+ * @docs splay_tree.md
  */
 namespace splay_tree{
   template <typename Monoid>

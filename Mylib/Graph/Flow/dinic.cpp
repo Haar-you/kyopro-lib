@@ -6,6 +6,7 @@
 
 /**
  * @title Dinic法
+ * @docs dinic.md
  */
 template <typename T> class Dinic{
 private:

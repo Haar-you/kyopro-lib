@@ -3,7 +3,8 @@
 #include <optional>
 
 /**
- * @title 隣接行列グラフでのWarshall-Floyd法
+ * @title Warshall-Floyd法 (隣接行列グラフ)
+ * @docs warshall_floyd_for_matrix_graph.md
  */
 template <typename T, T INVALID>
 struct WarshallFloyd{

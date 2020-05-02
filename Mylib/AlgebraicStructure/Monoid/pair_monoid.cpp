@@ -1,6 +1,9 @@
 #pragma once
 #include <utility>
 
+/**
+ * @docs pair_monoid.md
+ */
 template <typename M1, typename M2>
 struct PairMonoid{
   using value_type = std::pair<typename M1::value_type, typename M2::value_type>;

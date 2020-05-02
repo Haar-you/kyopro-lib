@@ -2,6 +2,7 @@
 
 /**
  * @title XorShift
+ * @docs xor_shift.md
  */
 struct XorShift{
   static uint64_t rand(){

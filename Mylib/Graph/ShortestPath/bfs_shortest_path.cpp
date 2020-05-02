@@ -5,7 +5,8 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title BFS最小路
+ * @title BFS最短路
+ * @docs bfs_shortest_path.md
  */
 template <typename T>
 std::vector<std::optional<int>> bfs_shortest_path(const Graph<T> &g, const std::vector<int> &src){

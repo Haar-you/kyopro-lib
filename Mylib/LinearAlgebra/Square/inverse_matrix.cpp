@@ -3,6 +3,7 @@
 
 /**
  * @title 逆行列
+ * @docs inverse_matrix.md
  */
 template <typename M, typename T = typename M::value_type>
 bool inverse_matrix(M m, M &ret){

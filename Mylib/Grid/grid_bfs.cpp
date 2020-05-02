@@ -5,8 +5,7 @@
 
 /**
  * @title グリッド上BFS
- * @see https://atcoder.jp/contests/agc033/submissions/7429070
- * @see https://atcoder.jp/contests/qupc2018/submissions/7429448
+ * @docs grid_bfs.md
  */
 template <typename Directions, typename Checker>
 std::vector<std::vector<int>> bfs_grid(const int H, const int W,

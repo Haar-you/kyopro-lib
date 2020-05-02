@@ -2,6 +2,9 @@
 #include <vector>
 #include <utility>
 
+/**
+ * @docs square_matrix_semiring.md
+ */
 template <typename Semiring> struct SquareMatrix{
   using value_type = typename Semiring::value_type;
   

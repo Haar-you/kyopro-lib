@@ -4,9 +4,8 @@
 #include <utility>
 
 /**
- * @title Mod2体上での掃き出し法
- * @see https://atcoder.jp/contests/bitflyer2018-final-open/tasks/bitflyer2018_final_d
- * @see https://csacademy.com/contest/archive/task/xor-closure/
+ * @title 掃き出し法 (Mod2体)
+ * @docs binary_gaussian_elimination.md
  */
 template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &m){
   int n = m.size();

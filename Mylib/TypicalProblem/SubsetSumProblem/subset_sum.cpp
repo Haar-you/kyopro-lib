@@ -3,7 +3,7 @@
 
 /**
  * @title 部分和判定問題
- * @attention 時間計算量 O(NK)
+ * @docs subset_sum.md
  */
 bool subset_sum(int N, int K, const std::vector<int> &a){
   std::vector<std::vector<bool>> dp(2, std::vector<bool>(K+1));

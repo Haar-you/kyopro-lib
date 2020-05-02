@@ -2,6 +2,7 @@
 
 /**
  * @title starts_with
+ * @docs starts_with.md
  */
 template <typename Container, typename T = typename Container::value_type>
 bool starts_with(const Container &str, const Container &prefix){

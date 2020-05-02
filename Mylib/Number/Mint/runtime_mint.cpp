@@ -4,7 +4,7 @@
 
 /**
  * @title 実行時mod指定modint
- * @attention 使用前にstatic変数Mを設定する。
+ * @docs runtime_mint.md
  */
 class RuntimeModInt{
 public:

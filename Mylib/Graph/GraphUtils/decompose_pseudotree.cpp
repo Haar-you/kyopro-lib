@@ -5,8 +5,7 @@
 
 /**
  * @title Pseudotreeの分解
- * @see https://en.wikipedia.org/wiki/Pseudoforest
- * @brief 閉路を丁度1つだけもつ無向グラフを閉路と森に分解する。
+ * @docs decompose_pseudotree.md
  */
 template <typename T>
 struct PseudoTree{

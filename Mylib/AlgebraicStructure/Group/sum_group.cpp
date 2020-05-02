@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @docs sum_group.md
+ */
 template <typename T>
 struct SumGroup{
   using value_type = T;

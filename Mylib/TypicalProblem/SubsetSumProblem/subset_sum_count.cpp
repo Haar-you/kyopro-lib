@@ -3,7 +3,7 @@
 
 /**
  * @title 部分和数え上げ問題
- * @attention 時間計算量 O(NK)
+ * @docs subset_sum_count.md
  */
 template <typename T>
 T subset_sum_count(int N, int K, const std::vector<int> &a){

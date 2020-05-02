@@ -4,6 +4,7 @@
 
 /**
  * @title 二次方程式の実数解
+ * @docs quadratic_equation.md
  */
 std::vector<double> quadratic_equation(double a, double b, double c){
   double d = b*b - 4*a*c;

@@ -5,6 +5,7 @@
 
 /**
  * @title Prim法
+ * @docs prim.md
  */
 template <typename T>
 std::vector<Edge<T>> prim(const Graph<T> &graph){

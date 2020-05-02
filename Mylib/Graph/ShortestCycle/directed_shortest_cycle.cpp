@@ -7,7 +7,7 @@
 
 /**
  * @title 有向グラフの最小閉路
- * @see https://atcoder.jp/contests/abc142/submissions/7772344
+ * @docs directed_shortest_cycle.md
  */
 template <typename T>
 struct DirectShortestCycle{

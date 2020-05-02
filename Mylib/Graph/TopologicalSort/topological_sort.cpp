@@ -6,6 +6,7 @@
 
 /**
  * @title トポロジカルソート
+ * @docs topological_sort.md
  */
 template <typename T>
 std::optional<std::vector<int>> topological_sort(const Graph<T> &g){

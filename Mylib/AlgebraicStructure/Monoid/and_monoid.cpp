@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @docs and_monoid.md
+ */
 template <typename T>
 struct AndMonoid{
   using value_type = T;

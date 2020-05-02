@@ -4,6 +4,9 @@
 #include <algorithm>
 #include <numeric>
 
+/**
+ * @docs sort_all.md
+ */
 namespace sort_all{
   template <typename T>
   void sort_with_ord(const std::vector<int> &ord, int N, std::vector<T> &a){

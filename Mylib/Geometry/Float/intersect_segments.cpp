@@ -6,7 +6,7 @@
 
 /**
  * @title 線分同士の交差
- * @see http://judge.u-aizu.ac.jp/onLinejudge/description.jsp?id=CGL_2_B
+ * @docs intersect_segments.md
  */
 namespace intersect_segments{
   enum Status{

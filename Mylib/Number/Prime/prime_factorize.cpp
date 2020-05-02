@@ -4,6 +4,7 @@
 
 /**
  * @title 素因数分解
+ * @docs prime_factorize.md
  */
 auto prime_factorize(int64_t n){
   std::vector<std::pair<int64_t,int64_t>> ret;

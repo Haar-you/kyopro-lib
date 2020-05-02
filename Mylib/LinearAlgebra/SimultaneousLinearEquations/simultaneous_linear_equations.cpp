@@ -5,6 +5,7 @@
 
 /**
  * @title 連立線形方程式
+ * @docs simultaneous_linear_equations.md
  */
 namespace simulaneous_linear_equations{
   template <typename T>

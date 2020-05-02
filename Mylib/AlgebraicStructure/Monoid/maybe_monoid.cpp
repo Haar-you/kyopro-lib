@@ -1,6 +1,9 @@
 #pragma once
 #include <optional>
 
+/**
+ * @docs maybe_monoid.md
+ */
 template <typename Semigroup>
 struct MaybeMonoid{
   using value_type = std::optional<typename Semigroup::value_type>;

@@ -6,8 +6,7 @@
 
 /**
  * @title Hopcroft-Karp法
- * @see https://judge.yosupo.jp/submission/1096
- * @attention O(E√V)
+ * @docs hopcroft_karp.md
  */
 class HopcroftKarp{
   struct edge{

@@ -3,6 +3,7 @@
 
 /**
  * @title 一次元Imos法
+ * @docs imos_1d.md
  */
 template <typename T> struct Imos1D{
   std::vector<T> data;

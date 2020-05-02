@@ -5,6 +5,7 @@
 
 /**
  * @title 0-1 BFS
+ * @docs bfs_0_1.md
  */
 std::vector<int> bfs_0_1(const Graph<int> &g, const std::vector<int> &src){
   int n = g.size();

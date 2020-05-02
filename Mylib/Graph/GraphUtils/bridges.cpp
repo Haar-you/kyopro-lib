@@ -5,6 +5,7 @@
 
 /**
  * @title 橋列挙
+ * @docs bridges.md
  */
 template <typename T>
 auto bridges(const Graph<T> &graph){

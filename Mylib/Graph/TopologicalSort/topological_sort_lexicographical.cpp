@@ -5,8 +5,8 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 辞書順最小のトポロジカルソート
- * @see https://atcoder.jp/contests/tenka1-2016-quala/submissions/4016830
+ * @title トポロジカルソート (辞書順最小)
+ * @docs topological_sort_lexicographical.md
  */
 template <typename T>
 std::optional<std::vector<int>> topological_sort_lexicographical(const Graph<T> &g){

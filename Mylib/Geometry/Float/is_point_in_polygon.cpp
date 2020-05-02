@@ -5,7 +5,7 @@
 
 /**
  * @title 点・多角形の包含関係
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C
+ * @docs is_point_in_polygon.md
  */
 namespace point_in_polygon{
   enum Status{

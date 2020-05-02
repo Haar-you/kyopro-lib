@@ -4,6 +4,7 @@
 
 /**
  * @title Garner法
+ * @docs garner.md
  */
 int64_t garner_algorithm(std::vector<int64_t> r, std::vector<int64_t> m, const int64_t mod){
   m.push_back(mod);

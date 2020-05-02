@@ -2,6 +2,7 @@
 
 /**
  * @title 永続Stack
+ * @docs persistent_stack.md
  */
 template <typename T> struct PersistentStack{
 protected:

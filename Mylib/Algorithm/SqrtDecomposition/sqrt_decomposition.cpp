@@ -3,6 +3,7 @@
 
 /**
  * @title 平方分割
+ * @docs sqrt_decomposition.md
  */
 struct SqrtDecomposition{
   const int N;

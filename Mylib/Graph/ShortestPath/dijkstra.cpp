@@ -8,6 +8,7 @@
 
 /**
  * @title Dijkstra法
+ * @docs dijkstra.md
  */
 template <typename T>
 class Dijkstra{

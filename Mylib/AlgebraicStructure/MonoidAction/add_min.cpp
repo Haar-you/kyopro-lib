@@ -2,6 +2,9 @@
 #include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
 
+/**
+ * @docs add_min.md
+ */
 template <typename T, typename U>
 struct AddMin{
   using monoid_get = MinMonoid<T>;

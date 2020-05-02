@@ -1,6 +1,9 @@
 #pragma once
 #include <algorithm>
 
+/**
+ * @docs max_monoid.md
+ */
 template <typename T>
 struct MaxMonoid{
   using value_type = T;

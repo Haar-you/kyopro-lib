@@ -2,6 +2,9 @@
 #include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/max_monoid.cpp"
 
+/**
+ * @docs add_max.md
+ */
 template <typename T, typename U>
 struct AddMax{
   using monoid_get = MaxMonoid<T>;

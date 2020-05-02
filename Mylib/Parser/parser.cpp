@@ -5,6 +5,7 @@
 
 /**
  * @title 構文解析
+ * @docs parser.md
  */
 struct Parser{
   using state = std::string::const_iterator;

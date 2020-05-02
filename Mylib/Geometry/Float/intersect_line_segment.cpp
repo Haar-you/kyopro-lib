@@ -4,6 +4,7 @@
 
 /**
  * @title 直線と線分の交差
+ * @docs intersect_line_segment.md
  */
 namespace intersect_line_segment{
   enum Status{

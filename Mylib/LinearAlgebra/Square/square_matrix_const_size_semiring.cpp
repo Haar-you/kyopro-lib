@@ -3,6 +3,9 @@
 #include <initializer_list>
 #include <utility>
 
+/**
+ * @docs square_matrix_const_size_semiring.md
+ */
 template <typename Semiring, int N> struct SquareMatrix{
   using value_type = typename Semiring::value_type;
   

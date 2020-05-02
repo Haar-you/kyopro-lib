@@ -3,8 +3,7 @@
 
 /**
  * @title トポロジカルソートの数え上げ
- * @see https://atcoder.jp/contests/abc041/submissions/6549684
- * @attention 時間計算量 O(n2^n)
+ * @docs count_topological_sort.md
  */
 int64_t count_topological_sort(const std::vector<int> &g){
   const int n = g.size();

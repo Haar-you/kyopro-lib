@@ -6,9 +6,7 @@
 
 /**
  * @title 最小包含円
- * @see https://tubo28.me/compprog/algorithm/minball/
- * @see https://atcoder.jp/contests/abc151/tasks/abc151_f
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034
+ * @docs minimum_covering_circle.md
  */
 template <typename T>
 Circle<T> minimum_covering_circle(std::vector<Point<T>> ps, int seed = 0){

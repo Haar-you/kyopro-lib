@@ -6,7 +6,7 @@
 
 /**
  * @title 円と直線の交差
- * @see https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_D
+ * @docs intersect_circle_line.md
  */
 namespace intersect_circle_line{
   enum Status{

@@ -2,7 +2,8 @@
 #include <vector>
 
 /**
- * @title 双対セグメント木
+ * @title 双対SegmentTree
+ * @docs dual_segment_tree.md
  */
 template <typename Monoid>
 class DualSegmentTree{

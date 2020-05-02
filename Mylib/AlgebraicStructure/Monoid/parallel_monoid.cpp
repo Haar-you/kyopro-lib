@@ -1,8 +1,9 @@
 #pragma once
 #include <array>
 
-// BEGIN
-
+/**
+ * @docs parallel_monoid.md
+ */
 template <typename Monoid, int B>
 struct ParallelMonoid{
   using value_type = std::array<typename Monoid::value_type, B>;

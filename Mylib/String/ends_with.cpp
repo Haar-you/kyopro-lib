@@ -2,6 +2,7 @@
 
 /**
  * @title ends_with
+ * @docs ends_with.md
  */
 template <typename Container, typename T = typename Container::value_type>
 bool ends_with(const Container &str, const Container &suffix){

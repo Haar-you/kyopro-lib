@@ -3,6 +3,7 @@
 
 /**
  * @title 上に凸の三分探索
+ * @docs ternary_search_upwards.md
  */
 template <typename T = double, typename Func = std::function<T(T)>>
 T ternary_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){

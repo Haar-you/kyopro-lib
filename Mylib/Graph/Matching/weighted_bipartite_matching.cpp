@@ -5,7 +5,7 @@
 
 /**
  * @title 重み付き二部マッチング
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2429
+ * @docs weighted_bipartite_matching.md
  */
 template <typename T>
 class WeightedBipartiteMatching{

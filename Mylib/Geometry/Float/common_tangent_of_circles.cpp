@@ -5,7 +5,7 @@
 
 /**
  * @title 2円の共通接線
- * @note https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_G
+ * @docs common_tangent_of_circles.md
  */
 template <typename T, typename U = typename T::value_type>
 std::vector<Point<T>> common_tangent_of_circles(const Circle<T> &a, const Circle<T> &b){

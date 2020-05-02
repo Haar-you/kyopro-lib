@@ -3,7 +3,7 @@
 
 /**
  * @title 線形加算一次元Imos法
- * @see https://atcoder.jp/contests/arc077/submissions/6507967
+ * @docs linear_imos_1d.md
  */
 template <typename T> struct LinearImos1D{
   std::vector<T> vec_a, vec_a_end, vec_b, vec;

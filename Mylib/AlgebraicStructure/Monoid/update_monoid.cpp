@@ -1,6 +1,9 @@
 #pragma once
 #include <optional>
 
+/**
+ * @docs update_monoid.md
+ */
 template <typename T>
 struct UpdateMonoid{
   using value_type = std::optional<T>;

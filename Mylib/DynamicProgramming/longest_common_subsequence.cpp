@@ -4,7 +4,7 @@
 
 /**
  * @title 最長共通部分列
- * @attention 時間計算量 O(nm)
+ * @docs longest_common_subsequence.md
  */
 template <typename Container, typename T = typename Container::value_type>
 int lcs(const Container &a, const Container &b){

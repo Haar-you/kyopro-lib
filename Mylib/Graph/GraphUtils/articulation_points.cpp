@@ -5,6 +5,7 @@
 
 /**
  * @title 間接点列挙
+ * @docs articulation_points.md
  */
 template <typename T> std::vector<int> articulation_points(const Graph<T> &graph){
   int n = graph.size();

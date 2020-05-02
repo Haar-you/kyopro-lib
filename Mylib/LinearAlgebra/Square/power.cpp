@@ -2,6 +2,7 @@
 
 /**
  * @title 行列累乗
+ * @docs power.md
  */
 template <typename M, typename T = typename M::value_type>
 M power(M a, uint64_t p){

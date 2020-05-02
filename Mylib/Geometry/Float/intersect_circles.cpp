@@ -5,7 +5,7 @@
 
 /**
  * @title 円同士の交差
- * @see https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A
+ * @docs intersect_circles.md
  */
 namespace intersect_circles{
   enum Status{

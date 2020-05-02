@@ -3,7 +3,8 @@
 #include <algorithm>
 
 /**
- * @title セグメント木にセグメント木を乗せる
+ * @title SegmentTree (SegmentTreeを乗せる)
+ * @docs segment_tree_on_segment_tree.md
  */
 template <typename Monoid>
 class SegmentTree2D{

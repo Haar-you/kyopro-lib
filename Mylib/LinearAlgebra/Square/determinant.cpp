@@ -2,6 +2,7 @@
 
 /**
  * @title 行列式
+ * @docs determinant.md
  */
 template <typename M, typename T = typename M::value_type>
 T determinant(M m){

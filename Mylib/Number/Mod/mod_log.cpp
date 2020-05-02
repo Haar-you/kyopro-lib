@@ -8,8 +8,7 @@
 
 /**
  * @title 離散対数
- * @note a^x = b (mod m)
- * @attention time complexity O(√m)
+ * @docs mod_log.md
  */
 std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
   if(b == 1) return 0;

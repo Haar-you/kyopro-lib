@@ -5,7 +5,7 @@
 
 /**
  * @title 凸多角形の切断
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C
+ * @docs convex_cut.md
  */
 template <typename T>
 void convex_cut(const Polygon<T> &ps, const Line<T> &l, Polygon<T> &left, Polygon<T> &right){

@@ -2,6 +2,7 @@
 
 /**
  * @title 約数個数
+ * @docs count_divisor.md
  */
 int count_divisor(std::int64_t n){
   int count = 0;

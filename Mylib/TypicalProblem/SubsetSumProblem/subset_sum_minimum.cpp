@@ -4,8 +4,7 @@
 
 /**
  * @title 最小個数部分和問題
- * @attention 時間計算量 O(NK)
- * @return 和がKになる部分集合の最小サイズ。そのような部分集合が存在しないとき-1を返す。
+ * @docs subset_sum_minimum.md
  */
 int64_t subset_sum_minimum(int N, int K, const std::vector<int> &a){
   std::vector<std::vector<int64_t>> dp(2, std::vector<int64_t>(K+1, INT_MAX));

@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @note for each superset b ⊇ a
+ * @docs for_each_superset_desc.md
  */
 template <typename Func>
 void for_each_superset_desc(int a, int n, const Func &f){

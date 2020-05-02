@@ -2,7 +2,8 @@
 #include <unordered_map>
 
 /**
- * @title 動的双対セグメント木
+ * @title 動的双対SegmentTree
+ * @docs dynamic_dual_segment_tree.md
  */
 template <typename Monoid>
 class DynamicDualSegmentTree{

@@ -3,6 +3,7 @@
 
 /**
  * @title 二分累乗法
+ * @docs power.md
  */
 template <typename T>
 T power(T n, int64_t p, const T &e, const std::function<T(T,T)> &f){

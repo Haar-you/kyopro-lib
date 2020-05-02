@@ -4,6 +4,7 @@
 
 /**
  * @title 座標圧縮
+ * @docs compressor.md
  */
 template <typename T>
 class Compressor{

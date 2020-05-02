@@ -5,6 +5,7 @@
 
 /**
  * @title 一次元累積和
+ * @docs cumulative_sum_1d.md
  */
 template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
 class CumulativeSum1D{

@@ -4,6 +4,7 @@
 
 /**
  * @title 文字列のsplit関数
+ * @docs split.md
  */
 auto split(const std::string &s, const std::string &delim){
   std::vector<std::string> ret;

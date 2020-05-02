@@ -2,6 +2,7 @@
 
 /**
  * @title ビット逆転
+ * @docs bit_reverse.md
  */
 int32_t bit_reverse(int32_t a){
   a = ((a & 0x55555555) << 1) | ((a & 0xaaaaaaaa) >> 1);

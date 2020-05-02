@@ -4,7 +4,8 @@
 #include <utility>
 
 /**
- * @title 浮動小数点数での連立線形方程式
+ * @title 連立線形方程式 (浮動小数点数)
+ * @docs float_simultaneous_linear_equations.md
  */
 namespace float_simultaneous_linear_equations{
   template <typename T>

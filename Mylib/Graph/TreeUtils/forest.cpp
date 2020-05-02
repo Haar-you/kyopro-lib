@@ -6,7 +6,7 @@
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
 /**
- * @see https://yukicoder.me/submissions/398023/source
+ * @docs forest.md
  */
 template <typename T>
 struct Forest{

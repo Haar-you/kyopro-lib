@@ -4,8 +4,7 @@
 
 /**
  * @title 円の接線
- * @note 点Pを通り円Cに接する直線と円Cとの接点を求める。
- * @see https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_F
+ * @docs tangent_of_circle.md
  */
 template <typename T, typename U = typename T::value_type>
 std::vector<Point<T>> tangent_of_circle(const Circle<T> &c, const Point<T> &p){

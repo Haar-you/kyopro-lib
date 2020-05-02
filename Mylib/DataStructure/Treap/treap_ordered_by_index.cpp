@@ -5,6 +5,7 @@
 
 /**
  * @title Treap
+ * @docs treap_ordered_by_index.md
  */
 namespace treap{
   template <typename Monoid>

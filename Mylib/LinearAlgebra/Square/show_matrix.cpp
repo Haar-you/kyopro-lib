@@ -1,6 +1,9 @@
 #pragma once
 #include <iostream>
 
+/**
+ * @docs show_matrix.md
+ */
 template <typename M, typename T = typename M::value_type>
 void show_matrix(const M &m, int w = 10){
 #ifdef DEBUG

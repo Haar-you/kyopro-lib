@@ -2,6 +2,9 @@
 #include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/product_monoid.cpp"
 
+/**
+ * @docs multiply_sum.md
+ */
 template <typename T, typename U>
 struct MultiplySum{
   using monoid_get = SumMonoid<T>;

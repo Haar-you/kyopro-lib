@@ -5,7 +5,7 @@
 
 /**
  * @title 線分間の距離
- * @see http://judge.u-aizu.ac.jp/onLinejudge/description.jsp?id=CGL_2_D
+ * @docs distance_segments.md
  */
 template <typename T>
 T distance_segments(const Segment<T> &l1, const Segment<T> &l2){

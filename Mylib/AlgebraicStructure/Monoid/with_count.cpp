@@ -1,6 +1,9 @@
 #pragma once
 #include <utility>
 
+/**
+ * @docs with_count.md
+ */
 template <typename Monoid>
 struct WithCount{
   using value_type = std::pair<typename Monoid::value_type, int64_t>;

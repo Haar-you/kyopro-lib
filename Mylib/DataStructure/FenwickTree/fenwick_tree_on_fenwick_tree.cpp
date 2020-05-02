@@ -6,7 +6,8 @@
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
 
 /**
- * @title Fenwick木にFenwick木を乗せる
+ * @title FenwickTree (FenwickTreeを乗せる)
+ * @docs fenwick_tree_on_fenwick_tree.md
  */
 template <typename AbelianGroup>
 class FenwickTree2D{

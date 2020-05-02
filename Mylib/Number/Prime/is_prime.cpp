@@ -2,6 +2,7 @@
 
 /**
  * @title 試し割り素数判定
+ * @docs is_prime.md
  */
 bool is_prime(int n){
   if(n <= 1) return false;

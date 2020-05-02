@@ -1,8 +1,8 @@
 #pragma once
 
 /**
- * @title 動的セグメント木
- * @see https://yukicoder.me/submissions/427657
+ * @title 動的SegmentTree
+ * @docs dynamic_segment_tree.md
  */
 template <typename Monoid>
 class DynamicSegmentTree{

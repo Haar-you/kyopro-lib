@@ -3,6 +3,7 @@
 
 /**
  * @title 根付き木
+ * @docs rooting.md
  */
 template <typename T>
 void rooting(Tree<T> &tree, int cur, int par = -1){

@@ -5,7 +5,7 @@
 
 /**
  * @title 中国人郵便配達問題
- * @docs chinese_postman_problem.cpp
+ * @docs chinese_postman_problem.md
  */
 template <typename T> T chinese_postman_problem(const Graph<T> &g){
   const int n = g.size();

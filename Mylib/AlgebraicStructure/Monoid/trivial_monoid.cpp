@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @docs trivial_monoid.md
+ */
 template <typename T>
 struct Trivial{
   using value_type = T;

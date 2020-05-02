@@ -5,7 +5,7 @@
 
 /**
  * @title 凸多角形判定
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B
+ * @docs is_convex.md
  */
 template <typename T>
 bool is_convex(const Polygon<T> &ps){

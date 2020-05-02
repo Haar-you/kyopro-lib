@@ -5,9 +5,7 @@
 
 /**
  * @title 凸包
- * @see https://onlinejudge.u-aizu.ac.jp/challenges/sources/PCK/Prelim/0342?year=2016 (凸包/最小全域木)
- * @see https://atcoder.jp/contests/agc021/tasks/agc021_b (凸包)
- * @see https://codeforces.com/contest/1143/problem/F (式変形/上側凸包)
+ * @docs convex_hull.md
  */
 template <typename T> 
 std::vector<Point<T>> upper_hull(Polygon<T> pts, bool upper = true){

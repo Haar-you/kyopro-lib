@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @docs for_subsets_of_size_k.md
+ */
 template <typename Func>
 void for_subsets_of_size_k(int n, int k, const Func &f){
   int c = (1 << k) - 1;

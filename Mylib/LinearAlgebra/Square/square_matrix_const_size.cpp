@@ -4,8 +4,8 @@
 #include <utility>
 
 /**
- * @title 固定サイズの正方行列
- * @see https://atcoder.jp/contests/abc129/submissions/7098355
+ * @title 正方行列 (コンパイル時固定サイズ)
+ * @docs square_matrix_const_size.md
  */
 template <typename T, int N> struct SquareMatrixConst{
   using value_type = T;

@@ -2,8 +2,8 @@
 #include <vector>
 
 /**
- * @title 2Dセグメント木
- * @see https://codeforces.com/contest/1301/submission/71853921
+ * @title SegmentTree (2D)
+ * @docs segment_tree_2d.md
  */
 template <typename Monoid> class SegmentTree2D{
   using value_type = typename Monoid::value_type;

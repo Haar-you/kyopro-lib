@@ -4,6 +4,7 @@
 
 /**
  * @title 約数列挙
+ * @docs divisor_list.md
  */
 std::vector<std::int64_t> divisor_list(std::int64_t n){
   std::vector<std::int64_t> temp, ret;

@@ -6,6 +6,10 @@
 #include <algorithm>
 #include "Mylib/Graph/graph_template.cpp"
 
+/**
+ * @title TreeUtils
+ * @docs tree_utils.md
+ */
 template <typename T> class TreeUtils{
 public:
   static std::pair<int,T> farthest(const Tree<T> &tree, int cur, int par = -1){

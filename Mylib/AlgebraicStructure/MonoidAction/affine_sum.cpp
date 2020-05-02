@@ -2,6 +2,9 @@
 #include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp"
 
+/**
+ * @docs affine_sum.md
+ */
 template <typename T, typename U>
 struct AffineSum{
   using monoid_get = SumMonoid<T>;

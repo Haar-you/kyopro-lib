@@ -3,6 +3,7 @@
 
 /**
  * @title 拡張Euclidの互除法
+ * @docs extended_gcd.md
  */
 std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
   if(b == 0) return std::make_tuple(a,1,0);

@@ -4,7 +4,7 @@
 
 /**
  * @title 反射
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B
+ * @docs reflection.md
  */
 template <typename T>
 Point<T> reflection(const Line<T> &l, const Point<T> &p){

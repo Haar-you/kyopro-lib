@@ -5,6 +5,7 @@
 
 /**
  * @title 強連結成分分解
+ * @docs strongly_connected_components.md
  */
 template <typename T>
 struct SCC{

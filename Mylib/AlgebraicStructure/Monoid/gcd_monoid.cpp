@@ -1,6 +1,9 @@
 #pragma once
 #include <numeric>
 
+/**
+ * @docs gcd_monoid.md
+ */
 template <typename T>
 struct GcdMonoid{
   using value_type = T;

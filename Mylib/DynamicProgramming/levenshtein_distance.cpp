@@ -4,6 +4,7 @@
 
 /**
  * @title Levenshtein距離 / 編集距離
+ * @docs levenshtein_distance.md
  */
 template <typename Container, typename T = typename Container::value_type>
 int levenshtein_distance(const Container &a, const Container &b){

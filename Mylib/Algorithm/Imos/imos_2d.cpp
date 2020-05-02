@@ -3,6 +3,7 @@
 
 /**
  * @title 二次元Imos法
+ * @docs imos_2d.md
  */
 template <typename T> struct Imos2D{
   std::vector<std::vector<T>> vec;

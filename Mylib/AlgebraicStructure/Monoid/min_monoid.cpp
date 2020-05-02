@@ -1,6 +1,9 @@
 #pragma once
 #include <algorithm>
 
+/**
+ * @docs min_monoid.md
+ */
 template <typename T>
 struct MinMonoid{
   using value_type = T;

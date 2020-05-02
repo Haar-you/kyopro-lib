@@ -4,6 +4,7 @@
 
 /**
  * @title 連続部分和の最大値
+ * @docs max_partial_sum.md
  */
 template <typename T>
 T max_partial_sum(const std::vector<T> &v){

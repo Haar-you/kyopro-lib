@@ -4,6 +4,7 @@
 
 /**
  * @title 最長増加部分列
+ * @docs longest_increasing_subsequence.md
  */
 template <typename Container, typename T = typename Container::value_type>
 int lis(const Container &xs){

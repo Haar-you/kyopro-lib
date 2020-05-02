@@ -3,6 +3,9 @@
 #include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/xor_monoid.cpp"
 
+/**
+ * @docs xor_sum.md
+ */
 template <typename U, int B>
 struct XorSum{
   using monoid_get = ParallelMonoid<SumMonoid<int>, B>;

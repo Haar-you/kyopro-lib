@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @docs add_mul_semiring.md
+ */
 template <typename T>
 struct AddMulSemiring{
   using value_type = T;

@@ -5,6 +5,7 @@
 
 /**
  * @title グリッドをグラフに変換する
+ * @docs grid_to_graph.md
  */
 template <typename T, typename Directions, typename Checker, typename Generator>
 Graph<T> grid_to_graph(int H, int W,

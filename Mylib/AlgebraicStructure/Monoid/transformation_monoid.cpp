@@ -2,7 +2,7 @@
 #include <array>
 
 /**
- * @see https://codeforces.com/contest/911/submission/63237734 (TLE)
+ * @docs transformation_monoid.md
  */
 template <size_t N>
 struct TransformationMonoid{

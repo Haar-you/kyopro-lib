@@ -2,6 +2,9 @@
 #include "Mylib/AlgebraicStructure/Monoid/update_monoid.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
 
+/**
+ * @docs update_min.md
+ */
 template <typename T, typename U>
 struct UpdateMin{
   using monoid_get = MinMonoid<T>;

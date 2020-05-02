@@ -6,7 +6,7 @@
 
 /**
  * @title Bitonic tour
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_C
+ * @docs bitonic_tour.md
  */
 template <typename T>
 double bitonic_tour(int n, const std::vector<T> &x, const std::vector<T> &y){

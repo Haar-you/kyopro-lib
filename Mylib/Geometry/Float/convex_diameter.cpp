@@ -4,7 +4,7 @@
 
 /**
  * @title 凸多角形の直径
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B
+ * @docs convex_diameter.md
  */
 template <typename T>
 T convex_diameter(const Polygon<T> &ps){

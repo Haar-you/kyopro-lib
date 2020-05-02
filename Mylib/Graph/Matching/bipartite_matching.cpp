@@ -7,6 +7,7 @@
 
 /**
  * @title 二部マッチング
+ * @docs bipartite_matching.md
  */
 class BipartiteMatching{
   int x, y;

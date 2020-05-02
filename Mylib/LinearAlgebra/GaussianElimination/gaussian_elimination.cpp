@@ -4,6 +4,7 @@
 
 /**
  * @title 掃き出し法
+ * @docs gaussian_elimination.md
  */
 template <typename T> int gaussian_elimination(std::vector<std::vector<T>> &a){
   const int h = a.size();

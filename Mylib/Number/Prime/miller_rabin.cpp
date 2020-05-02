@@ -3,7 +3,7 @@
 
 /**
  * @title Miller-Rabin素数判定法
- * @see https://yukicoder.me/problems/no/3030
+ * @docs miller_rabin.md
  */
 class MillerRabin{
   static inline uint128_t power(uint128_t a, uint128_t b, uint128_t p){

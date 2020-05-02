@@ -8,6 +8,7 @@
 
 /**
  * @title 最近点対
+ * @docs closest_pair.md
  */
 namespace closest_pair{
   template <typename T, typename U = typename T::value_type>

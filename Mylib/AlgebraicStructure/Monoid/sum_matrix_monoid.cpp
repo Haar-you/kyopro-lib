@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @docs sum_matrix_monoid.md
+ */
 template <typename T>
 struct SumMatrixMonoid{
   using value_type = T;

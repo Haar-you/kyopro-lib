@@ -1,6 +1,9 @@
 #pragma once
 #include <numeric>
 
+/**
+ * @docs lcm_monoid.md
+ */
 template <typename T>
 struct LcmMonoid{
   using value_type = T;

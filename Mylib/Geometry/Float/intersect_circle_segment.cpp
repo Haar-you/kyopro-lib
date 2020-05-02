@@ -6,6 +6,7 @@
 
 /**
  * @title 円と線分の交差
+ * @docs intersect_circle_segment.md
  */
 namespace intersect_circle_segment{
   enum Status{

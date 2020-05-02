@@ -2,7 +2,8 @@
 #include <vector>
 
 /**
- * @title 2DFenwick木
+ * @title FenwickTree (2D)
+ * @docs fenwick_tree_2d.md
  */
 template <typename AbelianGroup>
 class FenwickTree2D{

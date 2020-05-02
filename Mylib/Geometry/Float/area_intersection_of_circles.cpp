@@ -5,7 +5,7 @@
 
 /**
  * @title 2円の共通部分の面積
- * @see https://codeforces.com/contest/600/problem/D
+ * @docs area_intersection_of_circles.md
  */
 template <typename T, typename U = typename T::value_type>
 T area_of_intersection_of_circles(const Circle<T> &a, const Circle<T> &b){

@@ -3,7 +3,7 @@
 
 /**
  * @title 多角形の面積
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A
+ * @docs area_polygon.md
  */
 template <typename T>
 T polygon_area(const Polygon<T> &ps){

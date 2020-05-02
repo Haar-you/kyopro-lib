@@ -5,8 +5,8 @@
 #include <bitset>
 
 /**
- * @title Mod2体上の連立線形方程式
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1308
+ * @title 連立線形方程式 (Mod2体)
+ * @docs binary_simultaneous_linear_equations.md
  */
 namespace binary_simultaneous_linear_equations{
   template <size_t N>

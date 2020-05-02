@@ -4,6 +4,7 @@
 
 /**
  * @title LCP(Longest Common Prefix)配列
+ * @docs lcp_array.md
  */
 template <typename T>
 struct LCPArray{

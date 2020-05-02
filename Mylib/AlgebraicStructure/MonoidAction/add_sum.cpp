@@ -1,6 +1,9 @@
 #pragma once
 #include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 
+/**
+ * @docs add_sum.md
+ */
 template <typename T, typename U>
 struct AddSum{
   using monoid_get = SumMonoid<T>;

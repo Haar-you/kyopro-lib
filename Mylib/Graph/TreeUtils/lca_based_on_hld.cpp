@@ -4,7 +4,8 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title HLD実装の最小共通祖先
+ * @title 最小共通祖先 (HLD)
+ * @docs lca_based_on_hld.md
  */
 template <typename T> class LCA{
   int n;

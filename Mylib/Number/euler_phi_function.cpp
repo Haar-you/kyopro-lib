@@ -2,6 +2,7 @@
 
 /**
  * @title Eulerのトーシェント関数
+ * @docs euler_phi_function.md
  */
 int64_t totient(int64_t n){
   int64_t ret = n;

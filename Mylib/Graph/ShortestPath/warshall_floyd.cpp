@@ -5,6 +5,7 @@
 
 /**
  * @title Warshall-Floyd法
+ * @docs warshall_floyd.md
  */
 template <typename T>
 struct WarshallFloyd{

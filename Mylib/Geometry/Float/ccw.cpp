@@ -3,6 +3,7 @@
 
 /**
  * @title clockwise-counterclockwise判定
+ * @docs ccw.md
  */
 namespace ccw{
   enum CCW{

@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @docs ordering_monoid.md
+ */
 struct OrderingMonoid{
   using value_type = int;
   constexpr inline static value_type id(){return 0;}

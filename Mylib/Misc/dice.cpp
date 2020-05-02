@@ -2,6 +2,7 @@
 
 /**
  * @title サイコロ
+ * @docs dice.md
  */
 struct Dice{
   int top, bottom, left, right, front, back;

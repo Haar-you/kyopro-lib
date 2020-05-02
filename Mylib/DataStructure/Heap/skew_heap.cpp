@@ -1,7 +1,10 @@
 #pragma once
 #include <functional>
 
-template <typename T, class Compare = less<T>>
+/**
+ * @docs skew_heap.md
+ */
+template <typename T, class Compare = std::less<T>>
 class SkewHeap{
   struct node{
     T val;

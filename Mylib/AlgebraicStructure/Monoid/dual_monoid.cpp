@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @docs dual_monoid.md
+ */
 template <typename Monoid>
 struct DualMonoid{
   using value_type = typename Monoid::value_type;

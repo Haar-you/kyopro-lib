@@ -3,7 +3,7 @@
 
 /**
  * @title 射影
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A
+ * @docs projection.md
  */
 template <typename T>
 Point<T> projection(const Line<T> &l, const Point<T> &p){

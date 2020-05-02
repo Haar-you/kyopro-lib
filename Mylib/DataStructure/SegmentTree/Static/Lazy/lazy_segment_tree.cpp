@@ -2,7 +2,8 @@
 #include <vector>
 
 /**
- * @title 遅延セグメント木
+ * @title 遅延SegmentTree
+ * @docs lazy_segment_tree.md
  */
 template <typename Monoid>
 class LazySegmentTree{

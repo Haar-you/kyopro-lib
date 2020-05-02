@@ -5,8 +5,7 @@
 
 /**
  * @title 重み付き区間スケジューリング
- * @see https://www.hackerrank.com/contests/kodamanwithothers/challenges/2-82/problem
- * @attention [from, to]
+ * @docs weighted_interval_scheduling.md
  */
 template <typename T, typename U>
 U weighted_interval_scheduling(std::vector<T> from, std::vector<T> to, std::vector<U> value){

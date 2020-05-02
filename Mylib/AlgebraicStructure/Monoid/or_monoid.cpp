@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @docs or_monoid.md
+ */
 template <typename T>
 struct OrMonoid{
   using value_type = T;

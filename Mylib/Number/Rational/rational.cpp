@@ -4,6 +4,7 @@
 
 /**
  * @title 有理数クラス
+ * @docs rational.md
  */
 class Rational{
 public:

@@ -3,6 +3,7 @@
 
 /**
  * @title 行列式
+ * @docs determinant.md
  */
 template <typename T> T determinant(std::vector<std::vector<T>> m){
   const int n = m.size();

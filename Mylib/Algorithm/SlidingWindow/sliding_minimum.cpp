@@ -4,7 +4,7 @@
 
 /**
  * @title スライド最小値
- * @see https://codeforces.com/contest/1195/submission/57565778
+ * @docs sliding_minimum.md
  */
 template <typename T>
 std::vector<T> sliding_minimum(const std::vector<T> &a, int k){
