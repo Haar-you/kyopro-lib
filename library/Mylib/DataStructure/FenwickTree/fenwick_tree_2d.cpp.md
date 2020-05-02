@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 2DFenwick木
+# :heavy_check_mark: FenwickTree (2D)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2f58e2c328298747e7665b6f6b5791ad">Mylib/DataStructure/FenwickTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -50,7 +50,8 @@ layout: default
 #include <vector>
 
 /**
- * @title 2DFenwick木
+ * @title FenwickTree (2D)
+ * @docs fenwick_tree_2d.md
  */
 template <typename AbelianGroup>
 class FenwickTree2D{
@@ -122,7 +123,8 @@ public:
 #include <vector>
 
 /**
- * @title 2DFenwick木
+ * @title FenwickTree (2D)
+ * @docs fenwick_tree_2d.md
  */
 template <typename AbelianGroup>
 class FenwickTree2D{

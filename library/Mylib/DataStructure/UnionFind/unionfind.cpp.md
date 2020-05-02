@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: UnionFind
+# :question: UnionFind
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -54,14 +54,14 @@ layout: default
 ## Required by
 
 * :warning: <a href="../../Graph/BipartiteGraph/construct_bipartite_graph.cpp.html">Unionfindによる二部グラフ判定</a>
-* :heavy_check_mark: <a href="../../Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal法</a>
+* :x: <a href="../../Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal法</a>
 * :warning: <a href="../../Graph/TreeUtils/forest.cpp.html">Mylib/Graph/TreeUtils/forest.cpp</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2955/main.test.cpp.html">test/aoj/2955/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_2_A/main.kruskal.test.cpp.html">test/aoj/GRL_2_A/main.kruskal.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_2_A/main.kruskal.test.cpp.html">test/aoj/GRL_2_A/main.kruskal.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/unionfind/main.test.cpp.html">test/yosupo-judge/unionfind/main.test.cpp</a>
 
 

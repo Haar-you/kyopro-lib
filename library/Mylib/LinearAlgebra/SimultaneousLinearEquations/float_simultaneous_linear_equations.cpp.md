@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 浮動小数点数での連立線形方程式
+# :heavy_check_mark: 連立線形方程式 (浮動小数点数)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0f2e8b5b008805076abcf42bbba8c8c1">Mylib/LinearAlgebra/SimultaneousLinearEquations</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -52,7 +52,8 @@ layout: default
 #include <utility>
 
 /**
- * @title 浮動小数点数での連立線形方程式
+ * @title 連立線形方程式 (浮動小数点数)
+ * @docs float_simultaneous_linear_equations.md
  */
 namespace float_simultaneous_linear_equations{
   template <typename T>
@@ -130,7 +131,8 @@ namespace float_simultaneous_linear_equations{
 #include <utility>
 
 /**
- * @title 浮動小数点数での連立線形方程式
+ * @title 連立線形方程式 (浮動小数点数)
+ * @docs float_simultaneous_linear_equations.md
  */
 namespace float_simultaneous_linear_equations{
   template <typename T>

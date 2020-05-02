@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
+# :x: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#447515698a63d3c08450ac7bb86adc9d">test/yosupo-judge/convolution_mod_1000000007</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/convolution_mod_1000000007/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-30 20:34:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/convolution_mod_1000000007">https://judge.yosupo.jp/problem/convolution_mod_1000000007</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number Theoretic Transform</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number Theoretic Transform</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -94,6 +94,7 @@ int main(){
 
 /**
  * @title modint
+ * @docs mint.md
  */
 template <uint32_t M> class ModInt{
 public:

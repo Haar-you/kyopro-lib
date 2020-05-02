@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
+# :x: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2163f1b495697e10d51593b9d528fe28">test/yosupo-judge/discrete_logarithm_mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/discrete_logarithm_mod">https://judge.yosupo.jp/problem/discrete_logarithm_mod</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">mod逆数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_log.cpp.html">離散対数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
+* :x: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">mod逆数</a>
+* :x: <a href="../../../../library/Mylib/Number/Mod/mod_log.cpp.html">離散対数</a>
+* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
 
 
 ## Code
@@ -91,6 +91,7 @@ int main(){
 
 /**
  * @title mod累乗
+ * @docs mod_power.md
  */
 int64_t power(int64_t n, int64_t p, int64_t m){
   int64_t ret = 1;
@@ -106,7 +107,7 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 
 /**
  * @title mod逆数
- * @attention gcd(a, m) = 1
+ * @docs mod_inv.md
  */
 int64_t mod_inv(int64_t a, int64_t m){
   int64_t b = m, u = 1, v = 0;
@@ -126,8 +127,7 @@ int64_t mod_inv(int64_t a, int64_t m){
 
 /**
  * @title 離散対数
- * @note a^x = b (mod m)
- * @attention time complexity O(√m)
+ * @docs mod_log.md
  */
 std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
   if(b == 1) return 0;

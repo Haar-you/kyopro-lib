@@ -31,10 +31,26 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/euler_phi_function_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-08 17:37:41+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://codeforces.com/contest/1208/submission/59824476">https://codeforces.com/contest/1208/submission/59824476</a>
+
+
+## Operations
+
+- `totient_table(n)`
+	- `i in [0, n]`について$\varphi(i)$を求める。
+	- $\varphi(nm) = \varphi(n) * \varphi(m)$ if nとmが互いに素
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [Manthan, Codefest 19 G. Polygons](https://codeforces.com/contest/1208/problem/G)
+
+## References
 
 
 ## Code
@@ -48,8 +64,7 @@ layout: default
 
 /**
  * @title Eulerのトーシェント関数の列挙
- * @see https://codeforces.com/contest/1208/submission/59824476
- * @note phi(nm) = phi(n) * phi(m) if nとmが互いに素
+ * @docs euler_phi_function_table.md
  */
 auto totient_table(int n){
   std::vector<int> ret(n+1);
@@ -78,8 +93,7 @@ auto totient_table(int n){
 
 /**
  * @title Eulerのトーシェント関数の列挙
- * @see https://codeforces.com/contest/1208/submission/59824476
- * @note phi(nm) = phi(n) * phi(m) if nとmが互いに素
+ * @docs euler_phi_function_table.md
  */
 auto totient_table(int n){
   std::vector<int> ret(n+1);

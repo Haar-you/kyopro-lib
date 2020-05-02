@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_5_G/main.test.cpp
+# :x: test/aoj/DPL_5_G/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f4368c57ad8f64bd0caa562818234830">test/aoj/DPL_5_G</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_G/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-26 15:25:30+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_G">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_G</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/bell_number.cpp.html">Bell数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/stirling_number.cpp.html">第2種Stirling数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/Combinatorics/bell_number.cpp.html">Bell数</a>
+* :x: <a href="../../../../library/Mylib/Combinatorics/combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
+* :x: <a href="../../../../library/Mylib/Combinatorics/stirling_number.cpp.html">第2種Stirling数</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -84,6 +84,7 @@ int main(){
 
 /**
  * @title modint
+ * @docs mint.md
  */
 template <uint32_t M> class ModInt{
 public:

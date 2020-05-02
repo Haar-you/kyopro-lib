@@ -25,28 +25,28 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Ford-Fulkerson法
+# :question: Ford-Fulkerson法
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ecd047c70c23d80351a9f133b49a4638">Mylib/Graph/Flow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Flow/ford_fulkerson.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-07 13:24:38+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="../Matching/bipartite_matching.cpp.html">二部マッチング</a>
+* :x: <a href="../Matching/bipartite_matching.cpp.html">二部マッチング</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2903/main.test.cpp.html">test/aoj/2903/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/3058/main.test.cpp.html">test/aoj/3058/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp.html">test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp.html">test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
 
 
 ## Code
@@ -60,6 +60,7 @@ layout: default
 
 /**
  * @title Ford-Fulkerson法
+ * @docs ford_fulkerson.md
  */
 template <typename T> class FordFulkerson{
 public:
@@ -148,6 +149,7 @@ public:
 
 /**
  * @title Ford-Fulkerson法
+ * @docs ford_fulkerson.md
  */
 template <typename T> class FordFulkerson{
 public:

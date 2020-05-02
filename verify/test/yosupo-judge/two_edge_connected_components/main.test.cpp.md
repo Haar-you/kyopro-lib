@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/two_edge_connected_components/main.test.cpp
+# :x: test/yosupo-judge/two_edge_connected_components/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#caa543e8ce2b504963292c36b66ba2d6">test/yosupo-judge/two_edge_connected_components</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/two_edge_connected_components/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/two_edge_connected_components">https://judge.yosupo.jp/problem/two_edge_connected_components</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/GraphUtils/two_edge_connected_components.cpp.html">二重辺連結成分分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/Graph/GraphUtils/two_edge_connected_components.cpp.html">二重辺連結成分分解</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -94,6 +94,7 @@ int main(){
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -121,6 +122,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title 二重辺連結成分分解
+ * @docs two_edge_connected_components.md
  */
 template <typename T>
 auto two_edge_connected_components(const Graph<T> &graph){

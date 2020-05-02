@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
+# :x: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#bebcd5bef589a8c43022d53b5d3891af">test/yosupo-judge/dynamic_tree_vertex_add_path_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_path_sum">https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_path_sum</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp.html">Link-Cut tree</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp.html">Link-Cut tree</a>
 
 
 ## Code
@@ -114,6 +114,9 @@ int main(){
 #include <iostream>
 #line 2 "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 
+/**
+ * @docs sum_monoid.md
+ */
 template <typename T>
 struct SumMonoid{
   using value_type = T;
@@ -125,6 +128,7 @@ struct SumMonoid{
 
 /**
  * @title Link-Cut tree
+ * @docs link_cut_tree.md
  */
 template <typename Monoid>
 struct LinkCutNode{

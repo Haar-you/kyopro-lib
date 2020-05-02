@@ -25,26 +25,38 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: run enumerate
+# :x: run enumerate
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/run_enumerate.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-15 00:08:57+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="http://pazzle1230.hatenablog.com/entry/2019/11/27/234632">http://pazzle1230.hatenablog.com/entry/2019/11/27/234632</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References
+
+- [http://pazzle1230.hatenablog.com/entry/2019/11/27/234632](http://pazzle1230.hatenablog.com/entry/2019/11/27/234632)
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="z_algorithm.cpp.html">Z-algorithm</a>
+* :x: <a href="z_algorithm.cpp.html">Z-algorithm</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/runenumerate/main.test.cpp.html">test/yosupo-judge/runenumerate/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/runenumerate/main.test.cpp.html">test/yosupo-judge/runenumerate/main.test.cpp</a>
 
 
 ## Code
@@ -62,7 +74,7 @@ layout: default
 
 /**
  * @title run enumerate
- * @see http://pazzle1230.hatenablog.com/entry/2019/11/27/234632
+ * @docs run_enumerate.md
  */
 struct RunEnumerate{
   std::vector<std::tuple<int,int,int>> result;
@@ -188,6 +200,7 @@ public:
 
 /**
  * @title Z-algorithm
+ * @docs z_algorithm
  */
 template <typename Container, typename T = typename Container::value_type>
 std::vector<int> z_algorithm(const Container &s){
@@ -214,7 +227,7 @@ std::vector<int> z_algorithm(const Container &s){
 
 /**
  * @title run enumerate
- * @see http://pazzle1230.hatenablog.com/entry/2019/11/27/234632
+ * @docs run_enumerate.md
  */
 struct RunEnumerate{
   std::vector<std::tuple<int,int,int>> result;

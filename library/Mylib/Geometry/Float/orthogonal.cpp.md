@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 直行判定
+# :x: 直行判定
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/orthogonal.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_2_A/main.test.cpp.html">test/aoj/CGL_2_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_2_A/main.test.cpp.html">test/aoj/CGL_2_A/main.test.cpp</a>
 
 
 ## Code
@@ -57,6 +57,7 @@ layout: default
 
 /**
  * @title 直行判定
+ * @docs orthogonal.md
  */
 template <typename T, typename U = typename T::value_type>
 bool orthogonal(const Line<T> &a, const Line<T> &b){
@@ -78,6 +79,7 @@ bool orthogonal(const Line<T> &a, const Line<T> &b){
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -164,6 +166,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 直行判定
+ * @docs orthogonal.md
  */
 template <typename T, typename U = typename T::value_type>
 bool orthogonal(const Line<T> &a, const Line<T> &b){

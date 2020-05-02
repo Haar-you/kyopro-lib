@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/430/main.aho_corasick.test.cpp
+# :x: test/yukicoder/430/main.aho_corasick.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0bdfbad8357bf1fcb5738704a6247436">test/yukicoder/430</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/430/main.aho_corasick.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-06 17:42:20+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/430">https://yukicoder.me/problems/no/430</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/aho_corasick.cpp.html">Aho-Corasick法</a>
+* :x: <a href="../../../../library/Mylib/String/aho_corasick.cpp.html">Aho-Corasick法</a>
 
 
 ## Code
@@ -100,7 +100,7 @@ int main(){
 
 /**
  * @title Aho-Corasick法
- * @note https://yukicoder.me/submissions/347348
+ * @docs aho_corasick.md
  */
 class AhoCorasick{
 public:

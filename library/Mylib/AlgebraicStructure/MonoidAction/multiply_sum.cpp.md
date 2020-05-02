@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/multiply_sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 07:44:02+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -39,7 +39,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../Monoid/product_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/product_monoid.cpp</a>
-* :heavy_check_mark: <a href="../Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :question: <a href="../Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
 
 
 ## Code
@@ -51,6 +51,9 @@ layout: default
 #include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/product_monoid.cpp"
 
+/**
+ * @docs multiply_sum.md
+ */
 template <typename T, typename U>
 struct MultiplySum{
   using monoid_get = SumMonoid<T>;
@@ -71,6 +74,9 @@ struct MultiplySum{
 ```cpp
 #line 2 "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 
+/**
+ * @docs sum_monoid.md
+ */
 template <typename T>
 struct SumMonoid{
   using value_type = T;
@@ -79,6 +85,9 @@ struct SumMonoid{
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/product_monoid.cpp"
 
+/**
+ * @docs product_monoid.md
+ */
 template <typename T>
 struct ProductMonoid{
   using value_type = T;
@@ -87,6 +96,9 @@ struct ProductMonoid{
 };
 #line 4 "Mylib/AlgebraicStructure/MonoidAction/multiply_sum.cpp"
 
+/**
+ * @docs multiply_sum.md
+ */
 template <typename T, typename U>
 struct MultiplySum{
   using monoid_get = SumMonoid<T>;

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/sign_function.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -45,6 +45,7 @@ layout: default
 
 /**
  * @title 符号関数
+ * @docs sign_function.md
  */
 template <typename T> int sign(T n){return (n > 0) - (n < 0);}
 
@@ -58,6 +59,7 @@ template <typename T> int sign(T n){return (n > 0) - (n < 0);}
 
 /**
  * @title 符号関数
+ * @docs sign_function.md
  */
 template <typename T> int sign(T n){return (n > 0) - (n < 0);}
 

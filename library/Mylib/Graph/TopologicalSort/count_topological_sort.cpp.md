@@ -31,10 +31,25 @@ layout: default
 
 * category: <a href="../../../../index.html#5cfab8f1bec9f4a2c22b88bddb7720db">Mylib/Graph/TopologicalSort</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TopologicalSort/count_topological_sort.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://atcoder.jp/contests/abc041/submissions/6549684">https://atcoder.jp/contests/abc041/submissions/6549684</a>
+
+
+## Operations
+
+- `count_topological_sort(g)`
+	- Time complexity $O(n 2^n)$
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [ABC 041 D - 徒競走](https://atcoder.jp/contests/abc041/tasks/abc041_d)
+
+## References
 
 
 ## Code
@@ -47,8 +62,7 @@ layout: default
 
 /**
  * @title トポロジカルソートの数え上げ
- * @see https://atcoder.jp/contests/abc041/submissions/6549684
- * @attention 時間計算量 O(n2^n)
+ * @docs count_topological_sort.md
  */
 int64_t count_topological_sort(const std::vector<int> &g){
   const int n = g.size();
@@ -79,8 +93,7 @@ int64_t count_topological_sort(const std::vector<int> &g){
 
 /**
  * @title トポロジカルソートの数え上げ
- * @see https://atcoder.jp/contests/abc041/submissions/6549684
- * @attention 時間計算量 O(n2^n)
+ * @docs count_topological_sort.md
  */
 int64_t count_topological_sort(const std::vector<int> &g){
   const int n = g.size();

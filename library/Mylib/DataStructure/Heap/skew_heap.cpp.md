@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f151d59e79c7ff7f731ff52cf9b782e4">Mylib/DataStructure/Heap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Heap/skew_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 08:16:53+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -44,7 +44,10 @@ layout: default
 #pragma once
 #include <functional>
 
-template <typename T, class Compare = less<T>>
+/**
+ * @docs skew_heap.md
+ */
+template <typename T, class Compare = std::less<T>>
 class SkewHeap{
   struct node{
     T val;
@@ -92,7 +95,10 @@ public:
 #line 2 "Mylib/DataStructure/Heap/skew_heap.cpp"
 #include <functional>
 
-template <typename T, class Compare = less<T>>
+/**
+ * @docs skew_heap.md
+ */
+template <typename T, class Compare = std::less<T>>
 class SkewHeap{
   struct node{
     T val;

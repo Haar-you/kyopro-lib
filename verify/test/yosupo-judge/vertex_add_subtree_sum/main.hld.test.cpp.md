@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
+# :x: test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#5182f60ed9f69992a8eee7b8b1003f24">test/yosupo-judge/vertex_add_subtree_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/vertex_add_subtree_sum">https://judge.yosupo.jp/problem/vertex_add_subtree_sum</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -114,6 +114,7 @@ int main(){
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -273,7 +274,8 @@ public:
 #line 3 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
 
 /**
- * @title セグメント木
+ * @title SegmentTree
+ * @docs segment_tree.md
  */
 template <typename Monoid>
 class SegmentTree{
@@ -327,6 +329,9 @@ public:
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 
+/**
+ * @docs sum_monoid.md
+ */
 template <typename T>
 struct SumMonoid{
   using value_type = T;

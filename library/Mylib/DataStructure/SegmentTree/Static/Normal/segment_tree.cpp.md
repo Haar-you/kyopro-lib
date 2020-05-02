@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: セグメント木
+# :question: SegmentTree
 
 <a href="../../../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../../../index.html#dd4a4f8515bcc75e971952e726133342">Mylib/DataStructure/SegmentTree/Static/Normal</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -39,15 +39,15 @@ layout: default
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../../../verify/test/aoj/3132/main.test.cpp.html">test/aoj/3132/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/aoj/DSL_2_A/main.test.cpp.html">test/aoj/DSL_2_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/aoj/DSL_2_B/main.test.cpp.html">test/aoj/DSL_2_B/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/yukicoder/776/main.test.cpp.html">test/yukicoder/776/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/yukicoder/875/main.test.cpp.html">test/yukicoder/875/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/aoj/DSL_2_A/main.test.cpp.html">test/aoj/DSL_2_A/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/aoj/DSL_2_B/main.test.cpp.html">test/aoj/DSL_2_B/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/yukicoder/776/main.test.cpp.html">test/yukicoder/776/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/yukicoder/875/main.test.cpp.html">test/yukicoder/875/main.test.cpp</a>
 
 
 ## Code
@@ -59,7 +59,8 @@ layout: default
 #include <vector>
 
 /**
- * @title セグメント木
+ * @title SegmentTree
+ * @docs segment_tree.md
  */
 template <typename Monoid>
 class SegmentTree{
@@ -122,7 +123,8 @@ public:
 #include <vector>
 
 /**
- * @title セグメント木
+ * @title SegmentTree
+ * @docs segment_tree.md
  */
 template <typename Monoid>
 class SegmentTree{

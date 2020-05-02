@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Levenshtein距離 / 編集距離
+# :x: Levenshtein距離 / 編集距離
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3a96c66483797c15eff4c0c3d8733619">Mylib/DynamicProgramming</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/levenshtein_distance.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-09 17:21:47+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_1_E/main.test.cpp.html">test/aoj/DPL_1_E/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/DPL_1_E/main.test.cpp.html">test/aoj/DPL_1_E/main.test.cpp</a>
 
 
 ## Code
@@ -52,6 +52,7 @@ layout: default
 
 /**
  * @title Levenshtein距離 / 編集距離
+ * @docs levenshtein_distance.md
  */
 template <typename Container, typename T = typename Container::value_type>
 int levenshtein_distance(const Container &a, const Container &b){
@@ -87,6 +88,7 @@ int levenshtein_distance(const Container &a, const Container &b){
 
 /**
  * @title Levenshtein距離 / 編集距離
+ * @docs levenshtein_distance.md
  */
 template <typename Container, typename T = typename Container::value_type>
 int levenshtein_distance(const Container &a, const Container &b){

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#437b04c37f52e5b35f1d2c24c546c491">Mylib/Grid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Grid/grid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -54,6 +54,7 @@ layout: default
 
 /**
  * @title グリッド用テンプレート
+ * @docs grid.md
  */
 struct Point{
   int x, y;
@@ -100,6 +101,7 @@ namespace grid{
 
 /**
  * @title グリッド用テンプレート
+ * @docs grid.md
  */
 struct Point{
   int x, y;

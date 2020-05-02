@@ -25,28 +25,27 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 凸多角形の切断
+# :x: 凸多角形の切断
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/convex_cut.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="ccw.cpp.html">clockwise-counterclockwise判定</a>
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="intersect_line_segment.cpp.html">直線と線分の交差</a>
+* :question: <a href="ccw.cpp.html">clockwise-counterclockwise判定</a>
+* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :x: <a href="intersect_line_segment.cpp.html">直線と線分の交差</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
 
 
 ## Code
@@ -61,7 +60,7 @@ layout: default
 
 /**
  * @title 凸多角形の切断
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C
+ * @docs convex_cut.md
  */
 template <typename T>
 void convex_cut(const Polygon<T> &ps, const Line<T> &l, Polygon<T> &left, Polygon<T> &right){
@@ -110,6 +109,7 @@ void convex_cut(const Polygon<T> &ps, const Line<T> &l, Polygon<T> &left, Polygo
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -196,6 +196,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 直線と線分の交差
+ * @docs intersect_line_segment.md
  */
 namespace intersect_line_segment{
   enum Status{
@@ -238,6 +239,7 @@ namespace intersect_line_segment{
 
 /**
  * @title clockwise-counterclockwise判定
+ * @docs ccw.md
  */
 namespace ccw{
   enum CCW{
@@ -268,7 +270,7 @@ namespace ccw{
 
 /**
  * @title 凸多角形の切断
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C
+ * @docs convex_cut.md
  */
 template <typename T>
 void convex_cut(const Polygon<T> &ps, const Line<T> &l, Polygon<T> &left, Polygon<T> &right){

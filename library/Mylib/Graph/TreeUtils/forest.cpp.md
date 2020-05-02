@@ -31,16 +31,15 @@ layout: default
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/forest.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://yukicoder.me/submissions/398023/source">https://yukicoder.me/submissions/398023/source</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">UnionFind</a>
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">UnionFind</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -56,7 +55,7 @@ layout: default
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
 /**
- * @see https://yukicoder.me/submissions/398023/source
+ * @docs forest.md
  */
 template <typename T>
 struct Forest{
@@ -140,6 +139,7 @@ struct Forest{
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -209,7 +209,7 @@ public:
 #line 7 "Mylib/Graph/TreeUtils/forest.cpp"
 
 /**
- * @see https://yukicoder.me/submissions/398023/source
+ * @docs forest.md
  */
 template <typename T>
 struct Forest{

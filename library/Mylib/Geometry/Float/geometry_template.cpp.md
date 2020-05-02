@@ -25,71 +25,71 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 幾何基本セット
+# :question: 幾何基本セット
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/geometry_template.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="area_intersection_of_circle_and_polygon.cpp.html">円と多角形の共通部分の面積</a>
+* :x: <a href="area_intersection_of_circle_and_polygon.cpp.html">円と多角形の共通部分の面積</a>
 * :warning: <a href="area_intersection_of_circles.cpp.html">2円の共通部分の面積</a>
-* :heavy_check_mark: <a href="area_polygon.cpp.html">多角形の面積</a>
-* :heavy_check_mark: <a href="ccw.cpp.html">clockwise-counterclockwise判定</a>
+* :x: <a href="area_polygon.cpp.html">多角形の面積</a>
+* :question: <a href="ccw.cpp.html">clockwise-counterclockwise判定</a>
 * :heavy_check_mark: <a href="circumscribed_circle_of_triangle.cpp.html">三角形の外接円</a>
-* :heavy_check_mark: <a href="closest_pair.cpp.html">最近点対</a>
-* :heavy_check_mark: <a href="common_tangent_of_circles.cpp.html">2円の共通接線</a>
-* :heavy_check_mark: <a href="convex_cut.cpp.html">凸多角形の切断</a>
-* :heavy_check_mark: <a href="convex_diameter.cpp.html">凸多角形の直径</a>
-* :heavy_check_mark: <a href="convex_hull.cpp.html">凸包</a>
-* :heavy_check_mark: <a href="distance_line_point.cpp.html">直線と点間の距離</a>
-* :heavy_check_mark: <a href="distance_segment_point.cpp.html">線分・点間の距離</a>
-* :heavy_check_mark: <a href="distance_segments.cpp.html">線分間の距離</a>
-* :heavy_check_mark: <a href="intersect_circle_line.cpp.html">円と直線の交差</a>
-* :heavy_check_mark: <a href="intersect_circle_segment.cpp.html">円と線分の交差</a>
-* :heavy_check_mark: <a href="intersect_circles.cpp.html">円同士の交差</a>
-* :heavy_check_mark: <a href="intersect_line_segment.cpp.html">直線と線分の交差</a>
-* :heavy_check_mark: <a href="intersect_segments.cpp.html">線分同士の交差</a>
-* :heavy_check_mark: <a href="is_convex.cpp.html">凸多角形判定</a>
-* :heavy_check_mark: <a href="is_point_in_polygon.cpp.html">点・多角形の包含関係</a>
+* :x: <a href="closest_pair.cpp.html">最近点対</a>
+* :x: <a href="common_tangent_of_circles.cpp.html">2円の共通接線</a>
+* :x: <a href="convex_cut.cpp.html">凸多角形の切断</a>
+* :x: <a href="convex_diameter.cpp.html">凸多角形の直径</a>
+* :x: <a href="convex_hull.cpp.html">凸包</a>
+* :x: <a href="distance_line_point.cpp.html">直線と点間の距離</a>
+* :x: <a href="distance_segment_point.cpp.html">線分・点間の距離</a>
+* :x: <a href="distance_segments.cpp.html">線分間の距離</a>
+* :x: <a href="intersect_circle_line.cpp.html">円と直線の交差</a>
+* :x: <a href="intersect_circle_segment.cpp.html">円と線分の交差</a>
+* :x: <a href="intersect_circles.cpp.html">円同士の交差</a>
+* :x: <a href="intersect_line_segment.cpp.html">直線と線分の交差</a>
+* :question: <a href="intersect_segments.cpp.html">線分同士の交差</a>
+* :x: <a href="is_convex.cpp.html">凸多角形判定</a>
+* :x: <a href="is_point_in_polygon.cpp.html">点・多角形の包含関係</a>
 * :heavy_check_mark: <a href="minimum_covering_circle.cpp.html">最小包含円</a>
-* :heavy_check_mark: <a href="orthogonal.cpp.html">直行判定</a>
-* :heavy_check_mark: <a href="parallel.cpp.html">平行判定</a>
-* :heavy_check_mark: <a href="projection.cpp.html">射影</a>
-* :heavy_check_mark: <a href="reflection.cpp.html">反射</a>
-* :heavy_check_mark: <a href="tangent_of_circle.cpp.html">円の接線</a>
+* :x: <a href="orthogonal.cpp.html">直行判定</a>
+* :x: <a href="parallel.cpp.html">平行判定</a>
+* :x: <a href="projection.cpp.html">射影</a>
+* :x: <a href="reflection.cpp.html">反射</a>
+* :x: <a href="tangent_of_circle.cpp.html">円の接線</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2136/main.test.cpp.html">test/aoj/2136/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_1_A/main.test.cpp.html">test/aoj/CGL_1_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_1_B/main.test.cpp.html">test/aoj/CGL_1_B/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_1_C/main.test.cpp.html">test/aoj/CGL_1_C/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_2_A/main.test.cpp.html">test/aoj/CGL_2_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_2_B/main.test.cpp.html">test/aoj/CGL_2_B/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_2_C/main.test.cpp.html">test/aoj/CGL_2_C/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_2_D/main.test.cpp.html">test/aoj/CGL_2_D/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_3_A/main.test.cpp.html">test/aoj/CGL_3_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_3_B/main.test.cpp.html">test/aoj/CGL_3_B/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_3_C/main.test.cpp.html">test/aoj/CGL_3_C/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_4_A/main.test.cpp.html">test/aoj/CGL_4_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_4_B/main.test.cpp.html">test/aoj/CGL_4_B/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_5_A/main.test.cpp.html">test/aoj/CGL_5_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_A/main.test.cpp.html">test/aoj/CGL_7_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_D/main.test.cpp.html">test/aoj/CGL_7_D/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_E/main.test.cpp.html">test/aoj/CGL_7_E/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_F/main.test.cpp.html">test/aoj/CGL_7_F/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_G/main.test.cpp.html">test/aoj/CGL_7_G/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_1_A/main.test.cpp.html">test/aoj/CGL_1_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_1_B/main.test.cpp.html">test/aoj/CGL_1_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_1_C/main.test.cpp.html">test/aoj/CGL_1_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_2_A/main.test.cpp.html">test/aoj/CGL_2_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_2_B/main.test.cpp.html">test/aoj/CGL_2_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_2_C/main.test.cpp.html">test/aoj/CGL_2_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_2_D/main.test.cpp.html">test/aoj/CGL_2_D/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_3_A/main.test.cpp.html">test/aoj/CGL_3_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_3_B/main.test.cpp.html">test/aoj/CGL_3_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_3_C/main.test.cpp.html">test/aoj/CGL_3_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_4_A/main.test.cpp.html">test/aoj/CGL_4_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_4_B/main.test.cpp.html">test/aoj/CGL_4_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_5_A/main.test.cpp.html">test/aoj/CGL_5_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_7_A/main.test.cpp.html">test/aoj/CGL_7_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_7_D/main.test.cpp.html">test/aoj/CGL_7_D/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_7_E/main.test.cpp.html">test/aoj/CGL_7_E/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_7_F/main.test.cpp.html">test/aoj/CGL_7_F/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_7_G/main.test.cpp.html">test/aoj/CGL_7_G/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
 
 
 ## Code
@@ -104,6 +104,7 @@ layout: default
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -200,6 +201,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;

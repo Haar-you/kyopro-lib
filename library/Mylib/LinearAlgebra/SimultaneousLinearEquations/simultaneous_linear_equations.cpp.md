@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 連立線形方程式
+# :x: 連立線形方程式
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0f2e8b5b008805076abcf42bbba8c8c1">Mylib/LinearAlgebra/SimultaneousLinearEquations</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/system_of_linear_equations/main.test.cpp.html">test/yosupo-judge/system_of_linear_equations/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/system_of_linear_equations/main.test.cpp.html">test/yosupo-judge/system_of_linear_equations/main.test.cpp</a>
 
 
 ## Code
@@ -53,6 +53,7 @@ layout: default
 
 /**
  * @title 連立線形方程式
+ * @docs simultaneous_linear_equations.md
  */
 namespace simulaneous_linear_equations{
   template <typename T>
@@ -160,6 +161,7 @@ namespace simulaneous_linear_equations{
 
 /**
  * @title 連立線形方程式
+ * @docs simultaneous_linear_equations.md
  */
 namespace simulaneous_linear_equations{
   template <typename T>

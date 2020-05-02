@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#c20232aa0a6a3c1c77a782d17f007d0b">Mylib/Math</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Math/quadratic_equation.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-15 20:46:25+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -47,6 +47,7 @@ layout: default
 
 /**
  * @title 二次方程式の実数解
+ * @docs quadratic_equation.md
  */
 std::vector<double> quadratic_equation(double a, double b, double c){
   double d = b*b - 4*a*c;
@@ -69,6 +70,7 @@ std::vector<double> quadratic_equation(double a, double b, double c){
 
 /**
  * @title 二次方程式の実数解
+ * @docs quadratic_equation.md
  */
 std::vector<double> quadratic_equation(double a, double b, double c){
   double d = b*b - 4*a*c;

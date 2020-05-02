@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 二部マッチング
+# :x: 二部マッチング
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#65eb1c5db2b1bd726d58cf661f149e7c">Mylib/Graph/Matching</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Matching/bipartite_matching.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-07 13:24:38+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../Flow/ford_fulkerson.cpp.html">Ford-Fulkerson法</a>
+* :question: <a href="../Flow/ford_fulkerson.cpp.html">Ford-Fulkerson法</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
 
 
 ## Code
@@ -60,6 +60,7 @@ layout: default
 
 /**
  * @title 二部マッチング
+ * @docs bipartite_matching.md
  */
 class BipartiteMatching{
   int x, y;
@@ -111,6 +112,7 @@ public:
 
 /**
  * @title Ford-Fulkerson法
+ * @docs ford_fulkerson.md
  */
 template <typename T> class FordFulkerson{
 public:
@@ -190,6 +192,7 @@ public:
 
 /**
  * @title 二部マッチング
+ * @docs bipartite_matching.md
  */
 class BipartiteMatching{
   int x, y;

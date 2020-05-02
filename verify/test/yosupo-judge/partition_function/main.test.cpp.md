@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/partition_function/main.test.cpp
+# :x: test/yosupo-judge/partition_function/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3c72a5f9e51247cad1bcbc8d30f4715f">test/yosupo-judge/partition_function</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/partition_function/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-26 15:25:30+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/partition_function">https://judge.yosupo.jp/problem/partition_function</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/partition_number_n.cpp.html">分割数の列挙</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/Combinatorics/partition_number_n.cpp.html">分割数の列挙</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -83,6 +83,7 @@ int main(){
 
 /**
  * @title modint
+ * @docs mint.md
  */
 template <uint32_t M> class ModInt{
 public:

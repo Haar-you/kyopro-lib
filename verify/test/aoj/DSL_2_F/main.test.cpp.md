@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_2_F/main.test.cpp
+# :x: test/aoj/DSL_2_F/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2ac20e439971e957ed6809338e9771d9">test/aoj/DSL_2_F</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_F/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/update_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/update_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/update_min.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_min.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp.html">遅延セグメント木</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/update_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/update_monoid.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/update_min.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_min.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp.html">遅延SegmentTree</a>
 
 
 ## Code
@@ -95,7 +95,8 @@ int main(){
 #include <vector>
 
 /**
- * @title 遅延セグメント木
+ * @title 遅延SegmentTree
+ * @docs lazy_segment_tree.md
  */
 template <typename Monoid>
 class LazySegmentTree{
@@ -168,6 +169,9 @@ public:
 #line 2 "Mylib/AlgebraicStructure/Monoid/update_monoid.cpp"
 #include <optional>
 
+/**
+ * @docs update_monoid.md
+ */
 template <typename T>
 struct UpdateMonoid{
   using value_type = std::optional<T>;
@@ -177,6 +181,9 @@ struct UpdateMonoid{
 #line 2 "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
 #include <algorithm>
 
+/**
+ * @docs min_monoid.md
+ */
 template <typename T>
 struct MinMonoid{
   using value_type = T;
@@ -185,6 +192,9 @@ struct MinMonoid{
 };
 #line 4 "Mylib/AlgebraicStructure/MonoidAction/update_min.cpp"
 
+/**
+ * @docs update_min.md
+ */
 template <typename T, typename U>
 struct UpdateMin{
   using monoid_get = MinMonoid<T>;

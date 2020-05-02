@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/186/main.test.cpp
+# :x: test/yukicoder/186/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0bd636f7c7da7cc28e18f9f04b1f4152">test/yukicoder/186</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/186/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-07 19:24:13+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/447">https://yukicoder.me/problems/447</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/chinese_remainder_algorithm.cpp.html">中国剰余定理</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/extended_gcd.cpp.html">拡張Euclidの互除法</a>
+* :x: <a href="../../../../library/Mylib/Number/chinese_remainder_algorithm.cpp.html">中国剰余定理</a>
+* :x: <a href="../../../../library/Mylib/Number/extended_gcd.cpp.html">拡張Euclidの互除法</a>
 
 
 ## Code
@@ -84,6 +84,7 @@ int main(){
 
 /**
  * @title 拡張Euclidの互除法
+ * @docs extended_gcd.md
  */
 std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
   if(b == 0) return std::make_tuple(a,1,0);
@@ -95,6 +96,7 @@ std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
 
 /**
  * @title 中国剰余定理
+ * @docs chinese_remainder_algorithm.md
  */
 bool CRA(int64_t b1, int64_t m1, int64_t b2, int64_t m2, int64_t &r, int64_t &m){
   int64_t p,q,d;

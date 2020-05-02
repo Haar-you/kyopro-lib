@@ -25,27 +25,27 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 最小費用流
+# :question: 最小費用流
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ecd047c70c23d80351a9f133b49a4638">Mylib/Graph/Flow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Flow/minimum_cost_flow.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="../Matching/weighted_bipartite_matching.cpp.html">重み付き二部マッチング</a>
+* :question: <a href="../Matching/weighted_bipartite_matching.cpp.html">重み付き二部マッチング</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2293/main.test.cpp.html">test/aoj/2293/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_6_B/main.test.cpp.html">test/aoj/GRL_6_B/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/assignment/main.test.cpp.html">test/yosupo-judge/assignment/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_6_B/main.test.cpp.html">test/aoj/GRL_6_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/assignment/main.test.cpp.html">test/yosupo-judge/assignment/main.test.cpp</a>
 
 
 ## Code
@@ -63,6 +63,7 @@ layout: default
 
 /**
  * @title 最小費用流
+ * @docs minimum_cost_flow.md
  */
 template <typename T, typename U> class MinimumCostFlow{
 public:
@@ -173,6 +174,7 @@ public:
 
 /**
  * @title 最小費用流
+ * @docs minimum_cost_flow.md
  */
 template <typename T, typename U> class MinimumCostFlow{
 public:

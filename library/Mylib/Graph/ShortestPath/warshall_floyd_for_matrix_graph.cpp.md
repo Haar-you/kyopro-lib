@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 隣接行列グラフでのWarshall-Floyd法
+# :heavy_check_mark: Warshall-Floyd法 (隣接行列グラフ)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9a0780c4ad89eac4e850657d1e57c23a">Mylib/Graph/ShortestPath</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -51,7 +51,8 @@ layout: default
 #include <optional>
 
 /**
- * @title 隣接行列グラフでのWarshall-Floyd法
+ * @title Warshall-Floyd法 (隣接行列グラフ)
+ * @docs warshall_floyd_for_matrix_graph.md
  */
 template <typename T, T INVALID>
 struct WarshallFloyd{
@@ -103,7 +104,8 @@ struct WarshallFloyd{
 #include <optional>
 
 /**
- * @title 隣接行列グラフでのWarshall-Floyd法
+ * @title Warshall-Floyd法 (隣接行列グラフ)
+ * @docs warshall_floyd_for_matrix_graph.md
  */
 template <typename T, T INVALID>
 struct WarshallFloyd{

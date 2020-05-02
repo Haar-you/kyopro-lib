@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/update_or.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 07:44:02+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -39,7 +39,7 @@ layout: default
 ## Depends on
 
 * :warning: <a href="../Monoid/or_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/or_monoid.cpp</a>
-* :heavy_check_mark: <a href="../Monoid/update_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/update_monoid.cpp</a>
+* :x: <a href="../Monoid/update_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/update_monoid.cpp</a>
 
 
 ## Code
@@ -51,6 +51,9 @@ layout: default
 #include "Mylib/AlgebraicStructure/Monoid/update_monoid.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/or_monoid.cpp"
 
+/**
+ * @docs update_or.md
+ */
 template <typename T, typename U>
 struct UpdateOr{
   using monoid_get = OrMonoid<T>;
@@ -72,6 +75,9 @@ struct UpdateOr{
 #line 2 "Mylib/AlgebraicStructure/Monoid/update_monoid.cpp"
 #include <optional>
 
+/**
+ * @docs update_monoid.md
+ */
 template <typename T>
 struct UpdateMonoid{
   using value_type = std::optional<T>;
@@ -80,6 +86,9 @@ struct UpdateMonoid{
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/or_monoid.cpp"
 
+/**
+ * @docs or_monoid.md
+ */
 template <typename T>
 struct OrMonoid{
   using value_type = T;
@@ -88,6 +97,9 @@ struct OrMonoid{
 };
 #line 4 "Mylib/AlgebraicStructure/MonoidAction/update_or.cpp"
 
+/**
+ * @docs update_or.md
+ */
 template <typename T, typename U>
 struct UpdateOr{
   using monoid_get = OrMonoid<T>;

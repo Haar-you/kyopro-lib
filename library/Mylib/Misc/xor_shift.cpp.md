@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/xor_shift.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -45,6 +45,7 @@ layout: default
 
 /**
  * @title XorShift
+ * @docs xor_shift.md
  */
 struct XorShift{
   static uint64_t rand(){
@@ -73,6 +74,7 @@ struct XorShift{
 
 /**
  * @title XorShift
+ * @docs xor_shift.md
  */
 struct XorShift{
   static uint64_t rand(){

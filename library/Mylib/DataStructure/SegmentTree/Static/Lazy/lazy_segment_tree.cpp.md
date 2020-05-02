@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 遅延セグメント木
+# :question: 遅延SegmentTree
 
 <a href="../../../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../../../index.html#de8a5606096431aaa412f7e202a14bf5">Mylib/DataStructure/SegmentTree/Static/Lazy</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -39,13 +39,13 @@ layout: default
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../../../verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/aoj/DSL_2_F/main.test.cpp.html">test/aoj/DSL_2_F/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/aoj/DSL_2_G/main.test.cpp.html">test/aoj/DSL_2_G/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/aoj/DSL_2_H/main.test.cpp.html">test/aoj/DSL_2_H/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/aoj/DSL_2_I/main.test.cpp.html">test/aoj/DSL_2_I/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/yukicoder/631/main.test.cpp.html">test/yukicoder/631/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/aoj/DSL_2_F/main.test.cpp.html">test/aoj/DSL_2_F/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/aoj/DSL_2_G/main.test.cpp.html">test/aoj/DSL_2_G/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/aoj/DSL_2_H/main.test.cpp.html">test/aoj/DSL_2_H/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/aoj/DSL_2_I/main.test.cpp.html">test/aoj/DSL_2_I/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/yukicoder/631/main.test.cpp.html">test/yukicoder/631/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
 
 
 ## Code
@@ -57,7 +57,8 @@ layout: default
 #include <vector>
 
 /**
- * @title 遅延セグメント木
+ * @title 遅延SegmentTree
+ * @docs lazy_segment_tree.md
  */
 template <typename Monoid>
 class LazySegmentTree{
@@ -138,7 +139,8 @@ public:
 #include <vector>
 
 /**
- * @title 遅延セグメント木
+ * @title 遅延SegmentTree
+ * @docs lazy_segment_tree.md
  */
 template <typename Monoid>
 class LazySegmentTree{

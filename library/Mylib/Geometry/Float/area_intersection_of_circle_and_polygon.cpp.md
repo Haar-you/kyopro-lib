@@ -25,28 +25,27 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 円と多角形の共通部分の面積
+# :x: 円と多角形の共通部分の面積
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-06 17:41:22+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_H">https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_H</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="distance_segment_point.cpp.html">線分・点間の距離</a>
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="intersect_circle_segment.cpp.html">円と線分の交差</a>
+* :x: <a href="distance_segment_point.cpp.html">線分・点間の距離</a>
+* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :x: <a href="intersect_circle_segment.cpp.html">円と線分の交差</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
 
 
 ## Code
@@ -61,7 +60,7 @@ layout: default
 
 /**
  * @title 円と多角形の共通部分の面積
- * @see https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_H
+ * @docs area_intersection_of_circle_and_polygon.md
  */
 template <typename T>
 T area_intersection_of_circle_and_polygon(const Circle<T> &cl, const Polygon<T> &ps){
@@ -127,6 +126,7 @@ T area_intersection_of_circle_and_polygon(const Circle<T> &cl, const Polygon<T> 
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -213,6 +213,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 線分・点間の距離
+ * @docs distance_segment_point.md
  */
 template <typename T, typename U = typename T::value_type>
 T distance_segment_point(const Line<T> &l, const Point<T> &p){
@@ -224,6 +225,7 @@ T distance_segment_point(const Line<T> &l, const Point<T> &p){
 
 /**
  * @title 円と線分の交差
+ * @docs intersect_circle_segment.md
  */
 namespace intersect_circle_segment{
   enum Status{
@@ -284,7 +286,7 @@ namespace intersect_circle_segment{
 
 /**
  * @title 円と多角形の共通部分の面積
- * @see https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_H
+ * @docs area_intersection_of_circle_and_polygon.md
  */
 template <typename T>
 T area_intersection_of_circle_and_polygon(const Circle<T> &cl, const Polygon<T> &ps){

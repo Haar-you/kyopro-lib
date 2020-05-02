@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0bdfbad106799ccca05cbd57bfdddfd4">test/aoj/1327</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1327/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/power.cpp.html">行列累乗</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">正方行列</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">実行時mod指定modint</a>
+* :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/power.cpp.html">行列累乗</a>
+* :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">正方行列</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">実行時mod指定modint</a>
 
 
 ## Code
@@ -112,7 +112,7 @@ int main(){
 
 /**
  * @title 実行時mod指定modint
- * @attention 使用前にstatic変数Mを設定する。
+ * @docs runtime_mint.md
  */
 class RuntimeModInt{
 public:
@@ -182,6 +182,7 @@ std::ostream& operator<<(std::ostream &os, const RuntimeModInt &a){os << a.val; 
 
 /**
  * @title 正方行列
+ * @docs square_matrix.md
  */
 template <typename T> struct SquareMatrix{
   using value_type = T;
@@ -238,6 +239,7 @@ template <typename T> struct SquareMatrix{
 
 /**
  * @title 行列累乗
+ * @docs power.md
  */
 template <typename M, typename T = typename M::value_type>
 M power(M a, uint64_t p){

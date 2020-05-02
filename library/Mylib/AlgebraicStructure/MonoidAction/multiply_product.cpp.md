@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 07:44:02+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -51,6 +51,9 @@ layout: default
 #include "Mylib/AlgebraicStructure/Monoid/product_monoid.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp"
 
+/**
+ * @docs multiply_product.md
+ */
 template <typename T, typename U>
 struct MultiplyProduct{
   using monoid_get = ProductMonoid<T>;
@@ -71,6 +74,9 @@ struct MultiplyProduct{
 ```cpp
 #line 2 "Mylib/AlgebraicStructure/Monoid/product_monoid.cpp"
 
+/**
+ * @docs product_monoid.md
+ */
 template <typename T>
 struct ProductMonoid{
   using value_type = T;
@@ -79,6 +85,9 @@ struct ProductMonoid{
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp"
 
+/**
+ * @docs monoid_utils.md
+ */
 template <typename M, typename value_type = typename M::value_type>
 value_type times(value_type a, int64_t p){
   auto ret = M::id();
@@ -93,6 +102,9 @@ value_type times(value_type a, int64_t p){
 }
 #line 4 "Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp"
 
+/**
+ * @docs multiply_product.md
+ */
 template <typename T, typename U>
 struct MultiplyProduct{
   using monoid_get = ProductMonoid<T>;

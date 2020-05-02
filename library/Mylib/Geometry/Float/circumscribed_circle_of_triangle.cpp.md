@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-06 17:41:22+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Required by
@@ -62,6 +62,7 @@ layout: default
 
 /**
  * @title 三角形の外接円
+ * @docs circumscribed_circle_of_triangle.md
  */
 template <typename T, typename U = typename T::value_type>
 Circle<T> circumscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b, const Point<T> &c){
@@ -90,6 +91,7 @@ Circle<T> circumscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b,
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -176,6 +178,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 三角形の外接円
+ * @docs circumscribed_circle_of_triangle.md
  */
 template <typename T, typename U = typename T::value_type>
 Circle<T> circumscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b, const Point<T> &c){

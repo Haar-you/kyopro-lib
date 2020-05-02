@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 橋列挙
+# :x: 橋列挙
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0520734517f09caa086d1aa01fa4b9e4">Mylib/Graph/GraphUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/GraphUtils/bridges.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_3_B/main.test.cpp.html">test/aoj/GRL_3_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_3_B/main.test.cpp.html">test/aoj/GRL_3_B/main.test.cpp</a>
 
 
 ## Code
@@ -58,6 +58,7 @@ layout: default
 
 /**
  * @title 橋列挙
+ * @docs bridges.md
  */
 template <typename T>
 auto bridges(const Graph<T> &graph){
@@ -98,6 +99,7 @@ auto bridges(const Graph<T> &graph){
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -123,6 +125,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title 橋列挙
+ * @docs bridges.md
  */
 template <typename T>
 auto bridges(const Graph<T> &graph){

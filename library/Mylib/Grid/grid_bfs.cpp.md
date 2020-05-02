@@ -31,11 +31,23 @@ layout: default
 
 * category: <a href="../../../index.html#437b04c37f52e5b35f1d2c24c546c491">Mylib/Grid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Grid/grid_bfs.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://atcoder.jp/contests/agc033/submissions/7429070">https://atcoder.jp/contests/agc033/submissions/7429070</a>
-* see: <a href="https://atcoder.jp/contests/qupc2018/submissions/7429448">https://atcoder.jp/contests/qupc2018/submissions/7429448</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [AGC 033 A - Darker and Darker](https://atcoder.jp/contests/agc033/tasks/agc033_a)
+- [QUPC 2018 C - Ito Campus](https://atcoder.jp/contests/qupc2018/tasks/qupc2018_c)
+
+## References
 
 
 ## Depends on
@@ -55,8 +67,7 @@ layout: default
 
 /**
  * @title グリッド上BFS
- * @see https://atcoder.jp/contests/agc033/submissions/7429070
- * @see https://atcoder.jp/contests/qupc2018/submissions/7429448
+ * @docs grid_bfs.md
  */
 template <typename Directions, typename Checker>
 std::vector<std::vector<int>> bfs_grid(const int H, const int W,
@@ -115,6 +126,7 @@ std::vector<std::vector<int>> bfs_grid(const int H, const int W,
 
 /**
  * @title グリッド用テンプレート
+ * @docs grid.md
  */
 struct Point{
   int x, y;
@@ -151,8 +163,7 @@ namespace grid{
 
 /**
  * @title グリッド上BFS
- * @see https://atcoder.jp/contests/agc033/submissions/7429070
- * @see https://atcoder.jp/contests/qupc2018/submissions/7429448
+ * @docs grid_bfs.md
  */
 template <typename Directions, typename Checker>
 std::vector<std::vector<int>> bfs_grid(const int H, const int W,

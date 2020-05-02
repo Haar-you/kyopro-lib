@@ -31,18 +31,31 @@ layout: default
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/minimum_covering_circle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-16 02:06:46+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://tubo28.me/compprog/algorithm/minball/">https://tubo28.me/compprog/algorithm/minball/</a>
-* see: <a href="https://atcoder.jp/contests/abc151/tasks/abc151_f">https://atcoder.jp/contests/abc151/tasks/abc151_f</a>
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [ABC 151 F - Enclose All](https://atcoder.jp/contests/abc151/tasks/abc151_f)
+- [AOJ 3034 Explosion](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034)
+
+## References
+
+- [https://tubo28.me/compprog/algorithm/minball/](https://tubo28.me/compprog/algorithm/minball/)
 
 
 ## Depends on
 
 * :heavy_check_mark: <a href="circumscribed_circle_of_triangle.cpp.html">三角形の外接円</a>
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Verified with
@@ -63,9 +76,7 @@ layout: default
 
 /**
  * @title 最小包含円
- * @see https://tubo28.me/compprog/algorithm/minball/
- * @see https://atcoder.jp/contests/abc151/tasks/abc151_f
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034
+ * @docs minimum_covering_circle.md
  */
 template <typename T>
 Circle<T> minimum_covering_circle(std::vector<Point<T>> ps, int seed = 0){
@@ -130,6 +141,7 @@ Circle<T> minimum_covering_circle(std::vector<Point<T>> ps, int seed = 0){
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -216,6 +228,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 三角形の外接円
+ * @docs circumscribed_circle_of_triangle.md
  */
 template <typename T, typename U = typename T::value_type>
 Circle<T> circumscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b, const Point<T> &c){
@@ -232,9 +245,7 @@ Circle<T> circumscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b,
 
 /**
  * @title 最小包含円
- * @see https://tubo28.me/compprog/algorithm/minball/
- * @see https://atcoder.jp/contests/abc151/tasks/abc151_f
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034
+ * @docs minimum_covering_circle.md
  */
 template <typename T>
 Circle<T> minimum_covering_circle(std::vector<Point<T>> ps, int seed = 0){

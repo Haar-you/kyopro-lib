@@ -25,31 +25,31 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: トポロジカルソート
+# :x: トポロジカルソート
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#5cfab8f1bec9f4a2c22b88bddb7720db">Mylib/Graph/TopologicalSort</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TopologicalSort/topological_sort.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="../two_sat.cpp.html">2-SAT</a>
+* :x: <a href="../two_sat.cpp.html">2-SAT</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
 
 
 ## Code
@@ -65,6 +65,7 @@ layout: default
 
 /**
  * @title トポロジカルソート
+ * @docs topological_sort.md
  */
 template <typename T>
 std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
@@ -116,6 +117,7 @@ std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -141,6 +143,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title トポロジカルソート
+ * @docs topological_sort.md
  */
 template <typename T>
 std::optional<std::vector<int>> topological_sort(const Graph<T> &g){

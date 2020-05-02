@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/ALDS1_15_C/main.test.cpp
+# :x: test/aoj/ALDS1_15_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#dfb9b4b04978b5abf401139b8f15bff5">test/aoj/ALDS1_15_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_15_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_15_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_15_C</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling.cpp.html">区間スケジューリング問題</a>
+* :x: <a href="../../../../library/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling.cpp.html">区間スケジューリング問題</a>
 
 
 ## Code
@@ -89,9 +89,7 @@ int main(){
 
 /**
  * @title 区間スケジューリング問題
- * @see https://atcoder.jp/contests/kupc2015/submissions/6604297
- * @see https://codeforces.com/contest/528/submission/57933292
- * @attention time complexity O(N log N)
+ * @docs interval_scheduling.md
  */
 template <typename T>
 std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &left, const std::vector<T> &right){ // 区間は[a,b]

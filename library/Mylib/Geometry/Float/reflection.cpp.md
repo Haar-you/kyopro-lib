@@ -25,27 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 反射
+# :x: 反射
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/reflection.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="projection.cpp.html">射影</a>
+* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :x: <a href="projection.cpp.html">射影</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_1_B/main.test.cpp.html">test/aoj/CGL_1_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_1_B/main.test.cpp.html">test/aoj/CGL_1_B/main.test.cpp</a>
 
 
 ## Code
@@ -59,7 +58,7 @@ layout: default
 
 /**
  * @title 反射
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B
+ * @docs reflection.md
  */
 template <typename T>
 Point<T> reflection(const Line<T> &l, const Point<T> &p){
@@ -79,6 +78,7 @@ Point<T> reflection(const Line<T> &l, const Point<T> &p){
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -165,7 +165,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 射影
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_A
+ * @docs projection.md
  */
 template <typename T>
 Point<T> projection(const Line<T> &l, const Point<T> &p){
@@ -175,7 +175,7 @@ Point<T> projection(const Line<T> &l, const Point<T> &p){
 
 /**
  * @title 反射
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_B
+ * @docs reflection.md
  */
 template <typename T>
 Point<T> reflection(const Line<T> &l, const Point<T> &p){

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/GRL_1_B/main.test.cpp
+# :x: test/aoj/GRL_1_B/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f1313a8dcf51d21dc3fedcd116b5c80b">test/aoj/GRL_1_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_1_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-30 15:12:20+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/bellman_ford.cpp.html">Bellman-Ford法</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/Graph/ShortestPath/bellman_ford.cpp.html">Bellman-Ford法</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -103,6 +103,7 @@ int main(){
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:

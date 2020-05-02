@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
+# :x: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#082039b3153b4a2410d6e14e04aca1cc">test/aoj/DSL_2_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum_group.cpp.html">Mylib/AlgebraicStructure/Group/sum_group.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">Fenwick木</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum_group.cpp.html">Mylib/AlgebraicStructure/Group/sum_group.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">FenwickTree</a>
 
 
 ## Code
@@ -88,7 +88,8 @@ int main(){
 #include <vector>
 
 /**
- * @title Fenwick木
+ * @title FenwickTree
+ * @docs fenwick_tree.md
  */
 template <typename AbelianGroup>
 class FenwickTree{
@@ -134,6 +135,9 @@ public:
 };
 #line 2 "Mylib/AlgebraicStructure/Group/sum_group.cpp"
 
+/**
+ * @docs sum_group.md
+ */
 template <typename T>
 struct SumGroup{
   using value_type = T;

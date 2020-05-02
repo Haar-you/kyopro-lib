@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#64b51258818892ff133e88d4c55d7a44">test/aoj/0323</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/0323/main.ternary.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-13 17:55:09+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0323">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0323</a>
@@ -123,6 +123,7 @@ int main(){
 
 /**
  * @title 上に凸の三分探索
+ * @docs ternary_search_upwards.md
  */
 template <typename T = double, typename Func = std::function<T(T)>>
 T ternary_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){

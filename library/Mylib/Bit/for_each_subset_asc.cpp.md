@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#fe4a83e4dc2a7f834ed4cd85d6972a53">Mylib/Bit</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/for_each_subset_asc.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 09:18:14+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -48,6 +48,9 @@ layout: default
 ```cpp
 #pragma once
 
+/**
+ * @docs for_each_subset_asc.md
+ */
 template <typename Func>
 void for_each_subset_asc(int a, const Func &f){
   for(int t=0; ; t=(t-a)&a){
@@ -64,6 +67,9 @@ void for_each_subset_asc(int a, const Func &f){
 ```cpp
 #line 2 "Mylib/Bit/for_each_subset_asc.cpp"
 
+/**
+ * @docs for_each_subset_asc.md
+ */
 template <typename Func>
 void for_each_subset_asc(int a, const Func &f){
   for(int t=0; ; t=(t-a)&a){

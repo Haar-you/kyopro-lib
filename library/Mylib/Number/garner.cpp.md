@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/garner.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="Mod/mod_inv.cpp.html">mod逆数</a>
+* :x: <a href="Mod/mod_inv.cpp.html">mod逆数</a>
 
 
 ## Code
@@ -52,6 +52,7 @@ layout: default
 
 /**
  * @title Garner法
+ * @docs garner.md
  */
 int64_t garner_algorithm(std::vector<int64_t> r, std::vector<int64_t> m, const int64_t mod){
   m.push_back(mod);
@@ -84,7 +85,7 @@ int64_t garner_algorithm(std::vector<int64_t> r, std::vector<int64_t> m, const i
 
 /**
  * @title mod逆数
- * @attention gcd(a, m) = 1
+ * @docs mod_inv.md
  */
 int64_t mod_inv(int64_t a, int64_t m){
   int64_t b = m, u = 1, v = 0;
@@ -104,6 +105,7 @@ int64_t mod_inv(int64_t a, int64_t m){
 
 /**
  * @title Garner法
+ * @docs garner.md
  */
 int64_t garner_algorithm(std::vector<int64_t> r, std::vector<int64_t> m, const int64_t mod){
   m.push_back(mod);

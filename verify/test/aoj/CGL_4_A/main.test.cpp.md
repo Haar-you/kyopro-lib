@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/CGL_4_A/main.test.cpp
+# :x: test/aoj/CGL_4_A/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a269259367036c402826e762072de44f">test/aoj/CGL_4_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_4_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/convex_hull.cpp.html">凸包</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/convex_hull.cpp.html">凸包</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Code
@@ -105,6 +105,7 @@ int main(){
 
 /**
  * @title 誤差許容浮動小数点数
+ * @docs double_eps.md
  */
 template <typename T>
 struct DoubleEps{
@@ -162,6 +163,7 @@ namespace std{
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -248,9 +250,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 凸包
- * @see https://onlinejudge.u-aizu.ac.jp/challenges/sources/PCK/Prelim/0342?year=2016 (凸包/最小全域木)
- * @see https://atcoder.jp/contests/agc021/tasks/agc021_b (凸包)
- * @see https://codeforces.com/contest/1143/problem/F (式変形/上側凸包)
+ * @docs convex_hull.md
  */
 template <typename T> 
 std::vector<Point<T>> upper_hull(Polygon<T> pts, bool upper = true){

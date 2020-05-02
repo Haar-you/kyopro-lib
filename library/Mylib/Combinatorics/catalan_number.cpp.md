@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Catalan数
+# :x: Catalan数
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -54,12 +54,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
+* :x: <a href="combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/660/main.test.cpp.html">test/yukicoder/660/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/660/main.test.cpp.html">test/yukicoder/660/main.test.cpp</a>
 
 
 ## Code

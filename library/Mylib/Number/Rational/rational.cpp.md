@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#e55110d6133c602b43ca77c4caba1f06">Mylib/Number/Rational</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Rational/rational.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-22 13:13:16+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -52,6 +52,7 @@ layout: default
 
 /**
  * @title 有理数クラス
+ * @docs rational.md
  */
 class Rational{
 public:
@@ -123,6 +124,7 @@ auto abs(const Rational &a){return Rational(abs(a.nume), abs(a.deno));}
 
 /**
  * @title 有理数クラス
+ * @docs rational.md
  */
 class Rational{
 public:

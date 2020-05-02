@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#fe4a83e4dc2a7f834ed4cd85d6972a53">Mylib/Bit</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/for_each_subset_between.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 09:18:14+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -44,7 +44,7 @@ layout: default
 #pragma once
 
 /**
- * @note for each subset x : a ⊆ x ⊆ b
+ * @docs for_each_subset_between.md
  */
 template <typename Func>
 void for_each_subset_between(int a, int b, const Func &f){
@@ -64,7 +64,7 @@ void for_each_subset_between(int a, int b, const Func &f){
 #line 2 "Mylib/Bit/for_each_subset_between.cpp"
 
 /**
- * @note for each subset x : a ⊆ x ⊆ b
+ * @docs for_each_subset_between.md
  */
 template <typename Func>
 void for_each_subset_between(int a, int b, const Func &f){

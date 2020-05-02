@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/AlgebraicStructure/Group/sum_group.cpp
+# :question: Mylib/AlgebraicStructure/Group/sum_group.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a11cf6f4bd6e76e33e4d7136e3eb98bc">Mylib/AlgebraicStructure/Group</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Group/sum_group.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 08:05:29+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -39,8 +39,8 @@ layout: default
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2842/main.fenwick_tree.test.cpp.html">test/aoj/2842/main.fenwick_tree.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp.html">test/aoj/DSL_2_B/main.fenwick_tree.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp.html">test/aoj/DSL_2_B/main.fenwick_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
 
 
 ## Code
@@ -50,6 +50,9 @@ layout: default
 ```cpp
 #pragma once
 
+/**
+ * @docs sum_group.md
+ */
 template <typename T>
 struct SumGroup{
   using value_type = T;
@@ -67,6 +70,9 @@ struct SumGroup{
 ```cpp
 #line 2 "Mylib/AlgebraicStructure/Group/sum_group.cpp"
 
+/**
+ * @docs sum_group.md
+ */
 template <typename T>
 struct SumGroup{
   using value_type = T;

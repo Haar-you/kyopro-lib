@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_1_D/main.test.cpp
+# :x: test/aoj/DPL_1_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#5ffb9908d171cb12894511e5d6b7ae00">test/aoj/DPL_1_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_1_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-09 17:21:47+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_D</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DynamicProgramming/longest_increasing_subsequence.cpp.html">最長増加部分列</a>
+* :x: <a href="../../../../library/Mylib/DynamicProgramming/longest_increasing_subsequence.cpp.html">最長増加部分列</a>
 
 
 ## Code
@@ -80,6 +80,7 @@ int main(){
 
 /**
  * @title 最長増加部分列
+ * @docs longest_increasing_subsequence.md
  */
 template <typename Container, typename T = typename Container::value_type>
 int lis(const Container &xs){

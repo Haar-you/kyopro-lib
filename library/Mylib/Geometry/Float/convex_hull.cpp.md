@@ -25,28 +25,41 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 凸包
+# :x: 凸包
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/convex_hull.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://onlinejudge.u-aizu.ac.jp/challenges/sources/PCK/Prelim/0342?year=2016 (凸包/最小全域木)">https://onlinejudge.u-aizu.ac.jp/challenges/sources/PCK/Prelim/0342?year=2016 (凸包/最小全域木)</a>
-* see: <a href="https://atcoder.jp/contests/agc021/tasks/agc021_b (凸包)">https://atcoder.jp/contests/agc021/tasks/agc021_b (凸包)</a>
-* see: <a href="https://codeforces.com/contest/1143/problem/F (式変形/上側凸包)">https://codeforces.com/contest/1143/problem/F (式変形/上側凸包)</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [AOJ 0342 Road Planning](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0342) (凸包/最小全域木)
+- [AGC 021 B - Holes](https://atcoder.jp/contests/agc021/tasks/agc021_b) (凸包)
+- [Codeforces Round #549 (Div. 2) F. U2](https://codeforces.com/contest/1143/problem/F) (式変形/上側凸包)
+
+## References
+
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_4_A/main.test.cpp.html">test/aoj/CGL_4_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_4_A/main.test.cpp.html">test/aoj/CGL_4_A/main.test.cpp</a>
 
 
 ## Code
@@ -61,9 +74,7 @@ layout: default
 
 /**
  * @title 凸包
- * @see https://onlinejudge.u-aizu.ac.jp/challenges/sources/PCK/Prelim/0342?year=2016 (凸包/最小全域木)
- * @see https://atcoder.jp/contests/agc021/tasks/agc021_b (凸包)
- * @see https://codeforces.com/contest/1143/problem/F (式変形/上側凸包)
+ * @docs convex_hull.md
  */
 template <typename T> 
 std::vector<Point<T>> upper_hull(Polygon<T> pts, bool upper = true){
@@ -127,6 +138,7 @@ std::vector<Point<T>> convex_hull(const Polygon<T> &pts){
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -213,9 +225,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 凸包
- * @see https://onlinejudge.u-aizu.ac.jp/challenges/sources/PCK/Prelim/0342?year=2016 (凸包/最小全域木)
- * @see https://atcoder.jp/contests/agc021/tasks/agc021_b (凸包)
- * @see https://codeforces.com/contest/1143/problem/F (式変形/上側凸包)
+ * @docs convex_hull.md
  */
 template <typename T> 
 std::vector<Point<T>> upper_hull(Polygon<T> pts, bool upper = true){

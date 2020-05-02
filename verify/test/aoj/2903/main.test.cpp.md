@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a4e6aa089926e18aa464289d5229ad29">test/aoj/2903</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2903/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2903">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2903</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson法</a>
+* :question: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson法</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/project_selection_problem.cpp.html">Project Selection Problem</a>
 
 
@@ -224,6 +224,7 @@ public:
 
 /**
  * @title Ford-Fulkerson法
+ * @docs ford_fulkerson.md
  */
 template <typename T> class FordFulkerson{
 public:

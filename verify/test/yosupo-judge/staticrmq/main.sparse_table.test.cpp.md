@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
+# :x: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#5680c9d4a5622c4318d3dde130a2c657">test/yosupo-judge/staticrmq</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/staticrmq/main.sparse_table.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-27 20:58:13+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/staticrmq">https://judge.yosupo.jp/problem/staticrmq</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SparseTable/sparse_table.cpp.html">Sparse table</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SparseTable/sparse_table.cpp.html">Sparse table</a>
 
 
 ## Code
@@ -146,6 +146,9 @@ public:
 };
 #line 3 "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
 
+/**
+ * @docs min_monoid.md
+ */
 template <typename T>
 struct MinMonoid{
   using value_type = T;

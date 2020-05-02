@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp
+# :question: Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 06:18:07+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="../MonoidAction/add_max.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_max.cpp</a>
-* :heavy_check_mark: <a href="../MonoidAction/add_min.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_min.cpp</a>
-* :heavy_check_mark: <a href="../MonoidAction/add_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp</a>
-* :heavy_check_mark: <a href="../MonoidAction/affine_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp</a>
+* :x: <a href="../MonoidAction/add_max.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_max.cpp</a>
+* :x: <a href="../MonoidAction/add_min.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_min.cpp</a>
+* :question: <a href="../MonoidAction/add_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp</a>
+* :x: <a href="../MonoidAction/affine_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp</a>
 * :warning: <a href="../MonoidAction/multiply_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/multiply_sum.cpp</a>
-* :heavy_check_mark: <a href="../MonoidAction/update_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp</a>
+* :x: <a href="../MonoidAction/update_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp</a>
 * :warning: <a href="../MonoidAction/xor_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/xor_sum.cpp</a>
 
 
@@ -51,19 +51,19 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2842/main.segment_tree.test.cpp.html">test/aoj/2842/main.segment_tree.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_B/main.test.cpp.html">test/aoj/DSL_2_B/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_E/main.test.cpp.html">test/aoj/DSL_2_E/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_G/main.test.cpp.html">test/aoj/DSL_2_G/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_H/main.test.cpp.html">test/aoj/DSL_2_H/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_I/main.test.cpp.html">test/aoj/DSL_2_I/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp.html">test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/631/main.test.cpp.html">test/yukicoder/631/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/789/main.test.cpp.html">test/yukicoder/789/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_2_B/main.test.cpp.html">test/aoj/DSL_2_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_2_E/main.test.cpp.html">test/aoj/DSL_2_E/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_2_G/main.test.cpp.html">test/aoj/DSL_2_G/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_2_H/main.test.cpp.html">test/aoj/DSL_2_H/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_2_I/main.test.cpp.html">test/aoj/DSL_2_I/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp.html">test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/631/main.test.cpp.html">test/yukicoder/631/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/789/main.test.cpp.html">test/yukicoder/789/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
 
 
 ## Code
@@ -73,6 +73,9 @@ layout: default
 ```cpp
 #pragma once
 
+/**
+ * @docs sum_monoid.md
+ */
 template <typename T>
 struct SumMonoid{
   using value_type = T;
@@ -88,6 +91,9 @@ struct SumMonoid{
 ```cpp
 #line 2 "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 
+/**
+ * @docs sum_monoid.md
+ */
 template <typename T>
 struct SumMonoid{
   using value_type = T;

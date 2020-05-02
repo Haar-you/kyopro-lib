@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_2_B/main.test.cpp
+# :x: test/aoj/DSL_2_B/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#082039b3153b4a2410d6e14e04aca1cc">test/aoj/DSL_2_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
 
 
 ## Code
@@ -88,7 +88,8 @@ int main(){
 #include <vector>
 
 /**
- * @title セグメント木
+ * @title SegmentTree
+ * @docs segment_tree.md
  */
 template <typename Monoid>
 class SegmentTree{
@@ -142,6 +143,9 @@ public:
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 
+/**
+ * @docs sum_monoid.md
+ */
 template <typename T>
 struct SumMonoid{
   using value_type = T;

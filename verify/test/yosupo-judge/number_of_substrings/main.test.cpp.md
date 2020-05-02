@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/number_of_substrings/main.test.cpp
+# :x: test/yosupo-judge/number_of_substrings/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#04f6960be805b227af3e57d2b0b34522">test/yosupo-judge/number_of_substrings</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/number_of_substrings/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-06 20:21:28+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/number_of_substrings">https://judge.yosupo.jp/problem/number_of_substrings</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/lcp_array.cpp.html">LCP(Longest Common Prefix)配列</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/suffix_array.cpp.html">接尾辞配列</a>
+* :x: <a href="../../../../library/Mylib/String/lcp_array.cpp.html">LCP(Longest Common Prefix)配列</a>
+* :x: <a href="../../../../library/Mylib/String/suffix_array.cpp.html">接尾辞配列</a>
 
 
 ## Code
@@ -100,7 +100,7 @@ int main(){
 
 /**
  * @title 接尾辞配列
- * @see https://yukicoder.me/submissions/347188
+ * @docs suffix_array.md
  */
 template <typename T> class SuffixArray{
 public:
@@ -225,6 +225,7 @@ public:
 
 /**
  * @title LCP(Longest Common Prefix)配列
+ * @docs lcp_array.md
  */
 template <typename T>
 struct LCPArray{

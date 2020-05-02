@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/CGL_7_G/main.test.cpp
+# :x: test/aoj/CGL_7_G/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b5574cc7a831f026d52a6858b25848ce">test/aoj/CGL_7_G</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_7_G/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_G">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_G</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/common_tangent_of_circles.cpp.html">2円の共通接線</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/common_tangent_of_circles.cpp.html">2円の共通接線</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Code
@@ -100,6 +100,7 @@ int main(){
 
 /**
  * @title 誤差許容浮動小数点数
+ * @docs double_eps.md
  */
 template <typename T>
 struct DoubleEps{
@@ -157,6 +158,7 @@ namespace std{
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -243,7 +245,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 2円の共通接線
- * @note https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_G
+ * @docs common_tangent_of_circles.md
  */
 template <typename T, typename U = typename T::value_type>
 std::vector<Point<T>> common_tangent_of_circles(const Circle<T> &a, const Circle<T> &b){

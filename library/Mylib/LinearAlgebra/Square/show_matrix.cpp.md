@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b58b3fdb1287502881e9117a37552614">Mylib/LinearAlgebra/Square</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/Square/show_matrix.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 04:55:54+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -44,6 +44,9 @@ layout: default
 #pragma once
 #include <iostream>
 
+/**
+ * @docs show_matrix.md
+ */
 template <typename M, typename T = typename M::value_type>
 void show_matrix(const M &m, int w = 10){
 #ifdef DEBUG
@@ -69,6 +72,9 @@ void show_matrix(const M &m, int w = 10){
 #line 2 "Mylib/LinearAlgebra/Square/show_matrix.cpp"
 #include <iostream>
 
+/**
+ * @docs show_matrix.md
+ */
 template <typename M, typename T = typename M::value_type>
 void show_matrix(const M &m, int w = 10){
 #ifdef DEBUG

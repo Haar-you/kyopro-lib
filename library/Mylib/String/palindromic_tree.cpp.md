@@ -31,11 +31,9 @@ layout: default
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/palindromic_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://www.spoj.com/problems/LPS/ (最長回文部分列)">https://www.spoj.com/problems/LPS/ (最長回文部分列)</a>
-* see: <a href="https://www.spoj.com/problems/NUMOFPAL/ (回文部分列の個数)">https://www.spoj.com/problems/NUMOFPAL/ (回文部分列の個数)</a>
 
 
 ## Code
@@ -51,8 +49,7 @@ layout: default
 
 /**
  * @title 回文木
- * @see https://www.spoj.com/problems/LPS/ (最長回文部分列)
- * @see https://www.spoj.com/problems/NUMOFPAL/ (回文部分列の個数)
+ * @docs palindromic_tree
  */
 class PalindromicTree{
   struct node{
@@ -182,8 +179,7 @@ public:
 
 /**
  * @title 回文木
- * @see https://www.spoj.com/problems/LPS/ (最長回文部分列)
- * @see https://www.spoj.com/problems/NUMOFPAL/ (回文部分列の個数)
+ * @docs palindromic_tree
  */
 class PalindromicTree{
   struct node{

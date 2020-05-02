@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/static_range_sum/main.test.cpp
+# :x: test/yosupo-judge/static_range_sum/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#e057ba653ff4e1918cbb7491bf73d8e0">test/yosupo-judge/static_range_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/static_range_sum/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-11 03:29:13+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/static_range_sum">https://judge.yosupo.jp/problem/static_range_sum</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp.html">一次元累積和</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp.html">一次元累積和</a>
 
 
 ## Code
@@ -88,6 +88,7 @@ int main(){
 
 /**
  * @title 一次元累積和
+ * @docs cumulative_sum_1d.md
  */
 template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
 class CumulativeSum1D{

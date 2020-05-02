@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/ALDS1_14_C/main.test.cpp
+# :x: test/aoj/ALDS1_14_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#4663ce58de854a9b7b2acb9ce1fd08fb">test/aoj/ALDS1_14_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_14_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-24 03:19:18+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_C</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/rolling_hash_2d.cpp.html">Rolling Hash 2D</a>
+* :x: <a href="../../../../library/Mylib/String/rolling_hash_2d.cpp.html">Rolling Hash 2D</a>
 
 
 ## Code
@@ -96,6 +96,7 @@ int main(){
 
 /**
  * @title Rolling Hash 2D
+ * @docs rolling_hash_2d.md
  */
 class RollingHash2D{
   std::vector<int64_t> pow_w, pow_h;

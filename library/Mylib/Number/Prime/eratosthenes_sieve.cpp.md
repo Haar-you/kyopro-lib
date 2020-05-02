@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Eratosthenesの篩
+# :x: Eratosthenesの篩
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/eratosthenes_sieve.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-09 17:11:56+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -43,7 +43,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/843/main.eratosthenes.test.cpp.html">test/yukicoder/843/main.eratosthenes.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/843/main.eratosthenes.test.cpp.html">test/yukicoder/843/main.eratosthenes.test.cpp</a>
 
 
 ## Code
@@ -56,6 +56,7 @@ layout: default
 
 /**
  * @title Eratosthenesの篩
+ * @docs eratosthenes_sieve.md
  */
 template <int MAX>
 struct EratosthenesSieve{
@@ -88,6 +89,7 @@ template <int MAX> std::bitset<MAX+1> EratosthenesSieve<MAX>::is_prime;
 
 /**
  * @title Eratosthenesの篩
+ * @docs eratosthenes_sieve.md
  */
 template <int MAX>
 struct EratosthenesSieve{

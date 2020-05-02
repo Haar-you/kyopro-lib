@@ -31,16 +31,29 @@ layout: default
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/area_intersection_of_circles.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-06 17:41:22+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://codeforces.com/contest/600/problem/D">https://codeforces.com/contest/600/problem/D</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [Educational Codeforces Round 2 D. Area of Two Circles' Intersection](https://codeforces.com/contest/600/problem/D)
+
+## References
+
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="intersect_circles.cpp.html">円同士の交差</a>
+* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :x: <a href="intersect_circles.cpp.html">円同士の交差</a>
 
 
 ## Code
@@ -55,7 +68,7 @@ layout: default
 
 /**
  * @title 2円の共通部分の面積
- * @see https://codeforces.com/contest/600/problem/D
+ * @docs area_intersection_of_circles.md
  */
 template <typename T, typename U = typename T::value_type>
 T area_of_intersection_of_circles(const Circle<T> &a, const Circle<T> &b){
@@ -109,6 +122,7 @@ T area_of_intersection_of_circles(const Circle<T> &a, const Circle<T> &b){
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -195,7 +209,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 円同士の交差
- * @see https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A
+ * @docs intersect_circles.md
  */
 namespace intersect_circles{
   enum Status{
@@ -251,7 +265,7 @@ namespace intersect_circles{
 
 /**
  * @title 2円の共通部分の面積
- * @see https://codeforces.com/contest/600/problem/D
+ * @docs area_intersection_of_circles.md
  */
 template <typename T, typename U = typename T::value_type>
 T area_of_intersection_of_circles(const Circle<T> &a, const Circle<T> &b){

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/CGL_2_C/main.test.cpp
+# :x: test/aoj/CGL_2_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3ee93c06316ec376efbb9df728170a62">test/aoj/CGL_2_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_2_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_C</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/ccw.cpp.html">clockwise-counterclockwise判定</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/intersect_segments.cpp.html">線分同士の交差</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/ccw.cpp.html">clockwise-counterclockwise判定</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/intersect_segments.cpp.html">線分同士の交差</a>
 
 
 ## Code
@@ -95,6 +95,7 @@ int main(){
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -182,6 +183,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 誤差許容浮動小数点数
+ * @docs double_eps.md
  */
 template <typename T>
 struct DoubleEps{
@@ -237,6 +239,7 @@ namespace std{
 
 /**
  * @title clockwise-counterclockwise判定
+ * @docs ccw.md
  */
 namespace ccw{
   enum CCW{
@@ -267,7 +270,7 @@ namespace ccw{
 
 /**
  * @title 線分同士の交差
- * @see http://judge.u-aizu.ac.jp/onLinejudge/description.jsp?id=CGL_2_B
+ * @docs intersect_segments.md
  */
 namespace intersect_segments{
   enum Status{

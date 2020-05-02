@@ -31,10 +31,27 @@ layout: default
 
 * category: <a href="../../../../index.html#2e380218d9fd214c2f91a8ade734af1c">Mylib/TypicalProblem/SubsetSumProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://onlinejudge.u-aizu.ac.jp/beta/room.html#HUPC2019Day2/problems/D">https://onlinejudge.u-aizu.ac.jp/beta/room.html#HUPC2019Day2/problems/D</a>
+
+
+## Operations
+
+- `subset_sum_limited(N, K, a[N], m[N])`
+	- Time complexity $O(NK)$
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [AOJ 2955 Two Colors Sort](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2955)
+
+## References
+
+- 蟻本第2版 P62~63
 
 
 ## Verified with
@@ -52,8 +69,7 @@ layout: default
 
 /**
  * @title 個数制限付き部分和問題
- * @attention 時間計算量 O(NK)
- * @see https://onlinejudge.u-aizu.ac.jp/beta/room.html#HUPC2019Day2/problems/D
+ * @docs subset_sum_limited.md
  */
 bool subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vector<int> &m){
   std::vector<int> dp(K+1, -1);
@@ -85,8 +101,7 @@ bool subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vect
 
 /**
  * @title 個数制限付き部分和問題
- * @attention 時間計算量 O(NK)
- * @see https://onlinejudge.u-aizu.ac.jp/beta/room.html#HUPC2019Day2/problems/D
+ * @docs subset_sum_limited.md
  */
 bool subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vector<int> &m){
   std::vector<int> dp(K+1, -1);

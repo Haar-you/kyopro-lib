@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/CGL_3_A/main.test.cpp
+# :x: test/aoj/CGL_3_A/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#4199beecab81c2877aafcfc52c9acb72">test/aoj/CGL_3_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_3_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/area_polygon.cpp.html">多角形の面積</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/area_polygon.cpp.html">多角形の面積</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Code
@@ -90,6 +90,7 @@ int main(){
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -177,6 +178,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 誤差許容浮動小数点数
+ * @docs double_eps.md
  */
 template <typename T>
 struct DoubleEps{
@@ -232,7 +234,7 @@ namespace std{
 
 /**
  * @title 多角形の面積
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_A
+ * @docs area_polygon.md
  */
 template <typename T>
 T polygon_area(const Polygon<T> &ps){

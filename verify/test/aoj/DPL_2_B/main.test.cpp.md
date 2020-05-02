@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_2_B/main.test.cpp
+# :x: test/aoj/DPL_2_B/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#cea1c4a75215bab49202f95330eeee2b">test/aoj/DPL_2_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_2_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/chinese_postman_problem.cpp.html">中国人郵便配達問題</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/Graph/chinese_postman_problem.cpp.html">中国人郵便配達問題</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -85,6 +85,7 @@ int main(){
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -112,7 +113,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title 中国人郵便配達問題
- * @docs chinese_postman_problem.cpp
+ * @docs chinese_postman_problem.md
  */
 template <typename T> T chinese_postman_problem(const Graph<T> &g){
   const int n = g.size();

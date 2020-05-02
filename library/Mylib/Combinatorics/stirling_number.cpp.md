@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 第2種Stirling数
+# :x: 第2種Stirling数
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -49,18 +49,18 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
+* :x: <a href="combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="bell_number.cpp.html">Bell数</a>
+* :x: <a href="bell_number.cpp.html">Bell数</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_G/main.test.cpp.html">test/aoj/DPL_5_G/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_I/main.test.cpp.html">test/aoj/DPL_5_I/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/DPL_5_G/main.test.cpp.html">test/aoj/DPL_5_G/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/DPL_5_I/main.test.cpp.html">test/aoj/DPL_5_I/main.test.cpp</a>
 
 
 ## Code

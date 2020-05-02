@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 組み合わせ計算用の前計算クラス
+# :x: 組み合わせ計算用の前計算クラス
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -50,19 +50,19 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="bell_number.cpp.html">Bell数</a>
-* :heavy_check_mark: <a href="bernoulli_number.cpp.html">Bernoulli数</a>
-* :heavy_check_mark: <a href="catalan_number.cpp.html">Catalan数</a>
-* :heavy_check_mark: <a href="stirling_number.cpp.html">第2種Stirling数</a>
+* :x: <a href="bell_number.cpp.html">Bell数</a>
+* :x: <a href="bernoulli_number.cpp.html">Bernoulli数</a>
+* :x: <a href="catalan_number.cpp.html">Catalan数</a>
+* :x: <a href="stirling_number.cpp.html">第2種Stirling数</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_G/main.test.cpp.html">test/aoj/DPL_5_G/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_I/main.test.cpp.html">test/aoj/DPL_5_I/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/117/main.test.cpp.html">test/yukicoder/117/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/660/main.test.cpp.html">test/yukicoder/660/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/665/main.test.cpp.html">test/yukicoder/665/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/DPL_5_G/main.test.cpp.html">test/aoj/DPL_5_G/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/DPL_5_I/main.test.cpp.html">test/aoj/DPL_5_I/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/117/main.test.cpp.html">test/yukicoder/117/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/660/main.test.cpp.html">test/yukicoder/660/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/665/main.test.cpp.html">test/yukicoder/665/main.test.cpp</a>
 
 
 ## Code

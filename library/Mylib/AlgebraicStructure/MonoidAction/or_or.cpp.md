@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/or_or.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 07:44:02+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -49,6 +49,9 @@ layout: default
 #pragma once
 #include "Mylib/AlgebraicStructure/Monoid/or_monoid.cpp"
 
+/**
+ * @docs or_or.md
+ */
 template <typename T, typename U>
 struct OrOr{
   using monoid_get = OrMonoid<T>;
@@ -69,6 +72,9 @@ struct OrOr{
 ```cpp
 #line 2 "Mylib/AlgebraicStructure/Monoid/or_monoid.cpp"
 
+/**
+ * @docs or_monoid.md
+ */
 template <typename T>
 struct OrMonoid{
   using value_type = T;
@@ -77,6 +83,9 @@ struct OrMonoid{
 };
 #line 3 "Mylib/AlgebraicStructure/MonoidAction/or_or.cpp"
 
+/**
+ * @docs or_or.md
+ */
 template <typename T, typename U>
 struct OrOr{
   using monoid_get = OrMonoid<T>;

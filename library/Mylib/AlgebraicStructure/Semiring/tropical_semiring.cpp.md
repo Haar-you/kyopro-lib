@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#3df95940e092844fc072dd50b6844b29">Mylib/AlgebraicStructure/Semiring</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Semiring/tropical_semiring.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 08:05:29+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -45,6 +45,9 @@ layout: default
 #include <optional>
 #include <algorithm>
 
+/**
+ * @docs tropical_semiring.md
+ */
 template <typename T>
 struct TropicalSemiring{
   using value_type = std::optional<T>;
@@ -73,6 +76,9 @@ struct TropicalSemiring{
 #include <optional>
 #include <algorithm>
 
+/**
+ * @docs tropical_semiring.md
+ */
 template <typename T>
 struct TropicalSemiring{
   using value_type = std::optional<T>;

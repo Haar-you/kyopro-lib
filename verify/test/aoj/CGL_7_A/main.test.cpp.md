@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/CGL_7_A/main.test.cpp
+# :x: test/aoj/CGL_7_A/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0ad5f649d1c9a300a851da735ee7e7a9">test/aoj/CGL_7_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_7_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/intersect_circles.cpp.html">円同士の交差</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/intersect_circles.cpp.html">円同士の交差</a>
 
 
 ## Code
@@ -91,6 +91,7 @@ int main(){
 
 /**
  * @title 誤差許容浮動小数点数
+ * @docs double_eps.md
  */
 template <typename T>
 struct DoubleEps{
@@ -148,6 +149,7 @@ namespace std{
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -234,7 +236,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 円同士の交差
- * @see https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A
+ * @docs intersect_circles.md
  */
 namespace intersect_circles{
   enum Status{

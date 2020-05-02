@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#9c9a92db287cfe91b89f042067749877">test/aoj/2530</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2530/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2530">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2530</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp.html">Mod2体上の連立線形方程式</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp.html">連立線形方程式 (Mod2体)</a>
+* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
 
 
 ## Code
@@ -126,6 +126,7 @@ int main(){
 
 /**
  * @title mod累乗
+ * @docs mod_power.md
  */
 int64_t power(int64_t n, int64_t p, int64_t m){
   int64_t ret = 1;
@@ -142,8 +143,8 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 #line 6 "Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp"
 
 /**
- * @title Mod2体上の連立線形方程式
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1308
+ * @title 連立線形方程式 (Mod2体)
+ * @docs binary_simultaneous_linear_equations.md
  */
 namespace binary_simultaneous_linear_equations{
   template <size_t N>

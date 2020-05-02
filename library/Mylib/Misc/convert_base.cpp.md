@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/convert_base.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -46,6 +46,7 @@ layout: default
 
 /**
  * @title 進数変換
+ * @docs convert_base.md
  */
 std::vector<int64_t> convert_base_to(int64_t val, int64_t base){
   if(val == 0) return {0};
@@ -83,6 +84,7 @@ int64_t convert_base_from(const std::vector<int64_t> &val, int64_t base){
 
 /**
  * @title 進数変換
+ * @docs convert_base.md
  */
 std::vector<int64_t> convert_base_to(int64_t val, int64_t base){
   if(val == 0) return {0};

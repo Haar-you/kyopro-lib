@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#12526f91d29b13109723e3d0cc6a4265">Mylib/DataStructure/Stack</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Stack/persistent_stack.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -45,6 +45,7 @@ layout: default
 
 /**
  * @title 永続Stack
+ * @docs persistent_stack.md
  */
 template <typename T> struct PersistentStack{
 protected:
@@ -89,6 +90,7 @@ public:
 
 /**
  * @title 永続Stack
+ * @docs persistent_stack.md
  */
 template <typename T> struct PersistentStack{
 protected:

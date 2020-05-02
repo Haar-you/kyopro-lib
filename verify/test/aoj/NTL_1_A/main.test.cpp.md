@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/NTL_1_A/main.test.cpp
+# :x: test/aoj/NTL_1_A/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3008ead005d9a504d0a3e077716b71c1">test/aoj/NTL_1_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/NTL_1_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-06 20:21:28+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/prime_factorize.cpp.html">素因数分解</a>
+* :x: <a href="../../../../library/Mylib/Number/Prime/prime_factorize.cpp.html">素因数分解</a>
 
 
 ## Code
@@ -86,6 +86,7 @@ int main(){
 
 /**
  * @title 素因数分解
+ * @docs prime_factorize.md
  */
 auto prime_factorize(int64_t n){
   std::vector<std::pair<int64_t,int64_t>> ret;

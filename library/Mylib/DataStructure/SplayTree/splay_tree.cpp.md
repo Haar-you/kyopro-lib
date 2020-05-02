@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#de940accc238379dfea959424e331579">Mylib/DataStructure/SplayTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SplayTree/splay_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -52,6 +52,7 @@ layout: default
 
 /**
  * @title スプレー木
+ * @docs splay_tree.md
  */
 namespace splay_tree{
   template <typename Monoid>
@@ -282,6 +283,7 @@ namespace splay_tree{
 
 /**
  * @title スプレー木
+ * @docs splay_tree.md
  */
 namespace splay_tree{
   template <typename Monoid>

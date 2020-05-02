@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/843/main.eratosthenes.test.cpp
+# :x: test/yukicoder/843/main.eratosthenes.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#05b6faf184ccb3df7524a3ce68064b76">test/yukicoder/843</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/843/main.eratosthenes.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-09 17:11:56+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/843">https://yukicoder.me/problems/no/843</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/eratosthenes_sieve.cpp.html">Eratosthenesの篩</a>
+* :x: <a href="../../../../library/Mylib/Number/Prime/eratosthenes_sieve.cpp.html">Eratosthenesの篩</a>
 
 
 ## Code
@@ -93,6 +93,7 @@ int main(){
 
 /**
  * @title Eratosthenesの篩
+ * @docs eratosthenes_sieve.md
  */
 template <int MAX>
 struct EratosthenesSieve{

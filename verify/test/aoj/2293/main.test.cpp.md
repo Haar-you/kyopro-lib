@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#deff10b29878501929a52ba1088ce342">test/aoj/2293</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2293/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 13:03:25+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2293">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2293</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">最小費用流</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/weighted_bipartite_matching.cpp.html">重み付き二部マッチング</a>
+* :question: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">最小費用流</a>
+* :question: <a href="../../../../library/Mylib/Graph/Matching/weighted_bipartite_matching.cpp.html">重み付き二部マッチング</a>
 
 
 ## Code
@@ -109,6 +109,7 @@ int main(){
 
 /**
  * @title 最小費用流
+ * @docs minimum_cost_flow.md
  */
 template <typename T, typename U> class MinimumCostFlow{
 public:
@@ -206,7 +207,7 @@ public:
 
 /**
  * @title 重み付き二部マッチング
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2429
+ * @docs weighted_bipartite_matching.md
  */
 template <typename T>
 class WeightedBipartiteMatching{

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#1d3efd405c3cf87c1a3243dd8aba3849">test/aoj/2401</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2401/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-22 05:45:32+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2401">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2401</a>
@@ -145,6 +145,7 @@ int main(){
 
 /**
  * @title 構文解析
+ * @docs parser.md
  */
 struct Parser{
   using state = std::string::const_iterator;

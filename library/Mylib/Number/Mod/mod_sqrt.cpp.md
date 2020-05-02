@@ -25,27 +25,42 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 平方剰余
+# :x: 平方剰余
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#795ab137908c82fc28acbcffe5b1c757">Mylib/Number/Mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mod/mod_sqrt.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%96%B9%E5%89%B0%E4%BD%99%E3%81%AE%E7%9B%B8%E4%BA%92%E6%B3%95%E5%89%87">https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%96%B9%E5%89%B0%E4%BD%99%E3%81%AE%E7%9B%B8%E4%BA%92%E6%B3%95%E5%89%87</a>
-* see: <a href="https://qiita.com/drken/items/3b4fdf0a78e7a138cd9a">https://qiita.com/drken/items/3b4fdf0a78e7a138cd9a</a>
+
+
+## Operations
+
+- `mod_sqrt(a, p)`
+	- $x ^ 2 = a \pmod p$を満たす`x`を求める。
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References
+
+- [https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%96%B9%E5%89%B0%E4%BD%99%E3%81%AE%E7%9B%B8%E4%BA%92%E6%B3%95%E5%89%87](https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%96%B9%E5%89%B0%E4%BD%99%E3%81%AE%E7%9B%B8%E4%BA%92%E6%B3%95%E5%89%87)
+- [https://qiita.com/drken/items/3b4fdf0a78e7a138cd9a](https://qiita.com/drken/items/3b4fdf0a78e7a138cd9a)
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="mod_power.cpp.html">mod累乗</a>
+* :question: <a href="mod_power.cpp.html">mod累乗</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
 
 
 ## Code
@@ -60,9 +75,7 @@ layout: default
 
 /**
  * @title 平方剰余
- * @note x^2 = a (mod p)
- * @see https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%96%B9%E5%89%B0%E4%BD%99%E3%81%AE%E7%9B%B8%E4%BA%92%E6%B3%95%E5%89%87
- * @see https://qiita.com/drken/items/3b4fdf0a78e7a138cd9a
+ * @docs mod_sqrt.md
  */
 std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
   if(p == 2) return a % 2;
@@ -125,6 +138,7 @@ std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
 
 /**
  * @title mod累乗
+ * @docs mod_power.md
  */
 int64_t power(int64_t n, int64_t p, int64_t m){
   int64_t ret = 1;
@@ -139,9 +153,7 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 
 /**
  * @title 平方剰余
- * @note x^2 = a (mod p)
- * @see https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%96%B9%E5%89%B0%E4%BD%99%E3%81%AE%E7%9B%B8%E4%BA%92%E6%B3%95%E5%89%87
- * @see https://qiita.com/drken/items/3b4fdf0a78e7a138cd9a
+ * @docs mod_sqrt.md
  */
 std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
   if(p == 2) return a % 2;

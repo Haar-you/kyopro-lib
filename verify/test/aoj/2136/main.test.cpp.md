@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f1466abfa075f1547bf443d1976f4e75">test/aoj/2136</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2136/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-30 00:04:32+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136</a>
@@ -39,12 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/ccw.cpp.html">clockwise-counterclockwise判定</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/intersect_segments.cpp.html">線分同士の交差</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/ccw.cpp.html">clockwise-counterclockwise判定</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/intersect_segments.cpp.html">線分同士の交差</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Coloring/chromatic_number.cpp.html">グラフ頂点彩色数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
+* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
 
 
 ## Code
@@ -131,6 +131,7 @@ int main(){
 
 /**
  * @title 誤差許容浮動小数点数
+ * @docs double_eps.md
  */
 template <typename T>
 struct DoubleEps{
@@ -188,6 +189,7 @@ namespace std{
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -274,6 +276,7 @@ template <typename T> struct Circle{
 
 /**
  * @title clockwise-counterclockwise判定
+ * @docs ccw.md
  */
 namespace ccw{
   enum CCW{
@@ -304,7 +307,7 @@ namespace ccw{
 
 /**
  * @title 線分同士の交差
- * @see http://judge.u-aizu.ac.jp/onLinejudge/description.jsp?id=CGL_2_B
+ * @docs intersect_segments.md
  */
 namespace intersect_segments{
   enum Status{
@@ -354,6 +357,7 @@ namespace intersect_segments{
 
 /**
  * @title mod累乗
+ * @docs mod_power.md
  */
 int64_t power(int64_t n, int64_t p, int64_t m){
   int64_t ret = 1;

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/sort_all.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -47,6 +47,9 @@ layout: default
 #include <algorithm>
 #include <numeric>
 
+/**
+ * @docs sort_all.md
+ */
 namespace sort_all{
   template <typename T>
   void sort_with_ord(const std::vector<int> &ord, int N, std::vector<T> &a){
@@ -85,6 +88,9 @@ namespace sort_all{
 #include <algorithm>
 #include <numeric>
 
+/**
+ * @docs sort_all.md
+ */
 namespace sort_all{
   template <typename T>
   void sort_with_ord(const std::vector<int> &ord, int N, std::vector<T> &a){

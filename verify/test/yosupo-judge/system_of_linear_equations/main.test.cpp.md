@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/system_of_linear_equations/main.test.cpp
+# :x: test/yosupo-judge/system_of_linear_equations/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a26257034660248e359cc2c36c605bb6">test/yosupo-judge/system_of_linear_equations</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/system_of_linear_equations/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-25 21:56:55+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/system_of_linear_equations">https://judge.yosupo.jp/problem/system_of_linear_equations</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp.html">連立線形方程式</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp.html">連立線形方程式</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -115,6 +115,7 @@ int main(){
 
 /**
  * @title modint
+ * @docs mint.md
  */
 template <uint32_t M> class ModInt{
 public:
@@ -201,6 +202,7 @@ public:
 
 /**
  * @title 連立線形方程式
+ * @docs simultaneous_linear_equations.md
  */
 namespace simulaneous_linear_equations{
   template <typename T>

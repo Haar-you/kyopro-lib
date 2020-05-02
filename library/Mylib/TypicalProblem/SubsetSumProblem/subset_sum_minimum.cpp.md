@@ -31,8 +31,24 @@ layout: default
 
 * category: <a href="../../../../index.html#2e380218d9fd214c2f91a8ade734af1c">Mylib/TypicalProblem/SubsetSumProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_minimum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
+
+
+
+## Operations
+
+- `subset_sum_minimum(N, K, a[N])`
+	-  和が`K`になる部分集合の最小サイズ。そのような部分集合が存在しないとき-1を返す。
+	- Time complexity $O(NK)$
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References
 
 
 
@@ -47,8 +63,7 @@ layout: default
 
 /**
  * @title 最小個数部分和問題
- * @attention 時間計算量 O(NK)
- * @return 和がKになる部分集合の最小サイズ。そのような部分集合が存在しないとき-1を返す。
+ * @docs subset_sum_minimum.md
  */
 int64_t subset_sum_minimum(int N, int K, const std::vector<int> &a){
   std::vector<std::vector<int64_t>> dp(2, std::vector<int64_t>(K+1, INT_MAX));
@@ -77,8 +92,7 @@ int64_t subset_sum_minimum(int N, int K, const std::vector<int> &a){
 
 /**
  * @title 最小個数部分和問題
- * @attention 時間計算量 O(NK)
- * @return 和がKになる部分集合の最小サイズ。そのような部分集合が存在しないとき-1を返す。
+ * @docs subset_sum_minimum.md
  */
 int64_t subset_sum_minimum(int N, int K, const std::vector<int> &a){
   std::vector<std::vector<int64_t>> dp(2, std::vector<int64_t>(K+1, INT_MAX));

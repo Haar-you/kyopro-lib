@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/range_affine_range_sum/main.test.cpp
+# :x: test/yosupo-judge/range_affine_range_sum/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7561f7b6847dbe0c0f95d39dd0066b92">test/yosupo-judge/range_affine_range_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/range_affine_range_sum/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-25 21:56:55+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_affine_range_sum">https://judge.yosupo.jp/problem/range_affine_range_sum</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp.html">遅延セグメント木</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp.html">遅延SegmentTree</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -108,7 +108,8 @@ int main(){
 #line 3 "Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp"
 
 /**
- * @title 遅延セグメント木
+ * @title 遅延SegmentTree
+ * @docs lazy_segment_tree.md
  */
 template <typename Monoid>
 class LazySegmentTree{
@@ -182,10 +183,8 @@ public:
 #include <utility>
 
 /**
- * @see https://atcoder.jp/contests/arc008/submissions/7996520
- * @see https://judge.yosupo.jp/submission/2048
+ * @docs affine_monoid.md
  */
-
 template <typename T>
 struct AffineMonoid{
   using value_type = std::pair<T, T>;
@@ -194,6 +193,9 @@ struct AffineMonoid{
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 
+/**
+ * @docs sum_monoid.md
+ */
 template <typename T>
 struct SumMonoid{
   using value_type = T;
@@ -202,6 +204,9 @@ struct SumMonoid{
 };
 #line 4 "Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp"
 
+/**
+ * @docs affine_sum.md
+ */
 template <typename T, typename U>
 struct AffineSum{
   using monoid_get = SumMonoid<T>;
@@ -217,6 +222,7 @@ struct AffineSum{
 
 /**
  * @title modint
+ * @docs mint.md
  */
 template <uint32_t M> class ModInt{
 public:

@@ -25,30 +25,30 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 直線と線分の交差
+# :x: 直線と線分の交差
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/intersect_line_segment.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="convex_cut.cpp.html">凸多角形の切断</a>
+* :x: <a href="convex_cut.cpp.html">凸多角形の切断</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
 
 
 ## Code
@@ -62,6 +62,7 @@ layout: default
 
 /**
  * @title 直線と線分の交差
+ * @docs intersect_line_segment.md
  */
 namespace intersect_line_segment{
   enum Status{
@@ -116,6 +117,7 @@ namespace intersect_line_segment{
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -202,6 +204,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 直線と線分の交差
+ * @docs intersect_line_segment.md
  */
 namespace intersect_line_segment{
   enum Status{

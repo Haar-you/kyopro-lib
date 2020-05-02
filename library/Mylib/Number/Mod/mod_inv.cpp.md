@@ -25,26 +25,40 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: mod逆数
+# :x: mod逆数
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#795ab137908c82fc28acbcffe5b1c757">Mylib/Number/Mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mod/mod_inv.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
+
+
+## Operations
+
+- `mod_inv(a, m)`
+	- $gcd(a,  m) = 1$を満たさなければならない。
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="mod_log.cpp.html">離散対数</a>
+* :x: <a href="mod_log.cpp.html">離散対数</a>
 * :warning: <a href="../garner.cpp.html">Garner法</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
 
 
 ## Code
@@ -57,7 +71,7 @@ layout: default
 
 /**
  * @title mod逆数
- * @attention gcd(a, m) = 1
+ * @docs mod_inv.md
  */
 int64_t mod_inv(int64_t a, int64_t m){
   int64_t b = m, u = 1, v = 0;
@@ -85,7 +99,7 @@ int64_t mod_inv(int64_t a, int64_t m){
 
 /**
  * @title mod逆数
- * @attention gcd(a, m) = 1
+ * @docs mod_inv.md
  */
 int64_t mod_inv(int64_t a, int64_t m){
   int64_t b = m, u = 1, v = 0;

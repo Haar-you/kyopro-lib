@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#fe4a83e4dc2a7f834ed4cd85d6972a53">Mylib/Bit</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/for_subsets_of_size_k.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-01 09:18:14+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -43,6 +43,9 @@ layout: default
 ```cpp
 #pragma once
 
+/**
+ * @docs for_subsets_of_size_k.md
+ */
 template <typename Func>
 void for_subsets_of_size_k(int n, int k, const Func &f){
   int c = (1 << k) - 1;
@@ -62,6 +65,9 @@ void for_subsets_of_size_k(int n, int k, const Func &f){
 ```cpp
 #line 2 "Mylib/Bit/for_subsets_of_size_k.cpp"
 
+/**
+ * @docs for_subsets_of_size_k.md
+ */
 template <typename Func>
 void for_subsets_of_size_k(int n, int k, const Func &f){
   int c = (1 << k) - 1;

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
+# :x: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f546c969ceb14dcb37f380879c54e41c">test/yosupo-judge/stirling_number_of_the_second_kind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-30 20:34:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/stirling_number_of_the_second_kind">https://judge.yosupo.jp/problem/stirling_number_of_the_second_kind</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number Theoretic Transform</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number Theoretic Transform</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -127,6 +127,7 @@ int main(){
 
 /**
  * @title modint
+ * @docs mint.md
  */
 template <uint32_t M> class ModInt{
 public:

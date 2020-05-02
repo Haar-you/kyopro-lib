@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
+# :x: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9102555d140c20ca7196c4db584ea7b6">test/yosupo-judge/rectangle_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/rectangle_sum">https://judge.yosupo.jp/problem/rectangle_sum</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum_group.cpp.html">Mylib/AlgebraicStructure/Group/sum_group.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">Fenwick木</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp.html">Fenwick木にFenwick木を乗せる</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum_group.cpp.html">Mylib/AlgebraicStructure/Group/sum_group.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">FenwickTree</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp.html">FenwickTree (FenwickTreeを乗せる)</a>
 
 
 ## Code
@@ -101,6 +101,9 @@ int main(){
 #include <vector>
 #line 2 "Mylib/AlgebraicStructure/Group/sum_group.cpp"
 
+/**
+ * @docs sum_group.md
+ */
 template <typename T>
 struct SumGroup{
   using value_type = T;
@@ -112,7 +115,8 @@ struct SumGroup{
 #line 3 "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
 
 /**
- * @title Fenwick木
+ * @title FenwickTree
+ * @docs fenwick_tree.md
  */
 template <typename AbelianGroup>
 class FenwickTree{
@@ -163,7 +167,8 @@ public:
 #line 7 "Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp"
 
 /**
- * @title Fenwick木にFenwick木を乗せる
+ * @title FenwickTree (FenwickTreeを乗せる)
+ * @docs fenwick_tree_on_fenwick_tree.md
  */
 template <typename AbelianGroup>
 class FenwickTree2D{

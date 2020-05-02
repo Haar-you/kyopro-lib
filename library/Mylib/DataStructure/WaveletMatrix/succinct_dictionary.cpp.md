@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 簡潔辞書
+# :question: 簡潔辞書
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#def74daadbbb39361c0a507a6463f6db">Mylib/DataStructure/WaveletMatrix</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-23 02:56:58+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -42,14 +42,14 @@ layout: default
 * :heavy_check_mark: <a href="range_freq.cpp.html">range_freq</a>
 * :warning: <a href="range_freq_list.cpp.html">range_freq_list</a>
 * :warning: <a href="top_k.cpp.html">top_k</a>
-* :heavy_check_mark: <a href="wavelet_matrix.cpp.html">Wavelet matrix</a>
+* :question: <a href="wavelet_matrix.cpp.html">Wavelet matrix</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/1549/main.test.cpp.html">test/aoj/1549/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2674/main.test.cpp.html">test/aoj/2674/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/range_kth_smallest/main.test.cpp.html">test/yosupo-judge/range_kth_smallest/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/range_kth_smallest/main.test.cpp.html">test/yosupo-judge/range_kth_smallest/main.test.cpp</a>
 
 
 ## Code
@@ -63,6 +63,7 @@ layout: default
 
 /**
  * @title 簡潔辞書
+ * @docs succinct_dictionary.md
  */
 
 struct SuccinctDict{
@@ -178,6 +179,7 @@ struct SuccinctDict{
 
 /**
  * @title 簡潔辞書
+ * @docs succinct_dictionary.md
  */
 
 struct SuccinctDict{

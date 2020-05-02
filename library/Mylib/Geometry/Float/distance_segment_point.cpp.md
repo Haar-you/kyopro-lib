@@ -25,33 +25,33 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 線分・点間の距離
+# :x: 線分・点間の距離
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/distance_segment_point.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="area_intersection_of_circle_and_polygon.cpp.html">円と多角形の共通部分の面積</a>
-* :heavy_check_mark: <a href="distance_segments.cpp.html">線分間の距離</a>
-* :heavy_check_mark: <a href="intersect_circle_segment.cpp.html">円と線分の交差</a>
+* :x: <a href="area_intersection_of_circle_and_polygon.cpp.html">円と多角形の共通部分の面積</a>
+* :x: <a href="distance_segments.cpp.html">線分間の距離</a>
+* :x: <a href="intersect_circle_segment.cpp.html">円と線分の交差</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_2_D/main.test.cpp.html">test/aoj/CGL_2_D/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_2_D/main.test.cpp.html">test/aoj/CGL_2_D/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
 
 
 ## Code
@@ -64,6 +64,7 @@ layout: default
 
 /**
  * @title 線分・点間の距離
+ * @docs distance_segment_point.md
  */
 template <typename T, typename U = typename T::value_type>
 T distance_segment_point(const Line<T> &l, const Point<T> &p){
@@ -85,6 +86,7 @@ T distance_segment_point(const Line<T> &l, const Point<T> &p){
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -171,6 +173,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 線分・点間の距離
+ * @docs distance_segment_point.md
  */
 template <typename T, typename U = typename T::value_type>
 T distance_segment_point(const Line<T> &l, const Point<T> &p){

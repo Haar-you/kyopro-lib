@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/194/main.test.cpp
+# :x: test/yukicoder/194/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a69917d4d187b863fce67c7534f3be6a">test/yukicoder/194</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/194/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-25 21:56:55+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/194">https://yukicoder.me/problems/no/194</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/inverse_matrix.cpp.html">逆行列</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/power.cpp.html">行列累乗</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">正方行列</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/inverse_matrix.cpp.html">逆行列</a>
+* :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/power.cpp.html">行列累乗</a>
+* :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">正方行列</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -153,6 +153,7 @@ int main(){
 
 /**
  * @title modint
+ * @docs mint.md
  */
 template <uint32_t M> class ModInt{
 public:
@@ -237,6 +238,7 @@ public:
 
 /**
  * @title 正方行列
+ * @docs square_matrix.md
  */
 template <typename T> struct SquareMatrix{
   using value_type = T;
@@ -293,6 +295,7 @@ template <typename T> struct SquareMatrix{
 
 /**
  * @title 逆行列
+ * @docs inverse_matrix.md
  */
 template <typename M, typename T = typename M::value_type>
 bool inverse_matrix(M m, M &ret){
@@ -339,6 +342,7 @@ bool inverse_matrix(M m, M &ret){
 
 /**
  * @title 行列累乗
+ * @docs power.md
  */
 template <typename M, typename T = typename M::value_type>
 M power(M a, uint64_t p){

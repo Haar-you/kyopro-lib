@@ -25,26 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Miller-Rabin素数判定法
+# :x: Miller-Rabin素数判定法
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/miller_rabin.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-08 14:25:41+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://yukicoder.me/problems/no/3030">https://yukicoder.me/problems/no/3030</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../Misc/int128.cpp.html">128bit整数型</a>
+* :x: <a href="../../Misc/int128.cpp.html">128bit整数型</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/3030/main.test.cpp.html">test/yukicoder/3030/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/3030/main.test.cpp.html">test/yukicoder/3030/main.test.cpp</a>
 
 
 ## Code
@@ -57,7 +56,7 @@ layout: default
 
 /**
  * @title Miller-Rabin素数判定法
- * @see https://yukicoder.me/problems/no/3030
+ * @docs miller_rabin.md
  */
 class MillerRabin{
   static inline uint128_t power(uint128_t a, uint128_t b, uint128_t p){
@@ -124,6 +123,7 @@ public:
 
 /**
  * @title 128bit整数型
+ * @docs int128.md
  */
 #ifdef __SIZEOF_INT128__
 using uint128_t = __uint128_t;
@@ -135,7 +135,7 @@ using uint128_t = boost::multiprecision::uint128_t;
 
 /**
  * @title Miller-Rabin素数判定法
- * @see https://yukicoder.me/problems/no/3030
+ * @docs miller_rabin.md
  */
 class MillerRabin{
   static inline uint128_t power(uint128_t a, uint128_t b, uint128_t p){

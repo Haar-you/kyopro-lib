@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/875/main.test.cpp
+# :x: test/yukicoder/875/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#85bd684f532fe6c6e7e3dd42beff3eb5">test/yukicoder/875</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/875/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-06 20:40:01+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/875">https://yukicoder.me/problems/no/875</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/with_index.cpp.html">Mylib/AlgebraicStructure/Monoid/with_index.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/with_index.cpp.html">Mylib/AlgebraicStructure/Monoid/with_index.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
 
 
 ## Code
@@ -120,7 +120,8 @@ int main(){
 #line 3 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
 
 /**
- * @title セグメント木
+ * @title SegmentTree
+ * @docs segment_tree.md
  */
 template <typename Monoid>
 class SegmentTree{
@@ -175,6 +176,9 @@ public:
 #line 2 "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
 #include <algorithm>
 
+/**
+ * @docs min_monoid.md
+ */
 template <typename T>
 struct MinMonoid{
   using value_type = T;
@@ -183,6 +187,9 @@ struct MinMonoid{
 };
 #line 3 "Mylib/AlgebraicStructure/Monoid/with_index.cpp"
 
+/**
+ * @docs with_index.md
+ */
 template <typename Monoid, typename Index>
 struct WithIndex{
   using value_type = std::pair<typename Monoid::value_type, typename Index::value_type>;

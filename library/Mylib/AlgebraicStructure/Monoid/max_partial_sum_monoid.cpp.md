@@ -25,21 +25,34 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/AlgebraicStructure/Monoid/max_partial_sum_monoid.cpp
+# :x: Mylib/AlgebraicStructure/Monoid/max_partial_sum_monoid.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/max_partial_sum_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 06:18:07+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://yukicoder.me/submissions/390234">https://yukicoder.me/submissions/390234</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [yukicoder No.776 A Simple RMQ Problem](https://yukicoder.me/problems/no/776)
+
+## References
+
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/776/main.test.cpp.html">test/yukicoder/776/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/776/main.test.cpp.html">test/yukicoder/776/main.test.cpp</a>
 
 
 ## Code
@@ -52,7 +65,7 @@ layout: default
 #include <algorithm>
 
 /**
- * @see https://yukicoder.me/submissions/390234
+ * @docs max_partial_sum_monoid.md
  */
 template <typename T>
 struct MaxPartialSumMonoid{
@@ -93,7 +106,7 @@ struct MaxPartialSumMonoid{
 #include <algorithm>
 
 /**
- * @see https://yukicoder.me/submissions/390234
+ * @docs max_partial_sum_monoid.md
  */
 template <typename T>
 struct MaxPartialSumMonoid{

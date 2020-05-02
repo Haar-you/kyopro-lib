@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/fix_point.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-22 05:49:57+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -51,6 +51,7 @@ layout: default
 
 /**
  * @title 不動点コンビネータ
+ * @docs fix_point.md
  */
 template <typename F>
 struct FixPoint : F{
@@ -83,6 +84,7 @@ static inline constexpr decltype(auto) make_fix_point(F &f){
 
 /**
  * @title 不動点コンビネータ
+ * @docs fix_point.md
  */
 template <typename F>
 struct FixPoint : F{

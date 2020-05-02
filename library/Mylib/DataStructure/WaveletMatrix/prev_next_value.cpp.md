@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#def74daadbbb39361c0a507a6463f6db">Mylib/DataStructure/WaveletMatrix</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/WaveletMatrix/prev_next_value.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-26 17:51:10+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -78,8 +78,8 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="range_freq.cpp.html">range_freq</a>
-* :heavy_check_mark: <a href="succinct_dictionary.cpp.html">簡潔辞書</a>
-* :heavy_check_mark: <a href="wavelet_matrix.cpp.html">Wavelet matrix</a>
+* :question: <a href="succinct_dictionary.cpp.html">簡潔辞書</a>
+* :question: <a href="wavelet_matrix.cpp.html">Wavelet matrix</a>
 
 
 ## Verified with
@@ -139,6 +139,7 @@ std::optional<T> prev_value(const WaveletMatrix<T, B> &wm, int l, int r, T ub){
 
 /**
  * @title 簡潔辞書
+ * @docs succinct_dictionary.md
  */
 
 struct SuccinctDict{

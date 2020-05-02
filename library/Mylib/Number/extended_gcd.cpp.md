@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 拡張Euclidの互除法
+# :x: 拡張Euclidの互除法
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/extended_gcd.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="chinese_remainder_algorithm.cpp.html">中国剰余定理</a>
+* :x: <a href="chinese_remainder_algorithm.cpp.html">中国剰余定理</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/NTL_1_E/main.test.cpp.html">test/aoj/NTL_1_E/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/186/main.test.cpp.html">test/yukicoder/186/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/NTL_1_E/main.test.cpp.html">test/aoj/NTL_1_E/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/186/main.test.cpp.html">test/yukicoder/186/main.test.cpp</a>
 
 
 ## Code
@@ -57,6 +57,7 @@ layout: default
 
 /**
  * @title 拡張Euclidの互除法
+ * @docs extended_gcd.md
  */
 std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
   if(b == 0) return std::make_tuple(a,1,0);
@@ -76,6 +77,7 @@ std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
 
 /**
  * @title 拡張Euclidの互除法
+ * @docs extended_gcd.md
  */
 std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
   if(b == 0) return std::make_tuple(a,1,0);

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#453a4dbc3063ebc5e529de1cba20ccae">test/aoj/1300</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1300/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-22 13:13:16+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1300">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1300</a>
@@ -229,6 +229,7 @@ int main(){
 
 /**
  * @title 構文解析
+ * @docs parser.md
  */
 struct Parser{
   using state = std::string::const_iterator;
@@ -338,6 +339,7 @@ struct Parser{
 
 /**
  * @title 有理数クラス
+ * @docs rational.md
  */
 class Rational{
 public:
@@ -401,6 +403,7 @@ auto abs(const Rational &a){return Rational(abs(a.nume), abs(a.deno));}
 
 /**
  * @title 掃き出し法
+ * @docs gaussian_elimination.md
  */
 template <typename T> int gaussian_elimination(std::vector<std::vector<T>> &a){
   const int h = a.size();
@@ -441,6 +444,7 @@ template <typename T> int gaussian_elimination(std::vector<std::vector<T>> &a){
 
 /**
  * @title 文字列のsplit関数
+ * @docs split.md
  */
 auto split(const std::string &s, const std::string &delim){
   std::vector<std::string> ret;

@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Link-Cut tree
+# :x: Link-Cut tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a178be27fdfe56586a4fa516e8dee442">Mylib/DataStructure/LinkCutTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp.html">test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp.html">test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp</a>
 
 
 ## Code
@@ -51,6 +51,7 @@ layout: default
 
 /**
  * @title Link-Cut tree
+ * @docs link_cut_tree.md
  */
 template <typename Monoid>
 struct LinkCutNode{
@@ -258,6 +259,7 @@ public:
 
 /**
  * @title Link-Cut tree
+ * @docs link_cut_tree.md
  */
 template <typename Monoid>
 struct LinkCutNode{

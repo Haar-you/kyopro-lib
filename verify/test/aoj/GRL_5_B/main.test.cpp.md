@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/GRL_5_B/main.test.cpp
+# :x: test/aoj/GRL_5_B/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#367e4e2ab0e36321fe2845cd3c3216ef">test/aoj/GRL_5_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_5_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_B</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_utils.cpp.html">Mylib/Graph/TreeUtils/tree_utils.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_utils.cpp.html">TreeUtils</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -86,6 +86,7 @@ int main(){
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -114,6 +115,10 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #include <algorithm>
 #line 8 "Mylib/Graph/TreeUtils/tree_utils.cpp"
 
+/**
+ * @title TreeUtils
+ * @docs tree_utils.md
+ */
 template <typename T> class TreeUtils{
 public:
   static std::pair<int,T> farthest(const Tree<T> &tree, int cur, int par = -1){

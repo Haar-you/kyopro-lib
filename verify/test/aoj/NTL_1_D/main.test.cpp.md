@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/NTL_1_D/main.test.cpp
+# :x: test/aoj/NTL_1_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2f883b12bcaccb309536ea11ea7e4a50">test/aoj/NTL_1_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/NTL_1_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-08 17:37:41+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/count_coprime.cpp.html">互いに素な自然数の個数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/prime_factorize.cpp.html">素因数分解</a>
+* :x: <a href="../../../../library/Mylib/Number/Prime/count_coprime.cpp.html">互いに素な自然数の個数</a>
+* :x: <a href="../../../../library/Mylib/Number/Prime/prime_factorize.cpp.html">素因数分解</a>
 
 
 ## Code
@@ -79,6 +79,7 @@ int main(){
 
 /**
  * @title 素因数分解
+ * @docs prime_factorize.md
  */
 auto prime_factorize(int64_t n){
   std::vector<std::pair<int64_t,int64_t>> ret;
@@ -99,7 +100,7 @@ auto prime_factorize(int64_t n){
 
 /**
  * @title 互いに素な自然数の個数
- * @brief [1,n]を満たす自然数でmと互いに素であるものの個数
+ * @docs count_coprime.md
  */
 int64_t count_coprime(int64_t n, int64_t m){
   const auto p = prime_factorize(m);

@@ -25,21 +25,33 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: スライド最小値
+# :x: スライド最小値
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1d0203f9a0b34121f2fb0bb17b094d0f">Mylib/Algorithm/SlidingWindow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://codeforces.com/contest/1195/submission/57565778">https://codeforces.com/contest/1195/submission/57565778</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [Codeforces Round #574 (Div. 2) E. OpenStreetMap](https://codeforces.com/contest/1195/problem/E)
+
+## References
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_3_D/main.test.cpp.html">test/aoj/DSL_3_D/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_3_D/main.test.cpp.html">test/aoj/DSL_3_D/main.test.cpp</a>
 
 
 ## Code
@@ -53,7 +65,7 @@ layout: default
 
 /**
  * @title スライド最小値
- * @see https://codeforces.com/contest/1195/submission/57565778
+ * @docs sliding_minimum.md
  */
 template <typename T>
 std::vector<T> sliding_minimum(const std::vector<T> &a, int k){
@@ -98,7 +110,7 @@ std::vector<T> sliding_minimum(const std::vector<T> &a, int k){
 
 /**
  * @title スライド最小値
- * @see https://codeforces.com/contest/1195/submission/57565778
+ * @docs sliding_minimum.md
  */
 template <typename T>
 std::vector<T> sliding_minimum(const std::vector<T> &a, int k){

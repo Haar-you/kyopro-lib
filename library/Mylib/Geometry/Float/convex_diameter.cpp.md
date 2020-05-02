@@ -25,26 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 凸多角形の直径
+# :x: 凸多角形の直径
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/convex_diameter.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_4_B/main.test.cpp.html">test/aoj/CGL_4_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_4_B/main.test.cpp.html">test/aoj/CGL_4_B/main.test.cpp</a>
 
 
 ## Code
@@ -58,7 +57,7 @@ layout: default
 
 /**
  * @title 凸多角形の直径
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B
+ * @docs convex_diameter.md
  */
 template <typename T>
 T convex_diameter(const Polygon<T> &ps){
@@ -96,6 +95,7 @@ T convex_diameter(const Polygon<T> &ps){
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -182,7 +182,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 凸多角形の直径
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_B
+ * @docs convex_diameter.md
  */
 template <typename T>
 T convex_diameter(const Polygon<T> &ps){

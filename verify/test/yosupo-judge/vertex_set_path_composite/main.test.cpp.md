@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+# :x: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#4074bf88980bb06d903e38d47fb81c08">test/yosupo-judge/vertex_set_path_composite</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/vertex_set_path_composite/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/vertex_set_path_composite">https://judge.yosupo.jp/problem/vertex_set_path_composite</a>
@@ -39,12 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_both_foldable.cpp.html">双方向のセグメント木</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_both_foldable.cpp.html">SegmentTree (双方向Foldable)</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -138,6 +138,7 @@ int main(){
 
 /**
  * @title modint
+ * @docs mint.md
  */
 template <uint32_t M> class ModInt{
 public:
@@ -222,6 +223,7 @@ public:
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -380,7 +382,8 @@ public:
 #line 3 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_both_foldable.cpp"
 
 /**
- * @title 双方向のセグメント木
+ * @title SegmentTree (双方向Foldable)
+ * @docs segment_tree_both_foldable.md
  */
 template <typename Monoid>
 class SegmentTreeBothFoldable{
@@ -463,10 +466,8 @@ public:
 #line 3 "Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp"
 
 /**
- * @see https://atcoder.jp/contests/arc008/submissions/7996520
- * @see https://judge.yosupo.jp/submission/2048
+ * @docs affine_monoid.md
  */
-
 template <typename T>
 struct AffineMonoid{
   using value_type = std::pair<T, T>;
@@ -475,6 +476,9 @@ struct AffineMonoid{
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp"
 
+/**
+ * @docs dual_monoid.md
+ */
 template <typename Monoid>
 struct DualMonoid{
   using value_type = typename Monoid::value_type;

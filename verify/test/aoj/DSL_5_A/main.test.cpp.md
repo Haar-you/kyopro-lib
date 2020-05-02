@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_5_A/main.test.cpp
+# :x: test/aoj/DSL_5_A/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#59b5a0a6c0973fef022e4b1a7cf092fc">test/aoj/DSL_5_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_5_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_A</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Imos/imos_1d.cpp.html">一次元Imos法</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/Imos/imos_1d.cpp.html">一次元Imos法</a>
 
 
 ## Code
@@ -91,6 +91,7 @@ int main(){
 
 /**
  * @title 一次元Imos法
+ * @docs imos_1d.md
  */
 template <typename T> struct Imos1D{
   std::vector<T> data;

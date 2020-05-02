@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/split.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-22 05:49:57+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -52,6 +52,7 @@ layout: default
 
 /**
  * @title 文字列のsplit関数
+ * @docs split.md
  */
 auto split(const std::string &s, const std::string &delim){
   std::vector<std::string> ret;
@@ -83,6 +84,7 @@ auto split(const std::string &s, const std::string &delim){
 
 /**
  * @title 文字列のsplit関数
+ * @docs split.md
  */
 auto split(const std::string &s, const std::string &delim){
   std::vector<std::string> ret;

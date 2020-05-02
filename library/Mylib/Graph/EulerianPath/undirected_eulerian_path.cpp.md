@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b40e1d8162bf14ce6637a69e4e4fb68d">Mylib/Graph/EulerianPath</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/EulerianPath/undirected_eulerian_path.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-30 00:04:32+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -52,7 +52,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -154,6 +154,7 @@ public:
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:

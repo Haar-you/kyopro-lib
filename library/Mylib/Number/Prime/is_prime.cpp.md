@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 試し割り素数判定
+# :x: 試し割り素数判定
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/is_prime.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/ALDS1_1_C/main.test.cpp.html">test/aoj/ALDS1_1_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/ALDS1_1_C/main.test.cpp.html">test/aoj/ALDS1_1_C/main.test.cpp</a>
 
 
 ## Code
@@ -50,6 +50,7 @@ layout: default
 
 /**
  * @title 試し割り素数判定
+ * @docs is_prime.md
  */
 bool is_prime(int n){
   if(n <= 1) return false;
@@ -69,6 +70,7 @@ bool is_prime(int n){
 
 /**
  * @title 試し割り素数判定
+ * @docs is_prime.md
  */
 bool is_prime(int n){
   if(n <= 1) return false;

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#851bd501caf05418a029865ccd3f2b9f">test/aoj/2674</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2674/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-26 17:51:10+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674</a>
@@ -40,8 +40,8 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/range_freq.cpp.html">range_freq</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">簡潔辞書</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Wavelet matrix</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">簡潔辞書</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Wavelet matrix</a>
 
 
 ## Code
@@ -113,6 +113,7 @@ int main(){
 
 /**
  * @title 簡潔辞書
+ * @docs succinct_dictionary.md
  */
 
 struct SuccinctDict{

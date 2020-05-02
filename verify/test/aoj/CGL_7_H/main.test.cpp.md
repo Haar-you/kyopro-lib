@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/CGL_7_H/main.test.cpp
+# :x: test/aoj/CGL_7_H/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#c934d03610ed9f5a73c21bd24c2c38a8">test/aoj/CGL_7_H</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_7_H/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-06 17:41:22+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_H">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_H</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp.html">円と多角形の共通部分の面積</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/distance_segment_point.cpp.html">線分・点間の距離</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/intersect_circle_segment.cpp.html">円と線分の交差</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp.html">円と多角形の共通部分の面積</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/distance_segment_point.cpp.html">線分・点間の距離</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/intersect_circle_segment.cpp.html">円と線分の交差</a>
 
 
 ## Code
@@ -96,6 +96,7 @@ int main(){
 
 /**
  * @title 誤差許容浮動小数点数
+ * @docs double_eps.md
  */
 template <typename T>
 struct DoubleEps{
@@ -153,6 +154,7 @@ namespace std{
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -239,6 +241,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 線分・点間の距離
+ * @docs distance_segment_point.md
  */
 template <typename T, typename U = typename T::value_type>
 T distance_segment_point(const Line<T> &l, const Point<T> &p){
@@ -250,6 +253,7 @@ T distance_segment_point(const Line<T> &l, const Point<T> &p){
 
 /**
  * @title 円と線分の交差
+ * @docs intersect_circle_segment.md
  */
 namespace intersect_circle_segment{
   enum Status{
@@ -310,7 +314,7 @@ namespace intersect_circle_segment{
 
 /**
  * @title 円と多角形の共通部分の面積
- * @see https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_H
+ * @docs area_intersection_of_circle_and_polygon.md
  */
 template <typename T>
 T area_intersection_of_circle_and_polygon(const Circle<T> &cl, const Polygon<T> &ps){

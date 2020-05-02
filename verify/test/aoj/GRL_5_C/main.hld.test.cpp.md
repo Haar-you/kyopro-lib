@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/GRL_5_C/main.hld.test.cpp
+# :x: test/aoj/GRL_5_C/main.hld.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#502e31dec0efb369b23aee4c6aa81a7e">test/aoj/GRL_5_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_5_C/main.hld.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_hld.cpp.html">HLD実装の最小共通祖先</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_hld.cpp.html">最小共通祖先 (HLD)</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -94,6 +94,7 @@ int main(){
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -120,7 +121,8 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Graph/TreeUtils/lca_based_on_hld.cpp"
 
 /**
- * @title HLD実装の最小共通祖先
+ * @title 最小共通祖先 (HLD)
+ * @docs lca_based_on_hld.md
  */
 template <typename T> class LCA{
   int n;

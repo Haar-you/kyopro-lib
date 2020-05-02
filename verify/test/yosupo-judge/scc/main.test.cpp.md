@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/scc/main.test.cpp
+# :x: test/yosupo-judge/scc/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6ffd15f8d9c15c119e35f664edb2d617">test/yosupo-judge/scc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/scc/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/scc">https://judge.yosupo.jp/problem/scc</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
+* :x: <a href="../../../../library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -110,6 +110,7 @@ int main(){
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -137,6 +138,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title 強連結成分分解
+ * @docs strongly_connected_components.md
  */
 template <typename T>
 struct SCC{
@@ -188,6 +190,7 @@ public:
 
 /**
  * @title トポロジカルソート
+ * @docs topological_sort.md
  */
 template <typename T>
 std::optional<std::vector<int>> topological_sort(const Graph<T> &g){

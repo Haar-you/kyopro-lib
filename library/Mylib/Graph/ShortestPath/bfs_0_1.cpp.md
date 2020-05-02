@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../../index.html#9a0780c4ad89eac4e850657d1e57c23a">Mylib/Graph/ShortestPath</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestPath/bfs_0_1.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -53,6 +53,7 @@ layout: default
 
 /**
  * @title 0-1 BFS
+ * @docs bfs_0_1.md
  */
 std::vector<int> bfs_0_1(const Graph<int> &g, const std::vector<int> &src){
   int n = g.size();
@@ -95,6 +96,7 @@ std::vector<int> bfs_0_1(const Graph<int> &g, const std::vector<int> &src){
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -120,6 +122,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title 0-1 BFS
+ * @docs bfs_0_1.md
  */
 std::vector<int> bfs_0_1(const Graph<int> &g, const std::vector<int> &src){
   int n = g.size();

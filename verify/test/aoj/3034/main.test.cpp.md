@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#607ede2caa7064ff1cf75c22fd3209d4">test/aoj/3034</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3034/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-22 05:49:57+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034</a>
@@ -41,8 +41,8 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Bit/for_each_subset_asc.cpp.html">Mylib/Bit/for_each_subset_asc.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp.html">三角形の外接円</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/minimum_covering_circle.cpp.html">最小包含円</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
 
@@ -140,6 +140,7 @@ int main(){
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -227,6 +228,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 誤差許容浮動小数点数
+ * @docs double_eps.md
  */
 template <typename T>
 struct DoubleEps{
@@ -285,6 +287,7 @@ namespace std{
 
 /**
  * @title 三角形の外接円
+ * @docs circumscribed_circle_of_triangle.md
  */
 template <typename T, typename U = typename T::value_type>
 Circle<T> circumscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b, const Point<T> &c){
@@ -301,9 +304,7 @@ Circle<T> circumscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b,
 
 /**
  * @title 最小包含円
- * @see https://tubo28.me/compprog/algorithm/minball/
- * @see https://atcoder.jp/contests/abc151/tasks/abc151_f
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034
+ * @docs minimum_covering_circle.md
  */
 template <typename T>
 Circle<T> minimum_covering_circle(std::vector<Point<T>> ps, int seed = 0){
@@ -354,6 +355,7 @@ Circle<T> minimum_covering_circle(std::vector<Point<T>> ps, int seed = 0){
 
 /**
  * @title 不動点コンビネータ
+ * @docs fix_point.md
  */
 template <typename F>
 struct FixPoint : F{
@@ -376,6 +378,9 @@ static inline constexpr decltype(auto) make_fix_point(F &f){
 }
 #line 2 "Mylib/Bit/for_each_subset_asc.cpp"
 
+/**
+ * @docs for_each_subset_asc.md
+ */
 template <typename Func>
 void for_each_subset_asc(int a, const Func &f){
   for(int t=0; ; t=(t-a)&a){

@@ -31,10 +31,22 @@ layout: default
 
 * category: <a href="../../../../index.html#a1062884f064c2b3be412505b6627108">Mylib/TypicalProblem/IntervalSchedulingProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/IntervalSchedulingProblem/weighted_interval_scheduling.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://www.hackerrank.com/contests/kodamanwithothers/challenges/2-82/problem">https://www.hackerrank.com/contests/kodamanwithothers/challenges/2-82/problem</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [J - 異世界転生2](https://www.hackerrank.com/contests/kodamanwithothers/challenges/2-82/problem)
+
+## References
 
 
 ## Code
@@ -49,8 +61,7 @@ layout: default
 
 /**
  * @title 重み付き区間スケジューリング
- * @see https://www.hackerrank.com/contests/kodamanwithothers/challenges/2-82/problem
- * @attention [from, to]
+ * @docs weighted_interval_scheduling.md
  */
 template <typename T, typename U>
 U weighted_interval_scheduling(std::vector<T> from, std::vector<T> to, std::vector<U> value){
@@ -100,8 +111,7 @@ U weighted_interval_scheduling(std::vector<T> from, std::vector<T> to, std::vect
 
 /**
  * @title 重み付き区間スケジューリング
- * @see https://www.hackerrank.com/contests/kodamanwithothers/challenges/2-82/problem
- * @attention [from, to]
+ * @docs weighted_interval_scheduling.md
  */
 template <typename T, typename U>
 U weighted_interval_scheduling(std::vector<T> from, std::vector<T> to, std::vector<U> value){

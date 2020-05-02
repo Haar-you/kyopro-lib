@@ -31,15 +31,27 @@ layout: default
 
 * category: <a href="../../../../index.html#ac2a729ce4878019d16697115af3ef73">Mylib/Graph/ShortestCycle</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestCycle/directed_shortest_cycle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://atcoder.jp/contests/abc142/submissions/7772344">https://atcoder.jp/contests/abc142/submissions/7772344</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [ABC 142 F - Pure](https://atcoder.jp/contests/abc142/tasks/abc142_f)
+
+## References
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -56,7 +68,7 @@ layout: default
 
 /**
  * @title 有向グラフの最小閉路
- * @see https://atcoder.jp/contests/abc142/submissions/7772344
+ * @docs directed_shortest_cycle.md
  */
 template <typename T>
 struct DirectShortestCycle{
@@ -130,6 +142,7 @@ struct DirectShortestCycle{
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -155,7 +168,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title 有向グラフの最小閉路
- * @see https://atcoder.jp/contests/abc142/submissions/7772344
+ * @docs directed_shortest_cycle.md
  */
 template <typename T>
 struct DirectShortestCycle{

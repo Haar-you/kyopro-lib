@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp
+# :x: Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-18 02:38:53+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
 
 
 ## Code
@@ -49,6 +49,9 @@ layout: default
 #pragma once
 #include <optional>
 
+/**
+ * @docs maybe_monoid.md
+ */
 template <typename Semigroup>
 struct MaybeMonoid{
   using value_type = std::optional<typename Semigroup::value_type>;
@@ -70,6 +73,9 @@ struct MaybeMonoid{
 #line 2 "Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp"
 #include <optional>
 
+/**
+ * @docs maybe_monoid.md
+ */
 template <typename Semigroup>
 struct MaybeMonoid{
   using value_type = std::optional<typename Semigroup::value_type>;

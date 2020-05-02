@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/1030/main.test.cpp
+# :x: test/yukicoder/1030/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#fce7f5311a6094c5e355d46a4ec1ba92">test/yukicoder/1030</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/1030/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/1030">https://yukicoder.me/problems/no/1030</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/max_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/max_monoid.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -144,6 +144,7 @@ int main(){
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -302,7 +303,8 @@ public:
 #line 3 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
 
 /**
- * @title セグメント木
+ * @title SegmentTree
+ * @docs segment_tree.md
  */
 template <typename Monoid>
 class SegmentTree{
@@ -356,6 +358,9 @@ public:
 };
 #line 3 "Mylib/AlgebraicStructure/Monoid/max_monoid.cpp"
 
+/**
+ * @docs max_monoid.md
+ */
 template <typename T>
 struct MaxMonoid{
   using value_type = T;
@@ -365,6 +370,9 @@ struct MaxMonoid{
 #line 2 "Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp"
 #include <optional>
 
+/**
+ * @docs maybe_monoid.md
+ */
 template <typename Semigroup>
 struct MaybeMonoid{
   using value_type = std::optional<typename Semigroup::value_type>;

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#e1d7bebd3991495167778e37d1d75d40">Mylib/Number/Divisor</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Divisor/count_divisor.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -45,6 +45,7 @@ layout: default
 
 /**
  * @title 約数個数
+ * @docs count_divisor.md
  */
 int count_divisor(std::int64_t n){
   int count = 0;
@@ -67,6 +68,7 @@ int count_divisor(std::int64_t n){
 
 /**
  * @title 約数個数
+ * @docs count_divisor.md
  */
 int count_divisor(std::int64_t n){
   int count = 0;

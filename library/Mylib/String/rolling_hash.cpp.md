@@ -31,10 +31,9 @@ layout: default
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/rolling_hash.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-24 03:19:18+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://yukicoder.me/submissions/347187">https://yukicoder.me/submissions/347187</a>
 
 
 ## Verified with
@@ -53,7 +52,7 @@ layout: default
 
 /**
  * @title Rolling Hash
- * @see https://yukicoder.me/submissions/347187
+ * @docs rolling_hash.md
  */
 class RollingHash{
   std::vector<int64_t> pow;
@@ -106,7 +105,7 @@ auto make_rh(int size, int MOD, int seed = 0){
 
 /**
  * @title Rolling Hash
- * @see https://yukicoder.me/submissions/347187
+ * @docs rolling_hash.md
  */
 class RollingHash{
   std::vector<int64_t> pow;

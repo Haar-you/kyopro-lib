@@ -31,10 +31,22 @@ layout: default
 
 * category: <a href="../../../../index.html#1d0203f9a0b34121f2fb0bb17b094d0f">Mylib/Algorithm/SlidingWindow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/SlidingWindow/sliding_maximum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://atcoder.jp/contests/cf16-tournament-round3-open/submissions/6875142">https://atcoder.jp/contests/cf16-tournament-round3-open/submissions/6875142</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [CODE FESTIVAL 2016 Tournament Round 3 A - ストラックアウト](https://atcoder.jp/contests/cf16-tournament-round3-open/tasks/asaporo_d)
+
+## References
 
 
 ## Code
@@ -48,7 +60,7 @@ layout: default
 
 /**
  * @title スライド最大値
- * @see https://atcoder.jp/contests/cf16-tournament-round3-open/submissions/6875142
+ * @docs sliding_maximum.md
  */
 template <typename T>
 std::vector<T> sliding_maximum(const std::vector<T> &a, int k){
@@ -93,7 +105,7 @@ std::vector<T> sliding_maximum(const std::vector<T> &a, int k){
 
 /**
  * @title スライド最大値
- * @see https://atcoder.jp/contests/cf16-tournament-round3-open/submissions/6875142
+ * @docs sliding_maximum.md
  */
 template <typename T>
 std::vector<T> sliding_maximum(const std::vector<T> &a, int k){

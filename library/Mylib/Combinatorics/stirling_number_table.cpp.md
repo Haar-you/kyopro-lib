@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 第2種Stirling数の列挙
+# :x: 第2種Stirling数の列挙
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -45,7 +45,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_I/main.table.test.cpp.html">test/aoj/DPL_5_I/main.table.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/DPL_5_I/main.table.test.cpp.html">test/aoj/DPL_5_I/main.table.test.cpp</a>
 
 
 ## Code

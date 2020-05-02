@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a1062884f064c2b3be412505b6627108">Mylib/TypicalProblem/IntervalSchedulingProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -50,6 +50,7 @@ layout: default
 
 /**
  * @title 重複要素をk個まで許容する区間スケジューリング問題
+ * @docs interval_scheduling_k.md
  */
 std::vector<std::pair<int,int>> interval_scheduling_k(std::vector<std::pair<int,int>> s, int k){
   std::sort(s.begin(), s.end(), [](const auto &a, const auto &b){
@@ -91,6 +92,7 @@ std::vector<std::pair<int,int>> interval_scheduling_k(std::vector<std::pair<int,
 
 /**
  * @title 重複要素をk個まで許容する区間スケジューリング問題
+ * @docs interval_scheduling_k.md
  */
 std::vector<std::pair<int,int>> interval_scheduling_k(std::vector<std::pair<int,int>> s, int k){
   std::sort(s.begin(), s.end(), [](const auto &a, const auto &b){

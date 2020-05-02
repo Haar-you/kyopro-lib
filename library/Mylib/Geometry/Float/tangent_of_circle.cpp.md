@@ -25,26 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 円の接線
+# :x: 円の接線
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/tangent_of_circle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_F">https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_F</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_F/main.test.cpp.html">test/aoj/CGL_7_F/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_7_F/main.test.cpp.html">test/aoj/CGL_7_F/main.test.cpp</a>
 
 
 ## Code
@@ -58,8 +57,7 @@ layout: default
 
 /**
  * @title 円の接線
- * @note 点Pを通り円Cに接する直線と円Cとの接点を求める。
- * @see https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_F
+ * @docs tangent_of_circle.md
  */
 template <typename T, typename U = typename T::value_type>
 std::vector<Point<T>> tangent_of_circle(const Circle<T> &c, const Point<T> &p){
@@ -88,6 +86,7 @@ std::vector<Point<T>> tangent_of_circle(const Circle<T> &c, const Point<T> &p){
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -174,8 +173,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 円の接線
- * @note 点Pを通り円Cに接する直線と円Cとの接点を求める。
- * @see https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_F
+ * @docs tangent_of_circle.md
  */
 template <typename T, typename U = typename T::value_type>
 std::vector<Point<T>> tangent_of_circle(const Circle<T> &c, const Point<T> &p){

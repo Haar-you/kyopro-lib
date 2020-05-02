@@ -31,15 +31,31 @@ layout: default
 
 * category: <a href="../../../../index.html#ac2a729ce4878019d16697115af3ef73">Mylib/Graph/ShortestCycle</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestCycle/undirected_shortest_cycle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://codeforces.com/contest/1325/submission/74308951">https://codeforces.com/contest/1325/submission/74308951</a>
+
+
+## Operations
+
+- `shortest_cycle(g, src)`
+	- `src`始点の最小閉路を検出する。
+	- Time complexity $O(E)$
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [Codeforces Round #628 (Div. 2) E. Ehab's REAL Number Theory Problem](https://codeforces.com/contest/1325/problem/E)
+
+## References
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -55,10 +71,7 @@ layout: default
 
 /**
  * @title 無向グラフの最小閉路
- * @see https://codeforces.com/contest/1325/submission/74308951
- * @note src始点の最小閉路を検出する。
- * @attention time complexity O(E)
- * @attention space complexity O(N)
+ * @docs undirected_shortest_cycle.md
  */
 template <typename T>
 std::optional<int> shortest_cycle(const Graph<T> &g, const int src){
@@ -117,6 +130,7 @@ std::optional<int> shortest_cycle(const Graph<T> &g, const int src){
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -142,10 +156,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title 無向グラフの最小閉路
- * @see https://codeforces.com/contest/1325/submission/74308951
- * @note src始点の最小閉路を検出する。
- * @attention time complexity O(E)
- * @attention space complexity O(N)
+ * @docs undirected_shortest_cycle.md
  */
 template <typename T>
 std::optional<int> shortest_cycle(const Graph<T> &g, const int src){

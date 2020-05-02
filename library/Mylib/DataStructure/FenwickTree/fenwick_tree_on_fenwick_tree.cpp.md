@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Fenwick木にFenwick木を乗せる
+# :x: FenwickTree (FenwickTreeを乗せる)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2f58e2c328298747e7665b6f6b5791ad">Mylib/DataStructure/FenwickTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="fenwick_tree.cpp.html">Fenwick木</a>
+* :x: <a href="fenwick_tree.cpp.html">FenwickTree</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
 
 
 ## Code
@@ -59,7 +59,8 @@ layout: default
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
 
 /**
- * @title Fenwick木にFenwick木を乗せる
+ * @title FenwickTree (FenwickTreeを乗せる)
+ * @docs fenwick_tree_on_fenwick_tree.md
  */
 template <typename AbelianGroup>
 class FenwickTree2D{
@@ -158,7 +159,8 @@ public:
 #line 3 "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
 
 /**
- * @title Fenwick木
+ * @title FenwickTree
+ * @docs fenwick_tree.md
  */
 template <typename AbelianGroup>
 class FenwickTree{
@@ -205,7 +207,8 @@ public:
 #line 7 "Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp"
 
 /**
- * @title Fenwick木にFenwick木を乗せる
+ * @title FenwickTree (FenwickTreeを乗せる)
+ * @docs fenwick_tree_on_fenwick_tree.md
  */
 template <typename AbelianGroup>
 class FenwickTree2D{

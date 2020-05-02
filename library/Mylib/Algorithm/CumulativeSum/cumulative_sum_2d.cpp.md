@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#606b6851a96c8708fa4cdcf98aebb7c1">Mylib/Algorithm/CumulativeSum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -48,6 +48,7 @@ layout: default
 
 /**
  * @title 二次元累積和
+ * @docs cumulative_sum_2d.md
  */
 template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
 class CumulativeSum2D{
@@ -106,6 +107,7 @@ public:
 
 /**
  * @title 二次元累積和
+ * @docs cumulative_sum_2d.md
  */
 template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
 class CumulativeSum2D{

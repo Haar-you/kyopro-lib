@@ -31,15 +31,27 @@ layout: default
 
 * category: <a href="../../../../index.html#0520734517f09caa086d1aa01fa4b9e4">Mylib/Graph/GraphUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/GraphUtils/decompose_pseudotree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://en.wikipedia.org/wiki/Pseudoforest">https://en.wikipedia.org/wiki/Pseudoforest</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References
+
+- [https://en.wikipedia.org/wiki/Pseudoforest](https://en.wikipedia.org/wiki/Pseudoforest)
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -54,8 +66,7 @@ layout: default
 
 /**
  * @title Pseudotreeの分解
- * @see https://en.wikipedia.org/wiki/Pseudoforest
- * @brief 閉路を丁度1つだけもつ無向グラフを閉路と森に分解する。
+ * @docs decompose_pseudotree.md
  */
 template <typename T>
 struct PseudoTree{
@@ -135,6 +146,7 @@ struct PseudoTree{
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -160,8 +172,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title Pseudotreeの分解
- * @see https://en.wikipedia.org/wiki/Pseudoforest
- * @brief 閉路を丁度1つだけもつ無向グラフを閉路と森に分解する。
+ * @docs decompose_pseudotree.md
  */
 template <typename T>
 struct PseudoTree{

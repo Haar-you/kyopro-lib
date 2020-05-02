@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: HLD実装の最小共通祖先
+# :x: 最小共通祖先 (HLD)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/lca_based_on_hld.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_5_C/main.hld.test.cpp.html">test/aoj/GRL_5_C/main.hld.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_5_C/main.hld.test.cpp.html">test/aoj/GRL_5_C/main.hld.test.cpp</a>
 
 
 ## Code
@@ -57,7 +57,8 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title HLD実装の最小共通祖先
+ * @title 最小共通祖先 (HLD)
+ * @docs lca_based_on_hld.md
  */
 template <typename T> class LCA{
   int n;
@@ -119,6 +120,7 @@ public:
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -143,7 +145,8 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Graph/TreeUtils/lca_based_on_hld.cpp"
 
 /**
- * @title HLD実装の最小共通祖先
+ * @title 最小共通祖先 (HLD)
+ * @docs lca_based_on_hld.md
  */
 template <typename T> class LCA{
   int n;

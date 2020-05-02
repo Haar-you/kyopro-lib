@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/ALDS1_1_C/main.test.cpp
+# :x: test/aoj/ALDS1_1_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a8a6d8e3138deb7c2a3646b5ea12ddc2">test/aoj/ALDS1_1_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_1_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-09 17:11:56+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/is_prime.cpp.html">試し割り素数判定</a>
+* :x: <a href="../../../../library/Mylib/Number/Prime/is_prime.cpp.html">試し割り素数判定</a>
 
 
 ## Code
@@ -81,6 +81,7 @@ int main(){
 
 /**
  * @title 試し割り素数判定
+ * @docs is_prime.md
  */
 bool is_prime(int n){
   if(n <= 1) return false;

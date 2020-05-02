@@ -25,27 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 線分間の距離
+# :x: 線分間の距離
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/distance_segments.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="http://judge.u-aizu.ac.jp/onLinejudge/description.jsp?id=CGL_2_D">http://judge.u-aizu.ac.jp/onLinejudge/description.jsp?id=CGL_2_D</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="distance_segment_point.cpp.html">線分・点間の距離</a>
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :x: <a href="distance_segment_point.cpp.html">線分・点間の距離</a>
+* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_2_D/main.test.cpp.html">test/aoj/CGL_2_D/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_2_D/main.test.cpp.html">test/aoj/CGL_2_D/main.test.cpp</a>
 
 
 ## Code
@@ -60,7 +59,7 @@ layout: default
 
 /**
  * @title 線分間の距離
- * @see http://judge.u-aizu.ac.jp/onLinejudge/description.jsp?id=CGL_2_D
+ * @docs distance_segments.md
  */
 template <typename T>
 T distance_segments(const Segment<T> &l1, const Segment<T> &l2){
@@ -95,6 +94,7 @@ T distance_segments(const Segment<T> &l1, const Segment<T> &l2){
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -181,6 +181,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 線分・点間の距離
+ * @docs distance_segment_point.md
  */
 template <typename T, typename U = typename T::value_type>
 T distance_segment_point(const Line<T> &l, const Point<T> &p){
@@ -192,7 +193,7 @@ T distance_segment_point(const Line<T> &l, const Point<T> &p){
 
 /**
  * @title 線分間の距離
- * @see http://judge.u-aizu.ac.jp/onLinejudge/description.jsp?id=CGL_2_D
+ * @docs distance_segments.md
  */
 template <typename T>
 T distance_segments(const Segment<T> &l1, const Segment<T> &l2){

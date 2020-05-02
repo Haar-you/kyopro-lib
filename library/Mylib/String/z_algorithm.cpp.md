@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Z-algorithm
+# :x: Z-algorithm
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/z_algorithm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-08 18:28:01+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="run_enumerate.cpp.html">run enumerate</a>
+* :x: <a href="run_enumerate.cpp.html">run enumerate</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/runenumerate/main.test.cpp.html">test/yosupo-judge/runenumerate/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/zalgorithm/main.test.cpp.html">test/yosupo-judge/zalgorithm/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/runenumerate/main.test.cpp.html">test/yosupo-judge/runenumerate/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/zalgorithm/main.test.cpp.html">test/yosupo-judge/zalgorithm/main.test.cpp</a>
 
 
 ## Code
@@ -58,6 +58,7 @@ layout: default
 
 /**
  * @title Z-algorithm
+ * @docs z_algorithm
  */
 template <typename Container, typename T = typename Container::value_type>
 std::vector<int> z_algorithm(const Container &s){
@@ -93,6 +94,7 @@ std::vector<int> z_algorithm(const Container &s){
 
 /**
  * @title Z-algorithm
+ * @docs z_algorithm
  */
 template <typename Container, typename T = typename Container::value_type>
 std::vector<int> z_algorithm(const Container &s){

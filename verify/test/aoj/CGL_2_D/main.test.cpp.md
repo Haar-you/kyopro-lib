@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/CGL_2_D/main.test.cpp
+# :x: test/aoj/CGL_2_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#784c7ff4ab021ee9909f3560344a5946">test/aoj/CGL_2_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_2_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_D</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/distance_segment_point.cpp.html">線分・点間の距離</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/distance_segments.cpp.html">線分間の距離</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/distance_segment_point.cpp.html">線分・点間の距離</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/distance_segments.cpp.html">線分間の距離</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Code
@@ -95,6 +95,7 @@ int main(){
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -182,6 +183,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 誤差許容浮動小数点数
+ * @docs double_eps.md
  */
 template <typename T>
 struct DoubleEps{
@@ -239,6 +241,7 @@ namespace std{
 
 /**
  * @title 線分・点間の距離
+ * @docs distance_segment_point.md
  */
 template <typename T, typename U = typename T::value_type>
 T distance_segment_point(const Line<T> &l, const Point<T> &p){
@@ -250,7 +253,7 @@ T distance_segment_point(const Line<T> &l, const Point<T> &p){
 
 /**
  * @title 線分間の距離
- * @see http://judge.u-aizu.ac.jp/onLinejudge/description.jsp?id=CGL_2_D
+ * @docs distance_segments.md
  */
 template <typename T>
 T distance_segments(const Segment<T> &l1, const Segment<T> &l2){

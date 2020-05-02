@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#c78b3868045887a7ae97845e4050078a">Mylib/Algorithm/SqrtDecomposition</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -46,6 +46,7 @@ layout: default
 
 /**
  * @title 平方分割
+ * @docs sqrt_decomposition.md
  */
 struct SqrtDecomposition{
   const int N;
@@ -92,6 +93,7 @@ struct SqrtDecomposition{
 
 /**
  * @title 平方分割
+ * @docs sqrt_decomposition.md
  */
 struct SqrtDecomposition{
   const int N;

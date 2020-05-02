@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/rooting.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -51,6 +51,7 @@ layout: default
 
 /**
  * @title 根付き木
+ * @docs rooting.md
  */
 template <typename T>
 void rooting(Tree<T> &tree, int cur, int par = -1){
@@ -80,6 +81,7 @@ void rooting(Tree<T> &tree, int cur, int par = -1){
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -105,6 +107,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title 根付き木
+ * @docs rooting.md
  */
 template <typename T>
 void rooting(Tree<T> &tree, int cur, int par = -1){

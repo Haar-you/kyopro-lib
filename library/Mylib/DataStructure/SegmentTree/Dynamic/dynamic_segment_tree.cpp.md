@@ -25,21 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 動的セグメント木
+# :x: 動的SegmentTree
 
 <a href="../../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../../index.html#8db11aac103ae486542368bc2b65dfc8">Mylib/DataStructure/SegmentTree/Dynamic</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/Dynamic/dynamic_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://yukicoder.me/submissions/427657">https://yukicoder.me/submissions/427657</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../../verify/test/yukicoder/789/main.test.cpp.html">test/yukicoder/789/main.test.cpp</a>
+* :x: <a href="../../../../../verify/test/yukicoder/789/main.test.cpp.html">test/yukicoder/789/main.test.cpp</a>
 
 
 ## Code
@@ -50,8 +49,8 @@ layout: default
 #pragma once
 
 /**
- * @title 動的セグメント木
- * @see https://yukicoder.me/submissions/427657
+ * @title 動的SegmentTree
+ * @docs dynamic_segment_tree.md
  */
 template <typename Monoid>
 class DynamicSegmentTree{
@@ -122,8 +121,8 @@ public:
 #line 2 "Mylib/DataStructure/SegmentTree/Dynamic/dynamic_segment_tree.cpp"
 
 /**
- * @title 動的セグメント木
- * @see https://yukicoder.me/submissions/427657
+ * @title 動的SegmentTree
+ * @docs dynamic_segment_tree.md
  */
 template <typename Monoid>
 class DynamicSegmentTree{

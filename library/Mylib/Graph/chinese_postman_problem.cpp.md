@@ -25,25 +25,44 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 中国人郵便配達問題
+# :x: 中国人郵便配達問題
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/chinese_postman_problem.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
+
+
+## Operations
+
+- `chinese_postman_problem(g)`
+	- すべての辺を一度以上通る閉路の最小距離を返す。
+	- Time complexity $O(n^2 2^n)$
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [AOJ DPL_2_B Chinese Postman Problem](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B)
+
+## References
+
+- [https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%9B%BD%E4%BA%BA%E9%83%B5%E4%BE%BF%E9%85%8D%E9%81%94%E5%95%8F%E9%A1%8C](https://ja.wikipedia.org/wiki/%E4%B8%AD%E5%9B%BD%E4%BA%BA%E9%83%B5%E4%BE%BF%E9%85%8D%E9%81%94%E5%95%8F%E9%A1%8C)
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_2_B/main.test.cpp.html">test/aoj/DPL_2_B/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/DPL_2_B/main.test.cpp.html">test/aoj/DPL_2_B/main.test.cpp</a>
 
 
 ## Code
@@ -58,7 +77,7 @@ layout: default
 
 /**
  * @title 中国人郵便配達問題
- * @docs chinese_postman_problem.cpp
+ * @docs chinese_postman_problem.md
  */
 template <typename T> T chinese_postman_problem(const Graph<T> &g){
   const int n = g.size();
@@ -134,6 +153,7 @@ template <typename T> T chinese_postman_problem(const Graph<T> &g){
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -159,7 +179,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title 中国人郵便配達問題
- * @docs chinese_postman_problem.cpp
+ * @docs chinese_postman_problem.md
  */
 template <typename T> T chinese_postman_problem(const Graph<T> &g){
   const int n = g.size();

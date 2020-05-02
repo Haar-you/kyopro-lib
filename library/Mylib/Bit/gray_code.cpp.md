@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#fe4a83e4dc2a7f834ed4cd85d6972a53">Mylib/Bit</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/gray_code.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -45,6 +45,7 @@ layout: default
 
 /**
  * @title Grayコード
+ * @docs gray_code.md
  */
 template <typename Func>
 void gray_code(int n, const Func &f){
@@ -63,6 +64,7 @@ void gray_code(int n, const Func &f){
 
 /**
  * @title Grayコード
+ * @docs gray_code.md
  */
 template <typename Func>
 void gray_code(int n, const Func &f){

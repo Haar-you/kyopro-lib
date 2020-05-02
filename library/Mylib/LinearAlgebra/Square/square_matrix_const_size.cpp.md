@@ -25,16 +25,15 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 固定サイズの正方行列
+# :warning: 正方行列 (コンパイル時固定サイズ)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b58b3fdb1287502881e9117a37552614">Mylib/LinearAlgebra/Square</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://atcoder.jp/contests/abc129/submissions/7098355">https://atcoder.jp/contests/abc129/submissions/7098355</a>
 
 
 ## Code
@@ -48,8 +47,8 @@ layout: default
 #include <utility>
 
 /**
- * @title 固定サイズの正方行列
- * @see https://atcoder.jp/contests/abc129/submissions/7098355
+ * @title 正方行列 (コンパイル時固定サイズ)
+ * @docs square_matrix_const_size.md
  */
 template <typename T, int N> struct SquareMatrixConst{
   using value_type = T;
@@ -124,8 +123,8 @@ template <typename T, int N> struct SquareMatrixConst{
 #include <utility>
 
 /**
- * @title 固定サイズの正方行列
- * @see https://atcoder.jp/contests/abc129/submissions/7098355
+ * @title 正方行列 (コンパイル時固定サイズ)
+ * @docs square_matrix_const_size.md
  */
 template <typename T, int N> struct SquareMatrixConst{
   using value_type = T;

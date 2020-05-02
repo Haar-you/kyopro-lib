@@ -31,8 +31,23 @@ layout: default
 
 * category: <a href="../../../../index.html#2e380218d9fd214c2f91a8ade734af1c">Mylib/TypicalProblem/SubsetSumProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_count.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
+
+
+
+## Operations
+
+- `subset_sum_count(N, K, a[N])`
+	- Time complexity $O(NK)$
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References
 
 
 
@@ -46,7 +61,7 @@ layout: default
 
 /**
  * @title 部分和数え上げ問題
- * @attention 時間計算量 O(NK)
+ * @docs subset_sum_count.md
  */
 template <typename T>
 T subset_sum_count(int N, int K, const std::vector<int> &a){
@@ -75,7 +90,7 @@ T subset_sum_count(int N, int K, const std::vector<int> &a){
 
 /**
  * @title 部分和数え上げ問題
- * @attention 時間計算量 O(NK)
+ * @docs subset_sum_count.md
  */
 template <typename T>
 T subset_sum_count(int N, int K, const std::vector<int> &a){

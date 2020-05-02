@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f151d59e79c7ff7f731ff52cf9b782e4">Mylib/DataStructure/Heap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Heap/leftist_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 08:16:53+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -44,6 +44,9 @@ layout: default
 #pragma once
 #include <functional>
 
+/**
+ * @docs leftist_heap.md
+ */
 template <typename T, class Compare = std::less<T>>
 class LeftistHeap{
   struct node{
@@ -93,6 +96,9 @@ public:
 #line 2 "Mylib/DataStructure/Heap/leftist_heap.cpp"
 #include <functional>
 
+/**
+ * @docs leftist_heap.md
+ */
 template <typename T, class Compare = std::less<T>>
 class LeftistHeap{
   struct node{

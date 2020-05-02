@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a7582795d3062b8fdf2ece0fd4f2d90d">Mylib/Algorithm/Search</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Search/golden_section_search_upwards.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-16 01:06:32+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -52,6 +52,7 @@ layout: default
 
 /**
  * @title 上に凸の黄金分割探索
+ * @docs golden_section_search_upwards.md
  */
 template <typename T = double, typename Func = std::function<T(T)>>
 T golden_section_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
@@ -85,6 +86,7 @@ T golden_section_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100)
 
 /**
  * @title 上に凸の黄金分割探索
+ * @docs golden_section_search_upwards.md
  */
 template <typename T = double, typename Func = std::function<T(T)>>
 T golden_section_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){

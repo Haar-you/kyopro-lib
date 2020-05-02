@@ -25,27 +25,40 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 重み付き二部マッチング
+# :question: 重み付き二部マッチング
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#65eb1c5db2b1bd726d58cf661f149e7c">Mylib/Graph/Matching</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Matching/weighted_bipartite_matching.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2429">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2429</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [AOJ 2581 Derangement](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2581)
+- [AOJ 2429 marukaite](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2429)
+
+## References
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../Flow/minimum_cost_flow.cpp.html">最小費用流</a>
+* :question: <a href="../Flow/minimum_cost_flow.cpp.html">最小費用流</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2293/main.test.cpp.html">test/aoj/2293/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/assignment/main.test.cpp.html">test/yosupo-judge/assignment/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/assignment/main.test.cpp.html">test/yosupo-judge/assignment/main.test.cpp</a>
 
 
 ## Code
@@ -60,7 +73,7 @@ layout: default
 
 /**
  * @title 重み付き二部マッチング
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2429
+ * @docs weighted_bipartite_matching.md
  */
 template <typename T>
 class WeightedBipartiteMatching{
@@ -117,6 +130,7 @@ public:
 
 /**
  * @title 最小費用流
+ * @docs minimum_cost_flow.md
  */
 template <typename T, typename U> class MinimumCostFlow{
 public:
@@ -214,7 +228,7 @@ public:
 
 /**
  * @title 重み付き二部マッチング
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2429
+ * @docs weighted_bipartite_matching.md
  */
 template <typename T>
 class WeightedBipartiteMatching{

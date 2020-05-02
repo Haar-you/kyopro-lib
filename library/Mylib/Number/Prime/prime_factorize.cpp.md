@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 素因数分解
+# :x: 素因数分解
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/prime_factorize.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="count_coprime.cpp.html">互いに素な自然数の個数</a>
+* :x: <a href="count_coprime.cpp.html">互いに素な自然数の個数</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/NTL_1_A/main.test.cpp.html">test/aoj/NTL_1_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/NTL_1_D/main.test.cpp.html">test/aoj/NTL_1_D/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/NTL_1_A/main.test.cpp.html">test/aoj/NTL_1_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/NTL_1_D/main.test.cpp.html">test/aoj/NTL_1_D/main.test.cpp</a>
 
 
 ## Code
@@ -58,6 +58,7 @@ layout: default
 
 /**
  * @title 素因数分解
+ * @docs prime_factorize.md
  */
 auto prime_factorize(int64_t n){
   std::vector<std::pair<int64_t,int64_t>> ret;
@@ -87,6 +88,7 @@ auto prime_factorize(int64_t n){
 
 /**
  * @title 素因数分解
+ * @docs prime_factorize.md
  */
 auto prime_factorize(int64_t n){
   std::vector<std::pair<int64_t,int64_t>> ret;

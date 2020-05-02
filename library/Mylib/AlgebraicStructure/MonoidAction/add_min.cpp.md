@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/AlgebraicStructure/MonoidAction/add_min.cpp
+# :x: Mylib/AlgebraicStructure/MonoidAction/add_min.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/add_min.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 07:44:02+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
-* :heavy_check_mark: <a href="../Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :question: <a href="../Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
+* :question: <a href="../Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_H/main.test.cpp.html">test/aoj/DSL_2_H/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_2_H/main.test.cpp.html">test/aoj/DSL_2_H/main.test.cpp</a>
 
 
 ## Code
@@ -56,6 +56,9 @@ layout: default
 #include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
 
+/**
+ * @docs add_min.md
+ */
 template <typename T, typename U>
 struct AddMin{
   using monoid_get = MinMonoid<T>;
@@ -76,6 +79,9 @@ struct AddMin{
 ```cpp
 #line 2 "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 
+/**
+ * @docs sum_monoid.md
+ */
 template <typename T>
 struct SumMonoid{
   using value_type = T;
@@ -85,6 +91,9 @@ struct SumMonoid{
 #line 2 "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
 #include <algorithm>
 
+/**
+ * @docs min_monoid.md
+ */
 template <typename T>
 struct MinMonoid{
   using value_type = T;
@@ -93,6 +102,9 @@ struct MinMonoid{
 };
 #line 4 "Mylib/AlgebraicStructure/MonoidAction/add_min.cpp"
 
+/**
+ * @docs add_min.md
+ */
 template <typename T, typename U>
 struct AddMin{
   using monoid_get = MinMonoid<T>;

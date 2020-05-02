@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f1faa641fd949a91e292dddd575fe73e">Mylib/DataStructure/Treap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Treap/treap_ordered_by_index.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -58,6 +58,7 @@ layout: default
 
 /**
  * @title Treap
+ * @docs treap_ordered_by_index.md
  */
 namespace treap{
   template <typename Monoid>
@@ -258,6 +259,7 @@ namespace treap{
 
 /**
  * @title Treap
+ * @docs treap_ordered_by_index.md
  */
 namespace treap{
   template <typename Monoid>

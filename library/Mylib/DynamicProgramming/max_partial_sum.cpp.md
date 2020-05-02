@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3a96c66483797c15eff4c0c3d8733619">Mylib/DynamicProgramming</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/max_partial_sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -47,6 +47,7 @@ layout: default
 
 /**
  * @title 連続部分和の最大値
+ * @docs max_partial_sum.md
  */
 template <typename T>
 T max_partial_sum(const std::vector<T> &v){
@@ -70,6 +71,7 @@ T max_partial_sum(const std::vector<T> &v){
 
 /**
  * @title 連続部分和の最大値
+ * @docs max_partial_sum.md
  */
 template <typename T>
 T max_partial_sum(const std::vector<T> &v){

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/776/main.test.cpp
+# :x: test/yukicoder/776/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a8c189a9cd3b51f204ab4e40b62c7dab">test/yukicoder/776</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/776/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-06 17:42:20+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/776">https://yukicoder.me/problems/no/776</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max_partial_sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/max_partial_sum_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">セグメント木</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max_partial_sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/max_partial_sum_monoid.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
 
 
 ## Code
@@ -136,7 +136,7 @@ int main(){
 #line 4 "Mylib/AlgebraicStructure/Monoid/max_partial_sum_monoid.cpp"
 
 /**
- * @see https://yukicoder.me/submissions/390234
+ * @docs max_partial_sum_monoid.md
  */
 template <typename T>
 struct MaxPartialSumMonoid{
@@ -168,7 +168,8 @@ struct MaxPartialSumMonoid{
 #line 3 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
 
 /**
- * @title セグメント木
+ * @title SegmentTree
+ * @docs segment_tree.md
  */
 template <typename Monoid>
 class SegmentTree{

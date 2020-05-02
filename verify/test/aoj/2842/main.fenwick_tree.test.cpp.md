@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#64e19fd3e4193a1559ce21d32ec43623">test/aoj/2842</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2842/main.fenwick_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-17 00:08:28+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum_group.cpp.html">Mylib/AlgebraicStructure/Group/sum_group.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp.html">2DFenwick木</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum_group.cpp.html">Mylib/AlgebraicStructure/Group/sum_group.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp.html">FenwickTree (2D)</a>
 
 
 ## Code
@@ -122,6 +122,9 @@ int main(){
 
 #line 2 "Mylib/AlgebraicStructure/Group/sum_group.cpp"
 
+/**
+ * @docs sum_group.md
+ */
 template <typename T>
 struct SumGroup{
   using value_type = T;
@@ -134,7 +137,8 @@ struct SumGroup{
 #include <vector>
 
 /**
- * @title 2DFenwick木
+ * @title FenwickTree (2D)
+ * @docs fenwick_tree_2d.md
  */
 template <typename AbelianGroup>
 class FenwickTree2D{

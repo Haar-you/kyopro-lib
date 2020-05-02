@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: mod累乗
+# :question: mod累乗
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#795ab137908c82fc28acbcffe5b1c757">Mylib/Number/Mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mod/mod_power.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -39,16 +39,16 @@ layout: default
 ## Required by
 
 * :heavy_check_mark: <a href="../../Graph/Coloring/chromatic_number.cpp.html">グラフ頂点彩色数</a>
-* :heavy_check_mark: <a href="mod_log.cpp.html">離散対数</a>
-* :heavy_check_mark: <a href="mod_sqrt.cpp.html">平方剰余</a>
+* :x: <a href="mod_log.cpp.html">離散対数</a>
+* :x: <a href="mod_sqrt.cpp.html">平方剰余</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2136/main.test.cpp.html">test/aoj/2136/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2530/main.test.cpp.html">test/aoj/2530/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
 
 
 ## Code
@@ -60,6 +60,7 @@ layout: default
 
 /**
  * @title mod累乗
+ * @docs mod_power.md
  */
 int64_t power(int64_t n, int64_t p, int64_t m){
   int64_t ret = 1;
@@ -81,6 +82,7 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 
 /**
  * @title mod累乗
+ * @docs mod_power.md
  */
 int64_t power(int64_t n, int64_t p, int64_t m){
   int64_t ret = 1;

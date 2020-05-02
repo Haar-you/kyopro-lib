@@ -31,10 +31,22 @@ layout: default
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/factorial_prime_factorization.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://codeforces.com/contest/1228/submission/62232341">https://codeforces.com/contest/1228/submission/62232341</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [Codeforces Round #589 (Div. 2) C. Primes and Multiplication](https://codeforces.com/contest/1228/problem/C)
+
+## References
 
 
 ## Code
@@ -46,7 +58,7 @@ layout: default
 
 /**
  * @title a!の素因数pの個数
- * @see https://codeforces.com/contest/1228/submission/62232341
+ * @docs factorial_prime_factorization.md
  */
 int64_t factorial_prime_factorization(int64_t a, int64_t p){
   int64_t ret = 0, q = p;
@@ -74,7 +86,7 @@ int64_t factorial_prime_factorization(int64_t a, int64_t p){
 
 /**
  * @title a!の素因数pの個数
- * @see https://codeforces.com/contest/1228/submission/62232341
+ * @docs factorial_prime_factorization.md
  */
 int64_t factorial_prime_factorization(int64_t a, int64_t p){
   int64_t ret = 0, q = p;

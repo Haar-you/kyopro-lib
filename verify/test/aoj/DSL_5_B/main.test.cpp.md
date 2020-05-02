@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_5_B/main.test.cpp
+# :x: test/aoj/DSL_5_B/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#09186009013fcd05167f7dbee66a64e6">test/aoj/DSL_5_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_5_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Imos/imos_2d.cpp.html">二次元Imos法</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/Imos/imos_2d.cpp.html">二次元Imos法</a>
 
 
 ## Code
@@ -92,6 +92,7 @@ int main(){
 
 /**
  * @title 二次元Imos法
+ * @docs imos_2d.md
  */
 template <typename T> struct Imos2D{
   std::vector<std::vector<T>> vec;

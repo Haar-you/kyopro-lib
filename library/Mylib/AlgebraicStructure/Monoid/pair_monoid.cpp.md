@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/pair_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 06:18:07+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -44,6 +44,9 @@ layout: default
 #pragma once
 #include <utility>
 
+/**
+ * @docs pair_monoid.md
+ */
 template <typename M1, typename M2>
 struct PairMonoid{
   using value_type = std::pair<typename M1::value_type, typename M2::value_type>;
@@ -66,6 +69,9 @@ struct PairMonoid{
 #line 2 "Mylib/AlgebraicStructure/Monoid/pair_monoid.cpp"
 #include <utility>
 
+/**
+ * @docs pair_monoid.md
+ */
 template <typename M1, typename M2>
 struct PairMonoid{
   using value_type = std::pair<typename M1::value_type, typename M2::value_type>;

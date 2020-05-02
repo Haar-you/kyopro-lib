@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_2_C/main.test.cpp
+# :x: test/aoj/DPL_2_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ca30339b964798e13b3846ad3753f829">test/aoj/DPL_2_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_2_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_C</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DynamicProgramming/bitonic_tour.cpp.html">Bitonic tour</a>
+* :x: <a href="../../../../library/Mylib/DynamicProgramming/bitonic_tour.cpp.html">Bitonic tour</a>
 
 
 ## Code
@@ -91,7 +91,7 @@ int main(){
 
 /**
  * @title Bitonic tour
- * @see http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_C
+ * @docs bitonic_tour.md
  */
 template <typename T>
 double bitonic_tour(int n, const std::vector<T> &x, const std::vector<T> &y){

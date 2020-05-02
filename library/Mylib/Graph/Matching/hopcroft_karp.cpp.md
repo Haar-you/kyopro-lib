@@ -25,22 +25,38 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Hopcroft-Karp法
+# :x: Hopcroft-Karp法
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#65eb1c5db2b1bd726d58cf661f149e7c">Mylib/Graph/Matching</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Matching/hopcroft_karp.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://judge.yosupo.jp/submission/1096">https://judge.yosupo.jp/submission/1096</a>
+
+
+## Operations
+
+- `HopcroftKarp(L, R)`
+- `add_edge(i, j)`
+- `solve()`
+	- Time complexity $O(E \sqrt V)$
+- `get_matching()`
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp.html">test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/bipartitematching/main.test.cpp.html">test/yosupo-judge/bipartitematching/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp.html">test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/bipartitematching/main.test.cpp.html">test/yosupo-judge/bipartitematching/main.test.cpp</a>
 
 
 ## Code
@@ -56,8 +72,7 @@ layout: default
 
 /**
  * @title Hopcroft-Karp法
- * @see https://judge.yosupo.jp/submission/1096
- * @attention O(E√V)
+ * @docs hopcroft_karp.md
  */
 class HopcroftKarp{
   struct edge{
@@ -174,8 +189,7 @@ public:
 
 /**
  * @title Hopcroft-Karp法
- * @see https://judge.yosupo.jp/submission/1096
- * @attention O(E√V)
+ * @docs hopcroft_karp.md
  */
 class HopcroftKarp{
   struct edge{

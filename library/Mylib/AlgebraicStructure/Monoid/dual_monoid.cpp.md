@@ -25,21 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp
+# :x: Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 06:18:07+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
 
 
 ## Code
@@ -49,6 +49,9 @@ layout: default
 ```cpp
 #pragma once
 
+/**
+ * @docs dual_monoid.md
+ */
 template <typename Monoid>
 struct DualMonoid{
   using value_type = typename Monoid::value_type;
@@ -64,6 +67,9 @@ struct DualMonoid{
 ```cpp
 #line 2 "Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp"
 
+/**
+ * @docs dual_monoid.md
+ */
 template <typename Monoid>
 struct DualMonoid{
   using value_type = typename Monoid::value_type;

@@ -31,16 +31,29 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/mobius_function.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-09 17:11:56+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://codeforces.com/contest/1139/problem/D">https://codeforces.com/contest/1139/problem/D</a>
-* see: <a href="https://en.wikipedia.org/wiki/M%C3%B6bius_function">https://en.wikipedia.org/wiki/M%C3%B6bius_function</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [Codeforces Round #548 (Div. 2) D. Steps to One](https://codeforces.com/contest/1139/problem/D)
+
+## References
+
+- [https://en.wikipedia.org/wiki/M%C3%B6bius_function](https://en.wikipedia.org/wiki/M%C3%B6bius_function)
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="Prime/eratosthenes_sieve.cpp.html">Eratosthenesの篩</a>
+* :x: <a href="Prime/eratosthenes_sieve.cpp.html">Eratosthenesの篩</a>
 
 
 ## Code
@@ -54,8 +67,7 @@ layout: default
 
 /**
  * @title Möbius関数
- * @see https://codeforces.com/contest/1139/problem/D
- * @see https://en.wikipedia.org/wiki/M%C3%B6bius_function
+ * @docs mobius_function.md
  */
 std::vector<int> mobius_function(int n){
   std::vector<int> ret(n+1);
@@ -91,6 +103,7 @@ std::vector<int> mobius_function(int n){
 
 /**
  * @title Eratosthenesの篩
+ * @docs eratosthenes_sieve.md
  */
 template <int MAX>
 struct EratosthenesSieve{
@@ -115,8 +128,7 @@ template <int MAX> std::bitset<MAX+1> EratosthenesSieve<MAX>::is_prime;
 
 /**
  * @title Möbius関数
- * @see https://codeforces.com/contest/1139/problem/D
- * @see https://en.wikipedia.org/wiki/M%C3%B6bius_function
+ * @docs mobius_function.md
  */
 std::vector<int> mobius_function(int n){
   std::vector<int> ret(n+1);

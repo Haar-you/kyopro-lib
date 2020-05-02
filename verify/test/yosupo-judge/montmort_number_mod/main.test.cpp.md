@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/montmort_number_mod/main.test.cpp
+# :x: test/yosupo-judge/montmort_number_mod/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#910a463805ae5ab8a646512f693c1fa3">test/yosupo-judge/montmort_number_mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/montmort_number_mod/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-26 15:25:30+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/montmort_number_mod">https://judge.yosupo.jp/problem/montmort_number_mod</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/montmort_number.cpp.html">Montmort数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">実行時mod指定modint</a>
+* :x: <a href="../../../../library/Mylib/Combinatorics/montmort_number.cpp.html">Montmort数</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">実行時mod指定modint</a>
 
 
 ## Code
@@ -85,7 +85,7 @@ int main(){
 
 /**
  * @title 実行時mod指定modint
- * @attention 使用前にstatic変数Mを設定する。
+ * @docs runtime_mint.md
  */
 class RuntimeModInt{
 public:

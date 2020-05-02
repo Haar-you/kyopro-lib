@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/gcd_lcm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -46,6 +46,7 @@ layout: default
 
 /**
  * @title 最大公約数・最小公倍数
+ * @docs gcd_lcm.md
  */
 int64_t gcd(int64_t a, int64_t b){
   if(a < b) std::swap(a, b);
@@ -69,6 +70,7 @@ int64_t lcm(int64_t a, int64_t b){
 
 /**
  * @title 最大公約数・最小公倍数
+ * @docs gcd_lcm.md
  */
 int64_t gcd(int64_t a, int64_t b){
   if(a < b) std::swap(a, b);

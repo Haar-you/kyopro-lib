@@ -31,10 +31,24 @@ layout: default
 
 * category: <a href="../../../../index.html#aacfe2e228752c2f7bc46438cb1a6bd5">Mylib/DataStructure/Trie</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Trie/binary_trie.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-05 15:40:57+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://beta.atcoder.jp/contests/dwacon5th-final-open/tasks/dwacon5th_final_b">https://beta.atcoder.jp/contests/dwacon5th-final-open/tasks/dwacon5th_final_b</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [第5回 ドワンゴからの挑戦状 本選 B - XOR Spread](https://beta.atcoder.jp/contests/dwacon5th-final-open/tasks/dwacon5th_final_b)
+
+## References
+
+- [https://kazuma8128.hatenablog.com/entry/2018/05/06/022654](https://kazuma8128.hatenablog.com/entry/2018/05/06/022654)
 
 
 ## Code
@@ -47,7 +61,7 @@ layout: default
 
 /**
  * @title Binary trie
- * @see https://beta.atcoder.jp/contests/dwacon5th-final-open/tasks/dwacon5th_final_b
+ * @docs binary_trie.md
  */
 template <typename T, unsigned int B> class BinaryTrie{
 protected:
@@ -194,7 +208,7 @@ public:
 
 /**
  * @title Binary trie
- * @see https://beta.atcoder.jp/contests/dwacon5th-final-open/tasks/dwacon5th_final_b
+ * @docs binary_trie.md
  */
 template <typename T, unsigned int B> class BinaryTrie{
 protected:

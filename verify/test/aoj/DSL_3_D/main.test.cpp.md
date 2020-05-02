@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_3_D/main.test.cpp
+# :x: test/aoj/DSL_3_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#701acb68cf3d7eb2875e08c5c295c84f">test/aoj/DSL_3_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_3_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_3_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_3_D</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp.html">スライド最小値</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp.html">スライド最小値</a>
 
 
 ## Code
@@ -86,7 +86,7 @@ int main(){
 
 /**
  * @title スライド最小値
- * @see https://codeforces.com/contest/1195/submission/57565778
+ * @docs sliding_minimum.md
  */
 template <typename T>
 std::vector<T> sliding_minimum(const std::vector<T> &a, int k){

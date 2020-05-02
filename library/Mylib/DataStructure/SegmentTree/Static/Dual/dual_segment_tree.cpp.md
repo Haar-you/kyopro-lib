@@ -25,21 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 双対セグメント木
+# :x: 双対SegmentTree
 
 <a href="../../../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../../../index.html#ca42c2f4d81b13ae1e33bd4dfd939e89">Mylib/DataStructure/SegmentTree/Static/Dual</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 16:54:34+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../../../verify/test/aoj/DSL_2_D/main.test.cpp.html">test/aoj/DSL_2_D/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/aoj/DSL_2_E/main.test.cpp.html">test/aoj/DSL_2_E/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/aoj/DSL_2_D/main.test.cpp.html">test/aoj/DSL_2_D/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/aoj/DSL_2_E/main.test.cpp.html">test/aoj/DSL_2_E/main.test.cpp</a>
 
 
 ## Code
@@ -51,7 +51,8 @@ layout: default
 #include <vector>
 
 /**
- * @title 双対セグメント木
+ * @title 双対SegmentTree
+ * @docs dual_segment_tree.md
  */
 template <typename Monoid>
 class DualSegmentTree{
@@ -127,7 +128,8 @@ public:
 #include <vector>
 
 /**
- * @title 双対セグメント木
+ * @title 双対SegmentTree
+ * @docs dual_segment_tree.md
  */
 template <typename Monoid>
 class DualSegmentTree{

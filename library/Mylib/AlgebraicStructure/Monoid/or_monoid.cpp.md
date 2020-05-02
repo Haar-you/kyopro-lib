@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/or_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 06:18:07+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -49,6 +49,9 @@ layout: default
 ```cpp
 #pragma once
 
+/**
+ * @docs or_monoid.md
+ */
 template <typename T>
 struct OrMonoid{
   using value_type = T;
@@ -64,6 +67,9 @@ struct OrMonoid{
 ```cpp
 #line 2 "Mylib/AlgebraicStructure/Monoid/or_monoid.cpp"
 
+/**
+ * @docs or_monoid.md
+ */
 template <typename T>
 struct OrMonoid{
   using value_type = T;

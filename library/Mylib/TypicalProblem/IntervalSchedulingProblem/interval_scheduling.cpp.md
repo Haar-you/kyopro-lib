@@ -25,22 +25,34 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 区間スケジューリング問題
+# :x: 区間スケジューリング問題
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a1062884f064c2b3be412505b6627108">Mylib/TypicalProblem/IntervalSchedulingProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 08:41:26+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://atcoder.jp/contests/kupc2015/submissions/6604297">https://atcoder.jp/contests/kupc2015/submissions/6604297</a>
-* see: <a href="https://codeforces.com/contest/528/submission/57933292">https://codeforces.com/contest/528/submission/57933292</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [KUPC 2015 A - 東京都](https://atcoder.jp/contests/kupc2015/tasks/kupc2015_a)
+- [Codeforces Round #296 (Div. 1) B. Clique Problem](https://codeforces.com/contest/528/problem/B)
+
+## References
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/ALDS1_15_C/main.test.cpp.html">test/aoj/ALDS1_15_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/ALDS1_15_C/main.test.cpp.html">test/aoj/ALDS1_15_C/main.test.cpp</a>
 
 
 ## Code
@@ -57,9 +69,7 @@ layout: default
 
 /**
  * @title 区間スケジューリング問題
- * @see https://atcoder.jp/contests/kupc2015/submissions/6604297
- * @see https://codeforces.com/contest/528/submission/57933292
- * @attention time complexity O(N log N)
+ * @docs interval_scheduling.md
  */
 template <typename T>
 std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &left, const std::vector<T> &right){ // 区間は[a,b]
@@ -96,9 +106,7 @@ std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &left, cons
 
 /**
  * @title 区間スケジューリング問題
- * @see https://atcoder.jp/contests/kupc2015/submissions/6604297
- * @see https://codeforces.com/contest/528/submission/57933292
- * @attention time complexity O(N log N)
+ * @docs interval_scheduling.md
  */
 template <typename T>
 std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &left, const std::vector<T> &right){ // 区間は[a,b]

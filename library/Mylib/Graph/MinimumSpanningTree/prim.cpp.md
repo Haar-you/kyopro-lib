@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Prim法
+# :x: Prim法
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#cb5ed95d97b7ee8efcbdf177a47dc7b7">Mylib/Graph/MinimumSpanningTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/MinimumSpanningTree/prim.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-20 09:17:56+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_2_A/main.prim.test.cpp.html">test/aoj/GRL_2_A/main.prim.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_2_A/main.prim.test.cpp.html">test/aoj/GRL_2_A/main.prim.test.cpp</a>
 
 
 ## Code
@@ -58,6 +58,7 @@ layout: default
 
 /**
  * @title Prim法
+ * @docs prim.md
  */
 template <typename T>
 std::vector<Edge<T>> prim(const Graph<T> &graph){
@@ -102,6 +103,7 @@ std::vector<Edge<T>> prim(const Graph<T> &graph){
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:
@@ -127,6 +129,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 
 /**
  * @title Prim法
+ * @docs prim.md
  */
 template <typename T>
 std::vector<Edge<T>> prim(const Graph<T> &graph){

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#64e19fd3e4193a1559ce21d32ec43623">test/aoj/2842</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2842/main.segment_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-17 00:08:28+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_2d.cpp.html">2Dセグメント木</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_2d.cpp.html">SegmentTree (2D)</a>
 
 
 ## Code
@@ -122,6 +122,9 @@ int main(){
 
 #line 2 "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 
+/**
+ * @docs sum_monoid.md
+ */
 template <typename T>
 struct SumMonoid{
   using value_type = T;
@@ -132,8 +135,8 @@ struct SumMonoid{
 #include <vector>
 
 /**
- * @title 2Dセグメント木
- * @see https://codeforces.com/contest/1301/submission/71853921
+ * @title SegmentTree (2D)
+ * @docs segment_tree_2d.md
  */
 template <typename Monoid> class SegmentTree2D{
   using value_type = typename Monoid::value_type;

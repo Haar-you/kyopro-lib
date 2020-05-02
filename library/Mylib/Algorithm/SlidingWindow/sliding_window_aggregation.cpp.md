@@ -25,21 +25,33 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Sliding Window Aggregation
+# :x: Sliding Window Aggregation
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1d0203f9a0b34121f2fb0bb17b094d0f">Mylib/Algorithm/SlidingWindow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 18:35:49+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://scrapbox.io/data-structures/Sliding_Window_Aggregation">https://scrapbox.io/data-structures/Sliding_Window_Aggregation</a>
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References
+
+- [https://scrapbox.io/data-structures/Sliding_Window_Aggregation](https://scrapbox.io/data-structures/Sliding_Window_Aggregation)
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
 
 
 ## Code
@@ -54,7 +66,7 @@ layout: default
 
 /**
  * @title Sliding Window Aggregation
- * @see https://scrapbox.io/data-structures/Sliding_Window_Aggregation
+ * @docs sliding_window_aggregation.md
  */
 template <typename T, typename F>
 class SlidingWindowAggregation{
@@ -122,7 +134,7 @@ public:
 
 /**
  * @title Sliding Window Aggregation
- * @see https://scrapbox.io/data-structures/Sliding_Window_Aggregation
+ * @docs sliding_window_aggregation.md
  */
 template <typename T, typename F>
 class SlidingWindowAggregation{

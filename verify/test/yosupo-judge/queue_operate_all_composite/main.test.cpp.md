@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/queue_operate_all_composite/main.test.cpp
+# :x: test/yosupo-judge/queue_operate_all_composite/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#c8d31b5139983c6742fe36acb5e1ac81">test/yosupo-judge/queue_operate_all_composite</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/queue_operate_all_composite/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-25 21:56:55+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/queue_operate_all_composite">https://judge.yosupo.jp/problem/queue_operate_all_composite</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp.html">Sliding Window Aggregation</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp.html">Sliding Window Aggregation</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -109,6 +109,7 @@ int main(){
 
 /**
  * @title modint
+ * @docs mint.md
  */
 template <uint32_t M> class ModInt{
 public:
@@ -196,7 +197,7 @@ public:
 
 /**
  * @title Sliding Window Aggregation
- * @see https://scrapbox.io/data-structures/Sliding_Window_Aggregation
+ * @docs sliding_window_aggregation.md
  */
 template <typename T, typename F>
 class SlidingWindowAggregation{

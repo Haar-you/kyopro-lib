@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b58b3fdb1287502881e9117a37552614">Mylib/LinearAlgebra/Square</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/Square/square_matrix_const_size_semiring.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-02 04:55:54+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -46,6 +46,9 @@ layout: default
 #include <initializer_list>
 #include <utility>
 
+/**
+ * @docs square_matrix_const_size_semiring.md
+ */
 template <typename Semiring, int N> struct SquareMatrix{
   using value_type = typename Semiring::value_type;
   
@@ -129,6 +132,9 @@ template <typename Semiring, int N> struct SquareMatrix{
 #include <initializer_list>
 #include <utility>
 
+/**
+ * @docs square_matrix_const_size_semiring.md
+ */
 template <typename Semiring, int N> struct SquareMatrix{
   using value_type = typename Semiring::value_type;
   

@@ -25,21 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 円同士の交差
+# :x: 円同士の交差
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/intersect_circles.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-04 13:11:51+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
-* see: <a href="https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A">https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Required by
@@ -49,8 +48,8 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_A/main.test.cpp.html">test/aoj/CGL_7_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_E/main.test.cpp.html">test/aoj/CGL_7_E/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_7_A/main.test.cpp.html">test/aoj/CGL_7_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_7_E/main.test.cpp.html">test/aoj/CGL_7_E/main.test.cpp</a>
 
 
 ## Code
@@ -65,7 +64,7 @@ layout: default
 
 /**
  * @title 円同士の交差
- * @see https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A
+ * @docs intersect_circles.md
  */
 namespace intersect_circles{
   enum Status{
@@ -133,6 +132,7 @@ namespace intersect_circles{
 
 /**
  * @title 幾何基本セット
+ * @docs geometry_template.md
  */
 template <typename T> struct Vec{
   using U = typename T::value_type;
@@ -219,7 +219,7 @@ template <typename T> struct Circle{
 
 /**
  * @title 円同士の交差
- * @see https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A
+ * @docs intersect_circles.md
  */
 namespace intersect_circles{
   enum Status{

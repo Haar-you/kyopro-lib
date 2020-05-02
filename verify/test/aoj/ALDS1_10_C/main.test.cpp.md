@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#6691093001380fa1883257c26243406e">test/aoj/ALDS1_10_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_10_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-09 17:21:47+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_10_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_10_C</a>
@@ -84,7 +84,7 @@ int main(){
 
 /**
  * @title 最長共通部分列
- * @attention 時間計算量 O(nm)
+ * @docs longest_common_subsequence.md
  */
 template <typename Container, typename T = typename Container::value_type>
 int lcs(const Container &a, const Container &b){

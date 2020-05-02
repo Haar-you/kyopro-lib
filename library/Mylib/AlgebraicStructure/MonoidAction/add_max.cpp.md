@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/AlgebraicStructure/MonoidAction/add_max.cpp
+# :x: Mylib/AlgebraicStructure/MonoidAction/add_max.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/add_max.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-03-31 07:44:02+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../Monoid/max_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/max_monoid.cpp</a>
-* :heavy_check_mark: <a href="../Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :x: <a href="../Monoid/max_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/max_monoid.cpp</a>
+* :question: <a href="../Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/631/main.test.cpp.html">test/yukicoder/631/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/631/main.test.cpp.html">test/yukicoder/631/main.test.cpp</a>
 
 
 ## Code
@@ -56,6 +56,9 @@ layout: default
 #include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/max_monoid.cpp"
 
+/**
+ * @docs add_max.md
+ */
 template <typename T, typename U>
 struct AddMax{
   using monoid_get = MaxMonoid<T>;
@@ -76,6 +79,9 @@ struct AddMax{
 ```cpp
 #line 2 "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 
+/**
+ * @docs sum_monoid.md
+ */
 template <typename T>
 struct SumMonoid{
   using value_type = T;
@@ -85,6 +91,9 @@ struct SumMonoid{
 #line 2 "Mylib/AlgebraicStructure/Monoid/max_monoid.cpp"
 #include <algorithm>
 
+/**
+ * @docs max_monoid.md
+ */
 template <typename T>
 struct MaxMonoid{
   using value_type = T;
@@ -93,6 +102,9 @@ struct MaxMonoid{
 };
 #line 4 "Mylib/AlgebraicStructure/MonoidAction/add_max.cpp"
 
+/**
+ * @docs add_max.md
+ */
 template <typename T, typename U>
 struct AddMax{
   using monoid_get = MaxMonoid<T>;

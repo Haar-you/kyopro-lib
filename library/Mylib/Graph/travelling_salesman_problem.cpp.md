@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 巡回セールスマン問題
+# :x: 巡回セールスマン問題
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/travelling_salesman_problem.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -57,12 +57,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_2_A/main.test.cpp.html">test/aoj/DPL_2_A/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/DPL_2_A/main.test.cpp.html">test/aoj/DPL_2_A/main.test.cpp</a>
 
 
 ## Code
@@ -130,6 +130,7 @@ std::optional<Cost> travelling_salesman_problem(const Graph<Cost> &g, int src){
 
 /**
  * @title グラフ用テンプレート
+ * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
 public:

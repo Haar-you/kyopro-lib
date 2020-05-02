@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 行列累乗
+# :question: 行列累乗
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b58b3fdb1287502881e9117a37552614">Mylib/LinearAlgebra/Square</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/Square/power.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-03 01:42:28+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 
@@ -39,7 +39,7 @@ layout: default
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/1327/main.test.cpp.html">test/aoj/1327/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/194/main.test.cpp.html">test/yukicoder/194/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/194/main.test.cpp.html">test/yukicoder/194/main.test.cpp</a>
 
 
 ## Code
@@ -51,6 +51,7 @@ layout: default
 
 /**
  * @title 行列累乗
+ * @docs power.md
  */
 template <typename M, typename T = typename M::value_type>
 M power(M a, uint64_t p){
@@ -77,6 +78,7 @@ M power(M a, uint64_t p){
 
 /**
  * @title 行列累乗
+ * @docs power.md
  */
 template <typename M, typename T = typename M::value_type>
 M power(M a, uint64_t p){

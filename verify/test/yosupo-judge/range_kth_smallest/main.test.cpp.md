@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/range_kth_smallest/main.test.cpp
+# :x: test/yosupo-judge/range_kth_smallest/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0b6beed70553311fed26bd78c31ce008">test/yosupo-judge/range_kth_smallest</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/range_kth_smallest/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-26 17:51:10+09:00
+    - Last commit date: 2020-05-02 14:18:42+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_kth_smallest">https://judge.yosupo.jp/problem/range_kth_smallest</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">簡潔辞書</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Wavelet matrix</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">簡潔辞書</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Wavelet matrix</a>
 
 
 ## Code
@@ -93,6 +93,7 @@ int main(){
 
 /**
  * @title 簡潔辞書
+ * @docs succinct_dictionary.md
  */
 
 struct SuccinctDict{
