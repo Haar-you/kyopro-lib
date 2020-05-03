@@ -2,9 +2,9 @@
 
 - `StarrySkyTreeMax(n)`
 - `update(l, r, val)`
-	- `data[l] ~ data[r-1]`に`val`を足す。
+	- `i in [l, r)`について$a_i \leftarrow a_i + v$に更新する。
 - `get(l, r)`
-	- $\max_{l \le i \lt r}$`data[i]`を返す。
+	- $\max_{l \le i \lt r} a_i$を返す。
 - `init_with_vector(a)`
 
 ## Requirements
