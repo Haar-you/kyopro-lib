@@ -40,7 +40,7 @@ public:
   }
 
   inline value_type get(int l, int r) const { // [l, r)
-    return AbelianGroup::inv(get(r-1), get(l-1));
+    return AbelianGroup::op(get(r-1), AbelianGroup::inv(get(l-1)));
   }
   
   inline value_type at(int x) const {

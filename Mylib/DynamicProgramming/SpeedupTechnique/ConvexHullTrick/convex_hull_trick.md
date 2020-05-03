@@ -11,6 +11,7 @@
 - `Comparator = std::less<T>`の場合
 	- `add(T a, T b)`
 		- `a`は単調増加
+		- 直線`f(x) = a*x + b`を追加する。
 	- `query(T x)`
 		- `x`は単調増加
 		- `f(x)`の最大値を得る。

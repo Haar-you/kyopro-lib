@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title Bell数の列挙
+ * @title Bell数 (列挙)
  * @docs bell_number_table.md
  */
 template <typename T>

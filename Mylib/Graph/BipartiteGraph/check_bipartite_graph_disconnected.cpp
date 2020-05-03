@@ -6,7 +6,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 非連結グラフの二部グラフ判定
+ * @title 二部グラフ判定 (非連結グラフ)
  * @docs check_bipartite_graph_disconnected.md
  */
 template <typename T> struct CheckBipartiteGraph{

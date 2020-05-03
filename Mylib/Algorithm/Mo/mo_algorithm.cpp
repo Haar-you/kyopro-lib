@@ -4,7 +4,7 @@
 #include <cassert>
 
 /**
- * @title Moのアルゴリズム
+ * @title Mo's algorithm
  * @docs mo_algorithm.md
  */
 template <typename F, typename G, typename H>

@@ -2,7 +2,7 @@
 
 - `fast_zeta_transform_subset(f[N], op = std::plus())`
 	- `N`は2の累乗
-	- $f(S) = \sum_{T\subseteq S} g(T)$
+	- $g(S) = \sum_{T \subseteq S} f(T)$
 
 ## Requirements
 

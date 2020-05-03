@@ -88,6 +88,6 @@ public:
   inline value_type get(int64_t x1, int64_t y1, int64_t x2, int64_t y2) const {
     int l = std::lower_bound(c_xs.begin(), c_xs.end(), x1) - c_xs.begin();
     int r = std::lower_bound(c_xs.begin(), c_xs.end(), x2) - c_xs.begin();
-    return AbelianGroup::inv(get(r, y1, y2), get(l, y1, y2));
+    return AbelianGroup::op(get(r, y1, y2), AbelianGroup::inv(get(l, y1, y2)));
   }
 };

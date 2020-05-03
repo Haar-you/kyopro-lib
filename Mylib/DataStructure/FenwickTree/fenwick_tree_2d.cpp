@@ -31,7 +31,7 @@ private:
   }
   
   inline value_type get_w(int l, int r, int y) const {
-    return AbelianGroup::inv(get_w(r-1, y), get_w(l-1, y));
+    return AbelianGroup::op(get_w(r-1, y), AbelianGroup::inv(get_w(l-1, y)));
   }
 
   inline value_type get(int x1, int x2, int y) const {
@@ -46,7 +46,7 @@ private:
   
 public:
   value_type get(int x1, int y1, int x2, int y2) const { // [(x1,y1),(x2,y2))
-    return AbelianGroup::inv(get(x1, x2, y2-1), get(x1, x2, y1-1));
+    return AbelianGroup::op(get(x1, x2, y2-1), AbelianGroup::inv(get(x1, x2, y1-1)));
   }
      
   value_type at(int x, int y) const {

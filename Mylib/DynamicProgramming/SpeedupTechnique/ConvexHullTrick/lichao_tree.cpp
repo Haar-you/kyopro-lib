@@ -5,7 +5,7 @@
 #include <optional>
 
 /**
- * @title Li Chao tree
+ * @title LiChaoTree
  * @docs lichao_tree.md
  */
 template <typename T, typename Comparator>

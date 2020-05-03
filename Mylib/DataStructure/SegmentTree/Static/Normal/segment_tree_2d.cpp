@@ -53,9 +53,9 @@ public:
 
     return ret;
   }
-     
+  
   value_type at(int x, int y) const {
-    return get(x, y, x+1, y+1);
+    return data[w / 2 + x][h / 2 + y];
   }
      
   void update(int x, int y, const value_type &val){
