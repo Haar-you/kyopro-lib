@@ -5,19 +5,23 @@
 #include "Mylib/Number/Mint/runtime_mint.cpp"
 #include "Mylib/LinearAlgebra/Square/square_matrix.cpp"
 #include "Mylib/LinearAlgebra/Square/power.cpp"
-     
+
+
 using mint = RuntimeModInt;
-using M = SquareMatrix<mint>;
+
+struct tag{};
+using M = SquareMatrix<mint, tag>;
      
 int main(){
   int n, m, a, b, c, t;
   while(std::cin >> n >> m >> a >> b >> c >> t, n){
     mint::M = m;
+    M::N = n;
      
     std::vector<mint> s(n);
     for(int i = 0; i < n; ++i) std::cin >> s[i];
      
-    M mat(n);
+    M mat;
      
     for(int i = 0; i < n; ++i){
       if(i-1 >= 0) mat[i][i-1] = a;

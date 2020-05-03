@@ -6,22 +6,20 @@
  * @title 正方行列
  * @docs square_matrix.md
  */
-template <typename T> struct SquareMatrix{
+template <typename T, class Tag> struct SquareMatrix{
   using value_type = T;
   
-  int N;
+  static int N;
   std::vector<std::vector<T>> matrix;
   
-  SquareMatrix(): N(0){}
-  SquareMatrix(int N): N(N), matrix(N, std::vector<T>(N)){}
-  SquareMatrix(int N, const T &val): N(N), matrix(N, std::vector<T>(N, val)){}
-  SquareMatrix(const std::vector<std::vector<T>> &matrix): N(matrix.size()), matrix(matrix){}
+  SquareMatrix(): matrix(N, std::vector<T>(N)){}
+  SquareMatrix(const T &val): matrix(N, std::vector<T>(N, val)){}
+  SquareMatrix(const std::vector<std::vector<T>> &matrix): matrix(matrix){}
 
-  bool operator==(const SquareMatrix<T> &val) const {return matrix == val.matrix;}
-  bool operator!=(const SquareMatrix<T> &val) const {return !(*this == val);}
+  bool operator==(const SquareMatrix &val) const {return matrix == val.matrix;}
+  bool operator!=(const SquareMatrix &val) const {return !(*this == val);}
   
   auto& operator=(const SquareMatrix &val){
-    this->N = val.N;
     this->matrix = val.matrix;
     return *this;
   }
@@ -47,8 +45,8 @@ template <typename T> struct SquareMatrix{
   inline auto& operator[](size_t i){return matrix[i];}
   inline int size() const {return N;}
   
-  static auto make_unit(int N){
-    SquareMatrix ret(N);
+  static auto make_unit(){
+    SquareMatrix ret;
     for(int i = 0; i < N; ++i) ret[i][i] = 1;
     return ret;
   }
@@ -57,3 +55,5 @@ template <typename T> struct SquareMatrix{
   friend auto operator-(const SquareMatrix &a, const SquareMatrix &b){auto ret = a; ret -= b; return ret;}
   friend auto operator*(const SquareMatrix &a, const SquareMatrix &b){auto ret = a; ret *= b; return ret;}
 };
+
+template <typename T, class Tag> int SquareMatrix<T,Tag>::N;

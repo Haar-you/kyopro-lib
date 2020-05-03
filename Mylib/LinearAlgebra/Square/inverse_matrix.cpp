@@ -9,7 +9,7 @@ template <typename M, typename T = typename M::value_type>
 bool inverse_matrix(M m, M &ret){
   const int N = m.size();
 
-  ret = M::make_unit(N);
+  ret = M::make_unit();
 
   for(int i = 0; i < N; ++i){
     int p = i;

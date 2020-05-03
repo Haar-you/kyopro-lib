@@ -57,7 +57,7 @@ template <typename T, int N> struct SquareMatrixConst{
   inline auto& operator[](size_t i){return matrix[i];}
   inline int size() const {return N;}
   
-  static auto make_unit(int = 0){
+  static auto make_unit(){
     SquareMatrixConst ret;
     for(size_t i = 0; i < N; ++i) ret[i][i] = 1;
     return ret;

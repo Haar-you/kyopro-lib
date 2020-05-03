@@ -5,12 +5,16 @@
 #include "Mylib/LinearAlgebra/Square/determinant.cpp"
 
 using mint = ModInt<998244353>;
-using Mat = SquareMatrix<mint>;
+
+struct tag{};
+using Mat = SquareMatrix<mint, tag>;
 
 int main(){
   int N; scanf("%d", &N);
 
-  Mat m(N);
+  Mat::N = N;
+
+  Mat m;
 
   for(int i = 0; i < N; ++i){
     for(int j = 0; j < N; ++j){

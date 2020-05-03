@@ -12,10 +12,12 @@
 #include "Mylib/LinearAlgebra/Square/power.cpp"
 
 using mint = ModInt<1000000007>;
-using M = SquareMatrix<mint>;
+
+struct tag{};
+using M = SquareMatrix<mint, tag>;
 
 std::pair<mint,mint> solve1(int64_t N, int64_t K, std::vector<int> A){
-  M m(N);
+  M m;
 
   for(int i = 0; i < N; ++i) m[0][i] = 1;
   for(int i = 0; i < N-1; ++i) m[i+1][i] = 1;
@@ -32,12 +34,12 @@ std::pair<mint,mint> solve1(int64_t N, int64_t K, std::vector<int> A){
   mint s = std::accumulate(A.begin(), A.end(), mint(0));
   
   {
-    auto t = M::make_unit(N) - m;
+    auto t = M::make_unit() - m;
     M c;
     inverse_matrix(t, c);
 
-    auto temp = (M::make_unit(N) - power(m, K-N+1)) * c;
-    temp -= M::make_unit(N);
+    auto temp = (M::make_unit() - power(m, K-N+1)) * c;
+    temp -= M::make_unit();
 
     for(int i = 0; i < N; ++i) s += temp[0][i] * A[i];
   }
@@ -71,6 +73,8 @@ std::pair<mint,mint> solve2(int64_t N, int64_t K, std::vector<int> A){
 
 int main(){
   int64_t N, K; std::cin >> N >> K;
+
+  M::N = N;
 
   std::vector<int> A(N);
   for(auto &x : A) std::cin >> x;
