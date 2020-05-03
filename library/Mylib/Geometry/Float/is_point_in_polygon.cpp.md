@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: 点・多角形の包含関係
+# :heavy_check_mark: 点・多角形の包含関係
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,13 +38,13 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="ccw.cpp.html">clockwise-counterclockwise判定</a>
-* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :heavy_check_mark: <a href="ccw.cpp.html">clockwise-counterclockwise判定</a>
+* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/CGL_3_C/main.test.cpp.html">test/aoj/CGL_3_C/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_3_C/main.test.cpp.html">test/aoj/CGL_3_C/main.test.cpp</a>
 
 
 ## Code

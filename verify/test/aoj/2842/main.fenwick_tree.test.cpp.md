@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#64e19fd3e4193a1559ce21d32ec43623">test/aoj/2842</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2842/main.fenwick_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-03 16:28:32+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842</a>
@@ -131,7 +131,7 @@ struct SumGroup{
 
   static value_type id(){return 0;}
   static value_type op(const value_type &a, const value_type &b){return a + b;}
-  static value_type inv(const value_type &a, const value_type &b){return a - b;}
+  static value_type inv(const value_type &a){return -a;}
 };
 #line 2 "Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp"
 #include <vector>
@@ -166,7 +166,7 @@ private:
   }
   
   inline value_type get_w(int l, int r, int y) const {
-    return AbelianGroup::inv(get_w(r-1, y), get_w(l-1, y));
+    return AbelianGroup::op(get_w(r-1, y), AbelianGroup::inv(get_w(l-1, y)));
   }
 
   inline value_type get(int x1, int x2, int y) const {
@@ -181,7 +181,7 @@ private:
   
 public:
   value_type get(int x1, int y1, int x2, int y2) const { // [(x1,y1),(x2,y2))
-    return AbelianGroup::inv(get(x1, x2, y2-1), get(x1, x2, y1-1));
+    return AbelianGroup::op(get(x1, x2, y2-1), AbelianGroup::inv(get(x1, x2, y1-1)));
   }
      
   value_type at(int x, int y) const {

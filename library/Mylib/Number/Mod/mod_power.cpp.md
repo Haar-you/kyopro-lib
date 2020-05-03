@@ -36,6 +36,23 @@ layout: default
 
 
 
+## Operations
+
+- `power(n, p, m)`
+	- $n ^ p \pmod m$を求める。
+	- Time complexity $O(\log p)$
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References
+ 
+
+
+
 ## Required by
 
 * :heavy_check_mark: <a href="../../Graph/Coloring/chromatic_number.cpp.html">グラフ頂点彩色数</a>

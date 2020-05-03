@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a69917d4d187b863fce67c7534f3be6a">test/yukicoder/194</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/194/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-03 20:03:33+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/194">https://yukicoder.me/problems/no/194</a>
@@ -64,10 +64,12 @@ layout: default
 #include "Mylib/LinearAlgebra/Square/power.cpp"
 
 using mint = ModInt<1000000007>;
-using M = SquareMatrix<mint>;
+
+struct tag{};
+using M = SquareMatrix<mint, tag>;
 
 std::pair<mint,mint> solve1(int64_t N, int64_t K, std::vector<int> A){
-  M m(N);
+  M m;
 
   for(int i = 0; i < N; ++i) m[0][i] = 1;
   for(int i = 0; i < N-1; ++i) m[i+1][i] = 1;
@@ -84,12 +86,12 @@ std::pair<mint,mint> solve1(int64_t N, int64_t K, std::vector<int> A){
   mint s = std::accumulate(A.begin(), A.end(), mint(0));
   
   {
-    auto t = M::make_unit(N) - m;
+    auto t = M::make_unit() - m;
     M c;
     inverse_matrix(t, c);
 
-    auto temp = (M::make_unit(N) - power(m, K-N+1)) * c;
-    temp -= M::make_unit(N);
+    auto temp = (M::make_unit() - power(m, K-N+1)) * c;
+    temp -= M::make_unit();
 
     for(int i = 0; i < N; ++i) s += temp[0][i] * A[i];
   }
@@ -123,6 +125,8 @@ std::pair<mint,mint> solve2(int64_t N, int64_t K, std::vector<int> A){
 
 int main(){
   int64_t N, K; std::cin >> N >> K;
+
+  M::N = N;
 
   std::vector<int> A(N);
   for(auto &x : A) std::cin >> x;
@@ -240,22 +244,20 @@ public:
  * @title 正方行列
  * @docs square_matrix.md
  */
-template <typename T> struct SquareMatrix{
+template <typename T, class Tag> struct SquareMatrix{
   using value_type = T;
   
-  int N;
+  static int N;
   std::vector<std::vector<T>> matrix;
   
-  SquareMatrix(): N(0){}
-  SquareMatrix(int N): N(N), matrix(N, std::vector<T>(N)){}
-  SquareMatrix(int N, const T &val): N(N), matrix(N, std::vector<T>(N, val)){}
-  SquareMatrix(const std::vector<std::vector<T>> &matrix): N(matrix.size()), matrix(matrix){}
+  SquareMatrix(): matrix(N, std::vector<T>(N)){}
+  SquareMatrix(const T &val): matrix(N, std::vector<T>(N, val)){}
+  SquareMatrix(const std::vector<std::vector<T>> &matrix): matrix(matrix){}
 
-  bool operator==(const SquareMatrix<T> &val) const {return matrix == val.matrix;}
-  bool operator!=(const SquareMatrix<T> &val) const {return !(*this == val);}
+  bool operator==(const SquareMatrix &val) const {return matrix == val.matrix;}
+  bool operator!=(const SquareMatrix &val) const {return !(*this == val);}
   
   auto& operator=(const SquareMatrix &val){
-    this->N = val.N;
     this->matrix = val.matrix;
     return *this;
   }
@@ -281,8 +283,8 @@ template <typename T> struct SquareMatrix{
   inline auto& operator[](size_t i){return matrix[i];}
   inline int size() const {return N;}
   
-  static auto make_unit(int N){
-    SquareMatrix ret(N);
+  static auto make_unit(){
+    SquareMatrix ret;
     for(int i = 0; i < N; ++i) ret[i][i] = 1;
     return ret;
   }
@@ -291,6 +293,8 @@ template <typename T> struct SquareMatrix{
   friend auto operator-(const SquareMatrix &a, const SquareMatrix &b){auto ret = a; ret -= b; return ret;}
   friend auto operator*(const SquareMatrix &a, const SquareMatrix &b){auto ret = a; ret *= b; return ret;}
 };
+
+template <typename T, class Tag> int SquareMatrix<T,Tag>::N;
 #line 3 "Mylib/LinearAlgebra/Square/inverse_matrix.cpp"
 
 /**
@@ -301,7 +305,7 @@ template <typename M, typename T = typename M::value_type>
 bool inverse_matrix(M m, M &ret){
   const int N = m.size();
 
-  ret = M::make_unit(N);
+  ret = M::make_unit();
 
   for(int i = 0; i < N; ++i){
     int p = i;
@@ -346,9 +350,7 @@ bool inverse_matrix(M m, M &ret){
  */
 template <typename M, typename T = typename M::value_type>
 M power(M a, uint64_t p){
-  const int N = a.size();
-
-  if(p == 0) return M::make_unit(N);
+  if(p == 0) return M::make_unit();
   if(p == 1) return a;
 
   M temp = power(a, p >> 1);
@@ -361,10 +363,12 @@ M power(M a, uint64_t p){
 #line 13 "test/yukicoder/194/main.test.cpp"
 
 using mint = ModInt<1000000007>;
-using M = SquareMatrix<mint>;
+
+struct tag{};
+using M = SquareMatrix<mint, tag>;
 
 std::pair<mint,mint> solve1(int64_t N, int64_t K, std::vector<int> A){
-  M m(N);
+  M m;
 
   for(int i = 0; i < N; ++i) m[0][i] = 1;
   for(int i = 0; i < N-1; ++i) m[i+1][i] = 1;
@@ -381,12 +385,12 @@ std::pair<mint,mint> solve1(int64_t N, int64_t K, std::vector<int> A){
   mint s = std::accumulate(A.begin(), A.end(), mint(0));
   
   {
-    auto t = M::make_unit(N) - m;
+    auto t = M::make_unit() - m;
     M c;
     inverse_matrix(t, c);
 
-    auto temp = (M::make_unit(N) - power(m, K-N+1)) * c;
-    temp -= M::make_unit(N);
+    auto temp = (M::make_unit() - power(m, K-N+1)) * c;
+    temp -= M::make_unit();
 
     for(int i = 0; i < N; ++i) s += temp[0][i] * A[i];
   }
@@ -420,6 +424,8 @@ std::pair<mint,mint> solve2(int64_t N, int64_t K, std::vector<int> A){
 
 int main(){
   int64_t N, K; std::cin >> N >> K;
+
+  M::N = N;
 
   std::vector<int> A(N);
   for(auto &x : A) std::cin >> x;

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#9102555d140c20ca7196c4db584ea7b6">test/yosupo-judge/rectangle_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-03 16:28:32+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/rectangle_sum">https://judge.yosupo.jp/problem/rectangle_sum</a>
@@ -110,7 +110,7 @@ struct SumGroup{
 
   static value_type id(){return 0;}
   static value_type op(const value_type &a, const value_type &b){return a + b;}
-  static value_type inv(const value_type &a, const value_type &b){return a - b;}
+  static value_type inv(const value_type &a){return -a;}
 };
 #line 3 "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
 
@@ -153,7 +153,7 @@ public:
   }
 
   inline value_type get(int l, int r) const { // [l, r)
-    return AbelianGroup::inv(get(r-1), get(l-1));
+    return AbelianGroup::op(get(r-1), AbelianGroup::inv(get(l-1)));
   }
   
   inline value_type at(int x) const {
@@ -249,7 +249,7 @@ public:
   inline value_type get(int64_t x1, int64_t y1, int64_t x2, int64_t y2) const {
     int l = std::lower_bound(c_xs.begin(), c_xs.end(), x1) - c_xs.begin();
     int r = std::lower_bound(c_xs.begin(), c_xs.end(), x2) - c_xs.begin();
-    return AbelianGroup::inv(get(r, y1, y2), get(l, y1, y2));
+    return AbelianGroup::op(get(r, y1, y2), AbelianGroup::inv(get(l, y1, y2)));
   }
 };
 #line 8 "test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp"

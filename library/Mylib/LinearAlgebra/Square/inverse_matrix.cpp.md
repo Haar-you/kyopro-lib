@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b58b3fdb1287502881e9117a37552614">Mylib/LinearAlgebra/Square</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/Square/inverse_matrix.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-03 20:03:33+09:00
 
 
 
@@ -57,7 +57,7 @@ template <typename M, typename T = typename M::value_type>
 bool inverse_matrix(M m, M &ret){
   const int N = m.size();
 
-  ret = M::make_unit(N);
+  ret = M::make_unit();
 
   for(int i = 0; i < N; ++i){
     int p = i;
@@ -112,7 +112,7 @@ template <typename M, typename T = typename M::value_type>
 bool inverse_matrix(M m, M &ret){
   const int N = m.size();
 
-  ret = M::make_unit(N);
+  ret = M::make_unit();
 
   for(int i = 0; i < N; ++i){
     int p = i;

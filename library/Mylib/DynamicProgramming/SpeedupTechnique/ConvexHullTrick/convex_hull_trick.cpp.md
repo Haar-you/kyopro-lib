@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../../assets/css/copy-button.css" />
 
 
-# :warning: Convex Hull Trick
+# :warning: ConvexHullTrick
 
 <a href="../../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../../index.html#7e10cb4eef4fe46e217959a10aea6a72">Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick/convex_hull_trick.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-05-03 16:28:32+09:00
 
 
 
@@ -49,6 +49,7 @@ layout: default
 - `Comparator = std::less<T>`の場合
 	- `add(T a, T b)`
 		- `a`は単調増加
+		- 直線`f(x) = a*x + b`を追加する。
 	- `query(T x)`
 		- `x`は単調増加
 		- `f(x)`の最大値を得る。
@@ -75,7 +76,7 @@ layout: default
 #include <functional>
 
 /**
- * @title Convex Hull Trick
+ * @title ConvexHullTrick
  * @docs convex_hull_trick.md
  */
 template <typename T, typename Comparator = std::greater<T>>
@@ -129,7 +130,7 @@ public:
 #include <functional>
 
 /**
- * @title Convex Hull Trick
+ * @title ConvexHullTrick
  * @docs convex_hull_trick.md
  */
 template <typename T, typename Comparator = std::greater<T>>

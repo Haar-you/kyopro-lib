@@ -31,9 +31,35 @@ layout: default
 
 * category: <a href="../../../../../../index.html#dd4a4f8515bcc75e971952e726133342">Mylib/DataStructure/SegmentTree/Static/Normal</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_2d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-03 16:28:32+09:00
 
 
+
+
+## Operations
+
+- `SegmentTree2D(w, h)`
+	- Space complexity $O(wh)$
+- `at(x, y)`
+	- $a_{x, y}$を返す。
+    - Time complexity $O(1)$
+- `get(x1, y1, x2, y2)`
+	- $a_{x_1, y_1} \circ a_{x_1+1, y_1} \circ a_{x_1+2, y_1} \circ \ldots \circ a_{x_1, y_1+1} \circ \ldots \circ a_{x_2-1, y_2-1}$を返す。
+	- Time complexity $O(\log w \log h)$
+- `update(x, y, value)`
+	- $a_{x, y}$を`value`に変更する。
+	- Time complexity $O(\log w \log h)$
+
+## Requirements
+
+- `Monoid`は**可換性**・結合律を満たす演算`op`と単位元`id`をもつ。
+
+## Notes
+
+## Problems
+
+## References
+ 
 
 
 ## Verified with
@@ -101,9 +127,9 @@ public:
 
     return ret;
   }
-     
+  
   value_type at(int x, int y) const {
-    return get(x, y, x+1, y+1);
+    return data[w / 2 + x][h / 2 + y];
   }
      
   void update(int x, int y, const value_type &val){
@@ -185,9 +211,9 @@ public:
 
     return ret;
   }
-     
+  
   value_type at(int x, int y) const {
-    return get(x, y, x+1, y+1);
+    return data[w / 2 + x][h / 2 + y];
   }
      
   void update(int x, int y, const value_type &val){

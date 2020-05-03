@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: 直線と線分の交差
+# :heavy_check_mark: 直線と線分の交差
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,17 +38,17 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Required by
 
-* :x: <a href="convex_cut.cpp.html">凸多角形の切断</a>
+* :heavy_check_mark: <a href="convex_cut.cpp.html">凸多角形の切断</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
 
 
 ## Code

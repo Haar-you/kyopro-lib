@@ -31,9 +31,34 @@ layout: default
 
 * category: <a href="../../../../index.html#2f58e2c328298747e7665b6f6b5791ad">Mylib/DataStructure/FenwickTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-03 16:28:32+09:00
 
 
+
+
+## Operations
+
+- `FenwickTree2D(w, h)`
+- `get(x1, y1, x2, y2)`
+	- $\sum_{x_1 \le i \lt x_2} \sum_{y_1 \le j \lt y_2} a_{i, j}$を返す。
+	- Time complexity $O(\log w \log h)$
+- `at(x, y)`
+	- $a_{x, y}$を返す。
+	- Time complexity $O(\log w \log h)$
+- `update(x, y, v)`
+	- $a_{x, y} \leftarrow a_{x, y} + v$で更新する。
+	- Time complexity $O(\log w \log h)$
+
+## Requirements
+
+- `AbelianGroup`は可換性・結合性を満たす演算`op`と単位元`id`と逆元を与える関数`inv`をもつ。
+
+## Notes
+
+## Problems
+
+## References
+ 
 
 
 ## Verified with
@@ -79,7 +104,7 @@ private:
   }
   
   inline value_type get_w(int l, int r, int y) const {
-    return AbelianGroup::inv(get_w(r-1, y), get_w(l-1, y));
+    return AbelianGroup::op(get_w(r-1, y), AbelianGroup::inv(get_w(l-1, y)));
   }
 
   inline value_type get(int x1, int x2, int y) const {
@@ -94,7 +119,7 @@ private:
   
 public:
   value_type get(int x1, int y1, int x2, int y2) const { // [(x1,y1),(x2,y2))
-    return AbelianGroup::inv(get(x1, x2, y2-1), get(x1, x2, y1-1));
+    return AbelianGroup::op(get(x1, x2, y2-1), AbelianGroup::inv(get(x1, x2, y1-1)));
   }
      
   value_type at(int x, int y) const {
@@ -152,7 +177,7 @@ private:
   }
   
   inline value_type get_w(int l, int r, int y) const {
-    return AbelianGroup::inv(get_w(r-1, y), get_w(l-1, y));
+    return AbelianGroup::op(get_w(r-1, y), AbelianGroup::inv(get_w(l-1, y)));
   }
 
   inline value_type get(int x1, int x2, int y) const {
@@ -167,7 +192,7 @@ private:
   
 public:
   value_type get(int x1, int y1, int x2, int y2) const { // [(x1,y1),(x2,y2))
-    return AbelianGroup::inv(get(x1, x2, y2-1), get(x1, x2, y1-1));
+    return AbelianGroup::op(get(x1, x2, y2-1), AbelianGroup::inv(get(x1, x2, y1-1)));
   }
      
   value_type at(int x, int y) const {

@@ -55,7 +55,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="circumscribed_circle_of_triangle.cpp.html">三角形の外接円</a>
-* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Verified with

@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/DPL_2_A/main.test.cpp
+# :heavy_check_mark: test/aoj/DPL_2_A/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
-* :x: <a href="../../../../library/Mylib/Graph/travelling_salesman_problem.cpp.html">巡回セールスマン問題</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/travelling_salesman_problem.cpp.html">巡回セールスマン問題</a>
 
 
 ## Code

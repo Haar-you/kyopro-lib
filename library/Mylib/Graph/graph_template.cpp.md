@@ -38,8 +38,8 @@ layout: default
 
 ## Required by
 
-* :warning: <a href="BipartiteGraph/check_bipartite_graph.cpp.html">連結グラフの二部グラフ判定</a>
-* :warning: <a href="BipartiteGraph/check_bipartite_graph_disconnected.cpp.html">非連結グラフの二部グラフ判定</a>
+* :warning: <a href="BipartiteGraph/check_bipartite_graph.cpp.html">二部グラフ判定 (連結グラフ)</a>
+* :warning: <a href="BipartiteGraph/check_bipartite_graph_disconnected.cpp.html">二部グラフ判定 (非連結グラフ)</a>
 * :warning: <a href="EulerianPath/directed_eulerian_path.cpp.html">有向Euler路</a>
 * :warning: <a href="EulerianPath/undirected_eulerian_path.cpp.html">無向Euler路</a>
 * :x: <a href="GraphUtils/articulation_points.cpp.html">間接点列挙</a>
@@ -69,8 +69,8 @@ layout: default
 * :heavy_check_mark: <a href="TreeUtils/rerooting.cpp.html">全方位木dp</a>
 * :warning: <a href="TreeUtils/rooting.cpp.html">根付き木</a>
 * :x: <a href="TreeUtils/tree_utils.cpp.html">TreeUtils</a>
-* :x: <a href="chinese_postman_problem.cpp.html">中国人郵便配達問題</a>
-* :x: <a href="travelling_salesman_problem.cpp.html">巡回セールスマン問題</a>
+* :heavy_check_mark: <a href="chinese_postman_problem.cpp.html">中国人郵便配達問題</a>
+* :heavy_check_mark: <a href="travelling_salesman_problem.cpp.html">巡回セールスマン問題</a>
 * :x: <a href="two_sat.cpp.html">2-SAT</a>
 * :warning: <a href="../Grid/grid_to_graph.cpp.html">グリッドをグラフに変換する</a>
 
@@ -79,8 +79,8 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../verify/test/aoj/1595/main.test.cpp.html">test/aoj/1595/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/DPL_2_A/main.test.cpp.html">test/aoj/DPL_2_A/main.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/DPL_2_B/main.test.cpp.html">test/aoj/DPL_2_B/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_2_A/main.test.cpp.html">test/aoj/DPL_2_A/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_2_B/main.test.cpp.html">test/aoj/DPL_2_B/main.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/GRL_1_A/main.test.cpp.html">test/aoj/GRL_1_A/main.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/GRL_1_B/main.test.cpp.html">test/aoj/GRL_1_B/main.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/GRL_1_C/main.test.cpp.html">test/aoj/GRL_1_C/main.test.cpp</a>

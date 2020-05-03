@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/ALDS1_5_D/main.test.cpp
+# :heavy_check_mark: test/aoj/ALDS1_5_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Misc/inverse_number.cpp.html">転倒数</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/inverse_number.cpp.html">転倒数</a>
 
 
 ## Code

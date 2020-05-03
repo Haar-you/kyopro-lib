@@ -40,7 +40,7 @@ layout: default
 
 - `fast_mobius_transform_subset(f[N], op = std::minus())`
 	- `N`は2の累乗
-	- $f(S) = \sum_{T\subseteq S} g(T) * (-1)^{\left|S\right|-\left|T\right|}$
+	- $g(S) = \sum_{T \subseteq S} f(T) * (-1)^{\left|S\right|-\left|T\right|}$
 
 ## Requirements
 

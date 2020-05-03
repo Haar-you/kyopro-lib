@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/DPL_5_I/main.table.test.cpp
+# :heavy_check_mark: test/aoj/DPL_5_I/main.table.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b72df8ce0758bb7606e41650e28ebb6a">test/aoj/DPL_5_I</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_I/main.table.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-03 16:28:32+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Combinatorics/stirling_number_table.cpp.html">第2種Stirling数の列挙</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/stirling_number_table.cpp.html">第2種Stirling数 (列挙)</a>
 * :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
@@ -166,7 +166,7 @@ public:
 #include <vector>
 
 /**
- * @title 第2種Stirling数の列挙
+ * @title 第2種Stirling数 (列挙)
  * @docs stirling_number_table.md 
  */
 template <typename T>

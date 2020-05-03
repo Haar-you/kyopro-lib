@@ -49,7 +49,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
+* :question: <a href="combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
 
 
 ## Verified with

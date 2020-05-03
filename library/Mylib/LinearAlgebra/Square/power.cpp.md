@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b58b3fdb1287502881e9117a37552614">Mylib/LinearAlgebra/Square</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/Square/power.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-03 20:03:33+09:00
 
 
 
@@ -55,9 +55,7 @@ layout: default
  */
 template <typename M, typename T = typename M::value_type>
 M power(M a, uint64_t p){
-  const int N = a.size();
-
-  if(p == 0) return M::make_unit(N);
+  if(p == 0) return M::make_unit();
   if(p == 1) return a;
 
   M temp = power(a, p >> 1);
@@ -82,9 +80,7 @@ M power(M a, uint64_t p){
  */
 template <typename M, typename T = typename M::value_type>
 M power(M a, uint64_t p){
-  const int N = a.size();
-
-  if(p == 0) return M::make_unit(N);
+  if(p == 0) return M::make_unit();
   if(p == 1) return a;
 
   M temp = power(a, p >> 1);

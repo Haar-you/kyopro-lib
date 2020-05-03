@@ -31,9 +31,37 @@ layout: default
 
 * category: <a href="../../../../index.html#2f58e2c328298747e7665b6f6b5791ad">Mylib/DataStructure/FenwickTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-03 16:28:32+09:00
 
 
+
+
+## Operations
+
+- `FenwickTree(n)`
+- `update(i, v)`
+	- $a_i \leftarrow a_i + v$に更新する。
+	- Time complexity $O(\log n)$
+- `get(i)`
+	- $a_0 + a_1 + \ldots + a_{i-1}$を返す。
+	- Time complexity $O(\log n)$
+- `get(l, r)`
+	- $a_l + a_{l+1} + \ldots + a_{r-1}$を返す。
+	- Time complexity $O(\log n)$
+- `at(i)`
+	- $a_i$を返す。
+	- Time complexity $O(\log n)$
+
+## Requirements
+
+- `AbelianGroup`は可換性・結合性を満たす演算`op`と単位元`id`と逆元を与える関数`inv`をもつ。
+
+## Notes
+
+## Problems
+
+## References
+ 
 
 
 ## Required by
@@ -94,7 +122,7 @@ public:
   }
 
   inline value_type get(int l, int r) const { // [l, r)
-    return AbelianGroup::inv(get(r-1), get(l-1));
+    return AbelianGroup::op(get(r-1), AbelianGroup::inv(get(l-1)));
   }
   
   inline value_type at(int x) const {
@@ -150,7 +178,7 @@ public:
   }
 
   inline value_type get(int l, int r) const { // [l, r)
-    return AbelianGroup::inv(get(r-1), get(l-1));
+    return AbelianGroup::op(get(r-1), AbelianGroup::inv(get(l-1)));
   }
   
   inline value_type at(int x) const {

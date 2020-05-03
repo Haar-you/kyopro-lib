@@ -38,8 +38,8 @@ layout: default
 
 ## Operations
 
-- `SparseTable(v)`
-    - Time complexity $O(\left|\mathtt{v}\right| \log \left|\mathtt{v}\right|)$
+- `SparseTable(v[n])`
+    - Time complexity $O(n \log n)$
 - `get(int s, int t)`
 	- `[s, t)`を`Semilattice::op`でfoldする。
 	- Time complexity $O(1)$

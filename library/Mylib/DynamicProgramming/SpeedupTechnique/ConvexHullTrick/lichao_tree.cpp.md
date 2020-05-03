@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Li Chao tree
+# :x: LiChaoTree
 
 <a href="../../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../../index.html#7e10cb4eef4fe46e217959a10aea6a72">Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick/lichao_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-05-03 16:28:32+09:00
 
 
 
@@ -62,8 +62,8 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../../verify/test/yosupo-judge/line_add_get_min/main.test.cpp.html">test/yosupo-judge/line_add_get_min/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../verify/test/yosupo-judge/segment_add_get_min/main.test.cpp.html">test/yosupo-judge/segment_add_get_min/main.test.cpp</a>
+* :x: <a href="../../../../../verify/test/yosupo-judge/line_add_get_min/main.test.cpp.html">test/yosupo-judge/line_add_get_min/main.test.cpp</a>
+* :x: <a href="../../../../../verify/test/yosupo-judge/segment_add_get_min/main.test.cpp.html">test/yosupo-judge/segment_add_get_min/main.test.cpp</a>
 
 
 ## Code
@@ -78,7 +78,7 @@ layout: default
 #include <optional>
 
 /**
- * @title Li Chao tree
+ * @title LiChaoTree
  * @docs lichao_tree.md
  */
 template <typename T, typename Comparator>
@@ -232,7 +232,7 @@ auto make_lichao_max(const std::vector<T> &xs){
 #include <optional>
 
 /**
- * @title Li Chao tree
+ * @title LiChaoTree
  * @docs lichao_tree.md
  */
 template <typename T, typename Comparator>

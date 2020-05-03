@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a11cf6f4bd6e76e33e4d7136e3eb98bc">Mylib/AlgebraicStructure/Group</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Group/sum_group.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-03 16:28:32+09:00
 
 
 
@@ -59,7 +59,7 @@ struct SumGroup{
 
   static value_type id(){return 0;}
   static value_type op(const value_type &a, const value_type &b){return a + b;}
-  static value_type inv(const value_type &a, const value_type &b){return a - b;}
+  static value_type inv(const value_type &a){return -a;}
 };
 
 ```
@@ -79,7 +79,7 @@ struct SumGroup{
 
   static value_type id(){return 0;}
   static value_type op(const value_type &a, const value_type &b){return a + b;}
-  static value_type inv(const value_type &a, const value_type &b){return a - b;}
+  static value_type inv(const value_type &a){return -a;}
 };
 
 ```

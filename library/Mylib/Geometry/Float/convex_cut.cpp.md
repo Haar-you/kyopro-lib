@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: 凸多角形の切断
+# :heavy_check_mark: 凸多角形の切断
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,14 +38,14 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="ccw.cpp.html">clockwise-counterclockwise判定</a>
-* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
-* :x: <a href="intersect_line_segment.cpp.html">直線と線分の交差</a>
+* :heavy_check_mark: <a href="ccw.cpp.html">clockwise-counterclockwise判定</a>
+* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :heavy_check_mark: <a href="intersect_line_segment.cpp.html">直線と線分の交差</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
 
 
 ## Code

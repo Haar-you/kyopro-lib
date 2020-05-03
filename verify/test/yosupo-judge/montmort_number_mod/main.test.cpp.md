@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#910a463805ae5ab8a646512f693c1fa3">test/yosupo-judge/montmort_number_mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/montmort_number_mod/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-03 16:28:32+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/montmort_number_mod">https://judge.yosupo.jp/problem/montmort_number_mod</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Combinatorics/montmort_number.cpp.html">Montmort数</a>
-* :question: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">実行時mod指定modint</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">modint (実行時mod指定)</a>
 
 
 ## Code
@@ -84,7 +84,7 @@ int main(){
 #include <utility>
 
 /**
- * @title 実行時mod指定modint
+ * @title modint (実行時mod指定)
  * @docs runtime_mint.md
  */
 class RuntimeModInt{

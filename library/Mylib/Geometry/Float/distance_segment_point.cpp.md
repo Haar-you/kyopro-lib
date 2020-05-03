@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: 線分・点間の距離
+# :heavy_check_mark: 線分・点間の距離
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,20 +38,20 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
 
 
 ## Required by
 
-* :x: <a href="area_intersection_of_circle_and_polygon.cpp.html">円と多角形の共通部分の面積</a>
-* :x: <a href="distance_segments.cpp.html">線分間の距離</a>
-* :x: <a href="intersect_circle_segment.cpp.html">円と線分の交差</a>
+* :heavy_check_mark: <a href="area_intersection_of_circle_and_polygon.cpp.html">円と多角形の共通部分の面積</a>
+* :heavy_check_mark: <a href="distance_segments.cpp.html">線分間の距離</a>
+* :heavy_check_mark: <a href="intersect_circle_segment.cpp.html">円と線分の交差</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/CGL_2_D/main.test.cpp.html">test/aoj/CGL_2_D/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_2_D/main.test.cpp.html">test/aoj/CGL_2_D/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
 
 
 ## Code

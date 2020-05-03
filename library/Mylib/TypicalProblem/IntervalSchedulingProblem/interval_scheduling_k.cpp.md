@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 重複要素をk個まで許容する区間スケジューリング問題
+# :warning: 区間スケジューリング問題 (重複要素をk個まで許容する)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a1062884f064c2b3be412505b6627108">Mylib/TypicalProblem/IntervalSchedulingProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-03 16:28:32+09:00
 
 
 
@@ -49,7 +49,7 @@ layout: default
 #include <utility>
 
 /**
- * @title 重複要素をk個まで許容する区間スケジューリング問題
+ * @title 区間スケジューリング問題 (重複要素をk個まで許容する)
  * @docs interval_scheduling_k.md
  */
 std::vector<std::pair<int,int>> interval_scheduling_k(std::vector<std::pair<int,int>> s, int k){
@@ -91,7 +91,7 @@ std::vector<std::pair<int,int>> interval_scheduling_k(std::vector<std::pair<int,
 #include <utility>
 
 /**
- * @title 重複要素をk個まで許容する区間スケジューリング問題
+ * @title 区間スケジューリング問題 (重複要素をk個まで許容する)
  * @docs interval_scheduling_k.md
  */
 std::vector<std::pair<int,int>> interval_scheduling_k(std::vector<std::pair<int,int>> s, int k){

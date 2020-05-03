@@ -38,6 +38,21 @@ layout: default
 
 ## Operations
 
+- `SegmentTreeBeats(n)`
+- `chmin(l, r, v)`
+	- `i in [l, r)`について$a_i \leftarrow \min(a_i, v)$で更新。
+	- Time complexity $O(\log N)$
+- `chmax(l, r, v)`
+	- `i in [l, r)`について$a_i \leftarrow \max(a_i, v)$で更新。
+	- Time complexity $O(\log N)$
+- `add(l, r, v)`
+	- `i in [l, r)`について$a_i \leftarrow a_i + v$で更新。
+	- Time complexity $O(\log N)$
+- `get_sum(l, r)`
+	- $\sum_{l \le i \lt r} a_i$を返す。
+	- Time complexity $O(\log N)$
+- `init_with_vector(a)`
+
 ## Requirements
 
 ## Notes

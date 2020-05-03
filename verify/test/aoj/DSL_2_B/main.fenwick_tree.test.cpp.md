@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#082039b3153b4a2410d6e14e04aca1cc">test/aoj/DSL_2_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-03 16:28:32+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B</a>
@@ -126,7 +126,7 @@ public:
   }
 
   inline value_type get(int l, int r) const { // [l, r)
-    return AbelianGroup::inv(get(r-1), get(l-1));
+    return AbelianGroup::op(get(r-1), AbelianGroup::inv(get(l-1)));
   }
   
   inline value_type at(int x) const {
@@ -144,7 +144,7 @@ struct SumGroup{
 
   static value_type id(){return 0;}
   static value_type op(const value_type &a, const value_type &b){return a + b;}
-  static value_type inv(const value_type &a, const value_type &b){return a - b;}
+  static value_type inv(const value_type &a){return -a;}
 };
 #line 6 "test/aoj/DSL_2_B/main.fenwick_tree.test.cpp"
 

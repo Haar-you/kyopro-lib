@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/DPL_1_D/main.test.cpp
+# :heavy_check_mark: test/aoj/DPL_1_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/DynamicProgramming/longest_increasing_subsequence.cpp.html">最長増加部分列</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DynamicProgramming/longest_increasing_subsequence.cpp.html">最長増加部分列</a>
 
 
 ## Code

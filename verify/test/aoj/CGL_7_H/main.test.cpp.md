@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/CGL_7_H/main.test.cpp
+# :heavy_check_mark: test/aoj/CGL_7_H/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp.html">円と多角形の共通部分の面積</a>
-* :x: <a href="../../../../library/Mylib/Geometry/Float/distance_segment_point.cpp.html">線分・点間の距離</a>
-* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
-* :x: <a href="../../../../library/Mylib/Geometry/Float/intersect_circle_segment.cpp.html">円と線分の交差</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp.html">円と多角形の共通部分の面積</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/distance_segment_point.cpp.html">線分・点間の距離</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/intersect_circle_segment.cpp.html">円と線分の交差</a>
 
 
 ## Code

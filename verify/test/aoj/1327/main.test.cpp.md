@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0bdfbad106799ccca05cbd57bfdddfd4">test/aoj/1327</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1327/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-03 20:03:33+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327</a>
@@ -41,7 +41,7 @@ layout: default
 
 * :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/power.cpp.html">行列累乗</a>
 * :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">正方行列</a>
-* :question: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">実行時mod指定modint</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">modint (実行時mod指定)</a>
 
 
 ## Code
@@ -56,19 +56,23 @@ layout: default
 #include "Mylib/Number/Mint/runtime_mint.cpp"
 #include "Mylib/LinearAlgebra/Square/square_matrix.cpp"
 #include "Mylib/LinearAlgebra/Square/power.cpp"
-     
+
+
 using mint = RuntimeModInt;
-using M = SquareMatrix<mint>;
+
+struct tag{};
+using M = SquareMatrix<mint, tag>;
      
 int main(){
   int n, m, a, b, c, t;
   while(std::cin >> n >> m >> a >> b >> c >> t, n){
     mint::M = m;
+    M::N = n;
      
     std::vector<mint> s(n);
     for(int i = 0; i < n; ++i) std::cin >> s[i];
      
-    M mat(n);
+    M mat;
      
     for(int i = 0; i < n; ++i){
       if(i-1 >= 0) mat[i][i-1] = a;
@@ -111,7 +115,7 @@ int main(){
 #include <utility>
 
 /**
- * @title 実行時mod指定modint
+ * @title modint (実行時mod指定)
  * @docs runtime_mint.md
  */
 class RuntimeModInt{
@@ -184,22 +188,20 @@ std::ostream& operator<<(std::ostream &os, const RuntimeModInt &a){os << a.val; 
  * @title 正方行列
  * @docs square_matrix.md
  */
-template <typename T> struct SquareMatrix{
+template <typename T, class Tag> struct SquareMatrix{
   using value_type = T;
   
-  int N;
+  static int N;
   std::vector<std::vector<T>> matrix;
   
-  SquareMatrix(): N(0){}
-  SquareMatrix(int N): N(N), matrix(N, std::vector<T>(N)){}
-  SquareMatrix(int N, const T &val): N(N), matrix(N, std::vector<T>(N, val)){}
-  SquareMatrix(const std::vector<std::vector<T>> &matrix): N(matrix.size()), matrix(matrix){}
+  SquareMatrix(): matrix(N, std::vector<T>(N)){}
+  SquareMatrix(const T &val): matrix(N, std::vector<T>(N, val)){}
+  SquareMatrix(const std::vector<std::vector<T>> &matrix): matrix(matrix){}
 
-  bool operator==(const SquareMatrix<T> &val) const {return matrix == val.matrix;}
-  bool operator!=(const SquareMatrix<T> &val) const {return !(*this == val);}
+  bool operator==(const SquareMatrix &val) const {return matrix == val.matrix;}
+  bool operator!=(const SquareMatrix &val) const {return !(*this == val);}
   
   auto& operator=(const SquareMatrix &val){
-    this->N = val.N;
     this->matrix = val.matrix;
     return *this;
   }
@@ -225,8 +227,8 @@ template <typename T> struct SquareMatrix{
   inline auto& operator[](size_t i){return matrix[i];}
   inline int size() const {return N;}
   
-  static auto make_unit(int N){
-    SquareMatrix ret(N);
+  static auto make_unit(){
+    SquareMatrix ret;
     for(int i = 0; i < N; ++i) ret[i][i] = 1;
     return ret;
   }
@@ -235,6 +237,8 @@ template <typename T> struct SquareMatrix{
   friend auto operator-(const SquareMatrix &a, const SquareMatrix &b){auto ret = a; ret -= b; return ret;}
   friend auto operator*(const SquareMatrix &a, const SquareMatrix &b){auto ret = a; ret *= b; return ret;}
 };
+
+template <typename T, class Tag> int SquareMatrix<T,Tag>::N;
 #line 2 "Mylib/LinearAlgebra/Square/power.cpp"
 
 /**
@@ -243,9 +247,7 @@ template <typename T> struct SquareMatrix{
  */
 template <typename M, typename T = typename M::value_type>
 M power(M a, uint64_t p){
-  const int N = a.size();
-
-  if(p == 0) return M::make_unit(N);
+  if(p == 0) return M::make_unit();
   if(p == 1) return a;
 
   M temp = power(a, p >> 1);
@@ -256,19 +258,23 @@ M power(M a, uint64_t p){
   return ret;
 }
 #line 8 "test/aoj/1327/main.test.cpp"
-     
+
+
 using mint = RuntimeModInt;
-using M = SquareMatrix<mint>;
+
+struct tag{};
+using M = SquareMatrix<mint, tag>;
      
 int main(){
   int n, m, a, b, c, t;
   while(std::cin >> n >> m >> a >> b >> c >> t, n){
     mint::M = m;
+    M::N = n;
      
     std::vector<mint> s(n);
     for(int i = 0; i < n; ++i) std::cin >> s[i];
      
-    M mat(n);
+    M mat;
      
     for(int i = 0; i < n; ++i){
       if(i-1 >= 0) mat[i][i-1] = a;

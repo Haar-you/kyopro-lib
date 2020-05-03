@@ -52,8 +52,8 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="geometry_template.cpp.html">幾何基本セット</a>
-* :x: <a href="intersect_circles.cpp.html">円同士の交差</a>
+* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :heavy_check_mark: <a href="intersect_circles.cpp.html">円同士の交差</a>
 
 
 ## Code
