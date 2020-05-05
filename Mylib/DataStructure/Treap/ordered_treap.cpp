@@ -1,10 +1,10 @@
 #pragma once
 #include <algorithm>
-#include "Mylib/DataStructure/Treap/treap_ordered_by_index.cpp"
+#include "Mylib/DataStructure/Treap/treap.cpp"
 
 /**
- * @title OrderedSet型 Treap
- * @docs treap_ordered_by_value.md
+ * @title Treap (OrderedSet型)
+ * @docs ordered_treap.md
  */
 namespace treap{
   template <typename Monoid>
