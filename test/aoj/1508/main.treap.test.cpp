@@ -1,7 +1,7 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508"
 
 #include <iostream>
-#include "Mylib/DataStructure/Treap/treap_ordered_by_index.cpp"
+#include "Mylib/DataStructure/Treap/treap.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
 
 int main(){
