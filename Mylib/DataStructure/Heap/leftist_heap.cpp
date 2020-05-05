@@ -2,6 +2,7 @@
 #include <functional>
 
 /**
+ * @title LeftistHeap
  * @docs leftist_heap.md
  */
 template <typename T, class Compare = std::less<T>>

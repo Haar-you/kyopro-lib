@@ -2,6 +2,7 @@
 #include <functional>
 
 /**
+ * @title SkewHeap
  * @docs skew_heap.md
  */
 template <typename T, class Compare = std::less<T>>
