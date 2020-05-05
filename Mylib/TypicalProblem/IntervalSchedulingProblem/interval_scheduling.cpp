@@ -10,19 +10,19 @@
  * @docs interval_scheduling.md
  */
 template <typename T>
-std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &left, const std::vector<T> &right){ // 区間は[a,b]
-  const int N = left.size();
+std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){
+  const int N = l.size();
   std::vector<std::pair<T,T>> ret;
   std::vector<int> ord(N);
   std::iota(ord.begin(), ord.end(), 0);
-  std::sort(ord.begin(), ord.end(), [&](int i, int j){return right[i] < right[j];});
+  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
 
   auto b = std::numeric_limits<T>::lowest();
 
   for(int i : ord){
-    if(left[i] >= b){
-      ret.emplace_back(left[i], right[i]);
-      b = right[i];
+    if(l[i] >= b){
+      ret.emplace_back(l[i], r[i]);
+      b = r[i];
     }
   }
   

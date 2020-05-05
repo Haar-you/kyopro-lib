@@ -4,21 +4,24 @@
 #include <iterator>
 #include <algorithm>
 #include <utility>
+#include <numeric>
 
 /**
  * @title 区間スケジューリング問題 (重複要素をk個まで許容する)
  * @docs interval_scheduling_k.md
  */
-std::vector<std::pair<int,int>> interval_scheduling_k(std::vector<std::pair<int,int>> s, int k){
-  std::sort(s.begin(), s.end(), [](const auto &a, const auto &b){
-                             return a.second == b.second ? a.first < b.first : a.second < b.second;
-                           });
+auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
+  const int N = l.size();
+
+  std::vector<int> ord(N);
+  std::iota(ord.begin(), ord.end(), 0);
+  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});  
 
   std::multiset<int> a;
   std::vector<std::pair<int,int>> ret;
 
-  for(auto &p : s){
-    auto it = a.lower_bound(p.first);
+  for(int i : ord){
+    auto it = a.upper_bound(l[i]);
 
     if(it != a.begin()){
       it = std::prev(it);
@@ -26,8 +29,8 @@ std::vector<std::pair<int,int>> interval_scheduling_k(std::vector<std::pair<int,
     }
 
     if((int)a.size() < k){
-      a.insert(p.second);
-      ret.emplace_back(p);
+      a.insert(r[i]);
+      ret.emplace_back(l[i], r[i]);
     }
   }
   

@@ -1,5 +1,9 @@
 ## Operations
 
+- `interval_scheduling(l[N], r[N])`
+	- `N`個の半開区間`[l[i], r[i])`を互いに交差しないように選べる個数を最大にする方法。
+	- Time complexity $O(N \log N)$
+
 ## Requirements
 
 ## Notes
