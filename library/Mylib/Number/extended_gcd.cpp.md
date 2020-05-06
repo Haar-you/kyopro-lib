@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: 拡張Euclidの互除法
+# :question: 拡張Euclidの互除法
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -43,7 +43,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/aoj/NTL_1_E/main.test.cpp.html">test/aoj/NTL_1_E/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/NTL_1_E/main.test.cpp.html">test/aoj/NTL_1_E/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yukicoder/186/main.test.cpp.html">test/yukicoder/186/main.test.cpp</a>
 
 

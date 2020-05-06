@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/DataStructure/Heap/skew_heap.cpp
+# :warning: SkewHeap
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f151d59e79c7ff7f731ff52cf9b782e4">Mylib/DataStructure/Heap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Heap/skew_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-05 16:49:32+09:00
 
 
 
@@ -45,6 +45,7 @@ layout: default
 #include <functional>
 
 /**
+ * @title SkewHeap
  * @docs skew_heap.md
  */
 template <typename T, class Compare = std::less<T>>
@@ -96,6 +97,7 @@ public:
 #include <functional>
 
 /**
+ * @title SkewHeap
  * @docs skew_heap.md
  */
 template <typename T, class Compare = std::less<T>>

@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yosupo-judge/number_of_substrings/main.test.cpp
+# :heavy_check_mark: test/yosupo-judge/number_of_substrings/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/String/lcp_array.cpp.html">LCP(Longest Common Prefix)配列</a>
-* :x: <a href="../../../../library/Mylib/String/suffix_array.cpp.html">接尾辞配列</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/String/lcp_array.cpp.html">LCP(Longest Common Prefix)配列</a>
+* :question: <a href="../../../../library/Mylib/String/suffix_array.cpp.html">接尾辞配列</a>
 
 
 ## Code

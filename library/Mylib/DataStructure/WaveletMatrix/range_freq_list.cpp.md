@@ -77,8 +77,8 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="succinct_dictionary.cpp.html">簡潔辞書</a>
-* :question: <a href="wavelet_matrix.cpp.html">Wavelet matrix</a>
+* :heavy_check_mark: <a href="succinct_dictionary.cpp.html">簡潔辞書</a>
+* :heavy_check_mark: <a href="wavelet_matrix.cpp.html">Wavelet matrix</a>
 
 
 ## Code

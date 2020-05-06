@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Hopcroft-Karp法
+# :heavy_check_mark: Hopcroft-Karp法
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -55,8 +55,8 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp.html">test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp</a>
-* :x: <a href="../../../../verify/test/yosupo-judge/bipartitematching/main.test.cpp.html">test/yosupo-judge/bipartitematching/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp.html">test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/bipartitematching/main.test.cpp.html">test/yosupo-judge/bipartitematching/main.test.cpp</a>
 
 
 ## Code

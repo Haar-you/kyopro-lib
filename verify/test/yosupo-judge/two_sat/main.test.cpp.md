@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
-* :x: <a href="../../../../library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
+* :question: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
+* :question: <a href="../../../../library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
 * :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 * :x: <a href="../../../../library/Mylib/Graph/two_sat.cpp.html">2-SAT</a>
 

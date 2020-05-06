@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#21b2d97411100b8521da1b9c251ad9c2">test/aoj/1508</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1508/main.treap.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-05 22:29:42+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/Treap/treap_ordered_by_index.cpp.html">Treap</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/Treap/treap.cpp.html">Treap</a>
 
 
 ## Code
@@ -51,7 +51,7 @@ layout: default
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508"
 
 #include <iostream>
-#include "Mylib/DataStructure/Treap/treap_ordered_by_index.cpp"
+#include "Mylib/DataStructure/Treap/treap.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
 
 int main(){
@@ -92,14 +92,14 @@ int main(){
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508"
 
 #include <iostream>
-#line 2 "Mylib/DataStructure/Treap/treap_ordered_by_index.cpp"
+#line 2 "Mylib/DataStructure/Treap/treap.cpp"
 #include <random>
 #include <utility>
 #include <tuple>
 
 /**
  * @title Treap
- * @docs treap_ordered_by_index.md
+ * @docs treap.md
  */
 namespace treap{
   template <typename Monoid>

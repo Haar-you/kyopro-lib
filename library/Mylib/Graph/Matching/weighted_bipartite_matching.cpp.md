@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :question: 重み付き二部マッチング
+# :heavy_check_mark: 重み付き二部マッチング
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -52,13 +52,13 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../Flow/minimum_cost_flow.cpp.html">最小費用流</a>
+* :heavy_check_mark: <a href="../Flow/minimum_cost_flow.cpp.html">最小費用流</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2293/main.test.cpp.html">test/aoj/2293/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/yosupo-judge/assignment/main.test.cpp.html">test/yosupo-judge/assignment/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/assignment/main.test.cpp.html">test/yosupo-judge/assignment/main.test.cpp</a>
 
 
 ## Code

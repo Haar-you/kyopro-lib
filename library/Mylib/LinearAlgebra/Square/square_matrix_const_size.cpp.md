@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 正方行列 (コンパイル時固定サイズ)
+# :x: 正方行列 (コンパイル時固定サイズ)
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -34,6 +34,11 @@ layout: default
     - Last commit date: 2020-05-03 20:03:33+09:00
 
 
+
+
+## Verified with
+
+* :x: <a href="../../../../verify/test/yukicoder/510/main.test.cpp.html">test/yukicoder/510/main.test.cpp</a>
 
 
 ## Code

@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="Mod/mod_inv.cpp.html">mod逆数</a>
+* :heavy_check_mark: <a href="Mod/mod_inv.cpp.html">mod逆数</a>
 
 
 ## Code

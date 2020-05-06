@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yosupo-judge/montmort_number_mod/main.test.cpp
+# :heavy_check_mark: test/yosupo-judge/montmort_number_mod/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Combinatorics/montmort_number.cpp.html">Montmort数</a>
-* :question: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">modint (実行時mod指定)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/montmort_number.cpp.html">Montmort数</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">modint (実行時mod指定)</a>
 
 
 ## Code

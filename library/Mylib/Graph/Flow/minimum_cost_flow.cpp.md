@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :question: 最小費用流
+# :heavy_check_mark: 最小費用流
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,14 +38,14 @@ layout: default
 
 ## Required by
 
-* :question: <a href="../Matching/weighted_bipartite_matching.cpp.html">重み付き二部マッチング</a>
+* :heavy_check_mark: <a href="../Matching/weighted_bipartite_matching.cpp.html">重み付き二部マッチング</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2293/main.test.cpp.html">test/aoj/2293/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/aoj/GRL_6_B/main.test.cpp.html">test/aoj/GRL_6_B/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/yosupo-judge/assignment/main.test.cpp.html">test/yosupo-judge/assignment/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_6_B/main.test.cpp.html">test/aoj/GRL_6_B/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/assignment/main.test.cpp.html">test/yosupo-judge/assignment/main.test.cpp</a>
 
 
 ## Code

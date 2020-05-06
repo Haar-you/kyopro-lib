@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/Monoid/product_matrix_monoid.cpp
+# :x: Mylib/AlgebraicStructure/Monoid/product_matrix_monoid.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -34,6 +34,11 @@ layout: default
     - Last commit date: 2020-05-02 14:18:42+09:00
 
 
+
+
+## Verified with
+
+* :x: <a href="../../../../verify/test/yukicoder/510/main.test.cpp.html">test/yukicoder/510/main.test.cpp</a>
 
 
 ## Code

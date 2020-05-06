@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
+# :heavy_check_mark: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">mod逆数</a>
-* :x: <a href="../../../../library/Mylib/Number/Mod/mod_log.cpp.html">離散対数</a>
-* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">mod逆数</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_log.cpp.html">離散対数</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
 
 
 ## Code

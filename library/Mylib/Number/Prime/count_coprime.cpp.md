@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: 互いに素な自然数の個数
+# :heavy_check_mark: 互いに素な自然数の個数
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -52,12 +52,12 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="prime_factorize.cpp.html">素因数分解</a>
+* :heavy_check_mark: <a href="prime_factorize.cpp.html">素因数分解</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/NTL_1_D/main.test.cpp.html">test/aoj/NTL_1_D/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/NTL_1_D/main.test.cpp.html">test/aoj/NTL_1_D/main.test.cpp</a>
 
 
 ## Code

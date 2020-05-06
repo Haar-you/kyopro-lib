@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: 約数列挙
+# :heavy_check_mark: 約数列挙
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,7 +38,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/ITP1_3_D/main.test.cpp.html">test/aoj/ITP1_3_D/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/ITP1_3_D/main.test.cpp.html">test/aoj/ITP1_3_D/main.test.cpp</a>
 
 
 ## Code

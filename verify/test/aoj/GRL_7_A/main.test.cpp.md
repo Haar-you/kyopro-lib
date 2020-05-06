@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/GRL_7_A/main.test.cpp
+# :heavy_check_mark: test/aoj/GRL_7_A/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson法</a>
-* :x: <a href="../../../../library/Mylib/Graph/Matching/bipartite_matching.cpp.html">二部マッチング</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson法</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/bipartite_matching.cpp.html">二部マッチング</a>
 
 
 ## Code

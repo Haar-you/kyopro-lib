@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Number/chinese_remainder_algorithm.cpp.html">中国剰余定理</a>
-* :x: <a href="../../../../library/Mylib/Number/extended_gcd.cpp.html">拡張Euclidの互除法</a>
+* :question: <a href="../../../../library/Mylib/Number/extended_gcd.cpp.html">拡張Euclidの互除法</a>
 
 
 ## Code

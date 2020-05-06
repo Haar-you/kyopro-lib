@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/String/suffix_array.cpp.html">接尾辞配列</a>
+* :question: <a href="../../../../library/Mylib/String/suffix_array.cpp.html">接尾辞配列</a>
 
 
 ## Code

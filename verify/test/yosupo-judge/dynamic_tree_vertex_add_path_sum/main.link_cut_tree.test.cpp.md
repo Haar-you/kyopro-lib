@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
+# :heavy_check_mark: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
-* :x: <a href="../../../../library/Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp.html">Link-Cut tree</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp.html">Link-Cut tree</a>
 
 
 ## Code

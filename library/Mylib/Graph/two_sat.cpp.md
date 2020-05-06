@@ -66,8 +66,8 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
-* :x: <a href="TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
+* :question: <a href="GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
+* :question: <a href="TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
 * :question: <a href="graph_template.cpp.html">グラフ用テンプレート</a>
 
 

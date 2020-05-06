@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: 二部マッチング
+# :heavy_check_mark: 二部マッチング
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,12 +38,12 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../Flow/ford_fulkerson.cpp.html">Ford-Fulkerson法</a>
+* :heavy_check_mark: <a href="../Flow/ford_fulkerson.cpp.html">Ford-Fulkerson法</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
 
 
 ## Code

@@ -31,12 +31,16 @@ layout: default
 
 * category: <a href="../../../../index.html#a1062884f064c2b3be412505b6627108">Mylib/TypicalProblem/IntervalSchedulingProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-06 01:45:04+09:00
 
 
 
 
 ## Operations
+
+- `interval_scheduling(l[N], r[N])`
+	- `N`個の半開区間`[l[i], r[i])`を互いに交差しないように選べる個数を最大にする方法。
+	- Time complexity $O(N \log N)$
 
 ## Requirements
 
@@ -72,19 +76,19 @@ layout: default
  * @docs interval_scheduling.md
  */
 template <typename T>
-std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &left, const std::vector<T> &right){ // 区間は[a,b]
-  const int N = left.size();
+std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){
+  const int N = l.size();
   std::vector<std::pair<T,T>> ret;
   std::vector<int> ord(N);
   std::iota(ord.begin(), ord.end(), 0);
-  std::sort(ord.begin(), ord.end(), [&](int i, int j){return right[i] < right[j];});
+  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
 
   auto b = std::numeric_limits<T>::lowest();
 
   for(int i : ord){
-    if(left[i] >= b){
-      ret.emplace_back(left[i], right[i]);
-      b = right[i];
+    if(l[i] >= b){
+      ret.emplace_back(l[i], r[i]);
+      b = r[i];
     }
   }
   
@@ -109,19 +113,19 @@ std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &left, cons
  * @docs interval_scheduling.md
  */
 template <typename T>
-std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &left, const std::vector<T> &right){ // 区間は[a,b]
-  const int N = left.size();
+std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){
+  const int N = l.size();
   std::vector<std::pair<T,T>> ret;
   std::vector<int> ord(N);
   std::iota(ord.begin(), ord.end(), 0);
-  std::sort(ord.begin(), ord.end(), [&](int i, int j){return right[i] < right[j];});
+  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
 
   auto b = std::numeric_limits<T>::lowest();
 
   for(int i : ord){
-    if(left[i] >= b){
-      ret.emplace_back(left[i], right[i]);
-      b = right[i];
+    if(l[i] >= b){
+      ret.emplace_back(l[i], r[i]);
+      b = r[i];
     }
   }
   

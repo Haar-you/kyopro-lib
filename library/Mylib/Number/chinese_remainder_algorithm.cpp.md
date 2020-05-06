@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="extended_gcd.cpp.html">拡張Euclidの互除法</a>
+* :question: <a href="extended_gcd.cpp.html">拡張Euclidの互除法</a>
 
 
 ## Verified with

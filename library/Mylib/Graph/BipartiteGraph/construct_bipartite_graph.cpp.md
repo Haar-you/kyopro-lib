@@ -53,7 +53,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">UnionFind</a>
+* :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">UnionFind</a>
 
 
 ## Code

@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :question: 簡潔辞書
+# :heavy_check_mark: 簡潔辞書
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -42,14 +42,14 @@ layout: default
 * :heavy_check_mark: <a href="range_freq.cpp.html">range_freq</a>
 * :warning: <a href="range_freq_list.cpp.html">range_freq_list</a>
 * :warning: <a href="top_k.cpp.html">top_k</a>
-* :question: <a href="wavelet_matrix.cpp.html">Wavelet matrix</a>
+* :heavy_check_mark: <a href="wavelet_matrix.cpp.html">Wavelet matrix</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/1549/main.test.cpp.html">test/aoj/1549/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2674/main.test.cpp.html">test/aoj/2674/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/yosupo-judge/range_kth_smallest/main.test.cpp.html">test/yosupo-judge/range_kth_smallest/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/range_kth_smallest/main.test.cpp.html">test/yosupo-judge/range_kth_smallest/main.test.cpp</a>
 
 
 ## Code

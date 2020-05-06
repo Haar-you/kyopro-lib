@@ -39,7 +39,7 @@ layout: default
 ## Depends on
 
 * :warning: <a href="../Monoid/or_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/or_monoid.cpp</a>
-* :x: <a href="../Monoid/update_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/update_monoid.cpp</a>
+* :question: <a href="../Monoid/update_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/update_monoid.cpp</a>
 
 
 ## Code

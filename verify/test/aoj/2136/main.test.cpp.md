@@ -44,7 +44,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/intersect_segments.cpp.html">線分同士の交差</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Coloring/chromatic_number.cpp.html">グラフ頂点彩色数</a>
-* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
 
 
 ## Code

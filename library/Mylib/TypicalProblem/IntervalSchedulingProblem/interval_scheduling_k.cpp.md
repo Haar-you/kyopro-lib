@@ -25,15 +25,40 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 区間スケジューリング問題 (重複要素をk個まで許容する)
+# :x: 区間スケジューリング問題 (重複要素をk個まで許容する)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a1062884f064c2b3be412505b6627108">Mylib/TypicalProblem/IntervalSchedulingProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 16:28:32+09:00
+    - Last commit date: 2020-05-06 01:45:04+09:00
 
 
+
+
+## Operations
+
+- `interval_scheduling_k(l[N], r[N], k)`
+	- `N`個の半開区間`[l[i], r[i])`を、ある点で最大`k`個までの重複を許して選ぶときに、選べる個数を最大化する方法を返す。
+	- Time complexity $O(N \log N)$
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [yukicoder No.580 旅館の予約計画](https://yukicoder.me/problems/no/580)
+- [Codeforces Round #595 (Div. 3) D2. Too Many Segments (hard version)](https://codeforces.com/contest/1249/problem/D2)
+
+## References
+
+- [http://buyoh.hateblo.jp/entry/2017/10/25/160236](http://buyoh.hateblo.jp/entry/2017/10/25/160236)
+
+
+## Verified with
+
+* :x: <a href="../../../../verify/test/yukicoder/580/main.test.cpp.html">test/yukicoder/580/main.test.cpp</a>
 
 
 ## Code
@@ -47,21 +72,24 @@ layout: default
 #include <iterator>
 #include <algorithm>
 #include <utility>
+#include <numeric>
 
 /**
  * @title 区間スケジューリング問題 (重複要素をk個まで許容する)
  * @docs interval_scheduling_k.md
  */
-std::vector<std::pair<int,int>> interval_scheduling_k(std::vector<std::pair<int,int>> s, int k){
-  std::sort(s.begin(), s.end(), [](const auto &a, const auto &b){
-                             return a.second == b.second ? a.first < b.first : a.second < b.second;
-                           });
+auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
+  const int N = l.size();
+
+  std::vector<int> ord(N);
+  std::iota(ord.begin(), ord.end(), 0);
+  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});  
 
   std::multiset<int> a;
   std::vector<std::pair<int,int>> ret;
 
-  for(auto &p : s){
-    auto it = a.lower_bound(p.first);
+  for(int i : ord){
+    auto it = a.upper_bound(l[i]);
 
     if(it != a.begin()){
       it = std::prev(it);
@@ -69,8 +97,8 @@ std::vector<std::pair<int,int>> interval_scheduling_k(std::vector<std::pair<int,
     }
 
     if((int)a.size() < k){
-      a.insert(p.second);
-      ret.emplace_back(p);
+      a.insert(r[i]);
+      ret.emplace_back(l[i], r[i]);
     }
   }
   
@@ -89,21 +117,24 @@ std::vector<std::pair<int,int>> interval_scheduling_k(std::vector<std::pair<int,
 #include <iterator>
 #include <algorithm>
 #include <utility>
+#include <numeric>
 
 /**
  * @title 区間スケジューリング問題 (重複要素をk個まで許容する)
  * @docs interval_scheduling_k.md
  */
-std::vector<std::pair<int,int>> interval_scheduling_k(std::vector<std::pair<int,int>> s, int k){
-  std::sort(s.begin(), s.end(), [](const auto &a, const auto &b){
-                             return a.second == b.second ? a.first < b.first : a.second < b.second;
-                           });
+auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
+  const int N = l.size();
+
+  std::vector<int> ord(N);
+  std::iota(ord.begin(), ord.end(), 0);
+  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});  
 
   std::multiset<int> a;
   std::vector<std::pair<int,int>> ret;
 
-  for(auto &p : s){
-    auto it = a.lower_bound(p.first);
+  for(int i : ord){
+    auto it = a.upper_bound(l[i]);
 
     if(it != a.begin()){
       it = std::prev(it);
@@ -111,8 +142,8 @@ std::vector<std::pair<int,int>> interval_scheduling_k(std::vector<std::pair<int,
     }
 
     if((int)a.size() < k){
-      a.insert(p.second);
-      ret.emplace_back(p);
+      a.insert(r[i]);
+      ret.emplace_back(l[i], r[i]);
     }
   }
   

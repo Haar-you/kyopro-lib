@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Sliding Window Aggregation
+# :heavy_check_mark: Sliding Window Aggregation
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -51,7 +51,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
 
 
 ## Code

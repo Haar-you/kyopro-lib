@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/NTL_1_D/main.totient.test.cpp
+# :heavy_check_mark: test/aoj/NTL_1_D/main.totient.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Number/euler_phi_function.cpp.html">Eulerのトーシェント関数</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/euler_phi_function.cpp.html">Eulerのトーシェント関数</a>
 
 
 ## Code

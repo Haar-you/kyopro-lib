@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#dfb9b4b04978b5abf401139b8f15bff5">test/aoj/ALDS1_15_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_15_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-06 01:45:04+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_15_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_15_C</a>
@@ -92,19 +92,19 @@ int main(){
  * @docs interval_scheduling.md
  */
 template <typename T>
-std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &left, const std::vector<T> &right){ // 区間は[a,b]
-  const int N = left.size();
+std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){
+  const int N = l.size();
   std::vector<std::pair<T,T>> ret;
   std::vector<int> ord(N);
   std::iota(ord.begin(), ord.end(), 0);
-  std::sort(ord.begin(), ord.end(), [&](int i, int j){return right[i] < right[j];});
+  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
 
   auto b = std::numeric_limits<T>::lowest();
 
   for(int i : ord){
-    if(left[i] >= b){
-      ret.emplace_back(left[i], right[i]);
-      b = right[i];
+    if(l[i] >= b){
+      ret.emplace_back(l[i], r[i]);
+      b = r[i];
     }
   }
   

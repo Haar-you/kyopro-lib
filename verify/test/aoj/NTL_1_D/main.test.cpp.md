@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/NTL_1_D/main.test.cpp
+# :heavy_check_mark: test/aoj/NTL_1_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Number/Prime/count_coprime.cpp.html">互いに素な自然数の個数</a>
-* :x: <a href="../../../../library/Mylib/Number/Prime/prime_factorize.cpp.html">素因数分解</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/count_coprime.cpp.html">互いに素な自然数の個数</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/prime_factorize.cpp.html">素因数分解</a>
 
 
 ## Code

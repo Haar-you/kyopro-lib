@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yosupo-judge/matrix_det/main.test.cpp
+# :heavy_check_mark: test/yosupo-judge/matrix_det/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/determinant.cpp.html">行列式 (01)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/determinant.cpp.html">行列式 (01)</a>
 * :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">正方行列</a>
 * :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 

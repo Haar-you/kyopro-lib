@@ -78,8 +78,8 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="range_freq.cpp.html">range_freq</a>
-* :question: <a href="succinct_dictionary.cpp.html">簡潔辞書</a>
-* :question: <a href="wavelet_matrix.cpp.html">Wavelet matrix</a>
+* :heavy_check_mark: <a href="succinct_dictionary.cpp.html">簡潔辞書</a>
+* :heavy_check_mark: <a href="wavelet_matrix.cpp.html">Wavelet matrix</a>
 
 
 ## Verified with

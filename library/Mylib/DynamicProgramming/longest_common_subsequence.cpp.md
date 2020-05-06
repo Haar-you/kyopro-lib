@@ -36,6 +36,22 @@ layout: default
 
 
 
+## Operations
+
+- `lcs(a[N], b[M])`
+	- `a`と`b`の最長共通部分列の長さを返す。
+	- Time complexity $O(NM)$
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References
+ 
+
+
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../verify/test/aoj/ALDS1_10_C/main.test.cpp.html">test/aoj/ALDS1_10_C/main.test.cpp</a>
