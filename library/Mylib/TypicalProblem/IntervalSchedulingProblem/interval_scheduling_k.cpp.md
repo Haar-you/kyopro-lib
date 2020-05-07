@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: 区間スケジューリング問題 (重複要素をk個まで許容する)
+# :heavy_check_mark: 区間スケジューリング問題 (重複要素をk個まで許容する)
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -58,7 +58,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/yukicoder/580/main.test.cpp.html">test/yukicoder/580/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/580/main.test.cpp.html">test/yukicoder/580/main.test.cpp</a>
 
 
 ## Code

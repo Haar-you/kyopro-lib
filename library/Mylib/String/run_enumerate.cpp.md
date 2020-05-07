@@ -51,7 +51,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="z_algorithm.cpp.html">Z-algorithm</a>
+* :heavy_check_mark: <a href="z_algorithm.cpp.html">Z-algorithm</a>
 
 
 ## Verified with

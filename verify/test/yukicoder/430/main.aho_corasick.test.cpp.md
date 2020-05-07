@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yukicoder/430/main.aho_corasick.test.cpp
+# :heavy_check_mark: test/yukicoder/430/main.aho_corasick.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/String/aho_corasick.cpp.html">Aho-Corasick法</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/String/aho_corasick.cpp.html">Aho-Corasick法</a>
 
 
 ## Code

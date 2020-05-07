@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yukicoder/3030/main.test.cpp
+# :heavy_check_mark: test/yukicoder/3030/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Misc/int128.cpp.html">128bit整数型</a>
-* :x: <a href="../../../../library/Mylib/Number/Prime/miller_rabin.cpp.html">Miller-Rabin素数判定法</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/int128.cpp.html">128bit整数型</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/miller_rabin.cpp.html">Miller-Rabin素数判定法</a>
 
 
 ## Code

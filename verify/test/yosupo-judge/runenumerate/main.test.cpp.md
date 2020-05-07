@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/String/run_enumerate.cpp.html">run enumerate</a>
-* :question: <a href="../../../../library/Mylib/String/z_algorithm.cpp.html">Z-algorithm</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/String/z_algorithm.cpp.html">Z-algorithm</a>
 
 
 ## Code

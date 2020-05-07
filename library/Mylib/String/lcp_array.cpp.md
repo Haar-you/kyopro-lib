@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="suffix_array.cpp.html">接尾辞配列</a>
+* :heavy_check_mark: <a href="suffix_array.cpp.html">接尾辞配列</a>
 
 
 ## Verified with

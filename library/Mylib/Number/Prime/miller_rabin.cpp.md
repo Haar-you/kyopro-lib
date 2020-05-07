@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Miller-Rabin素数判定法
+# :heavy_check_mark: Miller-Rabin素数判定法
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,12 +38,12 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../Misc/int128.cpp.html">128bit整数型</a>
+* :heavy_check_mark: <a href="../../Misc/int128.cpp.html">128bit整数型</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/yukicoder/3030/main.test.cpp.html">test/yukicoder/3030/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/3030/main.test.cpp.html">test/yukicoder/3030/main.test.cpp</a>
 
 
 ## Code

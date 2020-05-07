@@ -51,7 +51,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
+* :heavy_check_mark: <a href="combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
 * :heavy_check_mark: <a href="stirling_number.cpp.html">第2種Stirling数</a>
 
 

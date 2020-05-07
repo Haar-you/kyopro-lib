@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :question: トポロジカルソート
+# :heavy_check_mark: トポロジカルソート
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -43,13 +43,13 @@ layout: default
 
 ## Required by
 
-* :x: <a href="../two_sat.cpp.html">2-SAT</a>
+* :heavy_check_mark: <a href="../two_sat.cpp.html">2-SAT</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
 
 
 ## Code
