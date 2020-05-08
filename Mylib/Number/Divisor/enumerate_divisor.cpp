@@ -4,9 +4,9 @@
 
 /**
  * @title 約数列挙
- * @docs divisor_list.md
+ * @docs enumerate_divisor.md
  */
-std::vector<std::int64_t> divisor_list(std::int64_t n){
+std::vector<std::int64_t> enumerate_divisor(std::int64_t n){
   std::vector<std::int64_t> temp, ret;
 
   {
