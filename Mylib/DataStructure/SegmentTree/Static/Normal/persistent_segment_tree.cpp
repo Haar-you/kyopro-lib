@@ -41,10 +41,10 @@ public:
     root = init(root, init_list, 1, pos);
   }
   
-  PersistentSegmentTree(int size){
+  PersistentSegmentTree(int size, const value_type &value = Monoid::id()){
     depth = size == 1 ? 1 : 32 - __builtin_clz(size-1) + 1;
     int pos = 0;
-    root = init(root, std::vector<value_type>(size, Monoid::id()), 1, pos);
+    root = init(root, std::vector<value_type>(size, value), 1, pos);
   }
   
 protected:

@@ -18,7 +18,7 @@ public:
     history.push_back(-1);
   }
 
-  void assign(int i, const T &value){
+  void set(int i, const T &value){
     data[i] = value;
     stock[i].push_back(value);
     history.push_back(i);
