@@ -11,28 +11,26 @@ class Compressor{
   std::vector<T> data;
 
 public:
-  inline void add(const T &val) {data.push_back(val);}
-  inline void add(const std::vector<T> &vals) {data.insert(data.end(), vals.begin(), vals.end());}
-  template <typename U> inline void add_all(const U &val) {add(val);}
-  template <typename U, typename ...Args> inline void add_all(const U &val, const Args&... args) {add(val); add_all(args...);}
+  auto& add(const T &val) {data.push_back(val); return *this;}
+  auto& add(const std::vector<T> &vals) {data.insert(data.end(), vals.begin(), vals.end()); return *this;}
+  template <typename U, typename ...Args> auto& add(const U &val, const Args&... args) {add(val); return add(args...);}
 
-  inline void build(){
+  auto& build(){
     std::sort(data.begin(), data.end());
     data.erase(std::unique(data.begin(), data.end()), data.end());
+    return *this;
   }
 
-  inline int get_index(const T &val) const {return std::lower_bound(data.begin(), data.end(), val) - data.begin();}
+  int get_index(const T &val) const {return std::lower_bound(data.begin(), data.end(), val) - data.begin();}
 
-  inline void compress(std::vector<T> &vals) const {for(auto &x : vals) x = get_index(x);}
-  inline void compress(T &val) const {val = get_index(val);}
-  template <typename U> inline void compress_all(U &val) const {compress(val);}
-  template <typename U, typename ...Args> inline void compress_all(U &val, Args&... args) const {compress(val); compress_all(args...);}
+  auto& compress(std::vector<T> &vals) const {for(auto &x : vals) x = get_index(x); return *this;}
+  auto& compress(T &val) const {val = get_index(val);return *this;}
+  template <typename U, typename ...Args> auto& compress(U &val, Args&... args) const {compress(val); return compress(args...);}
 
-  inline void decompress(std::vector<T> &vals) const {for(auto &x : vals) x = data[x];}
-  inline void decompress(T &val) const {val = data[val];}
-  template <typename U> inline void decompress_all(U &val) const {decompress(val);}
-  template <typename U, typename ...Args> inline void decompress_all(U &val, Args&... args) const {decompress(val); decompress_all(args...);}
+  auto& decompress(std::vector<T> &vals) const {for(auto &x : vals) x = data[x]; return *this;}
+  auto& decompress(T &val) const {val = data[val]; return *this;}
+  template <typename U, typename ...Args> auto& decompress(U &val, Args&... args) const {decompress(val); return decompress(args...);}
   
-  inline int size() const {return data.size();}
-  inline T operator[](int index) const {return data[index];}
+  int size() const {return data.size();}
+  T operator[](int index) const {return data[index];}
 };
