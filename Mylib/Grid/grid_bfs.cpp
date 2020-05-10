@@ -8,11 +8,12 @@
  * @docs grid_bfs.md
  */
 template <typename Directions, typename Checker>
-std::vector<std::vector<int>> bfs_grid(const int H, const int W,
-                                       const std::vector<Point> &start_points,
-                                       const Directions &dir,
-                                       const Checker &check_passable)
-{
+std::vector<std::vector<int>> grid_bfs(
+  const int H, const int W,
+  const std::vector<Point> &start_points,
+  const Directions &dir,
+  const Checker &check_passable
+){
   std::vector<std::vector<int>> dist(H, std::vector<int>(W, -1));
   std::vector<std::vector<bool>> visited(H, std::vector<bool>(W));
 

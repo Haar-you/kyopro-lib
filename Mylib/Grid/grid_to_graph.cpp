@@ -8,12 +8,13 @@
  * @docs grid_to_graph.md
  */
 template <typename T, typename Directions, typename Checker, typename Generator>
-Graph<T> grid_to_graph(int H, int W,
-                       const Directions &dir,
-                       const Checker &check_passable,
-                       const std::vector<std::vector<int>> &index,
-                       const Generator &generate_edge_cost)
-{
+Graph<T> grid_to_graph(
+  int H, int W,
+  const Directions &dir,
+  const Checker &check_passable,
+  const std::vector<std::vector<int>> &index,
+  const Generator &generate_edge_cost
+){
   Graph<T> ret(H * W);
 
   for(int i = 0; i < H; ++i){
