@@ -11,8 +11,7 @@ int main(){
   std::vector<int64_t> a(N);
   for(int i = 0; i < N; ++i) std::cin >> a[i];
 
-  auto c = CumulativeSum1D(a);
-  c.build();
+  auto c = CumulativeSum1D(a).build();
 
   while(Q--){
     int l, r; std::cin >> l >> r;

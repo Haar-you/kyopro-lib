@@ -29,21 +29,23 @@ public:
     data.assign(N+1, e);
   }
 
-  inline void update(int i, const T &val){
+  auto& update(int i, const T &val){
     assert(not is_built);
     data[i+1] = add(data[i+1], val);
+    return *this;
   }
 
-  inline void build(){
+  auto& build(){
     assert(not is_built);
     for(int i = 0; i < N; ++i) data[i+1] = add(data[i+1], data[i]);
     is_built = true;
+    return *this;
   }
   
   /**
    * @attention [i, j)
    */
-  inline T get(int i, int j) const {
+  T get(int i, int j) const {
     assert(is_built);
     return minus(data[j], data[i]);
   }

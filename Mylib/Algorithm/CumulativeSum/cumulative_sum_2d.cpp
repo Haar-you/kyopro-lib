@@ -33,19 +33,21 @@ public:
     data.assign(N+1, std::vector<T>(M+1, e));
   }
 
-  inline void update(int i, int j, const T &val){
+  auto& update(int i, int j, const T &val){
     assert(not is_built);
     data[i+1][j+1] = add(data[i+1][j+1], val);
+    return *this;
   }
 
-  inline void build(){
+  auto& build(){
     assert(not is_built);
     for(int i = 1; i <= N; ++i) for(int j = 0; j <= M; ++j) data[i][j] = add(data[i][j], data[i-1][j]);
     for(int i = 0; i <= N; ++i) for(int j = 1; j <= M; ++j) data[i][j] = add(data[i][j], data[i][j-1]);
     is_built = true;
+    return *this;
   }
 
-  inline T get(int x1, int y1, int x2, int y2) const { // [x1,x2), [y1,y2)
+  T get(int x1, int y1, int x2, int y2) const { // [x1,x2), [y1,y2)
     assert(is_built);
     return add(minus(data[x2][y2], add(data[x1][y2], data[x2][y1])), data[x1][y1]);
   }
