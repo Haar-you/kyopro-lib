@@ -1,6 +1,5 @@
 #pragma once
 #include <vector>
-#include <cmath>
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
@@ -23,37 +22,28 @@ namespace intersect_circles{
     std::vector<Point<T>> crosspoints;
   };
   
-  template <typename T, typename U = typename T::value_type>
+  template <typename T>
   auto check(const Circle<T> &a, const Circle<T> &b){
-    Result<T> ret;
-    
-    const T d = (a.center - b.center).size();
-    const T x = std::acos((U)((a.radius * a.radius + d * d - b.radius * b.radius) / ((T)2.0 * d * a.radius)));
-    const T t = std::atan2((U)(b.center.y - a.center.y), (U)(b.center.x - a.center.x));
+    const T d = abs(a.center - b.center);
+    const T x = acos((a.radius * a.radius + d * d - b.radius * b.radius) / ((T)2.0 * d * a.radius));
+    const T t = atan2(b.center.y - a.center.y, b.center.x - a.center.x);
     
     if(a.radius + b.radius == d){
-      ret.crosspoints.emplace_back(a.center + Vec<T>::polar(a.radius, t)); // if circumscribed
-      ret.status = CIRCUMSCRIBED;
+      return Result<T>({CIRCUMSCRIBED, {a.center + polar(a.radius, t)}});
     }
-    else if((T)std::fabs((U)(a.radius - b.radius)) == d){
-      ret.crosspoints.emplace_back(a.center + Vec<T>::polar(a.radius, t)); // if inscribed
-      ret.status = INSCRIBED;
+    else if(abs(a.radius - b.radius) == d){
+      return Result<T>({INSCRIBED, {a.center + polar(a.radius, t)}});
     }
-    else if(a.radius + b.radius > d and d > (T)std::fabs((U)(a.radius - b.radius))){ // if intersect
-      ret.crosspoints.emplace_back(a.center + Vec<T>::polar(a.radius, t+x));
-      ret.crosspoints.emplace_back(a.center + Vec<T>::polar(a.radius, t-x));
-      ret.status = INTERSECT;
+    else if(a.radius + b.radius > d and d > abs(a.radius - b.radius)){
+      return Result<T>({INTERSECT, {a.center + polar(a.radius, t + x), a.center + polar(a.radius, t - x)}});
     }
     else if(a.radius + b.radius < d){
-      ret.status = OUTSIDE;
+      return Result<T>({OUTSIDE, {}});
     }
-    else if((T)std::fabs((U)(a.radius - b.radius)) > d){
-      ret.status = INSIDE;
-    }
-    else{
-      ret.status = SAME;
+    else if(abs(a.radius - b.radius) > d){
+      return Result<T>({INSIDE, {}});
     }
     
-    return ret;
+    return Result<T>({SAME, {}});
   }
 }

@@ -20,12 +20,12 @@ Circle<T> minimum_covering_circle(std::vector<Point<T>> ps, int seed = 0){
 
   auto make_circle_2 = [&](const auto &p, const auto &q){
                     const auto c = (p + q) / 2.0;
-                    return Circle<T>(c, (p - c).size());
+                    return Circle<T>(c, abs(p - c));
                   };
 
 
   auto check = [](const auto &p, const auto &c){
-                 return (c.center - p).size() <= c.radius;
+                 return abs(c.center - p) <= c.radius;
                };
 
 

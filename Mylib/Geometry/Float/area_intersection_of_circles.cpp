@@ -1,5 +1,4 @@
 #pragma once
-#include <cmath>
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/intersect_circles.cpp"
 
@@ -7,7 +6,7 @@
  * @title 2円の共通部分の面積
  * @docs area_intersection_of_circles.md
  */
-template <typename T, typename U = typename T::value_type>
+template <typename T>
 T area_of_intersection_of_circles(const Circle<T> &a, const Circle<T> &b){
   auto [s, p] = intersect_circles::check(a, b);
   
@@ -22,16 +21,16 @@ T area_of_intersection_of_circles(const Circle<T> &a, const Circle<T> &b){
   case intersect_circles::INTERSECT: {
     T ret = 0;
 
-    auto d = (a.center - b.center).size();
+    auto d = abs(a.center - b.center);
 
     {
-      T ang = std::acos((U)((a.radius * a.radius + d * d - b.radius * b.radius) / (a.radius * d * 2.0)));
-      ret += (ang - std::sin((U)(ang * 2.0)) / 2.0) * a.radius * a.radius;
+      T ang = acos((a.radius * a.radius + d * d - b.radius * b.radius) / (a.radius * d * 2.0));
+      ret += (ang - sin(ang * 2.0) / 2.0) * a.radius * a.radius;
     }
 
     {
-      T ang = std::acos((U)((b.radius * b.radius + d * d - a.radius * a.radius) / (b.radius * d * 2.0)));
-      ret += (ang - std::sin((U)(ang * 2.0)) / 2.0) * b.radius * b.radius;
+      T ang = acos((b.radius * b.radius + d * d - a.radius * a.radius) / (b.radius * d * 2.0));
+      ret += (ang - sin(ang * 2.0) / 2.0) * b.radius * b.radius;
     }
     
     return ret;

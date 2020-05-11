@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <limits>
+#include <cmath>
 
 /**
  * @title 誤差許容浮動小数点数
@@ -56,3 +57,15 @@ namespace std{
     static DoubleEps<T> lowest() {return numeric_limits<T>::lowest();}
   };
 }
+
+template <typename T> DoubleEps<T> sin(DoubleEps<T> x){return std::sin((T)x);}
+template <typename T> DoubleEps<T> cos(DoubleEps<T> x){return std::cos((T)x);}
+template <typename T> DoubleEps<T> tan(DoubleEps<T> x){return std::tan((T)x);}
+
+template <typename T> DoubleEps<T> acos(DoubleEps<T> x){return std::acos((T)x);}
+template <typename T> DoubleEps<T> atan2(DoubleEps<T> y, DoubleEps<T> x){return std::atan2((T)y, (T)x);}
+
+template <typename T> DoubleEps<T> abs(DoubleEps<T> x){return std::abs((T)x);}
+
+template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
+

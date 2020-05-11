@@ -22,24 +22,19 @@ namespace intersect_line_segment{
 
   template <typename T>
   auto check(const Line<T> &l, const Segment<T> &s){
-    Result<T> ret;
-    
-    const T a = cross(l.diff(), s.from-l.from);
-    const T b = cross(l.diff(), s.to-l.from);
+    const T a = cross(diff(l), s.from - l.from);
+    const T b = cross(diff(l), s.to - l.from);
 
     if(a == 0 and b == 0){
-      ret.status = OVERLAPPED;
+      return Result<T>({OVERLAPPED, {}});
     }
     else if(a < 0 and b < 0){
-      ret.status = RIGHTSIDE;
+      return Result<T>({RIGHTSIDE, {}});
     }
     else if(a > 0 and b > 0){
-      ret.status = LEFTSIDE;
+      return Result<T>({LEFTSIDE, {}});
     }
-    else{
-      ret.status = CROSSED;
-      ret.crosspoints.emplace_back(s.from + s.diff() * cross(l.diff(),l.from-s.from) / cross(l.diff(),s.diff()));
-    }
-    return ret;
+    
+    return Result<T>({CROSSED, {s.from + diff(s) * cross(diff(l), l.from - s.from) / cross(l, s)}});
   }
 }

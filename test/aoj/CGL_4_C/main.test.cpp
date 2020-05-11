@@ -25,7 +25,7 @@ int main(){
     Polygon<D> left, right;
     convex_cut(g, l, left, right);
 
-    std::cout << std::fixed << std::setprecision(12) << polygon_area(left) << std::endl;
+    std::cout << std::fixed << std::setprecision(12) << area(left) << std::endl;
   }
 
   return 0;

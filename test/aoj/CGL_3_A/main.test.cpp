@@ -15,7 +15,7 @@ int main(){
   Polygon<D> p(n);
   for(int i = 0; i < n; ++i) std::cin >> p[i];
 
-  D ans = polygon_area(p);
+  D ans = area(p);
 
   std::cout << std::fixed << std::setprecision(1) << ans << std::endl;
 

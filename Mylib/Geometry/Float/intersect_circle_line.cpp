@@ -1,6 +1,5 @@
 #pragma once
 #include <vector>
-#include <cmath>
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/distance_line_point.cpp"
 
@@ -21,30 +20,22 @@ namespace intersect_circle_line{
     std::vector<Point<T>> crosspoints;
   };
   
-  template <typename T, typename U = typename T::value_type>
+  template <typename T>
   auto check(const Circle<T> &c, const Line<T> &l){
-    Result<T> ret;
-    
     const T d = distance_line_point(l, c.center);
 
     if(d > c.radius){
-      ret.status = OUTSIDE;
-      return ret;
+      return Result<T>({OUTSIDE, {}});
     }
 
-    const auto n = normal(l.diff());
-    const auto b = l.from + l.diff() * cross(n, c.center + n - l.from) / cross(n, l.diff());
+    const auto n = normal(l);
+    const auto b = l.from + diff(l) * cross(n, c.center + n - l.from) / cross(n, diff(l));
 
     if(d == c.radius){
-      ret.crosspoints.emplace_back(b);
-      ret.status = TANGENT;
-      return ret;
+      return Result<T>({TANGENT, {b}});
     }
     
-    const T a = std::sqrt((U)(c.radius * c.radius - d * d));
-    ret.crosspoints.emplace_back(b + unit(l.diff()) * a);
-    ret.crosspoints.emplace_back(b - unit(l.diff()) * a);
-    ret.status = CROSSED;
-    return ret;
+    const T a = sqrt(c.radius * c.radius - d * d);
+    return Result<T>({CROSSED, {b + unit(l) * a, b - unit(l) * a}});
   }
 }

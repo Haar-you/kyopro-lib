@@ -1,6 +1,5 @@
 #pragma once
 #include <vector>
-#include <cmath>
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/ccw.cpp"
 
@@ -22,33 +21,26 @@ namespace intersect_segments{
     std::vector<Point<T>> crosspoints;
   };
 
-  template <typename T, typename U = typename T::value_type>
+  template <typename T>
   auto check(const Segment<T> &a, const Segment<T> &b){
-    Result<T> ret;
-    
-    T cr = cross(a.diff(), b.diff());
+    const T cr = cross(a, b);
 
-    if((T)std::abs((U)cr) == 0){ // parallel
+    if(abs(cr) == 0){ // parallel
       if(ccw::ccw(a.from, a.to, b.from) * ccw::ccw(a.from, a.to, b.to) <= 0 and
          ccw::ccw(b.from, b.to, a.from) * ccw::ccw(b.from, b.to, a.to) <= 0){
-        ret.status = OVERLAPPED;
-        return ret;
+        return Result<T>({OVERLAPPED, {}});
       }else{
-        ret.status = NOT_INTERSECTING;
-        return ret;
+        return Result<T>({NOT_INTERSECTING, {}});
       }
     }
 
-    T t1 = cross(b.from-a.from, b.diff()) / cr;
-    T t2 = cross(b.from-a.from, a.diff()) / cr;
+    const T t1 = cross(b.from - a.from, diff(b)) / cr;
+    const T t2 = cross(b.from - a.from, diff(a)) / cr;
 
     if(t1 < 0 or t1 > 1 or t2 < 0 or t2 > 1){ // no crosspoint
-      ret.status = NOT_INTERSECTING;
-      return ret;
+      return Result<T>({NOT_INTERSECTING, {}});
     }
 
-    ret.crosspoints.emplace_back(a.from + a.diff() * t1);
-    ret.status = INTERSECTING;
-    return ret;
+    return Result<T>({INTERSECTING, {a.from + diff(a) * t1}});
   }
 }

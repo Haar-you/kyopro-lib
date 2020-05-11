@@ -1,6 +1,5 @@
 #pragma once
 #include <vector>
-#include <cmath>
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/distance_segment_point.cpp"
 
@@ -23,43 +22,35 @@ namespace intersect_circle_segment{
     std::vector<Point<T>> crosspoints;
   };
 
-  template <typename T, typename U = typename T::value_type>
+  template <typename T>
   auto check(const Circle<T> &cl, const Line<T> &s){
-    Result<T> ret;
-    
     const T r = cl.radius;
     const auto &c = cl.center;
 
-    const T d1 = (c - s.from).size();
-    const T d2 = (c - s.to).size();
+    const T d1 = abs(c - s.from);
+    const T d2 = abs(c - s.to);
     const T v = distance_segment_point(s, c);
-    const T m = std::sqrt((U)(r*r - v*v));
-    const auto n = normal(s.diff());
-    const auto k = s.from + s.diff() * cross(n, c + n - s.from) / cross(n, s.diff());
+    const T m = sqrt(r*r - v*v);
+    const auto n = normal(s);
+    const auto k = s.from + diff(s) * cross(n, c + n - s.from) / cross(n, diff(s));
 
-    if(d1 < r and d2 < r){ // if inside
-      ret.status = INSIDE;
+    if(d1 < r and d2 < r){
+      return Result<T>({INSIDE, {}});
     }
-    else if(v == r){ // if tangent
-      ret.crosspoints.emplace_back(k);
-      ret.status = TANGENT;
+    else if(v == r){
+      return Result<T>({TANGENT, {k}});
     }
-    else if(v > r){ // if outside
-      ret.status = OUTSIDE;
+    else if(v > r){
+      return Result<T>({OUTSIDE, {}});
     }
-    else if(d1 >= r and d2 >= r){ // if two crosspoints exist
-      ret.crosspoints.emplace_back(k - unit(s.diff()) * m);
-      ret.crosspoints.emplace_back(k + unit(s.diff()) * m);
-      ret.status = TWO_CROSSPOINT;
-    }
-    else{ // if one crosspoint exists
-      const T b = dot(unit(s.diff()), s.from - c);
-      const T a = (s.from - c).size_sq() - r*r;
-      const T x = std::sqrt((U)(b*b - a));
-      ret.crosspoints.emplace_back(s.from + unit(s.diff()) * (-b-x >= 0 ? -b-x : -b+x));
-      ret.status = ONE_CROSSPOINT;
+    else if(d1 >= r and d2 >= r){
+      return Result<T>({TWO_CROSSPOINT, {k - unit(s) * m, k + unit(s) * m}});
     }
 
-    return ret;
+    const T b = dot(unit(s), s.from - c);
+    const T a = abs_sq(s.from - c) - r*r;
+    const T x = sqrt(b*b - a);
+
+    return Result<T>({ONE_CROSSPOINT, {s.from + unit(s) * (-b-x >= 0 ? -b-x : -b+x)}});
   }
 };

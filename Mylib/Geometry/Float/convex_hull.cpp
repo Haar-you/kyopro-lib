@@ -9,7 +9,11 @@
  */
 template <typename T> 
 std::vector<Point<T>> upper_hull(Polygon<T> pts, bool upper = true){
-  std::sort(pts.begin(), pts.end(), [](const auto &a, const auto &b){return a.x < b.x or (a.x == b.x and a.y < b.y);});
+  std::sort(
+    pts.begin(),
+    pts.end(),
+    [](const auto &a, const auto &b){return a.x < b.x or (a.x == b.x and a.y < b.y);}
+  );
 
   if(upper) std::reverse(pts.begin(), pts.end());
   

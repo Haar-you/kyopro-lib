@@ -5,9 +5,9 @@
  * @title 線分・点間の距離
  * @docs distance_segment_point.md
  */
-template <typename T, typename U = typename T::value_type>
-T distance_segment_point(const Line<T> &l, const Point<T> &p){
-  if(dot(l.diff(), p-l.from) < 0) return (p-l.from).size();
-  if(dot(-l.diff(), p-l.to) < 0) return (p-l.to).size();
-  return (T)std::abs((U)cross(l.diff(), p-l.from)) / l.size();
+template <typename T>
+T distance_segment_point(const Segment<T> &l, const Point<T> &p){
+  if(dot(diff(l), p - l.from) < 0) return abs(p - l.from);
+  if(dot(-diff(l), p - l.to) < 0) return abs(p - l.to);
+  return abs(cross(diff(l), p - l.from)) / abs(l);
 }

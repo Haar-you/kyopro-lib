@@ -12,7 +12,8 @@ void convex_cut(const Polygon<T> &ps, const Line<T> &l, Polygon<T> &left, Polygo
   const int n = ps.size();
 
   for(int i = 0; i < n; ++i){
-    switch(auto [s, c] = intersect_line_segment::check(l, Line<T>(ps[i], ps[(i+1)%n])); s){
+    auto [s, c] = intersect_line_segment::check(l, Line<T>(ps[i], ps[(i+1)%n]));
+    switch(s){
     case intersect_line_segment::LEFTSIDE:{
       left.push_back(ps[i]);
       break;
