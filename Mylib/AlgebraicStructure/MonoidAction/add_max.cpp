@@ -1,6 +1,6 @@
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/max_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/max.cpp"
 
 /**
  * @docs add_max.md

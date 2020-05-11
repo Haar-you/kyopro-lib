@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;

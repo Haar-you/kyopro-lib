@@ -1,6 +1,6 @@
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/update_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/update.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 
 /**
  * @docs update_min.md

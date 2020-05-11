@@ -6,8 +6,8 @@
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp"
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/product_matrix_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/product_matrix.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 
 using mint = ModInt<1000000007>;
 using Mat = SquareMatrixConst<mint, 4>;

@@ -2,7 +2,7 @@
 #include <utility>
 
 /**
- * @docs affine_monoid.md
+ * @docs affine.md
  */
 template <typename T>
 struct AffineMonoid{

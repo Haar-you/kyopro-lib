@@ -1,6 +1,6 @@
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/product_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/product.cpp"
 
 /**
  * @docs multiply_sum.md

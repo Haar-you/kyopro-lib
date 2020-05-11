@@ -2,7 +2,7 @@
 #include <utility>
 
 /**
- * @docs pair_monoid.md
+ * @docs pair.md
  */
 template <typename M1, typename M2>
 struct PairMonoid{

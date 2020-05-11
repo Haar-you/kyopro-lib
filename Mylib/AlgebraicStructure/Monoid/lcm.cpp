@@ -2,7 +2,7 @@
 #include <numeric>
 
 /**
- * @docs lcm_monoid.md
+ * @docs lcm.md
  */
 template <typename T>
 struct LcmMonoid{

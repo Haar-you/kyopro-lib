@@ -5,7 +5,7 @@
 
 #include "Mylib/Misc/sort_all.cpp"
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/persistent_segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 using Seg = PersistentSegmentTree<SumMonoid<int64_t>>;
 

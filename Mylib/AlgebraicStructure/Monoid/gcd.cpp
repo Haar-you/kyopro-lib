@@ -2,7 +2,7 @@
 #include <numeric>
 
 /**
- * @docs gcd_monoid.md
+ * @docs gcd.md
  */
 template <typename T>
 struct GcdMonoid{

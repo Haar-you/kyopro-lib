@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @docs dual_monoid.md
+ * @docs dual.md
  */
 template <typename Monoid>
 struct DualMonoid{

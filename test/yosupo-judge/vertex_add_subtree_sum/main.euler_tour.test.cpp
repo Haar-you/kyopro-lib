@@ -5,7 +5,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/euler_tour_vertex.cpp"
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 int main(){
   int N, Q; scanf("%d %d", &N, &Q);

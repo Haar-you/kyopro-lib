@@ -1,6 +1,6 @@
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 
 /**
  * @docs affine_sum.md

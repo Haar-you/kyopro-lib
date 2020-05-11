@@ -4,7 +4,7 @@
 #include <queue>
 #include <tuple>
 
-#include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_2d.cpp"
 
 int main(){

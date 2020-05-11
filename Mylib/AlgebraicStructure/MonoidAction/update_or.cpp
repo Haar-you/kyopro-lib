@@ -1,13 +1,13 @@
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/update_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/or_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/update.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/bitor.cpp"
 
 /**
  * @docs update_or.md
  */
 template <typename T, typename U>
 struct UpdateOr{
-  using monoid_get = OrMonoid<T>;
+  using monoid_get = BitOrMonoid<T>;
   using monoid_update = UpdateMonoid<U>;
   using value_type_get = typename monoid_get::value_type;
   using value_type_update = typename monoid_update::value_type;

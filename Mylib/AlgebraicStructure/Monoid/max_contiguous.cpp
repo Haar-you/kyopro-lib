@@ -2,7 +2,7 @@
 #include <tuple>
 
 /**
- * @docs max_contiguous_monoid.md
+ * @docs max_contiguous.md
  */
 struct MaxContiguousMonoid{
   using value_type = std::tuple<int, int, int, int>;

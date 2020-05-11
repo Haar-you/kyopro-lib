@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/AlgebraicStructure/Group/sum_group.cpp"
+#include "Mylib/AlgebraicStructure/Group/sum.cpp"
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp"
 

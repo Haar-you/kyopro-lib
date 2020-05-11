@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
-#include "Mylib/AlgebraicStructure/Group/sum_group.cpp"
+#include "Mylib/AlgebraicStructure/Group/sum.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;

@@ -3,10 +3,10 @@
 #include <algorithm>
 
 /**
- * @docs tropical_semiring.md
+ * @docs min_add.md
  */
 template <typename T>
-struct TropicalSemiring{
+struct MinAddSemiring{
   using value_type = std::optional<T>;
 
   constexpr inline static value_type id_add(){return std::nullopt;}

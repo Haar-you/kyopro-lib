@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include "Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;

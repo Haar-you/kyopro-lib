@@ -1,5 +1,5 @@
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/product_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/product.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp"
 
 /**

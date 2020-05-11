@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @docs add_mul_semiring.md
+ * @docs add_mul.md
  */
 template <typename T>
 struct AddMulSemiring{

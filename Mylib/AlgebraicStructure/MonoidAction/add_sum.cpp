@@ -1,5 +1,5 @@
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 /**
  * @docs add_sum.md

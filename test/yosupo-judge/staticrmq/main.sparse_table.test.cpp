@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "Mylib/DataStructure/SparseTable/sparse_table.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 
 int main(){
   std::cin.tie(0);

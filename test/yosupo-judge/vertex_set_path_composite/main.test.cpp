@@ -7,8 +7,8 @@
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_both_foldable.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 
 using mint = ModInt<998244353>;
 using M = DualMonoid<AffineMonoid<mint>>;

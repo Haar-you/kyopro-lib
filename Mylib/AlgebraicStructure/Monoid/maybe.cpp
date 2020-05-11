@@ -2,7 +2,7 @@
 #include <optional>
 
 /**
- * @docs maybe_monoid.md
+ * @docs maybe.md
  */
 template <typename Semigroup>
 struct MaybeMonoid{

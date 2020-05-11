@@ -2,7 +2,7 @@
 #include <optional>
 
 /**
- * @docs update_monoid.md
+ * @docs update.md
  */
 template <typename T>
 struct UpdateMonoid{

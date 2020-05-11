@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @docs sum_group.md
+ * @docs sum.md
  */
 template <typename T>
 struct SumGroup{

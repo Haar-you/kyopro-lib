@@ -4,7 +4,7 @@
 #include <queue>
 #include <tuple>
 
-#include "Mylib/AlgebraicStructure/Group/sum_group.cpp"
+#include "Mylib/AlgebraicStructure/Group/sum.cpp"
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp"
 
 int main(){

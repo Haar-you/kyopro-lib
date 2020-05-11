@@ -2,7 +2,7 @@
 #include <algorithm>
 
 /**
- * @docs max_monoid.md
+ * @docs max.md
  */
 template <typename T>
 struct MaxMonoid{

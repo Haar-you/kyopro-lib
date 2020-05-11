@@ -8,8 +8,8 @@
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/max_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/max.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/maybe.cpp"
 
 struct LCASemigroup{
   using value_type = int;

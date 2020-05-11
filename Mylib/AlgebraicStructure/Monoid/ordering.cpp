@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @docs ordering_monoid.md
+ * @docs ordering.md
  */
 struct OrderingMonoid{
   using value_type = int;

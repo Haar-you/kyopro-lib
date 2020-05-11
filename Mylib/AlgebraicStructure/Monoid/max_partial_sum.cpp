@@ -3,7 +3,7 @@
 #include <algorithm>
 
 /**
- * @docs max_partial_sum_monoid.md
+ * @docs max_partial_sum.md
  */
 template <typename T>
 struct MaxPartialSumMonoid{

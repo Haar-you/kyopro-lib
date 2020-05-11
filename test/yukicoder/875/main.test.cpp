@@ -5,10 +5,10 @@
 #include <utility>
 
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/with_index.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/min.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/with_min_index.cpp"
 
-using Mon = WithIndex<MinMonoid<int>, MinMonoid<int>>;
+using Mon = WithMinIndex<MinMonoid<int>>;
 
 int main(){
   int N, Q; scanf("%d %d", &N, &Q);
@@ -43,7 +43,7 @@ int main(){
       int l, r; scanf("%d %d", &l, &r);
       --l, --r;
 
-      printf("%d\n", seg.get(l, r+1).second + 1);
+      printf("%lld\n", seg.get(l, r+1).second + 1);
 
       break;
     }

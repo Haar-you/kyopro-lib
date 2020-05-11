@@ -3,8 +3,6 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
 

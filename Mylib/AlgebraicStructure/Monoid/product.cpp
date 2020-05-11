@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @docs product_monoid.md
+ * @docs product.md
  */
 template <typename T>
 struct ProductMonoid{
