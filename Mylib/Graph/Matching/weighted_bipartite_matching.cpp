@@ -1,45 +1,47 @@
 #pragma once
 #include <vector>
 #include <tuple>
-#include "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 
 /**
- * @title 重み付き二部マッチング
+ * @title 重み付き最大二部マッチング
  * @docs weighted_bipartite_matching.md
  */
-template <typename T>
+template <typename T, typename MinCostFlow, bool MIN_MATCHING = false>
 class WeightedBipartiteMatching{
 public:
-  const int left, right, s, t;
-  MinimumCostFlow<int,T> f;
- 
-  WeightedBipartiteMatching(int left, int right):
-    left(left), right(right), s(left+right), t(s+1), f(left+right+2)
+  int L, R, s, t;
+  MinCostFlow f;
+  
+  WeightedBipartiteMatching(int L, int R, bool arbitrary_flow = false):
+    L(L), R(R), s(L+R), t(s+1), f(L+R+2)
   {
-    for(int i = 0; i < left; ++i) f.add_edge(s, i, 1, 0);
-    for(int i = 0; i < right; ++i) f.add_edge(left+i, t, 1, 0);
+    for(int i = 0; i < L; ++i) f.add_edge(s, i, 1, 0);
+    for(int i = 0; i < R; ++i) f.add_edge(L+i, t, 1, 0);
+    if(arbitrary_flow) f.add_edge(s, t, std::numeric_limits<int>::max(), 0);
   }
- 
-  void add_edge(int from, int to, T cost){
-    f.add_edge(from, left+to, 1, cost);
+  
+  void add_edge(int from, int to, T gain){
+    f.add_edge(from, L + to, 1, gain * (MIN_MATCHING ? 1 : -1));
   }
- 
+  
   T solve(int flow){
     T ret;
     f.solve(s, t, flow, ret);
-    return ret;
+    return ret * (MIN_MATCHING ? 1 : -1);
   }
- 
-  std::vector<std::tuple<int,int,T>> get_matching_edges(){
+  
+  auto get_matching(){
     auto g = f.get_graph();
     std::vector<std::tuple<int,int,T>> ret;
- 
-    for(int i = 0; i < left; ++i){
+    
+    for(int i = 0; i < L; ++i){
       for(auto &e : g[i]){
-        if(not e.is_rev and e.to != t and e.cap == 0) ret.emplace_back(i, e.to-left, e.cost);
+        if(not e.is_rev and e.to != t and e.cap == 0){
+          ret.emplace_back(i, e.to - L, e.cost * (MIN_MATCHING ? 1 : -1));
+        }
       }
     }
- 
+    
     return ret;
   }
 };

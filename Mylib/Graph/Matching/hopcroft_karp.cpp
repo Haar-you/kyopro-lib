@@ -98,11 +98,11 @@ public:
     return ret;
   }
   
-  std::vector<std::pair<int,int>> get_matching(){
+  auto get_matching(){
     std::vector<std::pair<int,int>> ret;
     for(int i = 0; i < L; ++i){
       for(auto &e : graph[i+1]){
-        if(e.used) ret.emplace_back(i, e.to-L-1);
+        if(e.used) ret.emplace_back(i, e.to - L - 1);
       }
     }
     return ret;

@@ -3,39 +3,39 @@
 #include <utility>
 #include <climits>
 #include <cassert>
-#include "Mylib/Graph/Flow/ford_fulkerson.cpp"
 
 /**
- * @title 二部マッチング
+ * @title 最大二部マッチング
  * @docs bipartite_matching.md
  */
+template <typename MaxFlow>
 class BipartiteMatching{
-  int x, y;
-  FordFulkerson<int> f;
+  int L, R;
   int s, t;
+  MaxFlow f;
   
 public:
-  BipartiteMatching(int x, int y): x(x), y(y), f(x+y+2), s(x+y), t(s+1){
-    for(int i = 0; i < x; ++i) f.add_edge(s,i,1);
-    for(int i = 0; i < y; ++i) f.add_edge(x+i,t,1);
+  BipartiteMatching(int L, int R): L(L), R(R), s(L+R), t(s+1), f(L+R+2){
+    for(int i = 0; i < L; ++i) f.add_edge(s, i, 1);
+    for(int i = 0; i < R; ++i) f.add_edge(L + i, t, 1);
   }
 
   void add_edge(int i, int j){
-    assert(0 <= i and i < x and 0 <= j and j < y);
-    f.add_edge(i,x+j,1);
+    assert(0 <= i and i < L and 0 <= j and j < R);
+    f.add_edge(i, L + j, 1);
   }
 
   int solve(){
     return f.solve(s, t);
   }
 
-  std::vector<std::pair<int,int>> get_matching_edges(){
+  auto get_matching(){
     auto g = f.get_graph();
     std::vector<std::pair<int,int>> ret;
 
     for(int i = 0; i < (int)g.size()-2; ++i){
       for(const auto &e : g[i]){
-        if((not e.is_rev) and e.cap == 0 and e.to != t) ret.emplace_back(i, e.to-x);
+        if((not e.is_rev) and e.cap == 0 and e.to != t) ret.emplace_back(i, e.to - L);
       }
     }
 

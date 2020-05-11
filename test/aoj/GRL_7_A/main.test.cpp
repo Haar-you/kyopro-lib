@@ -2,11 +2,12 @@
 
 #include <iostream>
 #include "Mylib/Graph/Matching/bipartite_matching.cpp"
+#include "Mylib/Graph/Flow/ford_fulkerson.cpp"
 
 int main(){
   int X, Y, E; std::cin >> X >> Y >> E;
 
-  BipartiteMatching b(X, Y);
+  BipartiteMatching<FordFulkerson<int>> b(X, Y);
 
   for(int i = 0; i < E; ++i){
     int x, y; std::cin >> x >> y;

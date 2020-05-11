@@ -8,8 +8,8 @@ int main(){
   HopcroftKarp hk(L,R);
 
   for(int i = 0; i < M; ++i){
-    int a,b; std::cin >> a >> b;
-    hk.add_edge(a,b);
+    int a, b; std::cin >> a >> b;
+    hk.add_edge(a, b);
   }
   
   hk.solve();

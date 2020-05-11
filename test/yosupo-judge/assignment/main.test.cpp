@@ -3,13 +3,14 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
+#include "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
   
   int N; std::cin >> N;
-  WeightedBipartiteMatching<int64_t> m(N, N);
+  WeightedBipartiteMatching<int64_t, MinimumCostFlow<int, int64_t>, true> m(N, N);
 
   auto a = std::vector(N, std::vector<int64_t>(N));
   
@@ -23,10 +24,10 @@ int main(){
   auto ans = m.solve(N);
   std::cout << ans << std::endl;
 
-  auto match = m.get_matching_edges();
+  auto matching = m.get_matching();
 
   std::vector<int> p(N);
-  for(auto &[i,j,c] : match){
+  for(auto &[i,j,c] : matching){
     p[i] = j;
   }
 
