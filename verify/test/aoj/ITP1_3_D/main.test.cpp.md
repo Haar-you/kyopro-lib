@@ -31,15 +31,15 @@ layout: default
 
 * category: <a href="../../../../index.html#8d38fbe7bd169996a63c214260a5e34a">test/aoj/ITP1_3_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ITP1_3_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-09 08:43:01+09:00
 
 
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D&lang=ja">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D&lang=ja</a>
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Divisor/divisor_list.cpp.html">約数列挙</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Divisor/enumerate_divisor.cpp.html">約数列挙</a>
 
 
 ## Code
@@ -47,17 +47,17 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D&lang=ja"
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D"
 
 #include <iostream>
-#include "Mylib/Number/Divisor/divisor_list.cpp"
+#include "Mylib/Number/Divisor/enumerate_divisor.cpp"
 
 int main(){
   int a, b, c; std::cin >> a >> b >> c;
 
   int ans = 0;
 
-  for(auto d : divisor_list(c)){
+  for(auto d : enumerate_divisor(c)){
     if(a <= d and d <= b) ++ans;
   }
 
@@ -73,18 +73,18 @@ int main(){
 {% raw %}
 ```cpp
 #line 1 "test/aoj/ITP1_3_D/main.test.cpp"
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D&lang=ja"
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D"
 
 #include <iostream>
-#line 2 "Mylib/Number/Divisor/divisor_list.cpp"
+#line 2 "Mylib/Number/Divisor/enumerate_divisor.cpp"
 #include <vector>
 #include <algorithm>
 
 /**
  * @title 約数列挙
- * @docs divisor_list.md
+ * @docs enumerate_divisor.md
  */
-std::vector<std::int64_t> divisor_list(std::int64_t n){
+std::vector<std::int64_t> enumerate_divisor(std::int64_t n){
   std::vector<std::int64_t> temp, ret;
 
   {
@@ -110,7 +110,7 @@ int main(){
 
   int ans = 0;
 
-  for(auto d : divisor_list(c)){
+  for(auto d : enumerate_divisor(c)){
     if(a <= d and d <= b) ++ans;
   }
 

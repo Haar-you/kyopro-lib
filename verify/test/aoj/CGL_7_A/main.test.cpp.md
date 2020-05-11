@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0ad5f649d1c9a300a851da735ee7e7a9">test/aoj/CGL_7_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_7_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-11 12:02:00+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_A</a>
@@ -88,6 +88,7 @@ int main(){
 #include <iostream>
 #line 3 "Mylib/Geometry/Float/double_eps.cpp"
 #include <limits>
+#include <cmath>
 
 /**
  * @title 誤差許容浮動小数点数
@@ -143,26 +144,34 @@ namespace std{
     static DoubleEps<T> lowest() {return numeric_limits<T>::lowest();}
   };
 }
-#line 3 "Mylib/Geometry/Float/geometry_template.cpp"
-#include <cmath>
+
+template <typename T> DoubleEps<T> sin(DoubleEps<T> x){return std::sin((T)x);}
+template <typename T> DoubleEps<T> cos(DoubleEps<T> x){return std::cos((T)x);}
+template <typename T> DoubleEps<T> tan(DoubleEps<T> x){return std::tan((T)x);}
+
+template <typename T> DoubleEps<T> acos(DoubleEps<T> x){return std::acos((T)x);}
+template <typename T> DoubleEps<T> atan2(DoubleEps<T> y, DoubleEps<T> x){return std::atan2((T)y, (T)x);}
+
+template <typename T> DoubleEps<T> abs(DoubleEps<T> x){return std::abs((T)x);}
+
+template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
+
+#line 4 "Mylib/Geometry/Float/geometry_template.cpp"
 #include <vector>
 
 /**
  * @title 幾何基本セット
  * @docs geometry_template.md
  */
-template <typename T> struct Vec{
-  using U = typename T::value_type;
-  T x, y;
-  Vec(): x(0), y(0){}
-  Vec(const T &x, const T &y): x(x), y(y){}
-  T size() const {return std::sqrt((U)(x*x+y*y));}
-  T size_sq() const {return x*x+y*y;}
-  
-  static auto polar(const T &r, const T &ang){return Vec<T>(r * std::cos((U)ang), r * std::sin((U)ang));}
 
-  friend auto operator+(const Vec &a, const Vec &b){return Vec(a.x+b.x, a.y+b.y);}
-  friend auto operator-(const Vec &a, const Vec &b){return Vec(a.x-b.x, a.y-b.y);}
+template <typename T>
+struct Vec{
+  T x, y;
+  Vec(){}
+  Vec(T x, T y): x(x), y(y){}
+
+  friend auto operator+(const Vec &a, const Vec &b){return Vec(a.x + b.x, a.y + b.y);}
+  friend auto operator-(const Vec &a, const Vec &b){return Vec(a.x - b.x, a.y - b.y);}
   friend auto operator-(const Vec &a){return Vec(-a.x, -a.y);}
 
   friend bool operator==(const Vec &a, const Vec &b){return a.x == b.x and a.y == b.y;}
@@ -172,39 +181,27 @@ template <typename T> struct Vec{
   friend std::istream& operator>>(std::istream &s, Vec &a){
     s >> a.x >> a.y; return s;
   }
-
-  friend T dot(const Vec &a, const Vec &b){
-    return a.x*b.x+a.y*b.y;
-  }
-
-  friend  T cross(const Vec &a, const Vec &b){
-    return a.x*b.y-a.y*b.x;
-  }
-
-  friend  T angle(const Vec &a, const Vec &b){ // 点aから点bへの角度
-    return std::atan2((U)(b.y-a.y), (U)(b.x-a.x));
-  }
-
-  friend  auto unit(const Vec &a){ // 単位ベクトル
-    return a / a.size();
-  }
-  
-  friend  auto normal(const Vec &p){
-    return Vec<T>(-p.y,p.x);
-  }
-
-  friend  T phase(const Vec &a){
-    return std::atan2((U)a.y, (U)a.x);
-  }
 };
 
-template <typename T, typename U> auto operator*(const Vec<T> &a, const U &k){return Vec<T>(a.x*k, a.y*k);}
-template <typename T, typename U> auto operator*(const U &k, const Vec<T> &a){return Vec<T>(a.x*k, a.y*k);}
-template <typename T, typename U> auto operator/(const Vec<T> &a, const U &k){return Vec<T>(a.x/k, a.y/k);}
-
+template <typename T, typename U> auto operator*(const Vec<T> &a, const U &k){return Vec<T>(a.x * k, a.y * k);}
+template <typename T, typename U> auto operator*(const U &k, const Vec<T> &a){return Vec<T>(a.x * k, a.y * k);}
+template <typename T, typename U> auto operator/(const Vec<T> &a, const U &k){return Vec<T>(a.x / k, a.y / k);}
 
 template <typename T> using Point = Vec<T>;
 
+template <typename T> T abs(const Vec<T> &a){return sqrt(a.x * a.x + a.y * a.y);}
+template <typename T> T abs_sq(const Vec<T> &a){return a.x * a.x + a.y * a.y;}
+
+template <typename T> T dot(const Vec<T> &a, const Vec<T> &b){return a.x * b.x + a.y * b.y;}
+template <typename T> T cross(const Vec<T> &a, const Vec<T> &b){return a.x * b.y - a.y * b.x;}
+
+template <typename T> auto unit(const Vec<T> &a){return a / abs(a);}
+template <typename T> auto normal(const Vec<T> &p){return Vec<T>(-p.y, p.x);}
+
+template <typename T> auto polar(const T &r, const T &ang){return Vec<T>(r * cos(ang), r * sin(ang));}
+
+template <typename T> T angle(const Vec<T> &a, const Vec<T> &b){return atan2(b.y - a.y, b.x - a.x);}
+template <typename T> T phase(const Vec<T> &a){return atan2(a.y, a.x);}
 
 template <typename T>
 T angle_diff(const Vec<T> &a, const Vec<T> &b){
@@ -215,15 +212,27 @@ T angle_diff(const Vec<T> &a, const Vec<T> &b){
   return r;
 }
 
+
 template <typename T> struct Line{
   Point<T> from, to;
   Line(): from(), to(){}
   Line(const Point<T> &from, const Point<T> &to): from(from), to(to){}
-  Vec<T> diff() const {return to-from;}
-  T size() const {return diff().size();}
 };
 
 template <typename T> using Segment = Line<T>;
+
+
+template <typename T> auto unit(const Line<T> &a){return unit(a.to - a.from);}
+template <typename T> auto normal(const Line<T> &a){return normal(a.to - a.from);}
+
+template <typename T> auto diff(const Segment<T> &a){return a.to - a.from;}
+
+template <typename T> T abs(const Segment<T> &a){return abs(diff(a));}
+
+template <typename T> T dot(const Line<T> &a, const Line<T> &b){return dot(diff(a), diff(b));}
+template <typename T> T cross(const Line<T> &a, const Line<T> &b){return cross(diff(a), diff(b));}
+
+
 template <typename T> using Polygon = std::vector<Point<T>>;
 
 template <typename T> struct Circle{
@@ -232,7 +241,7 @@ template <typename T> struct Circle{
   Circle(): center(), radius(0){}
   Circle(const Point<T> &center, T radius): center(center), radius(radius){}
 };
-#line 5 "Mylib/Geometry/Float/intersect_circles.cpp"
+#line 4 "Mylib/Geometry/Float/intersect_circles.cpp"
 
 /**
  * @title 円同士の交差
@@ -254,38 +263,29 @@ namespace intersect_circles{
     std::vector<Point<T>> crosspoints;
   };
   
-  template <typename T, typename U = typename T::value_type>
+  template <typename T>
   auto check(const Circle<T> &a, const Circle<T> &b){
-    Result<T> ret;
-    
-    const T d = (a.center - b.center).size();
-    const T x = std::acos((U)((a.radius * a.radius + d * d - b.radius * b.radius) / ((T)2.0 * d * a.radius)));
-    const T t = std::atan2((U)(b.center.y - a.center.y), (U)(b.center.x - a.center.x));
+    const T d = abs(a.center - b.center);
+    const T x = acos((a.radius * a.radius + d * d - b.radius * b.radius) / ((T)2.0 * d * a.radius));
+    const T t = atan2(b.center.y - a.center.y, b.center.x - a.center.x);
     
     if(a.radius + b.radius == d){
-      ret.crosspoints.emplace_back(a.center + Vec<T>::polar(a.radius, t)); // if circumscribed
-      ret.status = CIRCUMSCRIBED;
+      return Result<T>({CIRCUMSCRIBED, {a.center + polar(a.radius, t)}});
     }
-    else if((T)std::fabs((U)(a.radius - b.radius)) == d){
-      ret.crosspoints.emplace_back(a.center + Vec<T>::polar(a.radius, t)); // if inscribed
-      ret.status = INSCRIBED;
+    else if(abs(a.radius - b.radius) == d){
+      return Result<T>({INSCRIBED, {a.center + polar(a.radius, t)}});
     }
-    else if(a.radius + b.radius > d and d > (T)std::fabs((U)(a.radius - b.radius))){ // if intersect
-      ret.crosspoints.emplace_back(a.center + Vec<T>::polar(a.radius, t+x));
-      ret.crosspoints.emplace_back(a.center + Vec<T>::polar(a.radius, t-x));
-      ret.status = INTERSECT;
+    else if(a.radius + b.radius > d and d > abs(a.radius - b.radius)){
+      return Result<T>({INTERSECT, {a.center + polar(a.radius, t + x), a.center + polar(a.radius, t - x)}});
     }
     else if(a.radius + b.radius < d){
-      ret.status = OUTSIDE;
+      return Result<T>({OUTSIDE, {}});
     }
-    else if((T)std::fabs((U)(a.radius - b.radius)) > d){
-      ret.status = INSIDE;
-    }
-    else{
-      ret.status = SAME;
+    else if(abs(a.radius - b.radius) > d){
+      return Result<T>({INSIDE, {}});
     }
     
-    return ret;
+    return Result<T>({SAME, {}});
   }
 }
 #line 7 "test/aoj/CGL_7_A/main.test.cpp"

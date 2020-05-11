@@ -31,15 +31,15 @@ layout: default
 
 * category: <a href="../../../index.html#437b04c37f52e5b35f1d2c24c546c491">Mylib/Grid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Grid/grid_to_graph.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-10 10:14:38+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../Graph/graph_template.cpp.html">グラフ用テンプレート</a>
-* :warning: <a href="grid.cpp.html">グリッド用テンプレート</a>
+* :heavy_check_mark: <a href="../Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :heavy_check_mark: <a href="grid.cpp.html">グリッド用テンプレート</a>
 
 
 ## Code
@@ -57,12 +57,13 @@ layout: default
  * @docs grid_to_graph.md
  */
 template <typename T, typename Directions, typename Checker, typename Generator>
-Graph<T> grid_to_graph(int H, int W,
-                       const Directions &dir,
-                       const Checker &check_passable,
-                       const std::vector<std::vector<int>> &index,
-                       const Generator &generate_edge_cost)
-{
+Graph<T> grid_to_graph(
+  int H, int W,
+  const Directions &dir,
+  const Checker &check_passable,
+  const std::vector<std::vector<int>> &index,
+  const Generator &generate_edge_cost
+){
   Graph<T> ret(H * W);
 
   for(int i = 0; i < H; ++i){
@@ -165,12 +166,13 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
  * @docs grid_to_graph.md
  */
 template <typename T, typename Directions, typename Checker, typename Generator>
-Graph<T> grid_to_graph(int H, int W,
-                       const Directions &dir,
-                       const Checker &check_passable,
-                       const std::vector<std::vector<int>> &index,
-                       const Generator &generate_edge_cost)
-{
+Graph<T> grid_to_graph(
+  int H, int W,
+  const Directions &dir,
+  const Checker &check_passable,
+  const std::vector<std::vector<int>> &index,
+  const Generator &generate_edge_cost
+){
   Graph<T> ret(H * W);
 
   for(int i = 0; i < H; ++i){

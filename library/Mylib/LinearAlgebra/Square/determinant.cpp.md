@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 行列式 (01)
+# :heavy_check_mark: 行列式
 
 <a href="../../../../index.html">Back to top page</a>
 

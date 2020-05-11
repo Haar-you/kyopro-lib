@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#ca8297dc1f360076acf81836d1dfad66">test/aoj/CGL_3_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_3_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-11 12:02:00+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C</a>
@@ -91,6 +91,7 @@ int main(){
 #include <iostream>
 #line 3 "Mylib/Geometry/Float/double_eps.cpp"
 #include <limits>
+#include <cmath>
 
 /**
  * @title 誤差許容浮動小数点数
@@ -146,26 +147,34 @@ namespace std{
     static DoubleEps<T> lowest() {return numeric_limits<T>::lowest();}
   };
 }
-#line 3 "Mylib/Geometry/Float/geometry_template.cpp"
-#include <cmath>
+
+template <typename T> DoubleEps<T> sin(DoubleEps<T> x){return std::sin((T)x);}
+template <typename T> DoubleEps<T> cos(DoubleEps<T> x){return std::cos((T)x);}
+template <typename T> DoubleEps<T> tan(DoubleEps<T> x){return std::tan((T)x);}
+
+template <typename T> DoubleEps<T> acos(DoubleEps<T> x){return std::acos((T)x);}
+template <typename T> DoubleEps<T> atan2(DoubleEps<T> y, DoubleEps<T> x){return std::atan2((T)y, (T)x);}
+
+template <typename T> DoubleEps<T> abs(DoubleEps<T> x){return std::abs((T)x);}
+
+template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
+
+#line 4 "Mylib/Geometry/Float/geometry_template.cpp"
 #include <vector>
 
 /**
  * @title 幾何基本セット
  * @docs geometry_template.md
  */
-template <typename T> struct Vec{
-  using U = typename T::value_type;
-  T x, y;
-  Vec(): x(0), y(0){}
-  Vec(const T &x, const T &y): x(x), y(y){}
-  T size() const {return std::sqrt((U)(x*x+y*y));}
-  T size_sq() const {return x*x+y*y;}
-  
-  static auto polar(const T &r, const T &ang){return Vec<T>(r * std::cos((U)ang), r * std::sin((U)ang));}
 
-  friend auto operator+(const Vec &a, const Vec &b){return Vec(a.x+b.x, a.y+b.y);}
-  friend auto operator-(const Vec &a, const Vec &b){return Vec(a.x-b.x, a.y-b.y);}
+template <typename T>
+struct Vec{
+  T x, y;
+  Vec(){}
+  Vec(T x, T y): x(x), y(y){}
+
+  friend auto operator+(const Vec &a, const Vec &b){return Vec(a.x + b.x, a.y + b.y);}
+  friend auto operator-(const Vec &a, const Vec &b){return Vec(a.x - b.x, a.y - b.y);}
   friend auto operator-(const Vec &a){return Vec(-a.x, -a.y);}
 
   friend bool operator==(const Vec &a, const Vec &b){return a.x == b.x and a.y == b.y;}
@@ -175,39 +184,27 @@ template <typename T> struct Vec{
   friend std::istream& operator>>(std::istream &s, Vec &a){
     s >> a.x >> a.y; return s;
   }
-
-  friend T dot(const Vec &a, const Vec &b){
-    return a.x*b.x+a.y*b.y;
-  }
-
-  friend  T cross(const Vec &a, const Vec &b){
-    return a.x*b.y-a.y*b.x;
-  }
-
-  friend  T angle(const Vec &a, const Vec &b){ // 点aから点bへの角度
-    return std::atan2((U)(b.y-a.y), (U)(b.x-a.x));
-  }
-
-  friend  auto unit(const Vec &a){ // 単位ベクトル
-    return a / a.size();
-  }
-  
-  friend  auto normal(const Vec &p){
-    return Vec<T>(-p.y,p.x);
-  }
-
-  friend  T phase(const Vec &a){
-    return std::atan2((U)a.y, (U)a.x);
-  }
 };
 
-template <typename T, typename U> auto operator*(const Vec<T> &a, const U &k){return Vec<T>(a.x*k, a.y*k);}
-template <typename T, typename U> auto operator*(const U &k, const Vec<T> &a){return Vec<T>(a.x*k, a.y*k);}
-template <typename T, typename U> auto operator/(const Vec<T> &a, const U &k){return Vec<T>(a.x/k, a.y/k);}
-
+template <typename T, typename U> auto operator*(const Vec<T> &a, const U &k){return Vec<T>(a.x * k, a.y * k);}
+template <typename T, typename U> auto operator*(const U &k, const Vec<T> &a){return Vec<T>(a.x * k, a.y * k);}
+template <typename T, typename U> auto operator/(const Vec<T> &a, const U &k){return Vec<T>(a.x / k, a.y / k);}
 
 template <typename T> using Point = Vec<T>;
 
+template <typename T> T abs(const Vec<T> &a){return sqrt(a.x * a.x + a.y * a.y);}
+template <typename T> T abs_sq(const Vec<T> &a){return a.x * a.x + a.y * a.y;}
+
+template <typename T> T dot(const Vec<T> &a, const Vec<T> &b){return a.x * b.x + a.y * b.y;}
+template <typename T> T cross(const Vec<T> &a, const Vec<T> &b){return a.x * b.y - a.y * b.x;}
+
+template <typename T> auto unit(const Vec<T> &a){return a / abs(a);}
+template <typename T> auto normal(const Vec<T> &p){return Vec<T>(-p.y, p.x);}
+
+template <typename T> auto polar(const T &r, const T &ang){return Vec<T>(r * cos(ang), r * sin(ang));}
+
+template <typename T> T angle(const Vec<T> &a, const Vec<T> &b){return atan2(b.y - a.y, b.x - a.x);}
+template <typename T> T phase(const Vec<T> &a){return atan2(a.y, a.x);}
 
 template <typename T>
 T angle_diff(const Vec<T> &a, const Vec<T> &b){
@@ -218,15 +215,27 @@ T angle_diff(const Vec<T> &a, const Vec<T> &b){
   return r;
 }
 
+
 template <typename T> struct Line{
   Point<T> from, to;
   Line(): from(), to(){}
   Line(const Point<T> &from, const Point<T> &to): from(from), to(to){}
-  Vec<T> diff() const {return to-from;}
-  T size() const {return diff().size();}
 };
 
 template <typename T> using Segment = Line<T>;
+
+
+template <typename T> auto unit(const Line<T> &a){return unit(a.to - a.from);}
+template <typename T> auto normal(const Line<T> &a){return normal(a.to - a.from);}
+
+template <typename T> auto diff(const Segment<T> &a){return a.to - a.from;}
+
+template <typename T> T abs(const Segment<T> &a){return abs(diff(a));}
+
+template <typename T> T dot(const Line<T> &a, const Line<T> &b){return dot(diff(a), diff(b));}
+template <typename T> T cross(const Line<T> &a, const Line<T> &b){return cross(diff(a), diff(b));}
+
+
 template <typename T> using Polygon = std::vector<Point<T>>;
 
 template <typename T> struct Circle{
@@ -242,7 +251,7 @@ template <typename T> struct Circle{
  * @docs ccw.md
  */
 namespace ccw{
-  enum CCW{
+  enum Status{
            ONLINE_BACK       = -2,
            COUNTER_CLOCKWISE = -1,
            ON_SEGMENT        = 0,
@@ -251,13 +260,13 @@ namespace ccw{
   };
 
   template <typename T>
-  CCW ccw(const Point<T> &p0, const Point<T> &p1, const Point<T> &p2){
-    const T cr = cross(p1-p0, p2-p0);
-    const T d = dot(p1-p0, p2-p0);
+  Status ccw(const Point<T> &p0, const Point<T> &p1, const Point<T> &p2){
+    const T cr = cross(p1 - p0, p2 - p0);
+    const T d = dot(p1 - p0, p2 - p0);
 
     if(cr == 0){
       if(d < 0) return ONLINE_BACK;
-      else if((p2-p0).size() > (p1-p0).size()) return ONLINE_FRONT;
+      else if(abs(p2 - p0) > abs(p1 - p0)) return ONLINE_FRONT;
       else return ON_SEGMENT;
     }else if(cr > 0){
       return COUNTER_CLOCKWISE;
@@ -266,7 +275,7 @@ namespace ccw{
     }
   }
 }
-#line 5 "Mylib/Geometry/Float/is_point_in_polygon.cpp"
+#line 4 "Mylib/Geometry/Float/is_point_in_polygon.cpp"
 
 /**
  * @title 点・多角形の包含関係
@@ -279,7 +288,7 @@ namespace point_in_polygon{
               OUTSIDE    = 0b100
   };
 
-  template <typename T, typename U = typename T::value_type>
+  template <typename T>
   Status check(const Point<T> &p, const Polygon<T> &polygon){
     const int n = polygon.size();
   
@@ -287,23 +296,23 @@ namespace point_in_polygon{
     for(int i = 0; i < n; ++i){
       if(ccw::ccw(polygon[i], polygon[(i+1)%n], p) == ccw::ON_SEGMENT) return ON_SEGMENT;
       
-      T a = angle(polygon[i],p);
-      T b = angle(polygon[(i+1)%n],p);
+      T a = angle(polygon[i], p);
+      T b = angle(polygon[(i+1)%n], p);
 
       if(a < 0) a += 2 * M_PI;
       if(b < 0) b += 2 * M_PI;
 
-      T ang = b-a;
+      T ang = b - a;
 
-      if((T)std::fabs((U)ang) > M_PI){
-        if(ang <= 0) ang += 2*M_PI;
-        else ang -= 2*M_PI;
+      if(abs(ang) > M_PI){
+        if(ang <= 0) ang += 2 * M_PI;
+        else ang -= 2 * M_PI;
       }
       
       d += ang;
     }
 
-    if((T)std::fabs(std::fabs((U)d) - 2*M_PI) == 0) return INCLUSION;
+    if(abs(abs(d) - 2 * M_PI) == 0) return INCLUSION;
     
     return OUTSIDE;
   }

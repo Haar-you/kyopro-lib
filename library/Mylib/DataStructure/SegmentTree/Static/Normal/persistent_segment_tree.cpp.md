@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../../../index.html#dd4a4f8515bcc75e971952e726133342">Mylib/DataStructure/SegmentTree/Static/Normal</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/Static/Normal/persistent_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-07 03:04:38+09:00
+    - Last commit date: 2020-05-09 08:43:01+09:00
 
 
 
@@ -60,6 +60,7 @@ layout: default
 ## Problems
 
 - [yukicoder No.877 Range ReLU Query](https://yukicoder.me/problems/no/877)
+- [Codeforces Round #276 (Div. 1) E. Sign on Fence](https://codeforces.com/contest/484/problem/E)
 
 ## References
 
@@ -121,10 +122,10 @@ public:
     root = init(root, init_list, 1, pos);
   }
   
-  PersistentSegmentTree(int size){
+  PersistentSegmentTree(int size, const value_type &value = Monoid::id()){
     depth = size == 1 ? 1 : 32 - __builtin_clz(size-1) + 1;
     int pos = 0;
-    root = init(root, std::vector<value_type>(size, Monoid::id()), 1, pos);
+    root = init(root, std::vector<value_type>(size, value), 1, pos);
   }
   
 protected:
@@ -220,10 +221,10 @@ public:
     root = init(root, init_list, 1, pos);
   }
   
-  PersistentSegmentTree(int size){
+  PersistentSegmentTree(int size, const value_type &value = Monoid::id()){
     depth = size == 1 ? 1 : 32 - __builtin_clz(size-1) + 1;
     int pos = 0;
-    root = init(root, std::vector<value_type>(size, Monoid::id()), 1, pos);
+    root = init(root, std::vector<value_type>(size, value), 1, pos);
   }
   
 protected:

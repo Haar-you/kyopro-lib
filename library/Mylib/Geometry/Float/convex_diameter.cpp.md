@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/convex_diameter.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-11 12:02:00+09:00
 
 
 
@@ -65,16 +65,16 @@ T convex_diameter(const Polygon<T> &ps){
   int i = std::min_element(ps.begin(), ps.end(), [](const auto &a, const auto &b){return a.y < b.y;}) - ps.begin();
   int j = std::max_element(ps.begin(), ps.end(), [](const auto &a, const auto &b){return a.y < b.y;}) - ps.begin();
 
-  T ret = (ps[i]-ps[j]).size();
+  T ret = abs(ps[i]-ps[j]);
 
   for(int k = 0; k < 2*n; ++k){
-    if(cross(ps[(i+1)%n]-ps[i], ps[(j+1)%n]-ps[j]) > 0){
+    if(cross(ps[(i+1)%n] - ps[i], ps[(j+1)%n] - ps[j]) > 0){
       (++j) %= n;
     }else{
       (++i) %= n;
     }
 
-    ret = std::max(ret, (ps[i]-ps[j]).size());
+    ret = std::max(ret, abs(ps[i] - ps[j]));
   }
 
   return ret;
@@ -97,18 +97,15 @@ T convex_diameter(const Polygon<T> &ps){
  * @title 幾何基本セット
  * @docs geometry_template.md
  */
-template <typename T> struct Vec{
-  using U = typename T::value_type;
-  T x, y;
-  Vec(): x(0), y(0){}
-  Vec(const T &x, const T &y): x(x), y(y){}
-  T size() const {return std::sqrt((U)(x*x+y*y));}
-  T size_sq() const {return x*x+y*y;}
-  
-  static auto polar(const T &r, const T &ang){return Vec<T>(r * std::cos((U)ang), r * std::sin((U)ang));}
 
-  friend auto operator+(const Vec &a, const Vec &b){return Vec(a.x+b.x, a.y+b.y);}
-  friend auto operator-(const Vec &a, const Vec &b){return Vec(a.x-b.x, a.y-b.y);}
+template <typename T>
+struct Vec{
+  T x, y;
+  Vec(){}
+  Vec(T x, T y): x(x), y(y){}
+
+  friend auto operator+(const Vec &a, const Vec &b){return Vec(a.x + b.x, a.y + b.y);}
+  friend auto operator-(const Vec &a, const Vec &b){return Vec(a.x - b.x, a.y - b.y);}
   friend auto operator-(const Vec &a){return Vec(-a.x, -a.y);}
 
   friend bool operator==(const Vec &a, const Vec &b){return a.x == b.x and a.y == b.y;}
@@ -118,39 +115,27 @@ template <typename T> struct Vec{
   friend std::istream& operator>>(std::istream &s, Vec &a){
     s >> a.x >> a.y; return s;
   }
-
-  friend T dot(const Vec &a, const Vec &b){
-    return a.x*b.x+a.y*b.y;
-  }
-
-  friend  T cross(const Vec &a, const Vec &b){
-    return a.x*b.y-a.y*b.x;
-  }
-
-  friend  T angle(const Vec &a, const Vec &b){ // 点aから点bへの角度
-    return std::atan2((U)(b.y-a.y), (U)(b.x-a.x));
-  }
-
-  friend  auto unit(const Vec &a){ // 単位ベクトル
-    return a / a.size();
-  }
-  
-  friend  auto normal(const Vec &p){
-    return Vec<T>(-p.y,p.x);
-  }
-
-  friend  T phase(const Vec &a){
-    return std::atan2((U)a.y, (U)a.x);
-  }
 };
 
-template <typename T, typename U> auto operator*(const Vec<T> &a, const U &k){return Vec<T>(a.x*k, a.y*k);}
-template <typename T, typename U> auto operator*(const U &k, const Vec<T> &a){return Vec<T>(a.x*k, a.y*k);}
-template <typename T, typename U> auto operator/(const Vec<T> &a, const U &k){return Vec<T>(a.x/k, a.y/k);}
-
+template <typename T, typename U> auto operator*(const Vec<T> &a, const U &k){return Vec<T>(a.x * k, a.y * k);}
+template <typename T, typename U> auto operator*(const U &k, const Vec<T> &a){return Vec<T>(a.x * k, a.y * k);}
+template <typename T, typename U> auto operator/(const Vec<T> &a, const U &k){return Vec<T>(a.x / k, a.y / k);}
 
 template <typename T> using Point = Vec<T>;
 
+template <typename T> T abs(const Vec<T> &a){return sqrt(a.x * a.x + a.y * a.y);}
+template <typename T> T abs_sq(const Vec<T> &a){return a.x * a.x + a.y * a.y;}
+
+template <typename T> T dot(const Vec<T> &a, const Vec<T> &b){return a.x * b.x + a.y * b.y;}
+template <typename T> T cross(const Vec<T> &a, const Vec<T> &b){return a.x * b.y - a.y * b.x;}
+
+template <typename T> auto unit(const Vec<T> &a){return a / abs(a);}
+template <typename T> auto normal(const Vec<T> &p){return Vec<T>(-p.y, p.x);}
+
+template <typename T> auto polar(const T &r, const T &ang){return Vec<T>(r * cos(ang), r * sin(ang));}
+
+template <typename T> T angle(const Vec<T> &a, const Vec<T> &b){return atan2(b.y - a.y, b.x - a.x);}
+template <typename T> T phase(const Vec<T> &a){return atan2(a.y, a.x);}
 
 template <typename T>
 T angle_diff(const Vec<T> &a, const Vec<T> &b){
@@ -161,15 +146,27 @@ T angle_diff(const Vec<T> &a, const Vec<T> &b){
   return r;
 }
 
+
 template <typename T> struct Line{
   Point<T> from, to;
   Line(): from(), to(){}
   Line(const Point<T> &from, const Point<T> &to): from(from), to(to){}
-  Vec<T> diff() const {return to-from;}
-  T size() const {return diff().size();}
 };
 
 template <typename T> using Segment = Line<T>;
+
+
+template <typename T> auto unit(const Line<T> &a){return unit(a.to - a.from);}
+template <typename T> auto normal(const Line<T> &a){return normal(a.to - a.from);}
+
+template <typename T> auto diff(const Segment<T> &a){return a.to - a.from;}
+
+template <typename T> T abs(const Segment<T> &a){return abs(diff(a));}
+
+template <typename T> T dot(const Line<T> &a, const Line<T> &b){return dot(diff(a), diff(b));}
+template <typename T> T cross(const Line<T> &a, const Line<T> &b){return cross(diff(a), diff(b));}
+
+
 template <typename T> using Polygon = std::vector<Point<T>>;
 
 template <typename T> struct Circle{
@@ -190,16 +187,16 @@ T convex_diameter(const Polygon<T> &ps){
   int i = std::min_element(ps.begin(), ps.end(), [](const auto &a, const auto &b){return a.y < b.y;}) - ps.begin();
   int j = std::max_element(ps.begin(), ps.end(), [](const auto &a, const auto &b){return a.y < b.y;}) - ps.begin();
 
-  T ret = (ps[i]-ps[j]).size();
+  T ret = abs(ps[i]-ps[j]);
 
   for(int k = 0; k < 2*n; ++k){
-    if(cross(ps[(i+1)%n]-ps[i], ps[(j+1)%n]-ps[j]) > 0){
+    if(cross(ps[(i+1)%n] - ps[i], ps[(j+1)%n] - ps[j]) > 0){
       (++j) %= n;
     }else{
       (++i) %= n;
     }
 
-    ret = std::max(ret, (ps[i]-ps[j]).size());
+    ret = std::max(ret, abs(ps[i] - ps[j]));
   }
 
   return ret;

@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: グリッド用テンプレート
+# :heavy_check_mark: グリッド用テンプレート
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -38,8 +38,13 @@ layout: default
 
 ## Required by
 
-* :warning: <a href="grid_bfs.cpp.html">グリッド上BFS</a>
+* :heavy_check_mark: <a href="grid_bfs.cpp.html">グリッド上BFS</a>
 * :warning: <a href="grid_to_graph.cpp.html">グリッドをグラフに変換する</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/aoj/0558/main.test.cpp.html">test/aoj/0558/main.test.cpp</a>
 
 
 ## Code

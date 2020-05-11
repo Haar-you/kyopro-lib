@@ -25,12 +25,12 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 凸多角形の切断
+# :warning: 三角形の内接円
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/convex_cut.cpp">View this file on GitHub</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/inscribed_circle_of_triangle.cpp">View this file on GitHub</a>
     - Last commit date: 2020-05-11 12:02:00+09:00
 
 
@@ -38,14 +38,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="ccw.cpp.html">clockwise-counterclockwise判定</a>
 * :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="intersect_line_segment.cpp.html">直線と線分の交差</a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
 
 
 ## Code
@@ -55,46 +48,19 @@ layout: default
 ```cpp
 #pragma once
 #include "Mylib/Geometry/Float/geometry_template.cpp"
-#include "Mylib/Geometry/Float/intersect_line_segment.cpp"
-#include "Mylib/Geometry/Float/ccw.cpp"
 
 /**
- * @title 凸多角形の切断
- * @docs convex_cut.md
+ * @title 三角形の内接円
+ * @docs inscribed_circle_of_triangle.md
  */
 template <typename T>
-void convex_cut(const Polygon<T> &ps, const Line<T> &l, Polygon<T> &left, Polygon<T> &right){
-  const int n = ps.size();
-
-  for(int i = 0; i < n; ++i){
-    auto [s, c] = intersect_line_segment::check(l, Line<T>(ps[i], ps[(i+1)%n]));
-    switch(s){
-    case intersect_line_segment::LEFTSIDE:{
-      left.push_back(ps[i]);
-      break;
-    }
-    case intersect_line_segment::RIGHTSIDE:{
-      right.push_back(ps[i]);
-      break;
-    }
-    case intersect_line_segment::OVERLAPPED:{
-      right.push_back(ps[i]);
-      left.push_back(ps[i]);
-      break;
-    }
-    case intersect_line_segment::CROSSED:{
-      if(ccw::ccw(l.from, l.to, ps[i]) == ccw::CLOCKWISE){
-        right.push_back(ps[i]);
-      }else{
-        left.push_back(ps[i]);
-      }
-
-      left.push_back(c[0]);
-      right.push_back(c[0]);
-      break;
-    }
-    }
-  }
+Circle<T> inscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b, const Point<T> &c){
+  const T A = abs(b - c), B = abs(a - c), C = abs(a - b), s = (A + B + C) / 2.0;
+  
+  return Circle<T>(
+    (A * a + B * b + C * c) / (A + B + C),
+    sqrt((s - A)  * (s - B) * (s - C) / s)
+  );
 }
 
 ```
@@ -190,114 +156,20 @@ template <typename T> struct Circle{
   Circle(): center(), radius(0){}
   Circle(const Point<T> &center, T radius): center(center), radius(radius){}
 };
-#line 4 "Mylib/Geometry/Float/intersect_line_segment.cpp"
+#line 3 "Mylib/Geometry/Float/inscribed_circle_of_triangle.cpp"
 
 /**
- * @title 直線と線分の交差
- * @docs intersect_line_segment.md
- */
-namespace intersect_line_segment{
-  enum Status{
-              LEFTSIDE   = 0b0001,
-              RIGHTSIDE  = 0b0010,
-              OVERLAPPED = 0b0100,
-              CROSSED    = 0b1000,
-  };
-
-  template <typename T>
-  struct Result{
-    Status status;
-    std::vector<Point<T>> crosspoints;
-  };
-
-  template <typename T>
-  auto check(const Line<T> &l, const Segment<T> &s){
-    const T a = cross(diff(l), s.from - l.from);
-    const T b = cross(diff(l), s.to - l.from);
-
-    if(a == 0 and b == 0){
-      return Result<T>({OVERLAPPED, {}});
-    }
-    else if(a < 0 and b < 0){
-      return Result<T>({RIGHTSIDE, {}});
-    }
-    else if(a > 0 and b > 0){
-      return Result<T>({LEFTSIDE, {}});
-    }
-    
-    return Result<T>({CROSSED, {s.from + diff(s) * cross(diff(l), l.from - s.from) / cross(l, s)}});
-  }
-}
-#line 3 "Mylib/Geometry/Float/ccw.cpp"
-
-/**
- * @title clockwise-counterclockwise判定
- * @docs ccw.md
- */
-namespace ccw{
-  enum Status{
-           ONLINE_BACK       = -2,
-           COUNTER_CLOCKWISE = -1,
-           ON_SEGMENT        = 0,
-           CLOCKWISE         = 1,
-           ONLINE_FRONT      = 2
-  };
-
-  template <typename T>
-  Status ccw(const Point<T> &p0, const Point<T> &p1, const Point<T> &p2){
-    const T cr = cross(p1 - p0, p2 - p0);
-    const T d = dot(p1 - p0, p2 - p0);
-
-    if(cr == 0){
-      if(d < 0) return ONLINE_BACK;
-      else if(abs(p2 - p0) > abs(p1 - p0)) return ONLINE_FRONT;
-      else return ON_SEGMENT;
-    }else if(cr > 0){
-      return COUNTER_CLOCKWISE;
-    }else{
-      return CLOCKWISE;
-    }
-  }
-}
-#line 5 "Mylib/Geometry/Float/convex_cut.cpp"
-
-/**
- * @title 凸多角形の切断
- * @docs convex_cut.md
+ * @title 三角形の内接円
+ * @docs inscribed_circle_of_triangle.md
  */
 template <typename T>
-void convex_cut(const Polygon<T> &ps, const Line<T> &l, Polygon<T> &left, Polygon<T> &right){
-  const int n = ps.size();
-
-  for(int i = 0; i < n; ++i){
-    auto [s, c] = intersect_line_segment::check(l, Line<T>(ps[i], ps[(i+1)%n]));
-    switch(s){
-    case intersect_line_segment::LEFTSIDE:{
-      left.push_back(ps[i]);
-      break;
-    }
-    case intersect_line_segment::RIGHTSIDE:{
-      right.push_back(ps[i]);
-      break;
-    }
-    case intersect_line_segment::OVERLAPPED:{
-      right.push_back(ps[i]);
-      left.push_back(ps[i]);
-      break;
-    }
-    case intersect_line_segment::CROSSED:{
-      if(ccw::ccw(l.from, l.to, ps[i]) == ccw::CLOCKWISE){
-        right.push_back(ps[i]);
-      }else{
-        left.push_back(ps[i]);
-      }
-
-      left.push_back(c[0]);
-      right.push_back(c[0]);
-      break;
-    }
-    }
-  }
+Circle<T> inscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b, const Point<T> &c){
+  const T A = abs(b - c), B = abs(a - c), C = abs(a - b), s = (A + B + C) / 2.0;
+  
+  return Circle<T>(
+    (A * a + B * b + C * c) / (A + B + C),
+    sqrt((s - A)  * (s - B) * (s - C) / s)
+  );
 }
 
 ```

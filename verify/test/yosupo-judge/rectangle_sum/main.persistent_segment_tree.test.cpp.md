@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#9102555d140c20ca7196c4db584ea7b6">test/yosupo-judge/rectangle_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-07 03:04:38+09:00
+    - Last commit date: 2020-05-09 08:43:01+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/rectangle_sum">https://judge.yosupo.jp/problem/rectangle_sum</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/persistent_segment_tree.cpp.html">永続SegmentTree</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Misc/sort_all.cpp.html">Mylib/Misc/sort_all.cpp</a>
 
@@ -190,10 +190,10 @@ public:
     root = init(root, init_list, 1, pos);
   }
   
-  PersistentSegmentTree(int size){
+  PersistentSegmentTree(int size, const value_type &value = Monoid::id()){
     depth = size == 1 ? 1 : 32 - __builtin_clz(size-1) + 1;
     int pos = 0;
-    root = init(root, std::vector<value_type>(size, Monoid::id()), 1, pos);
+    root = init(root, std::vector<value_type>(size, value), 1, pos);
   }
   
 protected:

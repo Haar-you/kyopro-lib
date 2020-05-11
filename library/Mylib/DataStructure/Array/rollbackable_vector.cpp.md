@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0d7e284bb2256ddef55e56b25bfaf3f1">Mylib/DataStructure/Array</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Array/rollbackable_vector.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-07 18:39:04+09:00
+    - Last commit date: 2020-05-09 08:43:01+09:00
 
 
 
@@ -75,7 +75,7 @@ public:
     history.push_back(-1);
   }
 
-  void assign(int i, const T &value){
+  void set(int i, const T &value){
     data[i] = value;
     stock[i].push_back(value);
     history.push_back(i);
@@ -129,7 +129,7 @@ public:
     history.push_back(-1);
   }
 
-  void assign(int i, const T &value){
+  void set(int i, const T &value){
     data[i] = value;
     stock[i].push_back(value);
     history.push_back(i);

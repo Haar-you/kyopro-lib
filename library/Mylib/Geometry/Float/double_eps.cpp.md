@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/double_eps.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-11 12:02:00+09:00
 
 
 
@@ -70,6 +70,7 @@ layout: default
 #pragma once
 #include <iostream>
 #include <limits>
+#include <cmath>
 
 /**
  * @title 誤差許容浮動小数点数
@@ -125,6 +126,18 @@ namespace std{
     static DoubleEps<T> lowest() {return numeric_limits<T>::lowest();}
   };
 }
+
+template <typename T> DoubleEps<T> sin(DoubleEps<T> x){return std::sin((T)x);}
+template <typename T> DoubleEps<T> cos(DoubleEps<T> x){return std::cos((T)x);}
+template <typename T> DoubleEps<T> tan(DoubleEps<T> x){return std::tan((T)x);}
+
+template <typename T> DoubleEps<T> acos(DoubleEps<T> x){return std::acos((T)x);}
+template <typename T> DoubleEps<T> atan2(DoubleEps<T> y, DoubleEps<T> x){return std::atan2((T)y, (T)x);}
+
+template <typename T> DoubleEps<T> abs(DoubleEps<T> x){return std::abs((T)x);}
+
+template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
+
 
 ```
 {% endraw %}
@@ -135,6 +148,7 @@ namespace std{
 #line 2 "Mylib/Geometry/Float/double_eps.cpp"
 #include <iostream>
 #include <limits>
+#include <cmath>
 
 /**
  * @title 誤差許容浮動小数点数
@@ -190,6 +204,18 @@ namespace std{
     static DoubleEps<T> lowest() {return numeric_limits<T>::lowest();}
   };
 }
+
+template <typename T> DoubleEps<T> sin(DoubleEps<T> x){return std::sin((T)x);}
+template <typename T> DoubleEps<T> cos(DoubleEps<T> x){return std::cos((T)x);}
+template <typename T> DoubleEps<T> tan(DoubleEps<T> x){return std::tan((T)x);}
+
+template <typename T> DoubleEps<T> acos(DoubleEps<T> x){return std::acos((T)x);}
+template <typename T> DoubleEps<T> atan2(DoubleEps<T> y, DoubleEps<T> x){return std::atan2((T)y, (T)x);}
+
+template <typename T> DoubleEps<T> abs(DoubleEps<T> x){return std::abs((T)x);}
+
+template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
+
 
 ```
 {% endraw %}

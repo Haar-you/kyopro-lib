@@ -30,8 +30,8 @@ layout: default
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#e1d7bebd3991495167778e37d1d75d40">Mylib/Number/Divisor</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Divisor/divisor_list.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Divisor/enumerate_divisor.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-08 20:11:31+09:00
 
 
 
@@ -52,9 +52,9 @@ layout: default
 
 /**
  * @title 約数列挙
- * @docs divisor_list.md
+ * @docs enumerate_divisor.md
  */
-std::vector<std::int64_t> divisor_list(std::int64_t n){
+std::vector<std::int64_t> enumerate_divisor(std::int64_t n){
   std::vector<std::int64_t> temp, ret;
 
   {
@@ -80,15 +80,15 @@ std::vector<std::int64_t> divisor_list(std::int64_t n){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Number/Divisor/divisor_list.cpp"
+#line 2 "Mylib/Number/Divisor/enumerate_divisor.cpp"
 #include <vector>
 #include <algorithm>
 
 /**
  * @title 約数列挙
- * @docs divisor_list.md
+ * @docs enumerate_divisor.md
  */
-std::vector<std::int64_t> divisor_list(std::int64_t n){
+std::vector<std::int64_t> enumerate_divisor(std::int64_t n){
   std::vector<std::int64_t> temp, ret;
 
   {

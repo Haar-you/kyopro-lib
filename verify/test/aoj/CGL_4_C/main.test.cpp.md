@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#baeb7c411df355c2b6229bf2ba21fef6">test/aoj/CGL_4_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_4_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-11 12:02:00+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_C</a>
@@ -79,7 +79,7 @@ int main(){
     Polygon<D> left, right;
     convex_cut(g, l, left, right);
 
-    std::cout << std::fixed << std::setprecision(12) << polygon_area(left) << std::endl;
+    std::cout << std::fixed << std::setprecision(12) << area(left) << std::endl;
   }
 
   return 0;
@@ -99,6 +99,7 @@ int main(){
 #include <iomanip>
 #line 3 "Mylib/Geometry/Float/double_eps.cpp"
 #include <limits>
+#include <cmath>
 
 /**
  * @title 誤差許容浮動小数点数
@@ -154,26 +155,34 @@ namespace std{
     static DoubleEps<T> lowest() {return numeric_limits<T>::lowest();}
   };
 }
-#line 3 "Mylib/Geometry/Float/geometry_template.cpp"
-#include <cmath>
+
+template <typename T> DoubleEps<T> sin(DoubleEps<T> x){return std::sin((T)x);}
+template <typename T> DoubleEps<T> cos(DoubleEps<T> x){return std::cos((T)x);}
+template <typename T> DoubleEps<T> tan(DoubleEps<T> x){return std::tan((T)x);}
+
+template <typename T> DoubleEps<T> acos(DoubleEps<T> x){return std::acos((T)x);}
+template <typename T> DoubleEps<T> atan2(DoubleEps<T> y, DoubleEps<T> x){return std::atan2((T)y, (T)x);}
+
+template <typename T> DoubleEps<T> abs(DoubleEps<T> x){return std::abs((T)x);}
+
+template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
+
+#line 4 "Mylib/Geometry/Float/geometry_template.cpp"
 #include <vector>
 
 /**
  * @title 幾何基本セット
  * @docs geometry_template.md
  */
-template <typename T> struct Vec{
-  using U = typename T::value_type;
-  T x, y;
-  Vec(): x(0), y(0){}
-  Vec(const T &x, const T &y): x(x), y(y){}
-  T size() const {return std::sqrt((U)(x*x+y*y));}
-  T size_sq() const {return x*x+y*y;}
-  
-  static auto polar(const T &r, const T &ang){return Vec<T>(r * std::cos((U)ang), r * std::sin((U)ang));}
 
-  friend auto operator+(const Vec &a, const Vec &b){return Vec(a.x+b.x, a.y+b.y);}
-  friend auto operator-(const Vec &a, const Vec &b){return Vec(a.x-b.x, a.y-b.y);}
+template <typename T>
+struct Vec{
+  T x, y;
+  Vec(){}
+  Vec(T x, T y): x(x), y(y){}
+
+  friend auto operator+(const Vec &a, const Vec &b){return Vec(a.x + b.x, a.y + b.y);}
+  friend auto operator-(const Vec &a, const Vec &b){return Vec(a.x - b.x, a.y - b.y);}
   friend auto operator-(const Vec &a){return Vec(-a.x, -a.y);}
 
   friend bool operator==(const Vec &a, const Vec &b){return a.x == b.x and a.y == b.y;}
@@ -183,39 +192,27 @@ template <typename T> struct Vec{
   friend std::istream& operator>>(std::istream &s, Vec &a){
     s >> a.x >> a.y; return s;
   }
-
-  friend T dot(const Vec &a, const Vec &b){
-    return a.x*b.x+a.y*b.y;
-  }
-
-  friend  T cross(const Vec &a, const Vec &b){
-    return a.x*b.y-a.y*b.x;
-  }
-
-  friend  T angle(const Vec &a, const Vec &b){ // 点aから点bへの角度
-    return std::atan2((U)(b.y-a.y), (U)(b.x-a.x));
-  }
-
-  friend  auto unit(const Vec &a){ // 単位ベクトル
-    return a / a.size();
-  }
-  
-  friend  auto normal(const Vec &p){
-    return Vec<T>(-p.y,p.x);
-  }
-
-  friend  T phase(const Vec &a){
-    return std::atan2((U)a.y, (U)a.x);
-  }
 };
 
-template <typename T, typename U> auto operator*(const Vec<T> &a, const U &k){return Vec<T>(a.x*k, a.y*k);}
-template <typename T, typename U> auto operator*(const U &k, const Vec<T> &a){return Vec<T>(a.x*k, a.y*k);}
-template <typename T, typename U> auto operator/(const Vec<T> &a, const U &k){return Vec<T>(a.x/k, a.y/k);}
-
+template <typename T, typename U> auto operator*(const Vec<T> &a, const U &k){return Vec<T>(a.x * k, a.y * k);}
+template <typename T, typename U> auto operator*(const U &k, const Vec<T> &a){return Vec<T>(a.x * k, a.y * k);}
+template <typename T, typename U> auto operator/(const Vec<T> &a, const U &k){return Vec<T>(a.x / k, a.y / k);}
 
 template <typename T> using Point = Vec<T>;
 
+template <typename T> T abs(const Vec<T> &a){return sqrt(a.x * a.x + a.y * a.y);}
+template <typename T> T abs_sq(const Vec<T> &a){return a.x * a.x + a.y * a.y;}
+
+template <typename T> T dot(const Vec<T> &a, const Vec<T> &b){return a.x * b.x + a.y * b.y;}
+template <typename T> T cross(const Vec<T> &a, const Vec<T> &b){return a.x * b.y - a.y * b.x;}
+
+template <typename T> auto unit(const Vec<T> &a){return a / abs(a);}
+template <typename T> auto normal(const Vec<T> &p){return Vec<T>(-p.y, p.x);}
+
+template <typename T> auto polar(const T &r, const T &ang){return Vec<T>(r * cos(ang), r * sin(ang));}
+
+template <typename T> T angle(const Vec<T> &a, const Vec<T> &b){return atan2(b.y - a.y, b.x - a.x);}
+template <typename T> T phase(const Vec<T> &a){return atan2(a.y, a.x);}
 
 template <typename T>
 T angle_diff(const Vec<T> &a, const Vec<T> &b){
@@ -226,15 +223,27 @@ T angle_diff(const Vec<T> &a, const Vec<T> &b){
   return r;
 }
 
+
 template <typename T> struct Line{
   Point<T> from, to;
   Line(): from(), to(){}
   Line(const Point<T> &from, const Point<T> &to): from(from), to(to){}
-  Vec<T> diff() const {return to-from;}
-  T size() const {return diff().size();}
 };
 
 template <typename T> using Segment = Line<T>;
+
+
+template <typename T> auto unit(const Line<T> &a){return unit(a.to - a.from);}
+template <typename T> auto normal(const Line<T> &a){return normal(a.to - a.from);}
+
+template <typename T> auto diff(const Segment<T> &a){return a.to - a.from;}
+
+template <typename T> T abs(const Segment<T> &a){return abs(diff(a));}
+
+template <typename T> T dot(const Line<T> &a, const Line<T> &b){return dot(diff(a), diff(b));}
+template <typename T> T cross(const Line<T> &a, const Line<T> &b){return cross(diff(a), diff(b));}
+
+
 template <typename T> using Polygon = std::vector<Point<T>>;
 
 template <typename T> struct Circle{
@@ -265,25 +274,20 @@ namespace intersect_line_segment{
 
   template <typename T>
   auto check(const Line<T> &l, const Segment<T> &s){
-    Result<T> ret;
-    
-    const T a = cross(l.diff(), s.from-l.from);
-    const T b = cross(l.diff(), s.to-l.from);
+    const T a = cross(diff(l), s.from - l.from);
+    const T b = cross(diff(l), s.to - l.from);
 
     if(a == 0 and b == 0){
-      ret.status = OVERLAPPED;
+      return Result<T>({OVERLAPPED, {}});
     }
     else if(a < 0 and b < 0){
-      ret.status = RIGHTSIDE;
+      return Result<T>({RIGHTSIDE, {}});
     }
     else if(a > 0 and b > 0){
-      ret.status = LEFTSIDE;
+      return Result<T>({LEFTSIDE, {}});
     }
-    else{
-      ret.status = CROSSED;
-      ret.crosspoints.emplace_back(s.from + s.diff() * cross(l.diff(),l.from-s.from) / cross(l.diff(),s.diff()));
-    }
-    return ret;
+    
+    return Result<T>({CROSSED, {s.from + diff(s) * cross(diff(l), l.from - s.from) / cross(l, s)}});
   }
 }
 #line 3 "Mylib/Geometry/Float/ccw.cpp"
@@ -293,7 +297,7 @@ namespace intersect_line_segment{
  * @docs ccw.md
  */
 namespace ccw{
-  enum CCW{
+  enum Status{
            ONLINE_BACK       = -2,
            COUNTER_CLOCKWISE = -1,
            ON_SEGMENT        = 0,
@@ -302,13 +306,13 @@ namespace ccw{
   };
 
   template <typename T>
-  CCW ccw(const Point<T> &p0, const Point<T> &p1, const Point<T> &p2){
-    const T cr = cross(p1-p0, p2-p0);
-    const T d = dot(p1-p0, p2-p0);
+  Status ccw(const Point<T> &p0, const Point<T> &p1, const Point<T> &p2){
+    const T cr = cross(p1 - p0, p2 - p0);
+    const T d = dot(p1 - p0, p2 - p0);
 
     if(cr == 0){
       if(d < 0) return ONLINE_BACK;
-      else if((p2-p0).size() > (p1-p0).size()) return ONLINE_FRONT;
+      else if(abs(p2 - p0) > abs(p1 - p0)) return ONLINE_FRONT;
       else return ON_SEGMENT;
     }else if(cr > 0){
       return COUNTER_CLOCKWISE;
@@ -328,7 +332,8 @@ void convex_cut(const Polygon<T> &ps, const Line<T> &l, Polygon<T> &left, Polygo
   const int n = ps.size();
 
   for(int i = 0; i < n; ++i){
-    switch(auto [s, c] = intersect_line_segment::check(l, Line<T>(ps[i], ps[(i+1)%n])); s){
+    auto [s, c] = intersect_line_segment::check(l, Line<T>(ps[i], ps[(i+1)%n]));
+    switch(s){
     case intersect_line_segment::LEFTSIDE:{
       left.push_back(ps[i]);
       break;
@@ -363,11 +368,11 @@ void convex_cut(const Polygon<T> &ps, const Line<T> &l, Polygon<T> &left, Polygo
  * @docs area_polygon.md
  */
 template <typename T>
-T polygon_area(const Polygon<T> &ps){
+T area(const Polygon<T> &ps){
   T ret = 0;
   const int n = (int)ps.size();
   for(int i = 0; i < n; ++i){
-    ret += (ps[i].x-ps[(i+1)%n].x) * (ps[i].y+ps[(i+1)%n].y);
+    ret += (ps[i].x - ps[(i+1)%n].x) * (ps[i].y + ps[(i+1)%n].y);
   }
   if(ret < 0) ret = -ret;
   ret /= 2;
@@ -392,7 +397,7 @@ int main(){
     Polygon<D> left, right;
     convex_cut(g, l, left, right);
 
-    std::cout << std::fixed << std::setprecision(12) << polygon_area(left) << std::endl;
+    std::cout << std::fixed << std::setprecision(12) << area(left) << std::endl;
   }
 
   return 0;

@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :question: グラフ用テンプレート
+# :heavy_check_mark: グラフ用テンプレート
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -60,7 +60,7 @@ layout: default
 * :warning: <a href="TopologicalSort/topological_sort_lexicographical.cpp.html">トポロジカルソート (辞書順最小)</a>
 * :warning: <a href="TreeUtils/centroid.cpp.html">重心列挙</a>
 * :warning: <a href="TreeUtils/centroid_decomposition.cpp.html">重心分解</a>
-* :x: <a href="TreeUtils/euler_tour_bfs.cpp.html">BFS Euler tour</a>
+* :heavy_check_mark: <a href="TreeUtils/euler_tour_bfs.cpp.html">BFS Euler tour</a>
 * :heavy_check_mark: <a href="TreeUtils/euler_tour_vertex.cpp.html">頂点Euler tour</a>
 * :warning: <a href="TreeUtils/forest.cpp.html">Mylib/Graph/TreeUtils/forest.cpp</a>
 * :heavy_check_mark: <a href="TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
@@ -101,7 +101,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
-* :x: <a href="../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
 
 
 ## Code
