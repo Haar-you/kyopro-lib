@@ -2,38 +2,66 @@
 #include <vector>
 #include <optional>
 #include <stack>
+#include <utility>
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 二部グラフ判定 (連結グラフ)
+ * @title 二部グラフ判定
  * @docs check_bipartite_graph.md
  */
 template <typename T>
-std::optional<std::vector<int>> is_bipartite_graph(const Graph<T> &graph){
-  std::vector<int> check(graph.size(), -1);
-  std::vector<bool> visit(graph.size(), false);
-  std::stack<int> st;
+auto check_bipartite_graph(const Graph<T> &g){
+  std::vector<std::optional<std::pair<std::vector<int>, std::vector<int>>>> ret;
 
-  st.push(0);
-  check[0] = 0;
+  const int N = g.size();
 
-  while(not st.empty()){
-    auto cur = st.top(); st.pop();
-    if(visit[cur]) continue;
-    visit[cur] = true;
+  std::vector<int> check(N, -1);
+  std::vector<bool> visit(N);
 
-    for(auto &e : graph[cur]){
-      if(check[e.to] == check[e.from]) return std::nullopt;
+  for(int i = 0; i < N; ++i){
+    if(visit[i]) continue;
 
-      if(check[e.to] == -1){
-        check[e.to] = (check[e.from] == 0 ? 1 : 0);
-      }
+    std::vector<int> a, b;
+      
+    bool res =
+      [&](){
+        std::stack<int> st;
+ 
+        st.push(i);
+        check[i] = 0;
+        a.push_back(i);
 
-      st.push(e.to);
+        while(not st.empty()){
+          auto cur = st.top(); st.pop();
+          if(visit[cur]) continue;
+          visit[cur] = true;
+ 
+          for(auto &e : g[cur]){
+            if(check[e.to] == check[cur]) return false;
+ 
+            if(check[e.to] == -1){
+              if(check[cur] == 0){
+                check[e.to] = 1;
+                b.push_back(e.to);
+              }else{
+                check[e.to] = 0;
+                a.push_back(e.to);
+              }
+          
+              st.push(e.to);
+            }
+          }
+        }
+
+        return true;
+      }();
+
+    if(res){
+      ret.push_back({{a, b}});
+    }else{
+      ret.push_back(std::nullopt);
     }
   }
 
-  for(auto x : check) if(x == -1) return std::nullopt;
-
-  return {check};
+  return ret;
 }
