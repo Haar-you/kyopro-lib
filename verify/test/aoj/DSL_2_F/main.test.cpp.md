@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#2ac20e439971e957ed6809338e9771d9">test/aoj/DSL_2_F</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_F/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/update_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/update_monoid.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/update.cpp.html">Mylib/AlgebraicStructure/Monoid/update.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/update_min.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_min.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp.html">遅延SegmentTree</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp.html">遅延SegmentTree</a>
 
 
 ## Code
@@ -166,11 +166,11 @@ public:
     for(int i = hsize-1; i > 0; --i) data[i] = monoid_get::op(data[i << 1 | 0], data[i << 1 | 1]);
   }
 };
-#line 2 "Mylib/AlgebraicStructure/Monoid/update_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/update.cpp"
 #include <optional>
 
 /**
- * @docs update_monoid.md
+ * @docs update.md
  */
 template <typename T>
 struct UpdateMonoid{
@@ -178,11 +178,11 @@ struct UpdateMonoid{
   constexpr inline static value_type id(){return std::nullopt;}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return (a ? a : b);}
 };
-#line 2 "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include <algorithm>
 
 /**
- * @docs min_monoid.md
+ * @docs min.md
  */
 template <typename T>
 struct MinMonoid{

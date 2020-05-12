@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :question: <a href="../Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 
 
 ## Verified with
@@ -53,7 +53,7 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 /**
  * @docs add_sum.md
@@ -76,10 +76,10 @@ struct AddSum{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 /**
- * @docs sum_monoid.md
+ * @docs sum.md
  */
 template <typename T>
 struct SumMonoid{

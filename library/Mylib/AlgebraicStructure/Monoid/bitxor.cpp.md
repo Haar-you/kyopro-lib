@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/Semiring/xor_and_semiring.cpp
+# :warning: Mylib/AlgebraicStructure/Monoid/bitxor.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#3df95940e092844fc072dd50b6844b29">Mylib/AlgebraicStructure/Semiring</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Semiring/xor_and_semiring.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+* category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/bitxor.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 
@@ -44,19 +44,14 @@ layout: default
 #pragma once
 
 /**
- * @docs xor_and_semiring.md
+ * @docs bitxor.md
  */
 template <typename T>
-struct XorAndSemiring{
+struct BitXorMonoid{
   using value_type = T;
-  constexpr static value_type ZERO = 0;
-  constexpr static value_type ONE = ~ZERO;
-  constexpr inline static value_type id_add(){return ZERO;}
-  constexpr inline static value_type id_mul(){return ONE;}
-  constexpr inline static value_type add(const value_type &a, const value_type &b){return a ^ b;}
-  constexpr inline static value_type mul(const value_type &a, const value_type &b){return a & b;}
+  constexpr inline static value_type id(){return 0;}
+  constexpr inline static value_type op(const value_type &a, const value_type &b){return a ^ b;}
 };
-
 
 ```
 {% endraw %}
@@ -64,22 +59,17 @@ struct XorAndSemiring{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Semiring/xor_and_semiring.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/bitxor.cpp"
 
 /**
- * @docs xor_and_semiring.md
+ * @docs bitxor.md
  */
 template <typename T>
-struct XorAndSemiring{
+struct BitXorMonoid{
   using value_type = T;
-  constexpr static value_type ZERO = 0;
-  constexpr static value_type ONE = ~ZERO;
-  constexpr inline static value_type id_add(){return ZERO;}
-  constexpr inline static value_type id_mul(){return ONE;}
-  constexpr inline static value_type add(const value_type &a, const value_type &b){return a ^ b;}
-  constexpr inline static value_type mul(const value_type &a, const value_type &b){return a & b;}
+  constexpr inline static value_type id(){return 0;}
+  constexpr inline static value_type op(const value_type &a, const value_type &b){return a ^ b;}
 };
-
 
 ```
 {% endraw %}

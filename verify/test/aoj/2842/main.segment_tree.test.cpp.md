@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#64e19fd3e4193a1559ce21d32ec43623">test/aoj/2842</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2842/main.segment_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 16:28:32+09:00
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_2d.cpp.html">SegmentTree (2D)</a>
 
 
@@ -54,7 +54,7 @@ layout: default
 #include <queue>
 #include <tuple>
 
-#include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_2d.cpp"
 
 int main(){
@@ -120,10 +120,10 @@ int main(){
 #include <queue>
 #include <tuple>
 
-#line 2 "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 /**
- * @docs sum_monoid.md
+ * @docs sum.md
  */
 template <typename T>
 struct SumMonoid{

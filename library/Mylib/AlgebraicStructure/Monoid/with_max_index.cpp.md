@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/Monoid/and_monoid.cpp
+# :warning: Mylib/AlgebraicStructure/Monoid/with_max_index.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/and_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/with_max_index.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 
@@ -42,15 +42,26 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
+#include <utility>
+#include <limits>
+#include <algorithm>
 
 /**
- * @docs and_monoid.md
+ * @docs with_max_index.md
  */
-template <typename T>
-struct AndMonoid{
-  using value_type = T;
-  constexpr inline static value_type id(){return ~(value_type)0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a & b;}
+template <typename Monoid>
+struct WithMaxIndex{
+  using value_type = std::pair<typename Monoid::value_type, int64_t>;
+
+  constexpr inline static value_type id(){
+    return {Monoid::id(), 0};
+  }
+
+  constexpr inline static value_type op(const value_type &a, const value_type &b){
+    if(a.first == b.first) return {a.first, std::max(a.second, b.second)};
+    if(Monoid::op(a.first, b.first) == a.first) return a;
+    else return b;
+  }
 };
 
 ```
@@ -59,16 +70,27 @@ struct AndMonoid{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/and_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/with_max_index.cpp"
+#include <utility>
+#include <limits>
+#include <algorithm>
 
 /**
- * @docs and_monoid.md
+ * @docs with_max_index.md
  */
-template <typename T>
-struct AndMonoid{
-  using value_type = T;
-  constexpr inline static value_type id(){return ~(value_type)0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a & b;}
+template <typename Monoid>
+struct WithMaxIndex{
+  using value_type = std::pair<typename Monoid::value_type, int64_t>;
+
+  constexpr inline static value_type id(){
+    return {Monoid::id(), 0};
+  }
+
+  constexpr inline static value_type op(const value_type &a, const value_type &b){
+    if(a.first == b.first) return {a.first, std::max(a.second, b.second)};
+    if(Monoid::op(a.first, b.first) == a.first) return a;
+    else return b;
+  }
 };
 
 ```

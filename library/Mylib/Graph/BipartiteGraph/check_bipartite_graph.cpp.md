@@ -25,20 +25,40 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 二部グラフ判定 (連結グラフ)
+# :heavy_check_mark: 二部グラフ判定
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3b87eee7aef75da88610c966a8da844f">Mylib/Graph/BipartiteGraph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 16:28:32+09:00
+    - Last commit date: 2020-05-12 22:46:41+09:00
 
+
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [Maximum-Cup 2018 C - 嘘つきな天使たち](https://atcoder.jp/contests/maximum-cup-2018/tasks/maximum_cup_2018_c)
+- [ARC 099 E - Independence](https://atcoder.jp/contests/arc099/tasks/arc099_c)
+
+## References
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2370/main.test.cpp.html">test/aoj/2370/main.test.cpp</a>
 
 
 ## Code
@@ -50,40 +70,68 @@ layout: default
 #include <vector>
 #include <optional>
 #include <stack>
+#include <utility>
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 二部グラフ判定 (連結グラフ)
+ * @title 二部グラフ判定
  * @docs check_bipartite_graph.md
  */
 template <typename T>
-std::optional<std::vector<int>> is_bipartite_graph(const Graph<T> &graph){
-  std::vector<int> check(graph.size(), -1);
-  std::vector<bool> visit(graph.size(), false);
-  std::stack<int> st;
+auto check_bipartite_graph(const Graph<T> &g){
+  std::vector<std::optional<std::pair<std::vector<int>, std::vector<int>>>> ret;
 
-  st.push(0);
-  check[0] = 0;
+  const int N = g.size();
 
-  while(not st.empty()){
-    auto cur = st.top(); st.pop();
-    if(visit[cur]) continue;
-    visit[cur] = true;
+  std::vector<int> check(N, -1);
+  std::vector<bool> visit(N);
 
-    for(auto &e : graph[cur]){
-      if(check[e.to] == check[e.from]) return std::nullopt;
+  for(int i = 0; i < N; ++i){
+    if(visit[i]) continue;
 
-      if(check[e.to] == -1){
-        check[e.to] = (check[e.from] == 0 ? 1 : 0);
-      }
+    std::vector<int> a, b;
+      
+    bool res =
+      [&](){
+        std::stack<int> st;
+ 
+        st.push(i);
+        check[i] = 0;
+        a.push_back(i);
 
-      st.push(e.to);
+        while(not st.empty()){
+          auto cur = st.top(); st.pop();
+          if(visit[cur]) continue;
+          visit[cur] = true;
+ 
+          for(auto &e : g[cur]){
+            if(check[e.to] == check[cur]) return false;
+ 
+            if(check[e.to] == -1){
+              if(check[cur] == 0){
+                check[e.to] = 1;
+                b.push_back(e.to);
+              }else{
+                check[e.to] = 0;
+                a.push_back(e.to);
+              }
+          
+              st.push(e.to);
+            }
+          }
+        }
+
+        return true;
+      }();
+
+    if(res){
+      ret.push_back({{a, b}});
+    }else{
+      ret.push_back(std::nullopt);
     }
   }
 
-  for(auto x : check) if(x == -1) return std::nullopt;
-
-  return {check};
+  return ret;
 }
 
 ```
@@ -96,6 +144,7 @@ std::optional<std::vector<int>> is_bipartite_graph(const Graph<T> &graph){
 #include <vector>
 #include <optional>
 #include <stack>
+#include <utility>
 #line 3 "Mylib/Graph/graph_template.cpp"
 #include <iostream>
 
@@ -123,40 +172,67 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
   add_edge<T, C>(g, a, b, w);
   add_edge<T, C>(g, b, a, w);
 }
-#line 6 "Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp"
+#line 7 "Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp"
 
 /**
- * @title 二部グラフ判定 (連結グラフ)
+ * @title 二部グラフ判定
  * @docs check_bipartite_graph.md
  */
 template <typename T>
-std::optional<std::vector<int>> is_bipartite_graph(const Graph<T> &graph){
-  std::vector<int> check(graph.size(), -1);
-  std::vector<bool> visit(graph.size(), false);
-  std::stack<int> st;
+auto check_bipartite_graph(const Graph<T> &g){
+  std::vector<std::optional<std::pair<std::vector<int>, std::vector<int>>>> ret;
 
-  st.push(0);
-  check[0] = 0;
+  const int N = g.size();
 
-  while(not st.empty()){
-    auto cur = st.top(); st.pop();
-    if(visit[cur]) continue;
-    visit[cur] = true;
+  std::vector<int> check(N, -1);
+  std::vector<bool> visit(N);
 
-    for(auto &e : graph[cur]){
-      if(check[e.to] == check[e.from]) return std::nullopt;
+  for(int i = 0; i < N; ++i){
+    if(visit[i]) continue;
 
-      if(check[e.to] == -1){
-        check[e.to] = (check[e.from] == 0 ? 1 : 0);
-      }
+    std::vector<int> a, b;
+      
+    bool res =
+      [&](){
+        std::stack<int> st;
+ 
+        st.push(i);
+        check[i] = 0;
+        a.push_back(i);
 
-      st.push(e.to);
+        while(not st.empty()){
+          auto cur = st.top(); st.pop();
+          if(visit[cur]) continue;
+          visit[cur] = true;
+ 
+          for(auto &e : g[cur]){
+            if(check[e.to] == check[cur]) return false;
+ 
+            if(check[e.to] == -1){
+              if(check[cur] == 0){
+                check[e.to] = 1;
+                b.push_back(e.to);
+              }else{
+                check[e.to] = 0;
+                a.push_back(e.to);
+              }
+          
+              st.push(e.to);
+            }
+          }
+        }
+
+        return true;
+      }();
+
+    if(res){
+      ret.push_back({{a, b}});
+    }else{
+      ret.push_back(std::nullopt);
     }
   }
 
-  for(auto x : check) if(x == -1) return std::nullopt;
-
-  return {check};
+  return ret;
 }
 
 ```

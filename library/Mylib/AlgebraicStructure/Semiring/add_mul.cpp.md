@@ -25,26 +25,15 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/AlgebraicStructure/Monoid/max_monoid.cpp
+# :warning: Mylib/AlgebraicStructure/Semiring/add_mul.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/max_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+* category: <a href="../../../../index.html#3df95940e092844fc072dd50b6844b29">Mylib/AlgebraicStructure/Semiring</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Semiring/add_mul.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
-
-
-## Required by
-
-* :heavy_check_mark: <a href="../MonoidAction/add_max.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_max.cpp</a>
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/631/main.test.cpp.html">test/yukicoder/631/main.test.cpp</a>
 
 
 ## Code
@@ -53,16 +42,17 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include <algorithm>
 
 /**
- * @docs max_monoid.md
+ * @docs add_mul.md
  */
 template <typename T>
-struct MaxMonoid{
+struct AddMulSemiring{
   using value_type = T;
-  constexpr inline static value_type id(){return std::numeric_limits<T>::lowest();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::max(a, b);}
+  constexpr inline static value_type id_add(){return 0;}
+  constexpr inline static value_type id_mul(){return 1;}
+  constexpr inline static value_type add(const value_type &a, const value_type &b){return a + b;}
+  constexpr inline static value_type mul(const value_type &a, const value_type &b){return a * b;}
 };
 
 ```
@@ -71,17 +61,18 @@ struct MaxMonoid{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/max_monoid.cpp"
-#include <algorithm>
+#line 2 "Mylib/AlgebraicStructure/Semiring/add_mul.cpp"
 
 /**
- * @docs max_monoid.md
+ * @docs add_mul.md
  */
 template <typename T>
-struct MaxMonoid{
+struct AddMulSemiring{
   using value_type = T;
-  constexpr inline static value_type id(){return std::numeric_limits<T>::lowest();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::max(a, b);}
+  constexpr inline static value_type id_add(){return 0;}
+  constexpr inline static value_type id_mul(){return 1;}
+  constexpr inline static value_type add(const value_type &a, const value_type &b){return a + b;}
+  constexpr inline static value_type mul(const value_type &a, const value_type &b){return a * b;}
 };
 
 ```

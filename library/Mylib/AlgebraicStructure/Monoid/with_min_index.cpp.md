@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/AlgebraicStructure/Monoid/with_index.cpp
+# :x: Mylib/AlgebraicStructure/Monoid/with_min_index.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/with_index.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/with_min_index.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/875/main.test.cpp.html">test/yukicoder/875/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/875/main.test.cpp.html">test/yukicoder/875/main.test.cpp</a>
 
 
 ## Code
@@ -48,20 +48,22 @@ layout: default
 ```cpp
 #pragma once
 #include <utility>
+#include <limits>
+#include <algorithm>
 
 /**
- * @docs with_index.md
+ * @docs with_min_index.md
  */
-template <typename Monoid, typename Index>
-struct WithIndex{
-  using value_type = std::pair<typename Monoid::value_type, typename Index::value_type>;
+template <typename Monoid>
+struct WithMinIndex{
+  using value_type = std::pair<typename Monoid::value_type, int64_t>;
 
   constexpr inline static value_type id(){
-    return {Monoid::id(), Index::id()};
+    return {Monoid::id(), std::numeric_limits<int64_t>::max()};
   }
 
   constexpr inline static value_type op(const value_type &a, const value_type &b){
-    if(a.first == b.first) return {a.first, Index::op(a.second, b.second)};
+    if(a.first == b.first) return {a.first, std::min(a.second, b.second)};
     if(Monoid::op(a.first, b.first) == a.first) return a;
     else return b;
   }
@@ -73,22 +75,24 @@ struct WithIndex{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/with_index.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/with_min_index.cpp"
 #include <utility>
+#include <limits>
+#include <algorithm>
 
 /**
- * @docs with_index.md
+ * @docs with_min_index.md
  */
-template <typename Monoid, typename Index>
-struct WithIndex{
-  using value_type = std::pair<typename Monoid::value_type, typename Index::value_type>;
+template <typename Monoid>
+struct WithMinIndex{
+  using value_type = std::pair<typename Monoid::value_type, int64_t>;
 
   constexpr inline static value_type id(){
-    return {Monoid::id(), Index::id()};
+    return {Monoid::id(), std::numeric_limits<int64_t>::max()};
   }
 
   constexpr inline static value_type op(const value_type &a, const value_type &b){
-    if(a.first == b.first) return {a.first, Index::op(a.second, b.second)};
+    if(a.first == b.first) return {a.first, std::min(a.second, b.second)};
     if(Monoid::op(a.first, b.first) == a.first) return a;
     else return b;
   }

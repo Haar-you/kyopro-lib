@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#65eb1c5db2b1bd726d58cf661f149e7c">Mylib/Graph/Matching</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Matching/hopcroft_karp.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-12 04:30:02+09:00
 
 
 
@@ -164,11 +164,11 @@ public:
     return ret;
   }
   
-  std::vector<std::pair<int,int>> get_matching(){
+  auto get_matching(){
     std::vector<std::pair<int,int>> ret;
     for(int i = 0; i < L; ++i){
       for(auto &e : graph[i+1]){
-        if(e.used) ret.emplace_back(i, e.to-L-1);
+        if(e.used) ret.emplace_back(i, e.to - L - 1);
       }
     }
     return ret;
@@ -281,11 +281,11 @@ public:
     return ret;
   }
   
-  std::vector<std::pair<int,int>> get_matching(){
+  auto get_matching(){
     std::vector<std::pair<int,int>> ret;
     for(int i = 0; i < L; ++i){
       for(auto &e : graph[i+1]){
-        if(e.used) ret.emplace_back(i, e.to-L-1);
+        if(e.used) ret.emplace_back(i, e.to - L - 1);
       }
     }
     return ret;

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/AlgebraicStructure/Monoid/max_partial_sum_monoid.cpp
+# :x: Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/max_partial_sum_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 
@@ -52,7 +52,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/776/main.test.cpp.html">test/yukicoder/776/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/776/main.test.cpp.html">test/yukicoder/776/main.test.cpp</a>
 
 
 ## Code
@@ -65,7 +65,7 @@ layout: default
 #include <algorithm>
 
 /**
- * @docs max_partial_sum_monoid.md
+ * @docs max_partial_sum.md
  */
 template <typename T>
 struct MaxPartialSumMonoid{
@@ -101,12 +101,12 @@ struct MaxPartialSumMonoid{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/max_partial_sum_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp"
 #include <optional>
 #include <algorithm>
 
 /**
- * @docs max_partial_sum_monoid.md
+ * @docs max_partial_sum.md
  */
 template <typename T>
 struct MaxPartialSumMonoid{

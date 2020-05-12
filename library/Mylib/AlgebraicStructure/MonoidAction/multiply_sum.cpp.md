@@ -31,15 +31,15 @@ layout: default
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/multiply_sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../Monoid/product_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/product_monoid.cpp</a>
-* :heavy_check_mark: <a href="../Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
+* :heavy_check_mark: <a href="../Monoid/product.cpp.html">Mylib/AlgebraicStructure/Monoid/product.cpp</a>
+* :question: <a href="../Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 
 
 ## Code
@@ -48,8 +48,8 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/product_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/product.cpp"
 
 /**
  * @docs multiply_sum.md
@@ -72,10 +72,10 @@ struct MultiplySum{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 /**
- * @docs sum_monoid.md
+ * @docs sum.md
  */
 template <typename T>
 struct SumMonoid{
@@ -83,10 +83,10 @@ struct SumMonoid{
   constexpr inline static value_type id(){return 0;}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return a + b;}
 };
-#line 2 "Mylib/AlgebraicStructure/Monoid/product_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/product.cpp"
 
 /**
- * @docs product_monoid.md
+ * @docs product.md
  */
 template <typename T>
 struct ProductMonoid{

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#dad2ef36fe327d04dfb89ce81ab51ef9">test/aoj/DSL_2_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
 
 
 ## Code
@@ -52,7 +52,7 @@ layout: default
 
 #include <iostream>
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
@@ -141,11 +141,11 @@ public:
     init_with_vector(std::vector<value_type>(hsize, val));
   }  
 };
-#line 2 "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include <algorithm>
 
 /**
- * @docs min_monoid.md
+ * @docs min.md
  */
 template <typename T>
 struct MinMonoid{

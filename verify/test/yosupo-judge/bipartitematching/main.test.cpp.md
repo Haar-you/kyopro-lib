@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#aaddfc42bd9348a0d8dc19d8cb0c6655">test/yosupo-judge/bipartitematching</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/bipartitematching/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-12 04:30:02+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/bipartitematching">https://judge.yosupo.jp/problem/bipartitematching</a>
@@ -57,8 +57,8 @@ int main(){
   HopcroftKarp hk(L,R);
 
   for(int i = 0; i < M; ++i){
-    int a,b; std::cin >> a >> b;
-    hk.add_edge(a,b);
+    int a, b; std::cin >> a >> b;
+    hk.add_edge(a, b);
   }
   
   hk.solve();
@@ -183,11 +183,11 @@ public:
     return ret;
   }
   
-  std::vector<std::pair<int,int>> get_matching(){
+  auto get_matching(){
     std::vector<std::pair<int,int>> ret;
     for(int i = 0; i < L; ++i){
       for(auto &e : graph[i+1]){
-        if(e.used) ret.emplace_back(i, e.to-L-1);
+        if(e.used) ret.emplace_back(i, e.to - L - 1);
       }
     }
     return ret;
@@ -200,8 +200,8 @@ int main(){
   HopcroftKarp hk(L,R);
 
   for(int i = 0; i < M; ++i){
-    int a,b; std::cin >> a >> b;
-    hk.add_edge(a,b);
+    int a, b; std::cin >> a >> b;
+    hk.add_edge(a, b);
   }
   
   hk.solve();

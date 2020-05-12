@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/1030/main.test.cpp
+# :x: test/yukicoder/1030/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#fce7f5311a6094c5e355d46a4ec1ba92">test/yukicoder/1030</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/1030/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/1030">https://yukicoder.me/problems/no/1030</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/max_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max.cpp.html">Mylib/AlgebraicStructure/Monoid/max.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/maybe.cpp.html">Mylib/AlgebraicStructure/Monoid/maybe.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -61,8 +61,8 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/max_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/max.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/maybe.cpp"
 
 struct LCASemigroup{
   using value_type = int;
@@ -356,10 +356,10 @@ public:
     init_with_vector(std::vector<value_type>(hsize, val));
   }  
 };
-#line 3 "Mylib/AlgebraicStructure/Monoid/max_monoid.cpp"
+#line 3 "Mylib/AlgebraicStructure/Monoid/max.cpp"
 
 /**
- * @docs max_monoid.md
+ * @docs max.md
  */
 template <typename T>
 struct MaxMonoid{
@@ -367,11 +367,11 @@ struct MaxMonoid{
   constexpr inline static value_type id(){return std::numeric_limits<T>::lowest();}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return std::max(a, b);}
 };
-#line 2 "Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/maybe.cpp"
 #include <optional>
 
 /**
- * @docs maybe_monoid.md
+ * @docs maybe.md
  */
 template <typename Semigroup>
 struct MaybeMonoid{

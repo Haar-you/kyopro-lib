@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: SegmentTree (双方向Foldable)
+# :x: SegmentTree (双方向Foldable)
 
 <a href="../../../../../../index.html">Back to top page</a>
 
@@ -65,7 +65,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
+* :x: <a href="../../../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
 
 
 ## Code

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#5df7098d8629f5dad4d475167fe60fb9">test/aoj/3132</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3132/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3132">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3132</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/product_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/product_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/product.cpp.html">Mylib/AlgebraicStructure/Monoid/product.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
 
 
 ## Code
@@ -55,7 +55,7 @@ layout: default
 #include <vector>
 #include <algorithm>
 #include <iomanip>
-#include "Mylib/AlgebraicStructure/Monoid/product_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/product.cpp"
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
 
 
@@ -101,10 +101,10 @@ int main(){
 #include <vector>
 #include <algorithm>
 #include <iomanip>
-#line 2 "Mylib/AlgebraicStructure/Monoid/product_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/product.cpp"
 
 /**
- * @docs product_monoid.md
+ * @docs product.md
  */
 template <typename T>
 struct ProductMonoid{

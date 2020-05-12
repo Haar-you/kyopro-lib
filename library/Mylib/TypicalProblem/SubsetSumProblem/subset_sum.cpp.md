@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#2e380218d9fd214c2f91a8ade734af1c">Mylib/TypicalProblem/SubsetSumProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/SubsetSumProblem/subset_sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-13 00:35:35+09:00
 
 
 
@@ -63,7 +63,7 @@ layout: default
  * @title 部分和判定問題
  * @docs subset_sum.md
  */
-bool subset_sum(int N, int K, const std::vector<int> &a){
+auto subset_sum(int N, int K, const std::vector<int> &a){
   std::vector<std::vector<bool>> dp(2, std::vector<bool>(K+1));
 
   dp[0][0] = true;
@@ -75,7 +75,7 @@ bool subset_sum(int N, int K, const std::vector<int> &a){
     }
   }
 
-  return dp[N&1][K];
+  return dp[N&1];
 }
 
 ```
@@ -91,7 +91,7 @@ bool subset_sum(int N, int K, const std::vector<int> &a){
  * @title 部分和判定問題
  * @docs subset_sum.md
  */
-bool subset_sum(int N, int K, const std::vector<int> &a){
+auto subset_sum(int N, int K, const std::vector<int> &a){
   std::vector<std::vector<bool>> dp(2, std::vector<bool>(K+1));
 
   dp[0][0] = true;
@@ -103,7 +103,7 @@ bool subset_sum(int N, int K, const std::vector<int> &a){
     }
   }
 
-  return dp[N&1][K];
+  return dp[N&1];
 }
 
 ```

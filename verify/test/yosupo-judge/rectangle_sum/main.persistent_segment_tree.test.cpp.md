@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
+# :x: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9102555d140c20ca7196c4db584ea7b6">test/yosupo-judge/rectangle_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-09 08:43:01+09:00
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/rectangle_sum">https://judge.yosupo.jp/problem/rectangle_sum</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/persistent_segment_tree.cpp.html">永続SegmentTree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/sort_all.cpp.html">Mylib/Misc/sort_all.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/persistent_segment_tree.cpp.html">永続SegmentTree</a>
+* :x: <a href="../../../../library/Mylib/Misc/sort_all.cpp.html">Mylib/Misc/sort_all.cpp</a>
 
 
 ## Code
@@ -56,7 +56,7 @@ layout: default
 
 #include "Mylib/Misc/sort_all.cpp"
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/persistent_segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 using Seg = PersistentSegmentTree<SumMonoid<int64_t>>;
 
@@ -239,10 +239,10 @@ public:
     return get(i, i+1);
   }
 };
-#line 2 "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 /**
- * @docs sum_monoid.md
+ * @docs sum.md
  */
 template <typename T>
 struct SumMonoid{

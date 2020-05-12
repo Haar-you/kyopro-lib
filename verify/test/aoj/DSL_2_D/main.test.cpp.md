@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#1cab81d9204e4e9816afce7019c71879">test/aoj/DSL_2_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/update_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/update_monoid.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/update.cpp.html">Mylib/AlgebraicStructure/Monoid/update.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp.html">双対SegmentTree</a>
 
 
@@ -53,7 +53,7 @@ layout: default
 #include <iostream>
 #include <climits>
 #include "Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/update_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/update.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
@@ -157,11 +157,11 @@ public:
     init_with_vector(std::vector<value_type>(hsize, val));
   }
 };
-#line 2 "Mylib/AlgebraicStructure/Monoid/update_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/update.cpp"
 #include <optional>
 
 /**
- * @docs update_monoid.md
+ * @docs update.md
  */
 template <typename T>
 struct UpdateMonoid{

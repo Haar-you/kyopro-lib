@@ -31,16 +31,9 @@ layout: default
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/xor_sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 1970-01-01 00:00:00+00:00
 
 
-
-
-## Depends on
-
-* :warning: <a href="../Monoid/parallel_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/parallel_monoid.cpp</a>
-* :heavy_check_mark: <a href="../Monoid/sum_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp</a>
-* :warning: <a href="../Monoid/xor_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/xor_monoid.cpp</a>
 
 
 ## Code
@@ -49,17 +42,17 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/parallel_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/xor_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/array.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/xor.cpp"
 
 /**
  * @docs xor_sum.md
  */
 template <typename U, int B>
 struct XorSum{
-  using monoid_get = ParallelMonoid<SumMonoid<int>, B>;
-  using monoid_update = XorMonoid<U>;
+  using monoid_get = ArrayMonoid<SumMonoid<int>, B>;
+  using monoid_update = BitXorMonoid<U>;
   using value_type_get = typename monoid_get::value_type;
   using value_type_update = typename monoid_update::value_type;
 
@@ -76,68 +69,16 @@ struct XorSum{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/parallel_monoid.cpp"
-#include <array>
-
-/**
- * @docs parallel_monoid.md
- */
-template <typename Monoid, int B>
-struct ParallelMonoid{
-  using value_type = std::array<typename Monoid::value_type, B>;
-
-  inline static value_type id(){
-    value_type ret;
-    ret.fill(Monoid::id());
-    return ret;
-  }
-
-  inline static value_type op(const value_type &a, const value_type &b){
-    value_type ret;
-    for(int i = 0; i < B; ++i) ret[i] = Monoid::op(a[i], b[i]);
-    return ret;
-  }
-};
-#line 2 "Mylib/AlgebraicStructure/Monoid/sum_monoid.cpp"
-
-/**
- * @docs sum_monoid.md
- */
-template <typename T>
-struct SumMonoid{
-  using value_type = T;
-  constexpr inline static value_type id(){return 0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a + b;}
-};
-#line 2 "Mylib/AlgebraicStructure/Monoid/xor_monoid.cpp"
-
-/**
- * @docs xor_monoid.md
- */
-template <typename T>
-struct XorMonoid{
-  using value_type = T;
-  constexpr inline static value_type id(){return 0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a ^ b;}
-};
-#line 5 "Mylib/AlgebraicStructure/MonoidAction/xor_sum.cpp"
-
-/**
- * @docs xor_sum.md
- */
-template <typename U, int B>
-struct XorSum{
-  using monoid_get = ParallelMonoid<SumMonoid<int>, B>;
-  using monoid_update = XorMonoid<U>;
-  using value_type_get = typename monoid_get::value_type;
-  using value_type_update = typename monoid_update::value_type;
-
-  inline static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
-    auto ret = a;
-    for(int i = 0; i < B; ++i) if((b >> i) & 1) ret[i] = len - ret[i];
-    return ret;
-  }
-};
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.8.2/x64/lib/python3.8/site-packages/onlinejudge_verify/docs.py", line 349, in write_contents
+    bundled_code = language.bundle(self.file_class.file_path, basedir=pathlib.Path.cwd())
+  File "/opt/hostedtoolcache/Python/3.8.2/x64/lib/python3.8/site-packages/onlinejudge_verify/languages/cplusplus.py", line 172, in bundle
+    bundler.update(path)
+  File "/opt/hostedtoolcache/Python/3.8.2/x64/lib/python3.8/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py", line 282, in update
+    self.update(self._resolve(pathlib.Path(included), included_from=path))
+  File "/opt/hostedtoolcache/Python/3.8.2/x64/lib/python3.8/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py", line 162, in _resolve
+    raise BundleError(path, -1, "no such header")
+onlinejudge_verify.languages.cplusplus_bundle.BundleError: Mylib/AlgebraicStructure/Monoid/xor.cpp: line -1: no such header
 
 ```
 {% endraw %}

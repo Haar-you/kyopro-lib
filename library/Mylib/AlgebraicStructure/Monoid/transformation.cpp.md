@@ -25,20 +25,15 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/Monoid/xor_monoid.cpp
+# :warning: Mylib/AlgebraicStructure/Monoid/transformation.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/xor_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/transformation.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
-
-
-## Required by
-
-* :warning: <a href="../MonoidAction/xor_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/xor_sum.cpp</a>
 
 
 ## Code
@@ -47,15 +42,26 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
+#include <array>
 
 /**
- * @docs xor_monoid.md
+ * @docs transformation.md
  */
-template <typename T>
-struct XorMonoid{
-  using value_type = T;
-  constexpr inline static value_type id(){return 0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a ^ b;}
+template <size_t N>
+struct TransformationMonoid{
+  using value_type = std::array<int, N>;
+
+  inline static value_type id(){
+    value_type ret;
+    for(int i = 0; i < (int)N; ++i) ret[i] = i;
+    return ret;
+  }
+
+  inline static value_type op(const value_type &a, const value_type &b){
+    value_type ret;
+    for(int i = 0; i < (int)N; ++i) ret[i] = a[b[i]];
+    return ret;
+  }
 };
 
 ```
@@ -64,16 +70,27 @@ struct XorMonoid{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/xor_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/transformation.cpp"
+#include <array>
 
 /**
- * @docs xor_monoid.md
+ * @docs transformation.md
  */
-template <typename T>
-struct XorMonoid{
-  using value_type = T;
-  constexpr inline static value_type id(){return 0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a ^ b;}
+template <size_t N>
+struct TransformationMonoid{
+  using value_type = std::array<int, N>;
+
+  inline static value_type id(){
+    value_type ret;
+    for(int i = 0; i < (int)N; ++i) ret[i] = i;
+    return ret;
+  }
+
+  inline static value_type op(const value_type &a, const value_type &b){
+    value_type ret;
+    for(int i = 0; i < (int)N; ++i) ret[i] = a[b[i]];
+    return ret;
+  }
 };
 
 ```

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/Monoid/lcm_monoid.cpp
+# :warning: Mylib/AlgebraicStructure/Monoid/trivial.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/lcm_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/trivial.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 
@@ -42,16 +42,15 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include <numeric>
 
 /**
- * @docs lcm_monoid.md
+ * @docs trivial.md
  */
 template <typename T>
-struct LcmMonoid{
+struct TrivialMonoid{
   using value_type = T;
-  constexpr inline static value_type id(){return 1;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::lcm(a, b);}
+  constexpr static value_type id() {return T();}
+  constexpr static value_type op(const value_type &, const value_type &) {return T();}
 };
 
 ```
@@ -60,17 +59,16 @@ struct LcmMonoid{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/lcm_monoid.cpp"
-#include <numeric>
+#line 2 "Mylib/AlgebraicStructure/Monoid/trivial.cpp"
 
 /**
- * @docs lcm_monoid.md
+ * @docs trivial.md
  */
 template <typename T>
-struct LcmMonoid{
+struct TrivialMonoid{
   using value_type = T;
-  constexpr inline static value_type id(){return 1;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::lcm(a, b);}
+  constexpr static value_type id() {return T();}
+  constexpr static value_type op(const value_type &, const value_type &) {return T();}
 };
 
 ```

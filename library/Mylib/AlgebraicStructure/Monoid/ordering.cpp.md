@@ -25,20 +25,15 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/AlgebraicStructure/Monoid/product_matrix_monoid.cpp
+# :warning: Mylib/AlgebraicStructure/Monoid/ordering.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/product_matrix_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/ordering.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/510/main.test.cpp.html">test/yukicoder/510/main.test.cpp</a>
 
 
 ## Code
@@ -49,13 +44,12 @@ layout: default
 #pragma once
 
 /**
- * @docs product_matrix_monoid.md
+ * @docs ordering.md
  */
-template <typename T>
-struct ProductMatrixMonoid{
-  using value_type = T;
-  constexpr inline static value_type id(){return T::make_unit();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a * b;}
+struct OrderingMonoid{
+  using value_type = int;
+  constexpr inline static value_type id(){return 0;}
+  constexpr inline static value_type op(const value_type &a, const value_type &b){return a ? a : b;}
 };
 
 ```
@@ -64,16 +58,15 @@ struct ProductMatrixMonoid{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/product_matrix_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/ordering.cpp"
 
 /**
- * @docs product_matrix_monoid.md
+ * @docs ordering.md
  */
-template <typename T>
-struct ProductMatrixMonoid{
-  using value_type = T;
-  constexpr inline static value_type id(){return T::make_unit();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a * b;}
+struct OrderingMonoid{
+  using value_type = int;
+  constexpr inline static value_type id(){return 0;}
+  constexpr inline static value_type op(const value_type &a, const value_type &b){return a ? a : b;}
 };
 
 ```

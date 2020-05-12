@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#deff10b29878501929a52ba1088ce342">test/aoj/2293</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2293/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-12 04:30:02+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2293">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2293</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">最小費用流</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/weighted_bipartite_matching.cpp.html">重み付き二部マッチング</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/weighted_bipartite_matching.cpp.html">重み付き最大二部マッチング</a>
 
 
 ## Code
@@ -53,6 +53,7 @@ layout: default
 #include <iostream>
 #include <vector>
 #include "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
+#include "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -71,16 +72,14 @@ int main(){
   std::sort(ls.begin(), ls.end());
   ls.erase(std::unique(ls.begin(), ls.end()), ls.end());
 
-  WeightedBipartiteMatching<int> m(n, ls.size());
+  WeightedBipartiteMatching<int, MinimumCostFlow<int, int>> m(n, ls.size(), true);
 
   for(int i = 0; i < n; ++i){
-    m.add_edge(i, std::lower_bound(ls.begin(), ls.end(), A[i]) - ls.begin(), -B[i]);
-    m.add_edge(i, std::lower_bound(ls.begin(), ls.end(), B[i]) - ls.begin(), -A[i]);
+    m.add_edge(i, std::lower_bound(ls.begin(), ls.end(), A[i]) - ls.begin(), B[i]);
+    m.add_edge(i, std::lower_bound(ls.begin(), ls.end(), B[i]) - ls.begin(), A[i]);
   }
 
-  m.f.add_edge(m.s, m.t, std::numeric_limits<int>::max(), 0);
-
-  int ans = -m.solve(n);
+  int ans = m.solve(n);
 
   std::cout << ans << std::endl;
   
@@ -100,6 +99,50 @@ int main(){
 #include <vector>
 #line 3 "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
 #include <tuple>
+
+/**
+ * @title 重み付き最大二部マッチング
+ * @docs weighted_bipartite_matching.md
+ */
+template <typename T, typename MinCostFlow, bool MIN_MATCHING = false>
+class WeightedBipartiteMatching{
+public:
+  int L, R, s, t;
+  MinCostFlow f;
+  
+  WeightedBipartiteMatching(int L, int R, bool arbitrary_flow = false):
+    L(L), R(R), s(L+R), t(s+1), f(L+R+2)
+  {
+    for(int i = 0; i < L; ++i) f.add_edge(s, i, 1, 0);
+    for(int i = 0; i < R; ++i) f.add_edge(L+i, t, 1, 0);
+    if(arbitrary_flow) f.add_edge(s, t, std::numeric_limits<int>::max(), 0);
+  }
+  
+  void add_edge(int from, int to, T gain){
+    f.add_edge(from, L + to, 1, gain * (MIN_MATCHING ? 1 : -1));
+  }
+  
+  T solve(int flow){
+    T ret;
+    f.solve(s, t, flow, ret);
+    return ret * (MIN_MATCHING ? 1 : -1);
+  }
+  
+  auto get_matching(){
+    auto g = f.get_graph();
+    std::vector<std::tuple<int,int,T>> ret;
+    
+    for(int i = 0; i < L; ++i){
+      for(auto &e : g[i]){
+        if(not e.is_rev and e.to != t and e.cap == 0){
+          ret.emplace_back(i, e.to - L, e.cost * (MIN_MATCHING ? 1 : -1));
+        }
+      }
+    }
+    
+    return ret;
+  }
+};
 #line 3 "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 #include <queue>
 #include <utility>
@@ -203,49 +246,7 @@ public:
     return g;
   }
 };
-#line 5 "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
-
-/**
- * @title 重み付き二部マッチング
- * @docs weighted_bipartite_matching.md
- */
-template <typename T>
-class WeightedBipartiteMatching{
-public:
-  const int left, right, s, t;
-  MinimumCostFlow<int,T> f;
- 
-  WeightedBipartiteMatching(int left, int right):
-    left(left), right(right), s(left+right), t(s+1), f(left+right+2)
-  {
-    for(int i = 0; i < left; ++i) f.add_edge(s, i, 1, 0);
-    for(int i = 0; i < right; ++i) f.add_edge(left+i, t, 1, 0);
-  }
- 
-  void add_edge(int from, int to, T cost){
-    f.add_edge(from, left+to, 1, cost);
-  }
- 
-  T solve(int flow){
-    T ret;
-    f.solve(s, t, flow, ret);
-    return ret;
-  }
- 
-  std::vector<std::tuple<int,int,T>> get_matching_edges(){
-    auto g = f.get_graph();
-    std::vector<std::tuple<int,int,T>> ret;
- 
-    for(int i = 0; i < left; ++i){
-      for(auto &e : g[i]){
-        if(not e.is_rev and e.to != t and e.cap == 0) ret.emplace_back(i, e.to-left, e.cost);
-      }
-    }
- 
-    return ret;
-  }
-};
-#line 6 "test/aoj/2293/main.test.cpp"
+#line 7 "test/aoj/2293/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -264,16 +265,14 @@ int main(){
   std::sort(ls.begin(), ls.end());
   ls.erase(std::unique(ls.begin(), ls.end()), ls.end());
 
-  WeightedBipartiteMatching<int> m(n, ls.size());
+  WeightedBipartiteMatching<int, MinimumCostFlow<int, int>> m(n, ls.size(), true);
 
   for(int i = 0; i < n; ++i){
-    m.add_edge(i, std::lower_bound(ls.begin(), ls.end(), A[i]) - ls.begin(), -B[i]);
-    m.add_edge(i, std::lower_bound(ls.begin(), ls.end(), B[i]) - ls.begin(), -A[i]);
+    m.add_edge(i, std::lower_bound(ls.begin(), ls.end(), A[i]) - ls.begin(), B[i]);
+    m.add_edge(i, std::lower_bound(ls.begin(), ls.end(), B[i]) - ls.begin(), A[i]);
   }
 
-  m.f.add_edge(m.s, m.t, std::numeric_limits<int>::max(), 0);
-
-  int ans = -m.solve(n);
+  int ans = m.solve(n);
 
   std::cout << ans << std::endl;
   

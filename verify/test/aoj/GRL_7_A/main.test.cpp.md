@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#806a528feab938cddc13c96a5d63d020">test/aoj/GRL_7_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_7_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-12 04:30:02+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_7_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_7_A</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson法</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/bipartite_matching.cpp.html">二部マッチング</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/bipartite_matching.cpp.html">最大二部マッチング</a>
 
 
 ## Code
@@ -52,11 +52,12 @@ layout: default
 
 #include <iostream>
 #include "Mylib/Graph/Matching/bipartite_matching.cpp"
+#include "Mylib/Graph/Flow/ford_fulkerson.cpp"
 
 int main(){
   int X, Y, E; std::cin >> X >> Y >> E;
 
-  BipartiteMatching b(X, Y);
+  BipartiteMatching<FordFulkerson<int>> b(X, Y);
 
   for(int i = 0; i < E; ++i){
     int x, y; std::cin >> x >> y;
@@ -85,6 +86,45 @@ int main(){
 #include <utility>
 #include <climits>
 #include <cassert>
+
+/**
+ * @title 最大二部マッチング
+ * @docs bipartite_matching.md
+ */
+template <typename MaxFlow>
+class BipartiteMatching{
+  int L, R;
+  int s, t;
+  MaxFlow f;
+  
+public:
+  BipartiteMatching(int L, int R): L(L), R(R), s(L+R), t(s+1), f(L+R+2){
+    for(int i = 0; i < L; ++i) f.add_edge(s, i, 1);
+    for(int i = 0; i < R; ++i) f.add_edge(L + i, t, 1);
+  }
+
+  void add_edge(int i, int j){
+    assert(0 <= i and i < L and 0 <= j and j < R);
+    f.add_edge(i, L + j, 1);
+  }
+
+  int solve(){
+    return f.solve(s, t);
+  }
+
+  auto get_matching(){
+    auto g = f.get_graph();
+    std::vector<std::pair<int,int>> ret;
+
+    for(int i = 0; i < (int)g.size()-2; ++i){
+      for(const auto &e : g[i]){
+        if((not e.is_rev) and e.cap == 0 and e.to != t) ret.emplace_back(i, e.to - L);
+      }
+    }
+
+    return ret;
+  }
+};
 #line 3 "Mylib/Graph/Flow/ford_fulkerson.cpp"
 #include <algorithm>
 
@@ -166,51 +206,12 @@ public:
     return graph;
   }
 };
-#line 7 "Mylib/Graph/Matching/bipartite_matching.cpp"
-
-/**
- * @title 二部マッチング
- * @docs bipartite_matching.md
- */
-class BipartiteMatching{
-  int x, y;
-  FordFulkerson<int> f;
-  int s, t;
-  
-public:
-  BipartiteMatching(int x, int y): x(x), y(y), f(x+y+2), s(x+y), t(s+1){
-    for(int i = 0; i < x; ++i) f.add_edge(s,i,1);
-    for(int i = 0; i < y; ++i) f.add_edge(x+i,t,1);
-  }
-
-  void add_edge(int i, int j){
-    assert(0 <= i and i < x and 0 <= j and j < y);
-    f.add_edge(i,x+j,1);
-  }
-
-  int solve(){
-    return f.solve(s, t);
-  }
-
-  std::vector<std::pair<int,int>> get_matching_edges(){
-    auto g = f.get_graph();
-    std::vector<std::pair<int,int>> ret;
-
-    for(int i = 0; i < (int)g.size()-2; ++i){
-      for(const auto &e : g[i]){
-        if((not e.is_rev) and e.cap == 0 and e.to != t) ret.emplace_back(i, e.to-x);
-      }
-    }
-
-    return ret;
-  }
-};
-#line 5 "test/aoj/GRL_7_A/main.test.cpp"
+#line 6 "test/aoj/GRL_7_A/main.test.cpp"
 
 int main(){
   int X, Y, E; std::cin >> X >> Y >> E;
 
-  BipartiteMatching b(X, Y);
+  BipartiteMatching<FordFulkerson<int>> b(X, Y);
 
   for(int i = 0; i < E; ++i){
     int x, y; std::cin >> x >> y;

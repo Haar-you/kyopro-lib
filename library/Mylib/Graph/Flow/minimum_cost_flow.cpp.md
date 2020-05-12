@@ -36,11 +36,6 @@ layout: default
 
 
 
-## Required by
-
-* :heavy_check_mark: <a href="../Matching/weighted_bipartite_matching.cpp.html">重み付き二部マッチング</a>
-
-
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2293/main.test.cpp.html">test/aoj/2293/main.test.cpp</a>

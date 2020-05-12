@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/Semiring/add_mul_semiring.cpp
+# :warning: Mylib/AlgebraicStructure/Monoid/bitand.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#3df95940e092844fc072dd50b6844b29">Mylib/AlgebraicStructure/Semiring</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Semiring/add_mul_semiring.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+* category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/bitand.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 
@@ -44,15 +44,13 @@ layout: default
 #pragma once
 
 /**
- * @docs add_mul_semiring.md
+ * @docs bitand.md
  */
 template <typename T>
-struct AddMulSemiring{
+struct BitAndMonoid{
   using value_type = T;
-  constexpr inline static value_type id_add(){return 0;}
-  constexpr inline static value_type id_mul(){return 1;}
-  constexpr inline static value_type add(const value_type &a, const value_type &b){return a + b;}
-  constexpr inline static value_type mul(const value_type &a, const value_type &b){return a * b;}
+  constexpr inline static value_type id(){return ~(value_type)0;}
+  constexpr inline static value_type op(const value_type &a, const value_type &b){return a & b;}
 };
 
 ```
@@ -61,18 +59,16 @@ struct AddMulSemiring{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Semiring/add_mul_semiring.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/bitand.cpp"
 
 /**
- * @docs add_mul_semiring.md
+ * @docs bitand.md
  */
 template <typename T>
-struct AddMulSemiring{
+struct BitAndMonoid{
   using value_type = T;
-  constexpr inline static value_type id_add(){return 0;}
-  constexpr inline static value_type id_mul(){return 1;}
-  constexpr inline static value_type add(const value_type &a, const value_type &b){return a + b;}
-  constexpr inline static value_type mul(const value_type &a, const value_type &b){return a * b;}
+  constexpr inline static value_type id(){return ~(value_type)0;}
+  constexpr inline static value_type op(const value_type &a, const value_type &b){return a & b;}
 };
 
 ```

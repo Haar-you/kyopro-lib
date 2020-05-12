@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 
@@ -39,7 +39,7 @@ layout: default
 ## Depends on
 
 * :warning: <a href="../Monoid/monoid_utils.cpp.html">Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp</a>
-* :heavy_check_mark: <a href="../Monoid/product_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/product_monoid.cpp</a>
+* :heavy_check_mark: <a href="../Monoid/product.cpp.html">Mylib/AlgebraicStructure/Monoid/product.cpp</a>
 
 
 ## Code
@@ -48,7 +48,7 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/product_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/product.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp"
 
 /**
@@ -72,10 +72,10 @@ struct MultiplyProduct{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/product_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/product.cpp"
 
 /**
- * @docs product_monoid.md
+ * @docs product.md
  */
 template <typename T>
 struct ProductMonoid{

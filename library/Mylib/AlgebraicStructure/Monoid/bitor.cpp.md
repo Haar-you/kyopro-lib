@@ -25,15 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/Monoid/pair_monoid.cpp
+# :warning: Mylib/AlgebraicStructure/Monoid/bitor.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/pair_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/bitor.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
+
+
+## Required by
+
+* :warning: <a href="../MonoidAction/or_or.cpp.html">Mylib/AlgebraicStructure/MonoidAction/or_or.cpp</a>
+* :warning: <a href="../MonoidAction/update_or.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_or.cpp</a>
 
 
 ## Code
@@ -42,22 +48,15 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include <utility>
 
 /**
- * @docs pair_monoid.md
+ * @docs bitor.md
  */
-template <typename M1, typename M2>
-struct PairMonoid{
-  using value_type = std::pair<typename M1::value_type, typename M2::value_type>;
-
-  constexpr inline static value_type id(){
-    return {M1::id(), M2::id()};
-  }
-
-  constexpr inline static value_type op(const value_type &a, const value_type &b){
-    return {M1::op(a.first, b.first), M2::op(a.second, b.second)};
-  }
+template <typename T>
+struct BitOrMonoid{
+  using value_type = T;
+  constexpr inline static value_type id(){return 0;}
+  constexpr inline static value_type op(const value_type &a, const value_type &b){return a | b;}
 };
 
 ```
@@ -66,23 +65,16 @@ struct PairMonoid{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/pair_monoid.cpp"
-#include <utility>
+#line 2 "Mylib/AlgebraicStructure/Monoid/bitor.cpp"
 
 /**
- * @docs pair_monoid.md
+ * @docs bitor.md
  */
-template <typename M1, typename M2>
-struct PairMonoid{
-  using value_type = std::pair<typename M1::value_type, typename M2::value_type>;
-
-  constexpr inline static value_type id(){
-    return {M1::id(), M2::id()};
-  }
-
-  constexpr inline static value_type op(const value_type &a, const value_type &b){
-    return {M1::op(a.first, b.first), M2::op(a.second, b.second)};
-  }
+template <typename T>
+struct BitOrMonoid{
+  using value_type = T;
+  constexpr inline static value_type id(){return 0;}
+  constexpr inline static value_type op(const value_type &a, const value_type &b){return a | b;}
 };
 
 ```

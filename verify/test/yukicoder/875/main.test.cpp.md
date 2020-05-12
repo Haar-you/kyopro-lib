@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/875/main.test.cpp
+# :x: test/yukicoder/875/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#85bd684f532fe6c6e7e3dd42beff3eb5">test/yukicoder/875</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/875/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/875">https://yukicoder.me/problems/no/875</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/min_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/with_index.cpp.html">Mylib/AlgebraicStructure/Monoid/with_index.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/with_min_index.cpp.html">Mylib/AlgebraicStructure/Monoid/with_min_index.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
 
 
 ## Code
@@ -56,10 +56,10 @@ layout: default
 #include <utility>
 
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/with_index.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/min.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/with_min_index.cpp"
 
-using Mon = WithIndex<MinMonoid<int>, MinMonoid<int>>;
+using Mon = WithMinIndex<MinMonoid<int>>;
 
 int main(){
   int N, Q; scanf("%d %d", &N, &Q);
@@ -94,7 +94,7 @@ int main(){
       int l, r; scanf("%d %d", &l, &r);
       --l, --r;
 
-      printf("%d\n", seg.get(l, r+1).second + 1);
+      printf("%lld\n", seg.get(l, r+1).second + 1);
 
       break;
     }
@@ -173,11 +173,11 @@ public:
     init_with_vector(std::vector<value_type>(hsize, val));
   }  
 };
-#line 2 "Mylib/AlgebraicStructure/Monoid/min_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include <algorithm>
 
 /**
- * @docs min_monoid.md
+ * @docs min.md
  */
 template <typename T>
 struct MinMonoid{
@@ -185,28 +185,30 @@ struct MinMonoid{
   constexpr inline static value_type id(){return std::numeric_limits<T>::max();}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return std::min(a, b);}
 };
-#line 3 "Mylib/AlgebraicStructure/Monoid/with_index.cpp"
+#line 3 "Mylib/AlgebraicStructure/Monoid/with_min_index.cpp"
+#include <limits>
+#line 5 "Mylib/AlgebraicStructure/Monoid/with_min_index.cpp"
 
 /**
- * @docs with_index.md
+ * @docs with_min_index.md
  */
-template <typename Monoid, typename Index>
-struct WithIndex{
-  using value_type = std::pair<typename Monoid::value_type, typename Index::value_type>;
+template <typename Monoid>
+struct WithMinIndex{
+  using value_type = std::pair<typename Monoid::value_type, int64_t>;
 
   constexpr inline static value_type id(){
-    return {Monoid::id(), Index::id()};
+    return {Monoid::id(), std::numeric_limits<int64_t>::max()};
   }
 
   constexpr inline static value_type op(const value_type &a, const value_type &b){
-    if(a.first == b.first) return {a.first, Index::op(a.second, b.second)};
+    if(a.first == b.first) return {a.first, std::min(a.second, b.second)};
     if(Monoid::op(a.first, b.first) == a.first) return a;
     else return b;
   }
 };
 #line 10 "test/yukicoder/875/main.test.cpp"
 
-using Mon = WithIndex<MinMonoid<int>, MinMonoid<int>>;
+using Mon = WithMinIndex<MinMonoid<int>>;
 
 int main(){
   int N, Q; scanf("%d %d", &N, &Q);
@@ -241,7 +243,7 @@ int main(){
       int l, r; scanf("%d %d", &l, &r);
       --l, --r;
 
-      printf("%d\n", seg.get(l, r+1).second + 1);
+      printf("%lld\n", seg.get(l, r+1).second + 1);
 
       break;
     }

@@ -31,15 +31,15 @@ layout: default
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/update_or.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 
 
 ## Depends on
 
-* :warning: <a href="../Monoid/or_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/or_monoid.cpp</a>
-* :heavy_check_mark: <a href="../Monoid/update_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/update_monoid.cpp</a>
+* :warning: <a href="../Monoid/bitor.cpp.html">Mylib/AlgebraicStructure/Monoid/bitor.cpp</a>
+* :question: <a href="../Monoid/update.cpp.html">Mylib/AlgebraicStructure/Monoid/update.cpp</a>
 
 
 ## Code
@@ -48,15 +48,15 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/update_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/or_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/update.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/bitor.cpp"
 
 /**
  * @docs update_or.md
  */
 template <typename T, typename U>
 struct UpdateOr{
-  using monoid_get = OrMonoid<T>;
+  using monoid_get = BitOrMonoid<T>;
   using monoid_update = UpdateMonoid<U>;
   using value_type_get = typename monoid_get::value_type;
   using value_type_update = typename monoid_update::value_type;
@@ -72,11 +72,11 @@ struct UpdateOr{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/update_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/update.cpp"
 #include <optional>
 
 /**
- * @docs update_monoid.md
+ * @docs update.md
  */
 template <typename T>
 struct UpdateMonoid{
@@ -84,13 +84,13 @@ struct UpdateMonoid{
   constexpr inline static value_type id(){return std::nullopt;}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return (a ? a : b);}
 };
-#line 2 "Mylib/AlgebraicStructure/Monoid/or_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/bitor.cpp"
 
 /**
- * @docs or_monoid.md
+ * @docs bitor.md
  */
 template <typename T>
-struct OrMonoid{
+struct BitOrMonoid{
   using value_type = T;
   constexpr inline static value_type id(){return 0;}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return a | b;}
@@ -102,7 +102,7 @@ struct OrMonoid{
  */
 template <typename T, typename U>
 struct UpdateOr{
-  using monoid_get = OrMonoid<T>;
+  using monoid_get = BitOrMonoid<T>;
   using monoid_update = UpdateMonoid<U>;
   using value_type_get = typename monoid_get::value_type;
   using value_type_update = typename monoid_update::value_type;

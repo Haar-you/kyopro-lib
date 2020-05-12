@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/510/main.test.cpp
+# :x: test/yukicoder/510/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#79c44d69f4476256a05dd1926185d029">test/yukicoder/510</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/510/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-06 02:31:36+09:00
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/510">https://yukicoder.me/problems/no/510</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/product_matrix_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/product_matrix_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp.html">正方行列 (コンパイル時固定サイズ)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/product_matrix.cpp.html">Mylib/AlgebraicStructure/Monoid/product_matrix.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
+* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp.html">正方行列 (コンパイル時固定サイズ)</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -59,8 +59,8 @@ layout: default
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp"
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/product_matrix_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/product_matrix.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 
 using mint = ModInt<1000000007>;
 using Mat = SquareMatrixConst<mint, 4>;
@@ -334,10 +334,10 @@ public:
     init_with_vector(std::vector<value_type>(hsize, val));
   }  
 };
-#line 2 "Mylib/AlgebraicStructure/Monoid/product_matrix_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/product_matrix.cpp"
 
 /**
- * @docs product_matrix_monoid.md
+ * @docs product_matrix.md
  */
 template <typename T>
 struct ProductMatrixMonoid{
@@ -345,10 +345,10 @@ struct ProductMatrixMonoid{
   constexpr inline static value_type id(){return T::make_unit();}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return a * b;}
 };
-#line 2 "Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 
 /**
- * @docs dual_monoid.md
+ * @docs dual.md
  */
 template <typename Monoid>
 struct DualMonoid{

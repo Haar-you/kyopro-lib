@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#2e380218d9fd214c2f91a8ade734af1c">Mylib/TypicalProblem/SubsetSumProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_minimum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-13 00:35:35+09:00
 
 
 
@@ -65,7 +65,7 @@ layout: default
  * @title 最小個数部分和問題
  * @docs subset_sum_minimum.md
  */
-int64_t subset_sum_minimum(int N, int K, const std::vector<int> &a){
+auto subset_sum_minimum(int N, int K, const std::vector<int> &a){
   std::vector<std::vector<int64_t>> dp(2, std::vector<int64_t>(K+1, INT_MAX));
 
   dp[0][0] = 0;
@@ -77,7 +77,11 @@ int64_t subset_sum_minimum(int N, int K, const std::vector<int> &a){
     }
   }
 
-  return dp[N&1][K] == INT_MAX ? -1 : dp[N&1][K];
+  for(int i = 0; i <= K; ++i){
+    if(dp[N&1][i] == INT_MAX) dp[N&1][i] = -1;
+  }
+
+  return dp[N&1];
 }
 
 ```
@@ -94,7 +98,7 @@ int64_t subset_sum_minimum(int N, int K, const std::vector<int> &a){
  * @title 最小個数部分和問題
  * @docs subset_sum_minimum.md
  */
-int64_t subset_sum_minimum(int N, int K, const std::vector<int> &a){
+auto subset_sum_minimum(int N, int K, const std::vector<int> &a){
   std::vector<std::vector<int64_t>> dp(2, std::vector<int64_t>(K+1, INT_MAX));
 
   dp[0][0] = 0;
@@ -106,7 +110,11 @@ int64_t subset_sum_minimum(int N, int K, const std::vector<int> &a){
     }
   }
 
-  return dp[N&1][K] == INT_MAX ? -1 : dp[N&1][K];
+  for(int i = 0; i <= K; ++i){
+    if(dp[N&1][i] == INT_MAX) dp[N&1][i] = -1;
+  }
+
+  return dp[N&1];
 }
 
 ```

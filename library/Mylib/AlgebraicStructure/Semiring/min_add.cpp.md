@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/Semiring/tropical_semiring.cpp
+# :warning: Mylib/AlgebraicStructure/Semiring/min_add.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3df95940e092844fc072dd50b6844b29">Mylib/AlgebraicStructure/Semiring</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Semiring/tropical_semiring.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Semiring/min_add.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 
@@ -46,10 +46,10 @@ layout: default
 #include <algorithm>
 
 /**
- * @docs tropical_semiring.md
+ * @docs min_add.md
  */
 template <typename T>
-struct TropicalSemiring{
+struct MinAddSemiring{
   using value_type = std::optional<T>;
 
   constexpr inline static value_type id_add(){return std::nullopt;}
@@ -72,15 +72,15 @@ struct TropicalSemiring{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Semiring/tropical_semiring.cpp"
+#line 2 "Mylib/AlgebraicStructure/Semiring/min_add.cpp"
 #include <optional>
 #include <algorithm>
 
 /**
- * @docs tropical_semiring.md
+ * @docs min_add.md
  */
 template <typename T>
-struct TropicalSemiring{
+struct MinAddSemiring{
   using value_type = std::optional<T>;
 
   constexpr inline static value_type id_add(){return std::nullopt;}

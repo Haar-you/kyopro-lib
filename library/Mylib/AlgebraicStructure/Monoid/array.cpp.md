@@ -25,20 +25,15 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp
+# :warning: Mylib/AlgebraicStructure/Monoid/array.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/array.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
 
 
 ## Code
@@ -47,20 +42,25 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include <optional>
+#include <array>
 
 /**
- * @docs maybe_monoid.md
+ * @docs array.md
  */
-template <typename Semigroup>
-struct MaybeMonoid{
-  using value_type = std::optional<typename Semigroup::value_type>;
-  
-  static value_type id(){return {};}
-  static value_type op(const value_type &a, const value_type &b){
-    if(not a) return b;
-    if(not b) return a;
-    return {Semigroup::op(*a, *b)};
+template <typename Monoid, int B>
+struct ArrayMonoid{
+  using value_type = std::array<typename Monoid::value_type, B>;
+
+  inline static value_type id(){
+    value_type ret;
+    ret.fill(Monoid::id());
+    return ret;
+  }
+
+  inline static value_type op(const value_type &a, const value_type &b){
+    value_type ret;
+    for(int i = 0; i < B; ++i) ret[i] = Monoid::op(a[i], b[i]);
+    return ret;
   }
 };
 
@@ -70,21 +70,26 @@ struct MaybeMonoid{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/maybe_monoid.cpp"
-#include <optional>
+#line 2 "Mylib/AlgebraicStructure/Monoid/array.cpp"
+#include <array>
 
 /**
- * @docs maybe_monoid.md
+ * @docs array.md
  */
-template <typename Semigroup>
-struct MaybeMonoid{
-  using value_type = std::optional<typename Semigroup::value_type>;
-  
-  static value_type id(){return {};}
-  static value_type op(const value_type &a, const value_type &b){
-    if(not a) return b;
-    if(not b) return a;
-    return {Semigroup::op(*a, *b)};
+template <typename Monoid, int B>
+struct ArrayMonoid{
+  using value_type = std::array<typename Monoid::value_type, B>;
+
+  inline static value_type id(){
+    value_type ret;
+    ret.fill(Monoid::id());
+    return ret;
+  }
+
+  inline static value_type op(const value_type &a, const value_type &b){
+    value_type ret;
+    for(int i = 0; i < B; ++i) ret[i] = Monoid::op(a[i], b[i]);
+    return ret;
   }
 };
 

@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: グラフ用テンプレート
+# :question: グラフ用テンプレート
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -38,8 +38,7 @@ layout: default
 
 ## Required by
 
-* :warning: <a href="BipartiteGraph/check_bipartite_graph.cpp.html">二部グラフ判定 (連結グラフ)</a>
-* :warning: <a href="BipartiteGraph/check_bipartite_graph_disconnected.cpp.html">二部グラフ判定 (非連結グラフ)</a>
+* :heavy_check_mark: <a href="BipartiteGraph/check_bipartite_graph.cpp.html">二部グラフ判定</a>
 * :warning: <a href="EulerianPath/directed_eulerian_path.cpp.html">有向Euler路</a>
 * :warning: <a href="EulerianPath/undirected_eulerian_path.cpp.html">無向Euler路</a>
 * :heavy_check_mark: <a href="GraphUtils/articulation_points.cpp.html">間接点列挙</a>
@@ -60,10 +59,10 @@ layout: default
 * :warning: <a href="TopologicalSort/topological_sort_lexicographical.cpp.html">トポロジカルソート (辞書順最小)</a>
 * :warning: <a href="TreeUtils/centroid.cpp.html">重心列挙</a>
 * :warning: <a href="TreeUtils/centroid_decomposition.cpp.html">重心分解</a>
-* :heavy_check_mark: <a href="TreeUtils/euler_tour_bfs.cpp.html">BFS Euler tour</a>
-* :heavy_check_mark: <a href="TreeUtils/euler_tour_vertex.cpp.html">頂点Euler tour</a>
+* :x: <a href="TreeUtils/euler_tour_bfs.cpp.html">BFS Euler tour</a>
+* :x: <a href="TreeUtils/euler_tour_vertex.cpp.html">頂点Euler tour</a>
 * :warning: <a href="TreeUtils/forest.cpp.html">Mylib/Graph/TreeUtils/forest.cpp</a>
-* :heavy_check_mark: <a href="TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
+* :question: <a href="TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
 * :heavy_check_mark: <a href="TreeUtils/lca_based_on_doubling.cpp.html">最小共通祖先 (ダブリング)</a>
 * :heavy_check_mark: <a href="TreeUtils/lca_based_on_hld.cpp.html">最小共通祖先 (HLD)</a>
 * :heavy_check_mark: <a href="TreeUtils/rerooting.cpp.html">全方位木dp</a>
@@ -78,6 +77,7 @@ layout: default
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../verify/test/aoj/1595/main.test.cpp.html">test/aoj/1595/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/2370/main.test.cpp.html">test/aoj/2370/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_2_A/main.test.cpp.html">test/aoj/DPL_2_A/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_2_B/main.test.cpp.html">test/aoj/DPL_2_B/main.test.cpp</a>
@@ -96,12 +96,12 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/two_edge_connected_components/main.test.cpp.html">test/yosupo-judge/two_edge_connected_components/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
 
 
 ## Code

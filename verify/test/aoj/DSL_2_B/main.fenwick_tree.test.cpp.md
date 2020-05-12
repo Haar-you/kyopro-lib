@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#082039b3153b4a2410d6e14e04aca1cc">test/aoj/DSL_2_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 16:28:32+09:00
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum_group.cpp.html">Mylib/AlgebraicStructure/Group/sum_group.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">FenwickTree</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum.cpp.html">Mylib/AlgebraicStructure/Group/sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">FenwickTree</a>
 
 
 ## Code
@@ -52,7 +52,7 @@ layout: default
 
 #include <iostream>
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
-#include "Mylib/AlgebraicStructure/Group/sum_group.cpp"
+#include "Mylib/AlgebraicStructure/Group/sum.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
@@ -133,10 +133,10 @@ public:
     return get(x, x+1);
   }
 };
-#line 2 "Mylib/AlgebraicStructure/Group/sum_group.cpp"
+#line 2 "Mylib/AlgebraicStructure/Group/sum.cpp"
 
 /**
- * @docs sum_group.md
+ * @docs sum.md
  */
 template <typename T>
 struct SumGroup{

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7db45eeebe50ebaff0e32d268a51d554">test/yosupo-judge/assignment</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/assignment/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-12 04:30:02+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/assignment">https://judge.yosupo.jp/problem/assignment</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">最小費用流</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/weighted_bipartite_matching.cpp.html">重み付き二部マッチング</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/weighted_bipartite_matching.cpp.html">重み付き最大二部マッチング</a>
 
 
 ## Code
@@ -53,13 +53,14 @@ layout: default
 #include <iostream>
 #include <vector>
 #include "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
+#include "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
   
   int N; std::cin >> N;
-  WeightedBipartiteMatching<int64_t> m(N, N);
+  WeightedBipartiteMatching<int64_t, MinimumCostFlow<int, int64_t>, true> m(N, N);
 
   auto a = std::vector(N, std::vector<int64_t>(N));
   
@@ -73,10 +74,10 @@ int main(){
   auto ans = m.solve(N);
   std::cout << ans << std::endl;
 
-  auto match = m.get_matching_edges();
+  auto matching = m.get_matching();
 
   std::vector<int> p(N);
-  for(auto &[i,j,c] : match){
+  for(auto &[i,j,c] : matching){
     p[i] = j;
   }
 
@@ -101,6 +102,50 @@ int main(){
 #include <vector>
 #line 3 "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
 #include <tuple>
+
+/**
+ * @title 重み付き最大二部マッチング
+ * @docs weighted_bipartite_matching.md
+ */
+template <typename T, typename MinCostFlow, bool MIN_MATCHING = false>
+class WeightedBipartiteMatching{
+public:
+  int L, R, s, t;
+  MinCostFlow f;
+  
+  WeightedBipartiteMatching(int L, int R, bool arbitrary_flow = false):
+    L(L), R(R), s(L+R), t(s+1), f(L+R+2)
+  {
+    for(int i = 0; i < L; ++i) f.add_edge(s, i, 1, 0);
+    for(int i = 0; i < R; ++i) f.add_edge(L+i, t, 1, 0);
+    if(arbitrary_flow) f.add_edge(s, t, std::numeric_limits<int>::max(), 0);
+  }
+  
+  void add_edge(int from, int to, T gain){
+    f.add_edge(from, L + to, 1, gain * (MIN_MATCHING ? 1 : -1));
+  }
+  
+  T solve(int flow){
+    T ret;
+    f.solve(s, t, flow, ret);
+    return ret * (MIN_MATCHING ? 1 : -1);
+  }
+  
+  auto get_matching(){
+    auto g = f.get_graph();
+    std::vector<std::tuple<int,int,T>> ret;
+    
+    for(int i = 0; i < L; ++i){
+      for(auto &e : g[i]){
+        if(not e.is_rev and e.to != t and e.cap == 0){
+          ret.emplace_back(i, e.to - L, e.cost * (MIN_MATCHING ? 1 : -1));
+        }
+      }
+    }
+    
+    return ret;
+  }
+};
 #line 3 "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 #include <queue>
 #include <utility>
@@ -204,56 +249,14 @@ public:
     return g;
   }
 };
-#line 5 "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
-
-/**
- * @title 重み付き二部マッチング
- * @docs weighted_bipartite_matching.md
- */
-template <typename T>
-class WeightedBipartiteMatching{
-public:
-  const int left, right, s, t;
-  MinimumCostFlow<int,T> f;
- 
-  WeightedBipartiteMatching(int left, int right):
-    left(left), right(right), s(left+right), t(s+1), f(left+right+2)
-  {
-    for(int i = 0; i < left; ++i) f.add_edge(s, i, 1, 0);
-    for(int i = 0; i < right; ++i) f.add_edge(left+i, t, 1, 0);
-  }
- 
-  void add_edge(int from, int to, T cost){
-    f.add_edge(from, left+to, 1, cost);
-  }
- 
-  T solve(int flow){
-    T ret;
-    f.solve(s, t, flow, ret);
-    return ret;
-  }
- 
-  std::vector<std::tuple<int,int,T>> get_matching_edges(){
-    auto g = f.get_graph();
-    std::vector<std::tuple<int,int,T>> ret;
- 
-    for(int i = 0; i < left; ++i){
-      for(auto &e : g[i]){
-        if(not e.is_rev and e.to != t and e.cap == 0) ret.emplace_back(i, e.to-left, e.cost);
-      }
-    }
- 
-    return ret;
-  }
-};
-#line 6 "test/yosupo-judge/assignment/main.test.cpp"
+#line 7 "test/yosupo-judge/assignment/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
   
   int N; std::cin >> N;
-  WeightedBipartiteMatching<int64_t> m(N, N);
+  WeightedBipartiteMatching<int64_t, MinimumCostFlow<int, int64_t>, true> m(N, N);
 
   auto a = std::vector(N, std::vector<int64_t>(N));
   
@@ -267,10 +270,10 @@ int main(){
   auto ans = m.solve(N);
   std::cout << ans << std::endl;
 
-  auto match = m.get_matching_edges();
+  auto matching = m.get_matching();
 
   std::vector<int> p(N);
-  for(auto &[i,j,c] : match){
+  for(auto &[i,j,c] : matching){
     p[i] = j;
   }
 

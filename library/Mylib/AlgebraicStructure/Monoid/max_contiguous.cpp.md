@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/Monoid/max_contiguous_monoid.cpp
+# :warning: Mylib/AlgebraicStructure/Monoid/max_contiguous.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/max_contiguous_monoid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-09 08:43:01+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/max_contiguous.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 
@@ -66,7 +66,7 @@ layout: default
 #include <tuple>
 
 /**
- * @docs max_contiguous_monoid.md
+ * @docs max_contiguous.md
  */
 struct MaxContiguousMonoid{
   using value_type = std::tuple<int, int, int, int>;
@@ -102,11 +102,11 @@ struct MaxContiguousMonoid{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/max_contiguous_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/max_contiguous.cpp"
 #include <tuple>
 
 /**
- * @docs max_contiguous_monoid.md
+ * @docs max_contiguous.md
  */
 struct MaxContiguousMonoid{
   using value_type = std::tuple<int, int, int, int>;

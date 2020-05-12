@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 一次元累積和
+# :x: 一次元累積和
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#606b6851a96c8708fa4cdcf98aebb7c1">Mylib/Algorithm/CumulativeSum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-12 04:30:23+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/static_range_sum/main.test.cpp.html">test/yosupo-judge/static_range_sum/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/static_range_sum/main.test.cpp.html">test/yosupo-judge/static_range_sum/main.test.cpp</a>
 
 
 ## Code
@@ -77,21 +77,23 @@ public:
     data.assign(N+1, e);
   }
 
-  inline void update(int i, const T &val){
+  auto& update(int i, const T &val){
     assert(not is_built);
     data[i+1] = add(data[i+1], val);
+    return *this;
   }
 
-  inline void build(){
+  auto& build(){
     assert(not is_built);
     for(int i = 0; i < N; ++i) data[i+1] = add(data[i+1], data[i]);
     is_built = true;
+    return *this;
   }
   
   /**
    * @attention [i, j)
    */
-  inline T get(int i, int j) const {
+  T get(int i, int j) const {
     assert(is_built);
     return minus(data[j], data[i]);
   }
@@ -135,21 +137,23 @@ public:
     data.assign(N+1, e);
   }
 
-  inline void update(int i, const T &val){
+  auto& update(int i, const T &val){
     assert(not is_built);
     data[i+1] = add(data[i+1], val);
+    return *this;
   }
 
-  inline void build(){
+  auto& build(){
     assert(not is_built);
     for(int i = 0; i < N; ++i) data[i+1] = add(data[i+1], data[i]);
     is_built = true;
+    return *this;
   }
   
   /**
    * @attention [i, j)
    */
-  inline T get(int i, int j) const {
+  T get(int i, int j) const {
     assert(is_built);
     return minus(data[j], data[i]);
   }

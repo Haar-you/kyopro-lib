@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4d6b83f34c17c15b5343ef482a3d7447">test/yosupo-judge/point_set_range_composite</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/point_set_range_composite/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-12 08:15:26+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_set_range_composite">https://judge.yosupo.jp/problem/point_set_range_composite</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp.html">Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -55,8 +55,8 @@ layout: default
 #include <iostream>
 #include <utility>
 #include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
 
 using mint = ModInt<998244353>;
@@ -156,10 +156,10 @@ public:
     init_with_vector(std::vector<value_type>(hsize, val));
   }  
 };
-#line 3 "Mylib/AlgebraicStructure/Monoid/affine_monoid.cpp"
+#line 3 "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 
 /**
- * @docs affine_monoid.md
+ * @docs affine.md
  */
 template <typename T>
 struct AffineMonoid{
@@ -167,10 +167,10 @@ struct AffineMonoid{
   constexpr inline static value_type id(){return std::make_pair(1, 0);}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return std::make_pair(a.first * b.first, a.first * b.second + a.second);}
 };
-#line 2 "Mylib/AlgebraicStructure/Monoid/dual_monoid.cpp"
+#line 2 "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 
 /**
- * @docs dual_monoid.md
+ * @docs dual.md
  */
 template <typename Monoid>
 struct DualMonoid{

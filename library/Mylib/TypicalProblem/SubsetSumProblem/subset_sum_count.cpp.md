@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#2e380218d9fd214c2f91a8ade734af1c">Mylib/TypicalProblem/SubsetSumProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_count.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-13 00:35:35+09:00
 
 
 
@@ -64,7 +64,7 @@ layout: default
  * @docs subset_sum_count.md
  */
 template <typename T>
-T subset_sum_count(int N, int K, const std::vector<int> &a){
+auto subset_sum_count(int N, int K, const std::vector<int> &a){
   std::vector<std::vector<T>> dp(2, std::vector<T>(K+1));
 
   dp[0][0] = 1;
@@ -76,7 +76,7 @@ T subset_sum_count(int N, int K, const std::vector<int> &a){
     }
   }
 
-  return dp[N&1][K];
+  return dp[N&1];
 }
 
 ```
@@ -93,7 +93,7 @@ T subset_sum_count(int N, int K, const std::vector<int> &a){
  * @docs subset_sum_count.md
  */
 template <typename T>
-T subset_sum_count(int N, int K, const std::vector<int> &a){
+auto subset_sum_count(int N, int K, const std::vector<int> &a){
   std::vector<std::vector<T>> dp(2, std::vector<T>(K+1));
 
   dp[0][0] = 1;
@@ -105,7 +105,7 @@ T subset_sum_count(int N, int K, const std::vector<int> &a){
     }
   }
 
-  return dp[N&1][K];
+  return dp[N&1];
 }
 
 ```
