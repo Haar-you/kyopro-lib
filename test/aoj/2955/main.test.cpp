@@ -32,7 +32,7 @@ int main(){
     m.push_back(kv.second);
   }
   
-  bool ans = subset_sum_limited(a.size(), R, a, m);
+  bool ans = subset_sum_limited(a.size(), R, a, m)[R];
   
   std::cout << (ans ? "Yes" : "No") << std::endl;
   

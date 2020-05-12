@@ -5,7 +5,7 @@
  * @title 部分和判定問題
  * @docs subset_sum.md
  */
-bool subset_sum(int N, int K, const std::vector<int> &a){
+auto subset_sum(int N, int K, const std::vector<int> &a){
   std::vector<std::vector<bool>> dp(2, std::vector<bool>(K+1));
 
   dp[0][0] = true;
@@ -17,5 +17,5 @@ bool subset_sum(int N, int K, const std::vector<int> &a){
     }
   }
 
-  return dp[N&1][K];
+  return dp[N&1];
 }

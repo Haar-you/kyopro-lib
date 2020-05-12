@@ -6,7 +6,7 @@
  * @docs subset_sum_count.md
  */
 template <typename T>
-T subset_sum_count(int N, int K, const std::vector<int> &a){
+auto subset_sum_count(int N, int K, const std::vector<int> &a){
   std::vector<std::vector<T>> dp(2, std::vector<T>(K+1));
 
   dp[0][0] = 1;
@@ -18,5 +18,5 @@ T subset_sum_count(int N, int K, const std::vector<int> &a){
     }
   }
 
-  return dp[N&1][K];
+  return dp[N&1];
 }
