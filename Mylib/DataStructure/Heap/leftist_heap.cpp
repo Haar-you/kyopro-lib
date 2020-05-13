@@ -1,5 +1,6 @@
 #pragma once
 #include <functional>
+#include <utility>
 
 /**
  * @title LeftistHeap
@@ -39,7 +40,7 @@ protected:
 public:
   void meld(const LeftistHeap &heap){root = meld(root, heap.root);}  
   void push(const T &val){root = meld(root, new node(val));}
-  T top() const {return root->val;}
+  const T& top() const {return root->val;}
   void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}
   bool empty() const {return root == nullptr;}
   size_t size() const {return root ? root->size : 0;}

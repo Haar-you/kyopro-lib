@@ -1,5 +1,6 @@
 #pragma once
 #include <functional>
+#include <utility>
 
 /**
  * @title SkewHeap
@@ -26,11 +27,11 @@ protected:
     if(!a) return b;
     if(!b) return a;
 
-    if(compare(a->val, b->val)) swap(a, b);
+    if(compare(a->val, b->val)) std::swap(a, b);
 
     a->size += b->size;
     a->right = meld(a->right, b);
-    swap(a->left, a->right);
+    std::swap(a->left, a->right);
 
     return a;
   }
@@ -38,7 +39,7 @@ protected:
 public:
   void meld(const SkewHeap &heap){root = meld(root, heap.root);}
   void push(const T &val){root = meld(root, new node(val));}
-  T top() const{return root->val;}
+  const T& top() const {return root->val;}
   void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}
   bool empty() const {return root == nullptr;}
   size_t size() const {return root ? root->size : 0;}
