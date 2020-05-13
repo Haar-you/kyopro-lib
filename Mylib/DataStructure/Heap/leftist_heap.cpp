@@ -38,7 +38,7 @@ protected:
   }
 
 public:
-  void meld(const LeftistHeap &heap){root = meld(root, heap.root);}  
+  void meld(LeftistHeap &heap){root = meld(root, heap.root); heap.root = nullptr;}  
   void push(const T &val){root = meld(root, new node(val));}
   const T& top() const {return root->val;}
   void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}
