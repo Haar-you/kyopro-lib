@@ -13,7 +13,6 @@ class BinomialHeap{
   struct node{
     T value;
     std::vector<node*> children;
-
     node(T value): value(value){}
   };
 
@@ -30,38 +29,27 @@ class BinomialHeap{
     return a;
   }
 
-  void meld(std::array<node*, MAX> y){
+  template <typename Container>
+  void meld(Container c){
     node *s = nullptr;
 
     for(int i = 0; i < MAX; ++i){
-      node *a = nullptr;
+      std::vector<node*> temp;
+      if(s){temp.push_back(s); s = nullptr;}
+      if(roots[i]){temp.push_back(roots[i]); roots[i] = nullptr;}
+      if(i < (int)c.size() and c[i]){temp.push_back(c[i]); c[i] = nullptr;}
 
-      if(s and y[i]){
-        a = merge(s, y[i]);
-        s = nullptr;
-      }else if(y[i]){
-        std::swap(s, y[i]);
-      }
-
-      if(a){
-        std::swap(s, a);
-      }else{
-        if(s and roots[i]){
-          s = merge(s, roots[i]);
-          roots[i] = nullptr;
-        }else if(s){
-          roots[i] = s;
-          s = nullptr;
-        }
+      switch(temp.size()){
+      case 1: roots[i] = temp[0]; break;
+      case 2: s = merge(temp[0], temp[1]); break;
+      case 3: roots[i] = temp[0]; s = merge(temp[1], temp[2]); break;
       }
     }
     
     top_index = -1;
     for(int i = 0; i < MAX; ++i){
       if(roots[i]){
-        if(top_index == -1){
-          top_index = i;
-        }else if(compare(roots[top_index]->value, roots[i]->value)){
+        if(top_index == -1 or compare(roots[top_index]->value, roots[i]->value)){
           top_index = i;
         }
       }
@@ -86,39 +74,21 @@ public:
     heap_size += 1;
     node *t = new node(value);
 
-    for(int i = 0; i < MAX; ++i){
-      if(roots[i]){
-        t = merge(t, roots[i]);
-        roots[i] = nullptr;
-      }else{
-        if(top_index == -1 or not roots[top_index] or compare(roots[top_index]->value, t->value)){
-          top_index = i;
-        }
-        
-        roots[i] = t;
-        break;
-      }
-    }
+    meld(std::vector<node*>({t}));
   }
 
   const T& top() const {
-    assert(top_index >= 0);
     return roots[top_index]->value;
   }
 
   void pop(){
-    assert(top_index >= 0);
     heap_size -= 1;
-
+    
     node *t = roots[top_index];
     roots[top_index] = nullptr;
-    
-    std::array<node*, MAX> c;
-    c.fill(nullptr);
-    std::copy(t->children.begin(), t->children.end(), c.begin());
+    meld(t->children);
+
     delete t;
-    
-    meld(c);
   }
 
   void meld(BinomialHeap &rhs){
