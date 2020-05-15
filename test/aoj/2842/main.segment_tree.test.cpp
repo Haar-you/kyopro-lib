@@ -41,7 +41,7 @@ int main(){
       
       seg2.update(h, w, seg2.at(h, w) + 1);
       q.emplace(h, w, t);
-    }else if(c==1){
+    }else if(c == 1){
       int h,w; std::cin >> h >> w;
       --h, --w;
       

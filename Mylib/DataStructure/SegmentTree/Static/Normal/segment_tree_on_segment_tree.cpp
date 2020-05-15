@@ -2,6 +2,8 @@
 #include <vector>
 #include <algorithm>
 
+#include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
+
 /**
  * @title SegmentTree (SegmentTreeを乗せる)
  * @docs segment_tree_on_segment_tree.md
