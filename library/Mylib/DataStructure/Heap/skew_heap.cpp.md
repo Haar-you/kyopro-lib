@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: SkewHeap
+# :heavy_check_mark: SkewHeap
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f151d59e79c7ff7f731ff52cf9b782e4">Mylib/DataStructure/Heap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Heap/skew_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-05 16:49:32+09:00
+    - Last commit date: 2020-05-14 01:02:10+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
 
 
 ## Code
@@ -43,6 +48,7 @@ layout: default
 ```cpp
 #pragma once
 #include <functional>
+#include <utility>
 
 /**
  * @title SkewHeap
@@ -69,19 +75,19 @@ protected:
     if(!a) return b;
     if(!b) return a;
 
-    if(compare(a->val, b->val)) swap(a, b);
+    if(compare(a->val, b->val)) std::swap(a, b);
 
     a->size += b->size;
     a->right = meld(a->right, b);
-    swap(a->left, a->right);
+    std::swap(a->left, a->right);
 
     return a;
   }
 
 public:
-  void meld(const SkewHeap &heap){root = meld(root, heap.root);}
+  void meld(SkewHeap &heap){root = meld(root, heap.root); heap.root = nullptr;}
   void push(const T &val){root = meld(root, new node(val));}
-  T top() const{return root->val;}
+  const T& top() const {return root->val;}
   void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}
   bool empty() const {return root == nullptr;}
   size_t size() const {return root ? root->size : 0;}
@@ -95,6 +101,7 @@ public:
 ```cpp
 #line 2 "Mylib/DataStructure/Heap/skew_heap.cpp"
 #include <functional>
+#include <utility>
 
 /**
  * @title SkewHeap
@@ -121,19 +128,19 @@ protected:
     if(!a) return b;
     if(!b) return a;
 
-    if(compare(a->val, b->val)) swap(a, b);
+    if(compare(a->val, b->val)) std::swap(a, b);
 
     a->size += b->size;
     a->right = meld(a->right, b);
-    swap(a->left, a->right);
+    std::swap(a->left, a->right);
 
     return a;
   }
 
 public:
-  void meld(const SkewHeap &heap){root = meld(root, heap.root);}
+  void meld(SkewHeap &heap){root = meld(root, heap.root); heap.root = nullptr;}
   void push(const T &val){root = meld(root, new node(val));}
-  T top() const{return root->val;}
+  const T& top() const {return root->val;}
   void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}
   bool empty() const {return root == nullptr;}
   size_t size() const {return root ? root->size : 0;}

@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../Number/Mint/mint.cpp.html">modint</a>
+* :heavy_check_mark: <a href="../Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Verified with

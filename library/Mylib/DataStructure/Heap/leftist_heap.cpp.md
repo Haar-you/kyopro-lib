@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: LeftistHeap
+# :heavy_check_mark: LeftistHeap
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f151d59e79c7ff7f731ff52cf9b782e4">Mylib/DataStructure/Heap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Heap/leftist_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-05 16:49:32+09:00
+    - Last commit date: 2020-05-14 01:02:10+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
 
 
 ## Code
@@ -43,6 +48,7 @@ layout: default
 ```cpp
 #pragma once
 #include <functional>
+#include <utility>
 
 /**
  * @title LeftistHeap
@@ -80,9 +86,9 @@ protected:
   }
 
 public:
-  void meld(const LeftistHeap &heap){root = meld(root, heap.root);}  
+  void meld(LeftistHeap &heap){root = meld(root, heap.root); heap.root = nullptr;}  
   void push(const T &val){root = meld(root, new node(val));}
-  T top() const {return root->val;}
+  const T& top() const {return root->val;}
   void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}
   bool empty() const {return root == nullptr;}
   size_t size() const {return root ? root->size : 0;}
@@ -96,6 +102,7 @@ public:
 ```cpp
 #line 2 "Mylib/DataStructure/Heap/leftist_heap.cpp"
 #include <functional>
+#include <utility>
 
 /**
  * @title LeftistHeap
@@ -133,9 +140,9 @@ protected:
   }
 
 public:
-  void meld(const LeftistHeap &heap){root = meld(root, heap.root);}  
+  void meld(LeftistHeap &heap){root = meld(root, heap.root); heap.root = nullptr;}  
   void push(const T &val){root = meld(root, new node(val));}
-  T top() const {return root->val;}
+  const T& top() const {return root->val;}
   void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}
   bool empty() const {return root == nullptr;}
   size_t size() const {return root ? root->size : 0;}

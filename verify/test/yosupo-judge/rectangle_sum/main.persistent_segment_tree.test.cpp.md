@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
+# :heavy_check_mark: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/persistent_segment_tree.cpp.html">永続SegmentTree</a>
-* :x: <a href="../../../../library/Mylib/Misc/sort_all.cpp.html">Mylib/Misc/sort_all.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/persistent_segment_tree.cpp.html">永続SegmentTree</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/sort_all.cpp.html">Mylib/Misc/sort_all.cpp</a>
 
 
 ## Code
