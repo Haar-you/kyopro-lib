@@ -5,7 +5,7 @@
 #include <utility>
 #include <variant>
 #include <tuple>
-#include "Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick/lichao_tree.cpp"
+#include "Mylib/DataStructure/ConvexHullTrick/lichao_tree.cpp"
 
 using Segment = std::tuple<int64_t, int64_t, int64_t, int64_t>;
 using Query = std::variant<Segment, int64_t>;

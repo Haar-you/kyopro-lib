@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <string>
-#include "Mylib/DynamicProgramming/longest_common_subsequence.cpp"
+#include "Mylib/String/longest_common_subsequence.cpp"
 
 int main(){
   int q; std::cin >> q;
