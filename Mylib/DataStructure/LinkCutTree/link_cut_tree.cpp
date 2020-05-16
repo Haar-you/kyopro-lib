@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title Link-Cut tree
+ * @title LinkCutTree
  * @docs link_cut_tree.md
  */
 template <typename Monoid>

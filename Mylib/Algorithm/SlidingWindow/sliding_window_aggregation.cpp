@@ -4,7 +4,7 @@
 #include <optional>
 
 /**
- * @title Sliding Window Aggregation
+ * @title SlidingWindowAggregation
  * @docs sliding_window_aggregation.md
  */
 template <typename T, typename F>

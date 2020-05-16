@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title Binary trie
+ * @title BinaryTrie
  * @docs binary_trie.md
  */
 template <typename T, unsigned int B> class BinaryTrie{

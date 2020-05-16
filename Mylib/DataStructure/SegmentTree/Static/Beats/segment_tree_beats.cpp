@@ -4,7 +4,7 @@
 #include <algorithm>
 
 /**
- * @title Segment tree beats
+ * @title SegmentTreeBeats
  * @docs segment_tree_beats.md
  */
 class SegmentTreeBeats{

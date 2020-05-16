@@ -4,7 +4,7 @@
 #include <algorithm>
 
 /**
- * @title Sparse table (2D)
+ * @title SparseTable (2D)
  * @docs sparse_table_2d.md
  */
 template <typename Semilattice>

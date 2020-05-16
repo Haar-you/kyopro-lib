@@ -4,7 +4,7 @@
 #include "Mylib/Number/Mod/mod_power.cpp"
 
 /**
- * @title 平方剰余
+ * @title mod平方根
  * @docs mod_sqrt.md
  */
 std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){

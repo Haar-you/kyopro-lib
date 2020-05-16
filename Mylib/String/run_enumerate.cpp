@@ -7,7 +7,7 @@
 #include "Mylib/String/z_algorithm.cpp"
 
 /**
- * @title run enumerate
+ * @title RunEnumerate
  * @docs run_enumerate.md
  */
 struct RunEnumerate{

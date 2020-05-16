@@ -7,7 +7,7 @@
 #include "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
 
 /**
- * @title Wavelet matrix
+ * @title WaveletMatrix
  * @docs wavelet_matrix.md
  */
 

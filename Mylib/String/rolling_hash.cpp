@@ -3,7 +3,7 @@
 #include <random>
 
 /**
- * @title Rolling Hash
+ * @title RollingHash
  * @docs rolling_hash.md
  */
 class RollingHash{
