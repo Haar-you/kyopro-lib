@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#2163f1b495697e10d51593b9d528fe28">test/yosupo-judge/discrete_logarithm_mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-16 14:34:19+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/discrete_logarithm_mod">https://judge.yosupo.jp/problem/discrete_logarithm_mod</a>
@@ -40,8 +40,8 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">mod逆数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_log.cpp.html">離散対数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_log.cpp.html">mod対数</a>
+* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
 
 
 ## Code
@@ -126,7 +126,7 @@ int64_t mod_inv(int64_t a, int64_t m){
 #line 8 "Mylib/Number/Mod/mod_log.cpp"
 
 /**
- * @title 離散対数
+ * @title mod対数
  * @docs mod_log.md
  */
 std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){

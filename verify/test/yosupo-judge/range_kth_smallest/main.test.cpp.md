@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0b6beed70553311fed26bd78c31ce008">test/yosupo-judge/range_kth_smallest</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/range_kth_smallest/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-16 14:34:19+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_kth_smallest">https://judge.yosupo.jp/problem/range_kth_smallest</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">簡潔辞書</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Wavelet matrix</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">WaveletMatrix</a>
 
 
 ## Code
@@ -199,7 +199,7 @@ struct SuccinctDict{
 #line 8 "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 
 /**
- * @title Wavelet matrix
+ * @title WaveletMatrix
  * @docs wavelet_matrix.md
  */
 

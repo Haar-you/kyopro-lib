@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../../../assets/css/copy-button.css" />
 
 
-# :warning: SegmentTree (SegmentTreeを乗せる)
+# :heavy_check_mark: SegmentTree (SegmentTreeを乗せる)
 
 <a href="../../../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../../../index.html#dd4a4f8515bcc75e971952e726133342">Mylib/DataStructure/SegmentTree/Static/Normal</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_on_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-16 06:15:04+09:00
 
 
 
@@ -58,6 +58,16 @@ layout: default
  
 
 
+## Depends on
+
+* :question: <a href="segment_tree.cpp.html">SegmentTree</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../../../verify/test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp</a>
+
+
 ## Code
 
 <a id="unbundled"></a>
@@ -66,6 +76,8 @@ layout: default
 #pragma once
 #include <vector>
 #include <algorithm>
+
+#include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
 
 /**
  * @title SegmentTree (SegmentTreeを乗せる)
@@ -180,6 +192,64 @@ public:
 #line 2 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_on_segment_tree.cpp"
 #include <vector>
 #include <algorithm>
+
+#line 3 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
+
+/**
+ * @title SegmentTree
+ * @docs segment_tree.md
+ */
+template <typename Monoid>
+class SegmentTree{
+  using value_type = typename Monoid::value_type;
+  
+  int depth, size, hsize;
+  std::vector<value_type> data;
+
+public:
+  SegmentTree(){}
+  SegmentTree(int n):
+    depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
+    size(1 << depth), hsize(size / 2),
+    data(size, Monoid::id())
+  {}
+
+  inline auto operator[](int i) const {return at(i);}
+  inline auto at(int i) const {return data[hsize + i];}
+  
+  inline auto get(int x, int y) const { // [x,y)
+    value_type ret_left = Monoid::id();
+    value_type ret_right = Monoid::id();
+    
+    int l = x + hsize, r = y + hsize;
+    while(l < r){
+      if(r & 1) ret_right = Monoid::op(data[--r], ret_right);
+      if(l & 1) ret_left = Monoid::op(ret_left, data[l++]);
+      l >>= 1, r >>= 1;
+    }
+    
+    return Monoid::op(ret_left, ret_right);
+  }
+
+  inline void update(int i, const value_type &x){
+    i += hsize;
+    data[i] = x;
+    while(i > 1) i >>= 1, data[i] = Monoid::op(data[i << 1 | 0], data[i << 1 | 1]);
+  }
+
+  template <typename T>
+  inline void init_with_vector(const std::vector<T> &val){
+    data.assign(size, Monoid::id());
+    for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
+    for(int i = hsize-1; i >= 1; --i) data[i] = Monoid::op(data[i << 1 | 0], data[i << 1 | 1]);
+  }
+
+  template <typename T>
+  inline void init(const T &val){
+    init_with_vector(std::vector<value_type>(hsize, val));
+  }  
+};
+#line 6 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_on_segment_tree.cpp"
 
 /**
  * @title SegmentTree (SegmentTreeを乗せる)

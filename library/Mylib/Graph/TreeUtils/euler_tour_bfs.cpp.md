@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: BFS Euler tour
+# :x: BFSEulerTour
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/euler_tour_bfs.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-16 14:34:19+09:00
 
 
 
@@ -69,12 +69,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
 
 
 ## Code
@@ -88,7 +88,7 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title BFS Euler tour
+ * @title BFSEulerTour
  * @docs euler_tour_bfs.md
  */
 template <typename T> struct EulerTourBFS{
@@ -221,7 +221,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Graph/TreeUtils/euler_tour_bfs.cpp"
 
 /**
- * @title BFS Euler tour
+ * @title BFSEulerTour
  * @docs euler_tour_bfs.md
  */
 template <typename T> struct EulerTourBFS{

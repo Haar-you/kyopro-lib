@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Segment tree beats
+# :heavy_check_mark: SegmentTreeBeats
 
 <a href="../../../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../../../index.html#c064675a3a07889d09282378899fe2ce">Mylib/DataStructure/SegmentTree/Static/Beats</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/Static/Beats/segment_tree_beats.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-05-16 14:34:19+09:00
 
 
 
@@ -84,7 +84,7 @@ layout: default
 #include <algorithm>
 
 /**
- * @title Segment tree beats
+ * @title SegmentTreeBeats
  * @docs segment_tree_beats.md
  */
 class SegmentTreeBeats{
@@ -300,7 +300,7 @@ public:
 #include <algorithm>
 
 /**
- * @title Segment tree beats
+ * @title SegmentTreeBeats
  * @docs segment_tree_beats.md
  */
 class SegmentTreeBeats{

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#64e19fd3e4193a1559ce21d32ec43623">test/aoj/2842</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2842/main.segment_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 08:15:26+09:00
+    - Last commit date: 2020-05-16 06:15:04+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_2d.cpp.html">SegmentTree (2D)</a>
 
 
@@ -91,7 +91,7 @@ int main(){
       
       seg2.update(h, w, seg2.at(h, w) + 1);
       q.emplace(h, w, t);
-    }else if(c==1){
+    }else if(c == 1){
       int h,w; std::cin >> h >> w;
       --h, --w;
       
@@ -244,7 +244,7 @@ int main(){
       
       seg2.update(h, w, seg2.at(h, w) + 1);
       q.emplace(h, w, t);
-    }else if(c==1){
+    }else if(c == 1){
       int h,w; std::cin >> h >> w;
       --h, --w;
       

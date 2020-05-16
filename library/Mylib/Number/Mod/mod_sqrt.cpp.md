@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 平方剰余
+# :x: mod平方根
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#795ab137908c82fc28acbcffe5b1c757">Mylib/Number/Mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mod/mod_sqrt.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-16 14:34:19+09:00
 
 
 
@@ -56,12 +56,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="mod_power.cpp.html">mod累乗</a>
+* :question: <a href="mod_power.cpp.html">mod累乗</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
 
 
 ## Code
@@ -75,7 +75,7 @@ layout: default
 #include "Mylib/Number/Mod/mod_power.cpp"
 
 /**
- * @title 平方剰余
+ * @title mod平方根
  * @docs mod_sqrt.md
  */
 std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
@@ -153,7 +153,7 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 #line 5 "Mylib/Number/Mod/mod_sqrt.cpp"
 
 /**
- * @title 平方剰余
+ * @title mod平方根
  * @docs mod_sqrt.md
  */
 std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Wavelet matrix
+# :heavy_check_mark: WaveletMatrix
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#def74daadbbb39361c0a507a6463f6db">Mylib/DataStructure/WaveletMatrix</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-16 14:34:19+09:00
 
 
 
@@ -109,7 +109,7 @@ layout: default
 #include "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
 
 /**
- * @title Wavelet matrix
+ * @title WaveletMatrix
  * @docs wavelet_matrix.md
  */
 
@@ -380,7 +380,7 @@ struct SuccinctDict{
 #line 8 "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 
 /**
- * @title Wavelet matrix
+ * @title WaveletMatrix
  * @docs wavelet_matrix.md
  */
 

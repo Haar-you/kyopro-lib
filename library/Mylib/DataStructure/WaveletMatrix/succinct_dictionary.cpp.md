@@ -42,7 +42,7 @@ layout: default
 * :heavy_check_mark: <a href="range_freq.cpp.html">range_freq</a>
 * :warning: <a href="range_freq_list.cpp.html">range_freq_list</a>
 * :warning: <a href="top_k.cpp.html">top_k</a>
-* :heavy_check_mark: <a href="wavelet_matrix.cpp.html">Wavelet matrix</a>
+* :heavy_check_mark: <a href="wavelet_matrix.cpp.html">WaveletMatrix</a>
 
 
 ## Verified with

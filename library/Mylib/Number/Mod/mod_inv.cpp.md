@@ -54,7 +54,7 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="mod_log.cpp.html">離散対数</a>
+* :heavy_check_mark: <a href="mod_log.cpp.html">mod対数</a>
 * :warning: <a href="../garner.cpp.html">Garner法</a>
 
 

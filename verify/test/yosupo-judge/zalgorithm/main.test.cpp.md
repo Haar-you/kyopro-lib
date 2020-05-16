@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/z_algorithm.cpp.html">Z-algorithm</a>
+* :question: <a href="../../../../library/Mylib/String/z_algorithm.cpp.html">Z-algorithm</a>
 
 
 ## Code

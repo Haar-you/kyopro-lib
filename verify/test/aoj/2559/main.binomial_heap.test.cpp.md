@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#470f11b8b249244fcbedd0bf3d66e316">test/aoj/2559</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2559/main.binomial_heap.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-14 01:02:10+09:00
+    - Last commit date: 2020-05-16 06:14:31+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2559">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2559</a>
@@ -41,7 +41,7 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/Heap/binomial_heap.cpp.html">BinomialHeap</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim法</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Misc/merge_technique.cpp.html">Mylib/Misc/merge_technique.cpp</a>
 
@@ -258,7 +258,6 @@ class BinomialHeap{
   struct node{
     T value;
     std::vector<node*> children;
-
     node(T value): value(value){}
   };
 
@@ -275,38 +274,27 @@ class BinomialHeap{
     return a;
   }
 
-  void meld(std::array<node*, MAX> y){
+  template <typename Container>
+  void meld(Container c){
     node *s = nullptr;
 
     for(int i = 0; i < MAX; ++i){
-      node *a = nullptr;
+      std::vector<node*> temp;
+      if(s){temp.push_back(s); s = nullptr;}
+      if(roots[i]){temp.push_back(roots[i]); roots[i] = nullptr;}
+      if(i < (int)c.size() and c[i]){temp.push_back(c[i]); c[i] = nullptr;}
 
-      if(s and y[i]){
-        a = merge(s, y[i]);
-        s = nullptr;
-      }else if(y[i]){
-        std::swap(s, y[i]);
-      }
-
-      if(a){
-        std::swap(s, a);
-      }else{
-        if(s and roots[i]){
-          s = merge(s, roots[i]);
-          roots[i] = nullptr;
-        }else if(s){
-          roots[i] = s;
-          s = nullptr;
-        }
+      switch(temp.size()){
+      case 1: roots[i] = temp[0]; break;
+      case 2: s = merge(temp[0], temp[1]); break;
+      case 3: roots[i] = temp[0]; s = merge(temp[1], temp[2]); break;
       }
     }
     
     top_index = -1;
     for(int i = 0; i < MAX; ++i){
       if(roots[i]){
-        if(top_index == -1){
-          top_index = i;
-        }else if(compare(roots[top_index]->value, roots[i]->value)){
+        if(top_index == -1 or compare(roots[top_index]->value, roots[i]->value)){
           top_index = i;
         }
       }
@@ -331,39 +319,21 @@ public:
     heap_size += 1;
     node *t = new node(value);
 
-    for(int i = 0; i < MAX; ++i){
-      if(roots[i]){
-        t = merge(t, roots[i]);
-        roots[i] = nullptr;
-      }else{
-        if(top_index == -1 or not roots[top_index] or compare(roots[top_index]->value, t->value)){
-          top_index = i;
-        }
-        
-        roots[i] = t;
-        break;
-      }
-    }
+    meld(std::vector<node*>({t}));
   }
 
   const T& top() const {
-    assert(top_index >= 0);
     return roots[top_index]->value;
   }
 
   void pop(){
-    assert(top_index >= 0);
     heap_size -= 1;
-
+    
     node *t = roots[top_index];
     roots[top_index] = nullptr;
-    
-    std::array<node*, MAX> c;
-    c.fill(nullptr);
-    std::copy(t->children.begin(), t->children.end(), c.begin());
+    meld(t->children);
+
     delete t;
-    
-    meld(c);
   }
 
   void meld(BinomialHeap &rhs){

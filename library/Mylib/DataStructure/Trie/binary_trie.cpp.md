@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Binary trie
+# :warning: BinaryTrie
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#aacfe2e228752c2f7bc46438cb1a6bd5">Mylib/DataStructure/Trie</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Trie/binary_trie.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-16 14:34:19+09:00
 
 
 
@@ -60,7 +60,7 @@ layout: default
 #include <vector>
 
 /**
- * @title Binary trie
+ * @title BinaryTrie
  * @docs binary_trie.md
  */
 template <typename T, unsigned int B> class BinaryTrie{
@@ -207,7 +207,7 @@ public:
 #include <vector>
 
 /**
- * @title Binary trie
+ * @title BinaryTrie
  * @docs binary_trie.md
  */
 template <typename T, unsigned int B> class BinaryTrie{

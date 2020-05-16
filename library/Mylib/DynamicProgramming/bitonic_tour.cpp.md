@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Bitonic tour
+# :heavy_check_mark: BitonicTour
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3a96c66483797c15eff4c0c3d8733619">Mylib/DynamicProgramming</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/bitonic_tour.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-16 14:34:19+09:00
 
 
 
@@ -53,7 +53,7 @@ layout: default
 #include <cmath>
 
 /**
- * @title Bitonic tour
+ * @title BitonicTour
  * @docs bitonic_tour.md
  */
 template <typename T>
@@ -101,7 +101,7 @@ double bitonic_tour(int n, const std::vector<T> &x, const std::vector<T> &y){
 #include <cmath>
 
 /**
- * @title Bitonic tour
+ * @title BitonicTour
  * @docs bitonic_tour.md
  */
 template <typename T>

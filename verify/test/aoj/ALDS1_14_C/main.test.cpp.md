@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4663ce58de854a9b7b2acb9ce1fd08fb">test/aoj/ALDS1_14_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_14_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 16:28:32+09:00
+    - Last commit date: 2020-05-16 14:34:19+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_C</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/rolling_hash_2d.cpp.html">Rolling Hash (2D)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/String/rolling_hash_2d.cpp.html">RollingHash (2D)</a>
 
 
 ## Code
@@ -95,7 +95,7 @@ int main(){
 #include <random>
 
 /**
- * @title Rolling Hash (2D)
+ * @title RollingHash (2D)
  * @docs rolling_hash_2d.md
  */
 class RollingHash2D{

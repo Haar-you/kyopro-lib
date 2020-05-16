@@ -25,15 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: 進数変換
+# :x: 進数変換
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/convert_base.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-16 14:34:01+09:00
 
 
+
+
+## Verified with
+
+* :x: <a href="../../../verify/test/yukicoder/499/main.test.cpp.html">test/yukicoder/499/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/782/main.test.cpp.html">test/yukicoder/782/main.test.cpp</a>
 
 
 ## Code
@@ -43,6 +49,7 @@ layout: default
 ```cpp
 #pragma once
 #include <vector>
+#include <algorithm>
 
 /**
  * @title 進数変換
@@ -51,22 +58,24 @@ layout: default
 std::vector<int64_t> convert_base_to(int64_t val, int64_t base){
   if(val == 0) return {0};
 
+  int b = std::abs(base);
+
   std::vector<int64_t> ret;
-  while(val){
-    if(val < base){
-      ret.push_back(val);
-      break;
-    }
-    ret.push_back(val % base);
-    val /= base;
+  while(val != 0){
+    int r = val % b;
+    if(r < 0) r += b;
+    val = (val - r) / base;
+    ret.push_back(r);
   }
- 
+
+  std::reverse(ret.begin(), ret.end());
+  
   return ret;
 }
 
 int64_t convert_base_from(const std::vector<int64_t> &val, int64_t base){
   int64_t ret = 0;
-  for(auto it = val.rbegin(); it != val.rend(); ++it){
+  for(auto it = val.begin(); it != val.end(); ++it){
     (ret *= base) += *it;
   }
 
@@ -81,6 +90,7 @@ int64_t convert_base_from(const std::vector<int64_t> &val, int64_t base){
 ```cpp
 #line 2 "Mylib/Misc/convert_base.cpp"
 #include <vector>
+#include <algorithm>
 
 /**
  * @title 進数変換
@@ -89,22 +99,24 @@ int64_t convert_base_from(const std::vector<int64_t> &val, int64_t base){
 std::vector<int64_t> convert_base_to(int64_t val, int64_t base){
   if(val == 0) return {0};
 
+  int b = std::abs(base);
+
   std::vector<int64_t> ret;
-  while(val){
-    if(val < base){
-      ret.push_back(val);
-      break;
-    }
-    ret.push_back(val % base);
-    val /= base;
+  while(val != 0){
+    int r = val % b;
+    if(r < 0) r += b;
+    val = (val - r) / base;
+    ret.push_back(r);
   }
- 
+
+  std::reverse(ret.begin(), ret.end());
+  
   return ret;
 }
 
 int64_t convert_base_from(const std::vector<int64_t> &val, int64_t base){
   int64_t ret = 0;
-  for(auto it = val.rbegin(); it != val.rend(); ++it){
+  for(auto it = val.begin(); it != val.end(); ++it){
     (ret *= base) += *it;
   }
 

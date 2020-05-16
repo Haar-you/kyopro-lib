@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#447515698a63d3c08450ac7bb86adc9d">test/yosupo-judge/convolution_mod_1000000007</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/convolution_mod_1000000007/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-16 14:34:19+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/convolution_mod_1000000007">https://judge.yosupo.jp/problem/convolution_mod_1000000007</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number Theoretic Transform</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :question: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">NumberTheoreticTransform</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -178,7 +178,7 @@ public:
 #line 7 "Mylib/Convolution/ntt_convolution.cpp"
 
 /**
- * @title Number Theoretic Transform
+ * @title NumberTheoreticTransform
  * @docs ntt_convolution.md
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>

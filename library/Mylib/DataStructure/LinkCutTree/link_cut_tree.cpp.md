@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Link-Cut tree
+# :heavy_check_mark: LinkCutTree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a178be27fdfe56586a4fa516e8dee442">Mylib/DataStructure/LinkCutTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-16 14:34:19+09:00
 
 
 
@@ -50,7 +50,7 @@ layout: default
 #include <vector>
 
 /**
- * @title Link-Cut tree
+ * @title LinkCutTree
  * @docs link_cut_tree.md
  */
 template <typename Monoid>
@@ -258,7 +258,7 @@ public:
 #include <vector>
 
 /**
- * @title Link-Cut tree
+ * @title LinkCutTree
  * @docs link_cut_tree.md
  */
 template <typename Monoid>

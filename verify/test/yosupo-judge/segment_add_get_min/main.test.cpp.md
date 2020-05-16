@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/segment_add_get_min/main.test.cpp
+# :x: test/yosupo-judge/segment_add_get_min/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#721e0ea68f32b7a24f161978d9526983">test/yosupo-judge/segment_add_get_min</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/segment_add_get_min/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 16:28:32+09:00
+    - Last commit date: 2020-05-16 08:33:11+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/segment_add_get_min">https://judge.yosupo.jp/problem/segment_add_get_min</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick/lichao_tree.cpp.html">LiChaoTree</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/ConvexHullTrick/lichao_tree.cpp.html">LiChaoTree</a>
 
 
 ## Code
@@ -54,7 +54,7 @@ layout: default
 #include <utility>
 #include <variant>
 #include <tuple>
-#include "Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick/lichao_tree.cpp"
+#include "Mylib/DataStructure/ConvexHullTrick/lichao_tree.cpp"
 
 using Segment = std::tuple<int64_t, int64_t, int64_t, int64_t>;
 using Query = std::variant<Segment, int64_t>;
@@ -134,7 +134,7 @@ int main(){
 #include <utility>
 #include <variant>
 #include <tuple>
-#line 4 "Mylib/DynamicProgramming/SpeedupTechnique/ConvexHullTrick/lichao_tree.cpp"
+#line 4 "Mylib/DataStructure/ConvexHullTrick/lichao_tree.cpp"
 #include <algorithm>
 #include <optional>
 

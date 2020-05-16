@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: mod累乗
+# :question: mod累乗
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -56,8 +56,8 @@ layout: default
 ## Required by
 
 * :heavy_check_mark: <a href="../../Graph/Coloring/chromatic_number.cpp.html">グラフ頂点彩色数</a>
-* :heavy_check_mark: <a href="mod_log.cpp.html">離散対数</a>
-* :heavy_check_mark: <a href="mod_sqrt.cpp.html">平方剰余</a>
+* :heavy_check_mark: <a href="mod_log.cpp.html">mod対数</a>
+* :x: <a href="mod_sqrt.cpp.html">mod平方根</a>
 
 
 ## Verified with
@@ -65,7 +65,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2136/main.test.cpp.html">test/aoj/2136/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2530/main.test.cpp.html">test/aoj/2530/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
 
 
 ## Code

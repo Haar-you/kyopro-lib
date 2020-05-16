@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: BinaryHeap
+# :heavy_check_mark: BinaryHeap
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f151d59e79c7ff7f731ff52cf9b782e4">Mylib/DataStructure/Heap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Heap/binary_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-05 16:49:32+09:00
+    - Last commit date: 2020-05-16 06:14:31+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/ALDS1_9_C/main.binary.test.cpp.html">test/aoj/ALDS1_9_C/main.binary.test.cpp</a>
 
 
 ## Code
@@ -51,25 +56,29 @@ layout: default
  * @docs binary_heap.md
  */
 template <typename T, typename Compare = std::less<T>>
-struct BinaryHeap{
+class BinaryHeap{
   std::vector<T> data;
 
-  BinaryHeap(){}
-  BinaryHeap(size_t capacity){data.reserve(capacity);}
+  int left(int i) const {return i * 2 + 1;}
+  int right(int i) const {return i * 2 + 2;}
+  int parent(int i) const {return (i - 1) >> 1;}
+
+  Compare compare;
+
+public:
+  BinaryHeap(): compare(Compare()){}
+  BinaryHeap(size_t capacity): compare(Compare()){data.reserve(capacity);}
 
   void push(T value){
     data.emplace_back(value);
 
-    int i = data.size();
+    int i = (int)data.size() - 1;
 
-    while(i > 1){
-      int p = i >> 1;
-      if(Compare()(data[p-1], data[i-1])){
-        std::swap(data[i-1], data[p-1]);
-        i = p;
-      }else{
-        break;
-      }
+    while(i > 0){
+      int p = parent(i);
+      if(compare(data[i], data[p])) break;
+      std::swap(data[i], data[p]);
+      i = p;
     }
   }
 
@@ -81,32 +90,25 @@ struct BinaryHeap{
     data.front() = data.back();
     data.pop_back();
 
-    int i = 1;
+    int i = 0;
 
     while(1){
-      int left = i << 1 | 0;
-      int right = i << 1 | 1;
+      int l = left(i);
+      int r = right(i);
 
-      if((int)data.size() < left){
-        break;
-      }else if((int)data.size() < right){
-        if(Compare()(data[i-1], data[left-1])){
-          std::swap(data[left-1], data[i-1]);
-          i = left;
-        }else{
-          break;
-        }
+      if((int)data.size() <= l) break;
+      if((int)data.size() <= r){
+        if(compare(data[l], data[i])) break;
+        std::swap(data[l], data[i]);
+        i = l;
       }else{
-        if(Compare()(data[left-1], data[i-1]) and Compare()(data[right-1], data[i-1])){
-          break;
+        if(compare(data[l], data[i]) and compare(data[r], data[i])) break;
+        if(compare(data[r], data[l])){
+          std::swap(data[l], data[i]);
+          i = l;
         }else{
-          if(Compare()(data[right-1], data[left-1])){
-            std::swap(data[left-1], data[i-1]);
-            i = left;
-          }else{
-            std::swap(data[right-1], data[i-1]);
-            i = right;
-          }
+          std::swap(data[r], data[i]);
+          i = r;
         }
       }
     }
@@ -137,25 +139,29 @@ struct BinaryHeap{
  * @docs binary_heap.md
  */
 template <typename T, typename Compare = std::less<T>>
-struct BinaryHeap{
+class BinaryHeap{
   std::vector<T> data;
 
-  BinaryHeap(){}
-  BinaryHeap(size_t capacity){data.reserve(capacity);}
+  int left(int i) const {return i * 2 + 1;}
+  int right(int i) const {return i * 2 + 2;}
+  int parent(int i) const {return (i - 1) >> 1;}
+
+  Compare compare;
+
+public:
+  BinaryHeap(): compare(Compare()){}
+  BinaryHeap(size_t capacity): compare(Compare()){data.reserve(capacity);}
 
   void push(T value){
     data.emplace_back(value);
 
-    int i = data.size();
+    int i = (int)data.size() - 1;
 
-    while(i > 1){
-      int p = i >> 1;
-      if(Compare()(data[p-1], data[i-1])){
-        std::swap(data[i-1], data[p-1]);
-        i = p;
-      }else{
-        break;
-      }
+    while(i > 0){
+      int p = parent(i);
+      if(compare(data[i], data[p])) break;
+      std::swap(data[i], data[p]);
+      i = p;
     }
   }
 
@@ -167,32 +173,25 @@ struct BinaryHeap{
     data.front() = data.back();
     data.pop_back();
 
-    int i = 1;
+    int i = 0;
 
     while(1){
-      int left = i << 1 | 0;
-      int right = i << 1 | 1;
+      int l = left(i);
+      int r = right(i);
 
-      if((int)data.size() < left){
-        break;
-      }else if((int)data.size() < right){
-        if(Compare()(data[i-1], data[left-1])){
-          std::swap(data[left-1], data[i-1]);
-          i = left;
-        }else{
-          break;
-        }
+      if((int)data.size() <= l) break;
+      if((int)data.size() <= r){
+        if(compare(data[l], data[i])) break;
+        std::swap(data[l], data[i]);
+        i = l;
       }else{
-        if(Compare()(data[left-1], data[i-1]) and Compare()(data[right-1], data[i-1])){
-          break;
+        if(compare(data[l], data[i]) and compare(data[r], data[i])) break;
+        if(compare(data[r], data[l])){
+          std::swap(data[l], data[i]);
+          i = l;
         }else{
-          if(Compare()(data[right-1], data[left-1])){
-            std::swap(data[left-1], data[i-1]);
-            i = left;
-          }else{
-            std::swap(data[right-1], data[i-1]);
-            i = right;
-          }
+          std::swap(data[r], data[i]);
+          i = r;
         }
       }
     }
