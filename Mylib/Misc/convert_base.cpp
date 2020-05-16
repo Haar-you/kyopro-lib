@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <algorithm>
 
 /**
  * @title 進数変換
@@ -8,22 +9,24 @@
 std::vector<int64_t> convert_base_to(int64_t val, int64_t base){
   if(val == 0) return {0};
 
+  int b = std::abs(base);
+
   std::vector<int64_t> ret;
-  while(val){
-    if(val < base){
-      ret.push_back(val);
-      break;
-    }
-    ret.push_back(val % base);
-    val /= base;
+  while(val != 0){
+    int r = val % b;
+    if(r < 0) r += b;
+    val = (val - r) / base;
+    ret.push_back(r);
   }
- 
+
+  std::reverse(ret.begin(), ret.end());
+  
   return ret;
 }
 
 int64_t convert_base_from(const std::vector<int64_t> &val, int64_t base){
   int64_t ret = 0;
-  for(auto it = val.rbegin(); it != val.rend(); ++it){
+  for(auto it = val.begin(); it != val.end(); ++it){
     (ret *= base) += *it;
   }
 
