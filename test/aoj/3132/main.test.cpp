@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <iomanip>
 #include "Mylib/AlgebraicStructure/Monoid/product.cpp"
-#include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
+#include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
 
 int main(){

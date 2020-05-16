@@ -1,7 +1,7 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H"
 
 #include <iostream>
-#include "Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp"
+#include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/add_min.cpp"
 
 int main(){

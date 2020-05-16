@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-#include "Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp"
+#include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/add_max.cpp"
 
 int main(){

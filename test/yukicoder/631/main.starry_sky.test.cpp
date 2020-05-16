@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-#include "Mylib/DataStructure/SegmentTree/Static/StarrySkyTree/starry_sky_tree_max.cpp"
+#include "Mylib/DataStructure/SegmentTree/starry_sky_tree_max.cpp"
 
 int main(){
   std::cin.tie(0);

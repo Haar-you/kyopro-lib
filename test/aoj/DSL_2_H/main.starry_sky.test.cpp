@@ -1,7 +1,7 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H"
 
 #include <iostream>
-#include "Mylib/DataStructure/SegmentTree/Static/StarrySkyTree/starry_sky_tree_min.cpp"
+#include "Mylib/DataStructure/SegmentTree/starry_sky_tree_min.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;

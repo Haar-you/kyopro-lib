@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp"
+#include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
 

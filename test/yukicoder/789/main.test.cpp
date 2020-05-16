@@ -1,7 +1,7 @@
 #define PROBLEM "https://yukicoder.me/problems/no/789"
 
 #include <iostream>
-#include "Mylib/DataStructure/SegmentTree/Dynamic/dynamic_segment_tree.cpp"
+#include "Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 int main(){

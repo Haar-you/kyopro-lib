@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <utility>
-#include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
+#include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 #include "Mylib/Number/Mint/mint.cpp"

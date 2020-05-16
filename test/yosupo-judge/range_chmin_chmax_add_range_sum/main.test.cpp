@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/DataStructure/SegmentTree/Static/Beats/segment_tree_beats.cpp"
+#include "Mylib/DataStructure/SegmentTree/segment_tree_beats.cpp"
 
 int main(){
   std::cin.tie(0);

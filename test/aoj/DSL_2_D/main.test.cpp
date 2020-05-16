@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <climits>
-#include "Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp"
+#include "Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/update.cpp"
 
 int main(){

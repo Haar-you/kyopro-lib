@@ -4,7 +4,7 @@
 #include <vector>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
-#include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
+#include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 int main(){

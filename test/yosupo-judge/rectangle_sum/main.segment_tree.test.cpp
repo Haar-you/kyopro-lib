@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
-#include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_on_segment_tree.cpp"
+#include "Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp"
 
 int main(){
   std::cin.tie(0);

@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <climits>
-#include "Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp"
+#include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/update_min.cpp"
 
 int main(){

@@ -6,7 +6,7 @@
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
-#include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_both_foldable.cpp"
+#include "Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 

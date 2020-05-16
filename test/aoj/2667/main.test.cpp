@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
-#include "Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp"
+#include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp"
 
 int main(){

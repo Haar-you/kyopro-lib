@@ -4,7 +4,7 @@
 
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/euler_tour_bfs.cpp"
-#include "Mylib/DataStructure/SegmentTree/Static/Lazy/lazy_segment_tree.cpp"
+#include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp"
 
 int main(){

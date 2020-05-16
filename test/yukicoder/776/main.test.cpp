@@ -7,7 +7,7 @@
 #include <climits>
 
 #include "Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp"
-#include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
+#include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
 using Mon = MaxPartialSumMonoid<int64_t>;
 

@@ -1,7 +1,7 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A"
 
 #include <iostream>
-#include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
+#include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 
 int main(){
