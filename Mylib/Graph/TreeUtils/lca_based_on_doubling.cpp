@@ -27,7 +27,8 @@ private:
 public:
   std::vector<int> depth;
   std::vector<T> dist;
-  
+
+  LCA(){}
   LCA(const Tree<T> &tree, int root):
     n(tree.size()), depth(n), dist(n)
   {
