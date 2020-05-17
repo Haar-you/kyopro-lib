@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/631/main.starry_sky.test.cpp
+# :x: test/yukicoder/631/main.starry_sky.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0b2f27755ad8078580256305f9366a63">test/yukicoder/631</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/631/main.starry_sky.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-30 21:52:04+09:00
+    - Last commit date: 2020-05-17 07:08:54+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/631">https://yukicoder.me/problems/no/631</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/StarrySkyTree/starry_sky_tree_max.cpp.html">StarrySkyTree (Max)</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/starry_sky_tree_max.cpp.html">StarrySkyTree (Max)</a>
 
 
 ## Code
@@ -52,7 +52,7 @@ layout: default
 #include <iostream>
 #include <vector>
 
-#include "Mylib/DataStructure/SegmentTree/Static/StarrySkyTree/starry_sky_tree_max.cpp"
+#include "Mylib/DataStructure/SegmentTree/starry_sky_tree_max.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -99,7 +99,7 @@ int main(){
 #include <iostream>
 #include <vector>
 
-#line 3 "Mylib/DataStructure/SegmentTree/Static/StarrySkyTree/starry_sky_tree_max.cpp"
+#line 3 "Mylib/DataStructure/SegmentTree/starry_sky_tree_max.cpp"
 #include <algorithm>
 #include <limits>
 

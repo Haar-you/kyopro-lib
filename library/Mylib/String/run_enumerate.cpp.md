@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: RunEnumerate
+# :heavy_check_mark: RunEnumerate
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -51,12 +51,12 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="z_algorithm.cpp.html">Z-algorithm</a>
+* :heavy_check_mark: <a href="z_algorithm.cpp.html">Z-algorithm</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/yosupo-judge/runenumerate/main.test.cpp.html">test/yosupo-judge/runenumerate/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/runenumerate/main.test.cpp.html">test/yosupo-judge/runenumerate/main.test.cpp</a>
 
 
 ## Code

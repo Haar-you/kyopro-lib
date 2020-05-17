@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#9102555d140c20ca7196c4db584ea7b6">test/yosupo-judge/rectangle_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 08:15:26+09:00
+    - Last commit date: 2020-05-17 07:08:54+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/rectangle_sum">https://judge.yosupo.jp/problem/rectangle_sum</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/persistent_segment_tree.cpp.html">永続SegmentTree</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp.html">永続SegmentTree</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Misc/sort_all.cpp.html">Mylib/Misc/sort_all.cpp</a>
 
 
@@ -55,7 +55,7 @@ layout: default
 #include <vector>
 
 #include "Mylib/Misc/sort_all.cpp"
-#include "Mylib/DataStructure/SegmentTree/Static/Normal/persistent_segment_tree.cpp"
+#include "Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 using Seg = PersistentSegmentTree<SumMonoid<int64_t>>;
@@ -148,7 +148,7 @@ namespace sort_all{
     sort_with_ord(ord, N, args...);
   }
 };
-#line 3 "Mylib/DataStructure/SegmentTree/Static/Normal/persistent_segment_tree.cpp"
+#line 3 "Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp"
 
 /**
  * @title 永続SegmentTree

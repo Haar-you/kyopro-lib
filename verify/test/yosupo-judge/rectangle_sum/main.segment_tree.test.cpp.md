@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#9102555d140c20ca7196c4db584ea7b6">test/yosupo-judge/rectangle_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 06:15:04+09:00
+    - Last commit date: 2020-05-17 13:16:12+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/rectangle_sum">https://judge.yosupo.jp/problem/rectangle_sum</a>
@@ -40,8 +40,8 @@ layout: default
 ## Depends on
 
 * :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_on_segment_tree.cpp.html">SegmentTree (SegmentTreeを乗せる)</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">SegmentTree</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp.html">SegmentTree (SegmentTreeを乗せる)</a>
 
 
 ## Code
@@ -54,7 +54,7 @@ layout: default
 #include <iostream>
 #include <vector>
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
-#include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_on_segment_tree.cpp"
+#include "Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -109,10 +109,10 @@ struct SumMonoid{
   constexpr inline static value_type id(){return 0;}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return a + b;}
 };
-#line 3 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_on_segment_tree.cpp"
+#line 3 "Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp"
 #include <algorithm>
 
-#line 3 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
+#line 3 "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
 /**
  * @title SegmentTree
@@ -168,7 +168,7 @@ public:
     init_with_vector(std::vector<value_type>(hsize, val));
   }  
 };
-#line 6 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_on_segment_tree.cpp"
+#line 6 "Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp"
 
 /**
  * @title SegmentTree (SegmentTreeを乗せる)

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#64e19fd3e4193a1559ce21d32ec43623">test/aoj/2842</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2842/main.segment_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 06:15:04+09:00
+    - Last commit date: 2020-05-17 07:08:54+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_2d.cpp.html">SegmentTree (2D)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_2d.cpp.html">SegmentTree (2D)</a>
 
 
 ## Code
@@ -55,7 +55,7 @@ layout: default
 #include <tuple>
 
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
-#include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_2d.cpp"
+#include "Mylib/DataStructure/SegmentTree/segment_tree_2d.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -131,7 +131,7 @@ struct SumMonoid{
   constexpr inline static value_type id(){return 0;}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return a + b;}
 };
-#line 2 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree_2d.cpp"
+#line 2 "Mylib/DataStructure/SegmentTree/segment_tree_2d.cpp"
 #include <vector>
 
 /**

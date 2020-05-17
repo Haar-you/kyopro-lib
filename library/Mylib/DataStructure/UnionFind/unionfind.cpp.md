@@ -55,7 +55,6 @@ layout: default
 
 * :warning: <a href="../../Graph/BipartiteGraph/construct_bipartite_graph.cpp.html">二部グラフ判定 (UnionFindを用いる)</a>
 * :heavy_check_mark: <a href="../../Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal法</a>
-* :warning: <a href="../../Graph/TreeUtils/forest.cpp.html">Mylib/Graph/TreeUtils/forest.cpp</a>
 
 
 ## Verified with

@@ -41,7 +41,7 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">mod逆数</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_log.cpp.html">mod対数</a>
-* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
 
 
 ## Code

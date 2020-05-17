@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/DataStructure/ConvexHullTrick/lichao_tree.cpp.html">LiChaoTree</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/ConvexHullTrick/lichao_tree.cpp.html">LiChaoTree</a>
 
 
 ## Code

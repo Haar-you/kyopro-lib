@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0eb662a8a4a1c93b539f9938a9be975d">test/yosupo-judge/range_chmin_chmax_add_range_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 14:34:19+09:00
+    - Last commit date: 2020-05-17 07:08:54+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum">https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Beats/segment_tree_beats.cpp.html">SegmentTreeBeats</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_beats.cpp.html">SegmentTreeBeats</a>
 
 
 ## Code
@@ -51,7 +51,7 @@ layout: default
 
 #include <iostream>
 #include <vector>
-#include "Mylib/DataStructure/SegmentTree/Static/Beats/segment_tree_beats.cpp"
+#include "Mylib/DataStructure/SegmentTree/segment_tree_beats.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -109,7 +109,7 @@ int main(){
 
 #include <iostream>
 #include <vector>
-#line 3 "Mylib/DataStructure/SegmentTree/Static/Beats/segment_tree_beats.cpp"
+#line 3 "Mylib/DataStructure/SegmentTree/segment_tree_beats.cpp"
 #include <limits>
 #include <algorithm>
 

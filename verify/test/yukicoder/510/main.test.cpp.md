@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/510/main.test.cpp
+# :x: test/yukicoder/510/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#79c44d69f4476256a05dd1926185d029">test/yukicoder/510</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/510/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 08:15:26+09:00
+    - Last commit date: 2020-05-17 07:08:54+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/510">https://yukicoder.me/problems/no/510</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/product_matrix.cpp.html">Mylib/AlgebraicStructure/Monoid/product_matrix.cpp</a>
-* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp.html">SegmentTree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp.html">正方行列 (コンパイル時固定サイズ)</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/product_matrix.cpp.html">Mylib/AlgebraicStructure/Monoid/product_matrix.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">SegmentTree</a>
+* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp.html">正方行列 (コンパイル時固定サイズ)</a>
 * :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
@@ -58,7 +58,7 @@ layout: default
 
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp"
-#include "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
+#include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/product_matrix.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 
@@ -278,7 +278,7 @@ template <typename T, int N> struct SquareMatrixConst{
   friend auto operator-(const SquareMatrixConst &a, const SquareMatrixConst &b){auto ret = a; ret -= b; return ret;}
   friend auto operator*(const SquareMatrixConst &a, const SquareMatrixConst &b){auto ret = a; ret *= b; return ret;}
 };
-#line 3 "Mylib/DataStructure/SegmentTree/Static/Normal/segment_tree.cpp"
+#line 3 "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
 /**
  * @title SegmentTree

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 最小共通祖先 (ダブリング)
+# :question: 最小共通祖先 (ダブリング)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-17 13:16:12+09:00
 
 
 
@@ -44,6 +44,7 @@ layout: default
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_5_C/main.doubling.test.cpp.html">test/aoj/GRL_5_C/main.doubling.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
 
 
 ## Code
@@ -80,7 +81,8 @@ private:
 public:
   std::vector<int> depth;
   std::vector<T> dist;
-  
+
+  LCA(){}
   LCA(const Tree<T> &tree, int root):
     n(tree.size()), depth(n), dist(n)
   {
@@ -171,7 +173,8 @@ private:
 public:
   std::vector<int> depth;
   std::vector<T> dist;
-  
+
+  LCA(){}
   LCA(const Tree<T> &tree, int root):
     n(tree.size()), depth(n), dist(n)
   {

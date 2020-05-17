@@ -25,21 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Graph/TreeUtils/forest.cpp
+# :x: 森の分解
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/forest.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-17 13:16:12+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">UnionFind</a>
 * :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+
+
+## Verified with
+
+* :x: <a href="../../../../verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
 
 
 ## Code
@@ -52,75 +56,68 @@ layout: default
 #include <algorithm>
 #include <utility>
 #include "Mylib/Graph/graph_template.cpp"
-#include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
 /**
+ * @title 森の分解
  * @docs forest.md
  */
 template <typename T>
 struct Forest{
   std::vector<Tree<T>> trees;
-
   std::vector<int> tree_id;
   std::vector<int> vertex_id;
-
   std::vector<std::vector<int>> rid;
 
   Forest(const Graph<T> &g){
     const int N = g.size();
-    UnionFind uf(N);
-
-    for(auto &v : g){
-      for(auto &e : v){
-        uf.merge(e.from, e.to);
-      }
-    }
-    
-    const int tree_num = uf.count_group();
-    
-    trees.resize(tree_num);
 
     tree_id.resize(N);
     vertex_id.resize(N);
 
-    rid.resize(tree_num);
+    std::vector<bool> check(N);
 
-    std::vector<int> temp;
-    for(int i = 0; i < N; ++i) temp.push_back(uf.get_root(i));
-    std::sort(temp.begin(), temp.end());
-    temp.erase(std::unique(temp.begin(), temp.end()), temp.end());
+    auto dfs =
+      [&](auto &dfs, int cur, std::vector<int> &vertices, std::vector<Edge<T>> &edges) -> void{
+        check[cur] = true;
+        vertices.push_back(cur);
+
+        for(auto &e : g[cur]){
+          edges.push_back(e);
+
+          if(not check[e.to]){
+            dfs(dfs, e.to, vertices, edges);
+          }
+        }
+      };
 
     for(int i = 0; i < N; ++i){
-      tree_id[i] = std::lower_bound(temp.begin(), temp.end(), uf.get_root(i)) - temp.begin();
-      vertex_id[i] = rid[tree_id[i]].size();
-      rid[tree_id[i]].push_back(i);
-    }
+      if(not check[i]){
+        std::vector<int> vertices;
+        std::vector<Edge<T>> edges;
+        dfs(dfs, i, vertices, edges);
+        
+        const int m = vertices.size(); 
+        const int k = trees.size();
 
-    for(int i = 0; i < tree_num; ++i){
-      trees[i].resize(uf.get_size(temp[i]));
-    }
-    
-    for(auto &v : g){
-      for(auto &e : v){
-        add_edge(trees[tree_id[e.from]], vertex_id[e.from], vertex_id[e.to], e.cost);
+        rid.push_back(std::vector<int>(m));
+
+        for(int i = 0; i < (int)vertices.size(); ++i){
+          tree_id[vertices[i]] = k;
+          vertex_id[vertices[i]] = i;
+          rid[k][i] = vertices[i];
+        }
+
+        trees.push_back(Tree<T>(m));
+
+        for(auto &e : edges){
+          trees[k][vertex_id[e.from]].emplace_back(vertex_id[e.from], vertex_id[e.to], e.cost);
+        }
       }
     }
   }
   
-  std::pair<int, int> forests_id(int i) const {
-    return std::make_pair(tree_id[i], vertex_id[i]);
-  }
-
-  int original_id(int i, int j) const {
-    return rid[i][j];
-  }
-
   bool in_same_tree(int i, int j) const {
     return tree_id[i] == tree_id[j];
-  }
-
-  int get_tree_num() const {
-    return trees.size();
   }
 };
 
@@ -161,120 +158,69 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
   add_edge<T, C>(g, a, b, w);
   add_edge<T, C>(g, b, a, w);
 }
-#line 3 "Mylib/DataStructure/UnionFind/unionfind.cpp"
-#include <numeric>
+#line 6 "Mylib/Graph/TreeUtils/forest.cpp"
 
 /**
- * @title UnionFind
- * @docs unionfind.md
- */
-class UnionFind{
-  std::vector<int> parent, depth, size;
-  int count;
-
-public:
-  UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
-    std::iota(parent.begin(), parent.end(), 0);
-  }
-  
-  inline int get_root(int i){
-    if(parent[i] == i) return i;
-    else return parent[i] = get_root(parent[i]);
-  }
-  
-  inline bool is_same(int i, int j){return get_root(i) == get_root(j);}
-
-  inline int merge(int i, int j){
-    int ri = get_root(i), rj = get_root(j);
-    if(ri == rj) return ri;
-    else{
-      --count;
-      if(depth[ri] < depth[rj]){
-        parent[ri] = rj;
-        size[rj] += size[ri];
-        return rj;
-      }else{
-        parent[rj] = ri;
-        size[ri] += size[rj];
-        if(depth[ri] == depth[rj]) ++depth[ri];
-        return ri;
-      }
-    }
-  }
-
-  inline int get_size(int i){return size[get_root(i)];}
-
-  inline int count_group(){return count;}
-};
-#line 7 "Mylib/Graph/TreeUtils/forest.cpp"
-
-/**
+ * @title 森の分解
  * @docs forest.md
  */
 template <typename T>
 struct Forest{
   std::vector<Tree<T>> trees;
-
   std::vector<int> tree_id;
   std::vector<int> vertex_id;
-
   std::vector<std::vector<int>> rid;
 
   Forest(const Graph<T> &g){
     const int N = g.size();
-    UnionFind uf(N);
-
-    for(auto &v : g){
-      for(auto &e : v){
-        uf.merge(e.from, e.to);
-      }
-    }
-    
-    const int tree_num = uf.count_group();
-    
-    trees.resize(tree_num);
 
     tree_id.resize(N);
     vertex_id.resize(N);
 
-    rid.resize(tree_num);
+    std::vector<bool> check(N);
 
-    std::vector<int> temp;
-    for(int i = 0; i < N; ++i) temp.push_back(uf.get_root(i));
-    std::sort(temp.begin(), temp.end());
-    temp.erase(std::unique(temp.begin(), temp.end()), temp.end());
+    auto dfs =
+      [&](auto &dfs, int cur, std::vector<int> &vertices, std::vector<Edge<T>> &edges) -> void{
+        check[cur] = true;
+        vertices.push_back(cur);
+
+        for(auto &e : g[cur]){
+          edges.push_back(e);
+
+          if(not check[e.to]){
+            dfs(dfs, e.to, vertices, edges);
+          }
+        }
+      };
 
     for(int i = 0; i < N; ++i){
-      tree_id[i] = std::lower_bound(temp.begin(), temp.end(), uf.get_root(i)) - temp.begin();
-      vertex_id[i] = rid[tree_id[i]].size();
-      rid[tree_id[i]].push_back(i);
-    }
+      if(not check[i]){
+        std::vector<int> vertices;
+        std::vector<Edge<T>> edges;
+        dfs(dfs, i, vertices, edges);
+        
+        const int m = vertices.size(); 
+        const int k = trees.size();
 
-    for(int i = 0; i < tree_num; ++i){
-      trees[i].resize(uf.get_size(temp[i]));
-    }
-    
-    for(auto &v : g){
-      for(auto &e : v){
-        add_edge(trees[tree_id[e.from]], vertex_id[e.from], vertex_id[e.to], e.cost);
+        rid.push_back(std::vector<int>(m));
+
+        for(int i = 0; i < (int)vertices.size(); ++i){
+          tree_id[vertices[i]] = k;
+          vertex_id[vertices[i]] = i;
+          rid[k][i] = vertices[i];
+        }
+
+        trees.push_back(Tree<T>(m));
+
+        for(auto &e : edges){
+          trees[k][vertex_id[e.from]].emplace_back(vertex_id[e.from], vertex_id[e.to], e.cost);
+        }
       }
     }
   }
   
-  std::pair<int, int> forests_id(int i) const {
-    return std::make_pair(tree_id[i], vertex_id[i]);
-  }
-
-  int original_id(int i, int j) const {
-    return rid[i][j];
-  }
-
   bool in_same_tree(int i, int j) const {
     return tree_id[i] == tree_id[j];
-  }
-
-  int get_tree_num() const {
-    return trees.size();
   }
 };
 

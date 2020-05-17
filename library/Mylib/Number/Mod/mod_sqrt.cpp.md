@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: mod平方根
+# :heavy_check_mark: mod平方根
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -56,12 +56,12 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="mod_power.cpp.html">mod累乗</a>
+* :heavy_check_mark: <a href="mod_power.cpp.html">mod累乗</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
 
 
 ## Code

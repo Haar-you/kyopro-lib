@@ -21,17 +21,17 @@ layout: default
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-balloon-js@1.1.2/jquery.balloon.min.js" integrity="sha256-ZEYs9VrgAeNuPvs15E39OsyOJaIkXEEt10fzxJ20+2I=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../../../../../../assets/js/copy-button.js"></script>
-<link rel="stylesheet" href="../../../../../../assets/css/copy-button.css" />
+<script type="text/javascript" src="../../../../assets/js/copy-button.js"></script>
+<link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
 # :heavy_check_mark: 永続SegmentTree
 
-<a href="../../../../../../index.html">Back to top page</a>
+<a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../../../index.html#dd4a4f8515bcc75e971952e726133342">Mylib/DataStructure/SegmentTree/Static/Normal</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/Static/Normal/persistent_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-09 08:43:01+09:00
+* category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-17 07:08:54+09:00
 
 
 
@@ -71,7 +71,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../../../verify/test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp</a>
 
 
 ## Code
@@ -178,7 +178,7 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/DataStructure/SegmentTree/Static/Normal/persistent_segment_tree.cpp"
+#line 2 "Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp"
 #include <vector>
 
 /**
@@ -274,5 +274,5 @@ public:
 ```
 {% endraw %}
 
-<a href="../../../../../../index.html">Back to top page</a>
+<a href="../../../../index.html">Back to top page</a>
 

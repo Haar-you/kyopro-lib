@@ -54,7 +54,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="mod_inv.cpp.html">mod逆数</a>
-* :question: <a href="mod_power.cpp.html">mod累乗</a>
+* :heavy_check_mark: <a href="mod_power.cpp.html">mod累乗</a>
 
 
 ## Verified with

@@ -21,17 +21,17 @@ layout: default
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-balloon-js@1.1.2/jquery.balloon.min.js" integrity="sha256-ZEYs9VrgAeNuPvs15E39OsyOJaIkXEEt10fzxJ20+2I=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../../../../../../assets/js/copy-button.js"></script>
-<link rel="stylesheet" href="../../../../../../assets/css/copy-button.css" />
+<script type="text/javascript" src="../../../../assets/js/copy-button.js"></script>
+<link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
 # :heavy_check_mark: 双対SegmentTree
 
-<a href="../../../../../../index.html">Back to top page</a>
+<a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../../../index.html#ca42c2f4d81b13ae1e33bd4dfd939e89">Mylib/DataStructure/SegmentTree/Static/Dual</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+* category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-17 07:08:54+09:00
 
 
 
@@ -60,8 +60,8 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../../../verify/test/aoj/DSL_2_D/main.test.cpp.html">test/aoj/DSL_2_D/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../../../verify/test/aoj/DSL_2_E/main.test.cpp.html">test/aoj/DSL_2_E/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_D/main.test.cpp.html">test/aoj/DSL_2_D/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_E/main.test.cpp.html">test/aoj/DSL_2_E/main.test.cpp</a>
 
 
 ## Code
@@ -146,7 +146,7 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/DataStructure/SegmentTree/Static/Dual/dual_segment_tree.cpp"
+#line 2 "Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp"
 #include <vector>
 
 /**
@@ -220,5 +220,5 @@ public:
 ```
 {% endraw %}
 
-<a href="../../../../../../index.html">Back to top page</a>
+<a href="../../../../index.html">Back to top page</a>
 
