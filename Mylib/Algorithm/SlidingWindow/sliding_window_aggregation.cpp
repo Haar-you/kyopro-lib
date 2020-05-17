@@ -7,33 +7,33 @@
  * @title SlidingWindowAggregation
  * @docs sliding_window_aggregation.md
  */
-template <typename T, typename F>
+template <typename Semigroup>
 class SlidingWindowAggregation{
-  std::stack<T> front_stack, back_stack;
-  std::vector<T> front_sum, back_sum;
-
-  const F f;
+  using value_type = typename Semigroup::value_type;
+  
+  std::stack<value_type> front_stack, back_stack;
+  std::vector<value_type> front_sum, back_sum;
   
 public:
-  SlidingWindowAggregation(const F &f): f(f){}
+  SlidingWindowAggregation(){}
   
-  std::optional<T> fold() const {
+  std::optional<value_type> fold() const {
     if(front_sum.empty()){
       if(back_sum.empty()) return std::nullopt;
       return {back_sum.back()};
     }else{
       if(back_sum.empty()) return {front_sum.back()};
-      return {f(front_sum.back(), back_sum.back())};
+      return {Semigroup::op(front_sum.back(), back_sum.back())};
     }
   }
 
-  void push(const T &value){
+  void push(const value_type &value){
     back_stack.push(value);
 
     if(back_sum.empty()){
       back_sum.push_back(value);
     }else{
-      const auto t = f(back_sum.back(), value);
+      const auto t = Semigroup::op(back_sum.back(), value);
       back_sum.push_back(t);
     }
   }
@@ -49,7 +49,7 @@ public:
         if(front_sum.empty()){
           front_sum.push_back(value);
         }else{
-          const auto t = f(value, front_sum.back());
+          const auto t = Semigroup::op(value, front_sum.back());
           front_sum.push_back(t);
         }
       }

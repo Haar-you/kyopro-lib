@@ -2,24 +2,16 @@
 
 #include <iostream>
 #include "Mylib/Number/Mint/mint.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 #include "Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp"
 
 using mint = ModInt<998244353>;
-
-struct linear_function{
-  mint a, b;
-};
-
-auto composite =
-  [](const linear_function &q, const linear_function &p){
-    return linear_function({p.a * q.a, p.a * q.b + p.b});
-  };
-
+using M = AffineMonoid<mint>;
 
 int main(){
   int Q; std::cin >> Q;
 
-  auto swag = SlidingWindowAggregation<linear_function, decltype(composite)>(composite);
+  SlidingWindowAggregation<M> swag;
   
   while(Q--){
     int type; std::cin >> type;
