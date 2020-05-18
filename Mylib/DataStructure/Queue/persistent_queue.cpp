@@ -77,6 +77,6 @@ public:
   }
 
   int size() const {
-    return front_node ? 0 : back_node->depth - front_node->depth + 1;
+    return front_node ? back_node->depth - front_node->depth + 1 : 0;
   }
 };
