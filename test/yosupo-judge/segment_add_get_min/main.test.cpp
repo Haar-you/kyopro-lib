@@ -42,9 +42,7 @@ int main(){
     }
   }
 
-  if(xs.empty()){
-    
-  }else{
+  if(not xs.empty()){
     auto lc = make_lichao_min(xs);
 
     for(auto [l, r, a, b] : lines){
@@ -59,10 +57,10 @@ int main(){
         auto p = std::get<1>(q);
         auto res = lc.query(p);
 
-        if(res == std::nullopt){
-          puts("INFINITY");
-        }else{
+        if(res){
           printf("%lld\n", *res);
+        }else{
+          puts("INFINITY");
         }
       }
     }
