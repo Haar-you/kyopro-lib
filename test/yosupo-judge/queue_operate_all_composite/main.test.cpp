@@ -3,10 +3,11 @@
 #include <iostream>
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 #include "Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp"
 
 using mint = ModInt<998244353>;
-using M = AffineMonoid<mint>;
+using M = DualMonoid<AffineMonoid<mint>>;
 
 int main(){
   int Q; std::cin >> Q;
