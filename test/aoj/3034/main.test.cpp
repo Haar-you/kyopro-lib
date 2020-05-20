@@ -49,12 +49,10 @@ int main(){
 
                      D ret = INF;
 
-                     for_each_subset_asc(s,
-                                         [&](int t){
-                                           
-                                           D val = std::max((double)rec(d+1, s^t), memo[t]);
-                                           ret = std::min((double)ret, (double)val);
-                                         });
+                     for(int t : SubsetAsc(s)){
+                       D val = std::max((double)rec(d+1, s^t), memo[t]);
+                       ret = std::min((double)ret, (double)val);
+                     }
 
                      return dp[d][s] = ret;
                    });
