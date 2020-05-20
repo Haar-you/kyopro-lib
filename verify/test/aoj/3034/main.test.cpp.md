@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#607ede2caa7064ff1cf75c22fd3209d4">test/aoj/3034</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3034/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-05-20 18:00:03+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034</a>
@@ -39,12 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Bit/for_each_subset_asc.cpp.html">Mylib/Bit/for_each_subset_asc.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Bit/for_each_subset_asc.cpp.html">下位集合を昇順に列挙</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp.html">三角形の外接円</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/minimum_covering_circle.cpp.html">最小包含円</a>
-* :question: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
 
 
 ## Code
@@ -103,12 +103,10 @@ int main(){
 
                      D ret = INF;
 
-                     for_each_subset_asc(s,
-                                         [&](int t){
-                                           
-                                           D val = std::max((double)rec(d+1, s^t), memo[t]);
-                                           ret = std::min((double)ret, (double)val);
-                                         });
+                     for(int t : SubsetAsc(s)){
+                       D val = std::max((double)rec(d+1, s^t), memo[t]);
+                       ret = std::min((double)ret, (double)val);
+                     }
 
                      return dp[d][s] = ret;
                    });
@@ -392,15 +390,29 @@ static inline constexpr decltype(auto) make_fix_point(F &f){
 #line 2 "Mylib/Bit/for_each_subset_asc.cpp"
 
 /**
+ * @title 下位集合を昇順に列挙
  * @docs for_each_subset_asc.md
  */
-template <typename Func>
-void for_each_subset_asc(int a, const Func &f){
-  for(int t=0; ; t=(t-a)&a){
-    f(t);
-    if(t==a) break;
-  }
-}
+class SubsetAsc{
+  struct iter{
+    int t, a;
+    bool is_end;
+
+    int operator*() const {return t;}
+    void operator++(){
+      if(t == a) is_end = true;
+      t = (t - a) & a;
+    }
+    bool operator!=(const iter &) const {return not is_end;}
+  };
+
+  int a;
+
+public:
+  SubsetAsc(int a): a(a){}
+  iter begin() const {return iter({0, a, false});}
+  iter end() const {return iter();}
+};
 #line 13 "test/aoj/3034/main.test.cpp"
 
 using D = DoubleEps<double>;
@@ -441,12 +453,10 @@ int main(){
 
                      D ret = INF;
 
-                     for_each_subset_asc(s,
-                                         [&](int t){
-                                           
-                                           D val = std::max((double)rec(d+1, s^t), memo[t]);
-                                           ret = std::min((double)ret, (double)val);
-                                         });
+                     for(int t : SubsetAsc(s)){
+                       D val = std::max((double)rec(d+1, s^t), memo[t]);
+                       ret = std::min((double)ret, (double)val);
+                     }
 
                      return dp[d][s] = ret;
                    });

@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: StarrySkyTree (Max)
+# :heavy_check_mark: StarrySkyTree (Max)
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -61,7 +61,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/yukicoder/631/main.starry_sky.test.cpp.html">test/yukicoder/631/main.starry_sky.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/631/main.starry_sky.test.cpp.html">test/yukicoder/631/main.starry_sky.test.cpp</a>
 
 
 ## Code

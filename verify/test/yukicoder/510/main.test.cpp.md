@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yukicoder/510/main.test.cpp
+# :heavy_check_mark: test/yukicoder/510/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
-* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/product_matrix.cpp.html">Mylib/AlgebraicStructure/Monoid/product_matrix.cpp</a>
-* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">SegmentTree</a>
-* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp.html">正方行列 (コンパイル時固定サイズ)</a>
-* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/product_matrix.cpp.html">Mylib/AlgebraicStructure/Monoid/product_matrix.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">SegmentTree</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp.html">正方行列 (コンパイル時固定サイズ)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code

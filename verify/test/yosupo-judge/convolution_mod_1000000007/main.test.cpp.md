@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">NumberTheoreticTransform</a>
-* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">NumberTheoreticTransform</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code

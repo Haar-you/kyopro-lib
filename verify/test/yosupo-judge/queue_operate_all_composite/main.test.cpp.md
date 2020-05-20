@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#c8d31b5139983c6742fe36acb5e1ac81">test/yosupo-judge/queue_operate_all_composite</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/queue_operate_all_composite/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 14:34:19+09:00
+    - Last commit date: 2020-05-19 10:57:00+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/queue_operate_all_composite">https://judge.yosupo.jp/problem/queue_operate_all_composite</a>
@@ -39,8 +39,10 @@ layout: default
 
 ## Depends on
 
+* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp.html">SlidingWindowAggregation</a>
-* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
 ## Code
@@ -52,24 +54,17 @@ layout: default
 
 #include <iostream>
 #include "Mylib/Number/Mint/mint.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 #include "Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp"
 
 using mint = ModInt<998244353>;
-
-struct linear_function{
-  mint a, b;
-};
-
-auto composite =
-  [](const linear_function &q, const linear_function &p){
-    return linear_function({p.a * q.a, p.a * q.b + p.b});
-  };
-
+using M = DualMonoid<AffineMonoid<mint>>;
 
 int main(){
   int Q; std::cin >> Q;
 
-  auto swag = SlidingWindowAggregation<linear_function, decltype(composite)>(composite);
+  SlidingWindowAggregation<M> swag;
   
   while(Q--){
     int type; std::cin >> type;
@@ -190,6 +185,28 @@ public:
   explicit operator int32_t() const noexcept {return val;}
   explicit operator int64_t() const noexcept {return val;}
 };
+#line 3 "Mylib/AlgebraicStructure/Monoid/affine.cpp"
+
+/**
+ * @docs affine.md
+ */
+template <typename T>
+struct AffineMonoid{
+  using value_type = std::pair<T, T>;
+  constexpr inline static value_type id(){return std::make_pair(1, 0);}
+  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::make_pair(a.first * b.first, a.first * b.second + a.second);}
+};
+#line 2 "Mylib/AlgebraicStructure/Monoid/dual.cpp"
+
+/**
+ * @docs dual.md
+ */
+template <typename Monoid>
+struct DualMonoid{
+  using value_type = typename Monoid::value_type;
+  constexpr inline static value_type id(){return Monoid::id();}
+  constexpr inline static value_type op(const value_type &a, const value_type &b){return Monoid::op(b, a);}
+};
 #line 2 "Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp"
 #include <vector>
 #include <stack>
@@ -199,33 +216,33 @@ public:
  * @title SlidingWindowAggregation
  * @docs sliding_window_aggregation.md
  */
-template <typename T, typename F>
+template <typename Semigroup>
 class SlidingWindowAggregation{
-  std::stack<T> front_stack, back_stack;
-  std::vector<T> front_sum, back_sum;
-
-  const F f;
+  using value_type = typename Semigroup::value_type;
+  
+  std::stack<value_type> front_stack, back_stack;
+  std::vector<value_type> front_sum, back_sum;
   
 public:
-  SlidingWindowAggregation(const F &f): f(f){}
+  SlidingWindowAggregation(){}
   
-  std::optional<T> fold() const {
+  std::optional<value_type> fold() const {
     if(front_sum.empty()){
       if(back_sum.empty()) return std::nullopt;
       return {back_sum.back()};
     }else{
       if(back_sum.empty()) return {front_sum.back()};
-      return {f(front_sum.back(), back_sum.back())};
+      return {Semigroup::op(front_sum.back(), back_sum.back())};
     }
   }
 
-  void push(const T &value){
+  void push(const value_type &value){
     back_stack.push(value);
 
     if(back_sum.empty()){
       back_sum.push_back(value);
     }else{
-      const auto t = f(back_sum.back(), value);
+      const auto t = Semigroup::op(back_sum.back(), value);
       back_sum.push_back(t);
     }
   }
@@ -241,7 +258,7 @@ public:
         if(front_sum.empty()){
           front_sum.push_back(value);
         }else{
-          const auto t = f(value, front_sum.back());
+          const auto t = Semigroup::op(value, front_sum.back());
           front_sum.push_back(t);
         }
       }
@@ -251,24 +268,15 @@ public:
     front_sum.pop_back();
   }
 };
-#line 6 "test/yosupo-judge/queue_operate_all_composite/main.test.cpp"
+#line 8 "test/yosupo-judge/queue_operate_all_composite/main.test.cpp"
 
 using mint = ModInt<998244353>;
-
-struct linear_function{
-  mint a, b;
-};
-
-auto composite =
-  [](const linear_function &q, const linear_function &p){
-    return linear_function({p.a * q.a, p.a * q.b + p.b});
-  };
-
+using M = DualMonoid<AffineMonoid<mint>>;
 
 int main(){
   int Q; std::cin >> Q;
 
-  auto swag = SlidingWindowAggregation<linear_function, decltype(composite)>(composite);
+  SlidingWindowAggregation<M> swag;
   
   while(Q--){
     int type; std::cin >> type;

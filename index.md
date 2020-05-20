@@ -45,39 +45,39 @@ layout: default
 
 ### Mylib/AlgebraicStructure/Monoid
 
-* :question: <a href="library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/array.cpp.html">Mylib/AlgebraicStructure/Monoid/array.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/bitand.cpp.html">Mylib/AlgebraicStructure/Monoid/bitand.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/bitor.cpp.html">Mylib/AlgebraicStructure/Monoid/bitor.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/bitxor.cpp.html">Mylib/AlgebraicStructure/Monoid/bitxor.cpp</a>
-* :question: <a href="library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/gcd.cpp.html">Mylib/AlgebraicStructure/Monoid/gcd.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/lcm.cpp.html">Mylib/AlgebraicStructure/Monoid/lcm.cpp</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/max.cpp.html">Mylib/AlgebraicStructure/Monoid/max.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/max.cpp.html">Mylib/AlgebraicStructure/Monoid/max.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/max_contiguous.cpp.html">Mylib/AlgebraicStructure/Monoid/max_contiguous.cpp</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp.html">Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/maybe.cpp.html">Mylib/AlgebraicStructure/Monoid/maybe.cpp</a>
-* :question: <a href="library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp.html">Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/maybe.cpp.html">Mylib/AlgebraicStructure/Monoid/maybe.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp.html">Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/ordering.cpp.html">Mylib/AlgebraicStructure/Monoid/ordering.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/pair.cpp.html">Mylib/AlgebraicStructure/Monoid/pair.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/product.cpp.html">Mylib/AlgebraicStructure/Monoid/product.cpp</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/product_matrix.cpp.html">Mylib/AlgebraicStructure/Monoid/product_matrix.cpp</a>
-* :question: <a href="library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/product_matrix.cpp.html">Mylib/AlgebraicStructure/Monoid/product_matrix.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/sum_matrix.cpp.html">Mylib/AlgebraicStructure/Monoid/sum_matrix.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/transformation.cpp.html">Mylib/AlgebraicStructure/Monoid/transformation.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/trivial.cpp.html">Mylib/AlgebraicStructure/Monoid/trivial.cpp</a>
-* :question: <a href="library/Mylib/AlgebraicStructure/Monoid/update.cpp.html">Mylib/AlgebraicStructure/Monoid/update.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/update.cpp.html">Mylib/AlgebraicStructure/Monoid/update.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/with_count.cpp.html">Mylib/AlgebraicStructure/Monoid/with_count.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/with_max_index.cpp.html">Mylib/AlgebraicStructure/Monoid/with_max_index.cpp</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/with_min_index.cpp.html">Mylib/AlgebraicStructure/Monoid/with_min_index.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/with_min_index.cpp.html">Mylib/AlgebraicStructure/Monoid/with_min_index.cpp</a>
 
 
 <div id="7bd9a37defae28fe1746a7ffe2a62491"></div>
 
 ### Mylib/AlgebraicStructure/MonoidAction
 
-* :x: <a href="library/Mylib/AlgebraicStructure/MonoidAction/add_max.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_max.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/MonoidAction/add_max.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_max.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/MonoidAction/add_min.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_min.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp</a>
@@ -86,7 +86,7 @@ layout: default
 * :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/or_or.cpp.html">Mylib/AlgebraicStructure/MonoidAction/or_or.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/MonoidAction/update_min.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_min.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/update_or.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_or.cpp</a>
-* :question: <a href="library/Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp</a>
 * :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/xor_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/xor_sum.cpp</a>
 
 
@@ -162,12 +162,12 @@ layout: default
 ### Mylib/Bit
 
 * :warning: <a href="library/Mylib/Bit/bit_reverse.cpp.html">ビット逆転</a>
-* :heavy_check_mark: <a href="library/Mylib/Bit/for_each_subset_asc.cpp.html">Mylib/Bit/for_each_subset_asc.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/Bit/for_each_subset_asc.cpp.html">下位集合を昇順に列挙</a>
 * :warning: <a href="library/Mylib/Bit/for_each_subset_between.cpp.html">Mylib/Bit/for_each_subset_between.cpp</a>
-* :warning: <a href="library/Mylib/Bit/for_each_subset_desc.cpp.html">Mylib/Bit/for_each_subset_desc.cpp</a>
-* :warning: <a href="library/Mylib/Bit/for_each_superset_asc.cpp.html">Mylib/Bit/for_each_superset_asc.cpp</a>
-* :warning: <a href="library/Mylib/Bit/for_each_superset_desc.cpp.html">Mylib/Bit/for_each_superset_desc.cpp</a>
-* :warning: <a href="library/Mylib/Bit/for_subsets_of_size_k.cpp.html">Mylib/Bit/for_subsets_of_size_k.cpp</a>
+* :heavy_check_mark: <a href="library/Mylib/Bit/for_each_subset_desc.cpp.html">下位集合を降順に列挙</a>
+* :heavy_check_mark: <a href="library/Mylib/Bit/for_each_superset_asc.cpp.html">上位集合を昇順に列挙</a>
+* :heavy_check_mark: <a href="library/Mylib/Bit/for_each_superset_desc.cpp.html">上位集合を降順に列挙</a>
+* :heavy_check_mark: <a href="library/Mylib/Bit/for_subsets_of_size_k.cpp.html">サイズKの集合を列挙</a>
 * :warning: <a href="library/Mylib/Bit/gray_code.cpp.html">Grayコード</a>
 
 
@@ -201,7 +201,7 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/Convolution/fast_zeta_transform_subset.cpp.html">下位集合に対する高速Zeta変換</a>
 * :heavy_check_mark: <a href="library/Mylib/Convolution/fast_zeta_transform_superset.cpp.html">上位集合に対する高速Zeta変換</a>
 * :warning: <a href="library/Mylib/Convolution/formal_power_series.cpp.html">FormalPowerSeries</a>
-* :question: <a href="library/Mylib/Convolution/ntt_convolution.cpp.html">NumberTheoreticTransform</a>
+* :heavy_check_mark: <a href="library/Mylib/Convolution/ntt_convolution.cpp.html">NumberTheoreticTransform</a>
 
 
 <div id="0d7e284bb2256ddef55e56b25bfaf3f1"></div>
@@ -267,15 +267,15 @@ layout: default
 
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp.html">双対SegmentTree</a>
 * :warning: <a href="library/Mylib/DataStructure/SegmentTree/dynamic_dual_segment_tree.cpp.html">動的双対SegmentTree</a>
-* :x: <a href="library/Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp.html">動的SegmentTree</a>
-* :question: <a href="library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">遅延SegmentTree</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp.html">動的SegmentTree</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">遅延SegmentTree</a>
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp.html">永続SegmentTree</a>
-* :question: <a href="library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">SegmentTree</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">SegmentTree</a>
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/segment_tree_2d.cpp.html">SegmentTree (2D)</a>
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/segment_tree_beats.cpp.html">SegmentTreeBeats</a>
-* :x: <a href="library/Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp.html">SegmentTree (双方向Foldable)</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp.html">SegmentTree (双方向Foldable)</a>
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp.html">SegmentTree (SegmentTreeを乗せる)</a>
-* :x: <a href="library/Mylib/DataStructure/SegmentTree/starry_sky_tree_max.cpp.html">StarrySkyTree (Max)</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/starry_sky_tree_max.cpp.html">StarrySkyTree (Max)</a>
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/SegmentTree/starry_sky_tree_min.cpp.html">StarrySkyTree (Min)</a>
 
 
@@ -283,6 +283,7 @@ layout: default
 
 ### Mylib/DataStructure/SparseTable
 
+* :warning: <a href="library/Mylib/DataStructure/SparseTable/disjoint_sparse_table.cpp.html">DisjointSparseTable</a>
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/SparseTable/sparse_table.cpp.html">SparseTable</a>
 * :warning: <a href="library/Mylib/DataStructure/SparseTable/sparse_table_2d.cpp.html">SparseTable (2D)</a>
 
@@ -394,7 +395,7 @@ layout: default
 ### Mylib/Graph
 
 * :heavy_check_mark: <a href="library/Mylib/Graph/chinese_postman_problem.cpp.html">中国人郵便配達問題</a>
-* :question: <a href="library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/maximum_independent_set.cpp.html">最大独立集合</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/project_selection_problem.cpp.html">ProjectSelectionProblem</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/travelling_salesman_problem.cpp.html">巡回セールスマン問題</a>
@@ -503,14 +504,15 @@ layout: default
 
 * :warning: <a href="library/Mylib/Graph/TreeUtils/centroid.cpp.html">重心列挙</a>
 * :warning: <a href="library/Mylib/Graph/TreeUtils/centroid_decomposition.cpp.html">重心分解</a>
-* :x: <a href="library/Mylib/Graph/TreeUtils/euler_tour_bfs.cpp.html">BFSEulerTour</a>
-* :x: <a href="library/Mylib/Graph/TreeUtils/euler_tour_vertex.cpp.html">頂点EulerTour</a>
-* :x: <a href="library/Mylib/Graph/TreeUtils/forest.cpp.html">森の分解</a>
-* :question: <a href="library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
-* :question: <a href="library/Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp.html">最小共通祖先 (ダブリング)</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/euler_tour_bfs.cpp.html">BFSEulerTour</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/euler_tour_vertex.cpp.html">頂点EulerTour</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/forest.cpp.html">森の分解</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp.html">最小共通祖先 (ダブリング)</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/lca_based_on_hld.cpp.html">最小共通祖先 (HLD)</a>
-* :question: <a href="library/Mylib/Graph/TreeUtils/rerooting.cpp.html">全方位木dp</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/rerooting.cpp.html">全方位木dp</a>
 * :warning: <a href="library/Mylib/Graph/TreeUtils/rooting.cpp.html">根付き木</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/tree_diameter.cpp.html">木の直径</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/TreeUtils/tree_utils.cpp.html">TreeUtils</a>
 
 
@@ -549,7 +551,7 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/LinearAlgebra/Square/power.cpp.html">行列累乗</a>
 * :warning: <a href="library/Mylib/LinearAlgebra/Square/show_matrix.cpp.html">Mylib/LinearAlgebra/Square/show_matrix.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">正方行列</a>
-* :x: <a href="library/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp.html">正方行列 (コンパイル時固定サイズ)</a>
+* :heavy_check_mark: <a href="library/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp.html">正方行列 (コンパイル時固定サイズ)</a>
 
 
 <div id="c20232aa0a6a3c1c77a782d17f007d0b"></div>
@@ -564,9 +566,9 @@ layout: default
 ### Mylib/Misc
 
 * :heavy_check_mark: <a href="library/Mylib/Misc/compressor.cpp.html">座標圧縮</a>
-* :x: <a href="library/Mylib/Misc/convert_base.cpp.html">進数変換</a>
+* :heavy_check_mark: <a href="library/Mylib/Misc/convert_base.cpp.html">進数変換</a>
 * :warning: <a href="library/Mylib/Misc/dice.cpp.html">サイコロ</a>
-* :question: <a href="library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
+* :heavy_check_mark: <a href="library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
 * :heavy_check_mark: <a href="library/Mylib/Misc/int128.cpp.html">128bit整数型</a>
 * :heavy_check_mark: <a href="library/Mylib/Misc/inverse_number.cpp.html">転倒数</a>
 * :heavy_check_mark: <a href="library/Mylib/Misc/merge_technique.cpp.html">Mylib/Misc/merge_technique.cpp</a>
@@ -604,7 +606,7 @@ layout: default
 
 ### Mylib/Number/Mint
 
-* :question: <a href="library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :heavy_check_mark: <a href="library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 * :heavy_check_mark: <a href="library/Mylib/Number/Mint/runtime_mint.cpp.html">modint (実行時mod指定)</a>
 
 
@@ -817,6 +819,11 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp.html">test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/ITP1_3_D/main.test.cpp.html">test/aoj/ITP1_3_D/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/ITP2_11_B/main.asc.test.cpp.html">test/aoj/ITP2_11_B/main.asc.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/ITP2_11_B/main.desc.test.cpp.html">test/aoj/ITP2_11_B/main.desc.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/ITP2_11_C/main.asc.test.cpp.html">test/aoj/ITP2_11_C/main.asc.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/ITP2_11_C/main.desc.test.cpp.html">test/aoj/ITP2_11_C/main.desc.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/ITP2_11_D/main.test.cpp.html">test/aoj/ITP2_11_D/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/NTL_1_A/main.test.cpp.html">test/aoj/NTL_1_A/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/NTL_1_D/main.test.cpp.html">test/aoj/NTL_1_D/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/NTL_1_D/main.totient.test.cpp.html">test/aoj/NTL_1_D/main.totient.test.cpp</a>
@@ -849,18 +856,19 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/static_range_sum/main.test.cpp.html">test/yosupo-judge/static_range_sum/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/staticrmq/main.sparse_table.test.cpp.html">test/yosupo-judge/staticrmq/main.sparse_table.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/suffixarray/main.test.cpp.html">test/yosupo-judge/suffixarray/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/system_of_linear_equations/main.test.cpp.html">test/yosupo-judge/system_of_linear_equations/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/tree_diameter/main.test.cpp.html">test/yosupo-judge/tree_diameter/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/two_edge_connected_components/main.test.cpp.html">test/yosupo-judge/two_edge_connected_components/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/unionfind/main.test.cpp.html">test/yosupo-judge/unionfind/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/zalgorithm/main.test.cpp.html">test/yosupo-judge/zalgorithm/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/117/main.test.cpp.html">test/yukicoder/117/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/186/main.test.cpp.html">test/yukicoder/186/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/194/main.test.cpp.html">test/yukicoder/194/main.test.cpp</a>
@@ -868,22 +876,22 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yukicoder/306/main.golden.test.cpp.html">test/yukicoder/306/main.golden.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/306/main.ternary.test.cpp.html">test/yukicoder/306/main.ternary.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/430/main.aho_corasick.test.cpp.html">test/yukicoder/430/main.aho_corasick.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/499/main.test.cpp.html">test/yukicoder/499/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/510/main.test.cpp.html">test/yukicoder/510/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/499/main.test.cpp.html">test/yukicoder/499/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/510/main.test.cpp.html">test/yukicoder/510/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/580/main.test.cpp.html">test/yukicoder/580/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/631/main.starry_sky.test.cpp.html">test/yukicoder/631/main.starry_sky.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/631/main.test.cpp.html">test/yukicoder/631/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/631/main.starry_sky.test.cpp.html">test/yukicoder/631/main.starry_sky.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/631/main.test.cpp.html">test/yukicoder/631/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/658/main.test.cpp.html">test/yukicoder/658/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/660/main.test.cpp.html">test/yukicoder/660/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/665/main.test.cpp.html">test/yukicoder/665/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/755/main.test.cpp.html">test/yukicoder/755/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/776/main.test.cpp.html">test/yukicoder/776/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/782/main.test.cpp.html">test/yukicoder/782/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/789/main.test.cpp.html">test/yukicoder/789/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/776/main.test.cpp.html">test/yukicoder/776/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/782/main.test.cpp.html">test/yukicoder/782/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/789/main.test.cpp.html">test/yukicoder/789/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/843/main.atkin.test.cpp.html">test/yukicoder/843/main.atkin.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yukicoder/843/main.eratosthenes.test.cpp.html">test/yukicoder/843/main.eratosthenes.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/875/main.test.cpp.html">test/yukicoder/875/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/875/main.test.cpp.html">test/yukicoder/875/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
 
 

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#6b1c73113eb1a95c1a861edccc8def0a">Mylib/DataStructure/Queue</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Queue/persistent_queue.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-05-18 19:49:45+09:00
 
 
 
@@ -157,7 +157,7 @@ public:
   }
 
   int size() const {
-    return front_node ? 0 : back_node->depth - front_node->depth + 1;
+    return front_node ? back_node->depth - front_node->depth + 1 : 0;
   }
 };
 
@@ -246,7 +246,7 @@ public:
   }
 
   int size() const {
-    return front_node ? 0 : back_node->depth - front_node->depth + 1;
+    return front_node ? back_node->depth - front_node->depth + 1 : 0;
   }
 };
 

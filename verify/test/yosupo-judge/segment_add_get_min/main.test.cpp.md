@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#721e0ea68f32b7a24f161978d9526983">test/yosupo-judge/segment_add_get_min</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/segment_add_get_min/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 08:33:11+09:00
+    - Last commit date: 2020-05-20 06:17:37+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/segment_add_get_min">https://judge.yosupo.jp/problem/segment_add_get_min</a>
@@ -91,9 +91,7 @@ int main(){
     }
   }
 
-  if(xs.empty()){
-    
-  }else{
+  if(not xs.empty()){
     auto lc = make_lichao_min(xs);
 
     for(auto [l, r, a, b] : lines){
@@ -108,10 +106,10 @@ int main(){
         auto p = std::get<1>(q);
         auto res = lc.query(p);
 
-        if(res == std::nullopt){
-          puts("INFINITY");
-        }else{
+        if(res){
           printf("%lld\n", *res);
+        }else{
+          puts("INFINITY");
         }
       }
     }
@@ -316,9 +314,7 @@ int main(){
     }
   }
 
-  if(xs.empty()){
-    
-  }else{
+  if(not xs.empty()){
     auto lc = make_lichao_min(xs);
 
     for(auto [l, r, a, b] : lines){
@@ -333,10 +329,10 @@ int main(){
         auto p = std::get<1>(q);
         auto res = lc.query(p);
 
-        if(res == std::nullopt){
-          puts("INFINITY");
-        }else{
+        if(res){
           printf("%lld\n", *res);
+        }else{
+          puts("INFINITY");
         }
       }
     }

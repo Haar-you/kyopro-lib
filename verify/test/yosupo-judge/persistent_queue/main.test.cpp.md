@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#9ebe5796a1fd941d1f273efb97ed22d8">test/yosupo-judge/persistent_queue</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/persistent_queue/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-05-18 19:49:45+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/persistent_queue">https://judge.yosupo.jp/problem/persistent_queue</a>
@@ -171,7 +171,7 @@ public:
   }
 
   int size() const {
-    return front_node ? 0 : back_node->depth - front_node->depth + 1;
+    return front_node ? back_node->depth - front_node->depth + 1 : 0;
   }
 };
 #line 6 "test/yosupo-judge/persistent_queue/main.test.cpp"

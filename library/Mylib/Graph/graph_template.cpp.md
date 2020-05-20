@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :question: グラフ用テンプレート
+# :heavy_check_mark: グラフ用テンプレート
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -59,14 +59,15 @@ layout: default
 * :warning: <a href="TopologicalSort/topological_sort_lexicographical.cpp.html">トポロジカルソート (辞書順最小)</a>
 * :warning: <a href="TreeUtils/centroid.cpp.html">重心列挙</a>
 * :warning: <a href="TreeUtils/centroid_decomposition.cpp.html">重心分解</a>
-* :x: <a href="TreeUtils/euler_tour_bfs.cpp.html">BFSEulerTour</a>
-* :x: <a href="TreeUtils/euler_tour_vertex.cpp.html">頂点EulerTour</a>
-* :x: <a href="TreeUtils/forest.cpp.html">森の分解</a>
-* :question: <a href="TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
-* :question: <a href="TreeUtils/lca_based_on_doubling.cpp.html">最小共通祖先 (ダブリング)</a>
+* :heavy_check_mark: <a href="TreeUtils/euler_tour_bfs.cpp.html">BFSEulerTour</a>
+* :heavy_check_mark: <a href="TreeUtils/euler_tour_vertex.cpp.html">頂点EulerTour</a>
+* :heavy_check_mark: <a href="TreeUtils/forest.cpp.html">森の分解</a>
+* :heavy_check_mark: <a href="TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
+* :heavy_check_mark: <a href="TreeUtils/lca_based_on_doubling.cpp.html">最小共通祖先 (ダブリング)</a>
 * :heavy_check_mark: <a href="TreeUtils/lca_based_on_hld.cpp.html">最小共通祖先 (HLD)</a>
-* :question: <a href="TreeUtils/rerooting.cpp.html">全方位木dp</a>
+* :heavy_check_mark: <a href="TreeUtils/rerooting.cpp.html">全方位木dp</a>
 * :warning: <a href="TreeUtils/rooting.cpp.html">根付き木</a>
+* :heavy_check_mark: <a href="TreeUtils/tree_diameter.cpp.html">木の直径</a>
 * :heavy_check_mark: <a href="TreeUtils/tree_utils.cpp.html">TreeUtils</a>
 * :heavy_check_mark: <a href="chinese_postman_problem.cpp.html">中国人郵便配達問題</a>
 * :heavy_check_mark: <a href="travelling_salesman_problem.cpp.html">巡回セールスマン問題</a>
@@ -97,15 +98,16 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_5_C/main.doubling.test.cpp.html">test/aoj/GRL_5_C/main.doubling.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_5_C/main.hld.test.cpp.html">test/aoj/GRL_5_C/main.hld.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/tree_diameter/main.test.cpp.html">test/yosupo-judge/tree_diameter/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/two_edge_connected_components/main.test.cpp.html">test/yosupo-judge/two_edge_connected_components/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
-* :x: <a href="../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
-* :x: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
-* :x: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
-* :x: <a href="../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
-* :x: <a href="../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
-* :x: <a href="../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
-* :x: <a href="../../../verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
 
 
 ## Code

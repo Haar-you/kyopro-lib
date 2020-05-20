@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Bit/for_subsets_of_size_k.cpp
+# :heavy_check_mark: サイズKの集合を列挙
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#fe4a83e4dc2a7f834ed4cd85d6972a53">Mylib/Bit</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/for_subsets_of_size_k.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-20 18:00:03+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/aoj/ITP2_11_D/main.test.cpp.html">test/aoj/ITP2_11_D/main.test.cpp</a>
 
 
 ## Code
@@ -44,18 +49,33 @@ layout: default
 #pragma once
 
 /**
+ * @title サイズKの集合を列挙
  * @docs for_subsets_of_size_k.md
  */
-template <typename Func>
-void for_subsets_of_size_k(int n, int k, const Func &f){
-  int c = (1 << k) - 1;
-  while(c < (1 << n)){
-    f(c);
-    int x = c & (-c);
-    int y = c + x;
-    c = ((c & (~y)) / x >> 1) | y;
-  }
-}
+class KSubsets{
+  struct iter{
+    int c, n;
+    bool is_end;
+
+    int operator*() const {return c;}
+    void operator++(){
+      int x = c & (-c);
+      int y = c + x;
+
+      c = ((c & ~y) / x >> 1) | y;
+
+      if(c >= 1 << n) is_end = true;
+    }
+    bool operator!=(const iter &) const {return not is_end;}
+  };
+
+  int k, n;
+
+public:
+  KSubsets(int k, int n): k(k), n(n){}
+  iter begin() const {return iter({(1 << k) - 1, n, false});}
+  iter end() const {return iter();}
+};
 
 ```
 {% endraw %}
@@ -66,18 +86,33 @@ void for_subsets_of_size_k(int n, int k, const Func &f){
 #line 2 "Mylib/Bit/for_subsets_of_size_k.cpp"
 
 /**
+ * @title サイズKの集合を列挙
  * @docs for_subsets_of_size_k.md
  */
-template <typename Func>
-void for_subsets_of_size_k(int n, int k, const Func &f){
-  int c = (1 << k) - 1;
-  while(c < (1 << n)){
-    f(c);
-    int x = c & (-c);
-    int y = c + x;
-    c = ((c & (~y)) / x >> 1) | y;
-  }
-}
+class KSubsets{
+  struct iter{
+    int c, n;
+    bool is_end;
+
+    int operator*() const {return c;}
+    void operator++(){
+      int x = c & (-c);
+      int y = c + x;
+
+      c = ((c & ~y) / x >> 1) | y;
+
+      if(c >= 1 << n) is_end = true;
+    }
+    bool operator!=(const iter &) const {return not is_end;}
+  };
+
+  int k, n;
+
+public:
+  KSubsets(int k, int n): k(k), n(n){}
+  iter begin() const {return iter({(1 << k) - 1, n, false});}
+  iter end() const {return iter();}
+};
 
 ```
 {% endraw %}
