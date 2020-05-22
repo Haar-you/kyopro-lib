@@ -7,12 +7,12 @@
  * @title グリッドをグラフに変換する
  * @docs grid_to_graph.md
  */
-template <typename T, typename Directions, typename Checker, typename Generator>
+template <typename T, typename Directions, typename Index, typename Checker, typename Generator>
 Graph<T> grid_to_graph(
   int H, int W,
   const Directions &dir,
+  const Index &index,
   const Checker &check_passable,
-  const std::vector<std::vector<int>> &index,
   const Generator &generate_edge_cost
 ){
   Graph<T> ret(H * W);
@@ -26,9 +26,7 @@ Graph<T> grid_to_graph(
 
         if(q.x < 0 or q.x >= H or q.y < 0 or q.y >= W or not check_passable(p, q)) continue;
 
-        auto e = Edge<T>(index[p.x][p.y], index[q.x][q.y], generate_edge_cost(p, q));
-        
-        ret[index[p.x][p.y]].emplace_back(e);
+        ret[index(p.x, p.y)].emplace_back(index(p.x, p.y), index(q.x, q.y), generate_edge_cost(p, q));
       }
     }
   }
