@@ -25,8 +25,6 @@ int main(){
   std::vector<Point<D>> ps(N);
   for(int i = 0; i < N; ++i) std::cin >> ps[i];
 
-  const int mask = (1 << N) - 1;
-
   std::vector<double> memo(1 << N);
 
   for(int t = 0; t < (1 << N); ++t){  
@@ -37,27 +35,29 @@ int main(){
     memo[t] = (double)minimum_covering_circle(q).radius;
   }  
 
-  auto rec =
-    make_fix_point([&](auto &&rec, int d, int s) -> D{
-                     if(d == M){
-                       if(s != 0) return dp[d][s] = INF;
-                       return dp[d][s] = 0;
-                     }
+  const int mask = (1 << N) - 1;
 
-                     if(check[d][s]) return dp[d][s];
-                     check[d][s] = true;
+  auto ans =
+    make_fix_point(
+      [&](auto &&rec, int d, int s) -> D{
+        if(d == M){
+          if(s != 0) return dp[d][s] = INF;
+          return dp[d][s] = 0;
+        }
 
-                     D ret = INF;
+        if(check[d][s]) return dp[d][s];
+        check[d][s] = true;
 
-                     for(int t : SubsetAsc(s)){
-                       D val = std::max((double)rec(d+1, s^t), memo[t]);
-                       ret = std::min((double)ret, (double)val);
-                     }
-
-                     return dp[d][s] = ret;
-                   });
-
-  auto ans = rec(0, mask);
+        D ret = INF;
+        
+        for(int t : SubsetAsc(s)){
+          D val = std::max((double)rec(d+1, s^t), memo[t]);
+          ret = std::min((double)ret, (double)val);
+        }
+        
+        return dp[d][s] = ret;
+      }
+    )(0, mask);
 
   std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
 

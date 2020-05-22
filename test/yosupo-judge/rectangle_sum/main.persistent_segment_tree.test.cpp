@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-#include "Mylib/Misc/sort_all.cpp"
+#include "Mylib/Misc/sort_simultaneously.cpp"
 #include "Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
@@ -20,7 +20,15 @@ int main(){
     std::cin >> x[i] >> y[i] >> w[i];
   }
 
-  sort_all::run([&](int i, int j){return y[i] < y[j];}, N, x, y, w);
+  sort_simultaneously(
+    [&](int i, int j){
+      return y[i] < y[j];
+    },
+    N,
+    x,
+    y,
+    w
+  );
 
   std::vector<int64_t> c(x);
   std::sort(c.begin(), c.end());

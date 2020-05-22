@@ -14,11 +14,19 @@ int main(){
     add_undirected(tree, u, v, 1);
   }
 
-  auto merge = [](const auto &a, const auto &b){return std::max(a, b);};
-  auto f = [](const auto &a, const auto &){return a + 1;};
-  auto g = [](const auto &a, int){return a;};
-
-  auto r = make_rerooting<int>(tree, 0, merge, f, g);
+  auto r = make_rerooting<int>(
+    tree,
+    0,
+    [](const auto &a, const auto &b){
+      return std::max(a, b);
+    },
+    [](const auto &a, const auto &){
+      return a + 1;
+    },
+    [](const auto &a, int){
+      return a;
+    }
+  );
 
   for(auto &x : r.result){
     std::cout << 2 * (N-1) - x << std::endl;

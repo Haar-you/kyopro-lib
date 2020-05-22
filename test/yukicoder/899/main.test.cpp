@@ -59,7 +59,12 @@ int main(){
     // 子の子
     res.query_children(x, 2, f);
     
-    res.query_at(x, [&](int l, int r){seg.update(l, r, ans);});
+    res.query_at(
+      x,
+      [&](int l, int r){
+        seg.update(l, r, ans);
+      }
+    );
     
     std::cout << ans << std::endl;
   }

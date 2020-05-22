@@ -25,12 +25,23 @@ int main(){
       int u, v; std::cin >> u >> v;
       
       int64_t ans = 0;
-      hld.path_query_edge(u, v, [&](int l, int r){ans += seg.get(l, r);});
+      hld.path_query_edge(
+        u,
+        v,
+        [&](int l, int r){
+          ans += seg.get(l, r);
+        }
+      );
       std::cout << ans << std::endl;
     }else{
       int v, x; std::cin >> v >> x;
       
-      hld.subtree_query_edge(v, [&](int l, int r){seg.update(l, r, x);});
+      hld.subtree_query_edge(
+        v,
+        [&](int l, int r){
+          seg.update(l, r, x);
+        }
+      );
     }
   }
   

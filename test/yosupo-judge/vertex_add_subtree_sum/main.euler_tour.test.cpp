@@ -23,7 +23,12 @@ int main(){
   auto et = EulerTourVertex(tree, 0);
 
   for(int i = 0; i < N; ++i){
-    et.point_query(i, [&](int j){seg.update(j, a[i]);});
+    et.point_query(
+      i,
+      [&](int j){
+        seg.update(j, a[i]);
+      }
+    );
   }
 
   while(Q--){
@@ -32,12 +37,22 @@ int main(){
     if(t == 0){
       int u, x; scanf("%d %d", &u, &x);
 
-      et.point_query(u, [&](int j){seg.update(j, seg.at(j) + x);});
+      et.point_query(
+        u,
+        [&](int j){
+          seg.update(j, seg.at(j) + x);
+        }
+      );
     }else{
       int u; scanf("%d", &u);
 
       int64_t ans = 0;
-      et.subtree_query(u, [&](int l, int r){ans += seg.get(l, r);});
+      et.subtree_query(
+        u,
+        [&](int l, int r){
+          ans += seg.get(l, r);
+        }
+      );
 
       printf("%lld\n", ans);
     }

@@ -50,13 +50,16 @@ int main(){
 
       auto left = M::id(), right = M::id();
 
-      hld.path_query_vertex(u, v,
-                            [&](int l, int r){
-                              left = M::op(left, seg.fold_right(l, r));
-                            },
-                            [&](int l, int r){
-                              right = M::op(seg.fold_left(l, r), right);
-                            });
+      hld.path_query_vertex(
+        u,
+        v,
+        [&](int l, int r){
+          left = M::op(left, seg.fold_right(l, r));
+        },
+        [&](int l, int r){
+          right = M::op(seg.fold_left(l, r), right);
+        }
+      );
       
       auto a = M::op(left, right);
 

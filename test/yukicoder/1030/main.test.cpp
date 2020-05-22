@@ -38,7 +38,10 @@ int main(){
   }
 
   HLDecomposition<int> hld(tree, 0);
-  LCASemigroup::op = [&](int a, int b) -> int{return hld.lca(a, b);};
+  LCASemigroup::op =
+    [&](int a, int b) -> int {
+      return hld.lca(a, b);
+    };
 
   SegmentTree<MaxMonoid<int>> seg1(N);
   for(int i = 0; i < N; ++i){
@@ -61,10 +64,13 @@ int main(){
       
       int lca = *seg2.get(L-1, R);
       int ans = 0;
-      hld.path_query_vertex(0, lca,
-                            [&](int l, int r){
-                              ans = std::max(ans, seg1.get(l, r));
-                            });
+      hld.path_query_vertex(
+        0,
+        lca,
+        [&](int l, int r){
+          ans = std::max(ans, seg1.get(l, r));
+        }
+      );
       
       std::cout << ans << "\n";
     }

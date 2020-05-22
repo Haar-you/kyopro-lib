@@ -38,7 +38,13 @@ int main(){
       int u, v; scanf("%d %d", &u, &v);
 
       int64_t ans = 0;
-      hld.path_query_vertex(u, v, [&](int l, int r){ans += seg.get(l, r);});
+      hld.path_query_vertex(
+        u,
+        v,
+        [&](int l, int r){
+          ans += seg.get(l, r);
+        }
+      );
 
       printf("%lld\n", ans);
     }

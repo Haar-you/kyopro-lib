@@ -58,16 +58,24 @@ int main(){
       make_rerooting<std::pair<int,int>>(
         tree,
         std::make_pair(0, 0),
-        [](const auto &a, const auto &b){return std::make_pair(a.first + b.first, a.second + b.second);},
-        [&](const auto &x, const auto &e){return std::make_pair(x.first, x.second + x.first);},
-        [&](const auto &x, int v){return std::make_pair(x.first + plan[v], x.second);}
+        [](const auto &a, const auto &b){
+          return std::make_pair(a.first + b.first, a.second + b.second);
+        },
+        [](const auto &x, const auto &e){
+          return std::make_pair(x.first, x.second + x.first);
+        },
+        [&](const auto &x, int v){
+          return std::make_pair(x.first + plan[v], x.second);
+        }
       ).result;
       
     ans +=
       std::min_element(
         res.begin(),
         res.end(),
-        [](const auto &a, const auto &b){return a.second < b.second;}
+        [](const auto &a, const auto &b){
+          return a.second < b.second;
+        }
       )->second;
   }
     

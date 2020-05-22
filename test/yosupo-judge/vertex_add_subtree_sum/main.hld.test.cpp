@@ -38,7 +38,12 @@ int main(){
       int u; scanf("%d", &u);
 
       int64_t ans = 0;
-      hld.subtree_query_vertex(u, [&](int l, int r){ans += seg.get(l, r);});
+      hld.subtree_query_vertex(
+        u,
+        [&](int l, int r){
+          ans += seg.get(l, r);
+        }
+      );
 
       printf("%lld\n", ans);
     }

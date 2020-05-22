@@ -73,7 +73,7 @@ public:
         if(l >= (int)bfs_order[d].size()) return;
         if(r == l) return;
 
-        f(bfs_order[d][l], bfs_order[d][r-1]+1);
+        f(bfs_order[d][l], bfs_order[d][r-1] + 1);
       }
     }
   }
