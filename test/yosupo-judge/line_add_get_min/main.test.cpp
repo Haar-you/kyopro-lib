@@ -5,7 +5,7 @@
 #include <utility>
 #include <variant>
 #include <tuple>
-#include "Mylib/DataStructure/ConvexHullTrick/lichao_tree.cpp"
+#include "Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp"
 
 using Query = std::variant<std::pair<int64_t,int64_t>, int64_t>;
 

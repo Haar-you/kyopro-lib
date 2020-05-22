@@ -15,7 +15,7 @@ int main(){
 
   while(Q--){
     int l, r, k; scanf("%d%d%d", &l, &r, &k);
-    auto ans = *quantile(wm, l, r, k+1);
+    auto ans = *wm.quantile(l, r, k+1);
     printf("%d\n", ans);
   }
   

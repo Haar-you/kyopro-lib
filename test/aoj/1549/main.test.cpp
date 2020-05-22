@@ -5,7 +5,6 @@
 #include <climits>
 #include <algorithm>
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
-#include "Mylib/DataStructure/WaveletMatrix/prev_next_value.cpp"
 
 int main(){
   int N; std::cin >> N;
@@ -25,12 +24,12 @@ int main(){
     int ans = INT_MAX;
 
     {
-      auto x = prev_value(wm, l, r, d);
+      auto x = wm.prev_value(l, r, d);
       if(x) ans = std::min(ans, std::abs((int)*x - (int)d));
     }
 
     {
-      auto x = next_value(wm, l, r, d);
+      auto x = wm.next_value(l, r, d);
       if(x) ans = std::min(ans, std::abs((int)*x - (int)d));
     }
 
