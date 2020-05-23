@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#fce7f5311a6094c5e355d46a4ec1ba92">test/yukicoder/1030</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/1030/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-17 07:08:54+09:00
+    - Last commit date: 2020-05-22 16:55:31+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/1030">https://yukicoder.me/problems/no/1030</a>
@@ -43,7 +43,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/maybe.cpp.html">Mylib/AlgebraicStructure/Monoid/maybe.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">SegmentTree</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -91,7 +91,10 @@ int main(){
   }
 
   HLDecomposition<int> hld(tree, 0);
-  LCASemigroup::op = [&](int a, int b) -> int{return hld.lca(a, b);};
+  LCASemigroup::op =
+    [&](int a, int b) -> int {
+      return hld.lca(a, b);
+    };
 
   SegmentTree<MaxMonoid<int>> seg1(N);
   for(int i = 0; i < N; ++i){
@@ -114,10 +117,13 @@ int main(){
       
       int lca = *seg2.get(L-1, R);
       int ans = 0;
-      hld.path_query_vertex(0, lca,
-                            [&](int l, int r){
-                              ans = std::max(ans, seg1.get(l, r));
-                            });
+      hld.path_query_vertex(
+        0,
+        lca,
+        [&](int l, int r){
+          ans = std::max(ans, seg1.get(l, r));
+        }
+      );
       
       std::cout << ans << "\n";
     }
@@ -413,7 +419,10 @@ int main(){
   }
 
   HLDecomposition<int> hld(tree, 0);
-  LCASemigroup::op = [&](int a, int b) -> int{return hld.lca(a, b);};
+  LCASemigroup::op =
+    [&](int a, int b) -> int {
+      return hld.lca(a, b);
+    };
 
   SegmentTree<MaxMonoid<int>> seg1(N);
   for(int i = 0; i < N; ++i){
@@ -436,10 +445,13 @@ int main(){
       
       int lca = *seg2.get(L-1, R);
       int ans = 0;
-      hld.path_query_vertex(0, lca,
-                            [&](int l, int r){
-                              ans = std::max(ans, seg1.get(l, r));
-                            });
+      hld.path_query_vertex(
+        0,
+        lca,
+        [&](int l, int r){
+          ans = std::max(ans, seg1.get(l, r));
+        }
+      );
       
       std::cout << ans << "\n";
     }

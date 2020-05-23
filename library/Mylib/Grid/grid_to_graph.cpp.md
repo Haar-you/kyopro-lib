@@ -25,21 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: グリッドをグラフに変換する
+# :heavy_check_mark: グリッドをグラフに変換する
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#437b04c37f52e5b35f1d2c24c546c491">Mylib/Grid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Grid/grid_to_graph.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-10 10:14:38+09:00
+    - Last commit date: 2020-05-22 12:01:21+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 * :heavy_check_mark: <a href="grid.cpp.html">グリッド用テンプレート</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/aoj/0558/main.graph.test.cpp.html">test/aoj/0558/main.graph.test.cpp</a>
 
 
 ## Code
@@ -56,12 +61,12 @@ layout: default
  * @title グリッドをグラフに変換する
  * @docs grid_to_graph.md
  */
-template <typename T, typename Directions, typename Checker, typename Generator>
+template <typename T, typename Directions, typename Index, typename Checker, typename Generator>
 Graph<T> grid_to_graph(
   int H, int W,
   const Directions &dir,
+  const Index &index,
   const Checker &check_passable,
-  const std::vector<std::vector<int>> &index,
   const Generator &generate_edge_cost
 ){
   Graph<T> ret(H * W);
@@ -75,9 +80,7 @@ Graph<T> grid_to_graph(
 
         if(q.x < 0 or q.x >= H or q.y < 0 or q.y >= W or not check_passable(p, q)) continue;
 
-        auto e = Edge<T>(index[p.x][p.y], index[q.x][q.y], generate_edge_cost(p, q));
-        
-        ret[index[p.x][p.y]].emplace_back(e);
+        ret[index(p.x, p.y)].emplace_back(index(p.x, p.y), index(q.x, q.y), generate_edge_cost(p, q));
       }
     }
   }
@@ -165,12 +168,12 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
  * @title グリッドをグラフに変換する
  * @docs grid_to_graph.md
  */
-template <typename T, typename Directions, typename Checker, typename Generator>
+template <typename T, typename Directions, typename Index, typename Checker, typename Generator>
 Graph<T> grid_to_graph(
   int H, int W,
   const Directions &dir,
+  const Index &index,
   const Checker &check_passable,
-  const std::vector<std::vector<int>> &index,
   const Generator &generate_edge_cost
 ){
   Graph<T> ret(H * W);
@@ -184,9 +187,7 @@ Graph<T> grid_to_graph(
 
         if(q.x < 0 or q.x >= H or q.y < 0 or q.y >= W or not check_passable(p, q)) continue;
 
-        auto e = Edge<T>(index[p.x][p.y], index[q.x][q.y], generate_edge_cost(p, q));
-        
-        ret[index[p.x][p.y]].emplace_back(e);
+        ret[index(p.x, p.y)].emplace_back(index(p.x, p.y), index(q.x, q.y), generate_edge_cost(p, q));
       }
     }
   }

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/899/main.test.cpp
+# :x: test/yukicoder/899/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#dbd13c44c1e9ae40565e636bcb62bc45">test/yukicoder/899</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/899/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-17 07:08:54+09:00
+    - Last commit date: 2020-05-22 16:55:31+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/899">https://yukicoder.me/problems/no/899</a>
@@ -39,12 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/update.cpp.html">Mylib/AlgebraicStructure/Monoid/update.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">遅延SegmentTree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/euler_tour_bfs.cpp.html">BFSEulerTour</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/update.cpp.html">Mylib/AlgebraicStructure/Monoid/update.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">遅延SegmentTree</a>
+* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/euler_tour_bfs.cpp.html">BFSEulerTour</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -113,7 +113,12 @@ int main(){
     // 子の子
     res.query_children(x, 2, f);
     
-    res.query_at(x, [&](int l, int r){seg.update(l, r, ans);});
+    res.query_at(
+      x,
+      [&](int l, int r){
+        seg.update(l, r, ans);
+      }
+    );
     
     std::cout << ans << std::endl;
   }
@@ -234,7 +239,7 @@ public:
         if(l >= (int)bfs_order[d].size()) return;
         if(r == l) return;
 
-        f(bfs_order[d][l], bfs_order[d][r-1]+1);
+        f(bfs_order[d][l], bfs_order[d][r-1] + 1);
       }
     }
   }
@@ -425,7 +430,12 @@ int main(){
     // 子の子
     res.query_children(x, 2, f);
     
-    res.query_at(x, [&](int l, int r){seg.update(l, r, ans);});
+    res.query_at(
+      x,
+      [&](int l, int r){
+        seg.update(l, r, ans);
+      }
+    );
     
     std::cout << ans << std::endl;
   }

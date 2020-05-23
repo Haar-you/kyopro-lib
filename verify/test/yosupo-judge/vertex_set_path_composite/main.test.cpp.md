@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4074bf88980bb06d903e38d47fb81c08">test/yosupo-judge/vertex_set_path_composite</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/vertex_set_path_composite/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-17 07:08:54+09:00
+    - Last commit date: 2020-05-22 16:55:31+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/vertex_set_path_composite">https://judge.yosupo.jp/problem/vertex_set_path_composite</a>
@@ -43,7 +43,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp.html">SegmentTree (双方向Foldable)</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
 
 
@@ -104,13 +104,16 @@ int main(){
 
       auto left = M::id(), right = M::id();
 
-      hld.path_query_vertex(u, v,
-                            [&](int l, int r){
-                              left = M::op(left, seg.fold_right(l, r));
-                            },
-                            [&](int l, int r){
-                              right = M::op(seg.fold_left(l, r), right);
-                            });
+      hld.path_query_vertex(
+        u,
+        v,
+        [&](int l, int r){
+          left = M::op(left, seg.fold_right(l, r));
+        },
+        [&](int l, int r){
+          right = M::op(seg.fold_left(l, r), right);
+        }
+      );
       
       auto a = M::op(left, right);
 
@@ -527,13 +530,16 @@ int main(){
 
       auto left = M::id(), right = M::id();
 
-      hld.path_query_vertex(u, v,
-                            [&](int l, int r){
-                              left = M::op(left, seg.fold_right(l, r));
-                            },
-                            [&](int l, int r){
-                              right = M::op(seg.fold_left(l, r), right);
-                            });
+      hld.path_query_vertex(
+        u,
+        v,
+        [&](int l, int r){
+          left = M::op(left, seg.fold_right(l, r));
+        },
+        [&](int l, int r){
+          right = M::op(seg.fold_left(l, r), right);
+        }
+      );
       
       auto a = M::op(left, right);
 

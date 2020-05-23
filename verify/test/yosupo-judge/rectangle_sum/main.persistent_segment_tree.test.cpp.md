@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#9102555d140c20ca7196c4db584ea7b6">test/yosupo-judge/rectangle_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-17 07:08:54+09:00
+    - Last commit date: 2020-05-22 16:55:31+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/rectangle_sum">https://judge.yosupo.jp/problem/rectangle_sum</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp.html">永続SegmentTree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/sort_all.cpp.html">Mylib/Misc/sort_all.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/sort_simultaneously.cpp.html">Mylib/Misc/sort_simultaneously.cpp</a>
 
 
 ## Code
@@ -54,7 +54,7 @@ layout: default
 #include <iostream>
 #include <vector>
 
-#include "Mylib/Misc/sort_all.cpp"
+#include "Mylib/Misc/sort_simultaneously.cpp"
 #include "Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
@@ -71,7 +71,15 @@ int main(){
     std::cin >> x[i] >> y[i] >> w[i];
   }
 
-  sort_all::run([&](int i, int j){return y[i] < y[j];}, N, x, y, w);
+  sort_simultaneously(
+    [&](int i, int j){
+      return y[i] < y[j];
+    },
+    N,
+    x,
+    y,
+    w
+  );
 
   std::vector<int64_t> c(x);
   std::sort(c.begin(), c.end());
@@ -115,39 +123,37 @@ int main(){
 #include <iostream>
 #include <vector>
 
-#line 3 "Mylib/Misc/sort_all.cpp"
+#line 3 "Mylib/Misc/sort_simultaneously.cpp"
 #include <utility>
 #include <algorithm>
 #include <numeric>
 
 /**
- * @docs sort_all.md
+ * @docs sort_simultaneously.md
  */
-namespace sort_all{
-  template <typename T>
-  void sort_with_ord(const std::vector<int> &ord, int N, std::vector<T> &a){
-    std::vector<T> temp(N);
-    for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];
-    std::swap(temp, a);
-  }
+template <typename T>
+void sort_with_ord(const std::vector<int> &ord, int N, std::vector<T> &a){
+  std::vector<T> temp(N);
+  for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];
+  std::swap(temp, a);
+}
 
-  template <typename T, typename ...Args>
-  void sort_with_ord(const std::vector<int> &ord, int N, std::vector<T> &a, Args&... args){
-    std::vector<T> temp(N);
-    for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];
-    std::swap(temp, a);
-    sort_with_ord(ord, N, args...);
-  }
+template <typename T, typename ...Args>
+void sort_with_ord(const std::vector<int> &ord, int N, std::vector<T> &a, Args&... args){
+  std::vector<T> temp(N);
+  for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];
+  std::swap(temp, a);
+  sort_with_ord(ord, N, args...);
+}
 
-  template <typename Compare, typename ...Args>
-  void run(const Compare &compare, int N, Args&... args){
-    std::vector<int> ord(N);
-    std::iota(ord.begin(), ord.end(), 0);
-    std::sort(ord.begin(), ord.end(), compare);
+template <typename Compare, typename ...Args>
+void sort_simultaneously(const Compare &compare, int N, Args&... args){
+  std::vector<int> ord(N);
+  std::iota(ord.begin(), ord.end(), 0);
+  std::sort(ord.begin(), ord.end(), compare);
 
-    sort_with_ord(ord, N, args...);
-  }
-};
+  sort_with_ord(ord, N, args...);
+}
 #line 3 "Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp"
 
 /**
@@ -265,7 +271,15 @@ int main(){
     std::cin >> x[i] >> y[i] >> w[i];
   }
 
-  sort_all::run([&](int i, int j){return y[i] < y[j];}, N, x, y, w);
+  sort_simultaneously(
+    [&](int i, int j){
+      return y[i] < y[j];
+    },
+    N,
+    x,
+    y,
+    w
+  );
 
   std::vector<int64_t> c(x);
   std::sort(c.begin(), c.end());

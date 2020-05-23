@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: サイコロ
+# :heavy_check_mark: サイコロ
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/dice.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-23 11:34:31+09:00
 
 
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/aoj/0502/main.test.cpp.html">test/aoj/0502/main.test.cpp</a>
 
 
 ## Code
@@ -48,26 +53,34 @@ layout: default
  * @docs dice.md
  */
 struct Dice{
-  int top, bottom, left, right, front, back;
+  int top, bottom, front, back, right, left;
 
   Dice(){}
-  Dice(int top, int bottom, int left, int right, int front, int back):
-    top(top), bottom(bottom), left(left), right(right), front(front), back(back){}
+  Dice(int top, int bottom, int front, int back, int right, int left):
+    top(top), bottom(bottom), front(front), back(back), right(right), left(left){}
 
   Dice rot_left() const {
-    return Dice(right, left, top, bottom, front, back);
+    return Dice(right, left, front, back, bottom, top);
   }
 
   Dice rot_right() const {
-    return Dice(left, right, bottom, top, front, back);
+    return Dice(left, right, front, back, top, bottom);
   }
 
   Dice rot_front() const {
-    return Dice(back, front, left, right, top, bottom);
+    return Dice(back, front, top, bottom, right, left);
   }
   
   Dice rot_back() const {
-    return Dice(front, back, left, right, bottom, top);
+    return Dice(front, back, bottom, top, right, left);
+  }
+
+  Dice rot_clockwise() const {
+    return Dice(top, bottom, right, left, back, front);
+  }
+
+  Dice rot_counterclockwise() const {
+    return Dice(top, bottom, left, right, front, back);
   }
 };
 
@@ -84,26 +97,34 @@ struct Dice{
  * @docs dice.md
  */
 struct Dice{
-  int top, bottom, left, right, front, back;
+  int top, bottom, front, back, right, left;
 
   Dice(){}
-  Dice(int top, int bottom, int left, int right, int front, int back):
-    top(top), bottom(bottom), left(left), right(right), front(front), back(back){}
+  Dice(int top, int bottom, int front, int back, int right, int left):
+    top(top), bottom(bottom), front(front), back(back), right(right), left(left){}
 
   Dice rot_left() const {
-    return Dice(right, left, top, bottom, front, back);
+    return Dice(right, left, front, back, bottom, top);
   }
 
   Dice rot_right() const {
-    return Dice(left, right, bottom, top, front, back);
+    return Dice(left, right, front, back, top, bottom);
   }
 
   Dice rot_front() const {
-    return Dice(back, front, left, right, top, bottom);
+    return Dice(back, front, top, bottom, right, left);
   }
   
   Dice rot_back() const {
-    return Dice(front, back, left, right, bottom, top);
+    return Dice(front, back, bottom, top, right, left);
+  }
+
+  Dice rot_clockwise() const {
+    return Dice(top, bottom, right, left, back, front);
+  }
+
+  Dice rot_counterclockwise() const {
+    return Dice(top, bottom, left, right, front, back);
   }
 };
 

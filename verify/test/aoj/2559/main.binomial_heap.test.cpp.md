@@ -41,8 +41,8 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/Heap/binomial_heap.cpp.html">BinomialHeap</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim法</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Misc/merge_technique.cpp.html">Mylib/Misc/merge_technique.cpp</a>
 
 

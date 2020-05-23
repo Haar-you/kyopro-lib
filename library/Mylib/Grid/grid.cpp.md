@@ -39,11 +39,12 @@ layout: default
 ## Required by
 
 * :heavy_check_mark: <a href="grid_bfs.cpp.html">グリッド上BFS</a>
-* :warning: <a href="grid_to_graph.cpp.html">グリッドをグラフに変換する</a>
+* :heavy_check_mark: <a href="grid_to_graph.cpp.html">グリッドをグラフに変換する</a>
 
 
 ## Verified with
 
+* :heavy_check_mark: <a href="../../../verify/test/aoj/0558/main.graph.test.cpp.html">test/aoj/0558/main.graph.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/0558/main.test.cpp.html">test/aoj/0558/main.test.cpp</a>
 
 

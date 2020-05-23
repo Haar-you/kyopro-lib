@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#607ede2caa7064ff1cf75c22fd3209d4">test/aoj/3034</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3034/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-20 18:00:03+09:00
+    - Last commit date: 2020-05-22 16:55:31+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034</a>
@@ -44,7 +44,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/minimum_covering_circle.cpp.html">最小包含円</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
+* :question: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
 
 
 ## Code
@@ -79,8 +79,6 @@ int main(){
   std::vector<Point<D>> ps(N);
   for(int i = 0; i < N; ++i) std::cin >> ps[i];
 
-  const int mask = (1 << N) - 1;
-
   std::vector<double> memo(1 << N);
 
   for(int t = 0; t < (1 << N); ++t){  
@@ -91,27 +89,29 @@ int main(){
     memo[t] = (double)minimum_covering_circle(q).radius;
   }  
 
-  auto rec =
-    make_fix_point([&](auto &&rec, int d, int s) -> D{
-                     if(d == M){
-                       if(s != 0) return dp[d][s] = INF;
-                       return dp[d][s] = 0;
-                     }
+  const int mask = (1 << N) - 1;
 
-                     if(check[d][s]) return dp[d][s];
-                     check[d][s] = true;
+  auto ans =
+    make_fix_point(
+      [&](auto &&rec, int d, int s) -> D{
+        if(d == M){
+          if(s != 0) return dp[d][s] = INF;
+          return dp[d][s] = 0;
+        }
 
-                     D ret = INF;
+        if(check[d][s]) return dp[d][s];
+        check[d][s] = true;
 
-                     for(int t : SubsetAsc(s)){
-                       D val = std::max((double)rec(d+1, s^t), memo[t]);
-                       ret = std::min((double)ret, (double)val);
-                     }
-
-                     return dp[d][s] = ret;
-                   });
-
-  auto ans = rec(0, mask);
+        D ret = INF;
+        
+        for(int t : SubsetAsc(s)){
+          D val = std::max((double)rec(d+1, s^t), memo[t]);
+          ret = std::min((double)ret, (double)val);
+        }
+        
+        return dp[d][s] = ret;
+      }
+    )(0, mask);
 
   std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
 
@@ -429,8 +429,6 @@ int main(){
   std::vector<Point<D>> ps(N);
   for(int i = 0; i < N; ++i) std::cin >> ps[i];
 
-  const int mask = (1 << N) - 1;
-
   std::vector<double> memo(1 << N);
 
   for(int t = 0; t < (1 << N); ++t){  
@@ -441,27 +439,29 @@ int main(){
     memo[t] = (double)minimum_covering_circle(q).radius;
   }  
 
-  auto rec =
-    make_fix_point([&](auto &&rec, int d, int s) -> D{
-                     if(d == M){
-                       if(s != 0) return dp[d][s] = INF;
-                       return dp[d][s] = 0;
-                     }
+  const int mask = (1 << N) - 1;
 
-                     if(check[d][s]) return dp[d][s];
-                     check[d][s] = true;
+  auto ans =
+    make_fix_point(
+      [&](auto &&rec, int d, int s) -> D{
+        if(d == M){
+          if(s != 0) return dp[d][s] = INF;
+          return dp[d][s] = 0;
+        }
 
-                     D ret = INF;
+        if(check[d][s]) return dp[d][s];
+        check[d][s] = true;
 
-                     for(int t : SubsetAsc(s)){
-                       D val = std::max((double)rec(d+1, s^t), memo[t]);
-                       ret = std::min((double)ret, (double)val);
-                     }
-
-                     return dp[d][s] = ret;
-                   });
-
-  auto ans = rec(0, mask);
+        D ret = INF;
+        
+        for(int t : SubsetAsc(s)){
+          D val = std::max((double)rec(d+1, s^t), memo[t]);
+          ret = std::min((double)ret, (double)val);
+        }
+        
+        return dp[d][s] = ret;
+      }
+    )(0, mask);
 
   std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
 

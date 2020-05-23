@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#5182f60ed9f69992a8eee7b8b1003f24">test/yosupo-judge/vertex_add_subtree_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-17 07:08:54+09:00
+    - Last commit date: 2020-05-22 16:55:31+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/vertex_add_subtree_sum">https://judge.yosupo.jp/problem/vertex_add_subtree_sum</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">SegmentTree</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -90,7 +90,12 @@ int main(){
       int u; scanf("%d", &u);
 
       int64_t ans = 0;
-      hld.subtree_query_vertex(u, [&](int l, int r){ans += seg.get(l, r);});
+      hld.subtree_query_vertex(
+        u,
+        [&](int l, int r){
+          ans += seg.get(l, r);
+        }
+      );
 
       printf("%lld\n", ans);
     }
@@ -371,7 +376,12 @@ int main(){
       int u; scanf("%d", &u);
 
       int64_t ans = 0;
-      hld.subtree_query_vertex(u, [&](int l, int r){ans += seg.get(l, r);});
+      hld.subtree_query_vertex(
+        u,
+        [&](int l, int r){
+          ans += seg.get(l, r);
+        }
+      );
 
       printf("%lld\n", ans);
     }

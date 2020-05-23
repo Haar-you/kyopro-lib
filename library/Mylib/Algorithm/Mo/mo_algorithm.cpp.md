@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mo's algorithm
+# :warning: MoAlgorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1534504632931a6652ca965283803a2e">Mylib/Algorithm/Mo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Mo/mo_algorithm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 16:28:32+09:00
+    - Last commit date: 2020-05-22 16:55:31+09:00
 
 
 
@@ -82,7 +82,7 @@ layout: default
 #include <cassert>
 
 /**
- * @title Mo's algorithm
+ * @title MoAlgorithm
  * @docs mo_algorithm.md
  */
 template <typename F, typename G, typename H>
@@ -98,8 +98,10 @@ class MoAlgorithm{
 
 public:
   MoAlgorithm(int N, int Q, const F &append, const G &remove, const H &query):
-    N(N), Q(Q), index(0), width(sqrt(N)), left(Q), right(Q), ord(Q), append(append), remove(remove), query(query){
-  }
+    N(N), Q(Q), index(0), width(sqrt(N)),
+    left(Q), right(Q), ord(Q),
+    append(append), remove(remove), query(query)
+  {}
 
   // [l, r)
   inline void add(int l, int r){
@@ -110,19 +112,22 @@ public:
   }
 
   inline void build(){
-    std::sort(ord.begin(), ord.end(),
-              [&](int i, int j){
-                const int a = left[i] / width, b = left[j] / width;
-                if(a == b){
-                  if(a & 1){
-                    return right[i] < right[j];
-                  }else{
-                    return right[i] > right[j];
-                  }
-                }else{
-                  return a < b;
-                }
-              });
+    std::sort(
+      ord.begin(),
+      ord.end(),
+      [&](int i, int j){
+        const int a = left[i] / width, b = left[j] / width;
+        if(a == b){
+          if(a & 1){
+            return right[i] < right[j];
+          }else{
+            return right[i] > right[j];
+          }
+        }else{
+          return a < b;
+        }
+      }
+    );
 
     is_built = true;
   }
@@ -165,7 +170,7 @@ auto make_mo(int N, int Q, F append, G remove, H query){
 #include <cassert>
 
 /**
- * @title Mo's algorithm
+ * @title MoAlgorithm
  * @docs mo_algorithm.md
  */
 template <typename F, typename G, typename H>
@@ -181,8 +186,10 @@ class MoAlgorithm{
 
 public:
   MoAlgorithm(int N, int Q, const F &append, const G &remove, const H &query):
-    N(N), Q(Q), index(0), width(sqrt(N)), left(Q), right(Q), ord(Q), append(append), remove(remove), query(query){
-  }
+    N(N), Q(Q), index(0), width(sqrt(N)),
+    left(Q), right(Q), ord(Q),
+    append(append), remove(remove), query(query)
+  {}
 
   // [l, r)
   inline void add(int l, int r){
@@ -193,19 +200,22 @@ public:
   }
 
   inline void build(){
-    std::sort(ord.begin(), ord.end(),
-              [&](int i, int j){
-                const int a = left[i] / width, b = left[j] / width;
-                if(a == b){
-                  if(a & 1){
-                    return right[i] < right[j];
-                  }else{
-                    return right[i] > right[j];
-                  }
-                }else{
-                  return a < b;
-                }
-              });
+    std::sort(
+      ord.begin(),
+      ord.end(),
+      [&](int i, int j){
+        const int a = left[i] / width, b = left[j] / width;
+        if(a == b){
+          if(a & 1){
+            return right[i] < right[j];
+          }else{
+            return right[i] > right[j];
+          }
+        }else{
+          return a < b;
+        }
+      }
+    );
 
     is_built = true;
   }

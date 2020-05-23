@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#cfdc241edb33a016c1ab681da8d9e179">test/aoj/0558</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/0558/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-10 10:14:38+09:00
+    - Last commit date: 2020-05-22 12:01:21+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0558">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0558</a>
@@ -86,7 +86,7 @@ int main(){
         }
       );
 
-    ans += dist[ps[i+1].x][ps[i+1].y];
+    ans += *dist[ps[i+1].x][ps[i+1].y];
   }
 
   std::cout << ans << "\n";
@@ -147,24 +147,25 @@ namespace grid{
 }
 #line 3 "Mylib/Grid/grid_bfs.cpp"
 #include <queue>
-#line 5 "Mylib/Grid/grid_bfs.cpp"
+#include <optional>
+#line 6 "Mylib/Grid/grid_bfs.cpp"
 
 /**
  * @title グリッド上BFS
  * @docs grid_bfs.md
  */
 template <typename Directions, typename Checker>
-std::vector<std::vector<int>> grid_bfs(
+auto grid_bfs(
   const int H, const int W,
-  const std::vector<Point> &start_points,
+  const std::vector<Point> &starting_points,
   const Directions &dir,
   const Checker &check_passable
 ){
-  std::vector<std::vector<int>> dist(H, std::vector<int>(W, -1));
+  std::vector<std::vector<std::optional<int>>> dist(H, std::vector<std::optional<int>>(W));
   std::vector<std::vector<bool>> visited(H, std::vector<bool>(W));
 
   std::queue<Point> q;
-  for(auto &p : start_points){
+  for(auto &p : starting_points){
     dist[p.x][p.y] = 0;
     q.push(p);
   }
@@ -180,12 +181,12 @@ std::vector<std::vector<int>> grid_bfs(
 
       if(nxt.x < 0 or nxt.x >= H or nxt.y < 0 or nxt.y >= W or not check_passable(cur, nxt)) continue;
 
-      if(dist[nxt.x][nxt.y] == -1){
-        dist[nxt.x][nxt.y] = dist[cur.x][cur.y] + 1;
+      if(not dist[nxt.x][nxt.y]){
+        dist[nxt.x][nxt.y] = *dist[cur.x][cur.y] + 1;
         q.push(nxt);
       }else{
-        if(dist[nxt.x][nxt.y] > dist[cur.x][cur.y] + 1){
-          dist[nxt.x][nxt.y] = dist[cur.x][cur.y] + 1;
+        if(*dist[nxt.x][nxt.y] > *dist[cur.x][cur.y] + 1){
+          dist[nxt.x][nxt.y] = *dist[cur.x][cur.y] + 1;
           q.push(nxt);
         }
       }
@@ -227,7 +228,7 @@ int main(){
         }
       );
 
-    ans += dist[ps[i+1].x][ps[i+1].y];
+    ans += *dist[ps[i+1].x][ps[i+1].y];
   }
 
   std::cout << ans << "\n";

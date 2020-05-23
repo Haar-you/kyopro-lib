@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f80441644c784d0a46b75e1972ebee8e">test/aoj/2667</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2667/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-17 07:08:54+09:00
+    - Last commit date: 2020-05-22 16:55:31+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2667">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2667</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">遅延SegmentTree</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">遅延SegmentTree</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -78,12 +78,23 @@ int main(){
       int u, v; std::cin >> u >> v;
       
       int64_t ans = 0;
-      hld.path_query_edge(u, v, [&](int l, int r){ans += seg.get(l, r);});
+      hld.path_query_edge(
+        u,
+        v,
+        [&](int l, int r){
+          ans += seg.get(l, r);
+        }
+      );
       std::cout << ans << std::endl;
     }else{
       int v, x; std::cin >> v >> x;
       
-      hld.subtree_query_edge(v, [&](int l, int r){seg.update(l, r, x);});
+      hld.subtree_query_edge(
+        v,
+        [&](int l, int r){
+          seg.update(l, r, x);
+        }
+      );
     }
   }
   
@@ -385,12 +396,23 @@ int main(){
       int u, v; std::cin >> u >> v;
       
       int64_t ans = 0;
-      hld.path_query_edge(u, v, [&](int l, int r){ans += seg.get(l, r);});
+      hld.path_query_edge(
+        u,
+        v,
+        [&](int l, int r){
+          ans += seg.get(l, r);
+        }
+      );
       std::cout << ans << std::endl;
     }else{
       int v, x; std::cin >> v >> x;
       
-      hld.subtree_query_edge(v, [&](int l, int r){seg.update(l, r, x);});
+      hld.subtree_query_edge(
+        v,
+        [&](int l, int r){
+          seg.update(l, r, x);
+        }
+      );
     }
   }
   

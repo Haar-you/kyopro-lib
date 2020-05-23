@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#41749cc077979299e644c18a01e43785">test/yosupo-judge/line_add_get_min</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/line_add_get_min/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 08:33:11+09:00
+    - Last commit date: 2020-05-23 07:34:18+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/line_add_get_min">https://judge.yosupo.jp/problem/line_add_get_min</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/ConvexHullTrick/lichao_tree.cpp.html">LiChaoTree</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp.html">LiChaoSegmentTree</a>
 
 
 ## Code
@@ -54,7 +54,7 @@ layout: default
 #include <utility>
 #include <variant>
 #include <tuple>
-#include "Mylib/DataStructure/ConvexHullTrick/lichao_tree.cpp"
+#include "Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp"
 
 using Query = std::variant<std::pair<int64_t,int64_t>, int64_t>;
 
@@ -125,13 +125,13 @@ int main(){
 #include <utility>
 #include <variant>
 #include <tuple>
-#line 4 "Mylib/DataStructure/ConvexHullTrick/lichao_tree.cpp"
+#line 4 "Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp"
 #include <algorithm>
 #include <optional>
 
 /**
- * @title LiChaoTree
- * @docs lichao_tree.md
+ * @title LiChaoSegmentTree
+ * @docs lichao_segment_tree.md
  */
 template <typename T, typename Comparator>
 class LiChaoSegmentTree{

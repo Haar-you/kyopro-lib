@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: LiChaoTree
+# :heavy_check_mark: LiChaoSegmentTree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0d6a910a839d6d45cd0c637d5901795e">Mylib/DataStructure/ConvexHullTrick</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/ConvexHullTrick/lichao_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 08:33:11+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-22 20:53:10+09:00
 
 
 
@@ -78,8 +78,8 @@ layout: default
 #include <optional>
 
 /**
- * @title LiChaoTree
- * @docs lichao_tree.md
+ * @title LiChaoSegmentTree
+ * @docs lichao_segment_tree.md
  */
 template <typename T, typename Comparator>
 class LiChaoSegmentTree{
@@ -225,15 +225,15 @@ auto make_lichao_max(const std::vector<T> &xs){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/DataStructure/ConvexHullTrick/lichao_tree.cpp"
+#line 2 "Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp"
 #include <utility>
 #include <vector>
 #include <algorithm>
 #include <optional>
 
 /**
- * @title LiChaoTree
- * @docs lichao_tree.md
+ * @title LiChaoSegmentTree
+ * @docs lichao_segment_tree.md
  */
 template <typename T, typename Comparator>
 class LiChaoSegmentTree{

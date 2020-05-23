@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#5182f60ed9f69992a8eee7b8b1003f24">test/yosupo-judge/vertex_add_subtree_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-17 07:08:54+09:00
+    - Last commit date: 2020-05-22 16:55:31+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/vertex_add_subtree_sum">https://judge.yosupo.jp/problem/vertex_add_subtree_sum</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">SegmentTree</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/euler_tour_vertex.cpp.html">頂点EulerTour</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -75,7 +75,12 @@ int main(){
   auto et = EulerTourVertex(tree, 0);
 
   for(int i = 0; i < N; ++i){
-    et.point_query(i, [&](int j){seg.update(j, a[i]);});
+    et.point_query(
+      i,
+      [&](int j){
+        seg.update(j, a[i]);
+      }
+    );
   }
 
   while(Q--){
@@ -84,12 +89,22 @@ int main(){
     if(t == 0){
       int u, x; scanf("%d %d", &u, &x);
 
-      et.point_query(u, [&](int j){seg.update(j, seg.at(j) + x);});
+      et.point_query(
+        u,
+        [&](int j){
+          seg.update(j, seg.at(j) + x);
+        }
+      );
     }else{
       int u; scanf("%d", &u);
 
       int64_t ans = 0;
-      et.subtree_query(u, [&](int l, int r){ans += seg.get(l, r);});
+      et.subtree_query(
+        u,
+        [&](int l, int r){
+          ans += seg.get(l, r);
+        }
+      );
 
       printf("%lld\n", ans);
     }
@@ -256,7 +271,12 @@ int main(){
   auto et = EulerTourVertex(tree, 0);
 
   for(int i = 0; i < N; ++i){
-    et.point_query(i, [&](int j){seg.update(j, a[i]);});
+    et.point_query(
+      i,
+      [&](int j){
+        seg.update(j, a[i]);
+      }
+    );
   }
 
   while(Q--){
@@ -265,12 +285,22 @@ int main(){
     if(t == 0){
       int u, x; scanf("%d %d", &u, &x);
 
-      et.point_query(u, [&](int j){seg.update(j, seg.at(j) + x);});
+      et.point_query(
+        u,
+        [&](int j){
+          seg.update(j, seg.at(j) + x);
+        }
+      );
     }else{
       int u; scanf("%d", &u);
 
       int64_t ans = 0;
-      et.subtree_query(u, [&](int l, int r){ans += seg.get(l, r);});
+      et.subtree_query(
+        u,
+        [&](int l, int r){
+          ans += seg.get(l, r);
+        }
+      );
 
       printf("%lld\n", ans);
     }

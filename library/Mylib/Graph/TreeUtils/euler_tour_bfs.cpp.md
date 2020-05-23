@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: BFSEulerTour
+# :x: BFSEulerTour
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/euler_tour_bfs.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 14:34:19+09:00
+    - Last commit date: 2020-05-22 16:55:31+09:00
 
 
 
@@ -69,12 +69,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
 
 
 ## Code
@@ -157,7 +157,7 @@ public:
         if(l >= (int)bfs_order[d].size()) return;
         if(r == l) return;
 
-        f(bfs_order[d][l], bfs_order[d][r-1]+1);
+        f(bfs_order[d][l], bfs_order[d][r-1] + 1);
       }
     }
   }
@@ -290,7 +290,7 @@ public:
         if(l >= (int)bfs_order[d].size()) return;
         if(r == l) return;
 
-        f(bfs_order[d][l], bfs_order[d][r-1]+1);
+        f(bfs_order[d][l], bfs_order[d][r-1] + 1);
       }
     }
   }

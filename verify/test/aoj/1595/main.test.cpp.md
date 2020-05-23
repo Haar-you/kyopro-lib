@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#56f0b2628838f5e87f16daf710f380b1">test/aoj/1595</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1595/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-22 16:55:31+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1595">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1595</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/rerooting.cpp.html">全方位木dp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/rerooting.cpp.html">全方位木dp</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -64,11 +64,19 @@ int main(){
     add_undirected(tree, u, v, 1);
   }
 
-  auto merge = [](const auto &a, const auto &b){return std::max(a, b);};
-  auto f = [](const auto &a, const auto &){return a + 1;};
-  auto g = [](const auto &a, int){return a;};
-
-  auto r = make_rerooting<int>(tree, 0, merge, f, g);
+  auto r = make_rerooting<int>(
+    tree,
+    0,
+    [](const auto &a, const auto &b){
+      return std::max(a, b);
+    },
+    [](const auto &a, const auto &){
+      return a + 1;
+    },
+    [](const auto &a, int){
+      return a;
+    }
+  );
 
   for(auto &x : r.result){
     std::cout << 2 * (N-1) - x << std::endl;
@@ -208,11 +216,19 @@ int main(){
     add_undirected(tree, u, v, 1);
   }
 
-  auto merge = [](const auto &a, const auto &b){return std::max(a, b);};
-  auto f = [](const auto &a, const auto &){return a + 1;};
-  auto g = [](const auto &a, int){return a;};
-
-  auto r = make_rerooting<int>(tree, 0, merge, f, g);
+  auto r = make_rerooting<int>(
+    tree,
+    0,
+    [](const auto &a, const auto &b){
+      return std::max(a, b);
+    },
+    [](const auto &a, const auto &){
+      return a + 1;
+    },
+    [](const auto &a, int){
+      return a;
+    }
+  );
 
   for(auto &x : r.result){
     std::cout << 2 * (N-1) - x << std::endl;

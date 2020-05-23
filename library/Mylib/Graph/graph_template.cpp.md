@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: グラフ用テンプレート
+# :question: グラフ用テンプレート
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -52,31 +52,32 @@ layout: default
 * :warning: <a href="ShortestCycle/undirected_shortest_cycle.cpp.html">無向グラフの最小閉路</a>
 * :heavy_check_mark: <a href="ShortestPath/bellman_ford.cpp.html">Bellman-Ford法</a>
 * :warning: <a href="ShortestPath/bfs_0_1.cpp.html">0-1 BFS</a>
-* :warning: <a href="ShortestPath/bfs_shortest_path.cpp.html">BFS最短路</a>
+* :heavy_check_mark: <a href="ShortestPath/bfs_shortest_path.cpp.html">BFS最短路</a>
 * :heavy_check_mark: <a href="ShortestPath/dijkstra.cpp.html">Dijkstra法</a>
 * :heavy_check_mark: <a href="ShortestPath/warshall_floyd.cpp.html">Warshall-Floyd法</a>
 * :heavy_check_mark: <a href="TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
 * :warning: <a href="TopologicalSort/topological_sort_lexicographical.cpp.html">トポロジカルソート (辞書順最小)</a>
 * :warning: <a href="TreeUtils/centroid.cpp.html">重心列挙</a>
 * :warning: <a href="TreeUtils/centroid_decomposition.cpp.html">重心分解</a>
-* :heavy_check_mark: <a href="TreeUtils/euler_tour_bfs.cpp.html">BFSEulerTour</a>
+* :x: <a href="TreeUtils/euler_tour_bfs.cpp.html">BFSEulerTour</a>
 * :heavy_check_mark: <a href="TreeUtils/euler_tour_vertex.cpp.html">頂点EulerTour</a>
-* :heavy_check_mark: <a href="TreeUtils/forest.cpp.html">森の分解</a>
+* :x: <a href="TreeUtils/forest.cpp.html">森の分解</a>
 * :heavy_check_mark: <a href="TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
-* :heavy_check_mark: <a href="TreeUtils/lca_based_on_doubling.cpp.html">最小共通祖先 (ダブリング)</a>
+* :question: <a href="TreeUtils/lca_based_on_doubling.cpp.html">最小共通祖先 (ダブリング)</a>
 * :heavy_check_mark: <a href="TreeUtils/lca_based_on_hld.cpp.html">最小共通祖先 (HLD)</a>
-* :heavy_check_mark: <a href="TreeUtils/rerooting.cpp.html">全方位木dp</a>
+* :question: <a href="TreeUtils/rerooting.cpp.html">全方位木dp</a>
 * :warning: <a href="TreeUtils/rooting.cpp.html">根付き木</a>
 * :heavy_check_mark: <a href="TreeUtils/tree_diameter.cpp.html">木の直径</a>
 * :heavy_check_mark: <a href="TreeUtils/tree_utils.cpp.html">TreeUtils</a>
 * :heavy_check_mark: <a href="chinese_postman_problem.cpp.html">中国人郵便配達問題</a>
 * :heavy_check_mark: <a href="travelling_salesman_problem.cpp.html">巡回セールスマン問題</a>
 * :heavy_check_mark: <a href="two_sat.cpp.html">2-SAT</a>
-* :warning: <a href="../Grid/grid_to_graph.cpp.html">グリッドをグラフに変換する</a>
+* :heavy_check_mark: <a href="../Grid/grid_to_graph.cpp.html">グリッドをグラフに変換する</a>
 
 
 ## Verified with
 
+* :heavy_check_mark: <a href="../../../verify/test/aoj/0558/main.graph.test.cpp.html">test/aoj/0558/main.graph.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/1595/main.test.cpp.html">test/aoj/1595/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2370/main.test.cpp.html">test/aoj/2370/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.binomial_heap.test.cpp.html">test/aoj/2559/main.binomial_heap.test.cpp</a>
@@ -106,8 +107,8 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
 
 
 ## Code

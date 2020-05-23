@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: BFS最短路
+# :heavy_check_mark: BFS最短路
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,7 +38,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/0558/main.graph.test.cpp.html">test/aoj/0558/main.graph.test.cpp</a>
 
 
 ## Code
