@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include "Mylib/Graph/graph_template.cpp"
-#include "Mylib/Graph/TreeUtils/tree_utils.cpp"
+#include "Mylib/Graph/TreeUtils/tree_height.cpp"
 
 int main(){
   int n; std::cin >> n;
@@ -13,7 +13,7 @@ int main(){
     add_undirected(tree, s, t, d);
   }
 
-  auto ans = TreeUtils<int>::height(tree);
+  auto ans = tree_height(tree);
   
   for(auto x : ans) std::cout << x << std::endl;
 

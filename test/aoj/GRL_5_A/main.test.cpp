@@ -3,7 +3,7 @@
 #include <iostream>
 #include <tuple>
 #include "Mylib/Graph/graph_template.cpp"
-#include "Mylib/Graph/TreeUtils/tree_utils.cpp"
+#include "Mylib/Graph/TreeUtils/tree_diameter.cpp"
 
 int main(){
   int n; std::cin >> n;
@@ -15,7 +15,7 @@ int main(){
   }
 
   int ans;
-  std::tie(std::ignore, std::ignore, ans) = TreeUtils<int>::diameter(tree);
+  std::tie(ans, std::ignore) = tree_diameter(tree);
   std::cout << ans << std::endl;
 
   return 0;
