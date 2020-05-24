@@ -13,7 +13,7 @@ int main(){
     add_edge(g, s, t, 1);
   }
 
-  auto scc = SCC(g);
+  auto scc = strongly_connected_components(g).first;
 
   int q; std::cin >> q;
 

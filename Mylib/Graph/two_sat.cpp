@@ -50,14 +50,12 @@ public:
   
 public:
   std::optional<std::vector<bool>> solve() const {
-    auto scc = SCC<int>(g);
+    auto [scc, m] = strongly_connected_components<int>(g);
 
     for(int i = 0; i < n; ++i){
-      if(scc[i] == scc[i+n]) return std::nullopt;
+      if(scc[i] == scc[i+n]) return {};
     }
     
-    int m = scc.scc_size;
-
     Graph<int> g2(m);
 
     for(int i = 0; i < 2*n; ++i){

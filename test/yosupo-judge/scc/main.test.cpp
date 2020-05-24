@@ -15,8 +15,7 @@ int main(){
     add_edge(g, a, b, 1);
   }
 
-  auto scc = SCC(g);
-  int K = scc.scc_size;
+  auto [scc, K] = strongly_connected_components(g);
   std::vector<std::vector<int>> ans(K);
   for(int i = 0; i < N; ++i) ans[scc[i]].push_back(i);
 
