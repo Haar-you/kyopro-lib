@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :question: 全方位木dp
+# :heavy_check_mark: 全方位木dp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -58,13 +58,13 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/1595/main.test.cpp.html">test/aoj/1595/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
 
 
 ## Code

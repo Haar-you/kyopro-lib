@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#607ede2caa7064ff1cf75c22fd3209d4">test/aoj/3034</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3034/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 16:55:31+09:00
+    - Last commit date: 2020-05-24 09:36:03+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034</a>
@@ -44,7 +44,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/minimum_covering_circle.cpp.html">最小包含円</a>
-* :question: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
 
 
 ## Code
@@ -373,18 +373,18 @@ struct FixPoint : F{
   explicit constexpr FixPoint(F &&f) noexcept : F(std::forward<F>(f)){}
 
   template <typename... Args>
-  constexpr decltype(auto) operator()(Args &&... args) const {
+  constexpr auto operator()(Args &&... args) const {
     return F::operator()(*this, std::forward<Args>(args)...);
   }
 };
 
 template <typename F>
-static inline constexpr decltype(auto) make_fix_point(F &&f){
+inline constexpr auto make_fix_point(F &&f){
   return FixPoint<F>(std::forward<F>(f));
 }
 
 template <typename F>
-static inline constexpr decltype(auto) make_fix_point(F &f){
+inline constexpr auto make_fix_point(F &f){
   return FixPoint<F>(std::forward<F>(f));
 }
 #line 2 "Mylib/Bit/for_each_subset_asc.cpp"

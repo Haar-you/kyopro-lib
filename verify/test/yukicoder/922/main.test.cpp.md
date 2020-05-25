@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yukicoder/922/main.test.cpp
+# :heavy_check_mark: test/yukicoder/922/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6a3ef3b964dcfd2b510ed368d9e357ba">test/yukicoder/922</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/922/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 16:55:31+09:00
+    - Last commit date: 2020-05-24 09:36:03+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/922">https://yukicoder.me/problems/no/922</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/forest.cpp.html">森の分解</a>
-* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp.html">最小共通祖先 (ダブリング)</a>
-* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/rerooting.cpp.html">全方位木dp</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
-* :question: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/forest.cpp.html">森の分解</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp.html">最小共通祖先 (ダブリング)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/rerooting.cpp.html">全方位木dp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
 
 
 ## Code
@@ -161,18 +161,18 @@ struct FixPoint : F{
   explicit constexpr FixPoint(F &&f) noexcept : F(std::forward<F>(f)){}
 
   template <typename... Args>
-  constexpr decltype(auto) operator()(Args &&... args) const {
+  constexpr auto operator()(Args &&... args) const {
     return F::operator()(*this, std::forward<Args>(args)...);
   }
 };
 
 template <typename F>
-static inline constexpr decltype(auto) make_fix_point(F &&f){
+inline constexpr auto make_fix_point(F &&f){
   return FixPoint<F>(std::forward<F>(f));
 }
 
 template <typename F>
-static inline constexpr decltype(auto) make_fix_point(F &f){
+inline constexpr auto make_fix_point(F &f){
   return FixPoint<F>(std::forward<F>(f));
 }
 #line 4 "Mylib/Graph/graph_template.cpp"

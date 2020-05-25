@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/bfs_shortest_path.cpp.html">BFS最短路</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Grid/grid.cpp.html">グリッド用テンプレート</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Grid/grid_to_graph.cpp.html">グリッドをグラフに変換する</a>
 

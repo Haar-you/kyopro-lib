@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#e93cc7e7edd1deb522641737d913fca6">test/yosupo-judge/two_sat</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/two_sat/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-25 02:14:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/two_sat">https://judge.yosupo.jp/problem/two_sat</a>
@@ -41,7 +41,7 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/two_sat.cpp.html">2-SAT</a>
 
 
@@ -135,48 +135,44 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
  * @docs strongly_connected_components.md
  */
 template <typename T>
-struct SCC{
-  std::vector<int> result;
-  int scc_size;
+auto strongly_connected_components(const Graph<T> &g){
+  const int n = g.size();
+
+  std::vector<bool> visit(n);
+  std::vector<int> check(n);
+  std::vector<int> result(n, -1);
+
+  auto dfs =
+    [&](auto &f, int cur) -> void {
+      visit[cur] = true;
+      for(const auto &e : g[cur]){
+        if(not visit[e.to]) f(f, e.to);
+      }
+      check.push_back(cur);
+    };
+
+  for(int i = 0; i < n; ++i) if(not visit[i]) dfs(dfs, i);
+
+  std::reverse(check.begin(), check.end());
+
+  Graph<T> rg(n);
+
+  auto rdfs =
+    [&](auto &f, int cur, int i) -> void {
+      result[cur] = i;
+      for(const auto &e : rg[cur]){
+        if(result[e.to] == -1) f(f, e.to, i);
+      }
+    };
+
+  for(int i = 0; i < n; ++i) for(const auto &e : g[i]) rg[e.to].emplace_back(e.to, e.from, e.cost);
+
+  int i = 0;
+  for(auto c : check) if(result[c] == -1) rdfs(rdfs, c, i), ++i;
+
   
-private:
-  std::vector<bool> visit;
-  std::vector<int> check;
-  
-  void dfs(int cur, const Graph<T> &graph){
-    visit[cur] = true;
-    for(auto &e : graph[cur]){
-      if(not visit[e.to]) dfs(e.to,graph);
-    }
-    check.push_back(cur);
-  }
-
-  void rdfs(int cur, int i, const Graph<T> &rgraph){
-    result[cur] = i;
-    for(auto &e : rgraph[cur]){
-      if(result[e.to] == -1) rdfs(e.to,i,rgraph);
-    }
-  }
-
-public:
-  SCC(const Graph<T> &graph){
-    const int n = graph.size();
-    result.assign(n, -1);
-    visit.assign(n, false);
-    
-    for(int i = 0; i < n; ++i) if(!visit[i]) dfs(i,graph);
-    std::reverse(check.begin(), check.end());
-    
-    Graph<T> rgraph(n);
-    for(int i = 0; i < n; ++i) for(auto &e : graph[i]) rgraph[e.to].emplace_back(e.to, e.from, e.cost);
-
-    int i = 0;
-    for(auto c : check) if(result[c] == -1) {rdfs(c,i,rgraph); ++i;}
-    scc_size = i;
-  }
-
-  inline const int operator[](int i) const {return result[i];}
-};
+  return std::make_pair(result, i);
+}
 #line 3 "Mylib/Graph/TopologicalSort/topological_sort.cpp"
 #include <optional>
 #include <queue>
@@ -266,14 +262,12 @@ public:
   
 public:
   std::optional<std::vector<bool>> solve() const {
-    auto scc = SCC<int>(g);
+    auto [scc, m] = strongly_connected_components<int>(g);
 
     for(int i = 0; i < n; ++i){
-      if(scc[i] == scc[i+n]) return std::nullopt;
+      if(scc[i] == scc[i+n]) return {};
     }
     
-    int m = scc.scc_size;
-
     Graph<int> g2(m);
 
     for(int i = 0; i < 2*n; ++i){

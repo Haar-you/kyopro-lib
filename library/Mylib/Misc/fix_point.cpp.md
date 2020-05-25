@@ -25,15 +25,28 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :question: 不動点コンビネータ
+# :heavy_check_mark: 不動点コンビネータ
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/fix_point.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-24 09:36:03+09:00
 
 
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References
+
+- [http://koturn.hatenablog.com/entry/2018/06/10/060000](http://koturn.hatenablog.com/entry/2018/06/10/060000)
 
 
 ## Verified with
@@ -42,7 +55,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
-* :x: <a href="../../../verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
 
 
 ## Code
@@ -62,18 +75,18 @@ struct FixPoint : F{
   explicit constexpr FixPoint(F &&f) noexcept : F(std::forward<F>(f)){}
 
   template <typename... Args>
-  constexpr decltype(auto) operator()(Args &&... args) const {
+  constexpr auto operator()(Args &&... args) const {
     return F::operator()(*this, std::forward<Args>(args)...);
   }
 };
 
 template <typename F>
-static inline constexpr decltype(auto) make_fix_point(F &&f){
+inline constexpr auto make_fix_point(F &&f){
   return FixPoint<F>(std::forward<F>(f));
 }
 
 template <typename F>
-static inline constexpr decltype(auto) make_fix_point(F &f){
+inline constexpr auto make_fix_point(F &f){
   return FixPoint<F>(std::forward<F>(f));
 }
 
@@ -95,18 +108,18 @@ struct FixPoint : F{
   explicit constexpr FixPoint(F &&f) noexcept : F(std::forward<F>(f)){}
 
   template <typename... Args>
-  constexpr decltype(auto) operator()(Args &&... args) const {
+  constexpr auto operator()(Args &&... args) const {
     return F::operator()(*this, std::forward<Args>(args)...);
   }
 };
 
 template <typename F>
-static inline constexpr decltype(auto) make_fix_point(F &&f){
+inline constexpr auto make_fix_point(F &&f){
   return FixPoint<F>(std::forward<F>(f));
 }
 
 template <typename F>
-static inline constexpr decltype(auto) make_fix_point(F &f){
+inline constexpr auto make_fix_point(F &f){
   return FixPoint<F>(std::forward<F>(f));
 }
 

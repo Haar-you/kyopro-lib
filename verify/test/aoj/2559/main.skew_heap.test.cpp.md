@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#470f11b8b249244fcbedd0bf3d66e316">test/aoj/2559</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2559/main.skew_heap.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-14 01:02:10+09:00
+    - Last commit date: 2020-05-24 09:36:03+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2559">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2559</a>
@@ -41,8 +41,8 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/Heap/skew_heap.cpp.html">SkewHeap</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim法</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
-* :question: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Misc/merge_technique.cpp.html">Mylib/Misc/merge_technique.cpp</a>
 
 
@@ -230,18 +230,18 @@ struct FixPoint : F{
   explicit constexpr FixPoint(F &&f) noexcept : F(std::forward<F>(f)){}
 
   template <typename... Args>
-  constexpr decltype(auto) operator()(Args &&... args) const {
+  constexpr auto operator()(Args &&... args) const {
     return F::operator()(*this, std::forward<Args>(args)...);
   }
 };
 
 template <typename F>
-static inline constexpr decltype(auto) make_fix_point(F &&f){
+inline constexpr auto make_fix_point(F &&f){
   return FixPoint<F>(std::forward<F>(f));
 }
 
 template <typename F>
-static inline constexpr decltype(auto) make_fix_point(F &f){
+inline constexpr auto make_fix_point(F &f){
   return FixPoint<F>(std::forward<F>(f));
 }
 #line 2 "Mylib/DataStructure/Heap/skew_heap.cpp"

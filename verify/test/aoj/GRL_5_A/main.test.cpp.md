@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a624c615c8a90227d4c31dd34d7dfde1">test/aoj/GRL_5_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_5_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-24 12:01:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_A</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_utils.cpp.html">TreeUtils</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_diameter.cpp.html">木の直径</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -53,7 +53,7 @@ layout: default
 #include <iostream>
 #include <tuple>
 #include "Mylib/Graph/graph_template.cpp"
-#include "Mylib/Graph/TreeUtils/tree_utils.cpp"
+#include "Mylib/Graph/TreeUtils/tree_diameter.cpp"
 
 int main(){
   int n; std::cin >> n;
@@ -65,7 +65,7 @@ int main(){
   }
 
   int ans;
-  std::tie(std::ignore, std::ignore, ans) = TreeUtils<int>::diameter(tree);
+  std::tie(ans, std::ignore) = tree_diameter(tree);
   std::cout << ans << std::endl;
 
   return 0;
@@ -110,75 +110,73 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
   add_edge<T, C>(g, a, b, w);
   add_edge<T, C>(g, b, a, w);
 }
-#line 3 "Mylib/Graph/TreeUtils/tree_utils.cpp"
+#line 3 "Mylib/Graph/TreeUtils/tree_diameter.cpp"
 #include <utility>
 #include <stack>
-#line 6 "Mylib/Graph/TreeUtils/tree_utils.cpp"
 #include <algorithm>
-#line 8 "Mylib/Graph/TreeUtils/tree_utils.cpp"
+#line 7 "Mylib/Graph/TreeUtils/tree_diameter.cpp"
 
 /**
- * @title TreeUtils
- * @docs tree_utils.md
+ * @title 木の直径
+ * @docs tree_diameter.md
  */
-template <typename T> class TreeUtils{
-public:
-  static std::pair<int,T> farthest(const Tree<T> &tree, int cur, int par = -1){
-    auto d = std::make_pair(cur, 0);
-    for(auto &e : tree[cur]){
-      if(e.to == par) continue;
-      auto t = farthest(tree, e.to, cur);
-      t.second += e.cost;
-      if(t.second > d.second) d = t;
-    }
-    return d;
-  }
+template <typename T>
+std::pair<T, std::vector<int>> tree_diameter(const Tree<T> &tree){
+  const int N = tree.size();
 
-  static std::vector<T> distance(const Tree<T> &tree, int root){
-    int n = tree.size();
-    std::vector<T> ret(n);
-    std::vector<bool> visited(n);
-    
-    std::stack<int> st;
-    st.push(root);
-    ret[root] = 0;
-    
-    while(not st.empty()){
-      int cur = st.top(); st.pop();
-      visited[cur] = true;
-      
-      for(auto &e : tree[cur]){
-        if(not visited[e.to]){
-          ret[e.to] = ret[cur] + e.cost;
-          st.push(e.to);
-        }
+  std::vector<bool> check(N);
+  std::vector<T> dp(N);
+  std::stack<int> st;
+
+  st.push(0);
+  while(st.size()){
+    int i = st.top(); st.pop();
+
+    check[i] = true;
+
+    for(const auto &e : tree[i]){
+      if(not check[e.to]){
+        dp[e.to] = dp[i] + e.cost;
+        st.push(e.to);
       }
     }
-    
-    return ret;
+  }
+
+  const int u = std::max_element(dp.begin(), dp.end()) - dp.begin();
+
+  dp.assign(N, 0);
+  check.assign(N, false);
+
+  std::vector<int> prev(N);
+  
+  st.push(u);
+  while(st.size()){
+    int i = st.top(); st.pop();
+
+    check[i] = true;
+
+    for(const auto &e : tree[i]){
+      if(not check[e.to]){
+        dp[e.to] = dp[i] + e.cost;
+        st.push(e.to);
+        prev[e.to] = i;
+      }
+    }
+  }
+
+  const int v = std::max_element(dp.begin(), dp.end()) - dp.begin();
+
+  std::vector<int> ret;
+
+  int cur = v;
+  while(1){
+    ret.push_back(cur);
+    if(cur == u) break;
+    cur = prev[cur];
   }
   
-  static std::tuple<int, int, T> diameter(const Tree<T> &tree){
-    auto a = farthest(tree, 0);
-    auto b = farthest(tree, a.first);
-    return std::make_tuple(a.first, b.first, b.second);
-  }
-
-  static std::vector<T> height(const Tree<T> &tree){
-    auto a = farthest(tree, 0);
-    auto b = farthest(tree, a.first);
-
-    int n = tree.size();
-
-    auto d1 = distance(tree, a.first);
-    auto d2 = distance(tree, b.first);
-
-    std::vector<T> h(n);
-    for(int i = 0; i < n; ++i) h[i] = std::max(d1[i], d2[i]);
-    
-    return h;
-  }
-};
+  return std::make_pair(dp[v], ret);
+}
 #line 7 "test/aoj/GRL_5_A/main.test.cpp"
 
 int main(){
@@ -191,7 +189,7 @@ int main(){
   }
 
   int ans;
-  std::tie(std::ignore, std::ignore, ans) = TreeUtils<int>::diameter(tree);
+  std::tie(ans, std::ignore) = tree_diameter(tree);
   std::cout << ans << std::endl;
 
   return 0;

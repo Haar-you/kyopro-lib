@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: BFS最短路
+# :heavy_check_mark: 木の距離
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#9a0780c4ad89eac4e850657d1e57c23a">Mylib/Graph/ShortestPath</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestPath/bfs_shortest_path.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+* category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/tree_distance.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-24 12:01:27+09:00
 
 
 
@@ -41,9 +41,14 @@ layout: default
 * :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
+## Required by
+
+* :heavy_check_mark: <a href="tree_height.cpp.html">木の高さ</a>
+
+
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/0558/main.graph.test.cpp.html">test/aoj/0558/main.graph.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_5_B/main.test.cpp.html">test/aoj/GRL_5_B/main.test.cpp</a>
 
 
 ## Code
@@ -53,40 +58,35 @@ layout: default
 ```cpp
 #pragma once
 #include <vector>
-#include <optional>
-#include <queue>
+#include <stack>
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title BFS最短路
- * @docs bfs_shortest_path.md
+ * @title 木の距離
+ * @docs tree_distance.md
  */
 template <typename T>
-std::vector<std::optional<int>> bfs_shortest_path(const Graph<T> &g, const std::vector<int> &src){
-  const int n = g.size();
-  std::vector<std::optional<int>> ret(n, std::nullopt);
+std::vector<T> tree_distance(const Tree<T> &tree, int root){
+  const int n = tree.size();
+  std::vector<T> ret(n);
   std::vector<bool> visited(n);
-  std::queue<int> q;
-
-  for(auto s : src){
-    ret[s] = 0;
-    q.push(s);
-  }
-
-  while(not q.empty()){
-    const int cur = q.front(); q.pop();
-
-    if(visited[cur]) continue;
+    
+  std::stack<int> st;
+  st.push(root);
+  ret[root] = 0;
+    
+  while(not st.empty()){
+    int cur = st.top(); st.pop();
     visited[cur] = true;
-
-    for(auto &e : g[cur]){
-      if(not ret[e.to] or *ret[e.to] > *ret[e.from] + 1){
-        ret[e.to] = *ret[e.from] + 1;
-        q.push(e.to);
+      
+    for(auto &e : tree[cur]){
+      if(not visited[e.to]){
+        ret[e.to] = ret[cur] + e.cost;
+        st.push(e.to);
       }
     }
   }
-
+    
   return ret;
 }
 
@@ -96,10 +96,9 @@ std::vector<std::optional<int>> bfs_shortest_path(const Graph<T> &g, const std::
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Graph/ShortestPath/bfs_shortest_path.cpp"
+#line 2 "Mylib/Graph/TreeUtils/tree_distance.cpp"
 #include <vector>
-#include <optional>
-#include <queue>
+#include <stack>
 #line 3 "Mylib/Graph/graph_template.cpp"
 #include <iostream>
 
@@ -127,38 +126,34 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
   add_edge<T, C>(g, a, b, w);
   add_edge<T, C>(g, b, a, w);
 }
-#line 6 "Mylib/Graph/ShortestPath/bfs_shortest_path.cpp"
+#line 5 "Mylib/Graph/TreeUtils/tree_distance.cpp"
 
 /**
- * @title BFS最短路
- * @docs bfs_shortest_path.md
+ * @title 木の距離
+ * @docs tree_distance.md
  */
 template <typename T>
-std::vector<std::optional<int>> bfs_shortest_path(const Graph<T> &g, const std::vector<int> &src){
-  const int n = g.size();
-  std::vector<std::optional<int>> ret(n, std::nullopt);
+std::vector<T> tree_distance(const Tree<T> &tree, int root){
+  const int n = tree.size();
+  std::vector<T> ret(n);
   std::vector<bool> visited(n);
-  std::queue<int> q;
-
-  for(auto s : src){
-    ret[s] = 0;
-    q.push(s);
-  }
-
-  while(not q.empty()){
-    const int cur = q.front(); q.pop();
-
-    if(visited[cur]) continue;
+    
+  std::stack<int> st;
+  st.push(root);
+  ret[root] = 0;
+    
+  while(not st.empty()){
+    int cur = st.top(); st.pop();
     visited[cur] = true;
-
-    for(auto &e : g[cur]){
-      if(not ret[e.to] or *ret[e.to] > *ret[e.from] + 1){
-        ret[e.to] = *ret[e.from] + 1;
-        q.push(e.to);
+      
+    for(auto &e : tree[cur]){
+      if(not visited[e.to]){
+        ret[e.to] = ret[cur] + e.cost;
+        st.push(e.to);
       }
     }
   }
-
+    
   return ret;
 }
 

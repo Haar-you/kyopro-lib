@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#367e4e2ab0e36321fe2845cd3c3216ef">test/aoj/GRL_5_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_5_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-24 12:01:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_B</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_utils.cpp.html">TreeUtils</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_distance.cpp.html">木の距離</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_height.cpp.html">木の高さ</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Code
@@ -52,7 +53,7 @@ layout: default
 
 #include <iostream>
 #include "Mylib/Graph/graph_template.cpp"
-#include "Mylib/Graph/TreeUtils/tree_utils.cpp"
+#include "Mylib/Graph/TreeUtils/tree_height.cpp"
 
 int main(){
   int n; std::cin >> n;
@@ -63,7 +64,7 @@ int main(){
     add_undirected(tree, s, t, d);
   }
 
-  auto ans = TreeUtils<int>::height(tree);
+  auto ans = tree_height(tree);
   
   for(auto x : ans) std::cout << x << std::endl;
 
@@ -108,75 +109,61 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
   add_edge<T, C>(g, a, b, w);
   add_edge<T, C>(g, b, a, w);
 }
-#line 3 "Mylib/Graph/TreeUtils/tree_utils.cpp"
-#include <utility>
-#include <stack>
-#include <tuple>
+#line 3 "Mylib/Graph/TreeUtils/tree_height.cpp"
 #include <algorithm>
-#line 8 "Mylib/Graph/TreeUtils/tree_utils.cpp"
+#line 3 "Mylib/Graph/TreeUtils/tree_distance.cpp"
+#include <stack>
+#line 5 "Mylib/Graph/TreeUtils/tree_distance.cpp"
 
 /**
- * @title TreeUtils
- * @docs tree_utils.md
+ * @title 木の距離
+ * @docs tree_distance.md
  */
-template <typename T> class TreeUtils{
-public:
-  static std::pair<int,T> farthest(const Tree<T> &tree, int cur, int par = -1){
-    auto d = std::make_pair(cur, 0);
-    for(auto &e : tree[cur]){
-      if(e.to == par) continue;
-      auto t = farthest(tree, e.to, cur);
-      t.second += e.cost;
-      if(t.second > d.second) d = t;
-    }
-    return d;
-  }
-
-  static std::vector<T> distance(const Tree<T> &tree, int root){
-    int n = tree.size();
-    std::vector<T> ret(n);
-    std::vector<bool> visited(n);
+template <typename T>
+std::vector<T> tree_distance(const Tree<T> &tree, int root){
+  const int n = tree.size();
+  std::vector<T> ret(n);
+  std::vector<bool> visited(n);
     
-    std::stack<int> st;
-    st.push(root);
-    ret[root] = 0;
+  std::stack<int> st;
+  st.push(root);
+  ret[root] = 0;
     
-    while(not st.empty()){
-      int cur = st.top(); st.pop();
-      visited[cur] = true;
+  while(not st.empty()){
+    int cur = st.top(); st.pop();
+    visited[cur] = true;
       
-      for(auto &e : tree[cur]){
-        if(not visited[e.to]){
-          ret[e.to] = ret[cur] + e.cost;
-          st.push(e.to);
-        }
+    for(auto &e : tree[cur]){
+      if(not visited[e.to]){
+        ret[e.to] = ret[cur] + e.cost;
+        st.push(e.to);
       }
     }
+  }
     
-    return ret;
-  }
-  
-  static std::tuple<int, int, T> diameter(const Tree<T> &tree){
-    auto a = farthest(tree, 0);
-    auto b = farthest(tree, a.first);
-    return std::make_tuple(a.first, b.first, b.second);
-  }
+  return ret;
+}
+#line 6 "Mylib/Graph/TreeUtils/tree_height.cpp"
 
-  static std::vector<T> height(const Tree<T> &tree){
-    auto a = farthest(tree, 0);
-    auto b = farthest(tree, a.first);
+/**
+ * @title 木の高さ
+ * @docs tree_height.md
+ */
+template <typename T>
+std::vector<T> tree_height(const Tree<T> &tree){
+  const int n = tree.size();
 
-    int n = tree.size();
+  auto d = tree_distance(tree, 0);
+  int a = std::max_element(d.begin(), d.end()) - d.begin();
+  auto d1 = tree_distance(tree, a);
+  int b = std::max_element(d1.begin(), d1.end()) - d1.begin();
+  auto d2 = tree_distance(tree, b);
 
-    auto d1 = distance(tree, a.first);
-    auto d2 = distance(tree, b.first);
-
-    std::vector<T> h(n);
-    for(int i = 0; i < n; ++i) h[i] = std::max(d1[i], d2[i]);
+  std::vector<T> h(n);
+  for(int i = 0; i < n; ++i) h[i] = std::max(d1[i], d2[i]);
     
-    return h;
-  }
-};
+  return h;
+}
 #line 6 "test/aoj/GRL_5_B/main.test.cpp"
 
 int main(){
@@ -188,7 +175,7 @@ int main(){
     add_undirected(tree, s, t, d);
   }
 
-  auto ans = TreeUtils<int>::height(tree);
+  auto ans = tree_height(tree);
   
   for(auto x : ans) std::cout << x << std::endl;
 

@@ -25,25 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: BFS最短路
+# :heavy_check_mark: 木の高さ
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#9a0780c4ad89eac4e850657d1e57c23a">Mylib/Graph/ShortestPath</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestPath/bfs_shortest_path.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+* category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/tree_height.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-05-24 12:01:27+09:00
 
 
 
 
 ## Depends on
 
+* :heavy_check_mark: <a href="tree_distance.cpp.html">木の距離</a>
 * :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/0558/main.graph.test.cpp.html">test/aoj/0558/main.graph.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_5_B/main.test.cpp.html">test/aoj/GRL_5_B/main.test.cpp</a>
 
 
 ## Code
@@ -53,41 +54,28 @@ layout: default
 ```cpp
 #pragma once
 #include <vector>
-#include <optional>
-#include <queue>
+#include <algorithm>
 #include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/TreeUtils/tree_distance.cpp"
 
 /**
- * @title BFS最短路
- * @docs bfs_shortest_path.md
+ * @title 木の高さ
+ * @docs tree_height.md
  */
 template <typename T>
-std::vector<std::optional<int>> bfs_shortest_path(const Graph<T> &g, const std::vector<int> &src){
-  const int n = g.size();
-  std::vector<std::optional<int>> ret(n, std::nullopt);
-  std::vector<bool> visited(n);
-  std::queue<int> q;
+std::vector<T> tree_height(const Tree<T> &tree){
+  const int n = tree.size();
 
-  for(auto s : src){
-    ret[s] = 0;
-    q.push(s);
-  }
+  auto d = tree_distance(tree, 0);
+  int a = std::max_element(d.begin(), d.end()) - d.begin();
+  auto d1 = tree_distance(tree, a);
+  int b = std::max_element(d1.begin(), d1.end()) - d1.begin();
+  auto d2 = tree_distance(tree, b);
 
-  while(not q.empty()){
-    const int cur = q.front(); q.pop();
-
-    if(visited[cur]) continue;
-    visited[cur] = true;
-
-    for(auto &e : g[cur]){
-      if(not ret[e.to] or *ret[e.to] > *ret[e.from] + 1){
-        ret[e.to] = *ret[e.from] + 1;
-        q.push(e.to);
-      }
-    }
-  }
-
-  return ret;
+  std::vector<T> h(n);
+  for(int i = 0; i < n; ++i) h[i] = std::max(d1[i], d2[i]);
+    
+  return h;
 }
 
 ```
@@ -96,10 +84,9 @@ std::vector<std::optional<int>> bfs_shortest_path(const Graph<T> &g, const std::
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Graph/ShortestPath/bfs_shortest_path.cpp"
+#line 2 "Mylib/Graph/TreeUtils/tree_height.cpp"
 #include <vector>
-#include <optional>
-#include <queue>
+#include <algorithm>
 #line 3 "Mylib/Graph/graph_template.cpp"
 #include <iostream>
 
@@ -127,39 +114,58 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
   add_edge<T, C>(g, a, b, w);
   add_edge<T, C>(g, b, a, w);
 }
-#line 6 "Mylib/Graph/ShortestPath/bfs_shortest_path.cpp"
+#line 3 "Mylib/Graph/TreeUtils/tree_distance.cpp"
+#include <stack>
+#line 5 "Mylib/Graph/TreeUtils/tree_distance.cpp"
 
 /**
- * @title BFS最短路
- * @docs bfs_shortest_path.md
+ * @title 木の距離
+ * @docs tree_distance.md
  */
 template <typename T>
-std::vector<std::optional<int>> bfs_shortest_path(const Graph<T> &g, const std::vector<int> &src){
-  const int n = g.size();
-  std::vector<std::optional<int>> ret(n, std::nullopt);
+std::vector<T> tree_distance(const Tree<T> &tree, int root){
+  const int n = tree.size();
+  std::vector<T> ret(n);
   std::vector<bool> visited(n);
-  std::queue<int> q;
-
-  for(auto s : src){
-    ret[s] = 0;
-    q.push(s);
-  }
-
-  while(not q.empty()){
-    const int cur = q.front(); q.pop();
-
-    if(visited[cur]) continue;
+    
+  std::stack<int> st;
+  st.push(root);
+  ret[root] = 0;
+    
+  while(not st.empty()){
+    int cur = st.top(); st.pop();
     visited[cur] = true;
-
-    for(auto &e : g[cur]){
-      if(not ret[e.to] or *ret[e.to] > *ret[e.from] + 1){
-        ret[e.to] = *ret[e.from] + 1;
-        q.push(e.to);
+      
+    for(auto &e : tree[cur]){
+      if(not visited[e.to]){
+        ret[e.to] = ret[cur] + e.cost;
+        st.push(e.to);
       }
     }
   }
-
+    
   return ret;
+}
+#line 6 "Mylib/Graph/TreeUtils/tree_height.cpp"
+
+/**
+ * @title 木の高さ
+ * @docs tree_height.md
+ */
+template <typename T>
+std::vector<T> tree_height(const Tree<T> &tree){
+  const int n = tree.size();
+
+  auto d = tree_distance(tree, 0);
+  int a = std::max_element(d.begin(), d.end()) - d.begin();
+  auto d1 = tree_distance(tree, a);
+  int b = std::max_element(d1.begin(), d1.end()) - d1.begin();
+  auto d2 = tree_distance(tree, b);
+
+  std::vector<T> h(n);
+  for(int i = 0; i < n; ++i) h[i] = std::max(d1[i], d2[i]);
+    
+  return h;
 }
 
 ```
