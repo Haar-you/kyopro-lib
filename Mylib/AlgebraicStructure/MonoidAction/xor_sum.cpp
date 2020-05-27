@@ -1,7 +1,7 @@
 #pragma once
 #include "Mylib/AlgebraicStructure/Monoid/array.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/xor.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/bitxor.cpp"
 
 /**
  * @docs xor_sum.md
