@@ -46,6 +46,7 @@ layout: default
 * :warning: <a href="GraphUtils/decompose_pseudotree.cpp.html">Pseudotreeの分解</a>
 * :heavy_check_mark: <a href="GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
 * :heavy_check_mark: <a href="GraphUtils/two_edge_connected_components.cpp.html">二重辺連結成分分解</a>
+* :heavy_check_mark: <a href="MinimumSpanningTree/chu_liu_edmonds.cpp.html">Chu-Liu/Edmonds</a>
 * :heavy_check_mark: <a href="MinimumSpanningTree/kruskal.cpp.html">Kruskal法</a>
 * :heavy_check_mark: <a href="MinimumSpanningTree/prim.cpp.html">Prim法</a>
 * :warning: <a href="ShortestCycle/directed_shortest_cycle.cpp.html">有向グラフの最小閉路</a>
@@ -93,6 +94,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_1_C/main.test.cpp.html">test/aoj/GRL_1_C/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_2_A/main.kruskal.test.cpp.html">test/aoj/GRL_2_A/main.kruskal.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_2_A/main.prim.test.cpp.html">test/aoj/GRL_2_A/main.prim.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_2_B/main.test.cpp.html">test/aoj/GRL_2_B/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_3_A/main.test.cpp.html">test/aoj/GRL_3_A/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_3_B/main.test.cpp.html">test/aoj/GRL_3_B/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_3_C/main.test.cpp.html">test/aoj/GRL_3_C/main.test.cpp</a>
