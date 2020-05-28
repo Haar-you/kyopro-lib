@@ -9,6 +9,7 @@
 #include "Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
+#include "Mylib/IO/input_graph.cpp"
 
 using mint = ModInt<998244353>;
 using M = DualMonoid<AffineMonoid<mint>>;
@@ -16,7 +17,6 @@ using M = DualMonoid<AffineMonoid<mint>>;
 int main(){
   int N, Q; scanf("%d%d", &N, &Q);
 
-  Tree<int> tree(N);
 
   std::vector<std::pair<mint,mint>> f(N);
 
@@ -25,10 +25,7 @@ int main(){
     f[i] = std::make_pair(a, b);
   }
 
-  for(int i = 0; i < N-1; ++i){
-    int u, v; scanf("%d%d", &u, &v);
-    add_undirected(tree, u, v, 1);
-  }
+  auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
   
   HLDecomposition<int> hld(tree, 0);
 

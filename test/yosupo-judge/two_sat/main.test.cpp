@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "Mylib/Graph/two_sat.cpp"
+#include "Mylib/IO/join.cpp"
 
 int main(){
   std::string p, cnf;
@@ -23,9 +24,7 @@ int main(){
 
     for(int i = 0; i < N; ++i) ans[i] = (*res)[i] ? i+1 : -(i+1);
 
-    std::cout << "v ";
-    for(auto x : ans) std::cout << x << " ";
-    std::cout << 0 << std::endl;
+    std::cout << "v " << join(ans.begin(), ans.end()) << " " << 0;
   }else{
     std::cout << "s UNSATISFIABLE" << std::endl;
   }

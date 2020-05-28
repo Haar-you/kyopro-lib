@@ -4,15 +4,12 @@
 #include <tuple>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/tree_diameter.cpp"
+#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int n; std::cin >> n;
-  Tree<int> tree(n);
 
-  for(int i = 0; i < n-1; ++i){
-    int s, t, w; std::cin >> s >> t >> w;
-    add_undirected(tree, s, t, w);
-  }
+  auto tree = convert_to_graph<int, false>(n, input_edges<int, 0, true>(n-1));
 
   int ans;
   std::tie(ans, std::ignore) = tree_diameter(tree);

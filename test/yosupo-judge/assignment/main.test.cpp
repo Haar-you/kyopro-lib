@@ -4,6 +4,7 @@
 #include <vector>
 #include "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
 #include "Mylib/Graph/Flow/minimum_cost_flow.cpp"
+#include "Mylib/IO/join.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -31,10 +32,7 @@ int main(){
     p[i] = j;
   }
 
-  for(int i = 0; i < N; ++i){
-    std::cout << p[i] << " ";
-  }
-  std::cout << "\n";
+  std::cout << join(p.begin(), p.end()) << "\n";
   
   return 0;
 }

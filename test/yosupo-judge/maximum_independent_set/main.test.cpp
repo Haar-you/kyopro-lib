@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/Graph/maximum_independent_set.cpp"
+#include "Mylib/IO/join.cpp"
 
 int main(){
   int N,M; std::cin >> N >> M;
@@ -19,9 +20,7 @@ int main(){
     if(res & (1LL << i)) ans.push_back(i);
   }
 
-  std::cout << ans.size() << std::endl;
-  for(auto &x : ans) std::cout << x << " ";
-  std::cout << std::endl;
+  std::cout << ans.size() << " " << join(ans.begin(), ans.end()) << "\n";
   
   return 0;
 }

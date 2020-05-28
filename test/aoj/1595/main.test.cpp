@@ -3,16 +3,11 @@
 #include <iostream>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/rerooting.cpp"
+#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int N; std::cin >> N;
-  Tree<int> tree(N);
-
-  for(int i = 0; i < N-1; ++i){
-    int u, v; std::cin >> u >> v;
-    --u, --v;
-    add_undirected(tree, u, v, 1);
-  }
+  auto tree = convert_to_graph<int, false>(N, input_edges<int, 1, false>(N-1));
 
   auto r = make_rerooting<int>(
     tree,

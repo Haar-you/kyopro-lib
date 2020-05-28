@@ -5,15 +5,12 @@
 #include <utility>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/GraphUtils/bridges.cpp"
+#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int> g(V);
-  for(int i = 0; i < E; ++i){
-    int s, t; std::cin >> s >> t;
-    add_undirected(g, s, t, 1);
-  }
+  auto g = convert_to_graph<int, false>(V, input_edges<int, 0, false>(E));
 
   auto ans = bridges(g);
   for(auto &e : ans) if(e.from > e.to) std::swap(e.from, e.to);

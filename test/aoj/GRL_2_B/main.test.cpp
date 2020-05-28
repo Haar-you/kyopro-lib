@@ -3,15 +3,12 @@
 #include <iostream>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp"
+#include "Mylib/IO/input_graph.cpp"
 
 int main() {
   int V, E, r; std::cin >> V >> E >> r;
 
-  Graph<int> g(V);
-  for(int i = 0; i < E; ++i){
-    int s, t, w; std::cin >> s >> t >> w;
-    add_edge(g, s, t, w);
-  }
+  auto g = convert_to_graph<int, true>(V, input_edges<int, 0, true>(E));
 
   auto res = ChuLiuEdmonds<int>::solve(g, r);
 

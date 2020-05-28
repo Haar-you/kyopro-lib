@@ -5,15 +5,16 @@
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 #include "Mylib/Graph/TopologicalSort/topological_sort.cpp"
+#include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/join.cpp"
 
 int main(){
-  int N, M; scanf("%d%d", &N, &M);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N, M; std::cin >> N >> M;
 
-  Graph<int> g(N);
-  for(int i = 0; i < M; ++i){
-    int a, b; scanf("%d%d", &a, &b);
-    add_edge(g, a, b, 1);
-  }
+  auto g = convert_to_graph<int, true>(N, input_edges<int, 0, false>(M));
 
   auto [scc, K] = strongly_connected_components(g);
   std::vector<std::vector<int>> ans(K);
@@ -28,16 +29,11 @@ int main(){
 
   auto ts = topological_sort(g2).value();
 
-  printf("%d\n", K);
+  std::cout << K << "\n";
 
   for(int i = 0; i < K; ++i){
     auto &t = ans[ts[i]];
-
-    printf("%d", t.size());
-    for(auto &x : t){
-      printf(" %d", x);
-    }
-    printf("\n");
+    std::cout << t.size() << " " << join(t.begin(), t.end()) << "\n";
   }
 
   return 0;

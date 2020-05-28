@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Mylib/Number/Mint/runtime_mint.cpp"
 #include "Mylib/Combinatorics/montmort_number.cpp"
+#include "Mylib/IO/join.cpp"
 
 using mint = RuntimeModInt;
 
@@ -13,9 +14,7 @@ int main(){
 
   auto ans = montmort_number<mint>(1000000);
 
-  for(int i = 1; i <= N; ++i){
-    std::cout << ans[i] << " ";
-  }
+  std::cout << join(ans.begin() + 1, ans.begin() + N + 1) << "\n";
 
   return 0;
 }

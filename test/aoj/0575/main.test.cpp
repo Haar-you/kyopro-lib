@@ -9,6 +9,7 @@
 #include "Mylib/Graph/ShortestPath/dijkstra.cpp"
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include "Mylib/Algorithm/Search/parallel_binary_search.cpp"
+#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -16,12 +17,7 @@ int main(){
   
   int N, M, K, Q; std::cin >> N >> M >> K >> Q;
 
-  Graph<int> g(N);
-  for(int i = 0; i < M; ++i){
-    int A, B, L; std::cin >> A >> B >> L;
-    --A, --B;
-    add_undirected(g, A, B, L);
-  }
+  auto g = convert_to_graph<int, false>(N, input_edges<int, 1, true>(M));
 
   std::vector<int> F(K);
   for(int i = 0; i < K; ++i){

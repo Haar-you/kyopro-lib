@@ -4,23 +4,16 @@
 #include <vector>
 #include <utility>
 
-#include "Mylib/Misc/fix_point.cpp"
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp"
 #include "Mylib/Graph/TreeUtils/forest.cpp"
 #include "Mylib/Graph/TreeUtils/rerooting.cpp"
-
+#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int N, M, Q; std::cin >> N >> M >> Q;
-  
-  Graph<int64_t> g(N);
-    
-  for(int i = 0; i < M; ++i){
-    int u, v; std::cin >> u >> v;
-    --u, --v;
-    add_undirected(g, u, v, 1LL);
-  }
+
+  auto g = convert_to_graph<int64_t, false>(N, input_edges<int64_t, 1, false>(M));
 
   int64_t ans = 0;
 

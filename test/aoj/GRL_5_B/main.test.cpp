@@ -3,15 +3,12 @@
 #include <iostream>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/tree_height.cpp"
+#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int n; std::cin >> n;
 
-  Tree<int> tree(n);
-  for(int i = 0; i < n-1; ++i){
-    int s, t, d; std::cin >> s >> t >> d;
-    add_undirected(tree, s, t, d);
-  }
+  auto tree = convert_to_graph<int, false>(n, input_edges<int, 0, true>(n-1));
 
   auto ans = tree_height(tree);
   

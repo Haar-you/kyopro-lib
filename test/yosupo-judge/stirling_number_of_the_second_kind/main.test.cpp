@@ -4,6 +4,7 @@
 #include <vector>
 #include "Mylib/Convolution/ntt_convolution.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
+#include "Mylib/IO/join.cpp"
 
 const int MOD = 998244353;
 const int PRIM = 3;
@@ -50,10 +51,7 @@ int main(){
   
   auto res = NumberTheoreticTransform<mint,PRIM,1<<20>().run_convolution(a, b);
 
-  for(int i = 0; i <= N; ++i){
-    std::cout << res[i] << " ";
-  }
-  std::cout << std::endl;
+  std::cout << join(res.begin(), res.begin() + N + 1) << "\n";
   
   return 0;
 }

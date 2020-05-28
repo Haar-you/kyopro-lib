@@ -8,17 +8,12 @@
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp"
 #include "Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp"
-
+#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
-
-  Graph<int> g(V);
-  for(int i = 0; i < E; ++i){
-    int a, b; std::cin >> a >> b;
-    --a, --b;
-    add_undirected(g, a, b, 1);
-  }
+  
+  auto g = convert_to_graph<int, false>(V, input_edges<int, 1, false>(E));
 
   auto res = check_bipartite_graph(g);
   
@@ -54,7 +49,7 @@ int main(){
     }
 
     ans -= E;
-    std::cout << ans << "\n";    
+    std::cout << ans << "\n";
   }else{
     std::cout << -1 << "\n";
   }

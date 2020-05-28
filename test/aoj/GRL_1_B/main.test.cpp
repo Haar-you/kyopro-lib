@@ -3,16 +3,12 @@
 #include <iostream>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/ShortestPath/bellman_ford.cpp"
+#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int V, E, r; std::cin >> V >> E >> r;
 
-  Graph<int64_t> g(V);
-  for(int i = 0; i < E; ++i){
-    int s, t; std::cin >> s >> t;
-    int64_t d; std::cin >> d;
-    add_edge(g, s, t, d);
-  }
+  auto g = convert_to_graph<int64_t, true>(V, input_edges<int64_t, 0, true>(E));
 
   auto res = BellmanFord(g, r);
   

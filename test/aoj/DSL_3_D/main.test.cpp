@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp"
+#include "Mylib/IO/join.cpp"
 
 int main(){
   int N,L; std::cin >> N >> L;
@@ -11,11 +12,7 @@ int main(){
 
   auto ans = sliding_minimum(a, L);
 
-  for(int i = 0; i < (int)ans.size(); ++i){
-    if(i) std::cout << " ";
-    std::cout << ans[i];
-  }
-  std::cout << std::endl;
+  std::cout << join(ans.begin(), ans.end()) << std::endl;
 
   return 0;
 }

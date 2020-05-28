@@ -5,7 +5,7 @@
 #include "Mylib/Number/Mint/runtime_mint.cpp"
 #include "Mylib/LinearAlgebra/Square/square_matrix.cpp"
 #include "Mylib/LinearAlgebra/Square/power.cpp"
-
+#include "Mylib/IO/join.cpp"
 
 using mint = RuntimeModInt;
 
@@ -38,12 +38,8 @@ int main(){
         ans[i] += mat[i][j] * s[j];
       }
     }
-     
-    for(int i = 0; i < n; ++i){
-      if(i) std::cout << " ";
-      std::cout << ans[i];
-    }
-    std::cout << std::endl;
+
+    std::cout << join(ans.begin(), ans.end()) << "\n";
   }
      
   return 0;

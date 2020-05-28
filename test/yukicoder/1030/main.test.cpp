@@ -10,6 +10,7 @@
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/max.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/maybe.cpp"
+#include "Mylib/IO/input_graph.cpp"
 
 struct LCASemigroup{
   using value_type = int;
@@ -17,7 +18,6 @@ struct LCASemigroup{
 };
 
 std::function<int(int,int)> LCASemigroup::op;
-
 
 int main(){
   int N, K, Q; std::cin >> N >> K >> Q;
@@ -30,12 +30,7 @@ int main(){
     --x;
   }
 
-  Tree<int> tree(N);
-  for(int i = 0; i < N-1; ++i){
-    int e, f; std::cin >> e >> f;
-    --e, --f;
-    add_edge(tree, f, e, 1);
-  }
+  auto tree = convert_to_graph<int, false>(N, input_edges<int, 1, false>(N-1));
 
   HLDecomposition<int> hld(tree, 0);
   LCASemigroup::op =

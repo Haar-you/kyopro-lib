@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "Mylib/Misc/convert_base.cpp"
+#include "Mylib/IO/join.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -11,8 +12,8 @@ int main(){
   while(T--){
     int N; std::cin >> N;
     auto ans = convert_base_to(N, B);
-    for(auto x : ans) std::cout << x;
-    std::cout << "\n";
+
+    std::cout << join(ans.begin(), ans.end(), "") << "\n";
   }
   
   return 0;

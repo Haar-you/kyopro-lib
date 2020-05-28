@@ -3,6 +3,8 @@
 #include <iostream>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/tree_diameter.cpp"
+#include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/join.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -10,18 +12,13 @@ int main(){
   
   int N; std::cin >> N;
 
-  Tree<int64_t> tree(N);
-  for(int i = 0; i < N-1; ++i){
-    int a, b; std::cin >> a >> b;
-    int64_t c; std::cin >> c;
-    add_undirected(tree, a, b, c);
-  }
+  auto tree = convert_to_graph<int64_t, false>(N, input_edges<int64_t, 0, true>(N-1));
 
   auto [cost, path] = tree_diameter(tree);
 
-  std::cout << cost << " " << path.size() << "\n";
-  for(int x : path) std::cout << x << " ";
-  std::cout << "\n";
+  std::cout
+    << cost << " " << path.size() << "\n"
+    << join(path.begin(), path.end()) << "\n";
 
   return 0;
 }

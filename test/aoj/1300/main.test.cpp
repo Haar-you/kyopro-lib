@@ -9,6 +9,7 @@
 #include "Mylib/Number/Rational/rational.cpp"
 #include "Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp"
 #include "Mylib/String/split.cpp"
+#include "Mylib/IO/join.cpp"
 
 using result = std::map<std::string, int>;
 
@@ -146,11 +147,7 @@ int main(){
 
     for(int i = 0; i < n; ++i) ans[i] *= l;
 
-    for(int i = 0; i < (int)ans.size(); ++i){
-      if(i) std::cout << " ";
-      std::cout << ans[i];
-    }
-    std::cout << "\n";
+    std::cout << join(ans.begin(), ans.end()) << "\n";
   }
   
   return 0;

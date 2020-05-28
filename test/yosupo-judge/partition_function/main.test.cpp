@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Combinatorics/partition_number_n.cpp"
+#include "Mylib/IO/join.cpp"
 
 using mint = ModInt<998244353>;
 
@@ -11,9 +12,7 @@ int main(){
 
   auto p = partition_number<mint>(N);
 
-  for(int i = 0; i <= N; ++i){
-    std::cout << p[i] << " ";
-  }
-
+  std::cout << join(p.begin(), p.end()) << std::endl;
+  
   return 0;
 }
