@@ -4,6 +4,7 @@
 #include <vector>
 #include "Mylib/Grid/grid.cpp"
 #include "Mylib/Grid/grid_to_graph.cpp"
+#include "Mylib/Grid/grid_find.cpp"
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/ShortestPath/bfs_shortest_path.cpp"
 
@@ -18,11 +19,10 @@ int main(){
   
   std::vector<Point> ps(N+1);
   
-  for(int i = 0; i < H; ++i){
-    for(int j = 0; j < W; ++j){
-      if(s[i][j] == 'S') ps[0] = Point(i, j);
-      else if(s[i][j] >= '1' and s[i][j] <= '9') ps[s[i][j]-'0'] = Point(i, j);
-    }
+  ps[0] = grid_find(s, 'S')[0];
+
+  for(int i = 1; i <= N; ++i){
+    ps[i] = grid_find(s, (char)('0' + i))[0];
   }
 
   auto index = [&](int i, int j){return i * W + j;};

@@ -4,6 +4,7 @@
 #include <vector>
 #include "Mylib/Grid/grid.cpp"
 #include "Mylib/Grid/grid_bfs.cpp"
+#include "Mylib/Grid/grid_find.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -15,14 +16,13 @@ int main(){
   for(int i = 0; i < H; ++i) std::cin >> s[i];
   
   std::vector<Point> ps(N+1);
-  
-  for(int i = 0; i < H; ++i){
-    for(int j = 0; j < W; ++j){
-      if(s[i][j] == 'S') ps[0] = Point(i, j);
-      else if(s[i][j] >= '1' and s[i][j] <= '9') ps[s[i][j]-'0'] = Point(i, j);
-    }
-  }
 
+  ps[0] = grid_find(s, 'S')[0];
+
+  for(int i = 1; i <= N; ++i){
+    ps[i] = grid_find(s, (char)('0' + i))[0];
+  }
+  
   int ans = 0;
   for(int i = 0; i < N; ++i){
     auto dist =
