@@ -4,11 +4,12 @@
 #include <vector>
 #include <functional>
 #include "Mylib/Misc/inverse_number.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   int n; std::cin >> n;
-  std::vector<int> a(n);
-  for(int i = 0; i < n; ++i) std::cin >> a[i];
+
+  auto a = input_vector<int>(n);
   
   auto ans = inverse_number::solve(a, std::greater<int>());
   std::cout << ans << std::endl;

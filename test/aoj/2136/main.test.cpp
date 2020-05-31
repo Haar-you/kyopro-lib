@@ -7,6 +7,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/intersect_segments.cpp"
 #include "Mylib/Graph/Coloring/chromatic_number.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using D = DoubleEps<double>;
 template <> double D::eps = 1e-7;
@@ -36,10 +37,7 @@ int main(){
 
     for(int i = 0; i < N; ++i){
       int S; std::cin >> S;
-      lines[i].resize(S);
-      for(int j = 0; j < S; ++j){
-        std::cin >> lines[i][j].x >> lines[i][j].y;
-      }
+      lines[i] = input_vector<Point<D>>(S);
     }
 
     std::vector<std::vector<int>> graph(N);

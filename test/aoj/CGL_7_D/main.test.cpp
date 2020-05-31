@@ -8,6 +8,7 @@
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/intersect_circle_line.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = 1e-7;
@@ -18,8 +19,7 @@ int main(){
 
   int q; std::cin >> q;
 
-  while(q--){
-    Point<D> p0, p1; std::cin >> p0 >> p1;
+  for(auto [p0, p1] : input_tuples<Point<D>, Point<D>>(q)){
     Line<D> l(p0, p1);
 
     auto [s, ans] = intersect_circle_line::check(c, l);

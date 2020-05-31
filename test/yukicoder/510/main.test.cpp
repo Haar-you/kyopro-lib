@@ -8,6 +8,7 @@
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/product_matrix.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using mint = ModInt<1000000007>;
 using Mat = SquareMatrixConst<mint, 4>;
@@ -33,22 +34,18 @@ int main(){
     seg.update(i, f(x[i], y[i]));
   }
 
-  while(q--){
-    char c; std::cin >> c;
-
+  for(auto [c, i] : input_tuples<char, int>(q)){
     if(c == 'x'){
-      int i, v; std::cin >> i >> v;
+      int v; std::cin >> v;
       x[i] = v;
 
       seg.update(i, f(x[i], y[i]));
     }else if(c == 'y'){
-      int i, v; std::cin >> i >> v;
+      int v; std::cin >> v;
       y[i] = v;
 
       seg.update(i, f(x[i], y[i]));
     }else{
-      int i; std::cin >> i;
-
       auto m = seg.get(0, i);
       auto ans = m[0][0] + m[0][1] + m[0][2] + m[0][3];
       std::cout << ans << "\n";

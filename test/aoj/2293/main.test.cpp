@@ -4,17 +4,15 @@
 #include <vector>
 #include "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
 #include "Mylib/Graph/Flow/minimum_cost_flow.cpp"
+#include "Mylib/IO/input_tuple_vector.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int n; std::cin >> n;
-  
-  std::vector<int> A(n), B(n);
-  for(int i = 0; i < n; ++i){
-    std::cin >> A[i] >> B[i];
-  }
+
+  auto [A, B] = input_tuple_vector<int, int>(n);
 
   std::vector<int> ls(A);
   ls.insert(ls.end(), B.begin(), B.end());

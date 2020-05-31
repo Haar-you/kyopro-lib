@@ -7,6 +7,7 @@
 
 #include "Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp"
 #include "Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -16,14 +17,8 @@ int main(){
   while(std::cin >> n >> s >> t, n){
     --s, --t;
 
-    std::vector<int> q(n);
-    for(int i = 0; i < n; ++i) std::cin >> q[i];
-    std::vector<std::vector<int>> g(n, std::vector<int>(n));
-    for(int i = 0; i < n; ++i){
-      for(int j = 0; j < n; ++j){
-        std::cin >> g[i][j];
-      }
-    }
+    auto q = input_vector<int>(n);
+    auto g = input_vector<int>(n, n);
 
     auto dist = WarshallFloyd<int, 0>(g).dist;
 

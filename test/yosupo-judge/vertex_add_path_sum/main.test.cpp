@@ -7,6 +7,7 @@
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 #include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -18,7 +19,6 @@ int main(){
   for(int i = 0; i < N; ++i) std::cin >> a[i];
 
   auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
-
   auto hld = HLDecomposition(tree, 0);
   auto seg = SegmentTree<SumMonoid<int64_t>>(N);
 
@@ -26,9 +26,7 @@ int main(){
     seg.update(hld.get_id(i), a[i]);
   }
 
-  while(Q--){
-    int t; std::cin >> t;
-    
+  for(auto [t] : input_tuples<int>(Q)){
     if(t == 0){
       int p, x; std::cin >> p >> x;
       

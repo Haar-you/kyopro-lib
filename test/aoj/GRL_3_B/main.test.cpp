@@ -15,11 +15,13 @@ int main(){
   auto ans = bridges(g);
   for(auto &e : ans) if(e.from > e.to) std::swap(e.from, e.to);
   
-  std::sort(ans.begin(), ans.end(),
-       [](const auto &a, const auto &b){
-         if(a.from != b.from) return a.from < b.from;
-         return a.to < b.to;
-       });
+  std::sort(
+    ans.begin(), ans.end(),
+    [](const auto &a, const auto &b){
+      if(a.from != b.from) return a.from < b.from;
+      return a.to < b.to;
+    }
+  );
 
   for(auto &e :ans) std::cout << e.from << " " << e.to << std::endl;
   

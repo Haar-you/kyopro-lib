@@ -5,6 +5,7 @@
 #include <utility>
 #include <vector>
 #include "Mylib/DataStructure/RangeTree/range_tree.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int n; std::cin >> n;
@@ -21,9 +22,7 @@ int main(){
 
   int q; std::cin >> q;
 
-  for(int i = 0; i < q; ++i){
-    int sx, tx, sy, ty; std::cin >> sx >> tx >> sy >> ty;
-
+  for(auto [sx, tx, sy, ty] : input_tuples<int, int, int, int>(q)){
     auto res = rt.get(sx, sy, tx+1, ty+1);
 
     std::vector<int> ans;

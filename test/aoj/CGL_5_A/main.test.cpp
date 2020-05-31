@@ -6,14 +6,15 @@
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/closest_pair.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = ERROR;
 
 int main(){
   int n; std::cin >> n;
-  std::vector<Point<D>> p(n);
-  for(int i = 0; i < n; ++i) std::cin >> p[i];
+
+  auto p = input_vector<Point<D>>(n);
 
   auto ans = closest_pair::solve(p);
 

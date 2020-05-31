@@ -4,6 +4,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/ccw.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = 1e-7;
@@ -13,9 +14,7 @@ int main(){
 
   int q; std::cin >> q;
 
-  while(q--){
-    Point<D> p2; std::cin >> p2;
-
+  for(auto [p2] : input_tuples<Point<D>>(q)){
     switch(ccw::ccw(p0, p1, p2)){
     case ccw::ONLINE_BACK: std::cout << "ONLINE_BACK" << std::endl; break;
     case ccw::COUNTER_CLOCKWISE: std::cout << "COUNTER_CLOCKWISE" << std::endl; break;

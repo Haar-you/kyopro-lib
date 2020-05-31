@@ -6,11 +6,12 @@
 
 #include "Mylib/Graph/project_selection_problem.cpp"
 #include "Mylib/Graph/Flow/ford_fulkerson.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   int R, C; std::cin >> R >> C;
-  std::vector<std::string> S(R);
-  for(int i = 0; i < R; ++i) std::cin >> S[i];
+
+  auto S = input_vector<std::string>(R);
 
   ProjectSelectionProblem<int, FordFulkerson<int>> psp(R*C);
   // red: horizontal

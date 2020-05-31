@@ -5,14 +5,14 @@
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/convex_hull.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = 1e-7;
 
 int main(){
   int n; std::cin >> n;
-  Polygon<D> ps(n);
-  for(int i = 0; i < n; ++i) std::cin >> ps[i];
+  Polygon<D> ps = input_vector<Point<D>>(n);
 
   auto ans = convex_hull(ps);
   
@@ -22,11 +22,12 @@ int main(){
     std::reverse(ans.begin(), ans.end());
 
     int k =
-      std::min_element(ans.begin(), ans.end(),
-                       [](const auto &a, const auto &b){
-                         return a.y < b.y or (a.y == b.y and a.x < b.x);
-                       }
-                       ) - ans.begin();
+      std::min_element(
+        ans.begin(), ans.end(),
+        [](const auto &a, const auto &b){
+          return a.y < b.y or (a.y == b.y and a.x < b.x);
+        }
+      ) - ans.begin();
 
     std::rotate(ans.begin(), ans.begin() + k, ans.end());
   }

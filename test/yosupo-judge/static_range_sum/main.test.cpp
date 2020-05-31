@@ -2,19 +2,20 @@
 
 #include <iostream>
 #include "Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
   
   int N, Q; std::cin >> N >> Q;
-  std::vector<int64_t> a(N);
-  for(int i = 0; i < N; ++i) std::cin >> a[i];
+
+  auto a = input_vector<int64_t>(N);
 
   auto c = CumulativeSum1D(a).build();
 
-  while(Q--){
-    int l, r; std::cin >> l >> r;
+  for(auto [l, r] : input_tuples<int, int>(Q)){
     std::cout << c.get(l, r) << "\n";
   }
 

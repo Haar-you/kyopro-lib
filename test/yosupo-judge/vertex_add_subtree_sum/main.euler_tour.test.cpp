@@ -6,17 +6,20 @@
 #include "Mylib/Graph/TreeUtils/euler_tour_vertex.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
-#include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
-  int N, Q; scanf("%d %d", &N, &Q);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N, Q; std::cin >> N >> Q;
 
-  std::vector<int64_t> a(N);
-  for(int i = 0; i < N; ++i) scanf("%lld", &a[i]);
+  auto a = input_vector<int64_t>(N);
 
   Tree<int> tree(N);
   for(int i = 1; i < N; ++i){
-    int p; scanf("%d", &p);
+    int p; std::cin >> p;
     add_edge(tree, p, i, 1);
   }
 
@@ -32,11 +35,9 @@ int main(){
     );
   }
 
-  while(Q--){
-    int t; scanf("%d", &t);
-
+  for(auto [t, u] : input_tuples<int, int>(Q)){
     if(t == 0){
-      int u, x; scanf("%d %d", &u, &x);
+      int x; std::cin >> x;
 
       et.point_query(
         u,
@@ -45,8 +46,6 @@ int main(){
         }
       );
     }else{
-      int u; scanf("%d", &u);
-
       int64_t ans = 0;
       et.subtree_query(
         u,
@@ -55,7 +54,7 @@ int main(){
         }
       );
 
-      printf("%lld\n", ans);
+      std::cout << ans << "\n";
     }
   }
   

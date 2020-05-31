@@ -2,16 +2,14 @@
 
 #include <iostream>
 #include "Mylib/Number/Prime/is_prime.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int N; std::cin >> N;
 
   int ans = 0;
-  
-  while(N--){
-    int x; std::cin >> x;
-    if(is_prime(x)) ++ans;
-  }
+
+  for(auto [x] : input_tuples<int>(N)) if(is_prime(x)) ++ans;
 
   std::cout << ans << std::endl;
 

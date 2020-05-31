@@ -7,28 +7,29 @@
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/with_min_index.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using Mon = WithMinIndex<MinMonoid<int>>;
 
 int main(){
-  int N, Q; scanf("%d %d", &N, &Q);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
+  int N, Q; std::cin >> N >> Q;
 
   SegmentTree<Mon> seg(N);
 
   std::vector<Mon::value_type> a(N);
   for(int i = 0; i < N; ++i){
-    int x; scanf("%d", &x);
+    int x; std::cin >> x;
     a[i] = std::make_pair(x, i);
   }
 
   seg.init_with_vector(a);
 
-  for(int i = 0; i < Q; ++i){
-    int type; scanf("%d", &type);
-    
+  for(auto [type, l, r] : input_tuples<int, int, int>(Q)){
     switch(type){
     case 1: {
-      int l, r; scanf("%d %d", &l, &r);
       --l, --r;
 
       auto x = seg[l].first;
@@ -40,10 +41,9 @@ int main(){
       break;
     }
     case 2: {
-      int l, r; scanf("%d %d", &l, &r);
       --l, --r;
 
-      printf("%lld\n", seg.get(l, r+1).second + 1);
+      std::cout << seg.get(l, r+1).second + 1 << "\n";
 
       break;
     }

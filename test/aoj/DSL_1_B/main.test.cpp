@@ -2,21 +2,18 @@
 
 #include <iostream>
 #include "Mylib/DataStructure/UnionFind/weighted_unionfind.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
 
   WeightedUnionFind<int> uf(n);
-
-  while(q--){
-    int type; std::cin >> type;
-
+  
+  for(auto [type, x, y] : input_tuples<int, int, int>(q)){
     if(type == 0){
-      int x, y, z; std::cin >> x >> y >> z;
+      int z; std::cin >> z;
       uf.merge(x, y, z);
     }else{
-      int x, y; std::cin >> x >> y;
-
       if(uf.is_same(x, y)){
         std::cout << uf.diff(x, y) << std::endl;
       }else{

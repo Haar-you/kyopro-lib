@@ -3,15 +3,13 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/TypicalProblem/KnapsackProblem/knapsack_small_weight.cpp"
+#include "Mylib/IO/input_tuple_vector.cpp"
 
 int main(){
   int N, W; std::cin >> N >> W;
-  
-  std::vector<int> w(N), v(N);
-  for(int i = 0; i < N; ++i){
-    std::cin >> v[i] >> w[i];
-  }
-  
+
+  auto [v, w] = input_tuple_vector<int, int>(N);
+
   auto ans = knapsack_small_weight(N, W, w, v);
   std::cout << ans << std::endl;
   

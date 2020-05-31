@@ -4,6 +4,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 #include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
@@ -14,9 +15,7 @@ int main(){
 
   int q; std::cin >> q;
 
-  for(int i = 0; i < q; ++i){
-    int u, v; std::cin >> u >> v;
-
+  for(auto [u, v] : input_tuples<int, int>(q)){
     std::cout << (scc[u] == scc[v]) << std::endl;
   }
 

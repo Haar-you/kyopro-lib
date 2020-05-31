@@ -5,6 +5,7 @@
 #include <bitset>
 #include "Mylib/Number/Mod/mod_power.cpp"
 #include "Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp"
+#include "Mylib/IO/input_vector.cpp"
  
 constexpr int64_t mod = 1000000009;
  
@@ -12,13 +13,8 @@ using B = std::bitset<2500>;
  
 int main(){
   int R, C; std::cin >> R >> C;
- 
-  std::vector<std::vector<int>> f(R, std::vector<int>(C));
-  for(int i = 0; i < R; ++i){
-    for(int j = 0; j < C; ++j){
-      std::cin >> f[i][j];
-    }
-  }
+
+  auto f = input_vector<int>(R, C);
  
   std::vector<std::vector<int>> index(R, std::vector<int>(C));
   {

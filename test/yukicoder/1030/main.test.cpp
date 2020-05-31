@@ -11,6 +11,8 @@
 #include "Mylib/AlgebraicStructure/Monoid/max.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/maybe.cpp"
 #include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 struct LCASemigroup{
   using value_type = int;
@@ -21,14 +23,10 @@ std::function<int(int,int)> LCASemigroup::op;
 
 int main(){
   int N, K, Q; std::cin >> N >> K >> Q;
-  std::vector<int> C(N);
-  for(auto &x : C) std::cin >> x;
-  
-  std::vector<int> A(K);
-  for(auto &x : A){
-    std::cin >> x;
-    --x;
-  }
+
+  auto C = input_vector<int>(N);
+  auto A = input_vector<int>(K);
+  for(auto &x : A) --x;
 
   auto tree = convert_to_graph<int, false>(N, input_edges<int, 1, false>(N-1));
 
@@ -46,9 +44,7 @@ int main(){
   SegmentTree<MaybeMonoid<LCASemigroup>> seg2(K);
   seg2.init_with_vector(A);
 
-  while(Q--){
-    int T; std::cin >> T;
-
+  for(auto [T] : input_tuples<int>(Q)){
     if(T == 1){
       int X, Y; std::cin >> X >> Y;
       --X; --Y;

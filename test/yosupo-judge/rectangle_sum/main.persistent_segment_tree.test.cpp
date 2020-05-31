@@ -6,6 +6,9 @@
 #include "Mylib/Misc/sort_simultaneously.cpp"
 #include "Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
+#include "Mylib/Misc/compressor.cpp"
+#include "Mylib/IO/input_tuple_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using Seg = PersistentSegmentTree<SumMonoid<int64_t>>;
 
@@ -15,25 +18,16 @@ int main(){
   
   int N, Q; std::cin >> N >> Q;
 
-  std::vector<int64_t> x(N), y(N), w(N);
-  for(int i = 0; i < N; ++i){
-    std::cin >> x[i] >> y[i] >> w[i];
-  }
+  auto [x, y, w] = input_tuple_vector<int64_t, int64_t, int64_t>(N);
 
   sort_simultaneously(
     [&](int i, int j){
       return y[i] < y[j];
     },
-    N,
-    x,
-    y,
-    w
+    N, x, y, w
   );
 
-  std::vector<int64_t> c(x);
-  std::sort(c.begin(), c.end());
-  c.erase(std::unique(c.begin(), c.end()), c.end());
-  for(int i = 0; i < N; ++i) x[i] = std::lower_bound(c.begin(), c.end(), x[i]) - c.begin();
+  auto c = Compressor<int64_t>().add(x).build().compress(x);
   const int m = c.size();
   
   std::vector<Seg> seg;
@@ -44,11 +38,9 @@ int main(){
     seg.push_back(s.update(x[i], s.at(x[i]) + w[i]));
   }
   
-  for(int i = 0; i < Q; ++i){
-    int64_t l, r, u, d; std::cin >> l >> d >> r >> u;
-    
-    l = std::lower_bound(c.begin(), c.end(), l) - c.begin();
-    r = std::lower_bound(c.begin(), c.end(), r) - c.begin();
+  for(auto [l, d, r, u] : input_tuples<int64_t, int64_t, int64_t, int64_t>(Q)){
+    l = c.get_index(l);
+    r = c.get_index(r);
 
     u = std::lower_bound(y.begin(), y.end(), u) - y.begin();
     d = std::lower_bound(y.begin(), y.end(), d) - y.begin();

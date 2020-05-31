@@ -5,12 +5,12 @@
 #include <functional>
 #include <algorithm>
 #include "Mylib/Convolution/fast_zeta_transform_subset.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   int N,K; std::cin >> N >> K;
-  
-  std::vector<int> A(N);
-  for(int i = 0; i < N; ++i) std::cin >> A[i];
+
+  auto A = input_vector<int>(N);
 
   std::vector<int> sum(1 << N);
 

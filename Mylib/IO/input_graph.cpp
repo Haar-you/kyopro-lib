@@ -3,7 +3,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @docs input_graph.cpp
+ * @docs input_graph.md
  */
 template <typename T, size_t I, bool WEIGHTED>
 std::vector<Edge<T>> input_edges(int M){

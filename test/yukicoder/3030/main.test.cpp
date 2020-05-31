@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "Mylib/Number/Prime/miller_rabin.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -9,8 +10,7 @@ int main(){
 
   int N; std::cin >> N;
 
-  while(N--){
-    int64_t x; std::cin >> x;
+  for(auto [x] : input_tuples<int64_t>(N)){
     std::cout << x << " " << MillerRabin::is_prime(x) << "\n";
   }
 

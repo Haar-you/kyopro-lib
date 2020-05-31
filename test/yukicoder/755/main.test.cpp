@@ -4,6 +4,8 @@
 #include <vector>
 
 #include "Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -11,17 +13,11 @@ int main(){
 
   int N, M; std::cin >> N >> M;
 
-  std::vector<std::vector<int64_t>> A(M, std::vector<int64_t>(M));
-  for(int i = 0; i < M; ++i){
-    for(int j = 0; j < M; ++j){
-      std::cin >> A[i][j];
-    }
-  }
+  auto A = input_vector<int64_t>(M, M);
 
   auto c = CumulativeSum2D(A).build();
 
-  while(N--){
-    int x, y; std::cin >> x >> y;
+  for(auto [x, y] : input_tuples<int, int>(N)){
     --x, --y;
 
     int ans = 0;

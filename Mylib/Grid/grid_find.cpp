@@ -4,7 +4,7 @@
 
 /**
  * @title グリッドで条件を満たす点を列挙する
- * @docs grid_find.cpp
+ * @docs grid_find.md
  */
 template <typename C, typename T = typename C::value_type>
 auto grid_find(const std::vector<C> &A, T value){

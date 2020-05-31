@@ -10,6 +10,7 @@
 #include "Mylib/Geometry/Float/minimum_covering_circle.cpp"
 #include "Mylib/Misc/fix_point.cpp"
 #include "Mylib/Bit/for_each_subset_asc.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using D = DoubleEps<double>;
 template <> double D::eps = ERROR;
@@ -22,8 +23,7 @@ const D INF = 1e9;
 int main(){
   int N, M; std::cin >> N >> M;
 
-  std::vector<Point<D>> ps(N);
-  for(int i = 0; i < N; ++i) std::cin >> ps[i];
+  auto ps = input_vector<Point<D>>(N);
 
   std::vector<double> memo(1 << N);
 

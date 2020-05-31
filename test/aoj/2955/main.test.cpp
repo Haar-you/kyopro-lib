@@ -5,15 +5,13 @@
 #include <map>
 #include "Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp"
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   int N,R; std::cin >> N >> R;
-  
-  std::vector<int> p(N);
-  for(int i = 0; i < N; ++i){
-    std::cin >> p[i];
-    p[i] -= 1;
-  }
+
+  auto p = input_vector<int>(N);
+  for(auto &x : p) x -= 1;
   
   UnionFind uf(N);
   

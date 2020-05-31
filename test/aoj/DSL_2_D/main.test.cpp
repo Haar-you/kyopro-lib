@@ -4,6 +4,7 @@
 #include <climits>
 #include "Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/update.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
@@ -11,9 +12,7 @@ int main(){
   auto seg = DualSegmentTree<UpdateMonoid<int>>(n);
   seg.init(INT_MAX);
 
-  while(q--){
-    int type; std::cin >> type;
-
+  for(auto [type] : input_tuples<int>(q)){
     if(type == 0){
       int s,t,x; std::cin >> s >> t >> x;
       seg.update(s, t+1, x);

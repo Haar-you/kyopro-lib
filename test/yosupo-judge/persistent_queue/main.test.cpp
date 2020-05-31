@@ -3,15 +3,14 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/DataStructure/Queue/persistent_queue.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int Q; std::cin >> Q;
 
   std::vector<PersistentQueue<int>> S;
 
-  while(Q--){
-    int type; std::cin >> type;
-
+  for(auto [type] : input_tuples<int>(Q)){
     if(type == 0){
       int t, x; std::cin >> t >> x;
       if(t == -1){

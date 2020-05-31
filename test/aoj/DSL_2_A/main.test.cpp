@@ -3,20 +3,17 @@
 #include <iostream>
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
 
   SegmentTree<MinMonoid<int>> seg(n);
   
-  while(q--){
-    int type; std::cin >> type;
-
+  for(auto [type, x, y] : input_tuples<int, int, int>(q)){
     if(type == 0){
-      int x, y; std::cin >> x >> y;
       seg.update(x, y);
     }else{
-      int x, y; std::cin >> x >> y;
       std::cout << seg.get(x, y + 1) << std::endl;
     }
   }

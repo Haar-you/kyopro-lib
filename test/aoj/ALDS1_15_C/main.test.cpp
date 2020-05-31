@@ -3,16 +3,13 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling.cpp"
+#include "Mylib/IO/input_tuple_vector.cpp"
 
 int main(){
   int n; std::cin >> n;
-  
-  std::vector<int> left(n), right(n);
-  for(int i = 0; i < n; ++i){
-    int s,t; std::cin >> s >> t;
-    left[i] = s;
-    right[i] = t+1;
-  }
+
+  auto [left, right] = input_tuple_vector<int, int>(n);
+  for(auto &x : right) x += 1;
   
   auto ans = interval_scheduling(left, right);
   

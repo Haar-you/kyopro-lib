@@ -4,6 +4,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/intersect_segments.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = 1e-7;
@@ -11,8 +12,7 @@ template<> double D::eps = 1e-7;
 int main(){
   int q; std::cin >> q;
 
-  while(q--){
-    Point<D> p0, p1, p2, p3; std::cin >> p0 >> p1 >> p2 >> p3;
+  for(auto [p0, p1, p2, p3] : input_tuples<Point<D>, Point<D>, Point<D>, Point<D>>(q)){
     Segment<D> s1(p0, p1), s2(p2, p3);
 
     if(intersect_segments::check(s1, s2).status & (intersect_segments::INTERSECTING | intersect_segments::OVERLAPPED)){

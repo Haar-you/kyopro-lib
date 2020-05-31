@@ -2,20 +2,16 @@
 
 #include <iostream>
 #include "Mylib/Number/Mod/mod_log.cpp"
-
-void solve(){
-  int X, Y, M; scanf("%d%d%d", &X, &Y, &M);
-  auto ans = mod_log(X, Y, M);
-  
-  printf("%lld\n", ans.value_or(-1));
-}
-
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
-  int T; scanf("%d", &T);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
+  int T; std::cin >> T;
   
-  while(T--){
-    solve();
+  for(auto [X, Y, M] : input_tuples<int, int, int>(T)){
+    std::cout << mod_log(X, Y, M).value_or(-1) << "\n";
   }
 
   return 0;

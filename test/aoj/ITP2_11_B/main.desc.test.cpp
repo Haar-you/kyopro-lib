@@ -4,6 +4,7 @@
 #include <vector>
 #include <map>
 #include "Mylib/Bit/for_each_superset_desc.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -12,8 +13,7 @@ int main(){
   int n, k; std::cin >> n >> k;
 
   int t = 0;
-  for(int i = 0; i < k; ++i){
-    int b; std::cin >> b;
+  for(auto b : input_vector<int>(k)){
     t |= 1 << b;
   }
 

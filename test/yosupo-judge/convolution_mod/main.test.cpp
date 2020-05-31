@@ -5,6 +5,7 @@
 #include "Mylib/Convolution/ntt_convolution.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/IO/join.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 const int mod = 998244353;
 const int PRIM_ROOT = 3;
@@ -16,9 +17,9 @@ int main(){
   std::ios::sync_with_stdio(false);
   
   int n, m; std::cin >> n >> m;
-  std::vector<int64_t> a(n), b(m);
-  for(int i = 0; i < n; ++i) std::cin >> a[i];
-  for(int i = 0; i < m; ++i) std::cin >> b[i];
+
+  auto a = input_vector<int64_t>(n);
+  auto b = input_vector<int64_t>(m);
 
   NumberTheoreticTransform<mint, PRIM_ROOT, 1 << 20> ntt;
   auto ans = ntt.run_convolution(a, b);

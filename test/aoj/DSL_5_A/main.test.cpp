@@ -3,13 +3,13 @@
 #include <iostream>
 #include <algorithm>
 #include "Mylib/Algorithm/Imos/imos_1d.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int N, T; std::cin >> N >> T;
   Imos1D<int> imos(T+1);
 
-  for(int i = 0; i < N; ++i){
-    int l, r; std::cin >> l >> r;
+  for(auto [l, r] : input_tuples<int, int>(N)){
     imos.add(l, r, 1);
   }
 

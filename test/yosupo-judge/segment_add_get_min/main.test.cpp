@@ -6,35 +6,36 @@
 #include <variant>
 #include <tuple>
 #include "Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using Segment = std::tuple<int64_t, int64_t, int64_t, int64_t>;
 using Query = std::variant<Segment, int64_t>;
 
 int main(){
-  int N, Q; scanf("%d %d", &N, &Q);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
+  int N, Q; std::cin >> N >> Q;
 
   std::vector<int64_t> xs;
 
   std::vector<Segment> lines;
 
-  for(int i = 0; i < N; ++i){
-    int64_t l, r, a, b; scanf("%lld %lld %lld %lld", &l, &r, &a, &b);
+  for(auto [l, r, a, b] : input_tuples<int64_t, int64_t, int64_t, int64_t>(N)){
     lines.emplace_back(l, r, a, b);
   }
 
   std::vector<Query> query;
 
-  for(int i = 0; i < Q; ++i){
-    int type; scanf("%d", &type);
-    
+  for(auto [type] : input_tuples<int>(Q)){
     switch(type){
     case 0: {
-      int64_t l, r, a, b; scanf("%lld %lld %lld %lld", &l, &r, &a, &b);
+      int64_t l, r, a, b; std::cin >> l >> r >> a >> b;
       query.push_back(Segment({l, r, a, b}));
       break;
     }
     case 1: {
-      int64_t p; scanf("%lld", &p);
+      int64_t p; std::cin >> p;
       query.push_back(p);
       xs.push_back(p);
       break;
@@ -58,9 +59,9 @@ int main(){
         auto res = lc.query(p);
 
         if(res){
-          printf("%lld\n", *res);
+          std::cout << *res << "\n";
         }else{
-          puts("INFINITY");
+          std::cout << "INFINITY" << "\n";
         }
       }
     }

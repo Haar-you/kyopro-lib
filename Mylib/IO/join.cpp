@@ -4,7 +4,7 @@
 #include <string>
 
 /**
- * @docs join.cpp
+ * @docs join.md
  */
 template <typename ITER>
 std::string join(ITER first, ITER last, std::string delim = " "){

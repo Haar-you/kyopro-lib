@@ -7,6 +7,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/reflection.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = ERROR;
@@ -17,9 +18,7 @@ int main(){
   
   int q; std::cin >> q;
 
-  for(int i = 0; i < q; ++i){
-    Point<D> p; std::cin >> p;
-
+  for(auto [p] : input_tuples<Point<D>>(q)){
     auto ans = reflection(l, p);
     std::cout << std::fixed << std::setprecision(12) << ans.x << " " << ans.y << std::endl;
   }

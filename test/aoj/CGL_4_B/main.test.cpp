@@ -6,6 +6,7 @@
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/convex_diameter.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = ERROR;
@@ -13,8 +14,7 @@ template<> double D::eps = ERROR;
 int main(){
   int n; std::cin >> n;
 
-  Polygon<D> g(n);
-  for(int i = 0; i < n; ++i) std::cin >> g[i];
+  Polygon<D> g = input_vector<Point<D>>(n);
 
   auto ans = convex_diameter(g);
 

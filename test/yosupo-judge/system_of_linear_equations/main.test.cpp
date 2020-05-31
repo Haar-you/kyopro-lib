@@ -4,6 +4,7 @@
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp"
 #include "Mylib/IO/join.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using mint = ModInt<998244353>;
 
@@ -13,21 +14,8 @@ int main(){
   
   int N, M; std::cin >> N >> M;
 
-  std::vector<std::vector<mint>> A(N, std::vector<mint>(M));
-
-  for(int i = 0; i < N; ++i){
-    for(int j = 0; j < M; ++j){
-      int x; std::cin >> x;
-      A[i][j] = x;
-    }
-  }
-
-  std::vector<mint> B(N);
-  for(int i = 0; i < N; ++i){
-    int x;
-    std::cin >> x;
-    B[i] = x;
-  }
+  auto A = input_vector<mint>(N, M);
+  auto B = input_vector<mint>(N);
 
   auto res = simulaneous_linear_equations::solve(A, B);
   

@@ -9,6 +9,7 @@
 #include "Mylib/Graph/TreeUtils/forest.cpp"
 #include "Mylib/Graph/TreeUtils/rerooting.cpp"
 #include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int N, M, Q; std::cin >> N >> M >> Q;
@@ -31,8 +32,7 @@ int main(){
     plans[i] = std::vector<int>(forest.trees[i].size());
   }
     
-  for(int i = 0; i < Q; ++i){
-    int a, b; std::cin >> a >> b;
+  for(auto [a, b] : input_tuples<int, int>(Q)){
     --a, --b;
 
     if(forest.in_same_tree(a, b)){

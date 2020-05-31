@@ -3,6 +3,8 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/DataStructure/SegmentTree/segment_tree_beats.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -12,33 +14,27 @@ int main(){
 
   SegmentTreeBeats seg(N);
 
-  std::vector<int64_t> a(N);
-  for(int i = 0; i < N; ++i) std::cin >> a[i];
-
+  auto a = input_vector<int64_t>(N);
   seg.init_with_vector(a);
   
-  while(Q--){
-    int type; std::cin >> type;
-    
+  for(auto [type, l, r] : input_tuples<int, int, int>(Q)){
     switch(type){
     case 0: {
-      int64_t l, r, b; std::cin >> l >> r >> b;
+      int64_t b; std::cin >> b;
       seg.chmin(l, r, b);
       break;
     }
     case 1: {
-      int64_t l, r, b; std::cin >> l >> r >> b;
+      int64_t b; std::cin >> b;
       seg.chmax(l, r, b);
       break;
     }
     case 2: {
-      int64_t l, r, b; std::cin >> l >> r >> b;
+      int64_t b; std::cin >> b;
       seg.add(l, r, b);
       break;
     }
     case 3: {
-      int l, r; std::cin >> l >> r;
-
       auto ans = seg.get_sum(l, r);
       std::cout << ans << "\n"; 
       break; 

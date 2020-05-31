@@ -3,12 +3,12 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/Number/binary_gcd.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   int n; std::cin >> n;
 
-  std::vector<int> a(n);
-  for(int i = 0; i < n; ++i) std::cin >> a[i];
+  auto a = input_vector<int>(n);
 
   int l = 1;
   for(auto x : a){

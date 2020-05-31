@@ -7,13 +7,14 @@
 
 #include "Mylib/Graph/project_selection_problem.cpp"
 #include "Mylib/Graph/Flow/ford_fulkerson.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int N, M; std::cin >> N >> M;
   std::string U; std::cin >> U;
 
-  std::vector<int> A(N);
-  for(int i = 0; i < N; ++i) std::cin >> A[i];
+  auto A = input_vector<int>(N);
 
   ProjectSelectionProblem<int, FordFulkerson<int>> psp(N);
   // red: right, blue: left
@@ -25,12 +26,10 @@ int main(){
       psp.penalty_if_red(i, A[i]);
     }
   }
-  
-  for(int i = 0; i < M; ++i){
-    int s, t, b; std::cin >> s >> t >> b;
+
+  for(auto [s, t, b] : input_tuples<int, int, int>(M)){
     --s, --t;
     if(s > t) std::swap(s, t);
-    
     psp.penalty_if_red_blue(s, t, b);
   }
 

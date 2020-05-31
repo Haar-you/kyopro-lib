@@ -6,6 +6,7 @@
 #include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using mint = ModInt<998244353>;
 using M = DualMonoid<AffineMonoid<mint>>;
@@ -20,9 +21,7 @@ int main(){
     seg.update(i, {a, b});
   }
 
-  for(int i = 0; i < Q; ++i){
-    int t; std::cin >> t;
-
+  for(auto [t] : input_tuples<int>(Q)){
     if(t == 0){
       int p, c, d; std::cin >> p >> c >> d;
       seg.update(p, {c, d});

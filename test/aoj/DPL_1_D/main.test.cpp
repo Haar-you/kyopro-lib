@@ -3,11 +3,12 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/DynamicProgramming/longest_increasing_subsequence.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   int N; std::cin >> N;
-  std::vector<int> a(N);
-  for(int i = 0; i < N; ++i) std::cin >> a[i];
+
+  auto a = input_vector<int>(N);
   
   auto ans = lis(a);
   std::cout << ans << std::endl;

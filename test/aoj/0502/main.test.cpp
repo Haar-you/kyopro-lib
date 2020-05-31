@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include "Mylib/Misc/dice.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int N;
@@ -11,9 +12,7 @@ int main(){
 
     int ans = 1;
 
-    while(N--){
-      std::string s; std::cin >> s;
-
+    for(auto [s] : input_tuples<std::string>(N)){
       if(s == "North") d = d.rot_back(), ans += d.top;
       if(s == "East") d = d.rot_right(), ans += d.top;
       if(s == "West") d = d.rot_left(), ans += d.top;

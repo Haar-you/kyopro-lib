@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Mylib/String/aho_corasick.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -13,8 +14,7 @@ int main(){
   std::string S; std::cin >> S;
   int M; std::cin >> M;
 
-  std::vector<std::string> C(M);
-  for(int i = 0; i < M; ++i) std::cin >> C[i];
+  auto C = input_vector<std::string>(M);
 
   AhoCorasick ac;
   for(int i = 0; i < M; ++i){

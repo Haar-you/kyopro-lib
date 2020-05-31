@@ -6,16 +6,20 @@
 #include "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
-  int N, Q; scanf("%d %d", &N, &Q);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
 
-  std::vector<int64_t> a(N);
-  for(int i = 0; i < N; ++i) scanf("%lld", &a[i]);
+  int N, Q; std::cin >> N >> Q;
+
+  auto a = input_vector<int64_t>(N);
 
   Tree<int> tree(N);
   for(int i = 1; i < N; ++i){
-    int p; scanf("%d", &p);
+    int p; std::cin >> p;
     add_edge(tree, p, i, 1);
   }
 
@@ -26,17 +30,13 @@ int main(){
     seg.update(hld.get_id(i), a[i]);
   }
 
-  while(Q--){
-    int t; scanf("%d", &t);
-
+  for(auto [t, u] : input_tuples<int, int>(Q)){
     if(t == 0){
-      int u, x; scanf("%d %d", &u, &x);
+      int x; std::cin >> x;
 
       int i = hld.get_id(u);
       seg.update(i, seg.at(i) + x);
     }else{
-      int u; scanf("%d", &u);
-
       int64_t ans = 0;
       hld.subtree_query_vertex(
         u,
@@ -45,7 +45,7 @@ int main(){
         }
       );
 
-      printf("%lld\n", ans);
+      std::cout << ans << "\n";
     }
   }
   

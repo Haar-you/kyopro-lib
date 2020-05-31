@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/DataStructure/UnionFind/persistent_unionfind.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   std::cin.tie(0);

@@ -5,6 +5,7 @@
 #include "Mylib/Grid/grid.cpp"
 #include "Mylib/Grid/grid_bfs.cpp"
 #include "Mylib/Grid/grid_find.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -12,16 +13,13 @@ int main(){
 
   int H, W, N; std::cin >> H >> W >> N;
 
-  std::vector<std::string> s(H);
-  for(int i = 0; i < H; ++i) std::cin >> s[i];
+  auto s = input_vector<std::string>(H);
   
   std::vector<Point> ps(N+1);
 
   ps[0] = grid_find(s, 'S')[0];
 
-  for(int i = 1; i <= N; ++i){
-    ps[i] = grid_find(s, (char)('0' + i))[0];
-  }
+  for(int i = 1; i <= N; ++i) ps[i] = grid_find(s, (char)('0' + i))[0];
   
   int ans = 0;
   for(int i = 0; i < N; ++i){

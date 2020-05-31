@@ -1,6 +1,5 @@
 #define PROBLEM "https://yukicoder.me/problems/no/194"
 
-
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -10,6 +9,7 @@
 #include "Mylib/LinearAlgebra/Square/square_matrix.cpp"
 #include "Mylib/LinearAlgebra/Square/inverse_matrix.cpp"
 #include "Mylib/LinearAlgebra/Square/power.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using mint = ModInt<1000000007>;
 
@@ -76,8 +76,7 @@ int main(){
 
   M::N = N;
 
-  std::vector<int> A(N);
-  for(auto &x : A) std::cin >> x;
+  auto A = input_vector<int>(N);
 
   auto [f, s] = K > 1000000 ? solve1(N, K, A) : solve2(N, K, A);
   std::cout << f << " " << s << "\n";

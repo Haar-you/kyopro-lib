@@ -2,15 +2,14 @@
 
 #include <iostream>
 #include "Mylib/Graph/Flow/minimum_cost_flow.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int V, E, F; std::cin >> V >> E >> F;
 
   MinimumCostFlow<int, int> f(V);
 
-  for(int i = 0; i < E; ++i){
-    int u, v, c, d; std::cin >> u >> v >> c >> d;
-
+  for(auto [u, v, c, d] : input_tuples<int, int, int, int>(E)){
     f.add_edge(u, v, c, d);
   }
 

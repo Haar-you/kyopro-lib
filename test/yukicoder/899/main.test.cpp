@@ -7,6 +7,8 @@
 #include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp"
 #include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -18,8 +20,7 @@ int main(){
 
   auto res = EulerTourBFS<int>(tree, 0);
 
-  std::vector<int64_t> A(N);
-  for(int i = 0; i < N; ++i) std::cin >> A[i];
+  auto A = input_vector<int64_t>(N);
   LazySegmentTree<UpdateSum<int64_t, int64_t>> seg(N);
   
   for(int i = 0; i < N; ++i){
@@ -27,9 +28,8 @@ int main(){
   }
     
   int Q; std::cin >> Q;
-  while(Q--){
-    int x; std::cin >> x;
-
+  
+  for(auto [x] : input_tuples<int>(Q)){
     int64_t ans = 0;
 
     auto f =

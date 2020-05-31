@@ -5,6 +5,7 @@
 #include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 #include "Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using mint = ModInt<998244353>;
 using M = DualMonoid<AffineMonoid<mint>>;
@@ -14,9 +15,7 @@ int main(){
 
   SlidingWindowAggregation<M> swag;
   
-  while(Q--){
-    int type; std::cin >> type;
-
+  for(auto [type] : input_tuples<int>(Q)){
     if(type == 0){
       int a,b; std::cin >> a >> b;
       swag.push({a, b});

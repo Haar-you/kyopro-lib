@@ -6,6 +6,7 @@
 #include "Mylib/LinearAlgebra/Square/square_matrix.cpp"
 #include "Mylib/LinearAlgebra/Square/power.cpp"
 #include "Mylib/IO/join.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using mint = RuntimeModInt;
 
@@ -17,9 +18,8 @@ int main(){
   while(std::cin >> n >> m >> a >> b >> c >> t, n){
     mint::M = m;
     M::N = n;
-     
-    std::vector<mint> s(n);
-    for(int i = 0; i < n; ++i) std::cin >> s[i];
+
+    auto s = input_vector<mint>(n);
      
     M mat;
      

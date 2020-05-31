@@ -4,6 +4,7 @@
 #include <vector>
 #include "Mylib/Misc/compressor.cpp"
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
+#include "Mylib/IO/input_tuple_vector.cpp"
 
 const int H = 200;
 const int W = 200;
@@ -15,10 +16,7 @@ int main(){
   int n;
 
   while(std::cin >> n, n){
-    std::vector<int> l(n), t(n), r(n), b(n);
-    for(int i = 0; i < n; ++i){
-      std::cin >> l[i] >> t[i] >> r[i] >> b[i];
-    }
+    auto [l, t, r, b] = input_tuple_vector<int, int, int, int>(n);
 
     int64_t a[H][W] = {};
 

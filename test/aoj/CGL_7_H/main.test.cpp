@@ -6,6 +6,7 @@
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = ERROR;
@@ -16,8 +17,7 @@ int main(){
 
   Circle<D> c(Point<D>(0, 0), r);
 
-  Polygon<D> p(n);
-  for(int i = 0; i < n; ++i) std::cin >> p[i];
+  Polygon<D> p = input_vector<Point<D>>(n);
 
   auto ans = area_intersection_of_circle_and_polygon(c, p);  
   

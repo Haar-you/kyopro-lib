@@ -10,6 +10,8 @@
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include "Mylib/Algorithm/Search/parallel_binary_search.cpp"
 #include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuple_vector.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -19,17 +21,12 @@ int main(){
 
   auto g = convert_to_graph<int, false>(N, input_edges<int, 1, true>(M));
 
-  std::vector<int> F(K);
-  for(int i = 0; i < K; ++i){
-    std::cin >> F[i];
-    --F[i];
-  }
+  auto F = input_vector<int>(K);
+  for(auto &x : F) x -= 1;
 
-  std::vector<int> S(Q), T(Q);
-  for(int i = 0; i < Q; ++i){
-    std::cin >> S[i] >> T[i];
-    --S[i], --T[i];
-  }
+  auto [S, T] = input_tuple_vector<int, int>(Q);
+  for(auto &x : S) x -= 1;
+  for(auto &x : T) x -= 1;
 
   auto dist = Dijkstra(g, F).dist;
 

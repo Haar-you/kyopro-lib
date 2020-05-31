@@ -3,14 +3,14 @@
 #include <iostream>
 #include "Mylib/Graph/Matching/bipartite_matching.cpp"
 #include "Mylib/Graph/Flow/ford_fulkerson.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int X, Y, E; std::cin >> X >> Y >> E;
 
   BipartiteMatching<FordFulkerson<int>> b(X, Y);
 
-  for(int i = 0; i < E; ++i){
-    int x, y; std::cin >> x >> y;
+  for(auto [x, y] : input_tuples<int, int>(E)){
     b.add_edge(x, y);
   }
 

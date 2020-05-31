@@ -7,15 +7,15 @@
 #include <iomanip>
 #include "Mylib/AlgebraicStructure/Monoid/product.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
-
+#include "Mylib/IO/input_tuple_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int N; std::cin >> N;
   
   auto seg = SegmentTree<ProductMonoid<double>>(N);
-  
-  std::vector<int> T(N), A(N);
-  for(int i = 0; i < N; ++i) std::cin >> T[i] >> A[i];
+
+  auto [T, A] = input_tuple_vector<int, int>(N);
   
   for(int i = 0; i < N; ++i){
     seg.update(i, 0.1 * (10 - A[i]));
@@ -23,9 +23,7 @@ int main(){
 
   int Q; std::cin >> Q;
 
-  while(Q--){
-    int L, R; std::cin >> L >> R;
-
+  for(auto [L, R] : input_tuples<int, int>(Q)){
     int l = std::lower_bound(T.begin(), T.end(), L) - T.begin();
     int r = std::lower_bound(T.begin(), T.end(), R) - T.begin();
     

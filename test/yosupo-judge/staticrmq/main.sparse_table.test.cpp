@@ -5,6 +5,8 @@
 
 #include "Mylib/DataStructure/SparseTable/sparse_table.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -12,14 +14,11 @@ int main(){
   
   int N, Q; std::cin >> N >> Q;
 
-  std::vector<int> a(N);
-  for(int i = 0; i < N; ++i) std::cin >> a[i];
+  auto a = input_vector<int>(N);
 
   SparseTable<MinMonoid<int>> s(a);
 
-  while(Q--){
-    int l, r; std::cin >> l >> r;
-
+  for(auto [l, r] : input_tuples<int, int>(Q)){
     std::cout << s.get(l, r) << "\n";
   }
 

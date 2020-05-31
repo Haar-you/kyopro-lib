@@ -5,6 +5,8 @@
 
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 #include "Mylib/Misc/sort_simultaneously.cpp"
+#include "Mylib/IO/input_tuple_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 const int H = 1000000000;
 
@@ -13,11 +15,8 @@ int main(){
   std::ios::sync_with_stdio(false);
   
   int n, m; std::cin >> n >> m;
-  
-  std::vector<int> x(n), y(n);
-  for(int i = 0; i < n; ++i){
-    std::cin >> x[i] >> y[i];
-  }
+
+  auto [x, y] = input_tuple_vector<int, int>(n);
 
   sort_simultaneously(
     [&](int i, int j){
@@ -32,9 +31,7 @@ int main(){
 
   auto wm = make_wavelet_matrix_int(std::vector<uint32_t>(y.begin(), y.end()));
 
-  while(m--){
-    int x1, y1, x2, y2; std::cin >> x1 >> y1 >> x2 >> y2;
-      
+  for(auto [x1, y1, x2, y2] : input_tuples<int, int, int, int>(m)){
     const int l = std::lower_bound(x.begin(), x.end(), x1) - x.begin();
     const int r = std::upper_bound(x.begin(), x.end(), x2) - x.begin();
     int ans = wm.range_freq(l, r, y1 + H, y2 + H + 1);

@@ -31,8 +31,8 @@ int main(){
 
   std::cout << K << "\n";
 
-  for(int i = 0; i < K; ++i){
-    auto &t = ans[ts[i]];
+  for(auto i : ts){
+    auto &t = ans[i];
     std::cout << t.size() << " " << join(t.begin(), t.end()) << "\n";
   }
 

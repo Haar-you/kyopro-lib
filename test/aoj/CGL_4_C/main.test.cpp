@@ -7,19 +7,19 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/convex_cut.cpp"
 #include "Mylib/Geometry/Float/area_polygon.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = ERROR;
 
 int main(){
   int n; std::cin >> n;
-  Polygon<D> g(n);
-  for(int i = 0; i < n; ++i) std::cin >> g[i];
+  Polygon<D> g = input_vector<Point<D>>(n);
 
   int q; std::cin >> q;
 
-  while(q--){
-    Point<D> p1, p2; std::cin >> p1 >> p2;
+  for(auto [p1, p2] : input_tuples<Point<D>, Point<D>>(q)){
     Line<D> l(p1, p2);
 
     Polygon<D> left, right;

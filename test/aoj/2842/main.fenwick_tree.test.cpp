@@ -6,6 +6,7 @@
 
 #include "Mylib/AlgebraicStructure/Group/sum.cpp"
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -17,9 +18,7 @@ int main(){
 
   std::queue<std::tuple<int,int,int>> q;
   
-  while(Q--){
-    int t,c; std::cin >> t >> c;
-    
+  for(auto [t, c] : input_tuples<int, int>(Q)){
     while(q.size()){
       auto &a = q.front();
       

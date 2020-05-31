@@ -2,13 +2,13 @@
 
 #include <iostream>
 #include "Mylib/Graph/Matching/hopcroft_karp.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int L,R,M; std::cin >> L >> R >> M;
   HopcroftKarp hk(L,R);
 
-  for(int i = 0; i < M; ++i){
-    int a, b; std::cin >> a >> b;
+  for(auto [a, b] : input_tuples<int, int>(M)){
     hk.add_edge(a, b);
   }
   
@@ -16,9 +16,9 @@ int main(){
 
   auto ans = hk.get_matching();
 
-  std::cout << ans.size() << std::endl;
+  std::cout << ans.size() << "\n";
   for(auto &[i,j] : ans){
-    std::cout << i << " " << j << std::endl;
+    std::cout << i << " " << j << "\n";
   }
 
   return 0;

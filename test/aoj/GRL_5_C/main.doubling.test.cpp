@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int n; std::cin >> n;
@@ -19,9 +20,8 @@ int main(){
   auto lca = LCA(tree, 0);
 
   int q; std::cin >> q;
-  while(q--){
-    int u, v; std::cin >> u >> v;
-    
+
+  for(auto [u, v] : input_tuples<int, int>(q)){
     std::cout << lca.lca(u, v) << std::endl;
   }
 

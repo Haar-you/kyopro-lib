@@ -3,20 +3,22 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
   
-  int N, Q; scanf("%d%d", &N, &Q);
+  int N, Q; std::cin >> N >> Q;
 
-  std::vector<uint32_t> a(N);
-  for(int i = 0; i < N; ++i) scanf("%d", &a[i]);
+  auto a = input_vector<uint32_t>(N);
 
   auto wm = make_wavelet_matrix_int(a);
 
-  while(Q--){
-    int l, r, k; scanf("%d%d%d", &l, &r, &k);
+  for(auto [l, r, k] : input_tuples<int, int, int>(Q)){
     auto ans = *wm.quantile(l, r, k+1);
-    printf("%d\n", ans);
+    std::cout << ans << "\n";
   }
   
   return 0;

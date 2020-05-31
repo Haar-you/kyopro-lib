@@ -4,11 +4,12 @@
 #include <vector>
 #include "Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp"
 #include "Mylib/IO/join.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   int N,L; std::cin >> N >> L;
-  std::vector<int> a(N);
-  for(int i = 0; i < N; ++i) std::cin >> a[i];
+
+  auto a = input_vector<int>(N);
 
   auto ans = sliding_minimum(a, L);
 
@@ -16,4 +17,3 @@ int main(){
 
   return 0;
 }
-

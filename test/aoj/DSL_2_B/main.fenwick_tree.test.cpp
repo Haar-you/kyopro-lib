@@ -3,20 +3,17 @@
 #include <iostream>
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
 #include "Mylib/AlgebraicStructure/Group/sum.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
 
   auto fen = FenwickTree<SumGroup<int>>(n);
 
-  for(int i = 0; i < q; ++i){
-    int type; std::cin >> type;
-
+  for(auto [type, x, y] : input_tuples<int, int, int>(q)){
     if(type == 0){
-      int x,y; std::cin >> x >> y;
       fen.update(x-1, y);
     }else{
-      int x,y; std::cin >> x >> y;
       std::cout << fen.get(x-1, y) << std::endl;
     }
   }

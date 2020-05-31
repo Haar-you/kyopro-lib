@@ -11,8 +11,7 @@ int main(){
 
   auto tree = convert_to_graph<int, false>(n, input_edges<int, 0, true>(n-1));
 
-  int ans;
-  std::tie(ans, std::ignore) = tree_diameter(tree);
+  int ans = tree_diameter(tree).first;
   std::cout << ans << std::endl;
 
   return 0;

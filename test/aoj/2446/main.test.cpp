@@ -6,6 +6,7 @@
 #include <vector>
 #include <numeric>
 #include "Mylib/Convolution/fast_mobius_transform_subset.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -13,11 +14,9 @@ int main(){
 
   int64_t n, m; std::cin >> n >> m;
 
-  std::vector<int64_t> a(n);
-  for(int i = 0; i < n; ++i) std::cin >> a[i];
-  std::vector<double> p(n);
-  for(int i = 0; i < n; ++i) std::cin >> p[i];
-  
+  auto a = input_vector<int64_t>(n);
+  auto p = input_vector<double>(n);
+    
   for(auto &x : p) x /= 100.0;
 
   std::vector<int64_t> dp(1<<n);

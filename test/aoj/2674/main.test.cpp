@@ -5,23 +5,20 @@
 #include <algorithm>
 #include <limits>
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int D; std::cin >> D;
 
-  std::vector<uint32_t> x(D);
-  for(int i = 0; i < D; ++i){
-    std::cin >> x[i];
-    x[i] += 100000000;
-  }
+  auto x = input_vector<uint32_t>(D);
+  for(auto &v : x) v += 100000000;
 
   auto wm = make_wavelet_matrix_int(x);
 
   int Q; std::cin >> Q;
-
-  while(Q--){
-    int l, r, e; std::cin >> l >> r >> e;
-
+  
+  for(auto [l, r, e] : input_tuples<int, int, int>(Q)){
     --l, --r;
 
     int a = std::min(x[l], x[r]);

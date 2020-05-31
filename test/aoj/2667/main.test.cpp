@@ -6,6 +6,7 @@
 #include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp"
 #include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int N, Q; std::cin >> N >> Q;
@@ -15,9 +16,7 @@ int main(){
   auto hld = HLDecomposition(tree, 0);
   LazySegmentTree<AddSum<int64_t,int64_t>> seg(N);
   
-  while(Q--){
-    int c; std::cin >> c;
-    
+  for(auto [c] : input_tuples<int>(Q)){
     if(c == 0){
       int u, v; std::cin >> u >> v;
       

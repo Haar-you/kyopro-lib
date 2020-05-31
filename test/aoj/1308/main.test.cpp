@@ -4,6 +4,7 @@
 #include <vector>
 #include <bitset>
 #include "Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -11,12 +12,7 @@ int main(){
 
   int m,n,d;
   while(std::cin >> m >> n >> d, m){
-    std::vector<std::vector<int>> s(n, std::vector<int>(m));
-    for(int i = 0; i < n; ++i){
-      for(int j = 0; j < m; ++j){
-        std::cin >> s[i][j];
-      }
-    }
+    auto s = input_vector<int>(n, m);
     
     auto a = std::vector(n*m, std::bitset<25*25>());
     std::vector<bool> b(n*m);

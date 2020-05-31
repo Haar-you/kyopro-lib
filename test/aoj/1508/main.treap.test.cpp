@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Mylib/DataStructure/Treap/treap.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
@@ -14,9 +15,7 @@ int main(){
     s.update(i, a);
   }
   
-  while(q--){
-    int x, y, z; std::cin >> x >> y >> z;
-    
+  for(auto [x, y, z] : input_tuples<int, int, int>(q)){
     if(x == 0){
       auto temp = s.get(z);
       s.erase(z);

@@ -10,19 +10,21 @@
 #include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 #include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using mint = ModInt<998244353>;
 using M = DualMonoid<AffineMonoid<mint>>;
 
 int main(){
-  int N, Q; scanf("%d%d", &N, &Q);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N, Q; std::cin >> N >> Q;
 
+  std::vector<std::pair<mint,mint>> f;
 
-  std::vector<std::pair<mint,mint>> f(N);
-
-  for(int i = 0; i < N; ++i){
-    int64_t a, b; scanf("%lld%lld", &a, &b);
-    f[i] = std::make_pair(a, b);
+  for(auto [a, b] : input_tuples<int64_t, int64_t>(N)){
+    f.emplace_back(a, b);
   }
 
   auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
@@ -35,15 +37,13 @@ int main(){
     seg.update(hld.get_id(i), f[i]);
   }
 
-  while(Q--){
-    int type; scanf("%d", &type);
-
+  for(auto [type] : input_tuples<int>(Q)){
     if(type == 0){
-      int64_t p, c, d; scanf("%lld%lld%lld", &p, &c, &d);
+      int64_t p, c, d; std::cin >> p >> c >> d;
 
       seg.update(hld.get_id(p), std::make_pair(c, d));
     }else{
-      int64_t u, v, x; scanf("%lld%lld%lld", &u, &v, &x);
+      int64_t u, v, x; std::cin >> u >> v >> x;
 
       auto left = M::id(), right = M::id();
 
@@ -61,7 +61,7 @@ int main(){
       auto a = M::op(left, right);
 
       mint ans = a.first * x + a.second;
-      printf("%lld\n", ans.val);
+      std::cout << ans << "\n";
     }
   }
 

@@ -2,16 +2,15 @@
 
 #include <iostream>
 #include "Mylib/Number/Mod/mod_sqrt.cpp"
-
-void solve(){
-  int64_t Y, P; scanf("%lld%lld", &Y, &P);
-
-  auto ans = mod_sqrt(Y, P).value_or(-1);
-  printf("%lld\n", ans);
-}
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
-  int T; scanf("%d", &T);
-  while(T--) solve();
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
+  int T; std::cin >> T;
+  for(auto [Y, P] : input_tuples<int64_t, int64_t>(T)){
+    std::cout << mod_sqrt(Y, P).value_or(-1) << "\n";
+  }
   return 0;
 }
