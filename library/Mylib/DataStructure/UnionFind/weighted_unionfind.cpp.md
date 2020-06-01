@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 重み付きUnionFind
+# :x: Weighted union-find
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3ff74e8366c88d06b530f361450b1117">Mylib/DataStructure/UnionFind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/UnionFind/weighted_unionfind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-27 20:58:13+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -45,7 +45,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_1_B/main.test.cpp.html">test/aoj/DSL_1_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_1_B/main.test.cpp.html">test/aoj/DSL_1_B/main.test.cpp</a>
 
 
 ## Code
@@ -58,7 +58,7 @@ layout: default
 #include <numeric>
 
 /**
- * @title 重み付きUnionFind
+ * @title Weighted union-find
  * @docs weighted_unionfind.md
  */
 
@@ -115,7 +115,7 @@ public:
 #include <numeric>
 
 /**
- * @title 重み付きUnionFind
+ * @title Weighted union-find
  * @docs weighted_unionfind.md
  */
 

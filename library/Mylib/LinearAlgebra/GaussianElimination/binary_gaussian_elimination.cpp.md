@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 掃き出し法 (Mod2体)
+# :warning: Gaussian elimination (Mod2)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#4efd5e2a9807175bf43e4c1857b5bc52">Mylib/LinearAlgebra/GaussianElimination</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/GaussianElimination/binary_gaussian_elimination.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -62,7 +62,7 @@ layout: default
 #include <utility>
 
 /**
- * @title 掃き出し法 (Mod2体)
+ * @title Gaussian elimination (Mod2)
  * @docs binary_gaussian_elimination.md
  */
 template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &m){
@@ -104,7 +104,7 @@ template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &m){
 #include <utility>
 
 /**
- * @title 掃き出し法 (Mod2体)
+ * @title Gaussian elimination (Mod2)
  * @docs binary_gaussian_elimination.md
  */
 template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &m){

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: 二分累乗法
+# :warning: Binary exponentiation
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/power.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -45,7 +45,7 @@ layout: default
 #include <functional>
 
 /**
- * @title 二分累乗法
+ * @title Binary exponentiation
  * @docs power.md
  */
 template <typename T>
@@ -71,7 +71,7 @@ T power(T n, int64_t p, const T &e, const std::function<T(T,T)> &f){
 #include <functional>
 
 /**
- * @title 二分累乗法
+ * @title Binary exponentiation
  * @docs power.md
  */
 template <typename T>

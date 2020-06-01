@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/assignment/main.test.cpp
+# :x: test/yosupo-judge/assignment/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7db45eeebe50ebaff0e32d268a51d554">test/yosupo-judge/assignment</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/assignment/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 04:30:02+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/assignment">https://judge.yosupo.jp/problem/assignment</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">最小費用流</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/weighted_bipartite_matching.cpp.html">重み付き最大二部マッチング</a>
+* :question: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">Minimum cost flow</a>
+* :question: <a href="../../../../library/Mylib/Graph/Matching/weighted_bipartite_matching.cpp.html">Weighted maximum bipartite matching</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 
 
 ## Code
@@ -54,6 +55,7 @@ layout: default
 #include <vector>
 #include "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
 #include "Mylib/Graph/Flow/minimum_cost_flow.cpp"
+#include "Mylib/IO/join.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -81,10 +83,7 @@ int main(){
     p[i] = j;
   }
 
-  for(int i = 0; i < N; ++i){
-    std::cout << p[i] << " ";
-  }
-  std::cout << "\n";
+  std::cout << join(p.begin(), p.end()) << "\n";
   
   return 0;
 }
@@ -104,7 +103,7 @@ int main(){
 #include <tuple>
 
 /**
- * @title 重み付き最大二部マッチング
+ * @title Weighted maximum bipartite matching
  * @docs weighted_bipartite_matching.md
  */
 template <typename T, typename MinCostFlow, bool MIN_MATCHING = false>
@@ -154,7 +153,7 @@ public:
 #line 8 "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 
 /**
- * @title 最小費用流
+ * @title Minimum cost flow
  * @docs minimum_cost_flow.md
  */
 template <typename T, typename U> class MinimumCostFlow{
@@ -249,7 +248,25 @@ public:
     return g;
   }
 };
-#line 7 "test/yosupo-judge/assignment/main.test.cpp"
+#line 3 "Mylib/IO/join.cpp"
+#include <sstream>
+#include <string>
+
+/**
+ * @docs join.md
+ */
+template <typename ITER>
+std::string join(ITER first, ITER last, std::string delim = " "){
+  std::stringstream s;
+
+  for(auto it = first; it != last; ++it){
+    if(it != first) s << delim;
+    s << *it;
+  }
+
+  return s.str();
+}
+#line 8 "test/yosupo-judge/assignment/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -277,10 +294,7 @@ int main(){
     p[i] = j;
   }
 
-  for(int i = 0; i < N; ++i){
-    std::cout << p[i] << " ";
-  }
-  std::cout << "\n";
+  std::cout << join(p.begin(), p.end()) << "\n";
   
   return 0;
 }

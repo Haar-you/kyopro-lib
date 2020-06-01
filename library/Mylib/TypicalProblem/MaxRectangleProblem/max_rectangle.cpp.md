@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 最大面積長方形の面積
+# :x: Largest rectangle
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#e5c03cf251a1c8b45af0c48200d5638e">Mylib/TypicalProblem/MaxRectangleProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -53,12 +53,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="max_rectangle_in_histogram.cpp.html">ヒストグラム中の最大面積長方形の面積</a>
+* :x: <a href="max_rectangle_in_histogram.cpp.html">Largest rectangle in histogram</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DPL_3_B/main.test.cpp.html">test/aoj/DPL_3_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DPL_3_B/main.test.cpp.html">test/aoj/DPL_3_B/main.test.cpp</a>
 
 
 ## Code
@@ -72,7 +72,7 @@ layout: default
 #include "Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle_in_histogram.cpp"
 
 /**
- * @title 最大面積長方形の面積
+ * @title Largest rectangle
  * @docs max_rectangle.md
  */
 int max_rectangle(const std::vector<std::vector<int>> &d){
@@ -111,7 +111,7 @@ int max_rectangle(const std::vector<std::vector<int>> &d){
 #include <utility>
 
 /**
- * @title ヒストグラム中の最大面積長方形の面積
+ * @title Largest rectangle in histogram
  * @docs max_rectangle_in_histogram.md
  */
 template <typename T>
@@ -145,7 +145,7 @@ T max_rectangle_in_histogram(const std::vector<T> &h){
 #line 5 "Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle.cpp"
 
 /**
- * @title 最大面積長方形の面積
+ * @title Largest rectangle
  * @docs max_rectangle.md
  */
 int max_rectangle(const std::vector<std::vector<int>> &d){

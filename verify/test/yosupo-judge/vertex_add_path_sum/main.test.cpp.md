@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/vertex_add_path_sum/main.test.cpp
+# :x: test/yosupo-judge/vertex_add_path_sum/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#16025af99bcae563116239b49b797e5d">test/yosupo-judge/vertex_add_path_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/vertex_add_path_sum/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 16:55:31+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/vertex_add_path_sum">https://judge.yosupo.jp/problem/vertex_add_path_sum</a>
@@ -39,10 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">SegmentTree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -58,19 +60,19 @@ layout: default
 #include "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
+#include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
-  int N, Q; scanf("%d %d", &N, &Q);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N, Q; std::cin >> N >> Q;
 
   std::vector<int64_t> a(N);
-  for(int i = 0; i < N; ++i) scanf("%lld", &a[i]);
+  for(int i = 0; i < N; ++i) std::cin >> a[i];
 
-  Tree<int> tree(N);
-  for(int i = 0; i < N-1; ++i){
-    int u, v; scanf("%d %d", &u, &v);
-    add_undirected(tree, u, v, 1);
-  }
-
+  auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
   auto hld = HLDecomposition(tree, 0);
   auto seg = SegmentTree<SumMonoid<int64_t>>(N);
 
@@ -78,16 +80,14 @@ int main(){
     seg.update(hld.get_id(i), a[i]);
   }
 
-  while(Q--){
-    int t; scanf("%d", &t);
-    
+  for(auto [t] : input_tuples<int>(Q)){
     if(t == 0){
-      int p, x; scanf("%d %d", &p, &x);
+      int p, x; std::cin >> p >> x;
       
       int i = hld.get_id(p);
       seg.update(i, seg.at(i) + x);
     }else{
-      int u, v; scanf("%d %d", &u, &v);
+      int u, v; std::cin >> u >> v;
 
       int64_t ans = 0;
       hld.path_query_vertex(
@@ -98,7 +98,7 @@ int main(){
         }
       );
 
-      printf("%lld\n", ans);
+      std::cout << ans << "\n";
     }
   }
   
@@ -119,7 +119,7 @@ int main(){
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -148,7 +148,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 6 "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 
 /**
- * @title HL分解
+ * @title Heavy-light decomposition
  * @docs heavy_light_decomposition.md
  */
 template <typename T> class HLDecomposition{
@@ -280,7 +280,7 @@ public:
 #line 3 "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
 /**
- * @title SegmentTree
+ * @title Segment tree
  * @docs segment_tree.md
  */
 template <typename Monoid>
@@ -344,20 +344,104 @@ struct SumMonoid{
   constexpr inline static value_type id(){return 0;}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return a + b;}
 };
-#line 9 "test/yosupo-judge/vertex_add_path_sum/main.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 11 "test/yosupo-judge/vertex_add_path_sum/main.test.cpp"
 
 int main(){
-  int N, Q; scanf("%d %d", &N, &Q);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N, Q; std::cin >> N >> Q;
 
   std::vector<int64_t> a(N);
-  for(int i = 0; i < N; ++i) scanf("%lld", &a[i]);
+  for(int i = 0; i < N; ++i) std::cin >> a[i];
 
-  Tree<int> tree(N);
-  for(int i = 0; i < N-1; ++i){
-    int u, v; scanf("%d %d", &u, &v);
-    add_undirected(tree, u, v, 1);
-  }
-
+  auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
   auto hld = HLDecomposition(tree, 0);
   auto seg = SegmentTree<SumMonoid<int64_t>>(N);
 
@@ -365,16 +449,14 @@ int main(){
     seg.update(hld.get_id(i), a[i]);
   }
 
-  while(Q--){
-    int t; scanf("%d", &t);
-    
+  for(auto [t] : input_tuples<int>(Q)){
     if(t == 0){
-      int p, x; scanf("%d %d", &p, &x);
+      int p, x; std::cin >> p >> x;
       
       int i = hld.get_id(p);
       seg.update(i, seg.at(i) + x);
     }else{
-      int u, v; scanf("%d %d", &u, &v);
+      int u, v; std::cin >> u >> v;
 
       int64_t ans = 0;
       hld.path_query_vertex(
@@ -385,7 +467,7 @@ int main(){
         }
       );
 
-      printf("%lld\n", ans);
+      std::cout << ans << "\n";
     }
   }
   

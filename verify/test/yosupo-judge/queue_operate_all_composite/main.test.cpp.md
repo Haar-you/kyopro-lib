@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/queue_operate_all_composite/main.test.cpp
+# :x: test/yosupo-judge/queue_operate_all_composite/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#c8d31b5139983c6742fe36acb5e1ac81">test/yosupo-judge/queue_operate_all_composite</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/queue_operate_all_composite/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-19 10:57:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/queue_operate_all_composite">https://judge.yosupo.jp/problem/queue_operate_all_composite</a>
@@ -39,10 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp.html">SlidingWindowAggregation</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp.html">Sliding window aggregation</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -57,6 +58,7 @@ layout: default
 #include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 #include "Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using mint = ModInt<998244353>;
 using M = DualMonoid<AffineMonoid<mint>>;
@@ -66,9 +68,7 @@ int main(){
 
   SlidingWindowAggregation<M> swag;
   
-  while(Q--){
-    int type; std::cin >> type;
-
+  for(auto [type] : input_tuples<int>(Q)){
     if(type == 0){
       int a,b; std::cin >> a >> b;
       swag.push({a, b});
@@ -103,7 +103,7 @@ int main(){
 #include <utility>
 
 /**
- * @title modint
+ * @title Modint
  * @docs mint.md
  */
 template <uint32_t M> class ModInt{
@@ -213,7 +213,7 @@ struct DualMonoid{
 #include <optional>
 
 /**
- * @title SlidingWindowAggregation
+ * @title Sliding window aggregation
  * @docs sliding_window_aggregation.md
  */
 template <typename Semigroup>
@@ -268,7 +268,62 @@ public:
     front_sum.pop_back();
   }
 };
-#line 8 "test/yosupo-judge/queue_operate_all_composite/main.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 9 "test/yosupo-judge/queue_operate_all_composite/main.test.cpp"
 
 using mint = ModInt<998244353>;
 using M = DualMonoid<AffineMonoid<mint>>;
@@ -278,9 +333,7 @@ int main(){
 
   SlidingWindowAggregation<M> swag;
   
-  while(Q--){
-    int type; std::cin >> type;
-
+  for(auto [type] : input_tuples<int>(Q)){
     if(type == 0){
       int a,b; std::cin >> a >> b;
       swag.push({a, b});

@@ -25,22 +25,23 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/GRL_3_A/main.test.cpp
+# :x: test/aoj/GRL_3_A/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#aef3de7eebed1830b43d31dc4a561484">test/aoj/GRL_3_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_3_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A&lang=ja">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A&lang=ja</a>
+* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/GraphUtils/articulation_points.cpp.html">間接点列挙</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/Graph/GraphUtils/articulation_points.cpp.html">Articulation points</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
 
 
 ## Code
@@ -48,23 +49,21 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A&lang=ja"
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A"
 
 #include <iostream>
+#include <algorithm>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/GraphUtils/articulation_points.cpp"
+#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int> g(V);
-  for(int i = 0; i < E; ++i){
-    int s, t; std::cin >> s >> t;
-    add_undirected(g, s, t, 1);
-  }
+  auto g = convert_to_graph<int, false>(V, input_edges<int, 0, false>(E));
 
   auto ans = articulation_points(g);
-  sort(ans.begin(), ans.end());
+  std::sort(ans.begin(), ans.end());
   
   for(auto x : ans) std::cout << x << std::endl;
 
@@ -78,15 +77,16 @@ int main(){
 {% raw %}
 ```cpp
 #line 1 "test/aoj/GRL_3_A/main.test.cpp"
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A&lang=ja"
+#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A"
 
 #include <iostream>
+#include <algorithm>
 #line 2 "Mylib/Graph/graph_template.cpp"
 #include <vector>
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -109,12 +109,10 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
   add_edge<T, C>(g, a, b, w);
   add_edge<T, C>(g, b, a, w);
 }
-#line 3 "Mylib/Graph/GraphUtils/articulation_points.cpp"
-#include <algorithm>
 #line 5 "Mylib/Graph/GraphUtils/articulation_points.cpp"
 
 /**
- * @title 間接点列挙
+ * @title Articulation points
  * @docs articulation_points.md
  */
 template <typename T> std::vector<int> articulation_points(const Graph<T> &graph){
@@ -156,19 +154,46 @@ template <typename T> std::vector<int> articulation_points(const Graph<T> &graph
 
   return ret;
 }
-#line 6 "test/aoj/GRL_3_A/main.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 8 "test/aoj/GRL_3_A/main.test.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int> g(V);
-  for(int i = 0; i < E; ++i){
-    int s, t; std::cin >> s >> t;
-    add_undirected(g, s, t, 1);
-  }
+  auto g = convert_to_graph<int, false>(V, input_edges<int, 0, false>(E));
 
   auto ans = articulation_points(g);
-  sort(ans.begin(), ans.end());
+  std::sort(ans.begin(), ans.end());
   
   for(auto x : ans) std::cout << x << std::endl;
 

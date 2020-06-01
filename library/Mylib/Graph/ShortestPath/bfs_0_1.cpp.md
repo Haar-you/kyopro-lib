@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../../index.html#9a0780c4ad89eac4e850657d1e57c23a">Mylib/Graph/ShortestPath</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestPath/bfs_0_1.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Code
@@ -95,7 +95,7 @@ std::vector<int> bfs_0_1(const Graph<int> &g, const std::vector<int> &src){
 #include <iostream>
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{

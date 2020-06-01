@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 約数個数
+# :warning: Count divisors
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#e1d7bebd3991495167778e37d1d75d40">Mylib/Number/Divisor</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Divisor/count_divisor.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -44,7 +44,7 @@ layout: default
 #pragma once
 
 /**
- * @title 約数個数
+ * @title Count divisors
  * @docs count_divisor.md
  */
 int count_divisor(std::int64_t n){
@@ -67,7 +67,7 @@ int count_divisor(std::int64_t n){
 #line 2 "Mylib/Number/Divisor/count_divisor.cpp"
 
 /**
- * @title 約数個数
+ * @title Count divisors
  * @docs count_divisor.md
  */
 int count_divisor(std::int64_t n){

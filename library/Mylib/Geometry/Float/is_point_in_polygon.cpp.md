@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 点・多角形の包含関係
+# :x: Check if a point is in a polygon
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/is_point_in_polygon.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="ccw.cpp.html">clockwise-counterclockwise判定</a>
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="ccw.cpp.html">Check clockwise-counterclockwise</a>
+* :question: <a href="geometry_template.cpp.html">Geometry template</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_3_C/main.test.cpp.html">test/aoj/CGL_3_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_3_C/main.test.cpp.html">test/aoj/CGL_3_C/main.test.cpp</a>
 
 
 ## Code
@@ -57,7 +57,7 @@ layout: default
 #include "Mylib/Geometry/Float/ccw.cpp"
 
 /**
- * @title 点・多角形の包含関係
+ * @title Check if a point is in a polygon
  * @docs is_point_in_polygon.md
  */
 namespace point_in_polygon{
@@ -109,7 +109,7 @@ namespace point_in_polygon{
 #include <vector>
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -193,7 +193,7 @@ template <typename T> struct Circle{
 #line 3 "Mylib/Geometry/Float/ccw.cpp"
 
 /**
- * @title clockwise-counterclockwise判定
+ * @title Check clockwise-counterclockwise
  * @docs ccw.md
  */
 namespace ccw{
@@ -224,7 +224,7 @@ namespace ccw{
 #line 4 "Mylib/Geometry/Float/is_point_in_polygon.cpp"
 
 /**
- * @title 点・多角形の包含関係
+ * @title Check if a point is in a polygon
  * @docs is_point_in_polygon.md
  */
 namespace point_in_polygon{

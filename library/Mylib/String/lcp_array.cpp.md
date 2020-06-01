@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: LCP(Longest Common Prefix)配列
+# :x: LCP(Longest Common Prefix) array
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/lcp_array.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="suffix_array.cpp.html">接尾辞配列</a>
+* :x: <a href="suffix_array.cpp.html">Suffix array</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/number_of_substrings/main.test.cpp.html">test/yosupo-judge/number_of_substrings/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/number_of_substrings/main.test.cpp.html">test/yosupo-judge/number_of_substrings/main.test.cpp</a>
 
 
 ## Code
@@ -56,7 +56,7 @@ layout: default
 #include "Mylib/String/suffix_array.cpp"
 
 /**
- * @title LCP(Longest Common Prefix)配列
+ * @title LCP(Longest Common Prefix) array
  * @docs lcp_array.md
  */
 template <typename T>
@@ -95,7 +95,7 @@ struct LCPArray{
 #include <tuple>
 
 /**
- * @title 接尾辞配列
+ * @title Suffix array
  * @docs suffix_array.md
  */
 template <typename T> class SuffixArray{
@@ -220,7 +220,7 @@ public:
 #line 4 "Mylib/String/lcp_array.cpp"
 
 /**
- * @title LCP(Longest Common Prefix)配列
+ * @title LCP(Longest Common Prefix) array
  * @docs lcp_array.md
  */
 template <typename T>

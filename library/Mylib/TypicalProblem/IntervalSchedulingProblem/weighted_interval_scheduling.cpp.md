@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 重み付き区間スケジューリング
+# :warning: Weighted interval scheduling problem
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a1062884f064c2b3be412505b6627108">Mylib/TypicalProblem/IntervalSchedulingProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/IntervalSchedulingProblem/weighted_interval_scheduling.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -60,7 +60,7 @@ layout: default
 #include <utility>
 
 /**
- * @title 重み付き区間スケジューリング
+ * @title Weighted interval scheduling problem
  * @docs weighted_interval_scheduling.md
  */
 template <typename T, typename U>
@@ -110,7 +110,7 @@ U weighted_interval_scheduling(std::vector<T> from, std::vector<T> to, std::vect
 #include <utility>
 
 /**
- * @title 重み付き区間スケジューリング
+ * @title Weighted interval scheduling problem
  * @docs weighted_interval_scheduling.md
  */
 template <typename T, typename U>

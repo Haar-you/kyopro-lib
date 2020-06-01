@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/montmort_number_mod/main.test.cpp
+# :x: test/yosupo-judge/montmort_number_mod/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#910a463805ae5ab8a646512f693c1fa3">test/yosupo-judge/montmort_number_mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/montmort_number_mod/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 16:28:32+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/montmort_number_mod">https://judge.yosupo.jp/problem/montmort_number_mod</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/montmort_number.cpp.html">Montmort数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">modint (実行時mod指定)</a>
+* :x: <a href="../../../../library/Mylib/Combinatorics/montmort_number.cpp.html">Montmort number</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">Modint (Runtime mod)</a>
 
 
 ## Code
@@ -53,6 +54,7 @@ layout: default
 #include <iostream>
 #include "Mylib/Number/Mint/runtime_mint.cpp"
 #include "Mylib/Combinatorics/montmort_number.cpp"
+#include "Mylib/IO/join.cpp"
 
 using mint = RuntimeModInt;
 
@@ -63,9 +65,7 @@ int main(){
 
   auto ans = montmort_number<mint>(1000000);
 
-  for(int i = 1; i <= N; ++i){
-    std::cout << ans[i] << " ";
-  }
+  std::cout << join(ans.begin() + 1, ans.begin() + N + 1) << "\n";
 
   return 0;
 }
@@ -84,7 +84,7 @@ int main(){
 #include <utility>
 
 /**
- * @title modint (実行時mod指定)
+ * @title Modint (Runtime mod)
  * @docs runtime_mint.md
  */
 class RuntimeModInt{
@@ -155,7 +155,7 @@ std::ostream& operator<<(std::ostream &os, const RuntimeModInt &a){os << a.val; 
 #include <vector>
 
 /**
- * @title Montmort数
+ * @title Montmort number
  * @docs montmort_number.md
  */
 template <typename T>
@@ -172,7 +172,25 @@ auto montmort_number(int n){
 
   return ret;
 }
-#line 6 "test/yosupo-judge/montmort_number_mod/main.test.cpp"
+#line 3 "Mylib/IO/join.cpp"
+#include <sstream>
+#include <string>
+
+/**
+ * @docs join.md
+ */
+template <typename ITER>
+std::string join(ITER first, ITER last, std::string delim = " "){
+  std::stringstream s;
+
+  for(auto it = first; it != last; ++it){
+    if(it != first) s << delim;
+    s << *it;
+  }
+
+  return s.str();
+}
+#line 7 "test/yosupo-judge/montmort_number_mod/main.test.cpp"
 
 using mint = RuntimeModInt;
 
@@ -183,9 +201,7 @@ int main(){
 
   auto ans = montmort_number<mint>(1000000);
 
-  for(int i = 1; i <= N; ++i){
-    std::cout << ans[i] << " ";
-  }
+  std::cout << join(ans.begin() + 1, ans.begin() + N + 1) << "\n";
 
   return 0;
 }

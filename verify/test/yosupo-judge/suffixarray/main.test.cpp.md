@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/suffixarray/main.test.cpp
+# :x: test/yosupo-judge/suffixarray/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1a3b4838010325a1a7a9bbb6eb794296">test/yosupo-judge/suffixarray</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/suffixarray/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/suffixarray">https://judge.yosupo.jp/problem/suffixarray</a>
@@ -39,7 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/suffix_array.cpp.html">接尾辞配列</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :x: <a href="../../../../library/Mylib/String/suffix_array.cpp.html">Suffix array</a>
 
 
 ## Code
@@ -52,6 +53,7 @@ layout: default
 #include <iostream>
 #include <string>
 #include "Mylib/String/suffix_array.cpp"
+#include "Mylib/IO/join.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -62,10 +64,9 @@ int main(){
   while(std::cin >> S){
     SuffixArray<std::string> sa(S);
 
-    for(auto x : sa.suffix_array){
-      std::cout << x << " ";
-    }
-    std::cout << "\n";
+    auto res = sa.suffix_array;
+
+    std::cout << join(res.begin(), res.end()) << "\n";
   }
 
   return 0;
@@ -87,7 +88,7 @@ int main(){
 #include <tuple>
 
 /**
- * @title 接尾辞配列
+ * @title Suffix array
  * @docs suffix_array.md
  */
 template <typename T> class SuffixArray{
@@ -209,7 +210,25 @@ public:
     return ret;
   }
 };
-#line 6 "test/yosupo-judge/suffixarray/main.test.cpp"
+#line 3 "Mylib/IO/join.cpp"
+#include <sstream>
+#line 5 "Mylib/IO/join.cpp"
+
+/**
+ * @docs join.md
+ */
+template <typename ITER>
+std::string join(ITER first, ITER last, std::string delim = " "){
+  std::stringstream s;
+
+  for(auto it = first; it != last; ++it){
+    if(it != first) s << delim;
+    s << *it;
+  }
+
+  return s.str();
+}
+#line 7 "test/yosupo-judge/suffixarray/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -220,10 +239,9 @@ int main(){
   while(std::cin >> S){
     SuffixArray<std::string> sa(S);
 
-    for(auto x : sa.suffix_array){
-      std::cout << x << " ";
-    }
-    std::cout << "\n";
+    auto res = sa.suffix_array;
+
+    std::cout << join(res.begin(), res.end()) << "\n";
   }
 
   return 0;

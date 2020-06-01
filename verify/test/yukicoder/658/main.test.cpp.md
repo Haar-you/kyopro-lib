@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/658/main.test.cpp
+# :x: test/yukicoder/658/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a391646de6180927bf7c3f0bfac7f3df">test/yukicoder/658</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/658/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-04 18:08:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/658">https://yukicoder.me/problems/no/658</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DynamicProgramming/SpeedupTechnique/kitamasa_algorithm.cpp.html">Kitamasa法</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/DynamicProgramming/SpeedupTechnique/kitamasa_algorithm.cpp.html">Kitamasa algorithm</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -53,6 +54,7 @@ layout: default
 #include <iostream>
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/DynamicProgramming/SpeedupTechnique/kitamasa_algorithm.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using mint = ModInt<17>;
 
@@ -62,9 +64,7 @@ int main(){
   
   int Q; std::cin >> Q;
 
-  while(Q--){
-    int64_t N; std::cin >> N;
-
+  for(auto [N] : input_tuples<int64_t>(Q)){
     KitamasaAlgorithm<mint> ka(4, {0, 0, 0, 1}, {1, 1, 1, 1});
     std::cout << ka[N-1] << std::endl;
   }
@@ -86,7 +86,7 @@ int main(){
 #include <utility>
 
 /**
- * @title modint
+ * @title Modint
  * @docs mint.md
  */
 template <uint32_t M> class ModInt{
@@ -172,7 +172,7 @@ public:
 #include <vector>
 
 /**
- * @title Kitamasa法
+ * @title Kitamasa algorithm
  * @docs kitamasa_algorithm.md
  */
 template <typename T> struct KitamasaAlgorithm{
@@ -233,7 +233,62 @@ template <typename T> struct KitamasaAlgorithm{
     return calc(get(index));
   }
 };
-#line 6 "test/yukicoder/658/main.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 7 "test/yukicoder/658/main.test.cpp"
 
 using mint = ModInt<17>;
 
@@ -243,9 +298,7 @@ int main(){
   
   int Q; std::cin >> Q;
 
-  while(Q--){
-    int64_t N; std::cin >> N;
-
+  for(auto [N] : input_tuples<int64_t>(Q)){
     KitamasaAlgorithm<mint> ka(4, {0, 0, 0, 1}, {1, 1, 1, 1});
     std::cout << ka[N-1] << std::endl;
   }

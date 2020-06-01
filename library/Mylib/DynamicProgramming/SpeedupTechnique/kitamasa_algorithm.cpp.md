@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Kitamasa法
+# :x: Kitamasa algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#826136648af25fa7c5e97a1b794f9784">Mylib/DynamicProgramming/SpeedupTechnique</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/SpeedupTechnique/kitamasa_algorithm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-04 18:08:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -59,7 +59,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/658/main.test.cpp.html">test/yukicoder/658/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/658/main.test.cpp.html">test/yukicoder/658/main.test.cpp</a>
 
 
 ## Code
@@ -71,7 +71,7 @@ layout: default
 #include <vector>
 
 /**
- * @title Kitamasa法
+ * @title Kitamasa algorithm
  * @docs kitamasa_algorithm.md
  */
 template <typename T> struct KitamasaAlgorithm{
@@ -143,7 +143,7 @@ template <typename T> struct KitamasaAlgorithm{
 #include <vector>
 
 /**
- * @title Kitamasa法
+ * @title Kitamasa algorithm
  * @docs kitamasa_algorithm.md
  */
 template <typename T> struct KitamasaAlgorithm{

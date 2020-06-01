@@ -25,21 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 進数変換
+# :x: Convert base
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/convert_base.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 14:34:01+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/499/main.test.cpp.html">test/yukicoder/499/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/782/main.test.cpp.html">test/yukicoder/782/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/499/main.test.cpp.html">test/yukicoder/499/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/782/main.test.cpp.html">test/yukicoder/782/main.test.cpp</a>
 
 
 ## Code
@@ -52,7 +52,7 @@ layout: default
 #include <algorithm>
 
 /**
- * @title 進数変換
+ * @title Convert base
  * @docs convert_base.md
  */
 std::vector<int64_t> convert_base_to(int64_t val, int64_t base){
@@ -93,7 +93,7 @@ int64_t convert_base_from(const std::vector<int64_t> &val, int64_t base){
 #include <algorithm>
 
 /**
- * @title 進数変換
+ * @title Convert base
  * @docs convert_base.md
  */
 std::vector<int64_t> convert_base_to(int64_t val, int64_t base){

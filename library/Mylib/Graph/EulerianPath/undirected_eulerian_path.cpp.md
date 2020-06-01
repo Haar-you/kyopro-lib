@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 無向Euler路
+# :warning: Undirected eulerian path
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b40e1d8162bf14ce6637a69e4e4fb68d">Mylib/Graph/EulerianPath</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/EulerianPath/undirected_eulerian_path.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -52,7 +52,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Code
@@ -67,7 +67,7 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 無向Euler路
+ * @title Undirected eulerian path
  * @docs undirected_eulerian_path.md
  */
 class UndirectedEulerianPath{
@@ -153,7 +153,7 @@ public:
 #include <iostream>
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -179,7 +179,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 6 "Mylib/Graph/EulerianPath/undirected_eulerian_path.cpp"
 
 /**
- * @title 無向Euler路
+ * @title Undirected eulerian path
  * @docs undirected_eulerian_path.md
  */
 class UndirectedEulerianPath{

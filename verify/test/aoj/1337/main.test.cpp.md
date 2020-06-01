@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a61f1640cc9f3ae71d742eade5b6fb71">test/aoj/1337</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1337/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-10 06:32:26+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1337">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1337</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">UnionFind</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/compressor.cpp.html">座標圧縮</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/Misc/compressor.cpp.html">Compressor</a>
 
 
 ## Code
@@ -54,6 +55,7 @@ layout: default
 #include <vector>
 #include "Mylib/Misc/compressor.cpp"
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
+#include "Mylib/IO/input_tuple_vector.cpp"
 
 const int H = 200;
 const int W = 200;
@@ -65,10 +67,7 @@ int main(){
   int n;
 
   while(std::cin >> n, n){
-    std::vector<int> l(n), t(n), r(n), b(n);
-    for(int i = 0; i < n; ++i){
-      std::cin >> l[i] >> t[i] >> r[i] >> b[i];
-    }
+    auto [l, t, r, b] = input_tuple_vector<int, int, int, int>(n);
 
     int64_t a[H][W] = {};
 
@@ -125,7 +124,7 @@ int main(){
 #include <algorithm>
 
 /**
- * @title 座標圧縮
+ * @title Compressor
  * @docs compressor.md
  */
 template <typename T>
@@ -160,7 +159,7 @@ public:
 #include <numeric>
 
 /**
- * @title UnionFind
+ * @title Union-find
  * @docs unionfind.md
  */
 class UnionFind{
@@ -201,7 +200,40 @@ public:
 
   inline int count_group(){return count;}
 };
-#line 7 "test/aoj/1337/main.test.cpp"
+#line 4 "Mylib/IO/input_tuple_vector.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuple_vector.md
+ */
+template <typename T, size_t ... I>
+void input_tuple_vector_init(T &val, int N, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{
+    (void(std::get<I>(val).resize(N)), 0)...
+  };
+}
+
+template <typename T, size_t ... I>
+void input_tuple_vector_helper(T &val, int i, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{
+    (void(std::cin >> std::get<I>(val)[i]), 0)...
+  };
+}
+
+template <typename ... Args>
+auto input_tuple_vector(int N){
+  std::tuple<std::vector<Args>...> ret;
+
+  input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof...(Args)>());
+  for(int i = 0; i < N; ++i){
+    input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof...(Args)>());
+  }
+
+  return ret;
+}
+#line 8 "test/aoj/1337/main.test.cpp"
 
 const int H = 200;
 const int W = 200;
@@ -213,10 +245,7 @@ int main(){
   int n;
 
   while(std::cin >> n, n){
-    std::vector<int> l(n), t(n), r(n), b(n);
-    for(int i = 0; i < n; ++i){
-      std::cin >> l[i] >> t[i] >> r[i] >> b[i];
-    }
+    auto [l, t, r, b] = input_tuple_vector<int, int, int, int>(n);
 
     int64_t a[H][W] = {};
 

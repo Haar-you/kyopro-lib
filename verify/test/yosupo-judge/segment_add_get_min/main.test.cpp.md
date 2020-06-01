@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/segment_add_get_min/main.test.cpp
+# :x: test/yosupo-judge/segment_add_get_min/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#721e0ea68f32b7a24f161978d9526983">test/yosupo-judge/segment_add_get_min</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/segment_add_get_min/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-23 07:34:18+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/segment_add_get_min">https://judge.yosupo.jp/problem/segment_add_get_min</a>
@@ -39,7 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp.html">LiChaoSegmentTree</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp.html">LiChao segment tree</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -55,35 +56,36 @@ layout: default
 #include <variant>
 #include <tuple>
 #include "Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using Segment = std::tuple<int64_t, int64_t, int64_t, int64_t>;
 using Query = std::variant<Segment, int64_t>;
 
 int main(){
-  int N, Q; scanf("%d %d", &N, &Q);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
+  int N, Q; std::cin >> N >> Q;
 
   std::vector<int64_t> xs;
 
   std::vector<Segment> lines;
 
-  for(int i = 0; i < N; ++i){
-    int64_t l, r, a, b; scanf("%lld %lld %lld %lld", &l, &r, &a, &b);
+  for(auto [l, r, a, b] : input_tuples<int64_t, int64_t, int64_t, int64_t>(N)){
     lines.emplace_back(l, r, a, b);
   }
 
   std::vector<Query> query;
 
-  for(int i = 0; i < Q; ++i){
-    int type; scanf("%d", &type);
-    
+  for(auto [type] : input_tuples<int>(Q)){
     switch(type){
     case 0: {
-      int64_t l, r, a, b; scanf("%lld %lld %lld %lld", &l, &r, &a, &b);
+      int64_t l, r, a, b; std::cin >> l >> r >> a >> b;
       query.push_back(Segment({l, r, a, b}));
       break;
     }
     case 1: {
-      int64_t p; scanf("%lld", &p);
+      int64_t p; std::cin >> p;
       query.push_back(p);
       xs.push_back(p);
       break;
@@ -107,9 +109,9 @@ int main(){
         auto res = lc.query(p);
 
         if(res){
-          printf("%lld\n", *res);
+          std::cout << *res << "\n";
         }else{
-          puts("INFINITY");
+          std::cout << "INFINITY" << "\n";
         }
       }
     }
@@ -137,7 +139,7 @@ int main(){
 #include <optional>
 
 /**
- * @title LiChaoSegmentTree
+ * @title LiChao segment tree
  * @docs lichao_segment_tree.md
  */
 template <typename T, typename Comparator>
@@ -277,36 +279,89 @@ template <typename T>
 auto make_lichao_max(const std::vector<T> &xs){
   return LiChaoSegmentTree<T, std::greater<T>>(xs);
 }
-#line 9 "test/yosupo-judge/segment_add_get_min/main.test.cpp"
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 10 "test/yosupo-judge/segment_add_get_min/main.test.cpp"
 
 using Segment = std::tuple<int64_t, int64_t, int64_t, int64_t>;
 using Query = std::variant<Segment, int64_t>;
 
 int main(){
-  int N, Q; scanf("%d %d", &N, &Q);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
+  int N, Q; std::cin >> N >> Q;
 
   std::vector<int64_t> xs;
 
   std::vector<Segment> lines;
 
-  for(int i = 0; i < N; ++i){
-    int64_t l, r, a, b; scanf("%lld %lld %lld %lld", &l, &r, &a, &b);
+  for(auto [l, r, a, b] : input_tuples<int64_t, int64_t, int64_t, int64_t>(N)){
     lines.emplace_back(l, r, a, b);
   }
 
   std::vector<Query> query;
 
-  for(int i = 0; i < Q; ++i){
-    int type; scanf("%d", &type);
-    
+  for(auto [type] : input_tuples<int>(Q)){
     switch(type){
     case 0: {
-      int64_t l, r, a, b; scanf("%lld %lld %lld %lld", &l, &r, &a, &b);
+      int64_t l, r, a, b; std::cin >> l >> r >> a >> b;
       query.push_back(Segment({l, r, a, b}));
       break;
     }
     case 1: {
-      int64_t p; scanf("%lld", &p);
+      int64_t p; std::cin >> p;
       query.push_back(p);
       xs.push_back(p);
       break;
@@ -330,9 +385,9 @@ int main(){
         auto res = lc.query(p);
 
         if(res){
-          printf("%lld\n", *res);
+          std::cout << *res << "\n";
         }else{
-          puts("INFINITY");
+          std::cout << "INFINITY" << "\n";
         }
       }
     }

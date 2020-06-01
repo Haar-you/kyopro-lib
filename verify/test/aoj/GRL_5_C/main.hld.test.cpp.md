@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/GRL_5_C/main.hld.test.cpp
+# :x: test/aoj/GRL_5_C/main.hld.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#502e31dec0efb369b23aee4c6aa81a7e">test/aoj/GRL_5_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_5_C/main.hld.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_hld.cpp.html">最小共通祖先 (HLD)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_hld.cpp.html">Lowest common ancestor (HLD)</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -53,6 +54,7 @@ layout: default
 #include <iostream>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/lca_based_on_hld.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int n; std::cin >> n;
@@ -69,9 +71,8 @@ int main(){
   auto lca = LCA(tree, 0);
 
   int q; std::cin >> q;
-  while(q--){
-    int u, v; std::cin >> u >> v;
-    
+
+  for(auto [u, v] : input_tuples<int, int>(q)){
     std::cout << lca.lca(u, v) << std::endl;
   }
 
@@ -93,7 +94,7 @@ int main(){
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -121,7 +122,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Graph/TreeUtils/lca_based_on_hld.cpp"
 
 /**
- * @title 最小共通祖先 (HLD)
+ * @title Lowest common ancestor (HLD)
  * @docs lca_based_on_hld.md
  */
 template <typename T> class LCA{
@@ -169,7 +170,62 @@ public:
     }
   }
 };
-#line 6 "test/aoj/GRL_5_C/main.hld.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 7 "test/aoj/GRL_5_C/main.hld.test.cpp"
 
 int main(){
   int n; std::cin >> n;
@@ -186,9 +242,8 @@ int main(){
   auto lca = LCA(tree, 0);
 
   int q; std::cin >> q;
-  while(q--){
-    int u, v; std::cin >> u >> v;
-    
+
+  for(auto [u, v] : input_tuples<int, int>(q)){
     std::cout << lca.lca(u, v) << std::endl;
   }
 

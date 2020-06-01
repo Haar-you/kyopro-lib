@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_1_B/main.test.cpp
+# :x: test/aoj/DSL_1_B/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#d968eb1568785f4a9e284aeb2f04bd97">test/aoj/DSL_1_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_1_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-27 20:58:13+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B</a>
@@ -39,7 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/weighted_unionfind.cpp.html">重み付きUnionFind</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/UnionFind/weighted_unionfind.cpp.html">Weighted union-find</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -51,21 +52,18 @@ layout: default
 
 #include <iostream>
 #include "Mylib/DataStructure/UnionFind/weighted_unionfind.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
 
   WeightedUnionFind<int> uf(n);
-
-  while(q--){
-    int type; std::cin >> type;
-
+  
+  for(auto [type, x, y] : input_tuples<int, int, int>(q)){
     if(type == 0){
-      int x, y, z; std::cin >> x >> y >> z;
+      int z; std::cin >> z;
       uf.merge(x, y, z);
     }else{
-      int x, y; std::cin >> x >> y;
-
       if(uf.is_same(x, y)){
         std::cout << uf.diff(x, y) << std::endl;
       }else{
@@ -92,7 +90,7 @@ int main(){
 #include <numeric>
 
 /**
- * @title 重み付きUnionFind
+ * @title Weighted union-find
  * @docs weighted_unionfind.md
  */
 
@@ -137,22 +135,73 @@ public:
   int get_size(int i){return size[get_root(i)];}
   int count_group(){return count;}
 };
-#line 5 "test/aoj/DSL_1_B/main.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 6 "test/aoj/DSL_1_B/main.test.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
 
   WeightedUnionFind<int> uf(n);
-
-  while(q--){
-    int type; std::cin >> type;
-
+  
+  for(auto [type, x, y] : input_tuples<int, int, int>(q)){
     if(type == 0){
-      int x, y, z; std::cin >> x >> y >> z;
+      int z; std::cin >> z;
       uf.merge(x, y, z);
     }else{
-      int x, y; std::cin >> x >> y;
-
       if(uf.is_same(x, y)){
         std::cout << uf.diff(x, y) << std::endl;
       }else{

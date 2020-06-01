@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Prim法
+# :question: Prim algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#cb5ed95d97b7ee8efcbdf177a47dc7b7">Mylib/Graph/MinimumSpanningTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/MinimumSpanningTree/prim.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Verified with
@@ -46,7 +46,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2559/main.binomial_heap.test.cpp.html">test/aoj/2559/main.binomial_heap.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_2_A/main.prim.test.cpp.html">test/aoj/GRL_2_A/main.prim.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_2_A/main.prim.test.cpp.html">test/aoj/GRL_2_A/main.prim.test.cpp</a>
 
 
 ## Code
@@ -60,7 +60,7 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title Prim法
+ * @title Prim algorithm
  * @docs prim.md
  */
 template <typename T>
@@ -105,7 +105,7 @@ std::vector<Edge<T>> prim(const Graph<T> &graph){
 #include <iostream>
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -131,7 +131,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Graph/MinimumSpanningTree/prim.cpp"
 
 /**
- * @title Prim法
+ * @title Prim algorithm
  * @docs prim.md
  */
 template <typename T>

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp
+# :x: test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#806a528feab938cddc13c96a5d63d020">test/aoj/GRL_7_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 04:30:02+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_7_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_7_A</a>
@@ -39,7 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/hopcroft_karp.cpp.html">Hopcroft-Karp法</a>
+* :x: <a href="../../../../library/Mylib/Graph/Matching/hopcroft_karp.cpp.html">Hopcroft-Karp algorithm</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -51,14 +52,14 @@ layout: default
 
 #include <iostream>
 #include "Mylib/Graph/Matching/hopcroft_karp.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int X, Y, E; std::cin >> X >> Y >> E;
 
   HopcroftKarp b(X, Y);
 
-  for(int i = 0; i < E; ++i){
-    int x, y; std::cin >> x >> y;
+  for(auto [x, y] : input_tuples<int, int>(E)){
     b.add_edge(x, y);
   }
 
@@ -86,7 +87,7 @@ int main(){
 #include <cassert>
 
 /**
- * @title Hopcroft-Karp法
+ * @title Hopcroft-Karp algorithm
  * @docs hopcroft_karp.md
  */
 class HopcroftKarp{
@@ -189,15 +190,69 @@ public:
     return ret;
   }
 };
-#line 5 "test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 6 "test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp"
 
 int main(){
   int X, Y, E; std::cin >> X >> Y >> E;
 
   HopcroftKarp b(X, Y);
 
-  for(int i = 0; i < E; ++i){
-    int x, y; std::cin >> x >> y;
+  for(auto [x, y] : input_tuples<int, int>(E)){
     b.add_edge(x, y);
   }
 

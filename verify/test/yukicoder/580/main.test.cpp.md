@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/580/main.test.cpp
+# :x: test/yukicoder/580/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#cd972d63fbc2cdaa6f2e20f02bf8d13c">test/yukicoder/580</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/580/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-06 01:45:04+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/580">https://yukicoder.me/problems/no/580</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp.html">区間スケジューリング問題 (重複要素をk個まで許容する)</a>
+* :x: <a href="../../../../library/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp.html">Interval scheduling problem (Allow no more than k intervals to overlap)</a>
 
 
 ## Code
@@ -97,7 +97,7 @@ int main(){
 #include <numeric>
 
 /**
- * @title 区間スケジューリング問題 (重複要素をk個まで許容する)
+ * @title Interval scheduling problem (Allow no more than k intervals to overlap)
  * @docs interval_scheduling_k.md
  */
 auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){

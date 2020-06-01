@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 並列二分探索
+# :x: Parallel binary search
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a7582795d3062b8fdf2ece0fd4f2d90d">Mylib/Algorithm/Search</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Search/parallel_binary_search.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-25 21:27:16+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -55,7 +55,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
 
 
 ## Code
@@ -68,7 +68,7 @@ layout: default
 #include <cmath>
 
 /**
- * @title 並列二分探索
+ * @title Parallel binary search
  * @docs parallel_binary_search.md
  */
 template <typename F>
@@ -118,7 +118,7 @@ auto parallel_binary_search(int M, int Q, F f){
 #include <cmath>
 
 /**
- * @title 並列二分探索
+ * @title Parallel binary search
  * @docs parallel_binary_search.md
  */
 template <typename F>

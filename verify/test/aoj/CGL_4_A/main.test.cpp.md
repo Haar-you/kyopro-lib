@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/CGL_4_A/main.test.cpp
+# :x: test/aoj/CGL_4_A/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a269259367036c402826e762072de44f">test/aoj/CGL_4_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_4_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A</a>
@@ -39,9 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/convex_hull.cpp.html">凸包</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/convex_hull.cpp.html">Convex hull</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -56,14 +57,14 @@ layout: default
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/convex_hull.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = 1e-7;
 
 int main(){
   int n; std::cin >> n;
-  Polygon<D> ps(n);
-  for(int i = 0; i < n; ++i) std::cin >> ps[i];
+  Polygon<D> ps = input_vector<Point<D>>(n);
 
   auto ans = convex_hull(ps);
   
@@ -73,11 +74,12 @@ int main(){
     std::reverse(ans.begin(), ans.end());
 
     int k =
-      std::min_element(ans.begin(), ans.end(),
-                       [](const auto &a, const auto &b){
-                         return a.y < b.y or (a.y == b.y and a.x < b.x);
-                       }
-                       ) - ans.begin();
+      std::min_element(
+        ans.begin(), ans.end(),
+        [](const auto &a, const auto &b){
+          return a.y < b.y or (a.y == b.y and a.x < b.x);
+        }
+      ) - ans.begin();
 
     std::rotate(ans.begin(), ans.begin() + k, ans.end());
   }
@@ -105,7 +107,7 @@ int main(){
 #include <cmath>
 
 /**
- * @title 誤差許容浮動小数点数
+ * @title Floating point number with eps
  * @docs double_eps.md
  */
 template <typename T>
@@ -174,7 +176,7 @@ template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
 #include <vector>
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -258,7 +260,7 @@ template <typename T> struct Circle{
 #line 5 "Mylib/Geometry/Float/convex_hull.cpp"
 
 /**
- * @title 凸包
+ * @title Convex hull
  * @docs convex_hull.md
  */
 template <typename T> 
@@ -310,15 +312,32 @@ std::vector<Point<T>> convex_hull(const Polygon<T> &pts){
 
   return ret;
 }
-#line 8 "test/aoj/CGL_4_A/main.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 9 "test/aoj/CGL_4_A/main.test.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = 1e-7;
 
 int main(){
   int n; std::cin >> n;
-  Polygon<D> ps(n);
-  for(int i = 0; i < n; ++i) std::cin >> ps[i];
+  Polygon<D> ps = input_vector<Point<D>>(n);
 
   auto ans = convex_hull(ps);
   
@@ -328,11 +347,12 @@ int main(){
     std::reverse(ans.begin(), ans.end());
 
     int k =
-      std::min_element(ans.begin(), ans.end(),
-                       [](const auto &a, const auto &b){
-                         return a.y < b.y or (a.y == b.y and a.x < b.x);
-                       }
-                       ) - ans.begin();
+      std::min_element(
+        ans.begin(), ans.end(),
+        [](const auto &a, const auto &b){
+          return a.y < b.y or (a.y == b.y and a.x < b.x);
+        }
+      ) - ans.begin();
 
     std::rotate(ans.begin(), ans.begin() + k, ans.end());
   }

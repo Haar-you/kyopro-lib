@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: 符号関数
+# :warning: Sign function
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/sign_function.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -44,7 +44,7 @@ layout: default
 #pragma once
 
 /**
- * @title 符号関数
+ * @title Sign function
  * @docs sign_function.md
  */
 template <typename T> int sign(T n){return (n > 0) - (n < 0);}
@@ -58,7 +58,7 @@ template <typename T> int sign(T n){return (n > 0) - (n < 0);}
 #line 2 "Mylib/Number/sign_function.cpp"
 
 /**
- * @title 符号関数
+ * @title Sign function
  * @docs sign_function.md
  */
 template <typename T> int sign(T n){return (n > 0) - (n < 0);}

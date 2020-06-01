@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 接尾辞配列
+# :x: Suffix array
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/suffix_array.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="lcp_array.cpp.html">LCP(Longest Common Prefix)配列</a>
+* :x: <a href="lcp_array.cpp.html">LCP(Longest Common Prefix) array</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/number_of_substrings/main.test.cpp.html">test/yosupo-judge/number_of_substrings/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/suffixarray/main.test.cpp.html">test/yosupo-judge/suffixarray/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/number_of_substrings/main.test.cpp.html">test/yosupo-judge/number_of_substrings/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/suffixarray/main.test.cpp.html">test/yosupo-judge/suffixarray/main.test.cpp</a>
 
 
 ## Code
@@ -57,7 +57,7 @@ layout: default
 #include <tuple>
 
 /**
- * @title 接尾辞配列
+ * @title Suffix array
  * @docs suffix_array.md
  */
 template <typename T> class SuffixArray{
@@ -191,7 +191,7 @@ public:
 #include <tuple>
 
 /**
- * @title 接尾辞配列
+ * @title Suffix array
  * @docs suffix_array.md
  */
 template <typename T> class SuffixArray{

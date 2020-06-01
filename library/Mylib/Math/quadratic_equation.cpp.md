@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: 二次方程式の実数解
+# :warning: Real solutions of quadratic equation
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#c20232aa0a6a3c1c77a782d17f007d0b">Mylib/Math</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Math/quadratic_equation.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -46,7 +46,7 @@ layout: default
 #include <vector>
 
 /**
- * @title 二次方程式の実数解
+ * @title Real solutions of quadratic equation
  * @docs quadratic_equation.md
  */
 std::vector<double> quadratic_equation(double a, double b, double c){
@@ -69,7 +69,7 @@ std::vector<double> quadratic_equation(double a, double b, double c){
 #include <vector>
 
 /**
- * @title 二次方程式の実数解
+ * @title Real solutions of quadratic equation
  * @docs quadratic_equation.md
  */
 std::vector<double> quadratic_equation(double a, double b, double c){

@@ -25,21 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 下位集合を昇順に列挙
+# :x: Enumerate subsets (Ascending order)
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#fe4a83e4dc2a7f834ed4cd85d6972a53">Mylib/Bit</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/for_each_subset_asc.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-20 18:00:03+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/ITP2_11_C/main.asc.test.cpp.html">test/aoj/ITP2_11_C/main.asc.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/ITP2_11_C/main.asc.test.cpp.html">test/aoj/ITP2_11_C/main.asc.test.cpp</a>
 
 
 ## Code
@@ -50,7 +50,7 @@ layout: default
 #pragma once
 
 /**
- * @title 下位集合を昇順に列挙
+ * @title Enumerate subsets (Ascending order)
  * @docs for_each_subset_asc.md
  */
 class SubsetAsc{
@@ -83,7 +83,7 @@ public:
 #line 2 "Mylib/Bit/for_each_subset_asc.cpp"
 
 /**
- * @title 下位集合を昇順に列挙
+ * @title Enumerate subsets (Ascending order)
  * @docs for_each_subset_asc.md
  */
 class SubsetAsc{

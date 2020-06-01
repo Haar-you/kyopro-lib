@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/persistent_queue/main.test.cpp
+# :x: test/yosupo-judge/persistent_queue/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9ebe5796a1fd941d1f273efb97ed22d8">test/yosupo-judge/persistent_queue</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/persistent_queue/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-18 19:49:45+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/persistent_queue">https://judge.yosupo.jp/problem/persistent_queue</a>
@@ -39,7 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/Queue/persistent_queue.cpp.html">永続Queue</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/Queue/persistent_queue.cpp.html">Persistent queue</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -52,15 +53,14 @@ layout: default
 #include <iostream>
 #include <vector>
 #include "Mylib/DataStructure/Queue/persistent_queue.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int Q; std::cin >> Q;
 
   std::vector<PersistentQueue<int>> S;
 
-  while(Q--){
-    int type; std::cin >> type;
-
+  for(auto [type] : input_tuples<int>(Q)){
     if(type == 0){
       int t, x; std::cin >> t >> x;
       if(t == -1){
@@ -96,7 +96,7 @@ int main(){
 #include <array>
 
 /**
- * @title 永続Queue
+ * @title Persistent queue
  * @docs persistent_queue.md
  */
 template <typename T>
@@ -174,16 +174,69 @@ public:
     return front_node ? back_node->depth - front_node->depth + 1 : 0;
   }
 };
-#line 6 "test/yosupo-judge/persistent_queue/main.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 7 "test/yosupo-judge/persistent_queue/main.test.cpp"
 
 int main(){
   int Q; std::cin >> Q;
 
   std::vector<PersistentQueue<int>> S;
 
-  while(Q--){
-    int type; std::cin >> type;
-
+  for(auto [type] : input_tuples<int>(Q)){
     if(type == 0){
       int t, x; std::cin >> t >> x;
       if(t == -1){

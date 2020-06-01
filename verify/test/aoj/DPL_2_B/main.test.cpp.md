@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_2_B/main.test.cpp
+# :x: test/aoj/DPL_2_B/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#cea1c4a75215bab49202f95330eeee2b">test/aoj/DPL_2_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_2_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/chinese_postman_problem.cpp.html">中国人郵便配達問題</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/Graph/chinese_postman_problem.cpp.html">Chinese postman problem</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
 
 
 ## Code
@@ -53,15 +54,12 @@ layout: default
 #include <iostream>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/chinese_postman_problem.cpp"
+#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
-  
-  Graph<int> g(V);
-  for(int i = 0; i < E; ++i){
-    int s, t, d; std::cin >> s >> t >> d;
-    add_undirected(g, s, t, d);
-  }
+
+  auto g = convert_to_graph<int, false>(V, input_edges<int, 0, true>(E));  
   
   auto ans = chinese_postman_problem(g);
   std::cout << ans << std::endl;
@@ -84,7 +82,7 @@ int main(){
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -112,7 +110,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Graph/chinese_postman_problem.cpp"
 
 /**
- * @title 中国人郵便配達問題
+ * @title Chinese postman problem
  * @docs chinese_postman_problem.md
  */
 template <typename T> T chinese_postman_problem(const Graph<T> &g){
@@ -174,16 +172,43 @@ template <typename T> T chinese_postman_problem(const Graph<T> &g){
 
   return ret;
 }
-#line 6 "test/aoj/DPL_2_B/main.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 7 "test/aoj/DPL_2_B/main.test.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
-  
-  Graph<int> g(V);
-  for(int i = 0; i < E; ++i){
-    int s, t, d; std::cin >> s >> t >> d;
-    add_undirected(g, s, t, d);
-  }
+
+  auto g = convert_to_graph<int, false>(V, input_edges<int, 0, true>(E));  
   
   auto ans = chinese_postman_problem(g);
   std::cout << ans << std::endl;

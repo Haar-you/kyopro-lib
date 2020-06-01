@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Treap (OrderedSet型)
+# :warning: Treap (Ordered set)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f1faa641fd949a91e292dddd575fe73e">Mylib/DataStructure/Treap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Treap/ordered_treap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-05 21:41:14+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -51,7 +51,7 @@ layout: default
 #include "Mylib/DataStructure/Treap/treap.cpp"
 
 /**
- * @title Treap (OrderedSet型)
+ * @title Treap (Ordered set)
  * @docs ordered_treap.md
  */
 namespace treap{
@@ -320,7 +320,7 @@ namespace treap{
 #line 4 "Mylib/DataStructure/Treap/ordered_treap.cpp"
 
 /**
- * @title Treap (OrderedSet型)
+ * @title Treap (Ordered set)
  * @docs ordered_treap.md
  */
 namespace treap{

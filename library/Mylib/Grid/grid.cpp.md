@@ -25,21 +25,22 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: グリッド用テンプレート
+# :heavy_check_mark: Grid template
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#437b04c37f52e5b35f1d2c24c546c491">Mylib/Grid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Grid/grid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="grid_bfs.cpp.html">グリッド上BFS</a>
-* :heavy_check_mark: <a href="grid_to_graph.cpp.html">グリッドをグラフに変換する</a>
+* :heavy_check_mark: <a href="grid_bfs.cpp.html">BFS on a grid</a>
+* :heavy_check_mark: <a href="grid_find.cpp.html">Enumerate points satisfying conditions</a>
+* :heavy_check_mark: <a href="grid_to_graph.cpp.html">Convert grid to graph</a>
 
 
 ## Verified with
@@ -59,7 +60,7 @@ layout: default
 #include <utility>
 
 /**
- * @title グリッド用テンプレート
+ * @title Grid template
  * @docs grid.md
  */
 struct Point{
@@ -106,7 +107,7 @@ namespace grid{
 #include <utility>
 
 /**
- * @title グリッド用テンプレート
+ * @title Grid template
  * @docs grid.md
  */
 struct Point{

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 個数制限付き部分和問題
+# :question: Subset sum problem (With quantity limitations)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2e380218d9fd214c2f91a8ade734af1c">Mylib/TypicalProblem/SubsetSumProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-13 00:35:35+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -57,7 +57,7 @@ layout: default
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2370/main.test.cpp.html">test/aoj/2370/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/2955/main.test.cpp.html">test/aoj/2955/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/2955/main.test.cpp.html">test/aoj/2955/main.test.cpp</a>
 
 
 ## Code
@@ -69,7 +69,7 @@ layout: default
 #include <vector>
 
 /**
- * @title 個数制限付き部分和問題
+ * @title Subset sum problem (With quantity limitations)
  * @docs subset_sum_limited.md
  */
 auto subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vector<int> &m){
@@ -103,7 +103,7 @@ auto subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vect
 #include <vector>
 
 /**
- * @title 個数制限付き部分和問題
+ * @title Subset sum problem (With quantity limitations)
  * @docs subset_sum_limited.md
  */
 auto subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vector<int> &m){

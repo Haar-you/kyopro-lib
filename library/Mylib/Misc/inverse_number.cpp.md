@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 転倒数
+# :x: Inverse number
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/inverse_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/ALDS1_5_D/main.test.cpp.html">test/aoj/ALDS1_5_D/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/ALDS1_5_D/main.test.cpp.html">test/aoj/ALDS1_5_D/main.test.cpp</a>
 
 
 ## Code
@@ -50,7 +50,7 @@ layout: default
 #include <vector>
 
 /**
- * @title 転倒数
+ * @title Inverse number
  * @docs inverse_number.md
  */
 namespace inverse_number{
@@ -100,7 +100,7 @@ namespace inverse_number{
 #include <vector>
 
 /**
- * @title 転倒数
+ * @title Inverse number
  * @docs inverse_number.md
  */
 namespace inverse_number{

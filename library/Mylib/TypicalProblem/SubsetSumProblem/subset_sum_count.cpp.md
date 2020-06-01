@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 部分和数え上げ問題
+# :warning: Subset sum problem (Count)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2e380218d9fd214c2f91a8ade734af1c">Mylib/TypicalProblem/SubsetSumProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_count.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-13 00:35:35+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -60,7 +60,7 @@ layout: default
 #include <vector>
 
 /**
- * @title 部分和数え上げ問題
+ * @title Subset sum problem (Count)
  * @docs subset_sum_count.md
  */
 template <typename T>
@@ -89,7 +89,7 @@ auto subset_sum_count(int N, int K, const std::vector<int> &a){
 #include <vector>
 
 /**
- * @title 部分和数え上げ問題
+ * @title Subset sum problem (Count)
  * @docs subset_sum_count.md
  */
 template <typename T>

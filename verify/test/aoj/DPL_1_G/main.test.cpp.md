@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_1_G/main.test.cpp
+# :x: test/aoj/DPL_1_G/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#d7859a8f41cb711fe2876b3f2c82daaf">test/aoj/DPL_1_G</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_1_G/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G</a>
@@ -39,7 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/TypicalProblem/KnapsackProblem/knapsack_limited.cpp.html">個数制限付きナップサック問題</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/TypicalProblem/KnapsackProblem/knapsack_limited.cpp.html">Knapsack problem (With quantity limitations)</a>
 
 
 ## Code
@@ -52,14 +53,12 @@ layout: default
 #include <iostream>
 #include <vector>
 #include "Mylib/TypicalProblem/KnapsackProblem/knapsack_limited.cpp"
+#include "Mylib/IO/input_tuple_vector.cpp"
 
 int main(){
   int N, W; std::cin >> N >> W;
-  
-  std::vector<int> v(N), w(N), m(N);
-  for(int i = 0; i < N; ++i){
-    std::cin >> v[i] >> w[i] >> m[i];
-  }
+
+  auto [v, w, m] = input_tuple_vector<int, int, int>(N);
   
   auto ans = knapsack_limited(N, W, w, v, m);
   std::cout << ans << std::endl;
@@ -82,7 +81,7 @@ int main(){
 #include <algorithm>
 
 /**
- * @title 個数制限付きナップサック問題
+ * @title Knapsack problem (With quantity limitations)
  * @docs knapsack_limited.md
  */
 template <typename Weight, typename Value>
@@ -101,15 +100,45 @@ Value knapsack_limited(int N, Weight cap, const std::vector<Weight> &w, const st
 
   return dp[cap];
 }
-#line 6 "test/aoj/DPL_1_G/main.test.cpp"
+#line 4 "Mylib/IO/input_tuple_vector.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuple_vector.md
+ */
+template <typename T, size_t ... I>
+void input_tuple_vector_init(T &val, int N, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{
+    (void(std::get<I>(val).resize(N)), 0)...
+  };
+}
+
+template <typename T, size_t ... I>
+void input_tuple_vector_helper(T &val, int i, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{
+    (void(std::cin >> std::get<I>(val)[i]), 0)...
+  };
+}
+
+template <typename ... Args>
+auto input_tuple_vector(int N){
+  std::tuple<std::vector<Args>...> ret;
+
+  input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof...(Args)>());
+  for(int i = 0; i < N; ++i){
+    input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof...(Args)>());
+  }
+
+  return ret;
+}
+#line 7 "test/aoj/DPL_1_G/main.test.cpp"
 
 int main(){
   int N, W; std::cin >> N >> W;
-  
-  std::vector<int> v(N), w(N), m(N);
-  for(int i = 0; i < N; ++i){
-    std::cin >> v[i] >> w[i] >> m[i];
-  }
+
+  auto [v, w, m] = input_tuple_vector<int, int, int>(N);
   
   auto ans = knapsack_limited(N, W, w, v, m);
   std::cout << ans << std::endl;

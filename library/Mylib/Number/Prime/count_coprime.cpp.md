@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 互いに素な自然数の個数
+# :x: Count coprime
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/count_coprime.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -52,12 +52,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="prime_factorize.cpp.html">素因数分解</a>
+* :x: <a href="prime_factorize.cpp.html">Prime factorization</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/NTL_1_D/main.test.cpp.html">test/aoj/NTL_1_D/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/NTL_1_D/main.test.cpp.html">test/aoj/NTL_1_D/main.test.cpp</a>
 
 
 ## Code
@@ -70,7 +70,7 @@ layout: default
 #include "Mylib/Number/Prime/prime_factorize.cpp"
 
 /**
- * @title 互いに素な自然数の個数
+ * @title Count coprime
  * @docs count_coprime.md
  */
 int64_t count_coprime(int64_t n, int64_t m){
@@ -106,7 +106,7 @@ int64_t count_coprime(int64_t n, int64_t m){
 #include <utility>
 
 /**
- * @title 素因数分解
+ * @title Prime factorization
  * @docs prime_factorize.md
  */
 auto prime_factorize(int64_t n){
@@ -127,7 +127,7 @@ auto prime_factorize(int64_t n){
 #line 4 "Mylib/Number/Prime/count_coprime.cpp"
 
 /**
- * @title 互いに素な自然数の個数
+ * @title Count coprime
  * @docs count_coprime.md
  */
 int64_t count_coprime(int64_t n, int64_t m){

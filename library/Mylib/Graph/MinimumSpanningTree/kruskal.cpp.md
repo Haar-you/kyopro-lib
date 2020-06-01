@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Kruskal法
+# :x: Kruskal algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#cb5ed95d97b7ee8efcbdf177a47dc7b7">Mylib/Graph/MinimumSpanningTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/MinimumSpanningTree/kruskal.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">UnionFind</a>
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_2_A/main.kruskal.test.cpp.html">test/aoj/GRL_2_A/main.kruskal.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_2_A/main.kruskal.test.cpp.html">test/aoj/GRL_2_A/main.kruskal.test.cpp</a>
 
 
 ## Code
@@ -59,7 +59,7 @@ layout: default
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
 /**
- * @title Kruskal法
+ * @title Kruskal algorithm
  * @docs kruskal.md
  */
 template <typename T>
@@ -101,7 +101,7 @@ std::vector<Edge<T>> kruskal(const Graph<T> &graph){
 #include <iostream>
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -128,7 +128,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #include <numeric>
 
 /**
- * @title UnionFind
+ * @title Union-find
  * @docs unionfind.md
  */
 class UnionFind{
@@ -172,7 +172,7 @@ public:
 #line 6 "Mylib/Graph/MinimumSpanningTree/kruskal.cpp"
 
 /**
- * @title Kruskal法
+ * @title Kruskal algorithm
  * @docs kruskal.md
  */
 template <typename T>

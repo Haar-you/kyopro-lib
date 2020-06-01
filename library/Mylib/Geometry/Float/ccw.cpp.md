@@ -25,39 +25,39 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: clockwise-counterclockwise判定
+# :question: Check clockwise-counterclockwise
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/ccw.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="geometry_template.cpp.html">Geometry template</a>
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="convex_cut.cpp.html">凸多角形の切断</a>
-* :heavy_check_mark: <a href="intersect_segments.cpp.html">線分同士の交差</a>
-* :heavy_check_mark: <a href="is_convex.cpp.html">凸多角形判定</a>
-* :heavy_check_mark: <a href="is_point_in_polygon.cpp.html">点・多角形の包含関係</a>
+* :x: <a href="convex_cut.cpp.html">Convex cut</a>
+* :question: <a href="intersect_segments.cpp.html">Intersection between two lines</a>
+* :x: <a href="is_convex.cpp.html">Check convex</a>
+* :x: <a href="is_point_in_polygon.cpp.html">Check if a point is in a polygon</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2136/main.test.cpp.html">test/aoj/2136/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_1_C/main.test.cpp.html">test/aoj/CGL_1_C/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_2_B/main.test.cpp.html">test/aoj/CGL_2_B/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_2_C/main.test.cpp.html">test/aoj/CGL_2_C/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_3_B/main.test.cpp.html">test/aoj/CGL_3_B/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_3_C/main.test.cpp.html">test/aoj/CGL_3_C/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_1_C/main.test.cpp.html">test/aoj/CGL_1_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_2_B/main.test.cpp.html">test/aoj/CGL_2_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_2_C/main.test.cpp.html">test/aoj/CGL_2_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_3_B/main.test.cpp.html">test/aoj/CGL_3_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_3_C/main.test.cpp.html">test/aoj/CGL_3_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
 
 
 ## Code
@@ -69,7 +69,7 @@ layout: default
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title clockwise-counterclockwise判定
+ * @title Check clockwise-counterclockwise
  * @docs ccw.md
  */
 namespace ccw{
@@ -110,7 +110,7 @@ namespace ccw{
 #include <vector>
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -194,7 +194,7 @@ template <typename T> struct Circle{
 #line 3 "Mylib/Geometry/Float/ccw.cpp"
 
 /**
- * @title clockwise-counterclockwise判定
+ * @title Check clockwise-counterclockwise
  * @docs ccw.md
  */
 namespace ccw{

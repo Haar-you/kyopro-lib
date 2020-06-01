@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_1_E/main.test.cpp
+# :x: test/aoj/DPL_1_E/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ff011c241521fe723b9ada74a9467695">test/aoj/DPL_1_E</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_1_E/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 08:33:11+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_E">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_E</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/levenshtein_distance.cpp.html">Levenshtein距離 / 編集距離</a>
+* :x: <a href="../../../../library/Mylib/String/levenshtein_distance.cpp.html">Levenshtein distance / Edit distance</a>
 
 
 ## Code
@@ -79,7 +79,7 @@ int main(){
 #include <algorithm>
 
 /**
- * @title Levenshtein距離 / 編集距離
+ * @title Levenshtein distance / Edit distance
  * @docs levenshtein_distance.md
  */
 template <typename Container, typename T = typename Container::value_type>

@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 最近点対
+# :x: Closest pair
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/closest_pair.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="geometry_template.cpp.html">Geometry template</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_5_A/main.test.cpp.html">test/aoj/CGL_5_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_5_A/main.test.cpp.html">test/aoj/CGL_5_A/main.test.cpp</a>
 
 
 ## Code
@@ -60,7 +60,7 @@ layout: default
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 最近点対
+ * @title Closest pair
  * @docs closest_pair.md
  */
 namespace closest_pair{
@@ -136,7 +136,7 @@ namespace closest_pair{
 #line 5 "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -220,7 +220,7 @@ template <typename T> struct Circle{
 #line 8 "Mylib/Geometry/Float/closest_pair.cpp"
 
 /**
- * @title 最近点対
+ * @title Closest pair
  * @docs closest_pair.md
  */
 namespace closest_pair{

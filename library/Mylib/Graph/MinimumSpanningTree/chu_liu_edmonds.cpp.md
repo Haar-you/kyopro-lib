@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Chu-Liu/Edmonds
+# :x: Chu-Liu/Edmonds algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#cb5ed95d97b7ee8efcbdf177a47dc7b7">Mylib/Graph/MinimumSpanningTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-27 18:33:06+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -57,13 +57,13 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
+* :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_2_B/main.test.cpp.html">test/aoj/GRL_2_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_2_B/main.test.cpp.html">test/aoj/GRL_2_B/main.test.cpp</a>
 
 
 ## Code
@@ -78,7 +78,7 @@ layout: default
 #include "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 
 /**
- * @title Chu-Liu/Edmonds
+ * @title Chu-Liu/Edmonds algorithm
  * @docs chu_liu_edmonds.md
  */
 template <typename T>
@@ -214,7 +214,7 @@ public:
 #include <iostream>
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -240,7 +240,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 
 /**
- * @title 強連結成分分解
+ * @title Strongly connected components
  * @docs strongly_connected_components.md
  */
 template <typename T>
@@ -285,7 +285,7 @@ auto strongly_connected_components(const Graph<T> &g){
 #line 6 "Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp"
 
 /**
- * @title Chu-Liu/Edmonds
+ * @title Chu-Liu/Edmonds algorithm
  * @docs chu_liu_edmonds.md
  */
 template <typename T>

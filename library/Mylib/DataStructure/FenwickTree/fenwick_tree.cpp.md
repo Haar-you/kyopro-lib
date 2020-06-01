@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: FenwickTree
+# :x: Fenwick tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2f58e2c328298747e7665b6f6b5791ad">Mylib/DataStructure/FenwickTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 16:28:32+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -66,13 +66,13 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="fenwick_tree_on_fenwick_tree.cpp.html">FenwickTree (FenwickTreeを乗せる)</a>
+* :x: <a href="fenwick_tree_on_fenwick_tree.cpp.html">Fenwick tree (On Fenwick tree)</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp.html">test/aoj/DSL_2_B/main.fenwick_tree.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp.html">test/aoj/DSL_2_B/main.fenwick_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
 
 
 ## Code
@@ -84,7 +84,7 @@ layout: default
 #include <vector>
 
 /**
- * @title FenwickTree
+ * @title Fenwick tree
  * @docs fenwick_tree.md
  */
 template <typename AbelianGroup>
@@ -140,7 +140,7 @@ public:
 #include <vector>
 
 /**
- * @title FenwickTree
+ * @title Fenwick tree
  * @docs fenwick_tree.md
  */
 template <typename AbelianGroup>

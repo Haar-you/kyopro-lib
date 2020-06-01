@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/NTL_1_C/main.test.cpp
+# :x: test/aoj/NTL_1_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#fcb24e02e278be19ec740adb48092544">test/aoj/NTL_1_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/NTL_1_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-21 21:55:57+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_C</a>
@@ -39,7 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/binary_gcd.cpp.html">BinaryGCD</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/Number/binary_gcd.cpp.html">Binary GCD</a>
 
 
 ## Code
@@ -52,12 +53,12 @@ layout: default
 #include <iostream>
 #include <vector>
 #include "Mylib/Number/binary_gcd.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   int n; std::cin >> n;
 
-  std::vector<int> a(n);
-  for(int i = 0; i < n; ++i) std::cin >> a[i];
+  auto a = input_vector<int>(n);
 
   int l = 1;
   for(auto x : a){
@@ -85,7 +86,7 @@ int main(){
 #include <cmath>
 
 /**
- * @title BinaryGCD
+ * @title Binary GCD
  * @docs binary_gcd.md
  */
 int64_t binary_gcd(int64_t a, int64_t b){
@@ -114,13 +115,30 @@ int64_t binary_gcd(int64_t a, int64_t b){
 
   return g * b;
 }
-#line 6 "test/aoj/NTL_1_C/main.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 7 "test/aoj/NTL_1_C/main.test.cpp"
 
 int main(){
   int n; std::cin >> n;
 
-  std::vector<int> a(n);
-  for(int i = 0; i < n; ++i) std::cin >> a[i];
+  auto a = input_vector<int>(n);
 
   int l = 1;
   for(auto x : a){

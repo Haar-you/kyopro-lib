@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 最大二部マッチング
+# :x: Maximum bipartite matching
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#65eb1c5db2b1bd726d58cf661f149e7c">Mylib/Graph/Matching</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Matching/bipartite_matching.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 04:30:02+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
 
 
 ## Code
@@ -53,7 +53,7 @@ layout: default
 #include <cassert>
 
 /**
- * @title 最大二部マッチング
+ * @title Maximum bipartite matching
  * @docs bipartite_matching.md
  */
 template <typename MaxFlow>
@@ -104,7 +104,7 @@ public:
 #include <cassert>
 
 /**
- * @title 最大二部マッチング
+ * @title Maximum bipartite matching
  * @docs bipartite_matching.md
  */
 template <typename MaxFlow>

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: 高速Fourier変換
+# :warning: Fast Fourier transform
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/fast_fourier_transform.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-30 20:34:51+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -61,7 +61,7 @@ layout: default
 #include <utility>
 
 /**
- * @title 高速Fourier変換
+ * @title Fast Fourier transform
  * @docs fast_fourier_transform.md
  */
 template <typename T = double, bool INVERSE = false>
@@ -130,7 +130,7 @@ std::vector<std::complex<T>> fft_convolution(std::vector<std::complex<T>> f, std
 #include <utility>
 
 /**
- * @title 高速Fourier変換
+ * @title Fast Fourier transform
  * @docs fast_fourier_transform.md
  */
 template <typename T = double, bool INVERSE = false>

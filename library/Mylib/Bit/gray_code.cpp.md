@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Grayコード
+# :warning: Gray code
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#fe4a83e4dc2a7f834ed4cd85d6972a53">Mylib/Bit</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/gray_code.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -44,7 +44,7 @@ layout: default
 #pragma once
 
 /**
- * @title Grayコード
+ * @title Gray code
  * @docs gray_code.md
  */
 template <typename Func>
@@ -63,7 +63,7 @@ void gray_code(int n, const Func &f){
 #line 2 "Mylib/Bit/gray_code.cpp"
 
 /**
- * @title Grayコード
+ * @title Gray code
  * @docs gray_code.md
  */
 template <typename Func>

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: ビット逆転
+# :warning: Bit reverse
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#fe4a83e4dc2a7f834ed4cd85d6972a53">Mylib/Bit</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/bit_reverse.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -44,7 +44,7 @@ layout: default
 #pragma once
 
 /**
- * @title ビット逆転
+ * @title Bit reverse
  * @docs bit_reverse.md
  */
 int32_t bit_reverse(int32_t a){
@@ -75,7 +75,7 @@ int64_t bit_reverse_ll(int64_t a){
 #line 2 "Mylib/Bit/bit_reverse.cpp"
 
 /**
- * @title ビット逆転
+ * @title Bit reverse
  * @docs bit_reverse.md
  */
 int32_t bit_reverse(int32_t a){

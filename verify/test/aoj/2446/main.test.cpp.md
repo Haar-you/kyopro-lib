@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#5326787223290b45db8eae567be7c0f8">test/aoj/2446</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2446/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-30 20:34:51+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2446">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2446</a>
@@ -39,7 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_mobius_transform_subset.cpp.html">下位集合に対する高速Möbius変換</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_mobius_transform_subset.cpp.html">Fast Möbius transform (Subsets)</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -55,6 +56,7 @@ layout: default
 #include <vector>
 #include <numeric>
 #include "Mylib/Convolution/fast_mobius_transform_subset.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -62,11 +64,9 @@ int main(){
 
   int64_t n, m; std::cin >> n >> m;
 
-  std::vector<int64_t> a(n);
-  for(int i = 0; i < n; ++i) std::cin >> a[i];
-  std::vector<double> p(n);
-  for(int i = 0; i < n; ++i) std::cin >> p[i];
-  
+  auto a = input_vector<int64_t>(n);
+  auto p = input_vector<double>(n);
+    
   for(auto &x : p) x /= 100.0;
 
   std::vector<int64_t> dp(1<<n);
@@ -123,7 +123,7 @@ int main(){
 #include <functional>
 
 /**
- * @title 下位集合に対する高速Möbius変換
+ * @title Fast Möbius transform (Subsets)
  * @docs fast_mobius_transform_subset.md
  */
 template <typename T, typename Func = std::minus<T>>
@@ -135,7 +135,25 @@ std::vector<T> fast_mobius_transform_subset(std::vector<T> f, const Func &op = s
   }
   return f;
 }
-#line 9 "test/aoj/2446/main.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 10 "test/aoj/2446/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -143,11 +161,9 @@ int main(){
 
   int64_t n, m; std::cin >> n >> m;
 
-  std::vector<int64_t> a(n);
-  for(int i = 0; i < n; ++i) std::cin >> a[i];
-  std::vector<double> p(n);
-  for(int i = 0; i < n; ++i) std::cin >> p[i];
-  
+  auto a = input_vector<int64_t>(n);
+  auto p = input_vector<double>(n);
+    
   for(auto &x : p) x /= 100.0;
 
   std::vector<int64_t> dp(1<<n);

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/partition_function/main.test.cpp
+# :x: test/yosupo-judge/partition_function/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3c72a5f9e51247cad1bcbc8d30f4715f">test/yosupo-judge/partition_function</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/partition_function/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/partition_function">https://judge.yosupo.jp/problem/partition_function</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/partition_number_n.cpp.html">分割数の列挙</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/Combinatorics/partition_number_n.cpp.html">Partition number (Enumerate $P(n, n)$)</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -53,6 +54,7 @@ layout: default
 #include <iostream>
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Combinatorics/partition_number_n.cpp"
+#include "Mylib/IO/join.cpp"
 
 using mint = ModInt<998244353>;
 
@@ -61,10 +63,8 @@ int main(){
 
   auto p = partition_number<mint>(N);
 
-  for(int i = 0; i <= N; ++i){
-    std::cout << p[i] << " ";
-  }
-
+  std::cout << join(p.begin(), p.end()) << std::endl;
+  
   return 0;
 }
 
@@ -82,7 +82,7 @@ int main(){
 #include <utility>
 
 /**
- * @title modint
+ * @title Modint
  * @docs mint.md
  */
 template <uint32_t M> class ModInt{
@@ -169,7 +169,7 @@ public:
 #include <vector>
 
 /**
- * @title 分割数の列挙
+ * @title Partition number (Enumerate $P(n, n)$)
  * @docs partition_number_n.md
  */
 template <typename T>
@@ -192,7 +192,25 @@ auto partition_number(int N){
 
   return p;
 }
-#line 6 "test/yosupo-judge/partition_function/main.test.cpp"
+#line 3 "Mylib/IO/join.cpp"
+#include <sstream>
+#include <string>
+
+/**
+ * @docs join.md
+ */
+template <typename ITER>
+std::string join(ITER first, ITER last, std::string delim = " "){
+  std::stringstream s;
+
+  for(auto it = first; it != last; ++it){
+    if(it != first) s << delim;
+    s << *it;
+  }
+
+  return s.str();
+}
+#line 7 "test/yosupo-judge/partition_function/main.test.cpp"
 
 using mint = ModInt<998244353>;
 
@@ -201,10 +219,8 @@ int main(){
 
   auto p = partition_number<mint>(N);
 
-  for(int i = 0; i <= N; ++i){
-    std::cout << p[i] << " ";
-  }
-
+  std::cout << join(p.begin(), p.end()) << std::endl;
+  
   return 0;
 }
 

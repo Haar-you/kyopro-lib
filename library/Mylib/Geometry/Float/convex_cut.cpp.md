@@ -25,27 +25,27 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 凸多角形の切断
+# :x: Convex cut
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/convex_cut.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="ccw.cpp.html">clockwise-counterclockwise判定</a>
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="intersect_line_segment.cpp.html">直線と線分の交差</a>
+* :question: <a href="ccw.cpp.html">Check clockwise-counterclockwise</a>
+* :question: <a href="geometry_template.cpp.html">Geometry template</a>
+* :x: <a href="intersect_line_segment.cpp.html">Intersection between a line and a segment</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
 
 
 ## Code
@@ -59,7 +59,7 @@ layout: default
 #include "Mylib/Geometry/Float/ccw.cpp"
 
 /**
- * @title 凸多角形の切断
+ * @title Convex cut
  * @docs convex_cut.md
  */
 template <typename T>
@@ -109,7 +109,7 @@ void convex_cut(const Polygon<T> &ps, const Line<T> &l, Polygon<T> &left, Polygo
 #include <vector>
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -193,7 +193,7 @@ template <typename T> struct Circle{
 #line 4 "Mylib/Geometry/Float/intersect_line_segment.cpp"
 
 /**
- * @title 直線と線分の交差
+ * @title Intersection between a line and a segment
  * @docs intersect_line_segment.md
  */
 namespace intersect_line_segment{
@@ -231,7 +231,7 @@ namespace intersect_line_segment{
 #line 3 "Mylib/Geometry/Float/ccw.cpp"
 
 /**
- * @title clockwise-counterclockwise判定
+ * @title Check clockwise-counterclockwise
  * @docs ccw.md
  */
 namespace ccw{
@@ -262,7 +262,7 @@ namespace ccw{
 #line 5 "Mylib/Geometry/Float/convex_cut.cpp"
 
 /**
- * @title 凸多角形の切断
+ * @title Convex cut
  * @docs convex_cut.md
  */
 template <typename T>

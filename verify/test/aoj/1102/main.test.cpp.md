@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4598a1e201d64d438fead37b702299e0">test/aoj/1102</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1102/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1102">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1102</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Parser/parser.cpp.html">構文解析</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Parser/parser.cpp.html">Parsing</a>
 
 
 ## Code
@@ -232,7 +232,7 @@ int main(){
 #include <cassert>
 
 /**
- * @title 構文解析
+ * @title Parsing
  * @docs parser.md
  */
 struct Parser{

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 部分永続UnionFind
+# :warning: Partially persistent union-find
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3ff74e8366c88d06b530f361450b1117">Mylib/DataStructure/UnionFind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/UnionFind/partially_persistent_unionfind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-27 20:58:13+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -71,7 +71,7 @@ layout: default
 #include <numeric>
 
 /**
- * @title 部分永続UnionFind
+ * @title Partially persistent union-find
  * @docs partially_persistent_unionfind.md
  */
 class PartiallyPersistentUnionFind{
@@ -141,7 +141,7 @@ public:
 #include <numeric>
 
 /**
- * @title 部分永続UnionFind
+ * @title Partially persistent union-find
  * @docs partially_persistent_unionfind.md
  */
 class PartiallyPersistentUnionFind{

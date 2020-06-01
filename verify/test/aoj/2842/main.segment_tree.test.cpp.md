@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/2842/main.segment_tree.test.cpp
+# :x: test/aoj/2842/main.segment_tree.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#64e19fd3e4193a1559ce21d32ec43623">test/aoj/2842</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2842/main.segment_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-17 07:08:54+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_2d.cpp.html">SegmentTree (2D)</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_2d.cpp.html">Segment tree (2D)</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -56,6 +57,7 @@ layout: default
 
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree_2d.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -67,9 +69,7 @@ int main(){
 
   std::queue<std::tuple<int,int,int>> q;
   
-  while(Q--){
-    int t,c; std::cin >> t >> c;
-    
+  for(auto [t, c] : input_tuples<int, int>(Q)){
     while(q.size()){
       auto &a = q.front();
       
@@ -135,7 +135,7 @@ struct SumMonoid{
 #include <vector>
 
 /**
- * @title SegmentTree (2D)
+ * @title Segment tree (2D)
  * @docs segment_tree_2d.md
  */
 template <typename Monoid> class SegmentTree2D{
@@ -208,7 +208,61 @@ public:
     }
   }
 };
-#line 9 "test/aoj/2842/main.segment_tree.test.cpp"
+#line 5 "Mylib/IO/input_tuples.cpp"
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 10 "test/aoj/2842/main.segment_tree.test.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -220,9 +274,7 @@ int main(){
 
   std::queue<std::tuple<int,int,int>> q;
   
-  while(Q--){
-    int t,c; std::cin >> t >> c;
-    
+  for(auto [t, c] : input_tuples<int, int>(Q)){
     while(q.size()){
       auto &a = q.front();
       

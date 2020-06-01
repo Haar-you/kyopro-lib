@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: スプレー木
+# :heavy_check_mark: Splay tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#de940accc238379dfea959424e331579">Mylib/DataStructure/SplayTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SplayTree/splay_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -51,7 +51,7 @@ layout: default
 #include <tuple>
 
 /**
- * @title スプレー木
+ * @title Splay tree
  * @docs splay_tree.md
  */
 namespace splay_tree{
@@ -282,7 +282,7 @@ namespace splay_tree{
 #include <tuple>
 
 /**
- * @title スプレー木
+ * @title Splay tree
  * @docs splay_tree.md
  */
 namespace splay_tree{

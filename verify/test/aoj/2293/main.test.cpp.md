@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#deff10b29878501929a52ba1088ce342">test/aoj/2293</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2293/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 04:30:02+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2293">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2293</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">最小費用流</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/weighted_bipartite_matching.cpp.html">重み付き最大二部マッチング</a>
+* :question: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">Minimum cost flow</a>
+* :question: <a href="../../../../library/Mylib/Graph/Matching/weighted_bipartite_matching.cpp.html">Weighted maximum bipartite matching</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 
 
 ## Code
@@ -54,17 +55,15 @@ layout: default
 #include <vector>
 #include "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
 #include "Mylib/Graph/Flow/minimum_cost_flow.cpp"
+#include "Mylib/IO/input_tuple_vector.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int n; std::cin >> n;
-  
-  std::vector<int> A(n), B(n);
-  for(int i = 0; i < n; ++i){
-    std::cin >> A[i] >> B[i];
-  }
+
+  auto [A, B] = input_tuple_vector<int, int>(n);
 
   std::vector<int> ls(A);
   ls.insert(ls.end(), B.begin(), B.end());
@@ -101,7 +100,7 @@ int main(){
 #include <tuple>
 
 /**
- * @title 重み付き最大二部マッチング
+ * @title Weighted maximum bipartite matching
  * @docs weighted_bipartite_matching.md
  */
 template <typename T, typename MinCostFlow, bool MIN_MATCHING = false>
@@ -151,7 +150,7 @@ public:
 #line 8 "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 
 /**
- * @title 最小費用流
+ * @title Minimum cost flow
  * @docs minimum_cost_flow.md
  */
 template <typename T, typename U> class MinimumCostFlow{
@@ -246,18 +245,46 @@ public:
     return g;
   }
 };
-#line 7 "test/aoj/2293/main.test.cpp"
+#line 6 "Mylib/IO/input_tuple_vector.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuple_vector.md
+ */
+template <typename T, size_t ... I>
+void input_tuple_vector_init(T &val, int N, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{
+    (void(std::get<I>(val).resize(N)), 0)...
+  };
+}
+
+template <typename T, size_t ... I>
+void input_tuple_vector_helper(T &val, int i, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{
+    (void(std::cin >> std::get<I>(val)[i]), 0)...
+  };
+}
+
+template <typename ... Args>
+auto input_tuple_vector(int N){
+  std::tuple<std::vector<Args>...> ret;
+
+  input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof...(Args)>());
+  for(int i = 0; i < N; ++i){
+    input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof...(Args)>());
+  }
+
+  return ret;
+}
+#line 8 "test/aoj/2293/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int n; std::cin >> n;
-  
-  std::vector<int> A(n), B(n);
-  for(int i = 0; i < n; ++i){
-    std::cin >> A[i] >> B[i];
-  }
+
+  auto [A, B] = input_tuple_vector<int, int>(n);
 
   std::vector<int> ls(A);
   ls.insert(ls.end(), B.begin(), B.end());

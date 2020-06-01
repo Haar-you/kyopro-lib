@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_2_H/main.test.cpp
+# :x: test/aoj/DSL_2_H/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#dff63cd4dbbcc206af021772ba80d157">test/aoj/DSL_2_H</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_H/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-17 07:08:54+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H</a>
@@ -39,10 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/add_min.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_min.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">遅延SegmentTree</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/add_min.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_min.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">Lazy segment tree</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -55,6 +56,7 @@ layout: default
 #include <iostream>
 #include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/add_min.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
@@ -62,16 +64,11 @@ int main(){
   LazySegmentTree<AddMin<int64_t,int64_t>> seg(n);
   seg.init(0);
 
-  while(q--){
-    int type; std::cin >> type;
-
+  for(auto [type, s, t] : input_tuples<int, int, int>(q)){
     if(type == 0){
-      int s,t,x; std::cin >> s >> t >> x;
-
+      int x; std::cin >> x;
       seg.update(s, t+1, x);
     }else{
-      int s,t; std::cin >> s >> t;
-
       std::cout << seg.get(s, t+1) << std::endl;
     }
   }
@@ -93,7 +90,7 @@ int main(){
 #include <vector>
 
 /**
- * @title 遅延SegmentTree
+ * @title Lazy segment tree
  * @docs lazy_segment_tree.md
  */
 template <typename Monoid>
@@ -203,7 +200,62 @@ struct AddMin{
     return a + b;
   }
 };
-#line 6 "test/aoj/DSL_2_H/main.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 7 "test/aoj/DSL_2_H/main.test.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
@@ -211,16 +263,11 @@ int main(){
   LazySegmentTree<AddMin<int64_t,int64_t>> seg(n);
   seg.init(0);
 
-  while(q--){
-    int type; std::cin >> type;
-
+  for(auto [type, s, t] : input_tuples<int, int, int>(q)){
     if(type == 0){
-      int s,t,x; std::cin >> s >> t >> x;
-
+      int x; std::cin >> x;
       seg.update(s, t+1, x);
     }else{
-      int s,t; std::cin >> s >> t;
-
       std::cout << seg.get(s, t+1) << std::endl;
     }
   }

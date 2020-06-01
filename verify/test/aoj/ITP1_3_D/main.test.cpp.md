@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/ITP1_3_D/main.test.cpp
+# :x: test/aoj/ITP1_3_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#8d38fbe7bd169996a63c214260a5e34a">test/aoj/ITP1_3_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ITP1_3_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-09 08:43:01+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Divisor/enumerate_divisor.cpp.html">約数列挙</a>
+* :x: <a href="../../../../library/Mylib/Number/Divisor/enumerate_divisor.cpp.html">Enumerate divisors</a>
 
 
 ## Code
@@ -81,7 +81,7 @@ int main(){
 #include <algorithm>
 
 /**
- * @title 約数列挙
+ * @title Enumerate divisors
  * @docs enumerate_divisor.md
  */
 std::vector<std::int64_t> enumerate_divisor(std::int64_t n){

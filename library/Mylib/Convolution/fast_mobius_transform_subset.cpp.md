@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 下位集合に対する高速Möbius変換
+# :heavy_check_mark: Fast Möbius transform (Subsets)
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/fast_mobius_transform_subset.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-30 20:34:51+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -55,7 +55,7 @@ layout: default
 
 ## Required by
 
-* :warning: <a href="convolution_or.cpp.html">添字BitOr畳み込み</a>
+* :warning: <a href="convolution_or.cpp.html">Convolution (Index bitwise OR)</a>
 
 
 ## Verified with
@@ -73,7 +73,7 @@ layout: default
 #include <functional>
 
 /**
- * @title 下位集合に対する高速Möbius変換
+ * @title Fast Möbius transform (Subsets)
  * @docs fast_mobius_transform_subset.md
  */
 template <typename T, typename Func = std::minus<T>>
@@ -97,7 +97,7 @@ std::vector<T> fast_mobius_transform_subset(std::vector<T> f, const Func &op = s
 #include <functional>
 
 /**
- * @title 下位集合に対する高速Möbius変換
+ * @title Fast Möbius transform (Subsets)
  * @docs fast_mobius_transform_subset.md
  */
 template <typename T, typename Func = std::minus<T>>

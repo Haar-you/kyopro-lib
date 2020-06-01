@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 重心分解
+# :warning: Centroid decomposition
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/centroid_decomposition.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Code
@@ -51,7 +51,7 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 重心分解
+ * @title Centroid decomposition
  * @docs centroid_decomposition.md
  */
 template <typename T>
@@ -116,7 +116,7 @@ struct CentroidDecomposition{
 #include <iostream>
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -142,7 +142,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 4 "Mylib/Graph/TreeUtils/centroid_decomposition.cpp"
 
 /**
- * @title 重心分解
+ * @title Centroid decomposition
  * @docs centroid_decomposition.md
  */
 template <typename T>

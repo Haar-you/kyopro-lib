@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0bdfbad106799ccca05cbd57bfdddfd4">test/aoj/1327</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1327/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 20:03:33+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327</a>
@@ -39,9 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/power.cpp.html">行列累乗</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">正方行列</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">modint (実行時mod指定)</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/power.cpp.html">Power of a matrix</a>
+* :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Square matrix</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">Modint (Runtime mod)</a>
 
 
 ## Code
@@ -56,7 +58,8 @@ layout: default
 #include "Mylib/Number/Mint/runtime_mint.cpp"
 #include "Mylib/LinearAlgebra/Square/square_matrix.cpp"
 #include "Mylib/LinearAlgebra/Square/power.cpp"
-
+#include "Mylib/IO/join.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using mint = RuntimeModInt;
 
@@ -68,9 +71,8 @@ int main(){
   while(std::cin >> n >> m >> a >> b >> c >> t, n){
     mint::M = m;
     M::N = n;
-     
-    std::vector<mint> s(n);
-    for(int i = 0; i < n; ++i) std::cin >> s[i];
+
+    auto s = input_vector<mint>(n);
      
     M mat;
      
@@ -89,12 +91,8 @@ int main(){
         ans[i] += mat[i][j] * s[j];
       }
     }
-     
-    for(int i = 0; i < n; ++i){
-      if(i) std::cout << " ";
-      std::cout << ans[i];
-    }
-    std::cout << std::endl;
+
+    std::cout << join(ans.begin(), ans.end()) << "\n";
   }
      
   return 0;
@@ -115,7 +113,7 @@ int main(){
 #include <utility>
 
 /**
- * @title modint (実行時mod指定)
+ * @title Modint (Runtime mod)
  * @docs runtime_mint.md
  */
 class RuntimeModInt{
@@ -185,7 +183,7 @@ std::ostream& operator<<(std::ostream &os, const RuntimeModInt &a){os << a.val; 
 #line 4 "Mylib/LinearAlgebra/Square/square_matrix.cpp"
 
 /**
- * @title 正方行列
+ * @title Square matrix
  * @docs square_matrix.md
  */
 template <typename T, class Tag> struct SquareMatrix{
@@ -242,7 +240,7 @@ template <typename T, class Tag> int SquareMatrix<T,Tag>::N;
 #line 2 "Mylib/LinearAlgebra/Square/power.cpp"
 
 /**
- * @title 行列累乗
+ * @title Power of a matrix
  * @docs power.md
  */
 template <typename M, typename T = typename M::value_type>
@@ -257,8 +255,43 @@ M power(M a, uint64_t p){
   
   return ret;
 }
-#line 8 "test/aoj/1327/main.test.cpp"
+#line 3 "Mylib/IO/join.cpp"
+#include <sstream>
+#include <string>
 
+/**
+ * @docs join.md
+ */
+template <typename ITER>
+std::string join(ITER first, ITER last, std::string delim = " "){
+  std::stringstream s;
+
+  for(auto it = first; it != last; ++it){
+    if(it != first) s << delim;
+    s << *it;
+  }
+
+  return s.str();
+}
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 10 "test/aoj/1327/main.test.cpp"
 
 using mint = RuntimeModInt;
 
@@ -270,9 +303,8 @@ int main(){
   while(std::cin >> n >> m >> a >> b >> c >> t, n){
     mint::M = m;
     M::N = n;
-     
-    std::vector<mint> s(n);
-    for(int i = 0; i < n; ++i) std::cin >> s[i];
+
+    auto s = input_vector<mint>(n);
      
     M mat;
      
@@ -291,12 +323,8 @@ int main(){
         ans[i] += mat[i][j] * s[j];
       }
     }
-     
-    for(int i = 0; i < n; ++i){
-      if(i) std::cout << " ";
-      std::cout << ans[i];
-    }
-    std::cout << std::endl;
+
+    std::cout << join(ans.begin(), ans.end()) << "\n";
   }
      
   return 0;

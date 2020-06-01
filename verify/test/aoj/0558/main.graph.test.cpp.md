@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#cfdc241edb33a016c1ab681da8d9e179">test/aoj/0558</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/0558/main.graph.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 12:01:21+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0558">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0558</a>
@@ -39,10 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/bfs_shortest_path.cpp.html">BFS最短路</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Grid/grid.cpp.html">グリッド用テンプレート</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Grid/grid_to_graph.cpp.html">グリッドをグラフに変換する</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/bfs_shortest_path.cpp.html">BFS shortest path</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Grid/grid.cpp.html">Grid template</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Grid/grid_find.cpp.html">Enumerate points satisfying conditions</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Grid/grid_to_graph.cpp.html">Convert grid to graph</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -56,8 +58,10 @@ layout: default
 #include <vector>
 #include "Mylib/Grid/grid.cpp"
 #include "Mylib/Grid/grid_to_graph.cpp"
+#include "Mylib/Grid/grid_find.cpp"
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/ShortestPath/bfs_shortest_path.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -65,17 +69,13 @@ int main(){
 
   int H, W, N; std::cin >> H >> W >> N;
 
-  std::vector<std::string> s(H);
-  for(int i = 0; i < H; ++i) std::cin >> s[i];
+  auto s = input_vector<std::string>(H);
   
   std::vector<Point> ps(N+1);
   
-  for(int i = 0; i < H; ++i){
-    for(int j = 0; j < W; ++j){
-      if(s[i][j] == 'S') ps[0] = Point(i, j);
-      else if(s[i][j] >= '1' and s[i][j] <= '9') ps[s[i][j]-'0'] = Point(i, j);
-    }
-  }
+  ps[0] = grid_find(s, 'S')[0];
+
+  for(int i = 1; i <= N; ++i) ps[i] = grid_find(s, (char)('0' + i))[0];
 
   auto index = [&](int i, int j){return i * W + j;};
 
@@ -120,7 +120,7 @@ int main(){
 #include <utility>
 
 /**
- * @title グリッド用テンプレート
+ * @title Grid template
  * @docs grid.md
  */
 struct Point{
@@ -157,7 +157,7 @@ namespace grid{
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -183,7 +183,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Grid/grid_to_graph.cpp"
 
 /**
- * @title グリッドをグラフに変換する
+ * @title Convert grid to graph
  * @docs grid_to_graph.md
  */
 template <typename T, typename Directions, typename Index, typename Checker, typename Generator>
@@ -212,13 +212,34 @@ Graph<T> grid_to_graph(
   
   return ret;
 }
+#line 4 "Mylib/Grid/grid_find.cpp"
+
+/**
+ * @title Enumerate points satisfying conditions
+ * @docs grid_find.md
+ */
+template <typename C, typename T = typename C::value_type>
+auto grid_find(const std::vector<C> &A, T value){
+  const int H = A.size(), W = A[0].size();
+  
+  std::vector<Point> ret;
+  for(int i = 0; i < H; ++i){
+    for(int j = 0; j < W; ++j){
+      if(A[i][j] == value){
+        ret.emplace_back(i, j);
+      }
+    }
+  }
+
+  return ret;  
+}
 #line 3 "Mylib/Graph/ShortestPath/bfs_shortest_path.cpp"
 #include <optional>
 #include <queue>
 #line 6 "Mylib/Graph/ShortestPath/bfs_shortest_path.cpp"
 
 /**
- * @title BFS最短路
+ * @title BFS shortest path
  * @docs bfs_shortest_path.md
  */
 template <typename T>
@@ -249,7 +270,25 @@ std::vector<std::optional<int>> bfs_shortest_path(const Graph<T> &g, const std::
 
   return ret;
 }
-#line 9 "test/aoj/0558/main.graph.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 11 "test/aoj/0558/main.graph.test.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -257,17 +296,13 @@ int main(){
 
   int H, W, N; std::cin >> H >> W >> N;
 
-  std::vector<std::string> s(H);
-  for(int i = 0; i < H; ++i) std::cin >> s[i];
+  auto s = input_vector<std::string>(H);
   
   std::vector<Point> ps(N+1);
   
-  for(int i = 0; i < H; ++i){
-    for(int j = 0; j < W; ++j){
-      if(s[i][j] == 'S') ps[0] = Point(i, j);
-      else if(s[i][j] >= '1' and s[i][j] <= '9') ps[s[i][j]-'0'] = Point(i, j);
-    }
-  }
+  ps[0] = grid_find(s, 'S')[0];
+
+  for(int i = 1; i <= N; ++i) ps[i] = grid_find(s, (char)('0' + i))[0];
 
   auto index = [&](int i, int j){return i * W + j;};
 

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#453a4dbc3063ebc5e529de1cba20ccae">test/aoj/1300</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1300/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1300">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1300</a>
@@ -39,10 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp.html">掃き出し法</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Rational/rational.cpp.html">有理数クラス</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Parser/parser.cpp.html">構文解析</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/split.cpp.html">文字列のsplit関数</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp.html">Gaussian elimination</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Rational/rational.cpp.html">Rational number</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Parser/parser.cpp.html">Parsing</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/String/split.cpp.html">split</a>
 
 
 ## Code
@@ -61,6 +62,7 @@ layout: default
 #include "Mylib/Number/Rational/rational.cpp"
 #include "Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp"
 #include "Mylib/String/split.cpp"
+#include "Mylib/IO/join.cpp"
 
 using result = std::map<std::string, int>;
 
@@ -198,11 +200,7 @@ int main(){
 
     for(int i = 0; i < n; ++i) ans[i] *= l;
 
-    for(int i = 0; i < (int)ans.size(); ++i){
-      if(i) std::cout << " ";
-      std::cout << ans[i];
-    }
-    std::cout << "\n";
+    std::cout << join(ans.begin(), ans.end()) << "\n";
   }
   
   return 0;
@@ -228,7 +226,7 @@ int main(){
 #include <cassert>
 
 /**
- * @title 構文解析
+ * @title Parsing
  * @docs parser.md
  */
 struct Parser{
@@ -338,7 +336,7 @@ struct Parser{
 #line 4 "Mylib/Number/Rational/rational.cpp"
 
 /**
- * @title 有理数クラス
+ * @title Rational number
  * @docs rational.md
  */
 class Rational{
@@ -402,7 +400,7 @@ auto abs(const Rational &a){return Rational(abs(a.nume), abs(a.deno));}
 #include <utility>
 
 /**
- * @title 掃き出し法
+ * @title Gaussian elimination
  * @docs gaussian_elimination.md
  */
 template <typename T> int gaussian_elimination(std::vector<std::vector<T>> &a){
@@ -443,7 +441,7 @@ template <typename T> int gaussian_elimination(std::vector<std::vector<T>> &a){
 #line 4 "Mylib/String/split.cpp"
 
 /**
- * @title 文字列のsplit関数
+ * @title split
  * @docs split.md
  */
 auto split(const std::string &s, const std::string &delim){
@@ -463,7 +461,25 @@ auto split(const std::string &s, const std::string &delim){
 
   return ret;
 }
-#line 12 "test/aoj/1300/main.test.cpp"
+#line 3 "Mylib/IO/join.cpp"
+#include <sstream>
+#line 5 "Mylib/IO/join.cpp"
+
+/**
+ * @docs join.md
+ */
+template <typename ITER>
+std::string join(ITER first, ITER last, std::string delim = " "){
+  std::stringstream s;
+
+  for(auto it = first; it != last; ++it){
+    if(it != first) s << delim;
+    s << *it;
+  }
+
+  return s.str();
+}
+#line 13 "test/aoj/1300/main.test.cpp"
 
 using result = std::map<std::string, int>;
 
@@ -601,11 +617,7 @@ int main(){
 
     for(int i = 0; i < n; ++i) ans[i] *= l;
 
-    for(int i = 0; i < (int)ans.size(); ++i){
-      if(i) std::cout << " ";
-      std::cout << ans[i];
-    }
-    std::cout << "\n";
+    std::cout << join(ans.begin(), ans.end()) << "\n";
   }
   
   return 0;

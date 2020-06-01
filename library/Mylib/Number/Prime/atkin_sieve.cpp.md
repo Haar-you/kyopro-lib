@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Atkinの篩
+# :x: Sieve of Atkin
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/atkin_sieve.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/843/main.atkin.test.cpp.html">test/yukicoder/843/main.atkin.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/843/main.atkin.test.cpp.html">test/yukicoder/843/main.atkin.test.cpp</a>
 
 
 ## Code
@@ -51,7 +51,7 @@ layout: default
 #include <vector>
 
 /**
- * @title Atkinの篩
+ * @title Sieve of Atkin
  * @docs atkin_sieve.md
  */
 template <int MAX>
@@ -107,7 +107,7 @@ template <int MAX> std::bitset<MAX+1> AtkinSieve<MAX>::is_prime;
 #include <vector>
 
 /**
- * @title Atkinの篩
+ * @title Sieve of Atkin
  * @docs atkin_sieve.md
  */
 template <int MAX>

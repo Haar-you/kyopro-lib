@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: SparseTable
+# :x: Sparse table
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9f519a6857abe7364ea5fbe97ba369aa">Mylib/DataStructure/SparseTable</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SparseTable/sparse_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 14:34:19+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -52,7 +52,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/staticrmq/main.sparse_table.test.cpp.html">test/yosupo-judge/staticrmq/main.sparse_table.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/staticrmq/main.sparse_table.test.cpp.html">test/yosupo-judge/staticrmq/main.sparse_table.test.cpp</a>
 
 
 ## Code
@@ -66,7 +66,7 @@ layout: default
 #include <algorithm>
 
 /**
- * @title SparseTable
+ * @title Sparse table
  * @docs sparse_table.md
  */
 template <typename Semilattice>
@@ -130,7 +130,7 @@ public:
 #include <algorithm>
 
 /**
- * @title SparseTable
+ * @title Sparse table
  * @docs sparse_table.md
  */
 template <typename Semilattice>

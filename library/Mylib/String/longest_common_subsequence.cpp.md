@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 最長共通部分列
+# :x: Longest common subsequence
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/longest_common_subsequence.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 08:33:11+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -54,7 +54,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/ALDS1_10_C/main.test.cpp.html">test/aoj/ALDS1_10_C/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/ALDS1_10_C/main.test.cpp.html">test/aoj/ALDS1_10_C/main.test.cpp</a>
 
 
 ## Code
@@ -67,7 +67,7 @@ layout: default
 #include <algorithm>
 
 /**
- * @title 最長共通部分列
+ * @title Longest common subsequence
  * @docs longest_common_subsequence.md
  */
 template <typename Container, typename T = typename Container::value_type>
@@ -95,7 +95,7 @@ int lcs(const Container &a, const Container &b){
 #include <algorithm>
 
 /**
- * @title 最長共通部分列
+ * @title Longest common subsequence
  * @docs longest_common_subsequence.md
  */
 template <typename Container, typename T = typename Container::value_type>

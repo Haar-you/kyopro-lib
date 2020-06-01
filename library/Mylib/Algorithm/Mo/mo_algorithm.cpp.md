@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: MoAlgorithm
+# :warning: Mo's algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1534504632931a6652ca965283803a2e">Mylib/Algorithm/Mo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Mo/mo_algorithm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 16:55:31+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -82,7 +82,7 @@ layout: default
 #include <cassert>
 
 /**
- * @title MoAlgorithm
+ * @title Mo's algorithm
  * @docs mo_algorithm.md
  */
 template <typename F, typename G, typename H>
@@ -170,7 +170,7 @@ auto make_mo(int N, int Q, F append, G remove, H query){
 #include <cassert>
 
 /**
- * @title MoAlgorithm
+ * @title Mo's algorithm
  * @docs mo_algorithm.md
  */
 template <typename F, typename G, typename H>

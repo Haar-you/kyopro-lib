@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#149f439fdc492bcb6afb80a048374854">test/aoj/2370</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2370/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-13 00:35:35+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2370">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2370</a>
@@ -39,9 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp.html">二部グラフ判定</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp.html">個数制限付き部分和問題</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp.html">Check bipartite graph</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp.html">Subset sum problem (With quantity limitations)</a>
 
 
 ## Code
@@ -59,17 +60,12 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp"
 #include "Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp"
-
+#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
-
-  Graph<int> g(V);
-  for(int i = 0; i < E; ++i){
-    int a, b; std::cin >> a >> b;
-    --a, --b;
-    add_undirected(g, a, b, 1);
-  }
+  
+  auto g = convert_to_graph<int, false>(V, input_edges<int, 1, false>(E));
 
   auto res = check_bipartite_graph(g);
   
@@ -105,7 +101,7 @@ int main(){
     }
 
     ans -= E;
-    std::cout << ans << "\n";    
+    std::cout << ans << "\n";
   }else{
     std::cout << -1 << "\n";
   }
@@ -130,7 +126,7 @@ int main(){
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -160,7 +156,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 7 "Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp"
 
 /**
- * @title 二部グラフ判定
+ * @title Check bipartite graph
  * @docs check_bipartite_graph.md
  */
 template <typename T>
@@ -222,7 +218,7 @@ auto check_bipartite_graph(const Graph<T> &g){
 #line 3 "Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp"
 
 /**
- * @title 個数制限付き部分和問題
+ * @title Subset sum problem (With quantity limitations)
  * @docs subset_sum_limited.md
  */
 auto subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vector<int> &m){
@@ -245,18 +241,43 @@ auto subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vect
 
   return dp;
 }
-#line 11 "test/aoj/2370/main.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
 
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 12 "test/aoj/2370/main.test.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
-
-  Graph<int> g(V);
-  for(int i = 0; i < E; ++i){
-    int a, b; std::cin >> a >> b;
-    --a, --b;
-    add_undirected(g, a, b, 1);
-  }
+  
+  auto g = convert_to_graph<int, false>(V, input_edges<int, 1, false>(E));
 
   auto res = check_bipartite_graph(g);
   
@@ -292,7 +313,7 @@ int main(){
     }
 
     ans -= E;
-    std::cout << ans << "\n";    
+    std::cout << ans << "\n";
   }else{
     std::cout << -1 << "\n";
   }

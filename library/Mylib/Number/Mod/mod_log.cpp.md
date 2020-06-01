@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: mod対数
+# :x: Mod logarithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#795ab137908c82fc28acbcffe5b1c757">Mylib/Number/Mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mod/mod_log.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 14:34:19+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -53,13 +53,13 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="mod_inv.cpp.html">mod逆数</a>
-* :heavy_check_mark: <a href="mod_power.cpp.html">mod累乗</a>
+* :x: <a href="mod_inv.cpp.html">Mod inverse</a>
+* :question: <a href="mod_power.cpp.html">Mod power</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
 
 
 ## Code
@@ -76,7 +76,7 @@ layout: default
 #include "Mylib/Number/Mod/mod_inv.cpp"
 
 /**
- * @title mod対数
+ * @title Mod logarithm
  * @docs mod_log.md
  */
 std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
@@ -143,7 +143,7 @@ std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
 #line 2 "Mylib/Number/Mod/mod_power.cpp"
 
 /**
- * @title mod累乗
+ * @title Mod power
  * @docs mod_power.md
  */
 int64_t power(int64_t n, int64_t p, int64_t m){
@@ -159,7 +159,7 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 #include <utility>
 
 /**
- * @title mod逆数
+ * @title Mod inverse
  * @docs mod_inv.md
  */
 int64_t mod_inv(int64_t a, int64_t m){
@@ -179,7 +179,7 @@ int64_t mod_inv(int64_t a, int64_t m){
 #line 8 "Mylib/Number/Mod/mod_log.cpp"
 
 /**
- * @title mod対数
+ * @title Mod logarithm
  * @docs mod_log.md
  */
 std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){

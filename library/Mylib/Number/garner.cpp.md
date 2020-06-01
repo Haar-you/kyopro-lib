@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Garner法
+# :warning: Garner algorithm
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/garner.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="Mod/mod_inv.cpp.html">mod逆数</a>
+* :x: <a href="Mod/mod_inv.cpp.html">Mod inverse</a>
 
 
 ## Code
@@ -51,7 +51,7 @@ layout: default
 #include "Mylib/Number/Mod/mod_inv.cpp"
 
 /**
- * @title Garner法
+ * @title Garner algorithm
  * @docs garner.md
  */
 int64_t garner_algorithm(std::vector<int64_t> r, std::vector<int64_t> m, const int64_t mod){
@@ -84,7 +84,7 @@ int64_t garner_algorithm(std::vector<int64_t> r, std::vector<int64_t> m, const i
 #include <utility>
 
 /**
- * @title mod逆数
+ * @title Mod inverse
  * @docs mod_inv.md
  */
 int64_t mod_inv(int64_t a, int64_t m){
@@ -104,7 +104,7 @@ int64_t mod_inv(int64_t a, int64_t m){
 #line 4 "Mylib/Number/garner.cpp"
 
 /**
- * @title Garner法
+ * @title Garner algorithm
  * @docs garner.md
  */
 int64_t garner_algorithm(std::vector<int64_t> r, std::vector<int64_t> m, const int64_t mod){

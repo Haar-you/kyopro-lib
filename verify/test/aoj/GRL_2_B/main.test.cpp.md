@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/GRL_2_B/main.test.cpp
+# :x: test/aoj/GRL_2_B/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#8a44cfd2c1cd011629cace42f57a6853">test/aoj/GRL_2_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_2_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-27 18:33:06+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_B</a>
@@ -39,9 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp.html">Chu-Liu/Edmonds</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
+* :x: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp.html">Chu-Liu/Edmonds algorithm</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
 
 
 ## Code
@@ -54,15 +55,12 @@ layout: default
 #include <iostream>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp"
+#include "Mylib/IO/input_graph.cpp"
 
 int main() {
   int V, E, r; std::cin >> V >> E >> r;
 
-  Graph<int> g(V);
-  for(int i = 0; i < E; ++i){
-    int s, t, w; std::cin >> s >> t >> w;
-    add_edge(g, s, t, w);
-  }
+  auto g = convert_to_graph<int, true>(V, input_edges<int, 0, true>(E));
 
   auto res = ChuLiuEdmonds<int>::solve(g, r);
 
@@ -92,7 +90,7 @@ int main() {
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -120,7 +118,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 
 /**
- * @title 強連結成分分解
+ * @title Strongly connected components
  * @docs strongly_connected_components.md
  */
 template <typename T>
@@ -165,7 +163,7 @@ auto strongly_connected_components(const Graph<T> &g){
 #line 6 "Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp"
 
 /**
- * @title Chu-Liu/Edmonds
+ * @title Chu-Liu/Edmonds algorithm
  * @docs chu_liu_edmonds.md
  */
 template <typename T>
@@ -287,16 +285,43 @@ public:
     return ret;
   }
 };
-#line 6 "test/aoj/GRL_2_B/main.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 7 "test/aoj/GRL_2_B/main.test.cpp"
 
 int main() {
   int V, E, r; std::cin >> V >> E >> r;
 
-  Graph<int> g(V);
-  for(int i = 0; i < E; ++i){
-    int s, t, w; std::cin >> s >> t >> w;
-    add_edge(g, s, t, w);
-  }
+  auto g = convert_to_graph<int, true>(V, input_edges<int, 0, true>(E));
 
   auto res = ChuLiuEdmonds<int>::solve(g, r);
 

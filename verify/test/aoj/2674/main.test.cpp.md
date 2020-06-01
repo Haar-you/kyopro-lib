@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/2674/main.test.cpp
+# :x: test/aoj/2674/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#851bd501caf05418a029865ccd3f2b9f">test/aoj/2674</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2674/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-23 07:34:18+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674</a>
@@ -39,8 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">簡潔辞書</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">WaveletMatrix</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">Succinct dictionary</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Wavelet matrix</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -55,23 +57,20 @@ layout: default
 #include <algorithm>
 #include <limits>
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int D; std::cin >> D;
 
-  std::vector<uint32_t> x(D);
-  for(int i = 0; i < D; ++i){
-    std::cin >> x[i];
-    x[i] += 100000000;
-  }
+  auto x = input_vector<uint32_t>(D);
+  for(auto &v : x) v += 100000000;
 
   auto wm = make_wavelet_matrix_int(x);
 
   int Q; std::cin >> Q;
-
-  while(Q--){
-    int l, r, e; std::cin >> l >> r >> e;
-
+  
+  for(auto [l, r, e] : input_tuples<int, int, int>(Q)){
     --l, --r;
 
     int a = std::min(x[l], x[r]);
@@ -111,7 +110,7 @@ int main(){
 #include <optional>
 
 /**
- * @title 簡潔辞書
+ * @title Succinct dictionary
  * @docs succinct_dictionary.md
  */
 struct SuccinctDict{
@@ -217,7 +216,7 @@ struct SuccinctDict{
 #line 9 "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 
 /**
- * @title WaveletMatrix
+ * @title Wavelet matrix
  * @docs wavelet_matrix.md
  */
 template <typename T, int B>
@@ -473,24 +472,90 @@ public:
 WaveletMatrix<uint32_t,32> make_wavelet_matrix_int(const std::vector<uint32_t> &data){
   return WaveletMatrix<uint32_t, 32>(data);
 }
-#line 8 "test/aoj/2674/main.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 10 "test/aoj/2674/main.test.cpp"
 
 int main(){
   int D; std::cin >> D;
 
-  std::vector<uint32_t> x(D);
-  for(int i = 0; i < D; ++i){
-    std::cin >> x[i];
-    x[i] += 100000000;
-  }
+  auto x = input_vector<uint32_t>(D);
+  for(auto &v : x) v += 100000000;
 
   auto wm = make_wavelet_matrix_int(x);
 
   int Q; std::cin >> Q;
-
-  while(Q--){
-    int l, r, e; std::cin >> l >> r >> e;
-
+  
+  for(auto [l, r, e] : input_tuples<int, int, int>(Q)){
     --l, --r;
 
     int a = std::min(x[l], x[r]);

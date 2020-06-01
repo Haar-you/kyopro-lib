@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/919/main.test.cpp
+# :x: test/yukicoder/919/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#04b116a81dfc7c00cb5f1e4f7226b8d9">test/yukicoder/919</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/919/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-23 07:34:18+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/919">https://yukicoder.me/problems/no/919</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">簡潔辞書</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">WaveletMatrix</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">Succinct dictionary</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Wavelet matrix</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -56,14 +57,17 @@ layout: default
 #include <climits>
 
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 const int H = 1000000000;
 
 int main(){
-  int N; std::cin >> N;
-  std::vector<int> A(N);
-  for(int i = 0; i < N; ++i) std::cin >> A[i];
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
 
+  int N; std::cin >> N;
+
+  auto A = input_vector<int>(N);
   for(auto &x : A) x += H;
 
   auto wm = make_wavelet_matrix_int(std::vector<uint32_t>(A.begin(), A.end()));
@@ -125,7 +129,7 @@ int main(){
 #include <optional>
 
 /**
- * @title 簡潔辞書
+ * @title Succinct dictionary
  * @docs succinct_dictionary.md
  */
 struct SuccinctDict{
@@ -231,7 +235,7 @@ struct SuccinctDict{
 #line 9 "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 
 /**
- * @title WaveletMatrix
+ * @title Wavelet matrix
  * @docs wavelet_matrix.md
  */
 template <typename T, int B>
@@ -487,15 +491,35 @@ public:
 WaveletMatrix<uint32_t,32> make_wavelet_matrix_int(const std::vector<uint32_t> &data){
   return WaveletMatrix<uint32_t, 32>(data);
 }
-#line 9 "test/yukicoder/919/main.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 10 "test/yukicoder/919/main.test.cpp"
 
 const int H = 1000000000;
 
 int main(){
-  int N; std::cin >> N;
-  std::vector<int> A(N);
-  for(int i = 0; i < N; ++i) std::cin >> A[i];
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
 
+  int N; std::cin >> N;
+
+  auto A = input_vector<int>(N);
   for(auto &x : A) x += H;
 
   auto wm = make_wavelet_matrix_int(std::vector<uint32_t>(A.begin(), A.end()));

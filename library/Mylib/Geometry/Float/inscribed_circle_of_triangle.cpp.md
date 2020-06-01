@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 三角形の内接円
+# :warning: Inscribed circle of a triangle
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/inscribed_circle_of_triangle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="geometry_template.cpp.html">Geometry template</a>
 
 
 ## Code
@@ -50,7 +50,7 @@ layout: default
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 三角形の内接円
+ * @title Inscribed circle of a triangle
  * @docs inscribed_circle_of_triangle.md
  */
 template <typename T>
@@ -75,7 +75,7 @@ Circle<T> inscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b, con
 #include <vector>
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -159,7 +159,7 @@ template <typename T> struct Circle{
 #line 3 "Mylib/Geometry/Float/inscribed_circle_of_triangle.cpp"
 
 /**
- * @title 三角形の内接円
+ * @title Inscribed circle of a triangle
  * @docs inscribed_circle_of_triangle.md
  */
 template <typename T>

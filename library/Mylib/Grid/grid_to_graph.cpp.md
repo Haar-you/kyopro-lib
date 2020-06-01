@@ -25,21 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: グリッドをグラフに変換する
+# :heavy_check_mark: Convert grid to graph
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#437b04c37f52e5b35f1d2c24c546c491">Mylib/Grid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Grid/grid_to_graph.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 12:01:21+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../Graph/graph_template.cpp.html">グラフ用テンプレート</a>
-* :heavy_check_mark: <a href="grid.cpp.html">グリッド用テンプレート</a>
+* :question: <a href="../Graph/graph_template.cpp.html">Graph template</a>
+* :heavy_check_mark: <a href="grid.cpp.html">Grid template</a>
 
 
 ## Verified with
@@ -58,7 +58,7 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グリッドをグラフに変換する
+ * @title Convert grid to graph
  * @docs grid_to_graph.md
  */
 template <typename T, typename Directions, typename Index, typename Checker, typename Generator>
@@ -102,7 +102,7 @@ Graph<T> grid_to_graph(
 #include <utility>
 
 /**
- * @title グリッド用テンプレート
+ * @title Grid template
  * @docs grid.md
  */
 struct Point{
@@ -139,7 +139,7 @@ namespace grid{
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -165,7 +165,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Grid/grid_to_graph.cpp"
 
 /**
- * @title グリッドをグラフに変換する
+ * @title Convert grid to graph
  * @docs grid_to_graph.md
  */
 template <typename T, typename Directions, typename Index, typename Checker, typename Generator>

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#9c9a92db287cfe91b89f042067749877">test/aoj/2530</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2530/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2530">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2530</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp.html">連立線形方程式 (Mod2体)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp.html">Simultaneous linear equations (Mod2)</a>
+* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
 
 
 ## Code
@@ -55,6 +56,7 @@ layout: default
 #include <bitset>
 #include "Mylib/Number/Mod/mod_power.cpp"
 #include "Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp"
+#include "Mylib/IO/input_vector.cpp"
  
 constexpr int64_t mod = 1000000009;
  
@@ -62,13 +64,8 @@ using B = std::bitset<2500>;
  
 int main(){
   int R, C; std::cin >> R >> C;
- 
-  std::vector<std::vector<int>> f(R, std::vector<int>(C));
-  for(int i = 0; i < R; ++i){
-    for(int j = 0; j < C; ++j){
-      std::cin >> f[i][j];
-    }
-  }
+
+  auto f = input_vector<int>(R, C);
  
   std::vector<std::vector<int>> index(R, std::vector<int>(C));
   {
@@ -125,7 +122,7 @@ int main(){
 #line 2 "Mylib/Number/Mod/mod_power.cpp"
 
 /**
- * @title mod累乗
+ * @title Mod power
  * @docs mod_power.md
  */
 int64_t power(int64_t n, int64_t p, int64_t m){
@@ -143,7 +140,7 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 #line 6 "Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp"
 
 /**
- * @title 連立線形方程式 (Mod2体)
+ * @title Simultaneous linear equations (Mod2)
  * @docs binary_simultaneous_linear_equations.md
  */
 namespace binary_simultaneous_linear_equations{
@@ -199,7 +196,25 @@ namespace binary_simultaneous_linear_equations{
     return ret;
   }
 }
-#line 8 "test/aoj/2530/main.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 9 "test/aoj/2530/main.test.cpp"
  
 constexpr int64_t mod = 1000000009;
  
@@ -207,13 +222,8 @@ using B = std::bitset<2500>;
  
 int main(){
   int R, C; std::cin >> R >> C;
- 
-  std::vector<std::vector<int>> f(R, std::vector<int>(C));
-  for(int i = 0; i < R; ++i){
-    for(int j = 0; j < C; ++j){
-      std::cin >> f[i][j];
-    }
-  }
+
+  auto f = input_vector<int>(R, C);
  
   std::vector<std::vector<int>> index(R, std::vector<int>(C));
   {

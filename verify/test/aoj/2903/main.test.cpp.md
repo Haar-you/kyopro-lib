@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/2903/main.test.cpp
+# :x: test/aoj/2903/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a4e6aa089926e18aa464289d5229ad29">test/aoj/2903</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2903/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 16:28:32+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2903">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2903</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson法</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/project_selection_problem.cpp.html">ProjectSelectionProblem</a>
+* :x: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson algorithm</a>
+* :x: <a href="../../../../library/Mylib/Graph/project_selection_problem.cpp.html">Project selection problem</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -56,11 +57,12 @@ layout: default
 
 #include "Mylib/Graph/project_selection_problem.cpp"
 #include "Mylib/Graph/Flow/ford_fulkerson.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   int R, C; std::cin >> R >> C;
-  std::vector<std::string> S(R);
-  for(int i = 0; i < R; ++i) std::cin >> S[i];
+
+  auto S = input_vector<std::string>(R);
 
   ProjectSelectionProblem<int, FordFulkerson<int>> psp(R*C);
   // red: horizontal
@@ -117,7 +119,7 @@ int main(){
 #include <limits>
 
 /*
- * @title ProjectSelectionProblem
+ * @title Project selection problem
  * @docs project_selection_problem.md
  */
 template <typename T, typename Flow>
@@ -223,7 +225,7 @@ public:
 #include <algorithm>
 
 /**
- * @title Ford-Fulkerson法
+ * @title Ford-Fulkerson algorithm
  * @docs ford_fulkerson.md
  */
 template <typename T> class FordFulkerson{
@@ -300,12 +302,30 @@ public:
     return graph;
   }
 };
-#line 9 "test/aoj/2903/main.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 10 "test/aoj/2903/main.test.cpp"
 
 int main(){
   int R, C; std::cin >> R >> C;
-  std::vector<std::string> S(R);
-  for(int i = 0; i < R; ++i) std::cin >> S[i];
+
+  auto S = input_vector<std::string>(R);
 
   ProjectSelectionProblem<int, FordFulkerson<int>> psp(R*C);
   // red: horizontal

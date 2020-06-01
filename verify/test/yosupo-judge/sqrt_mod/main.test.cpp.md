@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/sqrt_mod/main.test.cpp
+# :x: test/yosupo-judge/sqrt_mod/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0a1953e1c2bd6e0f6d5a522af5f0929c">test/yosupo-judge/sqrt_mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/sqrt_mod/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 14:34:19+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/sqrt_mod">https://judge.yosupo.jp/problem/sqrt_mod</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_sqrt.cpp.html">mod平方根</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
+* :x: <a href="../../../../library/Mylib/Number/Mod/mod_sqrt.cpp.html">Mod sqrt</a>
 
 
 ## Code
@@ -52,17 +53,16 @@ layout: default
 
 #include <iostream>
 #include "Mylib/Number/Mod/mod_sqrt.cpp"
-
-void solve(){
-  int64_t Y, P; scanf("%lld%lld", &Y, &P);
-
-  auto ans = mod_sqrt(Y, P).value_or(-1);
-  printf("%lld\n", ans);
-}
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
-  int T; scanf("%d", &T);
-  while(T--) solve();
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
+  int T; std::cin >> T;
+  for(auto [Y, P] : input_tuples<int64_t, int64_t>(T)){
+    std::cout << mod_sqrt(Y, P).value_or(-1) << "\n";
+  }
   return 0;
 }
 
@@ -82,7 +82,7 @@ int main(){
 #line 2 "Mylib/Number/Mod/mod_power.cpp"
 
 /**
- * @title mod累乗
+ * @title Mod power
  * @docs mod_power.md
  */
 int64_t power(int64_t n, int64_t p, int64_t m){
@@ -97,7 +97,7 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 #line 5 "Mylib/Number/Mod/mod_sqrt.cpp"
 
 /**
- * @title mod平方根
+ * @title Mod sqrt
  * @docs mod_sqrt.md
  */
 std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
@@ -147,18 +147,72 @@ std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
     (r *= b) %= p;
   }
 }
-#line 5 "test/yosupo-judge/sqrt_mod/main.test.cpp"
+#line 3 "Mylib/IO/input_tuples.cpp"
+#include <vector>
+#include <tuple>
+#include <utility>
+#include <initializer_list>
 
-void solve(){
-  int64_t Y, P; scanf("%lld%lld", &Y, &P);
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
 
-  auto ans = mod_sqrt(Y, P).value_or(-1);
-  printf("%lld\n", ans);
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
 }
+#line 6 "test/yosupo-judge/sqrt_mod/main.test.cpp"
 
 int main(){
-  int T; scanf("%d", &T);
-  while(T--) solve();
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
+  int T; std::cin >> T;
+  for(auto [Y, P] : input_tuples<int64_t, int64_t>(T)){
+    std::cout << mod_sqrt(Y, P).value_or(-1) << "\n";
+  }
   return 0;
 }
 

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: 添字BitXor畳み込み
+# :warning: Convolution (Index bitwise XOR)
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/convolution_xor.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-30 14:59:26+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -63,7 +63,7 @@ layout: default
 #include <cassert>
 
 /**
- * @title 添字BitXor畳み込み
+ * @title Convolution (Index bitwise XOR)
  * @docs convolution_xor.md
  */
 template <typename T>
@@ -120,7 +120,7 @@ std::vector<T> convolution_xor(std::vector<T> f, std::vector<T> g){
 #include <cassert>
 
 /**
- * @title 添字BitXor畳み込み
+ * @title Convolution (Index bitwise XOR)
  * @docs convolution_xor.md
  */
 template <typename T>

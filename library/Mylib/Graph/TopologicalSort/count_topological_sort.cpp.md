@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: トポロジカルソートの数え上げ
+# :warning: Count topological sort
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#5cfab8f1bec9f4a2c22b88bddb7720db">Mylib/Graph/TopologicalSort</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TopologicalSort/count_topological_sort.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -61,7 +61,7 @@ layout: default
 #include <vector>
 
 /**
- * @title トポロジカルソートの数え上げ
+ * @title Count topological sort
  * @docs count_topological_sort.md
  */
 int64_t count_topological_sort(const std::vector<int> &g){
@@ -92,7 +92,7 @@ int64_t count_topological_sort(const std::vector<int> &g){
 #include <vector>
 
 /**
- * @title トポロジカルソートの数え上げ
+ * @title Count topological sort
  * @docs count_topological_sort.md
  */
 int64_t count_topological_sort(const std::vector<int> &g){

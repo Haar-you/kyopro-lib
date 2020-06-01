@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f1466abfa075f1547bf443d1976f4e75">test/aoj/2136</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2136/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136</a>
@@ -39,12 +39,13 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/ccw.cpp.html">clockwise-counterclockwise判定</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/intersect_segments.cpp.html">線分同士の交差</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Coloring/chromatic_number.cpp.html">グラフ頂点彩色数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">mod累乗</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/ccw.cpp.html">Check clockwise-counterclockwise</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/intersect_segments.cpp.html">Intersection between two lines</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Coloring/chromatic_number.cpp.html">Graph vertex coloring</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
 
 
 ## Code
@@ -61,6 +62,7 @@ layout: default
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/intersect_segments.cpp"
 #include "Mylib/Graph/Coloring/chromatic_number.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using D = DoubleEps<double>;
 template <> double D::eps = 1e-7;
@@ -90,10 +92,7 @@ int main(){
 
     for(int i = 0; i < N; ++i){
       int S; std::cin >> S;
-      lines[i].resize(S);
-      for(int j = 0; j < S; ++j){
-        std::cin >> lines[i][j].x >> lines[i][j].y;
-      }
+      lines[i] = input_vector<Point<D>>(S);
     }
 
     std::vector<std::vector<int>> graph(N);
@@ -131,7 +130,7 @@ int main(){
 #include <cmath>
 
 /**
- * @title 誤差許容浮動小数点数
+ * @title Floating point number with eps
  * @docs double_eps.md
  */
 template <typename T>
@@ -199,7 +198,7 @@ template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
 #line 5 "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -283,7 +282,7 @@ template <typename T> struct Circle{
 #line 3 "Mylib/Geometry/Float/ccw.cpp"
 
 /**
- * @title clockwise-counterclockwise判定
+ * @title Check clockwise-counterclockwise
  * @docs ccw.md
  */
 namespace ccw{
@@ -314,7 +313,7 @@ namespace ccw{
 #line 5 "Mylib/Geometry/Float/intersect_segments.cpp"
 
 /**
- * @title 線分同士の交差
+ * @title Intersection between two lines
  * @docs intersect_segments.md
  */
 namespace intersect_segments{
@@ -357,7 +356,7 @@ namespace intersect_segments{
 #line 2 "Mylib/Number/Mod/mod_power.cpp"
 
 /**
- * @title mod累乗
+ * @title Mod power
  * @docs mod_power.md
  */
 int64_t power(int64_t n, int64_t p, int64_t m){
@@ -372,7 +371,7 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 #line 4 "Mylib/Graph/Coloring/chromatic_number.cpp"
 
 /**
- * @title グラフ頂点彩色数
+ * @title Graph vertex coloring
  * @docs chromatic_number.md
  */
 int chromatic_number(const std::vector<std::vector<int>> &graph){
@@ -419,7 +418,25 @@ int chromatic_number(const std::vector<std::vector<int>> &graph){
   
   return ub;
 }
-#line 10 "test/aoj/2136/main.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 11 "test/aoj/2136/main.test.cpp"
 
 using D = DoubleEps<double>;
 template <> double D::eps = 1e-7;
@@ -449,10 +466,7 @@ int main(){
 
     for(int i = 0; i < N; ++i){
       int S; std::cin >> S;
-      lines[i].resize(S);
-      for(int j = 0; j < S; ++j){
-        std::cin >> lines[i][j].x >> lines[i][j].y;
-      }
+      lines[i] = input_vector<Point<D>>(S);
     }
 
     std::vector<std::vector<int>> graph(N);

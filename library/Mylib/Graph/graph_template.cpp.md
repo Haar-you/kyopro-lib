@@ -25,94 +25,95 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: グラフ用テンプレート
+# :question: Graph template
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/graph_template.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="BipartiteGraph/check_bipartite_graph.cpp.html">二部グラフ判定</a>
-* :warning: <a href="EulerianPath/directed_eulerian_path.cpp.html">有向Euler路</a>
-* :warning: <a href="EulerianPath/undirected_eulerian_path.cpp.html">無向Euler路</a>
-* :heavy_check_mark: <a href="GraphUtils/articulation_points.cpp.html">間接点列挙</a>
-* :heavy_check_mark: <a href="GraphUtils/bridges.cpp.html">橋列挙</a>
-* :warning: <a href="GraphUtils/decompose_pseudotree.cpp.html">Pseudotreeの分解</a>
-* :heavy_check_mark: <a href="GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
-* :heavy_check_mark: <a href="GraphUtils/two_edge_connected_components.cpp.html">二重辺連結成分分解</a>
-* :heavy_check_mark: <a href="MinimumSpanningTree/chu_liu_edmonds.cpp.html">Chu-Liu/Edmonds</a>
-* :heavy_check_mark: <a href="MinimumSpanningTree/kruskal.cpp.html">Kruskal法</a>
-* :heavy_check_mark: <a href="MinimumSpanningTree/prim.cpp.html">Prim法</a>
-* :warning: <a href="ShortestCycle/directed_shortest_cycle.cpp.html">有向グラフの最小閉路</a>
-* :warning: <a href="ShortestCycle/undirected_shortest_cycle.cpp.html">無向グラフの最小閉路</a>
-* :heavy_check_mark: <a href="ShortestPath/bellman_ford.cpp.html">Bellman-Ford法</a>
+* :heavy_check_mark: <a href="BipartiteGraph/check_bipartite_graph.cpp.html">Check bipartite graph</a>
+* :warning: <a href="EulerianPath/directed_eulerian_path.cpp.html">Directed eulerian path</a>
+* :warning: <a href="EulerianPath/undirected_eulerian_path.cpp.html">Undirected eulerian path</a>
+* :x: <a href="GraphUtils/articulation_points.cpp.html">Articulation points</a>
+* :x: <a href="GraphUtils/bridges.cpp.html">Bridges</a>
+* :warning: <a href="GraphUtils/decompose_pseudotree.cpp.html">Decompose pseudotree</a>
+* :x: <a href="GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
+* :x: <a href="GraphUtils/two_edge_connected_components.cpp.html">Two edge connected components</a>
+* :x: <a href="MinimumSpanningTree/chu_liu_edmonds.cpp.html">Chu-Liu/Edmonds algorithm</a>
+* :x: <a href="MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
+* :question: <a href="MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
+* :warning: <a href="ShortestCycle/directed_shortest_cycle.cpp.html">Directed shortest cycle</a>
+* :warning: <a href="ShortestCycle/undirected_shortest_cycle.cpp.html">Undirected shortest cycle</a>
+* :x: <a href="ShortestPath/bellman_ford.cpp.html">Bellman-Ford algorithm</a>
 * :warning: <a href="ShortestPath/bfs_0_1.cpp.html">0-1 BFS</a>
-* :heavy_check_mark: <a href="ShortestPath/bfs_shortest_path.cpp.html">BFS最短路</a>
-* :heavy_check_mark: <a href="ShortestPath/dijkstra.cpp.html">Dijkstra法</a>
-* :heavy_check_mark: <a href="ShortestPath/warshall_floyd.cpp.html">Warshall-Floyd法</a>
-* :heavy_check_mark: <a href="TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
-* :warning: <a href="TopologicalSort/topological_sort_lexicographical.cpp.html">トポロジカルソート (辞書順最小)</a>
-* :warning: <a href="TreeUtils/centroid.cpp.html">重心列挙</a>
-* :warning: <a href="TreeUtils/centroid_decomposition.cpp.html">重心分解</a>
-* :heavy_check_mark: <a href="TreeUtils/euler_tour_bfs.cpp.html">BFSEulerTour</a>
-* :heavy_check_mark: <a href="TreeUtils/euler_tour_vertex.cpp.html">頂点EulerTour</a>
-* :heavy_check_mark: <a href="TreeUtils/forest.cpp.html">森の分解</a>
-* :heavy_check_mark: <a href="TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
-* :heavy_check_mark: <a href="TreeUtils/lca_based_on_doubling.cpp.html">最小共通祖先 (ダブリング)</a>
-* :heavy_check_mark: <a href="TreeUtils/lca_based_on_hld.cpp.html">最小共通祖先 (HLD)</a>
-* :heavy_check_mark: <a href="TreeUtils/rerooting.cpp.html">全方位木dp</a>
-* :warning: <a href="TreeUtils/rooting.cpp.html">根付き木</a>
-* :heavy_check_mark: <a href="TreeUtils/tree_diameter.cpp.html">木の直径</a>
-* :heavy_check_mark: <a href="TreeUtils/tree_distance.cpp.html">木の距離</a>
-* :heavy_check_mark: <a href="TreeUtils/tree_height.cpp.html">木の高さ</a>
-* :heavy_check_mark: <a href="chinese_postman_problem.cpp.html">中国人郵便配達問題</a>
-* :heavy_check_mark: <a href="travelling_salesman_problem.cpp.html">巡回セールスマン問題</a>
-* :heavy_check_mark: <a href="two_sat.cpp.html">2-SAT</a>
-* :heavy_check_mark: <a href="../Grid/grid_to_graph.cpp.html">グリッドをグラフに変換する</a>
+* :heavy_check_mark: <a href="ShortestPath/bfs_shortest_path.cpp.html">BFS shortest path</a>
+* :x: <a href="ShortestPath/dijkstra.cpp.html">Dijkstra algorithm</a>
+* :x: <a href="ShortestPath/warshall_floyd.cpp.html">Warshall-Floyd algorithm</a>
+* :x: <a href="TopologicalSort/topological_sort.cpp.html">Topological sort</a>
+* :warning: <a href="TopologicalSort/topological_sort_lexicographical.cpp.html">Topological sort (Lexicographically minimum)</a>
+* :warning: <a href="TreeUtils/centroid.cpp.html">Enumerate centroids</a>
+* :warning: <a href="TreeUtils/centroid_decomposition.cpp.html">Centroid decomposition</a>
+* :x: <a href="TreeUtils/euler_tour_bfs.cpp.html">Euler tour (BFS)</a>
+* :x: <a href="TreeUtils/euler_tour_vertex.cpp.html">Euler tour (Vertex)</a>
+* :x: <a href="TreeUtils/forest.cpp.html">Decompose forest</a>
+* :question: <a href="TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
+* :x: <a href="TreeUtils/lca_based_on_doubling.cpp.html">Lowest common ancestor (Doubling)</a>
+* :x: <a href="TreeUtils/lca_based_on_hld.cpp.html">Lowest common ancestor (HLD)</a>
+* :question: <a href="TreeUtils/rerooting.cpp.html">Rerooting DP</a>
+* :warning: <a href="TreeUtils/rooting.cpp.html">Rooting</a>
+* :x: <a href="TreeUtils/tree_diameter.cpp.html">Tree diameter</a>
+* :x: <a href="TreeUtils/tree_distance.cpp.html">Tree distance</a>
+* :x: <a href="TreeUtils/tree_height.cpp.html">Tree height</a>
+* :x: <a href="chinese_postman_problem.cpp.html">Chinese postman problem</a>
+* :x: <a href="travelling_salesman_problem.cpp.html">Travelling salesman problem</a>
+* :x: <a href="two_sat.cpp.html">2-SAT</a>
+* :heavy_check_mark: <a href="../Grid/grid_to_graph.cpp.html">Convert grid to graph</a>
+* :question: <a href="../IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../verify/test/aoj/0558/main.graph.test.cpp.html">test/aoj/0558/main.graph.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/1595/main.test.cpp.html">test/aoj/1595/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2370/main.test.cpp.html">test/aoj/2370/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.binomial_heap.test.cpp.html">test/aoj/2559/main.binomial_heap.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_2_A/main.test.cpp.html">test/aoj/DPL_2_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_2_B/main.test.cpp.html">test/aoj/DPL_2_B/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_1_A/main.test.cpp.html">test/aoj/GRL_1_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_1_B/main.test.cpp.html">test/aoj/GRL_1_B/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_1_C/main.test.cpp.html">test/aoj/GRL_1_C/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_2_A/main.kruskal.test.cpp.html">test/aoj/GRL_2_A/main.kruskal.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_2_A/main.prim.test.cpp.html">test/aoj/GRL_2_A/main.prim.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_2_B/main.test.cpp.html">test/aoj/GRL_2_B/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_3_A/main.test.cpp.html">test/aoj/GRL_3_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_3_B/main.test.cpp.html">test/aoj/GRL_3_B/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_3_C/main.test.cpp.html">test/aoj/GRL_3_C/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_5_A/main.test.cpp.html">test/aoj/GRL_5_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_5_B/main.test.cpp.html">test/aoj/GRL_5_B/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_5_C/main.doubling.test.cpp.html">test/aoj/GRL_5_C/main.doubling.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_5_C/main.hld.test.cpp.html">test/aoj/GRL_5_C/main.hld.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/tree_diameter/main.test.cpp.html">test/yosupo-judge/tree_diameter/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/two_edge_connected_components/main.test.cpp.html">test/yosupo-judge/two_edge_connected_components/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/DPL_2_A/main.test.cpp.html">test/aoj/DPL_2_A/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/DPL_2_B/main.test.cpp.html">test/aoj/DPL_2_B/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/GRL_1_A/main.test.cpp.html">test/aoj/GRL_1_A/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/GRL_1_B/main.test.cpp.html">test/aoj/GRL_1_B/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/GRL_1_C/main.test.cpp.html">test/aoj/GRL_1_C/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/GRL_2_A/main.kruskal.test.cpp.html">test/aoj/GRL_2_A/main.kruskal.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/GRL_2_A/main.prim.test.cpp.html">test/aoj/GRL_2_A/main.prim.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/GRL_2_B/main.test.cpp.html">test/aoj/GRL_2_B/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/GRL_3_A/main.test.cpp.html">test/aoj/GRL_3_A/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/GRL_3_B/main.test.cpp.html">test/aoj/GRL_3_B/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/GRL_3_C/main.test.cpp.html">test/aoj/GRL_3_C/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/GRL_5_A/main.test.cpp.html">test/aoj/GRL_5_A/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/GRL_5_B/main.test.cpp.html">test/aoj/GRL_5_B/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/GRL_5_C/main.doubling.test.cpp.html">test/aoj/GRL_5_C/main.doubling.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/GRL_5_C/main.hld.test.cpp.html">test/aoj/GRL_5_C/main.hld.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/tree_diameter/main.test.cpp.html">test/yosupo-judge/tree_diameter/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/two_edge_connected_components/main.test.cpp.html">test/yosupo-judge/two_edge_connected_components/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
 
 
 ## Code
@@ -125,7 +126,7 @@ layout: default
 #include <iostream>
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -160,7 +161,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #include <iostream>
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{

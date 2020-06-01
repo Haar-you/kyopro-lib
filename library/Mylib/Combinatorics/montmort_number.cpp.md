@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Montmort数
+# :x: Montmort number
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/montmort_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-26 15:25:30+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -57,7 +57,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/montmort_number_mod/main.test.cpp.html">test/yosupo-judge/montmort_number_mod/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/montmort_number_mod/main.test.cpp.html">test/yosupo-judge/montmort_number_mod/main.test.cpp</a>
 
 
 ## Code
@@ -69,7 +69,7 @@ layout: default
 #include <vector>
 
 /**
- * @title Montmort数
+ * @title Montmort number
  * @docs montmort_number.md
  */
 template <typename T>
@@ -97,7 +97,7 @@ auto montmort_number(int n){
 #include <vector>
 
 /**
- * @title Montmort数
+ * @title Montmort number
  * @docs montmort_number.md
  */
 template <typename T>

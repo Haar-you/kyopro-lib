@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 上に凸の黄金分割探索
+# :heavy_check_mark: Golden section search (Convex upwards)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a7582795d3062b8fdf2ece0fd4f2d90d">Mylib/Algorithm/Search</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Search/golden_section_search_upwards.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -51,7 +51,7 @@ layout: default
 #include <cmath>
 
 /**
- * @title 上に凸の黄金分割探索
+ * @title Golden section search (Convex upwards)
  * @docs golden_section_search_upwards.md
  */
 template <typename T = double, typename Func = std::function<T(T)>>
@@ -85,7 +85,7 @@ T golden_section_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100)
 #include <cmath>
 
 /**
- * @title 上に凸の黄金分割探索
+ * @title Golden section search (Convex upwards)
  * @docs golden_section_search_upwards.md
  */
 template <typename T = double, typename Func = std::function<T(T)>>

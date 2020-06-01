@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/range_affine_range_sum/main.test.cpp
+# :x: test/yosupo-judge/range_affine_range_sum/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7561f7b6847dbe0c0f95d39dd0066b92">test/yosupo-judge/range_affine_range_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/range_affine_range_sum/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-17 07:08:54+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_affine_range_sum">https://judge.yosupo.jp/problem/range_affine_range_sum</a>
@@ -39,11 +39,13 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">遅延SegmentTree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">Lazy segment tree</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -58,9 +60,10 @@ layout: default
 #include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using mint = ModInt<998244353>;
-
 
 int main(){
   std::cin.tie(0);
@@ -69,22 +72,14 @@ int main(){
   int N, Q; std::cin >> N >> Q;
 
   auto seg = LazySegmentTree<AffineSum<mint,mint>>(N);
-
-  std::vector<mint> a(N);
-  for(int i = 0; i < N; ++i) std::cin >> a[i];
-  
+  auto a = input_vector<mint>(N);
   seg.init_with_vector(a);
 
-  while(Q--){
-    int t; std::cin >> t;
-
+  for(auto [t, l, r] : input_tuples<int, int, int>(Q)){
     if(t == 0){
-      int l, r, b, c; std::cin >> l >> r >> b >> c;
-
+      int b, c; std::cin >> b >> c;
       seg.update(l, r, std::make_pair(b, c));
     }else{
-      int l, r; std::cin >> l >> r;
-
       std::cout << seg.get(l, r) << "\n";
     }
   }
@@ -106,7 +101,7 @@ int main(){
 #line 3 "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
 
 /**
- * @title 遅延SegmentTree
+ * @title Lazy segment tree
  * @docs lazy_segment_tree.md
  */
 template <typename Monoid>
@@ -219,7 +214,7 @@ struct AffineSum{
 #line 4 "Mylib/Number/Mint/mint.cpp"
 
 /**
- * @title modint
+ * @title Modint
  * @docs mint.md
  */
 template <uint32_t M> class ModInt{
@@ -301,10 +296,82 @@ public:
   explicit operator int32_t() const noexcept {return val;}
   explicit operator int64_t() const noexcept {return val;}
 };
-#line 8 "test/yosupo-judge/range_affine_range_sum/main.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 10 "test/yosupo-judge/range_affine_range_sum/main.test.cpp"
 
 using mint = ModInt<998244353>;
-
 
 int main(){
   std::cin.tie(0);
@@ -313,22 +380,14 @@ int main(){
   int N, Q; std::cin >> N >> Q;
 
   auto seg = LazySegmentTree<AffineSum<mint,mint>>(N);
-
-  std::vector<mint> a(N);
-  for(int i = 0; i < N; ++i) std::cin >> a[i];
-  
+  auto a = input_vector<mint>(N);
   seg.init_with_vector(a);
 
-  while(Q--){
-    int t; std::cin >> t;
-
+  for(auto [t, l, r] : input_tuples<int, int, int>(Q)){
     if(t == 0){
-      int l, r, b, c; std::cin >> l >> r >> b >> c;
-
+      int b, c; std::cin >> b >> c;
       seg.update(l, r, std::make_pair(b, c));
     }else{
-      int l, r; std::cin >> l >> r;
-
       std::cout << seg.get(l, r) << "\n";
     }
   }

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_3_D/main.test.cpp
+# :x: test/aoj/DSL_3_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#701acb68cf3d7eb2875e08c5c295c84f">test/aoj/DSL_3_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_3_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_3_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_3_D</a>
@@ -39,7 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp.html">スライド最小値</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp.html">Sliding window minimum</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 
 
 ## Code
@@ -52,23 +54,20 @@ layout: default
 #include <iostream>
 #include <vector>
 #include "Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp"
+#include "Mylib/IO/join.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   int N,L; std::cin >> N >> L;
-  std::vector<int> a(N);
-  for(int i = 0; i < N; ++i) std::cin >> a[i];
+
+  auto a = input_vector<int>(N);
 
   auto ans = sliding_minimum(a, L);
 
-  for(int i = 0; i < (int)ans.size(); ++i){
-    if(i) std::cout << " ";
-    std::cout << ans[i];
-  }
-  std::cout << std::endl;
+  std::cout << join(ans.begin(), ans.end()) << std::endl;
 
   return 0;
 }
-
 
 ```
 {% endraw %}
@@ -85,7 +84,7 @@ int main(){
 #include <deque>
 
 /**
- * @title スライド最小値
+ * @title Sliding window minimum
  * @docs sliding_minimum.md
  */
 template <typename T>
@@ -118,24 +117,55 @@ std::vector<T> sliding_minimum(const std::vector<T> &a, int k){
   
   return ret;
 }
-#line 6 "test/aoj/DSL_3_D/main.test.cpp"
+#line 3 "Mylib/IO/join.cpp"
+#include <sstream>
+#include <string>
+
+/**
+ * @docs join.md
+ */
+template <typename ITER>
+std::string join(ITER first, ITER last, std::string delim = " "){
+  std::stringstream s;
+
+  for(auto it = first; it != last; ++it){
+    if(it != first) s << delim;
+    s << *it;
+  }
+
+  return s.str();
+}
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 8 "test/aoj/DSL_3_D/main.test.cpp"
 
 int main(){
   int N,L; std::cin >> N >> L;
-  std::vector<int> a(N);
-  for(int i = 0; i < N; ++i) std::cin >> a[i];
+
+  auto a = input_vector<int>(N);
 
   auto ans = sliding_minimum(a, L);
 
-  for(int i = 0; i < (int)ans.size(); ++i){
-    if(i) std::cout << " ";
-    std::cout << ans[i];
-  }
-  std::cout << std::endl;
+  std::cout << join(ans.begin(), ans.end()) << std::endl;
 
   return 0;
 }
-
 
 ```
 {% endraw %}

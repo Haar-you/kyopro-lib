@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Eulerのトーシェント関数 (列挙)
+# :warning: Euler's totient function (Enumerate)
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/euler_phi_function_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 16:28:32+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -63,7 +63,7 @@ layout: default
 #include <numeric>
 
 /**
- * @title Eulerのトーシェント関数 (列挙)
+ * @title Euler's totient function (Enumerate)
  * @docs euler_phi_function_table.md
  */
 auto totient_table(int n){
@@ -92,7 +92,7 @@ auto totient_table(int n){
 #include <numeric>
 
 /**
- * @title Eulerのトーシェント関数 (列挙)
+ * @title Euler's totient function (Enumerate)
  * @docs euler_phi_function_table.md
  */
 auto totient_table(int n){

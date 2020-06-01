@@ -38,7 +38,7 @@ layout: default
 
 ## Required by
 
-* :warning: <a href="ordered_treap.cpp.html">Treap (OrderedSet型)</a>
+* :warning: <a href="ordered_treap.cpp.html">Treap (Ordered set)</a>
 
 
 ## Verified with

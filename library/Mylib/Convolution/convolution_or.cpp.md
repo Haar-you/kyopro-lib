@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: 添字BitOr畳み込み
+# :warning: Convolution (Index bitwise OR)
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/convolution_or.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-30 20:34:51+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -55,8 +55,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="fast_mobius_transform_subset.cpp.html">下位集合に対する高速Möbius変換</a>
-* :heavy_check_mark: <a href="fast_zeta_transform_subset.cpp.html">下位集合に対する高速Zeta変換</a>
+* :heavy_check_mark: <a href="fast_mobius_transform_subset.cpp.html">Fast Möbius transform (Subsets)</a>
+* :x: <a href="fast_zeta_transform_subset.cpp.html">Fast Zeta transform (Subset)</a>
 
 
 ## Code
@@ -70,7 +70,7 @@ layout: default
 #include "Mylib/Convolution/fast_mobius_transform_subset.cpp"
 
 /**
- * @title 添字BitOr畳み込み
+ * @title Convolution (Index bitwise OR)
  * @docs convolution_or.md
  */
 template <typename T>
@@ -94,7 +94,7 @@ std::vector<T> convolution_or(std::vector<T> f, std::vector<T> g){
 #include <functional>
 
 /**
- * @title 下位集合に対する高速Zeta変換
+ * @title Fast Zeta transform (Subset)
  * @docs fast_zeta_transform_subset.md
  */
 template <typename T, typename Func = std::plus<T>>
@@ -109,7 +109,7 @@ std::vector<T> fast_zeta_transform_subset(std::vector<T> f, const Func &op = std
 #line 4 "Mylib/Convolution/fast_mobius_transform_subset.cpp"
 
 /**
- * @title 下位集合に対する高速Möbius変換
+ * @title Fast Möbius transform (Subsets)
  * @docs fast_mobius_transform_subset.md
  */
 template <typename T, typename Func = std::minus<T>>
@@ -124,7 +124,7 @@ std::vector<T> fast_mobius_transform_subset(std::vector<T> f, const Func &op = s
 #line 5 "Mylib/Convolution/convolution_or.cpp"
 
 /**
- * @title 添字BitOr畳み込み
+ * @title Convolution (Index bitwise OR)
  * @docs convolution_or.md
  */
 template <typename T>

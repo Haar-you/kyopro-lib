@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
+# :x: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#bebcd5bef589a8c43022d53b5d3891af">test/yosupo-judge/dynamic_tree_vertex_add_path_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 14:34:19+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_path_sum">https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_path_sum</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp.html">LinkCutTree</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp.html">Link/cut tree</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -53,6 +54,8 @@ layout: default
 #include <iostream>
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 #include "Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp"
+#include "Mylib/IO/input_tuples.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -63,23 +66,18 @@ int main(){
   LinkCutTree<SumMonoid<int64_t>> lct(N);
 
   for(int i = 0; i < N; ++i){
-    int64_t a;
-    std::cin >> a;
+    int64_t a; std::cin >> a;
     lct.update(i, a);
   }
-  
-  for(int i = 0; i < N-1; ++i){
-    int u, v; std::cin >> u >> v;
+
+  for(auto [u, v] : input_tuples<int, int>(N-1)){
     lct.link(u, v);
   }
   
-  while(Q--){
-    int type; std::cin >> type;
-    
+  for(auto [type] : input_tuples<int>(Q)){
     switch(type){
     case 0: {
       int u, v, w, x; std::cin >> u >> v >> w >> x;
-
       lct.cut(u, v);
       lct.link(w, x);
       break;
@@ -91,7 +89,6 @@ int main(){
     }
     case 2: {
       int u, v; std::cin >> u >> v;
-
       auto ans = lct.get(u, v);
       std::cout << ans << std::endl;
       break;
@@ -127,7 +124,7 @@ struct SumMonoid{
 #include <vector>
 
 /**
- * @title LinkCutTree
+ * @title Link/cut tree
  * @docs link_cut_tree.md
  */
 template <typename Monoid>
@@ -324,7 +321,62 @@ public:
     return nodes[j]->result;
   }
 };
-#line 6 "test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 8 "test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -335,23 +387,18 @@ int main(){
   LinkCutTree<SumMonoid<int64_t>> lct(N);
 
   for(int i = 0; i < N; ++i){
-    int64_t a;
-    std::cin >> a;
+    int64_t a; std::cin >> a;
     lct.update(i, a);
   }
-  
-  for(int i = 0; i < N-1; ++i){
-    int u, v; std::cin >> u >> v;
+
+  for(auto [u, v] : input_tuples<int, int>(N-1)){
     lct.link(u, v);
   }
   
-  while(Q--){
-    int type; std::cin >> type;
-    
+  for(auto [type] : input_tuples<int>(Q)){
     switch(type){
     case 0: {
       int u, v, w, x; std::cin >> u >> v >> w >> x;
-
       lct.cut(u, v);
       lct.link(w, x);
       break;
@@ -363,7 +410,6 @@ int main(){
     }
     case 2: {
       int u, v; std::cin >> u >> v;
-
       auto ans = lct.get(u, v);
       std::cout << ans << std::endl;
       break;

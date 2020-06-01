@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: グリッド上BFS
+# :heavy_check_mark: BFS on a grid
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#437b04c37f52e5b35f1d2c24c546c491">Mylib/Grid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Grid/grid_bfs.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 12:01:21+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -52,7 +52,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="grid.cpp.html">グリッド用テンプレート</a>
+* :heavy_check_mark: <a href="grid.cpp.html">Grid template</a>
 
 
 ## Verified with
@@ -72,7 +72,7 @@ layout: default
 #include "Mylib/Grid/grid.cpp"
 
 /**
- * @title グリッド上BFS
+ * @title BFS on a grid
  * @docs grid_bfs.md
  */
 template <typename Directions, typename Checker>
@@ -133,7 +133,7 @@ auto grid_bfs(
 #include <utility>
 
 /**
- * @title グリッド用テンプレート
+ * @title Grid template
  * @docs grid.md
  */
 struct Point{
@@ -170,7 +170,7 @@ namespace grid{
 #line 6 "Mylib/Grid/grid_bfs.cpp"
 
 /**
- * @title グリッド上BFS
+ * @title BFS on a grid
  * @docs grid_bfs.md
  */
 template <typename Directions, typename Checker>

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+# :x: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#4074bf88980bb06d903e38d47fb81c08">test/yosupo-judge/vertex_set_path_composite</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/vertex_set_path_composite/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 16:55:31+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/vertex_set_path_composite">https://judge.yosupo.jp/problem/vertex_set_path_composite</a>
@@ -39,12 +39,14 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp.html">SegmentTree (双方向Foldable)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp.html">Segment tree (Both foldable)</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -63,26 +65,25 @@ layout: default
 #include "Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
+#include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using mint = ModInt<998244353>;
 using M = DualMonoid<AffineMonoid<mint>>;
 
 int main(){
-  int N, Q; scanf("%d%d", &N, &Q);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N, Q; std::cin >> N >> Q;
 
-  Tree<int> tree(N);
+  std::vector<std::pair<mint,mint>> f;
 
-  std::vector<std::pair<mint,mint>> f(N);
-
-  for(int i = 0; i < N; ++i){
-    int64_t a, b; scanf("%lld%lld", &a, &b);
-    f[i] = std::make_pair(a, b);
+  for(auto [a, b] : input_tuples<int64_t, int64_t>(N)){
+    f.emplace_back(a, b);
   }
 
-  for(int i = 0; i < N-1; ++i){
-    int u, v; scanf("%d%d", &u, &v);
-    add_undirected(tree, u, v, 1);
-  }
+  auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
   
   HLDecomposition<int> hld(tree, 0);
 
@@ -92,15 +93,13 @@ int main(){
     seg.update(hld.get_id(i), f[i]);
   }
 
-  while(Q--){
-    int type; scanf("%d", &type);
-
+  for(auto [type] : input_tuples<int>(Q)){
     if(type == 0){
-      int64_t p, c, d; scanf("%lld%lld%lld", &p, &c, &d);
+      int64_t p, c, d; std::cin >> p >> c >> d;
 
       seg.update(hld.get_id(p), std::make_pair(c, d));
     }else{
-      int64_t u, v, x; scanf("%lld%lld%lld", &u, &v, &x);
+      int64_t u, v, x; std::cin >> u >> v >> x;
 
       auto left = M::id(), right = M::id();
 
@@ -118,7 +117,7 @@ int main(){
       auto a = M::op(left, right);
 
       mint ans = a.first * x + a.second;
-      printf("%lld\n", ans.val);
+      std::cout << ans << "\n";
     }
   }
 
@@ -140,7 +139,7 @@ int main(){
 #line 4 "Mylib/Number/Mint/mint.cpp"
 
 /**
- * @title modint
+ * @title Modint
  * @docs mint.md
  */
 template <uint32_t M> class ModInt{
@@ -225,7 +224,7 @@ public:
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -253,7 +252,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 6 "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 
 /**
- * @title HL分解
+ * @title Heavy-light decomposition
  * @docs heavy_light_decomposition.md
  */
 template <typename T> class HLDecomposition{
@@ -385,7 +384,7 @@ public:
 #line 3 "Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp"
 
 /**
- * @title SegmentTree (双方向Foldable)
+ * @title Segment tree (Both foldable)
  * @docs segment_tree_both_foldable.md
  */
 template <typename Monoid>
@@ -488,27 +487,110 @@ struct DualMonoid{
   constexpr inline static value_type id(){return Monoid::id();}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return Monoid::op(b, a);}
 };
-#line 12 "test/yosupo-judge/vertex_set_path_composite/main.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 14 "test/yosupo-judge/vertex_set_path_composite/main.test.cpp"
 
 using mint = ModInt<998244353>;
 using M = DualMonoid<AffineMonoid<mint>>;
 
 int main(){
-  int N, Q; scanf("%d%d", &N, &Q);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N, Q; std::cin >> N >> Q;
 
-  Tree<int> tree(N);
+  std::vector<std::pair<mint,mint>> f;
 
-  std::vector<std::pair<mint,mint>> f(N);
-
-  for(int i = 0; i < N; ++i){
-    int64_t a, b; scanf("%lld%lld", &a, &b);
-    f[i] = std::make_pair(a, b);
+  for(auto [a, b] : input_tuples<int64_t, int64_t>(N)){
+    f.emplace_back(a, b);
   }
 
-  for(int i = 0; i < N-1; ++i){
-    int u, v; scanf("%d%d", &u, &v);
-    add_undirected(tree, u, v, 1);
-  }
+  auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
   
   HLDecomposition<int> hld(tree, 0);
 
@@ -518,15 +600,13 @@ int main(){
     seg.update(hld.get_id(i), f[i]);
   }
 
-  while(Q--){
-    int type; scanf("%d", &type);
-
+  for(auto [type] : input_tuples<int>(Q)){
     if(type == 0){
-      int64_t p, c, d; scanf("%lld%lld%lld", &p, &c, &d);
+      int64_t p, c, d; std::cin >> p >> c >> d;
 
       seg.update(hld.get_id(p), std::make_pair(c, d));
     }else{
-      int64_t u, v, x; scanf("%lld%lld%lld", &u, &v, &x);
+      int64_t u, v, x; std::cin >> u >> v >> x;
 
       auto left = M::id(), right = M::id();
 
@@ -544,7 +624,7 @@ int main(){
       auto a = M::op(left, right);
 
       mint ans = a.first * x + a.second;
-      printf("%lld\n", ans.val);
+      std::cout << ans << "\n";
     }
   }
 

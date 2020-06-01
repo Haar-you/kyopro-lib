@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/510/main.test.cpp
+# :x: test/yukicoder/510/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#79c44d69f4476256a05dd1926185d029">test/yukicoder/510</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/510/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-17 07:08:54+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/510">https://yukicoder.me/problems/no/510</a>
@@ -39,11 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/product_matrix.cpp.html">Mylib/AlgebraicStructure/Monoid/product_matrix.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">SegmentTree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp.html">正方行列 (コンパイル時固定サイズ)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/product_matrix.cpp.html">Mylib/AlgebraicStructure/Monoid/product_matrix.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp.html">Square matrix (Const size)</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -61,6 +62,7 @@ layout: default
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/product_matrix.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using mint = ModInt<1000000007>;
 using Mat = SquareMatrixConst<mint, 4>;
@@ -86,22 +88,18 @@ int main(){
     seg.update(i, f(x[i], y[i]));
   }
 
-  while(q--){
-    char c; std::cin >> c;
-
+  for(auto [c, i] : input_tuples<char, int>(q)){
     if(c == 'x'){
-      int i, v; std::cin >> i >> v;
+      int v; std::cin >> v;
       x[i] = v;
 
       seg.update(i, f(x[i], y[i]));
     }else if(c == 'y'){
-      int i, v; std::cin >> i >> v;
+      int v; std::cin >> v;
       y[i] = v;
 
       seg.update(i, f(x[i], y[i]));
     }else{
-      int i; std::cin >> i;
-
       auto m = seg.get(0, i);
       auto ans = m[0][0] + m[0][1] + m[0][2] + m[0][3];
       std::cout << ans << "\n";
@@ -127,7 +125,7 @@ int main(){
 #include <utility>
 
 /**
- * @title modint
+ * @title Modint
  * @docs mint.md
  */
 template <uint32_t M> class ModInt{
@@ -215,7 +213,7 @@ public:
 #line 5 "Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp"
 
 /**
- * @title 正方行列 (コンパイル時固定サイズ)
+ * @title Square matrix (Const size)
  * @docs square_matrix_const_size.md
  */
 template <typename T, int N> struct SquareMatrixConst{
@@ -281,7 +279,7 @@ template <typename T, int N> struct SquareMatrixConst{
 #line 3 "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
 /**
- * @title SegmentTree
+ * @title Segment tree
  * @docs segment_tree.md
  */
 template <typename Monoid>
@@ -356,7 +354,62 @@ struct DualMonoid{
   constexpr inline static value_type id(){return Monoid::id();}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return Monoid::op(b, a);}
 };
-#line 11 "test/yukicoder/510/main.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 12 "test/yukicoder/510/main.test.cpp"
 
 using mint = ModInt<1000000007>;
 using Mat = SquareMatrixConst<mint, 4>;
@@ -382,22 +435,18 @@ int main(){
     seg.update(i, f(x[i], y[i]));
   }
 
-  while(q--){
-    char c; std::cin >> c;
-
+  for(auto [c, i] : input_tuples<char, int>(q)){
     if(c == 'x'){
-      int i, v; std::cin >> i >> v;
+      int v; std::cin >> v;
       x[i] = v;
 
       seg.update(i, f(x[i], y[i]));
     }else if(c == 'y'){
-      int i, v; std::cin >> i >> v;
+      int v; std::cin >> v;
       y[i] = v;
 
       seg.update(i, f(x[i], y[i]));
     }else{
-      int i; std::cin >> i;
-
       auto m = seg.get(0, i);
       auto ans = m[0][0] + m[0][1] + m[0][2] + m[0][3];
       std::cout << ans << "\n";

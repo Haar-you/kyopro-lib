@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 永続Queue
+# :x: Persistent queue
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6b1c73113eb1a95c1a861edccc8def0a">Mylib/DataStructure/Queue</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Queue/persistent_queue.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-18 19:49:45+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -70,7 +70,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/persistent_queue/main.test.cpp.html">test/yosupo-judge/persistent_queue/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/persistent_queue/main.test.cpp.html">test/yosupo-judge/persistent_queue/main.test.cpp</a>
 
 
 ## Code
@@ -82,7 +82,7 @@ layout: default
 #include <array>
 
 /**
- * @title 永続Queue
+ * @title Persistent queue
  * @docs persistent_queue.md
  */
 template <typename T>
@@ -171,7 +171,7 @@ public:
 #include <array>
 
 /**
- * @title 永続Queue
+ * @title Persistent queue
  * @docs persistent_queue.md
  */
 template <typename T>

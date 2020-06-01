@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/3058/main.test.cpp
+# :x: test/aoj/3058/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7e98db48dc3a2f2f4bf10921a7d3d1f5">test/aoj/3058</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3058/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 16:28:32+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3058">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3058</a>
@@ -39,8 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson法</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/project_selection_problem.cpp.html">ProjectSelectionProblem</a>
+* :x: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson algorithm</a>
+* :x: <a href="../../../../library/Mylib/Graph/project_selection_problem.cpp.html">Project selection problem</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -57,13 +59,14 @@ layout: default
 
 #include "Mylib/Graph/project_selection_problem.cpp"
 #include "Mylib/Graph/Flow/ford_fulkerson.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int N, M; std::cin >> N >> M;
   std::string U; std::cin >> U;
 
-  std::vector<int> A(N);
-  for(int i = 0; i < N; ++i) std::cin >> A[i];
+  auto A = input_vector<int>(N);
 
   ProjectSelectionProblem<int, FordFulkerson<int>> psp(N);
   // red: right, blue: left
@@ -75,12 +78,10 @@ int main(){
       psp.penalty_if_red(i, A[i]);
     }
   }
-  
-  for(int i = 0; i < M; ++i){
-    int s, t, b; std::cin >> s >> t >> b;
+
+  for(auto [s, t, b] : input_tuples<int, int, int>(M)){
     --s, --t;
     if(s > t) std::swap(s, t);
-    
     psp.penalty_if_red_blue(s, t, b);
   }
 
@@ -109,7 +110,7 @@ int main(){
 #include <limits>
 
 /*
- * @title ProjectSelectionProblem
+ * @title Project selection problem
  * @docs project_selection_problem.md
  */
 template <typename T, typename Flow>
@@ -215,7 +216,7 @@ public:
 #include <algorithm>
 
 /**
- * @title Ford-Fulkerson法
+ * @title Ford-Fulkerson algorithm
  * @docs ford_fulkerson.md
  */
 template <typename T> class FordFulkerson{
@@ -292,14 +293,86 @@ public:
     return graph;
   }
 };
-#line 10 "test/aoj/3058/main.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 12 "test/aoj/3058/main.test.cpp"
 
 int main(){
   int N, M; std::cin >> N >> M;
   std::string U; std::cin >> U;
 
-  std::vector<int> A(N);
-  for(int i = 0; i < N; ++i) std::cin >> A[i];
+  auto A = input_vector<int>(N);
 
   ProjectSelectionProblem<int, FordFulkerson<int>> psp(N);
   // red: right, blue: left
@@ -311,12 +384,10 @@ int main(){
       psp.penalty_if_red(i, A[i]);
     }
   }
-  
-  for(int i = 0; i < M; ++i){
-    int s, t, b; std::cin >> s >> t >> b;
+
+  for(auto [s, t, b] : input_tuples<int, int, int>(M)){
     --s, --t;
     if(s > t) std::swap(s, t);
-    
     psp.penalty_if_red_blue(s, t, b);
   }
 

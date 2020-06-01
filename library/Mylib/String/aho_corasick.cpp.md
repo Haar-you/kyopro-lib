@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Aho-Corasick法
+# :x: Aho-Corasick algorithm
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/aho_corasick.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/430/main.aho_corasick.test.cpp.html">test/yukicoder/430/main.aho_corasick.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/430/main.aho_corasick.test.cpp.html">test/yukicoder/430/main.aho_corasick.test.cpp</a>
 
 
 ## Code
@@ -53,7 +53,7 @@ layout: default
 #include <queue>
 
 /**
- * @title Aho-Corasick法
+ * @title Aho-Corasick algorithm
  * @docs aho_corasick.md
  */
 class AhoCorasick{
@@ -166,7 +166,7 @@ public:
 #include <queue>
 
 /**
- * @title Aho-Corasick法
+ * @title Aho-Corasick algorithm
  * @docs aho_corasick.md
  */
 class AhoCorasick{

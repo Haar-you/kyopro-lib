@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/matrix_det/main.test.cpp
+# :x: test/yosupo-judge/matrix_det/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f56272346ebd60cefe0da1df8f0209d6">test/yosupo-judge/matrix_det</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/matrix_det/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 20:03:33+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/matrix_det">https://judge.yosupo.jp/problem/matrix_det</a>
@@ -39,9 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/determinant.cpp.html">行列式</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">正方行列</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/determinant.cpp.html">Determinant</a>
+* :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Square matrix</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -51,9 +52,11 @@ layout: default
 ```cpp
 #define PROBLEM "https://judge.yosupo.jp/problem/matrix_det"
 
+#include <iostream>
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/LinearAlgebra/Square/square_matrix.cpp"
 #include "Mylib/LinearAlgebra/Square/determinant.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using mint = ModInt<998244353>;
 
@@ -61,22 +64,16 @@ struct tag{};
 using Mat = SquareMatrix<mint, tag>;
 
 int main(){
-  int N; scanf("%d", &N);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N; std::cin >> N;
 
   Mat::N = N;
 
-  Mat m;
+  Mat m(input_vector<mint>(N, N));
 
-  for(int i = 0; i < N; ++i){
-    for(int j = 0; j < N; ++j){
-      int x; scanf("%d", &x);
-      m[i][j] = x;
-    }
-  }
-
-  auto ans = determinant(m);
-
-  printf("%lld\n", ans.val);
+  std::cout << determinant(m) << "\n";
 
   return 0;
 }
@@ -90,12 +87,12 @@ int main(){
 #line 1 "test/yosupo-judge/matrix_det/main.test.cpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/matrix_det"
 
-#line 2 "Mylib/Number/Mint/mint.cpp"
 #include <iostream>
+#line 3 "Mylib/Number/Mint/mint.cpp"
 #include <utility>
 
 /**
- * @title modint
+ * @title Modint
  * @docs mint.md
  */
 template <uint32_t M> class ModInt{
@@ -182,7 +179,7 @@ public:
 #line 4 "Mylib/LinearAlgebra/Square/square_matrix.cpp"
 
 /**
- * @title 正方行列
+ * @title Square matrix
  * @docs square_matrix.md
  */
 template <typename T, class Tag> struct SquareMatrix{
@@ -239,7 +236,7 @@ template <typename T, class Tag> int SquareMatrix<T,Tag>::N;
 #line 2 "Mylib/LinearAlgebra/Square/determinant.cpp"
 
 /**
- * @title 行列式
+ * @title Determinant
  * @docs determinant.md
  */
 template <typename M, typename T = typename M::value_type>
@@ -269,7 +266,25 @@ T determinant(M m){
   for(int i = 0; i < N; ++i) ret *= m[i][i];
   return ret;
 }
-#line 6 "test/yosupo-judge/matrix_det/main.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 8 "test/yosupo-judge/matrix_det/main.test.cpp"
 
 using mint = ModInt<998244353>;
 
@@ -277,22 +292,16 @@ struct tag{};
 using Mat = SquareMatrix<mint, tag>;
 
 int main(){
-  int N; scanf("%d", &N);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N; std::cin >> N;
 
   Mat::N = N;
 
-  Mat m;
+  Mat m(input_vector<mint>(N, N));
 
-  for(int i = 0; i < N; ++i){
-    for(int j = 0; j < N; ++j){
-      int x; scanf("%d", &x);
-      m[i][j] = x;
-    }
-  }
-
-  auto ans = determinant(m);
-
-  printf("%lld\n", ans.val);
+  std::cout << determinant(m) << "\n";
 
   return 0;
 }

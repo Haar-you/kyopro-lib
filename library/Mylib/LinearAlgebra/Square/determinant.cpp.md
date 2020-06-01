@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 行列式
+# :x: Determinant
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b58b3fdb1287502881e9117a37552614">Mylib/LinearAlgebra/Square</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/Square/determinant.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/matrix_det/main.test.cpp.html">test/yosupo-judge/matrix_det/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/matrix_det/main.test.cpp.html">test/yosupo-judge/matrix_det/main.test.cpp</a>
 
 
 ## Code
@@ -49,7 +49,7 @@ layout: default
 #pragma once
 
 /**
- * @title 行列式
+ * @title Determinant
  * @docs determinant.md
  */
 template <typename M, typename T = typename M::value_type>
@@ -89,7 +89,7 @@ T determinant(M m){
 #line 2 "Mylib/LinearAlgebra/Square/determinant.cpp"
 
 /**
- * @title 行列式
+ * @title Determinant
  * @docs determinant.md
  */
 template <typename M, typename T = typename M::value_type>

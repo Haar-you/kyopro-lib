@@ -25,31 +25,31 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 円と線分の交差
+# :x: Intersection between a circle and a segment
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/intersect_circle_segment.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="distance_segment_point.cpp.html">線分・点間の距離</a>
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :x: <a href="distance_segment_point.cpp.html">Distance between a segment and a point</a>
+* :question: <a href="geometry_template.cpp.html">Geometry template</a>
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="area_intersection_of_circle_and_polygon.cpp.html">円と多角形の共通部分の面積</a>
+* :x: <a href="area_intersection_of_circle_and_polygon.cpp.html">Area of intersection between a circle and a polygon</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
 
 
 ## Code
@@ -63,7 +63,7 @@ layout: default
 #include "Mylib/Geometry/Float/distance_segment_point.cpp"
 
 /**
- * @title 円と線分の交差
+ * @title Intersection between a circle and a segment
  * @docs intersect_circle_segment.md
  */
 namespace intersect_circle_segment{
@@ -128,7 +128,7 @@ namespace intersect_circle_segment{
 #line 5 "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -212,7 +212,7 @@ template <typename T> struct Circle{
 #line 3 "Mylib/Geometry/Float/distance_segment_point.cpp"
 
 /**
- * @title 線分・点間の距離
+ * @title Distance between a segment and a point
  * @docs distance_segment_point.md
  */
 template <typename T>
@@ -224,7 +224,7 @@ T distance_segment_point(const Segment<T> &l, const Point<T> &p){
 #line 5 "Mylib/Geometry/Float/intersect_circle_segment.cpp"
 
 /**
- * @title 円と線分の交差
+ * @title Intersection between a circle and a segment
  * @docs intersect_circle_segment.md
  */
 namespace intersect_circle_segment{

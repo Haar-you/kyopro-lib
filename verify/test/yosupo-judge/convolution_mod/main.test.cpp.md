@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/convolution_mod/main.test.cpp
+# :x: test/yosupo-judge/convolution_mod/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#8dac0df2b87704e7ea660cabc39eb365">test/yosupo-judge/convolution_mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/convolution_mod/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 14:34:19+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/convolution_mod">https://judge.yosupo.jp/problem/convolution_mod</a>
@@ -39,8 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">NumberTheoreticTransform</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number theoretic transform</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -54,6 +56,8 @@ layout: default
 #include <vector>
 #include "Mylib/Convolution/ntt_convolution.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
+#include "Mylib/IO/join.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 const int mod = 998244353;
 const int PRIM_ROOT = 3;
@@ -61,19 +65,18 @@ const int PRIM_ROOT = 3;
 using mint = ModInt<mod>;
 
 int main(){
-  int n, m; scanf("%d%d", &n, &m);
-  std::vector<int64_t> a(n), b(m);
-  for(int i = 0; i < n; ++i) scanf("%lld", &a[i]);
-  for(int i = 0; i < m; ++i) scanf("%lld", &b[i]);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int n, m; std::cin >> n >> m;
+
+  auto a = input_vector<int64_t>(n);
+  auto b = input_vector<int64_t>(m);
 
   NumberTheoreticTransform<mint, PRIM_ROOT, 1 << 20> ntt;
   auto ans = ntt.run_convolution(a, b);
 
-  for(int i = 0; i < n+m-1; ++i){
-    printf("%lld ", ans[i].val);
-  }
-
-  printf("\n");
+  std::cout << join(ans.begin(), ans.begin() + n + m - 1) << "\n";
   
   return 0;
 }
@@ -97,7 +100,7 @@ int main(){
 #line 4 "Mylib/Number/Mint/mint.cpp"
 
 /**
- * @title modint
+ * @title Modint
  * @docs mint.md
  */
 template <uint32_t M> class ModInt{
@@ -182,7 +185,7 @@ public:
 #line 7 "Mylib/Convolution/ntt_convolution.cpp"
 
 /**
- * @title NumberTheoreticTransform
+ * @title Number theoretic transform
  * @docs ntt_convolution.md
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>
@@ -301,7 +304,43 @@ std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
 
   return ret;
 }
-#line 7 "test/yosupo-judge/convolution_mod/main.test.cpp"
+#line 3 "Mylib/IO/join.cpp"
+#include <sstream>
+#include <string>
+
+/**
+ * @docs join.md
+ */
+template <typename ITER>
+std::string join(ITER first, ITER last, std::string delim = " "){
+  std::stringstream s;
+
+  for(auto it = first; it != last; ++it){
+    if(it != first) s << delim;
+    s << *it;
+  }
+
+  return s.str();
+}
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 9 "test/yosupo-judge/convolution_mod/main.test.cpp"
 
 const int mod = 998244353;
 const int PRIM_ROOT = 3;
@@ -309,19 +348,18 @@ const int PRIM_ROOT = 3;
 using mint = ModInt<mod>;
 
 int main(){
-  int n, m; scanf("%d%d", &n, &m);
-  std::vector<int64_t> a(n), b(m);
-  for(int i = 0; i < n; ++i) scanf("%lld", &a[i]);
-  for(int i = 0; i < m; ++i) scanf("%lld", &b[i]);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int n, m; std::cin >> n >> m;
+
+  auto a = input_vector<int64_t>(n);
+  auto b = input_vector<int64_t>(m);
 
   NumberTheoreticTransform<mint, PRIM_ROOT, 1 << 20> ntt;
   auto ans = ntt.run_convolution(a, b);
 
-  for(int i = 0; i < n+m-1; ++i){
-    printf("%lld ", ans[i].val);
-  }
-
-  printf("\n");
+  std::cout << join(ans.begin(), ans.begin() + n + m - 1) << "\n";
   
   return 0;
 }

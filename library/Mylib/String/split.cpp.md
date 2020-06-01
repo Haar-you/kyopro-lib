@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 文字列のsplit関数
+# :heavy_check_mark: split
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/split.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -51,7 +51,7 @@ layout: default
 #include <vector>
 
 /**
- * @title 文字列のsplit関数
+ * @title split
  * @docs split.md
  */
 auto split(const std::string &s, const std::string &delim){
@@ -83,7 +83,7 @@ auto split(const std::string &s, const std::string &delim){
 #include <vector>
 
 /**
- * @title 文字列のsplit関数
+ * @title split
  * @docs split.md
  */
 auto split(const std::string &s, const std::string &delim){

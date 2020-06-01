@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/776/main.test.cpp
+# :x: test/yukicoder/776/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a8c189a9cd3b51f204ab4e40b62c7dab">test/yukicoder/776</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/776/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-17 07:08:54+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/776">https://yukicoder.me/problems/no/776</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp.html">Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">SegmentTree</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp.html">Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -58,31 +59,30 @@ layout: default
 
 #include "Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using Mon = MaxPartialSumMonoid<int64_t>;
 
 int main(){
-  int N,Q; scanf("%d%d", &N, &Q);
+  int N,Q; std::cin >> N >> Q;
 
   SegmentTree<Mon> seg(N);
 
   std::vector<int64_t> a(N);
 
   for(int i = 0; i < N; ++i){
-    scanf("%lld", &a[i]);
+    std::cin >> a[i];
     seg.update(i, Mon::MaxPartialSum::make(a[i]));
   }
 
-  for(int i = 0; i < Q; ++i){
-    std::string type; std::cin >> type;
-
+  for(auto [type] : input_tuples<std::string>(Q)){
     if(type == "set"){
-      int i, x; scanf("%d%d", &i, &x);
+      int i, x; std::cin >> i >> x;
       --i;
       seg.update(i, Mon::MaxPartialSum::make(x));
       a[i] = x;
     }else{
-      int l1, l2, r1, r2; scanf("%d%d%d%d", &l1, &l2, &r1, &r2);
+      int l1, l2, r1, r2; std::cin >> l1 >> l2 >> r1 >> r2;
       --l1, --l2, --r1, --r2;
 
       r1 = std::max(l1,r1);
@@ -90,16 +90,17 @@ int main(){
         
       int64_t ans = LLONG_MIN;
         
-      auto f = [&](int L1, int L2, int R1, int R2){
-                 auto ret =
-                   seg.get(L1, L2+1).value_or(Mon::MaxPartialSum::make(0)).right_max +
-                   seg.get(L2+1, R1).value_or(Mon::MaxPartialSum::make(0)).sum +
-                   seg.get(R1, R2+1).value_or(Mon::MaxPartialSum::make(0)).left_max;
+      auto f =
+        [&](int L1, int L2, int R1, int R2){
+          auto ret =
+            seg.get(L1, L2+1).value_or(Mon::MaxPartialSum::make(0)).right_max +
+            seg.get(L2+1, R1).value_or(Mon::MaxPartialSum::make(0)).sum +
+            seg.get(R1, R2+1).value_or(Mon::MaxPartialSum::make(0)).left_max;
 
-                 if(L2 == R1) ret -= a[L2];
+          if(L2 == R1) ret -= a[L2];
                    
-                 return ret;
-               };
+          return ret;
+        };
 
       if(l2 <= r1){
         ans = f(l1, l2, r1, r2);
@@ -109,7 +110,7 @@ int main(){
         ans = std::max(ans, seg.get(r1, l2+1)->partial_max);
       }
 
-      printf("%lld\n", ans);
+      std::cout << ans << "\n";
     }
   }
 
@@ -168,7 +169,7 @@ struct MaxPartialSumMonoid{
 #line 3 "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
 /**
- * @title SegmentTree
+ * @title Segment tree
  * @docs segment_tree.md
  */
 template <typename Monoid>
@@ -221,32 +222,85 @@ public:
     init_with_vector(std::vector<value_type>(hsize, val));
   }  
 };
-#line 11 "test/yukicoder/776/main.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 12 "test/yukicoder/776/main.test.cpp"
 
 using Mon = MaxPartialSumMonoid<int64_t>;
 
 int main(){
-  int N,Q; scanf("%d%d", &N, &Q);
+  int N,Q; std::cin >> N >> Q;
 
   SegmentTree<Mon> seg(N);
 
   std::vector<int64_t> a(N);
 
   for(int i = 0; i < N; ++i){
-    scanf("%lld", &a[i]);
+    std::cin >> a[i];
     seg.update(i, Mon::MaxPartialSum::make(a[i]));
   }
 
-  for(int i = 0; i < Q; ++i){
-    std::string type; std::cin >> type;
-
+  for(auto [type] : input_tuples<std::string>(Q)){
     if(type == "set"){
-      int i, x; scanf("%d%d", &i, &x);
+      int i, x; std::cin >> i >> x;
       --i;
       seg.update(i, Mon::MaxPartialSum::make(x));
       a[i] = x;
     }else{
-      int l1, l2, r1, r2; scanf("%d%d%d%d", &l1, &l2, &r1, &r2);
+      int l1, l2, r1, r2; std::cin >> l1 >> l2 >> r1 >> r2;
       --l1, --l2, --r1, --r2;
 
       r1 = std::max(l1,r1);
@@ -254,16 +308,17 @@ int main(){
         
       int64_t ans = LLONG_MIN;
         
-      auto f = [&](int L1, int L2, int R1, int R2){
-                 auto ret =
-                   seg.get(L1, L2+1).value_or(Mon::MaxPartialSum::make(0)).right_max +
-                   seg.get(L2+1, R1).value_or(Mon::MaxPartialSum::make(0)).sum +
-                   seg.get(R1, R2+1).value_or(Mon::MaxPartialSum::make(0)).left_max;
+      auto f =
+        [&](int L1, int L2, int R1, int R2){
+          auto ret =
+            seg.get(L1, L2+1).value_or(Mon::MaxPartialSum::make(0)).right_max +
+            seg.get(L2+1, R1).value_or(Mon::MaxPartialSum::make(0)).sum +
+            seg.get(R1, R2+1).value_or(Mon::MaxPartialSum::make(0)).left_max;
 
-                 if(L2 == R1) ret -= a[L2];
+          if(L2 == R1) ret -= a[L2];
                    
-                 return ret;
-               };
+          return ret;
+        };
 
       if(l2 <= r1){
         ans = f(l1, l2, r1, r2);
@@ -273,7 +328,7 @@ int main(){
         ans = std::max(ans, seg.get(r1, l2+1)->partial_max);
       }
 
-      printf("%lld\n", ans);
+      std::cout << ans << "\n";
     }
   }
 

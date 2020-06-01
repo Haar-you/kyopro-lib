@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/789/main.test.cpp
+# :x: test/yukicoder/789/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f2dc228f845da8f438899cc780c48dec">test/yukicoder/789</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/789/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-17 07:08:54+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/789">https://yukicoder.me/problems/no/789</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp.html">動的SegmentTree</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp.html">Dynamic segment tree</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -53,16 +54,19 @@ layout: default
 #include <iostream>
 #include "Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
-  int n; scanf("%d", &n);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
+  int n; std::cin >> n;
 
   DynamicSegmentTree<SumMonoid<int64_t>> seg(1000000001);
 
   int64_t ans = 0;
     
-  for(int i = 0; i < n; ++i){
-    int q,x,y; scanf("%d%d%d", &q, &x, &y);
+  for(auto [q, x, y] : input_tuples<int, int, int>(n)){
     if(q == 0){
       seg.update(x, seg[x] + y);
     }else{
@@ -70,7 +74,7 @@ int main(){
     }
   }
 
-  printf("%lld\n", ans);
+  std::cout << ans << "\n";
   
   return 0;
 }
@@ -88,7 +92,7 @@ int main(){
 #line 2 "Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp"
 
 /**
- * @title 動的SegmentTree
+ * @title Dynamic segment tree
  * @docs dynamic_segment_tree.md
  */
 template <typename Monoid>
@@ -161,17 +165,75 @@ struct SumMonoid{
   constexpr inline static value_type id(){return 0;}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return a + b;}
 };
-#line 6 "test/yukicoder/789/main.test.cpp"
+#line 3 "Mylib/IO/input_tuples.cpp"
+#include <vector>
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 7 "test/yukicoder/789/main.test.cpp"
 
 int main(){
-  int n; scanf("%d", &n);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
+  int n; std::cin >> n;
 
   DynamicSegmentTree<SumMonoid<int64_t>> seg(1000000001);
 
   int64_t ans = 0;
     
-  for(int i = 0; i < n; ++i){
-    int q,x,y; scanf("%d%d%d", &q, &x, &y);
+  for(auto [q, x, y] : input_tuples<int, int, int>(n)){
     if(q == 0){
       seg.update(x, seg[x] + y);
     }else{
@@ -179,7 +241,7 @@ int main(){
     }
   }
 
-  printf("%lld\n", ans);
+  std::cout << ans << "\n";
   
   return 0;
 }

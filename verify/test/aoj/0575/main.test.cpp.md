@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/0575/main.test.cpp
+# :x: test/aoj/0575/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#bc5135b351a05eb69baff19bb9fa33f2">test/aoj/0575</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/0575/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-25 21:27:16+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0575">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0575</a>
@@ -39,10 +39,13 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Search/parallel_binary_search.cpp.html">並列二分探索</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">UnionFind</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/dijkstra.cpp.html">Dijkstra法</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/Search/parallel_binary_search.cpp.html">Parallel binary search</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :x: <a href="../../../../library/Mylib/Graph/ShortestPath/dijkstra.cpp.html">Dijkstra algorithm</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -61,6 +64,9 @@ layout: default
 #include "Mylib/Graph/ShortestPath/dijkstra.cpp"
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include "Mylib/Algorithm/Search/parallel_binary_search.cpp"
+#include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuple_vector.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -68,24 +74,14 @@ int main(){
   
   int N, M, K, Q; std::cin >> N >> M >> K >> Q;
 
-  Graph<int> g(N);
-  for(int i = 0; i < M; ++i){
-    int A, B, L; std::cin >> A >> B >> L;
-    --A, --B;
-    add_undirected(g, A, B, L);
-  }
+  auto g = convert_to_graph<int, false>(N, input_edges<int, 1, true>(M));
 
-  std::vector<int> F(K);
-  for(int i = 0; i < K; ++i){
-    std::cin >> F[i];
-    --F[i];
-  }
+  auto F = input_vector<int>(K);
+  for(auto &x : F) x -= 1;
 
-  std::vector<int> S(Q), T(Q);
-  for(int i = 0; i < Q; ++i){
-    std::cin >> S[i] >> T[i];
-    --S[i], --T[i];
-  }
+  auto [S, T] = input_tuple_vector<int, int>(Q);
+  for(auto &x : S) x -= 1;
+  for(auto &x : T) x -= 1;
 
   auto dist = Dijkstra(g, F).dist;
 
@@ -153,7 +149,7 @@ int main(){
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -184,7 +180,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 8 "Mylib/Graph/ShortestPath/dijkstra.cpp"
 
 /**
- * @title Dijkstra法
+ * @title Dijkstra algorithm
  * @docs dijkstra.md
  */
 template <typename T>
@@ -233,7 +229,7 @@ public:
 #include <numeric>
 
 /**
- * @title UnionFind
+ * @title Union-find
  * @docs unionfind.md
  */
 class UnionFind{
@@ -278,7 +274,7 @@ public:
 #include <cmath>
 
 /**
- * @title 並列二分探索
+ * @title Parallel binary search
  * @docs parallel_binary_search.md
  */
 template <typename F>
@@ -316,7 +312,89 @@ auto parallel_binary_search(int M, int Q, F f){
 
   return ub;
 }
-#line 12 "test/aoj/0575/main.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 4 "Mylib/IO/input_tuple_vector.cpp"
+#include <tuple>
+#line 6 "Mylib/IO/input_tuple_vector.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuple_vector.md
+ */
+template <typename T, size_t ... I>
+void input_tuple_vector_init(T &val, int N, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{
+    (void(std::get<I>(val).resize(N)), 0)...
+  };
+}
+
+template <typename T, size_t ... I>
+void input_tuple_vector_helper(T &val, int i, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{
+    (void(std::cin >> std::get<I>(val)[i]), 0)...
+  };
+}
+
+template <typename ... Args>
+auto input_tuple_vector(int N){
+  std::tuple<std::vector<Args>...> ret;
+
+  input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof...(Args)>());
+  for(int i = 0; i < N; ++i){
+    input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof...(Args)>());
+  }
+
+  return ret;
+}
+#line 15 "test/aoj/0575/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -324,24 +402,14 @@ int main(){
   
   int N, M, K, Q; std::cin >> N >> M >> K >> Q;
 
-  Graph<int> g(N);
-  for(int i = 0; i < M; ++i){
-    int A, B, L; std::cin >> A >> B >> L;
-    --A, --B;
-    add_undirected(g, A, B, L);
-  }
+  auto g = convert_to_graph<int, false>(N, input_edges<int, 1, true>(M));
 
-  std::vector<int> F(K);
-  for(int i = 0; i < K; ++i){
-    std::cin >> F[i];
-    --F[i];
-  }
+  auto F = input_vector<int>(K);
+  for(auto &x : F) x -= 1;
 
-  std::vector<int> S(Q), T(Q);
-  for(int i = 0; i < Q; ++i){
-    std::cin >> S[i] >> T[i];
-    --S[i], --T[i];
-  }
+  auto [S, T] = input_tuple_vector<int, int>(Q);
+  for(auto &x : S) x -= 1;
+  for(auto &x : T) x -= 1;
 
   auto dist = Dijkstra(g, F).dist;
 

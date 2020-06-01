@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: 連続部分和の最大値
+# :warning: Maximum subarray problem
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3a96c66483797c15eff4c0c3d8733619">Mylib/DynamicProgramming</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/max_partial_sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -46,7 +46,7 @@ layout: default
 #include <algorithm>
 
 /**
- * @title 連続部分和の最大値
+ * @title Maximum subarray problem
  * @docs max_partial_sum.md
  */
 template <typename T>
@@ -70,7 +70,7 @@ T max_partial_sum(const std::vector<T> &v){
 #include <algorithm>
 
 /**
- * @title 連続部分和の最大値
+ * @title Maximum subarray problem
  * @docs max_partial_sum.md
  */
 template <typename T>

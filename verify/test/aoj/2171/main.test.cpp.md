@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4195ec8e967880acfa32ac4f42872403">test/aoj/2171</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2171/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2171">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2171</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp.html">Warshall-Floyd法 (隣接行列グラフ)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp.html">連立線形方程式 (浮動小数点数)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp.html">Warshall-Floyd algorithm (For adjaceny matrix graph)</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp.html">Simultaneous linear equations (Floating point number)</a>
 
 
 ## Code
@@ -57,6 +58,7 @@ layout: default
 
 #include "Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp"
 #include "Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -66,14 +68,8 @@ int main(){
   while(std::cin >> n >> s >> t, n){
     --s, --t;
 
-    std::vector<int> q(n);
-    for(int i = 0; i < n; ++i) std::cin >> q[i];
-    std::vector<std::vector<int>> g(n, std::vector<int>(n));
-    for(int i = 0; i < n; ++i){
-      for(int j = 0; j < n; ++j){
-        std::cin >> g[i][j];
-      }
-    }
+    auto q = input_vector<int>(n);
+    auto g = input_vector<int>(n, n);
 
     auto dist = WarshallFloyd<int, 0>(g).dist;
 
@@ -157,7 +153,7 @@ int main(){
 #include <optional>
 
 /**
- * @title Warshall-Floyd法 (隣接行列グラフ)
+ * @title Warshall-Floyd algorithm (For adjaceny matrix graph)
  * @docs warshall_floyd_for_matrix_graph.md
  */
 template <typename T, T INVALID>
@@ -203,7 +199,7 @@ struct WarshallFloyd{
 #include <utility>
 
 /**
- * @title 連立線形方程式 (浮動小数点数)
+ * @title Simultaneous linear equations (Floating point number)
  * @docs float_simultaneous_linear_equations.md
  */
 namespace float_simultaneous_linear_equations{
@@ -269,7 +265,25 @@ namespace float_simultaneous_linear_equations{
     return ret;
   }
 }
-#line 10 "test/aoj/2171/main.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 11 "test/aoj/2171/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -279,14 +293,8 @@ int main(){
   while(std::cin >> n >> s >> t, n){
     --s, --t;
 
-    std::vector<int> q(n);
-    for(int i = 0; i < n; ++i) std::cin >> q[i];
-    std::vector<std::vector<int>> g(n, std::vector<int>(n));
-    for(int i = 0; i < n; ++i){
-      for(int j = 0; j < n; ++j){
-        std::cin >> g[i][j];
-      }
-    }
+    auto q = input_vector<int>(n);
+    auto g = input_vector<int>(n, n);
 
     auto dist = WarshallFloyd<int, 0>(g).dist;
 

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: modint (実行時mod指定)
+# :question: Modint (Runtime mod)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ed8374f4a8b62e2301eb75f9564224fe">Mylib/Number/Mint</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mint/runtime_mint.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 16:28:32+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -52,7 +52,7 @@ layout: default
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/1327/main.test.cpp.html">test/aoj/1327/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/montmort_number_mod/main.test.cpp.html">test/yosupo-judge/montmort_number_mod/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/montmort_number_mod/main.test.cpp.html">test/yosupo-judge/montmort_number_mod/main.test.cpp</a>
 
 
 ## Code
@@ -65,7 +65,7 @@ layout: default
 #include <utility>
 
 /**
- * @title modint (実行時mod指定)
+ * @title Modint (Runtime mod)
  * @docs runtime_mint.md
  */
 class RuntimeModInt{
@@ -144,7 +144,7 @@ std::ostream& operator<<(std::ostream &os, const RuntimeModInt &a){os << a.val; 
 #include <utility>
 
 /**
- * @title modint (実行時mod指定)
+ * @title Modint (Runtime mod)
  * @docs runtime_mint.md
  */
 class RuntimeModInt{

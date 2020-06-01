@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
+# :x: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#5680c9d4a5622c4318d3dde130a2c657">test/yosupo-judge/staticrmq</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/staticrmq/main.sparse_table.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 14:34:19+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/staticrmq">https://judge.yosupo.jp/problem/staticrmq</a>
@@ -39,8 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SparseTable/sparse_table.cpp.html">SparseTable</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SparseTable/sparse_table.cpp.html">Sparse table</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -55,6 +57,8 @@ layout: default
 
 #include "Mylib/DataStructure/SparseTable/sparse_table.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -62,14 +66,11 @@ int main(){
   
   int N, Q; std::cin >> N >> Q;
 
-  std::vector<int> a(N);
-  for(int i = 0; i < N; ++i) std::cin >> a[i];
+  auto a = input_vector<int>(N);
 
   SparseTable<MinMonoid<int>> s(a);
 
-  while(Q--){
-    int l, r; std::cin >> l >> r;
-
+  for(auto [l, r] : input_tuples<int, int>(Q)){
     std::cout << s.get(l, r) << "\n";
   }
 
@@ -93,7 +94,7 @@ int main(){
 #include <algorithm>
 
 /**
- * @title SparseTable
+ * @title Sparse table
  * @docs sparse_table.md
  */
 template <typename Semilattice>
@@ -155,7 +156,80 @@ struct MinMonoid{
   constexpr inline static value_type id(){return std::numeric_limits<T>::max();}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return std::min(a, b);}
 };
-#line 8 "test/yosupo-judge/staticrmq/main.sparse_table.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 10 "test/yosupo-judge/staticrmq/main.sparse_table.test.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -163,14 +237,11 @@ int main(){
   
   int N, Q; std::cin >> N >> Q;
 
-  std::vector<int> a(N);
-  for(int i = 0; i < N; ++i) std::cin >> a[i];
+  auto a = input_vector<int>(N);
 
   SparseTable<MinMonoid<int>> s(a);
 
-  while(Q--){
-    int l, r; std::cin >> l >> r;
-
+  for(auto [l, r] : input_tuples<int, int>(Q)){
     std::cout << s.get(l, r) << "\n";
   }
 

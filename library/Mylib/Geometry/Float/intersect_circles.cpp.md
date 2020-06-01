@@ -25,31 +25,31 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 円同士の交差
+# :x: Intersection between two circles
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/intersect_circles.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="geometry_template.cpp.html">Geometry template</a>
 
 
 ## Required by
 
-* :warning: <a href="area_intersection_of_circles.cpp.html">2円の共通部分の面積</a>
+* :warning: <a href="area_intersection_of_circles.cpp.html">Area of intersection between two circles</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_A/main.test.cpp.html">test/aoj/CGL_7_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_E/main.test.cpp.html">test/aoj/CGL_7_E/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_7_A/main.test.cpp.html">test/aoj/CGL_7_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_7_E/main.test.cpp.html">test/aoj/CGL_7_E/main.test.cpp</a>
 
 
 ## Code
@@ -62,7 +62,7 @@ layout: default
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 円同士の交差
+ * @title Intersection between two circles
  * @docs intersect_circles.md
  */
 namespace intersect_circles{
@@ -121,7 +121,7 @@ namespace intersect_circles{
 #line 5 "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -205,7 +205,7 @@ template <typename T> struct Circle{
 #line 4 "Mylib/Geometry/Float/intersect_circles.cpp"
 
 /**
- * @title 円同士の交差
+ * @title Intersection between two circles
  * @docs intersect_circles.md
  */
 namespace intersect_circles{

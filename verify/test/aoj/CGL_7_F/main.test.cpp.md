@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/CGL_7_F/main.test.cpp
+# :x: test/aoj/CGL_7_F/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ebfb4c2077fae0048c4c5d43a58ceb64">test/aoj/CGL_7_F</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_7_F/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_F</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/tangent_of_circle.cpp.html">円の接線</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/tangent_of_circle.cpp.html">Tangent of circle</a>
 
 
 ## Code
@@ -99,7 +99,7 @@ int main(){
 #include <cmath>
 
 /**
- * @title 誤差許容浮動小数点数
+ * @title Floating point number with eps
  * @docs double_eps.md
  */
 template <typename T>
@@ -168,7 +168,7 @@ template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
 #include <vector>
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -252,7 +252,7 @@ template <typename T> struct Circle{
 #line 3 "Mylib/Geometry/Float/tangent_of_circle.cpp"
 
 /**
- * @title 円の接線
+ * @title Tangent of circle
  * @docs tangent_of_circle.md
  */
 template <typename T>

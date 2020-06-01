@@ -25,27 +25,27 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: NumberTheoreticTransform
+# :x: Number theoretic transform
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/ntt_convolution.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 14:34:19+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/convolution_mod/main.test.cpp.html">test/yosupo-judge/convolution_mod/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/convolution_mod_1000000007/main.test.cpp.html">test/yosupo-judge/convolution_mod_1000000007/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/convolution_mod/main.test.cpp.html">test/yosupo-judge/convolution_mod/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/convolution_mod_1000000007/main.test.cpp.html">test/yosupo-judge/convolution_mod_1000000007/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
 
 
 ## Code
@@ -61,7 +61,7 @@ layout: default
 #include "Mylib/Number/Mint/mint.cpp"
 
 /**
- * @title NumberTheoreticTransform
+ * @title Number theoretic transform
  * @docs ntt_convolution.md
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>
@@ -197,7 +197,7 @@ std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
 #line 4 "Mylib/Number/Mint/mint.cpp"
 
 /**
- * @title modint
+ * @title Modint
  * @docs mint.md
  */
 template <uint32_t M> class ModInt{
@@ -282,7 +282,7 @@ public:
 #line 7 "Mylib/Convolution/ntt_convolution.cpp"
 
 /**
- * @title NumberTheoreticTransform
+ * @title Number theoretic transform
  * @docs ntt_convolution.md
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>

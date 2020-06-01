@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#470f11b8b249244fcbedd0bf3d66e316">test/aoj/2559</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2559/main.binomial_heap.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-24 09:36:03+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2559">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2559</a>
@@ -39,10 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/Heap/binomial_heap.cpp.html">BinomialHeap</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim法</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/Heap/binomial_heap.cpp.html">Binomial heap</a>
+* :question: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">Fixed point combinator</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Misc/merge_technique.cpp.html">Mylib/Misc/merge_technique.cpp</a>
 
 
@@ -57,24 +58,25 @@ layout: default
 #include <vector>
 #include <map>
 #include <set>
+#include <tuple>
 
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/MinimumSpanningTree/prim.cpp"
 #include "Mylib/Misc/fix_point.cpp"
 #include "Mylib/DataStructure/Heap/binomial_heap.cpp"
 #include "Mylib/Misc/merge_technique.cpp"
+#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int n, m; std::cin >> n >> m;
 
-  Graph<int64_t> g(n);
+  auto edges = input_edges<int64_t, 1, true>(m);
+  auto g = convert_to_graph<int64_t, false>(n, edges);
+
   std::map<std::pair<int,int>, int> index;
   for(int i = 0; i < m; ++i){
-    int a, b; std::cin >> a >> b;
-    int64_t w; std::cin >> w;
-    --a, --b;
-    add_undirected(g, a, b, w);
-    index[{a, b}] = index[{b, a}] = i;
+    const auto &e = edges[i];
+    index[{e.from, e.to}] = index[{e.to, e.from}] = i;
   }
 
   auto res = prim(g);
@@ -155,11 +157,12 @@ int main(){
 #include <vector>
 #include <map>
 #include <set>
+#include <tuple>
 
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -187,7 +190,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Graph/MinimumSpanningTree/prim.cpp"
 
 /**
- * @title Prim法
+ * @title Prim algorithm
  * @docs prim.md
  */
 template <typename T>
@@ -222,7 +225,7 @@ std::vector<Edge<T>> prim(const Graph<T> &graph){
 #include <utility>
 
 /**
- * @title 不動点コンビネータ
+ * @title Fixed point combinator
  * @docs fix_point.md
  */
 template <typename F>
@@ -250,7 +253,7 @@ inline constexpr auto make_fix_point(F &f){
 #include <cassert>
 
 /**
- * @title BinomialHeap
+ * @title Binomial heap
  * @docs binomial_heap.md
  */
 template <typename T, typename Compare = std::less<T>>
@@ -361,19 +364,49 @@ void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){
     std::swap(res, b);
   }
 }
-#line 13 "test/aoj/2559/main.binomial_heap.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 15 "test/aoj/2559/main.binomial_heap.test.cpp"
 
 int main(){
   int n, m; std::cin >> n >> m;
 
-  Graph<int64_t> g(n);
+  auto edges = input_edges<int64_t, 1, true>(m);
+  auto g = convert_to_graph<int64_t, false>(n, edges);
+
   std::map<std::pair<int,int>, int> index;
   for(int i = 0; i < m; ++i){
-    int a, b; std::cin >> a >> b;
-    int64_t w; std::cin >> w;
-    --a, --b;
-    add_undirected(g, a, b, w);
-    index[{a, b}] = index[{b, a}] = i;
+    const auto &e = edges[i];
+    index[{e.from, e.to}] = index[{e.to, e.from}] = i;
   }
 
   auto res = prim(g);

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_2_C/main.test.cpp
+# :x: test/aoj/DPL_2_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ca30339b964798e13b3846ad3753f829">test/aoj/DPL_2_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_2_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 14:34:19+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_C</a>
@@ -39,7 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DynamicProgramming/bitonic_tour.cpp.html">BitonicTour</a>
+* :x: <a href="../../../../library/Mylib/DynamicProgramming/bitonic_tour.cpp.html">Bitonic tour</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 
 
 ## Code
@@ -54,6 +55,7 @@ layout: default
 #include <vector>
 #include <iomanip>
 #include "Mylib/DynamicProgramming/bitonic_tour.cpp"
+#include "Mylib/IO/input_tuple_vector.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -61,10 +63,7 @@ int main(){
   
   int n; std::cin >> n;
 
-  std::vector<int> x(n), y(n);
-  for(int i = 0; i < n; ++i){
-    std::cin >> x[i] >> y[i];
-  }
+  auto [x, y] = input_tuple_vector<int, int>(n);
 
   std::cout << std::fixed << std::setprecision(12) << bitonic_tour(n, x, y) << std::endl;
 
@@ -90,7 +89,7 @@ int main(){
 #include <cmath>
 
 /**
- * @title BitonicTour
+ * @title Bitonic tour
  * @docs bitonic_tour.md
  */
 template <typename T>
@@ -124,7 +123,40 @@ double bitonic_tour(int n, const std::vector<T> &x, const std::vector<T> &y){
 
   return dp[n-1][n-1];
 }
-#line 8 "test/aoj/DPL_2_C/main.test.cpp"
+#line 4 "Mylib/IO/input_tuple_vector.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuple_vector.md
+ */
+template <typename T, size_t ... I>
+void input_tuple_vector_init(T &val, int N, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{
+    (void(std::get<I>(val).resize(N)), 0)...
+  };
+}
+
+template <typename T, size_t ... I>
+void input_tuple_vector_helper(T &val, int i, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{
+    (void(std::cin >> std::get<I>(val)[i]), 0)...
+  };
+}
+
+template <typename ... Args>
+auto input_tuple_vector(int N){
+  std::tuple<std::vector<Args>...> ret;
+
+  input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof...(Args)>());
+  for(int i = 0; i < N; ++i){
+    input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof...(Args)>());
+  }
+
+  return ret;
+}
+#line 9 "test/aoj/DPL_2_C/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -132,10 +164,7 @@ int main(){
   
   int n; std::cin >> n;
 
-  std::vector<int> x(n), y(n);
-  for(int i = 0; i < n; ++i){
-    std::cin >> x[i] >> y[i];
-  }
+  auto [x, y] = input_tuple_vector<int, int>(n);
 
   std::cout << std::fixed << std::setprecision(12) << bitonic_tour(n, x, y) << std::endl;
 

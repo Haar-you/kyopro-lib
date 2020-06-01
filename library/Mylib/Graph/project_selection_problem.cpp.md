@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: ProjectSelectionProblem
+# :x: Project selection problem
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/project_selection_problem.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 16:28:32+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -84,8 +84,8 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/2903/main.test.cpp.html">test/aoj/2903/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/3058/main.test.cpp.html">test/aoj/3058/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/2903/main.test.cpp.html">test/aoj/2903/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/3058/main.test.cpp.html">test/aoj/3058/main.test.cpp</a>
 
 
 ## Code
@@ -100,7 +100,7 @@ layout: default
 #include <limits>
 
 /*
- * @title ProjectSelectionProblem
+ * @title Project selection problem
  * @docs project_selection_problem.md
  */
 template <typename T, typename Flow>
@@ -216,7 +216,7 @@ public:
 #include <limits>
 
 /*
- * @title ProjectSelectionProblem
+ * @title Project selection problem
  * @docs project_selection_problem.md
  */
 template <typename T, typename Flow>

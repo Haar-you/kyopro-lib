@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 第2種Stirling数 (列挙)
+# :x: Stirling numbers of second kind (Table)
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/stirling_number_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 16:28:32+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -45,7 +45,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_I/main.table.test.cpp.html">test/aoj/DPL_5_I/main.table.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/DPL_5_I/main.table.test.cpp.html">test/aoj/DPL_5_I/main.table.test.cpp</a>
 
 
 ## Code
@@ -57,7 +57,7 @@ layout: default
 #include <vector>
 
 /**
- * @title 第2種Stirling数 (列挙)
+ * @title Stirling numbers of second kind (Table)
  * @docs stirling_number_table.md 
  */
 template <typename T>
@@ -87,7 +87,7 @@ auto stirling_number_table(int n){
 #include <vector>
 
 /**
- * @title 第2種Stirling数 (列挙)
+ * @title Stirling numbers of second kind (Table)
  * @docs stirling_number_table.md 
  */
 template <typename T>

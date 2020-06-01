@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Roll-back可能Vector
+# :warning: Roll-backable vector
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0d7e284bb2256ddef55e56b25bfaf3f1">Mylib/DataStructure/Array</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Array/rollbackable_vector.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-09 08:43:01+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -59,7 +59,7 @@ layout: default
 #include <vector>
 
 /**
- * @title Roll-back可能Vector
+ * @title Roll-backable vector
  * @docs rollbackable_vector.md
  */
 template <typename T>
@@ -113,7 +113,7 @@ public:
 #include <vector>
 
 /**
- * @title Roll-back可能Vector
+ * @title Roll-backable vector
  * @docs rollbackable_vector.md
  */
 template <typename T>

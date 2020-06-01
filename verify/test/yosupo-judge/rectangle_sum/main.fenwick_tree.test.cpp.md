@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
+# :x: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9102555d140c20ca7196c4db584ea7b6">test/yosupo-judge/rectangle_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 08:15:26+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/rectangle_sum">https://judge.yosupo.jp/problem/rectangle_sum</a>
@@ -39,9 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum.cpp.html">Mylib/AlgebraicStructure/Group/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">FenwickTree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp.html">FenwickTree (FenwickTreeを乗せる)</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum.cpp.html">Mylib/AlgebraicStructure/Group/sum.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">Fenwick tree</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp.html">Fenwick tree (On Fenwick tree)</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -56,6 +58,8 @@ layout: default
 #include "Mylib/AlgebraicStructure/Group/sum.cpp"
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp"
+#include "Mylib/IO/input_tuple_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -63,12 +67,11 @@ int main(){
   
   int N, Q; std::cin >> N >> Q;
 
-  std::vector<int64_t> x(N), y(N), w(N);
+  auto [x, y, w] = input_tuple_vector<int64_t, int64_t, int64_t>(N);
 
   FenwickTree2D<SumGroup<int64_t>> seg;
 
   for(int i = 0; i < N; ++i){
-    std::cin >> x[i] >> y[i] >> w[i];
     seg.add(x[i], y[i]);
   }
 
@@ -78,9 +81,7 @@ int main(){
     seg.update(x[i], y[i], w[i]);
   }
   
-  for(int i = 0; i < Q; ++i){
-    int64_t l, d, r, u; std::cin >> l >> d >> r >> u;
-
+  for(auto [l, d, r, u] : input_tuples<int64_t, int64_t, int64_t, int64_t>(Q)){
     auto ans = seg.get(l, d, r, u);
     std::cout << ans << std::endl;
   }
@@ -115,7 +116,7 @@ struct SumGroup{
 #line 3 "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
 
 /**
- * @title FenwickTree
+ * @title Fenwick tree
  * @docs fenwick_tree.md
  */
 template <typename AbelianGroup>
@@ -167,7 +168,7 @@ public:
 #line 7 "Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp"
 
 /**
- * @title FenwickTree (FenwickTreeを乗せる)
+ * @title Fenwick tree (On Fenwick tree)
  * @docs fenwick_tree_on_fenwick_tree.md
  */
 template <typename AbelianGroup>
@@ -252,7 +253,93 @@ public:
     return AbelianGroup::op(get(r, y1, y2), AbelianGroup::inv(get(l, y1, y2)));
   }
 };
-#line 8 "test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp"
+#line 4 "Mylib/IO/input_tuple_vector.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuple_vector.md
+ */
+template <typename T, size_t ... I>
+void input_tuple_vector_init(T &val, int N, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{
+    (void(std::get<I>(val).resize(N)), 0)...
+  };
+}
+
+template <typename T, size_t ... I>
+void input_tuple_vector_helper(T &val, int i, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{
+    (void(std::cin >> std::get<I>(val)[i]), 0)...
+  };
+}
+
+template <typename ... Args>
+auto input_tuple_vector(int N){
+  std::tuple<std::vector<Args>...> ret;
+
+  input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof...(Args)>());
+  for(int i = 0; i < N; ++i){
+    input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof...(Args)>());
+  }
+
+  return ret;
+}
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 10 "test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -260,12 +347,11 @@ int main(){
   
   int N, Q; std::cin >> N >> Q;
 
-  std::vector<int64_t> x(N), y(N), w(N);
+  auto [x, y, w] = input_tuple_vector<int64_t, int64_t, int64_t>(N);
 
   FenwickTree2D<SumGroup<int64_t>> seg;
 
   for(int i = 0; i < N; ++i){
-    std::cin >> x[i] >> y[i] >> w[i];
     seg.add(x[i], y[i]);
   }
 
@@ -275,9 +361,7 @@ int main(){
     seg.update(x[i], y[i], w[i]);
   }
   
-  for(int i = 0; i < Q; ++i){
-    int64_t l, d, r, u; std::cin >> l >> d >> r >> u;
-
+  for(auto [l, d, r, u] : input_tuples<int64_t, int64_t, int64_t, int64_t>(Q)){
     auto ans = seg.get(l, d, r, u);
     std::cout << ans << std::endl;
   }

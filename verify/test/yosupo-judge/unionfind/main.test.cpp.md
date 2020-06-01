@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/unionfind/main.test.cpp
+# :x: test/yosupo-judge/unionfind/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#5aa16257c29c51dffa0b4e5427dcc272">test/yosupo-judge/unionfind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/unionfind/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/unionfind">https://judge.yosupo.jp/problem/unionfind</a>
@@ -39,7 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">UnionFind</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -51,21 +52,17 @@ layout: default
 
 #include <iostream>
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
-
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int N, Q; std::cin >> N >> Q;
 
   UnionFind uf(N);
 
-  while(Q--){
-    int t; std::cin >> t;
-
+  for(auto [t, u, v] : input_tuples<int, int, int>(Q)){
     if(t == 0){
-      int u, v; std::cin >> u >> v;
       uf.merge(u, v);
     }else{
-      int u, v; std::cin >> u >> v;
       std::cout << uf.is_same(u, v) << std::endl;
     }
   }
@@ -88,7 +85,7 @@ int main(){
 #include <numeric>
 
 /**
- * @title UnionFind
+ * @title Union-find
  * @docs unionfind.md
  */
 class UnionFind{
@@ -129,22 +126,72 @@ public:
 
   inline int count_group(){return count;}
 };
-#line 5 "test/yosupo-judge/unionfind/main.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
 
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 6 "test/yosupo-judge/unionfind/main.test.cpp"
 
 int main(){
   int N, Q; std::cin >> N >> Q;
 
   UnionFind uf(N);
 
-  while(Q--){
-    int t; std::cin >> t;
-
+  for(auto [t, u, v] : input_tuples<int, int, int>(Q)){
     if(t == 0){
-      int u, v; std::cin >> u >> v;
       uf.merge(u, v);
     }else{
-      int u, v; std::cin >> u >> v;
       std::cout << uf.is_same(u, v) << std::endl;
     }
   }

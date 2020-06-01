@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/ALDS1_9_C/main.binary.test.cpp
+# :x: test/aoj/ALDS1_9_C/main.binary.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#4cec009c25052c746a2a7a5b033e9889">test/aoj/ALDS1_9_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_9_C/main.binary.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 06:14:31+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_9_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_9_C</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/Heap/binary_heap.cpp.html">BinaryHeap</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/Heap/binary_heap.cpp.html">Binary heap</a>
 
 
 ## Code
@@ -91,7 +91,7 @@ int main(){
 #include <utility>
 
 /**
- * @title BinaryHeap
+ * @title Binary heap
  * @docs binary_heap.md
  */
 template <typename T, typename Compare = std::less<T>>

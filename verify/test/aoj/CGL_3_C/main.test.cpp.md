@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/CGL_3_C/main.test.cpp
+# :x: test/aoj/CGL_3_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ca8297dc1f360076acf81836d1dfad66">test/aoj/CGL_3_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_3_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C</a>
@@ -39,10 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/ccw.cpp.html">clockwise-counterclockwise判定</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/is_point_in_polygon.cpp.html">点・多角形の包含関係</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/ccw.cpp.html">Check clockwise-counterclockwise</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/is_point_in_polygon.cpp.html">Check if a point is in a polygon</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -56,19 +58,18 @@ layout: default
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/is_point_in_polygon.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = 1e-7;
 
 int main(){
   int n; std::cin >> n;
-  Polygon<D> ps(n);
-  for(int i = 0; i < n; ++i) std::cin >> ps[i];
+  Polygon<D> ps = input_vector<Point<D>>(n);
 
   int q; std::cin >> q;
-  while(q--){
-    Point<D> p; std::cin >> p;
-
+  for(auto [p] : input_tuples<Point<D>>(q)){
     switch(point_in_polygon::check(p, ps)){
     case point_in_polygon::INCLUSION: std::cout << 2 << std::endl; break;
     case point_in_polygon::ON_SEGMENT: std::cout << 1 << std::endl; break;
@@ -94,7 +95,7 @@ int main(){
 #include <cmath>
 
 /**
- * @title 誤差許容浮動小数点数
+ * @title Floating point number with eps
  * @docs double_eps.md
  */
 template <typename T>
@@ -163,7 +164,7 @@ template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
 #include <vector>
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -247,7 +248,7 @@ template <typename T> struct Circle{
 #line 3 "Mylib/Geometry/Float/ccw.cpp"
 
 /**
- * @title clockwise-counterclockwise判定
+ * @title Check clockwise-counterclockwise
  * @docs ccw.md
  */
 namespace ccw{
@@ -278,7 +279,7 @@ namespace ccw{
 #line 4 "Mylib/Geometry/Float/is_point_in_polygon.cpp"
 
 /**
- * @title 点・多角形の包含関係
+ * @title Check if a point is in a polygon
  * @docs is_point_in_polygon.md
  */
 namespace point_in_polygon{
@@ -317,20 +318,90 @@ namespace point_in_polygon{
     return OUTSIDE;
   }
 }
-#line 7 "test/aoj/CGL_3_C/main.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 9 "test/aoj/CGL_3_C/main.test.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = 1e-7;
 
 int main(){
   int n; std::cin >> n;
-  Polygon<D> ps(n);
-  for(int i = 0; i < n; ++i) std::cin >> ps[i];
+  Polygon<D> ps = input_vector<Point<D>>(n);
 
   int q; std::cin >> q;
-  while(q--){
-    Point<D> p; std::cin >> p;
-
+  for(auto [p] : input_tuples<Point<D>>(q)){
     switch(point_in_polygon::check(p, ps)){
     case point_in_polygon::INCLUSION: std::cout << 2 << std::endl; break;
     case point_in_polygon::ON_SEGMENT: std::cout << 1 << std::endl; break;

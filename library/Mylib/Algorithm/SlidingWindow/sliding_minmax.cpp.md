@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: スライド最小値・最大値
+# :warning: Sliding window minmax
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1d0203f9a0b34121f2fb0bb17b094d0f">Mylib/Algorithm/SlidingWindow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/SlidingWindow/sliding_minmax.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -47,7 +47,7 @@ layout: default
 #include <utility>
 
 /**
- * @title スライド最小値・最大値
+ * @title Sliding window minmax
  * @docs sliding_minmax.md
  */
 template <typename T> std::vector<std::pair<T,T>> sliding_minmax(const std::vector<T> &a, int k){
@@ -107,7 +107,7 @@ template <typename T> std::vector<std::pair<T,T>> sliding_minmax(const std::vect
 #include <utility>
 
 /**
- * @title スライド最小値・最大値
+ * @title Sliding window minmax
  * @docs sliding_minmax.md
  */
 template <typename T> std::vector<std::pair<T,T>> sliding_minmax(const std::vector<T> &a, int k){

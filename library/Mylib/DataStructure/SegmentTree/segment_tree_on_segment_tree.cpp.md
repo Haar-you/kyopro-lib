@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: SegmentTree (SegmentTreeを乗せる)
+# :x: Segment tree (On segment tree)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-17 13:16:12+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -60,12 +60,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="segment_tree.cpp.html">SegmentTree</a>
+* :x: <a href="segment_tree.cpp.html">Segment tree</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp</a>
 
 
 ## Code
@@ -80,7 +80,7 @@ layout: default
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
 /**
- * @title SegmentTree (SegmentTreeを乗せる)
+ * @title Segment tree (On segment tree)
  * @docs segment_tree_on_segment_tree.md
  */
 template <typename Monoid>
@@ -196,7 +196,7 @@ public:
 #line 3 "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
 /**
- * @title SegmentTree
+ * @title Segment tree
  * @docs segment_tree.md
  */
 template <typename Monoid>
@@ -252,7 +252,7 @@ public:
 #line 6 "Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp"
 
 /**
- * @title SegmentTree (SegmentTreeを乗せる)
+ * @title Segment tree (On segment tree)
  * @docs segment_tree_on_segment_tree.md
  */
 template <typename Monoid>

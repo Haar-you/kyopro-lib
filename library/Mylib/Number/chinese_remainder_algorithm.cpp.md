@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 中国剰余定理
+# :x: Chinese remainder theorem
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/chinese_remainder_algorithm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="extended_gcd.cpp.html">拡張Euclidの互除法</a>
+* :x: <a href="extended_gcd.cpp.html">Extended euclidean algorithm</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/186/main.test.cpp.html">test/yukicoder/186/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/186/main.test.cpp.html">test/yukicoder/186/main.test.cpp</a>
 
 
 ## Code
@@ -57,7 +57,7 @@ layout: default
 #include "Mylib/Number/extended_gcd.cpp"
 
 /**
- * @title 中国剰余定理
+ * @title Chinese remainder theorem
  * @docs chinese_remainder_algorithm.md
  */
 bool CRA(int64_t b1, int64_t m1, int64_t b2, int64_t m2, int64_t &r, int64_t &m){
@@ -93,7 +93,7 @@ bool CRA(const std::vector<int64_t> &bs, const std::vector<int64_t> &ms, int64_t
 #line 3 "Mylib/Number/extended_gcd.cpp"
 
 /**
- * @title 拡張Euclidの互除法
+ * @title Extended euclidean algorithm
  * @docs extended_gcd.md
  */
 std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
@@ -105,7 +105,7 @@ std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
 #line 5 "Mylib/Number/chinese_remainder_algorithm.cpp"
 
 /**
- * @title 中国剰余定理
+ * @title Chinese remainder theorem
  * @docs chinese_remainder_algorithm.md
  */
 bool CRA(int64_t b1, int64_t m1, int64_t b2, int64_t m2, int64_t &r, int64_t &m){

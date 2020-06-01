@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 平方分割
+# :warning: Sqrt decomposition
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#c78b3868045887a7ae97845e4050078a">Mylib/Algorithm/SqrtDecomposition</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -45,7 +45,7 @@ layout: default
 #include <algorithm>
 
 /**
- * @title 平方分割
+ * @title Sqrt decomposition
  * @docs sqrt_decomposition.md
  */
 struct SqrtDecomposition{
@@ -92,7 +92,7 @@ struct SqrtDecomposition{
 #include <algorithm>
 
 /**
- * @title 平方分割
+ * @title Sqrt decomposition
  * @docs sqrt_decomposition.md
  */
 struct SqrtDecomposition{

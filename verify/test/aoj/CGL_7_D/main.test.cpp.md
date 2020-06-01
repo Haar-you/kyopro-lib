@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/CGL_7_D/main.test.cpp
+# :x: test/aoj/CGL_7_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#e911575daa682b21b03c82a7db870c26">test/aoj/CGL_7_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_7_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_D</a>
@@ -39,10 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/distance_line_point.cpp.html">直線と点間の距離</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/intersect_circle_line.cpp.html">円と直線の交差</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/distance_line_point.cpp.html">Distance between a line and a point</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/intersect_circle_line.cpp.html">Intersection between a cirlce and a line</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -60,6 +61,7 @@ layout: default
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/intersect_circle_line.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = 1e-7;
@@ -70,8 +72,7 @@ int main(){
 
   int q; std::cin >> q;
 
-  while(q--){
-    Point<D> p0, p1; std::cin >> p0 >> p1;
+  for(auto [p0, p1] : input_tuples<Point<D>, Point<D>>(q)){
     Line<D> l(p0, p1);
 
     auto [s, ans] = intersect_circle_line::check(c, l);
@@ -111,7 +112,7 @@ int main(){
 #include <cmath>
 
 /**
- * @title 誤差許容浮動小数点数
+ * @title Floating point number with eps
  * @docs double_eps.md
  */
 template <typename T>
@@ -179,7 +180,7 @@ template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
 #line 5 "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -263,7 +264,7 @@ template <typename T> struct Circle{
 #line 3 "Mylib/Geometry/Float/distance_line_point.cpp"
 
 /**
- * @title 直線と点間の距離
+ * @title Distance between a line and a point
  * @docs distance_line_point.md
  */
 template <typename T>
@@ -273,7 +274,7 @@ T distance_line_point(const Line<T> &l, const Point<T> &p){
 #line 5 "Mylib/Geometry/Float/intersect_circle_line.cpp"
 
 /**
- * @title 円と直線の交差
+ * @title Intersection between a cirlce and a line
  * @docs intersect_circle_line.md
  */
 namespace intersect_circle_line{
@@ -308,7 +309,62 @@ namespace intersect_circle_line{
     return Result<T>({CROSSED, {b + unit(l) * a, b - unit(l) * a}});
   }
 }
-#line 11 "test/aoj/CGL_7_D/main.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 12 "test/aoj/CGL_7_D/main.test.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = 1e-7;
@@ -319,8 +375,7 @@ int main(){
 
   int q; std::cin >> q;
 
-  while(q--){
-    Point<D> p0, p1; std::cin >> p0 >> p1;
+  for(auto [p0, p1] : input_tuples<Point<D>, Point<D>>(q)){
     Line<D> l(p0, p1);
 
     auto [s, ans] = intersect_circle_line::check(c, l);

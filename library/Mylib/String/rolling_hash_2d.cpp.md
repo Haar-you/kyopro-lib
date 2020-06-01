@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: RollingHash (2D)
+# :x: Rolling hash (2D)
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/rolling_hash_2d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 14:34:19+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/ALDS1_14_C/main.test.cpp.html">test/aoj/ALDS1_14_C/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/ALDS1_14_C/main.test.cpp.html">test/aoj/ALDS1_14_C/main.test.cpp</a>
 
 
 ## Code
@@ -51,7 +51,7 @@ layout: default
 #include <random>
 
 /**
- * @title RollingHash (2D)
+ * @title Rolling hash (2D)
  * @docs rolling_hash_2d.md
  */
 class RollingHash2D{
@@ -130,7 +130,7 @@ auto make_rh_2d(int width, int height, int MOD, int seed = 0){
 #include <random>
 
 /**
- * @title RollingHash (2D)
+ * @title Rolling hash (2D)
  * @docs rolling_hash_2d.md
  */
 class RollingHash2D{

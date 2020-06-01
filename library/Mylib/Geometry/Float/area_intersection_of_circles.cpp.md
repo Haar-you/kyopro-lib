@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 2円の共通部分の面積
+# :warning: Area of intersection between two circles
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/area_intersection_of_circles.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -52,8 +52,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="intersect_circles.cpp.html">円同士の交差</a>
+* :question: <a href="geometry_template.cpp.html">Geometry template</a>
+* :x: <a href="intersect_circles.cpp.html">Intersection between two circles</a>
 
 
 ## Code
@@ -66,7 +66,7 @@ layout: default
 #include "Mylib/Geometry/Float/intersect_circles.cpp"
 
 /**
- * @title 2円の共通部分の面積
+ * @title Area of intersection between two circles
  * @docs area_intersection_of_circles.md
  */
 template <typename T>
@@ -118,7 +118,7 @@ T area_of_intersection_of_circles(const Circle<T> &a, const Circle<T> &b){
 #include <vector>
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -202,7 +202,7 @@ template <typename T> struct Circle{
 #line 4 "Mylib/Geometry/Float/intersect_circles.cpp"
 
 /**
- * @title 円同士の交差
+ * @title Intersection between two circles
  * @docs intersect_circles.md
  */
 namespace intersect_circles{
@@ -249,7 +249,7 @@ namespace intersect_circles{
 #line 4 "Mylib/Geometry/Float/area_intersection_of_circles.cpp"
 
 /**
- * @title 2円の共通部分の面積
+ * @title Area of intersection between two circles
  * @docs area_intersection_of_circles.md
  */
 template <typename T>

@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: BinaryHeap
+# :x: Binary heap
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f151d59e79c7ff7f731ff52cf9b782e4">Mylib/DataStructure/Heap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Heap/binary_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 06:14:31+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/ALDS1_9_C/main.binary.test.cpp.html">test/aoj/ALDS1_9_C/main.binary.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/ALDS1_9_C/main.binary.test.cpp.html">test/aoj/ALDS1_9_C/main.binary.test.cpp</a>
 
 
 ## Code
@@ -52,7 +52,7 @@ layout: default
 #include <utility>
 
 /**
- * @title BinaryHeap
+ * @title Binary heap
  * @docs binary_heap.md
  */
 template <typename T, typename Compare = std::less<T>>
@@ -135,7 +135,7 @@ public:
 #include <utility>
 
 /**
- * @title BinaryHeap
+ * @title Binary heap
  * @docs binary_heap.md
  */
 template <typename T, typename Compare = std::less<T>>

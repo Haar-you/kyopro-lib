@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 有理数クラス
+# :heavy_check_mark: Rational number
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#e55110d6133c602b43ca77c4caba1f06">Mylib/Number/Rational</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Rational/rational.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -51,7 +51,7 @@ layout: default
 #include <iostream>
 
 /**
- * @title 有理数クラス
+ * @title Rational number
  * @docs rational.md
  */
 class Rational{
@@ -123,7 +123,7 @@ auto abs(const Rational &a){return Rational(abs(a.nume), abs(a.deno));}
 #include <iostream>
 
 /**
- * @title 有理数クラス
+ * @title Rational number
  * @docs rational.md
  */
 class Rational{

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/GRL_3_C/main.test.cpp
+# :x: test/aoj/GRL_3_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f4ad592153fe633f58e350fdd102799a">test/aoj/GRL_3_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_3_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-25 02:14:35+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_C</a>
@@ -39,8 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -53,23 +55,19 @@ layout: default
 #include <iostream>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
+#include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int> g(V);
-  for(int i = 0; i < E; ++i){
-    int s, t; std::cin >> s >> t;
-    add_edge(g, s, t, 1);
-  }
+  auto g = convert_to_graph<int, true>(V, input_edges<int, 0, false>(E));
 
   auto scc = strongly_connected_components(g).first;
 
   int q; std::cin >> q;
 
-  for(int i = 0; i < q; ++i){
-    int u, v; std::cin >> u >> v;
-
+  for(auto [u, v] : input_tuples<int, int>(q)){
     std::cout << (scc[u] == scc[v]) << std::endl;
   }
 
@@ -91,7 +89,7 @@ int main(){
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -119,7 +117,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 
 /**
- * @title 強連結成分分解
+ * @title Strongly connected components
  * @docs strongly_connected_components.md
  */
 template <typename T>
@@ -161,24 +159,104 @@ auto strongly_connected_components(const Graph<T> &g){
   
   return std::make_pair(result, i);
 }
-#line 6 "test/aoj/GRL_3_C/main.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 8 "test/aoj/GRL_3_C/main.test.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int> g(V);
-  for(int i = 0; i < E; ++i){
-    int s, t; std::cin >> s >> t;
-    add_edge(g, s, t, 1);
-  }
+  auto g = convert_to_graph<int, true>(V, input_edges<int, 0, false>(E));
 
   auto scc = strongly_connected_components(g).first;
 
   int q; std::cin >> q;
 
-  for(int i = 0; i < q; ++i){
-    int u, v; std::cin >> u >> v;
-
+  for(auto [u, v] : input_tuples<int, int>(q)){
     std::cout << (scc[u] == scc[v]) << std::endl;
   }
 

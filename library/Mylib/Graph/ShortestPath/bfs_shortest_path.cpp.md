@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: BFS最短路
+# :heavy_check_mark: BFS shortest path
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9a0780c4ad89eac4e850657d1e57c23a">Mylib/Graph/ShortestPath</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestPath/bfs_shortest_path.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Verified with
@@ -58,7 +58,7 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title BFS最短路
+ * @title BFS shortest path
  * @docs bfs_shortest_path.md
  */
 template <typename T>
@@ -104,7 +104,7 @@ std::vector<std::optional<int>> bfs_shortest_path(const Graph<T> &g, const std::
 #include <iostream>
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -130,7 +130,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 6 "Mylib/Graph/ShortestPath/bfs_shortest_path.cpp"
 
 /**
- * @title BFS最短路
+ * @title BFS shortest path
  * @docs bfs_shortest_path.md
  */
 template <typename T>

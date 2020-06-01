@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 約数列挙
+# :x: Enumerate divisors
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#e1d7bebd3991495167778e37d1d75d40">Mylib/Number/Divisor</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Divisor/enumerate_divisor.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-08 20:11:31+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/ITP1_3_D/main.test.cpp.html">test/aoj/ITP1_3_D/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/ITP1_3_D/main.test.cpp.html">test/aoj/ITP1_3_D/main.test.cpp</a>
 
 
 ## Code
@@ -51,7 +51,7 @@ layout: default
 #include <algorithm>
 
 /**
- * @title 約数列挙
+ * @title Enumerate divisors
  * @docs enumerate_divisor.md
  */
 std::vector<std::int64_t> enumerate_divisor(std::int64_t n){
@@ -85,7 +85,7 @@ std::vector<std::int64_t> enumerate_divisor(std::int64_t n){
 #include <algorithm>
 
 /**
- * @title 約数列挙
+ * @title Enumerate divisors
  * @docs enumerate_divisor.md
  */
 std::vector<std::int64_t> enumerate_divisor(std::int64_t n){

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 素因数分解 (篩で前計算)
+# :warning: Prime factorization (Precalculation)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/prime_factorize_precalculated.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -56,7 +56,7 @@ layout: default
 #include <vector>
 
 /**
- * @title 素因数分解 (篩で前計算)
+ * @title Prime factorization (Precalculation)
  * @docs prime_factorize_precalculated.md
  */
 struct PrimeFactorize{
@@ -93,7 +93,7 @@ struct PrimeFactorize{
 #include <vector>
 
 /**
- * @title 素因数分解 (篩で前計算)
+ * @title Prime factorization (Precalculation)
  * @docs prime_factorize_precalculated.md
  */
 struct PrimeFactorize{

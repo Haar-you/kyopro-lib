@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/ITP2_11_C/main.asc.test.cpp
+# :x: test/aoj/ITP2_11_C/main.asc.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#5626b65685a30cbdda48cf9d1e561d42">test/aoj/ITP2_11_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ITP2_11_C/main.asc.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-20 18:00:03+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_C</a>
@@ -39,7 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Bit/for_each_subset_asc.cpp.html">下位集合を昇順に列挙</a>
+* :x: <a href="../../../../library/Mylib/Bit/for_each_subset_asc.cpp.html">Enumerate subsets (Ascending order)</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -53,6 +54,7 @@ layout: default
 #include <vector>
 #include <map>
 #include "Mylib/Bit/for_each_subset_asc.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -61,8 +63,7 @@ int main(){
   int n, k; std::cin >> n >> k;
 
   int t = 0;
-  for(int i = 0; i < k; ++i){
-    int b; std::cin >> b;
+  for(auto b : input_vector<int>(k)){
     t |= 1 << b;
   }
 
@@ -98,7 +99,7 @@ int main(){
 #line 2 "Mylib/Bit/for_each_subset_asc.cpp"
 
 /**
- * @title 下位集合を昇順に列挙
+ * @title Enumerate subsets (Ascending order)
  * @docs for_each_subset_asc.md
  */
 class SubsetAsc{
@@ -121,7 +122,25 @@ public:
   iter begin() const {return iter({0, a, false});}
   iter end() const {return iter();}
 };
-#line 7 "test/aoj/ITP2_11_C/main.asc.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 8 "test/aoj/ITP2_11_C/main.asc.test.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -130,8 +149,7 @@ int main(){
   int n, k; std::cin >> n >> k;
 
   int t = 0;
-  for(int i = 0; i < k; ++i){
-    int b; std::cin >> b;
+  for(auto b : input_vector<int>(k)){
     t |= 1 << b;
   }
 

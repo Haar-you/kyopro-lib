@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 区間スケジューリング問題
+# :x: Interval scheduling problem
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a1062884f064c2b3be412505b6627108">Mylib/TypicalProblem/IntervalSchedulingProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-06 01:45:04+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -56,7 +56,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/ALDS1_15_C/main.test.cpp.html">test/aoj/ALDS1_15_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/ALDS1_15_C/main.test.cpp.html">test/aoj/ALDS1_15_C/main.test.cpp</a>
 
 
 ## Code
@@ -72,7 +72,7 @@ layout: default
 #include <utility>
 
 /**
- * @title 区間スケジューリング問題
+ * @title Interval scheduling problem
  * @docs interval_scheduling.md
  */
 template <typename T>
@@ -109,7 +109,7 @@ std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &l, const s
 #include <utility>
 
 /**
- * @title 区間スケジューリング問題
+ * @title Interval scheduling problem
  * @docs interval_scheduling.md
  */
 template <typename T>

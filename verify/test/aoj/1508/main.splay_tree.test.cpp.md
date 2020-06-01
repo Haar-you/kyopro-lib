@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#21b2d97411100b8521da1b9c251ad9c2">test/aoj/1508</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1508/main.splay_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 08:15:26+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SplayTree/splay_tree.cpp.html">スプレー木</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SplayTree/splay_tree.cpp.html">Splay tree</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -53,6 +54,7 @@ layout: default
 #include <iostream>
 #include "Mylib/DataStructure/SplayTree/splay_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
@@ -64,9 +66,7 @@ int main(){
     s.update(i, a);
   }
   
-  while(q--){
-    int x, y, z; std::cin >> x >> y >> z;
-    
+  for(auto [x, y, z] : input_tuples<int, int, int>(q)){
     if(x == 0){
       auto temp = s.get(z);
       s.erase(z);
@@ -97,7 +97,7 @@ int main(){
 #include <tuple>
 
 /**
- * @title スプレー木
+ * @title Splay tree
  * @docs splay_tree.md
  */
 namespace splay_tree{
@@ -328,7 +328,62 @@ struct MinMonoid{
   constexpr inline static value_type id(){return std::numeric_limits<T>::max();}
   constexpr inline static value_type op(const value_type &a, const value_type &b){return std::min(a, b);}
 };
-#line 6 "test/aoj/1508/main.splay_tree.test.cpp"
+#line 3 "Mylib/IO/input_tuples.cpp"
+#include <vector>
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 7 "test/aoj/1508/main.splay_tree.test.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
@@ -340,9 +395,7 @@ int main(){
     s.update(i, a);
   }
   
-  while(q--){
-    int x, y, z; std::cin >> x >> y >> z;
-    
+  for(auto [x, y, z] : input_tuples<int, int, int>(q)){
     if(x == 0){
       auto temp = s.get(z);
       s.erase(z);

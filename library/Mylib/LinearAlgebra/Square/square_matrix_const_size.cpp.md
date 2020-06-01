@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 正方行列 (コンパイル時固定サイズ)
+# :x: Square matrix (Const size)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b58b3fdb1287502881e9117a37552614">Mylib/LinearAlgebra/Square</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 20:03:33+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/510/main.test.cpp.html">test/yukicoder/510/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/510/main.test.cpp.html">test/yukicoder/510/main.test.cpp</a>
 
 
 ## Code
@@ -52,7 +52,7 @@ layout: default
 #include <utility>
 
 /**
- * @title 正方行列 (コンパイル時固定サイズ)
+ * @title Square matrix (Const size)
  * @docs square_matrix_const_size.md
  */
 template <typename T, int N> struct SquareMatrixConst{
@@ -128,7 +128,7 @@ template <typename T, int N> struct SquareMatrixConst{
 #include <utility>
 
 /**
- * @title 正方行列 (コンパイル時固定サイズ)
+ * @title Square matrix (Const size)
  * @docs square_matrix_const_size.md
  */
 template <typename T, int N> struct SquareMatrixConst{

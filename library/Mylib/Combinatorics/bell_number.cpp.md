@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Bell数
+# :x: Bell number
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/bell_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-26 15:25:30+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -51,13 +51,13 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
-* :heavy_check_mark: <a href="stirling_number.cpp.html">第2種Stirling数</a>
+* :x: <a href="combinatorics.cpp.html">Precalculation for combinatotion</a>
+* :x: <a href="stirling_number.cpp.html">Stirling numbers of second kind</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_G/main.test.cpp.html">test/aoj/DPL_5_G/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/DPL_5_G/main.test.cpp.html">test/aoj/DPL_5_G/main.test.cpp</a>
 
 
 ## Code
@@ -72,7 +72,7 @@ layout: default
 #include "Mylib/Combinatorics/stirling_number.cpp"
 
 /**
- * @title Bell数
+ * @title Bell number
  * @docs bell_number.md
  */
 template <typename T>
@@ -109,7 +109,7 @@ T Combinatorics<T>::bell_number(int64_t n, int64_t k){
 #include <cassert>
 
 /**
- * @title 組み合わせ計算用の前計算クラス
+ * @title Precalculation for combinatotion
  * @docs combinatorics.md
  * @attention 使用前にinit関数を呼び出す
  */
@@ -172,7 +172,7 @@ template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
 #line 3 "Mylib/Combinatorics/stirling_number.cpp"
 
 /**
- * @title 第2種Stirling数
+ * @title Stirling numbers of second kind
  * @docs stirling_number.md
  */
 template <typename T>
@@ -190,7 +190,7 @@ T Combinatorics<T>::stirling_number(int64_t n, int64_t k){
 #line 6 "Mylib/Combinatorics/bell_number.cpp"
 
 /**
- * @title Bell数
+ * @title Bell number
  * @docs bell_number.md
  */
 template <typename T>

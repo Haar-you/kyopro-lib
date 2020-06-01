@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/899/main.test.cpp
+# :x: test/yukicoder/899/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#dbd13c44c1e9ae40565e636bcb62bc45">test/yukicoder/899</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/899/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 16:55:31+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/899">https://yukicoder.me/problems/no/899</a>
@@ -39,12 +39,15 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/update.cpp.html">Mylib/AlgebraicStructure/Monoid/update.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">遅延SegmentTree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/euler_tour_bfs.cpp.html">BFSEulerTour</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/update.cpp.html">Mylib/AlgebraicStructure/Monoid/update.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">Lazy segment tree</a>
+* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/euler_tour_bfs.cpp.html">Euler tour (BFS)</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -60,22 +63,21 @@ layout: default
 #include "Mylib/Graph/TreeUtils/euler_tour_bfs.cpp"
 #include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp"
+#include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
   
   int N; std::cin >> N;
-  Tree<int> tree(N);
-  for(int i = 0; i < N-1; ++i){
-    int u, v; std::cin >> u >> v;
-    add_undirected(tree, u, v, 1);
-  }
+
+  auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
 
   auto res = EulerTourBFS<int>(tree, 0);
 
-  std::vector<int64_t> A(N);
-  for(int i = 0; i < N; ++i) std::cin >> A[i];
+  auto A = input_vector<int64_t>(N);
   LazySegmentTree<UpdateSum<int64_t, int64_t>> seg(N);
   
   for(int i = 0; i < N; ++i){
@@ -83,12 +85,10 @@ int main(){
   }
     
   int Q; std::cin >> Q;
-  while(Q--){
-    int x; std::cin >> x;
-
+  
+  for(auto [x] : input_tuples<int>(Q)){
     int64_t ans = 0;
 
-    
     auto f =
       [&](int l, int r){
         ans += seg.get(l, r);
@@ -142,7 +142,7 @@ int main(){
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -170,7 +170,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Graph/TreeUtils/euler_tour_bfs.cpp"
 
 /**
- * @title BFSEulerTour
+ * @title Euler tour (BFS)
  * @docs euler_tour_bfs.md
  */
 template <typename T> struct EulerTourBFS{
@@ -266,7 +266,7 @@ public:
 #line 3 "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
 
 /**
- * @title 遅延SegmentTree
+ * @title Lazy segment tree
  * @docs lazy_segment_tree.md
  */
 template <typename Monoid>
@@ -376,23 +376,123 @@ struct UpdateSum{
     return b ? *b * len : a;
   }
 };
-#line 9 "test/yukicoder/899/main.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 12 "test/yukicoder/899/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
   
   int N; std::cin >> N;
-  Tree<int> tree(N);
-  for(int i = 0; i < N-1; ++i){
-    int u, v; std::cin >> u >> v;
-    add_undirected(tree, u, v, 1);
-  }
+
+  auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
 
   auto res = EulerTourBFS<int>(tree, 0);
 
-  std::vector<int64_t> A(N);
-  for(int i = 0; i < N; ++i) std::cin >> A[i];
+  auto A = input_vector<int64_t>(N);
   LazySegmentTree<UpdateSum<int64_t, int64_t>> seg(N);
   
   for(int i = 0; i < N; ++i){
@@ -400,12 +500,10 @@ int main(){
   }
     
   int Q; std::cin >> Q;
-  while(Q--){
-    int x; std::cin >> x;
-
+  
+  for(auto [x] : input_tuples<int>(Q)){
     int64_t ans = 0;
 
-    
     auto f =
       [&](int l, int r){
         ans += seg.get(l, r);

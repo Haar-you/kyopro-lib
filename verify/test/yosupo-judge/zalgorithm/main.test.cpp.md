@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/zalgorithm/main.test.cpp
+# :x: test/yosupo-judge/zalgorithm/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#cee42202ab0cff35bec3ed1b69090c0e">test/yosupo-judge/zalgorithm</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/zalgorithm/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-05-31 20:10:49+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/zalgorithm">https://judge.yosupo.jp/problem/zalgorithm</a>
@@ -39,7 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/z_algorithm.cpp.html">Z-algorithm</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :x: <a href="../../../../library/Mylib/String/z_algorithm.cpp.html">Z-algorithm</a>
 
 
 ## Code
@@ -52,13 +53,13 @@ layout: default
 #include <iostream>
 #include <string>
 #include "Mylib/String/z_algorithm.cpp"
-
+#include "Mylib/IO/join.cpp"
 
 int main(){
   std::string s; std::cin >> s;
   
   auto ans = z_algorithm(s);
-  for(auto &x : ans) std::cout << x << " ";
+  std::cout << join(ans.begin(), ans.end()) << "\n";
 
   return 0;
 }
@@ -103,14 +104,31 @@ std::vector<int> z_algorithm(const Container &s){
 
   return ret;
 }
-#line 6 "test/yosupo-judge/zalgorithm/main.test.cpp"
+#line 3 "Mylib/IO/join.cpp"
+#include <sstream>
+#line 5 "Mylib/IO/join.cpp"
 
+/**
+ * @docs join.md
+ */
+template <typename ITER>
+std::string join(ITER first, ITER last, std::string delim = " "){
+  std::stringstream s;
+
+  for(auto it = first; it != last; ++it){
+    if(it != first) s << delim;
+    s << *it;
+  }
+
+  return s.str();
+}
+#line 7 "test/yosupo-judge/zalgorithm/main.test.cpp"
 
 int main(){
   std::string s; std::cin >> s;
   
   auto ans = z_algorithm(s);
-  for(auto &x : ans) std::cout << x << " ";
+  std::cout << join(ans.begin(), ans.end()) << "\n";
 
   return 0;
 }

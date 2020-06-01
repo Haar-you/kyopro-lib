@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 二部グラフ判定
+# :heavy_check_mark: Check bipartite graph
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3b87eee7aef75da88610c966a8da844f">Mylib/Graph/BipartiteGraph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 22:46:41+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -53,7 +53,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Verified with
@@ -74,7 +74,7 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 二部グラフ判定
+ * @title Check bipartite graph
  * @docs check_bipartite_graph.md
  */
 template <typename T>
@@ -149,7 +149,7 @@ auto check_bipartite_graph(const Graph<T> &g){
 #include <iostream>
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -175,7 +175,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 7 "Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp"
 
 /**
- * @title 二部グラフ判定
+ * @title Check bipartite graph
  * @docs check_bipartite_graph.md
  */
 template <typename T>

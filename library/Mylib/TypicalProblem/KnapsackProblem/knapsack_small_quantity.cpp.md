@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 個数の制約が小さい0-1ナップサック問題 (半分全列挙)
+# :x: 0-1 Knapsack problem (Small quantity)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#4bc951e5ca9130b2259fc85dc53eb972">Mylib/TypicalProblem/KnapsackProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/KnapsackProblem/knapsack_small_quantity.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -54,7 +54,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DPL_1_H/main.test.cpp.html">test/aoj/DPL_1_H/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DPL_1_H/main.test.cpp.html">test/aoj/DPL_1_H/main.test.cpp</a>
 
 
 ## Code
@@ -69,7 +69,7 @@ layout: default
 #include <iterator>
 
 /**
- * @title 個数の制約が小さい0-1ナップサック問題 (半分全列挙)
+ * @title 0-1 Knapsack problem (Small quantity)
  * @docs knapsack_small_quantity.md
  */
 template <typename Weight, typename Value>
@@ -132,7 +132,7 @@ Value knapsack_small_quantity(int N, Weight cap, const std::vector<Weight> &w, c
 #include <iterator>
 
 /**
- * @title 個数の制約が小さい0-1ナップサック問題 (半分全列挙)
+ * @title 0-1 Knapsack problem (Small quantity)
  * @docs knapsack_small_quantity.md
  */
 template <typename Weight, typename Value>

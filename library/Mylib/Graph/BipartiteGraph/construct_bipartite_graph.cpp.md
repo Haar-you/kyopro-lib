@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 二部グラフ判定 (UnionFindを用いる)
+# :warning: Check bipartite graph (Using unionFind)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3b87eee7aef75da88610c966a8da844f">Mylib/Graph/BipartiteGraph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 16:28:32+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -53,7 +53,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">UnionFind</a>
+* :question: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
 
 
 ## Code
@@ -65,7 +65,7 @@ layout: default
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
 /**
- * @title 二部グラフ判定 (UnionFindを用いる)
+ * @title Check bipartite graph (Using unionFind)
  * @docs construct_bipartite_graph.md
  */
 class BipartiteGraph{
@@ -105,7 +105,7 @@ public:
 #include <numeric>
 
 /**
- * @title UnionFind
+ * @title Union-find
  * @docs unionfind.md
  */
 class UnionFind{
@@ -149,7 +149,7 @@ public:
 #line 3 "Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp"
 
 /**
- * @title 二部グラフ判定 (UnionFindを用いる)
+ * @title Check bipartite graph (Using unionFind)
  * @docs construct_bipartite_graph.md
  */
 class BipartiteGraph{

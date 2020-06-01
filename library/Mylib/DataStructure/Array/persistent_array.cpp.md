@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 永続配列
+# :x: Persistent array
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0d7e284bb2256ddef55e56b25bfaf3f1">Mylib/DataStructure/Array</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Array/persistent_array.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-27 20:58:13+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -43,12 +43,12 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="../UnionFind/persistent_unionfind.cpp.html">永続UnionFind</a>
+* :x: <a href="../UnionFind/persistent_unionfind.cpp.html">Persistent union-find</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/persistent_unionfind/main.test.cpp.html">test/yosupo-judge/persistent_unionfind/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/persistent_unionfind/main.test.cpp.html">test/yosupo-judge/persistent_unionfind/main.test.cpp</a>
 
 
 ## Code
@@ -61,7 +61,7 @@ layout: default
 #include <vector>
 
 /**
- * @title 永続配列
+ * @title Persistent array
  * @docs persistent_array.md
  */
 template <typename T>
@@ -211,7 +211,7 @@ public:
 #include <vector>
 
 /**
- * @title 永続配列
+ * @title Persistent array
  * @docs persistent_array.md
  */
 template <typename T>

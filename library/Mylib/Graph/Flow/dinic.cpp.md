@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Dinic法
+# :x: Dinic algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ecd047c70c23d80351a9f133b49a4638">Mylib/Graph/Flow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Flow/dinic.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_6_A/main.dinic.test.cpp.html">test/aoj/GRL_6_A/main.dinic.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_6_A/main.dinic.test.cpp.html">test/aoj/GRL_6_A/main.dinic.test.cpp</a>
 
 
 ## Code
@@ -53,7 +53,7 @@ layout: default
 #include <algorithm>
 
 /**
- * @title Dinic法
+ * @title Dinic algorithm
  * @docs dinic.md
  */
 template <typename T> class Dinic{
@@ -141,7 +141,7 @@ public:
 #include <algorithm>
 
 /**
- * @title Dinic法
+ * @title Dinic algorithm
  * @docs dinic.md
  */
 template <typename T> class Dinic{

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/tree_diameter/main.test.cpp
+# :x: test/yosupo-judge/tree_diameter/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#fc38206dcd10be708e58c9df7503cac7">test/yosupo-judge/tree_diameter</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/tree_diameter/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-19 10:56:49+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/tree_diameter">https://judge.yosupo.jp/problem/tree_diameter</a>
@@ -39,8 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_diameter.cpp.html">木の直径</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_diameter.cpp.html">Tree diameter</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 
 
 ## Code
@@ -53,6 +55,8 @@ layout: default
 #include <iostream>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/tree_diameter.cpp"
+#include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/join.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -60,18 +64,13 @@ int main(){
   
   int N; std::cin >> N;
 
-  Tree<int64_t> tree(N);
-  for(int i = 0; i < N-1; ++i){
-    int a, b; std::cin >> a >> b;
-    int64_t c; std::cin >> c;
-    add_undirected(tree, a, b, c);
-  }
+  auto tree = convert_to_graph<int64_t, false>(N, input_edges<int64_t, 0, true>(N-1));
 
   auto [cost, path] = tree_diameter(tree);
 
-  std::cout << cost << " " << path.size() << "\n";
-  for(int x : path) std::cout << x << " ";
-  std::cout << "\n";
+  std::cout
+    << cost << " " << path.size() << "\n"
+    << join(path.begin(), path.end()) << "\n";
 
   return 0;
 }
@@ -91,7 +90,7 @@ int main(){
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -121,7 +120,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 7 "Mylib/Graph/TreeUtils/tree_diameter.cpp"
 
 /**
- * @title 木の直径
+ * @title Tree diameter
  * @docs tree_diameter.md
  */
 template <typename T>
@@ -181,7 +180,56 @@ std::pair<T, std::vector<int>> tree_diameter(const Tree<T> &tree){
   
   return std::make_pair(dp[v], ret);
 }
-#line 6 "test/yosupo-judge/tree_diameter/main.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 3 "Mylib/IO/join.cpp"
+#include <sstream>
+#include <string>
+
+/**
+ * @docs join.md
+ */
+template <typename ITER>
+std::string join(ITER first, ITER last, std::string delim = " "){
+  std::stringstream s;
+
+  for(auto it = first; it != last; ++it){
+    if(it != first) s << delim;
+    s << *it;
+  }
+
+  return s.str();
+}
+#line 8 "test/yosupo-judge/tree_diameter/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -189,18 +237,13 @@ int main(){
   
   int N; std::cin >> N;
 
-  Tree<int64_t> tree(N);
-  for(int i = 0; i < N-1; ++i){
-    int a, b; std::cin >> a >> b;
-    int64_t c; std::cin >> c;
-    add_undirected(tree, a, b, c);
-  }
+  auto tree = convert_to_graph<int64_t, false>(N, input_edges<int64_t, 0, true>(N-1));
 
   auto [cost, path] = tree_diameter(tree);
 
-  std::cout << cost << " " << path.size() << "\n";
-  for(int x : path) std::cout << x << " ";
-  std::cout << "\n";
+  std::cout
+    << cost << " " << path.size() << "\n"
+    << join(path.begin(), path.end()) << "\n";
 
   return 0;
 }

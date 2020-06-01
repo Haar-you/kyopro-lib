@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
+# :x: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#082039b3153b4a2410d6e14e04aca1cc">test/aoj/DSL_2_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 08:15:26+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum.cpp.html">Mylib/AlgebraicStructure/Group/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">FenwickTree</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum.cpp.html">Mylib/AlgebraicStructure/Group/sum.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">Fenwick tree</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -53,20 +54,17 @@ layout: default
 #include <iostream>
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
 #include "Mylib/AlgebraicStructure/Group/sum.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
 
   auto fen = FenwickTree<SumGroup<int>>(n);
 
-  for(int i = 0; i < q; ++i){
-    int type; std::cin >> type;
-
+  for(auto [type, x, y] : input_tuples<int, int, int>(q)){
     if(type == 0){
-      int x,y; std::cin >> x >> y;
       fen.update(x-1, y);
     }else{
-      int x,y; std::cin >> x >> y;
       std::cout << fen.get(x-1, y) << std::endl;
     }
   }
@@ -88,7 +86,7 @@ int main(){
 #include <vector>
 
 /**
- * @title FenwickTree
+ * @title Fenwick tree
  * @docs fenwick_tree.md
  */
 template <typename AbelianGroup>
@@ -146,21 +144,72 @@ struct SumGroup{
   static value_type op(const value_type &a, const value_type &b){return a + b;}
   static value_type inv(const value_type &a){return -a;}
 };
-#line 6 "test/aoj/DSL_2_B/main.fenwick_tree.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 7 "test/aoj/DSL_2_B/main.fenwick_tree.test.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
 
   auto fen = FenwickTree<SumGroup<int>>(n);
 
-  for(int i = 0; i < q; ++i){
-    int type; std::cin >> type;
-
+  for(auto [type, x, y] : input_tuples<int, int, int>(q)){
     if(type == 0){
-      int x,y; std::cin >> x >> y;
       fen.update(x-1, y);
     }else{
-      int x,y; std::cin >> x >> y;
       std::cout << fen.get(x-1, y) << std::endl;
     }
   }

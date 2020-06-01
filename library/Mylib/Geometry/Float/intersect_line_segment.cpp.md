@@ -25,30 +25,30 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 直線と線分の交差
+# :x: Intersection between a line and a segment
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/intersect_line_segment.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :question: <a href="geometry_template.cpp.html">Geometry template</a>
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="convex_cut.cpp.html">凸多角形の切断</a>
+* :x: <a href="convex_cut.cpp.html">Convex cut</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
 
 
 ## Code
@@ -61,7 +61,7 @@ layout: default
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 直線と線分の交差
+ * @title Intersection between a line and a segment
  * @docs intersect_line_segment.md
  */
 namespace intersect_line_segment{
@@ -111,7 +111,7 @@ namespace intersect_line_segment{
 #line 5 "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -195,7 +195,7 @@ template <typename T> struct Circle{
 #line 4 "Mylib/Geometry/Float/intersect_line_segment.cpp"
 
 /**
- * @title 直線と線分の交差
+ * @title Intersection between a line and a segment
  * @docs intersect_line_segment.md
  */
 namespace intersect_line_segment{

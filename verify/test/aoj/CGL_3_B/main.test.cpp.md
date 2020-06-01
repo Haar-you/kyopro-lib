@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/CGL_3_B/main.test.cpp
+# :x: test/aoj/CGL_3_B/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#8bade25600e4b7e730b05e071b19b077">test/aoj/CGL_3_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_3_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_B</a>
@@ -39,10 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/ccw.cpp.html">clockwise-counterclockwise判定</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/is_convex.cpp.html">凸多角形判定</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/ccw.cpp.html">Check clockwise-counterclockwise</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/is_convex.cpp.html">Check convex</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -57,6 +58,7 @@ layout: default
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/is_convex.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = 1e-7;
@@ -64,8 +66,7 @@ template<> double D::eps = 1e-7;
 int main(){
   int n; std::cin >> n;
 
-  Polygon<D> p(n);
-  for(int i = 0; i < n; ++i) std::cin >> p[i];
+  Polygon<D> p = input_vector<Point<D>>(n);
 
   std::cout << (is_convex(p) ? 1 : 0) << std::endl;
 
@@ -88,7 +89,7 @@ int main(){
 #include <vector>
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -174,7 +175,7 @@ template <typename T> struct Circle{
 #line 5 "Mylib/Geometry/Float/double_eps.cpp"
 
 /**
- * @title 誤差許容浮動小数点数
+ * @title Floating point number with eps
  * @docs double_eps.md
  */
 template <typename T>
@@ -242,7 +243,7 @@ template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
 #line 3 "Mylib/Geometry/Float/ccw.cpp"
 
 /**
- * @title clockwise-counterclockwise判定
+ * @title Check clockwise-counterclockwise
  * @docs ccw.md
  */
 namespace ccw{
@@ -273,7 +274,7 @@ namespace ccw{
 #line 5 "Mylib/Geometry/Float/is_convex.cpp"
 
 /**
- * @title 凸多角形判定
+ * @title Check convex
  * @docs is_convex.md
  */
 template <typename T>
@@ -292,7 +293,25 @@ bool is_convex(const Polygon<T> &ps){
   
   return true;
 }
-#line 8 "test/aoj/CGL_3_B/main.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 9 "test/aoj/CGL_3_B/main.test.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = 1e-7;
@@ -300,8 +319,7 @@ template<> double D::eps = 1e-7;
 int main(){
   int n; std::cin >> n;
 
-  Polygon<D> p(n);
-  for(int i = 0; i < n; ++i) std::cin >> p[i];
+  Polygon<D> p = input_vector<Point<D>>(n);
 
   std::cout << (is_convex(p) ? 1 : 0) << std::endl;
 

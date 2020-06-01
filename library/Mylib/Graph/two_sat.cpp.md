@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 2-SAT
+# :x: 2-SAT
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/two_sat.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-25 02:14:35+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -66,14 +66,14 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
-* :heavy_check_mark: <a href="TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
-* :heavy_check_mark: <a href="graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
+* :x: <a href="TopologicalSort/topological_sort.cpp.html">Topological sort</a>
+* :question: <a href="graph_template.cpp.html">Graph template</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
 
 
 ## Code
@@ -175,7 +175,7 @@ public:
 #include <iostream>
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -203,7 +203,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 
 /**
- * @title 強連結成分分解
+ * @title Strongly connected components
  * @docs strongly_connected_components.md
  */
 template <typename T>
@@ -251,7 +251,7 @@ auto strongly_connected_components(const Graph<T> &g){
 #line 6 "Mylib/Graph/TopologicalSort/topological_sort.cpp"
 
 /**
- * @title トポロジカルソート
+ * @title Topological sort
  * @docs topological_sort.md
  */
 template <typename T>

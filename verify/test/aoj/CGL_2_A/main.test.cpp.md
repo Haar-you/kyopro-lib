@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/CGL_2_A/main.test.cpp
+# :x: test/aoj/CGL_2_A/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#739119862b576acc3a057a216570b792">test/aoj/CGL_2_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_2_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A</a>
@@ -39,10 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/orthogonal.cpp.html">直行判定</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/parallel.cpp.html">平行判定</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/orthogonal.cpp.html">Orthogonal</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/parallel.cpp.html">Parallel</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -57,14 +58,15 @@ layout: default
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/parallel.cpp"
 #include "Mylib/Geometry/Float/orthogonal.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = 1e-7;
 
 int main(){
   int q; std::cin >> q;
-  while(q--){
-    Point<D> p0, p1, p2, p3; std::cin >> p0 >> p1 >> p2 >> p3;
+
+  for(auto [p0, p1, p2, p3] : input_tuples<Point<D>, Point<D>, Point<D>, Point<D>>(q)){
     Line<D> s1(p0, p1), s2(p2, p3);
 
     if(parallel(s1, s2)){
@@ -93,7 +95,7 @@ int main(){
 #include <vector>
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -179,7 +181,7 @@ template <typename T> struct Circle{
 #line 5 "Mylib/Geometry/Float/double_eps.cpp"
 
 /**
- * @title 誤差許容浮動小数点数
+ * @title Floating point number with eps
  * @docs double_eps.md
  */
 template <typename T>
@@ -247,7 +249,7 @@ template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
 #line 3 "Mylib/Geometry/Float/parallel.cpp"
 
 /**
- * @title 平行判定
+ * @title Parallel
  * @docs parallel.md
  */
 template <typename T>
@@ -257,22 +259,77 @@ bool parallel(const Line<T> &a, const Line<T> &b){
 #line 3 "Mylib/Geometry/Float/orthogonal.cpp"
 
 /**
- * @title 直行判定
+ * @title Orthogonal
  * @docs orthogonal.md
  */
 template <typename T>
 bool orthogonal(const Line<T> &a, const Line<T> &b){
   return abs(dot(a, b)) == 0;
 }
-#line 8 "test/aoj/CGL_2_A/main.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 9 "test/aoj/CGL_2_A/main.test.cpp"
 
 using D = DoubleEps<double>;
 template<> double D::eps = 1e-7;
 
 int main(){
   int q; std::cin >> q;
-  while(q--){
-    Point<D> p0, p1, p2, p3; std::cin >> p0 >> p1 >> p2 >> p3;
+
+  for(auto [p0, p1, p2, p3] : input_tuples<Point<D>, Point<D>, Point<D>, Point<D>>(q)){
     Line<D> s1(p0, p1), s2(p2, p3);
 
     if(parallel(s1, s2)){

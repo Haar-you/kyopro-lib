@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 個数制限付きナップサック問題
+# :x: Knapsack problem (With quantity limitations)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#4bc951e5ca9130b2259fc85dc53eb972">Mylib/TypicalProblem/KnapsackProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/KnapsackProblem/knapsack_limited.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 20:22:17+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -54,7 +54,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DPL_1_G/main.test.cpp.html">test/aoj/DPL_1_G/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DPL_1_G/main.test.cpp.html">test/aoj/DPL_1_G/main.test.cpp</a>
 
 
 ## Code
@@ -67,7 +67,7 @@ layout: default
 #include <algorithm>
 
 /**
- * @title 個数制限付きナップサック問題
+ * @title Knapsack problem (With quantity limitations)
  * @docs knapsack_limited.md
  */
 template <typename Weight, typename Value>
@@ -98,7 +98,7 @@ Value knapsack_limited(int N, Weight cap, const std::vector<Weight> &w, const st
 #include <algorithm>
 
 /**
- * @title 個数制限付きナップサック問題
+ * @title Knapsack problem (With quantity limitations)
  * @docs knapsack_limited.md
  */
 template <typename Weight, typename Value>

@@ -25,30 +25,30 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 木の距離
+# :x: Tree distance
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/tree_distance.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-24 12:01:27+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="tree_height.cpp.html">木の高さ</a>
+* :x: <a href="tree_height.cpp.html">Tree height</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_5_B/main.test.cpp.html">test/aoj/GRL_5_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_5_B/main.test.cpp.html">test/aoj/GRL_5_B/main.test.cpp</a>
 
 
 ## Code
@@ -62,7 +62,7 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 木の距離
+ * @title Tree distance
  * @docs tree_distance.md
  */
 template <typename T>
@@ -103,7 +103,7 @@ std::vector<T> tree_distance(const Tree<T> &tree, int root){
 #include <iostream>
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -129,7 +129,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Graph/TreeUtils/tree_distance.cpp"
 
 /**
- * @title 木の距離
+ * @title Tree distance
  * @docs tree_distance.md
  */
 template <typename T>

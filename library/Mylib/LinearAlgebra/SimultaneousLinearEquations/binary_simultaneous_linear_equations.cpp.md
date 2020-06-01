@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 連立線形方程式 (Mod2体)
+# :heavy_check_mark: Simultaneous linear equations (Mod2)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0f2e8b5b008805076abcf42bbba8c8c1">Mylib/LinearAlgebra/SimultaneousLinearEquations</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -54,7 +54,7 @@ layout: default
 #include <bitset>
 
 /**
- * @title 連立線形方程式 (Mod2体)
+ * @title Simultaneous linear equations (Mod2)
  * @docs binary_simultaneous_linear_equations.md
  */
 namespace binary_simultaneous_linear_equations{
@@ -124,7 +124,7 @@ namespace binary_simultaneous_linear_equations{
 #include <bitset>
 
 /**
- * @title 連立線形方程式 (Mod2体)
+ * @title Simultaneous linear equations (Mod2)
  * @docs binary_simultaneous_linear_equations.md
  */
 namespace binary_simultaneous_linear_equations{

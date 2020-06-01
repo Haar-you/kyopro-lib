@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/GRL_3_B/main.test.cpp
+# :x: test/aoj/GRL_3_B/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6ed2a74016dcd1e3ddb47125c558f5b0">test/aoj/GRL_3_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_3_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/GraphUtils/bridges.cpp.html">橋列挙</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/Graph/GraphUtils/bridges.cpp.html">Bridges</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
 
 
 ## Code
@@ -55,24 +56,23 @@ layout: default
 #include <utility>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/GraphUtils/bridges.cpp"
+#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int> g(V);
-  for(int i = 0; i < E; ++i){
-    int s, t; std::cin >> s >> t;
-    add_undirected(g, s, t, 1);
-  }
+  auto g = convert_to_graph<int, false>(V, input_edges<int, 0, false>(E));
 
   auto ans = bridges(g);
   for(auto &e : ans) if(e.from > e.to) std::swap(e.from, e.to);
   
-  std::sort(ans.begin(), ans.end(),
-       [](const auto &a, const auto &b){
-         if(a.from != b.from) return a.from < b.from;
-         return a.to < b.to;
-       });
+  std::sort(
+    ans.begin(), ans.end(),
+    [](const auto &a, const auto &b){
+      if(a.from != b.from) return a.from < b.from;
+      return a.to < b.to;
+    }
+  );
 
   for(auto &e :ans) std::cout << e.from << " " << e.to << std::endl;
   
@@ -96,7 +96,7 @@ int main(){
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -122,7 +122,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Graph/GraphUtils/bridges.cpp"
 
 /**
- * @title 橋列挙
+ * @title Bridges
  * @docs bridges.md
  */
 template <typename T>
@@ -149,25 +149,54 @@ auto bridges(const Graph<T> &graph){
   for(int i = 0; i < n; ++i) if(visit[i] == -1) dfs(dfs, i, -1);
   return ret;
 }
-#line 8 "test/aoj/GRL_3_B/main.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 9 "test/aoj/GRL_3_B/main.test.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int> g(V);
-  for(int i = 0; i < E; ++i){
-    int s, t; std::cin >> s >> t;
-    add_undirected(g, s, t, 1);
-  }
+  auto g = convert_to_graph<int, false>(V, input_edges<int, 0, false>(E));
 
   auto ans = bridges(g);
   for(auto &e : ans) if(e.from > e.to) std::swap(e.from, e.to);
   
-  std::sort(ans.begin(), ans.end(),
-       [](const auto &a, const auto &b){
-         if(a.from != b.from) return a.from < b.from;
-         return a.to < b.to;
-       });
+  std::sort(
+    ans.begin(), ans.end(),
+    [](const auto &a, const auto &b){
+      if(a.from != b.from) return a.from < b.from;
+      return a.to < b.to;
+    }
+  );
 
   for(auto &e :ans) std::cout << e.from << " " << e.to << std::endl;
   

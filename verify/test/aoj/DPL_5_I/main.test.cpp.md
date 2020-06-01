@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_5_I/main.test.cpp
+# :x: test/aoj/DPL_5_I/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b72df8ce0758bb7606e41650e28ebb6a">test/aoj/DPL_5_I</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_I/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/combinatorics.cpp.html">組み合わせ計算用の前計算クラス</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/stirling_number.cpp.html">第2種Stirling数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/Combinatorics/combinatorics.cpp.html">Precalculation for combinatotion</a>
+* :x: <a href="../../../../library/Mylib/Combinatorics/stirling_number.cpp.html">Stirling numbers of second kind</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -82,7 +82,7 @@ int main(){
 #include <utility>
 
 /**
- * @title modint
+ * @title Modint
  * @docs mint.md
  */
 template <uint32_t M> class ModInt{
@@ -169,7 +169,7 @@ public:
 #include <cassert>
 
 /**
- * @title 組み合わせ計算用の前計算クラス
+ * @title Precalculation for combinatotion
  * @docs combinatorics.md
  * @attention 使用前にinit関数を呼び出す
  */
@@ -232,7 +232,7 @@ template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
 #line 3 "Mylib/Combinatorics/stirling_number.cpp"
 
 /**
- * @title 第2種Stirling数
+ * @title Stirling numbers of second kind
  * @docs stirling_number.md
  */
 template <typename T>

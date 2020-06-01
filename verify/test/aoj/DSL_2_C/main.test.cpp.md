@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_2_C/main.test.cpp
+# :x: test/aoj/DSL_2_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2bc6b10df76ee628f0328e9237d1fcac">test/aoj/DSL_2_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-27 20:58:13+09:00
+    - Last commit date: 2020-05-31 20:10:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_C</a>
@@ -39,7 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/RangeTree/range_tree.cpp.html">Mylib/DataStructure/RangeTree/range_tree.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/RangeTree/range_tree.cpp.html">Mylib/DataStructure/RangeTree/range_tree.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -54,6 +55,7 @@ layout: default
 #include <utility>
 #include <vector>
 #include "Mylib/DataStructure/RangeTree/range_tree.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int n; std::cin >> n;
@@ -70,9 +72,7 @@ int main(){
 
   int q; std::cin >> q;
 
-  for(int i = 0; i < q; ++i){
-    int sx, tx, sy, ty; std::cin >> sx >> tx >> sy >> ty;
-
+  for(auto [sx, tx, sy, ty] : input_tuples<int, int, int, int>(q)){
     auto res = rt.get(sx, sy, tx+1, ty+1);
 
     std::vector<int> ans;
@@ -200,7 +200,62 @@ public:
     return ret;
   }
 };
-#line 8 "test/aoj/DSL_2_C/main.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 9 "test/aoj/DSL_2_C/main.test.cpp"
 
 int main(){
   int n; std::cin >> n;
@@ -217,9 +272,7 @@ int main(){
 
   int q; std::cin >> q;
 
-  for(int i = 0; i < q; ++i){
-    int sx, tx, sy, ty; std::cin >> sx >> tx >> sy >> ty;
-
+  for(auto [sx, tx, sy, ty] : input_tuples<int, int, int, int>(q)){
     auto res = rt.get(sx, sy, tx+1, ty+1);
 
     std::vector<int> ans;

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/1030/main.test.cpp
+# :x: test/yukicoder/1030/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#fce7f5311a6094c5e355d46a4ec1ba92">test/yukicoder/1030</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/1030/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 16:55:31+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/1030">https://yukicoder.me/problems/no/1030</a>
@@ -39,11 +39,14 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max.cpp.html">Mylib/AlgebraicStructure/Monoid/max.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/maybe.cpp.html">Mylib/AlgebraicStructure/Monoid/maybe.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">SegmentTree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max.cpp.html">Mylib/AlgebraicStructure/Monoid/max.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/maybe.cpp.html">Mylib/AlgebraicStructure/Monoid/maybe.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -63,6 +66,9 @@ layout: default
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/max.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/maybe.cpp"
+#include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 struct LCASemigroup{
   using value_type = int;
@@ -71,24 +77,14 @@ struct LCASemigroup{
 
 std::function<int(int,int)> LCASemigroup::op;
 
-
 int main(){
   int N, K, Q; std::cin >> N >> K >> Q;
-  std::vector<int> C(N);
-  for(auto &x : C) std::cin >> x;
-  
-  std::vector<int> A(K);
-  for(auto &x : A){
-    std::cin >> x;
-    --x;
-  }
 
-  Tree<int> tree(N);
-  for(int i = 0; i < N-1; ++i){
-    int e, f; std::cin >> e >> f;
-    --e, --f;
-    add_edge(tree, f, e, 1);
-  }
+  auto C = input_vector<int>(N);
+  auto A = input_vector<int>(K);
+  for(auto &x : A) --x;
+
+  auto tree = convert_to_graph<int, false>(N, input_edges<int, 1, false>(N-1));
 
   HLDecomposition<int> hld(tree, 0);
   LCASemigroup::op =
@@ -104,9 +100,7 @@ int main(){
   SegmentTree<MaybeMonoid<LCASemigroup>> seg2(K);
   seg2.init_with_vector(A);
 
-  while(Q--){
-    int T; std::cin >> T;
-
+  for(auto [T] : input_tuples<int>(Q)){
     if(T == 1){
       int X, Y; std::cin >> X >> Y;
       --X; --Y;
@@ -149,7 +143,7 @@ int main(){
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -177,7 +171,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 6 "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 
 /**
- * @title HL分解
+ * @title Heavy-light decomposition
  * @docs heavy_light_decomposition.md
  */
 template <typename T> class HLDecomposition{
@@ -309,7 +303,7 @@ public:
 #line 3 "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
 /**
- * @title SegmentTree
+ * @title Segment tree
  * @docs segment_tree.md
  */
 template <typename Monoid>
@@ -390,7 +384,111 @@ struct MaybeMonoid{
     return {Semigroup::op(*a, *b)};
   }
 };
-#line 13 "test/yukicoder/1030/main.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 16 "test/yukicoder/1030/main.test.cpp"
 
 struct LCASemigroup{
   using value_type = int;
@@ -399,24 +497,14 @@ struct LCASemigroup{
 
 std::function<int(int,int)> LCASemigroup::op;
 
-
 int main(){
   int N, K, Q; std::cin >> N >> K >> Q;
-  std::vector<int> C(N);
-  for(auto &x : C) std::cin >> x;
-  
-  std::vector<int> A(K);
-  for(auto &x : A){
-    std::cin >> x;
-    --x;
-  }
 
-  Tree<int> tree(N);
-  for(int i = 0; i < N-1; ++i){
-    int e, f; std::cin >> e >> f;
-    --e, --f;
-    add_edge(tree, f, e, 1);
-  }
+  auto C = input_vector<int>(N);
+  auto A = input_vector<int>(K);
+  for(auto &x : A) --x;
+
+  auto tree = convert_to_graph<int, false>(N, input_edges<int, 1, false>(N-1));
 
   HLDecomposition<int> hld(tree, 0);
   LCASemigroup::op =
@@ -432,9 +520,7 @@ int main(){
   SegmentTree<MaybeMonoid<LCASemigroup>> seg2(K);
   seg2.init_with_vector(A);
 
-  while(Q--){
-    int T; std::cin >> T;
-
+  for(auto [T] : input_tuples<int>(Q)){
     if(T == 1){
       int X, Y; std::cin >> X >> Y;
       --X; --Y;

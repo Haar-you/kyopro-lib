@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: FormalPowerSeries
+# :warning: Formal power series
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/formal_power_series.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 08:50:45+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -47,7 +47,7 @@ layout: default
 #include <vector>
 
 /**
- * @title FormalPowerSeries
+ * @title Formal power series
  * @docs formal_power_series.md
  */
 template <typename T>
@@ -195,7 +195,7 @@ std::function<std::vector<T>(std::vector<T>, std::vector<T>)> FPS<T>::convolve;
 #include <vector>
 
 /**
- * @title FormalPowerSeries
+ * @title Formal power series
  * @docs formal_power_series.md
  */
 template <typename T>

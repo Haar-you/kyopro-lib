@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Miller-Rabin素数判定法
+# :x: Primality test (Miller-Rabin algorithm)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/miller_rabin.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../Misc/int128.cpp.html">128bit整数型</a>
+* :x: <a href="../../Misc/int128.cpp.html">128-bit int</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/3030/main.test.cpp.html">test/yukicoder/3030/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/3030/main.test.cpp.html">test/yukicoder/3030/main.test.cpp</a>
 
 
 ## Code
@@ -55,7 +55,7 @@ layout: default
 #include "Mylib/Misc/int128.cpp"
 
 /**
- * @title Miller-Rabin素数判定法
+ * @title Primality test (Miller-Rabin algorithm)
  * @docs miller_rabin.md
  */
 class MillerRabin{
@@ -122,7 +122,7 @@ public:
 #line 2 "Mylib/Misc/int128.cpp"
 
 /**
- * @title 128bit整数型
+ * @title 128-bit int
  * @docs int128.md
  */
 #ifdef __SIZEOF_INT128__
@@ -134,7 +134,7 @@ using uint128_t = boost::multiprecision::uint128_t;
 #line 3 "Mylib/Number/Prime/miller_rabin.cpp"
 
 /**
- * @title Miller-Rabin素数判定法
+ * @title Primality test (Miller-Rabin algorithm)
  * @docs miller_rabin.md
  */
 class MillerRabin{

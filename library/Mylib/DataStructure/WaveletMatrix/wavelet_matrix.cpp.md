@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: WaveletMatrix
+# :question: Wavelet matrix
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#def74daadbbb39361c0a507a6463f6db">Mylib/DataStructure/WaveletMatrix</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-23 07:34:18+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -80,16 +80,16 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="succinct_dictionary.cpp.html">簡潔辞書</a>
+* :question: <a href="succinct_dictionary.cpp.html">Succinct dictionary</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/1549/main.test.cpp.html">test/aoj/1549/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/2426/main.test.cpp.html">test/aoj/2426/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/2674/main.test.cpp.html">test/aoj/2674/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/range_kth_smallest/main.test.cpp.html">test/yosupo-judge/range_kth_smallest/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/919/main.test.cpp.html">test/yukicoder/919/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/2426/main.test.cpp.html">test/aoj/2426/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/2674/main.test.cpp.html">test/aoj/2674/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/range_kth_smallest/main.test.cpp.html">test/yosupo-judge/range_kth_smallest/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/919/main.test.cpp.html">test/yukicoder/919/main.test.cpp</a>
 
 
 ## Code
@@ -107,7 +107,7 @@ layout: default
 #include "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
 
 /**
- * @title WaveletMatrix
+ * @title Wavelet matrix
  * @docs wavelet_matrix.md
  */
 template <typename T, int B>
@@ -381,7 +381,7 @@ WaveletMatrix<uint32_t,32> make_wavelet_matrix_int(const std::vector<uint32_t> &
 #include <optional>
 
 /**
- * @title 簡潔辞書
+ * @title Succinct dictionary
  * @docs succinct_dictionary.md
  */
 struct SuccinctDict{
@@ -487,7 +487,7 @@ struct SuccinctDict{
 #line 9 "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 
 /**
- * @title WaveletMatrix
+ * @title Wavelet matrix
  * @docs wavelet_matrix.md
  */
 template <typename T, int B>

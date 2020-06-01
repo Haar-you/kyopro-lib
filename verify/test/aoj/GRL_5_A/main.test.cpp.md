@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/GRL_5_A/main.test.cpp
+# :x: test/aoj/GRL_5_A/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a624c615c8a90227d4c31dd34d7dfde1">test/aoj/GRL_5_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_5_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-24 12:01:27+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_A</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_diameter.cpp.html">木の直径</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_diameter.cpp.html">Tree diameter</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
 
 
 ## Code
@@ -54,18 +55,14 @@ layout: default
 #include <tuple>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/tree_diameter.cpp"
+#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int n; std::cin >> n;
-  Tree<int> tree(n);
 
-  for(int i = 0; i < n-1; ++i){
-    int s, t, w; std::cin >> s >> t >> w;
-    add_undirected(tree, s, t, w);
-  }
+  auto tree = convert_to_graph<int, false>(n, input_edges<int, 0, true>(n-1));
 
-  int ans;
-  std::tie(ans, std::ignore) = tree_diameter(tree);
+  int ans = tree_diameter(tree).first;
   std::cout << ans << std::endl;
 
   return 0;
@@ -87,7 +84,7 @@ int main(){
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -117,7 +114,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 7 "Mylib/Graph/TreeUtils/tree_diameter.cpp"
 
 /**
- * @title 木の直径
+ * @title Tree diameter
  * @docs tree_diameter.md
  */
 template <typename T>
@@ -177,19 +174,45 @@ std::pair<T, std::vector<int>> tree_diameter(const Tree<T> &tree){
   
   return std::make_pair(dp[v], ret);
 }
-#line 7 "test/aoj/GRL_5_A/main.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 8 "test/aoj/GRL_5_A/main.test.cpp"
 
 int main(){
   int n; std::cin >> n;
-  Tree<int> tree(n);
 
-  for(int i = 0; i < n-1; ++i){
-    int s, t, w; std::cin >> s >> t >> w;
-    add_undirected(tree, s, t, w);
-  }
+  auto tree = convert_to_graph<int, false>(n, input_edges<int, 0, true>(n-1));
 
-  int ans;
-  std::tie(ans, std::ignore) = tree_diameter(tree);
+  int ans = tree_diameter(tree).first;
   std::cout << ans << std::endl;
 
   return 0;

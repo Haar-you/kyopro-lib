@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#56f0b2628838f5e87f16daf710f380b1">test/aoj/1595</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1595/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 16:55:31+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1595">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1595</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/rerooting.cpp.html">全方位木dp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/rerooting.cpp.html">Rerooting DP</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
 
 
 ## Code
@@ -53,16 +54,11 @@ layout: default
 #include <iostream>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/rerooting.cpp"
+#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int N; std::cin >> N;
-  Tree<int> tree(N);
-
-  for(int i = 0; i < N-1; ++i){
-    int u, v; std::cin >> u >> v;
-    --u, --v;
-    add_undirected(tree, u, v, 1);
-  }
+  auto tree = convert_to_graph<int, false>(N, input_edges<int, 1, false>(N-1));
 
   auto r = make_rerooting<int>(
     tree,
@@ -100,7 +96,7 @@ int main(){
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -126,7 +122,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 4 "Mylib/Graph/TreeUtils/rerooting.cpp"
 
 /**
- * @title 全方位木dp
+ * @title Rerooting DP
  * @docs rerooting.md
  */
 
@@ -204,17 +200,42 @@ template <typename T, typename G, typename Merge, typename EdgeF, typename Verte
 auto make_rerooting(const G &tree, T id, Merge merge, EdgeF f, VertexF g){
   return Rerooting<G,T,Merge,EdgeF,VertexF>(tree, id, merge, f, g);
 }
-#line 6 "test/aoj/1595/main.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 7 "test/aoj/1595/main.test.cpp"
 
 int main(){
   int N; std::cin >> N;
-  Tree<int> tree(N);
-
-  for(int i = 0; i < N-1; ++i){
-    int u, v; std::cin >> u >> v;
-    --u, --v;
-    add_undirected(tree, u, v, 1);
-  }
+  auto tree = convert_to_graph<int, false>(N, input_edges<int, 1, false>(N-1));
 
   auto r = make_rerooting<int>(
     tree,

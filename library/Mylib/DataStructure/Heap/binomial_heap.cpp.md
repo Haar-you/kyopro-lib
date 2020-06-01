@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: BinomialHeap
+# :heavy_check_mark: Binomial heap
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f151d59e79c7ff7f731ff52cf9b782e4">Mylib/DataStructure/Heap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Heap/binomial_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-16 06:14:31+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -53,7 +53,7 @@ layout: default
 #include <cassert>
 
 /**
- * @title BinomialHeap
+ * @title Binomial heap
  * @docs binomial_heap.md
  */
 template <typename T, typename Compare = std::less<T>>
@@ -159,7 +159,7 @@ public:
 #include <cassert>
 
 /**
- * @title BinomialHeap
+ * @title Binomial heap
  * @docs binomial_heap.md
  */
 template <typename T, typename Compare = std::less<T>>

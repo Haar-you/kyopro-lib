@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 木の直径
+# :x: Tree diameter
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/tree_diameter.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-19 10:56:49+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_5_A/main.test.cpp.html">test/aoj/GRL_5_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/tree_diameter/main.test.cpp.html">test/yosupo-judge/tree_diameter/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_5_A/main.test.cpp.html">test/aoj/GRL_5_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/tree_diameter/main.test.cpp.html">test/yosupo-judge/tree_diameter/main.test.cpp</a>
 
 
 ## Code
@@ -60,7 +60,7 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 木の直径
+ * @title Tree diameter
  * @docs tree_diameter.md
  */
 template <typename T>
@@ -136,7 +136,7 @@ std::pair<T, std::vector<int>> tree_diameter(const Tree<T> &tree){
 #include <iostream>
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -162,7 +162,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 7 "Mylib/Graph/TreeUtils/tree_diameter.cpp"
 
 /**
- * @title 木の直径
+ * @title Tree diameter
  * @docs tree_diameter.md
  */
 template <typename T>

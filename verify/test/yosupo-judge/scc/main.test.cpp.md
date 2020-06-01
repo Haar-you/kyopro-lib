@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/scc/main.test.cpp
+# :x: test/yosupo-judge/scc/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6ffd15f8d9c15c119e35f664edb2d617">test/yosupo-judge/scc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/scc/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-25 02:14:35+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/scc">https://judge.yosupo.jp/problem/scc</a>
@@ -39,9 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :x: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
+* :x: <a href="../../../../library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">Topological sort</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 
 
 ## Code
@@ -56,15 +58,16 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 #include "Mylib/Graph/TopologicalSort/topological_sort.cpp"
+#include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/join.cpp"
 
 int main(){
-  int N, M; scanf("%d%d", &N, &M);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N, M; std::cin >> N >> M;
 
-  Graph<int> g(N);
-  for(int i = 0; i < M; ++i){
-    int a, b; scanf("%d%d", &a, &b);
-    add_edge(g, a, b, 1);
-  }
+  auto g = convert_to_graph<int, true>(N, input_edges<int, 0, false>(M));
 
   auto [scc, K] = strongly_connected_components(g);
   std::vector<std::vector<int>> ans(K);
@@ -79,16 +82,11 @@ int main(){
 
   auto ts = topological_sort(g2).value();
 
-  printf("%d\n", K);
+  std::cout << K << "\n";
 
-  for(int i = 0; i < K; ++i){
-    auto &t = ans[ts[i]];
-
-    printf("%d", t.size());
-    for(auto &x : t){
-      printf(" %d", x);
-    }
-    printf("\n");
+  for(auto i : ts){
+    auto &t = ans[i];
+    std::cout << t.size() << " " << join(t.begin(), t.end()) << "\n";
   }
 
   return 0;
@@ -108,7 +106,7 @@ int main(){
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -136,7 +134,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 
 /**
- * @title 強連結成分分解
+ * @title Strongly connected components
  * @docs strongly_connected_components.md
  */
 template <typename T>
@@ -184,7 +182,7 @@ auto strongly_connected_components(const Graph<T> &g){
 #line 6 "Mylib/Graph/TopologicalSort/topological_sort.cpp"
 
 /**
- * @title トポロジカルソート
+ * @title Topological sort
  * @docs topological_sort.md
  */
 template <typename T>
@@ -221,16 +219,64 @@ std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
     return std::nullopt;
   }
 }
-#line 8 "test/yosupo-judge/scc/main.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 3 "Mylib/IO/join.cpp"
+#include <sstream>
+#include <string>
+
+/**
+ * @docs join.md
+ */
+template <typename ITER>
+std::string join(ITER first, ITER last, std::string delim = " "){
+  std::stringstream s;
+
+  for(auto it = first; it != last; ++it){
+    if(it != first) s << delim;
+    s << *it;
+  }
+
+  return s.str();
+}
+#line 10 "test/yosupo-judge/scc/main.test.cpp"
 
 int main(){
-  int N, M; scanf("%d%d", &N, &M);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N, M; std::cin >> N >> M;
 
-  Graph<int> g(N);
-  for(int i = 0; i < M; ++i){
-    int a, b; scanf("%d%d", &a, &b);
-    add_edge(g, a, b, 1);
-  }
+  auto g = convert_to_graph<int, true>(N, input_edges<int, 0, false>(M));
 
   auto [scc, K] = strongly_connected_components(g);
   std::vector<std::vector<int>> ans(K);
@@ -245,16 +291,11 @@ int main(){
 
   auto ts = topological_sort(g2).value();
 
-  printf("%d\n", K);
+  std::cout << K << "\n";
 
-  for(int i = 0; i < K; ++i){
-    auto &t = ans[ts[i]];
-
-    printf("%d", t.size());
-    for(auto &x : t){
-      printf(" %d", x);
-    }
-    printf("\n");
+  for(auto i : ts){
+    auto &t = ans[i];
+    std::cout << t.size() << " " << join(t.begin(), t.end()) << "\n";
   }
 
   return 0;

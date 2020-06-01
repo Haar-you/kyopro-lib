@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 有向グラフの最小閉路
+# :warning: Directed shortest cycle
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ac2a729ce4878019d16697115af3ef73">Mylib/Graph/ShortestCycle</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestCycle/directed_shortest_cycle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -51,7 +51,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Code
@@ -67,7 +67,7 @@ layout: default
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 有向グラフの最小閉路
+ * @title Directed shortest cycle
  * @docs directed_shortest_cycle.md
  */
 template <typename T>
@@ -141,7 +141,7 @@ struct DirectShortestCycle{
 #include <iostream>
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -167,7 +167,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 7 "Mylib/Graph/ShortestCycle/directed_shortest_cycle.cpp"
 
 /**
- * @title 有向グラフの最小閉路
+ * @title Directed shortest cycle
  * @docs directed_shortest_cycle.md
  */
 template <typename T>

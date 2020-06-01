@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 不動点コンビネータ
+# :question: Fixed point combinator
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/fix_point.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-24 09:36:03+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -54,8 +54,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.binomial_heap.test.cpp.html">test/aoj/2559/main.binomial_heap.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
 
 
 ## Code
@@ -67,7 +66,7 @@ layout: default
 #include <utility>
 
 /**
- * @title 不動点コンビネータ
+ * @title Fixed point combinator
  * @docs fix_point.md
  */
 template <typename F>
@@ -100,7 +99,7 @@ inline constexpr auto make_fix_point(F &f){
 #include <utility>
 
 /**
- * @title 不動点コンビネータ
+ * @title Fixed point combinator
  * @docs fix_point.md
  */
 template <typename F>

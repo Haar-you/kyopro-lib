@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/194/main.test.cpp
+# :x: test/yukicoder/194/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a69917d4d187b863fce67c7534f3be6a">test/yukicoder/194</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/194/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-03 20:03:33+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/194">https://yukicoder.me/problems/no/194</a>
@@ -39,10 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/inverse_matrix.cpp.html">逆行列</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/power.cpp.html">行列累乗</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">正方行列</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/inverse_matrix.cpp.html">Inverse matrix</a>
+* :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/power.cpp.html">Power of a matrix</a>
+* :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Square matrix</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -51,7 +52,6 @@ layout: default
 {% raw %}
 ```cpp
 #define PROBLEM "https://yukicoder.me/problems/no/194"
-
 
 #include <iostream>
 #include <vector>
@@ -62,6 +62,7 @@ layout: default
 #include "Mylib/LinearAlgebra/Square/square_matrix.cpp"
 #include "Mylib/LinearAlgebra/Square/inverse_matrix.cpp"
 #include "Mylib/LinearAlgebra/Square/power.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using mint = ModInt<1000000007>;
 
@@ -128,8 +129,7 @@ int main(){
 
   M::N = N;
 
-  std::vector<int> A(N);
-  for(auto &x : A) std::cin >> x;
+  auto A = input_vector<int>(N);
 
   auto [f, s] = K > 1000000 ? solve1(N, K, A) : solve2(N, K, A);
   std::cout << f << " " << s << "\n";
@@ -146,7 +146,6 @@ int main(){
 #line 1 "test/yukicoder/194/main.test.cpp"
 #define PROBLEM "https://yukicoder.me/problems/no/194"
 
-
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -156,7 +155,7 @@ int main(){
 #include <utility>
 
 /**
- * @title modint
+ * @title Modint
  * @docs mint.md
  */
 template <uint32_t M> class ModInt{
@@ -241,7 +240,7 @@ public:
 #line 4 "Mylib/LinearAlgebra/Square/square_matrix.cpp"
 
 /**
- * @title 正方行列
+ * @title Square matrix
  * @docs square_matrix.md
  */
 template <typename T, class Tag> struct SquareMatrix{
@@ -298,7 +297,7 @@ template <typename T, class Tag> int SquareMatrix<T,Tag>::N;
 #line 3 "Mylib/LinearAlgebra/Square/inverse_matrix.cpp"
 
 /**
- * @title 逆行列
+ * @title Inverse matrix
  * @docs inverse_matrix.md
  */
 template <typename M, typename T = typename M::value_type>
@@ -345,7 +344,7 @@ bool inverse_matrix(M m, M &ret){
 #line 2 "Mylib/LinearAlgebra/Square/power.cpp"
 
 /**
- * @title 行列累乗
+ * @title Power of a matrix
  * @docs power.md
  */
 template <typename M, typename T = typename M::value_type>
@@ -358,6 +357,24 @@ M power(M a, uint64_t p){
 
   if(p & 1) ret *= a;  
   
+  return ret;
+}
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
   return ret;
 }
 #line 13 "test/yukicoder/194/main.test.cpp"
@@ -427,8 +444,7 @@ int main(){
 
   M::N = N;
 
-  std::vector<int> A(N);
-  for(auto &x : A) std::cin >> x;
+  auto A = input_vector<int>(N);
 
   auto [f, s] = K > 1000000 ? solve1(N, K, A) : solve2(N, K, A);
   std::cout << f << " " << s << "\n";

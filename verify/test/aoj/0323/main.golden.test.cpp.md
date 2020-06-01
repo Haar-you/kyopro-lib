@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#64b51258818892ff133e88d4c55d7a44">test/aoj/0323</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/0323/main.golden.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0323">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0323</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Search/golden_section_search_upwards.cpp.html">上に凸の黄金分割探索</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Search/golden_section_search_upwards.cpp.html">Golden section search (Convex upwards)</a>
 
 
 ## Code
@@ -123,7 +123,7 @@ int main(){
 #line 4 "Mylib/Algorithm/Search/golden_section_search_upwards.cpp"
 
 /**
- * @title 上に凸の黄金分割探索
+ * @title Golden section search (Convex upwards)
  * @docs golden_section_search_upwards.md
  */
 template <typename T = double, typename Func = std::function<T(T)>>

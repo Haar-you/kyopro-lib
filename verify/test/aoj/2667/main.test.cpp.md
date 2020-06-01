@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f80441644c784d0a46b75e1972ebee8e">test/aoj/2667</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2667/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 16:55:31+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2667">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2667</a>
@@ -39,11 +39,13 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">遅延SegmentTree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">HL分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">Lazy segment tree</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -58,22 +60,18 @@ layout: default
 #include "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 #include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp"
+#include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int N, Q; std::cin >> N >> Q;
-  
-  Tree<int> tree(N);
-  for(int i = 0; i < N-1; ++i){
-    int a, b; std::cin >> a >> b;
-    add_undirected(tree, a, b, 1);
-  }
+
+  auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
   
   auto hld = HLDecomposition(tree, 0);
   LazySegmentTree<AddSum<int64_t,int64_t>> seg(N);
   
-  while(Q--){
-    int c; std::cin >> c;
-    
+  for(auto [c] : input_tuples<int>(Q)){
     if(c == 0){
       int u, v; std::cin >> u >> v;
       
@@ -116,7 +114,7 @@ int main(){
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -145,7 +143,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 6 "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 
 /**
- * @title HL分解
+ * @title Heavy-light decomposition
  * @docs heavy_light_decomposition.md
  */
 template <typename T> class HLDecomposition{
@@ -277,7 +275,7 @@ public:
 #line 3 "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
 
 /**
- * @title 遅延SegmentTree
+ * @title Lazy segment tree
  * @docs lazy_segment_tree.md
  */
 template <typename Monoid>
@@ -375,23 +373,103 @@ struct AddSum{
     return a + b * len;
   }
 };
-#line 8 "test/aoj/2667/main.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 10 "test/aoj/2667/main.test.cpp"
 
 int main(){
   int N, Q; std::cin >> N >> Q;
-  
-  Tree<int> tree(N);
-  for(int i = 0; i < N-1; ++i){
-    int a, b; std::cin >> a >> b;
-    add_undirected(tree, a, b, 1);
-  }
+
+  auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
   
   auto hld = HLDecomposition(tree, 0);
   LazySegmentTree<AddSum<int64_t,int64_t>> seg(N);
   
-  while(Q--){
-    int c; std::cin >> c;
-    
+  for(auto [c] : input_tuples<int>(Q)){
     if(c == 0){
       int u, v; std::cin >> u >> v;
       

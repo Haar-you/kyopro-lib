@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/631/main.starry_sky.test.cpp
+# :x: test/yukicoder/631/main.starry_sky.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0b2f27755ad8078580256305f9366a63">test/yukicoder/631</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/631/main.starry_sky.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-17 07:08:54+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/631">https://yukicoder.me/problems/no/631</a>
@@ -39,7 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/starry_sky_tree_max.cpp.html">StarrySkyTree (Max)</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/starry_sky_tree_max.cpp.html">Starry-sky tree (Max)</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -53,35 +55,34 @@ layout: default
 #include <vector>
 
 #include "Mylib/DataStructure/SegmentTree/starry_sky_tree_max.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
   
-  int N;
-  while(std::cin >> N){
-    auto seg = StarrySkyTreeMax<int64_t>(N-1);
-        
-    std::vector<int64_t> T(N-1);
-    for(auto &x : T) std::cin >> x;
+  int N; std::cin >> N;
+  
+  auto seg = StarrySkyTreeMax<int64_t>(N-1);
+
+  auto T = input_vector<int64_t>(N-1);
     
-    for(int i = 0; i < N-1; ++i){
-      T[i] += 3 * (N-1-i);
-    }
+  for(int i = 0; i < N-1; ++i){
+    T[i] += 3 * (N-1-i);
+  }
 
-    seg.init_with_vector(T);
+  seg.init_with_vector(T);
     
-    int M; std::cin >> M;
+  int M; std::cin >> M;
 
-    for(int i = 0; i < M; ++i){
-      int L, R, D; std::cin >> L >> R >> D;
-      --L, --R;
+  for(auto [L, R, D] : input_tuples<int, int, int>(M)){
+    --L, --R;
 
-      seg.update(L, R+1, D);
+    seg.update(L, R+1, D);
       
-      auto ans = seg.get(0, N-1);
-      std::cout << ans << std::endl;
-    }
+    auto ans = seg.get(0, N-1);
+    std::cout << ans << std::endl;
   }
 
   return 0;
@@ -104,7 +105,7 @@ int main(){
 #include <limits>
 
 /**
- * @title StarrySkyTree (Max)
+ * @title Starry-sky tree (Max)
  * @docs starry_sky_tree_max.md
  */
 template <typename T>
@@ -179,36 +180,106 @@ public:
     }
   }
 };
-#line 7 "test/yukicoder/631/main.starry_sky.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 9 "test/yukicoder/631/main.starry_sky.test.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
   
-  int N;
-  while(std::cin >> N){
-    auto seg = StarrySkyTreeMax<int64_t>(N-1);
-        
-    std::vector<int64_t> T(N-1);
-    for(auto &x : T) std::cin >> x;
+  int N; std::cin >> N;
+  
+  auto seg = StarrySkyTreeMax<int64_t>(N-1);
+
+  auto T = input_vector<int64_t>(N-1);
     
-    for(int i = 0; i < N-1; ++i){
-      T[i] += 3 * (N-1-i);
-    }
+  for(int i = 0; i < N-1; ++i){
+    T[i] += 3 * (N-1-i);
+  }
 
-    seg.init_with_vector(T);
+  seg.init_with_vector(T);
     
-    int M; std::cin >> M;
+  int M; std::cin >> M;
 
-    for(int i = 0; i < M; ++i){
-      int L, R, D; std::cin >> L >> R >> D;
-      --L, --R;
+  for(auto [L, R, D] : input_tuples<int, int, int>(M)){
+    --L, --R;
 
-      seg.update(L, R+1, D);
+    seg.update(L, R+1, D);
       
-      auto ans = seg.get(0, N-1);
-      std::cout << ans << std::endl;
-    }
+    auto ans = seg.get(0, N-1);
+    std::cout << ans << std::endl;
   }
 
   return 0;

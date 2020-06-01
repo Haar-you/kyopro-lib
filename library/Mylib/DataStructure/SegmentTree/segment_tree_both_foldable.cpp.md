@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: SegmentTree (双方向Foldable)
+# :x: Segment tree (Both foldable)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-17 07:08:54+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -65,7 +65,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
 
 
 ## Code
@@ -77,7 +77,7 @@ layout: default
 #include <vector>
 
 /**
- * @title SegmentTree (双方向Foldable)
+ * @title Segment tree (Both foldable)
  * @docs segment_tree_both_foldable.md
  */
 template <typename Monoid>
@@ -169,7 +169,7 @@ public:
 #include <vector>
 
 /**
- * @title SegmentTree (双方向Foldable)
+ * @title Segment tree (Both foldable)
  * @docs segment_tree_both_foldable.md
  */
 template <typename Monoid>

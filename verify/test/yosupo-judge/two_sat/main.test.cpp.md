@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/two_sat/main.test.cpp
+# :x: test/yosupo-judge/two_sat/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#e93cc7e7edd1deb522641737d913fca6">test/yosupo-judge/two_sat</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/two_sat/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-25 02:14:35+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/two_sat">https://judge.yosupo.jp/problem/two_sat</a>
@@ -39,10 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">強連結成分分解</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">トポロジカルソート</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/two_sat.cpp.html">2-SAT</a>
+* :x: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
+* :x: <a href="../../../../library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">Topological sort</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :x: <a href="../../../../library/Mylib/Graph/two_sat.cpp.html">2-SAT</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 
 
 ## Code
@@ -56,6 +58,8 @@ layout: default
 #include <string>
 #include <vector>
 #include "Mylib/Graph/two_sat.cpp"
+#include "Mylib/IO/join.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   std::string p, cnf;
@@ -64,20 +68,17 @@ int main(){
 
   TwoSat sat(N);
 
-  for(int i = 0; i < M; ++i){
-    int a,b,c; std::cin >> a >> b >> c;
-    sat.add_or(a,b);
+  for(auto [a, b, c] : input_tuples<int, int, int>(M)){
+    sat.add_or(a, b);
   }
 
   if(auto res = sat.solve(); res){
-    std::cout << "s SATISFIABLE" << std::endl;
     std::vector<int> ans(N);
-
     for(int i = 0; i < N; ++i) ans[i] = (*res)[i] ? i+1 : -(i+1);
 
-    std::cout << "v ";
-    for(auto x : ans) std::cout << x << " ";
-    std::cout << 0 << std::endl;
+    std::cout
+      << "s SATISFIABLE" << std::endl
+      << "v " << join(ans.begin(), ans.end()) << " " << 0 << std::endl;
   }else{
     std::cout << "s UNSATISFIABLE" << std::endl;
   }
@@ -103,7 +104,7 @@ int main(){
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -131,7 +132,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 5 "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 
 /**
- * @title 強連結成分分解
+ * @title Strongly connected components
  * @docs strongly_connected_components.md
  */
 template <typename T>
@@ -179,7 +180,7 @@ auto strongly_connected_components(const Graph<T> &g){
 #line 6 "Mylib/Graph/TopologicalSort/topological_sort.cpp"
 
 /**
- * @title トポロジカルソート
+ * @title Topological sort
  * @docs topological_sort.md
  */
 template <typename T>
@@ -289,7 +290,80 @@ public:
     return {ret};
   }
 };
-#line 7 "test/yosupo-judge/two_sat/main.test.cpp"
+#line 3 "Mylib/IO/join.cpp"
+#include <sstream>
+#line 5 "Mylib/IO/join.cpp"
+
+/**
+ * @docs join.md
+ */
+template <typename ITER>
+std::string join(ITER first, ITER last, std::string delim = " "){
+  std::stringstream s;
+
+  for(auto it = first; it != last; ++it){
+    if(it != first) s << delim;
+    s << *it;
+  }
+
+  return s.str();
+}
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 9 "test/yosupo-judge/two_sat/main.test.cpp"
 
 int main(){
   std::string p, cnf;
@@ -298,20 +372,17 @@ int main(){
 
   TwoSat sat(N);
 
-  for(int i = 0; i < M; ++i){
-    int a,b,c; std::cin >> a >> b >> c;
-    sat.add_or(a,b);
+  for(auto [a, b, c] : input_tuples<int, int, int>(M)){
+    sat.add_or(a, b);
   }
 
   if(auto res = sat.solve(); res){
-    std::cout << "s SATISFIABLE" << std::endl;
     std::vector<int> ans(N);
-
     for(int i = 0; i < N; ++i) ans[i] = (*res)[i] ? i+1 : -(i+1);
 
-    std::cout << "v ";
-    for(auto x : ans) std::cout << x << " ";
-    std::cout << 0 << std::endl;
+    std::cout
+      << "s SATISFIABLE" << std::endl
+      << "v " << join(ans.begin(), ans.end()) << " " << 0 << std::endl;
   }else{
     std::cout << "s UNSATISFIABLE" << std::endl;
   }

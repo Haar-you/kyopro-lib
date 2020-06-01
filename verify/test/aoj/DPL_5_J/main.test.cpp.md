@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_5_J/main.test.cpp
+# :x: test/aoj/DPL_5_J/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#8ea6691460c4e97105f99a36e4c646db">test/aoj/DPL_5_J</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_J/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_J">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_J</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/partition_number.cpp.html">K個以下への分割数の列挙</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/Combinatorics/partition_number.cpp.html">Partition number (Enumerate $P(n, k)$)</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -80,7 +80,7 @@ int main(){
 #include <utility>
 
 /**
- * @title modint
+ * @title Modint
  * @docs mint.md
  */
 template <uint32_t M> class ModInt{
@@ -166,7 +166,7 @@ public:
 #include <vector>
 
 /**
- * @title K個以下への分割数の列挙
+ * @title Partition number (Enumerate $P(n, k)$)
  * @docs partition_number.md
  */
 template <typename T>

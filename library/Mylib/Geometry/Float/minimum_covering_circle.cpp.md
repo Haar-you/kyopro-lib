@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 最小包含円
+# :x: Minimum covering circle
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/minimum_covering_circle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-11 12:02:00+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -54,13 +54,13 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="circumscribed_circle_of_triangle.cpp.html">三角形の外接円</a>
-* :heavy_check_mark: <a href="geometry_template.cpp.html">幾何基本セット</a>
+* :x: <a href="circumscribed_circle_of_triangle.cpp.html">Circumscribed circle of a triangle</a>
+* :question: <a href="geometry_template.cpp.html">Geometry template</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
 
 
 ## Code
@@ -75,7 +75,7 @@ layout: default
 #include "Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp"
 
 /**
- * @title 最小包含円
+ * @title Minimum covering circle
  * @docs minimum_covering_circle.md
  */
 template <typename T>
@@ -139,7 +139,7 @@ Circle<T> minimum_covering_circle(std::vector<Point<T>> ps, int seed = 0){
 #line 5 "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -223,7 +223,7 @@ template <typename T> struct Circle{
 #line 3 "Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp"
 
 /**
- * @title 三角形の外接円
+ * @title Circumscribed circle of a triangle
  * @docs circumscribed_circle_of_triangle.md
  */
 template <typename T>
@@ -243,7 +243,7 @@ Circle<T> circumscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b,
 #line 6 "Mylib/Geometry/Float/minimum_covering_circle.cpp"
 
 /**
- * @title 最小包含円
+ * @title Minimum covering circle
  * @docs minimum_covering_circle.md
  */
 template <typename T>

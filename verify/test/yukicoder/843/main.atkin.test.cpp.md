@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/843/main.atkin.test.cpp
+# :x: test/yukicoder/843/main.atkin.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#05b6faf184ccb3df7524a3ce68064b76">test/yukicoder/843</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/843/main.atkin.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/843">https://yukicoder.me/problems/no/843</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/atkin_sieve.cpp.html">Atkinの篩</a>
+* :x: <a href="../../../../library/Mylib/Number/Prime/atkin_sieve.cpp.html">Sieve of Atkin</a>
 
 
 ## Code
@@ -93,7 +93,7 @@ int main(){
 #include <vector>
 
 /**
- * @title Atkinの篩
+ * @title Sieve of Atkin
  * @docs atkin_sieve.md
  */
 template <int MAX>

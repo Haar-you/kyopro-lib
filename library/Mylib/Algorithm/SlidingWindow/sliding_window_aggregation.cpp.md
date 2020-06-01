@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: SlidingWindowAggregation
+# :x: Sliding window aggregation
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1d0203f9a0b34121f2fb0bb17b094d0f">Mylib/Algorithm/SlidingWindow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-18 02:55:03+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -51,7 +51,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
 
 
 ## Code
@@ -65,7 +65,7 @@ layout: default
 #include <optional>
 
 /**
- * @title SlidingWindowAggregation
+ * @title Sliding window aggregation
  * @docs sliding_window_aggregation.md
  */
 template <typename Semigroup>
@@ -133,7 +133,7 @@ public:
 #include <optional>
 
 /**
- * @title SlidingWindowAggregation
+ * @title Sliding window aggregation
  * @docs sliding_window_aggregation.md
  */
 template <typename Semigroup>

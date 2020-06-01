@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/3034/main.test.cpp
+# :x: test/aoj/3034/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#607ede2caa7064ff1cf75c22fd3209d4">test/aoj/3034</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3034/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-24 09:36:03+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034</a>
@@ -39,12 +39,13 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Bit/for_each_subset_asc.cpp.html">下位集合を昇順に列挙</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp.html">三角形の外接円</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">誤差許容浮動小数点数</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">幾何基本セット</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/minimum_covering_circle.cpp.html">最小包含円</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">不動点コンビネータ</a>
+* :x: <a href="../../../../library/Mylib/Bit/for_each_subset_asc.cpp.html">Enumerate subsets (Ascending order)</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp.html">Circumscribed circle of a triangle</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/minimum_covering_circle.cpp.html">Minimum covering circle</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">Fixed point combinator</a>
 
 
 ## Code
@@ -64,6 +65,7 @@ layout: default
 #include "Mylib/Geometry/Float/minimum_covering_circle.cpp"
 #include "Mylib/Misc/fix_point.cpp"
 #include "Mylib/Bit/for_each_subset_asc.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using D = DoubleEps<double>;
 template <> double D::eps = ERROR;
@@ -76,8 +78,7 @@ const D INF = 1e9;
 int main(){
   int N, M; std::cin >> N >> M;
 
-  std::vector<Point<D>> ps(N);
-  for(int i = 0; i < N; ++i) std::cin >> ps[i];
+  auto ps = input_vector<Point<D>>(N);
 
   std::vector<double> memo(1 << N);
 
@@ -137,7 +138,7 @@ int main(){
 #line 5 "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 幾何基本セット
+ * @title Geometry template
  * @docs geometry_template.md
  */
 
@@ -223,7 +224,7 @@ template <typename T> struct Circle{
 #line 5 "Mylib/Geometry/Float/double_eps.cpp"
 
 /**
- * @title 誤差許容浮動小数点数
+ * @title Floating point number with eps
  * @docs double_eps.md
  */
 template <typename T>
@@ -294,7 +295,7 @@ template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
 #line 3 "Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp"
 
 /**
- * @title 三角形の外接円
+ * @title Circumscribed circle of a triangle
  * @docs circumscribed_circle_of_triangle.md
  */
 template <typename T>
@@ -314,7 +315,7 @@ Circle<T> circumscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b,
 #line 6 "Mylib/Geometry/Float/minimum_covering_circle.cpp"
 
 /**
- * @title 最小包含円
+ * @title Minimum covering circle
  * @docs minimum_covering_circle.md
  */
 template <typename T>
@@ -365,7 +366,7 @@ Circle<T> minimum_covering_circle(std::vector<Point<T>> ps, int seed = 0){
 #include <utility>
 
 /**
- * @title 不動点コンビネータ
+ * @title Fixed point combinator
  * @docs fix_point.md
  */
 template <typename F>
@@ -390,7 +391,7 @@ inline constexpr auto make_fix_point(F &f){
 #line 2 "Mylib/Bit/for_each_subset_asc.cpp"
 
 /**
- * @title 下位集合を昇順に列挙
+ * @title Enumerate subsets (Ascending order)
  * @docs for_each_subset_asc.md
  */
 class SubsetAsc{
@@ -413,7 +414,25 @@ public:
   iter begin() const {return iter({0, a, false});}
   iter end() const {return iter();}
 };
-#line 13 "test/aoj/3034/main.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 14 "test/aoj/3034/main.test.cpp"
 
 using D = DoubleEps<double>;
 template <> double D::eps = ERROR;
@@ -426,8 +445,7 @@ const D INF = 1e9;
 int main(){
   int N, M; std::cin >> N >> M;
 
-  std::vector<Point<D>> ps(N);
-  for(int i = 0; i < N; ++i) std::cin >> ps[i];
+  auto ps = input_vector<Point<D>>(N);
 
   std::vector<double> memo(1 << N);
 

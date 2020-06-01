@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_5_B/main.test.cpp
+# :x: test/aoj/DSL_5_B/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#09186009013fcd05167f7dbee66a64e6">test/aoj/DSL_5_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_5_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B</a>
@@ -39,7 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Imos/imos_2d.cpp.html">二次元Imos法</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/Imos/imos_2d.cpp.html">2D Imos algorithm</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -52,14 +53,14 @@ layout: default
 #include <iostream>
 #include <algorithm>
 #include "Mylib/Algorithm/Imos/imos_2d.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int N; std::cin >> N;
   Imos2D<int> imos(1000, 1000);
 
-  for(int i = 0; i < N; ++i){
-    int x1,y1,x2,y2; std::cin >> x1 >> y1 >> x2 >> y2;
-    imos.add(x1,y1,x2,y2);
+  for(auto [x1, y1, x2, y2] : input_tuples<int, int, int, int>(N)){
+    imos.add(x1, y1, x2, y2);
   }
 
   imos.build();
@@ -91,7 +92,7 @@ int main(){
 #include <vector>
 
 /**
- * @title 二次元Imos法
+ * @title 2D Imos algorithm
  * @docs imos_2d.md
  */
 template <typename T> struct Imos2D{
@@ -122,15 +123,69 @@ template <typename T> struct Imos2D{
 
   inline const std::vector<T>& operator[](size_t i) const {return vec[i];}
 };
-#line 6 "test/aoj/DSL_5_B/main.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#include <utility>
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 7 "test/aoj/DSL_5_B/main.test.cpp"
 
 int main(){
   int N; std::cin >> N;
   Imos2D<int> imos(1000, 1000);
 
-  for(int i = 0; i < N; ++i){
-    int x1,y1,x2,y2; std::cin >> x1 >> y1 >> x2 >> y2;
-    imos.add(x1,y1,x2,y2);
+  for(auto [x1, y1, x2, y2] : input_tuples<int, int, int, int>(N)){
+    imos.add(x1, y1, x2, y2);
   }
 
   imos.build();

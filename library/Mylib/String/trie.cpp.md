@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Trie木
+# :warning: Trie
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/trie.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-29 22:35:52+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -46,7 +46,7 @@ layout: default
 #include <vector>
 
 /**
- * @title Trie木
+ * @title Trie
  * @docs trie.md
  */
 template <typename T>
@@ -107,7 +107,7 @@ public:
 #include <vector>
 
 /**
- * @title Trie木
+ * @title Trie
  * @docs trie.md
  */
 template <typename T>

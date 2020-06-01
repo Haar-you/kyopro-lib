@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/bipartitematching/main.test.cpp
+# :x: test/yosupo-judge/bipartitematching/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#aaddfc42bd9348a0d8dc19d8cb0c6655">test/yosupo-judge/bipartitematching</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/bipartitematching/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 04:30:02+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/bipartitematching">https://judge.yosupo.jp/problem/bipartitematching</a>
@@ -39,7 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/hopcroft_karp.cpp.html">Hopcroft-Karp法</a>
+* :x: <a href="../../../../library/Mylib/Graph/Matching/hopcroft_karp.cpp.html">Hopcroft-Karp algorithm</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -51,13 +52,13 @@ layout: default
 
 #include <iostream>
 #include "Mylib/Graph/Matching/hopcroft_karp.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int L,R,M; std::cin >> L >> R >> M;
   HopcroftKarp hk(L,R);
 
-  for(int i = 0; i < M; ++i){
-    int a, b; std::cin >> a >> b;
+  for(auto [a, b] : input_tuples<int, int>(M)){
     hk.add_edge(a, b);
   }
   
@@ -65,9 +66,9 @@ int main(){
 
   auto ans = hk.get_matching();
 
-  std::cout << ans.size() << std::endl;
+  std::cout << ans.size() << "\n";
   for(auto &[i,j] : ans){
-    std::cout << i << " " << j << std::endl;
+    std::cout << i << " " << j << "\n";
   }
 
   return 0;
@@ -90,7 +91,7 @@ int main(){
 #include <cassert>
 
 /**
- * @title Hopcroft-Karp法
+ * @title Hopcroft-Karp algorithm
  * @docs hopcroft_karp.md
  */
 class HopcroftKarp{
@@ -193,14 +194,68 @@ public:
     return ret;
   }
 };
-#line 5 "test/yosupo-judge/bipartitematching/main.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 6 "test/yosupo-judge/bipartitematching/main.test.cpp"
 
 int main(){
   int L,R,M; std::cin >> L >> R >> M;
   HopcroftKarp hk(L,R);
 
-  for(int i = 0; i < M; ++i){
-    int a, b; std::cin >> a >> b;
+  for(auto [a, b] : input_tuples<int, int>(M)){
     hk.add_edge(a, b);
   }
   
@@ -208,9 +263,9 @@ int main(){
 
   auto ans = hk.get_matching();
 
-  std::cout << ans.size() << std::endl;
+  std::cout << ans.size() << "\n";
   for(auto &[i,j] : ans){
-    std::cout << i << " " << j << std::endl;
+    std::cout << i << " " << j << "\n";
   }
 
   return 0;

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/3119/main.test.cpp
+# :x: test/aoj/3119/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#59b3322e8805b9ff175a68f1a5d31d67">test/aoj/3119</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3119/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119</a>
@@ -39,9 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_mobius_transform_superset.cpp.html">上位集合に対する高速Möbius変換</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_zeta_transform_superset.cpp.html">上位集合に対する高速Zeta変換</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">modint</a>
+* :x: <a href="../../../../library/Mylib/Convolution/fast_mobius_transform_superset.cpp.html">Fast Möbius transform (Superset)</a>
+* :x: <a href="../../../../library/Mylib/Convolution/fast_zeta_transform_superset.cpp.html">Fast Zeta transform (Superset)</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -56,13 +57,14 @@ layout: default
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Convolution/fast_zeta_transform_superset.cpp"
 #include "Mylib/Convolution/fast_mobius_transform_superset.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using mint = ModInt<1000000007>;
 
 int main(){
   int n; std::cin >> n;
-  std::vector<int> a(n);
-  for(int i = 0; i < n; ++i) std::cin >> a[i];
+
+  auto a = input_vector<int>(n);
 
   std::vector<int> dp(1<<20);
   for(auto x : a) dp[x] += 1;
@@ -94,7 +96,7 @@ int main(){
 #include <utility>
 
 /**
- * @title modint
+ * @title Modint
  * @docs mint.md
  */
 template <uint32_t M> class ModInt{
@@ -180,7 +182,7 @@ public:
 #include <functional>
 
 /**
- * @title 上位集合に対する高速Zeta変換
+ * @title Fast Zeta transform (Superset)
  * @docs fast_zeta_transform_superset.md
  */
 template <typename T, typename Func = std::plus<T>>
@@ -195,7 +197,7 @@ std::vector<T> fast_zeta_transform_superset(std::vector<T> f, const Func &op = s
 #line 4 "Mylib/Convolution/fast_mobius_transform_superset.cpp"
 
 /**
- * @title 上位集合に対する高速Möbius変換
+ * @title Fast Möbius transform (Superset)
  * @docs fast_mobius_transform_superset.md
  */
 template <typename T, typename Func = std::minus<T>>
@@ -207,14 +209,32 @@ std::vector<T> fast_mobius_transform_superset(std::vector<T> f, const Func &op =
   }
   return f;
 }
-#line 8 "test/aoj/3119/main.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 9 "test/aoj/3119/main.test.cpp"
 
 using mint = ModInt<1000000007>;
 
 int main(){
   int n; std::cin >> n;
-  std::vector<int> a(n);
-  for(int i = 0; i < n; ++i) std::cin >> a[i];
+
+  auto a = input_vector<int>(n);
 
   std::vector<int> dp(1<<20);
   for(auto x : a) dp[x] += 1;

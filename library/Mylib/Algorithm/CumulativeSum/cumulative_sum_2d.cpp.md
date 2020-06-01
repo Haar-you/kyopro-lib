@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 二次元累積和
+# :x: 2D cumulative sum
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#606b6851a96c8708fa4cdcf98aebb7c1">Mylib/Algorithm/CumulativeSum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 04:30:23+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/755/main.test.cpp.html">test/yukicoder/755/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/755/main.test.cpp.html">test/yukicoder/755/main.test.cpp</a>
 
 
 ## Code
@@ -52,7 +52,7 @@ layout: default
 #include <cassert>
 
 /**
- * @title 二次元累積和
+ * @title 2D cumulative sum
  * @docs cumulative_sum_2d.md
  */
 template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
@@ -113,7 +113,7 @@ public:
 #include <cassert>
 
 /**
- * @title 二次元累積和
+ * @title 2D cumulative sum
  * @docs cumulative_sum_2d.md
  */
 template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>

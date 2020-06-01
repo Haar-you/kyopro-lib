@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_2_A/main.test.cpp
+# :x: test/aoj/DPL_2_A/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ae5415aafc03e8f08c8f632e7ef1d421">test/aoj/DPL_2_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_2_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">グラフ用テンプレート</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/travelling_salesman_problem.cpp.html">巡回セールスマン問題</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :x: <a href="../../../../library/Mylib/Graph/travelling_salesman_problem.cpp.html">Travelling salesman problem</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
 
 
 ## Code
@@ -53,16 +54,12 @@ layout: default
 #include <iostream>
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/travelling_salesman_problem.cpp"
+#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
-  
-  Graph<int> g(V);
-  
-  for(int i = 0; i < E; ++i){
-    int s, t, d; std::cin >> s >> t >> d;
-    add_edge(g, s, t, d);
-  }
+
+  auto g = convert_to_graph<int, true>(V, input_edges<int, 0, true>(E));
   
   std::cout << travelling_salesman_problem(g, 0).value_or(-1) << std::endl;
   
@@ -84,7 +81,7 @@ int main(){
 #line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グラフ用テンプレート
+ * @title Graph template
  * @docs graph_template.md
  */
 template <typename Cost = int> class Edge{
@@ -113,7 +110,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
 #line 6 "Mylib/Graph/travelling_salesman_problem.cpp"
 
 /**
- * @title 巡回セールスマン問題
+ * @title Travelling salesman problem
  * @docs travelling_salesman_problem.md
  */
 template <typename Cost>
@@ -150,17 +147,43 @@ std::optional<Cost> travelling_salesman_problem(const Graph<Cost> &g, int src){
 
   return dp[src][(1<<n)-1];
 }
-#line 6 "test/aoj/DPL_2_A/main.test.cpp"
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 7 "test/aoj/DPL_2_A/main.test.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
-  
-  Graph<int> g(V);
-  
-  for(int i = 0; i < E; ++i){
-    int s, t, d; std::cin >> s >> t >> d;
-    add_edge(g, s, t, d);
-  }
+
+  auto g = convert_to_graph<int, true>(V, input_edges<int, 0, true>(E));
   
   std::cout << travelling_salesman_problem(g, 0).value_or(-1) << std::endl;
   

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/875/main.test.cpp
+# :x: test/yukicoder/875/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#85bd684f532fe6c6e7e3dd42beff3eb5">test/yukicoder/875</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/875/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-17 07:08:54+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/875">https://yukicoder.me/problems/no/875</a>
@@ -39,9 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/with_min_index.cpp.html">Mylib/AlgebraicStructure/Monoid/with_min_index.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">SegmentTree</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/with_min_index.cpp.html">Mylib/AlgebraicStructure/Monoid/with_min_index.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -58,28 +59,29 @@ layout: default
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/with_min_index.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using Mon = WithMinIndex<MinMonoid<int>>;
 
 int main(){
-  int N, Q; scanf("%d %d", &N, &Q);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
+  int N, Q; std::cin >> N >> Q;
 
   SegmentTree<Mon> seg(N);
 
   std::vector<Mon::value_type> a(N);
   for(int i = 0; i < N; ++i){
-    int x; scanf("%d", &x);
+    int x; std::cin >> x;
     a[i] = std::make_pair(x, i);
   }
 
   seg.init_with_vector(a);
 
-  for(int i = 0; i < Q; ++i){
-    int type; scanf("%d", &type);
-    
+  for(auto [type, l, r] : input_tuples<int, int, int>(Q)){
     switch(type){
     case 1: {
-      int l, r; scanf("%d %d", &l, &r);
       --l, --r;
 
       auto x = seg[l].first;
@@ -91,10 +93,9 @@ int main(){
       break;
     }
     case 2: {
-      int l, r; scanf("%d %d", &l, &r);
       --l, --r;
 
-      printf("%lld\n", seg.get(l, r+1).second + 1);
+      std::cout << seg.get(l, r+1).second + 1 << "\n";
 
       break;
     }
@@ -120,7 +121,7 @@ int main(){
 #line 3 "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
 /**
- * @title SegmentTree
+ * @title Segment tree
  * @docs segment_tree.md
  */
 template <typename Monoid>
@@ -206,29 +207,84 @@ struct WithMinIndex{
     else return b;
   }
 };
-#line 10 "test/yukicoder/875/main.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(T &val, std::index_sequence<I...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
+  }
+  
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool get = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(get) return value;
+      else{
+        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
+        return value;
+      }
+    }
+
+    void operator++(){
+      ++c;
+      get = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 11 "test/yukicoder/875/main.test.cpp"
 
 using Mon = WithMinIndex<MinMonoid<int>>;
 
 int main(){
-  int N, Q; scanf("%d %d", &N, &Q);
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
+  int N, Q; std::cin >> N >> Q;
 
   SegmentTree<Mon> seg(N);
 
   std::vector<Mon::value_type> a(N);
   for(int i = 0; i < N; ++i){
-    int x; scanf("%d", &x);
+    int x; std::cin >> x;
     a[i] = std::make_pair(x, i);
   }
 
   seg.init_with_vector(a);
 
-  for(int i = 0; i < Q; ++i){
-    int type; scanf("%d", &type);
-    
+  for(auto [type, l, r] : input_tuples<int, int, int>(Q)){
     switch(type){
     case 1: {
-      int l, r; scanf("%d %d", &l, &r);
       --l, --r;
 
       auto x = seg[l].first;
@@ -240,10 +296,9 @@ int main(){
       break;
     }
     case 2: {
-      int l, r; scanf("%d %d", &l, &r);
       --l, --r;
 
-      printf("%lld\n", seg.get(l, r+1).second + 1);
+      std::cout << seg.get(l, r+1).second + 1 << "\n";
 
       break;
     }

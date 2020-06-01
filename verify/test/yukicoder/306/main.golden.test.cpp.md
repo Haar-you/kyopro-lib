@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/306/main.golden.test.cpp
+# :x: test/yukicoder/306/main.golden.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#94d4e5c879e40488003ae32a119b6352">test/yukicoder/306</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/306/main.golden.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/306">https://yukicoder.me/problems/no/306</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Search/golden_section_search_downwards.cpp.html">下に凸の黄金分割探索</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/Search/golden_section_search_downwards.cpp.html">Golden section search (Convex downwards)</a>
 
 
 ## Code
@@ -89,7 +89,7 @@ int main(){
 #line 4 "Mylib/Algorithm/Search/golden_section_search_downwards.cpp"
 
 /**
- * @title 下に凸の黄金分割探索
+ * @title Golden section search (Convex downwards)
  * @docs golden_section_search_downwards.md
  */
 template <typename T = double, typename Func = std::function<T(T)>>

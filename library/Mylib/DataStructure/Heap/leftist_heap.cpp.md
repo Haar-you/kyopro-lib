@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: LeftistHeap
+# :heavy_check_mark: Leftist heap
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f151d59e79c7ff7f731ff52cf9b782e4">Mylib/DataStructure/Heap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Heap/leftist_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-14 01:02:10+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -51,7 +51,7 @@ layout: default
 #include <utility>
 
 /**
- * @title LeftistHeap
+ * @title Leftist heap
  * @docs leftist_heap.md
  */
 template <typename T, class Compare = std::less<T>>
@@ -105,7 +105,7 @@ public:
 #include <utility>
 
 /**
- * @title LeftistHeap
+ * @title Leftist heap
  * @docs leftist_heap.md
  */
 template <typename T, class Compare = std::less<T>>

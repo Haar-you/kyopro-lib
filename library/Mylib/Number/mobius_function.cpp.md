@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Möbius関数
+# :warning: Möbius function
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/mobius_function.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-06-02 05:58:35+09:00
 
 
 
@@ -53,7 +53,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="Prime/eratosthenes_sieve.cpp.html">Eratosthenesの篩</a>
+* :x: <a href="Prime/eratosthenes_sieve.cpp.html">Sieve of Eratosthenes</a>
 
 
 ## Code
@@ -66,7 +66,7 @@ layout: default
 #include "Mylib/Number/Prime/eratosthenes_sieve.cpp"
 
 /**
- * @title Möbius関数
+ * @title Möbius function
  * @docs mobius_function.md
  */
 std::vector<int> mobius_function(int n){
@@ -102,7 +102,7 @@ std::vector<int> mobius_function(int n){
 #include <bitset>
 
 /**
- * @title Eratosthenesの篩
+ * @title Sieve of Eratosthenes
  * @docs eratosthenes_sieve.md
  */
 template <int MAX>
@@ -127,7 +127,7 @@ template <int MAX> std::bitset<MAX+1> EratosthenesSieve<MAX>::is_prime;
 #line 4 "Mylib/Number/mobius_function.cpp"
 
 /**
- * @title Möbius関数
+ * @title Möbius function
  * @docs mobius_function.md
  */
 std::vector<int> mobius_function(int n){
