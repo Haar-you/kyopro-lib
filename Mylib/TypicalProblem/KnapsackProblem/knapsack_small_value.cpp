@@ -5,7 +5,7 @@
 #include <climits>
 
 /**
- * @title 価値の制約が小さい0-1ナップサック問題
+ * @title 0-1 Knapsack problem (Small value)
  * @docs knapsack_small_value.md
  */
 template <typename Weight, typename Value>

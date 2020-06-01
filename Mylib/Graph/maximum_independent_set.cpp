@@ -3,7 +3,7 @@
 #include <cassert>
 
 /**
- * @title 最大独立集合
+ * @title Maximum independent set
  * @docs maximum_independent_set.md
  */
 int64_t maximum_independent_set(const std::vector<std::vector<int>> &g){

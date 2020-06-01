@@ -5,7 +5,7 @@
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
 /**
- * @title Kruskal法
+ * @title Kruskal algorithm
  * @docs kruskal.md
  */
 template <typename T>

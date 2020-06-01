@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title Manacher法
+ * @title Manacher algorithm
  * @docs manacher.md
  */
 template <typename Container, typename T = typename Container::value_type>

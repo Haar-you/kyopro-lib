@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title SegmentTree
+ * @title Segment tree
  * @docs segment_tree.md
  */
 template <typename Monoid>

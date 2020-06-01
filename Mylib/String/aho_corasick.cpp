@@ -5,7 +5,7 @@
 #include <queue>
 
 /**
- * @title Aho-Corasick法
+ * @title Aho-Corasick algorithm
  * @docs aho_corasick.md
  */
 class AhoCorasick{

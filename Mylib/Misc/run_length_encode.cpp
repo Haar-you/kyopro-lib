@@ -3,7 +3,7 @@
 #include <utility>
 
 /**
- * @title 連長圧縮
+ * @title run length encoding
  * @docs run_length_encode.md
  */
 template <typename Container, typename T = typename Container::value_type>

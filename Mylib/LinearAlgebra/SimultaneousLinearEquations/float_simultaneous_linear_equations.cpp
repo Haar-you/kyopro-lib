@@ -4,7 +4,7 @@
 #include <utility>
 
 /**
- * @title 連立線形方程式 (浮動小数点数)
+ * @title Simultaneous linear equations (Floating point number)
  * @docs float_simultaneous_linear_equations.md
  */
 namespace float_simultaneous_linear_equations{

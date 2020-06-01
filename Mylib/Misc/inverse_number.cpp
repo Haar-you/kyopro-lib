@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title 転倒数
+ * @title Inverse number
  * @docs inverse_number.md
  */
 namespace inverse_number{

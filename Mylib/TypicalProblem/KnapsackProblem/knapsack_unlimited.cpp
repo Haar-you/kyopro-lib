@@ -3,7 +3,7 @@
 #include <algorithm>
 
 /**
- * @title 個数制限無しナップサック問題
+ * @title Knapsack problem (Without quantity limitations)
  * @docs knapsack_unlimited.md
  */
 template <typename Weight, typename Value>

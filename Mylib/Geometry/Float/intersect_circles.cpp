@@ -3,7 +3,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 円同士の交差
+ * @title Intersection between two circles
  * @docs intersect_circles.md
  */
 namespace intersect_circles{

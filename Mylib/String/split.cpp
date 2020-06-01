@@ -3,7 +3,7 @@
 #include <vector>
 
 /**
- * @title 文字列のsplit関数
+ * @title split
  * @docs split.md
  */
 auto split(const std::string &s, const std::string &delim){

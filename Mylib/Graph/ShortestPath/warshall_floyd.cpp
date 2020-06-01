@@ -4,7 +4,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title Warshall-Floyd法
+ * @title Warshall-Floyd algorithm
  * @docs warshall_floyd.md
  */
 template <typename T>

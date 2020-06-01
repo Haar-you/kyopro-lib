@@ -3,7 +3,7 @@
 #include <utility>
 
 /**
- * @title modint (実行時mod指定)
+ * @title Modint (Runtime mod)
  * @docs runtime_mint.md
  */
 class RuntimeModInt{

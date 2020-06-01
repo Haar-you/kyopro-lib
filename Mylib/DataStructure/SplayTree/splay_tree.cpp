@@ -3,7 +3,7 @@
 #include <tuple>
 
 /**
- * @title スプレー木
+ * @title Splay tree
  * @docs splay_tree.md
  */
 namespace splay_tree{

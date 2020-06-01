@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @title 下位集合を降順に列挙
+ * @title Enumerate subsets (Descending order)
  * @docs for_each_subset_desc.md
  */
 class SubsetDesc{

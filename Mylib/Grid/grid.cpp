@@ -4,7 +4,7 @@
 #include <utility>
 
 /**
- * @title グリッド用テンプレート
+ * @title Grid template
  * @docs grid.md
  */
 struct Point{

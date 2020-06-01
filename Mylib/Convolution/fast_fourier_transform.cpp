@@ -5,7 +5,7 @@
 #include <utility>
 
 /**
- * @title 高速Fourier変換
+ * @title Fast Fourier transform
  * @docs fast_fourier_transform.md
  */
 template <typename T = double, bool INVERSE = false>

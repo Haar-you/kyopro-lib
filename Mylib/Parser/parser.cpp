@@ -4,7 +4,7 @@
 #include <cassert>
 
 /**
- * @title 構文解析
+ * @title Parsing
  * @docs parser.md
  */
 struct Parser{

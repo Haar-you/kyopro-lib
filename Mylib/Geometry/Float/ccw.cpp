@@ -2,7 +2,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title clockwise-counterclockwise判定
+ * @title Check clockwise-counterclockwise
  * @docs ccw.md
  */
 namespace ccw{

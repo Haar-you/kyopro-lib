@@ -5,7 +5,7 @@
 #include "Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp"
 
 /**
- * @title 最小包含円
+ * @title Minimum covering circle
  * @docs minimum_covering_circle.md
  */
 template <typename T>

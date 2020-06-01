@@ -2,7 +2,7 @@
 #include <utility>
 
 /**
- * @title 不動点コンビネータ
+ * @title Fixed point combinator
  * @docs fix_point.md
  */
 template <typename F>

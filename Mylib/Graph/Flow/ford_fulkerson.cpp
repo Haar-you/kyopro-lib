@@ -3,7 +3,7 @@
 #include <algorithm>
 
 /**
- * @title Ford-Fulkerson法
+ * @title Ford-Fulkerson algorithm
  * @docs ford_fulkerson.md
  */
 template <typename T> class FordFulkerson{

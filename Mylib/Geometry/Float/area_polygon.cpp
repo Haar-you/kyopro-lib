@@ -2,7 +2,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 多角形の面積
+ * @title Area of polygon
  * @docs area_polygon.md
  */
 template <typename T>

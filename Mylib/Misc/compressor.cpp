@@ -3,7 +3,7 @@
 #include <algorithm>
 
 /**
- * @title 座標圧縮
+ * @title Compressor
  * @docs compressor.md
  */
 template <typename T>

@@ -3,7 +3,7 @@
 #include <vector>
 
 /**
- * @title Atkinの篩
+ * @title Sieve of Atkin
  * @docs atkin_sieve.md
  */
 template <int MAX>

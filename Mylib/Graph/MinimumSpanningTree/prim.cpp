@@ -4,7 +4,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title Prim法
+ * @title Prim algorithm
  * @docs prim.md
  */
 template <typename T>

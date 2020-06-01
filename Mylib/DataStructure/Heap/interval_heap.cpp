@@ -4,7 +4,7 @@
 #include <functional>
 
 /**
- * @title IntervalHeap
+ * @title Interval heap
  * @docs interval_heap.md
  */
 template <typename T, typename Compare = std::less<T>>

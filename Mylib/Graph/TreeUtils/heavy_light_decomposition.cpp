@@ -5,7 +5,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title HL分解
+ * @title Heavy-light decomposition
  * @docs heavy_light_decomposition.md
  */
 template <typename T> class HLDecomposition{

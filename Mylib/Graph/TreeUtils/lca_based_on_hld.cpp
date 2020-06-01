@@ -4,7 +4,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 最小共通祖先 (HLD)
+ * @title Lowest common ancestor (HLD)
  * @docs lca_based_on_hld.md
  */
 template <typename T> class LCA{

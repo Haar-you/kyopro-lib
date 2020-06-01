@@ -3,7 +3,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 全方位木dp
+ * @title Rerooting DP
  * @docs rerooting.md
  */
 

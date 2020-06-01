@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @title mod累乗
+ * @title Mod power
  * @docs mod_power.md
  */
 int64_t power(int64_t n, int64_t p, int64_t m){

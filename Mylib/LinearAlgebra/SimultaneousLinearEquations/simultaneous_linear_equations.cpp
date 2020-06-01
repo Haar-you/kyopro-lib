@@ -4,7 +4,7 @@
 #include <utility>
 
 /**
- * @title 連立線形方程式
+ * @title Simultaneous linear equations
  * @docs simultaneous_linear_equations.md
  */
 namespace simulaneous_linear_equations{

@@ -3,7 +3,7 @@
 #include <cmath>
 
 /**
- * @title 並列二分探索
+ * @title Parallel binary search
  * @docs parallel_binary_search.md
  */
 template <typename F>

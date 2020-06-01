@@ -3,7 +3,7 @@
 #include <cassert>
 
 /**
- * @title 添字BitXor畳み込み
+ * @title Convolution (Index bitwise XOR)
  * @docs convolution_xor.md
  */
 template <typename T>

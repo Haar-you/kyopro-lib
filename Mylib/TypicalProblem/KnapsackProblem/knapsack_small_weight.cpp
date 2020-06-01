@@ -3,7 +3,7 @@
 #include <algorithm>
 
 /**
- * @title 重さの制約が小さい0-1ナップサック問題
+ * @title 0-1 Knapsack problem (Small weight)
  * @docs knapsack_small_weight.md
  */
 template <typename Weight, typename Value>

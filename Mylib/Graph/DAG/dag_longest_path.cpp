@@ -3,7 +3,7 @@
 #include <algorithm>
 
 /**
- * @title DAGの最長パス
+ * @title Longest path on DAG
  * @docs dag_longest_path.md
  */
 int dag_longest_path(const std::vector<std::vector<int>> &g){

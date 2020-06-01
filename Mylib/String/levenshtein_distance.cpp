@@ -3,7 +3,7 @@
 #include <algorithm>
 
 /**
- * @title Levenshtein距離 / 編集距離
+ * @title Levenshtein distance / Edit distance
  * @docs levenshtein_distance.md
  */
 template <typename Container, typename T = typename Container::value_type>

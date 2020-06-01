@@ -5,7 +5,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 森の分解
+ * @title Decompose forest
  * @docs forest.md
  */
 template <typename T>

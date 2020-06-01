@@ -3,7 +3,7 @@
 #include <vector>
 
 /**
- * @title 永続配列
+ * @title Persistent array
  * @docs persistent_array.md
  */
 template <typename T>

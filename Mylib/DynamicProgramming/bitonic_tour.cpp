@@ -5,7 +5,7 @@
 #include <cmath>
 
 /**
- * @title BitonicTour
+ * @title Bitonic tour
  * @docs bitonic_tour.md
  */
 template <typename T>

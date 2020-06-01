@@ -2,7 +2,7 @@
 #include <utility>
 
 /**
- * @title 最大公約数・最小公倍数
+ * @title Greatest common divisor / Least common multiple
  * @docs gcd_lcm.md
  */
 int64_t gcd(int64_t a, int64_t b){

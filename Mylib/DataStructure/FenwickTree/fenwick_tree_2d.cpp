@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title FenwickTree (2D)
+ * @title Fenwick tree (2D)
  * @docs fenwick_tree_2d.md
  */
 template <typename AbelianGroup>

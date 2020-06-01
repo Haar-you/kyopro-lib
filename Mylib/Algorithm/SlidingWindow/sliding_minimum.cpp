@@ -3,7 +3,7 @@
 #include <deque>
 
 /**
- * @title スライド最小値
+ * @title Sliding window minimum
  * @docs sliding_minimum.md
  */
 template <typename T>

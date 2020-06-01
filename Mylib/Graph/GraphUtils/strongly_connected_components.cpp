@@ -4,7 +4,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 強連結成分分解
+ * @title Strongly connected components
  * @docs strongly_connected_components.md
  */
 template <typename T>

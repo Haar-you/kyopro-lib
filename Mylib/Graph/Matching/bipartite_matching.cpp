@@ -5,7 +5,7 @@
 #include <cassert>
 
 /**
- * @title 最大二部マッチング
+ * @title Maximum bipartite matching
  * @docs bipartite_matching.md
  */
 template <typename MaxFlow>

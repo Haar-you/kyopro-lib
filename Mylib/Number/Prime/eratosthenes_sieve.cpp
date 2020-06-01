@@ -2,7 +2,7 @@
 #include <bitset>
 
 /**
- * @title Eratosthenesの篩
+ * @title Sieve of Eratosthenes
  * @docs eratosthenes_sieve.md
  */
 template <int MAX>

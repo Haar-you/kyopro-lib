@@ -2,7 +2,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 三角形の外接円
+ * @title Circumscribed circle of a triangle
  * @docs circumscribed_circle_of_triangle.md
  */
 template <typename T>

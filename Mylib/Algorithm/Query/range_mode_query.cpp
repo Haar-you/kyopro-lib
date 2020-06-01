@@ -4,7 +4,7 @@
 #include <utility>
 
 /**
- * @title 区間最頻値クエリ
+ * @title Range mode query
  * @docs range_mode_query.md
  */
 template <typename T>

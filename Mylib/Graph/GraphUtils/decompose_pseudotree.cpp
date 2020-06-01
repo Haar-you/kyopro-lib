@@ -4,7 +4,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title Pseudotreeの分解
+ * @title Decompose pseudotree
  * @docs decompose_pseudotree.md
  */
 template <typename T>

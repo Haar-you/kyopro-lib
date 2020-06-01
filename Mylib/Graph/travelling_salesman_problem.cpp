@@ -5,7 +5,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 巡回セールスマン問題
+ * @title Travelling salesman problem
  * @docs travelling_salesman_problem.md
  */
 template <typename Cost>

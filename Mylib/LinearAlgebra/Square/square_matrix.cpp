@@ -3,7 +3,7 @@
 #include <utility>
 
 /**
- * @title 正方行列
+ * @title Square matrix
  * @docs square_matrix.md
  */
 template <typename T, class Tag> struct SquareMatrix{

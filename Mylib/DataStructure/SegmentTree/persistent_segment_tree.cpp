@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title 永続SegmentTree
+ * @title Persistent segment tree
  * @docs persistent_segment_tree.md
  */
 template <typename Monoid>

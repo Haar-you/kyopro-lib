@@ -2,7 +2,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 円の接線
+ * @title Tangent of circle
  * @docs tangent_of_circle.md
  */
 template <typename T>

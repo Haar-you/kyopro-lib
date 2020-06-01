@@ -2,7 +2,7 @@
 #include "Mylib/Combinatorics/combinatorics.cpp"
 
 /**
- * @title 第2種Stirling数
+ * @title Stirling numbers of second kind
  * @docs stirling_number.md
  */
 template <typename T>

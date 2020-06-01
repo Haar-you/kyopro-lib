@@ -3,7 +3,7 @@
 #include "Mylib/Combinatorics/combinatorics.cpp"
 
 /**
- * @title Bernoulli数
+ * @title Bernoulli number
  * @docs bernoulli_number.md
  */
 template <typename T>

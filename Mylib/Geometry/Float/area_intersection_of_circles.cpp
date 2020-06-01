@@ -3,7 +3,7 @@
 #include "Mylib/Geometry/Float/intersect_circles.cpp"
 
 /**
- * @title 2円の共通部分の面積
+ * @title Area of intersection between two circles
  * @docs area_intersection_of_circles.md
  */
 template <typename T>

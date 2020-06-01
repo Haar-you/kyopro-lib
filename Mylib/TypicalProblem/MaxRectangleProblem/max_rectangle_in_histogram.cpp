@@ -4,7 +4,7 @@
 #include <utility>
 
 /**
- * @title ヒストグラム中の最大面積長方形の面積
+ * @title Largest rectangle in histogram
  * @docs max_rectangle_in_histogram.md
  */
 template <typename T>

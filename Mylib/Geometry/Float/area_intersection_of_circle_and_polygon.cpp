@@ -4,7 +4,7 @@
 #include "Mylib/Geometry/Float/intersect_circle_segment.cpp"
 
 /**
- * @title 円と多角形の共通部分の面積
+ * @title Area of intersection between a circle and a polygon
  * @docs area_intersection_of_circle_and_polygon.md
  */
 template <typename T>

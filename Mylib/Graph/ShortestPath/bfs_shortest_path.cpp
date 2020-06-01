@@ -5,7 +5,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title BFS最短路
+ * @title BFS shortest path
  * @docs bfs_shortest_path.md
  */
 template <typename T>

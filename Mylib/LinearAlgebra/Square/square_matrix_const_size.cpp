@@ -4,7 +4,7 @@
 #include <utility>
 
 /**
- * @title 正方行列 (コンパイル時固定サイズ)
+ * @title Square matrix (Const size)
  * @docs square_matrix_const_size.md
  */
 template <typename T, int N> struct SquareMatrixConst{

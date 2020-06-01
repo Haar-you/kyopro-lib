@@ -6,7 +6,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 木の直径
+ * @title Tree diameter
  * @docs tree_diameter.md
  */
 template <typename T>

@@ -5,7 +5,7 @@
 #include <algorithm>
 
 /**
- * @title 回文木
+ * @title Palindromic tree
  * @docs palindromic_tree
  */
 class PalindromicTree{

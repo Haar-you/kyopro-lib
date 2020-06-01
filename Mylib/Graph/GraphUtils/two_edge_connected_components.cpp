@@ -4,7 +4,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 二重辺連結成分分解
+ * @title Two edge connected components
  * @docs two_edge_connected_components.md
  */
 template <typename T>

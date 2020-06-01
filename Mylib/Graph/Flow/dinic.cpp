@@ -5,7 +5,7 @@
 #include <algorithm>
 
 /**
- * @title Dinic法
+ * @title Dinic algorithm
  * @docs dinic.md
  */
 template <typename T> class Dinic{

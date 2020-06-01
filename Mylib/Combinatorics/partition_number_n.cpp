@@ -3,7 +3,7 @@
 #include <vector>
 
 /**
- * @title 分割数の列挙
+ * @title Partition number (Enumerate $P(n, n)$)
  * @docs partition_number_n.md
  */
 template <typename T>

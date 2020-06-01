@@ -7,7 +7,7 @@
 #include "Mylib/Number/Mod/mod_inv.cpp"
 
 /**
- * @title mod対数
+ * @title Mod logarithm
  * @docs mod_log.md
  */
 std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){

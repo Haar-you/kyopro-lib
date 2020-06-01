@@ -3,7 +3,7 @@
 #include <tuple>
 
 /**
- * @title 重み付き最大二部マッチング
+ * @title Weighted maximum bipartite matching
  * @docs weighted_bipartite_matching.md
  */
 template <typename T, typename MinCostFlow, bool MIN_MATCHING = false>

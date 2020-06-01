@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @title 試し割り素数判定
+ * @title Primality test (Trial division)
  * @docs is_prime.md
  */
 bool is_prime(int n){

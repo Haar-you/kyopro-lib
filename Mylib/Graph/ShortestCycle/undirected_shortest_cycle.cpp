@@ -5,7 +5,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 無向グラフの最小閉路
+ * @title Undirected shortest cycle
  * @docs undirected_shortest_cycle.md
  */
 template <typename T>

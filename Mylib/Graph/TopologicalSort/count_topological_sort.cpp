@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title トポロジカルソートの数え上げ
+ * @title Count topological sort
  * @docs count_topological_sort.md
  */
 int64_t count_topological_sort(const std::vector<int> &g){

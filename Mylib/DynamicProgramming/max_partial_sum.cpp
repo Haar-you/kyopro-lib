@@ -3,7 +3,7 @@
 #include <algorithm>
 
 /**
- * @title 連続部分和の最大値
+ * @title Maximum subarray problem
  * @docs max_partial_sum.md
  */
 template <typename T>

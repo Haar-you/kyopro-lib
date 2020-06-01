@@ -3,7 +3,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 重心分解
+ * @title Centroid decomposition
  * @docs centroid_decomposition.md
  */
 template <typename T>

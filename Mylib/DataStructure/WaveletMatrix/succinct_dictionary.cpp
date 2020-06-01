@@ -3,7 +3,7 @@
 #include <optional>
 
 /**
- * @title 簡潔辞書
+ * @title Succinct dictionary
  * @docs succinct_dictionary.md
  */
 struct SuccinctDict{

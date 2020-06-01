@@ -6,7 +6,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 二部グラフ判定
+ * @title Check bipartite graph
  * @docs check_bipartite_graph.md
  */
 template <typename T>

@@ -7,7 +7,7 @@
 #include <tuple>
 
 /**
- * @title 最小費用流
+ * @title Minimum cost flow
  * @docs minimum_cost_flow.md
  */
 template <typename T, typename U> class MinimumCostFlow{

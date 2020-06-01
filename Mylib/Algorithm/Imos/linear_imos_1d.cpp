@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title 線形加算一次元Imos法
+ * @title 1D Imos algorithm (Linear addition)
  * @docs linear_imos_1d.md
  */
 template <typename T> struct LinearImos1D{

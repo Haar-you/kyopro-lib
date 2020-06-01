@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title Montmort数
+ * @title Montmort number
  * @docs montmort_number.md
  */
 template <typename T>

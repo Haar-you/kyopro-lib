@@ -5,7 +5,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title Bellman-Ford法
+ * @title Bellman-Ford algorithm
  * @docs bellman_ford.md
  */
 template <typename T>

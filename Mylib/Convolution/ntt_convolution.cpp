@@ -6,7 +6,7 @@
 #include "Mylib/Number/Mint/mint.cpp"
 
 /**
- * @title NumberTheoreticTransform
+ * @title Number theoretic transform
  * @docs ntt_convolution.md
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>

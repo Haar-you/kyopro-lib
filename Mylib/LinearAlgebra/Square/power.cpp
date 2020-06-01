@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @title 行列累乗
+ * @title Power of a matrix
  * @docs power.md
  */
 template <typename M, typename T = typename M::value_type>

@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @title Eulerのトーシェント関数
+ * @title Euler's totient function
  * @docs euler_phi_function.md
  */
 int64_t totient(int64_t n){

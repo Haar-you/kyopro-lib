@@ -4,7 +4,7 @@
 #include <cassert>
 
 /**
- * @title DisjointSparseTable
+ * @title Disjoint sparse table
  * @docs disjoint_sparse_table.md
  */
 template <typename Semigroup>

@@ -2,7 +2,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 根付き木
+ * @title Rooting
  * @docs rooting.md
  */
 template <typename T>

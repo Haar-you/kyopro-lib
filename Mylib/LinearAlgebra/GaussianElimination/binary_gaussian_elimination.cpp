@@ -4,7 +4,7 @@
 #include <utility>
 
 /**
- * @title 掃き出し法 (Mod2体)
+ * @title Gaussian elimination (Mod2)
  * @docs binary_gaussian_elimination.md
  */
 template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &m){

@@ -4,7 +4,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 凸包
+ * @title Convex hull
  * @docs convex_hull.md
  */
 template <typename T> 

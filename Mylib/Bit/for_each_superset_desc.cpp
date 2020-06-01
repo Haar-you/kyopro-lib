@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @title 上位集合を降順に列挙
+ * @title Enumerate supersets (Descending order)
  * @docs for_each_superset_desc.md
  */
 class SupersetDesc{

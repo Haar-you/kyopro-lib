@@ -4,7 +4,7 @@
 #include <limits>
 
 /**
- * @title StarrySkyTree (Max)
+ * @title Starry-sky tree (Max)
  * @docs starry_sky_tree_max.md
  */
 template <typename T>

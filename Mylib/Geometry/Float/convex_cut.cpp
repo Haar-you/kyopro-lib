@@ -4,7 +4,7 @@
 #include "Mylib/Geometry/Float/ccw.cpp"
 
 /**
- * @title 凸多角形の切断
+ * @title Convex cut
  * @docs convex_cut.md
  */
 template <typename T>

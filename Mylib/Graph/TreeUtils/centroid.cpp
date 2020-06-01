@@ -3,7 +3,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 重心列挙
+ * @title Enumerate centroids
  * @docs centroid.md
  */
 template <typename T>

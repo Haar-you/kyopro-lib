@@ -3,7 +3,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 凸多角形の直径
+ * @title Convex diameter
  * @docs convex_diameter.md
  */
 template <typename T>

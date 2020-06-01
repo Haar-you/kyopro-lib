@@ -3,7 +3,7 @@
 #include <tuple>
 
 /**
- * @title 接尾辞配列
+ * @title Suffix array
  * @docs suffix_array.md
  */
 template <typename T> class SuffixArray{

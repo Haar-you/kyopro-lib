@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @title サイズKの集合を列挙
+ * @title Enumerate sets of size k
  * @docs for_subsets_of_size_k.md
  */
 class KSubsets{

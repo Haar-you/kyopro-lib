@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title Roll-back可能Vector
+ * @title Roll-backable vector
  * @docs rollbackable_vector.md
  */
 template <typename T>

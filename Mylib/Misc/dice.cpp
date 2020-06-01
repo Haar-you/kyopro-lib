@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @title サイコロ
+ * @title Dice
  * @docs dice.md
  */
 struct Dice{

@@ -2,7 +2,7 @@
 #include <utility>
 
 /**
- * @title mod逆数
+ * @title Mod inverse
  * @docs mod_inv.md
  */
 int64_t mod_inv(int64_t a, int64_t m){

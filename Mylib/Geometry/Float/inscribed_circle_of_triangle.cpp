@@ -2,7 +2,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 三角形の内接円
+ * @title Inscribed circle of a triangle
  * @docs inscribed_circle_of_triangle.md
  */
 template <typename T>

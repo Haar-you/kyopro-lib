@@ -3,7 +3,7 @@
 #include <utility>
 
 /**
- * @title 掃き出し法
+ * @title Gaussian elimination
  * @docs gaussian_elimination.md
  */
 template <typename T> int gaussian_elimination(std::vector<std::vector<T>> &a){

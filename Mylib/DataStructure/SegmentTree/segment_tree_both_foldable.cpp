@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title SegmentTree (双方向Foldable)
+ * @title Segment tree (Both foldable)
  * @docs segment_tree_both_foldable.md
  */
 template <typename Monoid>

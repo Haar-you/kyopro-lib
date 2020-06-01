@@ -3,7 +3,7 @@
 #include "Mylib/Number/Mod/mod_inv.cpp"
 
 /**
- * @title Garner法
+ * @title Garner algorithm
  * @docs garner.md
  */
 int64_t garner_algorithm(std::vector<int64_t> r, std::vector<int64_t> m, const int64_t mod){

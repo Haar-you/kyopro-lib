@@ -7,7 +7,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 最近点対
+ * @title Closest pair
  * @docs closest_pair.md
  */
 namespace closest_pair{

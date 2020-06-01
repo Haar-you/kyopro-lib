@@ -3,7 +3,7 @@
 #include "Mylib/Geometry/Float/ccw.cpp"
 
 /**
- * @title 点・多角形の包含関係
+ * @title Check if a point is in a polygon
  * @docs is_point_in_polygon.md
  */
 namespace point_in_polygon{

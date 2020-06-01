@@ -4,7 +4,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 橋列挙
+ * @title Bridges
  * @docs bridges.md
  */
 template <typename T>

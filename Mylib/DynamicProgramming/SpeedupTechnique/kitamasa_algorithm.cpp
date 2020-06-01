@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title Kitamasa法
+ * @title Kitamasa algorithm
  * @docs kitamasa_algorithm.md
  */
 template <typename T> struct KitamasaAlgorithm{

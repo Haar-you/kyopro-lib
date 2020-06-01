@@ -5,7 +5,7 @@
 #include "Mylib/Grid/grid.cpp"
 
 /**
- * @title グリッド上BFS
+ * @title BFS on a grid
  * @docs grid_bfs.md
  */
 template <typename Directions, typename Checker>

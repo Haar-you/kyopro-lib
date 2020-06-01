@@ -7,7 +7,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title Dijkstra法
+ * @title Dijkstra algorithm
  * @docs dijkstra.md
  */
 template <typename T>

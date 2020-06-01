@@ -3,7 +3,7 @@
 #include <random>
 
 /**
- * @title RollingHash (2D)
+ * @title Rolling hash (2D)
  * @docs rolling_hash_2d.md
  */
 class RollingHash2D{

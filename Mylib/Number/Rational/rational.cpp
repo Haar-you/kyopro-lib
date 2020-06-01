@@ -3,7 +3,7 @@
 #include <iostream>
 
 /**
- * @title 有理数クラス
+ * @title Rational number
  * @docs rational.md
  */
 class Rational{

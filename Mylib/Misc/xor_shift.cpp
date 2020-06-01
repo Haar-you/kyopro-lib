@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @title XorShift
+ * @title Xorshift
  * @docs xor_shift.md
  */
 struct XorShift{

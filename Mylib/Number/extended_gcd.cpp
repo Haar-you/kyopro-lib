@@ -2,7 +2,7 @@
 #include <tuple>
 
 /**
- * @title 拡張Euclidの互除法
+ * @title Extended euclidean algorithm
  * @docs extended_gcd.md
  */
 std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){

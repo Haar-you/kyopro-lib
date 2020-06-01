@@ -3,7 +3,7 @@
 #include <vector>
 
 /**
- * @title 二次方程式の実数解
+ * @title Real solutions of quadratic equation
  * @docs quadratic_equation.md
  */
 std::vector<double> quadratic_equation(double a, double b, double c){

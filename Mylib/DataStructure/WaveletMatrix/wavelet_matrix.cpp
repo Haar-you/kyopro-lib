@@ -8,7 +8,7 @@
 #include "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
 
 /**
- * @title WaveletMatrix
+ * @title Wavelet matrix
  * @docs wavelet_matrix.md
  */
 template <typename T, int B>

@@ -2,7 +2,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 直線と点間の距離
+ * @title Distance between a line and a point
  * @docs distance_line_point.md
  */
 template <typename T>

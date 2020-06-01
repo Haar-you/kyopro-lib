@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title 部分和数え上げ問題
+ * @title Subset sum problem (Count)
  * @docs subset_sum_count.md
  */
 template <typename T>

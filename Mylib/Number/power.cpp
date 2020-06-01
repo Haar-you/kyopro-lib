@@ -2,7 +2,7 @@
 #include <functional>
 
 /**
- * @title 二分累乗法
+ * @title Binary exponentiation
  * @docs power.md
  */
 template <typename T>

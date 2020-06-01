@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @title 約数個数
+ * @title Count divisors
  * @docs count_divisor.md
  */
 int count_divisor(std::int64_t n){

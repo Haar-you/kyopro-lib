@@ -2,7 +2,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 射影
+ * @title Projection
  * @docs projection.md
  */
 template <typename T>

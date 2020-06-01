@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title 部分和判定問題
+ * @title Subset sum problem
  * @docs subset_sum.md
  */
 auto subset_sum(int N, int K, const std::vector<int> &a){

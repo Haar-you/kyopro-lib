@@ -5,7 +5,7 @@
 #include "Mylib/Combinatorics/stirling_number.cpp"
 
 /**
- * @title Bell数
+ * @title Bell number
  * @docs bell_number.md
  */
 template <typename T>

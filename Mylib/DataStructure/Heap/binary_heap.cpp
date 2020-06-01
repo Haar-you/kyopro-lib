@@ -4,7 +4,7 @@
 #include <utility>
 
 /**
- * @title BinaryHeap
+ * @title Binary heap
  * @docs binary_heap.md
  */
 template <typename T, typename Compare = std::less<T>>

@@ -4,7 +4,7 @@
 #include <functional>
 
 /**
- * @title ConvexHullTrick
+ * @title Convex hull trick
  * @docs convex_hull_trick.md
  */
 template <typename T, typename Comparator = std::greater<T>>

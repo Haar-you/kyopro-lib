@@ -3,7 +3,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 頂点EulerTour
+ * @title Euler tour (Vertex)
  * @docs euler_tour_vertex.md
  */
 template <typename T> class EulerTourVertex{

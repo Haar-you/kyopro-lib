@@ -3,7 +3,7 @@
 #include "Mylib/DataStructure/Treap/treap.cpp"
 
 /**
- * @title Treap (OrderedSet型)
+ * @title Treap (Ordered set)
  * @docs ordered_treap.md
  */
 namespace treap{

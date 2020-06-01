@@ -4,7 +4,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 最小共通祖先 (ダブリング)
+ * @title Lowest common ancestor (Doubling)
  * @docs lca_based_on_doubling.md
  */
 template <typename T> class LCA{

@@ -4,7 +4,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title グリッドをグラフに変換する
+ * @title Convert grid to graph
  * @docs grid_to_graph.md
  */
 template <typename T, typename Directions, typename Index, typename Checker, typename Generator>

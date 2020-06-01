@@ -5,7 +5,7 @@
 #include <limits>
 
 /*
- * @title ProjectSelectionProblem
+ * @title Project selection problem
  * @docs project_selection_problem.md
  */
 template <typename T, typename Flow>

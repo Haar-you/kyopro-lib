@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @title ビット逆転
+ * @title Bit reverse
  * @docs bit_reverse.md
  */
 int32_t bit_reverse(int32_t a){

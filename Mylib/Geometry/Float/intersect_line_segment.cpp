@@ -3,7 +3,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 直線と線分の交差
+ * @title Intersection between a line and a segment
  * @docs intersect_line_segment.md
  */
 namespace intersect_line_segment{

@@ -5,7 +5,7 @@
 #include <bitset>
 
 /**
- * @title 連立線形方程式 (Mod2体)
+ * @title Simultaneous linear equations (Mod2)
  * @docs binary_simultaneous_linear_equations.md
  */
 namespace binary_simultaneous_linear_equations{

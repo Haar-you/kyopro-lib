@@ -3,7 +3,7 @@
 #include "Mylib/DataStructure/Array/persistent_array.cpp"
 
 /**
- * @title 永続UnionFind
+ * @title Persistent union-find
  * @docs persistent_unionfind.md
  */
 class PersistentUnionFind{

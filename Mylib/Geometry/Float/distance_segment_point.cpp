@@ -2,7 +2,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 線分・点間の距離
+ * @title Distance between a segment and a point
  * @docs distance_segment_point.md
  */
 template <typename T>

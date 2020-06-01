@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title 一次元Imos法
+ * @title 1D Imos algorithm
  * @docs imos_1d.md
  */
 template <typename T> struct Imos1D{

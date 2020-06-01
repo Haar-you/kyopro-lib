@@ -6,7 +6,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 有向グラフの最小閉路
+ * @title Directed shortest cycle
  * @docs directed_shortest_cycle.md
  */
 template <typename T>

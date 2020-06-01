@@ -3,7 +3,7 @@
 #include <functional>
 
 /**
- * @title 上位集合に対する高速Möbius変換
+ * @title Fast Möbius transform (Superset)
  * @docs fast_mobius_transform_superset.md
  */
 template <typename T, typename Func = std::minus<T>>

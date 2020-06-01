@@ -5,7 +5,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title トポロジカルソート
+ * @title Topological sort
  * @docs topological_sort.md
  */
 template <typename T>

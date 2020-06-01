@@ -4,7 +4,7 @@
 #include "Mylib/Convolution/fast_mobius_transform_superset.cpp"
 
 /**
- * @title 添字BitAnd畳み込み
+ * @title Convolution (Index bitwise AND)
  * @docs convolution_and.md
  */
 template <typename T>

@@ -4,7 +4,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 木の距離
+ * @title Tree distance
  * @docs tree_distance.md
  */
 template <typename T>

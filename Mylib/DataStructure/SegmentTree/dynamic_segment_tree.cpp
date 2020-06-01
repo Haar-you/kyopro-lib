@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @title 動的SegmentTree
+ * @title Dynamic segment tree
  * @docs dynamic_segment_tree.md
  */
 template <typename Monoid>

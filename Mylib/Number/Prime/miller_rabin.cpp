@@ -2,7 +2,7 @@
 #include "Mylib/Misc/int128.cpp"
 
 /**
- * @title Miller-Rabin素数判定法
+ * @title Primality test (Miller-Rabin algorithm)
  * @docs miller_rabin.md
  */
 class MillerRabin{

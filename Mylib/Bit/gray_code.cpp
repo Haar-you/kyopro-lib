@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @title Grayコード
+ * @title Gray code
  * @docs gray_code.md
  */
 template <typename Func>

@@ -3,7 +3,7 @@
 #include <numeric>
 
 /**
- * @title 重み付きUnionFind
+ * @title Weighted union-find
  * @docs weighted_unionfind.md
  */
 

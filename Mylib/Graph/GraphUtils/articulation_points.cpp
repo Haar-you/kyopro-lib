@@ -4,7 +4,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title 間接点列挙
+ * @title Articulation points
  * @docs articulation_points.md
  */
 template <typename T> std::vector<int> articulation_points(const Graph<T> &graph){

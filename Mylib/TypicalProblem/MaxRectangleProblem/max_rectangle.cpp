@@ -4,7 +4,7 @@
 #include "Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle_in_histogram.cpp"
 
 /**
- * @title 最大面積長方形の面積
+ * @title Largest rectangle
  * @docs max_rectangle.md
  */
 int max_rectangle(const std::vector<std::vector<int>> &d){

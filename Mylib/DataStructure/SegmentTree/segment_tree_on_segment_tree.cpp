@@ -5,7 +5,7 @@
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
 /**
- * @title SegmentTree (SegmentTreeを乗せる)
+ * @title Segment tree (On segment tree)
  * @docs segment_tree_on_segment_tree.md
  */
 template <typename Monoid>

@@ -6,7 +6,7 @@
 #include <utility>
 
 /**
- * @title 区間スケジューリング問題
+ * @title Interval scheduling problem
  * @docs interval_scheduling.md
  */
 template <typename T>

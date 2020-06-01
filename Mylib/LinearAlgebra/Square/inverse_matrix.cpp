@@ -2,7 +2,7 @@
 #include <utility>
 
 /**
- * @title 逆行列
+ * @title Inverse matrix
  * @docs inverse_matrix.md
  */
 template <typename M, typename T = typename M::value_type>

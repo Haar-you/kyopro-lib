@@ -5,7 +5,7 @@
 #include "Mylib/Graph/TreeUtils/tree_distance.cpp"
 
 /**
- * @title 木の高さ
+ * @title Tree height
  * @docs tree_height.md
  */
 template <typename T>

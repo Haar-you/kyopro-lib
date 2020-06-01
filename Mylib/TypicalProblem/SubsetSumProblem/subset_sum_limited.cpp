@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title 個数制限付き部分和問題
+ * @title Subset sum problem (With quantity limitations)
  * @docs subset_sum_limited.md
  */
 auto subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vector<int> &m){

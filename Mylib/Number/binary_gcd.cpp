@@ -3,7 +3,7 @@
 #include <cmath>
 
 /**
- * @title BinaryGCD
+ * @title Binary GCD
  * @docs binary_gcd.md
  */
 int64_t binary_gcd(int64_t a, int64_t b){

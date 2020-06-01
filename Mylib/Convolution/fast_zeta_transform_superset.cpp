@@ -3,7 +3,7 @@
 #include <functional>
 
 /**
- * @title 上位集合に対する高速Zeta変換
+ * @title Fast Zeta transform (Superset)
  * @docs fast_zeta_transform_superset.md
  */
 template <typename T, typename Func = std::plus<T>>

@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @title 永続Stack
+ * @title Persistent stack
  * @docs persistent_stack.md
  */
 template <typename T> struct PersistentStack{

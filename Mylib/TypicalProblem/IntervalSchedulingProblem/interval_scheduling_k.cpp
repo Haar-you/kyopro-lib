@@ -7,7 +7,7 @@
 #include <numeric>
 
 /**
- * @title 区間スケジューリング問題 (重複要素をk個まで許容する)
+ * @title Interval scheduling problem (Allow no more than k intervals to overlap)
  * @docs interval_scheduling_k.md
  */
 auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){

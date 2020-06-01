@@ -3,7 +3,7 @@
 #include <utility>
 
 /**
- * @title 素因数分解
+ * @title Prime factorization
  * @docs prime_factorize.md
  */
 auto prime_factorize(int64_t n){

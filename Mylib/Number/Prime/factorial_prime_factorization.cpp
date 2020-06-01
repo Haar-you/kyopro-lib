@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @title a!の素因数pの個数
+ * @title Count number of prime factor p of $a!$
  * @docs factorial_prime_factorization.md
  */
 int64_t factorial_prime_factorization(int64_t a, int64_t p){

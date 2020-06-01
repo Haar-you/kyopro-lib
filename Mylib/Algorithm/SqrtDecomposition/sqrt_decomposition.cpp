@@ -2,7 +2,7 @@
 #include <algorithm>
 
 /**
- * @title 平方分割
+ * @title Sqrt decomposition
  * @docs sqrt_decomposition.md
  */
 struct SqrtDecomposition{

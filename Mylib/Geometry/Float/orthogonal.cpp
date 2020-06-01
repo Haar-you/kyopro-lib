@@ -2,7 +2,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 直行判定
+ * @title Orthogonal
  * @docs orthogonal.md
  */
 template <typename T>

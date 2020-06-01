@@ -4,7 +4,7 @@
 #include <cassert>
 
 /**
- * @title 二次元累積和
+ * @title 2D cumulative sum
  * @docs cumulative_sum_2d.md
  */
 template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>

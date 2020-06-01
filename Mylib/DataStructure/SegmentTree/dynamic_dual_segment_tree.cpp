@@ -2,7 +2,7 @@
 #include <unordered_map>
 
 /**
- * @title 動的双対SegmentTree
+ * @title Dynamic dual segment tree
  * @docs dynamic_dual_segment_tree.md
  */
 template <typename Monoid>

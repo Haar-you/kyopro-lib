@@ -4,7 +4,7 @@
 #include <optional>
 
 /**
- * @title SlidingWindowAggregation
+ * @title Sliding window aggregation
  * @docs sliding_window_aggregation.md
  */
 template <typename Semigroup>

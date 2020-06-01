@@ -5,7 +5,7 @@
 #include "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 
 /**
- * @title Chu-Liu/Edmonds
+ * @title Chu-Liu/Edmonds algorithm
  * @docs chu_liu_edmonds.md
  */
 template <typename T>

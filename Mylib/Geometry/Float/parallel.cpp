@@ -2,7 +2,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 平行判定
+ * @title Parallel
  * @docs parallel.md
  */
 template <typename T>

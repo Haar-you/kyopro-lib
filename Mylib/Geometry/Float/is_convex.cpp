@@ -4,7 +4,7 @@
 #include "Mylib/Geometry/Float/ccw.cpp"
 
 /**
- * @title 凸多角形判定
+ * @title Check convex
  * @docs is_convex.md
  */
 template <typename T>

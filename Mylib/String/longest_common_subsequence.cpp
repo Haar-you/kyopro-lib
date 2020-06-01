@@ -3,7 +3,7 @@
 #include <algorithm>
 
 /**
- * @title 最長共通部分列
+ * @title Longest common subsequence
  * @docs longest_common_subsequence.md
  */
 template <typename Container, typename T = typename Container::value_type>

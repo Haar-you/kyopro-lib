@@ -3,7 +3,7 @@
 #include <algorithm>
 
 /**
- * @title 約数列挙
+ * @title Enumerate divisors
  * @docs enumerate_divisor.md
  */
 std::vector<std::int64_t> enumerate_divisor(std::int64_t n){

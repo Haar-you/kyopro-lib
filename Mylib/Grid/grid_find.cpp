@@ -3,7 +3,7 @@
 #include "Mylib/Grid/grid.cpp"
 
 /**
- * @title グリッドで条件を満たす点を列挙する
+ * @title Enumerate points satisfying conditions
  * @docs grid_find.md
  */
 template <typename C, typename T = typename C::value_type>

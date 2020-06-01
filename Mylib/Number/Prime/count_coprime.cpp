@@ -3,7 +3,7 @@
 #include "Mylib/Number/Prime/prime_factorize.cpp"
 
 /**
- * @title 互いに素な自然数の個数
+ * @title Count coprime
  * @docs count_coprime.md
  */
 int64_t count_coprime(int64_t n, int64_t m){

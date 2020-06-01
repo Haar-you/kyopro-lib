@@ -4,7 +4,7 @@
 #include "Mylib/Convolution/fast_mobius_transform_subset.cpp"
 
 /**
- * @title 添字BitOr畳み込み
+ * @title Convolution (Index bitwise OR)
  * @docs convolution_or.md
  */
 template <typename T>

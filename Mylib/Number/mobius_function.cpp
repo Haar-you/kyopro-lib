@@ -3,7 +3,7 @@
 #include "Mylib/Number/Prime/eratosthenes_sieve.cpp"
 
 /**
- * @title Möbius関数
+ * @title Möbius function
  * @docs mobius_function.md
  */
 std::vector<int> mobius_function(int n){

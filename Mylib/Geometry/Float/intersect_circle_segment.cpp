@@ -4,7 +4,7 @@
 #include "Mylib/Geometry/Float/distance_segment_point.cpp"
 
 /**
- * @title 円と線分の交差
+ * @title Intersection between a circle and a segment
  * @docs intersect_circle_segment.md
  */
 namespace intersect_circle_segment{

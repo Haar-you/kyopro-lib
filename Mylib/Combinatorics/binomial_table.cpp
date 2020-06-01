@@ -2,9 +2,8 @@
 #include <vector>
 
 /**
- * @title 二項係数の列挙
+ * @title Binomial coefficients table
  * @docs binomial_table.md
- * @note 除算を行わないので、MODが素数である必要がない。
  */
 template <typename T>
 auto binomial_table(int n, int k){

@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @title 床関数・天井関数
+ * @title Floor function / Ceiling function
  * @docs floor_ceil.md
  */
 int64_t ceil(int64_t a, int64_t b){

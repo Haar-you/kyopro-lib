@@ -5,7 +5,7 @@
 #include <cassert>
 
 /**
- * @title Hopcroft-Karp法
+ * @title Hopcroft-Karp algorithm
  * @docs hopcroft_karp.md
  */
 class HopcroftKarp{

@@ -4,7 +4,7 @@
 #include <limits>
 
 /**
- * @title StarrySkyTree (Min)
+ * @title Starry-sky tree (Min)
  * @docs starry_sky_tree_min.md
  */
 template <typename T>

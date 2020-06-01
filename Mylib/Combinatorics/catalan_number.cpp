@@ -2,7 +2,7 @@
 #include "Mylib/Combinatorics/combinatorics.cpp"
 
 /**
- * @title Catalan数
+ * @title Catalan number
  * @docs catalan_number.md
  */
 template <typename T> T Combinatorics<T>::catalan_number(int64_t n){

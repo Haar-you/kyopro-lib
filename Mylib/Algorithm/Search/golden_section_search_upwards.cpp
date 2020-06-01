@@ -3,7 +3,7 @@
 #include <cmath>
 
 /**
- * @title 上に凸の黄金分割探索
+ * @title Golden section search (Convex upwards)
  * @docs golden_section_search_upwards.md
  */
 template <typename T = double, typename Func = std::function<T(T)>>

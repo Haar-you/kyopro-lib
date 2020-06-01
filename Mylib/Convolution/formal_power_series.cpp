@@ -4,7 +4,7 @@
 #include <vector>
 
 /**
- * @title FormalPowerSeries
+ * @title Formal power series
  * @docs formal_power_series.md
  */
 template <typename T>

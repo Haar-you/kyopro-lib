@@ -3,7 +3,7 @@
 #include "Mylib/Number/Mod/mod_power.cpp"
 
 /**
- * @title グラフ頂点彩色数
+ * @title Graph vertex coloring
  * @docs chromatic_number.md
  */
 int chromatic_number(const std::vector<std::vector<int>> &graph){

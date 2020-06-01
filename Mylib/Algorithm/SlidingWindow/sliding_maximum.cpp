@@ -3,7 +3,7 @@
 #include <deque>
 
 /**
- * @title スライド最大値
+ * @title Sliding window maximum
  * @docs sliding_maximum.md
  */
 template <typename T>

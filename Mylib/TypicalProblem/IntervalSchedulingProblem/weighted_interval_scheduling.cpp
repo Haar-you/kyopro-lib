@@ -4,7 +4,7 @@
 #include <utility>
 
 /**
- * @title 重み付き区間スケジューリング
+ * @title Weighted interval scheduling problem
  * @docs weighted_interval_scheduling.md
  */
 template <typename T, typename U>

@@ -3,7 +3,7 @@
 #include <optional>
 
 /**
- * @title Warshall-Floyd法 (隣接行列グラフ)
+ * @title Warshall-Floyd algorithm (For adjaceny matrix graph)
  * @docs warshall_floyd_for_matrix_graph.md
  */
 template <typename T, T INVALID>

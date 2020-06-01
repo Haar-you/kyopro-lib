@@ -3,7 +3,7 @@
 #include <numeric>
 
 /**
- * @title Eulerのトーシェント関数 (列挙)
+ * @title Euler's totient function (Enumerate)
  * @docs euler_phi_function_table.md
  */
 auto totient_table(int n){

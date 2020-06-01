@@ -5,7 +5,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title トポロジカルソート (辞書順最小)
+ * @title Topological sort (Lexicographically minimum)
  * @docs topological_sort_lexicographical.md
  */
 template <typename T>

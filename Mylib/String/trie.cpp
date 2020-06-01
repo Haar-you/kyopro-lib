@@ -3,7 +3,7 @@
 #include <vector>
 
 /**
- * @title Trie木
+ * @title Trie
  * @docs trie.md
  */
 template <typename T>

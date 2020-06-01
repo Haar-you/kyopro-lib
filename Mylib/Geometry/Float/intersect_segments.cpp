@@ -4,7 +4,7 @@
 #include "Mylib/Geometry/Float/ccw.cpp"
 
 /**
- * @title 線分同士の交差
+ * @title Intersection between two lines
  * @docs intersect_segments.md
  */
 namespace intersect_segments{

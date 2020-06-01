@@ -2,7 +2,7 @@
 #include <functional>
 
 /**
- * @title 下に凸の三分探索
+ * @title Ternary search (Convex downwards)
  * @docs ternary_search_downwards.md
  */
 template <typename T = double, typename Func = std::function<T(T)>>

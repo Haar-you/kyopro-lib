@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title 素因数分解 (篩で前計算)
+ * @title Prime factorization (Precalculation)
  * @docs prime_factorize_precalculated.md
  */
 struct PrimeFactorize{

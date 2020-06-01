@@ -2,7 +2,7 @@
 #include <array>
 
 /**
- * @title 永続Queue
+ * @title Persistent queue
  * @docs persistent_queue.md
  */
 template <typename T>

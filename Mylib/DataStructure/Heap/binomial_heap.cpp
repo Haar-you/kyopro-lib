@@ -5,7 +5,7 @@
 #include <cassert>
 
 /**
- * @title BinomialHeap
+ * @title Binomial heap
  * @docs binomial_heap.md
  */
 template <typename T, typename Compare = std::less<T>>

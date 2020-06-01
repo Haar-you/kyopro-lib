@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title 双対SegmentTree
+ * @title Dual segment tree
  * @docs dual_segment_tree.md
  */
 template <typename Monoid>

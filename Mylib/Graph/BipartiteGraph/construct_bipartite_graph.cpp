@@ -2,7 +2,7 @@
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
 /**
- * @title 二部グラフ判定 (UnionFindを用いる)
+ * @title Check bipartite graph (Using unionFind)
  * @docs construct_bipartite_graph.md
  */
 class BipartiteGraph{

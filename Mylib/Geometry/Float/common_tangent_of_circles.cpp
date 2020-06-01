@@ -3,7 +3,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
- * @title 2円の共通接線
+ * @title Common tangents of two circles
  * @docs common_tangent_of_circles.md
  */
 template <typename T>

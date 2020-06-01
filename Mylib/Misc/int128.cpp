@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @title 128bit整数型
+ * @title 128-bit int
  * @docs int128.md
  */
 #ifdef __SIZEOF_INT128__

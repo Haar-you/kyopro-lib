@@ -5,7 +5,7 @@
 #include <optional>
 
 /**
- * @title LiChaoSegmentTree
+ * @title LiChao segment tree
  * @docs lichao_segment_tree.md
  */
 template <typename T, typename Comparator>

@@ -6,7 +6,7 @@
 #include <numeric>
 
 /**
- * @title 部分永続UnionFind
+ * @title Partially persistent union-find
  * @docs partially_persistent_unionfind.md
  */
 class PartiallyPersistentUnionFind{

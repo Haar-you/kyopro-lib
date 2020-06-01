@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title K個以下への分割数の列挙
+ * @title Partition number (Enumerate $P(n, k)$)
  * @docs partition_number.md
  */
 template <typename T>

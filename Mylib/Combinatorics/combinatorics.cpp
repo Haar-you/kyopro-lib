@@ -3,7 +3,7 @@
 #include <cassert>
 
 /**
- * @title 組み合わせ計算用の前計算クラス
+ * @title Precalculation for combinatotion
  * @docs combinatorics.md
  * @attention 使用前にinit関数を呼び出す
  */

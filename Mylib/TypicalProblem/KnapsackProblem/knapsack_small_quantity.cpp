@@ -5,7 +5,7 @@
 #include <iterator>
 
 /**
- * @title 個数の制約が小さい0-1ナップサック問題 (半分全列挙)
+ * @title 0-1 Knapsack problem (Small quantity)
  * @docs knapsack_small_quantity.md
  */
 template <typename Weight, typename Value>

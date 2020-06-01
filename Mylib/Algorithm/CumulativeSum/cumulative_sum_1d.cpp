@@ -4,7 +4,7 @@
 #include <cassert>
 
 /**
- * @title 一次元累積和
+ * @title 1D cumulative sum
  * @docs cumulative_sum_1d.md
  */
 template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>

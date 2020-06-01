@@ -4,7 +4,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title BFSEulerTour
+ * @title Euler tour (BFS)
  * @docs euler_tour_bfs.md
  */
 template <typename T> struct EulerTourBFS{
