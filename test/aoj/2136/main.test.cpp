@@ -8,6 +8,7 @@
 #include "Mylib/Geometry/Float/intersect_segments.cpp"
 #include "Mylib/Graph/Coloring/chromatic_number.cpp"
 #include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/input_tuples_with_index.cpp"
 
 using D = DoubleEps<double>;
 template <> double D::eps = 1e-7;
@@ -35,8 +36,7 @@ int main(){
   while(std::cin >> N, N){
     std::vector<std::vector<Point<D>>> lines(N);
 
-    for(int i = 0; i < N; ++i){
-      int S; std::cin >> S;
+    for(auto [i, S] : input_tuples_with_index<int>(N)){
       lines[i] = input_vector<Point<D>>(S);
     }
 

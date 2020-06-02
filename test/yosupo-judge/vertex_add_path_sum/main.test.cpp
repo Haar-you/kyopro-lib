@@ -8,6 +8,7 @@
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 #include "Mylib/IO/input_graph.cpp"
 #include "Mylib/IO/input_tuples.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -15,8 +16,7 @@ int main(){
   
   int N, Q; std::cin >> N >> Q;
 
-  std::vector<int64_t> a(N);
-  for(int i = 0; i < N; ++i) std::cin >> a[i];
+  auto a = input_vector<int64_t>(N);
 
   auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
   auto hld = HLDecomposition(tree, 0);

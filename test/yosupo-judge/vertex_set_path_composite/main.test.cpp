@@ -11,6 +11,8 @@
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 #include "Mylib/IO/input_graph.cpp"
 #include "Mylib/IO/input_tuples.cpp"
+#include "Mylib/IO/input_tuple.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using mint = ModInt<998244353>;
 using M = DualMonoid<AffineMonoid<mint>>;
@@ -21,11 +23,7 @@ int main(){
   
   int N, Q; std::cin >> N >> Q;
 
-  std::vector<std::pair<mint,mint>> f;
-
-  for(auto [a, b] : input_tuples<int64_t, int64_t>(N)){
-    f.emplace_back(a, b);
-  }
+  auto f = input_vector<std::pair<mint, mint>>(N);
 
   auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
   

@@ -4,15 +4,14 @@
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/lca_based_on_hld.cpp"
 #include "Mylib/IO/input_tuples.cpp"
+#include "Mylib/IO/input_tuples_with_index.cpp"
 
 int main(){
   int n; std::cin >> n;
 
   Tree<int> tree(n);
-  for(int i = 0; i < n; ++i){
-    int k; std::cin >> k;
-    for(int j = 0; j < k; ++j){
-      int c; std::cin >> c;
+  for(auto [i, k] : input_tuples_with_index<int>(n)){
+    for(auto [c] : input_tuples<int>(k)){
       add_edge(tree, i, c, 1);
     }
   }

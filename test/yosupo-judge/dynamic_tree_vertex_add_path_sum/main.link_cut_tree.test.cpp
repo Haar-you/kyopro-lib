@@ -4,7 +4,7 @@
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 #include "Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp"
 #include "Mylib/IO/input_tuples.cpp"
-#include "Mylib/IO/input_tuples.cpp"
+#include "Mylib/IO/input_tuples_with_index.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -14,8 +14,7 @@ int main(){
 
   LinkCutTree<SumMonoid<int64_t>> lct(N);
 
-  for(int i = 0; i < N; ++i){
-    int64_t a; std::cin >> a;
+  for(auto [i, a] : input_tuples_with_index<int64_t>(N)){
     lct.update(i, a);
   }
 

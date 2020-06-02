@@ -7,6 +7,7 @@
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/IO/input_tuples.cpp"
+#include "Mylib/IO/input_tuples_with_index.cpp"
 
 using mint = ModInt<998244353>;
 using M = DualMonoid<AffineMonoid<mint>>;
@@ -16,8 +17,7 @@ int main(){
 
   auto seg = SegmentTree<M>(N);
 
-  for(int i = 0; i < N; ++i){
-    int a, b; std::cin >> a >> b;
+  for(auto [i, a, b] : input_tuples_with_index<int, int>(N)){
     seg.update(i, {a, b});
   }
 

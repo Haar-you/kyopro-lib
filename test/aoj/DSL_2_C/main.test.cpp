@@ -6,6 +6,7 @@
 #include <vector>
 #include "Mylib/DataStructure/RangeTree/range_tree.cpp"
 #include "Mylib/IO/input_tuples.cpp"
+#include "Mylib/IO/input_tuples_with_index.cpp"
 
 int main(){
   int n; std::cin >> n;
@@ -13,11 +14,11 @@ int main(){
 
   std::map<std::pair<int,int>, int> m;
 
-  for(int i = 0; i < n; ++i){
-    int x, y; std::cin >> x >> y;
+  for(auto [i, x, y] : input_tuples_with_index<int, int>(n)){
     rt.add(x,y);
     m[{x,y}] = i;
   }
+  
   rt.build();
 
   int q; std::cin >> q;

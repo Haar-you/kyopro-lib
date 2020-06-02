@@ -7,19 +7,21 @@
 #include "Mylib/IO/input_tuple.cpp"
 
 /**
- * @docs input_tuples.md
+ * @docs input_tuples_with_index.md
  */
 template <typename ... Args>
-class InputTuples{
+class InputTuplesWithIndex{
   struct iter{
-    using value_type = std::tuple<Args ...>;
+    using value_type = std::tuple<int, Args ...>;
     value_type value;
     bool fetched = false;
-    int N, c = 0;
+    int N;
+    int c = 0;
 
     value_type operator*(){
       if(not fetched){
-        std::cin >> value;
+        std::tuple<Args ...> temp; std::cin >> temp;
+        value = std::tuple_cat(std::make_tuple(c), temp);
       }
       return value;
     }
@@ -39,13 +41,14 @@ class InputTuples{
   int N;
 
 public:
-  InputTuples(int N): N(N){}
+  InputTuplesWithIndex(int N): N(N){}
 
   iter begin() const {return iter(N);}
   iter end() const {return iter(N);}
 };
 
 template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+auto input_tuples_with_index(int N){
+  return InputTuplesWithIndex<Args ...>(N);
 }
+

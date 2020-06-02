@@ -10,9 +10,9 @@ int main(){
 
   std::vector<PersistentQueue<int>> S;
 
-  for(auto [type] : input_tuples<int>(Q)){
+  for(auto [type, t] : input_tuples<int, int>(Q)){
     if(type == 0){
-      int t, x; std::cin >> t >> x;
+      int x; std::cin >> x;
       if(t == -1){
         PersistentQueue<int> a(x);
         S.push_back(a);
@@ -21,7 +21,6 @@ int main(){
         S.push_back(res);
       }
     }else{
-      int t; std::cin >> t;
       std::cout << S[t].front() << std::endl;
       auto res = S[t].pop();
       S.push_back(res);

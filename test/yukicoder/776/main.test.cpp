@@ -9,6 +9,7 @@
 #include "Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/IO/input_tuples.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 using Mon = MaxPartialSumMonoid<int64_t>;
 
@@ -17,10 +18,8 @@ int main(){
 
   SegmentTree<Mon> seg(N);
 
-  std::vector<int64_t> a(N);
-
+  auto a = input_vector<int64_t>(N);
   for(int i = 0; i < N; ++i){
-    std::cin >> a[i];
     seg.update(i, Mon::MaxPartialSum::make(a[i]));
   }
 

@@ -6,12 +6,13 @@
 #include <algorithm>
 #include <cmath>
 #include "Mylib/Algorithm/Search/golden_section_search_upwards.cpp"
+#include "Mylib/IO/input_tuple_vector.cpp"
 
 
 int main(){
   int N; std::cin >> N;
-  std::vector<int64_t> x(N), r(N);
-  for(int i = 0; i < N; ++i) std::cin >> x[i] >> r[i];
+
+  auto [x, r] = input_tuple_vector<int64_t, int64_t>(N);
 
   std::vector<std::pair<int64_t,int>> p;
   for(int i = 0; i < N; ++i){

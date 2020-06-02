@@ -8,6 +8,7 @@
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/with_min_index.cpp"
 #include "Mylib/IO/input_tuples.cpp"
+#include "Mylib/IO/input_tuples_with_index.cpp"
 
 using Mon = WithMinIndex<MinMonoid<int>>;
 
@@ -20,8 +21,7 @@ int main(){
   SegmentTree<Mon> seg(N);
 
   std::vector<Mon::value_type> a(N);
-  for(int i = 0; i < N; ++i){
-    int x; std::cin >> x;
+  for(auto [i, x] : input_tuples_with_index<int>(N)){
     a[i] = std::make_pair(x, i);
   }
 

@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/DataStructure/UnionFind/persistent_unionfind.cpp"
-#include "Mylib/IO/input_tuples.cpp"
+#include "Mylib/IO/input_tuples_with_index.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -15,11 +15,10 @@ int main(){
 
   G[0] = PersistentUnionFind(N);
 
-  for(int i = 1; i <= Q; ++i){
-    int t; std::cin >> t;
-    int k, u, v; std::cin >> k >> u >> v;
+  for(auto [i, t, k, u, v] : input_tuples_with_index<int, int, int, int>(Q)){
     ++k;
-
+    ++i;
+    
     if(t == 0){
       G[i] = G[k].merge(u, v);
     }else{

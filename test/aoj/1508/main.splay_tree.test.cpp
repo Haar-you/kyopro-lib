@@ -4,14 +4,14 @@
 #include "Mylib/DataStructure/SplayTree/splay_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include "Mylib/IO/input_tuples.cpp"
+#include "Mylib/IO/input_tuples_with_index.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
   
   splay_tree::SplayTree<MinMonoid<int>> s(n);
   
-  for(int i = 0; i < n; ++i){
-    int a; std::cin >> a;
+  for(auto [i, a] : input_tuples_with_index<int>(n)){
     s.update(i, a);
   }
   
