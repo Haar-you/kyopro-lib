@@ -2,10 +2,10 @@
 #include <vector>
 
 /**
- * @title Inverse number
- * @docs inverse_number.md
+ * @title Inversion number
+ * @docs inversion_number.md
  */
-namespace inverse_number{
+namespace inversion_number{
   template <typename T, typename Compare>
   int64_t rec(std::vector<T> &a, const Compare &compare){
     int n = a.size();

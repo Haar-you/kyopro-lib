@@ -3,11 +3,11 @@
 #include <utility>
 
 /**
- * @title run length encoding
- * @docs run_length_encode.md
+ * @title Run length encoding
+ * @docs run_length_encoding.md
  */
 template <typename Container, typename T = typename Container::value_type>
-auto run_length_encode(const Container &v){
+auto run_length_encoding(const Container &v){
   std::vector<std::pair<T,int64_t>> ret;
 
   for(auto &x : v){

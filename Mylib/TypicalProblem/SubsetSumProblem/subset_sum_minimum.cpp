@@ -3,7 +3,7 @@
 #include <algorithm>
 
 /**
- * @title Subset sum promblem (Minimum)
+ * @title Subset sum problem (Minimum)
  * @docs subset_sum_minimum.md
  */
 auto subset_sum_minimum(int N, int K, const std::vector<int> &a){

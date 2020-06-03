@@ -5,7 +5,7 @@
 #include "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title Directed eulerian path
+ * @title Directed Eulerian path
  * @docs directed_eulerian_path.md
  */
 class DirectedEulerianPath{

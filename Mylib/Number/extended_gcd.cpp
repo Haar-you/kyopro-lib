@@ -2,7 +2,7 @@
 #include <tuple>
 
 /**
- * @title Extended euclidean algorithm
+ * @title Extended Euclidean algorithm
  * @docs extended_gcd.md
  */
 std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
