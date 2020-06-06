@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Minimum covering circle
+# :heavy_check_mark: Minimum covering circle
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -54,13 +54,13 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="circumscribed_circle_of_triangle.cpp.html">Circumscribed circle of a triangle</a>
+* :heavy_check_mark: <a href="circumscribed_circle_of_triangle.cpp.html">Circumscribed circle of a triangle</a>
 * :question: <a href="geometry_template.cpp.html">Geometry template</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
 
 
 ## Code

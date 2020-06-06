@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Ternary search (Convex upwards)
+# :x: Ternary search (Convex upwards)
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,7 +38,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/0323/main.ternary.test.cpp.html">test/aoj/0323/main.ternary.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/0323/main.ternary.test.cpp.html">test/aoj/0323/main.ternary.test.cpp</a>
 
 
 ## Code

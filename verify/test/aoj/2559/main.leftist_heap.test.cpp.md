@@ -43,7 +43,7 @@ layout: default
 * :question: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
 * :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
 * :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
-* :question: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">Fixed point combinator</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">Fixed point combinator</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Misc/merge_technique.cpp.html">Mylib/Misc/merge_technique.cpp</a>
 
 

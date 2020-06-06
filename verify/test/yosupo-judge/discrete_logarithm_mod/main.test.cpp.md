@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#2163f1b495697e10d51593b9d528fe28">test/yosupo-judge/discrete_logarithm_mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-03 05:13:49+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/discrete_logarithm_mod">https://judge.yosupo.jp/problem/discrete_logarithm_mod</a>
@@ -39,6 +39,7 @@ layout: default
 
 ## Depends on
 
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 * :x: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">Mod inverse</a>
 * :x: <a href="../../../../library/Mylib/Number/Mod/mod_log.cpp.html">Mod logarithm</a>
@@ -180,35 +181,51 @@ std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
 #include <tuple>
 #line 6 "Mylib/IO/input_tuples.cpp"
 #include <initializer_list>
+#line 5 "Mylib/IO/input_tuple.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuple.md
+ */
+template <typename T, size_t ... I>
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+}
+
+template <typename T, typename U>
+std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+  s >> value.first >> value.second;
+  return s;
+}
+
+template <typename ... Args>
+std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+  return s;
+}
+#line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
 template <typename ... Args>
 class InputTuples{
-  template <typename T, size_t ... I>
-  static void input_tuple_helper(T &val, std::index_sequence<I...>){
-    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
-  }
-  
   struct iter{
     using value_type = std::tuple<Args ...>;
     value_type value;
-    bool get = false;
-    int N;
-    int c = 0;
+    bool fetched = false;
+    int N, c = 0;
 
     value_type operator*(){
-      if(get) return value;
-      else{
-        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
-        return value;
+      if(not fetched){
+        std::cin >> value;
       }
+      return value;
     }
 
     void operator++(){
       ++c;
-      get = false;
+      fetched = false;
     }
 
     bool operator!=(iter &) const {

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: run length encoding
+# :warning: Run length encoding
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/run_length_encode.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/run_length_encoding.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-04 06:04:41+09:00
 
 
 
@@ -46,11 +46,11 @@ layout: default
 #include <utility>
 
 /**
- * @title run length encoding
- * @docs run_length_encode.md
+ * @title Run length encoding
+ * @docs run_length_encoding.md
  */
 template <typename Container, typename T = typename Container::value_type>
-auto run_length_encode(const Container &v){
+auto run_length_encoding(const Container &v){
   std::vector<std::pair<T,int64_t>> ret;
 
   for(auto &x : v){
@@ -68,16 +68,16 @@ auto run_length_encode(const Container &v){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Misc/run_length_encode.cpp"
+#line 2 "Mylib/Misc/run_length_encoding.cpp"
 #include <vector>
 #include <utility>
 
 /**
- * @title run length encoding
- * @docs run_length_encode.md
+ * @title Run length encoding
+ * @docs run_length_encoding.md
  */
 template <typename Container, typename T = typename Container::value_type>
-auto run_length_encode(const Container &v){
+auto run_length_encoding(const Container &v){
   std::vector<std::pair<T,int64_t>> ret;
 
   for(auto &x : v){

@@ -41,7 +41,7 @@ layout: default
 
 * :x: <a href="../../../../library/Mylib/Combinatorics/partition_number_n.cpp.html">Partition number (Enumerate $P(n, n)$)</a>
 * :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
-* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code

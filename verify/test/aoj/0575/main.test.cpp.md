@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#bc5135b351a05eb69baff19bb9fa33f2">test/aoj/0575</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/0575/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-03 05:13:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0575">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0575</a>
@@ -371,16 +371,12 @@ std::vector<std::vector<T>> input_vector(int N, int M){
  */
 template <typename T, size_t ... I>
 void input_tuple_vector_init(T &val, int N, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{
-    (void(std::get<I>(val).resize(N)), 0)...
-  };
+  (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0)...};
 }
 
 template <typename T, size_t ... I>
 void input_tuple_vector_helper(T &val, int i, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{
-    (void(std::cin >> std::get<I>(val)[i]), 0)...
-  };
+  (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0)...};
 }
 
 template <typename ... Args>

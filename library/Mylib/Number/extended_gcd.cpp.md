@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Extended euclidean algorithm
+# :x: Extended Euclidean algorithm
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/extended_gcd.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-04 06:04:41+09:00
 
 
 
@@ -56,7 +56,7 @@ layout: default
 #include <tuple>
 
 /**
- * @title Extended euclidean algorithm
+ * @title Extended Euclidean algorithm
  * @docs extended_gcd.md
  */
 std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
@@ -76,7 +76,7 @@ std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
 #include <tuple>
 
 /**
- * @title Extended euclidean algorithm
+ * @title Extended Euclidean algorithm
  * @docs extended_gcd.md
  */
 std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){

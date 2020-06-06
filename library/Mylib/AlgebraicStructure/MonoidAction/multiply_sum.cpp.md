@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../Monoid/product.cpp.html">Mylib/AlgebraicStructure/Monoid/product.cpp</a>
+* :heavy_check_mark: <a href="../Monoid/product.cpp.html">Mylib/AlgebraicStructure/Monoid/product.cpp</a>
 * :question: <a href="../Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 
 

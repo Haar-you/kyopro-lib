@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/miller_rabin.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-06 00:48:58+09:00
 
 
 
@@ -127,9 +127,11 @@ public:
  */
 #ifdef __SIZEOF_INT128__
 using uint128_t = __uint128_t;
+using int128_t = __int128_t;
 #else
 #include <boost/multiprecision/cpp_int.hpp>
 using uint128_t = boost::multiprecision::uint128_t;
+using int128_t = boost::multiprecision::int128_t;
 #endif
 #line 3 "Mylib/Number/Prime/miller_rabin.cpp"
 

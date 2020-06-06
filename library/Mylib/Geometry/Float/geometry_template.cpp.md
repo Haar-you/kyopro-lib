@@ -42,7 +42,7 @@ layout: default
 * :warning: <a href="area_intersection_of_circles.cpp.html">Area of intersection between two circles</a>
 * :x: <a href="area_polygon.cpp.html">Area of polygon</a>
 * :question: <a href="ccw.cpp.html">Check clockwise-counterclockwise</a>
-* :x: <a href="circumscribed_circle_of_triangle.cpp.html">Circumscribed circle of a triangle</a>
+* :heavy_check_mark: <a href="circumscribed_circle_of_triangle.cpp.html">Circumscribed circle of a triangle</a>
 * :x: <a href="closest_pair.cpp.html">Closest pair</a>
 * :x: <a href="common_tangent_of_circles.cpp.html">Common tangents of two circles</a>
 * :x: <a href="convex_cut.cpp.html">Convex cut</a>
@@ -59,7 +59,7 @@ layout: default
 * :question: <a href="intersect_segments.cpp.html">Intersection between two lines</a>
 * :x: <a href="is_convex.cpp.html">Check convex</a>
 * :x: <a href="is_point_in_polygon.cpp.html">Check if a point is in a polygon</a>
-* :x: <a href="minimum_covering_circle.cpp.html">Minimum covering circle</a>
+* :heavy_check_mark: <a href="minimum_covering_circle.cpp.html">Minimum covering circle</a>
 * :x: <a href="orthogonal.cpp.html">Orthogonal</a>
 * :x: <a href="parallel.cpp.html">Parallel</a>
 * :x: <a href="projection.cpp.html">Projection</a>
@@ -70,7 +70,7 @@ layout: default
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2136/main.test.cpp.html">test/aoj/2136/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
 * :x: <a href="../../../../verify/test/aoj/CGL_1_A/main.test.cpp.html">test/aoj/CGL_1_A/main.test.cpp</a>
 * :x: <a href="../../../../verify/test/aoj/CGL_1_B/main.test.cpp.html">test/aoj/CGL_1_B/main.test.cpp</a>
 * :x: <a href="../../../../verify/test/aoj/CGL_1_C/main.test.cpp.html">test/aoj/CGL_1_C/main.test.cpp</a>

@@ -39,8 +39,8 @@ layout: default
 ## Required by
 
 * :heavy_check_mark: <a href="BipartiteGraph/check_bipartite_graph.cpp.html">Check bipartite graph</a>
-* :warning: <a href="EulerianPath/directed_eulerian_path.cpp.html">Directed eulerian path</a>
-* :warning: <a href="EulerianPath/undirected_eulerian_path.cpp.html">Undirected eulerian path</a>
+* :warning: <a href="EulerianPath/directed_eulerian_path.cpp.html">Directed Eulerian path</a>
+* :warning: <a href="EulerianPath/undirected_eulerian_path.cpp.html">Undirected Eulerian path</a>
 * :x: <a href="GraphUtils/articulation_points.cpp.html">Articulation points</a>
 * :x: <a href="GraphUtils/bridges.cpp.html">Bridges</a>
 * :warning: <a href="GraphUtils/decompose_pseudotree.cpp.html">Decompose pseudotree</a>
@@ -56,6 +56,7 @@ layout: default
 * :heavy_check_mark: <a href="ShortestPath/bfs_shortest_path.cpp.html">BFS shortest path</a>
 * :x: <a href="ShortestPath/dijkstra.cpp.html">Dijkstra algorithm</a>
 * :x: <a href="ShortestPath/warshall_floyd.cpp.html">Warshall-Floyd algorithm</a>
+* :x: <a href="ShortestPath/yen_algorithm.cpp.html">Yen's algorithm</a>
 * :x: <a href="TopologicalSort/topological_sort.cpp.html">Topological sort</a>
 * :warning: <a href="TopologicalSort/topological_sort_lexicographical.cpp.html">Topological sort (Lexicographically minimum)</a>
 * :warning: <a href="TreeUtils/centroid.cpp.html">Enumerate centroids</a>
@@ -112,6 +113,7 @@ layout: default
 * :x: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/1069/main.test.cpp.html">test/yukicoder/1069/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
 

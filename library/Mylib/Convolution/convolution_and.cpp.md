@@ -53,8 +53,8 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="fast_mobius_transform_superset.cpp.html">Fast Möbius transform (Superset)</a>
-* :x: <a href="fast_zeta_transform_superset.cpp.html">Fast Zeta transform (Superset)</a>
+* :heavy_check_mark: <a href="fast_mobius_transform_superset.cpp.html">Fast Möbius transform (Superset)</a>
+* :heavy_check_mark: <a href="fast_zeta_transform_superset.cpp.html">Fast Zeta transform (Superset)</a>
 
 
 ## Code

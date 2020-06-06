@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#85bd684f532fe6c6e7e3dd42beff3eb5">test/yukicoder/875</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/875/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-03 05:13:49+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/875">https://yukicoder.me/problems/no/875</a>
@@ -41,8 +41,10 @@ layout: default
 
 * :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
 * :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/with_min_index.cpp.html">Mylib/AlgebraicStructure/Monoid/with_min_index.cpp</a>
-* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
 
 
 ## Code
@@ -60,6 +62,7 @@ layout: default
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/with_min_index.cpp"
 #include "Mylib/IO/input_tuples.cpp"
+#include "Mylib/IO/input_tuples_with_index.cpp"
 
 using Mon = WithMinIndex<MinMonoid<int>>;
 
@@ -72,8 +75,7 @@ int main(){
   SegmentTree<Mon> seg(N);
 
   std::vector<Mon::value_type> a(N);
-  for(int i = 0; i < N; ++i){
-    int x; std::cin >> x;
+  for(auto [i, x] : input_tuples_with_index<int>(N)){
     a[i] = std::make_pair(x, i);
   }
 
@@ -211,35 +213,51 @@ struct WithMinIndex{
 #include <tuple>
 #line 6 "Mylib/IO/input_tuples.cpp"
 #include <initializer_list>
+#line 5 "Mylib/IO/input_tuple.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuple.md
+ */
+template <typename T, size_t ... I>
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+}
+
+template <typename T, typename U>
+std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+  s >> value.first >> value.second;
+  return s;
+}
+
+template <typename ... Args>
+std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+  return s;
+}
+#line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
 template <typename ... Args>
 class InputTuples{
-  template <typename T, size_t ... I>
-  static void input_tuple_helper(T &val, std::index_sequence<I...>){
-    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
-  }
-  
   struct iter{
     using value_type = std::tuple<Args ...>;
     value_type value;
-    bool get = false;
-    int N;
-    int c = 0;
+    bool fetched = false;
+    int N, c = 0;
 
     value_type operator*(){
-      if(get) return value;
-      else{
-        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
-        return value;
+      if(not fetched){
+        std::cin >> value;
       }
+      return value;
     }
 
     void operator++(){
       ++c;
-      get = false;
+      fetched = false;
     }
 
     bool operator!=(iter &) const {
@@ -262,7 +280,57 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 11 "test/yukicoder/875/main.test.cpp"
+#line 6 "Mylib/IO/input_tuples_with_index.cpp"
+#include <initializer_list>
+#line 8 "Mylib/IO/input_tuples_with_index.cpp"
+
+/**
+ * @docs input_tuples_with_index.md
+ */
+template <typename ... Args>
+class InputTuplesWithIndex{
+  struct iter{
+    using value_type = std::tuple<int, Args ...>;
+    value_type value;
+    bool fetched = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(not fetched){
+        std::tuple<Args ...> temp; std::cin >> temp;
+        value = std::tuple_cat(std::make_tuple(c), temp);
+      }
+      return value;
+    }
+
+    void operator++(){
+      ++c;
+      fetched = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuplesWithIndex(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples_with_index(int N){
+  return InputTuplesWithIndex<Args ...>(N);
+}
+
+#line 12 "test/yukicoder/875/main.test.cpp"
 
 using Mon = WithMinIndex<MinMonoid<int>>;
 
@@ -275,8 +343,7 @@ int main(){
   SegmentTree<Mon> seg(N);
 
   std::vector<Mon::value_type> a(N);
-  for(int i = 0; i < N; ++i){
-    int x; std::cin >> x;
+  for(auto [i, x] : input_tuples_with_index<int>(N)){
     a[i] = std::make_pair(x, i);
   }
 

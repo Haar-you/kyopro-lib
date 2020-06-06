@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#ca30339b964798e13b3846ad3753f829">test/aoj/DPL_2_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_2_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-03 05:13:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_C</a>
@@ -133,16 +133,12 @@ double bitonic_tour(int n, const std::vector<T> &x, const std::vector<T> &y){
  */
 template <typename T, size_t ... I>
 void input_tuple_vector_init(T &val, int N, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{
-    (void(std::get<I>(val).resize(N)), 0)...
-  };
+  (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0)...};
 }
 
 template <typename T, size_t ... I>
 void input_tuple_vector_helper(T &val, int i, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{
-    (void(std::cin >> std::get<I>(val)[i]), 0)...
-  };
+  (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0)...};
 }
 
 template <typename ... Args>

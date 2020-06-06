@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0eb662a8a4a1c93b539f9938a9be975d">test/yosupo-judge/range_chmin_chmax_add_range_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-03 05:13:49+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum">https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum</a>
@@ -40,6 +40,7 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_beats.cpp.html">Segment tree beats</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
@@ -337,35 +338,51 @@ std::vector<std::vector<T>> input_vector(int N, int M){
 #include <tuple>
 #include <utility>
 #include <initializer_list>
+#line 5 "Mylib/IO/input_tuple.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuple.md
+ */
+template <typename T, size_t ... I>
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+}
+
+template <typename T, typename U>
+std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+  s >> value.first >> value.second;
+  return s;
+}
+
+template <typename ... Args>
+std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+  return s;
+}
+#line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
 template <typename ... Args>
 class InputTuples{
-  template <typename T, size_t ... I>
-  static void input_tuple_helper(T &val, std::index_sequence<I...>){
-    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
-  }
-  
   struct iter{
     using value_type = std::tuple<Args ...>;
     value_type value;
-    bool get = false;
-    int N;
-    int c = 0;
+    bool fetched = false;
+    int N, c = 0;
 
     value_type operator*(){
-      if(get) return value;
-      else{
-        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
-        return value;
+      if(not fetched){
+        std::cin >> value;
       }
+      return value;
     }
 
     void operator++(){
       ++c;
-      get = false;
+      fetched = false;
     }
 
     bool operator!=(iter &) const {

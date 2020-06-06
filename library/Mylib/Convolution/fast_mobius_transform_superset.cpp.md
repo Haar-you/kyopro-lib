@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Fast Möbius transform (Superset)
+# :heavy_check_mark: Fast Möbius transform (Superset)
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -58,7 +58,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/aoj/3119/main.test.cpp.html">test/aoj/3119/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/3119/main.test.cpp.html">test/aoj/3119/main.test.cpp</a>
 
 
 ## Code

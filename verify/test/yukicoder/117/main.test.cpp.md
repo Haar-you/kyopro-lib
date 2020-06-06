@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f01f019f5d83aaae637417bc3568edb5">test/yukicoder/117</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/117/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-06 10:19:56+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/117">https://yukicoder.me/problems/no/117</a>
@@ -40,7 +40,9 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Combinatorics/combinatorics.cpp.html">Precalculation for combinatotion</a>
-* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -51,27 +53,38 @@ layout: default
 #define PROBLEM "https://yukicoder.me/problems/no/117"
 
 #include <iostream>
+#include <string>
+#include <regex>
 
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Combinatorics/combinatorics.cpp"
+#include "Mylib/IO/input_tuples.cpp"
 
 using mint = ModInt<1000000007>;
 using C = Combinatorics<mint>;
 
 int main(){
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
   C::init(2000000);
   
-  int T; scanf("%d", &T);
+  int T; std::cin >> T;
 
-  while(T--){
-    char type;
-    int N, K;
-    scanf(" %c(%d,%d)", &type, &N, &K);
+  std::regex re(R"((.)\((.+),(.+)\))");
+  
+  for(auto [s] : input_tuples<std::string>(T)){
+    std::smatch m;
+    std::regex_match(s, m, re);
+
+    char type = m[1].str()[0];
+    int N = std::stoi(m[2].str());
+    int K = std::stoi(m[3].str());
 
     switch(type){
-    case 'C': printf("%d\n", (int)C::C(N, K)); break;
-    case 'P': printf("%d\n", (int)C::P(N, K)); break;
-    case 'H': printf("%d\n", (int)C::H(N, K)); break;
+    case 'C': std::cout << C::C(N, K) << "\n"; break;
+    case 'P': std::cout << C::P(N, K) << "\n"; break;
+    case 'H': std::cout << C::H(N, K) << "\n"; break;
     }
   }
 
@@ -88,6 +101,8 @@ int main(){
 #define PROBLEM "https://yukicoder.me/problems/no/117"
 
 #include <iostream>
+#include <string>
+#include <regex>
 
 #line 3 "Mylib/Number/Mint/mint.cpp"
 #include <utility>
@@ -240,25 +255,104 @@ template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
   if(n == 0 and k == 0) return 1;
   return C(n+k-1, k);
 }
-#line 7 "test/yukicoder/117/main.test.cpp"
+#line 4 "Mylib/IO/input_tuples.cpp"
+#include <tuple>
+#line 6 "Mylib/IO/input_tuples.cpp"
+#include <initializer_list>
+#line 5 "Mylib/IO/input_tuple.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuple.md
+ */
+template <typename T, size_t ... I>
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+}
+
+template <typename T, typename U>
+std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+  s >> value.first >> value.second;
+  return s;
+}
+
+template <typename ... Args>
+std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+  return s;
+}
+#line 8 "Mylib/IO/input_tuples.cpp"
+
+/**
+ * @docs input_tuples.md
+ */
+template <typename ... Args>
+class InputTuples{
+  struct iter{
+    using value_type = std::tuple<Args ...>;
+    value_type value;
+    bool fetched = false;
+    int N, c = 0;
+
+    value_type operator*(){
+      if(not fetched){
+        std::cin >> value;
+      }
+      return value;
+    }
+
+    void operator++(){
+      ++c;
+      fetched = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuples(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples(int N){
+  return InputTuples<Args ...>(N);
+}
+#line 10 "test/yukicoder/117/main.test.cpp"
 
 using mint = ModInt<1000000007>;
 using C = Combinatorics<mint>;
 
 int main(){
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
   C::init(2000000);
   
-  int T; scanf("%d", &T);
+  int T; std::cin >> T;
 
-  while(T--){
-    char type;
-    int N, K;
-    scanf(" %c(%d,%d)", &type, &N, &K);
+  std::regex re(R"((.)\((.+),(.+)\))");
+  
+  for(auto [s] : input_tuples<std::string>(T)){
+    std::smatch m;
+    std::regex_match(s, m, re);
+
+    char type = m[1].str()[0];
+    int N = std::stoi(m[2].str());
+    int K = std::stoi(m[3].str());
 
     switch(type){
-    case 'C': printf("%d\n", (int)C::C(N, K)); break;
-    case 'P': printf("%d\n", (int)C::P(N, K)); break;
-    case 'H': printf("%d\n", (int)C::H(N, K)); break;
+    case 'C': std::cout << C::C(N, K) << "\n"; break;
+    case 'P': std::cout << C::P(N, K) << "\n"; break;
+    case 'H': std::cout << C::H(N, K) << "\n"; break;
     }
   }
 

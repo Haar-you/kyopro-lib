@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :question: Subset sum problem (With quantity limitations)
+# :heavy_check_mark: Subset sum problem (With quantity limitations)
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -57,7 +57,7 @@ layout: default
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2370/main.test.cpp.html">test/aoj/2370/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/aoj/2955/main.test.cpp.html">test/aoj/2955/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2955/main.test.cpp.html">test/aoj/2955/main.test.cpp</a>
 
 
 ## Code

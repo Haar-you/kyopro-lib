@@ -25,20 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :question: Mylib/IO/input_tuples.cpp
+# :question: Mylib/IO/input_tuple.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#7f8c074a28e3c2f263a02491ce2132dd">Mylib/IO</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/IO/input_tuples.cpp">View this file on GitHub</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/IO/input_tuple.cpp">View this file on GitHub</a>
     - Last commit date: 2020-06-03 05:13:49+09:00
 
 
 
 
-## Depends on
+## Required by
 
-* :question: <a href="input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
 
 
 ## Verified with
@@ -47,6 +48,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/aoj/1508/main.splay_tree.test.cpp.html">test/aoj/1508/main.splay_tree.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/1508/main.treap.test.cpp.html">test/aoj/1508/main.treap.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/1549/main.test.cpp.html">test/aoj/1549/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/2136/main.test.cpp.html">test/aoj/2136/main.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/2426/main.test.cpp.html">test/aoj/2426/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2674/main.test.cpp.html">test/aoj/2674/main.test.cpp</a>
@@ -94,6 +96,7 @@ layout: default
 * :x: <a href="../../../verify/test/yosupo-judge/line_add_get_min/main.test.cpp.html">test/yosupo-judge/line_add_get_min/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/maximum_independent_set/main.test.cpp.html">test/yosupo-judge/maximum_independent_set/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/persistent_queue/main.test.cpp.html">test/yosupo-judge/persistent_queue/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/persistent_unionfind/main.test.cpp.html">test/yosupo-judge/persistent_unionfind/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
@@ -136,69 +139,8 @@ layout: default
 ```cpp
 #pragma once
 #include <iostream>
-#include <vector>
 #include <tuple>
 #include <utility>
-#include <initializer_list>
-#include "Mylib/IO/input_tuple.cpp"
-
-/**
- * @docs input_tuples.md
- */
-template <typename ... Args>
-class InputTuples{
-  struct iter{
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
-
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
-      }
-      return value;
-    }
-
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
-
-    bool operator!=(iter &) const {
-      return c < N;
-    }
-
-    iter(int N): N(N){}
-  };
-
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
-}
-
-```
-{% endraw %}
-
-<a id="bundled"></a>
-{% raw %}
-```cpp
-#line 2 "Mylib/IO/input_tuples.cpp"
-#include <iostream>
-#include <vector>
-#include <tuple>
-#include <utility>
-#include <initializer_list>
-#line 5 "Mylib/IO/input_tuple.cpp"
 #include <initializer_list>
 
 /**
@@ -220,50 +162,37 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
   input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
   return s;
 }
-#line 8 "Mylib/IO/input_tuples.cpp"
+
+```
+{% endraw %}
+
+<a id="bundled"></a>
+{% raw %}
+```cpp
+#line 2 "Mylib/IO/input_tuple.cpp"
+#include <iostream>
+#include <tuple>
+#include <utility>
+#include <initializer_list>
 
 /**
- * @docs input_tuples.md
+ * @docs input_tuple.md
  */
-template <typename ... Args>
-class InputTuples{
-  struct iter{
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
+template <typename T, size_t ... I>
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+}
 
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
-      }
-      return value;
-    }
-
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
-
-    bool operator!=(iter &) const {
-      return c < N;
-    }
-
-    iter(int N): N(N){}
-  };
-
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
+template <typename T, typename U>
+std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+  s >> value.first >> value.second;
+  return s;
+}
 
 template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+  return s;
 }
 
 ```

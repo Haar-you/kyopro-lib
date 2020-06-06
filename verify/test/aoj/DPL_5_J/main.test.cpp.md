@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Combinatorics/partition_number.cpp.html">Partition number (Enumerate $P(n, k)$)</a>
-* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code

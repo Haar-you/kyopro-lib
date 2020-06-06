@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Golden section search (Convex upwards)
+# :x: Golden section search (Convex upwards)
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,7 +38,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/0323/main.golden.test.cpp.html">test/aoj/0323/main.golden.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/0323/main.golden.test.cpp.html">test/aoj/0323/main.golden.test.cpp</a>
 
 
 ## Code

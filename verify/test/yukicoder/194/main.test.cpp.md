@@ -43,7 +43,7 @@ layout: default
 * :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/inverse_matrix.cpp.html">Inverse matrix</a>
 * :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/power.cpp.html">Power of a matrix</a>
 * :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Square matrix</a>
-* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code

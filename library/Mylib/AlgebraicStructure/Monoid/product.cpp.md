@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Mylib/AlgebraicStructure/Monoid/product.cpp
+# :heavy_check_mark: Mylib/AlgebraicStructure/Monoid/product.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -44,7 +44,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/3132/main.test.cpp.html">test/aoj/3132/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/3132/main.test.cpp.html">test/aoj/3132/main.test.cpp</a>
 
 
 ## Code

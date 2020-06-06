@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#eb00a432be8a262fbfe01324f50ff04b">test/aoj/NTL_1_E</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/NTL_1_E/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-04 06:04:41+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_E">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_E</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Number/extended_gcd.cpp.html">Extended euclidean algorithm</a>
+* :x: <a href="../../../../library/Mylib/Number/extended_gcd.cpp.html">Extended Euclidean algorithm</a>
 
 
 ## Code
@@ -77,7 +77,7 @@ int main(){
 #include <tuple>
 
 /**
- * @title Extended euclidean algorithm
+ * @title Extended Euclidean algorithm
  * @docs extended_gcd.md
  */
 std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){

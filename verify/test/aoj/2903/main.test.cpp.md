@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/2903/main.test.cpp
+# :heavy_check_mark: test/aoj/2903/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson algorithm</a>
-* :x: <a href="../../../../library/Mylib/Graph/project_selection_problem.cpp.html">Project selection problem</a>
+* :question: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson algorithm</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/project_selection_problem.cpp.html">Project selection problem</a>
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 

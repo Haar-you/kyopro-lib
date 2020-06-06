@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/chinese_remainder_algorithm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-04 06:04:41+09:00
 
 
 
 
 ## Depends on
 
-* :x: <a href="extended_gcd.cpp.html">Extended euclidean algorithm</a>
+* :x: <a href="extended_gcd.cpp.html">Extended Euclidean algorithm</a>
 
 
 ## Verified with
@@ -93,7 +93,7 @@ bool CRA(const std::vector<int64_t> &bs, const std::vector<int64_t> &ms, int64_t
 #line 3 "Mylib/Number/extended_gcd.cpp"
 
 /**
- * @title Extended euclidean algorithm
+ * @title Extended Euclidean algorithm
  * @docs extended_gcd.md
  */
 std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){

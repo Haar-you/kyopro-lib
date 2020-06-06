@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#21b2d97411100b8521da1b9c251ad9c2">test/aoj/1508</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1508/main.treap.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-31 20:10:49+09:00
+    - Last commit date: 2020-06-03 05:13:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508</a>
@@ -41,7 +41,9 @@ layout: default
 
 * :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/Treap/treap.cpp.html">Treap</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
 
 
 ## Code
@@ -55,14 +57,14 @@ layout: default
 #include "Mylib/DataStructure/Treap/treap.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include "Mylib/IO/input_tuples.cpp"
+#include "Mylib/IO/input_tuples_with_index.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
   
   treap::Treap<MinMonoid<int>> s(n);
   
-  for(int i = 0; i < n; ++i){
-    int a; std::cin >> a;
+  for(auto [i, a] : input_tuples_with_index<int>(n)){
     s.update(i, a);
   }
   
@@ -302,35 +304,51 @@ struct MinMonoid{
 #include <vector>
 #line 6 "Mylib/IO/input_tuples.cpp"
 #include <initializer_list>
+#line 5 "Mylib/IO/input_tuple.cpp"
+#include <initializer_list>
+
+/**
+ * @docs input_tuple.md
+ */
+template <typename T, size_t ... I>
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+}
+
+template <typename T, typename U>
+std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+  s >> value.first >> value.second;
+  return s;
+}
+
+template <typename ... Args>
+std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+  return s;
+}
+#line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
 template <typename ... Args>
 class InputTuples{
-  template <typename T, size_t ... I>
-  static void input_tuple_helper(T &val, std::index_sequence<I...>){
-    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)), 0)...};
-  }
-  
   struct iter{
     using value_type = std::tuple<Args ...>;
     value_type value;
-    bool get = false;
-    int N;
-    int c = 0;
+    bool fetched = false;
+    int N, c = 0;
 
     value_type operator*(){
-      if(get) return value;
-      else{
-        input_tuple_helper(value, std::make_index_sequence<sizeof...(Args)>());
-        return value;
+      if(not fetched){
+        std::cin >> value;
       }
+      return value;
     }
 
     void operator++(){
       ++c;
-      get = false;
+      fetched = false;
     }
 
     bool operator!=(iter &) const {
@@ -353,15 +371,64 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 7 "test/aoj/1508/main.treap.test.cpp"
+#line 6 "Mylib/IO/input_tuples_with_index.cpp"
+#include <initializer_list>
+#line 8 "Mylib/IO/input_tuples_with_index.cpp"
+
+/**
+ * @docs input_tuples_with_index.md
+ */
+template <typename ... Args>
+class InputTuplesWithIndex{
+  struct iter{
+    using value_type = std::tuple<int, Args ...>;
+    value_type value;
+    bool fetched = false;
+    int N;
+    int c = 0;
+
+    value_type operator*(){
+      if(not fetched){
+        std::tuple<Args ...> temp; std::cin >> temp;
+        value = std::tuple_cat(std::make_tuple(c), temp);
+      }
+      return value;
+    }
+
+    void operator++(){
+      ++c;
+      fetched = false;
+    }
+
+    bool operator!=(iter &) const {
+      return c < N;
+    }
+
+    iter(int N): N(N){}
+  };
+
+  int N;
+
+public:
+  InputTuplesWithIndex(int N): N(N){}
+
+  iter begin() const {return iter(N);}
+  iter end() const {return iter(N);}
+};
+
+template <typename ... Args>
+auto input_tuples_with_index(int N){
+  return InputTuplesWithIndex<Args ...>(N);
+}
+
+#line 8 "test/aoj/1508/main.treap.test.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
   
   treap::Treap<MinMonoid<int>> s(n);
   
-  for(int i = 0; i < n; ++i){
-    int a; std::cin >> a;
+  for(auto [i, a] : input_tuples_with_index<int>(n)){
     s.update(i, a);
   }
   

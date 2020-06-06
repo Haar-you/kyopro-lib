@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#06e75b3853179fe775851b53e9e59b30">test/aoj/DPL_1_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_1_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-03 05:13:49+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_B</a>
@@ -107,16 +107,12 @@ Value knapsack_small_weight(int N, Weight cap, const std::vector<Weight> &w, con
  */
 template <typename T, size_t ... I>
 void input_tuple_vector_init(T &val, int N, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{
-    (void(std::get<I>(val).resize(N)), 0)...
-  };
+  (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0)...};
 }
 
 template <typename T, size_t ... I>
 void input_tuple_vector_helper(T &val, int i, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{
-    (void(std::cin >> std::get<I>(val)[i]), 0)...
-  };
+  (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0)...};
 }
 
 template <typename ... Args>

@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/3034/main.test.cpp
+# :heavy_check_mark: test/aoj/3034/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,13 +39,13 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Bit/for_each_subset_asc.cpp.html">Enumerate subsets (Ascending order)</a>
-* :x: <a href="../../../../library/Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp.html">Circumscribed circle of a triangle</a>
+* :question: <a href="../../../../library/Mylib/Bit/for_each_subset_asc.cpp.html">Enumerate subsets (Ascending order)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp.html">Circumscribed circle of a triangle</a>
 * :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
 * :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
-* :x: <a href="../../../../library/Mylib/Geometry/Float/minimum_covering_circle.cpp.html">Minimum covering circle</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/minimum_covering_circle.cpp.html">Minimum covering circle</a>
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :question: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">Fixed point combinator</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">Fixed point combinator</a>
 
 
 ## Code

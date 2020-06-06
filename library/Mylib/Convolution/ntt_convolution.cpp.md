@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../Number/Mint/mint.cpp.html">Modint</a>
+* :question: <a href="../Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Verified with

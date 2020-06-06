@@ -42,7 +42,7 @@ layout: default
 * :x: <a href="../../../../library/Mylib/Combinatorics/bell_number.cpp.html">Bell number</a>
 * :x: <a href="../../../../library/Mylib/Combinatorics/combinatorics.cpp.html">Precalculation for combinatotion</a>
 * :x: <a href="../../../../library/Mylib/Combinatorics/stirling_number.cpp.html">Stirling numbers of second kind</a>
-* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7db45eeebe50ebaff0e32d268a51d554">test/yosupo-judge/assignment</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/assignment/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-03 05:13:49+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/assignment">https://judge.yosupo.jp/problem/assignment</a>
@@ -41,6 +41,7 @@ layout: default
 
 * :question: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">Minimum cost flow</a>
 * :question: <a href="../../../../library/Mylib/Graph/Matching/weighted_bipartite_matching.cpp.html">Weighted maximum bipartite matching</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 
 
@@ -56,6 +57,7 @@ layout: default
 #include "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
 #include "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 #include "Mylib/IO/join.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -64,11 +66,10 @@ int main(){
   int N; std::cin >> N;
   WeightedBipartiteMatching<int64_t, MinimumCostFlow<int, int64_t>, true> m(N, N);
 
-  auto a = std::vector(N, std::vector<int64_t>(N));
+  auto a = input_vector<int64_t>(N, N);
   
   for(int i = 0; i < N; ++i){
     for(int j = 0; j < N; ++j){
-      std::cin >> a[i][j];
       m.add_edge(i, j, a[i][j]);
     }
   }
@@ -79,7 +80,7 @@ int main(){
   auto matching = m.get_matching();
 
   std::vector<int> p(N);
-  for(auto &[i,j,c] : matching){
+  for(auto [i, j, c] : matching){
     p[i] = j;
   }
 
@@ -266,7 +267,25 @@ std::string join(ITER first, ITER last, std::string delim = " "){
 
   return s.str();
 }
-#line 8 "test/yosupo-judge/assignment/main.test.cpp"
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 9 "test/yosupo-judge/assignment/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -275,11 +294,10 @@ int main(){
   int N; std::cin >> N;
   WeightedBipartiteMatching<int64_t, MinimumCostFlow<int, int64_t>, true> m(N, N);
 
-  auto a = std::vector(N, std::vector<int64_t>(N));
+  auto a = input_vector<int64_t>(N, N);
   
   for(int i = 0; i < N; ++i){
     for(int j = 0; j < N; ++j){
-      std::cin >> a[i][j];
       m.add_edge(i, j, a[i][j]);
     }
   }
@@ -290,7 +308,7 @@ int main(){
   auto matching = m.get_matching();
 
   std::vector<int> p(N);
-  for(auto &[i,j,c] : matching){
+  for(auto [i, j, c] : matching){
     p[i] = j;
   }
 

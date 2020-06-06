@@ -41,7 +41,7 @@ layout: default
 
 * :x: <a href="../../../../library/Mylib/Combinatorics/catalan_number.cpp.html">Catalan number</a>
 * :x: <a href="../../../../library/Mylib/Combinatorics/combinatorics.cpp.html">Precalculation for combinatotion</a>
-* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code

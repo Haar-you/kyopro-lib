@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Fenwick tree (2D)
+# :heavy_check_mark: Fenwick tree (2D)
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -63,7 +63,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/2842/main.fenwick_tree.test.cpp.html">test/aoj/2842/main.fenwick_tree.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2842/main.fenwick_tree.test.cpp.html">test/aoj/2842/main.fenwick_tree.test.cpp</a>
 
 
 ## Code

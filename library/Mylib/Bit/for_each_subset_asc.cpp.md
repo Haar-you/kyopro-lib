@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Enumerate subsets (Ascending order)
+# :question: Enumerate subsets (Ascending order)
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -38,7 +38,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/ITP2_11_C/main.asc.test.cpp.html">test/aoj/ITP2_11_C/main.asc.test.cpp</a>
 
 

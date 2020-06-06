@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Bit/for_each_subset_asc.cpp.html">Enumerate subsets (Ascending order)</a>
+* :question: <a href="../../../../library/Mylib/Bit/for_each_subset_asc.cpp.html">Enumerate subsets (Ascending order)</a>
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 

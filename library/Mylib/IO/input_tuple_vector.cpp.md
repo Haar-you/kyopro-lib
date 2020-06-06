@@ -31,18 +31,20 @@ layout: default
 
 * category: <a href="../../../index.html#7f8c074a28e3c2f263a02491ce2132dd">Mylib/IO</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/IO/input_tuple_vector.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-31 20:10:49+09:00
+    - Last commit date: 2020-06-03 05:13:49+09:00
 
 
 
 
 ## Verified with
 
+* :x: <a href="../../../verify/test/aoj/0323/main.golden.test.cpp.html">test/aoj/0323/main.golden.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/0323/main.ternary.test.cpp.html">test/aoj/0323/main.ternary.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/1337/main.test.cpp.html">test/aoj/1337/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2293/main.test.cpp.html">test/aoj/2293/main.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/2426/main.test.cpp.html">test/aoj/2426/main.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/3132/main.test.cpp.html">test/aoj/3132/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/3132/main.test.cpp.html">test/aoj/3132/main.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/ALDS1_15_C/main.test.cpp.html">test/aoj/ALDS1_15_C/main.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/DPL_1_B/main.test.cpp.html">test/aoj/DPL_1_B/main.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/DPL_1_C/main.test.cpp.html">test/aoj/DPL_1_C/main.test.cpp</a>
@@ -53,6 +55,7 @@ layout: default
 * :x: <a href="../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/1069/main.test.cpp.html">test/yukicoder/1069/main.test.cpp</a>
 
 
 ## Code
@@ -72,16 +75,12 @@ layout: default
  */
 template <typename T, size_t ... I>
 void input_tuple_vector_init(T &val, int N, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{
-    (void(std::get<I>(val).resize(N)), 0)...
-  };
+  (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0)...};
 }
 
 template <typename T, size_t ... I>
 void input_tuple_vector_helper(T &val, int i, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{
-    (void(std::cin >> std::get<I>(val)[i]), 0)...
-  };
+  (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0)...};
 }
 
 template <typename ... Args>
@@ -114,16 +113,12 @@ auto input_tuple_vector(int N){
  */
 template <typename T, size_t ... I>
 void input_tuple_vector_init(T &val, int N, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{
-    (void(std::get<I>(val).resize(N)), 0)...
-  };
+  (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0)...};
 }
 
 template <typename T, size_t ... I>
 void input_tuple_vector_helper(T &val, int i, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{
-    (void(std::cin >> std::get<I>(val)[i]), 0)...
-  };
+  (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0)...};
 }
 
 template <typename ... Args>

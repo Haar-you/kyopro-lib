@@ -56,7 +56,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="fast_mobius_transform_subset.cpp.html">Fast Möbius transform (Subsets)</a>
-* :x: <a href="fast_zeta_transform_subset.cpp.html">Fast Zeta transform (Subset)</a>
+* :heavy_check_mark: <a href="fast_zeta_transform_subset.cpp.html">Fast Zeta transform (Subset)</a>
 
 
 ## Code

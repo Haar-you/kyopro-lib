@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0bd636f7c7da7cc28e18f9f04b1f4152">test/yukicoder/186</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/186/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-04 06:04:41+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/447">https://yukicoder.me/problems/447</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Number/chinese_remainder_algorithm.cpp.html">Chinese remainder theorem</a>
-* :x: <a href="../../../../library/Mylib/Number/extended_gcd.cpp.html">Extended euclidean algorithm</a>
+* :x: <a href="../../../../library/Mylib/Number/extended_gcd.cpp.html">Extended Euclidean algorithm</a>
 
 
 ## Code
@@ -83,7 +83,7 @@ int main(){
 #line 3 "Mylib/Number/extended_gcd.cpp"
 
 /**
- * @title Extended euclidean algorithm
+ * @title Extended Euclidean algorithm
  * @docs extended_gcd.md
  */
 std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
