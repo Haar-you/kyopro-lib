@@ -20,14 +20,28 @@ protected:
 protected:
   int count(node *t) const {return t ? t->count : 0;}
 
+  int count(node *t, T val, unsigned int depth = 1) const {
+    if(!t) return 0;
+
+    if(depth > B) return t->count;
+
+    int b = (val >> (B - depth)) & 1;
+    return count(t->ch[b], val, depth + 1);
+  }
+  
+public:
+  int count(T val) const {
+    return count(root, val);
+  }
+
 public:
   int size() const {return root ? root->count : 0;}
   bool empty() const {return !root;}
 
 protected:
-  void to_list(node *t, const T val, std::vector<T> &ret) const {
+  void to_list(node *t, T val, std::vector<T> &ret) const {
     if(!t) return;
-    if(!t->ch[0] && !t->ch[1]) ret.push_back(val);
+    if(!t->ch[0] and !t->ch[1]) for(int i = 0; i < t->count; ++i) ret.push_back(val);
 
     if(t->ch[0]) to_list(t->ch[0], val<<1, ret);
     if(t->ch[1]) to_list(t->ch[1], (val<<1)|1, ret);
@@ -41,63 +55,63 @@ public:
   }
 
 protected:
-  node* insert(node *t, const T &val, unsigned int depth = 1){
+  node* insert(node *t, T val, unsigned int depth = 1){
     if(!t) t = new node();
-    ++(t->count);
 
+    ++(t->count);
     if(depth > B) return t;
 
-    int b = (val >> (B-depth)) & 1;
-    t->ch[b] = insert(t->ch[b], val, depth+1);
+    int b = (val >> (B - depth)) & 1;
+    t->ch[b] = insert(t->ch[b], val, depth + 1);
     return t;
   }
   
 public:
-  void insert(const T &val){
+  void insert(T val){
     root = insert(root, val);
   }
   
 protected:
-  node* erase(node *t, const T &val, unsigned int depth = 1){
+  node* erase(node *t, T val, unsigned int depth = 1){
     if(!t) return t;
 
     --(t->count);
     if(t->count == 0) return nullptr;
     if(depth > B) return t;
 
-    int b = (val >> (B-depth)) & 1;
-    t->ch[b] = erase(t->ch[b], val, depth+1);
+    int b = (val >> (B - depth)) & 1;
+    t->ch[b] = erase(t->ch[b], val, depth + 1);
     return t;
   }
   
 public:
-  void erase(const T &val){
+  void erase(T val){
     root = erase(root, val);
   }
 
 protected:
-  T min_element(node *t, const T &diff, unsigned int depth = 1) const {
+  T min_element(node *t, T diff, unsigned int depth = 1) const {
     if(depth > B) return 0;
-    int b = (diff >> (B-depth)) & 1;
+    int b = (diff >> (B - depth)) & 1;
     b ^= !t->ch[b];
-    return min_element(t->ch[b], diff, depth+1) | (b << (B-depth));
+    return min_element(t->ch[b], diff, depth + 1) | (b << (B - depth));
   }
   
 public:
-  T min_element(const T &diff = 0) const {
+  T min_element(T diff = 0) const {
     return min_element(root, diff);
   }
 
 protected:
-  T max_element(node *t, const T &diff, unsigned int depth = 1) const {
+  T max_element(node *t, T diff, unsigned int depth = 1) const {
     if(depth > B) return 0;
-    int b = !((diff >> (B-depth)) & 1);
+    int b = !((diff >> (B - depth)) & 1);
     b ^= !t->ch[b];
-    return max_element(t->ch[b], diff, depth+1) | (b << (B-depth));
+    return max_element(t->ch[b], diff, depth + 1) | (b << (B - depth));
   }
   
 public:
-  T max_element(const T &diff = 0) const {
+  T max_element(T diff = 0) const {
     return max_element(root, diff);
   }
 
@@ -106,35 +120,28 @@ protected:
     if(depth > B) return 0;
 
     int c = count(t->ch[0]);
-    if(t->ch[0] && index < c) return at(t->ch[0], index, depth+1);
-    else return at(t->ch[1], index-c, depth+1) | ((T)1 << (B-depth));
+    if(t->ch[0] and index < c) return at(t->ch[0], index, depth + 1);
+    else return at(t->ch[1], index - c, depth + 1) | ((T)1 << (B - depth));
   }
 
 public:
   T at(int index) const {
-    return at(root, index);
-  }
-
-  T operator[](int index) const {
     return at(index);
   }
 
-
 protected:
-  int lower_bound(node *t, const T &val, unsigned int depth = 1) const {
+  int lower_bound(node *t, T val, unsigned int depth = 1) const {
     if(!t) return 0;
-
-    int b = (val >> (B-depth)) & 1;
-
-    return (b ? count(t->ch[0]) : 0) + lower_bound(t->ch[b], val, depth+1);
+    int b = (val >> (B - depth)) & 1;
+    return (b ? count(t->ch[0]) : 0) + lower_bound(t->ch[b], val, depth + 1);
   }
 
 public:
-  int lower_bound(const T &val) const {
+  int lower_bound(T val) const {
     return lower_bound(root, val);
   }
 
-  int upper_bound(const T &val) const{
-    return lower_bound(root, val+1);
+  int upper_bound(T val) const {
+    return lower_bound(root, val + 1);
   }
 };
