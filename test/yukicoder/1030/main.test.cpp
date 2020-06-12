@@ -38,7 +38,7 @@ int main(){
 
   SegmentTree<MaxMonoid<int>> seg1(N);
   for(int i = 0; i < N; ++i){
-    seg1.update(hld.get_id(i), C[i]);
+    seg1.update(hld.get_id(i), {C[i]});
   }
 
   SegmentTree<MaybeMonoid<LCASemigroup>> seg2(K);
@@ -59,7 +59,7 @@ int main(){
         0,
         lca,
         [&](int l, int r){
-          ans = std::max(ans, seg1.get(l, r));
+          ans = std::max(ans, seg1.get(l, r).value());
         }
       );
       

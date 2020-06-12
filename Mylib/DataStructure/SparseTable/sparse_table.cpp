@@ -15,7 +15,8 @@ class SparseTable{
   std::vector<int> log_table;
   
 public:
-  SparseTable(const std::vector<value_type> &v){
+  template <typename T>
+  SparseTable(const std::vector<T> &v){
     int n = v.size();
     int logn = 0;
     while((1 << logn) <= n) ++logn;

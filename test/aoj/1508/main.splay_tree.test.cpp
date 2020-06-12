@@ -12,16 +12,16 @@ int main(){
   splay_tree::SplayTree<MinMonoid<int>> s(n);
   
   for(auto [i, a] : input_tuples_with_index<int>(n)){
-    s.update(i, a);
+    s.update(i, {a});
   }
   
   for(auto [x, y, z] : input_tuples<int, int, int>(q)){
     if(x == 0){
-      auto temp = s.get(z);
+      auto temp = s.get(z).value();
       s.erase(z);
-      s.insert(y, temp);
+      s.insert(y, {temp});
     }else if(x == 1){
-      auto ans = s.fold(y, z+1);
+      auto ans = s.fold(y, z+1).value();
       std::cout << ans << std::endl;
     }else{
       s.update(y, z);

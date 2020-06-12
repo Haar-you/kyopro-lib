@@ -19,7 +19,7 @@ int main(){
   SparseTable<MinMonoid<int>> s(a);
 
   for(auto [l, r] : input_tuples<int, int>(Q)){
-    std::cout << s.get(l, r) << "\n";
+    std::cout << s.get(l, r).value() << "\n";
   }
 
   return 0;

@@ -30,7 +30,7 @@ int main(){
 
     seg.update(L, R+1, D);
       
-    auto ans = seg.get(0, N-1);
+    auto ans = seg.get(0, N-1).value();
     std::cout << ans << std::endl;
   }
 

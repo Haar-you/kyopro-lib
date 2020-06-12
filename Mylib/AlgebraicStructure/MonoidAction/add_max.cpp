@@ -13,6 +13,7 @@ struct AddMax{
   using value_type_update = typename monoid_update::value_type;
 
   constexpr inline static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
-    return a + b;
+    if(a) return {*a + b};
+    return {};
   }
 };
