@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Area of intersection between a circle and a polygon
+# :heavy_check_mark: Area of intersection between a circle and a polygon
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,14 +38,14 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="distance_segment_point.cpp.html">Distance between a segment and a point</a>
-* :question: <a href="geometry_template.cpp.html">Geometry template</a>
-* :x: <a href="intersect_circle_segment.cpp.html">Intersection between a circle and a segment</a>
+* :heavy_check_mark: <a href="distance_segment_point.cpp.html">Distance between a segment and a point</a>
+* :heavy_check_mark: <a href="geometry_template.cpp.html">Geometry template</a>
+* :heavy_check_mark: <a href="intersect_circle_segment.cpp.html">Intersection between a circle and a segment</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
 
 
 ## Code

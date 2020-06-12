@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#21b2d97411100b8521da1b9c251ad9c2">test/aoj/1508</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1508/main.treap.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-12 19:38:51+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508</a>
@@ -65,16 +65,16 @@ int main(){
   treap::Treap<MinMonoid<int>> s(n);
   
   for(auto [i, a] : input_tuples_with_index<int>(n)){
-    s.update(i, a);
+    s.update(i, {a});
   }
   
   for(auto [x, y, z] : input_tuples<int, int, int>(q)){
     if(x == 0){
-      auto temp = s.get(z);
+      auto temp = s.get(z).value();
       s.erase(z);
-      s.insert(y, temp);
+      s.insert(y, {temp});
     }else if(x == 1){
-      auto ans = s.fold(y, z+1);
+      auto ans = s.fold(y, z+1).value();
       std::cout << ans << std::endl;
     }else{
       s.update(y, z);
@@ -290,15 +290,21 @@ namespace treap{
 }
 #line 2 "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include <algorithm>
+#include <optional>
 
 /**
  * @docs min.md
  */
 template <typename T>
 struct MinMonoid{
-  using value_type = T;
-  constexpr inline static value_type id(){return std::numeric_limits<T>::max();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::min(a, b);}
+  using value_type = std::optional<T>;
+  
+  static value_type id(){return {};}
+  static value_type op(const value_type &a, const value_type &b){
+    if(not a) return b;
+    if(not b) return a;
+    return {std::min(*a, *b)};
+  }
 };
 #line 3 "Mylib/IO/input_tuples.cpp"
 #include <vector>
@@ -429,16 +435,16 @@ int main(){
   treap::Treap<MinMonoid<int>> s(n);
   
   for(auto [i, a] : input_tuples_with_index<int>(n)){
-    s.update(i, a);
+    s.update(i, {a});
   }
   
   for(auto [x, y, z] : input_tuples<int, int, int>(q)){
     if(x == 0){
-      auto temp = s.get(z);
+      auto temp = s.get(z).value();
       s.erase(z);
-      s.insert(y, temp);
+      s.insert(y, {temp});
     }else if(x == 1){
-      auto ans = s.fold(y, z+1);
+      auto ans = s.fold(y, z+1).value();
       std::cout << ans << std::endl;
     }else{
       s.update(y, z);

@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/CGL_4_C/main.test.cpp
+# :heavy_check_mark: test/aoj/CGL_4_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,12 +39,12 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Geometry/Float/area_polygon.cpp.html">Area of polygon</a>
-* :question: <a href="../../../../library/Mylib/Geometry/Float/ccw.cpp.html">Check clockwise-counterclockwise</a>
-* :x: <a href="../../../../library/Mylib/Geometry/Float/convex_cut.cpp.html">Convex cut</a>
-* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
-* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
-* :x: <a href="../../../../library/Mylib/Geometry/Float/intersect_line_segment.cpp.html">Intersection between a line and a segment</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/area_polygon.cpp.html">Area of polygon</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/ccw.cpp.html">Check clockwise-counterclockwise</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/convex_cut.cpp.html">Convex cut</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/intersect_line_segment.cpp.html">Intersection between a line and a segment</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>

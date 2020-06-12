@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#5680c9d4a5622c4318d3dde130a2c657">test/yosupo-judge/staticrmq</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/staticrmq/main.sparse_table.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-12 19:38:51+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/staticrmq">https://judge.yosupo.jp/problem/staticrmq</a>
@@ -72,7 +72,7 @@ int main(){
   SparseTable<MinMonoid<int>> s(a);
 
   for(auto [l, r] : input_tuples<int, int>(Q)){
-    std::cout << s.get(l, r) << "\n";
+    std::cout << s.get(l, r).value() << "\n";
   }
 
   return 0;
@@ -106,7 +106,8 @@ class SparseTable{
   std::vector<int> log_table;
   
 public:
-  SparseTable(const std::vector<value_type> &v){
+  template <typename T>
+  SparseTable(const std::vector<T> &v){
     int n = v.size();
     int logn = 0;
     while((1 << logn) <= n) ++logn;
@@ -147,15 +148,21 @@ public:
   }
 };
 #line 3 "Mylib/AlgebraicStructure/Monoid/min.cpp"
+#include <optional>
 
 /**
  * @docs min.md
  */
 template <typename T>
 struct MinMonoid{
-  using value_type = T;
-  constexpr inline static value_type id(){return std::numeric_limits<T>::max();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::min(a, b);}
+  using value_type = std::optional<T>;
+  
+  static value_type id(){return {};}
+  static value_type op(const value_type &a, const value_type &b){
+    if(not a) return b;
+    if(not b) return a;
+    return {std::min(*a, *b)};
+  }
 };
 #line 4 "Mylib/IO/input_vector.cpp"
 
@@ -259,7 +266,7 @@ int main(){
   SparseTable<MinMonoid<int>> s(a);
 
   for(auto [l, r] : input_tuples<int, int>(Q)){
-    std::cout << s.get(l, r) << "\n";
+    std::cout << s.get(l, r).value() << "\n";
   }
 
   return 0;

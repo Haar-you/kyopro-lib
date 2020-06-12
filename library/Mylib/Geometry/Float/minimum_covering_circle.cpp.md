@@ -55,7 +55,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="circumscribed_circle_of_triangle.cpp.html">Circumscribed circle of a triangle</a>
-* :question: <a href="geometry_template.cpp.html">Geometry template</a>
+* :heavy_check_mark: <a href="geometry_template.cpp.html">Geometry template</a>
 
 
 ## Verified with

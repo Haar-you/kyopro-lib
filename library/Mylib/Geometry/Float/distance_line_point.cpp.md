@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Distance between a line and a point
+# :heavy_check_mark: Distance between a line and a point
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,17 +38,17 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="geometry_template.cpp.html">Geometry template</a>
+* :heavy_check_mark: <a href="geometry_template.cpp.html">Geometry template</a>
 
 
 ## Required by
 
-* :x: <a href="intersect_circle_line.cpp.html">Intersection between a cirlce and a line</a>
+* :heavy_check_mark: <a href="intersect_circle_line.cpp.html">Intersection between a cirlce and a line</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/CGL_7_D/main.test.cpp.html">test/aoj/CGL_7_D/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_D/main.test.cpp.html">test/aoj/CGL_7_D/main.test.cpp</a>
 
 
 ## Code

@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="geometry_template.cpp.html">Geometry template</a>
+* :heavy_check_mark: <a href="geometry_template.cpp.html">Geometry template</a>
 
 
 ## Code

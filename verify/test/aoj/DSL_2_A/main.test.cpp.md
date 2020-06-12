@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#dad2ef36fe327d04dfb89ce81ab51ef9">test/aoj/DSL_2_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-12 19:38:51+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A</a>
@@ -53,6 +53,7 @@ layout: default
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A"
 
 #include <iostream>
+#include <climits>
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include "Mylib/IO/input_tuples.cpp"
@@ -66,7 +67,7 @@ int main(){
     if(type == 0){
       seg.update(x, y);
     }else{
-      std::cout << seg.get(x, y + 1) << std::endl;
+      std::cout << seg.get(x, y + 1).value_or(INT_MAX) << std::endl;
     }
   }
 
@@ -83,6 +84,7 @@ int main(){
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A"
 
 #include <iostream>
+#include <climits>
 #line 2 "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include <vector>
 
@@ -142,15 +144,21 @@ public:
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include <algorithm>
+#include <optional>
 
 /**
  * @docs min.md
  */
 template <typename T>
 struct MinMonoid{
-  using value_type = T;
-  constexpr inline static value_type id(){return std::numeric_limits<T>::max();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::min(a, b);}
+  using value_type = std::optional<T>;
+  
+  static value_type id(){return {};}
+  static value_type op(const value_type &a, const value_type &b){
+    if(not a) return b;
+    if(not b) return a;
+    return {std::min(*a, *b)};
+  }
 };
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
@@ -223,7 +231,7 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 7 "test/aoj/DSL_2_A/main.test.cpp"
+#line 8 "test/aoj/DSL_2_A/main.test.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
@@ -234,7 +242,7 @@ int main(){
     if(type == 0){
       seg.update(x, y);
     }else{
-      std::cout << seg.get(x, y + 1) << std::endl;
+      std::cout << seg.get(x, y + 1).value_or(INT_MAX) << std::endl;
     }
   }
 

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0b2f27755ad8078580256305f9366a63">test/yukicoder/631</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/631/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-12 19:38:51+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/631">https://yukicoder.me/problems/no/631</a>
@@ -85,7 +85,7 @@ int main(){
 
     seg.update(L, R+1, D);
       
-    auto ans = seg.get(0, N-1);
+    auto ans = seg.get(0, N-1).value();
     std::cout << ans << std::endl;
   }
 
@@ -191,15 +191,21 @@ struct SumMonoid{
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/max.cpp"
 #include <algorithm>
+#include <optional>
 
 /**
  * @docs max.md
  */
 template <typename T>
 struct MaxMonoid{
-  using value_type = T;
-  constexpr inline static value_type id(){return std::numeric_limits<T>::lowest();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::max(a, b);}
+  using value_type = std::optional<T>;
+  
+  static value_type id(){return {};}
+  static value_type op(const value_type &a, const value_type &b){
+    if(not a) return b;
+    if(not b) return a;
+    return {std::max(*a, *b)};
+  }
 };
 #line 4 "Mylib/AlgebraicStructure/MonoidAction/add_max.cpp"
 
@@ -214,7 +220,8 @@ struct AddMax{
   using value_type_update = typename monoid_update::value_type;
 
   constexpr inline static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
-    return a + b;
+    if(a) return {*a + b};
+    return {};
   }
 };
 #line 4 "Mylib/IO/input_vector.cpp"
@@ -330,7 +337,7 @@ int main(){
 
     seg.update(L, R+1, D);
       
-    auto ans = seg.get(0, N-1);
+    auto ans = seg.get(0, N-1).value();
     std::cout << ans << std::endl;
   }
 

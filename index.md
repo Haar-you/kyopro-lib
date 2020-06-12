@@ -234,7 +234,7 @@ layout: default
 
 ### Mylib/DataStructure/Heap
 
-* :x: <a href="library/Mylib/DataStructure/Heap/binary_heap.cpp.html">Binary heap</a>
+* :heavy_check_mark: <a href="library/Mylib/DataStructure/Heap/binary_heap.cpp.html">Binary heap</a>
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/Heap/binomial_heap.cpp.html">Binomial heap</a>
 * :warning: <a href="library/Mylib/DataStructure/Heap/interval_heap.cpp.html">Interval heap</a>
 * :heavy_check_mark: <a href="library/Mylib/DataStructure/Heap/leftist_heap.cpp.html">Leftist heap</a>
@@ -315,7 +315,7 @@ layout: default
 
 ### Mylib/DataStructure/Trie
 
-* :warning: <a href="library/Mylib/DataStructure/Trie/binary_trie.cpp.html">Binary trie</a>
+* :x: <a href="library/Mylib/DataStructure/Trie/binary_trie.cpp.html">Binary trie</a>
 
 
 <div id="3ff74e8366c88d06b530f361450b1117"></div>
@@ -365,35 +365,35 @@ layout: default
 
 ### Mylib/Geometry/Float
 
-* :x: <a href="library/Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp.html">Area of intersection between a circle and a polygon</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp.html">Area of intersection between a circle and a polygon</a>
 * :warning: <a href="library/Mylib/Geometry/Float/area_intersection_of_circles.cpp.html">Area of intersection between two circles</a>
-* :x: <a href="library/Mylib/Geometry/Float/area_polygon.cpp.html">Area of polygon</a>
-* :question: <a href="library/Mylib/Geometry/Float/ccw.cpp.html">Check clockwise-counterclockwise</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/area_polygon.cpp.html">Area of polygon</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/ccw.cpp.html">Check clockwise-counterclockwise</a>
 * :heavy_check_mark: <a href="library/Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp.html">Circumscribed circle of a triangle</a>
-* :x: <a href="library/Mylib/Geometry/Float/closest_pair.cpp.html">Closest pair</a>
-* :x: <a href="library/Mylib/Geometry/Float/common_tangent_of_circles.cpp.html">Common tangents of two circles</a>
-* :x: <a href="library/Mylib/Geometry/Float/convex_cut.cpp.html">Convex cut</a>
-* :x: <a href="library/Mylib/Geometry/Float/convex_diameter.cpp.html">Convex diameter</a>
-* :x: <a href="library/Mylib/Geometry/Float/convex_hull.cpp.html">Convex hull</a>
-* :x: <a href="library/Mylib/Geometry/Float/distance_line_point.cpp.html">Distance between a line and a point</a>
-* :x: <a href="library/Mylib/Geometry/Float/distance_segment_point.cpp.html">Distance between a segment and a point</a>
-* :x: <a href="library/Mylib/Geometry/Float/distance_segments.cpp.html">Distance between two segments</a>
-* :question: <a href="library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
-* :question: <a href="library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/closest_pair.cpp.html">Closest pair</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/common_tangent_of_circles.cpp.html">Common tangents of two circles</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/convex_cut.cpp.html">Convex cut</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/convex_diameter.cpp.html">Convex diameter</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/convex_hull.cpp.html">Convex hull</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/distance_line_point.cpp.html">Distance between a line and a point</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/distance_segment_point.cpp.html">Distance between a segment and a point</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/distance_segments.cpp.html">Distance between two segments</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
 * :warning: <a href="library/Mylib/Geometry/Float/inscribed_circle_of_triangle.cpp.html">Inscribed circle of a triangle</a>
-* :x: <a href="library/Mylib/Geometry/Float/intersect_circle_line.cpp.html">Intersection between a cirlce and a line</a>
-* :x: <a href="library/Mylib/Geometry/Float/intersect_circle_segment.cpp.html">Intersection between a circle and a segment</a>
-* :x: <a href="library/Mylib/Geometry/Float/intersect_circles.cpp.html">Intersection between two circles</a>
-* :x: <a href="library/Mylib/Geometry/Float/intersect_line_segment.cpp.html">Intersection between a line and a segment</a>
-* :question: <a href="library/Mylib/Geometry/Float/intersect_segments.cpp.html">Intersection between two lines</a>
-* :x: <a href="library/Mylib/Geometry/Float/is_convex.cpp.html">Check convex</a>
-* :x: <a href="library/Mylib/Geometry/Float/is_point_in_polygon.cpp.html">Check if a point is in a polygon</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/intersect_circle_line.cpp.html">Intersection between a cirlce and a line</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/intersect_circle_segment.cpp.html">Intersection between a circle and a segment</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/intersect_circles.cpp.html">Intersection between two circles</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/intersect_line_segment.cpp.html">Intersection between a line and a segment</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/intersect_segments.cpp.html">Intersection between two lines</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/is_convex.cpp.html">Check convex</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/is_point_in_polygon.cpp.html">Check if a point is in a polygon</a>
 * :heavy_check_mark: <a href="library/Mylib/Geometry/Float/minimum_covering_circle.cpp.html">Minimum covering circle</a>
-* :x: <a href="library/Mylib/Geometry/Float/orthogonal.cpp.html">Orthogonal</a>
-* :x: <a href="library/Mylib/Geometry/Float/parallel.cpp.html">Parallel</a>
-* :x: <a href="library/Mylib/Geometry/Float/projection.cpp.html">Projection</a>
-* :x: <a href="library/Mylib/Geometry/Float/reflection.cpp.html">Reflection</a>
-* :x: <a href="library/Mylib/Geometry/Float/tangent_of_circle.cpp.html">Tangent of circle</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/orthogonal.cpp.html">Orthogonal</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/parallel.cpp.html">Parallel</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/projection.cpp.html">Projection</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/reflection.cpp.html">Reflection</a>
+* :heavy_check_mark: <a href="library/Mylib/Geometry/Float/tangent_of_circle.cpp.html">Tangent of circle</a>
 
 
 <div id="791a56799ce3ef8e4fb5da8cbce3a9bf"></div>
@@ -473,6 +473,7 @@ layout: default
 
 * :x: <a href="library/Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp.html">Chu-Liu/Edmonds algorithm</a>
 * :x: <a href="library/Mylib/Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
+* :x: <a href="library/Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
 * :question: <a href="library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
 
 
@@ -592,7 +593,7 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/Misc/dice.cpp.html">Dice</a>
 * :heavy_check_mark: <a href="library/Mylib/Misc/fix_point.cpp.html">Fixed point combinator</a>
 * :x: <a href="library/Mylib/Misc/int128.cpp.html">128-bit int</a>
-* :x: <a href="library/Mylib/Misc/inversion_number.cpp.html">Inversion number</a>
+* :heavy_check_mark: <a href="library/Mylib/Misc/inversion_number.cpp.html">Inversion number</a>
 * :heavy_check_mark: <a href="library/Mylib/Misc/merge_technique.cpp.html">Mylib/Misc/merge_technique.cpp</a>
 * :warning: <a href="library/Mylib/Misc/run_length_encoding.cpp.html">Run length encoding</a>
 * :x: <a href="library/Mylib/Misc/sort_simultaneously.cpp.html">Mylib/Misc/sort_simultaneously.cpp</a>
@@ -651,7 +652,7 @@ layout: default
 * :x: <a href="library/Mylib/Number/Prime/count_coprime.cpp.html">Count coprime</a>
 * :x: <a href="library/Mylib/Number/Prime/eratosthenes_sieve.cpp.html">Sieve of Eratosthenes</a>
 * :warning: <a href="library/Mylib/Number/Prime/factorial_prime_factorization.cpp.html">Count number of prime factor p of $a!$</a>
-* :x: <a href="library/Mylib/Number/Prime/is_prime.cpp.html">Primality test (Trial division)</a>
+* :heavy_check_mark: <a href="library/Mylib/Number/Prime/is_prime.cpp.html">Primality test (Trial division)</a>
 * :x: <a href="library/Mylib/Number/Prime/miller_rabin.cpp.html">Primality test (Miller-Rabin algorithm)</a>
 * :x: <a href="library/Mylib/Number/Prime/prime_factorize.cpp.html">Prime factorization</a>
 * :warning: <a href="library/Mylib/Number/Prime/prime_factorize_precalculated.cpp.html">Prime factorization (Precalculation)</a>
@@ -683,7 +684,7 @@ layout: default
 * :warning: <a href="library/Mylib/String/manacher.cpp.html">Manacher algorithm</a>
 * :warning: <a href="library/Mylib/String/palindromic_tree.cpp.html">Palindromic tree</a>
 * :heavy_check_mark: <a href="library/Mylib/String/rolling_hash.cpp.html">Rolling hash</a>
-* :x: <a href="library/Mylib/String/rolling_hash_2d.cpp.html">Rolling hash (2D)</a>
+* :heavy_check_mark: <a href="library/Mylib/String/rolling_hash_2d.cpp.html">Rolling hash (2D)</a>
 * :x: <a href="library/Mylib/String/run_enumerate.cpp.html">Run enumerate</a>
 * :heavy_check_mark: <a href="library/Mylib/String/split.cpp.html">split</a>
 * :warning: <a href="library/Mylib/String/starts_with.cpp.html">starts_with</a>
@@ -696,7 +697,7 @@ layout: default
 
 ### Mylib/TypicalProblem/IntervalSchedulingProblem
 
-* :x: <a href="library/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling.cpp.html">Interval scheduling problem</a>
+* :heavy_check_mark: <a href="library/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling.cpp.html">Interval scheduling problem</a>
 * :x: <a href="library/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp.html">Interval scheduling problem (Allow no more than k intervals to overlap)</a>
 * :warning: <a href="library/Mylib/TypicalProblem/IntervalSchedulingProblem/weighted_interval_scheduling.cpp.html">Weighted interval scheduling problem</a>
 
@@ -708,8 +709,8 @@ layout: default
 * :x: <a href="library/Mylib/TypicalProblem/KnapsackProblem/knapsack_limited.cpp.html">Knapsack problem (With quantity limitations)</a>
 * :x: <a href="library/Mylib/TypicalProblem/KnapsackProblem/knapsack_small_quantity.cpp.html">0-1 Knapsack problem (Small quantity)</a>
 * :x: <a href="library/Mylib/TypicalProblem/KnapsackProblem/knapsack_small_value.cpp.html">0-1 Knapsack problem (Small value)</a>
-* :x: <a href="library/Mylib/TypicalProblem/KnapsackProblem/knapsack_small_weight.cpp.html">0-1 Knapsack problem (Small weight)</a>
-* :x: <a href="library/Mylib/TypicalProblem/KnapsackProblem/knapsack_unlimited.cpp.html">Knapsack problem (Without quantity limitations)</a>
+* :heavy_check_mark: <a href="library/Mylib/TypicalProblem/KnapsackProblem/knapsack_small_weight.cpp.html">0-1 Knapsack problem (Small weight)</a>
+* :heavy_check_mark: <a href="library/Mylib/TypicalProblem/KnapsackProblem/knapsack_unlimited.cpp.html">Knapsack problem (Without quantity limitations)</a>
 
 
 <div id="e5c03cf251a1c8b45af0c48200d5638e"></div>
@@ -728,6 +729,24 @@ layout: default
 * :warning: <a href="library/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_count.cpp.html">Subset sum problem (Count)</a>
 * :heavy_check_mark: <a href="library/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp.html">Subset sum problem (With quantity limitations)</a>
 * :warning: <a href="library/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_minimum.cpp.html">Subset sum problem (Minimum)</a>
+
+
+<div id="67be68a348da3b850fb7daa10b034528"></div>
+
+### snippets
+
+* :warning: <a href="library/snippets/all.cpp.html">snippets/all.cpp</a>
+* :warning: <a href="library/snippets/bits.cpp.html">snippets/bits.cpp</a>
+* :warning: <a href="library/snippets/cauto.cpp.html">snippets/cauto.cpp</a>
+* :warning: <a href="library/snippets/debugging.cpp.html">snippets/debugging.cpp</a>
+* :warning: <a href="library/snippets/exists.cpp.html">snippets/exists.cpp</a>
+* :warning: <a href="library/snippets/fastcin.cpp.html">snippets/fastcin.cpp</a>
+* :warning: <a href="library/snippets/fore.cpp.html">snippets/fore.cpp</a>
+* :warning: <a href="library/snippets/main.cpp.html">snippets/main.cpp</a>
+* :warning: <a href="library/snippets/mytemplate.cpp.html">snippets/mytemplate.cpp</a>
+* :warning: <a href="library/snippets/range.cpp.html">snippets/range.cpp</a>
+* :warning: <a href="library/snippets/rep.cpp.html">snippets/rep.cpp</a>
+* :warning: <a href="library/snippets/uniq.cpp.html">snippets/uniq.cpp</a>
 
 
 ## Verify Files
@@ -771,33 +790,33 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/3134/main.test.cpp.html">test/aoj/3134/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/ALDS1_10_C/main.test.cpp.html">test/aoj/ALDS1_10_C/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/ALDS1_14_B/main.test.cpp.html">test/aoj/ALDS1_14_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/ALDS1_14_C/main.test.cpp.html">test/aoj/ALDS1_14_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/ALDS1_15_C/main.test.cpp.html">test/aoj/ALDS1_15_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/ALDS1_1_C/main.test.cpp.html">test/aoj/ALDS1_1_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/ALDS1_5_D/main.test.cpp.html">test/aoj/ALDS1_5_D/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/ALDS1_9_C/main.binary.test.cpp.html">test/aoj/ALDS1_9_C/main.binary.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_1_A/main.test.cpp.html">test/aoj/CGL_1_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_1_B/main.test.cpp.html">test/aoj/CGL_1_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_1_C/main.test.cpp.html">test/aoj/CGL_1_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_2_A/main.test.cpp.html">test/aoj/CGL_2_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_2_B/main.test.cpp.html">test/aoj/CGL_2_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_2_C/main.test.cpp.html">test/aoj/CGL_2_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_2_D/main.test.cpp.html">test/aoj/CGL_2_D/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_3_A/main.test.cpp.html">test/aoj/CGL_3_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_3_B/main.test.cpp.html">test/aoj/CGL_3_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_3_C/main.test.cpp.html">test/aoj/CGL_3_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_4_A/main.test.cpp.html">test/aoj/CGL_4_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_4_B/main.test.cpp.html">test/aoj/CGL_4_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_5_A/main.test.cpp.html">test/aoj/CGL_5_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_7_A/main.test.cpp.html">test/aoj/CGL_7_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_7_D/main.test.cpp.html">test/aoj/CGL_7_D/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_7_E/main.test.cpp.html">test/aoj/CGL_7_E/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_7_F/main.test.cpp.html">test/aoj/CGL_7_F/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_7_G/main.test.cpp.html">test/aoj/CGL_7_G/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_1_B/main.test.cpp.html">test/aoj/DPL_1_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_1_C/main.test.cpp.html">test/aoj/DPL_1_C/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/ALDS1_14_C/main.test.cpp.html">test/aoj/ALDS1_14_C/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/ALDS1_15_C/main.test.cpp.html">test/aoj/ALDS1_15_C/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/ALDS1_1_C/main.test.cpp.html">test/aoj/ALDS1_1_C/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/ALDS1_5_D/main.test.cpp.html">test/aoj/ALDS1_5_D/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/ALDS1_9_C/main.binary.test.cpp.html">test/aoj/ALDS1_9_C/main.binary.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_1_A/main.test.cpp.html">test/aoj/CGL_1_A/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_1_B/main.test.cpp.html">test/aoj/CGL_1_B/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_1_C/main.test.cpp.html">test/aoj/CGL_1_C/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_2_A/main.test.cpp.html">test/aoj/CGL_2_A/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_2_B/main.test.cpp.html">test/aoj/CGL_2_B/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_2_C/main.test.cpp.html">test/aoj/CGL_2_C/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_2_D/main.test.cpp.html">test/aoj/CGL_2_D/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_3_A/main.test.cpp.html">test/aoj/CGL_3_A/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_3_B/main.test.cpp.html">test/aoj/CGL_3_B/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_3_C/main.test.cpp.html">test/aoj/CGL_3_C/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_4_A/main.test.cpp.html">test/aoj/CGL_4_A/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_4_B/main.test.cpp.html">test/aoj/CGL_4_B/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_5_A/main.test.cpp.html">test/aoj/CGL_5_A/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_7_A/main.test.cpp.html">test/aoj/CGL_7_A/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_7_D/main.test.cpp.html">test/aoj/CGL_7_D/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_7_E/main.test.cpp.html">test/aoj/CGL_7_E/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_7_F/main.test.cpp.html">test/aoj/CGL_7_F/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_7_G/main.test.cpp.html">test/aoj/CGL_7_G/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DPL_1_B/main.test.cpp.html">test/aoj/DPL_1_B/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/DPL_1_C/main.test.cpp.html">test/aoj/DPL_1_C/main.test.cpp</a>
 * :x: <a href="verify/test/aoj/DPL_1_D/main.test.cpp.html">test/aoj/DPL_1_D/main.test.cpp</a>
 * :x: <a href="verify/test/aoj/DPL_1_E/main.test.cpp.html">test/aoj/DPL_1_E/main.test.cpp</a>
 * :x: <a href="verify/test/aoj/DPL_1_F/main.test.cpp.html">test/aoj/DPL_1_F/main.test.cpp</a>
@@ -864,6 +883,7 @@ layout: default
 * :x: <a href="verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
 * :x: <a href="verify/test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp.html">test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp</a>
 * :x: <a href="verify/test/yosupo-judge/line_add_get_min/main.test.cpp.html">test/yosupo-judge/line_add_get_min/main.test.cpp</a>
+* :x: <a href="verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
 * :x: <a href="verify/test/yosupo-judge/matrix_det/main.test.cpp.html">test/yosupo-judge/matrix_det/main.test.cpp</a>
 * :x: <a href="verify/test/yosupo-judge/maximum_independent_set/main.test.cpp.html">test/yosupo-judge/maximum_independent_set/main.test.cpp</a>
 * :x: <a href="verify/test/yosupo-judge/montmort_number_mod/main.test.cpp.html">test/yosupo-judge/montmort_number_mod/main.test.cpp</a>
@@ -882,6 +902,7 @@ layout: default
 * :x: <a href="verify/test/yosupo-judge/runenumerate/main.test.cpp.html">test/yosupo-judge/runenumerate/main.test.cpp</a>
 * :x: <a href="verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
 * :x: <a href="verify/test/yosupo-judge/segment_add_get_min/main.test.cpp.html">test/yosupo-judge/segment_add_get_min/main.test.cpp</a>
+* :x: <a href="verify/test/yosupo-judge/set_xor_min/main.test.cpp.html">test/yosupo-judge/set_xor_min/main.test.cpp</a>
 * :x: <a href="verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
 * :x: <a href="verify/test/yosupo-judge/static_range_sum/main.test.cpp.html">test/yosupo-judge/static_range_sum/main.test.cpp</a>
 * :x: <a href="verify/test/yosupo-judge/staticrmq/main.sparse_table.test.cpp.html">test/yosupo-judge/staticrmq/main.sparse_table.test.cpp</a>

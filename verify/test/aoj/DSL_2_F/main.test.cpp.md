@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#2ac20e439971e957ed6809338e9771d9">test/aoj/DSL_2_F</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_F/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-12 19:38:51+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F</a>
@@ -64,14 +64,13 @@ int main(){
   int n, q; std::cin >> n >> q;
 
   LazySegmentTree<UpdateMin<int,int>> seg(n);
-  seg.init(INT_MAX);
 
   for(auto [type, s, t] : input_tuples<int, int, int>(q)){
     if(type == 0){
       int x; std::cin >> x;
       seg.update(s, t+1, x);
     }else{
-      std::cout << seg.get(s, t+1) << std::endl;
+      std::cout << seg.get(s, t+1).value_or(INT_MAX) << std::endl;
     }
   }
   
@@ -178,15 +177,21 @@ struct UpdateMonoid{
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include <algorithm>
+#include <optional>
 
 /**
  * @docs min.md
  */
 template <typename T>
 struct MinMonoid{
-  using value_type = T;
-  constexpr inline static value_type id(){return std::numeric_limits<T>::max();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::min(a, b);}
+  using value_type = std::optional<T>;
+  
+  static value_type id(){return {};}
+  static value_type op(const value_type &a, const value_type &b){
+    if(not a) return b;
+    if(not b) return a;
+    return {std::min(*a, *b)};
+  }
 };
 #line 4 "Mylib/AlgebraicStructure/MonoidAction/update_min.cpp"
 
@@ -281,14 +286,13 @@ int main(){
   int n, q; std::cin >> n >> q;
 
   LazySegmentTree<UpdateMin<int,int>> seg(n);
-  seg.init(INT_MAX);
 
   for(auto [type, s, t] : input_tuples<int, int, int>(q)){
     if(type == 0){
       int x; std::cin >> x;
       seg.update(s, t+1, x);
     }else{
-      std::cout << seg.get(s, t+1) << std::endl;
+      std::cout << seg.get(s, t+1).value_or(INT_MAX) << std::endl;
     }
   }
   

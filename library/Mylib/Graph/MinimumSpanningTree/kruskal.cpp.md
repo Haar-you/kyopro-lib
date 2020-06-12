@@ -42,9 +42,15 @@ layout: default
 * :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
+## Required by
+
+* :x: <a href="manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
+
+
 ## Verified with
 
 * :x: <a href="../../../../verify/test/aoj/GRL_2_A/main.kruskal.test.cpp.html">test/aoj/GRL_2_A/main.kruskal.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
 
 
 ## Code

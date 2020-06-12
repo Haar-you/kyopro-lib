@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#dff63cd4dbbcc206af021772ba80d157">test/aoj/DSL_2_H</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_H/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-12 19:38:51+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H</a>
@@ -70,7 +70,7 @@ int main(){
       int x; std::cin >> x;
       seg.update(s, t+1, x);
     }else{
-      std::cout << seg.get(s, t+1) << std::endl;
+      std::cout << seg.get(s, t+1).value() << std::endl;
     }
   }
 
@@ -175,15 +175,21 @@ struct SumMonoid{
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include <algorithm>
+#include <optional>
 
 /**
  * @docs min.md
  */
 template <typename T>
 struct MinMonoid{
-  using value_type = T;
-  constexpr inline static value_type id(){return std::numeric_limits<T>::max();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::min(a, b);}
+  using value_type = std::optional<T>;
+  
+  static value_type id(){return {};}
+  static value_type op(const value_type &a, const value_type &b){
+    if(not a) return b;
+    if(not b) return a;
+    return {std::min(*a, *b)};
+  }
 };
 #line 4 "Mylib/AlgebraicStructure/MonoidAction/add_min.cpp"
 
@@ -198,7 +204,8 @@ struct AddMin{
   using value_type_update = typename monoid_update::value_type;
 
   constexpr inline static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
-    return a + b;
+    if(a) return {*a + b};
+    return {};
   }
 };
 #line 4 "Mylib/IO/input_tuples.cpp"
@@ -285,7 +292,7 @@ int main(){
       int x; std::cin >> x;
       seg.update(s, t+1, x);
     }else{
-      std::cout << seg.get(s, t+1) << std::endl;
+      std::cout << seg.get(s, t+1).value() << std::endl;
     }
   }
 

@@ -52,8 +52,8 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="geometry_template.cpp.html">Geometry template</a>
-* :x: <a href="intersect_circles.cpp.html">Intersection between two circles</a>
+* :heavy_check_mark: <a href="geometry_template.cpp.html">Geometry template</a>
+* :heavy_check_mark: <a href="intersect_circles.cpp.html">Intersection between two circles</a>
 
 
 ## Code

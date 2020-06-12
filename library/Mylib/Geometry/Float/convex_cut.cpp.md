@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Convex cut
+# :heavy_check_mark: Convex cut
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,14 +38,14 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="ccw.cpp.html">Check clockwise-counterclockwise</a>
-* :question: <a href="geometry_template.cpp.html">Geometry template</a>
-* :x: <a href="intersect_line_segment.cpp.html">Intersection between a line and a segment</a>
+* :heavy_check_mark: <a href="ccw.cpp.html">Check clockwise-counterclockwise</a>
+* :heavy_check_mark: <a href="geometry_template.cpp.html">Geometry template</a>
+* :heavy_check_mark: <a href="intersect_line_segment.cpp.html">Intersection between a line and a segment</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
 
 
 ## Code

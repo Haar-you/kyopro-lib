@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/ALDS1_1_C/main.test.cpp
+# :heavy_check_mark: test/aoj/ALDS1_1_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -41,7 +41,7 @@ layout: default
 
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :x: <a href="../../../../library/Mylib/Number/Prime/is_prime.cpp.html">Primality test (Trial division)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/is_prime.cpp.html">Primality test (Trial division)</a>
 
 
 ## Code

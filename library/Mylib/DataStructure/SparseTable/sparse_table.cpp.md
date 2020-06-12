@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#9f519a6857abe7364ea5fbe97ba369aa">Mylib/DataStructure/SparseTable</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SparseTable/sparse_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-12 19:38:51+09:00
 
 
 
@@ -77,7 +77,8 @@ class SparseTable{
   std::vector<int> log_table;
   
 public:
-  SparseTable(const std::vector<value_type> &v){
+  template <typename T>
+  SparseTable(const std::vector<T> &v){
     int n = v.size();
     int logn = 0;
     while((1 << logn) <= n) ++logn;
@@ -141,7 +142,8 @@ class SparseTable{
   std::vector<int> log_table;
   
 public:
-  SparseTable(const std::vector<value_type> &v){
+  template <typename T>
+  SparseTable(const std::vector<T> &v){
     int n = v.size();
     int logn = 0;
     while((1 << logn) <= n) ++logn;

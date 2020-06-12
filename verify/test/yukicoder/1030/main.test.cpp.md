@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#fce7f5311a6094c5e355d46a4ec1ba92">test/yukicoder/1030</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/1030/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-12 19:38:51+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/1030">https://yukicoder.me/problems/no/1030</a>
@@ -95,7 +95,7 @@ int main(){
 
   SegmentTree<MaxMonoid<int>> seg1(N);
   for(int i = 0; i < N; ++i){
-    seg1.update(hld.get_id(i), C[i]);
+    seg1.update(hld.get_id(i), {C[i]});
   }
 
   SegmentTree<MaybeMonoid<LCASemigroup>> seg2(K);
@@ -116,7 +116,7 @@ int main(){
         0,
         lca,
         [&](int l, int r){
-          ans = std::max(ans, seg1.get(l, r));
+          ans = std::max(ans, seg1.get(l, r).value());
         }
       );
       
@@ -358,15 +358,21 @@ public:
   }  
 };
 #line 3 "Mylib/AlgebraicStructure/Monoid/max.cpp"
+#include <optional>
 
 /**
  * @docs max.md
  */
 template <typename T>
 struct MaxMonoid{
-  using value_type = T;
-  constexpr inline static value_type id(){return std::numeric_limits<T>::lowest();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::max(a, b);}
+  using value_type = std::optional<T>;
+  
+  static value_type id(){return {};}
+  static value_type op(const value_type &a, const value_type &b){
+    if(not a) return b;
+    if(not b) return a;
+    return {std::max(*a, *b)};
+  }
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/maybe.cpp"
 #include <optional>
@@ -531,7 +537,7 @@ int main(){
 
   SegmentTree<MaxMonoid<int>> seg1(N);
   for(int i = 0; i < N; ++i){
-    seg1.update(hld.get_id(i), C[i]);
+    seg1.update(hld.get_id(i), {C[i]});
   }
 
   SegmentTree<MaybeMonoid<LCASemigroup>> seg2(K);
@@ -552,7 +558,7 @@ int main(){
         0,
         lca,
         [&](int l, int r){
-          ans = std::max(ans, seg1.get(l, r));
+          ans = std::max(ans, seg1.get(l, r).value());
         }
       );
       
