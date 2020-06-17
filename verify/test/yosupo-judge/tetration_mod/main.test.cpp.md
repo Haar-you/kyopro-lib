@@ -25,24 +25,24 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
+# :x: test/yosupo-judge/tetration_mod/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#082039b3153b4a2410d6e14e04aca1cc">test/aoj/DSL_2_B</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+* category: <a href="../../../../index.html#8d2eb885a99697d1d568e2fa6fb51db3">test/yosupo-judge/tetration_mod</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/tetration_mod/main.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-16 23:16:56+09:00
 
 
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B</a>
+* see: <a href="https://judge.yosupo.jp/problem/tetration_mod">https://judge.yosupo.jp/problem/tetration_mod</a>
 
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum.cpp.html">Mylib/AlgebraicStructure/Group/sum.cpp</a>
-* :question: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">Fenwick tree</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/Number/euler_phi_function.cpp.html">Euler's totient function</a>
+* :x: <a href="../../../../library/Mylib/Number/tetration.cpp.html">Tetration</a>
 
 
 ## Code
@@ -50,24 +50,19 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B"
+#define PROBLEM "https://judge.yosupo.jp/problem/tetration_mod"
 
 #include <iostream>
-#include "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
-#include "Mylib/AlgebraicStructure/Group/sum.cpp"
+
 #include "Mylib/IO/input_tuples.cpp"
+#include "Mylib/Number/tetration.cpp"
 
 int main(){
-  int n, q; std::cin >> n >> q;
+  int T; std::cin >> T;
 
-  auto fen = FenwickTree<SumGroup<int>>(n);
-
-  for(auto [type, x, y] : input_tuples<int, int, int>(q)){
-    if(type == 0){
-      fen.update(x-1, y);
-    }else{
-      std::cout << fen.get(x-1, y) << std::endl;
-    }
+  for(auto [A, B, M] : input_tuples<int, int, int>(T)){
+    auto ans = tetration(A, B, M);
+    std::cout << ans << "\n";
   }
 
   return 0;
@@ -79,73 +74,13 @@ int main(){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/aoj/DSL_2_B/main.fenwick_tree.test.cpp"
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B"
+#line 1 "test/yosupo-judge/tetration_mod/main.test.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/tetration_mod"
 
 #include <iostream>
-#line 2 "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
+
+#line 3 "Mylib/IO/input_tuples.cpp"
 #include <vector>
-
-/**
- * @title Fenwick tree
- * @docs fenwick_tree.md
- */
-template <typename AbelianGroup>
-class FenwickTree{
-  using value_type = typename AbelianGroup::value_type;
-  
-  int size;
-  std::vector<value_type> data;
-  
-public:
-  FenwickTree(){}
-  FenwickTree(int size):
-    size(size), data(size + 1, AbelianGroup::id())
-  {}
-  
-  inline void update(int i, const value_type &val){
-    i += 1; // 1-index
-    
-    while(i <= size){
-      data[i] = AbelianGroup::op(data[i], val);
-      i += i & (-i);
-    }
-  }
-  
-  inline value_type get(int i) const { // [0, i)
-    value_type ret = AbelianGroup::id();
-    i += 1; // 1-index
-
-    while(i > 0){
-      ret = AbelianGroup::op(ret, data[i]);
-      i -= i & (-i);
-    }
-
-    return ret;
-  }
-
-  inline value_type get(int l, int r) const { // [l, r)
-    return AbelianGroup::op(get(r-1), AbelianGroup::inv(get(l-1)));
-  }
-  
-  inline value_type at(int x) const {
-    return get(x, x+1);
-  }
-};
-#line 2 "Mylib/AlgebraicStructure/Group/sum.cpp"
-
-/**
- * @docs sum.md
- */
-template <typename T>
-struct SumGroup{
-  using value_type = T;
-
-  static value_type id(){return 0;}
-  static value_type op(const value_type &a, const value_type &b){return a + b;}
-  static value_type inv(const value_type &a){return -a;}
-};
-#line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
 #include <utility>
 #include <initializer_list>
@@ -216,19 +151,83 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 7 "test/aoj/DSL_2_B/main.fenwick_tree.test.cpp"
+#line 2 "Mylib/Number/tetration.cpp"
+
+#line 2 "Mylib/Number/euler_phi_function.cpp"
+
+/**
+ * @title Euler's totient function
+ * @docs euler_phi_function.md
+ */
+int64_t totient(int64_t n){
+  int64_t ret = n;
+
+  for(int64_t i = 2; i * i <= n; ++i){
+    if(n % i == 0){
+      ret -= ret / i;
+      while(n % i == 0) n /= i;
+    }
+  }
+
+  if(n != 1) ret -= ret / n;
+
+  return ret;
+}
+#line 4 "Mylib/Number/tetration.cpp"
+
+/**
+ * @title Tetration
+ * @docs tetration.md
+ */
+int tetration(int64_t a, int64_t b, int64_t m){
+  auto rec =
+    [](auto &rec, int64_t a, int64_t b, int64_t m) -> int {
+      if(b == 1) return a % m;
+      if(b == 0) return 1 % m;
+      if(b == 2){
+        bool c = a >= m;
+        int64_t ret = 1;
+        int64_t p = a;
+        a %= m;
+
+        while(p > 0){
+          if(p & 1) if((ret *= a) >= m) ret %= m, c = true;
+          if((a *= a) >= m) a %= m, c = true;
+          p >>= 1;
+        }
+
+        if(c) ret += m;
+        return ret;
+      }
+      if(a == 0) return b % 2 == 1 ? 0 : 1;
+      if(m == 1) return 1;
+      
+      int phi = totient(m);
+      int p = rec(rec, a, b-1, phi);
+
+      bool c = p >= phi;
+      int64_t ret = 1;
+
+      while(p > 0){
+        if(p & 1) if((ret *= a) >= m) ret %= m, c = true;
+        if((a *= a) >= m) a %= m, c = true;
+        p >>= 1;
+      }
+
+      if(c) ret += m;
+      return ret;
+    };
+
+  return rec(rec, a, b, m) % m;
+}
+#line 7 "test/yosupo-judge/tetration_mod/main.test.cpp"
 
 int main(){
-  int n, q; std::cin >> n >> q;
+  int T; std::cin >> T;
 
-  auto fen = FenwickTree<SumGroup<int>>(n);
-
-  for(auto [type, x, y] : input_tuples<int, int, int>(q)){
-    if(type == 0){
-      fen.update(x-1, y);
-    }else{
-      std::cout << fen.get(x-1, y) << std::endl;
-    }
+  for(auto [A, B, M] : input_tuples<int, int, int>(T)){
+    auto ans = tetration(A, B, M);
+    std::cout << ans << "\n";
   }
 
   return 0;

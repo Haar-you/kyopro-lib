@@ -36,9 +36,15 @@ layout: default
 
 
 
+## Required by
+
+* :x: <a href="tetration.cpp.html">Tetration</a>
+
+
 ## Verified with
 
 * :x: <a href="../../../verify/test/aoj/NTL_1_D/main.totient.test.cpp.html">test/aoj/NTL_1_D/main.totient.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/tetration_mod/main.test.cpp.html">test/yosupo-judge/tetration_mod/main.test.cpp</a>
 
 
 ## Code

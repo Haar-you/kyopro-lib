@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Bell number
+# :heavy_check_mark: Bell number
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -51,13 +51,13 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="combinatorics.cpp.html">Precalculation for combinatotion</a>
-* :x: <a href="stirling_number.cpp.html">Stirling numbers of second kind</a>
+* :question: <a href="combinatorics.cpp.html">Precalculation for combinatotion</a>
+* :heavy_check_mark: <a href="stirling_number.cpp.html">Stirling numbers of second kind</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/aoj/DPL_5_G/main.test.cpp.html">test/aoj/DPL_5_G/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_G/main.test.cpp.html">test/aoj/DPL_5_G/main.test.cpp</a>
 
 
 ## Code

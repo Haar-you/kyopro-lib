@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Chinese postman problem
+# :heavy_check_mark: Chinese postman problem
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -62,7 +62,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/aoj/DPL_2_B/main.test.cpp.html">test/aoj/DPL_2_B/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_2_B/main.test.cpp.html">test/aoj/DPL_2_B/main.test.cpp</a>
 
 
 ## Code

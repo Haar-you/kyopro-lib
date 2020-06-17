@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="fenwick_tree.cpp.html">Fenwick tree</a>
+* :question: <a href="fenwick_tree.cpp.html">Fenwick tree</a>
 
 
 ## Verified with

@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Stirling numbers of second kind (Table)
+# :heavy_check_mark: Stirling numbers of second kind (Table)
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -45,7 +45,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/aoj/DPL_5_I/main.table.test.cpp.html">test/aoj/DPL_5_I/main.table.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_I/main.table.test.cpp.html">test/aoj/DPL_5_I/main.table.test.cpp</a>
 
 
 ## Code

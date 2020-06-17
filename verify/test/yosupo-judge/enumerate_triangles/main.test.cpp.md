@@ -25,22 +25,24 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yukicoder/665/main.test.cpp
+# :x: test/yosupo-judge/enumerate_triangles/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#b3da1893b88bc8e75fe410f0e869b337">test/yukicoder/665</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/665/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+* category: <a href="../../../../index.html#e25b567185ad9d2c82bdf5444236f5c2">test/yosupo-judge/enumerate_triangles</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/enumerate_triangles/main.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-17 19:17:20+09:00
 
 
-* see: <a href="https://yukicoder.me/problems/no/665">https://yukicoder.me/problems/no/665</a>
+* see: <a href="https://judge.yosupo.jp/problem/enumerate_triangles">https://judge.yosupo.jp/problem/enumerate_triangles</a>
 
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Combinatorics/bernoulli_number.cpp.html">Bernoulli number</a>
-* :question: <a href="../../../../library/Mylib/Combinatorics/combinatorics.cpp.html">Precalculation for combinatotion</a>
+* :x: <a href="../../../../library/Mylib/Graph/enumerate_triangles.cpp.html">Enumerate triangles</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 * :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
@@ -49,35 +51,30 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "https://yukicoder.me/problems/no/665"
+#define PROBLEM "https://judge.yosupo.jp/problem/enumerate_triangles"
 
 #include <iostream>
 
+#include "Mylib/IO/input_graph.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/Graph/enumerate_triangles.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
-#include "Mylib/Combinatorics/combinatorics.cpp"
-#include "Mylib/Combinatorics/bernoulli_number.cpp"
 
-using mint = ModInt<1000000007>;
-using C = Combinatorics<mint>;
+using mint = ModInt<998244353>;
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-
-  int64_t n, k; std::cin >> n >> k;
-  C::init(3*k);
-
-  auto b = C::bernoulli_number(k);
-
-  mint ans = 0;
-
-  for(int64_t i = 0; i <= k; ++i){
-    ans += C::C(k+1, i) * b[i] * mint::power(n+1, k+1-i);
-  }
   
-  ans /= k+1;
+  int N, M; std::cin >> N >> M;
+  auto x = input_vector<mint>(N);
+  auto g = convert_to_graph<int, false>(N, input_edges<int, 0, false>(M));
 
-  std::cout << ans << std::endl;
+  auto res = enumerate_triangles(g);
+  mint ans = 0;
+  for(auto [i, j, k] : res) ans += x[i] * x[j] * x[k];
+
+  std::cout << ans << "\n";
   
   return 0;
 }
@@ -88,11 +85,128 @@ int main(){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/yukicoder/665/main.test.cpp"
-#define PROBLEM "https://yukicoder.me/problems/no/665"
+#line 1 "test/yosupo-judge/enumerate_triangles/main.test.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/enumerate_triangles"
 
 #include <iostream>
 
+#line 2 "Mylib/Graph/graph_template.cpp"
+#include <vector>
+#line 4 "Mylib/Graph/graph_template.cpp"
+
+/**
+ * @title Graph template
+ * @docs graph_template.md
+ */
+template <typename Cost = int> class Edge{
+public:
+  int from,to;
+  Cost cost;
+  Edge() {}
+  Edge(int to, Cost cost): to(to), cost(cost){}
+  Edge(int from, int to, Cost cost): from(from), to(to), cost(cost){}
+};
+
+template <typename T> using Graph = std::vector<std::vector<Edge<T>>>;
+template <typename T> using Tree = std::vector<std::vector<Edge<T>>>;
+
+template <typename T, typename C> void add_edge(C &g, int from, int to, T w = 1){
+  g[from].emplace_back(from, to, w);
+}
+
+template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 1){
+  add_edge<T, C>(g, a, b, w);
+  add_edge<T, C>(g, b, a, w);
+}
+#line 4 "Mylib/IO/input_graph.cpp"
+
+/**
+ * @docs input_graph.md
+ */
+template <typename T, size_t I, bool WEIGHTED>
+std::vector<Edge<T>> input_edges(int M){
+  std::vector<Edge<T>> ret;
+  
+  for(int i = 0; i < M; ++i){
+    int s, t; std::cin >> s >> t;
+    s -= I;
+    t -= I;
+    T w = 1; if(WEIGHTED) std::cin >> w;
+    ret.emplace_back(s, t, w);
+  }
+  
+  return ret;  
+}
+
+template <typename T, bool DIRECTED>
+Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
+  Graph<T> g(N);
+
+  for(const auto &e : edges){
+    add_edge(g, e.from, e.to, e.cost);
+    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
+  }
+  
+  return g;
+}
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
+#line 3 "Mylib/Graph/enumerate_triangles.cpp"
+#include <tuple>
+#include <unordered_set>
+#line 6 "Mylib/Graph/enumerate_triangles.cpp"
+
+/**
+ * @title Enumerate triangles
+ * @docs enumerate_triangles.md
+ */
+template <typename T>
+std::vector<std::tuple<int,int,int>> enumerate_triangles(Graph<T> g){
+  const int N = g.size();
+  std::vector<std::tuple<int,int,int>> ret;
+
+  std::vector<std::unordered_set<int>> adjacent(N);
+
+  for(int i = 0; i < N; ++i){
+    for(auto &e : g[i]){
+      if(g[e.from].size() < g[e.to].size()){
+        adjacent[e.from].insert(e.to);
+      }else if(g[e.from].size() == g[e.to].size()){
+        if(e.from < e.to){
+          adjacent[e.from].insert(e.to);
+        }
+      }
+    }
+  }
+
+  for(int i = 0; i < N; ++i){
+    for(int j : adjacent[i]){
+      for(int k : adjacent[j]){
+        if(adjacent[i].find(k) != adjacent[i].end()){
+          ret.emplace_back(i, j, k);
+        }
+      }
+    }
+  }
+
+  return ret;
+}
 #line 3 "Mylib/Number/Mint/mint.cpp"
 #include <utility>
 
@@ -179,116 +293,23 @@ public:
   explicit operator int32_t() const noexcept {return val;}
   explicit operator int64_t() const noexcept {return val;}
 };
-#line 2 "Mylib/Combinatorics/combinatorics.cpp"
-#include <vector>
-#include <cassert>
+#line 9 "test/yosupo-judge/enumerate_triangles/main.test.cpp"
 
-/**
- * @title Precalculation for combinatotion
- * @docs combinatorics.md
- * @attention 使用前にinit関数を呼び出す
- */
-template <typename T> class Combinatorics{
-public:
-  static std::vector<T> facto;
-  static std::vector<T> ifacto;
-
-  static void init(int N){
-    facto.assign(N+1, 1);
-    ifacto.assign(N+1, 1);
-    
-    for(int i = 1; i <= N; ++i){
-      facto[i] = facto[i-1] * i;
-    }
-    
-    ifacto[N] = facto[N].inv();
-
-    for(int i = N-1; i >= 0; --i){
-      ifacto[i] = ifacto[i+1] * (i+1);
-    }
-  }
-  
-  static T f(int64_t i){
-    assert(i < facto.size());
-    return facto[i];
-  }
-  
-  static T finv(int64_t i){
-    assert(i < ifacto.size());
-    return ifacto[i];
-  }
-
-  static T P(int64_t n, int64_t k);
-  static T C(int64_t n, int64_t k);
-  static T H(int64_t n, int64_t k);
-  static T stirling_number(int64_t n, int64_t k);
-  static T bell_number(int64_t n, int64_t k);
-  static std::vector<T> bernoulli_number(int64_t n);
-  static T catalan_number(int64_t n);
-};
-
-template <typename T> std::vector<T> Combinatorics<T>::facto = std::vector<T>();
-template <typename T> std::vector<T> Combinatorics<T>::ifacto = std::vector<T>();
-
-template <typename T> T Combinatorics<T>::P(int64_t n, int64_t k){
-  if(n < k or n < 0 or k < 0) return 0;
-  return f(n) * finv(n-k);
-}
-
-template <typename T> T Combinatorics<T>::C(int64_t n, int64_t k){
-  if(n < k or n < 0 or k < 0) return 0;
-  return P(n,k) * finv(k);
-}
-
-template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
-  if(n == 0 and k == 0) return 1;
-  return C(n+k-1, k);
-}
-#line 4 "Mylib/Combinatorics/bernoulli_number.cpp"
-
-/**
- * @title Bernoulli number
- * @docs bernoulli_number.md
- */
-template <typename T>
-std::vector<T> Combinatorics<T>::bernoulli_number(int64_t n){
-  std::vector<T> ret(n+1);
-
-  ret[0] = 1;
-
-  for(int64_t i = 1; i <= n; ++i){
-    for(int k = 0; k <= i-1; ++k){
-      ret[i] += C(i+1,k) * ret[k];
-    }
-    ret[i] /= i+1;
-    ret[i] = -ret[i];
-  }
-  
-  return ret;
-}
-#line 8 "test/yukicoder/665/main.test.cpp"
-
-using mint = ModInt<1000000007>;
-using C = Combinatorics<mint>;
+using mint = ModInt<998244353>;
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-
-  int64_t n, k; std::cin >> n >> k;
-  C::init(3*k);
-
-  auto b = C::bernoulli_number(k);
-
-  mint ans = 0;
-
-  for(int64_t i = 0; i <= k; ++i){
-    ans += C::C(k+1, i) * b[i] * mint::power(n+1, k+1-i);
-  }
   
-  ans /= k+1;
+  int N, M; std::cin >> N >> M;
+  auto x = input_vector<mint>(N);
+  auto g = convert_to_graph<int, false>(N, input_edges<int, 0, false>(M));
 
-  std::cout << ans << std::endl;
+  auto res = enumerate_triangles(g);
+  mint ans = 0;
+  for(auto [i, j, k] : res) ans += x[i] * x[j] * x[k];
+
+  std::cout << ans << "\n";
   
   return 0;
 }

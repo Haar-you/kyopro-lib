@@ -54,7 +54,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="combinatorics.cpp.html">Precalculation for combinatotion</a>
+* :question: <a href="combinatorics.cpp.html">Precalculation for combinatotion</a>
 
 
 ## Verified with

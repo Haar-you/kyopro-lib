@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Precalculation for combinatotion
+# :question: Precalculation for combinatotion
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -50,16 +50,16 @@ layout: default
 
 ## Required by
 
-* :x: <a href="bell_number.cpp.html">Bell number</a>
+* :heavy_check_mark: <a href="bell_number.cpp.html">Bell number</a>
 * :x: <a href="bernoulli_number.cpp.html">Bernoulli number</a>
 * :x: <a href="catalan_number.cpp.html">Catalan number</a>
-* :x: <a href="stirling_number.cpp.html">Stirling numbers of second kind</a>
+* :heavy_check_mark: <a href="stirling_number.cpp.html">Stirling numbers of second kind</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/aoj/DPL_5_G/main.test.cpp.html">test/aoj/DPL_5_G/main.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/DPL_5_I/main.test.cpp.html">test/aoj/DPL_5_I/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_G/main.test.cpp.html">test/aoj/DPL_5_G/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_I/main.test.cpp.html">test/aoj/DPL_5_I/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yukicoder/117/main.test.cpp.html">test/yukicoder/117/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yukicoder/660/main.test.cpp.html">test/yukicoder/660/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yukicoder/665/main.test.cpp.html">test/yukicoder/665/main.test.cpp</a>

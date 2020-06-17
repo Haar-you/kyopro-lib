@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Knapsack problem (With quantity limitations)
+# :heavy_check_mark: Knapsack problem (With quantity limitations)
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -54,7 +54,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/DPL_1_G/main.test.cpp.html">test/aoj/DPL_1_G/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/DPL_1_G/main.test.cpp.html">test/aoj/DPL_1_G/main.test.cpp</a>
 
 
 ## Code
