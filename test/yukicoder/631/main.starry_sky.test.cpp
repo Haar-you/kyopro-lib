@@ -2,8 +2,9 @@
 
 #include <iostream>
 #include <vector>
+#include <functional>
 
-#include "Mylib/DataStructure/SegmentTree/starry_sky_tree_max.cpp"
+#include "Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp"
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
@@ -13,7 +14,7 @@ int main(){
   
   int N; std::cin >> N;
   
-  auto seg = StarrySkyTreeMax<int64_t>(N-1);
+  auto seg = StarrySkyTree<int64_t, std::greater<>>(N-1);
 
   auto T = input_vector<int64_t>(N-1);
     

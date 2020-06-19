@@ -1,13 +1,15 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H"
 
 #include <iostream>
-#include "Mylib/DataStructure/SegmentTree/starry_sky_tree_min.cpp"
+#include <functional>
+
+#include "Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
 
-  StarrySkyTreeMin<int> seg(n);
+  StarrySkyTree<int, std::less<>> seg(n);
 
   for(auto [type, s, t] : input_tuples<int, int, int>(q)){
     if(type == 0){

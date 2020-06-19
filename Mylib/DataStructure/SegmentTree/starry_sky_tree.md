@@ -1,10 +1,13 @@
 ## Operations
 
-- `StarrySkyTreeMax(n)`
+- `StarrySkyTree(n)`
 - `update(l, r, val)`
 	- `i in [l, r)`について$a_i \leftarrow a_i + v$に更新する。
 - `get(l, r)`
-	- $\max_{l \le i \lt r} a_i$を返す。
+	- `Compare = less<T>`
+		- $\min_{l \le i \lt r} a_i$を返す。
+	- `Compare = greater<T>`
+		- $\max_{l \le i \lt r} a_i$を返す。
 - `init_with_vector(a)`
 
 ## Requirements
@@ -19,3 +22,4 @@
 ## References
 
 - [https://qnighy.github.io/informatics-olympiad/joi2009-day4-starry_sky-comment.html](https://qnighy.github.io/informatics-olympiad/joi2009-day4-starry_sky-comment.html)
+
