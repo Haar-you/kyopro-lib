@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/0323/main.ternary.test.cpp
+# :heavy_check_mark: test/aoj/0323/main.ternary.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#64b51258818892ff133e88d4c55d7a44">test/aoj/0323</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/0323/main.ternary.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-19 17:27:30+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0323">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0323</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Algorithm/Search/ternary_search_upwards.cpp.html">Ternary search (Convex upwards)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Search/ternary_search_upwards.cpp.html">Ternary search (Convex upwards)</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 
 
@@ -72,7 +72,7 @@ int main(){
 
   std::sort(p.begin(), p.end());
   
-  double left, right;
+  double left = 0, right = 0;
 
   int c = 0;
   for(auto &a : p){
@@ -88,7 +88,7 @@ int main(){
   }
 
   auto f =
-    [&](double p){
+    [&, x = x, r = r](double p){
       double ret = 1e9;
       
       for(int i = 0; i < N; ++i){
@@ -129,7 +129,7 @@ int main(){
  */
 template <typename T = double, typename Func = std::function<T(T)>>
 T ternary_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
-  T t1,t2;
+  T t1 = 0, t2 = 0;
   
   while(LOOP_COUNT--){
     t1 = lb + (ub-lb) / 3;
@@ -190,7 +190,7 @@ int main(){
 
   std::sort(p.begin(), p.end());
   
-  double left, right;
+  double left = 0, right = 0;
 
   int c = 0;
   for(auto &a : p){
@@ -206,7 +206,7 @@ int main(){
   }
 
   auto f =
-    [&](double p){
+    [&, x = x, r = r](double p){
       double ret = 1e9;
       
       for(int i = 0; i < N; ++i){

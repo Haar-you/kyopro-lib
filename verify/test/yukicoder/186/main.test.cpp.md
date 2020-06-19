@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Number/chinese_remainder_algorithm.cpp.html">Chinese remainder theorem</a>
-* :x: <a href="../../../../library/Mylib/Number/extended_gcd.cpp.html">Extended Euclidean algorithm</a>
+* :question: <a href="../../../../library/Mylib/Number/extended_gcd.cpp.html">Extended Euclidean algorithm</a>
 
 
 ## Code

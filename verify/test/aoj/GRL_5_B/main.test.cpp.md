@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/GRL_5_B/main.test.cpp
+# :heavy_check_mark: test/aoj/GRL_5_B/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_distance.cpp.html">Tree distance</a>
-* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_height.cpp.html">Tree height</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_distance.cpp.html">Tree distance</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_height.cpp.html">Tree height</a>
 * :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
 * :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
 

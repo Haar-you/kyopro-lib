@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/ITP1_3_D/main.test.cpp
+# :heavy_check_mark: test/aoj/ITP1_3_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#8d38fbe7bd169996a63c214260a5e34a">test/aoj/ITP1_3_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ITP1_3_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-19 17:27:30+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Number/Divisor/enumerate_divisor.cpp.html">Enumerate divisors</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Divisor/enumerate_divisors.cpp.html">Enumerate divisors</a>
 
 
 ## Code
@@ -50,14 +50,14 @@ layout: default
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D"
 
 #include <iostream>
-#include "Mylib/Number/Divisor/enumerate_divisor.cpp"
+#include "Mylib/Number/Divisor/enumerate_divisors.cpp"
 
 int main(){
   int a, b, c; std::cin >> a >> b >> c;
 
   int ans = 0;
 
-  for(auto d : enumerate_divisor(c)){
+  for(auto d : enumerate_divisors(c)){
     if(a <= d and d <= b) ++ans;
   }
 
@@ -76,15 +76,15 @@ int main(){
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D"
 
 #include <iostream>
-#line 2 "Mylib/Number/Divisor/enumerate_divisor.cpp"
+#line 2 "Mylib/Number/Divisor/enumerate_divisors.cpp"
 #include <vector>
 #include <algorithm>
 
 /**
  * @title Enumerate divisors
- * @docs enumerate_divisor.md
+ * @docs enumerate_divisors.md
  */
-std::vector<std::int64_t> enumerate_divisor(std::int64_t n){
+std::vector<std::int64_t> enumerate_divisors(std::int64_t n){
   std::vector<std::int64_t> temp, ret;
 
   {
@@ -110,7 +110,7 @@ int main(){
 
   int ans = 0;
 
-  for(auto d : enumerate_divisor(c)){
+  for(auto d : enumerate_divisors(c)){
     if(a <= d and d <= b) ++ans;
   }
 

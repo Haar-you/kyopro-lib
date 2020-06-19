@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Euler's totient function
+# :question: Euler's totient function
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -43,7 +43,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/aoj/NTL_1_D/main.totient.test.cpp.html">test/aoj/NTL_1_D/main.totient.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/NTL_1_D/main.totient.test.cpp.html">test/aoj/NTL_1_D/main.totient.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/tetration_mod/main.test.cpp.html">test/yosupo-judge/tetration_mod/main.test.cpp</a>
 
 

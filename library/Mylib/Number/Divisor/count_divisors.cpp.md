@@ -30,8 +30,8 @@ layout: default
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#e1d7bebd3991495167778e37d1d75d40">Mylib/Number/Divisor</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Divisor/count_divisor.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Divisor/count_divisors.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-19 17:27:30+09:00
 
 
 
@@ -45,9 +45,9 @@ layout: default
 
 /**
  * @title Count divisors
- * @docs count_divisor.md
+ * @docs count_divisors.md
  */
-int count_divisor(std::int64_t n){
+int count_divisors(std::int64_t n){
   int count = 0;
   for(std::int64_t i = 1LL; i * i <= n; ++i){
     if(n % i == 0){
@@ -64,13 +64,13 @@ int count_divisor(std::int64_t n){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Number/Divisor/count_divisor.cpp"
+#line 2 "Mylib/Number/Divisor/count_divisors.cpp"
 
 /**
  * @title Count divisors
- * @docs count_divisor.md
+ * @docs count_divisors.md
  */
-int count_divisor(std::int64_t n){
+int count_divisors(std::int64_t n){
   int count = 0;
   for(std::int64_t i = 1LL; i * i <= n; ++i){
     if(n % i == 0){

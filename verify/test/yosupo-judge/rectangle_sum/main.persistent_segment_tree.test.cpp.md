@@ -45,7 +45,7 @@ layout: default
 * :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 * :question: <a href="../../../../library/Mylib/Misc/compressor.cpp.html">Compressor</a>
-* :x: <a href="../../../../library/Mylib/Misc/sort_simultaneously.cpp.html">Mylib/Misc/sort_simultaneously.cpp</a>
+* :question: <a href="../../../../library/Mylib/Misc/sort_simultaneously.cpp.html">Mylib/Misc/sort_simultaneously.cpp</a>
 
 
 ## Code

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#94d4e5c879e40488003ae32a119b6352">test/yukicoder/306</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/306/main.ternary.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-19 17:27:30+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/306">https://yukicoder.me/problems/no/306</a>
@@ -93,7 +93,7 @@ int main(){
  */
 template <typename T = double, typename Func = std::function<T(T)>>
 T ternary_search_downwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
-  T t1,t2;
+  T t1 = 0, t2 = 0;
   
   while(LOOP_COUNT--){
     t1 = lb + (ub-lb) / 3;

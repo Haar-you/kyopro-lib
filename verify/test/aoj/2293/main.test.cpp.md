@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">Minimum cost flow</a>
-* :question: <a href="../../../../library/Mylib/Graph/Matching/weighted_bipartite_matching.cpp.html">Weighted maximum bipartite matching</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">Minimum cost flow</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Matching/weighted_bipartite_matching.cpp.html">Weighted maximum bipartite matching</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 
 

@@ -40,7 +40,7 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../verify/test/aoj/0558/main.graph.test.cpp.html">test/aoj/0558/main.graph.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/0558/main.test.cpp.html">test/aoj/0558/main.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/1308/main.test.cpp.html">test/aoj/1308/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/1327/main.test.cpp.html">test/aoj/1327/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/1549/main.test.cpp.html">test/aoj/1549/main.test.cpp</a>
@@ -69,12 +69,12 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_3_B/main.test.cpp.html">test/aoj/DPL_3_B/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_3_C/main.test.cpp.html">test/aoj/DPL_3_C/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DSL_3_D/main.test.cpp.html">test/aoj/DSL_3_D/main.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/ITP2_11_B/main.asc.test.cpp.html">test/aoj/ITP2_11_B/main.asc.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/ITP2_11_B/main.desc.test.cpp.html">test/aoj/ITP2_11_B/main.desc.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/ITP2_11_C/main.asc.test.cpp.html">test/aoj/ITP2_11_C/main.asc.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/ITP2_11_C/main.desc.test.cpp.html">test/aoj/ITP2_11_C/main.desc.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/NTL_1_C/main.test.cpp.html">test/aoj/NTL_1_C/main.test.cpp</a>
-* :x: <a href="../../../verify/test/yosupo-judge/assignment/main.test.cpp.html">test/yosupo-judge/assignment/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/ITP2_11_B/main.asc.test.cpp.html">test/aoj/ITP2_11_B/main.asc.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/ITP2_11_B/main.desc.test.cpp.html">test/aoj/ITP2_11_B/main.desc.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/ITP2_11_C/main.asc.test.cpp.html">test/aoj/ITP2_11_C/main.asc.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/ITP2_11_C/main.desc.test.cpp.html">test/aoj/ITP2_11_C/main.desc.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/NTL_1_C/main.test.cpp.html">test/aoj/NTL_1_C/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/assignment/main.test.cpp.html">test/yosupo-judge/assignment/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/convolution_mod/main.test.cpp.html">test/yosupo-judge/convolution_mod/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/convolution_mod_1000000007/main.test.cpp.html">test/yosupo-judge/convolution_mod_1000000007/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/enumerate_triangles/main.test.cpp.html">test/yosupo-judge/enumerate_triangles/main.test.cpp</a>

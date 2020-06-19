@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Bit/for_each_subset_asc.cpp.html">Enumerate subsets (Ascending order)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Bit/for_each_subset_asc.cpp.html">Enumerate subsets (Ascending order)</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp.html">Circumscribed circle of a triangle</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>

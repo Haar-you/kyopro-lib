@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="extended_gcd.cpp.html">Extended Euclidean algorithm</a>
+* :question: <a href="extended_gcd.cpp.html">Extended Euclidean algorithm</a>
 
 
 ## Verified with

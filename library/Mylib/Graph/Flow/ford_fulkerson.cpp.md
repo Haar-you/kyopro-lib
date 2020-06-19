@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :question: Ford-Fulkerson algorithm
+# :heavy_check_mark: Ford-Fulkerson algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -40,8 +40,8 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2903/main.test.cpp.html">test/aoj/2903/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/3058/main.test.cpp.html">test/aoj/3058/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp.html">test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp</a>
-* :x: <a href="../../../../verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp.html">test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
 
 
 ## Code

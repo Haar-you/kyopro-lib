@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a7582795d3062b8fdf2ece0fd4f2d90d">Mylib/Algorithm/Search</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Search/ternary_search_downwards.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-19 17:27:30+09:00
 
 
 
@@ -55,7 +55,7 @@ layout: default
  */
 template <typename T = double, typename Func = std::function<T(T)>>
 T ternary_search_downwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
-  T t1,t2;
+  T t1 = 0, t2 = 0;
   
   while(LOOP_COUNT--){
     t1 = lb + (ub-lb) / 3;
@@ -86,7 +86,7 @@ T ternary_search_downwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
  */
 template <typename T = double, typename Func = std::function<T(T)>>
 T ternary_search_downwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
-  T t1,t2;
+  T t1 = 0, t2 = 0;
   
   while(LOOP_COUNT--){
     t1 = lb + (ub-lb) / 3;

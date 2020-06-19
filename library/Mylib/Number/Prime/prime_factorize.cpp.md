@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Prime factorization
+# :heavy_check_mark: Prime factorization
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,13 +38,13 @@ layout: default
 
 ## Required by
 
-* :x: <a href="count_coprime.cpp.html">Count coprime</a>
+* :heavy_check_mark: <a href="count_coprime.cpp.html">Count coprime</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/NTL_1_A/main.test.cpp.html">test/aoj/NTL_1_A/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/aoj/NTL_1_D/main.test.cpp.html">test/aoj/NTL_1_D/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/NTL_1_A/main.test.cpp.html">test/aoj/NTL_1_A/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/NTL_1_D/main.test.cpp.html">test/aoj/NTL_1_D/main.test.cpp</a>
 
 
 ## Code

@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/ITP2_11_C/main.desc.test.cpp
+# :heavy_check_mark: test/aoj/ITP2_11_C/main.desc.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Bit/for_each_subset_desc.cpp.html">Enumerate subsets (Descending order)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Bit/for_each_subset_desc.cpp.html">Enumerate subsets (Descending order)</a>
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 

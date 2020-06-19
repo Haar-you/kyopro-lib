@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :question: Prim algorithm
+# :heavy_check_mark: Prim algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -46,7 +46,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2559/main.binomial_heap.test.cpp.html">test/aoj/2559/main.binomial_heap.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
-* :x: <a href="../../../../verify/test/aoj/GRL_2_A/main.prim.test.cpp.html">test/aoj/GRL_2_A/main.prim.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_2_A/main.prim.test.cpp.html">test/aoj/GRL_2_A/main.prim.test.cpp</a>
 
 
 ## Code

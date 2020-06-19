@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/GRL_2_A/main.kruskal.test.cpp
+# :heavy_check_mark: test/aoj/GRL_2_A/main.kruskal.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :question: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
-* :x: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
+* :question: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
 * :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
 * :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
 

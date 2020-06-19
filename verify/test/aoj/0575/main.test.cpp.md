@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/0575/main.test.cpp
+# :heavy_check_mark: test/aoj/0575/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#bc5135b351a05eb69baff19bb9fa33f2">test/aoj/0575</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/0575/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-19 17:32:55+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0575">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0575</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Algorithm/Search/parallel_binary_search.cpp.html">Parallel binary search</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Search/parallel_binary_search.cpp.html">Parallel binary search</a>
 * :question: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
-* :x: <a href="../../../../library/Mylib/Graph/ShortestPath/dijkstra.cpp.html">Dijkstra algorithm</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/dijkstra.cpp.html">Dijkstra algorithm</a>
 * :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
 * :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
@@ -109,7 +109,7 @@ int main(){
     parallel_binary_search(
       C,
       Q,
-      [&](const auto &f){
+      [&, S = S, T = T](const auto &f){
         UnionFind uf(N);
         f(
           [&](int i){
@@ -117,7 +117,7 @@ int main(){
               uf.merge(x, y);
             }
           },
-          [&](int i) -> bool{
+          [&, S = S, T = T](int i) -> bool{
             return uf.is_same(S[i], T[i]);
           }
         );
@@ -433,7 +433,7 @@ int main(){
     parallel_binary_search(
       C,
       Q,
-      [&](const auto &f){
+      [&, S = S, T = T](const auto &f){
         UnionFind uf(N);
         f(
           [&](int i){
@@ -441,7 +441,7 @@ int main(){
               uf.merge(x, y);
             }
           },
-          [&](int i) -> bool{
+          [&, S = S, T = T](int i) -> bool{
             return uf.is_same(S[i], T[i]);
           }
         );

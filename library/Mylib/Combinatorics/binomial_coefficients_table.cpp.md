@@ -30,15 +30,15 @@ layout: default
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/binomial_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/binomial_coefficients_table.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-19 17:27:30+09:00
 
 
 
 
 ## Operations
 
-- `binomial_table(int n, int k)`
+- `binomial_coefficients_table(int n, int k)`
 	- $\binom{0}{0}$ ~ $\binom{n}{k}$を列挙する。
 	- Time complexity $O(nk)$
 
@@ -53,10 +53,10 @@ layout: default
 
 /**
  * @title Binomial coefficients table
- * @docs binomial_table.md
+ * @docs binomial_coefficients_table.md
  */
 template <typename T>
-auto binomial_table(int n, int k){
+auto binomial_coefficients_table(int n, int k){
   std::vector<std::vector<T>> ret(n+1, std::vector<T>(k+1));
   ret[0][0] = 1;
   
@@ -77,15 +77,15 @@ auto binomial_table(int n, int k){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Combinatorics/binomial_table.cpp"
+#line 2 "Mylib/Combinatorics/binomial_coefficients_table.cpp"
 #include <vector>
 
 /**
  * @title Binomial coefficients table
- * @docs binomial_table.md
+ * @docs binomial_coefficients_table.md
  */
 template <typename T>
-auto binomial_table(int n, int k){
+auto binomial_coefficients_table(int n, int k){
   std::vector<std::vector<T>> ret(n+1, std::vector<T>(k+1));
   ret[0][0] = 1;
   

@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/GRL_5_C/main.hld.test.cpp
+# :heavy_check_mark: test/aoj/GRL_5_C/main.hld.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_hld.cpp.html">Lowest common ancestor (HLD)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_hld.cpp.html">Lowest common ancestor (HLD)</a>
 * :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>

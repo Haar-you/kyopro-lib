@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Chu-Liu/Edmonds algorithm
+# :heavy_check_mark: Chu-Liu/Edmonds algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -57,13 +57,13 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
+* :question: <a href="../GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
 * :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/GRL_2_B/main.test.cpp.html">test/aoj/GRL_2_B/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_2_B/main.test.cpp.html">test/aoj/GRL_2_B/main.test.cpp</a>
 
 
 ## Code

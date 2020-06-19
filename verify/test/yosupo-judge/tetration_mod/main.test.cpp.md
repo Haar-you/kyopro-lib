@@ -41,7 +41,7 @@ layout: default
 
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :x: <a href="../../../../library/Mylib/Number/euler_phi_function.cpp.html">Euler's totient function</a>
+* :question: <a href="../../../../library/Mylib/Number/euler_phi_function.cpp.html">Euler's totient function</a>
 * :x: <a href="../../../../library/Mylib/Number/tetration.cpp.html">Tetration</a>
 
 

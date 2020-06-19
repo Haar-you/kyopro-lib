@@ -51,7 +51,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="euler_phi_function.cpp.html">Euler's totient function</a>
+* :question: <a href="euler_phi_function.cpp.html">Euler's totient function</a>
 
 
 ## Verified with

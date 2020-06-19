@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp
+# :heavy_check_mark: test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson algorithm</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson algorithm</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 

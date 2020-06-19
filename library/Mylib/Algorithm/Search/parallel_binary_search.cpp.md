@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Parallel binary search
+# :heavy_check_mark: Parallel binary search
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -55,7 +55,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
 
 
 ## Code

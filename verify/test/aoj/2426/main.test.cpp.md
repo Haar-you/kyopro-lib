@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/2426/main.test.cpp
+# :heavy_check_mark: test/aoj/2426/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#8164327ac248b119fc2025c513b12d48">test/aoj/2426</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2426/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-19 17:27:30+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2426">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2426</a>
@@ -44,7 +44,7 @@ layout: default
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :x: <a href="../../../../library/Mylib/Misc/sort_simultaneously.cpp.html">Mylib/Misc/sort_simultaneously.cpp</a>
+* :question: <a href="../../../../library/Mylib/Misc/sort_simultaneously.cpp.html">Mylib/Misc/sort_simultaneously.cpp</a>
 
 
 ## Code
@@ -73,7 +73,7 @@ int main(){
   auto [x, y] = input_tuple_vector<int, int>(n);
 
   sort_simultaneously(
-    [&](int i, int j){
+    [&, x = x](int i, int j){
       return x[i] < x[j];
     },
     n,
@@ -619,7 +619,7 @@ int main(){
   auto [x, y] = input_tuple_vector<int, int>(n);
 
   sort_simultaneously(
-    [&](int i, int j){
+    [&, x = x](int i, int j){
       return x[i] < x[j];
     },
     n,
