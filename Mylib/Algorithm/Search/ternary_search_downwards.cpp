@@ -7,7 +7,7 @@
  */
 template <typename T = double, typename Func = std::function<T(T)>>
 T ternary_search_downwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
-  T t1,t2;
+  T t1 = 0, t2 = 0;
   
   while(LOOP_COUNT--){
     t1 = lb + (ub-lb) / 3;

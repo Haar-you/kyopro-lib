@@ -22,7 +22,7 @@ int main(){
 
   std::sort(p.begin(), p.end());
   
-  double left, right;
+  double left = 0, right = 0;
 
   int c = 0;
   for(auto &a : p){
@@ -38,7 +38,7 @@ int main(){
   }
 
   auto f =
-    [&](double p){
+    [&, x = x, r = r](double p){
       double ret = 1e9;
       
       for(int i = 0; i < N; ++i){

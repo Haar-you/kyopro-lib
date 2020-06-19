@@ -2,9 +2,9 @@
 
 /**
  * @title Count divisors
- * @docs count_divisor.md
+ * @docs count_divisors.md
  */
-int count_divisor(std::int64_t n){
+int count_divisors(std::int64_t n){
   int count = 0;
   for(std::int64_t i = 1LL; i * i <= n; ++i){
     if(n % i == 0){
