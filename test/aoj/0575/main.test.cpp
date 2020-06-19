@@ -54,7 +54,7 @@ int main(){
     parallel_binary_search(
       C,
       Q,
-      [&](const auto &f){
+      [&, S = S, T = T](const auto &f){
         UnionFind uf(N);
         f(
           [&](int i){
@@ -62,7 +62,7 @@ int main(){
               uf.merge(x, y);
             }
           },
-          [&](int i) -> bool{
+          [&, S = S, T = T](int i) -> bool{
             return uf.is_same(S[i], T[i]);
           }
         );
