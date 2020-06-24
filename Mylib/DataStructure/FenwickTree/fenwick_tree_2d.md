@@ -1,5 +1,5 @@
 ## Operations
-
+可換群$(G, +, e)$上の二次元配列を扱う。
 - `FenwickTree2D(w, h)`
 - `get(x1, y1, x2, y2)`
 	- $\sum_{x_1 \le i \lt x_2} \sum_{y_1 \le j \lt y_2} a_{i, j}$を返す。

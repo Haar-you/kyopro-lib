@@ -1,5 +1,5 @@
 ## Operations
-
+モノイド$(M, \circ, e)$上の列を扱う。
 - `DualSegmentTree(n)`
 - `update(l, r, v)`
 	- `i in [l, r)`について$a_i \leftarrow v \circ a_i$に更新する。

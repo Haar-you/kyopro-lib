@@ -1,5 +1,5 @@
 ## Operations
-
+モノイド$(M, \circ, e)$上の列を扱う。
 - `SegmentTreeBothFoldable()`
 - `operator[](i)`
 - `at(i)`

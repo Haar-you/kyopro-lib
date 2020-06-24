@@ -1,5 +1,5 @@
 ## Operations
-
+可換群$(G, +, e)$上の列を扱う。
 - `FenwickTree(n)`
 - `update(i, v)`
 	- $a_i \leftarrow a_i + v$に更新する。
