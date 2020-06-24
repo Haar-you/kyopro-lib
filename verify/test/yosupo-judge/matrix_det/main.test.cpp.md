@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yosupo-judge/matrix_det/main.test.cpp
+# :heavy_check_mark: test/yosupo-judge/matrix_det/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/determinant.cpp.html">Determinant</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/determinant.cpp.html">Determinant</a>
 * :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Square matrix</a>
 * :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 

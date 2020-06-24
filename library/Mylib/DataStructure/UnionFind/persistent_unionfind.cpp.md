@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Persistent union-find
+# :heavy_check_mark: Persistent union-find
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -47,12 +47,12 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../Array/persistent_array.cpp.html">Persistent array</a>
+* :heavy_check_mark: <a href="../Array/persistent_array.cpp.html">Persistent array</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/yosupo-judge/persistent_unionfind/main.test.cpp.html">test/yosupo-judge/persistent_unionfind/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/persistent_unionfind/main.test.cpp.html">test/yosupo-judge/persistent_unionfind/main.test.cpp</a>
 
 
 ## Code

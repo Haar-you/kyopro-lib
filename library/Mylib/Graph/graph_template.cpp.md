@@ -43,12 +43,12 @@ layout: default
 * :warning: <a href="EulerianPath/undirected_eulerian_path.cpp.html">Undirected Eulerian path</a>
 * :heavy_check_mark: <a href="GraphUtils/articulation_points.cpp.html">Articulation points</a>
 * :heavy_check_mark: <a href="GraphUtils/bridges.cpp.html">Bridges</a>
-* :warning: <a href="GraphUtils/decompose_pseudotree.cpp.html">Decompose pseudotree</a>
+* :heavy_check_mark: <a href="GraphUtils/decompose_pseudotree.cpp.html">Decompose pseudotree</a>
 * :question: <a href="GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
 * :x: <a href="GraphUtils/two_edge_connected_components.cpp.html">Two edge connected components</a>
 * :heavy_check_mark: <a href="MinimumSpanningTree/chu_liu_edmonds.cpp.html">Chu-Liu/Edmonds algorithm</a>
-* :question: <a href="MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
-* :x: <a href="MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
+* :heavy_check_mark: <a href="MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
+* :heavy_check_mark: <a href="MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
 * :heavy_check_mark: <a href="MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
 * :warning: <a href="ShortestCycle/directed_shortest_cycle.cpp.html">Directed shortest cycle</a>
 * :warning: <a href="ShortestCycle/undirected_shortest_cycle.cpp.html">Undirected shortest cycle</a>
@@ -74,7 +74,7 @@ layout: default
 * :heavy_check_mark: <a href="TreeUtils/tree_distance.cpp.html">Tree distance</a>
 * :heavy_check_mark: <a href="TreeUtils/tree_height.cpp.html">Tree height</a>
 * :heavy_check_mark: <a href="chinese_postman_problem.cpp.html">Chinese postman problem</a>
-* :x: <a href="enumerate_triangles.cpp.html">Enumerate triangles</a>
+* :heavy_check_mark: <a href="enumerate_triangles.cpp.html">Enumerate triangles</a>
 * :heavy_check_mark: <a href="travelling_salesman_problem.cpp.html">Travelling salesman problem</a>
 * :x: <a href="two_sat.cpp.html">2-SAT</a>
 * :heavy_check_mark: <a href="../Grid/grid_to_graph.cpp.html">Convert grid to graph</a>
@@ -91,6 +91,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/2891/main.test.cpp.html">test/aoj/2891/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_2_A/main.test.cpp.html">test/aoj/DPL_2_A/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_2_B/main.test.cpp.html">test/aoj/DPL_2_B/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_1_A/main.test.cpp.html">test/aoj/GRL_1_A/main.test.cpp</a>
@@ -106,8 +107,8 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_5_B/main.test.cpp.html">test/aoj/GRL_5_B/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_5_C/main.doubling.test.cpp.html">test/aoj/GRL_5_C/main.doubling.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_5_C/main.hld.test.cpp.html">test/aoj/GRL_5_C/main.hld.test.cpp</a>
-* :x: <a href="../../../verify/test/yosupo-judge/enumerate_triangles/main.test.cpp.html">test/yosupo-judge/enumerate_triangles/main.test.cpp</a>
-* :x: <a href="../../../verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/enumerate_triangles/main.test.cpp.html">test/yosupo-judge/enumerate_triangles/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/tree_diameter/main.test.cpp.html">test/yosupo-judge/tree_diameter/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/two_edge_connected_components/main.test.cpp.html">test/yosupo-judge/two_edge_connected_components/main.test.cpp</a>

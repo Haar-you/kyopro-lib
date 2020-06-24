@@ -25,42 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Starry-sky tree (Max)
+# :question: Starry-sky tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/starry_sky_tree_max.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-19 21:04:10+09:00
 
 
-
-
-## Operations
-
-- `StarrySkyTreeMax(n)`
-- `update(l, r, val)`
-	- `i in [l, r)`について$a_i \leftarrow a_i + v$に更新する。
-- `get(l, r)`
-	- $\max_{l \le i \lt r} a_i$を返す。
-- `init_with_vector(a)`
-
-## Requirements
-
-## Notes
-
-## Problems
-
-- [starry_sky - 星空 (Starry Sky)](https://atcoder.jp/contests/joisc2009/tasks/joisc2009_starry_sky)
-- [yukicoder No.631 Noelちゃんと電車旅行](https://yukicoder.me/problems/no/631)
-
-## References
-
-- [https://qnighy.github.io/informatics-olympiad/joi2009-day4-starry_sky-comment.html](https://qnighy.github.io/informatics-olympiad/joi2009-day4-starry_sky-comment.html)
 
 
 ## Verified with
 
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_H/main.starry_sky.test.cpp.html">test/aoj/DSL_2_H/main.starry_sky.test.cpp</a>
 * :x: <a href="../../../../verify/test/yukicoder/631/main.starry_sky.test.cpp.html">test/yukicoder/631/main.starry_sky.test.cpp</a>
 
 
@@ -71,26 +49,30 @@ layout: default
 ```cpp
 #pragma once
 #include <vector>
+#include <optional>
 #include <algorithm>
-#include <limits>
 
 /**
- * @title Starry-sky tree (Max)
- * @docs starry_sky_tree_max.md
+ * @title Starry-sky tree
+ * @docs StarrySkyTree.md
  */
-template <typename T>
-class StarrySkyTreeMax{
+template <typename T, typename Compare>
+class StarrySkyTree{
   int depth, size, hsize;
   std::vector<T> data;
 
-  const T id = std::numeric_limits<T>::lowest();
+  Compare compare = Compare();
+
+  T f(T a, T b) const {
+    return compare(a, b) ? a : b;
+  }
 
   void bottom_up(int i){
     if(i > size) return;
 
     while(i >= 1){
       if(i < hsize){
-        const auto d = std::max(data[i << 1 | 0], data[i << 1 | 1]);
+        const auto d = f(data[i << 1 | 0], data[i << 1 | 1]);
         
         data[i << 1 | 0] -= d;
         data[i << 1 | 1] -= d;
@@ -101,18 +83,23 @@ class StarrySkyTreeMax{
     }
   }
   
-  T get(int i, int l, int r, int s, int t, T val) const {
-    if(r <= s or t <= l) return id;
+  std::optional<T> get(int i, int l, int r, int s, int t, T val) const {
+    if(r <= s or t <= l) return std::nullopt;
     if(s <= l and r <= t) return val + data[i];
-    return std::max(get(i << 1 | 0, l, (l + r) / 2, s, t, val + data[i]),
-                    get(i << 1 | 1, (l + r) / 2, r, s, t, val + data[i]));
+
+    auto a = get(i << 1 | 0, l, (l + r) / 2, s, t, val + data[i]);
+    auto b = get(i << 1 | 1, (l + r) / 2, r, s, t, val + data[i]);
+
+    if(not a) return b;
+    if(not b) return a;
+    return f(*a, *b);
   }
 
 public:
-  StarrySkyTreeMax(int n):
+  StarrySkyTree(int n):
     depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
     size(1 << depth),
-    hsize(size / 2),    
+    hsize(size / 2),
     data(size, 0)
   {}
 
@@ -132,7 +119,7 @@ public:
   }
 
   T get(int l, int r) const {
-    return get(1, 0, hsize, l, r, 0);
+    return *get(1, 0, hsize, l, r, 0);
   }
 
   template <typename U>
@@ -142,7 +129,7 @@ public:
     }
 
     for(int i = hsize - 1; i >= 1; --i){
-      data[i] = std::max(data[i << 1 | 0], data[i << 1 | 1]);
+      data[i] = f(data[i << 1 | 0], data[i << 1 | 1]);
     }
 
     for(int i = size - 1; i > 1; --i){
@@ -157,28 +144,32 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/DataStructure/SegmentTree/starry_sky_tree_max.cpp"
+#line 2 "Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp"
 #include <vector>
+#include <optional>
 #include <algorithm>
-#include <limits>
 
 /**
- * @title Starry-sky tree (Max)
- * @docs starry_sky_tree_max.md
+ * @title Starry-sky tree
+ * @docs StarrySkyTree.md
  */
-template <typename T>
-class StarrySkyTreeMax{
+template <typename T, typename Compare>
+class StarrySkyTree{
   int depth, size, hsize;
   std::vector<T> data;
 
-  const T id = std::numeric_limits<T>::lowest();
+  Compare compare = Compare();
+
+  T f(T a, T b) const {
+    return compare(a, b) ? a : b;
+  }
 
   void bottom_up(int i){
     if(i > size) return;
 
     while(i >= 1){
       if(i < hsize){
-        const auto d = std::max(data[i << 1 | 0], data[i << 1 | 1]);
+        const auto d = f(data[i << 1 | 0], data[i << 1 | 1]);
         
         data[i << 1 | 0] -= d;
         data[i << 1 | 1] -= d;
@@ -189,18 +180,23 @@ class StarrySkyTreeMax{
     }
   }
   
-  T get(int i, int l, int r, int s, int t, T val) const {
-    if(r <= s or t <= l) return id;
+  std::optional<T> get(int i, int l, int r, int s, int t, T val) const {
+    if(r <= s or t <= l) return std::nullopt;
     if(s <= l and r <= t) return val + data[i];
-    return std::max(get(i << 1 | 0, l, (l + r) / 2, s, t, val + data[i]),
-                    get(i << 1 | 1, (l + r) / 2, r, s, t, val + data[i]));
+
+    auto a = get(i << 1 | 0, l, (l + r) / 2, s, t, val + data[i]);
+    auto b = get(i << 1 | 1, (l + r) / 2, r, s, t, val + data[i]);
+
+    if(not a) return b;
+    if(not b) return a;
+    return f(*a, *b);
   }
 
 public:
-  StarrySkyTreeMax(int n):
+  StarrySkyTree(int n):
     depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
     size(1 << depth),
-    hsize(size / 2),    
+    hsize(size / 2),
     data(size, 0)
   {}
 
@@ -220,7 +216,7 @@ public:
   }
 
   T get(int l, int r) const {
-    return get(1, 0, hsize, l, r, 0);
+    return *get(1, 0, hsize, l, r, 0);
   }
 
   template <typename U>
@@ -230,7 +226,7 @@ public:
     }
 
     for(int i = hsize - 1; i >= 1; --i){
-      data[i] = std::max(data[i << 1 | 0], data[i << 1 | 1]);
+      data[i] = f(data[i << 1 | 0], data[i << 1 | 1]);
     }
 
     for(int i = size - 1; i > 1; --i){

@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
-* :x: <a href="../../../../library/Mylib/String/suffix_array.cpp.html">Suffix array</a>
+* :question: <a href="../../../../library/Mylib/String/suffix_array.cpp.html">Suffix array</a>
 
 
 ## Code

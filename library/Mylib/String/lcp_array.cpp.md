@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: LCP(Longest Common Prefix) array
+# :heavy_check_mark: LCP(Longest Common Prefix) array
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -38,12 +38,12 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="suffix_array.cpp.html">Suffix array</a>
+* :question: <a href="suffix_array.cpp.html">Suffix array</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/yosupo-judge/number_of_substrings/main.test.cpp.html">test/yosupo-judge/number_of_substrings/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/number_of_substrings/main.test.cpp.html">test/yosupo-judge/number_of_substrings/main.test.cpp</a>
 
 
 ## Code

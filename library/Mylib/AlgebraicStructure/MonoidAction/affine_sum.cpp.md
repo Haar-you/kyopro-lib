@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
+* :question: <a href="../Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
 * :question: <a href="../Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 
 

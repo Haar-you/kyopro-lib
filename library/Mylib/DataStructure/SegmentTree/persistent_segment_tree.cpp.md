@@ -37,7 +37,7 @@ layout: default
 
 
 ## Operations
-
+モノイド$(M, \circ, e)$上の列を扱う。
 - `PersistentSegmentTree(n)`
 - `PersistentSegmentTree(a[n])`
 - `update(i, v)`

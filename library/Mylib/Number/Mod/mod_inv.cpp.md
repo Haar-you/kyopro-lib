@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Mod inverse
+# :heavy_check_mark: Mod inverse
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -54,13 +54,13 @@ layout: default
 
 ## Required by
 
-* :x: <a href="mod_log.cpp.html">Mod logarithm</a>
+* :heavy_check_mark: <a href="mod_log.cpp.html">Mod logarithm</a>
 * :warning: <a href="../garner.cpp.html">Garner algorithm</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
 
 
 ## Code

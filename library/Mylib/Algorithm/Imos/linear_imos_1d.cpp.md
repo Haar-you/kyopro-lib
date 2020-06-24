@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: 1D Imos algorithm (Linear addition)
+# :x: 1D Imos algorithm (Linear addition)
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -48,6 +48,11 @@ layout: default
 
 ## References
 
+
+
+## Verified with
+
+* :x: <a href="../../../../verify/test/yukicoder/1084/main.test.cpp.html">test/yukicoder/1084/main.test.cpp</a>
 
 
 ## Code

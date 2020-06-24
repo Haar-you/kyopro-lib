@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Decompose pseudotree
+# :heavy_check_mark: Decompose pseudotree
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -52,6 +52,11 @@ layout: default
 ## Depends on
 
 * :question: <a href="../graph_template.cpp.html">Graph template</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2891/main.test.cpp.html">test/aoj/2891/main.test.cpp</a>
 
 
 ## Code

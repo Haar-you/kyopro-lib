@@ -56,7 +56,7 @@ layout: default
 ## Required by
 
 * :heavy_check_mark: <a href="../../Graph/Coloring/chromatic_number.cpp.html">Graph vertex coloring</a>
-* :x: <a href="mod_log.cpp.html">Mod logarithm</a>
+* :heavy_check_mark: <a href="mod_log.cpp.html">Mod logarithm</a>
 * :x: <a href="mod_sqrt.cpp.html">Mod sqrt</a>
 
 
@@ -64,7 +64,7 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2136/main.test.cpp.html">test/aoj/2136/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2530/main.test.cpp.html">test/aoj/2530/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
 * :x: <a href="../../../../verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
 
 

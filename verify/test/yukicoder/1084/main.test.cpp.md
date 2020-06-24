@@ -25,23 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/enumerate_triangles/main.test.cpp
+# :x: test/yukicoder/1084/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#e25b567185ad9d2c82bdf5444236f5c2">test/yosupo-judge/enumerate_triangles</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/enumerate_triangles/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-17 19:17:20+09:00
+* category: <a href="../../../../index.html#f3418e7f5c6444b91848f405b9401880">test/yukicoder/1084</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/1084/main.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-24 11:07:08+09:00
 
 
-* see: <a href="https://judge.yosupo.jp/problem/enumerate_triangles">https://judge.yosupo.jp/problem/enumerate_triangles</a>
+* see: <a href="https://yukicoder.me/problems/no/1084">https://yukicoder.me/problems/no/1084</a>
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/enumerate_triangles.cpp.html">Enumerate triangles</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
-* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/Imos/linear_imos_1d.cpp.html">1D Imos algorithm (Linear addition)</a>
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 * :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
@@ -51,28 +49,65 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "https://judge.yosupo.jp/problem/enumerate_triangles"
+#define PROBLEM "https://yukicoder.me/problems/no/1084"
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
-#include "Mylib/IO/input_graph.cpp"
 #include "Mylib/IO/input_vector.cpp"
-#include "Mylib/Graph/enumerate_triangles.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
+#include "Mylib/Algorithm/Imos/linear_imos_1d.cpp"
 
-using mint = ModInt<998244353>;
+using mint = ModInt<1000000007>;
+const int MAX = 1000000000;
 
 int main(){
-  std::cin.tie(0);
-  std::ios::sync_with_stdio(false);
-  
-  int N, M; std::cin >> N >> M;
-  auto x = input_vector<mint>(N);
-  auto g = convert_to_graph<int, false>(N, input_edges<int, 0, false>(M));
+  int N; std::cin >> N;
+  auto A = input_vector<int64_t>(N);
 
-  auto res = enumerate_triangles(g);
   mint ans = 0;
-  for(auto [i, j, k] : res) ans += x[i] * x[j] * x[k];
+
+  if(std::count(A.begin(), A.end(), 0) == 0){
+    LinearImos1D<int64_t> p(N);
+    
+    std::vector<int> next(N);
+    for(int i = N-1; i >= 0; --i){
+      if(A[i] == 1){
+        if(i == N-1) next[i] = N;
+        else{
+          if(A[i + 1] == 1){
+            next[i] = next[i + 1];
+          }else{
+            next[i] = i + 1;
+          }
+        }
+      }else{
+        next[i] = i + 1;
+      }
+    }
+
+    for(int l = 0; l < N; ++l){
+      int64_t prod = 1;
+
+      int r = l;
+
+      for(int i = 0; i < 100; ++i){
+        if(r == N or prod * A[r] >= MAX) break;
+        prod *= A[r];
+        r = next[r];
+      }
+        
+      p.add(l, r, -1, r);
+    }
+
+    p.build();
+      
+    ans = 1;
+    for(int i = 0; i < N; ++i){
+      ans *= mint::power(A[i], p[i]);
+    }
+  }
 
   std::cout << ans << "\n";
   
@@ -85,70 +120,13 @@ int main(){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/yosupo-judge/enumerate_triangles/main.test.cpp"
-#define PROBLEM "https://judge.yosupo.jp/problem/enumerate_triangles"
+#line 1 "test/yukicoder/1084/main.test.cpp"
+#define PROBLEM "https://yukicoder.me/problems/no/1084"
 
 #include <iostream>
-
-#line 2 "Mylib/Graph/graph_template.cpp"
 #include <vector>
-#line 4 "Mylib/Graph/graph_template.cpp"
+#include <algorithm>
 
-/**
- * @title Graph template
- * @docs graph_template.md
- */
-template <typename Cost = int> class Edge{
-public:
-  int from,to;
-  Cost cost;
-  Edge() {}
-  Edge(int to, Cost cost): to(to), cost(cost){}
-  Edge(int from, int to, Cost cost): from(from), to(to), cost(cost){}
-};
-
-template <typename T> using Graph = std::vector<std::vector<Edge<T>>>;
-template <typename T> using Tree = std::vector<std::vector<Edge<T>>>;
-
-template <typename T, typename C> void add_edge(C &g, int from, int to, T w = 1){
-  g[from].emplace_back(from, to, w);
-}
-
-template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 1){
-  add_edge<T, C>(g, a, b, w);
-  add_edge<T, C>(g, b, a, w);
-}
-#line 4 "Mylib/IO/input_graph.cpp"
-
-/**
- * @docs input_graph.md
- */
-template <typename T, size_t I, bool WEIGHTED>
-std::vector<Edge<T>> input_edges(int M){
-  std::vector<Edge<T>> ret;
-  
-  for(int i = 0; i < M; ++i){
-    int s, t; std::cin >> s >> t;
-    s -= I;
-    t -= I;
-    T w = 1; if(WEIGHTED) std::cin >> w;
-    ret.emplace_back(s, t, w);
-  }
-  
-  return ret;  
-}
-
-template <typename T, bool DIRECTED>
-Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
-  Graph<T> g(N);
-
-  for(const auto &e : edges){
-    add_edge(g, e.from, e.to, e.cost);
-    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
-  }
-  
-  return g;
-}
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
@@ -165,46 +143,6 @@ template <typename T>
 std::vector<std::vector<T>> input_vector(int N, int M){
   std::vector<std::vector<T>> ret(N);
   for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
-  return ret;
-}
-#line 3 "Mylib/Graph/enumerate_triangles.cpp"
-#include <tuple>
-#include <unordered_set>
-#line 6 "Mylib/Graph/enumerate_triangles.cpp"
-
-/**
- * @title Enumerate triangles
- * @docs enumerate_triangles.md
- */
-template <typename T>
-std::vector<std::tuple<int,int,int>> enumerate_triangles(Graph<T> g){
-  const int N = g.size();
-  std::vector<std::tuple<int,int,int>> ret;
-
-  std::vector<std::unordered_set<int>> adjacent(N);
-
-  for(int i = 0; i < N; ++i){
-    for(auto &e : g[i]){
-      if(g[e.from].size() < g[e.to].size()){
-        adjacent[e.from].insert(e.to);
-      }else if(g[e.from].size() == g[e.to].size()){
-        if(e.from < e.to){
-          adjacent[e.from].insert(e.to);
-        }
-      }
-    }
-  }
-
-  for(int i = 0; i < N; ++i){
-    for(int j : adjacent[i]){
-      for(int k : adjacent[j]){
-        if(adjacent[i].find(k) != adjacent[i].end()){
-          ret.emplace_back(i, j, k);
-        }
-      }
-    }
-  }
-
   return ret;
 }
 #line 3 "Mylib/Number/Mint/mint.cpp"
@@ -293,21 +231,91 @@ public:
   explicit operator int32_t() const noexcept {return val;}
   explicit operator int64_t() const noexcept {return val;}
 };
-#line 9 "test/yosupo-judge/enumerate_triangles/main.test.cpp"
+#line 3 "Mylib/Algorithm/Imos/linear_imos_1d.cpp"
 
-using mint = ModInt<998244353>;
+/**
+ * @title 1D Imos algorithm (Linear addition)
+ * @docs linear_imos_1d.md
+ */
+template <typename T> struct LinearImos1D{
+  std::vector<T> vec_a, vec_a_end, vec_b, vec;
+  int n;
+
+  LinearImos1D(int n): vec_a(n+1), vec_a_end(n+1), vec_b(n+1), vec(n+1), n(n){}
+
+  void add(int s, int t, const T &a, const T &b){ // x∈[s,t)にax+bを加算する。
+    vec_a[s+1] += a;
+    vec_a[t] -= a;
+    
+    vec_a_end[t] -= a * (t-s-1);
+
+    vec_b[s] += a * s + b;
+    vec_b[t] -= a * s + b;
+  }
+
+  void build(){
+    for(int i = 0; i < n; ++i) vec_a[i+1] += vec_a[i];
+    for(int i = 0; i <= n; ++i) vec_a[i] += vec_a_end[i];
+    for(int i = 0; i < n; ++i) vec_a[i+1] += vec_a[i];
+
+    for(int i = 0; i < n; ++i) vec_b[i+1] += vec_b[i];
+
+    for(int i = 0; i <= n; ++i) vec[i] = vec_a[i] + vec_b[i];
+  }
+
+  inline const T operator[](size_t i) const {return vec[i];}
+};
+#line 10 "test/yukicoder/1084/main.test.cpp"
+
+using mint = ModInt<1000000007>;
+const int MAX = 1000000000;
 
 int main(){
-  std::cin.tie(0);
-  std::ios::sync_with_stdio(false);
-  
-  int N, M; std::cin >> N >> M;
-  auto x = input_vector<mint>(N);
-  auto g = convert_to_graph<int, false>(N, input_edges<int, 0, false>(M));
+  int N; std::cin >> N;
+  auto A = input_vector<int64_t>(N);
 
-  auto res = enumerate_triangles(g);
   mint ans = 0;
-  for(auto [i, j, k] : res) ans += x[i] * x[j] * x[k];
+
+  if(std::count(A.begin(), A.end(), 0) == 0){
+    LinearImos1D<int64_t> p(N);
+    
+    std::vector<int> next(N);
+    for(int i = N-1; i >= 0; --i){
+      if(A[i] == 1){
+        if(i == N-1) next[i] = N;
+        else{
+          if(A[i + 1] == 1){
+            next[i] = next[i + 1];
+          }else{
+            next[i] = i + 1;
+          }
+        }
+      }else{
+        next[i] = i + 1;
+      }
+    }
+
+    for(int l = 0; l < N; ++l){
+      int64_t prod = 1;
+
+      int r = l;
+
+      for(int i = 0; i < 100; ++i){
+        if(r == N or prod * A[r] >= MAX) break;
+        prod *= A[r];
+        r = next[r];
+      }
+        
+      p.add(l, r, -1, r);
+    }
+
+    p.build();
+      
+    ans = 1;
+    for(int i = 0; i < N; ++i){
+      ans *= mint::power(A[i], p[i]);
+    }
+  }
 
   std::cout << ans << "\n";
   

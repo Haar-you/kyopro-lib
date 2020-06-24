@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#dff63cd4dbbcc206af021772ba80d157">test/aoj/DSL_2_H</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_H/main.starry_sky.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-19 21:04:10+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/starry_sky_tree_min.cpp.html">Starry-sky tree (Min)</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp.html">Starry-sky tree</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
@@ -52,13 +52,15 @@ layout: default
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H"
 
 #include <iostream>
-#include "Mylib/DataStructure/SegmentTree/starry_sky_tree_min.cpp"
+#include <functional>
+
+#include "Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
 
-  StarrySkyTreeMin<int> seg(n);
+  StarrySkyTree<int, std::less<>> seg(n);
 
   for(auto [type, s, t] : input_tuples<int, int, int>(q)){
     if(type == 0){
@@ -82,28 +84,34 @@ int main(){
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H"
 
 #include <iostream>
-#line 2 "Mylib/DataStructure/SegmentTree/starry_sky_tree_min.cpp"
+#include <functional>
+
+#line 2 "Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp"
 #include <vector>
+#include <optional>
 #include <algorithm>
-#include <limits>
 
 /**
- * @title Starry-sky tree (Min)
- * @docs starry_sky_tree_min.md
+ * @title Starry-sky tree
+ * @docs StarrySkyTree.md
  */
-template <typename T>
-class StarrySkyTreeMin{
+template <typename T, typename Compare>
+class StarrySkyTree{
   int depth, size, hsize;
   std::vector<T> data;
 
-  const T id = std::numeric_limits<T>::max();
+  Compare compare = Compare();
+
+  T f(T a, T b) const {
+    return compare(a, b) ? a : b;
+  }
 
   void bottom_up(int i){
     if(i > size) return;
 
     while(i >= 1){
       if(i < hsize){
-        const auto d = std::min(data[i << 1 | 0], data[i << 1 | 1]);
+        const auto d = f(data[i << 1 | 0], data[i << 1 | 1]);
         
         data[i << 1 | 0] -= d;
         data[i << 1 | 1] -= d;
@@ -114,18 +122,23 @@ class StarrySkyTreeMin{
     }
   }
   
-  T get(int i, int l, int r, int s, int t, T val) const {
-    if(r <= s or t <= l) return id;
+  std::optional<T> get(int i, int l, int r, int s, int t, T val) const {
+    if(r <= s or t <= l) return std::nullopt;
     if(s <= l and r <= t) return val + data[i];
-    return std::min(get(i << 1 | 0, l, (l + r) / 2, s, t, val + data[i]),
-                    get(i << 1 | 1, (l + r) / 2, r, s, t, val + data[i]));
+
+    auto a = get(i << 1 | 0, l, (l + r) / 2, s, t, val + data[i]);
+    auto b = get(i << 1 | 1, (l + r) / 2, r, s, t, val + data[i]);
+
+    if(not a) return b;
+    if(not b) return a;
+    return f(*a, *b);
   }
 
 public:
-  StarrySkyTreeMin(int n):
+  StarrySkyTree(int n):
     depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
     size(1 << depth),
-    hsize(size / 2),    
+    hsize(size / 2),
     data(size, 0)
   {}
 
@@ -145,7 +158,7 @@ public:
   }
 
   T get(int l, int r) const {
-    return get(1, 0, hsize, l, r, 0);
+    return *get(1, 0, hsize, l, r, 0);
   }
 
   template <typename U>
@@ -155,7 +168,7 @@ public:
     }
 
     for(int i = hsize - 1; i >= 1; --i){
-      data[i] = std::min(data[i << 1 | 0], data[i << 1 | 1]);
+      data[i] = f(data[i << 1 | 0], data[i << 1 | 1]);
     }
 
     for(int i = size - 1; i > 1; --i){
@@ -234,12 +247,12 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 6 "test/aoj/DSL_2_H/main.starry_sky.test.cpp"
+#line 8 "test/aoj/DSL_2_H/main.starry_sky.test.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
 
-  StarrySkyTreeMin<int> seg(n);
+  StarrySkyTree<int, std::less<>> seg(n);
 
   for(auto [type, s, t] : input_tuples<int, int, int>(q)){
     if(type == 0){

@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="Mod/mod_inv.cpp.html">Mod inverse</a>
+* :heavy_check_mark: <a href="Mod/mod_inv.cpp.html">Mod inverse</a>
 
 
 ## Code
