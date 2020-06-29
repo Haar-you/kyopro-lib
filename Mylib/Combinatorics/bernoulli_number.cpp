@@ -1,13 +1,13 @@
 #pragma once
 #include <vector>
-#include "Mylib/Combinatorics/combinatorics.cpp"
+#include "Mylib/Combinatorics/factorial_table.cpp"
 
 /**
  * @title Bernoulli number
  * @docs bernoulli_number.md
  */
 template <typename T>
-std::vector<T> Combinatorics<T>::bernoulli_number(int64_t n){
+std::vector<T> FactorialTable<T>::bernoulli_number(int64_t n){
   std::vector<T> ret(n+1);
 
   ret[0] = 1;

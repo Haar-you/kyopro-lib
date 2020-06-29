@@ -1,12 +1,12 @@
 #pragma once
-#include "Mylib/Combinatorics/combinatorics.cpp"
+#include "Mylib/Combinatorics/factorial_table.cpp"
 
 /**
  * @title Stirling numbers of second kind
  * @docs stirling_number.md
  */
 template <typename T>
-T Combinatorics<T>::stirling_number(int64_t n, int64_t k){
+T FactorialTable<T>::stirling_number(int64_t n, int64_t k){
   if(n == 0 and k == 0) return 1;
   
   T ret = 0;
@@ -14,6 +14,6 @@ T Combinatorics<T>::stirling_number(int64_t n, int64_t k){
     if((k-i) % 2 == 0) ret += C(k,i) * T::power(i,n);
     else ret -= C(k,i) * T::power(i,n);
   }
-  ret *= finv(k);
+  ret *= inv_factorial(k);
   return ret;
 }

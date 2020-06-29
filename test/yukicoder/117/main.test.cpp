@@ -5,17 +5,17 @@
 #include <regex>
 
 #include "Mylib/Number/Mint/mint.cpp"
-#include "Mylib/Combinatorics/combinatorics.cpp"
+#include "Mylib/Combinatorics/factorial_table.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
 using mint = ModInt<1000000007>;
-using C = Combinatorics<mint>;
+using Ft = FactorialTable<mint>;
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  C::init(2000000);
+  Ft::init(2000000);
   
   int T; std::cin >> T;
 
@@ -30,9 +30,9 @@ int main(){
     int K = std::stoi(m[3].str());
 
     switch(type){
-    case 'C': std::cout << C::C(N, K) << "\n"; break;
-    case 'P': std::cout << C::P(N, K) << "\n"; break;
-    case 'H': std::cout << C::H(N, K) << "\n"; break;
+    case 'C': std::cout << Ft::C(N, K) << "\n"; break;
+    case 'P': std::cout << Ft::P(N, K) << "\n"; break;
+    case 'H': std::cout << Ft::H(N, K) << "\n"; break;
     }
   }
 
