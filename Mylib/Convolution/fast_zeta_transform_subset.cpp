@@ -3,7 +3,7 @@
 #include <functional>
 
 /**
- * @title Fast Zeta transform (Subset)
+ * @title Fast Zeta transform (Subsets)
  * @docs fast_zeta_transform_subset.md
  */
 template <typename T, typename Func = std::plus<T>>
