@@ -5,7 +5,7 @@
 
 /**
  * @title Starry-sky tree
- * @docs StarrySkyTree.md
+ * @docs starry_sky_tree.md
  */
 template <typename T, typename Compare>
 class StarrySkyTree{
