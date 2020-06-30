@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/bitxor.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 08:15:26+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 
@@ -54,8 +54,8 @@ layout: default
 template <typename T>
 struct BitXorMonoid{
   using value_type = T;
-  constexpr inline static value_type id(){return 0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a ^ b;}
+  static value_type id(){return 0;}
+  static value_type op(value_type a, value_type b){return a ^ b;}
 };
 
 ```
@@ -72,8 +72,8 @@ struct BitXorMonoid{
 template <typename T>
 struct BitXorMonoid{
   using value_type = T;
-  constexpr inline static value_type id(){return 0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a ^ b;}
+  static value_type id(){return 0;}
+  static value_type op(value_type a, value_type b){return a ^ b;}
 };
 
 ```

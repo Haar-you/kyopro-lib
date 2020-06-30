@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :question: Precalculation for combinatotion
+# :question: Factorial table
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/combinatorics.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/factorial_table.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-06-30 03:19:03+09:00
 
 
 
@@ -41,8 +41,8 @@ layout: default
 - `init(int N)`
 	- $0!$ ~ $N!$とその逆数を計算する。
 	- Time complexity $O(N)$
-- `f(int i)` : return $i!$
-- `finv(int i)` : return $\frac{1}{i!}$
+- `factorial(int i)` : return $i!$
+- `inv_factorial(int i)` : return $\frac{1}{i!}$
 - `P(int n, int k)` : return $_nP_k$
 - `C(int n, int k)` : return $_nC_k$
 - `H(int n, int k)` : return $_nH_k = _{n+k-1}C_k$
@@ -75,38 +75,38 @@ layout: default
 #include <cassert>
 
 /**
- * @title Precalculation for combinatotion
- * @docs combinatorics.md
+ * @title Factorial table
+ * @docs factorial_table.md
  * @attention 使用前にinit関数を呼び出す
  */
-template <typename T> class Combinatorics{
+template <typename T> class FactorialTable{
 public:
-  static std::vector<T> facto;
-  static std::vector<T> ifacto;
+  static std::vector<T> f_table;
+  static std::vector<T> if_table;
 
   static void init(int N){
-    facto.assign(N+1, 1);
-    ifacto.assign(N+1, 1);
+    f_table.assign(N+1, 1);
+    if_table.assign(N+1, 1);
     
     for(int i = 1; i <= N; ++i){
-      facto[i] = facto[i-1] * i;
+      f_table[i] = f_table[i-1] * i;
     }
     
-    ifacto[N] = facto[N].inv();
+    if_table[N] = f_table[N].inv();
 
     for(int i = N-1; i >= 0; --i){
-      ifacto[i] = ifacto[i+1] * (i+1);
+      if_table[i] = if_table[i+1] * (i+1);
     }
   }
   
-  static T f(int64_t i){
-    assert(i < facto.size());
-    return facto[i];
+  static T factorial(int64_t i){
+    assert(i < (int)f_table.size());
+    return f_table[i];
   }
   
-  static T finv(int64_t i){
-    assert(i < ifacto.size());
-    return ifacto[i];
+  static T inv_factorial(int64_t i){
+    assert(i < (int)if_table.size());
+    return if_table[i];
   }
 
   static T P(int64_t n, int64_t k);
@@ -118,20 +118,20 @@ public:
   static T catalan_number(int64_t n);
 };
 
-template <typename T> std::vector<T> Combinatorics<T>::facto = std::vector<T>();
-template <typename T> std::vector<T> Combinatorics<T>::ifacto = std::vector<T>();
+template <typename T> std::vector<T> FactorialTable<T>::f_table = std::vector<T>();
+template <typename T> std::vector<T> FactorialTable<T>::if_table = std::vector<T>();
 
-template <typename T> T Combinatorics<T>::P(int64_t n, int64_t k){
+template <typename T> T FactorialTable<T>::P(int64_t n, int64_t k){
   if(n < k or n < 0 or k < 0) return 0;
-  return f(n) * finv(n-k);
+  return factorial(n) * inv_factorial(n-k);
 }
 
-template <typename T> T Combinatorics<T>::C(int64_t n, int64_t k){
+template <typename T> T FactorialTable<T>::C(int64_t n, int64_t k){
   if(n < k or n < 0 or k < 0) return 0;
-  return P(n,k) * finv(k);
+  return P(n,k) * inv_factorial(k);
 }
 
-template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
+template <typename T> T FactorialTable<T>::H(int64_t n, int64_t k){
   if(n == 0 and k == 0) return 1;
   return C(n+k-1, k);
 }
@@ -142,43 +142,43 @@ template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Combinatorics/combinatorics.cpp"
+#line 2 "Mylib/Combinatorics/factorial_table.cpp"
 #include <vector>
 #include <cassert>
 
 /**
- * @title Precalculation for combinatotion
- * @docs combinatorics.md
+ * @title Factorial table
+ * @docs factorial_table.md
  * @attention 使用前にinit関数を呼び出す
  */
-template <typename T> class Combinatorics{
+template <typename T> class FactorialTable{
 public:
-  static std::vector<T> facto;
-  static std::vector<T> ifacto;
+  static std::vector<T> f_table;
+  static std::vector<T> if_table;
 
   static void init(int N){
-    facto.assign(N+1, 1);
-    ifacto.assign(N+1, 1);
+    f_table.assign(N+1, 1);
+    if_table.assign(N+1, 1);
     
     for(int i = 1; i <= N; ++i){
-      facto[i] = facto[i-1] * i;
+      f_table[i] = f_table[i-1] * i;
     }
     
-    ifacto[N] = facto[N].inv();
+    if_table[N] = f_table[N].inv();
 
     for(int i = N-1; i >= 0; --i){
-      ifacto[i] = ifacto[i+1] * (i+1);
+      if_table[i] = if_table[i+1] * (i+1);
     }
   }
   
-  static T f(int64_t i){
-    assert(i < facto.size());
-    return facto[i];
+  static T factorial(int64_t i){
+    assert(i < (int)f_table.size());
+    return f_table[i];
   }
   
-  static T finv(int64_t i){
-    assert(i < ifacto.size());
-    return ifacto[i];
+  static T inv_factorial(int64_t i){
+    assert(i < (int)if_table.size());
+    return if_table[i];
   }
 
   static T P(int64_t n, int64_t k);
@@ -190,20 +190,20 @@ public:
   static T catalan_number(int64_t n);
 };
 
-template <typename T> std::vector<T> Combinatorics<T>::facto = std::vector<T>();
-template <typename T> std::vector<T> Combinatorics<T>::ifacto = std::vector<T>();
+template <typename T> std::vector<T> FactorialTable<T>::f_table = std::vector<T>();
+template <typename T> std::vector<T> FactorialTable<T>::if_table = std::vector<T>();
 
-template <typename T> T Combinatorics<T>::P(int64_t n, int64_t k){
+template <typename T> T FactorialTable<T>::P(int64_t n, int64_t k){
   if(n < k or n < 0 or k < 0) return 0;
-  return f(n) * finv(n-k);
+  return factorial(n) * inv_factorial(n-k);
 }
 
-template <typename T> T Combinatorics<T>::C(int64_t n, int64_t k){
+template <typename T> T FactorialTable<T>::C(int64_t n, int64_t k){
   if(n < k or n < 0 or k < 0) return 0;
-  return P(n,k) * finv(k);
+  return P(n,k) * inv_factorial(k);
 }
 
-template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
+template <typename T> T FactorialTable<T>::H(int64_t n, int64_t k){
   if(n == 0 and k == 0) return 1;
   return C(n+k-1, k);
 }

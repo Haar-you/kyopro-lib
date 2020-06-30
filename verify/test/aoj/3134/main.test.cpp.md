@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4f0d05e27521ea76d6aad8fca840629e">test/aoj/3134</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3134/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-30 03:53:09+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3134">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3134</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_zeta_transform_subset.cpp.html">Fast Zeta transform (Subset)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_zeta_transform_subset.cpp.html">Fast Zeta transform (Subsets)</a>
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
@@ -108,7 +108,7 @@ int main(){
 #line 4 "Mylib/Convolution/fast_zeta_transform_subset.cpp"
 
 /**
- * @title Fast Zeta transform (Subset)
+ * @title Fast Zeta transform (Subsets)
  * @docs fast_zeta_transform_subset.md
  */
 template <typename T, typename Func = std::plus<T>>

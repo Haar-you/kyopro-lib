@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#1cab81d9204e4e9816afce7019c71879">test/aoj/DSL_2_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D</a>
@@ -167,8 +167,8 @@ public:
 template <typename T>
 struct UpdateMonoid{
   using value_type = std::optional<T>;
-  constexpr inline static value_type id(){return std::nullopt;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return (a ? a : b);}
+  static value_type id(){return std::nullopt;}
+  static value_type op(const value_type &a, const value_type &b){return (a ? a : b);}
 };
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>

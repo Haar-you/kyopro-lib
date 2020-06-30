@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_2_G/main.test.cpp
+# :x: test/yukicoder/1099/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#e041bea25482f003e469ca94d5537d62">test/aoj/DSL_2_G</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_G/main.test.cpp">View this file on GitHub</a>
+* category: <a href="../../../../index.html#58581601c69343767c8987de15d576e5">test/yukicoder/1099</a>
+* <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/1099/main.test.cpp">View this file on GitHub</a>
     - Last commit date: 2020-06-28 03:01:30+09:00
 
 
-* see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G</a>
+* see: <a href="https://yukicoder.me/problems/no/1099">https://yukicoder.me/problems/no/1099</a>
 
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/add_square_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_square_sum.cpp</a>
 * :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">Lazy segment tree</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -51,30 +51,39 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G"
+#define PROBLEM "https://yukicoder.me/problems/no/1099"
 
 #include <iostream>
 #include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp"
+#include "Mylib/AlgebraicStructure/MonoidAction/add_square_sum.cpp"
+#include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
 int main(){
-  int n, q; std::cin >> n >> q;
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N; std::cin >> N;
 
-  LazySegmentTree<AddSum<int64_t,int64_t>> seg(n);
+  auto A = input_vector<int64_t>(N);
 
-  for(auto [type, s, t] : input_tuples<int, int, int>(q)){
-    if(type == 0){
-      int x; std::cin >> x;
-      seg.update(s-1, t, x);
+  LazySegmentTree<AddSquareSum<int64_t>> seg(N);
+  for(int i = 0; i < N; ++i) seg.update_at(i, A[i]);
+
+  int Q; std::cin >> Q;
+
+  for(auto [type] : input_tuples<int>(Q)){
+    if(type == 1){
+      int l, r, x; std::cin >> l >> r >> x;
+      seg.update(l-1, r, x);
     }else{
-      std::cout << seg.get(s-1, t) << std::endl;
+      int l, r; std::cin >> l >> r;
+      std::cout << std::get<1>(seg.get(l-1, r)) << "\n";
     }
   }
-  
+
   return 0;
 }
-
 
 ```
 {% endraw %}
@@ -82,8 +91,8 @@ int main(){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/aoj/DSL_2_G/main.test.cpp"
-#define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G"
+#line 1 "test/yukicoder/1099/main.test.cpp"
+#define PROBLEM "https://yukicoder.me/problems/no/1099"
 
 #include <iostream>
 #line 2 "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
@@ -159,42 +168,58 @@ public:
     for(int i = hsize-1; i > 0; --i) data[i] = Monoid::op_get(data[i << 1 | 0], data[i << 1 | 1]);
   }
 };
-#line 2 "Mylib/AlgebraicStructure/Monoid/sum.cpp"
+#line 2 "Mylib/AlgebraicStructure/MonoidAction/add_square_sum.cpp"
+#include <utility>
 
 /**
- * @docs sum.md
+ * @docs add_square_sum.cpp
  */
 template <typename T>
-struct SumMonoid{
-  using value_type = T;
-  static value_type id(){return 0;}
-  static value_type op(value_type a, value_type b){return a + b;}
-};
-#line 3 "Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp"
+struct AddSquareSum{
+  using value_type_get = std::pair<T, T>;
+  using value_type_update = T;
 
-/**
- * @docs add_sum.md
- */
-template <typename T, typename U>
-struct AddSum{
-  using monoid_get = SumMonoid<T>;
-  using monoid_update = SumMonoid<U>;
-  using value_type_get = typename monoid_get::value_type;
-  using value_type_update = typename monoid_update::value_type;
+  static value_type_get id_get(){
+    return std::make_pair(0, 0);
+  }
 
-  static value_type_get id_get(){return monoid_get::id();}
-  static value_type_update id_update(){return monoid_update::id();}
+  static value_type_update id_update(){
+    return 0;
+  }
 
-  static value_type_get op_get(value_type_get a, value_type_get b){return monoid_get::op(a, b);}
-  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
+  static value_type_get op_get(const value_type_get &a, const value_type_get &b){
+    return std::make_pair(a.first + b.first, a.second + b.second);
+  }
 
-  static value_type_get op(value_type_get a, value_type_update b, int len){
-    return a + b * len;
+  static value_type_update op_update(const value_type_update &a, const value_type_update &b){
+    return a + b;
+  }
+  
+  static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
+    return std::make_pair(a.first + b * len, a.second + b * (2 * a.first + b * len));
   }
 };
+#line 4 "Mylib/IO/input_vector.cpp"
+
+/**
+ * @docs input_vector.md
+ */
+template <typename T>
+std::vector<T> input_vector(int N){
+  std::vector<T> ret(N);
+  for(int i = 0; i < N; ++i) std::cin >> ret[i];
+  return ret;
+}
+
+template <typename T>
+std::vector<std::vector<T>> input_vector(int N, int M){
+  std::vector<std::vector<T>> ret(N);
+  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+  return ret;
+}
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
-#include <utility>
+#line 6 "Mylib/IO/input_tuples.cpp"
 #include <initializer_list>
 #line 5 "Mylib/IO/input_tuple.cpp"
 #include <initializer_list>
@@ -263,25 +288,33 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 7 "test/aoj/DSL_2_G/main.test.cpp"
+#line 8 "test/yukicoder/1099/main.test.cpp"
 
 int main(){
-  int n, q; std::cin >> n >> q;
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+  
+  int N; std::cin >> N;
 
-  LazySegmentTree<AddSum<int64_t,int64_t>> seg(n);
+  auto A = input_vector<int64_t>(N);
 
-  for(auto [type, s, t] : input_tuples<int, int, int>(q)){
-    if(type == 0){
-      int x; std::cin >> x;
-      seg.update(s-1, t, x);
+  LazySegmentTree<AddSquareSum<int64_t>> seg(N);
+  for(int i = 0; i < N; ++i) seg.update_at(i, A[i]);
+
+  int Q; std::cin >> Q;
+
+  for(auto [type] : input_tuples<int>(Q)){
+    if(type == 1){
+      int l, r, x; std::cin >> l >> r >> x;
+      seg.update(l-1, r, x);
     }else{
-      std::cout << seg.get(s-1, t) << std::endl;
+      int l, r; std::cin >> l >> r;
+      std::cout << std::get<1>(seg.get(l-1, r)) << "\n";
     }
   }
-  
+
   return 0;
 }
-
 
 ```
 {% endraw %}

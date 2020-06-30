@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f4368c57ad8f64bd0caa562818234830">test/aoj/DPL_5_G</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_G/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-30 03:19:03+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_G">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_G</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/bell_number.cpp.html">Bell number</a>
-* :question: <a href="../../../../library/Mylib/Combinatorics/combinatorics.cpp.html">Precalculation for combinatotion</a>
+* :question: <a href="../../../../library/Mylib/Combinatorics/factorial_table.cpp.html">Factorial table</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/stirling_number.cpp.html">Stirling numbers of second kind</a>
 * :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
@@ -54,17 +54,17 @@ layout: default
 
 #include <iostream>
 #include "Mylib/Number/Mint/mint.cpp"
-#include "Mylib/Combinatorics/combinatorics.cpp"
+#include "Mylib/Combinatorics/factorial_table.cpp"
 #include "Mylib/Combinatorics/bell_number.cpp"
 
-using C = Combinatorics<ModInt<1000000007>>;
+using Ft = FactorialTable<ModInt<1000000007>>;
 
 int main(){
-  C::init(3000);
+  Ft::init(3000);
 
   int N, K; std::cin >> N >> K;
 
-  std::cout << C::bell_number(N, K) << std::endl;
+  std::cout << Ft::bell_number(N, K) << std::endl;
 
   return 0;
 }
@@ -165,43 +165,43 @@ public:
   explicit operator int32_t() const noexcept {return val;}
   explicit operator int64_t() const noexcept {return val;}
 };
-#line 2 "Mylib/Combinatorics/combinatorics.cpp"
+#line 2 "Mylib/Combinatorics/factorial_table.cpp"
 #include <vector>
 #include <cassert>
 
 /**
- * @title Precalculation for combinatotion
- * @docs combinatorics.md
+ * @title Factorial table
+ * @docs factorial_table.md
  * @attention 使用前にinit関数を呼び出す
  */
-template <typename T> class Combinatorics{
+template <typename T> class FactorialTable{
 public:
-  static std::vector<T> facto;
-  static std::vector<T> ifacto;
+  static std::vector<T> f_table;
+  static std::vector<T> if_table;
 
   static void init(int N){
-    facto.assign(N+1, 1);
-    ifacto.assign(N+1, 1);
+    f_table.assign(N+1, 1);
+    if_table.assign(N+1, 1);
     
     for(int i = 1; i <= N; ++i){
-      facto[i] = facto[i-1] * i;
+      f_table[i] = f_table[i-1] * i;
     }
     
-    ifacto[N] = facto[N].inv();
+    if_table[N] = f_table[N].inv();
 
     for(int i = N-1; i >= 0; --i){
-      ifacto[i] = ifacto[i+1] * (i+1);
+      if_table[i] = if_table[i+1] * (i+1);
     }
   }
   
-  static T f(int64_t i){
-    assert(i < facto.size());
-    return facto[i];
+  static T factorial(int64_t i){
+    assert(i < (int)f_table.size());
+    return f_table[i];
   }
   
-  static T finv(int64_t i){
-    assert(i < ifacto.size());
-    return ifacto[i];
+  static T inv_factorial(int64_t i){
+    assert(i < (int)if_table.size());
+    return if_table[i];
   }
 
   static T P(int64_t n, int64_t k);
@@ -213,20 +213,20 @@ public:
   static T catalan_number(int64_t n);
 };
 
-template <typename T> std::vector<T> Combinatorics<T>::facto = std::vector<T>();
-template <typename T> std::vector<T> Combinatorics<T>::ifacto = std::vector<T>();
+template <typename T> std::vector<T> FactorialTable<T>::f_table = std::vector<T>();
+template <typename T> std::vector<T> FactorialTable<T>::if_table = std::vector<T>();
 
-template <typename T> T Combinatorics<T>::P(int64_t n, int64_t k){
+template <typename T> T FactorialTable<T>::P(int64_t n, int64_t k){
   if(n < k or n < 0 or k < 0) return 0;
-  return f(n) * finv(n-k);
+  return factorial(n) * inv_factorial(n-k);
 }
 
-template <typename T> T Combinatorics<T>::C(int64_t n, int64_t k){
+template <typename T> T FactorialTable<T>::C(int64_t n, int64_t k){
   if(n < k or n < 0 or k < 0) return 0;
-  return P(n,k) * finv(k);
+  return P(n,k) * inv_factorial(k);
 }
 
-template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
+template <typename T> T FactorialTable<T>::H(int64_t n, int64_t k){
   if(n == 0 and k == 0) return 1;
   return C(n+k-1, k);
 }
@@ -239,7 +239,7 @@ template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
  * @docs stirling_number.md
  */
 template <typename T>
-T Combinatorics<T>::stirling_number(int64_t n, int64_t k){
+T FactorialTable<T>::stirling_number(int64_t n, int64_t k){
   if(n == 0 and k == 0) return 1;
   
   T ret = 0;
@@ -247,7 +247,7 @@ T Combinatorics<T>::stirling_number(int64_t n, int64_t k){
     if((k-i) % 2 == 0) ret += C(k,i) * T::power(i,n);
     else ret -= C(k,i) * T::power(i,n);
   }
-  ret *= finv(k);
+  ret *= inv_factorial(k);
   return ret;
 }
 #line 6 "Mylib/Combinatorics/bell_number.cpp"
@@ -257,7 +257,7 @@ T Combinatorics<T>::stirling_number(int64_t n, int64_t k){
  * @docs bell_number.md
  */
 template <typename T>
-T Combinatorics<T>::bell_number(int64_t n, int64_t k){
+T FactorialTable<T>::bell_number(int64_t n, int64_t k){
   if(n == 0) return 1;
   
   k = std::min(k, n);
@@ -265,27 +265,27 @@ T Combinatorics<T>::bell_number(int64_t n, int64_t k){
   std::vector<T> t(k, 1);
   
   for(int i = 1; i < k; ++i){
-    if(i % 2 == 0) t[i] = t[i-1] + finv(i);
-    else t[i] = t[i-1] - finv(i);
+    if(i % 2 == 0) t[i] = t[i-1] + inv_factorial(i);
+    else t[i] = t[i-1] - inv_factorial(i);
   }
 
   T ret = 0;
   for(int i = 1; i <= k; ++i){
-    ret += t[k-i] * T::power(i, n) * finv(i);
+    ret += t[k-i] * T::power(i, n) * inv_factorial(i);
   }
   
   return ret;
 }
 #line 7 "test/aoj/DPL_5_G/main.test.cpp"
 
-using C = Combinatorics<ModInt<1000000007>>;
+using Ft = FactorialTable<ModInt<1000000007>>;
 
 int main(){
-  C::init(3000);
+  Ft::init(3000);
 
   int N, K; std::cin >> N >> K;
 
-  std::cout << C::bell_number(N, K) << std::endl;
+  std::cout << Ft::bell_number(N, K) << std::endl;
 
   return 0;
 }

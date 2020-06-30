@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#79c44d69f4476256a05dd1926185d029">test/yukicoder/510</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/510/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/510">https://yukicoder.me/problems/no/510</a>
@@ -341,8 +341,8 @@ public:
 template <typename T>
 struct ProductMatrixMonoid{
   using value_type = T;
-  constexpr inline static value_type id(){return T::make_unit();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a * b;}
+  static value_type id(){return T::make_unit();}
+  static value_type op(const value_type &a, const value_type &b){return a * b;}
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 
@@ -352,8 +352,8 @@ struct ProductMatrixMonoid{
 template <typename Monoid>
 struct DualMonoid{
   using value_type = typename Monoid::value_type;
-  constexpr inline static value_type id(){return Monoid::id();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return Monoid::op(b, a);}
+  static value_type id(){return Monoid::id();}
+  static value_type op(const value_type &a, const value_type &b){return Monoid::op(b, a);}
 };
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>

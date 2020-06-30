@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f2dc228f845da8f438899cc780c48dec">test/yukicoder/789</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/789/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/789">https://yukicoder.me/problems/no/789</a>
@@ -163,8 +163,8 @@ public:
 template <typename T>
 struct SumMonoid{
   using value_type = T;
-  constexpr inline static value_type id(){return 0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a + b;}
+  static value_type id(){return 0;}
+  static value_type op(value_type a, value_type b){return a + b;}
 };
 #line 3 "Mylib/IO/input_tuples.cpp"
 #include <vector>

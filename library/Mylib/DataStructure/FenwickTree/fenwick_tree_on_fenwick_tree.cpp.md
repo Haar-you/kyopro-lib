@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Fenwick tree (On Fenwick tree)
+# :heavy_check_mark: Fenwick tree (On Fenwick tree)
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,12 +38,12 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="fenwick_tree.cpp.html">Fenwick tree</a>
+* :heavy_check_mark: <a href="fenwick_tree.cpp.html">Fenwick tree</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
 
 
 ## Code

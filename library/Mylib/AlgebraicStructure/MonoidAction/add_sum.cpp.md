@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 08:15:26+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 
@@ -65,7 +65,13 @@ struct AddSum{
   using value_type_get = typename monoid_get::value_type;
   using value_type_update = typename monoid_update::value_type;
 
-  constexpr inline static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
+  static value_type_get id_get(){return monoid_get::id();}
+  static value_type_update id_update(){return monoid_update::id();}
+
+  static value_type_get op_get(value_type_get a, value_type_get b){return monoid_get::op(a, b);}
+  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
+
+  static value_type_get op(value_type_get a, value_type_update b, int len){
     return a + b * len;
   }
 };
@@ -84,8 +90,8 @@ struct AddSum{
 template <typename T>
 struct SumMonoid{
   using value_type = T;
-  constexpr inline static value_type id(){return 0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a + b;}
+  static value_type id(){return 0;}
+  static value_type op(value_type a, value_type b){return a + b;}
 };
 #line 3 "Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp"
 
@@ -99,7 +105,13 @@ struct AddSum{
   using value_type_get = typename monoid_get::value_type;
   using value_type_update = typename monoid_update::value_type;
 
-  constexpr inline static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
+  static value_type_get id_get(){return monoid_get::id();}
+  static value_type_update id_update(){return monoid_update::id();}
+
+  static value_type_get op_get(value_type_get a, value_type_get b){return monoid_get::op(a, b);}
+  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
+
+  static value_type_get op(value_type_get a, value_type_update b, int len){
     return a + b * len;
   }
 };

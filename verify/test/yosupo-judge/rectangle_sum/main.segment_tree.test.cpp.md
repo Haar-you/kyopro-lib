@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
+# :heavy_check_mark: test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9102555d140c20ca7196c4db584ea7b6">test/yosupo-judge/rectangle_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/rectangle_sum">https://judge.yosupo.jp/problem/rectangle_sum</a>
@@ -41,7 +41,7 @@ layout: default
 
 * :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 * :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
-* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp.html">Segment tree (On segment tree)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp.html">Segment tree (On segment tree)</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
@@ -108,8 +108,8 @@ int main(){
 template <typename T>
 struct SumMonoid{
   using value_type = T;
-  constexpr inline static value_type id(){return 0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a + b;}
+  static value_type id(){return 0;}
+  static value_type op(value_type a, value_type b){return a + b;}
 };
 #line 3 "Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp"
 #include <algorithm>

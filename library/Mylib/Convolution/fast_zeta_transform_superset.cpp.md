@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Fast Zeta transform (Superset)
+# :heavy_check_mark: Fast Zeta transform (Supersets)
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/fast_zeta_transform_superset.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-30 03:53:09+09:00
 
 
 
@@ -73,7 +73,7 @@ layout: default
 #include <functional>
 
 /**
- * @title Fast Zeta transform (Superset)
+ * @title Fast Zeta transform (Supersets)
  * @docs fast_zeta_transform_superset.md
  */
 template <typename T, typename Func = std::plus<T>>
@@ -97,7 +97,7 @@ std::vector<T> fast_zeta_transform_superset(std::vector<T> f, const Func &op = s
 #include <functional>
 
 /**
- * @title Fast Zeta transform (Superset)
+ * @title Fast Zeta transform (Supersets)
  * @docs fast_zeta_transform_superset.md
  */
 template <typename T, typename Func = std::plus<T>>

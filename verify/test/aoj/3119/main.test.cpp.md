@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#59b3322e8805b9ff175a68f1a5d31d67">test/aoj/3119</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3119/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-06-30 03:53:09+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_mobius_transform_superset.cpp.html">Fast Möbius transform (Superset)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_zeta_transform_superset.cpp.html">Fast Zeta transform (Superset)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_mobius_transform_superset.cpp.html">Fast Möbius transform (Supersets)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_zeta_transform_superset.cpp.html">Fast Zeta transform (Supersets)</a>
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 * :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
@@ -182,7 +182,7 @@ public:
 #include <functional>
 
 /**
- * @title Fast Zeta transform (Superset)
+ * @title Fast Zeta transform (Supersets)
  * @docs fast_zeta_transform_superset.md
  */
 template <typename T, typename Func = std::plus<T>>
@@ -197,7 +197,7 @@ std::vector<T> fast_zeta_transform_superset(std::vector<T> f, const Func &op = s
 #line 4 "Mylib/Convolution/fast_mobius_transform_superset.cpp"
 
 /**
- * @title Fast Möbius transform (Superset)
+ * @title Fast Möbius transform (Supersets)
  * @docs fast_mobius_transform_superset.md
  */
 template <typename T, typename Func = std::minus<T>>

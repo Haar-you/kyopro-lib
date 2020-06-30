@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#3df95940e092844fc072dd50b6844b29">Mylib/AlgebraicStructure/Semiring</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Semiring/add_mul.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 08:15:26+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 
@@ -49,10 +49,10 @@ layout: default
 template <typename T>
 struct AddMulSemiring{
   using value_type = T;
-  constexpr inline static value_type id_add(){return 0;}
-  constexpr inline static value_type id_mul(){return 1;}
-  constexpr inline static value_type add(const value_type &a, const value_type &b){return a + b;}
-  constexpr inline static value_type mul(const value_type &a, const value_type &b){return a * b;}
+  static value_type id_add(){return 0;}
+  static value_type id_mul(){return 1;}
+  static value_type add(value_type a, value_type b){return a + b;}
+  static value_type mul(value_type a, value_type b){return a * b;}
 };
 
 ```
@@ -69,10 +69,10 @@ struct AddMulSemiring{
 template <typename T>
 struct AddMulSemiring{
   using value_type = T;
-  constexpr inline static value_type id_add(){return 0;}
-  constexpr inline static value_type id_mul(){return 1;}
-  constexpr inline static value_type add(const value_type &a, const value_type &b){return a + b;}
-  constexpr inline static value_type mul(const value_type &a, const value_type &b){return a * b;}
+  static value_type id_add(){return 0;}
+  static value_type id_mul(){return 1;}
+  static value_type add(value_type a, value_type b){return a + b;}
+  static value_type mul(value_type a, value_type b){return a * b;}
 };
 
 ```

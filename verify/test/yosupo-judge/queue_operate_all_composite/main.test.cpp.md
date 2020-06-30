@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#c8d31b5139983c6742fe36acb5e1ac81">test/yosupo-judge/queue_operate_all_composite</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/queue_operate_all_composite/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/queue_operate_all_composite">https://judge.yosupo.jp/problem/queue_operate_all_composite</a>
@@ -194,8 +194,8 @@ public:
 template <typename T>
 struct AffineMonoid{
   using value_type = std::pair<T, T>;
-  constexpr inline static value_type id(){return std::make_pair(1, 0);}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::make_pair(a.first * b.first, a.first * b.second + a.second);}
+  static value_type id(){return std::make_pair(1, 0);}
+  static value_type op(const value_type &a, const value_type &b){return std::make_pair(a.first * b.first, a.first * b.second + a.second);}
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 
@@ -205,8 +205,8 @@ struct AffineMonoid{
 template <typename Monoid>
 struct DualMonoid{
   using value_type = typename Monoid::value_type;
-  constexpr inline static value_type id(){return Monoid::id();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return Monoid::op(b, a);}
+  static value_type id(){return Monoid::id();}
+  static value_type op(const value_type &a, const value_type &b){return Monoid::op(b, a);}
 };
 #line 2 "Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp"
 #include <vector>

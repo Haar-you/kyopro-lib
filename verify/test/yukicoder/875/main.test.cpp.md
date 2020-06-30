@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#85bd684f532fe6c6e7e3dd42beff3eb5">test/yukicoder/875</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/875/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-12 19:38:51+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/875">https://yukicoder.me/problems/no/875</a>
@@ -205,11 +205,11 @@ template <typename Monoid>
 struct WithMinIndex{
   using value_type = std::pair<typename Monoid::value_type, int64_t>;
 
-  constexpr inline static value_type id(){
+  static value_type id(){
     return {Monoid::id(), std::numeric_limits<int64_t>::max()};
   }
 
-  constexpr inline static value_type op(const value_type &a, const value_type &b){
+  static value_type op(const value_type &a, const value_type &b){
     if(a.first == b.first) return {a.first, std::min(a.second, b.second)};
     if(Monoid::op(a.first, b.first) == a.first) return a;
     else return b;

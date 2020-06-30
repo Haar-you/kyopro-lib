@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/affine.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 08:15:26+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 
@@ -59,14 +59,14 @@ layout: default
 
 ## Required by
 
-* :x: <a href="../MonoidAction/affine_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp</a>
+* :heavy_check_mark: <a href="../MonoidAction/affine_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
 * :x: <a href="../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
 
 
@@ -84,8 +84,8 @@ layout: default
 template <typename T>
 struct AffineMonoid{
   using value_type = std::pair<T, T>;
-  constexpr inline static value_type id(){return std::make_pair(1, 0);}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::make_pair(a.first * b.first, a.first * b.second + a.second);}
+  static value_type id(){return std::make_pair(1, 0);}
+  static value_type op(const value_type &a, const value_type &b){return std::make_pair(a.first * b.first, a.first * b.second + a.second);}
 };
 
 ```
@@ -103,8 +103,8 @@ struct AffineMonoid{
 template <typename T>
 struct AffineMonoid{
   using value_type = std::pair<T, T>;
-  constexpr inline static value_type id(){return std::make_pair(1, 0);}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::make_pair(a.first * b.first, a.first * b.second + a.second);}
+  static value_type id(){return std::make_pair(1, 0);}
+  static value_type op(const value_type &a, const value_type &b){return std::make_pair(a.first * b.first, a.first * b.second + a.second);}
 };
 
 ```

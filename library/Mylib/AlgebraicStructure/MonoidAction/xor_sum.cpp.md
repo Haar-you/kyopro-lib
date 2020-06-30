@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/xor_sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-27 22:14:41+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 
@@ -63,6 +63,12 @@ struct XorSum{
   using value_type_get = typename monoid_get::value_type;
   using value_type_update = typename monoid_update::value_type;
 
+  static value_type_get id_get(){return monoid_get::id();}
+  static value_type_update id_update(){return monoid_update::id();}
+
+  static value_type_get op_get(const value_type_get &a, const value_type_get &b){return monoid_get::op(a, b);}
+  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
+
   inline static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
     auto ret = a;
     for(int i = 0; i < B; ++i) if((b >> i) & 1) ret[i] = len - ret[i];
@@ -86,13 +92,13 @@ template <typename Monoid, int B>
 struct ArrayMonoid{
   using value_type = std::array<typename Monoid::value_type, B>;
 
-  inline static value_type id(){
+  static value_type id(){
     value_type ret;
     ret.fill(Monoid::id());
     return ret;
   }
 
-  inline static value_type op(const value_type &a, const value_type &b){
+  static value_type op(const value_type &a, const value_type &b){
     value_type ret;
     for(int i = 0; i < B; ++i) ret[i] = Monoid::op(a[i], b[i]);
     return ret;
@@ -106,8 +112,8 @@ struct ArrayMonoid{
 template <typename T>
 struct SumMonoid{
   using value_type = T;
-  constexpr inline static value_type id(){return 0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a + b;}
+  static value_type id(){return 0;}
+  static value_type op(value_type a, value_type b){return a + b;}
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/bitxor.cpp"
 
@@ -117,8 +123,8 @@ struct SumMonoid{
 template <typename T>
 struct BitXorMonoid{
   using value_type = T;
-  constexpr inline static value_type id(){return 0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a ^ b;}
+  static value_type id(){return 0;}
+  static value_type op(value_type a, value_type b){return a ^ b;}
 };
 #line 5 "Mylib/AlgebraicStructure/MonoidAction/xor_sum.cpp"
 
@@ -131,6 +137,12 @@ struct XorSum{
   using monoid_update = BitXorMonoid<U>;
   using value_type_get = typename monoid_get::value_type;
   using value_type_update = typename monoid_update::value_type;
+
+  static value_type_get id_get(){return monoid_get::id();}
+  static value_type_update id_update(){return monoid_update::id();}
+
+  static value_type_get op_get(const value_type_get &a, const value_type_get &b){return monoid_get::op(a, b);}
+  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
 
   inline static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
     auto ret = a;

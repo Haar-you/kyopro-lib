@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#16025af99bcae563116239b49b797e5d">test/yosupo-judge/vertex_add_path_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/vertex_add_path_sum/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/vertex_add_path_sum">https://judge.yosupo.jp/problem/vertex_add_path_sum</a>
@@ -343,8 +343,8 @@ public:
 template <typename T>
 struct SumMonoid{
   using value_type = T;
-  constexpr inline static value_type id(){return 0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a + b;}
+  static value_type id(){return 0;}
+  static value_type op(value_type a, value_type b){return a + b;}
 };
 #line 4 "Mylib/IO/input_graph.cpp"
 

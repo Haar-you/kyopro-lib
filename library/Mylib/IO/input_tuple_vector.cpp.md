@@ -54,9 +54,9 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_2_C/main.test.cpp.html">test/aoj/DPL_2_C/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/point_add_rectangle_sum/main.test.cpp.html">test/yosupo-judge/point_add_rectangle_sum/main.test.cpp</a>
-* :x: <a href="../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp</a>
-* :x: <a href="../../../verify/test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp</a>
 * :x: <a href="../../../verify/test/yukicoder/1069/main.test.cpp.html">test/yukicoder/1069/main.test.cpp</a>
 
 

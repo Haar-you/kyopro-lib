@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#bebcd5bef589a8c43022d53b5d3891af">test/yosupo-judge/dynamic_tree_vertex_add_path_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_path_sum">https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_path_sum</a>
@@ -118,8 +118,8 @@ int main(){
 template <typename T>
 struct SumMonoid{
   using value_type = T;
-  constexpr inline static value_type id(){return 0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a + b;}
+  static value_type id(){return 0;}
+  static value_type op(value_type a, value_type b){return a + b;}
 };
 #line 2 "Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp"
 #include <vector>

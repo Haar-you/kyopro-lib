@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/dual.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 08:15:26+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 
@@ -57,8 +57,8 @@ layout: default
 template <typename Monoid>
 struct DualMonoid{
   using value_type = typename Monoid::value_type;
-  constexpr inline static value_type id(){return Monoid::id();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return Monoid::op(b, a);}
+  static value_type id(){return Monoid::id();}
+  static value_type op(const value_type &a, const value_type &b){return Monoid::op(b, a);}
 };
 
 ```
@@ -75,8 +75,8 @@ struct DualMonoid{
 template <typename Monoid>
 struct DualMonoid{
   using value_type = typename Monoid::value_type;
-  constexpr inline static value_type id(){return Monoid::id();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return Monoid::op(b, a);}
+  static value_type id(){return Monoid::id();}
+  static value_type op(const value_type &a, const value_type &b){return Monoid::op(b, a);}
 };
 
 ```

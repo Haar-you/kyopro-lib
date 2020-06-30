@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a8c189a9cd3b51f204ab4e40b62c7dab">test/yukicoder/776</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/776/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/776">https://yukicoder.me/problems/no/776</a>
@@ -149,11 +149,11 @@ struct MaxPartialSumMonoid{
   
   using value_type = std::optional<MaxPartialSum>;
   
-  constexpr inline static value_type id(){
+  static value_type id(){
     return std::nullopt;
   }
   
-  constexpr inline static value_type op(const value_type &a, const value_type &b){
+  static value_type op(const value_type &a, const value_type &b){
     if(not a) return b;
     if(not b) return a;
 

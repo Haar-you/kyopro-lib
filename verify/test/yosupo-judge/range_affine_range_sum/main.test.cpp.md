@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yosupo-judge/range_affine_range_sum/main.test.cpp
+# :heavy_check_mark: test/yosupo-judge/range_affine_range_sum/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7561f7b6847dbe0c0f95d39dd0066b92">test/yosupo-judge/range_affine_range_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/range_affine_range_sum/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_affine_range_sum">https://judge.yosupo.jp/problem/range_affine_range_sum</a>
@@ -41,7 +41,7 @@ layout: default
 
 * :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
 * :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :x: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp</a>
 * :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">Lazy segment tree</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
@@ -109,40 +109,38 @@ template <typename Monoid>
 class LazySegmentTree{
   using value_type_get = typename Monoid::value_type_get;
   using value_type_update = typename Monoid::value_type_update;
-  using monoid_get = typename Monoid::monoid_get;
-  using monoid_update = typename Monoid::monoid_update;
   
   const int depth, size, hsize;
   std::vector<value_type_get> data;
   std::vector<value_type_update> lazy;
 
   inline void propagate(int i){
-    if(lazy[i] == monoid_update::id()) return;
+    if(lazy[i] == Monoid::id_update()) return;
     if(i < hsize){
-      lazy[i << 1 | 0] = monoid_update::op(lazy[i], lazy[i << 1 | 0]);
-      lazy[i << 1 | 1] = monoid_update::op(lazy[i], lazy[i << 1 | 1]);
+      lazy[i << 1 | 0] = Monoid::op_update(lazy[i], lazy[i << 1 | 0]);
+      lazy[i << 1 | 1] = Monoid::op_update(lazy[i], lazy[i << 1 | 1]);
     }
     int len = hsize >> (31 - __builtin_clz(i));
     data[i] = Monoid::op(data[i], lazy[i], len);
-    lazy[i] = monoid_update::id();
+    lazy[i] = Monoid::id_update();
   }
 
   inline value_type_get update_aux(int i, int l, int r, int s, int t, const value_type_update &x){
     propagate(i);
     if(r <= s || t <= l) return data[i];
     else if(s <= l && r <= t){
-      lazy[i] = monoid_update::op(x, lazy[i]);
+      lazy[i] = Monoid::op_update(x, lazy[i]);
       propagate(i);
       return data[i];
     }
-    else return data[i] = monoid_get::op(update_aux(i << 1 | 0, l, (l+r) / 2, s, t, x), update_aux(i << 1 | 1, (l+r) / 2, r, s, t, x));
+    else return data[i] = Monoid::op_get(update_aux(i << 1 | 0, l, (l+r) / 2, s, t, x), update_aux(i << 1 | 1, (l+r) / 2, r, s, t, x));
   }
   
   inline value_type_get get_aux(int i, int l, int r, int x, int y){
     propagate(i);
-    if(r <= x || y <= l) return monoid_get::id();
+    if(r <= x || y <= l) return Monoid::id_get();
     else if(x <= l && r <= y) return data[i];
-    else return monoid_get::op(get_aux(i << 1 | 0, l, (l+r) / 2, x, y), get_aux(i << 1 | 1, (l+r) / 2, r, x, y));
+    else return Monoid::op_get(get_aux(i << 1 | 0, l, (l+r) / 2, x, y), get_aux(i << 1 | 1, (l+r) / 2, r, x, y));
   }
 
 public:
@@ -151,8 +149,8 @@ public:
     depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
     size(1 << depth),
     hsize(size / 2),
-    data(size, monoid_get::id()),
-    lazy(size, monoid_update::id())
+    data(size, Monoid::id_get()),
+    lazy(size, Monoid::id_update())
   {}
 
   inline void update(int l, int r, const value_type_update &x){update_aux(1, 0, hsize, l, r, x);}
@@ -167,10 +165,10 @@ public:
 
   template <typename T>
   inline void init_with_vector(const std::vector<T> &val){
-    data.assign(size, monoid_get::id());
-    lazy.assign(size, monoid_update::id());
+    data.assign(size, Monoid::id_get());
+    lazy.assign(size, Monoid::id_update());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
-    for(int i = hsize-1; i > 0; --i) data[i] = monoid_get::op(data[i << 1 | 0], data[i << 1 | 1]);
+    for(int i = hsize-1; i > 0; --i) data[i] = Monoid::op_get(data[i << 1 | 0], data[i << 1 | 1]);
   }
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/sum.cpp"
@@ -181,8 +179,8 @@ public:
 template <typename T>
 struct SumMonoid{
   using value_type = T;
-  constexpr inline static value_type id(){return 0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a + b;}
+  static value_type id(){return 0;}
+  static value_type op(value_type a, value_type b){return a + b;}
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 #include <utility>
@@ -193,8 +191,8 @@ struct SumMonoid{
 template <typename T>
 struct AffineMonoid{
   using value_type = std::pair<T, T>;
-  constexpr inline static value_type id(){return std::make_pair(1, 0);}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::make_pair(a.first * b.first, a.first * b.second + a.second);}
+  static value_type id(){return std::make_pair(1, 0);}
+  static value_type op(const value_type &a, const value_type &b){return std::make_pair(a.first * b.first, a.first * b.second + a.second);}
 };
 #line 4 "Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp"
 
@@ -208,7 +206,13 @@ struct AffineSum{
   using value_type_get = typename monoid_get::value_type;
   using value_type_update = typename monoid_update::value_type;
 
-  constexpr inline static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
+  static value_type_get id_get(){return monoid_get::id();}
+  static value_type_update id_update(){return monoid_update::id();}
+
+  static value_type_get op_get(value_type_get a, value_type_get b){return monoid_get::op(a, b);}
+  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
+
+  static value_type_get op(value_type_get a, value_type_update b, int len){
     return b.first * a + b.second * len;
   }
 };

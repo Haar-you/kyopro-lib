@@ -66,7 +66,7 @@ layout: default
 
 ## Required by
 
-* :question: <a href="segment_tree_on_segment_tree.cpp.html">Segment tree (On segment tree)</a>
+* :heavy_check_mark: <a href="segment_tree_on_segment_tree.cpp.html">Segment tree (On segment tree)</a>
 * :heavy_check_mark: <a href="../../Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
 
 
@@ -78,7 +78,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/point_add_rectangle_sum/main.test.cpp.html">test/yosupo-judge/point_add_rectangle_sum/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp</a>
 * :x: <a href="../../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
 * :x: <a href="../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
 * :x: <a href="../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f20910bc88ed07cbe415ab1d4fdcbec4">test/yosupo-judge/point_add_rectangle_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/point_add_rectangle_sum/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-16 23:35:08+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_add_rectangle_sum">https://judge.yosupo.jp/problem/point_add_rectangle_sum</a>
@@ -41,7 +41,7 @@ layout: default
 
 * :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 * :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
-* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp.html">Segment tree (On segment tree)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp.html">Segment tree (On segment tree)</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 
 
@@ -295,8 +295,8 @@ public:
 template <typename T>
 struct SumMonoid{
   using value_type = T;
-  constexpr inline static value_type id(){return 0;}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return a + b;}
+  static value_type id(){return 0;}
+  static value_type op(value_type a, value_type b){return a + b;}
 };
 #line 5 "Mylib/IO/input_tuple_vector.cpp"
 #include <utility>

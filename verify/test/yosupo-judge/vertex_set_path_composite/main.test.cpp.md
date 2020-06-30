@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4074bf88980bb06d903e38d47fb81c08">test/yosupo-judge/vertex_set_path_composite</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/vertex_set_path_composite/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-06-28 03:01:30+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/vertex_set_path_composite">https://judge.yosupo.jp/problem/vertex_set_path_composite</a>
@@ -473,8 +473,8 @@ public:
 template <typename T>
 struct AffineMonoid{
   using value_type = std::pair<T, T>;
-  constexpr inline static value_type id(){return std::make_pair(1, 0);}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return std::make_pair(a.first * b.first, a.first * b.second + a.second);}
+  static value_type id(){return std::make_pair(1, 0);}
+  static value_type op(const value_type &a, const value_type &b){return std::make_pair(a.first * b.first, a.first * b.second + a.second);}
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 
@@ -484,8 +484,8 @@ struct AffineMonoid{
 template <typename Monoid>
 struct DualMonoid{
   using value_type = typename Monoid::value_type;
-  constexpr inline static value_type id(){return Monoid::id();}
-  constexpr inline static value_type op(const value_type &a, const value_type &b){return Monoid::op(b, a);}
+  static value_type id(){return Monoid::id();}
+  static value_type op(const value_type &a, const value_type &b){return Monoid::op(b, a);}
 };
 #line 4 "Mylib/IO/input_graph.cpp"
 

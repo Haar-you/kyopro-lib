@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f01f019f5d83aaae637417bc3568edb5">test/yukicoder/117</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/117/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-06 10:19:56+09:00
+    - Last commit date: 2020-06-30 03:19:03+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/117">https://yukicoder.me/problems/no/117</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Combinatorics/combinatorics.cpp.html">Precalculation for combinatotion</a>
+* :question: <a href="../../../../library/Mylib/Combinatorics/factorial_table.cpp.html">Factorial table</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 * :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
@@ -57,17 +57,17 @@ layout: default
 #include <regex>
 
 #include "Mylib/Number/Mint/mint.cpp"
-#include "Mylib/Combinatorics/combinatorics.cpp"
+#include "Mylib/Combinatorics/factorial_table.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
 using mint = ModInt<1000000007>;
-using C = Combinatorics<mint>;
+using Ft = FactorialTable<mint>;
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  C::init(2000000);
+  Ft::init(2000000);
   
   int T; std::cin >> T;
 
@@ -82,9 +82,9 @@ int main(){
     int K = std::stoi(m[3].str());
 
     switch(type){
-    case 'C': std::cout << C::C(N, K) << "\n"; break;
-    case 'P': std::cout << C::P(N, K) << "\n"; break;
-    case 'H': std::cout << C::H(N, K) << "\n"; break;
+    case 'C': std::cout << Ft::C(N, K) << "\n"; break;
+    case 'P': std::cout << Ft::P(N, K) << "\n"; break;
+    case 'H': std::cout << Ft::H(N, K) << "\n"; break;
     }
   }
 
@@ -190,43 +190,43 @@ public:
   explicit operator int32_t() const noexcept {return val;}
   explicit operator int64_t() const noexcept {return val;}
 };
-#line 2 "Mylib/Combinatorics/combinatorics.cpp"
+#line 2 "Mylib/Combinatorics/factorial_table.cpp"
 #include <vector>
 #include <cassert>
 
 /**
- * @title Precalculation for combinatotion
- * @docs combinatorics.md
+ * @title Factorial table
+ * @docs factorial_table.md
  * @attention 使用前にinit関数を呼び出す
  */
-template <typename T> class Combinatorics{
+template <typename T> class FactorialTable{
 public:
-  static std::vector<T> facto;
-  static std::vector<T> ifacto;
+  static std::vector<T> f_table;
+  static std::vector<T> if_table;
 
   static void init(int N){
-    facto.assign(N+1, 1);
-    ifacto.assign(N+1, 1);
+    f_table.assign(N+1, 1);
+    if_table.assign(N+1, 1);
     
     for(int i = 1; i <= N; ++i){
-      facto[i] = facto[i-1] * i;
+      f_table[i] = f_table[i-1] * i;
     }
     
-    ifacto[N] = facto[N].inv();
+    if_table[N] = f_table[N].inv();
 
     for(int i = N-1; i >= 0; --i){
-      ifacto[i] = ifacto[i+1] * (i+1);
+      if_table[i] = if_table[i+1] * (i+1);
     }
   }
   
-  static T f(int64_t i){
-    assert(i < facto.size());
-    return facto[i];
+  static T factorial(int64_t i){
+    assert(i < (int)f_table.size());
+    return f_table[i];
   }
   
-  static T finv(int64_t i){
-    assert(i < ifacto.size());
-    return ifacto[i];
+  static T inv_factorial(int64_t i){
+    assert(i < (int)if_table.size());
+    return if_table[i];
   }
 
   static T P(int64_t n, int64_t k);
@@ -238,20 +238,20 @@ public:
   static T catalan_number(int64_t n);
 };
 
-template <typename T> std::vector<T> Combinatorics<T>::facto = std::vector<T>();
-template <typename T> std::vector<T> Combinatorics<T>::ifacto = std::vector<T>();
+template <typename T> std::vector<T> FactorialTable<T>::f_table = std::vector<T>();
+template <typename T> std::vector<T> FactorialTable<T>::if_table = std::vector<T>();
 
-template <typename T> T Combinatorics<T>::P(int64_t n, int64_t k){
+template <typename T> T FactorialTable<T>::P(int64_t n, int64_t k){
   if(n < k or n < 0 or k < 0) return 0;
-  return f(n) * finv(n-k);
+  return factorial(n) * inv_factorial(n-k);
 }
 
-template <typename T> T Combinatorics<T>::C(int64_t n, int64_t k){
+template <typename T> T FactorialTable<T>::C(int64_t n, int64_t k){
   if(n < k or n < 0 or k < 0) return 0;
-  return P(n,k) * finv(k);
+  return P(n,k) * inv_factorial(k);
 }
 
-template <typename T> T Combinatorics<T>::H(int64_t n, int64_t k){
+template <typename T> T FactorialTable<T>::H(int64_t n, int64_t k){
   if(n == 0 and k == 0) return 1;
   return C(n+k-1, k);
 }
@@ -329,13 +329,13 @@ auto input_tuples(int N){
 #line 10 "test/yukicoder/117/main.test.cpp"
 
 using mint = ModInt<1000000007>;
-using C = Combinatorics<mint>;
+using Ft = FactorialTable<mint>;
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  C::init(2000000);
+  Ft::init(2000000);
   
   int T; std::cin >> T;
 
@@ -350,9 +350,9 @@ int main(){
     int K = std::stoi(m[3].str());
 
     switch(type){
-    case 'C': std::cout << C::C(N, K) << "\n"; break;
-    case 'P': std::cout << C::P(N, K) << "\n"; break;
-    case 'H': std::cout << C::H(N, K) << "\n"; break;
+    case 'C': std::cout << Ft::C(N, K) << "\n"; break;
+    case 'P': std::cout << Ft::P(N, K) << "\n"; break;
+    case 'H': std::cout << Ft::H(N, K) << "\n"; break;
     }
   }
 

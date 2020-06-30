@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :question: Segment tree (On segment tree)
+# :heavy_check_mark: Segment tree (On segment tree)
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -66,7 +66,7 @@ layout: default
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/point_add_rectangle_sum/main.test.cpp.html">test/yosupo-judge/point_add_rectangle_sum/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp</a>
 
 
 ## Code
