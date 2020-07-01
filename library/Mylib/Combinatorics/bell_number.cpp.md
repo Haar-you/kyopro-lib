@@ -51,7 +51,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="factorial_table.cpp.html">Factorial table</a>
+* :heavy_check_mark: <a href="factorial_table.cpp.html">Factorial table</a>
 * :heavy_check_mark: <a href="stirling_number.cpp.html">Stirling numbers of second kind</a>
 
 

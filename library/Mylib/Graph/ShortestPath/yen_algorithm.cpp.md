@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Yen's algorithm
+# :heavy_check_mark: Yen's algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -56,7 +56,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/yukicoder/1069/main.test.cpp.html">test/yukicoder/1069/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/1069/main.test.cpp.html">test/yukicoder/1069/main.test.cpp</a>
 
 
 ## Code

@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/String/lcp_array.cpp.html">LCP(Longest Common Prefix) array</a>
-* :question: <a href="../../../../library/Mylib/String/suffix_array.cpp.html">Suffix array</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/String/suffix_array.cpp.html">Suffix array</a>
 
 
 ## Code

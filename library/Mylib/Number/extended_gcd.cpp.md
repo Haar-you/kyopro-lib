@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :question: Extended Euclidean algorithm
+# :heavy_check_mark: Extended Euclidean algorithm
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -38,13 +38,13 @@ layout: default
 
 ## Required by
 
-* :x: <a href="chinese_remainder_algorithm.cpp.html">Chinese remainder theorem</a>
+* :heavy_check_mark: <a href="chinese_remainder_algorithm.cpp.html">Chinese remainder theorem</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../verify/test/aoj/NTL_1_E/main.test.cpp.html">test/aoj/NTL_1_E/main.test.cpp</a>
-* :x: <a href="../../../verify/test/yukicoder/186/main.test.cpp.html">test/yukicoder/186/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yukicoder/186/main.test.cpp.html">test/yukicoder/186/main.test.cpp</a>
 
 
 ## Code

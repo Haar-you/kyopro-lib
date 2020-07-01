@@ -43,7 +43,7 @@ layout: default
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">Mod inverse</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_log.cpp.html">Mod logarithm</a>
-* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
 
 
 ## Code

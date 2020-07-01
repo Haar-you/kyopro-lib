@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yosupo-judge/static_range_sum/main.test.cpp
+# :heavy_check_mark: test/yosupo-judge/static_range_sum/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp.html">1D cumulative sum</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp.html">1D cumulative sum</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>

@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yukicoder/1069/main.test.cpp
+# :heavy_check_mark: test/yukicoder/1069/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Graph/ShortestPath/yen_algorithm.cpp.html">Yen's algorithm</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/yen_algorithm.cpp.html">Yen's algorithm</a>
 * :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 

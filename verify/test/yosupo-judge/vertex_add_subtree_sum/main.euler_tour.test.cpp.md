@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp
+# :heavy_check_mark: test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -41,7 +41,7 @@ layout: default
 
 * :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 * :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
-* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/euler_tour_vertex.cpp.html">Euler tour (Vertex)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/euler_tour_vertex.cpp.html">Euler tour (Vertex)</a>
 * :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>

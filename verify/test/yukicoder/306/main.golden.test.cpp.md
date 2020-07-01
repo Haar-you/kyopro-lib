@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yukicoder/306/main.golden.test.cpp
+# :heavy_check_mark: test/yukicoder/306/main.golden.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Algorithm/Search/golden_section_search_downwards.cpp.html">Golden section search (Convex downwards)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Search/golden_section_search_downwards.cpp.html">Golden section search (Convex downwards)</a>
 
 
 ## Code

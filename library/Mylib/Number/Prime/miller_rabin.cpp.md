@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Primality test (Miller-Rabin algorithm)
+# :heavy_check_mark: Primality test (Miller-Rabin algorithm)
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,12 +38,12 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../Misc/int128.cpp.html">128-bit int</a>
+* :heavy_check_mark: <a href="../../Misc/int128.cpp.html">128-bit int</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/yukicoder/3030/main.test.cpp.html">test/yukicoder/3030/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/3030/main.test.cpp.html">test/yukicoder/3030/main.test.cpp</a>
 
 
 ## Code

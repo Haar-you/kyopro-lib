@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
+# :heavy_check_mark: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
-* :x: <a href="../../../../library/Mylib/DataStructure/SparseTable/sparse_table.cpp.html">Sparse table</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SparseTable/sparse_table.cpp.html">Sparse table</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>

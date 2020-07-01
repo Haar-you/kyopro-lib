@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#dff63cd4dbbcc206af021772ba80d157">test/aoj/DSL_2_H</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_H/main.starry_sky.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-19 21:04:10+09:00
+    - Last commit date: 2020-07-01 07:13:20+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp.html">Starry-sky tree</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp.html">Starry-sky tree</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
@@ -93,7 +93,7 @@ int main(){
 
 /**
  * @title Starry-sky tree
- * @docs StarrySkyTree.md
+ * @docs starry_sky_tree.md
  */
 template <typename T, typename Compare>
 class StarrySkyTree{

@@ -41,8 +41,8 @@ layout: default
 
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/determinant.cpp.html">Determinant</a>
-* :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Square matrix</a>
-* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Square matrix</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code

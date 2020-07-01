@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yukicoder/430/main.aho_corasick.test.cpp
+# :heavy_check_mark: test/yukicoder/430/main.aho_corasick.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :x: <a href="../../../../library/Mylib/String/aho_corasick.cpp.html">Aho-Corasick algorithm</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/String/aho_corasick.cpp.html">Aho-Corasick algorithm</a>
 
 
 ## Code

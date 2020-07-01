@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Interval scheduling problem (Allow no more than k intervals to overlap)
+# :heavy_check_mark: Interval scheduling problem (Allow no more than k intervals to overlap)
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -58,7 +58,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/yukicoder/580/main.test.cpp.html">test/yukicoder/580/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/580/main.test.cpp.html">test/yukicoder/580/main.test.cpp</a>
 
 
 ## Code

@@ -25,21 +25,48 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :question: Starry-sky tree
+# :heavy_check_mark: Starry-sky tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-19 21:04:10+09:00
+    - Last commit date: 2020-07-01 07:13:20+09:00
 
+
+
+
+## Operations
+
+- `StarrySkyTree(n)`
+- `update(l, r, val)`
+	- `i in [l, r)`について$a_i \leftarrow a_i + v$に更新する。
+- `get(l, r)`
+	- `Compare = less<T>`
+		- $\min_{l \le i \lt r} a_i$を返す。
+	- `Compare = greater<T>`
+		- $\max_{l \le i \lt r} a_i$を返す。
+- `init_with_vector(a)`
+
+## Requirements
+
+## Notes
+
+## Problems
+
+- [starry_sky - 星空 (Starry Sky)](https://atcoder.jp/contests/joisc2009/tasks/joisc2009_starry_sky)
+- [yukicoder No.631 Noelちゃんと電車旅行](https://yukicoder.me/problems/no/631)
+
+## References
+
+- [https://qnighy.github.io/informatics-olympiad/joi2009-day4-starry_sky-comment.html](https://qnighy.github.io/informatics-olympiad/joi2009-day4-starry_sky-comment.html)
 
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_H/main.starry_sky.test.cpp.html">test/aoj/DSL_2_H/main.starry_sky.test.cpp</a>
-* :x: <a href="../../../../verify/test/yukicoder/631/main.starry_sky.test.cpp.html">test/yukicoder/631/main.starry_sky.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/631/main.starry_sky.test.cpp.html">test/yukicoder/631/main.starry_sky.test.cpp</a>
 
 
 ## Code
@@ -54,7 +81,7 @@ layout: default
 
 /**
  * @title Starry-sky tree
- * @docs StarrySkyTree.md
+ * @docs starry_sky_tree.md
  */
 template <typename T, typename Compare>
 class StarrySkyTree{
@@ -151,7 +178,7 @@ public:
 
 /**
  * @title Starry-sky tree
- * @docs StarrySkyTree.md
+ * @docs starry_sky_tree.md
  */
 template <typename T, typename Compare>
 class StarrySkyTree{

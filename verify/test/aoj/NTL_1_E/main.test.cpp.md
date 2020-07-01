@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Number/extended_gcd.cpp.html">Extended Euclidean algorithm</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/extended_gcd.cpp.html">Extended Euclidean algorithm</a>
 
 
 ## Code

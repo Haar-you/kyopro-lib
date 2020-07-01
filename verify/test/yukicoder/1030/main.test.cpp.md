@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yukicoder/1030/main.test.cpp
+# :heavy_check_mark: test/yukicoder/1030/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max.cpp.html">Mylib/AlgebraicStructure/Monoid/max.cpp</a>
-* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/maybe.cpp.html">Mylib/AlgebraicStructure/Monoid/maybe.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max.cpp.html">Mylib/AlgebraicStructure/Monoid/max.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/maybe.cpp.html">Mylib/AlgebraicStructure/Monoid/maybe.cpp</a>
 * :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
-* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
 * :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
 * :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>

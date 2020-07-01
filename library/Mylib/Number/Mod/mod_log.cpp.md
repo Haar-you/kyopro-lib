@@ -54,7 +54,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="mod_inv.cpp.html">Mod inverse</a>
-* :question: <a href="mod_power.cpp.html">Mod power</a>
+* :heavy_check_mark: <a href="mod_power.cpp.html">Mod power</a>
 
 
 ## Verified with

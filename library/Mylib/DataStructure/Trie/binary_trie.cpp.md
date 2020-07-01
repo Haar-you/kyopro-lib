@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Binary trie
+# :heavy_check_mark: Binary trie
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -53,7 +53,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/yosupo-judge/set_xor_min/main.test.cpp.html">test/yosupo-judge/set_xor_min/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/set_xor_min/main.test.cpp.html">test/yosupo-judge/set_xor_min/main.test.cpp</a>
 
 
 ## Code

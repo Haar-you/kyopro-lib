@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="suffix_array.cpp.html">Suffix array</a>
+* :heavy_check_mark: <a href="suffix_array.cpp.html">Suffix array</a>
 
 
 ## Verified with

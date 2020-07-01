@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Number/euler_phi_function.cpp.html">Euler's totient function</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/euler_phi_function.cpp.html">Euler's totient function</a>
 
 
 ## Code

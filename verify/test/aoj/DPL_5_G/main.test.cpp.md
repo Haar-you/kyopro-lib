@@ -40,9 +40,9 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/bell_number.cpp.html">Bell number</a>
-* :question: <a href="../../../../library/Mylib/Combinatorics/factorial_table.cpp.html">Factorial table</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/factorial_table.cpp.html">Factorial table</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/stirling_number.cpp.html">Stirling numbers of second kind</a>
-* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code

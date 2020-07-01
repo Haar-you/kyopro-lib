@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yukicoder/631/main.starry_sky.test.cpp
+# :heavy_check_mark: test/yukicoder/631/main.starry_sky.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0b2f27755ad8078580256305f9366a63">test/yukicoder/631</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/631/main.starry_sky.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-19 21:04:10+09:00
+    - Last commit date: 2020-07-01 07:13:20+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/631">https://yukicoder.me/problems/no/631</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp.html">Starry-sky tree</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp.html">Starry-sky tree</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
@@ -109,7 +109,7 @@ int main(){
 
 /**
  * @title Starry-sky tree
- * @docs StarrySkyTree.md
+ * @docs starry_sky_tree.md
  */
 template <typename T, typename Compare>
 class StarrySkyTree{

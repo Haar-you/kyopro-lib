@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp.html">Gaussian elimination</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Number/Rational/rational.cpp.html">Rational number</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Parser/parser.cpp.html">Parsing</a>

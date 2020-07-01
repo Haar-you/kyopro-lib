@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :question: Euler's totient function
+# :heavy_check_mark: Euler's totient function
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -38,13 +38,13 @@ layout: default
 
 ## Required by
 
-* :x: <a href="tetration.cpp.html">Tetration</a>
+* :heavy_check_mark: <a href="tetration.cpp.html">Tetration</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../verify/test/aoj/NTL_1_D/main.totient.test.cpp.html">test/aoj/NTL_1_D/main.totient.test.cpp</a>
-* :x: <a href="../../../verify/test/yosupo-judge/tetration_mod/main.test.cpp.html">test/yosupo-judge/tetration_mod/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/tetration_mod/main.test.cpp.html">test/yosupo-judge/tetration_mod/main.test.cpp</a>
 
 
 ## Code

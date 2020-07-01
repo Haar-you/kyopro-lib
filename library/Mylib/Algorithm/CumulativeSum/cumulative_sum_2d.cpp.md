@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: 2D cumulative sum
+# :heavy_check_mark: 2D cumulative sum
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,7 +38,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/yukicoder/755/main.test.cpp.html">test/yukicoder/755/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/755/main.test.cpp.html">test/yukicoder/755/main.test.cpp</a>
 
 
 ## Code

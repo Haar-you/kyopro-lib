@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
 * :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
