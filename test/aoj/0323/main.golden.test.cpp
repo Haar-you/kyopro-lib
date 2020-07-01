@@ -38,7 +38,7 @@ int main(){
   }
 
   auto f =
-    [&, x = x, r = r](double p){
+    [&](double p){
       double ret = 1e9;
       
       for(int i = 0; i < N; ++i){

@@ -19,7 +19,7 @@ int main(){
   auto [x, y] = input_tuple_vector<int, int>(n);
 
   sort_simultaneously(
-    [&, x = x](int i, int j){
+    [&](int i, int j){
       return x[i] < x[j];
     },
     n,
