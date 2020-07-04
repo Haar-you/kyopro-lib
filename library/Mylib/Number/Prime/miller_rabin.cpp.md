@@ -41,8 +41,14 @@ layout: default
 * :heavy_check_mark: <a href="../../Misc/int128.cpp.html">128-bit int</a>
 
 
+## Required by
+
+* :heavy_check_mark: <a href="pollard_rho.cpp.html">Prime factorization (Pollard's rho algorithm)</a>
+
+
 ## Verified with
 
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/factorize/main.test.cpp.html">test/yosupo-judge/factorize/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/yukicoder/3030/main.test.cpp.html">test/yukicoder/3030/main.test.cpp</a>
 
 

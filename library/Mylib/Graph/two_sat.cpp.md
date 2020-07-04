@@ -68,7 +68,7 @@ layout: default
 
 * :heavy_check_mark: <a href="GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
 * :heavy_check_mark: <a href="TopologicalSort/topological_sort.cpp.html">Topological sort</a>
-* :question: <a href="graph_template.cpp.html">Graph template</a>
+* :heavy_check_mark: <a href="graph_template.cpp.html">Graph template</a>
 
 
 ## Verified with

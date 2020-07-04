@@ -39,7 +39,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
-* :question: <a href="../graph_template.cpp.html">Graph template</a>
+* :heavy_check_mark: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Required by

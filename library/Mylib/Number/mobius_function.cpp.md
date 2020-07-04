@@ -53,7 +53,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="Prime/eratosthenes_sieve.cpp.html">Sieve of Eratosthenes</a>
+* :heavy_check_mark: <a href="Prime/eratosthenes_sieve.cpp.html">Sieve of Eratosthenes</a>
 
 
 ## Code

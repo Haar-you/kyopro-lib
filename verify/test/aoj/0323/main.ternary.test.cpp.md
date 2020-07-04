@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#64b51258818892ff133e88d4c55d7a44">test/aoj/0323</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/0323/main.ternary.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-19 17:27:30+09:00
+    - Last commit date: 2020-07-02 06:41:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0323">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0323</a>
@@ -88,7 +88,7 @@ int main(){
   }
 
   auto f =
-    [&, x = x, r = r](double p){
+    [&](double p){
       double ret = 1e9;
       
       for(int i = 0; i < N; ++i){
@@ -206,7 +206,7 @@ int main(){
   }
 
   auto f =
-    [&, x = x, r = r](double p){
+    [&](double p){
       double ret = 1e9;
       
       for(int i = 0; i < N; ++i){

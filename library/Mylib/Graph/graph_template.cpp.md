@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :question: Graph template
+# :heavy_check_mark: Graph template
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -62,13 +62,13 @@ layout: default
 * :warning: <a href="TopologicalSort/topological_sort_lexicographical.cpp.html">Topological sort (Lexicographically minimum)</a>
 * :warning: <a href="TreeUtils/centroid.cpp.html">Enumerate centroids</a>
 * :warning: <a href="TreeUtils/centroid_decomposition.cpp.html">Centroid decomposition</a>
-* :x: <a href="TreeUtils/euler_tour_bfs.cpp.html">Euler tour (BFS)</a>
+* :heavy_check_mark: <a href="TreeUtils/euler_tour_bfs.cpp.html">Euler tour (BFS)</a>
 * :heavy_check_mark: <a href="TreeUtils/euler_tour_vertex.cpp.html">Euler tour (Vertex)</a>
-* :x: <a href="TreeUtils/forest.cpp.html">Decompose forest</a>
+* :heavy_check_mark: <a href="TreeUtils/forest.cpp.html">Decompose forest</a>
 * :heavy_check_mark: <a href="TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
-* :question: <a href="TreeUtils/lca_based_on_doubling.cpp.html">Lowest common ancestor (Doubling)</a>
+* :heavy_check_mark: <a href="TreeUtils/lca_based_on_doubling.cpp.html">Lowest common ancestor (Doubling)</a>
 * :heavy_check_mark: <a href="TreeUtils/lca_based_on_hld.cpp.html">Lowest common ancestor (HLD)</a>
-* :question: <a href="TreeUtils/rerooting.cpp.html">Rerooting DP</a>
+* :heavy_check_mark: <a href="TreeUtils/rerooting.cpp.html">Rerooting DP</a>
 * :warning: <a href="TreeUtils/rooting.cpp.html">Rooting</a>
 * :heavy_check_mark: <a href="TreeUtils/tree_diameter.cpp.html">Tree diameter</a>
 * :heavy_check_mark: <a href="TreeUtils/tree_distance.cpp.html">Tree distance</a>
@@ -78,7 +78,7 @@ layout: default
 * :heavy_check_mark: <a href="travelling_salesman_problem.cpp.html">Travelling salesman problem</a>
 * :heavy_check_mark: <a href="two_sat.cpp.html">2-SAT</a>
 * :heavy_check_mark: <a href="../Grid/grid_to_graph.cpp.html">Convert grid to graph</a>
-* :question: <a href="../IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :heavy_check_mark: <a href="../IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
 
 
 ## Verified with
@@ -119,8 +119,8 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yukicoder/1069/main.test.cpp.html">test/yukicoder/1069/main.test.cpp</a>
-* :x: <a href="../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
-* :x: <a href="../../../verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
 
 
 ## Code
