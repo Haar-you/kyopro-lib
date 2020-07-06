@@ -21,13 +21,13 @@ int main(){
   
   std::map<int, int> cycles;
   for(int i = 0; i < N; ++i){
-    if(i == uf.get_root(i)) cycles[uf.get_size(i)] += 1;
+    if(i == uf.root_of(i)) cycles[uf.size_of(i)] += 1;
   }
   
   std::vector<int> a,m;
-  for(auto &kv : cycles){
-    a.push_back(kv.first);
-    m.push_back(kv.second);
+  for(auto &[k, v] : cycles){
+    a.push_back(k);
+    m.push_back(v);
   }
   
   bool ans = subset_sum_limited(a.size(), R, a, m)[R];

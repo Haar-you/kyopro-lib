@@ -16,7 +16,7 @@
  * @docs manhattan_minimum_spanning_tree.md
  */
 template <typename T>
-std::vector<Edge<T>>  manhattan_minimum_spanning_tree(std::vector<T> x, std::vector<T> y){
+std::vector<Edge<T>> manhattan_minimum_spanning_tree(std::vector<T> x, std::vector<T> y){
   const int N = x.size();
   Graph<T> g(N);
   SegmentTree<MinMonoid<std::pair<T, int>>> seg(N);

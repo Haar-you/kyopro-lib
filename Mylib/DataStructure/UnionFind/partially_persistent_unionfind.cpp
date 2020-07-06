@@ -22,27 +22,27 @@ public:
     std::iota(par.begin(), par.end(), 0);
   }
   
-  int get_root(int i, int t){
+  int root_of(int i, int t){
     if(par[i] == i) return i;
 
     if(P[i].back().first == 0 || t < P[i].back().first) return i;
     else if(t == P[i].back().first) return P[i].back().second;
-    else return get_root(par[i],t);
+    return root_of(par[i],t);
   }
 
   bool is_same(int u, int v, int t){
-    return get_root(u,t) == get_root(v,t);
+    return root_of(u,t) == root_of(v,t);
   }
 
-  int size(int u, int t){
-    u = get_root(u,t);
-    auto it = std::prev(std::lower_bound(P[u].begin(), P[u].end(), std::make_pair(t+1,0)));
+  int size_of(int u, int t){
+    u = root_of(u,t);
+    auto it = std::prev(std::lower_bound(P[u].begin(), P[u].end(), std::make_pair(t + 1, 0)));
     return it->second;
   }
 
   void merge(int u, int v){
-    u = get_root(u,T);
-    v = get_root(v,T);
+    u = root_of(u,T);
+    v = root_of(v,T);
     ++T;
 
     if(u == v) return;

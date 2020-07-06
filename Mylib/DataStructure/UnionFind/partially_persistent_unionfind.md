@@ -1,11 +1,11 @@
 ## Operations
 
 - `PartiallyPersistentUnionFind(N)`
-- `get_root(int i, int t)`
+- `root_of(int i, int t)`
 	- 時刻`t`での`i`の属する連結成分のrootを返す。
 - `is_same(int u, int v, int t)`
 	- 時刻`t`での`u`と`v`が同じ連結成分に属するかを判定する。
-- `size(int u, int t)`
+- `size_of(int u, int t)`
 	- 時刻`t`での`u`が属する連結成分の大きさを返す。
 - `merge(int u, int v)`
 	- 最新の状態で`u`と`v`を連結する。
