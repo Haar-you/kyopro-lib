@@ -50,22 +50,20 @@ int main(){
     }
   }
 
+  UnionFind uf;
+  
   auto res =
     parallel_binary_search(
       C,
       Q,
-      [&](const auto &f){
-        UnionFind uf(N);
-        f(
-          [&](int i){
-            for(auto [x, y] : edges[C-1-i]){
-              uf.merge(x, y);
-            }
-          },
-          [&](int i) -> bool{
-            return uf.is_same(S[i], T[i]);
-          }
-        );
+      [&](){uf = UnionFind(N);},
+      [&](int i){
+        for(auto [x, y] : edges[C-1-i]){
+          uf.merge(x, y);
+        }
+      },
+      [&](int i) -> bool{
+        return uf.is_same(S[i], T[i]);
       }
     );
   

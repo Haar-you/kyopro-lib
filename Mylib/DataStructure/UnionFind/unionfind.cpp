@@ -11,18 +11,19 @@ class UnionFind{
   int count;
 
 public:
+  UnionFind(){}
   UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
     std::iota(parent.begin(), parent.end(), 0);
   }
   
-  inline int get_root(int i){
+  int get_root(int i){
     if(parent[i] == i) return i;
     else return parent[i] = get_root(parent[i]);
   }
   
-  inline bool is_same(int i, int j){return get_root(i) == get_root(j);}
+  bool is_same(int i, int j){return get_root(i) == get_root(j);}
 
-  inline int merge(int i, int j){
+  int merge(int i, int j){
     int ri = get_root(i), rj = get_root(j);
     if(ri == rj) return ri;
     else{
@@ -40,7 +41,7 @@ public:
     }
   }
 
-  inline int get_size(int i){return size[get_root(i)];}
+  int get_size(int i){return size[get_root(i)];}
 
-  inline int count_group(){return count;}
+  int count_group(){return count;}
 };

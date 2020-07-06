@@ -6,8 +6,8 @@
  * @title Parallel binary search
  * @docs parallel_binary_search.md
  */
-template <typename F>
-auto parallel_binary_search(int M, int Q, F f){
+template <typename Init, typename Process, typename Checker>
+auto parallel_binary_search(int M, int Q, Init init, Process process, Checker checker){
   std::vector<int> lb(Q, -1), ub(Q, M);
 
   while(1){
@@ -23,20 +23,18 @@ auto parallel_binary_search(int M, int Q, F f){
 
     if(check) break;
 
-    f(
-      [&](auto process, auto checker){
-        for(int i = 0; i < M; ++i){
-          process(i);
-          for(int j : mids[i]){
-            if(checker(j)){
-              ub[j] = i;
-            }else{
-              lb[j] = i;
-            }
-          }
+    init();
+
+    for(int i = 0; i < M; ++i){
+      process(i);
+      for(int j : mids[i]){
+        if(checker(j)){
+          ub[j] = i;
+        }else{
+          lb[j] = i;
         }
       }
-    );
+    }
   }
 
   return ub;
