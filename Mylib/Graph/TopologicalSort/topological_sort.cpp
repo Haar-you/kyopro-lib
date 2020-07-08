@@ -20,12 +20,12 @@ std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
   }
 
   std::queue<int> q;
-  for(int i = n-1; i >= 0; --i){
+  for(int i = 0; i < n; ++i){
     if(indeg[i] == 0) q.push(i);
   }
 
   std::vector<int> ret;
-  while(!q.empty()){
+  while(not q.empty()){
     int cur = q.front(); q.pop();
     ret.push_back(cur);
     for(auto &e : g[cur]){
