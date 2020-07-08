@@ -2,11 +2,13 @@
 #include <vector>
 
 /**
- * @title Roll-backable vector
+ * @title Rollbackable vector
  * @docs rollbackable_vector.md
  */
 template <typename T>
 class RollbackableVector{
+  using value_type = T;
+  
   std::vector<T> data;
   std::vector<std::vector<T>> stock;
   std::vector<int> history;
@@ -35,6 +37,8 @@ public:
       data[i] = stock[i].back();
     }
   }
+
+  const value_type& operator[](int i) const {return data[i];}
 
   auto cbegin() const {return data.cbegin();}
   auto cend() const {return data.cend();}

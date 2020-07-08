@@ -53,7 +53,7 @@ public:
     for(int i = 2; i < std::max(n,m)+1; ++i) log_table[i] = log_table[i>>1] + 1;
   }
   
-  inline value_type get(int r1, int c1, int r2, int c2) const { // [(r1,c1), (r2,c2))
+  value_type get(int r1, int c1, int r2, int c2) const { // [(r1,c1), (r2,c2))
     int kr = log_table[r2-r1];
     int kc = log_table[c2-c1];
     

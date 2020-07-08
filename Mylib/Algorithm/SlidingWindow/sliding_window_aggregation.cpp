@@ -13,29 +13,31 @@ class SlidingWindowAggregation{
   
   std::stack<value_type> front_stack, back_stack;
   std::vector<value_type> front_sum, back_sum;
+
+  std::optional<value_type> f(std::optional<value_type> a, std::optional<value_type> b) const {
+    if(a){
+      if(b) return {Semigroup::op(*a, *b)};
+      else return {*a};
+    }else{
+      if(b) return {*b};
+      else return {};
+    }
+  }
+
+  std::optional<value_type> g(const std::vector<value_type> &a) const {
+    return a.empty() ? std::nullopt : std::optional(a.back());
+  }
   
 public:
   SlidingWindowAggregation(){}
   
   std::optional<value_type> fold() const {
-    if(front_sum.empty()){
-      if(back_sum.empty()) return std::nullopt;
-      return {back_sum.back()};
-    }else{
-      if(back_sum.empty()) return {front_sum.back()};
-      return {Semigroup::op(front_sum.back(), back_sum.back())};
-    }
+    return f(g(front_sum), g(back_sum));
   }
 
   void push(const value_type &value){
     back_stack.push(value);
-
-    if(back_sum.empty()){
-      back_sum.push_back(value);
-    }else{
-      const auto t = Semigroup::op(back_sum.back(), value);
-      back_sum.push_back(t);
-    }
+    back_sum.push_back(f(g(back_sum), value).value());
   }
 
   void pop(){
@@ -45,13 +47,7 @@ public:
       while(not back_stack.empty()){
         const auto value = back_stack.top(); back_stack.pop();
         front_stack.push(value);
-
-        if(front_sum.empty()){
-          front_sum.push_back(value);
-        }else{
-          const auto t = Semigroup::op(value, front_sum.back());
-          front_sum.push_back(t);
-        }
+        front_sum.push_back(f(value, g(front_sum)).value());
       }
     }
 

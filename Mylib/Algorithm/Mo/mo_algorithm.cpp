@@ -26,14 +26,14 @@ public:
   {}
 
   // [l, r)
-  inline void add(int l, int r){
+  void add(int l, int r){
     left[index] = l;
     right[index] = r;
     ord[index] = index;
     ++index;
   }
 
-  inline void build(){
+  void build(){
     std::sort(
       ord.begin(),
       ord.end(),
@@ -54,7 +54,7 @@ public:
     is_built = true;
   }
 
-  inline void run(){
+  void run(){
     assert(is_built);
     
     int q = 0;

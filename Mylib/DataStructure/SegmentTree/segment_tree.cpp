@@ -20,10 +20,10 @@ public:
     data(size, Monoid::id())
   {}
 
-  inline auto operator[](int i) const {return at(i);}
-  inline auto at(int i) const {return data[hsize + i];}
+  auto operator[](int i) const {return at(i);}
+  auto at(int i) const {return data[hsize + i];}
   
-  inline auto get(int x, int y) const { // [x,y)
+  auto get(int x, int y) const { // [x,y)
     value_type ret_left = Monoid::id();
     value_type ret_right = Monoid::id();
     
@@ -37,21 +37,21 @@ public:
     return Monoid::op(ret_left, ret_right);
   }
 
-  inline void update(int i, const value_type &x){
+  void update(int i, const value_type &x){
     i += hsize;
     data[i] = x;
     while(i > 1) i >>= 1, data[i] = Monoid::op(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
-  inline void init_with_vector(const std::vector<T> &val){
+  void init_with_vector(const std::vector<T> &val){
     data.assign(size, Monoid::id());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
     for(int i = hsize-1; i >= 1; --i) data[i] = Monoid::op(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
-  inline void init(const T &val){
+  void init(const T &val){
     init_with_vector(std::vector<value_type>(hsize, val));
   }  
 };

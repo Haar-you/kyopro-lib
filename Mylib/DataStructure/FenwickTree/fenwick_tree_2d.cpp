@@ -20,7 +20,7 @@ public:
   }
 
 private:
-  inline value_type get_w(int i, int y) const {
+  value_type get_w(int i, int y) const {
     value_type ret = AbelianGroup::id();
     i += 1;
     while(i > 0){
@@ -30,11 +30,11 @@ private:
     return ret;
   }
   
-  inline value_type get_w(int l, int r, int y) const {
+  value_type get_w(int l, int r, int y) const {
     return AbelianGroup::op(get_w(r-1, y), AbelianGroup::inv(get_w(l-1, y)));
   }
 
-  inline value_type get(int x1, int x2, int y) const {
+  value_type get(int x1, int x2, int y) const {
     value_type ret = AbelianGroup::id();
     y += 1;
     while(y > 0){

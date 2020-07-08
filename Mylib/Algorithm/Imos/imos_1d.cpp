@@ -6,6 +6,8 @@
  * @docs imos_1d.md
  */
 template <typename T> struct Imos1D{
+  using value_type = T;
+  
   std::vector<T> data;
   Imos1D(int n): data(n+1){}
 
@@ -20,5 +22,5 @@ template <typename T> struct Imos1D{
     }
   }
 
-  inline const T operator[](size_t i) const {return data[i];}
+  T operator[](size_t i) const {return data[i];}
 };

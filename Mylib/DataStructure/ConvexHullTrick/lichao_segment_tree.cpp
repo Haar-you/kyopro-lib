@@ -19,7 +19,7 @@ class LiChaoSegmentTree{
   std::vector<std::optional<line>> data;
   std::vector<std::pair<int,int>> range;
 
-  inline T chm(const T &a, const T &b) const {
+  T chm(const T &a, const T &b) const {
     return cmp(a, b) ? a : b;
   }
 
@@ -49,7 +49,7 @@ public:
     init_range(1, 0, n);
   }
 
-  inline T apply(const line &l, const T &x) const {
+  T apply(const line &l, const T &x) const {
     return l.first * x + l.second;
   }
 
@@ -89,12 +89,12 @@ private:
   }
   
 public:
-  inline void add_line(T a, T b){
+  void add_line(T a, T b){
     update(1, std::make_pair(a, b), 0, n);
   }
 
   // [l, r)
-  inline void add_segment(T l, T r, T a, T b){
+  void add_segment(T l, T r, T a, T b){
     int left = std::lower_bound(xs.begin(), xs.end(), l) - xs.begin();
     int right = std::lower_bound(xs.begin(), xs.end(), r) - xs.begin();
 
@@ -118,7 +118,7 @@ public:
   }
 
 public:
-  inline auto query(const T &x) const {
+  auto query(const T &x) const {
     const int i = std::lower_bound(xs.begin(), xs.end(), x) - xs.begin();
     int k = i + n;
     

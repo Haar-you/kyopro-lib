@@ -70,7 +70,7 @@ public:
     }
   }
 
-  inline void update(int64_t x, int64_t y, const value_type &val){
+  void update(int64_t x, int64_t y, const value_type &val){
     int i = std::lower_bound(c_xs.begin(), c_xs.end(), x) - c_xs.begin() + x_size / 2;
 
     while(i >= 1){
@@ -82,7 +82,7 @@ public:
   }
 
 private:
-  inline value_type get_sub(int i, int64_t y1, int64_t y2) const {
+  value_type get_sub(int i, int64_t y1, int64_t y2) const {
     int l = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y1) - c_ys[i].begin();
     int r = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y2) - c_ys[i].begin();
 
@@ -91,7 +91,7 @@ private:
 
 public:
   // [x1, x2), [y1, y2)
-  inline value_type get(int64_t x1, int64_t y1, int64_t x2, int64_t y2) const {
+  value_type get(int64_t x1, int64_t y1, int64_t x2, int64_t y2) const {
     int l = std::lower_bound(c_xs.begin(), c_xs.end(), x1) - c_xs.begin() + x_size / 2;
     int r = std::lower_bound(c_xs.begin(), c_xs.end(), x2) - c_xs.begin() + x_size / 2;
 

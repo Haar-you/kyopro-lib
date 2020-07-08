@@ -12,7 +12,7 @@ template <typename T> struct KitamasaAlgorithm{
   KitamasaAlgorithm(int size, const std::vector<T> &initial_values, const std::vector<T> &coeff):
     size(size), initial_values(initial_values), coeff(coeff){}
 
-  inline std::vector<T> inc(const std::vector<T> &a) const {
+  std::vector<T> inc(const std::vector<T> &a) const {
     std::vector<T> ret(size);
 
     for(int i = 0; i < size; ++i) ret[i] += a[size-1] * coeff[i];
@@ -21,7 +21,7 @@ template <typename T> struct KitamasaAlgorithm{
     return ret;
   }
   
-  inline std::vector<T> dbl(const std::vector<T> &a) const {
+  std::vector<T> dbl(const std::vector<T> &a) const {
     std::vector<T> ret(size), b(a);
     
     for(int j = 0; j < size; ++j){
@@ -35,13 +35,13 @@ template <typename T> struct KitamasaAlgorithm{
     return ret;
   }
   
-  inline T calc(const std::vector<T> &v) const {
+  T calc(const std::vector<T> &v) const {
     T ret = 0;
     for(int i = 0; i < size; ++i) ret += v[i] * initial_values[i];
     return ret;
   }
 
-  inline std::vector<T> get(int64_t index) const {
+  std::vector<T> get(int64_t index) const {
     std::vector<T> ret(size);
     ret[0] = 1;
 
@@ -58,7 +58,7 @@ template <typename T> struct KitamasaAlgorithm{
     return ret;
   }
 
-  inline T operator[](int64_t index) const {
+  T operator[](int64_t index) const {
     if(index < size) return initial_values[index];
     return calc(get(index));
   }

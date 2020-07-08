@@ -49,7 +49,7 @@ struct SuccinctDict{
   /**
    * @return [0,index)のbの個数
    */
-  inline int rank(int index, int b) const {
+  int rank(int index, int b) const {
     if(b == 0){
       return index - rank(index, 1);
     }else{
@@ -72,14 +72,14 @@ struct SuccinctDict{
   /**
    * @return [l, r)のbの個数
    */
-  inline int count(int l, int r, int b) const {
+  int count(int l, int r, int b) const {
     return rank(r, b) - rank(l, b);
   }
 
   /**
    * @return b[index]
    */
-  inline int access(int index) const {
+  int access(int index) const {
     return (data[index / block_size] >> (index % block_size)) & 1;
   }
 
@@ -87,7 +87,7 @@ struct SuccinctDict{
    * @note n in [1, N]
    * @return 先頭からn番目のbの位置
    */
-  inline std::optional<int> select(int n, int b) const {
+  std::optional<int> select(int n, int b) const {
     assert(n >= 1);
     
     if(rank(N, b) < n) return {};

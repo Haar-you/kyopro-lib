@@ -6,6 +6,8 @@
  * @docs imos_2d.md
  */
 template <typename T> struct Imos2D{
+  using value_type = T;
+  
   std::vector<std::vector<T>> vec;
   int n, m;
   Imos2D(int n, int m): vec(n+1, std::vector<T>(m+1)), n(n), m(m){}
@@ -31,5 +33,5 @@ template <typename T> struct Imos2D{
     }
   }
 
-  inline const std::vector<T>& operator[](size_t i) const {return vec[i];}
+  const std::vector<T>& operator[](size_t i) const {return vec[i];}
 };

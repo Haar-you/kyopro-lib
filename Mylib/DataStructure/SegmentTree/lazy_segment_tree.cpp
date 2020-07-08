@@ -14,7 +14,7 @@ class LazySegmentTree{
   std::vector<value_type_get> data;
   std::vector<value_type_update> lazy;
 
-  inline void propagate(int i){
+  void propagate(int i){
     if(lazy[i] == Monoid::id_update()) return;
     if(i < hsize){
       lazy[i << 1 | 0] = Monoid::op_update(lazy[i], lazy[i << 1 | 0]);
@@ -25,7 +25,7 @@ class LazySegmentTree{
     lazy[i] = Monoid::id_update();
   }
 
-  inline value_type_get update_aux(int i, int l, int r, int s, int t, const value_type_update &x){
+  value_type_get update_aux(int i, int l, int r, int s, int t, const value_type_update &x){
     propagate(i);
     if(r <= s || t <= l) return data[i];
     else if(s <= l && r <= t){
@@ -36,7 +36,7 @@ class LazySegmentTree{
     else return data[i] = Monoid::op_get(update_aux(i << 1 | 0, l, (l+r) / 2, s, t, x), update_aux(i << 1 | 1, (l+r) / 2, r, s, t, x));
   }
   
-  inline value_type_get get_aux(int i, int l, int r, int x, int y){
+  value_type_get get_aux(int i, int l, int r, int x, int y){
     propagate(i);
     if(r <= x || y <= l) return Monoid::id_get();
     else if(x <= l && r <= y) return data[i];
@@ -53,18 +53,18 @@ public:
     lazy(size, Monoid::id_update())
   {}
 
-  inline void update(int l, int r, const value_type_update &x){update_aux(1, 0, hsize, l, r, x);}
-  inline void update_at(int i, const value_type_update &x){update(i, i+1, x);}
-  inline value_type_get get(int l, int r){return get_aux(1, 0, hsize, l, r);}
-  inline value_type_get at(int i){return get(i, i+1);}
+  void update(int l, int r, const value_type_update &x){update_aux(1, 0, hsize, l, r, x);}
+  void update_at(int i, const value_type_update &x){update(i, i+1, x);}
+  value_type_get get(int l, int r){return get_aux(1, 0, hsize, l, r);}
+  value_type_get at(int i){return get(i, i+1);}
 
   template <typename T>
-  inline void init(const T &val){
+  void init(const T &val){
     init_with_vector(std::vector<T>(hsize, val));
   }
 
   template <typename T>
-  inline void init_with_vector(const std::vector<T> &val){
+  void init_with_vector(const std::vector<T> &val){
     data.assign(size, Monoid::id_get());
     lazy.assign(size, Monoid::id_update());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];

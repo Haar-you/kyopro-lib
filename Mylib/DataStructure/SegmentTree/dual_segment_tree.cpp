@@ -13,7 +13,7 @@ private:
   const int depth, size, hsize;
   std::vector<value_type> data;
   
-  inline void propagate(int i){
+  void propagate(int i){
     if(i < hsize){
       data[i << 1 | 0] = Monoid::op(data[i], data[i << 1 | 0]);
       data[i << 1 | 1] = Monoid::op(data[i], data[i << 1 | 1]);
@@ -21,7 +21,7 @@ private:
     }
   }
 
-  inline void propagate_top_down(int i){
+  void propagate_top_down(int i){
     std::vector<int> temp;
     while(i > 1){
       i >>= 1;
@@ -38,7 +38,7 @@ public:
     data(size, Monoid::id())
   {}
 
-  inline void update(int l, int r, const value_type &x){
+  void update(int l, int r, const value_type &x){
     propagate_top_down(l + hsize);
     propagate_top_down(r + hsize);
 
@@ -52,19 +52,19 @@ public:
     }
   }
 
-  inline value_type get(int i){
+  value_type get(int i){
     propagate_top_down(i + hsize);
     return data[i + hsize];
   }
 
   template <typename T>
-  inline void init_with_vector(const std::vector<T> &a){
+  void init_with_vector(const std::vector<T> &a){
     data.assign(size, Monoid::id());
     for(int i = 0; i < (int)a.size(); ++i) data[hsize + i] = a[i];
   }
 
   template <typename T>
-  inline void init(const T &val){
+  void init(const T &val){
     init_with_vector(std::vector<value_type>(hsize, val));
   }
 };

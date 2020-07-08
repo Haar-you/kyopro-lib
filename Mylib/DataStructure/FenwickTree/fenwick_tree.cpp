@@ -18,7 +18,7 @@ public:
     size(size), data(size + 1, AbelianGroup::id())
   {}
   
-  inline void update(int i, const value_type &val){
+  void update(int i, const value_type &val){
     i += 1; // 1-index
     
     while(i <= size){
@@ -27,7 +27,7 @@ public:
     }
   }
   
-  inline value_type get(int i) const { // [0, i)
+  value_type get(int i) const { // [0, i)
     value_type ret = AbelianGroup::id();
     i += 1; // 1-index
 
@@ -39,11 +39,11 @@ public:
     return ret;
   }
 
-  inline value_type get(int l, int r) const { // [l, r)
+  value_type get(int l, int r) const { // [l, r)
     return AbelianGroup::op(get(r-1), AbelianGroup::inv(get(l-1)));
   }
   
-  inline value_type at(int x) const {
+  value_type at(int x) const {
     return get(x, x+1);
   }
 };

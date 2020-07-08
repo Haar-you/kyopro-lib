@@ -33,12 +33,12 @@ public:
     for(int i = 2; i < n+1; ++i) log_table[i] = log_table[i>>1] + 1;
   }
   
-  inline value_type get(int s, int t) const { // [s,t)
+  value_type get(int s, int t) const { // [s,t)
     int k = log_table[t-s];
     return Semilattice::op(a[s][k], a[t-(1<<k)][k]);
   }
 
-  inline value_type get(std::vector<std::pair<int,int>> st) const {
+  value_type get(std::vector<std::pair<int,int>> st) const {
     value_type ret;
     bool t = true;
 

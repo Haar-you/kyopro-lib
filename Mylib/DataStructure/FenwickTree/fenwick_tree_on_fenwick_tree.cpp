@@ -63,7 +63,7 @@ public:
     }
   }
 
-  inline void update(int64_t x, int64_t y, const value_type &val){
+  void update(int64_t x, int64_t y, const value_type &val){
     int i = std::lower_bound(c_xs.begin(), c_xs.end(), x) - c_xs.begin();
 
     for(i += 1; i <= x_size; i += i & (-i)){
@@ -73,7 +73,7 @@ public:
   }
 
 private:
-  inline value_type get(int i, int64_t y1, int64_t y2) const {
+  value_type get(int i, int64_t y1, int64_t y2) const {
     value_type ret = AbelianGroup::id();
     for(; i > 0; i -= i & (-i)){
       int l = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y1) - c_ys[i].begin();
@@ -85,7 +85,7 @@ private:
 
 public:
   // [x1, x2), [y1, y2)
-  inline value_type get(int64_t x1, int64_t y1, int64_t x2, int64_t y2) const {
+  value_type get(int64_t x1, int64_t y1, int64_t x2, int64_t y2) const {
     int l = std::lower_bound(c_xs.begin(), c_xs.end(), x1) - c_xs.begin();
     int r = std::lower_bound(c_xs.begin(), c_xs.end(), x2) - c_xs.begin();
     return AbelianGroup::op(get(r, y1, y2), AbelianGroup::inv(get(l, y1, y2)));

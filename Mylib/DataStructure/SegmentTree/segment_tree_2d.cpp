@@ -11,7 +11,7 @@ template <typename Monoid> class SegmentTree2D{
   int w, h;
   std::vector<std::vector<value_type>> data;
 
-  inline value_type get_w(int l, int r, int y) const {
+  value_type get_w(int l, int r, int y) const {
     l += w / 2;
     r += w / 2;
 

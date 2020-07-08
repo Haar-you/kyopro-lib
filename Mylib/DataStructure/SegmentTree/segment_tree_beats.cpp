@@ -39,10 +39,10 @@ public:
   {}
 
 private:
-  inline int lc(int i) const {return i << 1 | 0;} // left child
-  inline int rc(int i) const {return i << 1 | 1;} // right child
+  int lc(int i) const {return i << 1 | 0;} // left child
+  int rc(int i) const {return i << 1 | 1;} // right child
   
-  inline void update_node_max(int i, value_type x){
+  void update_node_max(int i, value_type x){
     sum[i] += (x - fst_max[i]) * max_count[i];
 
     if(fst_max[i] == fst_min[i]) fst_max[i] = fst_min[i] = x;
@@ -50,7 +50,7 @@ private:
     else fst_max[i] = x;
   }
 
-  inline void update_node_min(int i, value_type x){
+  void update_node_min(int i, value_type x){
     sum[i] += (x - fst_min[i]) * min_count[i];
 
     if(fst_max[i] == fst_min[i]) fst_max[i] = fst_min[i] = x;
@@ -58,7 +58,7 @@ private:
     else fst_min[i] = x;
   }
 
-  inline void update_node_add(int i, value_type x){
+  void update_node_add(int i, value_type x){
     const int len = hsize >> (31 - __builtin_clz(i));
 
     sum[i] += x * len;
@@ -70,7 +70,7 @@ private:
     lazy_add[i] += x;
   }
   
-  inline void propagate(int i){
+  void propagate(int i){
     if(i >= hsize) return;
 
     if(lazy_add[i] != 0){
@@ -86,7 +86,7 @@ private:
     if(fst_min[i] > fst_min[rc(i)]) update_node_min(rc(i), fst_min[i]);
   }
 
-  inline void bottom_up(int i){
+  void bottom_up(int i){
     const int L = lc(i);
     const int R = rc(i);
     

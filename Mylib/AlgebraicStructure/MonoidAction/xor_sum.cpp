@@ -19,7 +19,7 @@ struct XorSum{
   static value_type_get op_get(const value_type_get &a, const value_type_get &b){return monoid_get::op(a, b);}
   static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
 
-  inline static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
+  static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
     auto ret = a;
     for(int i = 0; i < B; ++i) if((b >> i) & 1) ret[i] = len - ret[i];
     return ret;

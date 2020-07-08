@@ -45,7 +45,7 @@ public:
   /**
    * @return data[index]
    */
-  inline T access(int index){
+  T access(int index){
     assert(0 <= index and index < N);
     T ret = 0;
 
@@ -59,7 +59,7 @@ public:
     return ret;
   }
 
-  inline std::pair<int,int> rank_aux(int index, const T &val){
+  std::pair<int,int> rank_aux(int index, const T &val){
     int l = 0, r = index;
 
     for(int i = 0; i < B; ++i){
@@ -74,7 +74,7 @@ public:
   /**
    * @return data[0, index)に含まれるvalの個数
    */
-  inline int rank(int index, const T &val){
+  int rank(int index, const T &val){
     auto [l, r] = rank_aux(index, val);
     return r - l;
   }  
@@ -82,7 +82,7 @@ public:
   /*
    * @return data[l, r)に含まれるvalの個数
    */
-  inline int count(int l, int r, const T &val){
+  int count(int l, int r, const T &val){
     assert(0 <= l and l <= r and r <= N);
     return rank(r, val) - rank(l, val);
   }

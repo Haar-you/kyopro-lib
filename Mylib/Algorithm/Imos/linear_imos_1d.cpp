@@ -6,6 +6,8 @@
  * @docs linear_imos_1d.md
  */
 template <typename T> struct LinearImos1D{
+  using value_type = T;
+  
   std::vector<T> vec_a, vec_a_end, vec_b, vec;
   int n;
 
@@ -31,5 +33,5 @@ template <typename T> struct LinearImos1D{
     for(int i = 0; i <= n; ++i) vec[i] = vec_a[i] + vec_b[i];
   }
 
-  inline const T operator[](size_t i) const {return vec[i];}
+  T operator[](size_t i) const {return vec[i];}
 };

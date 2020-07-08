@@ -41,9 +41,9 @@ template <typename T, class Tag> struct SquareMatrix{
     return *this;
   }
 
-  inline const auto& operator[](size_t i) const {return matrix[i];}
-  inline auto& operator[](size_t i){return matrix[i];}
-  inline int size() const {return N;}
+  const auto& operator[](size_t i) const {return matrix[i];}
+  auto& operator[](size_t i){return matrix[i];}
+  int size() const {return N;}
   
   static auto make_unit(){
     SquareMatrix ret;
