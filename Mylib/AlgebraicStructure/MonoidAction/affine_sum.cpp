@@ -3,6 +3,7 @@
 #include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 
 /**
+ * @title Range affine / Range sum
  * @docs affine_sum.md
  */
 template <typename T, typename U>

@@ -3,6 +3,7 @@
 #include "Mylib/AlgebraicStructure/Monoid/max.cpp"
 
 /**
+ * @title Range add / Range max
  * @docs add_max.md
  */
 template <typename T, typename U>

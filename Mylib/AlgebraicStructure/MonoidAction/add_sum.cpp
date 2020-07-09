@@ -2,6 +2,7 @@
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 /**
+ * @title Range add / Range sum
  * @docs add_sum.md
  */
 template <typename T, typename U>

@@ -3,6 +3,7 @@
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 
 /**
+ * @title Range update / Range min
  * @docs update_min.md
  */
 template <typename T, typename U>

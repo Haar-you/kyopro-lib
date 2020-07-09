@@ -3,6 +3,7 @@
 #include "Mylib/AlgebraicStructure/Monoid/bitor.cpp"
 
 /**
+ * @title Range update / Range bitor
  * @docs update_or.md
  */
 template <typename T, typename U>

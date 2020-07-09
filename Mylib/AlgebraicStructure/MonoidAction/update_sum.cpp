@@ -3,6 +3,7 @@
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 /**
+ * @title Range update / Range sum
  * @docs update_sum.md
  */
 template <typename T, typename U>

@@ -3,6 +3,7 @@
 #include "Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp"
 
 /**
+ * @title Range multiply / Range product
  * @docs multiply_product.md
  */
 template <typename T, typename U>

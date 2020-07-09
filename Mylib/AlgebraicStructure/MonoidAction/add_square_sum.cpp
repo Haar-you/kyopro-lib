@@ -2,6 +2,7 @@
 #include <utility>
 
 /**
+ * @title Range add / Range square sum
  * @docs add_square_sum.cpp
  */
 template <typename T>

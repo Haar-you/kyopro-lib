@@ -2,6 +2,7 @@
 #include "Mylib/AlgebraicStructure/Monoid/bitor.cpp"
 
 /**
+ * @title Range bitor / Range bitor
  * @docs or_or.md
  */
 template <typename T, typename U>

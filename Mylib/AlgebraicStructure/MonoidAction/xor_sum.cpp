@@ -4,6 +4,7 @@
 #include "Mylib/AlgebraicStructure/Monoid/bitxor.cpp"
 
 /**
+ * @title Range xor / Range sum
  * @docs xor_sum.md
  */
 template <typename U, int B>

@@ -3,6 +3,7 @@
 #include "Mylib/AlgebraicStructure/Monoid/product.cpp"
 
 /**
+ * @title Range multiply / Range sum
  * @docs multiply_sum.md
  */
 template <typename T, typename U>
