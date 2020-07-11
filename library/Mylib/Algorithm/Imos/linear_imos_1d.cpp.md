@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 1D Imos algorithm (Linear addition)
+# :x: 1D Imos algorithm (Linear addition)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6dc6d5a2cac82b39a08fd9ff32ab6e48">Mylib/Algorithm/Imos</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Imos/linear_imos_1d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-08 12:08:32+09:00
 
 
 
@@ -52,7 +52,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/1084/main.test.cpp.html">test/yukicoder/1084/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/1084/main.test.cpp.html">test/yukicoder/1084/main.test.cpp</a>
 
 
 ## Code
@@ -68,6 +68,8 @@ layout: default
  * @docs linear_imos_1d.md
  */
 template <typename T> struct LinearImos1D{
+  using value_type = T;
+  
   std::vector<T> vec_a, vec_a_end, vec_b, vec;
   int n;
 
@@ -93,7 +95,7 @@ template <typename T> struct LinearImos1D{
     for(int i = 0; i <= n; ++i) vec[i] = vec_a[i] + vec_b[i];
   }
 
-  inline const T operator[](size_t i) const {return vec[i];}
+  T operator[](size_t i) const {return vec[i];}
 };
 
 ```
@@ -110,6 +112,8 @@ template <typename T> struct LinearImos1D{
  * @docs linear_imos_1d.md
  */
 template <typename T> struct LinearImos1D{
+  using value_type = T;
+  
   std::vector<T> vec_a, vec_a_end, vec_b, vec;
   int n;
 
@@ -135,7 +139,7 @@ template <typename T> struct LinearImos1D{
     for(int i = 0; i <= n; ++i) vec[i] = vec_a[i] + vec_b[i];
   }
 
-  inline const T operator[](size_t i) const {return vec[i];}
+  T operator[](size_t i) const {return vec[i];}
 };
 
 ```

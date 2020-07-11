@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#6dc6d5a2cac82b39a08fd9ff32ab6e48">Mylib/Algorithm/Imos</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Imos/imos_2d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-08 12:08:32+09:00
 
 
 
@@ -54,6 +54,8 @@ layout: default
  * @docs imos_2d.md
  */
 template <typename T> struct Imos2D{
+  using value_type = T;
+  
   std::vector<std::vector<T>> vec;
   int n, m;
   Imos2D(int n, int m): vec(n+1, std::vector<T>(m+1)), n(n), m(m){}
@@ -79,7 +81,7 @@ template <typename T> struct Imos2D{
     }
   }
 
-  inline const std::vector<T>& operator[](size_t i) const {return vec[i];}
+  const std::vector<T>& operator[](size_t i) const {return vec[i];}
 };
 
 ```
@@ -96,6 +98,8 @@ template <typename T> struct Imos2D{
  * @docs imos_2d.md
  */
 template <typename T> struct Imos2D{
+  using value_type = T;
+  
   std::vector<std::vector<T>> vec;
   int n, m;
   Imos2D(int n, int m): vec(n+1, std::vector<T>(m+1)), n(n), m(m){}
@@ -121,7 +125,7 @@ template <typename T> struct Imos2D{
     }
   }
 
-  inline const std::vector<T>& operator[](size_t i) const {return vec[i];}
+  const std::vector<T>& operator[](size_t i) const {return vec[i];}
 };
 
 ```

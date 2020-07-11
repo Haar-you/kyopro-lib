@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/segment_tree_2d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 
@@ -79,21 +79,23 @@ layout: default
  * @title Segment tree (2D)
  * @docs segment_tree_2d.md
  */
-template <typename Monoid> class SegmentTree2D{
+template <typename Monoid>
+class SegmentTree2D{
   using value_type = typename Monoid::value_type;
-      
+  Monoid M;
+  
   int w, h;
   std::vector<std::vector<value_type>> data;
 
-  inline value_type get_w(int l, int r, int y) const {
+  value_type get_w(int l, int r, int y) const {
     l += w / 2;
     r += w / 2;
 
-    value_type ret = Monoid::id();
+    value_type ret = M.id();
 
     while(l < r){
-      if(r & 1) ret = Monoid::op(ret, data[--r][y]);
-      if(l & 1) ret = Monoid::op(ret, data[l++][y]);
+      if(r & 1) ret = M.op(ret, data[--r][y]);
+      if(l & 1) ret = M.op(ret, data[l++][y]);
       l >>= 1, r >>= 1;
     }
     
@@ -117,11 +119,11 @@ public:
     int l = y1 + h / 2;
     int r = y2 + h / 2;
 
-    value_type ret = Monoid::id();
+    value_type ret = M.id();
 
     while(l < r){
-      if(r & 1) ret = Monoid::op(ret, get_w(x1, x2, --r));
-      if(l & 1) ret = Monoid::op(ret, get_w(x1, x2, l++));
+      if(r & 1) ret = M.op(ret, get_w(x1, x2, --r));
+      if(l & 1) ret = M.op(ret, get_w(x1, x2, l++));
       l >>= 1, r >>= 1;
     }
 
@@ -139,12 +141,12 @@ public:
     data[i][j] = val;
      
     for(int X = i >> 1, Y = j; X > 0; X >>= 1){
-      data[X][Y] = Monoid::op(data[X << 1 | 0][Y], data[X << 1 | 1][Y]);
+      data[X][Y] = M.op(data[X << 1 | 0][Y], data[X << 1 | 1][Y]);
     }
         
     for(int Y = j >> 1; Y > 0; Y >>= 1){
       for(int X = i; X > 0; X >>= 1){
-        data[X][Y] = Monoid::op(data[X][Y << 1 | 0], data[X][Y << 1 | 1]);
+        data[X][Y] = M.op(data[X][Y << 1 | 0], data[X][Y << 1 | 1]);
       }
     }
   }
@@ -163,21 +165,23 @@ public:
  * @title Segment tree (2D)
  * @docs segment_tree_2d.md
  */
-template <typename Monoid> class SegmentTree2D{
+template <typename Monoid>
+class SegmentTree2D{
   using value_type = typename Monoid::value_type;
-      
+  Monoid M;
+  
   int w, h;
   std::vector<std::vector<value_type>> data;
 
-  inline value_type get_w(int l, int r, int y) const {
+  value_type get_w(int l, int r, int y) const {
     l += w / 2;
     r += w / 2;
 
-    value_type ret = Monoid::id();
+    value_type ret = M.id();
 
     while(l < r){
-      if(r & 1) ret = Monoid::op(ret, data[--r][y]);
-      if(l & 1) ret = Monoid::op(ret, data[l++][y]);
+      if(r & 1) ret = M.op(ret, data[--r][y]);
+      if(l & 1) ret = M.op(ret, data[l++][y]);
       l >>= 1, r >>= 1;
     }
     
@@ -201,11 +205,11 @@ public:
     int l = y1 + h / 2;
     int r = y2 + h / 2;
 
-    value_type ret = Monoid::id();
+    value_type ret = M.id();
 
     while(l < r){
-      if(r & 1) ret = Monoid::op(ret, get_w(x1, x2, --r));
-      if(l & 1) ret = Monoid::op(ret, get_w(x1, x2, l++));
+      if(r & 1) ret = M.op(ret, get_w(x1, x2, --r));
+      if(l & 1) ret = M.op(ret, get_w(x1, x2, l++));
       l >>= 1, r >>= 1;
     }
 
@@ -223,12 +227,12 @@ public:
     data[i][j] = val;
      
     for(int X = i >> 1, Y = j; X > 0; X >>= 1){
-      data[X][Y] = Monoid::op(data[X << 1 | 0][Y], data[X << 1 | 1][Y]);
+      data[X][Y] = M.op(data[X << 1 | 0][Y], data[X << 1 | 1][Y]);
     }
         
     for(int Y = j >> 1; Y > 0; Y >>= 1){
       for(int X = i; X > 0; X >>= 1){
-        data[X][Y] = Monoid::op(data[X][Y << 1 | 0], data[X][Y << 1 | 1]);
+        data[X][Y] = M.op(data[X][Y << 1 | 0], data[X][Y << 1 | 1]);
       }
     }
   }

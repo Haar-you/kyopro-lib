@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Sliding window aggregation
+# :x: Sliding window aggregation
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1d0203f9a0b34121f2fb0bb17b094d0f">Mylib/Algorithm/SlidingWindow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 
@@ -51,7 +51,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
 
 
 ## Code
@@ -71,32 +71,35 @@ layout: default
 template <typename Semigroup>
 class SlidingWindowAggregation{
   using value_type = typename Semigroup::value_type;
+  Semigroup S;
   
   std::stack<value_type> front_stack, back_stack;
   std::vector<value_type> front_sum, back_sum;
+
+  std::optional<value_type> f(std::optional<value_type> a, std::optional<value_type> b) const {
+    if(a){
+      if(b) return {S.op(*a, *b)};
+      else return {*a};
+    }else{
+      if(b) return {*b};
+      else return {};
+    }
+  }
+
+  std::optional<value_type> g(const std::vector<value_type> &a) const {
+    return a.empty() ? std::nullopt : std::optional(a.back());
+  }
   
 public:
   SlidingWindowAggregation(){}
   
   std::optional<value_type> fold() const {
-    if(front_sum.empty()){
-      if(back_sum.empty()) return std::nullopt;
-      return {back_sum.back()};
-    }else{
-      if(back_sum.empty()) return {front_sum.back()};
-      return {Semigroup::op(front_sum.back(), back_sum.back())};
-    }
+    return f(g(front_sum), g(back_sum));
   }
 
   void push(const value_type &value){
     back_stack.push(value);
-
-    if(back_sum.empty()){
-      back_sum.push_back(value);
-    }else{
-      const auto t = Semigroup::op(back_sum.back(), value);
-      back_sum.push_back(t);
-    }
+    back_sum.push_back(f(g(back_sum), value).value());
   }
 
   void pop(){
@@ -106,13 +109,7 @@ public:
       while(not back_stack.empty()){
         const auto value = back_stack.top(); back_stack.pop();
         front_stack.push(value);
-
-        if(front_sum.empty()){
-          front_sum.push_back(value);
-        }else{
-          const auto t = Semigroup::op(value, front_sum.back());
-          front_sum.push_back(t);
-        }
+        front_sum.push_back(f(value, g(front_sum)).value());
       }
     }
 
@@ -139,32 +136,35 @@ public:
 template <typename Semigroup>
 class SlidingWindowAggregation{
   using value_type = typename Semigroup::value_type;
+  Semigroup S;
   
   std::stack<value_type> front_stack, back_stack;
   std::vector<value_type> front_sum, back_sum;
+
+  std::optional<value_type> f(std::optional<value_type> a, std::optional<value_type> b) const {
+    if(a){
+      if(b) return {S.op(*a, *b)};
+      else return {*a};
+    }else{
+      if(b) return {*b};
+      else return {};
+    }
+  }
+
+  std::optional<value_type> g(const std::vector<value_type> &a) const {
+    return a.empty() ? std::nullopt : std::optional(a.back());
+  }
   
 public:
   SlidingWindowAggregation(){}
   
   std::optional<value_type> fold() const {
-    if(front_sum.empty()){
-      if(back_sum.empty()) return std::nullopt;
-      return {back_sum.back()};
-    }else{
-      if(back_sum.empty()) return {front_sum.back()};
-      return {Semigroup::op(front_sum.back(), back_sum.back())};
-    }
+    return f(g(front_sum), g(back_sum));
   }
 
   void push(const value_type &value){
     back_stack.push(value);
-
-    if(back_sum.empty()){
-      back_sum.push_back(value);
-    }else{
-      const auto t = Semigroup::op(back_sum.back(), value);
-      back_sum.push_back(t);
-    }
+    back_sum.push_back(f(g(back_sum), value).value());
   }
 
   void pop(){
@@ -174,13 +174,7 @@ public:
       while(not back_stack.empty()){
         const auto value = back_stack.top(); back_stack.pop();
         front_stack.push(value);
-
-        if(front_sum.empty()){
-          front_sum.push_back(value);
-        }else{
-          const auto t = Semigroup::op(value, front_sum.back());
-          front_sum.push_back(t);
-        }
+        front_sum.push_back(f(value, g(front_sum)).value());
       }
     }
 

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Roll-backable vector
+# :warning: Rollbackable vector
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0d7e284bb2256ddef55e56b25bfaf3f1">Mylib/DataStructure/Array</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Array/rollbackable_vector.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-08 12:08:32+09:00
 
 
 
@@ -59,11 +59,13 @@ layout: default
 #include <vector>
 
 /**
- * @title Roll-backable vector
+ * @title Rollbackable vector
  * @docs rollbackable_vector.md
  */
 template <typename T>
 class RollbackableVector{
+  using value_type = T;
+  
   std::vector<T> data;
   std::vector<std::vector<T>> stock;
   std::vector<int> history;
@@ -92,6 +94,8 @@ public:
       data[i] = stock[i].back();
     }
   }
+
+  const value_type& operator[](int i) const {return data[i];}
 
   auto cbegin() const {return data.cbegin();}
   auto cend() const {return data.cend();}
@@ -113,11 +117,13 @@ public:
 #include <vector>
 
 /**
- * @title Roll-backable vector
+ * @title Rollbackable vector
  * @docs rollbackable_vector.md
  */
 template <typename T>
 class RollbackableVector{
+  using value_type = T;
+  
   std::vector<T> data;
   std::vector<std::vector<T>> stock;
   std::vector<int> history;
@@ -146,6 +152,8 @@ public:
       data[i] = stock[i].back();
     }
   }
+
+  const value_type& operator[](int i) const {return data[i];}
 
   auto cbegin() const {return data.cbegin();}
   auto cend() const {return data.cend();}

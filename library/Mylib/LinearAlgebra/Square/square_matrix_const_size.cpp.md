@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Square matrix (Const size)
+# :x: Square matrix (Const size)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b58b3fdb1287502881e9117a37552614">Mylib/LinearAlgebra/Square</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-08 12:08:32+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/510/main.test.cpp.html">test/yukicoder/510/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/510/main.test.cpp.html">test/yukicoder/510/main.test.cpp</a>
 
 
 ## Code
@@ -101,9 +101,9 @@ template <typename T, int N> struct SquareMatrixConst{
     return *this;
   }
 
-  inline const auto& operator[](size_t i) const {return matrix[i];}
-  inline auto& operator[](size_t i){return matrix[i];}
-  inline int size() const {return N;}
+  const auto& operator[](size_t i) const {return matrix[i];}
+  auto& operator[](size_t i){return matrix[i];}
+  int size() const {return N;}
   
   static auto make_unit(){
     SquareMatrixConst ret;
@@ -177,9 +177,9 @@ template <typename T, int N> struct SquareMatrixConst{
     return *this;
   }
 
-  inline const auto& operator[](size_t i) const {return matrix[i];}
-  inline auto& operator[](size_t i){return matrix[i];}
-  inline int size() const {return N;}
+  const auto& operator[](size_t i) const {return matrix[i];}
+  auto& operator[](size_t i){return matrix[i];}
+  int size() const {return N;}
   
   static auto make_unit(){
     SquareMatrixConst ret;

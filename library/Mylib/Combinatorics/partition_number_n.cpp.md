@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Partition number (Enumerate $P(n, n)$)
+# :x: Partition number (Enumerate $P(n, n)$)
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -49,7 +49,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/partition_function/main.test.cpp.html">test/yosupo-judge/partition_function/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/partition_function/main.test.cpp.html">test/yosupo-judge/partition_function/main.test.cpp</a>
 
 
 ## Code

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/899/main.test.cpp
+# :x: test/yukicoder/899/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#dbd13c44c1e9ae40565e636bcb62bc45">test/yukicoder/899</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/899/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/899">https://yukicoder.me/problems/no/899</a>
@@ -39,16 +39,14 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/update.cpp.html">Mylib/AlgebraicStructure/Monoid/update.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">Lazy segment tree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/euler_tour_bfs.cpp.html">Euler tour (BFS)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp.html">Range update / Range sum</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">Lazy segment tree</a>
+* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/euler_tour_bfs.cpp.html">Euler tour (BFS)</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -230,7 +228,7 @@ template <typename T> struct EulerTourBFS{
 
 public:
   template <typename Func>
-  inline void query_children(int i, int d, const Func &f) const {
+  void query_children(int i, int d, const Func &f) const {
     if(i != -1){
       d += depth[i];
       if((int)bfs_order.size() > d){
@@ -246,16 +244,16 @@ public:
   }
 
   template <typename Func>
-  inline void query_at(int i, const Func &f) const {
+  void query_at(int i, const Func &f) const {
     query_children(i, 0, f);
   }
   
-  inline int get_parent(int i) const {
+  int get_parent(int i) const {
     if(i == -1) return -1;
     return parent[i];
   }
 
-  inline int get_ancestor(int i, int k) const {
+  int get_ancestor(int i, int k) const {
     int ret = i;
     for(int i = 0; i < k; ++i){
       ret = get_parent(ret);
@@ -274,38 +272,39 @@ template <typename Monoid>
 class LazySegmentTree{
   using value_type_get = typename Monoid::value_type_get;
   using value_type_update = typename Monoid::value_type_update;
+  Monoid M;
   
   const int depth, size, hsize;
   std::vector<value_type_get> data;
   std::vector<value_type_update> lazy;
 
-  inline void propagate(int i){
-    if(lazy[i] == Monoid::id_update()) return;
+  void propagate(int i){
+    if(lazy[i] == M.id_update()) return;
     if(i < hsize){
-      lazy[i << 1 | 0] = Monoid::op_update(lazy[i], lazy[i << 1 | 0]);
-      lazy[i << 1 | 1] = Monoid::op_update(lazy[i], lazy[i << 1 | 1]);
+      lazy[i << 1 | 0] = M.op_update(lazy[i], lazy[i << 1 | 0]);
+      lazy[i << 1 | 1] = M.op_update(lazy[i], lazy[i << 1 | 1]);
     }
     int len = hsize >> (31 - __builtin_clz(i));
-    data[i] = Monoid::op(data[i], lazy[i], len);
-    lazy[i] = Monoid::id_update();
+    data[i] = M.op(data[i], lazy[i], len);
+    lazy[i] = M.id_update();
   }
 
-  inline value_type_get update_aux(int i, int l, int r, int s, int t, const value_type_update &x){
+  value_type_get update_aux(int i, int l, int r, int s, int t, const value_type_update &x){
     propagate(i);
     if(r <= s || t <= l) return data[i];
     else if(s <= l && r <= t){
-      lazy[i] = Monoid::op_update(x, lazy[i]);
+      lazy[i] = M.op_update(x, lazy[i]);
       propagate(i);
       return data[i];
     }
-    else return data[i] = Monoid::op_get(update_aux(i << 1 | 0, l, (l+r) / 2, s, t, x), update_aux(i << 1 | 1, (l+r) / 2, r, s, t, x));
+    else return data[i] = M.op_get(update_aux(i << 1 | 0, l, (l+r) / 2, s, t, x), update_aux(i << 1 | 1, (l+r) / 2, r, s, t, x));
   }
   
-  inline value_type_get get_aux(int i, int l, int r, int x, int y){
+  value_type_get get_aux(int i, int l, int r, int x, int y){
     propagate(i);
-    if(r <= x || y <= l) return Monoid::id_get();
+    if(r <= x || y <= l) return M.id_get();
     else if(x <= l && r <= y) return data[i];
-    else return Monoid::op_get(get_aux(i << 1 | 0, l, (l+r) / 2, x, y), get_aux(i << 1 | 1, (l+r) / 2, r, x, y));
+    else return M.op_get(get_aux(i << 1 | 0, l, (l+r) / 2, x, y), get_aux(i << 1 | 1, (l+r) / 2, r, x, y));
   }
 
 public:
@@ -314,70 +313,47 @@ public:
     depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
     size(1 << depth),
     hsize(size / 2),
-    data(size, Monoid::id_get()),
-    lazy(size, Monoid::id_update())
+    data(size, M.id_get()),
+    lazy(size, M.id_update())
   {}
 
-  inline void update(int l, int r, const value_type_update &x){update_aux(1, 0, hsize, l, r, x);}
-  inline void update_at(int i, const value_type_update &x){update(i, i+1, x);}
-  inline value_type_get get(int l, int r){return get_aux(1, 0, hsize, l, r);}
-  inline value_type_get at(int i){return get(i, i+1);}
+  void update(int l, int r, const value_type_update &x){update_aux(1, 0, hsize, l, r, x);}
+  void update_at(int i, const value_type_update &x){update(i, i+1, x);}
+  value_type_get get(int l, int r){return get_aux(1, 0, hsize, l, r);}
+  value_type_get at(int i){return get(i, i+1);}
 
   template <typename T>
-  inline void init(const T &val){
+  void init(const T &val){
     init_with_vector(std::vector<T>(hsize, val));
   }
 
   template <typename T>
-  inline void init_with_vector(const std::vector<T> &val){
-    data.assign(size, Monoid::id_get());
-    lazy.assign(size, Monoid::id_update());
+  void init_with_vector(const std::vector<T> &val){
+    data.assign(size, M.id_get());
+    lazy.assign(size, M.id_update());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
-    for(int i = hsize-1; i > 0; --i) data[i] = Monoid::op_get(data[i << 1 | 0], data[i << 1 | 1]);
+    for(int i = hsize-1; i > 0; --i) data[i] = M.op_get(data[i << 1 | 0], data[i << 1 | 1]);
   }
 };
-#line 2 "Mylib/AlgebraicStructure/Monoid/update.cpp"
+#line 2 "Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp"
 #include <optional>
 
 /**
- * @docs update.md
- */
-template <typename T>
-struct UpdateMonoid{
-  using value_type = std::optional<T>;
-  static value_type id(){return std::nullopt;}
-  static value_type op(const value_type &a, const value_type &b){return (a ? a : b);}
-};
-#line 2 "Mylib/AlgebraicStructure/Monoid/sum.cpp"
-
-/**
- * @docs sum.md
- */
-template <typename T>
-struct SumMonoid{
-  using value_type = T;
-  static value_type id(){return 0;}
-  static value_type op(value_type a, value_type b){return a + b;}
-};
-#line 4 "Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp"
-
-/**
+ * @title Range update / Range sum
  * @docs update_sum.md
  */
 template <typename T, typename U>
 struct UpdateSum{
-  using monoid_get = SumMonoid<T>;
-  using monoid_update = UpdateMonoid<U>;
-  using value_type_get = typename monoid_get::value_type;
-  using value_type_update = typename monoid_update::value_type;
+  using value_type_get = T;
+  using value_type_update = std::optional<U>;
 
-  static value_type_get id_get(){return monoid_get::id();}
-  static value_type_update id_update(){return monoid_update::id();}
+  value_type_get id_get() const {return 0;}
+  value_type_update id_update() const {return {};}
 
-  static value_type_get op_get(value_type_get a, value_type_get b){return monoid_get::op(a, b);}
-  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
+  value_type_get op_get(value_type_get a, value_type_get b) const {return a + b;}
+  value_type_update op_update(value_type_update a, value_type_update b) const {return (a ? a : b);}
 
-  static value_type_get op(value_type_get a, value_type_update b, int len){
+  value_type_get op(value_type_get a, value_type_update b, int len) const {
     return b ? *b * len : a;
   }
 };

@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/travelling_salesman_problem.cpp.html">Travelling salesman problem</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
 
 
 ## Code

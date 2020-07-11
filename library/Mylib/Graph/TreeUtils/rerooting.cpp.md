@@ -58,7 +58,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">Graph template</a>
+* :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Verified with

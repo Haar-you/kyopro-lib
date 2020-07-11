@@ -25,27 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp
+# :question: Range update / Range sum
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
-
-
-## Depends on
-
-* :heavy_check_mark: <a href="../Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../Monoid/update.cpp.html">Mylib/AlgebraicStructure/Monoid/update.cpp</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_I/main.test.cpp.html">test/aoj/DSL_2_I/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
 
 
 ## Code
@@ -54,26 +48,24 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/update.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
+#include <optional>
 
 /**
+ * @title Range update / Range sum
  * @docs update_sum.md
  */
 template <typename T, typename U>
 struct UpdateSum{
-  using monoid_get = SumMonoid<T>;
-  using monoid_update = UpdateMonoid<U>;
-  using value_type_get = typename monoid_get::value_type;
-  using value_type_update = typename monoid_update::value_type;
+  using value_type_get = T;
+  using value_type_update = std::optional<U>;
 
-  static value_type_get id_get(){return monoid_get::id();}
-  static value_type_update id_update(){return monoid_update::id();}
+  value_type_get id_get() const {return 0;}
+  value_type_update id_update() const {return {};}
 
-  static value_type_get op_get(value_type_get a, value_type_get b){return monoid_get::op(a, b);}
-  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
+  value_type_get op_get(value_type_get a, value_type_get b) const {return a + b;}
+  value_type_update op_update(value_type_update a, value_type_update b) const {return (a ? a : b);}
 
-  static value_type_get op(value_type_get a, value_type_update b, int len){
+  value_type_get op(value_type_get a, value_type_update b, int len) const {
     return b ? *b * len : a;
   }
 };
@@ -84,48 +76,25 @@ struct UpdateSum{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/update.cpp"
+#line 2 "Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp"
 #include <optional>
 
 /**
- * @docs update.md
- */
-template <typename T>
-struct UpdateMonoid{
-  using value_type = std::optional<T>;
-  static value_type id(){return std::nullopt;}
-  static value_type op(const value_type &a, const value_type &b){return (a ? a : b);}
-};
-#line 2 "Mylib/AlgebraicStructure/Monoid/sum.cpp"
-
-/**
- * @docs sum.md
- */
-template <typename T>
-struct SumMonoid{
-  using value_type = T;
-  static value_type id(){return 0;}
-  static value_type op(value_type a, value_type b){return a + b;}
-};
-#line 4 "Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp"
-
-/**
+ * @title Range update / Range sum
  * @docs update_sum.md
  */
 template <typename T, typename U>
 struct UpdateSum{
-  using monoid_get = SumMonoid<T>;
-  using monoid_update = UpdateMonoid<U>;
-  using value_type_get = typename monoid_get::value_type;
-  using value_type_update = typename monoid_update::value_type;
+  using value_type_get = T;
+  using value_type_update = std::optional<U>;
 
-  static value_type_get id_get(){return monoid_get::id();}
-  static value_type_update id_update(){return monoid_update::id();}
+  value_type_get id_get() const {return 0;}
+  value_type_update id_update() const {return {};}
 
-  static value_type_get op_get(value_type_get a, value_type_get b){return monoid_get::op(a, b);}
-  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
+  value_type_get op_get(value_type_get a, value_type_get b) const {return a + b;}
+  value_type_update op_update(value_type_update a, value_type_update b) const {return (a ? a : b);}
 
-  static value_type_get op(value_type_get a, value_type_update b, int len){
+  value_type_get op(value_type_get a, value_type_update b, int len) const {
     return b ? *b * len : a;
   }
 };

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
+# :x: test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f20910bc88ed07cbe415ab1d4fdcbec4">test/yosupo-judge/point_add_rectangle_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/point_add_rectangle_sum/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/point_add_rectangle_sum">https://judge.yosupo.jp/problem/point_add_rectangle_sum</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp.html">Segment tree (On segment tree)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp.html">Segment tree (On segment tree)</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 
 
 ## Code
@@ -135,6 +135,7 @@ int main(){
 template <typename Monoid>
 class SegmentTree{
   using value_type = typename Monoid::value_type;
+  Monoid M;
   
   int depth, size, hsize;
   std::vector<value_type> data;
@@ -144,41 +145,41 @@ public:
   SegmentTree(int n):
     depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
     size(1 << depth), hsize(size / 2),
-    data(size, Monoid::id())
+    data(size, M.id())
   {}
 
-  inline auto operator[](int i) const {return at(i);}
-  inline auto at(int i) const {return data[hsize + i];}
+  auto operator[](int i) const {return at(i);}
+  auto at(int i) const {return data[hsize + i];}
   
-  inline auto get(int x, int y) const { // [x,y)
-    value_type ret_left = Monoid::id();
-    value_type ret_right = Monoid::id();
+  auto get(int x, int y) const { // [x,y)
+    value_type ret_left = M.id();
+    value_type ret_right = M.id();
     
     int l = x + hsize, r = y + hsize;
     while(l < r){
-      if(r & 1) ret_right = Monoid::op(data[--r], ret_right);
-      if(l & 1) ret_left = Monoid::op(ret_left, data[l++]);
+      if(r & 1) ret_right = M.op(data[--r], ret_right);
+      if(l & 1) ret_left = M.op(ret_left, data[l++]);
       l >>= 1, r >>= 1;
     }
     
-    return Monoid::op(ret_left, ret_right);
+    return M.op(ret_left, ret_right);
   }
 
-  inline void update(int i, const value_type &x){
+  void update(int i, const value_type &x){
     i += hsize;
     data[i] = x;
-    while(i > 1) i >>= 1, data[i] = Monoid::op(data[i << 1 | 0], data[i << 1 | 1]);
+    while(i > 1) i >>= 1, data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
-  inline void init_with_vector(const std::vector<T> &val){
-    data.assign(size, Monoid::id());
+  void init_with_vector(const std::vector<T> &val){
+    data.assign(size, M.id());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
-    for(int i = hsize-1; i >= 1; --i) data[i] = Monoid::op(data[i << 1 | 0], data[i << 1 | 1]);
+    for(int i = hsize-1; i >= 1; --i) data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
-  inline void init(const T &val){
+  void init(const T &val){
     init_with_vector(std::vector<value_type>(hsize, val));
   }  
 };
@@ -191,6 +192,7 @@ public:
 template <typename Monoid>
 class SegmentTree2D{
   using value_type = typename Monoid::value_type;
+  Monoid M;
 
   int N = 0;
   std::vector<int64_t> xs, ys;
@@ -250,19 +252,19 @@ public:
     }
   }
 
-  inline void update(int64_t x, int64_t y, const value_type &val){
+  void update(int64_t x, int64_t y, const value_type &val){
     int i = std::lower_bound(c_xs.begin(), c_xs.end(), x) - c_xs.begin() + x_size / 2;
 
     while(i >= 1){
       int j = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y) - c_ys[i].begin();
-      segs[i].update(j, Monoid::op(segs[i][j], val));
+      segs[i].update(j, M.op(segs[i][j], val));
 
       i >>= 1;
     }
   }
 
 private:
-  inline value_type get_sub(int i, int64_t y1, int64_t y2) const {
+  value_type get_sub(int i, int64_t y1, int64_t y2) const {
     int l = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y1) - c_ys[i].begin();
     int r = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y2) - c_ys[i].begin();
 
@@ -271,15 +273,15 @@ private:
 
 public:
   // [x1, x2), [y1, y2)
-  inline value_type get(int64_t x1, int64_t y1, int64_t x2, int64_t y2) const {
+  value_type get(int64_t x1, int64_t y1, int64_t x2, int64_t y2) const {
     int l = std::lower_bound(c_xs.begin(), c_xs.end(), x1) - c_xs.begin() + x_size / 2;
     int r = std::lower_bound(c_xs.begin(), c_xs.end(), x2) - c_xs.begin() + x_size / 2;
 
-    value_type ret = Monoid::id();
+    value_type ret = M.id();
 
     while(l < r){
-      if(r & 1) ret = Monoid::op(ret, get_sub(--r, y1, y2));
-      if(l & 1) ret = Monoid::op(ret, get_sub(l++, y1, y2));
+      if(r & 1) ret = M.op(ret, get_sub(--r, y1, y2));
+      if(l & 1) ret = M.op(ret, get_sub(l++, y1, y2));
       l >>= 1;
       r >>= 1;
     }
@@ -295,8 +297,8 @@ public:
 template <typename T>
 struct SumMonoid{
   using value_type = T;
-  static value_type id(){return 0;}
-  static value_type op(value_type a, value_type b){return a + b;}
+  value_type id() const {return 0;}
+  value_type op(value_type a, value_type b) const {return a + b;}
 };
 #line 5 "Mylib/IO/input_tuple_vector.cpp"
 #include <utility>

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#64e19fd3e4193a1559ce21d32ec43623">test/aoj/2842</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2842/main.segment_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_2d.cpp.html">Segment tree (2D)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -129,8 +129,8 @@ int main(){
 template <typename T>
 struct SumMonoid{
   using value_type = T;
-  static value_type id(){return 0;}
-  static value_type op(value_type a, value_type b){return a + b;}
+  value_type id() const {return 0;}
+  value_type op(value_type a, value_type b) const {return a + b;}
 };
 #line 2 "Mylib/DataStructure/SegmentTree/segment_tree_2d.cpp"
 #include <vector>
@@ -139,21 +139,23 @@ struct SumMonoid{
  * @title Segment tree (2D)
  * @docs segment_tree_2d.md
  */
-template <typename Monoid> class SegmentTree2D{
+template <typename Monoid>
+class SegmentTree2D{
   using value_type = typename Monoid::value_type;
-      
+  Monoid M;
+  
   int w, h;
   std::vector<std::vector<value_type>> data;
 
-  inline value_type get_w(int l, int r, int y) const {
+  value_type get_w(int l, int r, int y) const {
     l += w / 2;
     r += w / 2;
 
-    value_type ret = Monoid::id();
+    value_type ret = M.id();
 
     while(l < r){
-      if(r & 1) ret = Monoid::op(ret, data[--r][y]);
-      if(l & 1) ret = Monoid::op(ret, data[l++][y]);
+      if(r & 1) ret = M.op(ret, data[--r][y]);
+      if(l & 1) ret = M.op(ret, data[l++][y]);
       l >>= 1, r >>= 1;
     }
     
@@ -177,11 +179,11 @@ public:
     int l = y1 + h / 2;
     int r = y2 + h / 2;
 
-    value_type ret = Monoid::id();
+    value_type ret = M.id();
 
     while(l < r){
-      if(r & 1) ret = Monoid::op(ret, get_w(x1, x2, --r));
-      if(l & 1) ret = Monoid::op(ret, get_w(x1, x2, l++));
+      if(r & 1) ret = M.op(ret, get_w(x1, x2, --r));
+      if(l & 1) ret = M.op(ret, get_w(x1, x2, l++));
       l >>= 1, r >>= 1;
     }
 
@@ -199,12 +201,12 @@ public:
     data[i][j] = val;
      
     for(int X = i >> 1, Y = j; X > 0; X >>= 1){
-      data[X][Y] = Monoid::op(data[X << 1 | 0][Y], data[X << 1 | 1][Y]);
+      data[X][Y] = M.op(data[X << 1 | 0][Y], data[X << 1 | 1][Y]);
     }
         
     for(int Y = j >> 1; Y > 0; Y >>= 1){
       for(int X = i; X > 0; X >>= 1){
-        data[X][Y] = Monoid::op(data[X][Y << 1 | 0], data[X][Y << 1 | 1]);
+        data[X][Y] = M.op(data[X][Y << 1 | 0], data[X][Y << 1 | 1]);
       }
     }
   }

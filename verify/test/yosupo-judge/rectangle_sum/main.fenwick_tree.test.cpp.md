@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
+# :x: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9102555d140c20ca7196c4db584ea7b6">test/yosupo-judge/rectangle_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/rectangle_sum">https://judge.yosupo.jp/problem/rectangle_sum</a>
@@ -39,12 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum.cpp.html">Mylib/AlgebraicStructure/Group/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">Fenwick tree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp.html">Fenwick tree (On Fenwick tree)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum.cpp.html">Mylib/AlgebraicStructure/Group/sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">Fenwick tree</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp.html">Fenwick tree (On Fenwick tree)</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -110,9 +110,9 @@ template <typename T>
 struct SumGroup{
   using value_type = T;
 
-  static value_type id(){return 0;}
-  static value_type op(const value_type &a, const value_type &b){return a + b;}
-  static value_type inv(const value_type &a){return -a;}
+  value_type id() const {return 0;}
+  value_type op(const value_type &a, const value_type &b) const {return a + b;}
+  value_type inv(const value_type &a) const {return -a;}
 };
 #line 3 "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
 
@@ -123,6 +123,7 @@ struct SumGroup{
 template <typename AbelianGroup>
 class FenwickTree{
   using value_type = typename AbelianGroup::value_type;
+  AbelianGroup G;
   
   int size;
   std::vector<value_type> data;
@@ -130,35 +131,35 @@ class FenwickTree{
 public:
   FenwickTree(){}
   FenwickTree(int size):
-    size(size), data(size + 1, AbelianGroup::id())
+    size(size), data(size + 1, G.id())
   {}
   
-  inline void update(int i, const value_type &val){
+  void update(int i, const value_type &val){
     i += 1; // 1-index
     
     while(i <= size){
-      data[i] = AbelianGroup::op(data[i], val);
+      data[i] = G.op(data[i], val);
       i += i & (-i);
     }
   }
   
-  inline value_type get(int i) const { // [0, i)
-    value_type ret = AbelianGroup::id();
+  value_type get(int i) const { // [0, i)
+    value_type ret = G.id();
     i += 1; // 1-index
 
     while(i > 0){
-      ret = AbelianGroup::op(ret, data[i]);
+      ret = G.op(ret, data[i]);
       i -= i & (-i);
     }
 
     return ret;
   }
 
-  inline value_type get(int l, int r) const { // [l, r)
-    return AbelianGroup::op(get(r-1), AbelianGroup::inv(get(l-1)));
+  value_type get(int l, int r) const { // [l, r)
+    return G.op(get(r-1), G.inv(get(l-1)));
   }
   
-  inline value_type at(int x) const {
+  value_type at(int x) const {
     return get(x, x+1);
   }
 };
@@ -175,6 +176,7 @@ public:
 template <typename AbelianGroup>
 class FenwickTree2D{
   using value_type = typename AbelianGroup::value_type;
+  AbelianGroup G;
 
   int N = 0;
   std::vector<int64_t> xs, ys;
@@ -226,7 +228,7 @@ public:
     }
   }
 
-  inline void update(int64_t x, int64_t y, const value_type &val){
+  void update(int64_t x, int64_t y, const value_type &val){
     int i = std::lower_bound(c_xs.begin(), c_xs.end(), x) - c_xs.begin();
 
     for(i += 1; i <= x_size; i += i & (-i)){
@@ -236,22 +238,22 @@ public:
   }
 
 private:
-  inline value_type get(int i, int64_t y1, int64_t y2) const {
-    value_type ret = AbelianGroup::id();
+  value_type get(int i, int64_t y1, int64_t y2) const {
+    value_type ret = G.id();
     for(; i > 0; i -= i & (-i)){
       int l = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y1) - c_ys[i].begin();
       int r = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y2) - c_ys[i].begin();
-      ret = AbelianGroup::op(ret, segs[i].get(l, r));
+      ret = G.op(ret, segs[i].get(l, r));
     }
     return ret;
   }
 
 public:
   // [x1, x2), [y1, y2)
-  inline value_type get(int64_t x1, int64_t y1, int64_t x2, int64_t y2) const {
+  value_type get(int64_t x1, int64_t y1, int64_t x2, int64_t y2) const {
     int l = std::lower_bound(c_xs.begin(), c_xs.end(), x1) - c_xs.begin();
     int r = std::lower_bound(c_xs.begin(), c_xs.end(), x2) - c_xs.begin();
-    return AbelianGroup::op(get(r, y1, y2), AbelianGroup::inv(get(l, y1, y2)));
+    return G.op(get(r, y1, y2), G.inv(get(l, y1, y2)));
   }
 };
 #line 4 "Mylib/IO/input_tuple_vector.cpp"

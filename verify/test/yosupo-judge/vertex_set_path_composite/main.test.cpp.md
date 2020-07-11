@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+# :x: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#4074bf88980bb06d903e38d47fb81c08">test/yosupo-judge/vertex_set_path_composite</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/vertex_set_path_composite/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/vertex_set_path_composite">https://judge.yosupo.jp/problem/vertex_set_path_composite</a>
@@ -39,16 +39,16 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp.html">Segment tree (Both foldable)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp.html">Segment tree (Both foldable)</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -73,7 +73,8 @@ layout: default
 #include "Mylib/IO/input_vector.cpp"
 
 using mint = ModInt<998244353>;
-using M = DualMonoid<AffineMonoid<mint>>;
+using Monoid = DualMonoid<AffineMonoid<mint>>;
+Monoid M;
 
 int main(){
   std::cin.tie(0);
@@ -82,12 +83,10 @@ int main(){
   int N, Q; std::cin >> N >> Q;
 
   auto f = input_vector<std::pair<mint, mint>>(N);
-
   auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
   
   HLDecomposition<int> hld(tree, 0);
-
-  SegmentTreeBothFoldable<M> seg(N);
+  SegmentTreeBothFoldable<Monoid> seg(N);
   
   for(int i = 0; i < N; ++i){
     seg.update(hld.get_id(i), f[i]);
@@ -101,20 +100,20 @@ int main(){
     }else{
       int64_t u, v, x; std::cin >> u >> v >> x;
 
-      auto left = M::id(), right = M::id();
+      auto left = M.id(), right = M.id();
 
       hld.path_query_vertex(
         u,
         v,
         [&](int l, int r){
-          left = M::op(left, seg.fold_right(l, r));
+          left = M.op(left, seg.fold_right(l, r));
         },
         [&](int l, int r){
-          right = M::op(seg.fold_left(l, r), right);
+          right = M.op(seg.fold_left(l, r), right);
         }
       );
       
-      auto a = M::op(left, right);
+      auto a = M.op(left, right);
 
       mint ans = a.first * x + a.second;
       std::cout << ans << "\n";
@@ -154,27 +153,27 @@ public:
     else val = n;
   }
   
-  inline constexpr auto operator+(const ModInt &a) const {return ModInt(val + a.val);}
-  inline constexpr auto operator-(const ModInt &a) const {return ModInt(val - a.val);}
-  inline constexpr auto operator*(const ModInt &a) const {return ModInt(val * a.val);}
-  inline constexpr auto operator/(const ModInt &a) const {return ModInt(val * a.inv().val);}
+  constexpr auto operator+(const ModInt &a) const {return ModInt(val + a.val);}
+  constexpr auto operator-(const ModInt &a) const {return ModInt(val - a.val);}
+  constexpr auto operator*(const ModInt &a) const {return ModInt(val * a.val);}
+  constexpr auto operator/(const ModInt &a) const {return ModInt(val * a.inv().val);}
   
-  inline constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
-  inline constexpr auto& operator+=(const ModInt &a){if((val += a.val) >= M) val -= M; return *this;}
-  inline constexpr auto& operator-=(const ModInt &a){if(val < a.val) val += M; val -= a.val; return *this;}
-  inline constexpr auto& operator*=(const ModInt &a){(val *= a.val) %= M; return *this;}
-  inline constexpr auto& operator/=(const ModInt &a){(val *= a.inv().val) %= M; return *this;}
+  constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
+  constexpr auto& operator+=(const ModInt &a){if((val += a.val) >= M) val -= M; return *this;}
+  constexpr auto& operator-=(const ModInt &a){if(val < a.val) val += M; val -= a.val; return *this;}
+  constexpr auto& operator*=(const ModInt &a){(val *= a.val) %= M; return *this;}
+  constexpr auto& operator/=(const ModInt &a){(val *= a.inv().val) %= M; return *this;}
  
-  inline constexpr bool operator==(const ModInt &a) const {return val == a.val;}
-  inline constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
+  constexpr bool operator==(const ModInt &a) const {return val == a.val;}
+  constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
  
-  inline constexpr auto& operator++(){*this += 1; return *this;}
-  inline constexpr auto& operator--(){*this -= 1; return *this;}
+  constexpr auto& operator++(){*this += 1; return *this;}
+  constexpr auto& operator--(){*this -= 1; return *this;}
  
-  inline constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
-  inline constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
+  constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
+  constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
  
-  inline constexpr static ModInt power(int64_t n, int64_t p){
+  constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
     
     int64_t ret = 1, e = n % M;
@@ -182,7 +181,7 @@ public:
     return ret;
   }
  
-  inline constexpr static ModInt inv(int64_t a){
+  constexpr static ModInt inv(int64_t a){
     int64_t b = M, u = 1, v = 0;
     
     while(b){
@@ -197,23 +196,23 @@ public:
     return u;
   }
  
-  inline constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
+  constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
   
-  inline constexpr auto power(int64_t p) const {return power(val, p);}
-  inline constexpr auto inv() const {return inv(val);}
+  constexpr auto power(int64_t p) const {return power(val, p);}
+  constexpr auto inv() const {return inv(val);}
  
-  friend inline constexpr auto operator-(const ModInt &a){return ModInt(-a.val);}
+  friend constexpr auto operator-(const ModInt &a){return ModInt(-a.val);}
  
-  friend inline constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
-  friend inline constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
-  friend inline constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
-  friend inline constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
+  friend constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
+  friend constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
+  friend constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
+  friend constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
  
   friend std::istream& operator>>(std::istream &s, ModInt<M> &a){s >> a.val; return s;}
   friend std::ostream& operator<<(std::ostream &s, const ModInt<M> &a){s << a.val; return s;}
 
   template <int N>
-  inline static auto div(){
+  static auto div(){
     static auto value = inv(N);
     return value;
   }
@@ -390,8 +389,8 @@ public:
 template <typename Monoid>
 class SegmentTreeBothFoldable{
   using value_type = typename Monoid::value_type;
+  Monoid M;
   
-protected:
   const int depth, size, hsize;
   std::vector<value_type> data_left, data_right;
 
@@ -400,68 +399,68 @@ public:
     depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
     size(1 << depth),
     hsize(size / 2),
-    data_left(size, Monoid::id()),
-    data_right(size, Monoid::id())
+    data_left(size, M.id()),
+    data_right(size, M.id())
   {}
 
-  inline auto operator[](int i) const {return at(i);}
-  inline auto at(int i) const {return data_left[hsize + i];}
+  auto operator[](int i) const {return at(i);}
+  auto at(int i) const {return data_left[hsize + i];}
   
-  inline auto fold_left(int x, int y) const { // [x,y)
-    value_type ret_left = Monoid::id();
-    value_type ret_right = Monoid::id();
+  auto fold_left(int x, int y) const { // [x,y)
+    value_type ret_left = M.id();
+    value_type ret_right = M.id();
     
     int l = x + hsize, r = y + hsize;
     while(l < r){
-      if(r & 1) ret_right = Monoid::op(data_left[--r], ret_right);
-      if(l & 1) ret_left = Monoid::op(ret_left, data_left[l++]);
+      if(r & 1) ret_right = M.op(data_left[--r], ret_right);
+      if(l & 1) ret_left = M.op(ret_left, data_left[l++]);
       l >>= 1, r >>= 1;
     }
     
-    return Monoid::op(ret_left, ret_right);
+    return M.op(ret_left, ret_right);
   }
 
-  inline auto fold_right(int x, int y) const { // [x,y)
-    value_type ret_left = Monoid::id();
-    value_type ret_right = Monoid::id();
+  auto fold_right(int x, int y) const { // [x,y)
+    value_type ret_left = M.id();
+    value_type ret_right = M.id();
     
     int l = x + hsize, r = y + hsize;
     while(l < r){
-      if(r & 1) ret_right = Monoid::op(ret_right, data_right[--r]);
-      if(l & 1) ret_left = Monoid::op(data_right[l++], ret_left);
+      if(r & 1) ret_right = M.op(ret_right, data_right[--r]);
+      if(l & 1) ret_left = M.op(data_right[l++], ret_left);
       l >>= 1, r >>= 1;
     }
     
-    return Monoid::op(ret_right, ret_left);
+    return M.op(ret_right, ret_left);
   }
 
-  inline void update(int i, const value_type &x){
+  void update(int i, const value_type &x){
     i += hsize;
     data_left[i] = data_right[i] = x;
     while(i > 1){
       i >>= 1;
-      data_left[i] = Monoid::op(data_left[i << 1 | 0], data_left[i << 1 | 1]);
-      data_right[i] = Monoid::op(data_right[i << 1 | 1], data_right[i << 1 | 0]);
+      data_left[i] = M.op(data_left[i << 1 | 0], data_left[i << 1 | 1]);
+      data_right[i] = M.op(data_right[i << 1 | 1], data_right[i << 1 | 0]);
     }
   }
 
   template <typename T>
-  inline void init_with_vector(const std::vector<T> &val){
-    data_left.assign(size, Monoid::id());
-    data_right.assign(size, Monoid::id());
+  void init_with_vector(const std::vector<T> &val){
+    data_left.assign(size, M.id());
+    data_right.assign(size, M.id());
     
     for(int i = 0; i < (int)val.size(); ++i){
       data_left[hsize + i] = val[i];
       data_right[hsize + i] = val[i];
     }
     for(int i = hsize-1; i >= 1; --i){
-      data_left[i] = Monoid::op(data_left[i << 1 | 0], data_left[i << 1 | 1]);
-      data_right[i] = Monoid::op(data_right[i << 1 | 1], data_right[i << 1 | 0]);
+      data_left[i] = M.op(data_left[i << 1 | 0], data_left[i << 1 | 1]);
+      data_right[i] = M.op(data_right[i << 1 | 1], data_right[i << 1 | 0]);
     }
   }
 
   template <typename T>
-  inline void init(const T &val){
+  void init(const T &val){
     init_with_vector(std::vector<value_type>(hsize, val));
   }  
 };
@@ -473,8 +472,10 @@ public:
 template <typename T>
 struct AffineMonoid{
   using value_type = std::pair<T, T>;
-  static value_type id(){return std::make_pair(1, 0);}
-  static value_type op(const value_type &a, const value_type &b){return std::make_pair(a.first * b.first, a.first * b.second + a.second);}
+  value_type id() const {return std::make_pair(1, 0);}
+  value_type op(const value_type &a, const value_type &b) const {
+    return std::make_pair(a.first * b.first, a.first * b.second + a.second);
+  }
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 
@@ -484,8 +485,9 @@ struct AffineMonoid{
 template <typename Monoid>
 struct DualMonoid{
   using value_type = typename Monoid::value_type;
-  static value_type id(){return Monoid::id();}
-  static value_type op(const value_type &a, const value_type &b){return Monoid::op(b, a);}
+  Monoid M;
+  value_type id() const {return M.id();}
+  value_type op(const value_type &a, const value_type &b) const {return M.op(b, a);}
 };
 #line 4 "Mylib/IO/input_graph.cpp"
 
@@ -610,7 +612,8 @@ std::vector<std::vector<T>> input_vector(int N, int M){
 #line 16 "test/yosupo-judge/vertex_set_path_composite/main.test.cpp"
 
 using mint = ModInt<998244353>;
-using M = DualMonoid<AffineMonoid<mint>>;
+using Monoid = DualMonoid<AffineMonoid<mint>>;
+Monoid M;
 
 int main(){
   std::cin.tie(0);
@@ -619,12 +622,10 @@ int main(){
   int N, Q; std::cin >> N >> Q;
 
   auto f = input_vector<std::pair<mint, mint>>(N);
-
   auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
   
   HLDecomposition<int> hld(tree, 0);
-
-  SegmentTreeBothFoldable<M> seg(N);
+  SegmentTreeBothFoldable<Monoid> seg(N);
   
   for(int i = 0; i < N; ++i){
     seg.update(hld.get_id(i), f[i]);
@@ -638,20 +639,20 @@ int main(){
     }else{
       int64_t u, v, x; std::cin >> u >> v >> x;
 
-      auto left = M::id(), right = M::id();
+      auto left = M.id(), right = M.id();
 
       hld.path_query_vertex(
         u,
         v,
         [&](int l, int r){
-          left = M::op(left, seg.fold_right(l, r));
+          left = M.op(left, seg.fold_right(l, r));
         },
         [&](int l, int r){
-          right = M::op(seg.fold_left(l, r), right);
+          right = M.op(seg.fold_left(l, r), right);
         }
       );
       
-      auto a = M::op(left, right);
+      auto a = M.op(left, right);
 
       mint ans = a.first * x + a.second;
       std::cout << ans << "\n";

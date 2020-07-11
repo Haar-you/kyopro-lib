@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/ordering.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 
@@ -48,8 +48,8 @@ layout: default
  */
 struct OrderingMonoid{
   using value_type = int;
-  static value_type id(){return 0;}
-  static value_type op(const value_type &a, const value_type &b){return a ? a : b;}
+  value_type id() const {return 0;}
+  value_type op(const value_type &a, const value_type &b) const {return a ? a : b;}
 };
 
 ```
@@ -65,8 +65,8 @@ struct OrderingMonoid{
  */
 struct OrderingMonoid{
   using value_type = int;
-  static value_type id(){return 0;}
-  static value_type op(const value_type &a, const value_type &b){return a ? a : b;}
+  value_type id() const {return 0;}
+  value_type op(const value_type &a, const value_type &b) const {return a ? a : b;}
 };
 
 ```

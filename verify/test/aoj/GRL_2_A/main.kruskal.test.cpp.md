@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#81ed75a9aa7f4e6edc886499b1a67fa4">test/aoj/GRL_2_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_2_A/main.kruskal.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-06 22:54:09+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :question: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
 
 
 ## Code
@@ -123,19 +123,20 @@ class UnionFind{
   int count;
 
 public:
+  UnionFind(){}
   UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
     std::iota(parent.begin(), parent.end(), 0);
   }
   
-  inline int get_root(int i){
+  int root_of(int i){
     if(parent[i] == i) return i;
-    else return parent[i] = get_root(parent[i]);
+    else return parent[i] = root_of(parent[i]);
   }
   
-  inline bool is_same(int i, int j){return get_root(i) == get_root(j);}
+  bool is_same(int i, int j){return root_of(i) == root_of(j);}
 
-  inline int merge(int i, int j){
-    int ri = get_root(i), rj = get_root(j);
+  int merge(int i, int j){
+    int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return ri;
     else{
       --count;
@@ -152,9 +153,9 @@ public:
     }
   }
 
-  inline int get_size(int i){return size[get_root(i)];}
+  int size_of(int i){return size[root_of(i)];}
 
-  inline int count_group(){return count;}
+  int count_group(){return count;}
 };
 #line 6 "Mylib/Graph/MinimumSpanningTree/kruskal.cpp"
 

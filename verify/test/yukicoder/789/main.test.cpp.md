@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/789/main.test.cpp
+# :x: test/yukicoder/789/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f2dc228f845da8f438899cc780c48dec">test/yukicoder/789</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/789/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/789">https://yukicoder.me/problems/no/789</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp.html">Dynamic segment tree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp.html">Dynamic segment tree</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -99,6 +99,7 @@ int main(){
 template <typename Monoid>
 class DynamicSegmentTree{
   using value_type = typename Monoid::value_type;
+  Monoid M;
   
   struct Node{
     value_type val;
@@ -110,7 +111,7 @@ class DynamicSegmentTree{
   Node *root = nullptr;
 
   value_type eval(Node *t) const {
-    return t ? t->val : Monoid::id();
+    return t ? t->val : M.id();
   }
 
   Node* update_aux(Node *node, int64_t l, int64_t r, int64_t pos, const value_type &val){
@@ -122,17 +123,17 @@ class DynamicSegmentTree{
       if(!node) node = new Node(val);
       if(pos < m) node->left = update_aux(node->left, l, m, pos, val);
       else node->right = update_aux(node->right, m, r, pos, val);
-      node->val = Monoid::op(eval(node->left), eval(node->right));
+      node->val = M.op(eval(node->left), eval(node->right));
     }
     return node;
   }
 
   value_type get_aux(Node* node, int64_t l, int64_t r, int64_t x, int64_t y) const {
-    if(!node) return Monoid::id();
-    if(x <= l && r <= y) return node ? node->val : Monoid::id();
-    if(r < x || y < l) return Monoid::id();
+    if(!node) return M.id();
+    if(x <= l && r <= y) return node ? node->val : M.id();
+    if(r < x || y < l) return M.id();
     int64_t m = (l + r) >> 1;
-    return Monoid::op(get_aux(node->left, l, m, x, y), get_aux(node->right, m, r, x, y));
+    return M.op(get_aux(node->left, l, m, x, y), get_aux(node->right, m, r, x, y));
   }
 
 public:
@@ -140,7 +141,7 @@ public:
     depth(n > 1 ? 64-__builtin_clzll(n-1) + 1 : 1),
     size(1LL << depth)
   {
-    root = new Node(Monoid::id());
+    root = new Node(M.id());
   }
 
   void update(int64_t i, const value_type &x){
@@ -163,8 +164,8 @@ public:
 template <typename T>
 struct SumMonoid{
   using value_type = T;
-  static value_type id(){return 0;}
-  static value_type op(value_type a, value_type b){return a + b;}
+  value_type id() const {return 0;}
+  value_type op(value_type a, value_type b) const {return a + b;}
 };
 #line 3 "Mylib/IO/input_tuples.cpp"
 #include <vector>

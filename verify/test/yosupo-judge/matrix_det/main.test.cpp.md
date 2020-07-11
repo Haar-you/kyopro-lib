@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/matrix_det/main.test.cpp
+# :x: test/yosupo-judge/matrix_det/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f56272346ebd60cefe0da1df8f0209d6">test/yosupo-judge/matrix_det</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/matrix_det/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-08 12:08:32+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/matrix_det">https://judge.yosupo.jp/problem/matrix_det</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/determinant.cpp.html">Determinant</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Square matrix</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/determinant.cpp.html">Determinant</a>
+* :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Square matrix</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -107,27 +107,27 @@ public:
     else val = n;
   }
   
-  inline constexpr auto operator+(const ModInt &a) const {return ModInt(val + a.val);}
-  inline constexpr auto operator-(const ModInt &a) const {return ModInt(val - a.val);}
-  inline constexpr auto operator*(const ModInt &a) const {return ModInt(val * a.val);}
-  inline constexpr auto operator/(const ModInt &a) const {return ModInt(val * a.inv().val);}
+  constexpr auto operator+(const ModInt &a) const {return ModInt(val + a.val);}
+  constexpr auto operator-(const ModInt &a) const {return ModInt(val - a.val);}
+  constexpr auto operator*(const ModInt &a) const {return ModInt(val * a.val);}
+  constexpr auto operator/(const ModInt &a) const {return ModInt(val * a.inv().val);}
   
-  inline constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
-  inline constexpr auto& operator+=(const ModInt &a){if((val += a.val) >= M) val -= M; return *this;}
-  inline constexpr auto& operator-=(const ModInt &a){if(val < a.val) val += M; val -= a.val; return *this;}
-  inline constexpr auto& operator*=(const ModInt &a){(val *= a.val) %= M; return *this;}
-  inline constexpr auto& operator/=(const ModInt &a){(val *= a.inv().val) %= M; return *this;}
+  constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
+  constexpr auto& operator+=(const ModInt &a){if((val += a.val) >= M) val -= M; return *this;}
+  constexpr auto& operator-=(const ModInt &a){if(val < a.val) val += M; val -= a.val; return *this;}
+  constexpr auto& operator*=(const ModInt &a){(val *= a.val) %= M; return *this;}
+  constexpr auto& operator/=(const ModInt &a){(val *= a.inv().val) %= M; return *this;}
  
-  inline constexpr bool operator==(const ModInt &a) const {return val == a.val;}
-  inline constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
+  constexpr bool operator==(const ModInt &a) const {return val == a.val;}
+  constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
  
-  inline constexpr auto& operator++(){*this += 1; return *this;}
-  inline constexpr auto& operator--(){*this -= 1; return *this;}
+  constexpr auto& operator++(){*this += 1; return *this;}
+  constexpr auto& operator--(){*this -= 1; return *this;}
  
-  inline constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
-  inline constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
+  constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
+  constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
  
-  inline constexpr static ModInt power(int64_t n, int64_t p){
+  constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
     
     int64_t ret = 1, e = n % M;
@@ -135,7 +135,7 @@ public:
     return ret;
   }
  
-  inline constexpr static ModInt inv(int64_t a){
+  constexpr static ModInt inv(int64_t a){
     int64_t b = M, u = 1, v = 0;
     
     while(b){
@@ -150,23 +150,23 @@ public:
     return u;
   }
  
-  inline constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
+  constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
   
-  inline constexpr auto power(int64_t p) const {return power(val, p);}
-  inline constexpr auto inv() const {return inv(val);}
+  constexpr auto power(int64_t p) const {return power(val, p);}
+  constexpr auto inv() const {return inv(val);}
  
-  friend inline constexpr auto operator-(const ModInt &a){return ModInt(-a.val);}
+  friend constexpr auto operator-(const ModInt &a){return ModInt(-a.val);}
  
-  friend inline constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
-  friend inline constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
-  friend inline constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
-  friend inline constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
+  friend constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
+  friend constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
+  friend constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
+  friend constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
  
   friend std::istream& operator>>(std::istream &s, ModInt<M> &a){s >> a.val; return s;}
   friend std::ostream& operator<<(std::ostream &s, const ModInt<M> &a){s << a.val; return s;}
 
   template <int N>
-  inline static auto div(){
+  static auto div(){
     static auto value = inv(N);
     return value;
   }
@@ -217,9 +217,9 @@ template <typename T, class Tag> struct SquareMatrix{
     return *this;
   }
 
-  inline const auto& operator[](size_t i) const {return matrix[i];}
-  inline auto& operator[](size_t i){return matrix[i];}
-  inline int size() const {return N;}
+  const auto& operator[](size_t i) const {return matrix[i];}
+  auto& operator[](size_t i){return matrix[i];}
+  int size() const {return N;}
   
   static auto make_unit(){
     SquareMatrix ret;

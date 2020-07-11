@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/1084/main.test.cpp
+# :x: test/yukicoder/1084/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f3418e7f5c6444b91848f405b9401880">test/yukicoder/1084</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/1084/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-24 11:07:08+09:00
+    - Last commit date: 2020-07-08 12:08:32+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/1084">https://yukicoder.me/problems/no/1084</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Imos/linear_imos_1d.cpp.html">1D Imos algorithm (Linear addition)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/Imos/linear_imos_1d.cpp.html">1D Imos algorithm (Linear addition)</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -164,27 +164,27 @@ public:
     else val = n;
   }
   
-  inline constexpr auto operator+(const ModInt &a) const {return ModInt(val + a.val);}
-  inline constexpr auto operator-(const ModInt &a) const {return ModInt(val - a.val);}
-  inline constexpr auto operator*(const ModInt &a) const {return ModInt(val * a.val);}
-  inline constexpr auto operator/(const ModInt &a) const {return ModInt(val * a.inv().val);}
+  constexpr auto operator+(const ModInt &a) const {return ModInt(val + a.val);}
+  constexpr auto operator-(const ModInt &a) const {return ModInt(val - a.val);}
+  constexpr auto operator*(const ModInt &a) const {return ModInt(val * a.val);}
+  constexpr auto operator/(const ModInt &a) const {return ModInt(val * a.inv().val);}
   
-  inline constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
-  inline constexpr auto& operator+=(const ModInt &a){if((val += a.val) >= M) val -= M; return *this;}
-  inline constexpr auto& operator-=(const ModInt &a){if(val < a.val) val += M; val -= a.val; return *this;}
-  inline constexpr auto& operator*=(const ModInt &a){(val *= a.val) %= M; return *this;}
-  inline constexpr auto& operator/=(const ModInt &a){(val *= a.inv().val) %= M; return *this;}
+  constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
+  constexpr auto& operator+=(const ModInt &a){if((val += a.val) >= M) val -= M; return *this;}
+  constexpr auto& operator-=(const ModInt &a){if(val < a.val) val += M; val -= a.val; return *this;}
+  constexpr auto& operator*=(const ModInt &a){(val *= a.val) %= M; return *this;}
+  constexpr auto& operator/=(const ModInt &a){(val *= a.inv().val) %= M; return *this;}
  
-  inline constexpr bool operator==(const ModInt &a) const {return val == a.val;}
-  inline constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
+  constexpr bool operator==(const ModInt &a) const {return val == a.val;}
+  constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
  
-  inline constexpr auto& operator++(){*this += 1; return *this;}
-  inline constexpr auto& operator--(){*this -= 1; return *this;}
+  constexpr auto& operator++(){*this += 1; return *this;}
+  constexpr auto& operator--(){*this -= 1; return *this;}
  
-  inline constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
-  inline constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
+  constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
+  constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
  
-  inline constexpr static ModInt power(int64_t n, int64_t p){
+  constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
     
     int64_t ret = 1, e = n % M;
@@ -192,7 +192,7 @@ public:
     return ret;
   }
  
-  inline constexpr static ModInt inv(int64_t a){
+  constexpr static ModInt inv(int64_t a){
     int64_t b = M, u = 1, v = 0;
     
     while(b){
@@ -207,23 +207,23 @@ public:
     return u;
   }
  
-  inline constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
+  constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
   
-  inline constexpr auto power(int64_t p) const {return power(val, p);}
-  inline constexpr auto inv() const {return inv(val);}
+  constexpr auto power(int64_t p) const {return power(val, p);}
+  constexpr auto inv() const {return inv(val);}
  
-  friend inline constexpr auto operator-(const ModInt &a){return ModInt(-a.val);}
+  friend constexpr auto operator-(const ModInt &a){return ModInt(-a.val);}
  
-  friend inline constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
-  friend inline constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
-  friend inline constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
-  friend inline constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
+  friend constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
+  friend constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
+  friend constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
+  friend constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
  
   friend std::istream& operator>>(std::istream &s, ModInt<M> &a){s >> a.val; return s;}
   friend std::ostream& operator<<(std::ostream &s, const ModInt<M> &a){s << a.val; return s;}
 
   template <int N>
-  inline static auto div(){
+  static auto div(){
     static auto value = inv(N);
     return value;
   }
@@ -238,6 +238,8 @@ public:
  * @docs linear_imos_1d.md
  */
 template <typename T> struct LinearImos1D{
+  using value_type = T;
+  
   std::vector<T> vec_a, vec_a_end, vec_b, vec;
   int n;
 
@@ -263,7 +265,7 @@ template <typename T> struct LinearImos1D{
     for(int i = 0; i <= n; ++i) vec[i] = vec_a[i] + vec_b[i];
   }
 
-  inline const T operator[](size_t i) const {return vec[i];}
+  T operator[](size_t i) const {return vec[i];}
 };
 #line 10 "test/yukicoder/1084/main.test.cpp"
 

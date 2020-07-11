@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/658/main.test.cpp
+# :x: test/yukicoder/658/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a391646de6180927bf7c3f0bfac7f3df">test/yukicoder/658</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/658/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-07-08 12:08:32+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/658">https://yukicoder.me/problems/no/658</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DynamicProgramming/SpeedupTechnique/kitamasa_algorithm.cpp.html">Kitamasa algorithm</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :x: <a href="../../../../library/Mylib/DynamicProgramming/SpeedupTechnique/kitamasa_algorithm.cpp.html">Kitamasa algorithm</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -102,27 +102,27 @@ public:
     else val = n;
   }
   
-  inline constexpr auto operator+(const ModInt &a) const {return ModInt(val + a.val);}
-  inline constexpr auto operator-(const ModInt &a) const {return ModInt(val - a.val);}
-  inline constexpr auto operator*(const ModInt &a) const {return ModInt(val * a.val);}
-  inline constexpr auto operator/(const ModInt &a) const {return ModInt(val * a.inv().val);}
+  constexpr auto operator+(const ModInt &a) const {return ModInt(val + a.val);}
+  constexpr auto operator-(const ModInt &a) const {return ModInt(val - a.val);}
+  constexpr auto operator*(const ModInt &a) const {return ModInt(val * a.val);}
+  constexpr auto operator/(const ModInt &a) const {return ModInt(val * a.inv().val);}
   
-  inline constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
-  inline constexpr auto& operator+=(const ModInt &a){if((val += a.val) >= M) val -= M; return *this;}
-  inline constexpr auto& operator-=(const ModInt &a){if(val < a.val) val += M; val -= a.val; return *this;}
-  inline constexpr auto& operator*=(const ModInt &a){(val *= a.val) %= M; return *this;}
-  inline constexpr auto& operator/=(const ModInt &a){(val *= a.inv().val) %= M; return *this;}
+  constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
+  constexpr auto& operator+=(const ModInt &a){if((val += a.val) >= M) val -= M; return *this;}
+  constexpr auto& operator-=(const ModInt &a){if(val < a.val) val += M; val -= a.val; return *this;}
+  constexpr auto& operator*=(const ModInt &a){(val *= a.val) %= M; return *this;}
+  constexpr auto& operator/=(const ModInt &a){(val *= a.inv().val) %= M; return *this;}
  
-  inline constexpr bool operator==(const ModInt &a) const {return val == a.val;}
-  inline constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
+  constexpr bool operator==(const ModInt &a) const {return val == a.val;}
+  constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
  
-  inline constexpr auto& operator++(){*this += 1; return *this;}
-  inline constexpr auto& operator--(){*this -= 1; return *this;}
+  constexpr auto& operator++(){*this += 1; return *this;}
+  constexpr auto& operator--(){*this -= 1; return *this;}
  
-  inline constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
-  inline constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
+  constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
+  constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
  
-  inline constexpr static ModInt power(int64_t n, int64_t p){
+  constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
     
     int64_t ret = 1, e = n % M;
@@ -130,7 +130,7 @@ public:
     return ret;
   }
  
-  inline constexpr static ModInt inv(int64_t a){
+  constexpr static ModInt inv(int64_t a){
     int64_t b = M, u = 1, v = 0;
     
     while(b){
@@ -145,23 +145,23 @@ public:
     return u;
   }
  
-  inline constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
+  constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
   
-  inline constexpr auto power(int64_t p) const {return power(val, p);}
-  inline constexpr auto inv() const {return inv(val);}
+  constexpr auto power(int64_t p) const {return power(val, p);}
+  constexpr auto inv() const {return inv(val);}
  
-  friend inline constexpr auto operator-(const ModInt &a){return ModInt(-a.val);}
+  friend constexpr auto operator-(const ModInt &a){return ModInt(-a.val);}
  
-  friend inline constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
-  friend inline constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
-  friend inline constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
-  friend inline constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
+  friend constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
+  friend constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
+  friend constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
+  friend constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
  
   friend std::istream& operator>>(std::istream &s, ModInt<M> &a){s >> a.val; return s;}
   friend std::ostream& operator<<(std::ostream &s, const ModInt<M> &a){s << a.val; return s;}
 
   template <int N>
-  inline static auto div(){
+  static auto div(){
     static auto value = inv(N);
     return value;
   }
@@ -183,7 +183,7 @@ template <typename T> struct KitamasaAlgorithm{
   KitamasaAlgorithm(int size, const std::vector<T> &initial_values, const std::vector<T> &coeff):
     size(size), initial_values(initial_values), coeff(coeff){}
 
-  inline std::vector<T> inc(const std::vector<T> &a) const {
+  std::vector<T> inc(const std::vector<T> &a) const {
     std::vector<T> ret(size);
 
     for(int i = 0; i < size; ++i) ret[i] += a[size-1] * coeff[i];
@@ -192,7 +192,7 @@ template <typename T> struct KitamasaAlgorithm{
     return ret;
   }
   
-  inline std::vector<T> dbl(const std::vector<T> &a) const {
+  std::vector<T> dbl(const std::vector<T> &a) const {
     std::vector<T> ret(size), b(a);
     
     for(int j = 0; j < size; ++j){
@@ -206,13 +206,13 @@ template <typename T> struct KitamasaAlgorithm{
     return ret;
   }
   
-  inline T calc(const std::vector<T> &v) const {
+  T calc(const std::vector<T> &v) const {
     T ret = 0;
     for(int i = 0; i < size; ++i) ret += v[i] * initial_values[i];
     return ret;
   }
 
-  inline std::vector<T> get(int64_t index) const {
+  std::vector<T> get(int64_t index) const {
     std::vector<T> ret(size);
     ret[0] = 1;
 
@@ -229,7 +229,7 @@ template <typename T> struct KitamasaAlgorithm{
     return ret;
   }
 
-  inline T operator[](int64_t index) const {
+  T operator[](int64_t index) const {
     if(index < size) return initial_values[index];
     return calc(get(index));
   }

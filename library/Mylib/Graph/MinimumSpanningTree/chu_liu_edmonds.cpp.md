@@ -57,8 +57,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
-* :heavy_check_mark: <a href="../graph_template.cpp.html">Graph template</a>
+* :question: <a href="../GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
+* :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Verified with

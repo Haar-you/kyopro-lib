@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Persistent union-find
+# :x: Persistent union-find
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3ff74e8366c88d06b530f361450b1117">Mylib/DataStructure/UnionFind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/UnionFind/persistent_unionfind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-06 22:54:09+09:00
 
 
 
@@ -47,12 +47,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../Array/persistent_array.cpp.html">Persistent array</a>
+* :x: <a href="../Array/persistent_array.cpp.html">Persistent array</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/persistent_unionfind/main.test.cpp.html">test/yosupo-judge/persistent_unionfind/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/persistent_unionfind/main.test.cpp.html">test/yosupo-judge/persistent_unionfind/main.test.cpp</a>
 
 
 ## Code
@@ -77,22 +77,22 @@ public:
   PersistentUnionFind(){}
   PersistentUnionFind(int n): par(PersistentArray<int>(std::vector<int>(n, -1))){}
   
-  int get_root(int i) const {
+  int root_of(int i) const {
     int p = par.get(i);
     if(p < 0) return i;
-    return get_root(p);
+    return root_of(p);
   }
   
   bool is_same(int i, int j) const {
-    return get_root(i) == get_root(j);
+    return root_of(i) == root_of(j);
   }
 
-  int size(int i) const {
-    return -par.get(get_root(i));
+  int size_of(int i) const {
+    return -par.get(root_of(i));
   }
   
   PersistentUnionFind merge(int i, int j) const {
-    int ri = get_root(i), rj = get_root(j);
+    int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return *this;
 
     int size_i = -par.get(ri);
@@ -278,22 +278,22 @@ public:
   PersistentUnionFind(){}
   PersistentUnionFind(int n): par(PersistentArray<int>(std::vector<int>(n, -1))){}
   
-  int get_root(int i) const {
+  int root_of(int i) const {
     int p = par.get(i);
     if(p < 0) return i;
-    return get_root(p);
+    return root_of(p);
   }
   
   bool is_same(int i, int j) const {
-    return get_root(i) == get_root(j);
+    return root_of(i) == root_of(j);
   }
 
-  int size(int i) const {
-    return -par.get(get_root(i));
+  int size_of(int i) const {
+    return -par.get(root_of(i));
   }
   
   PersistentUnionFind merge(int i, int j) const {
-    int ri = get_root(i), rj = get_root(j);
+    int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return *this;
 
     int size_i = -par.get(ri);

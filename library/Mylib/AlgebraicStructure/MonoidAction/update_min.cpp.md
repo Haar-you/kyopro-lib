@@ -25,21 +25,15 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/AlgebraicStructure/MonoidAction/update_min.cpp
+# :heavy_check_mark: Range update / Range min
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/update_min.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
-
-
-## Depends on
-
-* :heavy_check_mark: <a href="../Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
-* :heavy_check_mark: <a href="../Monoid/update.cpp.html">Mylib/AlgebraicStructure/Monoid/update.cpp</a>
 
 
 ## Verified with
@@ -53,26 +47,28 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/update.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/min.cpp"
+#include <optional>
 
 /**
+ * @title Range update / Range min
  * @docs update_min.md
  */
 template <typename T, typename U>
 struct UpdateMin{
-  using monoid_get = MinMonoid<T>;
-  using monoid_update = UpdateMonoid<U>;
-  using value_type_get = typename monoid_get::value_type;
-  using value_type_update = typename monoid_update::value_type;
+  using value_type_get = std::optional<T>;
+  using value_type_update = std::optional<U>;
 
-  static value_type_get id_get(){return monoid_get::id();}
-  static value_type_update id_update(){return monoid_update::id();}
+  value_type_get id_get() const {return {};}
+  value_type_update id_update() const {return {};}
 
-  static value_type_get op_get(value_type_get a, value_type_get b){return monoid_get::op(a, b);}
-  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
+  value_type_get op_get(value_type_get a, value_type_get b) const {
+    if(not a) return b;
+    if(not b) return a;
+    return {std::min(*a, *b)};
+  }
+  value_type_update op_update(value_type_update a, value_type_update b) const {return (a ? a : b);}
 
-  static value_type_get op(value_type_get a, value_type_update b, int){
+  value_type_get op(value_type_get a, value_type_update b, int) const {
     return b ? *b : a;
   }
 };
@@ -83,55 +79,29 @@ struct UpdateMin{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/update.cpp"
+#line 2 "Mylib/AlgebraicStructure/MonoidAction/update_min.cpp"
 #include <optional>
 
 /**
- * @docs update.md
- */
-template <typename T>
-struct UpdateMonoid{
-  using value_type = std::optional<T>;
-  static value_type id(){return std::nullopt;}
-  static value_type op(const value_type &a, const value_type &b){return (a ? a : b);}
-};
-#line 2 "Mylib/AlgebraicStructure/Monoid/min.cpp"
-#include <algorithm>
-#include <optional>
-
-/**
- * @docs min.md
- */
-template <typename T>
-struct MinMonoid{
-  using value_type = std::optional<T>;
-  
-  static value_type id(){return {};}
-  static value_type op(const value_type &a, const value_type &b){
-    if(not a) return b;
-    if(not b) return a;
-    return {std::min(*a, *b)};
-  }
-};
-#line 4 "Mylib/AlgebraicStructure/MonoidAction/update_min.cpp"
-
-/**
+ * @title Range update / Range min
  * @docs update_min.md
  */
 template <typename T, typename U>
 struct UpdateMin{
-  using monoid_get = MinMonoid<T>;
-  using monoid_update = UpdateMonoid<U>;
-  using value_type_get = typename monoid_get::value_type;
-  using value_type_update = typename monoid_update::value_type;
+  using value_type_get = std::optional<T>;
+  using value_type_update = std::optional<U>;
 
-  static value_type_get id_get(){return monoid_get::id();}
-  static value_type_update id_update(){return monoid_update::id();}
+  value_type_get id_get() const {return {};}
+  value_type_update id_update() const {return {};}
 
-  static value_type_get op_get(value_type_get a, value_type_get b){return monoid_get::op(a, b);}
-  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
+  value_type_get op_get(value_type_get a, value_type_get b) const {
+    if(not a) return b;
+    if(not b) return a;
+    return {std::min(*a, *b)};
+  }
+  value_type_update op_update(value_type_update a, value_type_update b) const {return (a ? a : b);}
 
-  static value_type_get op(value_type_get a, value_type_update b, int){
+  value_type_get op(value_type_get a, value_type_update b, int) const {
     return b ? *b : a;
   }
 };

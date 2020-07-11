@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3137e84ecea04d2bbca689ed3c72bc37">Mylib/Parser</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Parser/parser.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-08 12:08:32+09:00
 
 
 
@@ -65,13 +65,13 @@ struct Parser{
   Parser(){}
   Parser(const std::string &s): cur(s.cbegin()), first(s.cbegin()), last(s.cend()){}
   
-  inline char peek() const {return *cur;}
+  char peek() const {return *cur;}
   
-  inline bool check(char c) const {
+  bool check(char c) const {
     return *cur == c;
   }
   
-  inline bool check(const std::string &s) const {
+  bool check(const std::string &s) const {
     state temp = cur;
     for(auto c : s){
       if(c != *temp) return false;
@@ -80,16 +80,16 @@ struct Parser{
     return true;
   }
   
-  inline void ignore(char c){
+  void ignore(char c){
     assert(*cur == c);
     ++cur;
   }
   
-  inline void ignore(){
+  void ignore(){
     ++cur;
   }
   
-  inline void ignore(const std::string &s){
+  void ignore(const std::string &s){
     for(auto c : s){
       assert(*cur == c);
       ++cur;
@@ -97,33 +97,33 @@ struct Parser{
   }
   
   template <class Checker>
-  inline void ignore_if(const Checker &f){
+  void ignore_if(const Checker &f){
     assert(f(*cur));
     ++cur;
   }
 
-  inline bool check_and_ignore(char c){
+  bool check_and_ignore(char c){
     if(*cur != c) return false;
     ++cur;
     return true;
   }
 
-  inline bool end() const {return cur == last;}
-  inline bool digit() const {return isdigit(*cur);}
-  inline bool alpha() const {return isalpha(*cur);}
-  inline bool lower() const {return islower(*cur);}
-  inline bool upper() const {return isupper(*cur);}
+  bool end() const {return cur == last;}
+  bool digit() const {return isdigit(*cur);}
+  bool alpha() const {return isalpha(*cur);}
+  bool lower() const {return islower(*cur);}
+  bool upper() const {return isupper(*cur);}
     
-  inline char get_char(){
+  char get_char(){
     return *(cur++);
   }
   
-  inline int get_digit(){
+  int get_digit(){
     return (int)(*(cur++)-'0');
   }
   
   template <typename Checker>
-  inline auto get_string(const Checker &f){
+  auto get_string(const Checker &f){
     std::string ret;
     while(f(peek())){
       ret += peek();
@@ -132,7 +132,7 @@ struct Parser{
     return ret;
   }
   
-  inline auto get_string_alpha(){
+  auto get_string_alpha(){
     std::string ret;
     while(isalpha(*cur)){
       ret += *cur;
@@ -141,7 +141,7 @@ struct Parser{
     return ret;
   }
   
-  inline auto get_string_alnum(){
+  auto get_string_alnum(){
     std::string ret;
     while(isalnum(*cur)){
       ret += *cur;
@@ -151,7 +151,7 @@ struct Parser{
   }
   
   template <typename T>
-  inline T get_number(){
+  T get_number(){
     T ret = get_digit();
     while(digit()){
       (ret *= 10) += (T)(get_digit());
@@ -183,13 +183,13 @@ struct Parser{
   Parser(){}
   Parser(const std::string &s): cur(s.cbegin()), first(s.cbegin()), last(s.cend()){}
   
-  inline char peek() const {return *cur;}
+  char peek() const {return *cur;}
   
-  inline bool check(char c) const {
+  bool check(char c) const {
     return *cur == c;
   }
   
-  inline bool check(const std::string &s) const {
+  bool check(const std::string &s) const {
     state temp = cur;
     for(auto c : s){
       if(c != *temp) return false;
@@ -198,16 +198,16 @@ struct Parser{
     return true;
   }
   
-  inline void ignore(char c){
+  void ignore(char c){
     assert(*cur == c);
     ++cur;
   }
   
-  inline void ignore(){
+  void ignore(){
     ++cur;
   }
   
-  inline void ignore(const std::string &s){
+  void ignore(const std::string &s){
     for(auto c : s){
       assert(*cur == c);
       ++cur;
@@ -215,33 +215,33 @@ struct Parser{
   }
   
   template <class Checker>
-  inline void ignore_if(const Checker &f){
+  void ignore_if(const Checker &f){
     assert(f(*cur));
     ++cur;
   }
 
-  inline bool check_and_ignore(char c){
+  bool check_and_ignore(char c){
     if(*cur != c) return false;
     ++cur;
     return true;
   }
 
-  inline bool end() const {return cur == last;}
-  inline bool digit() const {return isdigit(*cur);}
-  inline bool alpha() const {return isalpha(*cur);}
-  inline bool lower() const {return islower(*cur);}
-  inline bool upper() const {return isupper(*cur);}
+  bool end() const {return cur == last;}
+  bool digit() const {return isdigit(*cur);}
+  bool alpha() const {return isalpha(*cur);}
+  bool lower() const {return islower(*cur);}
+  bool upper() const {return isupper(*cur);}
     
-  inline char get_char(){
+  char get_char(){
     return *(cur++);
   }
   
-  inline int get_digit(){
+  int get_digit(){
     return (int)(*(cur++)-'0');
   }
   
   template <typename Checker>
-  inline auto get_string(const Checker &f){
+  auto get_string(const Checker &f){
     std::string ret;
     while(f(peek())){
       ret += peek();
@@ -250,7 +250,7 @@ struct Parser{
     return ret;
   }
   
-  inline auto get_string_alpha(){
+  auto get_string_alpha(){
     std::string ret;
     while(isalpha(*cur)){
       ret += *cur;
@@ -259,7 +259,7 @@ struct Parser{
     return ret;
   }
   
-  inline auto get_string_alnum(){
+  auto get_string_alnum(){
     std::string ret;
     while(isalnum(*cur)){
       ret += *cur;
@@ -269,7 +269,7 @@ struct Parser{
   }
   
   template <typename T>
-  inline T get_number(){
+  T get_number(){
     T ret = get_digit();
     while(digit()){
       (ret *= 10) += (T)(get_digit());

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Persistent segment tree
+# :x: Persistent segment tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 
@@ -71,7 +71,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp</a>
 
 
 ## Code
@@ -89,6 +89,7 @@ layout: default
 template <typename Monoid>
 class PersistentSegmentTree{
   using value_type = typename Monoid::value_type;
+  constexpr static Monoid M = Monoid();
   
   struct node{
     value_type value;
@@ -103,13 +104,13 @@ class PersistentSegmentTree{
   
   node* init(node *t, const std::vector<value_type> &init_list, int d, int &pos){
     if(d == depth){
-      t = new node(pos < (int)init_list.size() ? init_list[pos] : Monoid::id());
+      t = new node(pos < (int)init_list.size() ? init_list[pos] : M.id());
       ++pos;
     }else{
-      t = new node(Monoid::id());
+      t = new node(M.id());
       t->left = init(t->left, init_list, d+1, pos);
       t->right = init(t->right, init_list, d+1, pos);
-      t->value = Monoid::op(t->left->value, t->right->value);
+      t->value = M.op(t->left->value, t->right->value);
     }
     return t;
   }
@@ -122,7 +123,7 @@ public:
     root = init(root, init_list, 1, pos);
   }
   
-  PersistentSegmentTree(int size, const value_type &value = Monoid::id()){
+  PersistentSegmentTree(int size, const value_type &value = M.id()){
     depth = size == 1 ? 1 : 32 - __builtin_clz(size-1) + 1;
     int pos = 0;
     root = init(root, std::vector<value_type>(size, value), 1, pos);
@@ -139,7 +140,7 @@ protected:
       auto lp = update(t->left, l, m, pos, val);
       auto rp = update(t->right, m, r, pos, val);
 
-      node *s = new node(Monoid::op(lp->value, rp->value));
+      node *s = new node(M.op(lp->value, rp->value));
 
       s->left = lp;
       s->right = rp;
@@ -157,9 +158,9 @@ public:
 protected:
   value_type get(node *t, int i, int j, int l, int r) const {
     if(i <= l and r <= j) return t->value;
-    if(r <= i or j <= l) return Monoid::id();
+    if(r <= i or j <= l) return M.id();
     const int m = (l + r) >> 1;
-    return Monoid::op(get(t->left, i, j, l, m), get(t->right, i, j, m, r));
+    return M.op(get(t->left, i, j, l, m), get(t->right, i, j, m, r));
   }
 
 public:
@@ -188,6 +189,7 @@ public:
 template <typename Monoid>
 class PersistentSegmentTree{
   using value_type = typename Monoid::value_type;
+  constexpr static Monoid M = Monoid();
   
   struct node{
     value_type value;
@@ -202,13 +204,13 @@ class PersistentSegmentTree{
   
   node* init(node *t, const std::vector<value_type> &init_list, int d, int &pos){
     if(d == depth){
-      t = new node(pos < (int)init_list.size() ? init_list[pos] : Monoid::id());
+      t = new node(pos < (int)init_list.size() ? init_list[pos] : M.id());
       ++pos;
     }else{
-      t = new node(Monoid::id());
+      t = new node(M.id());
       t->left = init(t->left, init_list, d+1, pos);
       t->right = init(t->right, init_list, d+1, pos);
-      t->value = Monoid::op(t->left->value, t->right->value);
+      t->value = M.op(t->left->value, t->right->value);
     }
     return t;
   }
@@ -221,7 +223,7 @@ public:
     root = init(root, init_list, 1, pos);
   }
   
-  PersistentSegmentTree(int size, const value_type &value = Monoid::id()){
+  PersistentSegmentTree(int size, const value_type &value = M.id()){
     depth = size == 1 ? 1 : 32 - __builtin_clz(size-1) + 1;
     int pos = 0;
     root = init(root, std::vector<value_type>(size, value), 1, pos);
@@ -238,7 +240,7 @@ protected:
       auto lp = update(t->left, l, m, pos, val);
       auto rp = update(t->right, m, r, pos, val);
 
-      node *s = new node(Monoid::op(lp->value, rp->value));
+      node *s = new node(M.op(lp->value, rp->value));
 
       s->left = lp;
       s->right = rp;
@@ -256,9 +258,9 @@ public:
 protected:
   value_type get(node *t, int i, int j, int l, int r) const {
     if(i <= l and r <= j) return t->value;
-    if(r <= i or j <= l) return Monoid::id();
+    if(r <= i or j <= l) return M.id();
     const int m = (l + r) >> 1;
-    return Monoid::op(get(t->left, i, j, l, m), get(t->right, i, j, m, r));
+    return M.op(get(t->left, i, j, l, m), get(t->right, i, j, m, r));
   }
 
 public:

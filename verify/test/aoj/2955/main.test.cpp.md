@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#72c367391a592066d7074720e48b0693">test/aoj/2955</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2955/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-06 22:54:09+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2955">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2955</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp.html">Subset sum problem (With quantity limitations)</a>
 
 
@@ -72,13 +72,13 @@ int main(){
   
   std::map<int, int> cycles;
   for(int i = 0; i < N; ++i){
-    if(i == uf.get_root(i)) cycles[uf.get_size(i)] += 1;
+    if(i == uf.root_of(i)) cycles[uf.size_of(i)] += 1;
   }
   
   std::vector<int> a,m;
-  for(auto &kv : cycles){
-    a.push_back(kv.first);
-    m.push_back(kv.second);
+  for(auto &[k, v] : cycles){
+    a.push_back(k);
+    m.push_back(v);
   }
   
   bool ans = subset_sum_limited(a.size(), R, a, m)[R];
@@ -138,19 +138,20 @@ class UnionFind{
   int count;
 
 public:
+  UnionFind(){}
   UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
     std::iota(parent.begin(), parent.end(), 0);
   }
   
-  inline int get_root(int i){
+  int root_of(int i){
     if(parent[i] == i) return i;
-    else return parent[i] = get_root(parent[i]);
+    else return parent[i] = root_of(parent[i]);
   }
   
-  inline bool is_same(int i, int j){return get_root(i) == get_root(j);}
+  bool is_same(int i, int j){return root_of(i) == root_of(j);}
 
-  inline int merge(int i, int j){
-    int ri = get_root(i), rj = get_root(j);
+  int merge(int i, int j){
+    int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return ri;
     else{
       --count;
@@ -167,9 +168,9 @@ public:
     }
   }
 
-  inline int get_size(int i){return size[get_root(i)];}
+  int size_of(int i){return size[root_of(i)];}
 
-  inline int count_group(){return count;}
+  int count_group(){return count;}
 };
 #line 4 "Mylib/IO/input_vector.cpp"
 
@@ -205,13 +206,13 @@ int main(){
   
   std::map<int, int> cycles;
   for(int i = 0; i < N; ++i){
-    if(i == uf.get_root(i)) cycles[uf.get_size(i)] += 1;
+    if(i == uf.root_of(i)) cycles[uf.size_of(i)] += 1;
   }
   
   std::vector<int> a,m;
-  for(auto &kv : cycles){
-    a.push_back(kv.first);
-    m.push_back(kv.second);
+  for(auto &[k, v] : cycles){
+    a.push_back(k);
+    m.push_back(v);
   }
   
   bool ans = subset_sum_limited(a.size(), R, a, m)[R];

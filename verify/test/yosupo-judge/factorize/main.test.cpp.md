@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/factorize/main.test.cpp
+# :x: test/yosupo-judge/factorize/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#503c2e18c5ca98964c4b89d4addd4577">test/yosupo-judge/factorize</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/factorize/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-02 06:47:10+09:00
+    - Last commit date: 2020-07-08 12:08:32+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/factorize">https://judge.yosupo.jp/problem/factorize</a>
@@ -39,12 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/int128.cpp.html">128-bit int</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/miller_rabin.cpp.html">Primality test (Miller-Rabin algorithm)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/pollard_rho.cpp.html">Prime factorization (Pollard's rho algorithm)</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :x: <a href="../../../../library/Mylib/Misc/int128.cpp.html">128-bit int</a>
+* :x: <a href="../../../../library/Mylib/Number/Prime/miller_rabin.cpp.html">Primality test (Miller-Rabin algorithm)</a>
+* :x: <a href="../../../../library/Mylib/Number/Prime/pollard_rho.cpp.html">Prime factorization (Pollard's rho algorithm)</a>
 
 
 ## Code
@@ -206,7 +206,7 @@ using int128_t = boost::multiprecision::int128_t;
  * @docs miller_rabin.md
  */
 class MillerRabin{
-  static inline uint128_t power(uint128_t a, uint128_t b, uint128_t p){
+  static uint128_t power(uint128_t a, uint128_t b, uint128_t p){
     uint128_t ret = 1;
 
     while(b > 0){
@@ -218,7 +218,7 @@ class MillerRabin{
     return ret;
   }
   
-  static inline bool is_composite(uint64_t a, uint64_t p, int s, uint64_t d){
+  static bool is_composite(uint64_t a, uint64_t p, int s, uint64_t d){
     uint128_t x = power(a, d, p);
 
     if(x == 1) return false;
@@ -232,7 +232,7 @@ class MillerRabin{
   }
 
 public:
-  static inline bool is_prime(uint64_t n){
+  static bool is_prime(uint64_t n){
     if(n <= 1) return false;
     if(n == 2) return true;
     if(n % 2 == 0) return false;

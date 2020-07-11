@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Bernoulli number
+# :x: Bernoulli number
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -49,12 +49,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="factorial_table.cpp.html">Factorial table</a>
+* :question: <a href="factorial_table.cpp.html">Factorial table</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/665/main.test.cpp.html">test/yukicoder/665/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/665/main.test.cpp.html">test/yukicoder/665/main.test.cpp</a>
 
 
 ## Code

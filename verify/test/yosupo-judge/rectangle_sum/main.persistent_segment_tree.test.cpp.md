@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
+# :x: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9102555d140c20ca7196c4db584ea7b6">test/yosupo-judge/rectangle_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/rectangle_sum">https://judge.yosupo.jp/problem/rectangle_sum</a>
@@ -39,13 +39,13 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp.html">Persistent segment tree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/compressor.cpp.html">Compressor</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/sort_simultaneously.cpp.html">Mylib/Misc/sort_simultaneously.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp.html">Persistent segment tree</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/Misc/compressor.cpp.html">Compressor</a>
+* :question: <a href="../../../../library/Mylib/Misc/sort_simultaneously.cpp.html">Mylib/Misc/sort_simultaneously.cpp</a>
 
 
 ## Code
@@ -159,6 +159,7 @@ void sort_simultaneously(const Compare &compare, int N, Args&... args){
 template <typename Monoid>
 class PersistentSegmentTree{
   using value_type = typename Monoid::value_type;
+  constexpr static Monoid M = Monoid();
   
   struct node{
     value_type value;
@@ -173,13 +174,13 @@ class PersistentSegmentTree{
   
   node* init(node *t, const std::vector<value_type> &init_list, int d, int &pos){
     if(d == depth){
-      t = new node(pos < (int)init_list.size() ? init_list[pos] : Monoid::id());
+      t = new node(pos < (int)init_list.size() ? init_list[pos] : M.id());
       ++pos;
     }else{
-      t = new node(Monoid::id());
+      t = new node(M.id());
       t->left = init(t->left, init_list, d+1, pos);
       t->right = init(t->right, init_list, d+1, pos);
-      t->value = Monoid::op(t->left->value, t->right->value);
+      t->value = M.op(t->left->value, t->right->value);
     }
     return t;
   }
@@ -192,7 +193,7 @@ public:
     root = init(root, init_list, 1, pos);
   }
   
-  PersistentSegmentTree(int size, const value_type &value = Monoid::id()){
+  PersistentSegmentTree(int size, const value_type &value = M.id()){
     depth = size == 1 ? 1 : 32 - __builtin_clz(size-1) + 1;
     int pos = 0;
     root = init(root, std::vector<value_type>(size, value), 1, pos);
@@ -209,7 +210,7 @@ protected:
       auto lp = update(t->left, l, m, pos, val);
       auto rp = update(t->right, m, r, pos, val);
 
-      node *s = new node(Monoid::op(lp->value, rp->value));
+      node *s = new node(M.op(lp->value, rp->value));
 
       s->left = lp;
       s->right = rp;
@@ -227,9 +228,9 @@ public:
 protected:
   value_type get(node *t, int i, int j, int l, int r) const {
     if(i <= l and r <= j) return t->value;
-    if(r <= i or j <= l) return Monoid::id();
+    if(r <= i or j <= l) return M.id();
     const int m = (l + r) >> 1;
-    return Monoid::op(get(t->left, i, j, l, m), get(t->right, i, j, m, r));
+    return M.op(get(t->left, i, j, l, m), get(t->right, i, j, m, r));
   }
 
 public:
@@ -249,8 +250,8 @@ public:
 template <typename T>
 struct SumMonoid{
   using value_type = T;
-  static value_type id(){return 0;}
-  static value_type op(value_type a, value_type b){return a + b;}
+  value_type id() const {return 0;}
+  value_type op(value_type a, value_type b) const {return a + b;}
 };
 #line 4 "Mylib/Misc/compressor.cpp"
 

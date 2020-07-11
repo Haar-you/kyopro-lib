@@ -40,11 +40,11 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/bfs_shortest_path.cpp.html">BFS shortest path</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Grid/grid.cpp.html">Grid template</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Grid/grid_find.cpp.html">Enumerate points satisfying conditions</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Grid/grid_to_graph.cpp.html">Convert grid to graph</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code

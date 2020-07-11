@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Segment tree
+# :question: Segment tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 
@@ -66,8 +66,8 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="segment_tree_on_segment_tree.cpp.html">Segment tree (On segment tree)</a>
-* :heavy_check_mark: <a href="../../Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
+* :x: <a href="segment_tree_on_segment_tree.cpp.html">Segment tree (On segment tree)</a>
+* :x: <a href="../../Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
 
 
 ## Verified with
@@ -75,17 +75,17 @@ layout: default
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/3132/main.test.cpp.html">test/aoj/3132/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_A/main.test.cpp.html">test/aoj/DSL_2_A/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_B/main.test.cpp.html">test/aoj/DSL_2_B/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/point_add_rectangle_sum/main.test.cpp.html">test/yosupo-judge/point_add_rectangle_sum/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/510/main.test.cpp.html">test/yukicoder/510/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/776/main.test.cpp.html">test/yukicoder/776/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/875/main.test.cpp.html">test/yukicoder/875/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/point_add_rectangle_sum/main.test.cpp.html">test/yosupo-judge/point_add_rectangle_sum/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/510/main.test.cpp.html">test/yukicoder/510/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/776/main.test.cpp.html">test/yukicoder/776/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/875/main.test.cpp.html">test/yukicoder/875/main.test.cpp</a>
 
 
 ## Code
@@ -103,6 +103,7 @@ layout: default
 template <typename Monoid>
 class SegmentTree{
   using value_type = typename Monoid::value_type;
+  Monoid M;
   
   int depth, size, hsize;
   std::vector<value_type> data;
@@ -112,41 +113,41 @@ public:
   SegmentTree(int n):
     depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
     size(1 << depth), hsize(size / 2),
-    data(size, Monoid::id())
+    data(size, M.id())
   {}
 
-  inline auto operator[](int i) const {return at(i);}
-  inline auto at(int i) const {return data[hsize + i];}
+  auto operator[](int i) const {return at(i);}
+  auto at(int i) const {return data[hsize + i];}
   
-  inline auto get(int x, int y) const { // [x,y)
-    value_type ret_left = Monoid::id();
-    value_type ret_right = Monoid::id();
+  auto get(int x, int y) const { // [x,y)
+    value_type ret_left = M.id();
+    value_type ret_right = M.id();
     
     int l = x + hsize, r = y + hsize;
     while(l < r){
-      if(r & 1) ret_right = Monoid::op(data[--r], ret_right);
-      if(l & 1) ret_left = Monoid::op(ret_left, data[l++]);
+      if(r & 1) ret_right = M.op(data[--r], ret_right);
+      if(l & 1) ret_left = M.op(ret_left, data[l++]);
       l >>= 1, r >>= 1;
     }
     
-    return Monoid::op(ret_left, ret_right);
+    return M.op(ret_left, ret_right);
   }
 
-  inline void update(int i, const value_type &x){
+  void update(int i, const value_type &x){
     i += hsize;
     data[i] = x;
-    while(i > 1) i >>= 1, data[i] = Monoid::op(data[i << 1 | 0], data[i << 1 | 1]);
+    while(i > 1) i >>= 1, data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
-  inline void init_with_vector(const std::vector<T> &val){
-    data.assign(size, Monoid::id());
+  void init_with_vector(const std::vector<T> &val){
+    data.assign(size, M.id());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
-    for(int i = hsize-1; i >= 1; --i) data[i] = Monoid::op(data[i << 1 | 0], data[i << 1 | 1]);
+    for(int i = hsize-1; i >= 1; --i) data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
-  inline void init(const T &val){
+  void init(const T &val){
     init_with_vector(std::vector<value_type>(hsize, val));
   }  
 };
@@ -167,6 +168,7 @@ public:
 template <typename Monoid>
 class SegmentTree{
   using value_type = typename Monoid::value_type;
+  Monoid M;
   
   int depth, size, hsize;
   std::vector<value_type> data;
@@ -176,41 +178,41 @@ public:
   SegmentTree(int n):
     depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
     size(1 << depth), hsize(size / 2),
-    data(size, Monoid::id())
+    data(size, M.id())
   {}
 
-  inline auto operator[](int i) const {return at(i);}
-  inline auto at(int i) const {return data[hsize + i];}
+  auto operator[](int i) const {return at(i);}
+  auto at(int i) const {return data[hsize + i];}
   
-  inline auto get(int x, int y) const { // [x,y)
-    value_type ret_left = Monoid::id();
-    value_type ret_right = Monoid::id();
+  auto get(int x, int y) const { // [x,y)
+    value_type ret_left = M.id();
+    value_type ret_right = M.id();
     
     int l = x + hsize, r = y + hsize;
     while(l < r){
-      if(r & 1) ret_right = Monoid::op(data[--r], ret_right);
-      if(l & 1) ret_left = Monoid::op(ret_left, data[l++]);
+      if(r & 1) ret_right = M.op(data[--r], ret_right);
+      if(l & 1) ret_left = M.op(ret_left, data[l++]);
       l >>= 1, r >>= 1;
     }
     
-    return Monoid::op(ret_left, ret_right);
+    return M.op(ret_left, ret_right);
   }
 
-  inline void update(int i, const value_type &x){
+  void update(int i, const value_type &x){
     i += hsize;
     data[i] = x;
-    while(i > 1) i >>= 1, data[i] = Monoid::op(data[i << 1 | 0], data[i << 1 | 1]);
+    while(i > 1) i >>= 1, data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
-  inline void init_with_vector(const std::vector<T> &val){
-    data.assign(size, Monoid::id());
+  void init_with_vector(const std::vector<T> &val){
+    data.assign(size, M.id());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
-    for(int i = hsize-1; i >= 1; --i) data[i] = Monoid::op(data[i << 1 | 0], data[i << 1 | 1]);
+    for(int i = hsize-1; i >= 1; --i) data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
-  inline void init(const T &val){
+  void init(const T &val){
     init_with_vector(std::vector<value_type>(hsize, val));
   }  
 };

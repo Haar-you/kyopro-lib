@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#9f519a6857abe7364ea5fbe97ba369aa">Mylib/DataStructure/SparseTable</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SparseTable/disjoint_sparse_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 
@@ -68,6 +68,7 @@ layout: default
 template <typename Semigroup>
 class DisjointSparseTable{
   using value_type = typename Semigroup::value_type;
+  Semigroup S;
 
   int N;
   int logN;
@@ -82,12 +83,12 @@ class DisjointSparseTable{
 
     data[d][m] = A[m];
     for(int i = m + 1; i < r; ++i){
-      data[d][i] = Semigroup::op(data[d][i-1], A[i]);
+      data[d][i] = S.op(data[d][i-1], A[i]);
     }
 
     data[d][m-1] = A[m-1];
     for(int i = m - 2; i >= l; --i){
-      data[d][i] = Semigroup::op(data[d][i+1], A[i]);
+      data[d][i] = S.op(data[d][i+1], A[i]);
     }
 
     build(l, m, d-1);
@@ -113,7 +114,7 @@ public:
     if(l == r) return A[l];
 
     const int k = 31 - __builtin_clz(l ^ r);
-    return Semigroup::op(data[k][l], data[k][r]);
+    return S.op(data[k][l], data[k][r]);
   }
 };
 
@@ -135,6 +136,7 @@ public:
 template <typename Semigroup>
 class DisjointSparseTable{
   using value_type = typename Semigroup::value_type;
+  Semigroup S;
 
   int N;
   int logN;
@@ -149,12 +151,12 @@ class DisjointSparseTable{
 
     data[d][m] = A[m];
     for(int i = m + 1; i < r; ++i){
-      data[d][i] = Semigroup::op(data[d][i-1], A[i]);
+      data[d][i] = S.op(data[d][i-1], A[i]);
     }
 
     data[d][m-1] = A[m-1];
     for(int i = m - 2; i >= l; --i){
-      data[d][i] = Semigroup::op(data[d][i+1], A[i]);
+      data[d][i] = S.op(data[d][i+1], A[i]);
     }
 
     build(l, m, d-1);
@@ -180,7 +182,7 @@ public:
     if(l == r) return A[l];
 
     const int k = 31 - __builtin_clz(l ^ r);
-    return Semigroup::op(data[k][l], data[k][r]);
+    return S.op(data[k][l], data[k][r]);
   }
 };
 

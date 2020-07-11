@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/1099/main.test.cpp
+# :x: test/yukicoder/1099/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#58581601c69343767c8987de15d576e5">test/yukicoder/1099</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/1099/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/1099">https://yukicoder.me/problems/no/1099</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/add_square_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/add_square_sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">Lazy segment tree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/add_square_sum.cpp.html">Range add / Range square sum</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">Lazy segment tree</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -106,38 +106,39 @@ template <typename Monoid>
 class LazySegmentTree{
   using value_type_get = typename Monoid::value_type_get;
   using value_type_update = typename Monoid::value_type_update;
+  Monoid M;
   
   const int depth, size, hsize;
   std::vector<value_type_get> data;
   std::vector<value_type_update> lazy;
 
-  inline void propagate(int i){
-    if(lazy[i] == Monoid::id_update()) return;
+  void propagate(int i){
+    if(lazy[i] == M.id_update()) return;
     if(i < hsize){
-      lazy[i << 1 | 0] = Monoid::op_update(lazy[i], lazy[i << 1 | 0]);
-      lazy[i << 1 | 1] = Monoid::op_update(lazy[i], lazy[i << 1 | 1]);
+      lazy[i << 1 | 0] = M.op_update(lazy[i], lazy[i << 1 | 0]);
+      lazy[i << 1 | 1] = M.op_update(lazy[i], lazy[i << 1 | 1]);
     }
     int len = hsize >> (31 - __builtin_clz(i));
-    data[i] = Monoid::op(data[i], lazy[i], len);
-    lazy[i] = Monoid::id_update();
+    data[i] = M.op(data[i], lazy[i], len);
+    lazy[i] = M.id_update();
   }
 
-  inline value_type_get update_aux(int i, int l, int r, int s, int t, const value_type_update &x){
+  value_type_get update_aux(int i, int l, int r, int s, int t, const value_type_update &x){
     propagate(i);
     if(r <= s || t <= l) return data[i];
     else if(s <= l && r <= t){
-      lazy[i] = Monoid::op_update(x, lazy[i]);
+      lazy[i] = M.op_update(x, lazy[i]);
       propagate(i);
       return data[i];
     }
-    else return data[i] = Monoid::op_get(update_aux(i << 1 | 0, l, (l+r) / 2, s, t, x), update_aux(i << 1 | 1, (l+r) / 2, r, s, t, x));
+    else return data[i] = M.op_get(update_aux(i << 1 | 0, l, (l+r) / 2, s, t, x), update_aux(i << 1 | 1, (l+r) / 2, r, s, t, x));
   }
   
-  inline value_type_get get_aux(int i, int l, int r, int x, int y){
+  value_type_get get_aux(int i, int l, int r, int x, int y){
     propagate(i);
-    if(r <= x || y <= l) return Monoid::id_get();
+    if(r <= x || y <= l) return M.id_get();
     else if(x <= l && r <= y) return data[i];
-    else return Monoid::op_get(get_aux(i << 1 | 0, l, (l+r) / 2, x, y), get_aux(i << 1 | 1, (l+r) / 2, r, x, y));
+    else return M.op_get(get_aux(i << 1 | 0, l, (l+r) / 2, x, y), get_aux(i << 1 | 1, (l+r) / 2, r, x, y));
   }
 
 public:
@@ -146,32 +147,33 @@ public:
     depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
     size(1 << depth),
     hsize(size / 2),
-    data(size, Monoid::id_get()),
-    lazy(size, Monoid::id_update())
+    data(size, M.id_get()),
+    lazy(size, M.id_update())
   {}
 
-  inline void update(int l, int r, const value_type_update &x){update_aux(1, 0, hsize, l, r, x);}
-  inline void update_at(int i, const value_type_update &x){update(i, i+1, x);}
-  inline value_type_get get(int l, int r){return get_aux(1, 0, hsize, l, r);}
-  inline value_type_get at(int i){return get(i, i+1);}
+  void update(int l, int r, const value_type_update &x){update_aux(1, 0, hsize, l, r, x);}
+  void update_at(int i, const value_type_update &x){update(i, i+1, x);}
+  value_type_get get(int l, int r){return get_aux(1, 0, hsize, l, r);}
+  value_type_get at(int i){return get(i, i+1);}
 
   template <typename T>
-  inline void init(const T &val){
+  void init(const T &val){
     init_with_vector(std::vector<T>(hsize, val));
   }
 
   template <typename T>
-  inline void init_with_vector(const std::vector<T> &val){
-    data.assign(size, Monoid::id_get());
-    lazy.assign(size, Monoid::id_update());
+  void init_with_vector(const std::vector<T> &val){
+    data.assign(size, M.id_get());
+    lazy.assign(size, M.id_update());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
-    for(int i = hsize-1; i > 0; --i) data[i] = Monoid::op_get(data[i << 1 | 0], data[i << 1 | 1]);
+    for(int i = hsize-1; i > 0; --i) data[i] = M.op_get(data[i << 1 | 0], data[i << 1 | 1]);
   }
 };
 #line 2 "Mylib/AlgebraicStructure/MonoidAction/add_square_sum.cpp"
 #include <utility>
 
 /**
+ * @title Range add / Range square sum
  * @docs add_square_sum.cpp
  */
 template <typename T>
@@ -179,23 +181,23 @@ struct AddSquareSum{
   using value_type_get = std::pair<T, T>;
   using value_type_update = T;
 
-  static value_type_get id_get(){
+  value_type_get id_get() const {
     return std::make_pair(0, 0);
   }
 
-  static value_type_update id_update(){
+  value_type_update id_update() const {
     return 0;
   }
 
-  static value_type_get op_get(const value_type_get &a, const value_type_get &b){
+  value_type_get op_get(const value_type_get &a, const value_type_get &b) const {
     return std::make_pair(a.first + b.first, a.second + b.second);
   }
 
-  static value_type_update op_update(const value_type_update &a, const value_type_update &b){
+  value_type_update op_update(const value_type_update &a, const value_type_update &b) const {
     return a + b;
   }
   
-  static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
+  value_type_get op(const value_type_get &a, const value_type_update &b, int len) const {
     return std::make_pair(a.first + b * len, a.second + b * (2 * a.first + b * len));
   }
 };

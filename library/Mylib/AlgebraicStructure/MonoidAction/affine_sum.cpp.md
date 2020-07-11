@@ -25,26 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp
+# :x: Range affine / Range sum
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
-
-
-## Depends on
-
-* :heavy_check_mark: <a href="../Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
-* :heavy_check_mark: <a href="../Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
 
 
 ## Code
@@ -53,26 +47,24 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
+#include <utility>
 
 /**
+ * @title Range affine / Range sum
  * @docs affine_sum.md
  */
 template <typename T, typename U>
 struct AffineSum{
-  using monoid_get = SumMonoid<T>;
-  using monoid_update = AffineMonoid<U>;
-  using value_type_get = typename monoid_get::value_type;
-  using value_type_update = typename monoid_update::value_type;
+  using value_type_get = T;
+  using value_type_update = std::pair<U, U>;
 
-  static value_type_get id_get(){return monoid_get::id();}
-  static value_type_update id_update(){return monoid_update::id();}
+  value_type_get id_get() const {return 0;}
+  value_type_update id_update() const {return {1, 0};}
 
-  static value_type_get op_get(value_type_get a, value_type_get b){return monoid_get::op(a, b);}
-  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
+  value_type_get op_get(value_type_get a, value_type_get b) const {return a + b;}
+  value_type_update op_update(value_type_update a, value_type_update b) const {return {a.first * b.first, a.first * b.second + a.second};}
 
-  static value_type_get op(value_type_get a, value_type_update b, int len){
+  value_type_get op(value_type_get a, value_type_update b, int len) const {
     return b.first * a + b.second * len;
   }
 };
@@ -83,48 +75,25 @@ struct AffineSum{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/sum.cpp"
-
-/**
- * @docs sum.md
- */
-template <typename T>
-struct SumMonoid{
-  using value_type = T;
-  static value_type id(){return 0;}
-  static value_type op(value_type a, value_type b){return a + b;}
-};
-#line 2 "Mylib/AlgebraicStructure/Monoid/affine.cpp"
+#line 2 "Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp"
 #include <utility>
 
 /**
- * @docs affine.md
- */
-template <typename T>
-struct AffineMonoid{
-  using value_type = std::pair<T, T>;
-  static value_type id(){return std::make_pair(1, 0);}
-  static value_type op(const value_type &a, const value_type &b){return std::make_pair(a.first * b.first, a.first * b.second + a.second);}
-};
-#line 4 "Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp"
-
-/**
+ * @title Range affine / Range sum
  * @docs affine_sum.md
  */
 template <typename T, typename U>
 struct AffineSum{
-  using monoid_get = SumMonoid<T>;
-  using monoid_update = AffineMonoid<U>;
-  using value_type_get = typename monoid_get::value_type;
-  using value_type_update = typename monoid_update::value_type;
+  using value_type_get = T;
+  using value_type_update = std::pair<U, U>;
 
-  static value_type_get id_get(){return monoid_get::id();}
-  static value_type_update id_update(){return monoid_update::id();}
+  value_type_get id_get() const {return 0;}
+  value_type_update id_update() const {return {1, 0};}
 
-  static value_type_get op_get(value_type_get a, value_type_get b){return monoid_get::op(a, b);}
-  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
+  value_type_get op_get(value_type_get a, value_type_get b) const {return a + b;}
+  value_type_update op_update(value_type_update a, value_type_update b) const {return {a.first * b.first, a.first * b.second + a.second};}
 
-  static value_type_get op(value_type_get a, value_type_update b, int len){
+  value_type_get op(value_type_get a, value_type_update b, int len) const {
     return b.first * a + b.second * len;
   }
 };

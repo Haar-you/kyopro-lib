@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#3ff74e8366c88d06b530f361450b1117">Mylib/DataStructure/UnionFind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/UnionFind/partially_persistent_unionfind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-06 22:54:09+09:00
 
 
 
@@ -39,11 +39,11 @@ layout: default
 ## Operations
 
 - `PartiallyPersistentUnionFind(N)`
-- `get_root(int i, int t)`
+- `root_of(int i, int t)`
 	- 時刻`t`での`i`の属する連結成分のrootを返す。
 - `is_same(int u, int v, int t)`
 	- 時刻`t`での`u`と`v`が同じ連結成分に属するかを判定する。
-- `size(int u, int t)`
+- `size_of(int u, int t)`
 	- 時刻`t`での`u`が属する連結成分の大きさを返す。
 - `merge(int u, int v)`
 	- 最新の状態で`u`と`v`を連結する。
@@ -87,27 +87,27 @@ public:
     std::iota(par.begin(), par.end(), 0);
   }
   
-  int get_root(int i, int t){
+  int root_of(int i, int t){
     if(par[i] == i) return i;
 
     if(P[i].back().first == 0 || t < P[i].back().first) return i;
     else if(t == P[i].back().first) return P[i].back().second;
-    else return get_root(par[i],t);
+    return root_of(par[i],t);
   }
 
   bool is_same(int u, int v, int t){
-    return get_root(u,t) == get_root(v,t);
+    return root_of(u,t) == root_of(v,t);
   }
 
-  int size(int u, int t){
-    u = get_root(u,t);
-    auto it = std::prev(std::lower_bound(P[u].begin(), P[u].end(), std::make_pair(t+1,0)));
+  int size_of(int u, int t){
+    u = root_of(u,t);
+    auto it = std::prev(std::lower_bound(P[u].begin(), P[u].end(), std::make_pair(t + 1, 0)));
     return it->second;
   }
 
   void merge(int u, int v){
-    u = get_root(u,T);
-    v = get_root(v,T);
+    u = root_of(u,T);
+    v = root_of(v,T);
     ++T;
 
     if(u == v) return;
@@ -157,27 +157,27 @@ public:
     std::iota(par.begin(), par.end(), 0);
   }
   
-  int get_root(int i, int t){
+  int root_of(int i, int t){
     if(par[i] == i) return i;
 
     if(P[i].back().first == 0 || t < P[i].back().first) return i;
     else if(t == P[i].back().first) return P[i].back().second;
-    else return get_root(par[i],t);
+    return root_of(par[i],t);
   }
 
   bool is_same(int u, int v, int t){
-    return get_root(u,t) == get_root(v,t);
+    return root_of(u,t) == root_of(v,t);
   }
 
-  int size(int u, int t){
-    u = get_root(u,t);
-    auto it = std::prev(std::lower_bound(P[u].begin(), P[u].end(), std::make_pair(t+1,0)));
+  int size_of(int u, int t){
+    u = root_of(u,t);
+    auto it = std::prev(std::lower_bound(P[u].begin(), P[u].end(), std::make_pair(t + 1, 0)));
     return it->second;
   }
 
   void merge(int u, int v){
-    u = get_root(u,T);
-    v = get_root(v,T);
+    u = root_of(u,T);
+    v = root_of(v,T);
     ++T;
 
     if(u == v) return;

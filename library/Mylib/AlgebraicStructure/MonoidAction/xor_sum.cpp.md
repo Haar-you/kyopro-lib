@@ -25,22 +25,15 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/MonoidAction/xor_sum.cpp
+# :warning: Range xor / Range sum
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/xor_sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
-
-
-## Depends on
-
-* :warning: <a href="../Monoid/array.cpp.html">Mylib/AlgebraicStructure/Monoid/array.cpp</a>
-* :warning: <a href="../Monoid/bitxor.cpp.html">Mylib/AlgebraicStructure/Monoid/bitxor.cpp</a>
-* :heavy_check_mark: <a href="../Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 
 
 ## Code
@@ -49,27 +42,32 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/array.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/bitxor.cpp"
+#include <array>
 
 /**
+ * @title Range xor / Range sum
  * @docs xor_sum.md
  */
 template <typename U, int B>
 struct XorSum{
-  using monoid_get = ArrayMonoid<SumMonoid<int>, B>;
-  using monoid_update = BitXorMonoid<U>;
-  using value_type_get = typename monoid_get::value_type;
-  using value_type_update = typename monoid_update::value_type;
+  using value_type_get = typename std::array<int, B>;
+  using value_type_update = typename U;
 
-  static value_type_get id_get(){return monoid_get::id();}
-  static value_type_update id_update(){return monoid_update::id();}
+  value_type_get id_get() const {
+    value_type ret;
+    ret.fill(M.id());
+    return ret;
+  }
+  value_type_update id_update() const {return 0;}
 
-  static value_type_get op_get(const value_type_get &a, const value_type_get &b){return monoid_get::op(a, b);}
-  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
+  value_type_get op_get(const value_type_get &a, const value_type_get &b){
+    value_type ret;
+    for(int i = 0; i < B; ++i) ret[i] = M.op(a[i], b[i]);
+    return ret;
+  }
+  value_type_update op_update(value_type_update a, value_type_update b) const {return a ^ b;}
 
-  inline static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
+  value_type_get op(const value_type_get &a, const value_type_update &b, int len) const {
     auto ret = a;
     for(int i = 0; i < B; ++i) if((b >> i) & 1) ret[i] = len - ret[i];
     return ret;
@@ -82,69 +80,33 @@ struct XorSum{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/array.cpp"
+#line 2 "Mylib/AlgebraicStructure/MonoidAction/xor_sum.cpp"
 #include <array>
 
 /**
- * @docs array.md
- */
-template <typename Monoid, int B>
-struct ArrayMonoid{
-  using value_type = std::array<typename Monoid::value_type, B>;
-
-  static value_type id(){
-    value_type ret;
-    ret.fill(Monoid::id());
-    return ret;
-  }
-
-  static value_type op(const value_type &a, const value_type &b){
-    value_type ret;
-    for(int i = 0; i < B; ++i) ret[i] = Monoid::op(a[i], b[i]);
-    return ret;
-  }
-};
-#line 2 "Mylib/AlgebraicStructure/Monoid/sum.cpp"
-
-/**
- * @docs sum.md
- */
-template <typename T>
-struct SumMonoid{
-  using value_type = T;
-  static value_type id(){return 0;}
-  static value_type op(value_type a, value_type b){return a + b;}
-};
-#line 2 "Mylib/AlgebraicStructure/Monoid/bitxor.cpp"
-
-/**
- * @docs bitxor.md
- */
-template <typename T>
-struct BitXorMonoid{
-  using value_type = T;
-  static value_type id(){return 0;}
-  static value_type op(value_type a, value_type b){return a ^ b;}
-};
-#line 5 "Mylib/AlgebraicStructure/MonoidAction/xor_sum.cpp"
-
-/**
+ * @title Range xor / Range sum
  * @docs xor_sum.md
  */
 template <typename U, int B>
 struct XorSum{
-  using monoid_get = ArrayMonoid<SumMonoid<int>, B>;
-  using monoid_update = BitXorMonoid<U>;
-  using value_type_get = typename monoid_get::value_type;
-  using value_type_update = typename monoid_update::value_type;
+  using value_type_get = typename std::array<int, B>;
+  using value_type_update = typename U;
 
-  static value_type_get id_get(){return monoid_get::id();}
-  static value_type_update id_update(){return monoid_update::id();}
+  value_type_get id_get() const {
+    value_type ret;
+    ret.fill(M.id());
+    return ret;
+  }
+  value_type_update id_update() const {return 0;}
 
-  static value_type_get op_get(const value_type_get &a, const value_type_get &b){return monoid_get::op(a, b);}
-  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
+  value_type_get op_get(const value_type_get &a, const value_type_get &b){
+    value_type ret;
+    for(int i = 0; i < B; ++i) ret[i] = M.op(a[i], b[i]);
+    return ret;
+  }
+  value_type_update op_update(value_type_update a, value_type_update b) const {return a ^ b;}
 
-  inline static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
+  value_type_get op(const value_type_get &a, const value_type_update &b, int len) const {
     auto ret = a;
     for(int i = 0; i < B; ++i) if((b >> i) & 1) ret[i] = len - ret[i];
     return ret;

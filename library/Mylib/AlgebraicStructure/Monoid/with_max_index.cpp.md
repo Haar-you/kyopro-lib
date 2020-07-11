@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/with_max_index.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 
@@ -52,14 +52,15 @@ layout: default
 template <typename Monoid>
 struct WithMaxIndex{
   using value_type = std::pair<typename Monoid::value_type, int64_t>;
+  Monoid M;
 
-  static value_type id(){
-    return {Monoid::id(), 0};
+  value_type id() const {
+    return {M.id(), 0};
   }
 
-  static value_type op(const value_type &a, const value_type &b){
+  value_type op(const value_type &a, const value_type &b) const {
     if(a.first == b.first) return {a.first, std::max(a.second, b.second)};
-    if(Monoid::op(a.first, b.first) == a.first) return a;
+    if(M.op(a.first, b.first) == a.first) return a;
     else return b;
   }
 };
@@ -81,14 +82,15 @@ struct WithMaxIndex{
 template <typename Monoid>
 struct WithMaxIndex{
   using value_type = std::pair<typename Monoid::value_type, int64_t>;
+  Monoid M;
 
-  static value_type id(){
-    return {Monoid::id(), 0};
+  value_type id() const {
+    return {M.id(), 0};
   }
 
-  static value_type op(const value_type &a, const value_type &b){
+  value_type op(const value_type &a, const value_type &b) const {
     if(a.first == b.first) return {a.first, std::max(a.second, b.second)};
-    if(Monoid::op(a.first, b.first) == a.first) return a;
+    if(M.op(a.first, b.first) == a.first) return a;
     else return b;
   }
 };

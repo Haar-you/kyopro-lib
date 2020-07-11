@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 2-SAT
+# :x: 2-SAT
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/two_sat.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-08 22:35:50+09:00
 
 
 
@@ -66,14 +66,14 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
-* :heavy_check_mark: <a href="TopologicalSort/topological_sort.cpp.html">Topological sort</a>
-* :heavy_check_mark: <a href="graph_template.cpp.html">Graph template</a>
+* :question: <a href="GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
+* :x: <a href="TopologicalSort/topological_sort.cpp.html">Topological sort</a>
+* :question: <a href="graph_template.cpp.html">Graph template</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
 
 
 ## Code
@@ -266,12 +266,12 @@ std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
   }
 
   std::queue<int> q;
-  for(int i = n-1; i >= 0; --i){
+  for(int i = 0; i < n; ++i){
     if(indeg[i] == 0) q.push(i);
   }
 
   std::vector<int> ret;
-  while(!q.empty()){
+  while(not q.empty()){
     int cur = q.front(); q.pop();
     ret.push_back(cur);
     for(auto &e : g[cur]){

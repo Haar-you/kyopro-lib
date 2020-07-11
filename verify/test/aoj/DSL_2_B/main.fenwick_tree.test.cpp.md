@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#082039b3153b4a2410d6e14e04aca1cc">test/aoj/DSL_2_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum.cpp.html">Mylib/AlgebraicStructure/Group/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">Fenwick tree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum.cpp.html">Mylib/AlgebraicStructure/Group/sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">Fenwick tree</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -93,6 +93,7 @@ int main(){
 template <typename AbelianGroup>
 class FenwickTree{
   using value_type = typename AbelianGroup::value_type;
+  AbelianGroup G;
   
   int size;
   std::vector<value_type> data;
@@ -100,35 +101,35 @@ class FenwickTree{
 public:
   FenwickTree(){}
   FenwickTree(int size):
-    size(size), data(size + 1, AbelianGroup::id())
+    size(size), data(size + 1, G.id())
   {}
   
-  inline void update(int i, const value_type &val){
+  void update(int i, const value_type &val){
     i += 1; // 1-index
     
     while(i <= size){
-      data[i] = AbelianGroup::op(data[i], val);
+      data[i] = G.op(data[i], val);
       i += i & (-i);
     }
   }
   
-  inline value_type get(int i) const { // [0, i)
-    value_type ret = AbelianGroup::id();
+  value_type get(int i) const { // [0, i)
+    value_type ret = G.id();
     i += 1; // 1-index
 
     while(i > 0){
-      ret = AbelianGroup::op(ret, data[i]);
+      ret = G.op(ret, data[i]);
       i -= i & (-i);
     }
 
     return ret;
   }
 
-  inline value_type get(int l, int r) const { // [l, r)
-    return AbelianGroup::op(get(r-1), AbelianGroup::inv(get(l-1)));
+  value_type get(int l, int r) const { // [l, r)
+    return G.op(get(r-1), G.inv(get(l-1)));
   }
   
-  inline value_type at(int x) const {
+  value_type at(int x) const {
     return get(x, x+1);
   }
 };
@@ -141,9 +142,9 @@ template <typename T>
 struct SumGroup{
   using value_type = T;
 
-  static value_type id(){return 0;}
-  static value_type op(const value_type &a, const value_type &b){return a + b;}
-  static value_type inv(const value_type &a){return -a;}
+  value_type id() const {return 0;}
+  value_type op(const value_type &a, const value_type &b) const {return a + b;}
+  value_type inv(const value_type &a) const {return -a;}
 };
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>

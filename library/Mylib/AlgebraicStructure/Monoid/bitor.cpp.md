@@ -31,15 +31,9 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/bitor.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
-
-
-## Required by
-
-* :warning: <a href="../MonoidAction/or_or.cpp.html">Mylib/AlgebraicStructure/MonoidAction/or_or.cpp</a>
-* :warning: <a href="../MonoidAction/update_or.cpp.html">Mylib/AlgebraicStructure/MonoidAction/update_or.cpp</a>
 
 
 ## Code
@@ -55,8 +49,8 @@ layout: default
 template <typename T>
 struct BitOrMonoid{
   using value_type = T;
-  static value_type id(){return 0;}
-  static value_type op(value_type a, value_type b){return a | b;}
+  value_type id() const {return 0;}
+  value_type op(value_type a, value_type b) const {return a | b;}
 };
 
 ```
@@ -73,8 +67,8 @@ struct BitOrMonoid{
 template <typename T>
 struct BitOrMonoid{
   using value_type = T;
-  static value_type id(){return 0;}
-  static value_type op(value_type a, value_type b){return a | b;}
+  value_type id() const {return 0;}
+  value_type op(value_type a, value_type b) const {return a | b;}
 };
 
 ```

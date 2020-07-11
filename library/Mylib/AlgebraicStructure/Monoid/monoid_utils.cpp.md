@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 
 
 ## Required by
 
-* :warning: <a href="../MonoidAction/multiply_product.cpp.html">Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp</a>
+* :warning: <a href="../MonoidAction/multiply_product.cpp.html">Range multiply / Range product</a>
 
 
 ## Code
@@ -51,13 +51,14 @@ layout: default
 /**
  * @docs monoid_utils.md
  */
-template <typename M, typename value_type = typename M::value_type>
+template <typename Monoid, typename value_type = typename Monoid::value_type>
 value_type times(value_type a, int64_t p){
-  auto ret = M::id();
+  Monoid M;
+  auto ret = M.id();
 
   while(p > 0){
-    if(p & 1) ret = M::op(ret, a);
-    a = M::op(a, a);
+    if(p & 1) ret = M.op(ret, a);
+    a = M.op(a, a);
     p >>= 1;
   }
 
@@ -75,13 +76,14 @@ value_type times(value_type a, int64_t p){
 /**
  * @docs monoid_utils.md
  */
-template <typename M, typename value_type = typename M::value_type>
+template <typename Monoid, typename value_type = typename Monoid::value_type>
 value_type times(value_type a, int64_t p){
-  auto ret = M::id();
+  Monoid M;
+  auto ret = M.id();
 
   while(p > 0){
-    if(p & 1) ret = M::op(ret, a);
-    a = M::op(a, a);
+    if(p & 1) ret = M.op(ret, a);
+    a = M.op(a, a);
     p >>= 1;
   }
 

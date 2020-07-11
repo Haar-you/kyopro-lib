@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#5d35c06ff9ff8df734499811915aeac0">test/aoj/DSL_2_E</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_E/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp.html">Dual segment tree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -95,20 +95,20 @@ int main(){
 template <typename Monoid>
 class DualSegmentTree{
   using value_type = typename Monoid::value_type;
-  
-private:
+  Monoid M;
+
   const int depth, size, hsize;
   std::vector<value_type> data;
   
-  inline void propagate(int i){
+  void propagate(int i){
     if(i < hsize){
-      data[i << 1 | 0] = Monoid::op(data[i], data[i << 1 | 0]);
-      data[i << 1 | 1] = Monoid::op(data[i], data[i << 1 | 1]);
-      data[i] = Monoid::id();
+      data[i << 1 | 0] = M.op(data[i], data[i << 1 | 0]);
+      data[i << 1 | 1] = M.op(data[i], data[i << 1 | 1]);
+      data[i] = M.id();
     }
   }
 
-  inline void propagate_top_down(int i){
+  void propagate_top_down(int i){
     std::vector<int> temp;
     while(i > 1){
       i >>= 1;
@@ -122,10 +122,10 @@ public:
   DualSegmentTree(int n):
     depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
     size(1 << depth), hsize(size / 2),
-    data(size, Monoid::id())
+    data(size, M.id())
   {}
 
-  inline void update(int l, int r, const value_type &x){
+  void update(int l, int r, const value_type &x){
     propagate_top_down(l + hsize);
     propagate_top_down(r + hsize);
 
@@ -133,25 +133,25 @@ public:
     int R = r + hsize;
     
     while(L < R){
-      if(R & 1) --R, data[R] = Monoid::op(x, data[R]);
-      if(L & 1) data[L] = Monoid::op(x, data[L]), ++L;
+      if(R & 1) --R, data[R] = M.op(x, data[R]);
+      if(L & 1) data[L] = M.op(x, data[L]), ++L;
       L >>= 1, R >>= 1;
     }
   }
 
-  inline value_type get(int i){
+  value_type get(int i){
     propagate_top_down(i + hsize);
     return data[i + hsize];
   }
 
   template <typename T>
-  inline void init_with_vector(const std::vector<T> &a){
-    data.assign(size, Monoid::id());
+  void init_with_vector(const std::vector<T> &a){
+    data.assign(size, M.id());
     for(int i = 0; i < (int)a.size(); ++i) data[hsize + i] = a[i];
   }
 
   template <typename T>
-  inline void init(const T &val){
+  void init(const T &val){
     init_with_vector(std::vector<value_type>(hsize, val));
   }
 };
@@ -163,8 +163,8 @@ public:
 template <typename T>
 struct SumMonoid{
   using value_type = T;
-  static value_type id(){return 0;}
-  static value_type op(value_type a, value_type b){return a + b;}
+  value_type id() const {return 0;}
+  value_type op(value_type a, value_type b) const {return a + b;}
 };
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>

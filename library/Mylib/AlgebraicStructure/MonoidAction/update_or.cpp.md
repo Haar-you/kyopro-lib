@@ -25,21 +25,15 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/MonoidAction/update_or.cpp
+# :warning: Range update / Range bitor
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/update_or.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
-
-
-## Depends on
-
-* :warning: <a href="../Monoid/bitor.cpp.html">Mylib/AlgebraicStructure/Monoid/bitor.cpp</a>
-* :heavy_check_mark: <a href="../Monoid/update.cpp.html">Mylib/AlgebraicStructure/Monoid/update.cpp</a>
 
 
 ## Code
@@ -48,26 +42,24 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/update.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/bitor.cpp"
+#include <optional>
 
 /**
+ * @title Range update / Range bitor
  * @docs update_or.md
  */
 template <typename T, typename U>
 struct UpdateOr{
-  using monoid_get = BitOrMonoid<T>;
-  using monoid_update = UpdateMonoid<U>;
-  using value_type_get = typename monoid_get::value_type;
-  using value_type_update = typename monoid_update::value_type;
+  using value_type_get = T;
+  using value_type_update = std::optional<U>;
+  
+  value_type_get id_get() const {return 0;}
+  value_type_update id_update() const {return {};}
 
-  static value_type_get id_get(){return monoid_get::id();}
-  static value_type_update id_update(){return monoid_update::id();}
+  value_type_get op_get(value_type_get a, value_type_get b) const {return a | b;}
+  value_type_update op_update(value_type_update a, value_type_update b) const {return (a ? a : b );}
 
-  static value_type_get op_get(value_type_get a, value_type_get b){return monoid_get::op(a, b);}
-  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
-
-  static value_type_get op(value_type_get a, value_type_update b, int len){
+  value_type_get op(value_type_get a, value_type_update b, int len) const {
     return b ? *b : a;
   }
 };
@@ -78,48 +70,25 @@ struct UpdateOr{
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/AlgebraicStructure/Monoid/update.cpp"
+#line 2 "Mylib/AlgebraicStructure/MonoidAction/update_or.cpp"
 #include <optional>
 
 /**
- * @docs update.md
- */
-template <typename T>
-struct UpdateMonoid{
-  using value_type = std::optional<T>;
-  static value_type id(){return std::nullopt;}
-  static value_type op(const value_type &a, const value_type &b){return (a ? a : b);}
-};
-#line 2 "Mylib/AlgebraicStructure/Monoid/bitor.cpp"
-
-/**
- * @docs bitor.md
- */
-template <typename T>
-struct BitOrMonoid{
-  using value_type = T;
-  static value_type id(){return 0;}
-  static value_type op(value_type a, value_type b){return a | b;}
-};
-#line 4 "Mylib/AlgebraicStructure/MonoidAction/update_or.cpp"
-
-/**
+ * @title Range update / Range bitor
  * @docs update_or.md
  */
 template <typename T, typename U>
 struct UpdateOr{
-  using monoid_get = BitOrMonoid<T>;
-  using monoid_update = UpdateMonoid<U>;
-  using value_type_get = typename monoid_get::value_type;
-  using value_type_update = typename monoid_update::value_type;
+  using value_type_get = T;
+  using value_type_update = std::optional<U>;
+  
+  value_type_get id_get() const {return 0;}
+  value_type_update id_update() const {return {};}
 
-  static value_type_get id_get(){return monoid_get::id();}
-  static value_type_update id_update(){return monoid_update::id();}
+  value_type_get op_get(value_type_get a, value_type_get b) const {return a | b;}
+  value_type_update op_update(value_type_update a, value_type_update b) const {return (a ? a : b );}
 
-  static value_type_get op_get(value_type_get a, value_type_get b){return monoid_get::op(a, b);}
-  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
-
-  static value_type_get op(value_type_get a, value_type_update b, int len){
+  value_type_get op(value_type_get a, value_type_update b, int len) const {
     return b ? *b : a;
   }
 };

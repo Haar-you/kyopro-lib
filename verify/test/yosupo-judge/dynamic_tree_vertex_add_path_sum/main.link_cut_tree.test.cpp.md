@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
+# :x: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#bebcd5bef589a8c43022d53b5d3891af">test/yosupo-judge/dynamic_tree_vertex_add_path_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_path_sum">https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_path_sum</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp.html">Link/cut tree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp.html">Link/cut tree</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
 
 
 ## Code
@@ -118,8 +118,8 @@ int main(){
 template <typename T>
 struct SumMonoid{
   using value_type = T;
-  static value_type id(){return 0;}
-  static value_type op(value_type a, value_type b){return a + b;}
+  value_type id() const {return 0;}
+  value_type op(value_type a, value_type b) const {return a + b;}
 };
 #line 2 "Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp"
 #include <vector>
@@ -132,6 +132,7 @@ template <typename Monoid>
 struct LinkCutNode{
   using value_type = typename Monoid::value_type;
   using node = LinkCutNode;
+  constexpr static Monoid M = Monoid();
 
   int subsize;
   node *left, *right, *parent;
@@ -144,8 +145,8 @@ struct LinkCutNode{
     right(nullptr),
     parent(nullptr),
     rev(false),
-    value(Monoid::id()),
-    result(Monoid::id())
+    value(M.id()),
+    result(M.id())
   {}
 
   bool is_root() const {
@@ -159,13 +160,13 @@ struct LinkCutNode{
     if(left){
       left->push_down();
       subsize += left->subsize;
-      result = Monoid::op(result, left->result);
+      result = M.op(result, left->result);
     }
 
     if(right){
       right->push_down();
       subsize += right->subsize;
-      result = Monoid::op(result, right->result);
+      result = M.op(result, right->result);
     }
   }
 
@@ -279,6 +280,7 @@ template <typename Monoid>
 class LinkCutTree{
   using value_type = typename Monoid::value_type;
   using node = LinkCutNode<Monoid>;
+  constexpr static Monoid M = Monoid();
 
   int N;
   std::vector<node*> nodes;

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#64e19fd3e4193a1559ce21d32ec43623">test/aoj/2842</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2842/main.fenwick_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum.cpp.html">Mylib/AlgebraicStructure/Group/sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum.cpp.html">Mylib/AlgebraicStructure/Group/sum.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp.html">Fenwick tree (2D)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -130,9 +130,9 @@ template <typename T>
 struct SumGroup{
   using value_type = T;
 
-  static value_type id(){return 0;}
-  static value_type op(const value_type &a, const value_type &b){return a + b;}
-  static value_type inv(const value_type &a){return -a;}
+  value_type id() const {return 0;}
+  value_type op(const value_type &a, const value_type &b) const {return a + b;}
+  value_type inv(const value_type &a) const {return -a;}
 };
 #line 2 "Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp"
 #include <vector>
@@ -144,10 +144,36 @@ struct SumGroup{
 template <typename AbelianGroup>
 class FenwickTree2D{
   using value_type = typename AbelianGroup::value_type;
-      
+  AbelianGroup G;
+  
   int w, h;
   std::vector<std::vector<value_type>> data;
-      
+
+private:
+  value_type get_w(int i, int y) const {
+    value_type ret = G.id();
+    i += 1;
+    while(i > 0){
+      ret = G.op(ret, data[i][y]);
+      i -= i & (-i);
+    }
+    return ret;
+  }
+  
+  value_type get_w(int l, int r, int y) const {
+    return G.op(get_w(r-1, y), G.inv(get_w(l-1, y)));
+  }
+
+  value_type get(int x1, int x2, int y) const {
+    value_type ret = G.id();
+    y += 1;
+    while(y > 0){
+      ret = G.op(ret, get_w(x1, x2, y));
+      y -= y & (-y);
+    }
+    return ret;
+  }
+  
 public:
   FenwickTree2D(int width, int height){
     w = width;
@@ -155,34 +181,8 @@ public:
     data = std::vector<std::vector<value_type>>(w+1, std::vector<value_type>(h+1));
   }
 
-private:
-  inline value_type get_w(int i, int y) const {
-    value_type ret = AbelianGroup::id();
-    i += 1;
-    while(i > 0){
-      ret = AbelianGroup::op(ret, data[i][y]);
-      i -= i & (-i);
-    }
-    return ret;
-  }
-  
-  inline value_type get_w(int l, int r, int y) const {
-    return AbelianGroup::op(get_w(r-1, y), AbelianGroup::inv(get_w(l-1, y)));
-  }
-
-  inline value_type get(int x1, int x2, int y) const {
-    value_type ret = AbelianGroup::id();
-    y += 1;
-    while(y > 0){
-      ret = AbelianGroup::op(ret, get_w(x1, x2, y));
-      y -= y & (-y);
-    }
-    return ret;
-  }
-  
-public:
   value_type get(int x1, int y1, int x2, int y2) const { // [(x1,y1),(x2,y2))
-    return AbelianGroup::op(get(x1, x2, y2-1), AbelianGroup::inv(get(x1, x2, y1-1)));
+    return G.op(get(x1, x2, y2-1), G.inv(get(x1, x2, y1-1)));
   }
      
   value_type at(int x, int y) const {
@@ -195,7 +195,7 @@ public:
 
     for(int i = x; i <= w; i += i & (-i)){
       for(int j = y; j <= h; j += j & (-j)){
-        data[i][j] = AbelianGroup::op(data[i][j], val);
+        data[i][j] = G.op(data[i][j], val);
       }
     }
   }

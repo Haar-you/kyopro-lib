@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Lazy segment tree
+# :question: Lazy segment tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 
@@ -43,10 +43,10 @@ layout: default
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_G/main.test.cpp.html">test/aoj/DSL_2_G/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_H/main.test.cpp.html">test/aoj/DSL_2_H/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_I/main.test.cpp.html">test/aoj/DSL_2_I/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/1099/main.test.cpp.html">test/yukicoder/1099/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/631/main.test.cpp.html">test/yukicoder/631/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/1099/main.test.cpp.html">test/yukicoder/1099/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/631/main.test.cpp.html">test/yukicoder/631/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
 
 
 ## Code
@@ -65,38 +65,39 @@ template <typename Monoid>
 class LazySegmentTree{
   using value_type_get = typename Monoid::value_type_get;
   using value_type_update = typename Monoid::value_type_update;
+  Monoid M;
   
   const int depth, size, hsize;
   std::vector<value_type_get> data;
   std::vector<value_type_update> lazy;
 
-  inline void propagate(int i){
-    if(lazy[i] == Monoid::id_update()) return;
+  void propagate(int i){
+    if(lazy[i] == M.id_update()) return;
     if(i < hsize){
-      lazy[i << 1 | 0] = Monoid::op_update(lazy[i], lazy[i << 1 | 0]);
-      lazy[i << 1 | 1] = Monoid::op_update(lazy[i], lazy[i << 1 | 1]);
+      lazy[i << 1 | 0] = M.op_update(lazy[i], lazy[i << 1 | 0]);
+      lazy[i << 1 | 1] = M.op_update(lazy[i], lazy[i << 1 | 1]);
     }
     int len = hsize >> (31 - __builtin_clz(i));
-    data[i] = Monoid::op(data[i], lazy[i], len);
-    lazy[i] = Monoid::id_update();
+    data[i] = M.op(data[i], lazy[i], len);
+    lazy[i] = M.id_update();
   }
 
-  inline value_type_get update_aux(int i, int l, int r, int s, int t, const value_type_update &x){
+  value_type_get update_aux(int i, int l, int r, int s, int t, const value_type_update &x){
     propagate(i);
     if(r <= s || t <= l) return data[i];
     else if(s <= l && r <= t){
-      lazy[i] = Monoid::op_update(x, lazy[i]);
+      lazy[i] = M.op_update(x, lazy[i]);
       propagate(i);
       return data[i];
     }
-    else return data[i] = Monoid::op_get(update_aux(i << 1 | 0, l, (l+r) / 2, s, t, x), update_aux(i << 1 | 1, (l+r) / 2, r, s, t, x));
+    else return data[i] = M.op_get(update_aux(i << 1 | 0, l, (l+r) / 2, s, t, x), update_aux(i << 1 | 1, (l+r) / 2, r, s, t, x));
   }
   
-  inline value_type_get get_aux(int i, int l, int r, int x, int y){
+  value_type_get get_aux(int i, int l, int r, int x, int y){
     propagate(i);
-    if(r <= x || y <= l) return Monoid::id_get();
+    if(r <= x || y <= l) return M.id_get();
     else if(x <= l && r <= y) return data[i];
-    else return Monoid::op_get(get_aux(i << 1 | 0, l, (l+r) / 2, x, y), get_aux(i << 1 | 1, (l+r) / 2, r, x, y));
+    else return M.op_get(get_aux(i << 1 | 0, l, (l+r) / 2, x, y), get_aux(i << 1 | 1, (l+r) / 2, r, x, y));
   }
 
 public:
@@ -105,26 +106,26 @@ public:
     depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
     size(1 << depth),
     hsize(size / 2),
-    data(size, Monoid::id_get()),
-    lazy(size, Monoid::id_update())
+    data(size, M.id_get()),
+    lazy(size, M.id_update())
   {}
 
-  inline void update(int l, int r, const value_type_update &x){update_aux(1, 0, hsize, l, r, x);}
-  inline void update_at(int i, const value_type_update &x){update(i, i+1, x);}
-  inline value_type_get get(int l, int r){return get_aux(1, 0, hsize, l, r);}
-  inline value_type_get at(int i){return get(i, i+1);}
+  void update(int l, int r, const value_type_update &x){update_aux(1, 0, hsize, l, r, x);}
+  void update_at(int i, const value_type_update &x){update(i, i+1, x);}
+  value_type_get get(int l, int r){return get_aux(1, 0, hsize, l, r);}
+  value_type_get at(int i){return get(i, i+1);}
 
   template <typename T>
-  inline void init(const T &val){
+  void init(const T &val){
     init_with_vector(std::vector<T>(hsize, val));
   }
 
   template <typename T>
-  inline void init_with_vector(const std::vector<T> &val){
-    data.assign(size, Monoid::id_get());
-    lazy.assign(size, Monoid::id_update());
+  void init_with_vector(const std::vector<T> &val){
+    data.assign(size, M.id_get());
+    lazy.assign(size, M.id_update());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
-    for(int i = hsize-1; i > 0; --i) data[i] = Monoid::op_get(data[i << 1 | 0], data[i << 1 | 1]);
+    for(int i = hsize-1; i > 0; --i) data[i] = M.op_get(data[i << 1 | 0], data[i << 1 | 1]);
   }
 };
 
@@ -145,38 +146,39 @@ template <typename Monoid>
 class LazySegmentTree{
   using value_type_get = typename Monoid::value_type_get;
   using value_type_update = typename Monoid::value_type_update;
+  Monoid M;
   
   const int depth, size, hsize;
   std::vector<value_type_get> data;
   std::vector<value_type_update> lazy;
 
-  inline void propagate(int i){
-    if(lazy[i] == Monoid::id_update()) return;
+  void propagate(int i){
+    if(lazy[i] == M.id_update()) return;
     if(i < hsize){
-      lazy[i << 1 | 0] = Monoid::op_update(lazy[i], lazy[i << 1 | 0]);
-      lazy[i << 1 | 1] = Monoid::op_update(lazy[i], lazy[i << 1 | 1]);
+      lazy[i << 1 | 0] = M.op_update(lazy[i], lazy[i << 1 | 0]);
+      lazy[i << 1 | 1] = M.op_update(lazy[i], lazy[i << 1 | 1]);
     }
     int len = hsize >> (31 - __builtin_clz(i));
-    data[i] = Monoid::op(data[i], lazy[i], len);
-    lazy[i] = Monoid::id_update();
+    data[i] = M.op(data[i], lazy[i], len);
+    lazy[i] = M.id_update();
   }
 
-  inline value_type_get update_aux(int i, int l, int r, int s, int t, const value_type_update &x){
+  value_type_get update_aux(int i, int l, int r, int s, int t, const value_type_update &x){
     propagate(i);
     if(r <= s || t <= l) return data[i];
     else if(s <= l && r <= t){
-      lazy[i] = Monoid::op_update(x, lazy[i]);
+      lazy[i] = M.op_update(x, lazy[i]);
       propagate(i);
       return data[i];
     }
-    else return data[i] = Monoid::op_get(update_aux(i << 1 | 0, l, (l+r) / 2, s, t, x), update_aux(i << 1 | 1, (l+r) / 2, r, s, t, x));
+    else return data[i] = M.op_get(update_aux(i << 1 | 0, l, (l+r) / 2, s, t, x), update_aux(i << 1 | 1, (l+r) / 2, r, s, t, x));
   }
   
-  inline value_type_get get_aux(int i, int l, int r, int x, int y){
+  value_type_get get_aux(int i, int l, int r, int x, int y){
     propagate(i);
-    if(r <= x || y <= l) return Monoid::id_get();
+    if(r <= x || y <= l) return M.id_get();
     else if(x <= l && r <= y) return data[i];
-    else return Monoid::op_get(get_aux(i << 1 | 0, l, (l+r) / 2, x, y), get_aux(i << 1 | 1, (l+r) / 2, r, x, y));
+    else return M.op_get(get_aux(i << 1 | 0, l, (l+r) / 2, x, y), get_aux(i << 1 | 1, (l+r) / 2, r, x, y));
   }
 
 public:
@@ -185,26 +187,26 @@ public:
     depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
     size(1 << depth),
     hsize(size / 2),
-    data(size, Monoid::id_get()),
-    lazy(size, Monoid::id_update())
+    data(size, M.id_get()),
+    lazy(size, M.id_update())
   {}
 
-  inline void update(int l, int r, const value_type_update &x){update_aux(1, 0, hsize, l, r, x);}
-  inline void update_at(int i, const value_type_update &x){update(i, i+1, x);}
-  inline value_type_get get(int l, int r){return get_aux(1, 0, hsize, l, r);}
-  inline value_type_get at(int i){return get(i, i+1);}
+  void update(int l, int r, const value_type_update &x){update_aux(1, 0, hsize, l, r, x);}
+  void update_at(int i, const value_type_update &x){update(i, i+1, x);}
+  value_type_get get(int l, int r){return get_aux(1, 0, hsize, l, r);}
+  value_type_get at(int i){return get(i, i+1);}
 
   template <typename T>
-  inline void init(const T &val){
+  void init(const T &val){
     init_with_vector(std::vector<T>(hsize, val));
   }
 
   template <typename T>
-  inline void init_with_vector(const std::vector<T> &val){
-    data.assign(size, Monoid::id_get());
-    lazy.assign(size, Monoid::id_update());
+  void init_with_vector(const std::vector<T> &val){
+    data.assign(size, M.id_get());
+    lazy.assign(size, M.id_update());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
-    for(int i = hsize-1; i > 0; --i) data[i] = Monoid::op_get(data[i << 1 | 0], data[i << 1 | 1]);
+    for(int i = hsize-1; i > 0; --i) data[i] = M.op_get(data[i << 1 | 0], data[i << 1 | 1]);
   }
 };
 

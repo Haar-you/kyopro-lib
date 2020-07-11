@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#bc5135b351a05eb69baff19bb9fa33f2">test/aoj/0575</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/0575/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-02 06:41:29+09:00
+    - Last commit date: 2020-07-06 22:54:09+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0575">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0575</a>
@@ -40,12 +40,12 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Search/parallel_binary_search.cpp.html">Parallel binary search</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/dijkstra.cpp.html">Dijkstra algorithm</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -105,22 +105,20 @@ int main(){
     }
   }
 
+  UnionFind uf;
+  
   auto res =
     parallel_binary_search(
       C,
       Q,
-      [&](const auto &f){
-        UnionFind uf(N);
-        f(
-          [&](int i){
-            for(auto [x, y] : edges[C-1-i]){
-              uf.merge(x, y);
-            }
-          },
-          [&](int i) -> bool{
-            return uf.is_same(S[i], T[i]);
-          }
-        );
+      [&](){uf = UnionFind(N);},
+      [&](int i){
+        for(auto [x, y] : edges[C-1-i]){
+          uf.merge(x, y);
+        }
+      },
+      [&](int i) -> bool{
+        return uf.is_same(S[i], T[i]);
       }
     );
   
@@ -237,19 +235,20 @@ class UnionFind{
   int count;
 
 public:
+  UnionFind(){}
   UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
     std::iota(parent.begin(), parent.end(), 0);
   }
   
-  inline int get_root(int i){
+  int root_of(int i){
     if(parent[i] == i) return i;
-    else return parent[i] = get_root(parent[i]);
+    else return parent[i] = root_of(parent[i]);
   }
   
-  inline bool is_same(int i, int j){return get_root(i) == get_root(j);}
+  bool is_same(int i, int j){return root_of(i) == root_of(j);}
 
-  inline int merge(int i, int j){
-    int ri = get_root(i), rj = get_root(j);
+  int merge(int i, int j){
+    int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return ri;
     else{
       --count;
@@ -266,9 +265,9 @@ public:
     }
   }
 
-  inline int get_size(int i){return size[get_root(i)];}
+  int size_of(int i){return size[root_of(i)];}
 
-  inline int count_group(){return count;}
+  int count_group(){return count;}
 };
 #line 3 "Mylib/Algorithm/Search/parallel_binary_search.cpp"
 #include <cmath>
@@ -277,8 +276,8 @@ public:
  * @title Parallel binary search
  * @docs parallel_binary_search.md
  */
-template <typename F>
-auto parallel_binary_search(int M, int Q, F f){
+template <typename Init, typename Process, typename Checker>
+auto parallel_binary_search(int M, int Q, Init init, Process process, Checker checker){
   std::vector<int> lb(Q, -1), ub(Q, M);
 
   while(1){
@@ -294,20 +293,18 @@ auto parallel_binary_search(int M, int Q, F f){
 
     if(check) break;
 
-    f(
-      [&](auto process, auto checker){
-        for(int i = 0; i < M; ++i){
-          process(i);
-          for(int j : mids[i]){
-            if(checker(j)){
-              ub[j] = i;
-            }else{
-              lb[j] = i;
-            }
-          }
+    init();
+
+    for(int i = 0; i < M; ++i){
+      process(i);
+      for(int j : mids[i]){
+        if(checker(j)){
+          ub[j] = i;
+        }else{
+          lb[j] = i;
         }
       }
-    );
+    }
   }
 
   return ub;
@@ -429,22 +426,20 @@ int main(){
     }
   }
 
+  UnionFind uf;
+  
   auto res =
     parallel_binary_search(
       C,
       Q,
-      [&](const auto &f){
-        UnionFind uf(N);
-        f(
-          [&](int i){
-            for(auto [x, y] : edges[C-1-i]){
-              uf.merge(x, y);
-            }
-          },
-          [&](int i) -> bool{
-            return uf.is_same(S[i], T[i]);
-          }
-        );
+      [&](){uf = UnionFind(N);},
+      [&](int i){
+        for(auto [x, y] : edges[C-1-i]){
+          uf.merge(x, y);
+        }
+      },
+      [&](int i) -> bool{
+        return uf.is_same(S[i], T[i]);
       }
     );
   

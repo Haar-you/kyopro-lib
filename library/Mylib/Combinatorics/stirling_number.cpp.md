@@ -49,7 +49,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="factorial_table.cpp.html">Factorial table</a>
+* :question: <a href="factorial_table.cpp.html">Factorial table</a>
 
 
 ## Required by

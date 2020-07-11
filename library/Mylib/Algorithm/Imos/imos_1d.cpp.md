@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#6dc6d5a2cac82b39a08fd9ff32ab6e48">Mylib/Algorithm/Imos</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Imos/imos_1d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-08 12:08:32+09:00
 
 
 
@@ -54,6 +54,8 @@ layout: default
  * @docs imos_1d.md
  */
 template <typename T> struct Imos1D{
+  using value_type = T;
+  
   std::vector<T> data;
   Imos1D(int n): data(n+1){}
 
@@ -68,7 +70,7 @@ template <typename T> struct Imos1D{
     }
   }
 
-  inline const T operator[](size_t i) const {return data[i];}
+  T operator[](size_t i) const {return data[i];}
 };
 
 ```
@@ -85,6 +87,8 @@ template <typename T> struct Imos1D{
  * @docs imos_1d.md
  */
 template <typename T> struct Imos1D{
+  using value_type = T;
+  
   std::vector<T> data;
   Imos1D(int n): data(n+1){}
 
@@ -99,7 +103,7 @@ template <typename T> struct Imos1D{
     }
   }
 
-  inline const T operator[](size_t i) const {return data[i];}
+  T operator[](size_t i) const {return data[i];}
 };
 
 ```

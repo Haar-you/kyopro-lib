@@ -31,14 +31,9 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/array.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
-
-
-## Required by
-
-* :warning: <a href="../MonoidAction/xor_sum.cpp.html">Mylib/AlgebraicStructure/MonoidAction/xor_sum.cpp</a>
 
 
 ## Code
@@ -55,16 +50,17 @@ layout: default
 template <typename Monoid, int B>
 struct ArrayMonoid{
   using value_type = std::array<typename Monoid::value_type, B>;
+  Monoid M;
 
-  static value_type id(){
+  value_type id() const {
     value_type ret;
-    ret.fill(Monoid::id());
+    ret.fill(M.id());
     return ret;
   }
 
-  static value_type op(const value_type &a, const value_type &b){
+  value_type op(const value_type &a, const value_type &b) const {
     value_type ret;
-    for(int i = 0; i < B; ++i) ret[i] = Monoid::op(a[i], b[i]);
+    for(int i = 0; i < B; ++i) ret[i] = M.op(a[i], b[i]);
     return ret;
   }
 };
@@ -84,16 +80,17 @@ struct ArrayMonoid{
 template <typename Monoid, int B>
 struct ArrayMonoid{
   using value_type = std::array<typename Monoid::value_type, B>;
+  Monoid M;
 
-  static value_type id(){
+  value_type id() const {
     value_type ret;
-    ret.fill(Monoid::id());
+    ret.fill(M.id());
     return ret;
   }
 
-  static value_type op(const value_type &a, const value_type &b){
+  value_type op(const value_type &a, const value_type &b) const {
     value_type ret;
-    for(int i = 0; i < B; ++i) ret[i] = Monoid::op(a[i], b[i]);
+    for(int i = 0; i < B; ++i) ret[i] = M.op(a[i], b[i]);
     return ret;
   }
 };

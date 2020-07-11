@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#1534504632931a6652ca965283803a2e">Mylib/Algorithm/Mo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Mo/mo_algorithm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-08 12:08:32+09:00
 
 
 
@@ -104,14 +104,14 @@ public:
   {}
 
   // [l, r)
-  inline void add(int l, int r){
+  void add(int l, int r){
     left[index] = l;
     right[index] = r;
     ord[index] = index;
     ++index;
   }
 
-  inline void build(){
+  void build(){
     std::sort(
       ord.begin(),
       ord.end(),
@@ -132,7 +132,7 @@ public:
     is_built = true;
   }
 
-  inline void run(){
+  void run(){
     assert(is_built);
     
     int q = 0;
@@ -192,14 +192,14 @@ public:
   {}
 
   // [l, r)
-  inline void add(int l, int r){
+  void add(int l, int r){
     left[index] = l;
     right[index] = r;
     ord[index] = index;
     ++index;
   }
 
-  inline void build(){
+  void build(){
     std::sort(
       ord.begin(),
       ord.end(),
@@ -220,7 +220,7 @@ public:
     is_built = true;
   }
 
-  inline void run(){
+  void run(){
     assert(is_built);
     
     int q = 0;

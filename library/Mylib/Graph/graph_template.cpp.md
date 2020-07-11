@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Graph template
+# :question: Graph template
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -44,11 +44,11 @@ layout: default
 * :heavy_check_mark: <a href="GraphUtils/articulation_points.cpp.html">Articulation points</a>
 * :heavy_check_mark: <a href="GraphUtils/bridges.cpp.html">Bridges</a>
 * :heavy_check_mark: <a href="GraphUtils/decompose_pseudotree.cpp.html">Decompose pseudotree</a>
-* :heavy_check_mark: <a href="GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
+* :question: <a href="GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
 * :heavy_check_mark: <a href="GraphUtils/two_edge_connected_components.cpp.html">Two edge connected components</a>
 * :heavy_check_mark: <a href="MinimumSpanningTree/chu_liu_edmonds.cpp.html">Chu-Liu/Edmonds algorithm</a>
-* :heavy_check_mark: <a href="MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
-* :heavy_check_mark: <a href="MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
+* :question: <a href="MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
+* :x: <a href="MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
 * :heavy_check_mark: <a href="MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
 * :warning: <a href="ShortestCycle/directed_shortest_cycle.cpp.html">Directed shortest cycle</a>
 * :warning: <a href="ShortestCycle/undirected_shortest_cycle.cpp.html">Undirected shortest cycle</a>
@@ -58,14 +58,14 @@ layout: default
 * :heavy_check_mark: <a href="ShortestPath/dijkstra.cpp.html">Dijkstra algorithm</a>
 * :heavy_check_mark: <a href="ShortestPath/warshall_floyd.cpp.html">Warshall-Floyd algorithm</a>
 * :heavy_check_mark: <a href="ShortestPath/yen_algorithm.cpp.html">Yen's algorithm</a>
-* :heavy_check_mark: <a href="TopologicalSort/topological_sort.cpp.html">Topological sort</a>
+* :x: <a href="TopologicalSort/topological_sort.cpp.html">Topological sort</a>
 * :warning: <a href="TopologicalSort/topological_sort_lexicographical.cpp.html">Topological sort (Lexicographically minimum)</a>
 * :warning: <a href="TreeUtils/centroid.cpp.html">Enumerate centroids</a>
 * :warning: <a href="TreeUtils/centroid_decomposition.cpp.html">Centroid decomposition</a>
-* :heavy_check_mark: <a href="TreeUtils/euler_tour_bfs.cpp.html">Euler tour (BFS)</a>
-* :heavy_check_mark: <a href="TreeUtils/euler_tour_vertex.cpp.html">Euler tour (Vertex)</a>
+* :x: <a href="TreeUtils/euler_tour_bfs.cpp.html">Euler tour (BFS)</a>
+* :x: <a href="TreeUtils/euler_tour_vertex.cpp.html">Euler tour (Vertex)</a>
 * :heavy_check_mark: <a href="TreeUtils/forest.cpp.html">Decompose forest</a>
-* :heavy_check_mark: <a href="TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
+* :question: <a href="TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
 * :heavy_check_mark: <a href="TreeUtils/lca_based_on_doubling.cpp.html">Lowest common ancestor (Doubling)</a>
 * :heavy_check_mark: <a href="TreeUtils/lca_based_on_hld.cpp.html">Lowest common ancestor (HLD)</a>
 * :heavy_check_mark: <a href="TreeUtils/rerooting.cpp.html">Rerooting DP</a>
@@ -74,11 +74,11 @@ layout: default
 * :heavy_check_mark: <a href="TreeUtils/tree_distance.cpp.html">Tree distance</a>
 * :heavy_check_mark: <a href="TreeUtils/tree_height.cpp.html">Tree height</a>
 * :heavy_check_mark: <a href="chinese_postman_problem.cpp.html">Chinese postman problem</a>
-* :heavy_check_mark: <a href="enumerate_triangles.cpp.html">Enumerate triangles</a>
+* :x: <a href="enumerate_triangles.cpp.html">Enumerate triangles</a>
 * :heavy_check_mark: <a href="travelling_salesman_problem.cpp.html">Travelling salesman problem</a>
-* :heavy_check_mark: <a href="two_sat.cpp.html">2-SAT</a>
+* :x: <a href="two_sat.cpp.html">2-SAT</a>
 * :heavy_check_mark: <a href="../Grid/grid_to_graph.cpp.html">Convert grid to graph</a>
-* :heavy_check_mark: <a href="../IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
 
 
 ## Verified with
@@ -107,19 +107,19 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_5_B/main.test.cpp.html">test/aoj/GRL_5_B/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_5_C/main.doubling.test.cpp.html">test/aoj/GRL_5_C/main.doubling.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_5_C/main.hld.test.cpp.html">test/aoj/GRL_5_C/main.hld.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/enumerate_triangles/main.test.cpp.html">test/yosupo-judge/enumerate_triangles/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/enumerate_triangles/main.test.cpp.html">test/yosupo-judge/enumerate_triangles/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/tree_diameter/main.test.cpp.html">test/yosupo-judge/tree_diameter/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/two_edge_connected_components/main.test.cpp.html">test/yosupo-judge/two_edge_connected_components/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yukicoder/1069/main.test.cpp.html">test/yukicoder/1069/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
 
 

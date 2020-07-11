@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Union-find
+# :question: Union-find
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3ff74e8366c88d06b530f361450b1117">Mylib/DataStructure/UnionFind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/UnionFind/unionfind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-06 22:54:09+09:00
 
 
 
@@ -39,13 +39,13 @@ layout: default
 ## Operations
 
 - `UnionFind(n)`
-- `get_root(int i)`
+- `root_of(int i)`
 	- `i`のrootを得る。
 - `is_same(int i, int j)`
 	- `i`と`j`が同じ連結成分かどうかを判定する。
 - `merge(int i, int j)`
 	- `i`と`j`を同じ連結成分にし、その連結成分のrootを返す。
-- `get_size(int i)`
+- `size_of(int i)`
 	- `i`の属する連結成分の大きさ。
 - `count_group()`
 	- 連結成分の個数を返す。
@@ -54,8 +54,8 @@ layout: default
 ## Required by
 
 * :warning: <a href="../../Graph/BipartiteGraph/construct_bipartite_graph.cpp.html">Check bipartite graph (Using union-find)</a>
-* :heavy_check_mark: <a href="../../Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
-* :heavy_check_mark: <a href="../../Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
+* :question: <a href="../../Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
+* :x: <a href="../../Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
 
 
 ## Verified with
@@ -64,8 +64,8 @@ layout: default
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/1337/main.test.cpp.html">test/aoj/1337/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2955/main.test.cpp.html">test/aoj/2955/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_2_A/main.kruskal.test.cpp.html">test/aoj/GRL_2_A/main.kruskal.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/unionfind/main.test.cpp.html">test/yosupo-judge/unionfind/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/unionfind/main.test.cpp.html">test/yosupo-judge/unionfind/main.test.cpp</a>
 
 
 ## Code
@@ -86,19 +86,20 @@ class UnionFind{
   int count;
 
 public:
+  UnionFind(){}
   UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
     std::iota(parent.begin(), parent.end(), 0);
   }
   
-  inline int get_root(int i){
+  int root_of(int i){
     if(parent[i] == i) return i;
-    else return parent[i] = get_root(parent[i]);
+    else return parent[i] = root_of(parent[i]);
   }
   
-  inline bool is_same(int i, int j){return get_root(i) == get_root(j);}
+  bool is_same(int i, int j){return root_of(i) == root_of(j);}
 
-  inline int merge(int i, int j){
-    int ri = get_root(i), rj = get_root(j);
+  int merge(int i, int j){
+    int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return ri;
     else{
       --count;
@@ -115,9 +116,9 @@ public:
     }
   }
 
-  inline int get_size(int i){return size[get_root(i)];}
+  int size_of(int i){return size[root_of(i)];}
 
-  inline int count_group(){return count;}
+  int count_group(){return count;}
 };
 
 ```
@@ -139,19 +140,20 @@ class UnionFind{
   int count;
 
 public:
+  UnionFind(){}
   UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
     std::iota(parent.begin(), parent.end(), 0);
   }
   
-  inline int get_root(int i){
+  int root_of(int i){
     if(parent[i] == i) return i;
-    else return parent[i] = get_root(parent[i]);
+    else return parent[i] = root_of(parent[i]);
   }
   
-  inline bool is_same(int i, int j){return get_root(i) == get_root(j);}
+  bool is_same(int i, int j){return root_of(i) == root_of(j);}
 
-  inline int merge(int i, int j){
-    int ri = get_root(i), rj = get_root(j);
+  int merge(int i, int j){
+    int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return ri;
     else{
       --count;
@@ -168,9 +170,9 @@ public:
     }
   }
 
-  inline int get_size(int i){return size[get_root(i)];}
+  int size_of(int i){return size[root_of(i)];}
 
-  inline int count_group(){return count;}
+  int count_group(){return count;}
 };
 
 ```

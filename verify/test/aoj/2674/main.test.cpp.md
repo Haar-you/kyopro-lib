@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#851bd501caf05418a029865ccd3f2b9f">test/aoj/2674</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2674/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-07-08 12:08:32+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2674</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">Succinct dictionary</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Wavelet matrix</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">Succinct dictionary</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Wavelet matrix</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -157,7 +157,7 @@ struct SuccinctDict{
   /**
    * @return [0,index)のbの個数
    */
-  inline int rank(int index, int b) const {
+  int rank(int index, int b) const {
     if(b == 0){
       return index - rank(index, 1);
     }else{
@@ -180,14 +180,14 @@ struct SuccinctDict{
   /**
    * @return [l, r)のbの個数
    */
-  inline int count(int l, int r, int b) const {
+  int count(int l, int r, int b) const {
     return rank(r, b) - rank(l, b);
   }
 
   /**
    * @return b[index]
    */
-  inline int access(int index) const {
+  int access(int index) const {
     return (data[index / block_size] >> (index % block_size)) & 1;
   }
 
@@ -195,7 +195,7 @@ struct SuccinctDict{
    * @note n in [1, N]
    * @return 先頭からn番目のbの位置
    */
-  inline std::optional<int> select(int n, int b) const {
+  std::optional<int> select(int n, int b) const {
     assert(n >= 1);
     
     if(rank(N, b) < n) return {};
@@ -254,7 +254,7 @@ public:
   /**
    * @return data[index]
    */
-  inline T access(int index){
+  T access(int index){
     assert(0 <= index and index < N);
     T ret = 0;
 
@@ -268,7 +268,7 @@ public:
     return ret;
   }
 
-  inline std::pair<int,int> rank_aux(int index, const T &val){
+  std::pair<int,int> rank_aux(int index, const T &val){
     int l = 0, r = index;
 
     for(int i = 0; i < B; ++i){
@@ -283,7 +283,7 @@ public:
   /**
    * @return data[0, index)に含まれるvalの個数
    */
-  inline int rank(int index, const T &val){
+  int rank(int index, const T &val){
     auto [l, r] = rank_aux(index, val);
     return r - l;
   }  
@@ -291,7 +291,7 @@ public:
   /*
    * @return data[l, r)に含まれるvalの個数
    */
-  inline int count(int l, int r, const T &val){
+  int count(int l, int r, const T &val){
     assert(0 <= l and l <= r and r <= N);
     return rank(r, val) - rank(l, val);
   }

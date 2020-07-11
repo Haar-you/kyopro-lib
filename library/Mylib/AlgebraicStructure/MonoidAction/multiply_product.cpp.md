@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp
+# :warning: Range multiply / Range product
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 
@@ -52,6 +52,7 @@ layout: default
 #include "Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp"
 
 /**
+ * @title Range multiply / Range product
  * @docs multiply_product.md
  */
 template <typename T, typename U>
@@ -60,14 +61,16 @@ struct MultiplyProduct{
   using monoid_update = ProductMonoid<U>;
   using value_type_get = typename monoid_get::value_type;
   using value_type_update = typename monoid_update::value_type;
+  monoid_get M1;
+  monoid_update M2;
 
-  static value_type_get id_get(){return monoid_get::id();}
-  static value_type_update id_update(){return monoid_update::id();}
+  value_type_get id_get() const {return M1.id();}
+  value_type_update id_update() const {return M2.id();}
 
-  static value_type_get op_get(value_type_get a, value_type_get b){return monoid_get::op(a, b);}
-  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
+  value_type_get op_get(value_type_get a, value_type_get b) const {return M1.op(a, b);}
+  value_type_update op_update(value_type_update a, value_type_update b) const {return M2.op(a, b);}
 
-  static value_type_get op(value_type_get a, value_type_update b, int len){
+  value_type_get op(value_type_get a, value_type_update b, int len) const {
     return a * times<monoid_update>(b, len);
   }
 };
@@ -86,21 +89,22 @@ struct MultiplyProduct{
 template <typename T>
 struct ProductMonoid{
   using value_type = T;
-  static value_type id(){return 1;}
-  static value_type op(value_type a, value_type b){return a * b;}
+  value_type id() const {return 1;}
+  value_type op(value_type a, value_type b) const {return a * b;}
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp"
 
 /**
  * @docs monoid_utils.md
  */
-template <typename M, typename value_type = typename M::value_type>
+template <typename Monoid, typename value_type = typename Monoid::value_type>
 value_type times(value_type a, int64_t p){
-  auto ret = M::id();
+  Monoid M;
+  auto ret = M.id();
 
   while(p > 0){
-    if(p & 1) ret = M::op(ret, a);
-    a = M::op(a, a);
+    if(p & 1) ret = M.op(ret, a);
+    a = M.op(a, a);
     p >>= 1;
   }
 
@@ -109,6 +113,7 @@ value_type times(value_type a, int64_t p){
 #line 4 "Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp"
 
 /**
+ * @title Range multiply / Range product
  * @docs multiply_product.md
  */
 template <typename T, typename U>
@@ -117,14 +122,16 @@ struct MultiplyProduct{
   using monoid_update = ProductMonoid<U>;
   using value_type_get = typename monoid_get::value_type;
   using value_type_update = typename monoid_update::value_type;
+  monoid_get M1;
+  monoid_update M2;
 
-  static value_type_get id_get(){return monoid_get::id();}
-  static value_type_update id_update(){return monoid_update::id();}
+  value_type_get id_get() const {return M1.id();}
+  value_type_update id_update() const {return M2.id();}
 
-  static value_type_get op_get(value_type_get a, value_type_get b){return monoid_get::op(a, b);}
-  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
+  value_type_get op_get(value_type_get a, value_type_get b) const {return M1.op(a, b);}
+  value_type_update op_update(value_type_update a, value_type_update b) const {return M2.op(a, b);}
 
-  static value_type_get op(value_type_get a, value_type_update b, int len){
+  value_type_get op(value_type_get a, value_type_update b, int len) const {
     return a * times<monoid_update>(b, len);
   }
 };

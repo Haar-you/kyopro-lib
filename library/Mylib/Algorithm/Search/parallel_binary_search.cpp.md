@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a7582795d3062b8fdf2ece0fd4f2d90d">Mylib/Algorithm/Search</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Search/parallel_binary_search.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-06 20:15:58+09:00
 
 
 
@@ -71,8 +71,8 @@ layout: default
  * @title Parallel binary search
  * @docs parallel_binary_search.md
  */
-template <typename F>
-auto parallel_binary_search(int M, int Q, F f){
+template <typename Init, typename Process, typename Checker>
+auto parallel_binary_search(int M, int Q, Init init, Process process, Checker checker){
   std::vector<int> lb(Q, -1), ub(Q, M);
 
   while(1){
@@ -88,20 +88,18 @@ auto parallel_binary_search(int M, int Q, F f){
 
     if(check) break;
 
-    f(
-      [&](auto process, auto checker){
-        for(int i = 0; i < M; ++i){
-          process(i);
-          for(int j : mids[i]){
-            if(checker(j)){
-              ub[j] = i;
-            }else{
-              lb[j] = i;
-            }
-          }
+    init();
+
+    for(int i = 0; i < M; ++i){
+      process(i);
+      for(int j : mids[i]){
+        if(checker(j)){
+          ub[j] = i;
+        }else{
+          lb[j] = i;
         }
       }
-    );
+    }
   }
 
   return ub;
@@ -121,8 +119,8 @@ auto parallel_binary_search(int M, int Q, F f){
  * @title Parallel binary search
  * @docs parallel_binary_search.md
  */
-template <typename F>
-auto parallel_binary_search(int M, int Q, F f){
+template <typename Init, typename Process, typename Checker>
+auto parallel_binary_search(int M, int Q, Init init, Process process, Checker checker){
   std::vector<int> lb(Q, -1), ub(Q, M);
 
   while(1){
@@ -138,20 +136,18 @@ auto parallel_binary_search(int M, int Q, F f){
 
     if(check) break;
 
-    f(
-      [&](auto process, auto checker){
-        for(int i = 0; i < M; ++i){
-          process(i);
-          for(int j : mids[i]){
-            if(checker(j)){
-              ub[j] = i;
-            }else{
-              lb[j] = i;
-            }
-          }
+    init();
+
+    for(int i = 0; i < M; ++i){
+      process(i);
+      for(int j : mids[i]){
+        if(checker(j)){
+          ub[j] = i;
+        }else{
+          lb[j] = i;
         }
       }
-    );
+    }
   }
 
   return ub;

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/dynamic_dual_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 
@@ -51,6 +51,7 @@ layout: default
 template <typename Monoid>
 class DynamicDualSegmentTree{
   using value_type = typename Monoid::value_type;
+  Monoid M;
 
   struct Node{
     value_type val;
@@ -64,25 +65,25 @@ class DynamicDualSegmentTree{
 
   Node* propagate(Node *node, int64_t l, int64_t r){
     if(r-l > 1){
-      if(not node->left) node->left = new Node(Monoid::id());
-      node->left->val = Monoid::op(node->val, node->left->val);
+      if(not node->left) node->left = new Node(M.id());
+      node->left->val = M.op(node->val, node->left->val);
 
-      if(not node->right) node->right = new Node(Monoid::id());
-      node->right->val = Monoid::op(node->val, node->right->val);
+      if(not node->right) node->right = new Node(M.id());
+      node->right->val = M.op(node->val, node->right->val);
 
-      node->val = Monoid::id();
+      node->val = M.id();
     }
     return node;
   }
 
   void update(Node *node, int64_t l, int64_t r, int64_t x, int64_t y, const value_type &val){
     if(r-l == 1){
-      if(x <= l && r <= y) node->val = Monoid::op(node->val, val);
+      if(x <= l && r <= y) node->val = M.op(node->val, val);
       umap[l] = node;
       return;
     }
     if(r < x || y < l) return;
-    else if(x <= l && r <= y) node->val = Monoid::op(node->val, val);
+    else if(x <= l && r <= y) node->val = M.op(node->val, val);
     else{
       int64_t m = (l+r)/2;
       propagate(node, l, r);
@@ -107,7 +108,7 @@ public:
     depth(n > 1 ? 64-__builtin_clzll(n-1) + 1 : 1),
     size(1LL << depth)
   {
-    root = new Node(Monoid::id());
+    root = new Node(M.id());
   }
 
   void update(int64_t s, int64_t t, value_type &x){
@@ -136,6 +137,7 @@ public:
 template <typename Monoid>
 class DynamicDualSegmentTree{
   using value_type = typename Monoid::value_type;
+  Monoid M;
 
   struct Node{
     value_type val;
@@ -149,25 +151,25 @@ class DynamicDualSegmentTree{
 
   Node* propagate(Node *node, int64_t l, int64_t r){
     if(r-l > 1){
-      if(not node->left) node->left = new Node(Monoid::id());
-      node->left->val = Monoid::op(node->val, node->left->val);
+      if(not node->left) node->left = new Node(M.id());
+      node->left->val = M.op(node->val, node->left->val);
 
-      if(not node->right) node->right = new Node(Monoid::id());
-      node->right->val = Monoid::op(node->val, node->right->val);
+      if(not node->right) node->right = new Node(M.id());
+      node->right->val = M.op(node->val, node->right->val);
 
-      node->val = Monoid::id();
+      node->val = M.id();
     }
     return node;
   }
 
   void update(Node *node, int64_t l, int64_t r, int64_t x, int64_t y, const value_type &val){
     if(r-l == 1){
-      if(x <= l && r <= y) node->val = Monoid::op(node->val, val);
+      if(x <= l && r <= y) node->val = M.op(node->val, val);
       umap[l] = node;
       return;
     }
     if(r < x || y < l) return;
-    else if(x <= l && r <= y) node->val = Monoid::op(node->val, val);
+    else if(x <= l && r <= y) node->val = M.op(node->val, val);
     else{
       int64_t m = (l+r)/2;
       propagate(node, l, r);
@@ -192,7 +194,7 @@ public:
     depth(n > 1 ? 64-__builtin_clzll(n-1) + 1 : 1),
     size(1LL << depth)
   {
-    root = new Node(Monoid::id());
+    root = new Node(M.id());
   }
 
   void update(int64_t s, int64_t t, value_type &x){

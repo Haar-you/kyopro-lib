@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Segment tree beats
+# :x: Segment tree beats
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/segment_tree_beats.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-08 12:08:32+09:00
 
 
 
@@ -66,7 +66,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp.html">test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp.html">test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp</a>
 
 
 ## Code
@@ -115,10 +115,10 @@ public:
   {}
 
 private:
-  inline int lc(int i) const {return i << 1 | 0;} // left child
-  inline int rc(int i) const {return i << 1 | 1;} // right child
+  int lc(int i) const {return i << 1 | 0;} // left child
+  int rc(int i) const {return i << 1 | 1;} // right child
   
-  inline void update_node_max(int i, value_type x){
+  void update_node_max(int i, value_type x){
     sum[i] += (x - fst_max[i]) * max_count[i];
 
     if(fst_max[i] == fst_min[i]) fst_max[i] = fst_min[i] = x;
@@ -126,7 +126,7 @@ private:
     else fst_max[i] = x;
   }
 
-  inline void update_node_min(int i, value_type x){
+  void update_node_min(int i, value_type x){
     sum[i] += (x - fst_min[i]) * min_count[i];
 
     if(fst_max[i] == fst_min[i]) fst_max[i] = fst_min[i] = x;
@@ -134,7 +134,7 @@ private:
     else fst_min[i] = x;
   }
 
-  inline void update_node_add(int i, value_type x){
+  void update_node_add(int i, value_type x){
     const int len = hsize >> (31 - __builtin_clz(i));
 
     sum[i] += x * len;
@@ -146,7 +146,7 @@ private:
     lazy_add[i] += x;
   }
   
-  inline void propagate(int i){
+  void propagate(int i){
     if(i >= hsize) return;
 
     if(lazy_add[i] != 0){
@@ -162,7 +162,7 @@ private:
     if(fst_min[i] > fst_min[rc(i)]) update_node_min(rc(i), fst_min[i]);
   }
 
-  inline void bottom_up(int i){
+  void bottom_up(int i){
     const int L = lc(i);
     const int R = rc(i);
     
@@ -331,10 +331,10 @@ public:
   {}
 
 private:
-  inline int lc(int i) const {return i << 1 | 0;} // left child
-  inline int rc(int i) const {return i << 1 | 1;} // right child
+  int lc(int i) const {return i << 1 | 0;} // left child
+  int rc(int i) const {return i << 1 | 1;} // right child
   
-  inline void update_node_max(int i, value_type x){
+  void update_node_max(int i, value_type x){
     sum[i] += (x - fst_max[i]) * max_count[i];
 
     if(fst_max[i] == fst_min[i]) fst_max[i] = fst_min[i] = x;
@@ -342,7 +342,7 @@ private:
     else fst_max[i] = x;
   }
 
-  inline void update_node_min(int i, value_type x){
+  void update_node_min(int i, value_type x){
     sum[i] += (x - fst_min[i]) * min_count[i];
 
     if(fst_max[i] == fst_min[i]) fst_max[i] = fst_min[i] = x;
@@ -350,7 +350,7 @@ private:
     else fst_min[i] = x;
   }
 
-  inline void update_node_add(int i, value_type x){
+  void update_node_add(int i, value_type x){
     const int len = hsize >> (31 - __builtin_clz(i));
 
     sum[i] += x * len;
@@ -362,7 +362,7 @@ private:
     lazy_add[i] += x;
   }
   
-  inline void propagate(int i){
+  void propagate(int i){
     if(i >= hsize) return;
 
     if(lazy_add[i] != 0){
@@ -378,7 +378,7 @@ private:
     if(fst_min[i] > fst_min[rc(i)]) update_node_min(rc(i), fst_min[i]);
   }
 
-  inline void bottom_up(int i){
+  void bottom_up(int i){
     const int L = lc(i);
     const int R = rc(i);
     

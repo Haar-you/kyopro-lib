@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: LiChao segment tree
+# :x: LiChao segment tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0d6a910a839d6d45cd0c637d5901795e">Mylib/DataStructure/ConvexHullTrick</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-08 12:08:32+09:00
 
 
 
@@ -62,8 +62,8 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/line_add_get_min/main.test.cpp.html">test/yosupo-judge/line_add_get_min/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/segment_add_get_min/main.test.cpp.html">test/yosupo-judge/segment_add_get_min/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/line_add_get_min/main.test.cpp.html">test/yosupo-judge/line_add_get_min/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/segment_add_get_min/main.test.cpp.html">test/yosupo-judge/segment_add_get_min/main.test.cpp</a>
 
 
 ## Code
@@ -92,7 +92,7 @@ class LiChaoSegmentTree{
   std::vector<std::optional<line>> data;
   std::vector<std::pair<int,int>> range;
 
-  inline T chm(const T &a, const T &b) const {
+  T chm(const T &a, const T &b) const {
     return cmp(a, b) ? a : b;
   }
 
@@ -122,7 +122,7 @@ public:
     init_range(1, 0, n);
   }
 
-  inline T apply(const line &l, const T &x) const {
+  T apply(const line &l, const T &x) const {
     return l.first * x + l.second;
   }
 
@@ -162,12 +162,12 @@ private:
   }
   
 public:
-  inline void add_line(T a, T b){
+  void add_line(T a, T b){
     update(1, std::make_pair(a, b), 0, n);
   }
 
   // [l, r)
-  inline void add_segment(T l, T r, T a, T b){
+  void add_segment(T l, T r, T a, T b){
     int left = std::lower_bound(xs.begin(), xs.end(), l) - xs.begin();
     int right = std::lower_bound(xs.begin(), xs.end(), r) - xs.begin();
 
@@ -191,7 +191,7 @@ public:
   }
 
 public:
-  inline auto query(const T &x) const {
+  auto query(const T &x) const {
     const int i = std::lower_bound(xs.begin(), xs.end(), x) - xs.begin();
     int k = i + n;
     
@@ -246,7 +246,7 @@ class LiChaoSegmentTree{
   std::vector<std::optional<line>> data;
   std::vector<std::pair<int,int>> range;
 
-  inline T chm(const T &a, const T &b) const {
+  T chm(const T &a, const T &b) const {
     return cmp(a, b) ? a : b;
   }
 
@@ -276,7 +276,7 @@ public:
     init_range(1, 0, n);
   }
 
-  inline T apply(const line &l, const T &x) const {
+  T apply(const line &l, const T &x) const {
     return l.first * x + l.second;
   }
 
@@ -316,12 +316,12 @@ private:
   }
   
 public:
-  inline void add_line(T a, T b){
+  void add_line(T a, T b){
     update(1, std::make_pair(a, b), 0, n);
   }
 
   // [l, r)
-  inline void add_segment(T l, T r, T a, T b){
+  void add_segment(T l, T r, T a, T b){
     int left = std::lower_bound(xs.begin(), xs.end(), l) - xs.begin();
     int right = std::lower_bound(xs.begin(), xs.end(), r) - xs.begin();
 
@@ -345,7 +345,7 @@ public:
   }
 
 public:
-  inline auto query(const T &x) const {
+  auto query(const T &x) const {
     const int i = std::lower_bound(xs.begin(), xs.end(), x) - xs.begin();
     int k = i + n;
     

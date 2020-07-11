@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Dynamic segment tree
+# :x: Dynamic segment tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/789/main.test.cpp.html">test/yukicoder/789/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/789/main.test.cpp.html">test/yukicoder/789/main.test.cpp</a>
 
 
 ## Code
@@ -55,6 +55,7 @@ layout: default
 template <typename Monoid>
 class DynamicSegmentTree{
   using value_type = typename Monoid::value_type;
+  Monoid M;
   
   struct Node{
     value_type val;
@@ -66,7 +67,7 @@ class DynamicSegmentTree{
   Node *root = nullptr;
 
   value_type eval(Node *t) const {
-    return t ? t->val : Monoid::id();
+    return t ? t->val : M.id();
   }
 
   Node* update_aux(Node *node, int64_t l, int64_t r, int64_t pos, const value_type &val){
@@ -78,17 +79,17 @@ class DynamicSegmentTree{
       if(!node) node = new Node(val);
       if(pos < m) node->left = update_aux(node->left, l, m, pos, val);
       else node->right = update_aux(node->right, m, r, pos, val);
-      node->val = Monoid::op(eval(node->left), eval(node->right));
+      node->val = M.op(eval(node->left), eval(node->right));
     }
     return node;
   }
 
   value_type get_aux(Node* node, int64_t l, int64_t r, int64_t x, int64_t y) const {
-    if(!node) return Monoid::id();
-    if(x <= l && r <= y) return node ? node->val : Monoid::id();
-    if(r < x || y < l) return Monoid::id();
+    if(!node) return M.id();
+    if(x <= l && r <= y) return node ? node->val : M.id();
+    if(r < x || y < l) return M.id();
     int64_t m = (l + r) >> 1;
-    return Monoid::op(get_aux(node->left, l, m, x, y), get_aux(node->right, m, r, x, y));
+    return M.op(get_aux(node->left, l, m, x, y), get_aux(node->right, m, r, x, y));
   }
 
 public:
@@ -96,7 +97,7 @@ public:
     depth(n > 1 ? 64-__builtin_clzll(n-1) + 1 : 1),
     size(1LL << depth)
   {
-    root = new Node(Monoid::id());
+    root = new Node(M.id());
   }
 
   void update(int64_t i, const value_type &x){
@@ -127,6 +128,7 @@ public:
 template <typename Monoid>
 class DynamicSegmentTree{
   using value_type = typename Monoid::value_type;
+  Monoid M;
   
   struct Node{
     value_type val;
@@ -138,7 +140,7 @@ class DynamicSegmentTree{
   Node *root = nullptr;
 
   value_type eval(Node *t) const {
-    return t ? t->val : Monoid::id();
+    return t ? t->val : M.id();
   }
 
   Node* update_aux(Node *node, int64_t l, int64_t r, int64_t pos, const value_type &val){
@@ -150,17 +152,17 @@ class DynamicSegmentTree{
       if(!node) node = new Node(val);
       if(pos < m) node->left = update_aux(node->left, l, m, pos, val);
       else node->right = update_aux(node->right, m, r, pos, val);
-      node->val = Monoid::op(eval(node->left), eval(node->right));
+      node->val = M.op(eval(node->left), eval(node->right));
     }
     return node;
   }
 
   value_type get_aux(Node* node, int64_t l, int64_t r, int64_t x, int64_t y) const {
-    if(!node) return Monoid::id();
-    if(x <= l && r <= y) return node ? node->val : Monoid::id();
-    if(r < x || y < l) return Monoid::id();
+    if(!node) return M.id();
+    if(x <= l && r <= y) return node ? node->val : M.id();
+    if(r < x || y < l) return M.id();
     int64_t m = (l + r) >> 1;
-    return Monoid::op(get_aux(node->left, l, m, x, y), get_aux(node->right, m, r, x, y));
+    return M.op(get_aux(node->left, l, m, x, y), get_aux(node->right, m, r, x, y));
   }
 
 public:
@@ -168,7 +170,7 @@ public:
     depth(n > 1 ? 64-__builtin_clzll(n-1) + 1 : 1),
     size(1LL << depth)
   {
-    root = new Node(Monoid::id());
+    root = new Node(M.id());
   }
 
   void update(int64_t i, const value_type &x){

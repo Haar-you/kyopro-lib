@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#59b5a0a6c0973fef022e4b1a7cf092fc">test/aoj/DSL_5_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_5_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-07-08 12:08:32+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_A</a>
@@ -40,8 +40,8 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Imos/imos_1d.cpp.html">1D Imos algorithm</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -96,6 +96,8 @@ int main(){
  * @docs imos_1d.md
  */
 template <typename T> struct Imos1D{
+  using value_type = T;
+  
   std::vector<T> data;
   Imos1D(int n): data(n+1){}
 
@@ -110,7 +112,7 @@ template <typename T> struct Imos1D{
     }
   }
 
-  inline const T operator[](size_t i) const {return data[i];}
+  T operator[](size_t i) const {return data[i];}
 };
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/776/main.test.cpp
+# :x: test/yukicoder/776/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a8c189a9cd3b51f204ab4e40b62c7dab">test/yukicoder/776</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/776/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-28 03:01:30+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/776">https://yukicoder.me/problems/no/776</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp.html">Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp.html">Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -149,11 +149,11 @@ struct MaxPartialSumMonoid{
   
   using value_type = std::optional<MaxPartialSum>;
   
-  static value_type id(){
+  value_type id() const {
     return std::nullopt;
   }
   
-  static value_type op(const value_type &a, const value_type &b){
+  value_type op(const value_type &a, const value_type &b) const {
     if(not a) return b;
     if(not b) return a;
 
@@ -176,6 +176,7 @@ struct MaxPartialSumMonoid{
 template <typename Monoid>
 class SegmentTree{
   using value_type = typename Monoid::value_type;
+  Monoid M;
   
   int depth, size, hsize;
   std::vector<value_type> data;
@@ -185,41 +186,41 @@ public:
   SegmentTree(int n):
     depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
     size(1 << depth), hsize(size / 2),
-    data(size, Monoid::id())
+    data(size, M.id())
   {}
 
-  inline auto operator[](int i) const {return at(i);}
-  inline auto at(int i) const {return data[hsize + i];}
+  auto operator[](int i) const {return at(i);}
+  auto at(int i) const {return data[hsize + i];}
   
-  inline auto get(int x, int y) const { // [x,y)
-    value_type ret_left = Monoid::id();
-    value_type ret_right = Monoid::id();
+  auto get(int x, int y) const { // [x,y)
+    value_type ret_left = M.id();
+    value_type ret_right = M.id();
     
     int l = x + hsize, r = y + hsize;
     while(l < r){
-      if(r & 1) ret_right = Monoid::op(data[--r], ret_right);
-      if(l & 1) ret_left = Monoid::op(ret_left, data[l++]);
+      if(r & 1) ret_right = M.op(data[--r], ret_right);
+      if(l & 1) ret_left = M.op(ret_left, data[l++]);
       l >>= 1, r >>= 1;
     }
     
-    return Monoid::op(ret_left, ret_right);
+    return M.op(ret_left, ret_right);
   }
 
-  inline void update(int i, const value_type &x){
+  void update(int i, const value_type &x){
     i += hsize;
     data[i] = x;
-    while(i > 1) i >>= 1, data[i] = Monoid::op(data[i << 1 | 0], data[i << 1 | 1]);
+    while(i > 1) i >>= 1, data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
-  inline void init_with_vector(const std::vector<T> &val){
-    data.assign(size, Monoid::id());
+  void init_with_vector(const std::vector<T> &val){
+    data.assign(size, M.id());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
-    for(int i = hsize-1; i >= 1; --i) data[i] = Monoid::op(data[i << 1 | 0], data[i << 1 | 1]);
+    for(int i = hsize-1; i >= 1; --i) data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
-  inline void init(const T &val){
+  void init(const T &val){
     init_with_vector(std::vector<value_type>(hsize, val));
   }  
 };

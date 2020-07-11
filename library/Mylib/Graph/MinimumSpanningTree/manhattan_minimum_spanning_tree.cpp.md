@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Manhattan distance MST
+# :x: Manhattan distance MST
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#cb5ed95d97b7ee8efcbdf177a47dc7b7">Mylib/Graph/MinimumSpanningTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-12 19:38:51+09:00
+    - Last commit date: 2020-07-11 14:07:48+09:00
 
 
 
@@ -51,16 +51,16 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
-* :heavy_check_mark: <a href="../../DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
-* :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
-* :heavy_check_mark: <a href="kruskal.cpp.html">Kruskal algorithm</a>
-* :heavy_check_mark: <a href="../graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
+* :question: <a href="../../DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
+* :question: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :question: <a href="kruskal.cpp.html">Kruskal algorithm</a>
+* :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
 
 
 ## Code
@@ -86,7 +86,7 @@ layout: default
  * @docs manhattan_minimum_spanning_tree.md
  */
 template <typename T>
-std::vector<Edge<T>>  manhattan_minimum_spanning_tree(std::vector<T> x, std::vector<T> y){
+std::vector<Edge<T>> manhattan_minimum_spanning_tree(std::vector<T> x, std::vector<T> y){
   const int N = x.size();
   Graph<T> g(N);
   SegmentTree<MinMonoid<std::pair<T, int>>> seg(N);
@@ -163,8 +163,8 @@ template <typename T>
 struct MinMonoid{
   using value_type = std::optional<T>;
   
-  static value_type id(){return {};}
-  static value_type op(const value_type &a, const value_type &b){
+  value_type id() const {return {};}
+  value_type op(const value_type &a, const value_type &b) const {
     if(not a) return b;
     if(not b) return a;
     return {std::min(*a, *b)};
@@ -179,6 +179,7 @@ struct MinMonoid{
 template <typename Monoid>
 class SegmentTree{
   using value_type = typename Monoid::value_type;
+  Monoid M;
   
   int depth, size, hsize;
   std::vector<value_type> data;
@@ -188,41 +189,41 @@ public:
   SegmentTree(int n):
     depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
     size(1 << depth), hsize(size / 2),
-    data(size, Monoid::id())
+    data(size, M.id())
   {}
 
-  inline auto operator[](int i) const {return at(i);}
-  inline auto at(int i) const {return data[hsize + i];}
+  auto operator[](int i) const {return at(i);}
+  auto at(int i) const {return data[hsize + i];}
   
-  inline auto get(int x, int y) const { // [x,y)
-    value_type ret_left = Monoid::id();
-    value_type ret_right = Monoid::id();
+  auto get(int x, int y) const { // [x,y)
+    value_type ret_left = M.id();
+    value_type ret_right = M.id();
     
     int l = x + hsize, r = y + hsize;
     while(l < r){
-      if(r & 1) ret_right = Monoid::op(data[--r], ret_right);
-      if(l & 1) ret_left = Monoid::op(ret_left, data[l++]);
+      if(r & 1) ret_right = M.op(data[--r], ret_right);
+      if(l & 1) ret_left = M.op(ret_left, data[l++]);
       l >>= 1, r >>= 1;
     }
     
-    return Monoid::op(ret_left, ret_right);
+    return M.op(ret_left, ret_right);
   }
 
-  inline void update(int i, const value_type &x){
+  void update(int i, const value_type &x){
     i += hsize;
     data[i] = x;
-    while(i > 1) i >>= 1, data[i] = Monoid::op(data[i << 1 | 0], data[i << 1 | 1]);
+    while(i > 1) i >>= 1, data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
-  inline void init_with_vector(const std::vector<T> &val){
-    data.assign(size, Monoid::id());
+  void init_with_vector(const std::vector<T> &val){
+    data.assign(size, M.id());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
-    for(int i = hsize-1; i >= 1; --i) data[i] = Monoid::op(data[i << 1 | 0], data[i << 1 | 1]);
+    for(int i = hsize-1; i >= 1; --i) data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
-  inline void init(const T &val){
+  void init(const T &val){
     init_with_vector(std::vector<value_type>(hsize, val));
   }  
 };
@@ -264,19 +265,20 @@ class UnionFind{
   int count;
 
 public:
+  UnionFind(){}
   UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
     std::iota(parent.begin(), parent.end(), 0);
   }
   
-  inline int get_root(int i){
+  int root_of(int i){
     if(parent[i] == i) return i;
-    else return parent[i] = get_root(parent[i]);
+    else return parent[i] = root_of(parent[i]);
   }
   
-  inline bool is_same(int i, int j){return get_root(i) == get_root(j);}
+  bool is_same(int i, int j){return root_of(i) == root_of(j);}
 
-  inline int merge(int i, int j){
-    int ri = get_root(i), rj = get_root(j);
+  int merge(int i, int j){
+    int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return ri;
     else{
       --count;
@@ -293,9 +295,9 @@ public:
     }
   }
 
-  inline int get_size(int i){return size[get_root(i)];}
+  int size_of(int i){return size[root_of(i)];}
 
-  inline int count_group(){return count;}
+  int count_group(){return count;}
 };
 #line 6 "Mylib/Graph/MinimumSpanningTree/kruskal.cpp"
 
@@ -335,7 +337,7 @@ std::vector<Edge<T>> kruskal(const Graph<T> &graph){
  * @docs manhattan_minimum_spanning_tree.md
  */
 template <typename T>
-std::vector<Edge<T>>  manhattan_minimum_spanning_tree(std::vector<T> x, std::vector<T> y){
+std::vector<Edge<T>> manhattan_minimum_spanning_tree(std::vector<T> x, std::vector<T> y){
   const int N = x.size();
   Graph<T> g(N);
   SegmentTree<MinMonoid<std::pair<T, int>>> seg(N);

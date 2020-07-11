@@ -25,31 +25,31 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Topological sort
+# :x: Topological sort
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#5cfab8f1bec9f4a2c22b88bddb7720db">Mylib/Graph/TopologicalSort</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TopologicalSort/topological_sort.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-08 22:35:50+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../graph_template.cpp.html">Graph template</a>
+* :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="../two_sat.cpp.html">2-SAT</a>
+* :x: <a href="../two_sat.cpp.html">2-SAT</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
 
 
 ## Code
@@ -79,12 +79,12 @@ std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
   }
 
   std::queue<int> q;
-  for(int i = n-1; i >= 0; --i){
+  for(int i = 0; i < n; ++i){
     if(indeg[i] == 0) q.push(i);
   }
 
   std::vector<int> ret;
-  while(!q.empty()){
+  while(not q.empty()){
     int cur = q.front(); q.pop();
     ret.push_back(cur);
     for(auto &e : g[cur]){
@@ -157,12 +157,12 @@ std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
   }
 
   std::queue<int> q;
-  for(int i = n-1; i >= 0; --i){
+  for(int i = 0; i < n; ++i){
     if(indeg[i] == 0) q.push(i);
   }
 
   std::vector<int> ret;
-  while(!q.empty()){
+  while(not q.empty()){
     int cur = q.front(); q.pop();
     ret.push_back(cur);
     for(auto &e : g[cur]){
