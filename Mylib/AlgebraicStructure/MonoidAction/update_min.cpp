@@ -1,6 +1,5 @@
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/update.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/min.cpp"
+#include <optional>
 
 /**
  * @title Range update / Range min
@@ -8,16 +7,18 @@
  */
 template <typename T, typename U>
 struct UpdateMin{
-  using monoid_get = MinMonoid<T>;
-  using monoid_update = UpdateMonoid<U>;
-  using value_type_get = typename monoid_get::value_type;
-  using value_type_update = typename monoid_update::value_type;
+  using value_type_get = std::optional<T>;
+  using value_type_update = std::optional<U>;
 
-  static value_type_get id_get(){return monoid_get::id();}
-  static value_type_update id_update(){return monoid_update::id();}
+  static value_type_get id_get(){return {};}
+  static value_type_update id_update(){return {};}
 
-  static value_type_get op_get(value_type_get a, value_type_get b){return monoid_get::op(a, b);}
-  static value_type_update op_update(value_type_update a, value_type_update b){return monoid_update::op(a, b);}
+  static value_type_get op_get(value_type_get a, value_type_get b){
+    if(not a) return b;
+    if(not b) return a;
+    return {std::min(*a, *b)};
+  }
+  static value_type_update op_update(value_type_update a, value_type_update b){return (a ? a : b);}
 
   static value_type_get op(value_type_get a, value_type_update b, int){
     return b ? *b : a;
