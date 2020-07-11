@@ -7,6 +7,7 @@
 template <typename Monoid>
 class DynamicSegmentTree{
   using value_type = typename Monoid::value_type;
+  Monoid M;
   
   struct Node{
     value_type val;
@@ -18,7 +19,7 @@ class DynamicSegmentTree{
   Node *root = nullptr;
 
   value_type eval(Node *t) const {
-    return t ? t->val : Monoid::id();
+    return t ? t->val : M.id();
   }
 
   Node* update_aux(Node *node, int64_t l, int64_t r, int64_t pos, const value_type &val){
@@ -30,17 +31,17 @@ class DynamicSegmentTree{
       if(!node) node = new Node(val);
       if(pos < m) node->left = update_aux(node->left, l, m, pos, val);
       else node->right = update_aux(node->right, m, r, pos, val);
-      node->val = Monoid::op(eval(node->left), eval(node->right));
+      node->val = M.op(eval(node->left), eval(node->right));
     }
     return node;
   }
 
   value_type get_aux(Node* node, int64_t l, int64_t r, int64_t x, int64_t y) const {
-    if(!node) return Monoid::id();
-    if(x <= l && r <= y) return node ? node->val : Monoid::id();
-    if(r < x || y < l) return Monoid::id();
+    if(!node) return M.id();
+    if(x <= l && r <= y) return node ? node->val : M.id();
+    if(r < x || y < l) return M.id();
     int64_t m = (l + r) >> 1;
-    return Monoid::op(get_aux(node->left, l, m, x, y), get_aux(node->right, m, r, x, y));
+    return M.op(get_aux(node->left, l, m, x, y), get_aux(node->right, m, r, x, y));
   }
 
 public:
@@ -48,7 +49,7 @@ public:
     depth(n > 1 ? 64-__builtin_clzll(n-1) + 1 : 1),
     size(1LL << depth)
   {
-    root = new Node(Monoid::id());
+    root = new Node(M.id());
   }
 
   void update(int64_t i, const value_type &x){

@@ -9,6 +9,7 @@ template <typename Monoid>
 struct LinkCutNode{
   using value_type = typename Monoid::value_type;
   using node = LinkCutNode;
+  constexpr static Monoid M = Monoid();
 
   int subsize;
   node *left, *right, *parent;
@@ -21,8 +22,8 @@ struct LinkCutNode{
     right(nullptr),
     parent(nullptr),
     rev(false),
-    value(Monoid::id()),
-    result(Monoid::id())
+    value(M.id()),
+    result(M.id())
   {}
 
   bool is_root() const {
@@ -36,13 +37,13 @@ struct LinkCutNode{
     if(left){
       left->push_down();
       subsize += left->subsize;
-      result = Monoid::op(result, left->result);
+      result = M.op(result, left->result);
     }
 
     if(right){
       right->push_down();
       subsize += right->subsize;
-      result = Monoid::op(result, right->result);
+      result = M.op(result, right->result);
     }
   }
 
@@ -156,6 +157,7 @@ template <typename Monoid>
 class LinkCutTree{
   using value_type = typename Monoid::value_type;
   using node = LinkCutNode<Monoid>;
+  constexpr static Monoid M = Monoid();
 
   int N;
   std::vector<node*> nodes;

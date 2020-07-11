@@ -9,14 +9,15 @@
 template <typename Monoid>
 struct WithMaxIndex{
   using value_type = std::pair<typename Monoid::value_type, int64_t>;
+  Monoid M;
 
-  static value_type id(){
-    return {Monoid::id(), 0};
+  value_type id() const {
+    return {M.id(), 0};
   }
 
-  static value_type op(const value_type &a, const value_type &b){
+  value_type op(const value_type &a, const value_type &b) const {
     if(a.first == b.first) return {a.first, std::max(a.second, b.second)};
-    if(Monoid::op(a.first, b.first) == a.first) return a;
+    if(M.op(a.first, b.first) == a.first) return a;
     else return b;
   }
 };

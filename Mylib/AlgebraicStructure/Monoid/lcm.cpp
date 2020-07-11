@@ -7,6 +7,6 @@
 template <typename T>
 struct LcmMonoid{
   using value_type = T;
-  static value_type id(){return 1;}
-  static value_type op(value_type a, value_type b){return std::lcm(a, b);}
+  value_type id() const {return 1;}
+  value_type op(value_type a, value_type b) const {return std::lcm(a, b);}
 };

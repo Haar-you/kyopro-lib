@@ -13,8 +13,6 @@ namespace treap{
     using node = TreapNode<Monoid>;
     using super = Treap<Monoid>;
     
-  protected:
-  
   public:
     OrderedTreap(): super(){}
     

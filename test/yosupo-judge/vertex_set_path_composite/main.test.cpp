@@ -15,7 +15,8 @@
 #include "Mylib/IO/input_vector.cpp"
 
 using mint = ModInt<998244353>;
-using M = DualMonoid<AffineMonoid<mint>>;
+using Monoid = DualMonoid<AffineMonoid<mint>>;
+Monoid M;
 
 int main(){
   std::cin.tie(0);
@@ -24,12 +25,10 @@ int main(){
   int N, Q; std::cin >> N >> Q;
 
   auto f = input_vector<std::pair<mint, mint>>(N);
-
   auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
   
   HLDecomposition<int> hld(tree, 0);
-
-  SegmentTreeBothFoldable<M> seg(N);
+  SegmentTreeBothFoldable<Monoid> seg(N);
   
   for(int i = 0; i < N; ++i){
     seg.update(hld.get_id(i), f[i]);
@@ -43,20 +42,20 @@ int main(){
     }else{
       int64_t u, v, x; std::cin >> u >> v >> x;
 
-      auto left = M::id(), right = M::id();
+      auto left = M.id(), right = M.id();
 
       hld.path_query_vertex(
         u,
         v,
         [&](int l, int r){
-          left = M::op(left, seg.fold_right(l, r));
+          left = M.op(left, seg.fold_right(l, r));
         },
         [&](int l, int r){
-          right = M::op(seg.fold_left(l, r), right);
+          right = M.op(seg.fold_left(l, r), right);
         }
       );
       
-      auto a = M::op(left, right);
+      auto a = M.op(left, right);
 
       mint ans = a.first * x + a.second;
       std::cout << ans << "\n";

@@ -6,6 +6,6 @@
 template <typename T>
 struct BitAndMonoid{
   using value_type = T;
-  static value_type id(){return ~(value_type)0;}
-  static value_type op(value_type a, value_type b){return a & b;}
+  value_type id() const {return ~(value_type)0;}
+  value_type op(value_type a, value_type b) const {return a & b;}
 };

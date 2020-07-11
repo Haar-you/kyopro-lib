@@ -10,6 +10,7 @@
 template <typename Semilattice>
 class SparseTable2D{
   using value_type = typename Semilattice::value_type;
+  Semilattice S;
   
   std::vector<std::vector<std::vector<std::vector<value_type>>>> a;
   std::vector<int> log_table;
@@ -31,7 +32,7 @@ public:
       for(int y = 1; y < logm; ++y){
         for(int j = 0; j < m; ++j){
           a[i][0][j][y] =
-            Semilattice::op(a[i][0][j][y-1],
+            S.op(a[i][0][j][y-1],
                           a[i][0][std::min<int>(m-1, j+(1<<(y-1)))][y-1]);
         }
       }
@@ -42,7 +43,7 @@ public:
         for(int y = 0; y < logm; ++y){
           for(int j = 0; j < m; ++j){
             a[i][x][j][y] =
-              Semilattice::op(a[i][x-1][j][y],
+              S.op(a[i][x-1][j][y],
                             a[std::min<int>(n-1, i+(1<<(x-1)))][x-1][j][y]);
           }
         }
@@ -57,9 +58,9 @@ public:
     int kr = log_table[r2-r1];
     int kc = log_table[c2-c1];
     
-    value_type x = Semilattice::op(a[r1][kr][c1][kc], a[r1][kr][c2-(1<<kc)][kc]);
-    value_type y = Semilattice::op(a[r2-(1<<kr)][kr][c1][kc], a[r2-(1<<kr)][kr][c2-(1<<kc)][kc]);
+    value_type x = S.op(a[r1][kr][c1][kc], a[r1][kr][c2-(1<<kc)][kc]);
+    value_type y = S.op(a[r2-(1<<kr)][kr][c1][kc], a[r2-(1<<kr)][kr][c2-(1<<kc)][kc]);
     
-    return Semilattice::op(x, y);
+    return S.op(x, y);
   }
 };

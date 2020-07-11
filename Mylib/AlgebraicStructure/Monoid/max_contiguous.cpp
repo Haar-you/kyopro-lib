@@ -7,11 +7,11 @@
 struct MaxContiguousMonoid{
   using value_type = std::tuple<int, int, int, int>;
 
-  static value_type id(){
+  value_type id() const {
     return {0, 0, 0, 0};
   }
 
-  static value_type op(const value_type &a, const value_type &b){
+  value_type op(const value_type &a, const value_type &b) const {
     auto [ca, la, ra, lena] = a;
     auto [cb, lb, rb, lenb] = b;
 

@@ -6,8 +6,8 @@
 template <typename T>
 struct AddMulSemiring{
   using value_type = T;
-  static value_type id_add(){return 0;}
-  static value_type id_mul(){return 1;}
-  static value_type add(value_type a, value_type b){return a + b;}
-  static value_type mul(value_type a, value_type b){return a * b;}
+  value_type id_add() const {return 0;}
+  value_type id_mul() const {return 1;}
+  value_type add(value_type a, value_type b) const {return a + b;}
+  value_type mul(value_type a, value_type b) const {return a * b;}
 };

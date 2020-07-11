@@ -7,6 +7,6 @@
 template <typename T>
 struct GcdMonoid{
   using value_type = T;
-  static value_type id(){return 0;}
-  static value_type op(value_type a, value_type b){return std::gcd(a, b);}
+  value_type id() const {return 0;}
+  value_type op(value_type a, value_type b) const {return std::gcd(a, b);}
 };

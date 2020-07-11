@@ -11,6 +11,7 @@
 template <typename Monoid>
 class SegmentTree2D{
   using value_type = typename Monoid::value_type;
+  Monoid M;
 
   int N = 0;
   std::vector<int64_t> xs, ys;
@@ -75,7 +76,7 @@ public:
 
     while(i >= 1){
       int j = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y) - c_ys[i].begin();
-      segs[i].update(j, Monoid::op(segs[i][j], val));
+      segs[i].update(j, M.op(segs[i][j], val));
 
       i >>= 1;
     }
@@ -95,11 +96,11 @@ public:
     int l = std::lower_bound(c_xs.begin(), c_xs.end(), x1) - c_xs.begin() + x_size / 2;
     int r = std::lower_bound(c_xs.begin(), c_xs.end(), x2) - c_xs.begin() + x_size / 2;
 
-    value_type ret = Monoid::id();
+    value_type ret = M.id();
 
     while(l < r){
-      if(r & 1) ret = Monoid::op(ret, get_sub(--r, y1, y2));
-      if(l & 1) ret = Monoid::op(ret, get_sub(l++, y1, y2));
+      if(r & 1) ret = M.op(ret, get_sub(--r, y1, y2));
+      if(l & 1) ret = M.op(ret, get_sub(l++, y1, y2));
       l >>= 1;
       r >>= 1;
     }

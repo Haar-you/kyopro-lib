@@ -14,11 +14,11 @@ struct MaxPartialSumMonoid{
   
   using value_type = std::optional<MaxPartialSum>;
   
-  static value_type id(){
+  value_type id() const {
     return std::nullopt;
   }
   
-  static value_type op(const value_type &a, const value_type &b){
+  value_type op(const value_type &a, const value_type &b) const {
     if(not a) return b;
     if(not b) return a;
 

@@ -10,23 +10,23 @@ struct AddSquareSum{
   using value_type_get = std::pair<T, T>;
   using value_type_update = T;
 
-  static value_type_get id_get(){
+  value_type_get id_get() const {
     return std::make_pair(0, 0);
   }
 
-  static value_type_update id_update(){
+  value_type_update id_update() const {
     return 0;
   }
 
-  static value_type_get op_get(const value_type_get &a, const value_type_get &b){
+  value_type_get op_get(const value_type_get &a, const value_type_get &b) const {
     return std::make_pair(a.first + b.first, a.second + b.second);
   }
 
-  static value_type_update op_update(const value_type_update &a, const value_type_update &b){
+  value_type_update op_update(const value_type_update &a, const value_type_update &b) const {
     return a + b;
   }
   
-  static value_type_get op(const value_type_get &a, const value_type_update &b, int len){
+  value_type_get op(const value_type_get &a, const value_type_update &b, int len) const {
     return std::make_pair(a.first + b * len, a.second + b * (2 * a.first + b * len));
   }
 };

@@ -8,16 +8,16 @@
 template <typename Monoid>
 class DualSegmentTree{
   using value_type = typename Monoid::value_type;
-  
-private:
+  Monoid M;
+
   const int depth, size, hsize;
   std::vector<value_type> data;
   
   void propagate(int i){
     if(i < hsize){
-      data[i << 1 | 0] = Monoid::op(data[i], data[i << 1 | 0]);
-      data[i << 1 | 1] = Monoid::op(data[i], data[i << 1 | 1]);
-      data[i] = Monoid::id();
+      data[i << 1 | 0] = M.op(data[i], data[i << 1 | 0]);
+      data[i << 1 | 1] = M.op(data[i], data[i << 1 | 1]);
+      data[i] = M.id();
     }
   }
 
@@ -35,7 +35,7 @@ public:
   DualSegmentTree(int n):
     depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
     size(1 << depth), hsize(size / 2),
-    data(size, Monoid::id())
+    data(size, M.id())
   {}
 
   void update(int l, int r, const value_type &x){
@@ -46,8 +46,8 @@ public:
     int R = r + hsize;
     
     while(L < R){
-      if(R & 1) --R, data[R] = Monoid::op(x, data[R]);
-      if(L & 1) data[L] = Monoid::op(x, data[L]), ++L;
+      if(R & 1) --R, data[R] = M.op(x, data[R]);
+      if(L & 1) data[L] = M.op(x, data[L]), ++L;
       L >>= 1, R >>= 1;
     }
   }
@@ -59,7 +59,7 @@ public:
 
   template <typename T>
   void init_with_vector(const std::vector<T> &a){
-    data.assign(size, Monoid::id());
+    data.assign(size, M.id());
     for(int i = 0; i < (int)a.size(); ++i) data[hsize + i] = a[i];
   }
 
