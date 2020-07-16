@@ -8,11 +8,10 @@
 #include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
-using mint = RuntimeModInt;
-
 struct tag{};
+using mint = RuntimeModInt<tag>;
 using M = SquareMatrix<mint, tag>;
-     
+
 int main(){
   int n, m, a, b, c, t;
   while(std::cin >> n >> m >> a >> b >> c >> t, n){

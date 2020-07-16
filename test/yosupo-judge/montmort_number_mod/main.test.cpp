@@ -5,7 +5,8 @@
 #include "Mylib/Combinatorics/montmort_number.cpp"
 #include "Mylib/IO/join.cpp"
 
-using mint = RuntimeModInt;
+struct tag{};
+using mint = RuntimeModInt<tag>;
 
 int main(){
   int N, M; std::cin >> N >> M;
