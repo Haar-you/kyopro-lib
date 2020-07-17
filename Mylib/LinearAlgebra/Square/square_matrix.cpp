@@ -10,6 +10,7 @@ template <typename T, class Tag> struct SquareMatrix{
   using value_type = T;
   
   static int N;
+  static void init(int n){N = n;}
   std::vector<std::vector<T>> matrix;
   
   SquareMatrix(): matrix(N, std::vector<T>(N)){}

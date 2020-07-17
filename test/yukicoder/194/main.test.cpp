@@ -74,7 +74,7 @@ std::pair<mint,mint> solve2(int64_t N, int64_t K, std::vector<int> A){
 int main(){
   int64_t N, K; std::cin >> N >> K;
 
-  M::N = N;
+  M::init(N);
 
   auto A = input_vector<int>(N);
 

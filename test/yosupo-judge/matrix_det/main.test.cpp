@@ -17,7 +17,7 @@ int main(){
   
   int N; std::cin >> N;
 
-  Mat::N = N;
+  Mat::init(N);
 
   Mat m(input_vector<mint>(N, N));
 

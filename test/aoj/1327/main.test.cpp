@@ -15,8 +15,8 @@ using M = SquareMatrix<mint, tag>;
 int main(){
   int n, m, a, b, c, t;
   while(std::cin >> n >> m >> a >> b >> c >> t, n){
-    mint::M = m;
-    M::N = n;
+    mint::init(m);
+    M::init(n);
 
     auto s = input_vector<mint>(n);
      

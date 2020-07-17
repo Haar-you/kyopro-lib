@@ -11,7 +11,7 @@ using mint = RuntimeModInt<tag>;
 int main(){
   int N, M; std::cin >> N >> M;
 
-  mint::M = M;
+  mint::init(M);
 
   auto ans = montmort_number<mint>(1000000);
 
