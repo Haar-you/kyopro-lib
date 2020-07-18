@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#910a463805ae5ab8a646512f693c1fa3">test/yosupo-judge/montmort_number_mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/montmort_number_mod/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-18 05:35:58+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/montmort_number_mod">https://judge.yosupo.jp/problem/montmort_number_mod</a>
@@ -56,12 +56,13 @@ layout: default
 #include "Mylib/Combinatorics/montmort_number.cpp"
 #include "Mylib/IO/join.cpp"
 
-using mint = RuntimeModInt;
+struct tag{};
+using mint = RuntimeModInt<tag>;
 
 int main(){
   int N, M; std::cin >> N >> M;
 
-  mint::M = M;
+  mint::init(M);
 
   auto ans = montmort_number<mint>(1000000);
 
@@ -87,6 +88,7 @@ int main(){
  * @title Modint (Runtime mod)
  * @docs runtime_mint.md
  */
+template <typename Tag>
 class RuntimeModInt{
 public:
   static uint32_t M;
@@ -99,10 +101,10 @@ public:
     else val = n;
   }
   
-  const auto operator+(const RuntimeModInt &a) const {return RuntimeModInt(val + a.val);}
-  const auto operator-(const RuntimeModInt &a) const {return RuntimeModInt(val - a.val);}
-  const auto operator*(const RuntimeModInt &a) const {return RuntimeModInt(val * a.val);}
-  const auto operator/(const RuntimeModInt &a) const {return RuntimeModInt(val * a.inv().val);}
+  auto operator+(const RuntimeModInt &a) const {return RuntimeModInt(val + a.val);}
+  auto operator-(const RuntimeModInt &a) const {return RuntimeModInt(val - a.val);}
+  auto operator*(const RuntimeModInt &a) const {return RuntimeModInt(val * a.val);}
+  auto operator/(const RuntimeModInt &a) const {return RuntimeModInt(val * a.inv().val);}
   
   const auto& operator=(const RuntimeModInt &a){val = a.val; return *this;}
   const auto& operator+=(const RuntimeModInt &a){if((val += a.val) >= M) val -= M; return *this;}
@@ -110,22 +112,22 @@ public:
   const auto& operator*=(const RuntimeModInt &a){(val *= a.val) %= M; return *this;}
   const auto& operator/=(const RuntimeModInt &a){(val *= a.inv().val) %= M; return *this;}
 
-  const bool operator==(const RuntimeModInt &a) const {return val == a.val;}
-  const bool operator!=(const RuntimeModInt &a) const {return val != a.val;}
+  bool operator==(const RuntimeModInt &a) const {return val == a.val;}
+  bool operator!=(const RuntimeModInt &a) const {return val != a.val;}
 
-  const static auto power(int64_t n, int64_t p){
+  static auto power(int64_t n, int64_t p){
     RuntimeModInt ret = 1, e = n;
     for(; p; e *= e, p >>= 1) if(p & 1) ret *= e;
     return ret;
   }
 
-  const auto power(int64_t p) const {
+  auto power(int64_t p) const {
     RuntimeModInt ret = 1, e = val;
     for(; p; e *= e, p >>= 1) if(p & 1) ret *= e;
     return ret;
   }
   
-  const RuntimeModInt inv() const {
+  RuntimeModInt inv() const {
     int64_t a = val, b = M, u = 1, v = 0;
 
     while(b){
@@ -138,19 +140,24 @@ public:
     
     return u;
   }
+
+  explicit operator int32_t() const noexcept {return val;}
+  explicit operator int64_t() const noexcept {return val;}
+
+  static void init(uint32_t m){M = m;}
 };
 
-auto operator-(const RuntimeModInt &a){return RuntimeModInt(-a.val);}
+template <typename Tag> auto operator-(const RuntimeModInt<Tag> &a){return RuntimeModInt(-a.val);}
 
-auto operator+(int64_t a, const RuntimeModInt &b){return RuntimeModInt(a) + b;}
-auto operator-(int64_t a, const RuntimeModInt &b){return RuntimeModInt(a) - b;}
-auto operator*(int64_t a, const RuntimeModInt &b){return RuntimeModInt(a) * b;}
-auto operator/(int64_t a, const RuntimeModInt &b){return RuntimeModInt(a) / b;}
+template <typename Tag> auto operator+(int64_t a, const RuntimeModInt<Tag> &b){return RuntimeModInt(a) + b;}
+template <typename Tag> auto operator-(int64_t a, const RuntimeModInt<Tag> &b){return RuntimeModInt(a) - b;}
+template <typename Tag> auto operator*(int64_t a, const RuntimeModInt<Tag> &b){return RuntimeModInt(a) * b;}
+template <typename Tag> auto operator/(int64_t a, const RuntimeModInt<Tag> &b){return RuntimeModInt(a) / b;}
 
-uint32_t RuntimeModInt::M;
+template <typename Tag> uint32_t RuntimeModInt<Tag>::M;
 
-std::istream& operator>>(std::istream &is, RuntimeModInt &a){is >> a.val; return is;}
-std::ostream& operator<<(std::ostream &os, const RuntimeModInt &a){os << a.val; return os;}
+template <typename Tag> std::istream& operator>>(std::istream &is, RuntimeModInt<Tag> &a){is >> a.val; return is;}
+template <typename Tag> std::ostream& operator<<(std::ostream &os, const RuntimeModInt<Tag> &a){os << a.val; return os;}
 #line 2 "Mylib/Combinatorics/montmort_number.cpp"
 #include <vector>
 
@@ -192,12 +199,13 @@ std::string join(ITER first, ITER last, std::string delim = " "){
 }
 #line 7 "test/yosupo-judge/montmort_number_mod/main.test.cpp"
 
-using mint = RuntimeModInt;
+struct tag{};
+using mint = RuntimeModInt<tag>;
 
 int main(){
   int N, M; std::cin >> N >> M;
 
-  mint::M = M;
+  mint::init(M);
 
   auto ans = montmort_number<mint>(1000000);
 

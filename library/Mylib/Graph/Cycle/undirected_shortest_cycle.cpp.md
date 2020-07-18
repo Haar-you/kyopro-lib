@@ -29,9 +29,9 @@ layout: default
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#ac2a729ce4878019d16697115af3ef73">Mylib/Graph/ShortestCycle</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestCycle/undirected_shortest_cycle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+* category: <a href="../../../../index.html#a962efc2861dbe1e0963e7d8bf7dda18">Mylib/Graph/Cycle</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Cycle/undirected_shortest_cycle.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-07-18 02:27:30+09:00
 
 
 
@@ -121,7 +121,7 @@ std::optional<int> shortest_cycle(const Graph<T> &g, const int src){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Graph/ShortestCycle/undirected_shortest_cycle.cpp"
+#line 2 "Mylib/Graph/Cycle/undirected_shortest_cycle.cpp"
 #include <vector>
 #include <queue>
 #include <optional>
@@ -152,7 +152,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
   add_edge<T, C>(g, a, b, w);
   add_edge<T, C>(g, b, a, w);
 }
-#line 6 "Mylib/Graph/ShortestCycle/undirected_shortest_cycle.cpp"
+#line 6 "Mylib/Graph/Cycle/undirected_shortest_cycle.cpp"
 
 /**
  * @title Undirected shortest cycle

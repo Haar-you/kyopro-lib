@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yosupo-judge/factorize/main.test.cpp
+# :heavy_check_mark: test/yosupo-judge/factorize/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -42,9 +42,9 @@ layout: default
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
-* :x: <a href="../../../../library/Mylib/Misc/int128.cpp.html">128-bit int</a>
-* :x: <a href="../../../../library/Mylib/Number/Prime/miller_rabin.cpp.html">Primality test (Miller-Rabin algorithm)</a>
-* :x: <a href="../../../../library/Mylib/Number/Prime/pollard_rho.cpp.html">Prime factorization (Pollard's rho algorithm)</a>
+* :question: <a href="../../../../library/Mylib/Misc/int128.cpp.html">128-bit int</a>
+* :question: <a href="../../../../library/Mylib/Number/Prime/miller_rabin.cpp.html">Primality test (Miller-Rabin algorithm)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/pollard_rho.cpp.html">Prime factorization (Pollard's rho algorithm)</a>
 
 
 ## Code

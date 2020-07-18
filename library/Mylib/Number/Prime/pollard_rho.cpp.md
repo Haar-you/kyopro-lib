@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Prime factorization (Pollard's rho algorithm)
+# :heavy_check_mark: Prime factorization (Pollard's rho algorithm)
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -38,13 +38,13 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../Misc/int128.cpp.html">128-bit int</a>
-* :x: <a href="miller_rabin.cpp.html">Primality test (Miller-Rabin algorithm)</a>
+* :question: <a href="../../Misc/int128.cpp.html">128-bit int</a>
+* :question: <a href="miller_rabin.cpp.html">Primality test (Miller-Rabin algorithm)</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/yosupo-judge/factorize/main.test.cpp.html">test/yosupo-judge/factorize/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/factorize/main.test.cpp.html">test/yosupo-judge/factorize/main.test.cpp</a>
 
 
 ## Code

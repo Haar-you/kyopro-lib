@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Manhattan distance MST
+# :heavy_check_mark: Manhattan distance MST
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -54,13 +54,13 @@ layout: default
 * :question: <a href="../../AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
 * :question: <a href="../../DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
 * :question: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
-* :question: <a href="kruskal.cpp.html">Kruskal algorithm</a>
+* :heavy_check_mark: <a href="kruskal.cpp.html">Kruskal algorithm</a>
 * :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
 
 
 ## Code

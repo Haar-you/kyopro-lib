@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/yosupo-judge/matrix_det/main.test.cpp
+# :heavy_check_mark: test/yosupo-judge/matrix_det/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f56272346ebd60cefe0da1df8f0209d6">test/yosupo-judge/matrix_det</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/matrix_det/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-07-18 05:35:58+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/matrix_det">https://judge.yosupo.jp/problem/matrix_det</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/determinant.cpp.html">Determinant</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/determinant.cpp.html">Determinant</a>
 * :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Square matrix</a>
 * :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
@@ -69,7 +69,7 @@ int main(){
   
   int N; std::cin >> N;
 
-  Mat::N = N;
+  Mat::init(N);
 
   Mat m(input_vector<mint>(N, N));
 
@@ -186,6 +186,7 @@ template <typename T, class Tag> struct SquareMatrix{
   using value_type = T;
   
   static int N;
+  static void init(int n){N = n;}
   std::vector<std::vector<T>> matrix;
   
   SquareMatrix(): matrix(N, std::vector<T>(N)){}
@@ -297,7 +298,7 @@ int main(){
   
   int N; std::cin >> N;
 
-  Mat::N = N;
+  Mat::init(N);
 
   Mat m(input_vector<mint>(N, N));
 

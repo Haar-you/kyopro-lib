@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a69917d4d187b863fce67c7534f3be6a">test/yukicoder/194</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/194/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-07-18 05:35:58+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/194">https://yukicoder.me/problems/no/194</a>
@@ -127,7 +127,7 @@ std::pair<mint,mint> solve2(int64_t N, int64_t K, std::vector<int> A){
 int main(){
   int64_t N, K; std::cin >> N >> K;
 
-  M::N = N;
+  M::init(N);
 
   auto A = input_vector<int>(N);
 
@@ -247,6 +247,7 @@ template <typename T, class Tag> struct SquareMatrix{
   using value_type = T;
   
   static int N;
+  static void init(int n){N = n;}
   std::vector<std::vector<T>> matrix;
   
   SquareMatrix(): matrix(N, std::vector<T>(N)){}
@@ -442,7 +443,7 @@ std::pair<mint,mint> solve2(int64_t N, int64_t K, std::vector<int> A){
 int main(){
   int64_t N, K; std::cin >> N >> K;
 
-  M::N = N;
+  M::init(N);
 
   auto A = input_vector<int>(N);
 
