@@ -60,7 +60,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="segment_tree.cpp.html">Segment tree</a>
+* :heavy_check_mark: <a href="segment_tree.cpp.html">Segment tree</a>
 
 
 ## Verified with

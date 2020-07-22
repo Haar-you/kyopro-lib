@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :question: Wavelet matrix
+# :heavy_check_mark: Wavelet matrix
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -80,7 +80,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="succinct_dictionary.cpp.html">Succinct dictionary</a>
+* :heavy_check_mark: <a href="succinct_dictionary.cpp.html">Succinct dictionary</a>
 
 
 ## Verified with
@@ -89,7 +89,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2426/main.test.cpp.html">test/aoj/2426/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/2674/main.test.cpp.html">test/aoj/2674/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/range_kth_smallest/main.test.cpp.html">test/yosupo-judge/range_kth_smallest/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/yukicoder/919/main.test.cpp.html">test/yukicoder/919/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/919/main.test.cpp.html">test/yukicoder/919/main.test.cpp</a>
 
 
 ## Code

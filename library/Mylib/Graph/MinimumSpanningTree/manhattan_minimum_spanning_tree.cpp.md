@@ -51,9 +51,9 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
-* :question: <a href="../../DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
-* :question: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :heavy_check_mark: <a href="../../AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
+* :heavy_check_mark: <a href="../../DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
+* :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
 * :heavy_check_mark: <a href="kruskal.cpp.html">Kruskal algorithm</a>
 * :question: <a href="../graph_template.cpp.html">Graph template</a>
 

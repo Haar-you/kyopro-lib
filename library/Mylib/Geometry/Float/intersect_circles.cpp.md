@@ -43,13 +43,14 @@ layout: default
 
 ## Required by
 
-* :warning: <a href="area_intersection_of_circles.cpp.html">Area of intersection between two circles</a>
+* :heavy_check_mark: <a href="area_intersection_of_circles.cpp.html">Area of intersection between two circles</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_A/main.test.cpp.html">test/aoj/CGL_7_A/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_E/main.test.cpp.html">test/aoj/CGL_7_E/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_I/main.test.cpp.html">test/aoj/CGL_7_I/main.test.cpp</a>
 
 
 ## Code

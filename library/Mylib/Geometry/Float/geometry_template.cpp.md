@@ -39,7 +39,7 @@ layout: default
 ## Required by
 
 * :heavy_check_mark: <a href="area_intersection_of_circle_and_polygon.cpp.html">Area of intersection between a circle and a polygon</a>
-* :warning: <a href="area_intersection_of_circles.cpp.html">Area of intersection between two circles</a>
+* :heavy_check_mark: <a href="area_intersection_of_circles.cpp.html">Area of intersection between two circles</a>
 * :heavy_check_mark: <a href="area_polygon.cpp.html">Area of polygon</a>
 * :heavy_check_mark: <a href="ccw.cpp.html">Check clockwise-counterclockwise</a>
 * :heavy_check_mark: <a href="circumscribed_circle_of_triangle.cpp.html">Circumscribed circle of a triangle</a>
@@ -51,7 +51,7 @@ layout: default
 * :heavy_check_mark: <a href="distance_line_point.cpp.html">Distance between a line and a point</a>
 * :heavy_check_mark: <a href="distance_segment_point.cpp.html">Distance between a segment and a point</a>
 * :heavy_check_mark: <a href="distance_segments.cpp.html">Distance between two segments</a>
-* :warning: <a href="inscribed_circle_of_triangle.cpp.html">Inscribed circle of a triangle</a>
+* :heavy_check_mark: <a href="inscribed_circle_of_triangle.cpp.html">Inscribed circle of a triangle</a>
 * :heavy_check_mark: <a href="intersect_circle_line.cpp.html">Intersection between a cirlce and a line</a>
 * :heavy_check_mark: <a href="intersect_circle_segment.cpp.html">Intersection between a circle and a segment</a>
 * :heavy_check_mark: <a href="intersect_circles.cpp.html">Intersection between two circles</a>
@@ -86,11 +86,14 @@ layout: default
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_5_A/main.test.cpp.html">test/aoj/CGL_5_A/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_A/main.test.cpp.html">test/aoj/CGL_7_A/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_B/main.test.cpp.html">test/aoj/CGL_7_B/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_C/main.test.cpp.html">test/aoj/CGL_7_C/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_D/main.test.cpp.html">test/aoj/CGL_7_D/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_E/main.test.cpp.html">test/aoj/CGL_7_E/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_F/main.test.cpp.html">test/aoj/CGL_7_F/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_G/main.test.cpp.html">test/aoj/CGL_7_G/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_I/main.test.cpp.html">test/aoj/CGL_7_I/main.test.cpp</a>
 
 
 ## Code

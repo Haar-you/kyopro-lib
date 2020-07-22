@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Area of intersection between two circles
+# :heavy_check_mark: Area of intersection between two circles
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -54,6 +54,11 @@ layout: default
 
 * :heavy_check_mark: <a href="geometry_template.cpp.html">Geometry template</a>
 * :heavy_check_mark: <a href="intersect_circles.cpp.html">Intersection between two circles</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_I/main.test.cpp.html">test/aoj/CGL_7_I/main.test.cpp</a>
 
 
 ## Code

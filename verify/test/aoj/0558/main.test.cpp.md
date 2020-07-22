@@ -42,7 +42,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../../library/Mylib/Grid/grid.cpp.html">Grid template</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Grid/grid_bfs.cpp.html">BFS on a grid</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Grid/grid_find.cpp.html">Enumerate points satisfying conditions</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code

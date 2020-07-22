@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/minimum_covering_circle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-22 01:47:57+09:00
 
 
 
@@ -229,15 +229,14 @@ template <typename T> struct Circle{
 template <typename T>
 Circle<T> circumscribed_circle_of_triangle(const Point<T> &a, const Point<T> &b, const Point<T> &c){
   const T A = abs_sq(b - c), B = abs_sq(a - c), C = abs_sq(a - b), S = A + B + C;
-  const T x = sqrt(A), y = sqrt(B), z = sqrt(C), w = x + y + z;
-
   const T AA = A * (S - A * 2.0);
   const T BB = B * (S - B * 2.0);
   const T CC = C * (S - C * 2.0);
+  const auto center = (AA * a + BB * b + CC * c) / (AA + BB + CC);
 
   return Circle<T>(
-    (AA * a + BB * b + CC * c) / (AA + BB + CC),
-    x * y * z / sqrt(w * (w - x * 2.0) * (w - y * 2.0) * (w - z * 2.0))
+    center,
+    abs(center - a)
   );
 }
 #line 6 "Mylib/Geometry/Float/minimum_covering_circle.cpp"

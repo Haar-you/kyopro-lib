@@ -38,8 +38,8 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../Misc/int128.cpp.html">128-bit int</a>
-* :question: <a href="miller_rabin.cpp.html">Primality test (Miller-Rabin algorithm)</a>
+* :heavy_check_mark: <a href="../../Misc/int128.cpp.html">128-bit int</a>
+* :heavy_check_mark: <a href="miller_rabin.cpp.html">Primality test (Miller-Rabin algorithm)</a>
 
 
 ## Verified with
