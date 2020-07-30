@@ -25,22 +25,15 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Misc/merge_technique.cpp
+# :warning: Timer
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/merge_technique.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-30 17:20:05+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/timer.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-07-30 23:15:57+09:00
 
 
-
-
-## Verified with
-
-* :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.binomial_heap.test.cpp.html">test/aoj/2559/main.binomial_heap.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
 
 
 ## Code
@@ -49,22 +42,21 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-#include <set>
-#include <utility>
+#include <chrono>
+#include <iostream>
 
 /**
- * @docs merge_technique.md
+ * @title Timer
+ * @docs timer.md
  */
-template <typename T>
-void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){
-  if(a.size() > b.size()){
-    a.insert(b.begin(), b.end());
-    std::swap(res, a);
-  }else{
-    b.insert(a.begin(), a.end());
-    std::swap(res, b);
-  }
-}
+template <typename F>
+void timer(F f){
+  auto s = std::chrono::system_clock::now();
+  f();
+  auto t = std::chrono::system_clock::now();
+  auto d = std::chrono::duration_cast<std::chrono::milliseconds>(t - s).count();
+  std::cerr << d << "ms" << "\n";
+};
 
 ```
 {% endraw %}
@@ -72,23 +64,22 @@ void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Misc/merge_technique.cpp"
-#include <set>
-#include <utility>
+#line 2 "Mylib/Misc/timer.cpp"
+#include <chrono>
+#include <iostream>
 
 /**
- * @docs merge_technique.md
+ * @title Timer
+ * @docs timer.md
  */
-template <typename T>
-void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){
-  if(a.size() > b.size()){
-    a.insert(b.begin(), b.end());
-    std::swap(res, a);
-  }else{
-    b.insert(a.begin(), a.end());
-    std::swap(res, b);
-  }
-}
+template <typename F>
+void timer(F f){
+  auto s = std::chrono::system_clock::now();
+  f();
+  auto t = std::chrono::system_clock::now();
+  auto d = std::chrono::duration_cast<std::chrono::milliseconds>(t - s).count();
+  std::cerr << d << "ms" << "\n";
+};
 
 ```
 {% endraw %}

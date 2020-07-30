@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#470f11b8b249244fcbedd0bf3d66e316">test/aoj/2559</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2559/main.skew_heap.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-07-30 17:20:05+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2559">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2559</a>
@@ -301,14 +301,10 @@ public:
 template <typename T>
 void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){
   if(a.size() > b.size()){
-    for(const auto &x : b){
-      a.insert(x);
-    }
+    a.insert(b.begin(), b.end());
     std::swap(res, a);
   }else{
-    for(const auto &x : a){
-      b.insert(x);
-    }
+    b.insert(a.begin(), a.end());
     std::swap(res, b);
   }
 }
