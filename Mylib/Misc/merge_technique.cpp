@@ -8,14 +8,10 @@
 template <typename T>
 void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){
   if(a.size() > b.size()){
-    for(const auto &x : b){
-      a.insert(x);
-    }
+    a.insert(b.begin(), b.end());
     std::swap(res, a);
   }else{
-    for(const auto &x : a){
-      b.insert(x);
-    }
+    b.insert(a.begin(), a.end());
     std::swap(res, b);
   }
 }
