@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mo's algorithm
+# :heavy_check_mark: Mo's algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1534504632931a6652ca965283803a2e">Mylib/Algorithm/Mo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Mo/mo_algorithm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-08-03 23:59:26+09:00
 
 
 
@@ -43,15 +43,16 @@ layout: default
 	- クエリ`[l, r)`を追加する。
 - `build()`
 - `run()`
-	- Time complexity $O(N\sqrt{Q})$
 - `make_mo`
 
 ## Requirements
 
-- `append(int i)`
+- `append(int i, int d)`
 	- `i`番目の要素を追加する操作。
-- `remove(int i)`
+    - `d = -1`で左端に追加、`d = 1`で右端に追加。
+- `remove(int i, int d)`
 	- `i`番目の要素を削除する操作。
+    - `d = -1`で左端を削除、`d = 1`で右端を削除。
 - `query(int i)`
 	- `i`番目のクエリを処理する操作。
 - 必ず`add`, `build`, `run`の順で実行する。
@@ -71,6 +72,16 @@ layout: default
 - [https://www.hamayanhamayan.com/entry/2017/04/18/012937](https://www.hamayanhamayan.com/entry/2017/04/18/012937)
 
 
+## Required by
+
+* :heavy_check_mark: <a href="../Query/range_inversions_query.cpp.html">Range inversions query</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/static_range_inversions_query/main.test.cpp.html">test/yosupo-judge/static_range_inversions_query/main.test.cpp</a>
+
+
 ## Code
 
 <a id="unbundled"></a>
@@ -80,6 +91,7 @@ layout: default
 #include <vector>
 #include <algorithm>
 #include <cassert>
+#include <cmath>
 
 /**
  * @title Mo's algorithm
@@ -142,10 +154,10 @@ public:
       int id = ord[q++];
 
       while(l != left[id] or r != right[id]){
-        if(l > left[id]) append(--l);
-        if(l < left[id]) remove(l++);
-        if(r < right[id]) append(r++);
-        if(r > right[id]) remove(--r);
+        if(l > left[id]) append(--l, -1);
+        if(l < left[id]) remove(l++, -1);
+        if(r < right[id]) append(r++, 1);
+        if(r > right[id]) remove(--r, 1);
       }
 
       query(id);
@@ -168,6 +180,7 @@ auto make_mo(int N, int Q, F append, G remove, H query){
 #include <vector>
 #include <algorithm>
 #include <cassert>
+#include <cmath>
 
 /**
  * @title Mo's algorithm
@@ -230,10 +243,10 @@ public:
       int id = ord[q++];
 
       while(l != left[id] or r != right[id]){
-        if(l > left[id]) append(--l);
-        if(l < left[id]) remove(l++);
-        if(r < right[id]) append(r++);
-        if(r > right[id]) remove(--r);
+        if(l > left[id]) append(--l, -1);
+        if(l < left[id]) remove(l++, -1);
+        if(r < right[id]) append(r++, 1);
+        if(r > right[id]) remove(--r, 1);
       }
 
       query(id);

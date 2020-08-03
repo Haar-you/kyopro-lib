@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#e1d7bebd3991495167778e37d1d75d40">Mylib/Number/Divisor</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Divisor/count_divisors.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-19 17:27:30+09:00
+    - Last commit date: 2020-07-31 18:25:07+09:00
 
 
 
@@ -47,9 +47,9 @@ layout: default
  * @title Count divisors
  * @docs count_divisors.md
  */
-int count_divisors(std::int64_t n){
+int count_divisors(int64_t n){
   int count = 0;
-  for(std::int64_t i = 1LL; i * i <= n; ++i){
+  for(int64_t i = 1LL; i * i <= n; ++i){
     if(n % i == 0){
       count += 2;
       if(i * i == n) count -= 1;
@@ -70,9 +70,9 @@ int count_divisors(std::int64_t n){
  * @title Count divisors
  * @docs count_divisors.md
  */
-int count_divisors(std::int64_t n){
+int count_divisors(int64_t n){
   int count = 0;
-  for(std::int64_t i = 1LL; i * i <= n; ++i){
+  for(int64_t i = 1LL; i * i <= n; ++i){
     if(n % i == 0){
       count += 2;
       if(i * i == n) count -= 1;
