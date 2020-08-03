@@ -5,15 +5,16 @@
 	- クエリ`[l, r)`を追加する。
 - `build()`
 - `run()`
-	- Time complexity $O(N\sqrt{Q})$
 - `make_mo`
 
 ## Requirements
 
-- `append(int i)`
+- `append(int i, int d)`
 	- `i`番目の要素を追加する操作。
-- `remove(int i)`
+    - `d = -1`で左端に追加、`d = 1`で右端に追加。
+- `remove(int i, int d)`
 	- `i`番目の要素を削除する操作。
+    - `d = -1`で左端を削除、`d = 1`で右端を削除。
 - `query(int i)`
 	- `i`番目のクエリを処理する操作。
 - 必ず`add`, `build`, `run`の順で実行する。

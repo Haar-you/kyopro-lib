@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <cassert>
+#include <cmath>
 
 /**
  * @title Mo's algorithm
@@ -64,10 +65,10 @@ public:
       int id = ord[q++];
 
       while(l != left[id] or r != right[id]){
-        if(l > left[id]) append(--l);
-        if(l < left[id]) remove(l++);
-        if(r < right[id]) append(r++);
-        if(r > right[id]) remove(--r);
+        if(l > left[id]) append(--l, -1);
+        if(l < left[id]) remove(l++, -1);
+        if(r < right[id]) append(r++, 1);
+        if(r > right[id]) remove(--r, 1);
       }
 
       query(id);
