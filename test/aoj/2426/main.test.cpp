@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
-#include "Mylib/Misc/sort_simultaneously.cpp"
+#include "Mylib/Utils/sort_simultaneously.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 

@@ -3,10 +3,10 @@
 #include <iostream>
 #include <vector>
 
-#include "Mylib/Misc/sort_simultaneously.cpp"
+#include "Mylib/Utils/sort_simultaneously.cpp"
 #include "Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
-#include "Mylib/Misc/compressor.cpp"
+#include "Mylib/Utils/compressor.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 

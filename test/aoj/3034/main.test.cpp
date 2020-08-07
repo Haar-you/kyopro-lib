@@ -8,7 +8,7 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/minimum_covering_circle.cpp"
-#include "Mylib/Misc/fix_point.cpp"
+#include "Mylib/Utils/fix_point.cpp"
 #include "Mylib/Bit/for_each_subset_asc.cpp"
 #include "Mylib/IO/input_vector.cpp"
 

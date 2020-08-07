@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/Misc/compressor.cpp"
+#include "Mylib/Utils/compressor.cpp"
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 

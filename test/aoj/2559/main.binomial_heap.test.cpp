@@ -8,7 +8,7 @@
 
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/MinimumSpanningTree/prim.cpp"
-#include "Mylib/Misc/fix_point.cpp"
+#include "Mylib/Utils/fix_point.cpp"
 #include "Mylib/DataStructure/Heap/binomial_heap.cpp"
 #include "Mylib/Misc/merge_technique.cpp"
 #include "Mylib/IO/input_graph.cpp"
