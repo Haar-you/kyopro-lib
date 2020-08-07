@@ -601,18 +601,16 @@ layout: default
 
 ### Mylib/Misc
 
-* :heavy_check_mark: <a href="library/Mylib/Misc/compressor.cpp.html">Compressor</a>
 * :heavy_check_mark: <a href="library/Mylib/Misc/convert_base.cpp.html">Convert base</a>
 * :heavy_check_mark: <a href="library/Mylib/Misc/dice.cpp.html">Dice</a>
-* :heavy_check_mark: <a href="library/Mylib/Misc/fix_point.cpp.html">Fixed point combinator</a>
 * :heavy_check_mark: <a href="library/Mylib/Misc/int128.cpp.html">128-bit int</a>
 * :heavy_check_mark: <a href="library/Mylib/Misc/inversion_number.cpp.html">Inversion number</a>
 * :heavy_check_mark: <a href="library/Mylib/Misc/merge_technique.cpp.html">Mylib/Misc/merge_technique.cpp</a>
 * :warning: <a href="library/Mylib/Misc/roman_numerals.cpp.html">Roman numerals</a>
-* :warning: <a href="library/Mylib/Misc/run_length_encoding.cpp.html">Run length encoding</a>
-* :heavy_check_mark: <a href="library/Mylib/Misc/sort_simultaneously.cpp.html">Mylib/Misc/sort_simultaneously.cpp</a>
 * :warning: <a href="library/Mylib/Misc/timer.cpp.html">Timer</a>
+* :warning: <a href="library/Mylib/Misc/unzip.cpp.html">Unzip function</a>
 * :warning: <a href="library/Mylib/Misc/xor_shift.cpp.html">Xorshift</a>
+* :warning: <a href="library/Mylib/Misc/zip.cpp.html">Zip function</a>
 
 
 <div id="5fda78fda98ef9fc0f87c6b50d529f19"></div>
@@ -747,6 +745,16 @@ layout: default
 * :warning: <a href="library/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_count.cpp.html">Subset sum problem (Count)</a>
 * :heavy_check_mark: <a href="library/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp.html">Subset sum problem (With quantity limitations)</a>
 * :warning: <a href="library/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_minimum.cpp.html">Subset sum problem (Minimum)</a>
+
+
+<div id="cf1ec978dae666792e23e53a3672d204"></div>
+
+### Mylib/Utils
+
+* :heavy_check_mark: <a href="library/Mylib/Utils/compressor.cpp.html">Compressor</a>
+* :heavy_check_mark: <a href="library/Mylib/Utils/fix_point.cpp.html">Fixed point combinator</a>
+* :warning: <a href="library/Mylib/Utils/run_length_encoding.cpp.html">Run length encoding</a>
+* :heavy_check_mark: <a href="library/Mylib/Utils/sort_simultaneously.cpp.html">Mylib/Utils/sort_simultaneously.cpp</a>
 
 
 <div id="67be68a348da3b850fb7daa10b034528"></div>

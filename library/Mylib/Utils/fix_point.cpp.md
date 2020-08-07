@@ -29,9 +29,9 @@ layout: default
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/fix_point.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+* category: <a href="../../../index.html#cf1ec978dae666792e23e53a3672d204">Mylib/Utils</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Utils/fix_point.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-08-07 18:06:08+09:00
 
 
 
@@ -95,7 +95,7 @@ inline constexpr auto make_fix_point(F &f){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Misc/fix_point.cpp"
+#line 2 "Mylib/Utils/fix_point.cpp"
 #include <utility>
 
 /**

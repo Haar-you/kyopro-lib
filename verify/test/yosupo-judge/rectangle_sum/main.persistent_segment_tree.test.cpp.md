@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#9102555d140c20ca7196c4db584ea7b6">test/yosupo-judge/rectangle_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-08-07 20:09:17+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/rectangle_sum">https://judge.yosupo.jp/problem/rectangle_sum</a>
@@ -44,8 +44,8 @@ layout: default
 * :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/compressor.cpp.html">Compressor</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/sort_simultaneously.cpp.html">Mylib/Misc/sort_simultaneously.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Utils/compressor.cpp.html">Compressor</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Utils/sort_simultaneously.cpp.html">Mylib/Utils/sort_simultaneously.cpp</a>
 
 
 ## Code
@@ -58,10 +58,10 @@ layout: default
 #include <iostream>
 #include <vector>
 
-#include "Mylib/Misc/sort_simultaneously.cpp"
+#include "Mylib/Utils/sort_simultaneously.cpp"
 #include "Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
-#include "Mylib/Misc/compressor.cpp"
+#include "Mylib/Utils/compressor.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
@@ -119,10 +119,11 @@ int main(){
 #include <iostream>
 #include <vector>
 
-#line 3 "Mylib/Misc/sort_simultaneously.cpp"
+#line 3 "Mylib/Utils/sort_simultaneously.cpp"
 #include <utility>
 #include <algorithm>
 #include <numeric>
+#include <initializer_list>
 
 /**
  * @docs sort_simultaneously.md
@@ -134,21 +135,13 @@ void sort_with_ord(const std::vector<int> &ord, int N, std::vector<T> &a){
   std::swap(temp, a);
 }
 
-template <typename T, typename ...Args>
-void sort_with_ord(const std::vector<int> &ord, int N, std::vector<T> &a, Args&... args){
-  std::vector<T> temp(N);
-  for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];
-  std::swap(temp, a);
-  sort_with_ord(ord, N, args...);
-}
-
 template <typename Compare, typename ...Args>
-void sort_simultaneously(const Compare &compare, int N, Args&... args){
+void sort_simultaneously(const Compare &compare, int N, std::vector<Args> &... args){
   std::vector<int> ord(N);
   std::iota(ord.begin(), ord.end(), 0);
   std::sort(ord.begin(), ord.end(), compare);
 
-  sort_with_ord(ord, N, args...);
+  (void)std::initializer_list<int>{(sort_with_ord(ord, N, args), 0)...};
 }
 #line 3 "Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp"
 
@@ -253,7 +246,7 @@ struct SumMonoid{
   value_type id() const {return 0;}
   value_type op(value_type a, value_type b) const {return a + b;}
 };
-#line 4 "Mylib/Misc/compressor.cpp"
+#line 4 "Mylib/Utils/compressor.cpp"
 
 /**
  * @title Compressor

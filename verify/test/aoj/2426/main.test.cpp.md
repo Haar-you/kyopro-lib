@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#8164327ac248b119fc2025c513b12d48">test/aoj/2426</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2426/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-08-07 20:09:17+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2426">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2426</a>
@@ -44,7 +44,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/sort_simultaneously.cpp.html">Mylib/Misc/sort_simultaneously.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Utils/sort_simultaneously.cpp.html">Mylib/Utils/sort_simultaneously.cpp</a>
 
 
 ## Code
@@ -58,7 +58,7 @@ layout: default
 #include <vector>
 
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
-#include "Mylib/Misc/sort_simultaneously.cpp"
+#include "Mylib/Utils/sort_simultaneously.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
@@ -480,9 +480,10 @@ public:
 WaveletMatrix<uint32_t,32> make_wavelet_matrix_int(const std::vector<uint32_t> &data){
   return WaveletMatrix<uint32_t, 32>(data);
 }
-#line 4 "Mylib/Misc/sort_simultaneously.cpp"
+#line 4 "Mylib/Utils/sort_simultaneously.cpp"
 #include <algorithm>
 #include <numeric>
+#include <initializer_list>
 
 /**
  * @docs sort_simultaneously.md
@@ -494,21 +495,13 @@ void sort_with_ord(const std::vector<int> &ord, int N, std::vector<T> &a){
   std::swap(temp, a);
 }
 
-template <typename T, typename ...Args>
-void sort_with_ord(const std::vector<int> &ord, int N, std::vector<T> &a, Args&... args){
-  std::vector<T> temp(N);
-  for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];
-  std::swap(temp, a);
-  sort_with_ord(ord, N, args...);
-}
-
 template <typename Compare, typename ...Args>
-void sort_simultaneously(const Compare &compare, int N, Args&... args){
+void sort_simultaneously(const Compare &compare, int N, std::vector<Args> &... args){
   std::vector<int> ord(N);
   std::iota(ord.begin(), ord.end(), 0);
   std::sort(ord.begin(), ord.end(), compare);
 
-  sort_with_ord(ord, N, args...);
+  (void)std::initializer_list<int>{(sort_with_ord(ord, N, args), 0)...};
 }
 #line 6 "Mylib/IO/input_tuple_vector.cpp"
 #include <initializer_list>

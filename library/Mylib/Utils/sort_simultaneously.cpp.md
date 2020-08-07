@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Misc/sort_simultaneously.cpp
+# :heavy_check_mark: Mylib/Utils/sort_simultaneously.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/sort_simultaneously.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-22 16:55:31+09:00
+* category: <a href="../../../index.html#cf1ec978dae666792e23e53a3672d204">Mylib/Utils</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Utils/sort_simultaneously.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-08-07 20:09:17+09:00
 
 
 
@@ -52,6 +52,7 @@ layout: default
 #include <utility>
 #include <algorithm>
 #include <numeric>
+#include <initializer_list>
 
 /**
  * @docs sort_simultaneously.md
@@ -63,21 +64,13 @@ void sort_with_ord(const std::vector<int> &ord, int N, std::vector<T> &a){
   std::swap(temp, a);
 }
 
-template <typename T, typename ...Args>
-void sort_with_ord(const std::vector<int> &ord, int N, std::vector<T> &a, Args&... args){
-  std::vector<T> temp(N);
-  for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];
-  std::swap(temp, a);
-  sort_with_ord(ord, N, args...);
-}
-
 template <typename Compare, typename ...Args>
-void sort_simultaneously(const Compare &compare, int N, Args&... args){
+void sort_simultaneously(const Compare &compare, int N, std::vector<Args> &... args){
   std::vector<int> ord(N);
   std::iota(ord.begin(), ord.end(), 0);
   std::sort(ord.begin(), ord.end(), compare);
 
-  sort_with_ord(ord, N, args...);
+  (void)std::initializer_list<int>{(sort_with_ord(ord, N, args), 0)...};
 }
 
 ```
@@ -86,11 +79,12 @@ void sort_simultaneously(const Compare &compare, int N, Args&... args){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Misc/sort_simultaneously.cpp"
+#line 2 "Mylib/Utils/sort_simultaneously.cpp"
 #include <vector>
 #include <utility>
 #include <algorithm>
 #include <numeric>
+#include <initializer_list>
 
 /**
  * @docs sort_simultaneously.md
@@ -102,21 +96,13 @@ void sort_with_ord(const std::vector<int> &ord, int N, std::vector<T> &a){
   std::swap(temp, a);
 }
 
-template <typename T, typename ...Args>
-void sort_with_ord(const std::vector<int> &ord, int N, std::vector<T> &a, Args&... args){
-  std::vector<T> temp(N);
-  for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];
-  std::swap(temp, a);
-  sort_with_ord(ord, N, args...);
-}
-
 template <typename Compare, typename ...Args>
-void sort_simultaneously(const Compare &compare, int N, Args&... args){
+void sort_simultaneously(const Compare &compare, int N, std::vector<Args> &... args){
   std::vector<int> ord(N);
   std::iota(ord.begin(), ord.end(), 0);
   std::sort(ord.begin(), ord.end(), compare);
 
-  sort_with_ord(ord, N, args...);
+  (void)std::initializer_list<int>{(sort_with_ord(ord, N, args), 0)...};
 }
 
 ```

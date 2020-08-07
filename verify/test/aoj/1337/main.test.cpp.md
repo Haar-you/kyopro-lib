@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a61f1640cc9f3ae71d742eade5b6fb71">test/aoj/1337</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1337/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-06 22:54:09+09:00
+    - Last commit date: 2020-08-07 18:06:08+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1337">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1337</a>
@@ -41,7 +41,7 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/compressor.cpp.html">Compressor</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Utils/compressor.cpp.html">Compressor</a>
 
 
 ## Code
@@ -53,7 +53,7 @@ layout: default
 
 #include <iostream>
 #include <vector>
-#include "Mylib/Misc/compressor.cpp"
+#include "Mylib/Utils/compressor.cpp"
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 
@@ -120,7 +120,7 @@ int main(){
 
 #include <iostream>
 #include <vector>
-#line 3 "Mylib/Misc/compressor.cpp"
+#line 3 "Mylib/Utils/compressor.cpp"
 #include <algorithm>
 
 /**

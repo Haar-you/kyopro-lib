@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#470f11b8b249244fcbedd0bf3d66e316">test/aoj/2559</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2559/main.skew_heap.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-30 17:20:05+09:00
+    - Last commit date: 2020-08-07 18:06:08+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2559">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2559</a>
@@ -43,8 +43,8 @@ layout: default
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
 * :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
 * :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">Fixed point combinator</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Misc/merge_technique.cpp.html">Mylib/Misc/merge_technique.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Utils/fix_point.cpp.html">Fixed point combinator</a>
 
 
 ## Code
@@ -62,7 +62,7 @@ layout: default
 
 #include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/MinimumSpanningTree/prim.cpp"
-#include "Mylib/Misc/fix_point.cpp"
+#include "Mylib/Utils/fix_point.cpp"
 #include "Mylib/DataStructure/Heap/skew_heap.cpp"
 #include "Mylib/Misc/merge_technique.cpp"
 #include "Mylib/IO/input_graph.cpp"
@@ -221,7 +221,7 @@ std::vector<Edge<T>> prim(const Graph<T> &graph){
 
   return ret;
 }
-#line 2 "Mylib/Misc/fix_point.cpp"
+#line 2 "Mylib/Utils/fix_point.cpp"
 #include <utility>
 
 /**

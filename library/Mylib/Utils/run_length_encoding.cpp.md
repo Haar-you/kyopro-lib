@@ -29,9 +29,9 @@ layout: default
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/run_length_encoding.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-04 06:04:41+09:00
+* category: <a href="../../../index.html#cf1ec978dae666792e23e53a3672d204">Mylib/Utils</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Utils/run_length_encoding.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-08-07 20:11:20+09:00
 
 
 
@@ -54,9 +54,9 @@ auto run_length_encoding(const Container &v){
   std::vector<std::pair<T,int64_t>> ret;
 
   for(auto &x : v){
-    if(ret.empty()) ret.push_back({x,1});
+    if(ret.empty()) ret.emplace_back(x, 1);
     else if(ret.back().first == x) ++ret.back().second;
-    else ret.push_back({x,1});
+    else ret.emplace_back(x, 1);
   }
 
   return ret;
@@ -68,7 +68,7 @@ auto run_length_encoding(const Container &v){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Misc/run_length_encoding.cpp"
+#line 2 "Mylib/Utils/run_length_encoding.cpp"
 #include <vector>
 #include <utility>
 
@@ -81,9 +81,9 @@ auto run_length_encoding(const Container &v){
   std::vector<std::pair<T,int64_t>> ret;
 
   for(auto &x : v){
-    if(ret.empty()) ret.push_back({x,1});
+    if(ret.empty()) ret.emplace_back(x, 1);
     else if(ret.back().first == x) ++ret.back().second;
-    else ret.push_back({x,1});
+    else ret.emplace_back(x, 1);
   }
 
   return ret;

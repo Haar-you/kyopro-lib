@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#607ede2caa7064ff1cf75c22fd3209d4">test/aoj/3034</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3034/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-22 01:47:57+09:00
+    - Last commit date: 2020-08-07 18:06:08+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034</a>
@@ -45,7 +45,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/minimum_covering_circle.cpp.html">Minimum covering circle</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/fix_point.cpp.html">Fixed point combinator</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Utils/fix_point.cpp.html">Fixed point combinator</a>
 
 
 ## Code
@@ -63,7 +63,7 @@ layout: default
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/minimum_covering_circle.cpp"
-#include "Mylib/Misc/fix_point.cpp"
+#include "Mylib/Utils/fix_point.cpp"
 #include "Mylib/Bit/for_each_subset_asc.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
@@ -361,7 +361,7 @@ Circle<T> minimum_covering_circle(std::vector<Point<T>> ps, int seed = 0){
 
   return ret;
 }
-#line 2 "Mylib/Misc/fix_point.cpp"
+#line 2 "Mylib/Utils/fix_point.cpp"
 #include <utility>
 
 /**
