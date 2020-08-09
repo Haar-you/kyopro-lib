@@ -37,6 +37,18 @@ public:
   int64_t get(const std::vector<int64_t> &table, int l, int r) const {
     return (table[r] - table[l] * pow[r-l] % MOD + MOD * MOD) % MOD;
   }
+
+  template <typename T>
+  std::vector<int> find(const T &s, const T &pattern) const {
+    auto hp = gen_hash(pattern);
+    auto hs = gen_hash_table(s);
+    std::vector<int> ret;
+    for(int i = 0; i <= ((int)s.size() - (int)pattern.size()); ++i){
+      if(hp == get(hs, i, i + pattern.size())) ret.push_back(i);
+    }
+
+    return ret;
+  }
 };
 
 auto make_rh(int size, int MOD, int seed = 0){

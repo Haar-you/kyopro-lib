@@ -9,14 +9,8 @@ int main(){
   
   std::string t, p; std::cin >> t >> p;
   
-  auto t_hashes = rh.gen_hash_table(t);
-  auto p_hash = rh.gen_hash(p);
-
-  for(int i = 0; i < (int)t.size(); ++i){
-    if(i + p.size() <= t.size() and rh.get(t_hashes, i, i + p.size()) == p_hash){
-      std::cout << i << std::endl;
-    }
-  }
+  auto res = rh.find(t, p);
+  for(auto i : res) std::cout << i << "\n";
   
   return 0;
 }

@@ -15,16 +15,8 @@ int main(){
   int R, C; std::cin >> R >> C;
   auto t = input_vector<std::string>(R);
 
-  auto table = rh.gen_hash_table(s);
-  auto hash = rh.gen_hash(t);
-  
-  for(int i = 0; i <= H-R; ++i){
-    for(int j = 0; j <= W-C; ++j){
-      if(rh.get(table, i, j, i + R, j + C) == hash){
-        std::cout << i << " " << j << std::endl;
-      }
-    }
-  }
+  auto res = rh.find(s, t);
+  for(auto [i, j] : res) std::cout << i << " " << j << "\n";
 
   return 0;
 }

@@ -20,7 +20,7 @@ public:
   }
 
   template <typename T>
-  auto gen_hash_table(const T &s){
+  auto gen_hash_table(const T &s) const {
     const int n = s.size(), m = s[0].size();
     std::vector<std::vector<int64_t>> ret(n+1, std::vector<int64_t>(m+1));
 
@@ -39,7 +39,7 @@ public:
   }
 
   template <typename T>
-  auto gen_hash(const T &s){
+  auto gen_hash(const T &s) const {
     const int n = s.size(), m = s[0].size();
     int64_t ret = 0;
     for(int i = 0; i < n; ++i){
@@ -62,6 +62,27 @@ public:
     const auto d = table[i1][j1] * pow_h[i2-i1] % MOD * pow_w[j2-j1] % MOD;
     
     return (((a - b + MOD) % MOD - c + MOD) % MOD + d + MOD) % MOD;
+  }
+
+  template <typename T>
+  std::vector<std::pair<int, int>> find(const T &s, const T &pattern) const {
+    auto hp = gen_hash(pattern);
+    auto hs = gen_hash_table(s);
+
+    const int H = s.size();
+    const int W = s[0].size();
+    const int R = pattern.size();
+    const int C = pattern[0].size();
+    
+    std::vector<std::pair<int, int>> ret;
+
+    for(int i = 0; i <= H - R; ++i){
+      for(int j = 0; j <= W - C; ++j){
+        if(hp == get(hs, i, j, i + R, j + C)) ret.emplace_back(i, j);
+      }
+    }
+
+    return ret;
   }
 };
 
