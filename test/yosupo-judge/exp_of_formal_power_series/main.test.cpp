@@ -7,8 +7,10 @@
 #include "Mylib/Convolution/ntt_convolution.cpp"
 #include "Mylib/Convolution/formal_power_series.cpp"
 #include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/join.cpp"
 
 using mint = ModInt<998244353>;
+using FPS = FormalPowerSeries<mint>;
 
 int main(){
   std::cin.tie(0);
@@ -16,7 +18,7 @@ int main(){
   
   auto ntt = NumberTheoreticTransform<mint, 3, 1<<21>();
   
-  FPS<mint>::convolve =
+  FPS::convolve =
     [&](const auto &a, const auto &b){
       return ntt.run_convolution(a, b);
     };
@@ -25,11 +27,10 @@ int main(){
 
   auto a = input_vector<mint>(N);
 
-  FPS<mint> f(a);
+  FPS f(a);
   auto ans = f.exp();
 
-  for(int i = 0; i < N; ++i) std::cout << ans[i] << " ";
-  std::cout << std::endl;
+  std::cout << join(ans.begin(), ans.begin() + N) << "\n";
 
   return 0;
 }
