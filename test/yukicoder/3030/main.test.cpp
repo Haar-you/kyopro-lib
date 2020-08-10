@@ -10,8 +10,10 @@ int main(){
 
   int N; std::cin >> N;
 
+  MillerRabin is_prime;
+
   for(auto [x] : input_tuples<int64_t>(N)){
-    std::cout << x << " " << MillerRabin::is_prime(x) << "\n";
+    std::cout << x << " " << is_prime(x) << "\n";
   }
 
   return 0;

@@ -1,15 +1,15 @@
 #pragma once
-#include <bitset>
+#include <vector>
 
 /**
  * @title Sieve of Eratosthenes
  * @docs eratosthenes_sieve.md
  */
-template <int MAX>
-struct EratosthenesSieve{
-  static std::bitset<MAX+1> is_prime;
-  
-  static void init(){
+class EratosthenesSieve{
+  std::vector<bool> is_prime;
+
+public:
+  EratosthenesSieve(int MAX): is_prime(MAX + 1){
     is_prime.flip();
     is_prime[0] = is_prime[1] = false;
     
@@ -21,6 +21,8 @@ struct EratosthenesSieve{
       }
     }
   }
-};
 
-template <int MAX> std::bitset<MAX+1> EratosthenesSieve<MAX>::is_prime;
+  bool operator()(int i) const {
+    return is_prime[i];
+  }
+};

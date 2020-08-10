@@ -1,16 +1,15 @@
 #pragma once
-#include <bitset>
 #include <vector>
 
 /**
  * @title Sieve of Atkin
  * @docs atkin_sieve.md
  */
-template <int MAX>
-struct AtkinSieve{
-  static std::bitset<MAX+1> is_prime;
-  
-  static void init(){
+class AtkinSieve{
+  std::vector<bool> is_prime;
+
+public:
+  AtkinSieve(int MAX): is_prime(MAX + 1){
     for(int64_t i = 1; i * i <= MAX; ++i){
       for(int64_t j = 1; j * j <= MAX; ++j){
         {
@@ -44,6 +43,8 @@ struct AtkinSieve{
 
     is_prime[2] = is_prime[3] = true;
   }
-};
 
-template <int MAX> std::bitset<MAX+1> AtkinSieve<MAX>::is_prime;
+  bool operator()(int i) const {
+    return is_prime[i];
+  }
+};

@@ -44,9 +44,11 @@ struct PollardRho{
       }
       if(i > n) break;
     }
+
+    MillerRabin is_prime;
   
     while(n > 1){
-      if(MillerRabin::is_prime(n)){
+      if(is_prime(n)){
         ret.emplace_back(n, 1);
         break;
       }
