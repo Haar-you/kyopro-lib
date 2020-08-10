@@ -54,8 +54,10 @@ layout: default
 ## Required by
 
 * :warning: <a href="../../Graph/BipartiteGraph/construct_bipartite_graph.cpp.html">Check bipartite graph (Using union-find)</a>
+* :warning: <a href="../../Graph/MinimumSpanningTree/boruvka.cpp.html">Borůvka algorithm</a>
 * :heavy_check_mark: <a href="../../Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
 * :heavy_check_mark: <a href="../../Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
+* :warning: <a href="../../../test/aoj/GRL_2_A/main.boruvka.cpp.html">test/aoj/GRL_2_A/main.boruvka.cpp</a>
 
 
 ## Verified with

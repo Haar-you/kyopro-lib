@@ -1,0 +1,277 @@
+---
+layout: default
+---
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: { equationNumbers: { autoNumber: "AMS" }},
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { matchFontHeight: false },
+    displayAlign: "left",
+    displayIndent: "2em"
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-balloon-js@1.1.2/jquery.balloon.min.js" integrity="sha256-ZEYs9VrgAeNuPvs15E39OsyOJaIkXEEt10fzxJ20+2I=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../../../assets/js/copy-button.js"></script>
+<link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
+
+
+# :warning: Borůvka algorithm
+
+<a href="../../../../index.html">Back to top page</a>
+
+* category: <a href="../../../../index.html#cb5ed95d97b7ee8efcbdf177a47dc7b7">Mylib/Graph/MinimumSpanningTree</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/MinimumSpanningTree/boruvka.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-08-09 05:30:10+09:00
+
+
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References
+
+- [https://en.wikipedia.org/wiki/Bor%C5%AFvka%27s_algorithm](https://en.wikipedia.org/wiki/Bor%C5%AFvka%27s_algorithm)
+- [http://spinda2.blog48.fc2.com/blog-entry-560.html](http://spinda2.blog48.fc2.com/blog-entry-560.html)
+
+
+## Depends on
+
+* :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :question: <a href="../graph_template.cpp.html">Graph template</a>
+
+
+## Required by
+
+* :warning: <a href="../../../test/aoj/GRL_2_A/main.boruvka.cpp.html">test/aoj/GRL_2_A/main.boruvka.cpp</a>
+
+
+## Code
+
+<a id="unbundled"></a>
+{% raw %}
+```cpp
+#pragma once
+
+#include <vector>
+#include <utility>
+
+#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/DataStructure/UnionFind/unionfind.cpp"
+
+/**
+ * @title Borůvka algorithm
+ * @docs boruvka.md
+ */
+template <typename T>
+auto boruvka(const Graph<T> &g){
+  std::vector<Edge<T>> ret;
+  const int N = g.size();
+
+  UnionFind uf(N);
+  std::vector<std::vector<int>> c(N);
+  for(int i = 0; i < N; ++i) c[i].push_back(i);
+
+  while((int)(ret.size()) < N - 1){
+    std::vector<Edge<T>> temp;
+
+    for(auto &a : c){
+      Edge<T> m;
+      bool ok = false;
+
+      if(a.empty()) continue;
+
+      for(auto i : a){
+        for(auto &e : g[i]){
+          if(uf.is_same(e.from, e.to)) continue;
+          if(not std::exchange(ok, true) or e.cost < m.cost){
+            m = e;
+          }
+        }
+      }
+      
+      temp.push_back(m);
+    }
+
+    for(auto &e : temp){
+      if(uf.is_same(e.from, e.to)) continue;
+
+      const int i = uf.root_of(e.from);
+      const int j = uf.root_of(e.to);
+      const int k = uf.merge(i, j);
+
+      if(c[i].size() < c[j].size()) std::swap(c[i], c[j]);
+
+      c[i].insert(c[i].end(), c[j].begin(), c[j].end());
+      c[j].clear();
+
+      std::swap(c[k], c[i]);
+
+      ret.push_back(e);
+    }
+  }
+
+  return ret;
+}
+
+```
+{% endraw %}
+
+<a id="bundled"></a>
+{% raw %}
+```cpp
+#line 2 "Mylib/Graph/MinimumSpanningTree/boruvka.cpp"
+
+#include <vector>
+#include <utility>
+
+#line 3 "Mylib/Graph/graph_template.cpp"
+#include <iostream>
+
+/**
+ * @title Graph template
+ * @docs graph_template.md
+ */
+template <typename Cost = int> class Edge{
+public:
+  int from,to;
+  Cost cost;
+  Edge() {}
+  Edge(int to, Cost cost): to(to), cost(cost){}
+  Edge(int from, int to, Cost cost): from(from), to(to), cost(cost){}
+};
+
+template <typename T> using Graph = std::vector<std::vector<Edge<T>>>;
+template <typename T> using Tree = std::vector<std::vector<Edge<T>>>;
+
+template <typename T, typename C> void add_edge(C &g, int from, int to, T w = 1){
+  g[from].emplace_back(from, to, w);
+}
+
+template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 1){
+  add_edge<T, C>(g, a, b, w);
+  add_edge<T, C>(g, b, a, w);
+}
+#line 3 "Mylib/DataStructure/UnionFind/unionfind.cpp"
+#include <numeric>
+
+/**
+ * @title Union-find
+ * @docs unionfind.md
+ */
+class UnionFind{
+  std::vector<int> parent, depth, size;
+  int count;
+
+public:
+  UnionFind(){}
+  UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
+    std::iota(parent.begin(), parent.end(), 0);
+  }
+  
+  int root_of(int i){
+    if(parent[i] == i) return i;
+    else return parent[i] = root_of(parent[i]);
+  }
+  
+  bool is_same(int i, int j){return root_of(i) == root_of(j);}
+
+  int merge(int i, int j){
+    int ri = root_of(i), rj = root_of(j);
+    if(ri == rj) return ri;
+    else{
+      --count;
+      if(depth[ri] < depth[rj]){
+        parent[ri] = rj;
+        size[rj] += size[ri];
+        return rj;
+      }else{
+        parent[rj] = ri;
+        size[ri] += size[rj];
+        if(depth[ri] == depth[rj]) ++depth[ri];
+        return ri;
+      }
+    }
+  }
+
+  int size_of(int i){return size[root_of(i)];}
+
+  int count_group(){return count;}
+};
+#line 8 "Mylib/Graph/MinimumSpanningTree/boruvka.cpp"
+
+/**
+ * @title Borůvka algorithm
+ * @docs boruvka.md
+ */
+template <typename T>
+auto boruvka(const Graph<T> &g){
+  std::vector<Edge<T>> ret;
+  const int N = g.size();
+
+  UnionFind uf(N);
+  std::vector<std::vector<int>> c(N);
+  for(int i = 0; i < N; ++i) c[i].push_back(i);
+
+  while((int)(ret.size()) < N - 1){
+    std::vector<Edge<T>> temp;
+
+    for(auto &a : c){
+      Edge<T> m;
+      bool ok = false;
+
+      if(a.empty()) continue;
+
+      for(auto i : a){
+        for(auto &e : g[i]){
+          if(uf.is_same(e.from, e.to)) continue;
+          if(not std::exchange(ok, true) or e.cost < m.cost){
+            m = e;
+          }
+        }
+      }
+      
+      temp.push_back(m);
+    }
+
+    for(auto &e : temp){
+      if(uf.is_same(e.from, e.to)) continue;
+
+      const int i = uf.root_of(e.from);
+      const int j = uf.root_of(e.to);
+      const int k = uf.merge(i, j);
+
+      if(c[i].size() < c[j].size()) std::swap(c[i], c[j]);
+
+      c[i].insert(c[i].end(), c[j].begin(), c[j].end());
+      c[j].clear();
+
+      std::swap(c[k], c[i]);
+
+      ret.push_back(e);
+    }
+  }
+
+  return ret;
+}
+
+```
+{% endraw %}
+
+<a href="../../../../index.html">Back to top page</a>
+

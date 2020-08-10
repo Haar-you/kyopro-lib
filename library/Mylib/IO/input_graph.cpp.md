@@ -41,6 +41,11 @@ layout: default
 * :question: <a href="../Graph/graph_template.cpp.html">Graph template</a>
 
 
+## Required by
+
+* :warning: <a href="../../test/aoj/GRL_2_A/main.boruvka.cpp.html">test/aoj/GRL_2_A/main.boruvka.cpp</a>
+
+
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#6ed7f5103dd44c87e247853bfe87329e">test/aoj/ALDS1_14_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_14_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-08-09 21:38:53+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B</a>
@@ -58,14 +58,8 @@ int main(){
   
   std::string t, p; std::cin >> t >> p;
   
-  auto t_hashes = rh.gen_hash_table(t);
-  auto p_hash = rh.gen_hash(p);
-
-  for(int i = 0; i < (int)t.size(); ++i){
-    if(i + p.size() <= t.size() and rh.get(t_hashes, i, i + p.size()) == p_hash){
-      std::cout << i << std::endl;
-    }
-  }
+  auto res = rh.find(t, p);
+  for(auto i : res) std::cout << i << "\n";
   
   return 0;
 }
@@ -120,6 +114,18 @@ public:
   int64_t get(const std::vector<int64_t> &table, int l, int r) const {
     return (table[r] - table[l] * pow[r-l] % MOD + MOD * MOD) % MOD;
   }
+
+  template <typename T>
+  std::vector<int> find(const T &s, const T &pattern) const {
+    auto hp = gen_hash(pattern);
+    auto hs = gen_hash_table(s);
+    std::vector<int> ret;
+    for(int i = 0; i <= ((int)s.size() - (int)pattern.size()); ++i){
+      if(hp == get(hs, i, i + pattern.size())) ret.push_back(i);
+    }
+
+    return ret;
+  }
 };
 
 auto make_rh(int size, int MOD, int seed = 0){
@@ -134,14 +140,8 @@ int main(){
   
   std::string t, p; std::cin >> t >> p;
   
-  auto t_hashes = rh.gen_hash_table(t);
-  auto p_hash = rh.gen_hash(p);
-
-  for(int i = 0; i < (int)t.size(); ++i){
-    if(i + p.size() <= t.size() and rh.get(t_hashes, i, i + p.size()) == p_hash){
-      std::cout << i << std::endl;
-    }
-  }
+  auto res = rh.find(t, p);
+  for(auto i : res) std::cout << i << "\n";
   
   return 0;
 }

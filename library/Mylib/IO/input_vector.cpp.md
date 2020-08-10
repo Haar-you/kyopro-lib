@@ -79,6 +79,9 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/convolution_mod/main.test.cpp.html">test/yosupo-judge/convolution_mod/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/convolution_mod_1000000007/main.test.cpp.html">test/yosupo-judge/convolution_mod_1000000007/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/enumerate_triangles/main.test.cpp.html">test/yosupo-judge/enumerate_triangles/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/exp_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/exp_of_formal_power_series/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/inv_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/inv_of_formal_power_series/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/log_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/log_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/matrix_det/main.test.cpp.html">test/yosupo-judge/matrix_det/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp.html">test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp</a>

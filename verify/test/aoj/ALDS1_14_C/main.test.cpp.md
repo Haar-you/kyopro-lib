@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4663ce58de854a9b7b2acb9ce1fd08fb">test/aoj/ALDS1_14_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_14_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-08-09 21:38:53+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_C</a>
@@ -65,16 +65,8 @@ int main(){
   int R, C; std::cin >> R >> C;
   auto t = input_vector<std::string>(R);
 
-  auto table = rh.gen_hash_table(s);
-  auto hash = rh.gen_hash(t);
-  
-  for(int i = 0; i <= H-R; ++i){
-    for(int j = 0; j <= W-C; ++j){
-      if(rh.get(table, i, j, i + R, j + C) == hash){
-        std::cout << i << " " << j << std::endl;
-      }
-    }
-  }
+  auto res = rh.find(s, t);
+  for(auto [i, j] : res) std::cout << i << " " << j << "\n";
 
   return 0;
 }
@@ -112,7 +104,7 @@ public:
   }
 
   template <typename T>
-  auto gen_hash_table(const T &s){
+  auto gen_hash_table(const T &s) const {
     const int n = s.size(), m = s[0].size();
     std::vector<std::vector<int64_t>> ret(n+1, std::vector<int64_t>(m+1));
 
@@ -131,7 +123,7 @@ public:
   }
 
   template <typename T>
-  auto gen_hash(const T &s){
+  auto gen_hash(const T &s) const {
     const int n = s.size(), m = s[0].size();
     int64_t ret = 0;
     for(int i = 0; i < n; ++i){
@@ -154,6 +146,27 @@ public:
     const auto d = table[i1][j1] * pow_h[i2-i1] % MOD * pow_w[j2-j1] % MOD;
     
     return (((a - b + MOD) % MOD - c + MOD) % MOD + d + MOD) % MOD;
+  }
+
+  template <typename T>
+  std::vector<std::pair<int, int>> find(const T &s, const T &pattern) const {
+    auto hp = gen_hash(pattern);
+    auto hs = gen_hash_table(s);
+
+    const int H = s.size();
+    const int W = s[0].size();
+    const int R = pattern.size();
+    const int C = pattern[0].size();
+    
+    std::vector<std::pair<int, int>> ret;
+
+    for(int i = 0; i <= H - R; ++i){
+      for(int j = 0; j <= W - C; ++j){
+        if(hp == get(hs, i, j, i + R, j + C)) ret.emplace_back(i, j);
+      }
+    }
+
+    return ret;
   }
 };
 
@@ -191,16 +204,8 @@ int main(){
   int R, C; std::cin >> R >> C;
   auto t = input_vector<std::string>(R);
 
-  auto table = rh.gen_hash_table(s);
-  auto hash = rh.gen_hash(t);
-  
-  for(int i = 0; i <= H-R; ++i){
-    for(int j = 0; j <= W-C; ++j){
-      if(rh.get(table, i, j, i + R, j + C) == hash){
-        std::cout << i << " " << j << std::endl;
-      }
-    }
-  }
+  auto res = rh.find(s, t);
+  for(auto [i, j] : res) std::cout << i << " " << j << "\n";
 
   return 0;
 }

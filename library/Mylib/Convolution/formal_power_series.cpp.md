@@ -25,15 +25,50 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Formal power series
+# :heavy_check_mark: Formal power series
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/formal_power_series.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-08-10 20:50:39+09:00
 
 
+
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References
+
+- [https://www.hamayanhamayan.com/entry/2019/12/07/000441](https://www.hamayanhamayan.com/entry/2019/12/07/000441)
+- [https://www.hamayanhamayan.com/entry/2019/12/14/221205](https://www.hamayanhamayan.com/entry/2019/12/14/221205)
+- [https://maspypy.com/多項式・形式的べき級数数え上げとの対応付け](https://maspypy.com/%e5%a4%9a%e9%a0%85%e5%bc%8f%e3%83%bb%e5%bd%a2%e5%bc%8f%e7%9a%84%e3%81%b9%e3%81%8d%e7%b4%9a%e6%95%b0%e6%95%b0%e3%81%88%e4%b8%8a%e3%81%92%e3%81%a8%e3%81%ae%e5%af%be%e5%bf%9c%e4%bb%98%e3%81%91)
+- [https://codeforces.com/blog/entry/56422](https://codeforces.com/blog/entry/56422)
+- [https://beet-aizu.hatenablog.com/entry/2019/09/27/224701](https://beet-aizu.hatenablog.com/entry/2019/09/27/224701)
+- [https://kopricky.github.io/code/FFTs/polynomial_division.html](https://kopricky.github.io/code/FFTs/polynomial_division.html)
+- [https://kopricky.github.io/code/FFTs/polynomial_exp.html](https://kopricky.github.io/code/FFTs/polynomial_exp.html)
+- [https://kopricky.github.io/code/FFTs/polynomial_inverse.html](https://kopricky.github.io/code/FFTs/polynomial_inverse.html)
+- [https://kopricky.github.io/code/FFTs/polynomial_log.html](https://kopricky.github.io/code/FFTs/polynomial_log.html)
+
+
+
+## Required by
+
+* :heavy_check_mark: <a href="../Combinatorics/bernoulli_number_fps.cpp.html">Bernoulli number (FPS)</a>
+
+
+## Verified with
+
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/bernoulli_number/main.test.cpp.html">test/yosupo-judge/bernoulli_number/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/exp_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/exp_of_formal_power_series/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/inv_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/inv_of_formal_power_series/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/log_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/log_of_formal_power_series/main.test.cpp</a>
 
 
 ## Code
@@ -45,19 +80,22 @@ layout: default
 
 #include <functional>
 #include <vector>
+#include <initializer_list>
 
 /**
  * @title Formal power series
  * @docs formal_power_series.md
  */
 template <typename T>
-struct FPS{
+struct FormalPowerSeries{
   static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
 
   std::vector<T> data;
 
-  FPS(const std::vector<T> &data): data(data){}
-
+  FormalPowerSeries(const std::vector<T> &data): data(data){}
+  FormalPowerSeries(std::initializer_list<T> init): data(init.begin(), init.end()){}
+  FormalPowerSeries(int N): data(N){}
+  
   int size() const {
     return data.size();
   }
@@ -70,33 +108,36 @@ struct FPS{
     return data[i];
   }
 
+  auto begin() {return data.begin();}
+  auto end() {return data.end();}
+
   void resize(int n){
     data.resize(n);
   }
   
-  auto operator+(const FPS &rhs) const {
+  auto operator+(const FormalPowerSeries &rhs) const {
     std::vector<T> ret(data);
     ret.resize(rhs.size());
     for(int i = 0; i < (int)rhs.size(); ++i) ret[i] += rhs[i];
-    return FPS(ret);
+    return FormalPowerSeries(ret);
   }
 
-  auto operator-(const FPS &rhs) const {
+  auto operator-(const FormalPowerSeries &rhs) const {
     std::vector<T> ret(data);
     ret.resize(rhs.size());
     for(int i = 0; i < (int)rhs.size(); ++i) ret[i] -= rhs[i];
-    return FPS(ret);
+    return FormalPowerSeries(ret);
   }
 
-  auto operator*(const FPS &rhs) const {
+  auto operator*(const FormalPowerSeries &rhs) const {
     auto ret = convolve(data, rhs.data);
-    return FPS(ret);
+    return FormalPowerSeries(ret);
   }
 
   auto operator*(T b) const {
     std::vector<T> ret(data);
     for(auto &x : ret) x *= b;
-    return FPS(ret);
+    return FormalPowerSeries(ret);
   }
 
   auto differentiate() const {
@@ -106,7 +147,7 @@ struct FPS{
       ret[i] = data[i+1] * (i + 1);
     }
     
-    return FPS(ret);
+    return FormalPowerSeries(ret);
   }
 
   auto integrate() const {
@@ -116,7 +157,7 @@ struct FPS{
       ret[i+1] = data[i] / (i + 1);
     }
 
-    return FPS(ret);
+    return FormalPowerSeries(ret);
   }
 
   auto inv() const {
@@ -143,7 +184,7 @@ struct FPS{
     
     ret.resize(n);
 
-    return FPS(ret);
+    return FormalPowerSeries(ret);
   }
 
   auto log() const {
@@ -158,7 +199,7 @@ struct FPS{
     const int n = data.size();
 
     int t = 1;
-    FPS b({1});
+    FormalPowerSeries b({1});
 
     while(t <= n * 2){
       t <<= 1;
@@ -181,7 +222,7 @@ struct FPS{
 
 
 template <typename T>
-std::function<std::vector<T>(std::vector<T>, std::vector<T>)> FPS<T>::convolve;
+std::function<std::vector<T>(std::vector<T>, std::vector<T>)> FormalPowerSeries<T>::convolve;
 
 ```
 {% endraw %}
@@ -193,19 +234,22 @@ std::function<std::vector<T>(std::vector<T>, std::vector<T>)> FPS<T>::convolve;
 
 #include <functional>
 #include <vector>
+#include <initializer_list>
 
 /**
  * @title Formal power series
  * @docs formal_power_series.md
  */
 template <typename T>
-struct FPS{
+struct FormalPowerSeries{
   static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
 
   std::vector<T> data;
 
-  FPS(const std::vector<T> &data): data(data){}
-
+  FormalPowerSeries(const std::vector<T> &data): data(data){}
+  FormalPowerSeries(std::initializer_list<T> init): data(init.begin(), init.end()){}
+  FormalPowerSeries(int N): data(N){}
+  
   int size() const {
     return data.size();
   }
@@ -218,33 +262,36 @@ struct FPS{
     return data[i];
   }
 
+  auto begin() {return data.begin();}
+  auto end() {return data.end();}
+
   void resize(int n){
     data.resize(n);
   }
   
-  auto operator+(const FPS &rhs) const {
+  auto operator+(const FormalPowerSeries &rhs) const {
     std::vector<T> ret(data);
     ret.resize(rhs.size());
     for(int i = 0; i < (int)rhs.size(); ++i) ret[i] += rhs[i];
-    return FPS(ret);
+    return FormalPowerSeries(ret);
   }
 
-  auto operator-(const FPS &rhs) const {
+  auto operator-(const FormalPowerSeries &rhs) const {
     std::vector<T> ret(data);
     ret.resize(rhs.size());
     for(int i = 0; i < (int)rhs.size(); ++i) ret[i] -= rhs[i];
-    return FPS(ret);
+    return FormalPowerSeries(ret);
   }
 
-  auto operator*(const FPS &rhs) const {
+  auto operator*(const FormalPowerSeries &rhs) const {
     auto ret = convolve(data, rhs.data);
-    return FPS(ret);
+    return FormalPowerSeries(ret);
   }
 
   auto operator*(T b) const {
     std::vector<T> ret(data);
     for(auto &x : ret) x *= b;
-    return FPS(ret);
+    return FormalPowerSeries(ret);
   }
 
   auto differentiate() const {
@@ -254,7 +301,7 @@ struct FPS{
       ret[i] = data[i+1] * (i + 1);
     }
     
-    return FPS(ret);
+    return FormalPowerSeries(ret);
   }
 
   auto integrate() const {
@@ -264,7 +311,7 @@ struct FPS{
       ret[i+1] = data[i] / (i + 1);
     }
 
-    return FPS(ret);
+    return FormalPowerSeries(ret);
   }
 
   auto inv() const {
@@ -291,7 +338,7 @@ struct FPS{
     
     ret.resize(n);
 
-    return FPS(ret);
+    return FormalPowerSeries(ret);
   }
 
   auto log() const {
@@ -306,7 +353,7 @@ struct FPS{
     const int n = data.size();
 
     int t = 1;
-    FPS b({1});
+    FormalPowerSeries b({1});
 
     while(t <= n * 2){
       t <<= 1;
@@ -329,7 +376,7 @@ struct FPS{
 
 
 template <typename T>
-std::function<std::vector<T>(std::vector<T>, std::vector<T>)> FPS<T>::convolve;
+std::function<std::vector<T>(std::vector<T>, std::vector<T>)> FormalPowerSeries<T>::convolve;
 
 ```
 {% endraw %}

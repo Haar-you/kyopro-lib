@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/rolling_hash.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-08-09 21:38:53+09:00
 
 
 
@@ -85,6 +85,18 @@ public:
   int64_t get(const std::vector<int64_t> &table, int l, int r) const {
     return (table[r] - table[l] * pow[r-l] % MOD + MOD * MOD) % MOD;
   }
+
+  template <typename T>
+  std::vector<int> find(const T &s, const T &pattern) const {
+    auto hp = gen_hash(pattern);
+    auto hs = gen_hash_table(s);
+    std::vector<int> ret;
+    for(int i = 0; i <= ((int)s.size() - (int)pattern.size()); ++i){
+      if(hp == get(hs, i, i + pattern.size())) ret.push_back(i);
+    }
+
+    return ret;
+  }
 };
 
 auto make_rh(int size, int MOD, int seed = 0){
@@ -137,6 +149,18 @@ public:
    */
   int64_t get(const std::vector<int64_t> &table, int l, int r) const {
     return (table[r] - table[l] * pow[r-l] % MOD + MOD * MOD) % MOD;
+  }
+
+  template <typename T>
+  std::vector<int> find(const T &s, const T &pattern) const {
+    auto hp = gen_hash(pattern);
+    auto hs = gen_hash_table(s);
+    std::vector<int> ret;
+    for(int i = 0; i <= ((int)s.size() - (int)pattern.size()); ++i){
+      if(hp == get(hs, i, i + pattern.size())) ret.push_back(i);
+    }
+
+    return ret;
   }
 };
 

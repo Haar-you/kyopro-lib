@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f4368c57ad8f64bd0caa562818234830">test/aoj/DPL_5_G</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_G/main.table.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-08-10 08:29:19+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_G">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_G</a>
@@ -83,10 +83,10 @@ int main(){
  * @title Modint
  * @docs mint.md
  */
-template <uint32_t M> class ModInt{
+template <int32_t M> class ModInt{
 public:
-  constexpr static uint32_t MOD = M;
-  uint64_t val;
+  constexpr static int32_t MOD = M;
+  uint32_t val;
   
   constexpr ModInt(): val(0){}
   constexpr ModInt(int64_t n){
@@ -95,26 +95,40 @@ public:
     else val = n;
   }
   
-  constexpr auto operator+(const ModInt &a) const {return ModInt(val + a.val);}
-  constexpr auto operator-(const ModInt &a) const {return ModInt(val - a.val);}
-  constexpr auto operator*(const ModInt &a) const {return ModInt(val * a.val);}
-  constexpr auto operator/(const ModInt &a) const {return ModInt(val * a.inv().val);}
-  
   constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
-  constexpr auto& operator+=(const ModInt &a){if((val += a.val) >= M) val -= M; return *this;}
-  constexpr auto& operator-=(const ModInt &a){if(val < a.val) val += M; val -= a.val; return *this;}
-  constexpr auto& operator*=(const ModInt &a){(val *= a.val) %= M; return *this;}
-  constexpr auto& operator/=(const ModInt &a){(val *= a.inv().val) %= M; return *this;}
- 
+  constexpr auto& operator+=(const ModInt &a){
+    if(val + a.val >= M) val = (uint64_t)val + a.val - M;
+    else val += a.val;
+    return *this;
+  }
+  constexpr auto& operator-=(const ModInt &a){
+    if(val < a.val) val += M;
+    val -= a.val;
+    return *this;
+  }
+  constexpr auto& operator*=(const ModInt &a){
+    val = (uint64_t)val * a.val % M;
+    return *this;
+  }
+  constexpr auto& operator/=(const ModInt &a){
+    val = (uint64_t)val * a.inv().val % M;
+    return *this;
+  }
+
+  constexpr auto operator+(const ModInt &a) const {return ModInt(*this) += a;}
+  constexpr auto operator-(const ModInt &a) const {return ModInt(*this) -= a;}
+  constexpr auto operator*(const ModInt &a) const {return ModInt(*this) *= a;}
+  constexpr auto operator/(const ModInt &a) const {return ModInt(*this) /= a;}
+  
   constexpr bool operator==(const ModInt &a) const {return val == a.val;}
   constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
- 
+  
   constexpr auto& operator++(){*this += 1; return *this;}
   constexpr auto& operator--(){*this -= 1; return *this;}
- 
+  
   constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
   constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
- 
+  
   constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
     
@@ -122,7 +136,7 @@ public:
     for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
     return ret;
   }
- 
+  
   constexpr static ModInt inv(int64_t a){
     int64_t b = M, u = 1, v = 0;
     
@@ -131,25 +145,25 @@ public:
       a -= t * b; std::swap(a,b);
       u -= t * v; std::swap(u,v);
     }
- 
+    
     u %= M;
     if(u < 0) u += M;
     
     return u;
   }
- 
+  
   constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
   
   constexpr auto power(int64_t p) const {return power(val, p);}
   constexpr auto inv() const {return inv(val);}
- 
-  friend constexpr auto operator-(const ModInt &a){return ModInt(-a.val);}
- 
+  
+  friend constexpr auto operator-(const ModInt &a){return ModInt(M-a.val);}
+  
   friend constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
   friend constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
   friend constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
   friend constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
- 
+  
   friend std::istream& operator>>(std::istream &s, ModInt<M> &a){s >> a.val; return s;}
   friend std::ostream& operator<<(std::ostream &s, const ModInt<M> &a){s << a.val; return s;}
 

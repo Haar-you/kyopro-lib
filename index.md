@@ -182,6 +182,7 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/Combinatorics/bell_number.cpp.html">Bell number</a>
 * :heavy_check_mark: <a href="library/Mylib/Combinatorics/bell_number_table.cpp.html">Bell number (Table)</a>
 * :heavy_check_mark: <a href="library/Mylib/Combinatorics/bernoulli_number.cpp.html">Bernoulli number</a>
+* :heavy_check_mark: <a href="library/Mylib/Combinatorics/bernoulli_number_fps.cpp.html">Bernoulli number (FPS)</a>
 * :warning: <a href="library/Mylib/Combinatorics/binomial_coefficients_table.cpp.html">Binomial coefficients table</a>
 * :heavy_check_mark: <a href="library/Mylib/Combinatorics/catalan_number.cpp.html">Catalan number</a>
 * :heavy_check_mark: <a href="library/Mylib/Combinatorics/factorial_table.cpp.html">Factorial table</a>
@@ -204,7 +205,7 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/Convolution/fast_mobius_transform_superset.cpp.html">Fast Möbius transform (Supersets)</a>
 * :heavy_check_mark: <a href="library/Mylib/Convolution/fast_zeta_transform_subset.cpp.html">Fast Zeta transform (Subsets)</a>
 * :heavy_check_mark: <a href="library/Mylib/Convolution/fast_zeta_transform_superset.cpp.html">Fast Zeta transform (Supersets)</a>
-* :warning: <a href="library/Mylib/Convolution/formal_power_series.cpp.html">Formal power series</a>
+* :heavy_check_mark: <a href="library/Mylib/Convolution/formal_power_series.cpp.html">Formal power series</a>
 * :heavy_check_mark: <a href="library/Mylib/Convolution/ntt_convolution.cpp.html">Number theoretic transform</a>
 
 
@@ -492,6 +493,7 @@ layout: default
 
 ### Mylib/Graph/MinimumSpanningTree
 
+* :warning: <a href="library/Mylib/Graph/MinimumSpanningTree/boruvka.cpp.html">Borůvka algorithm</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp.html">Chu-Liu/Edmonds algorithm</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
@@ -606,6 +608,7 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/Misc/int128.cpp.html">128-bit int</a>
 * :heavy_check_mark: <a href="library/Mylib/Misc/inversion_number.cpp.html">Inversion number</a>
 * :heavy_check_mark: <a href="library/Mylib/Misc/merge_technique.cpp.html">Mylib/Misc/merge_technique.cpp</a>
+* :warning: <a href="library/Mylib/Misc/range.cpp.html">Mylib/Misc/range.cpp</a>
 * :warning: <a href="library/Mylib/Misc/roman_numerals.cpp.html">Roman numerals</a>
 * :warning: <a href="library/Mylib/Misc/timer.cpp.html">Timer</a>
 * :warning: <a href="library/Mylib/Misc/unzip.cpp.html">Unzip function</a>
@@ -775,6 +778,13 @@ layout: default
 * :warning: <a href="library/snippets/uniq.cpp.html">snippets/uniq.cpp</a>
 
 
+<div id="81ed75a9aa7f4e6edc886499b1a67fa4"></div>
+
+### test/aoj/GRL_2_A
+
+* :warning: <a href="library/test/aoj/GRL_2_A/main.boruvka.cpp.html">test/aoj/GRL_2_A/main.boruvka.cpp</a>
+
+
 ## Verify Files
 
 * :heavy_check_mark: <a href="verify/test/aoj/0323/main.golden.test.cpp.html">test/aoj/0323/main.golden.test.cpp</a>
@@ -907,6 +917,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/NTL_1_D/main.totient.test.cpp.html">test/aoj/NTL_1_D/main.totient.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/NTL_1_E/main.test.cpp.html">test/aoj/NTL_1_E/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/assignment/main.test.cpp.html">test/yosupo-judge/assignment/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/bernoulli_number/main.test.cpp.html">test/yosupo-judge/bernoulli_number/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/bipartitematching/main.test.cpp.html">test/yosupo-judge/bipartitematching/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/cartesian_tree/main.test.cpp.html">test/yosupo-judge/cartesian_tree/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/convolution_mod/main.test.cpp.html">test/yosupo-judge/convolution_mod/main.test.cpp</a>
@@ -915,9 +926,12 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp.html">test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/enumerate_triangles/main.test.cpp.html">test/yosupo-judge/enumerate_triangles/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/exp_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/exp_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/factorize/main.test.cpp.html">test/yosupo-judge/factorize/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/inv_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/inv_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/kth_root_integer/main.test.cpp.html">test/yosupo-judge/kth_root_integer/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/line_add_get_min/main.test.cpp.html">test/yosupo-judge/line_add_get_min/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/log_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/log_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/matrix_det/main.test.cpp.html">test/yosupo-judge/matrix_det/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/maximum_independent_set/main.test.cpp.html">test/yosupo-judge/maximum_independent_set/main.test.cpp</a>

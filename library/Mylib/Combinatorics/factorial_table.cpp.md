@@ -52,6 +52,7 @@ layout: default
 
 * :heavy_check_mark: <a href="bell_number.cpp.html">Bell number</a>
 * :heavy_check_mark: <a href="bernoulli_number.cpp.html">Bernoulli number</a>
+* :heavy_check_mark: <a href="bernoulli_number_fps.cpp.html">Bernoulli number (FPS)</a>
 * :heavy_check_mark: <a href="catalan_number.cpp.html">Catalan number</a>
 * :heavy_check_mark: <a href="stirling_number.cpp.html">Stirling numbers of second kind</a>
 
@@ -60,6 +61,7 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_G/main.test.cpp.html">test/aoj/DPL_5_G/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_I/main.test.cpp.html">test/aoj/DPL_5_I/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/bernoulli_number/main.test.cpp.html">test/yosupo-judge/bernoulli_number/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yukicoder/117/main.test.cpp.html">test/yukicoder/117/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yukicoder/660/main.test.cpp.html">test/yukicoder/660/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yukicoder/665/main.test.cpp.html">test/yukicoder/665/main.test.cpp</a>

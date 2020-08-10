@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#ed8374f4a8b62e2301eb75f9564224fe">Mylib/Number/Mint</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mint/mint.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-08-10 08:29:19+09:00
 
 
 
@@ -49,9 +49,13 @@ layout: default
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/DPL_5_I/main.table.test.cpp.html">test/aoj/DPL_5_I/main.table.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/DPL_5_I/main.test.cpp.html">test/aoj/DPL_5_I/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/aoj/DPL_5_J/main.test.cpp.html">test/aoj/DPL_5_J/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/bernoulli_number/main.test.cpp.html">test/yosupo-judge/bernoulli_number/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/convolution_mod/main.test.cpp.html">test/yosupo-judge/convolution_mod/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/convolution_mod_1000000007/main.test.cpp.html">test/yosupo-judge/convolution_mod_1000000007/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/enumerate_triangles/main.test.cpp.html">test/yosupo-judge/enumerate_triangles/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/exp_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/exp_of_formal_power_series/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/inv_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/inv_of_formal_power_series/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/log_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/log_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/matrix_det/main.test.cpp.html">test/yosupo-judge/matrix_det/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/partition_function/main.test.cpp.html">test/yosupo-judge/partition_function/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
@@ -82,10 +86,10 @@ layout: default
  * @title Modint
  * @docs mint.md
  */
-template <uint32_t M> class ModInt{
+template <int32_t M> class ModInt{
 public:
-  constexpr static uint32_t MOD = M;
-  uint64_t val;
+  constexpr static int32_t MOD = M;
+  uint32_t val;
   
   constexpr ModInt(): val(0){}
   constexpr ModInt(int64_t n){
@@ -94,26 +98,40 @@ public:
     else val = n;
   }
   
-  constexpr auto operator+(const ModInt &a) const {return ModInt(val + a.val);}
-  constexpr auto operator-(const ModInt &a) const {return ModInt(val - a.val);}
-  constexpr auto operator*(const ModInt &a) const {return ModInt(val * a.val);}
-  constexpr auto operator/(const ModInt &a) const {return ModInt(val * a.inv().val);}
-  
   constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
-  constexpr auto& operator+=(const ModInt &a){if((val += a.val) >= M) val -= M; return *this;}
-  constexpr auto& operator-=(const ModInt &a){if(val < a.val) val += M; val -= a.val; return *this;}
-  constexpr auto& operator*=(const ModInt &a){(val *= a.val) %= M; return *this;}
-  constexpr auto& operator/=(const ModInt &a){(val *= a.inv().val) %= M; return *this;}
- 
+  constexpr auto& operator+=(const ModInt &a){
+    if(val + a.val >= M) val = (uint64_t)val + a.val - M;
+    else val += a.val;
+    return *this;
+  }
+  constexpr auto& operator-=(const ModInt &a){
+    if(val < a.val) val += M;
+    val -= a.val;
+    return *this;
+  }
+  constexpr auto& operator*=(const ModInt &a){
+    val = (uint64_t)val * a.val % M;
+    return *this;
+  }
+  constexpr auto& operator/=(const ModInt &a){
+    val = (uint64_t)val * a.inv().val % M;
+    return *this;
+  }
+
+  constexpr auto operator+(const ModInt &a) const {return ModInt(*this) += a;}
+  constexpr auto operator-(const ModInt &a) const {return ModInt(*this) -= a;}
+  constexpr auto operator*(const ModInt &a) const {return ModInt(*this) *= a;}
+  constexpr auto operator/(const ModInt &a) const {return ModInt(*this) /= a;}
+  
   constexpr bool operator==(const ModInt &a) const {return val == a.val;}
   constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
- 
+  
   constexpr auto& operator++(){*this += 1; return *this;}
   constexpr auto& operator--(){*this -= 1; return *this;}
- 
+  
   constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
   constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
- 
+  
   constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
     
@@ -121,7 +139,7 @@ public:
     for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
     return ret;
   }
- 
+  
   constexpr static ModInt inv(int64_t a){
     int64_t b = M, u = 1, v = 0;
     
@@ -130,25 +148,25 @@ public:
       a -= t * b; std::swap(a,b);
       u -= t * v; std::swap(u,v);
     }
- 
+    
     u %= M;
     if(u < 0) u += M;
     
     return u;
   }
- 
+  
   constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
   
   constexpr auto power(int64_t p) const {return power(val, p);}
   constexpr auto inv() const {return inv(val);}
- 
-  friend constexpr auto operator-(const ModInt &a){return ModInt(-a.val);}
- 
+  
+  friend constexpr auto operator-(const ModInt &a){return ModInt(M-a.val);}
+  
   friend constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
   friend constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
   friend constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
   friend constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
- 
+  
   friend std::istream& operator>>(std::istream &s, ModInt<M> &a){s >> a.val; return s;}
   friend std::ostream& operator<<(std::ostream &s, const ModInt<M> &a){s << a.val; return s;}
 
@@ -176,10 +194,10 @@ public:
  * @title Modint
  * @docs mint.md
  */
-template <uint32_t M> class ModInt{
+template <int32_t M> class ModInt{
 public:
-  constexpr static uint32_t MOD = M;
-  uint64_t val;
+  constexpr static int32_t MOD = M;
+  uint32_t val;
   
   constexpr ModInt(): val(0){}
   constexpr ModInt(int64_t n){
@@ -188,26 +206,40 @@ public:
     else val = n;
   }
   
-  constexpr auto operator+(const ModInt &a) const {return ModInt(val + a.val);}
-  constexpr auto operator-(const ModInt &a) const {return ModInt(val - a.val);}
-  constexpr auto operator*(const ModInt &a) const {return ModInt(val * a.val);}
-  constexpr auto operator/(const ModInt &a) const {return ModInt(val * a.inv().val);}
-  
   constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
-  constexpr auto& operator+=(const ModInt &a){if((val += a.val) >= M) val -= M; return *this;}
-  constexpr auto& operator-=(const ModInt &a){if(val < a.val) val += M; val -= a.val; return *this;}
-  constexpr auto& operator*=(const ModInt &a){(val *= a.val) %= M; return *this;}
-  constexpr auto& operator/=(const ModInt &a){(val *= a.inv().val) %= M; return *this;}
- 
+  constexpr auto& operator+=(const ModInt &a){
+    if(val + a.val >= M) val = (uint64_t)val + a.val - M;
+    else val += a.val;
+    return *this;
+  }
+  constexpr auto& operator-=(const ModInt &a){
+    if(val < a.val) val += M;
+    val -= a.val;
+    return *this;
+  }
+  constexpr auto& operator*=(const ModInt &a){
+    val = (uint64_t)val * a.val % M;
+    return *this;
+  }
+  constexpr auto& operator/=(const ModInt &a){
+    val = (uint64_t)val * a.inv().val % M;
+    return *this;
+  }
+
+  constexpr auto operator+(const ModInt &a) const {return ModInt(*this) += a;}
+  constexpr auto operator-(const ModInt &a) const {return ModInt(*this) -= a;}
+  constexpr auto operator*(const ModInt &a) const {return ModInt(*this) *= a;}
+  constexpr auto operator/(const ModInt &a) const {return ModInt(*this) /= a;}
+  
   constexpr bool operator==(const ModInt &a) const {return val == a.val;}
   constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
- 
+  
   constexpr auto& operator++(){*this += 1; return *this;}
   constexpr auto& operator--(){*this -= 1; return *this;}
- 
+  
   constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
   constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
- 
+  
   constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
     
@@ -215,7 +247,7 @@ public:
     for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
     return ret;
   }
- 
+  
   constexpr static ModInt inv(int64_t a){
     int64_t b = M, u = 1, v = 0;
     
@@ -224,25 +256,25 @@ public:
       a -= t * b; std::swap(a,b);
       u -= t * v; std::swap(u,v);
     }
- 
+    
     u %= M;
     if(u < 0) u += M;
     
     return u;
   }
- 
+  
   constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
   
   constexpr auto power(int64_t p) const {return power(val, p);}
   constexpr auto inv() const {return inv(val);}
- 
-  friend constexpr auto operator-(const ModInt &a){return ModInt(-a.val);}
- 
+  
+  friend constexpr auto operator-(const ModInt &a){return ModInt(M-a.val);}
+  
   friend constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
   friend constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
   friend constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
   friend constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
- 
+  
   friend std::istream& operator>>(std::istream &s, ModInt<M> &a){s >> a.val; return s;}
   friend std::ostream& operator<<(std::ostream &s, const ModInt<M> &a){s << a.val; return s;}
 
