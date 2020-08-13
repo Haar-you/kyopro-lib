@@ -8,10 +8,10 @@
  * @docs binary_gaussian_elimination.md
  */
 template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &m){
-  int n = m.size();
+  const int n = m.size();
   int rank = 0;
 
-  for(int j = 0; j < N; ++j){
+  for(size_t j = 0; j < N; ++j){
     int pivot = -1;
 
     for(int i = rank; i < n; ++i){
@@ -32,4 +32,8 @@ template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &m){
   }
   
   return rank;
+}
+
+template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &&m){
+  return gaussian_elimination(m);
 }
