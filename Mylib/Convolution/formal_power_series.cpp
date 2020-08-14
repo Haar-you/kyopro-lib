@@ -10,6 +10,8 @@
  */
 template <typename T>
 struct FormalPowerSeries{
+  using value_type = T;
+  
   static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
 
   std::vector<T> data;
