@@ -140,6 +140,48 @@ struct FormalPowerSeries{
 
     return b;
   }
+
+
+  auto shift(int64_t k) const {
+    const int64_t n = data.size();
+    FormalPowerSeries ret(n);
+
+    if(k >= 0){
+      for(int64_t i = k; i < n; ++i){
+        ret[i] = data[i - k];
+      }
+    }else{
+      for(int64_t i = 0; i < n + k; ++i){
+        ret[i] = data[i - k];
+      }
+    }
+
+    return ret;
+  }
+
+  
+  auto power(int64_t M) const {
+    assert(M >= 0);
+    
+    const int n = data.size();
+    int k = 0;
+    for(; k < n; ++k){
+      if(data[k] != 0){
+        break;
+      }
+    }
+
+    if(k >= n) return *this;
+
+    T a = data[k];
+
+    FormalPowerSeries ret = *this;
+    ret = (ret.shift(-k)) * a.inv();
+    ret = (ret.log() * (T)M).exp();
+    ret = (ret * a.power(M)).shift(M * k);
+    
+    return ret;
+  }
 };
 
 
