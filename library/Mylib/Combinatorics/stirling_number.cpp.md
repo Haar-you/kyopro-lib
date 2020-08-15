@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/stirling_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-30 03:19:03+09:00
+    - Last commit date: 2020-08-15 08:41:18+09:00
 
 
 
@@ -49,7 +49,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="factorial_table.cpp.html">Factorial table</a>
+* :question: <a href="factorial_table.cpp.html">Factorial table</a>
 
 
 ## Required by
@@ -105,6 +105,8 @@ T FactorialTable<T>::stirling_number(int64_t n, int64_t k){
  */
 template <typename T> class FactorialTable{
 public:
+  using value_type = T;
+  
   static std::vector<T> f_table;
   static std::vector<T> if_table;
 

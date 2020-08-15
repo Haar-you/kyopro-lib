@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/bernoulli_number_fps.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-10 21:40:43+09:00
+    - Last commit date: 2020-08-15 08:41:18+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="factorial_table.cpp.html">Factorial table</a>
+* :question: <a href="factorial_table.cpp.html">Factorial table</a>
 * :heavy_check_mark: <a href="../Convolution/formal_power_series.cpp.html">Formal power series</a>
 
 
@@ -89,6 +89,8 @@ auto bernoulli_number_fps(int N){
  */
 template <typename T> class FactorialTable{
 public:
+  using value_type = T;
+  
   static std::vector<T> f_table;
   static std::vector<T> if_table;
 
@@ -155,6 +157,8 @@ template <typename T> T FactorialTable<T>::H(int64_t n, int64_t k){
  */
 template <typename T>
 struct FormalPowerSeries{
+  using value_type = T;
+  
   static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
 
   std::vector<T> data;
@@ -284,6 +288,48 @@ struct FormalPowerSeries{
     b.resize(n);
 
     return b;
+  }
+
+
+  auto shift(int64_t k) const {
+    const int64_t n = data.size();
+    FormalPowerSeries ret(n);
+
+    if(k >= 0){
+      for(int64_t i = k; i < n; ++i){
+        ret[i] = data[i - k];
+      }
+    }else{
+      for(int64_t i = 0; i < n + k; ++i){
+        ret[i] = data[i - k];
+      }
+    }
+
+    return ret;
+  }
+
+  
+  auto power(int64_t M) const {
+    assert(M >= 0);
+    
+    const int n = data.size();
+    int k = 0;
+    for(; k < n; ++k){
+      if(data[k] != 0){
+        break;
+      }
+    }
+
+    if(k >= n) return *this;
+
+    T a = data[k];
+
+    FormalPowerSeries ret = *this;
+    ret = (ret.shift(-k)) * a.inv();
+    ret = (ret.log() * (T)M).exp();
+    ret = (ret * a.power(M)).shift(M * k);
+    
+    return ret;
   }
 };
 

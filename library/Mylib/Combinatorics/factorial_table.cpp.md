@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Factorial table
+# :question: Factorial table
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/factorial_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-30 03:19:03+09:00
+    - Last commit date: 2020-08-15 08:41:18+09:00
 
 
 
@@ -51,9 +51,9 @@ layout: default
 ## Required by
 
 * :heavy_check_mark: <a href="bell_number.cpp.html">Bell number</a>
-* :heavy_check_mark: <a href="bernoulli_number.cpp.html">Bernoulli number</a>
+* :x: <a href="bernoulli_number.cpp.html">Bernoulli number</a>
 * :heavy_check_mark: <a href="bernoulli_number_fps.cpp.html">Bernoulli number (FPS)</a>
-* :heavy_check_mark: <a href="catalan_number.cpp.html">Catalan number</a>
+* :x: <a href="catalan_number.cpp.html">Catalan number</a>
 * :heavy_check_mark: <a href="stirling_number.cpp.html">Stirling numbers of second kind</a>
 
 
@@ -62,9 +62,9 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_G/main.test.cpp.html">test/aoj/DPL_5_G/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_I/main.test.cpp.html">test/aoj/DPL_5_I/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/bernoulli_number/main.test.cpp.html">test/yosupo-judge/bernoulli_number/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/117/main.test.cpp.html">test/yukicoder/117/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/660/main.test.cpp.html">test/yukicoder/660/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/665/main.test.cpp.html">test/yukicoder/665/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/117/main.test.cpp.html">test/yukicoder/117/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/660/main.test.cpp.html">test/yukicoder/660/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/665/main.test.cpp.html">test/yukicoder/665/main.test.cpp</a>
 
 
 ## Code
@@ -83,6 +83,8 @@ layout: default
  */
 template <typename T> class FactorialTable{
 public:
+  using value_type = T;
+  
   static std::vector<T> f_table;
   static std::vector<T> if_table;
 
@@ -155,6 +157,8 @@ template <typename T> T FactorialTable<T>::H(int64_t n, int64_t k){
  */
 template <typename T> class FactorialTable{
 public:
+  using value_type = T;
+  
   static std::vector<T> f_table;
   static std::vector<T> if_table;
 

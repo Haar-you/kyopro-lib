@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/3030/main.test.cpp
+# :x: test/yukicoder/3030/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#c3762d67768ccc7d2f909f02cd1756df">test/yukicoder/3030</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/3030/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-08-11 08:51:20+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/3030">https://yukicoder.me/problems/no/3030</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/int128.cpp.html">128-bit int</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/miller_rabin.cpp.html">Primality test (Miller-Rabin algorithm)</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/Misc/int128.cpp.html">128-bit int</a>
+* :question: <a href="../../../../library/Mylib/Number/Prime/miller_rabin.cpp.html">Primality test (Miller-Rabin algorithm)</a>
 
 
 ## Code
@@ -62,8 +62,10 @@ int main(){
 
   int N; std::cin >> N;
 
+  MillerRabin is_prime;
+
   for(auto [x] : input_tuples<int64_t>(N)){
-    std::cout << x << " " << MillerRabin::is_prime(x) << "\n";
+    std::cout << x << " " << is_prime(x) << "\n";
   }
 
   return 0;
@@ -100,7 +102,7 @@ using int128_t = boost::multiprecision::int128_t;
  * @docs miller_rabin.md
  */
 class MillerRabin{
-  static uint128_t power(uint128_t a, uint128_t b, uint128_t p){
+  uint128_t power(uint128_t a, uint128_t b, uint128_t p) const {
     uint128_t ret = 1;
 
     while(b > 0){
@@ -112,7 +114,7 @@ class MillerRabin{
     return ret;
   }
   
-  static bool is_composite(uint64_t a, uint64_t p, int s, uint64_t d){
+  bool is_composite(uint64_t a, uint64_t p, int s, uint64_t d) const {
     uint128_t x = power(a, d, p);
 
     if(x == 1) return false;
@@ -126,7 +128,7 @@ class MillerRabin{
   }
 
 public:
-  static bool is_prime(uint64_t n){
+  bool operator()(uint64_t n) const {
     if(n <= 1) return false;
     if(n == 2) return true;
     if(n % 2 == 0) return false;
@@ -233,8 +235,10 @@ int main(){
 
   int N; std::cin >> N;
 
+  MillerRabin is_prime;
+
   for(auto [x] : input_tuples<int64_t>(N)){
-    std::cout << x << " " << MillerRabin::is_prime(x) << "\n";
+    std::cout << x << " " << is_prime(x) << "\n";
   }
 
   return 0;

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/660/main.test.cpp
+# :x: test/yukicoder/660/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a98572782bc888d5914d5fef365c5125">test/yukicoder/660</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/660/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-10 08:29:19+09:00
+    - Last commit date: 2020-08-15 08:41:18+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/660">https://yukicoder.me/problems/no/660</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/catalan_number.cpp.html">Catalan number</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/factorial_table.cpp.html">Factorial table</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :x: <a href="../../../../library/Mylib/Combinatorics/catalan_number.cpp.html">Catalan number</a>
+* :question: <a href="../../../../library/Mylib/Combinatorics/factorial_table.cpp.html">Factorial table</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -211,6 +211,8 @@ public:
  */
 template <typename T> class FactorialTable{
 public:
+  using value_type = T;
+  
   static std::vector<T> f_table;
   static std::vector<T> if_table;
 

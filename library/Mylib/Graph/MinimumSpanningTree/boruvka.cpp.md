@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Borůvka algorithm
+# :heavy_check_mark: Borůvka algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -56,9 +56,9 @@ layout: default
 * :question: <a href="../graph_template.cpp.html">Graph template</a>
 
 
-## Required by
+## Verified with
 
-* :warning: <a href="../../../test/aoj/GRL_2_A/main.boruvka.cpp.html">test/aoj/GRL_2_A/main.boruvka.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_2_A/main.boruvka.test.cpp.html">test/aoj/GRL_2_A/main.boruvka.test.cpp</a>
 
 
 ## Code

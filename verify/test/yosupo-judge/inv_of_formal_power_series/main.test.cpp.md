@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a91ddcca0159fd42ada032c3a7d3e68f">test/yosupo-judge/inv_of_formal_power_series</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/inv_of_formal_power_series/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-10 20:50:39+09:00
+    - Last commit date: 2020-08-15 08:41:18+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/inv_of_formal_power_series">https://judge.yosupo.jp/problem/inv_of_formal_power_series</a>
@@ -41,9 +41,9 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/formal_power_series.cpp.html">Formal power series</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number theoretic transform</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -338,6 +338,8 @@ std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
  */
 template <typename T>
 struct FormalPowerSeries{
+  using value_type = T;
+  
   static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
 
   std::vector<T> data;
@@ -467,6 +469,48 @@ struct FormalPowerSeries{
     b.resize(n);
 
     return b;
+  }
+
+
+  auto shift(int64_t k) const {
+    const int64_t n = data.size();
+    FormalPowerSeries ret(n);
+
+    if(k >= 0){
+      for(int64_t i = k; i < n; ++i){
+        ret[i] = data[i - k];
+      }
+    }else{
+      for(int64_t i = 0; i < n + k; ++i){
+        ret[i] = data[i - k];
+      }
+    }
+
+    return ret;
+  }
+
+  
+  auto power(int64_t M) const {
+    assert(M >= 0);
+    
+    const int n = data.size();
+    int k = 0;
+    for(; k < n; ++k){
+      if(data[k] != 0){
+        break;
+      }
+    }
+
+    if(k >= n) return *this;
+
+    T a = data[k];
+
+    FormalPowerSeries ret = *this;
+    ret = (ret.shift(-k)) * a.inv();
+    ret = (ret.log() * (T)M).exp();
+    ret = (ret * a.power(M)).shift(M * k);
+    
+    return ret;
   }
 };
 

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/mobius_function.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-08-12 08:07:34+09:00
 
 
 
@@ -51,11 +51,6 @@ layout: default
 - [https://en.wikipedia.org/wiki/M%C3%B6bius_function](https://en.wikipedia.org/wiki/M%C3%B6bius_function)
 
 
-## Depends on
-
-* :heavy_check_mark: <a href="Prime/eratosthenes_sieve.cpp.html">Sieve of Eratosthenes</a>
-
-
 ## Code
 
 <a id="unbundled"></a>
@@ -63,27 +58,27 @@ layout: default
 ```cpp
 #pragma once
 #include <vector>
-#include "Mylib/Number/Prime/eratosthenes_sieve.cpp"
 
 /**
  * @title Möbius function
  * @docs mobius_function.md
  */
-std::vector<int> mobius_function(int n){
+template <typename Checker>
+std::vector<int> mobius_function(int n, Checker is_prime){
   std::vector<int> ret(n+1);
   std::vector<int> ps;
 
   ret[1] = 1;
 
   for(int i = 2; i <= n; ++i){
-    if(eratosthenes_sieve::is_prime[i]){
+    if(is_prime(i)){
       ps.push_back(i);
       ret[i] = -1;
     }
     for(auto &j : ps){
-      if(i*j > n) break;
-      if(i%j == 0) ret[i*j] = 0;
-      else ret[i*j] = ret[i] * ret[j];
+      if(i * j > n) break;
+      if(i % j == 0) ret[i * j] = 0;
+      else ret[i * j] = ret[i] * ret[j];
     }
   }
   
@@ -98,53 +93,27 @@ std::vector<int> mobius_function(int n){
 ```cpp
 #line 2 "Mylib/Number/mobius_function.cpp"
 #include <vector>
-#line 2 "Mylib/Number/Prime/eratosthenes_sieve.cpp"
-#include <bitset>
-
-/**
- * @title Sieve of Eratosthenes
- * @docs eratosthenes_sieve.md
- */
-template <int MAX>
-struct EratosthenesSieve{
-  static std::bitset<MAX+1> is_prime;
-  
-  static void init(){
-    is_prime.flip();
-    is_prime[0] = is_prime[1] = false;
-    
-    for(int i = 2; i <= MAX; ++i){
-      if(is_prime[i]){
-        for(int j = 2*i; j <= MAX; j += i){
-          is_prime[j] = false;
-        }
-      }
-    }
-  }
-};
-
-template <int MAX> std::bitset<MAX+1> EratosthenesSieve<MAX>::is_prime;
-#line 4 "Mylib/Number/mobius_function.cpp"
 
 /**
  * @title Möbius function
  * @docs mobius_function.md
  */
-std::vector<int> mobius_function(int n){
+template <typename Checker>
+std::vector<int> mobius_function(int n, Checker is_prime){
   std::vector<int> ret(n+1);
   std::vector<int> ps;
 
   ret[1] = 1;
 
   for(int i = 2; i <= n; ++i){
-    if(eratosthenes_sieve::is_prime[i]){
+    if(is_prime(i)){
       ps.push_back(i);
       ret[i] = -1;
     }
     for(auto &j : ps){
-      if(i*j > n) break;
-      if(i%j == 0) ret[i*j] = 0;
-      else ret[i*j] = ret[i] * ret[j];
+      if(i * j > n) break;
+      if(i % j == 0) ret[i * j] = 0;
+      else ret[i * j] = ret[i] * ret[j];
     }
   }
   

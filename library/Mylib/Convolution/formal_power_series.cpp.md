@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/formal_power_series.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-10 20:50:39+09:00
+    - Last commit date: 2020-08-15 08:41:18+09:00
 
 
 
@@ -55,7 +55,7 @@ layout: default
 - [https://kopricky.github.io/code/FFTs/polynomial_exp.html](https://kopricky.github.io/code/FFTs/polynomial_exp.html)
 - [https://kopricky.github.io/code/FFTs/polynomial_inverse.html](https://kopricky.github.io/code/FFTs/polynomial_inverse.html)
 - [https://kopricky.github.io/code/FFTs/polynomial_log.html](https://kopricky.github.io/code/FFTs/polynomial_log.html)
-
+- [https://qiita.com/hotman78/items/f0e6d2265badd84d429a](https://qiita.com/hotman78/items/f0e6d2265badd84d429a)
 
 
 ## Required by
@@ -69,6 +69,8 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/exp_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/exp_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/inv_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/inv_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/log_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/log_of_formal_power_series/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/pow_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/pow_of_formal_power_series/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/sharp_p_subset_sum/main.test.cpp.html">test/yosupo-judge/sharp_p_subset_sum/main.test.cpp</a>
 
 
 ## Code
@@ -88,6 +90,8 @@ layout: default
  */
 template <typename T>
 struct FormalPowerSeries{
+  using value_type = T;
+  
   static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
 
   std::vector<T> data;
@@ -217,6 +221,48 @@ struct FormalPowerSeries{
     b.resize(n);
 
     return b;
+  }
+
+
+  auto shift(int64_t k) const {
+    const int64_t n = data.size();
+    FormalPowerSeries ret(n);
+
+    if(k >= 0){
+      for(int64_t i = k; i < n; ++i){
+        ret[i] = data[i - k];
+      }
+    }else{
+      for(int64_t i = 0; i < n + k; ++i){
+        ret[i] = data[i - k];
+      }
+    }
+
+    return ret;
+  }
+
+  
+  auto power(int64_t M) const {
+    assert(M >= 0);
+    
+    const int n = data.size();
+    int k = 0;
+    for(; k < n; ++k){
+      if(data[k] != 0){
+        break;
+      }
+    }
+
+    if(k >= n) return *this;
+
+    T a = data[k];
+
+    FormalPowerSeries ret = *this;
+    ret = (ret.shift(-k)) * a.inv();
+    ret = (ret.log() * (T)M).exp();
+    ret = (ret * a.power(M)).shift(M * k);
+    
+    return ret;
   }
 };
 
@@ -242,6 +288,8 @@ std::function<std::vector<T>(std::vector<T>, std::vector<T>)> FormalPowerSeries<
  */
 template <typename T>
 struct FormalPowerSeries{
+  using value_type = T;
+  
   static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
 
   std::vector<T> data;
@@ -371,6 +419,48 @@ struct FormalPowerSeries{
     b.resize(n);
 
     return b;
+  }
+
+
+  auto shift(int64_t k) const {
+    const int64_t n = data.size();
+    FormalPowerSeries ret(n);
+
+    if(k >= 0){
+      for(int64_t i = k; i < n; ++i){
+        ret[i] = data[i - k];
+      }
+    }else{
+      for(int64_t i = 0; i < n + k; ++i){
+        ret[i] = data[i - k];
+      }
+    }
+
+    return ret;
+  }
+
+  
+  auto power(int64_t M) const {
+    assert(M >= 0);
+    
+    const int n = data.size();
+    int k = 0;
+    for(; k < n; ++k){
+      if(data[k] != 0){
+        break;
+      }
+    }
+
+    if(k >= n) return *this;
+
+    T a = data[k];
+
+    FormalPowerSeries ret = *this;
+    ret = (ret.shift(-k)) * a.inv();
+    ret = (ret.log() * (T)M).exp();
+    ret = (ret * a.power(M)).shift(M * k);
+    
+    return ret;
   }
 };
 

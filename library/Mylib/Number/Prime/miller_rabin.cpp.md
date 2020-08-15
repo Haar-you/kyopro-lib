@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Primality test (Miller-Rabin algorithm)
+# :question: Primality test (Miller-Rabin algorithm)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/miller_rabin.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-08-11 08:51:20+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../Misc/int128.cpp.html">128-bit int</a>
+* :question: <a href="../../Misc/int128.cpp.html">128-bit int</a>
 
 
 ## Required by
@@ -49,7 +49,7 @@ layout: default
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/factorize/main.test.cpp.html">test/yosupo-judge/factorize/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/3030/main.test.cpp.html">test/yukicoder/3030/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/3030/main.test.cpp.html">test/yukicoder/3030/main.test.cpp</a>
 
 
 ## Code
@@ -65,7 +65,7 @@ layout: default
  * @docs miller_rabin.md
  */
 class MillerRabin{
-  static uint128_t power(uint128_t a, uint128_t b, uint128_t p){
+  uint128_t power(uint128_t a, uint128_t b, uint128_t p) const {
     uint128_t ret = 1;
 
     while(b > 0){
@@ -77,7 +77,7 @@ class MillerRabin{
     return ret;
   }
   
-  static bool is_composite(uint64_t a, uint64_t p, int s, uint64_t d){
+  bool is_composite(uint64_t a, uint64_t p, int s, uint64_t d) const {
     uint128_t x = power(a, d, p);
 
     if(x == 1) return false;
@@ -91,7 +91,7 @@ class MillerRabin{
   }
 
 public:
-  static bool is_prime(uint64_t n){
+  bool operator()(uint64_t n) const {
     if(n <= 1) return false;
     if(n == 2) return true;
     if(n % 2 == 0) return false;
@@ -146,7 +146,7 @@ using int128_t = boost::multiprecision::int128_t;
  * @docs miller_rabin.md
  */
 class MillerRabin{
-  static uint128_t power(uint128_t a, uint128_t b, uint128_t p){
+  uint128_t power(uint128_t a, uint128_t b, uint128_t p) const {
     uint128_t ret = 1;
 
     while(b > 0){
@@ -158,7 +158,7 @@ class MillerRabin{
     return ret;
   }
   
-  static bool is_composite(uint64_t a, uint64_t p, int s, uint64_t d){
+  bool is_composite(uint64_t a, uint64_t p, int s, uint64_t d) const {
     uint128_t x = power(a, d, p);
 
     if(x == 1) return false;
@@ -172,7 +172,7 @@ class MillerRabin{
   }
 
 public:
-  static bool is_prime(uint64_t n){
+  bool operator()(uint64_t n) const {
     if(n <= 1) return false;
     if(n == 2) return true;
     if(n % 2 == 0) return false;

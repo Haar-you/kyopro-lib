@@ -49,7 +49,7 @@ layout: default
 * :heavy_check_mark: <a href="GraphUtils/decompose_pseudotree.cpp.html">Decompose pseudotree</a>
 * :heavy_check_mark: <a href="GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
 * :heavy_check_mark: <a href="GraphUtils/two_edge_connected_components.cpp.html">Two edge connected components</a>
-* :warning: <a href="MinimumSpanningTree/boruvka.cpp.html">Borůvka algorithm</a>
+* :heavy_check_mark: <a href="MinimumSpanningTree/boruvka.cpp.html">Borůvka algorithm</a>
 * :heavy_check_mark: <a href="MinimumSpanningTree/chu_liu_edmonds.cpp.html">Chu-Liu/Edmonds algorithm</a>
 * :heavy_check_mark: <a href="MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
 * :heavy_check_mark: <a href="MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
@@ -81,7 +81,6 @@ layout: default
 * :heavy_check_mark: <a href="two_sat.cpp.html">2-SAT</a>
 * :heavy_check_mark: <a href="../Grid/grid_to_graph.cpp.html">Convert grid to graph</a>
 * :question: <a href="../IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
-* :warning: <a href="../../test/aoj/GRL_2_A/main.boruvka.cpp.html">test/aoj/GRL_2_A/main.boruvka.cpp</a>
 
 
 ## Verified with
@@ -100,6 +99,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_1_A/main.test.cpp.html">test/aoj/GRL_1_A/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_1_B/main.test.cpp.html">test/aoj/GRL_1_B/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_1_C/main.test.cpp.html">test/aoj/GRL_1_C/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_2_A/main.boruvka.test.cpp.html">test/aoj/GRL_2_A/main.boruvka.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_2_A/main.kruskal.test.cpp.html">test/aoj/GRL_2_A/main.kruskal.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_2_A/main.prim.test.cpp.html">test/aoj/GRL_2_A/main.prim.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_2_B/main.test.cpp.html">test/aoj/GRL_2_B/main.test.cpp</a>

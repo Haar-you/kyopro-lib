@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Gaussian elimination (Mod2)
+# :x: Gaussian elimination (Mod2)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#4efd5e2a9807175bf43e4c1857b5bc52">Mylib/LinearAlgebra/GaussianElimination</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/GaussianElimination/binary_gaussian_elimination.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-08-14 00:24:32+09:00
 
 
 
@@ -51,6 +51,11 @@ layout: default
 
 
 
+## Verified with
+
+* :x: <a href="../../../../verify/test/yukicoder/184/main.test.cpp.html">test/yukicoder/184/main.test.cpp</a>
+
+
 ## Code
 
 <a id="unbundled"></a>
@@ -66,10 +71,10 @@ layout: default
  * @docs binary_gaussian_elimination.md
  */
 template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &m){
-  int n = m.size();
+  const int n = m.size();
   int rank = 0;
 
-  for(int j = 0; j < N; ++j){
+  for(size_t j = 0; j < N; ++j){
     int pivot = -1;
 
     for(int i = rank; i < n; ++i){
@@ -92,6 +97,10 @@ template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &m){
   return rank;
 }
 
+template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &&m){
+  return gaussian_elimination(m);
+}
+
 ```
 {% endraw %}
 
@@ -108,10 +117,10 @@ template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &m){
  * @docs binary_gaussian_elimination.md
  */
 template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &m){
-  int n = m.size();
+  const int n = m.size();
   int rank = 0;
 
-  for(int j = 0; j < N; ++j){
+  for(size_t j = 0; j < N; ++j){
     int pivot = -1;
 
     for(int i = rank; i < n; ++i){
@@ -132,6 +141,10 @@ template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &m){
   }
   
   return rank;
+}
+
+template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &&m){
+  return gaussian_elimination(m);
 }
 
 ```

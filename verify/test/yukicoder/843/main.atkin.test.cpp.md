@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/843/main.atkin.test.cpp
+# :x: test/yukicoder/843/main.atkin.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#05b6faf184ccb3df7524a3ce68064b76">test/yukicoder/843</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/843/main.atkin.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-08-11 08:51:20+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/843">https://yukicoder.me/problems/no/843</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/atkin_sieve.cpp.html">Sieve of Atkin</a>
+* :x: <a href="../../../../library/Mylib/Number/Prime/atkin_sieve.cpp.html">Sieve of Atkin</a>
 
 
 ## Code
@@ -52,10 +52,8 @@ layout: default
 #include <iostream>
 #include "Mylib/Number/Prime/atkin_sieve.cpp"
 
-using P = AtkinSieve<500000>;
-
 int main(){
-  P::init();
+  AtkinSieve is_prime(500000);
   
   int N; std::cin >> N;
 
@@ -67,7 +65,7 @@ int main(){
     int t = 0;
     for(int64_t r = 3; r <= N; ++r){
       int64_t q = r * r - 2;
-      if(q <= N and P::is_prime[r] and P::is_prime[q]) ++t;
+      if(q <= N and is_prime(r) and is_prime(q)) ++t;
     }
 
     ans += t * 2;
@@ -89,18 +87,17 @@ int main(){
 
 #include <iostream>
 #line 2 "Mylib/Number/Prime/atkin_sieve.cpp"
-#include <bitset>
 #include <vector>
 
 /**
  * @title Sieve of Atkin
  * @docs atkin_sieve.md
  */
-template <int MAX>
-struct AtkinSieve{
-  static std::bitset<MAX+1> is_prime;
-  
-  static void init(){
+class AtkinSieve{
+  std::vector<bool> is_prime;
+
+public:
+  AtkinSieve(int MAX): is_prime(MAX + 1){
     for(int64_t i = 1; i * i <= MAX; ++i){
       for(int64_t j = 1; j * j <= MAX; ++j){
         {
@@ -134,15 +131,15 @@ struct AtkinSieve{
 
     is_prime[2] = is_prime[3] = true;
   }
-};
 
-template <int MAX> std::bitset<MAX+1> AtkinSieve<MAX>::is_prime;
+  bool operator()(int i) const {
+    return is_prime[i];
+  }
+};
 #line 5 "test/yukicoder/843/main.atkin.test.cpp"
 
-using P = AtkinSieve<500000>;
-
 int main(){
-  P::init();
+  AtkinSieve is_prime(500000);
   
   int N; std::cin >> N;
 
@@ -154,7 +151,7 @@ int main(){
     int t = 0;
     for(int64_t r = 3; r <= N; ++r){
       int64_t q = r * r - 2;
-      if(q <= N and P::is_prime[r] and P::is_prime[q]) ++t;
+      if(q <= N and is_prime(r) and is_prime(q)) ++t;
     }
 
     ans += t * 2;

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#c2ca819257a0bc82c2cf56fe9b45c498">test/yosupo-judge/bernoulli_number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/bernoulli_number/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-10 21:40:43+09:00
+    - Last commit date: 2020-08-15 08:41:18+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/bernoulli_number">https://judge.yosupo.jp/problem/bernoulli_number</a>
@@ -40,11 +40,11 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/bernoulli_number_fps.cpp.html">Bernoulli number (FPS)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/factorial_table.cpp.html">Factorial table</a>
+* :question: <a href="../../../../library/Mylib/Combinatorics/factorial_table.cpp.html">Factorial table</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/formal_power_series.cpp.html">Formal power series</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number theoretic transform</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -351,6 +351,8 @@ std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
  */
 template <typename T>
 struct FormalPowerSeries{
+  using value_type = T;
+  
   static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
 
   std::vector<T> data;
@@ -481,6 +483,48 @@ struct FormalPowerSeries{
 
     return b;
   }
+
+
+  auto shift(int64_t k) const {
+    const int64_t n = data.size();
+    FormalPowerSeries ret(n);
+
+    if(k >= 0){
+      for(int64_t i = k; i < n; ++i){
+        ret[i] = data[i - k];
+      }
+    }else{
+      for(int64_t i = 0; i < n + k; ++i){
+        ret[i] = data[i - k];
+      }
+    }
+
+    return ret;
+  }
+
+  
+  auto power(int64_t M) const {
+    assert(M >= 0);
+    
+    const int n = data.size();
+    int k = 0;
+    for(; k < n; ++k){
+      if(data[k] != 0){
+        break;
+      }
+    }
+
+    if(k >= n) return *this;
+
+    T a = data[k];
+
+    FormalPowerSeries ret = *this;
+    ret = (ret.shift(-k)) * a.inv();
+    ret = (ret.log() * (T)M).exp();
+    ret = (ret * a.power(M)).shift(M * k);
+    
+    return ret;
+  }
 };
 
 
@@ -495,6 +539,8 @@ std::function<std::vector<T>(std::vector<T>, std::vector<T>)> FormalPowerSeries<
  */
 template <typename T> class FactorialTable{
 public:
+  using value_type = T;
+  
   static std::vector<T> f_table;
   static std::vector<T> if_table;
 

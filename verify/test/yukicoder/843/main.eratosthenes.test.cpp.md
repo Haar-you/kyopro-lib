@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/843/main.eratosthenes.test.cpp
+# :x: test/yukicoder/843/main.eratosthenes.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#05b6faf184ccb3df7524a3ce68064b76">test/yukicoder/843</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/843/main.eratosthenes.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-08-11 08:51:20+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/843">https://yukicoder.me/problems/no/843</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/eratosthenes_sieve.cpp.html">Sieve of Eratosthenes</a>
+* :x: <a href="../../../../library/Mylib/Number/Prime/eratosthenes_sieve.cpp.html">Sieve of Eratosthenes</a>
 
 
 ## Code
@@ -52,10 +52,8 @@ layout: default
 #include <iostream>
 #include "Mylib/Number/Prime/eratosthenes_sieve.cpp"
 
-using P = EratosthenesSieve<500000>;
-
 int main(){
-  P::init();
+  EratosthenesSieve is_prime(500000);
   
   int N; std::cin >> N;
 
@@ -67,7 +65,7 @@ int main(){
     int t = 0;
     for(int64_t r = 3; r <= N; ++r){
       int64_t q = r * r - 2;
-      if(q <= N and P::is_prime[r] and P::is_prime[q]) ++t;
+      if(q <= N and is_prime(r) and is_prime(q)) ++t;
     }
 
     ans += t * 2;
@@ -89,17 +87,17 @@ int main(){
 
 #include <iostream>
 #line 2 "Mylib/Number/Prime/eratosthenes_sieve.cpp"
-#include <bitset>
+#include <vector>
 
 /**
  * @title Sieve of Eratosthenes
  * @docs eratosthenes_sieve.md
  */
-template <int MAX>
-struct EratosthenesSieve{
-  static std::bitset<MAX+1> is_prime;
-  
-  static void init(){
+class EratosthenesSieve{
+  std::vector<bool> is_prime;
+
+public:
+  EratosthenesSieve(int MAX): is_prime(MAX + 1){
     is_prime.flip();
     is_prime[0] = is_prime[1] = false;
     
@@ -111,15 +109,15 @@ struct EratosthenesSieve{
       }
     }
   }
-};
 
-template <int MAX> std::bitset<MAX+1> EratosthenesSieve<MAX>::is_prime;
+  bool operator()(int i) const {
+    return is_prime[i];
+  }
+};
 #line 5 "test/yukicoder/843/main.eratosthenes.test.cpp"
 
-using P = EratosthenesSieve<500000>;
-
 int main(){
-  P::init();
+  EratosthenesSieve is_prime(500000);
   
   int N; std::cin >> N;
 
@@ -131,7 +129,7 @@ int main(){
     int t = 0;
     for(int64_t r = 3; r <= N; ++r){
       int64_t q = r * r - 2;
-      if(q <= N and P::is_prime[r] and P::is_prime[q]) ++t;
+      if(q <= N and is_prime(r) and is_prime(q)) ++t;
     }
 
     ans += t * 2;

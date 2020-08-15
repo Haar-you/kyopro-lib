@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: test/aoj/GRL_2_A/main.boruvka.cpp
+# :heavy_check_mark: test/aoj/GRL_2_A/main.boruvka.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#81ed75a9aa7f4e6edc886499b1a67fa4">test/aoj/GRL_2_A</a>
-* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_2_A/main.boruvka.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-09 05:30:10+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_2_A/main.boruvka.test.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-08-12 01:35:35+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
-* :warning: <a href="../../../Mylib/Graph/MinimumSpanningTree/boruvka.cpp.html">Borůvka algorithm</a>
-* :question: <a href="../../../Mylib/Graph/graph_template.cpp.html">Graph template</a>
-* :question: <a href="../../../Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/boruvka.cpp.html">Borůvka algorithm</a>
+* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
 
 
 ## Code
@@ -77,7 +77,7 @@ int main(){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 1 "test/aoj/GRL_2_A/main.boruvka.cpp"
+#line 1 "test/aoj/GRL_2_A/main.boruvka.test.cpp"
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A"
 
 #include <iostream>
@@ -247,7 +247,7 @@ Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
   
   return g;
 }
-#line 7 "test/aoj/GRL_2_A/main.boruvka.cpp"
+#line 7 "test/aoj/GRL_2_A/main.boruvka.test.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;

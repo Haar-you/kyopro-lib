@@ -38,7 +38,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 
 
 ## Verified with

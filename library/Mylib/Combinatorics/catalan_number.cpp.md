@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Catalan number
+# :x: Catalan number
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/catalan_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-30 03:19:03+09:00
+    - Last commit date: 2020-08-15 08:41:18+09:00
 
 
 
@@ -54,12 +54,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="factorial_table.cpp.html">Factorial table</a>
+* :question: <a href="factorial_table.cpp.html">Factorial table</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/660/main.test.cpp.html">test/yukicoder/660/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/660/main.test.cpp.html">test/yukicoder/660/main.test.cpp</a>
 
 
 ## Code
@@ -95,6 +95,8 @@ template <typename T> T FactorialTable<T>::catalan_number(int64_t n){
  */
 template <typename T> class FactorialTable{
 public:
+  using value_type = T;
+  
   static std::vector<T> f_table;
   static std::vector<T> if_table;
 
