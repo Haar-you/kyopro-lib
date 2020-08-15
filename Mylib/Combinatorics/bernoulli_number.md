@@ -1,6 +1,6 @@
 ## Operations
 
-- `bernoulli_number(int n)`
+- `bernoulli_number(Ft, int n)`
 	- $B_0$ ~ $B_n$を列挙する。
 	- Time complexity $O(N^2)$
 

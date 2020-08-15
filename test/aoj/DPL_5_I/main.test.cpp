@@ -4,15 +4,15 @@
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Combinatorics/factorial_table.cpp"
 #include "Mylib/Combinatorics/stirling_number.cpp"
- 
-using Ft = FactorialTable<ModInt<1000000007>>;
+
+using mint = ModInt<1000000007>;
  
 int main(){
-  Ft::init(3000);
+  auto ft = FactorialTable<mint>(3000);
 
   int N, K; std::cin >> N >> K;
 
-  std::cout << Ft::stirling_number(N, K) << std::endl;
+  std::cout << stirling_number<mint>(ft, N, K) << std::endl;
 
   return 0;
 }

@@ -1,6 +1,6 @@
 ## Operations
 
-- `init(int N)`
+- `FactorialTable(int N)`
 	- $0!$ ~ $N!$とその逆数を計算する。
 	- Time complexity $O(N)$
 - `factorial(int i)` : return $i!$

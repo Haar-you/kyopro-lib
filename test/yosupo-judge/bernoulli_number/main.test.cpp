@@ -10,7 +10,6 @@
 
 using mint = ModInt<998244353>;
 constexpr int PRIM_ROOT = 3;
-using Ft = FactorialTable<mint>;
 using FPS = FormalPowerSeries<mint>;
 
 int main(){
@@ -19,12 +18,12 @@ int main(){
 
   int N; std::cin >> N;
 
-  Ft::init(N + 1);
+  auto ft = FactorialTable<mint>(N + 1);
   
   auto ntt = NumberTheoreticTransform<mint, PRIM_ROOT, 1 << 20>();
   FPS::convolve = [&](const auto &a, const auto &b){return ntt.run_convolution(a, b);};
 
-  auto res = bernoulli_number_fps<FPS, Ft>(N);
+  auto res = bernoulli_number_fps<FPS>(ft, N);
   std::cout << join(res.begin(), res.begin() + N + 1) << "\n";
 
   return 0;

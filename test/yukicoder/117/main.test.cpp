@@ -9,13 +9,12 @@
 #include "Mylib/IO/input_tuples.cpp"
 
 using mint = ModInt<1000000007>;
-using Ft = FactorialTable<mint>;
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  Ft::init(2000000);
+  auto ft = FactorialTable<mint>(2000000);
   
   int T; std::cin >> T;
 
@@ -30,9 +29,9 @@ int main(){
     int K = std::stoi(m[3].str());
 
     switch(type){
-    case 'C': std::cout << Ft::C(N, K) << "\n"; break;
-    case 'P': std::cout << Ft::P(N, K) << "\n"; break;
-    case 'H': std::cout << Ft::H(N, K) << "\n"; break;
+    case 'C': std::cout << ft.C(N, K) << "\n"; break;
+    case 'P': std::cout << ft.P(N, K) << "\n"; break;
+    case 'H': std::cout << ft.H(N, K) << "\n"; break;
     }
   }
 

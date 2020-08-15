@@ -5,6 +5,7 @@
  * @title Catalan number
  * @docs catalan_number.md
  */
-template <typename T> T FactorialTable<T>::catalan_number(int64_t n){
-  return C(2*n,n) - C(2*n,n-1);
+template <typename T, typename Ft>
+T catalan_number(const Ft &ft, int64_t n){
+  return ft.C(2 * n, n) - ft.C(2 * n, n - 1);
 }

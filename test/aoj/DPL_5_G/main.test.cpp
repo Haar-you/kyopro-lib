@@ -5,14 +5,14 @@
 #include "Mylib/Combinatorics/factorial_table.cpp"
 #include "Mylib/Combinatorics/bell_number.cpp"
 
-using Ft = FactorialTable<ModInt<1000000007>>;
+using mint = ModInt<1000000007>;
 
 int main(){
-  Ft::init(3000);
+  auto ft = FactorialTable<mint>(3000);
 
   int N, K; std::cin >> N >> K;
 
-  std::cout << Ft::bell_number(N, K) << std::endl;
+  std::cout << bell_number<mint>(ft, N, K) << std::endl;
 
   return 0;
 }
