@@ -14,6 +14,8 @@ struct FormalPowerSeries{
   
   static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
 
+  static std::function<std::optional<T>(T)> get_sqrt;
+
   std::vector<T> data;
 
   FormalPowerSeries(const std::vector<T> &data): data(data){}
@@ -184,8 +186,43 @@ struct FormalPowerSeries{
     
     return ret;
   }
+
+  std::optional<FormalPowerSeries> sqrt() const {
+    const int n = data.size();
+    int k = 0;
+    for(; k < n; ++k) if(data[k] != 0) break;
+
+    if(k >= n) return *this;
+    if(k % 2 != 0) return {};
+
+    int t = 1;
+    auto x = get_sqrt(data[k]);
+
+    if(not x) return {};
+
+    const int m = n - k;
+
+    auto it = data.begin() + k;
+    FormalPowerSeries ret({*x});
+
+    while(t <= m * 2){
+      FormalPowerSeries f(std::vector(it, it + std::min(t, m)));
+      ret.resize(t);
+      f.resize(t);
+      ret = (ret + f * ret.inv()) * T(2).inv();      
+      t <<= 1;
+    }
+
+    ret.resize(n);
+    ret = ret.shift(k / 2);
+
+    return ret;
+  }
 };
 
 
 template <typename T>
 std::function<std::vector<T>(std::vector<T>, std::vector<T>)> FormalPowerSeries<T>::convolve;
+
+template <typename T>
+std::function<std::optional<T>(T)> FormalPowerSeries<T>::get_sqrt;
