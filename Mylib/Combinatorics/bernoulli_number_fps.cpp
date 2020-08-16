@@ -1,6 +1,4 @@
 #pragma once
-#include "Mylib/Combinatorics/factorial_table.cpp"
-#include "Mylib/Convolution/formal_power_series.cpp"
 
 /**
  * @title Bernoulli number (FPS)

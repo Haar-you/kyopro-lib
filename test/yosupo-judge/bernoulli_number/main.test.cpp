@@ -4,7 +4,7 @@
 #include "Mylib/IO/join.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Convolution/ntt_convolution.cpp"
-#include "Mylib/Convolution/formal_power_series.cpp"
+#include "Mylib/Math/formal_power_series.cpp"
 #include "Mylib/Combinatorics/factorial_table.cpp"
 #include "Mylib/Combinatorics/bernoulli_number_fps.cpp"
 

@@ -6,7 +6,7 @@
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Number/Mod/mod_sqrt.cpp"
 #include "Mylib/Convolution/ntt_convolution.cpp"
-#include "Mylib/Convolution/formal_power_series.cpp"
+#include "Mylib/Math/formal_power_series.cpp"
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/join.cpp"
 

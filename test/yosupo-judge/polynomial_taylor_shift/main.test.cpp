@@ -6,7 +6,7 @@
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Combinatorics/factorial_table.cpp"
 #include "Mylib/Convolution/ntt_convolution.cpp"
-#include "Mylib/Convolution/polynomial_taylor_shift.cpp"
+#include "Mylib/Math/polynomial_taylor_shift.cpp"
 
 using mint = ModInt<998244353>;
 
