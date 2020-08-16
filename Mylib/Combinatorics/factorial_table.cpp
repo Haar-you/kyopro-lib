@@ -5,7 +5,6 @@
 /**
  * @title Factorial table
  * @docs factorial_table.md
- * @attention 使用前にinit関数を呼び出す
  */
 template <typename T> class FactorialTable{
   using value_type = T;
