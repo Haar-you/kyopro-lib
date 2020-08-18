@@ -41,16 +41,24 @@ template <typename T, size_t N> void dump_aux(const T (&)[N]);
 
 template <typename T> void dump_aux(T);
 
+#define dump(...) dump_(__LINE__, #__VA_ARGS__, __VA_ARGS__)
 
-void dump(){}
 
-template <class Head, class... Tail>
-void dump(Head&& head, Tail&&... tail){
+template <class T>
+void dump_helper(int line, T value){
+  std::cerr << "\e[1mL" << std::setw(3) << line << "\e[m ";
   std::cerr << "\e[1;32m";
-  dump_aux(head);
+  dump_aux(value);
   std::cerr << "\e[m" << std::endl;
-  dump(std::forward<Tail>(tail)...);
 }
+
+template <class... Args>
+void dump_(int line, std::string names, Args&&... args){
+  std::cerr << "==== \e[1m" << names << "\e[m" << "\n";
+  (void)std::initializer_list<int>{(void(dump_helper(line, args)), 0)...};
+}
+
+
 
 template <typename Iter> void dump_container(Iter first, Iter last){
   std::cerr << "{";
