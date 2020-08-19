@@ -4,7 +4,6 @@
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/join.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
-#include "Mylib/Combinatorics/factorial_table.cpp"
 #include "Mylib/Convolution/ntt_convolution.cpp"
 #include "Mylib/Math/polynomial_taylor_shift.cpp"
 
@@ -15,12 +14,12 @@ int main(){
   std::ios::sync_with_stdio(false);
 
   auto ntt = NumberTheoreticTransform<mint, 3, 1<<21>();
-  auto ft = FactorialTable<mint>(600000);
 
   int N, c; std::cin >> N >> c;
   auto a = input_vector<mint>(N);
 
-  auto ans = polynomial_taylor_shift(a, mint(c), ft, [&](const auto &x, const auto &y){return ntt.run_convolution(x, y);});
+  auto convolve = [&](const auto &x, const auto &y){return ntt.run_convolution(x, y);};
+  auto ans = polynomial_taylor_shift(a, mint(c), convolve);
 
   std::cout << join(ans.begin(), ans.end()) << "\n";
   
