@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Combinatorics/factorial_table.cpp"
-#include "Mylib/Combinatorics/stirling_number.cpp"
+#include "Mylib/Combinatorics/stirling_number_second.cpp"
 
 using mint = ModInt<1000000007>;
  

@@ -3,7 +3,7 @@
 
 /**
  * @title Stirling numbers of second kind (Table)
- * @docs stirling_number_table.md 
+ * @docs stirling_number_second_table.md 
  */
 template <typename T>
 auto stirling_number_table(int n){

@@ -3,7 +3,7 @@
 
 /**
  * @title Stirling numbers of second kind
- * @docs stirling_number.md
+ * @docs stirling_number_second.md
  */
 template <typename T, typename Ft>
 T stirling_number(const Ft &ft, int64_t n, int64_t k){
