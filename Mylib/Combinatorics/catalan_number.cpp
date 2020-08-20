@@ -5,7 +5,7 @@
  * @title Catalan number
  * @docs catalan_number.md
  */
-template <typename T, typename Ft>
-T catalan_number(const Ft &ft, int64_t n){
+template <typename Ft, typename T = typename Ft::value_type>
+T catalan_number(int64_t n, const Ft &ft){
   return ft.C(2 * n, n) - ft.C(2 * n, n - 1);
 }

@@ -12,7 +12,7 @@ int main(){
 
   int N, K; std::cin >> N >> K;
 
-  std::cout << stirling_number<mint>(ft, N, K) << std::endl;
+  std::cout << stirling_number(N, K, ft) << std::endl;
 
   return 0;
 }

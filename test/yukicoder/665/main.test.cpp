@@ -15,7 +15,7 @@ int main(){
   int64_t n, k; std::cin >> n >> k;
   auto ft = FactorialTable<mint>(3 * k);
 
-  auto b = bernoulli_number<mint>(ft, k);
+  auto b = bernoulli_number(k, ft);
 
   mint ans = 0;
 

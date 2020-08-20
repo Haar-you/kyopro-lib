@@ -23,7 +23,7 @@ int main(){
   auto ntt = NumberTheoreticTransform<mint, PRIM_ROOT, 1 << 20>();
   FPS::convolve = [&](const auto &a, const auto &b){return ntt.run_convolution(a, b);};
 
-  auto res = bernoulli_number_fps<FPS>(ft, N);
+  auto res = bernoulli_number_fps<FPS>(N, ft);
   std::cout << join(res.begin(), res.begin() + N + 1) << "\n";
 
   return 0;

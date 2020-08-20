@@ -12,7 +12,7 @@ int main(){
 
   int N, K; std::cin >> N >> K;
 
-  std::cout << bell_number<mint>(ft, N, K) << std::endl;
+  std::cout << bell_number(N, K, ft) << std::endl;
 
   return 0;
 }

@@ -6,9 +6,12 @@
  * @title Factorial table
  * @docs factorial_table.md
  */
-template <typename T> class FactorialTable{
+template <typename T>
+class FactorialTable{
+public:
   using value_type = T;
-  
+
+private:
   std::vector<T> f_table;
   std::vector<T> if_table;
 

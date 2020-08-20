@@ -15,7 +15,7 @@ int main(){
 
   std::vector<mint> c(N+1);
   for(int i = 0; i <= N; ++i){
-    c[i] = catalan_number<mint>(ft, i);
+    c[i] = catalan_number(i, ft);
   }
 
   for(int i = 1; i <= N; ++i){

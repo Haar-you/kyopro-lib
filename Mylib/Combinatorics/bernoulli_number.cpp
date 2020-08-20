@@ -6,8 +6,8 @@
  * @title Bernoulli number
  * @docs bernoulli_number.md
  */
-template <typename T, typename Ft>
-std::vector<T> bernoulli_number(const Ft &ft, int64_t n){
+template <typename Ft, typename T = typename Ft::value_type>
+std::vector<T> bernoulli_number(int64_t n, const Ft &ft){
   std::vector<T> ret(n+1);
 
   ret[0] = 1;
