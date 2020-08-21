@@ -13,7 +13,6 @@ struct FormalPowerSeries{
   using value_type = T;
   
   static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
-
   static std::function<std::optional<T>(T)> get_sqrt;
 
   std::vector<T> data;

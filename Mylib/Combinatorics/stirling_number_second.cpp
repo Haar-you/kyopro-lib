@@ -2,7 +2,7 @@
 #include "Mylib/Combinatorics/factorial_table.cpp"
 
 /**
- * @title Stirling numbers of second kind
+ * @title Stirling numbers of the second kind
  * @docs stirling_number_second.md
  */
 template <typename Ft, typename T = typename Ft::value_type>

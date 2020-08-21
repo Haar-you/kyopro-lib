@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <vector>
-
+#include <functional>
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Number/Mod/mod_sqrt.cpp"
 #include "Mylib/Convolution/ntt_convolution.cpp"
@@ -12,29 +12,20 @@
 
 using mint = ModInt<998244353>;
 using FPS = FormalPowerSeries<mint>;
+using NTT = NumberTheoreticTransform<mint, 3, 1<<21>;
 
 int main(){
+  using namespace std::placeholders;
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
   
-  auto ntt = NumberTheoreticTransform<mint, 3, 1<<21>();
-  
-  FPS::convolve =
-    [&](const auto &a, const auto &b){
-      return ntt.run_convolution(a, b);
-    };
-
-  FPS::get_sqrt =
-    [&](const auto &a){
-      return mod_sqrt(a.val, mint::MOD);
-    };
+  auto ntt = NTT();
+  FPS::convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
+  FPS::get_sqrt = [&](const auto &a){return mod_sqrt((int64_t)a, mint::MOD);};
 
   int N; std::cin >> N;
-
   auto a = input_vector<mint>(N);
-
-  FPS f(a);
-  auto ans = f.sqrt();
+  auto ans = FPS(a).sqrt();
 
   if(ans){
     std::cout << join((*ans).begin(), (*ans).begin() + N) << "\n";

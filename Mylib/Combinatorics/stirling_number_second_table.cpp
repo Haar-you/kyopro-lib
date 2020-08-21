@@ -2,7 +2,7 @@
 #include <vector>
 
 /**
- * @title Stirling numbers of second kind (Table)
+ * @title Stirling numbers of the second kind (Table)
  * @docs stirling_number_second_table.md 
  */
 template <typename T>

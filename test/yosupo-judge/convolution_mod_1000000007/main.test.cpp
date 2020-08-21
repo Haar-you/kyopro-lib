@@ -19,7 +19,7 @@ int main(){
   auto a = input_vector<int64_t>(n);
   auto b = input_vector<int64_t>(m);
 
-  auto ans = ntt_convolution<mint>(a,b);
+  auto ans = convolve_general_mod<mint>(a, b);
 
   std::cout << join(ans.begin(), ans.begin() + n + m - 1) << "\n";
   

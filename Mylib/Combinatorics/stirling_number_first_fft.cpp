@@ -4,7 +4,7 @@
 #include "Mylib/Math/polynomial_taylor_shift.cpp"
 
 /**
- * @title Stirling number of the first kind (FFT)
+ * @title Stirling numbers of the first kind (FFT)
  * @docs stirling_number_first_fft.md
  */
 template <typename T, typename Conv>

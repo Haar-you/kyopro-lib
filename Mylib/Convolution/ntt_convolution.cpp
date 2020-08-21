@@ -11,6 +11,11 @@
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>
 class NumberTheoreticTransform{
+public:
+  using value_type = T;
+  constexpr static int primitive_root = PRIM_ROOT;
+
+private:
   const int MAX_POWER;
   std::vector<T> BASE, INV_BASE;
   
@@ -33,7 +38,7 @@ public:
     }
   }
 
-  void run_ntt(std::vector<T> &f, bool INVERSE = false){
+  void run(std::vector<T> &f, bool INVERSE = false){
     const int n = f.size();
     assert((n & (n-1)) == 0 and n <= MAX_SIZE); // データ数は2の冪乗個
 
@@ -72,7 +77,7 @@ public:
   }
 
   template <typename U>
-  std::vector<T> run_convolution(std::vector<U> f, std::vector<U> g){
+  std::vector<T> convolve(std::vector<U> f, std::vector<U> g){
     const int m = f.size() + g.size() - 1;
     int n = 1;
     while(n < m) n *= 2;
@@ -82,18 +87,18 @@ public:
     for(int i = 0; i < (int)f.size(); ++i) f2[i] = f[i];
     for(int i = 0; i < (int)g.size(); ++i) g2[i] = g[i];
   
-    run_ntt(f2);
-    run_ntt(g2);
+    run(f2);
+    run(g2);
     
     for(int i = 0; i < n; ++i) f2[i] *= g2[i];
-    run_ntt(f2, true);
+    run(f2, true);
     
     return f2;
   }
 };
 
 template <typename T, typename U>
-std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
+std::vector<T> convolve_general_mod(std::vector<U> f, std::vector<U> g){
   static constexpr int M1 = 167772161, P1 = 3;
   static constexpr int M2 = 469762049, P2 = 3;
   static constexpr int M3 = 1224736769, P3 = 3;
@@ -101,17 +106,17 @@ std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
   for(auto &x : f) x %= T::MOD;
   for(auto &x : g) x %= T::MOD;
   
-  auto res1 = NumberTheoreticTransform<ModInt<M1>, P1, 1 << 20>().run_convolution(f, g);
-  auto res2 = NumberTheoreticTransform<ModInt<M2>, P2, 1 << 20>().run_convolution(f, g);
-  auto res3 = NumberTheoreticTransform<ModInt<M3>, P3, 1 << 20>().run_convolution(f, g);
+  auto res1 = NumberTheoreticTransform<ModInt<M1>, P1, 1 << 20>().convolve(f, g);
+  auto res2 = NumberTheoreticTransform<ModInt<M2>, P2, 1 << 20>().convolve(f, g);
+  auto res3 = NumberTheoreticTransform<ModInt<M3>, P3, 1 << 20>().convolve(f, g);
 
   const int n = res1.size();
 
   std::vector<T> ret(n);
 
-  const int64_t M12 = ModInt<M2>::inv(M1).val;
-  const int64_t M13 = ModInt<M3>::inv(M1).val;
-  const int64_t M23 = ModInt<M3>::inv(M2).val;
+  const int64_t M12 = (int64_t)ModInt<M2>::inv(M1);
+  const int64_t M13 = (int64_t)ModInt<M3>::inv(M1);
+  const int64_t M23 = (int64_t)ModInt<M3>::inv(M2);
 
   for(int i = 0; i < n; ++i){
     const int64_t r[3] = {(int64_t)res1[i].val, (int64_t)res2[i].val, (int64_t)res3[i].val};
