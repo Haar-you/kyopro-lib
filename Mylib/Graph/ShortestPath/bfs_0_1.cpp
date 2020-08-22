@@ -7,9 +7,9 @@
  * @title 0-1 BFS
  * @docs bfs_0_1.md
  */
-std::vector<int> bfs_0_1(const Graph<int> &g, const std::vector<int> &src){
+std::vector<std::optional<int>> bfs_0_1(const Graph<int> &g, const std::vector<int> &src){
   int n = g.size();
-  std::vector<int> ret(n, INT_MAX);
+  std::vector<std::optional<int>> ret(n);
   std::vector<bool> visited(n);
 
   for(auto i : src) ret[i] = 0;
@@ -22,8 +22,8 @@ std::vector<int> bfs_0_1(const Graph<int> &g, const std::vector<int> &src){
     visited[cur] = true;
 
     for(auto &e : g[cur]){
-      if(ret[e.to] > ret[e.from] + e.cost){
-        ret[e.to] = ret[e.from] + e.cost;
+      if(not ret[e.to] or *ret[e.to] > *ret[e.from] + e.cost){
+        ret[e.to] = *ret[e.from] + e.cost;
         
         if(e.cost == 0) dq.push_front(e.to);
         else dq.push_back(e.to);
