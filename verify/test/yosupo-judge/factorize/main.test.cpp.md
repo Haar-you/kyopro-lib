@@ -41,7 +41,7 @@ layout: default
 
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 * :question: <a href="../../../../library/Mylib/Misc/int128.cpp.html">128-bit int</a>
 * :question: <a href="../../../../library/Mylib/Number/Prime/miller_rabin.cpp.html">Primality test (Miller-Rabin algorithm)</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/pollard_rho.cpp.html">Prime factorization (Pollard's rho algorithm)</a>
@@ -94,8 +94,7 @@ int main(){
 #include <tuple>
 #include <utility>
 #include <initializer_list>
-#line 5 "Mylib/IO/input_tuple.cpp"
-#include <initializer_list>
+#line 6 "Mylib/IO/input_tuple.cpp"
 
 /**
  * @docs input_tuple.md

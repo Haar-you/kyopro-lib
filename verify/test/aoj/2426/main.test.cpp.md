@@ -114,8 +114,7 @@ int main(){
 #include <cassert>
 #include <optional>
 #include <queue>
-#line 3 "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
-#include <optional>
+#line 4 "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
 
 /**
  * @title Succinct dictionary
@@ -503,8 +502,7 @@ void sort_simultaneously(const Compare &compare, int N, std::vector<Args> &... a
 
   (void)std::initializer_list<int>{(sort_with_ord(ord, N, args), 0)...};
 }
-#line 6 "Mylib/IO/input_tuple_vector.cpp"
-#include <initializer_list>
+#line 7 "Mylib/IO/input_tuple_vector.cpp"
 
 /**
  * @docs input_tuple_vector.md
@@ -530,10 +528,7 @@ auto input_tuple_vector(int N){
 
   return ret;
 }
-#line 6 "Mylib/IO/input_tuples.cpp"
-#include <initializer_list>
-#line 5 "Mylib/IO/input_tuple.cpp"
-#include <initializer_list>
+#line 6 "Mylib/IO/input_tuple.cpp"
 
 /**
  * @docs input_tuple.md

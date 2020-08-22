@@ -83,11 +83,13 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/inv_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/inv_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/log_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/log_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/matrix_det/main.test.cpp.html">test/yosupo-judge/matrix_det/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/polynomial_taylor_shift/main.test.cpp.html">test/yosupo-judge/polynomial_taylor_shift/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/pow_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/pow_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp.html">test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/range_kth_smallest/main.test.cpp.html">test/yosupo-judge/range_kth_smallest/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/sharp_p_subset_sum/main.test.cpp.html">test/yosupo-judge/sharp_p_subset_sum/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/static_range_inversions_query/main.test.cpp.html">test/yosupo-judge/static_range_inversions_query/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/static_range_sum/main.test.cpp.html">test/yosupo-judge/static_range_sum/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/staticrmq/main.sparse_table.test.cpp.html">test/yosupo-judge/staticrmq/main.sparse_table.test.cpp</a>

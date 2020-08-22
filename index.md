@@ -189,9 +189,12 @@ layout: default
 * :question: <a href="library/Mylib/Combinatorics/factorial_table.cpp.html">Factorial table</a>
 * :heavy_check_mark: <a href="library/Mylib/Combinatorics/montmort_number.cpp.html">Montmort number</a>
 * :heavy_check_mark: <a href="library/Mylib/Combinatorics/partition_number.cpp.html">Partition number (Enumerate $P(n, k)$)</a>
+* :heavy_check_mark: <a href="library/Mylib/Combinatorics/partition_number_fps.cpp.html">Partition number (FPS)</a>
 * :heavy_check_mark: <a href="library/Mylib/Combinatorics/partition_number_n.cpp.html">Partition number (Enumerate $P(n, n)$)</a>
-* :heavy_check_mark: <a href="library/Mylib/Combinatorics/stirling_number.cpp.html">Stirling numbers of second kind</a>
-* :heavy_check_mark: <a href="library/Mylib/Combinatorics/stirling_number_table.cpp.html">Stirling numbers of second kind (Table)</a>
+* :x: <a href="library/Mylib/Combinatorics/stirling_number_first_fft.cpp.html">Stirling numbers of the first kind (FFT)</a>
+* :heavy_check_mark: <a href="library/Mylib/Combinatorics/stirling_number_second.cpp.html">Stirling numbers of the second kind</a>
+* :x: <a href="library/Mylib/Combinatorics/stirling_number_second_fft.cpp.html">Stirling numbers of the second kind (FFT)</a>
+* :heavy_check_mark: <a href="library/Mylib/Combinatorics/stirling_number_second_table.cpp.html">Stirling numbers of the second kind (Table)</a>
 
 
 <div id="d1ac32c11c508fec0764fa012d8d2913"></div>
@@ -206,8 +209,7 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/Convolution/fast_mobius_transform_superset.cpp.html">Fast Möbius transform (Supersets)</a>
 * :heavy_check_mark: <a href="library/Mylib/Convolution/fast_zeta_transform_subset.cpp.html">Fast Zeta transform (Subsets)</a>
 * :heavy_check_mark: <a href="library/Mylib/Convolution/fast_zeta_transform_superset.cpp.html">Fast Zeta transform (Supersets)</a>
-* :heavy_check_mark: <a href="library/Mylib/Convolution/formal_power_series.cpp.html">Formal power series</a>
-* :heavy_check_mark: <a href="library/Mylib/Convolution/ntt_convolution.cpp.html">Number theoretic transform</a>
+* :question: <a href="library/Mylib/Convolution/ntt_convolution.cpp.html">Number theoretic transform</a>
 
 
 <div id="0d7e284bb2256ddef55e56b25bfaf3f1"></div>
@@ -355,6 +357,8 @@ layout: default
 * :warning: <a href="library/Mylib/Debug/debug.cpp.html">Mylib/Debug/debug.cpp</a>
 * :warning: <a href="library/Mylib/Debug/grid_viewer.cpp.html">Mylib/Debug/grid_viewer.cpp</a>
 * :warning: <a href="library/Mylib/Debug/matrix_viewer.cpp.html">Mylib/Debug/matrix_viewer.cpp</a>
+* :warning: <a href="library/Mylib/Debug/memory_dump.cpp.html">Memory dump</a>
+* :warning: <a href="library/Mylib/Debug/polynomial_viewer.cpp.html">Mylib/Debug/polynomial_viewer.cpp</a>
 
 
 <div id="3a96c66483797c15eff4c0c3d8733619"></div>
@@ -468,6 +472,7 @@ layout: default
 * :heavy_check_mark: <a href="library/Mylib/Graph/Flow/dinic.cpp.html">Dinic algorithm</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson algorithm</a>
 * :heavy_check_mark: <a href="library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">Minimum cost flow</a>
+* :heavy_check_mark: <a href="library/Mylib/Graph/Flow/push_relabel.cpp.html">Push-relabel</a>
 
 
 <div id="0520734517f09caa086d1aa01fa4b9e4"></div>
@@ -569,7 +574,7 @@ layout: default
 * :question: <a href="library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 * :heavy_check_mark: <a href="library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
 * :question: <a href="library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :heavy_check_mark: <a href="library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :question: <a href="library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 
 
 <div id="4efd5e2a9807175bf43e4c1857b5bc52"></div>
@@ -604,6 +609,8 @@ layout: default
 
 ### Mylib/Math
 
+* :question: <a href="library/Mylib/Math/formal_power_series.cpp.html">Formal power series</a>
+* :question: <a href="library/Mylib/Math/polynomial_taylor_shift.cpp.html">polynomial_taylor_shift.md</a>
 * :warning: <a href="library/Mylib/Math/quadratic_equation.cpp.html">Real solutions of quadratic equation</a>
 
 
@@ -657,6 +664,7 @@ layout: default
 ### Mylib/Number/Mint
 
 * :question: <a href="library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :warning: <a href="library/Mylib/Number/Mint/montgomery.cpp.html">Montgomery multiplication</a>
 * :heavy_check_mark: <a href="library/Mylib/Number/Mint/runtime_mint.cpp.html">Modint (Runtime mod)</a>
 
 
@@ -666,8 +674,8 @@ layout: default
 
 * :heavy_check_mark: <a href="library/Mylib/Number/Mod/mod_inv.cpp.html">Mod inverse</a>
 * :heavy_check_mark: <a href="library/Mylib/Number/Mod/mod_log.cpp.html">Mod logarithm</a>
-* :heavy_check_mark: <a href="library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
-* :heavy_check_mark: <a href="library/Mylib/Number/Mod/mod_sqrt.cpp.html">Mod sqrt</a>
+* :question: <a href="library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
+* :question: <a href="library/Mylib/Number/Mod/mod_sqrt.cpp.html">Mod sqrt</a>
 
 
 <div id="26f1f261bc4e83492156752f5caf0111"></div>
@@ -909,6 +917,7 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/aoj/GRL_5_C/main.hld.test.cpp.html">test/aoj/GRL_5_C/main.hld.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/GRL_6_A/main.dinic.test.cpp.html">test/aoj/GRL_6_A/main.dinic.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp.html">test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/aoj/GRL_6_A/main.push_relabel.test.cpp.html">test/aoj/GRL_6_A/main.push_relabel.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/GRL_6_B/main.test.cpp.html">test/aoj/GRL_6_B/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp.html">test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
@@ -944,11 +953,13 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/maximum_independent_set/main.test.cpp.html">test/yosupo-judge/maximum_independent_set/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/montmort_number_mod/main.test.cpp.html">test/yosupo-judge/montmort_number_mod/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/number_of_substrings/main.test.cpp.html">test/yosupo-judge/number_of_substrings/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/partition_function/main.fps.test.cpp.html">test/yosupo-judge/partition_function/main.fps.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/partition_function/main.test.cpp.html">test/yosupo-judge/partition_function/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/persistent_queue/main.test.cpp.html">test/yosupo-judge/persistent_queue/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/persistent_unionfind/main.test.cpp.html">test/yosupo-judge/persistent_unionfind/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/point_add_rectangle_sum/main.test.cpp.html">test/yosupo-judge/point_add_rectangle_sum/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
+* :heavy_check_mark: <a href="verify/test/yosupo-judge/polynomial_taylor_shift/main.test.cpp.html">test/yosupo-judge/polynomial_taylor_shift/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/pow_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/pow_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
@@ -963,10 +974,12 @@ layout: default
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/set_xor_min/main.test.cpp.html">test/yosupo-judge/set_xor_min/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/sharp_p_subset_sum/main.test.cpp.html">test/yosupo-judge/sharp_p_subset_sum/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
+* :x: <a href="verify/test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/static_range_inversions_query/main.test.cpp.html">test/yosupo-judge/static_range_inversions_query/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/static_range_sum/main.test.cpp.html">test/yosupo-judge/static_range_sum/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/staticrmq/main.sparse_table.test.cpp.html">test/yosupo-judge/staticrmq/main.sparse_table.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
+* :x: <a href="verify/test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp</a>
+* :x: <a href="verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/suffixarray/main.test.cpp.html">test/yosupo-judge/suffixarray/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/system_of_linear_equations/main.test.cpp.html">test/yosupo-judge/system_of_linear_equations/main.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/yosupo-judge/tetration_mod/main.test.cpp.html">test/yosupo-judge/tetration_mod/main.test.cpp</a>

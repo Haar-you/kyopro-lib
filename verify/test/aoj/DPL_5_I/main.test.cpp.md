@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b72df8ce0758bb7606e41650e28ebb6a">test/aoj/DPL_5_I</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_I/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-15 08:41:18+09:00
+    - Last commit date: 2020-08-21 11:48:40+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :question: <a href="../../../../library/Mylib/Combinatorics/factorial_table.cpp.html">Factorial table</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/stirling_number.cpp.html">Stirling numbers of second kind</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/stirling_number_second.cpp.html">Stirling numbers of the second kind</a>
 * :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
@@ -54,16 +54,16 @@ layout: default
 #include <iostream>
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Combinatorics/factorial_table.cpp"
-#include "Mylib/Combinatorics/stirling_number.cpp"
- 
-using Ft = FactorialTable<ModInt<1000000007>>;
+#include "Mylib/Combinatorics/stirling_number_second.cpp"
+
+using mint = ModInt<1000000007>;
  
 int main(){
-  Ft::init(3000);
+  auto ft = FactorialTable<mint>(3000);
 
   int N, K; std::cin >> N >> K;
 
-  std::cout << Ft::stirling_number(N, K) << std::endl;
+  std::cout << stirling_number(N, K, ft) << std::endl;
 
   return 0;
 }
@@ -185,16 +185,18 @@ public:
 /**
  * @title Factorial table
  * @docs factorial_table.md
- * @attention 使用前にinit関数を呼び出す
  */
-template <typename T> class FactorialTable{
+template <typename T>
+class FactorialTable{
 public:
   using value_type = T;
-  
-  static std::vector<T> f_table;
-  static std::vector<T> if_table;
 
-  static void init(int N){
+private:
+  std::vector<T> f_table;
+  std::vector<T> if_table;
+
+public:
+  FactorialTable(int N){
     f_table.assign(N+1, 1);
     if_table.assign(N+1, 1);
     
@@ -209,70 +211,59 @@ public:
     }
   }
   
-  static T factorial(int64_t i){
+  T factorial(int64_t i) const {
     assert(i < (int)f_table.size());
     return f_table[i];
   }
   
-  static T inv_factorial(int64_t i){
+  T inv_factorial(int64_t i) const {
     assert(i < (int)if_table.size());
     return if_table[i];
   }
 
-  static T P(int64_t n, int64_t k);
-  static T C(int64_t n, int64_t k);
-  static T H(int64_t n, int64_t k);
-  static T stirling_number(int64_t n, int64_t k);
-  static T bell_number(int64_t n, int64_t k);
-  static std::vector<T> bernoulli_number(int64_t n);
-  static T catalan_number(int64_t n);
+  T P(int64_t n, int64_t k) const {
+    if(n < k or n < 0 or k < 0) return 0;
+    return factorial(n) * inv_factorial(n-k);
+  }
+
+  T C(int64_t n, int64_t k) const {
+    if(n < k or n < 0 or k < 0) return 0;
+    return P(n,k) * inv_factorial(k);
+  }
+
+  T H(int64_t n, int64_t k) const {
+    if(n == 0 and k == 0) return 1;
+    return C(n+k-1, k);
+  }
 };
-
-template <typename T> std::vector<T> FactorialTable<T>::f_table = std::vector<T>();
-template <typename T> std::vector<T> FactorialTable<T>::if_table = std::vector<T>();
-
-template <typename T> T FactorialTable<T>::P(int64_t n, int64_t k){
-  if(n < k or n < 0 or k < 0) return 0;
-  return factorial(n) * inv_factorial(n-k);
-}
-
-template <typename T> T FactorialTable<T>::C(int64_t n, int64_t k){
-  if(n < k or n < 0 or k < 0) return 0;
-  return P(n,k) * inv_factorial(k);
-}
-
-template <typename T> T FactorialTable<T>::H(int64_t n, int64_t k){
-  if(n == 0 and k == 0) return 1;
-  return C(n+k-1, k);
-}
-#line 3 "Mylib/Combinatorics/stirling_number.cpp"
+#line 3 "Mylib/Combinatorics/stirling_number_second.cpp"
 
 /**
- * @title Stirling numbers of second kind
- * @docs stirling_number.md
+ * @title Stirling numbers of the second kind
+ * @docs stirling_number_second.md
  */
-template <typename T>
-T FactorialTable<T>::stirling_number(int64_t n, int64_t k){
+template <typename Ft, typename T = typename Ft::value_type>
+T stirling_number(int64_t n, int64_t k, const Ft &ft){
   if(n == 0 and k == 0) return 1;
   
   T ret = 0;
   for(int i = 1; i <= k; ++i){
-    if((k-i) % 2 == 0) ret += C(k,i) * T::power(i,n);
-    else ret -= C(k,i) * T::power(i,n);
+    if((k-i) % 2 == 0) ret += ft.C(k, i) * T::power(i, n);
+    else ret -= ft.C(k, i) * T::power(i, n);
   }
-  ret *= inv_factorial(k);
+  ret *= ft.inv_factorial(k);
   return ret;
 }
 #line 7 "test/aoj/DPL_5_I/main.test.cpp"
- 
-using Ft = FactorialTable<ModInt<1000000007>>;
+
+using mint = ModInt<1000000007>;
  
 int main(){
-  Ft::init(3000);
+  auto ft = FactorialTable<mint>(3000);
 
   int N, K; std::cin >> N >> K;
 
-  std::cout << Ft::stirling_number(N, K) << std::endl;
+  std::cout << stirling_number(N, K, ft) << std::endl;
 
   return 0;
 }

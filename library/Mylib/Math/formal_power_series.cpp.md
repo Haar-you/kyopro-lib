@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Formal power series
+# :question: Formal power series
 
 <a href="../../../index.html">Back to top page</a>
 
-* category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/formal_power_series.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-15 08:41:18+09:00
+* category: <a href="../../../index.html#c20232aa0a6a3c1c77a782d17f007d0b">Mylib/Math</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Math/formal_power_series.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-08-21 11:48:40+09:00
 
 
 
@@ -58,19 +58,16 @@ layout: default
 - [https://qiita.com/hotman78/items/f0e6d2265badd84d429a](https://qiita.com/hotman78/items/f0e6d2265badd84d429a)
 
 
-## Required by
-
-* :heavy_check_mark: <a href="../Combinatorics/bernoulli_number_fps.cpp.html">Bernoulli number (FPS)</a>
-
-
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/bernoulli_number/main.test.cpp.html">test/yosupo-judge/bernoulli_number/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/exp_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/exp_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/inv_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/inv_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/log_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/log_of_formal_power_series/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/partition_function/main.fps.test.cpp.html">test/yosupo-judge/partition_function/main.fps.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/pow_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/pow_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/sharp_p_subset_sum/main.test.cpp.html">test/yosupo-judge/sharp_p_subset_sum/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp</a>
 
 
 ## Code
@@ -93,6 +90,7 @@ struct FormalPowerSeries{
   using value_type = T;
   
   static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
+  static std::function<std::optional<T>(T)> get_sqrt;
 
   std::vector<T> data;
 
@@ -264,11 +262,46 @@ struct FormalPowerSeries{
     
     return ret;
   }
+
+  std::optional<FormalPowerSeries> sqrt() const {
+    const int n = data.size();
+    int k = 0;
+    for(; k < n; ++k) if(data[k] != 0) break;
+
+    if(k >= n) return *this;
+    if(k % 2 != 0) return {};
+
+    int t = 1;
+    auto x = get_sqrt(data[k]);
+
+    if(not x) return {};
+
+    const int m = n - k;
+
+    auto it = data.begin() + k;
+    FormalPowerSeries ret({*x});
+
+    while(t <= m * 2){
+      FormalPowerSeries f(std::vector(it, it + std::min(t, m)));
+      ret.resize(t);
+      f.resize(t);
+      ret = (ret + f * ret.inv()) * T(2).inv();      
+      t <<= 1;
+    }
+
+    ret.resize(n);
+    ret = ret.shift(k / 2);
+
+    return ret;
+  }
 };
 
 
 template <typename T>
 std::function<std::vector<T>(std::vector<T>, std::vector<T>)> FormalPowerSeries<T>::convolve;
+
+template <typename T>
+std::function<std::optional<T>(T)> FormalPowerSeries<T>::get_sqrt;
 
 ```
 {% endraw %}
@@ -276,7 +309,7 @@ std::function<std::vector<T>(std::vector<T>, std::vector<T>)> FormalPowerSeries<
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Convolution/formal_power_series.cpp"
+#line 2 "Mylib/Math/formal_power_series.cpp"
 
 #include <functional>
 #include <vector>
@@ -291,6 +324,7 @@ struct FormalPowerSeries{
   using value_type = T;
   
   static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
+  static std::function<std::optional<T>(T)> get_sqrt;
 
   std::vector<T> data;
 
@@ -462,11 +496,46 @@ struct FormalPowerSeries{
     
     return ret;
   }
+
+  std::optional<FormalPowerSeries> sqrt() const {
+    const int n = data.size();
+    int k = 0;
+    for(; k < n; ++k) if(data[k] != 0) break;
+
+    if(k >= n) return *this;
+    if(k % 2 != 0) return {};
+
+    int t = 1;
+    auto x = get_sqrt(data[k]);
+
+    if(not x) return {};
+
+    const int m = n - k;
+
+    auto it = data.begin() + k;
+    FormalPowerSeries ret({*x});
+
+    while(t <= m * 2){
+      FormalPowerSeries f(std::vector(it, it + std::min(t, m)));
+      ret.resize(t);
+      f.resize(t);
+      ret = (ret + f * ret.inv()) * T(2).inv();      
+      t <<= 1;
+    }
+
+    ret.resize(n);
+    ret = ret.shift(k / 2);
+
+    return ret;
+  }
 };
 
 
 template <typename T>
 std::function<std::vector<T>(std::vector<T>, std::vector<T>)> FormalPowerSeries<T>::convolve;
+
+template <typename T>
+std::function<std::optional<T>(T)> FormalPowerSeries<T>::get_sqrt;
 
 ```
 {% endraw %}

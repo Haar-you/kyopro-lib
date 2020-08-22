@@ -87,6 +87,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_5_C/main.hld.test.cpp.html">test/aoj/GRL_5_C/main.hld.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_6_A/main.dinic.test.cpp.html">test/aoj/GRL_6_A/main.dinic.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp.html">test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_6_A/main.push_relabel.test.cpp.html">test/aoj/GRL_6_A/main.push_relabel.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_6_B/main.test.cpp.html">test/aoj/GRL_6_B/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp.html">test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
@@ -206,8 +207,7 @@ auto input_tuples(int N){
 #include <tuple>
 #include <utility>
 #include <initializer_list>
-#line 5 "Mylib/IO/input_tuple.cpp"
-#include <initializer_list>
+#line 6 "Mylib/IO/input_tuple.cpp"
 
 /**
  * @docs input_tuple.md

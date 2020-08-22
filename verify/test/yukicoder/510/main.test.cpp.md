@@ -373,10 +373,7 @@ struct DualMonoid{
 };
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
-#line 6 "Mylib/IO/input_tuples.cpp"
-#include <initializer_list>
-#line 5 "Mylib/IO/input_tuple.cpp"
-#include <initializer_list>
+#line 6 "Mylib/IO/input_tuple.cpp"
 
 /**
  * @docs input_tuple.md

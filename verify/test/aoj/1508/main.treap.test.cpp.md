@@ -312,8 +312,7 @@ struct MinMonoid{
 #include <vector>
 #line 6 "Mylib/IO/input_tuples.cpp"
 #include <initializer_list>
-#line 5 "Mylib/IO/input_tuple.cpp"
-#include <initializer_list>
+#line 6 "Mylib/IO/input_tuple.cpp"
 
 /**
  * @docs input_tuple.md
@@ -379,8 +378,6 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 6 "Mylib/IO/input_tuples_with_index.cpp"
-#include <initializer_list>
 #line 8 "Mylib/IO/input_tuples_with_index.cpp"
 
 /**

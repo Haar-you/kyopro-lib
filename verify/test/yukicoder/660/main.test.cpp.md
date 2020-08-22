@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a98572782bc888d5914d5fef365c5125">test/yukicoder/660</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/660/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-15 08:41:18+09:00
+    - Last commit date: 2020-08-20 09:35:37+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/660">https://yukicoder.me/problems/no/660</a>
@@ -58,31 +58,29 @@ layout: default
 #include "Mylib/Combinatorics/catalan_number.cpp"
 
 using mint = ModInt<1000000007>;
-using Ft = FactorialTable<mint>;
 
 int main(){
-  Ft::init(500000);
+  auto ft = FactorialTable<mint>(500000);
   
   int N; std::cin >> N;
 
   std::vector<mint> c(N+1);
   for(int i = 0; i <= N; ++i){
-    c[i] = Ft::catalan_number(i);
+    c[i] = catalan_number(i, ft);
   }
 
   for(int i = 1; i <= N; ++i){
     c[i] += c[i-1];
   }
 
-
   mint ans = 0;
   
   for(int k = 0; k <= N / 2; ++k){
-    ans += Ft::C(N+2*k, k);
+    ans += ft.C(N+2*k, k);
   }
 
   for(int k = 0; k < N / 2; ++k){
-    ans -= Ft::C(N+2*k, k) * c[N/2-k-1] * 2;
+    ans -= ft.C(N+2*k, k) * c[N/2-k-1] * 2;
   }
 
   std::cout << ans << std::endl;
@@ -207,16 +205,18 @@ public:
 /**
  * @title Factorial table
  * @docs factorial_table.md
- * @attention 使用前にinit関数を呼び出す
  */
-template <typename T> class FactorialTable{
+template <typename T>
+class FactorialTable{
 public:
   using value_type = T;
-  
-  static std::vector<T> f_table;
-  static std::vector<T> if_table;
 
-  static void init(int N){
+private:
+  std::vector<T> f_table;
+  std::vector<T> if_table;
+
+public:
+  FactorialTable(int N){
     f_table.assign(N+1, 1);
     if_table.assign(N+1, 1);
     
@@ -231,79 +231,67 @@ public:
     }
   }
   
-  static T factorial(int64_t i){
+  T factorial(int64_t i) const {
     assert(i < (int)f_table.size());
     return f_table[i];
   }
   
-  static T inv_factorial(int64_t i){
+  T inv_factorial(int64_t i) const {
     assert(i < (int)if_table.size());
     return if_table[i];
   }
 
-  static T P(int64_t n, int64_t k);
-  static T C(int64_t n, int64_t k);
-  static T H(int64_t n, int64_t k);
-  static T stirling_number(int64_t n, int64_t k);
-  static T bell_number(int64_t n, int64_t k);
-  static std::vector<T> bernoulli_number(int64_t n);
-  static T catalan_number(int64_t n);
+  T P(int64_t n, int64_t k) const {
+    if(n < k or n < 0 or k < 0) return 0;
+    return factorial(n) * inv_factorial(n-k);
+  }
+
+  T C(int64_t n, int64_t k) const {
+    if(n < k or n < 0 or k < 0) return 0;
+    return P(n,k) * inv_factorial(k);
+  }
+
+  T H(int64_t n, int64_t k) const {
+    if(n == 0 and k == 0) return 1;
+    return C(n+k-1, k);
+  }
 };
-
-template <typename T> std::vector<T> FactorialTable<T>::f_table = std::vector<T>();
-template <typename T> std::vector<T> FactorialTable<T>::if_table = std::vector<T>();
-
-template <typename T> T FactorialTable<T>::P(int64_t n, int64_t k){
-  if(n < k or n < 0 or k < 0) return 0;
-  return factorial(n) * inv_factorial(n-k);
-}
-
-template <typename T> T FactorialTable<T>::C(int64_t n, int64_t k){
-  if(n < k or n < 0 or k < 0) return 0;
-  return P(n,k) * inv_factorial(k);
-}
-
-template <typename T> T FactorialTable<T>::H(int64_t n, int64_t k){
-  if(n == 0 and k == 0) return 1;
-  return C(n+k-1, k);
-}
 #line 3 "Mylib/Combinatorics/catalan_number.cpp"
 
 /**
  * @title Catalan number
  * @docs catalan_number.md
  */
-template <typename T> T FactorialTable<T>::catalan_number(int64_t n){
-  return C(2*n,n) - C(2*n,n-1);
+template <typename Ft, typename T = typename Ft::value_type>
+T catalan_number(int64_t n, const Ft &ft){
+  return ft.C(2 * n, n) - ft.C(2 * n, n - 1);
 }
 #line 8 "test/yukicoder/660/main.test.cpp"
 
 using mint = ModInt<1000000007>;
-using Ft = FactorialTable<mint>;
 
 int main(){
-  Ft::init(500000);
+  auto ft = FactorialTable<mint>(500000);
   
   int N; std::cin >> N;
 
   std::vector<mint> c(N+1);
   for(int i = 0; i <= N; ++i){
-    c[i] = Ft::catalan_number(i);
+    c[i] = catalan_number(i, ft);
   }
 
   for(int i = 1; i <= N; ++i){
     c[i] += c[i-1];
   }
 
-
   mint ans = 0;
   
   for(int k = 0; k <= N / 2; ++k){
-    ans += Ft::C(N+2*k, k);
+    ans += ft.C(N+2*k, k);
   }
 
   for(int k = 0; k < N / 2; ++k){
-    ans -= Ft::C(N+2*k, k) * c[N/2-k-1] * 2;
+    ans -= ft.C(N+2*k, k) * c[N/2-k-1] * 2;
   }
 
   std::cout << ans << std::endl;

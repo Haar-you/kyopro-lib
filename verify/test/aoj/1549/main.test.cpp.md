@@ -110,8 +110,7 @@ int main(){
 #include <cassert>
 #include <optional>
 #include <queue>
-#line 3 "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
-#include <optional>
+#line 4 "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
 
 /**
  * @title Succinct dictionary
@@ -496,8 +495,7 @@ std::vector<std::vector<T>> input_vector(int N, int M){
 }
 #line 6 "Mylib/IO/input_tuples.cpp"
 #include <initializer_list>
-#line 5 "Mylib/IO/input_tuple.cpp"
-#include <initializer_list>
+#line 6 "Mylib/IO/input_tuple.cpp"
 
 /**
  * @docs input_tuple.md

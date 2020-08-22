@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mod sqrt
+# :question: Mod sqrt
 
 <a href="../../../../index.html">Back to top page</a>
 
@@ -56,12 +56,13 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="mod_power.cpp.html">Mod power</a>
+* :question: <a href="mod_power.cpp.html">Mod power</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp</a>
 
 
 ## Code

@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/factorial_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-15 08:41:18+09:00
+    - Last commit date: 2020-08-20 09:35:37+09:00
 
 
 
 
 ## Operations
 
-- `init(int N)`
+- `FactorialTable(int N)`
 	- $0!$ ~ $N!$とその逆数を計算する。
 	- Time complexity $O(N)$
 - `factorial(int i)` : return $i!$
@@ -52,9 +52,8 @@ layout: default
 
 * :heavy_check_mark: <a href="bell_number.cpp.html">Bell number</a>
 * :x: <a href="bernoulli_number.cpp.html">Bernoulli number</a>
-* :heavy_check_mark: <a href="bernoulli_number_fps.cpp.html">Bernoulli number (FPS)</a>
 * :x: <a href="catalan_number.cpp.html">Catalan number</a>
-* :heavy_check_mark: <a href="stirling_number.cpp.html">Stirling numbers of second kind</a>
+* :heavy_check_mark: <a href="stirling_number_second.cpp.html">Stirling numbers of the second kind</a>
 
 
 ## Verified with
@@ -79,16 +78,18 @@ layout: default
 /**
  * @title Factorial table
  * @docs factorial_table.md
- * @attention 使用前にinit関数を呼び出す
  */
-template <typename T> class FactorialTable{
+template <typename T>
+class FactorialTable{
 public:
   using value_type = T;
-  
-  static std::vector<T> f_table;
-  static std::vector<T> if_table;
 
-  static void init(int N){
+private:
+  std::vector<T> f_table;
+  std::vector<T> if_table;
+
+public:
+  FactorialTable(int N){
     f_table.assign(N+1, 1);
     if_table.assign(N+1, 1);
     
@@ -103,42 +104,31 @@ public:
     }
   }
   
-  static T factorial(int64_t i){
+  T factorial(int64_t i) const {
     assert(i < (int)f_table.size());
     return f_table[i];
   }
   
-  static T inv_factorial(int64_t i){
+  T inv_factorial(int64_t i) const {
     assert(i < (int)if_table.size());
     return if_table[i];
   }
 
-  static T P(int64_t n, int64_t k);
-  static T C(int64_t n, int64_t k);
-  static T H(int64_t n, int64_t k);
-  static T stirling_number(int64_t n, int64_t k);
-  static T bell_number(int64_t n, int64_t k);
-  static std::vector<T> bernoulli_number(int64_t n);
-  static T catalan_number(int64_t n);
+  T P(int64_t n, int64_t k) const {
+    if(n < k or n < 0 or k < 0) return 0;
+    return factorial(n) * inv_factorial(n-k);
+  }
+
+  T C(int64_t n, int64_t k) const {
+    if(n < k or n < 0 or k < 0) return 0;
+    return P(n,k) * inv_factorial(k);
+  }
+
+  T H(int64_t n, int64_t k) const {
+    if(n == 0 and k == 0) return 1;
+    return C(n+k-1, k);
+  }
 };
-
-template <typename T> std::vector<T> FactorialTable<T>::f_table = std::vector<T>();
-template <typename T> std::vector<T> FactorialTable<T>::if_table = std::vector<T>();
-
-template <typename T> T FactorialTable<T>::P(int64_t n, int64_t k){
-  if(n < k or n < 0 or k < 0) return 0;
-  return factorial(n) * inv_factorial(n-k);
-}
-
-template <typename T> T FactorialTable<T>::C(int64_t n, int64_t k){
-  if(n < k or n < 0 or k < 0) return 0;
-  return P(n,k) * inv_factorial(k);
-}
-
-template <typename T> T FactorialTable<T>::H(int64_t n, int64_t k){
-  if(n == 0 and k == 0) return 1;
-  return C(n+k-1, k);
-}
 
 ```
 {% endraw %}
@@ -153,16 +143,18 @@ template <typename T> T FactorialTable<T>::H(int64_t n, int64_t k){
 /**
  * @title Factorial table
  * @docs factorial_table.md
- * @attention 使用前にinit関数を呼び出す
  */
-template <typename T> class FactorialTable{
+template <typename T>
+class FactorialTable{
 public:
   using value_type = T;
-  
-  static std::vector<T> f_table;
-  static std::vector<T> if_table;
 
-  static void init(int N){
+private:
+  std::vector<T> f_table;
+  std::vector<T> if_table;
+
+public:
+  FactorialTable(int N){
     f_table.assign(N+1, 1);
     if_table.assign(N+1, 1);
     
@@ -177,42 +169,31 @@ public:
     }
   }
   
-  static T factorial(int64_t i){
+  T factorial(int64_t i) const {
     assert(i < (int)f_table.size());
     return f_table[i];
   }
   
-  static T inv_factorial(int64_t i){
+  T inv_factorial(int64_t i) const {
     assert(i < (int)if_table.size());
     return if_table[i];
   }
 
-  static T P(int64_t n, int64_t k);
-  static T C(int64_t n, int64_t k);
-  static T H(int64_t n, int64_t k);
-  static T stirling_number(int64_t n, int64_t k);
-  static T bell_number(int64_t n, int64_t k);
-  static std::vector<T> bernoulli_number(int64_t n);
-  static T catalan_number(int64_t n);
+  T P(int64_t n, int64_t k) const {
+    if(n < k or n < 0 or k < 0) return 0;
+    return factorial(n) * inv_factorial(n-k);
+  }
+
+  T C(int64_t n, int64_t k) const {
+    if(n < k or n < 0 or k < 0) return 0;
+    return P(n,k) * inv_factorial(k);
+  }
+
+  T H(int64_t n, int64_t k) const {
+    if(n == 0 and k == 0) return 1;
+    return C(n+k-1, k);
+  }
 };
-
-template <typename T> std::vector<T> FactorialTable<T>::f_table = std::vector<T>();
-template <typename T> std::vector<T> FactorialTable<T>::if_table = std::vector<T>();
-
-template <typename T> T FactorialTable<T>::P(int64_t n, int64_t k){
-  if(n < k or n < 0 or k < 0) return 0;
-  return factorial(n) * inv_factorial(n-k);
-}
-
-template <typename T> T FactorialTable<T>::C(int64_t n, int64_t k){
-  if(n < k or n < 0 or k < 0) return 0;
-  return P(n,k) * inv_factorial(k);
-}
-
-template <typename T> T FactorialTable<T>::H(int64_t n, int64_t k){
-  if(n == 0 and k == 0) return 1;
-  return C(n+k-1, k);
-}
 
 ```
 {% endraw %}

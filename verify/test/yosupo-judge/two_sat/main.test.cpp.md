@@ -45,7 +45,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/two_sat.cpp.html">2-SAT</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 
 
 ## Code
@@ -175,8 +175,7 @@ auto strongly_connected_components(const Graph<T> &g){
   
   return std::make_pair(result, i);
 }
-#line 3 "Mylib/Graph/TopologicalSort/topological_sort.cpp"
-#include <optional>
+#line 4 "Mylib/Graph/TopologicalSort/topological_sort.cpp"
 #include <queue>
 #line 6 "Mylib/Graph/TopologicalSort/topological_sort.cpp"
 
@@ -313,8 +312,7 @@ std::string join(ITER first, ITER last, std::string delim = " "){
 #include <tuple>
 #include <utility>
 #include <initializer_list>
-#line 5 "Mylib/IO/input_tuple.cpp"
-#include <initializer_list>
+#line 6 "Mylib/IO/input_tuple.cpp"
 
 /**
  * @docs input_tuple.md

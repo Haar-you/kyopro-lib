@@ -290,8 +290,7 @@ T distance_segments(const Segment<T> &l1, const Segment<T> &l2){
 #include <tuple>
 #include <utility>
 #include <initializer_list>
-#line 5 "Mylib/IO/input_tuple.cpp"
-#include <initializer_list>
+#line 6 "Mylib/IO/input_tuple.cpp"
 
 /**
  * @docs input_tuple.md

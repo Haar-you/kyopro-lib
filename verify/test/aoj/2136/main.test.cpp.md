@@ -47,7 +47,7 @@ layout: default
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
+* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
 
 
 ## Code
@@ -442,8 +442,7 @@ std::vector<std::vector<T>> input_vector(int N, int M){
 #include <tuple>
 #include <utility>
 #include <initializer_list>
-#line 5 "Mylib/IO/input_tuple.cpp"
-#include <initializer_list>
+#line 6 "Mylib/IO/input_tuple.cpp"
 
 /**
  * @docs input_tuple.md

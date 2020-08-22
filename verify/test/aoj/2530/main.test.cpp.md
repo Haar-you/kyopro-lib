@@ -41,7 +41,7 @@ layout: default
 
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp.html">Simultaneous linear equations (Mod2)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
+* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
 
 
 ## Code

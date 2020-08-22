@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
+# :x: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f546c969ceb14dcb37f380879c54e41c">test/yosupo-judge/stirling_number_of_the_second_kind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-10 08:29:19+09:00
+    - Last commit date: 2020-08-21 11:48:40+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/stirling_number_of_the_second_kind">https://judge.yosupo.jp/problem/stirling_number_of_the_second_kind</a>
@@ -39,8 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number theoretic transform</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :x: <a href="../../../../library/Mylib/Combinatorics/stirling_number_second_fft.cpp.html">Stirling numbers of the second kind (FFT)</a>
+* :question: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number theoretic transform</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 * :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
@@ -52,58 +53,31 @@ layout: default
 #define PROBLEM "https://judge.yosupo.jp/problem/stirling_number_of_the_second_kind"
 
 #include <iostream>
-#include <vector>
-#include "Mylib/Convolution/ntt_convolution.cpp"
+#include <functional>
 #include "Mylib/Number/Mint/mint.cpp"
+#include "Mylib/Convolution/ntt_convolution.cpp"
+#include "Mylib/Combinatorics/stirling_number_second_fft.cpp"
 #include "Mylib/IO/join.cpp"
 
-const int MOD = 998244353;
-const int PRIM = 3;
+constexpr int MOD = 998244353;
+constexpr int PRIM = 3;
 
 using mint = ModInt<MOD>;
+using NTT = NumberTheoreticTransform<mint,PRIM,1<<20>;
 
 int main(){
+  using namespace std::placeholders;
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N; std::cin >> N;
 
-  std::vector<mint> a(N+1), b(N+1);
+  auto ntt = NTT();
+  auto convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
+  auto res = stirling_number_of_second_kind<mint>(N, convolve);
 
-  std::vector<int> m(N+1, 0);
-  for(int i = 2; i <= N; ++i){
-    if(m[i] != 0) continue;
-    for(int j = 2*i; j <= N; j += i){
-      m[j] = i;
-    }
-  }
+  std::cout << join(res.begin(), res.end()) << "\n";
 
-  for(int i = 0; i <= N; ++i){
-    if(m[i] == 0){
-      a[i] = mint::power(i, N);
-    }else{
-      a[i] = a[m[i]] * a[i/m[i]];
-    }
-  }
-    
-  mint f = 1;
-  for(int i = 1; i <= N; ++i) f *= i;
-  f = f.inv();
-
-  for(int i = N; i >= 0; --i){
-    a[i] *= f;
-    b[i] = f;
-    f *= i;
-
-    if(i % 2 == 1){
-      b[i] = -b[i];
-    }
-  }
-  
-  auto res = NumberTheoreticTransform<mint,PRIM,1<<20>().run_convolution(a, b);
-
-  std::cout << join(res.begin(), res.begin() + N + 1) << "\n";
-  
   return 0;
 }
 
@@ -117,12 +91,9 @@ int main(){
 #define PROBLEM "https://judge.yosupo.jp/problem/stirling_number_of_the_second_kind"
 
 #include <iostream>
-#include <vector>
-#line 3 "Mylib/Convolution/ntt_convolution.cpp"
-#include <cassert>
+#include <functional>
+#line 3 "Mylib/Number/Mint/mint.cpp"
 #include <utility>
-#include <algorithm>
-#line 4 "Mylib/Number/Mint/mint.cpp"
 
 /**
  * @title Modint
@@ -221,6 +192,11 @@ public:
   explicit operator int32_t() const noexcept {return val;}
   explicit operator int64_t() const noexcept {return val;}
 };
+#line 2 "Mylib/Convolution/ntt_convolution.cpp"
+#include <vector>
+#include <cassert>
+#line 5 "Mylib/Convolution/ntt_convolution.cpp"
+#include <algorithm>
 #line 7 "Mylib/Convolution/ntt_convolution.cpp"
 
 /**
@@ -229,6 +205,11 @@ public:
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>
 class NumberTheoreticTransform{
+public:
+  using value_type = T;
+  constexpr static int primitive_root = PRIM_ROOT;
+
+private:
   const int MAX_POWER;
   std::vector<T> BASE, INV_BASE;
   
@@ -251,7 +232,7 @@ public:
     }
   }
 
-  void run_ntt(std::vector<T> &f, bool INVERSE = false){
+  void run(std::vector<T> &f, bool INVERSE = false){
     const int n = f.size();
     assert((n & (n-1)) == 0 and n <= MAX_SIZE); // データ数は2の冪乗個
 
@@ -290,7 +271,7 @@ public:
   }
 
   template <typename U>
-  std::vector<T> run_convolution(std::vector<U> f, std::vector<U> g){
+  std::vector<T> convolve(std::vector<U> f, std::vector<U> g){
     const int m = f.size() + g.size() - 1;
     int n = 1;
     while(n < m) n *= 2;
@@ -300,18 +281,18 @@ public:
     for(int i = 0; i < (int)f.size(); ++i) f2[i] = f[i];
     for(int i = 0; i < (int)g.size(); ++i) g2[i] = g[i];
   
-    run_ntt(f2);
-    run_ntt(g2);
+    run(f2);
+    run(g2);
     
     for(int i = 0; i < n; ++i) f2[i] *= g2[i];
-    run_ntt(f2, true);
+    run(f2, true);
     
     return f2;
   }
 };
 
 template <typename T, typename U>
-std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
+std::vector<T> convolve_general_mod(std::vector<U> f, std::vector<U> g){
   static constexpr int M1 = 167772161, P1 = 3;
   static constexpr int M2 = 469762049, P2 = 3;
   static constexpr int M3 = 1224736769, P3 = 3;
@@ -319,17 +300,17 @@ std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
   for(auto &x : f) x %= T::MOD;
   for(auto &x : g) x %= T::MOD;
   
-  auto res1 = NumberTheoreticTransform<ModInt<M1>, P1, 1 << 20>().run_convolution(f, g);
-  auto res2 = NumberTheoreticTransform<ModInt<M2>, P2, 1 << 20>().run_convolution(f, g);
-  auto res3 = NumberTheoreticTransform<ModInt<M3>, P3, 1 << 20>().run_convolution(f, g);
+  auto res1 = NumberTheoreticTransform<ModInt<M1>, P1, 1 << 20>().convolve(f, g);
+  auto res2 = NumberTheoreticTransform<ModInt<M2>, P2, 1 << 20>().convolve(f, g);
+  auto res3 = NumberTheoreticTransform<ModInt<M3>, P3, 1 << 20>().convolve(f, g);
 
   const int n = res1.size();
 
   std::vector<T> ret(n);
 
-  const int64_t M12 = ModInt<M2>::inv(M1).val;
-  const int64_t M13 = ModInt<M3>::inv(M1).val;
-  const int64_t M23 = ModInt<M3>::inv(M2).val;
+  const int64_t M12 = (int64_t)ModInt<M2>::inv(M1);
+  const int64_t M13 = (int64_t)ModInt<M3>::inv(M1);
+  const int64_t M23 = (int64_t)ModInt<M3>::inv(M2);
 
   for(int i = 0; i < n; ++i){
     const int64_t r[3] = {(int64_t)res1[i].val, (int64_t)res2[i].val, (int64_t)res3[i].val};
@@ -341,6 +322,51 @@ std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
     ret[i] = T(t0) + T(t1) * M1 + T(t2) * M1 * M2;
   }
 
+  return ret;
+}
+#line 3 "Mylib/Combinatorics/stirling_number_second_fft.cpp"
+
+/**
+ * @title Stirling numbers of the second kind (FFT)
+ * @docs stirling_number_second_fft.md
+ */
+template <typename T, typename Conv>
+auto stirling_number_of_second_kind(int N, const Conv &convolve){
+  std::vector<T> a(N+1), b(N+1);
+
+  std::vector<int> m(N+1, 0);
+  for(int i = 2; i <= N; ++i){
+    if(m[i] != 0) continue;
+    for(int j = 2 * i; j <= N; j += i){
+      m[j] = i;
+    }
+  }
+
+  for(int i = 0; i <= N; ++i){
+    if(m[i] == 0){
+      a[i] = T::power(i, N);
+    }else{
+      a[i] = a[m[i]] * a[i / m[i]];
+    }
+  }
+    
+  T f = 1;
+  for(int i = 1; i <= N; ++i) f *= i;
+  f = f.inv();
+
+  for(int i = N; i >= 0; --i){
+    a[i] *= f;
+    b[i] = f;
+    f *= i;
+
+    if(i % 2 == 1){
+      b[i] = -b[i];
+    }
+  }
+
+  auto ret = convolve(a, b);
+  ret.resize(N + 1);
+  
   return ret;
 }
 #line 3 "Mylib/IO/join.cpp"
@@ -361,55 +387,27 @@ std::string join(ITER first, ITER last, std::string delim = " "){
 
   return s.str();
 }
-#line 8 "test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp"
+#line 9 "test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp"
 
-const int MOD = 998244353;
-const int PRIM = 3;
+constexpr int MOD = 998244353;
+constexpr int PRIM = 3;
 
 using mint = ModInt<MOD>;
+using NTT = NumberTheoreticTransform<mint,PRIM,1<<20>;
 
 int main(){
+  using namespace std::placeholders;
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N; std::cin >> N;
 
-  std::vector<mint> a(N+1), b(N+1);
+  auto ntt = NTT();
+  auto convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
+  auto res = stirling_number_of_second_kind<mint>(N, convolve);
 
-  std::vector<int> m(N+1, 0);
-  for(int i = 2; i <= N; ++i){
-    if(m[i] != 0) continue;
-    for(int j = 2*i; j <= N; j += i){
-      m[j] = i;
-    }
-  }
+  std::cout << join(res.begin(), res.end()) << "\n";
 
-  for(int i = 0; i <= N; ++i){
-    if(m[i] == 0){
-      a[i] = mint::power(i, N);
-    }else{
-      a[i] = a[m[i]] * a[i/m[i]];
-    }
-  }
-    
-  mint f = 1;
-  for(int i = 1; i <= N; ++i) f *= i;
-  f = f.inv();
-
-  for(int i = N; i >= 0; --i){
-    a[i] *= f;
-    b[i] = f;
-    f *= i;
-
-    if(i % 2 == 1){
-      b[i] = -b[i];
-    }
-  }
-  
-  auto res = NumberTheoreticTransform<mint,PRIM,1<<20>().run_convolution(a, b);
-
-  std::cout << join(res.begin(), res.begin() + N + 1) << "\n";
-  
   return 0;
 }
 

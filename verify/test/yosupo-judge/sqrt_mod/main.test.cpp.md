@@ -41,8 +41,8 @@ layout: default
 
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_sqrt.cpp.html">Mod sqrt</a>
+* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
+* :question: <a href="../../../../library/Mylib/Number/Mod/mod_sqrt.cpp.html">Mod sqrt</a>
 
 
 ## Code
@@ -153,8 +153,7 @@ std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
 #include <tuple>
 #include <utility>
 #include <initializer_list>
-#line 5 "Mylib/IO/input_tuple.cpp"
-#include <initializer_list>
+#line 6 "Mylib/IO/input_tuple.cpp"
 
 /**
  * @docs input_tuple.md

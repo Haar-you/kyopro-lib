@@ -56,7 +56,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../Number/Mod/mod_power.cpp.html">Mod power</a>
+* :question: <a href="../../Number/Mod/mod_power.cpp.html">Mod power</a>
 
 
 ## Verified with

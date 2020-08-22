@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#c2ca819257a0bc82c2cf56fe9b45c498">test/yosupo-judge/bernoulli_number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/bernoulli_number/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-15 08:41:18+09:00
+    - Last commit date: 2020-08-21 11:48:40+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/bernoulli_number">https://judge.yosupo.jp/problem/bernoulli_number</a>
@@ -41,9 +41,9 @@ layout: default
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/bernoulli_number_fps.cpp.html">Bernoulli number (FPS)</a>
 * :question: <a href="../../../../library/Mylib/Combinatorics/factorial_table.cpp.html">Factorial table</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/formal_power_series.cpp.html">Formal power series</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number theoretic transform</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :question: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number theoretic transform</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :question: <a href="../../../../library/Mylib/Math/formal_power_series.cpp.html">Formal power series</a>
 * :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
@@ -55,30 +55,32 @@ layout: default
 #define PROBLEM "https://judge.yosupo.jp/problem/bernoulli_number"
 
 #include <iostream>
+#include <functional>
 #include "Mylib/IO/join.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Convolution/ntt_convolution.cpp"
-#include "Mylib/Convolution/formal_power_series.cpp"
+#include "Mylib/Math/formal_power_series.cpp"
 #include "Mylib/Combinatorics/factorial_table.cpp"
 #include "Mylib/Combinatorics/bernoulli_number_fps.cpp"
 
 using mint = ModInt<998244353>;
 constexpr int PRIM_ROOT = 3;
-using Ft = FactorialTable<mint>;
 using FPS = FormalPowerSeries<mint>;
+using NTT = NumberTheoreticTransform<mint, PRIM_ROOT, 1 << 20>;
 
 int main(){
+  using namespace std::placeholders;
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N; std::cin >> N;
 
-  Ft::init(N + 1);
+  auto ft = FactorialTable<mint>(N + 1);
   
-  auto ntt = NumberTheoreticTransform<mint, PRIM_ROOT, 1 << 20>();
-  FPS::convolve = [&](const auto &a, const auto &b){return ntt.run_convolution(a, b);};
+  auto ntt = NTT();
+  FPS::convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
 
-  auto res = bernoulli_number_fps<FPS, Ft>(N);
+  auto res = bernoulli_number_fps<FPS>(N, ft);
   std::cout << join(res.begin(), res.begin() + N + 1) << "\n";
 
   return 0;
@@ -94,6 +96,7 @@ int main(){
 #define PROBLEM "https://judge.yosupo.jp/problem/bernoulli_number"
 
 #include <iostream>
+#include <functional>
 #line 3 "Mylib/IO/join.cpp"
 #include <sstream>
 #include <string>
@@ -225,6 +228,11 @@ public:
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>
 class NumberTheoreticTransform{
+public:
+  using value_type = T;
+  constexpr static int primitive_root = PRIM_ROOT;
+
+private:
   const int MAX_POWER;
   std::vector<T> BASE, INV_BASE;
   
@@ -247,7 +255,7 @@ public:
     }
   }
 
-  void run_ntt(std::vector<T> &f, bool INVERSE = false){
+  void run(std::vector<T> &f, bool INVERSE = false){
     const int n = f.size();
     assert((n & (n-1)) == 0 and n <= MAX_SIZE); // データ数は2の冪乗個
 
@@ -286,7 +294,7 @@ public:
   }
 
   template <typename U>
-  std::vector<T> run_convolution(std::vector<U> f, std::vector<U> g){
+  std::vector<T> convolve(std::vector<U> f, std::vector<U> g){
     const int m = f.size() + g.size() - 1;
     int n = 1;
     while(n < m) n *= 2;
@@ -296,18 +304,18 @@ public:
     for(int i = 0; i < (int)f.size(); ++i) f2[i] = f[i];
     for(int i = 0; i < (int)g.size(); ++i) g2[i] = g[i];
   
-    run_ntt(f2);
-    run_ntt(g2);
+    run(f2);
+    run(g2);
     
     for(int i = 0; i < n; ++i) f2[i] *= g2[i];
-    run_ntt(f2, true);
+    run(f2, true);
     
     return f2;
   }
 };
 
 template <typename T, typename U>
-std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
+std::vector<T> convolve_general_mod(std::vector<U> f, std::vector<U> g){
   static constexpr int M1 = 167772161, P1 = 3;
   static constexpr int M2 = 469762049, P2 = 3;
   static constexpr int M3 = 1224736769, P3 = 3;
@@ -315,17 +323,17 @@ std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
   for(auto &x : f) x %= T::MOD;
   for(auto &x : g) x %= T::MOD;
   
-  auto res1 = NumberTheoreticTransform<ModInt<M1>, P1, 1 << 20>().run_convolution(f, g);
-  auto res2 = NumberTheoreticTransform<ModInt<M2>, P2, 1 << 20>().run_convolution(f, g);
-  auto res3 = NumberTheoreticTransform<ModInt<M3>, P3, 1 << 20>().run_convolution(f, g);
+  auto res1 = NumberTheoreticTransform<ModInt<M1>, P1, 1 << 20>().convolve(f, g);
+  auto res2 = NumberTheoreticTransform<ModInt<M2>, P2, 1 << 20>().convolve(f, g);
+  auto res3 = NumberTheoreticTransform<ModInt<M3>, P3, 1 << 20>().convolve(f, g);
 
   const int n = res1.size();
 
   std::vector<T> ret(n);
 
-  const int64_t M12 = ModInt<M2>::inv(M1).val;
-  const int64_t M13 = ModInt<M3>::inv(M1).val;
-  const int64_t M23 = ModInt<M3>::inv(M2).val;
+  const int64_t M12 = (int64_t)ModInt<M2>::inv(M1);
+  const int64_t M13 = (int64_t)ModInt<M3>::inv(M1);
+  const int64_t M23 = (int64_t)ModInt<M3>::inv(M2);
 
   for(int i = 0; i < n; ++i){
     const int64_t r[3] = {(int64_t)res1[i].val, (int64_t)res2[i].val, (int64_t)res3[i].val};
@@ -339,10 +347,9 @@ std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
 
   return ret;
 }
-#line 2 "Mylib/Convolution/formal_power_series.cpp"
+#line 2 "Mylib/Math/formal_power_series.cpp"
 
-#include <functional>
-#line 5 "Mylib/Convolution/formal_power_series.cpp"
+#line 5 "Mylib/Math/formal_power_series.cpp"
 #include <initializer_list>
 
 /**
@@ -354,6 +361,7 @@ struct FormalPowerSeries{
   using value_type = T;
   
   static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
+  static std::function<std::optional<T>(T)> get_sqrt;
 
   std::vector<T> data;
 
@@ -525,26 +533,63 @@ struct FormalPowerSeries{
     
     return ret;
   }
+
+  std::optional<FormalPowerSeries> sqrt() const {
+    const int n = data.size();
+    int k = 0;
+    for(; k < n; ++k) if(data[k] != 0) break;
+
+    if(k >= n) return *this;
+    if(k % 2 != 0) return {};
+
+    int t = 1;
+    auto x = get_sqrt(data[k]);
+
+    if(not x) return {};
+
+    const int m = n - k;
+
+    auto it = data.begin() + k;
+    FormalPowerSeries ret({*x});
+
+    while(t <= m * 2){
+      FormalPowerSeries f(std::vector(it, it + std::min(t, m)));
+      ret.resize(t);
+      f.resize(t);
+      ret = (ret + f * ret.inv()) * T(2).inv();      
+      t <<= 1;
+    }
+
+    ret.resize(n);
+    ret = ret.shift(k / 2);
+
+    return ret;
+  }
 };
 
 
 template <typename T>
 std::function<std::vector<T>(std::vector<T>, std::vector<T>)> FormalPowerSeries<T>::convolve;
+
+template <typename T>
+std::function<std::optional<T>(T)> FormalPowerSeries<T>::get_sqrt;
 #line 4 "Mylib/Combinatorics/factorial_table.cpp"
 
 /**
  * @title Factorial table
  * @docs factorial_table.md
- * @attention 使用前にinit関数を呼び出す
  */
-template <typename T> class FactorialTable{
+template <typename T>
+class FactorialTable{
 public:
   using value_type = T;
-  
-  static std::vector<T> f_table;
-  static std::vector<T> if_table;
 
-  static void init(int N){
+private:
+  std::vector<T> f_table;
+  std::vector<T> if_table;
+
+public:
+  FactorialTable(int N){
     f_table.assign(N+1, 1);
     if_table.assign(N+1, 1);
     
@@ -559,78 +604,68 @@ public:
     }
   }
   
-  static T factorial(int64_t i){
+  T factorial(int64_t i) const {
     assert(i < (int)f_table.size());
     return f_table[i];
   }
   
-  static T inv_factorial(int64_t i){
+  T inv_factorial(int64_t i) const {
     assert(i < (int)if_table.size());
     return if_table[i];
   }
 
-  static T P(int64_t n, int64_t k);
-  static T C(int64_t n, int64_t k);
-  static T H(int64_t n, int64_t k);
-  static T stirling_number(int64_t n, int64_t k);
-  static T bell_number(int64_t n, int64_t k);
-  static std::vector<T> bernoulli_number(int64_t n);
-  static T catalan_number(int64_t n);
+  T P(int64_t n, int64_t k) const {
+    if(n < k or n < 0 or k < 0) return 0;
+    return factorial(n) * inv_factorial(n-k);
+  }
+
+  T C(int64_t n, int64_t k) const {
+    if(n < k or n < 0 or k < 0) return 0;
+    return P(n,k) * inv_factorial(k);
+  }
+
+  T H(int64_t n, int64_t k) const {
+    if(n == 0 and k == 0) return 1;
+    return C(n+k-1, k);
+  }
 };
-
-template <typename T> std::vector<T> FactorialTable<T>::f_table = std::vector<T>();
-template <typename T> std::vector<T> FactorialTable<T>::if_table = std::vector<T>();
-
-template <typename T> T FactorialTable<T>::P(int64_t n, int64_t k){
-  if(n < k or n < 0 or k < 0) return 0;
-  return factorial(n) * inv_factorial(n-k);
-}
-
-template <typename T> T FactorialTable<T>::C(int64_t n, int64_t k){
-  if(n < k or n < 0 or k < 0) return 0;
-  return P(n,k) * inv_factorial(k);
-}
-
-template <typename T> T FactorialTable<T>::H(int64_t n, int64_t k){
-  if(n == 0 and k == 0) return 1;
-  return C(n+k-1, k);
-}
-#line 4 "Mylib/Combinatorics/bernoulli_number_fps.cpp"
+#line 2 "Mylib/Combinatorics/bernoulli_number_fps.cpp"
 
 /**
  * @title Bernoulli number (FPS)
  * @docs bernoulli_number_fps.md
  */
 template <typename Fps, typename Ft>
-auto bernoulli_number_fps(int N){
+auto bernoulli_number_fps(int N, const Ft &ft){
   Fps x(N + 1);
 
-  for(int i = 0; i <= N; ++i) x[i] = Ft::inv_factorial(i + 1);
+  for(int i = 0; i <= N; ++i) x[i] = ft.inv_factorial(i + 1);
   x = x.inv();
 
-  for(int i = 0; i <= N; ++i) x[i] *= Ft::factorial(i);
+  for(int i = 0; i <= N; ++i) x[i] *= ft.factorial(i);
 
   return x;
 }
-#line 10 "test/yosupo-judge/bernoulli_number/main.test.cpp"
+#line 11 "test/yosupo-judge/bernoulli_number/main.test.cpp"
 
 using mint = ModInt<998244353>;
 constexpr int PRIM_ROOT = 3;
-using Ft = FactorialTable<mint>;
 using FPS = FormalPowerSeries<mint>;
+using NTT = NumberTheoreticTransform<mint, PRIM_ROOT, 1 << 20>;
 
 int main(){
+  using namespace std::placeholders;
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N; std::cin >> N;
 
-  Ft::init(N + 1);
+  auto ft = FactorialTable<mint>(N + 1);
   
-  auto ntt = NumberTheoreticTransform<mint, PRIM_ROOT, 1 << 20>();
-  FPS::convolve = [&](const auto &a, const auto &b){return ntt.run_convolution(a, b);};
+  auto ntt = NTT();
+  FPS::convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
 
-  auto res = bernoulli_number_fps<FPS, Ft>(N);
+  auto res = bernoulli_number_fps<FPS>(N, ft);
   std::cout << join(res.begin(), res.begin() + N + 1) << "\n";
 
   return 0;

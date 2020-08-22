@@ -245,8 +245,7 @@ auto strongly_connected_components(const Graph<T> &g){
   
   return std::make_pair(result, i);
 }
-#line 3 "Mylib/Graph/TopologicalSort/topological_sort.cpp"
-#include <optional>
+#line 4 "Mylib/Graph/TopologicalSort/topological_sort.cpp"
 #include <queue>
 #line 6 "Mylib/Graph/TopologicalSort/topological_sort.cpp"
 

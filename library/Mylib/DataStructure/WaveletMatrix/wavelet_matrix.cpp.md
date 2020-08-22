@@ -377,8 +377,7 @@ WaveletMatrix<uint32_t,32> make_wavelet_matrix_int(const std::vector<uint32_t> &
 #include <cassert>
 #include <optional>
 #include <queue>
-#line 3 "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
-#include <optional>
+#line 4 "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
 
 /**
  * @title Succinct dictionary

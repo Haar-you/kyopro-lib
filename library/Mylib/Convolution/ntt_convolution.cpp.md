@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Number theoretic transform
+# :question: Number theoretic transform
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/ntt_convolution.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-10 08:29:19+09:00
+    - Last commit date: 2020-08-21 11:48:40+09:00
 
 
 
@@ -49,9 +49,13 @@ layout: default
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/exp_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/exp_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/inv_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/inv_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/log_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/log_of_formal_power_series/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/partition_function/main.fps.test.cpp.html">test/yosupo-judge/partition_function/main.fps.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/polynomial_taylor_shift/main.test.cpp.html">test/yosupo-judge/polynomial_taylor_shift/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/pow_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/pow_of_formal_power_series/main.test.cpp</a>
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/sharp_p_subset_sum/main.test.cpp.html">test/yosupo-judge/sharp_p_subset_sum/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
 
 
 ## Code
@@ -72,6 +76,11 @@ layout: default
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>
 class NumberTheoreticTransform{
+public:
+  using value_type = T;
+  constexpr static int primitive_root = PRIM_ROOT;
+
+private:
   const int MAX_POWER;
   std::vector<T> BASE, INV_BASE;
   
@@ -94,7 +103,7 @@ public:
     }
   }
 
-  void run_ntt(std::vector<T> &f, bool INVERSE = false){
+  void run(std::vector<T> &f, bool INVERSE = false){
     const int n = f.size();
     assert((n & (n-1)) == 0 and n <= MAX_SIZE); // データ数は2の冪乗個
 
@@ -133,7 +142,7 @@ public:
   }
 
   template <typename U>
-  std::vector<T> run_convolution(std::vector<U> f, std::vector<U> g){
+  std::vector<T> convolve(std::vector<U> f, std::vector<U> g){
     const int m = f.size() + g.size() - 1;
     int n = 1;
     while(n < m) n *= 2;
@@ -143,18 +152,18 @@ public:
     for(int i = 0; i < (int)f.size(); ++i) f2[i] = f[i];
     for(int i = 0; i < (int)g.size(); ++i) g2[i] = g[i];
   
-    run_ntt(f2);
-    run_ntt(g2);
+    run(f2);
+    run(g2);
     
     for(int i = 0; i < n; ++i) f2[i] *= g2[i];
-    run_ntt(f2, true);
+    run(f2, true);
     
     return f2;
   }
 };
 
 template <typename T, typename U>
-std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
+std::vector<T> convolve_general_mod(std::vector<U> f, std::vector<U> g){
   static constexpr int M1 = 167772161, P1 = 3;
   static constexpr int M2 = 469762049, P2 = 3;
   static constexpr int M3 = 1224736769, P3 = 3;
@@ -162,17 +171,17 @@ std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
   for(auto &x : f) x %= T::MOD;
   for(auto &x : g) x %= T::MOD;
   
-  auto res1 = NumberTheoreticTransform<ModInt<M1>, P1, 1 << 20>().run_convolution(f, g);
-  auto res2 = NumberTheoreticTransform<ModInt<M2>, P2, 1 << 20>().run_convolution(f, g);
-  auto res3 = NumberTheoreticTransform<ModInt<M3>, P3, 1 << 20>().run_convolution(f, g);
+  auto res1 = NumberTheoreticTransform<ModInt<M1>, P1, 1 << 20>().convolve(f, g);
+  auto res2 = NumberTheoreticTransform<ModInt<M2>, P2, 1 << 20>().convolve(f, g);
+  auto res3 = NumberTheoreticTransform<ModInt<M3>, P3, 1 << 20>().convolve(f, g);
 
   const int n = res1.size();
 
   std::vector<T> ret(n);
 
-  const int64_t M12 = ModInt<M2>::inv(M1).val;
-  const int64_t M13 = ModInt<M3>::inv(M1).val;
-  const int64_t M23 = ModInt<M3>::inv(M2).val;
+  const int64_t M12 = (int64_t)ModInt<M2>::inv(M1);
+  const int64_t M13 = (int64_t)ModInt<M3>::inv(M1);
+  const int64_t M23 = (int64_t)ModInt<M3>::inv(M2);
 
   for(int i = 0; i < n; ++i){
     const int64_t r[3] = {(int64_t)res1[i].val, (int64_t)res2[i].val, (int64_t)res3[i].val};
@@ -307,6 +316,11 @@ public:
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>
 class NumberTheoreticTransform{
+public:
+  using value_type = T;
+  constexpr static int primitive_root = PRIM_ROOT;
+
+private:
   const int MAX_POWER;
   std::vector<T> BASE, INV_BASE;
   
@@ -329,7 +343,7 @@ public:
     }
   }
 
-  void run_ntt(std::vector<T> &f, bool INVERSE = false){
+  void run(std::vector<T> &f, bool INVERSE = false){
     const int n = f.size();
     assert((n & (n-1)) == 0 and n <= MAX_SIZE); // データ数は2の冪乗個
 
@@ -368,7 +382,7 @@ public:
   }
 
   template <typename U>
-  std::vector<T> run_convolution(std::vector<U> f, std::vector<U> g){
+  std::vector<T> convolve(std::vector<U> f, std::vector<U> g){
     const int m = f.size() + g.size() - 1;
     int n = 1;
     while(n < m) n *= 2;
@@ -378,18 +392,18 @@ public:
     for(int i = 0; i < (int)f.size(); ++i) f2[i] = f[i];
     for(int i = 0; i < (int)g.size(); ++i) g2[i] = g[i];
   
-    run_ntt(f2);
-    run_ntt(g2);
+    run(f2);
+    run(g2);
     
     for(int i = 0; i < n; ++i) f2[i] *= g2[i];
-    run_ntt(f2, true);
+    run(f2, true);
     
     return f2;
   }
 };
 
 template <typename T, typename U>
-std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
+std::vector<T> convolve_general_mod(std::vector<U> f, std::vector<U> g){
   static constexpr int M1 = 167772161, P1 = 3;
   static constexpr int M2 = 469762049, P2 = 3;
   static constexpr int M3 = 1224736769, P3 = 3;
@@ -397,17 +411,17 @@ std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
   for(auto &x : f) x %= T::MOD;
   for(auto &x : g) x %= T::MOD;
   
-  auto res1 = NumberTheoreticTransform<ModInt<M1>, P1, 1 << 20>().run_convolution(f, g);
-  auto res2 = NumberTheoreticTransform<ModInt<M2>, P2, 1 << 20>().run_convolution(f, g);
-  auto res3 = NumberTheoreticTransform<ModInt<M3>, P3, 1 << 20>().run_convolution(f, g);
+  auto res1 = NumberTheoreticTransform<ModInt<M1>, P1, 1 << 20>().convolve(f, g);
+  auto res2 = NumberTheoreticTransform<ModInt<M2>, P2, 1 << 20>().convolve(f, g);
+  auto res3 = NumberTheoreticTransform<ModInt<M3>, P3, 1 << 20>().convolve(f, g);
 
   const int n = res1.size();
 
   std::vector<T> ret(n);
 
-  const int64_t M12 = ModInt<M2>::inv(M1).val;
-  const int64_t M13 = ModInt<M3>::inv(M1).val;
-  const int64_t M23 = ModInt<M3>::inv(M2).val;
+  const int64_t M12 = (int64_t)ModInt<M2>::inv(M1);
+  const int64_t M13 = (int64_t)ModInt<M3>::inv(M1);
+  const int64_t M23 = (int64_t)ModInt<M3>::inv(M2);
 
   for(int i = 0; i < n; ++i){
     const int64_t r[3] = {(int64_t)res1[i].val, (int64_t)res2[i].val, (int64_t)res3[i].val};

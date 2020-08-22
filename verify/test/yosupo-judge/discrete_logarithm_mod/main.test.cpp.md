@@ -43,7 +43,7 @@ layout: default
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">Mod inverse</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_log.cpp.html">Mod logarithm</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
+* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
 
 
 ## Code
@@ -181,8 +181,7 @@ std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
 #include <tuple>
 #line 6 "Mylib/IO/input_tuples.cpp"
 #include <initializer_list>
-#line 5 "Mylib/IO/input_tuple.cpp"
-#include <initializer_list>
+#line 6 "Mylib/IO/input_tuple.cpp"
 
 /**
  * @docs input_tuple.md

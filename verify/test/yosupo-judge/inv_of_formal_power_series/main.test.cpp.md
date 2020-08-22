@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a91ddcca0159fd42ada032c3a7d3e68f">test/yosupo-judge/inv_of_formal_power_series</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/inv_of_formal_power_series/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-15 08:41:18+09:00
+    - Last commit date: 2020-08-21 11:48:40+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/inv_of_formal_power_series">https://judge.yosupo.jp/problem/inv_of_formal_power_series</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/formal_power_series.cpp.html">Formal power series</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number theoretic transform</a>
+* :question: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number theoretic transform</a>
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :question: <a href="../../../../library/Mylib/Math/formal_power_series.cpp.html">Formal power series</a>
 * :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
@@ -55,33 +55,28 @@ layout: default
 
 #include <iostream>
 #include <vector>
-
+#include <functional>
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Convolution/ntt_convolution.cpp"
-#include "Mylib/Convolution/formal_power_series.cpp"
+#include "Mylib/Math/formal_power_series.cpp"
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/join.cpp"
 
 using mint = ModInt<998244353>;
 using FPS = FormalPowerSeries<mint>;
+using NTT = NumberTheoreticTransform<mint, 3, 1<<20>;
 
 int main(){
+  using namespace std::placeholders;
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
   
-  auto ntt = NumberTheoreticTransform<mint, 3, 1<<20>();
-  
-  FPS::convolve =
-    [&](const auto &a, const auto &b){
-      return ntt.run_convolution(a, b);
-    };
+  auto ntt = NTT();
+  FPS::convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
 
   int N; std::cin >> N;
-
   auto a = input_vector<mint>(N);
-
-  FPS f(a);
-  auto ans = f.inv();
+  auto ans = FPS(a).inv();
 
   std::cout << join(ans.begin(), ans.begin() + N) << "\n";
 
@@ -99,7 +94,7 @@ int main(){
 
 #include <iostream>
 #include <vector>
-
+#include <functional>
 #line 3 "Mylib/Number/Mint/mint.cpp"
 #include <utility>
 
@@ -212,6 +207,11 @@ public:
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>
 class NumberTheoreticTransform{
+public:
+  using value_type = T;
+  constexpr static int primitive_root = PRIM_ROOT;
+
+private:
   const int MAX_POWER;
   std::vector<T> BASE, INV_BASE;
   
@@ -234,7 +234,7 @@ public:
     }
   }
 
-  void run_ntt(std::vector<T> &f, bool INVERSE = false){
+  void run(std::vector<T> &f, bool INVERSE = false){
     const int n = f.size();
     assert((n & (n-1)) == 0 and n <= MAX_SIZE); // データ数は2の冪乗個
 
@@ -273,7 +273,7 @@ public:
   }
 
   template <typename U>
-  std::vector<T> run_convolution(std::vector<U> f, std::vector<U> g){
+  std::vector<T> convolve(std::vector<U> f, std::vector<U> g){
     const int m = f.size() + g.size() - 1;
     int n = 1;
     while(n < m) n *= 2;
@@ -283,18 +283,18 @@ public:
     for(int i = 0; i < (int)f.size(); ++i) f2[i] = f[i];
     for(int i = 0; i < (int)g.size(); ++i) g2[i] = g[i];
   
-    run_ntt(f2);
-    run_ntt(g2);
+    run(f2);
+    run(g2);
     
     for(int i = 0; i < n; ++i) f2[i] *= g2[i];
-    run_ntt(f2, true);
+    run(f2, true);
     
     return f2;
   }
 };
 
 template <typename T, typename U>
-std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
+std::vector<T> convolve_general_mod(std::vector<U> f, std::vector<U> g){
   static constexpr int M1 = 167772161, P1 = 3;
   static constexpr int M2 = 469762049, P2 = 3;
   static constexpr int M3 = 1224736769, P3 = 3;
@@ -302,17 +302,17 @@ std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
   for(auto &x : f) x %= T::MOD;
   for(auto &x : g) x %= T::MOD;
   
-  auto res1 = NumberTheoreticTransform<ModInt<M1>, P1, 1 << 20>().run_convolution(f, g);
-  auto res2 = NumberTheoreticTransform<ModInt<M2>, P2, 1 << 20>().run_convolution(f, g);
-  auto res3 = NumberTheoreticTransform<ModInt<M3>, P3, 1 << 20>().run_convolution(f, g);
+  auto res1 = NumberTheoreticTransform<ModInt<M1>, P1, 1 << 20>().convolve(f, g);
+  auto res2 = NumberTheoreticTransform<ModInt<M2>, P2, 1 << 20>().convolve(f, g);
+  auto res3 = NumberTheoreticTransform<ModInt<M3>, P3, 1 << 20>().convolve(f, g);
 
   const int n = res1.size();
 
   std::vector<T> ret(n);
 
-  const int64_t M12 = ModInt<M2>::inv(M1).val;
-  const int64_t M13 = ModInt<M3>::inv(M1).val;
-  const int64_t M23 = ModInt<M3>::inv(M2).val;
+  const int64_t M12 = (int64_t)ModInt<M2>::inv(M1);
+  const int64_t M13 = (int64_t)ModInt<M3>::inv(M1);
+  const int64_t M23 = (int64_t)ModInt<M3>::inv(M2);
 
   for(int i = 0; i < n; ++i){
     const int64_t r[3] = {(int64_t)res1[i].val, (int64_t)res2[i].val, (int64_t)res3[i].val};
@@ -326,10 +326,9 @@ std::vector<T> ntt_convolution(std::vector<U> f, std::vector<U> g){
 
   return ret;
 }
-#line 2 "Mylib/Convolution/formal_power_series.cpp"
+#line 2 "Mylib/Math/formal_power_series.cpp"
 
-#include <functional>
-#line 5 "Mylib/Convolution/formal_power_series.cpp"
+#line 5 "Mylib/Math/formal_power_series.cpp"
 #include <initializer_list>
 
 /**
@@ -341,6 +340,7 @@ struct FormalPowerSeries{
   using value_type = T;
   
   static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
+  static std::function<std::optional<T>(T)> get_sqrt;
 
   std::vector<T> data;
 
@@ -512,11 +512,46 @@ struct FormalPowerSeries{
     
     return ret;
   }
+
+  std::optional<FormalPowerSeries> sqrt() const {
+    const int n = data.size();
+    int k = 0;
+    for(; k < n; ++k) if(data[k] != 0) break;
+
+    if(k >= n) return *this;
+    if(k % 2 != 0) return {};
+
+    int t = 1;
+    auto x = get_sqrt(data[k]);
+
+    if(not x) return {};
+
+    const int m = n - k;
+
+    auto it = data.begin() + k;
+    FormalPowerSeries ret({*x});
+
+    while(t <= m * 2){
+      FormalPowerSeries f(std::vector(it, it + std::min(t, m)));
+      ret.resize(t);
+      f.resize(t);
+      ret = (ret + f * ret.inv()) * T(2).inv();      
+      t <<= 1;
+    }
+
+    ret.resize(n);
+    ret = ret.shift(k / 2);
+
+    return ret;
+  }
 };
 
 
 template <typename T>
 std::function<std::vector<T>(std::vector<T>, std::vector<T>)> FormalPowerSeries<T>::convolve;
+
+template <typename T>
+std::function<std::optional<T>(T)> FormalPowerSeries<T>::get_sqrt;
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
@@ -557,24 +592,19 @@ std::string join(ITER first, ITER last, std::string delim = " "){
 
 using mint = ModInt<998244353>;
 using FPS = FormalPowerSeries<mint>;
+using NTT = NumberTheoreticTransform<mint, 3, 1<<20>;
 
 int main(){
+  using namespace std::placeholders;
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
   
-  auto ntt = NumberTheoreticTransform<mint, 3, 1<<20>();
-  
-  FPS::convolve =
-    [&](const auto &a, const auto &b){
-      return ntt.run_convolution(a, b);
-    };
+  auto ntt = NTT();
+  FPS::convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
 
   int N; std::cin >> N;
-
   auto a = input_vector<mint>(N);
-
-  FPS f(a);
-  auto ans = f.inv();
+  auto ans = FPS(a).inv();
 
   std::cout << join(ans.begin(), ans.begin() + N) << "\n";
 

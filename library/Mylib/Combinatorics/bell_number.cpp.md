@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/bell_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-15 08:41:18+09:00
+    - Last commit date: 2020-08-20 09:35:37+09:00
 
 
 
 
 ## Operations
 
-- `bell_number(int n, int k)`
+- `bell_number(Ft, int n, int k)`
 	- n個の区別するボールをk個の区別しない箱に分配するような方法の総数。
 	- Time complexity $O(\min(k, n)\ \log n)$
 
@@ -52,7 +52,6 @@ layout: default
 ## Depends on
 
 * :question: <a href="factorial_table.cpp.html">Factorial table</a>
-* :heavy_check_mark: <a href="stirling_number.cpp.html">Stirling numbers of second kind</a>
 
 
 ## Verified with
@@ -69,14 +68,13 @@ layout: default
 #include <vector>
 #include <algorithm>
 #include "Mylib/Combinatorics/factorial_table.cpp"
-#include "Mylib/Combinatorics/stirling_number.cpp"
 
 /**
  * @title Bell number
  * @docs bell_number.md
  */
-template <typename T>
-T FactorialTable<T>::bell_number(int64_t n, int64_t k){
+template <typename Ft, typename T = typename Ft::value_type>
+T bell_number(int64_t n, int64_t k, const Ft &ft){
   if(n == 0) return 1;
   
   k = std::min(k, n);
@@ -84,13 +82,13 @@ T FactorialTable<T>::bell_number(int64_t n, int64_t k){
   std::vector<T> t(k, 1);
   
   for(int i = 1; i < k; ++i){
-    if(i % 2 == 0) t[i] = t[i-1] + inv_factorial(i);
-    else t[i] = t[i-1] - inv_factorial(i);
+    if(i % 2 == 0) t[i] = t[i-1] + ft.inv_factorial(i);
+    else t[i] = t[i-1] - ft.inv_factorial(i);
   }
 
   T ret = 0;
   for(int i = 1; i <= k; ++i){
-    ret += t[k-i] * T::power(i, n) * inv_factorial(i);
+    ret += t[k-i] * T::power(i, n) * ft.inv_factorial(i);
   }
   
   return ret;
@@ -111,16 +109,18 @@ T FactorialTable<T>::bell_number(int64_t n, int64_t k){
 /**
  * @title Factorial table
  * @docs factorial_table.md
- * @attention 使用前にinit関数を呼び出す
  */
-template <typename T> class FactorialTable{
+template <typename T>
+class FactorialTable{
 public:
   using value_type = T;
-  
-  static std::vector<T> f_table;
-  static std::vector<T> if_table;
 
-  static void init(int N){
+private:
+  std::vector<T> f_table;
+  std::vector<T> if_table;
+
+public:
+  FactorialTable(int N){
     f_table.assign(N+1, 1);
     if_table.assign(N+1, 1);
     
@@ -135,68 +135,39 @@ public:
     }
   }
   
-  static T factorial(int64_t i){
+  T factorial(int64_t i) const {
     assert(i < (int)f_table.size());
     return f_table[i];
   }
   
-  static T inv_factorial(int64_t i){
+  T inv_factorial(int64_t i) const {
     assert(i < (int)if_table.size());
     return if_table[i];
   }
 
-  static T P(int64_t n, int64_t k);
-  static T C(int64_t n, int64_t k);
-  static T H(int64_t n, int64_t k);
-  static T stirling_number(int64_t n, int64_t k);
-  static T bell_number(int64_t n, int64_t k);
-  static std::vector<T> bernoulli_number(int64_t n);
-  static T catalan_number(int64_t n);
-};
-
-template <typename T> std::vector<T> FactorialTable<T>::f_table = std::vector<T>();
-template <typename T> std::vector<T> FactorialTable<T>::if_table = std::vector<T>();
-
-template <typename T> T FactorialTable<T>::P(int64_t n, int64_t k){
-  if(n < k or n < 0 or k < 0) return 0;
-  return factorial(n) * inv_factorial(n-k);
-}
-
-template <typename T> T FactorialTable<T>::C(int64_t n, int64_t k){
-  if(n < k or n < 0 or k < 0) return 0;
-  return P(n,k) * inv_factorial(k);
-}
-
-template <typename T> T FactorialTable<T>::H(int64_t n, int64_t k){
-  if(n == 0 and k == 0) return 1;
-  return C(n+k-1, k);
-}
-#line 3 "Mylib/Combinatorics/stirling_number.cpp"
-
-/**
- * @title Stirling numbers of second kind
- * @docs stirling_number.md
- */
-template <typename T>
-T FactorialTable<T>::stirling_number(int64_t n, int64_t k){
-  if(n == 0 and k == 0) return 1;
-  
-  T ret = 0;
-  for(int i = 1; i <= k; ++i){
-    if((k-i) % 2 == 0) ret += C(k,i) * T::power(i,n);
-    else ret -= C(k,i) * T::power(i,n);
+  T P(int64_t n, int64_t k) const {
+    if(n < k or n < 0 or k < 0) return 0;
+    return factorial(n) * inv_factorial(n-k);
   }
-  ret *= inv_factorial(k);
-  return ret;
-}
-#line 6 "Mylib/Combinatorics/bell_number.cpp"
+
+  T C(int64_t n, int64_t k) const {
+    if(n < k or n < 0 or k < 0) return 0;
+    return P(n,k) * inv_factorial(k);
+  }
+
+  T H(int64_t n, int64_t k) const {
+    if(n == 0 and k == 0) return 1;
+    return C(n+k-1, k);
+  }
+};
+#line 5 "Mylib/Combinatorics/bell_number.cpp"
 
 /**
  * @title Bell number
  * @docs bell_number.md
  */
-template <typename T>
-T FactorialTable<T>::bell_number(int64_t n, int64_t k){
+template <typename Ft, typename T = typename Ft::value_type>
+T bell_number(int64_t n, int64_t k, const Ft &ft){
   if(n == 0) return 1;
   
   k = std::min(k, n);
@@ -204,13 +175,13 @@ T FactorialTable<T>::bell_number(int64_t n, int64_t k){
   std::vector<T> t(k, 1);
   
   for(int i = 1; i < k; ++i){
-    if(i % 2 == 0) t[i] = t[i-1] + inv_factorial(i);
-    else t[i] = t[i-1] - inv_factorial(i);
+    if(i % 2 == 0) t[i] = t[i-1] + ft.inv_factorial(i);
+    else t[i] = t[i-1] - ft.inv_factorial(i);
   }
 
   T ret = 0;
   for(int i = 1; i <= k; ++i){
-    ret += t[k-i] * T::power(i, n) * inv_factorial(i);
+    ret += t[k-i] * T::power(i, n) * ft.inv_factorial(i);
   }
   
   return ret;

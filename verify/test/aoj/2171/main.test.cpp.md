@@ -194,8 +194,7 @@ struct WarshallFloyd{
     for(int i = 0; i < n; ++i) if(*dist[i][i] < 0) has_negative_cycle = true;
   }
 };
-#line 3 "Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp"
-#include <optional>
+#line 4 "Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp"
 #include <utility>
 
 /**

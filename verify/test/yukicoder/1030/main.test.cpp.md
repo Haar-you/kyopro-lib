@@ -375,8 +375,7 @@ struct MaxMonoid{
     return {std::max(*a, *b)};
   }
 };
-#line 2 "Mylib/AlgebraicStructure/Monoid/maybe.cpp"
-#include <optional>
+#line 3 "Mylib/AlgebraicStructure/Monoid/maybe.cpp"
 
 /**
  * @docs maybe.md
@@ -445,8 +444,7 @@ std::vector<std::vector<T>> input_vector(int N, int M){
 #include <tuple>
 #line 6 "Mylib/IO/input_tuples.cpp"
 #include <initializer_list>
-#line 5 "Mylib/IO/input_tuple.cpp"
-#include <initializer_list>
+#line 6 "Mylib/IO/input_tuple.cpp"
 
 /**
  * @docs input_tuple.md

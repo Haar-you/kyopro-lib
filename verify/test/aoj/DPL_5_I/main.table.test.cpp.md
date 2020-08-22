@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b72df8ce0758bb7606e41650e28ebb6a">test/aoj/DPL_5_I</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_I/main.table.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-10 08:29:19+09:00
+    - Last commit date: 2020-08-21 11:48:40+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/stirling_number_table.cpp.html">Stirling numbers of second kind (Table)</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/stirling_number_second_table.cpp.html">Stirling numbers of the second kind (Table)</a>
 * :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
@@ -52,7 +52,7 @@ layout: default
 
 #include <iostream>
 #include "Mylib/Number/Mint/mint.cpp"
-#include "Mylib/Combinatorics/stirling_number_table.cpp"
+#include "Mylib/Combinatorics/stirling_number_second_table.cpp"
 
 using mint = ModInt<1000000007>;
 
@@ -176,12 +176,12 @@ public:
   explicit operator int32_t() const noexcept {return val;}
   explicit operator int64_t() const noexcept {return val;}
 };
-#line 2 "Mylib/Combinatorics/stirling_number_table.cpp"
+#line 2 "Mylib/Combinatorics/stirling_number_second_table.cpp"
 #include <vector>
 
 /**
- * @title Stirling numbers of second kind (Table)
- * @docs stirling_number_table.md 
+ * @title Stirling numbers of the second kind (Table)
+ * @docs stirling_number_second_table.md 
  */
 template <typename T>
 auto stirling_number_table(int n){

@@ -42,7 +42,7 @@ layout: default
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/GraphUtils/two_edge_connected_components.cpp.html">Two edge connected components</a>
 * :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
 * :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 
 
 ## Code
