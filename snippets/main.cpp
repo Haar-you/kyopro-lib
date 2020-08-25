@@ -3,7 +3,6 @@
 # key: main
 # --
 
-
 int main(){
   $0
 
