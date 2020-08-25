@@ -28,7 +28,7 @@ int main(){
   for(auto &x : S) x -= 1;
   for(auto &x : T) x -= 1;
 
-  auto dist = Dijkstra(g, F).dist;
+  auto dist = dijkstra(g, {F});
 
   std::vector<int> dist_list;
   for(auto &x : dist){

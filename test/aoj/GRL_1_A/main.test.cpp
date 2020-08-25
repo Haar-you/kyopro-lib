@@ -13,9 +13,9 @@ int main(){
 
   auto g = convert_to_graph<int64_t, true>(V, input_edges<int64_t, 0, true>(E));
 
-  auto res = Dijkstra<int64_t>(g, r);
+  auto res = dijkstra(g, {r});
   
-  for(auto x : res.dist){
+  for(auto x : res){
     if(not x){
       std::cout << "INF" << std::endl;
     }else{
