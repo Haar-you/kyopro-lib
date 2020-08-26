@@ -1,6 +1,9 @@
 require "fileutils"
+require "pathname"
 
-Dir.glob("../Mylib/**/*.cpp").each do |fp|
+path = Pathname(__dir__).parent
+
+Dir.glob("#{path}/Mylib/**/*.cpp").each do |fp|
   contents = []
 
   File.open(fp, "r") do |f|
