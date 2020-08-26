@@ -11,6 +11,7 @@ $exec_only = false
 $debug = true
 $cpp_version = "c++1z"
 $boost = nil
+$compile_only = false
 
 opts.on("-e", "--exec-only"){
   $exec_only = true
@@ -22,6 +23,10 @@ opts.on("--no-debug"){
 
 opts.on("--cpp VERSION"){|version|
   $cpp_version = version
+}
+
+opts.on("-c", "--compile-only"){
+  $compile_only = true
 }
 
 $mylib = Pathname.new(__dir__).parent
@@ -43,6 +48,7 @@ if not $exec_only
     $boost.nil? ? "" : "-I#{$boost}",
     $debug.nil? ? "" : "-DDEBUG",
     "-D_GLIBCXX_DEBUG",
+    #"-fsanitize=undefined",
     "-g",
     "-o a.out"
   ]
@@ -59,9 +65,10 @@ if not $exec_only
   puts "\e[33;1m compiled \e[m"
 end
 
-
-if input_file.nil?
-  system("./a.out")
-else
-  system("./a.out < #{input_file}")
+if not $compile_only
+  if input_file.nil?
+    system("./a.out")
+  else
+    system("./a.out < #{input_file}")
+  end
 end
