@@ -1,12 +1,10 @@
 #pragma once
-
 #include <vector>
 #include <utility>
 #include <optional>
 #include <queue>
 #include <functional>
-
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Yen's algorithm

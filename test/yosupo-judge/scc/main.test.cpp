@@ -2,10 +2,9 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 #include "Mylib/Graph/TopologicalSort/topological_sort.cpp"
-#include "Mylib/IO/input_graph.cpp"
 #include "Mylib/IO/join.cpp"
 
 int main(){
@@ -14,7 +13,8 @@ int main(){
   
   int N, M; std::cin >> N >> M;
 
-  auto g = convert_to_graph<int, true>(N, input_edges<int, 0, false>(M));
+  Graph<int> g(N);
+  g.read<0, true, false>(M);
 
   auto [scc, K] = strongly_connected_components(g);
   std::vector<std::vector<int>> ans(K);
@@ -23,7 +23,7 @@ int main(){
   Graph<int> g2(K);
   for(auto &v : g){
     for(auto &e : v){
-      if(scc[e.from] != scc[e.to]) add_edge(g2, scc[e.from], scc[e.to], 1);
+      if(scc[e.from] != scc[e.to]) g2.add_edge(scc[e.from], scc[e.to], 1);
     }
   }
 

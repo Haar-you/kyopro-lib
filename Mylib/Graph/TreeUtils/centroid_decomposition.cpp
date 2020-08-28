@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Centroid decomposition

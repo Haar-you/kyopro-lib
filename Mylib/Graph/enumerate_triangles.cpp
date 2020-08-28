@@ -2,14 +2,14 @@
 #include <vector>
 #include <tuple>
 #include <unordered_set>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Enumerate triangles
  * @docs enumerate_triangles.md
  */
 template <typename T>
-std::vector<std::tuple<int,int,int>> enumerate_triangles(Graph<T> g){
+std::vector<std::tuple<int,int,int>> enumerate_triangles(const Graph<T> &g){
   const int N = g.size();
   std::vector<std::tuple<int,int,int>> ret;
 

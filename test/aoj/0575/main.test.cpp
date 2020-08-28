@@ -5,13 +5,12 @@
 #include <utility>
 #include <algorithm>
 
-#include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/ShortestPath/dijkstra.cpp"
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include "Mylib/Algorithm/Search/parallel_binary_search.cpp"
-#include "Mylib/IO/input_graph.cpp"
-#include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
+#include "Mylib/IO/input_vector.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -19,7 +18,8 @@ int main(){
   
   int N, M, K, Q; std::cin >> N >> M >> K >> Q;
 
-  auto g = convert_to_graph<int, false>(N, input_edges<int, 1, true>(M));
+  Graph<int> g(N);
+  g.read<1, false>(M);
 
   auto F = input_vector<int>(K);
   for(auto &x : F) x -= 1;

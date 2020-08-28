@@ -1,13 +1,14 @@
 #pragma once
 #include <vector>
 #include <queue>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Euler tour (BFS)
  * @docs euler_tour_bfs.md
  */
-template <typename T> struct EulerTourBFS{
+template <typename T>
+struct EulerTourBFS{
   int N;
   std::vector<int> parent;
   std::vector<int> depth;

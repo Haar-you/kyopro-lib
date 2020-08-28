@@ -1,14 +1,14 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C"
 
 #include <iostream>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/ShortestPath/warshall_floyd.cpp"
-#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  auto g = convert_to_graph<int, true>(V, input_edges<int, 0, true>(E));
+  Graph<int> g(V);
+  g.read<0>(E);
 
   auto res = WarshallFloyd<int>(g);
   

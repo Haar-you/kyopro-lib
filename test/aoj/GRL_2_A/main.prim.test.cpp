@@ -1,14 +1,14 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A"
 
 #include <iostream>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/MinimumSpanningTree/prim.cpp"
-#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  auto g = convert_to_graph<int64_t, false>(V, input_edges<int64_t, 0, true>(E));
+  Graph<int64_t> g(V);
+  g.read<0, false>(E);
 
   auto res = prim(g);
 

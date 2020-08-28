@@ -1,15 +1,15 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_C"
 
 #include <iostream>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
-#include "Mylib/IO/input_graph.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  auto g = convert_to_graph<int, true>(V, input_edges<int, 0, false>(E));
+  Graph<int> g(V);
+  g.read<0, true, false>(E);
 
   auto scc = strongly_connected_components(g).first;
 

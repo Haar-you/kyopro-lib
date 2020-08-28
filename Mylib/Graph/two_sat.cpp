@@ -2,7 +2,7 @@
 #include <vector>
 #include <optional>
 #include <cassert>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 #include "Mylib/Graph/TopologicalSort/topological_sort.cpp"
 
@@ -17,8 +17,8 @@ class TwoSat{
   int f(int i){
     assert(i != 0);
     assert(abs(i) <= n);
-    if(i > 0) return i-1;
-    else return abs(i)-1 + n;
+    if(i > 0) return i - 1;
+    else return abs(i) - 1 + n;
   }
 
 public:
@@ -28,7 +28,7 @@ public:
    * @note a→bを導入する
    */
   void add_if(int a, int b){
-    add_edge(g, f(a), f(b), 1);
+    g.add_edge(f(a), f(b), 1);
   }
 
   /**
@@ -50,7 +50,7 @@ public:
   
 public:
   std::optional<std::vector<bool>> solve() const {
-    auto [scc, m] = strongly_connected_components<int>(g);
+    auto [scc, m] = strongly_connected_components(g);
 
     for(int i = 0; i < n; ++i){
       if(scc[i] == scc[i+n]) return {};
@@ -61,7 +61,7 @@ public:
     for(int i = 0; i < 2*n; ++i){
       for(auto &e : g[i]){
         if(scc[e.from] != scc[e.to]){
-          add_edge(g2, scc[e.from], scc[e.to], 1);
+          g2.add_edge(scc[e.from], scc[e.to], 1);
         }
       }
     }

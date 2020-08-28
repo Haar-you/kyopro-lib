@@ -1,12 +1,13 @@
 #pragma once
 #include <vector>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Euler tour (Vertex)
  * @docs euler_tour_vertex.md
  */
-template <typename T> class EulerTourVertex{
+template <typename T>
+class EulerTourVertex{
   int pos = 0;
   std::vector<int> begin, end;
 

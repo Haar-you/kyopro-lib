@@ -1,7 +1,7 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C"
 
 #include <iostream>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/TreeUtils/lca_based_on_hld.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/IO/input_tuples_with_index.cpp"
@@ -12,7 +12,7 @@ int main(){
   Tree<int> tree(n);
   for(auto [i, k] : input_tuples_with_index<int>(n)){
     for(auto [c] : input_tuples<int>(k)){
-      add_edge(tree, i, c, 1);
+      tree.add_edge(i, c, 1);
     }
   }
 

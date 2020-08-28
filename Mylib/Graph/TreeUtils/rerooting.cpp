@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Rerooting DP
@@ -10,7 +10,7 @@
 template <typename T, typename U, typename Merge, typename EdgeF, typename VertexF>
 struct Rerooting{
   int N;
-  T tree;
+  Tree<T> tree;
   U id;
   Merge merge;
   EdgeF f;
@@ -19,7 +19,7 @@ struct Rerooting{
   std::vector<std::vector<U>> dp;
   std::vector<U> result;
   
-  Rerooting(T tree, U id, Merge merge, EdgeF f, VertexF g):
+  Rerooting(Tree<T> tree, U id, Merge merge, EdgeF f, VertexF g):
     N(tree.size()), tree(tree), id(id), merge(merge), f(f), g(g), dp(N), result(N, id)
   {
     for(int i = 0; i < N; ++i) dp[i].assign((int)tree[i].size(), id);
@@ -77,7 +77,7 @@ struct Rerooting{
   }
 };
 
-template <typename T, typename G, typename Merge, typename EdgeF, typename VertexF>
-auto make_rerooting(const G &tree, T id, Merge merge, EdgeF f, VertexF g){
-  return Rerooting<G,T,Merge,EdgeF,VertexF>(tree, id, merge, f, g);
+template <typename T, typename U, typename Merge, typename EdgeF, typename VertexF>
+auto make_rerooting(const Tree<U> &tree, T id, Merge merge, EdgeF f, VertexF g){
+  return Rerooting<U,T,Merge,EdgeF,VertexF>(tree, id, merge, f, g);
 }

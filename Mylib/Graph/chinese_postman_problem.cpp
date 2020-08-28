@@ -1,13 +1,14 @@
 #pragma once
 #include <vector>
 #include <algorithm>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Chinese postman problem
  * @docs chinese_postman_problem.md
  */
-template <typename T> T chinese_postman_problem(const Graph<T> &g){
+template <typename T>
+T chinese_postman_problem(const Graph<T> &g){
   const int n = g.size();
   T ret = 0;
 
@@ -62,7 +63,7 @@ template <typename T> T chinese_postman_problem(const Graph<T> &g){
     for(auto &e : g[i]) if(e.from <= e.to) ret += e.cost;
   }
 
-  ret += dp[(1<<m)-1];
+  ret += dp[(1 << m) - 1];
 
   return ret;
 }

@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/TreeUtils/euler_tour_vertex.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
@@ -20,7 +19,7 @@ int main(){
   Tree<int> tree(N);
   for(int i = 1; i < N; ++i){
     int p; std::cin >> p;
-    add_edge(tree, p, i, 1);
+    tree.add_edge(p, i, 1);
   }
 
   auto seg = SegmentTree<SumMonoid<int64_t>>(N);

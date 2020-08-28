@@ -2,7 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <utility>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Decompose forest

@@ -6,23 +6,21 @@
 #include <set>
 #include <tuple>
 
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/MinimumSpanningTree/prim.cpp"
 #include "Mylib/Utils/fix_point.cpp"
 #include "Mylib/DataStructure/Heap/binomial_heap.cpp"
 #include "Mylib/Misc/merge_technique.cpp"
-#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int n, m; std::cin >> n >> m;
 
-  auto edges = input_edges<int64_t, 1, true>(m);
-  auto g = convert_to_graph<int64_t, false>(n, edges);
+  Graph<int64_t> g(n);
+  g.read<1, false>(m);
 
   std::map<std::pair<int,int>, int> index;
-  for(int i = 0; i < m; ++i){
-    const auto &e = edges[i];
-    index[{e.from, e.to}] = index[{e.to, e.from}] = i;
+  for(auto &a : g){
+    for(auto &e : a) index[{e.from, e.to}] = e.index;
   }
 
   auto res = prim(g);

@@ -3,7 +3,7 @@
 #include <utility>
 #include <stack>
 #include <algorithm>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Tree diameter

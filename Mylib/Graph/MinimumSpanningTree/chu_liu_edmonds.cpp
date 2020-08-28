@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <algorithm>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 
 /**
@@ -61,7 +61,7 @@ class ChuLiuEdmonds{
     for(int i = 0; i < N; ++i){
       for(auto &e : g[i]){
         if(s[e.from] == s[e.to]) continue;
-        add_edge(G, s[e.from], s[e.to], e.cost);
+        G.add_edge(s[e.from], s[e.to], e.cost);
       }
     }
 
@@ -103,7 +103,7 @@ public:
     Graph<T> rg(N);
     for(int i = 0; i < N; ++i){
       for(auto &e : g[i]){
-        add_edge(rg, e.to, e.from, e.cost);
+        rg.add_edge(e.to, e.from, e.cost);
       }
     }
 

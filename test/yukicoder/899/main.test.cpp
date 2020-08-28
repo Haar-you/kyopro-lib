@@ -1,12 +1,10 @@
 #define PROBLEM "https://yukicoder.me/problems/no/899"
 
 #include <iostream>
-
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/TreeUtils/euler_tour_bfs.cpp"
 #include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp"
-#include "Mylib/IO/input_graph.cpp"
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
@@ -16,7 +14,8 @@ int main(){
   
   int N; std::cin >> N;
 
-  auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
+  Tree<int> tree(N);
+  tree.read<0, false, false>(N - 1);
 
   auto res = EulerTourBFS<int>(tree, 0);
 

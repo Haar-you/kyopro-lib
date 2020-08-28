@@ -1,7 +1,7 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_12_B"
 
 #include <iostream>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/ShortestPath/dial_algorithm.cpp"
 
 int main(){
@@ -15,7 +15,7 @@ int main(){
     int u, k; std::cin >> u >> k;
     for(int j = 0; j < k; ++j){
       int v, c; std::cin >> v >> c;
-      add_edge(g, u, v, c);
+      g.add_edge(u, v, c);
     }
   }
 

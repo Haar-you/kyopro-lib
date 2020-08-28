@@ -2,7 +2,7 @@
 #include <vector>
 #include <map>
 #include <optional>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Directed Eulerian path

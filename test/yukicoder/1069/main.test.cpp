@@ -6,7 +6,6 @@
 #include <cmath>
 #include "Mylib/IO/input_tuple_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
-#include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/ShortestPath/yen_algorithm.cpp"
 
 int main(){
@@ -27,7 +26,7 @@ int main(){
 
     long double L = std::sqrt(dx * dx + dy * dy);
 
-    add_undirected(g, P, Q, L);
+    g.add_undirected(P, Q, L);
   }
   
   auto res = yen_algorithm(g, X, Y, K);

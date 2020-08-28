@@ -5,7 +5,6 @@
 #include "Mylib/Grid/grid.cpp"
 #include "Mylib/Grid/grid_to_graph.cpp"
 #include "Mylib/Grid/grid_find.cpp"
-#include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/ShortestPath/bfs_shortest_path.cpp"
 #include "Mylib/IO/input_vector.cpp"
 

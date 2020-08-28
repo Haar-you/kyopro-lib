@@ -2,7 +2,7 @@
 #include <vector>
 #include <optional>
 #include <stack>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Dial's algorithm

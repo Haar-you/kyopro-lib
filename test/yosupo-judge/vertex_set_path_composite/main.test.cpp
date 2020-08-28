@@ -4,12 +4,11 @@
 #include <vector>
 #include <utility>
 #include "Mylib/Number/Mint/mint.cpp"
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
-#include "Mylib/IO/input_graph.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/IO/input_tuple.cpp"
 #include "Mylib/IO/input_vector.cpp"
@@ -25,7 +24,8 @@ int main(){
   int N, Q; std::cin >> N >> Q;
 
   auto f = input_vector<std::pair<mint, mint>>(N);
-  auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
+  Tree<int> tree(N);
+  tree.read<0, false, false>(N - 1);
   
   HLDecomposition<int> hld(tree, 0);
   SegmentTreeBothFoldable<Monoid> seg(N);

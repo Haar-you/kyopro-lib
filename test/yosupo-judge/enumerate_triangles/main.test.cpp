@@ -2,8 +2,8 @@
 
 #include <iostream>
 
-#include "Mylib/IO/input_graph.cpp"
 #include "Mylib/IO/input_vector.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/enumerate_triangles.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
 
@@ -15,7 +15,9 @@ int main(){
   
   int N, M; std::cin >> N >> M;
   auto x = input_vector<mint>(N);
-  auto g = convert_to_graph<int, false>(N, input_edges<int, 0, false>(M));
+
+  Graph<int> g(N);
+  g.read<0, false, false>(M);
 
   auto res = enumerate_triangles(g);
   mint ans = 0;

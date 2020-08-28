@@ -3,7 +3,7 @@
 #include <optional>
 #include <queue>
 #include <algorithm>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Directed shortest cycle

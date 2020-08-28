@@ -4,13 +4,11 @@
 #include <functional>
 #include <algorithm>
 #include <vector>
-
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/max.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/maybe.cpp"
-#include "Mylib/IO/input_graph.cpp"
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
@@ -28,7 +26,8 @@ int main(){
   auto A = input_vector<int>(K);
   for(auto &x : A) --x;
 
-  auto tree = convert_to_graph<int, false>(N, input_edges<int, 1, false>(N-1));
+  Tree<int> tree(N);
+  tree.read<1, false, false>(N - 1);
 
   HLDecomposition<int> hld(tree, 0);
   LCASemigroup::op =

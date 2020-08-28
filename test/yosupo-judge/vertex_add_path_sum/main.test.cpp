@@ -2,11 +2,10 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
-#include "Mylib/IO/input_graph.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
@@ -18,7 +17,8 @@ int main(){
 
   auto a = input_vector<int64_t>(N);
 
-  auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
+  Tree<int> tree(N);
+  tree.read<0, false, false>(N - 1);
   auto hld = HLDecomposition(tree, 0);
   auto seg = SegmentTree<SumMonoid<int64_t>>(N);
 

@@ -1,9 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/two_edge_connected_components"
 
 #include <iostream>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/GraphUtils/two_edge_connected_components.cpp"
-#include "Mylib/IO/input_graph.cpp"
 #include "Mylib/IO/join.cpp"
 
 int main(){
@@ -12,7 +11,8 @@ int main(){
   
   int N, M; std::cin >> N >> M;
 
-  auto g = convert_to_graph<int, false>(N, input_edges<int, 0, false>(M));
+  Graph<int> g(N);
+  g.read<0, false, false>(M);
 
   auto res = two_edge_connected_components(g);
 

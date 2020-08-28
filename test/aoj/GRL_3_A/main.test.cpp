@@ -2,14 +2,14 @@
 
 #include <iostream>
 #include <algorithm>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/GraphUtils/articulation_points.cpp"
-#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  auto g = convert_to_graph<int, false>(V, input_edges<int, 0, false>(E));
+  Graph<int> g(V);
+  g.read<0, false, false>(E);
 
   auto ans = articulation_points(g);
   std::sort(ans.begin(), ans.end());

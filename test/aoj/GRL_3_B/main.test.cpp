@@ -3,14 +3,14 @@
 #include <iostream>
 #include <algorithm>
 #include <utility>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/GraphUtils/bridges.cpp"
-#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  auto g = convert_to_graph<int, false>(V, input_edges<int, 0, false>(E));
+  Graph<int> g(V);
+  g.read<0, false, false>(E);
 
   auto ans = bridges(g);
   for(auto &e : ans) if(e.from > e.to) std::swap(e.from, e.to);

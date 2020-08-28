@@ -3,18 +3,17 @@
 #include <iostream>
 #include <vector>
 #include <utility>
-
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp"
 #include "Mylib/Graph/TreeUtils/forest.cpp"
 #include "Mylib/Graph/TreeUtils/rerooting.cpp"
-#include "Mylib/IO/input_graph.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int N, M, Q; std::cin >> N >> M >> Q;
 
-  auto g = convert_to_graph<int64_t, false>(N, input_edges<int64_t, 1, false>(M));
+  Graph<int64_t> g(N);
+  g.read<1, false, false>(M);
 
   int64_t ans = 0;
 

@@ -4,7 +4,7 @@
 #include <queue>
 #include <utility>
 #include <functional>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Dijkstra algorithm

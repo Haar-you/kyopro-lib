@@ -2,16 +2,16 @@
 #include <vector>
 #include <optional>
 #include <queue>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title BFS shortest path
  * @docs bfs_shortest_path.md
  */
 template <typename T>
-std::vector<std::optional<int>> bfs_shortest_path(const Graph<T> &g, const std::vector<int> &src){
+std::vector<std::optional<int64_t>> bfs_shortest_path(const Graph<T> &g, const std::vector<int> &src){
   const int n = g.size();
-  std::vector<std::optional<int>> ret(n, std::nullopt);
+  std::vector<std::optional<int64_t>> ret(n, std::nullopt);
   std::vector<bool> visited(n);
   std::queue<int> q;
 

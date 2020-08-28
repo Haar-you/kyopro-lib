@@ -1,15 +1,15 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2891"
 
 #include <iostream>
-
-#include "Mylib/IO/input_graph.cpp"
 #include "Mylib/IO/input_tuples.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/GraphUtils/decompose_pseudotree.cpp"
 
 int main(){
   int N; std::cin >> N;
 
-  auto g = convert_to_graph<int, false>(N, input_edges<int, 1, false>(N));
+  Graph<int> g(N);
+  g.read<1, false, false>(N);
 
   auto res = PseudoTree<int>(g);
 

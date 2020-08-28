@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <optional>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Warshall-Floyd algorithm

@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "Mylib/Grid/grid.cpp"
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Convert grid to graph
@@ -26,7 +26,7 @@ Graph<T> grid_to_graph(
 
         if(q.x < 0 or q.x >= H or q.y < 0 or q.y >= W or not check_passable(p, q)) continue;
 
-        ret[index(p.x, p.y)].emplace_back(index(p.x, p.y), index(q.x, q.y), generate_edge_cost(p, q));
+        ret.add_edge(index(p.x, p.y), index(q.x, q.y), generate_edge_cost(p, q));
       }
     }
   }

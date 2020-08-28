@@ -1,15 +1,15 @@
 #pragma once
 #include <vector>
 #include <deque>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title 0-1 BFS
  * @docs bfs_0_1.md
  */
-std::vector<std::optional<int>> bfs_0_1(const Graph<int> &g, const std::vector<int> &src){
-  int n = g.size();
-  std::vector<std::optional<int>> ret(n);
+std::vector<std::optional<int64_t>> bfs_0_1(const Graph<int> &g, const std::vector<int> &src){
+  const int n = g.size();
+  std::vector<std::optional<int64_t>> ret(n);
   std::vector<bool> visited(n);
 
   for(auto i : src) ret[i] = 0;
