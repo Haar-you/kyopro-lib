@@ -25,7 +25,7 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :question: polynomial_taylor_shift.md
+# :heavy_check_mark: polynomial_taylor_shift.md
 
 <a href="../../../index.html">Back to top page</a>
 
@@ -38,13 +38,13 @@ layout: default
 
 ## Required by
 
-* :x: <a href="../Combinatorics/stirling_number_first_fft.cpp.html">Stirling numbers of the first kind (FFT)</a>
+* :heavy_check_mark: <a href="../Combinatorics/stirling_number_first_fft.cpp.html">Stirling numbers of the first kind (FFT)</a>
 
 
 ## Verified with
 
 * :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/polynomial_taylor_shift/main.test.cpp.html">test/yosupo-judge/polynomial_taylor_shift/main.test.cpp</a>
-* :x: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp</a>
 
 
 ## Code

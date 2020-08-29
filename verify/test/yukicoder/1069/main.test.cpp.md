@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/1069/main.test.cpp
+# :x: test/yukicoder/1069/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ccfa4ccd38c1e74c4be79e9bb8104f4d">test/yukicoder/1069</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/1069/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-05 21:15:44+09:00
+    - Last commit date: 2020-08-28 18:23:32+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/1069">https://yukicoder.me/problems/no/1069</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/yen_algorithm.cpp.html">Yen's algorithm</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
+* :x: <a href="../../../../library/Mylib/Graph/ShortestPath/yen_algorithm.cpp.html">Yen's algorithm</a>
+* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
@@ -59,7 +59,6 @@ layout: default
 #include <cmath>
 #include "Mylib/IO/input_tuple_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
-#include "Mylib/Graph/graph_template.cpp"
 #include "Mylib/Graph/ShortestPath/yen_algorithm.cpp"
 
 int main(){
@@ -80,7 +79,7 @@ int main(){
 
     long double L = std::sqrt(dx * dx + dy * dy);
 
-    add_undirected(g, P, Q, L);
+    g.add_undirected(P, Q, L);
   }
   
   auto res = yen_algorithm(g, X, Y, K);
@@ -205,40 +204,71 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 4 "Mylib/Graph/graph_template.cpp"
-
-/**
- * @title Graph template
- * @docs graph_template.md
- */
-template <typename Cost = int> class Edge{
-public:
-  int from,to;
-  Cost cost;
-  Edge() {}
-  Edge(int to, Cost cost): to(to), cost(cost){}
-  Edge(int from, int to, Cost cost): from(from), to(to), cost(cost){}
-};
-
-template <typename T> using Graph = std::vector<std::vector<Edge<T>>>;
-template <typename T> using Tree = std::vector<std::vector<Edge<T>>>;
-
-template <typename T, typename C> void add_edge(C &g, int from, int to, T w = 1){
-  g[from].emplace_back(from, to, w);
-}
-
-template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 1){
-  add_edge<T, C>(g, a, b, w);
-  add_edge<T, C>(g, b, a, w);
-}
-#line 2 "Mylib/Graph/ShortestPath/yen_algorithm.cpp"
-
-#line 5 "Mylib/Graph/ShortestPath/yen_algorithm.cpp"
+#line 4 "Mylib/Graph/ShortestPath/yen_algorithm.cpp"
 #include <optional>
 #include <queue>
 #include <functional>
+#line 3 "Mylib/Graph/Template/graph.cpp"
 
-#line 10 "Mylib/Graph/ShortestPath/yen_algorithm.cpp"
+/**
+ * @title Basic graph
+ * @docs graph.md
+ */
+template <typename T>
+struct Edge{
+  int from, to;
+  T cost;
+  int index = -1;
+  Edge(){}
+  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+};
+
+template <typename T>
+struct Graph{
+  using weight_type = T;
+  using edge_type = Edge<T>;
+  
+  std::vector<std::vector<Edge<T>>> data;
+
+  auto& operator[](size_t i){return data[i];}
+  const auto& operator[](size_t i) const {return data[i];}
+  
+  auto begin() const {return data.begin();}
+  auto end() const {return data.end();}
+
+  Graph(){}
+  Graph(int N): data(N){}
+
+  bool empty() const {return data.empty();}
+  int size() const {return data.size();}
+
+  void add_edge(int i, int j, T w, int index = -1){
+    data[i].emplace_back(i, j, w, index);
+  }
+  
+  void add_undirected(int i, int j, T w, int index = -1){
+    add_edge(i, j, w, index);
+    add_edge(j, i, w, index);
+  }
+
+  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+  void read(int M){
+    for(int i = 0; i < M; ++i){
+      int u, v; std::cin >> u >> v;
+      u -= I;
+      v -= I;
+      T w = 1;
+      if(WEIGHTED) std::cin >> w;
+      if(DIRECTED) add_edge(u, v, w, i);
+      else add_undirected(u, v, w, i);
+    }
+  }
+};
+
+template <typename T>
+using Tree = Graph<T>;
+#line 8 "Mylib/Graph/ShortestPath/yen_algorithm.cpp"
 
 /**
  * @title Yen's algorithm
@@ -381,7 +411,7 @@ auto yen_algorithm(Graph<T> g, int s, int t, int K){
 
   return result;
 }
-#line 11 "test/yukicoder/1069/main.test.cpp"
+#line 10 "test/yukicoder/1069/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -401,7 +431,7 @@ int main(){
 
     long double L = std::sqrt(dx * dx + dy * dy);
 
-    add_undirected(g, P, Q, L);
+    g.add_undirected(P, Q, L);
   }
   
   auto res = yen_algorithm(g, X, Y, K);

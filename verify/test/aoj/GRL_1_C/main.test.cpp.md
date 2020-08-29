@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#52520cdd925fa3dd96b0b332cb95e6a5">test/aoj/GRL_1_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_1_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-08-28 18:23:32+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C</a>
@@ -40,8 +40,7 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/warshall_floyd.cpp.html">Warshall-Floyd algorithm</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
-* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
 
 
 ## Code
@@ -52,14 +51,14 @@ layout: default
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C"
 
 #include <iostream>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/ShortestPath/warshall_floyd.cpp"
-#include "Mylib/IO/input_graph.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  auto g = convert_to_graph<int, true>(V, input_edges<int, 0, true>(E));
+  Graph<int> g(V);
+  g.read<0>(E);
 
   auto res = WarshallFloyd<int>(g);
   
@@ -93,34 +92,67 @@ int main(){
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C"
 
 #include <iostream>
-#line 2 "Mylib/Graph/graph_template.cpp"
+#line 2 "Mylib/Graph/Template/graph.cpp"
 #include <vector>
-#line 4 "Mylib/Graph/graph_template.cpp"
 
 /**
- * @title Graph template
- * @docs graph_template.md
+ * @title Basic graph
+ * @docs graph.md
  */
-template <typename Cost = int> class Edge{
-public:
-  int from,to;
-  Cost cost;
-  Edge() {}
-  Edge(int to, Cost cost): to(to), cost(cost){}
-  Edge(int from, int to, Cost cost): from(from), to(to), cost(cost){}
+template <typename T>
+struct Edge{
+  int from, to;
+  T cost;
+  int index = -1;
+  Edge(){}
+  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
 };
 
-template <typename T> using Graph = std::vector<std::vector<Edge<T>>>;
-template <typename T> using Tree = std::vector<std::vector<Edge<T>>>;
+template <typename T>
+struct Graph{
+  using weight_type = T;
+  using edge_type = Edge<T>;
+  
+  std::vector<std::vector<Edge<T>>> data;
 
-template <typename T, typename C> void add_edge(C &g, int from, int to, T w = 1){
-  g[from].emplace_back(from, to, w);
-}
+  auto& operator[](size_t i){return data[i];}
+  const auto& operator[](size_t i) const {return data[i];}
+  
+  auto begin() const {return data.begin();}
+  auto end() const {return data.end();}
 
-template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 1){
-  add_edge<T, C>(g, a, b, w);
-  add_edge<T, C>(g, b, a, w);
-}
+  Graph(){}
+  Graph(int N): data(N){}
+
+  bool empty() const {return data.empty();}
+  int size() const {return data.size();}
+
+  void add_edge(int i, int j, T w, int index = -1){
+    data[i].emplace_back(i, j, w, index);
+  }
+  
+  void add_undirected(int i, int j, T w, int index = -1){
+    add_edge(i, j, w, index);
+    add_edge(j, i, w, index);
+  }
+
+  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+  void read(int M){
+    for(int i = 0; i < M; ++i){
+      int u, v; std::cin >> u >> v;
+      u -= I;
+      v -= I;
+      T w = 1;
+      if(WEIGHTED) std::cin >> w;
+      if(DIRECTED) add_edge(u, v, w, i);
+      else add_undirected(u, v, w, i);
+    }
+  }
+};
+
+template <typename T>
+using Tree = Graph<T>;
 #line 3 "Mylib/Graph/ShortestPath/warshall_floyd.cpp"
 #include <optional>
 #line 5 "Mylib/Graph/ShortestPath/warshall_floyd.cpp"
@@ -165,43 +197,13 @@ struct WarshallFloyd{
     for(int i = 0; i < n; ++i) if(*dist[i][i] < 0) has_negative_cycle = true;
   }
 };
-#line 4 "Mylib/IO/input_graph.cpp"
-
-/**
- * @docs input_graph.md
- */
-template <typename T, size_t I, bool WEIGHTED>
-std::vector<Edge<T>> input_edges(int M){
-  std::vector<Edge<T>> ret;
-  
-  for(int i = 0; i < M; ++i){
-    int s, t; std::cin >> s >> t;
-    s -= I;
-    t -= I;
-    T w = 1; if(WEIGHTED) std::cin >> w;
-    ret.emplace_back(s, t, w);
-  }
-  
-  return ret;  
-}
-
-template <typename T, bool DIRECTED>
-Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
-  Graph<T> g(N);
-
-  for(const auto &e : edges){
-    add_edge(g, e.from, e.to, e.cost);
-    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
-  }
-  
-  return g;
-}
-#line 7 "test/aoj/GRL_1_C/main.test.cpp"
+#line 6 "test/aoj/GRL_1_C/main.test.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  auto g = convert_to_graph<int, true>(V, input_edges<int, 0, true>(E));
+  Graph<int> g(V);
+  g.read<0>(E);
 
   auto res = WarshallFloyd<int>(g);
   

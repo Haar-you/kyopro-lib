@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#48a9fc7d711f6e82f59b9c8d0d6c268c">test/yosupo-judge/manhattanmst</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/manhattanmst/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-08-28 18:23:32+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/manhattanmst">https://judge.yosupo.jp/problem/manhattanmst</a>
@@ -40,12 +40,12 @@ layout: default
 ## Depends on
 
 * :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 
 
 ## Code
@@ -204,32 +204,66 @@ public:
     init_with_vector(std::vector<value_type>(hsize, val));
   }  
 };
-#line 4 "Mylib/Graph/graph_template.cpp"
+#line 3 "Mylib/Graph/Template/graph.cpp"
 
 /**
- * @title Graph template
- * @docs graph_template.md
+ * @title Basic graph
+ * @docs graph.md
  */
-template <typename Cost = int> class Edge{
-public:
-  int from,to;
-  Cost cost;
-  Edge() {}
-  Edge(int to, Cost cost): to(to), cost(cost){}
-  Edge(int from, int to, Cost cost): from(from), to(to), cost(cost){}
+template <typename T>
+struct Edge{
+  int from, to;
+  T cost;
+  int index = -1;
+  Edge(){}
+  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
 };
 
-template <typename T> using Graph = std::vector<std::vector<Edge<T>>>;
-template <typename T> using Tree = std::vector<std::vector<Edge<T>>>;
+template <typename T>
+struct Graph{
+  using weight_type = T;
+  using edge_type = Edge<T>;
+  
+  std::vector<std::vector<Edge<T>>> data;
 
-template <typename T, typename C> void add_edge(C &g, int from, int to, T w = 1){
-  g[from].emplace_back(from, to, w);
-}
+  auto& operator[](size_t i){return data[i];}
+  const auto& operator[](size_t i) const {return data[i];}
+  
+  auto begin() const {return data.begin();}
+  auto end() const {return data.end();}
 
-template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 1){
-  add_edge<T, C>(g, a, b, w);
-  add_edge<T, C>(g, b, a, w);
-}
+  Graph(){}
+  Graph(int N): data(N){}
+
+  bool empty() const {return data.empty();}
+  int size() const {return data.size();}
+
+  void add_edge(int i, int j, T w, int index = -1){
+    data[i].emplace_back(i, j, w, index);
+  }
+  
+  void add_undirected(int i, int j, T w, int index = -1){
+    add_edge(i, j, w, index);
+    add_edge(j, i, w, index);
+  }
+
+  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+  void read(int M){
+    for(int i = 0; i < M; ++i){
+      int u, v; std::cin >> u >> v;
+      u -= I;
+      v -= I;
+      T w = 1;
+      if(WEIGHTED) std::cin >> w;
+      if(DIRECTED) add_edge(u, v, w, i);
+      else add_undirected(u, v, w, i);
+    }
+  }
+};
+
+template <typename T>
+using Tree = Graph<T>;
 #line 4 "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
 /**
@@ -342,7 +376,7 @@ std::vector<Edge<T>> manhattan_minimum_spanning_tree(std::vector<T> x, std::vect
         if(auto res = seg.get(lb, N); res){
           auto j = res->second;
           T c = std::abs(x[i] - x[j]) + std::abs(y[i] - y[j]);
-          add_edge(g, i, j, c);
+          g.add_edge(i, j, c);
         }
 
         if(auto res = seg.at(lb); not res or x[i] + y[i] < res->first){

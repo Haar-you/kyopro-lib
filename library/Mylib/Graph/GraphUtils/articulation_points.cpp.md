@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../../index.html#0520734517f09caa086d1aa01fa4b9e4">Mylib/Graph/GraphUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/GraphUtils/articulation_points.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-08-28 18:23:32+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../graph_template.cpp.html">Graph template</a>
+* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Verified with
@@ -54,20 +54,21 @@ layout: default
 #pragma once
 #include <vector>
 #include <algorithm>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Articulation points
  * @docs articulation_points.md
  */
-template <typename T> std::vector<int> articulation_points(const Graph<T> &graph){
-  int n = graph.size();
+template <typename T>
+std::vector<int> articulation_points(const Graph<T> &graph){
+  const int n = graph.size();
   std::vector<int> visit(n, -1), low(n, -1), ret;
 
   int v = 0;
   
   auto dfs =
-    [&](auto &&dfs, int cur){
+    [&](auto &&dfs, int root, int cur){
       if(visit[cur] != -1) return visit[cur];
       visit[cur] = v;
 
@@ -77,23 +78,27 @@ template <typename T> std::vector<int> articulation_points(const Graph<T> &graph
 
       for(auto &e : graph[cur]){
         if(visit[e.to] == -1) children.push_back(e.to);
-        int t = dfs(dfs, e.to);
+        int t = dfs(dfs, root, e.to);
         temp = std::min(temp, t);
       }
 
       low[cur] = temp;
 
-      if((cur != 0 or children.size() >= 2) and std::any_of(children.begin(), children.end(), [&](int x){return low[x] >= visit[cur];})){
-        ret.push_back(cur);
+      if(cur != root or children.size() >= 2){
+        for(auto x : children){
+          if(low[x] >= visit[cur]){
+            ret.push_back(cur);
+            break;
+          }
+        }
       }
 
       return low[cur];
     };
 
-  
   for(int i = 0; i < n; ++i){
     if(visit[i] == -1){
-      dfs(dfs, i);
+      dfs(dfs, i, i);
     }
   }
 
@@ -109,47 +114,81 @@ template <typename T> std::vector<int> articulation_points(const Graph<T> &graph
 #line 2 "Mylib/Graph/GraphUtils/articulation_points.cpp"
 #include <vector>
 #include <algorithm>
-#line 3 "Mylib/Graph/graph_template.cpp"
-#include <iostream>
+#line 3 "Mylib/Graph/Template/graph.cpp"
 
 /**
- * @title Graph template
- * @docs graph_template.md
+ * @title Basic graph
+ * @docs graph.md
  */
-template <typename Cost = int> class Edge{
-public:
-  int from,to;
-  Cost cost;
-  Edge() {}
-  Edge(int to, Cost cost): to(to), cost(cost){}
-  Edge(int from, int to, Cost cost): from(from), to(to), cost(cost){}
+template <typename T>
+struct Edge{
+  int from, to;
+  T cost;
+  int index = -1;
+  Edge(){}
+  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
 };
 
-template <typename T> using Graph = std::vector<std::vector<Edge<T>>>;
-template <typename T> using Tree = std::vector<std::vector<Edge<T>>>;
+template <typename T>
+struct Graph{
+  using weight_type = T;
+  using edge_type = Edge<T>;
+  
+  std::vector<std::vector<Edge<T>>> data;
 
-template <typename T, typename C> void add_edge(C &g, int from, int to, T w = 1){
-  g[from].emplace_back(from, to, w);
-}
+  auto& operator[](size_t i){return data[i];}
+  const auto& operator[](size_t i) const {return data[i];}
+  
+  auto begin() const {return data.begin();}
+  auto end() const {return data.end();}
 
-template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 1){
-  add_edge<T, C>(g, a, b, w);
-  add_edge<T, C>(g, b, a, w);
-}
+  Graph(){}
+  Graph(int N): data(N){}
+
+  bool empty() const {return data.empty();}
+  int size() const {return data.size();}
+
+  void add_edge(int i, int j, T w, int index = -1){
+    data[i].emplace_back(i, j, w, index);
+  }
+  
+  void add_undirected(int i, int j, T w, int index = -1){
+    add_edge(i, j, w, index);
+    add_edge(j, i, w, index);
+  }
+
+  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+  void read(int M){
+    for(int i = 0; i < M; ++i){
+      int u, v; std::cin >> u >> v;
+      u -= I;
+      v -= I;
+      T w = 1;
+      if(WEIGHTED) std::cin >> w;
+      if(DIRECTED) add_edge(u, v, w, i);
+      else add_undirected(u, v, w, i);
+    }
+  }
+};
+
+template <typename T>
+using Tree = Graph<T>;
 #line 5 "Mylib/Graph/GraphUtils/articulation_points.cpp"
 
 /**
  * @title Articulation points
  * @docs articulation_points.md
  */
-template <typename T> std::vector<int> articulation_points(const Graph<T> &graph){
-  int n = graph.size();
+template <typename T>
+std::vector<int> articulation_points(const Graph<T> &graph){
+  const int n = graph.size();
   std::vector<int> visit(n, -1), low(n, -1), ret;
 
   int v = 0;
   
   auto dfs =
-    [&](auto &&dfs, int cur){
+    [&](auto &&dfs, int root, int cur){
       if(visit[cur] != -1) return visit[cur];
       visit[cur] = v;
 
@@ -159,23 +198,27 @@ template <typename T> std::vector<int> articulation_points(const Graph<T> &graph
 
       for(auto &e : graph[cur]){
         if(visit[e.to] == -1) children.push_back(e.to);
-        int t = dfs(dfs, e.to);
+        int t = dfs(dfs, root, e.to);
         temp = std::min(temp, t);
       }
 
       low[cur] = temp;
 
-      if((cur != 0 or children.size() >= 2) and std::any_of(children.begin(), children.end(), [&](int x){return low[x] >= visit[cur];})){
-        ret.push_back(cur);
+      if(cur != root or children.size() >= 2){
+        for(auto x : children){
+          if(low[x] >= visit[cur]){
+            ret.push_back(cur);
+            break;
+          }
+        }
       }
 
       return low[cur];
     };
 
-  
   for(int i = 0; i < n; ++i){
     if(visit[i] == -1){
-      dfs(dfs, i);
+      dfs(dfs, i, i);
     }
   }
 

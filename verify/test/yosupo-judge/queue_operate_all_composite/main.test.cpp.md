@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
 * :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp.html">Sliding window aggregation</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>

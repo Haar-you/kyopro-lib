@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/922/main.test.cpp
+# :x: test/yukicoder/922/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6a3ef3b964dcfd2b510ed368d9e357ba">test/yukicoder/922</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/922/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-08-28 18:23:32+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/922">https://yukicoder.me/problems/no/922</a>
@@ -39,11 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/forest.cpp.html">Decompose forest</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp.html">Lowest common ancestor (Doubling)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/rerooting.cpp.html">Rerooting DP</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
-* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/forest.cpp.html">Decompose forest</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp.html">Lowest common ancestor (Doubling)</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/rerooting.cpp.html">Rerooting DP</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
@@ -58,18 +57,17 @@ layout: default
 #include <iostream>
 #include <vector>
 #include <utility>
-
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp"
 #include "Mylib/Graph/TreeUtils/forest.cpp"
 #include "Mylib/Graph/TreeUtils/rerooting.cpp"
-#include "Mylib/IO/input_graph.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
 int main(){
   int N, M, Q; std::cin >> N >> M >> Q;
 
-  auto g = convert_to_graph<int64_t, false>(N, input_edges<int64_t, 1, false>(M));
+  Graph<int64_t> g(N);
+  g.read<1, false, false>(M);
 
   int64_t ans = 0;
 
@@ -144,33 +142,66 @@ int main(){
 #include <iostream>
 #include <vector>
 #include <utility>
-
-#line 4 "Mylib/Graph/graph_template.cpp"
+#line 3 "Mylib/Graph/Template/graph.cpp"
 
 /**
- * @title Graph template
- * @docs graph_template.md
+ * @title Basic graph
+ * @docs graph.md
  */
-template <typename Cost = int> class Edge{
-public:
-  int from,to;
-  Cost cost;
-  Edge() {}
-  Edge(int to, Cost cost): to(to), cost(cost){}
-  Edge(int from, int to, Cost cost): from(from), to(to), cost(cost){}
+template <typename T>
+struct Edge{
+  int from, to;
+  T cost;
+  int index = -1;
+  Edge(){}
+  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
 };
 
-template <typename T> using Graph = std::vector<std::vector<Edge<T>>>;
-template <typename T> using Tree = std::vector<std::vector<Edge<T>>>;
+template <typename T>
+struct Graph{
+  using weight_type = T;
+  using edge_type = Edge<T>;
+  
+  std::vector<std::vector<Edge<T>>> data;
 
-template <typename T, typename C> void add_edge(C &g, int from, int to, T w = 1){
-  g[from].emplace_back(from, to, w);
-}
+  auto& operator[](size_t i){return data[i];}
+  const auto& operator[](size_t i) const {return data[i];}
+  
+  auto begin() const {return data.begin();}
+  auto end() const {return data.end();}
 
-template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 1){
-  add_edge<T, C>(g, a, b, w);
-  add_edge<T, C>(g, b, a, w);
-}
+  Graph(){}
+  Graph(int N): data(N){}
+
+  bool empty() const {return data.empty();}
+  int size() const {return data.size();}
+
+  void add_edge(int i, int j, T w, int index = -1){
+    data[i].emplace_back(i, j, w, index);
+  }
+  
+  void add_undirected(int i, int j, T w, int index = -1){
+    add_edge(i, j, w, index);
+    add_edge(j, i, w, index);
+  }
+
+  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+  void read(int M){
+    for(int i = 0; i < M; ++i){
+      int u, v; std::cin >> u >> v;
+      u -= I;
+      v -= I;
+      T w = 1;
+      if(WEIGHTED) std::cin >> w;
+      if(DIRECTED) add_edge(u, v, w, i);
+      else add_undirected(u, v, w, i);
+    }
+  }
+};
+
+template <typename T>
+using Tree = Graph<T>;
 #line 3 "Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp"
 #include <cmath>
 #line 5 "Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp"
@@ -305,7 +336,7 @@ struct Forest{
 template <typename T, typename U, typename Merge, typename EdgeF, typename VertexF>
 struct Rerooting{
   int N;
-  T tree;
+  Tree<T> tree;
   U id;
   Merge merge;
   EdgeF f;
@@ -314,7 +345,7 @@ struct Rerooting{
   std::vector<std::vector<U>> dp;
   std::vector<U> result;
   
-  Rerooting(T tree, U id, Merge merge, EdgeF f, VertexF g):
+  Rerooting(Tree<T> tree, U id, Merge merge, EdgeF f, VertexF g):
     N(tree.size()), tree(tree), id(id), merge(merge), f(f), g(g), dp(N), result(N, id)
   {
     for(int i = 0; i < N; ++i) dp[i].assign((int)tree[i].size(), id);
@@ -372,40 +403,9 @@ struct Rerooting{
   }
 };
 
-template <typename T, typename G, typename Merge, typename EdgeF, typename VertexF>
-auto make_rerooting(const G &tree, T id, Merge merge, EdgeF f, VertexF g){
-  return Rerooting<G,T,Merge,EdgeF,VertexF>(tree, id, merge, f, g);
-}
-#line 4 "Mylib/IO/input_graph.cpp"
-
-/**
- * @docs input_graph.md
- */
-template <typename T, size_t I, bool WEIGHTED>
-std::vector<Edge<T>> input_edges(int M){
-  std::vector<Edge<T>> ret;
-  
-  for(int i = 0; i < M; ++i){
-    int s, t; std::cin >> s >> t;
-    s -= I;
-    t -= I;
-    T w = 1; if(WEIGHTED) std::cin >> w;
-    ret.emplace_back(s, t, w);
-  }
-  
-  return ret;  
-}
-
-template <typename T, bool DIRECTED>
-Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
-  Graph<T> g(N);
-
-  for(const auto &e : edges){
-    add_edge(g, e.from, e.to, e.cost);
-    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
-  }
-  
-  return g;
+template <typename T, typename U, typename Merge, typename EdgeF, typename VertexF>
+auto make_rerooting(const Tree<U> &tree, T id, Merge merge, EdgeF f, VertexF g){
+  return Rerooting<U,T,Merge,EdgeF,VertexF>(tree, id, merge, f, g);
 }
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
@@ -477,12 +477,13 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 13 "test/yukicoder/922/main.test.cpp"
+#line 11 "test/yukicoder/922/main.test.cpp"
 
 int main(){
   int N, M, Q; std::cin >> N >> M >> Q;
 
-  auto g = convert_to_graph<int64_t, false>(N, input_edges<int64_t, 1, false>(M));
+  Graph<int64_t> g(N);
+  g.read<1, false, false>(M);
 
   int64_t ans = 0;
 

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/1030/main.test.cpp
+# :x: test/yukicoder/1030/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#fce7f5311a6094c5e355d46a4ec1ba92">test/yukicoder/1030</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/1030/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-08-28 18:23:32+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/1030">https://yukicoder.me/problems/no/1030</a>
@@ -39,12 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max.cpp.html">Mylib/AlgebraicStructure/Monoid/max.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/maybe.cpp.html">Mylib/AlgebraicStructure/Monoid/maybe.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
-* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/max.cpp.html">Mylib/AlgebraicStructure/Monoid/max.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/maybe.cpp.html">Mylib/AlgebraicStructure/Monoid/maybe.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
+* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
@@ -61,13 +60,11 @@ layout: default
 #include <functional>
 #include <algorithm>
 #include <vector>
-
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/max.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/maybe.cpp"
-#include "Mylib/IO/input_graph.cpp"
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
@@ -85,7 +82,8 @@ int main(){
   auto A = input_vector<int>(K);
   for(auto &x : A) --x;
 
-  auto tree = convert_to_graph<int, false>(N, input_edges<int, 1, false>(N-1));
+  Tree<int> tree(N);
+  tree.read<1, false, false>(N - 1);
 
   HLDecomposition<int> hld(tree, 0);
   LCASemigroup::op =
@@ -140,33 +138,66 @@ int main(){
 #include <functional>
 #include <algorithm>
 #include <vector>
-
-#line 4 "Mylib/Graph/graph_template.cpp"
+#line 3 "Mylib/Graph/Template/graph.cpp"
 
 /**
- * @title Graph template
- * @docs graph_template.md
+ * @title Basic graph
+ * @docs graph.md
  */
-template <typename Cost = int> class Edge{
-public:
-  int from,to;
-  Cost cost;
-  Edge() {}
-  Edge(int to, Cost cost): to(to), cost(cost){}
-  Edge(int from, int to, Cost cost): from(from), to(to), cost(cost){}
+template <typename T>
+struct Edge{
+  int from, to;
+  T cost;
+  int index = -1;
+  Edge(){}
+  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
 };
 
-template <typename T> using Graph = std::vector<std::vector<Edge<T>>>;
-template <typename T> using Tree = std::vector<std::vector<Edge<T>>>;
+template <typename T>
+struct Graph{
+  using weight_type = T;
+  using edge_type = Edge<T>;
+  
+  std::vector<std::vector<Edge<T>>> data;
 
-template <typename T, typename C> void add_edge(C &g, int from, int to, T w = 1){
-  g[from].emplace_back(from, to, w);
-}
+  auto& operator[](size_t i){return data[i];}
+  const auto& operator[](size_t i) const {return data[i];}
+  
+  auto begin() const {return data.begin();}
+  auto end() const {return data.end();}
 
-template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 1){
-  add_edge<T, C>(g, a, b, w);
-  add_edge<T, C>(g, b, a, w);
-}
+  Graph(){}
+  Graph(int N): data(N){}
+
+  bool empty() const {return data.empty();}
+  int size() const {return data.size();}
+
+  void add_edge(int i, int j, T w, int index = -1){
+    data[i].emplace_back(i, j, w, index);
+  }
+  
+  void add_undirected(int i, int j, T w, int index = -1){
+    add_edge(i, j, w, index);
+    add_edge(j, i, w, index);
+  }
+
+  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+  void read(int M){
+    for(int i = 0; i < M; ++i){
+      int u, v; std::cin >> u >> v;
+      u -= I;
+      v -= I;
+      T w = 1;
+      if(WEIGHTED) std::cin >> w;
+      if(DIRECTED) add_edge(u, v, w, i);
+      else add_undirected(u, v, w, i);
+    }
+  }
+};
+
+template <typename T>
+using Tree = Graph<T>;
 #line 3 "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 #include <utility>
 #line 6 "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
@@ -391,37 +422,6 @@ struct MaybeMonoid{
     return {Semigroup::op(*a, *b)};
   }
 };
-#line 4 "Mylib/IO/input_graph.cpp"
-
-/**
- * @docs input_graph.md
- */
-template <typename T, size_t I, bool WEIGHTED>
-std::vector<Edge<T>> input_edges(int M){
-  std::vector<Edge<T>> ret;
-  
-  for(int i = 0; i < M; ++i){
-    int s, t; std::cin >> s >> t;
-    s -= I;
-    t -= I;
-    T w = 1; if(WEIGHTED) std::cin >> w;
-    ret.emplace_back(s, t, w);
-  }
-  
-  return ret;  
-}
-
-template <typename T, bool DIRECTED>
-Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
-  Graph<T> g(N);
-
-  for(const auto &e : edges){
-    add_edge(g, e.from, e.to, e.cost);
-    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
-  }
-  
-  return g;
-}
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
@@ -510,7 +510,7 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 16 "test/yukicoder/1030/main.test.cpp"
+#line 14 "test/yukicoder/1030/main.test.cpp"
 
 struct LCASemigroup{
   using value_type = int;
@@ -526,7 +526,8 @@ int main(){
   auto A = input_vector<int>(K);
   for(auto &x : A) --x;
 
-  auto tree = convert_to_graph<int, false>(N, input_edges<int, 1, false>(N-1));
+  Tree<int> tree(N);
+  tree.read<1, false, false>(N - 1);
 
   HLDecomposition<int> hld(tree, 0);
   LCASemigroup::op =

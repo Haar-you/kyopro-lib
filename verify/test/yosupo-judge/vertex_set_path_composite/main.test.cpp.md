@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+# :x: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#4074bf88980bb06d903e38d47fb81c08">test/yosupo-judge/vertex_set_path_composite</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/vertex_set_path_composite/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-10 08:29:19+09:00
+    - Last commit date: 2020-08-28 18:23:32+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/vertex_set_path_composite">https://judge.yosupo.jp/problem/vertex_set_path_composite</a>
@@ -39,12 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp.html">Segment tree (Both foldable)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
-* :question: <a href="../../../../library/Mylib/Graph/graph_template.cpp.html">Graph template</a>
-* :question: <a href="../../../../library/Mylib/IO/input_graph.cpp.html">Mylib/IO/input_graph.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Mylib/AlgebraicStructure/Monoid/affine.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp.html">Segment tree (Both foldable)</a>
+* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 * :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
@@ -62,12 +61,11 @@ layout: default
 #include <vector>
 #include <utility>
 #include "Mylib/Number/Mint/mint.cpp"
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
-#include "Mylib/IO/input_graph.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/IO/input_tuple.cpp"
 #include "Mylib/IO/input_vector.cpp"
@@ -83,7 +81,8 @@ int main(){
   int N, Q; std::cin >> N >> Q;
 
   auto f = input_vector<std::pair<mint, mint>>(N);
-  auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
+  Tree<int> tree(N);
+  tree.read<0, false, false>(N - 1);
   
   HLDecomposition<int> hld(tree, 0);
   SegmentTreeBothFoldable<Monoid> seg(N);
@@ -234,32 +233,66 @@ public:
   explicit operator int32_t() const noexcept {return val;}
   explicit operator int64_t() const noexcept {return val;}
 };
-#line 4 "Mylib/Graph/graph_template.cpp"
+#line 3 "Mylib/Graph/Template/graph.cpp"
 
 /**
- * @title Graph template
- * @docs graph_template.md
+ * @title Basic graph
+ * @docs graph.md
  */
-template <typename Cost = int> class Edge{
-public:
-  int from,to;
-  Cost cost;
-  Edge() {}
-  Edge(int to, Cost cost): to(to), cost(cost){}
-  Edge(int from, int to, Cost cost): from(from), to(to), cost(cost){}
+template <typename T>
+struct Edge{
+  int from, to;
+  T cost;
+  int index = -1;
+  Edge(){}
+  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
 };
 
-template <typename T> using Graph = std::vector<std::vector<Edge<T>>>;
-template <typename T> using Tree = std::vector<std::vector<Edge<T>>>;
+template <typename T>
+struct Graph{
+  using weight_type = T;
+  using edge_type = Edge<T>;
+  
+  std::vector<std::vector<Edge<T>>> data;
 
-template <typename T, typename C> void add_edge(C &g, int from, int to, T w = 1){
-  g[from].emplace_back(from, to, w);
-}
+  auto& operator[](size_t i){return data[i];}
+  const auto& operator[](size_t i) const {return data[i];}
+  
+  auto begin() const {return data.begin();}
+  auto end() const {return data.end();}
 
-template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 1){
-  add_edge<T, C>(g, a, b, w);
-  add_edge<T, C>(g, b, a, w);
-}
+  Graph(){}
+  Graph(int N): data(N){}
+
+  bool empty() const {return data.empty();}
+  int size() const {return data.size();}
+
+  void add_edge(int i, int j, T w, int index = -1){
+    data[i].emplace_back(i, j, w, index);
+  }
+  
+  void add_undirected(int i, int j, T w, int index = -1){
+    add_edge(i, j, w, index);
+    add_edge(j, i, w, index);
+  }
+
+  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+  void read(int M){
+    for(int i = 0; i < M; ++i){
+      int u, v; std::cin >> u >> v;
+      u -= I;
+      v -= I;
+      T w = 1;
+      if(WEIGHTED) std::cin >> w;
+      if(DIRECTED) add_edge(u, v, w, i);
+      else add_undirected(u, v, w, i);
+    }
+  }
+};
+
+template <typename T>
+using Tree = Graph<T>;
 #line 4 "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 #include <algorithm>
 #line 6 "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
@@ -503,37 +536,6 @@ struct DualMonoid{
   value_type id() const {return M.id();}
   value_type op(const value_type &a, const value_type &b) const {return M.op(b, a);}
 };
-#line 4 "Mylib/IO/input_graph.cpp"
-
-/**
- * @docs input_graph.md
- */
-template <typename T, size_t I, bool WEIGHTED>
-std::vector<Edge<T>> input_edges(int M){
-  std::vector<Edge<T>> ret;
-  
-  for(int i = 0; i < M; ++i){
-    int s, t; std::cin >> s >> t;
-    s -= I;
-    t -= I;
-    T w = 1; if(WEIGHTED) std::cin >> w;
-    ret.emplace_back(s, t, w);
-  }
-  
-  return ret;  
-}
-
-template <typename T, bool DIRECTED>
-Graph<T> convert_to_graph(int N, const std::vector<Edge<T>> &edges){
-  Graph<T> g(N);
-
-  for(const auto &e : edges){
-    add_edge(g, e.from, e.to, e.cost);
-    if(not DIRECTED) add_edge(g, e.to, e.from, e.cost);
-  }
-  
-  return g;
-}
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
 #line 6 "Mylib/IO/input_tuples.cpp"
@@ -622,7 +624,7 @@ std::vector<std::vector<T>> input_vector(int N, int M){
   for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
   return ret;
 }
-#line 16 "test/yosupo-judge/vertex_set_path_composite/main.test.cpp"
+#line 15 "test/yosupo-judge/vertex_set_path_composite/main.test.cpp"
 
 using mint = ModInt<998244353>;
 using Monoid = DualMonoid<AffineMonoid<mint>>;
@@ -635,7 +637,8 @@ int main(){
   int N, Q; std::cin >> N >> Q;
 
   auto f = input_vector<std::pair<mint, mint>>(N);
-  auto tree = convert_to_graph<int, false>(N, input_edges<int, 0, false>(N-1));
+  Tree<int> tree(N);
+  tree.read<0, false, false>(N - 1);
   
   HLDecomposition<int> hld(tree, 0);
   SegmentTreeBothFoldable<Monoid> seg(N);

@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/enumerate_triangles.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-17 19:17:20+09:00
+    - Last commit date: 2020-08-28 18:23:32+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="graph_template.cpp.html">Graph template</a>
+* :question: <a href="Template/graph.cpp.html">Basic graph</a>
 
 
 ## Verified with
@@ -55,14 +55,14 @@ layout: default
 #include <vector>
 #include <tuple>
 #include <unordered_set>
-#include "Mylib/Graph/graph_template.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Enumerate triangles
  * @docs enumerate_triangles.md
  */
 template <typename T>
-std::vector<std::tuple<int,int,int>> enumerate_triangles(Graph<T> g){
+std::vector<std::tuple<int,int,int>> enumerate_triangles(const Graph<T> &g){
   const int N = g.size();
   std::vector<std::tuple<int,int,int>> ret;
 
@@ -103,33 +103,66 @@ std::vector<std::tuple<int,int,int>> enumerate_triangles(Graph<T> g){
 #include <vector>
 #include <tuple>
 #include <unordered_set>
-#line 3 "Mylib/Graph/graph_template.cpp"
-#include <iostream>
+#line 3 "Mylib/Graph/Template/graph.cpp"
 
 /**
- * @title Graph template
- * @docs graph_template.md
+ * @title Basic graph
+ * @docs graph.md
  */
-template <typename Cost = int> class Edge{
-public:
-  int from,to;
-  Cost cost;
-  Edge() {}
-  Edge(int to, Cost cost): to(to), cost(cost){}
-  Edge(int from, int to, Cost cost): from(from), to(to), cost(cost){}
+template <typename T>
+struct Edge{
+  int from, to;
+  T cost;
+  int index = -1;
+  Edge(){}
+  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
 };
 
-template <typename T> using Graph = std::vector<std::vector<Edge<T>>>;
-template <typename T> using Tree = std::vector<std::vector<Edge<T>>>;
+template <typename T>
+struct Graph{
+  using weight_type = T;
+  using edge_type = Edge<T>;
+  
+  std::vector<std::vector<Edge<T>>> data;
 
-template <typename T, typename C> void add_edge(C &g, int from, int to, T w = 1){
-  g[from].emplace_back(from, to, w);
-}
+  auto& operator[](size_t i){return data[i];}
+  const auto& operator[](size_t i) const {return data[i];}
+  
+  auto begin() const {return data.begin();}
+  auto end() const {return data.end();}
 
-template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 1){
-  add_edge<T, C>(g, a, b, w);
-  add_edge<T, C>(g, b, a, w);
-}
+  Graph(){}
+  Graph(int N): data(N){}
+
+  bool empty() const {return data.empty();}
+  int size() const {return data.size();}
+
+  void add_edge(int i, int j, T w, int index = -1){
+    data[i].emplace_back(i, j, w, index);
+  }
+  
+  void add_undirected(int i, int j, T w, int index = -1){
+    add_edge(i, j, w, index);
+    add_edge(j, i, w, index);
+  }
+
+  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+  void read(int M){
+    for(int i = 0; i < M; ++i){
+      int u, v; std::cin >> u >> v;
+      u -= I;
+      v -= I;
+      T w = 1;
+      if(WEIGHTED) std::cin >> w;
+      if(DIRECTED) add_edge(u, v, w, i);
+      else add_undirected(u, v, w, i);
+    }
+  }
+};
+
+template <typename T>
+using Tree = Graph<T>;
 #line 6 "Mylib/Graph/enumerate_triangles.cpp"
 
 /**
@@ -137,7 +170,7 @@ template <typename T, typename C> void add_undirected(C &g, int a, int b, T w = 
  * @docs enumerate_triangles.md
  */
 template <typename T>
-std::vector<std::tuple<int,int,int>> enumerate_triangles(Graph<T> g){
+std::vector<std::tuple<int,int,int>> enumerate_triangles(const Graph<T> &g){
   const int N = g.size();
   std::vector<std::tuple<int,int,int>> ret;
 

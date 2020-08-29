@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f1466abfa075f1547bf443d1976f4e75">test/aoj/2136</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2136/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-08-28 18:23:32+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136</a>
@@ -377,30 +377,30 @@ int64_t power(int64_t n, int64_t p, int64_t m){
  * @docs chromatic_number.md
  */
 int chromatic_number(const std::vector<std::vector<int>> &graph){
-  const int mod = 1000000007;
+  static constexpr int mod = 1000000007;
   const int N = graph.size();
  
   std::vector<int> g(N);
   for(int i = 0; i < N; ++i){
     for(auto j : graph[i]){
-      g[i] |= (1<<j);
+      g[i] |= (1 << j);
     }
   }
   
-  std::vector<int64_t> I(1<<N);
+  std::vector<int64_t> I(1 << N);
   I[0] = 1;
-  for(int i = 1; i < (1<<N); ++i){
+  for(int i = 1; i < (1 << N); ++i){
     int c = __builtin_ctz(i);
-    I[i] = I[i-(1<<c)] + I[(i-(1<<c))&(~g[c])];
+    I[i] = I[i - (1 << c)] + I[(i - (1 << c)) & (~g[c])];
     if(I[i] >= mod) I[i] -= mod;
   }
   
   const auto check =
     [&](int k){
       int64_t t = 0;
-      for(int i = 0; i < (1<<N); ++i){
-        if(__builtin_popcount(i) % 2 == 1) t -= power(I[i],k,mod);
-        else t += power(I[i],k,mod);
+      for(int i = 0; i < (1 << N); ++i){
+        if(__builtin_popcount(i) % 2 == 1) t -= power(I[i], k, mod);
+        else t += power(I[i], k, mod);
         if(t < 0) t += mod;
         if(t >= mod) t -= mod;
       }
@@ -408,8 +408,8 @@ int chromatic_number(const std::vector<std::vector<int>> &graph){
     };
   
   int lb = 0, ub = N;
-  while(abs(lb-ub) > 1){
-    const auto mid = (lb+ub)/2;
+  while(abs(lb - ub) > 1){
+    const auto mid = (lb + ub) / 2;
  
     if(check(mid)){
       ub = mid;
