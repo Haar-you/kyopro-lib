@@ -25,9 +25,15 @@ void fill_array(T (&a)[N], const U &v){
   std::fill((U*)a, (U*)(a + N), v);
 }
 
-template <typename T>
-auto make_vector(int n, int m, const T &value){
-  return std::vector<std::vector<T>>(n, std::vector<T>(m, value));
+template <typename T, size_t N, size_t I = N>
+auto make_vector(const std::array<size_t, N> &a, T value = T()){
+  static_assert(I >= 1);
+  static_assert(N >= 1);
+  if constexpr (I == 1){
+    return std::vector<T>(a[N - I], value);
+  }else{
+    return std::vector(a[N - I], make_vector<T, N, I - 1>(a, value));
+  }
 }
 
 template <typename T>
