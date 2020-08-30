@@ -51,4 +51,6 @@ public:
       v = par[head[v]];
     }
   }
+
+  int operator()(int u, int v) const {return lca(u, v);}
 };

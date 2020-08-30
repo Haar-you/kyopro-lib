@@ -21,7 +21,7 @@ int main(){
   int q; std::cin >> q;
 
   for(auto [u, v] : input_tuples<int, int>(q)){
-    std::cout << lca.lca(u, v) << std::endl;
+    std::cout << lca(u, v) << std::endl;
   }
 
   return 0;

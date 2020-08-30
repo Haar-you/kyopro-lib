@@ -52,6 +52,8 @@ public:
     return parent[a][0];
   }
 
+  int operator()(int a, int b) const {return lca(a, b);}
+
   T distance(int a, int b) const {
     return dist[a] + dist[b] - 2 * dist[lca(a,b)];
   }
