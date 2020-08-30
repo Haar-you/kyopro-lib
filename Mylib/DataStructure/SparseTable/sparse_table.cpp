@@ -10,7 +10,7 @@
 template <typename Semilattice>
 class SparseTable{
   using value_type = typename Semilattice::value_type;
-  Semilattice S;
+  const static Semilattice S;
   
   std::vector<std::vector<value_type>> a;
   std::vector<int> log_table;
@@ -26,7 +26,7 @@ public:
     for(int i = 0; i < n; ++i) a[i][0] = v[i];
     for(int j = 1; j < logn; ++j){
       for(int i = 0; i < n; ++i){
-        a[i][j] = S.op(a[i][j-1], a[std::min<int>(n-1, i+(1<<(j-1)))][j-1]);
+        a[i][j] = S(a[i][j-1], a[std::min<int>(n-1, i+(1<<(j-1)))][j-1]);
       }
     }
 
@@ -36,7 +36,7 @@ public:
   
   value_type get(int s, int t) const { // [s,t)
     int k = log_table[t-s];
-    return S.op(a[s][k], a[t-(1<<k)][k]);
+    return S(a[s][k], a[t-(1<<k)][k]);
   }
 
   value_type get(std::vector<std::pair<int,int>> st) const {
@@ -49,7 +49,7 @@ public:
           ret = get(p.first, p.second);
           t = false;
         }else{
-          ret = S.op(ret, get(p.first, p.second));
+          ret = S(ret, get(p.first, p.second));
         }
       }
     }

@@ -11,11 +11,11 @@ namespace splay_tree{
   struct SplayNode{
     using node = SplayNode<Monoid>;
     using value_type = typename Monoid::value_type;
-    constexpr static Monoid M = Monoid();
+    const static Monoid M;
     
     node *left = nullptr, *right = nullptr, *parent = nullptr;
     int size;
-    value_type value = M.id(), result = M.id();
+    value_type value = M(), result = M();
 
     SplayNode(): size(1){}
     SplayNode(const value_type &value): size(1), value(value){}
@@ -74,8 +74,8 @@ namespace splay_tree{
       if(this->right) this->size += this->right->size;
 
       this->result = this->value;
-      if(this->left) this->result = M.op(this->result, this->left->result);
-      if(this->right) this->result = M.op(this->result, this->right->result);
+      if(this->left) this->result = M(this->result, this->left->result);
+      if(this->right) this->result = M(this->result, this->right->result);
     }
 
     void set_left(node *l){
@@ -152,14 +152,14 @@ namespace splay_tree{
   struct SplayTree{
     using node = SplayNode<Monoid>;
     using value_type = typename Monoid::value_type;
-    constexpr static Monoid M = Monoid();
+    const static Monoid M;
 
     node *root;
     
     SplayTree(): root(nullptr){}
     SplayTree(node *root): root(root){}
     SplayTree(int N): root(nullptr){
-      for(int i = 0; i < N; ++i) push_back(M.id());
+      for(int i = 0; i < N; ++i) push_back(M());
     }
 
     static auto singleton(const value_type &value){return SplayTree(new node(value));}

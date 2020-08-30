@@ -9,7 +9,7 @@ template <typename Monoid>
 class LazySegmentTree{
   using value_type_get = typename Monoid::value_type_get;
   using value_type_update = typename Monoid::value_type_update;
-  Monoid M;
+  const static Monoid M;
   
   const int depth, size, hsize;
   std::vector<value_type_get> data;

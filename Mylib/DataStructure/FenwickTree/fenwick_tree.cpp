@@ -8,7 +8,7 @@
 template <typename AbelianGroup>
 class FenwickTree{
   using value_type = typename AbelianGroup::value_type;
-  AbelianGroup G;
+  const static AbelianGroup G;
   
   int size;
   std::vector<value_type> data;
@@ -16,24 +16,24 @@ class FenwickTree{
 public:
   FenwickTree(){}
   FenwickTree(int size):
-    size(size), data(size + 1, G.id())
+    size(size), data(size + 1, G())
   {}
   
   void update(int i, const value_type &val){
     i += 1; // 1-index
     
     while(i <= size){
-      data[i] = G.op(data[i], val);
+      data[i] = G(data[i], val);
       i += i & (-i);
     }
   }
   
   value_type get(int i) const { // [0, i)
-    value_type ret = G.id();
+    value_type ret = G();
     i += 1; // 1-index
 
     while(i > 0){
-      ret = G.op(ret, data[i]);
+      ret = G(ret, data[i]);
       i -= i & (-i);
     }
 
@@ -41,7 +41,7 @@ public:
   }
 
   value_type get(int l, int r) const { // [l, r)
-    return G.op(get(r-1), G.inv(get(l-1)));
+    return G(get(r-1), G.inv(get(l-1)));
   }
   
   value_type at(int x) const {

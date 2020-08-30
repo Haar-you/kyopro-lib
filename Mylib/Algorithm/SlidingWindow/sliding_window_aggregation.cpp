@@ -10,14 +10,14 @@
 template <typename Semigroup>
 class SlidingWindowAggregation{
   using value_type = typename Semigroup::value_type;
-  Semigroup S;
+  const static Semigroup S;
   
   std::stack<value_type> front_stack, back_stack;
   std::vector<value_type> front_sum, back_sum;
 
   std::optional<value_type> f(std::optional<value_type> a, std::optional<value_type> b) const {
     if(a){
-      if(b) return {S.op(*a, *b)};
+      if(b) return {S(*a, *b)};
       else return {*a};
     }else{
       if(b) return {*b};

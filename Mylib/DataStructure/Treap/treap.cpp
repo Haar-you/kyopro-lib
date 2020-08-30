@@ -12,7 +12,7 @@ namespace treap{
   struct TreapNode{
     using node = TreapNode<Monoid>;
     using value_type = typename Monoid::value_type;
-    constexpr static Monoid M = Monoid();
+    const static Monoid M;
     
     static std::mt19937 rand;
   
@@ -25,11 +25,11 @@ namespace treap{
     TreapNode(const value_type &value): value(value), result(value), priority(rand()){}
 
     static int count(node *t) {return !t ? 0 : t->size;}
-    static value_type sum(node *t) {return !t ? M.id() : t->result;}
+    static value_type sum(node *t) {return !t ? M() : t->result;}
     
     static node* update_node_status(node *t){
       t->size = count(t->right) + count(t->left) + 1;
-      t->result = M.op(M.op(sum(t->right), sum(t->left)), t->value);
+      t->result = M(M(sum(t->right), sum(t->left)), t->value);
       return t;
     }
 
@@ -128,13 +128,13 @@ namespace treap{
   protected:
     using node = TreapNode<Monoid>;
     using value_type = typename Monoid::value_type;
-    constexpr static Monoid M = Monoid();
+    const static Monoid M;
 
     node *root = nullptr;
 
   public:
     Treap(){}
-    Treap(int n){for(int i = 0; i < n; ++i) push_back(M.id());}
+    Treap(int n){for(int i = 0; i < n; ++i) push_back(M());}
     Treap(node *t): root(t){}
   
     int size() const {return node::count(root);}

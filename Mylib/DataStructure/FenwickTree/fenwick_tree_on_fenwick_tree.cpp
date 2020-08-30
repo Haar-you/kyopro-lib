@@ -12,7 +12,7 @@
 template <typename AbelianGroup>
 class FenwickTree2D{
   using value_type = typename AbelianGroup::value_type;
-  AbelianGroup G;
+  const static AbelianGroup G;
 
   int N = 0;
   std::vector<int64_t> xs, ys;
@@ -75,11 +75,11 @@ public:
 
 private:
   value_type get(int i, int64_t y1, int64_t y2) const {
-    value_type ret = G.id();
+    value_type ret = G();
     for(; i > 0; i -= i & (-i)){
       int l = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y1) - c_ys[i].begin();
       int r = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y2) - c_ys[i].begin();
-      ret = G.op(ret, segs[i].get(l, r));
+      ret = G(ret, segs[i].get(l, r));
     }
     return ret;
   }
@@ -89,6 +89,6 @@ public:
   value_type get(int64_t x1, int64_t y1, int64_t x2, int64_t y2) const {
     int l = std::lower_bound(c_xs.begin(), c_xs.end(), x1) - c_xs.begin();
     int r = std::lower_bound(c_xs.begin(), c_xs.end(), x2) - c_xs.begin();
-    return G.op(get(r, y1, y2), G.inv(get(l, y1, y2)));
+    return G(get(r, y1, y2), G.inv(get(l, y1, y2)));
   }
 };

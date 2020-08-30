@@ -6,6 +6,6 @@
 template <typename T>
 struct SumMatrixMonoid{
   using value_type = T;
-  value_type id() const {return T();}
-  value_type op(const value_type &a, const value_type &b) const {return a + b;}
+  value_type operator()() const {return T();}
+  value_type operator()(const value_type &a, const value_type &b) const {return a + b;}
 };

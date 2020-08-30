@@ -8,7 +8,7 @@
 template <typename Monoid>
 class SegmentTree2D{
   using value_type = typename Monoid::value_type;
-  Monoid M;
+  const static Monoid M;
   
   int w, h;
   std::vector<std::vector<value_type>> data;
@@ -17,11 +17,11 @@ class SegmentTree2D{
     l += w / 2;
     r += w / 2;
 
-    value_type ret = M.id();
+    value_type ret = M();
 
     while(l < r){
-      if(r & 1) ret = M.op(ret, data[--r][y]);
-      if(l & 1) ret = M.op(ret, data[l++][y]);
+      if(r & 1) ret = M(ret, data[--r][y]);
+      if(l & 1) ret = M(ret, data[l++][y]);
       l >>= 1, r >>= 1;
     }
     
@@ -45,11 +45,11 @@ public:
     int l = y1 + h / 2;
     int r = y2 + h / 2;
 
-    value_type ret = M.id();
+    value_type ret = M();
 
     while(l < r){
-      if(r & 1) ret = M.op(ret, get_w(x1, x2, --r));
-      if(l & 1) ret = M.op(ret, get_w(x1, x2, l++));
+      if(r & 1) ret = M(ret, get_w(x1, x2, --r));
+      if(l & 1) ret = M(ret, get_w(x1, x2, l++));
       l >>= 1, r >>= 1;
     }
 
@@ -67,12 +67,12 @@ public:
     data[i][j] = val;
      
     for(int X = i >> 1, Y = j; X > 0; X >>= 1){
-      data[X][Y] = M.op(data[X << 1 | 0][Y], data[X << 1 | 1][Y]);
+      data[X][Y] = M(data[X << 1 | 0][Y], data[X << 1 | 1][Y]);
     }
         
     for(int Y = j >> 1; Y > 0; Y >>= 1){
       for(int X = i; X > 0; X >>= 1){
-        data[X][Y] = M.op(data[X][Y << 1 | 0], data[X][Y << 1 | 1]);
+        data[X][Y] = M(data[X][Y << 1 | 0], data[X][Y << 1 | 1]);
       }
     }
   }

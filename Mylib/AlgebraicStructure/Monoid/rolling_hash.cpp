@@ -14,7 +14,7 @@ struct RollingHashMonoid{
 
   using value_type = std::pair<std::array<int64_t, N>, std::array<int64_t, N>>;
 
-  value_type id() const {
+  value_type operator()() const {
     value_type ret;
     for(size_t i = 0; i < N; ++i){
       ret.first[i] = 0LL;
@@ -23,7 +23,7 @@ struct RollingHashMonoid{
     return ret;
   }
 
-  value_type op(const value_type &a, const value_type &b) const {
+  value_type operator()(const value_type &a, const value_type &b) const {
     value_type ret;
     for(size_t i = 0; i < N; ++i){
       ret.first[i] = (a.first[i] + b.first[i] * a.second[i] % mod) % mod;
