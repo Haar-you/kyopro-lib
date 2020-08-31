@@ -19,5 +19,5 @@ auto grid_find(const std::vector<C> &A, T value){
     }
   }
 
-  return ret;  
+  return ret;
 }

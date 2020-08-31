@@ -16,7 +16,7 @@ template <typename T> struct KitamasaAlgorithm{
     std::vector<T> ret(size);
 
     for(int i = 0; i < size; ++i) ret[i] += a[size-1] * coeff[i];
-    for(int i = 1; i < size; ++i) ret[i] += a[i-1]; 
+    for(int i = 1; i < size; ++i) ret[i] += a[i-1];
 
     return ret;
   }

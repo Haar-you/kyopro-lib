@@ -37,5 +37,5 @@ uint64_t kth_root(uint64_t a, int k){
     }
   }
   
-  return lb;  
+  return lb;
 }

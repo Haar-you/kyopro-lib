@@ -27,7 +27,7 @@ struct LinkCutNode{
   {}
 
   bool is_root() const {
-    return !parent or (parent->left != this and parent->right != this); 
+    return !parent or (parent->left != this and parent->right != this);
   }
 
   void update_node_status(){

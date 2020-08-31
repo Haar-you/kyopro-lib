@@ -24,7 +24,7 @@ public:
       for(int i = 1; i < ALPHABET; ++i) table[i] += table[i-1];
 
       for(int i = 0; i < n; ++i){
-        temp[i] = table[s[i]]; 
+        temp[i] = table[s[i]];
       }
     }
 

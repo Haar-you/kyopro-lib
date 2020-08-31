@@ -43,7 +43,7 @@ struct Forest{
         std::vector<Edge<T>> edges;
         dfs(dfs, i, vertices, edges);
         
-        const int m = vertices.size(); 
+        const int m = vertices.size();
         const int k = trees.size();
 
         rid.push_back(std::vector<int>(m));

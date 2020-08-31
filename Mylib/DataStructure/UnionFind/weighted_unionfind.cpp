@@ -26,7 +26,7 @@ public:
     }
   }
 
-  T weight_of(int i){root_of(i); return weight[i];} 
+  T weight_of(int i){root_of(i); return weight[i];}
   bool is_same(int i, int j){return root_of(i) == root_of(j);}
   T diff(int i, int j){return weight_of(i) - weight_of(j);}
   

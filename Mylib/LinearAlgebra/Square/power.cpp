@@ -12,7 +12,7 @@ M power(M a, uint64_t p){
   M temp = power(a, p >> 1);
   auto ret = temp * temp;
 
-  if(p & 1) ret *= a;  
+  if(p & 1) ret *= a;
   
   return ret;
 }

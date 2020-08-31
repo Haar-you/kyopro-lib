@@ -77,7 +77,7 @@ public:
   int rank(int index, const T &val){
     auto [l, r] = rank_aux(index, val);
     return r - l;
-  }  
+  }
 
   /*
    * @return data[l, r)に含まれるvalの個数

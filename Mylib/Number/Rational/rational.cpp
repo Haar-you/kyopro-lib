@@ -10,10 +10,10 @@ class Rational{
 public:
   int64_t nume, deno;
   Rational(): nume(0), deno(1){}
-  Rational(int64_t num): nume(num), deno(1){} 
+  Rational(int64_t num): nume(num), deno(1){}
   Rational(int64_t num, int64_t den){
     int64_t g = std::gcd(num, den);
-    nume = num / g ;
+    nume = num / g;
     deno = den / g;
     if(deno < 0){
       nume = -nume;

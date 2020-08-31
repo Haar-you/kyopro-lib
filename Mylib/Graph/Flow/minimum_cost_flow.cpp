@@ -91,7 +91,7 @@ public:
       for(int cur = dst; cur != src; cur = prev_node[cur]){
         edge &e = g[prev_node[cur]][prev_edge[cur]];
         e.cap -= df;
-        g[cur][e.rev].cap += df;	
+        g[cur][e.rev].cap += df;
       }
     }
 

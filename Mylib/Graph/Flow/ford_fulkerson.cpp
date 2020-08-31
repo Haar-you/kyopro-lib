@@ -45,7 +45,7 @@ public:
       for(auto &[j, c] : g[i]){
         add_edge(i, j, c);
       }
-    }  
+    }
   }
   FordFulkerson(int size): size(size), graph(size), visit(size){}
 

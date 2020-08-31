@@ -208,7 +208,7 @@ struct FormalPowerSeries{
       FormalPowerSeries f(std::vector(it, it + std::min(t, m)));
       ret.resize(t);
       f.resize(t);
-      ret = (ret + f * ret.inv()) * T(2).inv();      
+      ret = (ret + f * ret.inv()) * T(2).inv();
       t <<= 1;
     }
 

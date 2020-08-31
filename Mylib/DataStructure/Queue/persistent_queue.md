@@ -17,7 +17,7 @@
 	- Time complexity $O(1)$
 - `size()`
 	- キューのサイズを得る。
-	- Time complexity $O(1)$ 
+	- Time complexity $O(1)$
 
 ## Requirements
 

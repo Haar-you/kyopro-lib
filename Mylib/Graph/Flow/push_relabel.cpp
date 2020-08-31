@@ -89,7 +89,7 @@ private:
     }
     
     height[i] = a + 1;
-  }  
+  }
   
 public:
   PushRelabel(){}

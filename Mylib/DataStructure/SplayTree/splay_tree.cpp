@@ -38,7 +38,7 @@ namespace splay_tree{
 
       if(pp){
         if(pp->left == p) pp->left = this;
-        if(pp->right == p) pp->right = this;      
+        if(pp->right == p) pp->right = this;
       }
       
       this->parent = pp;

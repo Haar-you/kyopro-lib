@@ -20,7 +20,7 @@ struct RangeCountQuery{
     temp.erase(std::unique(temp.begin(), temp.end()), temp.end());
 
     for(auto x : a_){
-      int i = std::lower_bound(temp.begin(), temp.end(), x) - temp.begin(); 
+      int i = std::lower_bound(temp.begin(), temp.end(), x) - temp.begin();
       a.push_back(i);
     }
   }

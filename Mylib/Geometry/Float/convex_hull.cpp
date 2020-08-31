@@ -7,7 +7,7 @@
  * @title Convex hull
  * @docs convex_hull.md
  */
-template <typename T> 
+template <typename T>
 std::vector<Point<T>> upper_hull(Polygon<T> pts, bool upper = true){
   std::sort(
     pts.begin(),

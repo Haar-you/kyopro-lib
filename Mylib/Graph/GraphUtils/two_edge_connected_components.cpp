@@ -21,7 +21,7 @@ auto two_edge_connected_components(const Graph<T> &graph){
       if(order[cur] != -1) return order[cur];
       order[cur] = v;
       int temp = v++;
-      st.push(cur);      
+      st.push(cur);
 
       int count = 0;
 

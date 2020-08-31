@@ -177,7 +177,7 @@ namespace treap{
       root = node::merge(mid, right);
 
       return ret;
-    } 
+    }
 
     template <typename Func>
     void traverse(const Func &f){

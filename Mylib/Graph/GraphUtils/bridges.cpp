@@ -24,7 +24,7 @@ auto bridges(const Graph<T> &graph){
         int t = dfs(dfs, e.to, cur);
         temp = std::min(temp, t);
         if(low[e.to] > visit[cur]) ret.push_back(e);
-      }  
+      }
       return low[cur] = temp;
     };
 

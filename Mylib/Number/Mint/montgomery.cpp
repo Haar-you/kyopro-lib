@@ -12,7 +12,7 @@ struct Montgomery{
   constexpr static int64_t R = 1LL << b;
   constexpr static int64_t R2 = (R % MOD) * (R % MOD) % MOD;
 
-  constexpr static int64_t mask = R - 1; 
+  constexpr static int64_t mask = R - 1;
 
   constexpr static int64_t init(){
     int64_t ret = 0, r = R, i = 1, t = 0;

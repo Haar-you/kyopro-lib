@@ -127,7 +127,7 @@ private:
       return;
     }
 
-    propagate(i);    
+    propagate(i);
     chmin(lc(i), l, (l + r) / 2, s, t, x);
     chmin(rc(i), (l + r) / 2, r, s, t, x);
     bottom_up(i);
@@ -183,7 +183,7 @@ public:
   value_type get_sum(int l, int r){return get_sum(1, 0, hsize, l, r);}
 
 
-public:  
+public:
   void init_with_vector(const std::vector<value_type> &v){
     fst_max.assign(size, std::numeric_limits<value_type>::min());
     snd_max.assign(size, std::numeric_limits<value_type>::min());

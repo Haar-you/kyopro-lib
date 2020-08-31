@@ -14,11 +14,11 @@ template <typename T> class HLDecomposition{
   
   std::vector<int> sub, // subtree size
     par, // parent id
-    head, // chain head id 
+    head, // chain head id
     id, // id[original id] = hld id
     rid, // rid[hld id] = original id
     next, // next node in a chain
-    end; // 
+    end; //
 
   int dfs_sub(int cur, int p){
     par[cur] = p;

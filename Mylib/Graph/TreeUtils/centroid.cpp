@@ -13,7 +13,7 @@ public:
   std::vector<int> subtree;
   std::vector<int> result;
   Centroid(const Tree<T> &tree): N(tree.size()), subtree(N){
-    dfs(tree, 0, -1);    
+    dfs(tree, 0, -1);
   }
 
 private:

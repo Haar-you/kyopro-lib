@@ -53,5 +53,5 @@ public:
   template <typename T>
   void init(const T &val){
     init_with_vector(std::vector<value_type>(hsize, val));
-  }  
+  }
 };

@@ -15,7 +15,7 @@ auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
 
   std::vector<int> ord(N);
   std::iota(ord.begin(), ord.end(), 0);
-  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});  
+  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
 
   std::multiset<int> a;
   std::vector<std::pair<int,int>> ret;
