@@ -57,7 +57,7 @@ public:
   void update(int l, int r, const value_type_update &x){update_aux(1, 0, hsize, l, r, x);}
   void update_at(int i, const value_type_update &x){update(i, i+1, x);}
   value_type_get get(int l, int r){return get_aux(1, 0, hsize, l, r);}
-  value_type_get at(int i){return get(i, i+1);}
+  value_type_get operator[](int i){return get(i, i+1);}
 
   template <typename T>
   void init(const T &val){

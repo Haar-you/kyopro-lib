@@ -41,10 +41,10 @@ public:
   }
 
   value_type get(int l, int r) const { // [l, r)
-    return G(get(r-1), G.inv(get(l-1)));
+    return G(get(r - 1), G.inv(get(l - 1)));
   }
   
-  value_type at(int x) const {
-    return get(x, x+1);
+  value_type operator[](int x) const {
+    return get(x, x + 1);
   }
 };

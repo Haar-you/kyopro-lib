@@ -25,8 +25,8 @@ int main(){
       if(t >= std::get<2>(a) + T){
         int x = std::get<0>(a), y = std::get<1>(a);
         
-        seg1.update(x, y, seg1.at(x, y) + 1);
-        seg2.update(x, y, seg2.at(x, y) - 1);
+        seg1.update({x, y}, seg1[{x, y}] + 1);
+        seg2.update({x, y}, seg2[{x, y}] - 1);
         
         q.pop();
       }else{
@@ -38,18 +38,18 @@ int main(){
       int h,w; std::cin >> h >> w;
       --h, --w;
       
-      seg2.update(h, w, seg2.at(h, w) + 1);
+      seg2.update({h, w}, seg2[{h, w}] + 1);
       q.emplace(h, w, t);
     }else if(c == 1){
       int h,w; std::cin >> h >> w;
       --h, --w;
       
-      if(seg1.at(h, w) == 1) seg1.update(h, w, seg1.at(h, w) - 1);
+      if(seg1[{h, w}] == 1) seg1.update({h, w}, seg1[{h, w}] - 1);
     }else{
       int h1,w1,h2,w2; std::cin >> h1 >> w1 >> h2 >> w2;
       --h1, --w1;
       
-      std::cout << seg1.get(h1, w1, h2, w2) << " " << seg2.get(h1, w1, h2, w2) << std::endl;
+      std::cout << seg1.get({h1, w1}, {h2, w2}) << " " << seg2.get({h1, w1}, {h2, w2}) << std::endl;
     }
   }
   

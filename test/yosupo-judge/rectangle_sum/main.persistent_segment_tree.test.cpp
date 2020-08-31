@@ -35,7 +35,7 @@ int main(){
 
   for(int i = 0; i < N; ++i){
     auto &s = seg.back();
-    seg.push_back(s.update(x[i], s.at(x[i]) + w[i]));
+    seg.push_back(s.update(x[i], s[x[i]] + w[i]));
   }
   
   for(auto [l, d, r, u] : input_tuples<int64_t, int64_t, int64_t, int64_t>(Q)){

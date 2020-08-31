@@ -45,15 +45,19 @@ public:
     data = std::vector<std::vector<value_type>>(w+1, std::vector<value_type>(h+1));
   }
 
-  value_type get(int x1, int y1, int x2, int y2) const { // [(x1,y1),(x2,y2))
+  value_type get(std::pair<int, int> p1, std::pair<int, int> p2) const { // [(x1,y1),(x2,y2))
+    const auto [x1, y1] = p1;
+    const auto [x2, y2] = p2;
     return G(get(x1, x2, y2-1), G.inv(get(x1, x2, y1-1)));
   }
-     
-  value_type at(int x, int y) const {
-    return get(x, y, x+1, y+1);
+  
+  value_type operator[](std::pair<int, int> p) const {
+    const auto [x, y] = p;
+    return get({x, y}, {x+1, y+1});
   }
-     
-  void update(int x, int y, const value_type &val){
+  
+  void update(std::pair<int, int> p, const value_type &val){
+    auto [x, y] = p;
     x += 1;
     y += 1;
 

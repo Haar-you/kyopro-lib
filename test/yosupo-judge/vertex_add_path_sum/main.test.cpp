@@ -31,7 +31,7 @@ int main(){
       int p, x; std::cin >> p >> x;
       
       int i = hld.get_id(p);
-      seg.update(i, seg.at(i) + x);
+      seg.update(i, seg[i] + x);
     }else{
       int u, v; std::cin >> u >> v;
 

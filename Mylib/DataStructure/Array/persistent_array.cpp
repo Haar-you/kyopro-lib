@@ -92,7 +92,7 @@ protected:
   }
   
 public:
-  T get(int i) const {
+  T operator[](int i) const {
     return get(root, i);
   }
 

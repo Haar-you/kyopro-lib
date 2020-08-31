@@ -48,7 +48,7 @@ std::vector<Edge<T>> manhattan_minimum_spanning_tree(std::vector<T> x, std::vect
           g.add_edge(i, j, c);
         }
 
-        if(auto res = seg.at(lb); not res or x[i] + y[i] < res->first){
+        if(auto res = seg[lb]; not res or x[i] + y[i] < res->first){
           seg.update(lb, {{x[i] + y[i], i}});
         }
       }

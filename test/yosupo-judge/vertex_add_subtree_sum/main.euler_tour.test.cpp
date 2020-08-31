@@ -41,7 +41,7 @@ int main(){
       et.point_query(
         u,
         [&](int j){
-          seg.update(j, seg.at(j) + x);
+          seg.update(j, seg[j] + x);
         }
       );
     }else{

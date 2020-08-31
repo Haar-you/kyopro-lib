@@ -38,6 +38,6 @@ public:
   }
 
   value_type get(int l, int r) const { // [l, r)
-    return get(r-1) - get(l-1);
+    return get(r - 1) - get(l - 1);
   }
 };

@@ -13,10 +13,10 @@ int main(){
   for(auto [type] : input_tuples<int>(q)){
     if(type == 0){
       int s, t, x; std::cin >> s >> t >> x;
-      seg.update(s-1, t, x);
+      seg.update(s - 1, t, x);
     }else{
       int t; std::cin >> t;
-      std::cout << seg.get(t-1) << std::endl;
+      std::cout << seg[t - 1] << std::endl;
     }
   }
 

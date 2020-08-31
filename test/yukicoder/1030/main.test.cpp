@@ -12,6 +12,16 @@
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+struct LCASemigroup{
+  using value_type = int;
+  static std::function<int(int, int)> lca;
+  value_type operator()(value_type a, value_type b) const {
+    return lca(a, b);
+  }
+};
+
+std::function<int(int, int)> LCASemigroup::lca;
+
 int main(){
   int N, K, Q; std::cin >> N >> K >> Q;
 
@@ -22,13 +32,8 @@ int main(){
   Tree<int> tree(N);
   tree.read<1, false, false>(N - 1);
 
-  static HLDecomposition<int> hld(tree, 0);
-  struct LCASemigroup{
-    using value_type = int;
-    value_type op(value_type a, value_type b) const {
-      return hld.lca(a, b);
-    }
-  };
+  HLDecomposition<int> hld(tree, 0);
+  LCASemigroup::lca = [&](int a, int b){return hld.lca(a, b);};
 
   SegmentTree<MaxMonoid<int>> seg1(N);
   for(int i = 0; i < N; ++i){

@@ -35,7 +35,7 @@ int main(){
       int x; std::cin >> x;
 
       int i = hld.get_id(u);
-      seg.update(i, seg.at(i) + x);
+      seg.update(i, seg[i] + x);
     }else{
       int64_t ans = 0;
       hld.subtree_query_vertex(

@@ -72,7 +72,7 @@ public:
     update(root, 0, size, s, t, x);
   }
 
-  value_type get(int64_t x){
+  value_type operator[](int64_t x){
     get(root, 0, size, x);
     return umap[x]->val;
   }

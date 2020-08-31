@@ -52,7 +52,7 @@ public:
     }
   }
 
-  value_type get(int i){
+  value_type operator[](int i){
     propagate_top_down(i + hsize);
     return data[i + hsize];
   }

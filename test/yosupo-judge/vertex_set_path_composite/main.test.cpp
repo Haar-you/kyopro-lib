@@ -15,7 +15,7 @@
 
 using mint = ModInt<998244353>;
 using Monoid = DualMonoid<AffineMonoid<mint>>;
-Monoid M;
+const Monoid M;
 
 int main(){
   std::cin.tie(0);
@@ -42,20 +42,20 @@ int main(){
     }else{
       int64_t u, v, x; std::cin >> u >> v >> x;
 
-      auto left = M.id(), right = M.id();
+      auto left = M(), right = M();
 
       hld.path_query_vertex(
         u,
         v,
         [&](int l, int r){
-          left = M.op(left, seg.fold_right(l, r));
+          left = M(left, seg.fold_right(l, r));
         },
         [&](int l, int r){
-          right = M.op(seg.fold_left(l, r), right);
+          right = M(seg.fold_left(l, r), right);
         }
       );
       
-      auto a = M.op(left, right);
+      auto a = M(left, right);
 
       mint ans = a.first * x + a.second;
       std::cout << ans << "\n";

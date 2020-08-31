@@ -41,16 +41,16 @@ int main(){
   seg.build();
 
   for(int i = 0; i < N; ++i){
-    seg.update(x[i], y[i], w[i]);
+    seg.update({x[i], y[i]}, w[i]);
   }
 
   for(auto q : queries){
     if(q.index() == 0){
       auto [x, y, w] = std::get<0>(q);
-      seg.update(x, y, w);
+      seg.update({x, y}, w);
     }else{
       auto [l, d, r, u] = std::get<1>(q);
-      std::cout << seg.get(l, d, r, u) << "\n";
+      std::cout << seg.get({l, d}, {r, u}) << "\n";
     }
   }
 

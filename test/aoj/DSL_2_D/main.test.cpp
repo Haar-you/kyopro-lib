@@ -18,7 +18,7 @@ int main(){
       seg.update(s, t+1, x);
     }else{
       int i; std::cin >> i;
-      std::cout << *seg.get(i) << std::endl;
+      std::cout << *seg[i] << std::endl;
     }
   }
 

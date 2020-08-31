@@ -41,7 +41,9 @@ public:
     data = std::vector<std::vector<value_type>>(w, std::vector<value_type>(h));
   }
      
-  value_type get(int x1, int y1, int x2, int y2) const { // [(x1,y1),(x2,y2))
+  value_type get(std::pair<int, int> p1, std::pair<int, int> p2) const { // [(x1,y1),(x2,y2))
+    const auto [x1, y1] = p1;
+    const auto [x2, y2] = p2;
     int l = y1 + h / 2;
     int r = y2 + h / 2;
 
@@ -56,11 +58,13 @@ public:
     return ret;
   }
   
-  value_type at(int x, int y) const {
+  value_type operator[](std::pair<int, int> p) const {
+    auto [x, y] = p;
     return data[w / 2 + x][h / 2 + y];
   }
      
-  void update(int x, int y, const value_type &val){
+  void update(std::pair<int, int> p, const value_type &val){
+    const auto [x, y] = p;
     const int i = x + w / 2;
     const int j = y + h / 2;
     

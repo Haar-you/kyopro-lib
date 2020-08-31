@@ -16,7 +16,7 @@ public:
   PersistentUnionFind(int n): par(PersistentArray<int>(std::vector<int>(n, -1))){}
   
   int root_of(int i) const {
-    int p = par.get(i);
+    int p = par[i];
     if(p < 0) return i;
     return root_of(p);
   }
@@ -26,15 +26,15 @@ public:
   }
 
   int size_of(int i) const {
-    return -par.get(root_of(i));
+    return -par[root_of(i)];
   }
   
   PersistentUnionFind merge(int i, int j) const {
     int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return *this;
 
-    int size_i = -par.get(ri);
-    int size_j = -par.get(rj);
+    int size_i = -par[ri];
+    int size_j = -par[rj];
 
     PersistentArray<int> ret = par;
 

@@ -71,7 +71,8 @@ public:
     }
   }
 
-  void update(int64_t x, int64_t y, const value_type &val){
+  void update(std::pair<int64_t, int64_t> p, const value_type &val){
+    const auto [x, y] = p;
     int i = std::lower_bound(c_xs.begin(), c_xs.end(), x) - c_xs.begin() + x_size / 2;
 
     while(i >= 1){
@@ -92,7 +93,9 @@ private:
 
 public:
   // [x1, x2), [y1, y2)
-  value_type get(int64_t x1, int64_t y1, int64_t x2, int64_t y2) const {
+  value_type get(std::pair<int64_t, int64_t> p1, std::pair<int64_t, int64_t> p2) const {
+    const auto [x1, y1] = p1;
+    const auto [x2, y2] = p2;
     int l = std::lower_bound(c_xs.begin(), c_xs.end(), x1) - c_xs.begin() + x_size / 2;
     int r = std::lower_bound(c_xs.begin(), c_xs.end(), x2) - c_xs.begin() + x_size / 2;
 

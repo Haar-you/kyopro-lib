@@ -21,8 +21,7 @@ public:
     data(size, M())
   {}
 
-  auto operator[](int i) const {return at(i);}
-  auto at(int i) const {return data[hsize + i];}
+  auto operator[](int i) const {return data[hsize + i];}
   
   auto get(int x, int y) const { // [x,y)
     value_type ret_left = M();

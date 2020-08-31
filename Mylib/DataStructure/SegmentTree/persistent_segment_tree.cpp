@@ -87,7 +87,7 @@ public:
     return get(root, i, j, 0, 1 << (depth-1));
   }
 
-  value_type at(int i) const {
+  value_type operator[](int i) const {
     return get(i, i+1);
   }
 };
