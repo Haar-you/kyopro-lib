@@ -54,7 +54,7 @@ int main(){
       lc.add_line(a, b);
     }else{
       auto p = std::get<1>(q);
-      auto res = lc.query(p);
+      auto res = lc(p);
 
       std::cout << *res << "\n";
     }

@@ -38,7 +38,7 @@ public:
     lines.push_back(std::make_pair(a,b));
   }
 
-  T query(const T &x){
+  T operator()(const T &x){
     while(lines.size() >= 2 and comp(apply(lines[0],x), apply(lines[1],x))){
       lines.pop_front();
     }

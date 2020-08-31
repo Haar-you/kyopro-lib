@@ -118,7 +118,7 @@ public:
   }
 
 public:
-  auto query(const T &x) const {
+  auto operator()(const T &x) const {
     const int i = std::lower_bound(xs.begin(), xs.end(), x) - xs.begin();
     int k = i + n;
     

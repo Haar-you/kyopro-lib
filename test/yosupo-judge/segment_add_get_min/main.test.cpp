@@ -56,7 +56,7 @@ int main(){
         lc.add_segment(l, r, a, b);
       }else{
         auto p = std::get<1>(q);
-        auto res = lc.query(p);
+        auto res = lc(p);
 
         if(res){
           std::cout << *res << "\n";
