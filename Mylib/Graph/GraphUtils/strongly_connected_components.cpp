@@ -43,6 +43,5 @@ auto strongly_connected_components(const Graph<T> &g){
   int i = 0;
   for(auto c : check) if(result[c] == -1) rdfs(rdfs, c, i), ++i;
 
-  
   return std::make_pair(result, i);
 }

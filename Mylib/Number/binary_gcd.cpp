@@ -11,7 +11,7 @@ int64_t binary_gcd(int64_t a, int64_t b){
 
   while(1){
     if(a > b) std::swap(a, b);
-    
+
     if(a == 0){
       break;
     }else{

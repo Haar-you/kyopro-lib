@@ -8,9 +8,9 @@
  * @docs range_edge_graph.md
  */
 template <typename T>
-class RangeEdgeGraph : public Graph<T>{
+class RangeEdgeGraph : public Graph<T> {
   using super = Graph<T>;
-  
+
   int k, N;
   int calc_size(int N) const {
     int ret = 1;

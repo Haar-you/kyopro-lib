@@ -9,15 +9,15 @@
  * @docs binomial_heap.md
  */
 template <typename T, typename Compare = std::less<T>>
-class BinomialHeap{
-  struct node{
+class BinomialHeap {
+  struct node {
     T value;
     std::vector<node*> children;
     node(T value): value(value){}
   };
 
   constexpr static int MAX = 31;
-  
+
   std::array<node*, MAX> roots;
   Compare compare;
   int top_index = -1;
@@ -45,7 +45,7 @@ class BinomialHeap{
       case 3: roots[i] = temp[0]; s = merge(temp[1], temp[2]); break;
       }
     }
-    
+
     top_index = -1;
     for(int i = 0; i < MAX; ++i){
       if(roots[i]){
@@ -69,7 +69,7 @@ public:
   bool empty() const {
     return heap_size == 0;
   }
-  
+
   void push(const T &value){
     heap_size += 1;
     node *t = new node(value);
@@ -83,7 +83,7 @@ public:
 
   void pop(){
     heap_size -= 1;
-    
+
     node *t = roots[top_index];
     roots[top_index] = nullptr;
     meld(t->children);

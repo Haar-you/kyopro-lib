@@ -14,8 +14,8 @@ T convex_diameter(const Polygon<T> &ps){
 
   T ret = abs(ps[i]-ps[j]);
 
-  for(int k = 0; k < 2*n; ++k){
-    if(cross(ps[(i+1)%n] - ps[i], ps[(j+1)%n] - ps[j]) > 0){
+  for(int k = 0; k < 2 * n; ++k){
+    if(cross(ps[(i + 1) % n] - ps[i], ps[(j + 1) % n] - ps[j]) > 0){
       (++j) %= n;
     }else{
       (++i) %= n;

@@ -6,10 +6,10 @@
  * @docs update_or.md
  */
 template <typename T, typename U>
-struct UpdateOr{
+struct UpdateOr {
   using value_type_get = T;
   using value_type_update = std::optional<U>;
-  
+
   value_type_get id_get() const {return 0;}
   value_type_update id_update() const {return {};}
 

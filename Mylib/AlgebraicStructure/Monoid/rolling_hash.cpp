@@ -1,5 +1,4 @@
 #pragma once
-
 #include <array>
 #include <utility>
 
@@ -8,7 +7,7 @@
  * @docs rolling_hash.md
  */
 template <size_t N>
-struct RollingHashMonoid{
+struct RollingHashMonoid {
   static std::array<int64_t, N> base;
   static int64_t mod;
 

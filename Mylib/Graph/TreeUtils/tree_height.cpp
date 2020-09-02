@@ -20,6 +20,6 @@ std::vector<T> tree_height(const Tree<T> &tree){
 
   std::vector<T> h(n);
   for(int i = 0; i < n; ++i) h[i] = std::max(d1[i], d2[i]);
-    
+
   return h;
 }

@@ -5,7 +5,8 @@
  * @title Kitamasa algorithm
  * @docs kitamasa_algorithm.md
  */
-template <typename T> struct KitamasaAlgorithm{
+template <typename T>
+struct KitamasaAlgorithm {
   int size;
   std::vector<T> initial_values, coeff;
 
@@ -15,15 +16,15 @@ template <typename T> struct KitamasaAlgorithm{
   std::vector<T> inc(const std::vector<T> &a) const {
     std::vector<T> ret(size);
 
-    for(int i = 0; i < size; ++i) ret[i] += a[size-1] * coeff[i];
-    for(int i = 1; i < size; ++i) ret[i] += a[i-1];
+    for(int i = 0; i < size; ++i) ret[i] += a[size - 1] * coeff[i];
+    for(int i = 1; i < size; ++i) ret[i] += a[i - 1];
 
     return ret;
   }
-  
+
   std::vector<T> dbl(const std::vector<T> &a) const {
     std::vector<T> ret(size), b(a);
-    
+
     for(int j = 0; j < size; ++j){
       for(int i = 0; i < size; ++i){
         ret[i] += a[j] * b[i];
@@ -31,10 +32,10 @@ template <typename T> struct KitamasaAlgorithm{
 
       b = inc(b);
     }
-    
+
     return ret;
   }
-  
+
   T calc(const std::vector<T> &v) const {
     T ret = 0;
     for(int i = 0; i < size; ++i) ret += v[i] * initial_values[i];
@@ -54,7 +55,7 @@ template <typename T> struct KitamasaAlgorithm{
         check = true;
       }
     }
-    
+
     return ret;
   }
 

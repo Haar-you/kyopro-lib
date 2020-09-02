@@ -2,7 +2,6 @@
 #include <vector>
 #include <numeric>
 #include <algorithm>
-
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
 
 /**
@@ -10,7 +9,7 @@
  * @docs fenwick_tree_on_fenwick_tree.md
  */
 template <typename AbelianGroup>
-class FenwickTree2D{
+class FenwickTree2D {
   using value_type = typename AbelianGroup::value_type;
   const static AbelianGroup G;
 
@@ -44,7 +43,6 @@ public:
     c_ys.resize(x_size + 1);
     segs.resize(x_size + 1);
 
-
     std::vector<int> ord(N);
     std::iota(ord.begin(), ord.end(), 0);
     std::sort(ord.begin(), ord.end(), [&](int i, int j){return ys[i] < ys[j];});
@@ -55,11 +53,11 @@ public:
         c_ys[x].emplace_back(ys[i]);
       }
     }
-    
+
     for(int i = 1; i <= x_size; ++i){
       auto &a = c_ys[i];
       a.erase(std::unique(a.begin(), a.end()), a.end());
-      
+
       segs[i] = FenwickTree<AbelianGroup>(c_ys[i].size());
     }
   }

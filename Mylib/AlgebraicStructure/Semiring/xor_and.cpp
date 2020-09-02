@@ -1,10 +1,11 @@
 #pragma once
 
 /**
+ * @tile Xor-and semiring
  * @docs xor_and.md
  */
 template <typename T>
-struct XorAndSemiring{
+struct XorAndSemiring {
   using value_type = T;
   value_type id_add() const {return 0;}
   value_type id_mul() const {return ~(T)0;}

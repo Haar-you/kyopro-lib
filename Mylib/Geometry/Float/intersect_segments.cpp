@@ -7,8 +7,8 @@
  * @title Intersection between two lines
  * @docs intersect_segments.md
  */
-namespace intersect_segments{
-  enum Status{
+namespace intersect_segments {
+  enum Status {
               INTERSECTING     = 0b0001,
               OVERLAPPED       = 0b0010,
               NOT_INTERSECTING = 0b0100,
@@ -16,7 +16,7 @@ namespace intersect_segments{
   };
 
   template <typename T>
-  struct Result{
+  struct Result {
     Status status;
     std::vector<Point<T>> crosspoints;
   };

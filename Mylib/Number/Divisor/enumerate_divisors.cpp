@@ -22,6 +22,6 @@ std::vector<int64_t> enumerate_divisors(int64_t n){
 
   std::reverse(temp.begin(), temp.end());
   ret.insert(ret.end(), temp.begin(), temp.end());
-  
+
   return ret;
 }

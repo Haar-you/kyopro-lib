@@ -8,18 +8,18 @@
  * @docs warshall_floyd.md
  */
 template <typename T>
-struct WarshallFloyd{
+struct WarshallFloyd {
   const int n;
   std::vector<std::vector<std::optional<T>>> dist;
   bool has_negative_cycle;
-  
+
   WarshallFloyd(const Graph<T> &graph):
     n(graph.size()),
-    dist(n, std::vector<std::optional<T>>(n, std::nullopt)),
+    dist(n, std::vector<std::optional<T>>(n)),
     has_negative_cycle(false)
   {
     for(int i = 0; i < n; ++i) dist[i][i] = 0;
-    
+
     for(int i = 0; i < n; ++i){
       for(auto &e : graph[i]){
         dist[e.from][e.to] = e.cost;
@@ -39,7 +39,7 @@ struct WarshallFloyd{
         }
       }
     }
-    
+
     for(int i = 0; i < n; ++i) if(*dist[i][i] < 0) has_negative_cycle = true;
   }
 };

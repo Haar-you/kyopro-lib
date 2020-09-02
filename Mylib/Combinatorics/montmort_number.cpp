@@ -14,7 +14,7 @@ auto montmort_number(int n){
   ret[2] = 1;
 
   for(int i = 3; i <= n; ++i){
-    ret[i] = (ret[i-1] + ret[i-2]) * (i-1);
+    ret[i] = (ret[i - 1] + ret[i - 2]) * (i - 1);
   }
 
   return ret;

@@ -9,7 +9,7 @@
  * @docs push_relabel.md
  */
 template <typename T>
-struct PushRelabel{
+struct PushRelabel {
 private:
   struct edge{
     int from, to;
@@ -36,7 +36,7 @@ private:
       for(int i = 0; i < N; ++i){
         height[i] = N;
       }
-      
+
       std::queue<int> q;
       std::vector<bool> check(N);
       q.push(t);
@@ -87,14 +87,14 @@ private:
     for(auto &e : g[i]){
       if(e.cap > 0) a = std::min(a, height[e.to]);
     }
-    
+
     height[i] = a + 1;
   }
-  
+
 public:
   PushRelabel(){}
   PushRelabel(int N): N(N), g(N), excess(N), height(N){}
-  PushRelabel(std::vector<std::vector<std::pair<int,T>>> g):
+  PushRelabel(std::vector<std::vector<std::pair<int, T>>> g):
     N(g.size()), g(N), excess(N), height(N)
   {
     for(int i = 0; i < N; ++i){
@@ -115,7 +115,7 @@ public:
 
     while(true){
       int index = -1;
-      
+
       while(not next_active_vertex.empty()){
         int i = next_active_vertex.front();
         if(i != s and i != t and excess[i] > 0){
@@ -124,7 +124,7 @@ public:
         }
         next_active_vertex.pop();
       }
-      
+
       if(index == -1) break;
 
       bool ok = false;

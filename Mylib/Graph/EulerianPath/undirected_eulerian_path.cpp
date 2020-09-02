@@ -8,10 +8,10 @@
  * @title Undirected Eulerian path
  * @docs undirected_eulerian_path.md
  */
-class UndirectedEulerianPath{
+class UndirectedEulerianPath {
   const int n; // node count
   int edges = 0; // edge count
-  std::vector<std::map<int,int>> graph;
+  std::vector<std::map<int, int>> graph;
   std::vector<int> degree;
 
   void del(int i, int j){
@@ -34,7 +34,7 @@ class UndirectedEulerianPath{
       del(cur, next);
       std::vector<int> temp;
       dfs(next, temp);
-      path.insert(path.end(), ALL(temp));
+      path.insert(path.end(), temp.begin(), temp.end());
     }
 
     path.push_back(cur);
@@ -55,7 +55,7 @@ public:
 
   std::optional<std::vector<int>> build(){
     std::vector<int> ret;
-    
+
     int odd = 0;
     int start = 0;
     for(int i = 0; i < n; ++i){
@@ -64,9 +64,9 @@ public:
         start = i;
       }
     }
-    
+
     if(odd != 0 and odd != 2) return std::nullopt;
-    
+
     dfs(start, ret);
 
     if((int)ret.size() == edges + 1){

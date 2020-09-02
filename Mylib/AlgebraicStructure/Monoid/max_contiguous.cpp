@@ -2,9 +2,10 @@
 #include <tuple>
 
 /**
+ * @title Max contiguous monoid
  * @docs max_contiguous.md
  */
-struct MaxContiguousMonoid{
+struct MaxContiguousMonoid {
   using value_type = std::tuple<int, int, int, int>;
 
   value_type operator()() const {
@@ -26,7 +27,7 @@ struct MaxContiguousMonoid{
   static value_type zero(){
     return {0, 0, 0, 1};
   }
-  
+
   static value_type one(){
     return {1, 1, 1, 1};
   }

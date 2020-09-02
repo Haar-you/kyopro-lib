@@ -18,13 +18,17 @@ int main(){
   }
 
   std::map<int, std::vector<int>> ans;
-  for(int d : SupersetDesc(t, n)){
-    ans[d];
-    for(int i = 0; i < n; ++i){
-      if(d & (1 << i)) ans[d].push_back(i);
+  superset_desc(
+    t, n,
+    [&](int d){
+      ans[d];
+      for(int i = 0; i < n; ++i){
+        if(d & (1 << i)) ans[d].push_back(i);
+      }
+      return true;
     }
-  }
-  
+  );
+
   for(auto &[m, v] : ans){
     std::cout << m << ":";
     for(auto x : v) std::cout << " " << x;

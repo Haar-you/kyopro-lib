@@ -10,7 +10,7 @@ int main() {
   Graph<int> g(V);
   g.read<0>(E);
 
-  auto res = ChuLiuEdmonds<int>::solve(g, r);
+  auto res = chu_liu_edmonds(g, r);
 
   int ans = 0;
 

@@ -8,16 +8,16 @@
  * @docs double_eps.md
  */
 template <typename T>
-struct DoubleEps{
+struct DoubleEps {
   using value_type = T;
-  
+
   static T eps;
 
   T value;
 
   DoubleEps(): value(0){}
   DoubleEps(T value): value(value){}
-  
+
   auto& operator=(const DoubleEps &rhs){this->value = rhs.value; return *this;}
   auto& operator+=(const DoubleEps &rhs){this->value += rhs.value; return *this;}
   auto& operator-=(const DoubleEps &rhs){this->value -= rhs.value; return *this;}
@@ -37,7 +37,7 @@ struct DoubleEps{
   bool operator>=(const DoubleEps &rhs) const {return !(*this < rhs);}
 
   auto operator-() const {return DoubleEps(-(this->value));}
-  
+
   explicit operator double() const noexcept {return value;}
   explicit operator long double() const noexcept {return value;}
 
@@ -47,9 +47,9 @@ struct DoubleEps{
 
 template <typename T> T DoubleEps<T>::eps;
 
-namespace std{
+namespace std {
   template <typename T>
-  class numeric_limits<DoubleEps<T>>{
+  class numeric_limits<DoubleEps<T>> {
   public:
     static DoubleEps<T> infinity() {return numeric_limits<T>::infinity();}
     static DoubleEps<T> min() {return numeric_limits<T>::min();}

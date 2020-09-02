@@ -6,7 +6,7 @@
  * @docs update_min.md
  */
 template <typename T, typename U>
-struct UpdateMin{
+struct UpdateMin {
   using value_type_get = std::optional<T>;
   using value_type_update = std::optional<U>;
 

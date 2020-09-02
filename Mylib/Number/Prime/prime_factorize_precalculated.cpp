@@ -5,7 +5,7 @@
  * @title Prime factorization (Precalculation)
  * @docs prime_factorize_precalculated.md
  */
-struct PrimeFactorize{
+struct PrimeFactorize {
   std::vector<int> p;
 
   PrimeFactorize(int N): p(N+1){

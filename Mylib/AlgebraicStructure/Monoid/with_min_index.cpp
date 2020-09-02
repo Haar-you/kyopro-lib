@@ -7,7 +7,7 @@
  * @docs with_min_index.md
  */
 template <typename Monoid>
-struct WithMinIndex{
+struct WithMinIndex {
   using value_type = std::pair<typename Monoid::value_type, int64_t>;
   const static Monoid M;
 

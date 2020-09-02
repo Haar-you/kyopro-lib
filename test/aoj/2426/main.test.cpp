@@ -22,7 +22,6 @@ int main(){
     [&](int i, int j){
       return x[i] < x[j];
     },
-    n,
     x,
     y
   );

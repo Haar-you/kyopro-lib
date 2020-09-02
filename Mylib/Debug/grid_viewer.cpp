@@ -8,7 +8,7 @@
  * @docs grid_viewer.md
  */
 template <typename C, typename T = typename C::value_type, typename F = std::function<T(T)>>
-struct GridViewer{
+struct GridViewer {
   std::vector<C> A;
   int width;
   F f;
@@ -18,7 +18,7 @@ struct GridViewer{
   std::ostream& run(std::ostream &s) const {
     const int H = A.size();
     const int W = A[0].size();
-    
+
     auto write_horizon =
       [&](){
         for(int j = 0; j < W; ++j){
@@ -37,7 +37,7 @@ struct GridViewer{
       }
       s << "│" << "\n";
     }
-  
+
     write_horizon();
 
     return s;

@@ -14,7 +14,7 @@ std::vector<Point<T>> common_tangent_of_circles(const Circle<T> &a, const Circle
   const auto cc = b.center - a.center;
   const T r = a.radius - b.radius;
   const T R = a.radius + b.radius;
-  
+
   if(a.radius + b.radius == d){ // 一方が他方に外接している。
     return {
             a.center + (cc * r + normal(cc) * sqrt(abs_sq(cc) - r * r)) * a.radius / abs_sq(cc),

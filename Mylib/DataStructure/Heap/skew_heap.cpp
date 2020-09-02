@@ -7,8 +7,8 @@
  * @docs skew_heap.md
  */
 template <typename T, class Compare = std::less<T>>
-class SkewHeap{
-  struct node{
+class SkewHeap {
+  struct node {
     T val;
     node *left, *right;
     int size;

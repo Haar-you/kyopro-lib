@@ -6,16 +6,16 @@
  * @title Treap (Ordered set)
  * @docs ordered_treap.md
  */
-namespace treap{
+namespace treap {
   template <typename Monoid>
-  class OrderedTreap : public Treap<Monoid>{
+  class OrderedTreap : public Treap<Monoid> {
     using value_type = typename Monoid::value_type;
     using node = TreapNode<Monoid>;
     using super = Treap<Monoid>;
-    
+
   public:
     OrderedTreap(): super(){}
-    
+
   protected:
     int lower_bound(node *t, const value_type &val){
       if(!t) return 0;
@@ -23,7 +23,7 @@ namespace treap{
       if(t->value >= val) return std::min(c, lower_bound(t->left, val));
       else return c + 1 + lower_bound(t->right, val);
     }
-  
+
   public:
     int lower_bound(const value_type &val){
       return lower_bound(super::root, val);
@@ -36,7 +36,7 @@ namespace treap{
       if(t->val > val) return std::min(c, upper_bound(t->left, val));
       else return c + 1 + upper_bound(t->right, val);
     }
-  
+
   public:
     int upper_bound(const value_type &val){
       return upper_bound(super::root, val);

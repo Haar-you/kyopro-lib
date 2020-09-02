@@ -6,7 +6,7 @@
  * @docs add_square_sum.cpp
  */
 template <typename T>
-struct AddSquareSum{
+struct AddSquareSum {
   using value_type_get = std::pair<T, T>;
   using value_type_update = T;
 
@@ -25,7 +25,7 @@ struct AddSquareSum{
   value_type_update op_update(const value_type_update &a, const value_type_update &b) const {
     return a + b;
   }
-  
+
   value_type_get op(const value_type_get &a, const value_type_update &b, int len) const {
     return std::make_pair(a.first + b * len, a.second + b * (2 * a.first + b * len));
   }

@@ -13,15 +13,15 @@ std::optional<int> shortest_cycle(const Graph<T> &g, const int src){
   for(auto &e : g[src]){
     if(e.to == src) return 1; // self loop
   }
-  
+
   if(g[src].size() <= 1) return {};
-  
+
   const int N = g.size();
   std::vector<int> visit(N);
   std::vector<int> dist(N);
 
   visit[src] = -1;
-  
+
   std::queue<int> q;
   for(int i = 0; i < (int)g[src].size(); ++i){
     int j = g[src][i].to;

@@ -2,10 +2,11 @@
 #include <array>
 
 /**
+ * @title Array monoid
  * @docs array.md
  */
 template <typename Monoid, int B>
-struct ArrayMonoid{
+struct ArrayMonoid {
   using value_type = std::array<typename Monoid::value_type, B>;
   const static Monoid M;
 

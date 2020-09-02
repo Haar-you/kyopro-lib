@@ -10,15 +10,15 @@
  * @title Run enumerate
  * @docs run_enumerate.md
  */
-struct RunEnumerate{
-  std::vector<std::tuple<int,int,int>> result;
+struct RunEnumerate {
+  std::vector<std::tuple<int, int, int>> result;
 
 private:
   auto aux(const std::string &first, const std::string &second){
-    std::vector<std::tuple<int,int,int>> ret;
+    std::vector<std::tuple<int, int, int>> ret;
 
     const int N = first.size(), M = second.size();
-  
+
     auto a = z_algorithm(std::string(first.rbegin(), first.rend()));
 
     std::string t = second + '\0' + first + second;
@@ -44,7 +44,7 @@ private:
     const int N = s.size();
     const int m = N / 2;
     const std::string first = s.substr(0, m), second = s.substr(m);
-  
+
     {
       auto res = aux(first, second);
 
@@ -67,7 +67,7 @@ private:
 
   void sub(std::string s){
     const int N = s.size();
-    
+
     {
       auto a = z_algorithm(s);
 
@@ -77,7 +77,7 @@ private:
         }
       }
     }
-    
+
     {
       auto a = z_algorithm(std::string(s.rbegin(), s.rend()));
 

@@ -8,10 +8,10 @@
  * @title Directed Eulerian path
  * @docs directed_eulerian_path.md
  */
-class DirectedEulerianPath{
+class DirectedEulerianPath {
   const int n; // node count
   int edges = 0; // edge count
-  std::vector<std::map<int,int>> graph;
+  std::vector<std::map<int, int>> graph;
   std::vector<int> indegree, outdegree;
 
   void del(int i, int j){
@@ -31,7 +31,7 @@ class DirectedEulerianPath{
       del(cur, next);
       std::vector<int> temp;
       dfs(next, temp);
-      path.insert(path.end(), ALL(temp));
+      path.insert(path.end(), temp.begin(), temp.end());
     }
 
     path.push_back(cur);
@@ -52,7 +52,7 @@ public:
   std::optional<std::vector<int>> build(){
     int in = 0, out = 0;
     int start = 0;
-    
+
     for(int i = 0; i < n; ++i){
       int d = outdegree[i] - indegree[i];
       if(abs(d) > 1) return std::nullopt;
@@ -63,14 +63,14 @@ public:
         ++in;
       }
     }
-    
+
     if(not ((in == 0 and out == 0) or (in == 1 and out == 1))) return std::nullopt;
 
     std::vector<int> ret;
-    
+
     dfs(start, ret);
     std::reverse(ret.begin(), ret.end());
-    if((int)ret.size() == edges+1){
+    if((int)ret.size() == edges + 1){
       return {ret};
     }else{
       return std::nullopt;

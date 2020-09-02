@@ -16,12 +16,12 @@ std::vector<Point<T>> upper_hull(Polygon<T> pts, bool upper = true){
   );
 
   if(upper) std::reverse(pts.begin(), pts.end());
-  
+
   std::vector<Point<T>> ret;
 
   ret.push_back(pts.back());
   pts.pop_back();
-  
+
   while(not pts.empty()){
     const auto s = pts.back();
     pts.pop_back();
@@ -31,8 +31,8 @@ std::vector<Point<T>> upper_hull(Polygon<T> pts, bool upper = true){
     }else{
       const auto p = *(ret.end()-2);
       const auto q = ret.back();
-      
-      if(cross(q-p, s-p) <= 0){
+
+      if(cross(q - p, s - p) <= 0){
         ret.push_back(s);
       }else{
         ret.pop_back();

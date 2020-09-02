@@ -10,7 +10,7 @@
 template <typename T, typename U>
 U weighted_interval_scheduling(std::vector<T> from, std::vector<T> to, std::vector<U> value){
   int n = from.size();
-  
+
   std::vector<T> c(from);
   c.insert(c.end(), to.begin(), to.end());
 
@@ -24,20 +24,20 @@ U weighted_interval_scheduling(std::vector<T> from, std::vector<T> to, std::vect
 
   int m = c.size();
 
-  std::vector<U> dp(m+1);
+  std::vector<U> dp(m + 1);
 
-  std::vector<std::vector<std::pair<int,U>>> memo(m);
+  std::vector<std::vector<std::pair<int, U>>> memo(m);
   for(int i = 0; i < n; ++i){
     memo[to[i]].emplace_back(from[i], value[i]);
   }
 
   for(int i = 0; i < m; ++i){
-    dp[i+1] = dp[i];
+    dp[i + 1] = dp[i];
 
     for(auto &p : memo[i]){
-      dp[i+1] = std::max(dp[i+1], dp[p.first] + p.second);
+      dp[i + 1] = std::max(dp[i + 1], dp[p.first] + p.second);
     }
   }
-  
+
   return dp[m];
 }

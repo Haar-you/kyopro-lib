@@ -3,10 +3,11 @@
 #include <algorithm>
 
 /**
+ * @title Min-add semiring
  * @docs min_add.md
  */
 template <typename T>
-struct MinAddSemiring{
+struct MinAddSemiring {
   using value_type = std::optional<T>;
 
   value_type id_add() const {return std::nullopt;}

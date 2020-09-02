@@ -9,9 +9,9 @@
  * @docs enumerate_triangles.md
  */
 template <typename T>
-std::vector<std::tuple<int,int,int>> enumerate_triangles(const Graph<T> &g){
+std::vector<std::tuple<int, int, int>> enumerate_triangles(const Graph<T> &g){
   const int N = g.size();
-  std::vector<std::tuple<int,int,int>> ret;
+  std::vector<std::tuple<int, int, int>> ret;
 
   std::vector<std::unordered_set<int>> adjacent(N);
 

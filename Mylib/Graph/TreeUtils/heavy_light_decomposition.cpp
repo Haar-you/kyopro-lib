@@ -8,10 +8,11 @@
  * @title Heavy-light decomposition
  * @docs heavy_light_decomposition.md
  */
-template <typename T> class HLDecomposition{
+template <typename T>
+class HLDecomposition {
   Tree<T> tree;
   int n;
-  
+
   std::vector<int> sub, // subtree size
     par, // parent id
     head, // chain head id
@@ -48,11 +49,10 @@ template <typename T> class HLDecomposition{
 
     end[cur] = i;
   }
-  
 
 public:
   HLDecomposition(const Tree<T> &tree, int root):
-    tree(tree), n(tree.size()), sub(n,1), par(n,-1), head(n), id(n), rid(n), next(n,-1), end(n,-1){
+    tree(tree), n(tree.size()), sub(n, 1), par(n, -1), head(n), id(n), rid(n), next(n, -1), end(n, -1){
     dfs_sub(root, -1);
     int i = 0;
     dfs_build(root, i);
@@ -62,7 +62,7 @@ public:
   void path_query_vertex(int x, int y, const Func &f) const {
     while(1){
       if(id[x] > id[y]) std::swap(x, y);
-      f(std::max(id[head[y]], id[x]), id[y]+1);
+      f(std::max(id[head[y]], id[x]), id[y] + 1);
       if(head[x] == head[y]) return;
       y = par[head[y]];
     }
@@ -81,7 +81,7 @@ public:
       if(id[x] > id[y]){
         std::swap(x, y);
       }
-      g(std::max({id[head[y]], id[x], id[w]+1}), id[y]+1);
+      g(std::max({id[head[y]], id[x], id[w] + 1}), id[y] + 1);
       if(head[x] == head[y]) return;
       y = par[head[y]];
     }
@@ -92,17 +92,17 @@ public:
     while(1){
       if(id[x] > id[y]) std::swap(x, y);
       if(head[x] == head[y]){
-        if(x != y) f(id[x]+1, id[y]+1);
+        if(x != y) f(id[x] + 1, id[y] + 1);
         return;
       }
-      f(id[head[y]], id[y]+1);
+      f(id[head[y]], id[y] + 1);
       y = par[head[y]];
     }
   }
-  
+
   template <typename Func> // std::function<void(int,int)>
   void subtree_query_edge(int x, const Func &f) const {
-    f(id[x]+1, end[x]);
+    f(id[x] + 1, end[x]);
   }
 
   template <typename Func> // std::function<void(int,int)>
@@ -116,7 +116,7 @@ public:
     }else if(par[v] == u){
       return id[v];
     }
- 
+
     return -1;
   }
 

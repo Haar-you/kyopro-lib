@@ -6,9 +6,9 @@
  * @docs rollbackable_vector.md
  */
 template <typename T>
-class RollbackableVector{
+class RollbackableVector {
   using value_type = T;
-  
+
   std::vector<T> data;
   std::vector<std::vector<T>> stock;
   std::vector<int> history;

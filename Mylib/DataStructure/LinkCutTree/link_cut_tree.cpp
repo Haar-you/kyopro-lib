@@ -6,7 +6,7 @@
  * @docs link_cut_tree.md
  */
 template <typename Monoid>
-struct LinkCutNode{
+struct LinkCutNode {
   using value_type = typename Monoid::value_type;
   using node = LinkCutNode;
   const static Monoid M;
@@ -56,7 +56,6 @@ struct LinkCutNode{
     }
   }
 
-  
   void rot(int dir_right){
     node *p = parent, *g = p->parent;
 
@@ -80,7 +79,7 @@ struct LinkCutNode{
     if(g->right == p) g->right = this;
     g->update_node_status();
   }
-  
+
   void splay(){
     while(not is_root()){
       node *p = parent, *gp = p->parent;
@@ -115,7 +114,7 @@ struct LinkCutNode{
       p->update_node_status();
       rp = p;
     }
-    
+
     u->splay();
   }
 
@@ -123,7 +122,7 @@ struct LinkCutNode{
     evert(u);
     u->parent = v;
   }
-  
+
   static void cut(node *u){
     expose(u);
     u->left->parent = nullptr;
@@ -149,12 +148,8 @@ struct LinkCutNode{
   }
 };
 
-
-
-
-
 template <typename Monoid>
-class LinkCutTree{
+class LinkCutTree {
   using value_type = typename Monoid::value_type;
   using node = LinkCutNode<Monoid>;
   const static Monoid M;
@@ -172,7 +167,7 @@ public:
   void expose(int k){
     node::expose(nodes[k]);
   }
-  
+
   void cut(int i, int j){
     node::cut(nodes[i], nodes[j]);
   }

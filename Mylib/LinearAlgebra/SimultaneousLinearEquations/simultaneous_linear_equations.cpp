@@ -7,7 +7,7 @@
  * @title Simultaneous linear equations
  * @docs simultaneous_linear_equations.md
  */
-namespace simulaneous_linear_equations{
+namespace simulaneous_linear_equations {
   template <typename T>
   struct Result{
     int rank, dim;
@@ -20,12 +20,12 @@ namespace simulaneous_linear_equations{
     std::optional<Result<T>> ret;
     const int n = a.size();
     const int m = a[0].size();
-  
+
     int rank = 0;
 
     for(int j = 0; j < m; ++j){
       int pivot = -1;
-    
+
       for(int i = rank; i < n; ++i){
         if(a[i][j] != 0){
           pivot = i;
@@ -57,8 +57,8 @@ namespace simulaneous_linear_equations{
         return ret;
       }
     }
-    
-    int dim = m - rank;
+
+    const int dim = m - rank;
 
     std::vector<std::vector<T>> basis(dim, std::vector<T>(m));
     std::vector<int> index;
@@ -68,7 +68,7 @@ namespace simulaneous_linear_equations{
       for(int i = 0; i < rank; ++i){
         for(int j = k; j < m; ++j){
           if(a[i][j] == 1){
-            k = j+1;
+            k = j + 1;
             break;
           }
 
@@ -78,7 +78,7 @@ namespace simulaneous_linear_equations{
 
       for(int j = k; j < m; ++j) index.push_back(j);
     }
-    
+
     for(int i = 0, k = 0; i < rank; ++i){
       for(int j = k; j < m; ++j){
         if(a[i][j] == 1){

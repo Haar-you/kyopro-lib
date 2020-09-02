@@ -12,13 +12,13 @@ template <typename T>
 std::optional<std::vector<int>> topological_sort_lexicographical(const Graph<T> &g){
   const int n = g.size();
   std::vector<int> indeg(n);
-  
+
   for(int i = 0; i < n; ++i){
     for(auto &e : g[i]){
       ++indeg[e.to];
     }
   }
-  
+
   std::priority_queue<int, std::vector<int>, std::greater<int>> q;
   for(int i = 0; i < n; ++i){
     if(indeg[i] == 0) q.push(i);

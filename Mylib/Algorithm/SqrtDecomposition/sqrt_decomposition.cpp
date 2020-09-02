@@ -5,7 +5,7 @@
  * @title Sqrt decomposition
  * @docs sqrt_decomposition.md
  */
-struct SqrtDecomposition{
+struct SqrtDecomposition {
   const int N;
   const int BLOCK_SIZE;
   const int BLOCK_NUM;
@@ -19,7 +19,7 @@ struct SqrtDecomposition{
   void init(const Func &f){
     for(int i = 0; i < BLOCK_NUM; ++i){
       const int L = i * BLOCK_SIZE;
-      const int R = std::min<int>(N, (i+1) * BLOCK_SIZE);
+      const int R = std::min<int>(N, (i + 1) * BLOCK_SIZE);
       f(i, L, R);
     }
   }
@@ -28,7 +28,7 @@ struct SqrtDecomposition{
   void query(int l, int r, const FuncBlock &func_block, const FuncRange &func_range){ // [l, r)
     for(int i = 0; i < BLOCK_NUM; ++i){
       const int L = i * BLOCK_SIZE;
-      const int R = std::min<int>(N, (i+1) * BLOCK_SIZE);
+      const int R = std::min<int>(N, (i + 1) * BLOCK_SIZE);
 
       if(l <= L and R <= r){
         func_block(i, L, R);

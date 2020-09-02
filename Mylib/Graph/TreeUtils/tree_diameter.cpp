@@ -37,7 +37,7 @@ std::pair<T, std::vector<int>> tree_diameter(const Tree<T> &tree){
   check.assign(N, false);
 
   std::vector<int> prev(N);
-  
+
   st.push(u);
   while(st.size()){
     int i = st.top(); st.pop();
@@ -63,6 +63,6 @@ std::pair<T, std::vector<int>> tree_diameter(const Tree<T> &tree){
     if(cur == u) break;
     cur = prev[cur];
   }
-  
+
   return std::make_pair(dp[v], ret);
 }

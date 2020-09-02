@@ -1,10 +1,11 @@
 #pragma once
 
 /**
+ * @title Sum group
  * @docs sum.md
  */
 template <typename T>
-struct SumGroup{
+struct SumGroup {
   using value_type = T;
 
   value_type operator()() const {return 0;}

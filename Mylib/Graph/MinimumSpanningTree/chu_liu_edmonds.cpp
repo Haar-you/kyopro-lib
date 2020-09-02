@@ -8,13 +8,13 @@
  * @title Chu-Liu/Edmonds algorithm
  * @docs chu_liu_edmonds.md
  */
-template <typename T>
-class ChuLiuEdmonds{
-  static Graph<T> rec(Graph<T> g, int r){
+namespace chu_liu_edmonds_impl {
+  template <typename T>
+  Graph<T> rec(Graph<T> g, int r){
     const int N = g.size();
 
     Graph<T> in_edges(N);
-    
+
     for(int i = 0; i < N; ++i){
       if(i != r){
         auto e = *std::min_element(g[i].begin(), g[i].end(),
@@ -43,7 +43,7 @@ class ChuLiuEdmonds{
               g[j].begin(), g[j].end(),
               [](const auto &a, const auto &b){return a.cost < b.cost;}
             );
-          
+
           for(auto &e : g[j]){
             e.cost -= c.cost;
           }
@@ -93,37 +93,37 @@ class ChuLiuEdmonds{
 
     return in_edges;
   }
+}
 
-public:
-  static auto solve(Graph<T> g, int r){
-    std::vector<Edge<T>> ret;
-    
-    const int N = g.size();
-    
-    Graph<T> rg(N);
-    for(int i = 0; i < N; ++i){
-      for(auto &e : g[i]){
-        rg.add_edge(e.to, e.from, e.cost);
-      }
+template <typename T>
+auto chu_liu_edmonds(Graph<T> g, int r){
+  std::vector<Edge<T>> ret;
+
+  const int N = g.size();
+
+  Graph<T> rg(N);
+  for(int i = 0; i < N; ++i){
+    for(auto &e : g[i]){
+      rg.add_edge(e.to, e.from, e.cost);
     }
-
-    auto res = rec(rg, r);
-
-    for(int i = 0; i < N; ++i){
-      if(i != r){
-
-        std::vector<T> c;
-
-        for(auto &e : rg[i]){
-          if(e.to == res[i][0].to){
-            c.push_back(e.cost);
-          }
-        }
-        
-        ret.emplace_back(res[i][0].to, i, *std::min_element(c.begin(), c.end()));
-      }
-    }
-
-    return ret;
   }
-};
+
+  auto res = chu_liu_edmonds_impl::rec(rg, r);
+
+  for(int i = 0; i < N; ++i){
+    if(i != r){
+
+      std::vector<T> c;
+
+      for(auto &e : rg[i]){
+        if(e.to == res[i][0].to){
+          c.push_back(e.cost);
+        }
+      }
+
+      ret.emplace_back(res[i][0].to, i, *std::min_element(c.begin(), c.end()));
+    }
+  }
+
+  return ret;
+}

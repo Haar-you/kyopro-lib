@@ -1,9 +1,7 @@
 #pragma once
-
 #include <vector>
 #include <utility>
 #include <algorithm>
-
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp"
 #include "Mylib/Algorithm/Mo/mo_algorithm.cpp"
 
@@ -12,7 +10,7 @@
  * @docs range_inversions_query.md
  */
 template <typename T>
-class RangeInversionsQuery{
+class RangeInversionsQuery {
   std::vector<int> a;
   int N;
   std::vector<std::pair<int, int>> qs;

@@ -11,7 +11,7 @@ template <typename T>
 T area_intersection_of_circle_and_polygon(const Circle<T> &cl, const Polygon<T> &ps){
   const int n = ps.size();
   T ret = 0;
-  
+
   for(int i = 0; i < n; ++i){
     T temp = 0;
 
@@ -25,7 +25,7 @@ T area_intersection_of_circle_and_polygon(const Circle<T> &cl, const Polygon<T> 
 
     const T d1 = abs(p1 - c);
     const T d2 = abs(p2 - c);
-    
+
     if(res.size() == 0){
       if(t == intersect_circle_segment::INSIDE){ // if inside
         temp += cross(p1 - c, p2 - c) / 2;
@@ -49,7 +49,7 @@ T area_intersection_of_circle_and_polygon(const Circle<T> &cl, const Polygon<T> 
         cross(q1-c, q2-c) / 2 +
         r * r * angle_diff(q2 - c, p2 - c) / 2;
     }
-    
+
     ret += temp;
   }
 

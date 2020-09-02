@@ -10,7 +10,7 @@
  */
 template <typename T>
 std::vector<Edge<T>> kruskal(const Graph<T> &graph){
-  int n = graph.size();
+  const int n = graph.size();
   std::vector<Edge<T>> edges;
   for(auto &v : graph){
     for(auto &e : v){

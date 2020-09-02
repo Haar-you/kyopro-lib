@@ -23,14 +23,12 @@ Circle<T> minimum_covering_circle(std::vector<Point<T>> ps, int seed = 0){
                     return Circle<T>(c, abs(p - c));
                   };
 
-
   auto check = [](const auto &p, const auto &c){
                  return abs(c.center - p) <= c.radius;
                };
 
-
   Circle<T> ret = make_circle_2(ps[0], ps[1]);
-  
+
   for(int i = 2; i < N; ++i){
     if(check(ps[i], ret)) continue;
 

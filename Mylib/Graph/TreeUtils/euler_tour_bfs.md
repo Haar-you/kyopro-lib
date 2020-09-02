@@ -24,6 +24,6 @@
 ## References
 
 - [https://niuez.hatenablog.com/entry/2019/10/05/002503](https://niuez.hatenablog.com/entry/2019/10/05/002503)
-- [https://niuez.github.io/2020/03/dfs_bfs_et/](https://niuez.github.io/2020/03/dfs_bfs_et/)
+- [https://niuez.github.io/posts/entry/2019/10/05/002503/](https://niuez.github.io/posts/entry/2019/10/05/002503/)
 
 

@@ -7,7 +7,7 @@
  * @docs multiply_product.md
  */
 template <typename T, typename U>
-struct MultiplyProduct{
+struct MultiplyProduct {
   using monoid_get = ProductMonoid<T>;
   using monoid_update = ProductMonoid<U>;
   using value_type_get = typename monoid_get::value_type;

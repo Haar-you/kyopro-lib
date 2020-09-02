@@ -7,13 +7,13 @@
  * @docs euler_tour_vertex.md
  */
 template <typename T>
-class EulerTourVertex{
+class EulerTourVertex {
   int pos = 0;
   std::vector<int> begin, end;
 
   void dfs(int cur, int par, const Tree<T> &tree){
     begin[cur] = pos++;
-	
+
     for(auto &e : tree[cur]){
       if(e.to == par) continue;
       dfs(e.to, cur, tree);

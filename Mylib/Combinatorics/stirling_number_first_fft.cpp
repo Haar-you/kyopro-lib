@@ -10,7 +10,7 @@
 template <typename T, typename Conv>
 std::vector<T> stirling_number_of_first_kind(int N, const Conv &convolve){
   if(N == 0) return {1};
-  
+
   std::vector<int> p;
   {
     int a = N;
@@ -30,7 +30,7 @@ std::vector<T> stirling_number_of_first_kind(int N, const Conv &convolve){
     if(x == 1){
       std::vector<T> a = {-t, 1};
       ret = convolve(ret, a);
-      
+
       t += 1;
     }else{
       auto s = polynomial_taylor_shift<T>(ret, -t, convolve);

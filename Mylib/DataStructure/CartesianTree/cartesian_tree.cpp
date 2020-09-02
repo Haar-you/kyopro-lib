@@ -16,7 +16,7 @@ auto cartesian_tree(const std::vector<T> &a, Compare compare){
     if(i == 0){
       continue;
     }
-    
+
     int j = i - 1;
 
     while(1){
@@ -38,7 +38,7 @@ auto cartesian_tree(const std::vector<T> &a, Compare compare){
 
       l[i] = t;
       if(t) p[*t] = i;
-      
+
       break;
     }
   }

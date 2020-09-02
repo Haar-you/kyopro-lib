@@ -10,7 +10,7 @@
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
+class InputTuples {
   struct iter{
     using value_type = std::tuple<Args ...>;
     value_type value;

@@ -10,18 +10,18 @@ class DynamicDualSegmentTree{
   using value_type = typename Monoid::value_type;
   const static Monoid M;
 
-  struct Node{
+  struct Node {
     value_type val;
     Node *left = nullptr, *right = nullptr;
     Node(const value_type &val): val(val) {}
   };
-  
+
   const int64_t depth, size;
   Node *root = nullptr;
   std::unordered_map<int64_t, Node*> umap;
 
   Node* propagate(Node *node, int64_t l, int64_t r){
-    if(r-l > 1){
+    if(r - l > 1){
       if(not node->left) node->left = new Node(M());
       node->left->val = M(node->val, node->left->val);
 
@@ -42,7 +42,7 @@ class DynamicDualSegmentTree{
     if(r < x || y < l) return;
     else if(x <= l && r <= y) node->val = M(node->val, val);
     else{
-      int64_t m = (l+r)/2;
+      const int64_t m = (l + r) / 2;
       propagate(node, l, r);
       update(node->left, l, m, x, y, val);
       update(node->right, m, r, x, y, val);
@@ -62,7 +62,7 @@ class DynamicDualSegmentTree{
 
 public:
   DynamicDualSegmentTree(int64_t n):
-    depth(n > 1 ? 64-__builtin_clzll(n-1) + 1 : 1),
+    depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),
     size(1LL << depth)
   {
     root = new Node(M());

@@ -7,8 +7,8 @@
  * @title Intersection between a circle and a segment
  * @docs intersect_circle_segment.md
  */
-namespace intersect_circle_segment{
-  enum Status{
+namespace intersect_circle_segment {
+  enum Status {
               INSIDE         = 0b00001,
               OUTSIDE        = 0b00010,
               TANGENT        = 0b00100,
@@ -17,7 +17,7 @@ namespace intersect_circle_segment{
   };
 
   template <typename T>
-  struct Result{
+  struct Result {
     Status status;
     std::vector<Point<T>> crosspoints;
   };
@@ -30,7 +30,7 @@ namespace intersect_circle_segment{
     const T d1 = abs(c - s.from);
     const T d2 = abs(c - s.to);
     const T v = distance_segment_point(s, c);
-    const T m = sqrt(r*r - v*v);
+    const T m = sqrt(r * r - v * v);
     const auto n = normal(s);
     const auto k = s.from + diff(s) * cross(n, c + n - s.from) / cross(n, diff(s));
 
@@ -48,9 +48,9 @@ namespace intersect_circle_segment{
     }
 
     const T b = dot(unit(s), s.from - c);
-    const T a = abs_sq(s.from - c) - r*r;
-    const T x = sqrt(b*b - a);
+    const T a = abs_sq(s.from - c) - r * r;
+    const T x = sqrt(b * b - a);
 
-    return Result<T>({ONE_CROSSPOINT, {s.from + unit(s) * (-b-x >= 0 ? -b-x : -b+x)}});
+    return Result<T>({ONE_CROSSPOINT, {s.from + unit(s) * (-b - x >= 0 ? -b - x : -b + x)}});
   }
 };

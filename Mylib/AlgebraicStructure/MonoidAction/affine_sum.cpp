@@ -6,7 +6,7 @@
  * @docs affine_sum.md
  */
 template <typename T, typename U>
-struct AffineSum{
+struct AffineSum {
   using value_type_get = T;
   using value_type_update = std::pair<U, U>;
 

@@ -10,9 +10,9 @@ int main(){
   int n; std::cin >> n;
 
   auto a = input_vector<int>(n);
-  
+
   auto ans = inversion_number(a, std::greater<int>());
   std::cout << ans << std::endl;
-  
+
   return 0;
 }

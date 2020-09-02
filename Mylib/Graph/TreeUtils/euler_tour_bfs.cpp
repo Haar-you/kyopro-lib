@@ -8,7 +8,7 @@
  * @docs euler_tour_bfs.md
  */
 template <typename T>
-struct EulerTourBFS{
+struct EulerTourBFS {
   int N;
   std::vector<int> parent;
   std::vector<int> depth;
@@ -26,7 +26,7 @@ struct EulerTourBFS{
     }
 
     {
-      std::queue<std::pair<int,int>> q;
+      std::queue<std::pair<int, int>> q;
       q.emplace(root, 0);
       int ord = 0;
 
@@ -49,7 +49,7 @@ struct EulerTourBFS{
     parent[cur] = par;
     depth[cur] = d;
 
-    if((int)dfs_order.size() <= d) dfs_order.push_back(std::vector<int>());
+    if((int)dfs_order.size() <= d) dfs_order.emplace_back();
     dfs_order[d].push_back(ord);
     left[cur] = ord;
     ++ord;
@@ -74,7 +74,7 @@ public:
         if(l >= (int)bfs_order[d].size()) return;
         if(r == l) return;
 
-        f(bfs_order[d][l], bfs_order[d][r-1] + 1);
+        f(bfs_order[d][l], bfs_order[d][r - 1] + 1);
       }
     }
   }
@@ -83,7 +83,7 @@ public:
   void query_at(int i, const Func &f) const {
     query_children(i, 0, f);
   }
-  
+
   int get_parent(int i) const {
     if(i == -1) return -1;
     return parent[i];

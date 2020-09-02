@@ -8,7 +8,7 @@
 template <typename Fps>
 auto subset_sum_count_fps(std::vector<int> s, int t){
   using T = typename Fps::value_type;
-  
+
   std::vector<int> c(t + 1);
   for(int i : s) c[i] += 1;
 

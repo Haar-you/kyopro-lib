@@ -8,10 +8,10 @@
  * @docs sliding_window_aggregation.md
  */
 template <typename Semigroup>
-class SlidingWindowAggregation{
+class SlidingWindowAggregation {
   using value_type = typename Semigroup::value_type;
   const static Semigroup S;
-  
+
   std::stack<value_type> front_stack, back_stack;
   std::vector<value_type> front_sum, back_sum;
 
@@ -28,10 +28,10 @@ class SlidingWindowAggregation{
   std::optional<value_type> g(const std::vector<value_type> &a) const {
     return a.empty() ? std::nullopt : std::optional(a.back());
   }
-  
+
 public:
   SlidingWindowAggregation(){}
-  
+
   std::optional<value_type> fold() const {
     return f(g(front_sum), g(back_sum));
   }

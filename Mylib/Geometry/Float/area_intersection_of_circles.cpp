@@ -9,7 +9,7 @@
 template <typename T>
 T area_of_intersection_of_circles(const Circle<T> &a, const Circle<T> &b){
   auto [s, p] = intersect_circles::check(a, b);
-  
+
   switch(s){
   case intersect_circles::SAME: {
     return a.radius * a.radius * M_PI;
@@ -32,7 +32,7 @@ T area_of_intersection_of_circles(const Circle<T> &a, const Circle<T> &b){
       T ang = acos((b.radius * b.radius + d * d - a.radius * a.radius) / (b.radius * d * 2.0));
       ret += (ang - sin(ang * 2.0) / 2.0) * b.radius * b.radius;
     }
-    
+
     return ret;
   }
   case intersect_circles::CIRCUMSCRIBED:

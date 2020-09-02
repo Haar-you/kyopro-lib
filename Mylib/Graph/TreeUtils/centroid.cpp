@@ -7,7 +7,7 @@
  * @docs centroid.md
  */
 template <typename T>
-class Centroid{
+class Centroid {
 public:
   int N;
   std::vector<int> subtree;

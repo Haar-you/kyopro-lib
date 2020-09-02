@@ -12,7 +12,7 @@ template <typename T>
 std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
   const int n = g.size();
   std::vector<int> indeg(n);
-  
+
   for(int i = 0; i < n; ++i){
     for(auto &e : g[i]){
       ++indeg[e.to];

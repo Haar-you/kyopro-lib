@@ -9,7 +9,7 @@
  * @docs forest.md
  */
 template <typename T>
-struct Forest{
+struct Forest {
   std::vector<Tree<T>> trees;
   std::vector<int> tree_id;
   std::vector<int> vertex_id;
@@ -42,7 +42,7 @@ struct Forest{
         std::vector<int> vertices;
         std::vector<Edge<T>> edges;
         dfs(dfs, i, vertices, edges);
-        
+
         const int m = vertices.size();
         const int k = trees.size();
 
@@ -62,7 +62,7 @@ struct Forest{
       }
     }
   }
-  
+
   bool in_same_tree(int i, int j) const {
     return tree_id[i] == tree_id[j];
   }

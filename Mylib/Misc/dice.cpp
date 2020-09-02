@@ -4,7 +4,7 @@
  * @title Dice
  * @docs dice.md
  */
-struct Dice{
+struct Dice {
   int top, bottom, front, back, right, left;
 
   Dice(){}
@@ -22,7 +22,7 @@ struct Dice{
   Dice rot_front() const {
     return Dice(back, front, top, bottom, right, left);
   }
-  
+
   Dice rot_back() const {
     return Dice(front, back, bottom, top, right, left);
   }

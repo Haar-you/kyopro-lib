@@ -7,14 +7,14 @@
 /**
  * @docs range_tree.md
  */
-class RangeTree{
+class RangeTree {
   int N = 0;
   std::vector<int64_t> xs, ys;
   std::vector<int64_t> c_xs;
 
   int size;
   std::vector<std::vector<std::pair<int64_t, int>>> data;
-  
+
 public:
   RangeTree(){}
 
@@ -56,10 +56,10 @@ public:
    */
   std::vector<std::pair<int64_t, int64_t>> get(int64_t sx, int64_t sy, int64_t tx, int64_t ty) const {
     std::vector<std::pair<int64_t, int64_t>> ret;
-    
+
     int L = std::lower_bound(c_xs.begin(), c_xs.end(), sx) - c_xs.begin();
     int R = std::lower_bound(c_xs.begin(), c_xs.end(), tx) - c_xs.begin();
-    
+
     L += size / 2;
     R += size / 2;
 
@@ -71,7 +71,7 @@ public:
 
         while(it != a.end()){
           if(it->first >= ty) break;
-          
+
           ret.emplace_back(c_xs[it->second], it->first);
 
           ++it;
@@ -85,7 +85,7 @@ public:
 
         while(it != a.end()){
           if(it->first >= ty) break;
-          
+
           ret.emplace_back(c_xs[it->second], it->first);
 
           ++it;

@@ -14,7 +14,7 @@ int64_t factorial_prime_factorization(int64_t a, int64_t p){
 
     int64_t k;
     if(__builtin_smulll_overflow(q, p, &k)) break;
-    
+
     q = k;
   }
   return ret;

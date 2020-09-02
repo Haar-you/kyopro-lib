@@ -32,11 +32,11 @@ std::vector<std::vector<int>> enumerate_functional_cycles(std::vector<int> g){
             return {-1};
           }
         }
-        
+
         check[cur] = SEARCHED;
         return res;
       }
-      
+
       check[cur] = SEARCHED;
       return std::nullopt;
     };

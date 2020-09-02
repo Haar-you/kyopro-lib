@@ -8,7 +8,7 @@
  * @docs starry_sky_tree.md
  */
 template <typename T, typename Compare>
-class StarrySkyTree{
+class StarrySkyTree {
   int depth, size, hsize;
   std::vector<T> data;
 
@@ -24,7 +24,7 @@ class StarrySkyTree{
     while(i >= 1){
       if(i < hsize){
         const auto d = f(data[i << 1 | 0], data[i << 1 | 1]);
-        
+
         data[i << 1 | 0] -= d;
         data[i << 1 | 1] -= d;
         data[i] += d;
@@ -33,7 +33,7 @@ class StarrySkyTree{
       i >>= 1;
     }
   }
-  
+
   std::optional<T> get(int i, int l, int r, int s, int t, T val) const {
     if(r <= s or t <= l) return std::nullopt;
     if(s <= l and r <= t) return val + data[i];
@@ -48,7 +48,7 @@ class StarrySkyTree{
 
 public:
   StarrySkyTree(int n):
-    depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
+    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
     size(1 << depth),
     hsize(size / 2),
     data(size, 0)

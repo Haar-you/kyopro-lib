@@ -6,10 +6,10 @@
  * @docs add_min.md
  */
 template <typename T, typename U>
-struct AddMin{
+struct AddMin {
   using value_type_get = std::optional<T>;
   using value_type_update = U;
-  
+
   value_type_get id_get() const {return {};}
   value_type_update id_update() const {return 0;}
 

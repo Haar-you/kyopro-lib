@@ -20,7 +20,7 @@ auto polynomial_taylor_shift(std::vector<T> a, T c, const Conv &convolve){
   std::vector<T> g(N);
   g[N - 1] = f.inv();
   for(int i = N - 2; i >= 0; --i) g[i] = g[i + 1] * (i + 1);
-  
+
   std::vector<T> B(2 * N - 1);
   for(int i = 0; i < N; ++i){
     B[N - i - 1] = d * g[i];

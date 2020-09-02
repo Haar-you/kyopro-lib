@@ -9,7 +9,7 @@
 template <typename T = double, typename Func = std::function<T(T)>>
 T golden_section_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
   static const T phi = (1.0 + std::sqrt(5)) / 2;
-  
+
   T t1 = 0, t2 = 0;
 
   while(LOOP_COUNT--){

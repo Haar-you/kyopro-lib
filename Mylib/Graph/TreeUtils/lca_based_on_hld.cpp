@@ -7,10 +7,11 @@
  * @title Lowest common ancestor (HLD)
  * @docs lca_based_on_hld.md
  */
-template <typename T> class LCA{
+template <typename T>
+class LCA {
   int n;
   std::vector<int> sub, par, head, id;
-  
+
   int dfs_sub(int cur, int p, Tree<T> &tree){
     par[cur] = p;
     int t = 0;
@@ -35,10 +36,10 @@ template <typename T> class LCA{
       dfs_build(e.to, i, tree);
     }
   }
-  
+
 public:
   LCA(Tree<T> tree, int root):
-    n(tree.size()), sub(n,1), par(n,-1), head(n), id(n){
+    n(tree.size()), sub(n, 1), par(n, -1), head(n), id(n){
     dfs_sub(root, -1, tree);
     int i = 0;
     dfs_build(root, i, tree);

@@ -5,7 +5,6 @@
  * @title Roman numerals
  * @docs roman_numerals.md
  */
-
 int roman_to_num(std::string s){
   int ret = 0;
 

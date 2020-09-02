@@ -1,12 +1,13 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <string_view>
 
 /**
  * @title Knuth-Morris-Pratt algorithm
  * @docs knuth_morris_pratt.md
  */
-struct KMP{
+struct KMP {
   int M;
   std::string pattern;
   std::vector<int> table;
@@ -31,7 +32,7 @@ struct KMP{
     }
   }
 
-  std::vector<int> match(std::string s) const {
+  std::vector<int> match(const std::string_view &s) const {
     std::vector<int> ret;
     const int N = s.size();
 

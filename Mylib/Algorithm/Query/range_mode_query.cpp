@@ -8,22 +8,22 @@
  * @docs range_mode_query.md
  */
 template <typename T>
-class RangeModeQuery{
+class RangeModeQuery {
   std::vector<T> a, D;
   std::vector<int> b, b_index;
-  
+
   const int N;
   const int block_size;
   const int block_num;
 
   int K;
-  
+
   std::vector<std::vector<int>> index;
   std::vector<std::vector<int>> mode, freq;
-  
+
 public:
   RangeModeQuery(std::vector<T> a):
-    a(a), D(a), N(a.size()), block_size(sqrt(N)), block_num((N+block_size-1)/block_size),
+    a(a), D(a), N(a.size()), block_size(sqrt(N)), block_num((N + block_size - 1) / block_size),
     mode(block_num, std::vector<int>(block_num)),
     freq(block_num, std::vector<int>(block_num))
   {
@@ -45,7 +45,6 @@ public:
     }
 
     for(int i = 0; i < block_num; ++i){
-
       std::vector<int> temp(K);
       int md = 0, fr = 0;
 
@@ -77,12 +76,12 @@ public:
 
     // prefix
     for(int i = l; i < std::min(r, span_l * block_size); ++i){
-      if(b_index[i]-1 >= 0 and index[b[i]][b_index[i]-1] >= l) continue;
-      
-      if(b_index[i]+ret.first-1 < 0 or (b_index[i]+ret.first-1 < (int)index[b[i]].size() and index[b[i]][b_index[i]+ret.first-1] < r)){
+      if(b_index[i] - 1 >= 0 and index[b[i]][b_index[i] - 1] >= l) continue;
+
+      if(b_index[i] + ret.first - 1 < 0 or (b_index[i] + ret.first - 1 < (int)index[b[i]].size() and index[b[i]][b_index[i] + ret.first - 1] < r)){
         int fr = ret.first;
-        
-        for(int j = b_index[i]+ret.first; j < (int)index[b[i]].size(); ++j){
+
+        for(int j = b_index[i] + ret.first; j < (int)index[b[i]].size(); ++j){
           if(index[b[i]][j] < r) ++fr;
           else break;
         }
@@ -92,15 +91,15 @@ public:
         }
       }
     }
-    
-    // suffix
-    for(int i = r-1; i >= std::max(l, (span_r+1) * block_size); --i){
-      if(b_index[i]+1 < (int)index[b[i]].size() and index[b[i]][b_index[i]+1] < r) continue;
 
-      if(b_index[i]-ret.first+1 >= (int)index[b[i]].size() or (b_index[i]-ret.first+1 >= 0 and index[b[i]][b_index[i]-ret.first+1] >= l)){
+    // suffix
+    for(int i = r - 1; i >= std::max(l, (span_r + 1) * block_size); --i){
+      if(b_index[i] + 1 < (int)index[b[i]].size() and index[b[i]][b_index[i] + 1] < r) continue;
+
+      if(b_index[i] - ret.first + 1 >= (int)index[b[i]].size() or (b_index[i] - ret.first + 1 >= 0 and index[b[i]][b_index[i] - ret.first + 1] >= l)){
         int fr = ret.first;
 
-        for(int j = b_index[i]-ret.first; j >= 0; --j){
+        for(int j = b_index[i] - ret.first; j >= 0; --j){
           if(index[b[i]][j] >= l) ++fr;
           else break;
         }
@@ -110,7 +109,7 @@ public:
         }
       }
     }
-    
+
     return ret;
   }
 };

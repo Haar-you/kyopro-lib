@@ -16,7 +16,7 @@ int main(){
 
   auto p = input_vector<Point<D>>(n);
 
-  auto ans = closest_pair::solve(p);
+  auto ans = closest_pair(p);
 
   std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
 

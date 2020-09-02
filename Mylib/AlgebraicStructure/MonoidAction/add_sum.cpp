@@ -5,7 +5,7 @@
  * @docs add_sum.md
  */
 template <typename T, typename U>
-struct AddSum{
+struct AddSum {
   using value_type_get = T;
   using value_type_update = U;
 

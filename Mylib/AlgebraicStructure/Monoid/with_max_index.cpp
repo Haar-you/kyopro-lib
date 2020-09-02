@@ -7,7 +7,7 @@
  * @docs with_max_index.md
  */
 template <typename Monoid>
-struct WithMaxIndex{
+struct WithMaxIndex {
   using value_type = std::pair<typename Monoid::value_type, int64_t>;
   const static Monoid M;
 

@@ -1,8 +1,6 @@
 #pragma once
-
 #include <vector>
 #include <utility>
-
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
@@ -36,7 +34,7 @@ auto boruvka(const Graph<T> &g){
           }
         }
       }
-      
+
       temp.push_back(m);
     }
 

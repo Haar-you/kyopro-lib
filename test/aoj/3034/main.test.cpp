@@ -27,13 +27,13 @@ int main(){
 
   std::vector<double> memo(1 << N);
 
-  for(int t = 0; t < (1 << N); ++t){  
+  for(int t = 0; t < (1 << N); ++t){
     std::vector<Point<D>> q;
     for(int i = 0; i < N; ++i){
       if(t & (1 << i)) q.push_back(ps[i]);
     }
     memo[t] = (double)minimum_covering_circle(q).radius;
-  }  
+  }
 
   const int mask = (1 << N) - 1;
 
@@ -49,11 +49,15 @@ int main(){
         check[d][s] = true;
 
         D ret = INF;
-        
-        for(int t : SubsetAsc(s)){
-          D val = std::max((double)rec(d+1, s^t), memo[t]);
-          ret = std::min((double)ret, (double)val);
-        }
+
+        subset_asc(
+          s,
+          [&](int t){
+            D val = std::max((double)rec(d+1, s^t), memo[t]);
+            ret = std::min((double)ret, (double)val);
+            return true;
+          }
+        );
         
         return dp[d][s] = ret;
       }

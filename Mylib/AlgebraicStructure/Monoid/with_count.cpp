@@ -5,7 +5,7 @@
  * @docs with_count.md
  */
 template <typename Monoid>
-struct WithCount{
+struct WithCount {
   using value_type = std::pair<typename Monoid::value_type, int64_t>;
   const static Monoid M;
 

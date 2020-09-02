@@ -11,7 +11,7 @@
 - [TDPC T - フィボナッチ](https://atcoder.jp/contests/tdpc/tasks/tdpc_fibonacci)
 
 ## References
- 
+
 - [https://misawa.github.io/others/fast_kitamasa_method.html](https://misawa.github.io/others/fast_kitamasa_method.html)
 - [https://smijake3.hatenablog.com/entry/2017/01/02/024712](https://smijake3.hatenablog.com/entry/2017/01/02/024712)
 - [http://sugarknri.hatenablog.com/entry/2017/11/18/233936](http://sugarknri.hatenablog.com/entry/2017/11/18/233936)

@@ -6,13 +6,13 @@
  * @docs dual_segment_tree.md
  */
 template <typename Monoid>
-class DualSegmentTree{
+class DualSegmentTree {
   using value_type = typename Monoid::value_type;
   const static Monoid M;
 
   const int depth, size, hsize;
   std::vector<value_type> data;
-  
+
   void propagate(int i){
     if(i < hsize){
       data[i << 1 | 0] = M(data[i], data[i << 1 | 0]);
@@ -30,10 +30,10 @@ class DualSegmentTree{
 
     for(auto it = temp.rbegin(); it != temp.rend(); ++it) propagate(*it);
   }
-  
+
 public:
   DualSegmentTree(int n):
-    depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
+    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
     size(1 << depth), hsize(size / 2),
     data(size, M())
   {}
@@ -44,7 +44,7 @@ public:
 
     int L = l + hsize;
     int R = r + hsize;
-    
+
     while(L < R){
       if(R & 1) --R, data[R] = M(x, data[R]);
       if(L & 1) data[L] = M(x, data[L]), ++L;

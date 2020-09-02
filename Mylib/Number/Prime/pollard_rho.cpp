@@ -12,7 +12,7 @@
  * @title Prime factorization (Pollard's rho algorithm)
  * @docs pollard_rho.md
  */
-struct PollardRho{
+struct PollardRho {
   static int128_t f(int128_t x){
     return x * x + 1;
   }
@@ -46,13 +46,13 @@ struct PollardRho{
     }
 
     MillerRabin is_prime;
-  
+
     while(n > 1){
       if(is_prime(n)){
         ret.emplace_back(n, 1);
         break;
       }
-    
+
       auto res = rho(n);
       if(not res){
         assert(false);
@@ -66,12 +66,12 @@ struct PollardRho{
         n /= r;
         ++c;
       }
-    
+
       ret.emplace_back(r, c);
     }
 
     std::sort(ret.begin(), ret.end());
-  
+
     return ret;
   }
 };

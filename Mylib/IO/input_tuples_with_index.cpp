@@ -10,7 +10,7 @@
  * @docs input_tuples_with_index.md
  */
 template <typename ... Args>
-class InputTuplesWithIndex{
+class InputTuplesWithIndex {
   struct iter{
     using value_type = std::tuple<int, Args ...>;
     value_type value;

@@ -8,7 +8,7 @@
  * @docs range.md
  */
 template <typename T>
-struct Range{
+struct Range {
   std::optional<std::pair<std::optional<T>, std::optional<T>>> value;
 
   Range(){}
@@ -35,7 +35,7 @@ struct Range{
     if(not value) return false;
     if(value->first and v < *(value->first)) return false;
     if(value->second and v > *(value->second)) return false;
-    
+
     return true;
   }
 };
@@ -62,7 +62,7 @@ auto intersect(Range<T> a, Range<T> b){
     if(r) r = std::min(*r, *((b.value)->second));
     else r = *((b.value)->second);
   }
-  
+
   if(l and r){
     if(*l > *r){
       return Range<T>();
@@ -80,7 +80,7 @@ auto left_expand(Range<T> a, T x){
       return Range<T>();
     }
   }
-  
+
   return a;
 }
 
@@ -92,6 +92,6 @@ auto right_expand(Range<T> a, T x){
       return Range<T>();
     }
   }
-  
+
   return a;
 }

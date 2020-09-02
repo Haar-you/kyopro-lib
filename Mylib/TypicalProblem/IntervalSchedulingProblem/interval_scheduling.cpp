@@ -10,9 +10,9 @@
  * @docs interval_scheduling.md
  */
 template <typename T>
-std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){
+std::vector<std::pair<T, T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){
   const int N = l.size();
-  std::vector<std::pair<T,T>> ret;
+  std::vector<std::pair<T, T>> ret;
   std::vector<int> ord(N);
   std::iota(ord.begin(), ord.end(), 0);
   std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
@@ -25,6 +25,6 @@ std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &l, const s
       b = r[i];
     }
   }
-  
+
   return ret;
 }

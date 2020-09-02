@@ -7,14 +7,14 @@
  * @docs centroid_decomposition.md
  */
 template <typename T>
-struct CentroidDecomposition{
+struct CentroidDecomposition {
   Tree<T> tree;
   const int N;
 
   std::vector<int> size;
   std::vector<bool> checked;
   std::vector<int> depth;
-  
+
   CentroidDecomposition(const Tree<T> &tree):
     tree(tree), N(tree.size()), size(N), checked(N), depth(N)
   {
@@ -30,7 +30,7 @@ struct CentroidDecomposition{
 
     for(auto &e : tree[c]){
       if(checked[e.to]) continue;
-      decompose(e.to, d+1);
+      decompose(e.to, d + 1);
     }
   }
 

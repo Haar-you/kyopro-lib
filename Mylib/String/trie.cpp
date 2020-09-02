@@ -7,15 +7,15 @@
  * @docs trie.md
  */
 template <typename T>
-class Trie{
+class Trie {
   constexpr static int CHAR_MAX = 128;
   int table[CHAR_MAX];
   int N;
-  
-  struct node{
+
+  struct node {
     T val;
     std::vector<node*> ch;
-    
+
     node(int N): val(0), ch(N){}
   };
 
@@ -28,7 +28,7 @@ public:
   }
 
   node *root = nullptr;
-  
+
   node* insert(node *t, const std::string &s, const T &val, int i = 0){
     if(!t) t = new node(N);
 
@@ -38,11 +38,11 @@ public:
     }
 
     int c = table[(int)s[i]];
-    t->ch[c] = insert(t->ch[c], s, val, i+1);
+    t->ch[c] = insert(t->ch[c], s, val, i + 1);
 
     return t;
   }
-  
+
   void insert(const std::string &s, const T &val){
     root = insert(root, s, val, 0);
   }

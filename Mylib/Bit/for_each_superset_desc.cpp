@@ -4,23 +4,11 @@
  * @title Enumerate supersets (Descending order)
  * @docs for_each_superset_desc.md
  */
-class SupersetDesc{
-  struct iter{
-    int t, a, y;
-    bool is_end;
-
-    int operator*() const {return t | a;}
-    void operator++(){
-      if(t == 0) is_end = true;
-      t = (t - 1) & y;
-    }
-    bool operator!=(const iter &) const {return not is_end;}
-  };
-
-  int a, n, x, y;
-
-public:
-  SupersetDesc(int a, int n): a(a), n(n), x((1 << n) - 1), y(x ^ (a & x)){}
-  iter begin() const {return iter({y, a, y, false});}
-  iter end() const {return iter();}
-};
+template <typename Func>
+void superset_desc(int a, int n, const Func &f){
+  const int x = (1 << n) - 1, y = x ^ (a & x);
+  for(int t = y; ; t = (t - 1) & y){
+    if(not f(t | a)) break;
+    if(t == 0) break;
+  }
+}

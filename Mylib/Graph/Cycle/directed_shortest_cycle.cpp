@@ -10,7 +10,7 @@
  * @docs directed_shortest_cycle.md
  */
 template <typename T>
-struct DirectShortestCycle{
+struct DirectShortestCycle {
   const int N;
   std::optional<std::vector<int>> cycle;
 
@@ -37,7 +37,7 @@ struct DirectShortestCycle{
             while(1){
               (*cycle).push_back(j);
               if(j == i) break;
-                
+
               j = pre[j];
             }
 
@@ -46,7 +46,7 @@ struct DirectShortestCycle{
 
           return;
         }
-        
+
         if(not visited[e.to]){
           dist[e.to] = dist[cur] + 1;
           pre[e.to] = cur;
@@ -55,10 +55,10 @@ struct DirectShortestCycle{
       }
     }
   }
-  
+
   DirectShortestCycle(const Graph<T> &g): N(g.size()){
     int min_len = INT_MAX;
-    
+
     for(int i = 0; i < N; ++i){
       bfs(i, g, min_len);
     }

@@ -6,25 +6,25 @@
  * @title Union-find
  * @docs unionfind.md
  */
-class UnionFind{
+class UnionFind {
   std::vector<int> parent, depth, size;
   int count;
 
 public:
   UnionFind(){}
-  UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
+  UnionFind(int n): parent(n), depth(n, 1), size(n, 1), count(n){
     std::iota(parent.begin(), parent.end(), 0);
   }
-  
+
   int root_of(int i){
     if(parent[i] == i) return i;
     else return parent[i] = root_of(parent[i]);
   }
-  
+
   bool is_same(int i, int j){return root_of(i) == root_of(j);}
 
   int merge(int i, int j){
-    int ri = root_of(i), rj = root_of(j);
+    const int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return ri;
     else{
       --count;

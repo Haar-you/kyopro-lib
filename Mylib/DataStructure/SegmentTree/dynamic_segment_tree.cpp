@@ -5,16 +5,16 @@
  * @docs dynamic_segment_tree.md
  */
 template <typename Monoid>
-class DynamicSegmentTree{
+class DynamicSegmentTree {
   using value_type = typename Monoid::value_type;
   const static Monoid M;
-  
-  struct Node{
+
+  struct Node {
     value_type val;
     Node *left = nullptr, *right = nullptr;
     Node(const value_type &val): val(val) {}
   };
-  
+
   int64_t depth, size;
   Node *root = nullptr;
 
@@ -27,7 +27,7 @@ class DynamicSegmentTree{
       if(node) node->val = val;
       else node = new Node(val);
     }else{
-      int64_t m = (l+r)/2;
+      const int64_t m = (l + r) / 2;
       if(!node) node = new Node(val);
       if(pos < m) node->left = update_aux(node->left, l, m, pos, val);
       else node->right = update_aux(node->right, m, r, pos, val);
@@ -46,7 +46,7 @@ class DynamicSegmentTree{
 
 public:
   DynamicSegmentTree(int64_t n):
-    depth(n > 1 ? 64-__builtin_clzll(n-1) + 1 : 1),
+    depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),
     size(1LL << depth)
   {
     root = new Node(M());
@@ -61,6 +61,6 @@ public:
   }
 
   value_type operator[](int64_t i) const {
-    return get(i, i+1);
+    return get(i, i + 1);
   }
 };

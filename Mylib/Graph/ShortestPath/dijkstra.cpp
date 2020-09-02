@@ -13,10 +13,10 @@
 template <typename T>
 auto dijkstra(const Graph<T> &graph, std::vector<int> src){
   using P = std::pair<T, int>;
-  
+
   const int n = graph.size();
   std::vector<std::optional<T>> dist(n);
-  
+
   std::vector<bool> check(n, false);
   std::priority_queue<P, std::vector<P>, std::greater<P>> pq;
 

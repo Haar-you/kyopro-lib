@@ -13,13 +13,13 @@ bool is_convex(const Polygon<T> &ps){
   std::vector<ccw::Status> temp;
 
   for(int i = 0; i < n; ++i){
-    const auto c = ccw::ccw(ps[i], ps[(i+1)%n], ps[(i+2)%n]);
-    
+    const auto c = ccw::ccw(ps[i], ps[(i + 1) % n], ps[(i + 2) % n]);
+
     if(c == ccw::CLOCKWISE or c == ccw::COUNTER_CLOCKWISE){
       if(temp.empty()) temp.push_back(c);
       else if(temp.back() != c) return false;
     }
   }
-  
+
   return true;
 }

@@ -6,9 +6,9 @@
  * @docs polynomial_viewer.md
  */
 template <typename Container>
-class PolynomialViewer{
+class PolynomialViewer {
   Container data;
-  
+
 public:
   PolynomialViewer(Container data): data(data){}
 
@@ -27,7 +27,7 @@ public:
       }
     }
   }
-  
+
   auto& run(std::ostream &s) const {
     const int n = data.size();
 

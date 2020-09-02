@@ -24,7 +24,7 @@ int main(){
     [&](int i, int j){
       return y[i] < y[j];
     },
-    N, x, y, w
+    x, y, w
   );
 
   auto c = Compressor<int64_t>().add(x).build().compress(x);

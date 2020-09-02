@@ -16,7 +16,7 @@ int main(){
 
   auto a = input_vector<int64_t>(n);
   auto p = input_vector<double>(n);
-    
+  
   for(auto &x : p) x /= 100.0;
 
   std::vector<int64_t> dp(1<<n);

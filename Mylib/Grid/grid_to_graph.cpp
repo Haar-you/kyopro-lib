@@ -30,6 +30,6 @@ Graph<T> grid_to_graph(
       }
     }
   }
-  
+
   return ret;
 }

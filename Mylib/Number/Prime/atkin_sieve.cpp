@@ -5,7 +5,7 @@
  * @title Sieve of Atkin
  * @docs atkin_sieve.md
  */
-class AtkinSieve{
+class AtkinSieve {
   std::vector<bool> is_prime;
 
 public:

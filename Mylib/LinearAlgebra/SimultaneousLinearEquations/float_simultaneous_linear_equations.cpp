@@ -7,7 +7,7 @@
  * @title Simultaneous linear equations (Floating point number)
  * @docs float_simultaneous_linear_equations.md
  */
-namespace float_simultaneous_linear_equations{
+namespace float_simultaneous_linear_equations {
   template <typename T>
   struct Result{
     int rank, dim;
@@ -20,10 +20,10 @@ namespace float_simultaneous_linear_equations{
 
     const int n = a.size(), m = a[0].size();
     int rank = 0;
-  
+
     for(int j = 0; j < m; ++j){
       int pivot = -1;
-    
+
       double M = eps;
       for(int i = rank; i < n; ++i){
         if(std::abs(a[i][j]) > M){
@@ -31,12 +31,12 @@ namespace float_simultaneous_linear_equations{
           pivot = i;
         }
       }
-    
+
       if(pivot == -1) continue;
-    
+
       std::swap(a[pivot], a[rank]);
       std::swap(b[pivot], b[rank]);
-    
+
       {
         double d = a[rank][j];
         for(int k = 0; k < m; ++k) a[rank][k] /= d;
@@ -51,17 +51,17 @@ namespace float_simultaneous_linear_equations{
         }
         b[i] -= b[rank] * d;
       }
-    
+
       ++rank;
     }
-  
+
     for(int i = rank; i < n; ++i){
       if(std::abs(b[i]) > eps){
         return ret;
       }
     }
 
-    int dim = m - rank;
+    const int dim = m - rank;
 
     std::vector<T> solution(m);
     for(int i = 0; i < rank; ++i) solution[i] = b[i];

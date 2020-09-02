@@ -24,12 +24,12 @@ std::vector<std::optional<int64_t>> bfs_0_1(const Graph<int> &g, const std::vect
     for(auto &e : g[cur]){
       if(not ret[e.to] or *ret[e.to] > *ret[e.from] + e.cost){
         ret[e.to] = *ret[e.from] + e.cost;
-        
+
         if(e.cost == 0) dq.push_front(e.to);
         else dq.push_back(e.to);
       }
     }
   }
-  
+
   return ret;
 }

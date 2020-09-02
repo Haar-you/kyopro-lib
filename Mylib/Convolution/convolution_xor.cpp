@@ -9,7 +9,7 @@
 template <typename T>
 std::vector<T> convolution_xor(std::vector<T> f, std::vector<T> g){
   const int n = f.size();
-  assert((int)f.size() == n and (int)g.size() == n and (n & (n-1)) == 0);
+  assert((int)f.size() == n and (int)g.size() == n and (n & (n - 1)) == 0);
 
   auto fwt =
     [n](std::vector<T> f){

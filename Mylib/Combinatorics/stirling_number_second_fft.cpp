@@ -7,9 +7,9 @@
  */
 template <typename T, typename Conv>
 auto stirling_number_of_second_kind(int N, const Conv &convolve){
-  std::vector<T> a(N+1), b(N+1);
+  std::vector<T> a(N + 1), b(N + 1);
 
-  std::vector<int> m(N+1, 0);
+  std::vector<int> m(N + 1, 0);
   for(int i = 2; i <= N; ++i){
     if(m[i] != 0) continue;
     for(int j = 2 * i; j <= N; j += i){
@@ -24,7 +24,7 @@ auto stirling_number_of_second_kind(int N, const Conv &convolve){
       a[i] = a[m[i]] * a[i / m[i]];
     }
   }
-    
+
   T f = 1;
   for(int i = 1; i <= N; ++i) f *= i;
   f = f.inv();
@@ -41,6 +41,6 @@ auto stirling_number_of_second_kind(int N, const Conv &convolve){
 
   auto ret = convolve(a, b);
   ret.resize(N + 1);
-  
+
   return ret;
 }

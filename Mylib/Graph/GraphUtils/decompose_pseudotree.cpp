@@ -8,7 +8,7 @@
  * @docs decompose_pseudotree.md
  */
 template <typename T>
-struct PseudoTree{
+struct PseudoTree {
   const int n;
   std::vector<bool> in_loop;
   std::vector<int> group;
@@ -21,7 +21,7 @@ struct PseudoTree{
       dfs(e.to, cur, g);
     }
   }
-  
+
   PseudoTree(const Graph<T> &g): n(g.size()), in_loop(n, true), group(n){
     std::vector<int> indeg(n);
     std::vector<bool> visited(n);
@@ -46,7 +46,7 @@ struct PseudoTree{
 
       if(visited[cur]) continue;
       visited[cur] = true;
-      
+
       for(auto &e : g[cur]){
         if(not visited[e.to]){
           --indeg[e.to];

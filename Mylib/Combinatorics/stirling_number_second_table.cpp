@@ -7,7 +7,7 @@
  */
 template <typename T>
 auto stirling_number_table(int n){
-  std::vector<std::vector<T>> ret(n+1, std::vector<T>(n+1));
+  std::vector<std::vector<T>> ret(n + 1, std::vector<T>(n + 1));
 
   ret[0][0] = 1;
 
@@ -15,7 +15,7 @@ auto stirling_number_table(int n){
 
   for(int i = 3; i <= n; ++i){
     for(int j = 2; j < i; ++j){
-      ret[i][j] = ret[i-1][j-1] + j * ret[i-1][j];
+      ret[i][j] = ret[i - 1][j - 1] + j * ret[i - 1][j];
     }
   }
 

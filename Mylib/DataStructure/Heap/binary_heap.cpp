@@ -8,7 +8,7 @@
  * @docs binary_heap.md
  */
 template <typename T, typename Compare = std::less<T>>
-class BinaryHeap{
+class BinaryHeap {
   std::vector<T> data;
 
   int left(int i) const {return i * 2 + 1;}

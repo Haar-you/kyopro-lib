@@ -1,10 +1,11 @@
 #pragma once
 
 /**
+ * @title Dual monoid
  * @docs dual.md
  */
 template <typename Monoid>
-struct DualMonoid{
+struct DualMonoid {
   using value_type = typename Monoid::value_type;
   const static Monoid M;
   value_type operator()() const {return M();}

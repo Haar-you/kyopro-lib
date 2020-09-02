@@ -2,10 +2,11 @@
 #include <array>
 
 /**
+ * @title Transformation monoid
  * @docs transformation.md
  */
 template <size_t N>
-struct TransformationMonoid{
+struct TransformationMonoid {
   using value_type = std::array<int, N>;
 
   value_type operator()() const {

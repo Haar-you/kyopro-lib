@@ -20,7 +20,7 @@ std::vector<int64_t> convert_base_to(int64_t val, int64_t base){
   }
 
   std::reverse(ret.begin(), ret.end());
-  
+
   return ret;
 }
 

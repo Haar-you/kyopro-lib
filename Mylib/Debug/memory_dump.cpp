@@ -37,12 +37,12 @@ void memory_dump(const void* p, size_t size){
     }else{
       temp[i % 16] = '.';
     }
-    
+
     ++cur;
   }
 
   for(size_t k = 0; k < (16 - (i % 16)) % 16; ++k) printf("   ");
   printf("|%s|\n", temp);
-  
+
   printf("\n");
 }

@@ -8,7 +8,7 @@
  * @docs disjoint_sparse_table.md
  */
 template <typename Semigroup>
-class DisjointSparseTable{
+class DisjointSparseTable {
   using value_type = typename Semigroup::value_type;
   const static Semigroup S;
 
@@ -20,21 +20,21 @@ class DisjointSparseTable{
 
   void build(int l, int r, int d){
     if(d <= 0) return;
-    
+
     const int m = (l + r) / 2;
 
     data[d][m] = A[m];
     for(int i = m + 1; i < r; ++i){
-      data[d][i] = S(data[d][i-1], A[i]);
+      data[d][i] = S(data[d][i - 1], A[i]);
     }
 
-    data[d][m-1] = A[m-1];
+    data[d][m-1] = A[m - 1];
     for(int i = m - 2; i >= l; --i){
-      data[d][i] = S(data[d][i+1], A[i]);
+      data[d][i] = S(data[d][i + 1], A[i]);
     }
 
-    build(l, m, d-1);
-    build(m, r, d-1);
+    build(l, m, d - 1);
+    build(m, r, d - 1);
   }
 
 public:

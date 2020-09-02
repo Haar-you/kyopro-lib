@@ -7,7 +7,7 @@
  * @docs compressor.md
  */
 template <typename T>
-class Compressor{
+class Compressor {
   std::vector<T> data;
 
 public:
@@ -30,7 +30,7 @@ public:
   auto& decompress(std::vector<T> &vals) const {for(auto &x : vals) x = data[x]; return *this;}
   auto& decompress(T &val) const {val = data[val]; return *this;}
   template <typename U, typename ...Args> auto& decompress(U &val, Args&... args) const {decompress(val); return decompress(args...);}
-  
+
   int size() const {return data.size();}
   T operator[](int index) const {return data[index];}
 };

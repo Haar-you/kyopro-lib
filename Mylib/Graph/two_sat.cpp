@@ -10,7 +10,7 @@
  * @title 2-SAT
  * @docs two_sat.md
  */
-class TwoSat{
+class TwoSat {
   const int n;
   Graph<int> g;
 
@@ -22,7 +22,7 @@ class TwoSat{
   }
 
 public:
-  TwoSat(int n): n(n), g(2*n){}
+  TwoSat(int n): n(n), g(2 * n){}
 
   /**
    * @note a→bを導入する
@@ -47,18 +47,18 @@ public:
   void not_coexist(int a, int b){
     add_or(-a, -b);
   }
-  
+
 public:
   std::optional<std::vector<bool>> solve() const {
     auto [scc, m] = strongly_connected_components(g);
 
     for(int i = 0; i < n; ++i){
-      if(scc[i] == scc[i+n]) return {};
+      if(scc[i] == scc[i + n]) return {};
     }
-    
+
     Graph<int> g2(m);
 
-    for(int i = 0; i < 2*n; ++i){
+    for(int i = 0; i < 2 * n; ++i){
       for(auto &e : g[i]){
         if(scc[e.from] != scc[e.to]){
           g2.add_edge(scc[e.from], scc[e.to], 1);
@@ -72,7 +72,7 @@ public:
     for(int i = 0; i < m; ++i) r[ts[i]] = i;
 
     std::vector<bool> ret(n);
-    for(int i = 0; i < n; ++i) ret[i] = r[scc[i]] > r[scc[i+n]];
+    for(int i = 0; i < n; ++i) ret[i] = r[scc[i]] > r[scc[i + n]];
 
     return {ret};
   }

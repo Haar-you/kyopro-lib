@@ -6,7 +6,7 @@
  * @docs segmented_sieve.md
  */
 template <typename Checker>
-class SegmentedSieve{
+class SegmentedSieve {
   int L, R, D;
   std::vector<bool> data;
 
@@ -25,7 +25,7 @@ public:
         data[i] = false;
         continue;
       }
-      
+
       for(auto p : primes){
         if(x == p) break;
         if(x % p == 0){

@@ -7,8 +7,8 @@
  * @docs leftist_heap.md
  */
 template <typename T, class Compare = std::less<T>>
-class LeftistHeap{
-  struct node{
+class LeftistHeap {
+  struct node {
     T val;
     node *left, *right;
     int s, size;

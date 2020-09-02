@@ -26,7 +26,7 @@ int main(){
       for(int y1 = 0; y1 <= y; ++y1){
         for(int x2 = x; x2 < M; ++x2){
           for(int y2 = y; y2 < M; ++y2){
-            if(c.get(x1, y1, x2 + 1, y2 + 1) == 0) ++ans;
+            if(c.get({x1, y1}, {x2 + 1, y2 + 1}) == 0) ++ans;
           }
         }
       }  

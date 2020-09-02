@@ -9,7 +9,7 @@
  * @docs range_count_query.md
  */
 template <typename T>
-struct RangeCountQuery{
+struct RangeCountQuery {
   std::vector<int> a;
   std::vector<std::tuple<int, int, int>> qs;
   int N;
@@ -38,7 +38,7 @@ struct RangeCountQuery{
     const int Q = qs.size();
     std::vector<int> last_index(N, -1);
     std::vector<int> ret(Q);
-  
+
     int cur = 0;
     for(auto [r, l, i] : qs){
       while(cur < r){
@@ -54,7 +54,7 @@ struct RangeCountQuery{
 
       ret[i] = b.get(l, r);
     }
-    
+
     return ret;
   }
 };

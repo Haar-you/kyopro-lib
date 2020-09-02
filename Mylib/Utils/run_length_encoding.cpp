@@ -8,7 +8,7 @@
  */
 template <typename Container, typename T = typename Container::value_type>
 auto run_length_encoding(const Container &v){
-  std::vector<std::pair<T,int64_t>> ret;
+  std::vector<std::pair<T, int64_t>> ret;
 
   for(auto &x : v){
     if(ret.empty()) ret.emplace_back(x, 1);

@@ -6,13 +6,13 @@
  * @title Splay tree
  * @docs splay_tree.md
  */
-namespace splay_tree{
+namespace splay_tree {
   template <typename Monoid>
-  struct SplayNode{
+  struct SplayNode {
     using node = SplayNode<Monoid>;
     using value_type = typename Monoid::value_type;
     const static Monoid M;
-    
+
     node *left = nullptr, *right = nullptr, *parent = nullptr;
     int size;
     value_type value = M(), result = M();
@@ -40,7 +40,7 @@ namespace splay_tree{
         if(pp->left == p) pp->left = this;
         if(pp->right == p) pp->right = this;
       }
-      
+
       this->parent = pp;
 
       p->update();
@@ -53,7 +53,7 @@ namespace splay_tree{
       if(this->parent->right == this) return -1;
       return 0;
     }
-    
+
     void splay(){
       while(status() != 0){
         if(this->parent->status() == 0){
@@ -110,7 +110,7 @@ namespace splay_tree{
     static node* merge(node *left, node *right){
       if(!left) return right;
       if(!right) return left;
-      
+
       node *cur = node::get(left, left->size - 1);
 
       cur->right = right;
@@ -125,7 +125,7 @@ namespace splay_tree{
     static std::pair<node*, node*> split(node *root, int index){
       if(!root) return std::make_pair(nullptr, nullptr);
       if(index >= root->size) return std::make_pair(root, nullptr);
-    
+
       auto *cur = node::get(root, index);
       auto *left = cur->left;
 
@@ -134,7 +134,7 @@ namespace splay_tree{
 
       if(left) left->update();
       cur->update();
-    
+
       return std::make_pair(left, cur);
     }
 
@@ -149,13 +149,13 @@ namespace splay_tree{
   };
 
   template <typename Monoid>
-  struct SplayTree{
+  struct SplayTree {
     using node = SplayNode<Monoid>;
     using value_type = typename Monoid::value_type;
     const static Monoid M;
 
     node *root;
-    
+
     SplayTree(): root(nullptr){}
     SplayTree(node *root): root(root){}
     SplayTree(int N): root(nullptr){
@@ -166,17 +166,18 @@ namespace splay_tree{
 
     int size() const {return root ? root->size : 0;}
     bool empty() const {return !root;}
-  
+
     const value_type get(int index){root = node::get(root, index); return root->value;}
     const value_type operator[](int index){return get(index);}
 
     void update(int index, const value_type &value){
       root = node::get(root, index); root->value = value; root->update();
     }
-    
+
     void merge_right(SplayTree &right){
       root = node::merge(root, right.root); right.root = nullptr;
     }
+
     void merge_left(SplayTree &left){
       root = node::merge(left.root, root); left.root = nullptr;
     }
@@ -185,7 +186,7 @@ namespace splay_tree{
       node *left, *right; std::tie(left, right) = node::split(root, index);
       return std::make_pair(SplayTree(left), SplayTree(right));
     }
-    
+
     void insert(int index, const value_type &value){
       auto s = node::split(root, index);
       root = node::merge(s.first, node::merge(new node(value), s.second));

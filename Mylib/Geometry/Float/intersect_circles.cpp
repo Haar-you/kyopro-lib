@@ -6,8 +6,8 @@
  * @title Intersection between two circles
  * @docs intersect_circles.md
  */
-namespace intersect_circles{
-  enum Status{
+namespace intersect_circles {
+  enum Status {
               SAME          = 0b000001,
               INSIDE        = 0b000010,
               INSCRIBED     = 0b000100,
@@ -17,17 +17,17 @@ namespace intersect_circles{
   };
 
   template <typename T>
-  struct Result{
+  struct Result {
     Status status;
     std::vector<Point<T>> crosspoints;
   };
-  
+
   template <typename T>
   auto check(const Circle<T> &a, const Circle<T> &b){
     const T d = abs(a.center - b.center);
     const T x = acos((a.radius * a.radius + d * d - b.radius * b.radius) / ((T)2.0 * d * a.radius));
     const T t = atan2(b.center.y - a.center.y, b.center.x - a.center.x);
-    
+
     if(a.radius + b.radius == d){
       return Result<T>({CIRCUMSCRIBED, {a.center + polar(a.radius, t)}});
     }
@@ -43,7 +43,7 @@ namespace intersect_circles{
     else if(abs(a.radius - b.radius) > d){
       return Result<T>({INSIDE, {}});
     }
-    
+
     return Result<T>({SAME, {}});
   }
 }

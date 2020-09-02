@@ -3,12 +3,13 @@
 #include <map>
 #include <string>
 #include <algorithm>
+#include <string_view>
 
 /**
  * @title Palindromic tree
  * @docs palindromic_tree
  */
-class PalindromicTree{
+class PalindromicTree {
   struct node{
     int length;
     int count;
@@ -16,12 +17,12 @@ class PalindromicTree{
     node *suffix_link;
     std::vector<node*> reverse_suffix_links;
   };
-  
+
   node *even_root, *odd_root;
   int size_ = 2;
 
 public:
-  PalindromicTree(const std::string &s){
+  PalindromicTree(const std::string_view &s){
     even_root = new node();
     even_root->length = 0;
 
@@ -30,11 +31,11 @@ public:
 
     even_root->suffix_link = odd_root;
     odd_root->reverse_suffix_links.emplace_back(even_root);
-    
+
     node *cur = odd_root;
 
     const int N = s.size();
-    
+
     for(int i = 0; i < N; ++i){
       node *t = cur;
 

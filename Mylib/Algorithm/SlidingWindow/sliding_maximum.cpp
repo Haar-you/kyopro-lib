@@ -20,19 +20,19 @@ std::vector<T> sliding_maximum(const std::vector<T> &a, int k){
     dq.push_back(i);
   }
 
-  for(int i = 0; i < n-k+1; ++i){
+  for(int i = 0; i < n - k + 1; ++i){
     while(dq.front() < i){
       dq.pop_front();
     }
 
     ret.push_back(a[dq.front()]);
 
-    while(not dq.empty() and i+k < n and a[dq.back()] <= a[i+k]){
+    while(not dq.empty() and i + k < n and a[dq.back()] <= a[i + k]){
       dq.pop_back();
     }
-    
-    dq.push_back(i+k);
+
+    dq.push_back(i + k);
   }
-  
+
   return ret;
 }

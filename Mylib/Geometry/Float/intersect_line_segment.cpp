@@ -6,8 +6,8 @@
  * @title Intersection between a line and a segment
  * @docs intersect_line_segment.md
  */
-namespace intersect_line_segment{
-  enum Status{
+namespace intersect_line_segment {
+  enum Status {
               LEFTSIDE   = 0b0001,
               RIGHTSIDE  = 0b0010,
               OVERLAPPED = 0b0100,
@@ -15,7 +15,7 @@ namespace intersect_line_segment{
   };
 
   template <typename T>
-  struct Result{
+  struct Result {
     Status status;
     std::vector<Point<T>> crosspoints;
   };
@@ -34,7 +34,7 @@ namespace intersect_line_segment{
     else if(a > 0 and b > 0){
       return Result<T>({LEFTSIDE, {}});
     }
-    
+
     return Result<T>({CROSSED, {s.from + diff(s) * cross(diff(l), l.from - s.from) / cross(l, s)}});
   }
 }

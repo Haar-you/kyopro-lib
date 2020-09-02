@@ -22,11 +22,11 @@ auto check_bipartite_graph(const Graph<T> &g){
     if(visit[i]) continue;
 
     std::vector<int> a, b;
-      
+
     bool res =
       [&](){
         std::stack<int> st;
- 
+
         st.push(i);
         check[i] = 0;
         a.push_back(i);
@@ -35,10 +35,10 @@ auto check_bipartite_graph(const Graph<T> &g){
           auto cur = st.top(); st.pop();
           if(visit[cur]) continue;
           visit[cur] = true;
- 
+
           for(auto &e : g[cur]){
             if(check[e.to] == check[cur]) return false;
- 
+
             if(check[e.to] == -1){
               if(check[cur] == 0){
                 check[e.to] = 1;
@@ -47,7 +47,7 @@ auto check_bipartite_graph(const Graph<T> &g){
                 check[e.to] = 0;
                 a.push_back(e.to);
               }
-          
+
               st.push(e.to);
             }
           }

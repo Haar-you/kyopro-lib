@@ -9,8 +9,8 @@
  * @docs bellman_ford.md
  */
 template <typename T>
-struct BellmanFord{
-  struct Result{
+struct BellmanFord {
+  struct Result {
     enum class Tag {OK, NEGLOOP, UNREACHABLE} tag;
     T val;
 
@@ -29,25 +29,25 @@ struct BellmanFord{
       return val;
     }
   };
-  
+
   int n;
   std::vector<Result> dist;
-  
+
   BellmanFord(const Graph<T> &graph, int src):
     n(graph.size()),
     dist(n, Result::unreachable())
   {
     dist[src] = 0;
-    
+
     for(int i = 0; i < n; ++i){
       for(int s = 0; s < n; ++s){
         for(auto &e : graph[s]){
           int t = e.to;
           T d = e.cost;
-          
+
           if(dist[s].is_ok() and
              dist[t].is_ok() and
-             dist[s].value() + d < dist[t].value() and i == n-1){
+             dist[s].value() + d < dist[t].value() and i == n - 1){
             dist[t] = Result::negloop();
           }else{
             if(dist[s].is_ok()){
@@ -61,7 +61,7 @@ struct BellmanFord{
         }
       }
     }
-    
+
     for(int i = 0; i < n; ++i){
       for(int s = 0; s < n; ++s){
         for(auto &e : graph[s]){

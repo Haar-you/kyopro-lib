@@ -4,27 +4,13 @@
  * @title Enumerate sets of size k
  * @docs for_subsets_of_size_k.md
  */
-class KSubsets{
-  struct iter{
-    int c, n;
-    bool is_end;
-
-    int operator*() const {return c;}
-    void operator++(){
-      int x = c & (-c);
-      int y = c + x;
-
-      c = ((c & ~y) / x >> 1) | y;
-
-      if(c >= 1 << n) is_end = true;
-    }
-    bool operator!=(const iter &) const {return not is_end;}
-  };
-
-  int k, n;
-
-public:
-  KSubsets(int k, int n): k(k), n(n){}
-  iter begin() const {return iter({(1 << k) - 1, n, false});}
-  iter end() const {return iter();}
-};
+template <typename Func>
+void sets_of_size_k(int k, int n, const Func &f){
+  int c = (1 << k) - 1;
+  while(c < (1 << n)){
+    if(not f(c)) break;
+    const int x = c & (-c);
+    const int y = c + x;
+    c = ((c & (~y)) / x >> 1) | y;
+  }
+}

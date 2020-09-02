@@ -9,25 +9,25 @@
  * @docs lichao_segment_tree.md
  */
 template <typename T, typename Comparator>
-class LiChaoSegmentTree{
-  using line = std::pair<T,T>;
+class LiChaoSegmentTree {
+  using line = std::pair<T, T>;
 
   const Comparator cmp = Comparator();
   std::vector<T> xs;
   int n;
 
   std::vector<std::optional<line>> data;
-  std::vector<std::pair<int,int>> range;
+  std::vector<std::pair<int, int>> range;
 
   T chm(const T &a, const T &b) const {
     return cmp(a, b) ? a : b;
   }
 
   void init_range(int i, int left, int right){
-    if(i >= 2*n) return;
+    if(i >= 2 * n) return;
 
     range[i] = std::make_pair(left, right);
-    int mid = (left + right) / 2;
+    const int mid = (left + right) / 2;
     init_range(i << 1 | 0, left, mid);
     init_range(i << 1 | 1, mid, right);
   }
@@ -43,9 +43,9 @@ public:
     const auto m = xs.back();
     xs.resize(n, m);
 
-    data.assign(2*n, std::nullopt);
+    data.assign(2 * n, std::nullopt);
 
-    range.resize(2*n);
+    range.resize(2 * n);
     init_range(1, 0, n);
   }
 
@@ -60,9 +60,9 @@ private:
       return;
     }
 
-    int m = (l + r) / 2;
+    const int m = (l + r) / 2;
 
-    auto lx = xs[l], mx = xs[m], rx = xs[r-1];
+    auto lx = xs[l], mx = xs[m], rx = xs[r - 1];
 
     bool left = cmp(apply(new_line, lx), apply(*data[i], lx));
     bool mid = cmp(apply(new_line, mx), apply(*data[i], mx));
@@ -87,7 +87,7 @@ private:
       update(i << 1 | 1, new_line, m, r);
     }
   }
-  
+
 public:
   void add_line(T a, T b){
     update(1, std::make_pair(a, b), 0, n);
@@ -121,7 +121,7 @@ public:
   auto operator()(const T &x) const {
     const int i = std::lower_bound(xs.begin(), xs.end(), x) - xs.begin();
     int k = i + n;
-    
+
     std::optional<T> ret;
 
     while(k > 0){

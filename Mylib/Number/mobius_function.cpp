@@ -7,8 +7,7 @@
  */
 template <typename Checker>
 std::vector<int> mobius_function(int n, Checker is_prime){
-  std::vector<int> ret(n+1);
-  std::vector<int> ps;
+  std::vector<int> ret(n + 1), ps;
 
   ret[1] = 1;
 
@@ -23,6 +22,6 @@ std::vector<int> mobius_function(int n, Checker is_prime){
       else ret[i * j] = ret[i] * ret[j];
     }
   }
-  
+
   return ret;
 }

@@ -15,7 +15,7 @@ struct DihedralGroup {
       return s;
     }
   };
-  
+
   struct S {
     int value = 0;
     friend std::ostream& operator<<(std::ostream &s, const S &a){
@@ -25,7 +25,7 @@ struct DihedralGroup {
   };
 
   static int K;
-  
+
   using value_type = std::variant<R, S>;
 
   value_type operator()() const {

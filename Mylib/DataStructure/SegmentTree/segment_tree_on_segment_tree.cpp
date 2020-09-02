@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include <algorithm>
-
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
 /**
@@ -9,7 +8,7 @@
  * @docs segment_tree_on_segment_tree.md
  */
 template <typename Monoid>
-class SegmentTree2D{
+class SegmentTree2D {
   using value_type = typename Monoid::value_type;
   const static Monoid M;
 

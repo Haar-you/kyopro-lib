@@ -6,14 +6,15 @@
  * @title Gaussian elimination
  * @docs gaussian_elimination.md
  */
-template <typename T> int gaussian_elimination(std::vector<std::vector<T>> &a){
+template <typename T>
+int gaussian_elimination(std::vector<std::vector<T>> &a){
   const int h = a.size();
   const int w = a[0].size();
   int rank = 0;
-  
+
   for(int j = 0; j < w; ++j){
     int pivot = -1;
-    
+
     for(int i = rank; i < h; ++i){
       if(a[i][j] != 0){
         pivot = i;

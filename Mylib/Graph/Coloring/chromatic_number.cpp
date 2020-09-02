@@ -9,14 +9,14 @@
 int chromatic_number(const std::vector<std::vector<int>> &graph){
   static constexpr int mod = 1000000007;
   const int N = graph.size();
- 
+
   std::vector<int> g(N);
   for(int i = 0; i < N; ++i){
     for(auto j : graph[i]){
       g[i] |= (1 << j);
     }
   }
-  
+
   std::vector<int64_t> I(1 << N);
   I[0] = 1;
   for(int i = 1; i < (1 << N); ++i){
@@ -24,7 +24,7 @@ int chromatic_number(const std::vector<std::vector<int>> &graph){
     I[i] = I[i - (1 << c)] + I[(i - (1 << c)) & (~g[c])];
     if(I[i] >= mod) I[i] -= mod;
   }
-  
+
   const auto check =
     [&](int k){
       int64_t t = 0;
@@ -36,17 +36,17 @@ int chromatic_number(const std::vector<std::vector<int>> &graph){
       }
       return (t % mod != 0);
     };
-  
+
   int lb = 0, ub = N;
   while(abs(lb - ub) > 1){
     const auto mid = (lb + ub) / 2;
- 
+
     if(check(mid)){
       ub = mid;
     }else{
       lb = mid;
     }
   }
-  
+
   return ub;
 }

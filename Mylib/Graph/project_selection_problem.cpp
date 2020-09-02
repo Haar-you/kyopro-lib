@@ -9,15 +9,15 @@
  * @docs project_selection_problem.md
  */
 template <typename T, typename Flow>
-class ProjectSelectionProblem{
+class ProjectSelectionProblem {
   int N, s, t;
-  std::vector<std::vector<std::pair<int,T>>> graph;
+  std::vector<std::vector<std::pair<int, T>>> graph;
   T default_gain;
 
   constexpr static T INF = std::numeric_limits<T>::max();
 
 public:
-  ProjectSelectionProblem(int N): N(N), s(N), t(N+1), graph(N+2), default_gain(0){}
+  ProjectSelectionProblem(int N): N(N), s(N), t(N + 1), graph(N + 2), default_gain(0){}
 
   void penalty_if_red(int i, T c){
     assert(c >= 0);
@@ -31,7 +31,7 @@ public:
     default_gain += c;
     penalty_if_blue(i, c);
   }
-  
+
   void penalty_if_blue(int i, T c){
     assert(c >= 0);
     assert(0 <= i and i < N);
@@ -95,8 +95,8 @@ public:
     assert(0 <= j and j < N);
     default_gain += c;
     int w = graph.size();
-    graph.push_back({});
-    
+    graph.emplace_back();
+
     graph[w].emplace_back(t, c);
     graph[i].emplace_back(w, INF);
     graph[j].emplace_back(w, INF);

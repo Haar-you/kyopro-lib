@@ -6,7 +6,7 @@
  * @docs update_sum.md
  */
 template <typename T, typename U>
-struct UpdateSum{
+struct UpdateSum {
   using value_type_get = T;
   using value_type_update = std::optional<U>;
 

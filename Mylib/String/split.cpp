@@ -14,12 +14,12 @@ auto split(const std::string &s, const std::string &delim){
     size_t j = s.find(delim, i);
     if(j == std::string::npos) break;
 
-    ret.push_back(s.substr(i,j-i));
+    ret.push_back(s.substr(i, j - i));
 
     i = j + delim.size();
   }
 
-  ret.push_back(s.substr(i,s.size()-i));
+  ret.push_back(s.substr(i, s.size() - i));
 
   return ret;
 }

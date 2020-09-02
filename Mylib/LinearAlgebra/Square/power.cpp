@@ -13,6 +13,6 @@ M power(M a, uint64_t p){
   auto ret = temp * temp;
 
   if(p & 1) ret *= a;
-  
+
   return ret;
 }

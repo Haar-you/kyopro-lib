@@ -44,15 +44,15 @@ T chinese_postman_problem(const Graph<T> &g){
   const int m = odd.size();
 
   // 奇数次数の頂点間の最小マッチングを求める。
-  std::vector<T> dp(1<<m, -1);
+  std::vector<T> dp(1 << m, -1);
   dp[0] = 0;
 
-  for(int i = 0; i < (1<<m); ++i){
+  for(int i = 0; i < (1 << m); ++i){
     for(int j = 0; j < m; ++j){
       for(int k = 0; k < j; ++k){
-        if((i & (1<<j)) and (i & (1<<k))){
-          if(dp[i] == -1) dp[i] = dp[i ^ (1<<j) ^ (1<<k)] + dist[odd[j]][odd[k]];
-          else dp[i] = std::min(dp[i], dp[i ^ (1<<j) ^ (1<<k)] + dist[odd[j]][odd[k]]);
+        if((i & (1 << j)) and (i & (1 << k))){
+          if(dp[i] == -1) dp[i] = dp[i ^ (1 << j) ^ (1 << k)] + dist[odd[j]][odd[k]];
+          else dp[i] = std::min(dp[i], dp[i ^ (1 << j) ^ (1 << k)] + dist[odd[j]][odd[k]]);
         }
       }
     }

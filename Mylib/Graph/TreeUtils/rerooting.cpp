@@ -6,19 +6,18 @@
  * @title Rerooting DP
  * @docs rerooting.md
  */
-
 template <typename T, typename U, typename Merge, typename EdgeF, typename VertexF>
-struct Rerooting{
+struct Rerooting {
   int N;
   Tree<T> tree;
   U id;
   Merge merge;
   EdgeF f;
   VertexF g;
-  
+
   std::vector<std::vector<U>> dp;
   std::vector<U> result;
-  
+
   Rerooting(Tree<T> tree, U id, Merge merge, EdgeF f, VertexF g):
     N(tree.size()), tree(tree), id(id), merge(merge), f(f), g(g), dp(N), result(N, id)
   {
@@ -29,14 +28,14 @@ struct Rerooting{
       for(int j = 0; j < (int)tree[i].size(); ++j){
         result[i] = merge(result[i], f(dp[i][j], tree[i][j]));
       }
-      
+
       result[i] = g(result[i], i);
     }
   }
 
   U rec1(int cur, int par = -1){
     U acc = id;
-    
+
     for(int i = 0; i < (int)tree[cur].size(); ++i){
       auto &e = tree[cur][i];
       if(e.to == par) continue;
@@ -56,16 +55,16 @@ struct Rerooting{
       }
     }
 
-    std::vector<U> left(l+1, id), right(l+1, id);
+    std::vector<U> left(l + 1, id), right(l + 1, id);
 
-    for(int i = 0; i < l-1; ++i){
+    for(int i = 0; i < l - 1; ++i){
       const auto &e = tree[cur][i];
-      left[i+1] = merge(left[i], f(dp[cur][i], e));
+      left[i + 1] = merge(left[i], f(dp[cur][i], e));
     }
 
-    for(int i = l-1; i >= 1; --i){
+    for(int i = l - 1; i >= 1; --i){
       const auto &e = tree[cur][i];
-      right[i-1] = merge(right[i], f(dp[cur][i], e));
+      right[i - 1] = merge(right[i], f(dp[cur][i], e));
     }
 
     for(int i = 0; i < l; ++i){

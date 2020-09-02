@@ -6,7 +6,7 @@
  * @docs fix_point.md
  */
 template <typename F>
-struct FixPoint : F{
+struct FixPoint : F {
   explicit constexpr FixPoint(F &&f) noexcept : F(std::forward<F>(f)){}
 
   template <typename... Args>

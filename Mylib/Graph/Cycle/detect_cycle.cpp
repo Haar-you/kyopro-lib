@@ -32,7 +32,7 @@ std::optional<std::vector<Edge<T>>> detect_cycle(const Graph<T> &g){
               return {-1};
             }
           }
-          
+
           return res;
         }
 
@@ -40,7 +40,7 @@ std::optional<std::vector<Edge<T>>> detect_cycle(const Graph<T> &g){
       }
 
       check[cur] = SEARCHED;
-      
+
       return std::nullopt;
     };
 

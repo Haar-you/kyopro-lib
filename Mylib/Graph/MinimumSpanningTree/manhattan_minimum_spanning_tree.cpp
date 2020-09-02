@@ -1,11 +1,9 @@
 #pragma once
-
 #include <vector>
 #include <utility>
 #include <algorithm>
 #include <numeric>
 #include <cmath>
-
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/Graph/Template/graph.cpp"
@@ -20,7 +18,7 @@ std::vector<Edge<T>> manhattan_minimum_spanning_tree(std::vector<T> x, std::vect
   const int N = x.size();
   Graph<T> g(N);
   SegmentTree<MinMonoid<std::pair<T, int>>> seg(N);
-  
+
   auto f =
     [&](){
       std::vector<T> Y(y);
@@ -64,7 +62,7 @@ std::vector<Edge<T>> manhattan_minimum_spanning_tree(std::vector<T> x, std::vect
     }
     for(int l = 0; l < N; ++l) y[l] = -y[l];
   }
-  
+
   return kruskal(g);
 }
 

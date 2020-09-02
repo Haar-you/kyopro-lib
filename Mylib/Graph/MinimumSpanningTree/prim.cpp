@@ -9,13 +9,13 @@
  */
 template <typename T>
 std::vector<Edge<T>> prim(const Graph<T> &graph){
-  int n = graph.size();
+  const int n = graph.size();
   std::vector<bool> visit(n, false);
   std::vector<Edge<T>> ret;
 
   auto cmp = [](const auto &a, const auto &b){return a.cost > b.cost;};
   std::priority_queue<Edge<T>, std::vector<Edge<T>>, decltype(cmp)> pq(cmp);
-  
+
   visit[0] = true;
   for(auto &e : graph[0]) pq.push(e);
 

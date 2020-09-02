@@ -5,8 +5,8 @@
  * @title Check clockwise-counterclockwise
  * @docs ccw.md
  */
-namespace ccw{
-  enum Status{
+namespace ccw {
+  enum Status {
            ONLINE_BACK       = -2,
            COUNTER_CLOCKWISE = -1,
            ON_SEGMENT        = 0,

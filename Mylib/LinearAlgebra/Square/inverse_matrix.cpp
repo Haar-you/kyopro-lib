@@ -22,18 +22,18 @@ bool inverse_matrix(M m, M &ret){
 
     std::swap(m[i], m[p]);
     std::swap(ret[i], ret[p]);
-    
+
     {
       T d = m[i][i];
 
       if(d == 0) return false;
-    
+
       for(int j = 0; j < N; ++j){
         m[i][j] /= d;
         ret[i][j] /= d;
       }
     }
-    
+
     for(int j = 0; j < N; ++j){
       if(i == j) continue;
       T d = m[j][i] / m[i][i];

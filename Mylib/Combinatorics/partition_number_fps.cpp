@@ -9,7 +9,7 @@
 template <typename Fps>
 auto partition_number(int N){
   using T = typename Fps::value_type;
-  
+
   std::vector<T> f(N + 1);
   f[0] = 1;
 

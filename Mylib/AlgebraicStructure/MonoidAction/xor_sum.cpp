@@ -6,7 +6,7 @@
  * @docs xor_sum.md
  */
 template <typename U, int B>
-struct XorSum{
+struct XorSum {
   using value_type_get = typename std::array<int, B>;
   using value_type_update = typename U;
 

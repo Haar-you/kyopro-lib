@@ -5,7 +5,7 @@
  * @docs or_or.md
  */
 template <typename T, typename U>
-struct OrOr{
+struct OrOr {
   using value_type_get = T;
   using value_type_update = U;
 

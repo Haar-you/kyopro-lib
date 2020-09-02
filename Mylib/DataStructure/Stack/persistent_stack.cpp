@@ -4,9 +4,10 @@
  * @title Persistent stack
  * @docs persistent_stack.md
  */
-template <typename T> struct PersistentStack{
+template <typename T>
+struct PersistentStack {
 protected:
-  struct node{
+  struct node {
     T value;
     node *next = nullptr;
   };
@@ -17,11 +18,11 @@ protected:
 
 public:
   PersistentStack(): root(nullptr){}
-  
+
   bool empty() const {
-    return root == nullptr;
+    return not root;
   }
-  
+
   const T& top() const {
     return root->value;
   }

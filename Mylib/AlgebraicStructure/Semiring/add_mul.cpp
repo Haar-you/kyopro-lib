@@ -1,10 +1,11 @@
 #pragma once
 
 /**
+ * @title Add-mul semiring
  * @docs add_mul.md
  */
 template <typename T>
-struct AddMulSemiring{
+struct AddMulSemiring {
   using value_type = T;
   value_type id_add() const {return 0;}
   value_type id_mul() const {return 1;}

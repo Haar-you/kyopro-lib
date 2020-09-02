@@ -10,9 +10,9 @@
  * @title Closest pair
  * @docs closest_pair.md
  */
-namespace closest_pair{
+namespace closest_pair_impl {
   template <typename T>
-  T closest_pair(std::vector<Point<T>> &s){
+  T rec(std::vector<Point<T>> &s){
     const int N = s.size();
 
     if(N == 1) return std::numeric_limits<T>::infinity();
@@ -21,14 +21,14 @@ namespace closest_pair{
       if(s[0].y > s[1].y) std::swap(s[0], s[1]);
       return abs(s[0] - s[1]);
     }
-    
-    const T mid_x = s[N/2].x;
-    
+
+    const T mid_x = s[N / 2].x;
+
     auto left = std::vector<Point<T>>(s.begin(), s.begin() + N / 2);
     auto right = std::vector<Point<T>>(s.begin() + N / 2, s.end());
 
-    const T d1 = closest_pair(left);
-    const T d2 = closest_pair(right);
+    const T d1 = rec(left);
+    const T d2 = rec(right);
 
     T d = std::min(d1, d2);
 
@@ -55,13 +55,13 @@ namespace closest_pair{
 
       v.push_back(p);
     }
-  
+
     return d;
   }
+}
 
-  template <typename T>
-  T solve(std::vector<Point<T>> s){
-    std::sort(s.begin(), s.end(), [](const auto &a, const auto &b){return a.x < b.x;});
-    return closest_pair(s);
-  }
+template <typename T>
+T closest_pair(std::vector<Point<T>> s){
+  std::sort(s.begin(), s.end(), [](const auto &a, const auto &b){return a.x < b.x;});
+  return closest_pair_impl::rec(s);
 }

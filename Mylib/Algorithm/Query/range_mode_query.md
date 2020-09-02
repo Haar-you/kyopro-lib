@@ -11,5 +11,4 @@
 
 ## References
 
-- [https://scrapbox.io/data-structures/Range_Mode_Query
-](https://scrapbox.io/data-structures/Range_Mode_Query)
+- [https://scrapbox.io/data-structures/Range_Mode_Query](https://scrapbox.io/data-structures/Range_Mode_Query)

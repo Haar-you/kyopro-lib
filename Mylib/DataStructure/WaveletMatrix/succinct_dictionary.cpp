@@ -6,7 +6,7 @@
  * @title Succinct dictionary
  * @docs succinct_dictionary.md
  */
-struct SuccinctDict{
+struct SuccinctDict {
   int N;
 
   static const int chunk_size = 256;
@@ -33,16 +33,16 @@ struct SuccinctDict{
         data[block_index] |= (1LL << index);
       }
     }
-    
-    chunks.assign(chunk_num+1, 0);
-    blocks.assign(chunk_num+1, std::vector<uint8_t>(block_num, 0));
+
+    chunks.assign(chunk_num + 1, 0);
+    blocks.assign(chunk_num + 1, std::vector<uint8_t>(block_num, 0));
 
     for(int i = 0; i < chunk_num; ++i){
       for(int j = 0; j < block_num-1; ++j){
-        blocks[i][j+1] = blocks[i][j] + __builtin_popcountll(data[i*block_num+j]);
+        blocks[i][j + 1] = blocks[i][j] + __builtin_popcountll(data[i * block_num + j]);
       }
 
-      chunks[i+1] = chunks[i] + blocks[i][block_num-1] + __builtin_popcountll(data[(i+1)*block_num-1]);
+      chunks[i + 1] = chunks[i] + blocks[i][block_num - 1] + __builtin_popcountll(data[(i + 1) * block_num - 1]);
     }
   }
 
@@ -54,7 +54,7 @@ struct SuccinctDict{
       return index - rank(index, 1);
     }else{
       if(index > N) index = N;
-      
+
       const int chunk_pos = index / chunk_size;
       const int block_pos = (index % chunk_size) / block_size;
 
@@ -68,7 +68,7 @@ struct SuccinctDict{
       return ret;
     }
   }
-  
+
   /**
    * @return [l, r)のbの個数
    */
@@ -89,13 +89,13 @@ struct SuccinctDict{
    */
   std::optional<int> select(int n, int b) const {
     assert(n >= 1);
-    
+
     if(rank(N, b) < n) return {};
 
     int lb = -1, ub = N;
-    while(abs(lb-ub) > 1){
-      int mid = (lb+ub) / 2;
-      
+    while(abs(lb - ub) > 1){
+      int mid = (lb + ub) / 2;
+
       if(rank(mid, b) >= n){
         ub = mid;
       }else{

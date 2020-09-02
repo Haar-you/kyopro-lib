@@ -18,7 +18,7 @@ auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
   std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
 
   std::multiset<int> a;
-  std::vector<std::pair<int,int>> ret;
+  std::vector<std::pair<int, int>> ret;
 
   for(int i : ord){
     auto it = a.upper_bound(l[i]);
@@ -33,6 +33,6 @@ auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
       ret.emplace_back(l[i], r[i]);
     }
   }
-  
+
   return ret;
 }

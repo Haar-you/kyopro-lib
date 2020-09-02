@@ -4,7 +4,7 @@
  * @title Xorshift
  * @docs xor_shift.md
  */
-struct XorShift{
+struct XorShift {
   static uint64_t rand(){
     static uint64_t x = 1234567889, y = 362436069, z = 521288629, w = 88675123;
 
@@ -17,6 +17,6 @@ struct XorShift{
   }
 
   static uint64_t rand(uint64_t s, uint64_t t){ // [s,t)
-    return s + rand() % (t-s);
+    return s + rand() % (t - s);
   }
 };

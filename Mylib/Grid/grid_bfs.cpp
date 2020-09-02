@@ -23,7 +23,7 @@ auto grid_bfs(
     dist[p.x][p.y] = 0;
     q.push(p);
   }
-  
+
   while(not q.empty()){
     auto cur = q.front(); q.pop();
 

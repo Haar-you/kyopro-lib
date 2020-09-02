@@ -5,9 +5,10 @@
  * @title 1D Imos algorithm
  * @docs imos_1d.md
  */
-template <typename T> struct Imos1D{
+template <typename T>
+struct Imos1D {
   using value_type = T;
-  
+
   std::vector<T> data;
   Imos1D(int n): data(n+1){}
 
@@ -17,8 +18,8 @@ template <typename T> struct Imos1D{
   }
 
   void build(){
-    for(int i = 0; i < (int)data.size()-1; ++i){
-      data[i+1] += data[i];
+    for(int i = 0; i < (int)data.size() - 1; ++i){
+      data[i + 1] += data[i];
     }
   }
 

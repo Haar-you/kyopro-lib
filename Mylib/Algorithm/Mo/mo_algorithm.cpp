@@ -9,7 +9,7 @@
  * @docs mo_algorithm.md
  */
 template <typename F, typename G, typename H>
-class MoAlgorithm{
+class MoAlgorithm {
   int N, Q, index, width;
   std::vector<int> left, right, ord;
 
@@ -57,10 +57,10 @@ public:
 
   void run(){
     assert(is_built);
-    
+
     int q = 0;
     int l = left[ord[0]], r = left[ord[0]];
-    
+
     for(int i = 0; i < Q; ++i){
       int id = ord[q++];
 

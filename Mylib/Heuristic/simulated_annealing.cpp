@@ -20,7 +20,7 @@ void simulated_annealing(int duration, double T0, double T1, Func f){
     double now = (double)d / duration;
 
     double T = std::pow(T0, 1.0 - now) * std::pow(T1, now);
-      
+
     f(d, T);
   }
 }

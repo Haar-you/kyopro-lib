@@ -10,7 +10,8 @@
  * @title Minimum cost flow
  * @docs minimum_cost_flow.md
  */
-template <typename T, typename U> class MinimumCostFlow{
+template <typename T, typename U>
+class MinimumCostFlow {
 public:
   struct edge{
     int from, to;
@@ -31,17 +32,18 @@ public:
 
   void add_edge(int from, int to, T cap, U cost){
     g[from].emplace_back(from, to, cap, cost, g[to].size(), false);
-    g[to].emplace_back(to, from, 0, -cost, g[from].size()-1, true);
+    g[to].emplace_back(to, from, 0, -cost, g[from].size() - 1, true);
   }
 
   T solve(int src, int dst, const T &f, U &ret){
+    using P = std::pair<U, int>;
     ret = 0;
     T flow = f;
     std::vector<U> h(size,0), cost(size);
     std::vector<bool> is_inf(size, true);
     std::vector<int> prev_node(size), prev_edge(size);
-    std::priority_queue<std::pair<U,int>, std::vector<std::pair<U,int>>, std::greater<std::pair<U,int>>> pq;
-    
+    std::priority_queue<P, std::vector<P>, std::greater<P>> pq;
+
     while(flow > 0){
       std::fill(is_inf.begin(), is_inf.end(), true);
 
@@ -53,10 +55,9 @@ public:
       while(!pq.empty()){
         U c;
         int v;
-        std::tie(c,v) = pq.top(); pq.pop();
+        std::tie(c, v) = pq.top(); pq.pop();
 
         if(cost[v] < c) continue;
-	
         for(int i = 0; i < (int)g[v].size(); ++i){
           edge &e = g[v][i];
           int w = e.to;
@@ -74,8 +75,8 @@ public:
         }
       }
 
-      if(is_inf[dst]) return f-flow; // dstへ到達不可能
-      
+      if(is_inf[dst]) return f - flow; // dstへ到達不可能
+
       for(int i = 0; i < size; ++i) h[i] += cost[i];
 
       // src -> dst の最小コスト経路へ流せる量(df)を決定する。

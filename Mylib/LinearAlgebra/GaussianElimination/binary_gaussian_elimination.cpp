@@ -7,7 +7,8 @@
  * @title Gaussian elimination (Mod2)
  * @docs binary_gaussian_elimination.md
  */
-template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &m){
+template <size_t N>
+int gaussian_elimination(std::vector<std::bitset<N>> &m){
   const int n = m.size();
   int rank = 0;
 
@@ -30,10 +31,11 @@ template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &m){
     }
     ++rank;
   }
-  
+
   return rank;
 }
 
-template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &&m){
+template <size_t N>
+int gaussian_elimination(std::vector<std::bitset<N>> &&m){
   return gaussian_elimination(m);
 }
