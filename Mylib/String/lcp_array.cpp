@@ -7,25 +7,25 @@
  * @docs lcp_array.md
  */
 template <typename T>
-struct LCPArray {
-  const int n;
-  std::vector<int> rank, lcp_array;
+auto lcp_array(const SuffixArray<T> &sa){
+  const int n = sa.size();
+  std::vector<int> rank(n), ret(n);
 
-  LCPArray(const SuffixArray<T> &sa): n(sa.n), rank(n), lcp_array(n - 1){
-    for(int i = 0; i < n; ++i) rank[sa[i]] = i;
+  for(int i = 0; i < n; ++i) rank[sa[i]] = i;
 
-    int h = 0;
-    for(int i = 0; i < n; ++i){
-      if(rank[i] == 0) continue;
-      int j = sa[rank[i] - 1];
+  int h = 0;
+  for(int i = 0; i < n; ++i){
+    if(rank[i] == 0) continue;
+    int j = sa[rank[i] - 1];
 
-      if(h) --h;
-      while(j + h < n and i + h < n){
-        if(sa.str[j + h] != sa.str[i + h]) break;
-        ++h;
-      }
-
-      lcp_array[rank[i] - 1] = h;
+    if(h) --h;
+    while(j + h < n and i + h < n){
+      if(sa.s[j + h] != sa.s[i + h]) break;
+      ++h;
     }
+
+    ret[rank[i]] = h;
   }
-};
+
+  return ret;
+}

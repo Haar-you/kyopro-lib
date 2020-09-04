@@ -2,29 +2,24 @@
 
 #include <iostream>
 #include <string>
-
 #include "Mylib/String/suffix_array.cpp"
 #include "Mylib/String/lcp_array.cpp"
-
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   std::string s; std::cin >> s;
   const int N = s.size();
 
-  SuffixArray sa(s);
-  LCPArray lcp(sa);
+  auto sa = SuffixArray(s);
+  auto lcp = lcp_array(sa);
 
   int64_t ans = 0;
 
-  for(int i = 0; i < N; ++i){
-    ans += N - sa.suffix_array[i];
-
-    if(i){
-      ans -= lcp.lcp_array[i-1];
-    }
+  for(int i = 1; i <= N; ++i){
+    ans += N - sa[i];
+    ans -= lcp[i];
   }
 
   std::cout << ans << std::endl;
