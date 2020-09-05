@@ -26,7 +26,7 @@ void fill_array(T (&a)[N], const U &v){
 }
 
 template <typename T, size_t N, size_t I = N>
-auto make_vector(const std::array<size_t, N> &a, T value = T()){
+auto make_vector(const std::array<int, N> &a, T value = T()){
   static_assert(I >= 1);
   static_assert(N >= 1);
   if constexpr (I == 1){
@@ -61,7 +61,7 @@ namespace solver{
     std::cerr << std::fixed << std::setprecision(12);
     std::cin.exceptions(std::ios_base::failbit);
   }
-  
+
   void solve(){
     $0
   }
