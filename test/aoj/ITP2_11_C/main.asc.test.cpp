@@ -3,13 +3,13 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include "Mylib/Bit/for_each_subset_asc.cpp"
+#include "Mylib/Bit/enumerate_subsets_asc.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int n, k; std::cin >> n >> k;
 
   int t = 0;
@@ -18,7 +18,7 @@ int main(){
   }
 
   std::map<int, std::vector<int>> ans;
-  subset_asc(
+  enumerate_subsets_asc(
     t,
     [&](int d){
       ans[d];

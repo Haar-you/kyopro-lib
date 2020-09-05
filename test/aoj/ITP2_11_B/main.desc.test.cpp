@@ -3,13 +3,13 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include "Mylib/Bit/for_each_superset_desc.cpp"
+#include "Mylib/Bit/enumerate_supersets_desc.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int n, k; std::cin >> n >> k;
 
   int t = 0;
@@ -18,7 +18,7 @@ int main(){
   }
 
   std::map<int, std::vector<int>> ans;
-  superset_desc(
+  enumerate_supersets_desc(
     t, n,
     [&](int d){
       ans[d];

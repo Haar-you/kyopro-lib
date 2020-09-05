@@ -3,17 +3,17 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include "Mylib/Bit/for_subsets_of_size_k.cpp"
+#include "Mylib/Bit/enumerate_sets_of_size_k.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int n, k; std::cin >> n >> k;
 
   std::map<int, std::vector<int>> ans;
 
-  sets_of_size_k(
+  enumerate_sets_of_size_k(
     k, n,
     [&](int d){
       for(int i = 0; i < n; ++i){
