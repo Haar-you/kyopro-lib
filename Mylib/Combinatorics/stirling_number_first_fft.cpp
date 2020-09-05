@@ -8,7 +8,7 @@
  * @docs stirling_number_first_fft.md
  */
 template <typename T, typename Conv>
-std::vector<T> stirling_number_of_first_kind(int N, const Conv &convolve){
+std::vector<T> stirling_number_of_first_kind_fft(int N, const Conv &convolve){
   if(N == 0) return {1};
 
   std::vector<int> p;

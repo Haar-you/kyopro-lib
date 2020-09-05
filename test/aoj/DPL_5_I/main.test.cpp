@@ -6,13 +6,13 @@
 #include "Mylib/Combinatorics/stirling_number_second.cpp"
 
 using mint = ModInt<1000000007>;
- 
+
 int main(){
   auto ft = FactorialTable<mint>(3000);
 
   int N, K; std::cin >> N >> K;
 
-  std::cout << stirling_number(N, K, ft) << std::endl;
+  std::cout << stirling_number_of_second_kind(N, K, ft) << std::endl;
 
   return 0;
 }

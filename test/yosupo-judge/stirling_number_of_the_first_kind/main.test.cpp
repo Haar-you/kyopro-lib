@@ -22,10 +22,9 @@ int main(){
 
   auto ntt = NTT();
   auto convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
-  auto res = stirling_number_of_first_kind<mint>(N, convolve);
+  auto res = stirling_number_of_first_kind_fft<mint>(N, convolve);
 
   std::cout << join(res.begin(), res.end()) << "\n";
 
   return 0;
 }
-

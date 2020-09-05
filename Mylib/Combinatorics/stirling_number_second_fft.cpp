@@ -6,7 +6,7 @@
  * @docs stirling_number_second_fft.md
  */
 template <typename T, typename Conv>
-auto stirling_number_of_second_kind(int N, const Conv &convolve){
+auto stirling_number_of_second_kind_fft(int N, const Conv &convolve){
   std::vector<T> a(N + 1), b(N + 1);
 
   std::vector<int> m(N + 1, 0);

@@ -6,7 +6,7 @@
  * @docs stirling_number_second.md
  */
 template <typename Ft, typename T = typename Ft::value_type>
-T stirling_number(int64_t n, int64_t k, const Ft &ft){
+T stirling_number_of_second_kind(int64_t n, int64_t k, const Ft &ft){
   if(n == 0 and k == 0) return 1;
 
   T ret = 0;
