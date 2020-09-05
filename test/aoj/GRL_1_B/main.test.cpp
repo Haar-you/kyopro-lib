@@ -10,18 +10,18 @@ int main(){
   Graph<int64_t> g(V);
   g.read<0>(E);
 
-  auto res = BellmanFord(g, r);
-  
+  auto res = bellman_ford(g, r);
+
   bool neg_cycle = false;
 
-  for(auto &x : res.dist){
+  for(auto &x : res){
     if(x.is_negloop()) neg_cycle = true;
   }
 
   if(neg_cycle){
     std::cout << "NEGATIVE CYCLE" << std::endl;
   }else{
-    for(auto &x : res.dist){
+    for(auto &x : res){
       if(x.is_unreachable()){
         std::cout << "INF" << std::endl;
       }else{

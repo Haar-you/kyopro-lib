@@ -10,7 +10,7 @@ int main(){
   Tree<int> tree(N);
   tree.read<1, false, false>(N - 1);
 
-  auto r = make_rerooting<int>(
+  auto r = rerooting<int>(
     tree,
     0,
     [](const auto &a, const auto &b){
@@ -24,7 +24,7 @@ int main(){
     }
   );
 
-  for(auto &x : r.result){
+  for(auto &x : r){
     std::cout << 2 * (N-1) - x << std::endl;
   }
 

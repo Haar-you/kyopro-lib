@@ -10,10 +10,7 @@
  * @title Run enumerate
  * @docs run_enumerate.md
  */
-struct RunEnumerate {
-  std::vector<std::tuple<int, int, int>> result;
-
-private:
+namespace run_enumerate_impl {
   auto aux(const std::string &first, const std::string &second){
     std::vector<std::tuple<int, int, int>> ret;
 
@@ -38,7 +35,7 @@ private:
     return ret;
   }
 
-  void run(std::string s, int left = 0){
+  void run(std::string s, int left, std::vector<std::tuple<int, int, int>> &ret){
     if(s.size() == 1) return;
 
     const int N = s.size();
@@ -49,7 +46,7 @@ private:
       auto res = aux(first, second);
 
       for(auto &[t, l, r] : res){
-        result.emplace_back(t, left + l, left + r);
+        ret.emplace_back(t, left + l, left + r);
       }
     }
 
@@ -57,15 +54,15 @@ private:
       auto res = aux(std::string(second.rbegin(), second.rend()), std::string(first.rbegin(), first.rend()));
 
       for(auto &[t, l, r] : res){
-        result.emplace_back(t, left + N - r, left + N - l);
+        ret.emplace_back(t, left + N - r, left + N - l);
       }
     }
 
-    run(first, left);
-    run(second, left + first.size());
+    run(first, left, ret);
+    run(second, left + first.size(), ret);
   }
 
-  void sub(std::string s){
+  void sub(std::string s, std::vector<std::tuple<int, int, int>> &ret){
     const int N = s.size();
 
     {
@@ -73,7 +70,7 @@ private:
 
       for(int i = 1; i < N; ++i){
         if(i <= a[i]){
-          result.emplace_back(i, 0, i + a[i]);
+          ret.emplace_back(i, 0, i + a[i]);
         }
       }
     }
@@ -83,35 +80,36 @@ private:
 
       for(int i = 1; i < N; ++i){
         if(i <= a[i]){
-          result.emplace_back(i, N - i - a[i], N);
+          ret.emplace_back(i, N - i - a[i], N);
         }
       }
     }
   }
+}
 
-public:
-  RunEnumerate(const std::string &s){
-    run(s);
-    sub(s);
+auto run_enumerate(const std::string &s){
+  std::vector<std::tuple<int, int, int>> ret;
+  run_enumerate_impl::run(s, 0, ret);
+  run_enumerate_impl::sub(s, ret);
 
-    std::map<std::pair<int,int>, int> m;
+  std::map<std::pair<int,int>, int> m;
 
-    for(auto &[t,l,r] : result){
-      auto p = std::make_pair(l, r);
+  for(auto &[t,l,r] : ret){
+    auto p = std::make_pair(l, r);
 
-      if(m.find(p) != m.end()){
-        m[p] = std::min(m[p], t);
-      }else{
-        m[p] = t;
-      }
+    if(m.find(p) != m.end()){
+      m[p] = std::min(m[p], t);
+    }else{
+      m[p] = t;
     }
-
-    result.clear();
-
-    for(auto &[p, t] : m){
-      result.emplace_back(t, p.first, p.second);
-    }
-
-    std::sort(result.begin(), result.end());
   }
-};
+
+  ret.clear();
+
+  for(auto &[p, t] : m){
+    ret.emplace_back(t, p.first, p.second);
+  }
+
+  std::sort(ret.begin(), ret.end());
+  return ret;
+}

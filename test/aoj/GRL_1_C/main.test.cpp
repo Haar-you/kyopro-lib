@@ -10,15 +10,15 @@ int main(){
   Graph<int> g(V);
   g.read<0>(E);
 
-  auto res = WarshallFloyd<int>(g);
-  
+  auto res = warshall_floyd(g);
+
   if(res.has_negative_cycle){
     std::cout << "NEGATIVE CYCLE" << std::endl;
   }else{
     for(int i = 0; i < V; ++i){
       for(int j = 0; j < V; ++j){
         if(j) std::cout << " ";
-        auto &ans = res.dist[i][j];
+        auto &ans = res[i][j];
         if(ans){
           std::cout << *ans;
         }else{

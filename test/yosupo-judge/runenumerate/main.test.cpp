@@ -11,7 +11,7 @@ int main(){
   
   std::string s; std::cin >> s;
 
-  auto ans = RunEnumerate(s).result;
+  auto ans = run_enumerate(s);
 
   std::cout << ans.size() << "\n";
   

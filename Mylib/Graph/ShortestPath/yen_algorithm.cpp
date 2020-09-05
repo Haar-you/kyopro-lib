@@ -72,9 +72,8 @@ namespace yen_algorithm_impl {
 }
 
 template <typename T>
-auto yen_algorithm(Graph<T> g, int s, int t, int K){
+auto yen_algorithm(const Graph<T> &g, int s, int t, int K){
   using Path = std::pair<T, std::vector<int>>;
-  using P = std::pair<T, int>;
 
   const int N = g.size();
 

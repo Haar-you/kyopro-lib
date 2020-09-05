@@ -30,7 +30,7 @@ int main(){
   for(int i = 0; i < tree_num; ++i){
     plans[i] = std::vector<int>(forest.trees[i].size());
   }
-    
+
   for(auto [a, b] : input_tuples<int, int>(Q)){
     --a, --b;
 
@@ -47,7 +47,7 @@ int main(){
     const auto &plan = plans[i];
 
     auto res =
-      make_rerooting<std::pair<int,int>>(
+      rerooting<std::pair<int,int>>(
         tree,
         std::make_pair(0, 0),
         [](const auto &a, const auto &b){
@@ -59,7 +59,7 @@ int main(){
         [&](const auto &x, int v){
           return std::make_pair(x.first + plan[v], x.second);
         }
-      ).result;
+      );
       
     ans +=
       std::min_element(

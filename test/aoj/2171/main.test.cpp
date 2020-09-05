@@ -20,7 +20,7 @@ int main(){
     auto q = input_vector<int>(n);
     auto g = input_vector<int>(n, n);
 
-    auto dist = WarshallFloyd<int, 0>(g).dist;
+    auto dist = warshall_floyd_for_matrix<int, 0>(g);
 
     if(not dist[s][t]){
       std::cout << "impossible" << std::endl;
