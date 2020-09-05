@@ -7,48 +7,60 @@
  * @docs trie.md
  */
 template <typename T>
-class Trie {
-  constexpr static int CHAR_MAX = 128;
-  int table[CHAR_MAX];
-  int N;
-
-  struct node {
-    T val;
-    std::vector<node*> ch;
-
-    node(int N): val(0), ch(N){}
-  };
+struct TrieNode {
+  std::map<char, TrieNode*> children;
+  T val;
 
 public:
-  Trie(const std::string &s): N(s.size()){
-    for(int i = 0; i < CHAR_MAX; ++i) table[i] = -1;
-    for(int i = 0; i < (int)s.size(); ++i){
-      table[(int)s[i]] = i;
+  TrieNode(){}
+  TrieNode(T val): val(val){}
+
+  const T& value() const {return val;}
+  T& value(){return val;}
+
+  TrieNode* insert(char c, const T &v){
+    if(children.find(c) != children.end()){
+      children[c]->val = v;
+    }else{
+      children[c] = new TrieNode<T>(v);
+    }
+
+    return children[c];
+  }
+
+  template <typename Iter>
+  TrieNode* insert(Iter first, Iter last, const T &v){
+    if(first == last){
+      val = v;
+      return this;
+    }else{
+      const auto c = *first;
+      if(children.find(c) == children.end()){
+        children[c] = new TrieNode(T());
+      }
+
+      return children[c]->insert(first + 1, last, v);
     }
   }
 
-  node *root = nullptr;
+  TrieNode* find(char c){
+    if(children.find(c) != children.end()) return children[c];
+    else return nullptr;
+  }
+};
 
-  node* insert(node *t, const std::string &s, const T &val, int i = 0){
-    if(!t) t = new node(N);
+template <typename T>
+struct Trie {
+  using node = TrieNode<T>;
 
-    if(i >= (int)s.size()){
-      t->val = val;
-      return t;
-    }
+  node *root;
 
-    int c = table[(int)s[i]];
-    t->ch[c] = insert(t->ch[c], s, val, i + 1);
-
-    return t;
+  Trie(){
+    root = new node(T());
   }
 
-  void insert(const std::string &s, const T &val){
-    root = insert(root, s, val, 0);
-  }
-
-  node* find(node *t, char c){
-    if(!t) return t;
-    return t->ch[table[(int)c]];
+  template <typename Iter>
+  node* insert(Iter first, Iter last, const T &v){
+    return root->insert(first, last, v);
   }
 };
