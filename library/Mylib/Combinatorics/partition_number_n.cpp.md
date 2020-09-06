@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Partition number (Enumerate $P(n, n)$)
+# :x: Partition number (Enumerate $P(n, n)$)
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/partition_number_n.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -49,7 +49,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/partition_function/main.test.cpp.html">test/yosupo-judge/partition_function/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/partition_function/main.test.cpp.html">test/yosupo-judge/partition_function/main.test.cpp</a>
 
 
 ## Code
@@ -67,19 +67,19 @@ layout: default
  */
 template <typename T>
 auto partition_number(int N){
-  std::vector<T> p(N+1);
-  
+  std::vector<T> p(N + 1);
+
   p[0] = 1;
 
   for(int i = 1; i <= N; ++i){
-    int s = sqrt(1+24*i);
+    int s = sqrt(1 + 24 * i);
 
-    for(int j = 1; j <= (1+s)/6; ++j){
-      p[i] += p[i-j*(3*j-1)/2] * (j % 2 ? 1 : -1);
+    for(int j = 1; j <= (1 + s) / 6; ++j){
+      p[i] += p[i - j * (3 * j - 1) / 2] * (j % 2 ? 1 : -1);
     }
-    
-    for(int j = 1; j <= (-1+s)/6; ++j){
-      p[i] += p[i-j*(3*j+1)/2] * (j % 2 ? 1 : -1);
+
+    for(int j = 1; j <= (-1 + s) / 6; ++j){
+      p[i] += p[i - j * (3 * j + 1) / 2] * (j % 2 ? 1 : -1);
     }
   }
 
@@ -102,19 +102,19 @@ auto partition_number(int N){
  */
 template <typename T>
 auto partition_number(int N){
-  std::vector<T> p(N+1);
-  
+  std::vector<T> p(N + 1);
+
   p[0] = 1;
 
   for(int i = 1; i <= N; ++i){
-    int s = sqrt(1+24*i);
+    int s = sqrt(1 + 24 * i);
 
-    for(int j = 1; j <= (1+s)/6; ++j){
-      p[i] += p[i-j*(3*j-1)/2] * (j % 2 ? 1 : -1);
+    for(int j = 1; j <= (1 + s) / 6; ++j){
+      p[i] += p[i - j * (3 * j - 1) / 2] * (j % 2 ? 1 : -1);
     }
-    
-    for(int j = 1; j <= (-1+s)/6; ++j){
-      p[i] += p[i-j*(3*j+1)/2] * (j % 2 ? 1 : -1);
+
+    for(int j = 1; j <= (-1 + s) / 6; ++j){
+      p[i] += p[i - j * (3 * j + 1) / 2] * (j % 2 ? 1 : -1);
     }
   }
 

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/ITP2_11_B/main.asc.test.cpp
+# :x: test/aoj/ITP2_11_B/main.asc.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3ee41bb6b1ee97f3a5e094f7dfeadd68">test/aoj/ITP2_11_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ITP2_11_B/main.asc.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 04:37:36+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_B</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Bit/for_each_superset_asc.cpp.html">Enumerate supersets (Ascending order)</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/Bit/enumerate_supersets_asc.cpp.html">Enumerate supersets (Ascending order)</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -53,13 +53,13 @@ layout: default
 #include <iostream>
 #include <vector>
 #include <map>
-#include "Mylib/Bit/for_each_superset_asc.cpp"
+#include "Mylib/Bit/enumerate_supersets_asc.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int n, k; std::cin >> n >> k;
 
   int t = 0;
@@ -68,13 +68,17 @@ int main(){
   }
 
   std::map<int, std::vector<int>> ans;
-  for(int d : SupersetAsc(t, n)){
-    ans[d];
-    for(int i = 0; i < n; ++i){
-      if(d & (1 << i)) ans[d].push_back(i);
+  enumerate_supersets_asc(
+    t, n,
+    [&](int d){
+      ans[d];
+      for(int i = 0; i < n; ++i){
+        if(d & (1 << i)) ans[d].push_back(i);
+      }
+      return true;
     }
-  }
-  
+  );
+
   for(auto &[m, v] : ans){
     std::cout << m << ":";
     for(auto x : v) std::cout << " " << x;
@@ -96,32 +100,18 @@ int main(){
 #include <iostream>
 #include <vector>
 #include <map>
-#line 2 "Mylib/Bit/for_each_superset_asc.cpp"
+#line 2 "Mylib/Bit/enumerate_supersets_asc.cpp"
 
 /**
  * @title Enumerate supersets (Ascending order)
- * @docs for_each_superset_asc.md
+ * @docs enumerate_supersets_asc.md
  */
-class SupersetAsc{
-  struct iter{
-    int t, a, n;
-    bool is_end;
-
-    int operator*() const {return t;}
-    void operator++(){
-      t = (t + 1) | a;
-      if(t >= (1 << n)) is_end = true;
-    }
-    bool operator!=(const iter &) const {return not is_end;}
-  };
-
-  int a, n;
-
-public:
-  SupersetAsc(int a, int n): a(a), n(n){}
-  iter begin() const {return iter({a, a, n, false});}
-  iter end() const {return iter();}
-};
+template <typename Func>
+void enumerate_supersets_asc(int a, int n, const Func &f){
+  for(int t = a; t < (1 << n); t = (t + 1) | a){
+    if(not f(t)) break;
+  }
+}
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
@@ -145,7 +135,7 @@ std::vector<std::vector<T>> input_vector(int N, int M){
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int n, k; std::cin >> n >> k;
 
   int t = 0;
@@ -154,13 +144,17 @@ int main(){
   }
 
   std::map<int, std::vector<int>> ans;
-  for(int d : SupersetAsc(t, n)){
-    ans[d];
-    for(int i = 0; i < n; ++i){
-      if(d & (1 << i)) ans[d].push_back(i);
+  enumerate_supersets_asc(
+    t, n,
+    [&](int d){
+      ans[d];
+      for(int i = 0; i < n; ++i){
+        if(d & (1 << i)) ans[d].push_back(i);
+      }
+      return true;
     }
-  }
-  
+  );
+
   for(auto &[m, v] : ans){
     std::cout << m << ":";
     for(auto x : v) std::cout << " " << x;

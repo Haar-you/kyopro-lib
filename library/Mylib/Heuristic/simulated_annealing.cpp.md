@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#8196a7a5355e165a1b784acd0a3f4854">Mylib/Heuristic</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Heuristic/simulated_annealing.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-15 01:55:40+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -63,7 +63,7 @@ void simulated_annealing(int duration, double T0, double T1, Func f){
     double now = (double)d / duration;
 
     double T = std::pow(T0, 1.0 - now) * std::pow(T1, now);
-      
+
     f(d, T);
   }
 }
@@ -96,7 +96,7 @@ void simulated_annealing(int duration, double T0, double T1, Func f){
     double now = (double)d / duration;
 
     double T = std::pow(T0, 1.0 - now) * std::pow(T1, now);
-      
+
     f(d, T);
   }
 }

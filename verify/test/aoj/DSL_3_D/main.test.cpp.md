@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_3_D/main.test.cpp
+# :x: test/aoj/DSL_3_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#701acb68cf3d7eb2875e08c5c295c84f">test/aoj/DSL_3_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_3_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_3_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_3_D</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp.html">Sliding window minimum</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp.html">Sliding window minimum</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 
 
 ## Code
@@ -58,7 +58,7 @@ layout: default
 #include "Mylib/IO/input_vector.cpp"
 
 int main(){
-  int N,L; std::cin >> N >> L;
+  int N, L; std::cin >> N >> L;
 
   auto a = input_vector<int>(N);
 
@@ -100,21 +100,21 @@ std::vector<T> sliding_minimum(const std::vector<T> &a, int k){
 
     dq.push_back(i);
   }
-  
-  for(int i = 0; i < n-k+1; ++i){
+
+  for(int i = 0; i < n - k + 1; ++i){
     while(dq.front() < i){
       dq.pop_front();
     }
 
     ret.push_back(a[dq.front()]);
 
-    while(not dq.empty() and i+k < n and a[dq.back()] >= a[i+k]){
+    while(not dq.empty() and i + k < n and a[dq.back()] >= a[i + k]){
       dq.pop_back();
     }
-    
-    dq.push_back(i+k);
+
+    dq.push_back(i + k);
   }
-  
+
   return ret;
 }
 #line 3 "Mylib/IO/join.cpp"
@@ -156,7 +156,7 @@ std::vector<std::vector<T>> input_vector(int N, int M){
 #line 8 "test/aoj/DSL_3_D/main.test.cpp"
 
 int main(){
-  int N,L; std::cin >> N >> L;
+  int N, L; std::cin >> N >> L;
 
   auto a = input_vector<int>(N);
 

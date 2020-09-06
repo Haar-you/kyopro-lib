@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f3e3957dafbf526c46359105e1a71d64">Mylib/Algorithm/Query</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Query/range_count_query.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-03 02:43:23+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -56,7 +56,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../DataStructure/FenwickTree/fenwick_tree_add.cpp.html">Fenwick tree (Add)</a>
+* :x: <a href="../../DataStructure/FenwickTree/fenwick_tree_add.cpp.html">Fenwick tree (Add)</a>
 
 
 ## Code
@@ -75,7 +75,7 @@ layout: default
  * @docs range_count_query.md
  */
 template <typename T>
-struct RangeCountQuery{
+struct RangeCountQuery {
   std::vector<int> a;
   std::vector<std::tuple<int, int, int>> qs;
   int N;
@@ -86,7 +86,7 @@ struct RangeCountQuery{
     temp.erase(std::unique(temp.begin(), temp.end()), temp.end());
 
     for(auto x : a_){
-      int i = std::lower_bound(temp.begin(), temp.end(), x) - temp.begin(); 
+      int i = std::lower_bound(temp.begin(), temp.end(), x) - temp.begin();
       a.push_back(i);
     }
   }
@@ -104,7 +104,7 @@ struct RangeCountQuery{
     const int Q = qs.size();
     std::vector<int> last_index(N, -1);
     std::vector<int> ret(Q);
-  
+
     int cur = 0;
     for(auto [r, l, i] : qs){
       while(cur < r){
@@ -120,7 +120,7 @@ struct RangeCountQuery{
 
       ret[i] = b.get(l, r);
     }
-    
+
     return ret;
   }
 };
@@ -142,25 +142,25 @@ struct RangeCountQuery{
  * @docs fenwick_tree_add.md
  */
 template <typename T>
-class FenwickTreeAdd{
+class FenwickTreeAdd {
   using value_type = T;
-  
+
   int size;
   std::vector<value_type> data;
-  
+
 public:
   FenwickTreeAdd(){}
   FenwickTreeAdd(int size): size(size), data(size + 1, 0){}
-  
+
   void update(int i, value_type val){
     i += 1; // 1-index
-    
+
     while(i <= size){
       data[i] = data[i] + val;
       i += i & (-i);
     }
   }
-  
+
   value_type get(int i) const { // [0, i)
     value_type ret = 0;
     i += 1; // 1-index
@@ -174,7 +174,7 @@ public:
   }
 
   value_type get(int l, int r) const { // [l, r)
-    return get(r-1) - get(l-1);
+    return get(r - 1) - get(l - 1);
   }
 };
 #line 6 "Mylib/Algorithm/Query/range_count_query.cpp"
@@ -184,7 +184,7 @@ public:
  * @docs range_count_query.md
  */
 template <typename T>
-struct RangeCountQuery{
+struct RangeCountQuery {
   std::vector<int> a;
   std::vector<std::tuple<int, int, int>> qs;
   int N;
@@ -195,7 +195,7 @@ struct RangeCountQuery{
     temp.erase(std::unique(temp.begin(), temp.end()), temp.end());
 
     for(auto x : a_){
-      int i = std::lower_bound(temp.begin(), temp.end(), x) - temp.begin(); 
+      int i = std::lower_bound(temp.begin(), temp.end(), x) - temp.begin();
       a.push_back(i);
     }
   }
@@ -213,7 +213,7 @@ struct RangeCountQuery{
     const int Q = qs.size();
     std::vector<int> last_index(N, -1);
     std::vector<int> ret(Q);
-  
+
     int cur = 0;
     for(auto [r, l, i] : qs){
       while(cur < r){
@@ -229,7 +229,7 @@ struct RangeCountQuery{
 
       ret[i] = b.get(l, r);
     }
-    
+
     return ret;
   }
 };

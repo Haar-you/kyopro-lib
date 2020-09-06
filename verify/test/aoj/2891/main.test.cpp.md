@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/2891/main.test.cpp
+# :x: test/aoj/2891/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#8c3e2a047e69e0e27426b8794b30b6b7">test/aoj/2891</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2891/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2891">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2891</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/GraphUtils/decompose_pseudotree.cpp.html">Decompose pseudotree</a>
-* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/Graph/GraphUtils/decompose_pseudotree.cpp.html">Decompose pseudotree</a>
+* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -72,7 +72,7 @@ int main(){
     if(res.in_loop[a] and res.in_loop[b]){
       std::cout << 2 << "\n";
     }else{
-      std::cout << 1 << "\n"; 
+      std::cout << 1 << "\n";
     }
   }
 
@@ -100,8 +100,8 @@ int main(){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -111,8 +111,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -121,8 +121,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -160,14 +160,14 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 3 "Mylib/Graph/Template/graph.cpp"
+#line 4 "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -177,15 +177,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -198,7 +198,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -229,7 +229,7 @@ using Tree = Graph<T>;
  * @docs decompose_pseudotree.md
  */
 template <typename T>
-struct PseudoTree{
+struct PseudoTree {
   const int n;
   std::vector<bool> in_loop;
   std::vector<int> group;
@@ -242,7 +242,7 @@ struct PseudoTree{
       dfs(e.to, cur, g);
     }
   }
-  
+
   PseudoTree(const Graph<T> &g): n(g.size()), in_loop(n, true), group(n){
     std::vector<int> indeg(n);
     std::vector<bool> visited(n);
@@ -267,7 +267,7 @@ struct PseudoTree{
 
       if(visited[cur]) continue;
       visited[cur] = true;
-      
+
       for(auto &e : g[cur]){
         if(not visited[e.to]){
           --indeg[e.to];
@@ -308,7 +308,7 @@ int main(){
     if(res.in_loop[a] and res.in_loop[b]){
       std::cout << 2 << "\n";
     }else{
-      std::cout << 1 << "\n"; 
+      std::cout << 1 << "\n";
     }
   }
 

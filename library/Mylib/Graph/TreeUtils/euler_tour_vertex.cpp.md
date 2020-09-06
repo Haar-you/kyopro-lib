@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/euler_tour_vertex.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Verified with
@@ -60,13 +60,13 @@ layout: default
  * @docs euler_tour_vertex.md
  */
 template <typename T>
-class EulerTourVertex{
+class EulerTourVertex {
   int pos = 0;
   std::vector<int> begin, end;
 
   void dfs(int cur, int par, const Tree<T> &tree){
     begin[cur] = pos++;
-	
+
     for(auto &e : tree[cur]){
       if(e.to == par) continue;
       dfs(e.to, cur, tree);
@@ -80,7 +80,7 @@ public:
     dfs(root, -1, tree);
   }
 
-  template <typename F> // F = std::function<void(int,int)>
+  template <typename F> // F = std::function<void(int, int)>
   void subtree_query(int i, const F &f){
     f(begin[i], end[i]);
   }
@@ -100,13 +100,14 @@ public:
 #line 2 "Mylib/Graph/TreeUtils/euler_tour_vertex.cpp"
 #include <vector>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -116,15 +117,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -137,7 +138,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -166,13 +167,13 @@ using Tree = Graph<T>;
  * @docs euler_tour_vertex.md
  */
 template <typename T>
-class EulerTourVertex{
+class EulerTourVertex {
   int pos = 0;
   std::vector<int> begin, end;
 
   void dfs(int cur, int par, const Tree<T> &tree){
     begin[cur] = pos++;
-	
+
     for(auto &e : tree[cur]){
       if(e.to == par) continue;
       dfs(e.to, cur, tree);
@@ -186,7 +187,7 @@ public:
     dfs(root, -1, tree);
   }
 
-  template <typename F> // F = std::function<void(int,int)>
+  template <typename F> // F = std::function<void(int, int)>
   void subtree_query(int i, const F &f){
     f(begin[i], end[i]);
   }

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/zip.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-07 21:01:02+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
@@ -53,7 +53,7 @@ layout: default
 template <typename ... Args>
 auto zip(std::vector<Args> ... a){
   const int N = std::min({a.size() ...});
-  std::vector<std::tuple<Args...>> ret(N);
+  std::vector<std::tuple<Args ...>> ret(N);
 
   for(int i = 0; i < N; ++i){
     ret[i] = std::make_tuple(a[i] ...);
@@ -61,7 +61,6 @@ auto zip(std::vector<Args> ... a){
 
   return ret;
 }
-
 
 ```
 {% endraw %}
@@ -81,7 +80,7 @@ auto zip(std::vector<Args> ... a){
 template <typename ... Args>
 auto zip(std::vector<Args> ... a){
   const int N = std::min({a.size() ...});
-  std::vector<std::tuple<Args...>> ret(N);
+  std::vector<std::tuple<Args ...>> ret(N);
 
   for(int i = 0; i < N; ++i){
     ret[i] = std::make_tuple(a[i] ...);
@@ -89,7 +88,6 @@ auto zip(std::vector<Args> ... a){
 
   return ret;
 }
-
 
 ```
 {% endraw %}

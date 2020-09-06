@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Leftist heap
+# :x: Leftist heap
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f151d59e79c7ff7f731ff52cf9b782e4">Mylib/DataStructure/Heap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Heap/leftist_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
 
 
 ## Code
@@ -55,8 +55,8 @@ layout: default
  * @docs leftist_heap.md
  */
 template <typename T, class Compare = std::less<T>>
-class LeftistHeap{
-  struct node{
+class LeftistHeap {
+  struct node {
     T val;
     node *left, *right;
     int s, size;
@@ -86,7 +86,7 @@ protected:
   }
 
 public:
-  void meld(LeftistHeap &heap){root = meld(root, heap.root); heap.root = nullptr;}  
+  void meld(LeftistHeap &heap){root = meld(root, heap.root); heap.root = nullptr;}
   void push(const T &val){root = meld(root, new node(val));}
   const T& top() const {return root->val;}
   void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}
@@ -109,8 +109,8 @@ public:
  * @docs leftist_heap.md
  */
 template <typename T, class Compare = std::less<T>>
-class LeftistHeap{
-  struct node{
+class LeftistHeap {
+  struct node {
     T val;
     node *left, *right;
     int s, size;
@@ -140,7 +140,7 @@ protected:
   }
 
 public:
-  void meld(LeftistHeap &heap){root = meld(root, heap.root); heap.root = nullptr;}  
+  void meld(LeftistHeap &heap){root = meld(root, heap.root); heap.root = nullptr;}
   void push(const T &val){root = meld(root, new node(val));}
   const T& top() const {return root->val;}
   void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}

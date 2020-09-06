@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#c20232aa0a6a3c1c77a782d17f007d0b">Mylib/Math</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Math/quadratic_equation.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -50,9 +50,9 @@ layout: default
  * @docs quadratic_equation.md
  */
 std::vector<double> quadratic_equation(double a, double b, double c){
-  double d = b*b - 4*a*c;
+  double d = b * b - 4 * a * c;
   if(d < 0) return {};
-  
+
   double x1 = (-b - std::sqrt(d)) / (2 * a);
   double x2 = (-b + std::sqrt(d)) / (2 * a);
   return {x1, x2};
@@ -73,9 +73,9 @@ std::vector<double> quadratic_equation(double a, double b, double c){
  * @docs quadratic_equation.md
  */
 std::vector<double> quadratic_equation(double a, double b, double c){
-  double d = b*b - 4*a*c;
+  double d = b * b - 4 * a * c;
   if(d < 0) return {};
-  
+
   double x1 = (-b - std::sqrt(d)) / (2 * a);
   double x2 = (-b + std::sqrt(d)) / (2 * a);
   return {x1, x2};

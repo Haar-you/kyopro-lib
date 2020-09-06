@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0d7e284bb2256ddef55e56b25bfaf3f1">Mylib/DataStructure/Array</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Array/rollbackable_vector.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -63,9 +63,9 @@ layout: default
  * @docs rollbackable_vector.md
  */
 template <typename T>
-class RollbackableVector{
+class RollbackableVector {
   using value_type = T;
-  
+
   std::vector<T> data;
   std::vector<std::vector<T>> stock;
   std::vector<int> history;
@@ -121,9 +121,9 @@ public:
  * @docs rollbackable_vector.md
  */
 template <typename T>
-class RollbackableVector{
+class RollbackableVector {
   using value_type = T;
-  
+
   std::vector<T> data;
   std::vector<std::vector<T>> stock;
   std::vector<int> history;

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/starts_with.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -42,6 +42,7 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
+#include <cstddef>
 
 /**
  * @title starts_with
@@ -63,6 +64,7 @@ bool starts_with(const Container &str, const Container &prefix){
 {% raw %}
 ```cpp
 #line 2 "Mylib/String/starts_with.cpp"
+#include <cstddef>
 
 /**
  * @title starts_with

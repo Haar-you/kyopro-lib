@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/ALDS1_10_C/main.test.cpp
+# :x: test/aoj/ALDS1_10_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6691093001380fa1883257c26243406e">test/aoj/ALDS1_10_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_10_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_10_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_10_C</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/longest_common_subsequence.cpp.html">Longest common subsequence</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/String/longest_common_subsequence.cpp.html">Longest common subsequence</a>
 
 
 ## Code
@@ -58,11 +58,11 @@ layout: default
 
 int main(){
   int q; std::cin >> q;
-  
+
   for(auto [x, y] : input_tuples<std::string, std::string>(q)){
     std::cout << lcs(x, y) << std::endl;
   }
-  
+
   return 0;
 }
 
@@ -88,14 +88,14 @@ int main(){
 template <typename Container, typename T = typename Container::value_type>
 int lcs(const Container &a, const Container &b){
   const int n = a.size(), m = b.size();
-  
-  std::vector<std::vector<int>> dp(n+1, std::vector<int>(m+1, 0));
+
+  std::vector<std::vector<int>> dp(n + 1, std::vector<int>(m + 1, 0));
   for(int i = 1; i <= n; ++i){
     for(int j = 1; j <= m; ++j){
-      dp[i][j] = a[i-1] == b[j-1] ? dp[i-1][j-1] + 1 : std::max(dp[i-1][j], dp[i][j-1]);
+      dp[i][j] = a[i - 1] == b[j - 1] ? dp[i - 1][j - 1] + 1 : std::max(dp[i - 1][j], dp[i][j - 1]);
     }
   }
-    
+
   return dp[n][m];
 }
 #line 4 "Mylib/IO/input_tuples.cpp"
@@ -108,8 +108,8 @@ int lcs(const Container &a, const Container &b){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -119,8 +119,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -129,8 +129,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -172,11 +172,11 @@ auto input_tuples(int N){
 
 int main(){
   int q; std::cin >> q;
-  
+
   for(auto [x, y] : input_tuples<std::string, std::string>(q)){
     std::cout << lcs(x, y) << std::endl;
   }
-  
+
   return 0;
 }
 

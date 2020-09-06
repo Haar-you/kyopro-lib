@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/manhattanmst/main.test.cpp
+# :x: test/yosupo-judge/manhattanmst/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#48a9fc7d711f6e82f59b9c8d0d6c268c">test/yosupo-judge/manhattanmst</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/manhattanmst/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/manhattanmst">https://judge.yosupo.jp/problem/manhattanmst</a>
@@ -39,13 +39,13 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
-* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
-* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Min monoid</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :x: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
+* :x: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
+* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 
 
 ## Code
@@ -62,7 +62,7 @@ layout: default
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N; std::cin >> N;
 
   auto [x, y] = input_tuple_vector<int64_t, int64_t>(N);
@@ -103,45 +103,43 @@ int main(){
  * @docs input_tuple_vector.md
  */
 template <typename T, size_t ... I>
-void input_tuple_vector_init(T &val, int N, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0)...};
+void input_tuple_vector_init(T &val, int N, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0) ...};
 }
 
 template <typename T, size_t ... I>
-void input_tuple_vector_helper(T &val, int i, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0)...};
+void input_tuple_vector_helper(T &val, int i, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0) ...};
 }
 
 template <typename ... Args>
 auto input_tuple_vector(int N){
-  std::tuple<std::vector<Args>...> ret;
+  std::tuple<std::vector<Args> ...> ret;
 
-  input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof...(Args)>());
+  input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof ... (Args)>());
   for(int i = 0; i < N; ++i){
-    input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof...(Args)>());
+    input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof ... (Args)>());
   }
 
   return ret;
 }
-#line 2 "Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp"
-
-#line 5 "Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp"
+#line 4 "Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp"
 #include <algorithm>
 #include <numeric>
 #include <cmath>
-
 #line 3 "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include <optional>
 
 /**
+ * @title Min monoid
  * @docs min.md
  */
 template <typename T>
-struct MinMonoid{
+struct MinMonoid {
   using value_type = std::optional<T>;
-  
-  value_type id() const {return {};}
-  value_type op(const value_type &a, const value_type &b) const {
+
+  value_type operator()() const {return {};}
+  value_type operator()(const value_type &a, const value_type &b) const {
     if(not a) return b;
     if(not b) return a;
     return {std::min(*a, *b)};
@@ -154,64 +152,63 @@ struct MinMonoid{
  * @docs segment_tree.md
  */
 template <typename Monoid>
-class SegmentTree{
+class SegmentTree {
   using value_type = typename Monoid::value_type;
-  Monoid M;
-  
+  const static Monoid M;
+
   int depth, size, hsize;
   std::vector<value_type> data;
 
 public:
   SegmentTree(){}
   SegmentTree(int n):
-    depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
+    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
     size(1 << depth), hsize(size / 2),
-    data(size, M.id())
+    data(size, M())
   {}
 
-  auto operator[](int i) const {return at(i);}
-  auto at(int i) const {return data[hsize + i];}
-  
-  auto get(int x, int y) const { // [x,y)
-    value_type ret_left = M.id();
-    value_type ret_right = M.id();
-    
+  auto operator[](int i) const {return data[hsize + i];}
+
+  auto get(int x, int y) const {
+    value_type ret_left = M();
+    value_type ret_right = M();
+
     int l = x + hsize, r = y + hsize;
     while(l < r){
-      if(r & 1) ret_right = M.op(data[--r], ret_right);
-      if(l & 1) ret_left = M.op(ret_left, data[l++]);
+      if(r & 1) ret_right = M(data[--r], ret_right);
+      if(l & 1) ret_left = M(ret_left, data[l++]);
       l >>= 1, r >>= 1;
     }
-    
-    return M.op(ret_left, ret_right);
+
+    return M(ret_left, ret_right);
   }
 
   void update(int i, const value_type &x){
     i += hsize;
     data[i] = x;
-    while(i > 1) i >>= 1, data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
+    while(i > 1) i >>= 1, data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
   void init_with_vector(const std::vector<T> &val){
-    data.assign(size, M.id());
+    data.assign(size, M());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
-    for(int i = hsize-1; i >= 1; --i) data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
+    for(int i = hsize - 1; i >= 1; --i) data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
   void init(const T &val){
     init_with_vector(std::vector<value_type>(hsize, val));
-  }  
+  }
 };
-#line 3 "Mylib/Graph/Template/graph.cpp"
+#line 4 "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -221,15 +218,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -242,7 +239,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -270,25 +267,25 @@ using Tree = Graph<T>;
  * @title Union-find
  * @docs unionfind.md
  */
-class UnionFind{
+class UnionFind {
   std::vector<int> parent, depth, size;
   int count;
 
 public:
   UnionFind(){}
-  UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
+  UnionFind(int n): parent(n), depth(n, 1), size(n, 1), count(n){
     std::iota(parent.begin(), parent.end(), 0);
   }
-  
+
   int root_of(int i){
     if(parent[i] == i) return i;
     else return parent[i] = root_of(parent[i]);
   }
-  
+
   bool is_same(int i, int j){return root_of(i) == root_of(j);}
 
   int merge(int i, int j){
-    int ri = root_of(i), rj = root_of(j);
+    const int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return ri;
     else{
       --count;
@@ -317,7 +314,7 @@ public:
  */
 template <typename T>
 std::vector<Edge<T>> kruskal(const Graph<T> &graph){
-  int n = graph.size();
+  const int n = graph.size();
   std::vector<Edge<T>> edges;
   for(auto &v : graph){
     for(auto &e : v){
@@ -340,7 +337,7 @@ std::vector<Edge<T>> kruskal(const Graph<T> &graph){
 
   return ret;
 }
-#line 13 "Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp"
+#line 11 "Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp"
 
 /**
  * @title Manhattan distance MST
@@ -351,7 +348,7 @@ std::vector<Edge<T>> manhattan_minimum_spanning_tree(std::vector<T> x, std::vect
   const int N = x.size();
   Graph<T> g(N);
   SegmentTree<MinMonoid<std::pair<T, int>>> seg(N);
-  
+
   auto f =
     [&](){
       std::vector<T> Y(y);
@@ -379,7 +376,7 @@ std::vector<Edge<T>> manhattan_minimum_spanning_tree(std::vector<T> x, std::vect
           g.add_edge(i, j, c);
         }
 
-        if(auto res = seg.at(lb); not res or x[i] + y[i] < res->first){
+        if(auto res = seg[lb]; not res or x[i] + y[i] < res->first){
           seg.update(lb, {{x[i] + y[i], i}});
         }
       }
@@ -395,16 +392,15 @@ std::vector<Edge<T>> manhattan_minimum_spanning_tree(std::vector<T> x, std::vect
     }
     for(int l = 0; l < N; ++l) y[l] = -y[l];
   }
-  
+
   return kruskal(g);
 }
-
 #line 6 "test/yosupo-judge/manhattanmst/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N; std::cin >> N;
 
   auto [x, y] = input_tuple_vector<int64_t, int64_t>(N);

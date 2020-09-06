@@ -25,28 +25,28 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Grid template
+# :x: Grid template
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#437b04c37f52e5b35f1d2c24c546c491">Mylib/Grid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Grid/grid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="grid_bfs.cpp.html">BFS on a grid</a>
-* :heavy_check_mark: <a href="grid_find.cpp.html">Enumerate points satisfying conditions</a>
-* :heavy_check_mark: <a href="grid_to_graph.cpp.html">Convert grid to graph</a>
+* :x: <a href="grid_bfs.cpp.html">BFS on a grid</a>
+* :x: <a href="grid_find.cpp.html">Enumerate points satisfying conditions</a>
+* :x: <a href="grid_to_graph.cpp.html">Convert grid to graph</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/0558/main.graph.test.cpp.html">test/aoj/0558/main.graph.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/0558/main.test.cpp.html">test/aoj/0558/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/0558/main.graph.test.cpp.html">test/aoj/0558/main.graph.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/0558/main.test.cpp.html">test/aoj/0558/main.test.cpp</a>
 
 
 ## Code
@@ -63,7 +63,7 @@ layout: default
  * @title Grid template
  * @docs grid.md
  */
-struct Point{
+struct Point {
   int x, y;
   Point(): x(0), y(0){}
   Point(int x, int y): x(x), y(y){}
@@ -71,8 +71,8 @@ struct Point{
   Point& operator-=(const Point &a){this->x -= a.x; this->y -= a.y; return *this;}
 };
 
-Point operator+(const Point &a, const Point &b){return Point(a.x+b.x, a.y+b.y);}
-Point operator-(const Point &a, const Point &b){return Point(a.x-b.x, a.y-b.y);}
+Point operator+(const Point &a, const Point &b){return Point(a.x + b.x, a.y + b.y);}
+Point operator-(const Point &a, const Point &b){return Point(a.x - b.x, a.y - b.y);}
 bool operator==(const Point &a, const Point &b){return a.x == b.x and a.y == b.y;}
 bool operator!=(const Point &a, const Point &b){return !(a == b);}
 
@@ -85,12 +85,12 @@ std::ostream& operator<<(std::ostream &os, const Point &a){
   return os;
 }
 
-namespace grid{
+namespace grid {
   const auto LEFT = Point(0, -1);
   const auto RIGHT = Point(0, 1);
   const auto UP = Point(-1, 0);
   const auto DOWN = Point(1, 0);
-  
+
   const std::array<Point, 4> dir4 = {LEFT, RIGHT, UP, DOWN};
   const std::array<Point, 8> dir8 = {LEFT, RIGHT, UP, DOWN, LEFT + UP, LEFT + DOWN, RIGHT + UP, RIGHT + DOWN};
 }
@@ -110,7 +110,7 @@ namespace grid{
  * @title Grid template
  * @docs grid.md
  */
-struct Point{
+struct Point {
   int x, y;
   Point(): x(0), y(0){}
   Point(int x, int y): x(x), y(y){}
@@ -118,8 +118,8 @@ struct Point{
   Point& operator-=(const Point &a){this->x -= a.x; this->y -= a.y; return *this;}
 };
 
-Point operator+(const Point &a, const Point &b){return Point(a.x+b.x, a.y+b.y);}
-Point operator-(const Point &a, const Point &b){return Point(a.x-b.x, a.y-b.y);}
+Point operator+(const Point &a, const Point &b){return Point(a.x + b.x, a.y + b.y);}
+Point operator-(const Point &a, const Point &b){return Point(a.x - b.x, a.y - b.y);}
 bool operator==(const Point &a, const Point &b){return a.x == b.x and a.y == b.y;}
 bool operator!=(const Point &a, const Point &b){return !(a == b);}
 
@@ -132,12 +132,12 @@ std::ostream& operator<<(std::ostream &os, const Point &a){
   return os;
 }
 
-namespace grid{
+namespace grid {
   const auto LEFT = Point(0, -1);
   const auto RIGHT = Point(0, 1);
   const auto UP = Point(-1, 0);
   const auto DOWN = Point(1, 0);
-  
+
   const std::array<Point, 4> dir4 = {LEFT, RIGHT, UP, DOWN};
   const std::array<Point, 8> dir8 = {LEFT, RIGHT, UP, DOWN, LEFT + UP, LEFT + DOWN, RIGHT + UP, RIGHT + DOWN};
 }

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#5cfab8f1bec9f4a2c22b88bddb7720db">Mylib/Graph/TopologicalSort</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TopologicalSort/topological_sort_lexicographical.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -51,7 +51,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Code
@@ -73,13 +73,13 @@ template <typename T>
 std::optional<std::vector<int>> topological_sort_lexicographical(const Graph<T> &g){
   const int n = g.size();
   std::vector<int> indeg(n);
-  
+
   for(int i = 0; i < n; ++i){
     for(auto &e : g[i]){
       ++indeg[e.to];
     }
   }
-  
+
   std::priority_queue<int, std::vector<int>, std::greater<int>> q;
   for(int i = 0; i < n; ++i){
     if(indeg[i] == 0) q.push(i);
@@ -115,13 +115,14 @@ std::optional<std::vector<int>> topological_sort_lexicographical(const Graph<T> 
 #include <optional>
 #include <queue>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -131,15 +132,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -152,7 +153,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -184,13 +185,13 @@ template <typename T>
 std::optional<std::vector<int>> topological_sort_lexicographical(const Graph<T> &g){
   const int n = g.size();
   std::vector<int> indeg(n);
-  
+
   for(int i = 0; i < n; ++i){
     for(auto &e : g[i]){
       ++indeg[e.to];
     }
   }
-  
+
   std::priority_queue<int, std::vector<int>, std::greater<int>> q;
   for(int i = 0; i < n; ++i){
     if(indeg[i] == 0) q.push(i);

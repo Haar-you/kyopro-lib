@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Dijkstra algorithm
+# :x: Dijkstra algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9a0780c4ad89eac4e850657d1e57c23a">Mylib/Graph/ShortestPath</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestPath/dijkstra.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_1_A/main.test.cpp.html">test/aoj/GRL_1_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_1_A/main.test.cpp.html">test/aoj/GRL_1_A/main.test.cpp</a>
 
 
 ## Code
@@ -67,10 +67,10 @@ layout: default
 template <typename T>
 auto dijkstra(const Graph<T> &graph, std::vector<int> src){
   using P = std::pair<T, int>;
-  
+
   const int n = graph.size();
   std::vector<std::optional<T>> dist(n);
-  
+
   std::vector<bool> check(n, false);
   std::priority_queue<P, std::vector<P>, std::greater<P>> pq;
 
@@ -114,13 +114,14 @@ auto dijkstra(const Graph<T> &graph, std::vector<int> src){
 #include <utility>
 #include <functional>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -130,15 +131,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -151,7 +152,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -182,10 +183,10 @@ using Tree = Graph<T>;
 template <typename T>
 auto dijkstra(const Graph<T> &graph, std::vector<int> src){
   using P = std::pair<T, int>;
-  
+
   const int n = graph.size();
   std::vector<std::optional<T>> dist(n);
-  
+
   std::vector<bool> check(n, false);
   std::priority_queue<P, std::vector<P>, std::greater<P>> pq;
 

@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Check if a point is in a polygon
+# :x: Check if a point is in a polygon
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/is_point_in_polygon.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="ccw.cpp.html">Check clockwise-counterclockwise</a>
-* :heavy_check_mark: <a href="geometry_template.cpp.html">Geometry template</a>
+* :x: <a href="ccw.cpp.html">Check clockwise-counterclockwise</a>
+* :x: <a href="geometry_template.cpp.html">Geometry template</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_3_C/main.test.cpp.html">test/aoj/CGL_3_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_3_C/main.test.cpp.html">test/aoj/CGL_3_C/main.test.cpp</a>
 
 
 ## Code
@@ -60,8 +60,8 @@ layout: default
  * @title Check if a point is in a polygon
  * @docs is_point_in_polygon.md
  */
-namespace point_in_polygon{
-  enum Status{
+namespace point_in_polygon {
+  enum Status {
               INCLUSION  = 0b001,
               ON_SEGMENT = 0b010,
               OUTSIDE    = 0b100
@@ -70,13 +70,13 @@ namespace point_in_polygon{
   template <typename T>
   Status check(const Point<T> &p, const Polygon<T> &polygon){
     const int n = polygon.size();
-  
+
     T d = 0;
     for(int i = 0; i < n; ++i){
-      if(ccw::ccw(polygon[i], polygon[(i+1)%n], p) == ccw::ON_SEGMENT) return ON_SEGMENT;
-      
+      if(ccw::ccw(polygon[i], polygon[(i + 1) % n], p) == ccw::ON_SEGMENT) return ON_SEGMENT;
+
       T a = angle(polygon[i], p);
-      T b = angle(polygon[(i+1)%n], p);
+      T b = angle(polygon[(i + 1) % n], p);
 
       if(a < 0) a += 2 * M_PI;
       if(b < 0) b += 2 * M_PI;
@@ -87,12 +87,12 @@ namespace point_in_polygon{
         if(ang <= 0) ang += 2 * M_PI;
         else ang -= 2 * M_PI;
       }
-      
+
       d += ang;
     }
 
     if(abs(abs(d) - 2 * M_PI) == 0) return INCLUSION;
-    
+
     return OUTSIDE;
   }
 }
@@ -114,7 +114,7 @@ namespace point_in_polygon{
  */
 
 template <typename T>
-struct Vec{
+struct Vec {
   T x, y;
   Vec(){}
   Vec(T x, T y): x(x), y(y){}
@@ -124,11 +124,11 @@ struct Vec{
   friend auto operator-(const Vec &a){return Vec(-a.x, -a.y);}
 
   friend bool operator==(const Vec &a, const Vec &b){return a.x == b.x and a.y == b.y;}
-  friend bool operator!=(const Vec &a, const Vec &b){return !(a==b);}
+  friend bool operator!=(const Vec &a, const Vec &b){return !(a == b);}
   friend bool operator<(const Vec &a, const Vec &b){return a.x < b.x or (a.x == b.x and a.y < b.y);}
-  
+
   friend std::istream& operator>>(std::istream &s, Vec &a){
-    s >> a.x >> a.y; return s;
+    s >> a.x  >> a.y; return s;
   }
 };
 
@@ -162,7 +162,7 @@ T angle_diff(const Vec<T> &a, const Vec<T> &b){
 }
 
 
-template <typename T> struct Line{
+template <typename T> struct Line {
   Point<T> from, to;
   Line(): from(), to(){}
   Line(const Point<T> &from, const Point<T> &to): from(from), to(to){}
@@ -184,7 +184,7 @@ template <typename T> T cross(const Line<T> &a, const Line<T> &b){return cross(d
 
 template <typename T> using Polygon = std::vector<Point<T>>;
 
-template <typename T> struct Circle{
+template <typename T> struct Circle {
   Point<T> center;
   T radius;
   Circle(): center(), radius(0){}
@@ -196,8 +196,8 @@ template <typename T> struct Circle{
  * @title Check clockwise-counterclockwise
  * @docs ccw.md
  */
-namespace ccw{
-  enum Status{
+namespace ccw {
+  enum Status {
            ONLINE_BACK       = -2,
            COUNTER_CLOCKWISE = -1,
            ON_SEGMENT        = 0,
@@ -227,8 +227,8 @@ namespace ccw{
  * @title Check if a point is in a polygon
  * @docs is_point_in_polygon.md
  */
-namespace point_in_polygon{
-  enum Status{
+namespace point_in_polygon {
+  enum Status {
               INCLUSION  = 0b001,
               ON_SEGMENT = 0b010,
               OUTSIDE    = 0b100
@@ -237,13 +237,13 @@ namespace point_in_polygon{
   template <typename T>
   Status check(const Point<T> &p, const Polygon<T> &polygon){
     const int n = polygon.size();
-  
+
     T d = 0;
     for(int i = 0; i < n; ++i){
-      if(ccw::ccw(polygon[i], polygon[(i+1)%n], p) == ccw::ON_SEGMENT) return ON_SEGMENT;
-      
+      if(ccw::ccw(polygon[i], polygon[(i + 1) % n], p) == ccw::ON_SEGMENT) return ON_SEGMENT;
+
       T a = angle(polygon[i], p);
-      T b = angle(polygon[(i+1)%n], p);
+      T b = angle(polygon[(i + 1) % n], p);
 
       if(a < 0) a += 2 * M_PI;
       if(b < 0) b += 2 * M_PI;
@@ -254,12 +254,12 @@ namespace point_in_polygon{
         if(ang <= 0) ang += 2 * M_PI;
         else ang -= 2 * M_PI;
       }
-      
+
       d += ang;
     }
 
     if(abs(abs(d) - 2 * M_PI) == 0) return INCLUSION;
-    
+
     return OUTSIDE;
   }
 }

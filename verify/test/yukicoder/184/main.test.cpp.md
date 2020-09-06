@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#680117a14efb0a2f09a9c186518bf55b">test/yukicoder/184</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/184/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-14 00:24:32+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/184">https://yukicoder.me/problems/no/184</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 * :x: <a href="../../../../library/Mylib/LinearAlgebra/GaussianElimination/binary_gaussian_elimination.cpp.html">Gaussian elimination (Mod2)</a>
 
 
@@ -61,7 +61,7 @@ int main(){
   auto a = input_vector<int64_t>(n);
 
   int rank = gaussian_elimination(std::vector<std::bitset<64>>(a.begin(), a.end()));
-  
+
   std::cout << (1LL << rank) << "\n";
 
   return 0;
@@ -104,7 +104,8 @@ std::vector<std::vector<T>> input_vector(int N, int M){
  * @title Gaussian elimination (Mod2)
  * @docs binary_gaussian_elimination.md
  */
-template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &m){
+template <size_t N>
+int gaussian_elimination(std::vector<std::bitset<N>> &m){
   const int n = m.size();
   int rank = 0;
 
@@ -127,11 +128,12 @@ template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &m){
     }
     ++rank;
   }
-  
+
   return rank;
 }
 
-template <size_t N> int gaussian_elimination(std::vector<std::bitset<N>> &&m){
+template <size_t N>
+int gaussian_elimination(std::vector<std::bitset<N>> &&m){
   return gaussian_elimination(m);
 }
 #line 8 "test/yukicoder/184/main.test.cpp"
@@ -141,7 +143,7 @@ int main(){
   auto a = input_vector<int64_t>(n);
 
   int rank = gaussian_elimination(std::vector<std::bitset<64>>(a.begin(), a.end()));
-  
+
   std::cout << (1LL << rank) << "\n";
 
   return 0;

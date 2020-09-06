@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Stirling numbers of the first kind (FFT)
+# :x: Stirling numbers of the first kind (FFT)
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/stirling_number_first_fft.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-21 11:48:40+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../Math/polynomial_taylor_shift.cpp.html">polynomial_taylor_shift.md</a>
+* :x: <a href="../Math/polynomial_taylor_shift.cpp.html">polynomial_taylor_shift.md</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp</a>
 
 
 ## Code
@@ -61,9 +61,9 @@ layout: default
  * @docs stirling_number_first_fft.md
  */
 template <typename T, typename Conv>
-std::vector<T> stirling_number_of_first_kind(int N, const Conv &convolve){
+std::vector<T> stirling_number_of_first_kind_fft(int N, const Conv &convolve){
   if(N == 0) return {1};
-  
+
   std::vector<int> p;
   {
     int a = N;
@@ -83,7 +83,7 @@ std::vector<T> stirling_number_of_first_kind(int N, const Conv &convolve){
     if(x == 1){
       std::vector<T> a = {-t, 1};
       ret = convolve(ret, a);
-      
+
       t += 1;
     }else{
       auto s = polynomial_taylor_shift<T>(ret, -t, convolve);
@@ -129,7 +129,7 @@ auto polynomial_taylor_shift(std::vector<T> a, T c, const Conv &convolve){
   std::vector<T> g(N);
   g[N - 1] = f.inv();
   for(int i = N - 2; i >= 0; --i) g[i] = g[i + 1] * (i + 1);
-  
+
   std::vector<T> B(2 * N - 1);
   for(int i = 0; i < N; ++i){
     B[N - i - 1] = d * g[i];
@@ -143,7 +143,6 @@ auto polynomial_taylor_shift(std::vector<T> a, T c, const Conv &convolve){
 
   return ret;
 }
-
 #line 5 "Mylib/Combinatorics/stirling_number_first_fft.cpp"
 
 /**
@@ -151,9 +150,9 @@ auto polynomial_taylor_shift(std::vector<T> a, T c, const Conv &convolve){
  * @docs stirling_number_first_fft.md
  */
 template <typename T, typename Conv>
-std::vector<T> stirling_number_of_first_kind(int N, const Conv &convolve){
+std::vector<T> stirling_number_of_first_kind_fft(int N, const Conv &convolve){
   if(N == 0) return {1};
-  
+
   std::vector<int> p;
   {
     int a = N;
@@ -173,7 +172,7 @@ std::vector<T> stirling_number_of_first_kind(int N, const Conv &convolve){
     if(x == 1){
       std::vector<T> a = {-t, 1};
       ret = convolve(ret, a);
-      
+
       t += 1;
     }else{
       auto s = polynomial_taylor_shift<T>(ret, -t, convolve);

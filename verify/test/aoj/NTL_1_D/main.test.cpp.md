@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/NTL_1_D/main.test.cpp
+# :x: test/aoj/NTL_1_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2f883b12bcaccb309536ea11ea7e4a50">test/aoj/NTL_1_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/NTL_1_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/count_coprime.cpp.html">Count coprime</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/prime_factorize.cpp.html">Prime factorization</a>
+* :x: <a href="../../../../library/Mylib/Number/Prime/count_coprime.cpp.html">Count coprime</a>
+* :x: <a href="../../../../library/Mylib/Number/Prime/prime_factorize.cpp.html">Prime factorization</a>
 
 
 ## Code
@@ -72,17 +72,18 @@ int main(){
 
 #include <iostream>
 #line 2 "Mylib/Number/Prime/count_coprime.cpp"
-
+#include <cstdint>
 #line 2 "Mylib/Number/Prime/prime_factorize.cpp"
 #include <vector>
 #include <utility>
+#line 5 "Mylib/Number/Prime/prime_factorize.cpp"
 
 /**
  * @title Prime factorization
  * @docs prime_factorize.md
  */
 auto prime_factorize(int64_t n){
-  std::vector<std::pair<int64_t,int64_t>> ret;
+  std::vector<std::pair<int64_t, int64_t>> ret;
   for(int64_t i = 2LL; i * i <= n; ++i){
     if(n % i == 0){
       int64_t c = 0;
@@ -104,13 +105,13 @@ auto prime_factorize(int64_t n){
  */
 int64_t count_coprime(int64_t n, int64_t m){
   const auto p = prime_factorize(m);
-  int k = p.size();
+  const int k = p.size();
 
   int64_t ret = 0;
 
-  for(int i = 0; i < 1<<k; ++i){
+  for(int i = 0; i < 1 << k; ++i){
     int64_t s = 1;
-    
+
     for(int j = 0; j < k; ++j){
       if(i & (1 << j)) s *= p[j].first;
     }
@@ -118,7 +119,7 @@ int64_t count_coprime(int64_t n, int64_t m){
     if(__builtin_popcount(i) % 2 == 1) ret -= n / s;
     else ret += n / s;
   }
-  
+
   return ret;
 }
 #line 5 "test/aoj/NTL_1_D/main.test.cpp"

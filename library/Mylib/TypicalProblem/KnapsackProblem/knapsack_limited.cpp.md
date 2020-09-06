@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Knapsack problem (With quantity limitations)
+# :x: Knapsack problem (With quantity limitations)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#4bc951e5ca9130b2259fc85dc53eb972">Mylib/TypicalProblem/KnapsackProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/KnapsackProblem/knapsack_limited.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
@@ -54,7 +54,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DPL_1_G/main.test.cpp.html">test/aoj/DPL_1_G/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DPL_1_G/main.test.cpp.html">test/aoj/DPL_1_G/main.test.cpp</a>
 
 
 ## Code
@@ -72,13 +72,13 @@ layout: default
  */
 template <typename Weight, typename Value>
 Value knapsack_limited(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v, const std::vector<int> &m){
-  std::vector<Value> dp(cap+1);
+  std::vector<Value> dp(cap + 1);
 
   for(int i = 0; i < N; ++i){
-    for(int64_t a = 1, x = m[i], k; k = std::min(x,a), x > 0; x -= k, a *= 2){
+    for(int64_t a = 1, x = m[i], k; k = std::min(x, a), x > 0; x -= k, a *= 2){
       for(int j = cap; j >= 0; --j){
-        if(j-k*w[i] >= 0){
-          dp[j] = std::max(dp[j], dp[j-k*w[i]] + (Weight)k*v[i]);
+        if(j - k * w[i] >= 0){
+          dp[j] = std::max(dp[j], dp[j - k * w[i]] + (Weight)k * v[i]);
         }
       }
     }
@@ -103,13 +103,13 @@ Value knapsack_limited(int N, Weight cap, const std::vector<Weight> &w, const st
  */
 template <typename Weight, typename Value>
 Value knapsack_limited(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v, const std::vector<int> &m){
-  std::vector<Value> dp(cap+1);
+  std::vector<Value> dp(cap + 1);
 
   for(int i = 0; i < N; ++i){
-    for(int64_t a = 1, x = m[i], k; k = std::min(x,a), x > 0; x -= k, a *= 2){
+    for(int64_t a = 1, x = m[i], k; k = std::min(x, a), x > 0; x -= k, a *= 2){
       for(int j = cap; j >= 0; --j){
-        if(j-k*w[i] >= 0){
-          dp[j] = std::max(dp[j], dp[j-k*w[i]] + (Weight)k*v[i]);
+        if(j - k * w[i] >= 0){
+          dp[j] = std::max(dp[j], dp[j - k * w[i]] + (Weight)k * v[i]);
         }
       }
     }

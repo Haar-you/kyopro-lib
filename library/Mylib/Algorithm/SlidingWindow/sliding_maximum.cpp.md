@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#1d0203f9a0b34121f2fb0bb17b094d0f">Mylib/Algorithm/SlidingWindow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/SlidingWindow/sliding_maximum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -76,20 +76,20 @@ std::vector<T> sliding_maximum(const std::vector<T> &a, int k){
     dq.push_back(i);
   }
 
-  for(int i = 0; i < n-k+1; ++i){
+  for(int i = 0; i < n - k + 1; ++i){
     while(dq.front() < i){
       dq.pop_front();
     }
 
     ret.push_back(a[dq.front()]);
 
-    while(not dq.empty() and i+k < n and a[dq.back()] <= a[i+k]){
+    while(not dq.empty() and i + k < n and a[dq.back()] <= a[i + k]){
       dq.pop_back();
     }
-    
-    dq.push_back(i+k);
+
+    dq.push_back(i + k);
   }
-  
+
   return ret;
 }
 
@@ -121,20 +121,20 @@ std::vector<T> sliding_maximum(const std::vector<T> &a, int k){
     dq.push_back(i);
   }
 
-  for(int i = 0; i < n-k+1; ++i){
+  for(int i = 0; i < n - k + 1; ++i){
     while(dq.front() < i){
       dq.pop_front();
     }
 
     ret.push_back(a[dq.front()]);
 
-    while(not dq.empty() and i+k < n and a[dq.back()] <= a[i+k]){
+    while(not dq.empty() and i + k < n and a[dq.back()] <= a[i + k]){
       dq.pop_back();
     }
-    
-    dq.push_back(i+k);
+
+    dq.push_back(i + k);
   }
-  
+
   return ret;
 }
 

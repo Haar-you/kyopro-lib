@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Decompose pseudotree
+# :x: Decompose pseudotree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0520734517f09caa086d1aa01fa4b9e4">Mylib/Graph/GraphUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/GraphUtils/decompose_pseudotree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -51,12 +51,12 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/2891/main.test.cpp.html">test/aoj/2891/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/2891/main.test.cpp.html">test/aoj/2891/main.test.cpp</a>
 
 
 ## Code
@@ -74,7 +74,7 @@ layout: default
  * @docs decompose_pseudotree.md
  */
 template <typename T>
-struct PseudoTree{
+struct PseudoTree {
   const int n;
   std::vector<bool> in_loop;
   std::vector<int> group;
@@ -87,7 +87,7 @@ struct PseudoTree{
       dfs(e.to, cur, g);
     }
   }
-  
+
   PseudoTree(const Graph<T> &g): n(g.size()), in_loop(n, true), group(n){
     std::vector<int> indeg(n);
     std::vector<bool> visited(n);
@@ -112,7 +112,7 @@ struct PseudoTree{
 
       if(visited[cur]) continue;
       visited[cur] = true;
-      
+
       for(auto &e : g[cur]){
         if(not visited[e.to]){
           --indeg[e.to];
@@ -147,13 +147,14 @@ struct PseudoTree{
 #include <vector>
 #include <queue>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -163,15 +164,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -184,7 +185,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -213,7 +214,7 @@ using Tree = Graph<T>;
  * @docs decompose_pseudotree.md
  */
 template <typename T>
-struct PseudoTree{
+struct PseudoTree {
   const int n;
   std::vector<bool> in_loop;
   std::vector<int> group;
@@ -226,7 +227,7 @@ struct PseudoTree{
       dfs(e.to, cur, g);
     }
   }
-  
+
   PseudoTree(const Graph<T> &g): n(g.size()), in_loop(n, true), group(n){
     std::vector<int> indeg(n);
     std::vector<bool> visited(n);
@@ -251,7 +252,7 @@ struct PseudoTree{
 
       if(visited[cur]) continue;
       visited[cur] = true;
-      
+
       for(auto &e : g[cur]){
         if(not visited[e.to]){
           --indeg[e.to];

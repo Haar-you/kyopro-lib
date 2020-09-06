@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/ALDS1_1_C/main.test.cpp
+# :x: test/aoj/ALDS1_1_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a8a6d8e3138deb7c2a3646b5ea12ddc2">test/aoj/ALDS1_1_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_1_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/is_prime.cpp.html">Primality test (Trial division)</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/Number/Prime/is_prime.cpp.html">Primality test (Trial division)</a>
 
 
 ## Code
@@ -101,8 +101,8 @@ bool is_prime(int n){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -112,8 +112,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -122,8 +122,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;

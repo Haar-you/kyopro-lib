@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 0-1 Knapsack problem (Small weight)
+# :x: 0-1 Knapsack problem (Small weight)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#4bc951e5ca9130b2259fc85dc53eb972">Mylib/TypicalProblem/KnapsackProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/KnapsackProblem/knapsack_small_weight.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -53,7 +53,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DPL_1_B/main.test.cpp.html">test/aoj/DPL_1_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DPL_1_B/main.test.cpp.html">test/aoj/DPL_1_B/main.test.cpp</a>
 
 
 ## Code
@@ -71,15 +71,15 @@ layout: default
  */
 template <typename Weight, typename Value>
 Value knapsack_small_weight(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
-  std::vector<std::vector<Value>> dp(N+1, std::vector<Value>(cap+1));
+  std::vector<std::vector<Value>> dp(N + 1, std::vector<Value>(cap + 1));
 
   for(int i = 0; i < N; ++i){
     for(int j = 0; j <= cap; ++j){
-      dp[i+1][j] = std::max(dp[i+1][j], dp[i][j]);
-      if(j+w[i] <= cap) dp[i+1][j+w[i]] = std::max(dp[i+1][j+w[i]], dp[i][j]+v[i]);
+      dp[i + 1][j] = std::max(dp[i + 1][j], dp[i][j]);
+      if(j + w[i] <= cap) dp[i + 1][j + w[i]] = std::max(dp[i + 1][j + w[i]], dp[i][j] + v[i]);
     }
   }
-  
+
   return dp[N][cap];
 }
 
@@ -99,15 +99,15 @@ Value knapsack_small_weight(int N, Weight cap, const std::vector<Weight> &w, con
  */
 template <typename Weight, typename Value>
 Value knapsack_small_weight(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
-  std::vector<std::vector<Value>> dp(N+1, std::vector<Value>(cap+1));
+  std::vector<std::vector<Value>> dp(N + 1, std::vector<Value>(cap + 1));
 
   for(int i = 0; i < N; ++i){
     for(int j = 0; j <= cap; ++j){
-      dp[i+1][j] = std::max(dp[i+1][j], dp[i][j]);
-      if(j+w[i] <= cap) dp[i+1][j+w[i]] = std::max(dp[i+1][j+w[i]], dp[i][j]+v[i]);
+      dp[i + 1][j] = std::max(dp[i + 1][j], dp[i][j]);
+      if(j + w[i] <= cap) dp[i + 1][j + w[i]] = std::max(dp[i + 1][j + w[i]], dp[i][j] + v[i]);
     }
   }
-  
+
   return dp[N][cap];
 }
 

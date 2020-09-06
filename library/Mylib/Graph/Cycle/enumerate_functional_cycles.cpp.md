@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a962efc2861dbe1e0963e7d8bf7dda18">Mylib/Graph/Cycle</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Cycle/enumerate_functional_cycles.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-24 00:19:30+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -75,11 +75,11 @@ std::vector<std::vector<int>> enumerate_functional_cycles(std::vector<int> g){
             return {-1};
           }
         }
-        
+
         check[cur] = SEARCHED;
         return res;
       }
-      
+
       check[cur] = SEARCHED;
       return std::nullopt;
     };
@@ -138,11 +138,11 @@ std::vector<std::vector<int>> enumerate_functional_cycles(std::vector<int> g){
             return {-1};
           }
         }
-        
+
         check[cur] = SEARCHED;
         return res;
       }
-      
+
       check[cur] = SEARCHED;
       return std::nullopt;
     };

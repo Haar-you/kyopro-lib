@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_2_D/main.test.cpp
+# :x: test/aoj/DSL_2_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1cab81d9204e4e9816afce7019c71879">test/aoj/DSL_2_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/update.cpp.html">Mylib/AlgebraicStructure/Monoid/update.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp.html">Dual segment tree</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/update.cpp.html">Update monoid</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp.html">Dual segment tree</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -66,11 +66,11 @@ int main(){
 
   for(auto [type] : input_tuples<int>(q)){
     if(type == 0){
-      int s,t,x; std::cin >> s >> t >> x;
-      seg.update(s, t+1, x);
+      int s, t, x; std::cin >> s >> t >> x;
+      seg.update(s, t + 1, x);
     }else{
       int i; std::cin >> i;
-      std::cout << *seg.get(i) << std::endl;
+      std::cout << *seg[i] << std::endl;
     }
   }
 
@@ -96,18 +96,18 @@ int main(){
  * @docs dual_segment_tree.md
  */
 template <typename Monoid>
-class DualSegmentTree{
+class DualSegmentTree {
   using value_type = typename Monoid::value_type;
-  Monoid M;
+  const static Monoid M;
 
   const int depth, size, hsize;
   std::vector<value_type> data;
-  
+
   void propagate(int i){
     if(i < hsize){
-      data[i << 1 | 0] = M.op(data[i], data[i << 1 | 0]);
-      data[i << 1 | 1] = M.op(data[i], data[i << 1 | 1]);
-      data[i] = M.id();
+      data[i << 1 | 0] = M(data[i], data[i << 1 | 0]);
+      data[i << 1 | 1] = M(data[i], data[i << 1 | 1]);
+      data[i] = M();
     }
   }
 
@@ -120,12 +120,12 @@ class DualSegmentTree{
 
     for(auto it = temp.rbegin(); it != temp.rend(); ++it) propagate(*it);
   }
-  
+
 public:
   DualSegmentTree(int n):
-    depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
+    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
     size(1 << depth), hsize(size / 2),
-    data(size, M.id())
+    data(size, M())
   {}
 
   void update(int l, int r, const value_type &x){
@@ -134,22 +134,22 @@ public:
 
     int L = l + hsize;
     int R = r + hsize;
-    
+
     while(L < R){
-      if(R & 1) --R, data[R] = M.op(x, data[R]);
-      if(L & 1) data[L] = M.op(x, data[L]), ++L;
+      if(R & 1) --R, data[R] = M(x, data[R]);
+      if(L & 1) data[L] = M(x, data[L]), ++L;
       L >>= 1, R >>= 1;
     }
   }
 
-  value_type get(int i){
+  value_type operator[](int i){
     propagate_top_down(i + hsize);
     return data[i + hsize];
   }
 
   template <typename T>
   void init_with_vector(const std::vector<T> &a){
-    data.assign(size, M.id());
+    data.assign(size, M());
     for(int i = 0; i < (int)a.size(); ++i) data[hsize + i] = a[i];
   }
 
@@ -162,13 +162,14 @@ public:
 #include <optional>
 
 /**
+ * @title Update monoid
  * @docs update.md
  */
 template <typename T>
-struct UpdateMonoid{
+struct UpdateMonoid {
   using value_type = std::optional<T>;
-  value_type id() const {return std::nullopt;}
-  value_type op(const value_type &a, const value_type &b) const {return (a ? a : b);}
+  value_type operator()() const {return std::nullopt;}
+  value_type operator()(const value_type &a, const value_type &b) const {return (a ? a : b);}
 };
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
@@ -180,8 +181,8 @@ struct UpdateMonoid{
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -191,8 +192,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -201,8 +202,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -250,11 +251,11 @@ int main(){
 
   for(auto [type] : input_tuples<int>(q)){
     if(type == 0){
-      int s,t,x; std::cin >> s >> t >> x;
-      seg.update(s, t+1, x);
+      int s, t, x; std::cin >> s >> t >> x;
+      seg.update(s, t + 1, x);
     }else{
       int i; std::cin >> i;
-      std::cout << *seg.get(i) << std::endl;
+      std::cout << *seg[i] << std::endl;
     }
   }
 

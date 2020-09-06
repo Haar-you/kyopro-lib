@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#05b6faf184ccb3df7524a3ce68064b76">test/yukicoder/843</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/843/main.atkin.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-11 08:51:20+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/843">https://yukicoder.me/problems/no/843</a>
@@ -54,7 +54,7 @@ layout: default
 
 int main(){
   AtkinSieve is_prime(500000);
-  
+
   int N; std::cin >> N;
 
   int64_t ans = 0;
@@ -70,7 +70,7 @@ int main(){
 
     ans += t * 2;
   }
-  
+
   std::cout << ans << std::endl;
 
   return 0;
@@ -88,12 +88,13 @@ int main(){
 #include <iostream>
 #line 2 "Mylib/Number/Prime/atkin_sieve.cpp"
 #include <vector>
+#include <cstdint>
 
 /**
  * @title Sieve of Atkin
  * @docs atkin_sieve.md
  */
-class AtkinSieve{
+class AtkinSieve {
   std::vector<bool> is_prime;
 
 public:
@@ -140,7 +141,7 @@ public:
 
 int main(){
   AtkinSieve is_prime(500000);
-  
+
   int N; std::cin >> N;
 
   int64_t ans = 0;
@@ -156,7 +157,7 @@ int main(){
 
     ans += t * 2;
   }
-  
+
   std::cout << ans << std::endl;
 
   return 0;

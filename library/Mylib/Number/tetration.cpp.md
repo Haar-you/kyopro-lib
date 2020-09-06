@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Tetration
+# :x: Tetration
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/tetration.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-16 23:16:56+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -51,12 +51,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="euler_phi_function.cpp.html">Euler's totient function</a>
+* :x: <a href="euler_phi_function.cpp.html">Euler's totient function</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/tetration_mod/main.test.cpp.html">test/yosupo-judge/tetration_mod/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/tetration_mod/main.test.cpp.html">test/yosupo-judge/tetration_mod/main.test.cpp</a>
 
 
 ## Code
@@ -65,41 +65,21 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-
 #include "Mylib/Number/euler_phi_function.cpp"
 
 /**
  * @title Tetration
  * @docs tetration.md
  */
-int tetration(int64_t a, int64_t b, int64_t m){
-  auto rec =
-    [](auto &rec, int64_t a, int64_t b, int64_t m) -> int {
-      if(b == 1) return a % m;
-      if(b == 0) return 1 % m;
-      if(b == 2){
-        bool c = a >= m;
-        int64_t ret = 1;
-        int64_t p = a;
-        a %= m;
-
-        while(p > 0){
-          if(p & 1) if((ret *= a) >= m) ret %= m, c = true;
-          if((a *= a) >= m) a %= m, c = true;
-          p >>= 1;
-        }
-
-        if(c) ret += m;
-        return ret;
-      }
-      if(a == 0) return b % 2 == 1 ? 0 : 1;
-      if(m == 1) return 1;
-      
-      int phi = totient(m);
-      int p = rec(rec, a, b-1, phi);
-
-      bool c = p >= phi;
+namespace tetration_impl {
+  int rec(int64_t a, int64_t b, int64_t m){
+    if(b == 1) return a % m;
+    if(b == 0) return 1 % m;
+    if(b == 2){
+      bool c = a >= m;
       int64_t ret = 1;
+      int64_t p = a;
+      a %= m;
 
       while(p > 0){
         if(p & 1) if((ret *= a) >= m) ret %= m, c = true;
@@ -109,9 +89,29 @@ int tetration(int64_t a, int64_t b, int64_t m){
 
       if(c) ret += m;
       return ret;
-    };
+    }
+    if(a == 0) return b % 2 == 1 ? 0 : 1;
+    if(m == 1) return 1;
 
-  return rec(rec, a, b, m) % m;
+    int phi = totient(m);
+    int p = rec(a, b - 1, phi);
+
+    bool c = p >= phi;
+    int64_t ret = 1;
+
+    while(p > 0){
+      if(p & 1) if((ret *= a) >= m) ret %= m, c = true;
+      if((a *= a) >= m) a %= m, c = true;
+      p >>= 1;
+    }
+
+    if(c) ret += m;
+    return ret;
+  }
+}
+
+int tetration(int64_t a, int64_t b, int64_t m){
+  return tetration_impl::rec(a, b, m) % m;
 }
 
 ```
@@ -120,9 +120,8 @@ int tetration(int64_t a, int64_t b, int64_t m){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Number/tetration.cpp"
-
 #line 2 "Mylib/Number/euler_phi_function.cpp"
+#include <cstdint>
 
 /**
  * @title Euler's totient function
@@ -142,40 +141,21 @@ int64_t totient(int64_t n){
 
   return ret;
 }
-#line 4 "Mylib/Number/tetration.cpp"
+#line 3 "Mylib/Number/tetration.cpp"
 
 /**
  * @title Tetration
  * @docs tetration.md
  */
-int tetration(int64_t a, int64_t b, int64_t m){
-  auto rec =
-    [](auto &rec, int64_t a, int64_t b, int64_t m) -> int {
-      if(b == 1) return a % m;
-      if(b == 0) return 1 % m;
-      if(b == 2){
-        bool c = a >= m;
-        int64_t ret = 1;
-        int64_t p = a;
-        a %= m;
-
-        while(p > 0){
-          if(p & 1) if((ret *= a) >= m) ret %= m, c = true;
-          if((a *= a) >= m) a %= m, c = true;
-          p >>= 1;
-        }
-
-        if(c) ret += m;
-        return ret;
-      }
-      if(a == 0) return b % 2 == 1 ? 0 : 1;
-      if(m == 1) return 1;
-      
-      int phi = totient(m);
-      int p = rec(rec, a, b-1, phi);
-
-      bool c = p >= phi;
+namespace tetration_impl {
+  int rec(int64_t a, int64_t b, int64_t m){
+    if(b == 1) return a % m;
+    if(b == 0) return 1 % m;
+    if(b == 2){
+      bool c = a >= m;
       int64_t ret = 1;
+      int64_t p = a;
+      a %= m;
 
       while(p > 0){
         if(p & 1) if((ret *= a) >= m) ret %= m, c = true;
@@ -185,9 +165,29 @@ int tetration(int64_t a, int64_t b, int64_t m){
 
       if(c) ret += m;
       return ret;
-    };
+    }
+    if(a == 0) return b % 2 == 1 ? 0 : 1;
+    if(m == 1) return 1;
 
-  return rec(rec, a, b, m) % m;
+    int phi = totient(m);
+    int p = rec(a, b - 1, phi);
+
+    bool c = p >= phi;
+    int64_t ret = 1;
+
+    while(p > 0){
+      if(p & 1) if((ret *= a) >= m) ret %= m, c = true;
+      if((a *= a) >= m) a %= m, c = true;
+      p >>= 1;
+    }
+
+    if(c) ret += m;
+    return ret;
+  }
+}
+
+int tetration(int64_t a, int64_t b, int64_t m){
+  return tetration_impl::rec(a, b, m) % m;
 }
 
 ```

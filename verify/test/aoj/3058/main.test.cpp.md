@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/3058/main.test.cpp
+# :x: test/aoj/3058/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7e98db48dc3a2f2f4bf10921a7d3d1f5">test/aoj/3058</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3058/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3058">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3058</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson algorithm</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/project_selection_problem.cpp.html">Project selection problem</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson algorithm</a>
+* :x: <a href="../../../../library/Mylib/Graph/project_selection_problem.cpp.html">Project selection problem</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -57,7 +57,6 @@ layout: default
 #include <vector>
 #include <utility>
 #include <string>
-
 #include "Mylib/Graph/project_selection_problem.cpp"
 #include "Mylib/Graph/Flow/ford_fulkerson.cpp"
 #include "Mylib/IO/input_vector.cpp"
@@ -105,7 +104,6 @@ int main(){
 #include <vector>
 #include <utility>
 #include <string>
-
 #line 4 "Mylib/Graph/project_selection_problem.cpp"
 #include <cassert>
 #include <limits>
@@ -115,15 +113,15 @@ int main(){
  * @docs project_selection_problem.md
  */
 template <typename T, typename Flow>
-class ProjectSelectionProblem{
+class ProjectSelectionProblem {
   int N, s, t;
-  std::vector<std::vector<std::pair<int,T>>> graph;
+  std::vector<std::vector<std::pair<int, T>>> graph;
   T default_gain;
 
   constexpr static T INF = std::numeric_limits<T>::max();
 
 public:
-  ProjectSelectionProblem(int N): N(N), s(N), t(N+1), graph(N+2), default_gain(0){}
+  ProjectSelectionProblem(int N): N(N), s(N), t(N + 1), graph(N + 2), default_gain(0){}
 
   void penalty_if_red(int i, T c){
     assert(c >= 0);
@@ -137,7 +135,7 @@ public:
     default_gain += c;
     penalty_if_blue(i, c);
   }
-  
+
   void penalty_if_blue(int i, T c){
     assert(c >= 0);
     assert(0 <= i and i < N);
@@ -201,8 +199,8 @@ public:
     assert(0 <= j and j < N);
     default_gain += c;
     int w = graph.size();
-    graph.push_back({});
-    
+    graph.emplace_back();
+
     graph[w].emplace_back(t, c);
     graph[i].emplace_back(w, INF);
     graph[j].emplace_back(w, INF);
@@ -220,20 +218,21 @@ public:
  * @title Ford-Fulkerson algorithm
  * @docs ford_fulkerson.md
  */
-template <typename T> class FordFulkerson{
+template <typename T>
+class FordFulkerson {
 public:
-  struct edge{
+  struct edge {
     int to, rev;
     T cap;
     bool is_rev;
   };
-  
+
 private:
   int size;
 
   std::vector<std::vector<edge>> graph;
   std::vector<bool> visit;
-  
+
   T dfs(int from, int to, T flow){
     if(from == to) return flow;
     visit[from] = true;
@@ -250,22 +249,22 @@ private:
     }
     return 0;
   }
-  
+
 public:
-  FordFulkerson(const std::vector<std::vector<std::pair<int,T>>> &g):
+  FordFulkerson(const std::vector<std::vector<std::pair<int, T>>> &g):
     size(g.size()), graph(size), visit(size)
   {
     for(int i = 0; i < size; ++i){
       for(auto &[j, c] : g[i]){
         add_edge(i, j, c);
       }
-    }  
+    }
   }
   FordFulkerson(int size): size(size), graph(size), visit(size){}
 
   void add_edge(int from, int to, const T &cap){
     graph[from].push_back((edge){to, (int)graph[to].size(), cap, false});
-    graph[to].push_back((edge){from, (int)graph[from].size()-1, 0, true});
+    graph[to].push_back((edge){from, (int)graph[from].size() - 1, 0, true});
   }
 
   void reset_flow(){
@@ -322,8 +321,8 @@ std::vector<std::vector<T>> input_vector(int N, int M){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -333,8 +332,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -343,8 +342,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -382,7 +381,7 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 12 "test/aoj/3058/main.test.cpp"
+#line 11 "test/aoj/3058/main.test.cpp"
 
 int main(){
   int N, M; std::cin >> N >> M;

@@ -25,21 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Power of a matrix
+# :x: Power of a matrix
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b58b3fdb1287502881e9117a37552614">Mylib/LinearAlgebra/Square</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/Square/power.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/1327/main.test.cpp.html">test/aoj/1327/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/194/main.test.cpp.html">test/yukicoder/194/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/1327/main.test.cpp.html">test/aoj/1327/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/194/main.test.cpp.html">test/yukicoder/194/main.test.cpp</a>
 
 
 ## Code
@@ -48,12 +48,13 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
+#include <cstdint>
 
 /**
  * @title Power of a matrix
  * @docs power.md
  */
-template <typename M, typename T = typename M::value_type>
+template <typename M>
 M power(M a, uint64_t p){
   if(p == 0) return M::make_unit();
   if(p == 1) return a;
@@ -61,8 +62,8 @@ M power(M a, uint64_t p){
   M temp = power(a, p >> 1);
   auto ret = temp * temp;
 
-  if(p & 1) ret *= a;  
-  
+  if(p & 1) ret *= a;
+
   return ret;
 }
 
@@ -73,12 +74,13 @@ M power(M a, uint64_t p){
 {% raw %}
 ```cpp
 #line 2 "Mylib/LinearAlgebra/Square/power.cpp"
+#include <cstdint>
 
 /**
  * @title Power of a matrix
  * @docs power.md
  */
-template <typename M, typename T = typename M::value_type>
+template <typename M>
 M power(M a, uint64_t p){
   if(p == 0) return M::make_unit();
   if(p == 1) return a;
@@ -86,8 +88,8 @@ M power(M a, uint64_t p){
   M temp = power(a, p >> 1);
   auto ret = temp * temp;
 
-  if(p & 1) ret *= a;  
-  
+  if(p & 1) ret *= a;
+
   return ret;
 }
 

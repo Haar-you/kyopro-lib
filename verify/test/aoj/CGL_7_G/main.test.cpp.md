@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/CGL_7_G/main.test.cpp
+# :x: test/aoj/CGL_7_G/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b5574cc7a831f026d52a6858b25848ce">test/aoj/CGL_7_G</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_7_G/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_G">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_G</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/common_tangent_of_circles.cpp.html">Common tangents of two circles</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/common_tangent_of_circles.cpp.html">Common tangents of two circles</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
 
 
 ## Code
@@ -60,7 +60,7 @@ layout: default
 #include "Mylib/Geometry/Float/common_tangent_of_circles.cpp"
 
 using D = DoubleEps<double>;
-template<> double D::eps = ERROR;
+template <> double D::eps = ERROR;
 
 int main(){
   Circle<D> c1, c2;
@@ -74,7 +74,7 @@ int main(){
             });
 
   std::cout << std::fixed << std::setprecision(12);
-  
+
   for(auto &p : ans){
     std::cout << p.x << " " << p.y << std::endl;
   }
@@ -104,16 +104,16 @@ int main(){
  * @docs double_eps.md
  */
 template <typename T>
-struct DoubleEps{
+struct DoubleEps {
   using value_type = T;
-  
+
   static T eps;
 
   T value;
 
   DoubleEps(): value(0){}
   DoubleEps(T value): value(value){}
-  
+
   auto& operator=(const DoubleEps &rhs){this->value = rhs.value; return *this;}
   auto& operator+=(const DoubleEps &rhs){this->value += rhs.value; return *this;}
   auto& operator-=(const DoubleEps &rhs){this->value -= rhs.value; return *this;}
@@ -133,7 +133,7 @@ struct DoubleEps{
   bool operator>=(const DoubleEps &rhs) const {return !(*this < rhs);}
 
   auto operator-() const {return DoubleEps(-(this->value));}
-  
+
   explicit operator double() const noexcept {return value;}
   explicit operator long double() const noexcept {return value;}
 
@@ -143,9 +143,9 @@ struct DoubleEps{
 
 template <typename T> T DoubleEps<T>::eps;
 
-namespace std{
+namespace std {
   template <typename T>
-  class numeric_limits<DoubleEps<T>>{
+  class numeric_limits<DoubleEps<T>> {
   public:
     static DoubleEps<T> infinity() {return numeric_limits<T>::infinity();}
     static DoubleEps<T> min() {return numeric_limits<T>::min();}
@@ -164,7 +164,6 @@ template <typename T> DoubleEps<T> atan2(DoubleEps<T> y, DoubleEps<T> x){return 
 template <typename T> DoubleEps<T> abs(DoubleEps<T> x){return std::abs((T)x);}
 
 template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
-
 #line 4 "Mylib/Geometry/Float/geometry_template.cpp"
 #include <vector>
 
@@ -174,7 +173,7 @@ template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
  */
 
 template <typename T>
-struct Vec{
+struct Vec {
   T x, y;
   Vec(){}
   Vec(T x, T y): x(x), y(y){}
@@ -184,11 +183,11 @@ struct Vec{
   friend auto operator-(const Vec &a){return Vec(-a.x, -a.y);}
 
   friend bool operator==(const Vec &a, const Vec &b){return a.x == b.x and a.y == b.y;}
-  friend bool operator!=(const Vec &a, const Vec &b){return !(a==b);}
+  friend bool operator!=(const Vec &a, const Vec &b){return !(a == b);}
   friend bool operator<(const Vec &a, const Vec &b){return a.x < b.x or (a.x == b.x and a.y < b.y);}
-  
+
   friend std::istream& operator>>(std::istream &s, Vec &a){
-    s >> a.x >> a.y; return s;
+    s >> a.x  >> a.y; return s;
   }
 };
 
@@ -222,7 +221,7 @@ T angle_diff(const Vec<T> &a, const Vec<T> &b){
 }
 
 
-template <typename T> struct Line{
+template <typename T> struct Line {
   Point<T> from, to;
   Line(): from(), to(){}
   Line(const Point<T> &from, const Point<T> &to): from(from), to(to){}
@@ -244,7 +243,7 @@ template <typename T> T cross(const Line<T> &a, const Line<T> &b){return cross(d
 
 template <typename T> using Polygon = std::vector<Point<T>>;
 
-template <typename T> struct Circle{
+template <typename T> struct Circle {
   Point<T> center;
   T radius;
   Circle(): center(), radius(0){}
@@ -264,7 +263,7 @@ std::vector<Point<T>> common_tangent_of_circles(const Circle<T> &a, const Circle
   const auto cc = b.center - a.center;
   const T r = a.radius - b.radius;
   const T R = a.radius + b.radius;
-  
+
   if(a.radius + b.radius == d){ // 一方が他方に外接している。
     return {
             a.center + (cc * r + normal(cc) * sqrt(abs_sq(cc) - r * r)) * a.radius / abs_sq(cc),
@@ -294,7 +293,7 @@ std::vector<Point<T>> common_tangent_of_circles(const Circle<T> &a, const Circle
 #line 10 "test/aoj/CGL_7_G/main.test.cpp"
 
 using D = DoubleEps<double>;
-template<> double D::eps = ERROR;
+template <> double D::eps = ERROR;
 
 int main(){
   Circle<D> c1, c2;
@@ -308,7 +307,7 @@ int main(){
             });
 
   std::cout << std::fixed << std::setprecision(12);
-  
+
   for(auto &p : ans){
     std::cout << p.x << " " << p.y << std::endl;
   }

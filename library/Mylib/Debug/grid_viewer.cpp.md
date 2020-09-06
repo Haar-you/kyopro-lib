@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0f67555b3039d368e55db69bb4454f7e">Mylib/Debug</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Debug/grid_viewer.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-28 23:09:01+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
@@ -50,46 +50,42 @@ layout: default
 /**
  * @docs grid_viewer.md
  */
-template <typename C, typename T = typename C::value_type, typename F = std::function<T(T)>>
-struct GridViewer{
-  std::vector<C> A;
-  int width;
-  F f;
+template <typename C>
+void grid_viewer([[maybe_unused]] const C &A, [[maybe_unused]] int width = 10){
+#ifdef DEBUG
+  const int H = A.size();
+  const int W = A[0].size();
 
-  GridViewer(const std::vector<C> &A, int width, F f = [](T x){return x;}): A(A), width(width), f(f){}
+  std::cerr << "    ";
+  for(int j = 0; j < W; ++j){
+    std::cerr << "\e[1;32m" << std::left << std::setw(width) << j << "\e[m";
+  }
+  std::cerr << "\n";
+  std::cerr << std::right;
 
-  std::ostream& run(std::ostream &s) const {
-    const int H = A.size();
-    const int W = A[0].size();
-    
-    auto write_horizon =
-      [&](){
-        for(int j = 0; j < W; ++j){
-          s << "┼";
-          for(int k = 0; k < width; ++k) s << "─";
-        }
-        s << "┼" << "\n";
-      };
+  for(int i = 0; i < H; ++i){
+    std::cerr << "\e[1;32m" << std::setw(2) << i << "|\e[m ";
 
-    for(int i = 0; i < H; ++i){
-      write_horizon();
-
-      for(int j = 0; j < W; ++j){
-        s << "│";
-        s << std::setw(width) << f(A[i][j]);
+    for(int j = 0; j < W; ++j){
+      std::stringstream ss;
+      ss << A[i][j];
+      auto s = ss.str();
+      if(s.size() > width){
+        s.resize(width);
+      }else{
+        while(s.size() < width) s.push_back(' ');
       }
-      s << "│" << "\n";
+
+      std::cerr << s << "";
     }
-  
-    write_horizon();
 
-    return s;
+    std::cerr << "\n";
   }
 
-  friend std::ostream& operator<<(std::ostream &s, const GridViewer &viewer){
-    return viewer.run(s);
-  }
-};
+  std::cerr << std::right;
+  std::cerr << std::setw(0);
+#endif
+}
 
 ```
 {% endraw %}
@@ -106,46 +102,42 @@ struct GridViewer{
 /**
  * @docs grid_viewer.md
  */
-template <typename C, typename T = typename C::value_type, typename F = std::function<T(T)>>
-struct GridViewer{
-  std::vector<C> A;
-  int width;
-  F f;
+template <typename C>
+void grid_viewer([[maybe_unused]] const C &A, [[maybe_unused]] int width = 10){
+#ifdef DEBUG
+  const int H = A.size();
+  const int W = A[0].size();
 
-  GridViewer(const std::vector<C> &A, int width, F f = [](T x){return x;}): A(A), width(width), f(f){}
+  std::cerr << "    ";
+  for(int j = 0; j < W; ++j){
+    std::cerr << "\e[1;32m" << std::left << std::setw(width) << j << "\e[m";
+  }
+  std::cerr << "\n";
+  std::cerr << std::right;
 
-  std::ostream& run(std::ostream &s) const {
-    const int H = A.size();
-    const int W = A[0].size();
-    
-    auto write_horizon =
-      [&](){
-        for(int j = 0; j < W; ++j){
-          s << "┼";
-          for(int k = 0; k < width; ++k) s << "─";
-        }
-        s << "┼" << "\n";
-      };
+  for(int i = 0; i < H; ++i){
+    std::cerr << "\e[1;32m" << std::setw(2) << i << "|\e[m ";
 
-    for(int i = 0; i < H; ++i){
-      write_horizon();
-
-      for(int j = 0; j < W; ++j){
-        s << "│";
-        s << std::setw(width) << f(A[i][j]);
+    for(int j = 0; j < W; ++j){
+      std::stringstream ss;
+      ss << A[i][j];
+      auto s = ss.str();
+      if(s.size() > width){
+        s.resize(width);
+      }else{
+        while(s.size() < width) s.push_back(' ');
       }
-      s << "│" << "\n";
+
+      std::cerr << s << "";
     }
-  
-    write_horizon();
 
-    return s;
+    std::cerr << "\n";
   }
 
-  friend std::ostream& operator<<(std::ostream &s, const GridViewer &viewer){
-    return viewer.run(s);
-  }
-};
+  std::cerr << std::right;
+  std::cerr << std::setw(0);
+#endif
+}
 
 ```
 {% endraw %}

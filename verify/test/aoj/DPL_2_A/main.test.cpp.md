@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_2_A/main.test.cpp
+# :x: test/aoj/DPL_2_A/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ae5415aafc03e8f08c8f632e7ef1d421">test/aoj/DPL_2_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_2_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/travelling_salesman_problem.cpp.html">Travelling salesman problem</a>
+* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../../../../library/Mylib/Graph/travelling_salesman_problem.cpp.html">Travelling salesman problem</a>
 
 
 ## Code
@@ -59,9 +59,9 @@ int main(){
 
   Graph<int> g(V);
   g.read<0>(E);
-  
+
   std::cout << travelling_salesman_problem(g, 0).value_or(-1) << std::endl;
-  
+
   return 0;
 }
 
@@ -77,13 +77,14 @@ int main(){
 #include <iostream>
 #line 2 "Mylib/Graph/Template/graph.cpp"
 #include <vector>
+#line 4 "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -93,15 +94,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -114,7 +115,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -167,7 +168,7 @@ std::optional<T> travelling_salesman_problem(const Graph<T> &g, int src){
         if(s & (1 << e.to)) continue;
 
         if(dp[i][s]){
-          if(not dp[e.to][s | (1<<e.to)]){
+          if(not dp[e.to][s | (1 << e.to)]){
             dp[e.to][s | (1 << e.to)] = *dp[i][s] + e.cost;
           }else{
             dp[e.to][s | (1 << e.to)] = std::min(*dp[e.to][s | (1 << e.to)], *dp[i][s] + e.cost);
@@ -186,9 +187,9 @@ int main(){
 
   Graph<int> g(V);
   g.read<0>(E);
-  
+
   std::cout << travelling_salesman_problem(g, 0).value_or(-1) << std::endl;
-  
+
   return 0;
 }
 

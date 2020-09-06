@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/or_or.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -48,7 +48,7 @@ layout: default
  * @docs or_or.md
  */
 template <typename T, typename U>
-struct OrOr{
+struct OrOr {
   using value_type_get = T;
   using value_type_update = U;
 
@@ -76,7 +76,7 @@ struct OrOr{
  * @docs or_or.md
  */
 template <typename T, typename U>
-struct OrOr{
+struct OrOr {
   using value_type_get = T;
   using value_type_update = U;
 

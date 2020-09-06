@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/GRL_6_A/main.dinic.test.cpp
+# :x: test/aoj/GRL_6_A/main.dinic.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#d22130300c64d313f1c5481cac7c3c1c">test/aoj/GRL_6_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_6_A/main.dinic.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/Flow/dinic.cpp.html">Dinic algorithm</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/Graph/Flow/dinic.cpp.html">Dinic algorithm</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -64,8 +64,8 @@ int main(){
   for(auto [s, t, c] : input_tuples<int, int, int>(E)){
     f.add_edge(s, t, c);
   }
-  
-  auto ans = f.solve(0, V-1);
+
+  auto ans = f.solve(0, V - 1);
   std::cout << ans << std::endl;
 
   return 0;
@@ -92,12 +92,13 @@ int main(){
  * @title Dinic algorithm
  * @docs dinic.md
  */
-template <typename T> class Dinic{
+template <typename T>
+class Dinic {
 private:
   int size;
   std::vector<std::vector<T>> cap;
   std::vector<int> level;
-  
+
   bool build_level(int s, int t){
     std::fill(level.begin(), level.end(), 0);
     level[s] = 1;
@@ -113,16 +114,16 @@ private:
     }
     return level[t] != 0;
   }
-  
+
   void dfs(std::vector<int> &path, T &flow, int t){
     if(path.empty()) return;
     int cur = path.back();
     if(cur == t){
       T f = std::numeric_limits<T>::max();
-      for(int i = 1; i < (int)path.size(); ++i) f = std::min(f, cap[path[i-1]][path[i]]);
+      for(int i = 1; i < (int)path.size(); ++i) f = std::min(f, cap[path[i - 1]][path[i]]);
       for(int i = 1; i < (int)path.size(); ++i){
-        cap[path[i-1]][path[i]] -= f;
-        cap[path[i]][path[i-1]] += f;
+        cap[path[i - 1]][path[i]] -= f;
+        cap[path[i]][path[i - 1]] += f;
       }
       flow += f;
     }else{
@@ -135,9 +136,9 @@ private:
       }
     }
   }
- 
+
 public:
-  Dinic(const std::vector<std::vector<std::pair<int,T>>> &g):
+  Dinic(const std::vector<std::vector<std::pair<int, T>>> &g):
     size(g.size()), cap(size, std::vector<T>(size)), level(size){
     for(int i = 0; i < size; ++i){
       for(auto &[j, c] : g[i]){
@@ -147,11 +148,11 @@ public:
   }
   Dinic(int size): size(size), cap(size, std::vector<T>(size)), level(size){}
   Dinic(){}
- 
+
   void add_edge(int from, int to, const T &c){
     cap[from][to] += c;
   }
-  
+
   T solve(int s, int t){
     T f = 0;
     while(build_level(s, t)){
@@ -173,8 +174,8 @@ public:
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -184,8 +185,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -194,8 +195,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -243,8 +244,8 @@ int main(){
   for(auto [s, t, c] : input_tuples<int, int, int>(E)){
     f.add_edge(s, t, c);
   }
-  
-  auto ans = f.solve(0, V-1);
+
+  auto ans = f.solve(0, V - 1);
   std::cout << ans << std::endl;
 
   return 0;

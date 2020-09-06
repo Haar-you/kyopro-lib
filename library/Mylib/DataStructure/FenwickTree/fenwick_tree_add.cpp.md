@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Fenwick tree (Add)
+# :x: Fenwick tree (Add)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2f58e2c328298747e7665b6f6b5791ad">Mylib/DataStructure/FenwickTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-03 01:17:34+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -39,12 +39,12 @@ layout: default
 ## Required by
 
 * :warning: <a href="../../Algorithm/Query/range_count_query.cpp.html">Range count query</a>
-* :heavy_check_mark: <a href="../../Algorithm/Query/range_inversions_query.cpp.html">Range inversions query</a>
+* :x: <a href="../../Algorithm/Query/range_inversions_query.cpp.html">Range inversions query</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/static_range_inversions_query/main.test.cpp.html">test/yosupo-judge/static_range_inversions_query/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/static_range_inversions_query/main.test.cpp.html">test/yosupo-judge/static_range_inversions_query/main.test.cpp</a>
 
 
 ## Code
@@ -60,25 +60,25 @@ layout: default
  * @docs fenwick_tree_add.md
  */
 template <typename T>
-class FenwickTreeAdd{
+class FenwickTreeAdd {
   using value_type = T;
-  
+
   int size;
   std::vector<value_type> data;
-  
+
 public:
   FenwickTreeAdd(){}
   FenwickTreeAdd(int size): size(size), data(size + 1, 0){}
-  
+
   void update(int i, value_type val){
     i += 1; // 1-index
-    
+
     while(i <= size){
       data[i] = data[i] + val;
       i += i & (-i);
     }
   }
-  
+
   value_type get(int i) const { // [0, i)
     value_type ret = 0;
     i += 1; // 1-index
@@ -92,7 +92,7 @@ public:
   }
 
   value_type get(int l, int r) const { // [l, r)
-    return get(r-1) - get(l-1);
+    return get(r - 1) - get(l - 1);
   }
 };
 
@@ -110,25 +110,25 @@ public:
  * @docs fenwick_tree_add.md
  */
 template <typename T>
-class FenwickTreeAdd{
+class FenwickTreeAdd {
   using value_type = T;
-  
+
   int size;
   std::vector<value_type> data;
-  
+
 public:
   FenwickTreeAdd(){}
   FenwickTreeAdd(int size): size(size), data(size + 1, 0){}
-  
+
   void update(int i, value_type val){
     i += 1; // 1-index
-    
+
     while(i <= size){
       data[i] = data[i] + val;
       i += i & (-i);
     }
   }
-  
+
   value_type get(int i) const { // [0, i)
     value_type ret = 0;
     i += 1; // 1-index
@@ -142,7 +142,7 @@ public:
   }
 
   value_type get(int l, int r) const { // [l, r)
-    return get(r-1) - get(l-1);
+    return get(r - 1) - get(l - 1);
   }
 };
 

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#5182f60ed9f69992a8eee7b8b1003f24">test/yosupo-judge/vertex_add_subtree_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/vertex_add_subtree_sum">https://judge.yosupo.jp/problem/vertex_add_subtree_sum</a>
@@ -39,13 +39,13 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
-* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Sum monoid</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
+* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
 * :x: <a href="../../../../library/Mylib/Graph/TreeUtils/euler_tour_vertex.cpp.html">Euler tour (Vertex)</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -66,7 +66,7 @@ layout: default
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   auto a = input_vector<int64_t>(N);
@@ -96,7 +96,7 @@ int main(){
       et.point_query(
         u,
         [&](int j){
-          seg.update(j, seg.at(j) + x);
+          seg.update(j, seg[j] + x);
         }
       );
     }else{
@@ -111,7 +111,7 @@ int main(){
       std::cout << ans << "\n";
     }
   }
-  
+
   return 0;
 }
 
@@ -126,14 +126,14 @@ int main(){
 
 #include <iostream>
 #include <vector>
-#line 3 "Mylib/Graph/Template/graph.cpp"
+#line 4 "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -143,15 +143,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -164,7 +164,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -193,13 +193,13 @@ using Tree = Graph<T>;
  * @docs euler_tour_vertex.md
  */
 template <typename T>
-class EulerTourVertex{
+class EulerTourVertex {
   int pos = 0;
   std::vector<int> begin, end;
 
   void dfs(int cur, int par, const Tree<T> &tree){
     begin[cur] = pos++;
-	
+
     for(auto &e : tree[cur]){
       if(e.to == par) continue;
       dfs(e.to, cur, tree);
@@ -213,7 +213,7 @@ public:
     dfs(root, -1, tree);
   }
 
-  template <typename F> // F = std::function<void(int,int)>
+  template <typename F> // F = std::function<void(int, int)>
   void subtree_query(int i, const F &f){
     f(begin[i], end[i]);
   }
@@ -230,66 +230,66 @@ public:
  * @docs segment_tree.md
  */
 template <typename Monoid>
-class SegmentTree{
+class SegmentTree {
   using value_type = typename Monoid::value_type;
-  Monoid M;
-  
+  const static Monoid M;
+
   int depth, size, hsize;
   std::vector<value_type> data;
 
 public:
   SegmentTree(){}
   SegmentTree(int n):
-    depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
+    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
     size(1 << depth), hsize(size / 2),
-    data(size, M.id())
+    data(size, M())
   {}
 
-  auto operator[](int i) const {return at(i);}
-  auto at(int i) const {return data[hsize + i];}
-  
-  auto get(int x, int y) const { // [x,y)
-    value_type ret_left = M.id();
-    value_type ret_right = M.id();
-    
+  auto operator[](int i) const {return data[hsize + i];}
+
+  auto get(int x, int y) const {
+    value_type ret_left = M();
+    value_type ret_right = M();
+
     int l = x + hsize, r = y + hsize;
     while(l < r){
-      if(r & 1) ret_right = M.op(data[--r], ret_right);
-      if(l & 1) ret_left = M.op(ret_left, data[l++]);
+      if(r & 1) ret_right = M(data[--r], ret_right);
+      if(l & 1) ret_left = M(ret_left, data[l++]);
       l >>= 1, r >>= 1;
     }
-    
-    return M.op(ret_left, ret_right);
+
+    return M(ret_left, ret_right);
   }
 
   void update(int i, const value_type &x){
     i += hsize;
     data[i] = x;
-    while(i > 1) i >>= 1, data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
+    while(i > 1) i >>= 1, data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
   void init_with_vector(const std::vector<T> &val){
-    data.assign(size, M.id());
+    data.assign(size, M());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
-    for(int i = hsize-1; i >= 1; --i) data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
+    for(int i = hsize - 1; i >= 1; --i) data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
   void init(const T &val){
     init_with_vector(std::vector<value_type>(hsize, val));
-  }  
+  }
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 /**
+ * @title Sum monoid
  * @docs sum.md
  */
 template <typename T>
-struct SumMonoid{
+struct SumMonoid {
   using value_type = T;
-  value_type id() const {return 0;}
-  value_type op(value_type a, value_type b) const {return a + b;}
+  value_type operator()() const {return 0;}
+  value_type operator()(value_type a, value_type b) const {return a + b;}
 };
 #line 4 "Mylib/IO/input_vector.cpp"
 
@@ -319,8 +319,8 @@ std::vector<std::vector<T>> input_vector(int N, int M){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -330,8 +330,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -340,8 +340,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -384,7 +384,7 @@ auto input_tuples(int N){
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   auto a = input_vector<int64_t>(N);
@@ -414,7 +414,7 @@ int main(){
       et.point_query(
         u,
         [&](int j){
-          seg.update(j, seg.at(j) + x);
+          seg.update(j, seg[j] + x);
         }
       );
     }else{
@@ -429,7 +429,7 @@ int main(){
       std::cout << ans << "\n";
     }
   }
-  
+
   return 0;
 }
 

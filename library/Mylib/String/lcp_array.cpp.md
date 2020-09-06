@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: LCP(Longest Common Prefix) array
+# :x: LCP(Longest Common Prefix) array
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/lcp_array.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="suffix_array.cpp.html">Suffix array</a>
+* :x: <a href="suffix_array.cpp.html">Suffix array</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/number_of_substrings/main.test.cpp.html">test/yosupo-judge/number_of_substrings/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/number_of_substrings/main.test.cpp.html">test/yosupo-judge/number_of_substrings/main.test.cpp</a>
 
 
 ## Code
@@ -60,28 +60,28 @@ layout: default
  * @docs lcp_array.md
  */
 template <typename T>
-struct LCPArray{
-  const int n;
-  std::vector<int> rank, lcp_array;
+auto lcp_array(const SuffixArray<T> &sa){
+  const int n = sa.size();
+  std::vector<int> rank(n), ret(n);
 
-  LCPArray(const SuffixArray<T> &sa): n(sa.n), rank(n), lcp_array(n-1){
-    for(int i = 0; i < n; ++i) rank[sa[i]] = i;
+  for(int i = 0; i < n; ++i) rank[sa[i]] = i;
 
-    int h = 0;
-    for(int i = 0; i < n; ++i){
-      if(rank[i] == 0) continue;
-      int j = sa[rank[i]-1];
+  int h = 0;
+  for(int i = 0; i < n; ++i){
+    if(rank[i] == 0) continue;
+    const int j = sa[rank[i] - 1];
 
-      if(h) --h;
-      while(j+h < n and i+h < n){
-        if(sa.str[j+h] != sa.str[i+h]) break;
-        ++h;
-      }
-
-      lcp_array[rank[i]-1] = h;
+    if(h) --h;
+    while(j + h < n and i + h < n){
+      if(sa.s[j + h] != sa.s[i + h]) break;
+      ++h;
     }
+
+    ret[rank[i]] = h;
   }
-};
+
+  return ret;
+}
 
 ```
 {% endraw %}
@@ -91,131 +91,156 @@ struct LCPArray{
 ```cpp
 #line 2 "Mylib/String/lcp_array.cpp"
 #include <vector>
-#line 3 "Mylib/String/suffix_array.cpp"
-#include <tuple>
+#line 2 "Mylib/String/suffix_array.cpp"
+#include <string>
+#line 4 "Mylib/String/suffix_array.cpp"
+#include <algorithm>
+#include <deque>
 
 /**
  * @title Suffix array
  * @docs suffix_array.md
  */
-template <typename T> class SuffixArray{
-public:
-  const T str;
-  const int n;
-  std::vector<int> suffix_array;
-  
-  const int ALPHABET = 256;
-  
-  SuffixArray(const T &s): str(s), n(s.size()), suffix_array(n){
-    std::vector<int> temp(n);
-    for(int i = 0; i < n; ++i) temp[i] = s[i];
+template <typename Container>
+struct SuffixArray {
+  Container s;
+  int N;
+  std::vector<int> data;
 
-    {
-      std::vector<int> table(ALPHABET);
-      for(auto c : s) table[c] = 1;
-      for(int i = 1; i < ALPHABET; ++i) table[i] += table[i-1];
-
-      for(int i = 0; i < n; ++i){
-        temp[i] = table[s[i]]; 
-      }
+  SuffixArray(Container s): s(s), N(s.size()), data(N){
+    if(N == 1){
+      data = {1, 0};
+      return;
     }
 
-    for(int l = 1; l < n; l *= 2){
-      std::vector<std::tuple<int,int,int>> m(n);
-      for(int i = 0; i < n; ++i){
-        m[i] = std::make_tuple(temp[i], i+l >= n ? 0 : temp[i + l], i);
-      }
-      
-      {
-        std::vector<std::vector<std::tuple<int,int,int>>> table(n+1);
+    s.resize(N + 1);
 
-        for(int i = 0; i < n; ++i){
-          table[std::get<1>(m[i])].push_back(m[i]);
-        }
+    std::string LS(N + 1, 'S');
+    for(int i = N; --i >= 0;){
+      if(s[i] < s[i + 1]) LS[i] = 'S';
+      else if(s[i] > s[i + 1]) LS[i] = 'L';
+      else LS[i] = LS[i + 1];
+    }
 
-        m.clear();
+    const int bucket_count = *std::max_element(s.begin(), s.end());
+    std::vector<int> bucket_size(bucket_count + 1);
+    for(auto x : s) bucket_size[x] += 1;
 
-        for(int i = 0; i <= n; ++i){
-          for(auto &t : table[i]){
-            m.push_back(t);
+    auto induced_sort =
+      [&](std::vector<int> LMS){
+        std::vector<int> bucket(N + 1, -1);
+        std::vector<bool> is_lms(N + 1);
+
+        std::vector<std::deque<int>> empty(bucket_count + 1);
+
+        for(int i = 0, k = 0; i <= bucket_count; ++i){
+          for(int j = 0; j < bucket_size[i]; ++j){
+            empty[i].push_back(k);
+            ++k;
           }
         }
-      }
-      
-      {
-        std::vector<std::vector<std::tuple<int,int,int>>> table(n+1);
 
-        for(int i = 0; i < n; ++i){
-          table[std::get<0>(m[i])].push_back(m[i]);
+        std::reverse(LMS.begin(), LMS.end());
+        for(auto x : LMS){
+          int i = empty[s[x]].back(); empty[s[x]].pop_back();
+
+          bucket[i] = x;
+          is_lms[i] = true;
         }
 
-        m.clear();
-
-        for(int i = 0; i <= n; ++i){
-          for(auto &t : table[i]){
-            m.push_back(t);
+        for(int i = 0; i <= N; ++i){
+          if(bucket[i] >= 1 and LS[bucket[i] - 1] == 'L'){
+            auto x = s[bucket[i] - 1];
+            int j = empty[x].front(); empty[x].pop_front();
+            bucket[j] = bucket[i] - 1;
           }
         }
-      }
-      
-      int h = 1;
-      for(int i = 0; i < n; ++i){
-        if(i > 0 and (std::get<0>(m[i-1]) != std::get<0>(m[i]) or std::get<1>(m[i-1]) != std::get<1>(m[i]))){
-          ++h;
+
+        for(int i = 0; i <= N; ++i){
+          if(is_lms[i]){
+            bucket[i] = -1;
+          }
         }
-        
-        temp[std::get<2>(m[i])] = h;
-      }
-    }
-    
-    for(int i = 0; i < n; ++i) suffix_array[temp[i]-1] = i;
-  }
 
-  int operator[](int i) const {return suffix_array[i];}
+        for(int i = 0, k = 0; i <= bucket_count; ++i){
+          empty[i].clear();
 
-  bool starts_with(const T &s, int k) const {
-    if(s.size() <= str.size() - k){
-      for(int i = 0; i < (int)s.size(); ++i){
-        if(s[i] != str[k+i]) return false;
-      }
-      return true;
-    }
-    return false;
-  }
-
-  int lower_bound(const T &s) const {
-    auto check =
-      [&](int x){
-        for(int i = 0; i < (int)s.size(); ++i){
-          if(suffix_array[x]+i >= (int)str.size()) return false;
-          if(s[i] < str[suffix_array[x]+i]) return true;
-          if(s[i] > str[suffix_array[x]+i]) return false;
+          for(int j = 0; j < bucket_size[i]; ++j){
+            empty[i].push_back(k);
+            ++k;
+          }
         }
-        return true;
+
+        for(int i = N; i >= 0; --i){
+          if(bucket[i] >= 1 and LS[bucket[i] - 1] == 'S'){
+            auto x = s[bucket[i] - 1];
+            int j = empty[x].back(); empty[x].pop_back();
+            bucket[j] = bucket[i] - 1;
+          }
+        }
+
+        bucket[0] = N;
+        return bucket;
       };
 
-    int lb = -1, ub = n;
-    while(abs(lb-ub) > 1){
-      int mid = (lb+ub)/2;
-
-      if(check(mid)){
-        ub = mid;
-      }else{
-        lb = mid;
+    std::vector<int> LMS;
+    for(int i = 1; i <= N; ++i){
+      if(LS[i] == 'S' and LS[i - 1] == 'L'){
+        LMS.push_back(i);
       }
     }
-    
-    return ub;
+
+    std::vector<int> LMS_bucket_length(N + 1, 1);
+    for(int i = 0; i < (int)LMS.size() - 1; ++i){
+      LMS_bucket_length[LMS[i]] = LMS[i + 1] - LMS[i] + 1;
+    }
+
+    auto bucket = induced_sort(LMS);
+
+    std::vector<int> LMS_substr_sorted;
+    for(int i : bucket){
+      if(i > 0 and LS[i - 1] == 'L' and LS[i] == 'S'){
+        LMS_substr_sorted.push_back(i);
+      }
+    }
+
+    std::vector<int> rank(N + 1);
+    rank[LMS_substr_sorted[0]] = 1;
+
+    for(int i = 1, k = 1; i < (int)LMS_substr_sorted.size(); ++i){
+      const int x = LMS_substr_sorted[i - 1], y = LMS_substr_sorted[i];
+
+      bool eq = true;
+      if(LMS_bucket_length[x] != LMS_bucket_length[y]) eq = false;
+      else{
+        for(int j = 0; j < LMS_bucket_length[x]; ++j){
+          if(s[x + j] != s[y + j]) eq = false;
+        }
+      }
+
+      if(not eq) ++k;
+      rank[y] = k;
+    }
+
+    std::vector<int> t;
+    for(int i = 0; i <= N; ++i){
+      if(rank[i] != 0) t.push_back(rank[i]);
+    }
+
+    auto sa = SuffixArray<std::vector<int>>(t).data;
+
+    std::vector<int> LMS_sorted;
+    for(int i = 1; i < (int)sa.size(); ++i){
+      LMS_sorted.push_back(LMS[sa[i]]);
+    }
+
+    data = induced_sort(LMS_sorted);
   }
 
-  int upper_bound(const T &s) const {
-    T t(s);
-
-    t.back()++;
-    int ret = lower_bound(t);
-    t.back()--;
-    return ret;
-  }
+  int operator[](size_t i) const {return data[i];}
+  auto begin() const {return data.begin();}
+  auto end() const {return data.end();}
+  size_t size() const {return data.size();}
 };
 #line 4 "Mylib/String/lcp_array.cpp"
 
@@ -224,28 +249,28 @@ public:
  * @docs lcp_array.md
  */
 template <typename T>
-struct LCPArray{
-  const int n;
-  std::vector<int> rank, lcp_array;
+auto lcp_array(const SuffixArray<T> &sa){
+  const int n = sa.size();
+  std::vector<int> rank(n), ret(n);
 
-  LCPArray(const SuffixArray<T> &sa): n(sa.n), rank(n), lcp_array(n-1){
-    for(int i = 0; i < n; ++i) rank[sa[i]] = i;
+  for(int i = 0; i < n; ++i) rank[sa[i]] = i;
 
-    int h = 0;
-    for(int i = 0; i < n; ++i){
-      if(rank[i] == 0) continue;
-      int j = sa[rank[i]-1];
+  int h = 0;
+  for(int i = 0; i < n; ++i){
+    if(rank[i] == 0) continue;
+    const int j = sa[rank[i] - 1];
 
-      if(h) --h;
-      while(j+h < n and i+h < n){
-        if(sa.str[j+h] != sa.str[i+h]) break;
-        ++h;
-      }
-
-      lcp_array[rank[i]-1] = h;
+    if(h) --h;
+    while(j + h < n and i + h < n){
+      if(sa.s[j + h] != sa.s[i + h]) break;
+      ++h;
     }
+
+    ret[rank[i]] = h;
   }
-};
+
+  return ret;
+}
 
 ```
 {% endraw %}

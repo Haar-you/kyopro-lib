@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/GRL_5_C/main.hld.test.cpp
+# :x: test/aoj/GRL_5_C/main.hld.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#502e31dec0efb369b23aee4c6aa81a7e">test/aoj/GRL_5_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_5_C/main.hld.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_hld.cpp.html">Lowest common ancestor (HLD)</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
+* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_hld.cpp.html">Lowest common ancestor (HLD)</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
 
 
 ## Code
@@ -74,7 +74,7 @@ int main(){
   int q; std::cin >> q;
 
   for(auto [u, v] : input_tuples<int, int>(q)){
-    std::cout << lca.lca(u, v) << std::endl;
+    std::cout << lca(u, v) << std::endl;
   }
 
   return 0;
@@ -92,13 +92,14 @@ int main(){
 #include <iostream>
 #line 2 "Mylib/Graph/Template/graph.cpp"
 #include <vector>
+#line 4 "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -108,15 +109,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -129,7 +130,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -159,10 +160,20 @@ using Tree = Graph<T>;
  * @title Lowest common ancestor (HLD)
  * @docs lca_based_on_hld.md
  */
-template <typename T> class LCA{
+template <typename T>
+class LCA {
   int n;
   std::vector<int> sub, par, head, id;
-  
+  std::vector<T> dist;
+
+  void dfs_depth(int cur, int p, T d, const Tree<T> &tree){
+    dist[cur] = d;
+    for(auto &e : tree[cur]){
+      if(e.to == p) continue;
+      dfs_depth(e.to, cur, d + e.cost, tree);
+    }
+  }
+
   int dfs_sub(int cur, int p, Tree<T> &tree){
     par[cur] = p;
     int t = 0;
@@ -187,10 +198,11 @@ template <typename T> class LCA{
       dfs_build(e.to, i, tree);
     }
   }
-  
+
 public:
   LCA(Tree<T> tree, int root):
-    n(tree.size()), sub(n,1), par(n,-1), head(n), id(n){
+    n(tree.size()), sub(n, 1), par(n, -1), head(n), id(n), dist(n){
+    dfs_depth(root, -1, 0, tree);
     dfs_sub(root, -1, tree);
     int i = 0;
     dfs_build(root, i, tree);
@@ -203,6 +215,12 @@ public:
       v = par[head[v]];
     }
   }
+
+  T distance(int u, int v) const {
+    return dist[u] + dist[v] - 2 * dist[lca(u, v)];
+  }
+
+  int operator()(int u, int v) const {return lca(u, v);}
 };
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
@@ -214,8 +232,8 @@ public:
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -225,8 +243,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -235,8 +253,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -280,8 +298,8 @@ auto input_tuples(int N){
  * @docs input_tuples_with_index.md
  */
 template <typename ... Args>
-class InputTuplesWithIndex{
-  struct iter{
+class InputTuplesWithIndex {
+  struct iter {
     using value_type = std::tuple<int, Args ...>;
     value_type value;
     bool fetched = false;
@@ -321,7 +339,6 @@ template <typename ... Args>
 auto input_tuples_with_index(int N){
   return InputTuplesWithIndex<Args ...>(N);
 }
-
 #line 8 "test/aoj/GRL_5_C/main.hld.test.cpp"
 
 int main(){
@@ -339,7 +356,7 @@ int main(){
   int q; std::cin >> q;
 
   for(auto [u, v] : input_tuples<int, int>(q)){
-    std::cout << lca.lca(u, v) << std::endl;
+    std::cout << lca(u, v) << std::endl;
   }
 
   return 0;

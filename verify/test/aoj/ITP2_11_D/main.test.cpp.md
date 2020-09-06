@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/ITP2_11_D/main.test.cpp
+# :x: test/aoj/ITP2_11_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#94d9d16d204cbf810b90bed914562ba2">test/aoj/ITP2_11_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ITP2_11_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 04:37:36+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_D</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Bit/for_subsets_of_size_k.cpp.html">Enumerate sets of size k</a>
+* :x: <a href="../../../../library/Mylib/Bit/enumerate_sets_of_size_k.cpp.html">Enumerate sets of size k</a>
 
 
 ## Code
@@ -52,21 +52,25 @@ layout: default
 #include <iostream>
 #include <vector>
 #include <map>
-#include "Mylib/Bit/for_subsets_of_size_k.cpp"
+#include "Mylib/Bit/enumerate_sets_of_size_k.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int n, k; std::cin >> n >> k;
 
   std::map<int, std::vector<int>> ans;
 
-  for(int d : KSubsets(k, n)){
-    for(int i = 0; i < n; ++i){
-      if(d & (1 << i)) ans[d].push_back(i);
+  enumerate_sets_of_size_k(
+    k, n,
+    [&](int d){
+      for(int i = 0; i < n; ++i){
+        if(d & (1 << i)) ans[d].push_back(i);
+      }
+      return true;
     }
-  }
+  );
 
   for(auto &[m, v] : ans){
     std::cout << m << ":";
@@ -89,51 +93,41 @@ int main(){
 #include <iostream>
 #include <vector>
 #include <map>
-#line 2 "Mylib/Bit/for_subsets_of_size_k.cpp"
+#line 2 "Mylib/Bit/enumerate_sets_of_size_k.cpp"
 
 /**
  * @title Enumerate sets of size k
- * @docs for_subsets_of_size_k.md
+ * @docs enumerate_sets_of_size_k.md
  */
-class KSubsets{
-  struct iter{
-    int c, n;
-    bool is_end;
-
-    int operator*() const {return c;}
-    void operator++(){
-      int x = c & (-c);
-      int y = c + x;
-
-      c = ((c & ~y) / x >> 1) | y;
-
-      if(c >= 1 << n) is_end = true;
-    }
-    bool operator!=(const iter &) const {return not is_end;}
-  };
-
-  int k, n;
-
-public:
-  KSubsets(int k, int n): k(k), n(n){}
-  iter begin() const {return iter({(1 << k) - 1, n, false});}
-  iter end() const {return iter();}
-};
+template <typename Func>
+void enumerate_sets_of_size_k(int k, int n, const Func &f){
+  int c = (1 << k) - 1;
+  while(c < (1 << n)){
+    if(not f(c)) break;
+    const int x = c & (-c);
+    const int y = c + x;
+    c = ((c & (~y)) / x >> 1) | y;
+  }
+}
 #line 7 "test/aoj/ITP2_11_D/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int n, k; std::cin >> n >> k;
 
   std::map<int, std::vector<int>> ans;
 
-  for(int d : KSubsets(k, n)){
-    for(int i = 0; i < n; ++i){
-      if(d & (1 << i)) ans[d].push_back(i);
+  enumerate_sets_of_size_k(
+    k, n,
+    [&](int d){
+      for(int i = 0; i < n; ++i){
+        if(d & (1 << i)) ans[d].push_back(i);
+      }
+      return true;
     }
-  }
+  );
 
   for(auto &[m, v] : ans){
     std::cout << m << ":";

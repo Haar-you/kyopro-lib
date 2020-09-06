@@ -25,22 +25,22 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Square matrix
+# :x: Square matrix
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b58b3fdb1287502881e9117a37552614">Mylib/LinearAlgebra/Square</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/Square/square_matrix.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-18 05:35:58+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/1327/main.test.cpp.html">test/aoj/1327/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/matrix_det/main.test.cpp.html">test/yosupo-judge/matrix_det/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/194/main.test.cpp.html">test/yukicoder/194/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/1327/main.test.cpp.html">test/aoj/1327/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/matrix_det/main.test.cpp.html">test/yosupo-judge/matrix_det/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/194/main.test.cpp.html">test/yukicoder/194/main.test.cpp</a>
 
 
 ## Code
@@ -56,30 +56,31 @@ layout: default
  * @title Square matrix
  * @docs square_matrix.md
  */
-template <typename T, class Tag> struct SquareMatrix{
+template <typename T, class Tag>
+struct SquareMatrix {
   using value_type = T;
-  
+
   static int N;
   static void init(int n){N = n;}
   std::vector<std::vector<T>> matrix;
-  
+
   SquareMatrix(): matrix(N, std::vector<T>(N)){}
   SquareMatrix(const T &val): matrix(N, std::vector<T>(N, val)){}
   SquareMatrix(const std::vector<std::vector<T>> &matrix): matrix(matrix){}
 
   bool operator==(const SquareMatrix &val) const {return matrix == val.matrix;}
   bool operator!=(const SquareMatrix &val) const {return !(*this == val);}
-  
+
   auto& operator=(const SquareMatrix &val){
     this->matrix = val.matrix;
     return *this;
   }
-  
+
   auto& operator+=(const SquareMatrix &val){
     for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] + val[i][j];
     return *this;
   }
-  
+
   auto& operator-=(const SquareMatrix &val){
     for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] - val[i][j];
     return *this;
@@ -95,7 +96,7 @@ template <typename T, class Tag> struct SquareMatrix{
   const auto& operator[](size_t i) const {return matrix[i];}
   auto& operator[](size_t i){return matrix[i];}
   int size() const {return N;}
-  
+
   static auto make_unit(){
     SquareMatrix ret;
     for(int i = 0; i < N; ++i) ret[i][i] = 1;
@@ -107,7 +108,7 @@ template <typename T, class Tag> struct SquareMatrix{
   friend auto operator*(const SquareMatrix &a, const SquareMatrix &b){auto ret = a; ret *= b; return ret;}
 };
 
-template <typename T, class Tag> int SquareMatrix<T,Tag>::N;
+template <typename T, class Tag> int SquareMatrix<T, Tag>::N;
 
 ```
 {% endraw %}
@@ -123,30 +124,31 @@ template <typename T, class Tag> int SquareMatrix<T,Tag>::N;
  * @title Square matrix
  * @docs square_matrix.md
  */
-template <typename T, class Tag> struct SquareMatrix{
+template <typename T, class Tag>
+struct SquareMatrix {
   using value_type = T;
-  
+
   static int N;
   static void init(int n){N = n;}
   std::vector<std::vector<T>> matrix;
-  
+
   SquareMatrix(): matrix(N, std::vector<T>(N)){}
   SquareMatrix(const T &val): matrix(N, std::vector<T>(N, val)){}
   SquareMatrix(const std::vector<std::vector<T>> &matrix): matrix(matrix){}
 
   bool operator==(const SquareMatrix &val) const {return matrix == val.matrix;}
   bool operator!=(const SquareMatrix &val) const {return !(*this == val);}
-  
+
   auto& operator=(const SquareMatrix &val){
     this->matrix = val.matrix;
     return *this;
   }
-  
+
   auto& operator+=(const SquareMatrix &val){
     for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] + val[i][j];
     return *this;
   }
-  
+
   auto& operator-=(const SquareMatrix &val){
     for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] - val[i][j];
     return *this;
@@ -162,7 +164,7 @@ template <typename T, class Tag> struct SquareMatrix{
   const auto& operator[](size_t i) const {return matrix[i];}
   auto& operator[](size_t i){return matrix[i];}
   int size() const {return N;}
-  
+
   static auto make_unit(){
     SquareMatrix ret;
     for(int i = 0; i < N; ++i) ret[i][i] = 1;
@@ -174,7 +176,7 @@ template <typename T, class Tag> struct SquareMatrix{
   friend auto operator*(const SquareMatrix &a, const SquareMatrix &b){auto ret = a; ret *= b; return ret;}
 };
 
-template <typename T, class Tag> int SquareMatrix<T,Tag>::N;
+template <typename T, class Tag> int SquareMatrix<T, Tag>::N;
 
 ```
 {% endraw %}

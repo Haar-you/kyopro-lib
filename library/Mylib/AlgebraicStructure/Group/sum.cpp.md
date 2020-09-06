@@ -25,22 +25,22 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/AlgebraicStructure/Group/sum.cpp
+# :x: Sum group
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a11cf6f4bd6e76e33e4d7136e3eb98bc">Mylib/AlgebraicStructure/Group</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Group/sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/2842/main.fenwick_tree.test.cpp.html">test/aoj/2842/main.fenwick_tree.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp.html">test/aoj/DSL_2_B/main.fenwick_tree.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/2842/main.fenwick_tree.test.cpp.html">test/aoj/2842/main.fenwick_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp.html">test/aoj/DSL_2_B/main.fenwick_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
 
 
 ## Code
@@ -51,14 +51,15 @@ layout: default
 #pragma once
 
 /**
+ * @title Sum group
  * @docs sum.md
  */
 template <typename T>
-struct SumGroup{
+struct SumGroup {
   using value_type = T;
 
-  value_type id() const {return 0;}
-  value_type op(const value_type &a, const value_type &b) const {return a + b;}
+  value_type operator()() const {return 0;}
+  value_type operator()(const value_type &a, const value_type &b) const {return a + b;}
   value_type inv(const value_type &a) const {return -a;}
 };
 
@@ -71,14 +72,15 @@ struct SumGroup{
 #line 2 "Mylib/AlgebraicStructure/Group/sum.cpp"
 
 /**
+ * @title Sum group
  * @docs sum.md
  */
 template <typename T>
-struct SumGroup{
+struct SumGroup {
   using value_type = T;
 
-  value_type id() const {return 0;}
-  value_type op(const value_type &a, const value_type &b) const {return a + b;}
+  value_type operator()() const {return 0;}
+  value_type operator()(const value_type &a, const value_type &b) const {return a + b;}
   value_type inv(const value_type &a) const {return -a;}
 };
 

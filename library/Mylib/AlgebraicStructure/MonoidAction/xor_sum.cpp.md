@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/xor_sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -49,20 +49,20 @@ layout: default
  * @docs xor_sum.md
  */
 template <typename U, int B>
-struct XorSum{
+struct XorSum {
   using value_type_get = typename std::array<int, B>;
-  using value_type_update = typename U;
+  using value_type_update = U;
 
   value_type_get id_get() const {
-    value_type ret;
-    ret.fill(M.id());
+    value_type_get ret;
+    ret.fill(0);
     return ret;
   }
   value_type_update id_update() const {return 0;}
 
   value_type_get op_get(const value_type_get &a, const value_type_get &b){
-    value_type ret;
-    for(int i = 0; i < B; ++i) ret[i] = M.op(a[i], b[i]);
+    value_type_get ret;
+    for(int i = 0; i < B; ++i) ret[i] = a[i] + b[i];
     return ret;
   }
   value_type_update op_update(value_type_update a, value_type_update b) const {return a ^ b;}
@@ -88,20 +88,20 @@ struct XorSum{
  * @docs xor_sum.md
  */
 template <typename U, int B>
-struct XorSum{
+struct XorSum {
   using value_type_get = typename std::array<int, B>;
-  using value_type_update = typename U;
+  using value_type_update = U;
 
   value_type_get id_get() const {
-    value_type ret;
-    ret.fill(M.id());
+    value_type_get ret;
+    ret.fill(0);
     return ret;
   }
   value_type_update id_update() const {return 0;}
 
   value_type_get op_get(const value_type_get &a, const value_type_get &b){
-    value_type ret;
-    for(int i = 0; i < B; ++i) ret[i] = M.op(a[i], b[i]);
+    value_type_get ret;
+    for(int i = 0; i < B; ++i) ret[i] = a[i] + b[i];
     return ret;
   }
   value_type_update op_update(value_type_update a, value_type_update b) const {return a ^ b;}

@@ -25,21 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Compressor
+# :x: Compressor
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#cf1ec978dae666792e23e53a3672d204">Mylib/Utils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Utils/compressor.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-07 18:06:08+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/1337/main.test.cpp.html">test/aoj/1337/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/1337/main.test.cpp.html">test/aoj/1337/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp</a>
 
 
 ## Code
@@ -56,13 +56,25 @@ layout: default
  * @docs compressor.md
  */
 template <typename T>
-class Compressor{
+class Compressor {
   std::vector<T> data;
 
 public:
-  auto& add(const T &val) {data.push_back(val); return *this;}
-  auto& add(const std::vector<T> &vals) {data.insert(data.end(), vals.begin(), vals.end()); return *this;}
-  template <typename U, typename ...Args> auto& add(const U &val, const Args&... args) {add(val); return add(args...);}
+  auto& add(const T &val){
+    data.push_back(val);
+    return *this;
+  }
+
+  auto& add(const std::vector<T> &vals){
+    data.insert(data.end(), vals.begin(), vals.end());
+    return *this;
+  }
+
+  template <typename U, typename ... Args>
+  auto& add(const U &val, const Args &... args){
+    add(val);
+    return add(args ...);
+  }
 
   auto& build(){
     std::sort(data.begin(), data.end());
@@ -70,16 +82,42 @@ public:
     return *this;
   }
 
-  int get_index(const T &val) const {return std::lower_bound(data.begin(), data.end(), val) - data.begin();}
+  int get_index(const T &val) const {
+    return std::lower_bound(data.begin(), data.end(), val) - data.begin();
+  }
 
-  auto& compress(std::vector<T> &vals) const {for(auto &x : vals) x = get_index(x); return *this;}
-  auto& compress(T &val) const {val = get_index(val);return *this;}
-  template <typename U, typename ...Args> auto& compress(U &val, Args&... args) const {compress(val); return compress(args...);}
+  auto& compress(std::vector<T> &vals) const {
+    for(auto &x : vals) x = get_index(x);
+    return *this;
+  }
 
-  auto& decompress(std::vector<T> &vals) const {for(auto &x : vals) x = data[x]; return *this;}
-  auto& decompress(T &val) const {val = data[val]; return *this;}
-  template <typename U, typename ...Args> auto& decompress(U &val, Args&... args) const {decompress(val); return decompress(args...);}
-  
+  auto& compress(T &val) const {
+    val = get_index(val);
+    return *this;
+  }
+
+  template <typename U, typename ... Args>
+  auto& compress(U &val, Args &... args) const {
+    compress(val);
+    return compress(args ...);
+  }
+
+  auto& decompress(std::vector<T> &vals) const {
+    for(auto &x : vals) x = data[x];
+    return *this;
+  }
+
+  auto& decompress(T &val) const {
+    val = data[val];
+    return *this;
+  }
+
+  template <typename U, typename ... Args>
+  auto& decompress(U &val, Args &... args) const {
+    decompress(val);
+    return decompress(args ...);
+  }
+
   int size() const {return data.size();}
   T operator[](int index) const {return data[index];}
 };
@@ -99,13 +137,25 @@ public:
  * @docs compressor.md
  */
 template <typename T>
-class Compressor{
+class Compressor {
   std::vector<T> data;
 
 public:
-  auto& add(const T &val) {data.push_back(val); return *this;}
-  auto& add(const std::vector<T> &vals) {data.insert(data.end(), vals.begin(), vals.end()); return *this;}
-  template <typename U, typename ...Args> auto& add(const U &val, const Args&... args) {add(val); return add(args...);}
+  auto& add(const T &val){
+    data.push_back(val);
+    return *this;
+  }
+
+  auto& add(const std::vector<T> &vals){
+    data.insert(data.end(), vals.begin(), vals.end());
+    return *this;
+  }
+
+  template <typename U, typename ... Args>
+  auto& add(const U &val, const Args &... args){
+    add(val);
+    return add(args ...);
+  }
 
   auto& build(){
     std::sort(data.begin(), data.end());
@@ -113,16 +163,42 @@ public:
     return *this;
   }
 
-  int get_index(const T &val) const {return std::lower_bound(data.begin(), data.end(), val) - data.begin();}
+  int get_index(const T &val) const {
+    return std::lower_bound(data.begin(), data.end(), val) - data.begin();
+  }
 
-  auto& compress(std::vector<T> &vals) const {for(auto &x : vals) x = get_index(x); return *this;}
-  auto& compress(T &val) const {val = get_index(val);return *this;}
-  template <typename U, typename ...Args> auto& compress(U &val, Args&... args) const {compress(val); return compress(args...);}
+  auto& compress(std::vector<T> &vals) const {
+    for(auto &x : vals) x = get_index(x);
+    return *this;
+  }
 
-  auto& decompress(std::vector<T> &vals) const {for(auto &x : vals) x = data[x]; return *this;}
-  auto& decompress(T &val) const {val = data[val]; return *this;}
-  template <typename U, typename ...Args> auto& decompress(U &val, Args&... args) const {decompress(val); return decompress(args...);}
-  
+  auto& compress(T &val) const {
+    val = get_index(val);
+    return *this;
+  }
+
+  template <typename U, typename ... Args>
+  auto& compress(U &val, Args &... args) const {
+    compress(val);
+    return compress(args ...);
+  }
+
+  auto& decompress(std::vector<T> &vals) const {
+    for(auto &x : vals) x = data[x];
+    return *this;
+  }
+
+  auto& decompress(T &val) const {
+    val = data[val];
+    return *this;
+  }
+
+  template <typename U, typename ... Args>
+  auto& decompress(U &val, Args &... args) const {
+    decompress(val);
+    return decompress(args ...);
+  }
+
   int size() const {return data.size();}
   T operator[](int index) const {return data[index];}
 };

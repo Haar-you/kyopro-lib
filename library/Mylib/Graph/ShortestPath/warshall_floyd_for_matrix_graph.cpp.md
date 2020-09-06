@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Warshall-Floyd algorithm (For adjaceny matrix graph)
+# :x: Warshall-Floyd algorithm (For adjacency matrix graph)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9a0780c4ad89eac4e850657d1e57c23a">Mylib/Graph/ShortestPath</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 04:58:03+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/2171/main.test.cpp.html">test/aoj/2171/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/2171/main.test.cpp.html">test/aoj/2171/main.test.cpp</a>
 
 
 ## Code
@@ -51,47 +51,52 @@ layout: default
 #include <optional>
 
 /**
- * @title Warshall-Floyd algorithm (For adjaceny matrix graph)
+ * @title Warshall-Floyd algorithm (For adjacency matrix graph)
  * @docs warshall_floyd_for_matrix_graph.md
  */
+namespace warshall_floyd_for_matrix_impl {
+  template <typename T>
+  struct Result {
+    std::vector<std::vector<std::optional<T>>> dist;
+    bool has_negative_cycle;
+    const auto& operator[](int i) const {return dist[i];}
+  };
+}
+
 template <typename T, T INVALID>
-struct WarshallFloyd{
-  const int n;
-  std::vector<std::vector<std::optional<T>>> dist;
-  bool has_negative_cycle;
-  
-  WarshallFloyd(const std::vector<std::vector<T>> &graph):
-    n(graph.size()),
-    dist(n, std::vector<std::optional<T>>(n, std::nullopt)),
-    has_negative_cycle(false)
-  {
-    for(int i = 0; i < n; ++i) dist[i][i] = 0;
-    
-    for(int i = 0; i < n; ++i){
-      for(int j = 0; j < n; ++j){
-        if(graph[i][j] != INVALID){
-          dist[i][j] = graph[i][j];
-        }
+auto warshall_floyd_for_matrix(const std::vector<std::vector<T>> &g){
+  const int n = g.size();
+  auto dist = std::vector(n, std::vector<std::optional<T>>(n));
+
+  for(int i = 0; i < n; ++i) dist[i][i] = 0;
+
+  for(int i = 0; i < n; ++i){
+    for(int j = 0; j < n; ++j){
+      if(g[i][j] != INVALID){
+        dist[i][j] = g[i][j];
       }
     }
-    
-    for(int k = 0; k < n; ++k){
-      for(int i = 0; i < n; ++i){
-        for(int j = 0; j < n; ++j){
-          if(dist[i][k] and dist[k][j]){
-            if(not dist[i][j]){
-              dist[i][j] = *dist[i][k] + *dist[k][j];
-            }else{
-              dist[i][j] = std::min(*dist[i][j], *dist[i][k] + *dist[k][j]);
-            }
+  }
+
+  for(int k = 0; k < n; ++k){
+    for(int i = 0; i < n; ++i){
+      for(int j = 0; j < n; ++j){
+        if(dist[i][k] and dist[k][j]){
+          if(not dist[i][j]){
+            dist[i][j] = *dist[i][k] + *dist[k][j];
+          }else{
+            dist[i][j] = std::min(*dist[i][j], *dist[i][k] + *dist[k][j]);
           }
         }
       }
     }
-    
-    for(int i = 0; i < n; ++i) if(*dist[i][i] < 0) has_negative_cycle = true;
   }
-};
+
+  bool has_negative_cycle = false;
+  for(int i = 0; i < n; ++i) if(*dist[i][i] < 0) has_negative_cycle = true;
+
+  return warshall_floyd_for_matrix_impl::Result<T>{dist, has_negative_cycle};
+}
 
 ```
 {% endraw %}
@@ -104,47 +109,52 @@ struct WarshallFloyd{
 #include <optional>
 
 /**
- * @title Warshall-Floyd algorithm (For adjaceny matrix graph)
+ * @title Warshall-Floyd algorithm (For adjacency matrix graph)
  * @docs warshall_floyd_for_matrix_graph.md
  */
+namespace warshall_floyd_for_matrix_impl {
+  template <typename T>
+  struct Result {
+    std::vector<std::vector<std::optional<T>>> dist;
+    bool has_negative_cycle;
+    const auto& operator[](int i) const {return dist[i];}
+  };
+}
+
 template <typename T, T INVALID>
-struct WarshallFloyd{
-  const int n;
-  std::vector<std::vector<std::optional<T>>> dist;
-  bool has_negative_cycle;
-  
-  WarshallFloyd(const std::vector<std::vector<T>> &graph):
-    n(graph.size()),
-    dist(n, std::vector<std::optional<T>>(n, std::nullopt)),
-    has_negative_cycle(false)
-  {
-    for(int i = 0; i < n; ++i) dist[i][i] = 0;
-    
-    for(int i = 0; i < n; ++i){
-      for(int j = 0; j < n; ++j){
-        if(graph[i][j] != INVALID){
-          dist[i][j] = graph[i][j];
-        }
+auto warshall_floyd_for_matrix(const std::vector<std::vector<T>> &g){
+  const int n = g.size();
+  auto dist = std::vector(n, std::vector<std::optional<T>>(n));
+
+  for(int i = 0; i < n; ++i) dist[i][i] = 0;
+
+  for(int i = 0; i < n; ++i){
+    for(int j = 0; j < n; ++j){
+      if(g[i][j] != INVALID){
+        dist[i][j] = g[i][j];
       }
     }
-    
-    for(int k = 0; k < n; ++k){
-      for(int i = 0; i < n; ++i){
-        for(int j = 0; j < n; ++j){
-          if(dist[i][k] and dist[k][j]){
-            if(not dist[i][j]){
-              dist[i][j] = *dist[i][k] + *dist[k][j];
-            }else{
-              dist[i][j] = std::min(*dist[i][j], *dist[i][k] + *dist[k][j]);
-            }
+  }
+
+  for(int k = 0; k < n; ++k){
+    for(int i = 0; i < n; ++i){
+      for(int j = 0; j < n; ++j){
+        if(dist[i][k] and dist[k][j]){
+          if(not dist[i][j]){
+            dist[i][j] = *dist[i][k] + *dist[k][j];
+          }else{
+            dist[i][j] = std::min(*dist[i][j], *dist[i][k] + *dist[k][j]);
           }
         }
       }
     }
-    
-    for(int i = 0; i < n; ++i) if(*dist[i][i] < 0) has_negative_cycle = true;
   }
-};
+
+  bool has_negative_cycle = false;
+  for(int i = 0; i < n; ++i) if(*dist[i][i] < 0) has_negative_cycle = true;
+
+  return warshall_floyd_for_matrix_impl::Result<T>{dist, has_negative_cycle};
+}
 
 ```
 {% endraw %}

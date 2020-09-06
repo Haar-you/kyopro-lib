@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_1_B/main.test.cpp
+# :x: test/aoj/DSL_1_B/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#d968eb1568785f4a9e284aeb2f04bd97">test/aoj/DSL_1_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_1_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-06 22:54:09+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/weighted_unionfind.cpp.html">Weighted union-find</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/UnionFind/weighted_unionfind.cpp.html">Weighted union-find</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -59,7 +59,7 @@ int main(){
   int n, q; std::cin >> n >> q;
 
   WeightedUnionFind<int> uf(n);
-  
+
   for(auto [type, x, y] : input_tuples<int, int, int>(q)){
     if(type == 0){
       int z; std::cin >> z;
@@ -94,32 +94,32 @@ int main(){
  * @title Weighted union-find
  * @docs weighted_unionfind.md
  */
-
-template <typename T> class WeightedUnionFind{
+template <typename T>
+class WeightedUnionFind {
   std::vector<int> parent, depth, size;
   std::vector<T> weight;
   int count;
 
 public:
-  WeightedUnionFind(int n): parent(n), depth(n,1), size(n,1), weight(n,0){
-    std::iota(parent.begin(), parent.end(),0);
+  WeightedUnionFind(int n): parent(n), depth(n, 1), size(n, 1), weight(n, 0){
+    std::iota(parent.begin(), parent.end(), 0);
   }
-  
+
   int root_of(int i){
     if(parent[i] == i) return i;
     else {
-      int p = root_of(parent[i]);
+      const int p = root_of(parent[i]);
       weight[i] += weight[parent[i]];
       return parent[i] = p;
     }
   }
 
-  T weight_of(int i){root_of(i); return weight[i];} 
+  T weight_of(int i){root_of(i); return weight[i];}
   bool is_same(int i, int j){return root_of(i) == root_of(j);}
   T diff(int i, int j){return weight_of(i) - weight_of(j);}
-  
+
   int merge(int i, int j, T w){
-    int ri = root_of(i), rj = root_of(j);
+    const int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return ri;
     else{
       if(depth[ri] < depth[rj]){
@@ -132,7 +132,7 @@ public:
       }
     }
   }
-  
+
   int size_of(int i){return size[root_of(i)];}
   int count_group(){return count;}
 };
@@ -146,8 +146,8 @@ public:
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -157,8 +157,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -167,8 +167,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -212,7 +212,7 @@ int main(){
   int n, q; std::cin >> n >> q;
 
   WeightedUnionFind<int> uf(n);
-  
+
   for(auto [type, x, y] : input_tuples<int, int, int>(q)){
     if(type == 0){
       int z; std::cin >> z;

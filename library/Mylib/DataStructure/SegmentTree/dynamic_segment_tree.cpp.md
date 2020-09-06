@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Dynamic segment tree
+# :x: Dynamic segment tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/789/main.test.cpp.html">test/yukicoder/789/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/789/main.test.cpp.html">test/yukicoder/789/main.test.cpp</a>
 
 
 ## Code
@@ -47,57 +47,58 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
+#include <cstdint>
 
 /**
  * @title Dynamic segment tree
  * @docs dynamic_segment_tree.md
  */
 template <typename Monoid>
-class DynamicSegmentTree{
+class DynamicSegmentTree {
   using value_type = typename Monoid::value_type;
-  Monoid M;
-  
-  struct Node{
+  const static Monoid M;
+
+  struct Node {
     value_type val;
     Node *left = nullptr, *right = nullptr;
     Node(const value_type &val): val(val) {}
   };
-  
+
   int64_t depth, size;
   Node *root = nullptr;
 
   value_type eval(Node *t) const {
-    return t ? t->val : M.id();
+    return t ? t->val : M();
   }
 
   Node* update_aux(Node *node, int64_t l, int64_t r, int64_t pos, const value_type &val){
-    if(r-l == 1){
+    if(r - l == 1){
       if(node) node->val = val;
       else node = new Node(val);
     }else{
-      int64_t m = (l+r)/2;
+      const int64_t m = (l + r) / 2;
       if(!node) node = new Node(val);
       if(pos < m) node->left = update_aux(node->left, l, m, pos, val);
       else node->right = update_aux(node->right, m, r, pos, val);
-      node->val = M.op(eval(node->left), eval(node->right));
+      node->val = M(eval(node->left), eval(node->right));
     }
     return node;
   }
 
   value_type get_aux(Node* node, int64_t l, int64_t r, int64_t x, int64_t y) const {
-    if(!node) return M.id();
-    if(x <= l && r <= y) return node ? node->val : M.id();
-    if(r < x || y < l) return M.id();
+    if(!node) return M();
+    if(x <= l && r <= y) return node ? node->val : M();
+    if(r < x || y < l) return M();
     int64_t m = (l + r) >> 1;
-    return M.op(get_aux(node->left, l, m, x, y), get_aux(node->right, m, r, x, y));
+    return M(get_aux(node->left, l, m, x, y), get_aux(node->right, m, r, x, y));
   }
 
 public:
   DynamicSegmentTree(int64_t n):
-    depth(n > 1 ? 64-__builtin_clzll(n-1) + 1 : 1),
+    depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),
     size(1LL << depth)
   {
-    root = new Node(M.id());
+    root = new Node(M());
   }
 
   void update(int64_t i, const value_type &x){
@@ -109,7 +110,7 @@ public:
   }
 
   value_type operator[](int64_t i) const {
-    return get(i, i+1);
+    return get(i, i + 1);
   }
 };
 
@@ -120,57 +121,58 @@ public:
 {% raw %}
 ```cpp
 #line 2 "Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp"
+#include <cstdint>
 
 /**
  * @title Dynamic segment tree
  * @docs dynamic_segment_tree.md
  */
 template <typename Monoid>
-class DynamicSegmentTree{
+class DynamicSegmentTree {
   using value_type = typename Monoid::value_type;
-  Monoid M;
-  
-  struct Node{
+  const static Monoid M;
+
+  struct Node {
     value_type val;
     Node *left = nullptr, *right = nullptr;
     Node(const value_type &val): val(val) {}
   };
-  
+
   int64_t depth, size;
   Node *root = nullptr;
 
   value_type eval(Node *t) const {
-    return t ? t->val : M.id();
+    return t ? t->val : M();
   }
 
   Node* update_aux(Node *node, int64_t l, int64_t r, int64_t pos, const value_type &val){
-    if(r-l == 1){
+    if(r - l == 1){
       if(node) node->val = val;
       else node = new Node(val);
     }else{
-      int64_t m = (l+r)/2;
+      const int64_t m = (l + r) / 2;
       if(!node) node = new Node(val);
       if(pos < m) node->left = update_aux(node->left, l, m, pos, val);
       else node->right = update_aux(node->right, m, r, pos, val);
-      node->val = M.op(eval(node->left), eval(node->right));
+      node->val = M(eval(node->left), eval(node->right));
     }
     return node;
   }
 
   value_type get_aux(Node* node, int64_t l, int64_t r, int64_t x, int64_t y) const {
-    if(!node) return M.id();
-    if(x <= l && r <= y) return node ? node->val : M.id();
-    if(r < x || y < l) return M.id();
+    if(!node) return M();
+    if(x <= l && r <= y) return node ? node->val : M();
+    if(r < x || y < l) return M();
     int64_t m = (l + r) >> 1;
-    return M.op(get_aux(node->left, l, m, x, y), get_aux(node->right, m, r, x, y));
+    return M(get_aux(node->left, l, m, x, y), get_aux(node->right, m, r, x, y));
   }
 
 public:
   DynamicSegmentTree(int64_t n):
-    depth(n > 1 ? 64-__builtin_clzll(n-1) + 1 : 1),
+    depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),
     size(1LL << depth)
   {
-    root = new Node(M.id());
+    root = new Node(M());
   }
 
   void update(int64_t i, const value_type &x){
@@ -182,7 +184,7 @@ public:
   }
 
   value_type operator[](int64_t i) const {
-    return get(i, i+1);
+    return get(i, i + 1);
   }
 };
 

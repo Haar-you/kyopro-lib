@@ -25,21 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Enumerate supersets (Ascending order)
+# :x: Enumerate supersets (Descending order)
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#fe4a83e4dc2a7f834ed4cd85d6972a53">Mylib/Bit</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/for_each_superset_asc.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/enumerate_supersets_desc.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-09-06 04:37:36+09:00
 
 
 
 
 ## Operations
 
-- `for(int i : SupersetAsc(a, n)){...}`
-	- 大きさ`n`の集合で`a`の上位集合であるものを昇順に列挙する。
+- `for(int i : SupersetDesc(a, n)){...}`
+	- 大きさ`n`の集合で`a`の上位集合であるものを降順に列挙する。
 
 ## Requirements
 
@@ -57,7 +57,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/ITP2_11_B/main.asc.test.cpp.html">test/aoj/ITP2_11_B/main.asc.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/ITP2_11_B/main.desc.test.cpp.html">test/aoj/ITP2_11_B/main.desc.test.cpp</a>
 
 
 ## Code
@@ -68,29 +68,17 @@ layout: default
 #pragma once
 
 /**
- * @title Enumerate supersets (Ascending order)
- * @docs for_each_superset_asc.md
+ * @title Enumerate supersets (Descending order)
+ * @docs enumerate_supersets_desc.md
  */
-class SupersetAsc{
-  struct iter{
-    int t, a, n;
-    bool is_end;
-
-    int operator*() const {return t;}
-    void operator++(){
-      t = (t + 1) | a;
-      if(t >= (1 << n)) is_end = true;
-    }
-    bool operator!=(const iter &) const {return not is_end;}
-  };
-
-  int a, n;
-
-public:
-  SupersetAsc(int a, int n): a(a), n(n){}
-  iter begin() const {return iter({a, a, n, false});}
-  iter end() const {return iter();}
-};
+template <typename Func>
+void enumerate_supersets_desc(int a, int n, const Func &f){
+  const int x = (1 << n) - 1, y = x ^ (a & x);
+  for(int t = y; ; t = (t - 1) & y){
+    if(not f(t | a)) break;
+    if(t == 0) break;
+  }
+}
 
 ```
 {% endraw %}
@@ -98,32 +86,20 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Bit/for_each_superset_asc.cpp"
+#line 2 "Mylib/Bit/enumerate_supersets_desc.cpp"
 
 /**
- * @title Enumerate supersets (Ascending order)
- * @docs for_each_superset_asc.md
+ * @title Enumerate supersets (Descending order)
+ * @docs enumerate_supersets_desc.md
  */
-class SupersetAsc{
-  struct iter{
-    int t, a, n;
-    bool is_end;
-
-    int operator*() const {return t;}
-    void operator++(){
-      t = (t + 1) | a;
-      if(t >= (1 << n)) is_end = true;
-    }
-    bool operator!=(const iter &) const {return not is_end;}
-  };
-
-  int a, n;
-
-public:
-  SupersetAsc(int a, int n): a(a), n(n){}
-  iter begin() const {return iter({a, a, n, false});}
-  iter end() const {return iter();}
-};
+template <typename Func>
+void enumerate_supersets_desc(int a, int n, const Func &f){
+  const int x = (1 << n) - 1, y = x ^ (a & x);
+  for(int t = y; ; t = (t - 1) & y){
+    if(not f(t | a)) break;
+    if(t == 0) break;
+  }
+}
 
 ```
 {% endraw %}

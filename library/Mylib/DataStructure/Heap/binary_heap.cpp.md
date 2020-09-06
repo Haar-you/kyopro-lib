@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Binary heap
+# :x: Binary heap
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f151d59e79c7ff7f731ff52cf9b782e4">Mylib/DataStructure/Heap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Heap/binary_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/ALDS1_9_C/main.binary.test.cpp.html">test/aoj/ALDS1_9_C/main.binary.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/ALDS1_9_C/main.binary.test.cpp.html">test/aoj/ALDS1_9_C/main.binary.test.cpp</a>
 
 
 ## Code
@@ -56,7 +56,7 @@ layout: default
  * @docs binary_heap.md
  */
 template <typename T, typename Compare = std::less<T>>
-class BinaryHeap{
+class BinaryHeap {
   std::vector<T> data;
 
   int left(int i) const {return i * 2 + 1;}
@@ -139,7 +139,7 @@ public:
  * @docs binary_heap.md
  */
 template <typename T, typename Compare = std::less<T>>
-class BinaryHeap{
+class BinaryHeap {
   std::vector<T> data;
 
   int left(int i) const {return i * 2 + 1;}

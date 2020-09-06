@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0f67555b3039d368e55db69bb4454f7e">Mylib/Debug</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Debug/polynomial_viewer.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-18 16:12:33+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -49,9 +49,9 @@ layout: default
  * @docs polynomial_viewer.md
  */
 template <typename Container>
-class PolynomialViewer{
+class PolynomialViewer {
   Container data;
-  
+
 public:
   PolynomialViewer(Container data): data(data){}
 
@@ -70,7 +70,7 @@ public:
       }
     }
   }
-  
+
   auto& run(std::ostream &s) const {
     const int n = data.size();
 
@@ -102,9 +102,9 @@ public:
  * @docs polynomial_viewer.md
  */
 template <typename Container>
-class PolynomialViewer{
+class PolynomialViewer {
   Container data;
-  
+
 public:
   PolynomialViewer(Container data): data(data){}
 
@@ -123,7 +123,7 @@ public:
       }
     }
   }
-  
+
   auto& run(std::ostream &s) const {
     const int n = data.size();
 

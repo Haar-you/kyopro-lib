@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Tree diameter
+# :x: Tree diameter
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/tree_diameter.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_5_A/main.test.cpp.html">test/aoj/GRL_5_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/tree_diameter/main.test.cpp.html">test/yosupo-judge/tree_diameter/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_5_A/main.test.cpp.html">test/aoj/GRL_5_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/tree_diameter/main.test.cpp.html">test/yosupo-judge/tree_diameter/main.test.cpp</a>
 
 
 ## Code
@@ -91,7 +91,7 @@ std::pair<T, std::vector<int>> tree_diameter(const Tree<T> &tree){
   check.assign(N, false);
 
   std::vector<int> prev(N);
-  
+
   st.push(u);
   while(st.size()){
     int i = st.top(); st.pop();
@@ -117,7 +117,7 @@ std::pair<T, std::vector<int>> tree_diameter(const Tree<T> &tree){
     if(cur == u) break;
     cur = prev[cur];
   }
-  
+
   return std::make_pair(dp[v], ret);
 }
 
@@ -133,13 +133,14 @@ std::pair<T, std::vector<int>> tree_diameter(const Tree<T> &tree){
 #include <stack>
 #include <algorithm>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -149,15 +150,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -170,7 +171,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -226,7 +227,7 @@ std::pair<T, std::vector<int>> tree_diameter(const Tree<T> &tree){
   check.assign(N, false);
 
   std::vector<int> prev(N);
-  
+
   st.push(u);
   while(st.size()){
     int i = st.top(); st.pop();
@@ -252,7 +253,7 @@ std::pair<T, std::vector<int>> tree_diameter(const Tree<T> &tree){
     if(cur == u) break;
     cur = prev[cur];
   }
-  
+
   return std::make_pair(dp[v], ret);
 }
 

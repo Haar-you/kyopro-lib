@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/convolution_xor.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -69,7 +69,7 @@ layout: default
 template <typename T>
 std::vector<T> convolution_xor(std::vector<T> f, std::vector<T> g){
   const int n = f.size();
-  assert((int)f.size() == n and (int)g.size() == n and (n & (n-1)) == 0);
+  assert((int)f.size() == n and (int)g.size() == n and (n & (n - 1)) == 0);
 
   auto fwt =
     [n](std::vector<T> f){
@@ -126,7 +126,7 @@ std::vector<T> convolution_xor(std::vector<T> f, std::vector<T> g){
 template <typename T>
 std::vector<T> convolution_xor(std::vector<T> f, std::vector<T> g){
   const int n = f.size();
-  assert((int)f.size() == n and (int)g.size() == n and (n & (n-1)) == 0);
+  assert((int)f.size() == n and (int)g.size() == n and (n & (n - 1)) == 0);
 
   auto fwt =
     [n](std::vector<T> f){

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#9f519a6857abe7364ea5fbe97ba369aa">Mylib/DataStructure/SparseTable</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SparseTable/disjoint_sparse_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
@@ -66,9 +66,9 @@ layout: default
  * @docs disjoint_sparse_table.md
  */
 template <typename Semigroup>
-class DisjointSparseTable{
+class DisjointSparseTable {
   using value_type = typename Semigroup::value_type;
-  Semigroup S;
+  const static Semigroup S;
 
   int N;
   int logN;
@@ -78,21 +78,21 @@ class DisjointSparseTable{
 
   void build(int l, int r, int d){
     if(d <= 0) return;
-    
+
     const int m = (l + r) / 2;
 
     data[d][m] = A[m];
     for(int i = m + 1; i < r; ++i){
-      data[d][i] = S.op(data[d][i-1], A[i]);
+      data[d][i] = S(data[d][i - 1], A[i]);
     }
 
-    data[d][m-1] = A[m-1];
+    data[d][m - 1] = A[m - 1];
     for(int i = m - 2; i >= l; --i){
-      data[d][i] = S.op(data[d][i+1], A[i]);
+      data[d][i] = S(data[d][i + 1], A[i]);
     }
 
-    build(l, m, d-1);
-    build(m, r, d-1);
+    build(l, m, d - 1);
+    build(m, r, d - 1);
   }
 
 public:
@@ -114,7 +114,7 @@ public:
     if(l == r) return A[l];
 
     const int k = 31 - __builtin_clz(l ^ r);
-    return S.op(data[k][l], data[k][r]);
+    return S(data[k][l], data[k][r]);
   }
 };
 
@@ -134,9 +134,9 @@ public:
  * @docs disjoint_sparse_table.md
  */
 template <typename Semigroup>
-class DisjointSparseTable{
+class DisjointSparseTable {
   using value_type = typename Semigroup::value_type;
-  Semigroup S;
+  const static Semigroup S;
 
   int N;
   int logN;
@@ -146,21 +146,21 @@ class DisjointSparseTable{
 
   void build(int l, int r, int d){
     if(d <= 0) return;
-    
+
     const int m = (l + r) / 2;
 
     data[d][m] = A[m];
     for(int i = m + 1; i < r; ++i){
-      data[d][i] = S.op(data[d][i-1], A[i]);
+      data[d][i] = S(data[d][i - 1], A[i]);
     }
 
-    data[d][m-1] = A[m-1];
+    data[d][m - 1] = A[m - 1];
     for(int i = m - 2; i >= l; --i){
-      data[d][i] = S.op(data[d][i+1], A[i]);
+      data[d][i] = S(data[d][i + 1], A[i]);
     }
 
-    build(l, m, d-1);
-    build(m, r, d-1);
+    build(l, m, d - 1);
+    build(m, r, d - 1);
   }
 
 public:
@@ -182,7 +182,7 @@ public:
     if(l == r) return A[l];
 
     const int k = 31 - __builtin_clz(l ^ r);
-    return S.op(data[k][l], data[k][r]);
+    return S(data[k][l], data[k][r]);
   }
 };
 

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/580/main.test.cpp
+# :x: test/yukicoder/580/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#cd972d63fbc2cdaa6f2e20f02bf8d13c">test/yukicoder/580</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/580/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/580">https://yukicoder.me/problems/no/580</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp.html">Interval scheduling problem (Allow no more than k intervals to overlap)</a>
+* :x: <a href="../../../../library/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp.html">Interval scheduling problem (Allow no more than k intervals to overlap)</a>
 
 
 ## Code
@@ -56,7 +56,7 @@ layout: default
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int n, m; std::cin >> n >> m;
 
   std::vector<int> l(m), r(m);
@@ -105,10 +105,10 @@ auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
 
   std::vector<int> ord(N);
   std::iota(ord.begin(), ord.end(), 0);
-  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});  
+  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
 
   std::multiset<int> a;
-  std::vector<std::pair<int,int>> ret;
+  std::vector<std::pair<int, int>> ret;
 
   for(int i : ord){
     auto it = a.upper_bound(l[i]);
@@ -123,7 +123,7 @@ auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
       ret.emplace_back(l[i], r[i]);
     }
   }
-  
+
   return ret;
 }
 #line 6 "test/yukicoder/580/main.test.cpp"
@@ -131,7 +131,7 @@ auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int n, m; std::cin >> n >> m;
 
   std::vector<int> l(m), r(m);

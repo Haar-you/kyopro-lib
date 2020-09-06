@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#05b6faf184ccb3df7524a3ce68064b76">test/yukicoder/843</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/843/main.eratosthenes.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-11 08:51:20+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/843">https://yukicoder.me/problems/no/843</a>
@@ -54,7 +54,7 @@ layout: default
 
 int main(){
   EratosthenesSieve is_prime(500000);
-  
+
   int N; std::cin >> N;
 
   int64_t ans = 0;
@@ -70,7 +70,7 @@ int main(){
 
     ans += t * 2;
   }
-  
+
   std::cout << ans << std::endl;
 
   return 0;
@@ -93,17 +93,17 @@ int main(){
  * @title Sieve of Eratosthenes
  * @docs eratosthenes_sieve.md
  */
-class EratosthenesSieve{
+class EratosthenesSieve {
   std::vector<bool> is_prime;
 
 public:
   EratosthenesSieve(int MAX): is_prime(MAX + 1){
     is_prime.flip();
     is_prime[0] = is_prime[1] = false;
-    
+
     for(int i = 2; i <= MAX; ++i){
       if(is_prime[i]){
-        for(int j = 2*i; j <= MAX; j += i){
+        for(int j = 2 * i; j <= MAX; j += i){
           is_prime[j] = false;
         }
       }
@@ -118,7 +118,7 @@ public:
 
 int main(){
   EratosthenesSieve is_prime(500000);
-  
+
   int N; std::cin >> N;
 
   int64_t ans = 0;
@@ -134,7 +134,7 @@ int main(){
 
     ans += t * 2;
   }
-  
+
   std::cout << ans << std::endl;
 
   return 0;

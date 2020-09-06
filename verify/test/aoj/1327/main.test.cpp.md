@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/1327/main.test.cpp
+# :x: test/aoj/1327/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0bdfbad106799ccca05cbd57bfdddfd4">test/aoj/1327</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1327/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-18 05:35:58+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/power.cpp.html">Power of a matrix</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Square matrix</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">Modint (Runtime mod)</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/power.cpp.html">Power of a matrix</a>
+* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Square matrix</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">Modint (Runtime mod)</a>
 
 
 ## Code
@@ -52,7 +52,7 @@ layout: default
 {% raw %}
 ```cpp
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327"
-     
+
 #include <iostream>
 #include <vector>
 #include "Mylib/Number/Mint/runtime_mint.cpp"
@@ -61,7 +61,7 @@ layout: default
 #include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
-struct tag{};
+struct tag {};
 using mint = RuntimeModInt<tag>;
 using M = SquareMatrix<mint, tag>;
 
@@ -72,19 +72,19 @@ int main(){
     M::init(n);
 
     auto s = input_vector<mint>(n);
-     
+
     M mat;
-     
+
     for(int i = 0; i < n; ++i){
-      if(i-1 >= 0) mat[i][i-1] = a;
+      if(i - 1 >= 0) mat[i][i - 1] = a;
       mat[i][i] = b;
-      if(i+1 < n) mat[i][i+1] = c;
+      if(i + 1 < n) mat[i][i + 1] = c;
     }
-     
+
     mat = power(mat, t);
-     
+
     std::vector<mint> ans(n);
-     
+
     for(int i = 0; i < n; ++i){
       for(int j = 0; j < n; ++j){
         ans[i] += mat[i][j] * s[j];
@@ -93,7 +93,7 @@ int main(){
 
     std::cout << join(ans.begin(), ans.end()) << "\n";
   }
-     
+
   return 0;
 }
 
@@ -105,7 +105,7 @@ int main(){
 ```cpp
 #line 1 "test/aoj/1327/main.test.cpp"
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327"
-     
+
 #include <iostream>
 #include <vector>
 #line 3 "Mylib/Number/Mint/runtime_mint.cpp"
@@ -116,10 +116,10 @@ int main(){
  * @docs runtime_mint.md
  */
 template <typename Tag>
-class RuntimeModInt{
+class RuntimeModInt {
 public:
   static uint32_t M;
-  
+
   uint64_t val;
   RuntimeModInt(): val(0){}
   RuntimeModInt(int64_t n){
@@ -127,12 +127,12 @@ public:
     else if(n < 0) val = n % M + M;
     else val = n;
   }
-  
+
   auto operator+(const RuntimeModInt &a) const {return RuntimeModInt(val + a.val);}
   auto operator-(const RuntimeModInt &a) const {return RuntimeModInt(val - a.val);}
   auto operator*(const RuntimeModInt &a) const {return RuntimeModInt(val * a.val);}
   auto operator/(const RuntimeModInt &a) const {return RuntimeModInt(val * a.inv().val);}
-  
+
   const auto& operator=(const RuntimeModInt &a){val = a.val; return *this;}
   const auto& operator+=(const RuntimeModInt &a){if((val += a.val) >= M) val -= M; return *this;}
   const auto& operator-=(const RuntimeModInt &a){if(val < a.val) val += M; val -= a.val; return *this;}
@@ -153,18 +153,18 @@ public:
     for(; p; e *= e, p >>= 1) if(p & 1) ret *= e;
     return ret;
   }
-  
+
   RuntimeModInt inv() const {
     int64_t a = val, b = M, u = 1, v = 0;
 
     while(b){
-      int64_t t = a/b;
-      a -= t*b; std::swap(a,b);
-      u -= t*v; std::swap(u,v);
+      int64_t t = a / b;
+      a -= t * b; std::swap(a, b);
+      u -= t * v; std::swap(u, v);
     }
     u %= M;
     if(u < 0) u += M;
-    
+
     return u;
   }
 
@@ -191,30 +191,31 @@ template <typename Tag> std::ostream& operator<<(std::ostream &os, const Runtime
  * @title Square matrix
  * @docs square_matrix.md
  */
-template <typename T, class Tag> struct SquareMatrix{
+template <typename T, class Tag>
+struct SquareMatrix {
   using value_type = T;
-  
+
   static int N;
   static void init(int n){N = n;}
   std::vector<std::vector<T>> matrix;
-  
+
   SquareMatrix(): matrix(N, std::vector<T>(N)){}
   SquareMatrix(const T &val): matrix(N, std::vector<T>(N, val)){}
   SquareMatrix(const std::vector<std::vector<T>> &matrix): matrix(matrix){}
 
   bool operator==(const SquareMatrix &val) const {return matrix == val.matrix;}
   bool operator!=(const SquareMatrix &val) const {return !(*this == val);}
-  
+
   auto& operator=(const SquareMatrix &val){
     this->matrix = val.matrix;
     return *this;
   }
-  
+
   auto& operator+=(const SquareMatrix &val){
     for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] + val[i][j];
     return *this;
   }
-  
+
   auto& operator-=(const SquareMatrix &val){
     for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] - val[i][j];
     return *this;
@@ -230,7 +231,7 @@ template <typename T, class Tag> struct SquareMatrix{
   const auto& operator[](size_t i) const {return matrix[i];}
   auto& operator[](size_t i){return matrix[i];}
   int size() const {return N;}
-  
+
   static auto make_unit(){
     SquareMatrix ret;
     for(int i = 0; i < N; ++i) ret[i][i] = 1;
@@ -242,14 +243,15 @@ template <typename T, class Tag> struct SquareMatrix{
   friend auto operator*(const SquareMatrix &a, const SquareMatrix &b){auto ret = a; ret *= b; return ret;}
 };
 
-template <typename T, class Tag> int SquareMatrix<T,Tag>::N;
+template <typename T, class Tag> int SquareMatrix<T, Tag>::N;
 #line 2 "Mylib/LinearAlgebra/Square/power.cpp"
+#include <cstdint>
 
 /**
  * @title Power of a matrix
  * @docs power.md
  */
-template <typename M, typename T = typename M::value_type>
+template <typename M>
 M power(M a, uint64_t p){
   if(p == 0) return M::make_unit();
   if(p == 1) return a;
@@ -257,8 +259,8 @@ M power(M a, uint64_t p){
   M temp = power(a, p >> 1);
   auto ret = temp * temp;
 
-  if(p & 1) ret *= a;  
-  
+  if(p & 1) ret *= a;
+
   return ret;
 }
 #line 3 "Mylib/IO/join.cpp"
@@ -299,7 +301,7 @@ std::vector<std::vector<T>> input_vector(int N, int M){
 }
 #line 10 "test/aoj/1327/main.test.cpp"
 
-struct tag{};
+struct tag {};
 using mint = RuntimeModInt<tag>;
 using M = SquareMatrix<mint, tag>;
 
@@ -310,19 +312,19 @@ int main(){
     M::init(n);
 
     auto s = input_vector<mint>(n);
-     
+
     M mat;
-     
+
     for(int i = 0; i < n; ++i){
-      if(i-1 >= 0) mat[i][i-1] = a;
+      if(i - 1 >= 0) mat[i][i - 1] = a;
       mat[i][i] = b;
-      if(i+1 < n) mat[i][i+1] = c;
+      if(i + 1 < n) mat[i][i + 1] = c;
     }
-     
+
     mat = power(mat, t);
-     
+
     std::vector<mint> ans(n);
-     
+
     for(int i = 0; i < n; ++i){
       for(int j = 0; j < n; ++j){
         ans[i] += mat[i][j] * s[j];
@@ -331,7 +333,7 @@ int main(){
 
     std::cout << join(ans.begin(), ans.end()) << "\n";
   }
-     
+
   return 0;
 }
 

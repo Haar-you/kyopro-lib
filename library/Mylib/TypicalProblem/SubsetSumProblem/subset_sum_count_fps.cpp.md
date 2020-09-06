@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Subset sum problem (Count, FPS)
+# :x: Subset sum problem (Count, FPS)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2e380218d9fd214c2f91a8ade734af1c">Mylib/TypicalProblem/SubsetSumProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_count_fps.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-15 08:41:18+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/sharp_p_subset_sum/main.test.cpp.html">test/yosupo-judge/sharp_p_subset_sum/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/sharp_p_subset_sum/main.test.cpp.html">test/yosupo-judge/sharp_p_subset_sum/main.test.cpp</a>
 
 
 ## Code
@@ -56,7 +56,7 @@ layout: default
 template <typename Fps>
 auto subset_sum_count_fps(std::vector<int> s, int t){
   using T = typename Fps::value_type;
-  
+
   std::vector<int> c(t + 1);
   for(int i : s) c[i] += 1;
 
@@ -93,7 +93,7 @@ auto subset_sum_count_fps(std::vector<int> s, int t){
 template <typename Fps>
 auto subset_sum_count_fps(std::vector<int> s, int t){
   using T = typename Fps::value_type;
-  
+
   std::vector<int> c(t + 1);
   for(int i : s) c[i] += 1;
 

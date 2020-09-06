@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/zalgorithm/main.test.cpp
+# :x: test/yosupo-judge/zalgorithm/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#cee42202ab0cff35bec3ed1b69090c0e">test/yosupo-judge/zalgorithm</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/zalgorithm/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-31 20:10:49+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/zalgorithm">https://judge.yosupo.jp/problem/zalgorithm</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/z_algorithm.cpp.html">Z-algorithm</a>
+* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :x: <a href="../../../../library/Mylib/String/z_algorithm.cpp.html">Z-algorithm</a>
 
 
 ## Code
@@ -57,7 +57,7 @@ layout: default
 
 int main(){
   std::string s; std::cin >> s;
-  
+
   auto ans = z_algorithm(s);
   std::cout << join(ans.begin(), ans.end()) << "\n";
 
@@ -90,11 +90,11 @@ std::vector<int> z_algorithm(const Container &s){
   int j = 0;
 
   for(int i = 1; i < n; ++i){
-    if(i+ret[i-j] < j+ret[j]){
-      ret[i] = ret[i-j];
+    if(i + ret[i - j] < j + ret[j]){
+      ret[i] = ret[i - j];
     }else{
-      int k = std::max<int>(0, j+ret[j]-i);
-      while(i+k < n and s[k] == s[i+k]) ++k;
+      int k = std::max<int>(0, j + ret[j] - i);
+      while(i + k < n and s[k] == s[i + k]) ++k;
       ret[i] = k;
       j = i;
     }
@@ -126,7 +126,7 @@ std::string join(ITER first, ITER last, std::string delim = " "){
 
 int main(){
   std::string s; std::cin >> s;
-  
+
   auto ans = z_algorithm(s);
   std::cout << join(ans.begin(), ans.end()) << "\n";
 

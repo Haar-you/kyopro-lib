@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Bridges
+# :x: Bridges
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0520734517f09caa086d1aa01fa4b9e4">Mylib/Graph/GraphUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/GraphUtils/bridges.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_3_B/main.test.cpp.html">test/aoj/GRL_3_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_3_B/main.test.cpp.html">test/aoj/GRL_3_B/main.test.cpp</a>
 
 
 ## Code
@@ -60,28 +60,39 @@ layout: default
  * @title Bridges
  * @docs bridges.md
  */
+namespace bridges_impl {
+  template <typename T>
+  int dfs(
+    const Graph<T> &graph,
+    int cur,
+    int par,
+    std::vector<int> &visit,
+    std::vector<int> &low,
+    std::vector<Edge<T>> &ret,
+    int &v
+  ){
+    if(visit[cur] != -1) return visit[cur];
+    visit[cur] = v;
+    int temp = v;
+    ++v;
+    for(auto &e : graph[cur]){
+      if(e.to == par) continue;
+      int t = dfs(graph, e.to, cur, visit, low, ret, v);
+      temp = std::min(temp, t);
+      if(low[e.to] > visit[cur]) ret.push_back(e);
+    }
+    return low[cur] = temp;
+  }
+}
+
 template <typename T>
 auto bridges(const Graph<T> &graph){
   const int n = graph.size();
-  std::vector<int> visit(n,-1), low(n,-1);
+  std::vector<int> visit(n, -1), low(n, -1);
   std::vector<Edge<T>> ret;
   int v = 0;
-  auto dfs =
-    [&](auto &dfs, int cur, int par) -> int{
-      if(visit[cur] != -1) return visit[cur];
-      visit[cur] = v;
-      int temp = v;
-      ++v;
-      for(auto &e : graph[cur]){
-        if(e.to == par) continue;
-        int t = dfs(dfs, e.to, cur);
-        temp = std::min(temp, t);
-        if(low[e.to] > visit[cur]) ret.push_back(e);
-      }  
-      return low[cur] = temp;
-    };
 
-  for(int i = 0; i < n; ++i) if(visit[i] == -1) dfs(dfs, i, -1);
+  for(int i = 0; i < n; ++i) if(visit[i] == -1) bridges_impl::dfs(graph, i, -1, visit, low, ret, v);
   return ret;
 }
 
@@ -95,13 +106,14 @@ auto bridges(const Graph<T> &graph){
 #include <vector>
 #include <algorithm>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -111,15 +123,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -132,7 +144,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -160,28 +172,39 @@ using Tree = Graph<T>;
  * @title Bridges
  * @docs bridges.md
  */
+namespace bridges_impl {
+  template <typename T>
+  int dfs(
+    const Graph<T> &graph,
+    int cur,
+    int par,
+    std::vector<int> &visit,
+    std::vector<int> &low,
+    std::vector<Edge<T>> &ret,
+    int &v
+  ){
+    if(visit[cur] != -1) return visit[cur];
+    visit[cur] = v;
+    int temp = v;
+    ++v;
+    for(auto &e : graph[cur]){
+      if(e.to == par) continue;
+      int t = dfs(graph, e.to, cur, visit, low, ret, v);
+      temp = std::min(temp, t);
+      if(low[e.to] > visit[cur]) ret.push_back(e);
+    }
+    return low[cur] = temp;
+  }
+}
+
 template <typename T>
 auto bridges(const Graph<T> &graph){
   const int n = graph.size();
-  std::vector<int> visit(n,-1), low(n,-1);
+  std::vector<int> visit(n, -1), low(n, -1);
   std::vector<Edge<T>> ret;
   int v = 0;
-  auto dfs =
-    [&](auto &dfs, int cur, int par) -> int{
-      if(visit[cur] != -1) return visit[cur];
-      visit[cur] = v;
-      int temp = v;
-      ++v;
-      for(auto &e : graph[cur]){
-        if(e.to == par) continue;
-        int t = dfs(dfs, e.to, cur);
-        temp = std::min(temp, t);
-        if(low[e.to] > visit[cur]) ret.push_back(e);
-      }  
-      return low[cur] = temp;
-    };
 
-  for(int i = 0; i < n; ++i) if(visit[i] == -1) dfs(dfs, i, -1);
+  for(int i = 0; i < n; ++i) if(visit[i] == -1) bridges_impl::dfs(graph, i, -1, visit, low, ret, v);
   return ret;
 }
 

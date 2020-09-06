@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/static_range_inversions_query/main.test.cpp
+# :x: test/yosupo-judge/static_range_inversions_query/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6a29c5e431615f0854be5d2b0bff9042">test/yosupo-judge/static_range_inversions_query</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/static_range_inversions_query/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-04 00:01:19+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/static_range_inversions_query">https://judge.yosupo.jp/problem/static_range_inversions_query</a>
@@ -39,12 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Mo/mo_algorithm.cpp.html">Mo's algorithm</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Query/range_inversions_query.cpp.html">Range inversions query</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp.html">Fenwick tree (Add)</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/Mo/mo_algorithm.cpp.html">Mo's algorithm</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/Query/range_inversions_query.cpp.html">Range inversions query</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp.html">Fenwick tree (Add)</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -56,7 +56,6 @@ layout: default
 
 #include <iostream>
 #include <vector>
-
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/Algorithm/Query/range_inversions_query.cpp"
@@ -64,7 +63,7 @@ layout: default
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
   auto A = input_vector<int>(N);
 
@@ -75,11 +74,11 @@ int main(){
   }
 
   auto ans = riq.solve();
-  
+
   for(auto x : ans){
     std::cout << x << "\n";
   }
-  
+
   return 0;
 }
 
@@ -94,7 +93,6 @@ int main(){
 
 #include <iostream>
 #include <vector>
-
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
@@ -123,8 +121,8 @@ std::vector<std::vector<T>> input_vector(int N, int M){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -134,8 +132,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -144,8 +142,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -183,11 +181,8 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 2 "Mylib/Algorithm/Query/range_inversions_query.cpp"
-
-#line 5 "Mylib/Algorithm/Query/range_inversions_query.cpp"
+#line 4 "Mylib/Algorithm/Query/range_inversions_query.cpp"
 #include <algorithm>
-
 #line 3 "Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp"
 
 /**
@@ -195,25 +190,25 @@ auto input_tuples(int N){
  * @docs fenwick_tree_add.md
  */
 template <typename T>
-class FenwickTreeAdd{
+class FenwickTreeAdd {
   using value_type = T;
-  
+
   int size;
   std::vector<value_type> data;
-  
+
 public:
   FenwickTreeAdd(){}
   FenwickTreeAdd(int size): size(size), data(size + 1, 0){}
-  
+
   void update(int i, value_type val){
     i += 1; // 1-index
-    
+
     while(i <= size){
       data[i] = data[i] + val;
       i += i & (-i);
     }
   }
-  
+
   value_type get(int i) const { // [0, i)
     value_type ret = 0;
     i += 1; // 1-index
@@ -227,7 +222,7 @@ public:
   }
 
   value_type get(int l, int r) const { // [l, r)
-    return get(r-1) - get(l-1);
+    return get(r - 1) - get(l - 1);
   }
 };
 #line 4 "Mylib/Algorithm/Mo/mo_algorithm.cpp"
@@ -239,7 +234,7 @@ public:
  * @docs mo_algorithm.md
  */
 template <typename F, typename G, typename H>
-class MoAlgorithm{
+class MoAlgorithm {
   int N, Q, index, width;
   std::vector<int> left, right, ord;
 
@@ -287,10 +282,10 @@ public:
 
   void run(){
     assert(is_built);
-    
+
     int q = 0;
     int l = left[ord[0]], r = left[ord[0]];
-    
+
     for(int i = 0; i < Q; ++i){
       int id = ord[q++];
 
@@ -310,14 +305,14 @@ template <typename F, typename G, typename H>
 auto make_mo(int N, int Q, F append, G remove, H query){
   return MoAlgorithm<F, G, H>(N, Q, append, remove, query);
 }
-#line 9 "Mylib/Algorithm/Query/range_inversions_query.cpp"
+#line 7 "Mylib/Algorithm/Query/range_inversions_query.cpp"
 
 /**
  * @title Range inversions query
  * @docs range_inversions_query.md
  */
 template <typename T>
-class RangeInversionsQuery{
+class RangeInversionsQuery {
   std::vector<int> a;
   int N;
   std::vector<std::pair<int, int>> qs;
@@ -373,12 +368,12 @@ public:
     return ans;
   }
 };
-#line 9 "test/yosupo-judge/static_range_inversions_query/main.test.cpp"
+#line 8 "test/yosupo-judge/static_range_inversions_query/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
   auto A = input_vector<int>(N);
 
@@ -389,11 +384,11 @@ int main(){
   }
 
   auto ans = riq.solve();
-  
+
   for(auto x : ans){
     std::cout << x << "\n";
   }
-  
+
   return 0;
 }
 

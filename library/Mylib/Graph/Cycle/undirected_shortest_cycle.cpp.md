@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a962efc2861dbe1e0963e7d8bf7dda18">Mylib/Graph/Cycle</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Cycle/undirected_shortest_cycle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -55,7 +55,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Code
@@ -78,15 +78,15 @@ std::optional<int> shortest_cycle(const Graph<T> &g, const int src){
   for(auto &e : g[src]){
     if(e.to == src) return 1; // self loop
   }
-  
+
   if(g[src].size() <= 1) return {};
-  
+
   const int N = g.size();
   std::vector<int> visit(N);
   std::vector<int> dist(N);
 
   visit[src] = -1;
-  
+
   std::queue<int> q;
   for(int i = 0; i < (int)g[src].size(); ++i){
     int j = g[src][i].to;
@@ -126,13 +126,14 @@ std::optional<int> shortest_cycle(const Graph<T> &g, const int src){
 #include <queue>
 #include <optional>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -142,15 +143,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -163,7 +164,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -196,15 +197,15 @@ std::optional<int> shortest_cycle(const Graph<T> &g, const int src){
   for(auto &e : g[src]){
     if(e.to == src) return 1; // self loop
   }
-  
+
   if(g[src].size() <= 1) return {};
-  
+
   const int N = g.size();
   std::vector<int> visit(N);
   std::vector<int> dist(N);
 
   visit[src] = -1;
-  
+
   std::queue<int> q;
   for(int i = 0; i < (int)g[src].size(); ++i){
     int j = g[src][i].to;

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Montmort number
+# :x: Montmort number
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/montmort_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
@@ -57,7 +57,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/montmort_number_mod/main.test.cpp.html">test/yosupo-judge/montmort_number_mod/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/montmort_number_mod/main.test.cpp.html">test/yosupo-judge/montmort_number_mod/main.test.cpp</a>
 
 
 ## Code
@@ -74,14 +74,14 @@ layout: default
  */
 template <typename T>
 auto montmort_number(int n){
-  std::vector<T> ret(n+1);
+  std::vector<T> ret(n + 1);
 
   ret[0] = 1;
   ret[1] = 0;
   ret[2] = 1;
 
   for(int i = 3; i <= n; ++i){
-    ret[i] = (ret[i-1] + ret[i-2]) * (i-1);
+    ret[i] = (ret[i - 1] + ret[i - 2]) * (i - 1);
   }
 
   return ret;
@@ -102,14 +102,14 @@ auto montmort_number(int n){
  */
 template <typename T>
 auto montmort_number(int n){
-  std::vector<T> ret(n+1);
+  std::vector<T> ret(n + 1);
 
   ret[0] = 1;
   ret[1] = 0;
   ret[2] = 1;
 
   for(int i = 3; i <= n; ++i){
-    ret[i] = (ret[i-1] + ret[i-2]) * (i-1);
+    ret[i] = (ret[i - 1] + ret[i - 2]) * (i - 1);
   }
 
   return ret;

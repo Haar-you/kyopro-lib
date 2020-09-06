@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Enumerate triangles
+# :x: Enumerate triangles
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/enumerate_triangles.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="Template/graph.cpp.html">Basic graph</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/enumerate_triangles/main.test.cpp.html">test/yosupo-judge/enumerate_triangles/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/enumerate_triangles/main.test.cpp.html">test/yosupo-judge/enumerate_triangles/main.test.cpp</a>
 
 
 ## Code
@@ -62,9 +62,9 @@ layout: default
  * @docs enumerate_triangles.md
  */
 template <typename T>
-std::vector<std::tuple<int,int,int>> enumerate_triangles(const Graph<T> &g){
+std::vector<std::tuple<int, int, int>> enumerate_triangles(const Graph<T> &g){
   const int N = g.size();
-  std::vector<std::tuple<int,int,int>> ret;
+  std::vector<std::tuple<int, int, int>> ret;
 
   std::vector<std::unordered_set<int>> adjacent(N);
 
@@ -104,13 +104,14 @@ std::vector<std::tuple<int,int,int>> enumerate_triangles(const Graph<T> &g){
 #include <tuple>
 #include <unordered_set>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -120,15 +121,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -141,7 +142,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -170,9 +171,9 @@ using Tree = Graph<T>;
  * @docs enumerate_triangles.md
  */
 template <typename T>
-std::vector<std::tuple<int,int,int>> enumerate_triangles(const Graph<T> &g){
+std::vector<std::tuple<int, int, int>> enumerate_triangles(const Graph<T> &g){
   const int N = g.size();
-  std::vector<std::tuple<int,int,int>> ret;
+  std::vector<std::tuple<int, int, int>> ret;
 
   std::vector<std::unordered_set<int>> adjacent(N);
 

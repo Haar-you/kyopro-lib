@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/DataStructure/RangeTree/range_tree.cpp
+# :x: Mylib/DataStructure/RangeTree/range_tree.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#51d0b2ed49c1a9da73d4d3864cf91f26">Mylib/DataStructure/RangeTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/RangeTree/range_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-27 20:58:13+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -59,7 +59,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_C/main.test.cpp.html">test/aoj/DSL_2_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_2_C/main.test.cpp.html">test/aoj/DSL_2_C/main.test.cpp</a>
 
 
 ## Code
@@ -76,14 +76,14 @@ layout: default
 /**
  * @docs range_tree.md
  */
-class RangeTree{
+class RangeTree {
   int N = 0;
   std::vector<int64_t> xs, ys;
   std::vector<int64_t> c_xs;
 
   int size;
   std::vector<std::vector<std::pair<int64_t, int>>> data;
-  
+
 public:
   RangeTree(){}
 
@@ -125,10 +125,10 @@ public:
    */
   std::vector<std::pair<int64_t, int64_t>> get(int64_t sx, int64_t sy, int64_t tx, int64_t ty) const {
     std::vector<std::pair<int64_t, int64_t>> ret;
-    
+
     int L = std::lower_bound(c_xs.begin(), c_xs.end(), sx) - c_xs.begin();
     int R = std::lower_bound(c_xs.begin(), c_xs.end(), tx) - c_xs.begin();
-    
+
     L += size / 2;
     R += size / 2;
 
@@ -140,7 +140,7 @@ public:
 
         while(it != a.end()){
           if(it->first >= ty) break;
-          
+
           ret.emplace_back(c_xs[it->second], it->first);
 
           ++it;
@@ -154,7 +154,7 @@ public:
 
         while(it != a.end()){
           if(it->first >= ty) break;
-          
+
           ret.emplace_back(c_xs[it->second], it->first);
 
           ++it;
@@ -184,14 +184,14 @@ public:
 /**
  * @docs range_tree.md
  */
-class RangeTree{
+class RangeTree {
   int N = 0;
   std::vector<int64_t> xs, ys;
   std::vector<int64_t> c_xs;
 
   int size;
   std::vector<std::vector<std::pair<int64_t, int>>> data;
-  
+
 public:
   RangeTree(){}
 
@@ -233,10 +233,10 @@ public:
    */
   std::vector<std::pair<int64_t, int64_t>> get(int64_t sx, int64_t sy, int64_t tx, int64_t ty) const {
     std::vector<std::pair<int64_t, int64_t>> ret;
-    
+
     int L = std::lower_bound(c_xs.begin(), c_xs.end(), sx) - c_xs.begin();
     int R = std::lower_bound(c_xs.begin(), c_xs.end(), tx) - c_xs.begin();
-    
+
     L += size / 2;
     R += size / 2;
 
@@ -248,7 +248,7 @@ public:
 
         while(it != a.end()){
           if(it->first >= ty) break;
-          
+
           ret.emplace_back(c_xs[it->second], it->first);
 
           ++it;
@@ -262,7 +262,7 @@ public:
 
         while(it != a.end()){
           if(it->first >= ty) break;
-          
+
           ret.emplace_back(c_xs[it->second], it->first);
 
           ++it;

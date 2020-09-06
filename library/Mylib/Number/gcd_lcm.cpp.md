@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/gcd_lcm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -43,6 +43,7 @@ layout: default
 ```cpp
 #pragma once
 #include <utility>
+#include <cstdint>
 
 /**
  * @title Greatest common divisor / Least common multiple
@@ -67,6 +68,7 @@ int64_t lcm(int64_t a, int64_t b){
 ```cpp
 #line 2 "Mylib/Number/gcd_lcm.cpp"
 #include <utility>
+#include <cstdint>
 
 /**
  * @title Greatest common divisor / Least common multiple

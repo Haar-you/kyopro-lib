@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -39,7 +39,7 @@ layout: default
 ## Depends on
 
 * :warning: <a href="../Monoid/monoid_utils.cpp.html">Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp</a>
-* :heavy_check_mark: <a href="../Monoid/product.cpp.html">Mylib/AlgebraicStructure/Monoid/product.cpp</a>
+* :x: <a href="../Monoid/product.cpp.html">Product monoid</a>
 
 
 ## Code
@@ -56,7 +56,7 @@ layout: default
  * @docs multiply_product.md
  */
 template <typename T, typename U>
-struct MultiplyProduct{
+struct MultiplyProduct {
   using monoid_get = ProductMonoid<T>;
   using monoid_update = ProductMonoid<U>;
   using value_type_get = typename monoid_get::value_type;
@@ -84,15 +84,17 @@ struct MultiplyProduct{
 #line 2 "Mylib/AlgebraicStructure/Monoid/product.cpp"
 
 /**
+ * @title Product monoid
  * @docs product.md
  */
 template <typename T>
-struct ProductMonoid{
+struct ProductMonoid {
   using value_type = T;
-  value_type id() const {return 1;}
-  value_type op(value_type a, value_type b) const {return a * b;}
+  value_type operator()() const {return 1;}
+  value_type operator()(value_type a, value_type b) const {return a * b;}
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp"
+#include <cstdint>
 
 /**
  * @docs monoid_utils.md
@@ -117,7 +119,7 @@ value_type times(value_type a, int64_t p){
  * @docs multiply_product.md
  */
 template <typename T, typename U>
-struct MultiplyProduct{
+struct MultiplyProduct {
   using monoid_get = ProductMonoid<T>;
   using monoid_update = ProductMonoid<U>;
   using value_type_get = typename monoid_get::value_type;

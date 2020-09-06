@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/2370/main.test.cpp
+# :x: test/aoj/2370/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#149f439fdc492bcb6afb80a048374854">test/aoj/2370</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2370/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2370">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2370</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp.html">Check bipartite graph</a>
-* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp.html">Subset sum problem (With quantity limitations)</a>
+* :x: <a href="../../../../library/Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp.html">Check bipartite graph</a>
+* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../../../../library/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp.html">Subset sum problem (With quantity limitations)</a>
 
 
 ## Code
@@ -55,7 +55,6 @@ layout: default
 #include <vector>
 #include <map>
 #include <algorithm>
-
 #include "Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp"
 #include "Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp"
 #include "Mylib/Graph/Template/graph.cpp"
@@ -67,7 +66,7 @@ int main(){
   g.read<1, false, false>(E);
 
   auto res = check_bipartite_graph(g);
-  
+
   if(std::all_of(res.begin(), res.end(), [](const auto &a){return (bool)a;})){
     int k = 0;
 
@@ -78,8 +77,8 @@ int main(){
       int b = (*x).second.size();
 
       k += std::min(a, b);
-      
-      c[std::abs(a-b)] += 1;
+
+      c[std::abs(a - b)] += 1;
     }
 
     std::vector<int> a, m;
@@ -121,19 +120,18 @@ int main(){
 #include <vector>
 #include <map>
 #include <algorithm>
-
 #line 3 "Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp"
 #include <optional>
 #include <stack>
 #include <utility>
-#line 3 "Mylib/Graph/Template/graph.cpp"
+#line 4 "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -143,15 +141,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -164,7 +162,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -205,11 +203,11 @@ auto check_bipartite_graph(const Graph<T> &g){
     if(visit[i]) continue;
 
     std::vector<int> a, b;
-      
+
     bool res =
       [&](){
         std::stack<int> st;
- 
+
         st.push(i);
         check[i] = 0;
         a.push_back(i);
@@ -218,10 +216,10 @@ auto check_bipartite_graph(const Graph<T> &g){
           auto cur = st.top(); st.pop();
           if(visit[cur]) continue;
           visit[cur] = true;
- 
+
           for(auto &e : g[cur]){
             if(check[e.to] == check[cur]) return false;
- 
+
             if(check[e.to] == -1){
               if(check[cur] == 0){
                 check[e.to] = 1;
@@ -230,7 +228,7 @@ auto check_bipartite_graph(const Graph<T> &g){
                 check[e.to] = 0;
                 a.push_back(e.to);
               }
-          
+
               st.push(e.to);
             }
           }
@@ -255,17 +253,17 @@ auto check_bipartite_graph(const Graph<T> &g){
  * @docs subset_sum_limited.md
  */
 auto subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vector<int> &m){
-  std::vector<int> dp(K+1, -1);
+  std::vector<int> dp(K + 1, -1);
 
   dp[0] = 0;
   for(int i = 0; i < N; ++i){
     for(int j = 0; j <= K; ++j){
       if(dp[j] >= 0){
         dp[j] = m[i];
-      }else if(j < a[i] or dp[j-a[i]] <= 0){
+      }else if(j < a[i] or dp[j - a[i]] <= 0){
         dp[j] = -1;
       }else{
-        dp[j] = dp[j-a[i]] - 1;
+        dp[j] = dp[j - a[i]] - 1;
       }
     }
   }
@@ -274,7 +272,7 @@ auto subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vect
 
   return dp;
 }
-#line 11 "test/aoj/2370/main.test.cpp"
+#line 10 "test/aoj/2370/main.test.cpp"
 
 int main(){
   int V, E; std::cin >> V >> E;
@@ -283,7 +281,7 @@ int main(){
   g.read<1, false, false>(E);
 
   auto res = check_bipartite_graph(g);
-  
+
   if(std::all_of(res.begin(), res.end(), [](const auto &a){return (bool)a;})){
     int k = 0;
 
@@ -294,8 +292,8 @@ int main(){
       int b = (*x).second.size();
 
       k += std::min(a, b);
-      
-      c[std::abs(a-b)] += 1;
+
+      c[std::abs(a - b)] += 1;
     }
 
     std::vector<int> a, m;

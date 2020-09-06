@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Two edge connected components
+# :x: Two edge connected components
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0520734517f09caa086d1aa01fa4b9e4">Mylib/Graph/GraphUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/GraphUtils/two_edge_connected_components.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/two_edge_connected_components/main.test.cpp.html">test/yosupo-judge/two_edge_connected_components/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/two_edge_connected_components/main.test.cpp.html">test/yosupo-judge/two_edge_connected_components/main.test.cpp</a>
 
 
 ## Code
@@ -60,51 +60,62 @@ layout: default
  * @title Two edge connected components
  * @docs two_edge_connected_components.md
  */
+namespace two_edge_connected_components_impl {
+  template <typename T>
+  int dfs(
+    const Graph<T> &graph,
+    int cur,
+    int par,
+    std::vector<int> &low,
+    std::vector<int> &order,
+    std::vector<std::vector<int>> &ret,
+    std::stack<int> &st,
+    int &v
+  ){
+    if(order[cur] != -1) return order[cur];
+    order[cur] = v;
+    int temp = v++;
+    st.push(cur);
+
+    int count = 0;
+
+    for(const auto &e : graph[cur]){
+      if(e.to == par){
+        ++count;
+        if(count == 1) continue;
+      }
+
+      const int t = dfs(graph, e.to, cur, low, order, ret, st, v);
+      temp = std::min(temp, t);
+
+      if(low[e.to] > order[cur]){ // e is a bridge
+        std::vector<int> cc;
+        while(true){
+          int c = st.top();
+          cc.emplace_back(c);
+          st.pop();
+          if(c == e.to) break;
+        }
+        ret.emplace_back(cc);
+      }
+    }
+
+    return low[cur] = temp;
+  }
+}
+
 template <typename T>
 auto two_edge_connected_components(const Graph<T> &graph){
   const int n = graph.size();
 
-  std::vector<std::vector<int>> ret;
   std::vector<int> low(n, -1), order(n, -1);
+  std::vector<std::vector<int>> ret;
   std::stack<int> st;
-
   int v = 0;
-  auto dfs =
-    [&](auto &dfs, int cur, int par) -> int {
-      if(order[cur] != -1) return order[cur];
-      order[cur] = v;
-      int temp = v++;
-      st.push(cur);      
-
-      int count = 0;
-
-      for(const auto &e : graph[cur]){
-        if(e.to == par){
-          ++count;
-          if(count == 1) continue;
-        }
-        
-        int t = dfs(dfs, e.to, cur);
-        temp = std::min(temp, t);
-
-        if(low[e.to] > order[cur]){ // e is a bridge
-          std::vector<int> cc;
-          while(true){
-            int c = st.top();
-            cc.emplace_back(c);
-            st.pop();
-            if(c == e.to) break;
-          }
-          ret.emplace_back(cc);
-        }
-      }
-
-      return low[cur] = temp;
-    };
 
   for(int i = 0; i < n; ++i){
     if(order[i] == -1){
-      dfs(dfs, i, -1);
+      two_edge_connected_components_impl::dfs(graph, i, -1, low, order, ret, st, v);
       if(not st.empty()){
         std::vector<int> cc;
         while(not st.empty()) cc.emplace_back(st.top()), st.pop();
@@ -116,7 +127,6 @@ auto two_edge_connected_components(const Graph<T> &graph){
   return ret;
 }
 
-
 ```
 {% endraw %}
 
@@ -127,13 +137,14 @@ auto two_edge_connected_components(const Graph<T> &graph){
 #include <vector>
 #include <stack>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -143,15 +154,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -164,7 +175,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -192,51 +203,62 @@ using Tree = Graph<T>;
  * @title Two edge connected components
  * @docs two_edge_connected_components.md
  */
+namespace two_edge_connected_components_impl {
+  template <typename T>
+  int dfs(
+    const Graph<T> &graph,
+    int cur,
+    int par,
+    std::vector<int> &low,
+    std::vector<int> &order,
+    std::vector<std::vector<int>> &ret,
+    std::stack<int> &st,
+    int &v
+  ){
+    if(order[cur] != -1) return order[cur];
+    order[cur] = v;
+    int temp = v++;
+    st.push(cur);
+
+    int count = 0;
+
+    for(const auto &e : graph[cur]){
+      if(e.to == par){
+        ++count;
+        if(count == 1) continue;
+      }
+
+      const int t = dfs(graph, e.to, cur, low, order, ret, st, v);
+      temp = std::min(temp, t);
+
+      if(low[e.to] > order[cur]){ // e is a bridge
+        std::vector<int> cc;
+        while(true){
+          int c = st.top();
+          cc.emplace_back(c);
+          st.pop();
+          if(c == e.to) break;
+        }
+        ret.emplace_back(cc);
+      }
+    }
+
+    return low[cur] = temp;
+  }
+}
+
 template <typename T>
 auto two_edge_connected_components(const Graph<T> &graph){
   const int n = graph.size();
 
-  std::vector<std::vector<int>> ret;
   std::vector<int> low(n, -1), order(n, -1);
+  std::vector<std::vector<int>> ret;
   std::stack<int> st;
-
   int v = 0;
-  auto dfs =
-    [&](auto &dfs, int cur, int par) -> int {
-      if(order[cur] != -1) return order[cur];
-      order[cur] = v;
-      int temp = v++;
-      st.push(cur);      
-
-      int count = 0;
-
-      for(const auto &e : graph[cur]){
-        if(e.to == par){
-          ++count;
-          if(count == 1) continue;
-        }
-        
-        int t = dfs(dfs, e.to, cur);
-        temp = std::min(temp, t);
-
-        if(low[e.to] > order[cur]){ // e is a bridge
-          std::vector<int> cc;
-          while(true){
-            int c = st.top();
-            cc.emplace_back(c);
-            st.pop();
-            if(c == e.to) break;
-          }
-          ret.emplace_back(cc);
-        }
-      }
-
-      return low[cur] = temp;
-    };
 
   for(int i = 0; i < n; ++i){
     if(order[i] == -1){
-      dfs(dfs, i, -1);
+      two_edge_connected_components_impl::dfs(graph, i, -1, low, order, ret, st, v);
       if(not st.empty()){
         std::vector<int> cc;
         while(not st.empty()) cc.emplace_back(st.top()), st.pop();
@@ -247,7 +269,6 @@ auto two_edge_connected_components(const Graph<T> &graph){
 
   return ret;
 }
-
 
 ```
 {% endraw %}

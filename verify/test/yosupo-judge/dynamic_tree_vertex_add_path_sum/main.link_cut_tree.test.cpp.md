@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
+# :x: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#bebcd5bef589a8c43022d53b5d3891af">test/yosupo-judge/dynamic_tree_vertex_add_path_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_path_sum">https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_path_sum</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp.html">Link/cut tree</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Sum monoid</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp.html">Link/cut tree</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
 
 
 ## Code
@@ -62,7 +62,7 @@ layout: default
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   LinkCutTree<SumMonoid<int64_t>> lct(N);
@@ -71,10 +71,10 @@ int main(){
     lct.update(i, a);
   }
 
-  for(auto [u, v] : input_tuples<int, int>(N-1)){
+  for(auto [u, v] : input_tuples<int, int>(N - 1)){
     lct.link(u, v);
   }
-  
+
   for(auto [type] : input_tuples<int>(Q)){
     switch(type){
     case 0: {
@@ -113,13 +113,14 @@ int main(){
 #line 2 "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 /**
+ * @title Sum monoid
  * @docs sum.md
  */
 template <typename T>
-struct SumMonoid{
+struct SumMonoid {
   using value_type = T;
-  value_type id() const {return 0;}
-  value_type op(value_type a, value_type b) const {return a + b;}
+  value_type operator()() const {return 0;}
+  value_type operator()(value_type a, value_type b) const {return a + b;}
 };
 #line 2 "Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp"
 #include <vector>
@@ -129,10 +130,10 @@ struct SumMonoid{
  * @docs link_cut_tree.md
  */
 template <typename Monoid>
-struct LinkCutNode{
+struct LinkCutNode {
   using value_type = typename Monoid::value_type;
   using node = LinkCutNode;
-  constexpr static Monoid M = Monoid();
+  const static Monoid M;
 
   int subsize;
   node *left, *right, *parent;
@@ -145,12 +146,12 @@ struct LinkCutNode{
     right(nullptr),
     parent(nullptr),
     rev(false),
-    value(M.id()),
-    result(M.id())
+    value(M()),
+    result(M())
   {}
 
   bool is_root() const {
-    return !parent or (parent->left != this and parent->right != this); 
+    return !parent or (parent->left != this and parent->right != this);
   }
 
   void update_node_status(){
@@ -160,13 +161,13 @@ struct LinkCutNode{
     if(left){
       left->push_down();
       subsize += left->subsize;
-      result = M.op(result, left->result);
+      result = M(result, left->result);
     }
 
     if(right){
       right->push_down();
       subsize += right->subsize;
-      result = M.op(result, right->result);
+      result = M(result, right->result);
     }
   }
 
@@ -179,7 +180,6 @@ struct LinkCutNode{
     }
   }
 
-  
   void rot(int dir_right){
     node *p = parent, *g = p->parent;
 
@@ -203,7 +203,7 @@ struct LinkCutNode{
     if(g->right == p) g->right = this;
     g->update_node_status();
   }
-  
+
   void splay(){
     while(not is_root()){
       node *p = parent, *gp = p->parent;
@@ -238,7 +238,7 @@ struct LinkCutNode{
       p->update_node_status();
       rp = p;
     }
-    
+
     u->splay();
   }
 
@@ -246,7 +246,7 @@ struct LinkCutNode{
     evert(u);
     u->parent = v;
   }
-  
+
   static void cut(node *u){
     expose(u);
     u->left->parent = nullptr;
@@ -272,15 +272,11 @@ struct LinkCutNode{
   }
 };
 
-
-
-
-
 template <typename Monoid>
-class LinkCutTree{
+class LinkCutTree {
   using value_type = typename Monoid::value_type;
   using node = LinkCutNode<Monoid>;
-  constexpr static Monoid M = Monoid();
+  const static Monoid M;
 
   int N;
   std::vector<node*> nodes;
@@ -295,7 +291,7 @@ public:
   void expose(int k){
     node::expose(nodes[k]);
   }
-  
+
   void cut(int i, int j){
     node::cut(nodes[i], nodes[j]);
   }
@@ -334,8 +330,8 @@ public:
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -345,8 +341,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -355,8 +351,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -400,8 +396,8 @@ auto input_tuples(int N){
  * @docs input_tuples_with_index.md
  */
 template <typename ... Args>
-class InputTuplesWithIndex{
-  struct iter{
+class InputTuplesWithIndex {
+  struct iter {
     using value_type = std::tuple<int, Args ...>;
     value_type value;
     bool fetched = false;
@@ -441,13 +437,12 @@ template <typename ... Args>
 auto input_tuples_with_index(int N){
   return InputTuplesWithIndex<Args ...>(N);
 }
-
 #line 8 "test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   LinkCutTree<SumMonoid<int64_t>> lct(N);
@@ -456,10 +451,10 @@ int main(){
     lct.update(i, a);
   }
 
-  for(auto [u, v] : input_tuples<int, int>(N-1)){
+  for(auto [u, v] : input_tuples<int, int>(N - 1)){
     lct.link(u, v);
   }
-  
+
   for(auto [type] : input_tuples<int>(Q)){
     switch(type){
     case 0: {

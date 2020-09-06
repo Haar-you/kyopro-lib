@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/partition_function/main.fps.test.cpp
+# :x: test/yosupo-judge/partition_function/main.fps.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3c72a5f9e51247cad1bcbc8d30f4715f">test/yosupo-judge/partition_function</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/partition_function/main.fps.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-21 11:48:40+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/partition_function">https://judge.yosupo.jp/problem/partition_function</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/partition_number_fps.cpp.html">Partition number (FPS)</a>
-* :question: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number theoretic transform</a>
-* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
-* :question: <a href="../../../../library/Mylib/Math/formal_power_series.cpp.html">Formal power series</a>
-* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :x: <a href="../../../../library/Mylib/Combinatorics/partition_number_fps.cpp.html">Partition number (FPS)</a>
+* :x: <a href="../../../../library/Mylib/Convolution/ntt_convolution.cpp.html">Number theoretic transform</a>
+* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :x: <a href="../../../../library/Mylib/Math/formal_power_series.cpp.html">Formal power series</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -64,7 +64,7 @@ layout: default
 constexpr int PRIM = 3;
 using mint = ModInt<998244353>;
 using FPS = FormalPowerSeries<mint>;
-using NTT = NumberTheoreticTransform<mint,PRIM,1<<20>;
+using NTT = NumberTheoreticTransform<mint, PRIM, 1 << 20>;
 
 int main(){
   using namespace std::placeholders;
@@ -100,18 +100,19 @@ int main(){
  * @title Modint
  * @docs mint.md
  */
-template <int32_t M> class ModInt{
+template <int32_t M>
+class ModInt {
 public:
   constexpr static int32_t MOD = M;
   uint32_t val;
-  
+
   constexpr ModInt(): val(0){}
   constexpr ModInt(int64_t n){
     if(n >= M) val = n % M;
     else if(n < 0) val = n % M + M;
     else val = n;
   }
-  
+
   constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
   constexpr auto& operator+=(const ModInt &a){
     if(val + a.val >= M) val = (uint64_t)val + a.val - M;
@@ -136,51 +137,51 @@ public:
   constexpr auto operator-(const ModInt &a) const {return ModInt(*this) -= a;}
   constexpr auto operator*(const ModInt &a) const {return ModInt(*this) *= a;}
   constexpr auto operator/(const ModInt &a) const {return ModInt(*this) /= a;}
-  
+
   constexpr bool operator==(const ModInt &a) const {return val == a.val;}
   constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
-  
+
   constexpr auto& operator++(){*this += 1; return *this;}
   constexpr auto& operator--(){*this -= 1; return *this;}
-  
+
   constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
   constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
-  
+
   constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
-    
+
     int64_t ret = 1, e = n % M;
     for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
     return ret;
   }
-  
+
   constexpr static ModInt inv(int64_t a){
     int64_t b = M, u = 1, v = 0;
-    
+
     while(b){
       int64_t t = a / b;
-      a -= t * b; std::swap(a,b);
-      u -= t * v; std::swap(u,v);
+      a -= t * b; std::swap(a, b);
+      u -= t * v; std::swap(u, v);
     }
-    
+
     u %= M;
     if(u < 0) u += M;
-    
+
     return u;
   }
-  
+
   constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
-  
+
   constexpr auto power(int64_t p) const {return power(val, p);}
   constexpr auto inv() const {return inv(val);}
-  
-  friend constexpr auto operator-(const ModInt &a){return ModInt(M-a.val);}
-  
+
+  friend constexpr auto operator-(const ModInt &a){return ModInt(M - a.val);}
+
   friend constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
   friend constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
   friend constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
   friend constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
-  
+
   friend std::istream& operator>>(std::istream &s, ModInt<M> &a){s >> a.val; return s;}
   friend std::ostream& operator<<(std::ostream &s, const ModInt<M> &a){s << a.val; return s;}
 
@@ -204,7 +205,7 @@ public:
 template <typename Fps>
 auto partition_number(int N){
   using T = typename Fps::value_type;
-  
+
   std::vector<T> f(N + 1);
   f[0] = 1;
 
@@ -238,7 +239,7 @@ auto partition_number(int N){
  * @docs ntt_convolution.md
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>
-class NumberTheoreticTransform{
+class NumberTheoreticTransform {
 public:
   using value_type = T;
   constexpr static int primitive_root = PRIM_ROOT;
@@ -246,7 +247,7 @@ public:
 private:
   const int MAX_POWER;
   std::vector<T> BASE, INV_BASE;
-  
+
 public:
   NumberTheoreticTransform():
     MAX_POWER(__builtin_ctz(MAX_SIZE)),
@@ -255,9 +256,9 @@ public:
   {
     static_assert((MAX_SIZE & (MAX_SIZE - 1)) == 0, "MAX_SIZE must be power of 2.");
 
-    T t = T::power(PRIM_ROOT, (T::MOD-1) >> (MAX_POWER + 2));
+    T t = T::power(PRIM_ROOT, (T::MOD - 1) >> (MAX_POWER + 2));
     T s = t.inv();
-    
+
     for(int i = MAX_POWER - 1; i >= 0; --i){
       t *= t;
       s *= s;
@@ -268,23 +269,23 @@ public:
 
   void run(std::vector<T> &f, bool INVERSE = false){
     const int n = f.size();
-    assert((n & (n-1)) == 0 and n <= MAX_SIZE); // データ数は2の冪乗個
+    assert((n & (n - 1)) == 0 and n <= MAX_SIZE); // データ数は2の冪乗個
 
     if(INVERSE){
       for(int b = 1; b < n; b <<= 1){
         T w = 1;
         for(int j = 0, k = 1; j < n; j += 2 * b, ++k){
           for(int i = 0; i < b; ++i){
-            const auto s = f[i+j];
-            const auto t = f[i+j+b];
-            
-            f[i+j] = s + t;
-            f[i+j+b] = (s - t) * w;
+            const auto s = f[i + j];
+            const auto t = f[i + j + b];
+
+            f[i + j] = s + t;
+            f[i + j + b] = (s - t) * w;
           }
           w *= INV_BASE[__builtin_ctz(k)];
         }
       }
-        
+
       const T t = T::inv(n);
       for(auto &x : f) x *= t;
     }else{
@@ -292,11 +293,11 @@ public:
         T w = 1;
         for(int j = 0, k = 1; j < n; j += 2 * b, ++k){
           for(int i = 0; i < b; ++i){
-            const auto s = f[i+j];
-            const auto t = f[i+j+b] * w;
-            
-            f[i+j] = s + t;
-            f[i+j+b] = s - t;
+            const auto s = f[i + j];
+            const auto t = f[i + j + b] * w;
+
+            f[i + j] = s + t;
+            f[i + j + b] = s - t;
           }
           w *= BASE[__builtin_ctz(k)];
         }
@@ -314,13 +315,13 @@ public:
 
     for(int i = 0; i < (int)f.size(); ++i) f2[i] = f[i];
     for(int i = 0; i < (int)g.size(); ++i) g2[i] = g[i];
-  
+
     run(f2);
     run(g2);
-    
+
     for(int i = 0; i < n; ++i) f2[i] *= g2[i];
     run(f2, true);
-    
+
     return f2;
   }
 };
@@ -333,7 +334,7 @@ std::vector<T> convolve_general_mod(std::vector<U> f, std::vector<U> g){
 
   for(auto &x : f) x %= T::MOD;
   for(auto &x : g) x %= T::MOD;
-  
+
   auto res1 = NumberTheoreticTransform<ModInt<M1>, P1, 1 << 20>().convolve(f, g);
   auto res2 = NumberTheoreticTransform<ModInt<M2>, P2, 1 << 20>().convolve(f, g);
   auto res3 = NumberTheoreticTransform<ModInt<M3>, P3, 1 << 20>().convolve(f, g);
@@ -347,30 +348,29 @@ std::vector<T> convolve_general_mod(std::vector<U> f, std::vector<U> g){
   const int64_t M23 = (int64_t)ModInt<M3>::inv(M2);
 
   for(int i = 0; i < n; ++i){
-    const int64_t r[3] = {(int64_t)res1[i].val, (int64_t)res2[i].val, (int64_t)res3[i].val};
+    const int64_t r[3] = {(int64_t)res1[i], (int64_t)res2[i], (int64_t)res3[i]};
 
     const int64_t t0 = r[0] % M1;
     const int64_t t1 = (r[1] - t0 + M2) * M12 % M2;
     const int64_t t2 = ((r[2] - t0 + M3) * M13 % M3 - t1 + M3) * M23 % M3;
-    
+
     ret[i] = T(t0) + T(t1) * M1 + T(t2) * M1 * M2;
   }
 
   return ret;
 }
-#line 2 "Mylib/Math/formal_power_series.cpp"
-
-#line 5 "Mylib/Math/formal_power_series.cpp"
+#line 4 "Mylib/Math/formal_power_series.cpp"
 #include <initializer_list>
+#line 6 "Mylib/Math/formal_power_series.cpp"
 
 /**
  * @title Formal power series
  * @docs formal_power_series.md
  */
 template <typename T>
-struct FormalPowerSeries{
+struct FormalPowerSeries {
   using value_type = T;
-  
+
   static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
   static std::function<std::optional<T>(T)> get_sqrt;
 
@@ -379,7 +379,7 @@ struct FormalPowerSeries{
   FormalPowerSeries(const std::vector<T> &data): data(data){}
   FormalPowerSeries(std::initializer_list<T> init): data(init.begin(), init.end()){}
   FormalPowerSeries(int N): data(N){}
-  
+
   int size() const {
     return data.size();
   }
@@ -398,7 +398,7 @@ struct FormalPowerSeries{
   void resize(int n){
     data.resize(n);
   }
-  
+
   auto operator+(const FormalPowerSeries &rhs) const {
     std::vector<T> ret(data);
     ret.resize(rhs.size());
@@ -426,19 +426,19 @@ struct FormalPowerSeries{
 
   auto differentiate() const {
     const int n = data.size();
-    std::vector<T> ret(n-1);
-    for(int i = 0; i < n-1; ++i){
-      ret[i] = data[i+1] * (i + 1);
+    std::vector<T> ret(n - 1);
+    for(int i = 0; i < n - 1; ++i){
+      ret[i] = data[i + 1] * (i + 1);
     }
-    
+
     return FormalPowerSeries(ret);
   }
 
   auto integrate() const {
     const int n = data.size();
-    std::vector<T> ret(n+1);
+    std::vector<T> ret(n + 1);
     for(int i = 0; i < n; ++i){
-      ret[i+1] = data[i] / (i + 1);
+      ret[i + 1] = data[i] / (i + 1);
     }
 
     return FormalPowerSeries(ret);
@@ -447,11 +447,11 @@ struct FormalPowerSeries{
   auto inv() const {
     assert(data[0] != 0);
     const int n = data.size();
-    
+
     int t = 1;
     std::vector<T> ret = {data[0].inv()};
     ret.reserve(n * 2);
-    
+
     while(t <= n * 2){
       std::vector<T> c(data.begin(), data.begin() + std::min(t, n));
       c = convolve(c, convolve(ret, ret));
@@ -462,10 +462,10 @@ struct FormalPowerSeries{
       for(int i = 0; i < t; ++i){
         ret[i] = ret[i] * 2 - c[i];
       }
-      
+
       t <<= 1;
     }
-    
+
     ret.resize(n);
 
     return FormalPowerSeries(ret);
@@ -493,16 +493,15 @@ struct FormalPowerSeries{
       for(int i = 0; i < t; ++i) temp[i] = -temp[i];
       temp[0] += 1;
       for(int i = 0; i < std::min(t, n); ++i) temp[i] += data[i];
-      
+
       b = b * temp;
       b.resize(t);
     }
-    
+
     b.resize(n);
 
     return b;
   }
-
 
   auto shift(int64_t k) const {
     const int64_t n = data.size();
@@ -521,10 +520,9 @@ struct FormalPowerSeries{
     return ret;
   }
 
-  
   auto power(int64_t M) const {
     assert(M >= 0);
-    
+
     const int n = data.size();
     int k = 0;
     for(; k < n; ++k){
@@ -541,7 +539,7 @@ struct FormalPowerSeries{
     ret = (ret.shift(-k)) * a.inv();
     ret = (ret.log() * (T)M).exp();
     ret = (ret * a.power(M)).shift(M * k);
-    
+
     return ret;
   }
 
@@ -567,7 +565,7 @@ struct FormalPowerSeries{
       FormalPowerSeries f(std::vector(it, it + std::min(t, m)));
       ret.resize(t);
       f.resize(t);
-      ret = (ret + f * ret.inv()) * T(2).inv();      
+      ret = (ret + f * ret.inv()) * T(2).inv();
       t <<= 1;
     }
 
@@ -577,7 +575,6 @@ struct FormalPowerSeries{
     return ret;
   }
 };
-
 
 template <typename T>
 std::function<std::vector<T>(std::vector<T>, std::vector<T>)> FormalPowerSeries<T>::convolve;
@@ -607,7 +604,7 @@ std::string join(ITER first, ITER last, std::string delim = " "){
 constexpr int PRIM = 3;
 using mint = ModInt<998244353>;
 using FPS = FormalPowerSeries<mint>;
-using NTT = NumberTheoreticTransform<mint,PRIM,1<<20>;
+using NTT = NumberTheoreticTransform<mint, PRIM, 1 << 20>;
 
 int main(){
   using namespace std::placeholders;

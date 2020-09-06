@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Range update / Range min
+# :x: Range update / Range min
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/update_min.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_F/main.test.cpp.html">test/aoj/DSL_2_F/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_2_F/main.test.cpp.html">test/aoj/DSL_2_F/main.test.cpp</a>
 
 
 ## Code
@@ -54,7 +54,7 @@ layout: default
  * @docs update_min.md
  */
 template <typename T, typename U>
-struct UpdateMin{
+struct UpdateMin {
   using value_type_get = std::optional<T>;
   using value_type_update = std::optional<U>;
 
@@ -87,7 +87,7 @@ struct UpdateMin{
  * @docs update_min.md
  */
 template <typename T, typename U>
-struct UpdateMin{
+struct UpdateMin {
   using value_type_get = std::optional<T>;
   using value_type_update = std::optional<U>;
 

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_2_H/main.starry_sky.test.cpp
+# :x: test/aoj/DSL_2_H/main.starry_sky.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#dff63cd4dbbcc206af021772ba80d157">test/aoj/DSL_2_H</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_H/main.starry_sky.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-01 07:13:20+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp.html">Starry-sky tree</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp.html">Starry-sky tree</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -53,7 +53,6 @@ layout: default
 
 #include <iostream>
 #include <functional>
-
 #include "Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
@@ -65,9 +64,9 @@ int main(){
   for(auto [type, s, t] : input_tuples<int, int, int>(q)){
     if(type == 0){
       int x; std::cin >> x;
-      seg.update(s, t+1, x);
+      seg.update(s, t + 1, x);
     }else{
-      std::cout << seg.get(s, t+1) << std::endl;
+      std::cout << seg.get(s, t + 1) << std::endl;
     }
   }
 
@@ -85,7 +84,6 @@ int main(){
 
 #include <iostream>
 #include <functional>
-
 #line 2 "Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp"
 #include <vector>
 #include <optional>
@@ -96,7 +94,7 @@ int main(){
  * @docs starry_sky_tree.md
  */
 template <typename T, typename Compare>
-class StarrySkyTree{
+class StarrySkyTree {
   int depth, size, hsize;
   std::vector<T> data;
 
@@ -112,7 +110,7 @@ class StarrySkyTree{
     while(i >= 1){
       if(i < hsize){
         const auto d = f(data[i << 1 | 0], data[i << 1 | 1]);
-        
+
         data[i << 1 | 0] -= d;
         data[i << 1 | 1] -= d;
         data[i] += d;
@@ -121,7 +119,7 @@ class StarrySkyTree{
       i >>= 1;
     }
   }
-  
+
   std::optional<T> get(int i, int l, int r, int s, int t, T val) const {
     if(r <= s or t <= l) return std::nullopt;
     if(s <= l and r <= t) return val + data[i];
@@ -136,7 +134,7 @@ class StarrySkyTree{
 
 public:
   StarrySkyTree(int n):
-    depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
+    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
     size(1 << depth),
     hsize(size / 2),
     data(size, 0)
@@ -186,8 +184,8 @@ public:
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -197,8 +195,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -207,8 +205,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -246,7 +244,7 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 8 "test/aoj/DSL_2_H/main.starry_sky.test.cpp"
+#line 7 "test/aoj/DSL_2_H/main.starry_sky.test.cpp"
 
 int main(){
   int n, q; std::cin >> n >> q;
@@ -256,9 +254,9 @@ int main(){
   for(auto [type, s, t] : input_tuples<int, int, int>(q)){
     if(type == 0){
       int x; std::cin >> x;
-      seg.update(s, t+1, x);
+      seg.update(s, t + 1, x);
     }else{
-      std::cout << seg.get(s, t+1) << std::endl;
+      std::cout << seg.get(s, t + 1) << std::endl;
     }
   }
 

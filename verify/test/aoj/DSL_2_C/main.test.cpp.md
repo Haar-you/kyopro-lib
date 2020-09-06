@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_2_C/main.test.cpp
+# :x: test/aoj/DSL_2_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2bc6b10df76ee628f0328e9237d1fcac">test/aoj/DSL_2_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_C</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/RangeTree/range_tree.cpp.html">Mylib/DataStructure/RangeTree/range_tree.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/RangeTree/range_tree.cpp.html">Mylib/DataStructure/RangeTree/range_tree.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
 
 
 ## Code
@@ -64,19 +64,19 @@ int main(){
   int n; std::cin >> n;
   RangeTree rt;
 
-  std::map<std::pair<int,int>, int> m;
+  std::map<std::pair<int, int>, int> m;
 
   for(auto [i, x, y] : input_tuples_with_index<int, int>(n)){
-    rt.add(x,y);
-    m[{x,y}] = i;
+    rt.add(x, y);
+    m[{x, y}] = i;
   }
-  
+
   rt.build();
 
   int q; std::cin >> q;
 
   for(auto [sx, tx, sy, ty] : input_tuples<int, int, int, int>(q)){
-    auto res = rt.get(sx, sy, tx+1, ty+1);
+    auto res = rt.get(sx, sy, tx + 1, ty + 1);
 
     std::vector<int> ans;
     for(auto &p : res) ans.push_back(m[p]);
@@ -111,14 +111,14 @@ int main(){
 /**
  * @docs range_tree.md
  */
-class RangeTree{
+class RangeTree {
   int N = 0;
   std::vector<int64_t> xs, ys;
   std::vector<int64_t> c_xs;
 
   int size;
   std::vector<std::vector<std::pair<int64_t, int>>> data;
-  
+
 public:
   RangeTree(){}
 
@@ -160,10 +160,10 @@ public:
    */
   std::vector<std::pair<int64_t, int64_t>> get(int64_t sx, int64_t sy, int64_t tx, int64_t ty) const {
     std::vector<std::pair<int64_t, int64_t>> ret;
-    
+
     int L = std::lower_bound(c_xs.begin(), c_xs.end(), sx) - c_xs.begin();
     int R = std::lower_bound(c_xs.begin(), c_xs.end(), tx) - c_xs.begin();
-    
+
     L += size / 2;
     R += size / 2;
 
@@ -175,7 +175,7 @@ public:
 
         while(it != a.end()){
           if(it->first >= ty) break;
-          
+
           ret.emplace_back(c_xs[it->second], it->first);
 
           ++it;
@@ -189,7 +189,7 @@ public:
 
         while(it != a.end()){
           if(it->first >= ty) break;
-          
+
           ret.emplace_back(c_xs[it->second], it->first);
 
           ++it;
@@ -213,8 +213,8 @@ public:
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -224,8 +224,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -234,8 +234,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -279,8 +279,8 @@ auto input_tuples(int N){
  * @docs input_tuples_with_index.md
  */
 template <typename ... Args>
-class InputTuplesWithIndex{
-  struct iter{
+class InputTuplesWithIndex {
+  struct iter {
     using value_type = std::tuple<int, Args ...>;
     value_type value;
     bool fetched = false;
@@ -320,26 +320,25 @@ template <typename ... Args>
 auto input_tuples_with_index(int N){
   return InputTuplesWithIndex<Args ...>(N);
 }
-
 #line 10 "test/aoj/DSL_2_C/main.test.cpp"
 
 int main(){
   int n; std::cin >> n;
   RangeTree rt;
 
-  std::map<std::pair<int,int>, int> m;
+  std::map<std::pair<int, int>, int> m;
 
   for(auto [i, x, y] : input_tuples_with_index<int, int>(n)){
-    rt.add(x,y);
-    m[{x,y}] = i;
+    rt.add(x, y);
+    m[{x, y}] = i;
   }
-  
+
   rt.build();
 
   int q; std::cin >> q;
 
   for(auto [sx, tx, sy, ty] : input_tuples<int, int, int, int>(q)){
-    auto res = rt.get(sx, sy, tx+1, ty+1);
+    auto res = rt.get(sx, sy, tx + 1, ty + 1);
 
     std::vector<int> ans;
     for(auto &p : res) ans.push_back(m[p]);

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/segment_add_get_min/main.test.cpp
+# :x: test/yosupo-judge/segment_add_get_min/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#721e0ea68f32b7a24f161978d9526983">test/yosupo-judge/segment_add_get_min</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/segment_add_get_min/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/segment_add_get_min">https://judge.yosupo.jp/problem/segment_add_get_min</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp.html">LiChao segment tree</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp.html">LiChao segment tree</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -100,14 +100,14 @@ int main(){
     for(auto [l, r, a, b] : lines){
       lc.add_segment(l, r, a, b);
     }
-  
+
     for(auto &q : query){
       if(q.index() == 0){
         auto [l, r, a, b] = std::get<0>(q);
         lc.add_segment(l, r, a, b);
       }else{
         auto p = std::get<1>(q);
-        auto res = lc.query(p);
+        auto res = lc(p);
 
         if(res){
           std::cout << *res << "\n";
@@ -144,25 +144,25 @@ int main(){
  * @docs lichao_segment_tree.md
  */
 template <typename T, typename Comparator>
-class LiChaoSegmentTree{
-  using line = std::pair<T,T>;
+class LiChaoSegmentTree {
+  using line = std::pair<T, T>;
 
   const Comparator cmp = Comparator();
   std::vector<T> xs;
   int n;
 
   std::vector<std::optional<line>> data;
-  std::vector<std::pair<int,int>> range;
+  std::vector<std::pair<int, int>> range;
 
   T chm(const T &a, const T &b) const {
     return cmp(a, b) ? a : b;
   }
 
   void init_range(int i, int left, int right){
-    if(i >= 2*n) return;
+    if(i >= 2 * n) return;
 
     range[i] = std::make_pair(left, right);
-    int mid = (left + right) / 2;
+    const int mid = (left + right) / 2;
     init_range(i << 1 | 0, left, mid);
     init_range(i << 1 | 1, mid, right);
   }
@@ -178,9 +178,9 @@ public:
     const auto m = xs.back();
     xs.resize(n, m);
 
-    data.assign(2*n, std::nullopt);
+    data.assign(2 * n, std::nullopt);
 
-    range.resize(2*n);
+    range.resize(2 * n);
     init_range(1, 0, n);
   }
 
@@ -195,9 +195,9 @@ private:
       return;
     }
 
-    int m = (l + r) / 2;
+    const int m = (l + r) / 2;
 
-    auto lx = xs[l], mx = xs[m], rx = xs[r-1];
+    auto lx = xs[l], mx = xs[m], rx = xs[r - 1];
 
     bool left = cmp(apply(new_line, lx), apply(*data[i], lx));
     bool mid = cmp(apply(new_line, mx), apply(*data[i], mx));
@@ -222,7 +222,7 @@ private:
       update(i << 1 | 1, new_line, m, r);
     }
   }
-  
+
 public:
   void add_line(T a, T b){
     update(1, std::make_pair(a, b), 0, n);
@@ -253,10 +253,10 @@ public:
   }
 
 public:
-  auto query(const T &x) const {
+  auto operator()(const T &x) const {
     const int i = std::lower_bound(xs.begin(), xs.end(), x) - xs.begin();
     int k = i + n;
-    
+
     std::optional<T> ret;
 
     while(k > 0){
@@ -288,8 +288,8 @@ auto make_lichao_max(const std::vector<T> &xs){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -299,8 +299,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -309,8 +309,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -391,14 +391,14 @@ int main(){
     for(auto [l, r, a, b] : lines){
       lc.add_segment(l, r, a, b);
     }
-  
+
     for(auto &q : query){
       if(q.index() == 0){
         auto [l, r, a, b] = std::get<0>(q);
         lc.add_segment(l, r, a, b);
       }else{
         auto p = std::get<1>(q);
-        auto res = lc.query(p);
+        auto res = lc(p);
 
         if(res){
           std::cout << *res << "\n";

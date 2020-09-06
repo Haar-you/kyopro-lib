@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/GRL_3_A/main.test.cpp
+# :x: test/aoj/GRL_3_A/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#aef3de7eebed1830b43d31dc4a561484">test/aoj/GRL_3_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_3_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/GraphUtils/articulation_points.cpp.html">Articulation points</a>
-* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../../../../library/Mylib/Graph/GraphUtils/articulation_points.cpp.html">Articulation points</a>
+* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
 
 
 ## Code
@@ -63,7 +63,7 @@ int main(){
 
   auto ans = articulation_points(g);
   std::sort(ans.begin(), ans.end());
-  
+
   for(auto x : ans) std::cout << x << std::endl;
 
   return 0;
@@ -82,13 +82,14 @@ int main(){
 #include <algorithm>
 #line 2 "Mylib/Graph/Template/graph.cpp"
 #include <vector>
+#line 4 "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -98,15 +99,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -119,7 +120,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -147,45 +148,54 @@ using Tree = Graph<T>;
  * @title Articulation points
  * @docs articulation_points.md
  */
+namespace articulation_points_impl {
+  template <typename T>
+  int dfs(
+    const Graph<T> &graph,
+    int root,
+    int cur,
+    std::vector<int> &visit,
+    std::vector<int> &low,
+    std::vector<int> &ret,
+    int &v
+  ){
+    if(visit[cur] != -1) return visit[cur];
+    visit[cur] = v;
+
+    int temp = v;
+    std::vector<int> children;
+    ++v;
+
+    for(auto &e : graph[cur]){
+      if(visit[e.to] == -1) children.push_back(e.to);
+      int t = dfs(graph, root, e.to, visit, low, ret, v);
+      temp = std::min(temp, t);
+    }
+
+    low[cur] = temp;
+
+    if(cur != root or children.size() >= 2){
+      for(auto x : children){
+        if(low[x] >= visit[cur]){
+          ret.push_back(cur);
+          break;
+        }
+      }
+    }
+
+    return low[cur];
+  };
+}
+
 template <typename T>
 std::vector<int> articulation_points(const Graph<T> &graph){
   const int n = graph.size();
   std::vector<int> visit(n, -1), low(n, -1), ret;
-
   int v = 0;
-  
-  auto dfs =
-    [&](auto &&dfs, int root, int cur){
-      if(visit[cur] != -1) return visit[cur];
-      visit[cur] = v;
-
-      int temp = v;
-      std::vector<int> children;
-      ++v;
-
-      for(auto &e : graph[cur]){
-        if(visit[e.to] == -1) children.push_back(e.to);
-        int t = dfs(dfs, root, e.to);
-        temp = std::min(temp, t);
-      }
-
-      low[cur] = temp;
-
-      if(cur != root or children.size() >= 2){
-        for(auto x : children){
-          if(low[x] >= visit[cur]){
-            ret.push_back(cur);
-            break;
-          }
-        }
-      }
-
-      return low[cur];
-    };
 
   for(int i = 0; i < n; ++i){
     if(visit[i] == -1){
-      dfs(dfs, i, i);
+      articulation_points_impl::dfs(graph, i, i, visit, low, ret, v);
     }
   }
 
@@ -201,7 +211,7 @@ int main(){
 
   auto ans = articulation_points(g);
   std::sort(ans.begin(), ans.end());
-  
+
   for(auto x : ans) std::cout << x << std::endl;
 
   return 0;

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#3b87eee7aef75da88610c966a8da844f">Mylib/Graph/BipartiteGraph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-06 22:54:09+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -53,7 +53,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :x: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
 
 
 ## Code
@@ -68,29 +68,29 @@ layout: default
  * @title Check bipartite graph (Using union-find)
  * @docs construct_bipartite_graph.md
  */
-class BipartiteGraph{
+class BipartiteGraph {
   int n;
   UnionFind check;
 
 public:
-  BipartiteGraph(int n): n(n), check(2*n){}
+  BipartiteGraph(int n): n(n), check(2 * n){}
 
   void add_diff(int i, int j){ // iとjを異なる色で塗る。
-    check.merge(i,j+n);
-    check.merge(i+n,j);
+    check.merge(i, j + n);
+    check.merge(i + n, j);
   }
 
   void add_same(int i, int j){ // iとjを同じ色で塗る。 = iとjを同じ頂点と見做す。
-    check.merge(i,j);
-    check.merge(i+n,j+n);
+    check.merge(i, j);
+    check.merge(i + n, j + n);
   }
 
   bool is_bipartite_graph(int i){ // iを含む連結グラフが二部グラフかを判定する。
-    return !check.is_same(i,i+n);
+    return not check.is_same(i, i + n);
   }
 
   bool is_same(int i, int j){ // iとjが同じ色で塗られているか判定する。
-    return check.is_same(i,j);
+    return check.is_same(i, j);
   }
 };
 
@@ -108,25 +108,25 @@ public:
  * @title Union-find
  * @docs unionfind.md
  */
-class UnionFind{
+class UnionFind {
   std::vector<int> parent, depth, size;
   int count;
 
 public:
   UnionFind(){}
-  UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
+  UnionFind(int n): parent(n), depth(n, 1), size(n, 1), count(n){
     std::iota(parent.begin(), parent.end(), 0);
   }
-  
+
   int root_of(int i){
     if(parent[i] == i) return i;
     else return parent[i] = root_of(parent[i]);
   }
-  
+
   bool is_same(int i, int j){return root_of(i) == root_of(j);}
 
   int merge(int i, int j){
-    int ri = root_of(i), rj = root_of(j);
+    const int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return ri;
     else{
       --count;
@@ -153,29 +153,29 @@ public:
  * @title Check bipartite graph (Using union-find)
  * @docs construct_bipartite_graph.md
  */
-class BipartiteGraph{
+class BipartiteGraph {
   int n;
   UnionFind check;
 
 public:
-  BipartiteGraph(int n): n(n), check(2*n){}
+  BipartiteGraph(int n): n(n), check(2 * n){}
 
   void add_diff(int i, int j){ // iとjを異なる色で塗る。
-    check.merge(i,j+n);
-    check.merge(i+n,j);
+    check.merge(i, j + n);
+    check.merge(i + n, j);
   }
 
   void add_same(int i, int j){ // iとjを同じ色で塗る。 = iとjを同じ頂点と見做す。
-    check.merge(i,j);
-    check.merge(i+n,j+n);
+    check.merge(i, j);
+    check.merge(i + n, j + n);
   }
 
   bool is_bipartite_graph(int i){ // iを含む連結グラフが二部グラフかを判定する。
-    return !check.is_same(i,i+n);
+    return not check.is_same(i, i + n);
   }
 
   bool is_same(int i, int j){ // iとjが同じ色で塗られているか判定する。
-    return check.is_same(i,j);
+    return check.is_same(i, j);
   }
 };
 

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/roman_numerals.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-24 00:18:52+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -48,7 +48,6 @@ layout: default
  * @title Roman numerals
  * @docs roman_numerals.md
  */
-
 int roman_to_num(std::string s){
   int ret = 0;
 
@@ -145,7 +144,6 @@ std::string num_to_roman(int n){
  * @title Roman numerals
  * @docs roman_numerals.md
  */
-
 int roman_to_num(std::string s){
   int ret = 0;
 

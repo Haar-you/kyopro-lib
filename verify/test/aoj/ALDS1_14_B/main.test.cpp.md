@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/ALDS1_14_B/main.test.cpp
+# :x: test/aoj/ALDS1_14_B/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6ed7f5103dd44c87e247853bfe87329e">test/aoj/ALDS1_14_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_14_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-09 21:38:53+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/rolling_hash.cpp.html">Rolling hash</a>
+* :x: <a href="../../../../library/Mylib/String/rolling_hash.cpp.html">Rolling hash</a>
 
 
 ## Code
@@ -55,12 +55,12 @@ layout: default
 
 int main(){
   auto rh = make_rh(1000000, 1000000007);
-  
+
   std::string t, p; std::cin >> t >> p;
-  
+
   auto res = rh.find(t, p);
   for(auto i : res) std::cout << i << "\n";
-  
+
   return 0;
 }
 
@@ -83,21 +83,21 @@ int main(){
  * @title Rolling hash
  * @docs rolling_hash.md
  */
-class RollingHash{
+class RollingHash {
   std::vector<int64_t> pow;
   int64_t MOD, BASE;
-  
+
 public:
   RollingHash(int size, int MOD, int BASE): MOD(MOD), BASE(BASE){
     pow.resize(size + 1);
     pow[0] = 1;
-    for(int i = 1; i <= size; ++i) pow[i] = pow[i-1] * BASE % MOD;
+    for(int i = 1; i <= size; ++i) pow[i] = pow[i - 1] * BASE % MOD;
   }
 
   template <typename T>
   auto gen_hash_table(const T &s) const {
     std::vector<int64_t> ret(s.size() + 1);
-    for(int i = 0; i < (int)s.size(); ++i) ret[i+1] = (ret[i] * BASE + s[i]) % MOD;
+    for(int i = 0; i < (int)s.size(); ++i) ret[i + 1] = (ret[i] * BASE + s[i]) % MOD;
     return ret;
   }
 
@@ -112,7 +112,7 @@ public:
    * @attention [l, r)
    */
   int64_t get(const std::vector<int64_t> &table, int l, int r) const {
-    return (table[r] - table[l] * pow[r-l] % MOD + MOD * MOD) % MOD;
+    return (table[r] - table[l] * pow[r - l] % MOD + MOD * MOD) % MOD;
   }
 
   template <typename T>
@@ -130,19 +130,19 @@ public:
 
 auto make_rh(int size, int MOD, int seed = 0){
   std::mt19937 rnd(seed);
-  std::uniform_int_distribution<> dist(2, MOD-2);
+  std::uniform_int_distribution<> dist(2, MOD - 2);
   return RollingHash(size, dist(rnd), MOD);
 }
 #line 6 "test/aoj/ALDS1_14_B/main.test.cpp"
 
 int main(){
   auto rh = make_rh(1000000, 1000000007);
-  
+
   std::string t, p; std::cin >> t >> p;
-  
+
   auto res = rh.find(t, p);
   for(auto i : res) std::cout << i << "\n";
-  
+
   return 0;
 }
 

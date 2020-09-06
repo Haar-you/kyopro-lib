@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/Monoid/max_contiguous.cpp
+# :warning: Max contiguous monoid
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/max_contiguous.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -64,18 +64,20 @@ layout: default
 ```cpp
 #pragma once
 #include <tuple>
+#include <algorithm>
 
 /**
+ * @title Max contiguous monoid
  * @docs max_contiguous.md
  */
-struct MaxContiguousMonoid{
+struct MaxContiguousMonoid {
   using value_type = std::tuple<int, int, int, int>;
 
-  value_type id() const {
+  value_type operator()() const {
     return {0, 0, 0, 0};
   }
 
-  value_type op(const value_type &a, const value_type &b) const {
+  value_type operator()(const value_type &a, const value_type &b) const {
     auto [ca, la, ra, lena] = a;
     auto [cb, lb, rb, lenb] = b;
 
@@ -90,7 +92,7 @@ struct MaxContiguousMonoid{
   static value_type zero(){
     return {0, 0, 0, 1};
   }
-  
+
   static value_type one(){
     return {1, 1, 1, 1};
   }
@@ -104,18 +106,20 @@ struct MaxContiguousMonoid{
 ```cpp
 #line 2 "Mylib/AlgebraicStructure/Monoid/max_contiguous.cpp"
 #include <tuple>
+#include <algorithm>
 
 /**
+ * @title Max contiguous monoid
  * @docs max_contiguous.md
  */
-struct MaxContiguousMonoid{
+struct MaxContiguousMonoid {
   using value_type = std::tuple<int, int, int, int>;
 
-  value_type id() const {
+  value_type operator()() const {
     return {0, 0, 0, 0};
   }
 
-  value_type op(const value_type &a, const value_type &b) const {
+  value_type operator()(const value_type &a, const value_type &b) const {
     auto [ca, la, ra, lena] = a;
     auto [cb, lb, rb, lenb] = b;
 
@@ -130,7 +134,7 @@ struct MaxContiguousMonoid{
   static value_type zero(){
     return {0, 0, 0, 1};
   }
-  
+
   static value_type one(){
     return {1, 1, 1, 1};
   }

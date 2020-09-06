@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/CGL_7_D/main.test.cpp
+# :x: test/aoj/CGL_7_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#e911575daa682b21b03c82a7db870c26">test/aoj/CGL_7_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_7_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_D</a>
@@ -39,12 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/distance_line_point.cpp.html">Distance between a line and a point</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/intersect_circle_line.cpp.html">Intersection between a cirlce and a line</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/distance_line_point.cpp.html">Distance between a line and a point</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/intersect_circle_line.cpp.html">Intersection between a circle and a line</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -65,7 +65,7 @@ layout: default
 #include "Mylib/IO/input_tuples.cpp"
 
 using D = DoubleEps<double>;
-template<> double D::eps = 1e-7;
+template <> double D::eps = 1e-7;
 
 int main(){
   Circle<D> c;
@@ -77,7 +77,7 @@ int main(){
     Line<D> l(p0, p1);
 
     auto [s, ans] = intersect_circle_line::check(c, l);
-    
+
     std::sort(ans.begin(), ans.end(), [](const auto &a, const auto &b){return a.x < b.x or (a.x == b.x and a.y < b.y);});
 
     std::cout << std::fixed << std::setprecision(12);
@@ -117,16 +117,16 @@ int main(){
  * @docs double_eps.md
  */
 template <typename T>
-struct DoubleEps{
+struct DoubleEps {
   using value_type = T;
-  
+
   static T eps;
 
   T value;
 
   DoubleEps(): value(0){}
   DoubleEps(T value): value(value){}
-  
+
   auto& operator=(const DoubleEps &rhs){this->value = rhs.value; return *this;}
   auto& operator+=(const DoubleEps &rhs){this->value += rhs.value; return *this;}
   auto& operator-=(const DoubleEps &rhs){this->value -= rhs.value; return *this;}
@@ -146,7 +146,7 @@ struct DoubleEps{
   bool operator>=(const DoubleEps &rhs) const {return !(*this < rhs);}
 
   auto operator-() const {return DoubleEps(-(this->value));}
-  
+
   explicit operator double() const noexcept {return value;}
   explicit operator long double() const noexcept {return value;}
 
@@ -156,9 +156,9 @@ struct DoubleEps{
 
 template <typename T> T DoubleEps<T>::eps;
 
-namespace std{
+namespace std {
   template <typename T>
-  class numeric_limits<DoubleEps<T>>{
+  class numeric_limits<DoubleEps<T>> {
   public:
     static DoubleEps<T> infinity() {return numeric_limits<T>::infinity();}
     static DoubleEps<T> min() {return numeric_limits<T>::min();}
@@ -177,7 +177,6 @@ template <typename T> DoubleEps<T> atan2(DoubleEps<T> y, DoubleEps<T> x){return 
 template <typename T> DoubleEps<T> abs(DoubleEps<T> x){return std::abs((T)x);}
 
 template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
-
 #line 5 "Mylib/Geometry/Float/geometry_template.cpp"
 
 /**
@@ -186,7 +185,7 @@ template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
  */
 
 template <typename T>
-struct Vec{
+struct Vec {
   T x, y;
   Vec(){}
   Vec(T x, T y): x(x), y(y){}
@@ -196,11 +195,11 @@ struct Vec{
   friend auto operator-(const Vec &a){return Vec(-a.x, -a.y);}
 
   friend bool operator==(const Vec &a, const Vec &b){return a.x == b.x and a.y == b.y;}
-  friend bool operator!=(const Vec &a, const Vec &b){return !(a==b);}
+  friend bool operator!=(const Vec &a, const Vec &b){return !(a == b);}
   friend bool operator<(const Vec &a, const Vec &b){return a.x < b.x or (a.x == b.x and a.y < b.y);}
-  
+
   friend std::istream& operator>>(std::istream &s, Vec &a){
-    s >> a.x >> a.y; return s;
+    s >> a.x  >> a.y; return s;
   }
 };
 
@@ -234,7 +233,7 @@ T angle_diff(const Vec<T> &a, const Vec<T> &b){
 }
 
 
-template <typename T> struct Line{
+template <typename T> struct Line {
   Point<T> from, to;
   Line(): from(), to(){}
   Line(const Point<T> &from, const Point<T> &to): from(from), to(to){}
@@ -256,7 +255,7 @@ template <typename T> T cross(const Line<T> &a, const Line<T> &b){return cross(d
 
 template <typename T> using Polygon = std::vector<Point<T>>;
 
-template <typename T> struct Circle{
+template <typename T> struct Circle {
   Point<T> center;
   T radius;
   Circle(): center(), radius(0){}
@@ -275,22 +274,22 @@ T distance_line_point(const Line<T> &l, const Point<T> &p){
 #line 5 "Mylib/Geometry/Float/intersect_circle_line.cpp"
 
 /**
- * @title Intersection between a cirlce and a line
+ * @title Intersection between a circle and a line
  * @docs intersect_circle_line.md
  */
-namespace intersect_circle_line{
-  enum Status{
+namespace intersect_circle_line {
+  enum Status {
               OUTSIDE = 0b001,
               TANGENT = 0b010,
               CROSSED = 0b100
   };
 
   template <typename T>
-  struct Result{
+  struct Result {
     Status status;
     std::vector<Point<T>> crosspoints;
   };
-  
+
   template <typename T>
   auto check(const Circle<T> &c, const Line<T> &l){
     const T d = distance_line_point(l, c.center);
@@ -305,7 +304,7 @@ namespace intersect_circle_line{
     if(d == c.radius){
       return Result<T>({TANGENT, {b}});
     }
-    
+
     const T a = sqrt(c.radius * c.radius - d * d);
     return Result<T>({CROSSED, {b + unit(l) * a, b - unit(l) * a}});
   }
@@ -320,8 +319,8 @@ namespace intersect_circle_line{
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -331,8 +330,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -341,8 +340,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -383,7 +382,7 @@ auto input_tuples(int N){
 #line 12 "test/aoj/CGL_7_D/main.test.cpp"
 
 using D = DoubleEps<double>;
-template<> double D::eps = 1e-7;
+template <> double D::eps = 1e-7;
 
 int main(){
   Circle<D> c;
@@ -395,7 +394,7 @@ int main(){
     Line<D> l(p0, p1);
 
     auto [s, ans] = intersect_circle_line::check(c, l);
-    
+
     std::sort(ans.begin(), ans.end(), [](const auto &a, const auto &b){return a.x < b.x or (a.x == b.x and a.y < b.y);});
 
     std::cout << std::fixed << std::setprecision(12);

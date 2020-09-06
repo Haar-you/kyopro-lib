@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/782/main.test.cpp
+# :x: test/yukicoder/782/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#69b51e2d143bc3bccb43628882e5cf09">test/yukicoder/782</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/782/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/782">https://yukicoder.me/problems/no/782</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/convert_base.cpp.html">Convert base</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :x: <a href="../../../../library/Mylib/Misc/convert_base.cpp.html">Convert base</a>
 
 
 ## Code
@@ -67,7 +67,7 @@ int main(){
 
     std::cout << join(ans.begin(), ans.end(), "") << "\n";
   }
-  
+
   return 0;
 }
 
@@ -103,7 +103,7 @@ std::vector<int64_t> convert_base_to(int64_t val, int64_t base){
   }
 
   std::reverse(ret.begin(), ret.end());
-  
+
   return ret;
 }
 
@@ -143,8 +143,8 @@ std::string join(ITER first, ITER last, std::string delim = " "){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -154,8 +154,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -164,8 +164,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -215,7 +215,7 @@ int main(){
 
     std::cout << join(ans.begin(), ans.end(), "") << "\n";
   }
-  
+
   return 0;
 }
 

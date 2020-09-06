@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Union-find
+# :x: Union-find
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3ff74e8366c88d06b530f361450b1117">Mylib/DataStructure/UnionFind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/UnionFind/unionfind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-06 22:54:09+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -54,20 +54,20 @@ layout: default
 ## Required by
 
 * :warning: <a href="../../Graph/BipartiteGraph/construct_bipartite_graph.cpp.html">Check bipartite graph (Using union-find)</a>
-* :heavy_check_mark: <a href="../../Graph/MinimumSpanningTree/boruvka.cpp.html">Borůvka algorithm</a>
-* :heavy_check_mark: <a href="../../Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
-* :heavy_check_mark: <a href="../../Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
+* :x: <a href="../../Graph/MinimumSpanningTree/boruvka.cpp.html">Borůvka algorithm</a>
+* :x: <a href="../../Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
+* :x: <a href="../../Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/1337/main.test.cpp.html">test/aoj/1337/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/2955/main.test.cpp.html">test/aoj/2955/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_2_A/main.boruvka.test.cpp.html">test/aoj/GRL_2_A/main.boruvka.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_2_A/main.kruskal.test.cpp.html">test/aoj/GRL_2_A/main.kruskal.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/unionfind/main.test.cpp.html">test/yosupo-judge/unionfind/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/1337/main.test.cpp.html">test/aoj/1337/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/2955/main.test.cpp.html">test/aoj/2955/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_2_A/main.boruvka.test.cpp.html">test/aoj/GRL_2_A/main.boruvka.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_2_A/main.kruskal.test.cpp.html">test/aoj/GRL_2_A/main.kruskal.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/unionfind/main.test.cpp.html">test/yosupo-judge/unionfind/main.test.cpp</a>
 
 
 ## Code
@@ -83,25 +83,25 @@ layout: default
  * @title Union-find
  * @docs unionfind.md
  */
-class UnionFind{
+class UnionFind {
   std::vector<int> parent, depth, size;
   int count;
 
 public:
   UnionFind(){}
-  UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
+  UnionFind(int n): parent(n), depth(n, 1), size(n, 1), count(n){
     std::iota(parent.begin(), parent.end(), 0);
   }
-  
+
   int root_of(int i){
     if(parent[i] == i) return i;
     else return parent[i] = root_of(parent[i]);
   }
-  
+
   bool is_same(int i, int j){return root_of(i) == root_of(j);}
 
   int merge(int i, int j){
-    int ri = root_of(i), rj = root_of(j);
+    const int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return ri;
     else{
       --count;
@@ -137,25 +137,25 @@ public:
  * @title Union-find
  * @docs unionfind.md
  */
-class UnionFind{
+class UnionFind {
   std::vector<int> parent, depth, size;
   int count;
 
 public:
   UnionFind(){}
-  UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
+  UnionFind(int n): parent(n), depth(n, 1), size(n, 1), count(n){
     std::iota(parent.begin(), parent.end(), 0);
   }
-  
+
   int root_of(int i){
     if(parent[i] == i) return i;
     else return parent[i] = root_of(parent[i]);
   }
-  
+
   bool is_same(int i, int j){return root_of(i) == root_of(j);}
 
   int merge(int i, int j){
-    int ri = root_of(i), rj = root_of(j);
+    const int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return ri;
     else{
       --count;

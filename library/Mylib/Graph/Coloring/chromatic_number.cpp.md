@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Graph vertex coloring
+# :x: Graph vertex coloring
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#acf9ec20eaed2eb3d3c1a731ebc2fbe1">Mylib/Graph/Coloring</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Coloring/chromatic_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -56,12 +56,12 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../Number/Mod/mod_power.cpp.html">Mod power</a>
+* :x: <a href="../../Number/Mod/mod_power.cpp.html">Mod power</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/2136/main.test.cpp.html">test/aoj/2136/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/2136/main.test.cpp.html">test/aoj/2136/main.test.cpp</a>
 
 
 ## Code
@@ -71,6 +71,8 @@ layout: default
 ```cpp
 #pragma once
 #include <vector>
+#include <cstdint>
+#include <cmath>
 #include "Mylib/Number/Mod/mod_power.cpp"
 
 /**
@@ -80,14 +82,14 @@ layout: default
 int chromatic_number(const std::vector<std::vector<int>> &graph){
   static constexpr int mod = 1000000007;
   const int N = graph.size();
- 
+
   std::vector<int> g(N);
   for(int i = 0; i < N; ++i){
     for(auto j : graph[i]){
       g[i] |= (1 << j);
     }
   }
-  
+
   std::vector<int64_t> I(1 << N);
   I[0] = 1;
   for(int i = 1; i < (1 << N); ++i){
@@ -95,7 +97,7 @@ int chromatic_number(const std::vector<std::vector<int>> &graph){
     I[i] = I[i - (1 << c)] + I[(i - (1 << c)) & (~g[c])];
     if(I[i] >= mod) I[i] -= mod;
   }
-  
+
   const auto check =
     [&](int k){
       int64_t t = 0;
@@ -107,18 +109,18 @@ int chromatic_number(const std::vector<std::vector<int>> &graph){
       }
       return (t % mod != 0);
     };
-  
+
   int lb = 0, ub = N;
   while(abs(lb - ub) > 1){
     const auto mid = (lb + ub) / 2;
- 
+
     if(check(mid)){
       ub = mid;
     }else{
       lb = mid;
     }
   }
-  
+
   return ub;
 }
 
@@ -130,7 +132,9 @@ int chromatic_number(const std::vector<std::vector<int>> &graph){
 ```cpp
 #line 2 "Mylib/Graph/Coloring/chromatic_number.cpp"
 #include <vector>
-#line 2 "Mylib/Number/Mod/mod_power.cpp"
+#include <cstdint>
+#include <cmath>
+#line 3 "Mylib/Number/Mod/mod_power.cpp"
 
 /**
  * @title Mod power
@@ -145,7 +149,7 @@ int64_t power(int64_t n, int64_t p, int64_t m){
   }
   return ret;
 }
-#line 4 "Mylib/Graph/Coloring/chromatic_number.cpp"
+#line 6 "Mylib/Graph/Coloring/chromatic_number.cpp"
 
 /**
  * @title Graph vertex coloring
@@ -154,14 +158,14 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 int chromatic_number(const std::vector<std::vector<int>> &graph){
   static constexpr int mod = 1000000007;
   const int N = graph.size();
- 
+
   std::vector<int> g(N);
   for(int i = 0; i < N; ++i){
     for(auto j : graph[i]){
       g[i] |= (1 << j);
     }
   }
-  
+
   std::vector<int64_t> I(1 << N);
   I[0] = 1;
   for(int i = 1; i < (1 << N); ++i){
@@ -169,7 +173,7 @@ int chromatic_number(const std::vector<std::vector<int>> &graph){
     I[i] = I[i - (1 << c)] + I[(i - (1 << c)) & (~g[c])];
     if(I[i] >= mod) I[i] -= mod;
   }
-  
+
   const auto check =
     [&](int k){
       int64_t t = 0;
@@ -181,18 +185,18 @@ int chromatic_number(const std::vector<std::vector<int>> &graph){
       }
       return (t % mod != 0);
     };
-  
+
   int lb = 0, ub = N;
   while(abs(lb - ub) > 1){
     const auto mid = (lb + ub) / 2;
- 
+
     if(check(mid)){
       ub = mid;
     }else{
       lb = mid;
     }
   }
-  
+
   return ub;
 }
 

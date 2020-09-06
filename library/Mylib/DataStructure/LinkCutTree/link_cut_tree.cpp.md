@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Link/cut tree
+# :x: Link/cut tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a178be27fdfe56586a4fa516e8dee442">Mylib/DataStructure/LinkCutTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp.html">test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp.html">test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp</a>
 
 
 ## Code
@@ -54,10 +54,10 @@ layout: default
  * @docs link_cut_tree.md
  */
 template <typename Monoid>
-struct LinkCutNode{
+struct LinkCutNode {
   using value_type = typename Monoid::value_type;
   using node = LinkCutNode;
-  constexpr static Monoid M = Monoid();
+  const static Monoid M;
 
   int subsize;
   node *left, *right, *parent;
@@ -70,12 +70,12 @@ struct LinkCutNode{
     right(nullptr),
     parent(nullptr),
     rev(false),
-    value(M.id()),
-    result(M.id())
+    value(M()),
+    result(M())
   {}
 
   bool is_root() const {
-    return !parent or (parent->left != this and parent->right != this); 
+    return !parent or (parent->left != this and parent->right != this);
   }
 
   void update_node_status(){
@@ -85,13 +85,13 @@ struct LinkCutNode{
     if(left){
       left->push_down();
       subsize += left->subsize;
-      result = M.op(result, left->result);
+      result = M(result, left->result);
     }
 
     if(right){
       right->push_down();
       subsize += right->subsize;
-      result = M.op(result, right->result);
+      result = M(result, right->result);
     }
   }
 
@@ -104,7 +104,6 @@ struct LinkCutNode{
     }
   }
 
-  
   void rot(int dir_right){
     node *p = parent, *g = p->parent;
 
@@ -128,7 +127,7 @@ struct LinkCutNode{
     if(g->right == p) g->right = this;
     g->update_node_status();
   }
-  
+
   void splay(){
     while(not is_root()){
       node *p = parent, *gp = p->parent;
@@ -163,7 +162,7 @@ struct LinkCutNode{
       p->update_node_status();
       rp = p;
     }
-    
+
     u->splay();
   }
 
@@ -171,7 +170,7 @@ struct LinkCutNode{
     evert(u);
     u->parent = v;
   }
-  
+
   static void cut(node *u){
     expose(u);
     u->left->parent = nullptr;
@@ -197,15 +196,11 @@ struct LinkCutNode{
   }
 };
 
-
-
-
-
 template <typename Monoid>
-class LinkCutTree{
+class LinkCutTree {
   using value_type = typename Monoid::value_type;
   using node = LinkCutNode<Monoid>;
-  constexpr static Monoid M = Monoid();
+  const static Monoid M;
 
   int N;
   std::vector<node*> nodes;
@@ -220,7 +215,7 @@ public:
   void expose(int k){
     node::expose(nodes[k]);
   }
-  
+
   void cut(int i, int j){
     node::cut(nodes[i], nodes[j]);
   }
@@ -264,10 +259,10 @@ public:
  * @docs link_cut_tree.md
  */
 template <typename Monoid>
-struct LinkCutNode{
+struct LinkCutNode {
   using value_type = typename Monoid::value_type;
   using node = LinkCutNode;
-  constexpr static Monoid M = Monoid();
+  const static Monoid M;
 
   int subsize;
   node *left, *right, *parent;
@@ -280,12 +275,12 @@ struct LinkCutNode{
     right(nullptr),
     parent(nullptr),
     rev(false),
-    value(M.id()),
-    result(M.id())
+    value(M()),
+    result(M())
   {}
 
   bool is_root() const {
-    return !parent or (parent->left != this and parent->right != this); 
+    return !parent or (parent->left != this and parent->right != this);
   }
 
   void update_node_status(){
@@ -295,13 +290,13 @@ struct LinkCutNode{
     if(left){
       left->push_down();
       subsize += left->subsize;
-      result = M.op(result, left->result);
+      result = M(result, left->result);
     }
 
     if(right){
       right->push_down();
       subsize += right->subsize;
-      result = M.op(result, right->result);
+      result = M(result, right->result);
     }
   }
 
@@ -314,7 +309,6 @@ struct LinkCutNode{
     }
   }
 
-  
   void rot(int dir_right){
     node *p = parent, *g = p->parent;
 
@@ -338,7 +332,7 @@ struct LinkCutNode{
     if(g->right == p) g->right = this;
     g->update_node_status();
   }
-  
+
   void splay(){
     while(not is_root()){
       node *p = parent, *gp = p->parent;
@@ -373,7 +367,7 @@ struct LinkCutNode{
       p->update_node_status();
       rp = p;
     }
-    
+
     u->splay();
   }
 
@@ -381,7 +375,7 @@ struct LinkCutNode{
     evert(u);
     u->parent = v;
   }
-  
+
   static void cut(node *u){
     expose(u);
     u->left->parent = nullptr;
@@ -407,15 +401,11 @@ struct LinkCutNode{
   }
 };
 
-
-
-
-
 template <typename Monoid>
-class LinkCutTree{
+class LinkCutTree {
   using value_type = typename Monoid::value_type;
   using node = LinkCutNode<Monoid>;
-  constexpr static Monoid M = Monoid();
+  const static Monoid M;
 
   int N;
   std::vector<node*> nodes;
@@ -430,7 +420,7 @@ public:
   void expose(int k){
     node::expose(nodes[k]);
   }
-  
+
   void cut(int i, int j){
     node::cut(nodes[i], nodes[j]);
   }

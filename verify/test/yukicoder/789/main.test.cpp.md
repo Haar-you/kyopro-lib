@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/789/main.test.cpp
+# :x: test/yukicoder/789/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f2dc228f845da8f438899cc780c48dec">test/yukicoder/789</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/789/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/789">https://yukicoder.me/problems/no/789</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Mylib/AlgebraicStructure/Monoid/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp.html">Dynamic segment tree</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Sum monoid</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp.html">Dynamic segment tree</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -66,17 +66,17 @@ int main(){
   DynamicSegmentTree<SumMonoid<int64_t>> seg(1000000001);
 
   int64_t ans = 0;
-    
+
   for(auto [q, x, y] : input_tuples<int, int, int>(n)){
     if(q == 0){
       seg.update(x, seg[x] + y);
     }else{
-      ans += seg.get(x, y+1);
+      ans += seg.get(x, y + 1);
     }
   }
 
   std::cout << ans << "\n";
-  
+
   return 0;
 }
 
@@ -91,57 +91,58 @@ int main(){
 
 #include <iostream>
 #line 2 "Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp"
+#include <cstdint>
 
 /**
  * @title Dynamic segment tree
  * @docs dynamic_segment_tree.md
  */
 template <typename Monoid>
-class DynamicSegmentTree{
+class DynamicSegmentTree {
   using value_type = typename Monoid::value_type;
-  Monoid M;
-  
-  struct Node{
+  const static Monoid M;
+
+  struct Node {
     value_type val;
     Node *left = nullptr, *right = nullptr;
     Node(const value_type &val): val(val) {}
   };
-  
+
   int64_t depth, size;
   Node *root = nullptr;
 
   value_type eval(Node *t) const {
-    return t ? t->val : M.id();
+    return t ? t->val : M();
   }
 
   Node* update_aux(Node *node, int64_t l, int64_t r, int64_t pos, const value_type &val){
-    if(r-l == 1){
+    if(r - l == 1){
       if(node) node->val = val;
       else node = new Node(val);
     }else{
-      int64_t m = (l+r)/2;
+      const int64_t m = (l + r) / 2;
       if(!node) node = new Node(val);
       if(pos < m) node->left = update_aux(node->left, l, m, pos, val);
       else node->right = update_aux(node->right, m, r, pos, val);
-      node->val = M.op(eval(node->left), eval(node->right));
+      node->val = M(eval(node->left), eval(node->right));
     }
     return node;
   }
 
   value_type get_aux(Node* node, int64_t l, int64_t r, int64_t x, int64_t y) const {
-    if(!node) return M.id();
-    if(x <= l && r <= y) return node ? node->val : M.id();
-    if(r < x || y < l) return M.id();
+    if(!node) return M();
+    if(x <= l && r <= y) return node ? node->val : M();
+    if(r < x || y < l) return M();
     int64_t m = (l + r) >> 1;
-    return M.op(get_aux(node->left, l, m, x, y), get_aux(node->right, m, r, x, y));
+    return M(get_aux(node->left, l, m, x, y), get_aux(node->right, m, r, x, y));
   }
 
 public:
   DynamicSegmentTree(int64_t n):
-    depth(n > 1 ? 64-__builtin_clzll(n-1) + 1 : 1),
+    depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),
     size(1LL << depth)
   {
-    root = new Node(M.id());
+    root = new Node(M());
   }
 
   void update(int64_t i, const value_type &x){
@@ -153,19 +154,20 @@ public:
   }
 
   value_type operator[](int64_t i) const {
-    return get(i, i+1);
+    return get(i, i + 1);
   }
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 
 /**
+ * @title Sum monoid
  * @docs sum.md
  */
 template <typename T>
-struct SumMonoid{
+struct SumMonoid {
   using value_type = T;
-  value_type id() const {return 0;}
-  value_type op(value_type a, value_type b) const {return a + b;}
+  value_type operator()() const {return 0;}
+  value_type operator()(value_type a, value_type b) const {return a + b;}
 };
 #line 3 "Mylib/IO/input_tuples.cpp"
 #include <vector>
@@ -178,8 +180,8 @@ struct SumMonoid{
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -189,8 +191,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -199,8 +201,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -249,17 +251,17 @@ int main(){
   DynamicSegmentTree<SumMonoid<int64_t>> seg(1000000001);
 
   int64_t ans = 0;
-    
+
   for(auto [q, x, y] : input_tuples<int, int, int>(n)){
     if(q == 0){
       seg.update(x, seg[x] + y);
     }else{
-      ans += seg.get(x, y+1);
+      ans += seg.get(x, y + 1);
     }
   }
 
   std::cout << ans << "\n";
-  
+
   return 0;
 }
 

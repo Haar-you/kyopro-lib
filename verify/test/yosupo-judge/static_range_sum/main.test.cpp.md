@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/static_range_sum/main.test.cpp
+# :x: test/yosupo-judge/static_range_sum/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#e057ba653ff4e1918cbb7491bf73d8e0">test/yosupo-judge/static_range_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/static_range_sum/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/static_range_sum">https://judge.yosupo.jp/problem/static_range_sum</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp.html">1D cumulative sum</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp.html">1D cumulative sum</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -60,7 +60,7 @@ layout: default
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   auto a = input_vector<int64_t>(N);
@@ -94,7 +94,7 @@ int main(){
  * @docs cumulative_sum_1d.md
  */
 template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
-class CumulativeSum1D{
+class CumulativeSum1D {
   std::vector<T> data;
   const int N;
   const Add add;
@@ -105,29 +105,29 @@ public:
   CumulativeSum1D(const std::vector<T> &a, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
     N(a.size()), add(add), minus(minus)
   {
-    data.assign(N+1, e);
-    for(int i = 0; i < N; ++i) data[i+1] = a[i];
+    data.assign(N + 1, e);
+    for(int i = 0; i < N; ++i) data[i + 1] = a[i];
   }
 
   CumulativeSum1D(int N, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
     N(N), add(add), minus(minus)
   {
-    data.assign(N+1, e);
+    data.assign(N + 1, e);
   }
 
   auto& update(int i, const T &val){
     assert(not is_built);
-    data[i+1] = add(data[i+1], val);
+    data[i + 1] = add(data[i + 1], val);
     return *this;
   }
 
   auto& build(){
     assert(not is_built);
-    for(int i = 0; i < N; ++i) data[i+1] = add(data[i+1], data[i]);
+    for(int i = 0; i < N; ++i) data[i + 1] = add(data[i + 1], data[i]);
     is_built = true;
     return *this;
   }
-  
+
   /**
    * @attention [i, j)
    */
@@ -136,7 +136,6 @@ public:
     return minus(data[j], data[i]);
   }
 };
-
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
@@ -165,8 +164,8 @@ std::vector<std::vector<T>> input_vector(int N, int M){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -176,8 +175,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -186,8 +185,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -230,7 +229,7 @@ auto input_tuples(int N){
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   auto a = input_vector<int64_t>(N);

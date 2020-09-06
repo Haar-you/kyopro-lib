@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/ends_with.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -42,6 +42,7 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
+#include <cstddef>
 
 /**
  * @title ends_with
@@ -52,7 +53,7 @@ bool ends_with(const Container &str, const Container &suffix){
   if(str.size() < suffix.size()) return false;
   int n = str.size(), m = suffix.size();
   for(size_t i = 0; i < suffix.size(); ++i){
-    if(str[n-1-i] != suffix[m-1-i]) return false;
+    if(str[n - 1 - i] != suffix[m - 1 - i]) return false;
   }
   return true;
 }
@@ -64,6 +65,7 @@ bool ends_with(const Container &str, const Container &suffix){
 {% raw %}
 ```cpp
 #line 2 "Mylib/String/ends_with.cpp"
+#include <cstddef>
 
 /**
  * @title ends_with
@@ -74,7 +76,7 @@ bool ends_with(const Container &str, const Container &suffix){
   if(str.size() < suffix.size()) return false;
   int n = str.size(), m = suffix.size();
   for(size_t i = 0; i < suffix.size(); ++i){
-    if(str[n-1-i] != suffix[m-1-i]) return false;
+    if(str[n - 1 - i] != suffix[m - 1 - i]) return false;
   }
   return true;
 }

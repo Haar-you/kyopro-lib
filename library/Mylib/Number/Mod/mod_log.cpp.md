@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mod logarithm
+# :x: Mod logarithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#795ab137908c82fc28acbcffe5b1c757">Mylib/Number/Mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mod/mod_log.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -53,13 +53,13 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="mod_inv.cpp.html">Mod inverse</a>
-* :question: <a href="mod_power.cpp.html">Mod power</a>
+* :x: <a href="mod_inv.cpp.html">Mod inverse</a>
+* :x: <a href="mod_power.cpp.html">Mod power</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
 
 
 ## Code
@@ -81,17 +81,17 @@ layout: default
  */
 std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
   if(b == 1) return 0;
-  
+
   int64_t d = 0;
-  
+
   while(1){
     if(auto g = std::gcd(a, m); g != 1){
       if(b % g != 0) return {};
-      
+
       d += 1;
       m /= g;
       b /= g;
-      (b *= mod_inv(a/g, m)) %= m;
+      (b *= mod_inv(a / g, m)) %= m;
 
       if(b == 1) return d;
     }else{
@@ -100,21 +100,21 @@ std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
   }
 
   const int64_t sq = sqrt(m) + 1;
-  
-  std::unordered_map<int64_t,int64_t> mp;
+
+  std::unordered_map<int64_t, int64_t> mp;
   {
     int64_t t = 1 % m;
-  
+
     for(int i = 0; i < sq; ++i){
       if(mp.find(t) == mp.end()) mp[t] = i;
       (t *= a) %= m;
     }
   }
-  
+
   {
     int64_t A = power(mod_inv(a, m), sq, m);
     int64_t t = b % m;
-    
+
     for(int i = 0; i < sq; ++i){
       if(mp.find(t) != mp.end()){
         int64_t ret = i * sq + mp[t] + d;
@@ -125,7 +125,7 @@ std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
       (t *= A) %= m;
     }
   }
-  
+
   return {};
 }
 
@@ -141,6 +141,7 @@ std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
 #include <numeric>
 #include <cmath>
 #line 2 "Mylib/Number/Mod/mod_power.cpp"
+#include <cstdint>
 
 /**
  * @title Mod power
@@ -157,6 +158,7 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 }
 #line 2 "Mylib/Number/Mod/mod_inv.cpp"
 #include <utility>
+#line 4 "Mylib/Number/Mod/mod_inv.cpp"
 
 /**
  * @title Mod inverse
@@ -184,17 +186,17 @@ int64_t mod_inv(int64_t a, int64_t m){
  */
 std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
   if(b == 1) return 0;
-  
+
   int64_t d = 0;
-  
+
   while(1){
     if(auto g = std::gcd(a, m); g != 1){
       if(b % g != 0) return {};
-      
+
       d += 1;
       m /= g;
       b /= g;
-      (b *= mod_inv(a/g, m)) %= m;
+      (b *= mod_inv(a / g, m)) %= m;
 
       if(b == 1) return d;
     }else{
@@ -203,21 +205,21 @@ std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
   }
 
   const int64_t sq = sqrt(m) + 1;
-  
-  std::unordered_map<int64_t,int64_t> mp;
+
+  std::unordered_map<int64_t, int64_t> mp;
   {
     int64_t t = 1 % m;
-  
+
     for(int i = 0; i < sq; ++i){
       if(mp.find(t) == mp.end()) mp[t] = i;
       (t *= a) %= m;
     }
   }
-  
+
   {
     int64_t A = power(mod_inv(a, m), sq, m);
     int64_t t = b % m;
-    
+
     for(int i = 0; i < sq; ++i){
       if(mp.find(t) != mp.end()){
         int64_t ret = i * sq + mp[t] + d;
@@ -228,7 +230,7 @@ std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
       (t *= A) %= m;
     }
   }
-  
+
   return {};
 }
 

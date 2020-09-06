@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/ITP1_3_D/main.test.cpp
+# :x: test/aoj/ITP1_3_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#8d38fbe7bd169996a63c214260a5e34a">test/aoj/ITP1_3_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ITP1_3_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-31 18:25:07+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Divisor/enumerate_divisors.cpp.html">Enumerate divisors</a>
+* :x: <a href="../../../../library/Mylib/Number/Divisor/enumerate_divisors.cpp.html">Enumerate divisors</a>
 
 
 ## Code
@@ -90,7 +90,7 @@ std::vector<int64_t> enumerate_divisors(int64_t n){
   {
     int64_t i;
     for(i = 1LL; i * i < n; ++i){
-      if(n%i == 0){
+      if(n % i == 0){
         temp.push_back(n / i);
         ret.push_back(i);
       }
@@ -100,7 +100,7 @@ std::vector<int64_t> enumerate_divisors(int64_t n){
 
   std::reverse(temp.begin(), temp.end());
   ret.insert(ret.end(), temp.begin(), temp.end());
-  
+
   return ret;
 }
 #line 5 "test/aoj/ITP1_3_D/main.test.cpp"

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/2667/main.test.cpp
+# :x: test/aoj/2667/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f80441644c784d0a46b75e1972ebee8e">test/aoj/2667</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2667/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2667">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2667</a>
@@ -39,12 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp.html">Range add / Range sum</a>
-* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">Lazy segment tree</a>
-* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
-* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp.html">Range add / Range sum</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">Lazy segment tree</a>
+* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -66,18 +66,17 @@ int main(){
 
   Tree<int> tree(N);
   tree.read<0, false, false>(N - 1);
-  
+
   auto hld = HLDecomposition(tree, 0);
-  LazySegmentTree<AddSum<int64_t,int64_t>> seg(N);
-  
+  LazySegmentTree<AddSum<int64_t, int64_t>> seg(N);
+
   for(auto [c] : input_tuples<int>(Q)){
     if(c == 0){
       int u, v; std::cin >> u >> v;
-      
+
       int64_t ans = 0;
       hld.path_query_edge(
-        u,
-        v,
+        u, v,
         [&](int l, int r){
           ans += seg.get(l, r);
         }
@@ -85,7 +84,7 @@ int main(){
       std::cout << ans << std::endl;
     }else{
       int v, x; std::cin >> v >> x;
-      
+
       hld.subtree_query_edge(
         v,
         [&](int l, int r){
@@ -94,7 +93,7 @@ int main(){
       );
     }
   }
-  
+
   return 0;
 }
 
@@ -110,13 +109,14 @@ int main(){
 #include <iostream>
 #line 2 "Mylib/Graph/Template/graph.cpp"
 #include <vector>
+#line 4 "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -126,15 +126,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -147,7 +147,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -178,17 +178,18 @@ using Tree = Graph<T>;
  * @title Heavy-light decomposition
  * @docs heavy_light_decomposition.md
  */
-template <typename T> class HLDecomposition{
+template <typename T>
+class HLDecomposition {
   Tree<T> tree;
   int n;
-  
+
   std::vector<int> sub, // subtree size
     par, // parent id
-    head, // chain head id 
+    head, // chain head id
     id, // id[original id] = hld id
     rid, // rid[hld id] = original id
     next, // next node in a chain
-    end; // 
+    end; //
 
   int dfs_sub(int cur, int p){
     par[cur] = p;
@@ -218,21 +219,20 @@ template <typename T> class HLDecomposition{
 
     end[cur] = i;
   }
-  
 
 public:
   HLDecomposition(const Tree<T> &tree, int root):
-    tree(tree), n(tree.size()), sub(n,1), par(n,-1), head(n), id(n), rid(n), next(n,-1), end(n,-1){
+    tree(tree), n(tree.size()), sub(n, 1), par(n, -1), head(n), id(n), rid(n), next(n, -1), end(n, -1){
     dfs_sub(root, -1);
     int i = 0;
     dfs_build(root, i);
   }
 
-  template <typename Func> // std::function<void(int,int)>
+  template <typename Func> // std::function<void(int, int)>
   void path_query_vertex(int x, int y, const Func &f) const {
     while(1){
       if(id[x] > id[y]) std::swap(x, y);
-      f(std::max(id[head[y]], id[x]), id[y]+1);
+      f(std::max(id[head[y]], id[x]), id[y] + 1);
       if(head[x] == head[y]) return;
       y = par[head[y]];
     }
@@ -251,31 +251,31 @@ public:
       if(id[x] > id[y]){
         std::swap(x, y);
       }
-      g(std::max({id[head[y]], id[x], id[w]+1}), id[y]+1);
+      g(std::max({id[head[y]], id[x], id[w] + 1}), id[y] + 1);
       if(head[x] == head[y]) return;
       y = par[head[y]];
     }
   }
 
-  template <typename Func> // std::function<void(int,int)>
+  template <typename Func> // std::function<void(int, int)>
   void path_query_edge(int x, int y, const Func &f) const {
     while(1){
       if(id[x] > id[y]) std::swap(x, y);
       if(head[x] == head[y]){
-        if(x != y) f(id[x]+1, id[y]+1);
+        if(x != y) f(id[x] + 1, id[y] + 1);
         return;
       }
-      f(id[head[y]], id[y]+1);
+      f(id[head[y]], id[y] + 1);
       y = par[head[y]];
     }
   }
-  
-  template <typename Func> // std::function<void(int,int)>
+
+  template <typename Func> // std::function<void(int, int)>
   void subtree_query_edge(int x, const Func &f) const {
-    f(id[x]+1, end[x]);
+    f(id[x] + 1, end[x]);
   }
 
-  template <typename Func> // std::function<void(int,int)>
+  template <typename Func> // std::function<void(int, int)>
   void subtree_query_vertex(int x, const Func &f) const {
     f(id[x], end[x]);
   }
@@ -286,7 +286,7 @@ public:
     }else if(par[v] == u){
       return id[v];
     }
- 
+
     return -1;
   }
 
@@ -311,11 +311,11 @@ public:
  * @docs lazy_segment_tree.md
  */
 template <typename Monoid>
-class LazySegmentTree{
+class LazySegmentTree {
   using value_type_get = typename Monoid::value_type_get;
   using value_type_update = typename Monoid::value_type_update;
-  Monoid M;
-  
+  const static Monoid M;
+
   const int depth, size, hsize;
   std::vector<value_type_get> data;
   std::vector<value_type_update> lazy;
@@ -339,20 +339,20 @@ class LazySegmentTree{
       propagate(i);
       return data[i];
     }
-    else return data[i] = M.op_get(update_aux(i << 1 | 0, l, (l+r) / 2, s, t, x), update_aux(i << 1 | 1, (l+r) / 2, r, s, t, x));
+    else return data[i] = M.op_get(update_aux(i << 1 | 0, l, (l + r) / 2, s, t, x), update_aux(i << 1 | 1, (l + r) / 2, r, s, t, x));
   }
-  
+
   value_type_get get_aux(int i, int l, int r, int x, int y){
     propagate(i);
     if(r <= x || y <= l) return M.id_get();
     else if(x <= l && r <= y) return data[i];
-    else return M.op_get(get_aux(i << 1 | 0, l, (l+r) / 2, x, y), get_aux(i << 1 | 1, (l+r) / 2, r, x, y));
+    else return M.op_get(get_aux(i << 1 | 0, l, (l + r) / 2, x, y), get_aux(i << 1 | 1, (l + r) / 2, r, x, y));
   }
 
 public:
   LazySegmentTree(){}
   LazySegmentTree(int n):
-    depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
+    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
     size(1 << depth),
     hsize(size / 2),
     data(size, M.id_get()),
@@ -360,9 +360,9 @@ public:
   {}
 
   void update(int l, int r, const value_type_update &x){update_aux(1, 0, hsize, l, r, x);}
-  void update_at(int i, const value_type_update &x){update(i, i+1, x);}
+  void update_at(int i, const value_type_update &x){update(i, i + 1, x);}
   value_type_get get(int l, int r){return get_aux(1, 0, hsize, l, r);}
-  value_type_get at(int i){return get(i, i+1);}
+  value_type_get operator[](int i){return get(i, i + 1);}
 
   template <typename T>
   void init(const T &val){
@@ -374,7 +374,7 @@ public:
     data.assign(size, M.id_get());
     lazy.assign(size, M.id_update());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
-    for(int i = hsize-1; i > 0; --i) data[i] = M.op_get(data[i << 1 | 0], data[i << 1 | 1]);
+    for(int i = hsize - 1; i > 0; --i) data[i] = M.op_get(data[i << 1 | 0], data[i << 1 | 1]);
   }
 };
 #line 2 "Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp"
@@ -384,7 +384,7 @@ public:
  * @docs add_sum.md
  */
 template <typename T, typename U>
-struct AddSum{
+struct AddSum {
   using value_type_get = T;
   using value_type_update = U;
 
@@ -408,8 +408,8 @@ struct AddSum{
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -419,8 +419,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -429,8 +429,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -475,18 +475,17 @@ int main(){
 
   Tree<int> tree(N);
   tree.read<0, false, false>(N - 1);
-  
+
   auto hld = HLDecomposition(tree, 0);
-  LazySegmentTree<AddSum<int64_t,int64_t>> seg(N);
-  
+  LazySegmentTree<AddSum<int64_t, int64_t>> seg(N);
+
   for(auto [c] : input_tuples<int>(Q)){
     if(c == 0){
       int u, v; std::cin >> u >> v;
-      
+
       int64_t ans = 0;
       hld.path_query_edge(
-        u,
-        v,
+        u, v,
         [&](int l, int r){
           ans += seg.get(l, r);
         }
@@ -494,7 +493,7 @@ int main(){
       std::cout << ans << std::endl;
     }else{
       int v, x; std::cin >> v >> x;
-      
+
       hld.subtree_query_edge(
         v,
         [&](int l, int r){
@@ -503,7 +502,7 @@ int main(){
       );
     }
   }
-  
+
   return 0;
 }
 

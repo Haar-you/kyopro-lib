@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Euler's totient function
+# :x: Euler's totient function
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/euler_phi_function.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="tetration.cpp.html">Tetration</a>
+* :x: <a href="tetration.cpp.html">Tetration</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/NTL_1_D/main.totient.test.cpp.html">test/aoj/NTL_1_D/main.totient.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/tetration_mod/main.test.cpp.html">test/yosupo-judge/tetration_mod/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/NTL_1_D/main.totient.test.cpp.html">test/aoj/NTL_1_D/main.totient.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/tetration_mod/main.test.cpp.html">test/yosupo-judge/tetration_mod/main.test.cpp</a>
 
 
 ## Code
@@ -53,6 +53,7 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
+#include <cstdint>
 
 /**
  * @title Euler's totient function
@@ -80,6 +81,7 @@ int64_t totient(int64_t n){
 {% raw %}
 ```cpp
 #line 2 "Mylib/Number/euler_phi_function.cpp"
+#include <cstdint>
 
 /**
  * @title Euler's totient function

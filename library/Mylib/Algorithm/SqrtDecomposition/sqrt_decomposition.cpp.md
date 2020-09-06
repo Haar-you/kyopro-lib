@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#c78b3868045887a7ae97845e4050078a">Mylib/Algorithm/SqrtDecomposition</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -43,12 +43,13 @@ layout: default
 ```cpp
 #pragma once
 #include <algorithm>
+#include <cmath>
 
 /**
  * @title Sqrt decomposition
  * @docs sqrt_decomposition.md
  */
-struct SqrtDecomposition{
+struct SqrtDecomposition {
   const int N;
   const int BLOCK_SIZE;
   const int BLOCK_NUM;
@@ -62,7 +63,7 @@ struct SqrtDecomposition{
   void init(const Func &f){
     for(int i = 0; i < BLOCK_NUM; ++i){
       const int L = i * BLOCK_SIZE;
-      const int R = std::min<int>(N, (i+1) * BLOCK_SIZE);
+      const int R = std::min<int>(N, (i + 1) * BLOCK_SIZE);
       f(i, L, R);
     }
   }
@@ -71,7 +72,7 @@ struct SqrtDecomposition{
   void query(int l, int r, const FuncBlock &func_block, const FuncRange &func_range){ // [l, r)
     for(int i = 0; i < BLOCK_NUM; ++i){
       const int L = i * BLOCK_SIZE;
-      const int R = std::min<int>(N, (i+1) * BLOCK_SIZE);
+      const int R = std::min<int>(N, (i + 1) * BLOCK_SIZE);
 
       if(l <= L and R <= r){
         func_block(i, L, R);
@@ -90,12 +91,13 @@ struct SqrtDecomposition{
 ```cpp
 #line 2 "Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp"
 #include <algorithm>
+#include <cmath>
 
 /**
  * @title Sqrt decomposition
  * @docs sqrt_decomposition.md
  */
-struct SqrtDecomposition{
+struct SqrtDecomposition {
   const int N;
   const int BLOCK_SIZE;
   const int BLOCK_NUM;
@@ -109,7 +111,7 @@ struct SqrtDecomposition{
   void init(const Func &f){
     for(int i = 0; i < BLOCK_NUM; ++i){
       const int L = i * BLOCK_SIZE;
-      const int R = std::min<int>(N, (i+1) * BLOCK_SIZE);
+      const int R = std::min<int>(N, (i + 1) * BLOCK_SIZE);
       f(i, L, R);
     }
   }
@@ -118,7 +120,7 @@ struct SqrtDecomposition{
   void query(int l, int r, const FuncBlock &func_block, const FuncRange &func_range){ // [l, r)
     for(int i = 0; i < BLOCK_NUM; ++i){
       const int L = i * BLOCK_SIZE;
-      const int R = std::min<int>(N, (i+1) * BLOCK_SIZE);
+      const int R = std::min<int>(N, (i + 1) * BLOCK_SIZE);
 
       if(l <= L and R <= r){
         func_block(i, L, R);

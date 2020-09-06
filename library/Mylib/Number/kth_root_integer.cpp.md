@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Kth root integer
+# :x: Kth root integer
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/kth_root_integer.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-04 05:12:56+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/kth_root_integer/main.test.cpp.html">test/yosupo-judge/kth_root_integer/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/kth_root_integer/main.test.cpp.html">test/yosupo-judge/kth_root_integer/main.test.cpp</a>
 
 
 ## Code
@@ -48,6 +48,7 @@ layout: default
 ```cpp
 #pragma once
 #include <cassert>
+#include <cstdint>
 
 /**
  * @title Kth root integer
@@ -57,13 +58,13 @@ uint64_t kth_root(uint64_t a, int k){
   assert(k >= 1);
   if(k == 1) return a;
   if(a == 1) return 1;
-  
+
   uint64_t lb = 0, ub = a;
 
   auto check =
     [](uint64_t a, int k, uint64_t n){
       uint64_t r = 1;
-  
+
       while(k > 0){
         if(k & 1){
           if(__builtin_umulll_overflow(r, a, (unsigned long long int*)&r)) return false;
@@ -77,15 +78,15 @@ uint64_t kth_root(uint64_t a, int k){
 
   while(ub - lb > 1){
     uint64_t mid = lb + (ub - lb) / 2;
-    
+
     if(check(mid, k, a)){
       lb = mid;
     }else{
       ub = mid;
     }
   }
-  
-  return lb;  
+
+  return lb;
 }
 
 ```
@@ -96,6 +97,7 @@ uint64_t kth_root(uint64_t a, int k){
 ```cpp
 #line 2 "Mylib/Number/kth_root_integer.cpp"
 #include <cassert>
+#include <cstdint>
 
 /**
  * @title Kth root integer
@@ -105,13 +107,13 @@ uint64_t kth_root(uint64_t a, int k){
   assert(k >= 1);
   if(k == 1) return a;
   if(a == 1) return 1;
-  
+
   uint64_t lb = 0, ub = a;
 
   auto check =
     [](uint64_t a, int k, uint64_t n){
       uint64_t r = 1;
-  
+
       while(k > 0){
         if(k & 1){
           if(__builtin_umulll_overflow(r, a, (unsigned long long int*)&r)) return false;
@@ -125,15 +127,15 @@ uint64_t kth_root(uint64_t a, int k){
 
   while(ub - lb > 1){
     uint64_t mid = lb + (ub - lb) / 2;
-    
+
     if(check(mid, k, a)){
       lb = mid;
     }else{
       ub = mid;
     }
   }
-  
-  return lb;  
+
+  return lb;
 }
 
 ```

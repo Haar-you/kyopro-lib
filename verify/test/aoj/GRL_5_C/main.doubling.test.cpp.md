@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/GRL_5_C/main.doubling.test.cpp
+# :x: test/aoj/GRL_5_C/main.doubling.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#502e31dec0efb369b23aee4c6aa81a7e">test/aoj/GRL_5_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_5_C/main.doubling.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
-* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp.html">Lowest common ancestor (Doubling)</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
+* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp.html">Lowest common ancestor (Doubling)</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
 
 
 ## Code
@@ -74,7 +74,7 @@ int main(){
   int q; std::cin >> q;
 
   for(auto [u, v] : input_tuples<int, int>(q)){
-    std::cout << lca.lca(u, v) << std::endl;
+    std::cout << lca(u, v) << std::endl;
   }
 
   return 0;
@@ -92,13 +92,14 @@ int main(){
 #include <iostream>
 #line 2 "Mylib/Graph/Template/graph.cpp"
 #include <vector>
+#line 4 "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -108,15 +109,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -129,7 +130,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -159,11 +160,12 @@ using Tree = Graph<T>;
  * @title Lowest common ancestor (Doubling)
  * @docs lca_based_on_doubling.md
  */
-template <typename T> class LCA{
+template <typename T>
+class LCA {
 private:
   std::vector<std::vector<int>> parent;
   int n, log2n;
-  
+
   void dfs(const Tree<T> &tree, int cur, int par, int d){
     parent[cur][0] = par;
     depth[cur] = d;
@@ -171,11 +173,11 @@ private:
     for(auto &e : tree[cur]){
       if(e.to != par){
         dist[e.to] = dist[cur] + e.cost;
-        dfs(tree, e.to, cur, d+1);
+        dfs(tree, e.to, cur, d + 1);
       }
     }
   }
-  
+
 public:
   std::vector<int> depth;
   std::vector<T> dist;
@@ -184,28 +186,30 @@ public:
   LCA(const Tree<T> &tree, int root):
     n(tree.size()), depth(n), dist(n)
   {
-    log2n = (int)ceil(log(n) / log(2)) + 1;
-    parent = std::vector<std::vector<int>>(n, std::vector<int>(log2n, 0));
+    log2n = (int)ceil(log2(n)) + 1;
+    parent = std::vector(n, std::vector<int>(log2n, 0));
 
     dfs(tree, root, -1, 0);
-    for(int k = 0; k < log2n-1; ++k){
+    for(int k = 0; k < log2n - 1; ++k){
       for(int v = 0; v < n; ++v){
-        if(parent[v][k] == -1) parent[v][k+1] = -1;
-        else parent[v][k+1] = parent[parent[v][k]][k];
+        if(parent[v][k] == -1) parent[v][k + 1] = -1;
+        else parent[v][k + 1] = parent[parent[v][k]][k];
       }
     }
   }
 
   int lca(int a, int b) const {
-    if(depth[a] >= depth[b]) std::swap(a,b);
+    if(depth[a] >= depth[b]) std::swap(a, b);
     for(int k = 0; k < log2n; ++k) if((depth[b] - depth[a]) >> k & 1) b = parent[b][k];
     if(a == b) return a;
-    for(int k = log2n-1; k >= 0; --k) if(parent[a][k] != parent[b][k]){a = parent[a][k]; b = parent[b][k];}
+    for(int k = log2n - 1; k >= 0; --k) if(parent[a][k] != parent[b][k]){a = parent[a][k]; b = parent[b][k];}
     return parent[a][0];
   }
 
+  int operator()(int a, int b) const {return lca(a, b);}
+
   T distance(int a, int b) const {
-    return dist[a] + dist[b] - 2 * dist[lca(a,b)];
+    return dist[a] + dist[b] - 2 * dist[lca(a, b)];
   }
 };
 #line 4 "Mylib/IO/input_tuples.cpp"
@@ -218,8 +222,8 @@ public:
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -229,8 +233,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -239,8 +243,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -284,8 +288,8 @@ auto input_tuples(int N){
  * @docs input_tuples_with_index.md
  */
 template <typename ... Args>
-class InputTuplesWithIndex{
-  struct iter{
+class InputTuplesWithIndex {
+  struct iter {
     using value_type = std::tuple<int, Args ...>;
     value_type value;
     bool fetched = false;
@@ -325,7 +329,6 @@ template <typename ... Args>
 auto input_tuples_with_index(int N){
   return InputTuplesWithIndex<Args ...>(N);
 }
-
 #line 8 "test/aoj/GRL_5_C/main.doubling.test.cpp"
 
 int main(){
@@ -343,7 +346,7 @@ int main(){
   int q; std::cin >> q;
 
   for(auto [u, v] : input_tuples<int, int>(q)){
-    std::cout << lca.lca(u, v) << std::endl;
+    std::cout << lca(u, v) << std::endl;
   }
 
   return 0;

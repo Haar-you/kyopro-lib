@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Skew heap
+# :x: Skew heap
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f151d59e79c7ff7f731ff52cf9b782e4">Mylib/DataStructure/Heap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Heap/skew_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
 
 
 ## Code
@@ -55,8 +55,8 @@ layout: default
  * @docs skew_heap.md
  */
 template <typename T, class Compare = std::less<T>>
-class SkewHeap{
-  struct node{
+class SkewHeap {
+  struct node {
     T val;
     node *left, *right;
     int size;
@@ -108,8 +108,8 @@ public:
  * @docs skew_heap.md
  */
 template <typename T, class Compare = std::less<T>>
-class SkewHeap{
-  struct node{
+class SkewHeap {
+  struct node {
     T val;
     node *left, *right;
     int size;

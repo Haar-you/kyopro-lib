@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Fenwick tree (On Fenwick tree)
+# :x: Fenwick tree (On Fenwick tree)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2f58e2c328298747e7665b6f6b5791ad">Mylib/DataStructure/FenwickTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="fenwick_tree.cpp.html">Fenwick tree</a>
+* :x: <a href="fenwick_tree.cpp.html">Fenwick tree</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
 
 
 ## Code
@@ -55,7 +55,6 @@ layout: default
 #include <vector>
 #include <numeric>
 #include <algorithm>
-
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
 
 /**
@@ -63,9 +62,9 @@ layout: default
  * @docs fenwick_tree_on_fenwick_tree.md
  */
 template <typename AbelianGroup>
-class FenwickTree2D{
+class FenwickTree2D {
   using value_type = typename AbelianGroup::value_type;
-  AbelianGroup G;
+  const static AbelianGroup G;
 
   int N = 0;
   std::vector<int64_t> xs, ys;
@@ -97,7 +96,6 @@ public:
     c_ys.resize(x_size + 1);
     segs.resize(x_size + 1);
 
-
     std::vector<int> ord(N);
     std::iota(ord.begin(), ord.end(), 0);
     std::sort(ord.begin(), ord.end(), [&](int i, int j){return ys[i] < ys[j];});
@@ -108,16 +106,17 @@ public:
         c_ys[x].emplace_back(ys[i]);
       }
     }
-    
+
     for(int i = 1; i <= x_size; ++i){
       auto &a = c_ys[i];
       a.erase(std::unique(a.begin(), a.end()), a.end());
-      
+
       segs[i] = FenwickTree<AbelianGroup>(c_ys[i].size());
     }
   }
 
-  void update(int64_t x, int64_t y, const value_type &val){
+  void update(std::pair<int, int> p, const value_type &val){
+    const auto [x, y] = p;
     int i = std::lower_bound(c_xs.begin(), c_xs.end(), x) - c_xs.begin();
 
     for(i += 1; i <= x_size; i += i & (-i)){
@@ -128,21 +127,23 @@ public:
 
 private:
   value_type get(int i, int64_t y1, int64_t y2) const {
-    value_type ret = G.id();
+    value_type ret = G();
     for(; i > 0; i -= i & (-i)){
       int l = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y1) - c_ys[i].begin();
       int r = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y2) - c_ys[i].begin();
-      ret = G.op(ret, segs[i].get(l, r));
+      ret = G(ret, segs[i].get(l, r));
     }
     return ret;
   }
 
 public:
   // [x1, x2), [y1, y2)
-  value_type get(int64_t x1, int64_t y1, int64_t x2, int64_t y2) const {
+  value_type get(std::pair<int64_t, int64_t> p1, std::pair<int64_t, int64_t> p2) const {
+    const auto [x1, y1] = p1;
+    const auto [x2, y2] = p2;
     int l = std::lower_bound(c_xs.begin(), c_xs.end(), x1) - c_xs.begin();
     int r = std::lower_bound(c_xs.begin(), c_xs.end(), x2) - c_xs.begin();
-    return G.op(get(r, y1, y2), G.inv(get(l, y1, y2)));
+    return G(get(r, y1, y2), G.inv(get(l, y1, y2)));
   }
 };
 
@@ -156,7 +157,6 @@ public:
 #include <vector>
 #include <numeric>
 #include <algorithm>
-
 #line 3 "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
 
 /**
@@ -164,34 +164,34 @@ public:
  * @docs fenwick_tree.md
  */
 template <typename AbelianGroup>
-class FenwickTree{
+class FenwickTree {
   using value_type = typename AbelianGroup::value_type;
-  AbelianGroup G;
-  
+  const static AbelianGroup G;
+
   int size;
   std::vector<value_type> data;
-  
+
 public:
   FenwickTree(){}
   FenwickTree(int size):
-    size(size), data(size + 1, G.id())
+    size(size), data(size + 1, G())
   {}
-  
+
   void update(int i, const value_type &val){
     i += 1; // 1-index
-    
+
     while(i <= size){
-      data[i] = G.op(data[i], val);
+      data[i] = G(data[i], val);
       i += i & (-i);
     }
   }
-  
+
   value_type get(int i) const { // [0, i)
-    value_type ret = G.id();
+    value_type ret = G();
     i += 1; // 1-index
 
     while(i > 0){
-      ret = G.op(ret, data[i]);
+      ret = G(ret, data[i]);
       i -= i & (-i);
     }
 
@@ -199,23 +199,23 @@ public:
   }
 
   value_type get(int l, int r) const { // [l, r)
-    return G.op(get(r-1), G.inv(get(l-1)));
+    return G(get(r - 1), G.inv(get(l - 1)));
   }
-  
-  value_type at(int x) const {
-    return get(x, x+1);
+
+  value_type operator[](int x) const {
+    return get(x, x + 1);
   }
 };
-#line 7 "Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp"
+#line 6 "Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp"
 
 /**
  * @title Fenwick tree (On Fenwick tree)
  * @docs fenwick_tree_on_fenwick_tree.md
  */
 template <typename AbelianGroup>
-class FenwickTree2D{
+class FenwickTree2D {
   using value_type = typename AbelianGroup::value_type;
-  AbelianGroup G;
+  const static AbelianGroup G;
 
   int N = 0;
   std::vector<int64_t> xs, ys;
@@ -247,7 +247,6 @@ public:
     c_ys.resize(x_size + 1);
     segs.resize(x_size + 1);
 
-
     std::vector<int> ord(N);
     std::iota(ord.begin(), ord.end(), 0);
     std::sort(ord.begin(), ord.end(), [&](int i, int j){return ys[i] < ys[j];});
@@ -258,16 +257,17 @@ public:
         c_ys[x].emplace_back(ys[i]);
       }
     }
-    
+
     for(int i = 1; i <= x_size; ++i){
       auto &a = c_ys[i];
       a.erase(std::unique(a.begin(), a.end()), a.end());
-      
+
       segs[i] = FenwickTree<AbelianGroup>(c_ys[i].size());
     }
   }
 
-  void update(int64_t x, int64_t y, const value_type &val){
+  void update(std::pair<int, int> p, const value_type &val){
+    const auto [x, y] = p;
     int i = std::lower_bound(c_xs.begin(), c_xs.end(), x) - c_xs.begin();
 
     for(i += 1; i <= x_size; i += i & (-i)){
@@ -278,21 +278,23 @@ public:
 
 private:
   value_type get(int i, int64_t y1, int64_t y2) const {
-    value_type ret = G.id();
+    value_type ret = G();
     for(; i > 0; i -= i & (-i)){
       int l = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y1) - c_ys[i].begin();
       int r = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y2) - c_ys[i].begin();
-      ret = G.op(ret, segs[i].get(l, r));
+      ret = G(ret, segs[i].get(l, r));
     }
     return ret;
   }
 
 public:
   // [x1, x2), [y1, y2)
-  value_type get(int64_t x1, int64_t y1, int64_t x2, int64_t y2) const {
+  value_type get(std::pair<int64_t, int64_t> p1, std::pair<int64_t, int64_t> p2) const {
+    const auto [x1, y1] = p1;
+    const auto [x2, y2] = p2;
     int l = std::lower_bound(c_xs.begin(), c_xs.end(), x1) - c_xs.begin();
     int r = std::lower_bound(c_xs.begin(), c_xs.end(), x2) - c_xs.begin();
-    return G.op(get(r, y1, y2), G.inv(get(l, y1, y2)));
+    return G(get(r, y1, y2), G.inv(get(l, y1, y2)));
   }
 };
 

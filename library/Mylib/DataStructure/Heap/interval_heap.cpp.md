@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f151d59e79c7ff7f731ff52cf9b782e4">Mylib/DataStructure/Heap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Heap/interval_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -64,7 +64,7 @@ layout: default
  * @docs interval_heap.md
  */
 template <typename T, typename Compare = std::less<T>>
-class IntervalHeap{
+class IntervalHeap {
   int left(int i) const {return i * 2 + 1;}
   int right(int i) const {return i * 2 + 2;}
   int parent(int i) const {return (i - 1) >> 1;}
@@ -88,12 +88,13 @@ class IntervalHeap{
         return false;
       }
     }else{
-      std::array<int, 4> a = {
-                              get_min_element(parent),
-                              get_min_element(child),
-                              get_max_element(child),
-                              get_max_element(parent)
-      };
+      std::array<int, 4> a =
+        {
+         get_min_element(parent),
+         get_min_element(child),
+         get_max_element(child),
+         get_max_element(parent)
+        };
 
       if(compare(data[a[0]], data[a[1]]) and
          compare(data[a[1]], data[a[2]]) and
@@ -105,7 +106,7 @@ class IntervalHeap{
         }
       }
     }
-      
+
     return true;
   }
 
@@ -124,7 +125,7 @@ class IntervalHeap{
             if(not merge(i, r)) break;
             i = r;
           }
-          
+
         }else{
           if(compare(data[get_max_element(l)], data[get_max_element(r)])){
             if(not merge(i, r)) break;
@@ -168,7 +169,7 @@ public:
     data.push_back(value);
     bottom_up(back());
   }
-  
+
   void pop_min(){
     std::swap(data[get_min_element(0)], data.back());
     data.pop_back();
@@ -206,7 +207,7 @@ public:
  * @docs interval_heap.md
  */
 template <typename T, typename Compare = std::less<T>>
-class IntervalHeap{
+class IntervalHeap {
   int left(int i) const {return i * 2 + 1;}
   int right(int i) const {return i * 2 + 2;}
   int parent(int i) const {return (i - 1) >> 1;}
@@ -230,12 +231,13 @@ class IntervalHeap{
         return false;
       }
     }else{
-      std::array<int, 4> a = {
-                              get_min_element(parent),
-                              get_min_element(child),
-                              get_max_element(child),
-                              get_max_element(parent)
-      };
+      std::array<int, 4> a =
+        {
+         get_min_element(parent),
+         get_min_element(child),
+         get_max_element(child),
+         get_max_element(parent)
+        };
 
       if(compare(data[a[0]], data[a[1]]) and
          compare(data[a[1]], data[a[2]]) and
@@ -247,7 +249,7 @@ class IntervalHeap{
         }
       }
     }
-      
+
     return true;
   }
 
@@ -266,7 +268,7 @@ class IntervalHeap{
             if(not merge(i, r)) break;
             i = r;
           }
-          
+
         }else{
           if(compare(data[get_max_element(l)], data[get_max_element(r)])){
             if(not merge(i, r)) break;
@@ -310,7 +312,7 @@ public:
     data.push_back(value);
     bottom_up(back());
   }
-  
+
   void pop_min(){
     std::swap(data[get_min_element(0)], data.back());
     data.pop_back();

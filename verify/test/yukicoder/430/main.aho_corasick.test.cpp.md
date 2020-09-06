@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/430/main.aho_corasick.test.cpp
+# :x: test/yukicoder/430/main.aho_corasick.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0bdfbad8357bf1fcb5738704a6247436">test/yukicoder/430</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/430/main.aho_corasick.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/430">https://yukicoder.me/problems/no/430</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/aho_corasick.cpp.html">Aho-Corasick algorithm</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/String/aho_corasick.cpp.html">Aho-Corasick algorithm</a>
 
 
 ## Code
@@ -53,14 +53,13 @@ layout: default
 #include <iostream>
 #include <string>
 #include <vector>
-
 #include "Mylib/String/aho_corasick.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   std::string S; std::cin >> S;
   int M; std::cin >> M;
 
@@ -72,12 +71,12 @@ int main(){
   }
 
   ac.build();
-  
+
   int ans = 0;
   ac.match(S, [&](int, int){++ans;});
-  
+
   std::cout << ans << std::endl;
-  
+
   return 0;
 }
 
@@ -93,7 +92,6 @@ int main(){
 #include <iostream>
 #include <string>
 #include <vector>
-
 #line 3 "Mylib/String/aho_corasick.cpp"
 #include <unordered_map>
 #line 5 "Mylib/String/aho_corasick.cpp"
@@ -103,14 +101,14 @@ int main(){
  * @title Aho-Corasick algorithm
  * @docs aho_corasick.md
  */
-class AhoCorasick{
+class AhoCorasick {
 public:
   int n;
-  std::vector<std::unordered_map<char,int>> trie;
+  std::vector<std::unordered_map<char, int>> trie;
   std::vector<int> failure_edge;
   std::vector<std::string> dict;
   std::vector<std::vector<int>> dict_index;
-  
+
   AhoCorasick(): n(1), trie(1), failure_edge(1){}
 
   void add(const std::string &s){
@@ -127,19 +125,19 @@ public:
         ++n;
         trie.resize(n);
 
-        trie[cur][c] = n-1;
-	
+        trie[cur][c] = n - 1;
+
         cur = trie[cur][c];
       }
     }
 
     dict_index.resize(n);
-    dict_index[cur].push_back(dict.size()-1);
+    dict_index[cur].push_back(dict.size() - 1);
   }
 
   void build(){
     failure_edge.resize(n);
-    
+
     std::queue<int> dq;
     dq.push(0);
 
@@ -156,7 +154,7 @@ public:
         }else{
           int i = failure_edge[cur];
           int j = 0;
-	
+
           while(1){
             if(trie[i].find(c) != trie[i].end()){
               j = trie[i][c];
@@ -166,20 +164,20 @@ public:
               i = failure_edge[i];
             }
           }
-	
+
           failure_edge[next] = j;
 
           for(auto k : dict_index[failure_edge[next]]){
             dict_index[next].push_back(k);
           }
         }
-	
+
         dq.push(next);
       }
     }
   }
 
-  template <typename Func> // function<void(int,int)>
+  template <typename Func> // function<void(int, int)>
   void match(const std::string &s, const Func &f){
     int cur = 0;
 
@@ -194,7 +192,7 @@ public:
 
       for(auto j : dict_index[cur]){
         int len = dict[j].size();
-        f(i-len+1, len);
+        f(i - len + 1, len);
       }
     }
   }
@@ -217,12 +215,12 @@ std::vector<std::vector<T>> input_vector(int N, int M){
   for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
   return ret;
 }
-#line 9 "test/yukicoder/430/main.aho_corasick.test.cpp"
+#line 8 "test/yukicoder/430/main.aho_corasick.test.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   std::string S; std::cin >> S;
   int M; std::cin >> M;
 
@@ -234,12 +232,12 @@ int main(){
   }
 
   ac.build();
-  
+
   int ans = 0;
   ac.match(S, [&](int, int){++ans;});
-  
+
   std::cout << ans << std::endl;
-  
+
   return 0;
 }
 

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/ALDS1_5_D/main.test.cpp
+# :x: test/aoj/ALDS1_5_D/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9a3b4a53b7b2b8e6ef2197e51a686fad">test/aoj/ALDS1_5_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_5_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-04 06:04:41+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/inversion_number.cpp.html">Inversion number</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/InversionNumber/inversion_number.cpp.html">Inversion number</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -53,17 +53,17 @@ layout: default
 #include <iostream>
 #include <vector>
 #include <functional>
-#include "Mylib/Misc/inversion_number.cpp"
+#include "Mylib/Algorithm/InversionNumber/inversion_number.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 int main(){
   int n; std::cin >> n;
 
   auto a = input_vector<int>(n);
-  
-  auto ans = inversion_number::solve(a, std::greater<int>());
+
+  auto ans = inversion_number(a, std::greater<int>());
   std::cout << ans << std::endl;
-  
+
   return 0;
 }
 
@@ -79,47 +79,48 @@ int main(){
 #include <iostream>
 #include <vector>
 #include <functional>
-#line 3 "Mylib/Misc/inversion_number.cpp"
+#line 3 "Mylib/Algorithm/InversionNumber/inversion_number.cpp"
+#include <cstdint>
 
 /**
  * @title Inversion number
  * @docs inversion_number.md
  */
-namespace inversion_number{
+namespace inversion_number_impl {
   template <typename T, typename Compare>
   int64_t rec(std::vector<T> &a, const Compare &compare){
-    int n = a.size();
+    const int n = a.size();
     if(n <= 1) return 0;
-    
+
     int64_t ret = 0;
-    
-    std::vector<T> b(a.begin(), a.begin() + n/2);
-    std::vector<T> c(a.begin() + n/2, a.end());
-    
+
+    std::vector<T> b(a.begin(), a.begin() + n / 2);
+    std::vector<T> c(a.begin() + n / 2, a.end());
+
     ret += rec(b, compare);
     ret += rec(c, compare);
-    
+
     int ai = 0, bi = 0, ci = 0;
-    
+
     while(ai < n){
       if(bi < (int)b.size() and (ci == (int)c.size() or not compare(b[bi], c[ci]))){
         a[ai] = b[bi];
         ++bi;
       }else{
-        ret += n/2 - bi;
+        ret += n / 2 - bi;
         a[ai] = c[ci];
         ++ci;
       }
       ++ai;
     }
-  
+
     return ret;
   }
-    
-  template <typename T, typename Compare>
-  int64_t solve(std::vector<T> a, const Compare &compare){
-    return rec(a, compare);
-  }
+}
+
+template <typename T, typename Compare>
+int64_t inversion_number(std::vector<T> a, const Compare &compare){
+  return inversion_number_impl::rec(a, compare);
 }
 #line 4 "Mylib/IO/input_vector.cpp"
 
@@ -145,10 +146,10 @@ int main(){
   int n; std::cin >> n;
 
   auto a = input_vector<int>(n);
-  
-  auto ans = inversion_number::solve(a, std::greater<int>());
+
+  auto ans = inversion_number(a, std::greater<int>());
   std::cout << ans << std::endl;
-  
+
   return 0;
 }
 

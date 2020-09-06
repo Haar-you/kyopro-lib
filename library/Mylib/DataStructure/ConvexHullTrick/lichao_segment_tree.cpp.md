@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: LiChao segment tree
+# :x: LiChao segment tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0d6a910a839d6d45cd0c637d5901795e">Mylib/DataStructure/ConvexHullTrick</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -62,8 +62,8 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/line_add_get_min/main.test.cpp.html">test/yosupo-judge/line_add_get_min/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/segment_add_get_min/main.test.cpp.html">test/yosupo-judge/segment_add_get_min/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/line_add_get_min/main.test.cpp.html">test/yosupo-judge/line_add_get_min/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/segment_add_get_min/main.test.cpp.html">test/yosupo-judge/segment_add_get_min/main.test.cpp</a>
 
 
 ## Code
@@ -82,25 +82,25 @@ layout: default
  * @docs lichao_segment_tree.md
  */
 template <typename T, typename Comparator>
-class LiChaoSegmentTree{
-  using line = std::pair<T,T>;
+class LiChaoSegmentTree {
+  using line = std::pair<T, T>;
 
   const Comparator cmp = Comparator();
   std::vector<T> xs;
   int n;
 
   std::vector<std::optional<line>> data;
-  std::vector<std::pair<int,int>> range;
+  std::vector<std::pair<int, int>> range;
 
   T chm(const T &a, const T &b) const {
     return cmp(a, b) ? a : b;
   }
 
   void init_range(int i, int left, int right){
-    if(i >= 2*n) return;
+    if(i >= 2 * n) return;
 
     range[i] = std::make_pair(left, right);
-    int mid = (left + right) / 2;
+    const int mid = (left + right) / 2;
     init_range(i << 1 | 0, left, mid);
     init_range(i << 1 | 1, mid, right);
   }
@@ -116,9 +116,9 @@ public:
     const auto m = xs.back();
     xs.resize(n, m);
 
-    data.assign(2*n, std::nullopt);
+    data.assign(2 * n, std::nullopt);
 
-    range.resize(2*n);
+    range.resize(2 * n);
     init_range(1, 0, n);
   }
 
@@ -133,9 +133,9 @@ private:
       return;
     }
 
-    int m = (l + r) / 2;
+    const int m = (l + r) / 2;
 
-    auto lx = xs[l], mx = xs[m], rx = xs[r-1];
+    auto lx = xs[l], mx = xs[m], rx = xs[r - 1];
 
     bool left = cmp(apply(new_line, lx), apply(*data[i], lx));
     bool mid = cmp(apply(new_line, mx), apply(*data[i], mx));
@@ -160,7 +160,7 @@ private:
       update(i << 1 | 1, new_line, m, r);
     }
   }
-  
+
 public:
   void add_line(T a, T b){
     update(1, std::make_pair(a, b), 0, n);
@@ -191,10 +191,10 @@ public:
   }
 
 public:
-  auto query(const T &x) const {
+  auto operator()(const T &x) const {
     const int i = std::lower_bound(xs.begin(), xs.end(), x) - xs.begin();
     int k = i + n;
-    
+
     std::optional<T> ret;
 
     while(k > 0){
@@ -236,25 +236,25 @@ auto make_lichao_max(const std::vector<T> &xs){
  * @docs lichao_segment_tree.md
  */
 template <typename T, typename Comparator>
-class LiChaoSegmentTree{
-  using line = std::pair<T,T>;
+class LiChaoSegmentTree {
+  using line = std::pair<T, T>;
 
   const Comparator cmp = Comparator();
   std::vector<T> xs;
   int n;
 
   std::vector<std::optional<line>> data;
-  std::vector<std::pair<int,int>> range;
+  std::vector<std::pair<int, int>> range;
 
   T chm(const T &a, const T &b) const {
     return cmp(a, b) ? a : b;
   }
 
   void init_range(int i, int left, int right){
-    if(i >= 2*n) return;
+    if(i >= 2 * n) return;
 
     range[i] = std::make_pair(left, right);
-    int mid = (left + right) / 2;
+    const int mid = (left + right) / 2;
     init_range(i << 1 | 0, left, mid);
     init_range(i << 1 | 1, mid, right);
   }
@@ -270,9 +270,9 @@ public:
     const auto m = xs.back();
     xs.resize(n, m);
 
-    data.assign(2*n, std::nullopt);
+    data.assign(2 * n, std::nullopt);
 
-    range.resize(2*n);
+    range.resize(2 * n);
     init_range(1, 0, n);
   }
 
@@ -287,9 +287,9 @@ private:
       return;
     }
 
-    int m = (l + r) / 2;
+    const int m = (l + r) / 2;
 
-    auto lx = xs[l], mx = xs[m], rx = xs[r-1];
+    auto lx = xs[l], mx = xs[m], rx = xs[r - 1];
 
     bool left = cmp(apply(new_line, lx), apply(*data[i], lx));
     bool mid = cmp(apply(new_line, mx), apply(*data[i], mx));
@@ -314,7 +314,7 @@ private:
       update(i << 1 | 1, new_line, m, r);
     }
   }
-  
+
 public:
   void add_line(T a, T b){
     update(1, std::make_pair(a, b), 0, n);
@@ -345,10 +345,10 @@ public:
   }
 
 public:
-  auto query(const T &x) const {
+  auto operator()(const T &x) const {
     const int i = std::lower_bound(xs.begin(), xs.end(), x) - xs.begin();
     int k = i + n;
-    
+
     std::optional<T> ret;
 
     while(k > 0){

@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Binomial heap
+# :x: Binomial heap
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f151d59e79c7ff7f731ff52cf9b782e4">Mylib/DataStructure/Heap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Heap/binomial_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/2559/main.binomial_heap.test.cpp.html">test/aoj/2559/main.binomial_heap.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/2559/main.binomial_heap.test.cpp.html">test/aoj/2559/main.binomial_heap.test.cpp</a>
 
 
 ## Code
@@ -57,15 +57,15 @@ layout: default
  * @docs binomial_heap.md
  */
 template <typename T, typename Compare = std::less<T>>
-class BinomialHeap{
-  struct node{
+class BinomialHeap {
+  struct node {
     T value;
     std::vector<node*> children;
     node(T value): value(value){}
   };
 
   constexpr static int MAX = 31;
-  
+
   std::array<node*, MAX> roots;
   Compare compare;
   int top_index = -1;
@@ -93,7 +93,7 @@ class BinomialHeap{
       case 3: roots[i] = temp[0]; s = merge(temp[1], temp[2]); break;
       }
     }
-    
+
     top_index = -1;
     for(int i = 0; i < MAX; ++i){
       if(roots[i]){
@@ -117,7 +117,7 @@ public:
   bool empty() const {
     return heap_size == 0;
   }
-  
+
   void push(const T &value){
     heap_size += 1;
     node *t = new node(value);
@@ -131,7 +131,7 @@ public:
 
   void pop(){
     heap_size -= 1;
-    
+
     node *t = roots[top_index];
     roots[top_index] = nullptr;
     meld(t->children);
@@ -163,15 +163,15 @@ public:
  * @docs binomial_heap.md
  */
 template <typename T, typename Compare = std::less<T>>
-class BinomialHeap{
-  struct node{
+class BinomialHeap {
+  struct node {
     T value;
     std::vector<node*> children;
     node(T value): value(value){}
   };
 
   constexpr static int MAX = 31;
-  
+
   std::array<node*, MAX> roots;
   Compare compare;
   int top_index = -1;
@@ -199,7 +199,7 @@ class BinomialHeap{
       case 3: roots[i] = temp[0]; s = merge(temp[1], temp[2]); break;
       }
     }
-    
+
     top_index = -1;
     for(int i = 0; i < MAX; ++i){
       if(roots[i]){
@@ -223,7 +223,7 @@ public:
   bool empty() const {
     return heap_size == 0;
   }
-  
+
   void push(const T &value){
     heap_size += 1;
     node *t = new node(value);
@@ -237,7 +237,7 @@ public:
 
   void pop(){
     heap_size -= 1;
-    
+
     node *t = roots[top_index];
     roots[top_index] = nullptr;
     meld(t->children);

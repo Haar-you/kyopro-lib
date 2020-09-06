@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Rolling hash monoid
+# :x: Rolling hash monoid
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/rolling_hash.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-13 07:39:18+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/2444/main.test.cpp.html">test/aoj/2444/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/2444/main.test.cpp.html">test/aoj/2444/main.test.cpp</a>
 
 
 ## Code
@@ -47,7 +47,6 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-
 #include <array>
 #include <utility>
 
@@ -56,13 +55,13 @@ layout: default
  * @docs rolling_hash.md
  */
 template <size_t N>
-struct RollingHashMonoid{
+struct RollingHashMonoid {
   static std::array<int64_t, N> base;
   static int64_t mod;
 
   using value_type = std::pair<std::array<int64_t, N>, std::array<int64_t, N>>;
 
-  value_type id() const {
+  value_type operator()() const {
     value_type ret;
     for(size_t i = 0; i < N; ++i){
       ret.first[i] = 0LL;
@@ -71,7 +70,7 @@ struct RollingHashMonoid{
     return ret;
   }
 
-  value_type op(const value_type &a, const value_type &b) const {
+  value_type operator()(const value_type &a, const value_type &b) const {
     value_type ret;
     for(size_t i = 0; i < N; ++i){
       ret.first[i] = (a.first[i] + b.first[i] * a.second[i] % mod) % mod;
@@ -101,7 +100,6 @@ template <size_t N> int64_t RollingHashMonoid<N>::mod;
 {% raw %}
 ```cpp
 #line 2 "Mylib/AlgebraicStructure/Monoid/rolling_hash.cpp"
-
 #include <array>
 #include <utility>
 
@@ -110,13 +108,13 @@ template <size_t N> int64_t RollingHashMonoid<N>::mod;
  * @docs rolling_hash.md
  */
 template <size_t N>
-struct RollingHashMonoid{
+struct RollingHashMonoid {
   static std::array<int64_t, N> base;
   static int64_t mod;
 
   using value_type = std::pair<std::array<int64_t, N>, std::array<int64_t, N>>;
 
-  value_type id() const {
+  value_type operator()() const {
     value_type ret;
     for(size_t i = 0; i < N; ++i){
       ret.first[i] = 0LL;
@@ -125,7 +123,7 @@ struct RollingHashMonoid{
     return ret;
   }
 
-  value_type op(const value_type &a, const value_type &b) const {
+  value_type operator()(const value_type &a, const value_type &b) const {
     value_type ret;
     for(size_t i = 0; i < N; ++i){
       ret.first[i] = (a.first[i] + b.first[i] * a.second[i] % mod) % mod;

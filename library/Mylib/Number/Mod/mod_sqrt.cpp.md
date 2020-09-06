@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :question: Mod sqrt
+# :x: Mod sqrt
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#795ab137908c82fc28acbcffe5b1c757">Mylib/Number/Mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mod/mod_sqrt.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -56,12 +56,12 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="mod_power.cpp.html">Mod power</a>
+* :x: <a href="mod_power.cpp.html">Mod power</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
 * :x: <a href="../../../../verify/test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp</a>
 
 
@@ -82,11 +82,11 @@ layout: default
 std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
   if(p == 2) return a % 2;
   if(a == 0) return 0;
-  
-  int64_t b = power(a, (p-1) / 2, p);
 
-  if(b == p-1) return {};
-  if(p % 4 == 3) return power(a, (p+1) / 4, p);
+  int64_t b = power(a, (p - 1) / 2, p);
+
+  if(b == p - 1) return {};
+  if(p % 4 == 3) return power(a, (p + 1) / 4, p);
 
   int64_t q = p - 1, s = 0;
   while(q % 2 == 0){
@@ -95,18 +95,18 @@ std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
   }
 
   static std::mt19937_64 rand(time(0));
-  std::uniform_int_distribution<> dist(0, p-1);
+  std::uniform_int_distribution<> dist(0, p - 1);
 
   int64_t z;
   while(1){
     z = dist(rand);
-    if(power(z, (p-1) / 2, p) == p - 1) break;
+    if(power(z, (p - 1) / 2, p) == p - 1) break;
   }
-  
+
   int64_t m = s;
   int64_t c = power(z, q, p);
   int64_t t = power(a, q, p);
-  int64_t r = power(a, (q+1) / 2, p);
+  int64_t r = power(a, (q + 1) / 2, p);
 
   while(1){
     if(t == 0) return 0;
@@ -117,8 +117,8 @@ std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
       (T *= T) %= p;
       if(T == 1) break;
     }
-    
-    int64_t b = power(c, 1LL << (m-i-1), p);
+
+    int64_t b = power(c, 1LL << (m - i - 1), p);
 
     m = i;
     c = b * b % p;
@@ -137,6 +137,7 @@ std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
 #include <random>
 #include <optional>
 #line 2 "Mylib/Number/Mod/mod_power.cpp"
+#include <cstdint>
 
 /**
  * @title Mod power
@@ -160,11 +161,11 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
   if(p == 2) return a % 2;
   if(a == 0) return 0;
-  
-  int64_t b = power(a, (p-1) / 2, p);
 
-  if(b == p-1) return {};
-  if(p % 4 == 3) return power(a, (p+1) / 4, p);
+  int64_t b = power(a, (p - 1) / 2, p);
+
+  if(b == p - 1) return {};
+  if(p % 4 == 3) return power(a, (p + 1) / 4, p);
 
   int64_t q = p - 1, s = 0;
   while(q % 2 == 0){
@@ -173,18 +174,18 @@ std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
   }
 
   static std::mt19937_64 rand(time(0));
-  std::uniform_int_distribution<> dist(0, p-1);
+  std::uniform_int_distribution<> dist(0, p - 1);
 
   int64_t z;
   while(1){
     z = dist(rand);
-    if(power(z, (p-1) / 2, p) == p - 1) break;
+    if(power(z, (p - 1) / 2, p) == p - 1) break;
   }
-  
+
   int64_t m = s;
   int64_t c = power(z, q, p);
   int64_t t = power(a, q, p);
-  int64_t r = power(a, (q+1) / 2, p);
+  int64_t r = power(a, (q + 1) / 2, p);
 
   while(1){
     if(t == 0) return 0;
@@ -195,8 +196,8 @@ std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
       (T *= T) %= p;
       if(T == 1) break;
     }
-    
-    int64_t b = power(c, 1LL << (m-i-1), p);
+
+    int64_t b = power(c, 1LL << (m - i - 1), p);
 
     m = i;
     c = b * b % p;

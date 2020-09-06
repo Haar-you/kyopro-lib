@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/3034/main.test.cpp
+# :x: test/aoj/3034/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#607ede2caa7064ff1cf75c22fd3209d4">test/aoj/3034</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3034/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-07 18:06:08+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3034</a>
@@ -39,13 +39,13 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Bit/for_each_subset_asc.cpp.html">Enumerate subsets (Ascending order)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp.html">Circumscribed circle of a triangle</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/minimum_covering_circle.cpp.html">Minimum covering circle</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Utils/fix_point.cpp.html">Fixed point combinator</a>
+* :x: <a href="../../../../library/Mylib/Bit/enumerate_subsets_asc.cpp.html">Enumerate subsets (Ascending order)</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp.html">Circumscribed circle of a triangle</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/minimum_covering_circle.cpp.html">Minimum covering circle</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/Utils/fix_point.cpp.html">Fixed point combinator</a>
 
 
 ## Code
@@ -59,19 +59,18 @@ layout: default
 #include <iostream>
 #include <iomanip>
 #include <vector>
-
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/minimum_covering_circle.cpp"
 #include "Mylib/Utils/fix_point.cpp"
-#include "Mylib/Bit/for_each_subset_asc.cpp"
+#include "Mylib/Bit/enumerate_subsets_asc.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 using D = DoubleEps<double>;
 template <> double D::eps = ERROR;
 
-D dp[15][1<<14];
-bool check[15][1<<14];
+D dp[15][1 << 14];
+bool check[15][1 << 14];
 
 const D INF = 1e9;
 
@@ -82,19 +81,19 @@ int main(){
 
   std::vector<double> memo(1 << N);
 
-  for(int t = 0; t < (1 << N); ++t){  
+  for(int t = 0; t < (1 << N); ++t){
     std::vector<Point<D>> q;
     for(int i = 0; i < N; ++i){
       if(t & (1 << i)) q.push_back(ps[i]);
     }
     memo[t] = (double)minimum_covering_circle(q).radius;
-  }  
+  }
 
   const int mask = (1 << N) - 1;
 
   auto ans =
     make_fix_point(
-      [&](auto &&rec, int d, int s) -> D{
+      [&](auto &&rec, int d, int s) -> D {
         if(d == M){
           if(s != 0) return dp[d][s] = INF;
           return dp[d][s] = 0;
@@ -104,12 +103,16 @@ int main(){
         check[d][s] = true;
 
         D ret = INF;
-        
-        for(int t : SubsetAsc(s)){
-          D val = std::max((double)rec(d+1, s^t), memo[t]);
-          ret = std::min((double)ret, (double)val);
-        }
-        
+
+        enumerate_subsets_asc(
+          s,
+          [&](int t){
+            D val = std::max((double)rec(d + 1, s ^ t), memo[t]);
+            ret = std::min((double)ret, (double)val);
+            return true;
+          }
+        );
+
         return dp[d][s] = ret;
       }
     )(0, mask);
@@ -132,7 +135,6 @@ int main(){
 #include <iostream>
 #include <iomanip>
 #include <vector>
-
 #line 3 "Mylib/Geometry/Float/geometry_template.cpp"
 #include <cmath>
 #line 5 "Mylib/Geometry/Float/geometry_template.cpp"
@@ -143,7 +145,7 @@ int main(){
  */
 
 template <typename T>
-struct Vec{
+struct Vec {
   T x, y;
   Vec(){}
   Vec(T x, T y): x(x), y(y){}
@@ -153,11 +155,11 @@ struct Vec{
   friend auto operator-(const Vec &a){return Vec(-a.x, -a.y);}
 
   friend bool operator==(const Vec &a, const Vec &b){return a.x == b.x and a.y == b.y;}
-  friend bool operator!=(const Vec &a, const Vec &b){return !(a==b);}
+  friend bool operator!=(const Vec &a, const Vec &b){return !(a == b);}
   friend bool operator<(const Vec &a, const Vec &b){return a.x < b.x or (a.x == b.x and a.y < b.y);}
-  
+
   friend std::istream& operator>>(std::istream &s, Vec &a){
-    s >> a.x >> a.y; return s;
+    s >> a.x  >> a.y; return s;
   }
 };
 
@@ -191,7 +193,7 @@ T angle_diff(const Vec<T> &a, const Vec<T> &b){
 }
 
 
-template <typename T> struct Line{
+template <typename T> struct Line {
   Point<T> from, to;
   Line(): from(), to(){}
   Line(const Point<T> &from, const Point<T> &to): from(from), to(to){}
@@ -213,7 +215,7 @@ template <typename T> T cross(const Line<T> &a, const Line<T> &b){return cross(d
 
 template <typename T> using Polygon = std::vector<Point<T>>;
 
-template <typename T> struct Circle{
+template <typename T> struct Circle {
   Point<T> center;
   T radius;
   Circle(): center(), radius(0){}
@@ -228,16 +230,16 @@ template <typename T> struct Circle{
  * @docs double_eps.md
  */
 template <typename T>
-struct DoubleEps{
+struct DoubleEps {
   using value_type = T;
-  
+
   static T eps;
 
   T value;
 
   DoubleEps(): value(0){}
   DoubleEps(T value): value(value){}
-  
+
   auto& operator=(const DoubleEps &rhs){this->value = rhs.value; return *this;}
   auto& operator+=(const DoubleEps &rhs){this->value += rhs.value; return *this;}
   auto& operator-=(const DoubleEps &rhs){this->value -= rhs.value; return *this;}
@@ -257,7 +259,7 @@ struct DoubleEps{
   bool operator>=(const DoubleEps &rhs) const {return !(*this < rhs);}
 
   auto operator-() const {return DoubleEps(-(this->value));}
-  
+
   explicit operator double() const noexcept {return value;}
   explicit operator long double() const noexcept {return value;}
 
@@ -267,9 +269,9 @@ struct DoubleEps{
 
 template <typename T> T DoubleEps<T>::eps;
 
-namespace std{
+namespace std {
   template <typename T>
-  class numeric_limits<DoubleEps<T>>{
+  class numeric_limits<DoubleEps<T>> {
   public:
     static DoubleEps<T> infinity() {return numeric_limits<T>::infinity();}
     static DoubleEps<T> min() {return numeric_limits<T>::min();}
@@ -288,7 +290,6 @@ template <typename T> DoubleEps<T> atan2(DoubleEps<T> y, DoubleEps<T> x){return 
 template <typename T> DoubleEps<T> abs(DoubleEps<T> x){return std::abs((T)x);}
 
 template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
-
 #line 3 "Mylib/Geometry/Float/minimum_covering_circle.cpp"
 #include <random>
 #include <algorithm>
@@ -332,14 +333,12 @@ Circle<T> minimum_covering_circle(std::vector<Point<T>> ps, int seed = 0){
                     return Circle<T>(c, abs(p - c));
                   };
 
-
   auto check = [](const auto &p, const auto &c){
                  return abs(c.center - p) <= c.radius;
                };
 
-
   Circle<T> ret = make_circle_2(ps[0], ps[1]);
-  
+
   for(int i = 2; i < N; ++i){
     if(check(ps[i], ret)) continue;
 
@@ -369,12 +368,12 @@ Circle<T> minimum_covering_circle(std::vector<Point<T>> ps, int seed = 0){
  * @docs fix_point.md
  */
 template <typename F>
-struct FixPoint : F{
+struct FixPoint : F {
   explicit constexpr FixPoint(F &&f) noexcept : F(std::forward<F>(f)){}
 
-  template <typename... Args>
+  template <typename ... Args>
   constexpr auto operator()(Args &&... args) const {
-    return F::operator()(*this, std::forward<Args>(args)...);
+    return F::operator()(*this, std::forward<Args>(args) ...);
   }
 };
 
@@ -387,32 +386,19 @@ template <typename F>
 inline constexpr auto make_fix_point(F &f){
   return FixPoint<F>(std::forward<F>(f));
 }
-#line 2 "Mylib/Bit/for_each_subset_asc.cpp"
+#line 2 "Mylib/Bit/enumerate_subsets_asc.cpp"
 
 /**
  * @title Enumerate subsets (Ascending order)
- * @docs for_each_subset_asc.md
+ * @docs enumerate_subsets_asc.md
  */
-class SubsetAsc{
-  struct iter{
-    int t, a;
-    bool is_end;
-
-    int operator*() const {return t;}
-    void operator++(){
-      if(t == a) is_end = true;
-      t = (t - a) & a;
-    }
-    bool operator!=(const iter &) const {return not is_end;}
-  };
-
-  int a;
-
-public:
-  SubsetAsc(int a): a(a){}
-  iter begin() const {return iter({0, a, false});}
-  iter end() const {return iter();}
-};
+template <typename Func>
+void enumerate_subsets_asc(int a, const Func &f){
+  for(int t = 0; ; t = (t - a) & a){
+    if(not f(t)) break;
+    if(t == a) break;
+  }
+}
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
@@ -431,13 +417,13 @@ std::vector<std::vector<T>> input_vector(int N, int M){
   for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
   return ret;
 }
-#line 14 "test/aoj/3034/main.test.cpp"
+#line 13 "test/aoj/3034/main.test.cpp"
 
 using D = DoubleEps<double>;
 template <> double D::eps = ERROR;
 
-D dp[15][1<<14];
-bool check[15][1<<14];
+D dp[15][1 << 14];
+bool check[15][1 << 14];
 
 const D INF = 1e9;
 
@@ -448,19 +434,19 @@ int main(){
 
   std::vector<double> memo(1 << N);
 
-  for(int t = 0; t < (1 << N); ++t){  
+  for(int t = 0; t < (1 << N); ++t){
     std::vector<Point<D>> q;
     for(int i = 0; i < N; ++i){
       if(t & (1 << i)) q.push_back(ps[i]);
     }
     memo[t] = (double)minimum_covering_circle(q).radius;
-  }  
+  }
 
   const int mask = (1 << N) - 1;
 
   auto ans =
     make_fix_point(
-      [&](auto &&rec, int d, int s) -> D{
+      [&](auto &&rec, int d, int s) -> D {
         if(d == M){
           if(s != 0) return dp[d][s] = INF;
           return dp[d][s] = 0;
@@ -470,12 +456,16 @@ int main(){
         check[d][s] = true;
 
         D ret = INF;
-        
-        for(int t : SubsetAsc(s)){
-          D val = std::max((double)rec(d+1, s^t), memo[t]);
-          ret = std::min((double)ret, (double)val);
-        }
-        
+
+        enumerate_subsets_asc(
+          s,
+          [&](int t){
+            D val = std::max((double)rec(d + 1, s ^ t), memo[t]);
+            ret = std::min((double)ret, (double)val);
+            return true;
+          }
+        );
+
         return dp[d][s] = ret;
       }
     )(0, mask);

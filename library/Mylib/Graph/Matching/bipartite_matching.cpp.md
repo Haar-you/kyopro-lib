@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Maximum bipartite matching
+# :x: Maximum bipartite matching
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#65eb1c5db2b1bd726d58cf661f149e7c">Mylib/Graph/Matching</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Matching/bipartite_matching.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
 
 
 ## Code
@@ -57,13 +57,12 @@ layout: default
  * @docs bipartite_matching.md
  */
 template <typename MaxFlow>
-class BipartiteMatching{
-  int L, R;
-  int s, t;
+class BipartiteMatching {
+  int L, R, s, t;
   MaxFlow f;
-  
+
 public:
-  BipartiteMatching(int L, int R): L(L), R(R), s(L+R), t(s+1), f(L+R+2){
+  BipartiteMatching(int L, int R): L(L), R(R), s(L + R), t(s + 1), f(L + R + 2){
     for(int i = 0; i < L; ++i) f.add_edge(s, i, 1);
     for(int i = 0; i < R; ++i) f.add_edge(L + i, t, 1);
   }
@@ -79,9 +78,9 @@ public:
 
   auto get_matching(){
     auto g = f.get_graph();
-    std::vector<std::pair<int,int>> ret;
+    std::vector<std::pair<int, int>> ret;
 
-    for(int i = 0; i < (int)g.size()-2; ++i){
+    for(int i = 0; i < (int)g.size() - 2; ++i){
       for(const auto &e : g[i]){
         if((not e.is_rev) and e.cap == 0 and e.to != t) ret.emplace_back(i, e.to - L);
       }
@@ -108,13 +107,12 @@ public:
  * @docs bipartite_matching.md
  */
 template <typename MaxFlow>
-class BipartiteMatching{
-  int L, R;
-  int s, t;
+class BipartiteMatching {
+  int L, R, s, t;
   MaxFlow f;
-  
+
 public:
-  BipartiteMatching(int L, int R): L(L), R(R), s(L+R), t(s+1), f(L+R+2){
+  BipartiteMatching(int L, int R): L(L), R(R), s(L + R), t(s + 1), f(L + R + 2){
     for(int i = 0; i < L; ++i) f.add_edge(s, i, 1);
     for(int i = 0; i < R; ++i) f.add_edge(L + i, t, 1);
   }
@@ -130,9 +128,9 @@ public:
 
   auto get_matching(){
     auto g = f.get_graph();
-    std::vector<std::pair<int,int>> ret;
+    std::vector<std::pair<int, int>> ret;
 
-    for(int i = 0; i < (int)g.size()-2; ++i){
+    for(int i = 0; i < (int)g.size() - 2; ++i){
       for(const auto &e : g[i]){
         if((not e.is_rev) and e.cap == 0 and e.to != t) ret.emplace_back(i, e.to - L);
       }

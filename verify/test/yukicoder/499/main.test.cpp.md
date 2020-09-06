@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/499/main.test.cpp
+# :x: test/yukicoder/499/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6d875ae29365ab59bb073a9f5998cd26">test/yukicoder/499</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/499/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/499">https://yukicoder.me/problems/no/499</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/convert_base.cpp.html">Convert base</a>
+* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :x: <a href="../../../../library/Mylib/Misc/convert_base.cpp.html">Convert base</a>
 
 
 ## Code
@@ -61,7 +61,7 @@ int main(){
   auto res = convert_base_to(N, 7);
 
   std::cout << join(res.begin(), res.end(), "") << "\n";
-  
+
   return 0;
 }
 
@@ -98,7 +98,7 @@ std::vector<int64_t> convert_base_to(int64_t val, int64_t base){
   }
 
   std::reverse(ret.begin(), ret.end());
-  
+
   return ret;
 }
 
@@ -136,7 +136,7 @@ int main(){
   auto res = convert_base_to(N, 7);
 
   std::cout << join(res.begin(), res.end(), "") << "\n";
-  
+
   return 0;
 }
 

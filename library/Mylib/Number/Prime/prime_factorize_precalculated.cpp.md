@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/prime_factorize_precalculated.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -54,15 +54,16 @@ layout: default
 ```cpp
 #pragma once
 #include <vector>
+#include <cstdint>
 
 /**
  * @title Prime factorization (Precalculation)
  * @docs prime_factorize_precalculated.md
  */
-struct PrimeFactorize{
+struct PrimeFactorize {
   std::vector<int> p;
 
-  PrimeFactorize(int N): p(N+1){
+  PrimeFactorize(int N): p(N + 1){
     for(int i = 2; i <= N; ++i){
       if(p[i] != 0) continue;
       for(int j = i; j <= N; j += i){
@@ -91,15 +92,16 @@ struct PrimeFactorize{
 ```cpp
 #line 2 "Mylib/Number/Prime/prime_factorize_precalculated.cpp"
 #include <vector>
+#include <cstdint>
 
 /**
  * @title Prime factorization (Precalculation)
  * @docs prime_factorize_precalculated.md
  */
-struct PrimeFactorize{
+struct PrimeFactorize {
   std::vector<int> p;
 
-  PrimeFactorize(int N): p(N+1){
+  PrimeFactorize(int N): p(N + 1){
     for(int i = 2; i <= N; ++i){
       if(p[i] != 0) continue;
       for(int j = i; j <= N; j += i){

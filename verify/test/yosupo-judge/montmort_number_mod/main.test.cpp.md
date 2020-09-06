@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/montmort_number_mod/main.test.cpp
+# :x: test/yosupo-judge/montmort_number_mod/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#910a463805ae5ab8a646512f693c1fa3">test/yosupo-judge/montmort_number_mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/montmort_number_mod/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-18 05:35:58+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/montmort_number_mod">https://judge.yosupo.jp/problem/montmort_number_mod</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/montmort_number.cpp.html">Montmort number</a>
-* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">Modint (Runtime mod)</a>
+* :x: <a href="../../../../library/Mylib/Combinatorics/montmort_number.cpp.html">Montmort number</a>
+* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">Modint (Runtime mod)</a>
 
 
 ## Code
@@ -56,7 +56,7 @@ layout: default
 #include "Mylib/Combinatorics/montmort_number.cpp"
 #include "Mylib/IO/join.cpp"
 
-struct tag{};
+struct tag {};
 using mint = RuntimeModInt<tag>;
 
 int main(){
@@ -89,10 +89,10 @@ int main(){
  * @docs runtime_mint.md
  */
 template <typename Tag>
-class RuntimeModInt{
+class RuntimeModInt {
 public:
   static uint32_t M;
-  
+
   uint64_t val;
   RuntimeModInt(): val(0){}
   RuntimeModInt(int64_t n){
@@ -100,12 +100,12 @@ public:
     else if(n < 0) val = n % M + M;
     else val = n;
   }
-  
+
   auto operator+(const RuntimeModInt &a) const {return RuntimeModInt(val + a.val);}
   auto operator-(const RuntimeModInt &a) const {return RuntimeModInt(val - a.val);}
   auto operator*(const RuntimeModInt &a) const {return RuntimeModInt(val * a.val);}
   auto operator/(const RuntimeModInt &a) const {return RuntimeModInt(val * a.inv().val);}
-  
+
   const auto& operator=(const RuntimeModInt &a){val = a.val; return *this;}
   const auto& operator+=(const RuntimeModInt &a){if((val += a.val) >= M) val -= M; return *this;}
   const auto& operator-=(const RuntimeModInt &a){if(val < a.val) val += M; val -= a.val; return *this;}
@@ -126,18 +126,18 @@ public:
     for(; p; e *= e, p >>= 1) if(p & 1) ret *= e;
     return ret;
   }
-  
+
   RuntimeModInt inv() const {
     int64_t a = val, b = M, u = 1, v = 0;
 
     while(b){
-      int64_t t = a/b;
-      a -= t*b; std::swap(a,b);
-      u -= t*v; std::swap(u,v);
+      int64_t t = a / b;
+      a -= t * b; std::swap(a, b);
+      u -= t * v; std::swap(u, v);
     }
     u %= M;
     if(u < 0) u += M;
-    
+
     return u;
   }
 
@@ -167,14 +167,14 @@ template <typename Tag> std::ostream& operator<<(std::ostream &os, const Runtime
  */
 template <typename T>
 auto montmort_number(int n){
-  std::vector<T> ret(n+1);
+  std::vector<T> ret(n + 1);
 
   ret[0] = 1;
   ret[1] = 0;
   ret[2] = 1;
 
   for(int i = 3; i <= n; ++i){
-    ret[i] = (ret[i-1] + ret[i-2]) * (i-1);
+    ret[i] = (ret[i - 1] + ret[i - 2]) * (i - 1);
   }
 
   return ret;
@@ -199,7 +199,7 @@ std::string join(ITER first, ITER last, std::string delim = " "){
 }
 #line 7 "test/yosupo-judge/montmort_number_mod/main.test.cpp"
 
-struct tag{};
+struct tag {};
 using mint = RuntimeModInt<tag>;
 
 int main(){

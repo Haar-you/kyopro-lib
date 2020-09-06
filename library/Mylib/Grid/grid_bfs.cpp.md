@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: BFS on a grid
+# :x: BFS on a grid
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#437b04c37f52e5b35f1d2c24c546c491">Mylib/Grid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Grid/grid_bfs.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -52,12 +52,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="grid.cpp.html">Grid template</a>
+* :x: <a href="grid.cpp.html">Grid template</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/0558/main.test.cpp.html">test/aoj/0558/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/0558/main.test.cpp.html">test/aoj/0558/main.test.cpp</a>
 
 
 ## Code
@@ -90,7 +90,7 @@ auto grid_bfs(
     dist[p.x][p.y] = 0;
     q.push(p);
   }
-  
+
   while(not q.empty()){
     auto cur = q.front(); q.pop();
 
@@ -136,7 +136,7 @@ auto grid_bfs(
  * @title Grid template
  * @docs grid.md
  */
-struct Point{
+struct Point {
   int x, y;
   Point(): x(0), y(0){}
   Point(int x, int y): x(x), y(y){}
@@ -144,8 +144,8 @@ struct Point{
   Point& operator-=(const Point &a){this->x -= a.x; this->y -= a.y; return *this;}
 };
 
-Point operator+(const Point &a, const Point &b){return Point(a.x+b.x, a.y+b.y);}
-Point operator-(const Point &a, const Point &b){return Point(a.x-b.x, a.y-b.y);}
+Point operator+(const Point &a, const Point &b){return Point(a.x + b.x, a.y + b.y);}
+Point operator-(const Point &a, const Point &b){return Point(a.x - b.x, a.y - b.y);}
 bool operator==(const Point &a, const Point &b){return a.x == b.x and a.y == b.y;}
 bool operator!=(const Point &a, const Point &b){return !(a == b);}
 
@@ -158,12 +158,12 @@ std::ostream& operator<<(std::ostream &os, const Point &a){
   return os;
 }
 
-namespace grid{
+namespace grid {
   const auto LEFT = Point(0, -1);
   const auto RIGHT = Point(0, 1);
   const auto UP = Point(-1, 0);
   const auto DOWN = Point(1, 0);
-  
+
   const std::array<Point, 4> dir4 = {LEFT, RIGHT, UP, DOWN};
   const std::array<Point, 8> dir8 = {LEFT, RIGHT, UP, DOWN, LEFT + UP, LEFT + DOWN, RIGHT + UP, RIGHT + DOWN};
 }
@@ -188,7 +188,7 @@ auto grid_bfs(
     dist[p.x][p.y] = 0;
     q.push(p);
   }
-  
+
   while(not q.empty()){
     auto cur = q.front(); q.pop();
 

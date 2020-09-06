@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Debug/matrix_viewer.cpp
+# :warning: Matrix viewer
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#0f67555b3039d368e55db69bb4454f7e">Mylib/Debug</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Debug/matrix_viewer.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-28 23:09:01+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -47,32 +47,23 @@ layout: default
 #include <iomanip>
 
 /**
+ * @title Matrix viewer
  * @docs matrix_viewer.md
  */
-template <typename M, typename T = typename M::value_type>
-struct MatrixViewer{
-  M m;
-  int w;
-
-  MatrixViewer(const M &m, int w = 10): m(m), w(w){}
-
-  friend std::ostream& operator<<(std::ostream &s, const MatrixViewer &viewer){
-    int w = viewer.w;
-    const auto m = viewer.m;
-    const int N = m.size();
-
-    s << "⎛" << std::string((w+1)*N, ' ') << "⎞" << std::endl;
-    for(int i = 0; i < N; ++i){
-      s << "⎜";
-      for(int j = 0; j < N; ++j) s << std::setw(w) << m[i][j] << " ";
-      s << "⎟";
-      s << std::endl;
-    }
-    s << "⎝" << std::string((w+1)*N, ' ') << "⎠" << std::endl;
-
-    return s;
+template <typename M>
+void matrix_viewer([[maybe_unused]] const M &m, [[maybe_unused]] int w = 10){
+#ifdef DEBUG
+  const int N = m.size();
+  std::cerr << "⎛" << std::string((w + 1) * N, ' ') << "⎞" << std::endl;
+  for(int i = 0; i < N; ++i){
+    std::cerr << "⎜";
+    for(int j = 0; j < N; ++j) std::cerr << std::setw(w) << m[i][j] << " ";
+    std::cerr << "⎟";
+    std::cerr << std::endl;
   }
-};
+  std::cerr << "⎝" << std::string((w + 1) * N, ' ') << "⎠" << std::endl;
+#endif
+}
 
 ```
 {% endraw %}
@@ -86,32 +77,23 @@ struct MatrixViewer{
 #include <iomanip>
 
 /**
+ * @title Matrix viewer
  * @docs matrix_viewer.md
  */
-template <typename M, typename T = typename M::value_type>
-struct MatrixViewer{
-  M m;
-  int w;
-
-  MatrixViewer(const M &m, int w = 10): m(m), w(w){}
-
-  friend std::ostream& operator<<(std::ostream &s, const MatrixViewer &viewer){
-    int w = viewer.w;
-    const auto m = viewer.m;
-    const int N = m.size();
-
-    s << "⎛" << std::string((w+1)*N, ' ') << "⎞" << std::endl;
-    for(int i = 0; i < N; ++i){
-      s << "⎜";
-      for(int j = 0; j < N; ++j) s << std::setw(w) << m[i][j] << " ";
-      s << "⎟";
-      s << std::endl;
-    }
-    s << "⎝" << std::string((w+1)*N, ' ') << "⎠" << std::endl;
-
-    return s;
+template <typename M>
+void matrix_viewer([[maybe_unused]] const M &m, [[maybe_unused]] int w = 10){
+#ifdef DEBUG
+  const int N = m.size();
+  std::cerr << "⎛" << std::string((w + 1) * N, ' ') << "⎞" << std::endl;
+  for(int i = 0; i < N; ++i){
+    std::cerr << "⎜";
+    for(int j = 0; j < N; ++j) std::cerr << std::setw(w) << m[i][j] << " ";
+    std::cerr << "⎟";
+    std::cerr << std::endl;
   }
-};
+  std::cerr << "⎝" << std::string((w + 1) * N, ' ') << "⎠" << std::endl;
+#endif
+}
 
 ```
 {% endraw %}

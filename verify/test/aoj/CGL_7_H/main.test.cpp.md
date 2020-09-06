@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/CGL_7_H/main.test.cpp
+# :x: test/aoj/CGL_7_H/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#c934d03610ed9f5a73c21bd24c2c38a8">test/aoj/CGL_7_H</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_7_H/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_H">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_H</a>
@@ -39,12 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp.html">Area of intersection between a circle and a polygon</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/distance_segment_point.cpp.html">Distance between a segment and a point</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/intersect_circle_segment.cpp.html">Intersection between a circle and a segment</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp.html">Area of intersection between a circle and a polygon</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/distance_segment_point.cpp.html">Distance between a segment and a point</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/intersect_circle_segment.cpp.html">Intersection between a circle and a segment</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -63,7 +63,7 @@ layout: default
 #include "Mylib/IO/input_vector.cpp"
 
 using D = DoubleEps<double>;
-template<> double D::eps = ERROR;
+template <> double D::eps = ERROR;
 
 int main(){
   int n; std::cin >> n;
@@ -73,8 +73,8 @@ int main(){
 
   Polygon<D> p = input_vector<Point<D>>(n);
 
-  auto ans = area_intersection_of_circle_and_polygon(c, p);  
-  
+  auto ans = area_intersection_of_circle_and_polygon(c, p);
+
   std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
 
   return 0;
@@ -101,16 +101,16 @@ int main(){
  * @docs double_eps.md
  */
 template <typename T>
-struct DoubleEps{
+struct DoubleEps {
   using value_type = T;
-  
+
   static T eps;
 
   T value;
 
   DoubleEps(): value(0){}
   DoubleEps(T value): value(value){}
-  
+
   auto& operator=(const DoubleEps &rhs){this->value = rhs.value; return *this;}
   auto& operator+=(const DoubleEps &rhs){this->value += rhs.value; return *this;}
   auto& operator-=(const DoubleEps &rhs){this->value -= rhs.value; return *this;}
@@ -130,7 +130,7 @@ struct DoubleEps{
   bool operator>=(const DoubleEps &rhs) const {return !(*this < rhs);}
 
   auto operator-() const {return DoubleEps(-(this->value));}
-  
+
   explicit operator double() const noexcept {return value;}
   explicit operator long double() const noexcept {return value;}
 
@@ -140,9 +140,9 @@ struct DoubleEps{
 
 template <typename T> T DoubleEps<T>::eps;
 
-namespace std{
+namespace std {
   template <typename T>
-  class numeric_limits<DoubleEps<T>>{
+  class numeric_limits<DoubleEps<T>> {
   public:
     static DoubleEps<T> infinity() {return numeric_limits<T>::infinity();}
     static DoubleEps<T> min() {return numeric_limits<T>::min();}
@@ -161,7 +161,6 @@ template <typename T> DoubleEps<T> atan2(DoubleEps<T> y, DoubleEps<T> x){return 
 template <typename T> DoubleEps<T> abs(DoubleEps<T> x){return std::abs((T)x);}
 
 template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
-
 #line 4 "Mylib/Geometry/Float/geometry_template.cpp"
 #include <vector>
 
@@ -171,7 +170,7 @@ template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
  */
 
 template <typename T>
-struct Vec{
+struct Vec {
   T x, y;
   Vec(){}
   Vec(T x, T y): x(x), y(y){}
@@ -181,11 +180,11 @@ struct Vec{
   friend auto operator-(const Vec &a){return Vec(-a.x, -a.y);}
 
   friend bool operator==(const Vec &a, const Vec &b){return a.x == b.x and a.y == b.y;}
-  friend bool operator!=(const Vec &a, const Vec &b){return !(a==b);}
+  friend bool operator!=(const Vec &a, const Vec &b){return !(a == b);}
   friend bool operator<(const Vec &a, const Vec &b){return a.x < b.x or (a.x == b.x and a.y < b.y);}
-  
+
   friend std::istream& operator>>(std::istream &s, Vec &a){
-    s >> a.x >> a.y; return s;
+    s >> a.x  >> a.y; return s;
   }
 };
 
@@ -219,7 +218,7 @@ T angle_diff(const Vec<T> &a, const Vec<T> &b){
 }
 
 
-template <typename T> struct Line{
+template <typename T> struct Line {
   Point<T> from, to;
   Line(): from(), to(){}
   Line(const Point<T> &from, const Point<T> &to): from(from), to(to){}
@@ -241,7 +240,7 @@ template <typename T> T cross(const Line<T> &a, const Line<T> &b){return cross(d
 
 template <typename T> using Polygon = std::vector<Point<T>>;
 
-template <typename T> struct Circle{
+template <typename T> struct Circle {
   Point<T> center;
   T radius;
   Circle(): center(), radius(0){}
@@ -265,8 +264,8 @@ T distance_segment_point(const Segment<T> &l, const Point<T> &p){
  * @title Intersection between a circle and a segment
  * @docs intersect_circle_segment.md
  */
-namespace intersect_circle_segment{
-  enum Status{
+namespace intersect_circle_segment {
+  enum Status {
               INSIDE         = 0b00001,
               OUTSIDE        = 0b00010,
               TANGENT        = 0b00100,
@@ -275,7 +274,7 @@ namespace intersect_circle_segment{
   };
 
   template <typename T>
-  struct Result{
+  struct Result {
     Status status;
     std::vector<Point<T>> crosspoints;
   };
@@ -288,7 +287,7 @@ namespace intersect_circle_segment{
     const T d1 = abs(c - s.from);
     const T d2 = abs(c - s.to);
     const T v = distance_segment_point(s, c);
-    const T m = sqrt(r*r - v*v);
+    const T m = sqrt(r * r - v * v);
     const auto n = normal(s);
     const auto k = s.from + diff(s) * cross(n, c + n - s.from) / cross(n, diff(s));
 
@@ -306,10 +305,10 @@ namespace intersect_circle_segment{
     }
 
     const T b = dot(unit(s), s.from - c);
-    const T a = abs_sq(s.from - c) - r*r;
-    const T x = sqrt(b*b - a);
+    const T a = abs_sq(s.from - c) - r * r;
+    const T x = sqrt(b * b - a);
 
-    return Result<T>({ONE_CROSSPOINT, {s.from + unit(s) * (-b-x >= 0 ? -b-x : -b+x)}});
+    return Result<T>({ONE_CROSSPOINT, {s.from + unit(s) * (-b - x >= 0 ? -b - x : -b + x)}});
   }
 };
 #line 5 "Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp"
@@ -322,7 +321,7 @@ template <typename T>
 T area_intersection_of_circle_and_polygon(const Circle<T> &cl, const Polygon<T> &ps){
   const int n = ps.size();
   T ret = 0;
-  
+
   for(int i = 0; i < n; ++i){
     T temp = 0;
 
@@ -330,13 +329,13 @@ T area_intersection_of_circle_and_polygon(const Circle<T> &cl, const Polygon<T> 
     const auto &c = cl.center;
 
     const auto &p1 = ps[i];
-    const auto &p2 = ps[(i+1)%n];
+    const auto &p2 = ps[(i + 1) % n];
 
     const auto [t, res] = intersect_circle_segment::check(cl, Line<T>(p1, p2));
 
     const T d1 = abs(p1 - c);
     const T d2 = abs(p2 - c);
-    
+
     if(res.size() == 0){
       if(t == intersect_circle_segment::INSIDE){ // if inside
         temp += cross(p1 - c, p2 - c) / 2;
@@ -357,10 +356,10 @@ T area_intersection_of_circle_and_polygon(const Circle<T> &cl, const Polygon<T> 
       const auto &q2 = res[1];
       temp +=
         r * r * angle_diff(p1 - c, q1 - c) / 2 +
-        cross(q1-c, q2-c) / 2 +
+        cross(q1 - c, q2 - c) / 2 +
         r * r * angle_diff(q2 - c, p2 - c) / 2;
     }
-    
+
     ret += temp;
   }
 
@@ -387,7 +386,7 @@ std::vector<std::vector<T>> input_vector(int N, int M){
 #line 10 "test/aoj/CGL_7_H/main.test.cpp"
 
 using D = DoubleEps<double>;
-template<> double D::eps = ERROR;
+template <> double D::eps = ERROR;
 
 int main(){
   int n; std::cin >> n;
@@ -397,8 +396,8 @@ int main(){
 
   Polygon<D> p = input_vector<Point<D>>(n);
 
-  auto ans = area_intersection_of_circle_and_polygon(c, p);  
-  
+  auto ans = area_intersection_of_circle_and_polygon(c, p);
+
   std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
 
   return 0;

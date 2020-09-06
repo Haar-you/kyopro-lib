@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Run enumerate
+# :x: Run enumerate
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/run_enumerate.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
@@ -51,12 +51,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="z_algorithm.cpp.html">Z-algorithm</a>
+* :x: <a href="z_algorithm.cpp.html">Z-algorithm</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/runenumerate/main.test.cpp.html">test/yosupo-judge/runenumerate/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/runenumerate/main.test.cpp.html">test/yosupo-judge/runenumerate/main.test.cpp</a>
 
 
 ## Code
@@ -76,15 +76,12 @@ layout: default
  * @title Run enumerate
  * @docs run_enumerate.md
  */
-struct RunEnumerate{
-  std::vector<std::tuple<int,int,int>> result;
-
-private:
+namespace run_enumerate_impl {
   auto aux(const std::string &first, const std::string &second){
-    std::vector<std::tuple<int,int,int>> ret;
+    std::vector<std::tuple<int, int, int>> ret;
 
     const int N = first.size(), M = second.size();
-  
+
     auto a = z_algorithm(std::string(first.rbegin(), first.rend()));
 
     std::string t = second + '\0' + first + second;
@@ -104,18 +101,18 @@ private:
     return ret;
   }
 
-  void run(std::string s, int left = 0){
+  void run(std::string s, int left, std::vector<std::tuple<int, int, int>> &ret){
     if(s.size() == 1) return;
 
     const int N = s.size();
     const int m = N / 2;
     const std::string first = s.substr(0, m), second = s.substr(m);
-  
+
     {
       auto res = aux(first, second);
 
       for(auto &[t, l, r] : res){
-        result.emplace_back(t, left + l, left + r);
+        ret.emplace_back(t, left + l, left + r);
       }
     }
 
@@ -123,64 +120,65 @@ private:
       auto res = aux(std::string(second.rbegin(), second.rend()), std::string(first.rbegin(), first.rend()));
 
       for(auto &[t, l, r] : res){
-        result.emplace_back(t, left + N - r, left + N - l);
+        ret.emplace_back(t, left + N - r, left + N - l);
       }
     }
 
-    run(first, left);
-    run(second, left + first.size());
+    run(first, left, ret);
+    run(second, left + first.size(), ret);
   }
 
-  void sub(std::string s){
+  void sub(std::string s, std::vector<std::tuple<int, int, int>> &ret){
     const int N = s.size();
-    
+
     {
       auto a = z_algorithm(s);
 
       for(int i = 1; i < N; ++i){
         if(i <= a[i]){
-          result.emplace_back(i, 0, i + a[i]);
+          ret.emplace_back(i, 0, i + a[i]);
         }
       }
     }
-    
+
     {
       auto a = z_algorithm(std::string(s.rbegin(), s.rend()));
 
       for(int i = 1; i < N; ++i){
         if(i <= a[i]){
-          result.emplace_back(i, N - i - a[i], N);
+          ret.emplace_back(i, N - i - a[i], N);
         }
       }
     }
   }
+}
 
-public:
-  RunEnumerate(const std::string &s){
-    run(s);
-    sub(s);
+auto run_enumerate(const std::string &s){
+  std::vector<std::tuple<int, int, int>> ret;
+  run_enumerate_impl::run(s, 0, ret);
+  run_enumerate_impl::sub(s, ret);
 
-    std::map<std::pair<int,int>, int> m;
+  std::map<std::pair<int, int>, int> m;
 
-    for(auto &[t,l,r] : result){
-      auto p = std::make_pair(l, r);
+  for(auto &[t, l, r] : ret){
+    auto p = std::make_pair(l, r);
 
-      if(m.find(p) != m.end()){
-        m[p] = std::min(m[p], t);
-      }else{
-        m[p] = t;
-      }
+    if(m.find(p) != m.end()){
+      m[p] = std::min(m[p], t);
+    }else{
+      m[p] = t;
     }
-
-    result.clear();
-
-    for(auto &[p, t] : m){
-      result.emplace_back(t, p.first, p.second);
-    }
-
-    std::sort(result.begin(), result.end());
   }
-};
+
+  ret.clear();
+
+  for(auto &[p, t] : m){
+    ret.emplace_back(t, p.first, p.second);
+  }
+
+  std::sort(ret.begin(), ret.end());
+  return ret;
+}
 
 ```
 {% endraw %}
@@ -209,11 +207,11 @@ std::vector<int> z_algorithm(const Container &s){
   int j = 0;
 
   for(int i = 1; i < n; ++i){
-    if(i+ret[i-j] < j+ret[j]){
-      ret[i] = ret[i-j];
+    if(i + ret[i - j] < j + ret[j]){
+      ret[i] = ret[i - j];
     }else{
-      int k = std::max<int>(0, j+ret[j]-i);
-      while(i+k < n and s[k] == s[i+k]) ++k;
+      int k = std::max<int>(0, j + ret[j] - i);
+      while(i + k < n and s[k] == s[i + k]) ++k;
       ret[i] = k;
       j = i;
     }
@@ -229,15 +227,12 @@ std::vector<int> z_algorithm(const Container &s){
  * @title Run enumerate
  * @docs run_enumerate.md
  */
-struct RunEnumerate{
-  std::vector<std::tuple<int,int,int>> result;
-
-private:
+namespace run_enumerate_impl {
   auto aux(const std::string &first, const std::string &second){
-    std::vector<std::tuple<int,int,int>> ret;
+    std::vector<std::tuple<int, int, int>> ret;
 
     const int N = first.size(), M = second.size();
-  
+
     auto a = z_algorithm(std::string(first.rbegin(), first.rend()));
 
     std::string t = second + '\0' + first + second;
@@ -257,18 +252,18 @@ private:
     return ret;
   }
 
-  void run(std::string s, int left = 0){
+  void run(std::string s, int left, std::vector<std::tuple<int, int, int>> &ret){
     if(s.size() == 1) return;
 
     const int N = s.size();
     const int m = N / 2;
     const std::string first = s.substr(0, m), second = s.substr(m);
-  
+
     {
       auto res = aux(first, second);
 
       for(auto &[t, l, r] : res){
-        result.emplace_back(t, left + l, left + r);
+        ret.emplace_back(t, left + l, left + r);
       }
     }
 
@@ -276,64 +271,65 @@ private:
       auto res = aux(std::string(second.rbegin(), second.rend()), std::string(first.rbegin(), first.rend()));
 
       for(auto &[t, l, r] : res){
-        result.emplace_back(t, left + N - r, left + N - l);
+        ret.emplace_back(t, left + N - r, left + N - l);
       }
     }
 
-    run(first, left);
-    run(second, left + first.size());
+    run(first, left, ret);
+    run(second, left + first.size(), ret);
   }
 
-  void sub(std::string s){
+  void sub(std::string s, std::vector<std::tuple<int, int, int>> &ret){
     const int N = s.size();
-    
+
     {
       auto a = z_algorithm(s);
 
       for(int i = 1; i < N; ++i){
         if(i <= a[i]){
-          result.emplace_back(i, 0, i + a[i]);
+          ret.emplace_back(i, 0, i + a[i]);
         }
       }
     }
-    
+
     {
       auto a = z_algorithm(std::string(s.rbegin(), s.rend()));
 
       for(int i = 1; i < N; ++i){
         if(i <= a[i]){
-          result.emplace_back(i, N - i - a[i], N);
+          ret.emplace_back(i, N - i - a[i], N);
         }
       }
     }
   }
+}
 
-public:
-  RunEnumerate(const std::string &s){
-    run(s);
-    sub(s);
+auto run_enumerate(const std::string &s){
+  std::vector<std::tuple<int, int, int>> ret;
+  run_enumerate_impl::run(s, 0, ret);
+  run_enumerate_impl::sub(s, ret);
 
-    std::map<std::pair<int,int>, int> m;
+  std::map<std::pair<int, int>, int> m;
 
-    for(auto &[t,l,r] : result){
-      auto p = std::make_pair(l, r);
+  for(auto &[t, l, r] : ret){
+    auto p = std::make_pair(l, r);
 
-      if(m.find(p) != m.end()){
-        m[p] = std::min(m[p], t);
-      }else{
-        m[p] = t;
-      }
+    if(m.find(p) != m.end()){
+      m[p] = std::min(m[p], t);
+    }else{
+      m[p] = t;
     }
-
-    result.clear();
-
-    for(auto &[p, t] : m){
-      result.emplace_back(t, p.first, p.second);
-    }
-
-    std::sort(result.begin(), result.end());
   }
-};
+
+  ret.clear();
+
+  for(auto &[p, t] : m){
+    ret.emplace_back(t, p.first, p.second);
+  }
+
+  std::sort(ret.begin(), ret.end());
+  return ret;
+}
 
 ```
 {% endraw %}

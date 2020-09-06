@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Dice
+# :x: Dice
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/dice.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/0502/main.test.cpp.html">test/aoj/0502/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/0502/main.test.cpp.html">test/aoj/0502/main.test.cpp</a>
 
 
 ## Code
@@ -52,7 +52,7 @@ layout: default
  * @title Dice
  * @docs dice.md
  */
-struct Dice{
+struct Dice {
   int top, bottom, front, back, right, left;
 
   Dice(){}
@@ -70,7 +70,7 @@ struct Dice{
   Dice rot_front() const {
     return Dice(back, front, top, bottom, right, left);
   }
-  
+
   Dice rot_back() const {
     return Dice(front, back, bottom, top, right, left);
   }
@@ -96,7 +96,7 @@ struct Dice{
  * @title Dice
  * @docs dice.md
  */
-struct Dice{
+struct Dice {
   int top, bottom, front, back, right, left;
 
   Dice(){}
@@ -114,7 +114,7 @@ struct Dice{
   Dice rot_front() const {
     return Dice(back, front, top, bottom, right, left);
   }
-  
+
   Dice rot_back() const {
     return Dice(front, back, bottom, top, right, left);
   }

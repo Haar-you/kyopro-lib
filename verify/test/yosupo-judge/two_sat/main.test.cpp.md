@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/two_sat/main.test.cpp
+# :x: test/yosupo-judge/two_sat/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#e93cc7e7edd1deb522641737d913fca6">test/yosupo-judge/two_sat</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/two_sat/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/two_sat">https://judge.yosupo.jp/problem/two_sat</a>
@@ -39,13 +39,13 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
-* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">Topological sort</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/two_sat.cpp.html">2-SAT</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :x: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
+* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../../../../library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">Topological sort</a>
+* :x: <a href="../../../../library/Mylib/Graph/two_sat.cpp.html">2-SAT</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 
 
 ## Code
@@ -64,7 +64,7 @@ layout: default
 
 int main(){
   std::string p, cnf;
-  int N,M;
+  int N, M;
   std::cin >> p >> cnf >> N >> M;
 
   TwoSat sat(N);
@@ -75,7 +75,7 @@ int main(){
 
   if(auto res = sat.solve(); res){
     std::vector<int> ans(N);
-    for(int i = 0; i < N; ++i) ans[i] = (*res)[i] ? i+1 : -(i+1);
+    for(int i = 0; i < N; ++i) ans[i] = (*res)[i] ? i + 1 : -(i + 1);
 
     std::cout
       << "s SATISFIABLE" << std::endl
@@ -102,14 +102,14 @@ int main(){
 #line 3 "Mylib/Graph/two_sat.cpp"
 #include <optional>
 #include <cassert>
-#line 3 "Mylib/Graph/Template/graph.cpp"
+#line 4 "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -119,15 +119,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -140,7 +140,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -206,7 +206,6 @@ auto strongly_connected_components(const Graph<T> &g){
   int i = 0;
   for(auto c : check) if(result[c] == -1) rdfs(rdfs, c, i), ++i;
 
-  
   return std::make_pair(result, i);
 }
 #line 4 "Mylib/Graph/TopologicalSort/topological_sort.cpp"
@@ -221,7 +220,7 @@ template <typename T>
 std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
   const int n = g.size();
   std::vector<int> indeg(n);
-  
+
   for(int i = 0; i < n; ++i){
     for(auto &e : g[i]){
       ++indeg[e.to];
@@ -257,7 +256,7 @@ std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
  * @title 2-SAT
  * @docs two_sat.md
  */
-class TwoSat{
+class TwoSat {
   const int n;
   Graph<int> g;
 
@@ -269,7 +268,7 @@ class TwoSat{
   }
 
 public:
-  TwoSat(int n): n(n), g(2*n){}
+  TwoSat(int n): n(n), g(2 * n){}
 
   /**
    * @note a→bを導入する
@@ -294,18 +293,18 @@ public:
   void not_coexist(int a, int b){
     add_or(-a, -b);
   }
-  
+
 public:
   std::optional<std::vector<bool>> solve() const {
     auto [scc, m] = strongly_connected_components(g);
 
     for(int i = 0; i < n; ++i){
-      if(scc[i] == scc[i+n]) return {};
+      if(scc[i] == scc[i + n]) return {};
     }
-    
+
     Graph<int> g2(m);
 
-    for(int i = 0; i < 2*n; ++i){
+    for(int i = 0; i < 2 * n; ++i){
       for(auto &e : g[i]){
         if(scc[e.from] != scc[e.to]){
           g2.add_edge(scc[e.from], scc[e.to], 1);
@@ -319,7 +318,7 @@ public:
     for(int i = 0; i < m; ++i) r[ts[i]] = i;
 
     std::vector<bool> ret(n);
-    for(int i = 0; i < n; ++i) ret[i] = r[scc[i]] > r[scc[i+n]];
+    for(int i = 0; i < n; ++i) ret[i] = r[scc[i]] > r[scc[i + n]];
 
     return {ret};
   }
@@ -352,8 +351,8 @@ std::string join(ITER first, ITER last, std::string delim = " "){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -363,8 +362,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -373,8 +372,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -416,7 +415,7 @@ auto input_tuples(int N){
 
 int main(){
   std::string p, cnf;
-  int N,M;
+  int N, M;
   std::cin >> p >> cnf >> N >> M;
 
   TwoSat sat(N);
@@ -427,7 +426,7 @@ int main(){
 
   if(auto res = sat.solve(); res){
     std::vector<int> ans(N);
-    for(int i = 0; i < N; ++i) ans[i] = (*res)[i] ? i+1 : -(i+1);
+    for(int i = 0; i < N; ++i) ans[i] = (*res)[i] ? i + 1 : -(i + 1);
 
     std::cout
       << "s SATISFIABLE" << std::endl

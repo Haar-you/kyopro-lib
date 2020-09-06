@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/matrix_det/main.test.cpp
+# :x: test/yosupo-judge/matrix_det/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f56272346ebd60cefe0da1df8f0209d6">test/yosupo-judge/matrix_det</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/matrix_det/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-10 08:29:19+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/matrix_det">https://judge.yosupo.jp/problem/matrix_det</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/determinant.cpp.html">Determinant</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Square matrix</a>
-* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/determinant.cpp.html">Determinant</a>
+* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Square matrix</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -60,13 +60,13 @@ layout: default
 
 using mint = ModInt<998244353>;
 
-struct tag{};
+struct tag {};
 using Mat = SquareMatrix<mint, tag>;
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N; std::cin >> N;
 
   Mat::init(N);
@@ -95,18 +95,19 @@ int main(){
  * @title Modint
  * @docs mint.md
  */
-template <int32_t M> class ModInt{
+template <int32_t M>
+class ModInt {
 public:
   constexpr static int32_t MOD = M;
   uint32_t val;
-  
+
   constexpr ModInt(): val(0){}
   constexpr ModInt(int64_t n){
     if(n >= M) val = n % M;
     else if(n < 0) val = n % M + M;
     else val = n;
   }
-  
+
   constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
   constexpr auto& operator+=(const ModInt &a){
     if(val + a.val >= M) val = (uint64_t)val + a.val - M;
@@ -131,51 +132,51 @@ public:
   constexpr auto operator-(const ModInt &a) const {return ModInt(*this) -= a;}
   constexpr auto operator*(const ModInt &a) const {return ModInt(*this) *= a;}
   constexpr auto operator/(const ModInt &a) const {return ModInt(*this) /= a;}
-  
+
   constexpr bool operator==(const ModInt &a) const {return val == a.val;}
   constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
-  
+
   constexpr auto& operator++(){*this += 1; return *this;}
   constexpr auto& operator--(){*this -= 1; return *this;}
-  
+
   constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
   constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
-  
+
   constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
-    
+
     int64_t ret = 1, e = n % M;
     for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
     return ret;
   }
-  
+
   constexpr static ModInt inv(int64_t a){
     int64_t b = M, u = 1, v = 0;
-    
+
     while(b){
       int64_t t = a / b;
-      a -= t * b; std::swap(a,b);
-      u -= t * v; std::swap(u,v);
+      a -= t * b; std::swap(a, b);
+      u -= t * v; std::swap(u, v);
     }
-    
+
     u %= M;
     if(u < 0) u += M;
-    
+
     return u;
   }
-  
+
   constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
-  
+
   constexpr auto power(int64_t p) const {return power(val, p);}
   constexpr auto inv() const {return inv(val);}
-  
-  friend constexpr auto operator-(const ModInt &a){return ModInt(M-a.val);}
-  
+
+  friend constexpr auto operator-(const ModInt &a){return ModInt(M - a.val);}
+
   friend constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
   friend constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
   friend constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
   friend constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
-  
+
   friend std::istream& operator>>(std::istream &s, ModInt<M> &a){s >> a.val; return s;}
   friend std::ostream& operator<<(std::ostream &s, const ModInt<M> &a){s << a.val; return s;}
 
@@ -196,30 +197,31 @@ public:
  * @title Square matrix
  * @docs square_matrix.md
  */
-template <typename T, class Tag> struct SquareMatrix{
+template <typename T, class Tag>
+struct SquareMatrix {
   using value_type = T;
-  
+
   static int N;
   static void init(int n){N = n;}
   std::vector<std::vector<T>> matrix;
-  
+
   SquareMatrix(): matrix(N, std::vector<T>(N)){}
   SquareMatrix(const T &val): matrix(N, std::vector<T>(N, val)){}
   SquareMatrix(const std::vector<std::vector<T>> &matrix): matrix(matrix){}
 
   bool operator==(const SquareMatrix &val) const {return matrix == val.matrix;}
   bool operator!=(const SquareMatrix &val) const {return !(*this == val);}
-  
+
   auto& operator=(const SquareMatrix &val){
     this->matrix = val.matrix;
     return *this;
   }
-  
+
   auto& operator+=(const SquareMatrix &val){
     for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] + val[i][j];
     return *this;
   }
-  
+
   auto& operator-=(const SquareMatrix &val){
     for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] - val[i][j];
     return *this;
@@ -235,7 +237,7 @@ template <typename T, class Tag> struct SquareMatrix{
   const auto& operator[](size_t i) const {return matrix[i];}
   auto& operator[](size_t i){return matrix[i];}
   int size() const {return N;}
-  
+
   static auto make_unit(){
     SquareMatrix ret;
     for(int i = 0; i < N; ++i) ret[i][i] = 1;
@@ -247,7 +249,7 @@ template <typename T, class Tag> struct SquareMatrix{
   friend auto operator*(const SquareMatrix &a, const SquareMatrix &b){auto ret = a; ret *= b; return ret;}
 };
 
-template <typename T, class Tag> int SquareMatrix<T,Tag>::N;
+template <typename T, class Tag> int SquareMatrix<T, Tag>::N;
 #line 2 "Mylib/LinearAlgebra/Square/determinant.cpp"
 
 /**
@@ -257,26 +259,26 @@ template <typename T, class Tag> int SquareMatrix<T,Tag>::N;
 template <typename M, typename T = typename M::value_type>
 T determinant(M m){
   const int N = m.size();
-  
+
   int s = 0;
   for(int i = 0; i < N; ++i){
     if(m[i][i] == 0){
-      for(int j = i+1; j < N; ++j){
+      for(int j = i + 1; j < N; ++j){
         if(m[j][i] != 0){
           m[i].swap(m[j]);
           (s += 1) %= 2;
           break;
         }
-        if(j == N-1) return 0;
+        if(j == N - 1) return 0;
       }
     }
-    
-    for(int j = i+1; j < N; ++j){
+
+    for(int j = i + 1; j < N; ++j){
       T t = m[j][i] / m[i][i];
       for(int k = 0; k < N; ++k) m[j][k] -= m[i][k] * t;
     }
   }
-  
+
   T ret = s ? -1 : 1;
   for(int i = 0; i < N; ++i) ret *= m[i][i];
   return ret;
@@ -303,13 +305,13 @@ std::vector<std::vector<T>> input_vector(int N, int M){
 
 using mint = ModInt<998244353>;
 
-struct tag{};
+struct tag {};
 using Mat = SquareMatrix<mint, tag>;
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N; std::cin >> N;
 
   Mat::init(N);

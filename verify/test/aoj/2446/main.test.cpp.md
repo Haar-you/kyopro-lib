@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/2446/main.test.cpp
+# :x: test/aoj/2446/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#5326787223290b45db8eae567be7c0f8">test/aoj/2446</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2446/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2446">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2446</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Convolution/fast_mobius_transform_subset.cpp.html">Fast Möbius transform (Subsets)</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/Convolution/fast_mobius_transform_subset.cpp.html">Fast Möbius transform (Subsets)</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -66,22 +66,22 @@ int main(){
 
   auto a = input_vector<int64_t>(n);
   auto p = input_vector<double>(n);
-    
+
   for(auto &x : p) x /= 100.0;
 
-  std::vector<int64_t> dp(1<<n);
-  for(int i = 1; i < 1<<n; ++i){
+  std::vector<int64_t> dp(1 << n);
+  for(int i = 1; i < 1 << n; ++i){
     int64_t l = 1;
     for(int j = 0; j < n; ++j){
       if((i >> j) & 1){
         int64_t g = std::gcd(l, a[j]);
 
         long long int k;
-        if(__builtin_smulll_overflow(l/g, a[j], &k)){
-          l = m+1;
+        if(__builtin_smulll_overflow(l / g, a[j], &k)){
+          l = m + 1;
           break;
         }
-        l = (l/g) * a[j];
+        l = (l / g) * a[j];
       }
     }
     dp[i] = m / l;
@@ -91,7 +91,7 @@ int main(){
 
   double ans = 0.0;
 
-  for(int i = 0; i < (1<<n); ++i){
+  for(int i = 0; i < (1 << n); ++i){
     double q = 1.0;
     for(int j = 0; j < n; ++j){
       if(i >> j & 1) q *= p[j];
@@ -99,9 +99,9 @@ int main(){
     }
     ans += q * std::abs(dp[i]);
   }
-  
+
   std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
-  
+
   return 0;
 }
 
@@ -128,9 +128,9 @@ int main(){
  */
 template <typename T, typename Func = std::minus<T>>
 std::vector<T> fast_mobius_transform_subset(std::vector<T> f, const Func &op = std::minus<T>()){
-  for(int i = 0; (1<<i) < (int)f.size(); ++i){
+  for(int i = 0; (1 << i) < (int)f.size(); ++i){
     for(int j = 0; j < (int)f.size(); ++j){
-      if(j & (1<<i)) f[j] = op(f[j], f[j ^ (1<<i)]);
+      if(j & (1 << i)) f[j] = op(f[j], f[j ^ (1 << i)]);
     }
   }
   return f;
@@ -163,22 +163,22 @@ int main(){
 
   auto a = input_vector<int64_t>(n);
   auto p = input_vector<double>(n);
-    
+
   for(auto &x : p) x /= 100.0;
 
-  std::vector<int64_t> dp(1<<n);
-  for(int i = 1; i < 1<<n; ++i){
+  std::vector<int64_t> dp(1 << n);
+  for(int i = 1; i < 1 << n; ++i){
     int64_t l = 1;
     for(int j = 0; j < n; ++j){
       if((i >> j) & 1){
         int64_t g = std::gcd(l, a[j]);
 
         long long int k;
-        if(__builtin_smulll_overflow(l/g, a[j], &k)){
-          l = m+1;
+        if(__builtin_smulll_overflow(l / g, a[j], &k)){
+          l = m + 1;
           break;
         }
-        l = (l/g) * a[j];
+        l = (l / g) * a[j];
       }
     }
     dp[i] = m / l;
@@ -188,7 +188,7 @@ int main(){
 
   double ans = 0.0;
 
-  for(int i = 0; i < (1<<n); ++i){
+  for(int i = 0; i < (1 << n); ++i){
     double q = 1.0;
     for(int j = 0; j < n; ++j){
       if(i >> j & 1) q *= p[j];
@@ -196,9 +196,9 @@ int main(){
     }
     ans += q * std::abs(dp[i]);
   }
-  
+
   std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
-  
+
   return 0;
 }
 

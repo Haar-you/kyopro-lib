@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/convolution_and.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-30 03:53:09+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -53,8 +53,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="fast_mobius_transform_superset.cpp.html">Fast Möbius transform (Supersets)</a>
-* :heavy_check_mark: <a href="fast_zeta_transform_superset.cpp.html">Fast Zeta transform (Supersets)</a>
+* :x: <a href="fast_mobius_transform_superset.cpp.html">Fast Möbius transform (Supersets)</a>
+* :x: <a href="fast_zeta_transform_superset.cpp.html">Fast Zeta transform (Supersets)</a>
 
 
 ## Code
@@ -97,9 +97,9 @@ std::vector<T> convolution_and(std::vector<T> f, std::vector<T> g){
  */
 template <typename T, typename Func = std::plus<T>>
 std::vector<T> fast_zeta_transform_superset(std::vector<T> f, const Func &op = std::plus<T>()){
-  for(int i = 0; (1<<i) < (int)f.size(); ++i){
+  for(int i = 0; (1 << i) < (int)f.size(); ++i){
     for(int j = 0; j < (int)f.size(); ++j){
-      if(!(j & (1<<i))) f[j] = op(f[j], f[j ^ (1<<i)]);
+      if(!(j & (1 << i))) f[j] = op(f[j], f[j ^ (1 << i)]);
     }
   }
   return f;
@@ -112,9 +112,9 @@ std::vector<T> fast_zeta_transform_superset(std::vector<T> f, const Func &op = s
  */
 template <typename T, typename Func = std::minus<T>>
 std::vector<T> fast_mobius_transform_superset(std::vector<T> f, const Func &op = std::minus<T>()){
-  for(int i = 0; (1<<i) < (int)f.size(); ++i){
+  for(int i = 0; (1 << i) < (int)f.size(); ++i){
     for(int j = 0; j < (int)f.size(); ++j){
-      if(!(j & (1<<i))) f[j] = op(f[j], f[j ^ (1<<i)]);
+      if(!(j & (1 << i))) f[j] = op(f[j], f[j ^ (1 << i)]);
     }
   }
   return f;

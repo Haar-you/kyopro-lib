@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Longest increasing subsequence
+# :x: Longest increasing subsequence
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3a96c66483797c15eff4c0c3d8733619">Mylib/DynamicProgramming</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/longest_increasing_subsequence.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -49,12 +49,11 @@ layout: default
 ## Problems
 
 ## References
- 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_1_D/main.test.cpp.html">test/aoj/DPL_1_D/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/DPL_1_D/main.test.cpp.html">test/aoj/DPL_1_D/main.test.cpp</a>
 
 
 ## Code
@@ -74,12 +73,12 @@ template <typename Container, typename T = typename Container::value_type>
 int lis(const Container &xs){
   std::vector<T> dp;
   dp.reserve(xs.size());
-  
+
   for(auto x : xs){
     if(dp.empty() or dp.back() < x){
       dp.push_back(x);
     }else{
-      dp[std::lower_bound(dp.begin(),dp.end(),x)-dp.begin()] = x;
+      dp[std::lower_bound(dp.begin(), dp.end(), x) - dp.begin()] = x;
     }
   }
 
@@ -104,12 +103,12 @@ template <typename Container, typename T = typename Container::value_type>
 int lis(const Container &xs){
   std::vector<T> dp;
   dp.reserve(xs.size());
-  
+
   for(auto x : xs){
     if(dp.empty() or dp.back() < x){
       dp.push_back(x);
     }else{
-      dp[std::lower_bound(dp.begin(),dp.end(),x)-dp.begin()] = x;
+      dp[std::lower_bound(dp.begin(), dp.end(), x) - dp.begin()] = x;
     }
   }
 

@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Intersection between a cirlce and a line
+# :x: Intersection between a circle and a line
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/intersect_circle_line.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="distance_line_point.cpp.html">Distance between a line and a point</a>
-* :heavy_check_mark: <a href="geometry_template.cpp.html">Geometry template</a>
+* :x: <a href="distance_line_point.cpp.html">Distance between a line and a point</a>
+* :x: <a href="geometry_template.cpp.html">Geometry template</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_D/main.test.cpp.html">test/aoj/CGL_7_D/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_7_D/main.test.cpp.html">test/aoj/CGL_7_D/main.test.cpp</a>
 
 
 ## Code
@@ -58,22 +58,22 @@ layout: default
 #include "Mylib/Geometry/Float/distance_line_point.cpp"
 
 /**
- * @title Intersection between a cirlce and a line
+ * @title Intersection between a circle and a line
  * @docs intersect_circle_line.md
  */
-namespace intersect_circle_line{
-  enum Status{
+namespace intersect_circle_line {
+  enum Status {
               OUTSIDE = 0b001,
               TANGENT = 0b010,
               CROSSED = 0b100
   };
 
   template <typename T>
-  struct Result{
+  struct Result {
     Status status;
     std::vector<Point<T>> crosspoints;
   };
-  
+
   template <typename T>
   auto check(const Circle<T> &c, const Line<T> &l){
     const T d = distance_line_point(l, c.center);
@@ -88,7 +88,7 @@ namespace intersect_circle_line{
     if(d == c.radius){
       return Result<T>({TANGENT, {b}});
     }
-    
+
     const T a = sqrt(c.radius * c.radius - d * d);
     return Result<T>({CROSSED, {b + unit(l) * a, b - unit(l) * a}});
   }
@@ -113,7 +113,7 @@ namespace intersect_circle_line{
  */
 
 template <typename T>
-struct Vec{
+struct Vec {
   T x, y;
   Vec(){}
   Vec(T x, T y): x(x), y(y){}
@@ -123,11 +123,11 @@ struct Vec{
   friend auto operator-(const Vec &a){return Vec(-a.x, -a.y);}
 
   friend bool operator==(const Vec &a, const Vec &b){return a.x == b.x and a.y == b.y;}
-  friend bool operator!=(const Vec &a, const Vec &b){return !(a==b);}
+  friend bool operator!=(const Vec &a, const Vec &b){return !(a == b);}
   friend bool operator<(const Vec &a, const Vec &b){return a.x < b.x or (a.x == b.x and a.y < b.y);}
-  
+
   friend std::istream& operator>>(std::istream &s, Vec &a){
-    s >> a.x >> a.y; return s;
+    s >> a.x  >> a.y; return s;
   }
 };
 
@@ -161,7 +161,7 @@ T angle_diff(const Vec<T> &a, const Vec<T> &b){
 }
 
 
-template <typename T> struct Line{
+template <typename T> struct Line {
   Point<T> from, to;
   Line(): from(), to(){}
   Line(const Point<T> &from, const Point<T> &to): from(from), to(to){}
@@ -183,7 +183,7 @@ template <typename T> T cross(const Line<T> &a, const Line<T> &b){return cross(d
 
 template <typename T> using Polygon = std::vector<Point<T>>;
 
-template <typename T> struct Circle{
+template <typename T> struct Circle {
   Point<T> center;
   T radius;
   Circle(): center(), radius(0){}
@@ -202,22 +202,22 @@ T distance_line_point(const Line<T> &l, const Point<T> &p){
 #line 5 "Mylib/Geometry/Float/intersect_circle_line.cpp"
 
 /**
- * @title Intersection between a cirlce and a line
+ * @title Intersection between a circle and a line
  * @docs intersect_circle_line.md
  */
-namespace intersect_circle_line{
-  enum Status{
+namespace intersect_circle_line {
+  enum Status {
               OUTSIDE = 0b001,
               TANGENT = 0b010,
               CROSSED = 0b100
   };
 
   template <typename T>
-  struct Result{
+  struct Result {
     Status status;
     std::vector<Point<T>> crosspoints;
   };
-  
+
   template <typename T>
   auto check(const Circle<T> &c, const Line<T> &l){
     const T d = distance_line_point(l, c.center);
@@ -232,7 +232,7 @@ namespace intersect_circle_line{
     if(d == c.radius){
       return Result<T>({TANGENT, {b}});
     }
-    
+
     const T a = sqrt(c.radius * c.radius - d * d);
     return Result<T>({CROSSED, {b + unit(l) * a, b - unit(l) * a}});
   }

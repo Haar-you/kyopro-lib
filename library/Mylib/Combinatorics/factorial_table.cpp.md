@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :question: Factorial table
+# :x: Factorial table
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/factorial_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-20 09:35:37+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -50,17 +50,17 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="bell_number.cpp.html">Bell number</a>
+* :x: <a href="bell_number.cpp.html">Bell number</a>
 * :x: <a href="bernoulli_number.cpp.html">Bernoulli number</a>
 * :x: <a href="catalan_number.cpp.html">Catalan number</a>
-* :heavy_check_mark: <a href="stirling_number_second.cpp.html">Stirling numbers of the second kind</a>
+* :x: <a href="stirling_number_second.cpp.html">Stirling numbers of the second kind</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_G/main.test.cpp.html">test/aoj/DPL_5_G/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_I/main.test.cpp.html">test/aoj/DPL_5_I/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/bernoulli_number/main.test.cpp.html">test/yosupo-judge/bernoulli_number/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/DPL_5_G/main.test.cpp.html">test/aoj/DPL_5_G/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/DPL_5_I/main.test.cpp.html">test/aoj/DPL_5_I/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/bernoulli_number/main.test.cpp.html">test/yosupo-judge/bernoulli_number/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yukicoder/117/main.test.cpp.html">test/yukicoder/117/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yukicoder/660/main.test.cpp.html">test/yukicoder/660/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yukicoder/665/main.test.cpp.html">test/yukicoder/665/main.test.cpp</a>
@@ -74,13 +74,14 @@ layout: default
 #pragma once
 #include <vector>
 #include <cassert>
+#include <cstdint>
 
 /**
  * @title Factorial table
  * @docs factorial_table.md
  */
 template <typename T>
-class FactorialTable{
+class FactorialTable {
 public:
   using value_type = T;
 
@@ -90,25 +91,25 @@ private:
 
 public:
   FactorialTable(int N){
-    f_table.assign(N+1, 1);
-    if_table.assign(N+1, 1);
-    
+    f_table.assign(N + 1, 1);
+    if_table.assign(N + 1, 1);
+
     for(int i = 1; i <= N; ++i){
-      f_table[i] = f_table[i-1] * i;
+      f_table[i] = f_table[i - 1] * i;
     }
-    
+
     if_table[N] = f_table[N].inv();
 
-    for(int i = N-1; i >= 0; --i){
-      if_table[i] = if_table[i+1] * (i+1);
+    for(int i = N; --i >= 0;){
+      if_table[i] = if_table[i + 1] * (i + 1);
     }
   }
-  
+
   T factorial(int64_t i) const {
     assert(i < (int)f_table.size());
     return f_table[i];
   }
-  
+
   T inv_factorial(int64_t i) const {
     assert(i < (int)if_table.size());
     return if_table[i];
@@ -116,17 +117,17 @@ public:
 
   T P(int64_t n, int64_t k) const {
     if(n < k or n < 0 or k < 0) return 0;
-    return factorial(n) * inv_factorial(n-k);
+    return factorial(n) * inv_factorial(n - k);
   }
 
   T C(int64_t n, int64_t k) const {
     if(n < k or n < 0 or k < 0) return 0;
-    return P(n,k) * inv_factorial(k);
+    return P(n, k) * inv_factorial(k);
   }
 
   T H(int64_t n, int64_t k) const {
     if(n == 0 and k == 0) return 1;
-    return C(n+k-1, k);
+    return C(n + k - 1, k);
   }
 };
 
@@ -139,13 +140,14 @@ public:
 #line 2 "Mylib/Combinatorics/factorial_table.cpp"
 #include <vector>
 #include <cassert>
+#include <cstdint>
 
 /**
  * @title Factorial table
  * @docs factorial_table.md
  */
 template <typename T>
-class FactorialTable{
+class FactorialTable {
 public:
   using value_type = T;
 
@@ -155,25 +157,25 @@ private:
 
 public:
   FactorialTable(int N){
-    f_table.assign(N+1, 1);
-    if_table.assign(N+1, 1);
-    
+    f_table.assign(N + 1, 1);
+    if_table.assign(N + 1, 1);
+
     for(int i = 1; i <= N; ++i){
-      f_table[i] = f_table[i-1] * i;
+      f_table[i] = f_table[i - 1] * i;
     }
-    
+
     if_table[N] = f_table[N].inv();
 
-    for(int i = N-1; i >= 0; --i){
-      if_table[i] = if_table[i+1] * (i+1);
+    for(int i = N; --i >= 0;){
+      if_table[i] = if_table[i + 1] * (i + 1);
     }
   }
-  
+
   T factorial(int64_t i) const {
     assert(i < (int)f_table.size());
     return f_table[i];
   }
-  
+
   T inv_factorial(int64_t i) const {
     assert(i < (int)if_table.size());
     return if_table[i];
@@ -181,17 +183,17 @@ public:
 
   T P(int64_t n, int64_t k) const {
     if(n < k or n < 0 or k < 0) return 0;
-    return factorial(n) * inv_factorial(n-k);
+    return factorial(n) * inv_factorial(n - k);
   }
 
   T C(int64_t n, int64_t k) const {
     if(n < k or n < 0 or k < 0) return 0;
-    return P(n,k) * inv_factorial(k);
+    return P(n, k) * inv_factorial(k);
   }
 
   T H(int64_t n, int64_t k) const {
     if(n == 0 and k == 0) return 1;
-    return C(n+k-1, k);
+    return C(n + k - 1, k);
   }
 };
 

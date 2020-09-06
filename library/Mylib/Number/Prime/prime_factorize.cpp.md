@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Prime factorization
+# :x: Prime factorization
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/prime_factorize.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="count_coprime.cpp.html">Count coprime</a>
+* :x: <a href="count_coprime.cpp.html">Count coprime</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/NTL_1_A/main.test.cpp.html">test/aoj/NTL_1_A/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/NTL_1_D/main.test.cpp.html">test/aoj/NTL_1_D/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/NTL_1_A/main.test.cpp.html">test/aoj/NTL_1_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/NTL_1_D/main.test.cpp.html">test/aoj/NTL_1_D/main.test.cpp</a>
 
 
 ## Code
@@ -55,13 +55,14 @@ layout: default
 #pragma once
 #include <vector>
 #include <utility>
+#include <cstdint>
 
 /**
  * @title Prime factorization
  * @docs prime_factorize.md
  */
 auto prime_factorize(int64_t n){
-  std::vector<std::pair<int64_t,int64_t>> ret;
+  std::vector<std::pair<int64_t, int64_t>> ret;
   for(int64_t i = 2LL; i * i <= n; ++i){
     if(n % i == 0){
       int64_t c = 0;
@@ -85,13 +86,14 @@ auto prime_factorize(int64_t n){
 #line 2 "Mylib/Number/Prime/prime_factorize.cpp"
 #include <vector>
 #include <utility>
+#include <cstdint>
 
 /**
  * @title Prime factorization
  * @docs prime_factorize.md
  */
 auto prime_factorize(int64_t n){
-  std::vector<std::pair<int64_t,int64_t>> ret;
+  std::vector<std::pair<int64_t, int64_t>> ret;
   for(int64_t i = 2LL; i * i <= n; ++i){
     if(n % i == 0){
       int64_t c = 0;

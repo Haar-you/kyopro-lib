@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mod inverse
+# :x: Mod inverse
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#795ab137908c82fc28acbcffe5b1c757">Mylib/Number/Mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mod/mod_inv.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -54,13 +54,13 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="mod_log.cpp.html">Mod logarithm</a>
+* :x: <a href="mod_log.cpp.html">Mod logarithm</a>
 * :warning: <a href="../garner.cpp.html">Garner algorithm</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
 
 
 ## Code
@@ -70,6 +70,7 @@ layout: default
 ```cpp
 #pragma once
 #include <utility>
+#include <cstdint>
 
 /**
  * @title Mod inverse
@@ -98,6 +99,7 @@ int64_t mod_inv(int64_t a, int64_t m){
 ```cpp
 #line 2 "Mylib/Number/Mod/mod_inv.cpp"
 #include <utility>
+#include <cstdint>
 
 /**
  * @title Mod inverse

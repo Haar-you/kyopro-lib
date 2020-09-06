@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/xor_shift.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -42,12 +42,13 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
+#include <cstdint>
 
 /**
  * @title Xorshift
  * @docs xor_shift.md
  */
-struct XorShift{
+struct XorShift {
   static uint64_t rand(){
     static uint64_t x = 1234567889, y = 362436069, z = 521288629, w = 88675123;
 
@@ -59,8 +60,8 @@ struct XorShift{
     return w;
   }
 
-  static uint64_t rand(uint64_t s, uint64_t t){ // [s,t)
-    return s + rand() % (t-s);
+  static uint64_t rand(uint64_t s, uint64_t t){ // [s, t)
+    return s + rand() % (t - s);
   }
 };
 
@@ -71,12 +72,13 @@ struct XorShift{
 {% raw %}
 ```cpp
 #line 2 "Mylib/Misc/xor_shift.cpp"
+#include <cstdint>
 
 /**
  * @title Xorshift
  * @docs xor_shift.md
  */
-struct XorShift{
+struct XorShift {
   static uint64_t rand(){
     static uint64_t x = 1234567889, y = 362436069, z = 521288629, w = 88675123;
 
@@ -88,8 +90,8 @@ struct XorShift{
     return w;
   }
 
-  static uint64_t rand(uint64_t s, uint64_t t){ // [s,t)
-    return s + rand() % (t-s);
+  static uint64_t rand(uint64_t s, uint64_t t){ // [s, t)
+    return s + rand() % (t - s);
   }
 };
 

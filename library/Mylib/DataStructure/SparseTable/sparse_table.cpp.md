@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Sparse table
+# :x: Sparse table
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9f519a6857abe7364ea5fbe97ba369aa">Mylib/DataStructure/SparseTable</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SparseTable/sparse_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
@@ -52,7 +52,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/staticrmq/main.sparse_table.test.cpp.html">test/yosupo-judge/staticrmq/main.sparse_table.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/staticrmq/main.sparse_table.test.cpp.html">test/yosupo-judge/staticrmq/main.sparse_table.test.cpp</a>
 
 
 ## Code
@@ -70,38 +70,38 @@ layout: default
  * @docs sparse_table.md
  */
 template <typename Semilattice>
-class SparseTable{
+class SparseTable {
   using value_type = typename Semilattice::value_type;
-  Semilattice S;
-  
+  const static Semilattice S;
+
   std::vector<std::vector<value_type>> a;
   std::vector<int> log_table;
-  
+
 public:
   template <typename T>
   SparseTable(const std::vector<T> &v){
     int n = v.size();
     int logn = 0;
     while((1 << logn) <= n) ++logn;
-    
+
     a.assign(n, std::vector<value_type>(logn));
     for(int i = 0; i < n; ++i) a[i][0] = v[i];
     for(int j = 1; j < logn; ++j){
       for(int i = 0; i < n; ++i){
-        a[i][j] = S.op(a[i][j-1], a[std::min<int>(n-1, i+(1<<(j-1)))][j-1]);
+        a[i][j] = S(a[i][j - 1], a[std::min<int>(n - 1, i + (1 << (j - 1)))][j - 1]);
       }
     }
 
-    log_table.assign(n+1, 0);
-    for(int i = 2; i < n+1; ++i) log_table[i] = log_table[i>>1] + 1;
-  }
-  
-  value_type get(int s, int t) const { // [s,t)
-    int k = log_table[t-s];
-    return S.op(a[s][k], a[t-(1<<k)][k]);
+    log_table.assign(n + 1, 0);
+    for(int i = 2; i < n + 1; ++i) log_table[i] = log_table[i >> 1] + 1;
   }
 
-  value_type get(std::vector<std::pair<int,int>> st) const {
+  value_type get(int s, int t) const { // [s, t)
+    int k = log_table[t - s];
+    return S(a[s][k], a[t - (1 << k)][k]);
+  }
+
+  value_type get(std::vector<std::pair<int, int>> st) const {
     value_type ret;
     bool t = true;
 
@@ -111,7 +111,7 @@ public:
           ret = get(p.first, p.second);
           t = false;
         }else{
-          ret = S.op(ret, get(p.first, p.second));
+          ret = S(ret, get(p.first, p.second));
         }
       }
     }
@@ -136,38 +136,38 @@ public:
  * @docs sparse_table.md
  */
 template <typename Semilattice>
-class SparseTable{
+class SparseTable {
   using value_type = typename Semilattice::value_type;
-  Semilattice S;
-  
+  const static Semilattice S;
+
   std::vector<std::vector<value_type>> a;
   std::vector<int> log_table;
-  
+
 public:
   template <typename T>
   SparseTable(const std::vector<T> &v){
     int n = v.size();
     int logn = 0;
     while((1 << logn) <= n) ++logn;
-    
+
     a.assign(n, std::vector<value_type>(logn));
     for(int i = 0; i < n; ++i) a[i][0] = v[i];
     for(int j = 1; j < logn; ++j){
       for(int i = 0; i < n; ++i){
-        a[i][j] = S.op(a[i][j-1], a[std::min<int>(n-1, i+(1<<(j-1)))][j-1]);
+        a[i][j] = S(a[i][j - 1], a[std::min<int>(n - 1, i + (1 << (j - 1)))][j - 1]);
       }
     }
 
-    log_table.assign(n+1, 0);
-    for(int i = 2; i < n+1; ++i) log_table[i] = log_table[i>>1] + 1;
-  }
-  
-  value_type get(int s, int t) const { // [s,t)
-    int k = log_table[t-s];
-    return S.op(a[s][k], a[t-(1<<k)][k]);
+    log_table.assign(n + 1, 0);
+    for(int i = 2; i < n + 1; ++i) log_table[i] = log_table[i >> 1] + 1;
   }
 
-  value_type get(std::vector<std::pair<int,int>> st) const {
+  value_type get(int s, int t) const { // [s, t)
+    int k = log_table[t - s];
+    return S(a[s][k], a[t - (1 << k)][k]);
+  }
+
+  value_type get(std::vector<std::pair<int, int>> st) const {
     value_type ret;
     bool t = true;
 
@@ -177,7 +177,7 @@ public:
           ret = get(p.first, p.second);
           t = false;
         }else{
-          ret = S.op(ret, get(p.first, p.second));
+          ret = S(ret, get(p.first, p.second));
         }
       }
     }

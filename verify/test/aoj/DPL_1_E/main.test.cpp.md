@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_1_E/main.test.cpp
+# :x: test/aoj/DPL_1_E/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ff011c241521fe723b9ada74a9467695">test/aoj/DPL_1_E</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_1_E/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_E">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_E</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/levenshtein_distance.cpp.html">Levenshtein distance / Edit distance</a>
+* :x: <a href="../../../../library/Mylib/String/levenshtein_distance.cpp.html">Levenshtein distance / Edit distance</a>
 
 
 ## Code
@@ -55,11 +55,11 @@ layout: default
 
 int main(){
   std::string s1, s2; std::cin >> s1 >> s2;
-  
+
   auto ans = levenshtein_distance(s1, s2);
-  
+
   std::cout << ans << std::endl;
-  
+
   return 0;
 }
 
@@ -84,20 +84,20 @@ int main(){
  */
 template <typename Container, typename T = typename Container::value_type>
 int levenshtein_distance(const Container &a, const Container &b){
-  int n = a.size(), m = b.size();
-  std::vector<std::vector<int>> dp(n+1, std::vector<int>(m+1, 0));
-  
+  const int n = a.size(), m = b.size();
+  std::vector<std::vector<int>> dp(n + 1, std::vector<int>(m + 1, 0));
+
   for(int i = 0; i <= n; ++i) dp[i][0] = i;
   for(int i = 0; i <= m; ++i) dp[0][i] = i;
 
   for(int i = 0; i < n; ++i){
     for(int j = 0; j < m; ++j){
-      dp[i+1][j+1] = std::min(dp[i][j+1]+1, dp[i+1][j]+1);
-      
+      dp[i + 1][j + 1] = std::min(dp[i][j + 1] + 1, dp[i + 1][j] + 1);
+
       if(a[i] == b[j]){
-        dp[i+1][j+1] = std::min(dp[i+1][j+1], dp[i][j]);
+        dp[i + 1][j + 1] = std::min(dp[i + 1][j + 1], dp[i][j]);
       }else{
-        dp[i+1][j+1] = std::min(dp[i+1][j+1], dp[i][j]+1);
+        dp[i + 1][j + 1] = std::min(dp[i + 1][j + 1], dp[i][j] + 1);
       }
     }
   }
@@ -107,11 +107,11 @@ int levenshtein_distance(const Container &a, const Container &b){
 
 int main(){
   std::string s1, s2; std::cin >> s1 >> s2;
-  
+
   auto ans = levenshtein_distance(s1, s2);
-  
+
   std::cout << ans << std::endl;
-  
+
   return 0;
 }
 

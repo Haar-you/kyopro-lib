@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Rolling hash
+# :x: Rolling hash
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/rolling_hash.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-09 21:38:53+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/ALDS1_14_B/main.test.cpp.html">test/aoj/ALDS1_14_B/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/ALDS1_14_B/main.test.cpp.html">test/aoj/ALDS1_14_B/main.test.cpp</a>
 
 
 ## Code
@@ -54,21 +54,21 @@ layout: default
  * @title Rolling hash
  * @docs rolling_hash.md
  */
-class RollingHash{
+class RollingHash {
   std::vector<int64_t> pow;
   int64_t MOD, BASE;
-  
+
 public:
   RollingHash(int size, int MOD, int BASE): MOD(MOD), BASE(BASE){
     pow.resize(size + 1);
     pow[0] = 1;
-    for(int i = 1; i <= size; ++i) pow[i] = pow[i-1] * BASE % MOD;
+    for(int i = 1; i <= size; ++i) pow[i] = pow[i - 1] * BASE % MOD;
   }
 
   template <typename T>
   auto gen_hash_table(const T &s) const {
     std::vector<int64_t> ret(s.size() + 1);
-    for(int i = 0; i < (int)s.size(); ++i) ret[i+1] = (ret[i] * BASE + s[i]) % MOD;
+    for(int i = 0; i < (int)s.size(); ++i) ret[i + 1] = (ret[i] * BASE + s[i]) % MOD;
     return ret;
   }
 
@@ -83,7 +83,7 @@ public:
    * @attention [l, r)
    */
   int64_t get(const std::vector<int64_t> &table, int l, int r) const {
-    return (table[r] - table[l] * pow[r-l] % MOD + MOD * MOD) % MOD;
+    return (table[r] - table[l] * pow[r - l] % MOD + MOD * MOD) % MOD;
   }
 
   template <typename T>
@@ -101,7 +101,7 @@ public:
 
 auto make_rh(int size, int MOD, int seed = 0){
   std::mt19937 rnd(seed);
-  std::uniform_int_distribution<> dist(2, MOD-2);
+  std::uniform_int_distribution<> dist(2, MOD - 2);
   return RollingHash(size, dist(rnd), MOD);
 }
 
@@ -119,21 +119,21 @@ auto make_rh(int size, int MOD, int seed = 0){
  * @title Rolling hash
  * @docs rolling_hash.md
  */
-class RollingHash{
+class RollingHash {
   std::vector<int64_t> pow;
   int64_t MOD, BASE;
-  
+
 public:
   RollingHash(int size, int MOD, int BASE): MOD(MOD), BASE(BASE){
     pow.resize(size + 1);
     pow[0] = 1;
-    for(int i = 1; i <= size; ++i) pow[i] = pow[i-1] * BASE % MOD;
+    for(int i = 1; i <= size; ++i) pow[i] = pow[i - 1] * BASE % MOD;
   }
 
   template <typename T>
   auto gen_hash_table(const T &s) const {
     std::vector<int64_t> ret(s.size() + 1);
-    for(int i = 0; i < (int)s.size(); ++i) ret[i+1] = (ret[i] * BASE + s[i]) % MOD;
+    for(int i = 0; i < (int)s.size(); ++i) ret[i + 1] = (ret[i] * BASE + s[i]) % MOD;
     return ret;
   }
 
@@ -148,7 +148,7 @@ public:
    * @attention [l, r)
    */
   int64_t get(const std::vector<int64_t> &table, int l, int r) const {
-    return (table[r] - table[l] * pow[r-l] % MOD + MOD * MOD) % MOD;
+    return (table[r] - table[l] * pow[r - l] % MOD + MOD * MOD) % MOD;
   }
 
   template <typename T>
@@ -166,7 +166,7 @@ public:
 
 auto make_rh(int size, int MOD, int seed = 0){
   std::mt19937 rnd(seed);
-  std::uniform_int_distribution<> dist(2, MOD-2);
+  std::uniform_int_distribution<> dist(2, MOD - 2);
   return RollingHash(size, dist(rnd), MOD);
 }
 

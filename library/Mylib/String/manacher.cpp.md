@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/manacher.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -70,12 +70,12 @@ std::vector<int> manacher(const Container &s){
 
   for(int cur = 0; cur < n; ++cur){
     int left = center - (cur - center);
-    
+
     if(left >= 0 and cur + ret[left] < center + ret[center]){
       ret[cur] = ret[left];
     }else{
       int len = center + ret[center] - cur;
-      while(cur-len >= 0 and cur+len < n and s[cur-len] == s[cur+len]) ++len;
+      while(cur - len >= 0 and cur + len < n and s[cur - len] == s[cur + len]) ++len;
       ret[cur] = len;
       center = cur;
     }
@@ -105,12 +105,12 @@ std::vector<int> manacher(const Container &s){
 
   for(int cur = 0; cur < n; ++cur){
     int left = center - (cur - center);
-    
+
     if(left >= 0 and cur + ret[left] < center + ret[center]){
       ret[cur] = ret[left];
     }else{
       int len = center + ret[center] - cur;
-      while(cur-len >= 0 and cur+len < n and s[cur-len] == s[cur+len]) ++len;
+      while(cur - len >= 0 and cur + len < n and s[cur - len] == s[cur + len]) ++len;
       ret[cur] = len;
       center = cur;
     }

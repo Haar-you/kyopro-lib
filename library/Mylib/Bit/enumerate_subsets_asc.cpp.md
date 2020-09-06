@@ -25,20 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Enumerate subsets (Descending order)
+# :x: Enumerate subsets (Ascending order)
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#fe4a83e4dc2a7f834ed4cd85d6972a53">Mylib/Bit</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/for_each_subset_desc.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/enumerate_subsets_asc.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-09-06 04:37:36+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/ITP2_11_C/main.desc.test.cpp.html">test/aoj/ITP2_11_C/main.desc.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/ITP2_11_C/main.asc.test.cpp.html">test/aoj/ITP2_11_C/main.asc.test.cpp</a>
 
 
 ## Code
@@ -49,29 +50,16 @@ layout: default
 #pragma once
 
 /**
- * @title Enumerate subsets (Descending order)
- * @docs for_each_subset_desc.md
+ * @title Enumerate subsets (Ascending order)
+ * @docs enumerate_subsets_asc.md
  */
-class SubsetDesc{
-  struct iter{
-    int t, a;
-    bool is_end;
-
-    int operator*() const {return t;}
-    void operator++(){
-      if(t == 0) is_end = true;
-      t = (t - 1) & a;
-    }
-    bool operator!=(const iter &) const {return not is_end;}
-  };
-
-  int a;
-
-public:
-  SubsetDesc(int a): a(a){}
-  iter begin() const {return iter({a, a, false});}
-  iter end() const {return iter();}
-};
+template <typename Func>
+void enumerate_subsets_asc(int a, const Func &f){
+  for(int t = 0; ; t = (t - a) & a){
+    if(not f(t)) break;
+    if(t == a) break;
+  }
+}
 
 ```
 {% endraw %}
@@ -79,32 +67,19 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Bit/for_each_subset_desc.cpp"
+#line 2 "Mylib/Bit/enumerate_subsets_asc.cpp"
 
 /**
- * @title Enumerate subsets (Descending order)
- * @docs for_each_subset_desc.md
+ * @title Enumerate subsets (Ascending order)
+ * @docs enumerate_subsets_asc.md
  */
-class SubsetDesc{
-  struct iter{
-    int t, a;
-    bool is_end;
-
-    int operator*() const {return t;}
-    void operator++(){
-      if(t == 0) is_end = true;
-      t = (t - 1) & a;
-    }
-    bool operator!=(const iter &) const {return not is_end;}
-  };
-
-  int a;
-
-public:
-  SubsetDesc(int a): a(a){}
-  iter begin() const {return iter({a, a, false});}
-  iter end() const {return iter();}
-};
+template <typename Func>
+void enumerate_subsets_asc(int a, const Func &f){
+  for(int t = 0; ; t = (t - a) & a){
+    if(not f(t)) break;
+    if(t == a) break;
+  }
+}
 
 ```
 {% endraw %}

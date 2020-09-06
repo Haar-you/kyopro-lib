@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_2_I/main.test.cpp
+# :x: test/aoj/DSL_2_I/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9c22eeac342a6663d77c7166ac847eb0">test/aoj/DSL_2_I</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_I/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp.html">Range update / Range sum</a>
-* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">Lazy segment tree</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp.html">Range update / Range sum</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">Lazy segment tree</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -60,14 +60,14 @@ layout: default
 int main(){
   int n, q; std::cin >> n >> q;
 
-  LazySegmentTree<UpdateSum<int64_t,int64_t>> seg(n);
-  
+  LazySegmentTree<UpdateSum<int64_t, int64_t>> seg(n);
+
   for(auto [type, s, t] : input_tuples<int, int, int>(q)){
     if(type == 0){
       int x; std::cin >> x;
-      seg.update(s, t+1, x);
+      seg.update(s, t + 1, x);
     }else{
-      std::cout << seg.get(s, t+1) << std::endl;
+      std::cout << seg.get(s, t + 1) << std::endl;
     }
   }
 
@@ -92,11 +92,11 @@ int main(){
  * @docs lazy_segment_tree.md
  */
 template <typename Monoid>
-class LazySegmentTree{
+class LazySegmentTree {
   using value_type_get = typename Monoid::value_type_get;
   using value_type_update = typename Monoid::value_type_update;
-  Monoid M;
-  
+  const static Monoid M;
+
   const int depth, size, hsize;
   std::vector<value_type_get> data;
   std::vector<value_type_update> lazy;
@@ -120,20 +120,20 @@ class LazySegmentTree{
       propagate(i);
       return data[i];
     }
-    else return data[i] = M.op_get(update_aux(i << 1 | 0, l, (l+r) / 2, s, t, x), update_aux(i << 1 | 1, (l+r) / 2, r, s, t, x));
+    else return data[i] = M.op_get(update_aux(i << 1 | 0, l, (l + r) / 2, s, t, x), update_aux(i << 1 | 1, (l + r) / 2, r, s, t, x));
   }
-  
+
   value_type_get get_aux(int i, int l, int r, int x, int y){
     propagate(i);
     if(r <= x || y <= l) return M.id_get();
     else if(x <= l && r <= y) return data[i];
-    else return M.op_get(get_aux(i << 1 | 0, l, (l+r) / 2, x, y), get_aux(i << 1 | 1, (l+r) / 2, r, x, y));
+    else return M.op_get(get_aux(i << 1 | 0, l, (l + r) / 2, x, y), get_aux(i << 1 | 1, (l + r) / 2, r, x, y));
   }
 
 public:
   LazySegmentTree(){}
   LazySegmentTree(int n):
-    depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
+    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
     size(1 << depth),
     hsize(size / 2),
     data(size, M.id_get()),
@@ -141,9 +141,9 @@ public:
   {}
 
   void update(int l, int r, const value_type_update &x){update_aux(1, 0, hsize, l, r, x);}
-  void update_at(int i, const value_type_update &x){update(i, i+1, x);}
+  void update_at(int i, const value_type_update &x){update(i, i + 1, x);}
   value_type_get get(int l, int r){return get_aux(1, 0, hsize, l, r);}
-  value_type_get at(int i){return get(i, i+1);}
+  value_type_get operator[](int i){return get(i, i + 1);}
 
   template <typename T>
   void init(const T &val){
@@ -155,7 +155,7 @@ public:
     data.assign(size, M.id_get());
     lazy.assign(size, M.id_update());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
-    for(int i = hsize-1; i > 0; --i) data[i] = M.op_get(data[i << 1 | 0], data[i << 1 | 1]);
+    for(int i = hsize - 1; i > 0; --i) data[i] = M.op_get(data[i << 1 | 0], data[i << 1 | 1]);
   }
 };
 #line 2 "Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp"
@@ -166,7 +166,7 @@ public:
  * @docs update_sum.md
  */
 template <typename T, typename U>
-struct UpdateSum{
+struct UpdateSum {
   using value_type_get = T;
   using value_type_update = std::optional<U>;
 
@@ -190,8 +190,8 @@ struct UpdateSum{
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -201,8 +201,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -211,8 +211,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -255,14 +255,14 @@ auto input_tuples(int N){
 int main(){
   int n, q; std::cin >> n >> q;
 
-  LazySegmentTree<UpdateSum<int64_t,int64_t>> seg(n);
-  
+  LazySegmentTree<UpdateSum<int64_t, int64_t>> seg(n);
+
   for(auto [type, s, t] : input_tuples<int, int, int>(q)){
     if(type == 0){
       int x; std::cin >> x;
-      seg.update(s, t+1, x);
+      seg.update(s, t + 1, x);
     }else{
-      std::cout << seg.get(s, t+1) << std::endl;
+      std::cout << seg.get(s, t + 1) << std::endl;
     }
   }
 

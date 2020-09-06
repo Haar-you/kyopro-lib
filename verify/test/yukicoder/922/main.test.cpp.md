@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#6a3ef3b964dcfd2b510ed368d9e357ba">test/yukicoder/922</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/922/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/922">https://yukicoder.me/problems/no/922</a>
@@ -39,12 +39,12 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
 * :x: <a href="../../../../library/Mylib/Graph/TreeUtils/forest.cpp.html">Decompose forest</a>
-* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp.html">Lowest common ancestor (Doubling)</a>
-* :question: <a href="../../../../library/Mylib/Graph/TreeUtils/rerooting.cpp.html">Rerooting DP</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp.html">Lowest common ancestor (Doubling)</a>
+* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/rerooting.cpp.html">Rerooting DP</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -84,7 +84,7 @@ int main(){
   for(int i = 0; i < tree_num; ++i){
     plans[i] = std::vector<int>(forest.trees[i].size());
   }
-    
+
   for(auto [a, b] : input_tuples<int, int>(Q)){
     --a, --b;
 
@@ -101,7 +101,7 @@ int main(){
     const auto &plan = plans[i];
 
     auto res =
-      make_rerooting<std::pair<int,int>>(
+      rerooting<std::pair<int, int>>(
         tree,
         std::make_pair(0, 0),
         [](const auto &a, const auto &b){
@@ -113,8 +113,8 @@ int main(){
         [&](const auto &x, int v){
           return std::make_pair(x.first + plan[v], x.second);
         }
-      ).result;
-      
+      );
+
     ans +=
       std::min_element(
         res.begin(),
@@ -124,7 +124,7 @@ int main(){
         }
       )->second;
   }
-    
+
   std::cout << ans << std::endl;
 
   return 0;
@@ -142,14 +142,14 @@ int main(){
 #include <iostream>
 #include <vector>
 #include <utility>
-#line 3 "Mylib/Graph/Template/graph.cpp"
+#line 4 "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -159,15 +159,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -180,7 +180,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -210,11 +210,12 @@ using Tree = Graph<T>;
  * @title Lowest common ancestor (Doubling)
  * @docs lca_based_on_doubling.md
  */
-template <typename T> class LCA{
+template <typename T>
+class LCA {
 private:
   std::vector<std::vector<int>> parent;
   int n, log2n;
-  
+
   void dfs(const Tree<T> &tree, int cur, int par, int d){
     parent[cur][0] = par;
     depth[cur] = d;
@@ -222,11 +223,11 @@ private:
     for(auto &e : tree[cur]){
       if(e.to != par){
         dist[e.to] = dist[cur] + e.cost;
-        dfs(tree, e.to, cur, d+1);
+        dfs(tree, e.to, cur, d + 1);
       }
     }
   }
-  
+
 public:
   std::vector<int> depth;
   std::vector<T> dist;
@@ -235,28 +236,30 @@ public:
   LCA(const Tree<T> &tree, int root):
     n(tree.size()), depth(n), dist(n)
   {
-    log2n = (int)ceil(log(n) / log(2)) + 1;
-    parent = std::vector<std::vector<int>>(n, std::vector<int>(log2n, 0));
+    log2n = (int)ceil(log2(n)) + 1;
+    parent = std::vector(n, std::vector<int>(log2n, 0));
 
     dfs(tree, root, -1, 0);
-    for(int k = 0; k < log2n-1; ++k){
+    for(int k = 0; k < log2n - 1; ++k){
       for(int v = 0; v < n; ++v){
-        if(parent[v][k] == -1) parent[v][k+1] = -1;
-        else parent[v][k+1] = parent[parent[v][k]][k];
+        if(parent[v][k] == -1) parent[v][k + 1] = -1;
+        else parent[v][k + 1] = parent[parent[v][k]][k];
       }
     }
   }
 
   int lca(int a, int b) const {
-    if(depth[a] >= depth[b]) std::swap(a,b);
+    if(depth[a] >= depth[b]) std::swap(a, b);
     for(int k = 0; k < log2n; ++k) if((depth[b] - depth[a]) >> k & 1) b = parent[b][k];
     if(a == b) return a;
-    for(int k = log2n-1; k >= 0; --k) if(parent[a][k] != parent[b][k]){a = parent[a][k]; b = parent[b][k];}
+    for(int k = log2n - 1; k >= 0; --k) if(parent[a][k] != parent[b][k]){a = parent[a][k]; b = parent[b][k];}
     return parent[a][0];
   }
 
+  int operator()(int a, int b) const {return lca(a, b);}
+
   T distance(int a, int b) const {
-    return dist[a] + dist[b] - 2 * dist[lca(a,b)];
+    return dist[a] + dist[b] - 2 * dist[lca(a, b)];
   }
 };
 #line 3 "Mylib/Graph/TreeUtils/forest.cpp"
@@ -268,7 +271,7 @@ public:
  * @docs forest.md
  */
 template <typename T>
-struct Forest{
+struct Forest {
   std::vector<Tree<T>> trees;
   std::vector<int> tree_id;
   std::vector<int> vertex_id;
@@ -283,7 +286,7 @@ struct Forest{
     std::vector<bool> check(N);
 
     auto dfs =
-      [&](auto &dfs, int cur, std::vector<int> &vertices, std::vector<Edge<T>> &edges) -> void{
+      [&](auto &dfs, int cur, std::vector<int> &vertices, std::vector<Edge<T>> &edges) -> void {
         check[cur] = true;
         vertices.push_back(cur);
 
@@ -301,8 +304,8 @@ struct Forest{
         std::vector<int> vertices;
         std::vector<Edge<T>> edges;
         dfs(dfs, i, vertices, edges);
-        
-        const int m = vertices.size(); 
+
+        const int m = vertices.size();
         const int k = trees.size();
 
         rid.push_back(std::vector<int>(m));
@@ -321,7 +324,7 @@ struct Forest{
       }
     }
   }
-  
+
   bool in_same_tree(int i, int j) const {
     return tree_id[i] == tree_id[j];
   }
@@ -332,48 +335,42 @@ struct Forest{
  * @title Rerooting DP
  * @docs rerooting.md
  */
+namespace rerooting_impl {
+  template <typename T, typename U, typename Merge, typename EdgeF, typename VertexF>
+  T rec1(
+    Tree<U> &tree,
+    T id,
+    const Merge &merge,
+    const EdgeF &f,
+    const VertexF &g,
+    std::vector<std::vector<T>> &dp,
+    int cur,
+    int par = -1
+  ){
+    T acc = id;
 
-template <typename T, typename U, typename Merge, typename EdgeF, typename VertexF>
-struct Rerooting{
-  int N;
-  Tree<T> tree;
-  U id;
-  Merge merge;
-  EdgeF f;
-  VertexF g;
-  
-  std::vector<std::vector<U>> dp;
-  std::vector<U> result;
-  
-  Rerooting(Tree<T> tree, U id, Merge merge, EdgeF f, VertexF g):
-    N(tree.size()), tree(tree), id(id), merge(merge), f(f), g(g), dp(N), result(N, id)
-  {
-    for(int i = 0; i < N; ++i) dp[i].assign((int)tree[i].size(), id);
-    rec1(0);
-    rec2(0, -1, id);
-    for(int i = 0; i < N; ++i){
-      for(int j = 0; j < (int)tree[i].size(); ++j){
-        result[i] = merge(result[i], f(dp[i][j], tree[i][j]));
-      }
-      
-      result[i] = g(result[i], i);
-    }
-  }
-
-  U rec1(int cur, int par = -1){
-    U acc = id;
-    
     for(int i = 0; i < (int)tree[cur].size(); ++i){
       auto &e = tree[cur][i];
       if(e.to == par) continue;
-      dp[cur][i] = rec1(e.to, cur);
+      dp[cur][i] = rec1(tree, id, merge, f, g, dp, e.to, cur);
       acc = merge(acc, f(dp[cur][i], e));
     }
 
     return g(acc, cur);
   }
 
-  void rec2(int cur, int par, U value){
+  template <typename T, typename U, typename Merge, typename EdgeF, typename VertexF>
+  void rec2(
+    const Tree<U> &tree,
+    T id,
+    const Merge &merge,
+    const EdgeF &f,
+    const VertexF &g,
+    std::vector<std::vector<T>> &dp,
+    int cur,
+    int par,
+    T value
+  ){
     const int l = tree[cur].size();
 
     for(int i = 0; i < l; ++i){
@@ -382,30 +379,45 @@ struct Rerooting{
       }
     }
 
-    std::vector<U> left(l+1, id), right(l+1, id);
+    std::vector<T> left(l + 1, id), right(l + 1, id);
 
-    for(int i = 0; i < l-1; ++i){
+    for(int i = 0; i < l - 1; ++i){
       const auto &e = tree[cur][i];
-      left[i+1] = merge(left[i], f(dp[cur][i], e));
+      left[i + 1] = merge(left[i], f(dp[cur][i], e));
     }
 
-    for(int i = l-1; i >= 1; --i){
+    for(int i = l - 1; i >= 1; --i){
       const auto &e = tree[cur][i];
-      right[i-1] = merge(right[i], f(dp[cur][i], e));
+      right[i - 1] = merge(right[i], f(dp[cur][i], e));
     }
 
     for(int i = 0; i < l; ++i){
       const auto &e = tree[cur][i];
       if(e.to == par) continue;
 
-      rec2(e.to, cur, g(merge(left[i], right[i]), cur));
+      rec2(tree, id, merge, f, g, dp, e.to, cur, g(merge(left[i], right[i]), cur));
     }
   }
-};
+}
 
 template <typename T, typename U, typename Merge, typename EdgeF, typename VertexF>
-auto make_rerooting(const Tree<U> &tree, T id, Merge merge, EdgeF f, VertexF g){
-  return Rerooting<U,T,Merge,EdgeF,VertexF>(tree, id, merge, f, g);
+auto rerooting(Tree<U> tree, T id, Merge merge, EdgeF f, VertexF g){
+  const int N = tree.size();
+  std::vector<std::vector<T>> dp(N);
+  std::vector<T> ret(N, id);
+
+  for(int i = 0; i < N; ++i) dp[i].assign(tree[i].size(), id);
+  rerooting_impl::rec1(tree, id, merge, f, g, dp, 0);
+  rerooting_impl::rec2(tree, id, merge, f, g, dp, 0, -1, id);
+  for(int i = 0; i < N; ++i){
+    for(int j = 0; j < (int)tree[i].size(); ++j){
+      ret[i] = merge(ret[i], f(dp[i][j], tree[i][j]));
+    }
+
+    ret[i] = g(ret[i], i);
+  }
+
+  return ret;
 }
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
@@ -417,8 +429,8 @@ auto make_rerooting(const Tree<U> &tree, T id, Merge merge, EdgeF f, VertexF g){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -428,8 +440,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -438,8 +450,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -500,7 +512,7 @@ int main(){
   for(int i = 0; i < tree_num; ++i){
     plans[i] = std::vector<int>(forest.trees[i].size());
   }
-    
+
   for(auto [a, b] : input_tuples<int, int>(Q)){
     --a, --b;
 
@@ -517,7 +529,7 @@ int main(){
     const auto &plan = plans[i];
 
     auto res =
-      make_rerooting<std::pair<int,int>>(
+      rerooting<std::pair<int, int>>(
         tree,
         std::make_pair(0, 0),
         [](const auto &a, const auto &b){
@@ -529,8 +541,8 @@ int main(){
         [&](const auto &x, int v){
           return std::make_pair(x.first + plan[v], x.second);
         }
-      ).result;
-      
+      );
+
     ans +=
       std::min_element(
         res.begin(),
@@ -540,7 +552,7 @@ int main(){
         }
       )->second;
   }
-    
+
   std::cout << ans << std::endl;
 
   return 0;

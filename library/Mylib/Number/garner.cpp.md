@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/garner.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="Mod/mod_inv.cpp.html">Mod inverse</a>
+* :x: <a href="Mod/mod_inv.cpp.html">Mod inverse</a>
 
 
 ## Code
@@ -58,12 +58,12 @@ int64_t garner_algorithm(std::vector<int64_t> r, std::vector<int64_t> m, const i
   m.push_back(mod);
 
   int n = r.size();
-  std::vector<int64_t> coeffs(n+1, 1);
-  std::vector<int64_t> constants(n+1, 0);
+  std::vector<int64_t> coeffs(n + 1, 1);
+  std::vector<int64_t> constants(n + 1, 0);
 
   for(int k = 0; k < n; ++k){
     int64_t t = ((r[k] - constants[k] + m[k]) % m[k] * mod_inv(coeffs[k], m[k])) % m[k];
-    for(int i = k+1; i < n+1; ++i){
+    for(int i = k + 1; i < n + 1; ++i){
       (constants[i] += t * coeffs[i] % m[i]) %= m[i];
       (coeffs[i] *= m[k]) %= m[i];
     }
@@ -82,6 +82,7 @@ int64_t garner_algorithm(std::vector<int64_t> r, std::vector<int64_t> m, const i
 #include <vector>
 #line 2 "Mylib/Number/Mod/mod_inv.cpp"
 #include <utility>
+#include <cstdint>
 
 /**
  * @title Mod inverse
@@ -111,12 +112,12 @@ int64_t garner_algorithm(std::vector<int64_t> r, std::vector<int64_t> m, const i
   m.push_back(mod);
 
   int n = r.size();
-  std::vector<int64_t> coeffs(n+1, 1);
-  std::vector<int64_t> constants(n+1, 0);
+  std::vector<int64_t> coeffs(n + 1, 1);
+  std::vector<int64_t> constants(n + 1, 0);
 
   for(int k = 0; k < n; ++k){
     int64_t t = ((r[k] - constants[k] + m[k]) % m[k] * mod_inv(coeffs[k], m[k])) % m[k];
-    for(int i = k+1; i < n+1; ++i){
+    for(int i = k + 1; i < n + 1; ++i){
       (constants[i] += t * coeffs[i] % m[i]) %= m[i];
       (coeffs[i] *= m[k]) %= m[i];
     }

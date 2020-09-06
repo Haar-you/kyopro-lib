@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Aho-Corasick algorithm
+# :x: Aho-Corasick algorithm
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/aho_corasick.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/430/main.aho_corasick.test.cpp.html">test/yukicoder/430/main.aho_corasick.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/430/main.aho_corasick.test.cpp.html">test/yukicoder/430/main.aho_corasick.test.cpp</a>
 
 
 ## Code
@@ -56,14 +56,14 @@ layout: default
  * @title Aho-Corasick algorithm
  * @docs aho_corasick.md
  */
-class AhoCorasick{
+class AhoCorasick {
 public:
   int n;
-  std::vector<std::unordered_map<char,int>> trie;
+  std::vector<std::unordered_map<char, int>> trie;
   std::vector<int> failure_edge;
   std::vector<std::string> dict;
   std::vector<std::vector<int>> dict_index;
-  
+
   AhoCorasick(): n(1), trie(1), failure_edge(1){}
 
   void add(const std::string &s){
@@ -80,19 +80,19 @@ public:
         ++n;
         trie.resize(n);
 
-        trie[cur][c] = n-1;
-	
+        trie[cur][c] = n - 1;
+
         cur = trie[cur][c];
       }
     }
 
     dict_index.resize(n);
-    dict_index[cur].push_back(dict.size()-1);
+    dict_index[cur].push_back(dict.size() - 1);
   }
 
   void build(){
     failure_edge.resize(n);
-    
+
     std::queue<int> dq;
     dq.push(0);
 
@@ -109,7 +109,7 @@ public:
         }else{
           int i = failure_edge[cur];
           int j = 0;
-	
+
           while(1){
             if(trie[i].find(c) != trie[i].end()){
               j = trie[i][c];
@@ -119,20 +119,20 @@ public:
               i = failure_edge[i];
             }
           }
-	
+
           failure_edge[next] = j;
 
           for(auto k : dict_index[failure_edge[next]]){
             dict_index[next].push_back(k);
           }
         }
-	
+
         dq.push(next);
       }
     }
   }
 
-  template <typename Func> // function<void(int,int)>
+  template <typename Func> // function<void(int, int)>
   void match(const std::string &s, const Func &f){
     int cur = 0;
 
@@ -147,7 +147,7 @@ public:
 
       for(auto j : dict_index[cur]){
         int len = dict[j].size();
-        f(i-len+1, len);
+        f(i - len + 1, len);
       }
     }
   }
@@ -169,14 +169,14 @@ public:
  * @title Aho-Corasick algorithm
  * @docs aho_corasick.md
  */
-class AhoCorasick{
+class AhoCorasick {
 public:
   int n;
-  std::vector<std::unordered_map<char,int>> trie;
+  std::vector<std::unordered_map<char, int>> trie;
   std::vector<int> failure_edge;
   std::vector<std::string> dict;
   std::vector<std::vector<int>> dict_index;
-  
+
   AhoCorasick(): n(1), trie(1), failure_edge(1){}
 
   void add(const std::string &s){
@@ -193,19 +193,19 @@ public:
         ++n;
         trie.resize(n);
 
-        trie[cur][c] = n-1;
-	
+        trie[cur][c] = n - 1;
+
         cur = trie[cur][c];
       }
     }
 
     dict_index.resize(n);
-    dict_index[cur].push_back(dict.size()-1);
+    dict_index[cur].push_back(dict.size() - 1);
   }
 
   void build(){
     failure_edge.resize(n);
-    
+
     std::queue<int> dq;
     dq.push(0);
 
@@ -222,7 +222,7 @@ public:
         }else{
           int i = failure_edge[cur];
           int j = 0;
-	
+
           while(1){
             if(trie[i].find(c) != trie[i].end()){
               j = trie[i][c];
@@ -232,20 +232,20 @@ public:
               i = failure_edge[i];
             }
           }
-	
+
           failure_edge[next] = j;
 
           for(auto k : dict_index[failure_edge[next]]){
             dict_index[next].push_back(k);
           }
         }
-	
+
         dq.push(next);
       }
     }
   }
 
-  template <typename Func> // function<void(int,int)>
+  template <typename Func> // function<void(int, int)>
   void match(const std::string &s, const Func &f){
     int cur = 0;
 
@@ -260,7 +260,7 @@ public:
 
       for(auto j : dict_index[cur]){
         int len = dict[j].size();
-        f(i-len+1, len);
+        f(i - len + 1, len);
       }
     }
   }

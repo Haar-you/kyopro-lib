@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Kitamasa algorithm
+# :x: Kitamasa algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#826136648af25fa7c5e97a1b794f9784">Mylib/DynamicProgramming/SpeedupTechnique</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/SpeedupTechnique/kitamasa_algorithm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -49,7 +49,7 @@ layout: default
 - [TDPC T - フィボナッチ](https://atcoder.jp/contests/tdpc/tasks/tdpc_fibonacci)
 
 ## References
- 
+
 - [https://misawa.github.io/others/fast_kitamasa_method.html](https://misawa.github.io/others/fast_kitamasa_method.html)
 - [https://smijake3.hatenablog.com/entry/2017/01/02/024712](https://smijake3.hatenablog.com/entry/2017/01/02/024712)
 - [http://sugarknri.hatenablog.com/entry/2017/11/18/233936](http://sugarknri.hatenablog.com/entry/2017/11/18/233936)
@@ -59,7 +59,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/658/main.test.cpp.html">test/yukicoder/658/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/658/main.test.cpp.html">test/yukicoder/658/main.test.cpp</a>
 
 
 ## Code
@@ -69,12 +69,14 @@ layout: default
 ```cpp
 #pragma once
 #include <vector>
+#include <cstdint>
 
 /**
  * @title Kitamasa algorithm
  * @docs kitamasa_algorithm.md
  */
-template <typename T> struct KitamasaAlgorithm{
+template <typename T>
+struct KitamasaAlgorithm {
   int size;
   std::vector<T> initial_values, coeff;
 
@@ -84,15 +86,15 @@ template <typename T> struct KitamasaAlgorithm{
   std::vector<T> inc(const std::vector<T> &a) const {
     std::vector<T> ret(size);
 
-    for(int i = 0; i < size; ++i) ret[i] += a[size-1] * coeff[i];
-    for(int i = 1; i < size; ++i) ret[i] += a[i-1]; 
+    for(int i = 0; i < size; ++i) ret[i] += a[size - 1] * coeff[i];
+    for(int i = 1; i < size; ++i) ret[i] += a[i - 1];
 
     return ret;
   }
-  
+
   std::vector<T> dbl(const std::vector<T> &a) const {
     std::vector<T> ret(size), b(a);
-    
+
     for(int j = 0; j < size; ++j){
       for(int i = 0; i < size; ++i){
         ret[i] += a[j] * b[i];
@@ -100,10 +102,10 @@ template <typename T> struct KitamasaAlgorithm{
 
       b = inc(b);
     }
-    
+
     return ret;
   }
-  
+
   T calc(const std::vector<T> &v) const {
     T ret = 0;
     for(int i = 0; i < size; ++i) ret += v[i] * initial_values[i];
@@ -123,7 +125,7 @@ template <typename T> struct KitamasaAlgorithm{
         check = true;
       }
     }
-    
+
     return ret;
   }
 
@@ -141,12 +143,14 @@ template <typename T> struct KitamasaAlgorithm{
 ```cpp
 #line 2 "Mylib/DynamicProgramming/SpeedupTechnique/kitamasa_algorithm.cpp"
 #include <vector>
+#include <cstdint>
 
 /**
  * @title Kitamasa algorithm
  * @docs kitamasa_algorithm.md
  */
-template <typename T> struct KitamasaAlgorithm{
+template <typename T>
+struct KitamasaAlgorithm {
   int size;
   std::vector<T> initial_values, coeff;
 
@@ -156,15 +160,15 @@ template <typename T> struct KitamasaAlgorithm{
   std::vector<T> inc(const std::vector<T> &a) const {
     std::vector<T> ret(size);
 
-    for(int i = 0; i < size; ++i) ret[i] += a[size-1] * coeff[i];
-    for(int i = 1; i < size; ++i) ret[i] += a[i-1]; 
+    for(int i = 0; i < size; ++i) ret[i] += a[size - 1] * coeff[i];
+    for(int i = 1; i < size; ++i) ret[i] += a[i - 1];
 
     return ret;
   }
-  
+
   std::vector<T> dbl(const std::vector<T> &a) const {
     std::vector<T> ret(size), b(a);
-    
+
     for(int j = 0; j < size; ++j){
       for(int i = 0; i < size; ++i){
         ret[i] += a[j] * b[i];
@@ -172,10 +176,10 @@ template <typename T> struct KitamasaAlgorithm{
 
       b = inc(b);
     }
-    
+
     return ret;
   }
-  
+
   T calc(const std::vector<T> &v) const {
     T ret = 0;
     for(int i = 0; i < size; ++i) ret += v[i] * initial_values[i];
@@ -195,7 +199,7 @@ template <typename T> struct KitamasaAlgorithm{
         check = true;
       }
     }
-    
+
     return ret;
   }
 

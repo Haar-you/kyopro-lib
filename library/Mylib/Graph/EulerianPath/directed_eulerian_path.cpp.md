@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b40e1d8162bf14ce6637a69e4e4fb68d">Mylib/Graph/EulerianPath</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/EulerianPath/directed_eulerian_path.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -52,7 +52,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Code
@@ -64,16 +64,17 @@ layout: default
 #include <vector>
 #include <map>
 #include <optional>
+#include <algorithm>
 #include "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Directed Eulerian path
  * @docs directed_eulerian_path.md
  */
-class DirectedEulerianPath{
+class DirectedEulerianPath {
   const int n; // node count
   int edges = 0; // edge count
-  std::vector<std::map<int,int>> graph;
+  std::vector<std::map<int, int>> graph;
   std::vector<int> indegree, outdegree;
 
   void del(int i, int j){
@@ -83,17 +84,17 @@ class DirectedEulerianPath{
 
   void dfs(int cur, std::vector<int> &path){
     if(not graph[cur].empty()){
-      int next = graph[cur].begin()->fst;
+      int next = graph[cur].begin()->first;
       del(cur, next);
       dfs(next, path);
     }
 
     while(not graph[cur].empty()){
-      int next = graph[cur].begin()->fst;
+      int next = graph[cur].begin()->first;
       del(cur, next);
       std::vector<int> temp;
       dfs(next, temp);
-      path.insert(path.end(), ALL(temp));
+      path.insert(path.end(), temp.begin(), temp.end());
     }
 
     path.push_back(cur);
@@ -114,7 +115,7 @@ public:
   std::optional<std::vector<int>> build(){
     int in = 0, out = 0;
     int start = 0;
-    
+
     for(int i = 0; i < n; ++i){
       int d = outdegree[i] - indegree[i];
       if(abs(d) > 1) return std::nullopt;
@@ -125,14 +126,14 @@ public:
         ++in;
       }
     }
-    
+
     if(not ((in == 0 and out == 0) or (in == 1 and out == 1))) return std::nullopt;
 
     std::vector<int> ret;
-    
+
     dfs(start, ret);
     std::reverse(ret.begin(), ret.end());
-    if((int)ret.size() == edges+1){
+    if((int)ret.size() == edges + 1){
       return {ret};
     }else{
       return std::nullopt;
@@ -150,14 +151,16 @@ public:
 #include <vector>
 #include <map>
 #include <optional>
+#include <algorithm>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -167,15 +170,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -188,7 +191,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -210,16 +213,16 @@ struct Graph{
 
 template <typename T>
 using Tree = Graph<T>;
-#line 6 "Mylib/Graph/EulerianPath/directed_eulerian_path.cpp"
+#line 7 "Mylib/Graph/EulerianPath/directed_eulerian_path.cpp"
 
 /**
  * @title Directed Eulerian path
  * @docs directed_eulerian_path.md
  */
-class DirectedEulerianPath{
+class DirectedEulerianPath {
   const int n; // node count
   int edges = 0; // edge count
-  std::vector<std::map<int,int>> graph;
+  std::vector<std::map<int, int>> graph;
   std::vector<int> indegree, outdegree;
 
   void del(int i, int j){
@@ -229,17 +232,17 @@ class DirectedEulerianPath{
 
   void dfs(int cur, std::vector<int> &path){
     if(not graph[cur].empty()){
-      int next = graph[cur].begin()->fst;
+      int next = graph[cur].begin()->first;
       del(cur, next);
       dfs(next, path);
     }
 
     while(not graph[cur].empty()){
-      int next = graph[cur].begin()->fst;
+      int next = graph[cur].begin()->first;
       del(cur, next);
       std::vector<int> temp;
       dfs(next, temp);
-      path.insert(path.end(), ALL(temp));
+      path.insert(path.end(), temp.begin(), temp.end());
     }
 
     path.push_back(cur);
@@ -260,7 +263,7 @@ public:
   std::optional<std::vector<int>> build(){
     int in = 0, out = 0;
     int start = 0;
-    
+
     for(int i = 0; i < n; ++i){
       int d = outdegree[i] - indegree[i];
       if(abs(d) > 1) return std::nullopt;
@@ -271,14 +274,14 @@ public:
         ++in;
       }
     }
-    
+
     if(not ((in == 0 and out == 0) or (in == 1 and out == 1))) return std::nullopt;
 
     std::vector<int> ret;
-    
+
     dfs(start, ret);
     std::reverse(ret.begin(), ret.end());
-    if((int)ret.size() == edges+1){
+    if((int)ret.size() == edges + 1){
       return {ret};
     }else{
       return std::nullopt;

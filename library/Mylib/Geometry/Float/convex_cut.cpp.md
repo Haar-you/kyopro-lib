@@ -25,27 +25,27 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Convex cut
+# :x: Convex cut
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/convex_cut.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="ccw.cpp.html">Check clockwise-counterclockwise</a>
-* :heavy_check_mark: <a href="geometry_template.cpp.html">Geometry template</a>
-* :heavy_check_mark: <a href="intersect_line_segment.cpp.html">Intersection between a line and a segment</a>
+* :x: <a href="ccw.cpp.html">Check clockwise-counterclockwise</a>
+* :x: <a href="geometry_template.cpp.html">Geometry template</a>
+* :x: <a href="intersect_line_segment.cpp.html">Intersection between a line and a segment</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
 
 
 ## Code
@@ -67,7 +67,7 @@ void convex_cut(const Polygon<T> &ps, const Line<T> &l, Polygon<T> &left, Polygo
   const int n = ps.size();
 
   for(int i = 0; i < n; ++i){
-    auto [s, c] = intersect_line_segment::check(l, Line<T>(ps[i], ps[(i+1)%n]));
+    auto [s, c] = intersect_line_segment::check(l, Line<T>(ps[i], ps[(i + 1) % n]));
     switch(s){
     case intersect_line_segment::LEFTSIDE:{
       left.push_back(ps[i]);
@@ -114,7 +114,7 @@ void convex_cut(const Polygon<T> &ps, const Line<T> &l, Polygon<T> &left, Polygo
  */
 
 template <typename T>
-struct Vec{
+struct Vec {
   T x, y;
   Vec(){}
   Vec(T x, T y): x(x), y(y){}
@@ -124,11 +124,11 @@ struct Vec{
   friend auto operator-(const Vec &a){return Vec(-a.x, -a.y);}
 
   friend bool operator==(const Vec &a, const Vec &b){return a.x == b.x and a.y == b.y;}
-  friend bool operator!=(const Vec &a, const Vec &b){return !(a==b);}
+  friend bool operator!=(const Vec &a, const Vec &b){return !(a == b);}
   friend bool operator<(const Vec &a, const Vec &b){return a.x < b.x or (a.x == b.x and a.y < b.y);}
-  
+
   friend std::istream& operator>>(std::istream &s, Vec &a){
-    s >> a.x >> a.y; return s;
+    s >> a.x  >> a.y; return s;
   }
 };
 
@@ -162,7 +162,7 @@ T angle_diff(const Vec<T> &a, const Vec<T> &b){
 }
 
 
-template <typename T> struct Line{
+template <typename T> struct Line {
   Point<T> from, to;
   Line(): from(), to(){}
   Line(const Point<T> &from, const Point<T> &to): from(from), to(to){}
@@ -184,7 +184,7 @@ template <typename T> T cross(const Line<T> &a, const Line<T> &b){return cross(d
 
 template <typename T> using Polygon = std::vector<Point<T>>;
 
-template <typename T> struct Circle{
+template <typename T> struct Circle {
   Point<T> center;
   T radius;
   Circle(): center(), radius(0){}
@@ -196,8 +196,8 @@ template <typename T> struct Circle{
  * @title Intersection between a line and a segment
  * @docs intersect_line_segment.md
  */
-namespace intersect_line_segment{
-  enum Status{
+namespace intersect_line_segment {
+  enum Status {
               LEFTSIDE   = 0b0001,
               RIGHTSIDE  = 0b0010,
               OVERLAPPED = 0b0100,
@@ -205,7 +205,7 @@ namespace intersect_line_segment{
   };
 
   template <typename T>
-  struct Result{
+  struct Result {
     Status status;
     std::vector<Point<T>> crosspoints;
   };
@@ -224,7 +224,7 @@ namespace intersect_line_segment{
     else if(a > 0 and b > 0){
       return Result<T>({LEFTSIDE, {}});
     }
-    
+
     return Result<T>({CROSSED, {s.from + diff(s) * cross(diff(l), l.from - s.from) / cross(l, s)}});
   }
 }
@@ -234,8 +234,8 @@ namespace intersect_line_segment{
  * @title Check clockwise-counterclockwise
  * @docs ccw.md
  */
-namespace ccw{
-  enum Status{
+namespace ccw {
+  enum Status {
            ONLINE_BACK       = -2,
            COUNTER_CLOCKWISE = -1,
            ON_SEGMENT        = 0,
@@ -270,7 +270,7 @@ void convex_cut(const Polygon<T> &ps, const Line<T> &l, Polygon<T> &left, Polygo
   const int n = ps.size();
 
   for(int i = 0; i < n; ++i){
-    auto [s, c] = intersect_line_segment::check(l, Line<T>(ps[i], ps[(i+1)%n]));
+    auto [s, c] = intersect_line_segment::check(l, Line<T>(ps[i], ps[(i + 1) % n]));
     switch(s){
     case intersect_line_segment::LEFTSIDE:{
       left.push_back(ps[i]);

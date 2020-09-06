@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Segment tree beats
+# :x: Segment tree beats
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/segment_tree_beats.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -66,7 +66,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp.html">test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp.html">test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp</a>
 
 
 ## Code
@@ -83,7 +83,7 @@ layout: default
  * @title Segment tree beats
  * @docs segment_tree_beats.md
  */
-class SegmentTreeBeats{
+class SegmentTreeBeats {
   using value_type = int64_t;
 
   const int depth, size, hsize;
@@ -93,12 +93,12 @@ class SegmentTreeBeats{
 
   std::vector<value_type> fst_min, snd_min;
   std::vector<int> min_count;
-  
+
   std::vector<value_type> sum, lazy_add;
 
 public:
   SegmentTreeBeats(int n):
-    depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
+    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
     size(1 << depth),
     hsize(size / 2),
 
@@ -109,7 +109,7 @@ public:
     fst_min(size, std::numeric_limits<value_type>::max()),
     snd_min(size, std::numeric_limits<value_type>::max()),
     min_count(size, 0),
-    
+
     sum(size, 0),
     lazy_add(size, 0)
   {}
@@ -117,7 +117,7 @@ public:
 private:
   int lc(int i) const {return i << 1 | 0;} // left child
   int rc(int i) const {return i << 1 | 1;} // right child
-  
+
   void update_node_max(int i, value_type x){
     sum[i] += (x - fst_max[i]) * max_count[i];
 
@@ -145,7 +145,7 @@ private:
 
     lazy_add[i] += x;
   }
-  
+
   void propagate(int i){
     if(i >= hsize) return;
 
@@ -165,11 +165,11 @@ private:
   void bottom_up(int i){
     const int L = lc(i);
     const int R = rc(i);
-    
+
     sum[i] = sum[L] + sum[R];
 
     fst_max[i] = std::max(fst_max[L], fst_max[R]);
-    
+
     if(fst_max[L] < fst_max[R]){
       max_count[i] = max_count[R];
       snd_max[i] = std::max(fst_max[L], snd_max[R]);
@@ -182,7 +182,7 @@ private:
     }
 
     fst_min[i] = std::min(fst_min[L], fst_min[R]);
-    
+
     if(fst_min[L] > fst_min[R]){
       min_count[i] = min_count[R];
       snd_min[i] = std::min(fst_min[L], snd_min[R]);
@@ -194,7 +194,7 @@ private:
       snd_min[i] = std::min(snd_min[L], snd_min[R]);
     }
   }
-  
+
 private:
   void chmin(int i, int l, int r, int s, int t, value_type x){
     if(r <= s or t <= l or fst_max[i] <= x) return;
@@ -203,7 +203,7 @@ private:
       return;
     }
 
-    propagate(i);    
+    propagate(i);
     chmin(lc(i), l, (l + r) / 2, s, t, x);
     chmin(rc(i), (l + r) / 2, r, s, t, x);
     bottom_up(i);
@@ -245,7 +245,7 @@ private:
 
 public:
   void add(int l, int r, value_type x){add(1, 0, hsize, l, r, x);}
-  
+
 private:
   value_type get_sum(int i, int l, int r, int s, int t){
     if(r <= s or t <= l) return 0;
@@ -258,8 +258,7 @@ private:
 public:
   value_type get_sum(int l, int r){return get_sum(1, 0, hsize, l, r);}
 
-
-public:  
+public:
   void init_with_vector(const std::vector<value_type> &v){
     fst_max.assign(size, std::numeric_limits<value_type>::min());
     snd_max.assign(size, std::numeric_limits<value_type>::min());
@@ -268,7 +267,7 @@ public:
     fst_min.assign(size, std::numeric_limits<value_type>::max());
     snd_min.assign(size, std::numeric_limits<value_type>::max());
     min_count.assign(size, 1);
-    
+
     sum.assign(size, 0);
     lazy_add.assign(size, 0);
 
@@ -299,7 +298,7 @@ public:
  * @title Segment tree beats
  * @docs segment_tree_beats.md
  */
-class SegmentTreeBeats{
+class SegmentTreeBeats {
   using value_type = int64_t;
 
   const int depth, size, hsize;
@@ -309,12 +308,12 @@ class SegmentTreeBeats{
 
   std::vector<value_type> fst_min, snd_min;
   std::vector<int> min_count;
-  
+
   std::vector<value_type> sum, lazy_add;
 
 public:
   SegmentTreeBeats(int n):
-    depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
+    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
     size(1 << depth),
     hsize(size / 2),
 
@@ -325,7 +324,7 @@ public:
     fst_min(size, std::numeric_limits<value_type>::max()),
     snd_min(size, std::numeric_limits<value_type>::max()),
     min_count(size, 0),
-    
+
     sum(size, 0),
     lazy_add(size, 0)
   {}
@@ -333,7 +332,7 @@ public:
 private:
   int lc(int i) const {return i << 1 | 0;} // left child
   int rc(int i) const {return i << 1 | 1;} // right child
-  
+
   void update_node_max(int i, value_type x){
     sum[i] += (x - fst_max[i]) * max_count[i];
 
@@ -361,7 +360,7 @@ private:
 
     lazy_add[i] += x;
   }
-  
+
   void propagate(int i){
     if(i >= hsize) return;
 
@@ -381,11 +380,11 @@ private:
   void bottom_up(int i){
     const int L = lc(i);
     const int R = rc(i);
-    
+
     sum[i] = sum[L] + sum[R];
 
     fst_max[i] = std::max(fst_max[L], fst_max[R]);
-    
+
     if(fst_max[L] < fst_max[R]){
       max_count[i] = max_count[R];
       snd_max[i] = std::max(fst_max[L], snd_max[R]);
@@ -398,7 +397,7 @@ private:
     }
 
     fst_min[i] = std::min(fst_min[L], fst_min[R]);
-    
+
     if(fst_min[L] > fst_min[R]){
       min_count[i] = min_count[R];
       snd_min[i] = std::min(fst_min[L], snd_min[R]);
@@ -410,7 +409,7 @@ private:
       snd_min[i] = std::min(snd_min[L], snd_min[R]);
     }
   }
-  
+
 private:
   void chmin(int i, int l, int r, int s, int t, value_type x){
     if(r <= s or t <= l or fst_max[i] <= x) return;
@@ -419,7 +418,7 @@ private:
       return;
     }
 
-    propagate(i);    
+    propagate(i);
     chmin(lc(i), l, (l + r) / 2, s, t, x);
     chmin(rc(i), (l + r) / 2, r, s, t, x);
     bottom_up(i);
@@ -461,7 +460,7 @@ private:
 
 public:
   void add(int l, int r, value_type x){add(1, 0, hsize, l, r, x);}
-  
+
 private:
   value_type get_sum(int i, int l, int r, int s, int t){
     if(r <= s or t <= l) return 0;
@@ -474,8 +473,7 @@ private:
 public:
   value_type get_sum(int l, int r){return get_sum(1, 0, hsize, l, r);}
 
-
-public:  
+public:
   void init_with_vector(const std::vector<value_type> &v){
     fst_max.assign(size, std::numeric_limits<value_type>::min());
     snd_max.assign(size, std::numeric_limits<value_type>::min());
@@ -484,7 +482,7 @@ public:
     fst_min.assign(size, std::numeric_limits<value_type>::max());
     snd_min.assign(size, std::numeric_limits<value_type>::max());
     min_count.assign(size, 1);
-    
+
     sum.assign(size, 0);
     lazy_add.assign(size, 0);
 

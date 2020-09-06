@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 1D Imos algorithm (Linear addition)
+# :x: 1D Imos algorithm (Linear addition)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6dc6d5a2cac82b39a08fd9ff32ab6e48">Mylib/Algorithm/Imos</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Imos/linear_imos_1d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
@@ -52,7 +52,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/1084/main.test.cpp.html">test/yukicoder/1084/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/1084/main.test.cpp.html">test/yukicoder/1084/main.test.cpp</a>
 
 
 ## Code
@@ -67,30 +67,31 @@ layout: default
  * @title 1D Imos algorithm (Linear addition)
  * @docs linear_imos_1d.md
  */
-template <typename T> struct LinearImos1D{
+template <typename T>
+struct LinearImos1D {
   using value_type = T;
-  
+
   std::vector<T> vec_a, vec_a_end, vec_b, vec;
   int n;
 
-  LinearImos1D(int n): vec_a(n+1), vec_a_end(n+1), vec_b(n+1), vec(n+1), n(n){}
+  LinearImos1D(int n): vec_a(n + 1), vec_a_end(n + 1), vec_b(n + 1), vec(n + 1), n(n){}
 
-  void add(int s, int t, const T &a, const T &b){ // x∈[s,t)にax+bを加算する。
-    vec_a[s+1] += a;
+  void add(int s, int t, const T &a, const T &b){ // x ∈ [s, t)にax+bを加算する。
+    vec_a[s + 1] += a;
     vec_a[t] -= a;
-    
-    vec_a_end[t] -= a * (t-s-1);
+
+    vec_a_end[t] -= a * (t - s - 1);
 
     vec_b[s] += a * s + b;
     vec_b[t] -= a * s + b;
   }
 
   void build(){
-    for(int i = 0; i < n; ++i) vec_a[i+1] += vec_a[i];
+    for(int i = 0; i < n; ++i) vec_a[i + 1] += vec_a[i];
     for(int i = 0; i <= n; ++i) vec_a[i] += vec_a_end[i];
-    for(int i = 0; i < n; ++i) vec_a[i+1] += vec_a[i];
+    for(int i = 0; i < n; ++i) vec_a[i + 1] += vec_a[i];
 
-    for(int i = 0; i < n; ++i) vec_b[i+1] += vec_b[i];
+    for(int i = 0; i < n; ++i) vec_b[i + 1] += vec_b[i];
 
     for(int i = 0; i <= n; ++i) vec[i] = vec_a[i] + vec_b[i];
   }
@@ -111,30 +112,31 @@ template <typename T> struct LinearImos1D{
  * @title 1D Imos algorithm (Linear addition)
  * @docs linear_imos_1d.md
  */
-template <typename T> struct LinearImos1D{
+template <typename T>
+struct LinearImos1D {
   using value_type = T;
-  
+
   std::vector<T> vec_a, vec_a_end, vec_b, vec;
   int n;
 
-  LinearImos1D(int n): vec_a(n+1), vec_a_end(n+1), vec_b(n+1), vec(n+1), n(n){}
+  LinearImos1D(int n): vec_a(n + 1), vec_a_end(n + 1), vec_b(n + 1), vec(n + 1), n(n){}
 
-  void add(int s, int t, const T &a, const T &b){ // x∈[s,t)にax+bを加算する。
-    vec_a[s+1] += a;
+  void add(int s, int t, const T &a, const T &b){ // x ∈ [s, t)にax+bを加算する。
+    vec_a[s + 1] += a;
     vec_a[t] -= a;
-    
-    vec_a_end[t] -= a * (t-s-1);
+
+    vec_a_end[t] -= a * (t - s - 1);
 
     vec_b[s] += a * s + b;
     vec_b[t] -= a * s + b;
   }
 
   void build(){
-    for(int i = 0; i < n; ++i) vec_a[i+1] += vec_a[i];
+    for(int i = 0; i < n; ++i) vec_a[i + 1] += vec_a[i];
     for(int i = 0; i <= n; ++i) vec_a[i] += vec_a_end[i];
-    for(int i = 0; i < n; ++i) vec_a[i+1] += vec_a[i];
+    for(int i = 0; i < n; ++i) vec_a[i + 1] += vec_a[i];
 
-    for(int i = 0; i < n; ++i) vec_b[i+1] += vec_b[i];
+    for(int i = 0; i < n; ++i) vec_b[i + 1] += vec_b[i];
 
     for(int i = 0; i <= n; ++i) vec[i] = vec_a[i] + vec_b[i];
   }

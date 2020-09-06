@@ -31,9 +31,34 @@ layout: default
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/range.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-11 07:33:37+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
+
+
+## Operations
+
+一つの閉区間を管理する。
+
+- `is_null()`
+  - 区間が空であるかを判定する。
+- `contains(a)`
+  - 区間に点`a`が含まれるかを判定する。
+
+- `intersect(a, b)`
+  - 区間`a`と`b`の共通部分を得る。
+- `left_expand(a, x)`
+  - 区間`a`の左端を`x`だけ伸縮したものを返す。
+- `right_expand(a, x)`
+  - 区間`a`の右端を`x`だけ伸縮したものを返す。
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References
 
 
 ## Code
@@ -51,7 +76,7 @@ layout: default
  * @docs range.md
  */
 template <typename T>
-struct Range{
+struct Range {
   std::optional<std::pair<std::optional<T>, std::optional<T>>> value;
 
   Range(){}
@@ -78,7 +103,7 @@ struct Range{
     if(not value) return false;
     if(value->first and v < *(value->first)) return false;
     if(value->second and v > *(value->second)) return false;
-    
+
     return true;
   }
 };
@@ -105,7 +130,7 @@ auto intersect(Range<T> a, Range<T> b){
     if(r) r = std::min(*r, *((b.value)->second));
     else r = *((b.value)->second);
   }
-  
+
   if(l and r){
     if(*l > *r){
       return Range<T>();
@@ -123,7 +148,7 @@ auto left_expand(Range<T> a, T x){
       return Range<T>();
     }
   }
-  
+
   return a;
 }
 
@@ -135,7 +160,7 @@ auto right_expand(Range<T> a, T x){
       return Range<T>();
     }
   }
-  
+
   return a;
 }
 
@@ -155,7 +180,7 @@ auto right_expand(Range<T> a, T x){
  * @docs range.md
  */
 template <typename T>
-struct Range{
+struct Range {
   std::optional<std::pair<std::optional<T>, std::optional<T>>> value;
 
   Range(){}
@@ -182,7 +207,7 @@ struct Range{
     if(not value) return false;
     if(value->first and v < *(value->first)) return false;
     if(value->second and v > *(value->second)) return false;
-    
+
     return true;
   }
 };
@@ -209,7 +234,7 @@ auto intersect(Range<T> a, Range<T> b){
     if(r) r = std::min(*r, *((b.value)->second));
     else r = *((b.value)->second);
   }
-  
+
   if(l and r){
     if(*l > *r){
       return Range<T>();
@@ -227,7 +252,7 @@ auto left_expand(Range<T> a, T x){
       return Range<T>();
     }
   }
-  
+
   return a;
 }
 
@@ -239,7 +264,7 @@ auto right_expand(Range<T> a, T x){
       return Range<T>();
     }
   }
-  
+
   return a;
 }
 

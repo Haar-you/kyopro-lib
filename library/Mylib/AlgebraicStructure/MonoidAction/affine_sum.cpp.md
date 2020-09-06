@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Range affine / Range sum
+# :x: Range affine / Range sum
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
 
 
 ## Code
@@ -54,7 +54,7 @@ layout: default
  * @docs affine_sum.md
  */
 template <typename T, typename U>
-struct AffineSum{
+struct AffineSum {
   using value_type_get = T;
   using value_type_update = std::pair<U, U>;
 
@@ -83,7 +83,7 @@ struct AffineSum{
  * @docs affine_sum.md
  */
 template <typename T, typename U>
-struct AffineSum{
+struct AffineSum {
   using value_type_get = T;
   using value_type_update = std::pair<U, U>;
 

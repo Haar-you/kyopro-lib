@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/Bit/for_each_subset_between.cpp
+# :x: Enumerate sets of size k
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#fe4a83e4dc2a7f834ed4cd85d6972a53">Mylib/Bit</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/for_each_subset_between.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-02 14:18:42+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/enumerate_sets_of_size_k.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-09-06 04:37:36+09:00
 
 
+
+
+## Verified with
+
+* :x: <a href="../../../verify/test/aoj/ITP2_11_D/main.test.cpp.html">test/aoj/ITP2_11_D/main.test.cpp</a>
 
 
 ## Code
@@ -44,14 +49,17 @@ layout: default
 #pragma once
 
 /**
- * @docs for_each_subset_between.md
+ * @title Enumerate sets of size k
+ * @docs enumerate_sets_of_size_k.md
  */
 template <typename Func>
-void for_each_subset_between(int a, int b, const Func &f){
-  int x = b^(a&b);
-  for(int t=x; ; t=(t-1)&x){
-    f(t|a);
-    if(t==0) break;
+void enumerate_sets_of_size_k(int k, int n, const Func &f){
+  int c = (1 << k) - 1;
+  while(c < (1 << n)){
+    if(not f(c)) break;
+    const int x = c & (-c);
+    const int y = c + x;
+    c = ((c & (~y)) / x >> 1) | y;
   }
 }
 
@@ -61,17 +69,20 @@ void for_each_subset_between(int a, int b, const Func &f){
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Bit/for_each_subset_between.cpp"
+#line 2 "Mylib/Bit/enumerate_sets_of_size_k.cpp"
 
 /**
- * @docs for_each_subset_between.md
+ * @title Enumerate sets of size k
+ * @docs enumerate_sets_of_size_k.md
  */
 template <typename Func>
-void for_each_subset_between(int a, int b, const Func &f){
-  int x = b^(a&b);
-  for(int t=x; ; t=(t-1)&x){
-    f(t|a);
-    if(t==0) break;
+void enumerate_sets_of_size_k(int k, int n, const Func &f){
+  int c = (1 << k) - 1;
+  while(c < (1 << n)){
+    if(not f(c)) break;
+    const int x = c & (-c);
+    const int y = c + x;
+    c = ((c & (~y)) / x >> 1) | y;
   }
 }
 

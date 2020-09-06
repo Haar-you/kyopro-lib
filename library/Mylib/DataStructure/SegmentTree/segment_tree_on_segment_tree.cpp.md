@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Segment tree (On segment tree)
+# :x: Segment tree (On segment tree)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
@@ -55,18 +55,18 @@ layout: default
 ## Problems
 
 ## References
- 
+
 
 
 ## Depends on
 
-* :question: <a href="segment_tree.cpp.html">Segment tree</a>
+* :x: <a href="segment_tree.cpp.html">Segment tree</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/point_add_rectangle_sum/main.test.cpp.html">test/yosupo-judge/point_add_rectangle_sum/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/point_add_rectangle_sum/main.test.cpp.html">test/yosupo-judge/point_add_rectangle_sum/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp</a>
 
 
 ## Code
@@ -77,7 +77,6 @@ layout: default
 #pragma once
 #include <vector>
 #include <algorithm>
-
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
 /**
@@ -85,9 +84,9 @@ layout: default
  * @docs segment_tree_on_segment_tree.md
  */
 template <typename Monoid>
-class SegmentTree2D{
+class SegmentTree2D {
   using value_type = typename Monoid::value_type;
-  Monoid M;
+  const static Monoid M;
 
   int N = 0;
   std::vector<int64_t> xs, ys;
@@ -147,12 +146,13 @@ public:
     }
   }
 
-  void update(int64_t x, int64_t y, const value_type &val){
+  void update(std::pair<int64_t, int64_t> p, const value_type &val){
+    const auto [x, y] = p;
     int i = std::lower_bound(c_xs.begin(), c_xs.end(), x) - c_xs.begin() + x_size / 2;
 
     while(i >= 1){
       int j = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y) - c_ys[i].begin();
-      segs[i].update(j, M.op(segs[i][j], val));
+      segs[i].update(j, M(segs[i][j], val));
 
       i >>= 1;
     }
@@ -168,15 +168,17 @@ private:
 
 public:
   // [x1, x2), [y1, y2)
-  value_type get(int64_t x1, int64_t y1, int64_t x2, int64_t y2) const {
+  value_type get(std::pair<int64_t, int64_t> p1, std::pair<int64_t, int64_t> p2) const {
+    const auto [x1, y1] = p1;
+    const auto [x2, y2] = p2;
     int l = std::lower_bound(c_xs.begin(), c_xs.end(), x1) - c_xs.begin() + x_size / 2;
     int r = std::lower_bound(c_xs.begin(), c_xs.end(), x2) - c_xs.begin() + x_size / 2;
 
-    value_type ret = M.id();
+    value_type ret = M();
 
     while(l < r){
-      if(r & 1) ret = M.op(ret, get_sub(--r, y1, y2));
-      if(l & 1) ret = M.op(ret, get_sub(l++, y1, y2));
+      if(r & 1) ret = M(ret, get_sub(--r, y1, y2));
+      if(l & 1) ret = M(ret, get_sub(l++, y1, y2));
       l >>= 1;
       r >>= 1;
     }
@@ -194,7 +196,6 @@ public:
 #line 2 "Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp"
 #include <vector>
 #include <algorithm>
-
 #line 3 "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
 /**
@@ -202,66 +203,65 @@ public:
  * @docs segment_tree.md
  */
 template <typename Monoid>
-class SegmentTree{
+class SegmentTree {
   using value_type = typename Monoid::value_type;
-  Monoid M;
-  
+  const static Monoid M;
+
   int depth, size, hsize;
   std::vector<value_type> data;
 
 public:
   SegmentTree(){}
   SegmentTree(int n):
-    depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
+    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
     size(1 << depth), hsize(size / 2),
-    data(size, M.id())
+    data(size, M())
   {}
 
-  auto operator[](int i) const {return at(i);}
-  auto at(int i) const {return data[hsize + i];}
-  
-  auto get(int x, int y) const { // [x,y)
-    value_type ret_left = M.id();
-    value_type ret_right = M.id();
-    
+  auto operator[](int i) const {return data[hsize + i];}
+
+  auto get(int x, int y) const {
+    value_type ret_left = M();
+    value_type ret_right = M();
+
     int l = x + hsize, r = y + hsize;
     while(l < r){
-      if(r & 1) ret_right = M.op(data[--r], ret_right);
-      if(l & 1) ret_left = M.op(ret_left, data[l++]);
+      if(r & 1) ret_right = M(data[--r], ret_right);
+      if(l & 1) ret_left = M(ret_left, data[l++]);
       l >>= 1, r >>= 1;
     }
-    
-    return M.op(ret_left, ret_right);
+
+    return M(ret_left, ret_right);
   }
 
   void update(int i, const value_type &x){
     i += hsize;
     data[i] = x;
-    while(i > 1) i >>= 1, data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
+    while(i > 1) i >>= 1, data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
   void init_with_vector(const std::vector<T> &val){
-    data.assign(size, M.id());
+    data.assign(size, M());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
-    for(int i = hsize-1; i >= 1; --i) data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
+    for(int i = hsize - 1; i >= 1; --i) data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
   void init(const T &val){
     init_with_vector(std::vector<value_type>(hsize, val));
-  }  
+  }
 };
-#line 6 "Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp"
+#line 5 "Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp"
 
 /**
  * @title Segment tree (On segment tree)
  * @docs segment_tree_on_segment_tree.md
  */
 template <typename Monoid>
-class SegmentTree2D{
+class SegmentTree2D {
   using value_type = typename Monoid::value_type;
-  Monoid M;
+  const static Monoid M;
 
   int N = 0;
   std::vector<int64_t> xs, ys;
@@ -321,12 +321,13 @@ public:
     }
   }
 
-  void update(int64_t x, int64_t y, const value_type &val){
+  void update(std::pair<int64_t, int64_t> p, const value_type &val){
+    const auto [x, y] = p;
     int i = std::lower_bound(c_xs.begin(), c_xs.end(), x) - c_xs.begin() + x_size / 2;
 
     while(i >= 1){
       int j = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y) - c_ys[i].begin();
-      segs[i].update(j, M.op(segs[i][j], val));
+      segs[i].update(j, M(segs[i][j], val));
 
       i >>= 1;
     }
@@ -342,15 +343,17 @@ private:
 
 public:
   // [x1, x2), [y1, y2)
-  value_type get(int64_t x1, int64_t y1, int64_t x2, int64_t y2) const {
+  value_type get(std::pair<int64_t, int64_t> p1, std::pair<int64_t, int64_t> p2) const {
+    const auto [x1, y1] = p1;
+    const auto [x2, y2] = p2;
     int l = std::lower_bound(c_xs.begin(), c_xs.end(), x1) - c_xs.begin() + x_size / 2;
     int r = std::lower_bound(c_xs.begin(), c_xs.end(), x2) - c_xs.begin() + x_size / 2;
 
-    value_type ret = M.id();
+    value_type ret = M();
 
     while(l < r){
-      if(r & 1) ret = M.op(ret, get_sub(--r, y1, y2));
-      if(l & 1) ret = M.op(ret, get_sub(l++, y1, y2));
+      if(r & 1) ret = M(ret, get_sub(--r, y1, y2));
+      if(l & 1) ret = M(ret, get_sub(l++, y1, y2));
       l >>= 1;
       r >>= 1;
     }

@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Splay tree
+# :x: Splay tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#de940accc238379dfea959424e331579">Mylib/DataStructure/SplayTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SplayTree/splay_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/1508/main.splay_tree.test.cpp.html">test/aoj/1508/main.splay_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/1508/main.splay_tree.test.cpp.html">test/aoj/1508/main.splay_tree.test.cpp</a>
 
 
 ## Code
@@ -54,16 +54,16 @@ layout: default
  * @title Splay tree
  * @docs splay_tree.md
  */
-namespace splay_tree{
+namespace splay_tree {
   template <typename Monoid>
-  struct SplayNode{
+  struct SplayNode {
     using node = SplayNode<Monoid>;
     using value_type = typename Monoid::value_type;
-    constexpr static Monoid M = Monoid();
-    
+    const static Monoid M;
+
     node *left = nullptr, *right = nullptr, *parent = nullptr;
     int size;
-    value_type value = M.id(), result = M.id();
+    value_type value = M(), result = M();
 
     SplayNode(): size(1){}
     SplayNode(const value_type &value): size(1), value(value){}
@@ -86,9 +86,9 @@ namespace splay_tree{
 
       if(pp){
         if(pp->left == p) pp->left = this;
-        if(pp->right == p) pp->right = this;      
+        if(pp->right == p) pp->right = this;
       }
-      
+
       this->parent = pp;
 
       p->update();
@@ -101,7 +101,7 @@ namespace splay_tree{
       if(this->parent->right == this) return -1;
       return 0;
     }
-    
+
     void splay(){
       while(status() != 0){
         if(this->parent->status() == 0){
@@ -122,8 +122,8 @@ namespace splay_tree{
       if(this->right) this->size += this->right->size;
 
       this->result = this->value;
-      if(this->left) this->result = M.op(this->result, this->left->result);
-      if(this->right) this->result = M.op(this->result, this->right->result);
+      if(this->left) this->result = M(this->result, this->left->result);
+      if(this->right) this->result = M(this->result, this->right->result);
     }
 
     void set_left(node *l){
@@ -158,7 +158,7 @@ namespace splay_tree{
     static node* merge(node *left, node *right){
       if(!left) return right;
       if(!right) return left;
-      
+
       node *cur = node::get(left, left->size - 1);
 
       cur->right = right;
@@ -173,7 +173,7 @@ namespace splay_tree{
     static std::pair<node*, node*> split(node *root, int index){
       if(!root) return std::make_pair(nullptr, nullptr);
       if(index >= root->size) return std::make_pair(root, nullptr);
-    
+
       auto *cur = node::get(root, index);
       auto *left = cur->left;
 
@@ -182,7 +182,7 @@ namespace splay_tree{
 
       if(left) left->update();
       cur->update();
-    
+
       return std::make_pair(left, cur);
     }
 
@@ -197,34 +197,35 @@ namespace splay_tree{
   };
 
   template <typename Monoid>
-  struct SplayTree{
+  struct SplayTree {
     using node = SplayNode<Monoid>;
     using value_type = typename Monoid::value_type;
-    constexpr static Monoid M = Monoid();
+    const static Monoid M;
 
     node *root;
-    
+
     SplayTree(): root(nullptr){}
     SplayTree(node *root): root(root){}
     SplayTree(int N): root(nullptr){
-      for(int i = 0; i < N; ++i) push_back(M.id());
+      for(int i = 0; i < N; ++i) push_back(M());
     }
 
     static auto singleton(const value_type &value){return SplayTree(new node(value));}
 
     int size() const {return root ? root->size : 0;}
     bool empty() const {return !root;}
-  
+
     const value_type get(int index){root = node::get(root, index); return root->value;}
     const value_type operator[](int index){return get(index);}
 
     void update(int index, const value_type &value){
       root = node::get(root, index); root->value = value; root->update();
     }
-    
+
     void merge_right(SplayTree &right){
       root = node::merge(root, right.root); right.root = nullptr;
     }
+
     void merge_left(SplayTree &left){
       root = node::merge(left.root, root); left.root = nullptr;
     }
@@ -233,7 +234,7 @@ namespace splay_tree{
       node *left, *right; std::tie(left, right) = node::split(root, index);
       return std::make_pair(SplayTree(left), SplayTree(right));
     }
-    
+
     void insert(int index, const value_type &value){
       auto s = node::split(root, index);
       root = node::merge(s.first, node::merge(new node(value), s.second));
@@ -287,16 +288,16 @@ namespace splay_tree{
  * @title Splay tree
  * @docs splay_tree.md
  */
-namespace splay_tree{
+namespace splay_tree {
   template <typename Monoid>
-  struct SplayNode{
+  struct SplayNode {
     using node = SplayNode<Monoid>;
     using value_type = typename Monoid::value_type;
-    constexpr static Monoid M = Monoid();
-    
+    const static Monoid M;
+
     node *left = nullptr, *right = nullptr, *parent = nullptr;
     int size;
-    value_type value = M.id(), result = M.id();
+    value_type value = M(), result = M();
 
     SplayNode(): size(1){}
     SplayNode(const value_type &value): size(1), value(value){}
@@ -319,9 +320,9 @@ namespace splay_tree{
 
       if(pp){
         if(pp->left == p) pp->left = this;
-        if(pp->right == p) pp->right = this;      
+        if(pp->right == p) pp->right = this;
       }
-      
+
       this->parent = pp;
 
       p->update();
@@ -334,7 +335,7 @@ namespace splay_tree{
       if(this->parent->right == this) return -1;
       return 0;
     }
-    
+
     void splay(){
       while(status() != 0){
         if(this->parent->status() == 0){
@@ -355,8 +356,8 @@ namespace splay_tree{
       if(this->right) this->size += this->right->size;
 
       this->result = this->value;
-      if(this->left) this->result = M.op(this->result, this->left->result);
-      if(this->right) this->result = M.op(this->result, this->right->result);
+      if(this->left) this->result = M(this->result, this->left->result);
+      if(this->right) this->result = M(this->result, this->right->result);
     }
 
     void set_left(node *l){
@@ -391,7 +392,7 @@ namespace splay_tree{
     static node* merge(node *left, node *right){
       if(!left) return right;
       if(!right) return left;
-      
+
       node *cur = node::get(left, left->size - 1);
 
       cur->right = right;
@@ -406,7 +407,7 @@ namespace splay_tree{
     static std::pair<node*, node*> split(node *root, int index){
       if(!root) return std::make_pair(nullptr, nullptr);
       if(index >= root->size) return std::make_pair(root, nullptr);
-    
+
       auto *cur = node::get(root, index);
       auto *left = cur->left;
 
@@ -415,7 +416,7 @@ namespace splay_tree{
 
       if(left) left->update();
       cur->update();
-    
+
       return std::make_pair(left, cur);
     }
 
@@ -430,34 +431,35 @@ namespace splay_tree{
   };
 
   template <typename Monoid>
-  struct SplayTree{
+  struct SplayTree {
     using node = SplayNode<Monoid>;
     using value_type = typename Monoid::value_type;
-    constexpr static Monoid M = Monoid();
+    const static Monoid M;
 
     node *root;
-    
+
     SplayTree(): root(nullptr){}
     SplayTree(node *root): root(root){}
     SplayTree(int N): root(nullptr){
-      for(int i = 0; i < N; ++i) push_back(M.id());
+      for(int i = 0; i < N; ++i) push_back(M());
     }
 
     static auto singleton(const value_type &value){return SplayTree(new node(value));}
 
     int size() const {return root ? root->size : 0;}
     bool empty() const {return !root;}
-  
+
     const value_type get(int index){root = node::get(root, index); return root->value;}
     const value_type operator[](int index){return get(index);}
 
     void update(int index, const value_type &value){
       root = node::get(root, index); root->value = value; root->update();
     }
-    
+
     void merge_right(SplayTree &right){
       root = node::merge(root, right.root); right.root = nullptr;
     }
+
     void merge_left(SplayTree &left){
       root = node::merge(left.root, root); left.root = nullptr;
     }
@@ -466,7 +468,7 @@ namespace splay_tree{
       node *left, *right; std::tie(left, right) = node::split(root, index);
       return std::make_pair(SplayTree(left), SplayTree(right));
     }
-    
+
     void insert(int index, const value_type &value){
       auto s = node::split(root, index);
       root = node::merge(s.first, node::merge(new node(value), s.second));

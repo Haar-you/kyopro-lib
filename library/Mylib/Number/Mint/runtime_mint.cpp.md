@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Modint (Runtime mod)
+# :x: Modint (Runtime mod)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ed8374f4a8b62e2301eb75f9564224fe">Mylib/Number/Mint</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mint/runtime_mint.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-17 06:32:19+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
@@ -51,8 +51,8 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/1327/main.test.cpp.html">test/aoj/1327/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/montmort_number_mod/main.test.cpp.html">test/yosupo-judge/montmort_number_mod/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/1327/main.test.cpp.html">test/aoj/1327/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/montmort_number_mod/main.test.cpp.html">test/yosupo-judge/montmort_number_mod/main.test.cpp</a>
 
 
 ## Code
@@ -69,10 +69,10 @@ layout: default
  * @docs runtime_mint.md
  */
 template <typename Tag>
-class RuntimeModInt{
+class RuntimeModInt {
 public:
   static uint32_t M;
-  
+
   uint64_t val;
   RuntimeModInt(): val(0){}
   RuntimeModInt(int64_t n){
@@ -80,12 +80,12 @@ public:
     else if(n < 0) val = n % M + M;
     else val = n;
   }
-  
+
   auto operator+(const RuntimeModInt &a) const {return RuntimeModInt(val + a.val);}
   auto operator-(const RuntimeModInt &a) const {return RuntimeModInt(val - a.val);}
   auto operator*(const RuntimeModInt &a) const {return RuntimeModInt(val * a.val);}
   auto operator/(const RuntimeModInt &a) const {return RuntimeModInt(val * a.inv().val);}
-  
+
   const auto& operator=(const RuntimeModInt &a){val = a.val; return *this;}
   const auto& operator+=(const RuntimeModInt &a){if((val += a.val) >= M) val -= M; return *this;}
   const auto& operator-=(const RuntimeModInt &a){if(val < a.val) val += M; val -= a.val; return *this;}
@@ -106,18 +106,18 @@ public:
     for(; p; e *= e, p >>= 1) if(p & 1) ret *= e;
     return ret;
   }
-  
+
   RuntimeModInt inv() const {
     int64_t a = val, b = M, u = 1, v = 0;
 
     while(b){
-      int64_t t = a/b;
-      a -= t*b; std::swap(a,b);
-      u -= t*v; std::swap(u,v);
+      int64_t t = a / b;
+      a -= t * b; std::swap(a, b);
+      u -= t * v; std::swap(u, v);
     }
     u %= M;
     if(u < 0) u += M;
-    
+
     return u;
   }
 
@@ -154,10 +154,10 @@ template <typename Tag> std::ostream& operator<<(std::ostream &os, const Runtime
  * @docs runtime_mint.md
  */
 template <typename Tag>
-class RuntimeModInt{
+class RuntimeModInt {
 public:
   static uint32_t M;
-  
+
   uint64_t val;
   RuntimeModInt(): val(0){}
   RuntimeModInt(int64_t n){
@@ -165,12 +165,12 @@ public:
     else if(n < 0) val = n % M + M;
     else val = n;
   }
-  
+
   auto operator+(const RuntimeModInt &a) const {return RuntimeModInt(val + a.val);}
   auto operator-(const RuntimeModInt &a) const {return RuntimeModInt(val - a.val);}
   auto operator*(const RuntimeModInt &a) const {return RuntimeModInt(val * a.val);}
   auto operator/(const RuntimeModInt &a) const {return RuntimeModInt(val * a.inv().val);}
-  
+
   const auto& operator=(const RuntimeModInt &a){val = a.val; return *this;}
   const auto& operator+=(const RuntimeModInt &a){if((val += a.val) >= M) val -= M; return *this;}
   const auto& operator-=(const RuntimeModInt &a){if(val < a.val) val += M; val -= a.val; return *this;}
@@ -191,18 +191,18 @@ public:
     for(; p; e *= e, p >>= 1) if(p & 1) ret *= e;
     return ret;
   }
-  
+
   RuntimeModInt inv() const {
     int64_t a = val, b = M, u = 1, v = 0;
 
     while(b){
-      int64_t t = a/b;
-      a -= t*b; std::swap(a,b);
-      u -= t*v; std::swap(u,v);
+      int64_t t = a / b;
+      a -= t * b; std::swap(a, b);
+      u -= t * v; std::swap(u, v);
     }
     u %= M;
     if(u < 0) u += M;
-    
+
     return u;
   }
 

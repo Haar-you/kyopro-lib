@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/0502/main.test.cpp
+# :x: test/aoj/0502/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f070aafcfc9617f5a2bf249d6bfa024f">test/aoj/0502</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/0502/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0502">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0502</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/dice.cpp.html">Dice</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/Misc/dice.cpp.html">Dice</a>
 
 
 ## Code
@@ -71,7 +71,7 @@ int main(){
       if(s == "Right") d = d.rot_clockwise(), ans += d.top;
       if(s == "Left") d = d.rot_counterclockwise(), ans += d.top;
     }
-    
+
     std::cout << ans << "\n";
   }
 
@@ -95,7 +95,7 @@ int main(){
  * @title Dice
  * @docs dice.md
  */
-struct Dice{
+struct Dice {
   int top, bottom, front, back, right, left;
 
   Dice(){}
@@ -113,7 +113,7 @@ struct Dice{
   Dice rot_front() const {
     return Dice(back, front, top, bottom, right, left);
   }
-  
+
   Dice rot_back() const {
     return Dice(front, back, bottom, top, right, left);
   }
@@ -137,8 +137,8 @@ struct Dice{
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -148,8 +148,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -158,8 +158,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -214,7 +214,7 @@ int main(){
       if(s == "Right") d = d.rot_clockwise(), ans += d.top;
       if(s == "Left") d = d.rot_counterclockwise(), ans += d.top;
     }
-    
+
     std::cout << ans << "\n";
   }
 

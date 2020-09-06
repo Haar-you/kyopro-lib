@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f3e3957dafbf526c46359105e1a71d64">Mylib/Algorithm/Query</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Query/range_mode_query.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -49,8 +49,7 @@ layout: default
 
 ## References
 
-- [https://scrapbox.io/data-structures/Range_Mode_Query
-](https://scrapbox.io/data-structures/Range_Mode_Query)
+- [https://scrapbox.io/data-structures/Range_Mode_Query](https://scrapbox.io/data-structures/Range_Mode_Query)
 
 
 ## Code
@@ -62,28 +61,29 @@ layout: default
 #include <vector>
 #include <algorithm>
 #include <utility>
+#include <cmath>
 
 /**
  * @title Range mode query
  * @docs range_mode_query.md
  */
 template <typename T>
-class RangeModeQuery{
+class RangeModeQuery {
   std::vector<T> a, D;
   std::vector<int> b, b_index;
-  
+
   const int N;
   const int block_size;
   const int block_num;
 
   int K;
-  
+
   std::vector<std::vector<int>> index;
   std::vector<std::vector<int>> mode, freq;
-  
+
 public:
   RangeModeQuery(std::vector<T> a):
-    a(a), D(a), N(a.size()), block_size(sqrt(N)), block_num((N+block_size-1)/block_size),
+    a(a), D(a), N(a.size()), block_size(sqrt(N)), block_num((N + block_size - 1) / block_size),
     mode(block_num, std::vector<int>(block_num)),
     freq(block_num, std::vector<int>(block_num))
   {
@@ -105,7 +105,6 @@ public:
     }
 
     for(int i = 0; i < block_num; ++i){
-
       std::vector<int> temp(K);
       int md = 0, fr = 0;
 
@@ -137,12 +136,12 @@ public:
 
     // prefix
     for(int i = l; i < std::min(r, span_l * block_size); ++i){
-      if(b_index[i]-1 >= 0 and index[b[i]][b_index[i]-1] >= l) continue;
-      
-      if(b_index[i]+ret.first-1 < 0 or (b_index[i]+ret.first-1 < (int)index[b[i]].size() and index[b[i]][b_index[i]+ret.first-1] < r)){
+      if(b_index[i] - 1 >= 0 and index[b[i]][b_index[i] - 1] >= l) continue;
+
+      if(b_index[i] + ret.first - 1 < 0 or (b_index[i] + ret.first - 1 < (int)index[b[i]].size() and index[b[i]][b_index[i] + ret.first - 1] < r)){
         int fr = ret.first;
-        
-        for(int j = b_index[i]+ret.first; j < (int)index[b[i]].size(); ++j){
+
+        for(int j = b_index[i] + ret.first; j < (int)index[b[i]].size(); ++j){
           if(index[b[i]][j] < r) ++fr;
           else break;
         }
@@ -152,15 +151,15 @@ public:
         }
       }
     }
-    
-    // suffix
-    for(int i = r-1; i >= std::max(l, (span_r+1) * block_size); --i){
-      if(b_index[i]+1 < (int)index[b[i]].size() and index[b[i]][b_index[i]+1] < r) continue;
 
-      if(b_index[i]-ret.first+1 >= (int)index[b[i]].size() or (b_index[i]-ret.first+1 >= 0 and index[b[i]][b_index[i]-ret.first+1] >= l)){
+    // suffix
+    for(int i = r - 1; i >= std::max(l, (span_r + 1) * block_size); --i){
+      if(b_index[i] + 1 < (int)index[b[i]].size() and index[b[i]][b_index[i] + 1] < r) continue;
+
+      if(b_index[i] - ret.first + 1 >= (int)index[b[i]].size() or (b_index[i] - ret.first + 1 >= 0 and index[b[i]][b_index[i] - ret.first + 1] >= l)){
         int fr = ret.first;
 
-        for(int j = b_index[i]-ret.first; j >= 0; --j){
+        for(int j = b_index[i] - ret.first; j >= 0; --j){
           if(index[b[i]][j] >= l) ++fr;
           else break;
         }
@@ -170,7 +169,7 @@ public:
         }
       }
     }
-    
+
     return ret;
   }
 };
@@ -185,28 +184,29 @@ public:
 #include <vector>
 #include <algorithm>
 #include <utility>
+#include <cmath>
 
 /**
  * @title Range mode query
  * @docs range_mode_query.md
  */
 template <typename T>
-class RangeModeQuery{
+class RangeModeQuery {
   std::vector<T> a, D;
   std::vector<int> b, b_index;
-  
+
   const int N;
   const int block_size;
   const int block_num;
 
   int K;
-  
+
   std::vector<std::vector<int>> index;
   std::vector<std::vector<int>> mode, freq;
-  
+
 public:
   RangeModeQuery(std::vector<T> a):
-    a(a), D(a), N(a.size()), block_size(sqrt(N)), block_num((N+block_size-1)/block_size),
+    a(a), D(a), N(a.size()), block_size(sqrt(N)), block_num((N + block_size - 1) / block_size),
     mode(block_num, std::vector<int>(block_num)),
     freq(block_num, std::vector<int>(block_num))
   {
@@ -228,7 +228,6 @@ public:
     }
 
     for(int i = 0; i < block_num; ++i){
-
       std::vector<int> temp(K);
       int md = 0, fr = 0;
 
@@ -260,12 +259,12 @@ public:
 
     // prefix
     for(int i = l; i < std::min(r, span_l * block_size); ++i){
-      if(b_index[i]-1 >= 0 and index[b[i]][b_index[i]-1] >= l) continue;
-      
-      if(b_index[i]+ret.first-1 < 0 or (b_index[i]+ret.first-1 < (int)index[b[i]].size() and index[b[i]][b_index[i]+ret.first-1] < r)){
+      if(b_index[i] - 1 >= 0 and index[b[i]][b_index[i] - 1] >= l) continue;
+
+      if(b_index[i] + ret.first - 1 < 0 or (b_index[i] + ret.first - 1 < (int)index[b[i]].size() and index[b[i]][b_index[i] + ret.first - 1] < r)){
         int fr = ret.first;
-        
-        for(int j = b_index[i]+ret.first; j < (int)index[b[i]].size(); ++j){
+
+        for(int j = b_index[i] + ret.first; j < (int)index[b[i]].size(); ++j){
           if(index[b[i]][j] < r) ++fr;
           else break;
         }
@@ -275,15 +274,15 @@ public:
         }
       }
     }
-    
-    // suffix
-    for(int i = r-1; i >= std::max(l, (span_r+1) * block_size); --i){
-      if(b_index[i]+1 < (int)index[b[i]].size() and index[b[i]][b_index[i]+1] < r) continue;
 
-      if(b_index[i]-ret.first+1 >= (int)index[b[i]].size() or (b_index[i]-ret.first+1 >= 0 and index[b[i]][b_index[i]-ret.first+1] >= l)){
+    // suffix
+    for(int i = r - 1; i >= std::max(l, (span_r + 1) * block_size); --i){
+      if(b_index[i] + 1 < (int)index[b[i]].size() and index[b[i]][b_index[i] + 1] < r) continue;
+
+      if(b_index[i] - ret.first + 1 >= (int)index[b[i]].size() or (b_index[i] - ret.first + 1 >= 0 and index[b[i]][b_index[i] - ret.first + 1] >= l)){
         int fr = ret.first;
 
-        for(int j = b_index[i]-ret.first; j >= 0; --j){
+        for(int j = b_index[i] - ret.first; j >= 0; --j){
           if(index[b[i]][j] >= l) ++fr;
           else break;
         }
@@ -293,7 +292,7 @@ public:
         }
       }
     }
-    
+
     return ret;
   }
 };

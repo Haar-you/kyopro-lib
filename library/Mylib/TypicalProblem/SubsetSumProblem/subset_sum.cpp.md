@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#2e380218d9fd214c2f91a8ade734af1c">Mylib/TypicalProblem/SubsetSumProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/SubsetSumProblem/subset_sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -64,18 +64,18 @@ layout: default
  * @docs subset_sum.md
  */
 auto subset_sum(int N, int K, const std::vector<int> &a){
-  std::vector<std::vector<bool>> dp(2, std::vector<bool>(K+1));
+  std::vector<std::vector<bool>> dp(2, std::vector<bool>(K + 1));
 
   dp[0][0] = true;
 
   for(int i = 0; i < N; ++i){
     for(int j = 0; j <= K; ++j){
-      if(j >= a[i]) dp[(i+1)&1][j] = dp[i&1][j-a[i]] or dp[i&1][j];
-      else dp[(i+1)&1][j] = dp[i&1][j];
+      if(j >= a[i]) dp[(i + 1) & 1][j] = dp[i & 1][j - a[i]] or dp[i & 1][j];
+      else dp[(i + 1) & 1][j] = dp[i & 1][j];
     }
   }
 
-  return dp[N&1];
+  return dp[N & 1];
 }
 
 ```
@@ -92,18 +92,18 @@ auto subset_sum(int N, int K, const std::vector<int> &a){
  * @docs subset_sum.md
  */
 auto subset_sum(int N, int K, const std::vector<int> &a){
-  std::vector<std::vector<bool>> dp(2, std::vector<bool>(K+1));
+  std::vector<std::vector<bool>> dp(2, std::vector<bool>(K + 1));
 
   dp[0][0] = true;
 
   for(int i = 0; i < N; ++i){
     for(int j = 0; j <= K; ++j){
-      if(j >= a[i]) dp[(i+1)&1][j] = dp[i&1][j-a[i]] or dp[i&1][j];
-      else dp[(i+1)&1][j] = dp[i&1][j];
+      if(j >= a[i]) dp[(i + 1) & 1][j] = dp[i & 1][j - a[i]] or dp[i & 1][j];
+      else dp[(i + 1) & 1][j] = dp[i & 1][j];
     }
   }
 
-  return dp[N&1];
+  return dp[N & 1];
 }
 
 ```

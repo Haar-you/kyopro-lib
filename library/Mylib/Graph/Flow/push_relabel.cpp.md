@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Push-relabel
+# :x: Push-relabel
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ecd047c70c23d80351a9f133b49a4638">Mylib/Graph/Flow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Flow/push_relabel.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-22 16:28:46+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
@@ -53,7 +53,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_6_A/main.push_relabel.test.cpp.html">test/aoj/GRL_6_A/main.push_relabel.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_6_A/main.push_relabel.test.cpp.html">test/aoj/GRL_6_A/main.push_relabel.test.cpp</a>
 
 
 ## Code
@@ -72,9 +72,9 @@ layout: default
  * @docs push_relabel.md
  */
 template <typename T>
-struct PushRelabel{
+struct PushRelabel {
 private:
-  struct edge{
+  struct edge {
     int from, to;
     int rev;
     T cap;
@@ -99,7 +99,7 @@ private:
       for(int i = 0; i < N; ++i){
         height[i] = N;
       }
-      
+
       std::queue<int> q;
       std::vector<bool> check(N);
       q.push(t);
@@ -150,14 +150,14 @@ private:
     for(auto &e : g[i]){
       if(e.cap > 0) a = std::min(a, height[e.to]);
     }
-    
+
     height[i] = a + 1;
-  }  
-  
+  }
+
 public:
   PushRelabel(){}
   PushRelabel(int N): N(N), g(N), excess(N), height(N){}
-  PushRelabel(std::vector<std::vector<std::pair<int,T>>> g):
+  PushRelabel(std::vector<std::vector<std::pair<int, T>>> g):
     N(g.size()), g(N), excess(N), height(N)
   {
     for(int i = 0; i < N; ++i){
@@ -178,7 +178,7 @@ public:
 
     while(true){
       int index = -1;
-      
+
       while(not next_active_vertex.empty()){
         int i = next_active_vertex.front();
         if(i != s and i != t and excess[i] > 0){
@@ -187,7 +187,7 @@ public:
         }
         next_active_vertex.pop();
       }
-      
+
       if(index == -1) break;
 
       bool ok = false;
@@ -225,9 +225,9 @@ public:
  * @docs push_relabel.md
  */
 template <typename T>
-struct PushRelabel{
+struct PushRelabel {
 private:
-  struct edge{
+  struct edge {
     int from, to;
     int rev;
     T cap;
@@ -252,7 +252,7 @@ private:
       for(int i = 0; i < N; ++i){
         height[i] = N;
       }
-      
+
       std::queue<int> q;
       std::vector<bool> check(N);
       q.push(t);
@@ -303,14 +303,14 @@ private:
     for(auto &e : g[i]){
       if(e.cap > 0) a = std::min(a, height[e.to]);
     }
-    
+
     height[i] = a + 1;
-  }  
-  
+  }
+
 public:
   PushRelabel(){}
   PushRelabel(int N): N(N), g(N), excess(N), height(N){}
-  PushRelabel(std::vector<std::vector<std::pair<int,T>>> g):
+  PushRelabel(std::vector<std::vector<std::pair<int, T>>> g):
     N(g.size()), g(N), excess(N), height(N)
   {
     for(int i = 0; i < N; ++i){
@@ -331,7 +331,7 @@ public:
 
     while(true){
       int index = -1;
-      
+
       while(not next_active_vertex.empty()){
         int i = next_active_vertex.front();
         if(i != s and i != t and excess[i] > 0){
@@ -340,7 +340,7 @@ public:
         }
         next_active_vertex.pop();
       }
-      
+
       if(index == -1) break;
 
       bool ok = false;

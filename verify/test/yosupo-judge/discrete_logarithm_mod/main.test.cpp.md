@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
+# :x: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2163f1b495697e10d51593b9d528fe28">test/yosupo-judge/discrete_logarithm_mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/discrete_logarithm_mod">https://judge.yosupo.jp/problem/discrete_logarithm_mod</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">Mod inverse</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Mod/mod_log.cpp.html">Mod logarithm</a>
-* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/Number/Mod/mod_inv.cpp.html">Mod inverse</a>
+* :x: <a href="../../../../library/Mylib/Number/Mod/mod_log.cpp.html">Mod logarithm</a>
+* :x: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
 
 
 ## Code
@@ -62,7 +62,7 @@ int main(){
   std::ios::sync_with_stdio(false);
 
   int T; std::cin >> T;
-  
+
   for(auto [X, Y, M] : input_tuples<int, int, int>(T)){
     std::cout << mod_log(X, Y, M).value_or(-1) << "\n";
   }
@@ -86,6 +86,7 @@ int main(){
 #include <numeric>
 #include <cmath>
 #line 2 "Mylib/Number/Mod/mod_power.cpp"
+#include <cstdint>
 
 /**
  * @title Mod power
@@ -102,6 +103,7 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 }
 #line 2 "Mylib/Number/Mod/mod_inv.cpp"
 #include <utility>
+#line 4 "Mylib/Number/Mod/mod_inv.cpp"
 
 /**
  * @title Mod inverse
@@ -129,17 +131,17 @@ int64_t mod_inv(int64_t a, int64_t m){
  */
 std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
   if(b == 1) return 0;
-  
+
   int64_t d = 0;
-  
+
   while(1){
     if(auto g = std::gcd(a, m); g != 1){
       if(b % g != 0) return {};
-      
+
       d += 1;
       m /= g;
       b /= g;
-      (b *= mod_inv(a/g, m)) %= m;
+      (b *= mod_inv(a / g, m)) %= m;
 
       if(b == 1) return d;
     }else{
@@ -148,21 +150,21 @@ std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
   }
 
   const int64_t sq = sqrt(m) + 1;
-  
-  std::unordered_map<int64_t,int64_t> mp;
+
+  std::unordered_map<int64_t, int64_t> mp;
   {
     int64_t t = 1 % m;
-  
+
     for(int i = 0; i < sq; ++i){
       if(mp.find(t) == mp.end()) mp[t] = i;
       (t *= a) %= m;
     }
   }
-  
+
   {
     int64_t A = power(mod_inv(a, m), sq, m);
     int64_t t = b % m;
-    
+
     for(int i = 0; i < sq; ++i){
       if(mp.find(t) != mp.end()){
         int64_t ret = i * sq + mp[t] + d;
@@ -173,7 +175,7 @@ std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
       (t *= A) %= m;
     }
   }
-  
+
   return {};
 }
 #line 3 "Mylib/IO/input_tuples.cpp"
@@ -187,8 +189,8 @@ std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -198,8 +200,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -208,8 +210,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -254,7 +256,7 @@ int main(){
   std::ios::sync_with_stdio(false);
 
   int T; std::cin >> T;
-  
+
   for(auto [X, Y, M] : input_tuples<int, int, int>(T)){
     std::cout << mod_log(X, Y, M).value_or(-1) << "\n";
   }

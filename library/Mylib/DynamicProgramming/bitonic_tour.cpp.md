@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Bitonic tour
+# :x: Bitonic tour
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3a96c66483797c15eff4c0c3d8733619">Mylib/DynamicProgramming</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/bitonic_tour.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_2_C/main.test.cpp.html">test/aoj/DPL_2_C/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/DPL_2_C/main.test.cpp.html">test/aoj/DPL_2_C/main.test.cpp</a>
 
 
 ## Code
@@ -74,18 +74,18 @@ double bitonic_tour(int n, const std::vector<T> &x, const std::vector<T> &y){
   for(int i = 0; i < n; ++i){
     for(int j = 0; j < n; ++j){
       dp[i][i] = std::min(dp[i][i], dp[i][j] + dist[i][j]);
-      if(i+1 < n){
-        dp[i+1][j] = std::min(dp[i+1][j], dp[i][j] + dist[i][i+1]);
-        dp[i][i+1] = std::min(dp[i][i+1], dp[i][j] + dist[j][i+1]);
+      if(i + 1 < n){
+        dp[i + 1][j] = std::min(dp[i + 1][j], dp[i][j] + dist[i][i + 1]);
+        dp[i][i + 1] = std::min(dp[i][i + 1], dp[i][j] + dist[j][i + 1]);
       }
-      if(j+1 < n){
-        dp[i][j+1] = std::min(dp[i][j+1], dp[i][j] + dist[j][j+1]);
-        dp[j+1][j] = std::min(dp[j+1][j], dp[i][j] + dist[i][j+1]);
+      if(j + 1 < n){
+        dp[i][j + 1] = std::min(dp[i][j + 1], dp[i][j] + dist[j][j + 1]);
+        dp[j + 1][j] = std::min(dp[j + 1][j], dp[i][j] + dist[i][j + 1]);
       }
     }
   }
 
-  return dp[n-1][n-1];
+  return dp[n - 1][n - 1];
 }
 
 ```
@@ -122,18 +122,18 @@ double bitonic_tour(int n, const std::vector<T> &x, const std::vector<T> &y){
   for(int i = 0; i < n; ++i){
     for(int j = 0; j < n; ++j){
       dp[i][i] = std::min(dp[i][i], dp[i][j] + dist[i][j]);
-      if(i+1 < n){
-        dp[i+1][j] = std::min(dp[i+1][j], dp[i][j] + dist[i][i+1]);
-        dp[i][i+1] = std::min(dp[i][i+1], dp[i][j] + dist[j][i+1]);
+      if(i + 1 < n){
+        dp[i + 1][j] = std::min(dp[i + 1][j], dp[i][j] + dist[i][i + 1]);
+        dp[i][i + 1] = std::min(dp[i][i + 1], dp[i][j] + dist[j][i + 1]);
       }
-      if(j+1 < n){
-        dp[i][j+1] = std::min(dp[i][j+1], dp[i][j] + dist[j][j+1]);
-        dp[j+1][j] = std::min(dp[j+1][j], dp[i][j] + dist[i][j+1]);
+      if(j + 1 < n){
+        dp[i][j + 1] = std::min(dp[i][j + 1], dp[i][j] + dist[j][j + 1]);
+        dp[j + 1][j] = std::min(dp[j + 1][j], dp[i][j] + dist[i][j + 1]);
       }
     }
   }
 
-  return dp[n-1][n-1];
+  return dp[n - 1][n - 1];
 }
 
 ```

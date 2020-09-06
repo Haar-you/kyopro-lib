@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Sliding window aggregation
+# :x: Sliding window aggregation
 
 <a href="../../../../index.html">Back to top page</a>
 
-* category: <a href="../../../../index.html#1d0203f9a0b34121f2fb0bb17b094d0f">Mylib/Algorithm/SlidingWindow</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+* category: <a href="../../../../index.html#6b1c73113eb1a95c1a861edccc8def0a">Mylib/DataStructure/Queue</a>
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Queue/sliding_window_aggregation.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
@@ -51,7 +51,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
 
 
 ## Code
@@ -69,16 +69,16 @@ layout: default
  * @docs sliding_window_aggregation.md
  */
 template <typename Semigroup>
-class SlidingWindowAggregation{
+class SlidingWindowAggregation {
   using value_type = typename Semigroup::value_type;
-  Semigroup S;
-  
+  const static Semigroup S;
+
   std::stack<value_type> front_stack, back_stack;
   std::vector<value_type> front_sum, back_sum;
 
   std::optional<value_type> f(std::optional<value_type> a, std::optional<value_type> b) const {
     if(a){
-      if(b) return {S.op(*a, *b)};
+      if(b) return {S(*a, *b)};
       else return {*a};
     }else{
       if(b) return {*b};
@@ -89,10 +89,10 @@ class SlidingWindowAggregation{
   std::optional<value_type> g(const std::vector<value_type> &a) const {
     return a.empty() ? std::nullopt : std::optional(a.back());
   }
-  
+
 public:
   SlidingWindowAggregation(){}
-  
+
   std::optional<value_type> fold() const {
     return f(g(front_sum), g(back_sum));
   }
@@ -124,7 +124,7 @@ public:
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp"
+#line 2 "Mylib/DataStructure/Queue/sliding_window_aggregation.cpp"
 #include <vector>
 #include <stack>
 #include <optional>
@@ -134,16 +134,16 @@ public:
  * @docs sliding_window_aggregation.md
  */
 template <typename Semigroup>
-class SlidingWindowAggregation{
+class SlidingWindowAggregation {
   using value_type = typename Semigroup::value_type;
-  Semigroup S;
-  
+  const static Semigroup S;
+
   std::stack<value_type> front_stack, back_stack;
   std::vector<value_type> front_sum, back_sum;
 
   std::optional<value_type> f(std::optional<value_type> a, std::optional<value_type> b) const {
     if(a){
-      if(b) return {S.op(*a, *b)};
+      if(b) return {S(*a, *b)};
       else return {*a};
     }else{
       if(b) return {*b};
@@ -154,10 +154,10 @@ class SlidingWindowAggregation{
   std::optional<value_type> g(const std::vector<value_type> &a) const {
     return a.empty() ? std::nullopt : std::optional(a.back());
   }
-  
+
 public:
   SlidingWindowAggregation(){}
-  
+
   std::optional<value_type> fold() const {
     return f(g(front_sum), g(back_sum));
   }

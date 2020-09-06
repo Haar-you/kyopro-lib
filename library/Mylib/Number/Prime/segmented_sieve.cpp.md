@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/segmented_sieve.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-12 00:49:52+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -60,13 +60,15 @@ layout: default
 ```cpp
 #pragma once
 #include <vector>
+#include <cstdint>
+#include <cassert>
 
 /**
  * @title Segmented sieve
  * @docs segmented_sieve.md
  */
 template <typename Checker>
-class SegmentedSieve{
+class SegmentedSieve {
   int L, R, D;
   std::vector<bool> data;
 
@@ -85,7 +87,7 @@ public:
         data[i] = false;
         continue;
       }
-      
+
       for(auto p : primes){
         if(x == p) break;
         if(x % p == 0){
@@ -110,13 +112,15 @@ public:
 ```cpp
 #line 2 "Mylib/Number/Prime/segmented_sieve.cpp"
 #include <vector>
+#include <cstdint>
+#include <cassert>
 
 /**
  * @title Segmented sieve
  * @docs segmented_sieve.md
  */
 template <typename Checker>
-class SegmentedSieve{
+class SegmentedSieve {
   int L, R, D;
   std::vector<bool> data;
 
@@ -135,7 +139,7 @@ public:
         data[i] = false;
         continue;
       }
-      
+
       for(auto p : primes){
         if(x == p) break;
         if(x % p == 0){

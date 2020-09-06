@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/0323/main.golden.test.cpp
+# :x: test/aoj/0323/main.golden.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#64b51258818892ff133e88d4c55d7a44">test/aoj/0323</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/0323/main.golden.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-02 06:41:29+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0323">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0323</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Search/golden_section_search_upwards.cpp.html">Golden section search (Convex upwards)</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/Search/golden_section_search_upwards.cpp.html">Golden section search (Convex upwards)</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 
 
 ## Code
@@ -58,20 +58,19 @@ layout: default
 #include "Mylib/Algorithm/Search/golden_section_search_upwards.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 
-
 int main(){
   int N; std::cin >> N;
 
   auto [x, r] = input_tuple_vector<int64_t, int64_t>(N);
 
-  std::vector<std::pair<int64_t,int>> p;
+  std::vector<std::pair<int64_t, int>> p;
   for(int i = 0; i < N; ++i){
     p.emplace_back(x[i] - r[i], -1);
     p.emplace_back(x[i] + r[i], 1);
   }
 
   std::sort(p.begin(), p.end());
-  
+
   double left = 0, right = 0;
 
   int c = 0;
@@ -79,7 +78,7 @@ int main(){
     if(c == N){
       right = a.first;
     }
-    
+
     c -= a.second;
 
     if(c == N){
@@ -90,7 +89,7 @@ int main(){
   auto f =
     [&](double p){
       double ret = 1e9;
-      
+
       for(int i = 0; i < N; ++i){
         double l = std::abs(x[i] - p);
         ret = std::min(ret, std::sqrt(r[i] * r[i] - l * l));
@@ -131,7 +130,7 @@ int main(){
 template <typename T = double, typename Func = std::function<T(T)>>
 T golden_section_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
   static const T phi = (1.0 + std::sqrt(5)) / 2;
-  
+
   T t1 = 0, t2 = 0;
 
   while(LOOP_COUNT--){
@@ -157,42 +156,41 @@ T golden_section_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100)
  * @docs input_tuple_vector.md
  */
 template <typename T, size_t ... I>
-void input_tuple_vector_init(T &val, int N, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0)...};
+void input_tuple_vector_init(T &val, int N, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0) ...};
 }
 
 template <typename T, size_t ... I>
-void input_tuple_vector_helper(T &val, int i, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0)...};
+void input_tuple_vector_helper(T &val, int i, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0) ...};
 }
 
 template <typename ... Args>
 auto input_tuple_vector(int N){
-  std::tuple<std::vector<Args>...> ret;
+  std::tuple<std::vector<Args> ...> ret;
 
-  input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof...(Args)>());
+  input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof ... (Args)>());
   for(int i = 0; i < N; ++i){
-    input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof...(Args)>());
+    input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof ... (Args)>());
   }
 
   return ret;
 }
 #line 10 "test/aoj/0323/main.golden.test.cpp"
 
-
 int main(){
   int N; std::cin >> N;
 
   auto [x, r] = input_tuple_vector<int64_t, int64_t>(N);
 
-  std::vector<std::pair<int64_t,int>> p;
+  std::vector<std::pair<int64_t, int>> p;
   for(int i = 0; i < N; ++i){
     p.emplace_back(x[i] - r[i], -1);
     p.emplace_back(x[i] + r[i], 1);
   }
 
   std::sort(p.begin(), p.end());
-  
+
   double left = 0, right = 0;
 
   int c = 0;
@@ -200,7 +198,7 @@ int main(){
     if(c == N){
       right = a.first;
     }
-    
+
     c -= a.second;
 
     if(c == N){
@@ -211,7 +209,7 @@ int main(){
   auto f =
     [&](double p){
       double ret = 1e9;
-      
+
       for(int i = 0; i < N; ++i){
         double l = std::abs(x[i] - p);
         ret = std::min(ret, std::sqrt(r[i] * r[i] - l * l));

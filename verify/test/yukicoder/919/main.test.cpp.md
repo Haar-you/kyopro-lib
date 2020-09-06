@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/919/main.test.cpp
+# :x: test/yukicoder/919/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#04b116a81dfc7c00cb5f1e4f7226b8d9">test/yukicoder/919</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/919/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/919">https://yukicoder.me/problems/no/919</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">Succinct dictionary</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Wavelet matrix</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">Succinct dictionary</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Wavelet matrix</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -55,7 +55,6 @@ layout: default
 #include <vector>
 #include <algorithm>
 #include <climits>
-
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
@@ -79,19 +78,19 @@ int main(){
     left.push_back(0);
     right.push_back(0);
 
-    for(int i = 0; i+k <= N; i += k){
-      left.push_back((int)*wm.quantile(i, i+k, (k+1)/2) - H);
-    }
-    
-    for(int i = N; i-k >= 0; i -= k){
-      right.push_back((int)*wm.quantile(i-k, i, (k+1)/2) - H);
+    for(int i = 0; i + k <= N; i += k){
+      left.push_back((int)*wm.quantile(i, i + k, (k + 1) / 2) - H);
     }
 
+    for(int i = N; i - k >= 0; i -= k){
+      right.push_back((int)*wm.quantile(i - k, i, (k + 1) / 2) - H);
+    }
 
-    for(int i = 1; i < (int)left.size(); ++i) left[i] += left[i-1];
-    for(int i = 1; i < (int)right.size(); ++i) right[i] += right[i-1];
 
-    for(int i = 1; i < (int)right.size(); ++i) right[i] = std::max(right[i], right[i-1]);
+    for(int i = 1; i < (int)left.size(); ++i) left[i] += left[i - 1];
+    for(int i = 1; i < (int)right.size(); ++i) right[i] += right[i - 1];
+
+    for(int i = 1; i < (int)right.size(); ++i) right[i] = std::max(right[i], right[i - 1]);
 
     for(int i = 0; i < (int)left.size(); ++i){
       ans = std::max(ans, (left[i] + right.back()) * k);
@@ -118,20 +117,19 @@ int main(){
 #include <vector>
 #include <algorithm>
 #include <climits>
-
 #line 3 "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 #include <utility>
 #include <tuple>
 #include <cassert>
 #include <optional>
 #include <queue>
-#line 4 "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
+#line 5 "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
 
 /**
  * @title Succinct dictionary
  * @docs succinct_dictionary.md
  */
-struct SuccinctDict{
+struct SuccinctDict {
   int N;
 
   static const int chunk_size = 256;
@@ -158,28 +156,28 @@ struct SuccinctDict{
         data[block_index] |= (1LL << index);
       }
     }
-    
-    chunks.assign(chunk_num+1, 0);
-    blocks.assign(chunk_num+1, std::vector<uint8_t>(block_num, 0));
+
+    chunks.assign(chunk_num + 1, 0);
+    blocks.assign(chunk_num + 1, std::vector<uint8_t>(block_num, 0));
 
     for(int i = 0; i < chunk_num; ++i){
-      for(int j = 0; j < block_num-1; ++j){
-        blocks[i][j+1] = blocks[i][j] + __builtin_popcountll(data[i*block_num+j]);
+      for(int j = 0; j < block_num - 1; ++j){
+        blocks[i][j + 1] = blocks[i][j] + __builtin_popcountll(data[i * block_num + j]);
       }
 
-      chunks[i+1] = chunks[i] + blocks[i][block_num-1] + __builtin_popcountll(data[(i+1)*block_num-1]);
+      chunks[i + 1] = chunks[i] + blocks[i][block_num - 1] + __builtin_popcountll(data[(i + 1) * block_num - 1]);
     }
   }
 
   /**
-   * @return [0,index)のbの個数
+   * @return [0, index)のbの個数
    */
   int rank(int index, int b) const {
     if(b == 0){
       return index - rank(index, 1);
     }else{
       if(index > N) index = N;
-      
+
       const int chunk_pos = index / chunk_size;
       const int block_pos = (index % chunk_size) / block_size;
 
@@ -193,7 +191,7 @@ struct SuccinctDict{
       return ret;
     }
   }
-  
+
   /**
    * @return [l, r)のbの個数
    */
@@ -214,13 +212,13 @@ struct SuccinctDict{
    */
   std::optional<int> select(int n, int b) const {
     assert(n >= 1);
-    
+
     if(rank(N, b) < n) return {};
 
     int lb = -1, ub = N;
-    while(abs(lb-ub) > 1){
-      int mid = (lb+ub) / 2;
-      
+    while(abs(lb - ub) > 1){
+      int mid = (lb + ub) / 2;
+
       if(rank(mid, b) >= n){
         ub = mid;
       }else{
@@ -238,7 +236,7 @@ struct SuccinctDict{
  * @docs wavelet_matrix.md
  */
 template <typename T, int B>
-class WaveletMatrix{
+class WaveletMatrix {
 public:
   const int N;
 
@@ -252,7 +250,7 @@ public:
       std::vector<T> left, right;
 
       for(int i = 0; i < N; ++i){
-        s[i] = (data[i] >> (B-1-k)) & 1;
+        s[i] = (data[i] >> (B - 1 - k)) & 1;
         if(s[i]){
           right.push_back(data[i]);
         }else{
@@ -278,18 +276,18 @@ public:
     int p = index;
     for(int i = 0; i < B; ++i){
       int t = sdict[i].access(p);
-      ret |= ((T)t << (B-1-i));
+      ret |= ((T)t << (B - 1 - i));
       p = sdict[i].rank(p, t) + t * zero_pos[i];
     }
-    
+
     return ret;
   }
 
-  std::pair<int,int> rank_aux(int index, const T &val){
+  std::pair<int, int> rank_aux(int index, const T &val){
     int l = 0, r = index;
 
     for(int i = 0; i < B; ++i){
-      int t = (val >> (B-i-1)) & 1;
+      int t = (val >> (B - i - 1)) & 1;
       l = sdict[i].rank(l, t) + t * zero_pos[i];
       r = sdict[i].rank(r, t) + t * zero_pos[i];
     }
@@ -303,7 +301,7 @@ public:
   int rank(int index, const T &val){
     auto [l, r] = rank_aux(index, val);
     return r - l;
-  }  
+  }
 
   /*
    * @return data[l, r)に含まれるvalの個数
@@ -318,20 +316,20 @@ public:
    */
   std::optional<int> select(int count, const T &val){
     assert(1 <= count);
-    
+
     auto [l, r] = rank_aux(N, val);
     if(r - l < count) return {};
 
     int p = l + count - 1;
 
-    for(int i = B-1; i >= 0; --i){
-      int t = (val >> (B-i-1)) & 1;
+    for(int i = B - 1; i >= 0; --i){
+      int t = (val >> (B - i - 1)) & 1;
       p = *sdict[i].select(p - t * zero_pos[i] + 1, t);
     }
-    
+
     return {p};
   }
-  
+
   /**
    * @return data[l, r)でk(1-index)番目に小さい値
    */
@@ -349,20 +347,20 @@ public:
 
       if(k > count_0){
         t = 1;
-        ret |= ((T)t << (B-i-1));
+        ret |= ((T)t << (B - i - 1));
         k -= count_0;
       }
-      
+
       l = sdict[i].rank(l, t) + t * zero_pos[i];
       r = sdict[i].rank(r, t) + t * zero_pos[i];
     }
-    
+
     return {ret};
   }
 
   T maximum(int l, int r){
     assert(l < r);
-    return *quantile(l, r, r-l);
+    return *quantile(l, r, r - l);
   }
 
   T minimum(int l, int r){
@@ -375,9 +373,9 @@ public:
    */
   std::optional<T> next_value(int l, int r, T lb){
     int c = range_freq_lt(l, r, lb);
-    return quantile(l, r, c+1);
+    return quantile(l, r, c + 1);
   }
-  
+
   /**
    * @return data[l, r)のub未満で最大の値
    */
@@ -390,7 +388,7 @@ public:
     int ret = 0;
 
     for(int i = 0; i < B; ++i){
-      int t = (ub >> (B-i-1)) & 1;
+      int t = (ub >> (B - i - 1)) & 1;
 
       if(t){
         ret += sdict[i].count(l, r, 0);
@@ -399,7 +397,7 @@ public:
       l = sdict[i].rank(l, t) + t * zero_pos[i];
       r = sdict[i].rank(r, t) + t * zero_pos[i];
     }
-    
+
     return ret;
   }
 
@@ -415,7 +413,7 @@ public:
    */
   auto range_freq_list(int l, int r, T lb, T ub){
     std::vector<std::pair<int, T>> ret;
-    std::queue<std::tuple<int,int,int,T>> q;
+    std::queue<std::tuple<int, int, int, T>> q;
 
     q.emplace(l, r, 0, 0);
 
@@ -424,19 +422,19 @@ public:
 
       if(d == B){
         if(lb <= val and val < ub){
-          ret.emplace_back(r-l, val);
+          ret.emplace_back(r - l, val);
         }
         continue;
       }
 
-      const T mask = ~(T)0 ^ (((T)1 << (B-d))-1);
-      const T b = (T)1 << (B-d-1);
+      const T mask = ~(T)0 ^ (((T)1 << (B - d)) - 1);
+      const T b = (T)1 << (B - d - 1);
 
       if(sdict[d].count(l, r, 0) != 0){
         if(val != (lb & mask) or not (lb & b)){
           int L = sdict[d].rank(l, 0);
           int R = sdict[d].rank(r, 0);
-          q.emplace(L, R, d+1, val);
+          q.emplace(L, R, d + 1, val);
         }
       }
 
@@ -444,22 +442,22 @@ public:
         if(val != (ub & mask) or (ub & b)){
           int L = sdict[d].rank(l, 1) + zero_pos[d];
           int R = sdict[d].rank(r, 1) + zero_pos[d];
-          q.emplace(L, R, d+1, val | b);
+          q.emplace(L, R, d + 1, val | b);
         }
       }
     }
-    
+
     return ret;
   }
-  
+
   /**
    * @return data[l, r)で出現頻度が高い順にk個を返す
    */
   auto top_k(int l, int r, int k) const {
-    std::priority_queue<std::tuple<int,int,int,int,T>> q;
-    std::vector<std::pair<int,T>> ret;
+    std::priority_queue<std::tuple<int, int, int, int, T>> q;
+    std::vector<std::pair<int, T>> ret;
 
-    q.emplace(r-l, l, r, 0, 0);
+    q.emplace(r - l, l, r, 0, 0);
 
     while(not q.empty()){
       auto [len, l, r, d, val] = q.top(); q.pop();
@@ -469,25 +467,25 @@ public:
         if((int)ret.size() >= k) break;
         continue;
       }
-      
+
       if(sdict[d].count(l, r, 0) != 0){
         int L = sdict[d].rank(l, 0);
         int R = sdict[d].rank(r, 0);
-        q.emplace(R-L, L, R, d+1, val);
+        q.emplace(R - L, L, R, d + 1, val);
       }
-      
+
       if(sdict[d].count(l, r, 1) != 0){
         int L = sdict[d].rank(l, 1) + zero_pos[d];
         int R = sdict[d].rank(r, 1) + zero_pos[d];
-        q.emplace(R-L, L, R, d+1, val | ((T)1 << (B-d-1)));
+        q.emplace(R - L, L, R, d + 1, val | ((T)1 << (B - d - 1)));
       }
     }
-    
+
     return ret;
   }
 };
 
-WaveletMatrix<uint32_t,32> make_wavelet_matrix_int(const std::vector<uint32_t> &data){
+WaveletMatrix<uint32_t, 32> make_wavelet_matrix_int(const std::vector<uint32_t> &data){
   return WaveletMatrix<uint32_t, 32>(data);
 }
 #line 4 "Mylib/IO/input_vector.cpp"
@@ -508,7 +506,7 @@ std::vector<std::vector<T>> input_vector(int N, int M){
   for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
   return ret;
 }
-#line 10 "test/yukicoder/919/main.test.cpp"
+#line 9 "test/yukicoder/919/main.test.cpp"
 
 const int H = 1000000000;
 
@@ -530,19 +528,19 @@ int main(){
     left.push_back(0);
     right.push_back(0);
 
-    for(int i = 0; i+k <= N; i += k){
-      left.push_back((int)*wm.quantile(i, i+k, (k+1)/2) - H);
-    }
-    
-    for(int i = N; i-k >= 0; i -= k){
-      right.push_back((int)*wm.quantile(i-k, i, (k+1)/2) - H);
+    for(int i = 0; i + k <= N; i += k){
+      left.push_back((int)*wm.quantile(i, i + k, (k + 1) / 2) - H);
     }
 
+    for(int i = N; i - k >= 0; i -= k){
+      right.push_back((int)*wm.quantile(i - k, i, (k + 1) / 2) - H);
+    }
 
-    for(int i = 1; i < (int)left.size(); ++i) left[i] += left[i-1];
-    for(int i = 1; i < (int)right.size(); ++i) right[i] += right[i-1];
 
-    for(int i = 1; i < (int)right.size(); ++i) right[i] = std::max(right[i], right[i-1]);
+    for(int i = 1; i < (int)left.size(); ++i) left[i] += left[i - 1];
+    for(int i = 1; i < (int)right.size(); ++i) right[i] += right[i - 1];
+
+    for(int i = 1; i < (int)right.size(); ++i) right[i] = std::max(right[i], right[i - 1]);
 
     for(int i = 0; i < (int)left.size(); ++i){
       ans = std::max(ans, (left[i] + right.back()) * k);

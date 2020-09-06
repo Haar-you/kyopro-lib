@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mo's algorithm
+# :x: Mo's algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1534504632931a6652ca965283803a2e">Mylib/Algorithm/Mo</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Mo/mo_algorithm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-03 23:59:26+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -74,12 +74,12 @@ layout: default
 
 ## Required by
 
-* :heavy_check_mark: <a href="../Query/range_inversions_query.cpp.html">Range inversions query</a>
+* :x: <a href="../Query/range_inversions_query.cpp.html">Range inversions query</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/static_range_inversions_query/main.test.cpp.html">test/yosupo-judge/static_range_inversions_query/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/static_range_inversions_query/main.test.cpp.html">test/yosupo-judge/static_range_inversions_query/main.test.cpp</a>
 
 
 ## Code
@@ -98,7 +98,7 @@ layout: default
  * @docs mo_algorithm.md
  */
 template <typename F, typename G, typename H>
-class MoAlgorithm{
+class MoAlgorithm {
   int N, Q, index, width;
   std::vector<int> left, right, ord;
 
@@ -146,10 +146,10 @@ public:
 
   void run(){
     assert(is_built);
-    
+
     int q = 0;
     int l = left[ord[0]], r = left[ord[0]];
-    
+
     for(int i = 0; i < Q; ++i){
       int id = ord[q++];
 
@@ -187,7 +187,7 @@ auto make_mo(int N, int Q, F append, G remove, H query){
  * @docs mo_algorithm.md
  */
 template <typename F, typename G, typename H>
-class MoAlgorithm{
+class MoAlgorithm {
   int N, Q, index, width;
   std::vector<int> left, right, ord;
 
@@ -235,10 +235,10 @@ public:
 
   void run(){
     assert(is_built);
-    
+
     int q = 0;
     int l = left[ord[0]], r = left[ord[0]];
-    
+
     for(int i = 0; i < Q; ++i){
       int id = ord[q++];
 

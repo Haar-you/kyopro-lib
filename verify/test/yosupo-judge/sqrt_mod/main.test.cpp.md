@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/sqrt_mod/main.test.cpp
+# :x: test/yosupo-judge/sqrt_mod/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0a1953e1c2bd6e0f6d5a522af5f0929c">test/yosupo-judge/sqrt_mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/sqrt_mod/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/sqrt_mod">https://judge.yosupo.jp/problem/sqrt_mod</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
-* :question: <a href="../../../../library/Mylib/Number/Mod/mod_sqrt.cpp.html">Mod sqrt</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
+* :x: <a href="../../../../library/Mylib/Number/Mod/mod_sqrt.cpp.html">Mod sqrt</a>
 
 
 ## Code
@@ -81,6 +81,7 @@ int main(){
 #include <random>
 #include <optional>
 #line 2 "Mylib/Number/Mod/mod_power.cpp"
+#include <cstdint>
 
 /**
  * @title Mod power
@@ -104,11 +105,11 @@ int64_t power(int64_t n, int64_t p, int64_t m){
 std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
   if(p == 2) return a % 2;
   if(a == 0) return 0;
-  
-  int64_t b = power(a, (p-1) / 2, p);
 
-  if(b == p-1) return {};
-  if(p % 4 == 3) return power(a, (p+1) / 4, p);
+  int64_t b = power(a, (p - 1) / 2, p);
+
+  if(b == p - 1) return {};
+  if(p % 4 == 3) return power(a, (p + 1) / 4, p);
 
   int64_t q = p - 1, s = 0;
   while(q % 2 == 0){
@@ -117,18 +118,18 @@ std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
   }
 
   static std::mt19937_64 rand(time(0));
-  std::uniform_int_distribution<> dist(0, p-1);
+  std::uniform_int_distribution<> dist(0, p - 1);
 
   int64_t z;
   while(1){
     z = dist(rand);
-    if(power(z, (p-1) / 2, p) == p - 1) break;
+    if(power(z, (p - 1) / 2, p) == p - 1) break;
   }
-  
+
   int64_t m = s;
   int64_t c = power(z, q, p);
   int64_t t = power(a, q, p);
-  int64_t r = power(a, (q+1) / 2, p);
+  int64_t r = power(a, (q + 1) / 2, p);
 
   while(1){
     if(t == 0) return 0;
@@ -139,8 +140,8 @@ std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
       (T *= T) %= p;
       if(T == 1) break;
     }
-    
-    int64_t b = power(c, 1LL << (m-i-1), p);
+
+    int64_t b = power(c, 1LL << (m - i - 1), p);
 
     m = i;
     c = b * b % p;
@@ -159,8 +160,8 @@ std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -170,8 +171,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -180,8 +181,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;

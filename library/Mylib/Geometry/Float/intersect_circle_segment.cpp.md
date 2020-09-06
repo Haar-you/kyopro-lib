@@ -25,31 +25,31 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Intersection between a circle and a segment
+# :x: Intersection between a circle and a segment
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#090220fbd726178f7b9d402d3ae3f683">Mylib/Geometry/Float</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Geometry/Float/intersect_circle_segment.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="distance_segment_point.cpp.html">Distance between a segment and a point</a>
-* :heavy_check_mark: <a href="geometry_template.cpp.html">Geometry template</a>
+* :x: <a href="distance_segment_point.cpp.html">Distance between a segment and a point</a>
+* :x: <a href="geometry_template.cpp.html">Geometry template</a>
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="area_intersection_of_circle_and_polygon.cpp.html">Area of intersection between a circle and a polygon</a>
+* :x: <a href="area_intersection_of_circle_and_polygon.cpp.html">Area of intersection between a circle and a polygon</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
 
 
 ## Code
@@ -66,8 +66,8 @@ layout: default
  * @title Intersection between a circle and a segment
  * @docs intersect_circle_segment.md
  */
-namespace intersect_circle_segment{
-  enum Status{
+namespace intersect_circle_segment {
+  enum Status {
               INSIDE         = 0b00001,
               OUTSIDE        = 0b00010,
               TANGENT        = 0b00100,
@@ -76,7 +76,7 @@ namespace intersect_circle_segment{
   };
 
   template <typename T>
-  struct Result{
+  struct Result {
     Status status;
     std::vector<Point<T>> crosspoints;
   };
@@ -89,7 +89,7 @@ namespace intersect_circle_segment{
     const T d1 = abs(c - s.from);
     const T d2 = abs(c - s.to);
     const T v = distance_segment_point(s, c);
-    const T m = sqrt(r*r - v*v);
+    const T m = sqrt(r * r - v * v);
     const auto n = normal(s);
     const auto k = s.from + diff(s) * cross(n, c + n - s.from) / cross(n, diff(s));
 
@@ -107,10 +107,10 @@ namespace intersect_circle_segment{
     }
 
     const T b = dot(unit(s), s.from - c);
-    const T a = abs_sq(s.from - c) - r*r;
-    const T x = sqrt(b*b - a);
+    const T a = abs_sq(s.from - c) - r * r;
+    const T x = sqrt(b * b - a);
 
-    return Result<T>({ONE_CROSSPOINT, {s.from + unit(s) * (-b-x >= 0 ? -b-x : -b+x)}});
+    return Result<T>({ONE_CROSSPOINT, {s.from + unit(s) * (-b - x >= 0 ? -b - x : -b + x)}});
   }
 };
 
@@ -133,7 +133,7 @@ namespace intersect_circle_segment{
  */
 
 template <typename T>
-struct Vec{
+struct Vec {
   T x, y;
   Vec(){}
   Vec(T x, T y): x(x), y(y){}
@@ -143,11 +143,11 @@ struct Vec{
   friend auto operator-(const Vec &a){return Vec(-a.x, -a.y);}
 
   friend bool operator==(const Vec &a, const Vec &b){return a.x == b.x and a.y == b.y;}
-  friend bool operator!=(const Vec &a, const Vec &b){return !(a==b);}
+  friend bool operator!=(const Vec &a, const Vec &b){return !(a == b);}
   friend bool operator<(const Vec &a, const Vec &b){return a.x < b.x or (a.x == b.x and a.y < b.y);}
-  
+
   friend std::istream& operator>>(std::istream &s, Vec &a){
-    s >> a.x >> a.y; return s;
+    s >> a.x  >> a.y; return s;
   }
 };
 
@@ -181,7 +181,7 @@ T angle_diff(const Vec<T> &a, const Vec<T> &b){
 }
 
 
-template <typename T> struct Line{
+template <typename T> struct Line {
   Point<T> from, to;
   Line(): from(), to(){}
   Line(const Point<T> &from, const Point<T> &to): from(from), to(to){}
@@ -203,7 +203,7 @@ template <typename T> T cross(const Line<T> &a, const Line<T> &b){return cross(d
 
 template <typename T> using Polygon = std::vector<Point<T>>;
 
-template <typename T> struct Circle{
+template <typename T> struct Circle {
   Point<T> center;
   T radius;
   Circle(): center(), radius(0){}
@@ -227,8 +227,8 @@ T distance_segment_point(const Segment<T> &l, const Point<T> &p){
  * @title Intersection between a circle and a segment
  * @docs intersect_circle_segment.md
  */
-namespace intersect_circle_segment{
-  enum Status{
+namespace intersect_circle_segment {
+  enum Status {
               INSIDE         = 0b00001,
               OUTSIDE        = 0b00010,
               TANGENT        = 0b00100,
@@ -237,7 +237,7 @@ namespace intersect_circle_segment{
   };
 
   template <typename T>
-  struct Result{
+  struct Result {
     Status status;
     std::vector<Point<T>> crosspoints;
   };
@@ -250,7 +250,7 @@ namespace intersect_circle_segment{
     const T d1 = abs(c - s.from);
     const T d2 = abs(c - s.to);
     const T v = distance_segment_point(s, c);
-    const T m = sqrt(r*r - v*v);
+    const T m = sqrt(r * r - v * v);
     const auto n = normal(s);
     const auto k = s.from + diff(s) * cross(n, c + n - s.from) / cross(n, diff(s));
 
@@ -268,10 +268,10 @@ namespace intersect_circle_segment{
     }
 
     const T b = dot(unit(s), s.from - c);
-    const T a = abs_sq(s.from - c) - r*r;
-    const T x = sqrt(b*b - a);
+    const T a = abs_sq(s.from - c) - r * r;
+    const T x = sqrt(b * b - a);
 
-    return Result<T>({ONE_CROSSPOINT, {s.from + unit(s) * (-b-x >= 0 ? -b-x : -b+x)}});
+    return Result<T>({ONE_CROSSPOINT, {s.from + unit(s) * (-b - x >= 0 ? -b - x : -b + x)}});
   }
 };
 

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/2401/main.test.cpp
+# :x: test/aoj/2401/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1d3efd405c3cf87c1a3243dd8aba3849">test/aoj/2401</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2401/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2401">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2401</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Parser/parser.cpp.html">Parsing</a>
+* :x: <a href="../../../../library/Mylib/Parser/parser.cpp.html">Parsing</a>
 
 
 ## Code
@@ -53,7 +53,7 @@ layout: default
 #include <string>
 #include "Mylib/Parser/parser.cpp"
 
-struct parser : Parser{
+struct parser : Parser {
   parser(const std::string &s): Parser(s){}
 
   bool constant(){
@@ -61,7 +61,7 @@ struct parser : Parser{
     ignore();
     return ret;
   }
-  
+
   bool negate(){
     ignore('-');
     return !expression();
@@ -70,7 +70,7 @@ struct parser : Parser{
   std::string get_op(){
     if(check_and_ignore('*')) return "*";
     if(check_and_ignore('+')) return "+";
-    ignore("->"); return "->";    
+    ignore("->"); return "->";
   }
 
   bool term(){
@@ -102,22 +102,22 @@ struct parser : Parser{
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   std::string s;
   while(std::cin >> s){
     if(s == "#") break;
 
     bool ans = true;
 
-    for(int i = 0; i < 1<<11; ++i){
+    for(int i = 0; i < 1 << 11; ++i){
       std::string t(s);
-      
+
       for(auto &ch : t){
         if(ch >= 'a' and ch <= 'k'){
           ch = i & (1 << (ch-'a')) ? 'T' : 'F';
         }
       }
-      
+
       ans = ans and parser(t).run();
     }
 
@@ -138,29 +138,27 @@ int main(){
 
 #include <iostream>
 #include <string>
-#line 2 "Mylib/Parser/parser.cpp"
-
-#line 4 "Mylib/Parser/parser.cpp"
+#line 3 "Mylib/Parser/parser.cpp"
 #include <cassert>
 
 /**
  * @title Parsing
  * @docs parser.md
  */
-struct Parser{
+struct Parser {
   using state = std::string::const_iterator;
-  
+
   state cur, first, last;
 
   Parser(){}
   Parser(const std::string &s): cur(s.cbegin()), first(s.cbegin()), last(s.cend()){}
-  
+
   char peek() const {return *cur;}
-  
+
   bool check(char c) const {
     return *cur == c;
   }
-  
+
   bool check(const std::string &s) const {
     state temp = cur;
     for(auto c : s){
@@ -169,23 +167,23 @@ struct Parser{
     }
     return true;
   }
-  
+
   void ignore(char c){
     assert(*cur == c);
     ++cur;
   }
-  
+
   void ignore(){
     ++cur;
   }
-  
+
   void ignore(const std::string &s){
     for(auto c : s){
       assert(*cur == c);
       ++cur;
     }
   }
-  
+
   template <class Checker>
   void ignore_if(const Checker &f){
     assert(f(*cur));
@@ -203,15 +201,15 @@ struct Parser{
   bool alpha() const {return isalpha(*cur);}
   bool lower() const {return islower(*cur);}
   bool upper() const {return isupper(*cur);}
-    
+
   char get_char(){
     return *(cur++);
   }
-  
+
   int get_digit(){
-    return (int)(*(cur++)-'0');
+    return (int)(*(cur++) - '0');
   }
-  
+
   template <typename Checker>
   auto get_string(const Checker &f){
     std::string ret;
@@ -221,7 +219,7 @@ struct Parser{
     }
     return ret;
   }
-  
+
   auto get_string_alpha(){
     std::string ret;
     while(isalpha(*cur)){
@@ -230,7 +228,7 @@ struct Parser{
     }
     return ret;
   }
-  
+
   auto get_string_alnum(){
     std::string ret;
     while(isalnum(*cur)){
@@ -239,7 +237,7 @@ struct Parser{
     }
     return ret;
   }
-  
+
   template <typename T>
   T get_number(){
     T ret = get_digit();
@@ -251,7 +249,7 @@ struct Parser{
 };
 #line 6 "test/aoj/2401/main.test.cpp"
 
-struct parser : Parser{
+struct parser : Parser {
   parser(const std::string &s): Parser(s){}
 
   bool constant(){
@@ -259,7 +257,7 @@ struct parser : Parser{
     ignore();
     return ret;
   }
-  
+
   bool negate(){
     ignore('-');
     return !expression();
@@ -268,7 +266,7 @@ struct parser : Parser{
   std::string get_op(){
     if(check_and_ignore('*')) return "*";
     if(check_and_ignore('+')) return "+";
-    ignore("->"); return "->";    
+    ignore("->"); return "->";
   }
 
   bool term(){
@@ -300,22 +298,22 @@ struct parser : Parser{
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   std::string s;
   while(std::cin >> s){
     if(s == "#") break;
 
     bool ans = true;
 
-    for(int i = 0; i < 1<<11; ++i){
+    for(int i = 0; i < 1 << 11; ++i){
       std::string t(s);
-      
+
       for(auto &ch : t){
         if(ch >= 'a' and ch <= 'k'){
           ch = i & (1 << (ch-'a')) ? 'T' : 'F';
         }
       }
-      
+
       ans = ans and parser(t).run();
     }
 

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Mylib/AlgebraicStructure/Monoid/maybe.cpp
+# :x: Maybe monoid
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/maybe.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-12 08:15:26+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -50,17 +50,19 @@ layout: default
 #include <optional>
 
 /**
+ * @title Maybe monoid
  * @docs maybe.md
  */
 template <typename Semigroup>
-struct MaybeMonoid{
+struct MaybeMonoid {
   using value_type = std::optional<typename Semigroup::value_type>;
-  
-  static value_type id(){return {};}
-  static value_type op(const value_type &a, const value_type &b){
+  const static Semigroup S;
+
+  value_type operator()() const {return std::nullopt;}
+  value_type operator()(const value_type &a, const value_type &b) const {
     if(not a) return b;
     if(not b) return a;
-    return {Semigroup::op(*a, *b)};
+    return {S(*a, *b)};
   }
 };
 
@@ -74,17 +76,19 @@ struct MaybeMonoid{
 #include <optional>
 
 /**
+ * @title Maybe monoid
  * @docs maybe.md
  */
 template <typename Semigroup>
-struct MaybeMonoid{
+struct MaybeMonoid {
   using value_type = std::optional<typename Semigroup::value_type>;
-  
-  static value_type id(){return {};}
-  static value_type op(const value_type &a, const value_type &b){
+  const static Semigroup S;
+
+  value_type operator()() const {return std::nullopt;}
+  value_type operator()(const value_type &a, const value_type &b) const {
     if(not a) return b;
     if(not b) return a;
-    return {Semigroup::op(*a, *b)};
+    return {S(*a, *b)};
   }
 };
 

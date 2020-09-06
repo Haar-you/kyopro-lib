@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/ALDS1_14_B/main.kmp.test.cpp
+# :x: test/aoj/ALDS1_14_B/main.kmp.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6ed7f5103dd44c87e247853bfe87329e">test/aoj/ALDS1_14_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_14_B/main.kmp.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-23 16:43:16+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/knuth_morris_pratt.cpp.html">Knuth-Morris-Pratt algorithm</a>
+* :x: <a href="../../../../library/Mylib/String/knuth_morris_pratt.cpp.html">Knuth-Morris-Pratt algorithm</a>
 
 
 ## Code
@@ -58,7 +58,7 @@ int main(){
 
   auto res = KMP(p).match(t);
   for(auto i : res) std::cout << i << "\n";
-  
+
   return 0;
 }
 
@@ -76,12 +76,13 @@ int main(){
 #line 2 "Mylib/String/knuth_morris_pratt.cpp"
 #include <vector>
 #line 4 "Mylib/String/knuth_morris_pratt.cpp"
+#include <string_view>
 
 /**
  * @title Knuth-Morris-Pratt algorithm
  * @docs knuth_morris_pratt.md
  */
-struct KMP{
+struct KMP {
   int M;
   std::string pattern;
   std::vector<int> table;
@@ -106,7 +107,7 @@ struct KMP{
     }
   }
 
-  std::vector<int> match(std::string s) const {
+  std::vector<int> match(const std::string_view &s) const {
     std::vector<int> ret;
     const int N = s.size();
 
@@ -134,7 +135,7 @@ int main(){
 
   auto res = KMP(p).match(t);
   for(auto i : res) std::cout << i << "\n";
-  
+
   return 0;
 }
 

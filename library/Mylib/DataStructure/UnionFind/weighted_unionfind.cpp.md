@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Weighted union-find
+# :x: Weighted union-find
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3ff74e8366c88d06b530f361450b1117">Mylib/DataStructure/UnionFind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/UnionFind/weighted_unionfind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-06 22:54:09+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -45,7 +45,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_1_B/main.test.cpp.html">test/aoj/DSL_1_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_1_B/main.test.cpp.html">test/aoj/DSL_1_B/main.test.cpp</a>
 
 
 ## Code
@@ -61,32 +61,32 @@ layout: default
  * @title Weighted union-find
  * @docs weighted_unionfind.md
  */
-
-template <typename T> class WeightedUnionFind{
+template <typename T>
+class WeightedUnionFind {
   std::vector<int> parent, depth, size;
   std::vector<T> weight;
   int count;
 
 public:
-  WeightedUnionFind(int n): parent(n), depth(n,1), size(n,1), weight(n,0){
-    std::iota(parent.begin(), parent.end(),0);
+  WeightedUnionFind(int n): parent(n), depth(n, 1), size(n, 1), weight(n, 0){
+    std::iota(parent.begin(), parent.end(), 0);
   }
-  
+
   int root_of(int i){
     if(parent[i] == i) return i;
     else {
-      int p = root_of(parent[i]);
+      const int p = root_of(parent[i]);
       weight[i] += weight[parent[i]];
       return parent[i] = p;
     }
   }
 
-  T weight_of(int i){root_of(i); return weight[i];} 
+  T weight_of(int i){root_of(i); return weight[i];}
   bool is_same(int i, int j){return root_of(i) == root_of(j);}
   T diff(int i, int j){return weight_of(i) - weight_of(j);}
-  
+
   int merge(int i, int j, T w){
-    int ri = root_of(i), rj = root_of(j);
+    const int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return ri;
     else{
       if(depth[ri] < depth[rj]){
@@ -99,7 +99,7 @@ public:
       }
     }
   }
-  
+
   int size_of(int i){return size[root_of(i)];}
   int count_group(){return count;}
 };
@@ -118,32 +118,32 @@ public:
  * @title Weighted union-find
  * @docs weighted_unionfind.md
  */
-
-template <typename T> class WeightedUnionFind{
+template <typename T>
+class WeightedUnionFind {
   std::vector<int> parent, depth, size;
   std::vector<T> weight;
   int count;
 
 public:
-  WeightedUnionFind(int n): parent(n), depth(n,1), size(n,1), weight(n,0){
-    std::iota(parent.begin(), parent.end(),0);
+  WeightedUnionFind(int n): parent(n), depth(n, 1), size(n, 1), weight(n, 0){
+    std::iota(parent.begin(), parent.end(), 0);
   }
-  
+
   int root_of(int i){
     if(parent[i] == i) return i;
     else {
-      int p = root_of(parent[i]);
+      const int p = root_of(parent[i]);
       weight[i] += weight[parent[i]];
       return parent[i] = p;
     }
   }
 
-  T weight_of(int i){root_of(i); return weight[i];} 
+  T weight_of(int i){root_of(i); return weight[i];}
   bool is_same(int i, int j){return root_of(i) == root_of(j);}
   T diff(int i, int j){return weight_of(i) - weight_of(j);}
-  
+
   int merge(int i, int j, T w){
-    int ri = root_of(i), rj = root_of(j);
+    const int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return ri;
     else{
       if(depth[ri] < depth[rj]){
@@ -156,7 +156,7 @@ public:
       }
     }
   }
-  
+
   int size_of(int i){return size[root_of(i)];}
   int count_group(){return count;}
 };

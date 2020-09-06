@@ -25,37 +25,37 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :question: Number theoretic transform
+# :x: Number theoretic transform
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/ntt_convolution.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-21 11:48:40+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../Number/Mint/mint.cpp.html">Modint</a>
+* :x: <a href="../Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/bernoulli_number/main.test.cpp.html">test/yosupo-judge/bernoulli_number/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/convolution_mod/main.test.cpp.html">test/yosupo-judge/convolution_mod/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/convolution_mod_1000000007/main.test.cpp.html">test/yosupo-judge/convolution_mod_1000000007/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/exp_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/exp_of_formal_power_series/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/inv_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/inv_of_formal_power_series/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/log_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/log_of_formal_power_series/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/partition_function/main.fps.test.cpp.html">test/yosupo-judge/partition_function/main.fps.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/polynomial_taylor_shift/main.test.cpp.html">test/yosupo-judge/polynomial_taylor_shift/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/pow_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/pow_of_formal_power_series/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/sharp_p_subset_sum/main.test.cpp.html">test/yosupo-judge/sharp_p_subset_sum/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/bernoulli_number/main.test.cpp.html">test/yosupo-judge/bernoulli_number/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/convolution_mod/main.test.cpp.html">test/yosupo-judge/convolution_mod/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/convolution_mod_1000000007/main.test.cpp.html">test/yosupo-judge/convolution_mod_1000000007/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/exp_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/exp_of_formal_power_series/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/inv_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/inv_of_formal_power_series/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/log_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/log_of_formal_power_series/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/partition_function/main.fps.test.cpp.html">test/yosupo-judge/partition_function/main.fps.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/polynomial_taylor_shift/main.test.cpp.html">test/yosupo-judge/polynomial_taylor_shift/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/pow_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/pow_of_formal_power_series/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/sharp_p_subset_sum/main.test.cpp.html">test/yosupo-judge/sharp_p_subset_sum/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
 
 
 ## Code
@@ -75,7 +75,7 @@ layout: default
  * @docs ntt_convolution.md
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>
-class NumberTheoreticTransform{
+class NumberTheoreticTransform {
 public:
   using value_type = T;
   constexpr static int primitive_root = PRIM_ROOT;
@@ -83,7 +83,7 @@ public:
 private:
   const int MAX_POWER;
   std::vector<T> BASE, INV_BASE;
-  
+
 public:
   NumberTheoreticTransform():
     MAX_POWER(__builtin_ctz(MAX_SIZE)),
@@ -92,9 +92,9 @@ public:
   {
     static_assert((MAX_SIZE & (MAX_SIZE - 1)) == 0, "MAX_SIZE must be power of 2.");
 
-    T t = T::power(PRIM_ROOT, (T::MOD-1) >> (MAX_POWER + 2));
+    T t = T::power(PRIM_ROOT, (T::MOD - 1) >> (MAX_POWER + 2));
     T s = t.inv();
-    
+
     for(int i = MAX_POWER - 1; i >= 0; --i){
       t *= t;
       s *= s;
@@ -105,23 +105,23 @@ public:
 
   void run(std::vector<T> &f, bool INVERSE = false){
     const int n = f.size();
-    assert((n & (n-1)) == 0 and n <= MAX_SIZE); // データ数は2の冪乗個
+    assert((n & (n - 1)) == 0 and n <= MAX_SIZE); // データ数は2の冪乗個
 
     if(INVERSE){
       for(int b = 1; b < n; b <<= 1){
         T w = 1;
         for(int j = 0, k = 1; j < n; j += 2 * b, ++k){
           for(int i = 0; i < b; ++i){
-            const auto s = f[i+j];
-            const auto t = f[i+j+b];
-            
-            f[i+j] = s + t;
-            f[i+j+b] = (s - t) * w;
+            const auto s = f[i + j];
+            const auto t = f[i + j + b];
+
+            f[i + j] = s + t;
+            f[i + j + b] = (s - t) * w;
           }
           w *= INV_BASE[__builtin_ctz(k)];
         }
       }
-        
+
       const T t = T::inv(n);
       for(auto &x : f) x *= t;
     }else{
@@ -129,11 +129,11 @@ public:
         T w = 1;
         for(int j = 0, k = 1; j < n; j += 2 * b, ++k){
           for(int i = 0; i < b; ++i){
-            const auto s = f[i+j];
-            const auto t = f[i+j+b] * w;
-            
-            f[i+j] = s + t;
-            f[i+j+b] = s - t;
+            const auto s = f[i + j];
+            const auto t = f[i + j + b] * w;
+
+            f[i + j] = s + t;
+            f[i + j + b] = s - t;
           }
           w *= BASE[__builtin_ctz(k)];
         }
@@ -151,13 +151,13 @@ public:
 
     for(int i = 0; i < (int)f.size(); ++i) f2[i] = f[i];
     for(int i = 0; i < (int)g.size(); ++i) g2[i] = g[i];
-  
+
     run(f2);
     run(g2);
-    
+
     for(int i = 0; i < n; ++i) f2[i] *= g2[i];
     run(f2, true);
-    
+
     return f2;
   }
 };
@@ -170,7 +170,7 @@ std::vector<T> convolve_general_mod(std::vector<U> f, std::vector<U> g){
 
   for(auto &x : f) x %= T::MOD;
   for(auto &x : g) x %= T::MOD;
-  
+
   auto res1 = NumberTheoreticTransform<ModInt<M1>, P1, 1 << 20>().convolve(f, g);
   auto res2 = NumberTheoreticTransform<ModInt<M2>, P2, 1 << 20>().convolve(f, g);
   auto res3 = NumberTheoreticTransform<ModInt<M3>, P3, 1 << 20>().convolve(f, g);
@@ -184,12 +184,12 @@ std::vector<T> convolve_general_mod(std::vector<U> f, std::vector<U> g){
   const int64_t M23 = (int64_t)ModInt<M3>::inv(M2);
 
   for(int i = 0; i < n; ++i){
-    const int64_t r[3] = {(int64_t)res1[i].val, (int64_t)res2[i].val, (int64_t)res3[i].val};
+    const int64_t r[3] = {(int64_t)res1[i], (int64_t)res2[i], (int64_t)res3[i]};
 
     const int64_t t0 = r[0] % M1;
     const int64_t t1 = (r[1] - t0 + M2) * M12 % M2;
     const int64_t t2 = ((r[2] - t0 + M3) * M13 % M3 - t1 + M3) * M23 % M3;
-    
+
     ret[i] = T(t0) + T(t1) * M1 + T(t2) * M1 * M2;
   }
 
@@ -215,18 +215,19 @@ std::vector<T> convolve_general_mod(std::vector<U> f, std::vector<U> g){
  * @title Modint
  * @docs mint.md
  */
-template <int32_t M> class ModInt{
+template <int32_t M>
+class ModInt {
 public:
   constexpr static int32_t MOD = M;
   uint32_t val;
-  
+
   constexpr ModInt(): val(0){}
   constexpr ModInt(int64_t n){
     if(n >= M) val = n % M;
     else if(n < 0) val = n % M + M;
     else val = n;
   }
-  
+
   constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
   constexpr auto& operator+=(const ModInt &a){
     if(val + a.val >= M) val = (uint64_t)val + a.val - M;
@@ -251,51 +252,51 @@ public:
   constexpr auto operator-(const ModInt &a) const {return ModInt(*this) -= a;}
   constexpr auto operator*(const ModInt &a) const {return ModInt(*this) *= a;}
   constexpr auto operator/(const ModInt &a) const {return ModInt(*this) /= a;}
-  
+
   constexpr bool operator==(const ModInt &a) const {return val == a.val;}
   constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
-  
+
   constexpr auto& operator++(){*this += 1; return *this;}
   constexpr auto& operator--(){*this -= 1; return *this;}
-  
+
   constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
   constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
-  
+
   constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
-    
+
     int64_t ret = 1, e = n % M;
     for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
     return ret;
   }
-  
+
   constexpr static ModInt inv(int64_t a){
     int64_t b = M, u = 1, v = 0;
-    
+
     while(b){
       int64_t t = a / b;
-      a -= t * b; std::swap(a,b);
-      u -= t * v; std::swap(u,v);
+      a -= t * b; std::swap(a, b);
+      u -= t * v; std::swap(u, v);
     }
-    
+
     u %= M;
     if(u < 0) u += M;
-    
+
     return u;
   }
-  
+
   constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
-  
+
   constexpr auto power(int64_t p) const {return power(val, p);}
   constexpr auto inv() const {return inv(val);}
-  
-  friend constexpr auto operator-(const ModInt &a){return ModInt(M-a.val);}
-  
+
+  friend constexpr auto operator-(const ModInt &a){return ModInt(M - a.val);}
+
   friend constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
   friend constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
   friend constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
   friend constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
-  
+
   friend std::istream& operator>>(std::istream &s, ModInt<M> &a){s >> a.val; return s;}
   friend std::ostream& operator<<(std::ostream &s, const ModInt<M> &a){s << a.val; return s;}
 
@@ -315,7 +316,7 @@ public:
  * @docs ntt_convolution.md
  */
 template <typename T, int PRIM_ROOT, int MAX_SIZE>
-class NumberTheoreticTransform{
+class NumberTheoreticTransform {
 public:
   using value_type = T;
   constexpr static int primitive_root = PRIM_ROOT;
@@ -323,7 +324,7 @@ public:
 private:
   const int MAX_POWER;
   std::vector<T> BASE, INV_BASE;
-  
+
 public:
   NumberTheoreticTransform():
     MAX_POWER(__builtin_ctz(MAX_SIZE)),
@@ -332,9 +333,9 @@ public:
   {
     static_assert((MAX_SIZE & (MAX_SIZE - 1)) == 0, "MAX_SIZE must be power of 2.");
 
-    T t = T::power(PRIM_ROOT, (T::MOD-1) >> (MAX_POWER + 2));
+    T t = T::power(PRIM_ROOT, (T::MOD - 1) >> (MAX_POWER + 2));
     T s = t.inv();
-    
+
     for(int i = MAX_POWER - 1; i >= 0; --i){
       t *= t;
       s *= s;
@@ -345,23 +346,23 @@ public:
 
   void run(std::vector<T> &f, bool INVERSE = false){
     const int n = f.size();
-    assert((n & (n-1)) == 0 and n <= MAX_SIZE); // データ数は2の冪乗個
+    assert((n & (n - 1)) == 0 and n <= MAX_SIZE); // データ数は2の冪乗個
 
     if(INVERSE){
       for(int b = 1; b < n; b <<= 1){
         T w = 1;
         for(int j = 0, k = 1; j < n; j += 2 * b, ++k){
           for(int i = 0; i < b; ++i){
-            const auto s = f[i+j];
-            const auto t = f[i+j+b];
-            
-            f[i+j] = s + t;
-            f[i+j+b] = (s - t) * w;
+            const auto s = f[i + j];
+            const auto t = f[i + j + b];
+
+            f[i + j] = s + t;
+            f[i + j + b] = (s - t) * w;
           }
           w *= INV_BASE[__builtin_ctz(k)];
         }
       }
-        
+
       const T t = T::inv(n);
       for(auto &x : f) x *= t;
     }else{
@@ -369,11 +370,11 @@ public:
         T w = 1;
         for(int j = 0, k = 1; j < n; j += 2 * b, ++k){
           for(int i = 0; i < b; ++i){
-            const auto s = f[i+j];
-            const auto t = f[i+j+b] * w;
-            
-            f[i+j] = s + t;
-            f[i+j+b] = s - t;
+            const auto s = f[i + j];
+            const auto t = f[i + j + b] * w;
+
+            f[i + j] = s + t;
+            f[i + j + b] = s - t;
           }
           w *= BASE[__builtin_ctz(k)];
         }
@@ -391,13 +392,13 @@ public:
 
     for(int i = 0; i < (int)f.size(); ++i) f2[i] = f[i];
     for(int i = 0; i < (int)g.size(); ++i) g2[i] = g[i];
-  
+
     run(f2);
     run(g2);
-    
+
     for(int i = 0; i < n; ++i) f2[i] *= g2[i];
     run(f2, true);
-    
+
     return f2;
   }
 };
@@ -410,7 +411,7 @@ std::vector<T> convolve_general_mod(std::vector<U> f, std::vector<U> g){
 
   for(auto &x : f) x %= T::MOD;
   for(auto &x : g) x %= T::MOD;
-  
+
   auto res1 = NumberTheoreticTransform<ModInt<M1>, P1, 1 << 20>().convolve(f, g);
   auto res2 = NumberTheoreticTransform<ModInt<M2>, P2, 1 << 20>().convolve(f, g);
   auto res3 = NumberTheoreticTransform<ModInt<M3>, P3, 1 << 20>().convolve(f, g);
@@ -424,12 +425,12 @@ std::vector<T> convolve_general_mod(std::vector<U> f, std::vector<U> g){
   const int64_t M23 = (int64_t)ModInt<M3>::inv(M2);
 
   for(int i = 0; i < n; ++i){
-    const int64_t r[3] = {(int64_t)res1[i].val, (int64_t)res2[i].val, (int64_t)res3[i].val};
+    const int64_t r[3] = {(int64_t)res1[i], (int64_t)res2[i], (int64_t)res3[i]};
 
     const int64_t t0 = r[0] % M1;
     const int64_t t1 = (r[1] - t0 + M2) * M12 % M2;
     const int64_t t2 = ((r[2] - t0 + M3) * M13 % M3 - t1 + M3) * M23 % M3;
-    
+
     ret[i] = T(t0) + T(t1) * M1 + T(t2) * M1 * M2;
   }
 

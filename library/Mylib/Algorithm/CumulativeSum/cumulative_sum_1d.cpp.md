@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 1D cumulative sum
+# :x: 1D cumulative sum
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#606b6851a96c8708fa4cdcf98aebb7c1">Mylib/Algorithm/CumulativeSum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/static_range_sum/main.test.cpp.html">test/yosupo-judge/static_range_sum/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/static_range_sum/main.test.cpp.html">test/yosupo-judge/static_range_sum/main.test.cpp</a>
 
 
 ## Code
@@ -56,7 +56,7 @@ layout: default
  * @docs cumulative_sum_1d.md
  */
 template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
-class CumulativeSum1D{
+class CumulativeSum1D {
   std::vector<T> data;
   const int N;
   const Add add;
@@ -67,29 +67,29 @@ public:
   CumulativeSum1D(const std::vector<T> &a, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
     N(a.size()), add(add), minus(minus)
   {
-    data.assign(N+1, e);
-    for(int i = 0; i < N; ++i) data[i+1] = a[i];
+    data.assign(N + 1, e);
+    for(int i = 0; i < N; ++i) data[i + 1] = a[i];
   }
 
   CumulativeSum1D(int N, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
     N(N), add(add), minus(minus)
   {
-    data.assign(N+1, e);
+    data.assign(N + 1, e);
   }
 
   auto& update(int i, const T &val){
     assert(not is_built);
-    data[i+1] = add(data[i+1], val);
+    data[i + 1] = add(data[i + 1], val);
     return *this;
   }
 
   auto& build(){
     assert(not is_built);
-    for(int i = 0; i < N; ++i) data[i+1] = add(data[i+1], data[i]);
+    for(int i = 0; i < N; ++i) data[i + 1] = add(data[i + 1], data[i]);
     is_built = true;
     return *this;
   }
-  
+
   /**
    * @attention [i, j)
    */
@@ -98,7 +98,6 @@ public:
     return minus(data[j], data[i]);
   }
 };
-
 
 ```
 {% endraw %}
@@ -116,7 +115,7 @@ public:
  * @docs cumulative_sum_1d.md
  */
 template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
-class CumulativeSum1D{
+class CumulativeSum1D {
   std::vector<T> data;
   const int N;
   const Add add;
@@ -127,29 +126,29 @@ public:
   CumulativeSum1D(const std::vector<T> &a, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
     N(a.size()), add(add), minus(minus)
   {
-    data.assign(N+1, e);
-    for(int i = 0; i < N; ++i) data[i+1] = a[i];
+    data.assign(N + 1, e);
+    for(int i = 0; i < N; ++i) data[i + 1] = a[i];
   }
 
   CumulativeSum1D(int N, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
     N(N), add(add), minus(minus)
   {
-    data.assign(N+1, e);
+    data.assign(N + 1, e);
   }
 
   auto& update(int i, const T &val){
     assert(not is_built);
-    data[i+1] = add(data[i+1], val);
+    data[i + 1] = add(data[i + 1], val);
     return *this;
   }
 
   auto& build(){
     assert(not is_built);
-    for(int i = 0; i < N; ++i) data[i+1] = add(data[i+1], data[i]);
+    for(int i = 0; i < N; ++i) data[i + 1] = add(data[i + 1], data[i]);
     is_built = true;
     return *this;
   }
-  
+
   /**
    * @attention [i, j)
    */
@@ -158,7 +157,6 @@ public:
     return minus(data[j], data[i]);
   }
 };
-
 
 ```
 {% endraw %}

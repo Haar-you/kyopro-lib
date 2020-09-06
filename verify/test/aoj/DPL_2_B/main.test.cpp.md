@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_2_B/main.test.cpp
+# :x: test/aoj/DPL_2_B/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#cea1c4a75215bab49202f95330eeee2b">test/aoj/DPL_2_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_2_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_B</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/chinese_postman_problem.cpp.html">Chinese postman problem</a>
+* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../../../../library/Mylib/Graph/chinese_postman_problem.cpp.html">Chinese postman problem</a>
 
 
 ## Code
@@ -59,10 +59,10 @@ int main(){
 
   Graph<int> g(V);
   g.read<0, false>(E);
-  
+
   auto ans = chinese_postman_problem(g);
   std::cout << ans << std::endl;
-  
+
   return 0;
 }
 
@@ -78,13 +78,14 @@ int main(){
 #include <iostream>
 #line 2 "Mylib/Graph/Template/graph.cpp"
 #include <vector>
+#line 4 "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -94,15 +95,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -115,7 +116,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -182,15 +183,15 @@ T chinese_postman_problem(const Graph<T> &g){
   const int m = odd.size();
 
   // 奇数次数の頂点間の最小マッチングを求める。
-  std::vector<T> dp(1<<m, -1);
+  std::vector<T> dp(1 << m, -1);
   dp[0] = 0;
 
-  for(int i = 0; i < (1<<m); ++i){
+  for(int i = 0; i < (1 << m); ++i){
     for(int j = 0; j < m; ++j){
       for(int k = 0; k < j; ++k){
-        if((i & (1<<j)) and (i & (1<<k))){
-          if(dp[i] == -1) dp[i] = dp[i ^ (1<<j) ^ (1<<k)] + dist[odd[j]][odd[k]];
-          else dp[i] = std::min(dp[i], dp[i ^ (1<<j) ^ (1<<k)] + dist[odd[j]][odd[k]]);
+        if((i & (1 << j)) and (i & (1 << k))){
+          if(dp[i] == -1) dp[i] = dp[i ^ (1 << j) ^ (1 << k)] + dist[odd[j]][odd[k]];
+          else dp[i] = std::min(dp[i], dp[i ^ (1 << j) ^ (1 << k)] + dist[odd[j]][odd[k]]);
         }
       }
     }
@@ -212,10 +213,10 @@ int main(){
 
   Graph<int> g(V);
   g.read<0, false>(E);
-  
+
   auto ans = chinese_postman_problem(g);
   std::cout << ans << std::endl;
-  
+
   return 0;
 }
 

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/ITP2_11_C/main.desc.test.cpp
+# :x: test/aoj/ITP2_11_C/main.desc.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#5626b65685a30cbdda48cf9d1e561d42">test/aoj/ITP2_11_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ITP2_11_C/main.desc.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 04:37:36+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_C</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Bit/for_each_subset_desc.cpp.html">Enumerate subsets (Descending order)</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/Bit/enumerate_subsets_desc.cpp.html">Enumerate subsets (Descending order)</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -53,13 +53,13 @@ layout: default
 #include <iostream>
 #include <vector>
 #include <map>
-#include "Mylib/Bit/for_each_subset_desc.cpp"
+#include "Mylib/Bit/enumerate_subsets_desc.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int n, k; std::cin >> n >> k;
 
   int t = 0;
@@ -68,12 +68,16 @@ int main(){
   }
 
   std::map<int, std::vector<int>> ans;
-  for(int d : SubsetDesc(t)){
-    ans[d];
-    for(int i = 0; i < n; ++i){
-      if(d & (1 << i)) ans[d].push_back(i);
+  enumerate_subsets_desc(
+    t,
+    [&](int d){
+      ans[d];
+      for(int i = 0; i < n; ++i){
+        if(d & (1 << i)) ans[d].push_back(i);
+      }
+      return true;
     }
-  }
+  );
 
   for(auto &[m, v] : ans){
     std::cout << m << ":";
@@ -96,32 +100,19 @@ int main(){
 #include <iostream>
 #include <vector>
 #include <map>
-#line 2 "Mylib/Bit/for_each_subset_desc.cpp"
+#line 2 "Mylib/Bit/enumerate_subsets_desc.cpp"
 
 /**
  * @title Enumerate subsets (Descending order)
- * @docs for_each_subset_desc.md
+ * @docs enumerate_subsets_desc.md
  */
-class SubsetDesc{
-  struct iter{
-    int t, a;
-    bool is_end;
-
-    int operator*() const {return t;}
-    void operator++(){
-      if(t == 0) is_end = true;
-      t = (t - 1) & a;
-    }
-    bool operator!=(const iter &) const {return not is_end;}
-  };
-
-  int a;
-
-public:
-  SubsetDesc(int a): a(a){}
-  iter begin() const {return iter({a, a, false});}
-  iter end() const {return iter();}
-};
+template <typename Func>
+void enumerate_subsets_desc(int a, const Func &f){
+  for(int t = a; ; t = (t - 1) & a){
+    if(not f(t)) break;
+    if(t == 0) break;
+  }
+}
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
@@ -145,7 +136,7 @@ std::vector<std::vector<T>> input_vector(int N, int M){
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int n, k; std::cin >> n >> k;
 
   int t = 0;
@@ -154,12 +145,16 @@ int main(){
   }
 
   std::map<int, std::vector<int>> ans;
-  for(int d : SubsetDesc(t)){
-    ans[d];
-    for(int i = 0; i < n; ++i){
-      if(d & (1 << i)) ans[d].push_back(i);
+  enumerate_subsets_desc(
+    t,
+    [&](int d){
+      ans[d];
+      for(int i = 0; i < n; ++i){
+        if(d & (1 << i)) ans[d].push_back(i);
+      }
+      return true;
     }
-  }
+  );
 
   for(auto &[m, v] : ans){
     std::cout << m << ":";

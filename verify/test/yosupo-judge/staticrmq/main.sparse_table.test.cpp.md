@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
+# :x: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#5680c9d4a5622c4318d3dde130a2c657">test/yosupo-judge/staticrmq</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/staticrmq/main.sparse_table.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/staticrmq">https://judge.yosupo.jp/problem/staticrmq</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Mylib/AlgebraicStructure/Monoid/min.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SparseTable/sparse_table.cpp.html">Sparse table</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Min monoid</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SparseTable/sparse_table.cpp.html">Sparse table</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -55,7 +55,6 @@ layout: default
 
 #include <iostream>
 #include <vector>
-
 #include "Mylib/DataStructure/SparseTable/sparse_table.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include "Mylib/IO/input_vector.cpp"
@@ -64,7 +63,7 @@ layout: default
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   auto a = input_vector<int>(N);
@@ -89,7 +88,6 @@ int main(){
 
 #include <iostream>
 #include <vector>
-
 #line 3 "Mylib/DataStructure/SparseTable/sparse_table.cpp"
 #include <utility>
 #include <algorithm>
@@ -99,38 +97,38 @@ int main(){
  * @docs sparse_table.md
  */
 template <typename Semilattice>
-class SparseTable{
+class SparseTable {
   using value_type = typename Semilattice::value_type;
-  Semilattice S;
-  
+  const static Semilattice S;
+
   std::vector<std::vector<value_type>> a;
   std::vector<int> log_table;
-  
+
 public:
   template <typename T>
   SparseTable(const std::vector<T> &v){
     int n = v.size();
     int logn = 0;
     while((1 << logn) <= n) ++logn;
-    
+
     a.assign(n, std::vector<value_type>(logn));
     for(int i = 0; i < n; ++i) a[i][0] = v[i];
     for(int j = 1; j < logn; ++j){
       for(int i = 0; i < n; ++i){
-        a[i][j] = S.op(a[i][j-1], a[std::min<int>(n-1, i+(1<<(j-1)))][j-1]);
+        a[i][j] = S(a[i][j - 1], a[std::min<int>(n - 1, i + (1 << (j - 1)))][j - 1]);
       }
     }
 
-    log_table.assign(n+1, 0);
-    for(int i = 2; i < n+1; ++i) log_table[i] = log_table[i>>1] + 1;
-  }
-  
-  value_type get(int s, int t) const { // [s,t)
-    int k = log_table[t-s];
-    return S.op(a[s][k], a[t-(1<<k)][k]);
+    log_table.assign(n + 1, 0);
+    for(int i = 2; i < n + 1; ++i) log_table[i] = log_table[i >> 1] + 1;
   }
 
-  value_type get(std::vector<std::pair<int,int>> st) const {
+  value_type get(int s, int t) const { // [s, t)
+    int k = log_table[t - s];
+    return S(a[s][k], a[t - (1 << k)][k]);
+  }
+
+  value_type get(std::vector<std::pair<int, int>> st) const {
     value_type ret;
     bool t = true;
 
@@ -140,7 +138,7 @@ public:
           ret = get(p.first, p.second);
           t = false;
         }else{
-          ret = S.op(ret, get(p.first, p.second));
+          ret = S(ret, get(p.first, p.second));
         }
       }
     }
@@ -152,14 +150,15 @@ public:
 #include <optional>
 
 /**
+ * @title Min monoid
  * @docs min.md
  */
 template <typename T>
-struct MinMonoid{
+struct MinMonoid {
   using value_type = std::optional<T>;
-  
-  value_type id() const {return {};}
-  value_type op(const value_type &a, const value_type &b) const {
+
+  value_type operator()() const {return {};}
+  value_type operator()(const value_type &a, const value_type &b) const {
     if(not a) return b;
     if(not b) return a;
     return {std::min(*a, *b)};
@@ -193,8 +192,8 @@ std::vector<std::vector<T>> input_vector(int N, int M){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -204,8 +203,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -214,8 +213,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -253,12 +252,12 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 10 "test/yosupo-judge/staticrmq/main.sparse_table.test.cpp"
+#line 9 "test/yosupo-judge/staticrmq/main.sparse_table.test.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   auto a = input_vector<int>(N);

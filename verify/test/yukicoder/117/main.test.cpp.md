@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f01f019f5d83aaae637417bc3568edb5">test/yukicoder/117</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/117/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-20 09:35:37+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/117">https://yukicoder.me/problems/no/117</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Combinatorics/factorial_table.cpp.html">Factorial table</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :x: <a href="../../../../library/Mylib/Combinatorics/factorial_table.cpp.html">Factorial table</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -55,7 +55,6 @@ layout: default
 #include <iostream>
 #include <string>
 #include <regex>
-
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Combinatorics/factorial_table.cpp"
 #include "Mylib/IO/input_tuples.cpp"
@@ -67,11 +66,11 @@ int main(){
   std::ios::sync_with_stdio(false);
 
   auto ft = FactorialTable<mint>(2000000);
-  
+
   int T; std::cin >> T;
 
   std::regex re(R"((.)\((.+),(.+)\))");
-  
+
   for(auto [s] : input_tuples<std::string>(T)){
     std::smatch m;
     std::regex_match(s, m, re);
@@ -102,7 +101,6 @@ int main(){
 #include <iostream>
 #include <string>
 #include <regex>
-
 #line 3 "Mylib/Number/Mint/mint.cpp"
 #include <utility>
 
@@ -110,18 +108,19 @@ int main(){
  * @title Modint
  * @docs mint.md
  */
-template <int32_t M> class ModInt{
+template <int32_t M>
+class ModInt {
 public:
   constexpr static int32_t MOD = M;
   uint32_t val;
-  
+
   constexpr ModInt(): val(0){}
   constexpr ModInt(int64_t n){
     if(n >= M) val = n % M;
     else if(n < 0) val = n % M + M;
     else val = n;
   }
-  
+
   constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
   constexpr auto& operator+=(const ModInt &a){
     if(val + a.val >= M) val = (uint64_t)val + a.val - M;
@@ -146,51 +145,51 @@ public:
   constexpr auto operator-(const ModInt &a) const {return ModInt(*this) -= a;}
   constexpr auto operator*(const ModInt &a) const {return ModInt(*this) *= a;}
   constexpr auto operator/(const ModInt &a) const {return ModInt(*this) /= a;}
-  
+
   constexpr bool operator==(const ModInt &a) const {return val == a.val;}
   constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
-  
+
   constexpr auto& operator++(){*this += 1; return *this;}
   constexpr auto& operator--(){*this -= 1; return *this;}
-  
+
   constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
   constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
-  
+
   constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
-    
+
     int64_t ret = 1, e = n % M;
     for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
     return ret;
   }
-  
+
   constexpr static ModInt inv(int64_t a){
     int64_t b = M, u = 1, v = 0;
-    
+
     while(b){
       int64_t t = a / b;
-      a -= t * b; std::swap(a,b);
-      u -= t * v; std::swap(u,v);
+      a -= t * b; std::swap(a, b);
+      u -= t * v; std::swap(u, v);
     }
-    
+
     u %= M;
     if(u < 0) u += M;
-    
+
     return u;
   }
-  
+
   constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
-  
+
   constexpr auto power(int64_t p) const {return power(val, p);}
   constexpr auto inv() const {return inv(val);}
-  
-  friend constexpr auto operator-(const ModInt &a){return ModInt(M-a.val);}
-  
+
+  friend constexpr auto operator-(const ModInt &a){return ModInt(M - a.val);}
+
   friend constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
   friend constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
   friend constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
   friend constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
-  
+
   friend std::istream& operator>>(std::istream &s, ModInt<M> &a){s >> a.val; return s;}
   friend std::ostream& operator<<(std::ostream &s, const ModInt<M> &a){s << a.val; return s;}
 
@@ -206,13 +205,14 @@ public:
 #line 2 "Mylib/Combinatorics/factorial_table.cpp"
 #include <vector>
 #include <cassert>
+#include <cstdint>
 
 /**
  * @title Factorial table
  * @docs factorial_table.md
  */
 template <typename T>
-class FactorialTable{
+class FactorialTable {
 public:
   using value_type = T;
 
@@ -222,25 +222,25 @@ private:
 
 public:
   FactorialTable(int N){
-    f_table.assign(N+1, 1);
-    if_table.assign(N+1, 1);
-    
+    f_table.assign(N + 1, 1);
+    if_table.assign(N + 1, 1);
+
     for(int i = 1; i <= N; ++i){
-      f_table[i] = f_table[i-1] * i;
+      f_table[i] = f_table[i - 1] * i;
     }
-    
+
     if_table[N] = f_table[N].inv();
 
-    for(int i = N-1; i >= 0; --i){
-      if_table[i] = if_table[i+1] * (i+1);
+    for(int i = N; --i >= 0;){
+      if_table[i] = if_table[i + 1] * (i + 1);
     }
   }
-  
+
   T factorial(int64_t i) const {
     assert(i < (int)f_table.size());
     return f_table[i];
   }
-  
+
   T inv_factorial(int64_t i) const {
     assert(i < (int)if_table.size());
     return if_table[i];
@@ -248,17 +248,17 @@ public:
 
   T P(int64_t n, int64_t k) const {
     if(n < k or n < 0 or k < 0) return 0;
-    return factorial(n) * inv_factorial(n-k);
+    return factorial(n) * inv_factorial(n - k);
   }
 
   T C(int64_t n, int64_t k) const {
     if(n < k or n < 0 or k < 0) return 0;
-    return P(n,k) * inv_factorial(k);
+    return P(n, k) * inv_factorial(k);
   }
 
   T H(int64_t n, int64_t k) const {
     if(n == 0 and k == 0) return 1;
-    return C(n+k-1, k);
+    return C(n + k - 1, k);
   }
 };
 #line 4 "Mylib/IO/input_tuples.cpp"
@@ -271,8 +271,8 @@ public:
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -282,8 +282,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -292,8 +292,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -331,7 +331,7 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 10 "test/yukicoder/117/main.test.cpp"
+#line 9 "test/yukicoder/117/main.test.cpp"
 
 using mint = ModInt<1000000007>;
 
@@ -340,11 +340,11 @@ int main(){
   std::ios::sync_with_stdio(false);
 
   auto ft = FactorialTable<mint>(2000000);
-  
+
   int T; std::cin >> T;
 
   std::regex re(R"((.)\((.+),(.+)\))");
-  
+
   for(auto [s] : input_tuples<std::string>(T)){
     std::smatch m;
     std::regex_match(s, m, re);

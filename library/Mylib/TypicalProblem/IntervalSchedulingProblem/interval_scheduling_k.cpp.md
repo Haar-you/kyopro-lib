@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Interval scheduling problem (Allow no more than k intervals to overlap)
+# :x: Interval scheduling problem (Allow no more than k intervals to overlap)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a1062884f064c2b3be412505b6627108">Mylib/TypicalProblem/IntervalSchedulingProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -58,7 +58,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/580/main.test.cpp.html">test/yukicoder/580/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/580/main.test.cpp.html">test/yukicoder/580/main.test.cpp</a>
 
 
 ## Code
@@ -83,10 +83,10 @@ auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
 
   std::vector<int> ord(N);
   std::iota(ord.begin(), ord.end(), 0);
-  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});  
+  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
 
   std::multiset<int> a;
-  std::vector<std::pair<int,int>> ret;
+  std::vector<std::pair<int, int>> ret;
 
   for(int i : ord){
     auto it = a.upper_bound(l[i]);
@@ -101,7 +101,7 @@ auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
       ret.emplace_back(l[i], r[i]);
     }
   }
-  
+
   return ret;
 }
 
@@ -128,10 +128,10 @@ auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
 
   std::vector<int> ord(N);
   std::iota(ord.begin(), ord.end(), 0);
-  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});  
+  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
 
   std::multiset<int> a;
-  std::vector<std::pair<int,int>> ret;
+  std::vector<std::pair<int, int>> ret;
 
   for(int i : ord){
     auto it = a.upper_bound(l[i]);
@@ -146,7 +146,7 @@ auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
       ret.emplace_back(l[i], r[i]);
     }
   }
-  
+
   return ret;
 }
 

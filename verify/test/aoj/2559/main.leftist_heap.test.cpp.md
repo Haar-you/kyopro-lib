@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/2559/main.leftist_heap.test.cpp
+# :x: test/aoj/2559/main.leftist_heap.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#470f11b8b249244fcbedd0bf3d66e316">test/aoj/2559</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2559/main.leftist_heap.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2559">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2559</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/Heap/leftist_heap.cpp.html">Leftist heap</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
-* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/merge_technique.cpp.html">Mylib/Misc/merge_technique.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Utils/fix_point.cpp.html">Fixed point combinator</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/Heap/leftist_heap.cpp.html">Leftist heap</a>
+* :x: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
+* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../../../../library/Mylib/Misc/merge_technique.cpp.html">Mylib/Misc/merge_technique.cpp</a>
+* :x: <a href="../../../../library/Mylib/Utils/fix_point.cpp.html">Fixed point combinator</a>
 
 
 ## Code
@@ -58,7 +58,6 @@ layout: default
 #include <map>
 #include <set>
 #include <tuple>
-
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/MinimumSpanningTree/prim.cpp"
 #include "Mylib/Utils/fix_point.cpp"
@@ -70,8 +69,8 @@ int main(){
 
   Graph<int64_t> g(n);
   g.read<1, false>(m);
-  
-  std::map<std::pair<int,int>, int> index;
+
+  std::map<std::pair<int, int>, int> index;
   for(auto &a : g){
     for(auto &e : a) index[{e.from, e.to}] = e.index;
   }
@@ -80,7 +79,7 @@ int main(){
 
   std::vector<int64_t> ans(m, -1);
 
-  if((int)res.size() == n-1){
+  if((int)res.size() == n - 1){
     int64_t s = 0;
     Tree<int64_t> tree(n);
 
@@ -91,16 +90,14 @@ int main(){
 
     ans.assign(m, s);
 
-    std::vector<
-      LeftistHeap<std::tuple<int64_t, int, int>, std::greater<std::tuple<int64_t, int, int>>>
-      > sh(n);
-    
+    std::vector<LeftistHeap<std::tuple<int64_t, int, int>, std::greater<>>> heaps(n);
+
     std::vector<std::set<int>> sub(n);
 
     make_fix_point(
-      [&](auto &&f, int cur, int par, int64_t cost) -> void{
+      [&](auto &&f, int cur, int par, int64_t cost) -> void {
         for(auto &e : g[cur]){
-          sh[cur].push({e.cost, e.from, e.to});
+          heaps[cur].push({e.cost, e.from, e.to});
         }
 
         sub[cur].insert(cur);
@@ -109,23 +106,23 @@ int main(){
           if(e.to == par) continue;
           f(e.to, cur, e.cost);
 
-          sh[cur].meld(sh[e.to]);
+          heaps[cur].meld(heaps[e.to]);
           merge_technique(sub[cur], sub[cur], sub[e.to]);
         }
 
         if(par != -1){
-          while(not sh[cur].empty()){
-            auto [c, i, j] = sh[cur].top();
+          while(not heaps[cur].empty()){
+            auto [c, i, j] = heaps[cur].top();
             if((sub[cur].find(i) != sub[cur].end() and sub[cur].find(j) != sub[cur].end()) or
                (i == cur and j == par) or (i == par and j == cur)){
-              sh[cur].pop();
+              heaps[cur].pop();
             }else{
               break;
             }
           }
 
-          if(not sh[cur].empty()){
-            ans[index[{cur, par}]] = s - cost + std::get<0>(sh[cur].top());
+          if(not heaps[cur].empty()){
+            ans[index[{cur, par}]] = s - cost + std::get<0>(heaps[cur].top());
           }else{
             ans[index[{cur, par}]] = -1;
           }
@@ -155,15 +152,14 @@ int main(){
 #include <map>
 #include <set>
 #include <tuple>
-
-#line 3 "Mylib/Graph/Template/graph.cpp"
+#line 4 "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -173,15 +169,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -194,7 +190,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -226,13 +222,13 @@ using Tree = Graph<T>;
  */
 template <typename T>
 std::vector<Edge<T>> prim(const Graph<T> &graph){
-  int n = graph.size();
+  const int n = graph.size();
   std::vector<bool> visit(n, false);
   std::vector<Edge<T>> ret;
 
   auto cmp = [](const auto &a, const auto &b){return a.cost > b.cost;};
   std::priority_queue<Edge<T>, std::vector<Edge<T>>, decltype(cmp)> pq(cmp);
-  
+
   visit[0] = true;
   for(auto &e : graph[0]) pq.push(e);
 
@@ -260,12 +256,12 @@ std::vector<Edge<T>> prim(const Graph<T> &graph){
  * @docs fix_point.md
  */
 template <typename F>
-struct FixPoint : F{
+struct FixPoint : F {
   explicit constexpr FixPoint(F &&f) noexcept : F(std::forward<F>(f)){}
 
-  template <typename... Args>
+  template <typename ... Args>
   constexpr auto operator()(Args &&... args) const {
-    return F::operator()(*this, std::forward<Args>(args)...);
+    return F::operator()(*this, std::forward<Args>(args) ...);
   }
 };
 
@@ -287,8 +283,8 @@ inline constexpr auto make_fix_point(F &f){
  * @docs leftist_heap.md
  */
 template <typename T, class Compare = std::less<T>>
-class LeftistHeap{
-  struct node{
+class LeftistHeap {
+  struct node {
     T val;
     node *left, *right;
     int s, size;
@@ -318,7 +314,7 @@ protected:
   }
 
 public:
-  void meld(LeftistHeap &heap){root = meld(root, heap.root); heap.root = nullptr;}  
+  void meld(LeftistHeap &heap){root = meld(root, heap.root); heap.root = nullptr;}
   void push(const T &val){root = meld(root, new node(val));}
   const T& top() const {return root->val;}
   void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}
@@ -340,15 +336,15 @@ void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){
     std::swap(res, b);
   }
 }
-#line 14 "test/aoj/2559/main.leftist_heap.test.cpp"
+#line 13 "test/aoj/2559/main.leftist_heap.test.cpp"
 
 int main(){
   int n, m; std::cin >> n >> m;
 
   Graph<int64_t> g(n);
   g.read<1, false>(m);
-  
-  std::map<std::pair<int,int>, int> index;
+
+  std::map<std::pair<int, int>, int> index;
   for(auto &a : g){
     for(auto &e : a) index[{e.from, e.to}] = e.index;
   }
@@ -357,7 +353,7 @@ int main(){
 
   std::vector<int64_t> ans(m, -1);
 
-  if((int)res.size() == n-1){
+  if((int)res.size() == n - 1){
     int64_t s = 0;
     Tree<int64_t> tree(n);
 
@@ -368,16 +364,14 @@ int main(){
 
     ans.assign(m, s);
 
-    std::vector<
-      LeftistHeap<std::tuple<int64_t, int, int>, std::greater<std::tuple<int64_t, int, int>>>
-      > sh(n);
-    
+    std::vector<LeftistHeap<std::tuple<int64_t, int, int>, std::greater<>>> heaps(n);
+
     std::vector<std::set<int>> sub(n);
 
     make_fix_point(
-      [&](auto &&f, int cur, int par, int64_t cost) -> void{
+      [&](auto &&f, int cur, int par, int64_t cost) -> void {
         for(auto &e : g[cur]){
-          sh[cur].push({e.cost, e.from, e.to});
+          heaps[cur].push({e.cost, e.from, e.to});
         }
 
         sub[cur].insert(cur);
@@ -386,23 +380,23 @@ int main(){
           if(e.to == par) continue;
           f(e.to, cur, e.cost);
 
-          sh[cur].meld(sh[e.to]);
+          heaps[cur].meld(heaps[e.to]);
           merge_technique(sub[cur], sub[cur], sub[e.to]);
         }
 
         if(par != -1){
-          while(not sh[cur].empty()){
-            auto [c, i, j] = sh[cur].top();
+          while(not heaps[cur].empty()){
+            auto [c, i, j] = heaps[cur].top();
             if((sub[cur].find(i) != sub[cur].end() and sub[cur].find(j) != sub[cur].end()) or
                (i == cur and j == par) or (i == par and j == cur)){
-              sh[cur].pop();
+              heaps[cur].pop();
             }else{
               break;
             }
           }
 
-          if(not sh[cur].empty()){
-            ans[index[{cur, par}]] = s - cost + std::get<0>(sh[cur].top());
+          if(not heaps[cur].empty()){
+            ans[index[{cur, par}]] = s - cost + std::get<0>(heaps[cur].top());
           }else{
             ans[index[{cur, par}]] = -1;
           }

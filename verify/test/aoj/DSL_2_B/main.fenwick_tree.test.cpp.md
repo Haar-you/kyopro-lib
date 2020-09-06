@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
+# :x: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#082039b3153b4a2410d6e14e04aca1cc">test/aoj/DSL_2_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum.cpp.html">Mylib/AlgebraicStructure/Group/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">Fenwick tree</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum.cpp.html">Sum group</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">Fenwick tree</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -64,9 +64,9 @@ int main(){
 
   for(auto [type, x, y] : input_tuples<int, int, int>(q)){
     if(type == 0){
-      fen.update(x-1, y);
+      fen.update(x - 1, y);
     }else{
-      std::cout << fen.get(x-1, y) << std::endl;
+      std::cout << fen.get(x - 1, y) << std::endl;
     }
   }
 
@@ -91,34 +91,34 @@ int main(){
  * @docs fenwick_tree.md
  */
 template <typename AbelianGroup>
-class FenwickTree{
+class FenwickTree {
   using value_type = typename AbelianGroup::value_type;
-  AbelianGroup G;
-  
+  const static AbelianGroup G;
+
   int size;
   std::vector<value_type> data;
-  
+
 public:
   FenwickTree(){}
   FenwickTree(int size):
-    size(size), data(size + 1, G.id())
+    size(size), data(size + 1, G())
   {}
-  
+
   void update(int i, const value_type &val){
     i += 1; // 1-index
-    
+
     while(i <= size){
-      data[i] = G.op(data[i], val);
+      data[i] = G(data[i], val);
       i += i & (-i);
     }
   }
-  
+
   value_type get(int i) const { // [0, i)
-    value_type ret = G.id();
+    value_type ret = G();
     i += 1; // 1-index
 
     while(i > 0){
-      ret = G.op(ret, data[i]);
+      ret = G(ret, data[i]);
       i -= i & (-i);
     }
 
@@ -126,24 +126,25 @@ public:
   }
 
   value_type get(int l, int r) const { // [l, r)
-    return G.op(get(r-1), G.inv(get(l-1)));
+    return G(get(r - 1), G.inv(get(l - 1)));
   }
-  
-  value_type at(int x) const {
-    return get(x, x+1);
+
+  value_type operator[](int x) const {
+    return get(x, x + 1);
   }
 };
 #line 2 "Mylib/AlgebraicStructure/Group/sum.cpp"
 
 /**
+ * @title Sum group
  * @docs sum.md
  */
 template <typename T>
-struct SumGroup{
+struct SumGroup {
   using value_type = T;
 
-  value_type id() const {return 0;}
-  value_type op(const value_type &a, const value_type &b) const {return a + b;}
+  value_type operator()() const {return 0;}
+  value_type operator()(const value_type &a, const value_type &b) const {return a + b;}
   value_type inv(const value_type &a) const {return -a;}
 };
 #line 4 "Mylib/IO/input_tuples.cpp"
@@ -156,8 +157,8 @@ struct SumGroup{
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -167,8 +168,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -177,8 +178,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -225,9 +226,9 @@ int main(){
 
   for(auto [type, x, y] : input_tuples<int, int, int>(q)){
     if(type == 0){
-      fen.update(x-1, y);
+      fen.update(x - 1, y);
     }else{
-      std::cout << fen.get(x-1, y) << std::endl;
+      std::cout << fen.get(x - 1, y) << std::endl;
     }
   }
 

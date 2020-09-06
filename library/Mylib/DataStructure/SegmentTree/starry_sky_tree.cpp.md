@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Starry-sky tree
+# :x: Starry-sky tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-01 07:13:20+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -65,8 +65,8 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_H/main.starry_sky.test.cpp.html">test/aoj/DSL_2_H/main.starry_sky.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/631/main.starry_sky.test.cpp.html">test/yukicoder/631/main.starry_sky.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_2_H/main.starry_sky.test.cpp.html">test/aoj/DSL_2_H/main.starry_sky.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/631/main.starry_sky.test.cpp.html">test/yukicoder/631/main.starry_sky.test.cpp</a>
 
 
 ## Code
@@ -84,7 +84,7 @@ layout: default
  * @docs starry_sky_tree.md
  */
 template <typename T, typename Compare>
-class StarrySkyTree{
+class StarrySkyTree {
   int depth, size, hsize;
   std::vector<T> data;
 
@@ -100,7 +100,7 @@ class StarrySkyTree{
     while(i >= 1){
       if(i < hsize){
         const auto d = f(data[i << 1 | 0], data[i << 1 | 1]);
-        
+
         data[i << 1 | 0] -= d;
         data[i << 1 | 1] -= d;
         data[i] += d;
@@ -109,7 +109,7 @@ class StarrySkyTree{
       i >>= 1;
     }
   }
-  
+
   std::optional<T> get(int i, int l, int r, int s, int t, T val) const {
     if(r <= s or t <= l) return std::nullopt;
     if(s <= l and r <= t) return val + data[i];
@@ -124,7 +124,7 @@ class StarrySkyTree{
 
 public:
   StarrySkyTree(int n):
-    depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
+    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
     size(1 << depth),
     hsize(size / 2),
     data(size, 0)
@@ -181,7 +181,7 @@ public:
  * @docs starry_sky_tree.md
  */
 template <typename T, typename Compare>
-class StarrySkyTree{
+class StarrySkyTree {
   int depth, size, hsize;
   std::vector<T> data;
 
@@ -197,7 +197,7 @@ class StarrySkyTree{
     while(i >= 1){
       if(i < hsize){
         const auto d = f(data[i << 1 | 0], data[i << 1 | 1]);
-        
+
         data[i << 1 | 0] -= d;
         data[i << 1 | 1] -= d;
         data[i] += d;
@@ -206,7 +206,7 @@ class StarrySkyTree{
       i >>= 1;
     }
   }
-  
+
   std::optional<T> get(int i, int l, int r, int s, int t, T val) const {
     if(r <= s or t <= l) return std::nullopt;
     if(s <= l and r <= t) return val + data[i];
@@ -221,7 +221,7 @@ class StarrySkyTree{
 
 public:
   StarrySkyTree(int n):
-    depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
+    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
     size(1 << depth),
     hsize(size / 2),
     data(size, 0)

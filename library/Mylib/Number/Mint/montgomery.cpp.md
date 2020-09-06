@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#ed8374f4a8b62e2301eb75f9564224fe">Mylib/Number/Mint</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mint/montgomery.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-18 17:33:37+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -49,13 +49,13 @@ layout: default
  * @docs montgomery.md
  */
 template <int64_t M_>
-struct Montgomery{
+struct Montgomery {
   constexpr static int64_t MOD = M_;
   constexpr static int b = 64 - __builtin_clzll(MOD);
   constexpr static int64_t R = 1LL << b;
   constexpr static int64_t R2 = (R % MOD) * (R % MOD) % MOD;
 
-  constexpr static int64_t mask = R - 1; 
+  constexpr static int64_t mask = R - 1;
 
   constexpr static int64_t init(){
     int64_t ret = 0, r = R, i = 1, t = 0;
@@ -88,7 +88,7 @@ struct Montgomery{
       if(a < 2 * MOD) a -= MOD;
       else a %= MOD;
     }
-    
+
     val = reduce(a * R2);
   }
   Montgomery(const Montgomery &that): val(that.val){}
@@ -125,7 +125,7 @@ struct Montgomery{
   auto operator-(const Montgomery &that) const {auto ret = *this; return ret -= that;}
   auto operator*(const Montgomery &that) const {auto ret = *this; return ret *= that;}
   auto operator/(const Montgomery &that) const {auto ret = *this; return ret /= that;}
-  
+
   auto power(int64_t p) const {
     Montgomery ret = 1, e = *this;
 
@@ -142,7 +142,7 @@ struct Montgomery{
 
   auto inv() const {return power(MOD - 2);}
   static auto inv(int64_t n){return Montgomery(n).inv();}
-  
+
   friend auto operator+(int64_t a, const Montgomery &b) {return Montgomery(a) + b;}
   friend auto operator-(int64_t a, const Montgomery &b) {return Montgomery(a) - b;}
   friend auto operator*(int64_t a, const Montgomery &b) {return Montgomery(a) * b;}
@@ -151,9 +151,9 @@ struct Montgomery{
   bool operator==(const Montgomery &that) const {
     return (val >= MOD ? val - MOD : val) == (that.val >= MOD ? that.val - MOD : that.val);
   }
-  
+
   bool operator!=(const Montgomery &that) const {return !(*this == that);}
-  
+
   friend std::ostream& operator<<(std::ostream& s, const Montgomery &a){
     return s << reduce(a.val);
   }
@@ -182,13 +182,13 @@ struct Montgomery{
  * @docs montgomery.md
  */
 template <int64_t M_>
-struct Montgomery{
+struct Montgomery {
   constexpr static int64_t MOD = M_;
   constexpr static int b = 64 - __builtin_clzll(MOD);
   constexpr static int64_t R = 1LL << b;
   constexpr static int64_t R2 = (R % MOD) * (R % MOD) % MOD;
 
-  constexpr static int64_t mask = R - 1; 
+  constexpr static int64_t mask = R - 1;
 
   constexpr static int64_t init(){
     int64_t ret = 0, r = R, i = 1, t = 0;
@@ -221,7 +221,7 @@ struct Montgomery{
       if(a < 2 * MOD) a -= MOD;
       else a %= MOD;
     }
-    
+
     val = reduce(a * R2);
   }
   Montgomery(const Montgomery &that): val(that.val){}
@@ -258,7 +258,7 @@ struct Montgomery{
   auto operator-(const Montgomery &that) const {auto ret = *this; return ret -= that;}
   auto operator*(const Montgomery &that) const {auto ret = *this; return ret *= that;}
   auto operator/(const Montgomery &that) const {auto ret = *this; return ret /= that;}
-  
+
   auto power(int64_t p) const {
     Montgomery ret = 1, e = *this;
 
@@ -275,7 +275,7 @@ struct Montgomery{
 
   auto inv() const {return power(MOD - 2);}
   static auto inv(int64_t n){return Montgomery(n).inv();}
-  
+
   friend auto operator+(int64_t a, const Montgomery &b) {return Montgomery(a) + b;}
   friend auto operator-(int64_t a, const Montgomery &b) {return Montgomery(a) - b;}
   friend auto operator*(int64_t a, const Montgomery &b) {return Montgomery(a) * b;}
@@ -284,9 +284,9 @@ struct Montgomery{
   bool operator==(const Montgomery &that) const {
     return (val >= MOD ? val - MOD : val) == (that.val >= MOD ? that.val - MOD : that.val);
   }
-  
+
   bool operator!=(const Montgomery &that) const {return !(*this == that);}
-  
+
   friend std::ostream& operator<<(std::ostream& s, const Montgomery &a){
     return s << reduce(a.val);
   }

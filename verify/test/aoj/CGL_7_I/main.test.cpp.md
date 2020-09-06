@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/CGL_7_I/main.test.cpp
+# :x: test/aoj/CGL_7_I/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#c18ddec1793607d6fec9ebe5c3206dbe">test/aoj/CGL_7_I</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_7_I/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-22 01:47:57+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_I">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_I</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/area_intersection_of_circles.cpp.html">Area of intersection between two circles</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Geometry/Float/intersect_circles.cpp.html">Intersection between two circles</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/area_intersection_of_circles.cpp.html">Area of intersection between two circles</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
+* :x: <a href="../../../../library/Mylib/Geometry/Float/intersect_circles.cpp.html">Intersection between two circles</a>
 
 
 ## Code
@@ -93,7 +93,7 @@ int main(){
  */
 
 template <typename T>
-struct Vec{
+struct Vec {
   T x, y;
   Vec(){}
   Vec(T x, T y): x(x), y(y){}
@@ -103,11 +103,11 @@ struct Vec{
   friend auto operator-(const Vec &a){return Vec(-a.x, -a.y);}
 
   friend bool operator==(const Vec &a, const Vec &b){return a.x == b.x and a.y == b.y;}
-  friend bool operator!=(const Vec &a, const Vec &b){return !(a==b);}
+  friend bool operator!=(const Vec &a, const Vec &b){return !(a == b);}
   friend bool operator<(const Vec &a, const Vec &b){return a.x < b.x or (a.x == b.x and a.y < b.y);}
-  
+
   friend std::istream& operator>>(std::istream &s, Vec &a){
-    s >> a.x >> a.y; return s;
+    s >> a.x  >> a.y; return s;
   }
 };
 
@@ -141,7 +141,7 @@ T angle_diff(const Vec<T> &a, const Vec<T> &b){
 }
 
 
-template <typename T> struct Line{
+template <typename T> struct Line {
   Point<T> from, to;
   Line(): from(), to(){}
   Line(const Point<T> &from, const Point<T> &to): from(from), to(to){}
@@ -163,7 +163,7 @@ template <typename T> T cross(const Line<T> &a, const Line<T> &b){return cross(d
 
 template <typename T> using Polygon = std::vector<Point<T>>;
 
-template <typename T> struct Circle{
+template <typename T> struct Circle {
   Point<T> center;
   T radius;
   Circle(): center(), radius(0){}
@@ -178,16 +178,16 @@ template <typename T> struct Circle{
  * @docs double_eps.md
  */
 template <typename T>
-struct DoubleEps{
+struct DoubleEps {
   using value_type = T;
-  
+
   static T eps;
 
   T value;
 
   DoubleEps(): value(0){}
   DoubleEps(T value): value(value){}
-  
+
   auto& operator=(const DoubleEps &rhs){this->value = rhs.value; return *this;}
   auto& operator+=(const DoubleEps &rhs){this->value += rhs.value; return *this;}
   auto& operator-=(const DoubleEps &rhs){this->value -= rhs.value; return *this;}
@@ -207,7 +207,7 @@ struct DoubleEps{
   bool operator>=(const DoubleEps &rhs) const {return !(*this < rhs);}
 
   auto operator-() const {return DoubleEps(-(this->value));}
-  
+
   explicit operator double() const noexcept {return value;}
   explicit operator long double() const noexcept {return value;}
 
@@ -217,9 +217,9 @@ struct DoubleEps{
 
 template <typename T> T DoubleEps<T>::eps;
 
-namespace std{
+namespace std {
   template <typename T>
-  class numeric_limits<DoubleEps<T>>{
+  class numeric_limits<DoubleEps<T>> {
   public:
     static DoubleEps<T> infinity() {return numeric_limits<T>::infinity();}
     static DoubleEps<T> min() {return numeric_limits<T>::min();}
@@ -238,15 +238,14 @@ template <typename T> DoubleEps<T> atan2(DoubleEps<T> y, DoubleEps<T> x){return 
 template <typename T> DoubleEps<T> abs(DoubleEps<T> x){return std::abs((T)x);}
 
 template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
-
 #line 4 "Mylib/Geometry/Float/intersect_circles.cpp"
 
 /**
  * @title Intersection between two circles
  * @docs intersect_circles.md
  */
-namespace intersect_circles{
-  enum Status{
+namespace intersect_circles {
+  enum Status {
               SAME          = 0b000001,
               INSIDE        = 0b000010,
               INSCRIBED     = 0b000100,
@@ -256,17 +255,17 @@ namespace intersect_circles{
   };
 
   template <typename T>
-  struct Result{
+  struct Result {
     Status status;
     std::vector<Point<T>> crosspoints;
   };
-  
+
   template <typename T>
   auto check(const Circle<T> &a, const Circle<T> &b){
     const T d = abs(a.center - b.center);
     const T x = acos((a.radius * a.radius + d * d - b.radius * b.radius) / ((T)2.0 * d * a.radius));
     const T t = atan2(b.center.y - a.center.y, b.center.x - a.center.x);
-    
+
     if(a.radius + b.radius == d){
       return Result<T>({CIRCUMSCRIBED, {a.center + polar(a.radius, t)}});
     }
@@ -282,7 +281,7 @@ namespace intersect_circles{
     else if(abs(a.radius - b.radius) > d){
       return Result<T>({INSIDE, {}});
     }
-    
+
     return Result<T>({SAME, {}});
   }
 }
@@ -295,7 +294,7 @@ namespace intersect_circles{
 template <typename T>
 T area_of_intersection_of_circles(const Circle<T> &a, const Circle<T> &b){
   auto [s, p] = intersect_circles::check(a, b);
-  
+
   switch(s){
   case intersect_circles::SAME: {
     return a.radius * a.radius * M_PI;
@@ -318,7 +317,7 @@ T area_of_intersection_of_circles(const Circle<T> &a, const Circle<T> &b){
       T ang = acos((b.radius * b.radius + d * d - a.radius * a.radius) / (b.radius * d * 2.0));
       ret += (ang - sin(ang * 2.0) / 2.0) * b.radius * b.radius;
     }
-    
+
     return ret;
   }
   case intersect_circles::CIRCUMSCRIBED:

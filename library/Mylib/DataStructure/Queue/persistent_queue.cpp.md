@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Persistent queue
+# :x: Persistent queue
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6b1c73113eb1a95c1a861edccc8def0a">Mylib/DataStructure/Queue</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Queue/persistent_queue.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -55,7 +55,7 @@ layout: default
 	- Time complexity $O(1)$
 - `size()`
 	- キューのサイズを得る。
-	- Time complexity $O(1)$ 
+	- Time complexity $O(1)$
 
 ## Requirements
 
@@ -70,7 +70,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/persistent_queue/main.test.cpp.html">test/yosupo-judge/persistent_queue/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/persistent_queue/main.test.cpp.html">test/yosupo-judge/persistent_queue/main.test.cpp</a>
 
 
 ## Code
@@ -86,10 +86,10 @@ layout: default
  * @docs persistent_queue.md
  */
 template <typename T>
-class PersistentQueue{
+class PersistentQueue {
   constexpr static int MAX_SIZE_2 = 20; // size <= 2 ^ MAX_SIZE_2
-  
-  struct node{
+
+  struct node {
     T value;
     std::array<node*, MAX_SIZE_2> ancestors;
     int depth = 0;
@@ -98,7 +98,7 @@ class PersistentQueue{
   node *front_node = nullptr, *back_node = nullptr;
 
   PersistentQueue(node* front_node, node* back_node): front_node(front_node), back_node(back_node){}
-  
+
 public:
   PersistentQueue(){}
   PersistentQueue(const T &value){
@@ -106,21 +106,21 @@ public:
     t->value = value;
     back_node = front_node = t;
   }
-  
+
   PersistentQueue push(const T &value) const {
     node *t = new node();
 
     t->value = value;
-    
+
     t->ancestors[0] = back_node;
     for(int i = 1; i < MAX_SIZE_2; ++i){
-      node *s = t->ancestors[i-1];
-      if(s) t->ancestors[i] = s->ancestors[i-1];
+      node *s = t->ancestors[i - 1];
+      if(s) t->ancestors[i] = s->ancestors[i - 1];
       else break;
     }
 
     t->depth = back_node ? back_node->depth + 1 : 0;
-    
+
     return PersistentQueue(front_node ? front_node : t, t);
   }
 
@@ -128,7 +128,7 @@ public:
     if(back_node->depth == front_node->depth){
       return PersistentQueue(nullptr, nullptr);
     }
-    
+
     int d = back_node->depth - front_node->depth - 1;
 
     node *t = back_node;
@@ -140,7 +140,7 @@ public:
       }
       if(d == 0) break;
     }
-    
+
     return PersistentQueue(t, back_node);
   }
 
@@ -175,10 +175,10 @@ public:
  * @docs persistent_queue.md
  */
 template <typename T>
-class PersistentQueue{
+class PersistentQueue {
   constexpr static int MAX_SIZE_2 = 20; // size <= 2 ^ MAX_SIZE_2
-  
-  struct node{
+
+  struct node {
     T value;
     std::array<node*, MAX_SIZE_2> ancestors;
     int depth = 0;
@@ -187,7 +187,7 @@ class PersistentQueue{
   node *front_node = nullptr, *back_node = nullptr;
 
   PersistentQueue(node* front_node, node* back_node): front_node(front_node), back_node(back_node){}
-  
+
 public:
   PersistentQueue(){}
   PersistentQueue(const T &value){
@@ -195,21 +195,21 @@ public:
     t->value = value;
     back_node = front_node = t;
   }
-  
+
   PersistentQueue push(const T &value) const {
     node *t = new node();
 
     t->value = value;
-    
+
     t->ancestors[0] = back_node;
     for(int i = 1; i < MAX_SIZE_2; ++i){
-      node *s = t->ancestors[i-1];
-      if(s) t->ancestors[i] = s->ancestors[i-1];
+      node *s = t->ancestors[i - 1];
+      if(s) t->ancestors[i] = s->ancestors[i - 1];
       else break;
     }
 
     t->depth = back_node ? back_node->depth + 1 : 0;
-    
+
     return PersistentQueue(front_node ? front_node : t, t);
   }
 
@@ -217,7 +217,7 @@ public:
     if(back_node->depth == front_node->depth){
       return PersistentQueue(nullptr, nullptr);
     }
-    
+
     int d = back_node->depth - front_node->depth - 1;
 
     node *t = back_node;
@@ -229,7 +229,7 @@ public:
       }
       if(d == 0) break;
     }
-    
+
     return PersistentQueue(t, back_node);
   }
 

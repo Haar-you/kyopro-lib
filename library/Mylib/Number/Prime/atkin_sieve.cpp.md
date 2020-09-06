@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/atkin_sieve.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-11 08:51:20+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -48,12 +48,13 @@ layout: default
 ```cpp
 #pragma once
 #include <vector>
+#include <cstdint>
 
 /**
  * @title Sieve of Atkin
  * @docs atkin_sieve.md
  */
-class AtkinSieve{
+class AtkinSieve {
   std::vector<bool> is_prime;
 
 public:
@@ -105,12 +106,13 @@ public:
 ```cpp
 #line 2 "Mylib/Number/Prime/atkin_sieve.cpp"
 #include <vector>
+#include <cstdint>
 
 /**
  * @title Sieve of Atkin
  * @docs atkin_sieve.md
  */
-class AtkinSieve{
+class AtkinSieve {
   std::vector<bool> is_prime;
 
 public:

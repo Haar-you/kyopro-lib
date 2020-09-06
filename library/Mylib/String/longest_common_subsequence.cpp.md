@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Longest common subsequence
+# :x: Longest common subsequence
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/longest_common_subsequence.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -49,12 +49,12 @@ layout: default
 ## Problems
 
 ## References
- 
+
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/ALDS1_10_C/main.test.cpp.html">test/aoj/ALDS1_10_C/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/ALDS1_10_C/main.test.cpp.html">test/aoj/ALDS1_10_C/main.test.cpp</a>
 
 
 ## Code
@@ -73,14 +73,14 @@ layout: default
 template <typename Container, typename T = typename Container::value_type>
 int lcs(const Container &a, const Container &b){
   const int n = a.size(), m = b.size();
-  
-  std::vector<std::vector<int>> dp(n+1, std::vector<int>(m+1, 0));
+
+  std::vector<std::vector<int>> dp(n + 1, std::vector<int>(m + 1, 0));
   for(int i = 1; i <= n; ++i){
     for(int j = 1; j <= m; ++j){
-      dp[i][j] = a[i-1] == b[j-1] ? dp[i-1][j-1] + 1 : std::max(dp[i-1][j], dp[i][j-1]);
+      dp[i][j] = a[i - 1] == b[j - 1] ? dp[i - 1][j - 1] + 1 : std::max(dp[i - 1][j], dp[i][j - 1]);
     }
   }
-    
+
   return dp[n][m];
 }
 
@@ -101,14 +101,14 @@ int lcs(const Container &a, const Container &b){
 template <typename Container, typename T = typename Container::value_type>
 int lcs(const Container &a, const Container &b){
   const int n = a.size(), m = b.size();
-  
-  std::vector<std::vector<int>> dp(n+1, std::vector<int>(m+1, 0));
+
+  std::vector<std::vector<int>> dp(n + 1, std::vector<int>(m + 1, 0));
   for(int i = 1; i <= n; ++i){
     for(int j = 1; j <= m; ++j){
-      dp[i][j] = a[i-1] == b[j-1] ? dp[i-1][j-1] + 1 : std::max(dp[i-1][j], dp[i][j-1]);
+      dp[i][j] = a[i - 1] == b[j - 1] ? dp[i - 1][j - 1] + 1 : std::max(dp[i - 1][j], dp[i][j - 1]);
     }
   }
-    
+
   return dp[n][m];
 }
 

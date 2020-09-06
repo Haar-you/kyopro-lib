@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Binary trie
+# :x: Binary trie
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#aacfe2e228752c2f7bc46438cb1a6bd5">Mylib/DataStructure/Trie</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Trie/binary_trie.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-11 06:39:26+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -53,7 +53,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/set_xor_min/main.test.cpp.html">test/yosupo-judge/set_xor_min/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/set_xor_min/main.test.cpp.html">test/yosupo-judge/set_xor_min/main.test.cpp</a>
 
 
 ## Code
@@ -68,9 +68,10 @@ layout: default
  * @title Binary trie
  * @docs binary_trie.md
  */
-template <typename T, unsigned int B> class BinaryTrie{
+template <typename T, unsigned int B>
+class BinaryTrie {
 protected:
-  struct node{
+  struct node {
     int count;
     node *ch[2];
     node(): count(0){
@@ -91,7 +92,7 @@ protected:
     int b = (val >> (B - depth)) & 1;
     return count(t->ch[b], val, depth + 1);
   }
-  
+
 public:
   int count(T val) const {
     return count(root, val);
@@ -106,8 +107,8 @@ protected:
     if(!t) return;
     if(!t->ch[0] and !t->ch[1]) for(int i = 0; i < t->count; ++i) ret.push_back(val);
 
-    if(t->ch[0]) to_list(t->ch[0], val<<1, ret);
-    if(t->ch[1]) to_list(t->ch[1], (val<<1)|1, ret);
+    if(t->ch[0]) to_list(t->ch[0], val << 1, ret);
+    if(t->ch[1]) to_list(t->ch[1], (val << 1) | 1, ret);
   }
 
 public:
@@ -128,12 +129,12 @@ protected:
     t->ch[b] = insert(t->ch[b], val, depth + 1);
     return t;
   }
-  
+
 public:
   void insert(T val){
     root = insert(root, val);
   }
-  
+
 protected:
   node* erase(node *t, T val, unsigned int depth = 1){
     if(!t) return t;
@@ -146,7 +147,7 @@ protected:
     t->ch[b] = erase(t->ch[b], val, depth + 1);
     return t;
   }
-  
+
 public:
   void erase(T val){
     root = erase(root, val);
@@ -159,7 +160,7 @@ protected:
     b ^= !t->ch[b];
     return min_element(t->ch[b], diff, depth + 1) | (b << (B - depth));
   }
-  
+
 public:
   T min_element(T diff = 0) const {
     return min_element(root, diff);
@@ -172,7 +173,7 @@ protected:
     b ^= !t->ch[b];
     return max_element(t->ch[b], diff, depth + 1) | (b << (B - depth));
   }
-  
+
 public:
   T max_element(T diff = 0) const {
     return max_element(root, diff);
@@ -222,9 +223,10 @@ public:
  * @title Binary trie
  * @docs binary_trie.md
  */
-template <typename T, unsigned int B> class BinaryTrie{
+template <typename T, unsigned int B>
+class BinaryTrie {
 protected:
-  struct node{
+  struct node {
     int count;
     node *ch[2];
     node(): count(0){
@@ -245,7 +247,7 @@ protected:
     int b = (val >> (B - depth)) & 1;
     return count(t->ch[b], val, depth + 1);
   }
-  
+
 public:
   int count(T val) const {
     return count(root, val);
@@ -260,8 +262,8 @@ protected:
     if(!t) return;
     if(!t->ch[0] and !t->ch[1]) for(int i = 0; i < t->count; ++i) ret.push_back(val);
 
-    if(t->ch[0]) to_list(t->ch[0], val<<1, ret);
-    if(t->ch[1]) to_list(t->ch[1], (val<<1)|1, ret);
+    if(t->ch[0]) to_list(t->ch[0], val << 1, ret);
+    if(t->ch[1]) to_list(t->ch[1], (val << 1) | 1, ret);
   }
 
 public:
@@ -282,12 +284,12 @@ protected:
     t->ch[b] = insert(t->ch[b], val, depth + 1);
     return t;
   }
-  
+
 public:
   void insert(T val){
     root = insert(root, val);
   }
-  
+
 protected:
   node* erase(node *t, T val, unsigned int depth = 1){
     if(!t) return t;
@@ -300,7 +302,7 @@ protected:
     t->ch[b] = erase(t->ch[b], val, depth + 1);
     return t;
   }
-  
+
 public:
   void erase(T val){
     root = erase(root, val);
@@ -313,7 +315,7 @@ protected:
     b ^= !t->ch[b];
     return min_element(t->ch[b], diff, depth + 1) | (b << (B - depth));
   }
-  
+
 public:
   T min_element(T diff = 0) const {
     return min_element(root, diff);
@@ -326,7 +328,7 @@ protected:
     b ^= !t->ch[b];
     return max_element(t->ch[b], diff, depth + 1) | (b << (B - depth));
   }
-  
+
 public:
   T max_element(T diff = 0) const {
     return max_element(root, diff);

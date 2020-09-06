@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/bernoulli_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-20 09:35:37+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -49,7 +49,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="factorial_table.cpp.html">Factorial table</a>
+* :x: <a href="factorial_table.cpp.html">Factorial table</a>
 
 
 ## Verified with
@@ -64,6 +64,7 @@ layout: default
 ```cpp
 #pragma once
 #include <vector>
+#include <cstdint>
 #include "Mylib/Combinatorics/factorial_table.cpp"
 
 /**
@@ -72,18 +73,18 @@ layout: default
  */
 template <typename Ft, typename T = typename Ft::value_type>
 std::vector<T> bernoulli_number(int64_t n, const Ft &ft){
-  std::vector<T> ret(n+1);
+  std::vector<T> ret(n + 1);
 
   ret[0] = 1;
 
   for(int64_t i = 1; i <= n; ++i){
-    for(int k = 0; k <= i-1; ++k){
-      ret[i] += ft.C(i+1,k) * ret[k];
+    for(int k = 0; k <= i - 1; ++k){
+      ret[i] += ft.C(i + 1, k) * ret[k];
     }
-    ret[i] /= i+1;
+    ret[i] /= i + 1;
     ret[i] = -ret[i];
   }
-  
+
   return ret;
 }
 
@@ -95,15 +96,17 @@ std::vector<T> bernoulli_number(int64_t n, const Ft &ft){
 ```cpp
 #line 2 "Mylib/Combinatorics/bernoulli_number.cpp"
 #include <vector>
+#include <cstdint>
 #line 3 "Mylib/Combinatorics/factorial_table.cpp"
 #include <cassert>
+#line 5 "Mylib/Combinatorics/factorial_table.cpp"
 
 /**
  * @title Factorial table
  * @docs factorial_table.md
  */
 template <typename T>
-class FactorialTable{
+class FactorialTable {
 public:
   using value_type = T;
 
@@ -113,25 +116,25 @@ private:
 
 public:
   FactorialTable(int N){
-    f_table.assign(N+1, 1);
-    if_table.assign(N+1, 1);
-    
+    f_table.assign(N + 1, 1);
+    if_table.assign(N + 1, 1);
+
     for(int i = 1; i <= N; ++i){
-      f_table[i] = f_table[i-1] * i;
+      f_table[i] = f_table[i - 1] * i;
     }
-    
+
     if_table[N] = f_table[N].inv();
 
-    for(int i = N-1; i >= 0; --i){
-      if_table[i] = if_table[i+1] * (i+1);
+    for(int i = N; --i >= 0;){
+      if_table[i] = if_table[i + 1] * (i + 1);
     }
   }
-  
+
   T factorial(int64_t i) const {
     assert(i < (int)f_table.size());
     return f_table[i];
   }
-  
+
   T inv_factorial(int64_t i) const {
     assert(i < (int)if_table.size());
     return if_table[i];
@@ -139,20 +142,20 @@ public:
 
   T P(int64_t n, int64_t k) const {
     if(n < k or n < 0 or k < 0) return 0;
-    return factorial(n) * inv_factorial(n-k);
+    return factorial(n) * inv_factorial(n - k);
   }
 
   T C(int64_t n, int64_t k) const {
     if(n < k or n < 0 or k < 0) return 0;
-    return P(n,k) * inv_factorial(k);
+    return P(n, k) * inv_factorial(k);
   }
 
   T H(int64_t n, int64_t k) const {
     if(n == 0 and k == 0) return 1;
-    return C(n+k-1, k);
+    return C(n + k - 1, k);
   }
 };
-#line 4 "Mylib/Combinatorics/bernoulli_number.cpp"
+#line 5 "Mylib/Combinatorics/bernoulli_number.cpp"
 
 /**
  * @title Bernoulli number
@@ -160,18 +163,18 @@ public:
  */
 template <typename Ft, typename T = typename Ft::value_type>
 std::vector<T> bernoulli_number(int64_t n, const Ft &ft){
-  std::vector<T> ret(n+1);
+  std::vector<T> ret(n + 1);
 
   ret[0] = 1;
 
   for(int64_t i = 1; i <= n; ++i){
-    for(int k = 0; k <= i-1; ++k){
-      ret[i] += ft.C(i+1,k) * ret[k];
+    for(int k = 0; k <= i - 1; ++k){
+      ret[i] += ft.C(i + 1, k) * ret[k];
     }
-    ret[i] /= i+1;
+    ret[i] /= i + 1;
     ret[i] = -ret[i];
   }
-  
+
   return ret;
 }
 

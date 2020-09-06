@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/631/main.starry_sky.test.cpp
+# :x: test/yukicoder/631/main.starry_sky.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0b2f27755ad8078580256305f9366a63">test/yukicoder/631</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/631/main.starry_sky.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-01 07:13:20+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/631">https://yukicoder.me/problems/no/631</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp.html">Starry-sky tree</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp.html">Starry-sky tree</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -55,7 +55,6 @@ layout: default
 #include <iostream>
 #include <vector>
 #include <functional>
-
 #include "Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp"
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
@@ -63,27 +62,27 @@ layout: default
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
-  int N; std::cin >> N;
-  
-  auto seg = StarrySkyTree<int64_t, std::greater<>>(N-1);
 
-  auto T = input_vector<int64_t>(N-1);
-    
-  for(int i = 0; i < N-1; ++i){
-    T[i] += 3 * (N-1-i);
+  int N; std::cin >> N;
+
+  auto seg = StarrySkyTree<int64_t, std::greater<>>(N - 1);
+
+  auto T = input_vector<int64_t>(N - 1);
+
+  for(int i = 0; i < N - 1; ++i){
+    T[i] += 3 * (N - 1 - i);
   }
 
   seg.init_with_vector(T);
-    
+
   int M; std::cin >> M;
 
   for(auto [L, R, D] : input_tuples<int, int, int>(M)){
     --L, --R;
 
-    seg.update(L, R+1, D);
-      
-    auto ans = seg.get(0, N-1);
+    seg.update(L, R + 1, D);
+
+    auto ans = seg.get(0, N - 1);
     std::cout << ans << std::endl;
   }
 
@@ -102,7 +101,6 @@ int main(){
 #include <iostream>
 #include <vector>
 #include <functional>
-
 #line 3 "Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp"
 #include <optional>
 #include <algorithm>
@@ -112,7 +110,7 @@ int main(){
  * @docs starry_sky_tree.md
  */
 template <typename T, typename Compare>
-class StarrySkyTree{
+class StarrySkyTree {
   int depth, size, hsize;
   std::vector<T> data;
 
@@ -128,7 +126,7 @@ class StarrySkyTree{
     while(i >= 1){
       if(i < hsize){
         const auto d = f(data[i << 1 | 0], data[i << 1 | 1]);
-        
+
         data[i << 1 | 0] -= d;
         data[i << 1 | 1] -= d;
         data[i] += d;
@@ -137,7 +135,7 @@ class StarrySkyTree{
       i >>= 1;
     }
   }
-  
+
   std::optional<T> get(int i, int l, int r, int s, int t, T val) const {
     if(r <= s or t <= l) return std::nullopt;
     if(s <= l and r <= t) return val + data[i];
@@ -152,7 +150,7 @@ class StarrySkyTree{
 
 public:
   StarrySkyTree(int n):
-    depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
+    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
     size(1 << depth),
     hsize(size / 2),
     data(size, 0)
@@ -220,8 +218,8 @@ std::vector<std::vector<T>> input_vector(int N, int M){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -231,8 +229,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -241,8 +239,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -280,32 +278,32 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 10 "test/yukicoder/631/main.starry_sky.test.cpp"
+#line 9 "test/yukicoder/631/main.starry_sky.test.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
-  int N; std::cin >> N;
-  
-  auto seg = StarrySkyTree<int64_t, std::greater<>>(N-1);
 
-  auto T = input_vector<int64_t>(N-1);
-    
-  for(int i = 0; i < N-1; ++i){
-    T[i] += 3 * (N-1-i);
+  int N; std::cin >> N;
+
+  auto seg = StarrySkyTree<int64_t, std::greater<>>(N - 1);
+
+  auto T = input_vector<int64_t>(N - 1);
+
+  for(int i = 0; i < N - 1; ++i){
+    T[i] += 3 * (N - 1 - i);
   }
 
   seg.init_with_vector(T);
-    
+
   int M; std::cin >> M;
 
   for(auto [L, R, D] : input_tuples<int, int, int>(M)){
     --L, --R;
 
-    seg.update(L, R+1, D);
-      
-    auto ans = seg.get(0, N-1);
+    seg.update(L, R + 1, D);
+
+    auto ans = seg.get(0, N - 1);
     std::cout << ans << std::endl;
   }
 

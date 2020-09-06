@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 2D Imos algorithm
+# :x: 2D Imos algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6dc6d5a2cac82b39a08fd9ff32ab6e48">Mylib/Algorithm/Imos</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Imos/imos_2d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_5_B/main.test.cpp.html">test/aoj/DSL_5_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_5_B/main.test.cpp.html">test/aoj/DSL_5_B/main.test.cpp</a>
 
 
 ## Code
@@ -53,14 +53,15 @@ layout: default
  * @title 2D Imos algorithm
  * @docs imos_2d.md
  */
-template <typename T> struct Imos2D{
+template <typename T>
+struct Imos2D {
   using value_type = T;
-  
+
   std::vector<std::vector<T>> vec;
   int n, m;
-  Imos2D(int n, int m): vec(n+1, std::vector<T>(m+1)), n(n), m(m){}
+  Imos2D(int n, int m): vec(n + 1, std::vector<T>(m + 1)), n(n), m(m){}
 
-  void add(int a1, int b1, int a2, int b2){ // [a1,a2) [b1,b2)
+  void add(int a1, int b1, int a2, int b2){ // [a1, a2) [b1, b2)
     vec[a1][b1] += 1;
     vec[a2][b2] += 1;
     vec[a1][b2] -= 1;
@@ -69,14 +70,14 @@ template <typename T> struct Imos2D{
 
   void build(){
     for(int i = 0; i < n; ++i){
-      for(int j = 0; j < m+1; ++j){
-        vec[i+1][j] += vec[i][j];
+      for(int j = 0; j < m + 1; ++j){
+        vec[i + 1][j] += vec[i][j];
       }
     }
 
-    for(int i = 0; i < n+1; ++i){
+    for(int i = 0; i < n + 1; ++i){
       for(int j = 0; j < m; ++j){
-        vec[i][j+1] += vec[i][j];
+        vec[i][j + 1] += vec[i][j];
       }
     }
   }
@@ -97,14 +98,15 @@ template <typename T> struct Imos2D{
  * @title 2D Imos algorithm
  * @docs imos_2d.md
  */
-template <typename T> struct Imos2D{
+template <typename T>
+struct Imos2D {
   using value_type = T;
-  
+
   std::vector<std::vector<T>> vec;
   int n, m;
-  Imos2D(int n, int m): vec(n+1, std::vector<T>(m+1)), n(n), m(m){}
+  Imos2D(int n, int m): vec(n + 1, std::vector<T>(m + 1)), n(n), m(m){}
 
-  void add(int a1, int b1, int a2, int b2){ // [a1,a2) [b1,b2)
+  void add(int a1, int b1, int a2, int b2){ // [a1, a2) [b1, b2)
     vec[a1][b1] += 1;
     vec[a2][b2] += 1;
     vec[a1][b2] -= 1;
@@ -113,14 +115,14 @@ template <typename T> struct Imos2D{
 
   void build(){
     for(int i = 0; i < n; ++i){
-      for(int j = 0; j < m+1; ++j){
-        vec[i+1][j] += vec[i][j];
+      for(int j = 0; j < m + 1; ++j){
+        vec[i + 1][j] += vec[i][j];
       }
     }
 
-    for(int i = 0; i < n+1; ++i){
+    for(int i = 0; i < n + 1; ++i){
       for(int j = 0; j < m; ++j){
-        vec[i][j+1] += vec[i][j];
+        vec[i][j + 1] += vec[i][j];
       }
     }
   }

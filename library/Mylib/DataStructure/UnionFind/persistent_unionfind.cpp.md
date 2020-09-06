@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Persistent union-find
+# :x: Persistent union-find
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3ff74e8366c88d06b530f361450b1117">Mylib/DataStructure/UnionFind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/UnionFind/persistent_unionfind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-06 22:54:09+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -47,12 +47,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../Array/persistent_array.cpp.html">Persistent array</a>
+* :x: <a href="../Array/persistent_array.cpp.html">Persistent array</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/persistent_unionfind/main.test.cpp.html">test/yosupo-judge/persistent_unionfind/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/persistent_unionfind/main.test.cpp.html">test/yosupo-judge/persistent_unionfind/main.test.cpp</a>
 
 
 ## Code
@@ -68,7 +68,7 @@ layout: default
  * @title Persistent union-find
  * @docs persistent_unionfind.md
  */
-class PersistentUnionFind{
+class PersistentUnionFind {
   PersistentArray<int> par;
 
   PersistentUnionFind(PersistentArray<int> par): par(par){}
@@ -76,27 +76,27 @@ class PersistentUnionFind{
 public:
   PersistentUnionFind(){}
   PersistentUnionFind(int n): par(PersistentArray<int>(std::vector<int>(n, -1))){}
-  
+
   int root_of(int i) const {
-    int p = par.get(i);
+    const int p = par[i];
     if(p < 0) return i;
     return root_of(p);
   }
-  
+
   bool is_same(int i, int j) const {
     return root_of(i) == root_of(j);
   }
 
   int size_of(int i) const {
-    return -par.get(root_of(i));
+    return -par[root_of(i)];
   }
-  
+
   PersistentUnionFind merge(int i, int j) const {
-    int ri = root_of(i), rj = root_of(j);
+    const int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return *this;
 
-    int size_i = -par.get(ri);
-    int size_j = -par.get(rj);
+    const int size_i = -par[ri];
+    const int size_j = -par[rj];
 
     PersistentArray<int> ret = par;
 
@@ -107,7 +107,7 @@ public:
       ret = ret.update(rj, -(size_i + size_j));
       ret = ret.update(ri, rj);
     }
-    
+
     return PersistentUnionFind(ret);
   }
 };
@@ -129,8 +129,8 @@ public:
  * @docs persistent_array.md
  */
 template <typename T>
-class PersistentArray{
-  struct node{
+class PersistentArray {
+  struct node {
     bool is_terminal;
     int size = 1;
     node *left = nullptr, *right = nullptr;
@@ -155,8 +155,8 @@ class PersistentArray{
       return new node(T());
     }else{
       node *t = new node();
-      t->left = init(s/2, d+1);
-      t->right = init(s-s/2, d+1);
+      t->left = init(s / 2, d + 1);
+      t->right = init(s - s / 2, d + 1);
       t->size = get_size(t->left) + get_size(t->right);
       return t;
     }
@@ -170,16 +170,16 @@ class PersistentArray{
       ++i;
       return;
     }
-    
+
     apply_init(t->left, ret, i);
     apply_init(t->right, ret, i);
   }
-  
+
   PersistentArray(node *root): root(root){}
 
   void calc_depth(int size){
     depth = 1;
-    while((int)size > (1<<depth)) depth += 1;
+    while((int)size > (1 << depth)) depth += 1;
     depth += 1;
   }
 
@@ -189,7 +189,7 @@ public:
     calc_depth(size);
     root = init(size, 1);
   }
-  
+
   PersistentArray(const std::vector<T> &v): size(v.size()){
     calc_depth(size);
     root = init(size, 1);
@@ -203,18 +203,18 @@ public:
     this->size = v.size;
     this->depth = v.depth;
   }
-  
+
 protected:
   T get(node *t, int i) const {
     if(t->is_terminal) return *(t->value);
 
     int k = get_size(t->left);
     if(i < k) return get(t->left, i);
-    else return get(t->right, i-k);
+    else return get(t->right, i - k);
   }
-  
+
 public:
-  T get(int i) const {
+  T operator[](int i) const {
     return get(root, i);
   }
 
@@ -231,7 +231,7 @@ protected:
       t->size = get_size(t->right) + get_size(t->left);
     }else{
       t->left = prev->left;
-      t->right = update(prev->right, i-k, val);
+      t->right = update(prev->right, i - k, val);
       t->size = get_size(t->right) + get_size(t->left);
     }
     return t;
@@ -242,7 +242,7 @@ public:
     node *ret = update(root, i, val);
     return PersistentArray(ret);
   }
-  
+
 protected:
   void traverse(node *t, std::vector<T> &ret) const {
     if(!t) return;
@@ -255,7 +255,7 @@ protected:
     traverse(t->left, ret);
     traverse(t->right, ret);
   }
-  
+
 public:
   std::vector<T> traverse() const {
     std::vector<T> ret;
@@ -269,7 +269,7 @@ public:
  * @title Persistent union-find
  * @docs persistent_unionfind.md
  */
-class PersistentUnionFind{
+class PersistentUnionFind {
   PersistentArray<int> par;
 
   PersistentUnionFind(PersistentArray<int> par): par(par){}
@@ -277,27 +277,27 @@ class PersistentUnionFind{
 public:
   PersistentUnionFind(){}
   PersistentUnionFind(int n): par(PersistentArray<int>(std::vector<int>(n, -1))){}
-  
+
   int root_of(int i) const {
-    int p = par.get(i);
+    const int p = par[i];
     if(p < 0) return i;
     return root_of(p);
   }
-  
+
   bool is_same(int i, int j) const {
     return root_of(i) == root_of(j);
   }
 
   int size_of(int i) const {
-    return -par.get(root_of(i));
+    return -par[root_of(i)];
   }
-  
+
   PersistentUnionFind merge(int i, int j) const {
-    int ri = root_of(i), rj = root_of(j);
+    const int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return *this;
 
-    int size_i = -par.get(ri);
-    int size_j = -par.get(rj);
+    const int size_i = -par[ri];
+    const int size_j = -par[rj];
 
     PersistentArray<int> ret = par;
 
@@ -308,7 +308,7 @@ public:
       ret = ret.update(rj, -(size_i + size_j));
       ret = ret.update(ri, rj);
     }
-    
+
     return PersistentUnionFind(ret);
   }
 };

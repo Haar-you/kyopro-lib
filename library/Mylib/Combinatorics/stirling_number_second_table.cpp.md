@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Stirling numbers of the second kind (Table)
+# :x: Stirling numbers of the second kind (Table)
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/stirling_number_second_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-21 11:48:40+09:00
+    - Last commit date: 2020-09-06 04:38:50+09:00
 
 
 
@@ -45,7 +45,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/DPL_5_I/main.table.test.cpp.html">test/aoj/DPL_5_I/main.table.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/DPL_5_I/main.table.test.cpp.html">test/aoj/DPL_5_I/main.table.test.cpp</a>
 
 
 ## Code
@@ -58,11 +58,11 @@ layout: default
 
 /**
  * @title Stirling numbers of the second kind (Table)
- * @docs stirling_number_second_table.md 
+ * @docs stirling_number_second_table.md
  */
 template <typename T>
-auto stirling_number_table(int n){
-  std::vector<std::vector<T>> ret(n+1, std::vector<T>(n+1));
+auto stirling_number_of_second_kind_table(int n){
+  std::vector<std::vector<T>> ret(n + 1, std::vector<T>(n + 1));
 
   ret[0][0] = 1;
 
@@ -70,7 +70,7 @@ auto stirling_number_table(int n){
 
   for(int i = 3; i <= n; ++i){
     for(int j = 2; j < i; ++j){
-      ret[i][j] = ret[i-1][j-1] + j * ret[i-1][j];
+      ret[i][j] = ret[i - 1][j - 1] + j * ret[i - 1][j];
     }
   }
 
@@ -88,11 +88,11 @@ auto stirling_number_table(int n){
 
 /**
  * @title Stirling numbers of the second kind (Table)
- * @docs stirling_number_second_table.md 
+ * @docs stirling_number_second_table.md
  */
 template <typename T>
-auto stirling_number_table(int n){
-  std::vector<std::vector<T>> ret(n+1, std::vector<T>(n+1));
+auto stirling_number_of_second_kind_table(int n){
+  std::vector<std::vector<T>> ret(n + 1, std::vector<T>(n + 1));
 
   ret[0][0] = 1;
 
@@ -100,7 +100,7 @@ auto stirling_number_table(int n){
 
   for(int i = 3; i <= n; ++i){
     for(int j = 2; j < i; ++j){
-      ret[i][j] = ret[i-1][j-1] + j * ret[i-1][j];
+      ret[i][j] = ret[i - 1][j - 1] + j * ret[i - 1][j];
     }
   }
 

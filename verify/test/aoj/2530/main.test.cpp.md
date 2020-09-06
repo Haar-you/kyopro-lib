@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/2530/main.test.cpp
+# :x: test/aoj/2530/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9c9a92db287cfe91b89f042067749877">test/aoj/2530</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2530/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2530">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2530</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp.html">Simultaneous linear equations (Mod2)</a>
-* :question: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp.html">Simultaneous linear equations (Mod2)</a>
+* :x: <a href="../../../../library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
 
 
 ## Code
@@ -57,16 +57,16 @@ layout: default
 #include "Mylib/Number/Mod/mod_power.cpp"
 #include "Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp"
 #include "Mylib/IO/input_vector.cpp"
- 
+
 constexpr int64_t mod = 1000000009;
- 
+
 using B = std::bitset<2500>;
- 
+
 int main(){
   int R, C; std::cin >> R >> C;
 
   auto f = input_vector<int>(R, C);
- 
+
   std::vector<std::vector<int>> index(R, std::vector<int>(C));
   {
     int c = 0;
@@ -77,33 +77,33 @@ int main(){
       }
     }
   }
-  
-  std::vector<B> a(R*C);
-  std::vector<bool> b(R*C);
- 
+
+  std::vector<B> a(R * C);
+  std::vector<bool> b(R * C);
+
   for(int i = 0; i < R; ++i){
     for(int j = 0; j < C; ++j){
       b[index[i][j]] = f[i][j];
- 
+
       for(int p = 0; p < R; ++p){
         for(int q = 0; q < C; ++q){
-          if(abs(i-p) == abs(j-q) or i == p or j == q){
+          if(abs(i - p) == abs(j - q) or i == p or j == q){
             a[index[p][q]][index[i][j]] = true;
           }
         }
       }
     }
   }
- 
-  auto res = binary_simultaneous_linear_equations::solve(a, b);
- 
+
+  auto res = binary_simultaneous_linear_equations(a, b);
+
   int64_t ans = 0;
   if(res){
-    ans = power(2, R*C-(*res).rank, mod);
+    ans = power(2, R * C - (*res).rank, mod);
   }
- 
+
   std::cout << ans << std::endl;
- 
+
   return 0;
 }
 
@@ -120,6 +120,7 @@ int main(){
 #include <vector>
 #include <bitset>
 #line 2 "Mylib/Number/Mod/mod_power.cpp"
+#include <cstdint>
 
 /**
  * @title Mod power
@@ -143,58 +144,58 @@ int64_t power(int64_t n, int64_t p, int64_t m){
  * @title Simultaneous linear equations (Mod2)
  * @docs binary_simultaneous_linear_equations.md
  */
-namespace binary_simultaneous_linear_equations{
+namespace binary_simultaneous_linear_equations_impl {
   template <size_t N>
-  struct Result{
+  struct Result {
     int rank, dim;
     std::vector<bool> solution;
   };
+}
 
-  template <size_t N>
-  auto solve(std::vector<std::bitset<N>> a, std::vector<bool> b){
-    std::optional<Result<N>> ret;
-  
-    const int n = a.size(), m = N;
-    int rank = 0;
-    
-    for(int j = 0; j < m; ++j){
-      int pivot = -1;
-      for(int i = rank; i < n; ++i){
-        if(a[i][j]){
-          pivot = i;
-          break;
-        }
-      }
+template <size_t N>
+auto binary_simultaneous_linear_equations(std::vector<std::bitset<N>> a, std::vector<bool> b){
+  using Result = binary_simultaneous_linear_equations_impl::Result<N>;
+  std::optional<Result> ret;
 
-      if(pivot == -1) continue;
-      std::swap(a[pivot], a[rank]);
-      swap(b[pivot], b[rank]);
-    
-      for(int i = 0; i < n; ++i){
-        if(i != rank and a[i][j]){
-          a[i] ^= a[rank];
-          b[i] = b[i] ^ b[rank];
-        }
-      }
-    
-      ++rank;
-    }
-  
+  const int n = a.size(), m = N;
+  int rank = 0;
+
+  for(int j = 0; j < m; ++j){
+    int pivot = -1;
     for(int i = rank; i < n; ++i){
-      if(b[i]){
-        return ret;
+      if(a[i][j]){
+        pivot = i;
+        break;
       }
     }
-  
-    int dim = m - rank;
 
-    std::vector<bool> solution(m);
-    for(int i = 0; i < rank; ++i) solution[i] = b[i];
+    if(pivot == -1) continue;
+    std::swap(a[pivot], a[rank]);
+    swap(b[pivot], b[rank]);
 
-    ret = Result<N>({rank, dim, solution});
-  
-    return ret;
+    for(int i = 0; i < n; ++i){
+      if(i != rank and a[i][j]){
+        a[i] ^= a[rank];
+        b[i] = b[i] ^ b[rank];
+      }
+    }
+
+    ++rank;
   }
+
+  for(int i = rank; i < n; ++i){
+    if(b[i]){
+      return ret;
+    }
+  }
+
+  const int dim = m - rank;
+
+  std::vector<bool> solution(m);
+  for(int i = 0; i < rank; ++i) solution[i] = b[i];
+
+  ret = Result({rank, dim, solution});
+  return ret;
 }
 #line 4 "Mylib/IO/input_vector.cpp"
 
@@ -215,16 +216,16 @@ std::vector<std::vector<T>> input_vector(int N, int M){
   return ret;
 }
 #line 9 "test/aoj/2530/main.test.cpp"
- 
+
 constexpr int64_t mod = 1000000009;
- 
+
 using B = std::bitset<2500>;
- 
+
 int main(){
   int R, C; std::cin >> R >> C;
 
   auto f = input_vector<int>(R, C);
- 
+
   std::vector<std::vector<int>> index(R, std::vector<int>(C));
   {
     int c = 0;
@@ -235,33 +236,33 @@ int main(){
       }
     }
   }
-  
-  std::vector<B> a(R*C);
-  std::vector<bool> b(R*C);
- 
+
+  std::vector<B> a(R * C);
+  std::vector<bool> b(R * C);
+
   for(int i = 0; i < R; ++i){
     for(int j = 0; j < C; ++j){
       b[index[i][j]] = f[i][j];
- 
+
       for(int p = 0; p < R; ++p){
         for(int q = 0; q < C; ++q){
-          if(abs(i-p) == abs(j-q) or i == p or j == q){
+          if(abs(i - p) == abs(j - q) or i == p or j == q){
             a[index[p][q]][index[i][j]] = true;
           }
         }
       }
     }
   }
- 
-  auto res = binary_simultaneous_linear_equations::solve(a, b);
- 
+
+  auto res = binary_simultaneous_linear_equations(a, b);
+
   int64_t ans = 0;
   if(res){
-    ans = power(2, R*C-(*res).rank, mod);
+    ans = power(2, R * C - (*res).rank, mod);
   }
- 
+
   std::cout << ans << std::endl;
- 
+
   return 0;
 }
 

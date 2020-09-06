@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/NTL_1_E/main.test.cpp
+# :x: test/aoj/NTL_1_E/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#eb00a432be8a262fbfe01324f50ff04b">test/aoj/NTL_1_E</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/NTL_1_E/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-04 06:04:41+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_E">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_E</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/extended_gcd.cpp.html">Extended Euclidean algorithm</a>
+* :x: <a href="../../../../library/Mylib/Number/extended_gcd.cpp.html">Extended Euclidean algorithm</a>
 
 
 ## Code
@@ -80,11 +80,11 @@ int main(){
  * @title Extended Euclidean algorithm
  * @docs extended_gcd.md
  */
-std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
-  if(b == 0) return std::make_tuple(a,1,0);
-  int64_t d,p,q;
-  std::tie(d,q,p) = ext_gcd(b,(a+b)%b);
-  return std::make_tuple(d,p,q-a/b*p);
+std::tuple<int64_t, int64_t, int64_t> ext_gcd(int64_t a, int64_t b){
+  if(b == 0) return std::make_tuple(a, 1, 0);
+  int64_t d, p, q;
+  std::tie(d, q, p) = ext_gcd(b, (a + b) % b);
+  return std::make_tuple(d, p, q - a / b * p);
 }
 #line 5 "test/aoj/NTL_1_E/main.test.cpp"
 

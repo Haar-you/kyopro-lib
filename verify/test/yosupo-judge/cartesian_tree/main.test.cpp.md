@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/cartesian_tree/main.test.cpp
+# :x: test/yosupo-judge/cartesian_tree/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#31920c7695bb8892c8a9f6ce31237986">test/yosupo-judge/cartesian_tree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/cartesian_tree/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-28 08:23:59+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/cartesian_tree">https://judge.yosupo.jp/problem/cartesian_tree</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/CartesianTree/cartesian_tree.cpp.html">Cartesian tree</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/CartesianTree/cartesian_tree.cpp.html">Cartesian tree</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 
 
 ## Code
@@ -54,7 +54,6 @@ layout: default
 #include <iostream>
 #include <tuple>
 #include <functional>
-
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/join.cpp"
 #include "Mylib/DataStructure/CartesianTree/cartesian_tree.cpp"
@@ -62,7 +61,7 @@ layout: default
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N; std::cin >> N;
   auto a = input_vector<int>(N);
 
@@ -87,7 +86,6 @@ int main(){
 #include <iostream>
 #include <tuple>
 #include <functional>
-
 #line 3 "Mylib/IO/input_vector.cpp"
 #include <vector>
 
@@ -126,6 +124,7 @@ std::string join(ITER first, ITER last, std::string delim = " "){
   return s.str();
 }
 #line 4 "Mylib/DataStructure/CartesianTree/cartesian_tree.cpp"
+#include <optional>
 
 /**
  * @title Cartesian tree
@@ -141,7 +140,7 @@ auto cartesian_tree(const std::vector<T> &a, Compare compare){
     if(i == 0){
       continue;
     }
-    
+
     int j = i - 1;
 
     while(1){
@@ -163,19 +162,19 @@ auto cartesian_tree(const std::vector<T> &a, Compare compare){
 
       l[i] = t;
       if(t) p[*t] = i;
-      
+
       break;
     }
   }
 
   return std::make_tuple(root, p, l, r);
 }
-#line 10 "test/yosupo-judge/cartesian_tree/main.test.cpp"
+#line 9 "test/yosupo-judge/cartesian_tree/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N; std::cin >> N;
   auto a = input_vector<int>(N);
 

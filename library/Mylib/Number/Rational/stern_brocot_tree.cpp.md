@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Stern-Brocot tree
+# :x: Stern-Brocot tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#e55110d6133c602b43ca77c4caba1f06">Mylib/Number/Rational</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Rational/stern_brocot_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-13 00:52:15+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -53,7 +53,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/1208/main.test.cpp.html">test/aoj/1208/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/1208/main.test.cpp.html">test/aoj/1208/main.test.cpp</a>
 
 
 ## Code
@@ -63,6 +63,7 @@ layout: default
 ```cpp
 #pragma once
 #include <utility>
+#include <cstdint>
 
 /**
  * @title Stern-Brocot tree
@@ -97,6 +98,7 @@ void stern_brocot_tree(const Checker &check, int n, std::pair<int, int> &lower, 
 ```cpp
 #line 2 "Mylib/Number/Rational/stern_brocot_tree.cpp"
 #include <utility>
+#include <cstdint>
 
 /**
  * @title Stern-Brocot tree

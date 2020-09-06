@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0f67555b3039d368e55db69bb4454f7e">Mylib/Debug</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Debug/debug.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-18 16:23:22+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
@@ -41,287 +41,365 @@ layout: default
 <a id="unbundled"></a>
 {% raw %}
 ```cpp
-#include <bits/stdc++.h>
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <array>
+#include <deque>
+#include <stack>
+#include <queue>
+#include <set>
+#include <unordered_set>
+#include <map>
+#include <unordered_map>
+#include <list>
+#include <forward_list>
+#include <string>
+#include <optional>
+#include <variant>
+#include <complex>
+#include <initializer_list>
+
+template <class T, class Allocator>
+void debug_print(std::ostream&, std::vector<T, Allocator>);
+
+template <class T, std::size_t N>
+void debug_print(std::ostream&, std::array<T, N>);
+
+template <class T, class Allocator>
+void debug_print(std::ostream&, std::deque<T, Allocator>);
+
+template <class T, class Container>
+void debug_print(std::ostream&, std::stack<T, Container>);
+
+template <class T, class Container>
+void debug_print(std::ostream&, std::queue<T, Container>);
+
+template <class T, class Container, class Compare>
+void debug_print(std::ostream&, std::priority_queue<T, Container, Compare>);
 
 
-template <typename T> void dump_aux(std::vector<T>);
-template <typename T, size_t N> void dump_aux(std::array<T,N>);
-template <typename T> void dump_aux(std::deque<T>);
-template <typename T> void dump_aux(std::stack<T>);
-template <typename T> void dump_aux(std::queue<T>);
-template <typename T> void dump_aux(std::priority_queue<T>);
-template <typename T, typename Container, typename Compare> void dump_aux(std::priority_queue<T,Container,Compare>);
-template <typename T> void dump_aux(std::set<T>);
-template <typename T> void dump_aux(std::unordered_set<T>);
-template <typename T, typename U> void dump_aux(std::map<T,U>);
-template <typename T, typename U> void dump_aux(std::unordered_map<T,U>);
+template <class Key, class Compare, class Allocator>
+void debug_print(std::ostream&, std::set<Key, Compare, Allocator>);
 
-template <typename T, typename U> void dump_aux(std::pair<T,U>);
-template <typename... T> void dump_aux(std::tuple<T...>);
+template <class Key, class Hash, class Pred, class Allocator>
+void debug_print(std::ostream&, std::unordered_set<Key, Hash, Pred, Allocator>);
 
-template <typename T> void dump_aux(std::list<T>);
-template <typename T> void dump_aux(std::forward_list<T>);
+template <class Key, class T, class Compare, class Allocator>
+void debug_print(std::ostream&, std::map<Key, T, Compare, Allocator>);
 
-template <typename T> void dump_aux(std::multiset<T>);
-template <typename T> void dump_aux(std::unordered_multiset<T>);
-template <typename T, typename U> void dump_aux(std::multimap<T,U>);
-template <typename T, typename U> void dump_aux(std::unordered_multimap<T,U>);
 
-template <typename T> void dump_aux(std::complex<T>);
+template <class Key, class T, class Hash, class Pred, class Allocator>
+void debug_print(std::ostream&, std::unordered_map<Key, T, Hash, Pred, Allocator>);
 
-#if __cplusplus >= 201703L
-template <typename T> void dump_aux(std::optional<T>);
-#endif
+template <class T1, class T2>
+void debug_print(std::ostream&, std::pair<T1, T2>);
 
-void dump_aux(bool);
-void dump_aux(int);
-void dump_aux(double);
-void dump_aux(std::string);
-void dump_aux(char);
+template <class ... Args>
+void debug_print(std::ostream&, std::tuple<Args ...>);
 
-template <size_t N> void dump_aux(const char (&)[N]);
-template <typename T, size_t N> void dump_aux(const T (&)[N]);
+template <class T, class Allocator>
+void debug_print(std::ostream&, std::list<T, Allocator>);
 
-template <typename T> void dump_aux(T);
+template <class T, class Allocator>
+void debug_print(std::ostream&, std::forward_list<T, Allocator>);
+
+template <class Key, class Compare, class Allocator>
+void debug_print(std::ostream&, std::multiset<Key, Compare, Allocator>);
+
+template <class Key, class Hash, class Pred, class Allocator>
+void debug_print(std::ostream&, std::unordered_multiset<Key, Hash, Pred, Allocator>);
+
+template <class Key, class T, class Compare, class Allocator>
+void debug_print(std::ostream&, std::multimap<Key, T, Compare, Allocator>);
+
+template <class Key, class T, class Hash, class Pred, class Allocator>
+void debug_print(std::ostream&, std::unordered_multimap<Key, T, Hash, Pred, Allocator>);
+
+template <class T>
+void debug_print(std::ostream&, std::complex<T>);
+
+template <class T>
+void debug_print(std::ostream&, std::optional<T>);
+
+template <class ... Types>
+void debug_print(std::ostream&, std::variant<Types ...>);
+
+void debug_print(std::ostream&, bool);
+void debug_print(std::ostream&, int);
+void debug_print(std::ostream&, double);
+void debug_print(std::ostream&, std::string);
+void debug_print(std::ostream&, char);
+
+template <size_t N>
+void debug_print(std::ostream&, const char (&)[N]);
+
+template <typename T, size_t N>
+void debug_print(std::ostream&, const T (&)[N]);
+
+template <typename T>
+void debug_print(std::ostream&, T);
+
+
+
+
+
+
+
+
+
+
+
 
 #define dump(...) dump_(__LINE__, #__VA_ARGS__, __VA_ARGS__)
 
 
 template <class T>
 void dump_helper(int line, T value){
-  std::cerr << "\e[1mL" << std::setw(3) << line << "\e[m ";
+  std::cerr << "[\e[1;33mL" << std::setw(3) << line << "\e[m] ";
   std::cerr << "\e[1;32m";
-  dump_aux(value);
+  debug_print(std::cerr, value);
   std::cerr << "\e[m" << std::endl;
 }
 
 template <class... Args>
-void dump_(int line, std::string names, Args&&... args){
-  std::cerr << "==== \e[1m" << names << "\e[m" << "\n";
-  (void)std::initializer_list<int>{(void(dump_helper(line, args)), 0)...};
+void dump_(int line, std::string names, Args &&... args){
+  std::cerr << "[\e[1m====\e[m] \e[1m" << names << "\e[m" << "\n";
+  (void)std::initializer_list<int>{(void(dump_helper(line, args)), 0) ...};
 }
 
 
 
-template <typename Iter> void dump_container(Iter first, Iter last){
-  std::cerr << "{";
+template <typename Iter>
+void dump_container(std::ostream& s, Iter first, Iter last){
+  s << "{";
   for(auto it = first; it != last; ++it){
-    if(it != first) std::cerr << ",";
-    dump_aux(*it);
+    if(it != first) s << ",";
+    debug_print(s, *it);
   }
-  std::cerr << "}";
+  s << "}";
 }
 
 // vector
-template <typename T> void dump_aux(std::vector<T> val){
-  dump_container(val.begin(), val.end());
+template <class T, class Allocator>
+void debug_print(std::ostream& s, std::vector<T, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // array
-template <typename T, size_t N> void dump_aux(std::array<T,N> val){
-  dump_container(val.begin(), val.end());
+template <class T, std::size_t N>
+void debug_print(std::ostream& s, std::array<T, N> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // deque
-template <typename T> void dump_aux(std::deque<T> val){
-  dump_container(val.begin(), val.end());
+template <class T, class Allocator>
+void debug_print(std::ostream& s, std::deque<T, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // stack
-template <typename T> void dump_aux(std::stack<T> val){
+template <class T, class Container>
+void debug_print(std::ostream& s, std::stack<T, Container> val){
   int N = val.size();
 
-  std::cerr << "{";
+  s << "{";
   for(int i = 0; i < N; ++i){
-    if(i) std::cerr << ",";
+    if(i) s << ",";
     auto x = val.top(); val.pop();
-    dump_aux(x);
+    debug_print(s, x);
   }
-  std::cerr << "}";
+  s << "}";
 }
 
 // queue
-template <typename T> void dump_aux(std::queue<T> val){
+template <class T, class Container>
+void debug_print(std::ostream& s, std::queue<T, Container> val){
   int N = val.size();
 
-  std::cerr << "{";
+  s << "{";
   for(int i = 0; i < N; ++i){
-    if(i) std::cerr << ",";
+    if(i) s << ",";
     auto x = val.front(); val.pop();
-    dump_aux(x);
+    debug_print(s, x);
   }
-  std::cerr << "}";
+  s << "}";
 }
 
 // priority_queue
-template <typename T> void dump_aux(std::priority_queue<T> val){
+template <class T, class Container, class Compare>
+void debug_print(std::ostream& s, std::priority_queue<T, Container, Compare> val){
   int N = val.size();
 
-  std::cerr << "{";
+  s << "{";
   for(int i = 0; i < N; ++i){
-    if(i) std::cerr << ",";
+    if(i) s << ",";
     auto x = val.top(); val.pop();
-    dump_aux(x);
+    debug_print(s, x);
   }
-  std::cerr << "}";
-}
-
-template <typename T, typename Container, typename Compare> void dump_aux(std::priority_queue<T,Container,Compare> val){
-  int N = val.size();
-
-  std::cerr << "{";
-  for(int i = 0; i < N; ++i){
-    if(i) std::cerr << ",";
-    auto x = val.top(); val.pop();
-    dump_aux(x);
-  }
-  std::cerr << "}";
+  s << "}";
 }
 
 // set
-template <typename T> void dump_aux(std::set<T> val){
-  dump_container(val.begin(), val.end());
+template <class Key, class Compare, class Allocator>
+void debug_print(std::ostream& s, std::set<Key, Compare, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // unrodered_set
-template <typename T> void dump_aux(std::unordered_set<T> val){
-  dump_container(val.begin(), val.end());
+template <class Key, class Hash, class Pred, class Allocator>
+void debug_print(std::ostream& s, std::unordered_set<Key, Hash, Pred, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // map
-template <typename T, typename U> void dump_aux(std::map<T,U> val){
-  dump_container(val.begin(), val.end());
+template <class Key, class T, class Compare, class Allocator>
+void debug_print(std::ostream& s, std::map<Key, T, Compare, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // unordered_map
-template <typename T, typename U> void dump_aux(std::unordered_map<T,U> val){
-  dump_container(val.begin(), val.end());
+template <class Key, class T, class Hash, class Pred, class Allocator>
+void debug_print(std::ostream& s, std::unordered_map<Key, T, Hash, Pred, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 
 // pair
-template <typename T, typename U> void dump_aux(std::pair<T,U> val){
-  std::cerr << "(";
-  dump_aux(val.first);
-  std::cerr<< ",";
-  dump_aux(val.second);
-  std::cerr << ")";
+template <class T1, class T2>
+void debug_print(std::ostream& s, std::pair<T1, T2> val){
+  s << "(";
+  debug_print(s, val.first);
+  s<< ",";
+  debug_print(s, val.second);
+  s << ")";
 }
 
 // tuple
-template <typename T, size_t N>
-struct TuplePrintHelper{
-  static void print(T val){
-    TuplePrintHelper<T,N-1>::print(val);
-    std::cerr << ",";
-    dump_aux(std::get<N-1>(val));
+template <size_t I, class ... Args>
+void tuple_dump_helper(std::ostream& s, std::tuple<Args ...> val){
+  if constexpr (I == 1){
+    debug_print(s, std::get<0>(val));
+  }else{
+    tuple_dump_helper<I - 1, Args ...>(s, val);
+    s << ",";
+    debug_print(s, std::get<I - 1>(val));
   }
-};
+}
 
-template <typename T>
-struct TuplePrintHelper<T,1>{
-  static void print(T val){
-    dump_aux(std::get<0>(val));
-  }
-};
-
-template <typename... T> void dump_aux(std::tuple<T...> val){
-  std::cerr << "(";
-  TuplePrintHelper<std::tuple<T...>, sizeof...(T)>::print(val);
-  std::cerr << ")";
+template <class ... Args>
+void debug_print(std::ostream& s, std::tuple<Args ...> val){
+  s << "(";
+  tuple_dump_helper<sizeof ... (Args), Args ...>(s, val);
+  s << ")";
 }
 
 
 // list
-template <typename T> void dump_aux(std::list<T> val){
-  dump_container(val.begin(), val.end());
+template <class T, class Allocator>
+void debug_print(std::ostream& s, std::list<T, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // forward_list
-template <typename T> void dump_aux(std::forward_list<T> val){
-  dump_container(val.begin(), val.end());
+template <class T, class Allocator>
+void debug_print(std::ostream& s, std::forward_list<T, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // multiset
-template <typename T> void dump_aux(std::multiset<T> val){
-  dump_container(val.begin(), val.end());
+template <class Key, class Compare, class Allocator>
+void debug_print(std::ostream& s, std::multiset<Key, Compare, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // unordered_multiset
-template <typename T> void dump_aux(std::unordered_multiset<T> val){
-  dump_container(val.begin(), val.end());
+template <class Key, class Hash, class Pred, class Allocator>
+void debug_print(std::ostream& s, std::unordered_multiset<Key, Hash, Pred, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // multimap
-template <typename T, typename U> void dump_aux(std::multimap<T,U> val){
-  dump_container(val.begin(), val.end());
+template <class Key, class T, class Compare, class Allocator>
+void debug_print(std::ostream& s, std::multimap<Key, T, Compare, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // unordered_multimap
-template <typename T, typename U> void dump_aux(std::unordered_multimap<T,U> val){
-  dump_container(val.begin(), val.end());
+template <class Key, class T, class Hash, class Pred, class Allocator>
+void debug_print(std::ostream& s, std::unordered_multimap<Key, T, Hash, Pred, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // complex number
-template <typename T> void dump_aux(std::complex<T> val){
-  std::cerr << val.real() << (val.imag() < 0 ? "" : "+") << val.imag() << "i";
+template <class T>
+void debug_print(std::ostream& s, std::complex<T> val){
+  s << val.real() << (val.imag() < 0 ? "" : "+") << val.imag() << "i";
 }
 
-#if __cplusplus >= 201703L
 
 // optional
-template <typename T> void dump_aux(std::optional<T> val){
-  std::cerr << "{";
+template <class T>
+void debug_print(std::ostream& s, std::optional<T> val){
+  s << "{";
   if(val.has_value()){
-    dump_aux(val.value());
+    debug_print(s, val.value());
   }
-  std::cerr << "}";
+  s << "}";
 }
 
-#endif
+// variant
+template <class ... Types>
+void debug_print(std::ostream& s, std::variant<Types ...> val){
+  std::visit([&s](const auto &x){debug_print(s, x);}, val);
+}
+
 
 // others
-void dump_aux(bool val){
+void debug_print(std::ostream& s, bool val){
   if(val){
-    std::cerr << "true";
+    s << "true";
   }else{
-    std::cerr << "false";
+    s << "false";
   }
 }
 
-void dump_aux(int val){
-  std::cerr << val;
+void debug_print(std::ostream& s, int val){
+  s << val;
 }
 
-void dump_aux(double val){
-  std::cerr << val;
+void debug_print(std::ostream& s, double val){
+  s << val;
 }
 
-void dump_aux(std::string val){
-  std::cerr << "\"" << val << "\"";
+void debug_print(std::ostream& s, std::string val){
+  s << "\"" << val << "\"";
 }
 
-void dump_aux(char val){
-  std::cerr << "'" << val << "'";
+void debug_print(std::ostream& s, char val){
+  s << "'" << val << "'";
 }
 
 // array
 
-template <size_t N> void dump_aux(const char (&val)[N]){
-  std::cerr << "\"" << val << "\"";
+template <size_t N>
+void debug_print(std::ostream& s, const char (&val)[N]){
+  s << "\"" << val << "\"";
 }
 
-template <typename T, size_t N> void dump_aux(const T (&val)[N]){
-  std::cerr << "{";
+template <typename T, size_t N>
+void debug_print(std::ostream& s, const T val[N]){
+  s << "{";
   for(int i = 0; i < (int)N; ++i){
-    if(i) std::cerr << ",";
-    std::cerr << val[i];
+    if(i) s << ",";
+    debug_print(s, val[i]);
   }
-  std::cerr << "}";
+  s << "}";
 }
 
-template <typename T> void dump_aux(T val){
-  std::cerr << val;
+template <typename T>
+void debug_print(std::ostream& s, T val){
+  s << val;
 }
 
 ```
@@ -331,287 +409,365 @@ template <typename T> void dump_aux(T val){
 {% raw %}
 ```cpp
 #line 1 "Mylib/Debug/debug.cpp"
-#include <bits/stdc++.h>
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <array>
+#include <deque>
+#include <stack>
+#include <queue>
+#include <set>
+#include <unordered_set>
+#include <map>
+#include <unordered_map>
+#include <list>
+#include <forward_list>
+#include <string>
+#include <optional>
+#include <variant>
+#include <complex>
+#include <initializer_list>
+
+template <class T, class Allocator>
+void debug_print(std::ostream&, std::vector<T, Allocator>);
+
+template <class T, std::size_t N>
+void debug_print(std::ostream&, std::array<T, N>);
+
+template <class T, class Allocator>
+void debug_print(std::ostream&, std::deque<T, Allocator>);
+
+template <class T, class Container>
+void debug_print(std::ostream&, std::stack<T, Container>);
+
+template <class T, class Container>
+void debug_print(std::ostream&, std::queue<T, Container>);
+
+template <class T, class Container, class Compare>
+void debug_print(std::ostream&, std::priority_queue<T, Container, Compare>);
 
 
-template <typename T> void dump_aux(std::vector<T>);
-template <typename T, size_t N> void dump_aux(std::array<T,N>);
-template <typename T> void dump_aux(std::deque<T>);
-template <typename T> void dump_aux(std::stack<T>);
-template <typename T> void dump_aux(std::queue<T>);
-template <typename T> void dump_aux(std::priority_queue<T>);
-template <typename T, typename Container, typename Compare> void dump_aux(std::priority_queue<T,Container,Compare>);
-template <typename T> void dump_aux(std::set<T>);
-template <typename T> void dump_aux(std::unordered_set<T>);
-template <typename T, typename U> void dump_aux(std::map<T,U>);
-template <typename T, typename U> void dump_aux(std::unordered_map<T,U>);
+template <class Key, class Compare, class Allocator>
+void debug_print(std::ostream&, std::set<Key, Compare, Allocator>);
 
-template <typename T, typename U> void dump_aux(std::pair<T,U>);
-template <typename... T> void dump_aux(std::tuple<T...>);
+template <class Key, class Hash, class Pred, class Allocator>
+void debug_print(std::ostream&, std::unordered_set<Key, Hash, Pred, Allocator>);
 
-template <typename T> void dump_aux(std::list<T>);
-template <typename T> void dump_aux(std::forward_list<T>);
+template <class Key, class T, class Compare, class Allocator>
+void debug_print(std::ostream&, std::map<Key, T, Compare, Allocator>);
 
-template <typename T> void dump_aux(std::multiset<T>);
-template <typename T> void dump_aux(std::unordered_multiset<T>);
-template <typename T, typename U> void dump_aux(std::multimap<T,U>);
-template <typename T, typename U> void dump_aux(std::unordered_multimap<T,U>);
 
-template <typename T> void dump_aux(std::complex<T>);
+template <class Key, class T, class Hash, class Pred, class Allocator>
+void debug_print(std::ostream&, std::unordered_map<Key, T, Hash, Pred, Allocator>);
 
-#if __cplusplus >= 201703L
-template <typename T> void dump_aux(std::optional<T>);
-#endif
+template <class T1, class T2>
+void debug_print(std::ostream&, std::pair<T1, T2>);
 
-void dump_aux(bool);
-void dump_aux(int);
-void dump_aux(double);
-void dump_aux(std::string);
-void dump_aux(char);
+template <class ... Args>
+void debug_print(std::ostream&, std::tuple<Args ...>);
 
-template <size_t N> void dump_aux(const char (&)[N]);
-template <typename T, size_t N> void dump_aux(const T (&)[N]);
+template <class T, class Allocator>
+void debug_print(std::ostream&, std::list<T, Allocator>);
 
-template <typename T> void dump_aux(T);
+template <class T, class Allocator>
+void debug_print(std::ostream&, std::forward_list<T, Allocator>);
+
+template <class Key, class Compare, class Allocator>
+void debug_print(std::ostream&, std::multiset<Key, Compare, Allocator>);
+
+template <class Key, class Hash, class Pred, class Allocator>
+void debug_print(std::ostream&, std::unordered_multiset<Key, Hash, Pred, Allocator>);
+
+template <class Key, class T, class Compare, class Allocator>
+void debug_print(std::ostream&, std::multimap<Key, T, Compare, Allocator>);
+
+template <class Key, class T, class Hash, class Pred, class Allocator>
+void debug_print(std::ostream&, std::unordered_multimap<Key, T, Hash, Pred, Allocator>);
+
+template <class T>
+void debug_print(std::ostream&, std::complex<T>);
+
+template <class T>
+void debug_print(std::ostream&, std::optional<T>);
+
+template <class ... Types>
+void debug_print(std::ostream&, std::variant<Types ...>);
+
+void debug_print(std::ostream&, bool);
+void debug_print(std::ostream&, int);
+void debug_print(std::ostream&, double);
+void debug_print(std::ostream&, std::string);
+void debug_print(std::ostream&, char);
+
+template <size_t N>
+void debug_print(std::ostream&, const char (&)[N]);
+
+template <typename T, size_t N>
+void debug_print(std::ostream&, const T (&)[N]);
+
+template <typename T>
+void debug_print(std::ostream&, T);
+
+
+
+
+
+
+
+
+
+
+
 
 #define dump(...) dump_(__LINE__, #__VA_ARGS__, __VA_ARGS__)
 
 
 template <class T>
 void dump_helper(int line, T value){
-  std::cerr << "\e[1mL" << std::setw(3) << line << "\e[m ";
+  std::cerr << "[\e[1;33mL" << std::setw(3) << line << "\e[m] ";
   std::cerr << "\e[1;32m";
-  dump_aux(value);
+  debug_print(std::cerr, value);
   std::cerr << "\e[m" << std::endl;
 }
 
 template <class... Args>
-void dump_(int line, std::string names, Args&&... args){
-  std::cerr << "==== \e[1m" << names << "\e[m" << "\n";
-  (void)std::initializer_list<int>{(void(dump_helper(line, args)), 0)...};
+void dump_(int line, std::string names, Args &&... args){
+  std::cerr << "[\e[1m====\e[m] \e[1m" << names << "\e[m" << "\n";
+  (void)std::initializer_list<int>{(void(dump_helper(line, args)), 0) ...};
 }
 
 
 
-template <typename Iter> void dump_container(Iter first, Iter last){
-  std::cerr << "{";
+template <typename Iter>
+void dump_container(std::ostream& s, Iter first, Iter last){
+  s << "{";
   for(auto it = first; it != last; ++it){
-    if(it != first) std::cerr << ",";
-    dump_aux(*it);
+    if(it != first) s << ",";
+    debug_print(s, *it);
   }
-  std::cerr << "}";
+  s << "}";
 }
 
 // vector
-template <typename T> void dump_aux(std::vector<T> val){
-  dump_container(val.begin(), val.end());
+template <class T, class Allocator>
+void debug_print(std::ostream& s, std::vector<T, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // array
-template <typename T, size_t N> void dump_aux(std::array<T,N> val){
-  dump_container(val.begin(), val.end());
+template <class T, std::size_t N>
+void debug_print(std::ostream& s, std::array<T, N> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // deque
-template <typename T> void dump_aux(std::deque<T> val){
-  dump_container(val.begin(), val.end());
+template <class T, class Allocator>
+void debug_print(std::ostream& s, std::deque<T, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // stack
-template <typename T> void dump_aux(std::stack<T> val){
+template <class T, class Container>
+void debug_print(std::ostream& s, std::stack<T, Container> val){
   int N = val.size();
 
-  std::cerr << "{";
+  s << "{";
   for(int i = 0; i < N; ++i){
-    if(i) std::cerr << ",";
+    if(i) s << ",";
     auto x = val.top(); val.pop();
-    dump_aux(x);
+    debug_print(s, x);
   }
-  std::cerr << "}";
+  s << "}";
 }
 
 // queue
-template <typename T> void dump_aux(std::queue<T> val){
+template <class T, class Container>
+void debug_print(std::ostream& s, std::queue<T, Container> val){
   int N = val.size();
 
-  std::cerr << "{";
+  s << "{";
   for(int i = 0; i < N; ++i){
-    if(i) std::cerr << ",";
+    if(i) s << ",";
     auto x = val.front(); val.pop();
-    dump_aux(x);
+    debug_print(s, x);
   }
-  std::cerr << "}";
+  s << "}";
 }
 
 // priority_queue
-template <typename T> void dump_aux(std::priority_queue<T> val){
+template <class T, class Container, class Compare>
+void debug_print(std::ostream& s, std::priority_queue<T, Container, Compare> val){
   int N = val.size();
 
-  std::cerr << "{";
+  s << "{";
   for(int i = 0; i < N; ++i){
-    if(i) std::cerr << ",";
+    if(i) s << ",";
     auto x = val.top(); val.pop();
-    dump_aux(x);
+    debug_print(s, x);
   }
-  std::cerr << "}";
-}
-
-template <typename T, typename Container, typename Compare> void dump_aux(std::priority_queue<T,Container,Compare> val){
-  int N = val.size();
-
-  std::cerr << "{";
-  for(int i = 0; i < N; ++i){
-    if(i) std::cerr << ",";
-    auto x = val.top(); val.pop();
-    dump_aux(x);
-  }
-  std::cerr << "}";
+  s << "}";
 }
 
 // set
-template <typename T> void dump_aux(std::set<T> val){
-  dump_container(val.begin(), val.end());
+template <class Key, class Compare, class Allocator>
+void debug_print(std::ostream& s, std::set<Key, Compare, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // unrodered_set
-template <typename T> void dump_aux(std::unordered_set<T> val){
-  dump_container(val.begin(), val.end());
+template <class Key, class Hash, class Pred, class Allocator>
+void debug_print(std::ostream& s, std::unordered_set<Key, Hash, Pred, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // map
-template <typename T, typename U> void dump_aux(std::map<T,U> val){
-  dump_container(val.begin(), val.end());
+template <class Key, class T, class Compare, class Allocator>
+void debug_print(std::ostream& s, std::map<Key, T, Compare, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // unordered_map
-template <typename T, typename U> void dump_aux(std::unordered_map<T,U> val){
-  dump_container(val.begin(), val.end());
+template <class Key, class T, class Hash, class Pred, class Allocator>
+void debug_print(std::ostream& s, std::unordered_map<Key, T, Hash, Pred, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 
 // pair
-template <typename T, typename U> void dump_aux(std::pair<T,U> val){
-  std::cerr << "(";
-  dump_aux(val.first);
-  std::cerr<< ",";
-  dump_aux(val.second);
-  std::cerr << ")";
+template <class T1, class T2>
+void debug_print(std::ostream& s, std::pair<T1, T2> val){
+  s << "(";
+  debug_print(s, val.first);
+  s<< ",";
+  debug_print(s, val.second);
+  s << ")";
 }
 
 // tuple
-template <typename T, size_t N>
-struct TuplePrintHelper{
-  static void print(T val){
-    TuplePrintHelper<T,N-1>::print(val);
-    std::cerr << ",";
-    dump_aux(std::get<N-1>(val));
+template <size_t I, class ... Args>
+void tuple_dump_helper(std::ostream& s, std::tuple<Args ...> val){
+  if constexpr (I == 1){
+    debug_print(s, std::get<0>(val));
+  }else{
+    tuple_dump_helper<I - 1, Args ...>(s, val);
+    s << ",";
+    debug_print(s, std::get<I - 1>(val));
   }
-};
+}
 
-template <typename T>
-struct TuplePrintHelper<T,1>{
-  static void print(T val){
-    dump_aux(std::get<0>(val));
-  }
-};
-
-template <typename... T> void dump_aux(std::tuple<T...> val){
-  std::cerr << "(";
-  TuplePrintHelper<std::tuple<T...>, sizeof...(T)>::print(val);
-  std::cerr << ")";
+template <class ... Args>
+void debug_print(std::ostream& s, std::tuple<Args ...> val){
+  s << "(";
+  tuple_dump_helper<sizeof ... (Args), Args ...>(s, val);
+  s << ")";
 }
 
 
 // list
-template <typename T> void dump_aux(std::list<T> val){
-  dump_container(val.begin(), val.end());
+template <class T, class Allocator>
+void debug_print(std::ostream& s, std::list<T, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // forward_list
-template <typename T> void dump_aux(std::forward_list<T> val){
-  dump_container(val.begin(), val.end());
+template <class T, class Allocator>
+void debug_print(std::ostream& s, std::forward_list<T, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // multiset
-template <typename T> void dump_aux(std::multiset<T> val){
-  dump_container(val.begin(), val.end());
+template <class Key, class Compare, class Allocator>
+void debug_print(std::ostream& s, std::multiset<Key, Compare, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // unordered_multiset
-template <typename T> void dump_aux(std::unordered_multiset<T> val){
-  dump_container(val.begin(), val.end());
+template <class Key, class Hash, class Pred, class Allocator>
+void debug_print(std::ostream& s, std::unordered_multiset<Key, Hash, Pred, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // multimap
-template <typename T, typename U> void dump_aux(std::multimap<T,U> val){
-  dump_container(val.begin(), val.end());
+template <class Key, class T, class Compare, class Allocator>
+void debug_print(std::ostream& s, std::multimap<Key, T, Compare, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // unordered_multimap
-template <typename T, typename U> void dump_aux(std::unordered_multimap<T,U> val){
-  dump_container(val.begin(), val.end());
+template <class Key, class T, class Hash, class Pred, class Allocator>
+void debug_print(std::ostream& s, std::unordered_multimap<Key, T, Hash, Pred, Allocator> val){
+  dump_container(s, val.begin(), val.end());
 }
 
 // complex number
-template <typename T> void dump_aux(std::complex<T> val){
-  std::cerr << val.real() << (val.imag() < 0 ? "" : "+") << val.imag() << "i";
+template <class T>
+void debug_print(std::ostream& s, std::complex<T> val){
+  s << val.real() << (val.imag() < 0 ? "" : "+") << val.imag() << "i";
 }
 
-#if __cplusplus >= 201703L
 
 // optional
-template <typename T> void dump_aux(std::optional<T> val){
-  std::cerr << "{";
+template <class T>
+void debug_print(std::ostream& s, std::optional<T> val){
+  s << "{";
   if(val.has_value()){
-    dump_aux(val.value());
+    debug_print(s, val.value());
   }
-  std::cerr << "}";
+  s << "}";
 }
 
-#endif
+// variant
+template <class ... Types>
+void debug_print(std::ostream& s, std::variant<Types ...> val){
+  std::visit([&s](const auto &x){debug_print(s, x);}, val);
+}
+
 
 // others
-void dump_aux(bool val){
+void debug_print(std::ostream& s, bool val){
   if(val){
-    std::cerr << "true";
+    s << "true";
   }else{
-    std::cerr << "false";
+    s << "false";
   }
 }
 
-void dump_aux(int val){
-  std::cerr << val;
+void debug_print(std::ostream& s, int val){
+  s << val;
 }
 
-void dump_aux(double val){
-  std::cerr << val;
+void debug_print(std::ostream& s, double val){
+  s << val;
 }
 
-void dump_aux(std::string val){
-  std::cerr << "\"" << val << "\"";
+void debug_print(std::ostream& s, std::string val){
+  s << "\"" << val << "\"";
 }
 
-void dump_aux(char val){
-  std::cerr << "'" << val << "'";
+void debug_print(std::ostream& s, char val){
+  s << "'" << val << "'";
 }
 
 // array
 
-template <size_t N> void dump_aux(const char (&val)[N]){
-  std::cerr << "\"" << val << "\"";
+template <size_t N>
+void debug_print(std::ostream& s, const char (&val)[N]){
+  s << "\"" << val << "\"";
 }
 
-template <typename T, size_t N> void dump_aux(const T (&val)[N]){
-  std::cerr << "{";
+template <typename T, size_t N>
+void debug_print(std::ostream& s, const T val[N]){
+  s << "{";
   for(int i = 0; i < (int)N; ++i){
-    if(i) std::cerr << ",";
-    std::cerr << val[i];
+    if(i) s << ",";
+    debug_print(s, val[i]);
   }
-  std::cerr << "}";
+  s << "}";
 }
 
-template <typename T> void dump_aux(T val){
-  std::cerr << val;
+template <typename T>
+void debug_print(std::ostream& s, T val){
+  s << val;
 }
 
 ```

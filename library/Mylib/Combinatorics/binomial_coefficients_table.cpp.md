@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/binomial_coefficients_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-19 17:27:30+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -57,14 +57,14 @@ layout: default
  */
 template <typename T>
 auto binomial_coefficients_table(int n, int k){
-  std::vector<std::vector<T>> ret(n+1, std::vector<T>(k+1));
+  std::vector<std::vector<T>> ret(n + 1, std::vector<T>(k + 1));
   ret[0][0] = 1;
-  
+
   for(int i = 1; i <= n; ++i){
     ret[i][0] = 1;
-    
+
     for(int j = 1; j <= k; ++j){
-      ret[i][j] = ret[i-1][j-1] + ret[i-1][j];
+      ret[i][j] = ret[i - 1][j - 1] + ret[i - 1][j];
     }
   }
 
@@ -86,14 +86,14 @@ auto binomial_coefficients_table(int n, int k){
  */
 template <typename T>
 auto binomial_coefficients_table(int n, int k){
-  std::vector<std::vector<T>> ret(n+1, std::vector<T>(k+1));
+  std::vector<std::vector<T>> ret(n + 1, std::vector<T>(k + 1));
   ret[0][0] = 1;
-  
+
   for(int i = 1; i <= n; ++i){
     ret[i][0] = 1;
-    
+
     for(int j = 1; j <= k; ++j){
-      ret[i][j] = ret[i-1][j-1] + ret[i-1][j];
+      ret[i][j] = ret[i - 1][j - 1] + ret[i - 1][j];
     }
   }
 

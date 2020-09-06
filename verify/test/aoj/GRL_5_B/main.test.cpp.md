@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/GRL_5_B/main.test.cpp
+# :x: test/aoj/GRL_5_B/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#367e4e2ab0e36321fe2845cd3c3216ef">test/aoj/GRL_5_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_5_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_B</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_distance.cpp.html">Tree distance</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_height.cpp.html">Tree height</a>
+* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_distance.cpp.html">Tree distance</a>
+* :x: <a href="../../../../library/Mylib/Graph/TreeUtils/tree_height.cpp.html">Tree height</a>
 
 
 ## Code
@@ -62,7 +62,7 @@ int main(){
   tree.read<0, false>(n - 1);
 
   auto ans = tree_height(tree);
-  
+
   for(auto x : ans) std::cout << x << std::endl;
 
   return 0;
@@ -80,13 +80,14 @@ int main(){
 #include <iostream>
 #line 2 "Mylib/Graph/Template/graph.cpp"
 #include <vector>
+#line 4 "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -96,15 +97,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -117,7 +118,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -154,15 +155,15 @@ std::vector<T> tree_distance(const Tree<T> &tree, int root){
   const int n = tree.size();
   std::vector<T> ret(n);
   std::vector<bool> visited(n);
-    
+
   std::stack<int> st;
   st.push(root);
   ret[root] = 0;
-    
+
   while(not st.empty()){
     int cur = st.top(); st.pop();
     visited[cur] = true;
-      
+
     for(auto &e : tree[cur]){
       if(not visited[e.to]){
         ret[e.to] = ret[cur] + e.cost;
@@ -170,7 +171,7 @@ std::vector<T> tree_distance(const Tree<T> &tree, int root){
       }
     }
   }
-    
+
   return ret;
 }
 #line 6 "Mylib/Graph/TreeUtils/tree_height.cpp"
@@ -191,7 +192,7 @@ std::vector<T> tree_height(const Tree<T> &tree){
 
   std::vector<T> h(n);
   for(int i = 0; i < n; ++i) h[i] = std::max(d1[i], d2[i]);
-    
+
   return h;
 }
 #line 6 "test/aoj/GRL_5_B/main.test.cpp"
@@ -203,7 +204,7 @@ int main(){
   tree.read<0, false>(n - 1);
 
   auto ans = tree_height(tree);
-  
+
   for(auto x : ans) std::cout << x << std::endl;
 
   return 0;

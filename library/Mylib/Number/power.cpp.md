@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/power.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
@@ -49,15 +49,15 @@ layout: default
  * @docs power.md
  */
 template <typename T>
-T power(T n, int64_t p, const T &e, const std::function<T(T,T)> &f){
+T power(T n, int64_t p, const T &e, const std::function<T(T, T)> &f){
   T ret = e;
-  
+
   while(p > 0){
     if(p & 1) ret = f(ret, n);
     n = f(n, n);
     p >>= 1;
   }
-  
+
   return ret;
 }
 
@@ -75,15 +75,15 @@ T power(T n, int64_t p, const T &e, const std::function<T(T,T)> &f){
  * @docs power.md
  */
 template <typename T>
-T power(T n, int64_t p, const T &e, const std::function<T(T,T)> &f){
+T power(T n, int64_t p, const T &e, const std::function<T(T, T)> &f){
   T ret = e;
-  
+
   while(p > 0){
     if(p & 1) ret = f(ret, n);
     n = f(n, n);
     p >>= 1;
   }
-  
+
   return ret;
 }
 

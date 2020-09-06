@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Inverse matrix
+# :x: Inverse matrix
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b58b3fdb1287502881e9117a37552614">Mylib/LinearAlgebra/Square</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/Square/inverse_matrix.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/194/main.test.cpp.html">test/yukicoder/194/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/194/main.test.cpp.html">test/yukicoder/194/main.test.cpp</a>
 
 
 ## Code
@@ -53,8 +53,9 @@ layout: default
  * @title Inverse matrix
  * @docs inverse_matrix.md
  */
-template <typename M, typename T = typename M::value_type>
+template <typename M>
 bool inverse_matrix(M m, M &ret){
+  using T = typename M::value_type;
   const int N = m.size();
 
   ret = M::make_unit();
@@ -70,18 +71,18 @@ bool inverse_matrix(M m, M &ret){
 
     std::swap(m[i], m[p]);
     std::swap(ret[i], ret[p]);
-    
+
     {
       T d = m[i][i];
 
       if(d == 0) return false;
-    
+
       for(int j = 0; j < N; ++j){
         m[i][j] /= d;
         ret[i][j] /= d;
       }
     }
-    
+
     for(int j = 0; j < N; ++j){
       if(i == j) continue;
       T d = m[j][i] / m[i][i];
@@ -108,8 +109,9 @@ bool inverse_matrix(M m, M &ret){
  * @title Inverse matrix
  * @docs inverse_matrix.md
  */
-template <typename M, typename T = typename M::value_type>
+template <typename M>
 bool inverse_matrix(M m, M &ret){
+  using T = typename M::value_type;
   const int N = m.size();
 
   ret = M::make_unit();
@@ -125,18 +127,18 @@ bool inverse_matrix(M m, M &ret){
 
     std::swap(m[i], m[p]);
     std::swap(ret[i], ret[p]);
-    
+
     {
       T d = m[i][i];
 
       if(d == 0) return false;
-    
+
       for(int j = 0; j < N; ++j){
         m[i][j] /= d;
         ret[i][j] /= d;
       }
     }
-    
+
     for(int j = 0; j < N; ++j){
       if(i == j) continue;
       T d = m[j][i] / m[i][i];

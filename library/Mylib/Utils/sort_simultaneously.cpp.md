@@ -25,21 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Mylib/Utils/sort_simultaneously.cpp
+# :x: Mylib/Utils/sort_simultaneously.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#cf1ec978dae666792e23e53a3672d204">Mylib/Utils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Utils/sort_simultaneously.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-07 20:09:17+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/2426/main.test.cpp.html">test/aoj/2426/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/2426/main.test.cpp.html">test/aoj/2426/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp</a>
 
 
 ## Code
@@ -57,20 +57,21 @@ layout: default
 /**
  * @docs sort_simultaneously.md
  */
-template <typename T>
-void sort_with_ord(const std::vector<int> &ord, int N, std::vector<T> &a){
-  std::vector<T> temp(N);
-  for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];
-  std::swap(temp, a);
-}
-
-template <typename Compare, typename ...Args>
-void sort_simultaneously(const Compare &compare, int N, std::vector<Args> &... args){
+template <typename Compare, typename ... Args>
+void sort_simultaneously(const Compare &compare, std::vector<Args> &... args){
+  const int N = std::max({args.size() ...});
   std::vector<int> ord(N);
   std::iota(ord.begin(), ord.end(), 0);
   std::sort(ord.begin(), ord.end(), compare);
 
-  (void)std::initializer_list<int>{(sort_with_ord(ord, N, args), 0)...};
+  (void)std::initializer_list<int>{
+    (void(
+      [&](){
+        auto temp = args;
+        for(int i = 0; i < N; ++i) temp[i] = args[ord[i]];
+        std::swap(temp, args);
+      }()
+    ), 0) ...};
 }
 
 ```
@@ -89,20 +90,21 @@ void sort_simultaneously(const Compare &compare, int N, std::vector<Args> &... a
 /**
  * @docs sort_simultaneously.md
  */
-template <typename T>
-void sort_with_ord(const std::vector<int> &ord, int N, std::vector<T> &a){
-  std::vector<T> temp(N);
-  for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];
-  std::swap(temp, a);
-}
-
-template <typename Compare, typename ...Args>
-void sort_simultaneously(const Compare &compare, int N, std::vector<Args> &... args){
+template <typename Compare, typename ... Args>
+void sort_simultaneously(const Compare &compare, std::vector<Args> &... args){
+  const int N = std::max({args.size() ...});
   std::vector<int> ord(N);
   std::iota(ord.begin(), ord.end(), 0);
   std::sort(ord.begin(), ord.end(), compare);
 
-  (void)std::initializer_list<int>{(sort_with_ord(ord, N, args), 0)...};
+  (void)std::initializer_list<int>{
+    (void(
+      [&](){
+        auto temp = args;
+        for(int i = 0; i < N; ++i) temp[i] = args[ord[i]];
+        std::swap(temp, args);
+      }()
+    ), 0) ...};
 }
 
 ```

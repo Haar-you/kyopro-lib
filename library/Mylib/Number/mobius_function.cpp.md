@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/mobius_function.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-12 08:07:34+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -65,8 +65,7 @@ layout: default
  */
 template <typename Checker>
 std::vector<int> mobius_function(int n, Checker is_prime){
-  std::vector<int> ret(n+1);
-  std::vector<int> ps;
+  std::vector<int> ret(n + 1), ps;
 
   ret[1] = 1;
 
@@ -81,7 +80,7 @@ std::vector<int> mobius_function(int n, Checker is_prime){
       else ret[i * j] = ret[i] * ret[j];
     }
   }
-  
+
   return ret;
 }
 
@@ -100,8 +99,7 @@ std::vector<int> mobius_function(int n, Checker is_prime){
  */
 template <typename Checker>
 std::vector<int> mobius_function(int n, Checker is_prime){
-  std::vector<int> ret(n+1);
-  std::vector<int> ps;
+  std::vector<int> ret(n + 1), ps;
 
   ret[1] = 1;
 
@@ -116,7 +114,7 @@ std::vector<int> mobius_function(int n, Checker is_prime){
       else ret[i * j] = ret[i] * ret[j];
     }
   }
-  
+
   return ret;
 }
 

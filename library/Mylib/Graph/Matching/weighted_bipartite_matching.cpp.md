@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Weighted maximum bipartite matching
+# :x: Weighted maximum bipartite matching
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#65eb1c5db2b1bd726d58cf661f149e7c">Mylib/Graph/Matching</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Matching/weighted_bipartite_matching.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -52,8 +52,8 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/2293/main.test.cpp.html">test/aoj/2293/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/assignment/main.test.cpp.html">test/yosupo-judge/assignment/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/2293/main.test.cpp.html">test/aoj/2293/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/assignment/main.test.cpp.html">test/yosupo-judge/assignment/main.test.cpp</a>
 
 
 ## Code
@@ -70,33 +70,33 @@ layout: default
  * @docs weighted_bipartite_matching.md
  */
 template <typename T, typename MinCostFlow, bool MIN_MATCHING = false>
-class WeightedBipartiteMatching{
+class WeightedBipartiteMatching {
 public:
   int L, R, s, t;
   MinCostFlow f;
-  
+
   WeightedBipartiteMatching(int L, int R, bool arbitrary_flow = false):
-    L(L), R(R), s(L+R), t(s+1), f(L+R+2)
+    L(L), R(R), s(L + R), t(s + 1), f(L + R + 2)
   {
     for(int i = 0; i < L; ++i) f.add_edge(s, i, 1, 0);
-    for(int i = 0; i < R; ++i) f.add_edge(L+i, t, 1, 0);
+    for(int i = 0; i < R; ++i) f.add_edge(L + i, t, 1, 0);
     if(arbitrary_flow) f.add_edge(s, t, std::numeric_limits<int>::max(), 0);
   }
-  
+
   void add_edge(int from, int to, T gain){
     f.add_edge(from, L + to, 1, gain * (MIN_MATCHING ? 1 : -1));
   }
-  
+
   T solve(int flow){
     T ret;
     f.solve(s, t, flow, ret);
     return ret * (MIN_MATCHING ? 1 : -1);
   }
-  
+
   auto get_matching(){
     auto g = f.get_graph();
-    std::vector<std::tuple<int,int,T>> ret;
-    
+    std::vector<std::tuple<int, int, T>> ret;
+
     for(int i = 0; i < L; ++i){
       for(auto &e : g[i]){
         if(not e.is_rev and e.to != t and e.cap == 0){
@@ -104,7 +104,7 @@ public:
         }
       }
     }
-    
+
     return ret;
   }
 };
@@ -124,33 +124,33 @@ public:
  * @docs weighted_bipartite_matching.md
  */
 template <typename T, typename MinCostFlow, bool MIN_MATCHING = false>
-class WeightedBipartiteMatching{
+class WeightedBipartiteMatching {
 public:
   int L, R, s, t;
   MinCostFlow f;
-  
+
   WeightedBipartiteMatching(int L, int R, bool arbitrary_flow = false):
-    L(L), R(R), s(L+R), t(s+1), f(L+R+2)
+    L(L), R(R), s(L + R), t(s + 1), f(L + R + 2)
   {
     for(int i = 0; i < L; ++i) f.add_edge(s, i, 1, 0);
-    for(int i = 0; i < R; ++i) f.add_edge(L+i, t, 1, 0);
+    for(int i = 0; i < R; ++i) f.add_edge(L + i, t, 1, 0);
     if(arbitrary_flow) f.add_edge(s, t, std::numeric_limits<int>::max(), 0);
   }
-  
+
   void add_edge(int from, int to, T gain){
     f.add_edge(from, L + to, 1, gain * (MIN_MATCHING ? 1 : -1));
   }
-  
+
   T solve(int flow){
     T ret;
     f.solve(s, t, flow, ret);
     return ret * (MIN_MATCHING ? 1 : -1);
   }
-  
+
   auto get_matching(){
     auto g = f.get_graph();
-    std::vector<std::tuple<int,int,T>> ret;
-    
+    std::vector<std::tuple<int, int, T>> ret;
+
     for(int i = 0; i < L; ++i){
       for(auto &e : g[i]){
         if(not e.is_rev and e.to != t and e.cap == 0){
@@ -158,7 +158,7 @@ public:
         }
       }
     }
-    
+
     return ret;
   }
 };

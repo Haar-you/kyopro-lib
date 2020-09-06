@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Check bipartite graph
+# :x: Check bipartite graph
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3b87eee7aef75da88610c966a8da844f">Mylib/Graph/BipartiteGraph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -53,12 +53,12 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/2370/main.test.cpp.html">test/aoj/2370/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/2370/main.test.cpp.html">test/aoj/2370/main.test.cpp</a>
 
 
 ## Code
@@ -90,11 +90,11 @@ auto check_bipartite_graph(const Graph<T> &g){
     if(visit[i]) continue;
 
     std::vector<int> a, b;
-      
+
     bool res =
       [&](){
         std::stack<int> st;
- 
+
         st.push(i);
         check[i] = 0;
         a.push_back(i);
@@ -103,10 +103,10 @@ auto check_bipartite_graph(const Graph<T> &g){
           auto cur = st.top(); st.pop();
           if(visit[cur]) continue;
           visit[cur] = true;
- 
+
           for(auto &e : g[cur]){
             if(check[e.to] == check[cur]) return false;
- 
+
             if(check[e.to] == -1){
               if(check[cur] == 0){
                 check[e.to] = 1;
@@ -115,7 +115,7 @@ auto check_bipartite_graph(const Graph<T> &g){
                 check[e.to] = 0;
                 a.push_back(e.to);
               }
-          
+
               st.push(e.to);
             }
           }
@@ -146,13 +146,14 @@ auto check_bipartite_graph(const Graph<T> &g){
 #include <stack>
 #include <utility>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -162,15 +163,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -183,7 +184,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -224,11 +225,11 @@ auto check_bipartite_graph(const Graph<T> &g){
     if(visit[i]) continue;
 
     std::vector<int> a, b;
-      
+
     bool res =
       [&](){
         std::stack<int> st;
- 
+
         st.push(i);
         check[i] = 0;
         a.push_back(i);
@@ -237,10 +238,10 @@ auto check_bipartite_graph(const Graph<T> &g){
           auto cur = st.top(); st.pop();
           if(visit[cur]) continue;
           visit[cur] = true;
- 
+
           for(auto &e : g[cur]){
             if(check[e.to] == check[cur]) return false;
- 
+
             if(check[e.to] == -1){
               if(check[cur] == 0){
                 check[e.to] = 1;
@@ -249,7 +250,7 @@ auto check_bipartite_graph(const Graph<T> &g){
                 check[e.to] = 0;
                 a.push_back(e.to);
               }
-          
+
               st.push(e.to);
             }
           }

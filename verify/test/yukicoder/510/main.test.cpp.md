@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/510/main.test.cpp
+# :x: test/yukicoder/510/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#79c44d69f4476256a05dd1926185d029">test/yukicoder/510</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/510/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-10 08:29:19+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/510">https://yukicoder.me/problems/no/510</a>
@@ -39,13 +39,13 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Mylib/AlgebraicStructure/Monoid/dual.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/product_matrix.cpp.html">Mylib/AlgebraicStructure/Monoid/product_matrix.cpp</a>
-* :question: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp.html">Square matrix (Const size)</a>
-* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Dual monoid</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/product_matrix.cpp.html">Product matrix monoid</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp.html">Square matrix (Const size)</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -57,7 +57,6 @@ layout: default
 
 #include <iostream>
 #include <vector>
-
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
@@ -73,7 +72,7 @@ auto f(mint x, mint y){
   Mat ret = {
              {1, 0, x, 0},
              {0, y, 0, 1},
-             {0, 2*y, y*y, 1},
+             {0, 2 * y, y * y, 1},
              {0, 0, 0, 1}
   };
   return ret;
@@ -106,7 +105,7 @@ int main(){
       std::cout << ans << "\n";
     }
   }
-  
+
   return 0;
 }
 
@@ -121,7 +120,6 @@ int main(){
 
 #include <iostream>
 #include <vector>
-
 #line 3 "Mylib/Number/Mint/mint.cpp"
 #include <utility>
 
@@ -129,18 +127,19 @@ int main(){
  * @title Modint
  * @docs mint.md
  */
-template <int32_t M> class ModInt{
+template <int32_t M>
+class ModInt {
 public:
   constexpr static int32_t MOD = M;
   uint32_t val;
-  
+
   constexpr ModInt(): val(0){}
   constexpr ModInt(int64_t n){
     if(n >= M) val = n % M;
     else if(n < 0) val = n % M + M;
     else val = n;
   }
-  
+
   constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
   constexpr auto& operator+=(const ModInt &a){
     if(val + a.val >= M) val = (uint64_t)val + a.val - M;
@@ -165,51 +164,51 @@ public:
   constexpr auto operator-(const ModInt &a) const {return ModInt(*this) -= a;}
   constexpr auto operator*(const ModInt &a) const {return ModInt(*this) *= a;}
   constexpr auto operator/(const ModInt &a) const {return ModInt(*this) /= a;}
-  
+
   constexpr bool operator==(const ModInt &a) const {return val == a.val;}
   constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
-  
+
   constexpr auto& operator++(){*this += 1; return *this;}
   constexpr auto& operator--(){*this -= 1; return *this;}
-  
+
   constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
   constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
-  
+
   constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
-    
+
     int64_t ret = 1, e = n % M;
     for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
     return ret;
   }
-  
+
   constexpr static ModInt inv(int64_t a){
     int64_t b = M, u = 1, v = 0;
-    
+
     while(b){
       int64_t t = a / b;
-      a -= t * b; std::swap(a,b);
-      u -= t * v; std::swap(u,v);
+      a -= t * b; std::swap(a, b);
+      u -= t * v; std::swap(u, v);
     }
-    
+
     u %= M;
     if(u < 0) u += M;
-    
+
     return u;
   }
-  
+
   constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
-  
+
   constexpr auto power(int64_t p) const {return power(val, p);}
   constexpr auto inv() const {return inv(val);}
-  
-  friend constexpr auto operator-(const ModInt &a){return ModInt(M-a.val);}
-  
+
+  friend constexpr auto operator-(const ModInt &a){return ModInt(M - a.val);}
+
   friend constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
   friend constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
   friend constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
   friend constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
-  
+
   friend std::istream& operator>>(std::istream &s, ModInt<M> &a){s >> a.val; return s;}
   friend std::ostream& operator<<(std::ostream &s, const ModInt<M> &a){s << a.val; return s;}
 
@@ -231,10 +230,11 @@ public:
  * @title Square matrix (Const size)
  * @docs square_matrix_const_size.md
  */
-template <typename T, int N> struct SquareMatrixConst{
+template <typename T, int N>
+struct SquareMatrixConst {
   using value_type = T;
-  
-  std::array<std::array<T,N>,N> matrix;
+
+  std::array<std::array<T, N>, N> matrix;
 
   SquareMatrixConst(){
     for(size_t i = 0; i < N; ++i) for(size_t j = 0; j < N; ++j) matrix[i][j] = 0;
@@ -271,7 +271,7 @@ template <typename T, int N> struct SquareMatrixConst{
   }
 
   auto& operator*=(const SquareMatrixConst &val){
-    std::array<std::array<T,N>,N> temp = {};
+    std::array<std::array<T, N>, N> temp = {};
     for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) for(int k = 0; k < N; ++k) temp[i][j] = temp[i][j] + matrix[i][k] * val[k][j];
     std::swap(matrix, temp);
     return *this;
@@ -280,7 +280,7 @@ template <typename T, int N> struct SquareMatrixConst{
   const auto& operator[](size_t i) const {return matrix[i];}
   auto& operator[](size_t i){return matrix[i];}
   int size() const {return N;}
-  
+
   static auto make_unit(){
     SquareMatrixConst ret;
     for(size_t i = 0; i < N; ++i) ret[i][i] = 1;
@@ -298,78 +298,79 @@ template <typename T, int N> struct SquareMatrixConst{
  * @docs segment_tree.md
  */
 template <typename Monoid>
-class SegmentTree{
+class SegmentTree {
   using value_type = typename Monoid::value_type;
-  Monoid M;
-  
+  const static Monoid M;
+
   int depth, size, hsize;
   std::vector<value_type> data;
 
 public:
   SegmentTree(){}
   SegmentTree(int n):
-    depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
+    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
     size(1 << depth), hsize(size / 2),
-    data(size, M.id())
+    data(size, M())
   {}
 
-  auto operator[](int i) const {return at(i);}
-  auto at(int i) const {return data[hsize + i];}
-  
-  auto get(int x, int y) const { // [x,y)
-    value_type ret_left = M.id();
-    value_type ret_right = M.id();
-    
+  auto operator[](int i) const {return data[hsize + i];}
+
+  auto get(int x, int y) const {
+    value_type ret_left = M();
+    value_type ret_right = M();
+
     int l = x + hsize, r = y + hsize;
     while(l < r){
-      if(r & 1) ret_right = M.op(data[--r], ret_right);
-      if(l & 1) ret_left = M.op(ret_left, data[l++]);
+      if(r & 1) ret_right = M(data[--r], ret_right);
+      if(l & 1) ret_left = M(ret_left, data[l++]);
       l >>= 1, r >>= 1;
     }
-    
-    return M.op(ret_left, ret_right);
+
+    return M(ret_left, ret_right);
   }
 
   void update(int i, const value_type &x){
     i += hsize;
     data[i] = x;
-    while(i > 1) i >>= 1, data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
+    while(i > 1) i >>= 1, data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
   void init_with_vector(const std::vector<T> &val){
-    data.assign(size, M.id());
+    data.assign(size, M());
     for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
-    for(int i = hsize-1; i >= 1; --i) data[i] = M.op(data[i << 1 | 0], data[i << 1 | 1]);
+    for(int i = hsize - 1; i >= 1; --i) data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);
   }
 
   template <typename T>
   void init(const T &val){
     init_with_vector(std::vector<value_type>(hsize, val));
-  }  
+  }
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/product_matrix.cpp"
 
 /**
+ * @title Product matrix monoid
  * @docs product_matrix.md
  */
 template <typename T>
-struct ProductMatrixMonoid{
+struct ProductMatrixMonoid {
   using value_type = T;
-  value_type id() const {return T::make_unit();}
-  value_type op(const value_type &a, const value_type &b) const {return a * b;}
+  value_type operator()() const {return T::make_unit();}
+  value_type operator()(const value_type &a, const value_type &b) const {return a * b;}
 };
 #line 2 "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 
 /**
+ * @title Dual monoid
  * @docs dual.md
  */
 template <typename Monoid>
-struct DualMonoid{
+struct DualMonoid {
   using value_type = typename Monoid::value_type;
-  Monoid M;
-  value_type id() const {return M.id();}
-  value_type op(const value_type &a, const value_type &b) const {return M.op(b, a);}
+  const static Monoid M;
+  value_type operator()() const {return M();}
+  value_type operator()(const value_type &a, const value_type &b) const {return M(b, a);}
 };
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
@@ -379,8 +380,8 @@ struct DualMonoid{
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -390,8 +391,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -400,8 +401,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -439,7 +440,7 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 12 "test/yukicoder/510/main.test.cpp"
+#line 11 "test/yukicoder/510/main.test.cpp"
 
 using mint = ModInt<1000000007>;
 using Mat = SquareMatrixConst<mint, 4>;
@@ -449,7 +450,7 @@ auto f(mint x, mint y){
   Mat ret = {
              {1, 0, x, 0},
              {0, y, 0, 1},
-             {0, 2*y, y*y, 1},
+             {0, 2 * y, y * y, 1},
              {0, 0, 0, 1}
   };
   return ret;
@@ -482,7 +483,7 @@ int main(){
       std::cout << ans << "\n";
     }
   }
-  
+
   return 0;
 }
 

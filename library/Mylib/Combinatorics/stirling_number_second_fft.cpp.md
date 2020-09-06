@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Stirling numbers of the second kind (FFT)
+# :x: Stirling numbers of the second kind (FFT)
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/stirling_number_second_fft.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-19 18:49:32+09:00
+    - Last commit date: 2020-09-06 04:38:50+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
 
 
 ## Code
@@ -54,10 +54,10 @@ layout: default
  * @docs stirling_number_second_fft.md
  */
 template <typename T, typename Conv>
-auto stirling_number_of_second_kind(int N, const Conv &convolve){
-  std::vector<T> a(N+1), b(N+1);
+auto stirling_number_of_second_kind_fft(int N, const Conv &convolve){
+  std::vector<T> a(N + 1), b(N + 1);
 
-  std::vector<int> m(N+1, 0);
+  std::vector<int> m(N + 1, 0);
   for(int i = 2; i <= N; ++i){
     if(m[i] != 0) continue;
     for(int j = 2 * i; j <= N; j += i){
@@ -72,7 +72,7 @@ auto stirling_number_of_second_kind(int N, const Conv &convolve){
       a[i] = a[m[i]] * a[i / m[i]];
     }
   }
-    
+
   T f = 1;
   for(int i = 1; i <= N; ++i) f *= i;
   f = f.inv();
@@ -89,7 +89,7 @@ auto stirling_number_of_second_kind(int N, const Conv &convolve){
 
   auto ret = convolve(a, b);
   ret.resize(N + 1);
-  
+
   return ret;
 }
 
@@ -107,10 +107,10 @@ auto stirling_number_of_second_kind(int N, const Conv &convolve){
  * @docs stirling_number_second_fft.md
  */
 template <typename T, typename Conv>
-auto stirling_number_of_second_kind(int N, const Conv &convolve){
-  std::vector<T> a(N+1), b(N+1);
+auto stirling_number_of_second_kind_fft(int N, const Conv &convolve){
+  std::vector<T> a(N + 1), b(N + 1);
 
-  std::vector<int> m(N+1, 0);
+  std::vector<int> m(N + 1, 0);
   for(int i = 2; i <= N; ++i){
     if(m[i] != 0) continue;
     for(int j = 2 * i; j <= N; j += i){
@@ -125,7 +125,7 @@ auto stirling_number_of_second_kind(int N, const Conv &convolve){
       a[i] = a[m[i]] * a[i / m[i]];
     }
   }
-    
+
   T f = 1;
   for(int i = 1; i <= N; ++i) f *= i;
   f = f.inv();
@@ -142,7 +142,7 @@ auto stirling_number_of_second_kind(int N, const Conv &convolve){
 
   auto ret = convolve(a, b);
   ret.resize(N + 1);
-  
+
   return ret;
 }
 

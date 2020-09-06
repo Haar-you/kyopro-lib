@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 1D Imos algorithm
+# :x: 1D Imos algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#6dc6d5a2cac82b39a08fd9ff32ab6e48">Mylib/Algorithm/Imos</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Imos/imos_1d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_5_A/main.test.cpp.html">test/aoj/DSL_5_A/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_5_A/main.test.cpp.html">test/aoj/DSL_5_A/main.test.cpp</a>
 
 
 ## Code
@@ -53,20 +53,21 @@ layout: default
  * @title 1D Imos algorithm
  * @docs imos_1d.md
  */
-template <typename T> struct Imos1D{
+template <typename T>
+struct Imos1D {
   using value_type = T;
-  
-  std::vector<T> data;
-  Imos1D(int n): data(n+1){}
 
-  void add(int a, int b, const T& val){ // [a,b)
+  std::vector<T> data;
+  Imos1D(int n): data(n + 1){}
+
+  void add(int a, int b, const T& val){ // [a, b)
     data[a] += 1;
     data[b] -= 1;
   }
 
   void build(){
-    for(int i = 0; i < (int)data.size()-1; ++i){
-      data[i+1] += data[i];
+    for(int i = 0; i < (int)data.size() - 1; ++i){
+      data[i + 1] += data[i];
     }
   }
 
@@ -86,20 +87,21 @@ template <typename T> struct Imos1D{
  * @title 1D Imos algorithm
  * @docs imos_1d.md
  */
-template <typename T> struct Imos1D{
+template <typename T>
+struct Imos1D {
   using value_type = T;
-  
-  std::vector<T> data;
-  Imos1D(int n): data(n+1){}
 
-  void add(int a, int b, const T& val){ // [a,b)
+  std::vector<T> data;
+  Imos1D(int n): data(n + 1){}
+
+  void add(int a, int b, const T& val){ // [a, b)
     data[a] += 1;
     data[b] -= 1;
   }
 
   void build(){
-    for(int i = 0; i < (int)data.size()-1; ++i){
-      data[i+1] += data[i];
+    for(int i = 0; i < (int)data.size() - 1; ++i){
+      data[i + 1] += data[i];
     }
   }
 

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Mylib/AlgebraicStructure/Monoid/transformation.cpp
+# :warning: Transformation monoid
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/transformation.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -45,19 +45,20 @@ layout: default
 #include <array>
 
 /**
+ * @title Transformation monoid
  * @docs transformation.md
  */
 template <size_t N>
-struct TransformationMonoid{
+struct TransformationMonoid {
   using value_type = std::array<int, N>;
 
-  value_type id() const {
+  value_type operator()() const {
     value_type ret;
     for(int i = 0; i < (int)N; ++i) ret[i] = i;
     return ret;
   }
 
-  value_type op(const value_type &a, const value_type &b) const {
+  value_type operator()(const value_type &a, const value_type &b) const {
     value_type ret;
     for(int i = 0; i < (int)N; ++i) ret[i] = a[b[i]];
     return ret;
@@ -74,19 +75,20 @@ struct TransformationMonoid{
 #include <array>
 
 /**
+ * @title Transformation monoid
  * @docs transformation.md
  */
 template <size_t N>
-struct TransformationMonoid{
+struct TransformationMonoid {
   using value_type = std::array<int, N>;
 
-  value_type id() const {
+  value_type operator()() const {
     value_type ret;
     for(int i = 0; i < (int)N; ++i) ret[i] = i;
     return ret;
   }
 
-  value_type op(const value_type &a, const value_type &b) const {
+  value_type operator()(const value_type &a, const value_type &b) const {
     value_type ret;
     for(int i = 0; i < (int)N; ++i) ret[i] = a[b[i]];
     return ret;

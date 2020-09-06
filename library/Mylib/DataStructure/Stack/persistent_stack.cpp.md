@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#12526f91d29b13109723e3d0cc6a4265">Mylib/DataStructure/Stack</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Stack/persistent_stack.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -47,9 +47,10 @@ layout: default
  * @title Persistent stack
  * @docs persistent_stack.md
  */
-template <typename T> struct PersistentStack{
+template <typename T>
+struct PersistentStack {
 protected:
-  struct node{
+  struct node {
     T value;
     node *next = nullptr;
   };
@@ -60,11 +61,11 @@ protected:
 
 public:
   PersistentStack(): root(nullptr){}
-  
+
   bool empty() const {
-    return root == nullptr;
+    return not root;
   }
-  
+
   const T& top() const {
     return root->value;
   }
@@ -92,9 +93,10 @@ public:
  * @title Persistent stack
  * @docs persistent_stack.md
  */
-template <typename T> struct PersistentStack{
+template <typename T>
+struct PersistentStack {
 protected:
-  struct node{
+  struct node {
     T value;
     node *next = nullptr;
   };
@@ -105,11 +107,11 @@ protected:
 
 public:
   PersistentStack(): root(nullptr){}
-  
+
   bool empty() const {
-    return root == nullptr;
+    return not root;
   }
-  
+
   const T& top() const {
     return root->value;
   }

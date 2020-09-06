@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/with_count.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -43,22 +43,23 @@ layout: default
 ```cpp
 #pragma once
 #include <utility>
+#include <cstdint>
 
 /**
  * @docs with_count.md
  */
 template <typename Monoid>
-struct WithCount{
+struct WithCount {
   using value_type = std::pair<typename Monoid::value_type, int64_t>;
-  Monoid M;
+  const static Monoid M;
 
-  value_type id() const {
-    return {M.id(), 1};
+  value_type operator()() const {
+    return {M(), 1};
   }
 
-  value_type op(const value_type &a, const value_type &b) const {
+  value_type operator()(const value_type &a, const value_type &b) const {
     if(a.first == b.first) return {a.first, a.second + b.second};
-    if(M.op(a.first, b.first) == a.first) return a;
+    if(M(a.first, b.first) == a.first) return a;
     else return b;
   }
 };
@@ -71,22 +72,23 @@ struct WithCount{
 ```cpp
 #line 2 "Mylib/AlgebraicStructure/Monoid/with_count.cpp"
 #include <utility>
+#include <cstdint>
 
 /**
  * @docs with_count.md
  */
 template <typename Monoid>
-struct WithCount{
+struct WithCount {
   using value_type = std::pair<typename Monoid::value_type, int64_t>;
-  Monoid M;
+  const static Monoid M;
 
-  value_type id() const {
-    return {M.id(), 1};
+  value_type operator()() const {
+    return {M(), 1};
   }
 
-  value_type op(const value_type &a, const value_type &b) const {
+  value_type operator()(const value_type &a, const value_type &b) const {
     if(a.first == b.first) return {a.first, a.second + b.second};
-    if(M.op(a.first, b.first) == a.first) return a;
+    if(M(a.first, b.first) == a.first) return a;
     else return b;
   }
 };

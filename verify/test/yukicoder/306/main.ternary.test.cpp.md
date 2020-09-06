@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/306/main.ternary.test.cpp
+# :x: test/yukicoder/306/main.ternary.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#94d4e5c879e40488003ae32a119b6352">test/yukicoder/306</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/306/main.ternary.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-19 17:27:30+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/306">https://yukicoder.me/problems/no/306</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Search/ternary_search_downwards.cpp.html">Ternary search (Convex downwards)</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/Search/ternary_search_downwards.cpp.html">Ternary search (Convex downwards)</a>
 
 
 ## Code
@@ -55,19 +55,18 @@ layout: default
 #include <cmath>
 #include "Mylib/Algorithm/Search/ternary_search_downwards.cpp"
 
-
 int main(){
   int xa, xb, ya, yb; std::cin >> xa >> ya >> xb >> yb;
-  
+
   auto f =
     [&](long double p){
-      return std::hypot(xa, ya-p) + std::hypot(xb, yb-p);
+      return std::hypot(xa, ya - p) + std::hypot(xb, yb - p);
     };
 
   auto ans = ternary_search_downwards<long double>(-1000, 1000, f);
-  
+
   std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
-  
+
   return 0;
 }
 
@@ -94,35 +93,34 @@ int main(){
 template <typename T = double, typename Func = std::function<T(T)>>
 T ternary_search_downwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
   T t1 = 0, t2 = 0;
-  
+
   while(LOOP_COUNT--){
-    t1 = lb + (ub-lb) / 3;
-    t2 = lb + (ub-lb) / 3 * 2;
-    
+    t1 = lb + (ub - lb) / 3;
+    t2 = lb + (ub - lb) / 3 * 2;
+
     if(f(t1) < f(t2)){
       ub = t2;
     }else{
       lb = t1;
     }
   }
- 
+
   return lb;
 }
 #line 8 "test/yukicoder/306/main.ternary.test.cpp"
 
-
 int main(){
   int xa, xb, ya, yb; std::cin >> xa >> ya >> xb >> yb;
-  
+
   auto f =
     [&](long double p){
-      return std::hypot(xa, ya-p) + std::hypot(xb, yb-p);
+      return std::hypot(xa, ya - p) + std::hypot(xb, yb - p);
     };
 
   auto ans = ternary_search_downwards<long double>(-1000, 1000, f);
-  
+
   std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
-  
+
   return 0;
 }
 

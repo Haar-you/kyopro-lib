@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/factorize/main.test.cpp
+# :x: test/yosupo-judge/factorize/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#503c2e18c5ca98964c4b89d4addd4577">test/yosupo-judge/factorize</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/factorize/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-11 08:51:20+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/factorize">https://judge.yosupo.jp/problem/factorize</a>
@@ -39,12 +39,12 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
-* :question: <a href="../../../../library/Mylib/Misc/int128.cpp.html">128-bit int</a>
-* :question: <a href="../../../../library/Mylib/Number/Prime/miller_rabin.cpp.html">Primality test (Miller-Rabin algorithm)</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Prime/pollard_rho.cpp.html">Prime factorization (Pollard's rho algorithm)</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :x: <a href="../../../../library/Mylib/Misc/int128.cpp.html">128-bit int</a>
+* :x: <a href="../../../../library/Mylib/Number/Prime/miller_rabin.cpp.html">Primality test (Miller-Rabin algorithm)</a>
+* :x: <a href="../../../../library/Mylib/Number/Prime/pollard_rho.cpp.html">Prime factorization (Pollard's rho algorithm)</a>
 
 
 ## Code
@@ -62,12 +62,12 @@ layout: default
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int Q; std::cin >> Q;
 
   for(auto [a] : input_tuples<int64_t>(Q)){
-    auto res = PollardRho::prime_factorize(a);
-    
+    auto res = pollard_rho(a);
+
     std::vector<int64_t> ans;
     for(auto [x, k] : res){
       while(k--) ans.push_back(x);
@@ -100,8 +100,8 @@ int main(){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -111,8 +111,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -121,8 +121,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -198,13 +198,15 @@ using int128_t = __int128_t;
 using uint128_t = boost::multiprecision::uint128_t;
 using int128_t = boost::multiprecision::int128_t;
 #endif
-#line 3 "Mylib/Number/Prime/miller_rabin.cpp"
+#line 2 "Mylib/Number/Prime/miller_rabin.cpp"
+#include <cstdint>
+#line 5 "Mylib/Number/Prime/miller_rabin.cpp"
 
 /**
  * @title Primality test (Miller-Rabin algorithm)
  * @docs miller_rabin.md
  */
-class MillerRabin{
+class MillerRabin {
   uint128_t power(uint128_t a, uint128_t b, uint128_t p) const {
     uint128_t ret = 1;
 
@@ -213,17 +215,17 @@ class MillerRabin{
       a = a * a % p;
       b >>= 1;
     }
-    
+
     return ret;
   }
-  
+
   bool is_composite(uint64_t a, uint64_t p, int s, uint64_t d) const {
     uint128_t x = power(a, d, p);
 
     if(x == 1) return false;
 
     for(int i = 0; i < s; ++i){
-      if(x == p-1) return false;
+      if(x == p - 1) return false;
       x = x * x % p;
     }
 
@@ -235,9 +237,9 @@ public:
     if(n <= 1) return false;
     if(n == 2) return true;
     if(n % 2 == 0) return false;
-    
+
     int s = 0;
-    uint64_t d = n-1;
+    uint64_t d = n - 1;
     while((d & 1) == 0){
       s += 1;
       d >>= 1;
@@ -254,7 +256,7 @@ public:
     for(uint64_t x : {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37}){
       if(x < n and is_composite(x, n, s, d)) return false;
     }
-    
+
     return true;
   }
 };
@@ -264,12 +266,12 @@ public:
  * @title Prime factorization (Pollard's rho algorithm)
  * @docs pollard_rho.md
  */
-struct PollardRho{
-  static int128_t f(int128_t x){
+namespace pollard_rho_impl {
+  int128_t f(int128_t x){
     return x * x + 1;
   }
 
-  static std::optional<int64_t> rho(int64_t n){
+  std::optional<int64_t> rho(int64_t n){
     int64_t x = 2, y = 2, d = 1;
 
     while(d == 1){
@@ -281,63 +283,63 @@ struct PollardRho{
 
     return {d};
   }
+}
 
-  static auto prime_factorize(int64_t n){
-    std::vector<std::pair<int64_t,int64_t>> ret;
+auto pollard_rho(int64_t n){
+  std::vector<std::pair<int64_t, int64_t>> ret;
 
-    for(int i = 2; i <= 1000000; ++i){
-      if(n % i == 0){
-        int c = 0;
-        while(n % i == 0){
-          n /= i;
-          ++c;
-        }
-        ret.emplace_back(i, c);
-      }
-      if(i > n) break;
-    }
-
-    MillerRabin is_prime;
-  
-    while(n > 1){
-      if(is_prime(n)){
-        ret.emplace_back(n, 1);
-        break;
-      }
-    
-      auto res = rho(n);
-      if(not res){
-        assert(false);
-      }
-
-      auto r = *res;
-      if(r == 1) break;
-
+  for(int i = 2; i <= 1000000; ++i){
+    if(n % i == 0){
       int c = 0;
-      while(n % r == 0){
-        n /= r;
+      while(n % i == 0){
+        n /= i;
         ++c;
       }
-    
-      ret.emplace_back(r, c);
+      ret.emplace_back(i, c);
+    }
+    if(i > n) break;
+  }
+
+  MillerRabin is_prime;
+
+  while(n > 1){
+    if(is_prime(n)){
+      ret.emplace_back(n, 1);
+      break;
     }
 
-    std::sort(ret.begin(), ret.end());
-  
-    return ret;
+    auto res = pollard_rho_impl::rho(n);
+    if(not res){
+      assert(false);
+    }
+
+    auto r = *res;
+    if(r == 1) break;
+
+    int c = 0;
+    while(n % r == 0){
+      n /= r;
+      ++c;
+    }
+
+    ret.emplace_back(r, c);
   }
-};
+
+  std::sort(ret.begin(), ret.end());
+
+  return ret;
+}
 #line 7 "test/yosupo-judge/factorize/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int Q; std::cin >> Q;
 
   for(auto [a] : input_tuples<int64_t>(Q)){
-    auto res = PollardRho::prime_factorize(a);
-    
+    auto res = pollard_rho(a);
+
     std::vector<int64_t> ans;
     for(auto [x, k] : res){
       while(k--) ans.push_back(x);

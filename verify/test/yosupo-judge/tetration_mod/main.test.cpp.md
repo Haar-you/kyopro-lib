@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/tetration_mod/main.test.cpp
+# :x: test/yosupo-judge/tetration_mod/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#8d2eb885a99697d1d568e2fa6fb51db3">test/yosupo-judge/tetration_mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/tetration_mod/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-16 23:16:56+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/tetration_mod">https://judge.yosupo.jp/problem/tetration_mod</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/euler_phi_function.cpp.html">Euler's totient function</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/tetration.cpp.html">Tetration</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/Number/euler_phi_function.cpp.html">Euler's totient function</a>
+* :x: <a href="../../../../library/Mylib/Number/tetration.cpp.html">Tetration</a>
 
 
 ## Code
@@ -53,7 +53,6 @@ layout: default
 #define PROBLEM "https://judge.yosupo.jp/problem/tetration_mod"
 
 #include <iostream>
-
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/Number/tetration.cpp"
 
@@ -78,7 +77,6 @@ int main(){
 #define PROBLEM "https://judge.yosupo.jp/problem/tetration_mod"
 
 #include <iostream>
-
 #line 3 "Mylib/IO/input_tuples.cpp"
 #include <vector>
 #include <tuple>
@@ -90,8 +88,8 @@ int main(){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -101,8 +99,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -111,8 +109,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -150,9 +148,8 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 2 "Mylib/Number/tetration.cpp"
-
 #line 2 "Mylib/Number/euler_phi_function.cpp"
+#include <cstdint>
 
 /**
  * @title Euler's totient function
@@ -172,40 +169,21 @@ int64_t totient(int64_t n){
 
   return ret;
 }
-#line 4 "Mylib/Number/tetration.cpp"
+#line 3 "Mylib/Number/tetration.cpp"
 
 /**
  * @title Tetration
  * @docs tetration.md
  */
-int tetration(int64_t a, int64_t b, int64_t m){
-  auto rec =
-    [](auto &rec, int64_t a, int64_t b, int64_t m) -> int {
-      if(b == 1) return a % m;
-      if(b == 0) return 1 % m;
-      if(b == 2){
-        bool c = a >= m;
-        int64_t ret = 1;
-        int64_t p = a;
-        a %= m;
-
-        while(p > 0){
-          if(p & 1) if((ret *= a) >= m) ret %= m, c = true;
-          if((a *= a) >= m) a %= m, c = true;
-          p >>= 1;
-        }
-
-        if(c) ret += m;
-        return ret;
-      }
-      if(a == 0) return b % 2 == 1 ? 0 : 1;
-      if(m == 1) return 1;
-      
-      int phi = totient(m);
-      int p = rec(rec, a, b-1, phi);
-
-      bool c = p >= phi;
+namespace tetration_impl {
+  int rec(int64_t a, int64_t b, int64_t m){
+    if(b == 1) return a % m;
+    if(b == 0) return 1 % m;
+    if(b == 2){
+      bool c = a >= m;
       int64_t ret = 1;
+      int64_t p = a;
+      a %= m;
 
       while(p > 0){
         if(p & 1) if((ret *= a) >= m) ret %= m, c = true;
@@ -215,11 +193,31 @@ int tetration(int64_t a, int64_t b, int64_t m){
 
       if(c) ret += m;
       return ret;
-    };
+    }
+    if(a == 0) return b % 2 == 1 ? 0 : 1;
+    if(m == 1) return 1;
 
-  return rec(rec, a, b, m) % m;
+    int phi = totient(m);
+    int p = rec(a, b - 1, phi);
+
+    bool c = p >= phi;
+    int64_t ret = 1;
+
+    while(p > 0){
+      if(p & 1) if((ret *= a) >= m) ret %= m, c = true;
+      if((a *= a) >= m) a %= m, c = true;
+      p >>= 1;
+    }
+
+    if(c) ret += m;
+    return ret;
+  }
 }
-#line 7 "test/yosupo-judge/tetration_mod/main.test.cpp"
+
+int tetration(int64_t a, int64_t b, int64_t m){
+  return tetration_impl::rec(a, b, m) % m;
+}
+#line 6 "test/yosupo-judge/tetration_mod/main.test.cpp"
 
 int main(){
   int T; std::cin >> T;

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DSL_5_A/main.test.cpp
+# :x: test/aoj/DSL_5_A/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#59b5a0a6c0973fef022e4b1a7cf092fc">test/aoj/DSL_5_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_5_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_A</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Imos/imos_1d.cpp.html">1D Imos algorithm</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/Imos/imos_1d.cpp.html">1D Imos algorithm</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -58,7 +58,7 @@ layout: default
 
 int main(){
   int N, T; std::cin >> N >> T;
-  Imos1D<int> imos(T+1);
+  Imos1D<int> imos(T + 1);
 
   for(auto [l, r] : input_tuples<int, int>(N)){
     imos.add(l, r, 1);
@@ -73,7 +73,7 @@ int main(){
   }
 
   std::cout << ans << std::endl;
-  
+
   return 0;
 }
 
@@ -95,20 +95,21 @@ int main(){
  * @title 1D Imos algorithm
  * @docs imos_1d.md
  */
-template <typename T> struct Imos1D{
+template <typename T>
+struct Imos1D {
   using value_type = T;
-  
-  std::vector<T> data;
-  Imos1D(int n): data(n+1){}
 
-  void add(int a, int b, const T& val){ // [a,b)
+  std::vector<T> data;
+  Imos1D(int n): data(n + 1){}
+
+  void add(int a, int b, const T& val){ // [a, b)
     data[a] += 1;
     data[b] -= 1;
   }
 
   void build(){
-    for(int i = 0; i < (int)data.size()-1; ++i){
-      data[i+1] += data[i];
+    for(int i = 0; i < (int)data.size() - 1; ++i){
+      data[i + 1] += data[i];
     }
   }
 
@@ -124,8 +125,8 @@ template <typename T> struct Imos1D{
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -135,8 +136,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -145,8 +146,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -188,7 +189,7 @@ auto input_tuples(int N){
 
 int main(){
   int N, T; std::cin >> N >> T;
-  Imos1D<int> imos(T+1);
+  Imos1D<int> imos(T + 1);
 
   for(auto [l, r] : input_tuples<int, int>(N)){
     imos.add(l, r, 1);
@@ -203,7 +204,7 @@ int main(){
   }
 
   std::cout << ans << std::endl;
-  
+
   return 0;
 }
 

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3a96c66483797c15eff4c0c3d8733619">Mylib/DynamicProgramming</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/max_partial_sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -53,7 +53,7 @@ template <typename T>
 T max_partial_sum(const std::vector<T> &v){
   T t = v[0], ret = t;
   for(int i = 1; i < (int)v.size(); ++i){
-    t = std::max(t+v[i], v[i]);
+    t = std::max(t + v[i], v[i]);
     ret = std::max(ret, t);
   }
   return ret;
@@ -77,7 +77,7 @@ template <typename T>
 T max_partial_sum(const std::vector<T> &v){
   T t = v[0], ret = t;
   for(int i = 1; i < (int)v.size(); ++i){
-    t = std::max(t+v[i], v[i]);
+    t = std::max(t + v[i], v[i]);
     ret = std::max(ret, t);
   }
   return ret;

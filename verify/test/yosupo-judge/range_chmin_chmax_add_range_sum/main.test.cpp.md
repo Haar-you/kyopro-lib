@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp
+# :x: test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0eb662a8a4a1c93b539f9938a9be975d">test/yosupo-judge/range_chmin_chmax_add_range_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum">https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_beats.cpp.html">Segment tree beats</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/segment_tree_beats.cpp.html">Segment tree beats</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -61,14 +61,14 @@ layout: default
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   SegmentTreeBeats seg(N);
 
   auto a = input_vector<int64_t>(N);
   seg.init_with_vector(a);
-  
+
   for(auto [type, l, r] : input_tuples<int, int, int>(Q)){
     switch(type){
     case 0: {
@@ -88,8 +88,8 @@ int main(){
     }
     case 3: {
       auto ans = seg.get_sum(l, r);
-      std::cout << ans << "\n"; 
-      break; 
+      std::cout << ans << "\n";
+      break;
     }
     }
   }
@@ -116,7 +116,7 @@ int main(){
  * @title Segment tree beats
  * @docs segment_tree_beats.md
  */
-class SegmentTreeBeats{
+class SegmentTreeBeats {
   using value_type = int64_t;
 
   const int depth, size, hsize;
@@ -126,12 +126,12 @@ class SegmentTreeBeats{
 
   std::vector<value_type> fst_min, snd_min;
   std::vector<int> min_count;
-  
+
   std::vector<value_type> sum, lazy_add;
 
 public:
   SegmentTreeBeats(int n):
-    depth(n > 1 ? 32-__builtin_clz(n-1) + 1 : 1),
+    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
     size(1 << depth),
     hsize(size / 2),
 
@@ -142,7 +142,7 @@ public:
     fst_min(size, std::numeric_limits<value_type>::max()),
     snd_min(size, std::numeric_limits<value_type>::max()),
     min_count(size, 0),
-    
+
     sum(size, 0),
     lazy_add(size, 0)
   {}
@@ -150,7 +150,7 @@ public:
 private:
   int lc(int i) const {return i << 1 | 0;} // left child
   int rc(int i) const {return i << 1 | 1;} // right child
-  
+
   void update_node_max(int i, value_type x){
     sum[i] += (x - fst_max[i]) * max_count[i];
 
@@ -178,7 +178,7 @@ private:
 
     lazy_add[i] += x;
   }
-  
+
   void propagate(int i){
     if(i >= hsize) return;
 
@@ -198,11 +198,11 @@ private:
   void bottom_up(int i){
     const int L = lc(i);
     const int R = rc(i);
-    
+
     sum[i] = sum[L] + sum[R];
 
     fst_max[i] = std::max(fst_max[L], fst_max[R]);
-    
+
     if(fst_max[L] < fst_max[R]){
       max_count[i] = max_count[R];
       snd_max[i] = std::max(fst_max[L], snd_max[R]);
@@ -215,7 +215,7 @@ private:
     }
 
     fst_min[i] = std::min(fst_min[L], fst_min[R]);
-    
+
     if(fst_min[L] > fst_min[R]){
       min_count[i] = min_count[R];
       snd_min[i] = std::min(fst_min[L], snd_min[R]);
@@ -227,7 +227,7 @@ private:
       snd_min[i] = std::min(snd_min[L], snd_min[R]);
     }
   }
-  
+
 private:
   void chmin(int i, int l, int r, int s, int t, value_type x){
     if(r <= s or t <= l or fst_max[i] <= x) return;
@@ -236,7 +236,7 @@ private:
       return;
     }
 
-    propagate(i);    
+    propagate(i);
     chmin(lc(i), l, (l + r) / 2, s, t, x);
     chmin(rc(i), (l + r) / 2, r, s, t, x);
     bottom_up(i);
@@ -278,7 +278,7 @@ private:
 
 public:
   void add(int l, int r, value_type x){add(1, 0, hsize, l, r, x);}
-  
+
 private:
   value_type get_sum(int i, int l, int r, int s, int t){
     if(r <= s or t <= l) return 0;
@@ -291,8 +291,7 @@ private:
 public:
   value_type get_sum(int l, int r){return get_sum(1, 0, hsize, l, r);}
 
-
-public:  
+public:
   void init_with_vector(const std::vector<value_type> &v){
     fst_max.assign(size, std::numeric_limits<value_type>::min());
     snd_max.assign(size, std::numeric_limits<value_type>::min());
@@ -301,7 +300,7 @@ public:
     fst_min.assign(size, std::numeric_limits<value_type>::max());
     snd_min.assign(size, std::numeric_limits<value_type>::max());
     min_count.assign(size, 1);
-    
+
     sum.assign(size, 0);
     lazy_add.assign(size, 0);
 
@@ -344,8 +343,8 @@ std::vector<std::vector<T>> input_vector(int N, int M){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -355,8 +354,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -365,8 +364,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -409,14 +408,14 @@ auto input_tuples(int N){
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   SegmentTreeBeats seg(N);
 
   auto a = input_vector<int64_t>(N);
   seg.init_with_vector(a);
-  
+
   for(auto [type, l, r] : input_tuples<int, int, int>(Q)){
     switch(type){
     case 0: {
@@ -436,8 +435,8 @@ int main(){
     }
     case 3: {
       auto ans = seg.get_sum(l, r);
-      std::cout << ans << "\n"; 
-      break; 
+      std::cout << ans << "\n";
+      break;
     }
     }
   }

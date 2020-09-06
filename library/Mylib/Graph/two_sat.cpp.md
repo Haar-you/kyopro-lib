@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: 2-SAT
+# :x: 2-SAT
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/two_sat.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -66,14 +66,14 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
-* :question: <a href="Template/graph.cpp.html">Basic graph</a>
-* :heavy_check_mark: <a href="TopologicalSort/topological_sort.cpp.html">Topological sort</a>
+* :x: <a href="GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
+* :x: <a href="Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="TopologicalSort/topological_sort.cpp.html">Topological sort</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
 
 
 ## Code
@@ -93,7 +93,7 @@ layout: default
  * @title 2-SAT
  * @docs two_sat.md
  */
-class TwoSat{
+class TwoSat {
   const int n;
   Graph<int> g;
 
@@ -105,7 +105,7 @@ class TwoSat{
   }
 
 public:
-  TwoSat(int n): n(n), g(2*n){}
+  TwoSat(int n): n(n), g(2 * n){}
 
   /**
    * @note a→bを導入する
@@ -130,18 +130,18 @@ public:
   void not_coexist(int a, int b){
     add_or(-a, -b);
   }
-  
+
 public:
   std::optional<std::vector<bool>> solve() const {
     auto [scc, m] = strongly_connected_components(g);
 
     for(int i = 0; i < n; ++i){
-      if(scc[i] == scc[i+n]) return {};
+      if(scc[i] == scc[i + n]) return {};
     }
-    
+
     Graph<int> g2(m);
 
-    for(int i = 0; i < 2*n; ++i){
+    for(int i = 0; i < 2 * n; ++i){
       for(auto &e : g[i]){
         if(scc[e.from] != scc[e.to]){
           g2.add_edge(scc[e.from], scc[e.to], 1);
@@ -155,7 +155,7 @@ public:
     for(int i = 0; i < m; ++i) r[ts[i]] = i;
 
     std::vector<bool> ret(n);
-    for(int i = 0; i < n; ++i) ret[i] = r[scc[i]] > r[scc[i+n]];
+    for(int i = 0; i < n; ++i) ret[i] = r[scc[i]] > r[scc[i + n]];
 
     return {ret};
   }
@@ -172,13 +172,14 @@ public:
 #include <optional>
 #include <cassert>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -188,15 +189,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -209,7 +210,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -275,7 +276,6 @@ auto strongly_connected_components(const Graph<T> &g){
   int i = 0;
   for(auto c : check) if(result[c] == -1) rdfs(rdfs, c, i), ++i;
 
-  
   return std::make_pair(result, i);
 }
 #line 4 "Mylib/Graph/TopologicalSort/topological_sort.cpp"
@@ -290,7 +290,7 @@ template <typename T>
 std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
   const int n = g.size();
   std::vector<int> indeg(n);
-  
+
   for(int i = 0; i < n; ++i){
     for(auto &e : g[i]){
       ++indeg[e.to];
@@ -326,7 +326,7 @@ std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
  * @title 2-SAT
  * @docs two_sat.md
  */
-class TwoSat{
+class TwoSat {
   const int n;
   Graph<int> g;
 
@@ -338,7 +338,7 @@ class TwoSat{
   }
 
 public:
-  TwoSat(int n): n(n), g(2*n){}
+  TwoSat(int n): n(n), g(2 * n){}
 
   /**
    * @note a→bを導入する
@@ -363,18 +363,18 @@ public:
   void not_coexist(int a, int b){
     add_or(-a, -b);
   }
-  
+
 public:
   std::optional<std::vector<bool>> solve() const {
     auto [scc, m] = strongly_connected_components(g);
 
     for(int i = 0; i < n; ++i){
-      if(scc[i] == scc[i+n]) return {};
+      if(scc[i] == scc[i + n]) return {};
     }
-    
+
     Graph<int> g2(m);
 
-    for(int i = 0; i < 2*n; ++i){
+    for(int i = 0; i < 2 * n; ++i){
       for(auto &e : g[i]){
         if(scc[e.from] != scc[e.to]){
           g2.add_edge(scc[e.from], scc[e.to], 1);
@@ -388,7 +388,7 @@ public:
     for(int i = 0; i < m; ++i) r[ts[i]] = i;
 
     std::vector<bool> ret(n);
-    for(int i = 0; i < n; ++i) ret[i] = r[scc[i]] > r[scc[i+n]];
+    for(int i = 0; i < n; ++i) ret[i] = r[scc[i]] > r[scc[i + n]];
 
     return {ret};
   }

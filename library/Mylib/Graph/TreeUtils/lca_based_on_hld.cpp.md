@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Lowest common ancestor (HLD)
+# :x: Lowest common ancestor (HLD)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/lca_based_on_hld.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_5_C/main.hld.test.cpp.html">test/aoj/GRL_5_C/main.hld.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_5_C/main.hld.test.cpp.html">test/aoj/GRL_5_C/main.hld.test.cpp</a>
 
 
 ## Code
@@ -60,10 +60,20 @@ layout: default
  * @title Lowest common ancestor (HLD)
  * @docs lca_based_on_hld.md
  */
-template <typename T> class LCA{
+template <typename T>
+class LCA {
   int n;
   std::vector<int> sub, par, head, id;
-  
+  std::vector<T> dist;
+
+  void dfs_depth(int cur, int p, T d, const Tree<T> &tree){
+    dist[cur] = d;
+    for(auto &e : tree[cur]){
+      if(e.to == p) continue;
+      dfs_depth(e.to, cur, d + e.cost, tree);
+    }
+  }
+
   int dfs_sub(int cur, int p, Tree<T> &tree){
     par[cur] = p;
     int t = 0;
@@ -88,10 +98,11 @@ template <typename T> class LCA{
       dfs_build(e.to, i, tree);
     }
   }
-  
+
 public:
   LCA(Tree<T> tree, int root):
-    n(tree.size()), sub(n,1), par(n,-1), head(n), id(n){
+    n(tree.size()), sub(n, 1), par(n, -1), head(n), id(n), dist(n){
+    dfs_depth(root, -1, 0, tree);
     dfs_sub(root, -1, tree);
     int i = 0;
     dfs_build(root, i, tree);
@@ -104,6 +115,12 @@ public:
       v = par[head[v]];
     }
   }
+
+  T distance(int u, int v) const {
+    return dist[u] + dist[v] - 2 * dist[lca(u, v)];
+  }
+
+  int operator()(int u, int v) const {return lca(u, v);}
 };
 
 ```
@@ -116,13 +133,14 @@ public:
 #include <vector>
 #include <utility>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -132,15 +150,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -153,7 +171,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -181,10 +199,20 @@ using Tree = Graph<T>;
  * @title Lowest common ancestor (HLD)
  * @docs lca_based_on_hld.md
  */
-template <typename T> class LCA{
+template <typename T>
+class LCA {
   int n;
   std::vector<int> sub, par, head, id;
-  
+  std::vector<T> dist;
+
+  void dfs_depth(int cur, int p, T d, const Tree<T> &tree){
+    dist[cur] = d;
+    for(auto &e : tree[cur]){
+      if(e.to == p) continue;
+      dfs_depth(e.to, cur, d + e.cost, tree);
+    }
+  }
+
   int dfs_sub(int cur, int p, Tree<T> &tree){
     par[cur] = p;
     int t = 0;
@@ -209,10 +237,11 @@ template <typename T> class LCA{
       dfs_build(e.to, i, tree);
     }
   }
-  
+
 public:
   LCA(Tree<T> tree, int root):
-    n(tree.size()), sub(n,1), par(n,-1), head(n), id(n){
+    n(tree.size()), sub(n, 1), par(n, -1), head(n), id(n), dist(n){
+    dfs_depth(root, -1, 0, tree);
     dfs_sub(root, -1, tree);
     int i = 0;
     dfs_build(root, i, tree);
@@ -225,6 +254,12 @@ public:
       v = par[head[v]];
     }
   }
+
+  T distance(int u, int v) const {
+    return dist[u] + dist[v] - 2 * dist[lca(u, v)];
+  }
+
+  int operator()(int u, int v) const {return lca(u, v);}
 };
 
 ```

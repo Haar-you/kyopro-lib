@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/1300/main.test.cpp
+# :x: test/aoj/1300/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#453a4dbc3063ebc5e529de1cba20ccae">test/aoj/1300</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1300/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1300">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1300</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp.html">Gaussian elimination</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Rational/rational.cpp.html">Rational number</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Parser/parser.cpp.html">Parsing</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/String/split.cpp.html">split</a>
+* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :x: <a href="../../../../library/Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp.html">Gaussian elimination</a>
+* :x: <a href="../../../../library/Mylib/Number/Rational/rational.cpp.html">Rational number</a>
+* :x: <a href="../../../../library/Mylib/Parser/parser.cpp.html">Parsing</a>
+* :x: <a href="../../../../library/Mylib/String/split.cpp.html">split</a>
 
 
 ## Code
@@ -57,7 +57,6 @@ layout: default
 #include <map>
 #include <string>
 #include <vector>
-
 #include "Mylib/Parser/parser.cpp"
 #include "Mylib/Number/Rational/rational.cpp"
 #include "Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp"
@@ -66,14 +65,14 @@ layout: default
 
 using result = std::map<std::string, int>;
 
-struct parser : Parser{
+struct parser : Parser {
   parser(const std::string &s): Parser(s){}
 
   std::string atom(){
     std::string ret;
     ret += get_char();
     if(lower()) ret += get_char();
-    
+
     return ret;
   }
 
@@ -114,7 +113,7 @@ struct parser : Parser{
 
     return ret;
   }
-  
+
   result run(){
     return expression();
   }
@@ -152,7 +151,7 @@ int main(){
         atoms[kv.first] = 0;
         kv.second = -kv.second;
       }
-      ress.push_back(r);	
+      ress.push_back(r);
     }
 
     {
@@ -170,13 +169,13 @@ int main(){
     }
 
     gaussian_elimination(mat);
-    
+
     const int n = ress.size();
     std::vector<Rational> ans(n);
 
-    ans[n-1] = 1;
+    ans[n - 1] = 1;
 
-    for(int i = (int)atoms.size()-1; i >= 0; --i){
+    for(int i = (int)atoms.size(); --i >= 0;){
       if(mat[i].back() == 0) continue;
 
       int k = 0;
@@ -192,7 +191,7 @@ int main(){
         }
       }
 
-      ans[k] = -cons/coef;
+      ans[k] = -cons / coef;
     }
 
     int64_t l = 1;
@@ -202,7 +201,7 @@ int main(){
 
     std::cout << join(ans.begin(), ans.end()) << "\n";
   }
-  
+
   return 0;
 }
 
@@ -219,30 +218,27 @@ int main(){
 #include <map>
 #include <string>
 #include <vector>
-
-#line 2 "Mylib/Parser/parser.cpp"
-
-#line 4 "Mylib/Parser/parser.cpp"
+#line 3 "Mylib/Parser/parser.cpp"
 #include <cassert>
 
 /**
  * @title Parsing
  * @docs parser.md
  */
-struct Parser{
+struct Parser {
   using state = std::string::const_iterator;
-  
+
   state cur, first, last;
 
   Parser(){}
   Parser(const std::string &s): cur(s.cbegin()), first(s.cbegin()), last(s.cend()){}
-  
+
   char peek() const {return *cur;}
-  
+
   bool check(char c) const {
     return *cur == c;
   }
-  
+
   bool check(const std::string &s) const {
     state temp = cur;
     for(auto c : s){
@@ -251,23 +247,23 @@ struct Parser{
     }
     return true;
   }
-  
+
   void ignore(char c){
     assert(*cur == c);
     ++cur;
   }
-  
+
   void ignore(){
     ++cur;
   }
-  
+
   void ignore(const std::string &s){
     for(auto c : s){
       assert(*cur == c);
       ++cur;
     }
   }
-  
+
   template <class Checker>
   void ignore_if(const Checker &f){
     assert(f(*cur));
@@ -285,15 +281,15 @@ struct Parser{
   bool alpha() const {return isalpha(*cur);}
   bool lower() const {return islower(*cur);}
   bool upper() const {return isupper(*cur);}
-    
+
   char get_char(){
     return *(cur++);
   }
-  
+
   int get_digit(){
-    return (int)(*(cur++)-'0');
+    return (int)(*(cur++) - '0');
   }
-  
+
   template <typename Checker>
   auto get_string(const Checker &f){
     std::string ret;
@@ -303,7 +299,7 @@ struct Parser{
     }
     return ret;
   }
-  
+
   auto get_string_alpha(){
     std::string ret;
     while(isalpha(*cur)){
@@ -312,7 +308,7 @@ struct Parser{
     }
     return ret;
   }
-  
+
   auto get_string_alnum(){
     std::string ret;
     while(isalnum(*cur)){
@@ -321,7 +317,7 @@ struct Parser{
     }
     return ret;
   }
-  
+
   template <typename T>
   T get_number(){
     T ret = get_digit();
@@ -339,14 +335,14 @@ struct Parser{
  * @title Rational number
  * @docs rational.md
  */
-class Rational{
+class Rational {
 public:
   int64_t nume, deno;
   Rational(): nume(0), deno(1){}
-  Rational(int64_t num): nume(num), deno(1){} 
+  Rational(int64_t num): nume(num), deno(1){}
   Rational(int64_t num, int64_t den){
     int64_t g = std::gcd(num, den);
-    nume = num / g ;
+    nume = num / g;
     deno = den / g;
     if(deno < 0){
       nume = -nume;
@@ -358,24 +354,27 @@ public:
     int64_t l = std::lcm((*this).deno, b.deno);
     return Rational(l / (*this).deno * (*this).nume + l / b.deno * b.nume, l);
   }
-  
+
   auto operator-(const Rational &b){
     int64_t l = std::lcm((*this).deno, b.deno);
     return Rational(l / (*this).deno * (*this).nume - l / b.deno * b.nume, l);
   }
-  
+
   auto operator*(const Rational &b){
     return Rational((*this).nume * b.nume, (*this).deno * b.deno);
   }
-  
+
   auto operator/(const Rational &b){
     return Rational((*this).nume * b.deno, (*this).deno * b.nume);
   }
-  
+
   auto& operator+=(const Rational &a){*this = *this + a; return *this;}
   auto& operator-=(const Rational &a){*this = *this - a; return *this;}
   auto& operator*=(const Rational &a){*this = *this * a; return *this;}
   auto& operator/=(const Rational &a){*this = *this / a; return *this;}
+
+  explicit operator double() const {return (double)nume / deno;}
+  explicit operator long double() const {return (long double)nume / deno;}
 };
 
 std::ostream& operator<<(std::ostream &os, const Rational &r){
@@ -393,8 +392,6 @@ bool operator<=(const Rational &a, const Rational &b){return a.nume * b.deno <= 
 bool operator>(const Rational &a, const Rational &b){return !(a <= b);}
 bool operator>=(const Rational &a, const Rational &b){return !(a < b);}
 
-double to_double(const Rational &a){return (double)a.nume/a.deno;}
-
 auto abs(const Rational &a){return Rational(abs(a.nume), abs(a.deno));}
 #line 3 "Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp"
 #include <utility>
@@ -403,14 +400,15 @@ auto abs(const Rational &a){return Rational(abs(a.nume), abs(a.deno));}
  * @title Gaussian elimination
  * @docs gaussian_elimination.md
  */
-template <typename T> int gaussian_elimination(std::vector<std::vector<T>> &a){
+template <typename T>
+int gaussian_elimination(std::vector<std::vector<T>> &a){
   const int h = a.size();
   const int w = a[0].size();
   int rank = 0;
-  
+
   for(int j = 0; j < w; ++j){
     int pivot = -1;
-    
+
     for(int i = rank; i < h; ++i){
       if(a[i][j] != 0){
         pivot = i;
@@ -452,12 +450,12 @@ auto split(const std::string &s, const std::string &delim){
     size_t j = s.find(delim, i);
     if(j == std::string::npos) break;
 
-    ret.push_back(s.substr(i,j-i));
+    ret.push_back(s.substr(i, j - i));
 
     i = j + delim.size();
   }
 
-  ret.push_back(s.substr(i,s.size()-i));
+  ret.push_back(s.substr(i, s.size() - i));
 
   return ret;
 }
@@ -479,18 +477,18 @@ std::string join(ITER first, ITER last, std::string delim = " "){
 
   return s.str();
 }
-#line 13 "test/aoj/1300/main.test.cpp"
+#line 12 "test/aoj/1300/main.test.cpp"
 
 using result = std::map<std::string, int>;
 
-struct parser : Parser{
+struct parser : Parser {
   parser(const std::string &s): Parser(s){}
 
   std::string atom(){
     std::string ret;
     ret += get_char();
     if(lower()) ret += get_char();
-    
+
     return ret;
   }
 
@@ -531,7 +529,7 @@ struct parser : Parser{
 
     return ret;
   }
-  
+
   result run(){
     return expression();
   }
@@ -569,7 +567,7 @@ int main(){
         atoms[kv.first] = 0;
         kv.second = -kv.second;
       }
-      ress.push_back(r);	
+      ress.push_back(r);
     }
 
     {
@@ -587,13 +585,13 @@ int main(){
     }
 
     gaussian_elimination(mat);
-    
+
     const int n = ress.size();
     std::vector<Rational> ans(n);
 
-    ans[n-1] = 1;
+    ans[n - 1] = 1;
 
-    for(int i = (int)atoms.size()-1; i >= 0; --i){
+    for(int i = (int)atoms.size(); --i >= 0;){
       if(mat[i].back() == 0) continue;
 
       int k = 0;
@@ -609,7 +607,7 @@ int main(){
         }
       }
 
-      ans[k] = -cons/coef;
+      ans[k] = -cons / coef;
     }
 
     int64_t l = 1;
@@ -619,7 +617,7 @@ int main(){
 
     std::cout << join(ans.begin(), ans.end()) << "\n";
   }
-  
+
   return 0;
 }
 

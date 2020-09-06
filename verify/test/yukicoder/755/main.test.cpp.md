@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yukicoder/755/main.test.cpp
+# :x: test/yukicoder/755/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#ee474aa687e73628de0ff7ea7a02b81b">test/yukicoder/755</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/755/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-03 05:13:49+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/755">https://yukicoder.me/problems/no/755</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp.html">2D cumulative sum</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp.html">2D cumulative sum</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -54,7 +54,6 @@ layout: default
 
 #include <iostream>
 #include <vector>
-
 #include "Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp"
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
@@ -73,20 +72,20 @@ int main(){
     --x, --y;
 
     int ans = 0;
-    
+
     for(int x1 = 0; x1 <= x; ++x1){
       for(int y1 = 0; y1 <= y; ++y1){
         for(int x2 = x; x2 < M; ++x2){
           for(int y2 = y; y2 < M; ++y2){
-            if(c.get(x1, y1, x2 + 1, y2 + 1) == 0) ++ans;
+            if(c.get({x1, y1}, {x2 + 1, y2 + 1}) == 0) ++ans;
           }
         }
-      }  
+      }
     }
 
     std::cout << ans << std::endl;
   }
-  
+
   return 0;
 }
 
@@ -101,7 +100,6 @@ int main(){
 
 #include <iostream>
 #include <vector>
-
 #line 3 "Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp"
 #include <functional>
 #include <cassert>
@@ -111,7 +109,7 @@ int main(){
  * @docs cumulative_sum_2d.md
  */
 template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
-class CumulativeSum2D{
+class CumulativeSum2D {
   std::vector<std::vector<T>> data;
   const int N, M;
   const Add add;
@@ -122,10 +120,10 @@ public:
   CumulativeSum2D(const std::vector<std::vector<T>> &a, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
     N(a.size()), M(a[0].size()), add(add), minus(minus)
   {
-    data.assign(N+1, std::vector<T>(M+1, e));
+    data.assign(N + 1, std::vector<T>(M + 1, e));
     for(int i = 0; i < N; ++i){
       for(int j = 0; j < M; ++j){
-        data[i+1][j+1] = a[i][j];
+        data[i + 1][j + 1] = a[i][j];
       }
     }
   }
@@ -133,25 +131,27 @@ public:
   CumulativeSum2D(int N, int M, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
     N(N), M(M), add(add), minus(minus)
   {
-    data.assign(N+1, std::vector<T>(M+1, e));
+    data.assign(N + 1, std::vector<T>(M + 1, e));
   }
 
   auto& update(int i, int j, const T &val){
     assert(not is_built);
-    data[i+1][j+1] = add(data[i+1][j+1], val);
+    data[i + 1][j + 1] = add(data[i + 1][j + 1], val);
     return *this;
   }
 
   auto& build(){
     assert(not is_built);
-    for(int i = 1; i <= N; ++i) for(int j = 0; j <= M; ++j) data[i][j] = add(data[i][j], data[i-1][j]);
-    for(int i = 0; i <= N; ++i) for(int j = 1; j <= M; ++j) data[i][j] = add(data[i][j], data[i][j-1]);
+    for(int i = 1; i <= N; ++i) for(int j = 0; j <= M; ++j) data[i][j] = add(data[i][j], data[i - 1][j]);
+    for(int i = 0; i <= N; ++i) for(int j = 1; j <= M; ++j) data[i][j] = add(data[i][j], data[i][j - 1]);
     is_built = true;
     return *this;
   }
 
-  T get(int x1, int y1, int x2, int y2) const { // [x1,x2), [y1,y2)
+  T get(std::pair<int, int> p1, std::pair<int, int> p2) const { // [x1, x2), [y1, y2)
     assert(is_built);
+    const auto [x1, y1] = p1;
+    const auto [x2, y2] = p2;
     return add(minus(data[x2][y2], add(data[x1][y2], data[x2][y1])), data[x1][y1]);
   }
 };
@@ -183,8 +183,8 @@ std::vector<std::vector<T>> input_vector(int N, int M){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -194,8 +194,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -204,8 +204,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -243,7 +243,7 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 9 "test/yukicoder/755/main.test.cpp"
+#line 8 "test/yukicoder/755/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
@@ -259,20 +259,20 @@ int main(){
     --x, --y;
 
     int ans = 0;
-    
+
     for(int x1 = 0; x1 <= x; ++x1){
       for(int y1 = 0; y1 <= y; ++y1){
         for(int x2 = x; x2 < M; ++x2){
           for(int y2 = y; y2 < M; ++y2){
-            if(c.get(x1, y1, x2 + 1, y2 + 1) == 0) ++ans;
+            if(c.get({x1, y1}, {x2 + 1, y2 + 1}) == 0) ++ans;
           }
         }
-      }  
+      }
     }
 
     std::cout << ans << std::endl;
   }
-  
+
   return 0;
 }
 

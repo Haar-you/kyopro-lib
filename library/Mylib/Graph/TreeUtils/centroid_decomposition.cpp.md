@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Centroid decomposition
+# :warning: Mylib/Graph/TreeUtils/centroid_decomposition.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/centroid_decomposition.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Code
@@ -50,57 +50,65 @@ layout: default
 #include <vector>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Centroid decomposition
- * @docs centroid_decomposition.md
- */
 template <typename T>
-struct CentroidDecomposition{
-  Tree<T> tree;
-  const int N;
+class CentroidDecomposition {
+  int N;
+  std::vector<int> parent;
+  std::vector<std::vector<int>> children;
+  std::vector<int> subsize;
+  std::vector<bool> check;
 
-  std::vector<int> size;
-  std::vector<bool> checked;
-  std::vector<int> depth;
-  
+public:
   CentroidDecomposition(const Tree<T> &tree):
-    tree(tree), N(tree.size()), size(N), checked(N), depth(N)
+    N(tree.size()), parent(N), children(N), subsize(N), check(N)
   {
-    decompose(0, 0);
+    decompose(tree, 0, -1);
   }
 
-  void decompose(int cur, int d){
-    dfs_subsize(cur, -1);
-    auto c = get_centroid(cur, -1, size[cur]);
+private:
+  void decompose(const Tree<T> &tree, int cur, int par){
+    dfs_subsize(tree, cur, -1);
+    auto c = get_centroid(tree, cur, -1, subsize[cur]);
 
-    checked[c] = true;
-    depth[c] = d;
+    check[c] = true;
+    parent[c] = par;
+    if(par != -1) children[par].push_back(c);
 
     for(auto &e : tree[c]){
-      if(checked[e.to]) continue;
-      decompose(e.to, d+1);
+      if(check[e.to]) continue;
+      decompose(tree, e.to, c);
     }
   }
 
-  int get_centroid(int cur, int par, int total_size){
+  int get_centroid(const Tree<T> &tree, int cur, int par, int total_size){
     for(auto &e : tree[cur]){
-      if(e.to == par or checked[e.to]) continue;
+      if(e.to == par or check[e.to]) continue;
 
-      if(2 * size[e.to] > total_size){
-        return get_centroid(e.to, cur, total_size);
+      if(2 * subsize[e.to] > total_size){
+        return get_centroid(tree, e.to, cur, total_size);
       }
     }
 
     return cur;
   }
 
-  void dfs_subsize(int cur, int par){
-    size[cur] = 1;
+  void dfs_subsize(const Tree<T> &tree, int cur, int par){
+    subsize[cur] = 1;
     for(auto &e : tree[cur]){
-      if(e.to == par or checked[e.to]) continue;
-      dfs_subsize(e.to, cur);
-      size[cur] += size[e.to];
+      if(e.to == par or check[e.to]) continue;
+      dfs_subsize(tree, e.to, cur);
+      subsize[cur] += subsize[e.to];
     }
+  }
+
+public:
+  auto bottom_up(int i) const {
+    std::vector<int> ret;
+    while(i >= 0){
+      ret.push_back(i);
+      i = parent[i];
+    }
+    return ret;
   }
 };
 
@@ -113,13 +121,14 @@ struct CentroidDecomposition{
 #line 2 "Mylib/Graph/TreeUtils/centroid_decomposition.cpp"
 #include <vector>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -129,15 +138,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -150,7 +159,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -174,57 +183,65 @@ template <typename T>
 using Tree = Graph<T>;
 #line 4 "Mylib/Graph/TreeUtils/centroid_decomposition.cpp"
 
-/**
- * @title Centroid decomposition
- * @docs centroid_decomposition.md
- */
 template <typename T>
-struct CentroidDecomposition{
-  Tree<T> tree;
-  const int N;
+class CentroidDecomposition {
+  int N;
+  std::vector<int> parent;
+  std::vector<std::vector<int>> children;
+  std::vector<int> subsize;
+  std::vector<bool> check;
 
-  std::vector<int> size;
-  std::vector<bool> checked;
-  std::vector<int> depth;
-  
+public:
   CentroidDecomposition(const Tree<T> &tree):
-    tree(tree), N(tree.size()), size(N), checked(N), depth(N)
+    N(tree.size()), parent(N), children(N), subsize(N), check(N)
   {
-    decompose(0, 0);
+    decompose(tree, 0, -1);
   }
 
-  void decompose(int cur, int d){
-    dfs_subsize(cur, -1);
-    auto c = get_centroid(cur, -1, size[cur]);
+private:
+  void decompose(const Tree<T> &tree, int cur, int par){
+    dfs_subsize(tree, cur, -1);
+    auto c = get_centroid(tree, cur, -1, subsize[cur]);
 
-    checked[c] = true;
-    depth[c] = d;
+    check[c] = true;
+    parent[c] = par;
+    if(par != -1) children[par].push_back(c);
 
     for(auto &e : tree[c]){
-      if(checked[e.to]) continue;
-      decompose(e.to, d+1);
+      if(check[e.to]) continue;
+      decompose(tree, e.to, c);
     }
   }
 
-  int get_centroid(int cur, int par, int total_size){
+  int get_centroid(const Tree<T> &tree, int cur, int par, int total_size){
     for(auto &e : tree[cur]){
-      if(e.to == par or checked[e.to]) continue;
+      if(e.to == par or check[e.to]) continue;
 
-      if(2 * size[e.to] > total_size){
-        return get_centroid(e.to, cur, total_size);
+      if(2 * subsize[e.to] > total_size){
+        return get_centroid(tree, e.to, cur, total_size);
       }
     }
 
     return cur;
   }
 
-  void dfs_subsize(int cur, int par){
-    size[cur] = 1;
+  void dfs_subsize(const Tree<T> &tree, int cur, int par){
+    subsize[cur] = 1;
     for(auto &e : tree[cur]){
-      if(e.to == par or checked[e.to]) continue;
-      dfs_subsize(e.to, cur);
-      size[cur] += size[e.to];
+      if(e.to == par or check[e.to]) continue;
+      dfs_subsize(tree, e.to, cur);
+      subsize[cur] += subsize[e.to];
     }
+  }
+
+public:
+  auto bottom_up(int i) const {
+    std::vector<int> ret;
+    while(i >= 0){
+      ret.push_back(i);
+      i = parent[i];
+    }
+    return ret;
   }
 };
 

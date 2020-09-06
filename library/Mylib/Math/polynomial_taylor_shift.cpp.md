@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: polynomial_taylor_shift.md
+# :x: polynomial_taylor_shift.md
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#c20232aa0a6a3c1c77a782d17f007d0b">Mylib/Math</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Math/polynomial_taylor_shift.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-20 08:34:49+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="../Combinatorics/stirling_number_first_fft.cpp.html">Stirling numbers of the first kind (FFT)</a>
+* :x: <a href="../Combinatorics/stirling_number_first_fft.cpp.html">Stirling numbers of the first kind (FFT)</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/polynomial_taylor_shift/main.test.cpp.html">test/yosupo-judge/polynomial_taylor_shift/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/polynomial_taylor_shift/main.test.cpp.html">test/yosupo-judge/polynomial_taylor_shift/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp</a>
 
 
 ## Code
@@ -74,7 +74,7 @@ auto polynomial_taylor_shift(std::vector<T> a, T c, const Conv &convolve){
   std::vector<T> g(N);
   g[N - 1] = f.inv();
   for(int i = N - 2; i >= 0; --i) g[i] = g[i + 1] * (i + 1);
-  
+
   std::vector<T> B(2 * N - 1);
   for(int i = 0; i < N; ++i){
     B[N - i - 1] = d * g[i];
@@ -88,7 +88,6 @@ auto polynomial_taylor_shift(std::vector<T> a, T c, const Conv &convolve){
 
   return ret;
 }
-
 
 ```
 {% endraw %}
@@ -118,7 +117,7 @@ auto polynomial_taylor_shift(std::vector<T> a, T c, const Conv &convolve){
   std::vector<T> g(N);
   g[N - 1] = f.inv();
   for(int i = N - 2; i >= 0; --i) g[i] = g[i + 1] * (i + 1);
-  
+
   std::vector<T> B(2 * N - 1);
   for(int i = 0; i < N; ++i){
     B[N - i - 1] = d * g[i];
@@ -132,7 +131,6 @@ auto polynomial_taylor_shift(std::vector<T> a, T c, const Conv &convolve){
 
   return ret;
 }
-
 
 ```
 {% endraw %}

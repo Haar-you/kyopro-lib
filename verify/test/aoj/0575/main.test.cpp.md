@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/0575/main.test.cpp
+# :x: test/aoj/0575/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#bc5135b351a05eb69baff19bb9fa33f2">test/aoj/0575</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/0575/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0575">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0575</a>
@@ -39,12 +39,12 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Algorithm/Search/parallel_binary_search.cpp.html">Parallel binary search</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Graph/ShortestPath/dijkstra.cpp.html">Dijkstra algorithm</a>
-* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/Algorithm/Search/parallel_binary_search.cpp.html">Parallel binary search</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :x: <a href="../../../../library/Mylib/Graph/ShortestPath/dijkstra.cpp.html">Dijkstra algorithm</a>
+* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -58,7 +58,6 @@ layout: default
 #include <vector>
 #include <utility>
 #include <algorithm>
-
 #include "Mylib/Graph/ShortestPath/dijkstra.cpp"
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include "Mylib/Algorithm/Search/parallel_binary_search.cpp"
@@ -69,7 +68,7 @@ layout: default
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, M, K, Q; std::cin >> N >> M >> K >> Q;
 
   Graph<int> g(N);
@@ -105,26 +104,26 @@ int main(){
   }
 
   UnionFind uf;
-  
+
   auto res =
     parallel_binary_search(
       C,
       Q,
       [&](){uf = UnionFind(N);},
       [&](int i){
-        for(auto [x, y] : edges[C-1-i]){
+        for(auto [x, y] : edges[C - 1 - i]){
           uf.merge(x, y);
         }
       },
-      [&](int i) -> bool{
+      [&](int i) -> bool {
         return uf.is_same(S[i], T[i]);
       }
     );
-  
+
   for(auto x : res){
-    std::cout << dist_list[C-x-1] << "\n";
-  }  
-  
+    std::cout << dist_list[C - x - 1] << "\n";
+  }
+
   return 0;
 }
 
@@ -142,20 +141,19 @@ int main(){
 #include <vector>
 #include <utility>
 #include <algorithm>
-
 #line 3 "Mylib/Graph/ShortestPath/dijkstra.cpp"
 #include <optional>
 #include <queue>
 #line 6 "Mylib/Graph/ShortestPath/dijkstra.cpp"
 #include <functional>
-#line 3 "Mylib/Graph/Template/graph.cpp"
+#line 4 "Mylib/Graph/Template/graph.cpp"
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -165,15 +163,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -186,7 +184,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -217,10 +215,10 @@ using Tree = Graph<T>;
 template <typename T>
 auto dijkstra(const Graph<T> &graph, std::vector<int> src){
   using P = std::pair<T, int>;
-  
+
   const int n = graph.size();
   std::vector<std::optional<T>> dist(n);
-  
+
   std::vector<bool> check(n, false);
   std::priority_queue<P, std::vector<P>, std::greater<P>> pq;
 
@@ -257,25 +255,25 @@ auto dijkstra(const Graph<T> &graph, std::vector<int> src){
  * @title Union-find
  * @docs unionfind.md
  */
-class UnionFind{
+class UnionFind {
   std::vector<int> parent, depth, size;
   int count;
 
 public:
   UnionFind(){}
-  UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
+  UnionFind(int n): parent(n), depth(n, 1), size(n, 1), count(n){
     std::iota(parent.begin(), parent.end(), 0);
   }
-  
+
   int root_of(int i){
     if(parent[i] == i) return i;
     else return parent[i] = root_of(parent[i]);
   }
-  
+
   bool is_same(int i, int j){return root_of(i) == root_of(j);}
 
   int merge(int i, int j){
-    int ri = root_of(i), rj = root_of(j);
+    const int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return ri;
     else{
       --count;
@@ -345,22 +343,22 @@ auto parallel_binary_search(int M, int Q, Init init, Process process, Checker ch
  * @docs input_tuple_vector.md
  */
 template <typename T, size_t ... I>
-void input_tuple_vector_init(T &val, int N, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0)...};
+void input_tuple_vector_init(T &val, int N, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0) ...};
 }
 
 template <typename T, size_t ... I>
-void input_tuple_vector_helper(T &val, int i, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0)...};
+void input_tuple_vector_helper(T &val, int i, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0) ...};
 }
 
 template <typename ... Args>
 auto input_tuple_vector(int N){
-  std::tuple<std::vector<Args>...> ret;
+  std::tuple<std::vector<Args> ...> ret;
 
-  input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof...(Args)>());
+  input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof ... (Args)>());
   for(int i = 0; i < N; ++i){
-    input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof...(Args)>());
+    input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof ... (Args)>());
   }
 
   return ret;
@@ -383,12 +381,12 @@ std::vector<std::vector<T>> input_vector(int N, int M){
   for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
   return ret;
 }
-#line 14 "test/aoj/0575/main.test.cpp"
+#line 13 "test/aoj/0575/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, M, K, Q; std::cin >> N >> M >> K >> Q;
 
   Graph<int> g(N);
@@ -424,26 +422,26 @@ int main(){
   }
 
   UnionFind uf;
-  
+
   auto res =
     parallel_binary_search(
       C,
       Q,
       [&](){uf = UnionFind(N);},
       [&](int i){
-        for(auto [x, y] : edges[C-1-i]){
+        for(auto [x, y] : edges[C - 1 - i]){
           uf.merge(x, y);
         }
       },
-      [&](int i) -> bool{
+      [&](int i) -> bool {
         return uf.is_same(S[i], T[i]);
       }
     );
-  
+
   for(auto x : res){
-    std::cout << dist_list[C-x-1] << "\n";
-  }  
-  
+    std::cout << dist_list[C - x - 1] << "\n";
+  }
+
   return 0;
 }
 

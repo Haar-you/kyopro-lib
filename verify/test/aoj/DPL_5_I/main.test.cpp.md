@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/DPL_5_I/main.test.cpp
+# :x: test/aoj/DPL_5_I/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b72df8ce0758bb7606e41650e28ebb6a">test/aoj/DPL_5_I</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_5_I/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-21 11:48:40+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_I</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/Combinatorics/factorial_table.cpp.html">Factorial table</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Combinatorics/stirling_number_second.cpp.html">Stirling numbers of the second kind</a>
-* :question: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
+* :x: <a href="../../../../library/Mylib/Combinatorics/factorial_table.cpp.html">Factorial table</a>
+* :x: <a href="../../../../library/Mylib/Combinatorics/stirling_number_second.cpp.html">Stirling numbers of the second kind</a>
+* :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
 ## Code
@@ -57,13 +57,13 @@ layout: default
 #include "Mylib/Combinatorics/stirling_number_second.cpp"
 
 using mint = ModInt<1000000007>;
- 
+
 int main(){
   auto ft = FactorialTable<mint>(3000);
 
   int N, K; std::cin >> N >> K;
 
-  std::cout << stirling_number(N, K, ft) << std::endl;
+  std::cout << stirling_number_of_second_kind(N, K, ft) << std::endl;
 
   return 0;
 }
@@ -85,18 +85,19 @@ int main(){
  * @title Modint
  * @docs mint.md
  */
-template <int32_t M> class ModInt{
+template <int32_t M>
+class ModInt {
 public:
   constexpr static int32_t MOD = M;
   uint32_t val;
-  
+
   constexpr ModInt(): val(0){}
   constexpr ModInt(int64_t n){
     if(n >= M) val = n % M;
     else if(n < 0) val = n % M + M;
     else val = n;
   }
-  
+
   constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
   constexpr auto& operator+=(const ModInt &a){
     if(val + a.val >= M) val = (uint64_t)val + a.val - M;
@@ -121,51 +122,51 @@ public:
   constexpr auto operator-(const ModInt &a) const {return ModInt(*this) -= a;}
   constexpr auto operator*(const ModInt &a) const {return ModInt(*this) *= a;}
   constexpr auto operator/(const ModInt &a) const {return ModInt(*this) /= a;}
-  
+
   constexpr bool operator==(const ModInt &a) const {return val == a.val;}
   constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
-  
+
   constexpr auto& operator++(){*this += 1; return *this;}
   constexpr auto& operator--(){*this -= 1; return *this;}
-  
+
   constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
   constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
-  
+
   constexpr static ModInt power(int64_t n, int64_t p){
     if(p < 0) return power(n, -p).inv();
-    
+
     int64_t ret = 1, e = n % M;
     for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
     return ret;
   }
-  
+
   constexpr static ModInt inv(int64_t a){
     int64_t b = M, u = 1, v = 0;
-    
+
     while(b){
       int64_t t = a / b;
-      a -= t * b; std::swap(a,b);
-      u -= t * v; std::swap(u,v);
+      a -= t * b; std::swap(a, b);
+      u -= t * v; std::swap(u, v);
     }
-    
+
     u %= M;
     if(u < 0) u += M;
-    
+
     return u;
   }
-  
+
   constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
-  
+
   constexpr auto power(int64_t p) const {return power(val, p);}
   constexpr auto inv() const {return inv(val);}
-  
-  friend constexpr auto operator-(const ModInt &a){return ModInt(M-a.val);}
-  
+
+  friend constexpr auto operator-(const ModInt &a){return ModInt(M - a.val);}
+
   friend constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
   friend constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
   friend constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
   friend constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
-  
+
   friend std::istream& operator>>(std::istream &s, ModInt<M> &a){s >> a.val; return s;}
   friend std::ostream& operator<<(std::ostream &s, const ModInt<M> &a){s << a.val; return s;}
 
@@ -181,13 +182,14 @@ public:
 #line 2 "Mylib/Combinatorics/factorial_table.cpp"
 #include <vector>
 #include <cassert>
+#include <cstdint>
 
 /**
  * @title Factorial table
  * @docs factorial_table.md
  */
 template <typename T>
-class FactorialTable{
+class FactorialTable {
 public:
   using value_type = T;
 
@@ -197,25 +199,25 @@ private:
 
 public:
   FactorialTable(int N){
-    f_table.assign(N+1, 1);
-    if_table.assign(N+1, 1);
-    
+    f_table.assign(N + 1, 1);
+    if_table.assign(N + 1, 1);
+
     for(int i = 1; i <= N; ++i){
-      f_table[i] = f_table[i-1] * i;
+      f_table[i] = f_table[i - 1] * i;
     }
-    
+
     if_table[N] = f_table[N].inv();
 
-    for(int i = N-1; i >= 0; --i){
-      if_table[i] = if_table[i+1] * (i+1);
+    for(int i = N; --i >= 0;){
+      if_table[i] = if_table[i + 1] * (i + 1);
     }
   }
-  
+
   T factorial(int64_t i) const {
     assert(i < (int)f_table.size());
     return f_table[i];
   }
-  
+
   T inv_factorial(int64_t i) const {
     assert(i < (int)if_table.size());
     return if_table[i];
@@ -223,32 +225,32 @@ public:
 
   T P(int64_t n, int64_t k) const {
     if(n < k or n < 0 or k < 0) return 0;
-    return factorial(n) * inv_factorial(n-k);
+    return factorial(n) * inv_factorial(n - k);
   }
 
   T C(int64_t n, int64_t k) const {
     if(n < k or n < 0 or k < 0) return 0;
-    return P(n,k) * inv_factorial(k);
+    return P(n, k) * inv_factorial(k);
   }
 
   T H(int64_t n, int64_t k) const {
     if(n == 0 and k == 0) return 1;
-    return C(n+k-1, k);
+    return C(n + k - 1, k);
   }
 };
-#line 3 "Mylib/Combinatorics/stirling_number_second.cpp"
+#line 4 "Mylib/Combinatorics/stirling_number_second.cpp"
 
 /**
  * @title Stirling numbers of the second kind
  * @docs stirling_number_second.md
  */
 template <typename Ft, typename T = typename Ft::value_type>
-T stirling_number(int64_t n, int64_t k, const Ft &ft){
+T stirling_number_of_second_kind(int64_t n, int64_t k, const Ft &ft){
   if(n == 0 and k == 0) return 1;
-  
+
   T ret = 0;
   for(int i = 1; i <= k; ++i){
-    if((k-i) % 2 == 0) ret += ft.C(k, i) * T::power(i, n);
+    if((k - i) % 2 == 0) ret += ft.C(k, i) * T::power(i, n);
     else ret -= ft.C(k, i) * T::power(i, n);
   }
   ret *= ft.inv_factorial(k);
@@ -257,13 +259,13 @@ T stirling_number(int64_t n, int64_t k, const Ft &ft){
 #line 7 "test/aoj/DPL_5_I/main.test.cpp"
 
 using mint = ModInt<1000000007>;
- 
+
 int main(){
   auto ft = FactorialTable<mint>(3000);
 
   int N, K; std::cin >> N >> K;
 
-  std::cout << stirling_number(N, K, ft) << std::endl;
+  std::cout << stirling_number_of_second_kind(N, K, ft) << std::endl;
 
   return 0;
 }

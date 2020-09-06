@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Interval scheduling problem
+# :x: Interval scheduling problem
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a1062884f064c2b3be412505b6627108">Mylib/TypicalProblem/IntervalSchedulingProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -56,7 +56,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/ALDS1_15_C/main.test.cpp.html">test/aoj/ALDS1_15_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/ALDS1_15_C/main.test.cpp.html">test/aoj/ALDS1_15_C/main.test.cpp</a>
 
 
 ## Code
@@ -76,9 +76,9 @@ layout: default
  * @docs interval_scheduling.md
  */
 template <typename T>
-std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){
+std::vector<std::pair<T, T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){
   const int N = l.size();
-  std::vector<std::pair<T,T>> ret;
+  std::vector<std::pair<T, T>> ret;
   std::vector<int> ord(N);
   std::iota(ord.begin(), ord.end(), 0);
   std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
@@ -91,7 +91,7 @@ std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &l, const s
       b = r[i];
     }
   }
-  
+
   return ret;
 }
 
@@ -113,9 +113,9 @@ std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &l, const s
  * @docs interval_scheduling.md
  */
 template <typename T>
-std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){
+std::vector<std::pair<T, T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){
   const int N = l.size();
-  std::vector<std::pair<T,T>> ret;
+  std::vector<std::pair<T, T>> ret;
   std::vector<int> ord(N);
   std::iota(ord.begin(), ord.end(), 0);
   std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
@@ -128,7 +128,7 @@ std::vector<std::pair<T,T>> interval_scheduling(const std::vector<T> &l, const s
       b = r[i];
     }
   }
-  
+
   return ret;
 }
 

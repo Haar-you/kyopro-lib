@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Knuth-Morris-Pratt algorithm
+# :x: Knuth-Morris-Pratt algorithm
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/knuth_morris_pratt.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-23 16:43:16+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -51,7 +51,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/ALDS1_14_B/main.kmp.test.cpp.html">test/aoj/ALDS1_14_B/main.kmp.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/ALDS1_14_B/main.kmp.test.cpp.html">test/aoj/ALDS1_14_B/main.kmp.test.cpp</a>
 
 
 ## Code
@@ -62,12 +62,13 @@ layout: default
 #pragma once
 #include <vector>
 #include <string>
+#include <string_view>
 
 /**
  * @title Knuth-Morris-Pratt algorithm
  * @docs knuth_morris_pratt.md
  */
-struct KMP{
+struct KMP {
   int M;
   std::string pattern;
   std::vector<int> table;
@@ -92,7 +93,7 @@ struct KMP{
     }
   }
 
-  std::vector<int> match(std::string s) const {
+  std::vector<int> match(const std::string_view &s) const {
     std::vector<int> ret;
     const int N = s.size();
 
@@ -123,12 +124,13 @@ struct KMP{
 #line 2 "Mylib/String/knuth_morris_pratt.cpp"
 #include <vector>
 #include <string>
+#include <string_view>
 
 /**
  * @title Knuth-Morris-Pratt algorithm
  * @docs knuth_morris_pratt.md
  */
-struct KMP{
+struct KMP {
   int M;
   std::string pattern;
   std::vector<int> table;
@@ -153,7 +155,7 @@ struct KMP{
     }
   }
 
-  std::vector<int> match(std::string s) const {
+  std::vector<int> match(const std::string_view &s) const {
     std::vector<int> ret;
     const int N = s.size();
 

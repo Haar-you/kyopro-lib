@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Fixed point combinator
+# :x: Fixed point combinator
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#cf1ec978dae666792e23e53a3672d204">Mylib/Utils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Utils/fix_point.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-07 18:06:08+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
@@ -51,10 +51,10 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.binomial_heap.test.cpp.html">test/aoj/2559/main.binomial_heap.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/2559/main.binomial_heap.test.cpp.html">test/aoj/2559/main.binomial_heap.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
 
 
 ## Code
@@ -70,12 +70,12 @@ layout: default
  * @docs fix_point.md
  */
 template <typename F>
-struct FixPoint : F{
+struct FixPoint : F {
   explicit constexpr FixPoint(F &&f) noexcept : F(std::forward<F>(f)){}
 
-  template <typename... Args>
+  template <typename ... Args>
   constexpr auto operator()(Args &&... args) const {
-    return F::operator()(*this, std::forward<Args>(args)...);
+    return F::operator()(*this, std::forward<Args>(args) ...);
   }
 };
 
@@ -103,12 +103,12 @@ inline constexpr auto make_fix_point(F &f){
  * @docs fix_point.md
  */
 template <typename F>
-struct FixPoint : F{
+struct FixPoint : F {
   explicit constexpr FixPoint(F &&f) noexcept : F(std::forward<F>(f)){}
 
-  template <typename... Args>
+  template <typename ... Args>
   constexpr auto operator()(Args &&... args) const {
-    return F::operator()(*this, std::forward<Args>(args)...);
+    return F::operator()(*this, std::forward<Args>(args) ...);
   }
 };
 

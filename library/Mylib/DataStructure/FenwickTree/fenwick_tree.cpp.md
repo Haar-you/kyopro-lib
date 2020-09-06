@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Fenwick tree
+# :x: Fenwick tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2f58e2c328298747e7665b6f6b5791ad">Mylib/DataStructure/FenwickTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -61,18 +61,18 @@ layout: default
 ## Problems
 
 ## References
- 
+
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="fenwick_tree_on_fenwick_tree.cpp.html">Fenwick tree (On Fenwick tree)</a>
+* :x: <a href="fenwick_tree_on_fenwick_tree.cpp.html">Fenwick tree (On Fenwick tree)</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp.html">test/aoj/DSL_2_B/main.fenwick_tree.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp.html">test/aoj/DSL_2_B/main.fenwick_tree.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
 
 
 ## Code
@@ -88,34 +88,34 @@ layout: default
  * @docs fenwick_tree.md
  */
 template <typename AbelianGroup>
-class FenwickTree{
+class FenwickTree {
   using value_type = typename AbelianGroup::value_type;
-  AbelianGroup G;
-  
+  const static AbelianGroup G;
+
   int size;
   std::vector<value_type> data;
-  
+
 public:
   FenwickTree(){}
   FenwickTree(int size):
-    size(size), data(size + 1, G.id())
+    size(size), data(size + 1, G())
   {}
-  
+
   void update(int i, const value_type &val){
     i += 1; // 1-index
-    
+
     while(i <= size){
-      data[i] = G.op(data[i], val);
+      data[i] = G(data[i], val);
       i += i & (-i);
     }
   }
-  
+
   value_type get(int i) const { // [0, i)
-    value_type ret = G.id();
+    value_type ret = G();
     i += 1; // 1-index
 
     while(i > 0){
-      ret = G.op(ret, data[i]);
+      ret = G(ret, data[i]);
       i -= i & (-i);
     }
 
@@ -123,11 +123,11 @@ public:
   }
 
   value_type get(int l, int r) const { // [l, r)
-    return G.op(get(r-1), G.inv(get(l-1)));
+    return G(get(r - 1), G.inv(get(l - 1)));
   }
-  
-  value_type at(int x) const {
-    return get(x, x+1);
+
+  value_type operator[](int x) const {
+    return get(x, x + 1);
   }
 };
 
@@ -145,34 +145,34 @@ public:
  * @docs fenwick_tree.md
  */
 template <typename AbelianGroup>
-class FenwickTree{
+class FenwickTree {
   using value_type = typename AbelianGroup::value_type;
-  AbelianGroup G;
-  
+  const static AbelianGroup G;
+
   int size;
   std::vector<value_type> data;
-  
+
 public:
   FenwickTree(){}
   FenwickTree(int size):
-    size(size), data(size + 1, G.id())
+    size(size), data(size + 1, G())
   {}
-  
+
   void update(int i, const value_type &val){
     i += 1; // 1-index
-    
+
     while(i <= size){
-      data[i] = G.op(data[i], val);
+      data[i] = G(data[i], val);
       i += i & (-i);
     }
   }
-  
+
   value_type get(int i) const { // [0, i)
-    value_type ret = G.id();
+    value_type ret = G();
     i += 1; // 1-index
 
     while(i > 0){
-      ret = G.op(ret, data[i]);
+      ret = G(ret, data[i]);
       i -= i & (-i);
     }
 
@@ -180,11 +180,11 @@ public:
   }
 
   value_type get(int l, int r) const { // [l, r)
-    return G.op(get(r-1), G.inv(get(l-1)));
+    return G(get(r - 1), G.inv(get(l - 1)));
   }
-  
-  value_type at(int x) const {
-    return get(x, x+1);
+
+  value_type operator[](int x) const {
+    return get(x, x + 1);
   }
 };
 

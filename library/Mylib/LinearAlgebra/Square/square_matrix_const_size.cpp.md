@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Square matrix (Const size)
+# :x: Square matrix (Const size)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b58b3fdb1287502881e9117a37552614">Mylib/LinearAlgebra/Square</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-08 12:08:32+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/510/main.test.cpp.html">test/yukicoder/510/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/510/main.test.cpp.html">test/yukicoder/510/main.test.cpp</a>
 
 
 ## Code
@@ -55,10 +55,11 @@ layout: default
  * @title Square matrix (Const size)
  * @docs square_matrix_const_size.md
  */
-template <typename T, int N> struct SquareMatrixConst{
+template <typename T, int N>
+struct SquareMatrixConst {
   using value_type = T;
-  
-  std::array<std::array<T,N>,N> matrix;
+
+  std::array<std::array<T, N>, N> matrix;
 
   SquareMatrixConst(){
     for(size_t i = 0; i < N; ++i) for(size_t j = 0; j < N; ++j) matrix[i][j] = 0;
@@ -95,7 +96,7 @@ template <typename T, int N> struct SquareMatrixConst{
   }
 
   auto& operator*=(const SquareMatrixConst &val){
-    std::array<std::array<T,N>,N> temp = {};
+    std::array<std::array<T, N>, N> temp = {};
     for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) for(int k = 0; k < N; ++k) temp[i][j] = temp[i][j] + matrix[i][k] * val[k][j];
     std::swap(matrix, temp);
     return *this;
@@ -104,7 +105,7 @@ template <typename T, int N> struct SquareMatrixConst{
   const auto& operator[](size_t i) const {return matrix[i];}
   auto& operator[](size_t i){return matrix[i];}
   int size() const {return N;}
-  
+
   static auto make_unit(){
     SquareMatrixConst ret;
     for(size_t i = 0; i < N; ++i) ret[i][i] = 1;
@@ -131,10 +132,11 @@ template <typename T, int N> struct SquareMatrixConst{
  * @title Square matrix (Const size)
  * @docs square_matrix_const_size.md
  */
-template <typename T, int N> struct SquareMatrixConst{
+template <typename T, int N>
+struct SquareMatrixConst {
   using value_type = T;
-  
-  std::array<std::array<T,N>,N> matrix;
+
+  std::array<std::array<T, N>, N> matrix;
 
   SquareMatrixConst(){
     for(size_t i = 0; i < N; ++i) for(size_t j = 0; j < N; ++j) matrix[i][j] = 0;
@@ -171,7 +173,7 @@ template <typename T, int N> struct SquareMatrixConst{
   }
 
   auto& operator*=(const SquareMatrixConst &val){
-    std::array<std::array<T,N>,N> temp = {};
+    std::array<std::array<T, N>, N> temp = {};
     for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) for(int k = 0; k < N; ++k) temp[i][j] = temp[i][j] + matrix[i][k] * val[k][j];
     std::swap(matrix, temp);
     return *this;
@@ -180,7 +182,7 @@ template <typename T, int N> struct SquareMatrixConst{
   const auto& operator[](size_t i) const {return matrix[i];}
   auto& operator[](size_t i){return matrix[i];}
   int size() const {return N;}
-  
+
   static auto make_unit(){
     SquareMatrixConst ret;
     for(size_t i = 0; i < N; ++i) ret[i][i] = 1;

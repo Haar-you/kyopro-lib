@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/1208/main.test.cpp
+# :x: test/aoj/1208/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#60cfb2a207c530b35f28147fe13d3d80">test/aoj/1208</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1208/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-13 00:52:15+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1208">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1208</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Rational/stern_brocot_tree.cpp.html">Stern-Brocot tree</a>
+* :x: <a href="../../../../library/Mylib/Number/Rational/stern_brocot_tree.cpp.html">Stern-Brocot tree</a>
 
 
 ## Code
@@ -56,7 +56,7 @@ layout: default
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-    
+
   int p, n;
   while(std::cin >> p >> n, p){
     std::pair<int, int> lower, upper;
@@ -89,6 +89,7 @@ int main(){
 #include <iostream>
 #include <utility>
 #line 3 "Mylib/Number/Rational/stern_brocot_tree.cpp"
+#include <cstdint>
 
 /**
  * @title Stern-Brocot tree
@@ -119,7 +120,7 @@ void stern_brocot_tree(const Checker &check, int n, std::pair<int, int> &lower, 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-    
+
   int p, n;
   while(std::cin >> p >> n, p){
     std::pair<int, int> lower, upper;

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/palindromic_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
@@ -46,25 +46,26 @@ layout: default
 #include <map>
 #include <string>
 #include <algorithm>
+#include <string_view>
 
 /**
  * @title Palindromic tree
  * @docs palindromic_tree
  */
-class PalindromicTree{
-  struct node{
+class PalindromicTree {
+  struct node {
     int length;
     int count;
     std::map<char, node*> children;
     node *suffix_link;
     std::vector<node*> reverse_suffix_links;
   };
-  
+
   node *even_root, *odd_root;
   int size_ = 2;
 
 public:
-  PalindromicTree(const std::string &s){
+  PalindromicTree(const std::string_view &s){
     even_root = new node();
     even_root->length = 0;
 
@@ -73,11 +74,11 @@ public:
 
     even_root->suffix_link = odd_root;
     odd_root->reverse_suffix_links.emplace_back(even_root);
-    
+
     node *cur = odd_root;
 
     const int N = s.size();
-    
+
     for(int i = 0; i < N; ++i){
       node *t = cur;
 
@@ -176,25 +177,26 @@ public:
 #include <map>
 #include <string>
 #include <algorithm>
+#include <string_view>
 
 /**
  * @title Palindromic tree
  * @docs palindromic_tree
  */
-class PalindromicTree{
-  struct node{
+class PalindromicTree {
+  struct node {
     int length;
     int count;
     std::map<char, node*> children;
     node *suffix_link;
     std::vector<node*> reverse_suffix_links;
   };
-  
+
   node *even_root, *odd_root;
   int size_ = 2;
 
 public:
-  PalindromicTree(const std::string &s){
+  PalindromicTree(const std::string_view &s){
     even_root = new node();
     even_root->length = 0;
 
@@ -203,11 +205,11 @@ public:
 
     even_root->suffix_link = odd_root;
     odd_root->reverse_suffix_links.emplace_back(even_root);
-    
+
     node *cur = odd_root;
 
     const int N = s.size();
-    
+
     for(int i = 0; i < N; ++i){
       node *t = cur;
 

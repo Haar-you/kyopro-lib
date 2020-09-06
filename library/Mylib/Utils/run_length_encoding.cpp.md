@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#cf1ec978dae666792e23e53a3672d204">Mylib/Utils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Utils/run_length_encoding.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-07 20:11:20+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -44,6 +44,7 @@ layout: default
 #pragma once
 #include <vector>
 #include <utility>
+#include <cstdint>
 
 /**
  * @title Run length encoding
@@ -51,7 +52,7 @@ layout: default
  */
 template <typename Container, typename T = typename Container::value_type>
 auto run_length_encoding(const Container &v){
-  std::vector<std::pair<T,int64_t>> ret;
+  std::vector<std::pair<T, int64_t>> ret;
 
   for(auto &x : v){
     if(ret.empty()) ret.emplace_back(x, 1);
@@ -71,6 +72,7 @@ auto run_length_encoding(const Container &v){
 #line 2 "Mylib/Utils/run_length_encoding.cpp"
 #include <vector>
 #include <utility>
+#include <cstdint>
 
 /**
  * @title Run length encoding
@@ -78,7 +80,7 @@ auto run_length_encoding(const Container &v){
  */
 template <typename Container, typename T = typename Container::value_type>
 auto run_length_encoding(const Container &v){
-  std::vector<std::pair<T,int64_t>> ret;
+  std::vector<std::pair<T, int64_t>> ret;
 
   for(auto &x : v){
     if(ret.empty()) ret.emplace_back(x, 1);

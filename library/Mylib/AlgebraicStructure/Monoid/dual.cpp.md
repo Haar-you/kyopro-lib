@@ -25,23 +25,23 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :question: Mylib/AlgebraicStructure/Monoid/dual.cpp
+# :x: Dual monoid
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/dual.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
 * :x: <a href="../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../../verify/test/yukicoder/510/main.test.cpp.html">test/yukicoder/510/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yukicoder/510/main.test.cpp.html">test/yukicoder/510/main.test.cpp</a>
 
 
 ## Code
@@ -52,14 +52,15 @@ layout: default
 #pragma once
 
 /**
+ * @title Dual monoid
  * @docs dual.md
  */
 template <typename Monoid>
-struct DualMonoid{
+struct DualMonoid {
   using value_type = typename Monoid::value_type;
-  Monoid M;
-  value_type id() const {return M.id();}
-  value_type op(const value_type &a, const value_type &b) const {return M.op(b, a);}
+  const static Monoid M;
+  value_type operator()() const {return M();}
+  value_type operator()(const value_type &a, const value_type &b) const {return M(b, a);}
 };
 
 ```
@@ -71,14 +72,15 @@ struct DualMonoid{
 #line 2 "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 
 /**
+ * @title Dual monoid
  * @docs dual.md
  */
 template <typename Monoid>
-struct DualMonoid{
+struct DualMonoid {
   using value_type = typename Monoid::value_type;
-  Monoid M;
-  value_type id() const {return M.id();}
-  value_type op(const value_type &a, const value_type &b) const {return M.op(b, a);}
+  const static Monoid M;
+  value_type operator()() const {return M();}
+  value_type operator()(const value_type &a, const value_type &b) const {return M(b, a);}
 };
 
 ```

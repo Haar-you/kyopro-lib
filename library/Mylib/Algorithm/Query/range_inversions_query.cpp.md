@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Range inversions query
+# :x: Range inversions query
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f3e3957dafbf526c46359105e1a71d64">Mylib/Algorithm/Query</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Query/range_inversions_query.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-04 00:01:19+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../Mo/mo_algorithm.cpp.html">Mo's algorithm</a>
-* :heavy_check_mark: <a href="../../DataStructure/FenwickTree/fenwick_tree_add.cpp.html">Fenwick tree (Add)</a>
+* :x: <a href="../Mo/mo_algorithm.cpp.html">Mo's algorithm</a>
+* :x: <a href="../../DataStructure/FenwickTree/fenwick_tree_add.cpp.html">Fenwick tree (Add)</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/static_range_inversions_query/main.test.cpp.html">test/yosupo-judge/static_range_inversions_query/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/static_range_inversions_query/main.test.cpp.html">test/yosupo-judge/static_range_inversions_query/main.test.cpp</a>
 
 
 ## Code
@@ -53,11 +53,9 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-
 #include <vector>
 #include <utility>
 #include <algorithm>
-
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp"
 #include "Mylib/Algorithm/Mo/mo_algorithm.cpp"
 
@@ -66,7 +64,7 @@ layout: default
  * @docs range_inversions_query.md
  */
 template <typename T>
-class RangeInversionsQuery{
+class RangeInversionsQuery {
   std::vector<int> a;
   int N;
   std::vector<std::pair<int, int>> qs;
@@ -130,11 +128,9 @@ public:
 {% raw %}
 ```cpp
 #line 2 "Mylib/Algorithm/Query/range_inversions_query.cpp"
-
 #include <vector>
 #include <utility>
 #include <algorithm>
-
 #line 3 "Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp"
 
 /**
@@ -142,25 +138,25 @@ public:
  * @docs fenwick_tree_add.md
  */
 template <typename T>
-class FenwickTreeAdd{
+class FenwickTreeAdd {
   using value_type = T;
-  
+
   int size;
   std::vector<value_type> data;
-  
+
 public:
   FenwickTreeAdd(){}
   FenwickTreeAdd(int size): size(size), data(size + 1, 0){}
-  
+
   void update(int i, value_type val){
     i += 1; // 1-index
-    
+
     while(i <= size){
       data[i] = data[i] + val;
       i += i & (-i);
     }
   }
-  
+
   value_type get(int i) const { // [0, i)
     value_type ret = 0;
     i += 1; // 1-index
@@ -174,7 +170,7 @@ public:
   }
 
   value_type get(int l, int r) const { // [l, r)
-    return get(r-1) - get(l-1);
+    return get(r - 1) - get(l - 1);
   }
 };
 #line 4 "Mylib/Algorithm/Mo/mo_algorithm.cpp"
@@ -186,7 +182,7 @@ public:
  * @docs mo_algorithm.md
  */
 template <typename F, typename G, typename H>
-class MoAlgorithm{
+class MoAlgorithm {
   int N, Q, index, width;
   std::vector<int> left, right, ord;
 
@@ -234,10 +230,10 @@ public:
 
   void run(){
     assert(is_built);
-    
+
     int q = 0;
     int l = left[ord[0]], r = left[ord[0]];
-    
+
     for(int i = 0; i < Q; ++i){
       int id = ord[q++];
 
@@ -257,14 +253,14 @@ template <typename F, typename G, typename H>
 auto make_mo(int N, int Q, F append, G remove, H query){
   return MoAlgorithm<F, G, H>(N, Q, append, remove, query);
 }
-#line 9 "Mylib/Algorithm/Query/range_inversions_query.cpp"
+#line 7 "Mylib/Algorithm/Query/range_inversions_query.cpp"
 
 /**
  * @title Range inversions query
  * @docs range_inversions_query.md
  */
 template <typename T>
-class RangeInversionsQuery{
+class RangeInversionsQuery {
   std::vector<int> a;
   int N;
   std::vector<std::pair<int, int>> qs;

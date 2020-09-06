@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Partition number (FPS)
+# :x: Partition number (FPS)
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/partition_number_fps.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-19 20:08:15+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/yosupo-judge/partition_function/main.fps.test.cpp.html">test/yosupo-judge/partition_function/main.fps.test.cpp</a>
+* :x: <a href="../../../verify/test/yosupo-judge/partition_function/main.fps.test.cpp.html">test/yosupo-judge/partition_function/main.fps.test.cpp</a>
 
 
 ## Code
@@ -57,7 +57,7 @@ layout: default
 template <typename Fps>
 auto partition_number(int N){
   using T = typename Fps::value_type;
-  
+
   std::vector<T> f(N + 1);
   f[0] = 1;
 
@@ -98,7 +98,7 @@ auto partition_number(int N){
 template <typename Fps>
 auto partition_number(int N){
   using T = typename Fps::value_type;
-  
+
   std::vector<T> f(N + 1);
   f[0] = 1;
 

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Treap
+# :x: Treap
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f1faa641fd949a91e292dddd575fe73e">Mylib/DataStructure/Treap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Treap/treap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 
@@ -43,7 +43,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/1508/main.treap.test.cpp.html">test/aoj/1508/main.treap.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/1508/main.treap.test.cpp.html">test/aoj/1508/main.treap.test.cpp</a>
 
 
 ## Code
@@ -60,15 +60,15 @@ layout: default
  * @title Treap
  * @docs treap.md
  */
-namespace treap{
+namespace treap {
   template <typename Monoid>
-  struct TreapNode{
+  struct TreapNode {
     using node = TreapNode<Monoid>;
     using value_type = typename Monoid::value_type;
-    constexpr static Monoid M = Monoid();
-    
+    const static Monoid M;
+
     static std::mt19937 rand;
-  
+
     value_type value, result;
     node *left = nullptr, *right = nullptr;
     int priority, size = 1;
@@ -78,11 +78,11 @@ namespace treap{
     TreapNode(const value_type &value): value(value), result(value), priority(rand()){}
 
     static int count(node *t) {return !t ? 0 : t->size;}
-    static value_type sum(node *t) {return !t ? M.id() : t->result;}
-    
+    static value_type sum(node *t) {return !t ? M() : t->result;}
+
     static node* update_node_status(node *t){
       t->size = count(t->right) + count(t->left) + 1;
-      t->result = M.op(M.op(sum(t->right), sum(t->left)), t->value);
+      t->result = M(M(sum(t->right), sum(t->left)), t->value);
       return t;
     }
 
@@ -96,20 +96,20 @@ namespace treap{
       }
       update_node_status(t);
     }
-  
+
     static node* insert(node *t, int k, const value_type &val){
       auto s = split(t, k);
       return merge(s.first, merge(new node(val), s.second));
     }
-    
+
     static node* erase(node *t, int k){
       node *l, *r, *m;
-      std::tie(l,r) = split(t, k);
-      std::tie(m,r) = split(r, 1);
-      return merge(l,r);
+      std::tie(l, r) = split(t, k);
+      std::tie(m, r) = split(r, 1);
+      return merge(l, r);
     }
 
-    static std::pair<node*,node*> split(node *t, int k){
+    static std::pair<node*, node*> split(node *t, int k){
       if(!t) return std::make_pair(nullptr, nullptr);
       pushdown(t);
       const int c = count(t->left);
@@ -118,7 +118,7 @@ namespace treap{
         t->left = s.second;
         return std::make_pair(s.first, update_node_status(t));
       }else{
-        auto s = split(t->right, k-(c+1));
+        auto s = split(t->right, k - (c + 1));
         t->right = s.first;
         return std::make_pair(update_node_status(t), s.second);
       }
@@ -139,16 +139,16 @@ namespace treap{
 
     static node* reverse(node *t, int l, int r){
       node *a, *b, *c;
-      std::tie(a,c) = split(t, l);
-      std::tie(b,c) = split(c, r-l);
+      std::tie(a, c) = split(t, l);
+      std::tie(b, c) = split(c, r - l);
       b->rev ^= true;
-      return t = merge(merge(a,b),c);
+      return t = merge(merge(a, b), c);
     }
 
     static void update_node(node *t, int k, const value_type &value){
       const int c = count(t->left);
       if(k == c) t->value = value;
-      else if(k > c) update_node(t->right, k-(c+1), value);
+      else if(k > c) update_node(t->right, k - (c + 1), value);
       else update_node(t->left, k, value);
       update_node_status(t);
     }
@@ -158,7 +158,7 @@ namespace treap{
       pushdown(t);
       int c = count(t->left);
       if(k == c) return t;
-      if(k > c) return get_node(t->right, k-(c+1));
+      if(k > c) return get_node(t->right, k - (c + 1));
       else return get_node(t->left, k);
     }
 
@@ -175,33 +175,33 @@ namespace treap{
 
   template <typename Monoid> std::mt19937 TreapNode<Monoid>::rand;
 
-  
   template <typename Monoid>
-  class Treap{
+  class Treap {
   protected:
     using node = TreapNode<Monoid>;
     using value_type = typename Monoid::value_type;
-    constexpr static Monoid M = Monoid();
+    const static Monoid M;
 
     node *root = nullptr;
 
   public:
     Treap(){}
-    Treap(int n){for(int i = 0; i < n; ++i) push_back(M.id());}
+    Treap(int n){for(int i = 0; i < n; ++i) push_back(M());}
     Treap(node *t): root(t){}
-  
+
     int size() const {return node::count(root);}
     bool empty() const {return !root;}
 
-    void insert(int k, const value_type &val = M.id()){
+    void insert(int k, const value_type &val = M()){
       root = node::insert(root, k, val);
     }
 
     void erase(int k){root = node::erase(root, k);}
-  
+
     void merge_left(Treap &left){
       root = node::merge(left.root, root); left.root = nullptr;
     }
+
     void merge_right(Treap &right){
       root = node::merge(root, right.root); right.root = nullptr;
     }
@@ -219,7 +219,7 @@ namespace treap{
     value_type operator[](int k){return get(k);}
 
     value_type fold(){return node::sum(root);}
-    value_type fold(int l, int r){ // [l,r)
+    value_type fold(int l, int r){
       node *left, *mid, *right;
       std::tie(mid, right) = node::split(root, r);
       std::tie(left, mid) = node::split(mid, l);
@@ -230,7 +230,7 @@ namespace treap{
       root = node::merge(mid, right);
 
       return ret;
-    } 
+    }
 
     template <typename Func>
     void traverse(const Func &f){
@@ -241,10 +241,10 @@ namespace treap{
     void push_back(const value_type &val){insert(size(), val);}
 
     void pop_front(){erase(0);}
-    void pop_back(){erase(size()-1);}
+    void pop_back(){erase(size() - 1);}
 
     const value_type& front(){return get(0);}
-    const value_type& back(){return get(size()-1);}
+    const value_type& back(){return get(size() - 1);}
   };
 }
 
@@ -263,15 +263,15 @@ namespace treap{
  * @title Treap
  * @docs treap.md
  */
-namespace treap{
+namespace treap {
   template <typename Monoid>
-  struct TreapNode{
+  struct TreapNode {
     using node = TreapNode<Monoid>;
     using value_type = typename Monoid::value_type;
-    constexpr static Monoid M = Monoid();
-    
+    const static Monoid M;
+
     static std::mt19937 rand;
-  
+
     value_type value, result;
     node *left = nullptr, *right = nullptr;
     int priority, size = 1;
@@ -281,11 +281,11 @@ namespace treap{
     TreapNode(const value_type &value): value(value), result(value), priority(rand()){}
 
     static int count(node *t) {return !t ? 0 : t->size;}
-    static value_type sum(node *t) {return !t ? M.id() : t->result;}
-    
+    static value_type sum(node *t) {return !t ? M() : t->result;}
+
     static node* update_node_status(node *t){
       t->size = count(t->right) + count(t->left) + 1;
-      t->result = M.op(M.op(sum(t->right), sum(t->left)), t->value);
+      t->result = M(M(sum(t->right), sum(t->left)), t->value);
       return t;
     }
 
@@ -299,20 +299,20 @@ namespace treap{
       }
       update_node_status(t);
     }
-  
+
     static node* insert(node *t, int k, const value_type &val){
       auto s = split(t, k);
       return merge(s.first, merge(new node(val), s.second));
     }
-    
+
     static node* erase(node *t, int k){
       node *l, *r, *m;
-      std::tie(l,r) = split(t, k);
-      std::tie(m,r) = split(r, 1);
-      return merge(l,r);
+      std::tie(l, r) = split(t, k);
+      std::tie(m, r) = split(r, 1);
+      return merge(l, r);
     }
 
-    static std::pair<node*,node*> split(node *t, int k){
+    static std::pair<node*, node*> split(node *t, int k){
       if(!t) return std::make_pair(nullptr, nullptr);
       pushdown(t);
       const int c = count(t->left);
@@ -321,7 +321,7 @@ namespace treap{
         t->left = s.second;
         return std::make_pair(s.first, update_node_status(t));
       }else{
-        auto s = split(t->right, k-(c+1));
+        auto s = split(t->right, k - (c + 1));
         t->right = s.first;
         return std::make_pair(update_node_status(t), s.second);
       }
@@ -342,16 +342,16 @@ namespace treap{
 
     static node* reverse(node *t, int l, int r){
       node *a, *b, *c;
-      std::tie(a,c) = split(t, l);
-      std::tie(b,c) = split(c, r-l);
+      std::tie(a, c) = split(t, l);
+      std::tie(b, c) = split(c, r - l);
       b->rev ^= true;
-      return t = merge(merge(a,b),c);
+      return t = merge(merge(a, b), c);
     }
 
     static void update_node(node *t, int k, const value_type &value){
       const int c = count(t->left);
       if(k == c) t->value = value;
-      else if(k > c) update_node(t->right, k-(c+1), value);
+      else if(k > c) update_node(t->right, k - (c + 1), value);
       else update_node(t->left, k, value);
       update_node_status(t);
     }
@@ -361,7 +361,7 @@ namespace treap{
       pushdown(t);
       int c = count(t->left);
       if(k == c) return t;
-      if(k > c) return get_node(t->right, k-(c+1));
+      if(k > c) return get_node(t->right, k - (c + 1));
       else return get_node(t->left, k);
     }
 
@@ -378,33 +378,33 @@ namespace treap{
 
   template <typename Monoid> std::mt19937 TreapNode<Monoid>::rand;
 
-  
   template <typename Monoid>
-  class Treap{
+  class Treap {
   protected:
     using node = TreapNode<Monoid>;
     using value_type = typename Monoid::value_type;
-    constexpr static Monoid M = Monoid();
+    const static Monoid M;
 
     node *root = nullptr;
 
   public:
     Treap(){}
-    Treap(int n){for(int i = 0; i < n; ++i) push_back(M.id());}
+    Treap(int n){for(int i = 0; i < n; ++i) push_back(M());}
     Treap(node *t): root(t){}
-  
+
     int size() const {return node::count(root);}
     bool empty() const {return !root;}
 
-    void insert(int k, const value_type &val = M.id()){
+    void insert(int k, const value_type &val = M()){
       root = node::insert(root, k, val);
     }
 
     void erase(int k){root = node::erase(root, k);}
-  
+
     void merge_left(Treap &left){
       root = node::merge(left.root, root); left.root = nullptr;
     }
+
     void merge_right(Treap &right){
       root = node::merge(root, right.root); right.root = nullptr;
     }
@@ -422,7 +422,7 @@ namespace treap{
     value_type operator[](int k){return get(k);}
 
     value_type fold(){return node::sum(root);}
-    value_type fold(int l, int r){ // [l,r)
+    value_type fold(int l, int r){
       node *left, *mid, *right;
       std::tie(mid, right) = node::split(root, r);
       std::tie(left, mid) = node::split(mid, l);
@@ -433,7 +433,7 @@ namespace treap{
       root = node::merge(mid, right);
 
       return ret;
-    } 
+    }
 
     template <typename Func>
     void traverse(const Func &f){
@@ -444,10 +444,10 @@ namespace treap{
     void push_back(const value_type &val){insert(size(), val);}
 
     void pop_front(){erase(0);}
-    void pop_back(){erase(size()-1);}
+    void pop_back(){erase(size() - 1);}
 
     const value_type& front(){return get(0);}
-    const value_type& back(){return get(size()-1);}
+    const value_type& back(){return get(size() - 1);}
   };
 }
 

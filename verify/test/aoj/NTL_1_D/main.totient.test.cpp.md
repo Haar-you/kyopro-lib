@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/NTL_1_D/main.totient.test.cpp
+# :x: test/aoj/NTL_1_D/main.totient.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2f883b12bcaccb309536ea11ea7e4a50">test/aoj/NTL_1_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/NTL_1_D/main.totient.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/euler_phi_function.cpp.html">Euler's totient function</a>
+* :x: <a href="../../../../library/Mylib/Number/euler_phi_function.cpp.html">Euler's totient function</a>
 
 
 ## Code
@@ -71,6 +71,7 @@ int main(){
 
 #include <iostream>
 #line 2 "Mylib/Number/euler_phi_function.cpp"
+#include <cstdint>
 
 /**
  * @title Euler's totient function

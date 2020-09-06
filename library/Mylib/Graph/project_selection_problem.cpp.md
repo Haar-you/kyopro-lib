@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Project selection problem
+# :x: Project selection problem
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#791a56799ce3ef8e4fb5da8cbce3a9bf">Mylib/Graph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/project_selection_problem.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -84,8 +84,8 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/2903/main.test.cpp.html">test/aoj/2903/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/aoj/3058/main.test.cpp.html">test/aoj/3058/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/2903/main.test.cpp.html">test/aoj/2903/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/3058/main.test.cpp.html">test/aoj/3058/main.test.cpp</a>
 
 
 ## Code
@@ -104,15 +104,15 @@ layout: default
  * @docs project_selection_problem.md
  */
 template <typename T, typename Flow>
-class ProjectSelectionProblem{
+class ProjectSelectionProblem {
   int N, s, t;
-  std::vector<std::vector<std::pair<int,T>>> graph;
+  std::vector<std::vector<std::pair<int, T>>> graph;
   T default_gain;
 
   constexpr static T INF = std::numeric_limits<T>::max();
 
 public:
-  ProjectSelectionProblem(int N): N(N), s(N), t(N+1), graph(N+2), default_gain(0){}
+  ProjectSelectionProblem(int N): N(N), s(N), t(N + 1), graph(N + 2), default_gain(0){}
 
   void penalty_if_red(int i, T c){
     assert(c >= 0);
@@ -126,7 +126,7 @@ public:
     default_gain += c;
     penalty_if_blue(i, c);
   }
-  
+
   void penalty_if_blue(int i, T c){
     assert(c >= 0);
     assert(0 <= i and i < N);
@@ -190,8 +190,8 @@ public:
     assert(0 <= j and j < N);
     default_gain += c;
     int w = graph.size();
-    graph.push_back({});
-    
+    graph.emplace_back();
+
     graph[w].emplace_back(t, c);
     graph[i].emplace_back(w, INF);
     graph[j].emplace_back(w, INF);
@@ -220,15 +220,15 @@ public:
  * @docs project_selection_problem.md
  */
 template <typename T, typename Flow>
-class ProjectSelectionProblem{
+class ProjectSelectionProblem {
   int N, s, t;
-  std::vector<std::vector<std::pair<int,T>>> graph;
+  std::vector<std::vector<std::pair<int, T>>> graph;
   T default_gain;
 
   constexpr static T INF = std::numeric_limits<T>::max();
 
 public:
-  ProjectSelectionProblem(int N): N(N), s(N), t(N+1), graph(N+2), default_gain(0){}
+  ProjectSelectionProblem(int N): N(N), s(N), t(N + 1), graph(N + 2), default_gain(0){}
 
   void penalty_if_red(int i, T c){
     assert(c >= 0);
@@ -242,7 +242,7 @@ public:
     default_gain += c;
     penalty_if_blue(i, c);
   }
-  
+
   void penalty_if_blue(int i, T c){
     assert(c >= 0);
     assert(0 <= i and i < N);
@@ -306,8 +306,8 @@ public:
     assert(0 <= j and j < N);
     default_gain += c;
     int w = graph.size();
-    graph.push_back({});
-    
+    graph.emplace_back();
+
     graph[w].emplace_back(t, c);
     graph[i].emplace_back(w, INF);
     graph[j].emplace_back(w, INF);

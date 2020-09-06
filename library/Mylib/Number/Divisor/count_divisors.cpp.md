@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#e1d7bebd3991495167778e37d1d75d40">Mylib/Number/Divisor</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Divisor/count_divisors.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-31 18:25:07+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -42,6 +42,7 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
+#include <cstdint>
 
 /**
  * @title Count divisors
@@ -65,6 +66,7 @@ int count_divisors(int64_t n){
 {% raw %}
 ```cpp
 #line 2 "Mylib/Number/Divisor/count_divisors.cpp"
+#include <cstdint>
 
 /**
  * @title Count divisors

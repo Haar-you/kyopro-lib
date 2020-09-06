@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#0f67555b3039d368e55db69bb4454f7e">Mylib/Debug</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Debug/memory_dump.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-18 16:03:45+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -80,13 +80,13 @@ void memory_dump(const void* p, size_t size){
     }else{
       temp[i % 16] = '.';
     }
-    
+
     ++cur;
   }
 
   for(size_t k = 0; k < (16 - (i % 16)) % 16; ++k) printf("   ");
   printf("|%s|\n", temp);
-  
+
   printf("\n");
 }
 
@@ -135,13 +135,13 @@ void memory_dump(const void* p, size_t size){
     }else{
       temp[i % 16] = '.';
     }
-    
+
     ++cur;
   }
 
   for(size_t k = 0; k < (16 - (i % 16)) % 16; ++k) printf("   ");
   printf("|%s|\n", temp);
-  
+
   printf("\n");
 }
 

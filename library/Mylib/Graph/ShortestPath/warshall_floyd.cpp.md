@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Warshall-Floyd algorithm
+# :x: Warshall-Floyd algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9a0780c4ad89eac4e850657d1e57c23a">Mylib/Graph/ShortestPath</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestPath/warshall_floyd.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_1_C/main.test.cpp.html">test/aoj/GRL_1_C/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_1_C/main.test.cpp.html">test/aoj/GRL_1_C/main.test.cpp</a>
 
 
 ## Code
@@ -60,42 +60,47 @@ layout: default
  * @title Warshall-Floyd algorithm
  * @docs warshall_floyd.md
  */
-template <typename T>
-struct WarshallFloyd{
-  const int n;
-  std::vector<std::vector<std::optional<T>>> dist;
-  bool has_negative_cycle;
-  
-  WarshallFloyd(const Graph<T> &graph):
-    n(graph.size()),
-    dist(n, std::vector<std::optional<T>>(n, std::nullopt)),
-    has_negative_cycle(false)
-  {
-    for(int i = 0; i < n; ++i) dist[i][i] = 0;
-    
-    for(int i = 0; i < n; ++i){
-      for(auto &e : graph[i]){
-        dist[e.from][e.to] = e.cost;
-      }
-    }
+namespace warshall_floyd_impl {
+  template <typename T>
+  struct Result {
+    std::vector<std::vector<std::optional<T>>> dist;
+    bool has_negative_cycle;
+    const auto& operator[](int i) const {return dist[i];}
+  };
+}
 
-    for(int k = 0; k < n; ++k){
-      for(int i = 0; i < n; ++i){
-        for(int j = 0; j < n; ++j){
-          if(dist[i][k] and dist[k][j]){
-            if(not dist[i][j]){
-              dist[i][j] = *dist[i][k] + *dist[k][j];
-            }else{
-              dist[i][j] = std::min(*dist[i][j], *dist[i][k] + *dist[k][j]);
-            }
+template <typename T>
+auto warshall_floyd(const Graph<T> &g){
+  const int n = g.size();
+  auto dist = std::vector(n, std::vector<std::optional<T>>(n));
+
+  for(int i = 0; i < n; ++i) dist[i][i] = 0;
+
+  for(int i = 0; i < n; ++i){
+    for(auto &e : g[i]){
+      dist[e.from][e.to] = e.cost;
+    }
+  }
+
+  for(int k = 0; k < n; ++k){
+    for(int i = 0; i < n; ++i){
+      for(int j = 0; j < n; ++j){
+        if(dist[i][k] and dist[k][j]){
+          if(not dist[i][j]){
+            dist[i][j] = *dist[i][k] + *dist[k][j];
+          }else{
+            dist[i][j] = std::min(*dist[i][j], *dist[i][k] + *dist[k][j]);
           }
         }
       }
     }
-    
-    for(int i = 0; i < n; ++i) if(*dist[i][i] < 0) has_negative_cycle = true;
   }
-};
+
+  bool has_negative_cycle = false;
+  for(int i = 0; i < n; ++i) if(*dist[i][i] < 0) has_negative_cycle = true;
+
+  return warshall_floyd_impl::Result<T>{dist, has_negative_cycle};
+}
 
 ```
 {% endraw %}
@@ -107,13 +112,14 @@ struct WarshallFloyd{
 #include <vector>
 #include <optional>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -123,15 +129,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -144,7 +150,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -172,42 +178,47 @@ using Tree = Graph<T>;
  * @title Warshall-Floyd algorithm
  * @docs warshall_floyd.md
  */
-template <typename T>
-struct WarshallFloyd{
-  const int n;
-  std::vector<std::vector<std::optional<T>>> dist;
-  bool has_negative_cycle;
-  
-  WarshallFloyd(const Graph<T> &graph):
-    n(graph.size()),
-    dist(n, std::vector<std::optional<T>>(n, std::nullopt)),
-    has_negative_cycle(false)
-  {
-    for(int i = 0; i < n; ++i) dist[i][i] = 0;
-    
-    for(int i = 0; i < n; ++i){
-      for(auto &e : graph[i]){
-        dist[e.from][e.to] = e.cost;
-      }
-    }
+namespace warshall_floyd_impl {
+  template <typename T>
+  struct Result {
+    std::vector<std::vector<std::optional<T>>> dist;
+    bool has_negative_cycle;
+    const auto& operator[](int i) const {return dist[i];}
+  };
+}
 
-    for(int k = 0; k < n; ++k){
-      for(int i = 0; i < n; ++i){
-        for(int j = 0; j < n; ++j){
-          if(dist[i][k] and dist[k][j]){
-            if(not dist[i][j]){
-              dist[i][j] = *dist[i][k] + *dist[k][j];
-            }else{
-              dist[i][j] = std::min(*dist[i][j], *dist[i][k] + *dist[k][j]);
-            }
+template <typename T>
+auto warshall_floyd(const Graph<T> &g){
+  const int n = g.size();
+  auto dist = std::vector(n, std::vector<std::optional<T>>(n));
+
+  for(int i = 0; i < n; ++i) dist[i][i] = 0;
+
+  for(int i = 0; i < n; ++i){
+    for(auto &e : g[i]){
+      dist[e.from][e.to] = e.cost;
+    }
+  }
+
+  for(int k = 0; k < n; ++k){
+    for(int i = 0; i < n; ++i){
+      for(int j = 0; j < n; ++j){
+        if(dist[i][k] and dist[k][j]){
+          if(not dist[i][j]){
+            dist[i][j] = *dist[i][k] + *dist[k][j];
+          }else{
+            dist[i][j] = std::min(*dist[i][j], *dist[i][k] + *dist[k][j]);
           }
         }
       }
     }
-    
-    for(int i = 0; i < n; ++i) if(*dist[i][i] < 0) has_negative_cycle = true;
   }
-};
+
+  bool has_negative_cycle = false;
+  for(int i = 0; i < n; ++i) if(*dist[i][i] < 0) has_negative_cycle = true;
+
+  return warshall_floyd_impl::Result<T>{dist, has_negative_cycle};
+}
 
 ```
 {% endraw %}

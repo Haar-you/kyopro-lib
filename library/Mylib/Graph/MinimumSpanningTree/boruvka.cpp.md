@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Borůvka algorithm
+# :x: Borůvka algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#cb5ed95d97b7ee8efcbdf177a47dc7b7">Mylib/Graph/MinimumSpanningTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/MinimumSpanningTree/boruvka.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -52,13 +52,13 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_2_A/main.boruvka.test.cpp.html">test/aoj/GRL_2_A/main.boruvka.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_2_A/main.boruvka.test.cpp.html">test/aoj/GRL_2_A/main.boruvka.test.cpp</a>
 
 
 ## Code
@@ -67,10 +67,8 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
-
 #include <vector>
 #include <utility>
-
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
@@ -104,7 +102,7 @@ auto boruvka(const Graph<T> &g){
           }
         }
       }
-      
+
       temp.push_back(m);
     }
 
@@ -136,18 +134,17 @@ auto boruvka(const Graph<T> &g){
 {% raw %}
 ```cpp
 #line 2 "Mylib/Graph/MinimumSpanningTree/boruvka.cpp"
-
 #include <vector>
 #include <utility>
-
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -157,15 +154,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -178,7 +175,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -207,25 +204,25 @@ using Tree = Graph<T>;
  * @title Union-find
  * @docs unionfind.md
  */
-class UnionFind{
+class UnionFind {
   std::vector<int> parent, depth, size;
   int count;
 
 public:
   UnionFind(){}
-  UnionFind(int n): parent(n), depth(n,1), size(n,1), count(n){
+  UnionFind(int n): parent(n), depth(n, 1), size(n, 1), count(n){
     std::iota(parent.begin(), parent.end(), 0);
   }
-  
+
   int root_of(int i){
     if(parent[i] == i) return i;
     else return parent[i] = root_of(parent[i]);
   }
-  
+
   bool is_same(int i, int j){return root_of(i) == root_of(j);}
 
   int merge(int i, int j){
-    int ri = root_of(i), rj = root_of(j);
+    const int ri = root_of(i), rj = root_of(j);
     if(ri == rj) return ri;
     else{
       --count;
@@ -246,7 +243,7 @@ public:
 
   int count_group(){return count;}
 };
-#line 8 "Mylib/Graph/MinimumSpanningTree/boruvka.cpp"
+#line 6 "Mylib/Graph/MinimumSpanningTree/boruvka.cpp"
 
 /**
  * @title Borůvka algorithm
@@ -278,7 +275,7 @@ auto boruvka(const Graph<T> &g){
           }
         }
       }
-      
+
       temp.push_back(m);
     }
 

@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Extended Euclidean algorithm
+# :x: Extended Euclidean algorithm
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/extended_gcd.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-04 06:04:41+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
 
 ## Required by
 
-* :heavy_check_mark: <a href="chinese_remainder_algorithm.cpp.html">Chinese remainder theorem</a>
+* :x: <a href="chinese_remainder_algorithm.cpp.html">Chinese remainder theorem</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../verify/test/aoj/NTL_1_E/main.test.cpp.html">test/aoj/NTL_1_E/main.test.cpp</a>
-* :heavy_check_mark: <a href="../../../verify/test/yukicoder/186/main.test.cpp.html">test/yukicoder/186/main.test.cpp</a>
+* :x: <a href="../../../verify/test/aoj/NTL_1_E/main.test.cpp.html">test/aoj/NTL_1_E/main.test.cpp</a>
+* :x: <a href="../../../verify/test/yukicoder/186/main.test.cpp.html">test/yukicoder/186/main.test.cpp</a>
 
 
 ## Code
@@ -59,11 +59,11 @@ layout: default
  * @title Extended Euclidean algorithm
  * @docs extended_gcd.md
  */
-std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
-  if(b == 0) return std::make_tuple(a,1,0);
-  int64_t d,p,q;
-  std::tie(d,q,p) = ext_gcd(b,(a+b)%b);
-  return std::make_tuple(d,p,q-a/b*p);
+std::tuple<int64_t, int64_t, int64_t> ext_gcd(int64_t a, int64_t b){
+  if(b == 0) return std::make_tuple(a, 1, 0);
+  int64_t d, p, q;
+  std::tie(d, q, p) = ext_gcd(b, (a + b) % b);
+  return std::make_tuple(d, p, q - a / b * p);
 }
 
 ```
@@ -79,11 +79,11 @@ std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
  * @title Extended Euclidean algorithm
  * @docs extended_gcd.md
  */
-std::tuple<int64_t,int64_t,int64_t> ext_gcd(int64_t a, int64_t b){
-  if(b == 0) return std::make_tuple(a,1,0);
-  int64_t d,p,q;
-  std::tie(d,q,p) = ext_gcd(b,(a+b)%b);
-  return std::make_tuple(d,p,q-a/b*p);
+std::tuple<int64_t, int64_t, int64_t> ext_gcd(int64_t a, int64_t b){
+  if(b == 0) return std::make_tuple(a, 1, 0);
+  int64_t d, p, q;
+  std::tie(d, q, p) = ext_gcd(b, (a + b) % b);
+  return std::make_tuple(d, p, q - a / b * p);
 }
 
 ```

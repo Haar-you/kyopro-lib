@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/euler_phi_function_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 
@@ -67,17 +67,17 @@ layout: default
  * @docs euler_phi_function_table.md
  */
 auto totient_table(int n){
-  std::vector<int> ret(n+1);
+  std::vector<int> ret(n + 1);
   std::iota(ret.begin(), ret.end(), 0);
 
   for(int i = 2; i <= n; ++i){
     if(ret[i] == i){
       for(int j = i; j <= n; j += i){
-        ret[j] = ret[j] / i * (i-1);
+        ret[j] = ret[j] / i * (i - 1);
       }
     }
   }
-  
+
   return ret;
 }
 
@@ -96,17 +96,17 @@ auto totient_table(int n){
  * @docs euler_phi_function_table.md
  */
 auto totient_table(int n){
-  std::vector<int> ret(n+1);
+  std::vector<int> ret(n + 1);
   std::iota(ret.begin(), ret.end(), 0);
 
   for(int i = 2; i <= n; ++i){
     if(ret[i] == i){
       for(int j = i; j <= n; j += i){
-        ret[j] = ret[j] / i * (i-1);
+        ret[j] = ret[j] / i * (i - 1);
       }
     }
   }
-  
+
   return ret;
 }
 

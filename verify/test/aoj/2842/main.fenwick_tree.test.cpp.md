@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/2842/main.fenwick_tree.test.cpp
+# :x: test/aoj/2842/main.fenwick_tree.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#64e19fd3e4193a1559ce21d32ec43623">test/aoj/2842</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2842/main.fenwick_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-11 14:07:48+09:00
+    - Last commit date: 2020-09-06 09:10:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842</a>
@@ -39,10 +39,10 @@ layout: default
 
 ## Depends on
 
-* :heavy_check_mark: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum.cpp.html">Mylib/AlgebraicStructure/Group/sum.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp.html">Fenwick tree (2D)</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Group/sum.cpp.html">Sum group</a>
+* :x: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp.html">Fenwick tree (2D)</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -55,7 +55,6 @@ layout: default
 #include <iostream>
 #include <queue>
 #include <tuple>
-
 #include "Mylib/AlgebraicStructure/Group/sum.cpp"
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp"
 #include "Mylib/IO/input_tuples.cpp"
@@ -64,47 +63,47 @@ int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  int H,W,T,Q; std::cin >> H >> W >> T >> Q;
+  int H, W, T, Q; std::cin >> H >> W >> T >> Q;
 
   FenwickTree2D<SumGroup<int>> seg1(H, W), seg2(H, W);
 
-  std::queue<std::tuple<int,int,int>> q;
-  
+  std::queue<std::tuple<int, int, int>> q;
+
   for(auto [t, c] : input_tuples<int, int>(Q)){
     while(q.size()){
       auto &a = q.front();
-      
+
       if(t >= std::get<2>(a) + T){
         int x = std::get<0>(a), y = std::get<1>(a);
-        
-        seg1.update(x, y, 1);
-        seg2.update(x, y, -1);
-        
+
+        seg1.update({x, y}, 1);
+        seg2.update({x, y}, -1);
+
         q.pop();
       }else{
         break;
       }
     }
-      
+
     if(c == 0){
-      int h,w; std::cin >> h >> w;
+      int h, w; std::cin >> h >> w;
       --h, --w;
-      
-      seg2.update(h, w, 1);
+
+      seg2.update({h, w}, 1);
       q.emplace(h, w, t);
     }else if(c == 1){
-      int h,w; std::cin >> h >> w;
+      int h, w; std::cin >> h >> w;
       --h, --w;
-      
-      if(seg1.at(h, w) == 1) seg1.update(h, w, -1);
+
+      if(seg1[{h, w}] == 1) seg1.update({h, w}, -1);
     }else{
-      int h1,w1,h2,w2; std::cin >> h1 >> w1 >> h2 >> w2;
+      int h1, w1, h2, w2; std::cin >> h1 >> w1 >> h2 >> w2;
       --h1, --w1;
-      
-      std::cout << seg1.get(h1, w1, h2, w2) << " " << seg2.get(h1, w1, h2, w2) << std::endl;
+
+      std::cout << seg1.get({h1, w1}, {h2, w2}) << " " << seg2.get({h1, w1}, {h2, w2}) << std::endl;
     }
   }
-  
+
   return 0;
 }
 
@@ -120,18 +119,18 @@ int main(){
 #include <iostream>
 #include <queue>
 #include <tuple>
-
 #line 2 "Mylib/AlgebraicStructure/Group/sum.cpp"
 
 /**
+ * @title Sum group
  * @docs sum.md
  */
 template <typename T>
-struct SumGroup{
+struct SumGroup {
   using value_type = T;
 
-  value_type id() const {return 0;}
-  value_type op(const value_type &a, const value_type &b) const {return a + b;}
+  value_type operator()() const {return 0;}
+  value_type operator()(const value_type &a, const value_type &b) const {return a + b;}
   value_type inv(const value_type &a) const {return -a;}
 };
 #line 2 "Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp"
@@ -142,60 +141,64 @@ struct SumGroup{
  * @docs fenwick_tree_2d.md
  */
 template <typename AbelianGroup>
-class FenwickTree2D{
+class FenwickTree2D {
   using value_type = typename AbelianGroup::value_type;
-  AbelianGroup G;
-  
+  const static AbelianGroup G;
+
   int w, h;
   std::vector<std::vector<value_type>> data;
 
 private:
   value_type get_w(int i, int y) const {
-    value_type ret = G.id();
+    value_type ret = G();
     i += 1;
     while(i > 0){
-      ret = G.op(ret, data[i][y]);
+      ret = G(ret, data[i][y]);
       i -= i & (-i);
     }
     return ret;
   }
-  
+
   value_type get_w(int l, int r, int y) const {
-    return G.op(get_w(r-1, y), G.inv(get_w(l-1, y)));
+    return G(get_w(r - 1, y), G.inv(get_w(l - 1, y)));
   }
 
   value_type get(int x1, int x2, int y) const {
-    value_type ret = G.id();
+    value_type ret = G();
     y += 1;
     while(y > 0){
-      ret = G.op(ret, get_w(x1, x2, y));
+      ret = G(ret, get_w(x1, x2, y));
       y -= y & (-y);
     }
     return ret;
   }
-  
+
 public:
   FenwickTree2D(int width, int height){
     w = width;
     h = height;
-    data = std::vector<std::vector<value_type>>(w+1, std::vector<value_type>(h+1));
+    data = std::vector<std::vector<value_type>>(w + 1, std::vector<value_type>(h + 1));
   }
 
-  value_type get(int x1, int y1, int x2, int y2) const { // [(x1,y1),(x2,y2))
-    return G.op(get(x1, x2, y2-1), G.inv(get(x1, x2, y1-1)));
+  value_type get(std::pair<int, int> p1, std::pair<int, int> p2) const { // [(x1, y1), (x2, y2))
+    const auto [x1, y1] = p1;
+    const auto [x2, y2] = p2;
+    return G(get(x1, x2, y2 - 1), G.inv(get(x1, x2, y1 - 1)));
   }
-     
-  value_type at(int x, int y) const {
-    return get(x, y, x+1, y+1);
+
+  value_type operator[](std::pair<int, int> p) const {
+    const auto [x, y] = p;
+    return get({x, y}, {x + 1, y + 1});
   }
-     
-  void update(int x, int y, const value_type &val){
+
+  void update(std::pair<int, int> p, const value_type &val){
+    auto [x, y] = p;
     x += 1;
     y += 1;
 
     for(int i = x; i <= w; i += i & (-i)){
       for(int j = y; j <= h; j += j & (-j)){
-        data[i][j] = G.op(data[i][j], val);
+        data[i][j] = G(data[i][j], val);
       }
     }
   }
@@ -209,8 +212,8 @@ public:
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -220,8 +223,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -230,8 +233,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -269,53 +272,53 @@ template <typename ... Args>
 auto input_tuples(int N){
   return InputTuples<Args ...>(N);
 }
-#line 10 "test/aoj/2842/main.fenwick_tree.test.cpp"
+#line 9 "test/aoj/2842/main.fenwick_tree.test.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  int H,W,T,Q; std::cin >> H >> W >> T >> Q;
+  int H, W, T, Q; std::cin >> H >> W >> T >> Q;
 
   FenwickTree2D<SumGroup<int>> seg1(H, W), seg2(H, W);
 
-  std::queue<std::tuple<int,int,int>> q;
-  
+  std::queue<std::tuple<int, int, int>> q;
+
   for(auto [t, c] : input_tuples<int, int>(Q)){
     while(q.size()){
       auto &a = q.front();
-      
+
       if(t >= std::get<2>(a) + T){
         int x = std::get<0>(a), y = std::get<1>(a);
-        
-        seg1.update(x, y, 1);
-        seg2.update(x, y, -1);
-        
+
+        seg1.update({x, y}, 1);
+        seg2.update({x, y}, -1);
+
         q.pop();
       }else{
         break;
       }
     }
-      
+
     if(c == 0){
-      int h,w; std::cin >> h >> w;
+      int h, w; std::cin >> h >> w;
       --h, --w;
-      
-      seg2.update(h, w, 1);
+
+      seg2.update({h, w}, 1);
       q.emplace(h, w, t);
     }else if(c == 1){
-      int h,w; std::cin >> h >> w;
+      int h, w; std::cin >> h >> w;
       --h, --w;
-      
-      if(seg1.at(h, w) == 1) seg1.update(h, w, -1);
+
+      if(seg1[{h, w}] == 1) seg1.update({h, w}, -1);
     }else{
-      int h1,w1,h2,w2; std::cin >> h1 >> w1 >> h2 >> w2;
+      int h1, w1, h2, w2; std::cin >> h1 >> w1 >> h2 >> w2;
       --h1, --w1;
-      
-      std::cout << seg1.get(h1, w1, h2, w2) << " " << seg2.get(h1, w1, h2, w2) << std::endl;
+
+      std::cout << seg1.get({h1, w1}, {h2, w2}) << " " << seg2.get({h1, w1}, {h2, w2}) << std::endl;
     }
   }
-  
+
   return 0;
 }
 

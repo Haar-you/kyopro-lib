@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :question: Heavy-light decomposition
+# :x: Heavy-light decomposition
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -79,12 +79,12 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
 * :x: <a href="../../../../verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
 * :x: <a href="../../../../verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
 * :x: <a href="../../../../verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
@@ -106,17 +106,18 @@ layout: default
  * @title Heavy-light decomposition
  * @docs heavy_light_decomposition.md
  */
-template <typename T> class HLDecomposition{
+template <typename T>
+class HLDecomposition {
   Tree<T> tree;
   int n;
-  
+
   std::vector<int> sub, // subtree size
     par, // parent id
-    head, // chain head id 
+    head, // chain head id
     id, // id[original id] = hld id
     rid, // rid[hld id] = original id
     next, // next node in a chain
-    end; // 
+    end; //
 
   int dfs_sub(int cur, int p){
     par[cur] = p;
@@ -146,21 +147,20 @@ template <typename T> class HLDecomposition{
 
     end[cur] = i;
   }
-  
 
 public:
   HLDecomposition(const Tree<T> &tree, int root):
-    tree(tree), n(tree.size()), sub(n,1), par(n,-1), head(n), id(n), rid(n), next(n,-1), end(n,-1){
+    tree(tree), n(tree.size()), sub(n, 1), par(n, -1), head(n), id(n), rid(n), next(n, -1), end(n, -1){
     dfs_sub(root, -1);
     int i = 0;
     dfs_build(root, i);
   }
 
-  template <typename Func> // std::function<void(int,int)>
+  template <typename Func> // std::function<void(int, int)>
   void path_query_vertex(int x, int y, const Func &f) const {
     while(1){
       if(id[x] > id[y]) std::swap(x, y);
-      f(std::max(id[head[y]], id[x]), id[y]+1);
+      f(std::max(id[head[y]], id[x]), id[y] + 1);
       if(head[x] == head[y]) return;
       y = par[head[y]];
     }
@@ -179,31 +179,31 @@ public:
       if(id[x] > id[y]){
         std::swap(x, y);
       }
-      g(std::max({id[head[y]], id[x], id[w]+1}), id[y]+1);
+      g(std::max({id[head[y]], id[x], id[w] + 1}), id[y] + 1);
       if(head[x] == head[y]) return;
       y = par[head[y]];
     }
   }
 
-  template <typename Func> // std::function<void(int,int)>
+  template <typename Func> // std::function<void(int, int)>
   void path_query_edge(int x, int y, const Func &f) const {
     while(1){
       if(id[x] > id[y]) std::swap(x, y);
       if(head[x] == head[y]){
-        if(x != y) f(id[x]+1, id[y]+1);
+        if(x != y) f(id[x] + 1, id[y] + 1);
         return;
       }
-      f(id[head[y]], id[y]+1);
+      f(id[head[y]], id[y] + 1);
       y = par[head[y]];
     }
   }
-  
-  template <typename Func> // std::function<void(int,int)>
+
+  template <typename Func> // std::function<void(int, int)>
   void subtree_query_edge(int x, const Func &f) const {
-    f(id[x]+1, end[x]);
+    f(id[x] + 1, end[x]);
   }
 
-  template <typename Func> // std::function<void(int,int)>
+  template <typename Func> // std::function<void(int, int)>
   void subtree_query_vertex(int x, const Func &f) const {
     f(id[x], end[x]);
   }
@@ -214,7 +214,7 @@ public:
     }else if(par[v] == u){
       return id[v];
     }
- 
+
     return -1;
   }
 
@@ -244,13 +244,14 @@ public:
 #include <utility>
 #include <algorithm>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -260,15 +261,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -281,7 +282,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -309,17 +310,18 @@ using Tree = Graph<T>;
  * @title Heavy-light decomposition
  * @docs heavy_light_decomposition.md
  */
-template <typename T> class HLDecomposition{
+template <typename T>
+class HLDecomposition {
   Tree<T> tree;
   int n;
-  
+
   std::vector<int> sub, // subtree size
     par, // parent id
-    head, // chain head id 
+    head, // chain head id
     id, // id[original id] = hld id
     rid, // rid[hld id] = original id
     next, // next node in a chain
-    end; // 
+    end; //
 
   int dfs_sub(int cur, int p){
     par[cur] = p;
@@ -349,21 +351,20 @@ template <typename T> class HLDecomposition{
 
     end[cur] = i;
   }
-  
 
 public:
   HLDecomposition(const Tree<T> &tree, int root):
-    tree(tree), n(tree.size()), sub(n,1), par(n,-1), head(n), id(n), rid(n), next(n,-1), end(n,-1){
+    tree(tree), n(tree.size()), sub(n, 1), par(n, -1), head(n), id(n), rid(n), next(n, -1), end(n, -1){
     dfs_sub(root, -1);
     int i = 0;
     dfs_build(root, i);
   }
 
-  template <typename Func> // std::function<void(int,int)>
+  template <typename Func> // std::function<void(int, int)>
   void path_query_vertex(int x, int y, const Func &f) const {
     while(1){
       if(id[x] > id[y]) std::swap(x, y);
-      f(std::max(id[head[y]], id[x]), id[y]+1);
+      f(std::max(id[head[y]], id[x]), id[y] + 1);
       if(head[x] == head[y]) return;
       y = par[head[y]];
     }
@@ -382,31 +383,31 @@ public:
       if(id[x] > id[y]){
         std::swap(x, y);
       }
-      g(std::max({id[head[y]], id[x], id[w]+1}), id[y]+1);
+      g(std::max({id[head[y]], id[x], id[w] + 1}), id[y] + 1);
       if(head[x] == head[y]) return;
       y = par[head[y]];
     }
   }
 
-  template <typename Func> // std::function<void(int,int)>
+  template <typename Func> // std::function<void(int, int)>
   void path_query_edge(int x, int y, const Func &f) const {
     while(1){
       if(id[x] > id[y]) std::swap(x, y);
       if(head[x] == head[y]){
-        if(x != y) f(id[x]+1, id[y]+1);
+        if(x != y) f(id[x] + 1, id[y] + 1);
         return;
       }
-      f(id[head[y]], id[y]+1);
+      f(id[head[y]], id[y] + 1);
       y = par[head[y]];
     }
   }
-  
-  template <typename Func> // std::function<void(int,int)>
+
+  template <typename Func> // std::function<void(int, int)>
   void subtree_query_edge(int x, const Func &f) const {
-    f(id[x]+1, end[x]);
+    f(id[x] + 1, end[x]);
   }
 
-  template <typename Func> // std::function<void(int,int)>
+  template <typename Func> // std::function<void(int, int)>
   void subtree_query_vertex(int x, const Func &f) const {
     f(id[x], end[x]);
   }
@@ -417,7 +418,7 @@ public:
     }else if(par[v] == u){
       return id[v];
     }
- 
+
     return -1;
   }
 

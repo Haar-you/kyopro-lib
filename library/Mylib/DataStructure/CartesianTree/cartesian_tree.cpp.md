@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Cartesian tree
+# :x: Cartesian tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b28da20868b326226cf0a4223d060067">Mylib/DataStructure/CartesianTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/CartesianTree/cartesian_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-28 08:23:59+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -56,7 +56,7 @@ layout: default
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/yosupo-judge/cartesian_tree/main.test.cpp.html">test/yosupo-judge/cartesian_tree/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/yosupo-judge/cartesian_tree/main.test.cpp.html">test/yosupo-judge/cartesian_tree/main.test.cpp</a>
 
 
 ## Code
@@ -67,6 +67,7 @@ layout: default
 #pragma once
 #include <vector>
 #include <tuple>
+#include <optional>
 
 /**
  * @title Cartesian tree
@@ -82,7 +83,7 @@ auto cartesian_tree(const std::vector<T> &a, Compare compare){
     if(i == 0){
       continue;
     }
-    
+
     int j = i - 1;
 
     while(1){
@@ -104,7 +105,7 @@ auto cartesian_tree(const std::vector<T> &a, Compare compare){
 
       l[i] = t;
       if(t) p[*t] = i;
-      
+
       break;
     }
   }
@@ -121,6 +122,7 @@ auto cartesian_tree(const std::vector<T> &a, Compare compare){
 #line 2 "Mylib/DataStructure/CartesianTree/cartesian_tree.cpp"
 #include <vector>
 #include <tuple>
+#include <optional>
 
 /**
  * @title Cartesian tree
@@ -136,7 +138,7 @@ auto cartesian_tree(const std::vector<T> &a, Compare compare){
     if(i == 0){
       continue;
     }
-    
+
     int j = i - 1;
 
     while(1){
@@ -158,7 +160,7 @@ auto cartesian_tree(const std::vector<T> &a, Compare compare){
 
       l[i] = t;
       if(t) p[*t] = i;
-      
+
       break;
     }
   }

@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/centroid.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Code
@@ -54,24 +54,15 @@ layout: default
  * @title Enumerate centroids
  * @docs centroid.md
  */
-template <typename T>
-class Centroid{
-public:
-  int N;
-  std::vector<int> subtree;
-  std::vector<int> result;
-  Centroid(const Tree<T> &tree): N(tree.size()), subtree(N){
-    dfs(tree, 0, -1);    
-  }
-
-private:
-  void dfs(const Tree<T> &tree, int cur, int par){
+namespace enumerate_centroids_impl {
+  template <typename T>
+  void dfs(const Tree<T> &tree, std::vector<int> &subtree, std::vector<int> &ret, int N, int cur, int par){
     subtree[cur] = 1;
     bool check = true;
 
     for(auto &e : tree[cur]){
       if(e.to == par) continue;
-      dfs(tree, e.to, cur);
+      dfs(tree, subtree, ret, N, e.to, cur);
 
       if(subtree[e.to] > N / 2) check = false;
       subtree[cur] += subtree[e.to];
@@ -79,9 +70,17 @@ private:
 
     if(N - subtree[cur] > N / 2) check = false;
 
-    if(check) result.push_back(cur);
+    if(check) ret.push_back(cur);
   }
-};
+}
+
+template <typename T>
+auto enumerate_centroids(const Tree<T> &tree){
+  const int N = tree.size();
+  std::vector<int> subtree(N), ret;
+  enumerate_centroids_impl::dfs(tree, subtree, ret, N, 0, -1);
+  return ret;
+}
 
 ```
 {% endraw %}
@@ -92,13 +91,14 @@ private:
 #line 2 "Mylib/Graph/TreeUtils/centroid.cpp"
 #include <vector>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -108,15 +108,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -129,7 +129,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -157,24 +157,15 @@ using Tree = Graph<T>;
  * @title Enumerate centroids
  * @docs centroid.md
  */
-template <typename T>
-class Centroid{
-public:
-  int N;
-  std::vector<int> subtree;
-  std::vector<int> result;
-  Centroid(const Tree<T> &tree): N(tree.size()), subtree(N){
-    dfs(tree, 0, -1);    
-  }
-
-private:
-  void dfs(const Tree<T> &tree, int cur, int par){
+namespace enumerate_centroids_impl {
+  template <typename T>
+  void dfs(const Tree<T> &tree, std::vector<int> &subtree, std::vector<int> &ret, int N, int cur, int par){
     subtree[cur] = 1;
     bool check = true;
 
     for(auto &e : tree[cur]){
       if(e.to == par) continue;
-      dfs(tree, e.to, cur);
+      dfs(tree, subtree, ret, N, e.to, cur);
 
       if(subtree[e.to] > N / 2) check = false;
       subtree[cur] += subtree[e.to];
@@ -182,9 +173,17 @@ private:
 
     if(N - subtree[cur] > N / 2) check = false;
 
-    if(check) result.push_back(cur);
+    if(check) ret.push_back(cur);
   }
-};
+}
+
+template <typename T>
+auto enumerate_centroids(const Tree<T> &tree){
+  const int N = tree.size();
+  std::vector<int> subtree(N), ret;
+  enumerate_centroids_impl::dfs(tree, subtree, ret, N, 0, -1);
+  return ret;
+}
 
 ```
 {% endraw %}

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/yosupo-judge/kth_root_integer/main.test.cpp
+# :x: test/yosupo-judge/kth_root_integer/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1cb80c56a7c118816814801df618d931">test/yosupo-judge/kth_root_integer</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/kth_root_integer/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-04 05:12:56+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/kth_root_integer">https://judge.yosupo.jp/problem/kth_root_integer</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/kth_root_integer.cpp.html">Kth root integer</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :x: <a href="../../../../library/Mylib/Number/kth_root_integer.cpp.html">Kth root integer</a>
 
 
 ## Code
@@ -58,7 +58,7 @@ layout: default
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int T; std::cin >> T;
 
   for(auto [A, K] : input_tuples<uint64_t, uint64_t>(T)){
@@ -89,8 +89,8 @@ int main(){
  * @docs input_tuple.md
  */
 template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)...};
+static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
 }
 
 template <typename T, typename U>
@@ -100,8 +100,8 @@ std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
 }
 
 template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof...(Args)>());
+std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
   return s;
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
@@ -110,8 +110,8 @@ std::istream& operator>>(std::istream &s, std::tuple<Args...> &value){
  * @docs input_tuples.md
  */
 template <typename ... Args>
-class InputTuples{
-  struct iter{
+class InputTuples {
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;
@@ -151,6 +151,7 @@ auto input_tuples(int N){
 }
 #line 2 "Mylib/Number/kth_root_integer.cpp"
 #include <cassert>
+#include <cstdint>
 
 /**
  * @title Kth root integer
@@ -160,13 +161,13 @@ uint64_t kth_root(uint64_t a, int k){
   assert(k >= 1);
   if(k == 1) return a;
   if(a == 1) return 1;
-  
+
   uint64_t lb = 0, ub = a;
 
   auto check =
     [](uint64_t a, int k, uint64_t n){
       uint64_t r = 1;
-  
+
       while(k > 0){
         if(k & 1){
           if(__builtin_umulll_overflow(r, a, (unsigned long long int*)&r)) return false;
@@ -180,22 +181,22 @@ uint64_t kth_root(uint64_t a, int k){
 
   while(ub - lb > 1){
     uint64_t mid = lb + (ub - lb) / 2;
-    
+
     if(check(mid, k, a)){
       lb = mid;
     }else{
       ub = mid;
     }
   }
-  
-  return lb;  
+
+  return lb;
 }
 #line 6 "test/yosupo-judge/kth_root_integer/main.test.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int T; std::cin >> T;
 
   for(auto [A, K] : input_tuples<uint64_t, uint64_t>(T)){

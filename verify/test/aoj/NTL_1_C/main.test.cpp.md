@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: test/aoj/NTL_1_C/main.test.cpp
+# :x: test/aoj/NTL_1_C/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#fcb24e02e278be19ec740adb48092544">test/aoj/NTL_1_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/NTL_1_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-02 21:08:27+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_C</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :heavy_check_mark: <a href="../../../../library/Mylib/Number/binary_gcd.cpp.html">Binary GCD</a>
+* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :x: <a href="../../../../library/Mylib/Number/binary_gcd.cpp.html">Binary GCD</a>
 
 
 ## Code
@@ -94,7 +94,7 @@ int64_t binary_gcd(int64_t a, int64_t b){
 
   while(1){
     if(a > b) std::swap(a, b);
-    
+
     if(a == 0){
       break;
     }else{

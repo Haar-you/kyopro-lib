@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a962efc2861dbe1e0963e7d8bf7dda18">Mylib/Graph/Cycle</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Cycle/directed_shortest_cycle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
@@ -51,7 +51,7 @@ layout: default
 
 ## Depends on
 
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Code
@@ -64,6 +64,7 @@ layout: default
 #include <optional>
 #include <queue>
 #include <algorithm>
+#include <climits>
 #include "Mylib/Graph/Template/graph.cpp"
 
 /**
@@ -71,7 +72,7 @@ layout: default
  * @docs directed_shortest_cycle.md
  */
 template <typename T>
-struct DirectShortestCycle{
+struct DirectShortestCycle {
   const int N;
   std::optional<std::vector<int>> cycle;
 
@@ -98,7 +99,7 @@ struct DirectShortestCycle{
             while(1){
               (*cycle).push_back(j);
               if(j == i) break;
-                
+
               j = pre[j];
             }
 
@@ -107,7 +108,7 @@ struct DirectShortestCycle{
 
           return;
         }
-        
+
         if(not visited[e.to]){
           dist[e.to] = dist[cur] + 1;
           pre[e.to] = cur;
@@ -116,10 +117,10 @@ struct DirectShortestCycle{
       }
     }
   }
-  
+
   DirectShortestCycle(const Graph<T> &g): N(g.size()){
     int min_len = INT_MAX;
-    
+
     for(int i = 0; i < N; ++i){
       bfs(i, g, min_len);
     }
@@ -137,14 +138,16 @@ struct DirectShortestCycle{
 #include <optional>
 #include <queue>
 #include <algorithm>
+#include <climits>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -154,15 +157,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -175,7 +178,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -197,14 +200,14 @@ struct Graph{
 
 template <typename T>
 using Tree = Graph<T>;
-#line 7 "Mylib/Graph/Cycle/directed_shortest_cycle.cpp"
+#line 8 "Mylib/Graph/Cycle/directed_shortest_cycle.cpp"
 
 /**
  * @title Directed shortest cycle
  * @docs directed_shortest_cycle.md
  */
 template <typename T>
-struct DirectShortestCycle{
+struct DirectShortestCycle {
   const int N;
   std::optional<std::vector<int>> cycle;
 
@@ -231,7 +234,7 @@ struct DirectShortestCycle{
             while(1){
               (*cycle).push_back(j);
               if(j == i) break;
-                
+
               j = pre[j];
             }
 
@@ -240,7 +243,7 @@ struct DirectShortestCycle{
 
           return;
         }
-        
+
         if(not visited[e.to]){
           dist[e.to] = dist[cur] + 1;
           pre[e.to] = cur;
@@ -249,10 +252,10 @@ struct DirectShortestCycle{
       }
     }
   }
-  
+
   DirectShortestCycle(const Graph<T> &g): N(g.size()){
     int min_len = INT_MAX;
-    
+
     for(int i = 0; i < N; ++i){
       bfs(i, g, min_len);
     }

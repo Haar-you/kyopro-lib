@@ -25,25 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :heavy_check_mark: Bellman-Ford algorithm
+# :x: Bellman-Ford algorithm
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#9a0780c4ad89eac4e850657d1e57c23a">Mylib/Graph/ShortestPath</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/ShortestPath/bellman_ford.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-28 18:23:32+09:00
+    - Last commit date: 2020-09-06 11:15:59+09:00
 
 
 
 
 ## Depends on
 
-* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Verified with
 
-* :heavy_check_mark: <a href="../../../../verify/test/aoj/GRL_1_B/main.test.cpp.html">test/aoj/GRL_1_B/main.test.cpp</a>
+* :x: <a href="../../../../verify/test/aoj/GRL_1_B/main.test.cpp.html">test/aoj/GRL_1_B/main.test.cpp</a>
 
 
 ## Code
@@ -61,16 +61,16 @@ layout: default
  * @title Bellman-Ford algorithm
  * @docs bellman_ford.md
  */
-template <typename T>
-struct BellmanFord{
-  struct Result{
+namespace bellman_ford_impl {
+  template <typename T>
+  struct Result {
     enum class Tag {OK, NEGLOOP, UNREACHABLE} tag;
     T val;
+    Result(Tag tag): tag(tag){}
 
   public:
     static auto unreachable() {return Result(Tag::UNREACHABLE);}
     static auto negloop() {return Result(Tag::NEGLOOP);}
-    Result(Tag tag): tag(tag){}
     Result(T val): tag(Tag::OK), val(val){}
 
     bool is_unreachable() const {return tag == Tag::UNREACHABLE;}
@@ -81,51 +81,59 @@ struct BellmanFord{
       assert(tag == Tag::OK);
       return val;
     }
+
+    friend std::ostream& operator<<(std::ostream &s, const Result &a){
+      if(a.is_unreachable()) s << "∞";
+      else if(a.is_negloop()) s << "-∞";
+      else s << a.value();
+      return s;
+    }
   };
-  
-  int n;
-  std::vector<Result> dist;
-  
-  BellmanFord(const Graph<T> &graph, int src):
-    n(graph.size()),
-    dist(n, Result::unreachable())
-  {
-    dist[src] = 0;
-    
-    for(int i = 0; i < n; ++i){
-      for(int s = 0; s < n; ++s){
-        for(auto &e : graph[s]){
-          int t = e.to;
-          T d = e.cost;
-          
-          if(dist[s].is_ok() and
-             dist[t].is_ok() and
-             dist[s].value() + d < dist[t].value() and i == n-1){
-            dist[t] = Result::negloop();
-          }else{
-            if(dist[s].is_ok()){
-              if(dist[t].is_unreachable()){
-                dist[t] = dist[s].value() + d;
-              }else if(dist[t].is_ok()){
-                dist[t] = std::min(dist[t].value(), dist[s].value() + d);
-              }
+}
+
+template <typename T>
+auto bellman_ford(const Graph<T> &g, int src){
+  using Result = bellman_ford_impl::Result<T>;
+  const int n = g.size();
+  std::vector<Result> dist(n, Result::unreachable());
+
+  dist[src] = 0;
+
+  for(int i = 0; i < n; ++i){
+    for(int s = 0; s < n; ++s){
+      for(auto &e : g[s]){
+        int t = e.to;
+        T d = e.cost;
+
+        if(dist[s].is_ok() and
+           dist[t].is_ok() and
+           dist[s].value() + d < dist[t].value() and i == n - 1){
+          dist[t] = Result::negloop();
+        }else{
+          if(dist[s].is_ok()){
+            if(dist[t].is_unreachable()){
+              dist[t] = dist[s].value() + d;
+            }else if(dist[t].is_ok()){
+              dist[t] = std::min(dist[t].value(), dist[s].value() + d);
             }
           }
         }
       }
     }
-    
-    for(int i = 0; i < n; ++i){
-      for(int s = 0; s < n; ++s){
-        for(auto &e : graph[s]){
-          if(dist[s].is_negloop()){
-            dist[e.to] = Result::negloop();
-          }
+  }
+
+  for(int i = 0; i < n; ++i){
+    for(int s = 0; s < n; ++s){
+      for(auto &e : g[s]){
+        if(dist[s].is_negloop()){
+          dist[e.to] = Result::negloop();
         }
       }
     }
   }
-};
+
+  return dist;
+}
 
 ```
 {% endraw %}
@@ -138,13 +146,14 @@ struct BellmanFord{
 #include <algorithm>
 #include <cassert>
 #line 3 "Mylib/Graph/Template/graph.cpp"
+#include <iostream>
 
 /**
  * @title Basic graph
  * @docs graph.md
  */
 template <typename T>
-struct Edge{
+struct Edge {
   int from, to;
   T cost;
   int index = -1;
@@ -154,15 +163,15 @@ struct Edge{
 };
 
 template <typename T>
-struct Graph{
+struct Graph {
   using weight_type = T;
   using edge_type = Edge<T>;
-  
+
   std::vector<std::vector<Edge<T>>> data;
 
   auto& operator[](size_t i){return data[i];}
   const auto& operator[](size_t i) const {return data[i];}
-  
+
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
 
@@ -175,7 +184,7 @@ struct Graph{
   void add_edge(int i, int j, T w, int index = -1){
     data[i].emplace_back(i, j, w, index);
   }
-  
+
   void add_undirected(int i, int j, T w, int index = -1){
     add_edge(i, j, w, index);
     add_edge(j, i, w, index);
@@ -203,16 +212,16 @@ using Tree = Graph<T>;
  * @title Bellman-Ford algorithm
  * @docs bellman_ford.md
  */
-template <typename T>
-struct BellmanFord{
-  struct Result{
+namespace bellman_ford_impl {
+  template <typename T>
+  struct Result {
     enum class Tag {OK, NEGLOOP, UNREACHABLE} tag;
     T val;
+    Result(Tag tag): tag(tag){}
 
   public:
     static auto unreachable() {return Result(Tag::UNREACHABLE);}
     static auto negloop() {return Result(Tag::NEGLOOP);}
-    Result(Tag tag): tag(tag){}
     Result(T val): tag(Tag::OK), val(val){}
 
     bool is_unreachable() const {return tag == Tag::UNREACHABLE;}
@@ -223,51 +232,59 @@ struct BellmanFord{
       assert(tag == Tag::OK);
       return val;
     }
+
+    friend std::ostream& operator<<(std::ostream &s, const Result &a){
+      if(a.is_unreachable()) s << "∞";
+      else if(a.is_negloop()) s << "-∞";
+      else s << a.value();
+      return s;
+    }
   };
-  
-  int n;
-  std::vector<Result> dist;
-  
-  BellmanFord(const Graph<T> &graph, int src):
-    n(graph.size()),
-    dist(n, Result::unreachable())
-  {
-    dist[src] = 0;
-    
-    for(int i = 0; i < n; ++i){
-      for(int s = 0; s < n; ++s){
-        for(auto &e : graph[s]){
-          int t = e.to;
-          T d = e.cost;
-          
-          if(dist[s].is_ok() and
-             dist[t].is_ok() and
-             dist[s].value() + d < dist[t].value() and i == n-1){
-            dist[t] = Result::negloop();
-          }else{
-            if(dist[s].is_ok()){
-              if(dist[t].is_unreachable()){
-                dist[t] = dist[s].value() + d;
-              }else if(dist[t].is_ok()){
-                dist[t] = std::min(dist[t].value(), dist[s].value() + d);
-              }
+}
+
+template <typename T>
+auto bellman_ford(const Graph<T> &g, int src){
+  using Result = bellman_ford_impl::Result<T>;
+  const int n = g.size();
+  std::vector<Result> dist(n, Result::unreachable());
+
+  dist[src] = 0;
+
+  for(int i = 0; i < n; ++i){
+    for(int s = 0; s < n; ++s){
+      for(auto &e : g[s]){
+        int t = e.to;
+        T d = e.cost;
+
+        if(dist[s].is_ok() and
+           dist[t].is_ok() and
+           dist[s].value() + d < dist[t].value() and i == n - 1){
+          dist[t] = Result::negloop();
+        }else{
+          if(dist[s].is_ok()){
+            if(dist[t].is_unreachable()){
+              dist[t] = dist[s].value() + d;
+            }else if(dist[t].is_ok()){
+              dist[t] = std::min(dist[t].value(), dist[s].value() + d);
             }
           }
         }
       }
     }
-    
-    for(int i = 0; i < n; ++i){
-      for(int s = 0; s < n; ++s){
-        for(auto &e : graph[s]){
-          if(dist[s].is_negloop()){
-            dist[e.to] = Result::negloop();
-          }
+  }
+
+  for(int i = 0; i < n; ++i){
+    for(int s = 0; s < n; ++s){
+      for(auto &e : g[s]){
+        if(dist[s].is_negloop()){
+          dist[e.to] = Result::negloop();
         }
       }
     }
   }
-};
+
+  return dist;
+}
 
 ```
 {% endraw %}
