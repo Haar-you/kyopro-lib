@@ -12,6 +12,6 @@ int main(){
 
   auto ans = knapsack_small_weight(N, W, w, v);
   std::cout << ans << std::endl;
-  
+
   return 0;
 }

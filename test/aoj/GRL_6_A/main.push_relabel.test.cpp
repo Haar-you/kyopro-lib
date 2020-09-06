@@ -13,8 +13,8 @@ int main(){
   for(auto [s, t, c] : input_tuples<int, int, int>(E)){
     f.add_edge(s, t, c);
   }
-  
-  auto ans = f.solve(0, V-1);
+
+  auto ans = f.solve(0, V - 1);
   std::cout << ans << std::endl;
 
   return 0;

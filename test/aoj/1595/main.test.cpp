@@ -25,7 +25,7 @@ int main(){
   );
 
   for(auto &x : r){
-    std::cout << 2 * (N-1) - x << std::endl;
+    std::cout << 2 * (N - 1) - x << std::endl;
   }
 
   return 0;

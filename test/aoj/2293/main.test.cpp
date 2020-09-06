@@ -30,6 +30,6 @@ int main(){
   int ans = m.solve(n);
 
   std::cout << ans << std::endl;
-  
+
   return 0;
 }

@@ -9,7 +9,7 @@
 template <typename T>
 class FordFulkerson {
 public:
-  struct edge{
+  struct edge {
     int to, rev;
     T cap;
     bool is_rev;

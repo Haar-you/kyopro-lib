@@ -1,7 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/tetration_mod"
 
 #include <iostream>
-
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/Number/tetration.cpp"
 

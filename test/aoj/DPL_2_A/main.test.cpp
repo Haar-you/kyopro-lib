@@ -9,8 +9,8 @@ int main(){
 
   Graph<int> g(V);
   g.read<0>(E);
-  
+
   std::cout << travelling_salesman_problem(g, 0).value_or(-1) << std::endl;
-  
+
   return 0;
 }

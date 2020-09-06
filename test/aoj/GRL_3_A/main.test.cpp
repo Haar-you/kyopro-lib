@@ -13,7 +13,7 @@ int main(){
 
   auto ans = articulation_points(g);
   std::sort(ans.begin(), ans.end());
-  
+
   for(auto x : ans) std::cout << x << std::endl;
 
   return 0;

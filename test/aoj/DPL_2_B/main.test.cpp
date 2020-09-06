@@ -9,9 +9,9 @@ int main(){
 
   Graph<int> g(V);
   g.read<0, false>(E);
-  
+
   auto ans = chinese_postman_problem(g);
   std::cout << ans << std::endl;
-  
+
   return 0;
 }

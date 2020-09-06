@@ -32,7 +32,7 @@ namespace pollard_rho_impl {
 }
 
 auto pollard_rho(int64_t n){
-  std::vector<std::pair<int64_t,int64_t>> ret;
+  std::vector<std::pair<int64_t, int64_t>> ret;
 
   for(int i = 2; i <= 1000000; ++i){
     if(n % i == 0){

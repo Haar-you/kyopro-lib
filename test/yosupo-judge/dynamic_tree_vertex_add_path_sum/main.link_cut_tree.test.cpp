@@ -9,7 +9,7 @@
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   LinkCutTree<SumMonoid<int64_t>> lct(N);
@@ -18,10 +18,10 @@ int main(){
     lct.update(i, a);
   }
 
-  for(auto [u, v] : input_tuples<int, int>(N-1)){
+  for(auto [u, v] : input_tuples<int, int>(N - 1)){
     lct.link(u, v);
   }
-  
+
   for(auto [type] : input_tuples<int>(Q)){
     switch(type){
     case 0: {

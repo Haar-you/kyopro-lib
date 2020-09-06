@@ -14,16 +14,16 @@ int main(){
   DynamicSegmentTree<SumMonoid<int64_t>> seg(1000000001);
 
   int64_t ans = 0;
-    
+
   for(auto [q, x, y] : input_tuples<int, int, int>(n)){
     if(q == 0){
       seg.update(x, seg[x] + y);
     }else{
-      ans += seg.get(x, y+1);
+      ans += seg.get(x, y + 1);
     }
   }
 
   std::cout << ans << "\n";
-  
+
   return 0;
 }

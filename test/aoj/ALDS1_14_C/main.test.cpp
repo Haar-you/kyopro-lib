@@ -8,7 +8,7 @@
 
 int main(){
   auto rh = make_rh_2d(1000, 1000, 1000000007);
-  
+
   int H, W; std::cin >> H >> W;
   auto s = input_vector<std::string>(H);
 

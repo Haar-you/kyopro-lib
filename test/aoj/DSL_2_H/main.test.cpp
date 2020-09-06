@@ -8,15 +8,15 @@
 int main(){
   int n, q; std::cin >> n >> q;
 
-  LazySegmentTree<AddMin<int64_t,int64_t>> seg(n);
+  LazySegmentTree<AddMin<int64_t, int64_t>> seg(n);
   seg.init(0);
 
   for(auto [type, s, t] : input_tuples<int, int, int>(q)){
     if(type == 0){
       int x; std::cin >> x;
-      seg.update(s, t+1, x);
+      seg.update(s, t + 1, x);
     }else{
-      std::cout << seg.get(s, t+1).value() << std::endl;
+      std::cout << seg.get(s, t + 1).value() << std::endl;
     }
   }
 

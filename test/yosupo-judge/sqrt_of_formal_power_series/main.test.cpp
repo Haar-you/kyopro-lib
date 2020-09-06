@@ -12,13 +12,13 @@
 
 using mint = ModInt<998244353>;
 using FPS = FormalPowerSeries<mint>;
-using NTT = NumberTheoreticTransform<mint, 3, 1<<21>;
+using NTT = NumberTheoreticTransform<mint, 3, 1 << 21>;
 
 int main(){
   using namespace std::placeholders;
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   auto ntt = NTT();
   FPS::convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
   FPS::get_sqrt = [&](const auto &a){return mod_sqrt((int64_t)a, mint::MOD);};

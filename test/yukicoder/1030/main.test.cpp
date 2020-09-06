@@ -12,7 +12,7 @@
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
-struct LCASemigroup{
+struct LCASemigroup {
   using value_type = int;
   static std::function<int(int, int)> lca;
   value_type operator()(value_type a, value_type b) const {
@@ -51,8 +51,8 @@ int main(){
       seg2.update(X, Y);
     }else{
       int L, R; std::cin >> L >> R;
-      
-      int lca = *seg2.get(L-1, R);
+
+      int lca = *seg2.get(L - 1, R);
       int ans = 0;
       hld.path_query_vertex(
         0,
@@ -61,7 +61,7 @@ int main(){
           ans = std::max(ans, seg1.get(l, r).value());
         }
       );
-      
+
       std::cout << ans << "\n";
     }
   }

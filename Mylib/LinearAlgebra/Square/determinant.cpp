@@ -21,7 +21,7 @@ T determinant(M m){
       }
     }
 
-    for(int j = i+1; j < N; ++j){
+    for(int j = i + 1; j < N; ++j){
       T t = m[j][i] / m[i][i];
       for(int k = 0; k < N; ++k) m[j][k] -= m[i][k] * t;
     }

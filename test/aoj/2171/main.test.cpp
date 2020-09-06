@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
-
 #include "Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp"
 #include "Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp"
 #include "Mylib/IO/input_vector.cpp"
@@ -13,7 +12,7 @@ int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  int n,s,t;
+  int n, s, t;
   while(std::cin >> n >> s >> t, n){
     --s, --t;
 
@@ -69,17 +68,16 @@ int main(){
             b[i] += g[i][j];
           }
         }
-	
+
         a[i][i] += k;
       }
     }
 
+    auto res = float_simultaneous_linear_equations(a, b, ERROR);
 
-    auto res = float_simultaneous_linear_equations::solve(a, b, ERROR);
-    
     double ans = (*res).solution[s];
     std::cout << std::setprecision(12) << std::fixed << ans << std::endl;
   }
-  
+
   return 0;
 }

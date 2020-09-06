@@ -7,7 +7,7 @@
 
 int main(){
   std::string s; std::cin >> s;
-  
+
   auto ans = z_algorithm(s);
   std::cout << join(ans.begin(), ans.end()) << "\n";
 

@@ -9,7 +9,7 @@
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N; std::cin >> N;
 
   auto A = input_vector<int64_t>(N);
@@ -22,10 +22,10 @@ int main(){
   for(auto [type] : input_tuples<int>(Q)){
     if(type == 1){
       int l, r, x; std::cin >> l >> r >> x;
-      seg.update(l-1, r, x);
+      seg.update(l - 1, r, x);
     }else{
       int l, r; std::cin >> l >> r;
-      std::cout << std::get<1>(seg.get(l-1, r)) << "\n";
+      std::cout << std::get<1>(seg.get(l - 1, r)) << "\n";
     }
   }
 

@@ -10,10 +10,10 @@ int main(){
   int64_t W; std::cin >> W;
 
   auto [v, w] = input_tuple_vector<int64_t, int64_t>(N);
-  
+
   auto ans = knapsack_small_quantity(N, W, w, v);
-  
+
   std::cout << ans << std::endl;
-  
+
   return 0;
 }

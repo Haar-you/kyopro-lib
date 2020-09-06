@@ -8,17 +8,16 @@
 int main(){
   int n, q; std::cin >> n >> q;
 
-  LazySegmentTree<AddSum<int64_t,int64_t>> seg(n);
+  LazySegmentTree<AddSum<int64_t, int64_t>> seg(n);
 
   for(auto [type, s, t] : input_tuples<int, int, int>(q)){
     if(type == 0){
       int x; std::cin >> x;
-      seg.update(s-1, t, x);
+      seg.update(s - 1, t, x);
     }else{
-      std::cout << seg.get(s-1, t) << std::endl;
+      std::cout << seg.get(s - 1, t) << std::endl;
     }
   }
-  
+
   return 0;
 }
-

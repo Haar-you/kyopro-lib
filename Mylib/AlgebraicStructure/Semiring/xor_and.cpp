@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @tile Xor-and semiring
+ * @title Xor-and semiring
  * @docs xor_and.md
  */
 template <typename T>
@@ -12,4 +12,3 @@ struct XorAndSemiring {
   value_type add(value_type a, value_type b) const {return a ^ b;}
   value_type mul(value_type a, value_type b) const {return a & b;}
 };
-

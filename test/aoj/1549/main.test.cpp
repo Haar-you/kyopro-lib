@@ -14,7 +14,7 @@ int main(){
   auto a = input_vector<uint32_t>(N);
 
   auto wm = make_wavelet_matrix_int(a);
-  
+
   int Q; std::cin >> Q;
 
   for(auto [l, r, d] : input_tuples<uint32_t, uint32_t, uint32_t>(Q)){

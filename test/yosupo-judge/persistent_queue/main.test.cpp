@@ -26,6 +26,6 @@ int main(){
       S.push_back(res);
     }
   }
-  
+
   return 0;
 }

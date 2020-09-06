@@ -8,7 +8,7 @@
 struct PrimeFactorize {
   std::vector<int> p;
 
-  PrimeFactorize(int N): p(N+1){
+  PrimeFactorize(int N): p(N + 1){
     for(int i = 2; i <= N; ++i){
       if(p[i] != 0) continue;
       for(int j = i; j <= N; j += i){

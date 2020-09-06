@@ -11,7 +11,7 @@
 template <typename T>
 struct PushRelabel {
 private:
-  struct edge{
+  struct edge {
     int from, to;
     int rev;
     T cap;

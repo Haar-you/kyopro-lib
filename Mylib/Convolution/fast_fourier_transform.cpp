@@ -56,7 +56,7 @@ std::vector<std::complex<T>> fft_convolution(std::vector<std::complex<T>> f, std
 
   std::vector<std::complex<T>> ret(n);
   for(int i = 0; i < n; ++i) ret[i] = f[i] * g[i];
-  ret = fast_fourier_transform<T,true>(ret);
+  ret = fast_fourier_transform<T, true>(ret);
 
   return ret;
 }

@@ -65,4 +65,3 @@ std::vector<Edge<T>> manhattan_minimum_spanning_tree(std::vector<T> x, std::vect
 
   return kruskal(g);
 }
-

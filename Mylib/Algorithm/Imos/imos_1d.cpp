@@ -10,9 +10,9 @@ struct Imos1D {
   using value_type = T;
 
   std::vector<T> data;
-  Imos1D(int n): data(n+1){}
+  Imos1D(int n): data(n + 1){}
 
-  void add(int a, int b, const T& val){ // [a,b)
+  void add(int a, int b, const T& val){ // [a, b)
     data[a] += 1;
     data[b] -= 1;
   }

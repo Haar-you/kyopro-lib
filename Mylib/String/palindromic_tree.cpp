@@ -10,7 +10,7 @@
  * @docs palindromic_tree
  */
 class PalindromicTree {
-  struct node{
+  struct node {
     int length;
     int count;
     std::map<char, node*> children;

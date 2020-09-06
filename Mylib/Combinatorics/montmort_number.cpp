@@ -7,7 +7,7 @@
  */
 template <typename T>
 auto montmort_number(int n){
-  std::vector<T> ret(n+1);
+  std::vector<T> ret(n + 1);
 
   ret[0] = 1;
   ret[1] = 0;

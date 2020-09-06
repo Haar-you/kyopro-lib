@@ -10,7 +10,7 @@
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int n; std::cin >> n;
 
   auto [x, y] = input_tuple_vector<int, int>(n);

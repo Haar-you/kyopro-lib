@@ -166,7 +166,7 @@ namespace treap {
     value_type operator[](int k){return get(k);}
 
     value_type fold(){return node::sum(root);}
-    value_type fold(int l, int r){ // [l,r)
+    value_type fold(int l, int r){
       node *left, *mid, *right;
       std::tie(mid, right) = node::split(root, r);
       std::tie(left, mid) = node::split(mid, l);

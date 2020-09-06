@@ -5,7 +5,7 @@
 
 int main(){
   EratosthenesSieve is_prime(500000);
-  
+
   int N; std::cin >> N;
 
   int64_t ans = 0;
@@ -21,7 +21,7 @@ int main(){
 
     ans += t * 2;
   }
-  
+
   std::cout << ans << std::endl;
 
   return 0;

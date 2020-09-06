@@ -11,7 +11,7 @@ constexpr int MOD = 998244353;
 constexpr int PRIM = 3;
 
 using mint = ModInt<MOD>;
-using NTT = NumberTheoreticTransform<mint,PRIM,1<<20>;
+using NTT = NumberTheoreticTransform<mint, PRIM, 1 << 20>;
 
 int main(){
   using namespace std::placeholders;

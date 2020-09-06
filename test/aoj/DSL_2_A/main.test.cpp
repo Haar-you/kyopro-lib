@@ -10,7 +10,7 @@ int main(){
   int n, q; std::cin >> n >> q;
 
   SegmentTree<MinMonoid<int>> seg(n);
-  
+
   for(auto [type, x, y] : input_tuples<int, int, int>(q)){
     if(type == 0){
       seg.update(x, y);

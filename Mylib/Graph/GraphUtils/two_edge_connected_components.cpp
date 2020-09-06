@@ -73,4 +73,3 @@ auto two_edge_connected_components(const Graph<T> &graph){
 
   return ret;
 }
-

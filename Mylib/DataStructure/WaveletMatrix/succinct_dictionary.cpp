@@ -38,7 +38,7 @@ struct SuccinctDict {
     blocks.assign(chunk_num + 1, std::vector<uint8_t>(block_num, 0));
 
     for(int i = 0; i < chunk_num; ++i){
-      for(int j = 0; j < block_num-1; ++j){
+      for(int j = 0; j < block_num - 1; ++j){
         blocks[i][j + 1] = blocks[i][j] + __builtin_popcountll(data[i * block_num + j]);
       }
 
@@ -47,7 +47,7 @@ struct SuccinctDict {
   }
 
   /**
-   * @return [0,index)のbの個数
+   * @return [0, index)のbの個数
    */
   int rank(int index, int b) const {
     if(b == 0){

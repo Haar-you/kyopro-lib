@@ -4,7 +4,7 @@
 #include <string>
 #include "Mylib/Parser/parser.cpp"
 
-struct Complex{
+struct Complex {
   int real, imag;
   bool overflow;
 
@@ -16,12 +16,12 @@ struct Complex{
 
   friend Complex operator+(const Complex &a, const Complex &b){
     if(a.overflow or b.overflow) return Complex(true);
-    return Complex(a.real+b.real, a.imag+b.imag);
+    return Complex(a.real + b.real, a.imag + b.imag);
   }
 
   friend Complex operator-(const Complex &a, const Complex &b){
     if(a.overflow or b.overflow) return Complex(true);
-    return Complex(a.real-b.real, a.imag-b.imag);
+    return Complex(a.real - b.real, a.imag - b.imag);
   }
 
   friend Complex operator-(const Complex &a){
@@ -31,7 +31,7 @@ struct Complex{
 
   friend Complex operator*(const Complex &a, const Complex &b){
     if(a.overflow or b.overflow) return Complex(true);
-    return Complex(a.real*b.real-a.imag*b.imag, a.real*b.imag+a.imag*b.real);
+    return Complex(a.real * b.real - a.imag * b.imag, a.real * b.imag + a.imag * b.real);
   }
 
   Complex& operator=(const Complex &a){
@@ -67,7 +67,7 @@ std::ostream& operator<<(std::ostream &os, const Complex &a){
         os << a.real;
       }
       if(a.imag){
-        if(a.imag > 0 and a.real) os << "+"; 
+        if(a.imag > 0 and a.real) os << "+";
         os << a.imag;
         os << "i";
       }
@@ -77,29 +77,29 @@ std::ostream& operator<<(std::ostream &os, const Complex &a){
 }
 
 
-struct parser : Parser{
+struct parser : Parser {
   parser(const std::string &s): Parser(s){}
 
   Complex number(){
     bool neg = false;
     if(check_and_ignore('-')) neg = true;
-    
+
     Complex ret;
 
     if(digit()){
       ret = get_number<Complex>();
-      
+
       if(check_and_ignore('i')){
-        ret *= Complex(0,1);
+        ret *= Complex(0, 1);
       }
     }else{
       if(check_and_ignore('i')){
-        ret = Complex(0,1);
+        ret = Complex(0, 1);
       }
     }
 
     if(neg) ret = -ret;
-    
+
     return ret;
   }
 
@@ -112,7 +112,7 @@ struct parser : Parser{
     }else{
       ret = number();
     }
-    
+
     return ret;
   }
 
@@ -129,10 +129,10 @@ struct parser : Parser{
 
     return ret;
   }
-  
+
   Complex expression(){
     Complex ret = term();
-    
+
     while(1){
       if(check_and_ignore('+')){
         ret += term();
@@ -145,13 +145,11 @@ struct parser : Parser{
 
     return ret;
   }
-  
+
   Complex run(){
     return expression();
   }
 };
-
-
 
 
 int main(){
@@ -162,6 +160,6 @@ int main(){
   while(std::cin >> s){
     std::cout << parser(s).run() << "\n";
   }
-  
+
   return 0;
 }

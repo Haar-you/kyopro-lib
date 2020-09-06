@@ -11,7 +11,7 @@
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, M, K, X, Y; std::cin >> N >> M >> K >> X >> Y;
   --X, --Y;
 
@@ -28,9 +28,9 @@ int main(){
 
     g.add_undirected(P, Q, L);
   }
-  
+
   auto res = yen_algorithm(g, X, Y, K);
-  
+
   for(auto x : res){
     if(not x){
       std::cout << -1 << "\n";

@@ -10,10 +10,10 @@ int main(){
 
   auto [left, right] = input_tuple_vector<int, int>(n);
   for(auto &x : right) x += 1;
-  
+
   auto ans = interval_scheduling(left, right);
-  
+
   std::cout << ans.size() << std::endl;
-  
+
   return 0;
 }

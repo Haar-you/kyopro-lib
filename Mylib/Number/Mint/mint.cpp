@@ -81,7 +81,7 @@ public:
   constexpr auto power(int64_t p) const {return power(val, p);}
   constexpr auto inv() const {return inv(val);}
 
-  friend constexpr auto operator-(const ModInt &a){return ModInt(M-a.val);}
+  friend constexpr auto operator-(const ModInt &a){return ModInt(M - a.val);}
 
   friend constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
   friend constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}

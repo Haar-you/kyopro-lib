@@ -11,7 +11,7 @@ int main(){
   int Q; std::cin >> Q;
 
   BinaryTrie<uint32_t, 32> t;
-  
+
   for(auto [type, x] : input_tuples<int, uint32_t>(Q)){
     switch(type){
     case 0:

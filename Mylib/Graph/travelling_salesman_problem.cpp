@@ -30,7 +30,7 @@ std::optional<T> travelling_salesman_problem(const Graph<T> &g, int src){
         if(s & (1 << e.to)) continue;
 
         if(dp[i][s]){
-          if(not dp[e.to][s | (1<<e.to)]){
+          if(not dp[e.to][s | (1 << e.to)]){
             dp[e.to][s | (1 << e.to)] = *dp[i][s] + e.cost;
           }else{
             dp[e.to][s | (1 << e.to)] = std::min(*dp[e.to][s | (1 << e.to)], *dp[i][s] + e.cost);

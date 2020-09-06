@@ -8,7 +8,7 @@
 #include "Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
-using Query = std::variant<std::pair<int64_t,int64_t>, int64_t>;
+using Query = std::variant<std::pair<int64_t, int64_t>, int64_t>;
 
 int main(){
   std::cin.tie(0);
@@ -47,7 +47,7 @@ int main(){
   for(auto [a, b] : lines){
     lc.add_line(a, b);
   }
-  
+
   for(auto &q : query){
     if(q.index() == 0){
       auto [a, b] = std::get<0>(q);

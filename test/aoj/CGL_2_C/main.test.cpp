@@ -9,7 +9,7 @@
 #include "Mylib/IO/input_tuples.cpp"
 
 using D = DoubleEps<double>;
-template<> double D::eps = ERROR;
+template <> double D::eps = ERROR;
 
 int main(){
   int q; std::cin >> q;
@@ -18,7 +18,7 @@ int main(){
     Segment<D> s1(p0, p1), s2(p2, p3);
 
     Point<D> c = intersect_segments::check(s1, s2).crosspoints[0];
-    
+
     std::cout << std::fixed << std::setprecision(12) << c.x << " " << c.y << std::endl;
   }
 

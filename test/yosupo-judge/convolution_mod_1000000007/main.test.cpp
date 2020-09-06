@@ -13,7 +13,7 @@ using mint = ModInt<mod>;
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int n, m; std::cin >> n >> m;
 
   auto a = input_vector<int64_t>(n);
@@ -22,6 +22,6 @@ int main(){
   auto ans = convolve_general_mod<mint>(a, b);
 
   std::cout << join(ans.begin(), ans.begin() + n + m - 1) << "\n";
-  
+
   return 0;
 }

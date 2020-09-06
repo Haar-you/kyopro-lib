@@ -6,7 +6,7 @@
  * @docs power.md
  */
 template <typename T>
-T power(T n, int64_t p, const T &e, const std::function<T(T,T)> &f){
+T power(T n, int64_t p, const T &e, const std::function<T(T, T)> &f){
   T ret = e;
 
   while(p > 0){

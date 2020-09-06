@@ -18,4 +18,4 @@ Value knapsack_unlimited(int N, Weight cap, const std::vector<Weight> &w, const 
   }
 
   return dp[N][cap];
-};
+}

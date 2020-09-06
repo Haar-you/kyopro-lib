@@ -24,7 +24,7 @@ struct Forest {
     std::vector<bool> check(N);
 
     auto dfs =
-      [&](auto &dfs, int cur, std::vector<int> &vertices, std::vector<Edge<T>> &edges) -> void{
+      [&](auto &dfs, int cur, std::vector<int> &vertices, std::vector<Edge<T>> &edges) -> void {
         check[cur] = true;
         vertices.push_back(cur);
 

@@ -8,7 +8,7 @@ int main(){
   int n, q; std::cin >> n >> q;
 
   WeightedUnionFind<int> uf(n);
-  
+
   for(auto [type, x, y] : input_tuples<int, int, int>(q)){
     if(type == 0){
       int z; std::cin >> z;

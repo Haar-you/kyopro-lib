@@ -47,7 +47,7 @@ int main(){
     const auto &plan = plans[i];
 
     auto res =
-      rerooting<std::pair<int,int>>(
+      rerooting<std::pair<int, int>>(
         tree,
         std::make_pair(0, 0),
         [](const auto &a, const auto &b){
@@ -60,7 +60,7 @@ int main(){
           return std::make_pair(x.first + plan[v], x.second);
         }
       );
-      
+
     ans +=
       std::min_element(
         res.begin(),
@@ -70,7 +70,7 @@ int main(){
         }
       )->second;
   }
-    
+
   std::cout << ans << std::endl;
 
   return 0;

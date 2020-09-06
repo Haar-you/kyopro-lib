@@ -4,7 +4,6 @@
 #include <vector>
 #include <utility>
 #include <algorithm>
-
 #include "Mylib/Graph/ShortestPath/dijkstra.cpp"
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include "Mylib/Algorithm/Search/parallel_binary_search.cpp"
@@ -15,7 +14,7 @@
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, M, K, Q; std::cin >> N >> M >> K >> Q;
 
   Graph<int> g(N);
@@ -51,26 +50,26 @@ int main(){
   }
 
   UnionFind uf;
-  
+
   auto res =
     parallel_binary_search(
       C,
       Q,
       [&](){uf = UnionFind(N);},
       [&](int i){
-        for(auto [x, y] : edges[C-1-i]){
+        for(auto [x, y] : edges[C - 1 - i]){
           uf.merge(x, y);
         }
       },
-      [&](int i) -> bool{
+      [&](int i) -> bool {
         return uf.is_same(S[i], T[i]);
       }
     );
-  
+
   for(auto x : res){
-    std::cout << dist_list[C-x-1] << "\n";
-  }  
-  
+    std::cout << dist_list[C - x - 1] << "\n";
+  }
+
   return 0;
 }
 

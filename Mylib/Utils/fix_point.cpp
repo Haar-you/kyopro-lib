@@ -9,9 +9,9 @@ template <typename F>
 struct FixPoint : F {
   explicit constexpr FixPoint(F &&f) noexcept : F(std::forward<F>(f)){}
 
-  template <typename... Args>
+  template <typename ... Args>
   constexpr auto operator()(Args &&... args) const {
-    return F::operator()(*this, std::forward<Args>(args)...);
+    return F::operator()(*this, std::forward<Args>(args) ...);
   }
 };
 

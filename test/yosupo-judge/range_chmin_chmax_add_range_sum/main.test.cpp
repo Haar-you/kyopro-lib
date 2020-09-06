@@ -9,14 +9,14 @@
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   SegmentTreeBeats seg(N);
 
   auto a = input_vector<int64_t>(N);
   seg.init_with_vector(a);
-  
+
   for(auto [type, l, r] : input_tuples<int, int, int>(Q)){
     switch(type){
     case 0: {
@@ -36,8 +36,8 @@ int main(){
     }
     case 3: {
       auto ans = seg.get_sum(l, r);
-      std::cout << ans << "\n"; 
-      break; 
+      std::cout << ans << "\n";
+      break;
     }
     }
   }

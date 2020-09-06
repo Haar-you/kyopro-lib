@@ -9,7 +9,7 @@
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   auto a = input_vector<uint32_t>(N);
@@ -17,9 +17,9 @@ int main(){
   auto wm = make_wavelet_matrix_int(a);
 
   for(auto [l, r, k] : input_tuples<int, int, int>(Q)){
-    auto ans = *wm.quantile(l, r, k+1);
+    auto ans = *wm.quantile(l, r, k + 1);
     std::cout << ans << "\n";
   }
-  
+
   return 0;
 }

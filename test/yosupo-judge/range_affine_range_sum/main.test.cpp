@@ -16,7 +16,7 @@ int main(){
 
   int N, Q; std::cin >> N >> Q;
 
-  auto seg = LazySegmentTree<AffineSum<mint,mint>>(N);
+  auto seg = LazySegmentTree<AffineSum<mint, mint>>(N);
   auto a = input_vector<mint>(N);
   seg.init_with_vector(a);
 

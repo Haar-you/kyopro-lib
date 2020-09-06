@@ -9,7 +9,7 @@
 #include "Mylib/Geometry/Float/tangent_of_circle.cpp"
 
 using D = DoubleEps<double>;
-template<> double D::eps = ERROR;
+template <> double D::eps = ERROR;
 
 int main(){
   Point<D> p; std::cin >> p;

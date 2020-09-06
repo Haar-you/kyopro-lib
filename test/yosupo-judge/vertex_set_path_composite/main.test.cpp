@@ -10,7 +10,6 @@
 #include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 #include "Mylib/IO/input_tuples.cpp"
-#include "Mylib/IO/input_tuple.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 using mint = ModInt<998244353>;
@@ -20,16 +19,16 @@ const Monoid M;
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   auto f = input_vector<std::pair<mint, mint>>(N);
   Tree<int> tree(N);
   tree.read<0, false, false>(N - 1);
-  
+
   HLDecomposition<int> hld(tree, 0);
   SegmentTreeBothFoldable<Monoid> seg(N);
-  
+
   for(int i = 0; i < N; ++i){
     seg.update(hld.get_id(i), f[i]);
   }
@@ -45,8 +44,7 @@ int main(){
       auto left = M(), right = M();
 
       hld.path_query_vertex(
-        u,
-        v,
+        u, v,
         [&](int l, int r){
           left = M(left, seg.fold_right(l, r));
         },
@@ -54,7 +52,7 @@ int main(){
           right = M(seg.fold_left(l, r), right);
         }
       );
-      
+
       auto a = M(left, right);
 
       mint ans = a.first * x + a.second;

@@ -11,7 +11,7 @@
 #include "Mylib/IO/input_tuples.cpp"
 
 using D = DoubleEps<double>;
-template<> double D::eps = 1e-7;
+template <> double D::eps = 1e-7;
 
 int main(){
   Circle<D> c;
@@ -23,7 +23,7 @@ int main(){
     Line<D> l(p0, p1);
 
     auto [s, ans] = intersect_circle_line::check(c, l);
-    
+
     std::sort(ans.begin(), ans.end(), [](const auto &a, const auto &b){return a.x < b.x or (a.x == b.x and a.y < b.y);});
 
     std::cout << std::fixed << std::setprecision(12);

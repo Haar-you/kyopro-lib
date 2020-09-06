@@ -58,7 +58,7 @@ public:
     dfs_build(root, i);
   }
 
-  template <typename Func> // std::function<void(int,int)>
+  template <typename Func> // std::function<void(int, int)>
   void path_query_vertex(int x, int y, const Func &f) const {
     while(1){
       if(id[x] > id[y]) std::swap(x, y);
@@ -87,7 +87,7 @@ public:
     }
   }
 
-  template <typename Func> // std::function<void(int,int)>
+  template <typename Func> // std::function<void(int, int)>
   void path_query_edge(int x, int y, const Func &f) const {
     while(1){
       if(id[x] > id[y]) std::swap(x, y);
@@ -100,12 +100,12 @@ public:
     }
   }
 
-  template <typename Func> // std::function<void(int,int)>
+  template <typename Func> // std::function<void(int, int)>
   void subtree_query_edge(int x, const Func &f) const {
     f(id[x] + 1, end[x]);
   }
 
-  template <typename Func> // std::function<void(int,int)>
+  template <typename Func> // std::function<void(int, int)>
   void subtree_query_vertex(int x, const Func &f) const {
     f(id[x], end[x]);
   }

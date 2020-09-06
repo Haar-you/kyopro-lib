@@ -28,7 +28,7 @@ class DisjointSparseTable {
       data[d][i] = S(data[d][i - 1], A[i]);
     }
 
-    data[d][m-1] = A[m - 1];
+    data[d][m - 1] = A[m - 1];
     for(int i = m - 2; i >= l; --i){
       data[d][i] = S(data[d][i + 1], A[i]);
     }

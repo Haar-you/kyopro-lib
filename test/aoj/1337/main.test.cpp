@@ -12,7 +12,7 @@ const int W = 200;
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int n;
 
   while(std::cin >> n, n){
@@ -42,11 +42,11 @@ int main(){
         }
       }
     }
-    
+
     for(int i = 0; i < H; ++i){
       for(int j = 0; j < W; ++j){
-        if(i+1 < H and a[i][j] == a[i+1][j]) uf.merge(index[i][j], index[i+1][j]);
-        if(j+1 < W and a[i][j] == a[i][j+1]) uf.merge(index[i][j], index[i][j+1]);
+        if(i + 1 < H and a[i][j] == a[i + 1][j]) uf.merge(index[i][j], index[i + 1][j]);
+        if(j + 1 < W and a[i][j] == a[i][j + 1]) uf.merge(index[i][j], index[i][j + 1]);
       }
     }
 
@@ -54,6 +54,6 @@ int main(){
 
     std::cout << ans << "\n";
   }
-  
+
   return 0;
 }

@@ -8,7 +8,7 @@
 #include "Mylib/IO/input_tuples.cpp"
 
 using D = DoubleEps<double>;
-template<> double D::eps = 1e-7;
+template <> double D::eps = 1e-7;
 
 int main(){
   int q; std::cin >> q;
@@ -23,6 +23,6 @@ int main(){
     }else{
       std::cout << 0 << std::endl;
     }
-  }  
+  }
   return 0;
 }

@@ -4,7 +4,6 @@
 #include <vector>
 #include <algorithm>
 #include <numeric>
-
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/LinearAlgebra/Square/square_matrix.cpp"
 #include "Mylib/LinearAlgebra/Square/inverse_matrix.cpp"
@@ -13,32 +12,32 @@
 
 using mint = ModInt<1000000007>;
 
-struct tag{};
+struct tag {};
 using M = SquareMatrix<mint, tag>;
 
-std::pair<mint,mint> solve1(int64_t N, int64_t K, std::vector<int> A){
+std::pair<mint, mint> solve1(int64_t N, int64_t K, std::vector<int> A){
   M m;
 
   for(int i = 0; i < N; ++i) m[0][i] = 1;
-  for(int i = 0; i < N-1; ++i) m[i+1][i] = 1;
+  for(int i = 0; i < N - 1; ++i) m[i + 1][i] = 1;
 
   std::reverse(A.begin(), A.end());
 
   mint f = 0;
-  
+
   {
-    auto m2 = power(m, K-N);
+    auto m2 = power(m, K - N);
     for(int i = 0; i < N; ++i) f += m2[0][i] * A[i];
   }
 
   mint s = std::accumulate(A.begin(), A.end(), mint(0));
-  
+
   {
     auto t = M::make_unit() - m;
     M c;
     inverse_matrix(t, c);
 
-    auto temp = (M::make_unit() - power(m, K-N+1)) * c;
+    auto temp = (M::make_unit() - power(m, K - N + 1)) * c;
     temp -= M::make_unit();
 
     for(int i = 0; i < N; ++i) s += temp[0][i] * A[i];
@@ -47,7 +46,7 @@ std::pair<mint,mint> solve1(int64_t N, int64_t K, std::vector<int> A){
   return {f, s};
 }
 
-std::pair<mint,mint> solve2(int64_t N, int64_t K, std::vector<int> A){
+std::pair<mint, mint> solve2(int64_t N, int64_t K, std::vector<int> A){
   std::vector<mint> v(K);
 
   mint temp = 0;
@@ -59,17 +58,14 @@ std::pair<mint,mint> solve2(int64_t N, int64_t K, std::vector<int> A){
   for(int i = N; i < K; ++i){
     v[i] = temp;
     temp += v[i];
-    temp -= v[i-N];
+    temp -= v[i - N];
   }
 
   mint f = v.back();
   mint s = std::accumulate(v.begin(), v.end(), mint(0));
-  
+
   return {f, s};
 }
-
-
-
 
 int main(){
   int64_t N, K; std::cin >> N >> K;

@@ -3,7 +3,6 @@
 #include <iostream>
 #include <vector>
 #include <utility>
-
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/with_min_index.cpp"
@@ -43,7 +42,7 @@ int main(){
     case 2: {
       --l, --r;
 
-      std::cout << seg.get(l, r+1).second + 1 << "\n";
+      std::cout << seg.get(l, r + 1).second + 1 << "\n";
 
       break;
     }

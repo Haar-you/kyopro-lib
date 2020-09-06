@@ -5,8 +5,9 @@
  * @title Inverse matrix
  * @docs inverse_matrix.md
  */
-template <typename M, typename T = typename M::value_type>
+template <typename M>
 bool inverse_matrix(M m, M &ret){
+  using T = typename M::value_type;
   const int N = m.size();
 
   ret = M::make_unit();

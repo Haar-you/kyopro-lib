@@ -7,10 +7,10 @@
 
 int main(){
   int q; std::cin >> q;
-  
+
   for(auto [x, y] : input_tuples<std::string, std::string>(q)){
     std::cout << lcs(x, y) << std::endl;
   }
-  
+
   return 0;
 }

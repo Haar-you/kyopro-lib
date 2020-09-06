@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <vector>
-
 #include "Mylib/Utils/sort_simultaneously.cpp"
 #include "Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
@@ -15,7 +14,7 @@ using Seg = PersistentSegmentTree<SumMonoid<int64_t>>;
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   auto [x, y, w] = input_tuple_vector<int64_t, int64_t, int64_t>(N);
@@ -29,7 +28,7 @@ int main(){
 
   auto c = Compressor<int64_t>().add(x).build().compress(x);
   const int m = c.size();
-  
+
   std::vector<Seg> seg;
   seg.push_back(Seg(m));
 
@@ -37,7 +36,7 @@ int main(){
     auto &s = seg.back();
     seg.push_back(s.update(x[i], s[x[i]] + w[i]));
   }
-  
+
   for(auto [l, d, r, u] : input_tuples<int64_t, int64_t, int64_t, int64_t>(Q)){
     l = c.get_index(l);
     r = c.get_index(r);
@@ -48,6 +47,6 @@ int main(){
     auto ans = seg[u].get(l, r) - seg[d].get(l, r);
     std::cout << ans << "\n";
   }
-  
+
   return 0;
 }

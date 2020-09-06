@@ -7,14 +7,14 @@
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int V, E, r; std::cin >> V >> E >> r;
 
   Graph<int64_t> g(V);
   g.read<0>(E);
 
   auto res = dijkstra(g, {r});
-  
+
   for(auto x : res){
     if(not x){
       std::cout << "INF" << std::endl;
@@ -22,6 +22,6 @@ int main(){
       std::cout << *x << std::endl;
     }
   }
-  
+
   return 0;
 }

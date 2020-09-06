@@ -49,9 +49,9 @@ public:
     int64_t a = val, b = M, u = 1, v = 0;
 
     while(b){
-      int64_t t = a/b;
-      a -= t*b; std::swap(a, b);
-      u -= t*v; std::swap(u, v);
+      int64_t t = a / b;
+      a -= t * b; std::swap(a, b);
+      u -= t * v; std::swap(u, v);
     }
     u %= M;
     if(u < 0) u += M;

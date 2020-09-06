@@ -10,18 +10,18 @@
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N; std::cin >> N;
   WeightedBipartiteMatching<int64_t, MinimumCostFlow<int, int64_t>, true> m(N, N);
 
   auto a = input_vector<int64_t>(N, N);
-  
+
   for(int i = 0; i < N; ++i){
     for(int j = 0; j < N; ++j){
       m.add_edge(i, j, a[i][j]);
     }
   }
-  
+
   auto ans = m.solve(N);
   std::cout << ans << std::endl;
 
@@ -33,6 +33,6 @@ int main(){
   }
 
   std::cout << join(p.begin(), p.end()) << "\n";
-  
+
   return 0;
 }

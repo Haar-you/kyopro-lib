@@ -13,7 +13,7 @@ int main(){
   auto res = kruskal(g);
 
   int64_t ans = 0;
-  for(auto &e : res) ans += e.cost; 
+  for(auto &e : res) ans += e.cost;
   std::cout << ans << std::endl;
 
   return 0;

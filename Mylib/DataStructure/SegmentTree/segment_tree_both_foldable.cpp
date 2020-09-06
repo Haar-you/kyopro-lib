@@ -24,7 +24,7 @@ public:
 
   auto operator[](int i) const {return data_left[hsize + i];}
 
-  auto fold_left(int x, int y) const { // [x,y)
+  auto fold_left(int x, int y) const {
     value_type ret_left = M();
     value_type ret_right = M();
 
@@ -38,7 +38,7 @@ public:
     return M(ret_left, ret_right);
   }
 
-  auto fold_right(int x, int y) const { // [x,y)
+  auto fold_right(int x, int y) const {
     value_type ret_left = M();
     value_type ret_right = M();
 

@@ -1,7 +1,6 @@
 #define PROBLEM "https://yukicoder.me/problems/no/665"
 
 #include <iostream>
-
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Combinatorics/factorial_table.cpp"
 #include "Mylib/Combinatorics/bernoulli_number.cpp"
@@ -20,12 +19,12 @@ int main(){
   mint ans = 0;
 
   for(int64_t i = 0; i <= k; ++i){
-    ans += ft.C(k+1, i) * b[i] * mint::power(n+1, k+1-i);
+    ans += ft.C(k + 1, i) * b[i] * mint::power(n + 1, k + 1 - i);
   }
-  
-  ans /= k+1;
+
+  ans /= k + 1;
 
   std::cout << ans << std::endl;
-  
+
   return 0;
 }

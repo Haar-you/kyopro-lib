@@ -3,14 +3,13 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
 #include "Mylib/String/aho_corasick.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   std::string S; std::cin >> S;
   int M; std::cin >> M;
 
@@ -22,11 +21,11 @@ int main(){
   }
 
   ac.build();
-  
+
   int ans = 0;
   ac.match(S, [&](int, int){++ans;});
-  
+
   std::cout << ans << std::endl;
-  
+
   return 0;
 }

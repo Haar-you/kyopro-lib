@@ -5,7 +5,6 @@
 #include <string>
 #include <algorithm>
 #include <climits>
-
 #include "Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/IO/input_tuples.cpp"
@@ -14,7 +13,7 @@
 using Mon = MaxPartialSumMonoid<int64_t>;
 
 int main(){
-  int N,Q; std::cin >> N >> Q;
+  int N, Q; std::cin >> N >> Q;
 
   SegmentTree<Mon> seg(N);
 
@@ -33,20 +32,20 @@ int main(){
       int l1, l2, r1, r2; std::cin >> l1 >> l2 >> r1 >> r2;
       --l1, --l2, --r1, --r2;
 
-      r1 = std::max(l1,r1);
-      l2 = std::min(l2,r2);
-        
+      r1 = std::max(l1, r1);
+      l2 = std::min(l2, r2);
+
       int64_t ans = LLONG_MIN;
-        
+
       auto f =
         [&](int L1, int L2, int R1, int R2){
           auto ret =
-            seg.get(L1, L2+1).value_or(Mon::MaxPartialSum::make(0)).right_max +
-            seg.get(L2+1, R1).value_or(Mon::MaxPartialSum::make(0)).sum +
-            seg.get(R1, R2+1).value_or(Mon::MaxPartialSum::make(0)).left_max;
+            seg.get(L1, L2 + 1).value_or(Mon::MaxPartialSum::make(0)).right_max +
+            seg.get(L2 + 1, R1).value_or(Mon::MaxPartialSum::make(0)).sum +
+            seg.get(R1, R2 + 1).value_or(Mon::MaxPartialSum::make(0)).left_max;
 
           if(L2 == R1) ret -= a[L2];
-                   
+
           return ret;
         };
 
@@ -55,7 +54,7 @@ int main(){
       }else{
         ans = std::max(ans, f(l1, r1, r1, r2));
         ans = std::max(ans, f(l1, l2, l2, r2));
-        ans = std::max(ans, seg.get(r1, l2+1)->partial_max);
+        ans = std::max(ans, seg.get(r1, l2 + 1)->partial_max);
       }
 
       std::cout << ans << "\n";

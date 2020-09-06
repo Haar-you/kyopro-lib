@@ -10,7 +10,7 @@
 #include "Mylib/Geometry/Float/intersect_circles.cpp"
 
 using D = DoubleEps<double>;
-template<> double D::eps = ERROR;
+template <> double D::eps = ERROR;
 
 int main(){
   Circle<D> c1, c2;

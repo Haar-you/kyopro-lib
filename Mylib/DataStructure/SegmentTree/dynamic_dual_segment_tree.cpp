@@ -6,7 +6,7 @@
  * @docs dynamic_dual_segment_tree.md
  */
 template <typename Monoid>
-class DynamicDualSegmentTree{
+class DynamicDualSegmentTree {
   using value_type = typename Monoid::value_type;
   const static Monoid M;
 

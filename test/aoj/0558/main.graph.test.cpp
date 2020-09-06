@@ -15,9 +15,9 @@ int main(){
   int H, W, N; std::cin >> H >> W >> N;
 
   auto s = input_vector<std::string>(H);
-  
-  std::vector<Point> ps(N+1);
-  
+
+  std::vector<Point> ps(N + 1);
+
   ps[0] = grid_find(s, 'S')[0];
 
   for(int i = 1; i <= N; ++i) ps[i] = grid_find(s, (char)('0' + i))[0];
@@ -40,7 +40,7 @@ int main(){
   int ans = 0;
   for(int i = 0; i < N; ++i){
     auto dist = bfs_shortest_path(g, {index(ps[i].x, ps[i].y)});
-    ans += *dist[index(ps[i+1].x, ps[i+1].y)];
+    ans += *dist[index(ps[i + 1].x, ps[i + 1].y)];
   }
 
   std::cout << ans << "\n";

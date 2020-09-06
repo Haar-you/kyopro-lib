@@ -10,12 +10,12 @@ using mint = ModInt<17>;
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int Q; std::cin >> Q;
 
   for(auto [N] : input_tuples<int64_t>(Q)){
     KitamasaAlgorithm<mint> ka(4, {0, 0, 0, 1}, {1, 1, 1, 1});
-    std::cout << ka[N-1] << std::endl;
+    std::cout << ka[N - 1] << std::endl;
   }
 
   return 0;

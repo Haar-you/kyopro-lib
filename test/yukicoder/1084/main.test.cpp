@@ -3,7 +3,6 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Algorithm/Imos/linear_imos_1d.cpp"
@@ -19,11 +18,11 @@ int main(){
 
   if(std::count(A.begin(), A.end(), 0) == 0){
     LinearImos1D<int64_t> p(N);
-    
+
     std::vector<int> next(N);
-    for(int i = N-1; i >= 0; --i){
+    for(int i = N; --i >= 0;){
       if(A[i] == 1){
-        if(i == N-1) next[i] = N;
+        if(i == N - 1) next[i] = N;
         else{
           if(A[i + 1] == 1){
             next[i] = next[i + 1];
@@ -46,12 +45,12 @@ int main(){
         prod *= A[r];
         r = next[r];
       }
-        
+
       p.add(l, r, -1, r);
     }
 
     p.build();
-      
+
     ans = 1;
     for(int i = 0; i < N; ++i){
       ans *= mint::power(A[i], p[i]);
@@ -59,6 +58,6 @@ int main(){
   }
 
   std::cout << ans << "\n";
-  
+
   return 0;
 }

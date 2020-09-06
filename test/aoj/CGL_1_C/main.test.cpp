@@ -7,7 +7,7 @@
 #include "Mylib/IO/input_tuples.cpp"
 
 using D = DoubleEps<double>;
-template<> double D::eps = 1e-7;
+template <> double D::eps = 1e-7;
 
 int main(){
   Point<D> p0, p1; std::cin >> p0 >> p1;
@@ -23,6 +23,6 @@ int main(){
     case ccw::ONLINE_FRONT: std::cout << "ONLINE_FRONT" << std::endl; break;
     }
   }
-  
+
   return 0;
 }

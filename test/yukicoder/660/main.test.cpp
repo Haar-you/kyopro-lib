@@ -10,26 +10,26 @@ using mint = ModInt<1000000007>;
 
 int main(){
   auto ft = FactorialTable<mint>(500000);
-  
+
   int N; std::cin >> N;
 
-  std::vector<mint> c(N+1);
+  std::vector<mint> c(N + 1);
   for(int i = 0; i <= N; ++i){
     c[i] = catalan_number(i, ft);
   }
 
   for(int i = 1; i <= N; ++i){
-    c[i] += c[i-1];
+    c[i] += c[i - 1];
   }
 
   mint ans = 0;
-  
+
   for(int k = 0; k <= N / 2; ++k){
-    ans += ft.C(N+2*k, k);
+    ans += ft.C(N + 2 * k, k);
   }
 
   for(int k = 0; k < N / 2; ++k){
-    ans -= ft.C(N+2*k, k) * c[N/2-k-1] * 2;
+    ans -= ft.C(N + 2 * k, k) * c[N / 2 - k - 1] * 2;
   }
 
   std::cout << ans << std::endl;

@@ -10,17 +10,17 @@ int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  int m,n,d;
+  int m, n, d;
   while(std::cin >> m >> n >> d, m){
     auto s = input_vector<int>(n, m);
-    
-    auto a = std::vector(n*m, std::bitset<25*25>());
-    std::vector<bool> b(n*m);
+
+    auto a = std::vector(n * m, std::bitset<25 * 25>());
+    std::vector<bool> b(n * m);
 
     std::vector<std::vector<int>> p(n, std::vector<int>(m));
     for(int i = 0; i < n; ++i){
       for(int j = 0; j < m; ++j){
-        p[i][j] = j+i*m;
+        p[i][j] = j + i * m;
       }
     }
 
@@ -36,7 +36,7 @@ int main(){
 
         for(int x = 0; x < n; ++x){
           for(int y = 0; y < m; ++y){
-            if(abs(i-x) + abs(j-y) == d){
+            if(abs(i - x) + abs(j - y) == d){
               a[p[x][y]][p[i][j]] = 1;
             }
           }
@@ -44,8 +44,8 @@ int main(){
       }
     }
 
-    std::cout << (bool)(binary_simultaneous_linear_equations::solve(a,b)) << std::endl;
+    std::cout << (bool)(binary_simultaneous_linear_equations(a, b)) << std::endl;
   }
-  
+
   return 0;
 }

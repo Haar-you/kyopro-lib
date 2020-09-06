@@ -11,7 +11,7 @@
  */
 template <typename ... Args>
 class InputTuples {
-  struct iter{
+  struct iter {
     using value_type = std::tuple<Args ...>;
     value_type value;
     bool fetched = false;

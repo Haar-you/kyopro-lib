@@ -4,7 +4,7 @@
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp"
 
-int main() {
+int main(){
   int V, E, r; std::cin >> V >> E >> r;
 
   Graph<int> g(V);

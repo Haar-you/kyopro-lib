@@ -31,6 +31,6 @@ int main(){
       std::cout << a * x + b << std::endl;
     }
   }
-  
+
   return 0;
 }

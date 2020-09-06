@@ -19,7 +19,7 @@ T area_intersection_of_circle_and_polygon(const Circle<T> &cl, const Polygon<T> 
     const auto &c = cl.center;
 
     const auto &p1 = ps[i];
-    const auto &p2 = ps[(i+1)%n];
+    const auto &p2 = ps[(i + 1) % n];
 
     const auto [t, res] = intersect_circle_segment::check(cl, Line<T>(p1, p2));
 
@@ -46,7 +46,7 @@ T area_intersection_of_circle_and_polygon(const Circle<T> &cl, const Polygon<T> 
       const auto &q2 = res[1];
       temp +=
         r * r * angle_diff(p1 - c, q1 - c) / 2 +
-        cross(q1-c, q2-c) / 2 +
+        cross(q1 - c, q2 - c) / 2 +
         r * r * angle_diff(q2 - c, p2 - c) / 2;
     }
 

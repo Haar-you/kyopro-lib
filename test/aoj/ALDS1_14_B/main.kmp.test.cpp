@@ -9,6 +9,6 @@ int main(){
 
   auto res = KMP(p).match(t);
   for(auto i : res) std::cout << i << "\n";
-  
+
   return 0;
 }

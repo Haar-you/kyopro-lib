@@ -11,7 +11,7 @@ int main(){
   tree.read<0, false>(n - 1);
 
   auto ans = tree_height(tree);
-  
+
   for(auto x : ans) std::cout << x << std::endl;
 
   return 0;

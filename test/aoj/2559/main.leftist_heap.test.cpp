@@ -5,7 +5,6 @@
 #include <map>
 #include <set>
 #include <tuple>
-
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/MinimumSpanningTree/prim.cpp"
 #include "Mylib/Utils/fix_point.cpp"
@@ -17,8 +16,8 @@ int main(){
 
   Graph<int64_t> g(n);
   g.read<1, false>(m);
-  
-  std::map<std::pair<int,int>, int> index;
+
+  std::map<std::pair<int, int>, int> index;
   for(auto &a : g){
     for(auto &e : a) index[{e.from, e.to}] = e.index;
   }
@@ -27,7 +26,7 @@ int main(){
 
   std::vector<int64_t> ans(m, -1);
 
-  if((int)res.size() == n-1){
+  if((int)res.size() == n - 1){
     int64_t s = 0;
     Tree<int64_t> tree(n);
 
@@ -38,16 +37,14 @@ int main(){
 
     ans.assign(m, s);
 
-    std::vector<
-      LeftistHeap<std::tuple<int64_t, int, int>, std::greater<std::tuple<int64_t, int, int>>>
-      > sh(n);
-    
+    std::vector<LeftistHeap<std::tuple<int64_t, int, int>, std::greater<>>> heaps(n);
+
     std::vector<std::set<int>> sub(n);
 
     make_fix_point(
-      [&](auto &&f, int cur, int par, int64_t cost) -> void{
+      [&](auto &&f, int cur, int par, int64_t cost) -> void {
         for(auto &e : g[cur]){
-          sh[cur].push({e.cost, e.from, e.to});
+          heaps[cur].push({e.cost, e.from, e.to});
         }
 
         sub[cur].insert(cur);
@@ -56,23 +53,23 @@ int main(){
           if(e.to == par) continue;
           f(e.to, cur, e.cost);
 
-          sh[cur].meld(sh[e.to]);
+          heaps[cur].meld(heaps[e.to]);
           merge_technique(sub[cur], sub[cur], sub[e.to]);
         }
 
         if(par != -1){
-          while(not sh[cur].empty()){
-            auto [c, i, j] = sh[cur].top();
+          while(not heaps[cur].empty()){
+            auto [c, i, j] = heaps[cur].top();
             if((sub[cur].find(i) != sub[cur].end() and sub[cur].find(j) != sub[cur].end()) or
                (i == cur and j == par) or (i == par and j == cur)){
-              sh[cur].pop();
+              heaps[cur].pop();
             }else{
               break;
             }
           }
 
-          if(not sh[cur].empty()){
-            ans[index[{cur, par}]] = s - cost + std::get<0>(sh[cur].top());
+          if(not heaps[cur].empty()){
+            ans[index[{cur, par}]] = s - cost + std::get<0>(heaps[cur].top());
           }else{
             ans[index[{cur, par}]] = -1;
           }

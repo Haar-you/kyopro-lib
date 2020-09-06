@@ -11,7 +11,7 @@
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   auto [x, y, w] = input_tuple_vector<int64_t, int64_t, int64_t>(N);
@@ -23,11 +23,11 @@ int main(){
   }
 
   seg.build();
-  
+
   for(int i = 0; i < N; ++i){
     seg.update({x[i], y[i]}, w[i]);
   }
-  
+
   for(auto [l, d, r, u] : input_tuples<int64_t, int64_t, int64_t, int64_t>(Q)){
     auto ans = seg.get({l, d}, {r, u});
     std::cout << ans << std::endl;

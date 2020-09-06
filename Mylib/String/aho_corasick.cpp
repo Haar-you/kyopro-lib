@@ -84,7 +84,7 @@ public:
     }
   }
 
-  template <typename Func> // function<void(int,int)>
+  template <typename Func> // function<void(int, int)>
   void match(const std::string &s, const Func &f){
     int cur = 0;
 

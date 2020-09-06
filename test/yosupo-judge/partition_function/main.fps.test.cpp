@@ -11,7 +11,7 @@
 constexpr int PRIM = 3;
 using mint = ModInt<998244353>;
 using FPS = FormalPowerSeries<mint>;
-using NTT = NumberTheoreticTransform<mint,PRIM,1<<20>;
+using NTT = NumberTheoreticTransform<mint, PRIM, 1 << 20>;
 
 int main(){
   using namespace std::placeholders;

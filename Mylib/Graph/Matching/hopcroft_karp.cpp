@@ -75,7 +75,7 @@ public:
     const int y = j + L + 1;
 
     graph[x].push_back((edge){x, y, (int)graph[y].size(), false});
-    graph[y].push_back((edge){y, x, (int)graph[x].size()-1, true});
+    graph[y].push_back((edge){y, x, (int)graph[x].size() - 1, true});
   }
 
   int solve(){
@@ -98,7 +98,7 @@ public:
   }
 
   auto get_matching(){
-    std::vector<std::pair<int,int>> ret;
+    std::vector<std::pair<int, int>> ret;
     for(int i = 0; i < L; ++i){
       for(auto &e : graph[i + 1]){
         if(e.used) ret.emplace_back(i, e.to - L - 1);

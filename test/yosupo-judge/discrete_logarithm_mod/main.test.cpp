@@ -9,7 +9,7 @@ int main(){
   std::ios::sync_with_stdio(false);
 
   int T; std::cin >> T;
-  
+
   for(auto [X, Y, M] : input_tuples<int, int, int>(T)){
     std::cout << mod_log(X, Y, M).value_or(-1) << "\n";
   }

@@ -20,7 +20,7 @@ int main(){
       if(s == "Right") d = d.rot_clockwise(), ans += d.top;
       if(s == "Left") d = d.rot_counterclockwise(), ans += d.top;
     }
-    
+
     std::cout << ans << "\n";
   }
 

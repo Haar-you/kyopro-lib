@@ -8,7 +8,7 @@
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, M; std::cin >> N >> M;
 
   Graph<int> g(N);

@@ -4,7 +4,7 @@
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
-#include "Mylib/Algorithm/SlidingWindow/sliding_window_aggregation.cpp"
+#include "Mylib/DataStructure/Queue/sliding_window_aggregation.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
 using mint = ModInt<998244353>;
@@ -14,10 +14,10 @@ int main(){
   int Q; std::cin >> Q;
 
   SlidingWindowAggregation<M> swag;
-  
+
   for(auto [type] : input_tuples<int>(Q)){
     if(type == 0){
-      int a,b; std::cin >> a >> b;
+      int a, b; std::cin >> a >> b;
       swag.push({a, b});
     }else if(type == 1){
       swag.pop();

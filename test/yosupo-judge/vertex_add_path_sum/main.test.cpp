@@ -12,7 +12,7 @@
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   auto a = input_vector<int64_t>(N);
@@ -29,7 +29,7 @@ int main(){
   for(auto [t] : input_tuples<int>(Q)){
     if(t == 0){
       int p, x; std::cin >> p >> x;
-      
+
       int i = hld.get_id(p);
       seg.update(i, seg[i] + x);
     }else{
@@ -37,8 +37,7 @@ int main(){
 
       int64_t ans = 0;
       hld.path_query_vertex(
-        u,
-        v,
+        u, v,
         [&](int l, int r){
           ans += seg.get(l, r);
         }
@@ -47,6 +46,6 @@ int main(){
       std::cout << ans << "\n";
     }
   }
-  
+
   return 0;
 }

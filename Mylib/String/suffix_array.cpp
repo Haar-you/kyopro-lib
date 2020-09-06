@@ -7,7 +7,7 @@
  * @title Suffix array
  * @docs suffix_array.md
  */
-template <typename Container, typename T = typename Container::value_type>
+template <typename Container>
 struct SuffixArray {
   Container s;
   int N;

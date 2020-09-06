@@ -34,4 +34,3 @@ auto polynomial_taylor_shift(std::vector<T> a, T c, const Conv &convolve){
 
   return ret;
 }
-

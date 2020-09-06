@@ -14,7 +14,7 @@ int main(){
 
   auto ans = bridges(g);
   for(auto &e : ans) if(e.from > e.to) std::swap(e.from, e.to);
-  
+
   std::sort(
     ans.begin(), ans.end(),
     [](const auto &a, const auto &b){
@@ -24,6 +24,6 @@ int main(){
   );
 
   for(auto &e :ans) std::cout << e.from << " " << e.to << std::endl;
-  
+
   return 0;
 }

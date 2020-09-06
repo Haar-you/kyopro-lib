@@ -18,7 +18,7 @@ int main(){
       std::cout << heap.top() << "\n";
       heap.pop();
     }else{
-      break; 
+      break;
     }
   }
 

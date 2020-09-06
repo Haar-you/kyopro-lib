@@ -6,10 +6,10 @@
 
 int main(){
   std::string s1, s2; std::cin >> s1 >> s2;
-  
+
   auto ans = levenshtein_distance(s1, s2);
-  
+
   std::cout << ans << std::endl;
-  
+
   return 0;
 }

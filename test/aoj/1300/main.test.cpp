@@ -4,7 +4,6 @@
 #include <map>
 #include <string>
 #include <vector>
-
 #include "Mylib/Parser/parser.cpp"
 #include "Mylib/Number/Rational/rational.cpp"
 #include "Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp"
@@ -13,14 +12,14 @@
 
 using result = std::map<std::string, int>;
 
-struct parser : Parser{
+struct parser : Parser {
   parser(const std::string &s): Parser(s){}
 
   std::string atom(){
     std::string ret;
     ret += get_char();
     if(lower()) ret += get_char();
-    
+
     return ret;
   }
 
@@ -61,7 +60,7 @@ struct parser : Parser{
 
     return ret;
   }
-  
+
   result run(){
     return expression();
   }
@@ -99,7 +98,7 @@ int main(){
         atoms[kv.first] = 0;
         kv.second = -kv.second;
       }
-      ress.push_back(r);	
+      ress.push_back(r);
     }
 
     {
@@ -117,13 +116,13 @@ int main(){
     }
 
     gaussian_elimination(mat);
-    
+
     const int n = ress.size();
     std::vector<Rational> ans(n);
 
-    ans[n-1] = 1;
+    ans[n - 1] = 1;
 
-    for(int i = (int)atoms.size()-1; i >= 0; --i){
+    for(int i = (int)atoms.size(); --i >= 0;){
       if(mat[i].back() == 0) continue;
 
       int k = 0;
@@ -139,7 +138,7 @@ int main(){
         }
       }
 
-      ans[k] = -cons/coef;
+      ans[k] = -cons / coef;
     }
 
     int64_t l = 1;
@@ -149,6 +148,6 @@ int main(){
 
     std::cout << join(ans.begin(), ans.end()) << "\n";
   }
-  
+
   return 0;
 }

@@ -13,7 +13,7 @@
 template <typename T, typename U>
 class MinimumCostFlow {
 public:
-  struct edge{
+  struct edge {
     int from, to;
     T cap;
     U cost;
@@ -39,7 +39,7 @@ public:
     using P = std::pair<U, int>;
     ret = 0;
     T flow = f;
-    std::vector<U> h(size,0), cost(size);
+    std::vector<U> h(size, 0), cost(size);
     std::vector<bool> is_inf(size, true);
     std::vector<int> prev_node(size), prev_edge(size);
     std::priority_queue<P, std::vector<P>, std::greater<P>> pq;

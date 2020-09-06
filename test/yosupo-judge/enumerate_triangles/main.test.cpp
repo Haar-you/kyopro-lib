@@ -12,7 +12,7 @@ using mint = ModInt<998244353>;
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, M; std::cin >> N >> M;
   auto x = input_vector<mint>(N);
 
@@ -24,6 +24,6 @@ int main(){
   for(auto [i, j, k] : res) ans += x[i] * x[j] * x[k];
 
   std::cout << ans << "\n";
-  
+
   return 0;
 }

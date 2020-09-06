@@ -8,13 +8,13 @@
 
 using mint = ModInt<998244353>;
 
-struct tag{};
+struct tag {};
 using Mat = SquareMatrix<mint, tag>;
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N; std::cin >> N;
 
   Mat::init(N);

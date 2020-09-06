@@ -92,9 +92,9 @@ auto run_enumerate(const std::string &s){
   run_enumerate_impl::run(s, 0, ret);
   run_enumerate_impl::sub(s, ret);
 
-  std::map<std::pair<int,int>, int> m;
+  std::map<std::pair<int, int>, int> m;
 
-  for(auto &[t,l,r] : ret){
+  for(auto &[t, l, r] : ret){
     auto p = std::make_pair(l, r);
 
     if(m.find(p) != m.end()){

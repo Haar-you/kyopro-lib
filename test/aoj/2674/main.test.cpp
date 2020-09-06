@@ -17,7 +17,7 @@ int main(){
   auto wm = make_wavelet_matrix_int(x);
 
   int Q; std::cin >> Q;
-  
+
   for(auto [l, r, e] : input_tuples<int, int, int>(Q)){
     --l, --r;
 
@@ -26,8 +26,8 @@ int main(){
 
     int ans = 0;
 
-    ans += wm.range_freq(l, r+1, 0u, (uint32_t)std::max(0, a-e));
-    ans += wm.range_freq(l, r+1, (uint32_t)(b+e+1), std::numeric_limits<uint32_t>::max());
+    ans += wm.range_freq(l, r + 1, 0u, (uint32_t)std::max(0, a - e));
+    ans += wm.range_freq(l, r + 1, (uint32_t)(b + e + 1), std::numeric_limits<uint32_t>::max());
 
     std::cout << ans << std::endl;
   }

@@ -19,7 +19,7 @@ public:
   CumulativeSum1D(const std::vector<T> &a, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
     N(a.size()), add(add), minus(minus)
   {
-    data.assign(N+1, e);
+    data.assign(N + 1, e);
     for(int i = 0; i < N; ++i) data[i + 1] = a[i];
   }
 
@@ -50,4 +50,3 @@ public:
     return minus(data[j], data[i]);
   }
 };
-

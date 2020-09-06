@@ -14,12 +14,12 @@ int main(){
   }
 
   int ret;
-  
-  if(f.solve(0, V-1, F, ret) == F){
+
+  if(f.solve(0, V - 1, F, ret) == F){
     std::cout << ret << std::endl;
   }else{
     std::cout << -1 << std::endl;
   }
-  
+
   return 0;
 }

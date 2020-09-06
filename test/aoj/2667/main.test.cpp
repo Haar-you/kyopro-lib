@@ -12,18 +12,17 @@ int main(){
 
   Tree<int> tree(N);
   tree.read<0, false, false>(N - 1);
-  
+
   auto hld = HLDecomposition(tree, 0);
-  LazySegmentTree<AddSum<int64_t,int64_t>> seg(N);
-  
+  LazySegmentTree<AddSum<int64_t, int64_t>> seg(N);
+
   for(auto [c] : input_tuples<int>(Q)){
     if(c == 0){
       int u, v; std::cin >> u >> v;
-      
+
       int64_t ans = 0;
       hld.path_query_edge(
-        u,
-        v,
+        u, v,
         [&](int l, int r){
           ans += seg.get(l, r);
         }
@@ -31,7 +30,7 @@ int main(){
       std::cout << ans << std::endl;
     }else{
       int v, x; std::cin >> v >> x;
-      
+
       hld.subtree_query_edge(
         v,
         [&](int l, int r){
@@ -40,6 +39,6 @@ int main(){
       );
     }
   }
-  
+
   return 0;
 }

@@ -4,7 +4,7 @@
 #include <string>
 #include "Mylib/Parser/parser.cpp"
 
-struct parser : Parser{
+struct parser : Parser {
   parser(const std::string &s): Parser(s){}
 
   bool constant(){
@@ -12,7 +12,7 @@ struct parser : Parser{
     ignore();
     return ret;
   }
-  
+
   bool negate(){
     ignore('-');
     return !expression();
@@ -21,7 +21,7 @@ struct parser : Parser{
   std::string get_op(){
     if(check_and_ignore('*')) return "*";
     if(check_and_ignore('+')) return "+";
-    ignore("->"); return "->";    
+    ignore("->"); return "->";
   }
 
   bool term(){
@@ -53,22 +53,22 @@ struct parser : Parser{
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   std::string s;
   while(std::cin >> s){
     if(s == "#") break;
 
     bool ans = true;
 
-    for(int i = 0; i < 1<<11; ++i){
+    for(int i = 0; i < 1 << 11; ++i){
       std::string t(s);
-      
+
       for(auto &ch : t){
         if(ch >= 'a' and ch <= 'k'){
           ch = i & (1 << (ch-'a')) ? 'T' : 'F';
         }
       }
-      
+
       ans = ans and parser(t).run();
     }
 

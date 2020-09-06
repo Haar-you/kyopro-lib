@@ -46,7 +46,7 @@ public:
   }
 
   int lca(int a, int b) const {
-    if(depth[a] >= depth[b]) std::swap(a,b);
+    if(depth[a] >= depth[b]) std::swap(a, b);
     for(int k = 0; k < log2n; ++k) if((depth[b] - depth[a]) >> k & 1) b = parent[b][k];
     if(a == b) return a;
     for(int k = log2n - 1; k >= 0; --k) if(parent[a][k] != parent[b][k]){a = parent[a][k]; b = parent[b][k];}
@@ -56,6 +56,6 @@ public:
   int operator()(int a, int b) const {return lca(a, b);}
 
   T distance(int a, int b) const {
-    return dist[a] + dist[b] - 2 * dist[lca(a,b)];
+    return dist[a] + dist[b] - 2 * dist[lca(a, b)];
   }
 };

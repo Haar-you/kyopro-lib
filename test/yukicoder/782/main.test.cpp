@@ -15,6 +15,6 @@ int main(){
 
     std::cout << join(ans.begin(), ans.end(), "") << "\n";
   }
-  
+
   return 0;
 }

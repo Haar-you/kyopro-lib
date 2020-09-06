@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <vector>
-
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 #include "Mylib/Utils/sort_simultaneously.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
@@ -13,7 +12,7 @@ const int H = 1000000000;
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int n, m; std::cin >> n >> m;
 
   auto [x, y] = input_tuple_vector<int, int>(n);
@@ -22,8 +21,7 @@ int main(){
     [&](int i, int j){
       return x[i] < x[j];
     },
-    x,
-    y
+    x, y
   );
 
   for(auto &p : y) p += H;

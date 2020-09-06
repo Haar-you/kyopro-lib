@@ -8,14 +8,14 @@
 #include "Mylib/IO/input_vector.cpp"
 
 using D = DoubleEps<double>;
-template<> double D::eps = 1e-7;
+template <> double D::eps = 1e-7;
 
 int main(){
   int n; std::cin >> n;
   Polygon<D> ps = input_vector<Point<D>>(n);
 
   auto ans = convex_hull(ps);
-  
+
   std::cout << ans.size() << std::endl;
 
   {
@@ -31,7 +31,7 @@ int main(){
 
     std::rotate(ans.begin(), ans.begin() + k, ans.end());
   }
-  
+
   for(auto &p : ans){
     std::cout << p.x << " " << p.y << std::endl;
   }

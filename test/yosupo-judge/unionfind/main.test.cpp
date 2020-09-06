@@ -16,6 +16,6 @@ int main(){
       std::cout << uf.is_same(u, v) << std::endl;
     }
   }
-  
+
   return 0;
 }

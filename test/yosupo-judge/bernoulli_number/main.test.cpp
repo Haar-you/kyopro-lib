@@ -22,7 +22,7 @@ int main(){
   int N; std::cin >> N;
 
   auto ft = FactorialTable<mint>(N + 1);
-  
+
   auto ntt = NTT();
   FPS::convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
 

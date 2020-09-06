@@ -4,7 +4,7 @@
 #include "Mylib/Geometry/Float/distance_line_point.cpp"
 
 /**
- * @title Intersection between a cirlce and a line
+ * @title Intersection between a circle and a line
  * @docs intersect_circle_line.md
  */
 namespace intersect_circle_line {

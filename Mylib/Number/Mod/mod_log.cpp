@@ -32,7 +32,7 @@ std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
 
   const int64_t sq = sqrt(m) + 1;
 
-  std::unordered_map<int64_t,int64_t> mp;
+  std::unordered_map<int64_t, int64_t> mp;
   {
     int64_t t = 1 % m;
 

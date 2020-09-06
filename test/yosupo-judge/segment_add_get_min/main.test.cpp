@@ -49,7 +49,7 @@ int main(){
     for(auto [l, r, a, b] : lines){
       lc.add_segment(l, r, a, b);
     }
-  
+
     for(auto &q : query){
       if(q.index() == 0){
         auto [l, r, a, b] = std::get<0>(q);

@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <vector>
-
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/intersect_segments.cpp"
@@ -14,10 +13,10 @@ using D = DoubleEps<double>;
 template <> double D::eps = 1e-7;
 
 bool intersect(const std::vector<Point<D>> &a, const std::vector<Point<D>> &b){
-  for(int i = 0; i < (int)a.size()-1; ++i){
-    for(int j = 0; j < (int)b.size()-1; ++j){
-      auto l1 = Line<D>(a[i], a[i+1]);
-      auto l2 = Line<D>(b[j], b[j+1]);
+  for(int i = 0; i < (int)a.size() - 1; ++i){
+    for(int j = 0; j < (int)b.size() - 1; ++j){
+      auto l1 = Line<D>(a[i], a[i + 1]);
+      auto l2 = Line<D>(b[j], b[j + 1]);
       if(intersect_segments::check(l1, l2).status != intersect_segments::NOT_INTERSECTING){
         return true;
       }
@@ -41,7 +40,7 @@ int main(){
     }
 
     std::vector<std::vector<int>> graph(N);
-  
+
     for(int i = 0; i < N; ++i){
       for(int j = 0; j < i; ++j){
         if(intersect(lines[i], lines[j])){

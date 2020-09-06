@@ -3,7 +3,7 @@
 #include <optional>
 
 /**
- * @docs Max monoid
+ * @title Max monoid
  * @docs max.md
  */
 template <typename T>

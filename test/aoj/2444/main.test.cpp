@@ -4,7 +4,6 @@
 #include <string>
 #include <set>
 #include <array>
-
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/rolling_hash.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
@@ -13,7 +12,7 @@ int main(){
   using Monoid = RollingHashMonoid<2>;
   Monoid::base = {33, 100};
   Monoid::mod = 1000000007;
-  
+
   int n, m; std::cin >> n >> m;
   std::string s; std::cin >> s;
 
@@ -31,7 +30,7 @@ int main(){
       if(q[1] == '+') ++r;
       else --r;
     }
-      
+
     set.insert(seg.get(l, r).first);
   }
 

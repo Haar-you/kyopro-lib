@@ -7,7 +7,7 @@
 #include "Mylib/IO/input_vector.cpp"
 
 int main(){
-  int N,L; std::cin >> N >> L;
+  int N, L; std::cin >> N >> L;
 
   auto a = input_vector<int>(N);
 

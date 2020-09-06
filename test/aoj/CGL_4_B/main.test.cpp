@@ -9,7 +9,7 @@
 #include "Mylib/IO/input_vector.cpp"
 
 using D = DoubleEps<double>;
-template<> double D::eps = ERROR;
+template <> double D::eps = ERROR;
 
 int main(){
   int n; std::cin >> n;

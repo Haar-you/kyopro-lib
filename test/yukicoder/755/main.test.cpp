@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <vector>
-
 #include "Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp"
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
@@ -21,7 +20,7 @@ int main(){
     --x, --y;
 
     int ans = 0;
-    
+
     for(int x1 = 0; x1 <= x; ++x1){
       for(int y1 = 0; y1 <= y; ++y1){
         for(int x2 = x; x2 < M; ++x2){
@@ -29,11 +28,11 @@ int main(){
             if(c.get({x1, y1}, {x2 + 1, y2 + 1}) == 0) ++ans;
           }
         }
-      }  
+      }
     }
 
     std::cout << ans << std::endl;
   }
-  
+
   return 0;
 }

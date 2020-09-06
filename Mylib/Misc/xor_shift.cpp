@@ -16,7 +16,7 @@ struct XorShift {
     return w;
   }
 
-  static uint64_t rand(uint64_t s, uint64_t t){ // [s,t)
+  static uint64_t rand(uint64_t s, uint64_t t){ // [s, t)
     return s + rand() % (t - s);
   }
 };

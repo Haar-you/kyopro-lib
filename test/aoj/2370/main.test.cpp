@@ -4,7 +4,6 @@
 #include <vector>
 #include <map>
 #include <algorithm>
-
 #include "Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp"
 #include "Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp"
 #include "Mylib/Graph/Template/graph.cpp"
@@ -16,7 +15,7 @@ int main(){
   g.read<1, false, false>(E);
 
   auto res = check_bipartite_graph(g);
-  
+
   if(std::all_of(res.begin(), res.end(), [](const auto &a){return (bool)a;})){
     int k = 0;
 
@@ -27,8 +26,8 @@ int main(){
       int b = (*x).second.size();
 
       k += std::min(a, b);
-      
-      c[std::abs(a-b)] += 1;
+
+      c[std::abs(a - b)] += 1;
     }
 
     std::vector<int> a, m;

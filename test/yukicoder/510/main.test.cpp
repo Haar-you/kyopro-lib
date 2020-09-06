@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <vector>
-
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
@@ -18,7 +17,7 @@ auto f(mint x, mint y){
   Mat ret = {
              {1, 0, x, 0},
              {0, y, 0, 1},
-             {0, 2*y, y*y, 1},
+             {0, 2 * y, y * y, 1},
              {0, 0, 0, 1}
   };
   return ret;
@@ -51,6 +50,6 @@ int main(){
       std::cout << ans << "\n";
     }
   }
-  
+
   return 0;
 }

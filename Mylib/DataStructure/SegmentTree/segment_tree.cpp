@@ -23,7 +23,7 @@ public:
 
   auto operator[](int i) const {return data[hsize + i];}
 
-  auto get(int x, int y) const { // [x,y)
+  auto get(int x, int y) const {
     value_type ret_left = M();
     value_type ret_right = M();
 

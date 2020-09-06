@@ -7,7 +7,7 @@
 
 int main(){
   int N, T; std::cin >> N >> T;
-  Imos1D<int> imos(T+1);
+  Imos1D<int> imos(T + 1);
 
   for(auto [l, r] : input_tuples<int, int>(N)){
     imos.add(l, r, 1);
@@ -22,6 +22,6 @@ int main(){
   }
 
   std::cout << ans << std::endl;
-  
+
   return 0;
 }

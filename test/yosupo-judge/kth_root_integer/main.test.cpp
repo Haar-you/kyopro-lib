@@ -7,7 +7,7 @@
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int T; std::cin >> T;
 
   for(auto [A, K] : input_tuples<uint64_t, uint64_t>(T)){

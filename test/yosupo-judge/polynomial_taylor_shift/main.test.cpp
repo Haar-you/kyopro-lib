@@ -9,7 +9,7 @@
 #include "Mylib/Math/polynomial_taylor_shift.cpp"
 
 using mint = ModInt<998244353>;
-using NTT = NumberTheoreticTransform<mint, 3, 1<<21>;
+using NTT = NumberTheoreticTransform<mint, 3, 1 << 21>;
 
 int main(){
   using namespace std::placeholders;
@@ -24,6 +24,6 @@ int main(){
   auto ans = polynomial_taylor_shift(a, mint(c), convolve);
 
   std::cout << join(ans.begin(), ans.end()) << "\n";
-  
+
   return 0;
 }

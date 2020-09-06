@@ -11,7 +11,7 @@
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N; std::cin >> N;
 
   Tree<int> tree(N);
@@ -21,13 +21,13 @@ int main(){
 
   auto A = input_vector<int64_t>(N);
   LazySegmentTree<UpdateSum<int64_t, int64_t>> seg(N);
-  
+
   for(int i = 0; i < N; ++i){
     res.query_at(i, [&](int l, int r){seg.update(l, r, A[i]);});
   }
-    
+
   int Q; std::cin >> Q;
-  
+
   for(auto [x] : input_tuples<int>(Q)){
     int64_t ans = 0;
 
@@ -42,26 +42,26 @@ int main(){
 
     // 親
     res.query_at(res.get_ancestor(x, 1), f);
-    
+
     // 親の子
     res.query_children(res.get_parent(x), 1, f);
 
     // 自分
     res.query_at(x, f);
-    
+
     // 子
     res.query_children(x, 1, f);
 
     // 子の子
     res.query_children(x, 2, f);
-    
+
     res.query_at(
       x,
       [&](int l, int r){
         seg.update(l, r, ans);
       }
     );
-    
+
     std::cout << ans << std::endl;
   }
 

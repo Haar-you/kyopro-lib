@@ -11,6 +11,6 @@ int main(){
   auto res = convert_base_to(N, 7);
 
   std::cout << join(res.begin(), res.end(), "") << "\n";
-  
+
   return 0;
 }

@@ -20,7 +20,7 @@ int main(){
     if(res.in_loop[a] and res.in_loop[b]){
       std::cout << 2 << "\n";
     }else{
-      std::cout << 1 << "\n"; 
+      std::cout << 1 << "\n";
     }
   }
 

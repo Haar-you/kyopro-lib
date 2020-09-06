@@ -48,6 +48,6 @@ int main(){
       std::cout << ans << "\n";
     }
   }
-  
+
   return 0;
 }

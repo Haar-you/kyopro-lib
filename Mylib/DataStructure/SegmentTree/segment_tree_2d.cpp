@@ -41,7 +41,7 @@ public:
     data = std::vector<std::vector<value_type>>(w, std::vector<value_type>(h));
   }
 
-  value_type get(std::pair<int, int> p1, std::pair<int, int> p2) const { // [(x1,y1),(x2,y2))
+  value_type get(std::pair<int, int> p1, std::pair<int, int> p2) const { // [(x1, y1), (x2, y2))
     const auto [x1, y1] = p1;
     const auto [x2, y2] = p2;
     int l = y1 + h / 2;

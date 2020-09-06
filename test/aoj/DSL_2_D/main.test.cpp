@@ -14,8 +14,8 @@ int main(){
 
   for(auto [type] : input_tuples<int>(q)){
     if(type == 0){
-      int s,t,x; std::cin >> s >> t >> x;
-      seg.update(s, t+1, x);
+      int s, t, x; std::cin >> s >> t >> x;
+      seg.update(s, t + 1, x);
     }else{
       int i; std::cin >> i;
       std::cout << *seg[i] << std::endl;

@@ -9,7 +9,7 @@
 
 int main(){
   std::string p, cnf;
-  int N,M;
+  int N, M;
   std::cin >> p >> cnf >> N >> M;
 
   TwoSat sat(N);
@@ -20,7 +20,7 @@ int main(){
 
   if(auto res = sat.solve(); res){
     std::vector<int> ans(N);
-    for(int i = 0; i < N; ++i) ans[i] = (*res)[i] ? i+1 : -(i+1);
+    for(int i = 0; i < N; ++i) ans[i] = (*res)[i] ? i + 1 : -(i + 1);
 
     std::cout
       << "s SATISFIABLE" << std::endl

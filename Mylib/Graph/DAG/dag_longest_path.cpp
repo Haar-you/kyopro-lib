@@ -12,7 +12,7 @@ int dag_longest_path(const std::vector<std::vector<int>> &g){
   std::vector<bool> visited(n);
 
   auto dfs =
-    [&](auto &f, int cur) -> int{
+    [&](auto &f, int cur) -> int {
       if(visited[cur]) return ret[cur];
       visited[cur] = true;
 

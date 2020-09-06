@@ -4,7 +4,6 @@
 #include <variant>
 #include <tuple>
 #include <vector>
-
 #include "Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
@@ -14,7 +13,7 @@ using Query = std::variant<std::tuple<int, int, int>, std::tuple<int, int, int, 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, Q; std::cin >> N >> Q;
 
   SegmentTree2D<SumMonoid<int64_t>> seg;

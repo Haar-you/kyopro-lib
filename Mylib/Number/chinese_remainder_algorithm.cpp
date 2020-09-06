@@ -26,4 +26,3 @@ bool CRA(const std::vector<int64_t> &bs, const std::vector<int64_t> &ms, int64_t
   }
   return true;
 }
-

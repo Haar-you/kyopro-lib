@@ -4,7 +4,7 @@
  * @title Power of a matrix
  * @docs power.md
  */
-template <typename M, typename T = typename M::value_type>
+template <typename M>
 M power(M a, uint64_t p){
   if(p == 0) return M::make_unit();
   if(p == 1) return a;

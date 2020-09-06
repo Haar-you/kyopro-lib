@@ -68,4 +68,3 @@ template <typename T> DoubleEps<T> atan2(DoubleEps<T> y, DoubleEps<T> x){return 
 template <typename T> DoubleEps<T> abs(DoubleEps<T> x){return std::abs((T)x);}
 
 template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
-

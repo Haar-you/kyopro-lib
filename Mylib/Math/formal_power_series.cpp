@@ -78,7 +78,7 @@ struct FormalPowerSeries {
     const int n = data.size();
     std::vector<T> ret(n + 1);
     for(int i = 0; i < n; ++i){
-      ret[i+1] = data[i] / (i + 1);
+      ret[i + 1] = data[i] / (i + 1);
     }
 
     return FormalPowerSeries(ret);

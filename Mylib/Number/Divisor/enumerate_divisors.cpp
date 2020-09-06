@@ -12,7 +12,7 @@ std::vector<int64_t> enumerate_divisors(int64_t n){
   {
     int64_t i;
     for(i = 1LL; i * i < n; ++i){
-      if(n%i == 0){
+      if(n % i == 0){
         temp.push_back(n / i);
         ret.push_back(i);
       }

@@ -5,7 +5,7 @@
 #include "Mylib/Combinatorics/montmort_number.cpp"
 #include "Mylib/IO/join.cpp"
 
-struct tag{};
+struct tag {};
 using mint = RuntimeModInt<tag>;
 
 int main(){

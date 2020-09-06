@@ -7,7 +7,7 @@
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-    
+
   int p, n;
   while(std::cin >> p >> n, p){
     std::pair<int, int> lower, upper;

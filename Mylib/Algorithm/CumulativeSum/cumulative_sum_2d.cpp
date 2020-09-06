@@ -47,7 +47,7 @@ public:
     return *this;
   }
 
-  T get(std::pair<int, int> p1, std::pair<int, int> p2) const { // [x1,x2), [y1,y2)
+  T get(std::pair<int, int> p1, std::pair<int, int> p2) const { // [x1, x2), [y1, y2)
     assert(is_built);
     const auto [x1, y1] = p1;
     const auto [x2, y2] = p2;

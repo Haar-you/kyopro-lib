@@ -80,7 +80,7 @@ template <class T>
 void debug_print(std::ostream&, std::optional<T>);
 
 template <class ... Types>
-void debug_print(std::ostream&, std::variant<Types...>);
+void debug_print(std::ostream&, std::variant<Types ...>);
 
 void debug_print(std::ostream&, bool);
 void debug_print(std::ostream&, int);
@@ -120,9 +120,9 @@ void dump_helper(int line, T value){
 }
 
 template <class... Args>
-void dump_(int line, std::string names, Args&& ... args){
+void dump_(int line, std::string names, Args &&... args){
   std::cerr << "[\e[1m====\e[m] \e[1m" << names << "\e[m" << "\n";
-  (void)std::initializer_list<int>{(void(dump_helper(line, args)), 0)...};
+  (void)std::initializer_list<int>{(void(dump_helper(line, args)), 0) ...};
 }
 
 
@@ -308,14 +308,7 @@ void debug_print(std::ostream& s, std::optional<T> val){
 // variant
 template <class ... Types>
 void debug_print(std::ostream& s, std::variant<Types ...> val){
-  (void)std::initializer_list<int>{
-    (void(
-      [&](){
-        if(std::holds_alternative<Types>(val)){
-          debug_print(s, std::get<Types>(val));
-        }
-      }()
-    ), 0) ...};
+  std::visit([&s](const auto &x){debug_print(s, x);}, val);
 }
 
 

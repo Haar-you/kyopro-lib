@@ -11,7 +11,7 @@ T stirling_number_of_second_kind(int64_t n, int64_t k, const Ft &ft){
 
   T ret = 0;
   for(int i = 1; i <= k; ++i){
-    if((k-i) % 2 == 0) ret += ft.C(k, i) * T::power(i, n);
+    if((k - i) % 2 == 0) ret += ft.C(k, i) * T::power(i, n);
     else ret -= ft.C(k, i) * T::power(i, n);
   }
   ret *= ft.inv_factorial(k);

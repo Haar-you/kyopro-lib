@@ -26,7 +26,7 @@ int64_t maximum_independent_set(const std::vector<std::vector<int>> &g){
     }
   }
 
-  for(int s = 0; s < (1<<h1); ++s){
+  for(int s = 0; s < (1 << h1); ++s){
     if(not dp1[s]){
       for(int j = 0; j < h1; ++j){
         dp1[s | (1 << j)] = false;

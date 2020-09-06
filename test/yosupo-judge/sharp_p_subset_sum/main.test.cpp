@@ -11,23 +11,23 @@
 
 using mint = ModInt<998244353>;
 using FPS = FormalPowerSeries<mint>;
-using NTT = NumberTheoreticTransform<mint, 3, 1<<21>;
+using NTT = NumberTheoreticTransform<mint, 3, 1 << 21>;
 
 int main(){
   using namespace std::placeholders;
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-  
+
   int N, T; std::cin >> N >> T;
   auto s = input_vector<int>(N);
 
   auto ntt = NTT();
   FPS::convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
 
-  auto ans = subset_sum_count_fps<FPS>(s, T);  
-  
+  auto ans = subset_sum_count_fps<FPS>(s, T);
+
   std::cout << join(ans.begin() + 1, ans.begin() + T + 1) << "\n";
-  
+
   return 0;
 }
 

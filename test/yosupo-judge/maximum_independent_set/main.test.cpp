@@ -7,7 +7,7 @@
 #include "Mylib/IO/input_tuples.cpp"
 
 int main(){
-  int N,M; std::cin >> N >> M;
+  int N, M; std::cin >> N >> M;
   std::vector<std::vector<int>> g(N, std::vector<int>(N));
   for(auto [u, v] : input_tuples<int, int>(M)){
     g[u][v] = g[v][u] = 1;
@@ -21,6 +21,6 @@ int main(){
   }
 
   std::cout << ans.size() << " " << join(ans.begin(), ans.end()) << "\n";
-  
+
   return 0;
 }

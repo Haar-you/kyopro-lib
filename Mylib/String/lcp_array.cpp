@@ -16,7 +16,7 @@ auto lcp_array(const SuffixArray<T> &sa){
   int h = 0;
   for(int i = 0; i < n; ++i){
     if(rank[i] == 0) continue;
-    int j = sa[rank[i] - 1];
+    const int j = sa[rank[i] - 1];
 
     if(h) --h;
     while(j + h < n and i + h < n){

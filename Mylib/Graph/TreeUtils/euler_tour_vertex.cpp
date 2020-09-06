@@ -27,7 +27,7 @@ public:
     dfs(root, -1, tree);
   }
 
-  template <typename F> // F = std::function<void(int,int)>
+  template <typename F> // F = std::function<void(int, int)>
   void subtree_query(int i, const F &f){
     f(begin[i], end[i]);
   }

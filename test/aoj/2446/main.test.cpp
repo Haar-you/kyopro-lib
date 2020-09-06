@@ -16,22 +16,22 @@ int main(){
 
   auto a = input_vector<int64_t>(n);
   auto p = input_vector<double>(n);
-  
+
   for(auto &x : p) x /= 100.0;
 
-  std::vector<int64_t> dp(1<<n);
-  for(int i = 1; i < 1<<n; ++i){
+  std::vector<int64_t> dp(1 << n);
+  for(int i = 1; i < 1 << n; ++i){
     int64_t l = 1;
     for(int j = 0; j < n; ++j){
       if((i >> j) & 1){
         int64_t g = std::gcd(l, a[j]);
 
         long long int k;
-        if(__builtin_smulll_overflow(l/g, a[j], &k)){
-          l = m+1;
+        if(__builtin_smulll_overflow(l / g, a[j], &k)){
+          l = m + 1;
           break;
         }
-        l = (l/g) * a[j];
+        l = (l / g) * a[j];
       }
     }
     dp[i] = m / l;
@@ -41,7 +41,7 @@ int main(){
 
   double ans = 0.0;
 
-  for(int i = 0; i < (1<<n); ++i){
+  for(int i = 0; i < (1 << n); ++i){
     double q = 1.0;
     for(int j = 0; j < n; ++j){
       if(i >> j & 1) q *= p[j];
@@ -49,8 +49,8 @@ int main(){
     }
     ans += q * std::abs(dp[i]);
   }
-  
+
   std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
-  
+
   return 0;
 }

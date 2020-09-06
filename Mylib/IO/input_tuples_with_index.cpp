@@ -11,7 +11,7 @@
  */
 template <typename ... Args>
 class InputTuplesWithIndex {
-  struct iter{
+  struct iter {
     using value_type = std::tuple<int, Args ...>;
     value_type value;
     bool fetched = false;
@@ -51,4 +51,3 @@ template <typename ... Args>
 auto input_tuples_with_index(int N){
   return InputTuplesWithIndex<Args ...>(N);
 }
-

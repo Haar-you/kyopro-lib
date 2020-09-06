@@ -9,7 +9,7 @@
 #include "Mylib/Geometry/Float/common_tangent_of_circles.cpp"
 
 using D = DoubleEps<double>;
-template<> double D::eps = ERROR;
+template <> double D::eps = ERROR;
 
 int main(){
   Circle<D> c1, c2;
@@ -23,7 +23,7 @@ int main(){
             });
 
   std::cout << std::fixed << std::setprecision(12);
-  
+
   for(auto &p : ans){
     std::cout << p.x << " " << p.y << std::endl;
   }

@@ -13,6 +13,6 @@ int main(){
   auto p = partition_number<mint>(N);
 
   std::cout << join(p.begin(), p.end()) << std::endl;
-  
+
   return 0;
 }

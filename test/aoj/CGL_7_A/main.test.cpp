@@ -6,7 +6,7 @@
 #include "Mylib/Geometry/Float/intersect_circles.cpp"
 
 using D = DoubleEps<double>;
-template<> double D::eps = 1e-7;
+template <> double D::eps = 1e-7;
 
 int main(){
   Circle<D> c1, c2;

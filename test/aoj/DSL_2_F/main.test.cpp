@@ -9,16 +9,16 @@
 int main(){
   int n, q; std::cin >> n >> q;
 
-  LazySegmentTree<UpdateMin<int,int>> seg(n);
+  LazySegmentTree<UpdateMin<int, int>> seg(n);
 
   for(auto [type, s, t] : input_tuples<int, int, int>(q)){
     if(type == 0){
       int x; std::cin >> x;
-      seg.update(s, t+1, x);
+      seg.update(s, t + 1, x);
     }else{
-      std::cout << seg.get(s, t+1).value_or(INT_MAX) << std::endl;
+      std::cout << seg.get(s, t + 1).value_or(INT_MAX) << std::endl;
     }
   }
-  
+
   return 0;
 }

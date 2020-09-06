@@ -26,7 +26,7 @@ public:
 
     if_table[N] = f_table[N].inv();
 
-    for(int i = N-1; i >= 0; --i){
+    for(int i = N; --i >= 0;){
       if_table[i] = if_table[i + 1] * (i + 1);
     }
   }
