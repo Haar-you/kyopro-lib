@@ -14,7 +14,7 @@ struct SuffixArray {
   int N;
   std::vector<int> data;
 
-  SuffixArray(Container s): s(s), N(s.size()), data(N){
+  SuffixArray(Container s_): s(s_), N(s.size()), data(N){
     if(N == 1){
       data = {1, 0};
       return;
@@ -148,4 +148,34 @@ struct SuffixArray {
   auto begin() const {return data.begin();}
   auto end() const {return data.end();}
   size_t size() const {return data.size();}
+
+  int lower_bound(const Container &s_) const {
+    auto check =
+      [&](int x){
+        for(int i = 0; i < (int)s_.size(); ++i){
+          if(data[x] + i >= (int)s.size()) return false;
+          if(s_[i] < s[data[x] + i]) return true;
+          if(s_[i] > s[data[x] + i]) return false;
+        }
+        return true;
+      };
+
+    int lb = -1, ub = size();
+    while(abs(lb - ub) > 1){
+      int mid = (lb + ub) / 2;
+      if(check(mid)) ub = mid;
+      else lb = mid;
+    }
+
+    return ub;
+  }
+
+  int upper_bound(const Container &s_) const {
+    Container t(s_);
+
+    ++t.back();
+    int ret = lower_bound(t);
+
+    return ret;
+  }
 };
