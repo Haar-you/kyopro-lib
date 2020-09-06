@@ -23,7 +23,7 @@ struct Vec {
   friend bool operator<(const Vec &a, const Vec &b){return a.x < b.x or (a.x == b.x and a.y < b.y);}
 
   friend std::istream& operator>>(std::istream &s, Vec &a){
-    s >> a.x  >> a.y; return s;
+    s >> a.x >> a.y; return s;
   }
 };
 
