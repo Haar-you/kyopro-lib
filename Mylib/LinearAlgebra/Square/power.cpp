@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 
 /**
  * @title Power of a matrix

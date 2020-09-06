@@ -3,6 +3,7 @@
 #include <optional>
 #include <queue>
 #include <algorithm>
+#include <climits>
 #include "Mylib/Graph/Template/graph.cpp"
 
 /**

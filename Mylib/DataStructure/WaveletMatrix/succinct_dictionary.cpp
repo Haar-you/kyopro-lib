@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <optional>
+#include <cassert>
 
 /**
  * @title Succinct dictionary

@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <tuple>
+#include <optional>
 
 /**
  * @title Cartesian tree

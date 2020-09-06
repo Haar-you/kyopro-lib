@@ -1,4 +1,6 @@
 #pragma once
+#include <cstdint>
+#include <cmath>
 
 /**
  * @title Floor function / Ceiling function

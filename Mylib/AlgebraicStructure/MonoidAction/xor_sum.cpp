@@ -8,18 +8,18 @@
 template <typename U, int B>
 struct XorSum {
   using value_type_get = typename std::array<int, B>;
-  using value_type_update = typename U;
+  using value_type_update = U;
 
   value_type_get id_get() const {
-    value_type ret;
-    ret.fill(M.id());
+    value_type_get ret;
+    ret.fill(0);
     return ret;
   }
   value_type_update id_update() const {return 0;}
 
   value_type_get op_get(const value_type_get &a, const value_type_get &b){
-    value_type ret;
-    for(int i = 0; i < B; ++i) ret[i] = M.op(a[i], b[i]);
+    value_type_get ret;
+    for(int i = 0; i < B; ++i) ret[i] = a[i] + b[i];
     return ret;
   }
   value_type_update op_update(value_type_update a, value_type_update b) const {return a ^ b;}

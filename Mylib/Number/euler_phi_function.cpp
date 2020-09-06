@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 
 /**
  * @title Euler's totient function

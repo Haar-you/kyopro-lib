@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <utility>
+#include <cmath>
 
 /**
  * @title Range mode query

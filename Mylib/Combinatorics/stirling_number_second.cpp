@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 #include "Mylib/Combinatorics/factorial_table.cpp"
 
 /**

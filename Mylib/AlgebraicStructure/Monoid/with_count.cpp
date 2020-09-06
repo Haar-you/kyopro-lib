@@ -1,5 +1,6 @@
 #pragma once
 #include <utility>
+#include <cstdint>
 
 /**
  * @docs with_count.md

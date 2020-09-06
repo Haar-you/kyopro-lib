@@ -1,5 +1,7 @@
 #pragma once
 #include <vector>
+#include <cstdint>
+#include <cmath>
 #include "Mylib/Number/Mod/mod_power.cpp"
 
 /**

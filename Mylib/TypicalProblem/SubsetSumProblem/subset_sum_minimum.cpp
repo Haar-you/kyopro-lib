@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <algorithm>
+#include <climits>
 
 /**
  * @title Subset sum problem (Minimum)

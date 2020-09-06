@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 
 /**
  * @title Count number of prime factor p of $a!$
@@ -13,7 +14,7 @@ int64_t factorial_prime_factorization(int64_t a, int64_t p){
     ret += t;
 
     int64_t k;
-    if(__builtin_smulll_overflow(q, p, &k)) break;
+    if(__builtin_smulll_overflow(q, p, (long long int*)&k)) break;
 
     q = k;
   }

@@ -2,6 +2,7 @@
 #include <functional>
 #include <vector>
 #include <initializer_list>
+#include <cassert>
 
 /**
  * @title Formal power series

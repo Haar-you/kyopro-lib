@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <utility>
+#include <cstdint>
 
 /**
  * @title Run length encoding

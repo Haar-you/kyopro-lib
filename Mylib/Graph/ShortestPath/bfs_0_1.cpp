@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <deque>
+#include <optional>
 #include "Mylib/Graph/Template/graph.cpp"
 
 /**

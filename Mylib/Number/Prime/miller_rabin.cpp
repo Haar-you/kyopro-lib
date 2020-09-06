@@ -1,4 +1,6 @@
 #pragma once
+#include <cstdint>
+#include <initializer_list>
 #include "Mylib/Misc/int128.cpp"
 
 /**

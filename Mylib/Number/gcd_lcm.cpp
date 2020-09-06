@@ -1,5 +1,6 @@
 #pragma once
 #include <utility>
+#include <cstdint>
 
 /**
  * @title Greatest common divisor / Least common multiple

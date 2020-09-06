@@ -24,13 +24,13 @@ class UndirectedEulerianPath {
 
   void dfs(int cur, std::vector<int> &path){
     if(not graph[cur].empty()){
-      int next = graph[cur].begin()->fst;
+      int next = graph[cur].begin()->first;
       del(cur, next);
       dfs(next, path);
     }
 
     while(not graph[cur].empty()){
-      int next = graph[cur].begin()->fst;
+      int next = graph[cur].begin()->first;
       del(cur, next);
       std::vector<int> temp;
       dfs(next, temp);

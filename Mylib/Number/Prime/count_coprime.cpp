@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 #include "Mylib/Number/Prime/prime_factorize.cpp"
 
 /**

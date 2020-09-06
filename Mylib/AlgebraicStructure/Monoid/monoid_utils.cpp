@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 
 /**
  * @docs monoid_utils.md
