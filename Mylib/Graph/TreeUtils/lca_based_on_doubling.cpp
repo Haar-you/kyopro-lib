@@ -19,7 +19,6 @@ private:
 
     for(auto &e : tree[cur]){
       if(e.to != par){
-        dist[e.to] = dist[cur] + e.cost;
         dfs(tree, e.to, cur, d + 1);
       }
     }
@@ -27,11 +26,10 @@ private:
 
 public:
   std::vector<int> depth;
-  std::vector<T> dist;
 
   LCA(){}
   LCA(const Tree<T> &tree, int root):
-    n(tree.size()), depth(n), dist(n)
+    n(tree.size()), depth(n)
   {
     log2n = (int)ceil(log2(n)) + 1;
     parent = std::vector(n, std::vector<int>(log2n, 0));
@@ -47,15 +45,19 @@ public:
 
   int lca(int a, int b) const {
     if(depth[a] >= depth[b]) std::swap(a, b);
-    for(int k = 0; k < log2n; ++k) if((depth[b] - depth[a]) >> k & 1) b = parent[b][k];
+    for(int k = 0; k < log2n; ++k){
+      if((depth[b] - depth[a]) >> k & 1) b = parent[b][k];
+    }
     if(a == b) return a;
-    for(int k = log2n - 1; k >= 0; --k) if(parent[a][k] != parent[b][k]){a = parent[a][k]; b = parent[b][k];}
+    for(int k = log2n; --k >= 0;){
+      if(parent[a][k] != parent[b][k]){a = parent[a][k]; b = parent[b][k];}
+    }
     return parent[a][0];
   }
 
   int operator()(int a, int b) const {return lca(a, b);}
 
-  T distance(int a, int b) const {
-    return dist[a] + dist[b] - 2 * dist[lca(a, b)];
+  T distance(int u, int v, const std::vector<T> &dist) const {
+    return dist[u] + dist[v] - 2 * dist[lca(u, v)];
   }
 };

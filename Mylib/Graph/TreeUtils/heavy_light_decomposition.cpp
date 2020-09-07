@@ -10,7 +10,6 @@
  */
 template <typename T>
 class HLDecomposition {
-  Tree<T> tree;
   int n;
 
   std::vector<int> sub, // subtree size
@@ -21,12 +20,12 @@ class HLDecomposition {
     next, // next node in a chain
     end; //
 
-  int dfs_sub(int cur, int p){
+  int dfs_sub(Tree<T> &tree, int cur, int p){
     par[cur] = p;
     int t = 0;
     for(auto &e : tree[cur]){
       if(e.to == p) continue;
-      sub[cur] += dfs_sub(e.to, cur);
+      sub[cur] += dfs_sub(tree, e.to, cur);
       if(sub[e.to] > t){
         t = sub[e.to];
         next[cur] = e.to;
@@ -36,7 +35,7 @@ class HLDecomposition {
     return sub[cur];
   }
 
-  void dfs_build(int cur, int &i){
+  void dfs_build(const Tree<T> &tree, int cur, int &i){
     id[cur] = i;
     rid[i] = cur;
     ++i;
@@ -44,18 +43,18 @@ class HLDecomposition {
     for(auto &e : tree[cur]){
       if(e.to == par[cur]) continue;
       head[e.to] = (e.to == tree[cur][0].to ? head[cur] : e.to);
-      dfs_build(e.to, i);
+      dfs_build(tree, e.to, i);
     }
 
     end[cur] = i;
   }
 
 public:
-  HLDecomposition(const Tree<T> &tree, int root):
-    tree(tree), n(tree.size()), sub(n, 1), par(n, -1), head(n), id(n), rid(n), next(n, -1), end(n, -1){
-    dfs_sub(root, -1);
+  HLDecomposition(Tree<T> tree, int root):
+    n(tree.size()), sub(n, 1), par(n, -1), head(n), id(n), rid(n), next(n, -1), end(n, -1){
+    dfs_sub(tree, root, -1);
     int i = 0;
-    dfs_build(root, i);
+    dfs_build(tree, root, i);
   }
 
   template <typename Func> // std::function<void(int, int)>

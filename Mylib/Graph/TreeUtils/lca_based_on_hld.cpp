@@ -11,15 +11,6 @@ template <typename T>
 class LCA {
   int n;
   std::vector<int> sub, par, head, id;
-  std::vector<T> dist;
-
-  void dfs_depth(int cur, int p, T d, const Tree<T> &tree){
-    dist[cur] = d;
-    for(auto &e : tree[cur]){
-      if(e.to == p) continue;
-      dfs_depth(e.to, cur, d + e.cost, tree);
-    }
-  }
 
   int dfs_sub(int cur, int p, Tree<T> &tree){
     par[cur] = p;
@@ -48,8 +39,7 @@ class LCA {
 
 public:
   LCA(Tree<T> tree, int root):
-    n(tree.size()), sub(n, 1), par(n, -1), head(n), id(n), dist(n){
-    dfs_depth(root, -1, 0, tree);
+    n(tree.size()), sub(n, 1), par(n, -1), head(n), id(n){
     dfs_sub(root, -1, tree);
     int i = 0;
     dfs_build(root, i, tree);
@@ -63,9 +53,9 @@ public:
     }
   }
 
-  T distance(int u, int v) const {
+  int operator()(int u, int v) const {return lca(u, v);}
+
+  T distance(int u, int v, const std::vector<T> &dist) const {
     return dist[u] + dist[v] - 2 * dist[lca(u, v)];
   }
-
-  int operator()(int u, int v) const {return lca(u, v);}
 };

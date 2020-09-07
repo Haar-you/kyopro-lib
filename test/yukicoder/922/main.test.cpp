@@ -7,6 +7,7 @@
 #include "Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp"
 #include "Mylib/Graph/TreeUtils/forest.cpp"
 #include "Mylib/Graph/TreeUtils/rerooting.cpp"
+#include "Mylib/Graph/TreeUtils/tree_distance.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
 int main(){
@@ -21,9 +22,11 @@ int main(){
 
   const int tree_num = forest.trees.size();
   std::vector<LCA<int64_t>> lcas(tree_num);
+  std::vector<std::vector<int64_t>> dists(tree_num);
 
   for(int i = 0; i < tree_num; ++i){
     lcas[i] = LCA(forest.trees[i], 0);
+    dists[i] = tree_distance(forest.trees[i], 0);
   }
 
   std::vector<std::vector<int>> plans(tree_num);
@@ -35,7 +38,7 @@ int main(){
     --a, --b;
 
     if(forest.in_same_tree(a, b)){
-      ans += lcas[forest.tree_id[a]].distance(forest.vertex_id[a], forest.vertex_id[b]);
+      ans += lcas[forest.tree_id[a]].distance(forest.vertex_id[a], forest.vertex_id[b], dists[forest.tree_id[a]]);
     }else{
       plans[forest.tree_id[a]][forest.vertex_id[a]] += 1;
       plans[forest.tree_id[b]][forest.vertex_id[b]] += 1;
