@@ -5,16 +5,17 @@
 #include <algorithm>
 
 /**
- * @docs range.md
+ * @title Closed interval
+ * @docs closed_interval.md
  */
 template <typename T>
-struct Range {
+struct ClosedInterval {
   std::optional<std::pair<std::optional<T>, std::optional<T>>> value;
 
-  Range(){}
-  Range(std::optional<T> l, std::optional<T> r): value(std::make_pair(l, r)){}
+  ClosedInterval(){}
+  ClosedInterval(std::optional<T> l, std::optional<T> r): value(std::make_pair(l, r)){}
 
-  friend std::ostream& operator<<(std::ostream &s, const Range<T> &a){
+  friend std::ostream& operator<<(std::ostream &s, const ClosedInterval<T> &a){
     s << "[";
     if(a.value){
       if((a.value)->first) s << *((a.value)->first);
@@ -41,8 +42,8 @@ struct Range {
 };
 
 template <typename T>
-auto intersect(Range<T> a, Range<T> b){
-  if(not a.value or not b.value) return Range<T>();
+auto intersect(ClosedInterval<T> a, ClosedInterval<T> b){
+  if(not a.value or not b.value) return ClosedInterval<T>();
   std::optional<T> l, r;
 
   if((a.value)->first){
@@ -65,19 +66,19 @@ auto intersect(Range<T> a, Range<T> b){
 
   if(l and r){
     if(*l > *r){
-      return Range<T>();
+      return ClosedInterval<T>();
     }
   }
 
-  return Range<T>(l, r);
+  return ClosedInterval<T>(l, r);
 }
 
 template <typename T>
-auto left_expand(Range<T> a, T x){
+auto left_expand(ClosedInterval<T> a, T x){
   if(a.value and (a.value)->first){
     *((a.value)->first) += x;
     if((a.value)->second and *((a.value)->first) > *((a.value)->second)){
-      return Range<T>();
+      return ClosedInterval<T>();
     }
   }
 
@@ -85,11 +86,11 @@ auto left_expand(Range<T> a, T x){
 }
 
 template <typename T>
-auto right_expand(Range<T> a, T x){
+auto right_expand(ClosedInterval<T> a, T x){
   if(a.value and (a.value)->second){
     *((a.value)->second) += x;
     if((a.value)->first and *((a.value)->first) > *((a.value)->second)){
-      return Range<T>();
+      return ClosedInterval<T>();
     }
   }
 
