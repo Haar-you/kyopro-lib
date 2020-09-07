@@ -46,5 +46,5 @@ public:
   }
 
   int size_of(int i){return size[root_of(i)];}
-  int count_group(){return count;}
+  int count_groups(){return count;}
 };

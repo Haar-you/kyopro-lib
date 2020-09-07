@@ -1,27 +1,30 @@
 #pragma once
 #include <vector>
 #include <numeric>
+#include <algorithm>
 
 /**
  * @title Union-find
  * @docs unionfind.md
  */
 class UnionFind {
-  std::vector<int> parent, depth, size;
+  int n;
+  mutable std::vector<int> parent;
+  std::vector<int> depth, size;
   int count;
 
 public:
   UnionFind(){}
-  UnionFind(int n): parent(n), depth(n, 1), size(n, 1), count(n){
+  UnionFind(int n): n(n), parent(n), depth(n, 1), size(n, 1), count(n){
     std::iota(parent.begin(), parent.end(), 0);
   }
 
-  int root_of(int i){
+  int root_of(int i) const {
     if(parent[i] == i) return i;
     else return parent[i] = root_of(parent[i]);
   }
 
-  bool is_same(int i, int j){return root_of(i) == root_of(j);}
+  bool is_same(int i, int j) const {return root_of(i) == root_of(j);}
 
   int merge(int i, int j){
     const int ri = root_of(i), rj = root_of(j);
@@ -41,7 +44,25 @@ public:
     }
   }
 
-  int size_of(int i){return size[root_of(i)];}
+  int size_of(int i) const {return size[root_of(i)];}
 
-  int count_group(){return count;}
+  int count_groups() const {return count;}
+
+  auto get_groups() const {
+    std::vector<std::vector<int>> ret(n);
+
+    for(int i = 0; i < n; ++i){
+      ret[root_of(i)].push_back(i);
+    }
+
+    ret.erase(
+      std::remove_if(
+        ret.begin(), ret.end(),
+        [](const auto &a){return a.empty();}
+      ),
+      ret.end()
+    );
+
+    return ret;
+  }
 };

@@ -5,6 +5,9 @@
 #include "Mylib/IO/input_tuples.cpp"
 
 int main(){
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
   int N, Q; std::cin >> N >> Q;
 
   UnionFind uf(N);

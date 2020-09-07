@@ -50,7 +50,7 @@ int main(){
       }
     }
 
-    int ans = uf.count_group();
+    int ans = uf.count_groups();
 
     std::cout << ans << "\n";
   }
