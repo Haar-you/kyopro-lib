@@ -7,7 +7,7 @@
 struct Dice {
   int top, bottom, front, back, right, left;
 
-  Dice(){}
+  Dice(): top(), bottom(), front(), back(), right(), left(){}
   Dice(int top, int bottom, int front, int back, int right, int left):
     top(top), bottom(bottom), front(front), back(back), right(right), left(left){}
 
@@ -33,5 +33,16 @@ struct Dice {
 
   Dice rot_counterclockwise() const {
     return Dice(top, bottom, left, right, front, back);
+  }
+
+  friend std::ostream& operator<<(std::ostream &s, const Dice &a){
+    s << "("
+      << a.top << ", "
+      << a.bottom << ", "
+      << a.front << ", "
+      << a.back << ", "
+      << a.right << ", "
+      << a.left << ")";
+    return s;
   }
 };
