@@ -1,5 +1,8 @@
 #pragma once
 #include <vector>
+#include <variant>
+#include <initializer_list>
+#include <utility>
 
 /**
  * @title Rollbackable vector
@@ -10,32 +13,50 @@ class RollbackableVector {
   using value_type = T;
 
   std::vector<T> data;
-  std::vector<std::vector<T>> stock;
-  std::vector<int> history;
+
+  using Update = std::pair<T, int>;
+  struct PushBack {};
+  using PopBack = T;
+
+  std::vector<std::variant<Update, PushBack, PopBack>> history;
 
 public:
+  RollbackableVector(){}
+  RollbackableVector(size_t n): data(n){}
+  RollbackableVector(std::vector<T> a): data(a){}
+  RollbackableVector(std::initializer_list<T> a): data(a.begin(), a.end()){}
+
   void push_back(const T &value){
+    history.push_back(PushBack());
     data.push_back(value);
-    stock.push_back({value});
-    history.push_back(-1);
+  }
+
+  void pop_back(){
+    history.push_back(PopBack(data.back()));
+    data.pop_back();
   }
 
   void set(int i, const T &value){
+    history.push_back(Update(data[i], i));
     data[i] = value;
-    stock[i].push_back(value);
-    history.push_back(i);
   }
 
   void roll_back(){
-    const int i = history.back(); history.pop_back();
-
-    if(i == -1){
+    if(std::holds_alternative<Update>(history.back())){
+      auto [value, i] = std::get<Update>(history.back());
+      data[i] = value;
+    }else if(std::holds_alternative<PushBack>(history.back())){
       data.pop_back();
-      stock.pop_back();
-    }else{
-      stock[i].pop_back();
-      data[i] = stock[i].back();
+    }else if(std::holds_alternative<PopBack>(history.back())){
+      auto value = std::get<PopBack>(history.back());
+      data.push_back(value);
     }
+
+    history.pop_back();
+  }
+
+  bool rollbackable() const {
+    return not history.empty();
   }
 
   const value_type& operator[](int i) const {return data[i];}
@@ -48,4 +69,14 @@ public:
 
   const T& back() const {return data.back();}
   const T& front() const {return data.front();}
+
+  friend std::ostream& operator<<(std::ostream &s, const RollbackableVector &a){
+    s << "{";
+    for(auto it = a.cbegin(); it != a.cend(); ++it){
+      if(it != a.cbegin()) s << ", ";
+      s << *it;
+    }
+    s << "}";
+    return s;
+  }
 };
