@@ -8,22 +8,31 @@
  * @title Mo's algorithm
  * @docs mo_algorithm.md
  */
-template <typename F, typename G, typename H>
+template <typename AppendLeft, typename AppendRight, typename RemoveLeft, typename RemoveRight, typename Query>
 class MoAlgorithm {
   int N, Q, index, width;
   std::vector<int> left, right, ord;
 
-  const F append;
-  const G remove;
-  const H query;
+  const AppendLeft append_left;
+  const AppendRight append_right;
+  const RemoveLeft remove_left;
+  const RemoveRight remove_right;
+  const Query query;
 
   bool is_built = false;
 
 public:
-  MoAlgorithm(int N, int Q, const F &append, const G &remove, const H &query):
+  MoAlgorithm(
+    int N, int Q,
+    const AppendLeft &append_left, const AppendRight &append_right,
+    const RemoveLeft &remove_left, const RemoveRight &remove_right,
+    const Query &query
+  ):
     N(N), Q(Q), index(0), width(sqrt(N)),
     left(Q), right(Q), ord(Q),
-    append(append), remove(remove), query(query)
+    append_left(append_left), append_right(append_right),
+    remove_left(remove_left), remove_right(remove_right),
+    query(query)
   {}
 
   // [l, r)
@@ -65,18 +74,13 @@ public:
       int id = ord[q++];
 
       while(l != left[id] or r != right[id]){
-        if(l > left[id]) append(--l, -1);
-        if(l < left[id]) remove(l++, -1);
-        if(r < right[id]) append(r++, 1);
-        if(r > right[id]) remove(--r, 1);
+        if(l > left[id]) append_left(--l);
+        if(l < left[id]) remove_left(l++);
+        if(r < right[id]) append_right(r++);
+        if(r > right[id]) remove_right(--r);
       }
 
       query(id);
     }
   }
 };
-
-template <typename F, typename G, typename H>
-auto make_mo(int N, int Q, F append, G remove, H query){
-  return MoAlgorithm<F, G, H>(N, Q, append, remove, query);
-}

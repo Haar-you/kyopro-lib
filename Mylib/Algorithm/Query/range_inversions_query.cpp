@@ -38,23 +38,33 @@ public:
     int64_t t = 0;
     std::vector<int64_t> ans(Q);
 
-    auto append =
-      [&](int i, int d){
-        if(d == -1) t += b.get(0, a[i]);
-        else t += b.get(a[i] + 1, N);
+    auto append_left =
+      [&](int i){
+        t += b.get(0, a[i]);
         b.update(a[i], 1);
       };
 
-    auto remove =
-      [&](int i, int d){
-        if(d == -1) t -= b.get(0, a[i]);
-        else t -= b.get(a[i] + 1, N);
+    auto append_right =
+      [&](int i){
+        t += b.get(a[i] + 1, N);
+        b.update(a[i], 1);
+      };
+
+    auto remove_left =
+      [&](int i){
+        t -= b.get(0, a[i]);
+        b.update(a[i], -1);
+      };
+
+    auto remove_right =
+      [&](int i){
+        t -= b.get(a[i] + 1, N);
         b.update(a[i], -1);
       };
 
     auto query = [&](int i){ans[i] = t;};
 
-    auto mo = make_mo(N, Q, append, remove, query);
+    auto mo = MoAlgorithm(N, Q, append_left, append_right, remove_left, remove_right, query);
 
     for(auto [l, r] : qs){
       mo.add(l, r);
