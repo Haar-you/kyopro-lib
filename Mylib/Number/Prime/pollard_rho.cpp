@@ -46,10 +46,8 @@ auto pollard_rho(int64_t n){
     if(i > n) break;
   }
 
-  MillerRabin is_prime;
-
   while(n > 1){
-    if(is_prime(n)){
+    if(miller_rabin(n)){
       ret.emplace_back(n, 1);
       break;
     }
