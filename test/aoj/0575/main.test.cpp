@@ -11,23 +11,25 @@
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/Graph/Template/graph.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, M, K, Q; std::cin >> N >> M >> K >> Q;
 
-  Graph<int> g(N);
+  hl::Graph<int> g(N);
   g.read<1, false>(M);
 
-  auto F = input_vector<int>(K);
+  auto F = hl::input_vector<int>(K);
   for(auto &x : F) x -= 1;
 
-  auto [S, T] = input_tuple_vector<int, int>(Q);
+  auto [S, T] = hl::input_tuple_vector<int, int>(Q);
   for(auto &x : S) x -= 1;
   for(auto &x : T) x -= 1;
 
-  auto dist = dijkstra(g, {F});
+  auto dist = hl::dijkstra(g, {F});
 
   std::vector<int> dist_list;
   for(auto &x : dist){
@@ -49,13 +51,13 @@ int main(){
     }
   }
 
-  UnionFind uf;
+  hl::UnionFind uf;
 
   auto res =
-    parallel_binary_search(
+    hl::parallel_binary_search(
       C,
       Q,
-      [&](){uf = UnionFind(N);},
+      [&](){uf = hl::UnionFind(N);},
       [&](int i){
         for(auto [x, y] : edges[C - 1 - i]){
           uf.merge(x, y);

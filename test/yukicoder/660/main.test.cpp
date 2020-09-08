@@ -6,16 +6,18 @@
 #include "Mylib/Combinatorics/factorial_table.cpp"
 #include "Mylib/Combinatorics/catalan_number.cpp"
 
-using mint = ModInt<1000000007>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<1000000007>;
 
 int main(){
-  auto ft = FactorialTable<mint>(500000);
+  auto ft = hl::FactorialTable<mint>(500000);
 
   int N; std::cin >> N;
 
   std::vector<mint> c(N + 1);
   for(int i = 0; i <= N; ++i){
-    c[i] = catalan_number(i, ft);
+    c[i] = hl::catalan_number(i, ft);
   }
 
   for(int i = 1; i <= N; ++i){

@@ -8,6 +8,8 @@
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 
+namespace hl = haar_lib;
+
 using Query = std::variant<std::tuple<int, int, int>, std::tuple<int, int, int, int>>;
 
 int main(){
@@ -16,9 +18,9 @@ int main(){
 
   int N, Q; std::cin >> N >> Q;
 
-  SegmentTree2D<SumMonoid<int64_t>> seg;
+  hl::SegmentTree2D<hl::SumMonoid<int64_t>> seg;
 
-  auto [x, y, w] = input_tuple_vector<int, int, int>(N);
+  auto [x, y, w] = hl::input_tuple_vector<int, int, int>(N);
   for(int i = 0; i < N; ++i){
     seg.add(x[i], y[i]);
   }

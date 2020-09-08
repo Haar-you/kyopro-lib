@@ -4,13 +4,15 @@
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/chinese_postman_problem.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int> g(V);
+  hl::Graph<int> g(V);
   g.read<0, false>(E);
 
-  auto ans = chinese_postman_problem(g);
+  auto ans = hl::chinese_postman_problem(g);
   std::cout << ans << std::endl;
 
   return 0;

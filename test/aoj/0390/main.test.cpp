@@ -7,16 +7,18 @@
 #include "Mylib/AlgebraicStructure/Group/dihedral.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
+namespace hl = haar_lib;
+
 struct tag {};
-using M = DihedralGroup<tag>;
+using M = hl::DihedralGroup<tag>;
 
 int main(){
   int K, N, Q; std::cin >> K >> N >> Q;
-  auto A = input_vector<int>(N);
+  auto A = hl::input_vector<int>(N);
 
   M::K = K;
 
-  SegmentTree<M> seg(N);
+  hl::SegmentTree<M> seg(N);
 
   for(int i = 0; i < N; ++i){
     if(A[i] > 0){
@@ -28,7 +30,7 @@ int main(){
     }
   }
 
-  for(auto [L, R] : input_tuples<int, int>(Q)){
+  for(auto [L, R] : hl::input_tuples<int, int>(Q)){
     --L, --R;
 
     auto x = seg[L];

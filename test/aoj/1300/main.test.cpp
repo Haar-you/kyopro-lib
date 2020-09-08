@@ -10,9 +10,11 @@
 #include "Mylib/String/split.cpp"
 #include "Mylib/IO/join.cpp"
 
+namespace hl = haar_lib;
+
 using result = std::map<std::string, int>;
 
-struct parser : Parser {
+struct parser : hl::Parser {
   parser(const std::string &s): Parser(s){}
 
   std::string atom(){
@@ -66,9 +68,6 @@ struct parser : Parser {
   }
 };
 
-
-
-
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -78,9 +77,9 @@ int main(){
     if(s == ".") break;
 
     s.pop_back(); // pop period
-    auto a = split(s, "->");
-    auto b = split(a[0], "+");
-    auto c = split(a[1], "+");
+    auto a = hl::split(s, "->");
+    auto b = hl::split(a[0], "+");
+    auto c = hl::split(a[1], "+");
 
     std::map<std::string, int> atoms;
 
@@ -108,17 +107,17 @@ int main(){
       }
     }
 
-    std::vector<std::vector<Rational>> mat(atoms.size(), std::vector<Rational>(ress.size()));
+    std::vector<std::vector<hl::Rational>> mat(atoms.size(), std::vector<hl::Rational>(ress.size()));
     for(int i = 0; i < (int)ress.size(); ++i){
       for(auto &[k, v] : ress[i]){
         mat[atoms[k]][i] = v;
       }
     }
 
-    gaussian_elimination(mat);
+    hl::gaussian_elimination(mat);
 
     const int n = ress.size();
-    std::vector<Rational> ans(n);
+    std::vector<hl::Rational> ans(n);
 
     ans[n - 1] = 1;
 
@@ -126,8 +125,8 @@ int main(){
       if(mat[i].back() == 0) continue;
 
       int k = 0;
-      Rational coef;
-      Rational cons;
+      hl::Rational coef;
+      hl::Rational cons;
 
       for(int j = 0; j < n; ++j){
         if(ans[j] == 0){
@@ -146,7 +145,7 @@ int main(){
 
     for(int i = 0; i < n; ++i) ans[i] *= l;
 
-    std::cout << join(ans.begin(), ans.end()) << "\n";
+    std::cout << hl::join(ans.begin(), ans.end()) << "\n";
   }
 
   return 0;

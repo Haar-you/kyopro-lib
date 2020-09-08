@@ -4,11 +4,13 @@
 #include "Mylib/Graph/Matching/hopcroft_karp.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int L, R, M; std::cin >> L >> R >> M;
-  HopcroftKarp hk(L, R);
+  hl::HopcroftKarp hk(L, R);
 
-  for(auto [a, b] : input_tuples<int, int>(M)){
+  for(auto [a, b] : hl::input_tuples<int, int>(M)){
     hk.add_edge(a, b);
   }
 

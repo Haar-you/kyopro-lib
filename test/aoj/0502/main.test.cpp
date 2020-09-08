@@ -5,14 +5,16 @@
 #include "Mylib/Misc/dice.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N;
   while(std::cin >> N, N){
-    auto d = Dice(1, 6, 2, 5, 3, 4);
+    auto d = hl::Dice(1, 6, 2, 5, 3, 4);
 
     int ans = 1;
 
-    for(auto [s] : input_tuples<std::string>(N)){
+    for(auto [s] : hl::input_tuples<std::string>(N)){
       if(s == "North") d = d.rot_back(), ans += d.top;
       if(s == "East") d = d.rot_right(), ans += d.top;
       if(s == "West") d = d.rot_left(), ans += d.top;

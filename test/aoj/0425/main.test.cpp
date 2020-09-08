@@ -9,18 +9,20 @@
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/Algorithm/Mo/mo_algorithm.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, K, Q; std::cin >> N >> K >> Q;
 
-  auto [a, b] = input_tuple_vector<int, int>(K);
+  auto [a, b] = hl::input_tuple_vector<int, int>(K);
   for(auto &x : a) --x;
   for(auto &x : b) --x;
 
   std::vector<std::tuple<int, int, int, int>> qs;
-  for(auto [type, s, t, x] : input_tuples<int, int, int, int>(Q)){
+  for(auto [type, s, t, x] : hl::input_tuples<int, int, int, int>(Q)){
     --s, --t, --x;
     qs.emplace_back(type, s, t, x);
   }
@@ -49,7 +51,7 @@ int main(){
       else ans[i] = q[std::get<3>(qs[i])] + 1;
     };
 
-  auto mo = MoAlgorithm(N, Q, left, right, left, right, query);
+  auto mo = hl::MoAlgorithm(N, Q, left, right, left, right, query);
 
   for(int i = 0; i < Q; ++i) mo.add(std::get<1>(qs[i]), std::get<2>(qs[i]) + 1);
   mo.build();

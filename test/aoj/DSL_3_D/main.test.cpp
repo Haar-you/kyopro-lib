@@ -6,14 +6,16 @@
 #include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N, L; std::cin >> N >> L;
 
-  auto a = input_vector<int>(N);
+  auto a = hl::input_vector<int>(N);
 
-  auto ans = sliding_minimum(a, L);
+  auto ans = hl::sliding_minimum(a, L);
 
-  std::cout << join(ans.begin(), ans.end()) << std::endl;
+  std::cout << hl::join(ans.begin(), ans.end()) << std::endl;
 
   return 0;
 }

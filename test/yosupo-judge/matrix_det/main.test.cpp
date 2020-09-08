@@ -6,10 +6,12 @@
 #include "Mylib/LinearAlgebra/Square/determinant.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
-using mint = ModInt<998244353>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<998244353>;
 
 struct tag {};
-using Mat = SquareMatrix<mint, tag>;
+using Mat = hl::SquareMatrix<mint, tag>;
 
 int main(){
   std::cin.tie(0);
@@ -19,9 +21,9 @@ int main(){
 
   Mat::init(N);
 
-  Mat m(input_vector<mint>(N, N));
+  Mat m(hl::input_vector<mint>(N, N));
 
-  std::cout << determinant(m) << "\n";
+  std::cout << hl::determinant(m) << "\n";
 
   return 0;
 }

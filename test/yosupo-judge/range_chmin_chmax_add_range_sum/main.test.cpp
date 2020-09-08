@@ -6,18 +6,20 @@
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, Q; std::cin >> N >> Q;
 
-  SegmentTreeBeats seg(N);
+  hl::SegmentTreeBeats seg(N);
 
-  auto a = input_vector<int64_t>(N);
+  auto a = hl::input_vector<int64_t>(N);
   seg.init_with_vector(a);
 
-  for(auto [type, l, r] : input_tuples<int, int, int>(Q)){
+  for(auto [type, l, r] : hl::input_tuples<int, int, int>(Q)){
     switch(type){
     case 0: {
       int64_t b; std::cin >> b;

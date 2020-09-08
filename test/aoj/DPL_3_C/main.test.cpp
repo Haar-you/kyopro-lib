@@ -5,12 +5,14 @@
 #include "Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle_in_histogram.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N; std::cin >> N;
 
-  auto h = input_vector<int64_t>(N);
+  auto h = hl::input_vector<int64_t>(N);
 
-  auto ans = max_rectangle_in_histogram(h);
+  auto ans = hl::max_rectangle_in_histogram(h);
 
   std::cout << ans << std::endl;
 

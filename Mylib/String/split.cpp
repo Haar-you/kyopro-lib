@@ -6,20 +6,22 @@
  * @title split
  * @docs split.md
  */
-auto split(const std::string &s, const std::string &delim){
-  std::vector<std::string> ret;
+namespace haar_lib {
+  auto split(const std::string &s, const std::string &delim){
+    std::vector<std::string> ret;
 
-  size_t i = 0;
-  while(1){
-    size_t j = s.find(delim, i);
-    if(j == std::string::npos) break;
+    size_t i = 0;
+    while(1){
+      size_t j = s.find(delim, i);
+      if(j == std::string::npos) break;
 
-    ret.push_back(s.substr(i, j - i));
+      ret.push_back(s.substr(i, j - i));
 
-    i = j + delim.size();
+      i = j + delim.size();
+    }
+
+    ret.push_back(s.substr(i, s.size() - i));
+
+    return ret;
   }
-
-  ret.push_back(s.substr(i, s.size() - i));
-
-  return ret;
 }

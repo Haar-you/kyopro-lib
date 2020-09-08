@@ -7,12 +7,14 @@
 #include "Mylib/Graph/Flow/ford_fulkerson.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int R, C; std::cin >> R >> C;
 
-  auto S = input_vector<std::string>(R);
+  auto S = hl::input_vector<std::string>(R);
 
-  ProjectSelectionProblem<int, FordFulkerson<int>> psp(R * C);
+  hl::ProjectSelectionProblem<int, hl::FordFulkerson<int>> psp(R * C);
   // red: horizontal
   // blue: vertical
 

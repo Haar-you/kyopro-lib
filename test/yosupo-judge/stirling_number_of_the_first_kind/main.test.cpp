@@ -7,11 +7,13 @@
 #include "Mylib/Combinatorics/stirling_number_first_fft.cpp"
 #include "Mylib/IO/join.cpp"
 
+namespace hl = haar_lib;
+
 constexpr int MOD = 998244353;
 constexpr int PRIM = 3;
 
-using mint = ModInt<MOD>;
-using NTT = NumberTheoreticTransform<mint, PRIM, 1 << 20>;
+using mint = hl::ModInt<MOD>;
+using NTT = hl::NumberTheoreticTransform<mint, PRIM, 1 << 20>;
 
 int main(){
   using namespace std::placeholders;
@@ -22,9 +24,9 @@ int main(){
 
   auto ntt = NTT();
   auto convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
-  auto res = stirling_number_of_first_kind_fft<mint>(N, convolve);
+  auto res = hl::stirling_number_of_first_kind_fft<mint>(N, convolve);
 
-  std::cout << join(res.begin(), res.end()) << "\n";
+  std::cout << hl::join(res.begin(), res.end()) << "\n";
 
   return 0;
 }

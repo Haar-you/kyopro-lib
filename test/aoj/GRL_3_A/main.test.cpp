@@ -5,13 +5,15 @@
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/GraphUtils/articulation_points.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int> g(V);
+  hl::Graph<int> g(V);
   g.read<0, false, false>(E);
 
-  auto ans = articulation_points(g);
+  auto ans = hl::articulation_points(g);
   std::sort(ans.begin(), ans.end());
 
   for(auto x : ans) std::cout << x << std::endl;

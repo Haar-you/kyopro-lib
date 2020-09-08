@@ -5,11 +5,13 @@
 #include "Mylib/Algorithm/Imos/imos_1d.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N, T; std::cin >> N >> T;
-  Imos1D<int> imos(T + 1);
+  hl::Imos1D<int> imos(T + 1);
 
-  for(auto [l, r] : input_tuples<int, int>(N)){
+  for(auto [l, r] : hl::input_tuples<int, int>(N)){
     imos.add(l, r, 1);
   }
 

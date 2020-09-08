@@ -9,43 +9,45 @@
 /**
  * @docs input_tuples.md
  */
-template <typename ... Args>
-class InputTuples {
-  struct iter {
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuples {
+    struct iter {
+      using value_type = std::tuple<Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N, c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
+      value_type operator*(){
+        if(not fetched){
+          std::cin >> value;
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuples(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples(int N){
+    return InputTuples<Args ...>(N);
+  }
 }

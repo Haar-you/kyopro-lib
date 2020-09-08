@@ -8,9 +8,11 @@
 #include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 struct tag {};
-using mint = RuntimeModInt<tag>;
-using M = SquareMatrix<mint, tag>;
+using mint = hl::RuntimeModInt<tag>;
+using M = hl::SquareMatrix<mint, tag>;
 
 int main(){
   int n, m, a, b, c, t;
@@ -18,7 +20,7 @@ int main(){
     mint::init(m);
     M::init(n);
 
-    auto s = input_vector<mint>(n);
+    auto s = hl::input_vector<mint>(n);
 
     M mat;
 
@@ -28,7 +30,7 @@ int main(){
       if(i + 1 < n) mat[i][i + 1] = c;
     }
 
-    mat = power(mat, t);
+    mat = hl::power(mat, t);
 
     std::vector<mint> ans(n);
 
@@ -38,7 +40,7 @@ int main(){
       }
     }
 
-    std::cout << join(ans.begin(), ans.end()) << "\n";
+    std::cout << hl::join(ans.begin(), ans.end()) << "\n";
   }
 
   return 0;

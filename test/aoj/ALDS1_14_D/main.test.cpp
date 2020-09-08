@@ -5,6 +5,8 @@
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/String/suffix_array.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -12,9 +14,9 @@ int main(){
   std::string T; std::cin >> T;
   int Q; std::cin >> Q;
 
-  auto sa = SuffixArray(T);
+  auto sa = hl::SuffixArray(T);
 
-  for(auto [P] : input_tuples<std::string>(Q)){
+  for(auto [P] : hl::input_tuples<std::string>(Q)){
     bool ans = sa.upper_bound(P) - sa.lower_bound(P) > 0;
     std::cout << ans << "\n";
   }

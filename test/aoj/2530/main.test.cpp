@@ -7,14 +7,15 @@
 #include "Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
-constexpr int64_t mod = 1000000009;
+namespace hl = haar_lib;
 
+constexpr int64_t mod = 1000000009;
 using B = std::bitset<2500>;
 
 int main(){
   int R, C; std::cin >> R >> C;
 
-  auto f = input_vector<int>(R, C);
+  auto f = hl::input_vector<int>(R, C);
 
   std::vector<std::vector<int>> index(R, std::vector<int>(C));
   {
@@ -44,11 +45,11 @@ int main(){
     }
   }
 
-  auto res = binary_simultaneous_linear_equations(a, b);
+  auto res = hl::binary_simultaneous_linear_equations(a, b);
 
   int64_t ans = 0;
   if(res){
-    ans = power(2, R * C - (*res).rank, mod);
+    ans = hl::power(2, R * C - (*res).rank, mod);
   }
 
   std::cout << ans << std::endl;

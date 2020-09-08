@@ -6,6 +6,8 @@
 #include "Mylib/String/aho_corasick.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -13,9 +15,9 @@ int main(){
   std::string S; std::cin >> S;
   int M; std::cin >> M;
 
-  auto C = input_vector<std::string>(M);
+  auto C = hl::input_vector<std::string>(M);
 
-  AhoCorasick ac;
+  hl::AhoCorasick ac;
   for(int i = 0; i < M; ++i){
     ac.add(C[i]);
   }

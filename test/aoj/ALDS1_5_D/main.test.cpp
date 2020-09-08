@@ -6,12 +6,14 @@
 #include "Mylib/Algorithm/InversionNumber/inversion_number.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n; std::cin >> n;
 
-  auto a = input_vector<int>(n);
+  auto a = hl::input_vector<int>(n);
 
-  auto ans = inversion_number(a, std::greater<int>());
+  auto ans = hl::inversion_number(a, std::greater<int>());
   std::cout << ans << std::endl;
 
   return 0;

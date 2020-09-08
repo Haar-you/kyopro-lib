@@ -5,14 +5,16 @@
 #include "Mylib/Combinatorics/factorial_table.cpp"
 #include "Mylib/Combinatorics/bell_number.cpp"
 
-using mint = ModInt<1000000007>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<1000000007>;
 
 int main(){
-  auto ft = FactorialTable<mint>(3000);
+  auto ft = hl::FactorialTable<mint>(3000);
 
   int N, K; std::cin >> N >> K;
 
-  std::cout << bell_number(N, K, ft) << std::endl;
+  std::cout << hl::bell_number(N, K, ft) << std::endl;
 
   return 0;
 }

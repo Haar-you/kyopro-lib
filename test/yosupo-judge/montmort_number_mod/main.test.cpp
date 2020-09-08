@@ -5,17 +5,19 @@
 #include "Mylib/Combinatorics/montmort_number.cpp"
 #include "Mylib/IO/join.cpp"
 
+namespace hl = haar_lib;
+
 struct tag {};
-using mint = RuntimeModInt<tag>;
+using mint = hl::RuntimeModInt<tag>;
 
 int main(){
   int N, M; std::cin >> N >> M;
 
   mint::init(M);
 
-  auto ans = montmort_number<mint>(1000000);
+  auto ans = hl::montmort_number<mint>(1000000);
 
-  std::cout << join(ans.begin() + 1, ans.begin() + N + 1) << "\n";
+  std::cout << hl::join(ans.begin() + 1, ans.begin() + N + 1) << "\n";
 
   return 0;
 }

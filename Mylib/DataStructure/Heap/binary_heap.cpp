@@ -7,70 +7,72 @@
  * @title Binary heap
  * @docs binary_heap.md
  */
-template <typename T, typename Compare = std::less<T>>
-class BinaryHeap {
-  std::vector<T> data;
+namespace haar_lib {
+  template <typename T, typename Compare = std::less<T>>
+  class BinaryHeap {
+    std::vector<T> data;
 
-  int left(int i) const {return i * 2 + 1;}
-  int right(int i) const {return i * 2 + 2;}
-  int parent(int i) const {return (i - 1) >> 1;}
+    int left(int i) const {return i * 2 + 1;}
+    int right(int i) const {return i * 2 + 2;}
+    int parent(int i) const {return (i - 1) >> 1;}
 
-  Compare compare;
+    Compare compare;
 
-public:
-  BinaryHeap(): compare(Compare()){}
-  BinaryHeap(size_t capacity): compare(Compare()){data.reserve(capacity);}
+  public:
+    BinaryHeap(): compare(Compare()){}
+    BinaryHeap(size_t capacity): compare(Compare()){data.reserve(capacity);}
 
-  void push(T value){
-    data.emplace_back(value);
+    void push(T value){
+      data.emplace_back(value);
 
-    int i = (int)data.size() - 1;
+      int i = (int)data.size() - 1;
 
-    while(i > 0){
-      int p = parent(i);
-      if(compare(data[i], data[p])) break;
-      std::swap(data[i], data[p]);
-      i = p;
+      while(i > 0){
+        int p = parent(i);
+        if(compare(data[i], data[p])) break;
+        std::swap(data[i], data[p]);
+        i = p;
+      }
     }
-  }
 
-  T top() const {
-    return data.front();
-  }
+    T top() const {
+      return data.front();
+    }
 
-  void pop(){
-    data.front() = data.back();
-    data.pop_back();
+    void pop(){
+      data.front() = data.back();
+      data.pop_back();
 
-    int i = 0;
+      int i = 0;
 
-    while(1){
-      int l = left(i);
-      int r = right(i);
+      while(1){
+        int l = left(i);
+        int r = right(i);
 
-      if((int)data.size() <= l) break;
-      if((int)data.size() <= r){
-        if(compare(data[l], data[i])) break;
-        std::swap(data[l], data[i]);
-        i = l;
-      }else{
-        if(compare(data[l], data[i]) and compare(data[r], data[i])) break;
-        if(compare(data[r], data[l])){
+        if((int)data.size() <= l) break;
+        if((int)data.size() <= r){
+          if(compare(data[l], data[i])) break;
           std::swap(data[l], data[i]);
           i = l;
         }else{
-          std::swap(data[r], data[i]);
-          i = r;
+          if(compare(data[l], data[i]) and compare(data[r], data[i])) break;
+          if(compare(data[r], data[l])){
+            std::swap(data[l], data[i]);
+            i = l;
+          }else{
+            std::swap(data[r], data[i]);
+            i = r;
+          }
         }
       }
     }
-  }
 
-  bool empty() const {
-    return data.empty();
-  }
+    bool empty() const {
+      return data.empty();
+    }
 
-  size_t size() const {
-    return data.size();
-  }
-};
+    size_t size() const {
+      return data.size();
+    }
+  };
+}

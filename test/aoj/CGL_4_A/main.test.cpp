@@ -7,14 +7,16 @@
 #include "Mylib/Geometry/Float/convex_hull.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
-using D = DoubleEps<double>;
+namespace hl = haar_lib;
+
+using D = hl::DoubleEps<double>;
 template <> double D::eps = 1e-7;
 
 int main(){
   int n; std::cin >> n;
-  Polygon<D> ps = input_vector<Point<D>>(n);
+  hl::Polygon<D> ps = hl::input_vector<hl::Point<D>>(n);
 
-  auto ans = convex_hull(ps);
+  auto ans = hl::convex_hull(ps);
 
   std::cout << ans.size() << std::endl;
 

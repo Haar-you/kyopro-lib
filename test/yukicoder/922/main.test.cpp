@@ -10,23 +10,25 @@
 #include "Mylib/Graph/TreeUtils/tree_distance.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N, M, Q; std::cin >> N >> M >> Q;
 
-  Graph<int64_t> g(N);
+  hl::Graph<int64_t> g(N);
   g.read<1, false, false>(M);
 
   int64_t ans = 0;
 
-  Forest<int64_t> forest(g);
+  hl::Forest<int64_t> forest(g);
 
   const int tree_num = forest.trees.size();
-  std::vector<LCA<int64_t>> lcas(tree_num);
+  std::vector<hl::LCA<int64_t>> lcas(tree_num);
   std::vector<std::vector<int64_t>> dists(tree_num);
 
   for(int i = 0; i < tree_num; ++i){
-    lcas[i] = LCA(forest.trees[i], 0);
-    dists[i] = tree_distance(forest.trees[i], 0);
+    lcas[i] = hl::LCA(forest.trees[i], 0);
+    dists[i] = hl::tree_distance(forest.trees[i], 0);
   }
 
   std::vector<std::vector<int>> plans(tree_num);
@@ -34,7 +36,7 @@ int main(){
     plans[i] = std::vector<int>(forest.trees[i].size());
   }
 
-  for(auto [a, b] : input_tuples<int, int>(Q)){
+  for(auto [a, b] : hl::input_tuples<int, int>(Q)){
     --a, --b;
 
     if(forest.in_same_tree(a, b)){
@@ -50,7 +52,7 @@ int main(){
     const auto &plan = plans[i];
 
     auto res =
-      rerooting<std::pair<int, int>>(
+      hl::rerooting<std::pair<int, int>>(
         tree,
         std::make_pair(0, 0),
         [](const auto &a, const auto &b){

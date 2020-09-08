@@ -3,8 +3,10 @@
 #include <iostream>
 #include "Mylib/Number/Prime/atkin_sieve.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
-  AtkinSieve is_prime(500000);
+  hl::AtkinSieve is_prime(500000);
 
   int N; std::cin >> N;
 

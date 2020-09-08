@@ -7,17 +7,19 @@
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Algorithm/Imos/linear_imos_1d.cpp"
 
-using mint = ModInt<1000000007>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<1000000007>;
 const int MAX = 1000000000;
 
 int main(){
   int N; std::cin >> N;
-  auto A = input_vector<int64_t>(N);
+  auto A = hl::input_vector<int64_t>(N);
 
   mint ans = 0;
 
   if(std::count(A.begin(), A.end(), 0) == 0){
-    LinearImos1D<int64_t> p(N);
+    hl::LinearImos1D<int64_t> p(N);
 
     std::vector<int> next(N);
     for(int i = N; --i >= 0;){

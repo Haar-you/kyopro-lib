@@ -9,24 +9,26 @@
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, Q; std::cin >> N >> Q;
 
-  auto a = input_vector<int64_t>(N);
+  auto a = hl::input_vector<int64_t>(N);
 
-  Tree<int> tree(N);
+  hl::Tree<int> tree(N);
   tree.read<0, false, false>(N - 1);
-  auto hld = HLDecomposition(tree, 0);
-  auto seg = SegmentTree<SumMonoid<int64_t>>(N);
+  auto hld = hl::HLDecomposition(tree, 0);
+  auto seg = hl::SegmentTree<hl::SumMonoid<int64_t>>(N);
 
   for(int i = 0; i < N; ++i){
     seg.update(hld.get_id(i), a[i]);
   }
 
-  for(auto [t] : input_tuples<int>(Q)){
+  for(auto [t] : hl::input_tuples<int>(Q)){
     if(t == 0){
       int p, x; std::cin >> p >> x;
 

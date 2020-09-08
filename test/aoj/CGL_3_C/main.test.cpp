@@ -7,19 +7,21 @@
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
-using D = DoubleEps<double>;
+namespace hl = haar_lib;
+
+using D = hl::DoubleEps<double>;
 template <> double D::eps = 1e-7;
 
 int main(){
   int n; std::cin >> n;
-  Polygon<D> ps = input_vector<Point<D>>(n);
+  hl::Polygon<D> ps = hl::input_vector<hl::Point<D>>(n);
 
   int q; std::cin >> q;
-  for(auto [p] : input_tuples<Point<D>>(q)){
-    switch(point_in_polygon::check(p, ps)){
-    case point_in_polygon::INCLUSION: std::cout << 2 << std::endl; break;
-    case point_in_polygon::ON_SEGMENT: std::cout << 1 << std::endl; break;
-    case point_in_polygon::OUTSIDE: std::cout << 0 << std::endl; break;
+  for(auto [p] : hl::input_tuples<hl::Point<D>>(q)){
+    switch(hl::point_in_polygon::check(p, ps)){
+    case hl::point_in_polygon::INCLUSION: std::cout << 2 << std::endl; break;
+    case hl::point_in_polygon::ON_SEGMENT: std::cout << 1 << std::endl; break;
+    case hl::point_in_polygon::OUTSIDE: std::cout << 0 << std::endl; break;
     }
   }
 

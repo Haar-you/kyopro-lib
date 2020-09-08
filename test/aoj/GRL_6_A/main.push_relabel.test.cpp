@@ -5,12 +5,14 @@
 #include "Mylib/Graph/Flow/push_relabel.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int V, E; std::cin >> V >> E;
 
-  PushRelabel<int> f(V);
+  hl::PushRelabel<int> f(V);
 
-  for(auto [s, t, c] : input_tuples<int, int, int>(E)){
+  for(auto [s, t, c] : hl::input_tuples<int, int, int>(E)){
     f.add_edge(s, t, c);
   }
 

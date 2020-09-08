@@ -8,19 +8,21 @@
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N; std::cin >> N;
 
-  Tree<int> tree(N);
+  hl::Tree<int> tree(N);
   tree.read<0, false, false>(N - 1);
 
-  auto res = EulerTourBFS<int>(tree, 0);
+  auto res = hl::EulerTourBFS<int>(tree, 0);
 
-  auto A = input_vector<int64_t>(N);
-  LazySegmentTree<UpdateSum<int64_t, int64_t>> seg(N);
+  auto A = hl::input_vector<int64_t>(N);
+  hl::LazySegmentTree<hl::UpdateSum<int64_t, int64_t>> seg(N);
 
   for(int i = 0; i < N; ++i){
     res.query_at(i, [&](int l, int r){seg.update(l, r, A[i]);});
@@ -28,7 +30,7 @@ int main(){
 
   int Q; std::cin >> Q;
 
-  for(auto [x] : input_tuples<int>(Q)){
+  for(auto [x] : hl::input_tuples<int>(Q)){
     int64_t ans = 0;
 
     auto f =

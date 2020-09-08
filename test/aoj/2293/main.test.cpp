@@ -6,13 +6,15 @@
 #include "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int n; std::cin >> n;
 
-  auto [A, B] = input_tuple_vector<int, int>(n);
+  auto [A, B] = hl::input_tuple_vector<int, int>(n);
 
   std::vector<int> ls(A);
   ls.insert(ls.end(), B.begin(), B.end());
@@ -20,7 +22,7 @@ int main(){
   std::sort(ls.begin(), ls.end());
   ls.erase(std::unique(ls.begin(), ls.end()), ls.end());
 
-  WeightedBipartiteMatching<int, MinimumCostFlow<int, int>> m(n, ls.size(), true);
+  hl::WeightedBipartiteMatching<int, hl::MinimumCostFlow<int, int>> m(n, ls.size(), true);
 
   for(int i = 0; i < n; ++i){
     m.add_edge(i, std::lower_bound(ls.begin(), ls.end(), A[i]) - ls.begin(), B[i]);

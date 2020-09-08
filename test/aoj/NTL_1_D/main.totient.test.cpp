@@ -3,10 +3,12 @@
 #include <iostream>
 #include "Mylib/Number/euler_phi_function.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n; std::cin >> n;
 
-  std::cout << totient(n) << std::endl;
+  std::cout << hl::totient(n) << std::endl;
 
   return 0;
 }

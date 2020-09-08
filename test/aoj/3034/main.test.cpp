@@ -11,7 +11,9 @@
 #include "Mylib/Bit/enumerate_subsets_asc.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
-using D = DoubleEps<double>;
+namespace hl = haar_lib;
+
+using D = hl::DoubleEps<double>;
 template <> double D::eps = ERROR;
 
 D dp[15][1 << 14];
@@ -22,22 +24,22 @@ const D INF = 1e9;
 int main(){
   int N, M; std::cin >> N >> M;
 
-  auto ps = input_vector<Point<D>>(N);
+  auto ps = hl::input_vector<hl::Point<D>>(N);
 
   std::vector<double> memo(1 << N);
 
   for(int t = 0; t < (1 << N); ++t){
-    std::vector<Point<D>> q;
+    std::vector<hl::Point<D>> q;
     for(int i = 0; i < N; ++i){
       if(t & (1 << i)) q.push_back(ps[i]);
     }
-    memo[t] = (double)minimum_covering_circle(q).radius;
+    memo[t] = (double)hl::minimum_covering_circle(q).radius;
   }
 
   const int mask = (1 << N) - 1;
 
   auto ans =
-    make_fix_point(
+    hl::make_fix_point(
       [&](auto &&rec, int d, int s) -> D {
         if(d == M){
           if(s != 0) return dp[d][s] = INF;
@@ -49,7 +51,7 @@ int main(){
 
         D ret = INF;
 
-        enumerate_subsets_asc(
+        hl::enumerate_subsets_asc(
           s,
           [&](int t){
             D val = std::max((double)rec(d + 1, s ^ t), memo[t]);

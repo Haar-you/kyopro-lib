@@ -8,14 +8,16 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/tangent_of_circle.cpp"
 
-using D = DoubleEps<double>;
+namespace hl = haar_lib;
+
+using D = hl::DoubleEps<double>;
 template <> double D::eps = ERROR;
 
 int main(){
-  Point<D> p; std::cin >> p;
-  Circle<D> c; std::cin >> c.center >> c.radius;
+  hl::Point<D> p; std::cin >> p;
+  hl::Circle<D> c; std::cin >> c.center >> c.radius;
 
-  auto ans = tangent_of_circle(c, p);
+  auto ans = hl::tangent_of_circle(c, p);
 
   std::sort(ans.begin(), ans.end(),
             [](const auto &a, const auto &b){

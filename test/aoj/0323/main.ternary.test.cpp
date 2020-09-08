@@ -8,10 +8,12 @@
 #include "Mylib/Algorithm/Search/ternary_search_upwards.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N; std::cin >> N;
 
-  auto [x, r] = input_tuple_vector<int64_t, int64_t>(N);
+  auto [x, r] = hl::input_tuple_vector<int64_t, int64_t>(N);
 
   std::vector<std::pair<int64_t, int>> p;
   for(int i = 0; i < N; ++i){
@@ -48,7 +50,7 @@ int main(){
       return ret;
     };
 
-  auto a = ternary_search_upwards<double>(left, right, f);
+  auto a = hl::ternary_search_upwards<double>(left, right, f);
 
   std::cout << std::fixed << std::setprecision(12) << f(a) << std::endl;
 

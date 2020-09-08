@@ -5,11 +5,13 @@
 #include "Mylib/String/longest_common_subsequence.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int q; std::cin >> q;
 
-  for(auto [x, y] : input_tuples<std::string, std::string>(q)){
-    std::cout << lcs(x, y) << std::endl;
+  for(auto [x, y] : hl::input_tuples<std::string, std::string>(q)){
+    std::cout << hl::lcs(x, y) << std::endl;
   }
 
   return 0;

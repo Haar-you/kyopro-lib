@@ -4,13 +4,15 @@
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/ShortestPath/warshall_floyd.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int> g(V);
+  hl::Graph<int> g(V);
   g.read<0>(E);
 
-  auto res = warshall_floyd(g);
+  auto res = hl::warshall_floyd(g);
 
   if(res.has_negative_cycle){
     std::cout << "NEGATIVE CYCLE" << std::endl;

@@ -10,23 +10,25 @@
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
-using Mon = MaxPartialSumMonoid<int64_t>;
+namespace hl = haar_lib;
+
+using Mon = hl::MaxPartialSumMonoid<int64_t>;
 
 int main(){
   int N, Q; std::cin >> N >> Q;
 
-  SegmentTree<Mon> seg(N);
+  hl::SegmentTree<Mon> seg(N);
 
-  auto a = input_vector<int64_t>(N);
+  auto a = hl::input_vector<int64_t>(N);
   for(int i = 0; i < N; ++i){
-    seg.update(i, Mon::MaxPartialSum::make(a[i]));
+    seg.update(i, Mon::MaxPartialSum(a[i]));
   }
 
-  for(auto [type] : input_tuples<std::string>(Q)){
+  for(auto [type] : hl::input_tuples<std::string>(Q)){
     if(type == "set"){
       int i, x; std::cin >> i >> x;
       --i;
-      seg.update(i, Mon::MaxPartialSum::make(x));
+      seg.update(i, Mon::MaxPartialSum(x));
       a[i] = x;
     }else{
       int l1, l2, r1, r2; std::cin >> l1 >> l2 >> r1 >> r2;
@@ -40,9 +42,9 @@ int main(){
       auto f =
         [&](int L1, int L2, int R1, int R2){
           auto ret =
-            seg.get(L1, L2 + 1).value_or(Mon::MaxPartialSum::make(0)).right_max +
-            seg.get(L2 + 1, R1).value_or(Mon::MaxPartialSum::make(0)).sum +
-            seg.get(R1, R2 + 1).value_or(Mon::MaxPartialSum::make(0)).left_max;
+            seg.get(L1, L2 + 1).value_or(Mon::MaxPartialSum(0)).right_max +
+            seg.get(L2 + 1, R1).value_or(Mon::MaxPartialSum(0)).sum +
+            seg.get(R1, R2 + 1).value_or(Mon::MaxPartialSum(0)).left_max;
 
           if(L2 == R1) ret -= a[L2];
 

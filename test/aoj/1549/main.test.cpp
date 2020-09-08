@@ -8,16 +8,18 @@
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N; std::cin >> N;
 
-  auto a = input_vector<uint32_t>(N);
+  auto a = hl::input_vector<uint32_t>(N);
 
-  auto wm = make_wavelet_matrix_int(a);
+  auto wm = hl::make_wavelet_matrix_int(a);
 
   int Q; std::cin >> Q;
 
-  for(auto [l, r, d] : input_tuples<uint32_t, uint32_t, uint32_t>(Q)){
+  for(auto [l, r, d] : hl::input_tuples<uint32_t, uint32_t, uint32_t>(Q)){
     ++r;
 
     int ans = INT_MAX;

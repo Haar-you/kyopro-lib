@@ -6,17 +6,19 @@
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, M; std::cin >> N >> M;
 
-  auto A = input_vector<int64_t>(M, M);
+  auto A = hl::input_vector<int64_t>(M, M);
 
-  auto c = CumulativeSum2D(A).build();
+  auto c = hl::CumulativeSum2D(A).build();
 
-  for(auto [x, y] : input_tuples<int, int>(N)){
+  for(auto [x, y] : hl::input_tuples<int, int>(N)){
     --x, --y;
 
     int ans = 0;

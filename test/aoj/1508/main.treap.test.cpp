@@ -6,16 +6,18 @@
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/IO/input_tuples_with_index.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n, q; std::cin >> n >> q;
 
-  treap::Treap<MinMonoid<int>> s(n);
+  hl::treap::Treap<hl::MinMonoid<int>> s(n);
 
-  for(auto [i, a] : input_tuples_with_index<int>(n)){
+  for(auto [i, a] : hl::input_tuples_with_index<int>(n)){
     s.update(i, {a});
   }
 
-  for(auto [x, y, z] : input_tuples<int, int, int>(q)){
+  for(auto [x, y, z] : hl::input_tuples<int, int, int>(q)){
     if(x == 0){
       auto temp = s.get(z).value();
       s.erase(z);

@@ -5,7 +5,9 @@
 #include "Mylib/DynamicProgramming/SpeedupTechnique/kitamasa_algorithm.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
-using mint = ModInt<17>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<17>;
 
 int main(){
   std::cin.tie(0);
@@ -13,8 +15,8 @@ int main(){
 
   int Q; std::cin >> Q;
 
-  for(auto [N] : input_tuples<int64_t>(Q)){
-    KitamasaAlgorithm<mint> ka(4, {0, 0, 0, 1}, {1, 1, 1, 1});
+  for(auto [N] : hl::input_tuples<int64_t>(Q)){
+    hl::KitamasaAlgorithm<mint> ka(4, {0, 0, 0, 1}, {1, 1, 1, 1});
     std::cout << ka[N - 1] << std::endl;
   }
 

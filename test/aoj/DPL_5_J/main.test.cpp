@@ -4,12 +4,14 @@
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Combinatorics/partition_number.cpp"
 
-using mint = ModInt<1000000007>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<1000000007>;
 
 int main(){
   int N, K; std::cin >> N >> K;
 
-  auto p = partition_number<mint>(N, K);
+  auto p = hl::partition_number<mint>(N, K);
 
   std::cout << p[N][K] << std::endl;
 

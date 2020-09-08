@@ -7,14 +7,16 @@
 #include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::string p, cnf;
   int N, M;
   std::cin >> p >> cnf >> N >> M;
 
-  TwoSat sat(N);
+  hl::TwoSat sat(N);
 
-  for(auto [a, b, c] : input_tuples<int, int, int>(M)){
+  for(auto [a, b, c] : hl::input_tuples<int, int, int>(M)){
     sat.add_or(a, b);
   }
 
@@ -24,7 +26,7 @@ int main(){
 
     std::cout
       << "s SATISFIABLE" << std::endl
-      << "v " << join(ans.begin(), ans.end()) << " " << 0 << std::endl;
+      << "v " << hl::join(ans.begin(), ans.end()) << " " << 0 << std::endl;
   }else{
     std::cout << "s UNSATISFIABLE" << std::endl;
   }

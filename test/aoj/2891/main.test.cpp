@@ -5,16 +5,18 @@
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/GraphUtils/decompose_pseudotree.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N; std::cin >> N;
 
-  Graph<int> g(N);
+  hl::Graph<int> g(N);
   g.read<1, false, false>(N);
 
-  auto res = PseudoTree<int>(g);
+  auto res = hl::PseudoTree<int>(g);
 
   int Q; std::cin >> Q;
-  for(auto [a, b] : input_tuples<int, int>(Q)){
+  for(auto [a, b] : hl::input_tuples<int, int>(Q)){
     --a, --b;
 
     if(res.in_loop[a] and res.in_loop[b]){

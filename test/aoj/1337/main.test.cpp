@@ -6,6 +6,8 @@
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 
+namespace hl = haar_lib;
+
 const int H = 200;
 const int W = 200;
 
@@ -16,12 +18,12 @@ int main(){
   int n;
 
   while(std::cin >> n, n){
-    auto [l, t, r, b] = input_tuple_vector<int, int, int, int>(n);
+    auto [l, t, r, b] = hl::input_tuple_vector<int, int, int, int>(n);
 
     int64_t a[H][W] = {};
 
-    Compressor<int>().add(l, r, -1).build().compress(l, r);
-    Compressor<int>().add(t, b, -1).build().compress(t, b);
+    hl::Compressor<int>().add(l, r, -1).build().compress(l, r);
+    hl::Compressor<int>().add(t, b, -1).build().compress(t, b);
 
     for(int i = 0; i < n; ++i){
       for(int x = l[i]; x < r[i]; ++x){
@@ -31,7 +33,7 @@ int main(){
       }
     }
 
-    UnionFind uf(H * W);
+    hl::UnionFind uf(H * W);
     int index[H][W];
     {
       int k = 0;

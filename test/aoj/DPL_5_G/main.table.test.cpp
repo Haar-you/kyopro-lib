@@ -4,12 +4,14 @@
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Combinatorics/bell_number_table.cpp"
 
-using mint = ModInt<1000000007>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<1000000007>;
 
 int main(){
   int N, K; std::cin >> N >> K;
 
-  auto table = bell_number_table<mint>(std::max(N, K));
+  auto table = hl::bell_number_table<mint>(std::max(N, K));
 
   std::cout << table[N][K] << std::endl;
 

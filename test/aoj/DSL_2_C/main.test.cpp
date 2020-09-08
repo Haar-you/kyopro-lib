@@ -8,13 +8,15 @@
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/IO/input_tuples_with_index.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n; std::cin >> n;
-  RangeTree rt;
+  hl::RangeTree rt;
 
   std::map<std::pair<int, int>, int> m;
 
-  for(auto [i, x, y] : input_tuples_with_index<int, int>(n)){
+  for(auto [i, x, y] : hl::input_tuples_with_index<int, int>(n)){
     rt.add(x, y);
     m[{x, y}] = i;
   }
@@ -23,7 +25,7 @@ int main(){
 
   int q; std::cin >> q;
 
-  for(auto [sx, tx, sy, ty] : input_tuples<int, int, int, int>(q)){
+  for(auto [sx, tx, sy, ty] : hl::input_tuples<int, int, int, int>(q)){
     auto res = rt.get(sx, sy, tx + 1, ty + 1);
 
     std::vector<int> ans;

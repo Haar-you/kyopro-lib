@@ -3,10 +3,12 @@
 #include <iostream>
 #include "Mylib/Number/Prime/count_coprime.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n; std::cin >> n;
 
-  std::cout << count_coprime(n, n) << std::endl;
+  std::cout << hl::count_coprime(n, n) << std::endl;
 
   return 0;
 }

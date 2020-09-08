@@ -9,7 +9,9 @@
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/IO/input_tuples_with_index.cpp"
 
-using Mon = WithMinIndex<MinMonoid<int>>;
+namespace hl = haar_lib;
+
+using Mon = hl::WithMinIndex<hl::MinMonoid<int>>;
 
 int main(){
   std::cin.tie(0);
@@ -17,16 +19,16 @@ int main(){
 
   int N, Q; std::cin >> N >> Q;
 
-  SegmentTree<Mon> seg(N);
+  hl::SegmentTree<Mon> seg(N);
 
   std::vector<Mon::value_type> a(N);
-  for(auto [i, x] : input_tuples_with_index<int>(N)){
+  for(auto [i, x] : hl::input_tuples_with_index<int>(N)){
     a[i] = std::make_pair(x, i);
   }
 
   seg.init_with_vector(a);
 
-  for(auto [type, l, r] : input_tuples<int, int, int>(Q)){
+  for(auto [type, l, r] : hl::input_tuples<int, int, int>(Q)){
     switch(type){
     case 1: {
       --l, --r;

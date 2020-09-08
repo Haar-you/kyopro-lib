@@ -8,139 +8,141 @@
  * @title Push-relabel
  * @docs push_relabel.md
  */
-template <typename T>
-struct PushRelabel {
-private:
-  struct edge {
-    int from, to;
-    int rev;
-    T cap;
-    bool is_rev;
-  };
+namespace haar_lib {
+  template <typename T>
+  struct PushRelabel {
+  private:
+    struct edge {
+      int from, to;
+      int rev;
+      T cap;
+      bool is_rev;
+    };
 
-  int N;
-  std::vector<std::vector<edge>> g;
-  std::vector<T> excess;
-  std::vector<int> height;
-  std::queue<int> next_active_vertex;
-  constexpr static T inf = std::numeric_limits<T>::max();
+    int N;
+    std::vector<std::vector<edge>> g;
+    std::vector<T> excess;
+    std::vector<int> height;
+    std::queue<int> next_active_vertex;
+    constexpr static T inf = std::numeric_limits<T>::max();
 
-  void init(int s, int t){
-    excess[s] = inf;
+    void init(int s, int t){
+      excess[s] = inf;
 
-    for(auto &e : g[s]){
-      push(e, s, t);
-    }
-
-    {
-      for(int i = 0; i < N; ++i){
-        height[i] = N;
+      for(auto &e : g[s]){
+        push(e, s, t);
       }
 
-      std::queue<int> q;
-      std::vector<bool> check(N);
-      q.push(t);
-      height[t] = 0;
+      {
+        for(int i = 0; i < N; ++i){
+          height[i] = N;
+        }
 
-      while(not q.empty()){
-        const int i = q.front(); q.pop();
+        std::queue<int> q;
+        std::vector<bool> check(N);
+        q.push(t);
+        height[t] = 0;
 
-        if(check[i]) continue;
-        check[i] = true;
+        while(not q.empty()){
+          const int i = q.front(); q.pop();
 
-        for(auto &e : g[i]){
-          if(not e.is_rev) continue;
-          if(height[e.from] + 1 < height[e.to]){
-            height[e.to] = height[e.from] + 1;
-            q.push(e.to);
+          if(check[i]) continue;
+          check[i] = true;
+
+          for(auto &e : g[i]){
+            if(not e.is_rev) continue;
+            if(height[e.from] + 1 < height[e.to]){
+              height[e.to] = height[e.from] + 1;
+              q.push(e.to);
+            }
           }
         }
-      }
 
-      height[s] = N;
-    }
-  }
-
-  bool is_pushable(const edge &e){
-    if(excess[e.from] == 0) return false;
-    if(height[e.from] != height[e.to] + 1) return false;
-    if(e.cap == 0) return false;
-    return true;
-  }
-
-  void push(edge &e, int, int){
-    auto &r = g[e.to][e.rev];
-
-    T flow = std::min(e.cap, excess[e.from]);
-
-    e.cap -= flow;
-    r.cap += flow;
-
-    excess[e.from] -= flow;
-    excess[e.to] += flow;
-
-    if(excess[e.to] == flow) next_active_vertex.push(e.to);
-  }
-
-  void relabel(int i, int, int){
-    int a = std::numeric_limits<int>::max() / 2;
-    for(auto &e : g[i]){
-      if(e.cap > 0) a = std::min(a, height[e.to]);
-    }
-
-    height[i] = a + 1;
-  }
-
-public:
-  PushRelabel(){}
-  PushRelabel(int N): N(N), g(N), excess(N), height(N){}
-  PushRelabel(std::vector<std::vector<std::pair<int, T>>> g):
-    N(g.size()), g(N), excess(N), height(N)
-  {
-    for(int i = 0; i < N; ++i){
-      for(auto [j, c] : g[i]){
-        add_edge(i, j, c);
+        height[s] = N;
       }
     }
-  }
 
+    bool is_pushable(const edge &e){
+      if(excess[e.from] == 0) return false;
+      if(height[e.from] != height[e.to] + 1) return false;
+      if(e.cap == 0) return false;
+      return true;
+    }
 
-  void add_edge(int from, int to, T c){
-    g[from].push_back({from, to, (int)g[to].size(), c, false});
-    g[to].push_back({to, from, (int)g[from].size() - 1, 0, true});
-  }
+    void push(edge &e, int, int){
+      auto &r = g[e.to][e.rev];
 
-  T solve(int s, int t){
-    init(s, t);
+      T flow = std::min(e.cap, excess[e.from]);
 
-    while(true){
-      int index = -1;
+      e.cap -= flow;
+      r.cap += flow;
 
-      while(not next_active_vertex.empty()){
-        int i = next_active_vertex.front();
-        if(i != s and i != t and excess[i] > 0){
-          index = i;
-          break;
-        }
-        next_active_vertex.pop();
+      excess[e.from] -= flow;
+      excess[e.to] += flow;
+
+      if(excess[e.to] == flow) next_active_vertex.push(e.to);
+    }
+
+    void relabel(int i, int, int){
+      int a = std::numeric_limits<int>::max() / 2;
+      for(auto &e : g[i]){
+        if(e.cap > 0) a = std::min(a, height[e.to]);
       }
 
-      if(index == -1) break;
+      height[i] = a + 1;
+    }
 
-      bool ok = false;
-      for(auto &e : g[index]){
-        if(is_pushable(e)){
-          push(e, s, t);
-          ok = true;
-          break;
+  public:
+    PushRelabel(){}
+    PushRelabel(int N): N(N), g(N), excess(N), height(N){}
+    PushRelabel(std::vector<std::vector<std::pair<int, T>>> g):
+      N(g.size()), g(N), excess(N), height(N)
+    {
+      for(int i = 0; i < N; ++i){
+        for(auto [j, c] : g[i]){
+          add_edge(i, j, c);
         }
       }
-
-      if(not ok){
-        relabel(index, s, t);
-      }
     }
 
-    return excess[t];
-  }
-};
+
+    void add_edge(int from, int to, T c){
+      g[from].push_back({from, to, (int)g[to].size(), c, false});
+      g[to].push_back({to, from, (int)g[from].size() - 1, 0, true});
+    }
+
+    T solve(int s, int t){
+      init(s, t);
+
+      while(true){
+        int index = -1;
+
+        while(not next_active_vertex.empty()){
+          int i = next_active_vertex.front();
+          if(i != s and i != t and excess[i] > 0){
+            index = i;
+            break;
+          }
+          next_active_vertex.pop();
+        }
+
+        if(index == -1) break;
+
+        bool ok = false;
+        for(auto &e : g[index]){
+          if(is_pushable(e)){
+            push(e, s, t);
+            ok = true;
+            break;
+          }
+        }
+
+        if(not ok){
+          relabel(index, s, t);
+        }
+      }
+
+      return excess[t];
+    }
+  };
+}

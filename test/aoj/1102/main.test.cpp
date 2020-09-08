@@ -4,6 +4,8 @@
 #include <string>
 #include "Mylib/Parser/parser.cpp"
 
+namespace hl = haar_lib;
+
 struct Complex {
   int real, imag;
   bool overflow;
@@ -77,7 +79,7 @@ std::ostream& operator<<(std::ostream &os, const Complex &a){
 }
 
 
-struct parser : Parser {
+struct parser : hl::Parser {
   parser(const std::string &s): Parser(s){}
 
   Complex number(){

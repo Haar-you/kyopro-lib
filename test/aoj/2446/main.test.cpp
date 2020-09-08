@@ -8,14 +8,16 @@
 #include "Mylib/Convolution/fast_mobius_transform_subset.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int64_t n, m; std::cin >> n >> m;
 
-  auto a = input_vector<int64_t>(n);
-  auto p = input_vector<double>(n);
+  auto a = hl::input_vector<int64_t>(n);
+  auto p = hl::input_vector<double>(n);
 
   for(auto &x : p) x /= 100.0;
 
@@ -37,7 +39,7 @@ int main(){
     dp[i] = m / l;
   }
 
-  dp = fast_mobius_transform_subset(dp);
+  dp = hl::fast_mobius_transform_subset(dp);
 
   double ans = 0.0;
 

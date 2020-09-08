@@ -11,10 +11,12 @@
 #include "Mylib/DataStructure/Heap/binomial_heap.cpp"
 #include "Mylib/Misc/merge_technique.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n, m; std::cin >> n >> m;
 
-  Graph<int64_t> g(n);
+  hl::Graph<int64_t> g(n);
   g.read<1, false>(m);
 
   std::map<std::pair<int, int>, int> index;
@@ -22,13 +24,13 @@ int main(){
     for(auto &e : a) index[{e.from, e.to}] = e.index;
   }
 
-  auto res = prim(g);
+  auto res = hl::prim(g);
 
   std::vector<int64_t> ans(m, -1);
 
   if((int)res.size() == n - 1){
     int64_t s = 0;
-    Tree<int64_t> tree(n);
+    hl::Tree<int64_t> tree(n);
 
     for(auto &e : res){
       s += e.cost;
@@ -37,11 +39,11 @@ int main(){
 
     ans.assign(m, s);
 
-    std::vector<BinomialHeap<std::tuple<int64_t, int, int>, std::greater<>>> heaps(n);
+    std::vector<hl::BinomialHeap<std::tuple<int64_t, int, int>, std::greater<>>> heaps(n);
 
     std::vector<std::set<int>> sub(n);
 
-    make_fix_point(
+    hl::make_fix_point(
       [&](auto &&f, int cur, int par, int64_t cost) -> void {
         for(auto &e : g[cur]){
           heaps[cur].push({e.cost, e.from, e.to});
@@ -54,7 +56,7 @@ int main(){
           f(e.to, cur, e.cost);
 
           heaps[cur].meld(heaps[e.to]);
-          merge_technique(sub[cur], sub[cur], sub[e.to]);
+          hl::merge_technique(sub[cur], sub[cur], sub[e.to]);
         }
 
         if(par != -1){

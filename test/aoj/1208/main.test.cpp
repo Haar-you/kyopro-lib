@@ -4,6 +4,8 @@
 #include <utility>
 #include "Mylib/Number/Rational/stern_brocot_tree.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -11,7 +13,7 @@ int main(){
   int p, n;
   while(std::cin >> p >> n, p){
     std::pair<int, int> lower, upper;
-    stern_brocot_tree(
+    hl::stern_brocot_tree(
       [p](int64_t pm, int64_t qm){
         auto a = pm * pm;
         auto b = p * qm * qm;

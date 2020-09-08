@@ -8,6 +8,8 @@
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/Graph/ShortestPath/yen_algorithm.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -15,10 +17,10 @@ int main(){
   int N, M, K, X, Y; std::cin >> N >> M >> K >> X >> Y;
   --X, --Y;
 
-  auto [p, q] = input_tuple_vector<long double, long double>(N);
+  auto [p, q] = hl::input_tuple_vector<long double, long double>(N);
 
-  Graph<long double> g(N);
-  for(auto [P, Q] : input_tuples<int, int>(M)){
+  hl::Graph<long double> g(N);
+  for(auto [P, Q] : hl::input_tuples<int, int>(M)){
     --P, --Q;
 
     long double dx = p[P] - p[Q];
@@ -29,7 +31,7 @@ int main(){
     g.add_undirected(P, Q, L);
   }
 
-  auto res = yen_algorithm(g, X, Y, K);
+  auto res = hl::yen_algorithm(g, X, Y, K);
 
   for(auto x : res){
     if(not x){

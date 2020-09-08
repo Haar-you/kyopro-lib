@@ -4,6 +4,8 @@
 #include <vector>
 #include "Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -23,7 +25,7 @@ int main(){
     r[i] = o * 24 * 60 + h2 * 60 + m2 + 1;
   }
 
-  auto res = interval_scheduling_k(l, r, n);
+  auto res = hl::interval_scheduling_k(l, r, n);
   std::cout << res.size() << "\n";
 
   return 0;

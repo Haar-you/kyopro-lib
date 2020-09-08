@@ -3,10 +3,12 @@
 #include <iostream>
 #include "Mylib/Number/Prime/prime_factorize.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n; std::cin >> n;
 
-  auto res = prime_factorize(n);
+  auto res = hl::prime_factorize(n);
 
   std::cout << n << ":";
 

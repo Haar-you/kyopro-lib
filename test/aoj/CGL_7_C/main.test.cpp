@@ -7,13 +7,15 @@
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp"
 
-using D = DoubleEps<long double>;
+namespace hl = haar_lib;
+
+using D = hl::DoubleEps<long double>;
 template <> long double D::eps = ERROR;
 
 int main(){
-  Point<D> a, b, c; std::cin >> a >> b >> c;
+  hl::Point<D> a, b, c; std::cin >> a >> b >> c;
 
-  auto ans = circumscribed_circle_of_triangle(a, b, c);
+  auto ans = hl::circumscribed_circle_of_triangle(a, b, c);
   std::cout << std::fixed << std::setprecision(12)
             << ans.center.x << " "
             << ans.center.y << " "

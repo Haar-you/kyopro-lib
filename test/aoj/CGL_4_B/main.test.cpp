@@ -8,15 +8,17 @@
 #include "Mylib/Geometry/Float/convex_diameter.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
-using D = DoubleEps<double>;
+namespace hl = haar_lib;
+
+using D = hl::DoubleEps<double>;
 template <> double D::eps = ERROR;
 
 int main(){
   int n; std::cin >> n;
 
-  Polygon<D> g = input_vector<Point<D>>(n);
+  hl::Polygon<D> g = hl::input_vector<hl::Point<D>>(n);
 
-  auto ans = convex_diameter(g);
+  auto ans = hl::convex_diameter(g);
 
   std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
 

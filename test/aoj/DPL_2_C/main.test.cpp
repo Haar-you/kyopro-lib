@@ -7,15 +7,17 @@
 #include "Mylib/DynamicProgramming/bitonic_tour.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int n; std::cin >> n;
 
-  auto [x, y] = input_tuple_vector<int, int>(n);
+  auto [x, y] = hl::input_tuple_vector<int, int>(n);
 
-  std::cout << std::fixed << std::setprecision(12) << bitonic_tour(n, x, y) << std::endl;
+  std::cout << std::fixed << std::setprecision(12) << hl::bitonic_tour(n, x, y) << std::endl;
 
   return 0;
 }

@@ -7,6 +7,8 @@
 #include "Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 const int H = 1000000000;
 
 int main(){
@@ -15,10 +17,10 @@ int main(){
 
   int N; std::cin >> N;
 
-  auto A = input_vector<int>(N);
+  auto A = hl::input_vector<int>(N);
   for(auto &x : A) x += H;
 
-  auto wm = make_wavelet_matrix_int(std::vector<uint32_t>(A.begin(), A.end()));
+  auto wm = hl::make_wavelet_matrix_int(std::vector<uint32_t>(A.begin(), A.end()));
 
   int64_t ans = LLONG_MIN;
 

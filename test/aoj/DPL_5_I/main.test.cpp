@@ -5,14 +5,16 @@
 #include "Mylib/Combinatorics/factorial_table.cpp"
 #include "Mylib/Combinatorics/stirling_number_second.cpp"
 
-using mint = ModInt<1000000007>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<1000000007>;
 
 int main(){
-  auto ft = FactorialTable<mint>(3000);
+  auto ft = hl::FactorialTable<mint>(3000);
 
   int N, K; std::cin >> N >> K;
 
-  std::cout << stirling_number_of_second_kind(N, K, ft) << std::endl;
+  std::cout << hl::stirling_number_of_second_kind(N, K, ft) << std::endl;
 
   return 0;
 }

@@ -9,9 +9,11 @@
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
-using mint = ModInt<1000000007>;
-using Mat = SquareMatrixConst<mint, 4>;
-using Monoid = DualMonoid<ProductMatrixMonoid<Mat>>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<1000000007>;
+using Mat = hl::SquareMatrixConst<mint, 4>;
+using Monoid = hl::DualMonoid<hl::ProductMatrixMonoid<Mat>>;
 
 auto f(mint x, mint y){
   Mat ret = {
@@ -26,14 +28,14 @@ auto f(mint x, mint y){
 int main(){
   int n, q; std::cin >> n >> q;
 
-  SegmentTree<Monoid> seg(n);
+  hl::SegmentTree<Monoid> seg(n);
   std::vector<mint> x(n), y(n);
 
   for(int i = 0; i < n; ++i){
     seg.update(i, f(x[i], y[i]));
   }
 
-  for(auto [c, i] : input_tuples<char, int>(q)){
+  for(auto [c, i] : hl::input_tuples<char, int>(q)){
     if(c == 'x'){
       int v; std::cin >> v;
       x[i] = v;

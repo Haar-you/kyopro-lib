@@ -12,6 +12,8 @@
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 struct LCASemigroup {
   using value_type = int;
   static std::function<int(int, int)> lca;
@@ -25,25 +27,25 @@ std::function<int(int, int)> LCASemigroup::lca;
 int main(){
   int N, K, Q; std::cin >> N >> K >> Q;
 
-  auto C = input_vector<int>(N);
-  auto A = input_vector<int>(K);
+  auto C = hl::input_vector<int>(N);
+  auto A = hl::input_vector<int>(K);
   for(auto &x : A) --x;
 
-  Tree<int> tree(N);
+  hl::Tree<int> tree(N);
   tree.read<1, false, false>(N - 1);
 
-  HLDecomposition<int> hld(tree, 0);
+  hl::HLDecomposition<int> hld(tree, 0);
   LCASemigroup::lca = [&](int a, int b){return hld.lca(a, b);};
 
-  SegmentTree<MaxMonoid<int>> seg1(N);
+  hl::SegmentTree<hl::MaxMonoid<int>> seg1(N);
   for(int i = 0; i < N; ++i){
     seg1.update(hld.get_id(i), {C[i]});
   }
 
-  SegmentTree<MaybeMonoid<LCASemigroup>> seg2(K);
+  hl::SegmentTree<hl::MaybeMonoid<LCASemigroup>> seg2(K);
   seg2.init_with_vector(A);
 
-  for(auto [T] : input_tuples<int>(Q)){
+  for(auto [T] : hl::input_tuples<int>(Q)){
     if(T == 1){
       int X, Y; std::cin >> X >> Y;
       --X; --Y;

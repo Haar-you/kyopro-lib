@@ -8,15 +8,17 @@
 #include "Mylib/IO/input_tuple_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, Q; std::cin >> N >> Q;
 
-  auto [x, y, w] = input_tuple_vector<int64_t, int64_t, int64_t>(N);
+  auto [x, y, w] = hl::input_tuple_vector<int64_t, int64_t, int64_t>(N);
 
-  FenwickTree2D<SumGroup<int64_t>> seg;
+  hl::FenwickTree2D<hl::SumGroup<int64_t>> seg;
 
   for(int i = 0; i < N; ++i){
     seg.add(x[i], y[i]);
@@ -28,7 +30,7 @@ int main(){
     seg.update({x[i], y[i]}, w[i]);
   }
 
-  for(auto [l, d, r, u] : input_tuples<int64_t, int64_t, int64_t, int64_t>(Q)){
+  for(auto [l, d, r, u] : hl::input_tuples<int64_t, int64_t, int64_t, int64_t>(Q)){
     auto ans = seg.get({l, d}, {r, u});
     std::cout << ans << std::endl;
   }

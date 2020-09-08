@@ -4,13 +4,15 @@
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/MinimumSpanningTree/kruskal.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int64_t> g(V);
+  hl::Graph<int64_t> g(V);
   g.read<0, false>(E);
 
-  auto res = kruskal(g);
+  auto res = hl::kruskal(g);
 
   int64_t ans = 0;
   for(auto &e : res) ans += e.cost;

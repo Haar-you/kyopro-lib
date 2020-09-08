@@ -7,13 +7,15 @@
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N, R; std::cin >> N >> R;
 
-  auto p = input_vector<int>(N);
+  auto p = hl::input_vector<int>(N);
   for(auto &x : p) x -= 1;
 
-  UnionFind uf(N);
+  hl::UnionFind uf(N);
 
   for(int i = 0; i < N; ++i){
     uf.merge(i, p[i]);
@@ -30,7 +32,7 @@ int main(){
     m.push_back(v);
   }
 
-  bool ans = subset_sum_limited(a.size(), R, a, m)[R];
+  bool ans = hl::subset_sum_limited(a.size(), R, a, m)[R];
 
   std::cout << (ans ? "Yes" : "No") << std::endl;
 

@@ -7,6 +7,8 @@
 #include "Mylib/IO/input_tuple_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 const int H = 1000000000;
 
 int main(){
@@ -15,9 +17,9 @@ int main(){
 
   int n, m; std::cin >> n >> m;
 
-  auto [x, y] = input_tuple_vector<int, int>(n);
+  auto [x, y] = hl::input_tuple_vector<int, int>(n);
 
-  sort_simultaneously(
+  hl::sort_simultaneously(
     [&](int i, int j){
       return x[i] < x[j];
     },
@@ -26,9 +28,9 @@ int main(){
 
   for(auto &p : y) p += H;
 
-  auto wm = make_wavelet_matrix_int(std::vector<uint32_t>(y.begin(), y.end()));
+  auto wm = hl::make_wavelet_matrix_int(std::vector<uint32_t>(y.begin(), y.end()));
 
-  for(auto [x1, y1, x2, y2] : input_tuples<int, int, int, int>(m)){
+  for(auto [x1, y1, x2, y2] : hl::input_tuples<int, int, int, int>(m)){
     const int l = std::lower_bound(x.begin(), x.end(), x1) - x.begin();
     const int r = std::upper_bound(x.begin(), x.end(), x2) - x.begin();
     int ans = wm.range_freq(l, r, y1 + H, y2 + H + 1);

@@ -5,7 +5,9 @@
  * @title Parallel
  * @docs parallel.md
  */
-template <typename T>
-bool parallel(const Line<T> &a, const Line<T> &b){
-  return abs(cross(a, b)) == 0;
+namespace haar_lib {
+  template <typename T>
+  bool parallel(const Line<T> &a, const Line<T> &b){
+    return abs(cross(a, b)) == 0;
+  }
 }

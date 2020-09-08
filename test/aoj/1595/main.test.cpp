@@ -4,13 +4,15 @@
 #include "Mylib/Graph/TreeUtils/rerooting.cpp"
 #include "Mylib/Graph/Template/graph.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N; std::cin >> N;
 
-  Tree<int> tree(N);
+  hl::Tree<int> tree(N);
   tree.read<1, false, false>(N - 1);
 
-  auto r = rerooting<int>(
+  auto r = hl::rerooting<int>(
     tree,
     0,
     [](const auto &a, const auto &b){

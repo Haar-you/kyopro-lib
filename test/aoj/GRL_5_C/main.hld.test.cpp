@@ -6,21 +6,23 @@
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/IO/input_tuples_with_index.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n; std::cin >> n;
 
-  Tree<int> tree(n);
-  for(auto [i, k] : input_tuples_with_index<int>(n)){
-    for(auto [c] : input_tuples<int>(k)){
+  hl::Tree<int> tree(n);
+  for(auto [i, k] : hl::input_tuples_with_index<int>(n)){
+    for(auto [c] : hl::input_tuples<int>(k)){
       tree.add_edge(i, c, 1);
     }
   }
 
-  auto lca = LCA(tree, 0);
+  auto lca = hl::LCA(tree, 0);
 
   int q; std::cin >> q;
 
-  for(auto [u, v] : input_tuples<int, int>(q)){
+  for(auto [u, v] : hl::input_tuples<int, int>(q)){
     std::cout << lca(u, v) << std::endl;
   }
 

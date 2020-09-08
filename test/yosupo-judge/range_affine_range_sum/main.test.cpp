@@ -8,7 +8,9 @@
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
-using mint = ModInt<998244353>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<998244353>;
 
 int main(){
   std::cin.tie(0);
@@ -16,11 +18,11 @@ int main(){
 
   int N, Q; std::cin >> N >> Q;
 
-  auto seg = LazySegmentTree<AffineSum<mint, mint>>(N);
-  auto a = input_vector<mint>(N);
+  auto seg = hl::LazySegmentTree<hl::AffineSum<mint, mint>>(N);
+  auto a = hl::input_vector<mint>(N);
   seg.init_with_vector(a);
 
-  for(auto [t, l, r] : input_tuples<int, int, int>(Q)){
+  for(auto [t, l, r] : hl::input_tuples<int, int, int>(Q)){
     if(t == 0){
       int b, c; std::cin >> b >> c;
       seg.update(l, r, std::make_pair(b, c));

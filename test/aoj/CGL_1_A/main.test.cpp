@@ -8,17 +8,19 @@
 #include "Mylib/Geometry/Float/projection.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
-using D = DoubleEps<double>;
+namespace hl = haar_lib;
+
+using D = hl::DoubleEps<double>;
 template <> double D::eps = ERROR;
 
 int main(){
-  Point<D> p1, p2; std::cin >> p1 >> p2;
-  Line<D> l(p1, p2);
+  hl::Point<D> p1, p2; std::cin >> p1 >> p2;
+  hl::Line<D> l(p1, p2);
 
   int q; std::cin >> q;
 
-  for(auto [p] : input_tuples<Point<D>>(q)){
-    auto ans = projection(l, p);
+  for(auto [p] : hl::input_tuples<hl::Point<D>>(q)){
+    auto ans = hl::projection(l, p);
     std::cout << std::fixed << std::setprecision(12) << ans.x << " " << ans.y << std::endl;
   }
 

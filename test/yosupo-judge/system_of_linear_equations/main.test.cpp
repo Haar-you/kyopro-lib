@@ -6,7 +6,9 @@
 #include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
-using mint = ModInt<998244353>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<998244353>;
 
 int main(){
   std::cin.tie(0);
@@ -14,20 +16,20 @@ int main(){
 
   int N, M; std::cin >> N >> M;
 
-  auto A = input_vector<mint>(N, M);
-  auto B = input_vector<mint>(N);
+  auto A = hl::input_vector<mint>(N, M);
+  auto B = hl::input_vector<mint>(N);
 
-  auto res = simulaneous_linear_equations(A, B);
+  auto res = hl::simulaneous_linear_equations(A, B);
 
   if(not res){
     std::cout << -1 << "\n";
   }else{
     std::cout << (*res).dim << "\n";
 
-    std::cout << join((*res).solution.begin(), (*res).solution.end()) << "\n";
+    std::cout << hl::join((*res).solution.begin(), (*res).solution.end()) << "\n";
 
     for(auto &b : (*res).basis){
-      std::cout << join(b.begin(), b.end()) << "\n";
+      std::cout << hl::join(b.begin(), b.end()) << "\n";
     }
   }
 

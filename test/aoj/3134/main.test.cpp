@@ -7,10 +7,12 @@
 #include "Mylib/Convolution/fast_zeta_transform_subset.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N, K; std::cin >> N >> K;
 
-  auto A = input_vector<int>(N);
+  auto A = hl::input_vector<int>(N);
 
   std::vector<int> sum(1 << N);
 
@@ -27,7 +29,7 @@ int main(){
     if(sum[i] == K) f[i] = true;
   }
 
-  f = fast_zeta_transform_subset(f, std::logical_or<bool>());
+  f = hl::fast_zeta_transform_subset(f, std::logical_or<bool>());
 
   int ans = N;
 

@@ -12,8 +12,10 @@
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
-using mint = ModInt<998244353>;
-using Monoid = DualMonoid<AffineMonoid<mint>>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<998244353>;
+using Monoid = hl::DualMonoid<hl::AffineMonoid<mint>>;
 const Monoid M;
 
 int main(){
@@ -22,18 +24,18 @@ int main(){
 
   int N, Q; std::cin >> N >> Q;
 
-  auto f = input_vector<std::pair<mint, mint>>(N);
-  Tree<int> tree(N);
+  auto f = hl::input_vector<std::pair<mint, mint>>(N);
+  hl::Tree<int> tree(N);
   tree.read<0, false, false>(N - 1);
 
-  HLDecomposition<int> hld(tree, 0);
-  SegmentTreeBothFoldable<Monoid> seg(N);
+  hl::HLDecomposition<int> hld(tree, 0);
+  hl::SegmentTreeBothFoldable<Monoid> seg(N);
 
   for(int i = 0; i < N; ++i){
     seg.update(hld.get_id(i), f[i]);
   }
 
-  for(auto [type] : input_tuples<int>(Q)){
+  for(auto [type] : hl::input_tuples<int>(Q)){
     if(type == 0){
       int64_t p, c, d; std::cin >> p >> c >> d;
 

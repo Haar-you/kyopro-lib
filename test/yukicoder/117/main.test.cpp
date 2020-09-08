@@ -7,19 +7,21 @@
 #include "Mylib/Combinatorics/factorial_table.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
-using mint = ModInt<1000000007>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<1000000007>;
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  auto ft = FactorialTable<mint>(2000000);
+  auto ft = hl::FactorialTable<mint>(2000000);
 
   int T; std::cin >> T;
 
   std::regex re(R"((.)\((.+),(.+)\))");
 
-  for(auto [s] : input_tuples<std::string>(T)){
+  for(auto [s] : hl::input_tuples<std::string>(T)){
     std::smatch m;
     std::regex_match(s, m, re);
 

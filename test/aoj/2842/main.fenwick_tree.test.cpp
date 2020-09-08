@@ -7,17 +7,19 @@
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int H, W, T, Q; std::cin >> H >> W >> T >> Q;
 
-  FenwickTree2D<SumGroup<int>> seg1(H, W), seg2(H, W);
+  hl::FenwickTree2D<hl::SumGroup<int>> seg1(H, W), seg2(H, W);
 
   std::queue<std::tuple<int, int, int>> q;
 
-  for(auto [t, c] : input_tuples<int, int>(Q)){
+  for(auto [t, c] : hl::input_tuples<int, int>(Q)){
     while(q.size()){
       auto &a = q.front();
 

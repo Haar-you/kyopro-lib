@@ -5,14 +5,16 @@
 #include "Mylib/String/suffix_array.cpp"
 #include "Mylib/IO/join.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   std::string S; std::cin >> S;
-  SuffixArray sa(S);
+  hl::SuffixArray sa(S);
 
-  std::cout << join(sa.begin() + 1, sa.end()) << "\n";
+  std::cout << hl::join(sa.begin() + 1, sa.end()) << "\n";
 
   return 0;
 }

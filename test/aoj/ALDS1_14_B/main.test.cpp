@@ -4,8 +4,10 @@
 #include <string>
 #include "Mylib/String/rolling_hash.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
-  auto rh = make_rh(1000000, 1000000007);
+  auto rh = hl::make_rh(1000000, 1000000007);
 
   std::string t, p; std::cin >> t >> p;
 

@@ -4,8 +4,10 @@
 #include <string>
 #include "Mylib/DataStructure/Heap/binary_heap.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
-  BinaryHeap<int> heap;
+  hl::BinaryHeap<int> heap;
   std::string s;
 
   while(1){

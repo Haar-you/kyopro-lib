@@ -5,12 +5,14 @@
 #include "Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n, q; std::cin >> n >> q;
 
-  StarrySkyTree<int, std::less<>> seg(n);
+  hl::StarrySkyTree<int, std::less<>> seg(n);
 
-  for(auto [type, s, t] : input_tuples<int, int, int>(q)){
+  for(auto [type, s, t] : hl::input_tuples<int, int, int>(q)){
     if(type == 0){
       int x; std::cin >> x;
       seg.update(s, t + 1, x);

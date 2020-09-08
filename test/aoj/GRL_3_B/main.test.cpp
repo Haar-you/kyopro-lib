@@ -6,13 +6,15 @@
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/GraphUtils/bridges.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int> g(V);
+  hl::Graph<int> g(V);
   g.read<0, false, false>(E);
 
-  auto ans = bridges(g);
+  auto ans = hl::bridges(g);
   for(auto &e : ans) if(e.from > e.to) std::swap(e.from, e.to);
 
   std::sort(

@@ -6,23 +6,25 @@
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/IO/input_tuples_with_index.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, Q; std::cin >> N >> Q;
 
-  LinkCutTree<SumMonoid<int64_t>> lct(N);
+  hl::LinkCutTree<hl::SumMonoid<int64_t>> lct(N);
 
-  for(auto [i, a] : input_tuples_with_index<int64_t>(N)){
+  for(auto [i, a] : hl::input_tuples_with_index<int64_t>(N)){
     lct.update(i, a);
   }
 
-  for(auto [u, v] : input_tuples<int, int>(N - 1)){
+  for(auto [u, v] : hl::input_tuples<int, int>(N - 1)){
     lct.link(u, v);
   }
 
-  for(auto [type] : input_tuples<int>(Q)){
+  for(auto [type] : hl::input_tuples<int>(Q)){
     switch(type){
     case 0: {
       int u, v, w, x; std::cin >> u >> v >> w >> x;

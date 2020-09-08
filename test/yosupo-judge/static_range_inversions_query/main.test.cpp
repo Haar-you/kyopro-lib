@@ -6,16 +6,18 @@
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/Algorithm/Query/range_inversions_query.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, Q; std::cin >> N >> Q;
-  auto A = input_vector<int>(N);
+  auto A = hl::input_vector<int>(N);
 
-  RangeInversionsQuery riq(A);
+  hl::RangeInversionsQuery riq(A);
 
-  for(auto [l, r] : input_tuples<int, int>(Q)){
+  for(auto [l, r] : hl::input_tuples<int, int>(Q)){
     riq.add(l, r);
   }
 

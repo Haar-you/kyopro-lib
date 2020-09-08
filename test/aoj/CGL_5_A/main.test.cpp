@@ -8,15 +8,17 @@
 #include "Mylib/Geometry/Float/closest_pair.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
-using D = DoubleEps<double>;
+namespace hl = haar_lib;
+
+using D = hl::DoubleEps<double>;
 template <> double D::eps = ERROR;
 
 int main(){
   int n; std::cin >> n;
 
-  auto p = input_vector<Point<D>>(n);
+  auto p = hl::input_vector<hl::Point<D>>(n);
 
-  auto ans = closest_pair(p);
+  auto ans = hl::closest_pair(p);
 
   std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
 

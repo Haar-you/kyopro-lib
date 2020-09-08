@@ -5,7 +5,9 @@
  * @title Projection
  * @docs projection.md
  */
-template <typename T>
-Point<T> projection(const Line<T> &l, const Point<T> &p){
-  return l.from + dot(unit(l), p - l.from) * unit(l);
+namespace haar_lib {
+  template <typename T>
+  Point<T> projection(const Line<T> &l, const Point<T> &p){
+    return l.from + dot(unit(l), p - l.from) * unit(l);
+  }
 }

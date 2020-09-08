@@ -10,22 +10,24 @@
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
-using D = DoubleEps<double>;
+namespace hl = haar_lib;
+
+using D = hl::DoubleEps<double>;
 template <> double D::eps = ERROR;
 
 int main(){
   int n; std::cin >> n;
-  Polygon<D> g = input_vector<Point<D>>(n);
+  hl::Polygon<D> g = hl::input_vector<hl::Point<D>>(n);
 
   int q; std::cin >> q;
 
-  for(auto [p1, p2] : input_tuples<Point<D>, Point<D>>(q)){
-    Line<D> l(p1, p2);
+  for(auto [p1, p2] : hl::input_tuples<hl::Point<D>, hl::Point<D>>(q)){
+    hl::Line<D> l(p1, p2);
 
-    Polygon<D> left, right;
-    convex_cut(g, l, left, right);
+    hl::Polygon<D> left, right;
+    hl::convex_cut(g, l, left, right);
 
-    std::cout << std::fixed << std::setprecision(12) << area(left) << std::endl;
+    std::cout << std::fixed << std::setprecision(12) << hl::area(left) << std::endl;
   }
 
   return 0;

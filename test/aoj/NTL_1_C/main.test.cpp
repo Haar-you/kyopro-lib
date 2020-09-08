@@ -5,14 +5,16 @@
 #include "Mylib/Number/binary_gcd.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n; std::cin >> n;
 
-  auto a = input_vector<int>(n);
+  auto a = hl::input_vector<int>(n);
 
   int l = 1;
   for(auto x : a){
-    l = l / binary_gcd(l, x) * x;
+    l = l / hl::binary_gcd(l, x) * x;
   }
 
   std::cout << l << "\n";

@@ -3,8 +3,10 @@
 #include <iostream>
 #include "Mylib/Number/Prime/eratosthenes_sieve.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
-  EratosthenesSieve is_prime(500000);
+  hl::EratosthenesSieve is_prime(500000);
 
   int N; std::cin >> N;
 

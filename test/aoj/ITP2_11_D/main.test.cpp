@@ -5,6 +5,8 @@
 #include <map>
 #include "Mylib/Bit/enumerate_sets_of_size_k.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -13,7 +15,7 @@ int main(){
 
   std::map<int, std::vector<int>> ans;
 
-  enumerate_sets_of_size_k(
+  hl::enumerate_sets_of_size_k(
     k, n,
     [&](int d){
       for(int i = 0; i < n; ++i){

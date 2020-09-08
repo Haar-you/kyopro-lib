@@ -9,10 +9,12 @@
 #include "Mylib/Combinatorics/factorial_table.cpp"
 #include "Mylib/Combinatorics/bernoulli_number_fps.cpp"
 
-using mint = ModInt<998244353>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<998244353>;
 constexpr int PRIM_ROOT = 3;
-using FPS = FormalPowerSeries<mint>;
-using NTT = NumberTheoreticTransform<mint, PRIM_ROOT, 1 << 20>;
+using FPS = hl::FormalPowerSeries<mint>;
+using NTT = hl::NumberTheoreticTransform<mint, PRIM_ROOT, 1 << 20>;
 
 int main(){
   using namespace std::placeholders;
@@ -21,13 +23,13 @@ int main(){
 
   int N; std::cin >> N;
 
-  auto ft = FactorialTable<mint>(N + 1);
+  auto ft = hl::FactorialTable<mint>(N + 1);
 
   auto ntt = NTT();
   FPS::convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
 
-  auto res = bernoulli_number_fps<FPS>(N, ft);
-  std::cout << join(res.begin(), res.begin() + N + 1) << "\n";
+  auto res = hl::bernoulli_number_fps<FPS>(N, ft);
+  std::cout << hl::join(res.begin(), res.begin() + N + 1) << "\n";
 
   return 0;
 }

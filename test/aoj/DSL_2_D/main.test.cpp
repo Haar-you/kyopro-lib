@@ -6,13 +6,15 @@
 #include "Mylib/AlgebraicStructure/Monoid/update.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n, q; std::cin >> n >> q;
 
-  auto seg = DualSegmentTree<UpdateMonoid<int>>(n);
+  auto seg = hl::DualSegmentTree<hl::UpdateMonoid<int>>(n);
   seg.init(INT_MAX);
 
-  for(auto [type] : input_tuples<int>(q)){
+  for(auto [type] : hl::input_tuples<int>(q)){
     if(type == 0){
       int s, t, x; std::cin >> s >> t >> x;
       seg.update(s, t + 1, x);

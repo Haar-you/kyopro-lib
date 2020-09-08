@@ -5,11 +5,13 @@
 #include "Mylib/Algorithm/Imos/imos_2d.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N; std::cin >> N;
-  Imos2D<int> imos(1000, 1000);
+  hl::Imos2D<int> imos(1000, 1000);
 
-  for(auto [x1, y1, x2, y2] : input_tuples<int, int, int, int>(N)){
+  for(auto [x1, y1, x2, y2] : hl::input_tuples<int, int, int, int>(N)){
     imos.add(x1, y1, x2, y2);
   }
 

@@ -6,11 +6,13 @@
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/LinearAlgebra/GaussianElimination/binary_gaussian_elimination.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n; std::cin >> n;
-  auto a = input_vector<int64_t>(n);
+  auto a = hl::input_vector<int64_t>(n);
 
-  int rank = gaussian_elimination(std::vector<std::bitset<64>>(a.begin(), a.end()));
+  int rank = hl::gaussian_elimination(std::vector<std::bitset<64>>(a.begin(), a.end()));
 
   std::cout << (1LL << rank) << "\n";
 

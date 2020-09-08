@@ -8,6 +8,8 @@
 #include "Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -16,10 +18,10 @@ int main(){
   while(std::cin >> n >> s >> t, n){
     --s, --t;
 
-    auto q = input_vector<int>(n);
-    auto g = input_vector<int>(n, n);
+    auto q = hl::input_vector<int>(n);
+    auto g = hl::input_vector<int>(n, n);
 
-    auto dist = warshall_floyd_for_matrix<int, 0>(g);
+    auto dist = hl::warshall_floyd_for_matrix<int, 0>(g);
 
     if(not dist[s][t]){
       std::cout << "impossible" << std::endl;
@@ -73,7 +75,7 @@ int main(){
       }
     }
 
-    auto res = float_simultaneous_linear_equations(a, b, ERROR);
+    auto res = hl::float_simultaneous_linear_equations(a, b, ERROR);
 
     double ans = (*res).solution[s];
     std::cout << std::setprecision(12) << std::fixed << ans << std::endl;

@@ -5,6 +5,8 @@
 #include "Mylib/String/suffix_array.cpp"
 #include "Mylib/String/lcp_array.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -12,8 +14,8 @@ int main(){
   std::string s; std::cin >> s;
   const int N = s.size();
 
-  auto sa = SuffixArray(s);
-  auto lcp = lcp_array(sa);
+  auto sa = hl::SuffixArray(s);
+  auto lcp = hl::lcp_array(sa);
 
   int64_t ans = 0;
 

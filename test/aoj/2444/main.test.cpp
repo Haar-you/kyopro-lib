@@ -8,21 +8,23 @@
 #include "Mylib/AlgebraicStructure/Monoid/rolling_hash.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
-  using Monoid = RollingHashMonoid<2>;
+  using Monoid = hl::RollingHashMonoid<2>;
   Monoid::base = {33, 100};
   Monoid::mod = 1000000007;
 
   int n, m; std::cin >> n >> m;
   std::string s; std::cin >> s;
 
-  SegmentTree<Monoid> seg(n);
+  hl::SegmentTree<Monoid> seg(n);
   for(int i = 0; i < n; ++i) seg.update(i, Monoid::make(s[i]));
 
   std::set<std::array<int64_t, 2>> set;
   int l = 0, r = 1;
 
-  for(auto [q] : input_tuples<std::string>(m)){
+  for(auto [q] : hl::input_tuples<std::string>(m)){
     if(q[0] == 'L'){
       if(q[1] == '+') ++l;
       else --l;

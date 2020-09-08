@@ -8,13 +8,15 @@
 #include "Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp"
 #include "Mylib/Graph/Template/graph.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int> g(V);
+  hl::Graph<int> g(V);
   g.read<1, false, false>(E);
 
-  auto res = check_bipartite_graph(g);
+  auto res = hl::check_bipartite_graph(g);
 
   if(std::all_of(res.begin(), res.end(), [](const auto &a){return (bool)a;})){
     int k = 0;
@@ -36,7 +38,7 @@ int main(){
       m.push_back(p.second);
     }
 
-    auto r = subset_sum_limited(c.size(), V, a, m);
+    auto r = hl::subset_sum_limited(c.size(), V, a, m);
 
     int64_t ans = 0;
 

@@ -10,9 +10,11 @@
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/join.cpp"
 
-using mint = ModInt<998244353>;
-using FPS = FormalPowerSeries<mint>;
-using NTT = NumberTheoreticTransform<mint, 3, 1 << 21>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<998244353>;
+using FPS = hl::FormalPowerSeries<mint>;
+using NTT = hl::NumberTheoreticTransform<mint, 3, 1 << 21>;
 
 int main(){
   using namespace std::placeholders;
@@ -21,14 +23,14 @@ int main(){
 
   auto ntt = NTT();
   FPS::convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
-  FPS::get_sqrt = [&](const auto &a){return mod_sqrt((int64_t)a, mint::MOD);};
+  FPS::get_sqrt = [&](const auto &a){return hl::mod_sqrt((int64_t)a, mint::MOD);};
 
   int N; std::cin >> N;
-  auto a = input_vector<mint>(N);
+  auto a = hl::input_vector<mint>(N);
   auto ans = FPS(a).sqrt();
 
   if(ans){
-    std::cout << join((*ans).begin(), (*ans).begin() + N) << "\n";
+    std::cout << hl::join((*ans).begin(), (*ans).begin() + N) << "\n";
   }else{
     std::cout << -1 << "\n";
   }

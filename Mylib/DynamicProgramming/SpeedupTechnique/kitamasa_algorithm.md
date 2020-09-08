@@ -16,4 +16,3 @@
 - [https://smijake3.hatenablog.com/entry/2017/01/02/024712](https://smijake3.hatenablog.com/entry/2017/01/02/024712)
 - [http://sugarknri.hatenablog.com/entry/2017/11/18/233936](http://sugarknri.hatenablog.com/entry/2017/11/18/233936)
 - [https://yosupo.hatenablog.com/entry/2015/03/27/025132](https://yosupo.hatenablog.com/entry/2015/03/27/025132)
-

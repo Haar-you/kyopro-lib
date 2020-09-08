@@ -5,12 +5,14 @@
 #include "Mylib/AlgebraicStructure/Group/sum.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n, q; std::cin >> n >> q;
 
-  auto fen = FenwickTree<SumGroup<int>>(n);
+  auto fen = hl::FenwickTree<hl::SumGroup<int>>(n);
 
-  for(auto [type, x, y] : input_tuples<int, int, int>(q)){
+  for(auto [type, x, y] : hl::input_tuples<int, int, int>(q)){
     if(type == 0){
       fen.update(x - 1, y);
     }else{

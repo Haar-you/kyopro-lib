@@ -5,17 +5,19 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/manhattan_segments_intersections.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int n; std::cin >> n;
-  std::vector<Segment<int>> s(n);
+  std::vector<hl::Segment<int>> s(n);
   for(int i = 0; i < n; ++i){
     std::cin >> s[i].from >> s[i].to;
   }
 
-  auto ans = manhattan_segments_intersections(s);
+  auto ans = hl::manhattan_segments_intersections(s);
   std::cout << ans << "\n";
 
   return 0;

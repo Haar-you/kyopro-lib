@@ -6,13 +6,15 @@
 #include "Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int m, n, d;
   while(std::cin >> m >> n >> d, m){
-    auto s = input_vector<int>(n, m);
+    auto s = hl::input_vector<int>(n, m);
 
     auto a = std::vector(n * m, std::bitset<25 * 25>());
     std::vector<bool> b(n * m);
@@ -44,7 +46,7 @@ int main(){
       }
     }
 
-    std::cout << (bool)(binary_simultaneous_linear_equations(a, b)) << std::endl;
+    std::cout << (bool)(hl::binary_simultaneous_linear_equations(a, b)) << std::endl;
   }
 
   return 0;

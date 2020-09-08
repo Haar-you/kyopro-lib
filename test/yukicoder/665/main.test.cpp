@@ -5,16 +5,18 @@
 #include "Mylib/Combinatorics/factorial_table.cpp"
 #include "Mylib/Combinatorics/bernoulli_number.cpp"
 
-using mint = ModInt<1000000007>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<1000000007>;
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int64_t n, k; std::cin >> n >> k;
-  auto ft = FactorialTable<mint>(3 * k);
+  auto ft = hl::FactorialTable<mint>(3 * k);
 
-  auto b = bernoulli_number(k, ft);
+  auto b = hl::bernoulli_number(k, ft);
 
   mint ans = 0;
 

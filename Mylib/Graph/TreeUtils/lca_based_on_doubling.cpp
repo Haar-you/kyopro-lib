@@ -7,57 +7,59 @@
  * @title Lowest common ancestor (Doubling)
  * @docs lca_based_on_doubling.md
  */
-template <typename T>
-class LCA {
-private:
-  std::vector<std::vector<int>> parent;
-  int n, log2n;
+namespace haar_lib {
+  template <typename T>
+  class LCA {
+  private:
+    std::vector<std::vector<int>> parent;
+    int n, log2n;
 
-  void dfs(const Tree<T> &tree, int cur, int par, int d){
-    parent[cur][0] = par;
-    depth[cur] = d;
+    void dfs(const Tree<T> &tree, int cur, int par, int d){
+      parent[cur][0] = par;
+      depth[cur] = d;
 
-    for(auto &e : tree[cur]){
-      if(e.to != par){
-        dfs(tree, e.to, cur, d + 1);
+      for(auto &e : tree[cur]){
+        if(e.to != par){
+          dfs(tree, e.to, cur, d + 1);
+        }
       }
     }
-  }
 
-public:
-  std::vector<int> depth;
+  public:
+    std::vector<int> depth;
 
-  LCA(){}
-  LCA(const Tree<T> &tree, int root):
-    n(tree.size()), depth(n)
-  {
-    log2n = (int)ceil(log2(n)) + 1;
-    parent = std::vector(n, std::vector<int>(log2n, 0));
+    LCA(){}
+    LCA(const Tree<T> &tree, int root):
+      n(tree.size()), depth(n)
+    {
+      log2n = (int)ceil(log2(n)) + 1;
+      parent = std::vector(n, std::vector<int>(log2n, 0));
 
-    dfs(tree, root, -1, 0);
-    for(int k = 0; k < log2n - 1; ++k){
-      for(int v = 0; v < n; ++v){
-        if(parent[v][k] == -1) parent[v][k + 1] = -1;
-        else parent[v][k + 1] = parent[parent[v][k]][k];
+      dfs(tree, root, -1, 0);
+      for(int k = 0; k < log2n - 1; ++k){
+        for(int v = 0; v < n; ++v){
+          if(parent[v][k] == -1) parent[v][k + 1] = -1;
+          else parent[v][k + 1] = parent[parent[v][k]][k];
+        }
       }
     }
-  }
 
-  int lca(int a, int b) const {
-    if(depth[a] >= depth[b]) std::swap(a, b);
-    for(int k = 0; k < log2n; ++k){
-      if((depth[b] - depth[a]) >> k & 1) b = parent[b][k];
+    int lca(int a, int b) const {
+      if(depth[a] >= depth[b]) std::swap(a, b);
+      for(int k = 0; k < log2n; ++k){
+        if((depth[b] - depth[a]) >> k & 1) b = parent[b][k];
+      }
+      if(a == b) return a;
+      for(int k = log2n; --k >= 0;){
+        if(parent[a][k] != parent[b][k]){a = parent[a][k]; b = parent[b][k];}
+      }
+      return parent[a][0];
     }
-    if(a == b) return a;
-    for(int k = log2n; --k >= 0;){
-      if(parent[a][k] != parent[b][k]){a = parent[a][k]; b = parent[b][k];}
+
+    int operator()(int a, int b) const {return lca(a, b);}
+
+    T distance(int u, int v, const std::vector<T> &dist) const {
+      return dist[u] + dist[v] - 2 * dist[lca(u, v)];
     }
-    return parent[a][0];
-  }
-
-  int operator()(int a, int b) const {return lca(a, b);}
-
-  T distance(int u, int v, const std::vector<T> &dist) const {
-    return dist[u] + dist[v] - 2 * dist[lca(u, v)];
-  }
-};
+  };
+}

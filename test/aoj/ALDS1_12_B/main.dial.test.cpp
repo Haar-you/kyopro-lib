@@ -4,12 +4,14 @@
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/ShortestPath/dial_algorithm.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int n; std::cin >> n;
-  Graph<int> g(n);
+  hl::Graph<int> g(n);
 
   for(int i = 0; i < n; ++i){
     int u, k; std::cin >> u >> k;
@@ -19,7 +21,7 @@ int main(){
     }
   }
 
-  auto ans = dial_algorithm(g, {0}, 100000);
+  auto ans = hl::dial_algorithm(g, {0}, 100000);
 
   for(int i = 0; i < n; ++i) std::cout << i << " " << *ans[i] << "\n";
 

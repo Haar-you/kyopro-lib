@@ -5,12 +5,14 @@
 #include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n, q; std::cin >> n >> q;
 
-  auto seg = SegmentTree<SumMonoid<int>>(n);
+  auto seg = hl::SegmentTree<hl::SumMonoid<int>>(n);
 
-  for(auto [type, x, y] : input_tuples<int, int, int>(q)){
+  for(auto [type, x, y] : hl::input_tuples<int, int, int>(q)){
     if(type == 0){
       seg.update(x - 1, seg[x - 1] + y);
     }else{

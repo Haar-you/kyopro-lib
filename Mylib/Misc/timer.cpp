@@ -6,6 +6,7 @@
  * @title Timer
  * @docs timer.md
  */
+namespace haar_lib {
 template <typename F>
 void timer(F f){
   auto s = std::chrono::system_clock::now();
@@ -14,3 +15,4 @@ void timer(F f){
   auto d = std::chrono::duration_cast<std::chrono::milliseconds>(t - s).count();
   std::cerr << d << "ms" << "\n";
 };
+}

@@ -4,12 +4,14 @@
 #include "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int V, E, F; std::cin >> V >> E >> F;
 
-  MinimumCostFlow<int, int> f(V);
+  hl::MinimumCostFlow<int, int> f(V);
 
-  for(auto [u, v, c, d] : input_tuples<int, int, int, int>(E)){
+  for(auto [u, v, c, d] : hl::input_tuples<int, int, int, int>(E)){
     f.add_edge(u, v, c, d);
   }
 

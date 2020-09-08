@@ -9,13 +9,15 @@
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N, M; std::cin >> N >> M;
   std::string U; std::cin >> U;
 
-  auto A = input_vector<int>(N);
+  auto A = hl::input_vector<int>(N);
 
-  ProjectSelectionProblem<int, FordFulkerson<int>> psp(N);
+  hl::ProjectSelectionProblem<int, hl::FordFulkerson<int>> psp(N);
   // red: right, blue: left
 
   for(int i = 0; i < N; ++i){
@@ -26,7 +28,7 @@ int main(){
     }
   }
 
-  for(auto [s, t, b] : input_tuples<int, int, int>(M)){
+  for(auto [s, t, b] : hl::input_tuples<int, int, int>(M)){
     --s, --t;
     if(s > t) std::swap(s, t);
     psp.penalty_if_red_blue(s, t, b);

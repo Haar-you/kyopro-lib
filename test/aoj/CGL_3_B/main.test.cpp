@@ -7,15 +7,17 @@
 #include "Mylib/Geometry/Float/is_convex.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
-using D = DoubleEps<double>;
+namespace hl = haar_lib;
+
+using D = hl::DoubleEps<double>;
 template <> double D::eps = 1e-7;
 
 int main(){
   int n; std::cin >> n;
 
-  Polygon<D> p = input_vector<Point<D>>(n);
+  hl::Polygon<D> p = hl::input_vector<hl::Point<D>>(n);
 
-  std::cout << (is_convex(p) ? 1 : 0) << std::endl;
+  std::cout << (hl::is_convex(p) ? 1 : 0) << std::endl;
 
   return 0;
 }

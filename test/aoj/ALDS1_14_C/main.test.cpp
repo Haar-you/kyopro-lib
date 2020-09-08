@@ -6,14 +6,16 @@
 #include "Mylib/String/rolling_hash_2d.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
-  auto rh = make_rh_2d(1000, 1000, 1000000007);
+  auto rh = hl::make_rh_2d(1000, 1000, 1000000007);
 
   int H, W; std::cin >> H >> W;
-  auto s = input_vector<std::string>(H);
+  auto s = hl::input_vector<std::string>(H);
 
   int R, C; std::cin >> R >> C;
-  auto t = input_vector<std::string>(R);
+  auto t = hl::input_vector<std::string>(R);
 
   auto res = rh.find(s, t);
   for(auto [i, j] : res) std::cout << i << " " << j << "\n";

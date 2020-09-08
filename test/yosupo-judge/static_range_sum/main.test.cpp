@@ -5,17 +5,19 @@
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, Q; std::cin >> N >> Q;
 
-  auto a = input_vector<int64_t>(N);
+  auto a = hl::input_vector<int64_t>(N);
 
-  auto c = CumulativeSum1D(a).build();
+  auto c = hl::CumulativeSum1D(a).build();
 
-  for(auto [l, r] : input_tuples<int, int>(Q)){
+  for(auto [l, r] : hl::input_tuples<int, int>(Q)){
     std::cout << c.get(l, r) << "\n";
   }
 

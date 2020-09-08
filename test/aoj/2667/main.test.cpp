@@ -7,16 +7,18 @@
 #include "Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N, Q; std::cin >> N >> Q;
 
-  Tree<int> tree(N);
+  hl::Tree<int> tree(N);
   tree.read<0, false, false>(N - 1);
 
-  auto hld = HLDecomposition(tree, 0);
-  LazySegmentTree<AddSum<int64_t, int64_t>> seg(N);
+  auto hld = hl::HLDecomposition(tree, 0);
+  hl::LazySegmentTree<hl::AddSum<int64_t, int64_t>> seg(N);
 
-  for(auto [c] : input_tuples<int>(Q)){
+  for(auto [c] : hl::input_tuples<int>(Q)){
     if(c == 0){
       int u, v; std::cin >> u >> v;
 

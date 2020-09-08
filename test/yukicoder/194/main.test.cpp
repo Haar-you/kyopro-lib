@@ -10,10 +10,12 @@
 #include "Mylib/LinearAlgebra/Square/power.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
-using mint = ModInt<1000000007>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<1000000007>;
 
 struct tag {};
-using M = SquareMatrix<mint, tag>;
+using M = hl::SquareMatrix<mint, tag>;
 
 std::pair<mint, mint> solve1(int64_t N, int64_t K, std::vector<int> A){
   M m;
@@ -26,7 +28,7 @@ std::pair<mint, mint> solve1(int64_t N, int64_t K, std::vector<int> A){
   mint f = 0;
 
   {
-    auto m2 = power(m, K - N);
+    auto m2 = hl::power(m, K - N);
     for(int i = 0; i < N; ++i) f += m2[0][i] * A[i];
   }
 
@@ -35,9 +37,9 @@ std::pair<mint, mint> solve1(int64_t N, int64_t K, std::vector<int> A){
   {
     auto t = M::make_unit() - m;
     M c;
-    inverse_matrix(t, c);
+    hl::inverse_matrix(t, c);
 
-    auto temp = (M::make_unit() - power(m, K - N + 1)) * c;
+    auto temp = (M::make_unit() - hl::power(m, K - N + 1)) * c;
     temp -= M::make_unit();
 
     for(int i = 0; i < N; ++i) s += temp[0][i] * A[i];
@@ -72,7 +74,7 @@ int main(){
 
   M::init(N);
 
-  auto A = input_vector<int>(N);
+  auto A = hl::input_vector<int>(N);
 
   auto [f, s] = K > 1000000 ? solve1(N, K, A) : solve2(N, K, A);
   std::cout << f << " " << s << "\n";

@@ -7,8 +7,10 @@
 #include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 const int mod = 1000000007;
-using mint = ModInt<mod>;
+using mint = hl::ModInt<mod>;
 
 int main(){
   std::cin.tie(0);
@@ -16,12 +18,12 @@ int main(){
 
   int n, m; std::cin >> n >> m;
 
-  auto a = input_vector<int64_t>(n);
-  auto b = input_vector<int64_t>(m);
+  auto a = hl::input_vector<int64_t>(n);
+  auto b = hl::input_vector<int64_t>(m);
 
-  auto ans = convolve_general_mod<mint>(a, b);
+  auto ans = hl::convolve_general_mod<mint>(a, b);
 
-  std::cout << join(ans.begin(), ans.begin() + n + m - 1) << "\n";
+  std::cout << hl::join(ans.begin(), ans.begin() + n + m - 1) << "\n";
 
   return 0;
 }

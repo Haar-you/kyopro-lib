@@ -7,19 +7,21 @@
 #include "Mylib/Graph/enumerate_triangles.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
 
-using mint = ModInt<998244353>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<998244353>;
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, M; std::cin >> N >> M;
-  auto x = input_vector<mint>(N);
+  auto x = hl::input_vector<mint>(N);
 
-  Graph<int> g(N);
+  hl::Graph<int> g(N);
   g.read<0, false, false>(M);
 
-  auto res = enumerate_triangles(g);
+  auto res = hl::enumerate_triangles(g);
   mint ans = 0;
   for(auto [i, j, k] : res) ans += x[i] * x[j] * x[k];
 

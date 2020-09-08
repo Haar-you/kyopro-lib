@@ -6,6 +6,8 @@
 #include "Mylib/Bit/enumerate_supersets_desc.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -13,12 +15,12 @@ int main(){
   int n, k; std::cin >> n >> k;
 
   int t = 0;
-  for(auto b : input_vector<int>(k)){
+  for(auto b : hl::input_vector<int>(k)){
     t |= 1 << b;
   }
 
   std::map<int, std::vector<int>> ans;
-  enumerate_supersets_desc(
+  hl::enumerate_supersets_desc(
     t, n,
     [&](int d){
       ans[d];

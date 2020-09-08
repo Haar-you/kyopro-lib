@@ -7,14 +7,16 @@
 #include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N; std::cin >> N;
-  WeightedBipartiteMatching<int64_t, MinimumCostFlow<int, int64_t>, true> m(N, N);
+  hl::WeightedBipartiteMatching<int64_t, hl::MinimumCostFlow<int, int64_t>, true> m(N, N);
 
-  auto a = input_vector<int64_t>(N, N);
+  auto a = hl::input_vector<int64_t>(N, N);
 
   for(int i = 0; i < N; ++i){
     for(int j = 0; j < N; ++j){
@@ -32,7 +34,7 @@ int main(){
     p[i] = j;
   }
 
-  std::cout << join(p.begin(), p.end()) << "\n";
+  std::cout << hl::join(p.begin(), p.end()) << "\n";
 
   return 0;
 }

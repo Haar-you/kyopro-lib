@@ -4,7 +4,9 @@
 #include <string>
 #include "Mylib/Parser/parser.cpp"
 
-struct parser : Parser {
+namespace hl = haar_lib;
+
+struct parser : hl::Parser {
   parser(const std::string &s): Parser(s){}
 
   bool constant(){

@@ -6,7 +6,9 @@
  * @title Reflection
  * @docs reflection.md
  */
-template <typename T>
-Point<T> reflection(const Line<T> &l, const Point<T> &p){
-  return p + (projection(l, p) - p) * 2.0;
+namespace haar_lib {
+  template <typename T>
+  Point<T> reflection(const Line<T> &l, const Point<T> &p){
+    return p + (projection(l, p) - p) * 2.0;
+  }
 }

@@ -7,11 +7,13 @@
 #include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 const int mod = 998244353;
 const int PRIM_ROOT = 3;
 
-using mint = ModInt<mod>;
-using NTT = NumberTheoreticTransform<mint, PRIM_ROOT, 1 << 20>;
+using mint = hl::ModInt<mod>;
+using NTT = hl::NumberTheoreticTransform<mint, PRIM_ROOT, 1 << 20>;
 
 int main(){
   std::cin.tie(0);
@@ -19,14 +21,13 @@ int main(){
 
   int n, m; std::cin >> n >> m;
 
-  auto a = input_vector<int64_t>(n);
-  auto b = input_vector<int64_t>(m);
+  auto a = hl::input_vector<int64_t>(n);
+  auto b = hl::input_vector<int64_t>(m);
 
   auto ntt = NTT();
   auto ans = ntt.convolve(a, b);
 
-  std::cout << join(ans.begin(), ans.begin() + n + m - 1) << "\n";
+  std::cout << hl::join(ans.begin(), ans.begin() + n + m - 1) << "\n";
 
   return 0;
 }
-

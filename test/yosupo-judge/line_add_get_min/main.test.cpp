@@ -8,6 +8,8 @@
 #include "Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 using Query = std::variant<std::pair<int64_t, int64_t>, int64_t>;
 
 int main(){
@@ -20,13 +22,13 @@ int main(){
 
   std::vector<std::pair<int64_t, int64_t>> lines;
 
-  for(auto [a, b] : input_tuples<int64_t, int64_t>(N)){
+  for(auto [a, b] : hl::input_tuples<int64_t, int64_t>(N)){
     lines.emplace_back(a, b);
   }
 
   std::vector<Query> query;
 
-  for(auto [type] : input_tuples<int>(Q)){
+  for(auto [type] : hl::input_tuples<int>(Q)){
     switch(type){
     case 0: {
       int64_t a, b; std::cin >> a >> b;
@@ -42,7 +44,7 @@ int main(){
     }
   }
 
-  auto lc = make_lichao_min(xs);
+  auto lc = hl::make_lichao_min(xs);
 
   for(auto [a, b] : lines){
     lc.add_line(a, b);

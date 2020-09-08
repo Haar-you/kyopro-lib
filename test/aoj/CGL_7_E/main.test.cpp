@@ -9,14 +9,16 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/intersect_circles.cpp"
 
-using D = DoubleEps<double>;
+namespace hl = haar_lib;
+
+using D = hl::DoubleEps<double>;
 template <> double D::eps = ERROR;
 
 int main(){
-  Circle<D> c1, c2;
+  hl::Circle<D> c1, c2;
   std::cin >> c1.center >> c1.radius >> c2.center >> c2.radius;
 
-  auto [s, ans] = intersect_circles::check(c1, c2);
+  auto [s, ans] = hl::intersect_circles::check(c1, c2);
 
   std::sort(ans.begin(), ans.end(), [](const auto &a, const auto &b){return a.x < b.x or (a.x == b.x and a.y < b.y);});
 

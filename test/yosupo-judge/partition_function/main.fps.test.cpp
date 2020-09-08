@@ -8,10 +8,12 @@
 #include "Mylib/Math/formal_power_series.cpp"
 #include "Mylib/IO/join.cpp"
 
+namespace hl = haar_lib;
+
 constexpr int PRIM = 3;
-using mint = ModInt<998244353>;
-using FPS = FormalPowerSeries<mint>;
-using NTT = NumberTheoreticTransform<mint, PRIM, 1 << 20>;
+using mint = hl::ModInt<998244353>;
+using FPS = hl::FormalPowerSeries<mint>;
+using NTT = hl::NumberTheoreticTransform<mint, PRIM, 1 << 20>;
 
 int main(){
   using namespace std::placeholders;
@@ -23,8 +25,8 @@ int main(){
   auto ntt = NTT();
   FPS::convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
 
-  auto ans = partition_number<FPS>(N);
-  std::cout << join(ans.begin(), ans.begin() + (N + 1)) << "\n";
+  auto ans = hl::partition_number<FPS>(N);
+  std::cout << hl::join(ans.begin(), ans.begin() + (N + 1)) << "\n";
 
   return 0;
 }

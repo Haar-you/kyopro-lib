@@ -7,15 +7,17 @@
 #include "Mylib/DataStructure/Queue/sliding_window_aggregation.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
-using mint = ModInt<998244353>;
-using M = DualMonoid<AffineMonoid<mint>>;
+namespace hl = haar_lib;
+
+using mint = hl::ModInt<998244353>;
+using M = hl::DualMonoid<hl::AffineMonoid<mint>>;
 
 int main(){
   int Q; std::cin >> Q;
 
-  SlidingWindowAggregation<M> swag;
+  hl::SlidingWindowAggregation<M> swag;
 
-  for(auto [type] : input_tuples<int>(Q)){
+  for(auto [type] : hl::input_tuples<int>(Q)){
     if(type == 0){
       int a, b; std::cin >> a >> b;
       swag.push({a, b});

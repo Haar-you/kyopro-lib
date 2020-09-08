@@ -4,13 +4,15 @@
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/ShortestPath/bellman_ford.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int V, E, r; std::cin >> V >> E >> r;
 
-  Graph<int64_t> g(V);
+  hl::Graph<int64_t> g(V);
   g.read<0>(E);
 
-  auto res = bellman_ford(g, r);
+  auto res = hl::bellman_ford(g, r);
 
   bool neg_cycle = false;
 
