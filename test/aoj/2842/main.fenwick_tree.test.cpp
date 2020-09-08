@@ -15,7 +15,7 @@ int main(){
 
   int H, W, T, Q; std::cin >> H >> W >> T >> Q;
 
-  hl::FenwickTree2D<hl::SumGroup<int>> seg1(H, W), seg2(H, W);
+  hl::fenwick_tree_2d<hl::sum_group<int>> seg1(H, W), seg2(H, W);
 
   std::queue<std::tuple<int, int, int>> q;
 

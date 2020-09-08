@@ -22,7 +22,7 @@ int main(){
   std::sort(ls.begin(), ls.end());
   ls.erase(std::unique(ls.begin(), ls.end()), ls.end());
 
-  hl::WeightedBipartiteMatching<int, hl::MinimumCostFlow<int, int>> m(n, ls.size(), true);
+  hl::weighted_bipartite_matching<int, hl::minimum_cost_flow<int, int>> m(n, ls.size(), true);
 
   for(int i = 0; i < n; ++i){
     m.add_edge(i, std::lower_bound(ls.begin(), ls.end(), A[i]) - ls.begin(), B[i]);

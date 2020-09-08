@@ -12,7 +12,7 @@ int main(){
 
   int V, E, r; std::cin >> V >> E >> r;
 
-  hl::Graph<int64_t> g(V);
+  hl::graph<int64_t> g(V);
   g.read<0>(E);
 
   auto res = hl::dijkstra(g, {r});

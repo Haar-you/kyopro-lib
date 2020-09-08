@@ -10,12 +10,12 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct RangeCountQuery {
+  struct range_count_query {
     std::vector<int> a;
     std::vector<std::tuple<int, int, int>> qs;
     int N;
 
-    RangeCountQuery(std::vector<T> a_): N(a_.size()){
+    range_count_query(std::vector<T> a_): N(a_.size()){
       auto temp = a_;
       std::sort(temp.begin(), temp.end());
       temp.erase(std::unique(temp.begin(), temp.end()), temp.end());
@@ -34,7 +34,7 @@ namespace haar_lib {
     auto solve(){
       std::sort(qs.begin(), qs.end());
 
-      haar_lib::FenwickTreeAdd<int> b(N);
+      fenwick_tree_add<int> b(N);
 
       const int Q = qs.size();
       std::vector<int> last_index(N, -1);

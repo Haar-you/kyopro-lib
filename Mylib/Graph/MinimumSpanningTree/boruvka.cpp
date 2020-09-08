@@ -10,19 +10,19 @@
  */
 namespace haar_lib {
   template <typename T>
-  auto boruvka(const Graph<T> &g){
-    std::vector<Edge<T>> ret;
+  auto boruvka(const graph<T> &g){
+    std::vector<edge<T>> ret;
     const int N = g.size();
 
-    UnionFind uf(N);
+    unionfind uf(N);
     std::vector<std::vector<int>> c(N);
     for(int i = 0; i < N; ++i) c[i].push_back(i);
 
     while((int)(ret.size()) < N - 1){
-      std::vector<Edge<T>> temp;
+      std::vector<edge<T>> temp;
 
       for(auto &a : c){
-        Edge<T> m;
+        edge<T> m;
         bool ok = false;
 
         if(a.empty()) continue;

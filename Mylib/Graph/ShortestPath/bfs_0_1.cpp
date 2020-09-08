@@ -9,7 +9,7 @@
  * @docs bfs_0_1.md
  */
 namespace haar_lib {
-  std::vector<std::optional<int64_t>> bfs_0_1(const Graph<int> &g, const std::vector<int> &src){
+  std::vector<std::optional<int64_t>> bfs_0_1(const graph<int> &g, const std::vector<int> &src){
     const int n = g.size();
     std::vector<std::optional<int64_t>> ret(n);
     std::vector<bool> visited(n);

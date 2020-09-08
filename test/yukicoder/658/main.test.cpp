@@ -7,7 +7,7 @@
 
 namespace hl = haar_lib;
 
-using mint = hl::ModInt<17>;
+using mint = hl::modint<17>;
 
 int main(){
   std::cin.tie(0);
@@ -16,7 +16,7 @@ int main(){
   int Q; std::cin >> Q;
 
   for(auto [N] : hl::input_tuples<int64_t>(Q)){
-    hl::KitamasaAlgorithm<mint> ka(4, {0, 0, 0, 1}, {1, 1, 1, 1});
+    hl::kitamasa_algorithm<mint> ka(4, {0, 0, 0, 1}, {1, 1, 1, 1});
     std::cout << ka[N - 1] << std::endl;
   }
 

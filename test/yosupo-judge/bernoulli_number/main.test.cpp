@@ -11,10 +11,10 @@
 
 namespace hl = haar_lib;
 
-using mint = hl::ModInt<998244353>;
+using mint = hl::modint<998244353>;
 constexpr int PRIM_ROOT = 3;
-using FPS = hl::FormalPowerSeries<mint>;
-using NTT = hl::NumberTheoreticTransform<mint, PRIM_ROOT, 1 << 20>;
+using FPS = hl::formal_power_series<mint>;
+using NTT = hl::number_theoretic_transform<mint, PRIM_ROOT, 1 << 20>;
 
 int main(){
   using namespace std::placeholders;
@@ -23,7 +23,7 @@ int main(){
 
   int N; std::cin >> N;
 
-  auto ft = hl::FactorialTable<mint>(N + 1);
+  auto ft = hl::factorial_table<mint>(N + 1);
 
   auto ntt = NTT();
   FPS::convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);

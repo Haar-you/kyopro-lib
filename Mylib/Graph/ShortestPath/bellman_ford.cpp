@@ -11,15 +11,15 @@
 namespace haar_lib {
   namespace bellman_ford_impl {
     template <typename T>
-    struct Result {
+    struct result {
       enum class Tag {OK, NEGLOOP, UNREACHABLE} tag;
       T val;
-      Result(Tag tag): tag(tag){}
+      result(Tag tag): tag(tag){}
 
     public:
-      static auto unreachable() {return Result(Tag::UNREACHABLE);}
-      static auto negloop() {return Result(Tag::NEGLOOP);}
-      Result(T val): tag(Tag::OK), val(val){}
+      static auto unreachable() {return result(Tag::UNREACHABLE);}
+      static auto negloop() {return result(Tag::NEGLOOP);}
+      result(T val): tag(Tag::OK), val(val){}
 
       bool is_unreachable() const {return tag == Tag::UNREACHABLE;}
       bool is_negloop() const {return tag == Tag::NEGLOOP;}
@@ -30,7 +30,7 @@ namespace haar_lib {
         return val;
       }
 
-      friend std::ostream& operator<<(std::ostream &s, const Result &a){
+      friend std::ostream& operator<<(std::ostream &s, const result &a){
         if(a.is_unreachable()) s << "∞";
         else if(a.is_negloop()) s << "-∞";
         else s << a.value();
@@ -40,8 +40,8 @@ namespace haar_lib {
   }
 
   template <typename T>
-  auto bellman_ford(const Graph<T> &g, int src){
-    using Result = bellman_ford_impl::Result<T>;
+  auto bellman_ford(const graph<T> &g, int src){
+    using Result = bellman_ford_impl::result<T>;
     const int n = g.size();
     std::vector<Result> dist(n, Result::unreachable());
 

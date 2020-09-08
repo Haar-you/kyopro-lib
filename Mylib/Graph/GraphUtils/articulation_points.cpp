@@ -11,7 +11,7 @@ namespace haar_lib {
   namespace articulation_points_impl {
     template <typename T>
     int dfs(
-      const Graph<T> &graph,
+      const graph<T> &g,
       int root,
       int cur,
       std::vector<int> &visit,
@@ -26,9 +26,9 @@ namespace haar_lib {
       std::vector<int> children;
       ++v;
 
-      for(auto &e : graph[cur]){
+      for(auto &e : g[cur]){
         if(visit[e.to] == -1) children.push_back(e.to);
-        int t = dfs(graph, root, e.to, visit, low, ret, v);
+        int t = dfs(g, root, e.to, visit, low, ret, v);
         temp = std::min(temp, t);
       }
 
@@ -48,14 +48,14 @@ namespace haar_lib {
   }
 
   template <typename T>
-  std::vector<int> articulation_points(const Graph<T> &graph){
-    const int n = graph.size();
+  std::vector<int> articulation_points(const graph<T> &g){
+    const int n = g.size();
     std::vector<int> visit(n, -1), low(n, -1), ret;
     int v = 0;
 
     for(int i = 0; i < n; ++i){
       if(visit[i] == -1){
-        articulation_points_impl::dfs(graph, i, i, visit, low, ret, v);
+        articulation_points_impl::dfs(g, i, i, visit, low, ret, v);
       }
     }
 

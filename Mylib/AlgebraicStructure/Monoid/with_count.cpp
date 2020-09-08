@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename Monoid>
-  struct WithCount {
+  struct with_count {
     using value_type = std::pair<typename Monoid::value_type, int64_t>;
     const static Monoid M;
 

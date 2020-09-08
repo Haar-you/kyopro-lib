@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename Monoid>
-  class DynamicDualSegmentTree {
+  class dynamic_dual_segment_tree {
     using value_type = typename Monoid::value_type;
     const static Monoid M;
 
@@ -62,7 +62,7 @@ namespace haar_lib {
     }
 
   public:
-    DynamicDualSegmentTree(int64_t n):
+    dynamic_dual_segment_tree(int64_t n):
       depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),
       size(1LL << depth)
     {

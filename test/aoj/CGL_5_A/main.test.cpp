@@ -10,13 +10,13 @@
 
 namespace hl = haar_lib;
 
-using D = hl::DoubleEps<double>;
+using D = hl::double_eps<double>;
 template <> double D::eps = ERROR;
 
 int main(){
   int n; std::cin >> n;
 
-  auto p = hl::input_vector<hl::Point<D>>(n);
+  auto p = hl::input_vector<hl::point<D>>(n);
 
   auto ans = hl::closest_pair(p);
 

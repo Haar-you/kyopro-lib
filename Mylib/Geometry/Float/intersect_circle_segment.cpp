@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   namespace intersect_circle_segment {
-    enum Status {
+    enum status_t {
                  INSIDE         = 0b00001,
                  OUTSIDE        = 0b00010,
                  TANGENT        = 0b00100,
@@ -18,13 +18,13 @@ namespace haar_lib {
     };
 
     template <typename T>
-    struct Result {
-      Status status;
-      std::vector<Point<T>> crosspoints;
+    struct result {
+      status_t status;
+      std::vector<point<T>> crosspoints;
     };
 
     template <typename T>
-    auto check(const Circle<T> &cl, const Line<T> &s){
+    auto check(const circle<T> &cl, const line<T> &s){
       const T r = cl.radius;
       const auto &c = cl.center;
 
@@ -36,23 +36,23 @@ namespace haar_lib {
       const auto k = s.from + diff(s) * cross(n, c + n - s.from) / cross(n, diff(s));
 
       if(d1 < r and d2 < r){
-        return Result<T>({INSIDE, {}});
+        return result<T>({INSIDE, {}});
       }
       else if(v == r){
-        return Result<T>({TANGENT, {k}});
+        return result<T>({TANGENT, {k}});
       }
       else if(v > r){
-        return Result<T>({OUTSIDE, {}});
+        return result<T>({OUTSIDE, {}});
       }
       else if(d1 >= r and d2 >= r){
-        return Result<T>({TWO_CROSSPOINT, {k - unit(s) * m, k + unit(s) * m}});
+        return result<T>({TWO_CROSSPOINT, {k - unit(s) * m, k + unit(s) * m}});
       }
 
       const T b = dot(unit(s), s.from - c);
       const T a = abs_sq(s.from - c) - r * r;
       const T x = sqrt(b * b - a);
 
-      return Result<T>({ONE_CROSSPOINT, {s.from + unit(s) * (-b - x >= 0 ? -b - x : -b + x)}});
+      return result<T>({ONE_CROSSPOINT, {s.from + unit(s) * (-b - x >= 0 ? -b - x : -b + x)}});
     }
   };
 }

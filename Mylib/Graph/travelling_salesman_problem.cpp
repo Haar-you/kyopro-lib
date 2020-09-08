@@ -10,7 +10,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  std::optional<T> travelling_salesman_problem(const Graph<T> &g, int src){
+  std::optional<T> travelling_salesman_problem(const graph<T> &g, int src){
     const int n = g.size();
 
     std::vector<std::vector<std::optional<T>>> dp(n, std::vector<std::optional<T>>(1 << n));

@@ -9,7 +9,7 @@
 
 namespace hl = haar_lib;
 
-using mint = hl::ModInt<1000000007>;
+using mint = hl::modint<1000000007>;
 
 int main(){
   int n; std::cin >> n;

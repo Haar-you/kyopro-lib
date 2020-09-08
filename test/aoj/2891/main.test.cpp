@@ -10,10 +10,10 @@ namespace hl = haar_lib;
 int main(){
   int N; std::cin >> N;
 
-  hl::Graph<int> g(N);
+  hl::graph<int> g(N);
   g.read<1, false, false>(N);
 
-  auto res = hl::PseudoTree<int>(g);
+  auto res = hl::pseudo_tree<int>(g);
 
   int Q; std::cin >> Q;
   for(auto [a, b] : hl::input_tuples<int, int>(Q)){

@@ -10,7 +10,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  std::vector<std::optional<int64_t>> bfs_shortest_path(const Graph<T> &g, const std::vector<int> &src){
+  std::vector<std::optional<int64_t>> bfs_shortest_path(const graph<T> &g, const std::vector<int> &src){
     const int n = g.size();
     std::vector<std::optional<int64_t>> ret(n, std::nullopt);
     std::vector<bool> visited(n);

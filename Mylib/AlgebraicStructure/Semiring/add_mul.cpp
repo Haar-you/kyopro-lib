@@ -6,7 +6,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct AddMulSemiring {
+  struct add_mul_semiring {
     using value_type = T;
     value_type id_add() const {return 0;}
     value_type id_mul() const {return 1;}

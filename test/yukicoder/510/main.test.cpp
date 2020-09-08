@@ -11,9 +11,9 @@
 
 namespace hl = haar_lib;
 
-using mint = hl::ModInt<1000000007>;
-using Mat = hl::SquareMatrixConst<mint, 4>;
-using Monoid = hl::DualMonoid<hl::ProductMatrixMonoid<Mat>>;
+using mint = hl::modint<1000000007>;
+using Mat = hl::square_matrix_const<mint, 4>;
+using Monoid = hl::dual_monoid<hl::product_matrix_monoid<Mat>>;
 
 auto f(mint x, mint y){
   Mat ret = {
@@ -28,7 +28,7 @@ auto f(mint x, mint y){
 int main(){
   int n, q; std::cin >> n >> q;
 
-  hl::SegmentTree<Monoid> seg(n);
+  hl::segment_tree<Monoid> seg(n);
   std::vector<mint> x(n), y(n);
 
   for(int i = 0; i < n; ++i){

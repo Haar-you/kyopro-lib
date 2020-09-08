@@ -17,7 +17,7 @@ int main(){
 
   auto a = hl::input_vector<int>(N);
 
-  hl::SparseTable<hl::MinMonoid<int>> s(a);
+  hl::sparse_table<hl::min_monoid<int>> s(a);
 
   for(auto [l, r] : hl::input_tuples<int, int>(Q)){
     std::cout << s.get(l, r).value() << "\n";

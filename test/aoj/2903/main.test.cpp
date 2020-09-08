@@ -14,7 +14,7 @@ int main(){
 
   auto S = hl::input_vector<std::string>(R);
 
-  hl::ProjectSelectionProblem<int, hl::FordFulkerson<int>> psp(R * C);
+  hl::project_selection_problem<int, hl::ford_fulkerson<int>> psp(R * C);
   // red: horizontal
   // blue: vertical
 

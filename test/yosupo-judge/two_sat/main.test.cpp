@@ -14,7 +14,7 @@ int main(){
   int N, M;
   std::cin >> p >> cnf >> N >> M;
 
-  hl::TwoSat sat(N);
+  hl::two_sat sat(N);
 
   for(auto [a, b, c] : hl::input_tuples<int, int, int>(M)){
     sat.add_or(a, b);

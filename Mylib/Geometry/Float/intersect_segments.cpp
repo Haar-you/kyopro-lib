@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   namespace intersect_segments {
-    enum Status {
+    enum status_t {
                  INTERSECTING     = 0b0001,
                  OVERLAPPED       = 0b0010,
                  NOT_INTERSECTING = 0b0100,
@@ -17,21 +17,21 @@ namespace haar_lib {
     };
 
     template <typename T>
-    struct Result {
-      Status status;
-      std::vector<Point<T>> crosspoints;
+    struct result {
+      status_t status;
+      std::vector<point<T>> crosspoints;
     };
 
     template <typename T>
-    auto check(const Segment<T> &a, const Segment<T> &b){
+    auto check(const segment<T> &a, const segment<T> &b){
       const T cr = cross(a, b);
 
       if(abs(cr) == 0){ // parallel
         if(ccw::ccw(a.from, a.to, b.from) * ccw::ccw(a.from, a.to, b.to) <= 0 and
            ccw::ccw(b.from, b.to, a.from) * ccw::ccw(b.from, b.to, a.to) <= 0){
-          return Result<T>({OVERLAPPED, {}});
+          return result<T>({OVERLAPPED, {}});
         }else{
-          return Result<T>({NOT_INTERSECTING, {}});
+          return result<T>({NOT_INTERSECTING, {}});
         }
       }
 
@@ -39,10 +39,10 @@ namespace haar_lib {
       const T t2 = cross(b.from - a.from, diff(a)) / cr;
 
       if(t1 < 0 or t1 > 1 or t2 < 0 or t2 > 1){ // no crosspoint
-        return Result<T>({NOT_INTERSECTING, {}});
+        return result<T>({NOT_INTERSECTING, {}});
       }
 
-      return Result<T>({INTERSECTING, {a.from + diff(a) * t1}});
+      return result<T>({INTERSECTING, {a.from + diff(a) * t1}});
     }
   }
 }

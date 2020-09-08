@@ -10,13 +10,13 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct Forest {
-    std::vector<Tree<T>> trees;
+  struct forest {
+    std::vector<tree<T>> trees;
     std::vector<int> tree_id;
     std::vector<int> vertex_id;
     std::vector<std::vector<int>> rid;
 
-    Forest(const Graph<T> &g){
+    forest(const graph<T> &g){
       const int N = g.size();
 
       tree_id.resize(N);
@@ -25,7 +25,7 @@ namespace haar_lib {
       std::vector<bool> check(N);
 
       auto dfs =
-        [&](auto &dfs, int cur, std::vector<int> &vertices, std::vector<Edge<T>> &edges) -> void {
+        [&](auto &dfs, int cur, std::vector<int> &vertices, std::vector<edge<T>> &edges) -> void {
           check[cur] = true;
           vertices.push_back(cur);
 
@@ -41,7 +41,7 @@ namespace haar_lib {
       for(int i = 0; i < N; ++i){
         if(not check[i]){
           std::vector<int> vertices;
-          std::vector<Edge<T>> edges;
+          std::vector<edge<T>> edges;
           dfs(dfs, i, vertices, edges);
 
           const int m = vertices.size();

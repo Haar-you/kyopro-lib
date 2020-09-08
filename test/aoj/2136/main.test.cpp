@@ -11,14 +11,14 @@
 
 namespace hl = haar_lib;
 
-using D = hl::DoubleEps<double>;
+using D = hl::double_eps<double>;
 template <> double D::eps = 1e-7;
 
-bool intersect(const std::vector<hl::Point<D>> &a, const std::vector<hl::Point<D>> &b){
+bool intersect(const std::vector<hl::point<D>> &a, const std::vector<hl::point<D>> &b){
   for(int i = 0; i < (int)a.size() - 1; ++i){
     for(int j = 0; j < (int)b.size() - 1; ++j){
-      auto l1 = hl::Line<D>(a[i], a[i + 1]);
-      auto l2 = hl::Line<D>(b[j], b[j + 1]);
+      auto l1 = hl::line<D>(a[i], a[i + 1]);
+      auto l2 = hl::line<D>(b[j], b[j + 1]);
       if(hl::intersect_segments::check(l1, l2).status != hl::intersect_segments::NOT_INTERSECTING){
         return true;
       }
@@ -35,10 +35,10 @@ int main(){
   int N;
 
   while(std::cin >> N, N){
-    std::vector<std::vector<hl::Point<D>>> lines(N);
+    std::vector<std::vector<hl::point<D>>> lines(N);
 
     for(auto [i, S] : hl::input_tuples_with_index<int>(N)){
-      lines[i] = hl::input_vector<hl::Point<D>>(S);
+      lines[i] = hl::input_vector<hl::point<D>>(S);
     }
 
     std::vector<std::vector<int>> graph(N);

@@ -13,7 +13,7 @@ int main(){
 
   int N, M; std::cin >> N >> M;
 
-  hl::Graph<int> g(N);
+  hl::graph<int> g(N);
   g.read<0, false, false>(M);
 
   auto res = hl::two_edge_connected_components(g);

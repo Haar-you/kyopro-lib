@@ -9,7 +9,7 @@
  * @docs undirected_eulerian_path.md
  */
 namespace haar_lib {
-  class UndirectedEulerianPath {
+  class undirected_eulerian_path {
     const int n; // node count
     int edges = 0; // edge count
     std::vector<std::map<int, int>> graph;
@@ -42,7 +42,7 @@ namespace haar_lib {
     }
 
   public:
-    UndirectedEulerianPath(int n): n(n), graph(n), degree(n){}
+    undirected_eulerian_path(int n): n(n), graph(n), degree(n){}
 
     void add(int i, int j){
       ++graph[i][j];

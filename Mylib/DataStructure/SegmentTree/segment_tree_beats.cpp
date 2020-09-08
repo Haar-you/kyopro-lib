@@ -8,7 +8,7 @@
  * @docs segment_tree_beats.md
  */
 namespace haar_lib {
-  class SegmentTreeBeats {
+  class segment_tree_beats {
     using value_type = int64_t;
 
     const int depth, size, hsize;
@@ -22,7 +22,7 @@ namespace haar_lib {
     std::vector<value_type> sum, lazy_add;
 
   public:
-    SegmentTreeBeats(int n):
+    segment_tree_beats(int n):
       depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
       size(1 << depth),
       hsize(size / 2),

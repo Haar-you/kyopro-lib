@@ -19,7 +19,7 @@ int main(){
 
   int N, M, K, Q; std::cin >> N >> M >> K >> Q;
 
-  hl::Graph<int> g(N);
+  hl::graph<int> g(N);
   g.read<1, false>(M);
 
   auto F = hl::input_vector<int>(K);
@@ -51,13 +51,13 @@ int main(){
     }
   }
 
-  hl::UnionFind uf;
+  hl::unionfind uf;
 
   auto res =
     hl::parallel_binary_search(
       C,
       Q,
-      [&](){uf = hl::UnionFind(N);},
+      [&](){uf = hl::unionfind(N);},
       [&](int i){
         for(auto [x, y] : edges[C - 1 - i]){
           uf.merge(x, y);

@@ -10,12 +10,12 @@
  */
 namespace haar_lib {
   template <typename Container>
-  struct SuffixArray {
+  struct suffix_array {
     Container s;
     int N;
     std::vector<int> data;
 
-    SuffixArray(Container s_): s(s_), N(s.size()), data(N){
+    suffix_array(Container s_): s(s_), N(s.size()), data(N){
       if(N == 1){
         data = {1, 0};
         return;
@@ -135,7 +135,7 @@ namespace haar_lib {
         if(rank[i] != 0) t.push_back(rank[i]);
       }
 
-      auto sa = SuffixArray<std::vector<int>>(t).data;
+      auto sa = suffix_array<std::vector<int>>(t).data;
 
       std::vector<int> LMS_sorted;
       for(int i = 1; i < (int)sa.size(); ++i){

@@ -9,7 +9,7 @@ namespace hl = haar_lib;
 int main(){
   int n, q; std::cin >> n >> q;
 
-  hl::WeightedUnionFind<int> uf(n);
+  hl::weighted_unionfind<int> uf(n);
 
   for(auto [type, x, y] : hl::input_tuples<int, int, int>(q)){
     if(type == 0){

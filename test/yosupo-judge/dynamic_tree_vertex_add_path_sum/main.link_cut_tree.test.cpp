@@ -14,7 +14,7 @@ int main(){
 
   int N, Q; std::cin >> N >> Q;
 
-  hl::LinkCutTree<hl::SumMonoid<int64_t>> lct(N);
+  hl::link_cut_tree<hl::sum_monoid<int64_t>> lct(N);
 
   for(auto [i, a] : hl::input_tuples_with_index<int64_t>(N)){
     lct.update(i, a);

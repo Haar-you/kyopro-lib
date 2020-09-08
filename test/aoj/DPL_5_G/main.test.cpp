@@ -7,10 +7,10 @@
 
 namespace hl = haar_lib;
 
-using mint = hl::ModInt<1000000007>;
+using mint = hl::modint<1000000007>;
 
 int main(){
-  auto ft = hl::FactorialTable<mint>(3000);
+  auto ft = hl::factorial_table<mint>(3000);
 
   int N, K; std::cin >> N >> K;
 

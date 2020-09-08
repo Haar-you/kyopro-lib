@@ -12,7 +12,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  auto dijkstra(const Graph<T> &graph, std::vector<int> src){
+  auto dijkstra(const graph<T> &graph, std::vector<int> src){
     using P = std::pair<T, int>;
 
     const int n = graph.size();

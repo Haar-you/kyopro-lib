@@ -10,16 +10,16 @@
 
 namespace hl = haar_lib;
 
-using D = hl::DoubleEps<double>;
+using D = hl::double_eps<double>;
 template <> double D::eps = ERROR;
 
 int main(){
   int n; std::cin >> n;
   int r; std::cin >> r;
 
-  hl::Circle<D> c(hl::Point<D>(0, 0), r);
+  hl::circle<D> c(hl::point<D>(0, 0), r);
 
-  hl::Polygon<D> p = hl::input_vector<hl::Point<D>>(n);
+  hl::polygon<D> p = hl::input_vector<hl::point<D>>(n);
 
   auto ans = hl::area_intersection_of_circle_and_polygon(c, p);
 

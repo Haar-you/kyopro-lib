@@ -8,7 +8,7 @@
  */
 namespace haar_lib {
   template <typename Monoid>
-  struct WithMinIndex {
+  struct with_min_index {
     using value_type = std::pair<typename Monoid::value_type, int64_t>;
     const static Monoid M;
 

@@ -12,19 +12,19 @@
 
 namespace hl = haar_lib;
 
-using D = hl::DoubleEps<double>;
+using D = hl::double_eps<double>;
 template <> double D::eps = ERROR;
 
 int main(){
   int n; std::cin >> n;
-  hl::Polygon<D> g = hl::input_vector<hl::Point<D>>(n);
+  hl::polygon<D> g = hl::input_vector<hl::point<D>>(n);
 
   int q; std::cin >> q;
 
-  for(auto [p1, p2] : hl::input_tuples<hl::Point<D>, hl::Point<D>>(q)){
-    hl::Line<D> l(p1, p2);
+  for(auto [p1, p2] : hl::input_tuples<hl::point<D>, hl::point<D>>(q)){
+    hl::line<D> l(p1, p2);
 
-    hl::Polygon<D> left, right;
+    hl::polygon<D> left, right;
     hl::convex_cut(g, l, left, right);
 
     std::cout << std::fixed << std::setprecision(12) << hl::area(left) << std::endl;

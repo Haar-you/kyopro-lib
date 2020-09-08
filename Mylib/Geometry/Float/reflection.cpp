@@ -8,7 +8,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  Point<T> reflection(const Line<T> &l, const Point<T> &p){
+  point<T> reflection(const line<T> &l, const point<T> &p){
     return p + (projection(l, p) - p) * 2.0;
   }
 }

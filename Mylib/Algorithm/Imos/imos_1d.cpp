@@ -7,11 +7,11 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct Imos1D {
+  struct imos_1d {
     using value_type = T;
 
     std::vector<T> data;
-    Imos1D(int n): data(n + 1){}
+    imos_1d(int n): data(n + 1){}
 
     void add(int a, int b, const T& val){ // [a, b)
       data[a] += 1;

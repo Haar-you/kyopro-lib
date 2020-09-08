@@ -9,14 +9,14 @@
 
 namespace hl = haar_lib;
 
-using D = hl::DoubleEps<double>;
+using D = hl::double_eps<double>;
 template <> double D::eps = 1e-7;
 
 int main(){
   int q; std::cin >> q;
 
-  for(auto [p0, p1, p2, p3] : hl::input_tuples<hl::Point<D>, hl::Point<D>, hl::Point<D>, hl::Point<D>>(q)){
-    hl::Line<D> s1(p0, p1), s2(p2, p3);
+  for(auto [p0, p1, p2, p3] : hl::input_tuples<hl::point<D>, hl::point<D>, hl::point<D>, hl::point<D>>(q)){
+    hl::line<D> s1(p0, p1), s2(p2, p3);
 
     if(hl::parallel(s1, s2)){
       std::cout << 2 << std::endl;

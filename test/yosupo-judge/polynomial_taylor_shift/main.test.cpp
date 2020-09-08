@@ -10,8 +10,8 @@
 
 namespace hl = haar_lib;
 
-using mint = hl::ModInt<998244353>;
-using NTT = hl::NumberTheoreticTransform<mint, 3, 1 << 21>;
+using mint = hl::modint<998244353>;
+using NTT = hl::number_theoretic_transform<mint, 3, 1 << 21>;
 
 int main(){
   using namespace std::placeholders;

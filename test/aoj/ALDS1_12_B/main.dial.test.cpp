@@ -11,7 +11,7 @@ int main(){
   std::ios::sync_with_stdio(false);
 
   int n; std::cin >> n;
-  hl::Graph<int> g(n);
+  hl::graph<int> g(n);
 
   for(int i = 0; i < n; ++i){
     int u, k; std::cin >> u >> k;

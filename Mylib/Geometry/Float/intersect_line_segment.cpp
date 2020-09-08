@@ -8,7 +8,7 @@
  */
 namespace haar_lib {
   namespace intersect_line_segment {
-    enum Status {
+    enum status_t {
                  LEFTSIDE   = 0b0001,
                  RIGHTSIDE  = 0b0010,
                  OVERLAPPED = 0b0100,
@@ -16,27 +16,27 @@ namespace haar_lib {
     };
 
     template <typename T>
-    struct Result {
-      Status status;
-      std::vector<Point<T>> crosspoints;
+    struct result {
+      status_t status;
+      std::vector<point<T>> crosspoints;
     };
 
     template <typename T>
-    auto check(const Line<T> &l, const Segment<T> &s){
+    auto check(const line<T> &l, const segment<T> &s){
       const T a = cross(diff(l), s.from - l.from);
       const T b = cross(diff(l), s.to - l.from);
 
       if(a == 0 and b == 0){
-        return Result<T>({OVERLAPPED, {}});
+        return result<T>({OVERLAPPED, {}});
       }
       else if(a < 0 and b < 0){
-        return Result<T>({RIGHTSIDE, {}});
+        return result<T>({RIGHTSIDE, {}});
       }
       else if(a > 0 and b > 0){
-        return Result<T>({LEFTSIDE, {}});
+        return result<T>({LEFTSIDE, {}});
       }
 
-      return Result<T>({CROSSED, {s.from + diff(s) * cross(diff(l), l.from - s.from) / cross(l, s)}});
+      return result<T>({CROSSED, {s.from + diff(s) * cross(diff(l), l.from - s.from) / cross(l, s)}});
     }
   }
 }

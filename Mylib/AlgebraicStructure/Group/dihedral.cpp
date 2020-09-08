@@ -8,7 +8,7 @@
  */
 namespace haar_lib {
   template <typename Tag>
-  struct DihedralGroup {
+  struct dihedral_group {
     struct R {
       int value = 0;
       friend std::ostream& operator<<(std::ostream &s, const R &a){
@@ -59,5 +59,5 @@ namespace haar_lib {
     }
   };
 
-  template <typename Tag> int DihedralGroup<Tag>::K;
+  template <typename Tag> int dihedral_group<Tag>::K;
 }

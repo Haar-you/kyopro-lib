@@ -7,9 +7,9 @@
  */
 namespace haar_lib {
   template <typename Monoid>
-  struct LinkCutNode {
+  struct link_cut_node {
     using value_type = typename Monoid::value_type;
-    using node = LinkCutNode;
+    using node = link_cut_node;
     const static Monoid M;
 
     int subsize;
@@ -17,7 +17,7 @@ namespace haar_lib {
     bool rev;
     value_type value, result;
 
-    LinkCutNode():
+    link_cut_node():
       subsize(1),
       left(nullptr),
       right(nullptr),
@@ -150,16 +150,16 @@ namespace haar_lib {
   };
 
   template <typename Monoid>
-  class LinkCutTree {
+  class link_cut_tree {
     using value_type = typename Monoid::value_type;
-    using node = LinkCutNode<Monoid>;
+    using node = link_cut_node<Monoid>;
     const static Monoid M;
 
     int N;
     std::vector<node*> nodes;
 
   public:
-    LinkCutTree(int N): N(N), nodes(N){
+    link_cut_tree(int N): N(N), nodes(N){
       for(int i = 0; i < N; ++i){
         nodes[i] = new node();
       }

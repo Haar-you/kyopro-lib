@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename Monoid>
-  class SegmentTree2D {
+  class segment_tree_2d {
     using value_type = typename Monoid::value_type;
     const static Monoid M;
 
@@ -21,10 +21,10 @@ namespace haar_lib {
 
     int x_size;
 
-    std::vector<SegmentTree<Monoid>> segs;
+    std::vector<segment_tree<Monoid>> segs;
 
   public:
-    SegmentTree2D(){}
+    segment_tree_2d(){}
 
     void add(int64_t x, int64_t y){
       xs.push_back(x);
@@ -67,7 +67,7 @@ namespace haar_lib {
       }
 
       for(int i = 1; i < x_size; ++i){
-        segs[i] = SegmentTree<Monoid>(c_ys[i].size());
+        segs[i] = segment_tree<Monoid>(c_ys[i].size());
       }
     }
 

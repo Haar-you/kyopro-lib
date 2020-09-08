@@ -9,8 +9,8 @@
  */
 namespace haar_lib {
   template <typename T>
-  std::vector<T> tree_distance(const Tree<T> &tree, int root){
-    const int n = tree.size();
+  std::vector<T> tree_distance(const tree<T> &tr, int root){
+    const int n = tr.size();
     std::vector<T> ret(n);
     std::vector<bool> visited(n);
 
@@ -22,7 +22,7 @@ namespace haar_lib {
       int cur = st.top(); st.pop();
       visited[cur] = true;
 
-      for(auto &e : tree[cur]){
+      for(auto &e : tr[cur]){
         if(not visited[e.to]){
           ret[e.to] = ret[cur] + e.cost;
           st.push(e.to);

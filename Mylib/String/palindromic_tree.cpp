@@ -10,7 +10,7 @@
  * @docs palindromic_tree
  */
 namespace haar_lib {
-  class PalindromicTree {
+  class palindromic_tree {
     struct node {
       int length;
       int count;
@@ -23,7 +23,7 @@ namespace haar_lib {
     int size_ = 2;
 
   public:
-    PalindromicTree(const std::string_view &s){
+    palindromic_tree(const std::string_view &s){
       even_root = new node();
       even_root->length = 0;
 

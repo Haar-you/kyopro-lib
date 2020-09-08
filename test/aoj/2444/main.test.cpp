@@ -11,14 +11,14 @@
 namespace hl = haar_lib;
 
 int main(){
-  using Monoid = hl::RollingHashMonoid<2>;
+  using Monoid = hl::rolling_hash_monoid<2>;
   Monoid::base = {33, 100};
   Monoid::mod = 1000000007;
 
   int n, m; std::cin >> n >> m;
   std::string s; std::cin >> s;
 
-  hl::SegmentTree<Monoid> seg(n);
+  hl::segment_tree<Monoid> seg(n);
   for(int i = 0; i < n; ++i) seg.update(i, Monoid::make(s[i]));
 
   std::set<std::array<int64_t, 2>> set;

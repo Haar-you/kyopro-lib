@@ -10,7 +10,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  class RangeModeQuery {
+  class range_mode_query {
     std::vector<T> a, D;
     std::vector<int> b, b_index;
 
@@ -24,7 +24,7 @@ namespace haar_lib {
     std::vector<std::vector<int>> mode, freq;
 
   public:
-    RangeModeQuery(std::vector<T> a):
+    range_mode_query(std::vector<T> a):
       a(a), D(a), N(a.size()), block_size(sqrt(N)), block_num((N + block_size - 1) / block_size),
       mode(block_num, std::vector<int>(block_num)),
       freq(block_num, std::vector<int>(block_num))

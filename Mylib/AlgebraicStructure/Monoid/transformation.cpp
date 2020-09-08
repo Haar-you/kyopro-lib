@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <size_t N>
-  struct TransformationMonoid {
+  struct transformation_monoid {
     using value_type = std::array<int, N>;
 
     value_type operator()() const {

@@ -10,9 +10,9 @@
  */
 namespace haar_lib {
   template <typename T>
-  std::vector<Edge<T>> kruskal(const Graph<T> &graph){
+  std::vector<edge<T>> kruskal(const graph<T> &graph){
     const int n = graph.size();
-    std::vector<Edge<T>> edges;
+    std::vector<edge<T>> edges;
     for(auto &v : graph){
       for(auto &e : v){
         edges.push_back(e);
@@ -21,9 +21,9 @@ namespace haar_lib {
 
     std::sort(edges.begin(), edges.end(), [](const auto &a, const auto &b){return a.cost < b.cost;});
 
-    UnionFind uf(n);
+    unionfind uf(n);
 
-    std::vector<Edge<T>> ret;
+    std::vector<edge<T>> ret;
 
     for(auto &e : edges){
       if(!uf.is_same(e.from, e.to)){

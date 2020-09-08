@@ -10,7 +10,7 @@ namespace hl = haar_lib;
 int main(){
   int n, q; std::cin >> n >> q;
 
-  hl::LazySegmentTree<hl::AddMin<int64_t, int64_t>> seg(n);
+  hl::lazy_segment_tree<hl::add_min<int64_t, int64_t>> seg(n);
   seg.init(0);
 
   for(auto [type, s, t] : hl::input_tuples<int, int, int>(q)){

@@ -9,18 +9,18 @@
  */
 namespace haar_lib {
   template <typename T>
-  class LCA {
+  class lowest_common_ancestor {
   private:
     std::vector<std::vector<int>> parent;
     int n, log2n;
 
-    void dfs(const Tree<T> &tree, int cur, int par, int d){
+    void dfs(const tree<T> &tr, int cur, int par, int d){
       parent[cur][0] = par;
       depth[cur] = d;
 
-      for(auto &e : tree[cur]){
+      for(auto &e : tr[cur]){
         if(e.to != par){
-          dfs(tree, e.to, cur, d + 1);
+          dfs(tr, e.to, cur, d + 1);
         }
       }
     }
@@ -28,14 +28,14 @@ namespace haar_lib {
   public:
     std::vector<int> depth;
 
-    LCA(){}
-    LCA(const Tree<T> &tree, int root):
-      n(tree.size()), depth(n)
+    lowest_common_ancestor(){}
+    lowest_common_ancestor(const tree<T> &tr, int root):
+      n(tr.size()), depth(n)
     {
       log2n = (int)ceil(log2(n)) + 1;
       parent = std::vector(n, std::vector<int>(log2n, 0));
 
-      dfs(tree, root, -1, 0);
+      dfs(tr, root, -1, 0);
       for(int k = 0; k < log2n - 1; ++k){
         for(int v = 0; v < n; ++v){
           if(parent[v][k] == -1) parent[v][k + 1] = -1;

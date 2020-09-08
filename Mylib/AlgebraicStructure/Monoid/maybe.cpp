@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename Semigroup>
-  struct MaybeMonoid {
+  struct maybe_monoid {
     using value_type = std::optional<typename Semigroup::value_type>;
     const static Semigroup S;
 

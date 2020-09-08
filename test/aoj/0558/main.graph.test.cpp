@@ -18,7 +18,7 @@ int main(){
 
   auto s = hl::input_vector<std::string>(H);
 
-  std::vector<hl::Point> ps(N + 1);
+  std::vector<hl::point> ps(N + 1);
 
   ps[0] = hl::grid_find(s, 'S')[0];
 

@@ -10,16 +10,16 @@
 
 namespace hl = haar_lib;
 
-using D = hl::DoubleEps<double>;
+using D = hl::double_eps<double>;
 template <> double D::eps = ERROR;
 
 int main(){
-  hl::Point<D> p1, p2; std::cin >> p1 >> p2;
-  hl::Line<D> l(p1, p2);
+  hl::point<D> p1, p2; std::cin >> p1 >> p2;
+  hl::line<D> l(p1, p2);
 
   int q; std::cin >> q;
 
-  for(auto [p] : hl::input_tuples<hl::Point<D>>(q)){
+  for(auto [p] : hl::input_tuples<hl::point<D>>(q)){
     auto ans = hl::projection(l, p);
     std::cout << std::fixed << std::setprecision(12) << ans.x << " " << ans.y << std::endl;
   }

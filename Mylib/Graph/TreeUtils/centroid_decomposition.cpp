@@ -8,7 +8,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  class CentroidDecomposition {
+  class centroid_decomposition {
     int N;
     std::vector<int> parent;
     std::vector<std::vector<int>> children;
@@ -16,44 +16,44 @@ namespace haar_lib {
     std::vector<bool> check;
 
   public:
-    CentroidDecomposition(const Tree<T> &tree):
-      N(tree.size()), parent(N), children(N), subsize(N), check(N)
+    centroid_decomposition(const tree<T> &tr):
+      N(tr.size()), parent(N), children(N), subsize(N), check(N)
     {
       decompose(tree, 0, -1);
     }
 
   private:
-    void decompose(const Tree<T> &tree, int cur, int par){
-      dfs_subsize(tree, cur, -1);
+    void decompose(const tree<T> &tr, int cur, int par){
+      dfs_subsize(tr, cur, -1);
       auto c = get_centroid(tree, cur, -1, subsize[cur]);
 
       check[c] = true;
       parent[c] = par;
       if(par != -1) children[par].push_back(c);
 
-      for(auto &e : tree[c]){
+      for(auto &e : tr[c]){
         if(check[e.to]) continue;
         decompose(tree, e.to, c);
       }
     }
 
-    int get_centroid(const Tree<T> &tree, int cur, int par, int total_size){
-      for(auto &e : tree[cur]){
+    int get_centroid(const tree<T> &tr, int cur, int par, int total_size){
+      for(auto &e : tr[cur]){
         if(e.to == par or check[e.to]) continue;
 
         if(2 * subsize[e.to] > total_size){
-          return get_centroid(tree, e.to, cur, total_size);
+          return get_centroid(tr, e.to, cur, total_size);
         }
       }
 
       return cur;
     }
 
-    void dfs_subsize(const Tree<T> &tree, int cur, int par){
+    void dfs_subsize(const tree<T> &tr, int cur, int par){
       subsize[cur] = 1;
-      for(auto &e : tree[cur]){
+      for(auto &e : tr[cur]){
         if(e.to == par or check[e.to]) continue;
-        dfs_subsize(tree, e.to, cur);
+        dfs_subsize(tr, e.to, cur);
         subsize[cur] += subsize[e.to];
       }
     }

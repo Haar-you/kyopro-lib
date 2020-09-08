@@ -14,8 +14,8 @@
 
 namespace hl = haar_lib;
 
-using mint = hl::ModInt<998244353>;
-using Monoid = hl::DualMonoid<hl::AffineMonoid<mint>>;
+using mint = hl::modint<998244353>;
+using Monoid = hl::dual_monoid<hl::affine_monoid<mint>>;
 const Monoid M;
 
 int main(){
@@ -25,11 +25,11 @@ int main(){
   int N, Q; std::cin >> N >> Q;
 
   auto f = hl::input_vector<std::pair<mint, mint>>(N);
-  hl::Tree<int> tree(N);
+  hl::tree<int> tree(N);
   tree.read<0, false, false>(N - 1);
 
-  hl::HLDecomposition<int> hld(tree, 0);
-  hl::SegmentTreeBothFoldable<Monoid> seg(N);
+  hl::hl_decomposition<int> hld(tree, 0);
+  hl::segment_tree_both_foldable<Monoid> seg(N);
 
   for(int i = 0; i < N; ++i){
     seg.update(hld.get_id(i), f[i]);

@@ -6,12 +6,12 @@
  * @docs construct_bipartite_graph.md
  */
 namespace haar_lib {
-  class BipartiteGraph {
+  class bipartite_graph {
     int n;
-    UnionFind check;
+    unionfind check;
 
   public:
-    BipartiteGraph(int n): n(n), check(2 * n){}
+    bipartite_graph(int n): n(n), check(2 * n){}
 
     void add_diff(int i, int j){ // iとjを異なる色で塗る。
       check.merge(i, j + n);

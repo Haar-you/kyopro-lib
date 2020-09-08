@@ -7,12 +7,12 @@
  * @docs rolling_hash_2d.md
  */
 namespace haar_lib {
-  class RollingHash2D {
+  class rolling_hash_2d {
     std::vector<int64_t> pow_w, pow_h;
     int64_t MOD, BASEW, BASEH;
 
   public:
-    RollingHash2D(int width, int height, int MOD, int BASEW, int BASEH): MOD(MOD), BASEW(BASEW), BASEH(BASEH){
+    rolling_hash_2d(int width, int height, int MOD, int BASEW, int BASEH): MOD(MOD), BASEW(BASEW), BASEH(BASEH){
       pow_w.resize(width + 1);
       pow_h.resize(height + 1);
       pow_w[0] = pow_h[0] = 1;
@@ -90,6 +90,6 @@ namespace haar_lib {
   auto make_rh_2d(int width, int height, int MOD, int seed = 0){
     std::mt19937 rnd(seed);
     std::uniform_int_distribution<> dist(2, MOD - 2);
-    return RollingHash2D(width, height, dist(rnd), dist(rnd), MOD);
+    return rolling_hash_2d(width, height, dist(rnd), dist(rnd), MOD);
   }
 }

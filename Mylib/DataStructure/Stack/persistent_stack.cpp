@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct PersistentStack {
+  struct persistent_stack {
   protected:
     struct node {
       T value;
@@ -16,10 +16,10 @@ namespace haar_lib {
 
     node *root;
 
-    PersistentStack(node *root): root(root){}
+    persistent_stack(node *root): root(root){}
 
   public:
-    PersistentStack(): root(nullptr){}
+    persistent_stack(): root(nullptr){}
 
     bool empty() const {
       return not root;
@@ -29,17 +29,17 @@ namespace haar_lib {
       return root->value;
     }
 
-    PersistentStack push(const T &value) const {
+    persistent_stack push(const T &value) const {
       node *t = new node({value, root});
-      return PersistentStack(t);
+      return persistent_stack(t);
     }
 
-    PersistentStack pop() const {
+    persistent_stack pop() const {
       node *t = root->next;
-      return PersistentStack(t);
+      return persistent_stack(t);
     }
 
-    friend std::ostream& operator<<(std::ostream &s, const PersistentStack &a){
+    friend std::ostream& operator<<(std::ostream &s, const persistent_stack &a){
       s << "{";
       node *t = a.root;
       while(t){

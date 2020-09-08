@@ -8,12 +8,12 @@
  */
 namespace haar_lib {
   template <typename T, typename MinCostFlow, bool MIN_MATCHING = false>
-  class WeightedBipartiteMatching {
+  class weighted_bipartite_matching {
   public:
     int L, R, s, t;
     MinCostFlow f;
 
-    WeightedBipartiteMatching(int L, int R, bool arbitrary_flow = false):
+    weighted_bipartite_matching(int L, int R, bool arbitrary_flow = false):
       L(L), R(R), s(L + R), t(s + 1), f(L + R + 2)
     {
       for(int i = 0; i < L; ++i) f.add_edge(s, i, 1, 0);

@@ -8,7 +8,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct MinAddSemiring {
+  struct min_add_semiring {
     using value_type = std::optional<T>;
 
     value_type id_add() const {return std::nullopt;}

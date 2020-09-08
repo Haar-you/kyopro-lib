@@ -9,41 +9,41 @@
  */
 namespace haar_lib {
   template <typename T>
-  class LCA {
+  class lowest_common_ancestor {
     int n;
     std::vector<int> sub, par, head, id;
 
-    int dfs_sub(int cur, int p, Tree<T> &tree){
+    int dfs_sub(int cur, int p, tree<T> &tr){
       par[cur] = p;
       int t = 0;
-      for(auto &e : tree[cur]){
+      for(auto &e : tr[cur]){
         if(e.to == p) continue;
-        sub[cur] += dfs_sub(e.to, cur, tree);
+        sub[cur] += dfs_sub(e.to, cur, tr);
         if(sub[e.to] > t){
           t = sub[e.to];
-          std::swap(e, tree[cur][0]);
+          std::swap(e, tr[cur][0]);
         }
       }
       return sub[cur];
     }
 
-    void dfs_build(int cur, int &i, Tree<T> &tree){
+    void dfs_build(int cur, int &i, tree<T> &tr){
       id[cur] = i;
       ++i;
 
-      for(auto &e : tree[cur]){
+      for(auto &e : tr[cur]){
         if(e.to == par[cur]) continue;
-        head[e.to] = (e.to == tree[cur][0].to ? head[cur] : e.to);
-        dfs_build(e.to, i, tree);
+        head[e.to] = (e.to == tr[cur][0].to ? head[cur] : e.to);
+        dfs_build(e.to, i, tr);
       }
     }
 
   public:
-    LCA(Tree<T> tree, int root):
-      n(tree.size()), sub(n, 1), par(n, -1), head(n), id(n){
-      dfs_sub(root, -1, tree);
+    lowest_common_ancestor(tree<T> tr, int root):
+      n(tr.size()), sub(n, 1), par(n, -1), head(n), id(n){
+      dfs_sub(root, -1, tr);
       int i = 0;
-      dfs_build(root, i, tree);
+      dfs_build(root, i, tr);
     }
 
     int lca(int u, int v) const {

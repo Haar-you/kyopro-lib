@@ -11,7 +11,7 @@ namespace hl = haar_lib;
 int main(){
   int n, q; std::cin >> n >> q;
 
-  auto seg = hl::DualSegmentTree<hl::UpdateMonoid<int>>(n);
+  auto seg = hl::dual_segment_tree<hl::update_monoid<int>>(n);
   seg.init(INT_MAX);
 
   for(auto [type] : hl::input_tuples<int>(q)){

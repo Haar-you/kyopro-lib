@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename T, typename U>
-  struct UpdateSum {
+  struct update_sum {
     using value_type_get = T;
     using value_type_update = std::optional<U>;
 

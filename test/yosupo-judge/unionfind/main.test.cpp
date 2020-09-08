@@ -12,7 +12,7 @@ int main(){
 
   int N, Q; std::cin >> N >> Q;
 
-  hl::UnionFind uf(N);
+  hl::unionfind uf(N);
 
   for(auto [t, u, v] : hl::input_tuples<int, int, int>(Q)){
     if(t == 0){

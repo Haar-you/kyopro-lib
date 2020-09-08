@@ -8,13 +8,13 @@
  */
 namespace haar_lib {
   template <typename T>
-  class WeightedUnionFind {
+  class weighted_unionfind {
     std::vector<int> parent, depth, size;
     std::vector<T> weight;
     int count;
 
   public:
-    WeightedUnionFind(int n): parent(n), depth(n, 1), size(n, 1), weight(n, 0){
+    weighted_unionfind(int n): parent(n), depth(n, 1), size(n, 1), weight(n, 0){
       std::iota(parent.begin(), parent.end(), 0);
     }
 

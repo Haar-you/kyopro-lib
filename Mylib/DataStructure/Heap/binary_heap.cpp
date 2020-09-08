@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename T, typename Compare = std::less<T>>
-  class BinaryHeap {
+  class binary_heap {
     std::vector<T> data;
 
     int left(int i) const {return i * 2 + 1;}
@@ -19,8 +19,8 @@ namespace haar_lib {
     Compare compare;
 
   public:
-    BinaryHeap(): compare(Compare()){}
-    BinaryHeap(size_t capacity): compare(Compare()){data.reserve(capacity);}
+    binary_heap(): compare(Compare()){}
+    binary_heap(size_t capacity): compare(Compare()){data.reserve(capacity);}
 
     void push(T value){
       data.emplace_back(value);

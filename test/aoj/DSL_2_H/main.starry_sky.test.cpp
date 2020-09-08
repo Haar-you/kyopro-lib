@@ -10,7 +10,7 @@ namespace hl = haar_lib;
 int main(){
   int n, q; std::cin >> n >> q;
 
-  hl::StarrySkyTree<int, std::less<>> seg(n);
+  hl::starry_sky_tree<int, std::less<>> seg(n);
 
   for(auto [type, s, t] : hl::input_tuples<int, int, int>(q)){
     if(type == 0){

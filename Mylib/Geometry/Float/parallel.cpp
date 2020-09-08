@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  bool parallel(const Line<T> &a, const Line<T> &b){
+  bool parallel(const line<T> &a, const line<T> &b){
     return abs(cross(a, b)) == 0;
   }
 }

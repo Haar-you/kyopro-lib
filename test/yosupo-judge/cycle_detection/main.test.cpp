@@ -12,7 +12,7 @@ int main(){
   std::ios::sync_with_stdio(false);
 
   int N, M; std::cin >> N >> M;
-  hl::Graph<int> g(N);
+  hl::graph<int> g(N);
   g.read<0, true, false>(M);
 
   auto res = hl::detect_cycle(g);

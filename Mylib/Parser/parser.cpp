@@ -7,13 +7,13 @@
  * @docs parser.md
  */
 namespace haar_lib {
-  struct Parser {
+  struct parser {
     using state = std::string::const_iterator;
 
     state cur, first, last;
 
-    Parser(){}
-    Parser(const std::string &s): cur(s.cbegin()), first(s.cbegin()), last(s.cend()){}
+    parser(){}
+    parser(const std::string &s): cur(s.cbegin()), first(s.cbegin()), last(s.cend()){}
 
     char peek() const {return *cur;}
 

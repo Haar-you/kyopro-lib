@@ -11,7 +11,7 @@ namespace haar_lib {
   namespace two_edge_connected_components_impl {
     template <typename T>
     int dfs(
-      const Graph<T> &graph,
+      const graph<T> &g,
       int cur,
       int par,
       std::vector<int> &low,
@@ -27,13 +27,13 @@ namespace haar_lib {
 
       int count = 0;
 
-      for(const auto &e : graph[cur]){
+      for(const auto &e : g[cur]){
         if(e.to == par){
           ++count;
           if(count == 1) continue;
         }
 
-        const int t = dfs(graph, e.to, cur, low, order, ret, st, v);
+        const int t = dfs(g, e.to, cur, low, order, ret, st, v);
         temp = std::min(temp, t);
 
         if(low[e.to] > order[cur]){ // e is a bridge
@@ -53,8 +53,8 @@ namespace haar_lib {
   }
 
   template <typename T>
-  auto two_edge_connected_components(const Graph<T> &graph){
-    const int n = graph.size();
+  auto two_edge_connected_components(const graph<T> &g){
+    const int n = g.size();
 
     std::vector<int> low(n, -1), order(n, -1);
     std::vector<std::vector<int>> ret;
@@ -63,7 +63,7 @@ namespace haar_lib {
 
     for(int i = 0; i < n; ++i){
       if(order[i] == -1){
-        two_edge_connected_components_impl::dfs(graph, i, -1, low, order, ret, st, v);
+        two_edge_connected_components_impl::dfs(g, i, -1, low, order, ret, st, v);
         if(not st.empty()){
           std::vector<int> cc;
           while(not st.empty()) cc.emplace_back(st.top()), st.pop();

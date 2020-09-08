@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename Semilattice>
-  class SparseTable2D {
+  class sparse_table_2d {
     using value_type = typename Semilattice::value_type;
     const static Semilattice S;
 
@@ -17,7 +17,7 @@ namespace haar_lib {
     std::vector<int> log_table;
 
   public:
-    SparseTable2D(const std::vector<std::vector<value_type>> &v){
+    sparse_table_2d(const std::vector<std::vector<value_type>> &v){
       const int n = v.size();
       const int m = v[0].size();
       int logn = 0;

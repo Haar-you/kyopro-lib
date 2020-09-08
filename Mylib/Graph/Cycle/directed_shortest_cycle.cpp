@@ -12,11 +12,11 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct DirectShortestCycle {
+  struct direct_shortest_cycle {
     const int N;
     std::optional<std::vector<int>> cycle;
 
-    void bfs(int i, const Graph<T> &g, int &min_len){
+    void bfs(int i, const graph<T> &g, int &min_len){
       std::queue<int> q;
       q.push(i);
 
@@ -58,7 +58,7 @@ namespace haar_lib {
       }
     }
 
-    DirectShortestCycle(const Graph<T> &g): N(g.size()){
+    direct_shortest_cycle(const graph<T> &g): N(g.size()){
       int min_len = INT_MAX;
 
       for(int i = 0; i < N; ++i){

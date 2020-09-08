@@ -9,7 +9,7 @@ namespace hl = haar_lib;
 int main(){
   int V, E, F; std::cin >> V >> E >> F;
 
-  hl::MinimumCostFlow<int, int> f(V);
+  hl::minimum_cost_flow<int, int> f(V);
 
   for(auto [u, v, c, d] : hl::input_tuples<int, int, int, int>(E)){
     f.add_edge(u, v, c, d);

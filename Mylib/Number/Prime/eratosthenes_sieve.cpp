@@ -6,11 +6,11 @@
  * @docs eratosthenes_sieve.md
  */
 namespace haar_lib {
-  class EratosthenesSieve {
+  class eratosthenes_sieve {
     std::vector<bool> is_prime;
 
   public:
-    EratosthenesSieve(int MAX): is_prime(MAX + 1){
+    eratosthenes_sieve(int MAX): is_prime(MAX + 1){
       is_prime.flip();
       is_prime[0] = is_prime[1] = false;
 

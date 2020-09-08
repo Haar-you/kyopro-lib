@@ -6,8 +6,8 @@
 
 namespace hl = haar_lib;
 
-struct parser : hl::Parser {
-  parser(const std::string &s): Parser(s){}
+struct parser : hl::parser {
+  parser(const std::string &s): hl::parser(s){}
 
   bool constant(){
     bool ret = check('T');

@@ -6,61 +6,61 @@
 
 namespace hl = haar_lib;
 
-struct Complex {
+struct complex {
   int real, imag;
   bool overflow;
 
-  Complex(): real(0), imag(0), overflow(false){}
-  Complex(int real, int imag = 0): real(real), imag(imag), overflow(false){
+  complex(): real(0), imag(0), overflow(false){}
+  complex(int real, int imag = 0): real(real), imag(imag), overflow(false){
     if(abs(real) > 10000 or abs(imag) > 10000) overflow = true;
   }
-  Complex(bool overflow): real(0), imag(0), overflow(true){}
+  complex(bool overflow): real(0), imag(0), overflow(true){}
 
-  friend Complex operator+(const Complex &a, const Complex &b){
-    if(a.overflow or b.overflow) return Complex(true);
-    return Complex(a.real + b.real, a.imag + b.imag);
+  friend complex operator+(const complex &a, const complex &b){
+    if(a.overflow or b.overflow) return complex(true);
+    return complex(a.real + b.real, a.imag + b.imag);
   }
 
-  friend Complex operator-(const Complex &a, const Complex &b){
-    if(a.overflow or b.overflow) return Complex(true);
-    return Complex(a.real - b.real, a.imag - b.imag);
+  friend complex operator-(const complex &a, const complex &b){
+    if(a.overflow or b.overflow) return complex(true);
+    return complex(a.real - b.real, a.imag - b.imag);
   }
 
-  friend Complex operator-(const Complex &a){
-    if(a.overflow) return Complex(true);
-    return Complex(-a.real, -a.imag);
+  friend complex operator-(const complex &a){
+    if(a.overflow) return complex(true);
+    return complex(-a.real, -a.imag);
   }
 
-  friend Complex operator*(const Complex &a, const Complex &b){
-    if(a.overflow or b.overflow) return Complex(true);
-    return Complex(a.real * b.real - a.imag * b.imag, a.real * b.imag + a.imag * b.real);
+  friend complex operator*(const complex &a, const complex &b){
+    if(a.overflow or b.overflow) return complex(true);
+    return complex(a.real * b.real - a.imag * b.imag, a.real * b.imag + a.imag * b.real);
   }
 
-  Complex& operator=(const Complex &a){
+  complex& operator=(const complex &a){
     this->real = a.real;
     this->imag = a.imag;
     this->overflow = a.overflow;
     return *this;
   }
 
-  Complex& operator+=(const Complex &a){
+  complex& operator+=(const complex &a){
     *this = *this + a;
     return *this;
   }
 
-  Complex& operator-=(const Complex &a){
+  complex& operator-=(const complex &a){
     *this = *this - a;
     return *this;
   }
 
-  Complex& operator*=(const Complex &a){
+  complex& operator*=(const complex &a){
     *this = *this * a;
     return *this;
   }
 };
 
 
-std::ostream& operator<<(std::ostream &os, const Complex &a){
+std::ostream& operator<<(std::ostream &os, const complex &a){
   if(a.overflow) os << "overflow";
   else{
     if(a.real == 0 and a.imag == 0) os << 0;
@@ -79,24 +79,24 @@ std::ostream& operator<<(std::ostream &os, const Complex &a){
 }
 
 
-struct parser : hl::Parser {
-  parser(const std::string &s): Parser(s){}
+struct parser : hl::parser {
+  parser(const std::string &s): hl::parser(s){}
 
-  Complex number(){
+  complex number(){
     bool neg = false;
     if(check_and_ignore('-')) neg = true;
 
-    Complex ret;
+    complex ret;
 
     if(digit()){
-      ret = get_number<Complex>();
+      ret = get_number<complex>();
 
       if(check_and_ignore('i')){
-        ret *= Complex(0, 1);
+        ret *= complex(0, 1);
       }
     }else{
       if(check_and_ignore('i')){
-        ret = Complex(0, 1);
+        ret = complex(0, 1);
       }
     }
 
@@ -105,8 +105,8 @@ struct parser : hl::Parser {
     return ret;
   }
 
-  Complex factor(){
-    Complex ret;
+  complex factor(){
+    complex ret;
 
     if(check_and_ignore('(')){
       ret = expression();
@@ -118,8 +118,8 @@ struct parser : hl::Parser {
     return ret;
   }
 
-  Complex term(){
-    Complex ret = factor();
+  complex term(){
+    complex ret = factor();
 
     while(1){
       if(check_and_ignore('*')){
@@ -132,8 +132,8 @@ struct parser : hl::Parser {
     return ret;
   }
 
-  Complex expression(){
-    Complex ret = term();
+  complex expression(){
+    complex ret = term();
 
     while(1){
       if(check_and_ignore('+')){
@@ -148,7 +148,7 @@ struct parser : hl::Parser {
     return ret;
   }
 
-  Complex run(){
+  complex run(){
     return expression();
   }
 };

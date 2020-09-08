@@ -12,23 +12,23 @@
 
 namespace hl = haar_lib;
 
-using Mon = hl::MaxPartialSumMonoid<int64_t>;
+using Mon = hl::max_partial_sum_monoid<int64_t>;
 
 int main(){
   int N, Q; std::cin >> N >> Q;
 
-  hl::SegmentTree<Mon> seg(N);
+  hl::segment_tree<Mon> seg(N);
 
   auto a = hl::input_vector<int64_t>(N);
   for(int i = 0; i < N; ++i){
-    seg.update(i, Mon::MaxPartialSum(a[i]));
+    seg.update(i, Mon::max_partial_sum(a[i]));
   }
 
   for(auto [type] : hl::input_tuples<std::string>(Q)){
     if(type == "set"){
       int i, x; std::cin >> i >> x;
       --i;
-      seg.update(i, Mon::MaxPartialSum(x));
+      seg.update(i, Mon::max_partial_sum(x));
       a[i] = x;
     }else{
       int l1, l2, r1, r2; std::cin >> l1 >> l2 >> r1 >> r2;
@@ -42,9 +42,9 @@ int main(){
       auto f =
         [&](int L1, int L2, int R1, int R2){
           auto ret =
-            seg.get(L1, L2 + 1).value_or(Mon::MaxPartialSum(0)).right_max +
-            seg.get(L2 + 1, R1).value_or(Mon::MaxPartialSum(0)).sum +
-            seg.get(R1, R2 + 1).value_or(Mon::MaxPartialSum(0)).left_max;
+            seg.get(L1, L2 + 1).value_or(Mon::max_partial_sum(0)).right_max +
+            seg.get(L2 + 1, R1).value_or(Mon::max_partial_sum(0)).sum +
+            seg.get(R1, R2 + 1).value_or(Mon::max_partial_sum(0)).left_max;
 
           if(L2 == R1) ret -= a[L2];
 

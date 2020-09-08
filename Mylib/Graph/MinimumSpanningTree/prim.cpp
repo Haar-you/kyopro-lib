@@ -9,13 +9,13 @@
  */
 namespace haar_lib {
   template <typename T>
-  std::vector<Edge<T>> prim(const Graph<T> &graph){
+  std::vector<edge<T>> prim(const graph<T> &graph){
     const int n = graph.size();
     std::vector<bool> visit(n, false);
-    std::vector<Edge<T>> ret;
+    std::vector<edge<T>> ret;
 
     auto cmp = [](const auto &a, const auto &b){return a.cost > b.cost;};
-    std::priority_queue<Edge<T>, std::vector<Edge<T>>, decltype(cmp)> pq(cmp);
+    std::priority_queue<edge<T>, std::vector<edge<T>>, decltype(cmp)> pq(cmp);
 
     visit[0] = true;
     for(auto &e : graph[0]) pq.push(e);

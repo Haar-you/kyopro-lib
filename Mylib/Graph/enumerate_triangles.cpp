@@ -10,7 +10,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  std::vector<std::tuple<int, int, int>> enumerate_triangles(const Graph<T> &g){
+  std::vector<std::tuple<int, int, int>> enumerate_triangles(const graph<T> &g){
     const int N = g.size();
     std::vector<std::tuple<int, int, int>> ret;
 

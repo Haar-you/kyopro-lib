@@ -10,13 +10,13 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct ClosedInterval {
+  struct closed_interval {
     std::optional<std::pair<std::optional<T>, std::optional<T>>> value;
 
-    ClosedInterval(){}
-    ClosedInterval(std::optional<T> l, std::optional<T> r): value(std::make_pair(l, r)){}
+    closed_interval(){}
+    closed_interval(std::optional<T> l, std::optional<T> r): value(std::make_pair(l, r)){}
 
-    friend std::ostream& operator<<(std::ostream &s, const ClosedInterval<T> &a){
+    friend std::ostream& operator<<(std::ostream &s, const closed_interval<T> &a){
       s << "[";
       if(a.value){
         if((a.value)->first) s << *((a.value)->first);
@@ -43,8 +43,8 @@ namespace haar_lib {
   };
 
   template <typename T>
-  auto intersect(ClosedInterval<T> a, ClosedInterval<T> b){
-    if(not a.value or not b.value) return ClosedInterval<T>();
+  auto intersect(closed_interval<T> a, closed_interval<T> b){
+    if(not a.value or not b.value) return closed_interval<T>();
     std::optional<T> l, r;
 
     if((a.value)->first){
@@ -67,19 +67,19 @@ namespace haar_lib {
 
     if(l and r){
       if(*l > *r){
-        return ClosedInterval<T>();
+        return closed_interval<T>();
       }
     }
 
-    return ClosedInterval<T>(l, r);
+    return closed_interval<T>(l, r);
   }
 
   template <typename T>
-  auto left_expand(ClosedInterval<T> a, T x){
+  auto left_expand(closed_interval<T> a, T x){
     if(a.value and (a.value)->first){
       *((a.value)->first) += x;
       if((a.value)->second and *((a.value)->first) > *((a.value)->second)){
-        return ClosedInterval<T>();
+        return closed_interval<T>();
       }
     }
 
@@ -87,11 +87,11 @@ namespace haar_lib {
   }
 
   template <typename T>
-  auto right_expand(ClosedInterval<T> a, T x){
+  auto right_expand(closed_interval<T> a, T x){
     if(a.value and (a.value)->second){
       *((a.value)->second) += x;
       if((a.value)->first and *((a.value)->first) > *((a.value)->second)){
-        return ClosedInterval<T>();
+        return closed_interval<T>();
       }
     }
 

@@ -8,14 +8,14 @@
 
 namespace hl = haar_lib;
 
-using D = hl::DoubleEps<double>;
+using D = hl::double_eps<double>;
 template <> double D::eps = 1e-7;
 
 int main(){
   int q; std::cin >> q;
 
-  for(auto [p0, p1, p2, p3] : hl::input_tuples<hl::Point<D>, hl::Point<D>, hl::Point<D>, hl::Point<D>>(q)){
-    hl::Segment<D> s1(p0, p1), s2(p2, p3);
+  for(auto [p0, p1, p2, p3] : hl::input_tuples<hl::point<D>, hl::point<D>, hl::point<D>, hl::point<D>>(q)){
+    hl::segment<D> s1(p0, p1), s2(p2, p3);
 
     if(hl::intersect_segments::check(s1, s2).status & (hl::intersect_segments::INTERSECTING | hl::intersect_segments::OVERLAPPED)){
       std::cout << 1 << std::endl;

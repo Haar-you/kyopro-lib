@@ -10,7 +10,7 @@ namespace hl = haar_lib;
 int main(){
   int V, E; std::cin >> V >> E;
 
-  hl::PushRelabel<int> f(V);
+  hl::push_relabel<int> f(V);
 
   for(auto [s, t, c] : hl::input_tuples<int, int, int>(E)){
     f.add_edge(s, t, c);

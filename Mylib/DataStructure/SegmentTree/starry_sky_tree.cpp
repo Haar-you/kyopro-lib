@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename T, typename Compare>
-  class StarrySkyTree {
+  class starry_sky_tree {
     int depth, size, hsize;
     std::vector<T> data;
 
@@ -48,7 +48,7 @@ namespace haar_lib {
     }
 
   public:
-    StarrySkyTree(int n):
+    starry_sky_tree(int n):
       depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
       size(1 << depth),
       hsize(size / 2),

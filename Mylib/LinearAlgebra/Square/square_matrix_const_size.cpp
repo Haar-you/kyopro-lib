@@ -9,18 +9,18 @@
  */
 namespace haar_lib {
   template <typename T, int N>
-  struct SquareMatrixConst {
+  struct square_matrix_const {
     using value_type = T;
 
     std::array<std::array<T, N>, N> matrix;
 
-    SquareMatrixConst(){
+    square_matrix_const(){
       for(size_t i = 0; i < N; ++i) for(size_t j = 0; j < N; ++j) matrix[i][j] = 0;
     }
-    SquareMatrixConst(const T &val){
+    square_matrix_const(const T &val){
       for(size_t i = 0; i < N; ++i) matrix[i].fill(val);
     }
-    SquareMatrixConst(std::initializer_list<std::initializer_list<T>> list){
+    square_matrix_const(std::initializer_list<std::initializer_list<T>> list){
       int i = 0;
       for(auto it1 = list.begin(); it1 != list.end(); ++it1, ++i){
         int j = 0;
@@ -30,25 +30,25 @@ namespace haar_lib {
       }
     }
 
-    bool operator==(const SquareMatrixConst &val) const {return matrix == val.matrix;}
-    bool operator!=(const SquareMatrixConst &val) const {return !(*this == val);}
+    bool operator==(const square_matrix_const &val) const {return matrix == val.matrix;}
+    bool operator!=(const square_matrix_const &val) const {return !(*this == val);}
 
-    auto& operator=(const SquareMatrixConst &val){
+    auto& operator=(const square_matrix_const &val){
       this->matrix = val.matrix;
       return *this;
     }
 
-    auto& operator+=(const SquareMatrixConst &val){
+    auto& operator+=(const square_matrix_const &val){
       for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] + val[i][j];
       return *this;
     }
 
-    auto& operator-=(const SquareMatrixConst &val){
+    auto& operator-=(const square_matrix_const &val){
       for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] - val[i][j];
       return *this;
     }
 
-    auto& operator*=(const SquareMatrixConst &val){
+    auto& operator*=(const square_matrix_const &val){
       std::array<std::array<T, N>, N> temp = {};
       for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) for(int k = 0; k < N; ++k) temp[i][j] = temp[i][j] + matrix[i][k] * val[k][j];
       std::swap(matrix, temp);
@@ -60,13 +60,13 @@ namespace haar_lib {
     int size() const {return N;}
 
     static auto make_unit(){
-      SquareMatrixConst ret;
+      square_matrix_const ret;
       for(size_t i = 0; i < N; ++i) ret[i][i] = 1;
       return ret;
     }
 
-    friend auto operator+(const SquareMatrixConst &a, const SquareMatrixConst &b){auto ret = a; ret += b; return ret;}
-    friend auto operator-(const SquareMatrixConst &a, const SquareMatrixConst &b){auto ret = a; ret -= b; return ret;}
-    friend auto operator*(const SquareMatrixConst &a, const SquareMatrixConst &b){auto ret = a; ret *= b; return ret;}
+    friend auto operator+(const square_matrix_const &a, const square_matrix_const &b){auto ret = a; ret += b; return ret;}
+    friend auto operator-(const square_matrix_const &a, const square_matrix_const &b){auto ret = a; ret -= b; return ret;}
+    friend auto operator*(const square_matrix_const &a, const square_matrix_const &b){auto ret = a; ret *= b; return ret;}
   };
 }

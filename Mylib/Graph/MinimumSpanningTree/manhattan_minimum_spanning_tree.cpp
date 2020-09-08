@@ -15,10 +15,10 @@
  */
 namespace haar_lib {
   template <typename T>
-  std::vector<Edge<T>> manhattan_minimum_spanning_tree(std::vector<T> x, std::vector<T> y){
+  std::vector<edge<T>> manhattan_minimum_spanning_tree(std::vector<T> x, std::vector<T> y){
     const int N = x.size();
-    Graph<T> g(N);
-    SegmentTree<MinMonoid<std::pair<T, int>>> seg(N);
+    graph<T> g(N);
+    segment_tree<min_monoid<std::pair<T, int>>> seg(N);
 
     auto f =
       [&](){

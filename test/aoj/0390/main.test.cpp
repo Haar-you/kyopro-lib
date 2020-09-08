@@ -10,7 +10,7 @@
 namespace hl = haar_lib;
 
 struct tag {};
-using M = hl::DihedralGroup<tag>;
+using M = hl::dihedral_group<tag>;
 
 int main(){
   int K, N, Q; std::cin >> K >> N >> Q;
@@ -18,7 +18,7 @@ int main(){
 
   M::K = K;
 
-  hl::SegmentTree<M> seg(N);
+  hl::segment_tree<M> seg(N);
 
   for(int i = 0; i < N; ++i){
     if(A[i] > 0){

@@ -16,7 +16,7 @@ int main(){
 
   auto A = hl::input_vector<int64_t>(N);
 
-  hl::LazySegmentTree<hl::AddSquareSum<int64_t>> seg(N);
+  hl::lazy_segment_tree<hl::add_square_sum<int64_t>> seg(N);
   for(int i = 0; i < N; ++i) seg.update_at(i, A[i]);
 
   int Q; std::cin >> Q;

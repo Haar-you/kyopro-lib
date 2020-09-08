@@ -7,8 +7,8 @@
  */
 namespace haar_lib {
   template <typename F>
-  struct FixPoint : F {
-    explicit constexpr FixPoint(F &&f) noexcept : F(std::forward<F>(f)){}
+  struct fix_point : F {
+    explicit constexpr fix_point(F &&f) noexcept : F(std::forward<F>(f)){}
 
     template <typename ... Args>
     constexpr auto operator()(Args &&... args) const {
@@ -18,11 +18,11 @@ namespace haar_lib {
 
   template <typename F>
   inline constexpr auto make_fix_point(F &&f){
-    return FixPoint<F>(std::forward<F>(f));
+    return fix_point<F>(std::forward<F>(f));
   }
 
   template <typename F>
   inline constexpr auto make_fix_point(F &f){
-    return FixPoint<F>(std::forward<F>(f));
+    return fix_point<F>(std::forward<F>(f));
   }
 }

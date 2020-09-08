@@ -10,7 +10,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  class Dinic {
+  class dinic {
   private:
     int size;
     std::vector<std::vector<T>> cap;
@@ -55,7 +55,7 @@ namespace haar_lib {
     }
 
   public:
-    Dinic(const std::vector<std::vector<std::pair<int, T>>> &g):
+    dinic(const std::vector<std::vector<std::pair<int, T>>> &g):
       size(g.size()), cap(size, std::vector<T>(size)), level(size){
       for(int i = 0; i < size; ++i){
         for(auto &[j, c] : g[i]){
@@ -63,8 +63,8 @@ namespace haar_lib {
         }
       }
     }
-    Dinic(int size): size(size), cap(size, std::vector<T>(size)), level(size){}
-    Dinic(){}
+    dinic(int size): size(size), cap(size, std::vector<T>(size)), level(size){}
+    dinic(){}
 
     void add_edge(int from, int to, const T &c){
       cap[from][to] += c;

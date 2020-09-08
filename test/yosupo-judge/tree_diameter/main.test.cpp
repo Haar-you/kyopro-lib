@@ -13,7 +13,7 @@ int main(){
 
   int N; std::cin >> N;
 
-  hl::Tree<int64_t> tree(N);
+  hl::tree<int64_t> tree(N);
   tree.read<0, false>(N - 1);
 
   auto [cost, path] = hl::tree_diameter(tree);

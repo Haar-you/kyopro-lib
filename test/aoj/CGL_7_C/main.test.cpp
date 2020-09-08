@@ -9,11 +9,11 @@
 
 namespace hl = haar_lib;
 
-using D = hl::DoubleEps<long double>;
+using D = hl::double_eps<long double>;
 template <> long double D::eps = ERROR;
 
 int main(){
-  hl::Point<D> a, b, c; std::cin >> a >> b >> c;
+  hl::point<D> a, b, c; std::cin >> a >> b >> c;
 
   auto ans = hl::circumscribed_circle_of_triangle(a, b, c);
   std::cout << std::fixed << std::setprecision(12)

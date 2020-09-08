@@ -10,7 +10,7 @@
 namespace haar_lib {
   namespace simulaneous_linear_equations_impl {
     template <typename T>
-    struct Result {
+    struct result {
       int rank, dim;
       std::vector<T> solution;
       std::vector<std::vector<T>> basis;
@@ -19,8 +19,8 @@ namespace haar_lib {
 
   template <typename T>
   auto simulaneous_linear_equations(std::vector<std::vector<T>> a, std::vector<T> b){
-    using Result = simulaneous_linear_equations_impl::Result<T>;
-    std::optional<Result> ret;
+    using result = simulaneous_linear_equations_impl::result<T>;
+    std::optional<result> ret;
     const int n = a.size();
     const int m = a[0].size();
 
@@ -97,7 +97,7 @@ namespace haar_lib {
     std::vector<T> solution(m);
     for(int i = 0; i < rank; ++i) solution[i] = b[i];
 
-    ret = Result({rank, dim, solution, basis});
+    ret = result({rank, dim, solution, basis});
 
     return ret;
   }

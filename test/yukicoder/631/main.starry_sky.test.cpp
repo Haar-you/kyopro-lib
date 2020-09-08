@@ -15,7 +15,7 @@ int main(){
 
   int N; std::cin >> N;
 
-  auto seg = hl::StarrySkyTree<int64_t, std::greater<>>(N - 1);
+  auto seg = hl::starry_sky_tree<int64_t, std::greater<>>(N - 1);
 
   auto T = hl::input_vector<int64_t>(N - 1);
 

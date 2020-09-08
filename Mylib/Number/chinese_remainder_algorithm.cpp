@@ -8,7 +8,7 @@
  * @docs chinese_remainder_algorithm.md
  */
 namespace haar_lib {
-  bool CRA(int64_t b1, int64_t m1, int64_t b2, int64_t m2, int64_t &r, int64_t &m){
+  bool chinese_remainder_algorithm(int64_t b1, int64_t m1, int64_t b2, int64_t m2, int64_t &r, int64_t &m){
     int64_t p, q, d;
     std::tie(d, p, q) = ext_gcd(m1, m2);
     if((b2 - b1) % d != 0) return false;
@@ -18,10 +18,10 @@ namespace haar_lib {
     return true;
   }
 
-  bool CRA(const std::vector<int64_t> &bs, const std::vector<int64_t> &ms, int64_t &r, int64_t &m){
+  bool chinese_remainder_algorithm(const std::vector<int64_t> &bs, const std::vector<int64_t> &ms, int64_t &r, int64_t &m){
     int64_t R = 0, M = 1;
     for(int i = 0; i < (int)bs.size(); ++i){
-      if(not CRA(R, M, bs[i], ms[i], r, m)) return false;
+      if(not chinese_remainder_algorithm(R, M, bs[i], ms[i], r, m)) return false;
       R = r;
       M = m;
     }

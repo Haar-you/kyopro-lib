@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <int64_t M_>
-  struct Montgomery {
+  struct montgomery {
     constexpr static int64_t MOD = M_;
     constexpr static int b = 64 - __builtin_clzll(MOD);
     constexpr static int64_t R = 1LL << b;
@@ -37,8 +37,8 @@ namespace haar_lib {
 
     int64_t val;
 
-    Montgomery(): val(0){}
-    Montgomery(int64_t a){
+    montgomery(): val(0){}
+    montgomery(int64_t a){
       if(a < 0){
         if(a < -MOD) a = a % MOD + MOD;
         else a += MOD;
@@ -49,43 +49,43 @@ namespace haar_lib {
 
       val = reduce(a * R2);
     }
-    Montgomery(const Montgomery &that): val(that.val){}
+    montgomery(const montgomery &that): val(that.val){}
 
-    auto& operator+=(const Montgomery &that){
+    auto& operator+=(const montgomery &that){
       val += that.val;
       if(val >= MOD) val -= MOD;
       return *this;
     }
 
-    auto& operator-=(const Montgomery &that){
+    auto& operator-=(const montgomery &that){
       val -= that.val;
       if(val < 0) val += MOD;
       return *this;
     }
 
-    auto& operator*=(const Montgomery &that){
+    auto& operator*=(const montgomery &that){
       val = reduce(val * that.val);
       return *this;
     }
 
-    auto& operator/=(const Montgomery &that){
+    auto& operator/=(const montgomery &that){
       *this *= that.inv();
       return *this;
     }
 
     auto operator-() const {
-      Montgomery ret(0);
+      montgomery ret(0);
       ret -= *this;
       return ret;
     }
 
-    auto operator+(const Montgomery &that) const {auto ret = *this; return ret += that;}
-    auto operator-(const Montgomery &that) const {auto ret = *this; return ret -= that;}
-    auto operator*(const Montgomery &that) const {auto ret = *this; return ret *= that;}
-    auto operator/(const Montgomery &that) const {auto ret = *this; return ret /= that;}
+    auto operator+(const montgomery &that) const {auto ret = *this; return ret += that;}
+    auto operator-(const montgomery &that) const {auto ret = *this; return ret -= that;}
+    auto operator*(const montgomery &that) const {auto ret = *this; return ret *= that;}
+    auto operator/(const montgomery &that) const {auto ret = *this; return ret /= that;}
 
     auto power(int64_t p) const {
-      Montgomery ret = 1, e = *this;
+      montgomery ret = 1, e = *this;
 
       while(p > 0){
         if(p & 1) ret *= e;
@@ -96,29 +96,29 @@ namespace haar_lib {
       return ret;
     }
 
-    static auto power(int64_t n, int64_t p){return Montgomery(n).power(p);}
+    static auto power(int64_t n, int64_t p){return montgomery(n).power(p);}
 
     auto inv() const {return power(MOD - 2);}
-    static auto inv(int64_t n){return Montgomery(n).inv();}
+    static auto inv(int64_t n){return montgomery(n).inv();}
 
-    friend auto operator+(int64_t a, const Montgomery &b) {return Montgomery(a) + b;}
-    friend auto operator-(int64_t a, const Montgomery &b) {return Montgomery(a) - b;}
-    friend auto operator*(int64_t a, const Montgomery &b) {return Montgomery(a) * b;}
-    friend auto operator/(int64_t a, const Montgomery &b) {return Montgomery(a) / b;}
+    friend auto operator+(int64_t a, const montgomery &b) {return montgomery(a) + b;}
+    friend auto operator-(int64_t a, const montgomery &b) {return montgomery(a) - b;}
+    friend auto operator*(int64_t a, const montgomery &b) {return montgomery(a) * b;}
+    friend auto operator/(int64_t a, const montgomery &b) {return montgomery(a) / b;}
 
-    bool operator==(const Montgomery &that) const {
+    bool operator==(const montgomery &that) const {
       return (val >= MOD ? val - MOD : val) == (that.val >= MOD ? that.val - MOD : that.val);
     }
 
-    bool operator!=(const Montgomery &that) const {return !(*this == that);}
+    bool operator!=(const montgomery &that) const {return !(*this == that);}
 
-    friend std::ostream& operator<<(std::ostream& s, const Montgomery &a){
+    friend std::ostream& operator<<(std::ostream& s, const montgomery &a){
       return s << reduce(a.val);
     }
 
-    friend std::istream& operator>>(std::istream& s, Montgomery &a){
+    friend std::istream& operator>>(std::istream& s, montgomery &a){
       int64_t t; s >> t;
-      a = Montgomery(t);
+      a = montgomery(t);
       return s;
     }
 

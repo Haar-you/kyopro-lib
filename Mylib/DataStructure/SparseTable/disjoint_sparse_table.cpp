@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename Semigroup>
-  class DisjointSparseTable {
+  class disjoint_sparse_table {
     using value_type = typename Semigroup::value_type;
     const static Semigroup S;
 
@@ -39,7 +39,7 @@ namespace haar_lib {
     }
 
   public:
-    DisjointSparseTable(std::vector<value_type> a):
+    disjoint_sparse_table(std::vector<value_type> a):
       N(a.size()),
       logN(N > 1 ? 32 - __builtin_clz(N - 1) : 0),
       A(a),

@@ -10,13 +10,13 @@
 
 namespace hl = haar_lib;
 
-using D = hl::DoubleEps<double>;
+using D = hl::double_eps<double>;
 template <> double D::eps = ERROR;
 
 int main(){
   int n; std::cin >> n;
 
-  hl::Polygon<D> g = hl::input_vector<hl::Point<D>>(n);
+  hl::polygon<D> g = hl::input_vector<hl::point<D>>(n);
 
   auto ans = hl::convex_diameter(g);
 

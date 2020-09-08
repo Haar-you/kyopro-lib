@@ -12,14 +12,14 @@ namespace haar_lib {
   template <typename Directions, typename Checker>
   auto grid_bfs(
     const int H, const int W,
-    const std::vector<Point> &starting_points,
+    const std::vector<point> &starting_points,
     const Directions &dir,
     const Checker &check_passable
   ){
     std::vector<std::vector<std::optional<int>>> dist(H, std::vector<std::optional<int>>(W));
     std::vector<std::vector<bool>> visited(H, std::vector<bool>(W));
 
-    std::queue<Point> q;
+    std::queue<point> q;
     for(auto &p : starting_points){
       dist[p.x][p.y] = 0;
       q.push(p);

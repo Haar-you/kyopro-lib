@@ -10,7 +10,7 @@
 namespace haar_lib {
   namespace warshall_floyd_impl {
     template <typename T>
-    struct Result {
+    struct result {
       std::vector<std::vector<std::optional<T>>> dist;
       bool has_negative_cycle;
       const auto& operator[](int i) const {return dist[i];}
@@ -18,7 +18,7 @@ namespace haar_lib {
   }
 
   template <typename T>
-  auto warshall_floyd(const Graph<T> &g){
+  auto warshall_floyd(const graph<T> &g){
     const int n = g.size();
     auto dist = std::vector(n, std::vector<std::optional<T>>(n));
 
@@ -47,6 +47,6 @@ namespace haar_lib {
     bool has_negative_cycle = false;
     for(int i = 0; i < n; ++i) if(*dist[i][i] < 0) has_negative_cycle = true;
 
-    return warshall_floyd_impl::Result<T>{dist, has_negative_cycle};
+    return warshall_floyd_impl::result<T>{dist, has_negative_cycle};
   }
 }

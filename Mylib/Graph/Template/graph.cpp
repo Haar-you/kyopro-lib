@@ -8,21 +8,21 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct Edge {
+  struct edge {
     int from, to;
     T cost;
     int index = -1;
-    Edge(){}
-    Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-    Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
   };
 
   template <typename T>
-  struct Graph {
+  struct graph {
     using weight_type = T;
-    using edge_type = Edge<T>;
+    using edge_type = edge<T>;
 
-    std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
     auto& operator[](size_t i){return data[i];}
     const auto& operator[](size_t i) const {return data[i];}
@@ -30,8 +30,8 @@ namespace haar_lib {
     auto begin() const {return data.begin();}
     auto end() const {return data.end();}
 
-    Graph(){}
-    Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
     bool empty() const {return data.empty();}
     int size() const {return data.size();}
@@ -60,5 +60,5 @@ namespace haar_lib {
   };
 
   template <typename T>
-  using Tree = Graph<T>;
+  using tree = graph<T>;
 }

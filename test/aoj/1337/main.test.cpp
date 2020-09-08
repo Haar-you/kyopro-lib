@@ -22,8 +22,8 @@ int main(){
 
     int64_t a[H][W] = {};
 
-    hl::Compressor<int>().add(l, r, -1).build().compress(l, r);
-    hl::Compressor<int>().add(t, b, -1).build().compress(t, b);
+    hl::compressor<int>().add(l, r, -1).build().compress(l, r);
+    hl::compressor<int>().add(t, b, -1).build().compress(t, b);
 
     for(int i = 0; i < n; ++i){
       for(int x = l[i]; x < r[i]; ++x){
@@ -33,7 +33,7 @@ int main(){
       }
     }
 
-    hl::UnionFind uf(H * W);
+    hl::unionfind uf(H * W);
     int index[H][W];
     {
       int k = 0;

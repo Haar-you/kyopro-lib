@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  bool orthogonal(const Line<T> &a, const Line<T> &b){
+  bool orthogonal(const line<T> &a, const line<T> &b){
     return abs(dot(a, b)) == 0;
   }
 }

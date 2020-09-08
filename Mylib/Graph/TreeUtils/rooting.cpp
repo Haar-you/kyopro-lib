@@ -7,18 +7,18 @@
  */
 namespace haar_lib {
   template <typename T>
-  void rooting(Tree<T> &tree, int cur, int par = -1){
+  void rooting(tree<T> &tr, int cur, int par = -1){
     if(par != -1){
-      for(auto it = tree[cur].begin(); it != tree[cur].end(); ++it){
+      for(auto it = tr[cur].begin(); it != tr[cur].end(); ++it){
         if(it->to == par){
-          tree[cur].erase(it);
+          tr[cur].erase(it);
           break;
         }
       }
     }
 
-    for(auto &e : tree[cur]){
-      rooting(tree, e.to, cur);
+    for(auto &e : tr[cur]){
+      rooting(tr, e.to, cur);
     }
   }
 }

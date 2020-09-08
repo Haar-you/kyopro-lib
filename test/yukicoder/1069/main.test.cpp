@@ -19,7 +19,7 @@ int main(){
 
   auto [p, q] = hl::input_tuple_vector<long double, long double>(N);
 
-  hl::Graph<long double> g(N);
+  hl::graph<long double> g(N);
   for(auto [P, Q] : hl::input_tuples<int, int>(M)){
     --P, --Q;
 

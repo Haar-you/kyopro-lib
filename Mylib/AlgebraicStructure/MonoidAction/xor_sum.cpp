@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename U, int B>
-  struct XorSum {
+  struct bitxor_sum {
     using value_type_get = typename std::array<int, B>;
     using value_type_update = U;
 

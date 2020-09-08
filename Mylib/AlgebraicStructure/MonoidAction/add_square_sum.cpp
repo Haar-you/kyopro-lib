@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct AddSquareSum {
+  struct add_square_sum {
     using value_type_get = std::pair<T, T>;
     using value_type_update = T;
 

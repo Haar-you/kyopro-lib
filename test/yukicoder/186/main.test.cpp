@@ -10,7 +10,7 @@ int main(){
 
   int64_t m, r;
 
-  if(hl::CRA({x1, x2, x3}, {y1, y2, y3}, r, m)){
+  if(hl::chinese_remainder_algorithm({x1, x2, x3}, {y1, y2, y3}, r, m)){
     std::cout << (r == 0 ? m : r) << std::endl;
   }else{
     std::cout << -1 << std::endl;

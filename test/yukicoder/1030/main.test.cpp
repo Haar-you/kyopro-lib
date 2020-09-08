@@ -14,7 +14,7 @@
 
 namespace hl = haar_lib;
 
-struct LCASemigroup {
+struct lca_semigroup {
   using value_type = int;
   static std::function<int(int, int)> lca;
   value_type operator()(value_type a, value_type b) const {
@@ -22,7 +22,7 @@ struct LCASemigroup {
   }
 };
 
-std::function<int(int, int)> LCASemigroup::lca;
+std::function<int(int, int)> lca_semigroup::lca;
 
 int main(){
   int N, K, Q; std::cin >> N >> K >> Q;
@@ -31,18 +31,18 @@ int main(){
   auto A = hl::input_vector<int>(K);
   for(auto &x : A) --x;
 
-  hl::Tree<int> tree(N);
+  hl::tree<int> tree(N);
   tree.read<1, false, false>(N - 1);
 
-  hl::HLDecomposition<int> hld(tree, 0);
-  LCASemigroup::lca = [&](int a, int b){return hld.lca(a, b);};
+  hl::hl_decomposition<int> hld(tree, 0);
+  lca_semigroup::lca = [&](int a, int b){return hld.lca(a, b);};
 
-  hl::SegmentTree<hl::MaxMonoid<int>> seg1(N);
+  hl::segment_tree<hl::max_monoid<int>> seg1(N);
   for(int i = 0; i < N; ++i){
     seg1.update(hld.get_id(i), {C[i]});
   }
 
-  hl::SegmentTree<hl::MaybeMonoid<LCASemigroup>> seg2(K);
+  hl::segment_tree<hl::maybe_monoid<lca_semigroup>> seg2(K);
   seg2.init_with_vector(A);
 
   for(auto [T] : hl::input_tuples<int>(Q)){

@@ -9,13 +9,13 @@
 
 namespace hl = haar_lib;
 
-using D = hl::DoubleEps<double>;
+using D = hl::double_eps<double>;
 template <> double D::eps = 1e-7;
 
 int main(){
   int n; std::cin >> n;
 
-  hl::Polygon<D> p = hl::input_vector<hl::Point<D>>(n);
+  hl::polygon<D> p = hl::input_vector<hl::point<D>>(n);
 
   std::cout << (hl::is_convex(p) ? 1 : 0) << std::endl;
 

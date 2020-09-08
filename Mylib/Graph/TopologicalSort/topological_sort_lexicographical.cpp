@@ -10,7 +10,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  std::optional<std::vector<int>> topological_sort_lexicographical(const Graph<T> &g){
+  std::optional<std::vector<int>> topological_sort_lexicographical(const graph<T> &g){
     const int n = g.size();
     std::vector<int> indeg(n);
 

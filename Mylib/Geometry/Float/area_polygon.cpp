@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  T area(const Polygon<T> &ps){
+  T area(const polygon<T> &ps){
     T ret = 0;
     const int n = (int)ps.size();
     for(int i = 0; i < n; ++i){

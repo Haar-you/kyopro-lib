@@ -8,11 +8,11 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct KitamasaAlgorithm {
+  struct kitamasa_algorithm {
     int size;
     std::vector<T> initial_values, coeff;
 
-    KitamasaAlgorithm(int size, const std::vector<T> &initial_values, const std::vector<T> &coeff):
+    kitamasa_algorithm(int size, const std::vector<T> &initial_values, const std::vector<T> &coeff):
       size(size), initial_values(initial_values), coeff(coeff){}
 
     std::vector<T> inc(const std::vector<T> &a) const {

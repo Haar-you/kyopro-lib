@@ -14,7 +14,7 @@ int main(){
   std::string s; std::cin >> s;
   const int N = s.size();
 
-  auto sa = hl::SuffixArray(s);
+  auto sa = hl::suffix_array(s);
   auto lcp = hl::lcp_array(sa);
 
   int64_t ans = 0;

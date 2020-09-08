@@ -8,10 +8,10 @@
 
 namespace hl = haar_lib;
 
-using mint = hl::ModInt<998244353>;
+using mint = hl::modint<998244353>;
 
 struct tag {};
-using Mat = hl::SquareMatrix<mint, tag>;
+using Mat = hl::square_matrix<mint, tag>;
 
 int main(){
   std::cin.tie(0);

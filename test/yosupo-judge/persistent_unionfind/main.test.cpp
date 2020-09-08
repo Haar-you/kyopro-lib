@@ -13,9 +13,9 @@ int main(){
 
   int N, Q; std::cin >> N >> Q;
 
-  std::vector<hl::PersistentUnionFind> G(Q + 1);
+  std::vector<hl::persistent_unionfind> G(Q + 1);
 
-  G[0] = hl::PersistentUnionFind(N);
+  G[0] = hl::persistent_unionfind(N);
 
   for(auto [i, t, k, u, v] : hl::input_tuples_with_index<int, int, int, int>(Q)){
     ++k;

@@ -10,7 +10,7 @@ namespace hl = haar_lib;
 int main(){
   int n, q; std::cin >> n >> q;
 
-  auto fen = hl::FenwickTree<hl::SumGroup<int>>(n);
+  auto fen = hl::fenwick_tree<hl::sum_group<int>>(n);
 
   for(auto [type, x, y] : hl::input_tuples<int, int, int>(q)){
     if(type == 0){

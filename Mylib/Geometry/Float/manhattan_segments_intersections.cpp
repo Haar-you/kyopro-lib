@@ -14,9 +14,9 @@
  */
 namespace haar_lib {
   template <typename T>
-  int manhattan_segments_intersections(std::vector<Segment<T>> segs){
-    std::vector<Segment<T>> hs;
-    std::vector<std::tuple<Point<T>, bool, int>> vs;
+  int manhattan_segments_intersections(std::vector<segment<T>> segs){
+    std::vector<segment<T>> hs;
+    std::vector<std::tuple<point<T>, bool, int>> vs;
     int count = 0;
 
     for(auto s : segs){
@@ -46,8 +46,8 @@ namespace haar_lib {
 
       T ymin = std::min(hs.back().from.y, std::get<0>(vs.back()).y);
 
-      std::vector<Segment<T>> rs;
-      std::vector<std::tuple<Point<T>, bool, int>> ps;
+      std::vector<segment<T>> rs;
+      std::vector<std::tuple<point<T>, bool, int>> ps;
 
       while(not hs.empty() and hs.back().from.y == ymin){
         rs.push_back(hs.back());

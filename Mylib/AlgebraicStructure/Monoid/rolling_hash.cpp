@@ -8,7 +8,7 @@
  */
 namespace haar_lib {
   template <size_t N>
-  struct RollingHashMonoid {
+  struct rolling_hash_monoid {
     static std::array<int64_t, N> base;
     static int64_t mod;
 
@@ -43,6 +43,6 @@ namespace haar_lib {
     }
   };
 
-  template <size_t N> std::array<int64_t, N> RollingHashMonoid<N>::base;
-  template <size_t N> int64_t RollingHashMonoid<N>::mod;
+  template <size_t N> std::array<int64_t, N> rolling_hash_monoid<N>::base;
+  template <size_t N> int64_t rolling_hash_monoid<N>::mod;
 }

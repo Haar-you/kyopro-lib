@@ -8,7 +8,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct MaxMonoid {
+  struct max_monoid {
     using value_type = std::optional<T>;
 
     value_type operator()() const {return {};}

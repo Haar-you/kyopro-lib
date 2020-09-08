@@ -12,17 +12,17 @@
 
 namespace hl = haar_lib;
 
-using D = hl::DoubleEps<double>;
+using D = hl::double_eps<double>;
 template <> double D::eps = 1e-7;
 
 int main(){
-  hl::Circle<D> c;
+  hl::circle<D> c;
   std::cin >> c.center >> c.radius;
 
   int q; std::cin >> q;
 
-  for(auto [p0, p1] : hl::input_tuples<hl::Point<D>, hl::Point<D>>(q)){
-    hl::Line<D> l(p0, p1);
+  for(auto [p0, p1] : hl::input_tuples<hl::point<D>, hl::point<D>>(q)){
+    hl::line<D> l(p0, p1);
 
     auto [s, ans] = hl::intersect_circle_line::check(c, l);
 

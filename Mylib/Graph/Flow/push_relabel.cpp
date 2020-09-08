@@ -10,7 +10,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct PushRelabel {
+  struct push_relabel {
   private:
     struct edge {
       int from, to;
@@ -93,9 +93,9 @@ namespace haar_lib {
     }
 
   public:
-    PushRelabel(){}
-    PushRelabel(int N): N(N), g(N), excess(N), height(N){}
-    PushRelabel(std::vector<std::vector<std::pair<int, T>>> g):
+    push_relabel(){}
+    push_relabel(int N): N(N), g(N), excess(N), height(N){}
+    push_relabel(std::vector<std::vector<std::pair<int, T>>> g):
       N(g.size()), g(N), excess(N), height(N)
     {
       for(int i = 0; i < N; ++i){

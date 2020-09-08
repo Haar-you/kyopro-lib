@@ -13,7 +13,7 @@ namespace hl = haar_lib;
 int main(){
   int V, E; std::cin >> V >> E;
 
-  hl::Graph<int> g(V);
+  hl::graph<int> g(V);
   g.read<1, false, false>(E);
 
   auto res = hl::check_bipartite_graph(g);

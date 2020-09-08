@@ -10,12 +10,12 @@
 
 namespace hl = haar_lib;
 
-using D = hl::DoubleEps<double>;
+using D = hl::double_eps<double>;
 template <> double D::eps = ERROR;
 
 int main(){
-  hl::Point<D> p; std::cin >> p;
-  hl::Circle<D> c; std::cin >> c.center >> c.radius;
+  hl::point<D> p; std::cin >> p;
+  hl::circle<D> c; std::cin >> c.center >> c.radius;
 
   auto ans = hl::tangent_of_circle(c, p);
 

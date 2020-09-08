@@ -12,7 +12,7 @@ int main(){
   std::ios::sync_with_stdio(false);
 
   std::string S; std::cin >> S;
-  hl::SuffixArray sa(S);
+  hl::suffix_array sa(S);
 
   std::cout << hl::join(sa.begin() + 1, sa.end()) << "\n";
 

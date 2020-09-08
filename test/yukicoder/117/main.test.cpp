@@ -9,13 +9,13 @@
 
 namespace hl = haar_lib;
 
-using mint = hl::ModInt<1000000007>;
+using mint = hl::modint<1000000007>;
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  auto ft = hl::FactorialTable<mint>(2000000);
+  auto ft = hl::factorial_table<mint>(2000000);
 
   int T; std::cin >> T;
 

@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  T area_intersection_of_circle_and_polygon(const Circle<T> &cl, const Polygon<T> &ps){
+  T area_intersection_of_circle_and_polygon(const circle<T> &cl, const polygon<T> &ps){
     const int n = ps.size();
     T ret = 0;
 
@@ -22,7 +22,7 @@ namespace haar_lib {
       const auto &p1 = ps[i];
       const auto &p2 = ps[(i + 1) % n];
 
-      const auto [t, res] = intersect_circle_segment::check(cl, Line<T>(p1, p2));
+      const auto [t, res] = intersect_circle_segment::check(cl, line<T>(p1, p2));
 
       const T d1 = abs(p1 - c);
       const T d2 = abs(p2 - c);

@@ -11,13 +11,13 @@
  */
 namespace haar_lib {
   template <typename T>
-  class RangeInversionsQuery {
+  class range_inversions_query {
     std::vector<int> a;
     int N;
     std::vector<std::pair<int, int>> qs;
 
   public:
-    RangeInversionsQuery(std::vector<T> a_): N(a_.size()){
+    range_inversions_query(std::vector<T> a_): N(a_.size()){
       auto b = a_;
       std::sort(b.begin(), b.end());
       b.erase(std::unique(b.begin(), b.end()), b.end());
@@ -34,7 +34,7 @@ namespace haar_lib {
 
     auto solve(){
       const int Q = qs.size();
-      haar_lib::FenwickTreeAdd<int64_t> b(N);
+      fenwick_tree_add<int64_t> b(N);
 
       int64_t t = 0;
       std::vector<int64_t> ans(Q);
@@ -66,7 +66,7 @@ namespace haar_lib {
       auto query = [&](int i){ans[i] = t;};
 
       auto mo =
-        haar_lib::MoAlgorithm(
+        mo_algorithm(
           N, Q, append_left, append_right, remove_left, remove_right, query
         );
 

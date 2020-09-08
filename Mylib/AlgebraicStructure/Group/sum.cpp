@@ -6,7 +6,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct SumGroup {
+  struct sum_group {
     using value_type = T;
 
     value_type operator()() const {return 0;}

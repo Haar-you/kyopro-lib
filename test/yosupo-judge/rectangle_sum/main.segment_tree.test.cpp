@@ -17,7 +17,7 @@ int main(){
 
   auto [x, y, w] = hl::input_tuple_vector<int64_t, int64_t, int64_t>(N);
 
-  hl::SegmentTree2D<hl::SumMonoid<int64_t>> seg;
+  hl::segment_tree_2d<hl::sum_monoid<int64_t>> seg;
 
   for(int i = 0; i < N; ++i){
     seg.add(x[i], y[i]);

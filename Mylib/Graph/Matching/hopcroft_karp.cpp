@@ -9,7 +9,7 @@
  * @docs hopcroft_karp.md
  */
 namespace haar_lib {
-  class HopcroftKarp {
+  class hopcroft_karp {
     struct edge {
       int from, to;
       int rev;
@@ -58,7 +58,7 @@ namespace haar_lib {
     }
 
   public:
-    HopcroftKarp(int L, int R): L(L), R(R), N(L + R + 2), graph(N), dist(N){
+    hopcroft_karp(int L, int R): L(L), R(R), N(L + R + 2), graph(N), dist(N){
       for(int i = 0; i < L; ++i){
         graph[0].push_back((edge){0, i + 1, -1, false});
       }

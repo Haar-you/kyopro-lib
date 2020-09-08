@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  std::vector<Point<T>> upper_hull(Polygon<T> pts, bool upper = true){
+  std::vector<point<T>> upper_hull(polygon<T> pts, bool upper = true){
     std::sort(
       pts.begin(),
       pts.end(),
@@ -18,7 +18,7 @@ namespace haar_lib {
 
     if(upper) std::reverse(pts.begin(), pts.end());
 
-    std::vector<Point<T>> ret;
+    std::vector<point<T>> ret;
 
     ret.push_back(pts.back());
     pts.pop_back();
@@ -46,7 +46,7 @@ namespace haar_lib {
   }
 
   template <typename T>
-  std::vector<Point<T>> convex_hull(const Polygon<T> &pts){
+  std::vector<point<T>> convex_hull(const polygon<T> &pts){
     auto ret = upper_hull(pts);
     auto lower = upper_hull(pts, false);
 

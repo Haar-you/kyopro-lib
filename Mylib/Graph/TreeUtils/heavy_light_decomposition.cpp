@@ -10,7 +10,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  class HLDecomposition {
+  class hl_decomposition {
     int n;
 
     std::vector<int> sub, // subtree size
@@ -21,41 +21,41 @@ namespace haar_lib {
       next, // next node in a chain
       end; //
 
-    int dfs_sub(Tree<T> &tree, int cur, int p){
+    int dfs_sub(tree<T> &tr, int cur, int p){
       par[cur] = p;
       int t = 0;
-      for(auto &e : tree[cur]){
+      for(auto &e : tr[cur]){
         if(e.to == p) continue;
-        sub[cur] += dfs_sub(tree, e.to, cur);
+        sub[cur] += dfs_sub(tr, e.to, cur);
         if(sub[e.to] > t){
           t = sub[e.to];
           next[cur] = e.to;
-          std::swap(e, tree[cur][0]);
+          std::swap(e, tr[cur][0]);
         }
       }
       return sub[cur];
     }
 
-    void dfs_build(const Tree<T> &tree, int cur, int &i){
+    void dfs_build(const tree<T> &tr, int cur, int &i){
       id[cur] = i;
       rid[i] = cur;
       ++i;
 
-      for(auto &e : tree[cur]){
+      for(auto &e : tr[cur]){
         if(e.to == par[cur]) continue;
-        head[e.to] = (e.to == tree[cur][0].to ? head[cur] : e.to);
-        dfs_build(tree, e.to, i);
+        head[e.to] = (e.to == tr[cur][0].to ? head[cur] : e.to);
+        dfs_build(tr, e.to, i);
       }
 
       end[cur] = i;
     }
 
   public:
-    HLDecomposition(Tree<T> tree, int root):
-      n(tree.size()), sub(n, 1), par(n, -1), head(n), id(n), rid(n), next(n, -1), end(n, -1){
-      dfs_sub(tree, root, -1);
+    hl_decomposition(tree<T> tr, int root):
+      n(tr.size()), sub(n, 1), par(n, -1), head(n), id(n), rid(n), next(n, -1), end(n, -1){
+      dfs_sub(tr, root, -1);
       int i = 0;
-      dfs_build(tree, root, i);
+      dfs_build(tr, root, i);
     }
 
     template <typename Func> // std::function<void(int, int)>

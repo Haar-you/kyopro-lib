@@ -14,7 +14,7 @@ int main(){
   std::ios::sync_with_stdio(false);
 
   int N; std::cin >> N;
-  hl::WeightedBipartiteMatching<int64_t, hl::MinimumCostFlow<int, int64_t>, true> m(N, N);
+  hl::weighted_bipartite_matching<int64_t, hl::minimum_cost_flow<int, int64_t>, true> m(N, N);
 
   auto a = hl::input_vector<int64_t>(N, N);
 

@@ -7,12 +7,12 @@
  * @docs sqrt_decomposition.md
  */
 namespace haar_lib {
-  struct SqrtDecomposition {
+  struct sqrt_decomposition {
     const int N;
     const int BLOCK_SIZE;
     const int BLOCK_NUM;
 
-    SqrtDecomposition(int N):
+    sqrt_decomposition(int N):
       N(N), BLOCK_SIZE((int)sqrt(N)), BLOCK_NUM((N + BLOCK_SIZE - 1) / BLOCK_SIZE)
     {
     }

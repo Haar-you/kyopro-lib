@@ -7,13 +7,14 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct LinearImos1D {
+  struct linear_imos_1d {
     using value_type = T;
 
     std::vector<T> vec_a, vec_a_end, vec_b, vec;
     int n;
 
-    LinearImos1D(int n): vec_a(n + 1), vec_a_end(n + 1), vec_b(n + 1), vec(n + 1), n(n){}
+    linear_imos_1d(int n):
+      vec_a(n + 1), vec_a_end(n + 1), vec_b(n + 1), vec(n + 1), n(n){}
 
     void add(int s, int t, const T &a, const T &b){ // x ∈ [s, t)にax+bを加算する。
       vec_a[s + 1] += a;

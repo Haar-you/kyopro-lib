@@ -7,10 +7,10 @@
  * @docs prime_factorize_precalculated.md
  */
 namespace haar_lib {
-  struct PrimeFactorize {
+  struct prime_factorize_sieve {
     std::vector<int> p;
 
-    PrimeFactorize(int N): p(N + 1){
+    prime_factorize_sieve(int N): p(N + 1){
       for(int i = 2; i <= N; ++i){
         if(p[i] != 0) continue;
         for(int j = i; j <= N; j += i){

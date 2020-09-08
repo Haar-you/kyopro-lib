@@ -8,7 +8,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  class Compressor {
+  class compressor {
     std::vector<T> data;
 
   public:

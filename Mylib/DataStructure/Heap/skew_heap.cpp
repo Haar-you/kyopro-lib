@@ -8,7 +8,7 @@
  */
 namespace haar_lib {
   template <typename T, class Compare = std::less<T>>
-  class SkewHeap {
+  class skew_heap {
     struct node {
       T val;
       node *left, *right;
@@ -20,8 +20,8 @@ namespace haar_lib {
     Compare compare;
 
   public:
-    SkewHeap(): root(nullptr), compare(Compare()){}
-    SkewHeap(const Compare &compare): root(nullptr), compare(compare){}
+    skew_heap(): root(nullptr), compare(Compare()){}
+    skew_heap(const Compare &compare): root(nullptr), compare(compare){}
 
   protected:
     node* meld(node *a, node *b){
@@ -38,7 +38,7 @@ namespace haar_lib {
     }
 
   public:
-    void meld(SkewHeap &heap){root = meld(root, heap.root); heap.root = nullptr;}
+    void meld(skew_heap &heap){root = meld(root, heap.root); heap.root = nullptr;}
     void push(const T &val){root = meld(root, new node(val));}
     const T& top() const {return root->val;}
     void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}

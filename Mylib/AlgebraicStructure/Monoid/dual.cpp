@@ -6,7 +6,7 @@
  */
 namespace haar_lib {
   template <typename Monoid>
-  struct DualMonoid {
+  struct dual_monoid {
     using value_type = typename Monoid::value_type;
     const static Monoid M;
     value_type operator()() const {return M();}

@@ -8,7 +8,7 @@
 namespace hl = haar_lib;
 
 struct tag {};
-using mint = hl::RuntimeModInt<tag>;
+using mint = hl::runtime_modint<tag>;
 
 int main(){
   int N, M; std::cin >> N >> M;

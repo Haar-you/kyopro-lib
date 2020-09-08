@@ -9,7 +9,7 @@ namespace hl = haar_lib;
 int main(){
   int N; std::cin >> N;
 
-  hl::Tree<int> tree(N);
+  hl::tree<int> tree(N);
   tree.read<1, false, false>(N - 1);
 
   auto r = hl::rerooting<int>(

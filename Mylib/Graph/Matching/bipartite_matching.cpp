@@ -10,12 +10,12 @@
  */
 namespace haar_lib {
   template <typename MaxFlow>
-  class BipartiteMatching {
+  class bipartite_matching {
     int L, R, s, t;
     MaxFlow f;
 
   public:
-    BipartiteMatching(int L, int R): L(L), R(R), s(L + R), t(s + 1), f(L + R + 2){
+    bipartite_matching(int L, int R): L(L), R(R), s(L + R), t(s + 1), f(L + R + 2){
       for(int i = 0; i < L; ++i) f.add_edge(s, i, 1);
       for(int i = 0; i < R; ++i) f.add_edge(L + i, t, 1);
     }

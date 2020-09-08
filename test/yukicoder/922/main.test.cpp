@@ -15,19 +15,19 @@ namespace hl = haar_lib;
 int main(){
   int N, M, Q; std::cin >> N >> M >> Q;
 
-  hl::Graph<int64_t> g(N);
+  hl::graph<int64_t> g(N);
   g.read<1, false, false>(M);
 
   int64_t ans = 0;
 
-  hl::Forest<int64_t> forest(g);
+  hl::forest<int64_t> forest(g);
 
   const int tree_num = forest.trees.size();
-  std::vector<hl::LCA<int64_t>> lcas(tree_num);
+  std::vector<hl::lowest_common_ancestor<int64_t>> lcas(tree_num);
   std::vector<std::vector<int64_t>> dists(tree_num);
 
   for(int i = 0; i < tree_num; ++i){
-    lcas[i] = hl::LCA(forest.trees[i], 0);
+    lcas[i] = hl::lowest_common_ancestor(forest.trees[i], 0);
     dists[i] = hl::tree_distance(forest.trees[i], 0);
   }
 

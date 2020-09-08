@@ -11,9 +11,9 @@
  * @docs two_sat.md
  */
 namespace haar_lib {
-  class TwoSat {
+  class two_sat {
     const int n;
-    Graph<int> g;
+    graph<int> g;
 
     int f(int i){
       assert(i != 0);
@@ -23,7 +23,7 @@ namespace haar_lib {
     }
 
   public:
-    TwoSat(int n): n(n), g(2 * n){}
+    two_sat(int n): n(n), g(2 * n){}
 
     /**
      * @note a→bを導入する
@@ -57,7 +57,7 @@ namespace haar_lib {
         if(scc[i] == scc[i + n]) return {};
       }
 
-      Graph<int> g2(m);
+      graph<int> g2(m);
 
       for(int i = 0; i < 2 * n; ++i){
         for(auto &e : g[i]){

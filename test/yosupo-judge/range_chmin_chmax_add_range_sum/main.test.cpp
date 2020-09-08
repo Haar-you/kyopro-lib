@@ -14,7 +14,7 @@ int main(){
 
   int N, Q; std::cin >> N >> Q;
 
-  hl::SegmentTreeBeats seg(N);
+  hl::segment_tree_beats seg(N);
 
   auto a = hl::input_vector<int64_t>(N);
   seg.init_with_vector(a);

@@ -7,11 +7,11 @@
  * @docs atkin_sieve.md
  */
 namespace haar_lib {
-  class AtkinSieve {
+  class atkin_sieve {
     std::vector<bool> is_prime;
 
   public:
-    AtkinSieve(int MAX): is_prime(MAX + 1){
+    atkin_sieve(int MAX): is_prime(MAX + 1){
       for(int64_t i = 1; i * i <= MAX; ++i){
         for(int64_t j = 1; j * j <= MAX; ++j){
           {

@@ -9,7 +9,7 @@
 
 namespace hl = haar_lib;
 
-using mint = hl::ModInt<1000000007>;
+using mint = hl::modint<1000000007>;
 const int MAX = 1000000000;
 
 int main(){
@@ -19,7 +19,7 @@ int main(){
   mint ans = 0;
 
   if(std::count(A.begin(), A.end(), 0) == 0){
-    hl::LinearImos1D<int64_t> p(N);
+    hl::linear_imos_1d<int64_t> p(N);
 
     std::vector<int> next(N);
     for(int i = N; --i >= 0;){

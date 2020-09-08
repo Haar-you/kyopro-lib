@@ -13,7 +13,7 @@
 namespace haar_lib {
   namespace closest_pair_impl {
     template <typename T>
-    T rec(std::vector<Point<T>> &s){
+    T rec(std::vector<point<T>> &s){
       const int N = s.size();
 
       if(N == 1) return std::numeric_limits<T>::infinity();
@@ -25,8 +25,8 @@ namespace haar_lib {
 
       const T mid_x = s[N / 2].x;
 
-      auto left = std::vector<Point<T>>(s.begin(), s.begin() + N / 2);
-      auto right = std::vector<Point<T>>(s.begin() + N / 2, s.end());
+      auto left = std::vector<point<T>>(s.begin(), s.begin() + N / 2);
+      auto right = std::vector<point<T>>(s.begin() + N / 2, s.end());
 
       const T d1 = rec(left);
       const T d2 = rec(right);
@@ -42,7 +42,7 @@ namespace haar_lib {
         [](const auto &a, const auto &b){return a.y < b.y;}
       );
 
-      std::vector<Point<T>> v;
+      std::vector<point<T>> v;
 
       for(const auto &p : s){
         if(abs(p.x - mid_x) > d) continue;
@@ -62,7 +62,7 @@ namespace haar_lib {
   }
 
   template <typename T>
-  T closest_pair(std::vector<Point<T>> s){
+  T closest_pair(std::vector<point<T>> s){
     std::sort(s.begin(), s.end(), [](const auto &a, const auto &b){return a.x < b.x;});
     return closest_pair_impl::rec(s);
   }

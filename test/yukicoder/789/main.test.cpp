@@ -13,7 +13,7 @@ int main(){
 
   int n; std::cin >> n;
 
-  hl::DynamicSegmentTree<hl::SumMonoid<int64_t>> seg(1000000001);
+  hl::dynamic_segment_tree<hl::sum_monoid<int64_t>> seg(1000000001);
 
   int64_t ans = 0;
 

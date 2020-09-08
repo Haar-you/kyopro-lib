@@ -7,7 +7,7 @@
  * @docs max_contiguous.md
  */
 namespace haar_lib {
-  struct MaxContiguousMonoid {
+  struct max_contiguous_monoid {
     using value_type = std::tuple<int, int, int, int>;
 
     value_type operator()() const {

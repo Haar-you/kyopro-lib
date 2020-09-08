@@ -17,7 +17,7 @@ int main(){
 
   auto A = hl::input_vector<int>(N);
 
-  hl::ProjectSelectionProblem<int, hl::FordFulkerson<int>> psp(N);
+  hl::project_selection_problem<int, hl::ford_fulkerson<int>> psp(N);
   // red: right, blue: left
 
   for(int i = 0; i < N; ++i){

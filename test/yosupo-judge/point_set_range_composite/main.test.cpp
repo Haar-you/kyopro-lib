@@ -11,13 +11,13 @@
 
 namespace hl = haar_lib;
 
-using mint = hl::ModInt<998244353>;
-using M = hl::DualMonoid<hl::AffineMonoid<mint>>;
+using mint = hl::modint<998244353>;
+using M = hl::dual_monoid<hl::affine_monoid<mint>>;
 
 int main(){
   int N, Q; std::cin >> N >> Q;
 
-  auto seg = hl::SegmentTree<M>(N);
+  auto seg = hl::segment_tree<M>(N);
 
   for(auto [i, a, b] : hl::input_tuples_with_index<int, int>(N)){
     seg.update(i, {a, b});

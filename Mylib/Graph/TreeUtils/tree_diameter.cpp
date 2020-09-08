@@ -11,8 +11,8 @@
  */
 namespace haar_lib {
   template <typename T>
-  std::pair<T, std::vector<int>> tree_diameter(const Tree<T> &tree){
-    const int N = tree.size();
+  std::pair<T, std::vector<int>> tree_diameter(const tree<T> &tr){
+    const int N = tr.size();
 
     std::vector<bool> check(N);
     std::vector<T> dp(N);
@@ -24,7 +24,7 @@ namespace haar_lib {
 
       check[i] = true;
 
-      for(const auto &e : tree[i]){
+      for(const auto &e : tr[i]){
         if(not check[e.to]){
           dp[e.to] = dp[i] + e.cost;
           st.push(e.to);
@@ -45,7 +45,7 @@ namespace haar_lib {
 
       check[i] = true;
 
-      for(const auto &e : tree[i]){
+      for(const auto &e : tr[i]){
         if(not check[e.to]){
           dp[e.to] = dp[i] + e.cost;
           st.push(e.to);

@@ -10,7 +10,7 @@ namespace hl = haar_lib;
 int main(){
   int N;
   while(std::cin >> N, N){
-    auto d = hl::Dice(1, 6, 2, 5, 3, 4);
+    auto d = hl::dice(1, 6, 2, 5, 3, 4);
 
     int ans = 1;
 

@@ -8,15 +8,15 @@
  * @docs unionfind.md
  */
 namespace haar_lib {
-  class UnionFind {
+  class unionfind {
     int n;
     mutable std::vector<int> parent;
     std::vector<int> depth, size;
     int count;
 
   public:
-    UnionFind(){}
-    UnionFind(int n): n(n), parent(n), depth(n, 1), size(n, 1), count(n){
+    unionfind(){}
+    unionfind(int n): n(n), parent(n), depth(n, 1), size(n, 1), count(n){
       std::iota(parent.begin(), parent.end(), 0);
     }
 

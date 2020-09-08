@@ -12,14 +12,14 @@ namespace haar_lib {
   namespace biconnected_components_impl {
     template <typename T>
     void dfs(
-      const Graph<T> &g,
+      const graph<T> &g,
       int cur,
       int par,
       std::vector<bool> &check,
       std::vector<int> &low,
       std::vector<int> &ord,
-      std::vector<std::vector<Edge<T>>> &ret,
-      std::stack<Edge<T>> &st,
+      std::vector<std::vector<edge<T>>> &ret,
+      std::stack<edge<T>> &st,
       int &t
     ){
       check[cur] = true;
@@ -54,13 +54,13 @@ namespace haar_lib {
   }
 
   template <typename T>
-  auto biconnected_components(const Graph<T> &g){
+  auto biconnected_components(const graph<T> &g){
     const int n = g.size();
 
     std::vector<bool> check(n);
     std::vector<int> low(n, -1), ord(n, -1);
-    std::vector<std::vector<Edge<T>>> ret;
-    std::stack<Edge<T>> st;
+    std::vector<std::vector<edge<T>>> ret;
+    std::stack<edge<T>> st;
     int t = 0;
 
     for(int i = 0; i < n; ++i){

@@ -9,7 +9,7 @@
  * @docs aho_corasick.md
  */
 namespace haar_lib {
-  class AhoCorasick {
+  class aho_corasick {
   public:
     int n;
     std::vector<std::unordered_map<char, int>> trie;
@@ -17,7 +17,7 @@ namespace haar_lib {
     std::vector<std::string> dict;
     std::vector<std::vector<int>> dict_index;
 
-    AhoCorasick(): n(1), trie(1), failure_edge(1){}
+    aho_corasick(): n(1), trie(1), failure_edge(1){}
 
     void add(const std::string &s){
       dict.push_back(s);

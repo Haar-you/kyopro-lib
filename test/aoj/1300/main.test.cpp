@@ -14,8 +14,8 @@ namespace hl = haar_lib;
 
 using result = std::map<std::string, int>;
 
-struct parser : hl::Parser {
-  parser(const std::string &s): Parser(s){}
+struct parser : hl::parser {
+  parser(const std::string &s): hl::parser(s){}
 
   std::string atom(){
     std::string ret;
@@ -107,7 +107,7 @@ int main(){
       }
     }
 
-    std::vector<std::vector<hl::Rational>> mat(atoms.size(), std::vector<hl::Rational>(ress.size()));
+    std::vector<std::vector<hl::rational>> mat(atoms.size(), std::vector<hl::rational>(ress.size()));
     for(int i = 0; i < (int)ress.size(); ++i){
       for(auto &[k, v] : ress[i]){
         mat[atoms[k]][i] = v;
@@ -117,7 +117,7 @@ int main(){
     hl::gaussian_elimination(mat);
 
     const int n = ress.size();
-    std::vector<hl::Rational> ans(n);
+    std::vector<hl::rational> ans(n);
 
     ans[n - 1] = 1;
 
@@ -125,8 +125,8 @@ int main(){
       if(mat[i].back() == 0) continue;
 
       int k = 0;
-      hl::Rational coef;
-      hl::Rational cons;
+      hl::rational coef;
+      hl::rational cons;
 
       for(int j = 0; j < n; ++j){
         if(ans[j] == 0){

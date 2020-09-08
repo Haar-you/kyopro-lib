@@ -11,7 +11,7 @@ namespace hl = haar_lib;
 int main(){
   int n, q; std::cin >> n >> q;
 
-  hl::LazySegmentTree<hl::UpdateMin<int, int>> seg(n);
+  hl::lazy_segment_tree<hl::update_min<int, int>> seg(n);
 
   for(auto [type, s, t] : hl::input_tuples<int, int, int>(q)){
     if(type == 0){

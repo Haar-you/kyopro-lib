@@ -8,14 +8,14 @@
  */
 namespace haar_lib {
   namespace point_in_polygon {
-    enum Status {
+    enum status {
                  INCLUSION  = 0b001,
                  ON_SEGMENT = 0b010,
                  OUTSIDE    = 0b100
     };
 
     template <typename T>
-    Status check(const Point<T> &p, const Polygon<T> &polygon){
+    status check(const point<T> &p, const polygon<T> &polygon){
       const int n = polygon.size();
 
       T d = 0;

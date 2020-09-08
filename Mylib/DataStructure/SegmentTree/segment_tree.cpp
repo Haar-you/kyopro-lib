@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename Monoid>
-  class SegmentTree {
+  class segment_tree {
     using value_type = typename Monoid::value_type;
     const static Monoid M;
 
@@ -15,8 +15,8 @@ namespace haar_lib {
     std::vector<value_type> data;
 
   public:
-    SegmentTree(){}
-    SegmentTree(int n):
+    segment_tree(){}
+    segment_tree(int n):
       depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
       size(1 << depth), hsize(size / 2),
       data(size, M())

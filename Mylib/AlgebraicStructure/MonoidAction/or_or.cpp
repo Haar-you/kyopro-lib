@@ -6,7 +6,7 @@
  */
 namespace haar_lib {
   template <typename T, typename U>
-  struct OrOr {
+  struct bitor_bitor {
     using value_type_get = T;
     using value_type_update = U;
 

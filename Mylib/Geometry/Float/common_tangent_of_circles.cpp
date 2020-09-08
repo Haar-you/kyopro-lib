@@ -8,7 +8,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  std::vector<Point<T>> common_tangent_of_circles(const Circle<T> &a, const Circle<T> &b){
+  std::vector<point<T>> common_tangent_of_circles(const circle<T> &a, const circle<T> &b){
     const T d = abs(b.center - a.center);
     const auto n = unit(b.center - a.center);
 

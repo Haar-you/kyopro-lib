@@ -7,7 +7,7 @@
 namespace hl = haar_lib;
 
 int main(){
-  hl::BinaryHeap<int> heap;
+  hl::binary_heap<int> heap;
   std::string s;
 
   while(1){

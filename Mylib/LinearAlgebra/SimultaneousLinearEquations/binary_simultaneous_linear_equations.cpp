@@ -11,7 +11,7 @@
 namespace haar_lib {
   namespace binary_simultaneous_linear_equations_impl {
     template <size_t N>
-    struct Result {
+    struct result {
       int rank, dim;
       std::vector<bool> solution;
     };
@@ -19,8 +19,8 @@ namespace haar_lib {
 
   template <size_t N>
   auto binary_simultaneous_linear_equations(std::vector<std::bitset<N>> a, std::vector<bool> b){
-    using Result = binary_simultaneous_linear_equations_impl::Result<N>;
-    std::optional<Result> ret;
+    using result = binary_simultaneous_linear_equations_impl::result<N>;
+    std::optional<result> ret;
 
     const int n = a.size(), m = N;
     int rank = 0;
@@ -59,7 +59,7 @@ namespace haar_lib {
     std::vector<bool> solution(m);
     for(int i = 0; i < rank; ++i) solution[i] = b[i];
 
-    ret = Result({rank, dim, solution});
+    ret = result({rank, dim, solution});
     return ret;
   }
 }

@@ -6,7 +6,7 @@
  */
 namespace haar_lib {
   template <typename T, typename U>
-  struct AddSum {
+  struct add_sum {
     using value_type_get = T;
     using value_type_update = U;
 

@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename Semilattice>
-  class SparseTable {
+  class sparse_table {
     using value_type = typename Semilattice::value_type;
     const static Semilattice S;
 
@@ -18,7 +18,7 @@ namespace haar_lib {
 
   public:
     template <typename T>
-    SparseTable(const std::vector<T> &v){
+    sparse_table(const std::vector<T> &v){
       int n = v.size();
       int logn = 0;
       while((1 << logn) <= n) ++logn;

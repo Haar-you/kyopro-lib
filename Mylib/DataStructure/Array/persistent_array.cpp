@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  class PersistentArray {
+  class persistent_array {
     struct node {
       bool is_terminal;
       int size = 1;
@@ -55,7 +55,7 @@ namespace haar_lib {
       apply_init(t->right, ret, i);
     }
 
-    PersistentArray(node *root): root(root){}
+    persistent_array(node *root): root(root){}
 
     void calc_depth(int size){
       depth = 1;
@@ -64,13 +64,13 @@ namespace haar_lib {
     }
 
   public:
-    PersistentArray(){}
-    PersistentArray(size_t size): size(size){
+    persistent_array(){}
+    persistent_array(size_t size): size(size){
       calc_depth(size);
       root = init(size, 1);
     }
 
-    PersistentArray(const std::vector<T> &v): size(v.size()){
+    persistent_array(const std::vector<T> &v): size(v.size()){
       calc_depth(size);
       root = init(size, 1);
 
@@ -78,7 +78,7 @@ namespace haar_lib {
       apply_init(root, v, i);
     }
 
-    PersistentArray(const PersistentArray &v){
+    persistent_array(const persistent_array &v){
       this->root = v.root;
       this->size = v.size;
       this->depth = v.depth;
@@ -118,9 +118,9 @@ namespace haar_lib {
     }
 
   public:
-    PersistentArray update(int i, const T &val) const {
+    persistent_array update(int i, const T &val) const {
       node *ret = update(root, i, val);
-      return PersistentArray(ret);
+      return persistent_array(ret);
     }
 
   protected:
@@ -143,7 +143,7 @@ namespace haar_lib {
       return ret;
     }
 
-    friend std::ostream& operator<<(std::ostream &s, const PersistentArray &a){
+    friend std::ostream& operator<<(std::ostream &s, const persistent_array &a){
       auto v = a.traverse();
       s << "{";
       for(auto it = v.begin(); it != v.end(); ++it){

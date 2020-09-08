@@ -11,7 +11,7 @@ namespace hl = haar_lib;
 int main(){
   int n, q; std::cin >> n >> q;
 
-  hl::SegmentTree<hl::MinMonoid<int>> seg(n);
+  hl::segment_tree<hl::min_monoid<int>> seg(n);
 
   for(auto [type, x, y] : hl::input_tuples<int, int, int>(q)){
     if(type == 0){

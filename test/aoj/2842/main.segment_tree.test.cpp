@@ -15,7 +15,7 @@ int main(){
 
   int H, W, T, Q; std::cin >> H >> W >> T >> Q;
 
-  hl::SegmentTree2D<hl::SumMonoid<int>> seg1(H, W), seg2(H, W);
+  hl::segment_tree_2d<hl::sum_monoid<int>> seg1(H, W), seg2(H, W);
 
   std::queue<std::tuple<int, int, int>> q;
 

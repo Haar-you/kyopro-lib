@@ -8,7 +8,7 @@
  */
 namespace haar_lib {
   template <typename T, typename Comparator>
-  class DynamicLiChaoSegmentTree {
+  class dynamic_lichao_segment_tree {
     using line = std::pair<T, T>;
 
     const Comparator cmp = Comparator();
@@ -28,7 +28,7 @@ namespace haar_lib {
     }
 
   public:
-    DynamicLiChaoSegmentTree(int64_t MIN, int64_t MAX): MIN(MIN), MAX(MAX){}
+    dynamic_lichao_segment_tree(int64_t MIN, int64_t MAX): MIN(MIN), MAX(MAX){}
 
     T apply(const line &l, const T &x) const {
       return l.first * x + l.second;

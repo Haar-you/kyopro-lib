@@ -9,7 +9,7 @@ namespace hl = haar_lib;
 int main(){
   int V, E; std::cin >> V >> E;
 
-  hl::Graph<int> g(V);
+  hl::graph<int> g(V);
   g.read<0>(E);
 
   std::cout << hl::travelling_salesman_problem(g, 0).value_or(-1) << std::endl;

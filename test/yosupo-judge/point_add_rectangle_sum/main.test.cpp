@@ -18,7 +18,7 @@ int main(){
 
   int N, Q; std::cin >> N >> Q;
 
-  hl::SegmentTree2D<hl::SumMonoid<int64_t>> seg;
+  hl::segment_tree_2d<hl::sum_monoid<int64_t>> seg;
 
   auto [x, y, w] = hl::input_tuple_vector<int, int, int>(N);
   for(int i = 0; i < N; ++i){

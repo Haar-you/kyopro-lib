@@ -8,7 +8,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  class FordFulkerson {
+  class ford_fulkerson {
   public:
     struct edge {
       int to, rev;
@@ -40,7 +40,7 @@ namespace haar_lib {
     }
 
   public:
-    FordFulkerson(const std::vector<std::vector<std::pair<int, T>>> &g):
+    ford_fulkerson(const std::vector<std::vector<std::pair<int, T>>> &g):
       size(g.size()), graph(size), visit(size)
     {
       for(int i = 0; i < size; ++i){
@@ -49,7 +49,7 @@ namespace haar_lib {
         }
       }
     }
-    FordFulkerson(int size): size(size), graph(size), visit(size){}
+    ford_fulkerson(int size): size(size), graph(size), visit(size){}
 
     void add_edge(int from, int to, const T &cap){
       graph[from].push_back((edge){to, (int)graph[to].size(), cap, false});

@@ -51,7 +51,7 @@ int main(){
       else ans[i] = q[std::get<3>(qs[i])] + 1;
     };
 
-  auto mo = hl::MoAlgorithm(N, Q, left, right, left, right, query);
+  auto mo = hl::mo_algorithm(N, Q, left, right, left, right, query);
 
   for(int i = 0; i < Q; ++i) mo.add(std::get<1>(qs[i]), std::get<2>(qs[i]) + 1);
   mo.build();

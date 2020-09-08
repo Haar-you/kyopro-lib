@@ -10,7 +10,7 @@
  */
 namespace haar_lib {
   template <typename AbelianGroup>
-  class FenwickTree2D {
+  class fenwick_tree_2d {
     using value_type = typename AbelianGroup::value_type;
     const static AbelianGroup G;
 
@@ -22,10 +22,10 @@ namespace haar_lib {
 
     int x_size;
 
-    std::vector<FenwickTree<AbelianGroup>> segs;
+    std::vector<fenwick_tree<AbelianGroup>> segs;
 
   public:
-    FenwickTree2D(){}
+    fenwick_tree_2d(){}
 
     void add(int64_t x, int64_t y){
       xs.push_back(x);
@@ -59,7 +59,7 @@ namespace haar_lib {
         auto &a = c_ys[i];
         a.erase(std::unique(a.begin(), a.end()), a.end());
 
-        segs[i] = FenwickTree<AbelianGroup>(c_ys[i].size());
+        segs[i] = fenwick_tree<AbelianGroup>(c_ys[i].size());
       }
     }
 

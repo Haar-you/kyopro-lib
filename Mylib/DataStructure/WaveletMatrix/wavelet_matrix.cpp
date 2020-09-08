@@ -13,14 +13,14 @@
  */
 namespace haar_lib {
   template <typename T, int B>
-  class WaveletMatrix {
+  class wavelet_matrix {
   public:
     const int N;
 
-    SuccinctDict sdict[B];
+    succinct_dict sdict[B];
     int zero_pos[B];
 
-    WaveletMatrix(std::vector<T> data): N(data.size()){
+    wavelet_matrix(std::vector<T> data): N(data.size()){
       std::vector<bool> s(N);
 
       for(int k = 0; k < B; ++k){
@@ -35,7 +35,7 @@ namespace haar_lib {
           }
         }
 
-        sdict[k] = SuccinctDict(s);
+        sdict[k] = succinct_dict(s);
         zero_pos[k] = left.size();
 
         std::swap(data, left);
@@ -262,7 +262,7 @@ namespace haar_lib {
     }
   };
 
-  WaveletMatrix<uint32_t, 32> make_wavelet_matrix_int(const std::vector<uint32_t> &data){
-    return WaveletMatrix<uint32_t, 32>(data);
+  wavelet_matrix<uint32_t, 32> make_wavelet_matrix_int(const std::vector<uint32_t> &data){
+    return wavelet_matrix<uint32_t, 32>(data);
   }
 }

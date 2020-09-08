@@ -11,7 +11,7 @@ namespace hl = haar_lib;
 int main(){
   int n, q; std::cin >> n >> q;
 
-  hl::splay_tree::SplayTree<hl::MinMonoid<int>> s(n);
+  hl::splay_tree<hl::min_monoid<int>> s(n);
 
   for(auto [i, a] : hl::input_tuples_with_index<int>(n)){
     s.update(i, {a});

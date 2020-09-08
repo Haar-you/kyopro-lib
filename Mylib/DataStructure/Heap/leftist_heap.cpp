@@ -8,7 +8,7 @@
  */
 namespace haar_lib {
   template <typename T, class Compare = std::less<T>>
-  class LeftistHeap {
+  class leftist_heap {
     struct node {
       T val;
       node *left, *right;
@@ -20,8 +20,8 @@ namespace haar_lib {
     Compare compare;
 
   public:
-    LeftistHeap(): root(nullptr), compare(Compare()){}
-    LeftistHeap(const Compare &compare): root(nullptr), compare(compare){}
+    leftist_heap(): root(nullptr), compare(Compare()){}
+    leftist_heap(const Compare &compare): root(nullptr), compare(compare){}
 
   protected:
     node* meld(node *a, node *b){
@@ -39,7 +39,7 @@ namespace haar_lib {
     }
 
   public:
-    void meld(LeftistHeap &heap){root = meld(root, heap.root); heap.root = nullptr;}
+    void meld(leftist_heap &heap){root = meld(root, heap.root); heap.root = nullptr;}
     void push(const T &val){root = meld(root, new node(val));}
     const T& top() const {return root->val;}
     void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}

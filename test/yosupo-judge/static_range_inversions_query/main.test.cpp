@@ -15,7 +15,7 @@ int main(){
   int N, Q; std::cin >> N >> Q;
   auto A = hl::input_vector<int>(N);
 
-  hl::RangeInversionsQuery riq(A);
+  hl::range_inversions_query riq(A);
 
   for(auto [l, r] : hl::input_tuples<int, int>(Q)){
     riq.add(l, r);

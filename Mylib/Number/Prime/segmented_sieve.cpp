@@ -9,13 +9,14 @@
  */
 namespace haar_lib {
   template <typename Checker>
-  class SegmentedSieve {
+  class segmented_sieve {
     int L, R, D;
     std::vector<bool> data;
 
   public:
     // [l, r]
-    SegmentedSieve(int l, int r, Checker is_prime): L(l), R(r), D(R - L + 1), data(D, true){
+    segmented_sieve(int l, int r, Checker is_prime):
+      L(l), R(r), D(R - L + 1), data(D, true){
       std::vector<int> primes;
       for(int64_t i = 2; i * i <= R; ++i){
         if(is_prime(i)) primes.push_back(i);

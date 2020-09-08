@@ -11,7 +11,7 @@
  */
 namespace haar_lib {
   template <typename T, int PRIM_ROOT, int MAX_SIZE>
-  class NumberTheoreticTransform {
+  class number_theoretic_transform {
   public:
     using value_type = T;
     constexpr static int primitive_root = PRIM_ROOT;
@@ -21,7 +21,7 @@ namespace haar_lib {
     std::vector<T> BASE, INV_BASE;
 
   public:
-    NumberTheoreticTransform():
+    number_theoretic_transform():
       MAX_POWER(__builtin_ctz(MAX_SIZE)),
       BASE(MAX_POWER + 1),
       INV_BASE(MAX_POWER + 1)
@@ -107,17 +107,17 @@ namespace haar_lib {
     for(auto &x : f) x %= T::MOD;
     for(auto &x : g) x %= T::MOD;
 
-    auto res1 = NumberTheoreticTransform<ModInt<M1>, P1, 1 << 20>().convolve(f, g);
-    auto res2 = NumberTheoreticTransform<ModInt<M2>, P2, 1 << 20>().convolve(f, g);
-    auto res3 = NumberTheoreticTransform<ModInt<M3>, P3, 1 << 20>().convolve(f, g);
+    auto res1 = number_theoretic_transform<modint<M1>, P1, 1 << 20>().convolve(f, g);
+    auto res2 = number_theoretic_transform<modint<M2>, P2, 1 << 20>().convolve(f, g);
+    auto res3 = number_theoretic_transform<modint<M3>, P3, 1 << 20>().convolve(f, g);
 
     const int n = res1.size();
 
     std::vector<T> ret(n);
 
-    const int64_t M12 = (int64_t)ModInt<M2>::inv(M1);
-    const int64_t M13 = (int64_t)ModInt<M3>::inv(M1);
-    const int64_t M23 = (int64_t)ModInt<M3>::inv(M2);
+    const int64_t M12 = (int64_t)modint<M2>::inv(M1);
+    const int64_t M13 = (int64_t)modint<M3>::inv(M1);
+    const int64_t M23 = (int64_t)modint<M3>::inv(M2);
 
     for(int i = 0; i < n; ++i){
       const int64_t r[3] = {(int64_t)res1[i], (int64_t)res2[i], (int64_t)res3[i]};

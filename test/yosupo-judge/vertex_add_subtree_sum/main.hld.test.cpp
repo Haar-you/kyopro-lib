@@ -19,14 +19,14 @@ int main(){
 
   auto a = hl::input_vector<int64_t>(N);
 
-  hl::Tree<int> tree(N);
+  hl::tree<int> tree(N);
   for(int i = 1; i < N; ++i){
     int p; std::cin >> p;
     tree.add_edge(p, i, 1);
   }
 
-  auto seg = hl::SegmentTree<hl::SumMonoid<int64_t>>(N);
-  auto hld = hl::HLDecomposition(tree, 0);
+  auto seg = hl::segment_tree<hl::sum_monoid<int64_t>>(N);
+  auto hld = hl::hl_decomposition(tree, 0);
 
   for(int i = 0; i < N; ++i){
     seg.update(hld.get_id(i), a[i]);

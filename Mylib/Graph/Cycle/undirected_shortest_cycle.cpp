@@ -10,7 +10,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  std::optional<int> shortest_cycle(const Graph<T> &g, const int src){
+  std::optional<int> shortest_cycle(const graph<T> &g, const int src){
     for(auto &e : g[src]){
       if(e.to == src) return 1; // self loop
     }

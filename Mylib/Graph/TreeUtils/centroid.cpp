@@ -9,11 +9,11 @@
 namespace haar_lib {
   namespace enumerate_centroids_impl {
     template <typename T>
-    void dfs(const Tree<T> &tree, std::vector<int> &subtree, std::vector<int> &ret, int N, int cur, int par){
+    void dfs(const tree<T> &tr, std::vector<int> &subtree, std::vector<int> &ret, int N, int cur, int par){
       subtree[cur] = 1;
       bool check = true;
 
-      for(auto &e : tree[cur]){
+      for(auto &e : tr[cur]){
         if(e.to == par) continue;
         dfs(tree, subtree, ret, N, e.to, cur);
 
@@ -28,10 +28,10 @@ namespace haar_lib {
   }
 
   template <typename T>
-  auto enumerate_centroids(const Tree<T> &tree){
-    const int N = tree.size();
+  auto enumerate_centroids(const tree<T> &tr){
+    const int N = tr.size();
     std::vector<int> subtree(N), ret;
-    enumerate_centroids_impl::dfs(tree, subtree, ret, N, 0, -1);
+    enumerate_centroids_impl::dfs(tr, subtree, ret, N, 0, -1);
     return ret;
   }
 }

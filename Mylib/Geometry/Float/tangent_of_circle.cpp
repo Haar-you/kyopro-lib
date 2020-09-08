@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  std::vector<Point<T>> tangent_of_circle(const Circle<T> &c, const Point<T> &p){
+  std::vector<point<T>> tangent_of_circle(const circle<T> &c, const point<T> &p){
     const T d = abs(p - c.center);
 
     if(d < c.radius) return {};

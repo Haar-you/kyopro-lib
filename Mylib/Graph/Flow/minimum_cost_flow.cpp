@@ -12,7 +12,7 @@
  */
 namespace haar_lib {
   template <typename T, typename U>
-  class MinimumCostFlow {
+  class minimum_cost_flow {
   public:
     struct edge {
       int from, to;
@@ -29,7 +29,7 @@ namespace haar_lib {
     std::vector<std::vector<edge>> g;
 
   public:
-    MinimumCostFlow(int size): size(size), g(size){}
+    minimum_cost_flow(int size): size(size), g(size){}
 
     void add_edge(int from, int to, T cap, U cost){
       g[from].emplace_back(from, to, cap, cost, g[to].size(), false);

@@ -8,7 +8,7 @@
  * @docs range_tree.md
  */
 namespace haar_lib {
-  class RangeTree {
+  class range_tree {
     int N = 0;
     std::vector<int64_t> xs, ys;
     std::vector<int64_t> c_xs;
@@ -17,7 +17,7 @@ namespace haar_lib {
     std::vector<std::vector<std::pair<int64_t, int>>> data;
 
   public:
-    RangeTree(){}
+    range_tree(){}
 
     void add(int64_t x, int64_t y){
       ++N;

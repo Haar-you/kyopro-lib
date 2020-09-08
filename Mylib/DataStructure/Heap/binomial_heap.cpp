@@ -10,7 +10,7 @@
  */
 namespace haar_lib {
   template <typename T, typename Compare = std::less<T>>
-  class BinomialHeap {
+  class binomial_heap {
     struct node {
       T value;
       std::vector<node*> children;
@@ -58,7 +58,7 @@ namespace haar_lib {
     }
 
   public:
-    BinomialHeap(){
+    binomial_heap(){
       roots.fill(nullptr);
       compare = Compare();
     }
@@ -92,7 +92,7 @@ namespace haar_lib {
       delete t;
     }
 
-    void meld(BinomialHeap &rhs){
+    void meld(binomial_heap &rhs){
       heap_size += rhs.heap_size;
       meld(rhs.roots);
       rhs.roots.fill(nullptr);

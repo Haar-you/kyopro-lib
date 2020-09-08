@@ -15,14 +15,14 @@ int main(){
 
   int N, M; std::cin >> N >> M;
 
-  hl::Graph<int> g(N);
+  hl::graph<int> g(N);
   g.read<0, true, false>(M);
 
   auto [scc, K] = hl::strongly_connected_components(g);
   std::vector<std::vector<int>> ans(K);
   for(int i = 0; i < N; ++i) ans[scc[i]].push_back(i);
 
-  hl::Graph<int> g2(K);
+  hl::graph<int> g2(K);
   for(auto &v : g){
     for(auto &e : v){
       if(scc[e.from] != scc[e.to]) g2.add_edge(scc[e.from], scc[e.to], 1);

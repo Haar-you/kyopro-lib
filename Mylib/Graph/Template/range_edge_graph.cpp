@@ -9,8 +9,8 @@
  */
 namespace haar_lib {
   template <typename T>
-  class RangeEdgeGraph : public Graph<T> {
-    using super = Graph<T>;
+  class range_edge_graph : public graph<T> {
+    using super = graph<T>;
 
     int k, N;
     int calc_size(int N) const {
@@ -20,7 +20,7 @@ namespace haar_lib {
     }
 
   public:
-    RangeEdgeGraph(int N): Graph<T>(5 * (k = (calc_size(N)))), N(N){
+    range_edge_graph(int N): graph<T>(5 * (k = (calc_size(N)))), N(N){
       for(int i = 2; i < 2 * k; ++i){
         super::add_edge(k + (i >> 1), k + i, 0);
         super::add_edge(3 * k + i, 3 * k + (i >> 1), 0);

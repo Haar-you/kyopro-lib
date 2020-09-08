@@ -11,7 +11,7 @@
 
 namespace hl = haar_lib;
 
-using Seg = hl::PersistentSegmentTree<hl::SumMonoid<int64_t>>;
+using Seg = hl::persistent_segment_tree<hl::sum_monoid<int64_t>>;
 
 int main(){
   std::cin.tie(0);
@@ -28,7 +28,7 @@ int main(){
     x, y, w
   );
 
-  auto c = hl::Compressor<int64_t>().add(x).build().compress(x);
+  auto c = hl::compressor<int64_t>().add(x).build().compress(x);
   const int m = c.size();
 
   std::vector<Seg> seg;

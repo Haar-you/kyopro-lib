@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  T distance_segments(const Segment<T> &l1, const Segment<T> &l2){
+  T distance_segments(const segment<T> &l1, const segment<T> &l2){
     const T cr = cross(l1, l2);
     const T t1 = cross(l2.from - l1.from, diff(l2)) / cr;
     const T t2 = cross(l2.from - l1.from, diff(l1)) / cr;

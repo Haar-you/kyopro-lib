@@ -17,7 +17,7 @@ int main(){
 
   auto C = hl::input_vector<std::string>(M);
 
-  hl::AhoCorasick ac;
+  hl::aho_corasick ac;
   for(int i = 0; i < M; ++i){
     ac.add(C[i]);
   }

@@ -9,7 +9,7 @@
 namespace haar_lib {
   namespace warshall_floyd_for_matrix_impl {
     template <typename T>
-    struct Result {
+    struct result {
       std::vector<std::vector<std::optional<T>>> dist;
       bool has_negative_cycle;
       const auto& operator[](int i) const {return dist[i];}
@@ -48,6 +48,6 @@ namespace haar_lib {
     bool has_negative_cycle = false;
     for(int i = 0; i < n; ++i) if(*dist[i][i] < 0) has_negative_cycle = true;
 
-    return warshall_floyd_for_matrix_impl::Result<T>{dist, has_negative_cycle};
+    return warshall_floyd_for_matrix_impl::result<T>{dist, has_negative_cycle};
   }
 }

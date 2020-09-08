@@ -9,7 +9,7 @@
 
 namespace hl = haar_lib;
 
-using mint = hl::ModInt<998244353>;
+using mint = hl::modint<998244353>;
 
 int main(){
   std::cin.tie(0);
@@ -18,7 +18,7 @@ int main(){
   int N, M; std::cin >> N >> M;
   auto x = hl::input_vector<mint>(N);
 
-  hl::Graph<int> g(N);
+  hl::graph<int> g(N);
   g.read<0, false, false>(M);
 
   auto res = hl::enumerate_triangles(g);

@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename Monoid, int B>
-  struct ArrayMonoid {
+  struct array_monoid {
     using value_type = std::array<typename Monoid::value_type, B>;
     const static Monoid M;
 

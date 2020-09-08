@@ -13,7 +13,7 @@ int main(){
 
   int N, Q; std::cin >> N >> Q;
 
-  auto lc = hl::DynamicLiChaoSegmentTree<int64_t, std::less<>>(INT_MIN, INT_MAX);
+  auto lc = hl::dynamic_lichao_segment_tree<int64_t, std::less<>>(INT_MIN, INT_MAX);
 
   for(auto [l, r, a, b] : hl::input_tuples<int64_t, int64_t, int64_t, int64_t>(N)){
     lc.add_segment(l, r, a, b);

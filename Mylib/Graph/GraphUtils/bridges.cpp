@@ -11,12 +11,12 @@ namespace haar_lib {
   namespace bridges_impl {
     template <typename T>
     int dfs(
-      const Graph<T> &graph,
+      const graph<T> &graph,
       int cur,
       int par,
       std::vector<int> &visit,
       std::vector<int> &low,
-      std::vector<Edge<T>> &ret,
+      std::vector<edge<T>> &ret,
       int &v
     ){
       if(visit[cur] != -1) return visit[cur];
@@ -34,10 +34,10 @@ namespace haar_lib {
   }
 
   template <typename T>
-  auto bridges(const Graph<T> &graph){
+  auto bridges(const graph<T> &graph){
     const int n = graph.size();
     std::vector<int> visit(n, -1), low(n, -1);
-    std::vector<Edge<T>> ret;
+    std::vector<edge<T>> ret;
     int v = 0;
 
     for(int i = 0; i < n; ++i) if(visit[i] == -1) bridges_impl::dfs(graph, i, -1, visit, low, ret, v);

@@ -12,7 +12,7 @@ namespace hl = haar_lib;
 
 int main(){
   int n; std::cin >> n;
-  hl::RangeTree rt;
+  hl::range_tree rt;
 
   std::map<std::pair<int, int>, int> m;
 

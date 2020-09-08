@@ -8,12 +8,12 @@
  * @docs knuth_morris_pratt.md
  */
 namespace haar_lib {
-  struct KMP {
+  struct knuth_morris_pratt {
     int M;
     std::string pattern;
     std::vector<int> table;
 
-    KMP(std::string p): M(p.size()), pattern(p), table(M + 1){
+    knuth_morris_pratt(std::string p): M(p.size()), pattern(p), table(M + 1){
       table[0] = -1;
       table[1] = 0;
 

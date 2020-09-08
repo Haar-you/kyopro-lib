@@ -8,7 +8,7 @@
  * @docs succinct_dictionary.md
  */
 namespace haar_lib {
-  struct SuccinctDict {
+  struct succinct_dict {
     int N;
 
     static const int chunk_size = 256;
@@ -22,8 +22,8 @@ namespace haar_lib {
     int chunk_num;
     static const int block_num = chunk_size / block_size;
 
-    SuccinctDict(): N(0){}
-    SuccinctDict(const std::vector<bool> &b): N(b.size()){
+    succinct_dict(): N(0){}
+    succinct_dict(const std::vector<bool> &b): N(b.size()){
       chunk_num = (N + chunk_size - 1) / chunk_size;
 
       data.assign(chunk_num * block_num + 1, 0);

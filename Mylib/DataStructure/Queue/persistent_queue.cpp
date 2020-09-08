@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  class PersistentQueue {
+  class persistent_queue {
     constexpr static int MAX_SIZE_2 = 20; // size <= 2 ^ MAX_SIZE_2
 
     struct node {
@@ -20,17 +20,17 @@ namespace haar_lib {
 
     node *front_node = nullptr, *back_node = nullptr;
 
-    PersistentQueue(node* front_node, node* back_node): front_node(front_node), back_node(back_node){}
+    persistent_queue(node* front_node, node* back_node): front_node(front_node), back_node(back_node){}
 
   public:
-    PersistentQueue(){}
-    PersistentQueue(const T &value){
+    persistent_queue(){}
+    persistent_queue(const T &value){
       node *t = new node();
       t->value = value;
       back_node = front_node = t;
     }
 
-    PersistentQueue push(const T &value) const {
+    persistent_queue push(const T &value) const {
       node *t = new node();
 
       t->value = value;
@@ -44,12 +44,12 @@ namespace haar_lib {
 
       t->depth = back_node ? back_node->depth + 1 : 0;
 
-      return PersistentQueue(front_node ? front_node : t, t);
+      return persistent_queue(front_node ? front_node : t, t);
     }
 
-    PersistentQueue pop() const {
+    persistent_queue pop() const {
       if(back_node->depth == front_node->depth){
-        return PersistentQueue(nullptr, nullptr);
+        return persistent_queue(nullptr, nullptr);
       }
 
       int d = back_node->depth - front_node->depth - 1;
@@ -64,7 +64,7 @@ namespace haar_lib {
         if(d == 0) break;
       }
 
-      return PersistentQueue(t, back_node);
+      return persistent_queue(t, back_node);
     }
 
     T front() const {
@@ -83,7 +83,7 @@ namespace haar_lib {
       return front_node ? back_node->depth - front_node->depth + 1 : 0;
     }
 
-    friend std::ostream& operator<<(std::ostream &s, const PersistentQueue &a){
+    friend std::ostream& operator<<(std::ostream &s, const persistent_queue &a){
       s << "{";
       std::vector<T> temp;
       node *t = a.back_node;

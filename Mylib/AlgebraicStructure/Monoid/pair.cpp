@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename Monoid1, typename Monoid2>
-  struct PairMonoid {
+  struct pair_monoid {
     using value_type = std::pair<typename Monoid1::value_type, typename Monoid2::value_type>;
     const static Monoid1 M1;
     const static Monoid2 M2;

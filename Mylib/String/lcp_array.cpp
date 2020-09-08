@@ -8,7 +8,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  auto lcp_array(const SuffixArray<T> &sa){
+  auto lcp_array(const suffix_array<T> &sa){
     const int n = sa.size();
     std::vector<int> rank(n), ret(n);
 

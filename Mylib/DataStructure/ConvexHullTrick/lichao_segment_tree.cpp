@@ -10,7 +10,7 @@
  */
 namespace haar_lib {
   template <typename T, typename Comparator>
-  class LiChaoSegmentTree {
+  class lichao_segment_tree {
     using line = std::pair<T, T>;
 
     const Comparator cmp = Comparator();
@@ -34,7 +34,7 @@ namespace haar_lib {
     }
 
   public:
-    LiChaoSegmentTree(std::vector<T> xs_): xs(xs_){
+    lichao_segment_tree(std::vector<T> xs_): xs(xs_){
       std::sort(xs.begin(), xs.end());
       xs.erase(std::unique(xs.begin(), xs.end()), xs.end());
 
@@ -139,11 +139,11 @@ namespace haar_lib {
 
   template <typename T>
   auto make_lichao_min(const std::vector<T> &xs){
-    return LiChaoSegmentTree<T, std::less<T>>(xs);
+    return lichao_segment_tree<T, std::less<T>>(xs);
   }
 
   template <typename T>
   auto make_lichao_max(const std::vector<T> &xs){
-    return LiChaoSegmentTree<T, std::greater<T>>(xs);
+    return lichao_segment_tree<T, std::greater<T>>(xs);
   }
 }

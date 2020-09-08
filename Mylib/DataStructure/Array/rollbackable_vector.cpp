@@ -11,7 +11,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  class RollbackableVector {
+  class rollbackable_vector {
     using value_type = T;
 
     std::vector<T> data;
@@ -23,10 +23,10 @@ namespace haar_lib {
     std::vector<std::variant<Update, PushBack, PopBack>> history;
 
   public:
-    RollbackableVector(){}
-    RollbackableVector(size_t n): data(n){}
-    RollbackableVector(std::vector<T> a): data(a){}
-    RollbackableVector(std::initializer_list<T> a): data(a.begin(), a.end()){}
+    rollbackable_vector(){}
+    rollbackable_vector(size_t n): data(n){}
+    rollbackable_vector(std::vector<T> a): data(a){}
+    rollbackable_vector(std::initializer_list<T> a): data(a.begin(), a.end()){}
 
     void push_back(const T &value){
       history.push_back(PushBack());
@@ -72,7 +72,7 @@ namespace haar_lib {
     const T& back() const {return data.back();}
     const T& front() const {return data.front();}
 
-    friend std::ostream& operator<<(std::ostream &s, const RollbackableVector &a){
+    friend std::ostream& operator<<(std::ostream &s, const rollbackable_vector &a){
       s << "{";
       for(auto it = a.cbegin(); it != a.cend(); ++it){
         if(it != a.cbegin()) s << ", ";

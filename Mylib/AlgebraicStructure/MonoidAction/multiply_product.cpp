@@ -8,9 +8,9 @@
  */
 namespace haar_lib {
   template <typename T, typename U>
-  struct MultiplyProduct {
-    using monoid_get = ProductMonoid<T>;
-    using monoid_update = ProductMonoid<U>;
+  struct multiply_product {
+    using monoid_get = product_monoid<T>;
+    using monoid_update = product_monoid<U>;
     using value_type_get = typename monoid_get::value_type;
     using value_type_update = typename monoid_update::value_type;
     monoid_get M1;

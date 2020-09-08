@@ -10,7 +10,7 @@
  * @docs partially_persistent_unionfind.md
  */
 namespace haar_lib {
-  class PartiallyPersistentUnionFind {
+  class partially_persistent_unionfind {
     int N;
     std::vector<std::vector<std::pair<int, int>>> P;
     std::vector<int> par;
@@ -18,7 +18,7 @@ namespace haar_lib {
     std::vector<int> rank;
 
   public:
-    PartiallyPersistentUnionFind(int N): N(N), P(N), par(N), rank(N, 1){
+    partially_persistent_unionfind(int N): N(N), P(N), par(N), rank(N, 1){
       for(int i = 0; i < N; ++i) P[i].emplace_back(0, 1);
       std::iota(par.begin(), par.end(), 0);
     }

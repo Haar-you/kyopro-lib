@@ -9,13 +9,13 @@
 
 namespace hl = haar_lib;
 
-using mint = hl::ModInt<998244353>;
-using M = hl::DualMonoid<hl::AffineMonoid<mint>>;
+using mint = hl::modint<998244353>;
+using M = hl::dual_monoid<hl::affine_monoid<mint>>;
 
 int main(){
   int Q; std::cin >> Q;
 
-  hl::SlidingWindowAggregation<M> swag;
+  hl::sliding_window_aggregation<M> swag;
 
   for(auto [type] : hl::input_tuples<int>(Q)){
     if(type == 0){

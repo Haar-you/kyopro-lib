@@ -9,7 +9,7 @@ namespace hl = haar_lib;
 int main(){
   int V, E, r; std::cin >> V >> E >> r;
 
-  hl::Graph<int> g(V);
+  hl::graph<int> g(V);
   g.read<0>(E);
 
   auto res = hl::chu_liu_edmonds(g, r);

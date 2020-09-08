@@ -10,7 +10,7 @@ namespace hl = haar_lib;
 int main(){
   int n, q; std::cin >> n >> q;
 
-  auto seg = hl::DualSegmentTree<hl::SumMonoid<int>>(n);
+  auto seg = hl::dual_segment_tree<hl::sum_monoid<int>>(n);
 
   for(auto [type] : hl::input_tuples<int>(q)){
     if(type == 0){

@@ -12,8 +12,8 @@ namespace hl = haar_lib;
 constexpr int MOD = 998244353;
 constexpr int PRIM = 3;
 
-using mint = hl::ModInt<MOD>;
-using NTT = hl::NumberTheoreticTransform<mint, PRIM, 1 << 20>;
+using mint = hl::modint<MOD>;
+using NTT = hl::number_theoretic_transform<mint, PRIM, 1 << 20>;
 
 int main(){
   using namespace std::placeholders;

@@ -11,7 +11,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  auto check_bipartite_graph(const Graph<T> &g){
+  auto check_bipartite_graph(const graph<T> &g){
     std::vector<std::optional<std::pair<std::vector<int>, std::vector<int>>>> ret;
 
     const int N = g.size();

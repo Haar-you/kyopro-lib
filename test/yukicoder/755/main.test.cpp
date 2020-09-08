@@ -16,7 +16,7 @@ int main(){
 
   auto A = hl::input_vector<int64_t>(M, M);
 
-  auto c = hl::CumulativeSum2D(A).build();
+  auto c = hl::cumulative_sum_2d(A).build();
 
   for(auto [x, y] : hl::input_tuples<int, int>(N)){
     --x, --y;

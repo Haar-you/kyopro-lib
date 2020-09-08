@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  auto strongly_connected_components(const Graph<T> &g){
+  auto strongly_connected_components(const graph<T> &g){
     const int n = g.size();
 
     std::vector<bool> visit(n);
@@ -29,7 +29,7 @@ namespace haar_lib {
 
     std::reverse(check.begin(), check.end());
 
-    Graph<T> rg(n);
+    graph<T> rg(n);
 
     auto rdfs =
       [&](auto &f, int cur, int i) -> void {

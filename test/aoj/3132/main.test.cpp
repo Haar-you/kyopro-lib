@@ -15,7 +15,7 @@ namespace hl = haar_lib;
 int main(){
   int N; std::cin >> N;
 
-  auto seg = hl::SegmentTree<hl::ProductMonoid<double>>(N);
+  auto seg = hl::segment_tree<hl::product_monoid<double>>(N);
 
   auto [T, A] = hl::input_tuple_vector<int, int>(N);
 

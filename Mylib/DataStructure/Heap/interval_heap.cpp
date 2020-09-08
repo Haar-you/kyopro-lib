@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename T, typename Compare = std::less<T>>
-  class IntervalHeap {
+  class interval_heap {
     int left(int i) const {return i * 2 + 1;}
     int right(int i) const {return i * 2 + 2;}
     int parent(int i) const {return (i - 1) >> 1;}
@@ -99,7 +99,7 @@ namespace haar_lib {
     std::vector<T> data;
 
   public:
-    IntervalHeap(): compare(Compare()){}
+    interval_heap(): compare(Compare()){}
 
     const T& get_min() const {
       return data[get_min_element(0)];

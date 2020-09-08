@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename T, typename U>
-  struct AddMin {
+  struct add_min {
     using value_type_get = std::optional<T>;
     using value_type_update = U;
 

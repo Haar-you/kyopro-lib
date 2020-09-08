@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename T, typename Comparator = std::greater<T>>
-  class ConvexHullTrick {
+  class convex_hull_trick {
     using line = std::pair<T, T>;
     std::deque<line> lines;
     bool is_needless(const line &a, const line &b, const line &c){
@@ -23,7 +23,7 @@ namespace haar_lib {
     Comparator comp = Comparator();
 
   public:
-    ConvexHullTrick(){}
+    convex_hull_trick(){}
 
     void add(const T &a, const T &b){
       if(!lines.empty()){

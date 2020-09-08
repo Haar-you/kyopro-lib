@@ -18,14 +18,14 @@ int main(){
 
   auto a = hl::input_vector<int64_t>(N);
 
-  hl::Tree<int> tree(N);
+  hl::tree<int> tree(N);
   for(int i = 1; i < N; ++i){
     int p; std::cin >> p;
     tree.add_edge(p, i, 1);
   }
 
-  auto seg = hl::SegmentTree<hl::SumMonoid<int64_t>>(N);
-  auto et = hl::EulerTourVertex(tree, 0);
+  auto seg = hl::segment_tree<hl::sum_monoid<int64_t>>(N);
+  auto et = hl::euler_tour_vertex(tree, 0);
 
   for(int i = 0; i < N; ++i){
     et.point_query(

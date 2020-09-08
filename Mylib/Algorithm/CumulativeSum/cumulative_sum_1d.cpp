@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
-  class CumulativeSum1D {
+  class cumulative_sum_1d {
     std::vector<T> data;
     const int N;
     const Add add;
@@ -17,14 +17,14 @@ namespace haar_lib {
     bool is_built = false;
 
   public:
-    CumulativeSum1D(const std::vector<T> &a, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
+    cumulative_sum_1d(const std::vector<T> &a, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
       N(a.size()), add(add), minus(minus)
     {
       data.assign(N + 1, e);
       for(int i = 0; i < N; ++i) data[i + 1] = a[i];
     }
 
-    CumulativeSum1D(int N, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
+    cumulative_sum_1d(int N, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
       N(N), add(add), minus(minus)
     {
       data.assign(N + 1, e);

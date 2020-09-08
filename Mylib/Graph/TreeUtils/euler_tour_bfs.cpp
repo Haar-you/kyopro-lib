@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct EulerTourBFS {
+  struct euler_tour_bfs {
     int N;
     std::vector<int> parent;
     std::vector<int> depth;
@@ -18,12 +18,12 @@ namespace haar_lib {
     std::vector<std::vector<int>> dfs_order;
     std::vector<int> left, right;
 
-    EulerTourBFS(const Tree<T> &tree, int root):
-      N(tree.size()), parent(N), depth(N), left(N), right(N)
+    euler_tour_bfs(const tree<T> &tr, int root):
+      N(tr.size()), parent(N), depth(N), left(N), right(N)
     {
       {
         int ord = 0;
-        dfs(tree, root, -1, 0, ord);
+        dfs(tr, root, -1, 0, ord);
       }
 
       {
@@ -38,7 +38,7 @@ namespace haar_lib {
           bfs_order[d].push_back(ord);
           ++ord;
 
-          for(auto &e : tree[i]){
+          for(auto &e : tr[i]){
             if(e.to == parent[i]) continue;
             q.emplace(e.to, d + 1);
           }
@@ -46,7 +46,7 @@ namespace haar_lib {
       }
     }
 
-    void dfs(const Tree<T> &tree, int cur, int par, int d, int &ord){
+    void dfs(const tree<T> &tr, int cur, int par, int d, int &ord){
       parent[cur] = par;
       depth[cur] = d;
 
@@ -55,9 +55,9 @@ namespace haar_lib {
       left[cur] = ord;
       ++ord;
 
-      for(auto &e : tree[cur]){
+      for(auto &e : tr[cur]){
         if(e.to == par) continue;
-        dfs(tree, e.to, cur, d + 1, ord);
+        dfs(tr, e.to, cur, d + 1, ord);
       }
 
       right[cur] = ord;

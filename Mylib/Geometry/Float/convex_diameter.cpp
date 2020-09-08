@@ -8,7 +8,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  T convex_diameter(const Polygon<T> &ps){
+  T convex_diameter(const polygon<T> &ps){
     const int n = (int)ps.size();
     int i = std::min_element(ps.begin(), ps.end(), [](const auto &a, const auto &b){return a.y < b.y;}) - ps.begin();
     int j = std::max_element(ps.begin(), ps.end(), [](const auto &a, const auto &b){return a.y < b.y;}) - ps.begin();

@@ -11,7 +11,7 @@
 
 namespace hl = haar_lib;
 
-using Mon = hl::WithMinIndex<hl::MinMonoid<int>>;
+using Mon = hl::with_min_index<hl::min_monoid<int>>;
 
 int main(){
   std::cin.tie(0);
@@ -19,7 +19,7 @@ int main(){
 
   int N, Q; std::cin >> N >> Q;
 
-  hl::SegmentTree<Mon> seg(N);
+  hl::segment_tree<Mon> seg(N);
 
   std::vector<Mon::value_type> a(N);
   for(auto [i, x] : hl::input_tuples_with_index<int>(N)){

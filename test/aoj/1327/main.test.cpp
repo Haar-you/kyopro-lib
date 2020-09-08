@@ -11,8 +11,8 @@
 namespace hl = haar_lib;
 
 struct tag {};
-using mint = hl::RuntimeModInt<tag>;
-using M = hl::SquareMatrix<mint, tag>;
+using mint = hl::runtime_modint<tag>;
+using M = hl::square_matrix<mint, tag>;
 
 int main(){
   int n, m, a, b, c, t;

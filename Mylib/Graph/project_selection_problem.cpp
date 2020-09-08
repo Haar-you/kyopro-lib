@@ -10,7 +10,7 @@
  */
 namespace haar_lib {
   template <typename T, typename Flow>
-  class ProjectSelectionProblem {
+  class project_selection_problem {
     int N, s, t;
     std::vector<std::vector<std::pair<int, T>>> graph;
     T default_gain;
@@ -18,7 +18,7 @@ namespace haar_lib {
     constexpr static T INF = std::numeric_limits<T>::max();
 
   public:
-    ProjectSelectionProblem(int N): N(N), s(N), t(N + 1), graph(N + 2), default_gain(0){}
+    project_selection_problem(int N): N(N), s(N), t(N + 1), graph(N + 2), default_gain(0){}
 
     void penalty_if_red(int i, T c){
       assert(c >= 0);

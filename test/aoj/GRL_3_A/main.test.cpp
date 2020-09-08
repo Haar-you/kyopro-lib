@@ -10,7 +10,7 @@ namespace hl = haar_lib;
 int main(){
   int V, E; std::cin >> V >> E;
 
-  hl::Graph<int> g(V);
+  hl::graph<int> g(V);
   g.read<0, false, false>(E);
 
   auto ans = hl::articulation_points(g);

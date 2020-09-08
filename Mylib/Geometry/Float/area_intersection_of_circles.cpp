@@ -8,7 +8,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  T area_of_intersection_of_circles(const Circle<T> &a, const Circle<T> &b){
+  T area_of_intersection_of_circles(const circle<T> &a, const circle<T> &b){
     auto [s, p] = intersect_circles::check(a, b);
 
     switch(s){

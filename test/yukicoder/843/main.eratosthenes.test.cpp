@@ -6,7 +6,7 @@
 namespace hl = haar_lib;
 
 int main(){
-  hl::EratosthenesSieve is_prime(500000);
+  hl::eratosthenes_sieve is_prime(500000);
 
   int N; std::cin >> N;
 

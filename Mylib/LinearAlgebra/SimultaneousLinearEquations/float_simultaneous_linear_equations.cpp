@@ -10,7 +10,7 @@
 namespace haar_lib {
   namespace float_simultaneous_linear_equations_impl {
     template <typename T>
-    struct Result {
+    struct result {
       int rank, dim;
       std::vector<T> solution;
     };
@@ -18,8 +18,8 @@ namespace haar_lib {
 
   template <typename T>
   auto float_simultaneous_linear_equations(std::vector<std::vector<T>> a, std::vector<T> b, T eps){
-    using Result = float_simultaneous_linear_equations_impl::Result<T>;
-    std::optional<Result> ret;
+    using result = float_simultaneous_linear_equations_impl::result<T>;
+    std::optional<result> ret;
 
     const int n = a.size(), m = a[0].size();
     int rank = 0;
@@ -69,7 +69,7 @@ namespace haar_lib {
     std::vector<T> solution(m);
     for(int i = 0; i < rank; ++i) solution[i] = b[i];
 
-    ret = Result({rank, dim, solution});
+    ret = result({rank, dim, solution});
     return ret;
   }
 }

@@ -10,7 +10,7 @@
 
 namespace hl = haar_lib;
 
-using mint = hl::ModInt<998244353>;
+using mint = hl::modint<998244353>;
 
 int main(){
   std::cin.tie(0);
@@ -18,7 +18,7 @@ int main(){
 
   int N, Q; std::cin >> N >> Q;
 
-  auto seg = hl::LazySegmentTree<hl::AffineSum<mint, mint>>(N);
+  auto seg = hl::lazy_segment_tree<hl::affine_sum<mint, mint>>(N);
   auto a = hl::input_vector<mint>(N);
   seg.init_with_vector(a);
 

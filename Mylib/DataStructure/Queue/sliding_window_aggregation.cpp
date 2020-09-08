@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename Semigroup>
-  class SlidingWindowAggregation {
+  class sliding_window_aggregation {
     using value_type = typename Semigroup::value_type;
     const static Semigroup S;
 
@@ -31,7 +31,7 @@ namespace haar_lib {
     }
 
   public:
-    SlidingWindowAggregation(){}
+    sliding_window_aggregation(){}
 
     std::optional<value_type> fold() const {
       return f(g(front_sum), g(back_sum));

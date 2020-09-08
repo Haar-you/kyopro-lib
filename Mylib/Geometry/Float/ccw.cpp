@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   namespace ccw {
-    enum Status {
+    enum status {
                  ONLINE_BACK       = -2,
                  COUNTER_CLOCKWISE = -1,
                  ON_SEGMENT        = 0,
@@ -16,7 +16,7 @@ namespace haar_lib {
     };
 
     template <typename T>
-    Status ccw(const Point<T> &p0, const Point<T> &p1, const Point<T> &p2){
+    status ccw(const point<T> &p0, const point<T> &p1, const point<T> &p2){
       const T cr = cross(p1 - p0, p2 - p0);
       const T d = dot(p1 - p0, p2 - p0);
 

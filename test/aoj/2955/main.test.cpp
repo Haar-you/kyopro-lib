@@ -15,7 +15,7 @@ int main(){
   auto p = hl::input_vector<int>(N);
   for(auto &x : p) x -= 1;
 
-  hl::UnionFind uf(N);
+  hl::unionfind uf(N);
 
   for(int i = 0; i < N; ++i){
     uf.merge(i, p[i]);

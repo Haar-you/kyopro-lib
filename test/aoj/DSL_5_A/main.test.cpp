@@ -9,7 +9,7 @@ namespace hl = haar_lib;
 
 int main(){
   int N, T; std::cin >> N >> T;
-  hl::Imos1D<int> imos(T + 1);
+  hl::imos_1d<int> imos(T + 1);
 
   for(auto [l, r] : hl::input_tuples<int, int>(N)){
     imos.add(l, r, 1);

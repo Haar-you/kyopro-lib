@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  T chinese_postman_problem(const Graph<T> &g){
+  T chinese_postman_problem(const graph<T> &g){
     const int n = g.size();
     T ret = 0;
 

@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename Monoid>
-  class SegmentTree2D {
+  class segment_tree_2d {
     using value_type = typename Monoid::value_type;
     const static Monoid M;
 
@@ -30,7 +30,7 @@ namespace haar_lib {
     }
 
   public:
-    SegmentTree2D(int width, int height){
+    segment_tree_2d(int width, int height){
       w = 1;
       while(w < width) w *= 2;
       w = w * 2;

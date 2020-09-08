@@ -15,7 +15,7 @@ int main(){
 
   int N; std::cin >> N;
 
-  auto seg = hl::LazySegmentTree<hl::AddMax<int64_t, int64_t>>(N - 1);
+  auto seg = hl::lazy_segment_tree<hl::add_max<int64_t, int64_t>>(N - 1);
 
   auto T = hl::input_vector<int64_t>(N - 1);
 

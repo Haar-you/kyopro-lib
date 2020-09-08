@@ -9,12 +9,12 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct PseudoTree {
+  struct pseudo_tree {
     const int n;
     std::vector<bool> in_loop;
     std::vector<int> group;
 
-    void dfs(int cur, int par, const Graph<T> &g){
+    void dfs(int cur, int par, const graph<T> &g){
       group[cur] = group[par];
 
       for(auto &e : g[cur]){
@@ -23,7 +23,7 @@ namespace haar_lib {
       }
     }
 
-    PseudoTree(const Graph<T> &g): n(g.size()), in_loop(n, true), group(n){
+    pseudo_tree(const graph<T> &g): n(g.size()), in_loop(n, true), group(n){
       std::vector<int> indeg(n);
       std::vector<bool> visited(n);
       std::queue<int> q;

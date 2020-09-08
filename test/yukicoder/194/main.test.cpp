@@ -12,10 +12,10 @@
 
 namespace hl = haar_lib;
 
-using mint = hl::ModInt<1000000007>;
+using mint = hl::modint<1000000007>;
 
 struct tag {};
-using M = hl::SquareMatrix<mint, tag>;
+using M = hl::square_matrix<mint, tag>;
 
 std::pair<mint, mint> solve1(int64_t N, int64_t K, std::vector<int> A){
   M m;

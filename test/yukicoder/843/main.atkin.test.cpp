@@ -6,7 +6,7 @@
 namespace hl = haar_lib;
 
 int main(){
-  hl::AtkinSieve is_prime(500000);
+  hl::atkin_sieve is_prime(500000);
 
   int N; std::cin >> N;
 

@@ -11,10 +11,10 @@
 namespace haar_lib {
   namespace chu_liu_edmonds_impl {
     template <typename T>
-    Graph<T> rec(Graph<T> g, int r){
+    graph<T> rec(graph<T> g, int r){
       const int N = g.size();
 
-      Graph<T> in_edges(N);
+      graph<T> in_edges(N);
 
       for(int i = 0; i < N; ++i){
         if(i != r){
@@ -58,7 +58,7 @@ namespace haar_lib {
         return in_edges;
       }
 
-      Graph<T> G(m);
+      graph<T> G(m);
       const int R = s[r];
       for(int i = 0; i < N; ++i){
         for(auto &e : g[i]){
@@ -74,7 +74,7 @@ namespace haar_lib {
 
         int j = res[i][0].to;
 
-        std::vector<Edge<T>> c;
+        std::vector<edge<T>> c;
 
         for(int x : v[i]){
           for(auto &e : g[x]){
@@ -98,12 +98,12 @@ namespace haar_lib {
   }
 
   template <typename T>
-  auto chu_liu_edmonds(Graph<T> g, int r){
-    std::vector<Edge<T>> ret;
+  auto chu_liu_edmonds(graph<T> g, int r){
+    std::vector<edge<T>> ret;
 
     const int N = g.size();
 
-    Graph<T> rg(N);
+    graph<T> rg(N);
     for(int i = 0; i < N; ++i){
       for(auto &e : g[i]){
         rg.add_edge(e.to, e.from, e.cost);

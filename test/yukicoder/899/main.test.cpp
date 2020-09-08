@@ -16,13 +16,13 @@ int main(){
 
   int N; std::cin >> N;
 
-  hl::Tree<int> tree(N);
+  hl::tree<int> tree(N);
   tree.read<0, false, false>(N - 1);
 
-  auto res = hl::EulerTourBFS<int>(tree, 0);
+  auto res = hl::euler_tour_bfs<int>(tree, 0);
 
   auto A = hl::input_vector<int64_t>(N);
-  hl::LazySegmentTree<hl::UpdateSum<int64_t, int64_t>> seg(N);
+  hl::lazy_segment_tree<hl::update_sum<int64_t, int64_t>> seg(N);
 
   for(int i = 0; i < N; ++i){
     res.query_at(i, [&](int l, int r){seg.update(l, r, A[i]);});

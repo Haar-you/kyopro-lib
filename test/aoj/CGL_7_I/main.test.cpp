@@ -9,11 +9,11 @@
 
 namespace hl = haar_lib;
 
-using D = hl::DoubleEps<double>;
+using D = hl::double_eps<double>;
 template <> double D::eps = ERROR;
 
 int main(){
-  hl::Circle<D> c1, c2;
+  hl::circle<D> c1, c2;
   std::cin >> c1.center >> c1.radius >> c2.center >> c2.radius;
 
   std::cout << std::fixed << std::setprecision(12) << hl::area_of_intersection_of_circles(c1, c2) << "\n";

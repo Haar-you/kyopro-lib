@@ -14,7 +14,7 @@ namespace haar_lib {
   namespace yen_algorithm_impl {
     template <typename T>
     auto shortest_path(
-      const Graph<T> &g,
+      const graph<T> &g,
       int from,
       int t,
       const std::vector<bool> &usable,
@@ -73,7 +73,7 @@ namespace haar_lib {
   }
 
   template <typename T>
-  auto yen_algorithm(const Graph<T> &g, int s, int t, int K){
+  auto yen_algorithm(const graph<T> &g, int s, int t, int K){
     using Path = std::pair<T, std::vector<int>>;
 
     const int N = g.size();

@@ -9,7 +9,7 @@
  * @docs dial_algorithm.md
  */
 namespace haar_lib {
-  auto dial_algorithm(const Graph<int> &g, std::vector<int> src, int MAX){
+  auto dial_algorithm(const graph<int> &g, std::vector<int> src, int MAX){
     const int N = g.size();
     std::vector<std::stack<int>> buckets(MAX + 1);
     std::vector<std::optional<int>> ret(N);

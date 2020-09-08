@@ -7,14 +7,14 @@
  * @docs persistent_unionfind.md
  */
 namespace haar_lib {
-  class PersistentUnionFind {
-    PersistentArray<int> par;
+  class persistent_unionfind {
+    persistent_array<int> par;
 
-    PersistentUnionFind(PersistentArray<int> par): par(par){}
+    persistent_unionfind(persistent_array<int> par): par(par){}
 
   public:
-    PersistentUnionFind(){}
-    PersistentUnionFind(int n): par(PersistentArray<int>(std::vector<int>(n, -1))){}
+    persistent_unionfind(){}
+    persistent_unionfind(int n): par(persistent_array<int>(std::vector<int>(n, -1))){}
 
     int root_of(int i) const {
       const int p = par[i];
@@ -30,14 +30,14 @@ namespace haar_lib {
       return -par[root_of(i)];
     }
 
-    PersistentUnionFind merge(int i, int j) const {
+    persistent_unionfind merge(int i, int j) const {
       const int ri = root_of(i), rj = root_of(j);
       if(ri == rj) return *this;
 
       const int size_i = -par[ri];
       const int size_j = -par[rj];
 
-      PersistentArray<int> ret = par;
+      persistent_array<int> ret = par;
 
       if(size_i > size_j){
         ret = ret.update(ri, -(size_i + size_j));
@@ -47,7 +47,7 @@ namespace haar_lib {
         ret = ret.update(ri, rj);
       }
 
-      return PersistentUnionFind(ret);
+      return persistent_unionfind(ret);
     }
   };
 }

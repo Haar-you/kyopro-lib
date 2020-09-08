@@ -10,13 +10,13 @@ namespace hl = haar_lib;
 int main(){
   int Q; std::cin >> Q;
 
-  std::vector<hl::PersistentQueue<int>> S;
+  std::vector<hl::persistent_queue<int>> S;
 
   for(auto [type, t] : hl::input_tuples<int, int>(Q)){
     if(type == 0){
       int x; std::cin >> x;
       if(t == -1){
-        hl::PersistentQueue<int> a(x);
+        hl::persistent_queue<int> a(x);
         S.push_back(a);
       }else{
         auto res = S[t].push(x);

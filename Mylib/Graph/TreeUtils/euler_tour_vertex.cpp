@@ -8,24 +8,24 @@
  */
 namespace haar_lib {
   template <typename T>
-  class EulerTourVertex {
+  class euler_tour_vertex {
     int pos = 0;
     std::vector<int> begin, end;
 
-    void dfs(int cur, int par, const Tree<T> &tree){
+    void dfs(int cur, int par, const tree<T> &tr){
       begin[cur] = pos++;
 
-      for(auto &e : tree[cur]){
+      for(auto &e : tr[cur]){
         if(e.to == par) continue;
-        dfs(e.to, cur, tree);
+        dfs(e.to, cur, tr);
       }
 
       end[cur] = pos;
     }
 
   public:
-    EulerTourVertex(const Tree<T> &tree, int root): begin(tree.size()), end(tree.size()){
-      dfs(root, -1, tree);
+    euler_tour_vertex(const tree<T> &tr, int root): begin(tr.size()), end(tr.size()){
+      dfs(root, -1, tr);
     }
 
     template <typename F> // F = std::function<void(int, int)>

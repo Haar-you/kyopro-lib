@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename Monoid>
-  class SegmentTreeBothFoldable {
+  class segment_tree_both_foldable {
     using value_type = typename Monoid::value_type;
     const static Monoid M;
 
@@ -15,7 +15,7 @@ namespace haar_lib {
     std::vector<value_type> data_left, data_right;
 
   public:
-    SegmentTreeBothFoldable(int n):
+    segment_tree_both_foldable(int n):
       depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
       size(1 << depth),
       hsize(size / 2),

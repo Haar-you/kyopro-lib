@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename T, unsigned int B>
-  class BinaryTrie {
+  class binary_trie {
   protected:
     struct node {
       int count;

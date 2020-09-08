@@ -10,7 +10,7 @@ namespace hl = haar_lib;
 int main(){
   int n; std::cin >> n;
 
-  hl::Tree<int> tree(n);
+  hl::tree<int> tree(n);
   tree.read<0, false>(n - 1);
 
   int ans = hl::tree_diameter(tree).first;

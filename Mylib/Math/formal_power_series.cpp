@@ -10,7 +10,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct FormalPowerSeries {
+  struct formal_power_series {
     using value_type = T;
 
     static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
@@ -18,9 +18,9 @@ namespace haar_lib {
 
     std::vector<T> data;
 
-    FormalPowerSeries(const std::vector<T> &data): data(data){}
-    FormalPowerSeries(std::initializer_list<T> init): data(init.begin(), init.end()){}
-    FormalPowerSeries(int N): data(N){}
+    formal_power_series(const std::vector<T> &data): data(data){}
+    formal_power_series(std::initializer_list<T> init): data(init.begin(), init.end()){}
+    formal_power_series(int N): data(N){}
 
     int size() const {
       return data.size();
@@ -41,29 +41,29 @@ namespace haar_lib {
       data.resize(n);
     }
 
-    auto operator+(const FormalPowerSeries &rhs) const {
+    auto operator+(const formal_power_series &rhs) const {
       std::vector<T> ret(data);
       ret.resize(rhs.size());
       for(int i = 0; i < (int)rhs.size(); ++i) ret[i] += rhs[i];
-      return FormalPowerSeries(ret);
+      return formal_power_series(ret);
     }
 
-    auto operator-(const FormalPowerSeries &rhs) const {
+    auto operator-(const formal_power_series &rhs) const {
       std::vector<T> ret(data);
       ret.resize(rhs.size());
       for(int i = 0; i < (int)rhs.size(); ++i) ret[i] -= rhs[i];
-      return FormalPowerSeries(ret);
+      return formal_power_series(ret);
     }
 
-    auto operator*(const FormalPowerSeries &rhs) const {
+    auto operator*(const formal_power_series &rhs) const {
       auto ret = convolve(data, rhs.data);
-      return FormalPowerSeries(ret);
+      return formal_power_series(ret);
     }
 
     auto operator*(T b) const {
       std::vector<T> ret(data);
       for(auto &x : ret) x *= b;
-      return FormalPowerSeries(ret);
+      return formal_power_series(ret);
     }
 
     auto differentiate() const {
@@ -73,7 +73,7 @@ namespace haar_lib {
         ret[i] = data[i + 1] * (i + 1);
       }
 
-      return FormalPowerSeries(ret);
+      return formal_power_series(ret);
     }
 
     auto integrate() const {
@@ -83,7 +83,7 @@ namespace haar_lib {
         ret[i + 1] = data[i] / (i + 1);
       }
 
-      return FormalPowerSeries(ret);
+      return formal_power_series(ret);
     }
 
     auto inv() const {
@@ -110,7 +110,7 @@ namespace haar_lib {
 
       ret.resize(n);
 
-      return FormalPowerSeries(ret);
+      return formal_power_series(ret);
     }
 
     auto log() const {
@@ -125,7 +125,7 @@ namespace haar_lib {
       const int n = data.size();
 
       int t = 1;
-      FormalPowerSeries b({1});
+      formal_power_series b({1});
 
       while(t <= n * 2){
         t <<= 1;
@@ -147,7 +147,7 @@ namespace haar_lib {
 
     auto shift(int64_t k) const {
       const int64_t n = data.size();
-      FormalPowerSeries ret(n);
+      formal_power_series ret(n);
 
       if(k >= 0){
         for(int64_t i = k; i < n; ++i){
@@ -177,7 +177,7 @@ namespace haar_lib {
 
       T a = data[k];
 
-      FormalPowerSeries ret = *this;
+      formal_power_series ret = *this;
       ret = (ret.shift(-k)) * a.inv();
       ret = (ret.log() * (T)M).exp();
       ret = (ret * a.power(M)).shift(M * k);
@@ -185,7 +185,7 @@ namespace haar_lib {
       return ret;
     }
 
-    std::optional<FormalPowerSeries> sqrt() const {
+    std::optional<formal_power_series> sqrt() const {
       const int n = data.size();
       int k = 0;
       for(; k < n; ++k) if(data[k] != 0) break;
@@ -201,10 +201,10 @@ namespace haar_lib {
       const int m = n - k;
 
       auto it = data.begin() + k;
-      FormalPowerSeries ret({*x});
+      formal_power_series ret({*x});
 
       while(t <= m * 2){
-        FormalPowerSeries f(std::vector(it, it + std::min(t, m)));
+        formal_power_series f(std::vector(it, it + std::min(t, m)));
         ret.resize(t);
         f.resize(t);
         ret = (ret + f * ret.inv()) * T(2).inv();
@@ -219,8 +219,8 @@ namespace haar_lib {
   };
 
   template <typename T>
-  std::function<std::vector<T>(std::vector<T>, std::vector<T>)> FormalPowerSeries<T>::convolve;
+  std::function<std::vector<T>(std::vector<T>, std::vector<T>)> formal_power_series<T>::convolve;
 
   template <typename T>
-  std::function<std::optional<T>(T)> FormalPowerSeries<T>::get_sqrt;
+  std::function<std::optional<T>(T)> formal_power_series<T>::get_sqrt;
 }

@@ -9,7 +9,7 @@
  */
 namespace haar_lib {
   template <typename T>
-  class FactorialTable {
+  class factorial_table {
   public:
     using value_type = T;
 
@@ -18,7 +18,7 @@ namespace haar_lib {
     std::vector<T> if_table;
 
   public:
-    FactorialTable(int N){
+    factorial_table(int N){
       f_table.assign(N + 1, 1);
       if_table.assign(N + 1, 1);
 

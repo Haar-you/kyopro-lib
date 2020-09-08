@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename Monoid>
-  class PersistentSegmentTree {
+  class persistent_segment_tree {
     using value_type = typename Monoid::value_type;
     const static Monoid M;
 
@@ -20,7 +20,7 @@ namespace haar_lib {
     int depth;
     node *root = nullptr;
 
-    PersistentSegmentTree(int depth, node *root): depth(depth), root(root){}
+    persistent_segment_tree(int depth, node *root): depth(depth), root(root){}
 
     node* init(node *t, const std::vector<value_type> &init_list, int d, int &pos){
       if(d == depth){
@@ -36,14 +36,14 @@ namespace haar_lib {
     }
 
   public:
-    PersistentSegmentTree(const std::vector<value_type> &init_list){
+    persistent_segment_tree(const std::vector<value_type> &init_list){
       const int size = init_list.size();
       depth = size == 1 ? 1 : 32 - __builtin_clz(size - 1) + 1;
       int pos = 0;
       root = init(root, init_list, 1, pos);
     }
 
-    PersistentSegmentTree(int size, const value_type &value = M()){
+    persistent_segment_tree(int size, const value_type &value = M()){
       depth = size == 1 ? 1 : 32 - __builtin_clz(size - 1) + 1;
       int pos = 0;
       root = init(root, std::vector<value_type>(size, value), 1, pos);
@@ -70,9 +70,9 @@ namespace haar_lib {
     }
 
   public:
-    PersistentSegmentTree update(int i, const value_type &val) const {
+    persistent_segment_tree update(int i, const value_type &val) const {
       node *t = update(root, 0, 1 << (depth - 1), i, val);
-      return PersistentSegmentTree(depth, t);
+      return persistent_segment_tree(depth, t);
     }
 
   protected:

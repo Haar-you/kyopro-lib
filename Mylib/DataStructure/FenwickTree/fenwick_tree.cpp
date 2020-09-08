@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename AbelianGroup>
-  class FenwickTree {
+  class fenwick_tree {
     using value_type = typename AbelianGroup::value_type;
     const static AbelianGroup G;
 
@@ -15,8 +15,8 @@ namespace haar_lib {
     std::vector<value_type> data;
 
   public:
-    FenwickTree(){}
-    FenwickTree(int size):
+    fenwick_tree(){}
+    fenwick_tree(int size):
       size(size), data(size + 1, G())
     {}
 

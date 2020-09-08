@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <typename Monoid>
-  class LazySegmentTree {
+  class lazy_segment_tree {
     using value_type_get = typename Monoid::value_type_get;
     using value_type_update = typename Monoid::value_type_update;
     const static Monoid M;
@@ -46,8 +46,8 @@ namespace haar_lib {
     }
 
   public:
-    LazySegmentTree(){}
-    LazySegmentTree(int n):
+    lazy_segment_tree(){}
+    lazy_segment_tree(int n):
       depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
       size(1 << depth),
       hsize(size / 2),

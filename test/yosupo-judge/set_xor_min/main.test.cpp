@@ -12,7 +12,7 @@ int main(){
 
   int Q; std::cin >> Q;
 
-  hl::BinaryTrie<uint32_t, 32> t;
+  hl::binary_trie<uint32_t, 32> t;
 
   for(auto [type, x] : hl::input_tuples<int, uint32_t>(Q)){
     switch(type){

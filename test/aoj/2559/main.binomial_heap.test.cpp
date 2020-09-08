@@ -16,7 +16,7 @@ namespace hl = haar_lib;
 int main(){
   int n, m; std::cin >> n >> m;
 
-  hl::Graph<int64_t> g(n);
+  hl::graph<int64_t> g(n);
   g.read<1, false>(m);
 
   std::map<std::pair<int, int>, int> index;
@@ -30,7 +30,7 @@ int main(){
 
   if((int)res.size() == n - 1){
     int64_t s = 0;
-    hl::Tree<int64_t> tree(n);
+    hl::tree<int64_t> tree(n);
 
     for(auto &e : res){
       s += e.cost;
@@ -39,7 +39,7 @@ int main(){
 
     ans.assign(m, s);
 
-    std::vector<hl::BinomialHeap<std::tuple<int64_t, int, int>, std::greater<>>> heaps(n);
+    std::vector<hl::binomial_heap<std::tuple<int64_t, int, int>, std::greater<>>> heaps(n);
 
     std::vector<std::set<int>> sub(n);
 

@@ -10,7 +10,7 @@
  */
 namespace haar_lib {
   template <typename AppendLeft, typename AppendRight, typename RemoveLeft, typename RemoveRight, typename Query>
-  class MoAlgorithm {
+  class mo_algorithm {
     int N, Q, index, width;
     std::vector<int> left, right, ord;
 
@@ -23,7 +23,7 @@ namespace haar_lib {
     bool is_built = false;
 
   public:
-    MoAlgorithm(
+    mo_algorithm(
       int N, int Q,
       const AppendLeft &append_left, const AppendRight &append_right,
       const RemoveLeft &remove_left, const RemoveRight &remove_right,

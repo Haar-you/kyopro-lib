@@ -12,7 +12,7 @@ int main(){
   std::ios::sync_with_stdio(false);
 
   int n; std::cin >> n;
-  std::vector<hl::Segment<int>> s(n);
+  std::vector<hl::segment<int>> s(n);
   for(int i = 0; i < n; ++i){
     std::cin >> s[i].from >> s[i].to;
   }

@@ -7,12 +7,12 @@
  */
 namespace haar_lib {
   template <typename T>
-  struct Imos2D {
+  struct imos_2d {
     using value_type = T;
 
     std::vector<std::vector<T>> vec;
     int n, m;
-    Imos2D(int n, int m): vec(n + 1, std::vector<T>(m + 1)), n(n), m(m){}
+    imos_2d(int n, int m): vec(n + 1, std::vector<T>(m + 1)), n(n), m(m){}
 
     void add(int a1, int b1, int a2, int b2){ // [a1, a2) [b1, b2)
       vec[a1][b1] += 1;

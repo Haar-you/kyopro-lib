@@ -9,7 +9,7 @@ namespace hl = haar_lib;
 int main(){
   int V, E; std::cin >> V >> E;
 
-  hl::Graph<int64_t> g(V);
+  hl::graph<int64_t> g(V);
   g.read<0, false>(E);
 
   auto res = hl::prim(g);
