@@ -57,7 +57,7 @@ namespace haar_lib {
 
       for(int i = 0; i < n; ++i){
         int d = outdegree[i] - indegree[i];
-        if(abs(d) > 1) return std::nullopt;
+        if(std::abs(d) > 1) return std::nullopt;
         if(d == 1){
           ++out;
           start = i;

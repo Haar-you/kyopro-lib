@@ -29,7 +29,7 @@ namespace haar_lib {
       const RemoveLeft &remove_left, const RemoveRight &remove_right,
       const Query &query
     ):
-      N(N), Q(Q), index(0), width(sqrt(N)),
+      N(N), Q(Q), index(0), width(std::sqrt(N)),
       left(Q), right(Q), ord(Q),
       append_left(append_left), append_right(append_right),
       remove_left(remove_left), remove_right(remove_right),

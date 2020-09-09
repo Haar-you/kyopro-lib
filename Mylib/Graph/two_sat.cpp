@@ -17,9 +17,9 @@ namespace haar_lib {
 
     int f(int i){
       assert(i != 0);
-      assert(abs(i) <= n);
+      assert(std::abs(i) <= n);
       if(i > 0) return i - 1;
-      else return abs(i) - 1 + n;
+      else return std::abs(i) - 1 + n;
     }
 
   public:

@@ -162,7 +162,7 @@ namespace haar_lib {
         };
 
       int lb = -1, ub = size();
-      while(abs(lb - ub) > 1){
+      while(std::abs(lb - ub) > 1){
         int mid = (lb + ub) / 2;
         if(check(mid)) ub = mid;
         else lb = mid;

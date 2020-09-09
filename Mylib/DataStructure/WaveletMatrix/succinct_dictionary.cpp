@@ -95,7 +95,7 @@ namespace haar_lib {
       if(rank(N, b) < n) return {};
 
       int lb = -1, ub = N;
-      while(abs(lb - ub) > 1){
+      while(std::abs(lb - ub) > 1){
         int mid = (lb + ub) / 2;
 
         if(rank(mid, b) >= n){

@@ -25,7 +25,7 @@ namespace haar_lib {
 
   public:
     range_mode_query(std::vector<T> a):
-      a(a), D(a), N(a.size()), block_size(sqrt(N)), block_num((N + block_size - 1) / block_size),
+      a(a), D(a), N(a.size()), block_size(std::sqrt(N)), block_num((N + block_size - 1) / block_size),
       mode(block_num, std::vector<int>(block_num)),
       freq(block_num, std::vector<int>(block_num))
     {

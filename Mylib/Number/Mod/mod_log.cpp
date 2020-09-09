@@ -31,7 +31,7 @@ namespace haar_lib {
       }
     }
 
-    const int64_t sq = sqrt(m) + 1;
+    const int64_t sq = std::sqrt(m) + 1;
 
     std::unordered_map<int64_t, int64_t> mp;
     {
