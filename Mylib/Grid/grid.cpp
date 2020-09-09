@@ -8,33 +8,33 @@
  * @docs grid.md
  */
 namespace haar_lib {
-  struct point {
+  struct cell {
     int x, y;
-    point(): x(0), y(0){}
-    point(int x, int y): x(x), y(y){}
-    point& operator+=(const point &a){this->x += a.x; this->y += a.y; return *this;}
-    point& operator-=(const point &a){this->x -= a.x; this->y -= a.y; return *this;}
+    cell(): x(0), y(0){}
+    cell(int x, int y): x(x), y(y){}
+    cell& operator+=(const cell &a){this->x += a.x; this->y += a.y; return *this;}
+    cell& operator-=(const cell &a){this->x -= a.x; this->y -= a.y; return *this;}
   };
 
-  point operator+(const point &a, const point &b){return point(a.x + b.x, a.y + b.y);}
-  point operator-(const point &a, const point &b){return point(a.x - b.x, a.y - b.y);}
-  bool operator==(const point &a, const point &b){return a.x == b.x and a.y == b.y;}
-  bool operator!=(const point &a, const point &b){return !(a == b);}
+  cell operator+(const cell &a, const cell &b){return cell(a.x + b.x, a.y + b.y);}
+  cell operator-(const cell &a, const cell &b){return cell(a.x - b.x, a.y - b.y);}
+  bool operator==(const cell &a, const cell &b){return a.x == b.x and a.y == b.y;}
+  bool operator!=(const cell &a, const cell &b){return !(a == b);}
 
-  bool operator<(const point &a, const point &b){
+  bool operator<(const cell &a, const cell &b){
     return std::make_pair(a.x, a.y) < std::make_pair(b.x, b.y);
   }
 
-  std::ostream& operator<<(std::ostream &os, const point &a){
+  std::ostream& operator<<(std::ostream &os, const cell &a){
     os << "(" << a.x << "," << a.y << ")";
     return os;
   }
 
-  const auto LEFT = point(0, -1);
-  const auto RIGHT = point(0, 1);
-  const auto UP = point(-1, 0);
-  const auto DOWN = point(1, 0);
+  const auto LEFT = cell(0, -1);
+  const auto RIGHT = cell(0, 1);
+  const auto UP = cell(-1, 0);
+  const auto DOWN = cell(1, 0);
 
-  const std::array<point, 4> dir4 = {LEFT, RIGHT, UP, DOWN};
-  const std::array<point, 8> dir8 = {LEFT, RIGHT, UP, DOWN, LEFT + UP, LEFT + DOWN, RIGHT + UP, RIGHT + DOWN};
+  const std::array<cell, 4> dir4 = {LEFT, RIGHT, UP, DOWN};
+  const std::array<cell, 8> dir8 = {LEFT, RIGHT, UP, DOWN, LEFT + UP, LEFT + DOWN, RIGHT + UP, RIGHT + DOWN};
 }

@@ -20,10 +20,10 @@ namespace haar_lib {
 
     for(int i = 0; i < H; ++i){
       for(int j = 0; j < W; ++j){
-        auto p = point(i, j);
+        auto p = cell(i, j);
 
         for(auto &d : dir){
-          auto q = point(i, j) + d;
+          auto q = cell(i, j) + d;
 
           if(q.x < 0 or q.x >= H or q.y < 0 or q.y >= W or not check_passable(p, q)) continue;
 
