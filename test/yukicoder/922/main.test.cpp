@@ -4,7 +4,7 @@
 #include <vector>
 #include <utility>
 #include "Mylib/Graph/Template/graph.cpp"
-#include "Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp"
+#include "Mylib/Graph/TreeUtils/lca_doubling.cpp"
 #include "Mylib/Graph/TreeUtils/forest.cpp"
 #include "Mylib/Graph/TreeUtils/rerooting.cpp"
 #include "Mylib/Graph/TreeUtils/tree_distance.cpp"
@@ -23,11 +23,11 @@ int main(){
   hl::forest<int64_t> forest(g);
 
   const int tree_num = forest.trees.size();
-  std::vector<hl::lowest_common_ancestor<int64_t>> lcas(tree_num);
+  std::vector<hl::lowest_common_ancestor_doubling<int64_t>> lcas(tree_num);
   std::vector<std::vector<int64_t>> dists(tree_num);
 
   for(int i = 0; i < tree_num; ++i){
-    lcas[i] = hl::lowest_common_ancestor(forest.trees[i], 0);
+    lcas[i] = hl::lowest_common_ancestor_doubling(forest.trees[i], 0);
     dists[i] = hl::tree_distance(forest.trees[i], 0);
   }
 

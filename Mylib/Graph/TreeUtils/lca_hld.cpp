@@ -5,11 +5,11 @@
 
 /**
  * @title Lowest common ancestor (HLD)
- * @docs lca_based_on_hld.md
+ * @docs lca_hld.md
  */
 namespace haar_lib {
   template <typename T>
-  class lowest_common_ancestor {
+  class lowest_common_ancestor_hld {
     int n;
     std::vector<int> sub, par, head, id;
 
@@ -39,7 +39,7 @@ namespace haar_lib {
     }
 
   public:
-    lowest_common_ancestor(tree<T> tr, int root):
+    lowest_common_ancestor_hld(tree<T> tr, int root):
       n(tr.size()), sub(n, 1), par(n, -1), head(n), id(n){
       dfs_sub(root, -1, tr);
       int i = 0;

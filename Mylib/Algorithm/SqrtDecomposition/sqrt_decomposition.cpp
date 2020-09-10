@@ -13,7 +13,7 @@ namespace haar_lib {
     const int BLOCK_NUM;
 
     sqrt_decomposition(int N):
-      N(N), BLOCK_SIZE((int)sqrt(N)), BLOCK_NUM((N + BLOCK_SIZE - 1) / BLOCK_SIZE)
+      N(N), BLOCK_SIZE((int)std::sqrt(N)), BLOCK_NUM((N + BLOCK_SIZE - 1) / BLOCK_SIZE)
     {
     }
 

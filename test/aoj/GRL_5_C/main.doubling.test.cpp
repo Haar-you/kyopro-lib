@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include "Mylib/Graph/Template/graph.cpp"
-#include "Mylib/Graph/TreeUtils/lca_based_on_doubling.cpp"
+#include "Mylib/Graph/TreeUtils/lca_doubling.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/IO/input_tuples_with_index.cpp"
 
@@ -18,7 +18,7 @@ int main(){
     }
   }
 
-  auto lca = hl::lowest_common_ancestor(tree, 0);
+  auto lca = hl::lowest_common_ancestor_doubling(tree, 0);
 
   int q; std::cin >> q;
 

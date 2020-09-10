@@ -19,13 +19,13 @@ namespace haar_lib {
     centroid_decomposition(const tree<T> &tr):
       N(tr.size()), parent(N), children(N), subsize(N), check(N)
     {
-      decompose(tree, 0, -1);
+      decompose(tr, 0, -1);
     }
 
   private:
     void decompose(const tree<T> &tr, int cur, int par){
       dfs_subsize(tr, cur, -1);
-      auto c = get_centroid(tree, cur, -1, subsize[cur]);
+      auto c = get_centroid(tr, cur, -1, subsize[cur]);
 
       check[c] = true;
       parent[c] = par;
@@ -33,7 +33,7 @@ namespace haar_lib {
 
       for(auto &e : tr[c]){
         if(check[e.to]) continue;
-        decompose(tree, e.to, c);
+        decompose(tr, e.to, c);
       }
     }
 

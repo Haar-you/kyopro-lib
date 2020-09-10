@@ -12,7 +12,7 @@ using mint = hl::modint<998244353>;
 int main(){
   int N; std::cin >> N;
 
-  auto p = hl::partition_number<mint>(N);
+  auto p = hl::partition_number_n<mint>(N);
 
   std::cout << hl::join(p.begin(), p.end()) << std::endl;
 

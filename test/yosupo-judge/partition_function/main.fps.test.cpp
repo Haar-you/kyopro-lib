@@ -25,7 +25,7 @@ int main(){
   auto ntt = NTT();
   FPS::convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
 
-  auto ans = hl::partition_number<FPS>(N);
+  auto ans = hl::partition_number_fps<FPS>(N);
   std::cout << hl::join(ans.begin(), ans.begin() + (N + 1)) << "\n";
 
   return 0;

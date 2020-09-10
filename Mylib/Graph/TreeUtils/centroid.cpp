@@ -15,7 +15,7 @@ namespace haar_lib {
 
       for(auto &e : tr[cur]){
         if(e.to == par) continue;
-        dfs(tree, subtree, ret, N, e.to, cur);
+        dfs(tr, subtree, ret, N, e.to, cur);
 
         if(subtree[e.to] > N / 2) check = false;
         subtree[cur] += subtree[e.to];

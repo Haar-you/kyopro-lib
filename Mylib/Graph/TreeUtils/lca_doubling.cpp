@@ -5,11 +5,11 @@
 
 /**
  * @title Lowest common ancestor (Doubling)
- * @docs lca_based_on_doubling.md
+ * @docs lca_doubling.md
  */
 namespace haar_lib {
   template <typename T>
-  class lowest_common_ancestor {
+  class lowest_common_ancestor_doubling {
   private:
     std::vector<std::vector<int>> parent;
     int n, log2n;
@@ -28,8 +28,8 @@ namespace haar_lib {
   public:
     std::vector<int> depth;
 
-    lowest_common_ancestor(){}
-    lowest_common_ancestor(const tree<T> &tr, int root):
+    lowest_common_ancestor_doubling(){}
+    lowest_common_ancestor_doubling(const tree<T> &tr, int root):
       n(tr.size()), depth(n)
     {
       log2n = (int)ceil(log2(n)) + 1;
