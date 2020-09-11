@@ -3,8 +3,8 @@
 #include <cstdint>
 
 /**
- * @title Prime factorization (Precalculation)
- * @docs prime_factorize_precalculated.md
+ * @title Prime factorization (Sieve)
+ * @docs prime_factorize_sieve.md
  */
 namespace haar_lib {
   struct prime_factorize_sieve {
