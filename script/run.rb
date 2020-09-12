@@ -12,6 +12,7 @@ $debug = true
 $cpp_version = "c++1z"
 $boost = nil
 $compile_only = false
+$use_atcoder_lib = false
 
 opts.on("-e", "--exec-only"){
   $exec_only = true
@@ -27,6 +28,11 @@ opts.on("--cpp VERSION"){|version|
 
 opts.on("-c", "--compile-only"){
   $compile_only = true
+}
+
+opts.on("--atcoder"){
+  $use_atcoder_lib = true
+  $atcoder_lib_path = ENV["ATCODER_LIB_PATH"]
 }
 
 $mylib = Pathname.new(__dir__).parent
@@ -46,10 +52,11 @@ if not $exec_only
     "-Wextra",
     "-I#{$mylib}",
     $boost.nil? ? "" : "-I#{$boost}",
-    $debug.nil? ? "" : "-DDEBUG",
-    "-D_GLIBCXX_DEBUG",
+    $debug ? "-DDEBUG" : "",
+    $debug ? "-D_GLIBCXX_DEBUG" : "",
     #"-fsanitize=undefined",
-    "-g",
+    $debug ? "-g" : "",
+    $use_atcoder_lib ? "-I#{$atcoder_lib_path}" : "",
     "-o a.out"
   ]
 
@@ -60,8 +67,8 @@ if not $exec_only
   print o
   print e
 
-  exit unless s.success?
-  
+  exit(1) unless s.success?
+
   puts "\e[33;1m compiled \e[m"
 end
 

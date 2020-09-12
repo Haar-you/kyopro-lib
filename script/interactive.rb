@@ -53,7 +53,7 @@ if not $exec_only and not $not_compile_main
     "-Wextra",
     "-I#{$mylib}",
     $boost.nil? ? "" : "-I#{$boost}",
-    $debug.nil? ? "" : "-DDEBUG",
+    !$debug ? "" : "-DDEBUG",
     "-D_GLIBCXX_DEBUG",
     "-g",
     "-o a.out"
@@ -66,8 +66,8 @@ if not $exec_only and not $not_compile_main
   print o
   print e
 
-  exit unless s.success?
-  
+  exit(1) unless s.success?
+
   puts "\e[33;1m compiled #{main_file} \e[m"
 end
 
@@ -83,7 +83,7 @@ if not $exec_only and not $not_compile_server
     "-Wextra",
     "-I#{$mylib}",
     $boost.nil? ? "" : "-I#{$boost}",
-    $debug.nil? ? "" : "-DDEBUG",
+    !$debug ? "" : "-DDEBUG",
     "-D_GLIBCXX_DEBUG",
     "-g",
     "-o server"
@@ -96,8 +96,8 @@ if not $exec_only and not $not_compile_server
   print o
   print e
 
-  exit unless s.success?
-  
+  exit(1) unless s.success?
+
   puts "\e[33;1m compiled #{server_file} \e[m"
 end
 
@@ -107,7 +107,7 @@ system("mkfifo out2") unless FileTest.exist?("out2")
 
 begin
   # 参考: https://qiita.com/ktateish/items/d350e359d921d174fc28
-  
+
   t = Thread.new do
     system("sed -e 's/^/[\e[34;1m Client \e[m] /' < out1 & sed -e 's/^/[\e[32;1m Server \e[m] /' < out2; wait")
   end
@@ -119,7 +119,7 @@ EOS
         )
 
   t.join()
-  
+
 rescue => e
   puts e
 end
