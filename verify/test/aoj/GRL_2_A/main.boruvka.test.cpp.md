@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#81ed75a9aa7f4e6edc886499b1a67fa4">test/aoj/GRL_2_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_2_A/main.boruvka.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
 * :x: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/boruvka.cpp.html">Borůvka algorithm</a>
-* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
 
 
 ## Code
@@ -55,13 +55,15 @@ layout: default
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/MinimumSpanningTree/boruvka.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int64_t> g(V);
+  hl::graph<int64_t> g(V);
   g.read<0, false>(E);
 
-  auto res = boruvka(g);
+  auto res = hl::boruvka(g);
 
   int64_t ans = 0;
   for(auto &e : res) ans += e.cost;
@@ -88,173 +90,202 @@ int main(){
  * @title Basic graph
  * @docs graph.md
  */
-template <typename T>
-struct Edge {
-  int from, to;
-  T cost;
-  int index = -1;
-  Edge(){}
-  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
-};
+namespace haar_lib {
+  template <typename T>
+  struct edge {
+    int from, to;
+    T cost;
+    int index = -1;
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+  };
 
-template <typename T>
-struct Graph {
-  using weight_type = T;
-  using edge_type = Edge<T>;
+  template <typename T>
+  struct graph {
+    using weight_type = T;
+    using edge_type = edge<T>;
 
-  std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
-  auto& operator[](size_t i){return data[i];}
-  const auto& operator[](size_t i) const {return data[i];}
+    auto& operator[](size_t i){return data[i];}
+    const auto& operator[](size_t i) const {return data[i];}
 
-  auto begin() const {return data.begin();}
-  auto end() const {return data.end();}
+    auto begin() const {return data.begin();}
+    auto end() const {return data.end();}
 
-  Graph(){}
-  Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
-  bool empty() const {return data.empty();}
-  int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+    int size() const {return data.size();}
 
-  void add_edge(int i, int j, T w, int index = -1){
-    data[i].emplace_back(i, j, w, index);
-  }
-
-  void add_undirected(int i, int j, T w, int index = -1){
-    add_edge(i, j, w, index);
-    add_edge(j, i, w, index);
-  }
-
-  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
-  void read(int M){
-    for(int i = 0; i < M; ++i){
-      int u, v; std::cin >> u >> v;
-      u -= I;
-      v -= I;
-      T w = 1;
-      if(WEIGHTED) std::cin >> w;
-      if(DIRECTED) add_edge(u, v, w, i);
-      else add_undirected(u, v, w, i);
+    void add_edge(int i, int j, T w, int index = -1){
+      data[i].emplace_back(i, j, w, index);
     }
-  }
-};
 
-template <typename T>
-using Tree = Graph<T>;
+    void add_undirected(int i, int j, T w, int index = -1){
+      add_edge(i, j, w, index);
+      add_edge(j, i, w, index);
+    }
+
+    template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+    void read(int M){
+      for(int i = 0; i < M; ++i){
+        int u, v; std::cin >> u >> v;
+        u -= I;
+        v -= I;
+        T w = 1;
+        if(WEIGHTED) std::cin >> w;
+        if(DIRECTED) add_edge(u, v, w, i);
+        else add_undirected(u, v, w, i);
+      }
+    }
+  };
+
+  template <typename T>
+  using tree = graph<T>;
+}
 #line 3 "Mylib/Graph/MinimumSpanningTree/boruvka.cpp"
 #include <utility>
 #line 3 "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include <numeric>
+#include <algorithm>
 
 /**
  * @title Union-find
  * @docs unionfind.md
  */
-class UnionFind {
-  std::vector<int> parent, depth, size;
-  int count;
+namespace haar_lib {
+  class unionfind {
+    int n;
+    mutable std::vector<int> parent;
+    std::vector<int> depth, size;
+    int count;
 
-public:
-  UnionFind(){}
-  UnionFind(int n): parent(n), depth(n, 1), size(n, 1), count(n){
-    std::iota(parent.begin(), parent.end(), 0);
-  }
+  public:
+    unionfind(){}
+    unionfind(int n): n(n), parent(n), depth(n, 1), size(n, 1), count(n){
+      std::iota(parent.begin(), parent.end(), 0);
+    }
 
-  int root_of(int i){
-    if(parent[i] == i) return i;
-    else return parent[i] = root_of(parent[i]);
-  }
+    int root_of(int i) const {
+      if(parent[i] == i) return i;
+      else return parent[i] = root_of(parent[i]);
+    }
 
-  bool is_same(int i, int j){return root_of(i) == root_of(j);}
+    bool is_same(int i, int j) const {return root_of(i) == root_of(j);}
 
-  int merge(int i, int j){
-    const int ri = root_of(i), rj = root_of(j);
-    if(ri == rj) return ri;
-    else{
-      --count;
-      if(depth[ri] < depth[rj]){
-        parent[ri] = rj;
-        size[rj] += size[ri];
-        return rj;
-      }else{
-        parent[rj] = ri;
-        size[ri] += size[rj];
-        if(depth[ri] == depth[rj]) ++depth[ri];
-        return ri;
+    int merge(int i, int j){
+      const int ri = root_of(i), rj = root_of(j);
+      if(ri == rj) return ri;
+      else{
+        --count;
+        if(depth[ri] < depth[rj]){
+          parent[ri] = rj;
+          size[rj] += size[ri];
+          return rj;
+        }else{
+          parent[rj] = ri;
+          size[ri] += size[rj];
+          if(depth[ri] == depth[rj]) ++depth[ri];
+          return ri;
+        }
       }
     }
-  }
 
-  int size_of(int i){return size[root_of(i)];}
+    int size_of(int i) const {return size[root_of(i)];}
 
-  int count_group(){return count;}
-};
+    int count_groups() const {return count;}
+
+    auto get_groups() const {
+      std::vector<std::vector<int>> ret(n);
+
+      for(int i = 0; i < n; ++i){
+        ret[root_of(i)].push_back(i);
+      }
+
+      ret.erase(
+        std::remove_if(
+          ret.begin(), ret.end(),
+          [](const auto &a){return a.empty();}
+        ),
+        ret.end()
+      );
+
+      return ret;
+    }
+  };
+}
 #line 6 "Mylib/Graph/MinimumSpanningTree/boruvka.cpp"
 
 /**
  * @title Borůvka algorithm
  * @docs boruvka.md
  */
-template <typename T>
-auto boruvka(const Graph<T> &g){
-  std::vector<Edge<T>> ret;
-  const int N = g.size();
+namespace haar_lib {
+  template <typename T>
+  auto boruvka(const graph<T> &g){
+    std::vector<edge<T>> ret;
+    const int N = g.size();
 
-  UnionFind uf(N);
-  std::vector<std::vector<int>> c(N);
-  for(int i = 0; i < N; ++i) c[i].push_back(i);
+    unionfind uf(N);
+    std::vector<std::vector<int>> c(N);
+    for(int i = 0; i < N; ++i) c[i].push_back(i);
 
-  while((int)(ret.size()) < N - 1){
-    std::vector<Edge<T>> temp;
+    while((int)(ret.size()) < N - 1){
+      std::vector<edge<T>> temp;
 
-    for(auto &a : c){
-      Edge<T> m;
-      bool ok = false;
+      for(auto &a : c){
+        edge<T> m;
+        bool ok = false;
 
-      if(a.empty()) continue;
+        if(a.empty()) continue;
 
-      for(auto i : a){
-        for(auto &e : g[i]){
-          if(uf.is_same(e.from, e.to)) continue;
-          if(not std::exchange(ok, true) or e.cost < m.cost){
-            m = e;
+        for(auto i : a){
+          for(auto &e : g[i]){
+            if(uf.is_same(e.from, e.to)) continue;
+            if(not std::exchange(ok, true) or e.cost < m.cost){
+              m = e;
+            }
           }
         }
+
+        temp.push_back(m);
       }
 
-      temp.push_back(m);
+      for(auto &e : temp){
+        if(uf.is_same(e.from, e.to)) continue;
+
+        const int i = uf.root_of(e.from);
+        const int j = uf.root_of(e.to);
+        const int k = uf.merge(i, j);
+
+        if(c[i].size() < c[j].size()) std::swap(c[i], c[j]);
+
+        c[i].insert(c[i].end(), c[j].begin(), c[j].end());
+        c[j].clear();
+
+        std::swap(c[k], c[i]);
+
+        ret.push_back(e);
+      }
     }
 
-    for(auto &e : temp){
-      if(uf.is_same(e.from, e.to)) continue;
-
-      const int i = uf.root_of(e.from);
-      const int j = uf.root_of(e.to);
-      const int k = uf.merge(i, j);
-
-      if(c[i].size() < c[j].size()) std::swap(c[i], c[j]);
-
-      c[i].insert(c[i].end(), c[j].begin(), c[j].end());
-      c[j].clear();
-
-      std::swap(c[k], c[i]);
-
-      ret.push_back(e);
-    }
+    return ret;
   }
-
-  return ret;
 }
 #line 6 "test/aoj/GRL_2_A/main.boruvka.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int64_t> g(V);
+  hl::graph<int64_t> g(V);
   g.read<0, false>(E);
 
-  auto res = boruvka(g);
+  auto res = hl::boruvka(g);
 
   int64_t ans = 0;
   for(auto &e : res) ans += e.cost;

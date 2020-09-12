@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4cec009c25052c746a2a7a5b033e9889">test/aoj/ALDS1_9_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_9_C/main.binary.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_9_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_9_C</a>
@@ -53,8 +53,10 @@ layout: default
 #include <string>
 #include "Mylib/DataStructure/Heap/binary_heap.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
-  BinaryHeap<int> heap;
+  hl::binary_heap<int> heap;
   std::string s;
 
   while(1){
@@ -94,77 +96,81 @@ int main(){
  * @title Binary heap
  * @docs binary_heap.md
  */
-template <typename T, typename Compare = std::less<T>>
-class BinaryHeap {
-  std::vector<T> data;
+namespace haar_lib {
+  template <typename T, typename Compare = std::less<T>>
+  class binary_heap {
+    std::vector<T> data;
 
-  int left(int i) const {return i * 2 + 1;}
-  int right(int i) const {return i * 2 + 2;}
-  int parent(int i) const {return (i - 1) >> 1;}
+    int left(int i) const {return i * 2 + 1;}
+    int right(int i) const {return i * 2 + 2;}
+    int parent(int i) const {return (i - 1) >> 1;}
 
-  Compare compare;
+    Compare compare;
 
-public:
-  BinaryHeap(): compare(Compare()){}
-  BinaryHeap(size_t capacity): compare(Compare()){data.reserve(capacity);}
+  public:
+    binary_heap(): compare(Compare()){}
+    binary_heap(size_t capacity): compare(Compare()){data.reserve(capacity);}
 
-  void push(T value){
-    data.emplace_back(value);
+    void push(T value){
+      data.emplace_back(value);
 
-    int i = (int)data.size() - 1;
+      int i = (int)data.size() - 1;
 
-    while(i > 0){
-      int p = parent(i);
-      if(compare(data[i], data[p])) break;
-      std::swap(data[i], data[p]);
-      i = p;
+      while(i > 0){
+        int p = parent(i);
+        if(compare(data[i], data[p])) break;
+        std::swap(data[i], data[p]);
+        i = p;
+      }
     }
-  }
 
-  T top() const {
-    return data.front();
-  }
+    T top() const {
+      return data.front();
+    }
 
-  void pop(){
-    data.front() = data.back();
-    data.pop_back();
+    void pop(){
+      data.front() = data.back();
+      data.pop_back();
 
-    int i = 0;
+      int i = 0;
 
-    while(1){
-      int l = left(i);
-      int r = right(i);
+      while(1){
+        int l = left(i);
+        int r = right(i);
 
-      if((int)data.size() <= l) break;
-      if((int)data.size() <= r){
-        if(compare(data[l], data[i])) break;
-        std::swap(data[l], data[i]);
-        i = l;
-      }else{
-        if(compare(data[l], data[i]) and compare(data[r], data[i])) break;
-        if(compare(data[r], data[l])){
+        if((int)data.size() <= l) break;
+        if((int)data.size() <= r){
+          if(compare(data[l], data[i])) break;
           std::swap(data[l], data[i]);
           i = l;
         }else{
-          std::swap(data[r], data[i]);
-          i = r;
+          if(compare(data[l], data[i]) and compare(data[r], data[i])) break;
+          if(compare(data[r], data[l])){
+            std::swap(data[l], data[i]);
+            i = l;
+          }else{
+            std::swap(data[r], data[i]);
+            i = r;
+          }
         }
       }
     }
-  }
 
-  bool empty() const {
-    return data.empty();
-  }
+    bool empty() const {
+      return data.empty();
+    }
 
-  size_t size() const {
-    return data.size();
-  }
-};
+    size_t size() const {
+      return data.size();
+    }
+  };
+}
 #line 6 "test/aoj/ALDS1_9_C/main.binary.test.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
-  BinaryHeap<int> heap;
+  hl::binary_heap<int> heap;
   std::string s;
 
   while(1){

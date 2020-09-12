@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/count_coprime.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -73,24 +73,26 @@ layout: default
  * @title Count coprime
  * @docs count_coprime.md
  */
-int64_t count_coprime(int64_t n, int64_t m){
-  const auto p = prime_factorize(m);
-  const int k = p.size();
+namespace haar_lib {
+  int64_t count_coprime(int64_t n, int64_t m){
+    const auto p = prime_factorize(m);
+    const int k = p.size();
 
-  int64_t ret = 0;
+    int64_t ret = 0;
 
-  for(int i = 0; i < 1 << k; ++i){
-    int64_t s = 1;
+    for(int i = 0; i < 1 << k; ++i){
+      int64_t s = 1;
 
-    for(int j = 0; j < k; ++j){
-      if(i & (1 << j)) s *= p[j].first;
+      for(int j = 0; j < k; ++j){
+        if(i & (1 << j)) s *= p[j].first;
+      }
+
+      if(__builtin_popcount(i) % 2 == 1) ret -= n / s;
+      else ret += n / s;
     }
 
-    if(__builtin_popcount(i) % 2 == 1) ret -= n / s;
-    else ret += n / s;
+    return ret;
   }
-
-  return ret;
 }
 
 ```
@@ -110,20 +112,22 @@ int64_t count_coprime(int64_t n, int64_t m){
  * @title Prime factorization
  * @docs prime_factorize.md
  */
-auto prime_factorize(int64_t n){
-  std::vector<std::pair<int64_t, int64_t>> ret;
-  for(int64_t i = 2LL; i * i <= n; ++i){
-    if(n % i == 0){
-      int64_t c = 0;
-      while(n % i == 0){
-        n /= i;
-        ++c;
+namespace haar_lib {
+  auto prime_factorize(int64_t n){
+    std::vector<std::pair<int64_t, int64_t>> ret;
+    for(int64_t i = 2LL; i * i <= n; ++i){
+      if(n % i == 0){
+        int64_t c = 0;
+        while(n % i == 0){
+          n /= i;
+          ++c;
+        }
+        ret.emplace_back(i, c);
       }
-      ret.emplace_back(i, c);
     }
+    if(n != 1) ret.emplace_back(n, 1);
+    return ret;
   }
-  if(n != 1) ret.emplace_back(n, 1);
-  return ret;
 }
 #line 4 "Mylib/Number/Prime/count_coprime.cpp"
 
@@ -131,24 +135,26 @@ auto prime_factorize(int64_t n){
  * @title Count coprime
  * @docs count_coprime.md
  */
-int64_t count_coprime(int64_t n, int64_t m){
-  const auto p = prime_factorize(m);
-  const int k = p.size();
+namespace haar_lib {
+  int64_t count_coprime(int64_t n, int64_t m){
+    const auto p = prime_factorize(m);
+    const int k = p.size();
 
-  int64_t ret = 0;
+    int64_t ret = 0;
 
-  for(int i = 0; i < 1 << k; ++i){
-    int64_t s = 1;
+    for(int i = 0; i < 1 << k; ++i){
+      int64_t s = 1;
 
-    for(int j = 0; j < k; ++j){
-      if(i & (1 << j)) s *= p[j].first;
+      for(int j = 0; j < k; ++j){
+        if(i & (1 << j)) s *= p[j].first;
+      }
+
+      if(__builtin_popcount(i) % 2 == 1) ret -= n / s;
+      else ret += n / s;
     }
 
-    if(__builtin_popcount(i) % 2 == 1) ret -= n / s;
-    else ret += n / s;
+    return ret;
   }
-
-  return ret;
 }
 
 ```

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#06e75b3853179fe775851b53e9e59b30">test/aoj/DPL_1_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_1_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_B</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 * :x: <a href="../../../../library/Mylib/TypicalProblem/KnapsackProblem/knapsack_small_weight.cpp.html">0-1 Knapsack problem (Small weight)</a>
 
 
@@ -55,12 +55,14 @@ layout: default
 #include "Mylib/TypicalProblem/KnapsackProblem/knapsack_small_weight.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N, W; std::cin >> N >> W;
 
-  auto [v, w] = input_tuple_vector<int, int>(N);
+  auto [v, w] = hl::input_tuple_vector<int, int>(N);
 
-  auto ans = knapsack_small_weight(N, W, w, v);
+  auto ans = hl::knapsack_small_weight(N, W, w, v);
   std::cout << ans << std::endl;
 
   return 0;
@@ -84,18 +86,20 @@ int main(){
  * @title 0-1 Knapsack problem (Small weight)
  * @docs knapsack_small_weight.md
  */
-template <typename Weight, typename Value>
-Value knapsack_small_weight(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
-  std::vector<std::vector<Value>> dp(N + 1, std::vector<Value>(cap + 1));
+namespace haar_lib {
+  template <typename Weight, typename Value>
+  Value knapsack_small_weight(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
+    std::vector<std::vector<Value>> dp(N + 1, std::vector<Value>(cap + 1));
 
-  for(int i = 0; i < N; ++i){
-    for(int j = 0; j <= cap; ++j){
-      dp[i + 1][j] = std::max(dp[i + 1][j], dp[i][j]);
-      if(j + w[i] <= cap) dp[i + 1][j + w[i]] = std::max(dp[i + 1][j + w[i]], dp[i][j] + v[i]);
+    for(int i = 0; i < N; ++i){
+      for(int j = 0; j <= cap; ++j){
+        dp[i + 1][j] = std::max(dp[i + 1][j], dp[i][j]);
+        if(j + w[i] <= cap) dp[i + 1][j + w[i]] = std::max(dp[i + 1][j + w[i]], dp[i][j] + v[i]);
+      }
     }
-  }
 
-  return dp[N][cap];
+    return dp[N][cap];
+  }
 }
 #line 4 "Mylib/IO/input_tuple_vector.cpp"
 #include <tuple>
@@ -105,35 +109,39 @@ Value knapsack_small_weight(int N, Weight cap, const std::vector<Weight> &w, con
 /**
  * @docs input_tuple_vector.md
  */
-template <typename T, size_t ... I>
-void input_tuple_vector_init(T &val, int N, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0) ...};
-}
-
-template <typename T, size_t ... I>
-void input_tuple_vector_helper(T &val, int i, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0) ...};
-}
-
-template <typename ... Args>
-auto input_tuple_vector(int N){
-  std::tuple<std::vector<Args> ...> ret;
-
-  input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof ... (Args)>());
-  for(int i = 0; i < N; ++i){
-    input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof ... (Args)>());
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  void input_tuple_vector_init(T &val, int N, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0) ...};
   }
 
-  return ret;
+  template <typename T, size_t ... I>
+  void input_tuple_vector_helper(T &val, int i, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0) ...};
+  }
+
+  template <typename ... Args>
+  auto input_tuple_vector(int N){
+    std::tuple<std::vector<Args> ...> ret;
+
+    input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof ... (Args)>());
+    for(int i = 0; i < N; ++i){
+      input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof ... (Args)>());
+    }
+
+    return ret;
+  }
 }
 #line 7 "test/aoj/DPL_1_B/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int N, W; std::cin >> N >> W;
 
-  auto [v, w] = input_tuple_vector<int, int>(N);
+  auto [v, w] = hl::input_tuple_vector<int, int>(N);
 
-  auto ans = knapsack_small_weight(N, W, w, v);
+  auto ans = hl::knapsack_small_weight(N, W, w, v);
   std::cout << ans << std::endl;
 
   return 0;

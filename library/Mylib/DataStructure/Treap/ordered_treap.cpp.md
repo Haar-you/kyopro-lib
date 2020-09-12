@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../../index.html#f1faa641fd949a91e292dddd575fe73e">Mylib/DataStructure/Treap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Treap/ordered_treap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
 
 ## Depends on
 
-* :x: <a href="treap.cpp.html">Treap</a>
+* :heavy_check_mark: <a href="treap.cpp.html">Treap</a>
 
 
 ## Code
@@ -54,15 +54,15 @@ layout: default
  * @title Treap (Ordered set)
  * @docs ordered_treap.md
  */
-namespace treap {
+namespace haar_lib {
   template <typename Monoid>
-  class OrderedTreap : public Treap<Monoid> {
+  class ordered_treap : public treap<Monoid> {
     using value_type = typename Monoid::value_type;
-    using node = TreapNode<Monoid>;
-    using super = Treap<Monoid>;
+    using node = treap_node<Monoid>;
+    using super = treap<Monoid>;
 
   public:
-    OrderedTreap(): super(){}
+    ordered_treap(): super(){}
 
   protected:
     int lower_bound(node *t, const value_type &val){
@@ -130,10 +130,10 @@ namespace treap {
  * @title Treap
  * @docs treap.md
  */
-namespace treap {
+namespace haar_lib {
   template <typename Monoid>
-  struct TreapNode {
-    using node = TreapNode<Monoid>;
+  struct treap_node {
+    using node = treap_node<Monoid>;
     using value_type = typename Monoid::value_type;
     const static Monoid M;
 
@@ -144,8 +144,8 @@ namespace treap {
     int priority, size = 1;
     bool rev = false;
 
-    TreapNode(): priority(rand()){}
-    TreapNode(const value_type &value): value(value), result(value), priority(rand()){}
+    treap_node(): priority(rand()){}
+    treap_node(const value_type &value): value(value), result(value), priority(rand()){}
 
     static int count(node *t) {return !t ? 0 : t->size;}
     static value_type sum(node *t) {return !t ? M() : t->result;}
@@ -243,21 +243,21 @@ namespace treap {
     }
   };
 
-  template <typename Monoid> std::mt19937 TreapNode<Monoid>::rand;
+  template <typename Monoid> std::mt19937 treap_node<Monoid>::rand;
 
   template <typename Monoid>
-  class Treap {
+  class treap {
   protected:
-    using node = TreapNode<Monoid>;
+    using node = treap_node<Monoid>;
     using value_type = typename Monoid::value_type;
     const static Monoid M;
 
     node *root = nullptr;
 
   public:
-    Treap(){}
-    Treap(int n){for(int i = 0; i < n; ++i) push_back(M());}
-    Treap(node *t): root(t){}
+    treap(){}
+    treap(int n){for(int i = 0; i < n; ++i) push_back(M());}
+    treap(node *t): root(t){}
 
     int size() const {return node::count(root);}
     bool empty() const {return !root;}
@@ -268,17 +268,17 @@ namespace treap {
 
     void erase(int k){root = node::erase(root, k);}
 
-    void merge_left(Treap &left){
+    void merge_left(treap &left){
       root = node::merge(left.root, root); left.root = nullptr;
     }
 
-    void merge_right(Treap &right){
+    void merge_right(treap &right){
       root = node::merge(root, right.root); right.root = nullptr;
     }
 
-    std::pair<Treap, Treap> split(int k){
+    std::pair<treap, treap> split(int k){
       node *l, *r; std::tie(l, r) = node::split(root, k);
-      return std::make_pair(Treap(l), Treap(r));
+      return std::make_pair(treap(l), treap(r));
     }
 
     void reverse(int l, int r){node::reverse(root, l, r);}
@@ -323,15 +323,15 @@ namespace treap {
  * @title Treap (Ordered set)
  * @docs ordered_treap.md
  */
-namespace treap {
+namespace haar_lib {
   template <typename Monoid>
-  class OrderedTreap : public Treap<Monoid> {
+  class ordered_treap : public treap<Monoid> {
     using value_type = typename Monoid::value_type;
-    using node = TreapNode<Monoid>;
-    using super = Treap<Monoid>;
+    using node = treap_node<Monoid>;
+    using super = treap<Monoid>;
 
   public:
-    OrderedTreap(): super(){}
+    ordered_treap(): super(){}
 
   protected:
     int lower_bound(node *t, const value_type &val){

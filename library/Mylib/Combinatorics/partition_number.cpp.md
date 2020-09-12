@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/partition_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -65,19 +65,21 @@ layout: default
  * @title Partition number (Enumerate $P(n, k)$)
  * @docs partition_number.md
  */
-template <typename T>
-auto partition_number(int n, int k){
-  std::vector<std::vector<T>> dp(n + 1, std::vector<T>(k + 1));
-  dp[0][0] = 1;
+namespace haar_lib {
+  template <typename T>
+  auto partition_number(int n, int k){
+    std::vector<std::vector<T>> dp(n + 1, std::vector<T>(k + 1));
+    dp[0][0] = 1;
 
-  for(int i = 0; i <= n; ++i){
-    for(int j = 1; j <= k; ++j){
-      if(i - j >= 0) dp[i][j] = dp[i][j - 1] + dp[i - j][j];
-      else dp[i][j] = dp[i][j - 1];
+    for(int i = 0; i <= n; ++i){
+      for(int j = 1; j <= k; ++j){
+        if(i - j >= 0) dp[i][j] = dp[i][j - 1] + dp[i - j][j];
+        else dp[i][j] = dp[i][j - 1];
+      }
     }
-  }
 
-  return dp;
+    return dp;
+  }
 }
 
 ```
@@ -93,19 +95,21 @@ auto partition_number(int n, int k){
  * @title Partition number (Enumerate $P(n, k)$)
  * @docs partition_number.md
  */
-template <typename T>
-auto partition_number(int n, int k){
-  std::vector<std::vector<T>> dp(n + 1, std::vector<T>(k + 1));
-  dp[0][0] = 1;
+namespace haar_lib {
+  template <typename T>
+  auto partition_number(int n, int k){
+    std::vector<std::vector<T>> dp(n + 1, std::vector<T>(k + 1));
+    dp[0][0] = 1;
 
-  for(int i = 0; i <= n; ++i){
-    for(int j = 1; j <= k; ++j){
-      if(i - j >= 0) dp[i][j] = dp[i][j - 1] + dp[i - j][j];
-      else dp[i][j] = dp[i][j - 1];
+    for(int i = 0; i <= n; ++i){
+      for(int j = 1; j <= k; ++j){
+        if(i - j >= 0) dp[i][j] = dp[i][j - 1] + dp[i - j][j];
+        else dp[i][j] = dp[i][j - 1];
+      }
     }
-  }
 
-  return dp;
+    return dp;
+  }
 }
 
 ```

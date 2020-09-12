@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/2401/main.test.cpp
+# :heavy_check_mark: test/aoj/2401/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#1d3efd405c3cf87c1a3243dd8aba3849">test/aoj/2401</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2401/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2401">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2401</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Parser/parser.cpp.html">Parsing</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Parser/parser.cpp.html">Parsing</a>
 
 
 ## Code
@@ -53,8 +53,10 @@ layout: default
 #include <string>
 #include "Mylib/Parser/parser.cpp"
 
-struct parser : Parser {
-  parser(const std::string &s): Parser(s){}
+namespace hl = haar_lib;
+
+struct parser : hl::parser {
+  parser(const std::string &s): hl::parser(s){}
 
   bool constant(){
     bool ret = check('T');
@@ -145,112 +147,116 @@ int main(){
  * @title Parsing
  * @docs parser.md
  */
-struct Parser {
-  using state = std::string::const_iterator;
+namespace haar_lib {
+  struct parser {
+    using state = std::string::const_iterator;
 
-  state cur, first, last;
+    state cur, first, last;
 
-  Parser(){}
-  Parser(const std::string &s): cur(s.cbegin()), first(s.cbegin()), last(s.cend()){}
+    parser(){}
+    parser(const std::string &s): cur(s.cbegin()), first(s.cbegin()), last(s.cend()){}
 
-  char peek() const {return *cur;}
+    char peek() const {return *cur;}
 
-  bool check(char c) const {
-    return *cur == c;
-  }
-
-  bool check(const std::string &s) const {
-    state temp = cur;
-    for(auto c : s){
-      if(c != *temp) return false;
-      ++temp;
+    bool check(char c) const {
+      return *cur == c;
     }
-    return true;
-  }
 
-  void ignore(char c){
-    assert(*cur == c);
-    ++cur;
-  }
+    bool check(const std::string &s) const {
+      state temp = cur;
+      for(auto c : s){
+        if(c != *temp) return false;
+        ++temp;
+      }
+      return true;
+    }
 
-  void ignore(){
-    ++cur;
-  }
-
-  void ignore(const std::string &s){
-    for(auto c : s){
+    void ignore(char c){
       assert(*cur == c);
       ++cur;
     }
-  }
 
-  template <class Checker>
-  void ignore_if(const Checker &f){
-    assert(f(*cur));
-    ++cur;
-  }
-
-  bool check_and_ignore(char c){
-    if(*cur != c) return false;
-    ++cur;
-    return true;
-  }
-
-  bool end() const {return cur == last;}
-  bool digit() const {return isdigit(*cur);}
-  bool alpha() const {return isalpha(*cur);}
-  bool lower() const {return islower(*cur);}
-  bool upper() const {return isupper(*cur);}
-
-  char get_char(){
-    return *(cur++);
-  }
-
-  int get_digit(){
-    return (int)(*(cur++) - '0');
-  }
-
-  template <typename Checker>
-  auto get_string(const Checker &f){
-    std::string ret;
-    while(f(peek())){
-      ret += peek();
-      ignore();
-    }
-    return ret;
-  }
-
-  auto get_string_alpha(){
-    std::string ret;
-    while(isalpha(*cur)){
-      ret += *cur;
+    void ignore(){
       ++cur;
     }
-    return ret;
-  }
 
-  auto get_string_alnum(){
-    std::string ret;
-    while(isalnum(*cur)){
-      ret += *cur;
+    void ignore(const std::string &s){
+      for(auto c : s){
+        assert(*cur == c);
+        ++cur;
+      }
+    }
+
+    template <class Checker>
+    void ignore_if(const Checker &f){
+      assert(f(*cur));
       ++cur;
     }
-    return ret;
-  }
 
-  template <typename T>
-  T get_number(){
-    T ret = get_digit();
-    while(digit()){
-      (ret *= 10) += (T)(get_digit());
+    bool check_and_ignore(char c){
+      if(*cur != c) return false;
+      ++cur;
+      return true;
     }
-    return ret;
-  }
-};
+
+    bool end() const {return cur == last;}
+    bool digit() const {return isdigit(*cur);}
+    bool alpha() const {return isalpha(*cur);}
+    bool lower() const {return islower(*cur);}
+    bool upper() const {return isupper(*cur);}
+
+    char get_char(){
+      return *(cur++);
+    }
+
+    int get_digit(){
+      return (int)(*(cur++) - '0');
+    }
+
+    template <typename Checker>
+    auto get_string(const Checker &f){
+      std::string ret;
+      while(f(peek())){
+        ret += peek();
+        ignore();
+      }
+      return ret;
+    }
+
+    auto get_string_alpha(){
+      std::string ret;
+      while(isalpha(*cur)){
+        ret += *cur;
+        ++cur;
+      }
+      return ret;
+    }
+
+    auto get_string_alnum(){
+      std::string ret;
+      while(isalnum(*cur)){
+        ret += *cur;
+        ++cur;
+      }
+      return ret;
+    }
+
+    template <typename T>
+    T get_number(){
+      T ret = get_digit();
+      while(digit()){
+        (ret *= 10) += (T)(get_digit());
+      }
+      return ret;
+    }
+  };
+}
 #line 6 "test/aoj/2401/main.test.cpp"
 
-struct parser : Parser {
-  parser(const std::string &s): Parser(s){}
+namespace hl = haar_lib;
+
+struct parser : hl::parser {
+  parser(const std::string &s): hl::parser(s){}
 
   bool constant(){
     bool ret = check('T');

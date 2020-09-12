@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#c23632d9cb1ef08c66b41109b76404c6">test/yosupo-judge/maximum_independent_set</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/maximum_independent_set/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/maximum_independent_set">https://judge.yosupo.jp/problem/maximum_independent_set</a>
@@ -40,9 +40,9 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Graph/maximum_independent_set.cpp.html">Maximum independent set</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 
 
 ## Code
@@ -58,21 +58,23 @@ layout: default
 #include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N, M; std::cin >> N >> M;
   std::vector<std::vector<int>> g(N, std::vector<int>(N));
-  for(auto [u, v] : input_tuples<int, int>(M)){
+  for(auto [u, v] : hl::input_tuples<int, int>(M)){
     g[u][v] = g[v][u] = 1;
   }
 
-  auto res = maximum_independent_set(g);
+  auto res = hl::maximum_independent_set(g);
 
   std::vector<int> ans;
   for(int i = 0; i < N; ++i){
     if(res & (1LL << i)) ans.push_back(i);
   }
 
-  std::cout << ans.size() << " " << join(ans.begin(), ans.end()) << "\n";
+  std::cout << ans.size() << " " << hl::join(ans.begin(), ans.end()) << "\n";
 
   return 0;
 }
@@ -96,103 +98,105 @@ int main(){
  * @title Maximum independent set
  * @docs maximum_independent_set.md
  */
-int64_t maximum_independent_set(const std::vector<std::vector<int>> &g){
-  const int n = g.size();
+namespace haar_lib {
+  int64_t maximum_independent_set(const std::vector<std::vector<int>> &g){
+    const int n = g.size();
 
-  for(int i = 0; i < n; ++i){
-    for(int j = 0; j < n; ++j){
-      assert((int)g[i].size() == n);
-      assert(g[i][j] == g[j][i]);
+    for(int i = 0; i < n; ++i){
+      for(int j = 0; j < n; ++j){
+        assert((int)g[i].size() == n);
+        assert(g[i][j] == g[j][i]);
+      }
     }
-  }
 
-  const int h1 = n / 2; // V1
-  const int h2 = n - h1; // V2
+    const int h1 = n / 2; // V1
+    const int h2 = n - h1; // V2
 
-  std::vector<bool> dp1(1 << h1, true); // dp1[S] := Sが独立集合か?
-  for(int i = 0; i < h1; ++i){
-    for(int j = 0; j < h1; ++j){
-      if(g[i][j]) dp1[(1 << i) | (1 << j)] = false;
-    }
-  }
-
-  for(int s = 0; s < (1 << h1); ++s){
-    if(not dp1[s]){
+    std::vector<bool> dp1(1 << h1, true); // dp1[S] := Sが独立集合か?
+    for(int i = 0; i < h1; ++i){
       for(int j = 0; j < h1; ++j){
-        dp1[s | (1 << j)] = false;
+        if(g[i][j]) dp1[(1 << i) | (1 << j)] = false;
       }
     }
-  }
 
-  std::vector<bool> dp2(1 << h2, true); // dp2[S] := Sが独立集合か?
-  for(int i = h1; i < n; ++i){
-    for(int j = h1; j < n; ++j){
-      if(g[i][j]) dp2[(1 << (i - h1)) | (1 << (j - h1))] = false;
-    }
-  }
-
-  for(int s = 0; s < (1 << h2); ++s){
-    if(!dp2[s]){
-      for(int j = 0; j < h2; ++j){
-        dp2[s | (1 << j)] = false;
-      }
-    }
-  }
-
-  std::vector<int> dp3(1 << h1, 0); // S1と接続しないV2の最大の部分集合
-  dp3[0] = (1 << h2) - 1;
-  for(int i = 0; i < h1; ++i){
-    int t = 0;
-    for(int j = h1; j < n; ++j){
-      if(g[i][j]){
-        t |= (1 << (j - h1));
-      }
-    }
-    dp3[1 << i] = t ^ ((1 << h2) - 1);
-  }
-
-  for(int s = 0; s < (1 << h1); ++s){
-    for(int j = 0; j < h1; ++j){
-      if((s & (1 << j)) == 0){
-        dp3[s | (1 << j)] = dp3[s] & dp3[1 << j];
-      }
-    }
-  }
-
-  std::vector<int> dp4(1 << h2, 0); // S2の最大独立集合
-  for(int i = 0; i < (1 << h2); ++i){
-    if(dp2[i]){
-      dp4[i] = i;
-    }
-  }
-
-  for(int s = 0; s < (1 << h2); ++s){
-    for(int j = 0; j < h2; ++j){
-      if((s & (1 << j)) == 0){
-        if(__builtin_popcount(dp4[s | (1 << j)]) > __builtin_popcount(dp4[s])){
-          dp4[s | (1 << j)] = dp4[s | (1 << j)];
-        }else{
-          dp4[s | (1 << j)] = dp4[s];
+    for(int s = 0; s < (1 << h1); ++s){
+      if(not dp1[s]){
+        for(int j = 0; j < h1; ++j){
+          dp1[s | (1 << j)] = false;
         }
       }
     }
-  }
 
-  int64_t ans = 0;
-  int size = 0;
-
-  for(int s = 0; s < (1 << h1); ++s){
-    if(dp1[s]){
-      int64_t t = (int64_t)s | (((int64_t)dp4[dp3[s]]) << h1);
-
-      if(__builtin_popcountll(t) > size){
-        size = __builtin_popcountll(t);
-        ans = t;
+    std::vector<bool> dp2(1 << h2, true); // dp2[S] := Sが独立集合か?
+    for(int i = h1; i < n; ++i){
+      for(int j = h1; j < n; ++j){
+        if(g[i][j]) dp2[(1 << (i - h1)) | (1 << (j - h1))] = false;
       }
     }
-  }
 
-  return ans;
+    for(int s = 0; s < (1 << h2); ++s){
+      if(!dp2[s]){
+        for(int j = 0; j < h2; ++j){
+          dp2[s | (1 << j)] = false;
+        }
+      }
+    }
+
+    std::vector<int> dp3(1 << h1, 0); // S1と接続しないV2の最大の部分集合
+    dp3[0] = (1 << h2) - 1;
+    for(int i = 0; i < h1; ++i){
+      int t = 0;
+      for(int j = h1; j < n; ++j){
+        if(g[i][j]){
+          t |= (1 << (j - h1));
+        }
+      }
+      dp3[1 << i] = t ^ ((1 << h2) - 1);
+    }
+
+    for(int s = 0; s < (1 << h1); ++s){
+      for(int j = 0; j < h1; ++j){
+        if((s & (1 << j)) == 0){
+          dp3[s | (1 << j)] = dp3[s] & dp3[1 << j];
+        }
+      }
+    }
+
+    std::vector<int> dp4(1 << h2, 0); // S2の最大独立集合
+    for(int i = 0; i < (1 << h2); ++i){
+      if(dp2[i]){
+        dp4[i] = i;
+      }
+    }
+
+    for(int s = 0; s < (1 << h2); ++s){
+      for(int j = 0; j < h2; ++j){
+        if((s & (1 << j)) == 0){
+          if(__builtin_popcount(dp4[s | (1 << j)]) > __builtin_popcount(dp4[s])){
+            dp4[s | (1 << j)] = dp4[s | (1 << j)];
+          }else{
+            dp4[s | (1 << j)] = dp4[s];
+          }
+        }
+      }
+    }
+
+    int64_t ans = 0;
+    int size = 0;
+
+    for(int s = 0; s < (1 << h1); ++s){
+      if(dp1[s]){
+        int64_t t = (int64_t)s | (((int64_t)dp4[dp3[s]]) << h1);
+
+        if(__builtin_popcountll(t) > size){
+          size = __builtin_popcountll(t);
+          ans = t;
+        }
+      }
+    }
+
+    return ans;
+  }
 }
 #line 3 "Mylib/IO/join.cpp"
 #include <sstream>
@@ -201,16 +205,18 @@ int64_t maximum_independent_set(const std::vector<std::vector<int>> &g){
 /**
  * @docs join.md
  */
-template <typename ITER>
-std::string join(ITER first, ITER last, std::string delim = " "){
-  std::stringstream s;
+namespace haar_lib {
+  template <typename Iter>
+  std::string join(Iter first, Iter last, std::string delim = " "){
+    std::stringstream s;
 
-  for(auto it = first; it != last; ++it){
-    if(it != first) s << delim;
-    s << *it;
+    for(auto it = first; it != last; ++it){
+      if(it != first) s << delim;
+      s << *it;
+    }
+
+    return s.str();
   }
-
-  return s.str();
 }
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
@@ -221,84 +227,90 @@ std::string join(ITER first, ITER last, std::string delim = " "){
 /**
  * @docs input_tuple.md
  */
-template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
-}
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
+  }
 
-template <typename T, typename U>
-std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
-  s >> value.first >> value.second;
-  return s;
-}
+  template <typename T, typename U>
+  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+    s >> value.first >> value.second;
+    return s;
+  }
 
-template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
-  return s;
+  template <typename ... Args>
+  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
+    return s;
+  }
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
-template <typename ... Args>
-class InputTuples {
-  struct iter {
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuples {
+    struct iter {
+      using value_type = std::tuple<Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N, c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
+      value_type operator*(){
+        if(not fetched){
+          std::cin >> value;
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuples(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples(int N){
+    return InputTuples<Args ...>(N);
+  }
 }
 #line 8 "test/yosupo-judge/maximum_independent_set/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int N, M; std::cin >> N >> M;
   std::vector<std::vector<int>> g(N, std::vector<int>(N));
-  for(auto [u, v] : input_tuples<int, int>(M)){
+  for(auto [u, v] : hl::input_tuples<int, int>(M)){
     g[u][v] = g[v][u] = 1;
   }
 
-  auto res = maximum_independent_set(g);
+  auto res = hl::maximum_independent_set(g);
 
   std::vector<int> ans;
   for(int i = 0; i < N; ++i){
     if(res & (1LL << i)) ans.push_back(i);
   }
 
-  std::cout << ans.size() << " " << join(ans.begin(), ans.end()) << "\n";
+  std::cout << ans.size() << " " << hl::join(ans.begin(), ans.end()) << "\n";
 
   return 0;
 }

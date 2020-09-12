@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/2559/main.binomial_heap.test.cpp
+# :heavy_check_mark: test/aoj/2559/main.binomial_heap.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#470f11b8b249244fcbedd0bf3d66e316">test/aoj/2559</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2559/main.binomial_heap.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2559">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2559</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/DataStructure/Heap/binomial_heap.cpp.html">Binomial heap</a>
-* :x: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
-* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
-* :x: <a href="../../../../library/Mylib/Misc/merge_technique.cpp.html">Mylib/Misc/merge_technique.cpp</a>
-* :x: <a href="../../../../library/Mylib/Utils/fix_point.cpp.html">Fixed point combinator</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/Heap/binomial_heap.cpp.html">Binomial heap</a>
+* :question: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
+* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/merge_technique.cpp.html">Mylib/Misc/merge_technique.cpp</a>
+* :question: <a href="../../../../library/Mylib/Utils/fix_point.cpp.html">Fixed point combinator</a>
 
 
 ## Code
@@ -64,10 +64,12 @@ layout: default
 #include "Mylib/DataStructure/Heap/binomial_heap.cpp"
 #include "Mylib/Misc/merge_technique.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n, m; std::cin >> n >> m;
 
-  Graph<int64_t> g(n);
+  hl::graph<int64_t> g(n);
   g.read<1, false>(m);
 
   std::map<std::pair<int, int>, int> index;
@@ -75,13 +77,13 @@ int main(){
     for(auto &e : a) index[{e.from, e.to}] = e.index;
   }
 
-  auto res = prim(g);
+  auto res = hl::prim(g);
 
   std::vector<int64_t> ans(m, -1);
 
   if((int)res.size() == n - 1){
     int64_t s = 0;
-    Tree<int64_t> tree(n);
+    hl::tree<int64_t> tree(n);
 
     for(auto &e : res){
       s += e.cost;
@@ -90,11 +92,11 @@ int main(){
 
     ans.assign(m, s);
 
-    std::vector<BinomialHeap<std::tuple<int64_t, int, int>, std::greater<>>> heaps(n);
+    std::vector<hl::binomial_heap<std::tuple<int64_t, int, int>, std::greater<>>> heaps(n);
 
     std::vector<std::set<int>> sub(n);
 
-    make_fix_point(
+    hl::make_fix_point(
       [&](auto &&f, int cur, int par, int64_t cost) -> void {
         for(auto &e : g[cur]){
           heaps[cur].push({e.cost, e.from, e.to});
@@ -107,7 +109,7 @@ int main(){
           f(e.to, cur, e.cost);
 
           heaps[cur].meld(heaps[e.to]);
-          merge_technique(sub[cur], sub[cur], sub[e.to]);
+          hl::merge_technique(sub[cur], sub[cur], sub[e.to]);
         }
 
         if(par != -1){
@@ -158,60 +160,62 @@ int main(){
  * @title Basic graph
  * @docs graph.md
  */
-template <typename T>
-struct Edge {
-  int from, to;
-  T cost;
-  int index = -1;
-  Edge(){}
-  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
-};
+namespace haar_lib {
+  template <typename T>
+  struct edge {
+    int from, to;
+    T cost;
+    int index = -1;
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+  };
 
-template <typename T>
-struct Graph {
-  using weight_type = T;
-  using edge_type = Edge<T>;
+  template <typename T>
+  struct graph {
+    using weight_type = T;
+    using edge_type = edge<T>;
 
-  std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
-  auto& operator[](size_t i){return data[i];}
-  const auto& operator[](size_t i) const {return data[i];}
+    auto& operator[](size_t i){return data[i];}
+    const auto& operator[](size_t i) const {return data[i];}
 
-  auto begin() const {return data.begin();}
-  auto end() const {return data.end();}
+    auto begin() const {return data.begin();}
+    auto end() const {return data.end();}
 
-  Graph(){}
-  Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
-  bool empty() const {return data.empty();}
-  int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+    int size() const {return data.size();}
 
-  void add_edge(int i, int j, T w, int index = -1){
-    data[i].emplace_back(i, j, w, index);
-  }
-
-  void add_undirected(int i, int j, T w, int index = -1){
-    add_edge(i, j, w, index);
-    add_edge(j, i, w, index);
-  }
-
-  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
-  void read(int M){
-    for(int i = 0; i < M; ++i){
-      int u, v; std::cin >> u >> v;
-      u -= I;
-      v -= I;
-      T w = 1;
-      if(WEIGHTED) std::cin >> w;
-      if(DIRECTED) add_edge(u, v, w, i);
-      else add_undirected(u, v, w, i);
+    void add_edge(int i, int j, T w, int index = -1){
+      data[i].emplace_back(i, j, w, index);
     }
-  }
-};
 
-template <typename T>
-using Tree = Graph<T>;
+    void add_undirected(int i, int j, T w, int index = -1){
+      add_edge(i, j, w, index);
+      add_edge(j, i, w, index);
+    }
+
+    template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+    void read(int M){
+      for(int i = 0; i < M; ++i){
+        int u, v; std::cin >> u >> v;
+        u -= I;
+        v -= I;
+        T w = 1;
+        if(WEIGHTED) std::cin >> w;
+        if(DIRECTED) add_edge(u, v, w, i);
+        else add_undirected(u, v, w, i);
+      }
+    }
+  };
+
+  template <typename T>
+  using tree = graph<T>;
+}
 #line 3 "Mylib/Graph/MinimumSpanningTree/prim.cpp"
 #include <queue>
 #line 5 "Mylib/Graph/MinimumSpanningTree/prim.cpp"
@@ -220,33 +224,35 @@ using Tree = Graph<T>;
  * @title Prim algorithm
  * @docs prim.md
  */
-template <typename T>
-std::vector<Edge<T>> prim(const Graph<T> &graph){
-  const int n = graph.size();
-  std::vector<bool> visit(n, false);
-  std::vector<Edge<T>> ret;
+namespace haar_lib {
+  template <typename T>
+  std::vector<edge<T>> prim(const graph<T> &graph){
+    const int n = graph.size();
+    std::vector<bool> visit(n, false);
+    std::vector<edge<T>> ret;
 
-  auto cmp = [](const auto &a, const auto &b){return a.cost > b.cost;};
-  std::priority_queue<Edge<T>, std::vector<Edge<T>>, decltype(cmp)> pq(cmp);
+    auto cmp = [](const auto &a, const auto &b){return a.cost > b.cost;};
+    std::priority_queue<edge<T>, std::vector<edge<T>>, decltype(cmp)> pq(cmp);
 
-  visit[0] = true;
-  for(auto &e : graph[0]) pq.push(e);
+    visit[0] = true;
+    for(auto &e : graph[0]) pq.push(e);
 
-  while(not pq.empty()){
-    auto t = pq.top(); pq.pop();
+    while(not pq.empty()){
+      auto t = pq.top(); pq.pop();
 
-    if(visit[t.from] == visit[t.to]) continue;
+      if(visit[t.from] == visit[t.to]) continue;
 
-    int i = visit[t.from] ? t.to : t.from;
-    for(auto &e : graph[i]){
-      pq.push(e);
+      int i = visit[t.from] ? t.to : t.from;
+      for(auto &e : graph[i]){
+        pq.push(e);
+      }
+
+      visit[i] = true;
+      ret.push_back(t);
     }
 
-    visit[i] = true;
-    ret.push_back(t);
+    return ret;
   }
-
-  return ret;
 }
 #line 2 "Mylib/Utils/fix_point.cpp"
 #include <utility>
@@ -255,24 +261,26 @@ std::vector<Edge<T>> prim(const Graph<T> &graph){
  * @title Fixed point combinator
  * @docs fix_point.md
  */
-template <typename F>
-struct FixPoint : F {
-  explicit constexpr FixPoint(F &&f) noexcept : F(std::forward<F>(f)){}
+namespace haar_lib {
+  template <typename F>
+  struct fix_point : F {
+    explicit constexpr fix_point(F &&f) noexcept : F(std::forward<F>(f)){}
 
-  template <typename ... Args>
-  constexpr auto operator()(Args &&... args) const {
-    return F::operator()(*this, std::forward<Args>(args) ...);
+    template <typename ... Args>
+    constexpr auto operator()(Args &&... args) const {
+      return F::operator()(*this, std::forward<Args>(args) ...);
+    }
+  };
+
+  template <typename F>
+  inline constexpr auto make_fix_point(F &&f){
+    return fix_point<F>(std::forward<F>(f));
   }
-};
 
-template <typename F>
-inline constexpr auto make_fix_point(F &&f){
-  return FixPoint<F>(std::forward<F>(f));
-}
-
-template <typename F>
-inline constexpr auto make_fix_point(F &f){
-  return FixPoint<F>(std::forward<F>(f));
+  template <typename F>
+  inline constexpr auto make_fix_point(F &f){
+    return fix_point<F>(std::forward<F>(f));
+  }
 }
 #line 3 "Mylib/DataStructure/Heap/binomial_heap.cpp"
 #include <array>
@@ -283,116 +291,122 @@ inline constexpr auto make_fix_point(F &f){
  * @title Binomial heap
  * @docs binomial_heap.md
  */
-template <typename T, typename Compare = std::less<T>>
-class BinomialHeap {
-  struct node {
-    T value;
-    std::vector<node*> children;
-    node(T value): value(value){}
-  };
+namespace haar_lib {
+  template <typename T, typename Compare = std::less<T>>
+  class binomial_heap {
+    struct node {
+      T value;
+      std::vector<node*> children;
+      node(T value): value(value){}
+    };
 
-  constexpr static int MAX = 31;
+    constexpr static int MAX = 31;
 
-  std::array<node*, MAX> roots;
-  Compare compare;
-  int top_index = -1;
-  int heap_size = 0;
+    std::array<node*, MAX> roots;
+    Compare compare;
+    int top_index = -1;
+    int heap_size = 0;
 
-  node* merge(node *a, node *b){
-    if(compare(a->value, b->value)) std::swap(a, b);
-    a->children.push_back(b);
-    return a;
-  }
-
-  template <typename Container>
-  void meld(Container c){
-    node *s = nullptr;
-
-    for(int i = 0; i < MAX; ++i){
-      std::vector<node*> temp;
-      if(s){temp.push_back(s); s = nullptr;}
-      if(roots[i]){temp.push_back(roots[i]); roots[i] = nullptr;}
-      if(i < (int)c.size() and c[i]){temp.push_back(c[i]); c[i] = nullptr;}
-
-      switch(temp.size()){
-      case 1: roots[i] = temp[0]; break;
-      case 2: s = merge(temp[0], temp[1]); break;
-      case 3: roots[i] = temp[0]; s = merge(temp[1], temp[2]); break;
-      }
+    node* merge(node *a, node *b){
+      if(compare(a->value, b->value)) std::swap(a, b);
+      a->children.push_back(b);
+      return a;
     }
 
-    top_index = -1;
-    for(int i = 0; i < MAX; ++i){
-      if(roots[i]){
-        if(top_index == -1 or compare(roots[top_index]->value, roots[i]->value)){
-          top_index = i;
+    template <typename Container>
+    void meld(Container c){
+      node *s = nullptr;
+
+      for(int i = 0; i < MAX; ++i){
+        std::vector<node*> temp;
+        if(s){temp.push_back(s); s = nullptr;}
+        if(roots[i]){temp.push_back(roots[i]); roots[i] = nullptr;}
+        if(i < (int)c.size() and c[i]){temp.push_back(c[i]); c[i] = nullptr;}
+
+        switch(temp.size()){
+        case 1: roots[i] = temp[0]; break;
+        case 2: s = merge(temp[0], temp[1]); break;
+        case 3: roots[i] = temp[0]; s = merge(temp[1], temp[2]); break;
+        }
+      }
+
+      top_index = -1;
+      for(int i = 0; i < MAX; ++i){
+        if(roots[i]){
+          if(top_index == -1 or compare(roots[top_index]->value, roots[i]->value)){
+            top_index = i;
+          }
         }
       }
     }
-  }
 
-public:
-  BinomialHeap(){
-    roots.fill(nullptr);
-    compare = Compare();
-  }
+  public:
+    binomial_heap(){
+      roots.fill(nullptr);
+      compare = Compare();
+    }
 
-  int size() const {
-    return heap_size;
-  }
+    int size() const {
+      return heap_size;
+    }
 
-  bool empty() const {
-    return heap_size == 0;
-  }
+    bool empty() const {
+      return heap_size == 0;
+    }
 
-  void push(const T &value){
-    heap_size += 1;
-    node *t = new node(value);
+    void push(const T &value){
+      heap_size += 1;
+      node *t = new node(value);
 
-    meld(std::vector<node*>({t}));
-  }
+      meld(std::vector<node*>({t}));
+    }
 
-  const T& top() const {
-    return roots[top_index]->value;
-  }
+    const T& top() const {
+      return roots[top_index]->value;
+    }
 
-  void pop(){
-    heap_size -= 1;
+    void pop(){
+      heap_size -= 1;
 
-    node *t = roots[top_index];
-    roots[top_index] = nullptr;
-    meld(t->children);
+      node *t = roots[top_index];
+      roots[top_index] = nullptr;
+      meld(t->children);
 
-    delete t;
-  }
+      delete t;
+    }
 
-  void meld(BinomialHeap &rhs){
-    heap_size += rhs.heap_size;
-    meld(rhs.roots);
-    rhs.roots.fill(nullptr);
-  }
-};
+    void meld(binomial_heap &rhs){
+      heap_size += rhs.heap_size;
+      meld(rhs.roots);
+      rhs.roots.fill(nullptr);
+    }
+  };
+}
 #line 4 "Mylib/Misc/merge_technique.cpp"
 
 /**
  * @docs merge_technique.md
  */
-template <typename T>
-void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){
-  if(a.size() > b.size()){
-    a.insert(b.begin(), b.end());
-    std::swap(res, a);
-  }else{
-    b.insert(a.begin(), a.end());
-    std::swap(res, b);
+namespace haar_lib {
+  template <typename T>
+  void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){
+    if(a.size() > b.size()){
+      a.insert(b.begin(), b.end());
+      std::swap(res, a);
+    }else{
+      b.insert(a.begin(), a.end());
+      std::swap(res, b);
+    }
   }
 }
 #line 13 "test/aoj/2559/main.binomial_heap.test.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n, m; std::cin >> n >> m;
 
-  Graph<int64_t> g(n);
+  hl::graph<int64_t> g(n);
   g.read<1, false>(m);
 
   std::map<std::pair<int, int>, int> index;
@@ -400,13 +414,13 @@ int main(){
     for(auto &e : a) index[{e.from, e.to}] = e.index;
   }
 
-  auto res = prim(g);
+  auto res = hl::prim(g);
 
   std::vector<int64_t> ans(m, -1);
 
   if((int)res.size() == n - 1){
     int64_t s = 0;
-    Tree<int64_t> tree(n);
+    hl::tree<int64_t> tree(n);
 
     for(auto &e : res){
       s += e.cost;
@@ -415,11 +429,11 @@ int main(){
 
     ans.assign(m, s);
 
-    std::vector<BinomialHeap<std::tuple<int64_t, int, int>, std::greater<>>> heaps(n);
+    std::vector<hl::binomial_heap<std::tuple<int64_t, int, int>, std::greater<>>> heaps(n);
 
     std::vector<std::set<int>> sub(n);
 
-    make_fix_point(
+    hl::make_fix_point(
       [&](auto &&f, int cur, int par, int64_t cost) -> void {
         for(auto &e : g[cur]){
           heaps[cur].push({e.cost, e.from, e.to});
@@ -432,7 +446,7 @@ int main(){
           f(e.to, cur, e.cost);
 
           heaps[cur].meld(heaps[e.to]);
-          merge_technique(sub[cur], sub[cur], sub[e.to]);
+          hl::merge_technique(sub[cur], sub[cur], sub[e.to]);
         }
 
         if(par != -1){

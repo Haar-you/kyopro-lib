@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b28da20868b326226cf0a4223d060067">Mylib/DataStructure/CartesianTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/CartesianTree/cartesian_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -73,44 +73,46 @@ layout: default
  * @title Cartesian tree
  * @docs cartesian_tree.md
  */
-template <typename T, typename Compare>
-auto cartesian_tree(const std::vector<T> &a, Compare compare){
-  const int n = a.size();
-  std::vector<std::optional<int>> p(n), l(n), r(n);
-  int root = 0;
+namespace haar_lib {
+  template <typename T, typename Compare>
+  auto cartesian_tree(const std::vector<T> &a, Compare compare){
+    const int n = a.size();
+    std::vector<std::optional<int>> p(n), l(n), r(n);
+    int root = 0;
 
-  for(int i = 0; i < n; ++i){
-    if(i == 0){
-      continue;
-    }
-
-    int j = i - 1;
-
-    while(1){
-      if(compare(a[i], a[j])){
-        if(not p[j]){
-          p[j] = i;
-          l[i] = j;
-          root = i;
-          break;
-        }
-
-        j = *p[j];
+    for(int i = 0; i < n; ++i){
+      if(i == 0){
         continue;
       }
 
-      auto t = r[j];
-      r[j] = i;
-      p[i] = j;
+      int j = i - 1;
 
-      l[i] = t;
-      if(t) p[*t] = i;
+      while(1){
+        if(compare(a[i], a[j])){
+          if(not p[j]){
+            p[j] = i;
+            l[i] = j;
+            root = i;
+            break;
+          }
 
-      break;
+          j = *p[j];
+          continue;
+        }
+
+        auto t = r[j];
+        r[j] = i;
+        p[i] = j;
+
+        l[i] = t;
+        if(t) p[*t] = i;
+
+        break;
+      }
     }
-  }
 
-  return std::make_tuple(root, p, l, r);
+    return std::make_tuple(root, p, l, r);
+  }
 }
 
 ```
@@ -128,44 +130,46 @@ auto cartesian_tree(const std::vector<T> &a, Compare compare){
  * @title Cartesian tree
  * @docs cartesian_tree.md
  */
-template <typename T, typename Compare>
-auto cartesian_tree(const std::vector<T> &a, Compare compare){
-  const int n = a.size();
-  std::vector<std::optional<int>> p(n), l(n), r(n);
-  int root = 0;
+namespace haar_lib {
+  template <typename T, typename Compare>
+  auto cartesian_tree(const std::vector<T> &a, Compare compare){
+    const int n = a.size();
+    std::vector<std::optional<int>> p(n), l(n), r(n);
+    int root = 0;
 
-  for(int i = 0; i < n; ++i){
-    if(i == 0){
-      continue;
-    }
-
-    int j = i - 1;
-
-    while(1){
-      if(compare(a[i], a[j])){
-        if(not p[j]){
-          p[j] = i;
-          l[i] = j;
-          root = i;
-          break;
-        }
-
-        j = *p[j];
+    for(int i = 0; i < n; ++i){
+      if(i == 0){
         continue;
       }
 
-      auto t = r[j];
-      r[j] = i;
-      p[i] = j;
+      int j = i - 1;
 
-      l[i] = t;
-      if(t) p[*t] = i;
+      while(1){
+        if(compare(a[i], a[j])){
+          if(not p[j]){
+            p[j] = i;
+            l[i] = j;
+            root = i;
+            break;
+          }
 
-      break;
+          j = *p[j];
+          continue;
+        }
+
+        auto t = r[j];
+        r[j] = i;
+        p[i] = j;
+
+        l[i] = t;
+        if(t) p[*t] = i;
+
+        break;
+      }
     }
-  }
 
-  return std::make_tuple(root, p, l, r);
+    return std::make_tuple(root, p, l, r);
+  }
 }
 
 ```

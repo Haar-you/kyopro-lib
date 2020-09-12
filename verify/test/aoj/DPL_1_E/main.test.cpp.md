@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#ff011c241521fe723b9ada74a9467695">test/aoj/DPL_1_E</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_1_E/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_E">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_E</a>
@@ -53,10 +53,12 @@ layout: default
 #include <string>
 #include "Mylib/String/levenshtein_distance.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::string s1, s2; std::cin >> s1 >> s2;
 
-  auto ans = levenshtein_distance(s1, s2);
+  auto ans = hl::levenshtein_distance(s1, s2);
 
   std::cout << ans << std::endl;
 
@@ -82,33 +84,37 @@ int main(){
  * @title Levenshtein distance / Edit distance
  * @docs levenshtein_distance.md
  */
-template <typename Container, typename T = typename Container::value_type>
-int levenshtein_distance(const Container &a, const Container &b){
-  const int n = a.size(), m = b.size();
-  std::vector<std::vector<int>> dp(n + 1, std::vector<int>(m + 1, 0));
+namespace haar_lib {
+  template <typename Container, typename T = typename Container::value_type>
+  int levenshtein_distance(const Container &a, const Container &b){
+    const int n = a.size(), m = b.size();
+    std::vector<std::vector<int>> dp(n + 1, std::vector<int>(m + 1, 0));
 
-  for(int i = 0; i <= n; ++i) dp[i][0] = i;
-  for(int i = 0; i <= m; ++i) dp[0][i] = i;
+    for(int i = 0; i <= n; ++i) dp[i][0] = i;
+    for(int i = 0; i <= m; ++i) dp[0][i] = i;
 
-  for(int i = 0; i < n; ++i){
-    for(int j = 0; j < m; ++j){
-      dp[i + 1][j + 1] = std::min(dp[i][j + 1] + 1, dp[i + 1][j] + 1);
+    for(int i = 0; i < n; ++i){
+      for(int j = 0; j < m; ++j){
+        dp[i + 1][j + 1] = std::min(dp[i][j + 1] + 1, dp[i + 1][j] + 1);
 
-      if(a[i] == b[j]){
-        dp[i + 1][j + 1] = std::min(dp[i + 1][j + 1], dp[i][j]);
-      }else{
-        dp[i + 1][j + 1] = std::min(dp[i + 1][j + 1], dp[i][j] + 1);
+        if(a[i] == b[j]){
+          dp[i + 1][j + 1] = std::min(dp[i + 1][j + 1], dp[i][j]);
+        }else{
+          dp[i + 1][j + 1] = std::min(dp[i + 1][j + 1], dp[i][j] + 1);
+        }
       }
     }
+    return dp[n][m];
   }
-  return dp[n][m];
 }
 #line 6 "test/aoj/DPL_1_E/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   std::string s1, s2; std::cin >> s1 >> s2;
 
-  auto ans = levenshtein_distance(s1, s2);
+  auto ans = hl::levenshtein_distance(s1, s2);
 
   std::cout << ans << std::endl;
 

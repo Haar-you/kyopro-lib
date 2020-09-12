@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/sign_function.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -47,9 +47,11 @@ layout: default
  * @title Sign function
  * @docs sign_function.md
  */
-template <typename T>
-int sign(T n){
-  return (n > 0) - (n < 0);
+namespace haar_lib {
+  template <typename T>
+  int sign(T n){
+    return (n > 0) - (n < 0);
+  }
 }
 
 ```
@@ -64,9 +66,11 @@ int sign(T n){
  * @title Sign function
  * @docs sign_function.md
  */
-template <typename T>
-int sign(T n){
-  return (n > 0) - (n < 0);
+namespace haar_lib {
+  template <typename T>
+  int sign(T n){
+    return (n > 0) - (n < 0);
+  }
 }
 
 ```

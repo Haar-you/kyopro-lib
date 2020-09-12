@@ -25,22 +25,22 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Mylib/Misc/merge_technique.cpp
+# :heavy_check_mark: Mylib/Misc/merge_technique.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/merge_technique.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-30 17:20:05+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/aoj/2559/main.binomial_heap.test.cpp.html">test/aoj/2559/main.binomial_heap.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.binomial_heap.test.cpp.html">test/aoj/2559/main.binomial_heap.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
 
 
 ## Code
@@ -55,14 +55,16 @@ layout: default
 /**
  * @docs merge_technique.md
  */
-template <typename T>
-void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){
-  if(a.size() > b.size()){
-    a.insert(b.begin(), b.end());
-    std::swap(res, a);
-  }else{
-    b.insert(a.begin(), a.end());
-    std::swap(res, b);
+namespace haar_lib {
+  template <typename T>
+  void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){
+    if(a.size() > b.size()){
+      a.insert(b.begin(), b.end());
+      std::swap(res, a);
+    }else{
+      b.insert(a.begin(), a.end());
+      std::swap(res, b);
+    }
   }
 }
 
@@ -79,14 +81,16 @@ void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){
 /**
  * @docs merge_technique.md
  */
-template <typename T>
-void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){
-  if(a.size() > b.size()){
-    a.insert(b.begin(), b.end());
-    std::swap(res, a);
-  }else{
-    b.insert(a.begin(), a.end());
-    std::swap(res, b);
+namespace haar_lib {
+  template <typename T>
+  void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){
+    if(a.size() > b.size()){
+      a.insert(b.begin(), b.end());
+      std::swap(res, a);
+    }else{
+      b.insert(a.begin(), a.end());
+      std::swap(res, b);
+    }
   }
 }
 

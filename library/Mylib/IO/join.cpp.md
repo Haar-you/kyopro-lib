@@ -25,21 +25,21 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Mylib/IO/join.cpp
+# :question: Mylib/IO/join.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#7f8c074a28e3c2f263a02491ce2132dd">Mylib/IO</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/IO/join.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-05-31 20:10:49+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/aoj/1300/main.test.cpp.html">test/aoj/1300/main.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/1327/main.test.cpp.html">test/aoj/1327/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/1300/main.test.cpp.html">test/aoj/1300/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/1327/main.test.cpp.html">test/aoj/1327/main.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/DSL_3_D/main.test.cpp.html">test/aoj/DSL_3_D/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/assignment/main.test.cpp.html">test/yosupo-judge/assignment/main.test.cpp</a>
 * :x: <a href="../../../verify/test/yosupo-judge/bernoulli_number/main.test.cpp.html">test/yosupo-judge/bernoulli_number/main.test.cpp</a>
@@ -84,16 +84,18 @@ layout: default
 /**
  * @docs join.md
  */
-template <typename ITER>
-std::string join(ITER first, ITER last, std::string delim = " "){
-  std::stringstream s;
+namespace haar_lib {
+  template <typename Iter>
+  std::string join(Iter first, Iter last, std::string delim = " "){
+    std::stringstream s;
 
-  for(auto it = first; it != last; ++it){
-    if(it != first) s << delim;
-    s << *it;
+    for(auto it = first; it != last; ++it){
+      if(it != first) s << delim;
+      s << *it;
+    }
+
+    return s.str();
   }
-
-  return s.str();
 }
 
 ```
@@ -110,16 +112,18 @@ std::string join(ITER first, ITER last, std::string delim = " "){
 /**
  * @docs join.md
  */
-template <typename ITER>
-std::string join(ITER first, ITER last, std::string delim = " "){
-  std::stringstream s;
+namespace haar_lib {
+  template <typename Iter>
+  std::string join(Iter first, Iter last, std::string delim = " "){
+    std::stringstream s;
 
-  for(auto it = first; it != last; ++it){
-    if(it != first) s << delim;
-    s << *it;
+    for(auto it = first; it != last; ++it){
+      if(it != first) s << delim;
+      s << *it;
+    }
+
+    return s.str();
   }
-
-  return s.str();
 }
 
 ```

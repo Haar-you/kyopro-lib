@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a8a6d8e3138deb7c2a3646b5ea12ddc2">test/aoj/ALDS1_1_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_1_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 * :x: <a href="../../../../library/Mylib/Number/Prime/is_prime.cpp.html">Primality test (Trial division)</a>
 
 
@@ -55,12 +55,14 @@ layout: default
 #include "Mylib/Number/Prime/is_prime.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N; std::cin >> N;
 
   int ans = 0;
 
-  for(auto [x] : input_tuples<int>(N)) if(is_prime(x)) ++ans;
+  for(auto [x] : hl::input_tuples<int>(N)) if(hl::is_prime(x)) ++ans;
 
   std::cout << ans << std::endl;
 
@@ -83,12 +85,14 @@ int main(){
  * @title Primality test (Trial division)
  * @docs is_prime.md
  */
-bool is_prime(int n){
-  if(n <= 1) return false;
-  for(int i = 2; i * i <= n; ++i){
-    if(n % i == 0) return false;
+namespace haar_lib {
+  bool is_prime(int n){
+    if(n <= 1) return false;
+    for(int i = 2; i * i <= n; ++i){
+      if(n % i == 0) return false;
+    }
+    return true;
   }
-  return true;
 }
 #line 3 "Mylib/IO/input_tuples.cpp"
 #include <vector>
@@ -100,75 +104,81 @@ bool is_prime(int n){
 /**
  * @docs input_tuple.md
  */
-template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
-}
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
+  }
 
-template <typename T, typename U>
-std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
-  s >> value.first >> value.second;
-  return s;
-}
+  template <typename T, typename U>
+  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+    s >> value.first >> value.second;
+    return s;
+  }
 
-template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
-  return s;
+  template <typename ... Args>
+  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
+    return s;
+  }
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
-template <typename ... Args>
-class InputTuples {
-  struct iter {
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuples {
+    struct iter {
+      using value_type = std::tuple<Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N, c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
+      value_type operator*(){
+        if(not fetched){
+          std::cin >> value;
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuples(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples(int N){
+    return InputTuples<Args ...>(N);
+  }
 }
 #line 6 "test/aoj/ALDS1_1_C/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int N; std::cin >> N;
 
   int ans = 0;
 
-  for(auto [x] : input_tuples<int>(N)) if(is_prime(x)) ++ans;
+  for(auto [x] : hl::input_tuples<int>(N)) if(hl::is_prime(x)) ++ans;
 
   std::cout << ans << std::endl;
 

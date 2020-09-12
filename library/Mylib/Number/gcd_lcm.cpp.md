@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/gcd_lcm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -49,15 +49,17 @@ layout: default
  * @title Greatest common divisor / Least common multiple
  * @docs gcd_lcm.md
  */
-int64_t gcd(int64_t a, int64_t b){
-  if(a < b) std::swap(a, b);
-  if(b == 0) return a;
+namespace haar_lib {
+  int64_t gcd(int64_t a, int64_t b){
+    if(a < b) std::swap(a, b);
+    if(b == 0) return a;
 
-  return gcd(b, a % b);
-}
+    return gcd(b, a % b);
+  }
 
-int64_t lcm(int64_t a, int64_t b){
-  return a / gcd(a, b) * b;
+  int64_t lcm(int64_t a, int64_t b){
+    return a / gcd(a, b) * b;
+  }
 }
 
 ```
@@ -74,15 +76,17 @@ int64_t lcm(int64_t a, int64_t b){
  * @title Greatest common divisor / Least common multiple
  * @docs gcd_lcm.md
  */
-int64_t gcd(int64_t a, int64_t b){
-  if(a < b) std::swap(a, b);
-  if(b == 0) return a;
+namespace haar_lib {
+  int64_t gcd(int64_t a, int64_t b){
+    if(a < b) std::swap(a, b);
+    if(b == 0) return a;
 
-  return gcd(b, a % b);
-}
+    return gcd(b, a % b);
+  }
 
-int64_t lcm(int64_t a, int64_t b){
-  return a / gcd(a, b) * b;
+  int64_t lcm(int64_t a, int64_t b){
+    return a / gcd(a, b) * b;
+  }
 }
 
 ```

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/factorial_prime_factorization.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -61,20 +61,22 @@ layout: default
  * @title Count number of prime factor p of $a!$
  * @docs factorial_prime_factorization.md
  */
-int64_t factorial_prime_factorization(int64_t a, int64_t p){
-  int64_t ret = 0, q = p;
+namespace haar_lib {
+  int64_t factorial_prime_factorization(int64_t a, int64_t p){
+    int64_t ret = 0, q = p;
 
-  while(q <= a){
-    int64_t t = a / q;
+    while(q <= a){
+      int64_t t = a / q;
 
-    ret += t;
+      ret += t;
 
-    int64_t k;
-    if(__builtin_smulll_overflow(q, p, (long long int*)&k)) break;
+      int64_t k;
+      if(__builtin_smulll_overflow(q, p, (long long int*)&k)) break;
 
-    q = k;
+      q = k;
+    }
+    return ret;
   }
-  return ret;
 }
 
 ```
@@ -90,20 +92,22 @@ int64_t factorial_prime_factorization(int64_t a, int64_t p){
  * @title Count number of prime factor p of $a!$
  * @docs factorial_prime_factorization.md
  */
-int64_t factorial_prime_factorization(int64_t a, int64_t p){
-  int64_t ret = 0, q = p;
+namespace haar_lib {
+  int64_t factorial_prime_factorization(int64_t a, int64_t p){
+    int64_t ret = 0, q = p;
 
-  while(q <= a){
-    int64_t t = a / q;
+    while(q <= a){
+      int64_t t = a / q;
 
-    ret += t;
+      ret += t;
 
-    int64_t k;
-    if(__builtin_smulll_overflow(q, p, (long long int*)&k)) break;
+      int64_t k;
+      if(__builtin_smulll_overflow(q, p, (long long int*)&k)) break;
 
-    q = k;
+      q = k;
+    }
+    return ret;
   }
-  return ret;
 }
 
 ```

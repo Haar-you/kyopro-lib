@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#39ffc19757556fa2a57eeab9728a949f">test/aoj/CGL_5_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/CGL_5_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A</a>
@@ -40,9 +40,9 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Geometry/Float/closest_pair.cpp.html">Closest pair</a>
-* :x: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
-* :x: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
-* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
+* :question: <a href="../../../../library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -60,15 +60,17 @@ layout: default
 #include "Mylib/Geometry/Float/closest_pair.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
-using D = DoubleEps<double>;
+namespace hl = haar_lib;
+
+using D = hl::double_eps<double>;
 template <> double D::eps = ERROR;
 
 int main(){
   int n; std::cin >> n;
 
-  auto p = input_vector<Point<D>>(n);
+  auto p = hl::input_vector<hl::point<D>>(n);
 
-  auto ans = closest_pair(p);
+  auto ans = hl::closest_pair(p);
 
   std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
 
@@ -95,67 +97,70 @@ int main(){
  * @title Floating point number with eps
  * @docs double_eps.md
  */
-template <typename T>
-struct DoubleEps {
-  using value_type = T;
+namespace haar_lib {
+  template <typename T>
+  struct double_eps {
+    using value_type = T;
 
-  static T eps;
+    static T eps;
 
-  T value;
+    T value;
 
-  DoubleEps(): value(0){}
-  DoubleEps(T value): value(value){}
+    double_eps(): value(0){}
+    double_eps(T value): value(value){}
 
-  auto& operator=(const DoubleEps &rhs){this->value = rhs.value; return *this;}
-  auto& operator+=(const DoubleEps &rhs){this->value += rhs.value; return *this;}
-  auto& operator-=(const DoubleEps &rhs){this->value -= rhs.value; return *this;}
-  auto& operator*=(const DoubleEps &rhs){this->value *= rhs.value; return *this;}
-  auto& operator/=(const DoubleEps &rhs){this->value /= rhs.value; return *this;}
+    auto& operator=(const double_eps &rhs){this->value = rhs.value; return *this;}
+    auto& operator+=(const double_eps &rhs){this->value += rhs.value; return *this;}
+    auto& operator-=(const double_eps &rhs){this->value -= rhs.value; return *this;}
+    auto& operator*=(const double_eps &rhs){this->value *= rhs.value; return *this;}
+    auto& operator/=(const double_eps &rhs){this->value /= rhs.value; return *this;}
 
-  auto operator+(const DoubleEps &rhs) const {return DoubleEps(this->value + rhs.value);}
-  auto operator-(const DoubleEps &rhs) const {return DoubleEps(this->value - rhs.value);}
-  auto operator*(const DoubleEps &rhs) const {return DoubleEps(this->value * rhs.value);}
-  auto operator/(const DoubleEps &rhs) const {return DoubleEps(this->value / rhs.value);}
+    auto operator+(const double_eps &rhs) const {return double_eps(this->value + rhs.value);}
+    auto operator-(const double_eps &rhs) const {return double_eps(this->value - rhs.value);}
+    auto operator*(const double_eps &rhs) const {return double_eps(this->value * rhs.value);}
+    auto operator/(const double_eps &rhs) const {return double_eps(this->value / rhs.value);}
 
-  bool operator==(const DoubleEps &rhs) const {return std::abs(this->value - rhs.value) < eps;}
-  bool operator!=(const DoubleEps &rhs) const {return !(*this == rhs);}
-  bool operator<(const DoubleEps &rhs) const {return this->value - rhs.value < -eps;}
-  bool operator<=(const DoubleEps &rhs) const {return this->value - rhs.value < eps;}
-  bool operator>(const DoubleEps &rhs) const {return !(*this <= rhs);}
-  bool operator>=(const DoubleEps &rhs) const {return !(*this < rhs);}
+    bool operator==(const double_eps &rhs) const {return std::abs(this->value - rhs.value) < eps;}
+    bool operator!=(const double_eps &rhs) const {return !(*this == rhs);}
+    bool operator<(const double_eps &rhs) const {return this->value - rhs.value < -eps;}
+    bool operator<=(const double_eps &rhs) const {return this->value - rhs.value < eps;}
+    bool operator>(const double_eps &rhs) const {return !(*this <= rhs);}
+    bool operator>=(const double_eps &rhs) const {return !(*this < rhs);}
 
-  auto operator-() const {return DoubleEps(-(this->value));}
+    auto operator-() const {return double_eps(-(this->value));}
 
-  explicit operator double() const noexcept {return value;}
-  explicit operator long double() const noexcept {return value;}
+    explicit operator double() const noexcept {return value;}
+    explicit operator long double() const noexcept {return value;}
 
-  friend std::ostream& operator<<(std::ostream &s, const DoubleEps &rhs){s << rhs.value; return s;}
-  friend std::istream& operator>>(std::istream &s, DoubleEps &rhs){s >> rhs.value; return s;}
-};
+    friend std::ostream& operator<<(std::ostream &s, const double_eps &rhs){s << rhs.value; return s;}
+    friend std::istream& operator>>(std::istream &s, double_eps &rhs){s >> rhs.value; return s;}
+  };
 
-template <typename T> T DoubleEps<T>::eps;
+  template <typename T> T double_eps<T>::eps;
+
+
+  template <typename T> double_eps<T> sin(double_eps<T> x){return std::sin((T)x);}
+  template <typename T> double_eps<T> cos(double_eps<T> x){return std::cos((T)x);}
+  template <typename T> double_eps<T> tan(double_eps<T> x){return std::tan((T)x);}
+
+  template <typename T> double_eps<T> acos(double_eps<T> x){return std::acos((T)x);}
+  template <typename T> double_eps<T> atan2(double_eps<T> y, double_eps<T> x){return std::atan2((T)y, (T)x);}
+
+  template <typename T> double_eps<T> abs(double_eps<T> x){return std::abs((T)x);}
+
+  template <typename T> double_eps<T> sqrt(double_eps<T> x){return std::sqrt((T)x);}
+}
 
 namespace std {
   template <typename T>
-  class numeric_limits<DoubleEps<T>> {
+  class numeric_limits<haar_lib::double_eps<T>> {
   public:
-    static DoubleEps<T> infinity() {return numeric_limits<T>::infinity();}
-    static DoubleEps<T> min() {return numeric_limits<T>::min();}
-    static DoubleEps<T> max() {return numeric_limits<T>::max();}
-    static DoubleEps<T> lowest() {return numeric_limits<T>::lowest();}
+    static haar_lib::double_eps<T> infinity() {return numeric_limits<T>::infinity();}
+    static haar_lib::double_eps<T> min() {return numeric_limits<T>::min();}
+    static haar_lib::double_eps<T> max() {return numeric_limits<T>::max();}
+    static haar_lib::double_eps<T> lowest() {return numeric_limits<T>::lowest();}
   };
 }
-
-template <typename T> DoubleEps<T> sin(DoubleEps<T> x){return std::sin((T)x);}
-template <typename T> DoubleEps<T> cos(DoubleEps<T> x){return std::cos((T)x);}
-template <typename T> DoubleEps<T> tan(DoubleEps<T> x){return std::tan((T)x);}
-
-template <typename T> DoubleEps<T> acos(DoubleEps<T> x){return std::acos((T)x);}
-template <typename T> DoubleEps<T> atan2(DoubleEps<T> y, DoubleEps<T> x){return std::atan2((T)y, (T)x);}
-
-template <typename T> DoubleEps<T> abs(DoubleEps<T> x){return std::abs((T)x);}
-
-template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
 #line 4 "Mylib/Geometry/Float/geometry_template.cpp"
 #include <vector>
 
@@ -163,84 +168,105 @@ template <typename T> DoubleEps<T> sqrt(DoubleEps<T> x){return std::sqrt((T)x);}
  * @title Geometry template
  * @docs geometry_template.md
  */
+namespace haar_lib {
+  template <typename T>
+  struct vec {
+    T x, y;
+    vec(){}
+    vec(T x, T y): x(x), y(y){}
 
-template <typename T>
-struct Vec {
-  T x, y;
-  Vec(){}
-  Vec(T x, T y): x(x), y(y){}
+    friend auto operator+(const vec &a, const vec &b){return vec(a.x + b.x, a.y + b.y);}
+    friend auto operator-(const vec &a, const vec &b){return vec(a.x - b.x, a.y - b.y);}
+    friend auto operator-(const vec &a){return vec(-a.x, -a.y);}
 
-  friend auto operator+(const Vec &a, const Vec &b){return Vec(a.x + b.x, a.y + b.y);}
-  friend auto operator-(const Vec &a, const Vec &b){return Vec(a.x - b.x, a.y - b.y);}
-  friend auto operator-(const Vec &a){return Vec(-a.x, -a.y);}
+    friend bool operator==(const vec &a, const vec &b){return a.x == b.x and a.y == b.y;}
+    friend bool operator!=(const vec &a, const vec &b){return !(a == b);}
+    friend bool operator<(const vec &a, const vec &b){return a.x < b.x or (a.x == b.x and a.y < b.y);}
 
-  friend bool operator==(const Vec &a, const Vec &b){return a.x == b.x and a.y == b.y;}
-  friend bool operator!=(const Vec &a, const Vec &b){return !(a == b);}
-  friend bool operator<(const Vec &a, const Vec &b){return a.x < b.x or (a.x == b.x and a.y < b.y);}
+    friend std::istream& operator>>(std::istream &s, vec &a){
+      s >> a.x >> a.y; return s;
+    }
+  };
 
-  friend std::istream& operator>>(std::istream &s, Vec &a){
-    s >> a.x  >> a.y; return s;
+  template <typename T, typename U> auto operator*(const vec<T> &a, const U &k){return vec<T>(a.x * k, a.y * k);}
+  template <typename T, typename U> auto operator*(const U &k, const vec<T> &a){return vec<T>(a.x * k, a.y * k);}
+  template <typename T, typename U> auto operator/(const vec<T> &a, const U &k){return vec<T>(a.x / k, a.y / k);}
+
+  template <typename T> using point = vec<T>;
+
+  template <typename T> T abs(const vec<T> &a){return sqrt(a.x * a.x + a.y * a.y);}
+  template <typename T> T abs_sq(const vec<T> &a){return a.x * a.x + a.y * a.y;}
+
+  template <typename T> T dot(const vec<T> &a, const vec<T> &b){return a.x * b.x + a.y * b.y;}
+  template <typename T> T cross(const vec<T> &a, const vec<T> &b){return a.x * b.y - a.y * b.x;}
+
+  template <typename T> auto unit(const vec<T> &a){return a / abs(a);}
+  template <typename T> auto normal(const vec<T> &p){return vec<T>(-p.y, p.x);}
+
+  template <typename T> auto polar(const T &r, const T &ang){return vec<T>(r * cos(ang), r * sin(ang));}
+
+  template <typename T> T angle(const vec<T> &a, const vec<T> &b){return atan2(b.y - a.y, b.x - a.x);}
+  template <typename T> T phase(const vec<T> &a){return atan2(a.y, a.x);}
+
+  template <typename T>
+  T angle_diff(const vec<T> &a, const vec<T> &b){
+    T r = phase(b) - phase(a);
+
+    if(r < -M_PI) return r + 2 * M_PI;
+    else if(r > M_PI) return r - 2 * M_PI;
+    return r;
   }
-};
 
-template <typename T, typename U> auto operator*(const Vec<T> &a, const U &k){return Vec<T>(a.x * k, a.y * k);}
-template <typename T, typename U> auto operator*(const U &k, const Vec<T> &a){return Vec<T>(a.x * k, a.y * k);}
-template <typename T, typename U> auto operator/(const Vec<T> &a, const U &k){return Vec<T>(a.x / k, a.y / k);}
 
-template <typename T> using Point = Vec<T>;
+  template <typename T> struct line {
+    point<T> from, to;
+    line(): from(), to(){}
+    line(const point<T> &from, const point<T> &to): from(from), to(to){}
+  };
 
-template <typename T> T abs(const Vec<T> &a){return sqrt(a.x * a.x + a.y * a.y);}
-template <typename T> T abs_sq(const Vec<T> &a){return a.x * a.x + a.y * a.y;}
+  template <typename T> using segment = line<T>;
 
-template <typename T> T dot(const Vec<T> &a, const Vec<T> &b){return a.x * b.x + a.y * b.y;}
-template <typename T> T cross(const Vec<T> &a, const Vec<T> &b){return a.x * b.y - a.y * b.x;}
 
-template <typename T> auto unit(const Vec<T> &a){return a / abs(a);}
-template <typename T> auto normal(const Vec<T> &p){return Vec<T>(-p.y, p.x);}
+  template <typename T> auto unit(const line<T> &a){return unit(a.to - a.from);}
+  template <typename T> auto normal(const line<T> &a){return normal(a.to - a.from);}
 
-template <typename T> auto polar(const T &r, const T &ang){return Vec<T>(r * cos(ang), r * sin(ang));}
+  template <typename T> auto diff(const segment<T> &a){return a.to - a.from;}
 
-template <typename T> T angle(const Vec<T> &a, const Vec<T> &b){return atan2(b.y - a.y, b.x - a.x);}
-template <typename T> T phase(const Vec<T> &a){return atan2(a.y, a.x);}
+  template <typename T> T abs(const segment<T> &a){return abs(diff(a));}
 
-template <typename T>
-T angle_diff(const Vec<T> &a, const Vec<T> &b){
-  T r = phase(b) - phase(a);
+  template <typename T> T dot(const line<T> &a, const line<T> &b){return dot(diff(a), diff(b));}
+  template <typename T> T cross(const line<T> &a, const line<T> &b){return cross(diff(a), diff(b));}
 
-  if(r < -M_PI) return r + 2 * M_PI;
-  else if(r > M_PI) return r - 2 * M_PI;
-  return r;
+
+  template <typename T> using polygon = std::vector<point<T>>;
+
+  template <typename T> struct circle {
+    point<T> center;
+    T radius;
+    circle(): center(), radius(0){}
+    circle(const point<T> &center, T radius): center(center), radius(radius){}
+  };
+
+  template <typename T>
+  std::ostream& operator<<(std::ostream &s, const vec<T> &a){
+    s << "(" << a.x << ", " << a.y << ")";
+    return s;
+  }
+
+  template <typename T>
+  std::ostream& operator<<(std::ostream &s, const line<T> &a){
+    s << "(" << a.from << " -> " << a.to << ")";
+    return s;
+  }
+
+  template <typename T>
+  std::ostream& operator<<(std::ostream &s, const circle<T> &a){
+    s << "("
+      << "center: " << a.center << ", "
+      << "radius: " << a.radius << ")";
+    return s;
+  }
 }
-
-
-template <typename T> struct Line {
-  Point<T> from, to;
-  Line(): from(), to(){}
-  Line(const Point<T> &from, const Point<T> &to): from(from), to(to){}
-};
-
-template <typename T> using Segment = Line<T>;
-
-
-template <typename T> auto unit(const Line<T> &a){return unit(a.to - a.from);}
-template <typename T> auto normal(const Line<T> &a){return normal(a.to - a.from);}
-
-template <typename T> auto diff(const Segment<T> &a){return a.to - a.from;}
-
-template <typename T> T abs(const Segment<T> &a){return abs(diff(a));}
-
-template <typename T> T dot(const Line<T> &a, const Line<T> &b){return dot(diff(a), diff(b));}
-template <typename T> T cross(const Line<T> &a, const Line<T> &b){return cross(diff(a), diff(b));}
-
-
-template <typename T> using Polygon = std::vector<Point<T>>;
-
-template <typename T> struct Circle {
-  Point<T> center;
-  T radius;
-  Circle(): center(), radius(0){}
-  Circle(const Point<T> &center, T radius): center(center), radius(radius){}
-};
 #line 3 "Mylib/Geometry/Float/closest_pair.cpp"
 #include <utility>
 #line 5 "Mylib/Geometry/Float/closest_pair.cpp"
@@ -251,90 +277,96 @@ template <typename T> struct Circle {
  * @title Closest pair
  * @docs closest_pair.md
  */
-namespace closest_pair_impl {
-  template <typename T>
-  T rec(std::vector<Point<T>> &s){
-    const int N = s.size();
+namespace haar_lib {
+  namespace closest_pair_impl {
+    template <typename T>
+    T rec(std::vector<point<T>> &s){
+      const int N = s.size();
 
-    if(N == 1) return std::numeric_limits<T>::infinity();
+      if(N == 1) return std::numeric_limits<T>::infinity();
 
-    if(N == 2){
-      if(s[0].y > s[1].y) std::swap(s[0], s[1]);
-      return abs(s[0] - s[1]);
-    }
-
-    const T mid_x = s[N / 2].x;
-
-    auto left = std::vector<Point<T>>(s.begin(), s.begin() + N / 2);
-    auto right = std::vector<Point<T>>(s.begin() + N / 2, s.end());
-
-    const T d1 = rec(left);
-    const T d2 = rec(right);
-
-    T d = std::min(d1, d2);
-
-    s.clear();
-
-    std::merge(
-      left.begin(), left.end(),
-      right.begin(), right.end(),
-      std::back_inserter(s),
-      [](const auto &a, const auto &b){return a.y < b.y;}
-    );
-
-    std::vector<Point<T>> v;
-
-    for(const auto &p : s){
-      if(abs(p.x - mid_x) > d) continue;
-
-      for(auto it = v.rbegin(); it != v.rend(); ++it){
-        const auto &q = *it;
-        if(abs(p.y - q.y) > d) break;
-
-        d = std::min(d, abs(p - q));
+      if(N == 2){
+        if(s[0].y > s[1].y) std::swap(s[0], s[1]);
+        return abs(s[0] - s[1]);
       }
 
-      v.push_back(p);
+      const T mid_x = s[N / 2].x;
+
+      auto left = std::vector<point<T>>(s.begin(), s.begin() + N / 2);
+      auto right = std::vector<point<T>>(s.begin() + N / 2, s.end());
+
+      const T d1 = rec(left);
+      const T d2 = rec(right);
+
+      T d = std::min(d1, d2);
+
+      s.clear();
+
+      std::merge(
+        left.begin(), left.end(),
+        right.begin(), right.end(),
+        std::back_inserter(s),
+        [](const auto &a, const auto &b){return a.y < b.y;}
+      );
+
+      std::vector<point<T>> v;
+
+      for(const auto &p : s){
+        if(abs(p.x - mid_x) > d) continue;
+
+        for(auto it = v.rbegin(); it != v.rend(); ++it){
+          const auto &q = *it;
+          if(abs(p.y - q.y) > d) break;
+
+          d = std::min(d, abs(p - q));
+        }
+
+        v.push_back(p);
+      }
+
+      return d;
     }
-
-    return d;
   }
-}
 
-template <typename T>
-T closest_pair(std::vector<Point<T>> s){
-  std::sort(s.begin(), s.end(), [](const auto &a, const auto &b){return a.x < b.x;});
-  return closest_pair_impl::rec(s);
+  template <typename T>
+  T closest_pair(std::vector<point<T>> s){
+    std::sort(s.begin(), s.end(), [](const auto &a, const auto &b){return a.x < b.x;});
+    return closest_pair_impl::rec(s);
+  }
 }
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
  * @docs input_vector.md
  */
-template <typename T>
-std::vector<T> input_vector(int N){
-  std::vector<T> ret(N);
-  for(int i = 0; i < N; ++i) std::cin >> ret[i];
-  return ret;
-}
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> input_vector(int N){
+    std::vector<T> ret(N);
+    for(int i = 0; i < N; ++i) std::cin >> ret[i];
+    return ret;
+  }
 
-template <typename T>
-std::vector<std::vector<T>> input_vector(int N, int M){
-  std::vector<std::vector<T>> ret(N);
-  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
-  return ret;
+  template <typename T>
+  std::vector<std::vector<T>> input_vector(int N, int M){
+    std::vector<std::vector<T>> ret(N);
+    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+    return ret;
+  }
 }
 #line 10 "test/aoj/CGL_5_A/main.test.cpp"
 
-using D = DoubleEps<double>;
+namespace hl = haar_lib;
+
+using D = hl::double_eps<double>;
 template <> double D::eps = ERROR;
 
 int main(){
   int n; std::cin >> n;
 
-  auto p = input_vector<Point<D>>(n);
+  auto p = hl::input_vector<hl::point<D>>(n);
 
-  auto ans = closest_pair(p);
+  auto ans = hl::closest_pair(p);
 
   std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
 

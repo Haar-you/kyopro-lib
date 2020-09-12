@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/ends_with.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -48,14 +48,16 @@ layout: default
  * @title ends_with
  * @docs ends_with.md
  */
-template <typename Container, typename T = typename Container::value_type>
-bool ends_with(const Container &str, const Container &suffix){
-  if(str.size() < suffix.size()) return false;
-  int n = str.size(), m = suffix.size();
-  for(size_t i = 0; i < suffix.size(); ++i){
-    if(str[n - 1 - i] != suffix[m - 1 - i]) return false;
+namespace haar_lib {
+  template <typename Container, typename T = typename Container::value_type>
+  bool ends_with(const Container &str, const Container &suffix){
+    if(str.size() < suffix.size()) return false;
+    int n = str.size(), m = suffix.size();
+    for(size_t i = 0; i < suffix.size(); ++i){
+      if(str[n - 1 - i] != suffix[m - 1 - i]) return false;
+    }
+    return true;
   }
-  return true;
 }
 
 ```
@@ -71,14 +73,16 @@ bool ends_with(const Container &str, const Container &suffix){
  * @title ends_with
  * @docs ends_with.md
  */
-template <typename Container, typename T = typename Container::value_type>
-bool ends_with(const Container &str, const Container &suffix){
-  if(str.size() < suffix.size()) return false;
-  int n = str.size(), m = suffix.size();
-  for(size_t i = 0; i < suffix.size(); ++i){
-    if(str[n - 1 - i] != suffix[m - 1 - i]) return false;
+namespace haar_lib {
+  template <typename Container, typename T = typename Container::value_type>
+  bool ends_with(const Container &str, const Container &suffix){
+    if(str.size() < suffix.size()) return false;
+    int n = str.size(), m = suffix.size();
+    for(size_t i = 0; i < suffix.size(); ++i){
+      if(str[n - 1 - i] != suffix[m - 1 - i]) return false;
+    }
+    return true;
   }
-  return true;
 }
 
 ```

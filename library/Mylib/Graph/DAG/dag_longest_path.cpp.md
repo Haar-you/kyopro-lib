@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#65714f932d9658b7e9e55eb052732de1">Mylib/Graph/DAG</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/DAG/dag_longest_path.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -49,26 +49,28 @@ layout: default
  * @title Longest path on DAG
  * @docs dag_longest_path.md
  */
-int dag_longest_path(const std::vector<std::vector<int>> &g){
-  const int n = g.size();
-  std::vector<int> ret(n);
-  std::vector<bool> visited(n);
+namespace haar_lib {
+  int dag_longest_path(const std::vector<std::vector<int>> &g){
+    const int n = g.size();
+    std::vector<int> ret(n);
+    std::vector<bool> visited(n);
 
-  auto dfs =
-    [&](auto &f, int cur) -> int {
-      if(visited[cur]) return ret[cur];
-      visited[cur] = true;
+    auto dfs =
+      [&](auto &f, int cur) -> int {
+        if(visited[cur]) return ret[cur];
+        visited[cur] = true;
 
-      for(auto &nxt : g[cur]){
-        ret[cur] = std::max(ret[cur], f(f, nxt) + 1);
-      }
+        for(auto &nxt : g[cur]){
+          ret[cur] = std::max(ret[cur], f(f, nxt) + 1);
+        }
 
-      return ret[cur];
-    };
+        return ret[cur];
+      };
 
-  for(int i = 0; i < n; ++i) if(not visited[i]) dfs(dfs, i);
+    for(int i = 0; i < n; ++i) if(not visited[i]) dfs(dfs, i);
 
-  return *std::max_element(ret.begin(), ret.end());
+    return *std::max_element(ret.begin(), ret.end());
+  }
 }
 
 ```
@@ -85,26 +87,28 @@ int dag_longest_path(const std::vector<std::vector<int>> &g){
  * @title Longest path on DAG
  * @docs dag_longest_path.md
  */
-int dag_longest_path(const std::vector<std::vector<int>> &g){
-  const int n = g.size();
-  std::vector<int> ret(n);
-  std::vector<bool> visited(n);
+namespace haar_lib {
+  int dag_longest_path(const std::vector<std::vector<int>> &g){
+    const int n = g.size();
+    std::vector<int> ret(n);
+    std::vector<bool> visited(n);
 
-  auto dfs =
-    [&](auto &f, int cur) -> int {
-      if(visited[cur]) return ret[cur];
-      visited[cur] = true;
+    auto dfs =
+      [&](auto &f, int cur) -> int {
+        if(visited[cur]) return ret[cur];
+        visited[cur] = true;
 
-      for(auto &nxt : g[cur]){
-        ret[cur] = std::max(ret[cur], f(f, nxt) + 1);
-      }
+        for(auto &nxt : g[cur]){
+          ret[cur] = std::max(ret[cur], f(f, nxt) + 1);
+        }
 
-      return ret[cur];
-    };
+        return ret[cur];
+      };
 
-  for(int i = 0; i < n; ++i) if(not visited[i]) dfs(dfs, i);
+    for(int i = 0; i < n; ++i) if(not visited[i]) dfs(dfs, i);
 
-  return *std::max_element(ret.begin(), ret.end());
+    return *std::max_element(ret.begin(), ret.end());
+  }
 }
 
 ```

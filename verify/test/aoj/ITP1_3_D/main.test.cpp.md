@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#8d38fbe7bd169996a63c214260a5e34a">test/aoj/ITP1_3_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ITP1_3_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_3_D</a>
@@ -52,12 +52,14 @@ layout: default
 #include <iostream>
 #include "Mylib/Number/Divisor/enumerate_divisors.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int a, b, c; std::cin >> a >> b >> c;
 
   int ans = 0;
 
-  for(auto d : enumerate_divisors(c)){
+  for(auto d : hl::enumerate_divisors(c)){
     if(a <= d and d <= b) ++ans;
   }
 
@@ -84,33 +86,37 @@ int main(){
  * @title Enumerate divisors
  * @docs enumerate_divisors.md
  */
-std::vector<int64_t> enumerate_divisors(int64_t n){
-  std::vector<int64_t> temp, ret;
+namespace haar_lib {
+  std::vector<int64_t> enumerate_divisors(int64_t n){
+    std::vector<int64_t> temp, ret;
 
-  {
-    int64_t i;
-    for(i = 1LL; i * i < n; ++i){
-      if(n % i == 0){
-        temp.push_back(n / i);
-        ret.push_back(i);
+    {
+      int64_t i;
+      for(i = 1LL; i * i < n; ++i){
+        if(n % i == 0){
+          temp.push_back(n / i);
+          ret.push_back(i);
+        }
       }
+      if(i * i == n) ret.push_back(i);
     }
-    if(i * i == n) ret.push_back(i);
+
+    std::reverse(temp.begin(), temp.end());
+    ret.insert(ret.end(), temp.begin(), temp.end());
+
+    return ret;
   }
-
-  std::reverse(temp.begin(), temp.end());
-  ret.insert(ret.end(), temp.begin(), temp.end());
-
-  return ret;
 }
 #line 5 "test/aoj/ITP1_3_D/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int a, b, c; std::cin >> a >> b >> c;
 
   int ans = 0;
 
-  for(auto d : enumerate_divisors(c)){
+  for(auto d : hl::enumerate_divisors(c)){
     if(a <= d and d <= b) ++ans;
   }
 

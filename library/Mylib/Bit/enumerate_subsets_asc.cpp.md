@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#fe4a83e4dc2a7f834ed4cd85d6972a53">Mylib/Bit</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/enumerate_subsets_asc.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 04:37:36+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -53,11 +53,13 @@ layout: default
  * @title Enumerate subsets (Ascending order)
  * @docs enumerate_subsets_asc.md
  */
-template <typename Func>
-void enumerate_subsets_asc(int a, const Func &f){
-  for(int t = 0; ; t = (t - a) & a){
-    if(not f(t)) break;
-    if(t == a) break;
+namespace haar_lib {
+  template <typename Func>
+  void enumerate_subsets_asc(int a, const Func &f){
+    for(int t = 0; ; t = (t - a) & a){
+      if(not f(t)) break;
+      if(t == a) break;
+    }
   }
 }
 
@@ -73,11 +75,13 @@ void enumerate_subsets_asc(int a, const Func &f){
  * @title Enumerate subsets (Ascending order)
  * @docs enumerate_subsets_asc.md
  */
-template <typename Func>
-void enumerate_subsets_asc(int a, const Func &f){
-  for(int t = 0; ; t = (t - a) & a){
-    if(not f(t)) break;
-    if(t == a) break;
+namespace haar_lib {
+  template <typename Func>
+  void enumerate_subsets_asc(int a, const Func &f){
+    for(int t = 0; ; t = (t - a) & a){
+      if(not f(t)) break;
+      if(t == a) break;
+    }
   }
 }
 

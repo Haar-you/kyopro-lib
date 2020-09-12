@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Range add / Range sum
+# :question: Range add / Range sum
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
 * :x: <a href="../../../../verify/test/aoj/DSL_2_G/main.test.cpp.html">test/aoj/DSL_2_G/main.test.cpp</a>
 
 
@@ -53,21 +53,23 @@ layout: default
  * @title Range add / Range sum
  * @docs add_sum.md
  */
-template <typename T, typename U>
-struct AddSum {
-  using value_type_get = T;
-  using value_type_update = U;
+namespace haar_lib {
+  template <typename T, typename U>
+  struct add_sum {
+    using value_type_get = T;
+    using value_type_update = U;
 
-  value_type_get id_get() const {return 0;}
-  value_type_update id_update() const {return 0;}
+    value_type_get id_get() const {return 0;}
+    value_type_update id_update() const {return 0;}
 
-  value_type_get op_get(value_type_get a, value_type_get b) const {return a + b;}
-  value_type_update op_update(value_type_update a, value_type_update b) const {return a + b;}
+    value_type_get op_get(value_type_get a, value_type_get b) const {return a + b;}
+    value_type_update op_update(value_type_update a, value_type_update b) const {return a + b;}
 
-  value_type_get op(value_type_get a, value_type_update b, int len) const {
-    return a + b * len;
-  }
-};
+    value_type_get op(value_type_get a, value_type_update b, int len) const {
+      return a + b * len;
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -81,21 +83,23 @@ struct AddSum {
  * @title Range add / Range sum
  * @docs add_sum.md
  */
-template <typename T, typename U>
-struct AddSum {
-  using value_type_get = T;
-  using value_type_update = U;
+namespace haar_lib {
+  template <typename T, typename U>
+  struct add_sum {
+    using value_type_get = T;
+    using value_type_update = U;
 
-  value_type_get id_get() const {return 0;}
-  value_type_update id_update() const {return 0;}
+    value_type_get id_get() const {return 0;}
+    value_type_update id_update() const {return 0;}
 
-  value_type_get op_get(value_type_get a, value_type_get b) const {return a + b;}
-  value_type_update op_update(value_type_update a, value_type_update b) const {return a + b;}
+    value_type_get op_get(value_type_get a, value_type_get b) const {return a + b;}
+    value_type_update op_update(value_type_update a, value_type_update b) const {return a + b;}
 
-  value_type_get op(value_type_get a, value_type_update b, int len) const {
-    return a + b * len;
-  }
-};
+    value_type_get op(value_type_get a, value_type_update b, int len) const {
+      return a + b * len;
+    }
+  };
+}
 
 ```
 {% endraw %}

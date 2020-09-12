@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b58b3fdb1287502881e9117a37552614">Mylib/LinearAlgebra/Square</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -55,67 +55,69 @@ layout: default
  * @title Square matrix (Const size)
  * @docs square_matrix_const_size.md
  */
-template <typename T, int N>
-struct SquareMatrixConst {
-  using value_type = T;
+namespace haar_lib {
+  template <typename T, int N>
+  struct square_matrix_const {
+    using value_type = T;
 
-  std::array<std::array<T, N>, N> matrix;
+    std::array<std::array<T, N>, N> matrix;
 
-  SquareMatrixConst(){
-    for(size_t i = 0; i < N; ++i) for(size_t j = 0; j < N; ++j) matrix[i][j] = 0;
-  }
-  SquareMatrixConst(const T &val){
-    for(size_t i = 0; i < N; ++i) matrix[i].fill(val);
-  }
-  SquareMatrixConst(std::initializer_list<std::initializer_list<T>> list){
-    int i = 0;
-    for(auto it1 = list.begin(); it1 != list.end(); ++it1, ++i){
-      int j = 0;
-      for(auto it2 = it1->begin(); it2 != it1->end(); ++it2, ++j){
-        matrix[i][j] = *it2;
+    square_matrix_const(){
+      for(size_t i = 0; i < N; ++i) for(size_t j = 0; j < N; ++j) matrix[i][j] = 0;
+    }
+    square_matrix_const(const T &val){
+      for(size_t i = 0; i < N; ++i) matrix[i].fill(val);
+    }
+    square_matrix_const(std::initializer_list<std::initializer_list<T>> list){
+      int i = 0;
+      for(auto it1 = list.begin(); it1 != list.end(); ++it1, ++i){
+        int j = 0;
+        for(auto it2 = it1->begin(); it2 != it1->end(); ++it2, ++j){
+          matrix[i][j] = *it2;
+        }
       }
     }
-  }
 
-  bool operator==(const SquareMatrixConst &val) const {return matrix == val.matrix;}
-  bool operator!=(const SquareMatrixConst &val) const {return !(*this == val);}
+    bool operator==(const square_matrix_const &val) const {return matrix == val.matrix;}
+    bool operator!=(const square_matrix_const &val) const {return !(*this == val);}
 
-  auto& operator=(const SquareMatrixConst &val){
-    this->matrix = val.matrix;
-    return *this;
-  }
+    auto& operator=(const square_matrix_const &val){
+      this->matrix = val.matrix;
+      return *this;
+    }
 
-  auto& operator+=(const SquareMatrixConst &val){
-    for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] + val[i][j];
-    return *this;
-  }
+    auto& operator+=(const square_matrix_const &val){
+      for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] + val[i][j];
+      return *this;
+    }
 
-  auto& operator-=(const SquareMatrixConst &val){
-    for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] - val[i][j];
-    return *this;
-  }
+    auto& operator-=(const square_matrix_const &val){
+      for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] - val[i][j];
+      return *this;
+    }
 
-  auto& operator*=(const SquareMatrixConst &val){
-    std::array<std::array<T, N>, N> temp = {};
-    for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) for(int k = 0; k < N; ++k) temp[i][j] = temp[i][j] + matrix[i][k] * val[k][j];
-    std::swap(matrix, temp);
-    return *this;
-  }
+    auto& operator*=(const square_matrix_const &val){
+      std::array<std::array<T, N>, N> temp = {};
+      for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) for(int k = 0; k < N; ++k) temp[i][j] = temp[i][j] + matrix[i][k] * val[k][j];
+      std::swap(matrix, temp);
+      return *this;
+    }
 
-  const auto& operator[](size_t i) const {return matrix[i];}
-  auto& operator[](size_t i){return matrix[i];}
-  int size() const {return N;}
+    const auto& operator[](size_t i) const {return matrix[i];}
+    auto& operator[](size_t i){return matrix[i];}
+    int size() const {return N;}
 
-  static auto make_unit(){
-    SquareMatrixConst ret;
-    for(size_t i = 0; i < N; ++i) ret[i][i] = 1;
-    return ret;
-  }
+    static auto make_unit(){
+      square_matrix_const ret;
+      for(size_t i = 0; i < N; ++i) ret[i][i] = 1;
+      return ret;
+    }
 
-  friend auto operator+(const SquareMatrixConst &a, const SquareMatrixConst &b){auto ret = a; ret += b; return ret;}
-  friend auto operator-(const SquareMatrixConst &a, const SquareMatrixConst &b){auto ret = a; ret -= b; return ret;}
-  friend auto operator*(const SquareMatrixConst &a, const SquareMatrixConst &b){auto ret = a; ret *= b; return ret;}
-};
+    friend auto operator+(const square_matrix_const &a, const square_matrix_const &b){auto ret = a; ret += b; return ret;}
+    friend auto operator-(const square_matrix_const &a, const square_matrix_const &b){auto ret = a; ret -= b; return ret;}
+    friend auto operator*(const square_matrix_const &a, const square_matrix_const &b){auto ret = a; ret *= b; return ret;}
+  };
+}
 
 ```
 {% endraw %}
@@ -132,67 +134,69 @@ struct SquareMatrixConst {
  * @title Square matrix (Const size)
  * @docs square_matrix_const_size.md
  */
-template <typename T, int N>
-struct SquareMatrixConst {
-  using value_type = T;
+namespace haar_lib {
+  template <typename T, int N>
+  struct square_matrix_const {
+    using value_type = T;
 
-  std::array<std::array<T, N>, N> matrix;
+    std::array<std::array<T, N>, N> matrix;
 
-  SquareMatrixConst(){
-    for(size_t i = 0; i < N; ++i) for(size_t j = 0; j < N; ++j) matrix[i][j] = 0;
-  }
-  SquareMatrixConst(const T &val){
-    for(size_t i = 0; i < N; ++i) matrix[i].fill(val);
-  }
-  SquareMatrixConst(std::initializer_list<std::initializer_list<T>> list){
-    int i = 0;
-    for(auto it1 = list.begin(); it1 != list.end(); ++it1, ++i){
-      int j = 0;
-      for(auto it2 = it1->begin(); it2 != it1->end(); ++it2, ++j){
-        matrix[i][j] = *it2;
+    square_matrix_const(){
+      for(size_t i = 0; i < N; ++i) for(size_t j = 0; j < N; ++j) matrix[i][j] = 0;
+    }
+    square_matrix_const(const T &val){
+      for(size_t i = 0; i < N; ++i) matrix[i].fill(val);
+    }
+    square_matrix_const(std::initializer_list<std::initializer_list<T>> list){
+      int i = 0;
+      for(auto it1 = list.begin(); it1 != list.end(); ++it1, ++i){
+        int j = 0;
+        for(auto it2 = it1->begin(); it2 != it1->end(); ++it2, ++j){
+          matrix[i][j] = *it2;
+        }
       }
     }
-  }
 
-  bool operator==(const SquareMatrixConst &val) const {return matrix == val.matrix;}
-  bool operator!=(const SquareMatrixConst &val) const {return !(*this == val);}
+    bool operator==(const square_matrix_const &val) const {return matrix == val.matrix;}
+    bool operator!=(const square_matrix_const &val) const {return !(*this == val);}
 
-  auto& operator=(const SquareMatrixConst &val){
-    this->matrix = val.matrix;
-    return *this;
-  }
+    auto& operator=(const square_matrix_const &val){
+      this->matrix = val.matrix;
+      return *this;
+    }
 
-  auto& operator+=(const SquareMatrixConst &val){
-    for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] + val[i][j];
-    return *this;
-  }
+    auto& operator+=(const square_matrix_const &val){
+      for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] + val[i][j];
+      return *this;
+    }
 
-  auto& operator-=(const SquareMatrixConst &val){
-    for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] - val[i][j];
-    return *this;
-  }
+    auto& operator-=(const square_matrix_const &val){
+      for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] - val[i][j];
+      return *this;
+    }
 
-  auto& operator*=(const SquareMatrixConst &val){
-    std::array<std::array<T, N>, N> temp = {};
-    for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) for(int k = 0; k < N; ++k) temp[i][j] = temp[i][j] + matrix[i][k] * val[k][j];
-    std::swap(matrix, temp);
-    return *this;
-  }
+    auto& operator*=(const square_matrix_const &val){
+      std::array<std::array<T, N>, N> temp = {};
+      for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) for(int k = 0; k < N; ++k) temp[i][j] = temp[i][j] + matrix[i][k] * val[k][j];
+      std::swap(matrix, temp);
+      return *this;
+    }
 
-  const auto& operator[](size_t i) const {return matrix[i];}
-  auto& operator[](size_t i){return matrix[i];}
-  int size() const {return N;}
+    const auto& operator[](size_t i) const {return matrix[i];}
+    auto& operator[](size_t i){return matrix[i];}
+    int size() const {return N;}
 
-  static auto make_unit(){
-    SquareMatrixConst ret;
-    for(size_t i = 0; i < N; ++i) ret[i][i] = 1;
-    return ret;
-  }
+    static auto make_unit(){
+      square_matrix_const ret;
+      for(size_t i = 0; i < N; ++i) ret[i][i] = 1;
+      return ret;
+    }
 
-  friend auto operator+(const SquareMatrixConst &a, const SquareMatrixConst &b){auto ret = a; ret += b; return ret;}
-  friend auto operator-(const SquareMatrixConst &a, const SquareMatrixConst &b){auto ret = a; ret -= b; return ret;}
-  friend auto operator*(const SquareMatrixConst &a, const SquareMatrixConst &b){auto ret = a; ret *= b; return ret;}
-};
+    friend auto operator+(const square_matrix_const &a, const square_matrix_const &b){auto ret = a; ret += b; return ret;}
+    friend auto operator-(const square_matrix_const &a, const square_matrix_const &b){auto ret = a; ret -= b; return ret;}
+    friend auto operator*(const square_matrix_const &a, const square_matrix_const &b){auto ret = a; ret *= b; return ret;}
+  };
+}
 
 ```
 {% endraw %}

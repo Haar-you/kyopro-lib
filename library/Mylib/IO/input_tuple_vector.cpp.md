@@ -25,24 +25,25 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Mylib/IO/input_tuple_vector.cpp
+# :question: Mylib/IO/input_tuple_vector.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#7f8c074a28e3c2f263a02491ce2132dd">Mylib/IO</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/IO/input_tuple_vector.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/aoj/0323/main.golden.test.cpp.html">test/aoj/0323/main.golden.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/0323/main.ternary.test.cpp.html">test/aoj/0323/main.ternary.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/1337/main.test.cpp.html">test/aoj/1337/main.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/2293/main.test.cpp.html">test/aoj/2293/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/0323/main.golden.test.cpp.html">test/aoj/0323/main.golden.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/0323/main.ternary.test.cpp.html">test/aoj/0323/main.ternary.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/0425/main.test.cpp.html">test/aoj/0425/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/1337/main.test.cpp.html">test/aoj/1337/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/2293/main.test.cpp.html">test/aoj/2293/main.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/2426/main.test.cpp.html">test/aoj/2426/main.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/3132/main.test.cpp.html">test/aoj/3132/main.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/ALDS1_15_C/main.test.cpp.html">test/aoj/ALDS1_15_C/main.test.cpp</a>
@@ -75,26 +76,28 @@ layout: default
 /**
  * @docs input_tuple_vector.md
  */
-template <typename T, size_t ... I>
-void input_tuple_vector_init(T &val, int N, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0) ...};
-}
-
-template <typename T, size_t ... I>
-void input_tuple_vector_helper(T &val, int i, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0) ...};
-}
-
-template <typename ... Args>
-auto input_tuple_vector(int N){
-  std::tuple<std::vector<Args> ...> ret;
-
-  input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof ... (Args)>());
-  for(int i = 0; i < N; ++i){
-    input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof ... (Args)>());
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  void input_tuple_vector_init(T &val, int N, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0) ...};
   }
 
-  return ret;
+  template <typename T, size_t ... I>
+  void input_tuple_vector_helper(T &val, int i, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0) ...};
+  }
+
+  template <typename ... Args>
+  auto input_tuple_vector(int N){
+    std::tuple<std::vector<Args> ...> ret;
+
+    input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof ... (Args)>());
+    for(int i = 0; i < N; ++i){
+      input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof ... (Args)>());
+    }
+
+    return ret;
+  }
 }
 
 ```
@@ -113,26 +116,28 @@ auto input_tuple_vector(int N){
 /**
  * @docs input_tuple_vector.md
  */
-template <typename T, size_t ... I>
-void input_tuple_vector_init(T &val, int N, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0) ...};
-}
-
-template <typename T, size_t ... I>
-void input_tuple_vector_helper(T &val, int i, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0) ...};
-}
-
-template <typename ... Args>
-auto input_tuple_vector(int N){
-  std::tuple<std::vector<Args> ...> ret;
-
-  input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof ... (Args)>());
-  for(int i = 0; i < N; ++i){
-    input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof ... (Args)>());
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  void input_tuple_vector_init(T &val, int N, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0) ...};
   }
 
-  return ret;
+  template <typename T, size_t ... I>
+  void input_tuple_vector_helper(T &val, int i, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0) ...};
+  }
+
+  template <typename ... Args>
+  auto input_tuple_vector(int N){
+    std::tuple<std::vector<Args> ...> ret;
+
+    input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof ... (Args)>());
+    for(int i = 0; i < N; ++i){
+      input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof ... (Args)>());
+    }
+
+    return ret;
+  }
 }
 
 ```

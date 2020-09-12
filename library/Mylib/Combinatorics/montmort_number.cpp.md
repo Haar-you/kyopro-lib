@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/montmort_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -72,19 +72,21 @@ layout: default
  * @title Montmort number
  * @docs montmort_number.md
  */
-template <typename T>
-auto montmort_number(int n){
-  std::vector<T> ret(n + 1);
+namespace haar_lib {
+  template <typename T>
+  auto montmort_number(int n){
+    std::vector<T> ret(n + 1);
 
-  ret[0] = 1;
-  ret[1] = 0;
-  ret[2] = 1;
+    ret[0] = 1;
+    ret[1] = 0;
+    ret[2] = 1;
 
-  for(int i = 3; i <= n; ++i){
-    ret[i] = (ret[i - 1] + ret[i - 2]) * (i - 1);
+    for(int i = 3; i <= n; ++i){
+      ret[i] = (ret[i - 1] + ret[i - 2]) * (i - 1);
+    }
+
+    return ret;
   }
-
-  return ret;
 }
 
 ```
@@ -100,19 +102,21 @@ auto montmort_number(int n){
  * @title Montmort number
  * @docs montmort_number.md
  */
-template <typename T>
-auto montmort_number(int n){
-  std::vector<T> ret(n + 1);
+namespace haar_lib {
+  template <typename T>
+  auto montmort_number(int n){
+    std::vector<T> ret(n + 1);
 
-  ret[0] = 1;
-  ret[1] = 0;
-  ret[2] = 1;
+    ret[0] = 1;
+    ret[1] = 0;
+    ret[2] = 1;
 
-  for(int i = 3; i <= n; ++i){
-    ret[i] = (ret[i - 1] + ret[i - 2]) * (i - 1);
+    for(int i = 3; i <= n; ++i){
+      ret[i] = (ret[i - 1] + ret[i - 2]) * (i - 1);
+    }
+
+    return ret;
   }
-
-  return ret;
 }
 
 ```

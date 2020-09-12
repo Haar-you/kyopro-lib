@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#3df95940e092844fc072dd50b6844b29">Mylib/AlgebraicStructure/Semiring</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Semiring/add_mul.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -47,14 +47,16 @@ layout: default
  * @title Add-mul semiring
  * @docs add_mul.md
  */
-template <typename T>
-struct AddMulSemiring {
-  using value_type = T;
-  value_type id_add() const {return 0;}
-  value_type id_mul() const {return 1;}
-  value_type add(value_type a, value_type b) const {return a + b;}
-  value_type mul(value_type a, value_type b) const {return a * b;}
-};
+namespace haar_lib {
+  template <typename T>
+  struct add_mul_semiring {
+    using value_type = T;
+    value_type id_add() const {return 0;}
+    value_type id_mul() const {return 1;}
+    value_type add(value_type a, value_type b) const {return a + b;}
+    value_type mul(value_type a, value_type b) const {return a * b;}
+  };
+}
 
 ```
 {% endraw %}
@@ -68,14 +70,16 @@ struct AddMulSemiring {
  * @title Add-mul semiring
  * @docs add_mul.md
  */
-template <typename T>
-struct AddMulSemiring {
-  using value_type = T;
-  value_type id_add() const {return 0;}
-  value_type id_mul() const {return 1;}
-  value_type add(value_type a, value_type b) const {return a + b;}
-  value_type mul(value_type a, value_type b) const {return a * b;}
-};
+namespace haar_lib {
+  template <typename T>
+  struct add_mul_semiring {
+    using value_type = T;
+    value_type id_add() const {return 0;}
+    value_type id_mul() const {return 1;}
+    value_type add(value_type a, value_type b) const {return a + b;}
+    value_type mul(value_type a, value_type b) const {return a * b;}
+  };
+}
 
 ```
 {% endraw %}

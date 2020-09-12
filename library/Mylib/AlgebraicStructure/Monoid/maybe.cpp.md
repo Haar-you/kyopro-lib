@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/maybe.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -53,18 +53,20 @@ layout: default
  * @title Maybe monoid
  * @docs maybe.md
  */
-template <typename Semigroup>
-struct MaybeMonoid {
-  using value_type = std::optional<typename Semigroup::value_type>;
-  const static Semigroup S;
+namespace haar_lib {
+  template <typename Semigroup>
+  struct maybe_monoid {
+    using value_type = std::optional<typename Semigroup::value_type>;
+    const static Semigroup S;
 
-  value_type operator()() const {return std::nullopt;}
-  value_type operator()(const value_type &a, const value_type &b) const {
-    if(not a) return b;
-    if(not b) return a;
-    return {S(*a, *b)};
-  }
-};
+    value_type operator()() const {return std::nullopt;}
+    value_type operator()(const value_type &a, const value_type &b) const {
+      if(not a) return b;
+      if(not b) return a;
+      return {S(*a, *b)};
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -79,18 +81,20 @@ struct MaybeMonoid {
  * @title Maybe monoid
  * @docs maybe.md
  */
-template <typename Semigroup>
-struct MaybeMonoid {
-  using value_type = std::optional<typename Semigroup::value_type>;
-  const static Semigroup S;
+namespace haar_lib {
+  template <typename Semigroup>
+  struct maybe_monoid {
+    using value_type = std::optional<typename Semigroup::value_type>;
+    const static Semigroup S;
 
-  value_type operator()() const {return std::nullopt;}
-  value_type operator()(const value_type &a, const value_type &b) const {
-    if(not a) return b;
-    if(not b) return a;
-    return {S(*a, *b)};
-  }
-};
+    value_type operator()() const {return std::nullopt;}
+    value_type operator()(const value_type &a, const value_type &b) const {
+      if(not a) return b;
+      if(not b) return a;
+      return {S(*a, *b)};
+    }
+  };
+}
 
 ```
 {% endraw %}

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/pair.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -48,20 +48,22 @@ layout: default
  * @title Pair monoid
  * @docs pair.md
  */
-template <typename Monoid1, typename Monoid2>
-struct PairMonoid {
-  using value_type = std::pair<typename Monoid1::value_type, typename Monoid2::value_type>;
-  const static Monoid1 M1;
-  const static Monoid2 M2;
+namespace haar_lib {
+  template <typename Monoid1, typename Monoid2>
+  struct pair_monoid {
+    using value_type = std::pair<typename Monoid1::value_type, typename Monoid2::value_type>;
+    const static Monoid1 M1;
+    const static Monoid2 M2;
 
-  value_type operator()() const {
-    return {M1(), M2()};
-  }
+    value_type operator()() const {
+      return {M1(), M2()};
+    }
 
-  value_type operator()(const value_type &a, const value_type &b) const {
-    return {M1(a.first, b.first), M2(a.second, b.second)};
-  }
-};
+    value_type operator()(const value_type &a, const value_type &b) const {
+      return {M1(a.first, b.first), M2(a.second, b.second)};
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -76,20 +78,22 @@ struct PairMonoid {
  * @title Pair monoid
  * @docs pair.md
  */
-template <typename Monoid1, typename Monoid2>
-struct PairMonoid {
-  using value_type = std::pair<typename Monoid1::value_type, typename Monoid2::value_type>;
-  const static Monoid1 M1;
-  const static Monoid2 M2;
+namespace haar_lib {
+  template <typename Monoid1, typename Monoid2>
+  struct pair_monoid {
+    using value_type = std::pair<typename Monoid1::value_type, typename Monoid2::value_type>;
+    const static Monoid1 M1;
+    const static Monoid2 M2;
 
-  value_type operator()() const {
-    return {M1(), M2()};
-  }
+    value_type operator()() const {
+      return {M1(), M2()};
+    }
 
-  value_type operator()(const value_type &a, const value_type &b) const {
-    return {M1(a.first, b.first), M2(a.second, b.second)};
-  }
-};
+    value_type operator()(const value_type &a, const value_type &b) const {
+      return {M1(a.first, b.first), M2(a.second, b.second)};
+    }
+  };
+}
 
 ```
 {% endraw %}

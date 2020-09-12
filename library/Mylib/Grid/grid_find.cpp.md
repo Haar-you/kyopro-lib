@@ -25,26 +25,26 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Enumerate points satisfying conditions
+# :heavy_check_mark: Enumerate points satisfying conditions
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#437b04c37f52e5b35f1d2c24c546c491">Mylib/Grid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Grid/grid_find.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-10 07:16:52+09:00
 
 
 
 
 ## Depends on
 
-* :x: <a href="grid.cpp.html">Grid template</a>
+* :heavy_check_mark: <a href="grid.cpp.html">Grid template</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/aoj/0558/main.graph.test.cpp.html">test/aoj/0558/main.graph.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/0558/main.test.cpp.html">test/aoj/0558/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/0558/main.graph.test.cpp.html">test/aoj/0558/main.graph.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/0558/main.test.cpp.html">test/aoj/0558/main.test.cpp</a>
 
 
 ## Code
@@ -60,20 +60,22 @@ layout: default
  * @title Enumerate points satisfying conditions
  * @docs grid_find.md
  */
-template <typename C, typename T = typename C::value_type>
-auto grid_find(const std::vector<C> &A, T value){
-  const int H = A.size(), W = A[0].size();
+namespace haar_lib {
+  template <typename C, typename T = typename C::value_type>
+  auto grid_find(const std::vector<C> &A, T value){
+    const int H = A.size(), W = A[0].size();
 
-  std::vector<Point> ret;
-  for(int i = 0; i < H; ++i){
-    for(int j = 0; j < W; ++j){
-      if(A[i][j] == value){
-        ret.emplace_back(i, j);
+    std::vector<cell> ret;
+    for(int i = 0; i < H; ++i){
+      for(int j = 0; j < W; ++j){
+        if(A[i][j] == value){
+          ret.emplace_back(i, j);
+        }
       }
     }
-  }
 
-  return ret;
+    return ret;
+  }
 }
 
 ```
@@ -93,36 +95,36 @@ auto grid_find(const std::vector<C> &A, T value){
  * @title Grid template
  * @docs grid.md
  */
-struct Point {
-  int x, y;
-  Point(): x(0), y(0){}
-  Point(int x, int y): x(x), y(y){}
-  Point& operator+=(const Point &a){this->x += a.x; this->y += a.y; return *this;}
-  Point& operator-=(const Point &a){this->x -= a.x; this->y -= a.y; return *this;}
-};
+namespace haar_lib {
+  struct cell {
+    int x, y;
+    cell(): x(0), y(0){}
+    cell(int x, int y): x(x), y(y){}
+    cell& operator+=(const cell &a){this->x += a.x; this->y += a.y; return *this;}
+    cell& operator-=(const cell &a){this->x -= a.x; this->y -= a.y; return *this;}
+  };
 
-Point operator+(const Point &a, const Point &b){return Point(a.x + b.x, a.y + b.y);}
-Point operator-(const Point &a, const Point &b){return Point(a.x - b.x, a.y - b.y);}
-bool operator==(const Point &a, const Point &b){return a.x == b.x and a.y == b.y;}
-bool operator!=(const Point &a, const Point &b){return !(a == b);}
+  cell operator+(const cell &a, const cell &b){return cell(a.x + b.x, a.y + b.y);}
+  cell operator-(const cell &a, const cell &b){return cell(a.x - b.x, a.y - b.y);}
+  bool operator==(const cell &a, const cell &b){return a.x == b.x and a.y == b.y;}
+  bool operator!=(const cell &a, const cell &b){return !(a == b);}
 
-bool operator<(const Point &a, const Point &b){
-  return std::make_pair(a.x, a.y) < std::make_pair(b.x, b.y);
-}
+  bool operator<(const cell &a, const cell &b){
+    return std::make_pair(a.x, a.y) < std::make_pair(b.x, b.y);
+  }
 
-std::ostream& operator<<(std::ostream &os, const Point &a){
-  os << "(" << a.x << "," << a.y << ")";
-  return os;
-}
+  std::ostream& operator<<(std::ostream &os, const cell &a){
+    os << "(" << a.x << "," << a.y << ")";
+    return os;
+  }
 
-namespace grid {
-  const auto LEFT = Point(0, -1);
-  const auto RIGHT = Point(0, 1);
-  const auto UP = Point(-1, 0);
-  const auto DOWN = Point(1, 0);
+  const auto LEFT = cell(0, -1);
+  const auto RIGHT = cell(0, 1);
+  const auto UP = cell(-1, 0);
+  const auto DOWN = cell(1, 0);
 
-  const std::array<Point, 4> dir4 = {LEFT, RIGHT, UP, DOWN};
-  const std::array<Point, 8> dir8 = {LEFT, RIGHT, UP, DOWN, LEFT + UP, LEFT + DOWN, RIGHT + UP, RIGHT + DOWN};
+  const std::array<cell, 4> dir4 = {LEFT, RIGHT, UP, DOWN};
+  const std::array<cell, 8> dir8 = {LEFT, RIGHT, UP, DOWN, LEFT + UP, LEFT + DOWN, RIGHT + UP, RIGHT + DOWN};
 }
 #line 4 "Mylib/Grid/grid_find.cpp"
 
@@ -130,20 +132,22 @@ namespace grid {
  * @title Enumerate points satisfying conditions
  * @docs grid_find.md
  */
-template <typename C, typename T = typename C::value_type>
-auto grid_find(const std::vector<C> &A, T value){
-  const int H = A.size(), W = A[0].size();
+namespace haar_lib {
+  template <typename C, typename T = typename C::value_type>
+  auto grid_find(const std::vector<C> &A, T value){
+    const int H = A.size(), W = A[0].size();
 
-  std::vector<Point> ret;
-  for(int i = 0; i < H; ++i){
-    for(int j = 0; j < W; ++j){
-      if(A[i][j] == value){
-        ret.emplace_back(i, j);
+    std::vector<cell> ret;
+    for(int i = 0; i < H; ++i){
+      for(int j = 0; j < W; ++j){
+        if(A[i][j] == value){
+          ret.emplace_back(i, j);
+        }
       }
     }
-  }
 
-  return ret;
+    return ret;
+  }
 }
 
 ```

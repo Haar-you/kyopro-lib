@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/1300/main.test.cpp
+# :heavy_check_mark: test/aoj/1300/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#453a4dbc3063ebc5e529de1cba20ccae">test/aoj/1300</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1300/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1300">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1300</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
-* :x: <a href="../../../../library/Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp.html">Gaussian elimination</a>
-* :x: <a href="../../../../library/Mylib/Number/Rational/rational.cpp.html">Rational number</a>
-* :x: <a href="../../../../library/Mylib/Parser/parser.cpp.html">Parsing</a>
-* :x: <a href="../../../../library/Mylib/String/split.cpp.html">split</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp.html">Gaussian elimination</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Number/Rational/rational.cpp.html">Rational number</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Parser/parser.cpp.html">Parsing</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/String/split.cpp.html">split</a>
 
 
 ## Code
@@ -63,10 +63,12 @@ layout: default
 #include "Mylib/String/split.cpp"
 #include "Mylib/IO/join.cpp"
 
+namespace hl = haar_lib;
+
 using result = std::map<std::string, int>;
 
-struct parser : Parser {
-  parser(const std::string &s): Parser(s){}
+struct parser : hl::parser {
+  parser(const std::string &s): hl::parser(s){}
 
   std::string atom(){
     std::string ret;
@@ -119,9 +121,6 @@ struct parser : Parser {
   }
 };
 
-
-
-
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -131,9 +130,9 @@ int main(){
     if(s == ".") break;
 
     s.pop_back(); // pop period
-    auto a = split(s, "->");
-    auto b = split(a[0], "+");
-    auto c = split(a[1], "+");
+    auto a = hl::split(s, "->");
+    auto b = hl::split(a[0], "+");
+    auto c = hl::split(a[1], "+");
 
     std::map<std::string, int> atoms;
 
@@ -161,17 +160,17 @@ int main(){
       }
     }
 
-    std::vector<std::vector<Rational>> mat(atoms.size(), std::vector<Rational>(ress.size()));
+    std::vector<std::vector<hl::rational>> mat(atoms.size(), std::vector<hl::rational>(ress.size()));
     for(int i = 0; i < (int)ress.size(); ++i){
       for(auto &[k, v] : ress[i]){
         mat[atoms[k]][i] = v;
       }
     }
 
-    gaussian_elimination(mat);
+    hl::gaussian_elimination(mat);
 
     const int n = ress.size();
-    std::vector<Rational> ans(n);
+    std::vector<hl::rational> ans(n);
 
     ans[n - 1] = 1;
 
@@ -179,8 +178,8 @@ int main(){
       if(mat[i].back() == 0) continue;
 
       int k = 0;
-      Rational coef;
-      Rational cons;
+      hl::rational coef;
+      hl::rational cons;
 
       for(int j = 0; j < n; ++j){
         if(ans[j] == 0){
@@ -199,7 +198,7 @@ int main(){
 
     for(int i = 0; i < n; ++i) ans[i] *= l;
 
-    std::cout << join(ans.begin(), ans.end()) << "\n";
+    std::cout << hl::join(ans.begin(), ans.end()) << "\n";
   }
 
   return 0;
@@ -225,174 +224,179 @@ int main(){
  * @title Parsing
  * @docs parser.md
  */
-struct Parser {
-  using state = std::string::const_iterator;
+namespace haar_lib {
+  struct parser {
+    using state = std::string::const_iterator;
 
-  state cur, first, last;
+    state cur, first, last;
 
-  Parser(){}
-  Parser(const std::string &s): cur(s.cbegin()), first(s.cbegin()), last(s.cend()){}
+    parser(){}
+    parser(const std::string &s): cur(s.cbegin()), first(s.cbegin()), last(s.cend()){}
 
-  char peek() const {return *cur;}
+    char peek() const {return *cur;}
 
-  bool check(char c) const {
-    return *cur == c;
-  }
-
-  bool check(const std::string &s) const {
-    state temp = cur;
-    for(auto c : s){
-      if(c != *temp) return false;
-      ++temp;
+    bool check(char c) const {
+      return *cur == c;
     }
-    return true;
-  }
 
-  void ignore(char c){
-    assert(*cur == c);
-    ++cur;
-  }
+    bool check(const std::string &s) const {
+      state temp = cur;
+      for(auto c : s){
+        if(c != *temp) return false;
+        ++temp;
+      }
+      return true;
+    }
 
-  void ignore(){
-    ++cur;
-  }
-
-  void ignore(const std::string &s){
-    for(auto c : s){
+    void ignore(char c){
       assert(*cur == c);
       ++cur;
     }
-  }
 
-  template <class Checker>
-  void ignore_if(const Checker &f){
-    assert(f(*cur));
-    ++cur;
-  }
-
-  bool check_and_ignore(char c){
-    if(*cur != c) return false;
-    ++cur;
-    return true;
-  }
-
-  bool end() const {return cur == last;}
-  bool digit() const {return isdigit(*cur);}
-  bool alpha() const {return isalpha(*cur);}
-  bool lower() const {return islower(*cur);}
-  bool upper() const {return isupper(*cur);}
-
-  char get_char(){
-    return *(cur++);
-  }
-
-  int get_digit(){
-    return (int)(*(cur++) - '0');
-  }
-
-  template <typename Checker>
-  auto get_string(const Checker &f){
-    std::string ret;
-    while(f(peek())){
-      ret += peek();
-      ignore();
-    }
-    return ret;
-  }
-
-  auto get_string_alpha(){
-    std::string ret;
-    while(isalpha(*cur)){
-      ret += *cur;
+    void ignore(){
       ++cur;
     }
-    return ret;
-  }
 
-  auto get_string_alnum(){
-    std::string ret;
-    while(isalnum(*cur)){
-      ret += *cur;
+    void ignore(const std::string &s){
+      for(auto c : s){
+        assert(*cur == c);
+        ++cur;
+      }
+    }
+
+    template <class Checker>
+    void ignore_if(const Checker &f){
+      assert(f(*cur));
       ++cur;
     }
-    return ret;
-  }
 
-  template <typename T>
-  T get_number(){
-    T ret = get_digit();
-    while(digit()){
-      (ret *= 10) += (T)(get_digit());
+    bool check_and_ignore(char c){
+      if(*cur != c) return false;
+      ++cur;
+      return true;
     }
-    return ret;
-  }
-};
+
+    bool end() const {return cur == last;}
+    bool digit() const {return isdigit(*cur);}
+    bool alpha() const {return isalpha(*cur);}
+    bool lower() const {return islower(*cur);}
+    bool upper() const {return isupper(*cur);}
+
+    char get_char(){
+      return *(cur++);
+    }
+
+    int get_digit(){
+      return (int)(*(cur++) - '0');
+    }
+
+    template <typename Checker>
+    auto get_string(const Checker &f){
+      std::string ret;
+      while(f(peek())){
+        ret += peek();
+        ignore();
+      }
+      return ret;
+    }
+
+    auto get_string_alpha(){
+      std::string ret;
+      while(isalpha(*cur)){
+        ret += *cur;
+        ++cur;
+      }
+      return ret;
+    }
+
+    auto get_string_alnum(){
+      std::string ret;
+      while(isalnum(*cur)){
+        ret += *cur;
+        ++cur;
+      }
+      return ret;
+    }
+
+    template <typename T>
+    T get_number(){
+      T ret = get_digit();
+      while(digit()){
+        (ret *= 10) += (T)(get_digit());
+      }
+      return ret;
+    }
+  };
+}
 #line 2 "Mylib/Number/Rational/rational.cpp"
 #include <numeric>
 #line 4 "Mylib/Number/Rational/rational.cpp"
+#include <cmath>
 
 /**
  * @title Rational number
  * @docs rational.md
  */
-class Rational {
-public:
-  int64_t nume, deno;
-  Rational(): nume(0), deno(1){}
-  Rational(int64_t num): nume(num), deno(1){}
-  Rational(int64_t num, int64_t den){
-    int64_t g = std::gcd(num, den);
-    nume = num / g;
-    deno = den / g;
-    if(deno < 0){
-      nume = -nume;
-      deno = -deno;
+namespace haar_lib {
+  class rational {
+  public:
+    int64_t nume, deno;
+    rational(): nume(0), deno(1){}
+    rational(int64_t num): nume(num), deno(1){}
+    rational(int64_t num, int64_t den){
+      int64_t g = std::gcd(num, den);
+      nume = num / g;
+      deno = den / g;
+      if(deno < 0){
+        nume = -nume;
+        deno = -deno;
+      }
     }
+
+    auto operator+(const rational &b){
+      int64_t l = std::lcm((*this).deno, b.deno);
+      return rational(l / (*this).deno * (*this).nume + l / b.deno * b.nume, l);
+    }
+
+    auto operator-(const rational &b){
+      int64_t l = std::lcm((*this).deno, b.deno);
+      return rational(l / (*this).deno * (*this).nume - l / b.deno * b.nume, l);
+    }
+
+    auto operator*(const rational &b){
+      return rational((*this).nume * b.nume, (*this).deno * b.deno);
+    }
+
+    auto operator/(const rational &b){
+      return rational((*this).nume * b.deno, (*this).deno * b.nume);
+    }
+
+    auto& operator+=(const rational &a){*this = *this + a; return *this;}
+    auto& operator-=(const rational &a){*this = *this - a; return *this;}
+    auto& operator*=(const rational &a){*this = *this * a; return *this;}
+    auto& operator/=(const rational &a){*this = *this / a; return *this;}
+
+    explicit operator double() const {return (double)nume / deno;}
+    explicit operator long double() const {return (long double)nume / deno;}
+  };
+
+  std::ostream& operator<<(std::ostream &os, const rational &r){
+    if(r.deno == 1) os << r.nume;
+    else os << r.nume << "/" << r.deno;
+    return os;
   }
 
-  auto operator+(const Rational &b){
-    int64_t l = std::lcm((*this).deno, b.deno);
-    return Rational(l / (*this).deno * (*this).nume + l / b.deno * b.nume, l);
-  }
+  auto operator-(const rational &a){return rational(-a.nume, a.deno);}
 
-  auto operator-(const Rational &b){
-    int64_t l = std::lcm((*this).deno, b.deno);
-    return Rational(l / (*this).deno * (*this).nume - l / b.deno * b.nume, l);
-  }
+  bool operator==(const rational &a, const rational &b){return a.nume == b.nume && a.deno == b.deno;}
+  bool operator!=(const rational &a, const rational &b){return !(a == b);}
+  bool operator<(const rational &a, const rational &b){return a.nume * b.deno < b.nume * a.deno;}
+  bool operator<=(const rational &a, const rational &b){return a.nume * b.deno <= b.nume * a.deno;}
+  bool operator>(const rational &a, const rational &b){return !(a <= b);}
+  bool operator>=(const rational &a, const rational &b){return !(a < b);}
 
-  auto operator*(const Rational &b){
-    return Rational((*this).nume * b.nume, (*this).deno * b.deno);
-  }
-
-  auto operator/(const Rational &b){
-    return Rational((*this).nume * b.deno, (*this).deno * b.nume);
-  }
-
-  auto& operator+=(const Rational &a){*this = *this + a; return *this;}
-  auto& operator-=(const Rational &a){*this = *this - a; return *this;}
-  auto& operator*=(const Rational &a){*this = *this * a; return *this;}
-  auto& operator/=(const Rational &a){*this = *this / a; return *this;}
-
-  explicit operator double() const {return (double)nume / deno;}
-  explicit operator long double() const {return (long double)nume / deno;}
-};
-
-std::ostream& operator<<(std::ostream &os, const Rational &r){
-  if(r.deno == 1) os << r.nume;
-  else os << r.nume << "/" << r.deno;
-  return os;
+  auto abs(const rational &a){return rational(std::abs(a.nume), std::abs(a.deno));}
 }
-
-auto operator-(const Rational &a){return Rational(-a.nume, a.deno);}
-
-bool operator==(const Rational &a, const Rational &b){return a.nume == b.nume && a.deno == b.deno;}
-bool operator!=(const Rational &a, const Rational &b){return !(a == b);}
-bool operator<(const Rational &a, const Rational &b){return a.nume * b.deno < b.nume * a.deno;}
-bool operator<=(const Rational &a, const Rational &b){return a.nume * b.deno <= b.nume * a.deno;}
-bool operator>(const Rational &a, const Rational &b){return !(a <= b);}
-bool operator>=(const Rational &a, const Rational &b){return !(a < b);}
-
-auto abs(const Rational &a){return Rational(abs(a.nume), abs(a.deno));}
 #line 3 "Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp"
 #include <utility>
 
@@ -400,41 +404,43 @@ auto abs(const Rational &a){return Rational(abs(a.nume), abs(a.deno));}
  * @title Gaussian elimination
  * @docs gaussian_elimination.md
  */
-template <typename T>
-int gaussian_elimination(std::vector<std::vector<T>> &a){
-  const int h = a.size();
-  const int w = a[0].size();
-  int rank = 0;
+namespace haar_lib {
+  template <typename T>
+  int gaussian_elimination(std::vector<std::vector<T>> &a){
+    const int h = a.size();
+    const int w = a[0].size();
+    int rank = 0;
 
-  for(int j = 0; j < w; ++j){
-    int pivot = -1;
+    for(int j = 0; j < w; ++j){
+      int pivot = -1;
 
-    for(int i = rank; i < h; ++i){
-      if(a[i][j] != 0){
-        pivot = i;
-        break;
+      for(int i = rank; i < h; ++i){
+        if(a[i][j] != 0){
+          pivot = i;
+          break;
+        }
       }
+
+      if(pivot == -1) continue;
+
+      std::swap(a[pivot], a[rank]);
+
+      auto d = a[rank][j];
+      for(int k = 0; k < w; ++k) a[rank][k] /= d;
+
+      for(int i = 0; i < h; ++i){
+        if(i == rank or a[i][j] == 0) continue;
+        auto d = a[i][j];
+        for(int k = 0; k < w; ++k){
+          a[i][k] -= a[rank][k] * d;
+        }
+      }
+
+      ++rank;
     }
 
-    if(pivot == -1) continue;
-
-    std::swap(a[pivot], a[rank]);
-
-    auto d = a[rank][j];
-    for(int k = 0; k < w; ++k) a[rank][k] /= d;
-
-    for(int i = 0; i < h; ++i){
-      if(i == rank or a[i][j] == 0) continue;
-      auto d = a[i][j];
-      for(int k = 0; k < w; ++k){
-        a[i][k] -= a[rank][k] * d;
-      }
-    }
-
-    ++rank;
+    return rank;
   }
-
-  return rank;
 }
 #line 4 "Mylib/String/split.cpp"
 
@@ -442,22 +448,24 @@ int gaussian_elimination(std::vector<std::vector<T>> &a){
  * @title split
  * @docs split.md
  */
-auto split(const std::string &s, const std::string &delim){
-  std::vector<std::string> ret;
+namespace haar_lib {
+  auto split(const std::string &s, const std::string &delim){
+    std::vector<std::string> ret;
 
-  size_t i = 0;
-  while(1){
-    size_t j = s.find(delim, i);
-    if(j == std::string::npos) break;
+    size_t i = 0;
+    while(1){
+      size_t j = s.find(delim, i);
+      if(j == std::string::npos) break;
 
-    ret.push_back(s.substr(i, j - i));
+      ret.push_back(s.substr(i, j - i));
 
-    i = j + delim.size();
+      i = j + delim.size();
+    }
+
+    ret.push_back(s.substr(i, s.size() - i));
+
+    return ret;
   }
-
-  ret.push_back(s.substr(i, s.size() - i));
-
-  return ret;
 }
 #line 3 "Mylib/IO/join.cpp"
 #include <sstream>
@@ -466,23 +474,27 @@ auto split(const std::string &s, const std::string &delim){
 /**
  * @docs join.md
  */
-template <typename ITER>
-std::string join(ITER first, ITER last, std::string delim = " "){
-  std::stringstream s;
+namespace haar_lib {
+  template <typename Iter>
+  std::string join(Iter first, Iter last, std::string delim = " "){
+    std::stringstream s;
 
-  for(auto it = first; it != last; ++it){
-    if(it != first) s << delim;
-    s << *it;
+    for(auto it = first; it != last; ++it){
+      if(it != first) s << delim;
+      s << *it;
+    }
+
+    return s.str();
   }
-
-  return s.str();
 }
 #line 12 "test/aoj/1300/main.test.cpp"
 
+namespace hl = haar_lib;
+
 using result = std::map<std::string, int>;
 
-struct parser : Parser {
-  parser(const std::string &s): Parser(s){}
+struct parser : hl::parser {
+  parser(const std::string &s): hl::parser(s){}
 
   std::string atom(){
     std::string ret;
@@ -535,9 +547,6 @@ struct parser : Parser {
   }
 };
 
-
-
-
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -547,9 +556,9 @@ int main(){
     if(s == ".") break;
 
     s.pop_back(); // pop period
-    auto a = split(s, "->");
-    auto b = split(a[0], "+");
-    auto c = split(a[1], "+");
+    auto a = hl::split(s, "->");
+    auto b = hl::split(a[0], "+");
+    auto c = hl::split(a[1], "+");
 
     std::map<std::string, int> atoms;
 
@@ -577,17 +586,17 @@ int main(){
       }
     }
 
-    std::vector<std::vector<Rational>> mat(atoms.size(), std::vector<Rational>(ress.size()));
+    std::vector<std::vector<hl::rational>> mat(atoms.size(), std::vector<hl::rational>(ress.size()));
     for(int i = 0; i < (int)ress.size(); ++i){
       for(auto &[k, v] : ress[i]){
         mat[atoms[k]][i] = v;
       }
     }
 
-    gaussian_elimination(mat);
+    hl::gaussian_elimination(mat);
 
     const int n = ress.size();
-    std::vector<Rational> ans(n);
+    std::vector<hl::rational> ans(n);
 
     ans[n - 1] = 1;
 
@@ -595,8 +604,8 @@ int main(){
       if(mat[i].back() == 0) continue;
 
       int k = 0;
-      Rational coef;
-      Rational cons;
+      hl::rational coef;
+      hl::rational cons;
 
       for(int j = 0; j < n; ++j){
         if(ans[j] == 0){
@@ -615,7 +624,7 @@ int main(){
 
     for(int i = 0; i < n; ++i) ans[i] *= l;
 
-    std::cout << join(ans.begin(), ans.end()) << "\n";
+    std::cout << hl::join(ans.begin(), ans.end()) << "\n";
   }
 
   return 0;

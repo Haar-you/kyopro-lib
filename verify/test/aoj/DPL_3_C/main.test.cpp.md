@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#acc0c5805d321988fbdcefb0f7160988">test/aoj/DPL_3_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DPL_3_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_C</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 * :x: <a href="../../../../library/Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle_in_histogram.cpp.html">Largest rectangle in histogram</a>
 
 
@@ -55,12 +55,14 @@ layout: default
 #include "Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle_in_histogram.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N; std::cin >> N;
 
-  auto h = input_vector<int64_t>(N);
+  auto h = hl::input_vector<int64_t>(N);
 
-  auto ans = max_rectangle_in_histogram(h);
+  auto ans = hl::max_rectangle_in_histogram(h);
 
   std::cout << ans << std::endl;
 
@@ -86,60 +88,66 @@ int main(){
  * @title Largest rectangle in histogram
  * @docs max_rectangle_in_histogram.md
  */
-template <typename T>
-T max_rectangle_in_histogram(const std::vector<T> &h){
-  std::stack<std::pair<T, int>> st;
-  T ret = 0;
+namespace haar_lib {
+  template <typename T>
+  T max_rectangle_in_histogram(const std::vector<T> &h){
+    std::stack<std::pair<T, int>> st;
+    T ret = 0;
 
-  for(size_t i = 0; i < h.size(); ++i){
-    if(st.empty()){
-      st.emplace(h[i], i);
-    }else if(st.top().first < h[i]){
-      st.emplace(h[i], i);
-    }else if(st.top().first > h[i]){
-      int j = i;
-      while(not st.empty() and st.top().first > h[i]){
-        ret = std::max(ret, st.top().first * ((T)i - st.top().second));
-        j = st.top().second;
-        st.pop();
+    for(size_t i = 0; i < h.size(); ++i){
+      if(st.empty()){
+        st.emplace(h[i], i);
+      }else if(st.top().first < h[i]){
+        st.emplace(h[i], i);
+      }else if(st.top().first > h[i]){
+        int j = i;
+        while(not st.empty() and st.top().first > h[i]){
+          ret = std::max(ret, st.top().first * ((T)i - st.top().second));
+          j = st.top().second;
+          st.pop();
+        }
+        st.emplace(h[i], j);
       }
-      st.emplace(h[i], j);
     }
-  }
 
-  while(not st.empty()){
-    ret = std::max(ret, st.top().first * ((T)h.size() - st.top().second));
-    st.pop();
-  }
+    while(not st.empty()){
+      ret = std::max(ret, st.top().first * ((T)h.size() - st.top().second));
+      st.pop();
+    }
 
-  return ret;
+    return ret;
+  }
 }
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
  * @docs input_vector.md
  */
-template <typename T>
-std::vector<T> input_vector(int N){
-  std::vector<T> ret(N);
-  for(int i = 0; i < N; ++i) std::cin >> ret[i];
-  return ret;
-}
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> input_vector(int N){
+    std::vector<T> ret(N);
+    for(int i = 0; i < N; ++i) std::cin >> ret[i];
+    return ret;
+  }
 
-template <typename T>
-std::vector<std::vector<T>> input_vector(int N, int M){
-  std::vector<std::vector<T>> ret(N);
-  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
-  return ret;
+  template <typename T>
+  std::vector<std::vector<T>> input_vector(int N, int M){
+    std::vector<std::vector<T>> ret(N);
+    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+    return ret;
+  }
 }
 #line 7 "test/aoj/DPL_3_C/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int N; std::cin >> N;
 
-  auto h = input_vector<int64_t>(N);
+  auto h = hl::input_vector<int64_t>(N);
 
-  auto ans = max_rectangle_in_histogram(h);
+  auto ans = hl::max_rectangle_in_histogram(h);
 
   std::cout << ans << std::endl;
 

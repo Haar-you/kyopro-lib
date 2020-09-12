@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/binary_gcd.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -54,31 +54,33 @@ layout: default
  * @title Binary GCD
  * @docs binary_gcd.md
  */
-int64_t binary_gcd(int64_t a, int64_t b){
-  int64_t g = 1;
+namespace haar_lib {
+  int64_t binary_gcd(int64_t a, int64_t b){
+    int64_t g = 1;
 
-  while(1){
-    if(a > b) std::swap(a, b);
+    while(1){
+      if(a > b) std::swap(a, b);
 
-    if(a == 0){
-      break;
-    }else{
-      if((a & 1) == 0 and (b & 1) == 0){
-        a >>= 1;
-        b >>= 1;
-        g <<= 1;
-      }else if((a & 1) == 0){
-        a >>= 1;
-      }else if((b & 1) == 0){
-        b >>= 1;
+      if(a == 0){
+        break;
       }else{
-        int64_t t = std::abs(a - b) >> 1;
-        b = t;
+        if((a & 1) == 0 and (b & 1) == 0){
+          a >>= 1;
+          b >>= 1;
+          g <<= 1;
+        }else if((a & 1) == 0){
+          a >>= 1;
+        }else if((b & 1) == 0){
+          b >>= 1;
+        }else{
+          int64_t t = std::abs(a - b) >> 1;
+          b = t;
+        }
       }
     }
-  }
 
-  return g * b;
+    return g * b;
+  }
 }
 
 ```
@@ -95,31 +97,33 @@ int64_t binary_gcd(int64_t a, int64_t b){
  * @title Binary GCD
  * @docs binary_gcd.md
  */
-int64_t binary_gcd(int64_t a, int64_t b){
-  int64_t g = 1;
+namespace haar_lib {
+  int64_t binary_gcd(int64_t a, int64_t b){
+    int64_t g = 1;
 
-  while(1){
-    if(a > b) std::swap(a, b);
+    while(1){
+      if(a > b) std::swap(a, b);
 
-    if(a == 0){
-      break;
-    }else{
-      if((a & 1) == 0 and (b & 1) == 0){
-        a >>= 1;
-        b >>= 1;
-        g <<= 1;
-      }else if((a & 1) == 0){
-        a >>= 1;
-      }else if((b & 1) == 0){
-        b >>= 1;
+      if(a == 0){
+        break;
       }else{
-        int64_t t = std::abs(a - b) >> 1;
-        b = t;
+        if((a & 1) == 0 and (b & 1) == 0){
+          a >>= 1;
+          b >>= 1;
+          g <<= 1;
+        }else if((a & 1) == 0){
+          a >>= 1;
+        }else if((b & 1) == 0){
+          b >>= 1;
+        }else{
+          int64_t t = std::abs(a - b) >> 1;
+          b = t;
+        }
       }
     }
-  }
 
-  return g * b;
+    return g * b;
+  }
 }
 
 ```

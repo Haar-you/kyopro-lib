@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/add_min.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -53,26 +53,28 @@ layout: default
  * @title Range add / Range min
  * @docs add_min.md
  */
-template <typename T, typename U>
-struct AddMin {
-  using value_type_get = std::optional<T>;
-  using value_type_update = U;
+namespace haar_lib {
+  template <typename T, typename U>
+  struct add_min {
+    using value_type_get = std::optional<T>;
+    using value_type_update = U;
 
-  value_type_get id_get() const {return {};}
-  value_type_update id_update() const {return 0;}
+    value_type_get id_get() const {return {};}
+    value_type_update id_update() const {return 0;}
 
-  value_type_get op_get(value_type_get a, value_type_get b) const {
-    if(not a) return b;
-    if(not b) return a;
-    return {std::min(*a, *b)};
-  }
-  value_type_update op_update(value_type_update a, value_type_update b) const {return a + b;}
+    value_type_get op_get(value_type_get a, value_type_get b) const {
+      if(not a) return b;
+      if(not b) return a;
+      return {std::min(*a, *b)};
+    }
+    value_type_update op_update(value_type_update a, value_type_update b) const {return a + b;}
 
-  value_type_get op(value_type_get a, value_type_update b, int) const {
-    if(a) return {*a + b};
-    return {};
-  }
-};
+    value_type_get op(value_type_get a, value_type_update b, int) const {
+      if(a) return {*a + b};
+      return {};
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -87,26 +89,28 @@ struct AddMin {
  * @title Range add / Range min
  * @docs add_min.md
  */
-template <typename T, typename U>
-struct AddMin {
-  using value_type_get = std::optional<T>;
-  using value_type_update = U;
+namespace haar_lib {
+  template <typename T, typename U>
+  struct add_min {
+    using value_type_get = std::optional<T>;
+    using value_type_update = U;
 
-  value_type_get id_get() const {return {};}
-  value_type_update id_update() const {return 0;}
+    value_type_get id_get() const {return {};}
+    value_type_update id_update() const {return 0;}
 
-  value_type_get op_get(value_type_get a, value_type_get b) const {
-    if(not a) return b;
-    if(not b) return a;
-    return {std::min(*a, *b)};
-  }
-  value_type_update op_update(value_type_update a, value_type_update b) const {return a + b;}
+    value_type_get op_get(value_type_get a, value_type_get b) const {
+      if(not a) return b;
+      if(not b) return a;
+      return {std::min(*a, *b)};
+    }
+    value_type_update op_update(value_type_update a, value_type_update b) const {return a + b;}
 
-  value_type_get op(value_type_get a, value_type_update b, int) const {
-    if(a) return {*a + b};
-    return {};
-  }
-};
+    value_type_get op(value_type_get a, value_type_update b, int) const {
+      if(a) return {*a + b};
+      return {};
+    }
+  };
+}
 
 ```
 {% endraw %}

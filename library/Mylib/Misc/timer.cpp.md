@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/timer.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-30 23:15:57+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -49,6 +49,7 @@ layout: default
  * @title Timer
  * @docs timer.md
  */
+namespace haar_lib {
 template <typename F>
 void timer(F f){
   auto s = std::chrono::system_clock::now();
@@ -57,6 +58,7 @@ void timer(F f){
   auto d = std::chrono::duration_cast<std::chrono::milliseconds>(t - s).count();
   std::cerr << d << "ms" << "\n";
 };
+}
 
 ```
 {% endraw %}
@@ -72,6 +74,7 @@ void timer(F f){
  * @title Timer
  * @docs timer.md
  */
+namespace haar_lib {
 template <typename F>
 void timer(F f){
   auto s = std::chrono::system_clock::now();
@@ -80,6 +83,7 @@ void timer(F f){
   auto d = std::chrono::duration_cast<std::chrono::milliseconds>(t - s).count();
   std::cerr << d << "ms" << "\n";
 };
+}
 
 ```
 {% endraw %}

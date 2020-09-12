@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: split
+# :heavy_check_mark: split
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/split.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/aoj/1300/main.test.cpp.html">test/aoj/1300/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/1300/main.test.cpp.html">test/aoj/1300/main.test.cpp</a>
 
 
 ## Code
@@ -54,22 +54,24 @@ layout: default
  * @title split
  * @docs split.md
  */
-auto split(const std::string &s, const std::string &delim){
-  std::vector<std::string> ret;
+namespace haar_lib {
+  auto split(const std::string &s, const std::string &delim){
+    std::vector<std::string> ret;
 
-  size_t i = 0;
-  while(1){
-    size_t j = s.find(delim, i);
-    if(j == std::string::npos) break;
+    size_t i = 0;
+    while(1){
+      size_t j = s.find(delim, i);
+      if(j == std::string::npos) break;
 
-    ret.push_back(s.substr(i, j - i));
+      ret.push_back(s.substr(i, j - i));
 
-    i = j + delim.size();
+      i = j + delim.size();
+    }
+
+    ret.push_back(s.substr(i, s.size() - i));
+
+    return ret;
   }
-
-  ret.push_back(s.substr(i, s.size() - i));
-
-  return ret;
 }
 
 ```
@@ -86,22 +88,24 @@ auto split(const std::string &s, const std::string &delim){
  * @title split
  * @docs split.md
  */
-auto split(const std::string &s, const std::string &delim){
-  std::vector<std::string> ret;
+namespace haar_lib {
+  auto split(const std::string &s, const std::string &delim){
+    std::vector<std::string> ret;
 
-  size_t i = 0;
-  while(1){
-    size_t j = s.find(delim, i);
-    if(j == std::string::npos) break;
+    size_t i = 0;
+    while(1){
+      size_t j = s.find(delim, i);
+      if(j == std::string::npos) break;
 
-    ret.push_back(s.substr(i, j - i));
+      ret.push_back(s.substr(i, j - i));
 
-    i = j + delim.size();
+      i = j + delim.size();
+    }
+
+    ret.push_back(s.substr(i, s.size() - i));
+
+    return ret;
   }
-
-  ret.push_back(s.substr(i, s.size() - i));
-
-  return ret;
 }
 
 ```

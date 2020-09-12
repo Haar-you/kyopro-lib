@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/zip.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -50,16 +50,18 @@ layout: default
  * @title Zip function
  * @docs zip.md
  */
-template <typename ... Args>
-auto zip(std::vector<Args> ... a){
-  const int N = std::min({a.size() ...});
-  std::vector<std::tuple<Args ...>> ret(N);
+namespace haar_lib {
+  template <typename ... Args>
+  auto zip(std::vector<Args> ... a){
+    const int N = std::min({a.size() ...});
+    std::vector<std::tuple<Args ...>> ret(N);
 
-  for(int i = 0; i < N; ++i){
-    ret[i] = std::make_tuple(a[i] ...);
+    for(int i = 0; i < N; ++i){
+      ret[i] = std::make_tuple(a[i] ...);
+    }
+
+    return ret;
   }
-
-  return ret;
 }
 
 ```
@@ -77,16 +79,18 @@ auto zip(std::vector<Args> ... a){
  * @title Zip function
  * @docs zip.md
  */
-template <typename ... Args>
-auto zip(std::vector<Args> ... a){
-  const int N = std::min({a.size() ...});
-  std::vector<std::tuple<Args ...>> ret(N);
+namespace haar_lib {
+  template <typename ... Args>
+  auto zip(std::vector<Args> ... a){
+    const int N = std::min({a.size() ...});
+    std::vector<std::tuple<Args ...>> ret(N);
 
-  for(int i = 0; i < N; ++i){
-    ret[i] = std::make_tuple(a[i] ...);
+    for(int i = 0; i < N; ++i){
+      ret[i] = std::make_tuple(a[i] ...);
+    }
+
+    return ret;
   }
-
-  return ret;
 }
 
 ```

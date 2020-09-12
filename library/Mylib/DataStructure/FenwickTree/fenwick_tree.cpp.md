@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#2f58e2c328298747e7665b6f6b5791ad">Mylib/DataStructure/FenwickTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -87,49 +87,51 @@ layout: default
  * @title Fenwick tree
  * @docs fenwick_tree.md
  */
-template <typename AbelianGroup>
-class FenwickTree {
-  using value_type = typename AbelianGroup::value_type;
-  const static AbelianGroup G;
+namespace haar_lib {
+  template <typename AbelianGroup>
+  class fenwick_tree {
+    using value_type = typename AbelianGroup::value_type;
+    const static AbelianGroup G;
 
-  int size;
-  std::vector<value_type> data;
+    int size;
+    std::vector<value_type> data;
 
-public:
-  FenwickTree(){}
-  FenwickTree(int size):
-    size(size), data(size + 1, G())
-  {}
+  public:
+    fenwick_tree(){}
+    fenwick_tree(int size):
+      size(size), data(size + 1, G())
+    {}
 
-  void update(int i, const value_type &val){
-    i += 1; // 1-index
+    void update(int i, const value_type &val){
+      i += 1; // 1-index
 
-    while(i <= size){
-      data[i] = G(data[i], val);
-      i += i & (-i);
-    }
-  }
-
-  value_type get(int i) const { // [0, i)
-    value_type ret = G();
-    i += 1; // 1-index
-
-    while(i > 0){
-      ret = G(ret, data[i]);
-      i -= i & (-i);
+      while(i <= size){
+        data[i] = G(data[i], val);
+        i += i & (-i);
+      }
     }
 
-    return ret;
-  }
+    value_type get(int i) const { // [0, i)
+      value_type ret = G();
+      i += 1; // 1-index
 
-  value_type get(int l, int r) const { // [l, r)
-    return G(get(r - 1), G.inv(get(l - 1)));
-  }
+      while(i > 0){
+        ret = G(ret, data[i]);
+        i -= i & (-i);
+      }
 
-  value_type operator[](int x) const {
-    return get(x, x + 1);
-  }
-};
+      return ret;
+    }
+
+    value_type get(int l, int r) const { // [l, r)
+      return G(get(r - 1), G.inv(get(l - 1)));
+    }
+
+    value_type operator[](int x) const {
+      return get(x, x + 1);
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -144,49 +146,51 @@ public:
  * @title Fenwick tree
  * @docs fenwick_tree.md
  */
-template <typename AbelianGroup>
-class FenwickTree {
-  using value_type = typename AbelianGroup::value_type;
-  const static AbelianGroup G;
+namespace haar_lib {
+  template <typename AbelianGroup>
+  class fenwick_tree {
+    using value_type = typename AbelianGroup::value_type;
+    const static AbelianGroup G;
 
-  int size;
-  std::vector<value_type> data;
+    int size;
+    std::vector<value_type> data;
 
-public:
-  FenwickTree(){}
-  FenwickTree(int size):
-    size(size), data(size + 1, G())
-  {}
+  public:
+    fenwick_tree(){}
+    fenwick_tree(int size):
+      size(size), data(size + 1, G())
+    {}
 
-  void update(int i, const value_type &val){
-    i += 1; // 1-index
+    void update(int i, const value_type &val){
+      i += 1; // 1-index
 
-    while(i <= size){
-      data[i] = G(data[i], val);
-      i += i & (-i);
-    }
-  }
-
-  value_type get(int i) const { // [0, i)
-    value_type ret = G();
-    i += 1; // 1-index
-
-    while(i > 0){
-      ret = G(ret, data[i]);
-      i -= i & (-i);
+      while(i <= size){
+        data[i] = G(data[i], val);
+        i += i & (-i);
+      }
     }
 
-    return ret;
-  }
+    value_type get(int i) const { // [0, i)
+      value_type ret = G();
+      i += 1; // 1-index
 
-  value_type get(int l, int r) const { // [l, r)
-    return G(get(r - 1), G.inv(get(l - 1)));
-  }
+      while(i > 0){
+        ret = G(ret, data[i]);
+        i -= i & (-i);
+      }
 
-  value_type operator[](int x) const {
-    return get(x, x + 1);
-  }
-};
+      return ret;
+    }
+
+    value_type get(int l, int r) const { // [l, r)
+      return G(get(r - 1), G.inv(get(l - 1)));
+    }
+
+    value_type operator[](int x) const {
+      return get(x, x + 1);
+    }
+  };
+}
 
 ```
 {% endraw %}

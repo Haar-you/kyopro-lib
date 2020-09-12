@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Parallel binary search
+# :heavy_check_mark: Parallel binary search
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a7582795d3062b8fdf2ece0fd4f2d90d">Mylib/Algorithm/Search</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Search/parallel_binary_search.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-07-06 20:15:58+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -55,7 +55,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
 
 
 ## Code
@@ -71,38 +71,40 @@ layout: default
  * @title Parallel binary search
  * @docs parallel_binary_search.md
  */
-template <typename Init, typename Process, typename Checker>
-auto parallel_binary_search(int M, int Q, Init init, Process process, Checker checker){
-  std::vector<int> lb(Q, -1), ub(Q, M);
+namespace haar_lib {
+  template <typename Init, typename Process, typename Checker>
+  auto parallel_binary_search(int M, int Q, Init init, Process process, Checker checker){
+    std::vector<int> lb(Q, -1), ub(Q, M);
 
-  while(1){
-    bool check = true;
-    std::vector<std::vector<int>> mids(M);
-    for(int i = 0; i < Q; ++i){
-      if(std::abs(lb[i] - ub[i]) > 1){
-        check = false;
-        int mid = (lb[i] + ub[i]) / 2;
-        mids[mid].push_back(i);
+    while(1){
+      bool check = true;
+      std::vector<std::vector<int>> mids(M);
+      for(int i = 0; i < Q; ++i){
+        if(std::abs(lb[i] - ub[i]) > 1){
+          check = false;
+          int mid = (lb[i] + ub[i]) / 2;
+          mids[mid].push_back(i);
+        }
       }
-    }
 
-    if(check) break;
+      if(check) break;
 
-    init();
+      init();
 
-    for(int i = 0; i < M; ++i){
-      process(i);
-      for(int j : mids[i]){
-        if(checker(j)){
-          ub[j] = i;
-        }else{
-          lb[j] = i;
+      for(int i = 0; i < M; ++i){
+        process(i);
+        for(int j : mids[i]){
+          if(checker(j)){
+            ub[j] = i;
+          }else{
+            lb[j] = i;
+          }
         }
       }
     }
-  }
 
-  return ub;
+    return ub;
+  }
 }
 
 ```
@@ -119,38 +121,40 @@ auto parallel_binary_search(int M, int Q, Init init, Process process, Checker ch
  * @title Parallel binary search
  * @docs parallel_binary_search.md
  */
-template <typename Init, typename Process, typename Checker>
-auto parallel_binary_search(int M, int Q, Init init, Process process, Checker checker){
-  std::vector<int> lb(Q, -1), ub(Q, M);
+namespace haar_lib {
+  template <typename Init, typename Process, typename Checker>
+  auto parallel_binary_search(int M, int Q, Init init, Process process, Checker checker){
+    std::vector<int> lb(Q, -1), ub(Q, M);
 
-  while(1){
-    bool check = true;
-    std::vector<std::vector<int>> mids(M);
-    for(int i = 0; i < Q; ++i){
-      if(std::abs(lb[i] - ub[i]) > 1){
-        check = false;
-        int mid = (lb[i] + ub[i]) / 2;
-        mids[mid].push_back(i);
+    while(1){
+      bool check = true;
+      std::vector<std::vector<int>> mids(M);
+      for(int i = 0; i < Q; ++i){
+        if(std::abs(lb[i] - ub[i]) > 1){
+          check = false;
+          int mid = (lb[i] + ub[i]) / 2;
+          mids[mid].push_back(i);
+        }
       }
-    }
 
-    if(check) break;
+      if(check) break;
 
-    init();
+      init();
 
-    for(int i = 0; i < M; ++i){
-      process(i);
-      for(int j : mids[i]){
-        if(checker(j)){
-          ub[j] = i;
-        }else{
-          lb[j] = i;
+      for(int i = 0; i < M; ++i){
+        process(i);
+        for(int j : mids[i]){
+          if(checker(j)){
+            ub[j] = i;
+          }else{
+            lb[j] = i;
+          }
         }
       }
     }
-  }
 
-  return ub;
+    return ub;
+  }
 }
 
 ```

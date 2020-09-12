@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a7582795d3062b8fdf2ece0fd4f2d90d">Mylib/Algorithm/Search</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Search/ternary_search_downwards.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -53,22 +53,24 @@ layout: default
  * @title Ternary search (Convex downwards)
  * @docs ternary_search_downwards.md
  */
-template <typename T = double, typename Func = std::function<T(T)>>
-T ternary_search_downwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
-  T t1 = 0, t2 = 0;
+namespace haar_lib {
+  template <typename T = double, typename Func = std::function<T(T)>>
+  T ternary_search_downwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
+    T t1 = 0, t2 = 0;
 
-  while(LOOP_COUNT--){
-    t1 = lb + (ub - lb) / 3;
-    t2 = lb + (ub - lb) / 3 * 2;
+    while(LOOP_COUNT--){
+      t1 = lb + (ub - lb) / 3;
+      t2 = lb + (ub - lb) / 3 * 2;
 
-    if(f(t1) < f(t2)){
-      ub = t2;
-    }else{
-      lb = t1;
+      if(f(t1) < f(t2)){
+        ub = t2;
+      }else{
+        lb = t1;
+      }
     }
-  }
 
-  return lb;
+    return lb;
+  }
 }
 
 ```
@@ -84,22 +86,24 @@ T ternary_search_downwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
  * @title Ternary search (Convex downwards)
  * @docs ternary_search_downwards.md
  */
-template <typename T = double, typename Func = std::function<T(T)>>
-T ternary_search_downwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
-  T t1 = 0, t2 = 0;
+namespace haar_lib {
+  template <typename T = double, typename Func = std::function<T(T)>>
+  T ternary_search_downwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
+    T t1 = 0, t2 = 0;
 
-  while(LOOP_COUNT--){
-    t1 = lb + (ub - lb) / 3;
-    t2 = lb + (ub - lb) / 3 * 2;
+    while(LOOP_COUNT--){
+      t1 = lb + (ub - lb) / 3;
+      t2 = lb + (ub - lb) / 3 * 2;
 
-    if(f(t1) < f(t2)){
-      ub = t2;
-    }else{
-      lb = t1;
+      if(f(t1) < f(t2)){
+        ub = t2;
+      }else{
+        lb = t1;
+      }
     }
-  }
 
-  return lb;
+    return lb;
+  }
 }
 
 ```

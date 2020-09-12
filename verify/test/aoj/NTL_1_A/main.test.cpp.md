@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#3008ead005d9a504d0a3e077716b71c1">test/aoj/NTL_1_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/NTL_1_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_A</a>
@@ -52,10 +52,12 @@ layout: default
 #include <iostream>
 #include "Mylib/Number/Prime/prime_factorize.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n; std::cin >> n;
 
-  auto res = prime_factorize(n);
+  auto res = hl::prime_factorize(n);
 
   std::cout << n << ":";
 
@@ -89,27 +91,31 @@ int main(){
  * @title Prime factorization
  * @docs prime_factorize.md
  */
-auto prime_factorize(int64_t n){
-  std::vector<std::pair<int64_t, int64_t>> ret;
-  for(int64_t i = 2LL; i * i <= n; ++i){
-    if(n % i == 0){
-      int64_t c = 0;
-      while(n % i == 0){
-        n /= i;
-        ++c;
+namespace haar_lib {
+  auto prime_factorize(int64_t n){
+    std::vector<std::pair<int64_t, int64_t>> ret;
+    for(int64_t i = 2LL; i * i <= n; ++i){
+      if(n % i == 0){
+        int64_t c = 0;
+        while(n % i == 0){
+          n /= i;
+          ++c;
+        }
+        ret.emplace_back(i, c);
       }
-      ret.emplace_back(i, c);
     }
+    if(n != 1) ret.emplace_back(n, 1);
+    return ret;
   }
-  if(n != 1) ret.emplace_back(n, 1);
-  return ret;
 }
 #line 5 "test/aoj/NTL_1_A/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int n; std::cin >> n;
 
-  auto res = prime_factorize(n);
+  auto res = hl::prime_factorize(n);
 
   std::cout << n << ":";
 

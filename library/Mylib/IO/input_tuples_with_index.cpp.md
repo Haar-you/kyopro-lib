@@ -25,27 +25,27 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Mylib/IO/input_tuples_with_index.cpp
+# :question: Mylib/IO/input_tuples_with_index.cpp
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#7f8c074a28e3c2f263a02491ce2132dd">Mylib/IO</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/IO/input_tuples_with_index.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
 
 ## Depends on
 
-* :x: <a href="input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/aoj/1508/main.splay_tree.test.cpp.html">test/aoj/1508/main.splay_tree.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/1508/main.treap.test.cpp.html">test/aoj/1508/main.treap.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/2136/main.test.cpp.html">test/aoj/2136/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/1508/main.splay_tree.test.cpp.html">test/aoj/1508/main.splay_tree.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/1508/main.treap.test.cpp.html">test/aoj/1508/main.treap.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/2136/main.test.cpp.html">test/aoj/2136/main.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/DSL_2_C/main.test.cpp.html">test/aoj/DSL_2_C/main.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/GRL_5_C/main.doubling.test.cpp.html">test/aoj/GRL_5_C/main.doubling.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/GRL_5_C/main.hld.test.cpp.html">test/aoj/GRL_5_C/main.hld.test.cpp</a>
@@ -71,47 +71,49 @@ layout: default
 /**
  * @docs input_tuples_with_index.md
  */
-template <typename ... Args>
-class InputTuplesWithIndex {
-  struct iter {
-    using value_type = std::tuple<int, Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N;
-    int c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuplesWithIndex {
+    struct iter {
+      using value_type = std::tuple<int, Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N;
+      int c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::tuple<Args ...> temp; std::cin >> temp;
-        value = std::tuple_cat(std::make_tuple(c), temp);
+      value_type operator*(){
+        if(not fetched){
+          std::tuple<Args ...> temp; std::cin >> temp;
+          value = std::tuple_cat(std::make_tuple(c), temp);
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuplesWithIndex(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuplesWithIndex(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples_with_index(int N){
-  return InputTuplesWithIndex<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples_with_index(int N){
+    return InputTuplesWithIndex<Args ...>(N);
+  }
 }
 
 ```
@@ -131,68 +133,72 @@ auto input_tuples_with_index(int N){
 /**
  * @docs input_tuple.md
  */
-template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
-}
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
+  }
 
-template <typename T, typename U>
-std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
-  s >> value.first >> value.second;
-  return s;
-}
+  template <typename T, typename U>
+  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+    s >> value.first >> value.second;
+    return s;
+  }
 
-template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
-  return s;
+  template <typename ... Args>
+  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
+    return s;
+  }
 }
 #line 8 "Mylib/IO/input_tuples_with_index.cpp"
 
 /**
  * @docs input_tuples_with_index.md
  */
-template <typename ... Args>
-class InputTuplesWithIndex {
-  struct iter {
-    using value_type = std::tuple<int, Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N;
-    int c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuplesWithIndex {
+    struct iter {
+      using value_type = std::tuple<int, Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N;
+      int c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::tuple<Args ...> temp; std::cin >> temp;
-        value = std::tuple_cat(std::make_tuple(c), temp);
+      value_type operator*(){
+        if(not fetched){
+          std::tuple<Args ...> temp; std::cin >> temp;
+          value = std::tuple_cat(std::make_tuple(c), temp);
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuplesWithIndex(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuplesWithIndex(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples_with_index(int N){
-  return InputTuplesWithIndex<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples_with_index(int N){
+    return InputTuplesWithIndex<Args ...>(N);
+  }
 }
 
 ```

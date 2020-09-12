@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#d22130300c64d313f1c5481cac7c3c1c">test/aoj/GRL_6_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_6_A/main.push_relabel.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A</a>
@@ -40,8 +40,8 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Graph/Flow/push_relabel.cpp.html">Push-relabel</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -56,12 +56,14 @@ layout: default
 #include "Mylib/Graph/Flow/push_relabel.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int V, E; std::cin >> V >> E;
 
-  PushRelabel<int> f(V);
+  hl::push_relabel<int> f(V);
 
-  for(auto [s, t, c] : input_tuples<int, int, int>(E)){
+  for(auto [s, t, c] : hl::input_tuples<int, int, int>(E)){
     f.add_edge(s, t, c);
   }
 
@@ -92,142 +94,144 @@ int main(){
  * @title Push-relabel
  * @docs push_relabel.md
  */
-template <typename T>
-struct PushRelabel {
-private:
-  struct edge {
-    int from, to;
-    int rev;
-    T cap;
-    bool is_rev;
-  };
+namespace haar_lib {
+  template <typename T>
+  struct push_relabel {
+  private:
+    struct edge {
+      int from, to;
+      int rev;
+      T cap;
+      bool is_rev;
+    };
 
-  int N;
-  std::vector<std::vector<edge>> g;
-  std::vector<T> excess;
-  std::vector<int> height;
-  std::queue<int> next_active_vertex;
-  constexpr static T inf = std::numeric_limits<T>::max();
+    int N;
+    std::vector<std::vector<edge>> g;
+    std::vector<T> excess;
+    std::vector<int> height;
+    std::queue<int> next_active_vertex;
+    constexpr static T inf = std::numeric_limits<T>::max();
 
-  void init(int s, int t){
-    excess[s] = inf;
+    void init(int s, int t){
+      excess[s] = inf;
 
-    for(auto &e : g[s]){
-      push(e, s, t);
-    }
-
-    {
-      for(int i = 0; i < N; ++i){
-        height[i] = N;
+      for(auto &e : g[s]){
+        push(e, s, t);
       }
 
-      std::queue<int> q;
-      std::vector<bool> check(N);
-      q.push(t);
-      height[t] = 0;
+      {
+        for(int i = 0; i < N; ++i){
+          height[i] = N;
+        }
 
-      while(not q.empty()){
-        const int i = q.front(); q.pop();
+        std::queue<int> q;
+        std::vector<bool> check(N);
+        q.push(t);
+        height[t] = 0;
 
-        if(check[i]) continue;
-        check[i] = true;
+        while(not q.empty()){
+          const int i = q.front(); q.pop();
 
-        for(auto &e : g[i]){
-          if(not e.is_rev) continue;
-          if(height[e.from] + 1 < height[e.to]){
-            height[e.to] = height[e.from] + 1;
-            q.push(e.to);
+          if(check[i]) continue;
+          check[i] = true;
+
+          for(auto &e : g[i]){
+            if(not e.is_rev) continue;
+            if(height[e.from] + 1 < height[e.to]){
+              height[e.to] = height[e.from] + 1;
+              q.push(e.to);
+            }
           }
         }
-      }
 
-      height[s] = N;
-    }
-  }
-
-  bool is_pushable(const edge &e){
-    if(excess[e.from] == 0) return false;
-    if(height[e.from] != height[e.to] + 1) return false;
-    if(e.cap == 0) return false;
-    return true;
-  }
-
-  void push(edge &e, int, int){
-    auto &r = g[e.to][e.rev];
-
-    T flow = std::min(e.cap, excess[e.from]);
-
-    e.cap -= flow;
-    r.cap += flow;
-
-    excess[e.from] -= flow;
-    excess[e.to] += flow;
-
-    if(excess[e.to] == flow) next_active_vertex.push(e.to);
-  }
-
-  void relabel(int i, int, int){
-    int a = std::numeric_limits<int>::max() / 2;
-    for(auto &e : g[i]){
-      if(e.cap > 0) a = std::min(a, height[e.to]);
-    }
-
-    height[i] = a + 1;
-  }
-
-public:
-  PushRelabel(){}
-  PushRelabel(int N): N(N), g(N), excess(N), height(N){}
-  PushRelabel(std::vector<std::vector<std::pair<int, T>>> g):
-    N(g.size()), g(N), excess(N), height(N)
-  {
-    for(int i = 0; i < N; ++i){
-      for(auto [j, c] : g[i]){
-        add_edge(i, j, c);
+        height[s] = N;
       }
     }
-  }
 
+    bool is_pushable(const edge &e){
+      if(excess[e.from] == 0) return false;
+      if(height[e.from] != height[e.to] + 1) return false;
+      if(e.cap == 0) return false;
+      return true;
+    }
 
-  void add_edge(int from, int to, T c){
-    g[from].push_back({from, to, (int)g[to].size(), c, false});
-    g[to].push_back({to, from, (int)g[from].size() - 1, 0, true});
-  }
+    void push(edge &e, int, int){
+      auto &r = g[e.to][e.rev];
 
-  T solve(int s, int t){
-    init(s, t);
+      T flow = std::min(e.cap, excess[e.from]);
 
-    while(true){
-      int index = -1;
+      e.cap -= flow;
+      r.cap += flow;
 
-      while(not next_active_vertex.empty()){
-        int i = next_active_vertex.front();
-        if(i != s and i != t and excess[i] > 0){
-          index = i;
-          break;
-        }
-        next_active_vertex.pop();
+      excess[e.from] -= flow;
+      excess[e.to] += flow;
+
+      if(excess[e.to] == flow) next_active_vertex.push(e.to);
+    }
+
+    void relabel(int i, int, int){
+      int a = std::numeric_limits<int>::max() / 2;
+      for(auto &e : g[i]){
+        if(e.cap > 0) a = std::min(a, height[e.to]);
       }
 
-      if(index == -1) break;
+      height[i] = a + 1;
+    }
 
-      bool ok = false;
-      for(auto &e : g[index]){
-        if(is_pushable(e)){
-          push(e, s, t);
-          ok = true;
-          break;
+  public:
+    push_relabel(){}
+    push_relabel(int N): N(N), g(N), excess(N), height(N){}
+    push_relabel(std::vector<std::vector<std::pair<int, T>>> g):
+      N(g.size()), g(N), excess(N), height(N)
+    {
+      for(int i = 0; i < N; ++i){
+        for(auto [j, c] : g[i]){
+          add_edge(i, j, c);
         }
       }
-
-      if(not ok){
-        relabel(index, s, t);
-      }
     }
 
-    return excess[t];
-  }
-};
+
+    void add_edge(int from, int to, T c){
+      g[from].push_back({from, to, (int)g[to].size(), c, false});
+      g[to].push_back({to, from, (int)g[from].size() - 1, 0, true});
+    }
+
+    T solve(int s, int t){
+      init(s, t);
+
+      while(true){
+        int index = -1;
+
+        while(not next_active_vertex.empty()){
+          int i = next_active_vertex.front();
+          if(i != s and i != t and excess[i] > 0){
+            index = i;
+            break;
+          }
+          next_active_vertex.pop();
+        }
+
+        if(index == -1) break;
+
+        bool ok = false;
+        for(auto &e : g[index]){
+          if(is_pushable(e)){
+            push(e, s, t);
+            ok = true;
+            break;
+          }
+        }
+
+        if(not ok){
+          relabel(index, s, t);
+        }
+      }
+
+      return excess[t];
+    }
+  };
+}
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
 #line 6 "Mylib/IO/input_tuples.cpp"
@@ -237,75 +241,81 @@ public:
 /**
  * @docs input_tuple.md
  */
-template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
-}
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
+  }
 
-template <typename T, typename U>
-std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
-  s >> value.first >> value.second;
-  return s;
-}
+  template <typename T, typename U>
+  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+    s >> value.first >> value.second;
+    return s;
+  }
 
-template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
-  return s;
+  template <typename ... Args>
+  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
+    return s;
+  }
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
-template <typename ... Args>
-class InputTuples {
-  struct iter {
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuples {
+    struct iter {
+      using value_type = std::tuple<Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N, c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
+      value_type operator*(){
+        if(not fetched){
+          std::cin >> value;
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuples(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples(int N){
+    return InputTuples<Args ...>(N);
+  }
 }
 #line 7 "test/aoj/GRL_6_A/main.push_relabel.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  PushRelabel<int> f(V);
+  hl::push_relabel<int> f(V);
 
-  for(auto [s, t, c] : input_tuples<int, int, int>(E)){
+  for(auto [s, t, c] : hl::input_tuples<int, int, int>(E)){
     f.add_edge(s, t, c);
   }
 

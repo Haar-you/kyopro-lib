@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-11 18:14:08+09:00
 
 
 
@@ -53,66 +53,69 @@ layout: default
  * @title Dynamic segment tree
  * @docs dynamic_segment_tree.md
  */
-template <typename Monoid>
-class DynamicSegmentTree {
-  using value_type = typename Monoid::value_type;
-  const static Monoid M;
+namespace haar_lib {
+  template <typename Monoid>
+  class dynamic_segment_tree {
+    using value_type = typename Monoid::value_type;
+    const static Monoid M;
 
-  struct Node {
-    value_type val;
-    Node *left = nullptr, *right = nullptr;
-    Node(const value_type &val): val(val) {}
-  };
+    struct node {
+      value_type val;
+      node *left = nullptr, *right = nullptr;
+      node(const value_type &val): val(val) {}
+    };
 
-  int64_t depth, size;
-  Node *root = nullptr;
+    int64_t depth, size, hsize;
+    node *root = nullptr;
 
-  value_type eval(Node *t) const {
-    return t ? t->val : M();
-  }
-
-  Node* update_aux(Node *node, int64_t l, int64_t r, int64_t pos, const value_type &val){
-    if(r - l == 1){
-      if(node) node->val = val;
-      else node = new Node(val);
-    }else{
-      const int64_t m = (l + r) / 2;
-      if(!node) node = new Node(val);
-      if(pos < m) node->left = update_aux(node->left, l, m, pos, val);
-      else node->right = update_aux(node->right, m, r, pos, val);
-      node->val = M(eval(node->left), eval(node->right));
+    value_type eval(node *t) const {
+      return t ? t->val : M();
     }
-    return node;
-  }
 
-  value_type get_aux(Node* node, int64_t l, int64_t r, int64_t x, int64_t y) const {
-    if(!node) return M();
-    if(x <= l && r <= y) return node ? node->val : M();
-    if(r < x || y < l) return M();
-    int64_t m = (l + r) >> 1;
-    return M(get_aux(node->left, l, m, x, y), get_aux(node->right, m, r, x, y));
-  }
+    node* update(node *t, int64_t l, int64_t r, int64_t pos, const value_type &val){
+      if(r - l == 1){
+        if(t) t->val = val;
+        else t = new node(val);
+      }else{
+        const int64_t m = (l + r) / 2;
+        if(not t) t = new node(val);
+        if(pos < m) t->left = update(t->left, l, m, pos, val);
+        else t->right = update(t->right, m, r, pos, val);
+        t->val = M(eval(t->left), eval(t->right));
+      }
+      return t;
+    }
 
-public:
-  DynamicSegmentTree(int64_t n):
-    depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),
-    size(1LL << depth)
-  {
-    root = new Node(M());
-  }
+    value_type get(node* t, int64_t l, int64_t r, int64_t x, int64_t y) const {
+      if(not t) return M();
+      if(x <= l && r <= y) return t ? t->val : M();
+      if(r < x || y < l) return M();
+      int64_t m = (l + r) >> 1;
+      return M(get(t->left, l, m, x, y), get(t->right, m, r, x, y));
+    }
 
-  void update(int64_t i, const value_type &x){
-    update_aux(root, 0, size, i, x);
-  }
+  public:
+    dynamic_segment_tree(int64_t n):
+      depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),
+      size(1LL << depth),
+      hsize(size / 2)
+    {
+      root = new node(M());
+    }
 
-  value_type get(int64_t l, int64_t r) const {
-    return get_aux(root, 0, size, l, r);
-  }
+    void update(int64_t i, const value_type &x){
+      update(root, 0, hsize, i, x);
+    }
 
-  value_type operator[](int64_t i) const {
-    return get(i, i + 1);
-  }
-};
+    value_type get(int64_t l, int64_t r) const {
+      return get(root, 0, hsize, l, r);
+    }
+
+    value_type operator[](int64_t i) const {
+      return get(i, i + 1);
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -127,66 +130,69 @@ public:
  * @title Dynamic segment tree
  * @docs dynamic_segment_tree.md
  */
-template <typename Monoid>
-class DynamicSegmentTree {
-  using value_type = typename Monoid::value_type;
-  const static Monoid M;
+namespace haar_lib {
+  template <typename Monoid>
+  class dynamic_segment_tree {
+    using value_type = typename Monoid::value_type;
+    const static Monoid M;
 
-  struct Node {
-    value_type val;
-    Node *left = nullptr, *right = nullptr;
-    Node(const value_type &val): val(val) {}
-  };
+    struct node {
+      value_type val;
+      node *left = nullptr, *right = nullptr;
+      node(const value_type &val): val(val) {}
+    };
 
-  int64_t depth, size;
-  Node *root = nullptr;
+    int64_t depth, size, hsize;
+    node *root = nullptr;
 
-  value_type eval(Node *t) const {
-    return t ? t->val : M();
-  }
-
-  Node* update_aux(Node *node, int64_t l, int64_t r, int64_t pos, const value_type &val){
-    if(r - l == 1){
-      if(node) node->val = val;
-      else node = new Node(val);
-    }else{
-      const int64_t m = (l + r) / 2;
-      if(!node) node = new Node(val);
-      if(pos < m) node->left = update_aux(node->left, l, m, pos, val);
-      else node->right = update_aux(node->right, m, r, pos, val);
-      node->val = M(eval(node->left), eval(node->right));
+    value_type eval(node *t) const {
+      return t ? t->val : M();
     }
-    return node;
-  }
 
-  value_type get_aux(Node* node, int64_t l, int64_t r, int64_t x, int64_t y) const {
-    if(!node) return M();
-    if(x <= l && r <= y) return node ? node->val : M();
-    if(r < x || y < l) return M();
-    int64_t m = (l + r) >> 1;
-    return M(get_aux(node->left, l, m, x, y), get_aux(node->right, m, r, x, y));
-  }
+    node* update(node *t, int64_t l, int64_t r, int64_t pos, const value_type &val){
+      if(r - l == 1){
+        if(t) t->val = val;
+        else t = new node(val);
+      }else{
+        const int64_t m = (l + r) / 2;
+        if(not t) t = new node(val);
+        if(pos < m) t->left = update(t->left, l, m, pos, val);
+        else t->right = update(t->right, m, r, pos, val);
+        t->val = M(eval(t->left), eval(t->right));
+      }
+      return t;
+    }
 
-public:
-  DynamicSegmentTree(int64_t n):
-    depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),
-    size(1LL << depth)
-  {
-    root = new Node(M());
-  }
+    value_type get(node* t, int64_t l, int64_t r, int64_t x, int64_t y) const {
+      if(not t) return M();
+      if(x <= l && r <= y) return t ? t->val : M();
+      if(r < x || y < l) return M();
+      int64_t m = (l + r) >> 1;
+      return M(get(t->left, l, m, x, y), get(t->right, m, r, x, y));
+    }
 
-  void update(int64_t i, const value_type &x){
-    update_aux(root, 0, size, i, x);
-  }
+  public:
+    dynamic_segment_tree(int64_t n):
+      depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),
+      size(1LL << depth),
+      hsize(size / 2)
+    {
+      root = new node(M());
+    }
 
-  value_type get(int64_t l, int64_t r) const {
-    return get_aux(root, 0, size, l, r);
-  }
+    void update(int64_t i, const value_type &x){
+      update(root, 0, hsize, i, x);
+    }
 
-  value_type operator[](int64_t i) const {
-    return get(i, i + 1);
-  }
-};
+    value_type get(int64_t l, int64_t r) const {
+      return get(root, 0, hsize, l, r);
+    }
+
+    value_type operator[](int64_t i) const {
+      return get(i, i + 1);
+    }
+  };
+}
 
 ```
 {% endraw %}

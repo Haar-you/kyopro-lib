@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f3e3957dafbf526c46359105e1a71d64">Mylib/Algorithm/Query</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Query/range_count_query.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -74,56 +74,58 @@ layout: default
  * @title Range count query
  * @docs range_count_query.md
  */
-template <typename T>
-struct RangeCountQuery {
-  std::vector<int> a;
-  std::vector<std::tuple<int, int, int>> qs;
-  int N;
+namespace haar_lib {
+  template <typename T>
+  struct range_count_query {
+    std::vector<int> a;
+    std::vector<std::tuple<int, int, int>> qs;
+    int N;
 
-  RangeCountQuery(std::vector<T> a_): N(a_.size()){
-    auto temp = a_;
-    std::sort(temp.begin(), temp.end());
-    temp.erase(std::unique(temp.begin(), temp.end()), temp.end());
+    range_count_query(std::vector<T> a_): N(a_.size()){
+      auto temp = a_;
+      std::sort(temp.begin(), temp.end());
+      temp.erase(std::unique(temp.begin(), temp.end()), temp.end());
 
-    for(auto x : a_){
-      int i = std::lower_bound(temp.begin(), temp.end(), x) - temp.begin();
-      a.push_back(i);
+      for(auto x : a_){
+        int i = std::lower_bound(temp.begin(), temp.end(), x) - temp.begin();
+        a.push_back(i);
+      }
     }
-  }
 
-  void add(int l, int r){ // [l, r)
-    const int i = qs.size();
-    qs.emplace_back(r, l, i);
-  }
+    void add(int l, int r){ // [l, r)
+      const int i = qs.size();
+      qs.emplace_back(r, l, i);
+    }
 
-  auto solve(){
-    std::sort(qs.begin(), qs.end());
+    auto solve(){
+      std::sort(qs.begin(), qs.end());
 
-    FenwickTreeAdd<int> b(N);
+      fenwick_tree_add<int> b(N);
 
-    const int Q = qs.size();
-    std::vector<int> last_index(N, -1);
-    std::vector<int> ret(Q);
+      const int Q = qs.size();
+      std::vector<int> last_index(N, -1);
+      std::vector<int> ret(Q);
 
-    int cur = 0;
-    for(auto [r, l, i] : qs){
-      while(cur < r){
-        if(last_index[a[cur]] != -1){
-          b.update(last_index[a[cur]], -1);
+      int cur = 0;
+      for(auto [r, l, i] : qs){
+        while(cur < r){
+          if(last_index[a[cur]] != -1){
+            b.update(last_index[a[cur]], -1);
+          }
+
+          last_index[a[cur]] = cur;
+          b.update(last_index[a[cur]], 1);
+
+          ++cur;
         }
 
-        last_index[a[cur]] = cur;
-        b.update(last_index[a[cur]], 1);
-
-        ++cur;
+        ret[i] = b.get(l, r);
       }
 
-      ret[i] = b.get(l, r);
+      return ret;
     }
-
-    return ret;
-  }
-};
+  };
+}
 
 ```
 {% endraw %}
@@ -141,98 +143,102 @@ struct RangeCountQuery {
  * @title Fenwick tree (Add)
  * @docs fenwick_tree_add.md
  */
-template <typename T>
-class FenwickTreeAdd {
-  using value_type = T;
+namespace haar_lib {
+  template <typename T>
+  class fenwick_tree_add {
+    using value_type = T;
 
-  int size;
-  std::vector<value_type> data;
+    int size;
+    std::vector<value_type> data;
 
-public:
-  FenwickTreeAdd(){}
-  FenwickTreeAdd(int size): size(size), data(size + 1, 0){}
+  public:
+    fenwick_tree_add(){}
+    fenwick_tree_add(int size): size(size), data(size + 1, 0){}
 
-  void update(int i, value_type val){
-    i += 1; // 1-index
+    void update(int i, value_type val){
+      i += 1; // 1-index
 
-    while(i <= size){
-      data[i] = data[i] + val;
-      i += i & (-i);
-    }
-  }
-
-  value_type get(int i) const { // [0, i)
-    value_type ret = 0;
-    i += 1; // 1-index
-
-    while(i > 0){
-      ret = ret + data[i];
-      i -= i & (-i);
+      while(i <= size){
+        data[i] = data[i] + val;
+        i += i & (-i);
+      }
     }
 
-    return ret;
-  }
+    value_type get(int i) const { // [0, i)
+      value_type ret = 0;
+      i += 1; // 1-index
 
-  value_type get(int l, int r) const { // [l, r)
-    return get(r - 1) - get(l - 1);
-  }
-};
+      while(i > 0){
+        ret = ret + data[i];
+        i -= i & (-i);
+      }
+
+      return ret;
+    }
+
+    value_type get(int l, int r) const { // [l, r)
+      return get(r - 1) - get(l - 1);
+    }
+  };
+}
 #line 6 "Mylib/Algorithm/Query/range_count_query.cpp"
 
 /**
  * @title Range count query
  * @docs range_count_query.md
  */
-template <typename T>
-struct RangeCountQuery {
-  std::vector<int> a;
-  std::vector<std::tuple<int, int, int>> qs;
-  int N;
+namespace haar_lib {
+  template <typename T>
+  struct range_count_query {
+    std::vector<int> a;
+    std::vector<std::tuple<int, int, int>> qs;
+    int N;
 
-  RangeCountQuery(std::vector<T> a_): N(a_.size()){
-    auto temp = a_;
-    std::sort(temp.begin(), temp.end());
-    temp.erase(std::unique(temp.begin(), temp.end()), temp.end());
+    range_count_query(std::vector<T> a_): N(a_.size()){
+      auto temp = a_;
+      std::sort(temp.begin(), temp.end());
+      temp.erase(std::unique(temp.begin(), temp.end()), temp.end());
 
-    for(auto x : a_){
-      int i = std::lower_bound(temp.begin(), temp.end(), x) - temp.begin();
-      a.push_back(i);
+      for(auto x : a_){
+        int i = std::lower_bound(temp.begin(), temp.end(), x) - temp.begin();
+        a.push_back(i);
+      }
     }
-  }
 
-  void add(int l, int r){ // [l, r)
-    const int i = qs.size();
-    qs.emplace_back(r, l, i);
-  }
+    void add(int l, int r){ // [l, r)
+      const int i = qs.size();
+      qs.emplace_back(r, l, i);
+    }
 
-  auto solve(){
-    std::sort(qs.begin(), qs.end());
+    auto solve(){
+      std::sort(qs.begin(), qs.end());
 
-    FenwickTreeAdd<int> b(N);
+      fenwick_tree_add<int> b(N);
 
-    const int Q = qs.size();
-    std::vector<int> last_index(N, -1);
-    std::vector<int> ret(Q);
+      const int Q = qs.size();
+      std::vector<int> last_index(N, -1);
+      std::vector<int> ret(Q);
 
-    int cur = 0;
-    for(auto [r, l, i] : qs){
-      while(cur < r){
-        if(last_index[a[cur]] != -1){
-          b.update(last_index[a[cur]], -1);
+      int cur = 0;
+      for(auto [r, l, i] : qs){
+        while(cur < r){
+          if(last_index[a[cur]] != -1){
+            b.update(last_index[a[cur]], -1);
+          }
+
+          last_index[a[cur]] = cur;
+          b.update(last_index[a[cur]], 1);
+
+          ++cur;
         }
 
-        last_index[a[cur]] = cur;
-        b.update(last_index[a[cur]], 1);
-
-        ++cur;
+        ret[i] = b.get(l, r);
       }
 
-      ret[i] = b.get(l, r);
+      return ret;
     }
-
-    return ret;
-  }
-};
+  };
+}
 
 ```
 {% endraw %}

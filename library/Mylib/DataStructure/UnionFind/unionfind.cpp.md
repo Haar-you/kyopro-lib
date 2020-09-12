@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Union-find
+# :question: Union-find
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#3ff74e8366c88d06b530f361450b1117">Mylib/DataStructure/UnionFind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/UnionFind/unionfind.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -61,8 +61,8 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/aoj/1337/main.test.cpp.html">test/aoj/1337/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/1337/main.test.cpp.html">test/aoj/1337/main.test.cpp</a>
 * :x: <a href="../../../../verify/test/aoj/2955/main.test.cpp.html">test/aoj/2955/main.test.cpp</a>
 * :x: <a href="../../../../verify/test/aoj/GRL_2_A/main.boruvka.test.cpp.html">test/aoj/GRL_2_A/main.boruvka.test.cpp</a>
 * :x: <a href="../../../../verify/test/aoj/GRL_2_A/main.kruskal.test.cpp.html">test/aoj/GRL_2_A/main.kruskal.test.cpp</a>
@@ -78,50 +78,73 @@ layout: default
 #pragma once
 #include <vector>
 #include <numeric>
+#include <algorithm>
 
 /**
  * @title Union-find
  * @docs unionfind.md
  */
-class UnionFind {
-  std::vector<int> parent, depth, size;
-  int count;
+namespace haar_lib {
+  class unionfind {
+    int n;
+    mutable std::vector<int> parent;
+    std::vector<int> depth, size;
+    int count;
 
-public:
-  UnionFind(){}
-  UnionFind(int n): parent(n), depth(n, 1), size(n, 1), count(n){
-    std::iota(parent.begin(), parent.end(), 0);
-  }
+  public:
+    unionfind(){}
+    unionfind(int n): n(n), parent(n), depth(n, 1), size(n, 1), count(n){
+      std::iota(parent.begin(), parent.end(), 0);
+    }
 
-  int root_of(int i){
-    if(parent[i] == i) return i;
-    else return parent[i] = root_of(parent[i]);
-  }
+    int root_of(int i) const {
+      if(parent[i] == i) return i;
+      else return parent[i] = root_of(parent[i]);
+    }
 
-  bool is_same(int i, int j){return root_of(i) == root_of(j);}
+    bool is_same(int i, int j) const {return root_of(i) == root_of(j);}
 
-  int merge(int i, int j){
-    const int ri = root_of(i), rj = root_of(j);
-    if(ri == rj) return ri;
-    else{
-      --count;
-      if(depth[ri] < depth[rj]){
-        parent[ri] = rj;
-        size[rj] += size[ri];
-        return rj;
-      }else{
-        parent[rj] = ri;
-        size[ri] += size[rj];
-        if(depth[ri] == depth[rj]) ++depth[ri];
-        return ri;
+    int merge(int i, int j){
+      const int ri = root_of(i), rj = root_of(j);
+      if(ri == rj) return ri;
+      else{
+        --count;
+        if(depth[ri] < depth[rj]){
+          parent[ri] = rj;
+          size[rj] += size[ri];
+          return rj;
+        }else{
+          parent[rj] = ri;
+          size[ri] += size[rj];
+          if(depth[ri] == depth[rj]) ++depth[ri];
+          return ri;
+        }
       }
     }
-  }
 
-  int size_of(int i){return size[root_of(i)];}
+    int size_of(int i) const {return size[root_of(i)];}
 
-  int count_group(){return count;}
-};
+    int count_groups() const {return count;}
+
+    auto get_groups() const {
+      std::vector<std::vector<int>> ret(n);
+
+      for(int i = 0; i < n; ++i){
+        ret[root_of(i)].push_back(i);
+      }
+
+      ret.erase(
+        std::remove_if(
+          ret.begin(), ret.end(),
+          [](const auto &a){return a.empty();}
+        ),
+        ret.end()
+      );
+
+      return ret;
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -132,50 +155,73 @@ public:
 #line 2 "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include <vector>
 #include <numeric>
+#include <algorithm>
 
 /**
  * @title Union-find
  * @docs unionfind.md
  */
-class UnionFind {
-  std::vector<int> parent, depth, size;
-  int count;
+namespace haar_lib {
+  class unionfind {
+    int n;
+    mutable std::vector<int> parent;
+    std::vector<int> depth, size;
+    int count;
 
-public:
-  UnionFind(){}
-  UnionFind(int n): parent(n), depth(n, 1), size(n, 1), count(n){
-    std::iota(parent.begin(), parent.end(), 0);
-  }
+  public:
+    unionfind(){}
+    unionfind(int n): n(n), parent(n), depth(n, 1), size(n, 1), count(n){
+      std::iota(parent.begin(), parent.end(), 0);
+    }
 
-  int root_of(int i){
-    if(parent[i] == i) return i;
-    else return parent[i] = root_of(parent[i]);
-  }
+    int root_of(int i) const {
+      if(parent[i] == i) return i;
+      else return parent[i] = root_of(parent[i]);
+    }
 
-  bool is_same(int i, int j){return root_of(i) == root_of(j);}
+    bool is_same(int i, int j) const {return root_of(i) == root_of(j);}
 
-  int merge(int i, int j){
-    const int ri = root_of(i), rj = root_of(j);
-    if(ri == rj) return ri;
-    else{
-      --count;
-      if(depth[ri] < depth[rj]){
-        parent[ri] = rj;
-        size[rj] += size[ri];
-        return rj;
-      }else{
-        parent[rj] = ri;
-        size[ri] += size[rj];
-        if(depth[ri] == depth[rj]) ++depth[ri];
-        return ri;
+    int merge(int i, int j){
+      const int ri = root_of(i), rj = root_of(j);
+      if(ri == rj) return ri;
+      else{
+        --count;
+        if(depth[ri] < depth[rj]){
+          parent[ri] = rj;
+          size[rj] += size[ri];
+          return rj;
+        }else{
+          parent[rj] = ri;
+          size[ri] += size[rj];
+          if(depth[ri] == depth[rj]) ++depth[ri];
+          return ri;
+        }
       }
     }
-  }
 
-  int size_of(int i){return size[root_of(i)];}
+    int size_of(int i) const {return size[root_of(i)];}
 
-  int count_group(){return count;}
-};
+    int count_groups() const {return count;}
+
+    auto get_groups() const {
+      std::vector<std::vector<int>> ret(n);
+
+      for(int i = 0; i < n; ++i){
+        ret[root_of(i)].push_back(i);
+      }
+
+      ret.erase(
+        std::remove_if(
+          ret.begin(), ret.end(),
+          [](const auto &a){return a.empty();}
+        ),
+        ret.end()
+      );
+
+      return ret;
+    }
+  };
+}
 
 ```
 {% endraw %}

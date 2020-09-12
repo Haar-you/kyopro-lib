@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/manacher.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -62,26 +62,28 @@ layout: default
  * @title Manacher algorithm
  * @docs manacher.md
  */
-template <typename Container, typename T = typename Container::value_type>
-std::vector<int> manacher(const Container &s){
-  const int n = s.size();
-  std::vector<int> ret(n);
-  int center = 0;
+namespace haar_lib {
+  template <typename Container>
+  std::vector<int> manacher(const Container &s){
+    const int n = s.size();
+    std::vector<int> ret(n);
+    int center = 0;
 
-  for(int cur = 0; cur < n; ++cur){
-    int left = center - (cur - center);
+    for(int cur = 0; cur < n; ++cur){
+      int left = center - (cur - center);
 
-    if(left >= 0 and cur + ret[left] < center + ret[center]){
-      ret[cur] = ret[left];
-    }else{
-      int len = center + ret[center] - cur;
-      while(cur - len >= 0 and cur + len < n and s[cur - len] == s[cur + len]) ++len;
-      ret[cur] = len;
-      center = cur;
+      if(left >= 0 and cur + ret[left] < center + ret[center]){
+        ret[cur] = ret[left];
+      }else{
+        int len = center + ret[center] - cur;
+        while(cur - len >= 0 and cur + len < n and s[cur - len] == s[cur + len]) ++len;
+        ret[cur] = len;
+        center = cur;
+      }
     }
-  }
 
-  return ret;
+    return ret;
+  }
 }
 
 ```
@@ -97,26 +99,28 @@ std::vector<int> manacher(const Container &s){
  * @title Manacher algorithm
  * @docs manacher.md
  */
-template <typename Container, typename T = typename Container::value_type>
-std::vector<int> manacher(const Container &s){
-  const int n = s.size();
-  std::vector<int> ret(n);
-  int center = 0;
+namespace haar_lib {
+  template <typename Container>
+  std::vector<int> manacher(const Container &s){
+    const int n = s.size();
+    std::vector<int> ret(n);
+    int center = 0;
 
-  for(int cur = 0; cur < n; ++cur){
-    int left = center - (cur - center);
+    for(int cur = 0; cur < n; ++cur){
+      int left = center - (cur - center);
 
-    if(left >= 0 and cur + ret[left] < center + ret[center]){
-      ret[cur] = ret[left];
-    }else{
-      int len = center + ret[center] - cur;
-      while(cur - len >= 0 and cur + len < n and s[cur - len] == s[cur + len]) ++len;
-      ret[cur] = len;
-      center = cur;
+      if(left >= 0 and cur + ret[left] < center + ret[center]){
+        ret[cur] = ret[left];
+      }else{
+        int len = center + ret[center] - cur;
+        while(cur - len >= 0 and cur + len < n and s[cur - len] == s[cur + len]) ++len;
+        ret[cur] = len;
+        center = cur;
+      }
     }
-  }
 
-  return ret;
+    return ret;
+  }
 }
 
 ```

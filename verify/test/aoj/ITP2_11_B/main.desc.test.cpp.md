@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#3ee41bb6b1ee97f3a5e094f7dfeadd68">test/aoj/ITP2_11_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ITP2_11_B/main.desc.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 04:37:36+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_B</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Bit/enumerate_supersets_desc.cpp.html">Enumerate supersets (Descending order)</a>
-* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -56,6 +56,8 @@ layout: default
 #include "Mylib/Bit/enumerate_supersets_desc.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -63,12 +65,12 @@ int main(){
   int n, k; std::cin >> n >> k;
 
   int t = 0;
-  for(auto b : input_vector<int>(k)){
+  for(auto b : hl::input_vector<int>(k)){
     t |= 1 << b;
   }
 
   std::map<int, std::vector<int>> ans;
-  enumerate_supersets_desc(
+  hl::enumerate_supersets_desc(
     t, n,
     [&](int d){
       ans[d];
@@ -106,12 +108,14 @@ int main(){
  * @title Enumerate supersets (Descending order)
  * @docs enumerate_supersets_desc.md
  */
-template <typename Func>
-void enumerate_supersets_desc(int a, int n, const Func &f){
-  const int x = (1 << n) - 1, y = x ^ (a & x);
-  for(int t = y; ; t = (t - 1) & y){
-    if(not f(t | a)) break;
-    if(t == 0) break;
+namespace haar_lib {
+  template <typename Func>
+  void enumerate_supersets_desc(int a, int n, const Func &f){
+    const int x = (1 << n) - 1, y = x ^ (a & x);
+    for(int t = y; ; t = (t - 1) & y){
+      if(not f(t | a)) break;
+      if(t == 0) break;
+    }
   }
 }
 #line 4 "Mylib/IO/input_vector.cpp"
@@ -119,20 +123,24 @@ void enumerate_supersets_desc(int a, int n, const Func &f){
 /**
  * @docs input_vector.md
  */
-template <typename T>
-std::vector<T> input_vector(int N){
-  std::vector<T> ret(N);
-  for(int i = 0; i < N; ++i) std::cin >> ret[i];
-  return ret;
-}
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> input_vector(int N){
+    std::vector<T> ret(N);
+    for(int i = 0; i < N; ++i) std::cin >> ret[i];
+    return ret;
+  }
 
-template <typename T>
-std::vector<std::vector<T>> input_vector(int N, int M){
-  std::vector<std::vector<T>> ret(N);
-  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
-  return ret;
+  template <typename T>
+  std::vector<std::vector<T>> input_vector(int N, int M){
+    std::vector<std::vector<T>> ret(N);
+    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+    return ret;
+  }
 }
 #line 8 "test/aoj/ITP2_11_B/main.desc.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   std::cin.tie(0);
@@ -141,12 +149,12 @@ int main(){
   int n, k; std::cin >> n >> k;
 
   int t = 0;
-  for(auto b : input_vector<int>(k)){
+  for(auto b : hl::input_vector<int>(k)){
     t |= 1 << b;
   }
 
   std::map<int, std::vector<int>> ans;
-  enumerate_supersets_desc(
+  hl::enumerate_supersets_desc(
     t, n,
     [&](int d){
       ans[d];

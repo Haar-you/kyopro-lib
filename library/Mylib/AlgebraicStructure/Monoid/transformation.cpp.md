@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/transformation.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -48,22 +48,24 @@ layout: default
  * @title Transformation monoid
  * @docs transformation.md
  */
-template <size_t N>
-struct TransformationMonoid {
-  using value_type = std::array<int, N>;
+namespace haar_lib {
+  template <size_t N>
+  struct transformation_monoid {
+    using value_type = std::array<int, N>;
 
-  value_type operator()() const {
-    value_type ret;
-    for(int i = 0; i < (int)N; ++i) ret[i] = i;
-    return ret;
-  }
+    value_type operator()() const {
+      value_type ret;
+      for(int i = 0; i < (int)N; ++i) ret[i] = i;
+      return ret;
+    }
 
-  value_type operator()(const value_type &a, const value_type &b) const {
-    value_type ret;
-    for(int i = 0; i < (int)N; ++i) ret[i] = a[b[i]];
-    return ret;
-  }
-};
+    value_type operator()(const value_type &a, const value_type &b) const {
+      value_type ret;
+      for(int i = 0; i < (int)N; ++i) ret[i] = a[b[i]];
+      return ret;
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -78,22 +80,24 @@ struct TransformationMonoid {
  * @title Transformation monoid
  * @docs transformation.md
  */
-template <size_t N>
-struct TransformationMonoid {
-  using value_type = std::array<int, N>;
+namespace haar_lib {
+  template <size_t N>
+  struct transformation_monoid {
+    using value_type = std::array<int, N>;
 
-  value_type operator()() const {
-    value_type ret;
-    for(int i = 0; i < (int)N; ++i) ret[i] = i;
-    return ret;
-  }
+    value_type operator()() const {
+      value_type ret;
+      for(int i = 0; i < (int)N; ++i) ret[i] = i;
+      return ret;
+    }
 
-  value_type operator()(const value_type &a, const value_type &b) const {
-    value_type ret;
-    for(int i = 0; i < (int)N; ++i) ret[i] = a[b[i]];
-    return ret;
-  }
-};
+    value_type operator()(const value_type &a, const value_type &b) const {
+      value_type ret;
+      for(int i = 0; i < (int)N; ++i) ret[i] = a[b[i]];
+      return ret;
+    }
+  };
+}
 
 ```
 {% endraw %}

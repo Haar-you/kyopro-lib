@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0bd636f7c7da7cc28e18f9f04b1f4152">test/yukicoder/186</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/186/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/447">https://yukicoder.me/problems/447</a>
@@ -53,12 +53,14 @@ layout: default
 #include <iostream>
 #include "Mylib/Number/chinese_remainder_algorithm.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int64_t x1, y1, x2, y2, x3, y3; std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
 
   int64_t m, r;
 
-  if(CRA({x1, x2, x3}, {y1, y2, y3}, r, m)){
+  if(hl::chinese_remainder_algorithm({x1, x2, x3}, {y1, y2, y3}, r, m)){
     std::cout << (r == 0 ? m : r) << std::endl;
   }else{
     std::cout << -1 << std::endl;
@@ -86,11 +88,13 @@ int main(){
  * @title Extended Euclidean algorithm
  * @docs extended_gcd.md
  */
-std::tuple<int64_t, int64_t, int64_t> ext_gcd(int64_t a, int64_t b){
-  if(b == 0) return std::make_tuple(a, 1, 0);
-  int64_t d, p, q;
-  std::tie(d, q, p) = ext_gcd(b, (a + b) % b);
-  return std::make_tuple(d, p, q - a / b * p);
+namespace haar_lib {
+  std::tuple<int64_t, int64_t, int64_t> ext_gcd(int64_t a, int64_t b){
+    if(b == 0) return std::make_tuple(a, 1, 0);
+    int64_t d, p, q;
+    std::tie(d, q, p) = ext_gcd(b, (a + b) % b);
+    return std::make_tuple(d, p, q - a / b * p);
+  }
 }
 #line 5 "Mylib/Number/chinese_remainder_algorithm.cpp"
 
@@ -98,33 +102,37 @@ std::tuple<int64_t, int64_t, int64_t> ext_gcd(int64_t a, int64_t b){
  * @title Chinese remainder theorem
  * @docs chinese_remainder_algorithm.md
  */
-bool CRA(int64_t b1, int64_t m1, int64_t b2, int64_t m2, int64_t &r, int64_t &m){
-  int64_t p, q, d;
-  std::tie(d, p, q) = ext_gcd(m1, m2);
-  if((b2 - b1) % d != 0) return false;
-  m = m1 * m2 / d;
-  int64_t t = ((b2 - b1) * p / d) % (m2 / d);
-  r = (b1 + m1 * t + m) % m;
-  return true;
-}
-
-bool CRA(const std::vector<int64_t> &bs, const std::vector<int64_t> &ms, int64_t &r, int64_t &m){
-  int64_t R = 0, M = 1;
-  for(int i = 0; i < (int)bs.size(); ++i){
-    if(not CRA(R, M, bs[i], ms[i], r, m)) return false;
-    R = r;
-    M = m;
+namespace haar_lib {
+  bool chinese_remainder_algorithm(int64_t b1, int64_t m1, int64_t b2, int64_t m2, int64_t &r, int64_t &m){
+    int64_t p, q, d;
+    std::tie(d, p, q) = ext_gcd(m1, m2);
+    if((b2 - b1) % d != 0) return false;
+    m = m1 * m2 / d;
+    int64_t t = ((b2 - b1) * p / d) % (m2 / d);
+    r = (b1 + m1 * t + m) % m;
+    return true;
   }
-  return true;
+
+  bool chinese_remainder_algorithm(const std::vector<int64_t> &bs, const std::vector<int64_t> &ms, int64_t &r, int64_t &m){
+    int64_t R = 0, M = 1;
+    for(int i = 0; i < (int)bs.size(); ++i){
+      if(not chinese_remainder_algorithm(R, M, bs[i], ms[i], r, m)) return false;
+      R = r;
+      M = m;
+    }
+    return true;
+  }
 }
 #line 5 "test/yukicoder/186/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int64_t x1, y1, x2, y2, x3, y3; std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
 
   int64_t m, r;
 
-  if(CRA({x1, x2, x3}, {y1, y2, y3}, r, m)){
+  if(hl::chinese_remainder_algorithm({x1, x2, x3}, {y1, y2, y3}, r, m)){
     std::cout << (r == 0 ? m : r) << std::endl;
   }else{
     std::cout << -1 << std::endl;

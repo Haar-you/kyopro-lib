@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a1062884f064c2b3be412505b6627108">Mylib/TypicalProblem/IntervalSchedulingProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -78,31 +78,33 @@ layout: default
  * @title Interval scheduling problem (Allow no more than k intervals to overlap)
  * @docs interval_scheduling_k.md
  */
-auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
-  const int N = l.size();
+namespace haar_lib {
+  auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
+    const int N = l.size();
 
-  std::vector<int> ord(N);
-  std::iota(ord.begin(), ord.end(), 0);
-  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
+    std::vector<int> ord(N);
+    std::iota(ord.begin(), ord.end(), 0);
+    std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
 
-  std::multiset<int> a;
-  std::vector<std::pair<int, int>> ret;
+    std::multiset<int> a;
+    std::vector<std::pair<int, int>> ret;
 
-  for(int i : ord){
-    auto it = a.upper_bound(l[i]);
+    for(int i : ord){
+      auto it = a.upper_bound(l[i]);
 
-    if(it != a.begin()){
-      it = std::prev(it);
-      a.erase(it);
+      if(it != a.begin()){
+        it = std::prev(it);
+        a.erase(it);
+      }
+
+      if((int)a.size() < k){
+        a.insert(r[i]);
+        ret.emplace_back(l[i], r[i]);
+      }
     }
 
-    if((int)a.size() < k){
-      a.insert(r[i]);
-      ret.emplace_back(l[i], r[i]);
-    }
+    return ret;
   }
-
-  return ret;
 }
 
 ```
@@ -123,31 +125,33 @@ auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
  * @title Interval scheduling problem (Allow no more than k intervals to overlap)
  * @docs interval_scheduling_k.md
  */
-auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
-  const int N = l.size();
+namespace haar_lib {
+  auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
+    const int N = l.size();
 
-  std::vector<int> ord(N);
-  std::iota(ord.begin(), ord.end(), 0);
-  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
+    std::vector<int> ord(N);
+    std::iota(ord.begin(), ord.end(), 0);
+    std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
 
-  std::multiset<int> a;
-  std::vector<std::pair<int, int>> ret;
+    std::multiset<int> a;
+    std::vector<std::pair<int, int>> ret;
 
-  for(int i : ord){
-    auto it = a.upper_bound(l[i]);
+    for(int i : ord){
+      auto it = a.upper_bound(l[i]);
 
-    if(it != a.begin()){
-      it = std::prev(it);
-      a.erase(it);
+      if(it != a.begin()){
+        it = std::prev(it);
+        a.erase(it);
+      }
+
+      if((int)a.size() < k){
+        a.insert(r[i]);
+        ret.emplace_back(l[i], r[i]);
+      }
     }
 
-    if((int)a.size() < k){
-      a.insert(r[i]);
-      ret.emplace_back(l[i], r[i]);
-    }
+    return ret;
   }
-
-  return ret;
 }
 
 ```

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#bebcd5bef589a8c43022d53b5d3891af">test/yosupo-judge/dynamic_tree_vertex_add_path_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_path_sum">https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_path_sum</a>
@@ -41,9 +41,9 @@ layout: default
 
 * :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Sum monoid</a>
 * :x: <a href="../../../../library/Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp.html">Link/cut tree</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
 
 
 ## Code
@@ -59,23 +59,25 @@ layout: default
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/IO/input_tuples_with_index.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, Q; std::cin >> N >> Q;
 
-  LinkCutTree<SumMonoid<int64_t>> lct(N);
+  hl::link_cut_tree<hl::sum_monoid<int64_t>> lct(N);
 
-  for(auto [i, a] : input_tuples_with_index<int64_t>(N)){
+  for(auto [i, a] : hl::input_tuples_with_index<int64_t>(N)){
     lct.update(i, a);
   }
 
-  for(auto [u, v] : input_tuples<int, int>(N - 1)){
+  for(auto [u, v] : hl::input_tuples<int, int>(N - 1)){
     lct.link(u, v);
   }
 
-  for(auto [type] : input_tuples<int>(Q)){
+  for(auto [type] : hl::input_tuples<int>(Q)){
     switch(type){
     case 0: {
       int u, v, w, x; std::cin >> u >> v >> w >> x;
@@ -116,12 +118,14 @@ int main(){
  * @title Sum monoid
  * @docs sum.md
  */
-template <typename T>
-struct SumMonoid {
-  using value_type = T;
-  value_type operator()() const {return 0;}
-  value_type operator()(value_type a, value_type b) const {return a + b;}
-};
+namespace haar_lib {
+  template <typename T>
+  struct sum_monoid {
+    using value_type = T;
+    value_type operator()() const {return 0;}
+    value_type operator()(value_type a, value_type b) const {return a + b;}
+  };
+}
 #line 2 "Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp"
 #include <vector>
 
@@ -129,197 +133,199 @@ struct SumMonoid {
  * @title Link/cut tree
  * @docs link_cut_tree.md
  */
-template <typename Monoid>
-struct LinkCutNode {
-  using value_type = typename Monoid::value_type;
-  using node = LinkCutNode;
-  const static Monoid M;
+namespace haar_lib {
+  template <typename Monoid>
+  struct link_cut_node {
+    using value_type = typename Monoid::value_type;
+    using node = link_cut_node;
+    const static Monoid M;
 
-  int subsize;
-  node *left, *right, *parent;
-  bool rev;
-  value_type value, result;
+    int subsize;
+    node *left, *right, *parent;
+    bool rev;
+    value_type value, result;
 
-  LinkCutNode():
-    subsize(1),
-    left(nullptr),
-    right(nullptr),
-    parent(nullptr),
-    rev(false),
-    value(M()),
-    result(M())
-  {}
+    link_cut_node():
+      subsize(1),
+      left(nullptr),
+      right(nullptr),
+      parent(nullptr),
+      rev(false),
+      value(M()),
+      result(M())
+    {}
 
-  bool is_root() const {
-    return !parent or (parent->left != this and parent->right != this);
-  }
-
-  void update_node_status(){
-    subsize = 1;
-    result = value;
-
-    if(left){
-      left->push_down();
-      subsize += left->subsize;
-      result = M(result, left->result);
+    bool is_root() const {
+      return !parent or (parent->left != this and parent->right != this);
     }
 
-    if(right){
-      right->push_down();
-      subsize += right->subsize;
-      result = M(result, right->result);
-    }
-  }
+    void update_node_status(){
+      subsize = 1;
+      result = value;
 
-  void push_down(){
-    if(rev){
-      std::swap(left, right);
-      if(left) left->rev ^= true;
-      if(right) right->rev ^= true;
-      rev = false;
-    }
-  }
+      if(left){
+        left->push_down();
+        subsize += left->subsize;
+        result = M(result, left->result);
+      }
 
-  void rot(int dir_right){
-    node *p = parent, *g = p->parent;
-
-    if(dir_right){
-      if((p->left = right)) right->parent = p;
-      right = p;
-      p->parent = this;
-    }else{
-      if((p->right = left)) left->parent = p;
-      left = p;
-      p->parent = this;
-    }
-
-    p->update_node_status();
-    update_node_status();
-    parent = g;
-
-    if(!g) return;
-
-    if(g->left == p) g->left = this;
-    if(g->right == p) g->right = this;
-    g->update_node_status();
-  }
-
-  void splay(){
-    while(not is_root()){
-      node *p = parent, *gp = p->parent;
-
-      if(p->is_root()){
-        p->push_down();
-        push_down();
-        rot(this == p->left);
-      }else{
-        gp->push_down();
-        p->push_down();
-        push_down();
-        bool flag = this == p->left;
-        if((this == p->left) == (p == gp->left)){
-          p->rot(flag);
-          rot(flag);
-        }else{
-          rot(flag);
-          rot(!flag);
-        }
+      if(right){
+        right->push_down();
+        subsize += right->subsize;
+        result = M(result, right->result);
       }
     }
-    push_down();
-  }
 
-  static void expose(node *u){
-    node* rp = nullptr;
+    void push_down(){
+      if(rev){
+        std::swap(left, right);
+        if(left) left->rev ^= true;
+        if(right) right->rev ^= true;
+        rev = false;
+      }
+    }
 
-    for(node* p = u; p; p = p->parent){
-      p->splay();
-      p->right = rp;
+    void rot(int dir_right){
+      node *p = parent, *g = p->parent;
+
+      if(dir_right){
+        if((p->left = right)) right->parent = p;
+        right = p;
+        p->parent = this;
+      }else{
+        if((p->right = left)) left->parent = p;
+        left = p;
+        p->parent = this;
+      }
+
       p->update_node_status();
-      rp = p;
+      update_node_status();
+      parent = g;
+
+      if(!g) return;
+
+      if(g->left == p) g->left = this;
+      if(g->right == p) g->right = this;
+      g->update_node_status();
     }
 
-    u->splay();
-  }
+    void splay(){
+      while(not is_root()){
+        node *p = parent, *gp = p->parent;
 
-  static void link(node *u, node *v){
-    evert(u);
-    u->parent = v;
-  }
-
-  static void cut(node *u){
-    expose(u);
-    u->left->parent = nullptr;
-    u->left = nullptr;
-    u->update_node_status();
-  }
-
-  static void cut(node *u, node *v){
-    expose(u);
-    expose(v);
-    if(u->is_root()) u->parent = nullptr;
-    else{
-      v->left->parent = nullptr;
-      v->left = nullptr;
-      v->update_node_status();
+        if(p->is_root()){
+          p->push_down();
+          push_down();
+          rot(this == p->left);
+        }else{
+          gp->push_down();
+          p->push_down();
+          push_down();
+          bool flag = this == p->left;
+          if((this == p->left) == (p == gp->left)){
+            p->rot(flag);
+            rot(flag);
+          }else{
+            rot(flag);
+            rot(!flag);
+          }
+        }
+      }
+      push_down();
     }
-  }
 
-  static void evert(node *u){
-    expose(u);
-    u->rev ^= true;
-    u->push_down();
-  }
-};
+    static void expose(node *u){
+      node* rp = nullptr;
 
-template <typename Monoid>
-class LinkCutTree {
-  using value_type = typename Monoid::value_type;
-  using node = LinkCutNode<Monoid>;
-  const static Monoid M;
+      for(node* p = u; p; p = p->parent){
+        p->splay();
+        p->right = rp;
+        p->update_node_status();
+        rp = p;
+      }
 
-  int N;
-  std::vector<node*> nodes;
-
-public:
-  LinkCutTree(int N): N(N), nodes(N){
-    for(int i = 0; i < N; ++i){
-      nodes[i] = new node();
+      u->splay();
     }
-  }
 
-  void expose(int k){
-    node::expose(nodes[k]);
-  }
+    static void link(node *u, node *v){
+      evert(u);
+      u->parent = v;
+    }
 
-  void cut(int i, int j){
-    node::cut(nodes[i], nodes[j]);
-  }
+    static void cut(node *u){
+      expose(u);
+      u->left->parent = nullptr;
+      u->left = nullptr;
+      u->update_node_status();
+    }
 
-  void link(int i, int j){
-    node::link(nodes[i], nodes[j]);
-  }
+    static void cut(node *u, node *v){
+      expose(u);
+      expose(v);
+      if(u->is_root()) u->parent = nullptr;
+      else{
+        v->left->parent = nullptr;
+        v->left = nullptr;
+        v->update_node_status();
+      }
+    }
 
-  void evert(int k){
-    node::evert(nodes[k]);
-  }
+    static void evert(node *u){
+      expose(u);
+      u->rev ^= true;
+      u->push_down();
+    }
+  };
 
-  void update(int k, value_type x){
-    node::evert(nodes[k]);
-    nodes[k]->value = x;
-    nodes[k]->push_down();
-  }
+  template <typename Monoid>
+  class link_cut_tree {
+    using value_type = typename Monoid::value_type;
+    using node = link_cut_node<Monoid>;
+    const static Monoid M;
 
-  value_type at(int k){
-    return nodes[k]->value;
-  }
+    int N;
+    std::vector<node*> nodes;
 
-  value_type get(int i, int j){
-    node::evert(nodes[i]);
-    node::expose(nodes[j]);
-    return nodes[j]->result;
-  }
-};
+  public:
+    link_cut_tree(int N): N(N), nodes(N){
+      for(int i = 0; i < N; ++i){
+        nodes[i] = new node();
+      }
+    }
+
+    void expose(int k){
+      node::expose(nodes[k]);
+    }
+
+    void cut(int i, int j){
+      node::cut(nodes[i], nodes[j]);
+    }
+
+    void link(int i, int j){
+      node::link(nodes[i], nodes[j]);
+    }
+
+    void evert(int k){
+      node::evert(nodes[k]);
+    }
+
+    void update(int k, value_type x){
+      node::evert(nodes[k]);
+      nodes[k]->value = x;
+      nodes[k]->push_down();
+    }
+
+    value_type at(int k){
+      return nodes[k]->value;
+    }
+
+    value_type get(int i, int j){
+      node::evert(nodes[i]);
+      node::expose(nodes[j]);
+      return nodes[j]->result;
+    }
+  };
+}
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
 #include <utility>
@@ -329,115 +335,123 @@ public:
 /**
  * @docs input_tuple.md
  */
-template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
-}
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
+  }
 
-template <typename T, typename U>
-std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
-  s >> value.first >> value.second;
-  return s;
-}
+  template <typename T, typename U>
+  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+    s >> value.first >> value.second;
+    return s;
+  }
 
-template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
-  return s;
+  template <typename ... Args>
+  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
+    return s;
+  }
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
-template <typename ... Args>
-class InputTuples {
-  struct iter {
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuples {
+    struct iter {
+      using value_type = std::tuple<Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N, c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
+      value_type operator*(){
+        if(not fetched){
+          std::cin >> value;
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuples(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples(int N){
+    return InputTuples<Args ...>(N);
+  }
 }
 #line 8 "Mylib/IO/input_tuples_with_index.cpp"
 
 /**
  * @docs input_tuples_with_index.md
  */
-template <typename ... Args>
-class InputTuplesWithIndex {
-  struct iter {
-    using value_type = std::tuple<int, Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N;
-    int c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuplesWithIndex {
+    struct iter {
+      using value_type = std::tuple<int, Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N;
+      int c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::tuple<Args ...> temp; std::cin >> temp;
-        value = std::tuple_cat(std::make_tuple(c), temp);
+      value_type operator*(){
+        if(not fetched){
+          std::tuple<Args ...> temp; std::cin >> temp;
+          value = std::tuple_cat(std::make_tuple(c), temp);
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuplesWithIndex(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuplesWithIndex(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples_with_index(int N){
-  return InputTuplesWithIndex<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples_with_index(int N){
+    return InputTuplesWithIndex<Args ...>(N);
+  }
 }
 #line 8 "test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   std::cin.tie(0);
@@ -445,17 +459,17 @@ int main(){
 
   int N, Q; std::cin >> N >> Q;
 
-  LinkCutTree<SumMonoid<int64_t>> lct(N);
+  hl::link_cut_tree<hl::sum_monoid<int64_t>> lct(N);
 
-  for(auto [i, a] : input_tuples_with_index<int64_t>(N)){
+  for(auto [i, a] : hl::input_tuples_with_index<int64_t>(N)){
     lct.update(i, a);
   }
 
-  for(auto [u, v] : input_tuples<int, int>(N - 1)){
+  for(auto [u, v] : hl::input_tuples<int, int>(N - 1)){
     lct.link(u, v);
   }
 
-  for(auto [type] : input_tuples<int>(Q)){
+  for(auto [type] : hl::input_tuples<int>(Q)){
     switch(type){
     case 0: {
       int u, v, w, x; std::cin >> u >> v >> w >> x;

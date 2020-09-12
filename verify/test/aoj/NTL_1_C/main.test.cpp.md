@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#fcb24e02e278be19ec740adb48092544">test/aoj/NTL_1_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/NTL_1_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_C</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 * :x: <a href="../../../../library/Mylib/Number/binary_gcd.cpp.html">Binary GCD</a>
 
 
@@ -55,14 +55,16 @@ layout: default
 #include "Mylib/Number/binary_gcd.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n; std::cin >> n;
 
-  auto a = input_vector<int>(n);
+  auto a = hl::input_vector<int>(n);
 
   int l = 1;
   for(auto x : a){
-    l = l / binary_gcd(l, x) * x;
+    l = l / hl::binary_gcd(l, x) * x;
   }
 
   std::cout << l << "\n";
@@ -89,60 +91,66 @@ int main(){
  * @title Binary GCD
  * @docs binary_gcd.md
  */
-int64_t binary_gcd(int64_t a, int64_t b){
-  int64_t g = 1;
+namespace haar_lib {
+  int64_t binary_gcd(int64_t a, int64_t b){
+    int64_t g = 1;
 
-  while(1){
-    if(a > b) std::swap(a, b);
+    while(1){
+      if(a > b) std::swap(a, b);
 
-    if(a == 0){
-      break;
-    }else{
-      if((a & 1) == 0 and (b & 1) == 0){
-        a >>= 1;
-        b >>= 1;
-        g <<= 1;
-      }else if((a & 1) == 0){
-        a >>= 1;
-      }else if((b & 1) == 0){
-        b >>= 1;
+      if(a == 0){
+        break;
       }else{
-        int64_t t = std::abs(a - b) >> 1;
-        b = t;
+        if((a & 1) == 0 and (b & 1) == 0){
+          a >>= 1;
+          b >>= 1;
+          g <<= 1;
+        }else if((a & 1) == 0){
+          a >>= 1;
+        }else if((b & 1) == 0){
+          b >>= 1;
+        }else{
+          int64_t t = std::abs(a - b) >> 1;
+          b = t;
+        }
       }
     }
-  }
 
-  return g * b;
+    return g * b;
+  }
 }
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
  * @docs input_vector.md
  */
-template <typename T>
-std::vector<T> input_vector(int N){
-  std::vector<T> ret(N);
-  for(int i = 0; i < N; ++i) std::cin >> ret[i];
-  return ret;
-}
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> input_vector(int N){
+    std::vector<T> ret(N);
+    for(int i = 0; i < N; ++i) std::cin >> ret[i];
+    return ret;
+  }
 
-template <typename T>
-std::vector<std::vector<T>> input_vector(int N, int M){
-  std::vector<std::vector<T>> ret(N);
-  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
-  return ret;
+  template <typename T>
+  std::vector<std::vector<T>> input_vector(int N, int M){
+    std::vector<std::vector<T>> ret(N);
+    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+    return ret;
+  }
 }
 #line 7 "test/aoj/NTL_1_C/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int n; std::cin >> n;
 
-  auto a = input_vector<int>(n);
+  auto a = hl::input_vector<int>(n);
 
   int l = 1;
   for(auto x : a){
-    l = l / binary_gcd(l, x) * x;
+    l = l / hl::binary_gcd(l, x) * x;
   }
 
   std::cout << l << "\n";

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#fe4a83e4dc2a7f834ed4cd85d6972a53">Mylib/Bit</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/enumerate_supersets_desc.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 04:37:36+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -71,12 +71,14 @@ layout: default
  * @title Enumerate supersets (Descending order)
  * @docs enumerate_supersets_desc.md
  */
-template <typename Func>
-void enumerate_supersets_desc(int a, int n, const Func &f){
-  const int x = (1 << n) - 1, y = x ^ (a & x);
-  for(int t = y; ; t = (t - 1) & y){
-    if(not f(t | a)) break;
-    if(t == 0) break;
+namespace haar_lib {
+  template <typename Func>
+  void enumerate_supersets_desc(int a, int n, const Func &f){
+    const int x = (1 << n) - 1, y = x ^ (a & x);
+    for(int t = y; ; t = (t - 1) & y){
+      if(not f(t | a)) break;
+      if(t == 0) break;
+    }
   }
 }
 
@@ -92,12 +94,14 @@ void enumerate_supersets_desc(int a, int n, const Func &f){
  * @title Enumerate supersets (Descending order)
  * @docs enumerate_supersets_desc.md
  */
-template <typename Func>
-void enumerate_supersets_desc(int a, int n, const Func &f){
-  const int x = (1 << n) - 1, y = x ^ (a & x);
-  for(int t = y; ; t = (t - 1) & y){
-    if(not f(t | a)) break;
-    if(t == 0) break;
+namespace haar_lib {
+  template <typename Func>
+  void enumerate_supersets_desc(int a, int n, const Func &f){
+    const int x = (1 << n) - 1, y = x ^ (a & x);
+    for(int t = y; ; t = (t - 1) & y){
+      if(not f(t | a)) break;
+      if(t == 0) break;
+    }
   }
 }
 

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/starts_with.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -48,13 +48,15 @@ layout: default
  * @title starts_with
  * @docs starts_with.md
  */
-template <typename Container, typename T = typename Container::value_type>
-bool starts_with(const Container &str, const Container &prefix){
-  if(str.size() < prefix.size()) return false;
-  for(size_t i = 0; i < prefix.size(); ++i){
-    if(str[i] != prefix[i]) return false;
+namespace haar_lib {
+  template <typename Container, typename T = typename Container::value_type>
+  bool starts_with(const Container &str, const Container &prefix){
+    if(str.size() < prefix.size()) return false;
+    for(size_t i = 0; i < prefix.size(); ++i){
+      if(str[i] != prefix[i]) return false;
+    }
+    return true;
   }
-  return true;
 }
 
 ```
@@ -70,13 +72,15 @@ bool starts_with(const Container &str, const Container &prefix){
  * @title starts_with
  * @docs starts_with.md
  */
-template <typename Container, typename T = typename Container::value_type>
-bool starts_with(const Container &str, const Container &prefix){
-  if(str.size() < prefix.size()) return false;
-  for(size_t i = 0; i < prefix.size(); ++i){
-    if(str[i] != prefix[i]) return false;
+namespace haar_lib {
+  template <typename Container, typename T = typename Container::value_type>
+  bool starts_with(const Container &str, const Container &prefix){
+    if(str.size() < prefix.size()) return false;
+    for(size_t i = 0; i < prefix.size(); ++i){
+      if(str[i] != prefix[i]) return false;
+    }
+    return true;
   }
-  return true;
 }
 
 ```

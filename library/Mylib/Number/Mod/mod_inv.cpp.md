@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#795ab137908c82fc28acbcffe5b1c757">Mylib/Number/Mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mod/mod_inv.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -76,19 +76,21 @@ layout: default
  * @title Mod inverse
  * @docs mod_inv.md
  */
-int64_t mod_inv(int64_t a, int64_t m){
-  int64_t b = m, u = 1, v = 0;
+namespace haar_lib {
+  int64_t mod_inv(int64_t a, int64_t m){
+    int64_t b = m, u = 1, v = 0;
 
-  while(b){
-    int64_t t = a / b;
-    a -= t * b; std::swap(a, b);
-    u -= t * v; std::swap(u, v);
+    while(b){
+      int64_t t = a / b;
+      a -= t * b; std::swap(a, b);
+      u -= t * v; std::swap(u, v);
+    }
+
+    u %= m;
+    if(u < 0) u += m;
+
+    return u;
   }
-
-  u %= m;
-  if(u < 0) u += m;
-
-  return u;
 }
 
 ```
@@ -105,19 +107,21 @@ int64_t mod_inv(int64_t a, int64_t m){
  * @title Mod inverse
  * @docs mod_inv.md
  */
-int64_t mod_inv(int64_t a, int64_t m){
-  int64_t b = m, u = 1, v = 0;
+namespace haar_lib {
+  int64_t mod_inv(int64_t a, int64_t m){
+    int64_t b = m, u = 1, v = 0;
 
-  while(b){
-    int64_t t = a / b;
-    a -= t * b; std::swap(a, b);
-    u -= t * v; std::swap(u, v);
+    while(b){
+      int64_t t = a / b;
+      a -= t * b; std::swap(a, b);
+      u -= t * v; std::swap(u, v);
+    }
+
+    u %= m;
+    if(u < 0) u += m;
+
+    return u;
   }
-
-  u %= m;
-  if(u < 0) u += m;
-
-  return u;
 }
 
 ```

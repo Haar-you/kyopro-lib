@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Prime factorization (Precalculation)
+# :warning: Prime factorization (Sieve)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
-* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/prime_factorize_precalculated.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+* <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/prime_factorize_sieve.cpp">View this file on GitHub</a>
+    - Last commit date: 2020-09-12 07:08:00+09:00
 
 
 
@@ -57,32 +57,34 @@ layout: default
 #include <cstdint>
 
 /**
- * @title Prime factorization (Precalculation)
- * @docs prime_factorize_precalculated.md
+ * @title Prime factorization (Sieve)
+ * @docs prime_factorize_sieve.md
  */
-struct PrimeFactorize {
-  std::vector<int> p;
+namespace haar_lib {
+  struct prime_factorize_sieve {
+    std::vector<int> p;
 
-  PrimeFactorize(int N): p(N + 1){
-    for(int i = 2; i <= N; ++i){
-      if(p[i] != 0) continue;
-      for(int j = i; j <= N; j += i){
-        if(p[j] == 0) p[j] = i;
+    prime_factorize_sieve(int N): p(N + 1){
+      for(int i = 2; i <= N; ++i){
+        if(p[i] != 0) continue;
+        for(int j = i; j <= N; j += i){
+          if(p[j] == 0) p[j] = i;
+        }
       }
     }
-  }
 
-  auto factorize(int N){
-    std::vector<int64_t> ret;
+    auto factorize(int N){
+      std::vector<int64_t> ret;
 
-    while(N > 1){
-      ret.push_back(p[N]);
-      N /= p[N];
+      while(N > 1){
+        ret.push_back(p[N]);
+        N /= p[N];
+      }
+
+      return ret;
     }
-
-    return ret;
-  }
-};
+  };
+}
 
 ```
 {% endraw %}
@@ -90,37 +92,39 @@ struct PrimeFactorize {
 <a id="bundled"></a>
 {% raw %}
 ```cpp
-#line 2 "Mylib/Number/Prime/prime_factorize_precalculated.cpp"
+#line 2 "Mylib/Number/Prime/prime_factorize_sieve.cpp"
 #include <vector>
 #include <cstdint>
 
 /**
- * @title Prime factorization (Precalculation)
- * @docs prime_factorize_precalculated.md
+ * @title Prime factorization (Sieve)
+ * @docs prime_factorize_sieve.md
  */
-struct PrimeFactorize {
-  std::vector<int> p;
+namespace haar_lib {
+  struct prime_factorize_sieve {
+    std::vector<int> p;
 
-  PrimeFactorize(int N): p(N + 1){
-    for(int i = 2; i <= N; ++i){
-      if(p[i] != 0) continue;
-      for(int j = i; j <= N; j += i){
-        if(p[j] == 0) p[j] = i;
+    prime_factorize_sieve(int N): p(N + 1){
+      for(int i = 2; i <= N; ++i){
+        if(p[i] != 0) continue;
+        for(int j = i; j <= N; j += i){
+          if(p[j] == 0) p[j] = i;
+        }
       }
     }
-  }
 
-  auto factorize(int N){
-    std::vector<int64_t> ret;
+    auto factorize(int N){
+      std::vector<int64_t> ret;
 
-    while(N > 1){
-      ret.push_back(p[N]);
-      N /= p[N];
+      while(N > 1){
+        ret.push_back(p[N]);
+        N /= p[N];
+      }
+
+      return ret;
     }
-
-    return ret;
-  }
-};
+  };
+}
 
 ```
 {% endraw %}

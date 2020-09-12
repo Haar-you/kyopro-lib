@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/max_contiguous.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -70,33 +70,35 @@ layout: default
  * @title Max contiguous monoid
  * @docs max_contiguous.md
  */
-struct MaxContiguousMonoid {
-  using value_type = std::tuple<int, int, int, int>;
+namespace haar_lib {
+  struct max_contiguous_monoid {
+    using value_type = std::tuple<int, int, int, int>;
 
-  value_type operator()() const {
-    return {0, 0, 0, 0};
-  }
+    value_type operator()() const {
+      return {0, 0, 0, 0};
+    }
 
-  value_type operator()(const value_type &a, const value_type &b) const {
-    auto [ca, la, ra, lena] = a;
-    auto [cb, lb, rb, lenb] = b;
+    value_type operator()(const value_type &a, const value_type &b) const {
+      auto [ca, la, ra, lena] = a;
+      auto [cb, lb, rb, lenb] = b;
 
-    return {
-            std::max({ca, cb, ra + lb}),
-            ca == lena ? ca + lb : la,
-            cb == lenb ? cb + ra : rb,
-            lena + lenb
-    };
-  }
+      return {
+              std::max({ca, cb, ra + lb}),
+              ca == lena ? ca + lb : la,
+              cb == lenb ? cb + ra : rb,
+              lena + lenb
+      };
+    }
 
-  static value_type zero(){
-    return {0, 0, 0, 1};
-  }
+    static value_type zero(){
+      return {0, 0, 0, 1};
+    }
 
-  static value_type one(){
-    return {1, 1, 1, 1};
-  }
-};
+    static value_type one(){
+      return {1, 1, 1, 1};
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -112,33 +114,35 @@ struct MaxContiguousMonoid {
  * @title Max contiguous monoid
  * @docs max_contiguous.md
  */
-struct MaxContiguousMonoid {
-  using value_type = std::tuple<int, int, int, int>;
+namespace haar_lib {
+  struct max_contiguous_monoid {
+    using value_type = std::tuple<int, int, int, int>;
 
-  value_type operator()() const {
-    return {0, 0, 0, 0};
-  }
+    value_type operator()() const {
+      return {0, 0, 0, 0};
+    }
 
-  value_type operator()(const value_type &a, const value_type &b) const {
-    auto [ca, la, ra, lena] = a;
-    auto [cb, lb, rb, lenb] = b;
+    value_type operator()(const value_type &a, const value_type &b) const {
+      auto [ca, la, ra, lena] = a;
+      auto [cb, lb, rb, lenb] = b;
 
-    return {
-            std::max({ca, cb, ra + lb}),
-            ca == lena ? ca + lb : la,
-            cb == lenb ? cb + ra : rb,
-            lena + lenb
-    };
-  }
+      return {
+              std::max({ca, cb, ra + lb}),
+              ca == lena ? ca + lb : la,
+              cb == lenb ? cb + ra : rb,
+              lena + lenb
+      };
+    }
 
-  static value_type zero(){
-    return {0, 0, 0, 1};
-  }
+    static value_type zero(){
+      return {0, 0, 0, 1};
+    }
 
-  static value_type one(){
-    return {1, 1, 1, 1};
-  }
-};
+    static value_type one(){
+      return {1, 1, 1, 1};
+    }
+  };
+}
 
 ```
 {% endraw %}

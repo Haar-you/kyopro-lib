@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#2e380218d9fd214c2f91a8ade734af1c">Mylib/TypicalProblem/SubsetSumProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_count_fps.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -53,28 +53,30 @@ layout: default
  * @title Subset sum problem (Count, FPS)
  * @docs subset_sum_count_fps.md
  */
-template <typename Fps>
-auto subset_sum_count_fps(std::vector<int> s, int t){
-  using T = typename Fps::value_type;
+namespace haar_lib {
+  template <typename Fps>
+  auto subset_sum_count_fps(std::vector<int> s, int t){
+    using T = typename Fps::value_type;
 
-  std::vector<int> c(t + 1);
-  for(int i : s) c[i] += 1;
+    std::vector<int> c(t + 1);
+    for(int i : s) c[i] += 1;
 
-  Fps ret(t + 1);
+    Fps ret(t + 1);
 
-  for(int i = 1; i <= t; ++i){
-    if(c[i] == 0) continue;
+    for(int i = 1; i <= t; ++i){
+      if(c[i] == 0) continue;
 
-    for(int j = 1; j * i <= t; ++j){
-      const int k = j * i;
-      const T x = (j % 2 == 1 ? 1 : -1) * i * ((T)k).inv();
-      ret[k] += x * c[i];
+      for(int j = 1; j * i <= t; ++j){
+        const int k = j * i;
+        const T x = (j % 2 == 1 ? 1 : -1) * i * ((T)k).inv();
+        ret[k] += x * c[i];
+      }
     }
+
+    ret = ret.exp();
+
+    return ret;
   }
-
-  ret = ret.exp();
-
-  return ret;
 }
 
 ```
@@ -90,28 +92,30 @@ auto subset_sum_count_fps(std::vector<int> s, int t){
  * @title Subset sum problem (Count, FPS)
  * @docs subset_sum_count_fps.md
  */
-template <typename Fps>
-auto subset_sum_count_fps(std::vector<int> s, int t){
-  using T = typename Fps::value_type;
+namespace haar_lib {
+  template <typename Fps>
+  auto subset_sum_count_fps(std::vector<int> s, int t){
+    using T = typename Fps::value_type;
 
-  std::vector<int> c(t + 1);
-  for(int i : s) c[i] += 1;
+    std::vector<int> c(t + 1);
+    for(int i : s) c[i] += 1;
 
-  Fps ret(t + 1);
+    Fps ret(t + 1);
 
-  for(int i = 1; i <= t; ++i){
-    if(c[i] == 0) continue;
+    for(int i = 1; i <= t; ++i){
+      if(c[i] == 0) continue;
 
-    for(int j = 1; j * i <= t; ++j){
-      const int k = j * i;
-      const T x = (j % 2 == 1 ? 1 : -1) * i * ((T)k).inv();
-      ret[k] += x * c[i];
+      for(int j = 1; j * i <= t; ++j){
+        const int k = j * i;
+        const T x = (j % 2 == 1 ? 1 : -1) * i * ((T)k).inv();
+        ret[k] += x * c[i];
+      }
     }
+
+    ret = ret.exp();
+
+    return ret;
   }
-
-  ret = ret.exp();
-
-  return ret;
 }
 
 ```

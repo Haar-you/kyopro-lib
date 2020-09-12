@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/euler_phi_function.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -59,19 +59,21 @@ layout: default
  * @title Euler's totient function
  * @docs euler_phi_function.md
  */
-int64_t totient(int64_t n){
-  int64_t ret = n;
+namespace haar_lib {
+  int64_t totient(int64_t n){
+    int64_t ret = n;
 
-  for(int64_t i = 2; i * i <= n; ++i){
-    if(n % i == 0){
-      ret -= ret / i;
-      while(n % i == 0) n /= i;
+    for(int64_t i = 2; i * i <= n; ++i){
+      if(n % i == 0){
+        ret -= ret / i;
+        while(n % i == 0) n /= i;
+      }
     }
+
+    if(n != 1) ret -= ret / n;
+
+    return ret;
   }
-
-  if(n != 1) ret -= ret / n;
-
-  return ret;
 }
 
 ```
@@ -87,19 +89,21 @@ int64_t totient(int64_t n){
  * @title Euler's totient function
  * @docs euler_phi_function.md
  */
-int64_t totient(int64_t n){
-  int64_t ret = n;
+namespace haar_lib {
+  int64_t totient(int64_t n){
+    int64_t ret = n;
 
-  for(int64_t i = 2; i * i <= n; ++i){
-    if(n % i == 0){
-      ret -= ret / i;
-      while(n % i == 0) n /= i;
+    for(int64_t i = 2; i * i <= n; ++i){
+      if(n % i == 0){
+        ret -= ret / i;
+        while(n % i == 0) n /= i;
+      }
     }
+
+    if(n != 1) ret -= ret / n;
+
+    return ret;
   }
-
-  if(n != 1) ret -= ret / n;
-
-  return ret;
 }
 
 ```

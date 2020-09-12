@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/stirling_number_second_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 04:38:50+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -60,21 +60,23 @@ layout: default
  * @title Stirling numbers of the second kind (Table)
  * @docs stirling_number_second_table.md
  */
-template <typename T>
-auto stirling_number_of_second_kind_table(int n){
-  std::vector<std::vector<T>> ret(n + 1, std::vector<T>(n + 1));
+namespace haar_lib {
+  template <typename T>
+  auto stirling_number_of_second_kind_table(int n){
+    std::vector<std::vector<T>> ret(n + 1, std::vector<T>(n + 1));
 
-  ret[0][0] = 1;
+    ret[0][0] = 1;
 
-  for(int i = 1; i <= n; ++i) ret[i][1] = ret[i][i] = 1;
+    for(int i = 1; i <= n; ++i) ret[i][1] = ret[i][i] = 1;
 
-  for(int i = 3; i <= n; ++i){
-    for(int j = 2; j < i; ++j){
-      ret[i][j] = ret[i - 1][j - 1] + j * ret[i - 1][j];
+    for(int i = 3; i <= n; ++i){
+      for(int j = 2; j < i; ++j){
+        ret[i][j] = ret[i - 1][j - 1] + j * ret[i - 1][j];
+      }
     }
-  }
 
-  return ret;
+    return ret;
+  }
 }
 
 ```
@@ -90,21 +92,23 @@ auto stirling_number_of_second_kind_table(int n){
  * @title Stirling numbers of the second kind (Table)
  * @docs stirling_number_second_table.md
  */
-template <typename T>
-auto stirling_number_of_second_kind_table(int n){
-  std::vector<std::vector<T>> ret(n + 1, std::vector<T>(n + 1));
+namespace haar_lib {
+  template <typename T>
+  auto stirling_number_of_second_kind_table(int n){
+    std::vector<std::vector<T>> ret(n + 1, std::vector<T>(n + 1));
 
-  ret[0][0] = 1;
+    ret[0][0] = 1;
 
-  for(int i = 1; i <= n; ++i) ret[i][1] = ret[i][i] = 1;
+    for(int i = 1; i <= n; ++i) ret[i][1] = ret[i][i] = 1;
 
-  for(int i = 3; i <= n; ++i){
-    for(int j = 2; j < i; ++j){
-      ret[i][j] = ret[i - 1][j - 1] + j * ret[i - 1][j];
+    for(int i = 3; i <= n; ++i){
+      for(int j = 2; j < i; ++j){
+        ret[i][j] = ret[i - 1][j - 1] + j * ret[i - 1][j];
+      }
     }
-  }
 
-  return ret;
+    return ret;
+  }
 }
 
 ```

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/partition_number_fps.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-10 05:03:27+09:00
 
 
 
@@ -54,31 +54,33 @@ layout: default
  * @title Partition number (FPS)
  * @docs partition_number_fps.cpp
  */
-template <typename Fps>
-auto partition_number(int N){
-  using T = typename Fps::value_type;
+namespace haar_lib {
+  template <typename Fps>
+  auto partition_number_fps(int N){
+    using T = typename Fps::value_type;
 
-  std::vector<T> f(N + 1);
-  f[0] = 1;
+    std::vector<T> f(N + 1);
+    f[0] = 1;
 
-  {
-    const int M = (sqrt(1 + 24 * N) - 1) / 6;
-    for(int i = 1; i <= M; ++i){
-      f[i * (3 * i + 1) / 2] += (i % 2 == 0 ? 1 : -1);
+    {
+      const int M = (std::sqrt(1 + 24 * N) - 1) / 6;
+      for(int i = 1; i <= M; ++i){
+        f[i * (3 * i + 1) / 2] += (i % 2 == 0 ? 1 : -1);
+      }
     }
-  }
 
-  {
-    const int M = (sqrt(1 + 24 * N) + 1) / 6;
-    for(int i = 1; i <= M; ++i){
-      f[i * (3 * i - 1) / 2] += (i % 2 == 0 ? 1 : -1);
+    {
+      const int M = (std::sqrt(1 + 24 * N) + 1) / 6;
+      for(int i = 1; i <= M; ++i){
+        f[i * (3 * i - 1) / 2] += (i % 2 == 0 ? 1 : -1);
+      }
     }
+
+    Fps ret(f);
+    ret = ret.inv();
+
+    return ret;
   }
-
-  Fps ret(f);
-  ret = ret.inv();
-
-  return ret;
 }
 
 ```
@@ -95,31 +97,33 @@ auto partition_number(int N){
  * @title Partition number (FPS)
  * @docs partition_number_fps.cpp
  */
-template <typename Fps>
-auto partition_number(int N){
-  using T = typename Fps::value_type;
+namespace haar_lib {
+  template <typename Fps>
+  auto partition_number_fps(int N){
+    using T = typename Fps::value_type;
 
-  std::vector<T> f(N + 1);
-  f[0] = 1;
+    std::vector<T> f(N + 1);
+    f[0] = 1;
 
-  {
-    const int M = (sqrt(1 + 24 * N) - 1) / 6;
-    for(int i = 1; i <= M; ++i){
-      f[i * (3 * i + 1) / 2] += (i % 2 == 0 ? 1 : -1);
+    {
+      const int M = (std::sqrt(1 + 24 * N) - 1) / 6;
+      for(int i = 1; i <= M; ++i){
+        f[i * (3 * i + 1) / 2] += (i % 2 == 0 ? 1 : -1);
+      }
     }
-  }
 
-  {
-    const int M = (sqrt(1 + 24 * N) + 1) / 6;
-    for(int i = 1; i <= M; ++i){
-      f[i * (3 * i - 1) / 2] += (i % 2 == 0 ? 1 : -1);
+    {
+      const int M = (std::sqrt(1 + 24 * N) + 1) / 6;
+      for(int i = 1; i <= M; ++i){
+        f[i * (3 * i - 1) / 2] += (i % 2 == 0 ? 1 : -1);
+      }
     }
+
+    Fps ret(f);
+    ret = ret.inv();
+
+    return ret;
   }
-
-  Fps ret(f);
-  ret = ret.inv();
-
-  return ret;
 }
 
 ```

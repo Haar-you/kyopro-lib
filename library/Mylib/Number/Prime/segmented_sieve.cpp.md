@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/segmented_sieve.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -67,42 +67,45 @@ layout: default
  * @title Segmented sieve
  * @docs segmented_sieve.md
  */
-template <typename Checker>
-class SegmentedSieve {
-  int L, R, D;
-  std::vector<bool> data;
+namespace haar_lib {
+  template <typename Checker>
+  class segmented_sieve {
+    int L, R, D;
+    std::vector<bool> data;
 
-public:
-  // [l, r]
-  SegmentedSieve(int l, int r, Checker is_prime): L(l), R(r), D(R - L + 1), data(D, true){
-    std::vector<int> primes;
-    for(int64_t i = 2; i * i <= R; ++i){
-      if(is_prime(i)) primes.push_back(i);
-    }
-
-    for(int64_t i = 0; i < D; ++i){
-      const int64_t x = L + i;
-
-      if(x == 1){
-        data[i] = false;
-        continue;
+  public:
+    // [l, r]
+    segmented_sieve(int l, int r, Checker is_prime):
+      L(l), R(r), D(R - L + 1), data(D, true){
+      std::vector<int> primes;
+      for(int64_t i = 2; i * i <= R; ++i){
+        if(is_prime(i)) primes.push_back(i);
       }
 
-      for(auto p : primes){
-        if(x == p) break;
-        if(x % p == 0){
+      for(int64_t i = 0; i < D; ++i){
+        const int64_t x = L + i;
+
+        if(x == 1){
           data[i] = false;
-          break;
+          continue;
+        }
+
+        for(auto p : primes){
+          if(x == p) break;
+          if(x % p == 0){
+            data[i] = false;
+            break;
+          }
         }
       }
     }
-  }
 
-  bool operator()(int i) const {
-    assert(L <= i and i <= R);
-    return data[i - L];
-  }
-};
+    bool operator()(int i) const {
+      assert(L <= i and i <= R);
+      return data[i - L];
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -119,42 +122,45 @@ public:
  * @title Segmented sieve
  * @docs segmented_sieve.md
  */
-template <typename Checker>
-class SegmentedSieve {
-  int L, R, D;
-  std::vector<bool> data;
+namespace haar_lib {
+  template <typename Checker>
+  class segmented_sieve {
+    int L, R, D;
+    std::vector<bool> data;
 
-public:
-  // [l, r]
-  SegmentedSieve(int l, int r, Checker is_prime): L(l), R(r), D(R - L + 1), data(D, true){
-    std::vector<int> primes;
-    for(int64_t i = 2; i * i <= R; ++i){
-      if(is_prime(i)) primes.push_back(i);
-    }
-
-    for(int64_t i = 0; i < D; ++i){
-      const int64_t x = L + i;
-
-      if(x == 1){
-        data[i] = false;
-        continue;
+  public:
+    // [l, r]
+    segmented_sieve(int l, int r, Checker is_prime):
+      L(l), R(r), D(R - L + 1), data(D, true){
+      std::vector<int> primes;
+      for(int64_t i = 2; i * i <= R; ++i){
+        if(is_prime(i)) primes.push_back(i);
       }
 
-      for(auto p : primes){
-        if(x == p) break;
-        if(x % p == 0){
+      for(int64_t i = 0; i < D; ++i){
+        const int64_t x = L + i;
+
+        if(x == 1){
           data[i] = false;
-          break;
+          continue;
+        }
+
+        for(auto p : primes){
+          if(x == p) break;
+          if(x % p == 0){
+            data[i] = false;
+            break;
+          }
         }
       }
     }
-  }
 
-  bool operator()(int i) const {
-    assert(L <= i and i <= R);
-    return data[i - L];
-  }
-};
+    bool operator()(int i) const {
+      assert(L <= i and i <= R);
+      return data[i - L];
+    }
+  };
+}
 
 ```
 {% endraw %}

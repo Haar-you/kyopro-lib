@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#94d4e5c879e40488003ae32a119b6352">test/yukicoder/306</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/306/main.golden.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/306">https://yukicoder.me/problems/no/306</a>
@@ -55,6 +55,8 @@ layout: default
 #include <cmath>
 #include "Mylib/Algorithm/Search/golden_section_search_downwards.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int xa, xb, ya, yb; std::cin >> xa >> ya >> xb >> yb;
 
@@ -63,7 +65,7 @@ int main(){
       return std::hypot(xa, ya - p) + std::hypot(xb, yb - p);
     };
 
-  auto ans = golden_section_search_downwards<long double>(-1000, 1000, f);
+  auto ans = hl::golden_section_search_downwards<long double>(-1000, 1000, f);
 
   std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
 
@@ -91,26 +93,30 @@ int main(){
  * @title Golden section search (Convex downwards)
  * @docs golden_section_search_downwards.md
  */
-template <typename T = double, typename Func = std::function<T(T)>>
-T golden_section_search_downwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
-  static const T phi = (1.0 + std::sqrt(5)) / 2;
+namespace haar_lib {
+  template <typename T = double, typename Func = std::function<T(T)>>
+  T golden_section_search_downwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
+    static const T phi = (1.0 + std::sqrt(5)) / 2;
 
-  T t1 = 0, t2 = 0;
+    T t1 = 0, t2 = 0;
 
-  while(LOOP_COUNT--){
-    t1 = (lb * phi + ub) / (phi + 1.0);
-    t2 = (lb + ub * phi) / (phi + 1.0);
+    while(LOOP_COUNT--){
+      t1 = (lb * phi + ub) / (phi + 1.0);
+      t2 = (lb + ub * phi) / (phi + 1.0);
 
-    if(f(t1) < f(t2)){
-      ub = t2;
-    }else{
-      lb = t1;
+      if(f(t1) < f(t2)){
+        ub = t2;
+      }else{
+        lb = t1;
+      }
     }
-  }
 
-  return lb;
+    return lb;
+  }
 }
 #line 8 "test/yukicoder/306/main.golden.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int xa, xb, ya, yb; std::cin >> xa >> ya >> xb >> yb;
@@ -120,7 +126,7 @@ int main(){
       return std::hypot(xa, ya - p) + std::hypot(xb, yb - p);
     };
 
-  auto ans = golden_section_search_downwards<long double>(-1000, 1000, f);
+  auto ans = hl::golden_section_search_downwards<long double>(-1000, 1000, f);
 
   std::cout << std::fixed << std::setprecision(12) << ans << std::endl;
 

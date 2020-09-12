@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/eratosthenes_sieve.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -53,27 +53,29 @@ layout: default
  * @title Sieve of Eratosthenes
  * @docs eratosthenes_sieve.md
  */
-class EratosthenesSieve {
-  std::vector<bool> is_prime;
+namespace haar_lib {
+  class eratosthenes_sieve {
+    std::vector<bool> is_prime;
 
-public:
-  EratosthenesSieve(int MAX): is_prime(MAX + 1){
-    is_prime.flip();
-    is_prime[0] = is_prime[1] = false;
+  public:
+    eratosthenes_sieve(int MAX): is_prime(MAX + 1){
+      is_prime.flip();
+      is_prime[0] = is_prime[1] = false;
 
-    for(int i = 2; i <= MAX; ++i){
-      if(is_prime[i]){
-        for(int j = 2 * i; j <= MAX; j += i){
-          is_prime[j] = false;
+      for(int i = 2; i <= MAX; ++i){
+        if(is_prime[i]){
+          for(int j = 2 * i; j <= MAX; j += i){
+            is_prime[j] = false;
+          }
         }
       }
     }
-  }
 
-  bool operator()(int i) const {
-    return is_prime[i];
-  }
-};
+    bool operator()(int i) const {
+      return is_prime[i];
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -88,27 +90,29 @@ public:
  * @title Sieve of Eratosthenes
  * @docs eratosthenes_sieve.md
  */
-class EratosthenesSieve {
-  std::vector<bool> is_prime;
+namespace haar_lib {
+  class eratosthenes_sieve {
+    std::vector<bool> is_prime;
 
-public:
-  EratosthenesSieve(int MAX): is_prime(MAX + 1){
-    is_prime.flip();
-    is_prime[0] = is_prime[1] = false;
+  public:
+    eratosthenes_sieve(int MAX): is_prime(MAX + 1){
+      is_prime.flip();
+      is_prime[0] = is_prime[1] = false;
 
-    for(int i = 2; i <= MAX; ++i){
-      if(is_prime[i]){
-        for(int j = 2 * i; j <= MAX; j += i){
-          is_prime[j] = false;
+      for(int i = 2; i <= MAX; ++i){
+        if(is_prime[i]){
+          for(int j = 2 * i; j <= MAX; j += i){
+            is_prime[j] = false;
+          }
         }
       }
     }
-  }
 
-  bool operator()(int i) const {
-    return is_prime[i];
-  }
-};
+    bool operator()(int i) const {
+      return is_prime[i];
+    }
+  };
+}
 
 ```
 {% endraw %}

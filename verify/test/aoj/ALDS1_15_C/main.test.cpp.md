@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#dfb9b4b04978b5abf401139b8f15bff5">test/aoj/ALDS1_15_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_15_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_15_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_15_C</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
 * :x: <a href="../../../../library/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling.cpp.html">Interval scheduling problem</a>
 
 
@@ -55,13 +55,15 @@ layout: default
 #include "Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n; std::cin >> n;
 
-  auto [left, right] = input_tuple_vector<int, int>(n);
+  auto [left, right] = hl::input_tuple_vector<int, int>(n);
   for(auto &x : right) x += 1;
 
-  auto ans = interval_scheduling(left, right);
+  auto ans = hl::interval_scheduling(left, right);
 
   std::cout << ans.size() << std::endl;
 
@@ -89,24 +91,26 @@ int main(){
  * @title Interval scheduling problem
  * @docs interval_scheduling.md
  */
-template <typename T>
-std::vector<std::pair<T, T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){
-  const int N = l.size();
-  std::vector<std::pair<T, T>> ret;
-  std::vector<int> ord(N);
-  std::iota(ord.begin(), ord.end(), 0);
-  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
+namespace haar_lib {
+  template <typename T>
+  std::vector<std::pair<T, T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){
+    const int N = l.size();
+    std::vector<std::pair<T, T>> ret;
+    std::vector<int> ord(N);
+    std::iota(ord.begin(), ord.end(), 0);
+    std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
 
-  auto b = std::numeric_limits<T>::lowest();
+    auto b = std::numeric_limits<T>::lowest();
 
-  for(int i : ord){
-    if(l[i] >= b){
-      ret.emplace_back(l[i], r[i]);
-      b = r[i];
+    for(int i : ord){
+      if(l[i] >= b){
+        ret.emplace_back(l[i], r[i]);
+        b = r[i];
+      }
     }
-  }
 
-  return ret;
+    return ret;
+  }
 }
 #line 4 "Mylib/IO/input_tuple_vector.cpp"
 #include <tuple>
@@ -116,36 +120,40 @@ std::vector<std::pair<T, T>> interval_scheduling(const std::vector<T> &l, const 
 /**
  * @docs input_tuple_vector.md
  */
-template <typename T, size_t ... I>
-void input_tuple_vector_init(T &val, int N, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0) ...};
-}
-
-template <typename T, size_t ... I>
-void input_tuple_vector_helper(T &val, int i, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0) ...};
-}
-
-template <typename ... Args>
-auto input_tuple_vector(int N){
-  std::tuple<std::vector<Args> ...> ret;
-
-  input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof ... (Args)>());
-  for(int i = 0; i < N; ++i){
-    input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof ... (Args)>());
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  void input_tuple_vector_init(T &val, int N, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0) ...};
   }
 
-  return ret;
+  template <typename T, size_t ... I>
+  void input_tuple_vector_helper(T &val, int i, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0) ...};
+  }
+
+  template <typename ... Args>
+  auto input_tuple_vector(int N){
+    std::tuple<std::vector<Args> ...> ret;
+
+    input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof ... (Args)>());
+    for(int i = 0; i < N; ++i){
+      input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof ... (Args)>());
+    }
+
+    return ret;
+  }
 }
 #line 7 "test/aoj/ALDS1_15_C/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int n; std::cin >> n;
 
-  auto [left, right] = input_tuple_vector<int, int>(n);
+  auto [left, right] = hl::input_tuple_vector<int, int>(n);
   for(auto &x : right) x += 1;
 
-  auto ans = interval_scheduling(left, right);
+  auto ans = hl::interval_scheduling(left, right);
 
   std::cout << ans.size() << std::endl;
 

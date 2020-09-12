@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#e115c29591c600d5517beaef47c7a0b8">test/aoj/GRL_6_B</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_6_B/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_B">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_B</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">Minimum cost flow</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">Minimum cost flow</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -55,12 +55,14 @@ layout: default
 #include "Mylib/Graph/Flow/minimum_cost_flow.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int V, E, F; std::cin >> V >> E >> F;
 
-  MinimumCostFlow<int, int> f(V);
+  hl::minimum_cost_flow<int, int> f(V);
 
-  for(auto [u, v, c, d] : input_tuples<int, int, int, int>(E)){
+  for(auto [u, v, c, d] : hl::input_tuples<int, int, int, int>(E)){
     f.add_edge(u, v, c, d);
   }
 
@@ -97,99 +99,101 @@ int main(){
  * @title Minimum cost flow
  * @docs minimum_cost_flow.md
  */
-template <typename T, typename U>
-class MinimumCostFlow {
-public:
-  struct edge {
-    int from, to;
-    T cap;
-    U cost;
-    int rev;
-    bool is_rev;
-    edge(int from, int to, T cap, U cost, int rev, bool is_rev):
-      from(from), to(to), cap(cap), cost(cost), rev(rev), is_rev(is_rev){}
-  };
+namespace haar_lib {
+  template <typename T, typename U>
+  class minimum_cost_flow {
+  public:
+    struct edge {
+      int from, to;
+      T cap;
+      U cost;
+      int rev;
+      bool is_rev;
+      edge(int from, int to, T cap, U cost, int rev, bool is_rev):
+        from(from), to(to), cap(cap), cost(cost), rev(rev), is_rev(is_rev){}
+    };
 
-private:
-  int size;
-  std::vector<std::vector<edge>> g;
+  private:
+    int size;
+    std::vector<std::vector<edge>> g;
 
-public:
-  MinimumCostFlow(int size): size(size), g(size){}
+  public:
+    minimum_cost_flow(int size): size(size), g(size){}
 
-  void add_edge(int from, int to, T cap, U cost){
-    g[from].emplace_back(from, to, cap, cost, g[to].size(), false);
-    g[to].emplace_back(to, from, 0, -cost, g[from].size() - 1, true);
-  }
+    void add_edge(int from, int to, T cap, U cost){
+      g[from].emplace_back(from, to, cap, cost, g[to].size(), false);
+      g[to].emplace_back(to, from, 0, -cost, g[from].size() - 1, true);
+    }
 
-  T solve(int src, int dst, const T &f, U &ret){
-    using P = std::pair<U, int>;
-    ret = 0;
-    T flow = f;
-    std::vector<U> h(size, 0), cost(size);
-    std::vector<bool> is_inf(size, true);
-    std::vector<int> prev_node(size), prev_edge(size);
-    std::priority_queue<P, std::vector<P>, std::greater<P>> pq;
+    T solve(int src, int dst, const T &f, U &ret){
+      using P = std::pair<U, int>;
+      ret = 0;
+      T flow = f;
+      std::vector<U> h(size, 0), cost(size);
+      std::vector<bool> is_inf(size, true);
+      std::vector<int> prev_node(size), prev_edge(size);
+      std::priority_queue<P, std::vector<P>, std::greater<P>> pq;
 
-    while(flow > 0){
-      std::fill(is_inf.begin(), is_inf.end(), true);
+      while(flow > 0){
+        std::fill(is_inf.begin(), is_inf.end(), true);
 
-      // src -> dst の最小コスト経路を探索する。 (dijkstra algorithm)
-      cost[src] = 0;
-      pq.emplace(0, src);
-      is_inf[src] = false;
+        // src -> dst の最小コスト経路を探索する。 (dijkstra algorithm)
+        cost[src] = 0;
+        pq.emplace(0, src);
+        is_inf[src] = false;
 
-      while(!pq.empty()){
-        U c;
-        int v;
-        std::tie(c, v) = pq.top(); pq.pop();
+        while(!pq.empty()){
+          U c;
+          int v;
+          std::tie(c, v) = pq.top(); pq.pop();
 
-        if(cost[v] < c) continue;
-        for(int i = 0; i < (int)g[v].size(); ++i){
-          edge &e = g[v][i];
-          int w = e.to;
-          T cap = e.cap;
-          U cst = e.cost;
-          if(cap > 0){
-            if(is_inf[w] or cost[w] + h[w] > cost[v] + h[v] + cst){
-              is_inf[w] = false;
-              cost[w] = cost[v] + cst + h[v] - h[w];
-              prev_node[w] = v;
-              prev_edge[w] = i;
-              pq.emplace(cost[w], w);
+          if(cost[v] < c) continue;
+          for(int i = 0; i < (int)g[v].size(); ++i){
+            edge &e = g[v][i];
+            int w = e.to;
+            T cap = e.cap;
+            U cst = e.cost;
+            if(cap > 0){
+              if(is_inf[w] or cost[w] + h[w] > cost[v] + h[v] + cst){
+                is_inf[w] = false;
+                cost[w] = cost[v] + cst + h[v] - h[w];
+                prev_node[w] = v;
+                prev_edge[w] = i;
+                pq.emplace(cost[w], w);
+              }
             }
           }
         }
+
+        if(is_inf[dst]) return f - flow; // dstへ到達不可能
+
+        for(int i = 0; i < size; ++i) h[i] += cost[i];
+
+        // src -> dst の最小コスト経路へ流せる量(df)を決定する。
+        T df = flow;
+        for(int cur = dst; cur != src; cur = prev_node[cur]){
+          df = std::min(df, g[prev_node[cur]][prev_edge[cur]].cap);
+        }
+
+        flow -= df;
+        ret += df * h[dst];
+
+        // capの更新
+        for(int cur = dst; cur != src; cur = prev_node[cur]){
+          edge &e = g[prev_node[cur]][prev_edge[cur]];
+          e.cap -= df;
+          g[cur][e.rev].cap += df;
+        }
       }
 
-      if(is_inf[dst]) return f - flow; // dstへ到達不可能
-
-      for(int i = 0; i < size; ++i) h[i] += cost[i];
-
-      // src -> dst の最小コスト経路へ流せる量(df)を決定する。
-      T df = flow;
-      for(int cur = dst; cur != src; cur = prev_node[cur]){
-        df = std::min(df, g[prev_node[cur]][prev_edge[cur]].cap);
-      }
-
-      flow -= df;
-      ret += df * h[dst];
-
-      // capの更新
-      for(int cur = dst; cur != src; cur = prev_node[cur]){
-        edge &e = g[prev_node[cur]][prev_edge[cur]];
-        e.cap -= df;
-        g[cur][e.rev].cap += df;
-      }
+      return f;
     }
 
-    return f;
-  }
-
-  const std::vector<std::vector<edge>>& get_graph(){
-    return g;
-  }
-};
+    const std::vector<std::vector<edge>>& get_graph(){
+      return g;
+    }
+  };
+}
 #line 6 "Mylib/IO/input_tuples.cpp"
 #include <initializer_list>
 #line 6 "Mylib/IO/input_tuple.cpp"
@@ -197,75 +201,81 @@ public:
 /**
  * @docs input_tuple.md
  */
-template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
-}
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
+  }
 
-template <typename T, typename U>
-std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
-  s >> value.first >> value.second;
-  return s;
-}
+  template <typename T, typename U>
+  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+    s >> value.first >> value.second;
+    return s;
+  }
 
-template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
-  return s;
+  template <typename ... Args>
+  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
+    return s;
+  }
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
-template <typename ... Args>
-class InputTuples {
-  struct iter {
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuples {
+    struct iter {
+      using value_type = std::tuple<Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N, c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
+      value_type operator*(){
+        if(not fetched){
+          std::cin >> value;
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuples(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples(int N){
+    return InputTuples<Args ...>(N);
+  }
 }
 #line 6 "test/aoj/GRL_6_B/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int V, E, F; std::cin >> V >> E >> F;
 
-  MinimumCostFlow<int, int> f(V);
+  hl::minimum_cost_flow<int, int> f(V);
 
-  for(auto [u, v, c, d] : input_tuples<int, int, int, int>(E)){
+  for(auto [u, v, c, d] : hl::input_tuples<int, int, int, int>(E)){
     f.add_edge(u, v, c, d);
   }
 

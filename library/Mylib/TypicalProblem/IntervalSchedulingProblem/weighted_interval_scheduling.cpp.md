@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a1062884f064c2b3be412505b6627108">Mylib/TypicalProblem/IntervalSchedulingProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/IntervalSchedulingProblem/weighted_interval_scheduling.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -63,39 +63,41 @@ layout: default
  * @title Weighted interval scheduling problem
  * @docs weighted_interval_scheduling.md
  */
-template <typename T, typename U>
-U weighted_interval_scheduling(std::vector<T> from, std::vector<T> to, std::vector<U> value){
-  int n = from.size();
+namespace haar_lib {
+  template <typename T, typename U>
+  U weighted_interval_scheduling(std::vector<T> from, std::vector<T> to, std::vector<U> value){
+    int n = from.size();
 
-  std::vector<T> c(from);
-  c.insert(c.end(), to.begin(), to.end());
+    std::vector<T> c(from);
+    c.insert(c.end(), to.begin(), to.end());
 
-  std::sort(c.begin(), c.end());
-  c.erase(std::unique(c.begin(), c.end()), c.end());
+    std::sort(c.begin(), c.end());
+    c.erase(std::unique(c.begin(), c.end()), c.end());
 
-  for(int i = 0; i < n; ++i){
-    from[i] = lower_bound(c.begin(), c.end(), from[i]) - c.begin();
-    to[i] = lower_bound(c.begin(), c.end(), to[i]) - c.begin();
-  }
-
-  int m = c.size();
-
-  std::vector<U> dp(m + 1);
-
-  std::vector<std::vector<std::pair<int, U>>> memo(m);
-  for(int i = 0; i < n; ++i){
-    memo[to[i]].emplace_back(from[i], value[i]);
-  }
-
-  for(int i = 0; i < m; ++i){
-    dp[i + 1] = dp[i];
-
-    for(auto &p : memo[i]){
-      dp[i + 1] = std::max(dp[i + 1], dp[p.first] + p.second);
+    for(int i = 0; i < n; ++i){
+      from[i] = lower_bound(c.begin(), c.end(), from[i]) - c.begin();
+      to[i] = lower_bound(c.begin(), c.end(), to[i]) - c.begin();
     }
-  }
 
-  return dp[m];
+    int m = c.size();
+
+    std::vector<U> dp(m + 1);
+
+    std::vector<std::vector<std::pair<int, U>>> memo(m);
+    for(int i = 0; i < n; ++i){
+      memo[to[i]].emplace_back(from[i], value[i]);
+    }
+
+    for(int i = 0; i < m; ++i){
+      dp[i + 1] = dp[i];
+
+      for(auto &p : memo[i]){
+        dp[i + 1] = std::max(dp[i + 1], dp[p.first] + p.second);
+      }
+    }
+
+    return dp[m];
+  }
 }
 
 ```
@@ -113,39 +115,41 @@ U weighted_interval_scheduling(std::vector<T> from, std::vector<T> to, std::vect
  * @title Weighted interval scheduling problem
  * @docs weighted_interval_scheduling.md
  */
-template <typename T, typename U>
-U weighted_interval_scheduling(std::vector<T> from, std::vector<T> to, std::vector<U> value){
-  int n = from.size();
+namespace haar_lib {
+  template <typename T, typename U>
+  U weighted_interval_scheduling(std::vector<T> from, std::vector<T> to, std::vector<U> value){
+    int n = from.size();
 
-  std::vector<T> c(from);
-  c.insert(c.end(), to.begin(), to.end());
+    std::vector<T> c(from);
+    c.insert(c.end(), to.begin(), to.end());
 
-  std::sort(c.begin(), c.end());
-  c.erase(std::unique(c.begin(), c.end()), c.end());
+    std::sort(c.begin(), c.end());
+    c.erase(std::unique(c.begin(), c.end()), c.end());
 
-  for(int i = 0; i < n; ++i){
-    from[i] = lower_bound(c.begin(), c.end(), from[i]) - c.begin();
-    to[i] = lower_bound(c.begin(), c.end(), to[i]) - c.begin();
-  }
-
-  int m = c.size();
-
-  std::vector<U> dp(m + 1);
-
-  std::vector<std::vector<std::pair<int, U>>> memo(m);
-  for(int i = 0; i < n; ++i){
-    memo[to[i]].emplace_back(from[i], value[i]);
-  }
-
-  for(int i = 0; i < m; ++i){
-    dp[i + 1] = dp[i];
-
-    for(auto &p : memo[i]){
-      dp[i + 1] = std::max(dp[i + 1], dp[p.first] + p.second);
+    for(int i = 0; i < n; ++i){
+      from[i] = lower_bound(c.begin(), c.end(), from[i]) - c.begin();
+      to[i] = lower_bound(c.begin(), c.end(), to[i]) - c.begin();
     }
-  }
 
-  return dp[m];
+    int m = c.size();
+
+    std::vector<U> dp(m + 1);
+
+    std::vector<std::vector<std::pair<int, U>>> memo(m);
+    for(int i = 0; i < n; ++i){
+      memo[to[i]].emplace_back(from[i], value[i]);
+    }
+
+    for(int i = 0; i < m; ++i){
+      dp[i + 1] = dp[i];
+
+      for(auto &p : memo[i]){
+        dp[i + 1] = std::max(dp[i + 1], dp[p.first] + p.second);
+      }
+    }
+
+    return dp[m];
+  }
 }
 
 ```

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/with_max_index.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -49,21 +49,23 @@ layout: default
 /**
  * @docs with_max_index.md
  */
-template <typename Monoid>
-struct WithMaxIndex {
-  using value_type = std::pair<typename Monoid::value_type, int64_t>;
-  const static Monoid M;
+namespace haar_lib {
+  template <typename Monoid>
+  struct with_max_index {
+    using value_type = std::pair<typename Monoid::value_type, int64_t>;
+    const static Monoid M;
 
-  value_type operator()() const {
-    return {M(), 0};
-  }
+    value_type operator()() const {
+      return {M(), 0};
+    }
 
-  value_type operator()(const value_type &a, const value_type &b) const {
-    if(a.first == b.first) return {a.first, std::max(a.second, b.second)};
-    if(M(a.first, b.first) == a.first) return a;
-    else return b;
-  }
-};
+    value_type operator()(const value_type &a, const value_type &b) const {
+      if(a.first == b.first) return {a.first, std::max(a.second, b.second)};
+      if(M(a.first, b.first) == a.first) return a;
+      else return b;
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -79,21 +81,23 @@ struct WithMaxIndex {
 /**
  * @docs with_max_index.md
  */
-template <typename Monoid>
-struct WithMaxIndex {
-  using value_type = std::pair<typename Monoid::value_type, int64_t>;
-  const static Monoid M;
+namespace haar_lib {
+  template <typename Monoid>
+  struct with_max_index {
+    using value_type = std::pair<typename Monoid::value_type, int64_t>;
+    const static Monoid M;
 
-  value_type operator()() const {
-    return {M(), 0};
-  }
+    value_type operator()() const {
+      return {M(), 0};
+    }
 
-  value_type operator()(const value_type &a, const value_type &b) const {
-    if(a.first == b.first) return {a.first, std::max(a.second, b.second)};
-    if(M(a.first, b.first) == a.first) return a;
-    else return b;
-  }
-};
+    value_type operator()(const value_type &a, const value_type &b) const {
+      if(a.first == b.first) return {a.first, std::max(a.second, b.second)};
+      if(M(a.first, b.first) == a.first) return a;
+      else return b;
+    }
+  };
+}
 
 ```
 {% endraw %}

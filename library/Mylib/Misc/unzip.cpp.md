@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/unzip.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -51,21 +51,23 @@ layout: default
  * @title Unzip function
  * @docs unzip.cpp
  */
-template <typename T, typename U, size_t ... I>
-void unzip_helper(T &ret, U &a, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(std::get<I>(ret).push_back(std::get<I>(a))), 0) ...};
-}
-
-template <typename ... Args>
-auto unzip(std::vector<std::tuple<Args ...>> a){
-  const int N = a.size();
-  std::tuple<std::vector<Args> ...> ret;
-
-  for(int i = 0; i < N; ++i){
-    unzip_helper(ret, a[i], std::make_index_sequence<sizeof ... (Args)>());
+namespace haar_lib {
+  template <typename T, typename U, size_t ... I>
+  void unzip_helper(T &ret, U &a, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(std::get<I>(ret).push_back(std::get<I>(a))), 0) ...};
   }
 
-  return ret;
+  template <typename ... Args>
+  auto unzip(std::vector<std::tuple<Args ...>> a){
+    const int N = a.size();
+    std::tuple<std::vector<Args> ...> ret;
+
+    for(int i = 0; i < N; ++i){
+      unzip_helper(ret, a[i], std::make_index_sequence<sizeof ... (Args)>());
+    }
+
+    return ret;
+  }
 }
 
 ```
@@ -84,21 +86,23 @@ auto unzip(std::vector<std::tuple<Args ...>> a){
  * @title Unzip function
  * @docs unzip.cpp
  */
-template <typename T, typename U, size_t ... I>
-void unzip_helper(T &ret, U &a, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(std::get<I>(ret).push_back(std::get<I>(a))), 0) ...};
-}
-
-template <typename ... Args>
-auto unzip(std::vector<std::tuple<Args ...>> a){
-  const int N = a.size();
-  std::tuple<std::vector<Args> ...> ret;
-
-  for(int i = 0; i < N; ++i){
-    unzip_helper(ret, a[i], std::make_index_sequence<sizeof ... (Args)>());
+namespace haar_lib {
+  template <typename T, typename U, size_t ... I>
+  void unzip_helper(T &ret, U &a, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(std::get<I>(ret).push_back(std::get<I>(a))), 0) ...};
   }
 
-  return ret;
+  template <typename ... Args>
+  auto unzip(std::vector<std::tuple<Args ...>> a){
+    const int N = a.size();
+    std::tuple<std::vector<Args> ...> ret;
+
+    for(int i = 0; i < N; ++i){
+      unzip_helper(ret, a[i], std::make_index_sequence<sizeof ... (Args)>());
+    }
+
+    return ret;
+  }
 }
 
 ```

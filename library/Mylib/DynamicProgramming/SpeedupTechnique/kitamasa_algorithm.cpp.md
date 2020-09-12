@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#826136648af25fa7c5e97a1b794f9784">Mylib/DynamicProgramming/SpeedupTechnique</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/SpeedupTechnique/kitamasa_algorithm.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -56,7 +56,6 @@ layout: default
 - [https://yosupo.hatenablog.com/entry/2015/03/27/025132](https://yosupo.hatenablog.com/entry/2015/03/27/025132)
 
 
-
 ## Verified with
 
 * :x: <a href="../../../../verify/test/yukicoder/658/main.test.cpp.html">test/yukicoder/658/main.test.cpp</a>
@@ -75,65 +74,67 @@ layout: default
  * @title Kitamasa algorithm
  * @docs kitamasa_algorithm.md
  */
-template <typename T>
-struct KitamasaAlgorithm {
-  int size;
-  std::vector<T> initial_values, coeff;
+namespace haar_lib {
+  template <typename T>
+  struct kitamasa_algorithm {
+    int size;
+    std::vector<T> initial_values, coeff;
 
-  KitamasaAlgorithm(int size, const std::vector<T> &initial_values, const std::vector<T> &coeff):
-    size(size), initial_values(initial_values), coeff(coeff){}
+    kitamasa_algorithm(int size, const std::vector<T> &initial_values, const std::vector<T> &coeff):
+      size(size), initial_values(initial_values), coeff(coeff){}
 
-  std::vector<T> inc(const std::vector<T> &a) const {
-    std::vector<T> ret(size);
+    std::vector<T> inc(const std::vector<T> &a) const {
+      std::vector<T> ret(size);
 
-    for(int i = 0; i < size; ++i) ret[i] += a[size - 1] * coeff[i];
-    for(int i = 1; i < size; ++i) ret[i] += a[i - 1];
+      for(int i = 0; i < size; ++i) ret[i] += a[size - 1] * coeff[i];
+      for(int i = 1; i < size; ++i) ret[i] += a[i - 1];
 
-    return ret;
-  }
-
-  std::vector<T> dbl(const std::vector<T> &a) const {
-    std::vector<T> ret(size), b(a);
-
-    for(int j = 0; j < size; ++j){
-      for(int i = 0; i < size; ++i){
-        ret[i] += a[j] * b[i];
-      }
-
-      b = inc(b);
+      return ret;
     }
 
-    return ret;
-  }
+    std::vector<T> dbl(const std::vector<T> &a) const {
+      std::vector<T> ret(size), b(a);
 
-  T calc(const std::vector<T> &v) const {
-    T ret = 0;
-    for(int i = 0; i < size; ++i) ret += v[i] * initial_values[i];
-    return ret;
-  }
+      for(int j = 0; j < size; ++j){
+        for(int i = 0; i < size; ++i){
+          ret[i] += a[j] * b[i];
+        }
 
-  std::vector<T> get(int64_t index) const {
-    std::vector<T> ret(size);
-    ret[0] = 1;
-
-    bool check = false;
-    for(int i = 63; i >= 0; --i){
-      if(check) ret = dbl(ret);
-
-      if(index & (1LL << i)){
-        ret = inc(ret);
-        check = true;
+        b = inc(b);
       }
+
+      return ret;
     }
 
-    return ret;
-  }
+    T calc(const std::vector<T> &v) const {
+      T ret = 0;
+      for(int i = 0; i < size; ++i) ret += v[i] * initial_values[i];
+      return ret;
+    }
 
-  T operator[](int64_t index) const {
-    if(index < size) return initial_values[index];
-    return calc(get(index));
-  }
-};
+    std::vector<T> get(int64_t index) const {
+      std::vector<T> ret(size);
+      ret[0] = 1;
+
+      bool check = false;
+      for(int i = 63; i >= 0; --i){
+        if(check) ret = dbl(ret);
+
+        if(index & (1LL << i)){
+          ret = inc(ret);
+          check = true;
+        }
+      }
+
+      return ret;
+    }
+
+    T operator[](int64_t index) const {
+      if(index < size) return initial_values[index];
+      return calc(get(index));
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -149,65 +150,67 @@ struct KitamasaAlgorithm {
  * @title Kitamasa algorithm
  * @docs kitamasa_algorithm.md
  */
-template <typename T>
-struct KitamasaAlgorithm {
-  int size;
-  std::vector<T> initial_values, coeff;
+namespace haar_lib {
+  template <typename T>
+  struct kitamasa_algorithm {
+    int size;
+    std::vector<T> initial_values, coeff;
 
-  KitamasaAlgorithm(int size, const std::vector<T> &initial_values, const std::vector<T> &coeff):
-    size(size), initial_values(initial_values), coeff(coeff){}
+    kitamasa_algorithm(int size, const std::vector<T> &initial_values, const std::vector<T> &coeff):
+      size(size), initial_values(initial_values), coeff(coeff){}
 
-  std::vector<T> inc(const std::vector<T> &a) const {
-    std::vector<T> ret(size);
+    std::vector<T> inc(const std::vector<T> &a) const {
+      std::vector<T> ret(size);
 
-    for(int i = 0; i < size; ++i) ret[i] += a[size - 1] * coeff[i];
-    for(int i = 1; i < size; ++i) ret[i] += a[i - 1];
+      for(int i = 0; i < size; ++i) ret[i] += a[size - 1] * coeff[i];
+      for(int i = 1; i < size; ++i) ret[i] += a[i - 1];
 
-    return ret;
-  }
-
-  std::vector<T> dbl(const std::vector<T> &a) const {
-    std::vector<T> ret(size), b(a);
-
-    for(int j = 0; j < size; ++j){
-      for(int i = 0; i < size; ++i){
-        ret[i] += a[j] * b[i];
-      }
-
-      b = inc(b);
+      return ret;
     }
 
-    return ret;
-  }
+    std::vector<T> dbl(const std::vector<T> &a) const {
+      std::vector<T> ret(size), b(a);
 
-  T calc(const std::vector<T> &v) const {
-    T ret = 0;
-    for(int i = 0; i < size; ++i) ret += v[i] * initial_values[i];
-    return ret;
-  }
+      for(int j = 0; j < size; ++j){
+        for(int i = 0; i < size; ++i){
+          ret[i] += a[j] * b[i];
+        }
 
-  std::vector<T> get(int64_t index) const {
-    std::vector<T> ret(size);
-    ret[0] = 1;
-
-    bool check = false;
-    for(int i = 63; i >= 0; --i){
-      if(check) ret = dbl(ret);
-
-      if(index & (1LL << i)){
-        ret = inc(ret);
-        check = true;
+        b = inc(b);
       }
+
+      return ret;
     }
 
-    return ret;
-  }
+    T calc(const std::vector<T> &v) const {
+      T ret = 0;
+      for(int i = 0; i < size; ++i) ret += v[i] * initial_values[i];
+      return ret;
+    }
 
-  T operator[](int64_t index) const {
-    if(index < size) return initial_values[index];
-    return calc(get(index));
-  }
-};
+    std::vector<T> get(int64_t index) const {
+      std::vector<T> ret(size);
+      ret[0] = 1;
+
+      bool check = false;
+      for(int i = 63; i >= 0; --i){
+        if(check) ret = dbl(ret);
+
+        if(index & (1LL << i)){
+          ret = inc(ret);
+          check = true;
+        }
+      }
+
+      return ret;
+    }
+
+    T operator[](int64_t index) const {
+      if(index < size) return initial_values[index];
+      return calc(get(index));
+    }
+  };
+}
 
 ```
 {% endraw %}

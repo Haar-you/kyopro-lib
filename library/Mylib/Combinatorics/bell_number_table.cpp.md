@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/bell_number_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -60,27 +60,29 @@ layout: default
  * @title Bell number (Table)
  * @docs bell_number_table.md
  */
-template <typename T>
-auto bell_number_table(int n){
-  std::vector<std::vector<T>> ret(n + 1, std::vector<T>(n + 1));
+namespace haar_lib {
+  template <typename T>
+  auto bell_number_table(int n){
+    std::vector<std::vector<T>> ret(n + 1, std::vector<T>(n + 1));
 
-  ret[0][0] = 1;
+    ret[0][0] = 1;
 
-  for(int i = 1; i <= n; ++i) ret[i][1] = ret[i][i] = 1;
+    for(int i = 1; i <= n; ++i) ret[i][1] = ret[i][i] = 1;
 
-  for(int i = 3; i <= n; ++i){
-    for(int j = 2; j < i; ++j){
-      ret[i][j] = ret[i - 1][j - 1] + j * ret[i - 1][j];
+    for(int i = 3; i <= n; ++i){
+      for(int j = 2; j < i; ++j){
+        ret[i][j] = ret[i - 1][j - 1] + j * ret[i - 1][j];
+      }
     }
-  }
 
-  for(int i = 0; i <= n; ++i){
-    for(int j = 1; j <= n; ++j){
-      ret[i][j] += ret[i][j - 1];
+    for(int i = 0; i <= n; ++i){
+      for(int j = 1; j <= n; ++j){
+        ret[i][j] += ret[i][j - 1];
+      }
     }
-  }
 
-  return ret;
+    return ret;
+  }
 }
 
 ```
@@ -96,27 +98,29 @@ auto bell_number_table(int n){
  * @title Bell number (Table)
  * @docs bell_number_table.md
  */
-template <typename T>
-auto bell_number_table(int n){
-  std::vector<std::vector<T>> ret(n + 1, std::vector<T>(n + 1));
+namespace haar_lib {
+  template <typename T>
+  auto bell_number_table(int n){
+    std::vector<std::vector<T>> ret(n + 1, std::vector<T>(n + 1));
 
-  ret[0][0] = 1;
+    ret[0][0] = 1;
 
-  for(int i = 1; i <= n; ++i) ret[i][1] = ret[i][i] = 1;
+    for(int i = 1; i <= n; ++i) ret[i][1] = ret[i][i] = 1;
 
-  for(int i = 3; i <= n; ++i){
-    for(int j = 2; j < i; ++j){
-      ret[i][j] = ret[i - 1][j - 1] + j * ret[i - 1][j];
+    for(int i = 3; i <= n; ++i){
+      for(int j = 2; j < i; ++j){
+        ret[i][j] = ret[i - 1][j - 1] + j * ret[i - 1][j];
+      }
     }
-  }
 
-  for(int i = 0; i <= n; ++i){
-    for(int j = 1; j <= n; ++j){
-      ret[i][j] += ret[i][j - 1];
+    for(int i = 0; i <= n; ++i){
+      for(int j = 1; j <= n; ++j){
+        ret[i][j] += ret[i][j - 1];
+      }
     }
-  }
 
-  return ret;
+    return ret;
+  }
 }
 
 ```

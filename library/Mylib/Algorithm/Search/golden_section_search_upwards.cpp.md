@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Golden section search (Convex upwards)
+# :heavy_check_mark: Golden section search (Convex upwards)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a7582795d3062b8fdf2ece0fd4f2d90d">Mylib/Algorithm/Search</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Search/golden_section_search_upwards.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/0323/main.golden.test.cpp.html">test/aoj/0323/main.golden.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/0323/main.golden.test.cpp.html">test/aoj/0323/main.golden.test.cpp</a>
 
 
 ## Code
@@ -54,24 +54,26 @@ layout: default
  * @title Golden section search (Convex upwards)
  * @docs golden_section_search_upwards.md
  */
-template <typename T = double, typename Func = std::function<T(T)>>
-T golden_section_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
-  static const T phi = (1.0 + std::sqrt(5)) / 2;
+namespace haar_lib {
+  template <typename T = double, typename Func = std::function<T(T)>>
+  T golden_section_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
+    static const T phi = (1.0 + std::sqrt(5)) / 2;
 
-  T t1 = 0, t2 = 0;
+    T t1 = 0, t2 = 0;
 
-  while(LOOP_COUNT--){
-    t1 = (lb * phi + ub) / (phi + 1.0);
-    t2 = (lb + ub * phi) / (phi + 1.0);
+    while(LOOP_COUNT--){
+      t1 = (lb * phi + ub) / (phi + 1.0);
+      t2 = (lb + ub * phi) / (phi + 1.0);
 
-    if(f(t1) > f(t2)){
-      ub = t2;
-    }else{
-      lb = t1;
+      if(f(t1) > f(t2)){
+        ub = t2;
+      }else{
+        lb = t1;
+      }
     }
-  }
 
-  return lb;
+    return lb;
+  }
 }
 
 ```
@@ -88,24 +90,26 @@ T golden_section_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100)
  * @title Golden section search (Convex upwards)
  * @docs golden_section_search_upwards.md
  */
-template <typename T = double, typename Func = std::function<T(T)>>
-T golden_section_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
-  static const T phi = (1.0 + std::sqrt(5)) / 2;
+namespace haar_lib {
+  template <typename T = double, typename Func = std::function<T(T)>>
+  T golden_section_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){
+    static const T phi = (1.0 + std::sqrt(5)) / 2;
 
-  T t1 = 0, t2 = 0;
+    T t1 = 0, t2 = 0;
 
-  while(LOOP_COUNT--){
-    t1 = (lb * phi + ub) / (phi + 1.0);
-    t2 = (lb + ub * phi) / (phi + 1.0);
+    while(LOOP_COUNT--){
+      t1 = (lb * phi + ub) / (phi + 1.0);
+      t2 = (lb + ub * phi) / (phi + 1.0);
 
-    if(f(t1) > f(t2)){
-      ub = t2;
-    }else{
-      lb = t1;
+      if(f(t1) > f(t2)){
+        ub = t2;
+      }else{
+        lb = t1;
+      }
     }
-  }
 
-  return lb;
+    return lb;
+  }
 }
 
 ```

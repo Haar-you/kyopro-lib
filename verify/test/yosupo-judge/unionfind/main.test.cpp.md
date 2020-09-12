@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#5aa16257c29c51dffa0b4e5427dcc272">test/yosupo-judge/unionfind</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/unionfind/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/unionfind">https://judge.yosupo.jp/problem/unionfind</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -55,12 +55,17 @@ layout: default
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
   int N, Q; std::cin >> N >> Q;
 
-  UnionFind uf(N);
+  hl::unionfind uf(N);
 
-  for(auto [t, u, v] : input_tuples<int, int, int>(Q)){
+  for(auto [t, u, v] : hl::input_tuples<int, int, int>(Q)){
     if(t == 0){
       uf.merge(u, v);
     }else{
@@ -84,50 +89,73 @@ int main(){
 #line 2 "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include <vector>
 #include <numeric>
+#include <algorithm>
 
 /**
  * @title Union-find
  * @docs unionfind.md
  */
-class UnionFind {
-  std::vector<int> parent, depth, size;
-  int count;
+namespace haar_lib {
+  class unionfind {
+    int n;
+    mutable std::vector<int> parent;
+    std::vector<int> depth, size;
+    int count;
 
-public:
-  UnionFind(){}
-  UnionFind(int n): parent(n), depth(n, 1), size(n, 1), count(n){
-    std::iota(parent.begin(), parent.end(), 0);
-  }
+  public:
+    unionfind(){}
+    unionfind(int n): n(n), parent(n), depth(n, 1), size(n, 1), count(n){
+      std::iota(parent.begin(), parent.end(), 0);
+    }
 
-  int root_of(int i){
-    if(parent[i] == i) return i;
-    else return parent[i] = root_of(parent[i]);
-  }
+    int root_of(int i) const {
+      if(parent[i] == i) return i;
+      else return parent[i] = root_of(parent[i]);
+    }
 
-  bool is_same(int i, int j){return root_of(i) == root_of(j);}
+    bool is_same(int i, int j) const {return root_of(i) == root_of(j);}
 
-  int merge(int i, int j){
-    const int ri = root_of(i), rj = root_of(j);
-    if(ri == rj) return ri;
-    else{
-      --count;
-      if(depth[ri] < depth[rj]){
-        parent[ri] = rj;
-        size[rj] += size[ri];
-        return rj;
-      }else{
-        parent[rj] = ri;
-        size[ri] += size[rj];
-        if(depth[ri] == depth[rj]) ++depth[ri];
-        return ri;
+    int merge(int i, int j){
+      const int ri = root_of(i), rj = root_of(j);
+      if(ri == rj) return ri;
+      else{
+        --count;
+        if(depth[ri] < depth[rj]){
+          parent[ri] = rj;
+          size[rj] += size[ri];
+          return rj;
+        }else{
+          parent[rj] = ri;
+          size[ri] += size[rj];
+          if(depth[ri] == depth[rj]) ++depth[ri];
+          return ri;
+        }
       }
     }
-  }
 
-  int size_of(int i){return size[root_of(i)];}
+    int size_of(int i) const {return size[root_of(i)];}
 
-  int count_group(){return count;}
-};
+    int count_groups() const {return count;}
+
+    auto get_groups() const {
+      std::vector<std::vector<int>> ret(n);
+
+      for(int i = 0; i < n; ++i){
+        ret[root_of(i)].push_back(i);
+      }
+
+      ret.erase(
+        std::remove_if(
+          ret.begin(), ret.end(),
+          [](const auto &a){return a.empty();}
+        ),
+        ret.end()
+      );
+
+      return ret;
+    }
+  };
+}
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
 #include <utility>
@@ -137,75 +165,84 @@ public:
 /**
  * @docs input_tuple.md
  */
-template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
-}
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
+  }
 
-template <typename T, typename U>
-std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
-  s >> value.first >> value.second;
-  return s;
-}
+  template <typename T, typename U>
+  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+    s >> value.first >> value.second;
+    return s;
+  }
 
-template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
-  return s;
+  template <typename ... Args>
+  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
+    return s;
+  }
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
-template <typename ... Args>
-class InputTuples {
-  struct iter {
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuples {
+    struct iter {
+      using value_type = std::tuple<Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N, c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
+      value_type operator*(){
+        if(not fetched){
+          std::cin >> value;
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuples(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples(int N){
+    return InputTuples<Args ...>(N);
+  }
 }
 #line 6 "test/yosupo-judge/unionfind/main.test.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
+  std::cin.tie(0);
+  std::ios::sync_with_stdio(false);
+
   int N, Q; std::cin >> N >> Q;
 
-  UnionFind uf(N);
+  hl::unionfind uf(N);
 
-  for(auto [t, u, v] : input_tuples<int, int, int>(Q)){
+  for(auto [t, u, v] : hl::input_tuples<int, int, int>(Q)){
     if(t == 0){
       uf.merge(u, v);
     }else{

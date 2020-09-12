@@ -31,14 +31,14 @@ layout: default
 
 * category: <a href="../../../../index.html#0520734517f09caa086d1aa01fa4b9e4">Mylib/Graph/GraphUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/GraphUtils/strongly_connected_components.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
 
 ## Depends on
 
-* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Required by
@@ -69,43 +69,45 @@ layout: default
  * @title Strongly connected components
  * @docs strongly_connected_components.md
  */
-template <typename T>
-auto strongly_connected_components(const Graph<T> &g){
-  const int n = g.size();
+namespace haar_lib {
+  template <typename T>
+  auto strongly_connected_components(const graph<T> &g){
+    const int n = g.size();
 
-  std::vector<bool> visit(n);
-  std::vector<int> check(n);
-  std::vector<int> result(n, -1);
+    std::vector<bool> visit(n);
+    std::vector<int> check(n);
+    std::vector<int> result(n, -1);
 
-  auto dfs =
-    [&](auto &f, int cur) -> void {
-      visit[cur] = true;
-      for(const auto &e : g[cur]){
-        if(not visit[e.to]) f(f, e.to);
-      }
-      check.push_back(cur);
-    };
+    auto dfs =
+      [&](auto &f, int cur) -> void {
+        visit[cur] = true;
+        for(const auto &e : g[cur]){
+          if(not visit[e.to]) f(f, e.to);
+        }
+        check.push_back(cur);
+      };
 
-  for(int i = 0; i < n; ++i) if(not visit[i]) dfs(dfs, i);
+    for(int i = 0; i < n; ++i) if(not visit[i]) dfs(dfs, i);
 
-  std::reverse(check.begin(), check.end());
+    std::reverse(check.begin(), check.end());
 
-  Graph<T> rg(n);
+    graph<T> rg(n);
 
-  auto rdfs =
-    [&](auto &f, int cur, int i) -> void {
-      result[cur] = i;
-      for(const auto &e : rg[cur]){
-        if(result[e.to] == -1) f(f, e.to, i);
-      }
-    };
+    auto rdfs =
+      [&](auto &f, int cur, int i) -> void {
+        result[cur] = i;
+        for(const auto &e : rg[cur]){
+          if(result[e.to] == -1) f(f, e.to, i);
+        }
+      };
 
-  for(int i = 0; i < n; ++i) for(const auto &e : g[i]) rg[e.to].emplace_back(e.to, e.from, e.cost);
+    for(int i = 0; i < n; ++i) for(const auto &e : g[i]) rg[e.to].emplace_back(e.to, e.from, e.cost);
 
-  int i = 0;
-  for(auto c : check) if(result[c] == -1) rdfs(rdfs, c, i), ++i;
+    int i = 0;
+    for(auto c : check) if(result[c] == -1) rdfs(rdfs, c, i), ++i;
 
-  return std::make_pair(result, i);
+    return std::make_pair(result, i);
+  }
 }
 
 ```
@@ -124,103 +126,107 @@ auto strongly_connected_components(const Graph<T> &g){
  * @title Basic graph
  * @docs graph.md
  */
-template <typename T>
-struct Edge {
-  int from, to;
-  T cost;
-  int index = -1;
-  Edge(){}
-  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
-};
+namespace haar_lib {
+  template <typename T>
+  struct edge {
+    int from, to;
+    T cost;
+    int index = -1;
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+  };
 
-template <typename T>
-struct Graph {
-  using weight_type = T;
-  using edge_type = Edge<T>;
+  template <typename T>
+  struct graph {
+    using weight_type = T;
+    using edge_type = edge<T>;
 
-  std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
-  auto& operator[](size_t i){return data[i];}
-  const auto& operator[](size_t i) const {return data[i];}
+    auto& operator[](size_t i){return data[i];}
+    const auto& operator[](size_t i) const {return data[i];}
 
-  auto begin() const {return data.begin();}
-  auto end() const {return data.end();}
+    auto begin() const {return data.begin();}
+    auto end() const {return data.end();}
 
-  Graph(){}
-  Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
-  bool empty() const {return data.empty();}
-  int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+    int size() const {return data.size();}
 
-  void add_edge(int i, int j, T w, int index = -1){
-    data[i].emplace_back(i, j, w, index);
-  }
-
-  void add_undirected(int i, int j, T w, int index = -1){
-    add_edge(i, j, w, index);
-    add_edge(j, i, w, index);
-  }
-
-  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
-  void read(int M){
-    for(int i = 0; i < M; ++i){
-      int u, v; std::cin >> u >> v;
-      u -= I;
-      v -= I;
-      T w = 1;
-      if(WEIGHTED) std::cin >> w;
-      if(DIRECTED) add_edge(u, v, w, i);
-      else add_undirected(u, v, w, i);
+    void add_edge(int i, int j, T w, int index = -1){
+      data[i].emplace_back(i, j, w, index);
     }
-  }
-};
 
-template <typename T>
-using Tree = Graph<T>;
+    void add_undirected(int i, int j, T w, int index = -1){
+      add_edge(i, j, w, index);
+      add_edge(j, i, w, index);
+    }
+
+    template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+    void read(int M){
+      for(int i = 0; i < M; ++i){
+        int u, v; std::cin >> u >> v;
+        u -= I;
+        v -= I;
+        T w = 1;
+        if(WEIGHTED) std::cin >> w;
+        if(DIRECTED) add_edge(u, v, w, i);
+        else add_undirected(u, v, w, i);
+      }
+    }
+  };
+
+  template <typename T>
+  using tree = graph<T>;
+}
 #line 5 "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 
 /**
  * @title Strongly connected components
  * @docs strongly_connected_components.md
  */
-template <typename T>
-auto strongly_connected_components(const Graph<T> &g){
-  const int n = g.size();
+namespace haar_lib {
+  template <typename T>
+  auto strongly_connected_components(const graph<T> &g){
+    const int n = g.size();
 
-  std::vector<bool> visit(n);
-  std::vector<int> check(n);
-  std::vector<int> result(n, -1);
+    std::vector<bool> visit(n);
+    std::vector<int> check(n);
+    std::vector<int> result(n, -1);
 
-  auto dfs =
-    [&](auto &f, int cur) -> void {
-      visit[cur] = true;
-      for(const auto &e : g[cur]){
-        if(not visit[e.to]) f(f, e.to);
-      }
-      check.push_back(cur);
-    };
+    auto dfs =
+      [&](auto &f, int cur) -> void {
+        visit[cur] = true;
+        for(const auto &e : g[cur]){
+          if(not visit[e.to]) f(f, e.to);
+        }
+        check.push_back(cur);
+      };
 
-  for(int i = 0; i < n; ++i) if(not visit[i]) dfs(dfs, i);
+    for(int i = 0; i < n; ++i) if(not visit[i]) dfs(dfs, i);
 
-  std::reverse(check.begin(), check.end());
+    std::reverse(check.begin(), check.end());
 
-  Graph<T> rg(n);
+    graph<T> rg(n);
 
-  auto rdfs =
-    [&](auto &f, int cur, int i) -> void {
-      result[cur] = i;
-      for(const auto &e : rg[cur]){
-        if(result[e.to] == -1) f(f, e.to, i);
-      }
-    };
+    auto rdfs =
+      [&](auto &f, int cur, int i) -> void {
+        result[cur] = i;
+        for(const auto &e : rg[cur]){
+          if(result[e.to] == -1) f(f, e.to, i);
+        }
+      };
 
-  for(int i = 0; i < n; ++i) for(const auto &e : g[i]) rg[e.to].emplace_back(e.to, e.from, e.cost);
+    for(int i = 0; i < n; ++i) for(const auto &e : g[i]) rg[e.to].emplace_back(e.to, e.from, e.cost);
 
-  int i = 0;
-  for(auto c : check) if(result[c] == -1) rdfs(rdfs, c, i), ++i;
+    int i = 0;
+    for(auto c : check) if(result[c] == -1) rdfs(rdfs, c, i), ++i;
 
-  return std::make_pair(result, i);
+    return std::make_pair(result, i);
+  }
 }
 
 ```

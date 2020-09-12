@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#e25b567185ad9d2c82bdf5444236f5c2">test/yosupo-judge/enumerate_triangles</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/enumerate_triangles/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/enumerate_triangles">https://judge.yosupo.jp/problem/enumerate_triangles</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
 * :x: <a href="../../../../library/Mylib/Graph/enumerate_triangles.cpp.html">Enumerate triangles</a>
-* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 * :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
@@ -59,19 +59,21 @@ layout: default
 #include "Mylib/Graph/enumerate_triangles.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
 
-using mint = ModInt<998244353>;
+namespace hl = haar_lib;
+
+using mint = hl::modint<998244353>;
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, M; std::cin >> N >> M;
-  auto x = input_vector<mint>(N);
+  auto x = hl::input_vector<mint>(N);
 
-  Graph<int> g(N);
+  hl::graph<int> g(N);
   g.read<0, false, false>(M);
 
-  auto res = enumerate_triangles(g);
+  auto res = hl::enumerate_triangles(g);
   mint ans = 0;
   for(auto [i, j, k] : res) ans += x[i] * x[j] * x[k];
 
@@ -97,18 +99,20 @@ int main(){
 /**
  * @docs input_vector.md
  */
-template <typename T>
-std::vector<T> input_vector(int N){
-  std::vector<T> ret(N);
-  for(int i = 0; i < N; ++i) std::cin >> ret[i];
-  return ret;
-}
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> input_vector(int N){
+    std::vector<T> ret(N);
+    for(int i = 0; i < N; ++i) std::cin >> ret[i];
+    return ret;
+  }
 
-template <typename T>
-std::vector<std::vector<T>> input_vector(int N, int M){
-  std::vector<std::vector<T>> ret(N);
-  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
-  return ret;
+  template <typename T>
+  std::vector<std::vector<T>> input_vector(int N, int M){
+    std::vector<std::vector<T>> ret(N);
+    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+    return ret;
+  }
 }
 #line 4 "Mylib/Graph/Template/graph.cpp"
 
@@ -116,60 +120,62 @@ std::vector<std::vector<T>> input_vector(int N, int M){
  * @title Basic graph
  * @docs graph.md
  */
-template <typename T>
-struct Edge {
-  int from, to;
-  T cost;
-  int index = -1;
-  Edge(){}
-  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
-};
+namespace haar_lib {
+  template <typename T>
+  struct edge {
+    int from, to;
+    T cost;
+    int index = -1;
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+  };
 
-template <typename T>
-struct Graph {
-  using weight_type = T;
-  using edge_type = Edge<T>;
+  template <typename T>
+  struct graph {
+    using weight_type = T;
+    using edge_type = edge<T>;
 
-  std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
-  auto& operator[](size_t i){return data[i];}
-  const auto& operator[](size_t i) const {return data[i];}
+    auto& operator[](size_t i){return data[i];}
+    const auto& operator[](size_t i) const {return data[i];}
 
-  auto begin() const {return data.begin();}
-  auto end() const {return data.end();}
+    auto begin() const {return data.begin();}
+    auto end() const {return data.end();}
 
-  Graph(){}
-  Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
-  bool empty() const {return data.empty();}
-  int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+    int size() const {return data.size();}
 
-  void add_edge(int i, int j, T w, int index = -1){
-    data[i].emplace_back(i, j, w, index);
-  }
-
-  void add_undirected(int i, int j, T w, int index = -1){
-    add_edge(i, j, w, index);
-    add_edge(j, i, w, index);
-  }
-
-  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
-  void read(int M){
-    for(int i = 0; i < M; ++i){
-      int u, v; std::cin >> u >> v;
-      u -= I;
-      v -= I;
-      T w = 1;
-      if(WEIGHTED) std::cin >> w;
-      if(DIRECTED) add_edge(u, v, w, i);
-      else add_undirected(u, v, w, i);
+    void add_edge(int i, int j, T w, int index = -1){
+      data[i].emplace_back(i, j, w, index);
     }
-  }
-};
 
-template <typename T>
-using Tree = Graph<T>;
+    void add_undirected(int i, int j, T w, int index = -1){
+      add_edge(i, j, w, index);
+      add_edge(j, i, w, index);
+    }
+
+    template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+    void read(int M){
+      for(int i = 0; i < M; ++i){
+        int u, v; std::cin >> u >> v;
+        u -= I;
+        v -= I;
+        T w = 1;
+        if(WEIGHTED) std::cin >> w;
+        if(DIRECTED) add_edge(u, v, w, i);
+        else add_undirected(u, v, w, i);
+      }
+    }
+  };
+
+  template <typename T>
+  using tree = graph<T>;
+}
 #line 3 "Mylib/Graph/enumerate_triangles.cpp"
 #include <tuple>
 #include <unordered_set>
@@ -179,36 +185,38 @@ using Tree = Graph<T>;
  * @title Enumerate triangles
  * @docs enumerate_triangles.md
  */
-template <typename T>
-std::vector<std::tuple<int, int, int>> enumerate_triangles(const Graph<T> &g){
-  const int N = g.size();
-  std::vector<std::tuple<int, int, int>> ret;
+namespace haar_lib {
+  template <typename T>
+  std::vector<std::tuple<int, int, int>> enumerate_triangles(const graph<T> &g){
+    const int N = g.size();
+    std::vector<std::tuple<int, int, int>> ret;
 
-  std::vector<std::unordered_set<int>> adjacent(N);
+    std::vector<std::unordered_set<int>> adjacent(N);
 
-  for(int i = 0; i < N; ++i){
-    for(auto &e : g[i]){
-      if(g[e.from].size() < g[e.to].size()){
-        adjacent[e.from].insert(e.to);
-      }else if(g[e.from].size() == g[e.to].size()){
-        if(e.from < e.to){
+    for(int i = 0; i < N; ++i){
+      for(auto &e : g[i]){
+        if(g[e.from].size() < g[e.to].size()){
           adjacent[e.from].insert(e.to);
+        }else if(g[e.from].size() == g[e.to].size()){
+          if(e.from < e.to){
+            adjacent[e.from].insert(e.to);
+          }
         }
       }
     }
-  }
 
-  for(int i = 0; i < N; ++i){
-    for(int j : adjacent[i]){
-      for(int k : adjacent[j]){
-        if(adjacent[i].find(k) != adjacent[i].end()){
-          ret.emplace_back(i, j, k);
+    for(int i = 0; i < N; ++i){
+      for(int j : adjacent[i]){
+        for(int k : adjacent[j]){
+          if(adjacent[i].find(k) != adjacent[i].end()){
+            ret.emplace_back(i, j, k);
+          }
         }
       }
     }
-  }
 
-  return ret;
+    return ret;
+  }
 }
 #line 3 "Mylib/Number/Mint/mint.cpp"
 #include <utility>
@@ -217,115 +225,119 @@ std::vector<std::tuple<int, int, int>> enumerate_triangles(const Graph<T> &g){
  * @title Modint
  * @docs mint.md
  */
-template <int32_t M>
-class ModInt {
-public:
-  constexpr static int32_t MOD = M;
-  uint32_t val;
+namespace haar_lib {
+  template <int32_t M>
+  class modint {
+  public:
+    constexpr static int32_t MOD = M;
+    uint32_t val;
 
-  constexpr ModInt(): val(0){}
-  constexpr ModInt(int64_t n){
-    if(n >= M) val = n % M;
-    else if(n < 0) val = n % M + M;
-    else val = n;
-  }
-
-  constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
-  constexpr auto& operator+=(const ModInt &a){
-    if(val + a.val >= M) val = (uint64_t)val + a.val - M;
-    else val += a.val;
-    return *this;
-  }
-  constexpr auto& operator-=(const ModInt &a){
-    if(val < a.val) val += M;
-    val -= a.val;
-    return *this;
-  }
-  constexpr auto& operator*=(const ModInt &a){
-    val = (uint64_t)val * a.val % M;
-    return *this;
-  }
-  constexpr auto& operator/=(const ModInt &a){
-    val = (uint64_t)val * a.inv().val % M;
-    return *this;
-  }
-
-  constexpr auto operator+(const ModInt &a) const {return ModInt(*this) += a;}
-  constexpr auto operator-(const ModInt &a) const {return ModInt(*this) -= a;}
-  constexpr auto operator*(const ModInt &a) const {return ModInt(*this) *= a;}
-  constexpr auto operator/(const ModInt &a) const {return ModInt(*this) /= a;}
-
-  constexpr bool operator==(const ModInt &a) const {return val == a.val;}
-  constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
-
-  constexpr auto& operator++(){*this += 1; return *this;}
-  constexpr auto& operator--(){*this -= 1; return *this;}
-
-  constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
-  constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
-
-  constexpr static ModInt power(int64_t n, int64_t p){
-    if(p < 0) return power(n, -p).inv();
-
-    int64_t ret = 1, e = n % M;
-    for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
-    return ret;
-  }
-
-  constexpr static ModInt inv(int64_t a){
-    int64_t b = M, u = 1, v = 0;
-
-    while(b){
-      int64_t t = a / b;
-      a -= t * b; std::swap(a, b);
-      u -= t * v; std::swap(u, v);
+    constexpr modint(): val(0){}
+    constexpr modint(int64_t n){
+      if(n >= M) val = n % M;
+      else if(n < 0) val = n % M + M;
+      else val = n;
     }
 
-    u %= M;
-    if(u < 0) u += M;
+    constexpr auto& operator=(const modint &a){val = a.val; return *this;}
+    constexpr auto& operator+=(const modint &a){
+      if(val + a.val >= M) val = (uint64_t)val + a.val - M;
+      else val += a.val;
+      return *this;
+    }
+    constexpr auto& operator-=(const modint &a){
+      if(val < a.val) val += M;
+      val -= a.val;
+      return *this;
+    }
+    constexpr auto& operator*=(const modint &a){
+      val = (uint64_t)val * a.val % M;
+      return *this;
+    }
+    constexpr auto& operator/=(const modint &a){
+      val = (uint64_t)val * a.inv().val % M;
+      return *this;
+    }
 
-    return u;
-  }
+    constexpr auto operator+(const modint &a) const {return modint(*this) += a;}
+    constexpr auto operator-(const modint &a) const {return modint(*this) -= a;}
+    constexpr auto operator*(const modint &a) const {return modint(*this) *= a;}
+    constexpr auto operator/(const modint &a) const {return modint(*this) /= a;}
 
-  constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
+    constexpr bool operator==(const modint &a) const {return val == a.val;}
+    constexpr bool operator!=(const modint &a) const {return val != a.val;}
 
-  constexpr auto power(int64_t p) const {return power(val, p);}
-  constexpr auto inv() const {return inv(val);}
+    constexpr auto& operator++(){*this += 1; return *this;}
+    constexpr auto& operator--(){*this -= 1; return *this;}
 
-  friend constexpr auto operator-(const ModInt &a){return ModInt(M - a.val);}
+    constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
+    constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
 
-  friend constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
-  friend constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
-  friend constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
-  friend constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
+    constexpr static modint power(int64_t n, int64_t p){
+      if(p < 0) return power(n, -p).inv();
 
-  friend std::istream& operator>>(std::istream &s, ModInt<M> &a){s >> a.val; return s;}
-  friend std::ostream& operator<<(std::ostream &s, const ModInt<M> &a){s << a.val; return s;}
+      int64_t ret = 1, e = n % M;
+      for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
+      return ret;
+    }
 
-  template <int N>
-  static auto div(){
-    static auto value = inv(N);
-    return value;
-  }
+    constexpr static modint inv(int64_t a){
+      int64_t b = M, u = 1, v = 0;
 
-  explicit operator int32_t() const noexcept {return val;}
-  explicit operator int64_t() const noexcept {return val;}
-};
+      while(b){
+        int64_t t = a / b;
+        a -= t * b; std::swap(a, b);
+        u -= t * v; std::swap(u, v);
+      }
+
+      u %= M;
+      if(u < 0) u += M;
+
+      return u;
+    }
+
+    constexpr static auto frac(int64_t a, int64_t b){return modint(a) / modint(b);}
+
+    constexpr auto power(int64_t p) const {return power(val, p);}
+    constexpr auto inv() const {return inv(val);}
+
+    friend constexpr auto operator-(const modint &a){return modint(M - a.val);}
+
+    friend constexpr auto operator+(int64_t a, const modint &b){return modint(a) + b;}
+    friend constexpr auto operator-(int64_t a, const modint &b){return modint(a) - b;}
+    friend constexpr auto operator*(int64_t a, const modint &b){return modint(a) * b;}
+    friend constexpr auto operator/(int64_t a, const modint &b){return modint(a) / b;}
+
+    friend std::istream& operator>>(std::istream &s, modint<M> &a){s >> a.val; return s;}
+    friend std::ostream& operator<<(std::ostream &s, const modint<M> &a){s << a.val; return s;}
+
+    template <int N>
+    static auto div(){
+      static auto value = inv(N);
+      return value;
+    }
+
+    explicit operator int32_t() const noexcept {return val;}
+    explicit operator int64_t() const noexcept {return val;}
+  };
+}
 #line 9 "test/yosupo-judge/enumerate_triangles/main.test.cpp"
 
-using mint = ModInt<998244353>;
+namespace hl = haar_lib;
+
+using mint = hl::modint<998244353>;
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, M; std::cin >> N >> M;
-  auto x = input_vector<mint>(N);
+  auto x = hl::input_vector<mint>(N);
 
-  Graph<int> g(N);
+  hl::graph<int> g(N);
   g.read<0, false, false>(M);
 
-  auto res = enumerate_triangles(g);
+  auto res = hl::enumerate_triangles(g);
   mint ans = 0;
   for(auto [i, j, k] : res) ans += x[i] * x[j] * x[k];
 

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/xor_shift.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -48,22 +48,24 @@ layout: default
  * @title Xorshift
  * @docs xor_shift.md
  */
-struct XorShift {
-  static uint64_t rand(){
-    static uint64_t x = 1234567889, y = 362436069, z = 521288629, w = 88675123;
+namespace haar_lib {
+  struct xor_shift {
+    static uint64_t rand(){
+      static uint64_t x = 1234567889, y = 362436069, z = 521288629, w = 88675123;
 
-    uint64_t t = (x ^ (x << 11));
-    x = y;
-    y = z;
-    z = w;
-    w = (w ^ (w >> 19)) ^ (t ^ (t >> 8));
-    return w;
-  }
+      uint64_t t = (x ^ (x << 11));
+      x = y;
+      y = z;
+      z = w;
+      w = (w ^ (w >> 19)) ^ (t ^ (t >> 8));
+      return w;
+    }
 
-  static uint64_t rand(uint64_t s, uint64_t t){ // [s, t)
-    return s + rand() % (t - s);
-  }
-};
+    static uint64_t rand(uint64_t s, uint64_t t){ // [s, t)
+      return s + rand() % (t - s);
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -78,22 +80,24 @@ struct XorShift {
  * @title Xorshift
  * @docs xor_shift.md
  */
-struct XorShift {
-  static uint64_t rand(){
-    static uint64_t x = 1234567889, y = 362436069, z = 521288629, w = 88675123;
+namespace haar_lib {
+  struct xor_shift {
+    static uint64_t rand(){
+      static uint64_t x = 1234567889, y = 362436069, z = 521288629, w = 88675123;
 
-    uint64_t t = (x ^ (x << 11));
-    x = y;
-    y = z;
-    z = w;
-    w = (w ^ (w >> 19)) ^ (t ^ (t >> 8));
-    return w;
-  }
+      uint64_t t = (x ^ (x << 11));
+      x = y;
+      y = z;
+      z = w;
+      w = (w ^ (w >> 19)) ^ (t ^ (t >> 8));
+      return w;
+    }
 
-  static uint64_t rand(uint64_t s, uint64_t t){ // [s, t)
-    return s + rand() % (t - s);
-  }
-};
+    static uint64_t rand(uint64_t s, uint64_t t){ // [s, t)
+      return s + rand() % (t - s);
+    }
+  };
+}
 
 ```
 {% endraw %}

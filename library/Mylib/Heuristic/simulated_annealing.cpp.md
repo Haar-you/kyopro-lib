@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#8196a7a5355e165a1b784acd0a3f4854">Mylib/Heuristic</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Heuristic/simulated_annealing.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -49,22 +49,24 @@ layout: default
  * @title Simulated annealing
  * @docs simulated_annealing.md
  */
-template <typename Func>
-void simulated_annealing(int duration, double T0, double T1, Func f){
-  using namespace std::chrono;
+namespace haar_lib {
+  template <typename Func>
+  void simulated_annealing(int duration, double T0, double T1, Func f){
+    using namespace std::chrono;
 
-  auto s = system_clock::now();
+    auto s = system_clock::now();
 
-  while(true){
-    auto t = system_clock::now();
-    int d = duration_cast<milliseconds>(t - s).count();
-    if(d >= duration) break;
+    while(true){
+      auto t = system_clock::now();
+      int d = duration_cast<milliseconds>(t - s).count();
+      if(d >= duration) break;
 
-    double now = (double)d / duration;
+      double now = (double)d / duration;
 
-    double T = std::pow(T0, 1.0 - now) * std::pow(T1, now);
+      double T = std::pow(T0, 1.0 - now) * std::pow(T1, now);
 
-    f(d, T);
+      f(d, T);
+    }
   }
 }
 
@@ -82,22 +84,24 @@ void simulated_annealing(int duration, double T0, double T1, Func f){
  * @title Simulated annealing
  * @docs simulated_annealing.md
  */
-template <typename Func>
-void simulated_annealing(int duration, double T0, double T1, Func f){
-  using namespace std::chrono;
+namespace haar_lib {
+  template <typename Func>
+  void simulated_annealing(int duration, double T0, double T1, Func f){
+    using namespace std::chrono;
 
-  auto s = system_clock::now();
+    auto s = system_clock::now();
 
-  while(true){
-    auto t = system_clock::now();
-    int d = duration_cast<milliseconds>(t - s).count();
-    if(d >= duration) break;
+    while(true){
+      auto t = system_clock::now();
+      int d = duration_cast<milliseconds>(t - s).count();
+      if(d >= duration) break;
 
-    double now = (double)d / duration;
+      double now = (double)d / duration;
 
-    double T = std::pow(T0, 1.0 - now) * std::pow(T1, now);
+      double T = std::pow(T0, 1.0 - now) * std::pow(T1, now);
 
-    f(d, T);
+      f(d, T);
+    }
   }
 }
 

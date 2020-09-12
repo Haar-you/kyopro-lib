@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Subset sum problem (With quantity limitations)
+# :question: Subset sum problem (With quantity limitations)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#2e380218d9fd214c2f91a8ade734af1c">Mylib/TypicalProblem/SubsetSumProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -56,7 +56,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/2370/main.test.cpp.html">test/aoj/2370/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2370/main.test.cpp.html">test/aoj/2370/main.test.cpp</a>
 * :x: <a href="../../../../verify/test/aoj/2955/main.test.cpp.html">test/aoj/2955/main.test.cpp</a>
 
 
@@ -72,25 +72,27 @@ layout: default
  * @title Subset sum problem (With quantity limitations)
  * @docs subset_sum_limited.md
  */
-auto subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vector<int> &m){
-  std::vector<int> dp(K + 1, -1);
+namespace haar_lib {
+  auto subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vector<int> &m){
+    std::vector<int> dp(K + 1, -1);
 
-  dp[0] = 0;
-  for(int i = 0; i < N; ++i){
-    for(int j = 0; j <= K; ++j){
-      if(dp[j] >= 0){
-        dp[j] = m[i];
-      }else if(j < a[i] or dp[j - a[i]] <= 0){
-        dp[j] = -1;
-      }else{
-        dp[j] = dp[j - a[i]] - 1;
+    dp[0] = 0;
+    for(int i = 0; i < N; ++i){
+      for(int j = 0; j <= K; ++j){
+        if(dp[j] >= 0){
+          dp[j] = m[i];
+        }else if(j < a[i] or dp[j - a[i]] <= 0){
+          dp[j] = -1;
+        }else{
+          dp[j] = dp[j - a[i]] - 1;
+        }
       }
     }
+
+    for(int i = 0; i <= K; ++i) dp[i] = dp[i] >= 0;
+
+    return dp;
   }
-
-  for(int i = 0; i <= K; ++i) dp[i] = dp[i] >= 0;
-
-  return dp;
 }
 
 ```
@@ -106,25 +108,27 @@ auto subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vect
  * @title Subset sum problem (With quantity limitations)
  * @docs subset_sum_limited.md
  */
-auto subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vector<int> &m){
-  std::vector<int> dp(K + 1, -1);
+namespace haar_lib {
+  auto subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vector<int> &m){
+    std::vector<int> dp(K + 1, -1);
 
-  dp[0] = 0;
-  for(int i = 0; i < N; ++i){
-    for(int j = 0; j <= K; ++j){
-      if(dp[j] >= 0){
-        dp[j] = m[i];
-      }else if(j < a[i] or dp[j - a[i]] <= 0){
-        dp[j] = -1;
-      }else{
-        dp[j] = dp[j - a[i]] - 1;
+    dp[0] = 0;
+    for(int i = 0; i < N; ++i){
+      for(int j = 0; j <= K; ++j){
+        if(dp[j] >= 0){
+          dp[j] = m[i];
+        }else if(j < a[i] or dp[j - a[i]] <= 0){
+          dp[j] = -1;
+        }else{
+          dp[j] = dp[j - a[i]] - 1;
+        }
       }
     }
+
+    for(int i = 0; i <= K; ++i) dp[i] = dp[i] >= 0;
+
+    return dp;
   }
-
-  for(int i = 0; i <= K; ++i) dp[i] = dp[i] >= 0;
-
-  return dp;
 }
 
 ```

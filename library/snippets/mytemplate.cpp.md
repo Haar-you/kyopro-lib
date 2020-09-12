@@ -95,8 +95,11 @@ std::istream& operator>>(std::istream &s, std::vector<T> &a){
 }
 
 
+namespace haar_lib {}
 
-namespace solver{
+namespace solver {
+  using namespace haar_lib;
+
   void init(){
     std::cin.tie(0);
     std::ios::sync_with_stdio(false);

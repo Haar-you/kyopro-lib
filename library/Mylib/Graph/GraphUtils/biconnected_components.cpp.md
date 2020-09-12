@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0520734517f09caa086d1aa01fa4b9e4">Mylib/Graph/GraphUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/GraphUtils/biconnected_components.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -54,7 +54,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Code
@@ -72,65 +72,67 @@ layout: default
  * @title Biconnected components
  * @docs biconnected_components.md
  */
-namespace biconnected_components_impl {
-  template <typename T>
-  void dfs(
-    const Graph<T> &g,
-    int cur,
-    int par,
-    std::vector<bool> &check,
-    std::vector<int> &low,
-    std::vector<int> &ord,
-    std::vector<std::vector<Edge<T>>> &ret,
-    std::stack<Edge<T>> &st,
-    int &t
-  ){
-    check[cur] = true;
-    ord[cur] = t;
-    low[cur] = t;
-    ++t;
+namespace haar_lib {
+  namespace biconnected_components_impl {
+    template <typename T>
+    void dfs(
+      const graph<T> &g,
+      int cur,
+      int par,
+      std::vector<bool> &check,
+      std::vector<int> &low,
+      std::vector<int> &ord,
+      std::vector<std::vector<edge<T>>> &ret,
+      std::stack<edge<T>> &st,
+      int &t
+    ){
+      check[cur] = true;
+      ord[cur] = t;
+      low[cur] = t;
+      ++t;
 
-    for(auto &e : g[cur]){
-      if(e.to == par) continue;
+      for(auto &e : g[cur]){
+        if(e.to == par) continue;
 
-      if(ord[e.to] < ord[cur]){
-        auto f = e;
-        if(f.from > f.to) std::swap(f.from, f.to);
-        st.push(f);
-      }
-      if(not check[e.to]){
-        dfs(g, e.to, cur, check, low, ord, ret, st, t);
-        low[cur] = std::min(low[cur], low[e.to]);
-        if(low[e.to] >= ord[cur]){
-          ret.emplace_back();
-          while(true){
-            auto f = st.top(); st.pop();
-            ret.back().push_back(f);
-            if(f.from == std::min(e.from, e.to) and f.to == std::max(e.from, e.to)) break;
-          }
+        if(ord[e.to] < ord[cur]){
+          auto f = e;
+          if(f.from > f.to) std::swap(f.from, f.to);
+          st.push(f);
         }
-      }else{
-        low[cur] = std::min(low[cur], ord[e.to]);
+        if(not check[e.to]){
+          dfs(g, e.to, cur, check, low, ord, ret, st, t);
+          low[cur] = std::min(low[cur], low[e.to]);
+          if(low[e.to] >= ord[cur]){
+            ret.emplace_back();
+            while(true){
+              auto f = st.top(); st.pop();
+              ret.back().push_back(f);
+              if(f.from == std::min(e.from, e.to) and f.to == std::max(e.from, e.to)) break;
+            }
+          }
+        }else{
+          low[cur] = std::min(low[cur], ord[e.to]);
+        }
       }
     }
   }
-}
 
-template <typename T>
-auto biconnected_components(const Graph<T> &g){
-  const int n = g.size();
+  template <typename T>
+  auto biconnected_components(const graph<T> &g){
+    const int n = g.size();
 
-  std::vector<bool> check(n);
-  std::vector<int> low(n, -1), ord(n, -1);
-  std::vector<std::vector<Edge<T>>> ret;
-  std::stack<Edge<T>> st;
-  int t = 0;
+    std::vector<bool> check(n);
+    std::vector<int> low(n, -1), ord(n, -1);
+    std::vector<std::vector<edge<T>>> ret;
+    std::stack<edge<T>> st;
+    int t = 0;
 
-  for(int i = 0; i < n; ++i){
-    if(not check[i]) biconnected_components_impl::dfs(g, i, -1, check, low, ord, ret, st, t);
+    for(int i = 0; i < n; ++i){
+      if(not check[i]) biconnected_components_impl::dfs(g, i, -1, check, low, ord, ret, st, t);
+    }
+
+    return ret;
   }
-
-  return ret;
 }
 
 ```
@@ -150,125 +152,129 @@ auto biconnected_components(const Graph<T> &g){
  * @title Basic graph
  * @docs graph.md
  */
-template <typename T>
-struct Edge {
-  int from, to;
-  T cost;
-  int index = -1;
-  Edge(){}
-  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
-};
+namespace haar_lib {
+  template <typename T>
+  struct edge {
+    int from, to;
+    T cost;
+    int index = -1;
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+  };
 
-template <typename T>
-struct Graph {
-  using weight_type = T;
-  using edge_type = Edge<T>;
+  template <typename T>
+  struct graph {
+    using weight_type = T;
+    using edge_type = edge<T>;
 
-  std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
-  auto& operator[](size_t i){return data[i];}
-  const auto& operator[](size_t i) const {return data[i];}
+    auto& operator[](size_t i){return data[i];}
+    const auto& operator[](size_t i) const {return data[i];}
 
-  auto begin() const {return data.begin();}
-  auto end() const {return data.end();}
+    auto begin() const {return data.begin();}
+    auto end() const {return data.end();}
 
-  Graph(){}
-  Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
-  bool empty() const {return data.empty();}
-  int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+    int size() const {return data.size();}
 
-  void add_edge(int i, int j, T w, int index = -1){
-    data[i].emplace_back(i, j, w, index);
-  }
-
-  void add_undirected(int i, int j, T w, int index = -1){
-    add_edge(i, j, w, index);
-    add_edge(j, i, w, index);
-  }
-
-  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
-  void read(int M){
-    for(int i = 0; i < M; ++i){
-      int u, v; std::cin >> u >> v;
-      u -= I;
-      v -= I;
-      T w = 1;
-      if(WEIGHTED) std::cin >> w;
-      if(DIRECTED) add_edge(u, v, w, i);
-      else add_undirected(u, v, w, i);
+    void add_edge(int i, int j, T w, int index = -1){
+      data[i].emplace_back(i, j, w, index);
     }
-  }
-};
 
-template <typename T>
-using Tree = Graph<T>;
+    void add_undirected(int i, int j, T w, int index = -1){
+      add_edge(i, j, w, index);
+      add_edge(j, i, w, index);
+    }
+
+    template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+    void read(int M){
+      for(int i = 0; i < M; ++i){
+        int u, v; std::cin >> u >> v;
+        u -= I;
+        v -= I;
+        T w = 1;
+        if(WEIGHTED) std::cin >> w;
+        if(DIRECTED) add_edge(u, v, w, i);
+        else add_undirected(u, v, w, i);
+      }
+    }
+  };
+
+  template <typename T>
+  using tree = graph<T>;
+}
 #line 6 "Mylib/Graph/GraphUtils/biconnected_components.cpp"
 
 /**
  * @title Biconnected components
  * @docs biconnected_components.md
  */
-namespace biconnected_components_impl {
-  template <typename T>
-  void dfs(
-    const Graph<T> &g,
-    int cur,
-    int par,
-    std::vector<bool> &check,
-    std::vector<int> &low,
-    std::vector<int> &ord,
-    std::vector<std::vector<Edge<T>>> &ret,
-    std::stack<Edge<T>> &st,
-    int &t
-  ){
-    check[cur] = true;
-    ord[cur] = t;
-    low[cur] = t;
-    ++t;
+namespace haar_lib {
+  namespace biconnected_components_impl {
+    template <typename T>
+    void dfs(
+      const graph<T> &g,
+      int cur,
+      int par,
+      std::vector<bool> &check,
+      std::vector<int> &low,
+      std::vector<int> &ord,
+      std::vector<std::vector<edge<T>>> &ret,
+      std::stack<edge<T>> &st,
+      int &t
+    ){
+      check[cur] = true;
+      ord[cur] = t;
+      low[cur] = t;
+      ++t;
 
-    for(auto &e : g[cur]){
-      if(e.to == par) continue;
+      for(auto &e : g[cur]){
+        if(e.to == par) continue;
 
-      if(ord[e.to] < ord[cur]){
-        auto f = e;
-        if(f.from > f.to) std::swap(f.from, f.to);
-        st.push(f);
-      }
-      if(not check[e.to]){
-        dfs(g, e.to, cur, check, low, ord, ret, st, t);
-        low[cur] = std::min(low[cur], low[e.to]);
-        if(low[e.to] >= ord[cur]){
-          ret.emplace_back();
-          while(true){
-            auto f = st.top(); st.pop();
-            ret.back().push_back(f);
-            if(f.from == std::min(e.from, e.to) and f.to == std::max(e.from, e.to)) break;
-          }
+        if(ord[e.to] < ord[cur]){
+          auto f = e;
+          if(f.from > f.to) std::swap(f.from, f.to);
+          st.push(f);
         }
-      }else{
-        low[cur] = std::min(low[cur], ord[e.to]);
+        if(not check[e.to]){
+          dfs(g, e.to, cur, check, low, ord, ret, st, t);
+          low[cur] = std::min(low[cur], low[e.to]);
+          if(low[e.to] >= ord[cur]){
+            ret.emplace_back();
+            while(true){
+              auto f = st.top(); st.pop();
+              ret.back().push_back(f);
+              if(f.from == std::min(e.from, e.to) and f.to == std::max(e.from, e.to)) break;
+            }
+          }
+        }else{
+          low[cur] = std::min(low[cur], ord[e.to]);
+        }
       }
     }
   }
-}
 
-template <typename T>
-auto biconnected_components(const Graph<T> &g){
-  const int n = g.size();
+  template <typename T>
+  auto biconnected_components(const graph<T> &g){
+    const int n = g.size();
 
-  std::vector<bool> check(n);
-  std::vector<int> low(n, -1), ord(n, -1);
-  std::vector<std::vector<Edge<T>>> ret;
-  std::stack<Edge<T>> st;
-  int t = 0;
+    std::vector<bool> check(n);
+    std::vector<int> low(n, -1), ord(n, -1);
+    std::vector<std::vector<edge<T>>> ret;
+    std::stack<edge<T>> st;
+    int t = 0;
 
-  for(int i = 0; i < n; ++i){
-    if(not check[i]) biconnected_components_impl::dfs(g, i, -1, check, low, ord, ret, st, t);
+    for(int i = 0; i < n; ++i){
+      if(not check[i]) biconnected_components_impl::dfs(g, i, -1, check, low, ord, ret, st, t);
+    }
+
+    return ret;
   }
-
-  return ret;
 }
 
 ```

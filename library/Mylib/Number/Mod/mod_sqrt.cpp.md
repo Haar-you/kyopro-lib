@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#795ab137908c82fc28acbcffe5b1c757">Mylib/Number/Mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mod/mod_sqrt.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -56,7 +56,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="mod_power.cpp.html">Mod power</a>
+* :question: <a href="mod_power.cpp.html">Mod power</a>
 
 
 ## Verified with
@@ -79,51 +79,53 @@ layout: default
  * @title Mod sqrt
  * @docs mod_sqrt.md
  */
-std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
-  if(p == 2) return a % 2;
-  if(a == 0) return 0;
+namespace haar_lib {
+  std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
+    if(p == 2) return a % 2;
+    if(a == 0) return 0;
 
-  int64_t b = power(a, (p - 1) / 2, p);
+    int64_t b = power(a, (p - 1) / 2, p);
 
-  if(b == p - 1) return {};
-  if(p % 4 == 3) return power(a, (p + 1) / 4, p);
+    if(b == p - 1) return {};
+    if(p % 4 == 3) return power(a, (p + 1) / 4, p);
 
-  int64_t q = p - 1, s = 0;
-  while(q % 2 == 0){
-    q /= 2;
-    s += 1;
-  }
-
-  static std::mt19937_64 rand(time(0));
-  std::uniform_int_distribution<> dist(0, p - 1);
-
-  int64_t z;
-  while(1){
-    z = dist(rand);
-    if(power(z, (p - 1) / 2, p) == p - 1) break;
-  }
-
-  int64_t m = s;
-  int64_t c = power(z, q, p);
-  int64_t t = power(a, q, p);
-  int64_t r = power(a, (q + 1) / 2, p);
-
-  while(1){
-    if(t == 0) return 0;
-    if(t == 1) return r;
-
-    int i = 1;
-    for(int64_t T = t; i < m; ++i){
-      (T *= T) %= p;
-      if(T == 1) break;
+    int64_t q = p - 1, s = 0;
+    while(q % 2 == 0){
+      q /= 2;
+      s += 1;
     }
 
-    int64_t b = power(c, 1LL << (m - i - 1), p);
+    static std::mt19937_64 rand(time(0));
+    std::uniform_int_distribution<> dist(0, p - 1);
 
-    m = i;
-    c = b * b % p;
-    (t *= b * b % p) %= p;
-    (r *= b) %= p;
+    int64_t z;
+    while(1){
+      z = dist(rand);
+      if(power(z, (p - 1) / 2, p) == p - 1) break;
+    }
+
+    int64_t m = s;
+    int64_t c = power(z, q, p);
+    int64_t t = power(a, q, p);
+    int64_t r = power(a, (q + 1) / 2, p);
+
+    while(1){
+      if(t == 0) return 0;
+      if(t == 1) return r;
+
+      int i = 1;
+      for(int64_t T = t; i < m; ++i){
+        (T *= T) %= p;
+        if(T == 1) break;
+      }
+
+      int64_t b = power(c, 1LL << (m - i - 1), p);
+
+      m = i;
+      c = b * b % p;
+      (t *= b * b % p) %= p;
+      (r *= b) %= p;
+    }
   }
 }
 
@@ -143,14 +145,16 @@ std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
  * @title Mod power
  * @docs mod_power.md
  */
-int64_t power(int64_t n, int64_t p, int64_t m){
-  int64_t ret = 1;
-  while(p > 0){
-    if(p & 1) (ret *= n) %= m;
-    (n *= n) %= m;
-    p >>= 1;
+namespace haar_lib {
+  int64_t power(int64_t n, int64_t p, int64_t m){
+    int64_t ret = 1;
+    while(p > 0){
+      if(p & 1) (ret *= n) %= m;
+      (n *= n) %= m;
+      p >>= 1;
+    }
+    return ret;
   }
-  return ret;
 }
 #line 5 "Mylib/Number/Mod/mod_sqrt.cpp"
 
@@ -158,51 +162,53 @@ int64_t power(int64_t n, int64_t p, int64_t m){
  * @title Mod sqrt
  * @docs mod_sqrt.md
  */
-std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
-  if(p == 2) return a % 2;
-  if(a == 0) return 0;
+namespace haar_lib {
+  std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
+    if(p == 2) return a % 2;
+    if(a == 0) return 0;
 
-  int64_t b = power(a, (p - 1) / 2, p);
+    int64_t b = power(a, (p - 1) / 2, p);
 
-  if(b == p - 1) return {};
-  if(p % 4 == 3) return power(a, (p + 1) / 4, p);
+    if(b == p - 1) return {};
+    if(p % 4 == 3) return power(a, (p + 1) / 4, p);
 
-  int64_t q = p - 1, s = 0;
-  while(q % 2 == 0){
-    q /= 2;
-    s += 1;
-  }
-
-  static std::mt19937_64 rand(time(0));
-  std::uniform_int_distribution<> dist(0, p - 1);
-
-  int64_t z;
-  while(1){
-    z = dist(rand);
-    if(power(z, (p - 1) / 2, p) == p - 1) break;
-  }
-
-  int64_t m = s;
-  int64_t c = power(z, q, p);
-  int64_t t = power(a, q, p);
-  int64_t r = power(a, (q + 1) / 2, p);
-
-  while(1){
-    if(t == 0) return 0;
-    if(t == 1) return r;
-
-    int i = 1;
-    for(int64_t T = t; i < m; ++i){
-      (T *= T) %= p;
-      if(T == 1) break;
+    int64_t q = p - 1, s = 0;
+    while(q % 2 == 0){
+      q /= 2;
+      s += 1;
     }
 
-    int64_t b = power(c, 1LL << (m - i - 1), p);
+    static std::mt19937_64 rand(time(0));
+    std::uniform_int_distribution<> dist(0, p - 1);
 
-    m = i;
-    c = b * b % p;
-    (t *= b * b % p) %= p;
-    (r *= b) %= p;
+    int64_t z;
+    while(1){
+      z = dist(rand);
+      if(power(z, (p - 1) / 2, p) == p - 1) break;
+    }
+
+    int64_t m = s;
+    int64_t c = power(z, q, p);
+    int64_t t = power(a, q, p);
+    int64_t r = power(a, (q + 1) / 2, p);
+
+    while(1){
+      if(t == 0) return 0;
+      if(t == 1) return r;
+
+      int i = 1;
+      for(int64_t T = t; i < m; ++i){
+        (T *= T) %= p;
+        if(T == 1) break;
+      }
+
+      int64_t b = power(c, 1LL << (m - i - 1), p);
+
+      m = i;
+      c = b * b % p;
+      (t *= b * b % p) %= p;
+      (r *= b) %= p;
+    }
   }
 }
 

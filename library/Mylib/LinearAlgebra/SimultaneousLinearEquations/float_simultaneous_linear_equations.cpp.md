@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Simultaneous linear equations (Floating point number)
+# :heavy_check_mark: Simultaneous linear equations (Floating point number)
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0f2e8b5b008805076abcf42bbba8c8c1">Mylib/LinearAlgebra/SimultaneousLinearEquations</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/2171/main.test.cpp.html">test/aoj/2171/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2171/main.test.cpp.html">test/aoj/2171/main.test.cpp</a>
 
 
 ## Code
@@ -55,69 +55,71 @@ layout: default
  * @title Simultaneous linear equations (Floating point number)
  * @docs float_simultaneous_linear_equations.md
  */
-namespace float_simultaneous_linear_equations_impl {
+namespace haar_lib {
+  namespace float_simultaneous_linear_equations_impl {
+    template <typename T>
+    struct result {
+      int rank, dim;
+      std::vector<T> solution;
+    };
+  }
+
   template <typename T>
-  struct Result {
-    int rank, dim;
-    std::vector<T> solution;
-  };
-}
+  auto float_simultaneous_linear_equations(std::vector<std::vector<T>> a, std::vector<T> b, T eps){
+    using result = float_simultaneous_linear_equations_impl::result<T>;
+    std::optional<result> ret;
 
-template <typename T>
-auto float_simultaneous_linear_equations(std::vector<std::vector<T>> a, std::vector<T> b, T eps){
-  using Result = float_simultaneous_linear_equations_impl::Result<T>;
-  std::optional<Result> ret;
+    const int n = a.size(), m = a[0].size();
+    int rank = 0;
 
-  const int n = a.size(), m = a[0].size();
-  int rank = 0;
+    for(int j = 0; j < m; ++j){
+      int pivot = -1;
 
-  for(int j = 0; j < m; ++j){
-    int pivot = -1;
+      double M = eps;
+      for(int i = rank; i < n; ++i){
+        if(std::abs(a[i][j]) > M){
+          M = std::abs(a[i][j]);
+          pivot = i;
+        }
+      }
 
-    double M = eps;
+      if(pivot == -1) continue;
+
+      std::swap(a[pivot], a[rank]);
+      std::swap(b[pivot], b[rank]);
+
+      {
+        double d = a[rank][j];
+        for(int k = 0; k < m; ++k) a[rank][k] /= d;
+        b[rank] /= d;
+      }
+
+      for(int i = 0; i < n; ++i){
+        if(i == rank or std::abs(a[i][j]) <= eps) continue;
+        double d = a[i][j];
+        for(int k = 0; k < m; ++k){
+          a[i][k] -= a[rank][k] * d;
+        }
+        b[i] -= b[rank] * d;
+      }
+
+      ++rank;
+    }
+
     for(int i = rank; i < n; ++i){
-      if(std::abs(a[i][j]) > M){
-        M = std::abs(a[i][j]);
-        pivot = i;
+      if(std::abs(b[i]) > eps){
+        return ret;
       }
     }
 
-    if(pivot == -1) continue;
+    const int dim = m - rank;
 
-    std::swap(a[pivot], a[rank]);
-    std::swap(b[pivot], b[rank]);
+    std::vector<T> solution(m);
+    for(int i = 0; i < rank; ++i) solution[i] = b[i];
 
-    {
-      double d = a[rank][j];
-      for(int k = 0; k < m; ++k) a[rank][k] /= d;
-      b[rank] /= d;
-    }
-
-    for(int i = 0; i < n; ++i){
-      if(i == rank or std::abs(a[i][j]) <= eps) continue;
-      double d = a[i][j];
-      for(int k = 0; k < m; ++k){
-        a[i][k] -= a[rank][k] * d;
-      }
-      b[i] -= b[rank] * d;
-    }
-
-    ++rank;
+    ret = result({rank, dim, solution});
+    return ret;
   }
-
-  for(int i = rank; i < n; ++i){
-    if(std::abs(b[i]) > eps){
-      return ret;
-    }
-  }
-
-  const int dim = m - rank;
-
-  std::vector<T> solution(m);
-  for(int i = 0; i < rank; ++i) solution[i] = b[i];
-
-  ret = Result({rank, dim, solution});
-  return ret;
 }
 
 ```
@@ -135,69 +137,71 @@ auto float_simultaneous_linear_equations(std::vector<std::vector<T>> a, std::vec
  * @title Simultaneous linear equations (Floating point number)
  * @docs float_simultaneous_linear_equations.md
  */
-namespace float_simultaneous_linear_equations_impl {
+namespace haar_lib {
+  namespace float_simultaneous_linear_equations_impl {
+    template <typename T>
+    struct result {
+      int rank, dim;
+      std::vector<T> solution;
+    };
+  }
+
   template <typename T>
-  struct Result {
-    int rank, dim;
-    std::vector<T> solution;
-  };
-}
+  auto float_simultaneous_linear_equations(std::vector<std::vector<T>> a, std::vector<T> b, T eps){
+    using result = float_simultaneous_linear_equations_impl::result<T>;
+    std::optional<result> ret;
 
-template <typename T>
-auto float_simultaneous_linear_equations(std::vector<std::vector<T>> a, std::vector<T> b, T eps){
-  using Result = float_simultaneous_linear_equations_impl::Result<T>;
-  std::optional<Result> ret;
+    const int n = a.size(), m = a[0].size();
+    int rank = 0;
 
-  const int n = a.size(), m = a[0].size();
-  int rank = 0;
+    for(int j = 0; j < m; ++j){
+      int pivot = -1;
 
-  for(int j = 0; j < m; ++j){
-    int pivot = -1;
+      double M = eps;
+      for(int i = rank; i < n; ++i){
+        if(std::abs(a[i][j]) > M){
+          M = std::abs(a[i][j]);
+          pivot = i;
+        }
+      }
 
-    double M = eps;
+      if(pivot == -1) continue;
+
+      std::swap(a[pivot], a[rank]);
+      std::swap(b[pivot], b[rank]);
+
+      {
+        double d = a[rank][j];
+        for(int k = 0; k < m; ++k) a[rank][k] /= d;
+        b[rank] /= d;
+      }
+
+      for(int i = 0; i < n; ++i){
+        if(i == rank or std::abs(a[i][j]) <= eps) continue;
+        double d = a[i][j];
+        for(int k = 0; k < m; ++k){
+          a[i][k] -= a[rank][k] * d;
+        }
+        b[i] -= b[rank] * d;
+      }
+
+      ++rank;
+    }
+
     for(int i = rank; i < n; ++i){
-      if(std::abs(a[i][j]) > M){
-        M = std::abs(a[i][j]);
-        pivot = i;
+      if(std::abs(b[i]) > eps){
+        return ret;
       }
     }
 
-    if(pivot == -1) continue;
+    const int dim = m - rank;
 
-    std::swap(a[pivot], a[rank]);
-    std::swap(b[pivot], b[rank]);
+    std::vector<T> solution(m);
+    for(int i = 0; i < rank; ++i) solution[i] = b[i];
 
-    {
-      double d = a[rank][j];
-      for(int k = 0; k < m; ++k) a[rank][k] /= d;
-      b[rank] /= d;
-    }
-
-    for(int i = 0; i < n; ++i){
-      if(i == rank or std::abs(a[i][j]) <= eps) continue;
-      double d = a[i][j];
-      for(int k = 0; k < m; ++k){
-        a[i][k] -= a[rank][k] * d;
-      }
-      b[i] -= b[rank] * d;
-    }
-
-    ++rank;
+    ret = result({rank, dim, solution});
+    return ret;
   }
-
-  for(int i = rank; i < n; ++i){
-    if(std::abs(b[i]) > eps){
-      return ret;
-    }
-  }
-
-  const int dim = m - rank;
-
-  std::vector<T> solution(m);
-  for(int i = 0; i < rank; ++i) solution[i] = b[i];
-
-  ret = Result({rank, dim, solution});
-  return ret;
 }
 
 ```

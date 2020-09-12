@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#69b51e2d143bc3bccb43628882e5cf09">test/yukicoder/782</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/782/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/782">https://yukicoder.me/problems/no/782</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 * :x: <a href="../../../../library/Mylib/Misc/convert_base.cpp.html">Convert base</a>
 
 
@@ -57,15 +57,17 @@ layout: default
 #include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int T, B; std::cin >> T >> B;
-  for(auto [N] : input_tuples<int>(T)){
-    auto ans = convert_base_to(N, B);
+  for(auto [N] : hl::input_tuples<int>(T)){
+    auto ans = hl::convert_base_to(N, B);
 
-    std::cout << join(ans.begin(), ans.end(), "") << "\n";
+    std::cout << hl::join(ans.begin(), ans.end(), "") << "\n";
   }
 
   return 0;
@@ -89,31 +91,33 @@ int main(){
  * @title Convert base
  * @docs convert_base.md
  */
-std::vector<int64_t> convert_base_to(int64_t val, int64_t base){
-  if(val == 0) return {0};
+namespace haar_lib {
+  std::vector<int64_t> convert_base_to(int64_t val, int64_t base){
+    if(val == 0) return {0};
 
-  int b = std::abs(base);
+    int b = std::abs(base);
 
-  std::vector<int64_t> ret;
-  while(val != 0){
-    int r = val % b;
-    if(r < 0) r += b;
-    val = (val - r) / base;
-    ret.push_back(r);
+    std::vector<int64_t> ret;
+    while(val != 0){
+      int r = val % b;
+      if(r < 0) r += b;
+      val = (val - r) / base;
+      ret.push_back(r);
+    }
+
+    std::reverse(ret.begin(), ret.end());
+
+    return ret;
   }
 
-  std::reverse(ret.begin(), ret.end());
+  int64_t convert_base_from(const std::vector<int64_t> &val, int64_t base){
+    int64_t ret = 0;
+    for(auto it = val.begin(); it != val.end(); ++it){
+      (ret *= base) += *it;
+    }
 
-  return ret;
-}
-
-int64_t convert_base_from(const std::vector<int64_t> &val, int64_t base){
-  int64_t ret = 0;
-  for(auto it = val.begin(); it != val.end(); ++it){
-    (ret *= base) += *it;
+    return ret;
   }
-
-  return ret;
 }
 #line 3 "Mylib/IO/join.cpp"
 #include <sstream>
@@ -122,16 +126,18 @@ int64_t convert_base_from(const std::vector<int64_t> &val, int64_t base){
 /**
  * @docs join.md
  */
-template <typename ITER>
-std::string join(ITER first, ITER last, std::string delim = " "){
-  std::stringstream s;
+namespace haar_lib {
+  template <typename Iter>
+  std::string join(Iter first, Iter last, std::string delim = " "){
+    std::stringstream s;
 
-  for(auto it = first; it != last; ++it){
-    if(it != first) s << delim;
-    s << *it;
+    for(auto it = first; it != last; ++it){
+      if(it != first) s << delim;
+      s << *it;
+    }
+
+    return s.str();
   }
-
-  return s.str();
 }
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
@@ -142,78 +148,84 @@ std::string join(ITER first, ITER last, std::string delim = " "){
 /**
  * @docs input_tuple.md
  */
-template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
-}
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
+  }
 
-template <typename T, typename U>
-std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
-  s >> value.first >> value.second;
-  return s;
-}
+  template <typename T, typename U>
+  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+    s >> value.first >> value.second;
+    return s;
+  }
 
-template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
-  return s;
+  template <typename ... Args>
+  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
+    return s;
+  }
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
-template <typename ... Args>
-class InputTuples {
-  struct iter {
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuples {
+    struct iter {
+      using value_type = std::tuple<Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N, c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
+      value_type operator*(){
+        if(not fetched){
+          std::cin >> value;
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuples(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples(int N){
+    return InputTuples<Args ...>(N);
+  }
 }
 #line 7 "test/yukicoder/782/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int T, B; std::cin >> T >> B;
-  for(auto [N] : input_tuples<int>(T)){
-    auto ans = convert_base_to(N, B);
+  for(auto [N] : hl::input_tuples<int>(T)){
+    auto ans = hl::convert_base_to(N, B);
 
-    std::cout << join(ans.begin(), ans.end(), "") << "\n";
+    std::cout << hl::join(ans.begin(), ans.end(), "") << "\n";
   }
 
   return 0;

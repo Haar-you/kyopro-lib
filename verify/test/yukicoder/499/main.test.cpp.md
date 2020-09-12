@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#6d875ae29365ab59bb073a9f5998cd26">test/yukicoder/499</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/499/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/499">https://yukicoder.me/problems/no/499</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 * :x: <a href="../../../../library/Mylib/Misc/convert_base.cpp.html">Convert base</a>
 
 
@@ -55,12 +55,14 @@ layout: default
 #include "Mylib/Misc/convert_base.cpp"
 #include "Mylib/IO/join.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N; std::cin >> N;
 
-  auto res = convert_base_to(N, 7);
+  auto res = hl::convert_base_to(N, 7);
 
-  std::cout << join(res.begin(), res.end(), "") << "\n";
+  std::cout << hl::join(res.begin(), res.end(), "") << "\n";
 
   return 0;
 }
@@ -84,31 +86,33 @@ int main(){
  * @title Convert base
  * @docs convert_base.md
  */
-std::vector<int64_t> convert_base_to(int64_t val, int64_t base){
-  if(val == 0) return {0};
+namespace haar_lib {
+  std::vector<int64_t> convert_base_to(int64_t val, int64_t base){
+    if(val == 0) return {0};
 
-  int b = std::abs(base);
+    int b = std::abs(base);
 
-  std::vector<int64_t> ret;
-  while(val != 0){
-    int r = val % b;
-    if(r < 0) r += b;
-    val = (val - r) / base;
-    ret.push_back(r);
+    std::vector<int64_t> ret;
+    while(val != 0){
+      int r = val % b;
+      if(r < 0) r += b;
+      val = (val - r) / base;
+      ret.push_back(r);
+    }
+
+    std::reverse(ret.begin(), ret.end());
+
+    return ret;
   }
 
-  std::reverse(ret.begin(), ret.end());
+  int64_t convert_base_from(const std::vector<int64_t> &val, int64_t base){
+    int64_t ret = 0;
+    for(auto it = val.begin(); it != val.end(); ++it){
+      (ret *= base) += *it;
+    }
 
-  return ret;
-}
-
-int64_t convert_base_from(const std::vector<int64_t> &val, int64_t base){
-  int64_t ret = 0;
-  for(auto it = val.begin(); it != val.end(); ++it){
-    (ret *= base) += *it;
+    return ret;
   }
-
-  return ret;
 }
 #line 3 "Mylib/IO/join.cpp"
 #include <sstream>
@@ -117,25 +121,29 @@ int64_t convert_base_from(const std::vector<int64_t> &val, int64_t base){
 /**
  * @docs join.md
  */
-template <typename ITER>
-std::string join(ITER first, ITER last, std::string delim = " "){
-  std::stringstream s;
+namespace haar_lib {
+  template <typename Iter>
+  std::string join(Iter first, Iter last, std::string delim = " "){
+    std::stringstream s;
 
-  for(auto it = first; it != last; ++it){
-    if(it != first) s << delim;
-    s << *it;
+    for(auto it = first; it != last; ++it){
+      if(it != first) s << delim;
+      s << *it;
+    }
+
+    return s.str();
   }
-
-  return s.str();
 }
 #line 7 "test/yukicoder/499/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int N; std::cin >> N;
 
-  auto res = convert_base_to(N, 7);
+  auto res = hl::convert_base_to(N, 7);
 
-  std::cout << join(res.begin(), res.end(), "") << "\n";
+  std::cout << hl::join(res.begin(), res.end(), "") << "\n";
 
   return 0;
 }

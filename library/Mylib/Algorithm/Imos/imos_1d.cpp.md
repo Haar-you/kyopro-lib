@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#6dc6d5a2cac82b39a08fd9ff32ab6e48">Mylib/Algorithm/Imos</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/Imos/imos_1d.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -53,26 +53,28 @@ layout: default
  * @title 1D Imos algorithm
  * @docs imos_1d.md
  */
-template <typename T>
-struct Imos1D {
-  using value_type = T;
+namespace haar_lib {
+  template <typename T>
+  struct imos_1d {
+    using value_type = T;
 
-  std::vector<T> data;
-  Imos1D(int n): data(n + 1){}
+    std::vector<T> data;
+    imos_1d(int n): data(n + 1){}
 
-  void add(int a, int b, const T& val){ // [a, b)
-    data[a] += 1;
-    data[b] -= 1;
-  }
-
-  void build(){
-    for(int i = 0; i < (int)data.size() - 1; ++i){
-      data[i + 1] += data[i];
+    void add(int a, int b, const T& val){ // [a, b)
+      data[a] += 1;
+      data[b] -= 1;
     }
-  }
 
-  T operator[](size_t i) const {return data[i];}
-};
+    void build(){
+      for(int i = 0; i < (int)data.size() - 1; ++i){
+        data[i + 1] += data[i];
+      }
+    }
+
+    T operator[](size_t i) const {return data[i];}
+  };
+}
 
 ```
 {% endraw %}
@@ -87,26 +89,28 @@ struct Imos1D {
  * @title 1D Imos algorithm
  * @docs imos_1d.md
  */
-template <typename T>
-struct Imos1D {
-  using value_type = T;
+namespace haar_lib {
+  template <typename T>
+  struct imos_1d {
+    using value_type = T;
 
-  std::vector<T> data;
-  Imos1D(int n): data(n + 1){}
+    std::vector<T> data;
+    imos_1d(int n): data(n + 1){}
 
-  void add(int a, int b, const T& val){ // [a, b)
-    data[a] += 1;
-    data[b] -= 1;
-  }
-
-  void build(){
-    for(int i = 0; i < (int)data.size() - 1; ++i){
-      data[i + 1] += data[i];
+    void add(int a, int b, const T& val){ // [a, b)
+      data[a] += 1;
+      data[b] -= 1;
     }
-  }
 
-  T operator[](size_t i) const {return data[i];}
-};
+    void build(){
+      for(int i = 0; i < (int)data.size() - 1; ++i){
+        data[i + 1] += data[i];
+      }
+    }
+
+    T operator[](size_t i) const {return data[i];}
+  };
+}
 
 ```
 {% endraw %}

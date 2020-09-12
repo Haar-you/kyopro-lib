@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -76,69 +76,71 @@ layout: default
  * @title Dual segment tree
  * @docs dual_segment_tree.md
  */
-template <typename Monoid>
-class DualSegmentTree {
-  using value_type = typename Monoid::value_type;
-  const static Monoid M;
+namespace haar_lib {
+  template <typename Monoid>
+  class dual_segment_tree {
+    using value_type = typename Monoid::value_type;
+    const static Monoid M;
 
-  const int depth, size, hsize;
-  std::vector<value_type> data;
+    const int depth, size, hsize;
+    std::vector<value_type> data;
 
-  void propagate(int i){
-    if(i < hsize){
-      data[i << 1 | 0] = M(data[i], data[i << 1 | 0]);
-      data[i << 1 | 1] = M(data[i], data[i << 1 | 1]);
-      data[i] = M();
-    }
-  }
-
-  void propagate_top_down(int i){
-    std::vector<int> temp;
-    while(i > 1){
-      i >>= 1;
-      temp.push_back(i);
+    void propagate(int i){
+      if(i < hsize){
+        data[i << 1 | 0] = M(data[i], data[i << 1 | 0]);
+        data[i << 1 | 1] = M(data[i], data[i << 1 | 1]);
+        data[i] = M();
+      }
     }
 
-    for(auto it = temp.rbegin(); it != temp.rend(); ++it) propagate(*it);
-  }
+    void propagate_top_down(int i){
+      std::vector<int> temp;
+      while(i > 1){
+        i >>= 1;
+        temp.push_back(i);
+      }
 
-public:
-  DualSegmentTree(int n):
-    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
-    size(1 << depth), hsize(size / 2),
-    data(size, M())
-  {}
-
-  void update(int l, int r, const value_type &x){
-    propagate_top_down(l + hsize);
-    propagate_top_down(r + hsize);
-
-    int L = l + hsize;
-    int R = r + hsize;
-
-    while(L < R){
-      if(R & 1) --R, data[R] = M(x, data[R]);
-      if(L & 1) data[L] = M(x, data[L]), ++L;
-      L >>= 1, R >>= 1;
+      for(auto it = temp.rbegin(); it != temp.rend(); ++it) propagate(*it);
     }
-  }
 
-  value_type operator[](int i){
-    propagate_top_down(i + hsize);
-    return data[i + hsize];
-  }
+  public:
+    dual_segment_tree(int n):
+      depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
+      size(1 << depth), hsize(size / 2),
+      data(size, M())
+    {}
 
-  template <typename T>
-  void init_with_vector(const std::vector<T> &a){
-    data.assign(size, M());
-    for(int i = 0; i < (int)a.size(); ++i) data[hsize + i] = a[i];
-  }
+    void update(int l, int r, const value_type &x){
+      propagate_top_down(l + hsize);
+      propagate_top_down(r + hsize);
 
-  template <typename T>
-  void init(const T &val){
-    init_with_vector(std::vector<value_type>(hsize, val));
-  }
-};
+      int L = l + hsize;
+      int R = r + hsize;
+
+      while(L < R){
+        if(R & 1) --R, data[R] = M(x, data[R]);
+        if(L & 1) data[L] = M(x, data[L]), ++L;
+        L >>= 1, R >>= 1;
+      }
+    }
+
+    value_type operator[](int i){
+      propagate_top_down(i + hsize);
+      return data[i + hsize];
+    }
+
+    template <typename T>
+    void init_with_vector(const std::vector<T> &a){
+      data.assign(size, M());
+      for(int i = 0; i < (int)a.size(); ++i) data[hsize + i] = a[i];
+    }
+
+    template <typename T>
+    void init(const T &val){
+      init_with_vector(std::vector<value_type>(hsize, val));
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -153,69 +155,71 @@ public:
  * @title Dual segment tree
  * @docs dual_segment_tree.md
  */
-template <typename Monoid>
-class DualSegmentTree {
-  using value_type = typename Monoid::value_type;
-  const static Monoid M;
+namespace haar_lib {
+  template <typename Monoid>
+  class dual_segment_tree {
+    using value_type = typename Monoid::value_type;
+    const static Monoid M;
 
-  const int depth, size, hsize;
-  std::vector<value_type> data;
+    const int depth, size, hsize;
+    std::vector<value_type> data;
 
-  void propagate(int i){
-    if(i < hsize){
-      data[i << 1 | 0] = M(data[i], data[i << 1 | 0]);
-      data[i << 1 | 1] = M(data[i], data[i << 1 | 1]);
-      data[i] = M();
-    }
-  }
-
-  void propagate_top_down(int i){
-    std::vector<int> temp;
-    while(i > 1){
-      i >>= 1;
-      temp.push_back(i);
+    void propagate(int i){
+      if(i < hsize){
+        data[i << 1 | 0] = M(data[i], data[i << 1 | 0]);
+        data[i << 1 | 1] = M(data[i], data[i << 1 | 1]);
+        data[i] = M();
+      }
     }
 
-    for(auto it = temp.rbegin(); it != temp.rend(); ++it) propagate(*it);
-  }
+    void propagate_top_down(int i){
+      std::vector<int> temp;
+      while(i > 1){
+        i >>= 1;
+        temp.push_back(i);
+      }
 
-public:
-  DualSegmentTree(int n):
-    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
-    size(1 << depth), hsize(size / 2),
-    data(size, M())
-  {}
-
-  void update(int l, int r, const value_type &x){
-    propagate_top_down(l + hsize);
-    propagate_top_down(r + hsize);
-
-    int L = l + hsize;
-    int R = r + hsize;
-
-    while(L < R){
-      if(R & 1) --R, data[R] = M(x, data[R]);
-      if(L & 1) data[L] = M(x, data[L]), ++L;
-      L >>= 1, R >>= 1;
+      for(auto it = temp.rbegin(); it != temp.rend(); ++it) propagate(*it);
     }
-  }
 
-  value_type operator[](int i){
-    propagate_top_down(i + hsize);
-    return data[i + hsize];
-  }
+  public:
+    dual_segment_tree(int n):
+      depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
+      size(1 << depth), hsize(size / 2),
+      data(size, M())
+    {}
 
-  template <typename T>
-  void init_with_vector(const std::vector<T> &a){
-    data.assign(size, M());
-    for(int i = 0; i < (int)a.size(); ++i) data[hsize + i] = a[i];
-  }
+    void update(int l, int r, const value_type &x){
+      propagate_top_down(l + hsize);
+      propagate_top_down(r + hsize);
 
-  template <typename T>
-  void init(const T &val){
-    init_with_vector(std::vector<value_type>(hsize, val));
-  }
-};
+      int L = l + hsize;
+      int R = r + hsize;
+
+      while(L < R){
+        if(R & 1) --R, data[R] = M(x, data[R]);
+        if(L & 1) data[L] = M(x, data[L]), ++L;
+        L >>= 1, R >>= 1;
+      }
+    }
+
+    value_type operator[](int i){
+      propagate_top_down(i + hsize);
+      return data[i + hsize];
+    }
+
+    template <typename T>
+    void init_with_vector(const std::vector<T> &a){
+      data.assign(size, M());
+      for(int i = 0; i < (int)a.size(); ++i) data[hsize + i] = a[i];
+    }
+
+    template <typename T>
+    void init(const T &val){
+      init_with_vector(std::vector<value_type>(hsize, val));
+    }
+  };
+}
 
 ```
 {% endraw %}

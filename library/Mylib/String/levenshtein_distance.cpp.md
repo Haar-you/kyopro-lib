@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d75653ebf9facf6e669959c8c0d9cbcf">Mylib/String</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/String/levenshtein_distance.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -54,26 +54,28 @@ layout: default
  * @title Levenshtein distance / Edit distance
  * @docs levenshtein_distance.md
  */
-template <typename Container, typename T = typename Container::value_type>
-int levenshtein_distance(const Container &a, const Container &b){
-  const int n = a.size(), m = b.size();
-  std::vector<std::vector<int>> dp(n + 1, std::vector<int>(m + 1, 0));
+namespace haar_lib {
+  template <typename Container, typename T = typename Container::value_type>
+  int levenshtein_distance(const Container &a, const Container &b){
+    const int n = a.size(), m = b.size();
+    std::vector<std::vector<int>> dp(n + 1, std::vector<int>(m + 1, 0));
 
-  for(int i = 0; i <= n; ++i) dp[i][0] = i;
-  for(int i = 0; i <= m; ++i) dp[0][i] = i;
+    for(int i = 0; i <= n; ++i) dp[i][0] = i;
+    for(int i = 0; i <= m; ++i) dp[0][i] = i;
 
-  for(int i = 0; i < n; ++i){
-    for(int j = 0; j < m; ++j){
-      dp[i + 1][j + 1] = std::min(dp[i][j + 1] + 1, dp[i + 1][j] + 1);
+    for(int i = 0; i < n; ++i){
+      for(int j = 0; j < m; ++j){
+        dp[i + 1][j + 1] = std::min(dp[i][j + 1] + 1, dp[i + 1][j] + 1);
 
-      if(a[i] == b[j]){
-        dp[i + 1][j + 1] = std::min(dp[i + 1][j + 1], dp[i][j]);
-      }else{
-        dp[i + 1][j + 1] = std::min(dp[i + 1][j + 1], dp[i][j] + 1);
+        if(a[i] == b[j]){
+          dp[i + 1][j + 1] = std::min(dp[i + 1][j + 1], dp[i][j]);
+        }else{
+          dp[i + 1][j + 1] = std::min(dp[i + 1][j + 1], dp[i][j] + 1);
+        }
       }
     }
+    return dp[n][m];
   }
-  return dp[n][m];
 }
 
 ```
@@ -90,26 +92,28 @@ int levenshtein_distance(const Container &a, const Container &b){
  * @title Levenshtein distance / Edit distance
  * @docs levenshtein_distance.md
  */
-template <typename Container, typename T = typename Container::value_type>
-int levenshtein_distance(const Container &a, const Container &b){
-  const int n = a.size(), m = b.size();
-  std::vector<std::vector<int>> dp(n + 1, std::vector<int>(m + 1, 0));
+namespace haar_lib {
+  template <typename Container, typename T = typename Container::value_type>
+  int levenshtein_distance(const Container &a, const Container &b){
+    const int n = a.size(), m = b.size();
+    std::vector<std::vector<int>> dp(n + 1, std::vector<int>(m + 1, 0));
 
-  for(int i = 0; i <= n; ++i) dp[i][0] = i;
-  for(int i = 0; i <= m; ++i) dp[0][i] = i;
+    for(int i = 0; i <= n; ++i) dp[i][0] = i;
+    for(int i = 0; i <= m; ++i) dp[0][i] = i;
 
-  for(int i = 0; i < n; ++i){
-    for(int j = 0; j < m; ++j){
-      dp[i + 1][j + 1] = std::min(dp[i][j + 1] + 1, dp[i + 1][j] + 1);
+    for(int i = 0; i < n; ++i){
+      for(int j = 0; j < m; ++j){
+        dp[i + 1][j + 1] = std::min(dp[i][j + 1] + 1, dp[i + 1][j] + 1);
 
-      if(a[i] == b[j]){
-        dp[i + 1][j + 1] = std::min(dp[i + 1][j + 1], dp[i][j]);
-      }else{
-        dp[i + 1][j + 1] = std::min(dp[i + 1][j + 1], dp[i][j] + 1);
+        if(a[i] == b[j]){
+          dp[i + 1][j + 1] = std::min(dp[i + 1][j + 1], dp[i][j]);
+        }else{
+          dp[i + 1][j + 1] = std::min(dp[i + 1][j + 1], dp[i][j] + 1);
+        }
       }
     }
+    return dp[n][m];
   }
-  return dp[n][m];
 }
 
 ```

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/1508/main.treap.test.cpp
+# :heavy_check_mark: test/aoj/1508/main.treap.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#21b2d97411100b8521da1b9c251ad9c2">test/aoj/1508</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1508/main.treap.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Min monoid</a>
-* :x: <a href="../../../../library/Mylib/DataStructure/Treap/treap.cpp.html">Treap</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
+* :question: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Min monoid</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/Treap/treap.cpp.html">Treap</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
 
 
 ## Code
@@ -59,16 +59,18 @@ layout: default
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/IO/input_tuples_with_index.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n, q; std::cin >> n >> q;
 
-  treap::Treap<MinMonoid<int>> s(n);
+  hl::treap<hl::min_monoid<int>> s(n);
 
-  for(auto [i, a] : input_tuples_with_index<int>(n)){
+  for(auto [i, a] : hl::input_tuples_with_index<int>(n)){
     s.update(i, {a});
   }
 
-  for(auto [x, y, z] : input_tuples<int, int, int>(q)){
+  for(auto [x, y, z] : hl::input_tuples<int, int, int>(q)){
     if(x == 0){
       auto temp = s.get(z).value();
       s.erase(z);
@@ -103,10 +105,10 @@ int main(){
  * @title Treap
  * @docs treap.md
  */
-namespace treap {
+namespace haar_lib {
   template <typename Monoid>
-  struct TreapNode {
-    using node = TreapNode<Monoid>;
+  struct treap_node {
+    using node = treap_node<Monoid>;
     using value_type = typename Monoid::value_type;
     const static Monoid M;
 
@@ -117,8 +119,8 @@ namespace treap {
     int priority, size = 1;
     bool rev = false;
 
-    TreapNode(): priority(rand()){}
-    TreapNode(const value_type &value): value(value), result(value), priority(rand()){}
+    treap_node(): priority(rand()){}
+    treap_node(const value_type &value): value(value), result(value), priority(rand()){}
 
     static int count(node *t) {return !t ? 0 : t->size;}
     static value_type sum(node *t) {return !t ? M() : t->result;}
@@ -216,21 +218,21 @@ namespace treap {
     }
   };
 
-  template <typename Monoid> std::mt19937 TreapNode<Monoid>::rand;
+  template <typename Monoid> std::mt19937 treap_node<Monoid>::rand;
 
   template <typename Monoid>
-  class Treap {
+  class treap {
   protected:
-    using node = TreapNode<Monoid>;
+    using node = treap_node<Monoid>;
     using value_type = typename Monoid::value_type;
     const static Monoid M;
 
     node *root = nullptr;
 
   public:
-    Treap(){}
-    Treap(int n){for(int i = 0; i < n; ++i) push_back(M());}
-    Treap(node *t): root(t){}
+    treap(){}
+    treap(int n){for(int i = 0; i < n; ++i) push_back(M());}
+    treap(node *t): root(t){}
 
     int size() const {return node::count(root);}
     bool empty() const {return !root;}
@@ -241,17 +243,17 @@ namespace treap {
 
     void erase(int k){root = node::erase(root, k);}
 
-    void merge_left(Treap &left){
+    void merge_left(treap &left){
       root = node::merge(left.root, root); left.root = nullptr;
     }
 
-    void merge_right(Treap &right){
+    void merge_right(treap &right){
       root = node::merge(root, right.root); right.root = nullptr;
     }
 
-    std::pair<Treap, Treap> split(int k){
+    std::pair<treap, treap> split(int k){
       node *l, *r; std::tie(l, r) = node::split(root, k);
-      return std::make_pair(Treap(l), Treap(r));
+      return std::make_pair(treap(l), treap(r));
     }
 
     void reverse(int l, int r){node::reverse(root, l, r);}
@@ -298,17 +300,19 @@ namespace treap {
  * @title Min monoid
  * @docs min.md
  */
-template <typename T>
-struct MinMonoid {
-  using value_type = std::optional<T>;
+namespace haar_lib {
+  template <typename T>
+  struct min_monoid {
+    using value_type = std::optional<T>;
 
-  value_type operator()() const {return {};}
-  value_type operator()(const value_type &a, const value_type &b) const {
-    if(not a) return b;
-    if(not b) return a;
-    return {std::min(*a, *b)};
-  }
-};
+    value_type operator()() const {return {};}
+    value_type operator()(const value_type &a, const value_type &b) const {
+      if(not a) return b;
+      if(not b) return a;
+      return {std::min(*a, *b)};
+    }
+  };
+}
 #line 3 "Mylib/IO/input_tuples.cpp"
 #include <vector>
 #line 6 "Mylib/IO/input_tuples.cpp"
@@ -318,126 +322,134 @@ struct MinMonoid {
 /**
  * @docs input_tuple.md
  */
-template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
-}
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
+  }
 
-template <typename T, typename U>
-std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
-  s >> value.first >> value.second;
-  return s;
-}
+  template <typename T, typename U>
+  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+    s >> value.first >> value.second;
+    return s;
+  }
 
-template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
-  return s;
+  template <typename ... Args>
+  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
+    return s;
+  }
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
-template <typename ... Args>
-class InputTuples {
-  struct iter {
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuples {
+    struct iter {
+      using value_type = std::tuple<Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N, c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
+      value_type operator*(){
+        if(not fetched){
+          std::cin >> value;
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuples(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples(int N){
+    return InputTuples<Args ...>(N);
+  }
 }
 #line 8 "Mylib/IO/input_tuples_with_index.cpp"
 
 /**
  * @docs input_tuples_with_index.md
  */
-template <typename ... Args>
-class InputTuplesWithIndex {
-  struct iter {
-    using value_type = std::tuple<int, Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N;
-    int c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuplesWithIndex {
+    struct iter {
+      using value_type = std::tuple<int, Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N;
+      int c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::tuple<Args ...> temp; std::cin >> temp;
-        value = std::tuple_cat(std::make_tuple(c), temp);
+      value_type operator*(){
+        if(not fetched){
+          std::tuple<Args ...> temp; std::cin >> temp;
+          value = std::tuple_cat(std::make_tuple(c), temp);
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuplesWithIndex(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuplesWithIndex(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples_with_index(int N){
-  return InputTuplesWithIndex<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples_with_index(int N){
+    return InputTuplesWithIndex<Args ...>(N);
+  }
 }
 #line 8 "test/aoj/1508/main.treap.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int n, q; std::cin >> n >> q;
 
-  treap::Treap<MinMonoid<int>> s(n);
+  hl::treap<hl::min_monoid<int>> s(n);
 
-  for(auto [i, a] : input_tuples_with_index<int>(n)){
+  for(auto [i, a] : hl::input_tuples_with_index<int>(n)){
     s.update(i, {a});
   }
 
-  for(auto [x, y, z] : input_tuples<int, int, int>(q)){
+  for(auto [x, y, z] : hl::input_tuples<int, int, int>(q)){
     if(x == 0){
       auto temp = s.get(z).value();
       s.erase(z);

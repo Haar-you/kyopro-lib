@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#1d0203f9a0b34121f2fb0bb17b094d0f">Mylib/Algorithm/SlidingWindow</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/SlidingWindow/sliding_maximum.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -62,35 +62,37 @@ layout: default
  * @title Sliding window maximum
  * @docs sliding_maximum.md
  */
-template <typename T>
-std::vector<T> sliding_maximum(const std::vector<T> &a, int k){
-  const int n = a.size();
-  std::deque<int> dq;
-  std::vector<T> ret;
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> sliding_maximum(const std::vector<T> &a, int k){
+    const int n = a.size();
+    std::deque<int> dq;
+    std::vector<T> ret;
 
-  for(int i = 0; i < k; ++i){
-    while(not dq.empty() and a[dq.back()] <= a[i]){
-      dq.pop_back();
+    for(int i = 0; i < k; ++i){
+      while(not dq.empty() and a[dq.back()] <= a[i]){
+        dq.pop_back();
+      }
+
+      dq.push_back(i);
     }
 
-    dq.push_back(i);
+    for(int i = 0; i < n - k + 1; ++i){
+      while(dq.front() < i){
+        dq.pop_front();
+      }
+
+      ret.push_back(a[dq.front()]);
+
+      while(not dq.empty() and i + k < n and a[dq.back()] <= a[i + k]){
+        dq.pop_back();
+      }
+
+      dq.push_back(i + k);
+    }
+
+    return ret;
   }
-
-  for(int i = 0; i < n - k + 1; ++i){
-    while(dq.front() < i){
-      dq.pop_front();
-    }
-
-    ret.push_back(a[dq.front()]);
-
-    while(not dq.empty() and i + k < n and a[dq.back()] <= a[i + k]){
-      dq.pop_back();
-    }
-
-    dq.push_back(i + k);
-  }
-
-  return ret;
 }
 
 ```
@@ -107,35 +109,37 @@ std::vector<T> sliding_maximum(const std::vector<T> &a, int k){
  * @title Sliding window maximum
  * @docs sliding_maximum.md
  */
-template <typename T>
-std::vector<T> sliding_maximum(const std::vector<T> &a, int k){
-  const int n = a.size();
-  std::deque<int> dq;
-  std::vector<T> ret;
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> sliding_maximum(const std::vector<T> &a, int k){
+    const int n = a.size();
+    std::deque<int> dq;
+    std::vector<T> ret;
 
-  for(int i = 0; i < k; ++i){
-    while(not dq.empty() and a[dq.back()] <= a[i]){
-      dq.pop_back();
+    for(int i = 0; i < k; ++i){
+      while(not dq.empty() and a[dq.back()] <= a[i]){
+        dq.pop_back();
+      }
+
+      dq.push_back(i);
     }
 
-    dq.push_back(i);
+    for(int i = 0; i < n - k + 1; ++i){
+      while(dq.front() < i){
+        dq.pop_front();
+      }
+
+      ret.push_back(a[dq.front()]);
+
+      while(not dq.empty() and i + k < n and a[dq.back()] <= a[i + k]){
+        dq.pop_back();
+      }
+
+      dq.push_back(i + k);
+    }
+
+    return ret;
   }
-
-  for(int i = 0; i < n - k + 1; ++i){
-    while(dq.front() < i){
-      dq.pop_front();
-    }
-
-    ret.push_back(a[dq.front()]);
-
-    while(not dq.empty() and i + k < n and a[dq.back()] <= a[i + k]){
-      dq.pop_back();
-    }
-
-    dq.push_back(i + k);
-  }
-
-  return ret;
 }
 
 ```

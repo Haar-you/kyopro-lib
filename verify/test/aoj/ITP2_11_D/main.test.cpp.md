@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#94d9d16d204cbf810b90bed914562ba2">test/aoj/ITP2_11_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ITP2_11_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 04:37:36+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_D</a>
@@ -54,6 +54,8 @@ layout: default
 #include <map>
 #include "Mylib/Bit/enumerate_sets_of_size_k.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -62,7 +64,7 @@ int main(){
 
   std::map<int, std::vector<int>> ans;
 
-  enumerate_sets_of_size_k(
+  hl::enumerate_sets_of_size_k(
     k, n,
     [&](int d){
       for(int i = 0; i < n; ++i){
@@ -99,17 +101,21 @@ int main(){
  * @title Enumerate sets of size k
  * @docs enumerate_sets_of_size_k.md
  */
-template <typename Func>
-void enumerate_sets_of_size_k(int k, int n, const Func &f){
-  int c = (1 << k) - 1;
-  while(c < (1 << n)){
-    if(not f(c)) break;
-    const int x = c & (-c);
-    const int y = c + x;
-    c = ((c & (~y)) / x >> 1) | y;
+namespace haar_lib {
+  template <typename Func>
+  void enumerate_sets_of_size_k(int k, int n, const Func &f){
+    int c = (1 << k) - 1;
+    while(c < (1 << n)){
+      if(not f(c)) break;
+      const int x = c & (-c);
+      const int y = c + x;
+      c = ((c & (~y)) / x >> 1) | y;
+    }
   }
 }
 #line 7 "test/aoj/ITP2_11_D/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   std::cin.tie(0);
@@ -119,7 +125,7 @@ int main(){
 
   std::map<int, std::vector<int>> ans;
 
-  enumerate_sets_of_size_k(
+  hl::enumerate_sets_of_size_k(
     k, n,
     [&](int d){
       for(int i = 0; i < n; ++i){

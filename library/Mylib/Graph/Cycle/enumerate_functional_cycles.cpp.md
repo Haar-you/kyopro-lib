@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a962efc2861dbe1e0963e7d8bf7dda18">Mylib/Graph/Cycle</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Cycle/enumerate_functional_cycles.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-10 06:29:03+09:00
 
 
 
@@ -50,24 +50,25 @@ layout: default
  * @title Enumerate cycles in functional graph
  * @docs enumerate_functional_cycles.md
  */
-std::vector<std::vector<int>> enumerate_functional_cycles(std::vector<int> g){
-  const int n = g.size();
+namespace haar_lib {
+  namespace enumerate_functional_cycles_impl {
+    constexpr static int SEARCHED = 1;
+    constexpr static int SEARCHING = 2;
 
-  std::vector<std::vector<int>> ret;
-  std::vector<int> check(n);
-
-  constexpr int SEARCHED = 1;
-  constexpr int SEARCHING = 2;
-
-  auto rec =
-    [&](auto &rec, int cur, std::vector<int> &temp) -> std::optional<int> {
+    std::optional<int> rec(
+      const std::vector<int> &g,
+      int cur,
+      std::vector<int> &temp,
+      std::vector<std::vector<int>> &ret,
+      std::vector<int> &check
+    ){
       if(check[cur] == SEARCHED) return std::nullopt;
       if(check[cur] == SEARCHING) return {cur};
       check[cur] = SEARCHING;
 
       const int i = g[cur];
 
-      if(auto res = rec(rec, i, temp); res){
+      if(auto res = rec(g, i, temp, ret, check); res){
         if(*res != -1){
           temp.push_back(i);
           if(*res == cur){
@@ -82,20 +83,28 @@ std::vector<std::vector<int>> enumerate_functional_cycles(std::vector<int> g){
 
       check[cur] = SEARCHED;
       return std::nullopt;
-    };
-
-  for(int i = 0; i < n; ++i){
-    if(check[i] == 0){
-      std::vector<int> temp;
-      auto res = rec(rec, i, temp);
-      if(res){
-        std::reverse(temp.begin(), temp.end());
-        ret.push_back(temp);
-      }
     }
   }
 
-  return ret;
+  std::vector<std::vector<int>> enumerate_functional_cycles(std::vector<int> g){
+    const int n = g.size();
+
+    std::vector<std::vector<int>> ret;
+    std::vector<int> check(n);
+
+    for(int i = 0; i < n; ++i){
+      if(check[i] == 0){
+        std::vector<int> temp;
+        auto res = enumerate_functional_cycles_impl::rec(g, i, temp, ret, check);
+        if(res){
+          std::reverse(temp.begin(), temp.end());
+          ret.push_back(temp);
+        }
+      }
+    }
+
+    return ret;
+  }
 }
 
 ```
@@ -113,24 +122,25 @@ std::vector<std::vector<int>> enumerate_functional_cycles(std::vector<int> g){
  * @title Enumerate cycles in functional graph
  * @docs enumerate_functional_cycles.md
  */
-std::vector<std::vector<int>> enumerate_functional_cycles(std::vector<int> g){
-  const int n = g.size();
+namespace haar_lib {
+  namespace enumerate_functional_cycles_impl {
+    constexpr static int SEARCHED = 1;
+    constexpr static int SEARCHING = 2;
 
-  std::vector<std::vector<int>> ret;
-  std::vector<int> check(n);
-
-  constexpr int SEARCHED = 1;
-  constexpr int SEARCHING = 2;
-
-  auto rec =
-    [&](auto &rec, int cur, std::vector<int> &temp) -> std::optional<int> {
+    std::optional<int> rec(
+      const std::vector<int> &g,
+      int cur,
+      std::vector<int> &temp,
+      std::vector<std::vector<int>> &ret,
+      std::vector<int> &check
+    ){
       if(check[cur] == SEARCHED) return std::nullopt;
       if(check[cur] == SEARCHING) return {cur};
       check[cur] = SEARCHING;
 
       const int i = g[cur];
 
-      if(auto res = rec(rec, i, temp); res){
+      if(auto res = rec(g, i, temp, ret, check); res){
         if(*res != -1){
           temp.push_back(i);
           if(*res == cur){
@@ -145,20 +155,28 @@ std::vector<std::vector<int>> enumerate_functional_cycles(std::vector<int> g){
 
       check[cur] = SEARCHED;
       return std::nullopt;
-    };
-
-  for(int i = 0; i < n; ++i){
-    if(check[i] == 0){
-      std::vector<int> temp;
-      auto res = rec(rec, i, temp);
-      if(res){
-        std::reverse(temp.begin(), temp.end());
-        ret.push_back(temp);
-      }
     }
   }
 
-  return ret;
+  std::vector<std::vector<int>> enumerate_functional_cycles(std::vector<int> g){
+    const int n = g.size();
+
+    std::vector<std::vector<int>> ret;
+    std::vector<int> check(n);
+
+    for(int i = 0; i < n; ++i){
+      if(check[i] == 0){
+        std::vector<int> temp;
+        auto res = enumerate_functional_cycles_impl::rec(g, i, temp, ret, check);
+        if(res){
+          std::reverse(temp.begin(), temp.end());
+          ret.push_back(temp);
+        }
+      }
+    }
+
+    return ret;
+  }
 }
 
 ```

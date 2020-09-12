@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/prime_factorize.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -61,20 +61,22 @@ layout: default
  * @title Prime factorization
  * @docs prime_factorize.md
  */
-auto prime_factorize(int64_t n){
-  std::vector<std::pair<int64_t, int64_t>> ret;
-  for(int64_t i = 2LL; i * i <= n; ++i){
-    if(n % i == 0){
-      int64_t c = 0;
-      while(n % i == 0){
-        n /= i;
-        ++c;
+namespace haar_lib {
+  auto prime_factorize(int64_t n){
+    std::vector<std::pair<int64_t, int64_t>> ret;
+    for(int64_t i = 2LL; i * i <= n; ++i){
+      if(n % i == 0){
+        int64_t c = 0;
+        while(n % i == 0){
+          n /= i;
+          ++c;
+        }
+        ret.emplace_back(i, c);
       }
-      ret.emplace_back(i, c);
     }
+    if(n != 1) ret.emplace_back(n, 1);
+    return ret;
   }
-  if(n != 1) ret.emplace_back(n, 1);
-  return ret;
 }
 
 ```
@@ -92,20 +94,22 @@ auto prime_factorize(int64_t n){
  * @title Prime factorization
  * @docs prime_factorize.md
  */
-auto prime_factorize(int64_t n){
-  std::vector<std::pair<int64_t, int64_t>> ret;
-  for(int64_t i = 2LL; i * i <= n; ++i){
-    if(n % i == 0){
-      int64_t c = 0;
-      while(n % i == 0){
-        n /= i;
-        ++c;
+namespace haar_lib {
+  auto prime_factorize(int64_t n){
+    std::vector<std::pair<int64_t, int64_t>> ret;
+    for(int64_t i = 2LL; i * i <= n; ++i){
+      if(n % i == 0){
+        int64_t c = 0;
+        while(n % i == 0){
+          n /= i;
+          ++c;
+        }
+        ret.emplace_back(i, c);
       }
-      ret.emplace_back(i, c);
     }
+    if(n != 1) ret.emplace_back(n, 1);
+    return ret;
   }
-  if(n != 1) ret.emplace_back(n, 1);
-  return ret;
 }
 
 ```

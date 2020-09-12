@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#e5c03cf251a1c8b45af0c48200d5638e">Mylib/TypicalProblem/MaxRectangleProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -75,33 +75,35 @@ layout: default
  * @title Largest rectangle
  * @docs max_rectangle.md
  */
-template <typename T>
-int max_rectangle(const std::vector<std::vector<T>> &d, T value){
-  const int H = d.size();
-  const int W = d[0].size();
+namespace haar_lib {
+  template <typename T>
+  int max_rectangle(const std::vector<std::vector<T>> &d, T value){
+    const int H = d.size();
+    const int W = d[0].size();
 
-  std::vector<std::vector<int>> c(H, std::vector<int>(W));
-  for(int i = 0; i < H; ++i){
-    for(int j = 0; j < W; ++j){
-      if(d[i][j] == value) c[i][j] = 1;
-    }
-  }
-
-  for(int i = 1; i < H; ++i){
-    for(int j = 0; j < W; ++j){
-      if(c[i][j]){
-        c[i][j] += c[i - 1][j];
+    std::vector<std::vector<int>> c(H, std::vector<int>(W));
+    for(int i = 0; i < H; ++i){
+      for(int j = 0; j < W; ++j){
+        if(d[i][j] == value) c[i][j] = 1;
       }
     }
-  }
 
-  int ret = 0;
-  for(int i = 0; i < H; ++i){
-    int t = max_rectangle_in_histogram<int>(c[i]);
-    ret = std::max(ret, t);
-  }
+    for(int i = 1; i < H; ++i){
+      for(int j = 0; j < W; ++j){
+        if(c[i][j]){
+          c[i][j] += c[i - 1][j];
+        }
+      }
+    }
 
-  return ret;
+    int ret = 0;
+    for(int i = 0; i < H; ++i){
+      int t = max_rectangle_in_histogram<int>(c[i]);
+      ret = std::max(ret, t);
+    }
+
+    return ret;
+  }
 }
 
 ```
@@ -121,33 +123,35 @@ int max_rectangle(const std::vector<std::vector<T>> &d, T value){
  * @title Largest rectangle in histogram
  * @docs max_rectangle_in_histogram.md
  */
-template <typename T>
-T max_rectangle_in_histogram(const std::vector<T> &h){
-  std::stack<std::pair<T, int>> st;
-  T ret = 0;
+namespace haar_lib {
+  template <typename T>
+  T max_rectangle_in_histogram(const std::vector<T> &h){
+    std::stack<std::pair<T, int>> st;
+    T ret = 0;
 
-  for(size_t i = 0; i < h.size(); ++i){
-    if(st.empty()){
-      st.emplace(h[i], i);
-    }else if(st.top().first < h[i]){
-      st.emplace(h[i], i);
-    }else if(st.top().first > h[i]){
-      int j = i;
-      while(not st.empty() and st.top().first > h[i]){
-        ret = std::max(ret, st.top().first * ((T)i - st.top().second));
-        j = st.top().second;
-        st.pop();
+    for(size_t i = 0; i < h.size(); ++i){
+      if(st.empty()){
+        st.emplace(h[i], i);
+      }else if(st.top().first < h[i]){
+        st.emplace(h[i], i);
+      }else if(st.top().first > h[i]){
+        int j = i;
+        while(not st.empty() and st.top().first > h[i]){
+          ret = std::max(ret, st.top().first * ((T)i - st.top().second));
+          j = st.top().second;
+          st.pop();
+        }
+        st.emplace(h[i], j);
       }
-      st.emplace(h[i], j);
     }
-  }
 
-  while(not st.empty()){
-    ret = std::max(ret, st.top().first * ((T)h.size() - st.top().second));
-    st.pop();
-  }
+    while(not st.empty()){
+      ret = std::max(ret, st.top().first * ((T)h.size() - st.top().second));
+      st.pop();
+    }
 
-  return ret;
+    return ret;
+  }
 }
 #line 5 "Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle.cpp"
 
@@ -155,33 +159,35 @@ T max_rectangle_in_histogram(const std::vector<T> &h){
  * @title Largest rectangle
  * @docs max_rectangle.md
  */
-template <typename T>
-int max_rectangle(const std::vector<std::vector<T>> &d, T value){
-  const int H = d.size();
-  const int W = d[0].size();
+namespace haar_lib {
+  template <typename T>
+  int max_rectangle(const std::vector<std::vector<T>> &d, T value){
+    const int H = d.size();
+    const int W = d[0].size();
 
-  std::vector<std::vector<int>> c(H, std::vector<int>(W));
-  for(int i = 0; i < H; ++i){
-    for(int j = 0; j < W; ++j){
-      if(d[i][j] == value) c[i][j] = 1;
-    }
-  }
-
-  for(int i = 1; i < H; ++i){
-    for(int j = 0; j < W; ++j){
-      if(c[i][j]){
-        c[i][j] += c[i - 1][j];
+    std::vector<std::vector<int>> c(H, std::vector<int>(W));
+    for(int i = 0; i < H; ++i){
+      for(int j = 0; j < W; ++j){
+        if(d[i][j] == value) c[i][j] = 1;
       }
     }
-  }
 
-  int ret = 0;
-  for(int i = 0; i < H; ++i){
-    int t = max_rectangle_in_histogram<int>(c[i]);
-    ret = std::max(ret, t);
-  }
+    for(int i = 1; i < H; ++i){
+      for(int j = 0; j < W; ++j){
+        if(c[i][j]){
+          c[i][j] += c[i - 1][j];
+        }
+      }
+    }
 
-  return ret;
+    int ret = 0;
+    for(int i = 0; i < H; ++i){
+      int t = max_rectangle_in_histogram<int>(c[i]);
+      ret = std::max(ret, t);
+    }
+
+    return ret;
+  }
 }
 
 ```

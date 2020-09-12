@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/2559/main.leftist_heap.test.cpp
+# :heavy_check_mark: test/aoj/2559/main.leftist_heap.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#470f11b8b249244fcbedd0bf3d66e316">test/aoj/2559</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/2559/main.leftist_heap.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2559">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2559</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/DataStructure/Heap/leftist_heap.cpp.html">Leftist heap</a>
-* :x: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
-* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
-* :x: <a href="../../../../library/Mylib/Misc/merge_technique.cpp.html">Mylib/Misc/merge_technique.cpp</a>
-* :x: <a href="../../../../library/Mylib/Utils/fix_point.cpp.html">Fixed point combinator</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/DataStructure/Heap/leftist_heap.cpp.html">Leftist heap</a>
+* :question: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
+* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/merge_technique.cpp.html">Mylib/Misc/merge_technique.cpp</a>
+* :question: <a href="../../../../library/Mylib/Utils/fix_point.cpp.html">Fixed point combinator</a>
 
 
 ## Code
@@ -64,10 +64,12 @@ layout: default
 #include "Mylib/DataStructure/Heap/leftist_heap.cpp"
 #include "Mylib/Misc/merge_technique.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n, m; std::cin >> n >> m;
 
-  Graph<int64_t> g(n);
+  hl::graph<int64_t> g(n);
   g.read<1, false>(m);
 
   std::map<std::pair<int, int>, int> index;
@@ -75,13 +77,13 @@ int main(){
     for(auto &e : a) index[{e.from, e.to}] = e.index;
   }
 
-  auto res = prim(g);
+  auto res = hl::prim(g);
 
   std::vector<int64_t> ans(m, -1);
 
   if((int)res.size() == n - 1){
     int64_t s = 0;
-    Tree<int64_t> tree(n);
+    hl::tree<int64_t> tree(n);
 
     for(auto &e : res){
       s += e.cost;
@@ -90,11 +92,11 @@ int main(){
 
     ans.assign(m, s);
 
-    std::vector<LeftistHeap<std::tuple<int64_t, int, int>, std::greater<>>> heaps(n);
+    std::vector<hl::leftist_heap<std::tuple<int64_t, int, int>, std::greater<>>> heaps(n);
 
     std::vector<std::set<int>> sub(n);
 
-    make_fix_point(
+    hl::make_fix_point(
       [&](auto &&f, int cur, int par, int64_t cost) -> void {
         for(auto &e : g[cur]){
           heaps[cur].push({e.cost, e.from, e.to});
@@ -107,7 +109,7 @@ int main(){
           f(e.to, cur, e.cost);
 
           heaps[cur].meld(heaps[e.to]);
-          merge_technique(sub[cur], sub[cur], sub[e.to]);
+          hl::merge_technique(sub[cur], sub[cur], sub[e.to]);
         }
 
         if(par != -1){
@@ -158,60 +160,62 @@ int main(){
  * @title Basic graph
  * @docs graph.md
  */
-template <typename T>
-struct Edge {
-  int from, to;
-  T cost;
-  int index = -1;
-  Edge(){}
-  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
-};
+namespace haar_lib {
+  template <typename T>
+  struct edge {
+    int from, to;
+    T cost;
+    int index = -1;
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+  };
 
-template <typename T>
-struct Graph {
-  using weight_type = T;
-  using edge_type = Edge<T>;
+  template <typename T>
+  struct graph {
+    using weight_type = T;
+    using edge_type = edge<T>;
 
-  std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
-  auto& operator[](size_t i){return data[i];}
-  const auto& operator[](size_t i) const {return data[i];}
+    auto& operator[](size_t i){return data[i];}
+    const auto& operator[](size_t i) const {return data[i];}
 
-  auto begin() const {return data.begin();}
-  auto end() const {return data.end();}
+    auto begin() const {return data.begin();}
+    auto end() const {return data.end();}
 
-  Graph(){}
-  Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
-  bool empty() const {return data.empty();}
-  int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+    int size() const {return data.size();}
 
-  void add_edge(int i, int j, T w, int index = -1){
-    data[i].emplace_back(i, j, w, index);
-  }
-
-  void add_undirected(int i, int j, T w, int index = -1){
-    add_edge(i, j, w, index);
-    add_edge(j, i, w, index);
-  }
-
-  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
-  void read(int M){
-    for(int i = 0; i < M; ++i){
-      int u, v; std::cin >> u >> v;
-      u -= I;
-      v -= I;
-      T w = 1;
-      if(WEIGHTED) std::cin >> w;
-      if(DIRECTED) add_edge(u, v, w, i);
-      else add_undirected(u, v, w, i);
+    void add_edge(int i, int j, T w, int index = -1){
+      data[i].emplace_back(i, j, w, index);
     }
-  }
-};
 
-template <typename T>
-using Tree = Graph<T>;
+    void add_undirected(int i, int j, T w, int index = -1){
+      add_edge(i, j, w, index);
+      add_edge(j, i, w, index);
+    }
+
+    template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+    void read(int M){
+      for(int i = 0; i < M; ++i){
+        int u, v; std::cin >> u >> v;
+        u -= I;
+        v -= I;
+        T w = 1;
+        if(WEIGHTED) std::cin >> w;
+        if(DIRECTED) add_edge(u, v, w, i);
+        else add_undirected(u, v, w, i);
+      }
+    }
+  };
+
+  template <typename T>
+  using tree = graph<T>;
+}
 #line 3 "Mylib/Graph/MinimumSpanningTree/prim.cpp"
 #include <queue>
 #line 5 "Mylib/Graph/MinimumSpanningTree/prim.cpp"
@@ -220,33 +224,35 @@ using Tree = Graph<T>;
  * @title Prim algorithm
  * @docs prim.md
  */
-template <typename T>
-std::vector<Edge<T>> prim(const Graph<T> &graph){
-  const int n = graph.size();
-  std::vector<bool> visit(n, false);
-  std::vector<Edge<T>> ret;
+namespace haar_lib {
+  template <typename T>
+  std::vector<edge<T>> prim(const graph<T> &graph){
+    const int n = graph.size();
+    std::vector<bool> visit(n, false);
+    std::vector<edge<T>> ret;
 
-  auto cmp = [](const auto &a, const auto &b){return a.cost > b.cost;};
-  std::priority_queue<Edge<T>, std::vector<Edge<T>>, decltype(cmp)> pq(cmp);
+    auto cmp = [](const auto &a, const auto &b){return a.cost > b.cost;};
+    std::priority_queue<edge<T>, std::vector<edge<T>>, decltype(cmp)> pq(cmp);
 
-  visit[0] = true;
-  for(auto &e : graph[0]) pq.push(e);
+    visit[0] = true;
+    for(auto &e : graph[0]) pq.push(e);
 
-  while(not pq.empty()){
-    auto t = pq.top(); pq.pop();
+    while(not pq.empty()){
+      auto t = pq.top(); pq.pop();
 
-    if(visit[t.from] == visit[t.to]) continue;
+      if(visit[t.from] == visit[t.to]) continue;
 
-    int i = visit[t.from] ? t.to : t.from;
-    for(auto &e : graph[i]){
-      pq.push(e);
+      int i = visit[t.from] ? t.to : t.from;
+      for(auto &e : graph[i]){
+        pq.push(e);
+      }
+
+      visit[i] = true;
+      ret.push_back(t);
     }
 
-    visit[i] = true;
-    ret.push_back(t);
+    return ret;
   }
-
-  return ret;
 }
 #line 2 "Mylib/Utils/fix_point.cpp"
 #include <utility>
@@ -255,24 +261,26 @@ std::vector<Edge<T>> prim(const Graph<T> &graph){
  * @title Fixed point combinator
  * @docs fix_point.md
  */
-template <typename F>
-struct FixPoint : F {
-  explicit constexpr FixPoint(F &&f) noexcept : F(std::forward<F>(f)){}
+namespace haar_lib {
+  template <typename F>
+  struct fix_point : F {
+    explicit constexpr fix_point(F &&f) noexcept : F(std::forward<F>(f)){}
 
-  template <typename ... Args>
-  constexpr auto operator()(Args &&... args) const {
-    return F::operator()(*this, std::forward<Args>(args) ...);
+    template <typename ... Args>
+    constexpr auto operator()(Args &&... args) const {
+      return F::operator()(*this, std::forward<Args>(args) ...);
+    }
+  };
+
+  template <typename F>
+  inline constexpr auto make_fix_point(F &&f){
+    return fix_point<F>(std::forward<F>(f));
   }
-};
 
-template <typename F>
-inline constexpr auto make_fix_point(F &&f){
-  return FixPoint<F>(std::forward<F>(f));
-}
-
-template <typename F>
-inline constexpr auto make_fix_point(F &f){
-  return FixPoint<F>(std::forward<F>(f));
+  template <typename F>
+  inline constexpr auto make_fix_point(F &f){
+    return fix_point<F>(std::forward<F>(f));
+  }
 }
 #line 2 "Mylib/DataStructure/Heap/leftist_heap.cpp"
 #include <functional>
@@ -282,66 +290,72 @@ inline constexpr auto make_fix_point(F &f){
  * @title Leftist heap
  * @docs leftist_heap.md
  */
-template <typename T, class Compare = std::less<T>>
-class LeftistHeap {
-  struct node {
-    T val;
-    node *left, *right;
-    int s, size;
-    node(const T &val): val(val), left(nullptr), right(nullptr), s(0), size(1){}
+namespace haar_lib {
+  template <typename T, class Compare = std::less<T>>
+  class leftist_heap {
+    struct node {
+      T val;
+      node *left, *right;
+      int s, size;
+      node(const T &val): val(val), left(nullptr), right(nullptr), s(0), size(1){}
+    };
+
+    node *root;
+    Compare compare;
+
+  public:
+    leftist_heap(): root(nullptr), compare(Compare()){}
+    leftist_heap(const Compare &compare): root(nullptr), compare(compare){}
+
+  protected:
+    node* meld(node *a, node *b){
+      if(!a) return b;
+      if(!b) return a;
+
+      if(compare(a->val, b->val)) std::swap(a, b);
+
+      a->right = meld(a->right, b);
+      if(!a->left or a->left->s < a->right->s) std::swap(a->left, a->right);
+
+      a->s = (a->right ? a->right->s : 0) + 1;
+      a->size = 1 + (a->left ? a->left->size : 0) + (a->right ? a->right->size : 0);
+      return a;
+    }
+
+  public:
+    void meld(leftist_heap &heap){root = meld(root, heap.root); heap.root = nullptr;}
+    void push(const T &val){root = meld(root, new node(val));}
+    const T& top() const {return root->val;}
+    void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}
+    bool empty() const {return root == nullptr;}
+    size_t size() const {return root ? root->size : 0;}
   };
-
-  node *root;
-  Compare compare;
-
-public:
-  LeftistHeap(): root(nullptr), compare(Compare()){}
-  LeftistHeap(const Compare &compare): root(nullptr), compare(compare){}
-
-protected:
-  node* meld(node *a, node *b){
-    if(!a) return b;
-    if(!b) return a;
-
-    if(compare(a->val, b->val)) std::swap(a, b);
-
-    a->right = meld(a->right, b);
-    if(!a->left or a->left->s < a->right->s) std::swap(a->left, a->right);
-
-    a->s = (a->right ? a->right->s : 0) + 1;
-    a->size = 1 + (a->left ? a->left->size : 0) + (a->right ? a->right->size : 0);
-    return a;
-  }
-
-public:
-  void meld(LeftistHeap &heap){root = meld(root, heap.root); heap.root = nullptr;}
-  void push(const T &val){root = meld(root, new node(val));}
-  const T& top() const {return root->val;}
-  void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}
-  bool empty() const {return root == nullptr;}
-  size_t size() const {return root ? root->size : 0;}
-};
+}
 #line 4 "Mylib/Misc/merge_technique.cpp"
 
 /**
  * @docs merge_technique.md
  */
-template <typename T>
-void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){
-  if(a.size() > b.size()){
-    a.insert(b.begin(), b.end());
-    std::swap(res, a);
-  }else{
-    b.insert(a.begin(), a.end());
-    std::swap(res, b);
+namespace haar_lib {
+  template <typename T>
+  void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){
+    if(a.size() > b.size()){
+      a.insert(b.begin(), b.end());
+      std::swap(res, a);
+    }else{
+      b.insert(a.begin(), a.end());
+      std::swap(res, b);
+    }
   }
 }
 #line 13 "test/aoj/2559/main.leftist_heap.test.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n, m; std::cin >> n >> m;
 
-  Graph<int64_t> g(n);
+  hl::graph<int64_t> g(n);
   g.read<1, false>(m);
 
   std::map<std::pair<int, int>, int> index;
@@ -349,13 +363,13 @@ int main(){
     for(auto &e : a) index[{e.from, e.to}] = e.index;
   }
 
-  auto res = prim(g);
+  auto res = hl::prim(g);
 
   std::vector<int64_t> ans(m, -1);
 
   if((int)res.size() == n - 1){
     int64_t s = 0;
-    Tree<int64_t> tree(n);
+    hl::tree<int64_t> tree(n);
 
     for(auto &e : res){
       s += e.cost;
@@ -364,11 +378,11 @@ int main(){
 
     ans.assign(m, s);
 
-    std::vector<LeftistHeap<std::tuple<int64_t, int, int>, std::greater<>>> heaps(n);
+    std::vector<hl::leftist_heap<std::tuple<int64_t, int, int>, std::greater<>>> heaps(n);
 
     std::vector<std::set<int>> sub(n);
 
-    make_fix_point(
+    hl::make_fix_point(
       [&](auto &&f, int cur, int par, int64_t cost) -> void {
         for(auto &e : g[cur]){
           heaps[cur].push({e.cost, e.from, e.to});
@@ -381,7 +395,7 @@ int main(){
           f(e.to, cur, e.cost);
 
           heaps[cur].meld(heaps[e.to]);
-          merge_technique(sub[cur], sub[cur], sub[e.to]);
+          hl::merge_technique(sub[cur], sub[cur], sub[e.to]);
         }
 
         if(par != -1){

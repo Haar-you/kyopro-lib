@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#f3418e7f5c6444b91848f405b9401880">test/yukicoder/1084</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/1084/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/1084">https://yukicoder.me/problems/no/1084</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Algorithm/Imos/linear_imos_1d.cpp.html">1D Imos algorithm (Linear addition)</a>
-* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 * :x: <a href="../../../../library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
 
 
@@ -58,17 +58,19 @@ layout: default
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Algorithm/Imos/linear_imos_1d.cpp"
 
-using mint = ModInt<1000000007>;
+namespace hl = haar_lib;
+
+using mint = hl::modint<1000000007>;
 const int MAX = 1000000000;
 
 int main(){
   int N; std::cin >> N;
-  auto A = input_vector<int64_t>(N);
+  auto A = hl::input_vector<int64_t>(N);
 
   mint ans = 0;
 
   if(std::count(A.begin(), A.end(), 0) == 0){
-    LinearImos1D<int64_t> p(N);
+    hl::linear_imos_1d<int64_t> p(N);
 
     std::vector<int> next(N);
     for(int i = N; --i >= 0;){
@@ -130,18 +132,20 @@ int main(){
 /**
  * @docs input_vector.md
  */
-template <typename T>
-std::vector<T> input_vector(int N){
-  std::vector<T> ret(N);
-  for(int i = 0; i < N; ++i) std::cin >> ret[i];
-  return ret;
-}
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> input_vector(int N){
+    std::vector<T> ret(N);
+    for(int i = 0; i < N; ++i) std::cin >> ret[i];
+    return ret;
+  }
 
-template <typename T>
-std::vector<std::vector<T>> input_vector(int N, int M){
-  std::vector<std::vector<T>> ret(N);
-  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
-  return ret;
+  template <typename T>
+  std::vector<std::vector<T>> input_vector(int N, int M){
+    std::vector<std::vector<T>> ret(N);
+    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+    return ret;
+  }
 }
 #line 3 "Mylib/Number/Mint/mint.cpp"
 #include <utility>
@@ -150,150 +154,157 @@ std::vector<std::vector<T>> input_vector(int N, int M){
  * @title Modint
  * @docs mint.md
  */
-template <int32_t M>
-class ModInt {
-public:
-  constexpr static int32_t MOD = M;
-  uint32_t val;
+namespace haar_lib {
+  template <int32_t M>
+  class modint {
+  public:
+    constexpr static int32_t MOD = M;
+    uint32_t val;
 
-  constexpr ModInt(): val(0){}
-  constexpr ModInt(int64_t n){
-    if(n >= M) val = n % M;
-    else if(n < 0) val = n % M + M;
-    else val = n;
-  }
-
-  constexpr auto& operator=(const ModInt &a){val = a.val; return *this;}
-  constexpr auto& operator+=(const ModInt &a){
-    if(val + a.val >= M) val = (uint64_t)val + a.val - M;
-    else val += a.val;
-    return *this;
-  }
-  constexpr auto& operator-=(const ModInt &a){
-    if(val < a.val) val += M;
-    val -= a.val;
-    return *this;
-  }
-  constexpr auto& operator*=(const ModInt &a){
-    val = (uint64_t)val * a.val % M;
-    return *this;
-  }
-  constexpr auto& operator/=(const ModInt &a){
-    val = (uint64_t)val * a.inv().val % M;
-    return *this;
-  }
-
-  constexpr auto operator+(const ModInt &a) const {return ModInt(*this) += a;}
-  constexpr auto operator-(const ModInt &a) const {return ModInt(*this) -= a;}
-  constexpr auto operator*(const ModInt &a) const {return ModInt(*this) *= a;}
-  constexpr auto operator/(const ModInt &a) const {return ModInt(*this) /= a;}
-
-  constexpr bool operator==(const ModInt &a) const {return val == a.val;}
-  constexpr bool operator!=(const ModInt &a) const {return val != a.val;}
-
-  constexpr auto& operator++(){*this += 1; return *this;}
-  constexpr auto& operator--(){*this -= 1; return *this;}
-
-  constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
-  constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
-
-  constexpr static ModInt power(int64_t n, int64_t p){
-    if(p < 0) return power(n, -p).inv();
-
-    int64_t ret = 1, e = n % M;
-    for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
-    return ret;
-  }
-
-  constexpr static ModInt inv(int64_t a){
-    int64_t b = M, u = 1, v = 0;
-
-    while(b){
-      int64_t t = a / b;
-      a -= t * b; std::swap(a, b);
-      u -= t * v; std::swap(u, v);
+    constexpr modint(): val(0){}
+    constexpr modint(int64_t n){
+      if(n >= M) val = n % M;
+      else if(n < 0) val = n % M + M;
+      else val = n;
     }
 
-    u %= M;
-    if(u < 0) u += M;
+    constexpr auto& operator=(const modint &a){val = a.val; return *this;}
+    constexpr auto& operator+=(const modint &a){
+      if(val + a.val >= M) val = (uint64_t)val + a.val - M;
+      else val += a.val;
+      return *this;
+    }
+    constexpr auto& operator-=(const modint &a){
+      if(val < a.val) val += M;
+      val -= a.val;
+      return *this;
+    }
+    constexpr auto& operator*=(const modint &a){
+      val = (uint64_t)val * a.val % M;
+      return *this;
+    }
+    constexpr auto& operator/=(const modint &a){
+      val = (uint64_t)val * a.inv().val % M;
+      return *this;
+    }
 
-    return u;
-  }
+    constexpr auto operator+(const modint &a) const {return modint(*this) += a;}
+    constexpr auto operator-(const modint &a) const {return modint(*this) -= a;}
+    constexpr auto operator*(const modint &a) const {return modint(*this) *= a;}
+    constexpr auto operator/(const modint &a) const {return modint(*this) /= a;}
 
-  constexpr static auto frac(int64_t a, int64_t b){return ModInt(a) / ModInt(b);}
+    constexpr bool operator==(const modint &a) const {return val == a.val;}
+    constexpr bool operator!=(const modint &a) const {return val != a.val;}
 
-  constexpr auto power(int64_t p) const {return power(val, p);}
-  constexpr auto inv() const {return inv(val);}
+    constexpr auto& operator++(){*this += 1; return *this;}
+    constexpr auto& operator--(){*this -= 1; return *this;}
 
-  friend constexpr auto operator-(const ModInt &a){return ModInt(M - a.val);}
+    constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
+    constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
 
-  friend constexpr auto operator+(int64_t a, const ModInt &b){return ModInt(a) + b;}
-  friend constexpr auto operator-(int64_t a, const ModInt &b){return ModInt(a) - b;}
-  friend constexpr auto operator*(int64_t a, const ModInt &b){return ModInt(a) * b;}
-  friend constexpr auto operator/(int64_t a, const ModInt &b){return ModInt(a) / b;}
+    constexpr static modint power(int64_t n, int64_t p){
+      if(p < 0) return power(n, -p).inv();
 
-  friend std::istream& operator>>(std::istream &s, ModInt<M> &a){s >> a.val; return s;}
-  friend std::ostream& operator<<(std::ostream &s, const ModInt<M> &a){s << a.val; return s;}
+      int64_t ret = 1, e = n % M;
+      for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
+      return ret;
+    }
 
-  template <int N>
-  static auto div(){
-    static auto value = inv(N);
-    return value;
-  }
+    constexpr static modint inv(int64_t a){
+      int64_t b = M, u = 1, v = 0;
 
-  explicit operator int32_t() const noexcept {return val;}
-  explicit operator int64_t() const noexcept {return val;}
-};
+      while(b){
+        int64_t t = a / b;
+        a -= t * b; std::swap(a, b);
+        u -= t * v; std::swap(u, v);
+      }
+
+      u %= M;
+      if(u < 0) u += M;
+
+      return u;
+    }
+
+    constexpr static auto frac(int64_t a, int64_t b){return modint(a) / modint(b);}
+
+    constexpr auto power(int64_t p) const {return power(val, p);}
+    constexpr auto inv() const {return inv(val);}
+
+    friend constexpr auto operator-(const modint &a){return modint(M - a.val);}
+
+    friend constexpr auto operator+(int64_t a, const modint &b){return modint(a) + b;}
+    friend constexpr auto operator-(int64_t a, const modint &b){return modint(a) - b;}
+    friend constexpr auto operator*(int64_t a, const modint &b){return modint(a) * b;}
+    friend constexpr auto operator/(int64_t a, const modint &b){return modint(a) / b;}
+
+    friend std::istream& operator>>(std::istream &s, modint<M> &a){s >> a.val; return s;}
+    friend std::ostream& operator<<(std::ostream &s, const modint<M> &a){s << a.val; return s;}
+
+    template <int N>
+    static auto div(){
+      static auto value = inv(N);
+      return value;
+    }
+
+    explicit operator int32_t() const noexcept {return val;}
+    explicit operator int64_t() const noexcept {return val;}
+  };
+}
 #line 3 "Mylib/Algorithm/Imos/linear_imos_1d.cpp"
 
 /**
  * @title 1D Imos algorithm (Linear addition)
  * @docs linear_imos_1d.md
  */
-template <typename T>
-struct LinearImos1D {
-  using value_type = T;
+namespace haar_lib {
+  template <typename T>
+  struct linear_imos_1d {
+    using value_type = T;
 
-  std::vector<T> vec_a, vec_a_end, vec_b, vec;
-  int n;
+    std::vector<T> vec_a, vec_a_end, vec_b, vec;
+    int n;
 
-  LinearImos1D(int n): vec_a(n + 1), vec_a_end(n + 1), vec_b(n + 1), vec(n + 1), n(n){}
+    linear_imos_1d(int n):
+      vec_a(n + 1), vec_a_end(n + 1), vec_b(n + 1), vec(n + 1), n(n){}
 
-  void add(int s, int t, const T &a, const T &b){ // x ∈ [s, t)にax+bを加算する。
-    vec_a[s + 1] += a;
-    vec_a[t] -= a;
+    void add(int s, int t, const T &a, const T &b){ // x ∈ [s, t)にax+bを加算する。
+      vec_a[s + 1] += a;
+      vec_a[t] -= a;
 
-    vec_a_end[t] -= a * (t - s - 1);
+      vec_a_end[t] -= a * (t - s - 1);
 
-    vec_b[s] += a * s + b;
-    vec_b[t] -= a * s + b;
-  }
+      vec_b[s] += a * s + b;
+      vec_b[t] -= a * s + b;
+    }
 
-  void build(){
-    for(int i = 0; i < n; ++i) vec_a[i + 1] += vec_a[i];
-    for(int i = 0; i <= n; ++i) vec_a[i] += vec_a_end[i];
-    for(int i = 0; i < n; ++i) vec_a[i + 1] += vec_a[i];
+    void build(){
+      for(int i = 0; i < n; ++i) vec_a[i + 1] += vec_a[i];
+      for(int i = 0; i <= n; ++i) vec_a[i] += vec_a_end[i];
+      for(int i = 0; i < n; ++i) vec_a[i + 1] += vec_a[i];
 
-    for(int i = 0; i < n; ++i) vec_b[i + 1] += vec_b[i];
+      for(int i = 0; i < n; ++i) vec_b[i + 1] += vec_b[i];
 
-    for(int i = 0; i <= n; ++i) vec[i] = vec_a[i] + vec_b[i];
-  }
+      for(int i = 0; i <= n; ++i) vec[i] = vec_a[i] + vec_b[i];
+    }
 
-  T operator[](size_t i) const {return vec[i];}
-};
+    T operator[](size_t i) const {return vec[i];}
+  };
+}
 #line 9 "test/yukicoder/1084/main.test.cpp"
 
-using mint = ModInt<1000000007>;
+namespace hl = haar_lib;
+
+using mint = hl::modint<1000000007>;
 const int MAX = 1000000000;
 
 int main(){
   int N; std::cin >> N;
-  auto A = input_vector<int64_t>(N);
+  auto A = hl::input_vector<int64_t>(N);
 
   mint ans = 0;
 
   if(std::count(A.begin(), A.end(), 0) == 0){
-    LinearImos1D<int64_t> p(N);
+    hl::linear_imos_1d<int64_t> p(N);
 
     std::vector<int> next(N);
     for(int i = N; --i >= 0;){

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#9f519a6857abe7364ea5fbe97ba369aa">Mylib/DataStructure/SparseTable</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SparseTable/sparse_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-12 19:51:00+09:00
 
 
 
@@ -64,61 +64,47 @@ layout: default
 #include <vector>
 #include <utility>
 #include <algorithm>
+#include <optional>
 
 /**
  * @title Sparse table
  * @docs sparse_table.md
  */
-template <typename Semilattice>
-class SparseTable {
-  using value_type = typename Semilattice::value_type;
-  const static Semilattice S;
+namespace haar_lib {
+  template <typename Semilattice>
+  class sparse_table {
+    using value_type = typename Semilattice::value_type;
+    const static Semilattice S;
 
-  std::vector<std::vector<value_type>> a;
-  std::vector<int> log_table;
+    std::vector<std::vector<value_type>> a;
+    std::vector<int> log_table;
 
-public:
-  template <typename T>
-  SparseTable(const std::vector<T> &v){
-    int n = v.size();
-    int logn = 0;
-    while((1 << logn) <= n) ++logn;
+  public:
+    template <typename T>
+    sparse_table(const std::vector<T> &v){
+      int n = v.size();
+      int logn = 0;
+      while((1 << logn) <= n) ++logn;
 
-    a.assign(n, std::vector<value_type>(logn));
-    for(int i = 0; i < n; ++i) a[i][0] = v[i];
-    for(int j = 1; j < logn; ++j){
-      for(int i = 0; i < n; ++i){
-        a[i][j] = S(a[i][j - 1], a[std::min<int>(n - 1, i + (1 << (j - 1)))][j - 1]);
-      }
-    }
-
-    log_table.assign(n + 1, 0);
-    for(int i = 2; i < n + 1; ++i) log_table[i] = log_table[i >> 1] + 1;
-  }
-
-  value_type get(int s, int t) const { // [s, t)
-    int k = log_table[t - s];
-    return S(a[s][k], a[t - (1 << k)][k]);
-  }
-
-  value_type get(std::vector<std::pair<int, int>> st) const {
-    value_type ret;
-    bool t = true;
-
-    for(const auto &p : st){
-      if(p.first < p.second){
-        if(t){
-          ret = get(p.first, p.second);
-          t = false;
-        }else{
-          ret = S(ret, get(p.first, p.second));
+      a.assign(n, std::vector<value_type>(logn));
+      for(int i = 0; i < n; ++i) a[i][0] = v[i];
+      for(int j = 1; j < logn; ++j){
+        for(int i = 0; i < n; ++i){
+          a[i][j] = S(a[i][j - 1], a[std::min<int>(n - 1, i + (1 << (j - 1)))][j - 1]);
         }
       }
+
+      log_table.assign(n + 1, 0);
+      for(int i = 2; i < n + 1; ++i) log_table[i] = log_table[i >> 1] + 1;
     }
 
-    return ret;
-  }
-};
+    std::optional<value_type> get(int s, int t) const { // [s, t)
+      if(s == t) return std::nullopt;
+      int k = log_table[t - s];
+      return S(a[s][k], a[t - (1 << k)][k]);
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -130,61 +116,47 @@ public:
 #include <vector>
 #include <utility>
 #include <algorithm>
+#include <optional>
 
 /**
  * @title Sparse table
  * @docs sparse_table.md
  */
-template <typename Semilattice>
-class SparseTable {
-  using value_type = typename Semilattice::value_type;
-  const static Semilattice S;
+namespace haar_lib {
+  template <typename Semilattice>
+  class sparse_table {
+    using value_type = typename Semilattice::value_type;
+    const static Semilattice S;
 
-  std::vector<std::vector<value_type>> a;
-  std::vector<int> log_table;
+    std::vector<std::vector<value_type>> a;
+    std::vector<int> log_table;
 
-public:
-  template <typename T>
-  SparseTable(const std::vector<T> &v){
-    int n = v.size();
-    int logn = 0;
-    while((1 << logn) <= n) ++logn;
+  public:
+    template <typename T>
+    sparse_table(const std::vector<T> &v){
+      int n = v.size();
+      int logn = 0;
+      while((1 << logn) <= n) ++logn;
 
-    a.assign(n, std::vector<value_type>(logn));
-    for(int i = 0; i < n; ++i) a[i][0] = v[i];
-    for(int j = 1; j < logn; ++j){
-      for(int i = 0; i < n; ++i){
-        a[i][j] = S(a[i][j - 1], a[std::min<int>(n - 1, i + (1 << (j - 1)))][j - 1]);
-      }
-    }
-
-    log_table.assign(n + 1, 0);
-    for(int i = 2; i < n + 1; ++i) log_table[i] = log_table[i >> 1] + 1;
-  }
-
-  value_type get(int s, int t) const { // [s, t)
-    int k = log_table[t - s];
-    return S(a[s][k], a[t - (1 << k)][k]);
-  }
-
-  value_type get(std::vector<std::pair<int, int>> st) const {
-    value_type ret;
-    bool t = true;
-
-    for(const auto &p : st){
-      if(p.first < p.second){
-        if(t){
-          ret = get(p.first, p.second);
-          t = false;
-        }else{
-          ret = S(ret, get(p.first, p.second));
+      a.assign(n, std::vector<value_type>(logn));
+      for(int i = 0; i < n; ++i) a[i][0] = v[i];
+      for(int j = 1; j < logn; ++j){
+        for(int i = 0; i < n; ++i){
+          a[i][j] = S(a[i][j - 1], a[std::min<int>(n - 1, i + (1 << (j - 1)))][j - 1]);
         }
       }
+
+      log_table.assign(n + 1, 0);
+      for(int i = 2; i < n + 1; ++i) log_table[i] = log_table[i >> 1] + 1;
     }
 
-    return ret;
-  }
-};
+    std::optional<value_type> get(int s, int t) const { // [s, t)
+      if(s == t) return std::nullopt;
+      int k = log_table[t - s];
+      return S(a[s][k], a[t - (1 << k)][k]);
+    }
+  };
+}
 
 ```
 {% endraw %}

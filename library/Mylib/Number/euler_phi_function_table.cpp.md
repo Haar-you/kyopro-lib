@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/euler_phi_function_table.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -66,19 +66,21 @@ layout: default
  * @title Euler's totient function (Enumerate)
  * @docs euler_phi_function_table.md
  */
-auto totient_table(int n){
-  std::vector<int> ret(n + 1);
-  std::iota(ret.begin(), ret.end(), 0);
+namespace haar_lib {
+  auto totient_table(int n){
+    std::vector<int> ret(n + 1);
+    std::iota(ret.begin(), ret.end(), 0);
 
-  for(int i = 2; i <= n; ++i){
-    if(ret[i] == i){
-      for(int j = i; j <= n; j += i){
-        ret[j] = ret[j] / i * (i - 1);
+    for(int i = 2; i <= n; ++i){
+      if(ret[i] == i){
+        for(int j = i; j <= n; j += i){
+          ret[j] = ret[j] / i * (i - 1);
+        }
       }
     }
-  }
 
-  return ret;
+    return ret;
+  }
 }
 
 ```
@@ -95,19 +97,21 @@ auto totient_table(int n){
  * @title Euler's totient function (Enumerate)
  * @docs euler_phi_function_table.md
  */
-auto totient_table(int n){
-  std::vector<int> ret(n + 1);
-  std::iota(ret.begin(), ret.end(), 0);
+namespace haar_lib {
+  auto totient_table(int n){
+    std::vector<int> ret(n + 1);
+    std::iota(ret.begin(), ret.end(), 0);
 
-  for(int i = 2; i <= n; ++i){
-    if(ret[i] == i){
-      for(int j = i; j <= n; j += i){
-        ret[j] = ret[j] / i * (i - 1);
+    for(int i = 2; i <= n; ++i){
+      if(ret[i] == i){
+        for(int j = i; j <= n; j += i){
+          ret[j] = ret[j] / i * (i - 1);
+        }
       }
     }
-  }
 
-  return ret;
+    return ret;
+  }
 }
 
 ```

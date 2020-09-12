@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#3b87eee7aef75da88610c966a8da844f">Mylib/Graph/BipartiteGraph</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -53,7 +53,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :question: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
 
 
 ## Code
@@ -68,31 +68,33 @@ layout: default
  * @title Check bipartite graph (Using union-find)
  * @docs construct_bipartite_graph.md
  */
-class BipartiteGraph {
-  int n;
-  UnionFind check;
+namespace haar_lib {
+  class bipartite_graph {
+    int n;
+    unionfind check;
 
-public:
-  BipartiteGraph(int n): n(n), check(2 * n){}
+  public:
+    bipartite_graph(int n): n(n), check(2 * n){}
 
-  void add_diff(int i, int j){ // iとjを異なる色で塗る。
-    check.merge(i, j + n);
-    check.merge(i + n, j);
-  }
+    void add_diff(int i, int j){ // iとjを異なる色で塗る。
+      check.merge(i, j + n);
+      check.merge(i + n, j);
+    }
 
-  void add_same(int i, int j){ // iとjを同じ色で塗る。 = iとjを同じ頂点と見做す。
-    check.merge(i, j);
-    check.merge(i + n, j + n);
-  }
+    void add_same(int i, int j){ // iとjを同じ色で塗る。 = iとjを同じ頂点と見做す。
+      check.merge(i, j);
+      check.merge(i + n, j + n);
+    }
 
-  bool is_bipartite_graph(int i){ // iを含む連結グラフが二部グラフかを判定する。
-    return not check.is_same(i, i + n);
-  }
+    bool is_bipartite_graph(int i){ // iを含む連結グラフが二部グラフかを判定する。
+      return not check.is_same(i, i + n);
+    }
 
-  bool is_same(int i, int j){ // iとjが同じ色で塗られているか判定する。
-    return check.is_same(i, j);
-  }
-};
+    bool is_same(int i, int j){ // iとjが同じ色で塗られているか判定する。
+      return check.is_same(i, j);
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -103,81 +105,106 @@ public:
 #line 2 "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include <vector>
 #include <numeric>
+#include <algorithm>
 
 /**
  * @title Union-find
  * @docs unionfind.md
  */
-class UnionFind {
-  std::vector<int> parent, depth, size;
-  int count;
+namespace haar_lib {
+  class unionfind {
+    int n;
+    mutable std::vector<int> parent;
+    std::vector<int> depth, size;
+    int count;
 
-public:
-  UnionFind(){}
-  UnionFind(int n): parent(n), depth(n, 1), size(n, 1), count(n){
-    std::iota(parent.begin(), parent.end(), 0);
-  }
+  public:
+    unionfind(){}
+    unionfind(int n): n(n), parent(n), depth(n, 1), size(n, 1), count(n){
+      std::iota(parent.begin(), parent.end(), 0);
+    }
 
-  int root_of(int i){
-    if(parent[i] == i) return i;
-    else return parent[i] = root_of(parent[i]);
-  }
+    int root_of(int i) const {
+      if(parent[i] == i) return i;
+      else return parent[i] = root_of(parent[i]);
+    }
 
-  bool is_same(int i, int j){return root_of(i) == root_of(j);}
+    bool is_same(int i, int j) const {return root_of(i) == root_of(j);}
 
-  int merge(int i, int j){
-    const int ri = root_of(i), rj = root_of(j);
-    if(ri == rj) return ri;
-    else{
-      --count;
-      if(depth[ri] < depth[rj]){
-        parent[ri] = rj;
-        size[rj] += size[ri];
-        return rj;
-      }else{
-        parent[rj] = ri;
-        size[ri] += size[rj];
-        if(depth[ri] == depth[rj]) ++depth[ri];
-        return ri;
+    int merge(int i, int j){
+      const int ri = root_of(i), rj = root_of(j);
+      if(ri == rj) return ri;
+      else{
+        --count;
+        if(depth[ri] < depth[rj]){
+          parent[ri] = rj;
+          size[rj] += size[ri];
+          return rj;
+        }else{
+          parent[rj] = ri;
+          size[ri] += size[rj];
+          if(depth[ri] == depth[rj]) ++depth[ri];
+          return ri;
+        }
       }
     }
-  }
 
-  int size_of(int i){return size[root_of(i)];}
+    int size_of(int i) const {return size[root_of(i)];}
 
-  int count_group(){return count;}
-};
+    int count_groups() const {return count;}
+
+    auto get_groups() const {
+      std::vector<std::vector<int>> ret(n);
+
+      for(int i = 0; i < n; ++i){
+        ret[root_of(i)].push_back(i);
+      }
+
+      ret.erase(
+        std::remove_if(
+          ret.begin(), ret.end(),
+          [](const auto &a){return a.empty();}
+        ),
+        ret.end()
+      );
+
+      return ret;
+    }
+  };
+}
 #line 3 "Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp"
 
 /**
  * @title Check bipartite graph (Using union-find)
  * @docs construct_bipartite_graph.md
  */
-class BipartiteGraph {
-  int n;
-  UnionFind check;
+namespace haar_lib {
+  class bipartite_graph {
+    int n;
+    unionfind check;
 
-public:
-  BipartiteGraph(int n): n(n), check(2 * n){}
+  public:
+    bipartite_graph(int n): n(n), check(2 * n){}
 
-  void add_diff(int i, int j){ // iとjを異なる色で塗る。
-    check.merge(i, j + n);
-    check.merge(i + n, j);
-  }
+    void add_diff(int i, int j){ // iとjを異なる色で塗る。
+      check.merge(i, j + n);
+      check.merge(i + n, j);
+    }
 
-  void add_same(int i, int j){ // iとjを同じ色で塗る。 = iとjを同じ頂点と見做す。
-    check.merge(i, j);
-    check.merge(i + n, j + n);
-  }
+    void add_same(int i, int j){ // iとjを同じ色で塗る。 = iとjを同じ頂点と見做す。
+      check.merge(i, j);
+      check.merge(i + n, j + n);
+    }
 
-  bool is_bipartite_graph(int i){ // iを含む連結グラフが二部グラフかを判定する。
-    return not check.is_same(i, i + n);
-  }
+    bool is_bipartite_graph(int i){ // iを含む連結グラフが二部グラフかを判定する。
+      return not check.is_same(i, i + n);
+    }
 
-  bool is_same(int i, int j){ // iとjが同じ色で塗られているか判定する。
-    return check.is_same(i, j);
-  }
-};
+    bool is_same(int i, int j){ // iとjが同じ色で塗られているか判定する。
+      return check.is_same(i, j);
+    }
+  };
+}
 
 ```
 {% endraw %}

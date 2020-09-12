@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Rational number
+# :heavy_check_mark: Rational number
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#e55110d6133c602b43ca77c4caba1f06">Mylib/Number/Rational</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Rational/rational.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/1300/main.test.cpp.html">test/aoj/1300/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/1300/main.test.cpp.html">test/aoj/1300/main.test.cpp</a>
 
 
 ## Code
@@ -49,69 +49,72 @@ layout: default
 #pragma once
 #include <numeric>
 #include <iostream>
+#include <cmath>
 
 /**
  * @title Rational number
  * @docs rational.md
  */
-class Rational {
-public:
-  int64_t nume, deno;
-  Rational(): nume(0), deno(1){}
-  Rational(int64_t num): nume(num), deno(1){}
-  Rational(int64_t num, int64_t den){
-    int64_t g = std::gcd(num, den);
-    nume = num / g;
-    deno = den / g;
-    if(deno < 0){
-      nume = -nume;
-      deno = -deno;
+namespace haar_lib {
+  class rational {
+  public:
+    int64_t nume, deno;
+    rational(): nume(0), deno(1){}
+    rational(int64_t num): nume(num), deno(1){}
+    rational(int64_t num, int64_t den){
+      int64_t g = std::gcd(num, den);
+      nume = num / g;
+      deno = den / g;
+      if(deno < 0){
+        nume = -nume;
+        deno = -deno;
+      }
     }
+
+    auto operator+(const rational &b){
+      int64_t l = std::lcm((*this).deno, b.deno);
+      return rational(l / (*this).deno * (*this).nume + l / b.deno * b.nume, l);
+    }
+
+    auto operator-(const rational &b){
+      int64_t l = std::lcm((*this).deno, b.deno);
+      return rational(l / (*this).deno * (*this).nume - l / b.deno * b.nume, l);
+    }
+
+    auto operator*(const rational &b){
+      return rational((*this).nume * b.nume, (*this).deno * b.deno);
+    }
+
+    auto operator/(const rational &b){
+      return rational((*this).nume * b.deno, (*this).deno * b.nume);
+    }
+
+    auto& operator+=(const rational &a){*this = *this + a; return *this;}
+    auto& operator-=(const rational &a){*this = *this - a; return *this;}
+    auto& operator*=(const rational &a){*this = *this * a; return *this;}
+    auto& operator/=(const rational &a){*this = *this / a; return *this;}
+
+    explicit operator double() const {return (double)nume / deno;}
+    explicit operator long double() const {return (long double)nume / deno;}
+  };
+
+  std::ostream& operator<<(std::ostream &os, const rational &r){
+    if(r.deno == 1) os << r.nume;
+    else os << r.nume << "/" << r.deno;
+    return os;
   }
 
-  auto operator+(const Rational &b){
-    int64_t l = std::lcm((*this).deno, b.deno);
-    return Rational(l / (*this).deno * (*this).nume + l / b.deno * b.nume, l);
-  }
+  auto operator-(const rational &a){return rational(-a.nume, a.deno);}
 
-  auto operator-(const Rational &b){
-    int64_t l = std::lcm((*this).deno, b.deno);
-    return Rational(l / (*this).deno * (*this).nume - l / b.deno * b.nume, l);
-  }
+  bool operator==(const rational &a, const rational &b){return a.nume == b.nume && a.deno == b.deno;}
+  bool operator!=(const rational &a, const rational &b){return !(a == b);}
+  bool operator<(const rational &a, const rational &b){return a.nume * b.deno < b.nume * a.deno;}
+  bool operator<=(const rational &a, const rational &b){return a.nume * b.deno <= b.nume * a.deno;}
+  bool operator>(const rational &a, const rational &b){return !(a <= b);}
+  bool operator>=(const rational &a, const rational &b){return !(a < b);}
 
-  auto operator*(const Rational &b){
-    return Rational((*this).nume * b.nume, (*this).deno * b.deno);
-  }
-
-  auto operator/(const Rational &b){
-    return Rational((*this).nume * b.deno, (*this).deno * b.nume);
-  }
-
-  auto& operator+=(const Rational &a){*this = *this + a; return *this;}
-  auto& operator-=(const Rational &a){*this = *this - a; return *this;}
-  auto& operator*=(const Rational &a){*this = *this * a; return *this;}
-  auto& operator/=(const Rational &a){*this = *this / a; return *this;}
-
-  explicit operator double() const {return (double)nume / deno;}
-  explicit operator long double() const {return (long double)nume / deno;}
-};
-
-std::ostream& operator<<(std::ostream &os, const Rational &r){
-  if(r.deno == 1) os << r.nume;
-  else os << r.nume << "/" << r.deno;
-  return os;
+  auto abs(const rational &a){return rational(std::abs(a.nume), std::abs(a.deno));}
 }
-
-auto operator-(const Rational &a){return Rational(-a.nume, a.deno);}
-
-bool operator==(const Rational &a, const Rational &b){return a.nume == b.nume && a.deno == b.deno;}
-bool operator!=(const Rational &a, const Rational &b){return !(a == b);}
-bool operator<(const Rational &a, const Rational &b){return a.nume * b.deno < b.nume * a.deno;}
-bool operator<=(const Rational &a, const Rational &b){return a.nume * b.deno <= b.nume * a.deno;}
-bool operator>(const Rational &a, const Rational &b){return !(a <= b);}
-bool operator>=(const Rational &a, const Rational &b){return !(a < b);}
-
-auto abs(const Rational &a){return Rational(abs(a.nume), abs(a.deno));}
 
 ```
 {% endraw %}
@@ -122,69 +125,72 @@ auto abs(const Rational &a){return Rational(abs(a.nume), abs(a.deno));}
 #line 2 "Mylib/Number/Rational/rational.cpp"
 #include <numeric>
 #include <iostream>
+#include <cmath>
 
 /**
  * @title Rational number
  * @docs rational.md
  */
-class Rational {
-public:
-  int64_t nume, deno;
-  Rational(): nume(0), deno(1){}
-  Rational(int64_t num): nume(num), deno(1){}
-  Rational(int64_t num, int64_t den){
-    int64_t g = std::gcd(num, den);
-    nume = num / g;
-    deno = den / g;
-    if(deno < 0){
-      nume = -nume;
-      deno = -deno;
+namespace haar_lib {
+  class rational {
+  public:
+    int64_t nume, deno;
+    rational(): nume(0), deno(1){}
+    rational(int64_t num): nume(num), deno(1){}
+    rational(int64_t num, int64_t den){
+      int64_t g = std::gcd(num, den);
+      nume = num / g;
+      deno = den / g;
+      if(deno < 0){
+        nume = -nume;
+        deno = -deno;
+      }
     }
+
+    auto operator+(const rational &b){
+      int64_t l = std::lcm((*this).deno, b.deno);
+      return rational(l / (*this).deno * (*this).nume + l / b.deno * b.nume, l);
+    }
+
+    auto operator-(const rational &b){
+      int64_t l = std::lcm((*this).deno, b.deno);
+      return rational(l / (*this).deno * (*this).nume - l / b.deno * b.nume, l);
+    }
+
+    auto operator*(const rational &b){
+      return rational((*this).nume * b.nume, (*this).deno * b.deno);
+    }
+
+    auto operator/(const rational &b){
+      return rational((*this).nume * b.deno, (*this).deno * b.nume);
+    }
+
+    auto& operator+=(const rational &a){*this = *this + a; return *this;}
+    auto& operator-=(const rational &a){*this = *this - a; return *this;}
+    auto& operator*=(const rational &a){*this = *this * a; return *this;}
+    auto& operator/=(const rational &a){*this = *this / a; return *this;}
+
+    explicit operator double() const {return (double)nume / deno;}
+    explicit operator long double() const {return (long double)nume / deno;}
+  };
+
+  std::ostream& operator<<(std::ostream &os, const rational &r){
+    if(r.deno == 1) os << r.nume;
+    else os << r.nume << "/" << r.deno;
+    return os;
   }
 
-  auto operator+(const Rational &b){
-    int64_t l = std::lcm((*this).deno, b.deno);
-    return Rational(l / (*this).deno * (*this).nume + l / b.deno * b.nume, l);
-  }
+  auto operator-(const rational &a){return rational(-a.nume, a.deno);}
 
-  auto operator-(const Rational &b){
-    int64_t l = std::lcm((*this).deno, b.deno);
-    return Rational(l / (*this).deno * (*this).nume - l / b.deno * b.nume, l);
-  }
+  bool operator==(const rational &a, const rational &b){return a.nume == b.nume && a.deno == b.deno;}
+  bool operator!=(const rational &a, const rational &b){return !(a == b);}
+  bool operator<(const rational &a, const rational &b){return a.nume * b.deno < b.nume * a.deno;}
+  bool operator<=(const rational &a, const rational &b){return a.nume * b.deno <= b.nume * a.deno;}
+  bool operator>(const rational &a, const rational &b){return !(a <= b);}
+  bool operator>=(const rational &a, const rational &b){return !(a < b);}
 
-  auto operator*(const Rational &b){
-    return Rational((*this).nume * b.nume, (*this).deno * b.deno);
-  }
-
-  auto operator/(const Rational &b){
-    return Rational((*this).nume * b.deno, (*this).deno * b.nume);
-  }
-
-  auto& operator+=(const Rational &a){*this = *this + a; return *this;}
-  auto& operator-=(const Rational &a){*this = *this - a; return *this;}
-  auto& operator*=(const Rational &a){*this = *this * a; return *this;}
-  auto& operator/=(const Rational &a){*this = *this / a; return *this;}
-
-  explicit operator double() const {return (double)nume / deno;}
-  explicit operator long double() const {return (long double)nume / deno;}
-};
-
-std::ostream& operator<<(std::ostream &os, const Rational &r){
-  if(r.deno == 1) os << r.nume;
-  else os << r.nume << "/" << r.deno;
-  return os;
+  auto abs(const rational &a){return rational(std::abs(a.nume), std::abs(a.deno));}
 }
-
-auto operator-(const Rational &a){return Rational(-a.nume, a.deno);}
-
-bool operator==(const Rational &a, const Rational &b){return a.nume == b.nume && a.deno == b.deno;}
-bool operator!=(const Rational &a, const Rational &b){return !(a == b);}
-bool operator<(const Rational &a, const Rational &b){return a.nume * b.deno < b.nume * a.deno;}
-bool operator<=(const Rational &a, const Rational &b){return a.nume * b.deno <= b.nume * a.deno;}
-bool operator>(const Rational &a, const Rational &b){return !(a <= b);}
-bool operator>=(const Rational &a, const Rational &b){return !(a < b);}
-
-auto abs(const Rational &a){return Rational(abs(a.nume), abs(a.deno));}
 
 ```
 {% endraw %}

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#fe4a83e4dc2a7f834ed4cd85d6972a53">Mylib/Bit</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/gray_code.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -47,10 +47,12 @@ layout: default
  * @title Gray code
  * @docs gray_code.md
  */
-template <typename Func>
-void gray_code(int n, const Func &f){
-  for(int i = 0; i < (1 << n); ++i){
-    if(not f(i ^ (i >> 1))) break;
+namespace haar_lib {
+  template <typename Func>
+  void gray_code(int n, const Func &f){
+    for(int i = 0; i < (1 << n); ++i){
+      if(not f(i ^ (i >> 1))) break;
+    }
   }
 }
 
@@ -66,10 +68,12 @@ void gray_code(int n, const Func &f){
  * @title Gray code
  * @docs gray_code.md
  */
-template <typename Func>
-void gray_code(int n, const Func &f){
-  for(int i = 0; i < (1 << n); ++i){
-    if(not f(i ^ (i >> 1))) break;
+namespace haar_lib {
+  template <typename Func>
+  void gray_code(int n, const Func &f){
+    for(int i = 0; i < (1 << n); ++i){
+      if(not f(i ^ (i >> 1))) break;
+    }
   }
 }
 

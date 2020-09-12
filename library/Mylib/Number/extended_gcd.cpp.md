@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#5fda78fda98ef9fc0f87c6b50d529f19">Mylib/Number</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/extended_gcd.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -59,11 +59,13 @@ layout: default
  * @title Extended Euclidean algorithm
  * @docs extended_gcd.md
  */
-std::tuple<int64_t, int64_t, int64_t> ext_gcd(int64_t a, int64_t b){
-  if(b == 0) return std::make_tuple(a, 1, 0);
-  int64_t d, p, q;
-  std::tie(d, q, p) = ext_gcd(b, (a + b) % b);
-  return std::make_tuple(d, p, q - a / b * p);
+namespace haar_lib {
+  std::tuple<int64_t, int64_t, int64_t> ext_gcd(int64_t a, int64_t b){
+    if(b == 0) return std::make_tuple(a, 1, 0);
+    int64_t d, p, q;
+    std::tie(d, q, p) = ext_gcd(b, (a + b) % b);
+    return std::make_tuple(d, p, q - a / b * p);
+  }
 }
 
 ```
@@ -79,11 +81,13 @@ std::tuple<int64_t, int64_t, int64_t> ext_gcd(int64_t a, int64_t b){
  * @title Extended Euclidean algorithm
  * @docs extended_gcd.md
  */
-std::tuple<int64_t, int64_t, int64_t> ext_gcd(int64_t a, int64_t b){
-  if(b == 0) return std::make_tuple(a, 1, 0);
-  int64_t d, p, q;
-  std::tie(d, q, p) = ext_gcd(b, (a + b) % b);
-  return std::make_tuple(d, p, q - a / b * p);
+namespace haar_lib {
+  std::tuple<int64_t, int64_t, int64_t> ext_gcd(int64_t a, int64_t b){
+    if(b == 0) return std::make_tuple(a, 1, 0);
+    int64_t d, p, q;
+    std::tie(d, q, p) = ext_gcd(b, (a + b) % b);
+    return std::make_tuple(d, p, q - a / b * p);
+  }
 }
 
 ```

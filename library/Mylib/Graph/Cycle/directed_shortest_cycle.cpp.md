@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a962efc2861dbe1e0963e7d8bf7dda18">Mylib/Graph/Cycle</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Cycle/directed_shortest_cycle.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -51,7 +51,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Code
@@ -71,61 +71,63 @@ layout: default
  * @title Directed shortest cycle
  * @docs directed_shortest_cycle.md
  */
-template <typename T>
-struct DirectShortestCycle {
-  const int N;
-  std::optional<std::vector<int>> cycle;
+namespace haar_lib {
+  template <typename T>
+  struct direct_shortest_cycle {
+    const int N;
+    std::optional<std::vector<int>> cycle;
 
-  void bfs(int i, const Graph<T> &g, int &min_len){
-    std::queue<int> q;
-    q.push(i);
+    void bfs(int i, const graph<T> &g, int &min_len){
+      std::queue<int> q;
+      q.push(i);
 
-    std::vector<int> dist(N), pre(N);
-    std::vector<bool> visited(N);
+      std::vector<int> dist(N), pre(N);
+      std::vector<bool> visited(N);
 
-    while(not q.empty()){
-      int cur = q.front(); q.pop();
+      while(not q.empty()){
+        int cur = q.front(); q.pop();
 
-      if(visited[cur]) continue;
-      visited[cur] = true;
+        if(visited[cur]) continue;
+        visited[cur] = true;
 
-      for(auto &e : g[cur]){
-        if(e.to == i){
-          if(dist[cur] < min_len){
-            min_len = dist[cur];
-            cycle = std::vector<int>();
+        for(auto &e : g[cur]){
+          if(e.to == i){
+            if(dist[cur] < min_len){
+              min_len = dist[cur];
+              cycle = std::vector<int>();
 
-            int j = cur;
-            while(1){
-              (*cycle).push_back(j);
-              if(j == i) break;
+              int j = cur;
+              while(1){
+                (*cycle).push_back(j);
+                if(j == i) break;
 
-              j = pre[j];
+                j = pre[j];
+              }
+
+              std::reverse((*cycle).begin(), (*cycle).end());
             }
 
-            std::reverse((*cycle).begin(), (*cycle).end());
+            return;
           }
 
-          return;
-        }
-
-        if(not visited[e.to]){
-          dist[e.to] = dist[cur] + 1;
-          pre[e.to] = cur;
-          q.push(e.to);
+          if(not visited[e.to]){
+            dist[e.to] = dist[cur] + 1;
+            pre[e.to] = cur;
+            q.push(e.to);
+          }
         }
       }
     }
-  }
 
-  DirectShortestCycle(const Graph<T> &g): N(g.size()){
-    int min_len = INT_MAX;
+    direct_shortest_cycle(const graph<T> &g): N(g.size()){
+      int min_len = INT_MAX;
 
-    for(int i = 0; i < N; ++i){
-      bfs(i, g, min_len);
+      for(int i = 0; i < N; ++i){
+        bfs(i, g, min_len);
+      }
     }
-  }
-};
+  };
+}
 
 ```
 {% endraw %}
@@ -146,121 +148,125 @@ struct DirectShortestCycle {
  * @title Basic graph
  * @docs graph.md
  */
-template <typename T>
-struct Edge {
-  int from, to;
-  T cost;
-  int index = -1;
-  Edge(){}
-  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
-};
+namespace haar_lib {
+  template <typename T>
+  struct edge {
+    int from, to;
+    T cost;
+    int index = -1;
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+  };
 
-template <typename T>
-struct Graph {
-  using weight_type = T;
-  using edge_type = Edge<T>;
+  template <typename T>
+  struct graph {
+    using weight_type = T;
+    using edge_type = edge<T>;
 
-  std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
-  auto& operator[](size_t i){return data[i];}
-  const auto& operator[](size_t i) const {return data[i];}
+    auto& operator[](size_t i){return data[i];}
+    const auto& operator[](size_t i) const {return data[i];}
 
-  auto begin() const {return data.begin();}
-  auto end() const {return data.end();}
+    auto begin() const {return data.begin();}
+    auto end() const {return data.end();}
 
-  Graph(){}
-  Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
-  bool empty() const {return data.empty();}
-  int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+    int size() const {return data.size();}
 
-  void add_edge(int i, int j, T w, int index = -1){
-    data[i].emplace_back(i, j, w, index);
-  }
-
-  void add_undirected(int i, int j, T w, int index = -1){
-    add_edge(i, j, w, index);
-    add_edge(j, i, w, index);
-  }
-
-  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
-  void read(int M){
-    for(int i = 0; i < M; ++i){
-      int u, v; std::cin >> u >> v;
-      u -= I;
-      v -= I;
-      T w = 1;
-      if(WEIGHTED) std::cin >> w;
-      if(DIRECTED) add_edge(u, v, w, i);
-      else add_undirected(u, v, w, i);
+    void add_edge(int i, int j, T w, int index = -1){
+      data[i].emplace_back(i, j, w, index);
     }
-  }
-};
 
-template <typename T>
-using Tree = Graph<T>;
+    void add_undirected(int i, int j, T w, int index = -1){
+      add_edge(i, j, w, index);
+      add_edge(j, i, w, index);
+    }
+
+    template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+    void read(int M){
+      for(int i = 0; i < M; ++i){
+        int u, v; std::cin >> u >> v;
+        u -= I;
+        v -= I;
+        T w = 1;
+        if(WEIGHTED) std::cin >> w;
+        if(DIRECTED) add_edge(u, v, w, i);
+        else add_undirected(u, v, w, i);
+      }
+    }
+  };
+
+  template <typename T>
+  using tree = graph<T>;
+}
 #line 8 "Mylib/Graph/Cycle/directed_shortest_cycle.cpp"
 
 /**
  * @title Directed shortest cycle
  * @docs directed_shortest_cycle.md
  */
-template <typename T>
-struct DirectShortestCycle {
-  const int N;
-  std::optional<std::vector<int>> cycle;
+namespace haar_lib {
+  template <typename T>
+  struct direct_shortest_cycle {
+    const int N;
+    std::optional<std::vector<int>> cycle;
 
-  void bfs(int i, const Graph<T> &g, int &min_len){
-    std::queue<int> q;
-    q.push(i);
+    void bfs(int i, const graph<T> &g, int &min_len){
+      std::queue<int> q;
+      q.push(i);
 
-    std::vector<int> dist(N), pre(N);
-    std::vector<bool> visited(N);
+      std::vector<int> dist(N), pre(N);
+      std::vector<bool> visited(N);
 
-    while(not q.empty()){
-      int cur = q.front(); q.pop();
+      while(not q.empty()){
+        int cur = q.front(); q.pop();
 
-      if(visited[cur]) continue;
-      visited[cur] = true;
+        if(visited[cur]) continue;
+        visited[cur] = true;
 
-      for(auto &e : g[cur]){
-        if(e.to == i){
-          if(dist[cur] < min_len){
-            min_len = dist[cur];
-            cycle = std::vector<int>();
+        for(auto &e : g[cur]){
+          if(e.to == i){
+            if(dist[cur] < min_len){
+              min_len = dist[cur];
+              cycle = std::vector<int>();
 
-            int j = cur;
-            while(1){
-              (*cycle).push_back(j);
-              if(j == i) break;
+              int j = cur;
+              while(1){
+                (*cycle).push_back(j);
+                if(j == i) break;
 
-              j = pre[j];
+                j = pre[j];
+              }
+
+              std::reverse((*cycle).begin(), (*cycle).end());
             }
 
-            std::reverse((*cycle).begin(), (*cycle).end());
+            return;
           }
 
-          return;
-        }
-
-        if(not visited[e.to]){
-          dist[e.to] = dist[cur] + 1;
-          pre[e.to] = cur;
-          q.push(e.to);
+          if(not visited[e.to]){
+            dist[e.to] = dist[cur] + 1;
+            pre[e.to] = cur;
+            q.push(e.to);
+          }
         }
       }
     }
-  }
 
-  DirectShortestCycle(const Graph<T> &g): N(g.size()){
-    int min_len = INT_MAX;
+    direct_shortest_cycle(const graph<T> &g): N(g.size()){
+      int min_len = INT_MAX;
 
-    for(int i = 0; i < N; ++i){
-      bfs(i, g, min_len);
+      for(int i = 0; i < N; ++i){
+        bfs(i, g, min_len);
+      }
     }
-  }
-};
+  };
+}
 
 ```
 {% endraw %}

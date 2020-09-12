@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/stirling_number_second_fft.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 04:38:50+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -53,44 +53,46 @@ layout: default
  * @title Stirling numbers of the second kind (FFT)
  * @docs stirling_number_second_fft.md
  */
-template <typename T, typename Conv>
-auto stirling_number_of_second_kind_fft(int N, const Conv &convolve){
-  std::vector<T> a(N + 1), b(N + 1);
+namespace haar_lib {
+  template <typename T, typename Conv>
+  auto stirling_number_of_second_kind_fft(int N, const Conv &convolve){
+    std::vector<T> a(N + 1), b(N + 1);
 
-  std::vector<int> m(N + 1, 0);
-  for(int i = 2; i <= N; ++i){
-    if(m[i] != 0) continue;
-    for(int j = 2 * i; j <= N; j += i){
-      m[j] = i;
+    std::vector<int> m(N + 1, 0);
+    for(int i = 2; i <= N; ++i){
+      if(m[i] != 0) continue;
+      for(int j = 2 * i; j <= N; j += i){
+        m[j] = i;
+      }
     }
-  }
 
-  for(int i = 0; i <= N; ++i){
-    if(m[i] == 0){
-      a[i] = T::power(i, N);
-    }else{
-      a[i] = a[m[i]] * a[i / m[i]];
+    for(int i = 0; i <= N; ++i){
+      if(m[i] == 0){
+        a[i] = T::power(i, N);
+      }else{
+        a[i] = a[m[i]] * a[i / m[i]];
+      }
     }
-  }
 
-  T f = 1;
-  for(int i = 1; i <= N; ++i) f *= i;
-  f = f.inv();
+    T f = 1;
+    for(int i = 1; i <= N; ++i) f *= i;
+    f = f.inv();
 
-  for(int i = N; i >= 0; --i){
-    a[i] *= f;
-    b[i] = f;
-    f *= i;
+    for(int i = N; i >= 0; --i){
+      a[i] *= f;
+      b[i] = f;
+      f *= i;
 
-    if(i % 2 == 1){
-      b[i] = -b[i];
+      if(i % 2 == 1){
+        b[i] = -b[i];
+      }
     }
+
+    auto ret = convolve(a, b);
+    ret.resize(N + 1);
+
+    return ret;
   }
-
-  auto ret = convolve(a, b);
-  ret.resize(N + 1);
-
-  return ret;
 }
 
 ```
@@ -106,44 +108,46 @@ auto stirling_number_of_second_kind_fft(int N, const Conv &convolve){
  * @title Stirling numbers of the second kind (FFT)
  * @docs stirling_number_second_fft.md
  */
-template <typename T, typename Conv>
-auto stirling_number_of_second_kind_fft(int N, const Conv &convolve){
-  std::vector<T> a(N + 1), b(N + 1);
+namespace haar_lib {
+  template <typename T, typename Conv>
+  auto stirling_number_of_second_kind_fft(int N, const Conv &convolve){
+    std::vector<T> a(N + 1), b(N + 1);
 
-  std::vector<int> m(N + 1, 0);
-  for(int i = 2; i <= N; ++i){
-    if(m[i] != 0) continue;
-    for(int j = 2 * i; j <= N; j += i){
-      m[j] = i;
+    std::vector<int> m(N + 1, 0);
+    for(int i = 2; i <= N; ++i){
+      if(m[i] != 0) continue;
+      for(int j = 2 * i; j <= N; j += i){
+        m[j] = i;
+      }
     }
-  }
 
-  for(int i = 0; i <= N; ++i){
-    if(m[i] == 0){
-      a[i] = T::power(i, N);
-    }else{
-      a[i] = a[m[i]] * a[i / m[i]];
+    for(int i = 0; i <= N; ++i){
+      if(m[i] == 0){
+        a[i] = T::power(i, N);
+      }else{
+        a[i] = a[m[i]] * a[i / m[i]];
+      }
     }
-  }
 
-  T f = 1;
-  for(int i = 1; i <= N; ++i) f *= i;
-  f = f.inv();
+    T f = 1;
+    for(int i = 1; i <= N; ++i) f *= i;
+    f = f.inv();
 
-  for(int i = N; i >= 0; --i){
-    a[i] *= f;
-    b[i] = f;
-    f *= i;
+    for(int i = N; i >= 0; --i){
+      a[i] *= f;
+      b[i] = f;
+      f *= i;
 
-    if(i % 2 == 1){
-      b[i] = -b[i];
+      if(i % 2 == 1){
+        b[i] = -b[i];
+      }
     }
+
+    auto ret = convolve(a, b);
+    ret.resize(N + 1);
+
+    return ret;
   }
-
-  auto ret = convolve(a, b);
-  ret.resize(N + 1);
-
-  return ret;
 }
 
 ```

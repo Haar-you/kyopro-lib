@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#cb5ed95d97b7ee8efcbdf177a47dc7b7">Mylib/Graph/MinimumSpanningTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -58,7 +58,7 @@ layout: default
 ## Depends on
 
 * :x: <a href="../GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
-* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Verified with
@@ -81,124 +81,127 @@ layout: default
  * @title Chu-Liu/Edmonds algorithm
  * @docs chu_liu_edmonds.md
  */
-namespace chu_liu_edmonds_impl {
+namespace haar_lib {
+  namespace chu_liu_edmonds_impl {
+    template <typename T>
+    graph<T> rec(graph<T> g, int r){
+      const int N = g.size();
+
+      graph<T> in_edges(N);
+
+      for(int i = 0; i < N; ++i){
+        if(i != r){
+          auto e = *std::min_element(
+            g[i].begin(), g[i].end(),
+            [](const auto &a, const auto &b){
+              return a.cost < b.cost;
+            }
+          );
+
+          in_edges[i].push_back(e);
+        }
+      }
+
+      const auto [s, m] = strongly_connected_components(in_edges);
+
+      std::vector<std::vector<int>> v(m);
+      for(int i = 0; i < N; ++i){
+        v[s[i]].push_back(i);
+      }
+
+      int count_cycle = 0;
+      for(int i = 0; i < m; ++i){
+        if(v[i].size() > 1){
+          for(int j : v[i]){
+            auto c =
+              *std::min_element(
+                g[j].begin(), g[j].end(),
+                [](const auto &a, const auto &b){return a.cost < b.cost;}
+              );
+
+            for(auto &e : g[j]){
+              e.cost -= c.cost;
+            }
+          }
+          ++count_cycle;
+        }
+      }
+
+      if(count_cycle == 0){
+        return in_edges;
+      }
+
+      graph<T> G(m);
+      const int R = s[r];
+      for(int i = 0; i < N; ++i){
+        for(auto &e : g[i]){
+          if(s[e.from] == s[e.to]) continue;
+          G.add_edge(s[e.from], s[e.to], e.cost);
+        }
+      }
+
+      auto res = rec(G, R);
+
+      for(int i = 0; i < m; ++i){
+        if(i == R) continue;
+
+        int j = res[i][0].to;
+
+        std::vector<edge<T>> c;
+
+        for(int x : v[i]){
+          for(auto &e : g[x]){
+            if(s[e.to] == j){
+              c.push_back(e);
+            }
+          }
+        }
+
+        auto e =
+          *std::min_element(
+            c.begin(), c.end(),
+            [](const auto &a, const auto &b){return a.cost < b.cost;}
+          );
+
+        in_edges[e.from][0] = e;
+      }
+
+      return in_edges;
+    }
+  }
+
   template <typename T>
-  Graph<T> rec(Graph<T> g, int r){
+  auto chu_liu_edmonds(graph<T> g, int r){
+    std::vector<edge<T>> ret;
+
     const int N = g.size();
 
-    Graph<T> in_edges(N);
+    graph<T> rg(N);
+    for(int i = 0; i < N; ++i){
+      for(auto &e : g[i]){
+        rg.add_edge(e.to, e.from, e.cost);
+      }
+    }
+
+    auto res = chu_liu_edmonds_impl::rec(rg, r);
 
     for(int i = 0; i < N; ++i){
       if(i != r){
-        auto e = *std::min_element(g[i].begin(), g[i].end(),
-          [](const auto &a, const auto &b){
-            return a.cost < b.cost;
-          }
-        );
 
-        in_edges[i].push_back(e);
-      }
-    }
+        std::vector<T> c;
 
-    const auto [s, m] = strongly_connected_components(in_edges);
-
-    std::vector<std::vector<int>> v(m);
-    for(int i = 0; i < N; ++i){
-      v[s[i]].push_back(i);
-    }
-
-    int count_cycle = 0;
-    for(int i = 0; i < m; ++i){
-      if(v[i].size() > 1){
-        for(int j : v[i]){
-          auto c =
-            *std::min_element(
-              g[j].begin(), g[j].end(),
-              [](const auto &a, const auto &b){return a.cost < b.cost;}
-            );
-
-          for(auto &e : g[j]){
-            e.cost -= c.cost;
+        for(auto &e : rg[i]){
+          if(e.to == res[i][0].to){
+            c.push_back(e.cost);
           }
         }
-        ++count_cycle;
+
+        ret.emplace_back(res[i][0].to, i, *std::min_element(c.begin(), c.end()));
       }
     }
 
-    if(count_cycle == 0){
-      return in_edges;
-    }
-
-    Graph<T> G(m);
-    const int R = s[r];
-    for(int i = 0; i < N; ++i){
-      for(auto &e : g[i]){
-        if(s[e.from] == s[e.to]) continue;
-        G.add_edge(s[e.from], s[e.to], e.cost);
-      }
-    }
-
-    auto res = rec(G, R);
-
-    for(int i = 0; i < m; ++i){
-      if(i == R) continue;
-
-      int j = res[i][0].to;
-
-      std::vector<Edge<T>> c;
-
-      for(int x : v[i]){
-        for(auto &e : g[x]){
-          if(s[e.to] == j){
-            c.push_back(e);
-          }
-        }
-      }
-
-      auto e =
-        *std::min_element(
-          c.begin(), c.end(),
-          [](const auto &a, const auto &b){return a.cost < b.cost;}
-        );
-
-      in_edges[e.from][0] = e;
-    }
-
-    return in_edges;
+    return ret;
   }
-}
-
-template <typename T>
-auto chu_liu_edmonds(Graph<T> g, int r){
-  std::vector<Edge<T>> ret;
-
-  const int N = g.size();
-
-  Graph<T> rg(N);
-  for(int i = 0; i < N; ++i){
-    for(auto &e : g[i]){
-      rg.add_edge(e.to, e.from, e.cost);
-    }
-  }
-
-  auto res = chu_liu_edmonds_impl::rec(rg, r);
-
-  for(int i = 0; i < N; ++i){
-    if(i != r){
-
-      std::vector<T> c;
-
-      for(auto &e : rg[i]){
-        if(e.to == res[i][0].to){
-          c.push_back(e.cost);
-        }
-      }
-
-      ret.emplace_back(res[i][0].to, i, *std::min_element(c.begin(), c.end()));
-    }
-  }
-
-  return ret;
 }
 
 ```
@@ -217,103 +220,107 @@ auto chu_liu_edmonds(Graph<T> g, int r){
  * @title Basic graph
  * @docs graph.md
  */
-template <typename T>
-struct Edge {
-  int from, to;
-  T cost;
-  int index = -1;
-  Edge(){}
-  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
-};
+namespace haar_lib {
+  template <typename T>
+  struct edge {
+    int from, to;
+    T cost;
+    int index = -1;
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+  };
 
-template <typename T>
-struct Graph {
-  using weight_type = T;
-  using edge_type = Edge<T>;
+  template <typename T>
+  struct graph {
+    using weight_type = T;
+    using edge_type = edge<T>;
 
-  std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
-  auto& operator[](size_t i){return data[i];}
-  const auto& operator[](size_t i) const {return data[i];}
+    auto& operator[](size_t i){return data[i];}
+    const auto& operator[](size_t i) const {return data[i];}
 
-  auto begin() const {return data.begin();}
-  auto end() const {return data.end();}
+    auto begin() const {return data.begin();}
+    auto end() const {return data.end();}
 
-  Graph(){}
-  Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
-  bool empty() const {return data.empty();}
-  int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+    int size() const {return data.size();}
 
-  void add_edge(int i, int j, T w, int index = -1){
-    data[i].emplace_back(i, j, w, index);
-  }
-
-  void add_undirected(int i, int j, T w, int index = -1){
-    add_edge(i, j, w, index);
-    add_edge(j, i, w, index);
-  }
-
-  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
-  void read(int M){
-    for(int i = 0; i < M; ++i){
-      int u, v; std::cin >> u >> v;
-      u -= I;
-      v -= I;
-      T w = 1;
-      if(WEIGHTED) std::cin >> w;
-      if(DIRECTED) add_edge(u, v, w, i);
-      else add_undirected(u, v, w, i);
+    void add_edge(int i, int j, T w, int index = -1){
+      data[i].emplace_back(i, j, w, index);
     }
-  }
-};
 
-template <typename T>
-using Tree = Graph<T>;
+    void add_undirected(int i, int j, T w, int index = -1){
+      add_edge(i, j, w, index);
+      add_edge(j, i, w, index);
+    }
+
+    template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+    void read(int M){
+      for(int i = 0; i < M; ++i){
+        int u, v; std::cin >> u >> v;
+        u -= I;
+        v -= I;
+        T w = 1;
+        if(WEIGHTED) std::cin >> w;
+        if(DIRECTED) add_edge(u, v, w, i);
+        else add_undirected(u, v, w, i);
+      }
+    }
+  };
+
+  template <typename T>
+  using tree = graph<T>;
+}
 #line 5 "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 
 /**
  * @title Strongly connected components
  * @docs strongly_connected_components.md
  */
-template <typename T>
-auto strongly_connected_components(const Graph<T> &g){
-  const int n = g.size();
+namespace haar_lib {
+  template <typename T>
+  auto strongly_connected_components(const graph<T> &g){
+    const int n = g.size();
 
-  std::vector<bool> visit(n);
-  std::vector<int> check(n);
-  std::vector<int> result(n, -1);
+    std::vector<bool> visit(n);
+    std::vector<int> check(n);
+    std::vector<int> result(n, -1);
 
-  auto dfs =
-    [&](auto &f, int cur) -> void {
-      visit[cur] = true;
-      for(const auto &e : g[cur]){
-        if(not visit[e.to]) f(f, e.to);
-      }
-      check.push_back(cur);
-    };
+    auto dfs =
+      [&](auto &f, int cur) -> void {
+        visit[cur] = true;
+        for(const auto &e : g[cur]){
+          if(not visit[e.to]) f(f, e.to);
+        }
+        check.push_back(cur);
+      };
 
-  for(int i = 0; i < n; ++i) if(not visit[i]) dfs(dfs, i);
+    for(int i = 0; i < n; ++i) if(not visit[i]) dfs(dfs, i);
 
-  std::reverse(check.begin(), check.end());
+    std::reverse(check.begin(), check.end());
 
-  Graph<T> rg(n);
+    graph<T> rg(n);
 
-  auto rdfs =
-    [&](auto &f, int cur, int i) -> void {
-      result[cur] = i;
-      for(const auto &e : rg[cur]){
-        if(result[e.to] == -1) f(f, e.to, i);
-      }
-    };
+    auto rdfs =
+      [&](auto &f, int cur, int i) -> void {
+        result[cur] = i;
+        for(const auto &e : rg[cur]){
+          if(result[e.to] == -1) f(f, e.to, i);
+        }
+      };
 
-  for(int i = 0; i < n; ++i) for(const auto &e : g[i]) rg[e.to].emplace_back(e.to, e.from, e.cost);
+    for(int i = 0; i < n; ++i) for(const auto &e : g[i]) rg[e.to].emplace_back(e.to, e.from, e.cost);
 
-  int i = 0;
-  for(auto c : check) if(result[c] == -1) rdfs(rdfs, c, i), ++i;
+    int i = 0;
+    for(auto c : check) if(result[c] == -1) rdfs(rdfs, c, i), ++i;
 
-  return std::make_pair(result, i);
+    return std::make_pair(result, i);
+  }
 }
 #line 6 "Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp"
 
@@ -321,124 +328,127 @@ auto strongly_connected_components(const Graph<T> &g){
  * @title Chu-Liu/Edmonds algorithm
  * @docs chu_liu_edmonds.md
  */
-namespace chu_liu_edmonds_impl {
+namespace haar_lib {
+  namespace chu_liu_edmonds_impl {
+    template <typename T>
+    graph<T> rec(graph<T> g, int r){
+      const int N = g.size();
+
+      graph<T> in_edges(N);
+
+      for(int i = 0; i < N; ++i){
+        if(i != r){
+          auto e = *std::min_element(
+            g[i].begin(), g[i].end(),
+            [](const auto &a, const auto &b){
+              return a.cost < b.cost;
+            }
+          );
+
+          in_edges[i].push_back(e);
+        }
+      }
+
+      const auto [s, m] = strongly_connected_components(in_edges);
+
+      std::vector<std::vector<int>> v(m);
+      for(int i = 0; i < N; ++i){
+        v[s[i]].push_back(i);
+      }
+
+      int count_cycle = 0;
+      for(int i = 0; i < m; ++i){
+        if(v[i].size() > 1){
+          for(int j : v[i]){
+            auto c =
+              *std::min_element(
+                g[j].begin(), g[j].end(),
+                [](const auto &a, const auto &b){return a.cost < b.cost;}
+              );
+
+            for(auto &e : g[j]){
+              e.cost -= c.cost;
+            }
+          }
+          ++count_cycle;
+        }
+      }
+
+      if(count_cycle == 0){
+        return in_edges;
+      }
+
+      graph<T> G(m);
+      const int R = s[r];
+      for(int i = 0; i < N; ++i){
+        for(auto &e : g[i]){
+          if(s[e.from] == s[e.to]) continue;
+          G.add_edge(s[e.from], s[e.to], e.cost);
+        }
+      }
+
+      auto res = rec(G, R);
+
+      for(int i = 0; i < m; ++i){
+        if(i == R) continue;
+
+        int j = res[i][0].to;
+
+        std::vector<edge<T>> c;
+
+        for(int x : v[i]){
+          for(auto &e : g[x]){
+            if(s[e.to] == j){
+              c.push_back(e);
+            }
+          }
+        }
+
+        auto e =
+          *std::min_element(
+            c.begin(), c.end(),
+            [](const auto &a, const auto &b){return a.cost < b.cost;}
+          );
+
+        in_edges[e.from][0] = e;
+      }
+
+      return in_edges;
+    }
+  }
+
   template <typename T>
-  Graph<T> rec(Graph<T> g, int r){
+  auto chu_liu_edmonds(graph<T> g, int r){
+    std::vector<edge<T>> ret;
+
     const int N = g.size();
 
-    Graph<T> in_edges(N);
+    graph<T> rg(N);
+    for(int i = 0; i < N; ++i){
+      for(auto &e : g[i]){
+        rg.add_edge(e.to, e.from, e.cost);
+      }
+    }
+
+    auto res = chu_liu_edmonds_impl::rec(rg, r);
 
     for(int i = 0; i < N; ++i){
       if(i != r){
-        auto e = *std::min_element(g[i].begin(), g[i].end(),
-          [](const auto &a, const auto &b){
-            return a.cost < b.cost;
-          }
-        );
 
-        in_edges[i].push_back(e);
-      }
-    }
+        std::vector<T> c;
 
-    const auto [s, m] = strongly_connected_components(in_edges);
-
-    std::vector<std::vector<int>> v(m);
-    for(int i = 0; i < N; ++i){
-      v[s[i]].push_back(i);
-    }
-
-    int count_cycle = 0;
-    for(int i = 0; i < m; ++i){
-      if(v[i].size() > 1){
-        for(int j : v[i]){
-          auto c =
-            *std::min_element(
-              g[j].begin(), g[j].end(),
-              [](const auto &a, const auto &b){return a.cost < b.cost;}
-            );
-
-          for(auto &e : g[j]){
-            e.cost -= c.cost;
+        for(auto &e : rg[i]){
+          if(e.to == res[i][0].to){
+            c.push_back(e.cost);
           }
         }
-        ++count_cycle;
+
+        ret.emplace_back(res[i][0].to, i, *std::min_element(c.begin(), c.end()));
       }
     }
 
-    if(count_cycle == 0){
-      return in_edges;
-    }
-
-    Graph<T> G(m);
-    const int R = s[r];
-    for(int i = 0; i < N; ++i){
-      for(auto &e : g[i]){
-        if(s[e.from] == s[e.to]) continue;
-        G.add_edge(s[e.from], s[e.to], e.cost);
-      }
-    }
-
-    auto res = rec(G, R);
-
-    for(int i = 0; i < m; ++i){
-      if(i == R) continue;
-
-      int j = res[i][0].to;
-
-      std::vector<Edge<T>> c;
-
-      for(int x : v[i]){
-        for(auto &e : g[x]){
-          if(s[e.to] == j){
-            c.push_back(e);
-          }
-        }
-      }
-
-      auto e =
-        *std::min_element(
-          c.begin(), c.end(),
-          [](const auto &a, const auto &b){return a.cost < b.cost;}
-        );
-
-      in_edges[e.from][0] = e;
-    }
-
-    return in_edges;
+    return ret;
   }
-}
-
-template <typename T>
-auto chu_liu_edmonds(Graph<T> g, int r){
-  std::vector<Edge<T>> ret;
-
-  const int N = g.size();
-
-  Graph<T> rg(N);
-  for(int i = 0; i < N; ++i){
-    for(auto &e : g[i]){
-      rg.add_edge(e.to, e.from, e.cost);
-    }
-  }
-
-  auto res = chu_liu_edmonds_impl::rec(rg, r);
-
-  for(int i = 0; i < N; ++i){
-    if(i != r){
-
-      std::vector<T> c;
-
-      for(auto &e : rg[i]){
-        if(e.to == res[i][0].to){
-          c.push_back(e.cost);
-        }
-      }
-
-      ret.emplace_back(res[i][0].to, i, *std::min_element(c.begin(), c.end()));
-    }
-  }
-
-  return ret;
 }
 
 ```

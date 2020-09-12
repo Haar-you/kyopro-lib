@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4bc951e5ca9130b2259fc85dc53eb972">Mylib/TypicalProblem/KnapsackProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/KnapsackProblem/knapsack_small_quantity.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -72,50 +72,52 @@ layout: default
  * @title 0-1 Knapsack problem (Small quantity)
  * @docs knapsack_small_quantity.md
  */
-template <typename Weight, typename Value>
-Value knapsack_small_quantity(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
-  Value ret = 0;
+namespace haar_lib {
+  template <typename Weight, typename Value>
+  Value knapsack_small_quantity(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
+    Value ret = 0;
 
-  const int p = N / 2;
-  const int q = N - p;
+    const int p = N / 2;
+    const int q = N - p;
 
-  std::map<Weight, Value> a;
-  for(int i = 0; i < 1 << p; ++i){
-    Weight weight = 0;
-    Value value = 0;
-    for(int j = 0; j < p; ++j){
-      if(i & (1 << j)){
-        weight += w[j];
-        value += v[j];
+    std::map<Weight, Value> a;
+    for(int i = 0; i < 1 << p; ++i){
+      Weight weight = 0;
+      Value value = 0;
+      for(int j = 0; j < p; ++j){
+        if(i & (1 << j)){
+          weight += w[j];
+          value += v[j];
+        }
       }
+
+      a[weight] = std::max(a[weight], value);
     }
 
-    a[weight] = std::max(a[weight], value);
-  }
-
-  Value m = 0;
-  for(auto &kv : a){
-    kv.second = std::max(kv.second, m);
-    m = kv.second;
-  }
-
-  for(int i = 0; i < 1 << q; ++i){
-    Weight weight = 0;
-    Value value = 0;
-    for(int j = 0; j < q; ++j){
-      if(i & (1 << j)){
-        weight += w[j + p];
-        value += v[j + p];
-      }
+    Value m = 0;
+    for(auto &kv : a){
+      kv.second = std::max(kv.second, m);
+      m = kv.second;
     }
 
-    auto itr = a.upper_bound(std::max((Weight)0, cap - weight));
+    for(int i = 0; i < 1 << q; ++i){
+      Weight weight = 0;
+      Value value = 0;
+      for(int j = 0; j < q; ++j){
+        if(i & (1 << j)){
+          weight += w[j + p];
+          value += v[j + p];
+        }
+      }
 
-    itr = std::prev(itr);
-    if(weight + itr->first <= cap) ret = std::max(ret, value + itr->second);
+      auto itr = a.upper_bound(std::max((Weight)0, cap - weight));
+
+      itr = std::prev(itr);
+      if(weight + itr->first <= cap) ret = std::max(ret, value + itr->second);
+    }
+
+    return ret;
   }
-
-  return ret;
 }
 
 ```
@@ -134,50 +136,52 @@ Value knapsack_small_quantity(int N, Weight cap, const std::vector<Weight> &w, c
  * @title 0-1 Knapsack problem (Small quantity)
  * @docs knapsack_small_quantity.md
  */
-template <typename Weight, typename Value>
-Value knapsack_small_quantity(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
-  Value ret = 0;
+namespace haar_lib {
+  template <typename Weight, typename Value>
+  Value knapsack_small_quantity(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
+    Value ret = 0;
 
-  const int p = N / 2;
-  const int q = N - p;
+    const int p = N / 2;
+    const int q = N - p;
 
-  std::map<Weight, Value> a;
-  for(int i = 0; i < 1 << p; ++i){
-    Weight weight = 0;
-    Value value = 0;
-    for(int j = 0; j < p; ++j){
-      if(i & (1 << j)){
-        weight += w[j];
-        value += v[j];
+    std::map<Weight, Value> a;
+    for(int i = 0; i < 1 << p; ++i){
+      Weight weight = 0;
+      Value value = 0;
+      for(int j = 0; j < p; ++j){
+        if(i & (1 << j)){
+          weight += w[j];
+          value += v[j];
+        }
       }
+
+      a[weight] = std::max(a[weight], value);
     }
 
-    a[weight] = std::max(a[weight], value);
-  }
-
-  Value m = 0;
-  for(auto &kv : a){
-    kv.second = std::max(kv.second, m);
-    m = kv.second;
-  }
-
-  for(int i = 0; i < 1 << q; ++i){
-    Weight weight = 0;
-    Value value = 0;
-    for(int j = 0; j < q; ++j){
-      if(i & (1 << j)){
-        weight += w[j + p];
-        value += v[j + p];
-      }
+    Value m = 0;
+    for(auto &kv : a){
+      kv.second = std::max(kv.second, m);
+      m = kv.second;
     }
 
-    auto itr = a.upper_bound(std::max((Weight)0, cap - weight));
+    for(int i = 0; i < 1 << q; ++i){
+      Weight weight = 0;
+      Value value = 0;
+      for(int j = 0; j < q; ++j){
+        if(i & (1 << j)){
+          weight += w[j + p];
+          value += v[j + p];
+        }
+      }
 
-    itr = std::prev(itr);
-    if(weight + itr->first <= cap) ret = std::max(ret, value + itr->second);
+      auto itr = a.upper_bound(std::max((Weight)0, cap - weight));
+
+      itr = std::prev(itr);
+      if(weight + itr->first <= cap) ret = std::max(ret, value + itr->second);
+    }
+
+    return ret;
   }
-
-  return ret;
 }
 
 ```

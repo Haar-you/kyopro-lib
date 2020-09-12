@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#1cb80c56a7c118816814801df618d931">test/yosupo-judge/kth_root_integer</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/kth_root_integer/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/kth_root_integer">https://judge.yosupo.jp/problem/kth_root_integer</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 * :x: <a href="../../../../library/Mylib/Number/kth_root_integer.cpp.html">Kth root integer</a>
 
 
@@ -55,14 +55,16 @@ layout: default
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/Number/kth_root_integer.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int T; std::cin >> T;
 
-  for(auto [A, K] : input_tuples<uint64_t, uint64_t>(T)){
-    std::cout << kth_root(A, K) << "\n";
+  for(auto [A, K] : hl::input_tuples<uint64_t, uint64_t>(T)){
+    std::cout << hl::kth_root(A, K) << "\n";
   }
 
   return 0;
@@ -88,66 +90,70 @@ int main(){
 /**
  * @docs input_tuple.md
  */
-template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
-}
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
+  }
 
-template <typename T, typename U>
-std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
-  s >> value.first >> value.second;
-  return s;
-}
+  template <typename T, typename U>
+  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+    s >> value.first >> value.second;
+    return s;
+  }
 
-template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
-  return s;
+  template <typename ... Args>
+  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
+    return s;
+  }
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
-template <typename ... Args>
-class InputTuples {
-  struct iter {
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuples {
+    struct iter {
+      using value_type = std::tuple<Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N, c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
+      value_type operator*(){
+        if(not fetched){
+          std::cin >> value;
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuples(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples(int N){
+    return InputTuples<Args ...>(N);
+  }
 }
 #line 2 "Mylib/Number/kth_root_integer.cpp"
 #include <cassert>
@@ -157,41 +163,45 @@ auto input_tuples(int N){
  * @title Kth root integer
  * @docs kth_root_integer.md
  */
-uint64_t kth_root(uint64_t a, int k){
-  assert(k >= 1);
-  if(k == 1) return a;
-  if(a == 1) return 1;
+namespace haar_lib {
+  uint64_t kth_root(uint64_t a, int k){
+    assert(k >= 1);
+    if(k == 1) return a;
+    if(a == 1) return 1;
 
-  uint64_t lb = 0, ub = a;
+    uint64_t lb = 0, ub = a;
 
-  auto check =
-    [](uint64_t a, int k, uint64_t n){
-      uint64_t r = 1;
+    auto check =
+      [](uint64_t a, int k, uint64_t n){
+        uint64_t r = 1;
 
-      while(k > 0){
-        if(k & 1){
-          if(__builtin_umulll_overflow(r, a, (unsigned long long int*)&r)) return false;
+        while(k > 0){
+          if(k & 1){
+            if(__builtin_umulll_overflow(r, a, (unsigned long long int*)&r)) return false;
+          }
+          if(__builtin_umulll_overflow(a, a, (unsigned long long int*)&a) and k > 1) return false;
+          k >>= 1;
         }
-        if(__builtin_umulll_overflow(a, a, (unsigned long long int*)&a) and k > 1) return false;
-        k >>= 1;
+
+        return r <= n;
+      };
+
+    while(ub - lb > 1){
+      uint64_t mid = lb + (ub - lb) / 2;
+
+      if(check(mid, k, a)){
+        lb = mid;
+      }else{
+        ub = mid;
       }
-
-      return r <= n;
-    };
-
-  while(ub - lb > 1){
-    uint64_t mid = lb + (ub - lb) / 2;
-
-    if(check(mid, k, a)){
-      lb = mid;
-    }else{
-      ub = mid;
     }
-  }
 
-  return lb;
+    return lb;
+  }
 }
 #line 6 "test/yosupo-judge/kth_root_integer/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   std::cin.tie(0);
@@ -199,8 +209,8 @@ int main(){
 
   int T; std::cin >> T;
 
-  for(auto [A, K] : input_tuples<uint64_t, uint64_t>(T)){
-    std::cout << kth_root(A, K) << "\n";
+  for(auto [A, K] : hl::input_tuples<uint64_t, uint64_t>(T)){
+    std::cout << hl::kth_root(A, K) << "\n";
   }
 
   return 0;

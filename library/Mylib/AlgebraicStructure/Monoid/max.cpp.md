@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/max.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -54,17 +54,19 @@ layout: default
  * @title Max monoid
  * @docs max.md
  */
-template <typename T>
-struct MaxMonoid {
-  using value_type = std::optional<T>;
+namespace haar_lib {
+  template <typename T>
+  struct max_monoid {
+    using value_type = std::optional<T>;
 
-  value_type operator()() const {return {};}
-  value_type operator()(const value_type &a, const value_type &b) const {
-    if(not a) return b;
-    if(not b) return a;
-    return {std::max(*a, *b)};
-  }
-};
+    value_type operator()() const {return {};}
+    value_type operator()(const value_type &a, const value_type &b) const {
+      if(not a) return b;
+      if(not b) return a;
+      return {std::max(*a, *b)};
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -80,17 +82,19 @@ struct MaxMonoid {
  * @title Max monoid
  * @docs max.md
  */
-template <typename T>
-struct MaxMonoid {
-  using value_type = std::optional<T>;
+namespace haar_lib {
+  template <typename T>
+  struct max_monoid {
+    using value_type = std::optional<T>;
 
-  value_type operator()() const {return {};}
-  value_type operator()(const value_type &a, const value_type &b) const {
-    if(not a) return b;
-    if(not b) return a;
-    return {std::max(*a, *b)};
-  }
-};
+    value_type operator()() const {return {};}
+    value_type operator()(const value_type &a, const value_type &b) const {
+      if(not a) return b;
+      if(not b) return a;
+      return {std::max(*a, *b)};
+    }
+  };
+}
 
 ```
 {% endraw %}

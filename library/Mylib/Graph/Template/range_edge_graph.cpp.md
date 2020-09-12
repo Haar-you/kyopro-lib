@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#d9afcc29a820df9cbf03e35749db39d5">Mylib/Graph/Template</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Template/range_edge_graph.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -56,7 +56,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="graph.cpp.html">Basic graph</a>
+* :question: <a href="graph.cpp.html">Basic graph</a>
 
 
 ## Code
@@ -73,61 +73,63 @@ layout: default
  * @title Range edge graph
  * @docs range_edge_graph.md
  */
-template <typename T>
-class RangeEdgeGraph : public Graph<T> {
-  using super = Graph<T>;
+namespace haar_lib {
+  template <typename T>
+  class range_edge_graph : public graph<T> {
+    using super = graph<T>;
 
-  int k, N;
-  int calc_size(int N) const {
-    int ret = 1;
-    while(ret < N) ret *= 2;
-    return ret;
-  }
-
-public:
-  RangeEdgeGraph(int N): Graph<T>(5 * (k = (calc_size(N)))), N(N){
-    for(int i = 2; i < 2 * k; ++i){
-      super::add_edge(k + (i >> 1), k + i, 0);
-      super::add_edge(3 * k + i, 3 * k + (i >> 1), 0);
+    int k, N;
+    int calc_size(int N) const {
+      int ret = 1;
+      while(ret < N) ret *= 2;
+      return ret;
     }
 
-    for(int i = 0; i < N; ++i){
-      super::add_edge(2 * k + i, i, 0);
-      super::add_edge(i, 4 * k + i, 0);
+  public:
+    range_edge_graph(int N): graph<T>(5 * (k = (calc_size(N)))), N(N){
+      for(int i = 2; i < 2 * k; ++i){
+        super::add_edge(k + (i >> 1), k + i, 0);
+        super::add_edge(3 * k + i, 3 * k + (i >> 1), 0);
+      }
+
+      for(int i = 0; i < N; ++i){
+        super::add_edge(2 * k + i, i, 0);
+        super::add_edge(i, 4 * k + i, 0);
+      }
     }
-  }
 
-  void add_edge(int i, int j, T w){
-    super::add_edge(i, j, w);
-  }
-
-  void add_edge(int i, std::pair<int, int> p, T w){
-    auto [l, r] = p;
-    for(l += k, r += k; l < r; l >>= 1, r >>= 1){
-      if(l & 1) super::add_edge(i, l + k, w), ++l;
-      if(r & 1) --r, super::add_edge(i, r + k, w);
+    void add_edge(int i, int j, T w){
+      super::add_edge(i, j, w);
     }
-  }
 
-  void add_edge(std::pair<int, int> p, int i, T w){
-    auto [l, r] = p;
-    for(l += k, r += k; l < r; l >>= 1, r >>= 1){
-      if(l & 1) super::add_edge(l + 3 * k, i, w), ++l;
-      if(r & 1) --r, super::add_edge(r + 3 * k, i, w);
+    void add_edge(int i, std::pair<int, int> p, T w){
+      auto [l, r] = p;
+      for(l += k, r += k; l < r; l >>= 1, r >>= 1){
+        if(l & 1) super::add_edge(i, l + k, w), ++l;
+        if(r & 1) --r, super::add_edge(i, r + k, w);
+      }
     }
-  }
 
-  void add_edge(std::pair<int, int> p, std::pair<int, int> q, T w){
-    int x = super::size();
-    super::data.emplace_back();
-    int y = super::size();
-    super::data.emplace_back();
+    void add_edge(std::pair<int, int> p, int i, T w){
+      auto [l, r] = p;
+      for(l += k, r += k; l < r; l >>= 1, r >>= 1){
+        if(l & 1) super::add_edge(l + 3 * k, i, w), ++l;
+        if(r & 1) --r, super::add_edge(r + 3 * k, i, w);
+      }
+    }
 
-    add_edge(p, x, 0);
-    add_edge(x, y, w);
-    add_edge(y, q, 0);
-  }
-};
+    void add_edge(std::pair<int, int> p, std::pair<int, int> q, T w){
+      int x = super::size();
+      super::ds.emplace_back();
+      int y = super::size();
+      super::ds.emplace_back();
+
+      add_edge(p, x, 0);
+      add_edge(x, y, w);
+      add_edge(y, q, 0);
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -146,121 +148,125 @@ public:
  * @title Basic graph
  * @docs graph.md
  */
-template <typename T>
-struct Edge {
-  int from, to;
-  T cost;
-  int index = -1;
-  Edge(){}
-  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
-};
+namespace haar_lib {
+  template <typename T>
+  struct edge {
+    int from, to;
+    T cost;
+    int index = -1;
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+  };
 
-template <typename T>
-struct Graph {
-  using weight_type = T;
-  using edge_type = Edge<T>;
+  template <typename T>
+  struct graph {
+    using weight_type = T;
+    using edge_type = edge<T>;
 
-  std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
-  auto& operator[](size_t i){return data[i];}
-  const auto& operator[](size_t i) const {return data[i];}
+    auto& operator[](size_t i){return data[i];}
+    const auto& operator[](size_t i) const {return data[i];}
 
-  auto begin() const {return data.begin();}
-  auto end() const {return data.end();}
+    auto begin() const {return data.begin();}
+    auto end() const {return data.end();}
 
-  Graph(){}
-  Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
-  bool empty() const {return data.empty();}
-  int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+    int size() const {return data.size();}
 
-  void add_edge(int i, int j, T w, int index = -1){
-    data[i].emplace_back(i, j, w, index);
-  }
-
-  void add_undirected(int i, int j, T w, int index = -1){
-    add_edge(i, j, w, index);
-    add_edge(j, i, w, index);
-  }
-
-  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
-  void read(int M){
-    for(int i = 0; i < M; ++i){
-      int u, v; std::cin >> u >> v;
-      u -= I;
-      v -= I;
-      T w = 1;
-      if(WEIGHTED) std::cin >> w;
-      if(DIRECTED) add_edge(u, v, w, i);
-      else add_undirected(u, v, w, i);
+    void add_edge(int i, int j, T w, int index = -1){
+      data[i].emplace_back(i, j, w, index);
     }
-  }
-};
 
-template <typename T>
-using Tree = Graph<T>;
+    void add_undirected(int i, int j, T w, int index = -1){
+      add_edge(i, j, w, index);
+      add_edge(j, i, w, index);
+    }
+
+    template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+    void read(int M){
+      for(int i = 0; i < M; ++i){
+        int u, v; std::cin >> u >> v;
+        u -= I;
+        v -= I;
+        T w = 1;
+        if(WEIGHTED) std::cin >> w;
+        if(DIRECTED) add_edge(u, v, w, i);
+        else add_undirected(u, v, w, i);
+      }
+    }
+  };
+
+  template <typename T>
+  using tree = graph<T>;
+}
 #line 5 "Mylib/Graph/Template/range_edge_graph.cpp"
 
 /**
  * @title Range edge graph
  * @docs range_edge_graph.md
  */
-template <typename T>
-class RangeEdgeGraph : public Graph<T> {
-  using super = Graph<T>;
+namespace haar_lib {
+  template <typename T>
+  class range_edge_graph : public graph<T> {
+    using super = graph<T>;
 
-  int k, N;
-  int calc_size(int N) const {
-    int ret = 1;
-    while(ret < N) ret *= 2;
-    return ret;
-  }
-
-public:
-  RangeEdgeGraph(int N): Graph<T>(5 * (k = (calc_size(N)))), N(N){
-    for(int i = 2; i < 2 * k; ++i){
-      super::add_edge(k + (i >> 1), k + i, 0);
-      super::add_edge(3 * k + i, 3 * k + (i >> 1), 0);
+    int k, N;
+    int calc_size(int N) const {
+      int ret = 1;
+      while(ret < N) ret *= 2;
+      return ret;
     }
 
-    for(int i = 0; i < N; ++i){
-      super::add_edge(2 * k + i, i, 0);
-      super::add_edge(i, 4 * k + i, 0);
+  public:
+    range_edge_graph(int N): graph<T>(5 * (k = (calc_size(N)))), N(N){
+      for(int i = 2; i < 2 * k; ++i){
+        super::add_edge(k + (i >> 1), k + i, 0);
+        super::add_edge(3 * k + i, 3 * k + (i >> 1), 0);
+      }
+
+      for(int i = 0; i < N; ++i){
+        super::add_edge(2 * k + i, i, 0);
+        super::add_edge(i, 4 * k + i, 0);
+      }
     }
-  }
 
-  void add_edge(int i, int j, T w){
-    super::add_edge(i, j, w);
-  }
-
-  void add_edge(int i, std::pair<int, int> p, T w){
-    auto [l, r] = p;
-    for(l += k, r += k; l < r; l >>= 1, r >>= 1){
-      if(l & 1) super::add_edge(i, l + k, w), ++l;
-      if(r & 1) --r, super::add_edge(i, r + k, w);
+    void add_edge(int i, int j, T w){
+      super::add_edge(i, j, w);
     }
-  }
 
-  void add_edge(std::pair<int, int> p, int i, T w){
-    auto [l, r] = p;
-    for(l += k, r += k; l < r; l >>= 1, r >>= 1){
-      if(l & 1) super::add_edge(l + 3 * k, i, w), ++l;
-      if(r & 1) --r, super::add_edge(r + 3 * k, i, w);
+    void add_edge(int i, std::pair<int, int> p, T w){
+      auto [l, r] = p;
+      for(l += k, r += k; l < r; l >>= 1, r >>= 1){
+        if(l & 1) super::add_edge(i, l + k, w), ++l;
+        if(r & 1) --r, super::add_edge(i, r + k, w);
+      }
     }
-  }
 
-  void add_edge(std::pair<int, int> p, std::pair<int, int> q, T w){
-    int x = super::size();
-    super::data.emplace_back();
-    int y = super::size();
-    super::data.emplace_back();
+    void add_edge(std::pair<int, int> p, int i, T w){
+      auto [l, r] = p;
+      for(l += k, r += k; l < r; l >>= 1, r >>= 1){
+        if(l & 1) super::add_edge(l + 3 * k, i, w), ++l;
+        if(r & 1) --r, super::add_edge(r + 3 * k, i, w);
+      }
+    }
 
-    add_edge(p, x, 0);
-    add_edge(x, y, w);
-    add_edge(y, q, 0);
-  }
-};
+    void add_edge(std::pair<int, int> p, std::pair<int, int> q, T w){
+      int x = super::size();
+      super::ds.emplace_back();
+      int y = super::size();
+      super::ds.emplace_back();
+
+      add_edge(p, x, 0);
+      add_edge(x, y, w);
+      add_edge(y, q, 0);
+    }
+  };
+}
 
 ```
 {% endraw %}

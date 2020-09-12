@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#cf1ec978dae666792e23e53a3672d204">Mylib/Utils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Utils/run_length_encoding.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -50,17 +50,21 @@ layout: default
  * @title Run length encoding
  * @docs run_length_encoding.md
  */
-template <typename Container, typename T = typename Container::value_type>
-auto run_length_encoding(const Container &v){
-  std::vector<std::pair<T, int64_t>> ret;
+namespace haar_lib {
+  template <typename Container>
+  auto run_length_encoding(const Container &v){
+    using T = typename Container::value_type;
 
-  for(auto &x : v){
-    if(ret.empty()) ret.emplace_back(x, 1);
-    else if(ret.back().first == x) ++ret.back().second;
-    else ret.emplace_back(x, 1);
+    std::vector<std::pair<T, int64_t>> ret;
+
+    for(auto &x : v){
+      if(ret.empty()) ret.emplace_back(x, 1);
+      else if(ret.back().first == x) ++ret.back().second;
+      else ret.emplace_back(x, 1);
+    }
+
+    return ret;
   }
-
-  return ret;
 }
 
 ```
@@ -78,17 +82,21 @@ auto run_length_encoding(const Container &v){
  * @title Run length encoding
  * @docs run_length_encoding.md
  */
-template <typename Container, typename T = typename Container::value_type>
-auto run_length_encoding(const Container &v){
-  std::vector<std::pair<T, int64_t>> ret;
+namespace haar_lib {
+  template <typename Container>
+  auto run_length_encoding(const Container &v){
+    using T = typename Container::value_type;
 
-  for(auto &x : v){
-    if(ret.empty()) ret.emplace_back(x, 1);
-    else if(ret.back().first == x) ++ret.back().second;
-    else ret.emplace_back(x, 1);
+    std::vector<std::pair<T, int64_t>> ret;
+
+    for(auto &x : v){
+      if(ret.empty()) ret.emplace_back(x, 1);
+      else if(ret.back().first == x) ++ret.back().second;
+      else ret.emplace_back(x, 1);
+    }
+
+    return ret;
   }
-
-  return ret;
 }
 
 ```

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#9ebe5796a1fd941d1f273efb97ed22d8">test/yosupo-judge/persistent_queue</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/persistent_queue/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/persistent_queue">https://judge.yosupo.jp/problem/persistent_queue</a>
@@ -40,8 +40,8 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/DataStructure/Queue/persistent_queue.cpp.html">Persistent queue</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -56,16 +56,18 @@ layout: default
 #include "Mylib/DataStructure/Queue/persistent_queue.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int Q; std::cin >> Q;
 
-  std::vector<PersistentQueue<int>> S;
+  std::vector<hl::persistent_queue<int>> S;
 
-  for(auto [type, t] : input_tuples<int, int>(Q)){
+  for(auto [type, t] : hl::input_tuples<int, int>(Q)){
     if(type == 0){
       int x; std::cin >> x;
       if(t == -1){
-        PersistentQueue<int> a(x);
+        hl::persistent_queue<int> a(x);
         S.push_back(a);
       }else{
         auto res = S[t].push(x);
@@ -94,86 +96,111 @@ int main(){
 #include <vector>
 #line 2 "Mylib/DataStructure/Queue/persistent_queue.cpp"
 #include <array>
+#line 5 "Mylib/DataStructure/Queue/persistent_queue.cpp"
 
 /**
  * @title Persistent queue
  * @docs persistent_queue.md
  */
-template <typename T>
-class PersistentQueue {
-  constexpr static int MAX_SIZE_2 = 20; // size <= 2 ^ MAX_SIZE_2
+namespace haar_lib {
+  template <typename T>
+  class persistent_queue {
+    constexpr static int MAX_SIZE_2 = 20; // size <= 2 ^ MAX_SIZE_2
 
-  struct node {
-    T value;
-    std::array<node*, MAX_SIZE_2> ancestors;
-    int depth = 0;
-  };
+    struct node {
+      T value;
+      std::array<node*, MAX_SIZE_2> ancestors;
+      int depth = 0;
+    };
 
-  node *front_node = nullptr, *back_node = nullptr;
+    node *front_node = nullptr, *back_node = nullptr;
 
-  PersistentQueue(node* front_node, node* back_node): front_node(front_node), back_node(back_node){}
+    persistent_queue(node* front_node, node* back_node): front_node(front_node), back_node(back_node){}
 
-public:
-  PersistentQueue(){}
-  PersistentQueue(const T &value){
-    node *t = new node();
-    t->value = value;
-    back_node = front_node = t;
-  }
-
-  PersistentQueue push(const T &value) const {
-    node *t = new node();
-
-    t->value = value;
-
-    t->ancestors[0] = back_node;
-    for(int i = 1; i < MAX_SIZE_2; ++i){
-      node *s = t->ancestors[i - 1];
-      if(s) t->ancestors[i] = s->ancestors[i - 1];
-      else break;
+  public:
+    persistent_queue(){}
+    persistent_queue(const T &value){
+      node *t = new node();
+      t->value = value;
+      back_node = front_node = t;
     }
 
-    t->depth = back_node ? back_node->depth + 1 : 0;
+    persistent_queue push(const T &value) const {
+      node *t = new node();
 
-    return PersistentQueue(front_node ? front_node : t, t);
-  }
+      t->value = value;
 
-  PersistentQueue pop() const {
-    if(back_node->depth == front_node->depth){
-      return PersistentQueue(nullptr, nullptr);
-    }
-
-    int d = back_node->depth - front_node->depth - 1;
-
-    node *t = back_node;
-
-    for(int i = MAX_SIZE_2 - 1; i >= 0; --i){
-      if(d >= (1 << i)){
-        d -= (1 << i);
-        t = t->ancestors[i];
+      t->ancestors[0] = back_node;
+      for(int i = 1; i < MAX_SIZE_2; ++i){
+        node *s = t->ancestors[i - 1];
+        if(s) t->ancestors[i] = s->ancestors[i - 1];
+        else break;
       }
-      if(d == 0) break;
+
+      t->depth = back_node ? back_node->depth + 1 : 0;
+
+      return persistent_queue(front_node ? front_node : t, t);
     }
 
-    return PersistentQueue(t, back_node);
-  }
+    persistent_queue pop() const {
+      if(back_node->depth == front_node->depth){
+        return persistent_queue(nullptr, nullptr);
+      }
 
-  T front() const {
-    return front_node->value;
-  }
+      int d = back_node->depth - front_node->depth - 1;
 
-  T back() const {
-    return back_node->value;
-  }
+      node *t = back_node;
 
-  bool empty() const {
-    return not front_node;
-  }
+      for(int i = MAX_SIZE_2 - 1; i >= 0; --i){
+        if(d >= (1 << i)){
+          d -= (1 << i);
+          t = t->ancestors[i];
+        }
+        if(d == 0) break;
+      }
 
-  int size() const {
-    return front_node ? back_node->depth - front_node->depth + 1 : 0;
-  }
-};
+      return persistent_queue(t, back_node);
+    }
+
+    T front() const {
+      return front_node->value;
+    }
+
+    T back() const {
+      return back_node->value;
+    }
+
+    bool empty() const {
+      return not front_node;
+    }
+
+    int size() const {
+      return front_node ? back_node->depth - front_node->depth + 1 : 0;
+    }
+
+    friend std::ostream& operator<<(std::ostream &s, const persistent_queue &a){
+      s << "{";
+      std::vector<T> temp;
+      node *t = a.back_node;
+      while(t){
+        if(t == a.front_node){
+          temp.push_back(t->value);
+          break;
+        }
+        temp.push_back(t->value);
+        t = t->ancestors[0];
+      }
+
+      for(auto it = temp.begin(); it != temp.end(); ++it){
+        if(it != temp.begin()) s << ", ";
+        s << *it;
+      }
+
+      s << "}";
+      return s;
+    }
+  };
+}
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
 #include <utility>
@@ -183,79 +210,85 @@ public:
 /**
  * @docs input_tuple.md
  */
-template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
-}
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
+  }
 
-template <typename T, typename U>
-std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
-  s >> value.first >> value.second;
-  return s;
-}
+  template <typename T, typename U>
+  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+    s >> value.first >> value.second;
+    return s;
+  }
 
-template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
-  return s;
+  template <typename ... Args>
+  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
+    return s;
+  }
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
-template <typename ... Args>
-class InputTuples {
-  struct iter {
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuples {
+    struct iter {
+      using value_type = std::tuple<Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N, c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
+      value_type operator*(){
+        if(not fetched){
+          std::cin >> value;
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuples(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples(int N){
+    return InputTuples<Args ...>(N);
+  }
 }
 #line 7 "test/yosupo-judge/persistent_queue/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int Q; std::cin >> Q;
 
-  std::vector<PersistentQueue<int>> S;
+  std::vector<hl::persistent_queue<int>> S;
 
-  for(auto [type, t] : input_tuples<int, int>(Q)){
+  for(auto [type, t] : hl::input_tuples<int, int>(Q)){
     if(type == 0){
       int x; std::cin >> x;
       if(t == -1){
-        PersistentQueue<int> a(x);
+        hl::persistent_queue<int> a(x);
         S.push_back(a);
       }else{
         auto res = S[t].push(x);

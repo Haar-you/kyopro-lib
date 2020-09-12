@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#fe4a83e4dc2a7f834ed4cd85d6972a53">Mylib/Bit</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Bit/enumerate_sets_of_size_k.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 04:37:36+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -52,14 +52,16 @@ layout: default
  * @title Enumerate sets of size k
  * @docs enumerate_sets_of_size_k.md
  */
-template <typename Func>
-void enumerate_sets_of_size_k(int k, int n, const Func &f){
-  int c = (1 << k) - 1;
-  while(c < (1 << n)){
-    if(not f(c)) break;
-    const int x = c & (-c);
-    const int y = c + x;
-    c = ((c & (~y)) / x >> 1) | y;
+namespace haar_lib {
+  template <typename Func>
+  void enumerate_sets_of_size_k(int k, int n, const Func &f){
+    int c = (1 << k) - 1;
+    while(c < (1 << n)){
+      if(not f(c)) break;
+      const int x = c & (-c);
+      const int y = c + x;
+      c = ((c & (~y)) / x >> 1) | y;
+    }
   }
 }
 
@@ -75,14 +77,16 @@ void enumerate_sets_of_size_k(int k, int n, const Func &f){
  * @title Enumerate sets of size k
  * @docs enumerate_sets_of_size_k.md
  */
-template <typename Func>
-void enumerate_sets_of_size_k(int k, int n, const Func &f){
-  int c = (1 << k) - 1;
-  while(c < (1 << n)){
-    if(not f(c)) break;
-    const int x = c & (-c);
-    const int y = c + x;
-    c = ((c & (~y)) / x >> 1) | y;
+namespace haar_lib {
+  template <typename Func>
+  void enumerate_sets_of_size_k(int k, int n, const Func &f){
+    int c = (1 << k) - 1;
+    while(c < (1 << n)){
+      if(not f(c)) break;
+      const int x = c & (-c);
+      const int y = c + x;
+      c = ((c & (~y)) / x >> 1) | y;
+    }
   }
 }
 

@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Dihedral group
+# :heavy_check_mark: Dihedral group
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a11cf6f4bd6e76e33e4d7136e3eb98bc">Mylib/AlgebraicStructure/Group</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Group/dihedral.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -51,7 +51,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/0390/main.test.cpp.html">test/aoj/0390/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/0390/main.test.cpp.html">test/aoj/0390/main.test.cpp</a>
 
 
 ## Code
@@ -67,59 +67,61 @@ layout: default
  * @title Dihedral group
  * @docs dihedral.md
  */
-template <typename Tag>
-struct DihedralGroup {
-  struct R {
-    int value = 0;
-    friend std::ostream& operator<<(std::ostream &s, const R &a){
-      s << "R(" << a.value << ")";
-      return s;
+namespace haar_lib {
+  template <typename Tag>
+  struct dihedral_group {
+    struct R {
+      int value = 0;
+      friend std::ostream& operator<<(std::ostream &s, const R &a){
+        s << "R(" << a.value << ")";
+        return s;
+      }
+    };
+
+    struct S {
+      int value = 0;
+      friend std::ostream& operator<<(std::ostream &s, const S &a){
+        s << "S(" << a.value << ")";
+        return s;
+      }
+    };
+
+    static int K;
+
+    using value_type = std::variant<R, S>;
+
+    value_type operator()() const {
+      return R({0});
+    }
+
+    value_type operator()(const value_type &a, const value_type &b) const {
+      if(std::holds_alternative<R>(a)){
+        if(std::holds_alternative<R>(b)){
+          return R({(std::get<R>(a).value + std::get<R>(b).value) % K});
+        }else{
+          return S({(std::get<S>(b).value - std::get<R>(a).value + K) % K});
+        }
+      }else{
+        if(std::holds_alternative<R>(b)){
+          return S({(std::get<S>(a).value + std::get<R>(b).value) % K});
+        }else{
+          return R({(std::get<S>(b).value - std::get<S>(a).value + K) % K});
+        }
+      }
+    }
+
+    value_type inv(const value_type &a) const {
+      if(std::holds_alternative<R>(a)){
+        const int i = std::get<R>(a).value;
+        return R({i == 0 ? 0 : K - i});
+      }else{
+        return a;
+      }
     }
   };
 
-  struct S {
-    int value = 0;
-    friend std::ostream& operator<<(std::ostream &s, const S &a){
-      s << "S(" << a.value << ")";
-      return s;
-    }
-  };
-
-  static int K;
-
-  using value_type = std::variant<R, S>;
-
-  value_type operator()() const {
-    return R({0});
-  }
-
-  value_type operator()(const value_type &a, const value_type &b) const {
-    if(std::holds_alternative<R>(a)){
-      if(std::holds_alternative<R>(b)){
-        return R({(std::get<R>(a).value + std::get<R>(b).value) % K});
-      }else{
-        return S({(std::get<S>(b).value - std::get<R>(a).value + K) % K});
-      }
-    }else{
-      if(std::holds_alternative<R>(b)){
-        return S({(std::get<S>(a).value + std::get<R>(b).value) % K});
-      }else{
-        return R({(std::get<S>(b).value - std::get<S>(a).value + K) % K});
-      }
-    }
-  }
-
-  value_type inv(const value_type &a) const {
-    if(std::holds_alternative<R>(a)){
-      const int i = std::get<R>(a).value;
-      return R({i == 0 ? 0 : K - i});
-    }else{
-      return a;
-    }
-  }
-};
-
-template <typename Tag> int DihedralGroup<Tag>::K;
+  template <typename Tag> int dihedral_group<Tag>::K;
+}
 
 ```
 {% endraw %}
@@ -135,59 +137,61 @@ template <typename Tag> int DihedralGroup<Tag>::K;
  * @title Dihedral group
  * @docs dihedral.md
  */
-template <typename Tag>
-struct DihedralGroup {
-  struct R {
-    int value = 0;
-    friend std::ostream& operator<<(std::ostream &s, const R &a){
-      s << "R(" << a.value << ")";
-      return s;
+namespace haar_lib {
+  template <typename Tag>
+  struct dihedral_group {
+    struct R {
+      int value = 0;
+      friend std::ostream& operator<<(std::ostream &s, const R &a){
+        s << "R(" << a.value << ")";
+        return s;
+      }
+    };
+
+    struct S {
+      int value = 0;
+      friend std::ostream& operator<<(std::ostream &s, const S &a){
+        s << "S(" << a.value << ")";
+        return s;
+      }
+    };
+
+    static int K;
+
+    using value_type = std::variant<R, S>;
+
+    value_type operator()() const {
+      return R({0});
+    }
+
+    value_type operator()(const value_type &a, const value_type &b) const {
+      if(std::holds_alternative<R>(a)){
+        if(std::holds_alternative<R>(b)){
+          return R({(std::get<R>(a).value + std::get<R>(b).value) % K});
+        }else{
+          return S({(std::get<S>(b).value - std::get<R>(a).value + K) % K});
+        }
+      }else{
+        if(std::holds_alternative<R>(b)){
+          return S({(std::get<S>(a).value + std::get<R>(b).value) % K});
+        }else{
+          return R({(std::get<S>(b).value - std::get<S>(a).value + K) % K});
+        }
+      }
+    }
+
+    value_type inv(const value_type &a) const {
+      if(std::holds_alternative<R>(a)){
+        const int i = std::get<R>(a).value;
+        return R({i == 0 ? 0 : K - i});
+      }else{
+        return a;
+      }
     }
   };
 
-  struct S {
-    int value = 0;
-    friend std::ostream& operator<<(std::ostream &s, const S &a){
-      s << "S(" << a.value << ")";
-      return s;
-    }
-  };
-
-  static int K;
-
-  using value_type = std::variant<R, S>;
-
-  value_type operator()() const {
-    return R({0});
-  }
-
-  value_type operator()(const value_type &a, const value_type &b) const {
-    if(std::holds_alternative<R>(a)){
-      if(std::holds_alternative<R>(b)){
-        return R({(std::get<R>(a).value + std::get<R>(b).value) % K});
-      }else{
-        return S({(std::get<S>(b).value - std::get<R>(a).value + K) % K});
-      }
-    }else{
-      if(std::holds_alternative<R>(b)){
-        return S({(std::get<S>(a).value + std::get<R>(b).value) % K});
-      }else{
-        return R({(std::get<S>(b).value - std::get<S>(a).value + K) % K});
-      }
-    }
-  }
-
-  value_type inv(const value_type &a) const {
-    if(std::holds_alternative<R>(a)){
-      const int i = std::get<R>(a).value;
-      return R({i == 0 ? 0 : K - i});
-    }else{
-      return a;
-    }
-  }
-};
-
-template <typename Tag> int DihedralGroup<Tag>::K;
+  template <typename Tag> int dihedral_group<Tag>::K;
+}
 
 ```
 {% endraw %}

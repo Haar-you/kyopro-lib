@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0bdfbad8357bf1fcb5738704a6247436">test/yukicoder/430</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/430/main.aho_corasick.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/430">https://yukicoder.me/problems/no/430</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 * :x: <a href="../../../../library/Mylib/String/aho_corasick.cpp.html">Aho-Corasick algorithm</a>
 
 
@@ -56,6 +56,8 @@ layout: default
 #include "Mylib/String/aho_corasick.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -63,9 +65,9 @@ int main(){
   std::string S; std::cin >> S;
   int M; std::cin >> M;
 
-  auto C = input_vector<std::string>(M);
+  auto C = hl::input_vector<std::string>(M);
 
-  AhoCorasick ac;
+  hl::aho_corasick ac;
   for(int i = 0; i < M; ++i){
     ac.add(C[i]);
   }
@@ -101,121 +103,127 @@ int main(){
  * @title Aho-Corasick algorithm
  * @docs aho_corasick.md
  */
-class AhoCorasick {
-public:
-  int n;
-  std::vector<std::unordered_map<char, int>> trie;
-  std::vector<int> failure_edge;
-  std::vector<std::string> dict;
-  std::vector<std::vector<int>> dict_index;
+namespace haar_lib {
+  class aho_corasick {
+  public:
+    int n;
+    std::vector<std::unordered_map<char, int>> trie;
+    std::vector<int> failure_edge;
+    std::vector<std::string> dict;
+    std::vector<std::vector<int>> dict_index;
 
-  AhoCorasick(): n(1), trie(1), failure_edge(1){}
+    aho_corasick(): n(1), trie(1), failure_edge(1){}
 
-  void add(const std::string &s){
-    dict.push_back(s);
+    void add(const std::string &s){
+      dict.push_back(s);
 
-    int cur = 0;
+      int cur = 0;
 
-    for(int i = 0; i < (int)s.size(); ++i){
-      char c = s[i];
+      for(int i = 0; i < (int)s.size(); ++i){
+        char c = s[i];
 
-      if(trie[cur].find(c) != trie[cur].end()){
-        cur = trie[cur][c];
-      }else{
-        ++n;
-        trie.resize(n);
+        if(trie[cur].find(c) != trie[cur].end()){
+          cur = trie[cur][c];
+        }else{
+          ++n;
+          trie.resize(n);
 
-        trie[cur][c] = n - 1;
+          trie[cur][c] = n - 1;
 
-        cur = trie[cur][c];
+          cur = trie[cur][c];
+        }
       }
+
+      dict_index.resize(n);
+      dict_index[cur].push_back(dict.size() - 1);
     }
 
-    dict_index.resize(n);
-    dict_index[cur].push_back(dict.size() - 1);
-  }
+    void build(){
+      failure_edge.resize(n);
 
-  void build(){
-    failure_edge.resize(n);
+      std::queue<int> dq;
+      dq.push(0);
 
-    std::queue<int> dq;
-    dq.push(0);
+      while(not dq.empty()){
+        int cur = dq.front(); dq.pop();
 
-    while(not dq.empty()){
-      int cur = dq.front(); dq.pop();
+        for(auto &kv : trie[cur]){
+          char c = kv.first;
+          int next = kv.second;
 
-      for(auto &kv : trie[cur]){
-        char c = kv.first;
-        int next = kv.second;
+          if(cur == 0){
+            failure_edge[next] = 0;
 
-        if(cur == 0){
-          failure_edge[next] = 0;
+          }else{
+            int i = failure_edge[cur];
+            int j = 0;
 
-        }else{
-          int i = failure_edge[cur];
-          int j = 0;
+            while(1){
+              if(trie[i].find(c) != trie[i].end()){
+                j = trie[i][c];
+                break;
+              }else{
+                if(i == 0) break;
+                i = failure_edge[i];
+              }
+            }
 
-          while(1){
-            if(trie[i].find(c) != trie[i].end()){
-              j = trie[i][c];
-              break;
-            }else{
-              if(i == 0) break;
-              i = failure_edge[i];
+            failure_edge[next] = j;
+
+            for(auto k : dict_index[failure_edge[next]]){
+              dict_index[next].push_back(k);
             }
           }
 
-          failure_edge[next] = j;
+          dq.push(next);
+        }
+      }
+    }
 
-          for(auto k : dict_index[failure_edge[next]]){
-            dict_index[next].push_back(k);
-          }
+    template <typename Func> // function<void(int, int)>
+    void match(const std::string &s, const Func &f){
+      int cur = 0;
+
+      for(int i = 0; i < (int)s.size(); ++i){
+        char c = s[i];
+
+        while(cur != 0 and trie[cur].find(c) == trie[cur].end()){
+          cur = failure_edge[cur];
         }
 
-        dq.push(next);
+        cur = trie[cur][c];
+
+        for(auto j : dict_index[cur]){
+          int len = dict[j].size();
+          f(i - len + 1, len);
+        }
       }
     }
-  }
-
-  template <typename Func> // function<void(int, int)>
-  void match(const std::string &s, const Func &f){
-    int cur = 0;
-
-    for(int i = 0; i < (int)s.size(); ++i){
-      char c = s[i];
-
-      while(cur != 0 and trie[cur].find(c) == trie[cur].end()){
-        cur = failure_edge[cur];
-      }
-
-      cur = trie[cur][c];
-
-      for(auto j : dict_index[cur]){
-        int len = dict[j].size();
-        f(i - len + 1, len);
-      }
-    }
-  }
-};
+  };
+}
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
  * @docs input_vector.md
  */
-template <typename T>
-std::vector<T> input_vector(int N){
-  std::vector<T> ret(N);
-  for(int i = 0; i < N; ++i) std::cin >> ret[i];
-  return ret;
-}
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> input_vector(int N){
+    std::vector<T> ret(N);
+    for(int i = 0; i < N; ++i) std::cin >> ret[i];
+    return ret;
+  }
 
-template <typename T>
-std::vector<std::vector<T>> input_vector(int N, int M){
-  std::vector<std::vector<T>> ret(N);
-  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
-  return ret;
+  template <typename T>
+  std::vector<std::vector<T>> input_vector(int N, int M){
+    std::vector<std::vector<T>> ret(N);
+    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+    return ret;
+  }
 }
 #line 8 "test/yukicoder/430/main.aho_corasick.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   std::cin.tie(0);
@@ -224,9 +232,9 @@ int main(){
   std::string S; std::cin >> S;
   int M; std::cin >> M;
 
-  auto C = input_vector<std::string>(M);
+  auto C = hl::input_vector<std::string>(M);
 
-  AhoCorasick ac;
+  hl::aho_corasick ac;
   for(int i = 0; i < M; ++i){
     ac.add(C[i]);
   }

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#e1d7bebd3991495167778e37d1d75d40">Mylib/Number/Divisor</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Divisor/enumerate_divisors.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -54,24 +54,26 @@ layout: default
  * @title Enumerate divisors
  * @docs enumerate_divisors.md
  */
-std::vector<int64_t> enumerate_divisors(int64_t n){
-  std::vector<int64_t> temp, ret;
+namespace haar_lib {
+  std::vector<int64_t> enumerate_divisors(int64_t n){
+    std::vector<int64_t> temp, ret;
 
-  {
-    int64_t i;
-    for(i = 1LL; i * i < n; ++i){
-      if(n % i == 0){
-        temp.push_back(n / i);
-        ret.push_back(i);
+    {
+      int64_t i;
+      for(i = 1LL; i * i < n; ++i){
+        if(n % i == 0){
+          temp.push_back(n / i);
+          ret.push_back(i);
+        }
       }
+      if(i * i == n) ret.push_back(i);
     }
-    if(i * i == n) ret.push_back(i);
+
+    std::reverse(temp.begin(), temp.end());
+    ret.insert(ret.end(), temp.begin(), temp.end());
+
+    return ret;
   }
-
-  std::reverse(temp.begin(), temp.end());
-  ret.insert(ret.end(), temp.begin(), temp.end());
-
-  return ret;
 }
 
 ```
@@ -88,24 +90,26 @@ std::vector<int64_t> enumerate_divisors(int64_t n){
  * @title Enumerate divisors
  * @docs enumerate_divisors.md
  */
-std::vector<int64_t> enumerate_divisors(int64_t n){
-  std::vector<int64_t> temp, ret;
+namespace haar_lib {
+  std::vector<int64_t> enumerate_divisors(int64_t n){
+    std::vector<int64_t> temp, ret;
 
-  {
-    int64_t i;
-    for(i = 1LL; i * i < n; ++i){
-      if(n % i == 0){
-        temp.push_back(n / i);
-        ret.push_back(i);
+    {
+      int64_t i;
+      for(i = 1LL; i * i < n; ++i){
+        if(n % i == 0){
+          temp.push_back(n / i);
+          ret.push_back(i);
+        }
       }
+      if(i * i == n) ret.push_back(i);
     }
-    if(i * i == n) ret.push_back(i);
+
+    std::reverse(temp.begin(), temp.end());
+    ret.insert(ret.end(), temp.begin(), temp.end());
+
+    return ret;
   }
-
-  std::reverse(temp.begin(), temp.end());
-  ret.insert(ret.end(), temp.begin(), temp.end());
-
-  return ret;
 }
 
 ```

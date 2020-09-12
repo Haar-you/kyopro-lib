@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Fast Möbius transform (Subsets)
+# :heavy_check_mark: Fast Möbius transform (Subsets)
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/fast_mobius_transform_subset.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -60,7 +60,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/aoj/2446/main.test.cpp.html">test/aoj/2446/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/2446/main.test.cpp.html">test/aoj/2446/main.test.cpp</a>
 
 
 ## Code
@@ -76,14 +76,16 @@ layout: default
  * @title Fast Möbius transform (Subsets)
  * @docs fast_mobius_transform_subset.md
  */
-template <typename T, typename Func = std::minus<T>>
-std::vector<T> fast_mobius_transform_subset(std::vector<T> f, const Func &op = std::minus<T>()){
-  for(int i = 0; (1 << i) < (int)f.size(); ++i){
-    for(int j = 0; j < (int)f.size(); ++j){
-      if(j & (1 << i)) f[j] = op(f[j], f[j ^ (1 << i)]);
+namespace haar_lib {
+  template <typename T, typename Func = std::minus<T>>
+  std::vector<T> fast_mobius_transform_subset(std::vector<T> f, const Func &op = std::minus<T>()){
+    for(int i = 0; (1 << i) < (int)f.size(); ++i){
+      for(int j = 0; j < (int)f.size(); ++j){
+        if(j & (1 << i)) f[j] = op(f[j], f[j ^ (1 << i)]);
+      }
     }
+    return f;
   }
-  return f;
 }
 
 ```
@@ -100,14 +102,16 @@ std::vector<T> fast_mobius_transform_subset(std::vector<T> f, const Func &op = s
  * @title Fast Möbius transform (Subsets)
  * @docs fast_mobius_transform_subset.md
  */
-template <typename T, typename Func = std::minus<T>>
-std::vector<T> fast_mobius_transform_subset(std::vector<T> f, const Func &op = std::minus<T>()){
-  for(int i = 0; (1 << i) < (int)f.size(); ++i){
-    for(int j = 0; j < (int)f.size(); ++j){
-      if(j & (1 << i)) f[j] = op(f[j], f[j ^ (1 << i)]);
+namespace haar_lib {
+  template <typename T, typename Func = std::minus<T>>
+  std::vector<T> fast_mobius_transform_subset(std::vector<T> f, const Func &op = std::minus<T>()){
+    for(int i = 0; (1 << i) < (int)f.size(); ++i){
+      for(int j = 0; j < (int)f.size(); ++j){
+        if(j & (1 << i)) f[j] = op(f[j], f[j ^ (1 << i)]);
+      }
     }
+    return f;
   }
-  return f;
 }
 
 ```

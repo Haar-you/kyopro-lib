@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a1062884f064c2b3be412505b6627108">Mylib/TypicalProblem/IntervalSchedulingProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -75,24 +75,26 @@ layout: default
  * @title Interval scheduling problem
  * @docs interval_scheduling.md
  */
-template <typename T>
-std::vector<std::pair<T, T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){
-  const int N = l.size();
-  std::vector<std::pair<T, T>> ret;
-  std::vector<int> ord(N);
-  std::iota(ord.begin(), ord.end(), 0);
-  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
+namespace haar_lib {
+  template <typename T>
+  std::vector<std::pair<T, T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){
+    const int N = l.size();
+    std::vector<std::pair<T, T>> ret;
+    std::vector<int> ord(N);
+    std::iota(ord.begin(), ord.end(), 0);
+    std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
 
-  auto b = std::numeric_limits<T>::lowest();
+    auto b = std::numeric_limits<T>::lowest();
 
-  for(int i : ord){
-    if(l[i] >= b){
-      ret.emplace_back(l[i], r[i]);
-      b = r[i];
+    for(int i : ord){
+      if(l[i] >= b){
+        ret.emplace_back(l[i], r[i]);
+        b = r[i];
+      }
     }
-  }
 
-  return ret;
+    return ret;
+  }
 }
 
 ```
@@ -112,24 +114,26 @@ std::vector<std::pair<T, T>> interval_scheduling(const std::vector<T> &l, const 
  * @title Interval scheduling problem
  * @docs interval_scheduling.md
  */
-template <typename T>
-std::vector<std::pair<T, T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){
-  const int N = l.size();
-  std::vector<std::pair<T, T>> ret;
-  std::vector<int> ord(N);
-  std::iota(ord.begin(), ord.end(), 0);
-  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
+namespace haar_lib {
+  template <typename T>
+  std::vector<std::pair<T, T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){
+    const int N = l.size();
+    std::vector<std::pair<T, T>> ret;
+    std::vector<int> ord(N);
+    std::iota(ord.begin(), ord.end(), 0);
+    std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
 
-  auto b = std::numeric_limits<T>::lowest();
+    auto b = std::numeric_limits<T>::lowest();
 
-  for(int i : ord){
-    if(l[i] >= b){
-      ret.emplace_back(l[i], r[i]);
-      b = r[i];
+    for(int i : ord){
+      if(l[i] >= b){
+        ret.emplace_back(l[i], r[i]);
+        b = r[i];
+      }
     }
-  }
 
-  return ret;
+    return ret;
+  }
 }
 
 ```

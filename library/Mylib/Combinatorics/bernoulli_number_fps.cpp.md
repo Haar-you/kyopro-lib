@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#8fcb53b240254087f9d87015c4533bd0">Mylib/Combinatorics</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Combinatorics/bernoulli_number_fps.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-08-20 09:35:37+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -52,16 +52,18 @@ layout: default
  * @title Bernoulli number (FPS)
  * @docs bernoulli_number_fps.md
  */
-template <typename Fps, typename Ft>
-auto bernoulli_number_fps(int N, const Ft &ft){
-  Fps x(N + 1);
+namespace haar_lib {
+  template <typename Fps, typename Ft>
+  auto bernoulli_number_fps(int N, const Ft &ft){
+    Fps x(N + 1);
 
-  for(int i = 0; i <= N; ++i) x[i] = ft.inv_factorial(i + 1);
-  x = x.inv();
+    for(int i = 0; i <= N; ++i) x[i] = ft.inv_factorial(i + 1);
+    x = x.inv();
 
-  for(int i = 0; i <= N; ++i) x[i] *= ft.factorial(i);
+    for(int i = 0; i <= N; ++i) x[i] *= ft.factorial(i);
 
-  return x;
+    return x;
+  }
 }
 
 ```
@@ -76,16 +78,18 @@ auto bernoulli_number_fps(int N, const Ft &ft){
  * @title Bernoulli number (FPS)
  * @docs bernoulli_number_fps.md
  */
-template <typename Fps, typename Ft>
-auto bernoulli_number_fps(int N, const Ft &ft){
-  Fps x(N + 1);
+namespace haar_lib {
+  template <typename Fps, typename Ft>
+  auto bernoulli_number_fps(int N, const Ft &ft){
+    Fps x(N + 1);
 
-  for(int i = 0; i <= N; ++i) x[i] = ft.inv_factorial(i + 1);
-  x = x.inv();
+    for(int i = 0; i <= N; ++i) x[i] = ft.inv_factorial(i + 1);
+    x = x.inv();
 
-  for(int i = 0; i <= N; ++i) x[i] *= ft.factorial(i);
+    for(int i = 0; i <= N; ++i) x[i] *= ft.factorial(i);
 
-  return x;
+    return x;
+  }
 }
 
 ```

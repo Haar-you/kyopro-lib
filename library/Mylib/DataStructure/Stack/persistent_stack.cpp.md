@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#12526f91d29b13109723e3d0cc6a4265">Mylib/DataStructure/Stack</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Stack/persistent_stack.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -42,44 +42,60 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
+#include <iostream>
 
 /**
  * @title Persistent stack
  * @docs persistent_stack.md
  */
-template <typename T>
-struct PersistentStack {
-protected:
-  struct node {
-    T value;
-    node *next = nullptr;
+namespace haar_lib {
+  template <typename T>
+  struct persistent_stack {
+  protected:
+    struct node {
+      T value;
+      node *next = nullptr;
+    };
+
+    node *root;
+
+    persistent_stack(node *root): root(root){}
+
+  public:
+    persistent_stack(): root(nullptr){}
+
+    bool empty() const {
+      return not root;
+    }
+
+    const T& top() const {
+      return root->value;
+    }
+
+    persistent_stack push(const T &value) const {
+      node *t = new node({value, root});
+      return persistent_stack(t);
+    }
+
+    persistent_stack pop() const {
+      node *t = root->next;
+      return persistent_stack(t);
+    }
+
+    friend std::ostream& operator<<(std::ostream &s, const persistent_stack &a){
+      s << "{";
+      node *t = a.root;
+      while(t){
+        if(t != a.root) s << ", ";
+        s << t->value;
+        t = t->next;
+      }
+
+      s << "}";
+      return s;
+    }
   };
-
-  node *root;
-
-  PersistentStack(node *root): root(root){}
-
-public:
-  PersistentStack(): root(nullptr){}
-
-  bool empty() const {
-    return not root;
-  }
-
-  const T& top() const {
-    return root->value;
-  }
-
-  PersistentStack push(const T &value) const {
-    node *t = new node({value, root});
-    return PersistentStack(t);
-  }
-
-  PersistentStack pop() const {
-    node *t = root->next;
-    return PersistentStack(t);
-  }
-};
+}
 
 ```
 {% endraw %}
@@ -88,44 +104,60 @@ public:
 {% raw %}
 ```cpp
 #line 2 "Mylib/DataStructure/Stack/persistent_stack.cpp"
+#include <iostream>
 
 /**
  * @title Persistent stack
  * @docs persistent_stack.md
  */
-template <typename T>
-struct PersistentStack {
-protected:
-  struct node {
-    T value;
-    node *next = nullptr;
+namespace haar_lib {
+  template <typename T>
+  struct persistent_stack {
+  protected:
+    struct node {
+      T value;
+      node *next = nullptr;
+    };
+
+    node *root;
+
+    persistent_stack(node *root): root(root){}
+
+  public:
+    persistent_stack(): root(nullptr){}
+
+    bool empty() const {
+      return not root;
+    }
+
+    const T& top() const {
+      return root->value;
+    }
+
+    persistent_stack push(const T &value) const {
+      node *t = new node({value, root});
+      return persistent_stack(t);
+    }
+
+    persistent_stack pop() const {
+      node *t = root->next;
+      return persistent_stack(t);
+    }
+
+    friend std::ostream& operator<<(std::ostream &s, const persistent_stack &a){
+      s << "{";
+      node *t = a.root;
+      while(t){
+        if(t != a.root) s << ", ";
+        s << t->value;
+        t = t->next;
+      }
+
+      s << "}";
+      return s;
+    }
   };
-
-  node *root;
-
-  PersistentStack(node *root): root(root){}
-
-public:
-  PersistentStack(): root(nullptr){}
-
-  bool empty() const {
-    return not root;
-  }
-
-  const T& top() const {
-    return root->value;
-  }
-
-  PersistentStack push(const T &value) const {
-    node *t = new node({value, root});
-    return PersistentStack(t);
-  }
-
-  PersistentStack pop() const {
-    node *t = root->next;
-    return PersistentStack(t);
-  }
-};
+}
 
 ```
 {% endraw %}

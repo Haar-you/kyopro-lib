@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#59b5a0a6c0973fef022e4b1a7cf092fc">test/aoj/DSL_5_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_5_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_A</a>
@@ -40,8 +40,8 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Algorithm/Imos/imos_1d.cpp.html">1D Imos algorithm</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -56,11 +56,13 @@ layout: default
 #include "Mylib/Algorithm/Imos/imos_1d.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N, T; std::cin >> N >> T;
-  Imos1D<int> imos(T + 1);
+  hl::imos_1d<int> imos(T + 1);
 
-  for(auto [l, r] : input_tuples<int, int>(N)){
+  for(auto [l, r] : hl::input_tuples<int, int>(N)){
     imos.add(l, r, 1);
   }
 
@@ -95,26 +97,28 @@ int main(){
  * @title 1D Imos algorithm
  * @docs imos_1d.md
  */
-template <typename T>
-struct Imos1D {
-  using value_type = T;
+namespace haar_lib {
+  template <typename T>
+  struct imos_1d {
+    using value_type = T;
 
-  std::vector<T> data;
-  Imos1D(int n): data(n + 1){}
+    std::vector<T> data;
+    imos_1d(int n): data(n + 1){}
 
-  void add(int a, int b, const T& val){ // [a, b)
-    data[a] += 1;
-    data[b] -= 1;
-  }
-
-  void build(){
-    for(int i = 0; i < (int)data.size() - 1; ++i){
-      data[i + 1] += data[i];
+    void add(int a, int b, const T& val){ // [a, b)
+      data[a] += 1;
+      data[b] -= 1;
     }
-  }
 
-  T operator[](size_t i) const {return data[i];}
-};
+    void build(){
+      for(int i = 0; i < (int)data.size() - 1; ++i){
+        data[i + 1] += data[i];
+      }
+    }
+
+    T operator[](size_t i) const {return data[i];}
+  };
+}
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
 #include <utility>
@@ -124,74 +128,80 @@ struct Imos1D {
 /**
  * @docs input_tuple.md
  */
-template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
-}
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
+  }
 
-template <typename T, typename U>
-std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
-  s >> value.first >> value.second;
-  return s;
-}
+  template <typename T, typename U>
+  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+    s >> value.first >> value.second;
+    return s;
+  }
 
-template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
-  return s;
+  template <typename ... Args>
+  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
+    return s;
+  }
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
-template <typename ... Args>
-class InputTuples {
-  struct iter {
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuples {
+    struct iter {
+      using value_type = std::tuple<Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N, c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
+      value_type operator*(){
+        if(not fetched){
+          std::cin >> value;
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuples(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples(int N){
+    return InputTuples<Args ...>(N);
+  }
 }
 #line 7 "test/aoj/DSL_5_A/main.test.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N, T; std::cin >> N >> T;
-  Imos1D<int> imos(T + 1);
+  hl::imos_1d<int> imos(T + 1);
 
-  for(auto [l, r] : input_tuples<int, int>(N)){
+  for(auto [l, r] : hl::input_tuples<int, int>(N)){
     imos.add(l, r, 1);
   }
 

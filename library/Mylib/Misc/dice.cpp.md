@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Dice
+# :heavy_check_mark: Dice
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/dice.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/aoj/0502/main.test.cpp.html">test/aoj/0502/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/0502/main.test.cpp.html">test/aoj/0502/main.test.cpp</a>
 
 
 ## Code
@@ -47,42 +47,56 @@ layout: default
 {% raw %}
 ```cpp
 #pragma once
+#include <iostream>
 
 /**
  * @title Dice
  * @docs dice.md
  */
-struct Dice {
-  int top, bottom, front, back, right, left;
+namespace haar_lib {
+  struct dice {
+    int top, bottom, front, back, right, left;
 
-  Dice(){}
-  Dice(int top, int bottom, int front, int back, int right, int left):
-    top(top), bottom(bottom), front(front), back(back), right(right), left(left){}
+    dice(): top(), bottom(), front(), back(), right(), left(){}
+    dice(int top, int bottom, int front, int back, int right, int left):
+      top(top), bottom(bottom), front(front), back(back), right(right), left(left){}
 
-  Dice rot_left() const {
-    return Dice(right, left, front, back, bottom, top);
-  }
+    dice rot_left() const {
+      return dice(right, left, front, back, bottom, top);
+    }
 
-  Dice rot_right() const {
-    return Dice(left, right, front, back, top, bottom);
-  }
+    dice rot_right() const {
+      return dice(left, right, front, back, top, bottom);
+    }
 
-  Dice rot_front() const {
-    return Dice(back, front, top, bottom, right, left);
-  }
+    dice rot_front() const {
+      return dice(back, front, top, bottom, right, left);
+    }
 
-  Dice rot_back() const {
-    return Dice(front, back, bottom, top, right, left);
-  }
+    dice rot_back() const {
+      return dice(front, back, bottom, top, right, left);
+    }
 
-  Dice rot_clockwise() const {
-    return Dice(top, bottom, right, left, back, front);
-  }
+    dice rot_clockwise() const {
+      return dice(top, bottom, right, left, back, front);
+    }
 
-  Dice rot_counterclockwise() const {
-    return Dice(top, bottom, left, right, front, back);
-  }
-};
+    dice rot_counterclockwise() const {
+      return dice(top, bottom, left, right, front, back);
+    }
+
+    friend std::ostream& operator<<(std::ostream &s, const dice &a){
+      s << "("
+        << a.top << ", "
+        << a.bottom << ", "
+        << a.front << ", "
+        << a.back << ", "
+        << a.right << ", "
+        << a.left << ")";
+      return s;
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -91,42 +105,56 @@ struct Dice {
 {% raw %}
 ```cpp
 #line 2 "Mylib/Misc/dice.cpp"
+#include <iostream>
 
 /**
  * @title Dice
  * @docs dice.md
  */
-struct Dice {
-  int top, bottom, front, back, right, left;
+namespace haar_lib {
+  struct dice {
+    int top, bottom, front, back, right, left;
 
-  Dice(){}
-  Dice(int top, int bottom, int front, int back, int right, int left):
-    top(top), bottom(bottom), front(front), back(back), right(right), left(left){}
+    dice(): top(), bottom(), front(), back(), right(), left(){}
+    dice(int top, int bottom, int front, int back, int right, int left):
+      top(top), bottom(bottom), front(front), back(back), right(right), left(left){}
 
-  Dice rot_left() const {
-    return Dice(right, left, front, back, bottom, top);
-  }
+    dice rot_left() const {
+      return dice(right, left, front, back, bottom, top);
+    }
 
-  Dice rot_right() const {
-    return Dice(left, right, front, back, top, bottom);
-  }
+    dice rot_right() const {
+      return dice(left, right, front, back, top, bottom);
+    }
 
-  Dice rot_front() const {
-    return Dice(back, front, top, bottom, right, left);
-  }
+    dice rot_front() const {
+      return dice(back, front, top, bottom, right, left);
+    }
 
-  Dice rot_back() const {
-    return Dice(front, back, bottom, top, right, left);
-  }
+    dice rot_back() const {
+      return dice(front, back, bottom, top, right, left);
+    }
 
-  Dice rot_clockwise() const {
-    return Dice(top, bottom, right, left, back, front);
-  }
+    dice rot_clockwise() const {
+      return dice(top, bottom, right, left, back, front);
+    }
 
-  Dice rot_counterclockwise() const {
-    return Dice(top, bottom, left, right, front, back);
-  }
-};
+    dice rot_counterclockwise() const {
+      return dice(top, bottom, left, right, front, back);
+    }
+
+    friend std::ostream& operator<<(std::ostream &s, const dice &a){
+      s << "("
+        << a.top << ", "
+        << a.bottom << ", "
+        << a.front << ", "
+        << a.back << ", "
+        << a.right << ", "
+        << a.left << ")";
+      return s;
+    }
+  };
+}
 
 ```
 {% endraw %}

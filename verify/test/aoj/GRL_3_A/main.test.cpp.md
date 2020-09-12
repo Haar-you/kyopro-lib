@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#aef3de7eebed1830b43d31dc4a561484">test/aoj/GRL_3_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_3_A/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Graph/GraphUtils/articulation_points.cpp.html">Articulation points</a>
-* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
 
 
 ## Code
@@ -55,13 +55,15 @@ layout: default
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/GraphUtils/articulation_points.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int> g(V);
+  hl::graph<int> g(V);
   g.read<0, false, false>(E);
 
-  auto ans = articulation_points(g);
+  auto ans = hl::articulation_points(g);
   std::sort(ans.begin(), ans.end());
 
   for(auto x : ans) std::cout << x << std::endl;
@@ -88,128 +90,134 @@ int main(){
  * @title Basic graph
  * @docs graph.md
  */
-template <typename T>
-struct Edge {
-  int from, to;
-  T cost;
-  int index = -1;
-  Edge(){}
-  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
-};
+namespace haar_lib {
+  template <typename T>
+  struct edge {
+    int from, to;
+    T cost;
+    int index = -1;
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+  };
 
-template <typename T>
-struct Graph {
-  using weight_type = T;
-  using edge_type = Edge<T>;
+  template <typename T>
+  struct graph {
+    using weight_type = T;
+    using edge_type = edge<T>;
 
-  std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
-  auto& operator[](size_t i){return data[i];}
-  const auto& operator[](size_t i) const {return data[i];}
+    auto& operator[](size_t i){return data[i];}
+    const auto& operator[](size_t i) const {return data[i];}
 
-  auto begin() const {return data.begin();}
-  auto end() const {return data.end();}
+    auto begin() const {return data.begin();}
+    auto end() const {return data.end();}
 
-  Graph(){}
-  Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
-  bool empty() const {return data.empty();}
-  int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+    int size() const {return data.size();}
 
-  void add_edge(int i, int j, T w, int index = -1){
-    data[i].emplace_back(i, j, w, index);
-  }
-
-  void add_undirected(int i, int j, T w, int index = -1){
-    add_edge(i, j, w, index);
-    add_edge(j, i, w, index);
-  }
-
-  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
-  void read(int M){
-    for(int i = 0; i < M; ++i){
-      int u, v; std::cin >> u >> v;
-      u -= I;
-      v -= I;
-      T w = 1;
-      if(WEIGHTED) std::cin >> w;
-      if(DIRECTED) add_edge(u, v, w, i);
-      else add_undirected(u, v, w, i);
+    void add_edge(int i, int j, T w, int index = -1){
+      data[i].emplace_back(i, j, w, index);
     }
-  }
-};
 
-template <typename T>
-using Tree = Graph<T>;
+    void add_undirected(int i, int j, T w, int index = -1){
+      add_edge(i, j, w, index);
+      add_edge(j, i, w, index);
+    }
+
+    template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+    void read(int M){
+      for(int i = 0; i < M; ++i){
+        int u, v; std::cin >> u >> v;
+        u -= I;
+        v -= I;
+        T w = 1;
+        if(WEIGHTED) std::cin >> w;
+        if(DIRECTED) add_edge(u, v, w, i);
+        else add_undirected(u, v, w, i);
+      }
+    }
+  };
+
+  template <typename T>
+  using tree = graph<T>;
+}
 #line 5 "Mylib/Graph/GraphUtils/articulation_points.cpp"
 
 /**
  * @title Articulation points
  * @docs articulation_points.md
  */
-namespace articulation_points_impl {
-  template <typename T>
-  int dfs(
-    const Graph<T> &graph,
-    int root,
-    int cur,
-    std::vector<int> &visit,
-    std::vector<int> &low,
-    std::vector<int> &ret,
-    int &v
-  ){
-    if(visit[cur] != -1) return visit[cur];
-    visit[cur] = v;
+namespace haar_lib {
+  namespace articulation_points_impl {
+    template <typename T>
+    int dfs(
+      const graph<T> &g,
+      int root,
+      int cur,
+      std::vector<int> &visit,
+      std::vector<int> &low,
+      std::vector<int> &ret,
+      int &v
+    ){
+      if(visit[cur] != -1) return visit[cur];
+      visit[cur] = v;
 
-    int temp = v;
-    std::vector<int> children;
-    ++v;
+      int temp = v;
+      std::vector<int> children;
+      ++v;
 
-    for(auto &e : graph[cur]){
-      if(visit[e.to] == -1) children.push_back(e.to);
-      int t = dfs(graph, root, e.to, visit, low, ret, v);
-      temp = std::min(temp, t);
-    }
+      for(auto &e : g[cur]){
+        if(visit[e.to] == -1) children.push_back(e.to);
+        int t = dfs(g, root, e.to, visit, low, ret, v);
+        temp = std::min(temp, t);
+      }
 
-    low[cur] = temp;
+      low[cur] = temp;
 
-    if(cur != root or children.size() >= 2){
-      for(auto x : children){
-        if(low[x] >= visit[cur]){
-          ret.push_back(cur);
-          break;
+      if(cur != root or children.size() >= 2){
+        for(auto x : children){
+          if(low[x] >= visit[cur]){
+            ret.push_back(cur);
+            break;
+          }
         }
+      }
+
+      return low[cur];
+    };
+  }
+
+  template <typename T>
+  std::vector<int> articulation_points(const graph<T> &g){
+    const int n = g.size();
+    std::vector<int> visit(n, -1), low(n, -1), ret;
+    int v = 0;
+
+    for(int i = 0; i < n; ++i){
+      if(visit[i] == -1){
+        articulation_points_impl::dfs(g, i, i, visit, low, ret, v);
       }
     }
 
-    return low[cur];
-  };
-}
-
-template <typename T>
-std::vector<int> articulation_points(const Graph<T> &graph){
-  const int n = graph.size();
-  std::vector<int> visit(n, -1), low(n, -1), ret;
-  int v = 0;
-
-  for(int i = 0; i < n; ++i){
-    if(visit[i] == -1){
-      articulation_points_impl::dfs(graph, i, i, visit, low, ret, v);
-    }
+    return ret;
   }
-
-  return ret;
 }
 #line 7 "test/aoj/GRL_3_A/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int> g(V);
+  hl::graph<int> g(V);
   g.read<0, false, false>(E);
 
-  auto ans = articulation_points(g);
+  auto ans = hl::articulation_points(g);
   std::sort(ans.begin(), ans.end());
 
   for(auto x : ans) std::cout << x << std::endl;

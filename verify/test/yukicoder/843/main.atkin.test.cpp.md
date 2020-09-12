@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#05b6faf184ccb3df7524a3ce68064b76">test/yukicoder/843</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/843/main.atkin.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/843">https://yukicoder.me/problems/no/843</a>
@@ -52,8 +52,10 @@ layout: default
 #include <iostream>
 #include "Mylib/Number/Prime/atkin_sieve.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
-  AtkinSieve is_prime(500000);
+  hl::atkin_sieve is_prime(500000);
 
   int N; std::cin >> N;
 
@@ -94,53 +96,57 @@ int main(){
  * @title Sieve of Atkin
  * @docs atkin_sieve.md
  */
-class AtkinSieve {
-  std::vector<bool> is_prime;
+namespace haar_lib {
+  class atkin_sieve {
+    std::vector<bool> is_prime;
 
-public:
-  AtkinSieve(int MAX): is_prime(MAX + 1){
-    for(int64_t i = 1; i * i <= MAX; ++i){
-      for(int64_t j = 1; j * j <= MAX; ++j){
-        {
-          auto n = 4LL * i * i + j * j;
-          if(n <= MAX and (n % 12 == 1 or n % 12 == 5)){
-            is_prime[n] = not is_prime[n];
+  public:
+    atkin_sieve(int MAX): is_prime(MAX + 1){
+      for(int64_t i = 1; i * i <= MAX; ++i){
+        for(int64_t j = 1; j * j <= MAX; ++j){
+          {
+            auto n = 4LL * i * i + j * j;
+            if(n <= MAX and (n % 12 == 1 or n % 12 == 5)){
+              is_prime[n] = not is_prime[n];
+            }
           }
-        }
-        {
-          auto n = 3LL * i * i + j * j;
-          if(n <= MAX and n % 12 == 7){
-            is_prime[n] = not is_prime[n];
+          {
+            auto n = 3LL * i * i + j * j;
+            if(n <= MAX and n % 12 == 7){
+              is_prime[n] = not is_prime[n];
+            }
           }
-        }
-        if(i > j){
-          auto n = 3LL * i * i - j * j;
-          if(n <= MAX and n % 12 == 11){
-            is_prime[n] = not is_prime[n];
+          if(i > j){
+            auto n = 3LL * i * i - j * j;
+            if(n <= MAX and n % 12 == 11){
+              is_prime[n] = not is_prime[n];
+            }
           }
         }
       }
-    }
 
-    for(int64_t i = 5; i * i <= MAX; ++i){
-      if(is_prime[i]){
-        for(int64_t k = i * i, j = k; j <= MAX; j += k){
-          is_prime[j] = false;
+      for(int64_t i = 5; i * i <= MAX; ++i){
+        if(is_prime[i]){
+          for(int64_t k = i * i, j = k; j <= MAX; j += k){
+            is_prime[j] = false;
+          }
         }
       }
+
+      is_prime[2] = is_prime[3] = true;
     }
 
-    is_prime[2] = is_prime[3] = true;
-  }
-
-  bool operator()(int i) const {
-    return is_prime[i];
-  }
-};
+    bool operator()(int i) const {
+      return is_prime[i];
+    }
+  };
+}
 #line 5 "test/yukicoder/843/main.atkin.test.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
-  AtkinSieve is_prime(500000);
+  hl::atkin_sieve is_prime(500000);
 
   int N; std::cin >> N;
 

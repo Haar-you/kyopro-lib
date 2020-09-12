@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#a41ea9974466d4f509bcbf59f2ee921e">Mylib/Graph/TreeUtils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TreeUtils/euler_tour_bfs.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -69,7 +69,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Verified with
@@ -91,97 +91,99 @@ layout: default
  * @title Euler tour (BFS)
  * @docs euler_tour_bfs.md
  */
-template <typename T>
-struct EulerTourBFS {
-  int N;
-  std::vector<int> parent;
-  std::vector<int> depth;
+namespace haar_lib {
+  template <typename T>
+  struct euler_tour_bfs {
+    int N;
+    std::vector<int> parent;
+    std::vector<int> depth;
 
-  std::vector<std::vector<int>> bfs_order;
-  std::vector<std::vector<int>> dfs_order;
-  std::vector<int> left, right;
+    std::vector<std::vector<int>> bfs_order;
+    std::vector<std::vector<int>> dfs_order;
+    std::vector<int> left, right;
 
-  EulerTourBFS(const Tree<T> &tree, int root):
-    N(tree.size()), parent(N), depth(N), left(N), right(N)
-  {
+    euler_tour_bfs(const tree<T> &tr, int root):
+      N(tr.size()), parent(N), depth(N), left(N), right(N)
     {
-      int ord = 0;
-      dfs(tree, root, -1, 0, ord);
-    }
+      {
+        int ord = 0;
+        dfs(tr, root, -1, 0, ord);
+      }
 
-    {
-      std::queue<std::pair<int, int>> q;
-      q.emplace(root, 0);
-      int ord = 0;
+      {
+        std::queue<std::pair<int, int>> q;
+        q.emplace(root, 0);
+        int ord = 0;
 
-      while(not q.empty()){
-        auto [i, d] = q.front(); q.pop();
+        while(not q.empty()){
+          auto [i, d] = q.front(); q.pop();
 
-        if((int)bfs_order.size() <= d) bfs_order.push_back(std::vector<int>());
-        bfs_order[d].push_back(ord);
-        ++ord;
+          if((int)bfs_order.size() <= d) bfs_order.emplace_back();
+          bfs_order[d].push_back(ord);
+          ++ord;
 
-        for(auto &e : tree[i]){
-          if(e.to == parent[i]) continue;
-          q.emplace(e.to, d + 1);
+          for(auto &e : tr[i]){
+            if(e.to == parent[i]) continue;
+            q.emplace(e.to, d + 1);
+          }
         }
       }
     }
-  }
 
-  void dfs(const Tree<T> &tree, int cur, int par, int d, int &ord){
-    parent[cur] = par;
-    depth[cur] = d;
+    void dfs(const tree<T> &tr, int cur, int par, int d, int &ord){
+      parent[cur] = par;
+      depth[cur] = d;
 
-    if((int)dfs_order.size() <= d) dfs_order.emplace_back();
-    dfs_order[d].push_back(ord);
-    left[cur] = ord;
-    ++ord;
+      if((int)dfs_order.size() <= d) dfs_order.emplace_back();
+      dfs_order[d].push_back(ord);
+      left[cur] = ord;
+      ++ord;
 
-    for(auto &e : tree[cur]){
-      if(e.to == par) continue;
-      dfs(tree, e.to, cur, d + 1, ord);
+      for(auto &e : tr[cur]){
+        if(e.to == par) continue;
+        dfs(tr, e.to, cur, d + 1, ord);
+      }
+
+      right[cur] = ord;
     }
 
-    right[cur] = ord;
-  }
+  public:
+    template <typename Func>
+    void query_children(int i, int d, const Func &f) const {
+      if(i != -1){
+        d += depth[i];
+        if((int)bfs_order.size() > d){
+          int l = std::lower_bound(dfs_order[d].begin(), dfs_order[d].end(), left[i]) - dfs_order[d].begin();
+          int r = std::lower_bound(dfs_order[d].begin(), dfs_order[d].end(), right[i]) - dfs_order[d].begin();
 
-public:
-  template <typename Func>
-  void query_children(int i, int d, const Func &f) const {
-    if(i != -1){
-      d += depth[i];
-      if((int)bfs_order.size() > d){
-        int l = std::lower_bound(dfs_order[d].begin(), dfs_order[d].end(), left[i]) - dfs_order[d].begin();
-        int r = std::lower_bound(dfs_order[d].begin(), dfs_order[d].end(), right[i]) - dfs_order[d].begin();
+          if(l >= (int)bfs_order[d].size()) return;
+          if(r == l) return;
 
-        if(l >= (int)bfs_order[d].size()) return;
-        if(r == l) return;
-
-        f(bfs_order[d][l], bfs_order[d][r - 1] + 1);
+          f(bfs_order[d][l], bfs_order[d][r - 1] + 1);
+        }
       }
     }
-  }
 
-  template <typename Func>
-  void query_at(int i, const Func &f) const {
-    query_children(i, 0, f);
-  }
-
-  int get_parent(int i) const {
-    if(i == -1) return -1;
-    return parent[i];
-  }
-
-  int get_ancestor(int i, int k) const {
-    int ret = i;
-    for(int i = 0; i < k; ++i){
-      ret = get_parent(ret);
-      if(ret == -1) break;
+    template <typename Func>
+    void query_at(int i, const Func &f) const {
+      query_children(i, 0, f);
     }
-    return ret;
-  }
-};
+
+    int get_parent(int i) const {
+      if(i == -1) return -1;
+      return parent[i];
+    }
+
+    int get_ancestor(int i, int k) const {
+      int ret = i;
+      for(int i = 0; i < k; ++i){
+        ret = get_parent(ret);
+        if(ret == -1) break;
+      }
+      return ret;
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -199,157 +201,161 @@ public:
  * @title Basic graph
  * @docs graph.md
  */
-template <typename T>
-struct Edge {
-  int from, to;
-  T cost;
-  int index = -1;
-  Edge(){}
-  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
-};
+namespace haar_lib {
+  template <typename T>
+  struct edge {
+    int from, to;
+    T cost;
+    int index = -1;
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+  };
 
-template <typename T>
-struct Graph {
-  using weight_type = T;
-  using edge_type = Edge<T>;
+  template <typename T>
+  struct graph {
+    using weight_type = T;
+    using edge_type = edge<T>;
 
-  std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
-  auto& operator[](size_t i){return data[i];}
-  const auto& operator[](size_t i) const {return data[i];}
+    auto& operator[](size_t i){return data[i];}
+    const auto& operator[](size_t i) const {return data[i];}
 
-  auto begin() const {return data.begin();}
-  auto end() const {return data.end();}
+    auto begin() const {return data.begin();}
+    auto end() const {return data.end();}
 
-  Graph(){}
-  Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
-  bool empty() const {return data.empty();}
-  int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+    int size() const {return data.size();}
 
-  void add_edge(int i, int j, T w, int index = -1){
-    data[i].emplace_back(i, j, w, index);
-  }
-
-  void add_undirected(int i, int j, T w, int index = -1){
-    add_edge(i, j, w, index);
-    add_edge(j, i, w, index);
-  }
-
-  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
-  void read(int M){
-    for(int i = 0; i < M; ++i){
-      int u, v; std::cin >> u >> v;
-      u -= I;
-      v -= I;
-      T w = 1;
-      if(WEIGHTED) std::cin >> w;
-      if(DIRECTED) add_edge(u, v, w, i);
-      else add_undirected(u, v, w, i);
+    void add_edge(int i, int j, T w, int index = -1){
+      data[i].emplace_back(i, j, w, index);
     }
-  }
-};
 
-template <typename T>
-using Tree = Graph<T>;
+    void add_undirected(int i, int j, T w, int index = -1){
+      add_edge(i, j, w, index);
+      add_edge(j, i, w, index);
+    }
+
+    template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+    void read(int M){
+      for(int i = 0; i < M; ++i){
+        int u, v; std::cin >> u >> v;
+        u -= I;
+        v -= I;
+        T w = 1;
+        if(WEIGHTED) std::cin >> w;
+        if(DIRECTED) add_edge(u, v, w, i);
+        else add_undirected(u, v, w, i);
+      }
+    }
+  };
+
+  template <typename T>
+  using tree = graph<T>;
+}
 #line 5 "Mylib/Graph/TreeUtils/euler_tour_bfs.cpp"
 
 /**
  * @title Euler tour (BFS)
  * @docs euler_tour_bfs.md
  */
-template <typename T>
-struct EulerTourBFS {
-  int N;
-  std::vector<int> parent;
-  std::vector<int> depth;
+namespace haar_lib {
+  template <typename T>
+  struct euler_tour_bfs {
+    int N;
+    std::vector<int> parent;
+    std::vector<int> depth;
 
-  std::vector<std::vector<int>> bfs_order;
-  std::vector<std::vector<int>> dfs_order;
-  std::vector<int> left, right;
+    std::vector<std::vector<int>> bfs_order;
+    std::vector<std::vector<int>> dfs_order;
+    std::vector<int> left, right;
 
-  EulerTourBFS(const Tree<T> &tree, int root):
-    N(tree.size()), parent(N), depth(N), left(N), right(N)
-  {
+    euler_tour_bfs(const tree<T> &tr, int root):
+      N(tr.size()), parent(N), depth(N), left(N), right(N)
     {
-      int ord = 0;
-      dfs(tree, root, -1, 0, ord);
-    }
+      {
+        int ord = 0;
+        dfs(tr, root, -1, 0, ord);
+      }
 
-    {
-      std::queue<std::pair<int, int>> q;
-      q.emplace(root, 0);
-      int ord = 0;
+      {
+        std::queue<std::pair<int, int>> q;
+        q.emplace(root, 0);
+        int ord = 0;
 
-      while(not q.empty()){
-        auto [i, d] = q.front(); q.pop();
+        while(not q.empty()){
+          auto [i, d] = q.front(); q.pop();
 
-        if((int)bfs_order.size() <= d) bfs_order.push_back(std::vector<int>());
-        bfs_order[d].push_back(ord);
-        ++ord;
+          if((int)bfs_order.size() <= d) bfs_order.emplace_back();
+          bfs_order[d].push_back(ord);
+          ++ord;
 
-        for(auto &e : tree[i]){
-          if(e.to == parent[i]) continue;
-          q.emplace(e.to, d + 1);
+          for(auto &e : tr[i]){
+            if(e.to == parent[i]) continue;
+            q.emplace(e.to, d + 1);
+          }
         }
       }
     }
-  }
 
-  void dfs(const Tree<T> &tree, int cur, int par, int d, int &ord){
-    parent[cur] = par;
-    depth[cur] = d;
+    void dfs(const tree<T> &tr, int cur, int par, int d, int &ord){
+      parent[cur] = par;
+      depth[cur] = d;
 
-    if((int)dfs_order.size() <= d) dfs_order.emplace_back();
-    dfs_order[d].push_back(ord);
-    left[cur] = ord;
-    ++ord;
+      if((int)dfs_order.size() <= d) dfs_order.emplace_back();
+      dfs_order[d].push_back(ord);
+      left[cur] = ord;
+      ++ord;
 
-    for(auto &e : tree[cur]){
-      if(e.to == par) continue;
-      dfs(tree, e.to, cur, d + 1, ord);
+      for(auto &e : tr[cur]){
+        if(e.to == par) continue;
+        dfs(tr, e.to, cur, d + 1, ord);
+      }
+
+      right[cur] = ord;
     }
 
-    right[cur] = ord;
-  }
+  public:
+    template <typename Func>
+    void query_children(int i, int d, const Func &f) const {
+      if(i != -1){
+        d += depth[i];
+        if((int)bfs_order.size() > d){
+          int l = std::lower_bound(dfs_order[d].begin(), dfs_order[d].end(), left[i]) - dfs_order[d].begin();
+          int r = std::lower_bound(dfs_order[d].begin(), dfs_order[d].end(), right[i]) - dfs_order[d].begin();
 
-public:
-  template <typename Func>
-  void query_children(int i, int d, const Func &f) const {
-    if(i != -1){
-      d += depth[i];
-      if((int)bfs_order.size() > d){
-        int l = std::lower_bound(dfs_order[d].begin(), dfs_order[d].end(), left[i]) - dfs_order[d].begin();
-        int r = std::lower_bound(dfs_order[d].begin(), dfs_order[d].end(), right[i]) - dfs_order[d].begin();
+          if(l >= (int)bfs_order[d].size()) return;
+          if(r == l) return;
 
-        if(l >= (int)bfs_order[d].size()) return;
-        if(r == l) return;
-
-        f(bfs_order[d][l], bfs_order[d][r - 1] + 1);
+          f(bfs_order[d][l], bfs_order[d][r - 1] + 1);
+        }
       }
     }
-  }
 
-  template <typename Func>
-  void query_at(int i, const Func &f) const {
-    query_children(i, 0, f);
-  }
-
-  int get_parent(int i) const {
-    if(i == -1) return -1;
-    return parent[i];
-  }
-
-  int get_ancestor(int i, int k) const {
-    int ret = i;
-    for(int i = 0; i < k; ++i){
-      ret = get_parent(ret);
-      if(ret == -1) break;
+    template <typename Func>
+    void query_at(int i, const Func &f) const {
+      query_children(i, 0, f);
     }
-    return ret;
-  }
-};
+
+    int get_parent(int i) const {
+      if(i == -1) return -1;
+      return parent[i];
+    }
+
+    int get_ancestor(int i, int k) const {
+      int ret = i;
+      for(int i = 0; i < k; ++i){
+        ret = get_parent(ret);
+        if(ret == -1) break;
+      }
+      return ret;
+    }
+  };
+}
 
 ```
 {% endraw %}

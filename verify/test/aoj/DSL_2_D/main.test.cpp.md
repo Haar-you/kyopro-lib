@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#1cab81d9204e4e9816afce7019c71879">test/aoj/DSL_2_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_2_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D</a>
@@ -41,8 +41,8 @@ layout: default
 
 * :x: <a href="../../../../library/Mylib/AlgebraicStructure/Monoid/update.cpp.html">Update monoid</a>
 * :x: <a href="../../../../library/Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp.html">Dual segment tree</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
 
 
 ## Code
@@ -58,13 +58,15 @@ layout: default
 #include "Mylib/AlgebraicStructure/Monoid/update.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n, q; std::cin >> n >> q;
 
-  auto seg = DualSegmentTree<UpdateMonoid<int>>(n);
+  auto seg = hl::dual_segment_tree<hl::update_monoid<int>>(n);
   seg.init(INT_MAX);
 
-  for(auto [type] : input_tuples<int>(q)){
+  for(auto [type] : hl::input_tuples<int>(q)){
     if(type == 0){
       int s, t, x; std::cin >> s >> t >> x;
       seg.update(s, t + 1, x);
@@ -95,69 +97,71 @@ int main(){
  * @title Dual segment tree
  * @docs dual_segment_tree.md
  */
-template <typename Monoid>
-class DualSegmentTree {
-  using value_type = typename Monoid::value_type;
-  const static Monoid M;
+namespace haar_lib {
+  template <typename Monoid>
+  class dual_segment_tree {
+    using value_type = typename Monoid::value_type;
+    const static Monoid M;
 
-  const int depth, size, hsize;
-  std::vector<value_type> data;
+    const int depth, size, hsize;
+    std::vector<value_type> data;
 
-  void propagate(int i){
-    if(i < hsize){
-      data[i << 1 | 0] = M(data[i], data[i << 1 | 0]);
-      data[i << 1 | 1] = M(data[i], data[i << 1 | 1]);
-      data[i] = M();
-    }
-  }
-
-  void propagate_top_down(int i){
-    std::vector<int> temp;
-    while(i > 1){
-      i >>= 1;
-      temp.push_back(i);
+    void propagate(int i){
+      if(i < hsize){
+        data[i << 1 | 0] = M(data[i], data[i << 1 | 0]);
+        data[i << 1 | 1] = M(data[i], data[i << 1 | 1]);
+        data[i] = M();
+      }
     }
 
-    for(auto it = temp.rbegin(); it != temp.rend(); ++it) propagate(*it);
-  }
+    void propagate_top_down(int i){
+      std::vector<int> temp;
+      while(i > 1){
+        i >>= 1;
+        temp.push_back(i);
+      }
 
-public:
-  DualSegmentTree(int n):
-    depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
-    size(1 << depth), hsize(size / 2),
-    data(size, M())
-  {}
-
-  void update(int l, int r, const value_type &x){
-    propagate_top_down(l + hsize);
-    propagate_top_down(r + hsize);
-
-    int L = l + hsize;
-    int R = r + hsize;
-
-    while(L < R){
-      if(R & 1) --R, data[R] = M(x, data[R]);
-      if(L & 1) data[L] = M(x, data[L]), ++L;
-      L >>= 1, R >>= 1;
+      for(auto it = temp.rbegin(); it != temp.rend(); ++it) propagate(*it);
     }
-  }
 
-  value_type operator[](int i){
-    propagate_top_down(i + hsize);
-    return data[i + hsize];
-  }
+  public:
+    dual_segment_tree(int n):
+      depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
+      size(1 << depth), hsize(size / 2),
+      data(size, M())
+    {}
 
-  template <typename T>
-  void init_with_vector(const std::vector<T> &a){
-    data.assign(size, M());
-    for(int i = 0; i < (int)a.size(); ++i) data[hsize + i] = a[i];
-  }
+    void update(int l, int r, const value_type &x){
+      propagate_top_down(l + hsize);
+      propagate_top_down(r + hsize);
 
-  template <typename T>
-  void init(const T &val){
-    init_with_vector(std::vector<value_type>(hsize, val));
-  }
-};
+      int L = l + hsize;
+      int R = r + hsize;
+
+      while(L < R){
+        if(R & 1) --R, data[R] = M(x, data[R]);
+        if(L & 1) data[L] = M(x, data[L]), ++L;
+        L >>= 1, R >>= 1;
+      }
+    }
+
+    value_type operator[](int i){
+      propagate_top_down(i + hsize);
+      return data[i + hsize];
+    }
+
+    template <typename T>
+    void init_with_vector(const std::vector<T> &a){
+      data.assign(size, M());
+      for(int i = 0; i < (int)a.size(); ++i) data[hsize + i] = a[i];
+    }
+
+    template <typename T>
+    void init(const T &val){
+      init_with_vector(std::vector<value_type>(hsize, val));
+    }
+  };
+}
 #line 2 "Mylib/AlgebraicStructure/Monoid/update.cpp"
 #include <optional>
 
@@ -165,12 +169,14 @@ public:
  * @title Update monoid
  * @docs update.md
  */
-template <typename T>
-struct UpdateMonoid {
-  using value_type = std::optional<T>;
-  value_type operator()() const {return std::nullopt;}
-  value_type operator()(const value_type &a, const value_type &b) const {return (a ? a : b);}
-};
+namespace haar_lib {
+  template <typename T>
+  struct update_monoid {
+    using value_type = std::optional<T>;
+    value_type operator()() const {return std::nullopt;}
+    value_type operator()(const value_type &a, const value_type &b) const {return (a ? a : b);}
+  };
+}
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
 #include <utility>
@@ -180,76 +186,82 @@ struct UpdateMonoid {
 /**
  * @docs input_tuple.md
  */
-template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
-}
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
+  }
 
-template <typename T, typename U>
-std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
-  s >> value.first >> value.second;
-  return s;
-}
+  template <typename T, typename U>
+  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+    s >> value.first >> value.second;
+    return s;
+  }
 
-template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
-  return s;
+  template <typename ... Args>
+  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
+    return s;
+  }
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
-template <typename ... Args>
-class InputTuples {
-  struct iter {
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuples {
+    struct iter {
+      using value_type = std::tuple<Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N, c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
+      value_type operator*(){
+        if(not fetched){
+          std::cin >> value;
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuples(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples(int N){
+    return InputTuples<Args ...>(N);
+  }
 }
 #line 8 "test/aoj/DSL_2_D/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int n, q; std::cin >> n >> q;
 
-  auto seg = DualSegmentTree<UpdateMonoid<int>>(n);
+  auto seg = hl::dual_segment_tree<hl::update_monoid<int>>(n);
   seg.init(INT_MAX);
 
-  for(auto [type] : input_tuples<int>(q)){
+  for(auto [type] : hl::input_tuples<int>(q)){
     if(type == 0){
       int s, t, x; std::cin >> s >> t >> x;
       seg.update(s, t + 1, x);

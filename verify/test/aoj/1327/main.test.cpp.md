@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/1327/main.test.cpp
+# :heavy_check_mark: test/aoj/1327/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#0bdfbad106799ccca05cbd57bfdddfd4">test/aoj/1327</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1327/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327</a>
@@ -39,11 +39,11 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
-* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/power.cpp.html">Power of a matrix</a>
-* :x: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Square matrix</a>
-* :x: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">Modint (Runtime mod)</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/power.cpp.html">Power of a matrix</a>
+* :question: <a href="../../../../library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Square matrix</a>
+* :question: <a href="../../../../library/Mylib/Number/Mint/runtime_mint.cpp.html">Modint (Runtime mod)</a>
 
 
 ## Code
@@ -61,9 +61,11 @@ layout: default
 #include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 struct tag {};
-using mint = RuntimeModInt<tag>;
-using M = SquareMatrix<mint, tag>;
+using mint = hl::runtime_modint<tag>;
+using M = hl::square_matrix<mint, tag>;
 
 int main(){
   int n, m, a, b, c, t;
@@ -71,7 +73,7 @@ int main(){
     mint::init(m);
     M::init(n);
 
-    auto s = input_vector<mint>(n);
+    auto s = hl::input_vector<mint>(n);
 
     M mat;
 
@@ -81,7 +83,7 @@ int main(){
       if(i + 1 < n) mat[i][i + 1] = c;
     }
 
-    mat = power(mat, t);
+    mat = hl::power(mat, t);
 
     std::vector<mint> ans(n);
 
@@ -91,7 +93,7 @@ int main(){
       }
     }
 
-    std::cout << join(ans.begin(), ans.end()) << "\n";
+    std::cout << hl::join(ans.begin(), ans.end()) << "\n";
   }
 
   return 0;
@@ -115,135 +117,139 @@ int main(){
  * @title Modint (Runtime mod)
  * @docs runtime_mint.md
  */
-template <typename Tag>
-class RuntimeModInt {
-public:
-  static uint32_t M;
+namespace haar_lib {
+  template <typename Tag>
+  class runtime_modint {
+  public:
+    static uint32_t M;
 
-  uint64_t val;
-  RuntimeModInt(): val(0){}
-  RuntimeModInt(int64_t n){
-    if(n >= M) val = n % M;
-    else if(n < 0) val = n % M + M;
-    else val = n;
-  }
-
-  auto operator+(const RuntimeModInt &a) const {return RuntimeModInt(val + a.val);}
-  auto operator-(const RuntimeModInt &a) const {return RuntimeModInt(val - a.val);}
-  auto operator*(const RuntimeModInt &a) const {return RuntimeModInt(val * a.val);}
-  auto operator/(const RuntimeModInt &a) const {return RuntimeModInt(val * a.inv().val);}
-
-  const auto& operator=(const RuntimeModInt &a){val = a.val; return *this;}
-  const auto& operator+=(const RuntimeModInt &a){if((val += a.val) >= M) val -= M; return *this;}
-  const auto& operator-=(const RuntimeModInt &a){if(val < a.val) val += M; val -= a.val; return *this;}
-  const auto& operator*=(const RuntimeModInt &a){(val *= a.val) %= M; return *this;}
-  const auto& operator/=(const RuntimeModInt &a){(val *= a.inv().val) %= M; return *this;}
-
-  bool operator==(const RuntimeModInt &a) const {return val == a.val;}
-  bool operator!=(const RuntimeModInt &a) const {return val != a.val;}
-
-  static auto power(int64_t n, int64_t p){
-    RuntimeModInt ret = 1, e = n;
-    for(; p; e *= e, p >>= 1) if(p & 1) ret *= e;
-    return ret;
-  }
-
-  auto power(int64_t p) const {
-    RuntimeModInt ret = 1, e = val;
-    for(; p; e *= e, p >>= 1) if(p & 1) ret *= e;
-    return ret;
-  }
-
-  RuntimeModInt inv() const {
-    int64_t a = val, b = M, u = 1, v = 0;
-
-    while(b){
-      int64_t t = a / b;
-      a -= t * b; std::swap(a, b);
-      u -= t * v; std::swap(u, v);
+    uint64_t val;
+    runtime_modint(): val(0){}
+    runtime_modint(int64_t n){
+      if(n >= M) val = n % M;
+      else if(n < 0) val = n % M + M;
+      else val = n;
     }
-    u %= M;
-    if(u < 0) u += M;
 
-    return u;
-  }
+    auto operator+(const runtime_modint &a) const {return runtime_modint(val + a.val);}
+    auto operator-(const runtime_modint &a) const {return runtime_modint(val - a.val);}
+    auto operator*(const runtime_modint &a) const {return runtime_modint(val * a.val);}
+    auto operator/(const runtime_modint &a) const {return runtime_modint(val * a.inv().val);}
 
-  explicit operator int32_t() const noexcept {return val;}
-  explicit operator int64_t() const noexcept {return val;}
+    const auto& operator=(const runtime_modint &a){val = a.val; return *this;}
+    const auto& operator+=(const runtime_modint &a){if((val += a.val) >= M) val -= M; return *this;}
+    const auto& operator-=(const runtime_modint &a){if(val < a.val) val += M; val -= a.val; return *this;}
+    const auto& operator*=(const runtime_modint &a){(val *= a.val) %= M; return *this;}
+    const auto& operator/=(const runtime_modint &a){(val *= a.inv().val) %= M; return *this;}
 
-  static void init(uint32_t m){M = m;}
-};
+    bool operator==(const runtime_modint &a) const {return val == a.val;}
+    bool operator!=(const runtime_modint &a) const {return val != a.val;}
 
-template <typename Tag> auto operator-(const RuntimeModInt<Tag> &a){return RuntimeModInt(-a.val);}
+    static auto power(int64_t n, int64_t p){
+      runtime_modint ret = 1, e = n;
+      for(; p; e *= e, p >>= 1) if(p & 1) ret *= e;
+      return ret;
+    }
 
-template <typename Tag> auto operator+(int64_t a, const RuntimeModInt<Tag> &b){return RuntimeModInt(a) + b;}
-template <typename Tag> auto operator-(int64_t a, const RuntimeModInt<Tag> &b){return RuntimeModInt(a) - b;}
-template <typename Tag> auto operator*(int64_t a, const RuntimeModInt<Tag> &b){return RuntimeModInt(a) * b;}
-template <typename Tag> auto operator/(int64_t a, const RuntimeModInt<Tag> &b){return RuntimeModInt(a) / b;}
+    auto power(int64_t p) const {
+      runtime_modint ret = 1, e = val;
+      for(; p; e *= e, p >>= 1) if(p & 1) ret *= e;
+      return ret;
+    }
 
-template <typename Tag> uint32_t RuntimeModInt<Tag>::M;
+    runtime_modint inv() const {
+      int64_t a = val, b = M, u = 1, v = 0;
 
-template <typename Tag> std::istream& operator>>(std::istream &is, RuntimeModInt<Tag> &a){is >> a.val; return is;}
-template <typename Tag> std::ostream& operator<<(std::ostream &os, const RuntimeModInt<Tag> &a){os << a.val; return os;}
+      while(b){
+        int64_t t = a / b;
+        a -= t * b; std::swap(a, b);
+        u -= t * v; std::swap(u, v);
+      }
+      u %= M;
+      if(u < 0) u += M;
+
+      return u;
+    }
+
+    explicit operator int32_t() const noexcept {return val;}
+    explicit operator int64_t() const noexcept {return val;}
+
+    static void init(uint32_t m){M = m;}
+  };
+
+  template <typename Tag> auto operator-(const runtime_modint<Tag> &a){return runtime_modint(-a.val);}
+
+  template <typename Tag> auto operator+(int64_t a, const runtime_modint<Tag> &b){return runtime_modint(a) + b;}
+  template <typename Tag> auto operator-(int64_t a, const runtime_modint<Tag> &b){return runtime_modint(a) - b;}
+  template <typename Tag> auto operator*(int64_t a, const runtime_modint<Tag> &b){return runtime_modint(a) * b;}
+  template <typename Tag> auto operator/(int64_t a, const runtime_modint<Tag> &b){return runtime_modint(a) / b;}
+
+  template <typename Tag> uint32_t runtime_modint<Tag>::M;
+
+  template <typename Tag> std::istream& operator>>(std::istream &is, runtime_modint<Tag> &a){is >> a.val; return is;}
+  template <typename Tag> std::ostream& operator<<(std::ostream &os, const runtime_modint<Tag> &a){os << a.val; return os;}
+}
 #line 4 "Mylib/LinearAlgebra/Square/square_matrix.cpp"
 
 /**
  * @title Square matrix
  * @docs square_matrix.md
  */
-template <typename T, class Tag>
-struct SquareMatrix {
-  using value_type = T;
+namespace haar_lib {
+  template <typename T, class Tag>
+  struct square_matrix {
+    using value_type = T;
 
-  static int N;
-  static void init(int n){N = n;}
-  std::vector<std::vector<T>> matrix;
+    static int N;
+    static void init(int n){N = n;}
+    std::vector<std::vector<T>> matrix;
 
-  SquareMatrix(): matrix(N, std::vector<T>(N)){}
-  SquareMatrix(const T &val): matrix(N, std::vector<T>(N, val)){}
-  SquareMatrix(const std::vector<std::vector<T>> &matrix): matrix(matrix){}
+    square_matrix(): matrix(N, std::vector<T>(N)){}
+    square_matrix(const T &val): matrix(N, std::vector<T>(N, val)){}
+    square_matrix(const std::vector<std::vector<T>> &matrix): matrix(matrix){}
 
-  bool operator==(const SquareMatrix &val) const {return matrix == val.matrix;}
-  bool operator!=(const SquareMatrix &val) const {return !(*this == val);}
+    bool operator==(const square_matrix &val) const {return matrix == val.matrix;}
+    bool operator!=(const square_matrix &val) const {return !(*this == val);}
 
-  auto& operator=(const SquareMatrix &val){
-    this->matrix = val.matrix;
-    return *this;
-  }
+    auto& operator=(const square_matrix &val){
+      this->matrix = val.matrix;
+      return *this;
+    }
 
-  auto& operator+=(const SquareMatrix &val){
-    for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] + val[i][j];
-    return *this;
-  }
+    auto& operator+=(const square_matrix &val){
+      for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] + val[i][j];
+      return *this;
+    }
 
-  auto& operator-=(const SquareMatrix &val){
-    for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] - val[i][j];
-    return *this;
-  }
+    auto& operator-=(const square_matrix &val){
+      for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] - val[i][j];
+      return *this;
+    }
 
-  auto& operator*=(const SquareMatrix &val){
-    std::vector<std::vector<T>> temp(N, std::vector<T>(N));
-    for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) for(int k = 0; k < N; ++k) temp[i][j] = temp[i][j] + matrix[i][k] * val[k][j];
-    std::swap(matrix, temp);
-    return *this;
-  }
+    auto& operator*=(const square_matrix &val){
+      std::vector<std::vector<T>> temp(N, std::vector<T>(N));
+      for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) for(int k = 0; k < N; ++k) temp[i][j] = temp[i][j] + matrix[i][k] * val[k][j];
+      std::swap(matrix, temp);
+      return *this;
+    }
 
-  const auto& operator[](size_t i) const {return matrix[i];}
-  auto& operator[](size_t i){return matrix[i];}
-  int size() const {return N;}
+    const auto& operator[](size_t i) const {return matrix[i];}
+    auto& operator[](size_t i){return matrix[i];}
+    int size() const {return N;}
 
-  static auto make_unit(){
-    SquareMatrix ret;
-    for(int i = 0; i < N; ++i) ret[i][i] = 1;
-    return ret;
-  }
+    static auto make_unit(){
+      square_matrix ret;
+      for(int i = 0; i < N; ++i) ret[i][i] = 1;
+      return ret;
+    }
 
-  friend auto operator+(const SquareMatrix &a, const SquareMatrix &b){auto ret = a; ret += b; return ret;}
-  friend auto operator-(const SquareMatrix &a, const SquareMatrix &b){auto ret = a; ret -= b; return ret;}
-  friend auto operator*(const SquareMatrix &a, const SquareMatrix &b){auto ret = a; ret *= b; return ret;}
-};
+    friend auto operator+(const square_matrix &a, const square_matrix &b){auto ret = a; ret += b; return ret;}
+    friend auto operator-(const square_matrix &a, const square_matrix &b){auto ret = a; ret -= b; return ret;}
+    friend auto operator*(const square_matrix &a, const square_matrix &b){auto ret = a; ret *= b; return ret;}
+  };
 
-template <typename T, class Tag> int SquareMatrix<T, Tag>::N;
+  template <typename T, class Tag> int square_matrix<T, Tag>::N;
+}
 #line 2 "Mylib/LinearAlgebra/Square/power.cpp"
 #include <cstdint>
 
@@ -251,17 +257,19 @@ template <typename T, class Tag> int SquareMatrix<T, Tag>::N;
  * @title Power of a matrix
  * @docs power.md
  */
-template <typename M>
-M power(M a, uint64_t p){
-  if(p == 0) return M::make_unit();
-  if(p == 1) return a;
+namespace haar_lib {
+  template <typename M>
+  M power(M a, uint64_t p){
+    if(p == 0) return M::make_unit();
+    if(p == 1) return a;
 
-  M temp = power(a, p >> 1);
-  auto ret = temp * temp;
+    M temp = power(a, p >> 1);
+    auto ret = temp * temp;
 
-  if(p & 1) ret *= a;
+    if(p & 1) ret *= a;
 
-  return ret;
+    return ret;
+  }
 }
 #line 3 "Mylib/IO/join.cpp"
 #include <sstream>
@@ -270,40 +278,46 @@ M power(M a, uint64_t p){
 /**
  * @docs join.md
  */
-template <typename ITER>
-std::string join(ITER first, ITER last, std::string delim = " "){
-  std::stringstream s;
+namespace haar_lib {
+  template <typename Iter>
+  std::string join(Iter first, Iter last, std::string delim = " "){
+    std::stringstream s;
 
-  for(auto it = first; it != last; ++it){
-    if(it != first) s << delim;
-    s << *it;
+    for(auto it = first; it != last; ++it){
+      if(it != first) s << delim;
+      s << *it;
+    }
+
+    return s.str();
   }
-
-  return s.str();
 }
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
  * @docs input_vector.md
  */
-template <typename T>
-std::vector<T> input_vector(int N){
-  std::vector<T> ret(N);
-  for(int i = 0; i < N; ++i) std::cin >> ret[i];
-  return ret;
-}
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> input_vector(int N){
+    std::vector<T> ret(N);
+    for(int i = 0; i < N; ++i) std::cin >> ret[i];
+    return ret;
+  }
 
-template <typename T>
-std::vector<std::vector<T>> input_vector(int N, int M){
-  std::vector<std::vector<T>> ret(N);
-  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
-  return ret;
+  template <typename T>
+  std::vector<std::vector<T>> input_vector(int N, int M){
+    std::vector<std::vector<T>> ret(N);
+    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+    return ret;
+  }
 }
 #line 10 "test/aoj/1327/main.test.cpp"
 
+namespace hl = haar_lib;
+
 struct tag {};
-using mint = RuntimeModInt<tag>;
-using M = SquareMatrix<mint, tag>;
+using mint = hl::runtime_modint<tag>;
+using M = hl::square_matrix<mint, tag>;
 
 int main(){
   int n, m, a, b, c, t;
@@ -311,7 +325,7 @@ int main(){
     mint::init(m);
     M::init(n);
 
-    auto s = input_vector<mint>(n);
+    auto s = hl::input_vector<mint>(n);
 
     M mat;
 
@@ -321,7 +335,7 @@ int main(){
       if(i + 1 < n) mat[i][i + 1] = c;
     }
 
-    mat = power(mat, t);
+    mat = hl::power(mat, t);
 
     std::vector<mint> ans(n);
 
@@ -331,7 +345,7 @@ int main(){
       }
     }
 
-    std::cout << join(ans.begin(), ans.end()) << "\n";
+    std::cout << hl::join(ans.begin(), ans.end()) << "\n";
   }
 
   return 0;

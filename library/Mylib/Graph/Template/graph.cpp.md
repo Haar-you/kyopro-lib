@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Basic graph
+# :question: Basic graph
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#d9afcc29a820df9cbf03e35749db39d5">Mylib/Graph/Template</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Template/graph.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
 
 ## Required by
 
-* :x: <a href="../BipartiteGraph/check_bipartite_graph.cpp.html">Check bipartite graph</a>
+* :heavy_check_mark: <a href="../BipartiteGraph/check_bipartite_graph.cpp.html">Check bipartite graph</a>
 * :x: <a href="../Cycle/detect_cycle.cpp.html">Detect cycle</a>
 * :warning: <a href="../Cycle/directed_shortest_cycle.cpp.html">Directed shortest cycle</a>
 * :warning: <a href="../Cycle/undirected_shortest_cycle.cpp.html">Undirected shortest cycle</a>
@@ -54,26 +54,26 @@ layout: default
 * :x: <a href="../MinimumSpanningTree/chu_liu_edmonds.cpp.html">Chu-Liu/Edmonds algorithm</a>
 * :x: <a href="../MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
 * :x: <a href="../MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
-* :x: <a href="../MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
+* :question: <a href="../MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
 * :x: <a href="../ShortestPath/bellman_ford.cpp.html">Bellman-Ford algorithm</a>
 * :warning: <a href="../ShortestPath/bfs_0_1.cpp.html">0-1 BFS</a>
-* :x: <a href="../ShortestPath/bfs_shortest_path.cpp.html">BFS shortest path</a>
+* :heavy_check_mark: <a href="../ShortestPath/bfs_shortest_path.cpp.html">BFS shortest path</a>
 * :x: <a href="../ShortestPath/dial_algorithm.cpp.html">Dial's algorithm</a>
-* :x: <a href="../ShortestPath/dijkstra.cpp.html">Dijkstra algorithm</a>
+* :question: <a href="../ShortestPath/dijkstra.cpp.html">Dijkstra algorithm</a>
 * :x: <a href="../ShortestPath/warshall_floyd.cpp.html">Warshall-Floyd algorithm</a>
 * :x: <a href="../ShortestPath/yen_algorithm.cpp.html">Yen's algorithm</a>
 * :warning: <a href="range_edge_graph.cpp.html">Range edge graph</a>
 * :x: <a href="../TopologicalSort/topological_sort.cpp.html">Topological sort</a>
 * :warning: <a href="../TopologicalSort/topological_sort_lexicographical.cpp.html">Topological sort (Lexicographically minimum)</a>
 * :warning: <a href="../TreeUtils/centroid.cpp.html">Enumerate centroids</a>
-* :warning: <a href="../TreeUtils/centroid_decomposition.cpp.html">Mylib/Graph/TreeUtils/centroid_decomposition.cpp</a>
+* :warning: <a href="../TreeUtils/centroid_decomposition.cpp.html">Centroid decomposition</a>
 * :x: <a href="../TreeUtils/euler_tour_bfs.cpp.html">Euler tour (BFS)</a>
 * :x: <a href="../TreeUtils/euler_tour_vertex.cpp.html">Euler tour (Vertex)</a>
 * :x: <a href="../TreeUtils/forest.cpp.html">Decompose forest</a>
-* :x: <a href="../TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
-* :x: <a href="../TreeUtils/lca_based_on_doubling.cpp.html">Lowest common ancestor (Doubling)</a>
-* :x: <a href="../TreeUtils/lca_based_on_hld.cpp.html">Lowest common ancestor (HLD)</a>
-* :x: <a href="../TreeUtils/rerooting.cpp.html">Rerooting DP</a>
+* :question: <a href="../TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
+* :x: <a href="../TreeUtils/lca_doubling.cpp.html">Lowest common ancestor (Doubling)</a>
+* :x: <a href="../TreeUtils/lca_hld.cpp.html">Lowest common ancestor (HLD)</a>
+* :question: <a href="../TreeUtils/rerooting.cpp.html">Rerooting DP</a>
 * :warning: <a href="../TreeUtils/rooting.cpp.html">Rooting</a>
 * :x: <a href="../TreeUtils/tree_diameter.cpp.html">Tree diameter</a>
 * :x: <a href="../TreeUtils/tree_distance.cpp.html">Tree distance</a>
@@ -82,19 +82,19 @@ layout: default
 * :x: <a href="../enumerate_triangles.cpp.html">Enumerate triangles</a>
 * :x: <a href="../travelling_salesman_problem.cpp.html">Travelling salesman problem</a>
 * :x: <a href="../two_sat.cpp.html">2-SAT</a>
-* :x: <a href="../../Grid/grid_to_graph.cpp.html">Convert grid to graph</a>
+* :heavy_check_mark: <a href="../../Grid/grid_to_graph.cpp.html">Convert grid to graph</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/0558/main.graph.test.cpp.html">test/aoj/0558/main.graph.test.cpp</a>
-* :x: <a href="../../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/aoj/1595/main.test.cpp.html">test/aoj/1595/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/aoj/2370/main.test.cpp.html">test/aoj/2370/main.test.cpp</a>
-* :x: <a href="../../../../verify/test/aoj/2559/main.binomial_heap.test.cpp.html">test/aoj/2559/main.binomial_heap.test.cpp</a>
-* :x: <a href="../../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
-* :x: <a href="../../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
-* :x: <a href="../../../../verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/0558/main.graph.test.cpp.html">test/aoj/0558/main.graph.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/1595/main.test.cpp.html">test/aoj/1595/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2370/main.test.cpp.html">test/aoj/2370/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2559/main.binomial_heap.test.cpp.html">test/aoj/2559/main.binomial_heap.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
 * :x: <a href="../../../../verify/test/aoj/2891/main.test.cpp.html">test/aoj/2891/main.test.cpp</a>
 * :x: <a href="../../../../verify/test/aoj/ALDS1_12_B/main.dial.test.cpp.html">test/aoj/ALDS1_12_B/main.dial.test.cpp</a>
 * :x: <a href="../../../../verify/test/aoj/DPL_2_A/main.test.cpp.html">test/aoj/DPL_2_A/main.test.cpp</a>
@@ -143,60 +143,62 @@ layout: default
  * @title Basic graph
  * @docs graph.md
  */
-template <typename T>
-struct Edge {
-  int from, to;
-  T cost;
-  int index = -1;
-  Edge(){}
-  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
-};
+namespace haar_lib {
+  template <typename T>
+  struct edge {
+    int from, to;
+    T cost;
+    int index = -1;
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+  };
 
-template <typename T>
-struct Graph {
-  using weight_type = T;
-  using edge_type = Edge<T>;
+  template <typename T>
+  struct graph {
+    using weight_type = T;
+    using edge_type = edge<T>;
 
-  std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
-  auto& operator[](size_t i){return data[i];}
-  const auto& operator[](size_t i) const {return data[i];}
+    auto& operator[](size_t i){return data[i];}
+    const auto& operator[](size_t i) const {return data[i];}
 
-  auto begin() const {return data.begin();}
-  auto end() const {return data.end();}
+    auto begin() const {return data.begin();}
+    auto end() const {return data.end();}
 
-  Graph(){}
-  Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
-  bool empty() const {return data.empty();}
-  int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+    int size() const {return data.size();}
 
-  void add_edge(int i, int j, T w, int index = -1){
-    data[i].emplace_back(i, j, w, index);
-  }
-
-  void add_undirected(int i, int j, T w, int index = -1){
-    add_edge(i, j, w, index);
-    add_edge(j, i, w, index);
-  }
-
-  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
-  void read(int M){
-    for(int i = 0; i < M; ++i){
-      int u, v; std::cin >> u >> v;
-      u -= I;
-      v -= I;
-      T w = 1;
-      if(WEIGHTED) std::cin >> w;
-      if(DIRECTED) add_edge(u, v, w, i);
-      else add_undirected(u, v, w, i);
+    void add_edge(int i, int j, T w, int index = -1){
+      data[i].emplace_back(i, j, w, index);
     }
-  }
-};
 
-template <typename T>
-using Tree = Graph<T>;
+    void add_undirected(int i, int j, T w, int index = -1){
+      add_edge(i, j, w, index);
+      add_edge(j, i, w, index);
+    }
+
+    template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+    void read(int M){
+      for(int i = 0; i < M; ++i){
+        int u, v; std::cin >> u >> v;
+        u -= I;
+        v -= I;
+        T w = 1;
+        if(WEIGHTED) std::cin >> w;
+        if(DIRECTED) add_edge(u, v, w, i);
+        else add_undirected(u, v, w, i);
+      }
+    }
+  };
+
+  template <typename T>
+  using tree = graph<T>;
+}
 
 ```
 {% endraw %}
@@ -212,60 +214,62 @@ using Tree = Graph<T>;
  * @title Basic graph
  * @docs graph.md
  */
-template <typename T>
-struct Edge {
-  int from, to;
-  T cost;
-  int index = -1;
-  Edge(){}
-  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
-};
+namespace haar_lib {
+  template <typename T>
+  struct edge {
+    int from, to;
+    T cost;
+    int index = -1;
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+  };
 
-template <typename T>
-struct Graph {
-  using weight_type = T;
-  using edge_type = Edge<T>;
+  template <typename T>
+  struct graph {
+    using weight_type = T;
+    using edge_type = edge<T>;
 
-  std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
-  auto& operator[](size_t i){return data[i];}
-  const auto& operator[](size_t i) const {return data[i];}
+    auto& operator[](size_t i){return data[i];}
+    const auto& operator[](size_t i) const {return data[i];}
 
-  auto begin() const {return data.begin();}
-  auto end() const {return data.end();}
+    auto begin() const {return data.begin();}
+    auto end() const {return data.end();}
 
-  Graph(){}
-  Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
-  bool empty() const {return data.empty();}
-  int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+    int size() const {return data.size();}
 
-  void add_edge(int i, int j, T w, int index = -1){
-    data[i].emplace_back(i, j, w, index);
-  }
-
-  void add_undirected(int i, int j, T w, int index = -1){
-    add_edge(i, j, w, index);
-    add_edge(j, i, w, index);
-  }
-
-  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
-  void read(int M){
-    for(int i = 0; i < M; ++i){
-      int u, v; std::cin >> u >> v;
-      u -= I;
-      v -= I;
-      T w = 1;
-      if(WEIGHTED) std::cin >> w;
-      if(DIRECTED) add_edge(u, v, w, i);
-      else add_undirected(u, v, w, i);
+    void add_edge(int i, int j, T w, int index = -1){
+      data[i].emplace_back(i, j, w, index);
     }
-  }
-};
 
-template <typename T>
-using Tree = Graph<T>;
+    void add_undirected(int i, int j, T w, int index = -1){
+      add_edge(i, j, w, index);
+      add_edge(j, i, w, index);
+    }
+
+    template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+    void read(int M){
+      for(int i = 0; i < M; ++i){
+        int u, v; std::cin >> u >> v;
+        u -= I;
+        v -= I;
+        T w = 1;
+        if(WEIGHTED) std::cin >> w;
+        if(DIRECTED) add_edge(u, v, w, i);
+        else add_undirected(u, v, w, i);
+      }
+    }
+  };
+
+  template <typename T>
+  using tree = graph<T>;
+}
 
 ```
 {% endraw %}

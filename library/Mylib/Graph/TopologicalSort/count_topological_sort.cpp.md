@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#5cfab8f1bec9f4a2c22b88bddb7720db">Mylib/Graph/TopologicalSort</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/TopologicalSort/count_topological_sort.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -65,22 +65,24 @@ layout: default
  * @title Count topological sort
  * @docs count_topological_sort.md
  */
-int64_t count_topological_sort(const std::vector<int> &g){
-  const int n = g.size();
-  std::vector<int64_t> dp(1 << n);
+namespace haar_lib {
+  int64_t count_topological_sort(const std::vector<int> &g){
+    const int n = g.size();
+    std::vector<int64_t> dp(1 << n);
 
-  dp[0] = 1;
+    dp[0] = 1;
 
-  for(int s = 0; s < (1 << n); ++s){
-    for(int i = 0; i < n; ++i){
-      if(s & (1 << i)){
-        if((s ^ (1 << i)) & g[i]) continue;
-        dp[s] += dp[s ^ (1 << i)];
+    for(int s = 0; s < (1 << n); ++s){
+      for(int i = 0; i < n; ++i){
+        if(s & (1 << i)){
+          if((s ^ (1 << i)) & g[i]) continue;
+          dp[s] += dp[s ^ (1 << i)];
+        }
       }
     }
-  }
 
-  return dp[(1 << n) - 1];
+    return dp[(1 << n) - 1];
+  }
 }
 
 ```
@@ -97,22 +99,24 @@ int64_t count_topological_sort(const std::vector<int> &g){
  * @title Count topological sort
  * @docs count_topological_sort.md
  */
-int64_t count_topological_sort(const std::vector<int> &g){
-  const int n = g.size();
-  std::vector<int64_t> dp(1 << n);
+namespace haar_lib {
+  int64_t count_topological_sort(const std::vector<int> &g){
+    const int n = g.size();
+    std::vector<int64_t> dp(1 << n);
 
-  dp[0] = 1;
+    dp[0] = 1;
 
-  for(int s = 0; s < (1 << n); ++s){
-    for(int i = 0; i < n; ++i){
-      if(s & (1 << i)){
-        if((s ^ (1 << i)) & g[i]) continue;
-        dp[s] += dp[s ^ (1 << i)];
+    for(int s = 0; s < (1 << n); ++s){
+      for(int i = 0; i < n; ++i){
+        if(s & (1 << i)){
+          if((s ^ (1 << i)) & g[i]) continue;
+          dp[s] += dp[s ^ (1 << i)];
+        }
       }
     }
-  }
 
-  return dp[(1 << n) - 1];
+    return dp[(1 << n) - 1];
+  }
 }
 
 ```

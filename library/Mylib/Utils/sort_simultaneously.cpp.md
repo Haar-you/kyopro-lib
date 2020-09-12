@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#cf1ec978dae666792e23e53a3672d204">Mylib/Utils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Utils/sort_simultaneously.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -57,21 +57,23 @@ layout: default
 /**
  * @docs sort_simultaneously.md
  */
-template <typename Compare, typename ... Args>
-void sort_simultaneously(const Compare &compare, std::vector<Args> &... args){
-  const int N = std::max({args.size() ...});
-  std::vector<int> ord(N);
-  std::iota(ord.begin(), ord.end(), 0);
-  std::sort(ord.begin(), ord.end(), compare);
+namespace haar_lib {
+  template <typename Compare, typename ... Args>
+  void sort_simultaneously(const Compare &compare, std::vector<Args> &... args){
+    const int N = std::max({args.size() ...});
+    std::vector<int> ord(N);
+    std::iota(ord.begin(), ord.end(), 0);
+    std::sort(ord.begin(), ord.end(), compare);
 
-  (void)std::initializer_list<int>{
-    (void(
-      [&](){
-        auto temp = args;
-        for(int i = 0; i < N; ++i) temp[i] = args[ord[i]];
-        std::swap(temp, args);
-      }()
-    ), 0) ...};
+    (void)std::initializer_list<int>{
+      (void(
+        [&](){
+          auto temp = args;
+          for(int i = 0; i < N; ++i) temp[i] = args[ord[i]];
+          std::swap(temp, args);
+        }()
+      ), 0) ...};
+  }
 }
 
 ```
@@ -90,21 +92,23 @@ void sort_simultaneously(const Compare &compare, std::vector<Args> &... args){
 /**
  * @docs sort_simultaneously.md
  */
-template <typename Compare, typename ... Args>
-void sort_simultaneously(const Compare &compare, std::vector<Args> &... args){
-  const int N = std::max({args.size() ...});
-  std::vector<int> ord(N);
-  std::iota(ord.begin(), ord.end(), 0);
-  std::sort(ord.begin(), ord.end(), compare);
+namespace haar_lib {
+  template <typename Compare, typename ... Args>
+  void sort_simultaneously(const Compare &compare, std::vector<Args> &... args){
+    const int N = std::max({args.size() ...});
+    std::vector<int> ord(N);
+    std::iota(ord.begin(), ord.end(), 0);
+    std::sort(ord.begin(), ord.end(), compare);
 
-  (void)std::initializer_list<int>{
-    (void(
-      [&](){
-        auto temp = args;
-        for(int i = 0; i < N; ++i) temp[i] = args[ord[i]];
-        std::swap(temp, args);
-      }()
-    ), 0) ...};
+    (void)std::initializer_list<int>{
+      (void(
+        [&](){
+          auto temp = args;
+          for(int i = 0; i < N; ++i) temp[i] = args[ord[i]];
+          std::swap(temp, args);
+        }()
+      ), 0) ...};
+  }
 }
 
 ```

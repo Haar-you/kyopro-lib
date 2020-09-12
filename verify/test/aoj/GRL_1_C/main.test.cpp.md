@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#52520cdd925fa3dd96b0b332cb95e6a5">test/aoj/GRL_1_C</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_1_C/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Graph/ShortestPath/warshall_floyd.cpp.html">Warshall-Floyd algorithm</a>
-* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
 
 
 ## Code
@@ -54,13 +54,15 @@ layout: default
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/ShortestPath/warshall_floyd.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int> g(V);
+  hl::graph<int> g(V);
   g.read<0>(E);
 
-  auto res = warshall_floyd(g);
+  auto res = hl::warshall_floyd(g);
 
   if(res.has_negative_cycle){
     std::cout << "NEGATIVE CYCLE" << std::endl;
@@ -100,60 +102,62 @@ int main(){
  * @title Basic graph
  * @docs graph.md
  */
-template <typename T>
-struct Edge {
-  int from, to;
-  T cost;
-  int index = -1;
-  Edge(){}
-  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
-};
+namespace haar_lib {
+  template <typename T>
+  struct edge {
+    int from, to;
+    T cost;
+    int index = -1;
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+  };
 
-template <typename T>
-struct Graph {
-  using weight_type = T;
-  using edge_type = Edge<T>;
+  template <typename T>
+  struct graph {
+    using weight_type = T;
+    using edge_type = edge<T>;
 
-  std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
-  auto& operator[](size_t i){return data[i];}
-  const auto& operator[](size_t i) const {return data[i];}
+    auto& operator[](size_t i){return data[i];}
+    const auto& operator[](size_t i) const {return data[i];}
 
-  auto begin() const {return data.begin();}
-  auto end() const {return data.end();}
+    auto begin() const {return data.begin();}
+    auto end() const {return data.end();}
 
-  Graph(){}
-  Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
-  bool empty() const {return data.empty();}
-  int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+    int size() const {return data.size();}
 
-  void add_edge(int i, int j, T w, int index = -1){
-    data[i].emplace_back(i, j, w, index);
-  }
-
-  void add_undirected(int i, int j, T w, int index = -1){
-    add_edge(i, j, w, index);
-    add_edge(j, i, w, index);
-  }
-
-  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
-  void read(int M){
-    for(int i = 0; i < M; ++i){
-      int u, v; std::cin >> u >> v;
-      u -= I;
-      v -= I;
-      T w = 1;
-      if(WEIGHTED) std::cin >> w;
-      if(DIRECTED) add_edge(u, v, w, i);
-      else add_undirected(u, v, w, i);
+    void add_edge(int i, int j, T w, int index = -1){
+      data[i].emplace_back(i, j, w, index);
     }
-  }
-};
 
-template <typename T>
-using Tree = Graph<T>;
+    void add_undirected(int i, int j, T w, int index = -1){
+      add_edge(i, j, w, index);
+      add_edge(j, i, w, index);
+    }
+
+    template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+    void read(int M){
+      for(int i = 0; i < M; ++i){
+        int u, v; std::cin >> u >> v;
+        u -= I;
+        v -= I;
+        T w = 1;
+        if(WEIGHTED) std::cin >> w;
+        if(DIRECTED) add_edge(u, v, w, i);
+        else add_undirected(u, v, w, i);
+      }
+    }
+  };
+
+  template <typename T>
+  using tree = graph<T>;
+}
 #line 3 "Mylib/Graph/ShortestPath/warshall_floyd.cpp"
 #include <optional>
 #line 5 "Mylib/Graph/ShortestPath/warshall_floyd.cpp"
@@ -162,56 +166,60 @@ using Tree = Graph<T>;
  * @title Warshall-Floyd algorithm
  * @docs warshall_floyd.md
  */
-namespace warshall_floyd_impl {
-  template <typename T>
-  struct Result {
-    std::vector<std::vector<std::optional<T>>> dist;
-    bool has_negative_cycle;
-    const auto& operator[](int i) const {return dist[i];}
-  };
-}
-
-template <typename T>
-auto warshall_floyd(const Graph<T> &g){
-  const int n = g.size();
-  auto dist = std::vector(n, std::vector<std::optional<T>>(n));
-
-  for(int i = 0; i < n; ++i) dist[i][i] = 0;
-
-  for(int i = 0; i < n; ++i){
-    for(auto &e : g[i]){
-      dist[e.from][e.to] = e.cost;
-    }
+namespace haar_lib {
+  namespace warshall_floyd_impl {
+    template <typename T>
+    struct result {
+      std::vector<std::vector<std::optional<T>>> dist;
+      bool has_negative_cycle;
+      const auto& operator[](int i) const {return dist[i];}
+    };
   }
 
-  for(int k = 0; k < n; ++k){
+  template <typename T>
+  auto warshall_floyd(const graph<T> &g){
+    const int n = g.size();
+    auto dist = std::vector(n, std::vector<std::optional<T>>(n));
+
+    for(int i = 0; i < n; ++i) dist[i][i] = 0;
+
     for(int i = 0; i < n; ++i){
-      for(int j = 0; j < n; ++j){
-        if(dist[i][k] and dist[k][j]){
-          if(not dist[i][j]){
-            dist[i][j] = *dist[i][k] + *dist[k][j];
-          }else{
-            dist[i][j] = std::min(*dist[i][j], *dist[i][k] + *dist[k][j]);
+      for(auto &e : g[i]){
+        dist[e.from][e.to] = e.cost;
+      }
+    }
+
+    for(int k = 0; k < n; ++k){
+      for(int i = 0; i < n; ++i){
+        for(int j = 0; j < n; ++j){
+          if(dist[i][k] and dist[k][j]){
+            if(not dist[i][j]){
+              dist[i][j] = *dist[i][k] + *dist[k][j];
+            }else{
+              dist[i][j] = std::min(*dist[i][j], *dist[i][k] + *dist[k][j]);
+            }
           }
         }
       }
     }
+
+    bool has_negative_cycle = false;
+    for(int i = 0; i < n; ++i) if(*dist[i][i] < 0) has_negative_cycle = true;
+
+    return warshall_floyd_impl::result<T>{dist, has_negative_cycle};
   }
-
-  bool has_negative_cycle = false;
-  for(int i = 0; i < n; ++i) if(*dist[i][i] < 0) has_negative_cycle = true;
-
-  return warshall_floyd_impl::Result<T>{dist, has_negative_cycle};
 }
 #line 6 "test/aoj/GRL_1_C/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int> g(V);
+  hl::graph<int> g(V);
   g.read<0>(E);
 
-  auto res = warshall_floyd(g);
+  auto res = hl::warshall_floyd(g);
 
   if(res.has_negative_cycle){
     std::cout << "NEGATIVE CYCLE" << std::endl;

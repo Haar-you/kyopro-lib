@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#701acb68cf3d7eb2875e08c5c295c84f">test/aoj/DSL_3_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/DSL_3_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_3_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_3_D</a>
@@ -40,8 +40,8 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp.html">Sliding window minimum</a>
-* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 
 
 ## Code
@@ -57,14 +57,16 @@ layout: default
 #include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N, L; std::cin >> N >> L;
 
-  auto a = input_vector<int>(N);
+  auto a = hl::input_vector<int>(N);
 
-  auto ans = sliding_minimum(a, L);
+  auto ans = hl::sliding_minimum(a, L);
 
-  std::cout << join(ans.begin(), ans.end()) << std::endl;
+  std::cout << hl::join(ans.begin(), ans.end()) << std::endl;
 
   return 0;
 }
@@ -87,35 +89,37 @@ int main(){
  * @title Sliding window minimum
  * @docs sliding_minimum.md
  */
-template <typename T>
-std::vector<T> sliding_minimum(const std::vector<T> &a, int k){
-  const int n = a.size();
-  std::deque<int> dq;
-  std::vector<T> ret;
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> sliding_minimum(const std::vector<T> &a, int k){
+    const int n = a.size();
+    std::deque<int> dq;
+    std::vector<T> ret;
 
-  for(int i = 0; i < k; ++i){
-    while(not dq.empty() and a[dq.back()] >= a[i]){
-      dq.pop_back();
+    for(int i = 0; i < k; ++i){
+      while(not dq.empty() and a[dq.back()] >= a[i]){
+        dq.pop_back();
+      }
+
+      dq.push_back(i);
     }
 
-    dq.push_back(i);
+    for(int i = 0; i < n - k + 1; ++i){
+      while(dq.front() < i){
+        dq.pop_front();
+      }
+
+      ret.push_back(a[dq.front()]);
+
+      while(not dq.empty() and i + k < n and a[dq.back()] >= a[i + k]){
+        dq.pop_back();
+      }
+
+      dq.push_back(i + k);
+    }
+
+    return ret;
   }
-
-  for(int i = 0; i < n - k + 1; ++i){
-    while(dq.front() < i){
-      dq.pop_front();
-    }
-
-    ret.push_back(a[dq.front()]);
-
-    while(not dq.empty() and i + k < n and a[dq.back()] >= a[i + k]){
-      dq.pop_back();
-    }
-
-    dq.push_back(i + k);
-  }
-
-  return ret;
 }
 #line 3 "Mylib/IO/join.cpp"
 #include <sstream>
@@ -124,45 +128,51 @@ std::vector<T> sliding_minimum(const std::vector<T> &a, int k){
 /**
  * @docs join.md
  */
-template <typename ITER>
-std::string join(ITER first, ITER last, std::string delim = " "){
-  std::stringstream s;
+namespace haar_lib {
+  template <typename Iter>
+  std::string join(Iter first, Iter last, std::string delim = " "){
+    std::stringstream s;
 
-  for(auto it = first; it != last; ++it){
-    if(it != first) s << delim;
-    s << *it;
+    for(auto it = first; it != last; ++it){
+      if(it != first) s << delim;
+      s << *it;
+    }
+
+    return s.str();
   }
-
-  return s.str();
 }
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
  * @docs input_vector.md
  */
-template <typename T>
-std::vector<T> input_vector(int N){
-  std::vector<T> ret(N);
-  for(int i = 0; i < N; ++i) std::cin >> ret[i];
-  return ret;
-}
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> input_vector(int N){
+    std::vector<T> ret(N);
+    for(int i = 0; i < N; ++i) std::cin >> ret[i];
+    return ret;
+  }
 
-template <typename T>
-std::vector<std::vector<T>> input_vector(int N, int M){
-  std::vector<std::vector<T>> ret(N);
-  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
-  return ret;
+  template <typename T>
+  std::vector<std::vector<T>> input_vector(int N, int M){
+    std::vector<std::vector<T>> ret(N);
+    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+    return ret;
+  }
 }
 #line 8 "test/aoj/DSL_3_D/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int N, L; std::cin >> N >> L;
 
-  auto a = input_vector<int>(N);
+  auto a = hl::input_vector<int>(N);
 
-  auto ans = sliding_minimum(a, L);
+  auto ans = hl::sliding_minimum(a, L);
 
-  std::cout << join(ans.begin(), ans.end()) << std::endl;
+  std::cout << hl::join(ans.begin(), ans.end()) << std::endl;
 
   return 0;
 }

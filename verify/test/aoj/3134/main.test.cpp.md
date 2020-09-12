@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4f0d05e27521ea76d6aad8fca840629e">test/aoj/3134</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/3134/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3134">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3134</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Convolution/fast_zeta_transform_subset.cpp.html">Fast Zeta transform (Subsets)</a>
-* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -57,10 +57,12 @@ layout: default
 #include "Mylib/Convolution/fast_zeta_transform_subset.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N, K; std::cin >> N >> K;
 
-  auto A = input_vector<int>(N);
+  auto A = hl::input_vector<int>(N);
 
   std::vector<int> sum(1 << N);
 
@@ -77,7 +79,7 @@ int main(){
     if(sum[i] == K) f[i] = true;
   }
 
-  f = fast_zeta_transform_subset(f, std::logical_or<bool>());
+  f = hl::fast_zeta_transform_subset(f, std::logical_or<bool>());
 
   int ans = N;
 
@@ -111,39 +113,45 @@ int main(){
  * @title Fast Zeta transform (Subsets)
  * @docs fast_zeta_transform_subset.md
  */
-template <typename T, typename Func = std::plus<T>>
-std::vector<T> fast_zeta_transform_subset(std::vector<T> f, const Func &op = std::plus<T>()){
-  for(int i = 0; (1 << i) < (int)f.size(); ++i){
-    for(int j = 0; j < (int)f.size(); ++j){
-      if(j & (1 << i)) f[j] = op(f[j], f[j ^ (1 << i)]);
+namespace haar_lib {
+  template <typename T, typename Func = std::plus<T>>
+  std::vector<T> fast_zeta_transform_subset(std::vector<T> f, const Func &op = std::plus<T>()){
+    for(int i = 0; (1 << i) < (int)f.size(); ++i){
+      for(int j = 0; j < (int)f.size(); ++j){
+        if(j & (1 << i)) f[j] = op(f[j], f[j ^ (1 << i)]);
+      }
     }
+    return f;
   }
-  return f;
 }
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
  * @docs input_vector.md
  */
-template <typename T>
-std::vector<T> input_vector(int N){
-  std::vector<T> ret(N);
-  for(int i = 0; i < N; ++i) std::cin >> ret[i];
-  return ret;
-}
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> input_vector(int N){
+    std::vector<T> ret(N);
+    for(int i = 0; i < N; ++i) std::cin >> ret[i];
+    return ret;
+  }
 
-template <typename T>
-std::vector<std::vector<T>> input_vector(int N, int M){
-  std::vector<std::vector<T>> ret(N);
-  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
-  return ret;
+  template <typename T>
+  std::vector<std::vector<T>> input_vector(int N, int M){
+    std::vector<std::vector<T>> ret(N);
+    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+    return ret;
+  }
 }
 #line 9 "test/aoj/3134/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int N, K; std::cin >> N >> K;
 
-  auto A = input_vector<int>(N);
+  auto A = hl::input_vector<int>(N);
 
   std::vector<int> sum(1 << N);
 
@@ -160,7 +168,7 @@ int main(){
     if(sum[i] == K) f[i] = true;
   }
 
-  f = fast_zeta_transform_subset(f, std::logical_or<bool>());
+  f = hl::fast_zeta_transform_subset(f, std::logical_or<bool>());
 
   int ans = N;
 

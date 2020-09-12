@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../assets/css/copy-button.css" />
 
 
-# :x: Fixed point combinator
+# :question: Fixed point combinator
 
 <a href="../../../index.html">Back to top page</a>
 
 * category: <a href="../../../index.html#cf1ec978dae666792e23e53a3672d204">Mylib/Utils</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Utils/fix_point.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -51,9 +51,9 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../verify/test/aoj/2559/main.binomial_heap.test.cpp.html">test/aoj/2559/main.binomial_heap.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
-* :x: <a href="../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.binomial_heap.test.cpp.html">test/aoj/2559/main.binomial_heap.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
+* :heavy_check_mark: <a href="../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
 * :x: <a href="../../../verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
 
 
@@ -69,24 +69,26 @@ layout: default
  * @title Fixed point combinator
  * @docs fix_point.md
  */
-template <typename F>
-struct FixPoint : F {
-  explicit constexpr FixPoint(F &&f) noexcept : F(std::forward<F>(f)){}
+namespace haar_lib {
+  template <typename F>
+  struct fix_point : F {
+    explicit constexpr fix_point(F &&f) noexcept : F(std::forward<F>(f)){}
 
-  template <typename ... Args>
-  constexpr auto operator()(Args &&... args) const {
-    return F::operator()(*this, std::forward<Args>(args) ...);
+    template <typename ... Args>
+    constexpr auto operator()(Args &&... args) const {
+      return F::operator()(*this, std::forward<Args>(args) ...);
+    }
+  };
+
+  template <typename F>
+  inline constexpr auto make_fix_point(F &&f){
+    return fix_point<F>(std::forward<F>(f));
   }
-};
 
-template <typename F>
-inline constexpr auto make_fix_point(F &&f){
-  return FixPoint<F>(std::forward<F>(f));
-}
-
-template <typename F>
-inline constexpr auto make_fix_point(F &f){
-  return FixPoint<F>(std::forward<F>(f));
+  template <typename F>
+  inline constexpr auto make_fix_point(F &f){
+    return fix_point<F>(std::forward<F>(f));
+  }
 }
 
 ```
@@ -102,24 +104,26 @@ inline constexpr auto make_fix_point(F &f){
  * @title Fixed point combinator
  * @docs fix_point.md
  */
-template <typename F>
-struct FixPoint : F {
-  explicit constexpr FixPoint(F &&f) noexcept : F(std::forward<F>(f)){}
+namespace haar_lib {
+  template <typename F>
+  struct fix_point : F {
+    explicit constexpr fix_point(F &&f) noexcept : F(std::forward<F>(f)){}
 
-  template <typename ... Args>
-  constexpr auto operator()(Args &&... args) const {
-    return F::operator()(*this, std::forward<Args>(args) ...);
+    template <typename ... Args>
+    constexpr auto operator()(Args &&... args) const {
+      return F::operator()(*this, std::forward<Args>(args) ...);
+    }
+  };
+
+  template <typename F>
+  inline constexpr auto make_fix_point(F &&f){
+    return fix_point<F>(std::forward<F>(f));
   }
-};
 
-template <typename F>
-inline constexpr auto make_fix_point(F &&f){
-  return FixPoint<F>(std::forward<F>(f));
-}
-
-template <typename F>
-inline constexpr auto make_fix_point(F &f){
-  return FixPoint<F>(std::forward<F>(f));
+  template <typename F>
+  inline constexpr auto make_fix_point(F &f){
+    return fix_point<F>(std::forward<F>(f));
+  }
 }
 
 ```

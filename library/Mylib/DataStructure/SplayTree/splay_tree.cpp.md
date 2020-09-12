@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Splay tree
+# :heavy_check_mark: Splay tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#de940accc238379dfea959424e331579">Mylib/DataStructure/SplayTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SplayTree/splay_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/1508/main.splay_tree.test.cpp.html">test/aoj/1508/main.splay_tree.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/1508/main.splay_tree.test.cpp.html">test/aoj/1508/main.splay_tree.test.cpp</a>
 
 
 ## Code
@@ -54,10 +54,10 @@ layout: default
  * @title Splay tree
  * @docs splay_tree.md
  */
-namespace splay_tree {
+namespace haar_lib {
   template <typename Monoid>
-  struct SplayNode {
-    using node = SplayNode<Monoid>;
+  struct splay_node {
+    using node = splay_node<Monoid>;
     using value_type = typename Monoid::value_type;
     const static Monoid M;
 
@@ -65,8 +65,8 @@ namespace splay_tree {
     int size;
     value_type value = M(), result = M();
 
-    SplayNode(): size(1){}
-    SplayNode(const value_type &value): size(1), value(value){}
+    splay_node(): size(1){}
+    splay_node(const value_type &value): size(1), value(value){}
 
     void rotate(){
       node *p, *pp, *c;
@@ -197,20 +197,20 @@ namespace splay_tree {
   };
 
   template <typename Monoid>
-  struct SplayTree {
-    using node = SplayNode<Monoid>;
+  struct splay_tree {
+    using node = splay_node<Monoid>;
     using value_type = typename Monoid::value_type;
     const static Monoid M;
 
     node *root;
 
-    SplayTree(): root(nullptr){}
-    SplayTree(node *root): root(root){}
-    SplayTree(int N): root(nullptr){
+    splay_tree(): root(nullptr){}
+    splay_tree(node *root): root(root){}
+    splay_tree(int N): root(nullptr){
       for(int i = 0; i < N; ++i) push_back(M());
     }
 
-    static auto singleton(const value_type &value){return SplayTree(new node(value));}
+    static auto singleton(const value_type &value){return splay_tree(new node(value));}
 
     int size() const {return root ? root->size : 0;}
     bool empty() const {return !root;}
@@ -222,17 +222,17 @@ namespace splay_tree {
       root = node::get(root, index); root->value = value; root->update();
     }
 
-    void merge_right(SplayTree &right){
+    void merge_right(splay_tree &right){
       root = node::merge(root, right.root); right.root = nullptr;
     }
 
-    void merge_left(SplayTree &left){
+    void merge_left(splay_tree &left){
       root = node::merge(left.root, root); left.root = nullptr;
     }
 
     auto split(int index){
       node *left, *right; std::tie(left, right) = node::split(root, index);
-      return std::make_pair(SplayTree(left), SplayTree(right));
+      return std::make_pair(splay_tree(left), splay_tree(right));
     }
 
     void insert(int index, const value_type &value){
@@ -288,10 +288,10 @@ namespace splay_tree {
  * @title Splay tree
  * @docs splay_tree.md
  */
-namespace splay_tree {
+namespace haar_lib {
   template <typename Monoid>
-  struct SplayNode {
-    using node = SplayNode<Monoid>;
+  struct splay_node {
+    using node = splay_node<Monoid>;
     using value_type = typename Monoid::value_type;
     const static Monoid M;
 
@@ -299,8 +299,8 @@ namespace splay_tree {
     int size;
     value_type value = M(), result = M();
 
-    SplayNode(): size(1){}
-    SplayNode(const value_type &value): size(1), value(value){}
+    splay_node(): size(1){}
+    splay_node(const value_type &value): size(1), value(value){}
 
     void rotate(){
       node *p, *pp, *c;
@@ -431,20 +431,20 @@ namespace splay_tree {
   };
 
   template <typename Monoid>
-  struct SplayTree {
-    using node = SplayNode<Monoid>;
+  struct splay_tree {
+    using node = splay_node<Monoid>;
     using value_type = typename Monoid::value_type;
     const static Monoid M;
 
     node *root;
 
-    SplayTree(): root(nullptr){}
-    SplayTree(node *root): root(root){}
-    SplayTree(int N): root(nullptr){
+    splay_tree(): root(nullptr){}
+    splay_tree(node *root): root(root){}
+    splay_tree(int N): root(nullptr){
       for(int i = 0; i < N; ++i) push_back(M());
     }
 
-    static auto singleton(const value_type &value){return SplayTree(new node(value));}
+    static auto singleton(const value_type &value){return splay_tree(new node(value));}
 
     int size() const {return root ? root->size : 0;}
     bool empty() const {return !root;}
@@ -456,17 +456,17 @@ namespace splay_tree {
       root = node::get(root, index); root->value = value; root->update();
     }
 
-    void merge_right(SplayTree &right){
+    void merge_right(splay_tree &right){
       root = node::merge(root, right.root); right.root = nullptr;
     }
 
-    void merge_left(SplayTree &left){
+    void merge_left(splay_tree &left){
       root = node::merge(left.root, root); left.root = nullptr;
     }
 
     auto split(int index){
       node *left, *right; std::tie(left, right) = node::split(root, index);
-      return std::make_pair(SplayTree(left), SplayTree(right));
+      return std::make_pair(splay_tree(left), splay_tree(right));
     }
 
     void insert(int index, const value_type &value){

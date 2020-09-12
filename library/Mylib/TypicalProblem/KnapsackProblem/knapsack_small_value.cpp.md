@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4bc951e5ca9130b2259fc85dc53eb972">Mylib/TypicalProblem/KnapsackProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/KnapsackProblem/knapsack_small_value.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -72,29 +72,31 @@ layout: default
  * @title 0-1 Knapsack problem (Small value)
  * @docs knapsack_small_value.md
  */
-template <typename Weight, typename Value>
-Value knapsack_small_value(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
-  const Value MAX_V = std::accumulate(v.begin(), v.end(), 0);
-  std::vector<std::vector<Value>> dp(N + 1, std::vector<Value>(MAX_V + 1, LLONG_MAX));
+namespace haar_lib {
+  template <typename Weight, typename Value>
+  Value knapsack_small_value(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
+    const Value MAX_V = std::accumulate(v.begin(), v.end(), 0);
+    std::vector<std::vector<Value>> dp(N + 1, std::vector<Value>(MAX_V + 1, LLONG_MAX));
 
-  dp[0][0] = 0;
+    dp[0][0] = 0;
 
-  for(int i = 0; i < N; ++i){
-    for(int j = 0; j <= MAX_V; ++j){
-      dp[i + 1][j] = std::min(dp[i + 1][j], dp[i][j]);
-      if(j + v[i] <= MAX_V and dp[i][j] < LLONG_MAX){
-        dp[i + 1][j + v[i]] = std::min(dp[i + 1][j + v[i]], dp[i][j] + w[i]);
+    for(int i = 0; i < N; ++i){
+      for(int j = 0; j <= MAX_V; ++j){
+        dp[i + 1][j] = std::min(dp[i + 1][j], dp[i][j]);
+        if(j + v[i] <= MAX_V and dp[i][j] < LLONG_MAX){
+          dp[i + 1][j + v[i]] = std::min(dp[i + 1][j + v[i]], dp[i][j] + w[i]);
+        }
       }
     }
+
+    Value ret = 0;
+
+    for(int i = 0; i <= MAX_V; ++i){
+      if(dp[N][i] <= cap) ret = i;
+    }
+
+    return ret;
   }
-
-  Value ret = 0;
-
-  for(int i = 0; i <= MAX_V; ++i){
-    if(dp[N][i] <= cap) ret = i;
-  }
-
-  return ret;
 }
 
 ```
@@ -113,29 +115,31 @@ Value knapsack_small_value(int N, Weight cap, const std::vector<Weight> &w, cons
  * @title 0-1 Knapsack problem (Small value)
  * @docs knapsack_small_value.md
  */
-template <typename Weight, typename Value>
-Value knapsack_small_value(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
-  const Value MAX_V = std::accumulate(v.begin(), v.end(), 0);
-  std::vector<std::vector<Value>> dp(N + 1, std::vector<Value>(MAX_V + 1, LLONG_MAX));
+namespace haar_lib {
+  template <typename Weight, typename Value>
+  Value knapsack_small_value(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
+    const Value MAX_V = std::accumulate(v.begin(), v.end(), 0);
+    std::vector<std::vector<Value>> dp(N + 1, std::vector<Value>(MAX_V + 1, LLONG_MAX));
 
-  dp[0][0] = 0;
+    dp[0][0] = 0;
 
-  for(int i = 0; i < N; ++i){
-    for(int j = 0; j <= MAX_V; ++j){
-      dp[i + 1][j] = std::min(dp[i + 1][j], dp[i][j]);
-      if(j + v[i] <= MAX_V and dp[i][j] < LLONG_MAX){
-        dp[i + 1][j + v[i]] = std::min(dp[i + 1][j + v[i]], dp[i][j] + w[i]);
+    for(int i = 0; i < N; ++i){
+      for(int j = 0; j <= MAX_V; ++j){
+        dp[i + 1][j] = std::min(dp[i + 1][j], dp[i][j]);
+        if(j + v[i] <= MAX_V and dp[i][j] < LLONG_MAX){
+          dp[i + 1][j + v[i]] = std::min(dp[i + 1][j + v[i]], dp[i][j] + w[i]);
+        }
       }
     }
+
+    Value ret = 0;
+
+    for(int i = 0; i <= MAX_V; ++i){
+      if(dp[N][i] <= cap) ret = i;
+    }
+
+    return ret;
   }
-
-  Value ret = 0;
-
-  for(int i = 0; i <= MAX_V; ++i){
-    if(dp[N][i] <= cap) ret = i;
-  }
-
-  return ret;
 }
 
 ```

@@ -31,15 +31,15 @@ layout: default
 
 * category: <a href="../../../../index.html#cb5ed95d97b7ee8efcbdf177a47dc7b7">Mylib/Graph/MinimumSpanningTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/MinimumSpanningTree/kruskal.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
 
 ## Depends on
 
-* :x: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
-* :x: <a href="../Template/graph.cpp.html">Basic graph</a>
+* :question: <a href="../../DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :question: <a href="../Template/graph.cpp.html">Basic graph</a>
 
 
 ## Required by
@@ -68,30 +68,32 @@ layout: default
  * @title Kruskal algorithm
  * @docs kruskal.md
  */
-template <typename T>
-std::vector<Edge<T>> kruskal(const Graph<T> &graph){
-  const int n = graph.size();
-  std::vector<Edge<T>> edges;
-  for(auto &v : graph){
-    for(auto &e : v){
-      edges.push_back(e);
+namespace haar_lib {
+  template <typename T>
+  std::vector<edge<T>> kruskal(const graph<T> &graph){
+    const int n = graph.size();
+    std::vector<edge<T>> edges;
+    for(auto &v : graph){
+      for(auto &e : v){
+        edges.push_back(e);
+      }
     }
-  }
 
-  std::sort(edges.begin(), edges.end(), [](const auto &a, const auto &b){return a.cost < b.cost;});
+    std::sort(edges.begin(), edges.end(), [](const auto &a, const auto &b){return a.cost < b.cost;});
 
-  UnionFind uf(n);
+    unionfind uf(n);
 
-  std::vector<Edge<T>> ret;
+    std::vector<edge<T>> ret;
 
-  for(auto &e : edges){
-    if(!uf.is_same(e.from, e.to)){
-      uf.merge(e.from, e.to);
-      ret.push_back(e);
+    for(auto &e : edges){
+      if(!uf.is_same(e.from, e.to)){
+        uf.merge(e.from, e.to);
+        ret.push_back(e);
+      }
     }
-  }
 
-  return ret;
+    return ret;
+  }
 }
 
 ```
@@ -110,136 +112,163 @@ std::vector<Edge<T>> kruskal(const Graph<T> &graph){
  * @title Basic graph
  * @docs graph.md
  */
-template <typename T>
-struct Edge {
-  int from, to;
-  T cost;
-  int index = -1;
-  Edge(){}
-  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
-};
+namespace haar_lib {
+  template <typename T>
+  struct edge {
+    int from, to;
+    T cost;
+    int index = -1;
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+  };
 
-template <typename T>
-struct Graph {
-  using weight_type = T;
-  using edge_type = Edge<T>;
+  template <typename T>
+  struct graph {
+    using weight_type = T;
+    using edge_type = edge<T>;
 
-  std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
-  auto& operator[](size_t i){return data[i];}
-  const auto& operator[](size_t i) const {return data[i];}
+    auto& operator[](size_t i){return data[i];}
+    const auto& operator[](size_t i) const {return data[i];}
 
-  auto begin() const {return data.begin();}
-  auto end() const {return data.end();}
+    auto begin() const {return data.begin();}
+    auto end() const {return data.end();}
 
-  Graph(){}
-  Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
-  bool empty() const {return data.empty();}
-  int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+    int size() const {return data.size();}
 
-  void add_edge(int i, int j, T w, int index = -1){
-    data[i].emplace_back(i, j, w, index);
-  }
-
-  void add_undirected(int i, int j, T w, int index = -1){
-    add_edge(i, j, w, index);
-    add_edge(j, i, w, index);
-  }
-
-  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
-  void read(int M){
-    for(int i = 0; i < M; ++i){
-      int u, v; std::cin >> u >> v;
-      u -= I;
-      v -= I;
-      T w = 1;
-      if(WEIGHTED) std::cin >> w;
-      if(DIRECTED) add_edge(u, v, w, i);
-      else add_undirected(u, v, w, i);
+    void add_edge(int i, int j, T w, int index = -1){
+      data[i].emplace_back(i, j, w, index);
     }
-  }
-};
 
-template <typename T>
-using Tree = Graph<T>;
+    void add_undirected(int i, int j, T w, int index = -1){
+      add_edge(i, j, w, index);
+      add_edge(j, i, w, index);
+    }
+
+    template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+    void read(int M){
+      for(int i = 0; i < M; ++i){
+        int u, v; std::cin >> u >> v;
+        u -= I;
+        v -= I;
+        T w = 1;
+        if(WEIGHTED) std::cin >> w;
+        if(DIRECTED) add_edge(u, v, w, i);
+        else add_undirected(u, v, w, i);
+      }
+    }
+  };
+
+  template <typename T>
+  using tree = graph<T>;
+}
 #line 3 "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include <numeric>
+#line 5 "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
 /**
  * @title Union-find
  * @docs unionfind.md
  */
-class UnionFind {
-  std::vector<int> parent, depth, size;
-  int count;
+namespace haar_lib {
+  class unionfind {
+    int n;
+    mutable std::vector<int> parent;
+    std::vector<int> depth, size;
+    int count;
 
-public:
-  UnionFind(){}
-  UnionFind(int n): parent(n), depth(n, 1), size(n, 1), count(n){
-    std::iota(parent.begin(), parent.end(), 0);
-  }
+  public:
+    unionfind(){}
+    unionfind(int n): n(n), parent(n), depth(n, 1), size(n, 1), count(n){
+      std::iota(parent.begin(), parent.end(), 0);
+    }
 
-  int root_of(int i){
-    if(parent[i] == i) return i;
-    else return parent[i] = root_of(parent[i]);
-  }
+    int root_of(int i) const {
+      if(parent[i] == i) return i;
+      else return parent[i] = root_of(parent[i]);
+    }
 
-  bool is_same(int i, int j){return root_of(i) == root_of(j);}
+    bool is_same(int i, int j) const {return root_of(i) == root_of(j);}
 
-  int merge(int i, int j){
-    const int ri = root_of(i), rj = root_of(j);
-    if(ri == rj) return ri;
-    else{
-      --count;
-      if(depth[ri] < depth[rj]){
-        parent[ri] = rj;
-        size[rj] += size[ri];
-        return rj;
-      }else{
-        parent[rj] = ri;
-        size[ri] += size[rj];
-        if(depth[ri] == depth[rj]) ++depth[ri];
-        return ri;
+    int merge(int i, int j){
+      const int ri = root_of(i), rj = root_of(j);
+      if(ri == rj) return ri;
+      else{
+        --count;
+        if(depth[ri] < depth[rj]){
+          parent[ri] = rj;
+          size[rj] += size[ri];
+          return rj;
+        }else{
+          parent[rj] = ri;
+          size[ri] += size[rj];
+          if(depth[ri] == depth[rj]) ++depth[ri];
+          return ri;
+        }
       }
     }
-  }
 
-  int size_of(int i){return size[root_of(i)];}
+    int size_of(int i) const {return size[root_of(i)];}
 
-  int count_group(){return count;}
-};
+    int count_groups() const {return count;}
+
+    auto get_groups() const {
+      std::vector<std::vector<int>> ret(n);
+
+      for(int i = 0; i < n; ++i){
+        ret[root_of(i)].push_back(i);
+      }
+
+      ret.erase(
+        std::remove_if(
+          ret.begin(), ret.end(),
+          [](const auto &a){return a.empty();}
+        ),
+        ret.end()
+      );
+
+      return ret;
+    }
+  };
+}
 #line 6 "Mylib/Graph/MinimumSpanningTree/kruskal.cpp"
 
 /**
  * @title Kruskal algorithm
  * @docs kruskal.md
  */
-template <typename T>
-std::vector<Edge<T>> kruskal(const Graph<T> &graph){
-  const int n = graph.size();
-  std::vector<Edge<T>> edges;
-  for(auto &v : graph){
-    for(auto &e : v){
-      edges.push_back(e);
+namespace haar_lib {
+  template <typename T>
+  std::vector<edge<T>> kruskal(const graph<T> &graph){
+    const int n = graph.size();
+    std::vector<edge<T>> edges;
+    for(auto &v : graph){
+      for(auto &e : v){
+        edges.push_back(e);
+      }
     }
-  }
 
-  std::sort(edges.begin(), edges.end(), [](const auto &a, const auto &b){return a.cost < b.cost;});
+    std::sort(edges.begin(), edges.end(), [](const auto &a, const auto &b){return a.cost < b.cost;});
 
-  UnionFind uf(n);
+    unionfind uf(n);
 
-  std::vector<Edge<T>> ret;
+    std::vector<edge<T>> ret;
 
-  for(auto &e : edges){
-    if(!uf.is_same(e.from, e.to)){
-      uf.merge(e.from, e.to);
-      ret.push_back(e);
+    for(auto &e : edges){
+      if(!uf.is_same(e.from, e.to)){
+        uf.merge(e.from, e.to);
+        ret.push_back(e);
+      }
     }
-  }
 
-  return ret;
+    return ret;
+  }
 }
 
 ```

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/gcd.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -48,12 +48,14 @@ layout: default
  * @title GCD monoid
  * @docs gcd.md
  */
-template <typename T>
-struct GcdMonoid {
-  using value_type = T;
-  value_type operator()() const {return 0;}
-  value_type operator()(value_type a, value_type b) const {return std::gcd(a, b);}
-};
+namespace haar_lib {
+  template <typename T>
+  struct gcd_monoid {
+    using value_type = T;
+    value_type operator()() const {return 0;}
+    value_type operator()(value_type a, value_type b) const {return std::gcd(a, b);}
+  };
+}
 
 ```
 {% endraw %}
@@ -68,12 +70,14 @@ struct GcdMonoid {
  * @title GCD monoid
  * @docs gcd.md
  */
-template <typename T>
-struct GcdMonoid {
-  using value_type = T;
-  value_type operator()() const {return 0;}
-  value_type operator()(value_type a, value_type b) const {return std::gcd(a, b);}
-};
+namespace haar_lib {
+  template <typename T>
+  struct gcd_monoid {
+    using value_type = T;
+    value_type operator()() const {return 0;}
+    value_type operator()(value_type a, value_type b) const {return std::gcd(a, b);}
+  };
+}
 
 ```
 {% endraw %}

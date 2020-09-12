@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#680117a14efb0a2f09a9c186518bf55b">test/yukicoder/184</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/184/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/184">https://yukicoder.me/problems/no/184</a>
@@ -39,7 +39,7 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 * :x: <a href="../../../../library/Mylib/LinearAlgebra/GaussianElimination/binary_gaussian_elimination.cpp.html">Gaussian elimination (Mod2)</a>
 
 
@@ -56,11 +56,13 @@ layout: default
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/LinearAlgebra/GaussianElimination/binary_gaussian_elimination.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n; std::cin >> n;
-  auto a = input_vector<int64_t>(n);
+  auto a = hl::input_vector<int64_t>(n);
 
-  int rank = gaussian_elimination(std::vector<std::bitset<64>>(a.begin(), a.end()));
+  int rank = hl::gaussian_elimination(std::vector<std::bitset<64>>(a.begin(), a.end()));
 
   std::cout << (1LL << rank) << "\n";
 
@@ -84,18 +86,20 @@ int main(){
 /**
  * @docs input_vector.md
  */
-template <typename T>
-std::vector<T> input_vector(int N){
-  std::vector<T> ret(N);
-  for(int i = 0; i < N; ++i) std::cin >> ret[i];
-  return ret;
-}
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> input_vector(int N){
+    std::vector<T> ret(N);
+    for(int i = 0; i < N; ++i) std::cin >> ret[i];
+    return ret;
+  }
 
-template <typename T>
-std::vector<std::vector<T>> input_vector(int N, int M){
-  std::vector<std::vector<T>> ret(N);
-  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
-  return ret;
+  template <typename T>
+  std::vector<std::vector<T>> input_vector(int N, int M){
+    std::vector<std::vector<T>> ret(N);
+    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+    return ret;
+  }
 }
 #line 4 "Mylib/LinearAlgebra/GaussianElimination/binary_gaussian_elimination.cpp"
 #include <utility>
@@ -104,45 +108,49 @@ std::vector<std::vector<T>> input_vector(int N, int M){
  * @title Gaussian elimination (Mod2)
  * @docs binary_gaussian_elimination.md
  */
-template <size_t N>
-int gaussian_elimination(std::vector<std::bitset<N>> &m){
-  const int n = m.size();
-  int rank = 0;
+namespace haar_lib {
+  template <size_t N>
+  int gaussian_elimination(std::vector<std::bitset<N>> &m){
+    const int n = m.size();
+    int rank = 0;
 
-  for(size_t j = 0; j < N; ++j){
-    int pivot = -1;
+    for(size_t j = 0; j < N; ++j){
+      int pivot = -1;
 
-    for(int i = rank; i < n; ++i){
-      if(m[i][j]){
-        pivot = i;
-        break;
+      for(int i = rank; i < n; ++i){
+        if(m[i][j]){
+          pivot = i;
+          break;
+        }
       }
+
+      if(pivot == -1) continue;
+
+      std::swap(m[pivot], m[rank]);
+
+      for(int i = 0; i < n; ++i){
+        if(i != rank and m[i][j]) m[i] ^= m[rank];
+      }
+      ++rank;
     }
 
-    if(pivot == -1) continue;
-
-    std::swap(m[pivot], m[rank]);
-
-    for(int i = 0; i < n; ++i){
-      if(i != rank and m[i][j]) m[i] ^= m[rank];
-    }
-    ++rank;
+    return rank;
   }
 
-  return rank;
-}
-
-template <size_t N>
-int gaussian_elimination(std::vector<std::bitset<N>> &&m){
-  return gaussian_elimination(m);
+  template <size_t N>
+  int gaussian_elimination(std::vector<std::bitset<N>> &&m){
+    return gaussian_elimination(m);
+  }
 }
 #line 8 "test/yukicoder/184/main.test.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n; std::cin >> n;
-  auto a = input_vector<int64_t>(n);
+  auto a = hl::input_vector<int64_t>(n);
 
-  int rank = gaussian_elimination(std::vector<std::bitset<64>>(a.begin(), a.end()));
+  int rank = hl::gaussian_elimination(std::vector<std::bitset<64>>(a.begin(), a.end()));
 
   std::cout << (1LL << rank) << "\n";
 

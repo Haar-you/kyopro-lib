@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#4bc951e5ca9130b2259fc85dc53eb972">Mylib/TypicalProblem/KnapsackProblem</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/TypicalProblem/KnapsackProblem/knapsack_unlimited.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -70,18 +70,20 @@ layout: default
  * @title Knapsack problem (Without quantity limitations)
  * @docs knapsack_unlimited.md
  */
-template <typename Weight, typename Value>
-Value knapsack_unlimited(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
-  std::vector<std::vector<Value>> dp(N + 1, std::vector<Value>(cap + 1));
+namespace haar_lib {
+  template <typename Weight, typename Value>
+  Value knapsack_unlimited(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
+    std::vector<std::vector<Value>> dp(N + 1, std::vector<Value>(cap + 1));
 
-  for(int i = 0; i < N; ++i){
-    for(int j = 0; j <= cap; ++j){
-      if(j < w[i]) dp[i + 1][j] = dp[i][j];
-      else dp[i + 1][j] = std::max(dp[i][j], dp[i + 1][j - w[i]] + v[i]);
+    for(int i = 0; i < N; ++i){
+      for(int j = 0; j <= cap; ++j){
+        if(j < w[i]) dp[i + 1][j] = dp[i][j];
+        else dp[i + 1][j] = std::max(dp[i][j], dp[i + 1][j - w[i]] + v[i]);
+      }
     }
-  }
 
-  return dp[N][cap];
+    return dp[N][cap];
+  }
 }
 
 ```
@@ -98,18 +100,20 @@ Value knapsack_unlimited(int N, Weight cap, const std::vector<Weight> &w, const 
  * @title Knapsack problem (Without quantity limitations)
  * @docs knapsack_unlimited.md
  */
-template <typename Weight, typename Value>
-Value knapsack_unlimited(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
-  std::vector<std::vector<Value>> dp(N + 1, std::vector<Value>(cap + 1));
+namespace haar_lib {
+  template <typename Weight, typename Value>
+  Value knapsack_unlimited(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){
+    std::vector<std::vector<Value>> dp(N + 1, std::vector<Value>(cap + 1));
 
-  for(int i = 0; i < N; ++i){
-    for(int j = 0; j <= cap; ++j){
-      if(j < w[i]) dp[i + 1][j] = dp[i][j];
-      else dp[i + 1][j] = std::max(dp[i][j], dp[i + 1][j - w[i]] + v[i]);
+    for(int i = 0; i < N; ++i){
+      for(int j = 0; j <= cap; ++j){
+        if(j < w[i]) dp[i + 1][j] = dp[i][j];
+        else dp[i + 1][j] = std::max(dp[i][j], dp[i + 1][j - w[i]] + v[i]);
+      }
     }
-  }
 
-  return dp[N][cap];
+    return dp[N][cap];
+  }
 }
 
 ```

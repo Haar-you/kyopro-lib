@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/miller_rabin.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -66,34 +66,35 @@ layout: default
  * @title Primality test (Miller-Rabin algorithm)
  * @docs miller_rabin.md
  */
-class MillerRabin {
-  uint128_t power(uint128_t a, uint128_t b, uint128_t p) const {
-    uint128_t ret = 1;
+namespace haar_lib {
+  namespace miller_rabin_impl {
+    uint128_t power(uint128_t a, uint128_t b, uint128_t p){
+      uint128_t ret = 1;
 
-    while(b > 0){
-      if(b & 1) ret = ret * a % p;
-      a = a * a % p;
-      b >>= 1;
+      while(b > 0){
+        if(b & 1) ret = ret * a % p;
+        a = a * a % p;
+        b >>= 1;
+      }
+
+      return ret;
     }
 
-    return ret;
-  }
+    bool is_composite(uint64_t a, uint64_t p, int s, uint64_t d){
+      uint128_t x = power(a, d, p);
 
-  bool is_composite(uint64_t a, uint64_t p, int s, uint64_t d) const {
-    uint128_t x = power(a, d, p);
+      if(x == 1) return false;
 
-    if(x == 1) return false;
+      for(int i = 0; i < s; ++i){
+        if(x == p - 1) return false;
+        x = x * x % p;
+      }
 
-    for(int i = 0; i < s; ++i){
-      if(x == p - 1) return false;
-      x = x * x % p;
+      return true;
     }
-
-    return true;
   }
 
-public:
-  bool operator()(uint64_t n) const {
+  bool miller_rabin(uint64_t n){
     if(n <= 1) return false;
     if(n == 2) return true;
     if(n % 2 == 0) return false;
@@ -107,19 +108,19 @@ public:
 
     if(n < 4759123141){
       for(uint64_t x : {2, 7, 61}){
-        if(x < n and is_composite(x, n, s, d)) return false;
+        if(x < n and miller_rabin_impl::is_composite(x, n, s, d)) return false;
       }
 
       return true;
     }
 
     for(uint64_t x : {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37}){
-      if(x < n and is_composite(x, n, s, d)) return false;
+      if(x < n and miller_rabin_impl::is_composite(x, n, s, d)) return false;
     }
 
     return true;
   }
-};
+}
 
 ```
 {% endraw %}
@@ -136,48 +137,51 @@ public:
  * @title 128-bit int
  * @docs int128.md
  */
+namespace haar_lib {
 #ifdef __SIZEOF_INT128__
-using uint128_t = __uint128_t;
-using int128_t = __int128_t;
+  using uint128_t = __uint128_t;
+  using int128_t = __int128_t;
 #else
 #include <boost/multiprecision/cpp_int.hpp>
-using uint128_t = boost::multiprecision::uint128_t;
-using int128_t = boost::multiprecision::int128_t;
+  using uint128_t = boost::multiprecision::uint128_t;
+  using int128_t = boost::multiprecision::int128_t;
 #endif
+}
 #line 5 "Mylib/Number/Prime/miller_rabin.cpp"
 
 /**
  * @title Primality test (Miller-Rabin algorithm)
  * @docs miller_rabin.md
  */
-class MillerRabin {
-  uint128_t power(uint128_t a, uint128_t b, uint128_t p) const {
-    uint128_t ret = 1;
+namespace haar_lib {
+  namespace miller_rabin_impl {
+    uint128_t power(uint128_t a, uint128_t b, uint128_t p){
+      uint128_t ret = 1;
 
-    while(b > 0){
-      if(b & 1) ret = ret * a % p;
-      a = a * a % p;
-      b >>= 1;
+      while(b > 0){
+        if(b & 1) ret = ret * a % p;
+        a = a * a % p;
+        b >>= 1;
+      }
+
+      return ret;
     }
 
-    return ret;
-  }
+    bool is_composite(uint64_t a, uint64_t p, int s, uint64_t d){
+      uint128_t x = power(a, d, p);
 
-  bool is_composite(uint64_t a, uint64_t p, int s, uint64_t d) const {
-    uint128_t x = power(a, d, p);
+      if(x == 1) return false;
 
-    if(x == 1) return false;
+      for(int i = 0; i < s; ++i){
+        if(x == p - 1) return false;
+        x = x * x % p;
+      }
 
-    for(int i = 0; i < s; ++i){
-      if(x == p - 1) return false;
-      x = x * x % p;
+      return true;
     }
-
-    return true;
   }
 
-public:
-  bool operator()(uint64_t n) const {
+  bool miller_rabin(uint64_t n){
     if(n <= 1) return false;
     if(n == 2) return true;
     if(n % 2 == 0) return false;
@@ -191,19 +195,19 @@ public:
 
     if(n < 4759123141){
       for(uint64_t x : {2, 7, 61}){
-        if(x < n and is_composite(x, n, s, d)) return false;
+        if(x < n and miller_rabin_impl::is_composite(x, n, s, d)) return false;
       }
 
       return true;
     }
 
     for(uint64_t x : {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37}){
-      if(x < n and is_composite(x, n, s, d)) return false;
+      if(x < n and miller_rabin_impl::is_composite(x, n, s, d)) return false;
     }
 
     return true;
   }
-};
+}
 
 ```
 {% endraw %}

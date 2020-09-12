@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#81ed75a9aa7f4e6edc886499b1a67fa4">test/aoj/GRL_2_A</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/GRL_2_A/main.prim.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
-* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :question: <a href="../../../../library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
+* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
 
 
 ## Code
@@ -54,13 +54,15 @@ layout: default
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/MinimumSpanningTree/prim.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int64_t> g(V);
+  hl::graph<int64_t> g(V);
   g.read<0, false>(E);
 
-  auto res = prim(g);
+  auto res = hl::prim(g);
 
   int64_t ans = 0;
   for(auto &e : res) ans += e.cost;
@@ -87,60 +89,62 @@ int main(){
  * @title Basic graph
  * @docs graph.md
  */
-template <typename T>
-struct Edge {
-  int from, to;
-  T cost;
-  int index = -1;
-  Edge(){}
-  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
-};
+namespace haar_lib {
+  template <typename T>
+  struct edge {
+    int from, to;
+    T cost;
+    int index = -1;
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+  };
 
-template <typename T>
-struct Graph {
-  using weight_type = T;
-  using edge_type = Edge<T>;
+  template <typename T>
+  struct graph {
+    using weight_type = T;
+    using edge_type = edge<T>;
 
-  std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
-  auto& operator[](size_t i){return data[i];}
-  const auto& operator[](size_t i) const {return data[i];}
+    auto& operator[](size_t i){return data[i];}
+    const auto& operator[](size_t i) const {return data[i];}
 
-  auto begin() const {return data.begin();}
-  auto end() const {return data.end();}
+    auto begin() const {return data.begin();}
+    auto end() const {return data.end();}
 
-  Graph(){}
-  Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
-  bool empty() const {return data.empty();}
-  int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+    int size() const {return data.size();}
 
-  void add_edge(int i, int j, T w, int index = -1){
-    data[i].emplace_back(i, j, w, index);
-  }
-
-  void add_undirected(int i, int j, T w, int index = -1){
-    add_edge(i, j, w, index);
-    add_edge(j, i, w, index);
-  }
-
-  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
-  void read(int M){
-    for(int i = 0; i < M; ++i){
-      int u, v; std::cin >> u >> v;
-      u -= I;
-      v -= I;
-      T w = 1;
-      if(WEIGHTED) std::cin >> w;
-      if(DIRECTED) add_edge(u, v, w, i);
-      else add_undirected(u, v, w, i);
+    void add_edge(int i, int j, T w, int index = -1){
+      data[i].emplace_back(i, j, w, index);
     }
-  }
-};
 
-template <typename T>
-using Tree = Graph<T>;
+    void add_undirected(int i, int j, T w, int index = -1){
+      add_edge(i, j, w, index);
+      add_edge(j, i, w, index);
+    }
+
+    template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+    void read(int M){
+      for(int i = 0; i < M; ++i){
+        int u, v; std::cin >> u >> v;
+        u -= I;
+        v -= I;
+        T w = 1;
+        if(WEIGHTED) std::cin >> w;
+        if(DIRECTED) add_edge(u, v, w, i);
+        else add_undirected(u, v, w, i);
+      }
+    }
+  };
+
+  template <typename T>
+  using tree = graph<T>;
+}
 #line 3 "Mylib/Graph/MinimumSpanningTree/prim.cpp"
 #include <queue>
 #line 5 "Mylib/Graph/MinimumSpanningTree/prim.cpp"
@@ -149,43 +153,47 @@ using Tree = Graph<T>;
  * @title Prim algorithm
  * @docs prim.md
  */
-template <typename T>
-std::vector<Edge<T>> prim(const Graph<T> &graph){
-  const int n = graph.size();
-  std::vector<bool> visit(n, false);
-  std::vector<Edge<T>> ret;
+namespace haar_lib {
+  template <typename T>
+  std::vector<edge<T>> prim(const graph<T> &graph){
+    const int n = graph.size();
+    std::vector<bool> visit(n, false);
+    std::vector<edge<T>> ret;
 
-  auto cmp = [](const auto &a, const auto &b){return a.cost > b.cost;};
-  std::priority_queue<Edge<T>, std::vector<Edge<T>>, decltype(cmp)> pq(cmp);
+    auto cmp = [](const auto &a, const auto &b){return a.cost > b.cost;};
+    std::priority_queue<edge<T>, std::vector<edge<T>>, decltype(cmp)> pq(cmp);
 
-  visit[0] = true;
-  for(auto &e : graph[0]) pq.push(e);
+    visit[0] = true;
+    for(auto &e : graph[0]) pq.push(e);
 
-  while(not pq.empty()){
-    auto t = pq.top(); pq.pop();
+    while(not pq.empty()){
+      auto t = pq.top(); pq.pop();
 
-    if(visit[t.from] == visit[t.to]) continue;
+      if(visit[t.from] == visit[t.to]) continue;
 
-    int i = visit[t.from] ? t.to : t.from;
-    for(auto &e : graph[i]){
-      pq.push(e);
+      int i = visit[t.from] ? t.to : t.from;
+      for(auto &e : graph[i]){
+        pq.push(e);
+      }
+
+      visit[i] = true;
+      ret.push_back(t);
     }
 
-    visit[i] = true;
-    ret.push_back(t);
+    return ret;
   }
-
-  return ret;
 }
 #line 6 "test/aoj/GRL_2_A/main.prim.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int V, E; std::cin >> V >> E;
 
-  Graph<int64_t> g(V);
+  hl::graph<int64_t> g(V);
   g.read<0, false>(E);
 
-  auto res = prim(g);
+  auto res = hl::prim(g);
 
   int64_t ans = 0;
   for(auto &e : res) ans += e.cost;

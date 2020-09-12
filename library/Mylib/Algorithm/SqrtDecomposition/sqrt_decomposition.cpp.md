@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#c78b3868045887a7ae97845e4050078a">Mylib/Algorithm/SqrtDecomposition</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-10 18:36:08+09:00
 
 
 
@@ -49,39 +49,41 @@ layout: default
  * @title Sqrt decomposition
  * @docs sqrt_decomposition.md
  */
-struct SqrtDecomposition {
-  const int N;
-  const int BLOCK_SIZE;
-  const int BLOCK_NUM;
+namespace haar_lib {
+  struct sqrt_decomposition {
+    const int N;
+    const int BLOCK_SIZE;
+    const int BLOCK_NUM;
 
-  SqrtDecomposition(int N):
-    N(N), BLOCK_SIZE((int)sqrt(N)), BLOCK_NUM((N + BLOCK_SIZE - 1) / BLOCK_SIZE)
-  {
-  }
-
-  template <typename Func>
-  void init(const Func &f){
-    for(int i = 0; i < BLOCK_NUM; ++i){
-      const int L = i * BLOCK_SIZE;
-      const int R = std::min<int>(N, (i + 1) * BLOCK_SIZE);
-      f(i, L, R);
+    sqrt_decomposition(int N):
+      N(N), BLOCK_SIZE((int)std::sqrt(N)), BLOCK_NUM((N + BLOCK_SIZE - 1) / BLOCK_SIZE)
+    {
     }
-  }
 
-  template <typename FuncBlock, typename FuncRange>
-  void query(int l, int r, const FuncBlock &func_block, const FuncRange &func_range){ // [l, r)
-    for(int i = 0; i < BLOCK_NUM; ++i){
-      const int L = i * BLOCK_SIZE;
-      const int R = std::min<int>(N, (i + 1) * BLOCK_SIZE);
-
-      if(l <= L and R <= r){
-        func_block(i, L, R);
-      }else if((L <= l and l < R) or (L < r and r <= R)){
-        func_range(i, L, R, std::max(l, L), std::min(r, R));
+    template <typename Func>
+    void init(const Func &f){
+      for(int i = 0; i < BLOCK_NUM; ++i){
+        const int L = i * BLOCK_SIZE;
+        const int R = std::min<int>(N, (i + 1) * BLOCK_SIZE);
+        f(i, L, R);
       }
     }
-  }
-};
+
+    template <typename FuncBlock, typename FuncRange>
+    void query(int l, int r, const FuncBlock &func_block, const FuncRange &func_range){ // [l, r)
+      for(int i = 0; i < BLOCK_NUM; ++i){
+        const int L = i * BLOCK_SIZE;
+        const int R = std::min<int>(N, (i + 1) * BLOCK_SIZE);
+
+        if(l <= L and R <= r){
+          func_block(i, L, R);
+        }else if((L <= l and l < R) or (L < r and r <= R)){
+          func_range(i, L, R, std::max(l, L), std::min(r, R));
+        }
+      }
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -97,39 +99,41 @@ struct SqrtDecomposition {
  * @title Sqrt decomposition
  * @docs sqrt_decomposition.md
  */
-struct SqrtDecomposition {
-  const int N;
-  const int BLOCK_SIZE;
-  const int BLOCK_NUM;
+namespace haar_lib {
+  struct sqrt_decomposition {
+    const int N;
+    const int BLOCK_SIZE;
+    const int BLOCK_NUM;
 
-  SqrtDecomposition(int N):
-    N(N), BLOCK_SIZE((int)sqrt(N)), BLOCK_NUM((N + BLOCK_SIZE - 1) / BLOCK_SIZE)
-  {
-  }
-
-  template <typename Func>
-  void init(const Func &f){
-    for(int i = 0; i < BLOCK_NUM; ++i){
-      const int L = i * BLOCK_SIZE;
-      const int R = std::min<int>(N, (i + 1) * BLOCK_SIZE);
-      f(i, L, R);
+    sqrt_decomposition(int N):
+      N(N), BLOCK_SIZE((int)std::sqrt(N)), BLOCK_NUM((N + BLOCK_SIZE - 1) / BLOCK_SIZE)
+    {
     }
-  }
 
-  template <typename FuncBlock, typename FuncRange>
-  void query(int l, int r, const FuncBlock &func_block, const FuncRange &func_range){ // [l, r)
-    for(int i = 0; i < BLOCK_NUM; ++i){
-      const int L = i * BLOCK_SIZE;
-      const int R = std::min<int>(N, (i + 1) * BLOCK_SIZE);
-
-      if(l <= L and R <= r){
-        func_block(i, L, R);
-      }else if((L <= l and l < R) or (L < r and r <= R)){
-        func_range(i, L, R, std::max(l, L), std::min(r, R));
+    template <typename Func>
+    void init(const Func &f){
+      for(int i = 0; i < BLOCK_NUM; ++i){
+        const int L = i * BLOCK_SIZE;
+        const int R = std::min<int>(N, (i + 1) * BLOCK_SIZE);
+        f(i, L, R);
       }
     }
-  }
-};
+
+    template <typename FuncBlock, typename FuncRange>
+    void query(int l, int r, const FuncBlock &func_block, const FuncRange &func_range){ // [l, r)
+      for(int i = 0; i < BLOCK_NUM; ++i){
+        const int L = i * BLOCK_SIZE;
+        const int R = std::min<int>(N, (i + 1) * BLOCK_SIZE);
+
+        if(l <= L and R <= r){
+          func_block(i, L, R);
+        }else if((L <= l and l < R) or (L < r and r <= R)){
+          func_range(i, L, R, std::max(l, L), std::min(r, R));
+        }
+      }
+    }
+  };
+}
 
 ```
 {% endraw %}

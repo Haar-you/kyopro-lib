@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/0502/main.test.cpp
+# :heavy_check_mark: test/aoj/0502/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f070aafcfc9617f5a2bf249d6bfa024f">test/aoj/0502</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/0502/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0502">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0502</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :x: <a href="../../../../library/Mylib/Misc/dice.cpp.html">Dice</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/Misc/dice.cpp.html">Dice</a>
 
 
 ## Code
@@ -56,14 +56,16 @@ layout: default
 #include "Mylib/Misc/dice.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int N;
   while(std::cin >> N, N){
-    auto d = Dice(1, 6, 2, 5, 3, 4);
+    auto d = hl::dice(1, 6, 2, 5, 3, 4);
 
     int ans = 1;
 
-    for(auto [s] : input_tuples<std::string>(N)){
+    for(auto [s] : hl::input_tuples<std::string>(N)){
       if(s == "North") d = d.rot_back(), ans += d.top;
       if(s == "East") d = d.rot_right(), ans += d.top;
       if(s == "West") d = d.rot_left(), ans += d.top;
@@ -89,43 +91,56 @@ int main(){
 
 #include <iostream>
 #include <string>
-#line 2 "Mylib/Misc/dice.cpp"
+#line 3 "Mylib/Misc/dice.cpp"
 
 /**
  * @title Dice
  * @docs dice.md
  */
-struct Dice {
-  int top, bottom, front, back, right, left;
+namespace haar_lib {
+  struct dice {
+    int top, bottom, front, back, right, left;
 
-  Dice(){}
-  Dice(int top, int bottom, int front, int back, int right, int left):
-    top(top), bottom(bottom), front(front), back(back), right(right), left(left){}
+    dice(): top(), bottom(), front(), back(), right(), left(){}
+    dice(int top, int bottom, int front, int back, int right, int left):
+      top(top), bottom(bottom), front(front), back(back), right(right), left(left){}
 
-  Dice rot_left() const {
-    return Dice(right, left, front, back, bottom, top);
-  }
+    dice rot_left() const {
+      return dice(right, left, front, back, bottom, top);
+    }
 
-  Dice rot_right() const {
-    return Dice(left, right, front, back, top, bottom);
-  }
+    dice rot_right() const {
+      return dice(left, right, front, back, top, bottom);
+    }
 
-  Dice rot_front() const {
-    return Dice(back, front, top, bottom, right, left);
-  }
+    dice rot_front() const {
+      return dice(back, front, top, bottom, right, left);
+    }
 
-  Dice rot_back() const {
-    return Dice(front, back, bottom, top, right, left);
-  }
+    dice rot_back() const {
+      return dice(front, back, bottom, top, right, left);
+    }
 
-  Dice rot_clockwise() const {
-    return Dice(top, bottom, right, left, back, front);
-  }
+    dice rot_clockwise() const {
+      return dice(top, bottom, right, left, back, front);
+    }
 
-  Dice rot_counterclockwise() const {
-    return Dice(top, bottom, left, right, front, back);
-  }
-};
+    dice rot_counterclockwise() const {
+      return dice(top, bottom, left, right, front, back);
+    }
+
+    friend std::ostream& operator<<(std::ostream &s, const dice &a){
+      s << "("
+        << a.top << ", "
+        << a.bottom << ", "
+        << a.front << ", "
+        << a.back << ", "
+        << a.right << ", "
+        << a.left << ")";
+      return s;
+    }
+  };
+}
 #line 3 "Mylib/IO/input_tuples.cpp"
 #include <vector>
 #include <tuple>
@@ -136,77 +151,83 @@ struct Dice {
 /**
  * @docs input_tuple.md
  */
-template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
-}
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
+  }
 
-template <typename T, typename U>
-std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
-  s >> value.first >> value.second;
-  return s;
-}
+  template <typename T, typename U>
+  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+    s >> value.first >> value.second;
+    return s;
+  }
 
-template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
-  return s;
+  template <typename ... Args>
+  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
+    return s;
+  }
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
-template <typename ... Args>
-class InputTuples {
-  struct iter {
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuples {
+    struct iter {
+      using value_type = std::tuple<Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N, c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
+      value_type operator*(){
+        if(not fetched){
+          std::cin >> value;
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuples(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples(int N){
+    return InputTuples<Args ...>(N);
+  }
 }
 #line 7 "test/aoj/0502/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int N;
   while(std::cin >> N, N){
-    auto d = Dice(1, 6, 2, 5, 3, 4);
+    auto d = hl::dice(1, 6, 2, 5, 3, 4);
 
     int ans = 1;
 
-    for(auto [s] : input_tuples<std::string>(N)){
+    for(auto [s] : hl::input_tuples<std::string>(N)){
       if(s == "North") d = d.rot_back(), ans += d.top;
       if(s == "East") d = d.rot_right(), ans += d.top;
       if(s == "West") d = d.rot_left(), ans += d.top;

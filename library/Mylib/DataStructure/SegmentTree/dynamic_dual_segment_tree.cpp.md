@@ -25,15 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :warning: Dynamic dual segment tree
+# :x: Dynamic dual segment tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#7a59141fbb54053c332fbe894553f051">Mylib/DataStructure/SegmentTree</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/SegmentTree/dynamic_dual_segment_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-11 18:14:08+09:00
 
 
+
+
+## Verified with
+
+* :x: <a href="../../../../verify/test/aoj/DSL_2_E/main.dynamic.test.cpp.html">test/aoj/DSL_2_E/main.dynamic.test.cpp</a>
 
 
 ## Code
@@ -48,78 +53,80 @@ layout: default
  * @title Dynamic dual segment tree
  * @docs dynamic_dual_segment_tree.md
  */
-template <typename Monoid>
-class DynamicDualSegmentTree {
-  using value_type = typename Monoid::value_type;
-  const static Monoid M;
+namespace haar_lib {
+  template <typename Monoid>
+  class dynamic_dual_segment_tree {
+    using value_type = typename Monoid::value_type;
+    const static Monoid M;
 
-  struct Node {
-    value_type val;
-    Node *left = nullptr, *right = nullptr;
-    Node(const value_type &val): val(val) {}
+    struct node {
+      value_type val;
+      node *left = nullptr, *right = nullptr;
+      node(const value_type &val): val(val) {}
+    };
+
+    const int64_t depth, size, hsize;
+    node *root = nullptr;
+    std::unordered_map<int64_t, node*> umap;
+
+    void propagate(node *t, int64_t l, int64_t r){
+      if(r - l > 1){
+        if(not t->left) t->left = new node(M());
+        t->left->val = M(t->val, t->left->val);
+
+        if(not t->right) t->right = new node(M());
+        t->right->val = M(t->val, t->right->val);
+
+        t->val = M();
+      }
+    }
+
+    void update(node *t, int64_t l, int64_t r, int64_t x, int64_t y, const value_type &val){
+      if(r - l == 1){
+        if(x <= l && r <= y) t->val = M(t->val, val);
+        umap[l] = t;
+        return;
+      }
+      if(r < x || y < l) return;
+      else if(x <= l && r <= y) t->val = M(t->val, val);
+      else{
+        const int64_t m = (l + r) / 2;
+        propagate(t, l, r);
+        update(t->left, l, m, x, y, val);
+        update(t->right, m, r, x, y, val);
+      }
+    }
+
+    void get(node* t, int64_t l, int64_t r, int64_t x){
+      if(r - l == 1){
+        umap[l] = t;
+        return;
+      }
+      propagate(t, l, r);
+      int m = (l + r) / 2;
+      if(x < m) get(t->left, l, m, x);
+      else get(t->right, m, r, x);
+    }
+
+  public:
+    dynamic_dual_segment_tree(int64_t n):
+      depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),
+      size(1LL << depth),
+      hsize(size / 2)
+    {
+      root = new node(M());
+    }
+
+    void update(int64_t s, int64_t t, value_type &x){
+      update(root, 0, hsize, s, t, x);
+    }
+
+    value_type operator[](int64_t x){
+      get(root, 0, hsize, x);
+      return umap[x]->val;
+    }
   };
-
-  const int64_t depth, size;
-  Node *root = nullptr;
-  std::unordered_map<int64_t, Node*> umap;
-
-  Node* propagate(Node *node, int64_t l, int64_t r){
-    if(r - l > 1){
-      if(not node->left) node->left = new Node(M());
-      node->left->val = M(node->val, node->left->val);
-
-      if(not node->right) node->right = new Node(M());
-      node->right->val = M(node->val, node->right->val);
-
-      node->val = M();
-    }
-    return node;
-  }
-
-  void update(Node *node, int64_t l, int64_t r, int64_t x, int64_t y, const value_type &val){
-    if(r - l == 1){
-      if(x <= l && r <= y) node->val = M(node->val, val);
-      umap[l] = node;
-      return;
-    }
-    if(r < x || y < l) return;
-    else if(x <= l && r <= y) node->val = M(node->val, val);
-    else{
-      const int64_t m = (l + r) / 2;
-      propagate(node, l, r);
-      update(node->left, l, m, x, y, val);
-      update(node->right, m, r, x, y, val);
-    }
-  }
-
-  void get(Node* node, int64_t l, int64_t r, int64_t x){
-    if(r - l == 1){
-      umap[l] = node;
-      return;
-    }
-    propagate(node, l, r);
-    int m = (l + r) / 2;
-    if(x < m) get(node->left, l, m, x);
-    else get(node->right, m, r, x);
-  }
-
-public:
-  DynamicDualSegmentTree(int64_t n):
-    depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),
-    size(1LL << depth)
-  {
-    root = new Node(M());
-  }
-
-  void update(int64_t s, int64_t t, value_type &x){
-    update(root, 0, size, s, t, x);
-  }
-
-  value_type operator[](int64_t x){
-    get(root, 0, size, x);
-    return umap[x]->val;
-  }
-};
+}
 
 ```
 {% endraw %}
@@ -134,78 +141,80 @@ public:
  * @title Dynamic dual segment tree
  * @docs dynamic_dual_segment_tree.md
  */
-template <typename Monoid>
-class DynamicDualSegmentTree {
-  using value_type = typename Monoid::value_type;
-  const static Monoid M;
+namespace haar_lib {
+  template <typename Monoid>
+  class dynamic_dual_segment_tree {
+    using value_type = typename Monoid::value_type;
+    const static Monoid M;
 
-  struct Node {
-    value_type val;
-    Node *left = nullptr, *right = nullptr;
-    Node(const value_type &val): val(val) {}
+    struct node {
+      value_type val;
+      node *left = nullptr, *right = nullptr;
+      node(const value_type &val): val(val) {}
+    };
+
+    const int64_t depth, size, hsize;
+    node *root = nullptr;
+    std::unordered_map<int64_t, node*> umap;
+
+    void propagate(node *t, int64_t l, int64_t r){
+      if(r - l > 1){
+        if(not t->left) t->left = new node(M());
+        t->left->val = M(t->val, t->left->val);
+
+        if(not t->right) t->right = new node(M());
+        t->right->val = M(t->val, t->right->val);
+
+        t->val = M();
+      }
+    }
+
+    void update(node *t, int64_t l, int64_t r, int64_t x, int64_t y, const value_type &val){
+      if(r - l == 1){
+        if(x <= l && r <= y) t->val = M(t->val, val);
+        umap[l] = t;
+        return;
+      }
+      if(r < x || y < l) return;
+      else if(x <= l && r <= y) t->val = M(t->val, val);
+      else{
+        const int64_t m = (l + r) / 2;
+        propagate(t, l, r);
+        update(t->left, l, m, x, y, val);
+        update(t->right, m, r, x, y, val);
+      }
+    }
+
+    void get(node* t, int64_t l, int64_t r, int64_t x){
+      if(r - l == 1){
+        umap[l] = t;
+        return;
+      }
+      propagate(t, l, r);
+      int m = (l + r) / 2;
+      if(x < m) get(t->left, l, m, x);
+      else get(t->right, m, r, x);
+    }
+
+  public:
+    dynamic_dual_segment_tree(int64_t n):
+      depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),
+      size(1LL << depth),
+      hsize(size / 2)
+    {
+      root = new node(M());
+    }
+
+    void update(int64_t s, int64_t t, value_type &x){
+      update(root, 0, hsize, s, t, x);
+    }
+
+    value_type operator[](int64_t x){
+      get(root, 0, hsize, x);
+      return umap[x]->val;
+    }
   };
-
-  const int64_t depth, size;
-  Node *root = nullptr;
-  std::unordered_map<int64_t, Node*> umap;
-
-  Node* propagate(Node *node, int64_t l, int64_t r){
-    if(r - l > 1){
-      if(not node->left) node->left = new Node(M());
-      node->left->val = M(node->val, node->left->val);
-
-      if(not node->right) node->right = new Node(M());
-      node->right->val = M(node->val, node->right->val);
-
-      node->val = M();
-    }
-    return node;
-  }
-
-  void update(Node *node, int64_t l, int64_t r, int64_t x, int64_t y, const value_type &val){
-    if(r - l == 1){
-      if(x <= l && r <= y) node->val = M(node->val, val);
-      umap[l] = node;
-      return;
-    }
-    if(r < x || y < l) return;
-    else if(x <= l && r <= y) node->val = M(node->val, val);
-    else{
-      const int64_t m = (l + r) / 2;
-      propagate(node, l, r);
-      update(node->left, l, m, x, y, val);
-      update(node->right, m, r, x, y, val);
-    }
-  }
-
-  void get(Node* node, int64_t l, int64_t r, int64_t x){
-    if(r - l == 1){
-      umap[l] = node;
-      return;
-    }
-    propagate(node, l, r);
-    int m = (l + r) / 2;
-    if(x < m) get(node->left, l, m, x);
-    else get(node->right, m, r, x);
-  }
-
-public:
-  DynamicDualSegmentTree(int64_t n):
-    depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),
-    size(1LL << depth)
-  {
-    root = new Node(M());
-  }
-
-  void update(int64_t s, int64_t t, value_type &x){
-    update(root, 0, size, s, t, x);
-  }
-
-  value_type operator[](int64_t x){
-    get(root, 0, size, x);
-    return umap[x]->val;
-  }
-};
+}
 
 ```
 {% endraw %}

@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#cd972d63fbc2cdaa6f2e20f02bf8d13c">test/yukicoder/580</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yukicoder/580/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="https://yukicoder.me/problems/no/580">https://yukicoder.me/problems/no/580</a>
@@ -53,6 +53,8 @@ layout: default
 #include <vector>
 #include "Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -72,7 +74,7 @@ int main(){
     r[i] = o * 24 * 60 + h2 * 60 + m2 + 1;
   }
 
-  auto res = interval_scheduling_k(l, r, n);
+  auto res = hl::interval_scheduling_k(l, r, n);
   std::cout << res.size() << "\n";
 
   return 0;
@@ -100,33 +102,37 @@ int main(){
  * @title Interval scheduling problem (Allow no more than k intervals to overlap)
  * @docs interval_scheduling_k.md
  */
-auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
-  const int N = l.size();
+namespace haar_lib {
+  auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
+    const int N = l.size();
 
-  std::vector<int> ord(N);
-  std::iota(ord.begin(), ord.end(), 0);
-  std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
+    std::vector<int> ord(N);
+    std::iota(ord.begin(), ord.end(), 0);
+    std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});
 
-  std::multiset<int> a;
-  std::vector<std::pair<int, int>> ret;
+    std::multiset<int> a;
+    std::vector<std::pair<int, int>> ret;
 
-  for(int i : ord){
-    auto it = a.upper_bound(l[i]);
+    for(int i : ord){
+      auto it = a.upper_bound(l[i]);
 
-    if(it != a.begin()){
-      it = std::prev(it);
-      a.erase(it);
+      if(it != a.begin()){
+        it = std::prev(it);
+        a.erase(it);
+      }
+
+      if((int)a.size() < k){
+        a.insert(r[i]);
+        ret.emplace_back(l[i], r[i]);
+      }
     }
 
-    if((int)a.size() < k){
-      a.insert(r[i]);
-      ret.emplace_back(l[i], r[i]);
-    }
+    return ret;
   }
-
-  return ret;
 }
 #line 6 "test/yukicoder/580/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   std::cin.tie(0);
@@ -147,7 +153,7 @@ int main(){
     r[i] = o * 24 * 60 + h2 * 60 + m2 + 1;
   }
 
-  auto res = interval_scheduling_k(l, r, n);
+  auto res = hl::interval_scheduling_k(l, r, n);
   std::cout << res.size() << "\n";
 
   return 0;

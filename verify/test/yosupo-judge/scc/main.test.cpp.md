@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#6ffd15f8d9c15c119e35f664edb2d617">test/yosupo-judge/scc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/scc/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/scc">https://judge.yosupo.jp/problem/scc</a>
@@ -40,9 +40,9 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
-* :x: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
+* :question: <a href="../../../../library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
 * :x: <a href="../../../../library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">Topological sort</a>
-* :x: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
 
 
 ## Code
@@ -59,33 +59,35 @@ layout: default
 #include "Mylib/Graph/TopologicalSort/topological_sort.cpp"
 #include "Mylib/IO/join.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, M; std::cin >> N >> M;
 
-  Graph<int> g(N);
+  hl::graph<int> g(N);
   g.read<0, true, false>(M);
 
-  auto [scc, K] = strongly_connected_components(g);
+  auto [scc, K] = hl::strongly_connected_components(g);
   std::vector<std::vector<int>> ans(K);
   for(int i = 0; i < N; ++i) ans[scc[i]].push_back(i);
 
-  Graph<int> g2(K);
+  hl::graph<int> g2(K);
   for(auto &v : g){
     for(auto &e : v){
       if(scc[e.from] != scc[e.to]) g2.add_edge(scc[e.from], scc[e.to], 1);
     }
   }
 
-  auto ts = topological_sort(g2).value();
+  auto ts = hl::topological_sort(g2).value();
 
   std::cout << K << "\n";
 
   for(auto i : ts){
     auto &t = ans[i];
-    std::cout << t.size() << " " << join(t.begin(), t.end()) << "\n";
+    std::cout << t.size() << " " << hl::join(t.begin(), t.end()) << "\n";
   }
 
   return 0;
@@ -108,60 +110,62 @@ int main(){
  * @title Basic graph
  * @docs graph.md
  */
-template <typename T>
-struct Edge {
-  int from, to;
-  T cost;
-  int index = -1;
-  Edge(){}
-  Edge(int from, int to, T cost): from(from), to(to), cost(cost){}
-  Edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
-};
+namespace haar_lib {
+  template <typename T>
+  struct edge {
+    int from, to;
+    T cost;
+    int index = -1;
+    edge(){}
+    edge(int from, int to, T cost): from(from), to(to), cost(cost){}
+    edge(int from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}
+  };
 
-template <typename T>
-struct Graph {
-  using weight_type = T;
-  using edge_type = Edge<T>;
+  template <typename T>
+  struct graph {
+    using weight_type = T;
+    using edge_type = edge<T>;
 
-  std::vector<std::vector<Edge<T>>> data;
+    std::vector<std::vector<edge<T>>> data;
 
-  auto& operator[](size_t i){return data[i];}
-  const auto& operator[](size_t i) const {return data[i];}
+    auto& operator[](size_t i){return data[i];}
+    const auto& operator[](size_t i) const {return data[i];}
 
-  auto begin() const {return data.begin();}
-  auto end() const {return data.end();}
+    auto begin() const {return data.begin();}
+    auto end() const {return data.end();}
 
-  Graph(){}
-  Graph(int N): data(N){}
+    graph(){}
+    graph(int N): data(N){}
 
-  bool empty() const {return data.empty();}
-  int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+    int size() const {return data.size();}
 
-  void add_edge(int i, int j, T w, int index = -1){
-    data[i].emplace_back(i, j, w, index);
-  }
-
-  void add_undirected(int i, int j, T w, int index = -1){
-    add_edge(i, j, w, index);
-    add_edge(j, i, w, index);
-  }
-
-  template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
-  void read(int M){
-    for(int i = 0; i < M; ++i){
-      int u, v; std::cin >> u >> v;
-      u -= I;
-      v -= I;
-      T w = 1;
-      if(WEIGHTED) std::cin >> w;
-      if(DIRECTED) add_edge(u, v, w, i);
-      else add_undirected(u, v, w, i);
+    void add_edge(int i, int j, T w, int index = -1){
+      data[i].emplace_back(i, j, w, index);
     }
-  }
-};
 
-template <typename T>
-using Tree = Graph<T>;
+    void add_undirected(int i, int j, T w, int index = -1){
+      add_edge(i, j, w, index);
+      add_edge(j, i, w, index);
+    }
+
+    template <size_t I, bool DIRECTED = true, bool WEIGHTED = true>
+    void read(int M){
+      for(int i = 0; i < M; ++i){
+        int u, v; std::cin >> u >> v;
+        u -= I;
+        v -= I;
+        T w = 1;
+        if(WEIGHTED) std::cin >> w;
+        if(DIRECTED) add_edge(u, v, w, i);
+        else add_undirected(u, v, w, i);
+      }
+    }
+  };
+
+  template <typename T>
+  using tree = graph<T>;
+}
 #line 3 "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 #include <algorithm>
 #line 5 "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
@@ -170,43 +174,45 @@ using Tree = Graph<T>;
  * @title Strongly connected components
  * @docs strongly_connected_components.md
  */
-template <typename T>
-auto strongly_connected_components(const Graph<T> &g){
-  const int n = g.size();
+namespace haar_lib {
+  template <typename T>
+  auto strongly_connected_components(const graph<T> &g){
+    const int n = g.size();
 
-  std::vector<bool> visit(n);
-  std::vector<int> check(n);
-  std::vector<int> result(n, -1);
+    std::vector<bool> visit(n);
+    std::vector<int> check(n);
+    std::vector<int> result(n, -1);
 
-  auto dfs =
-    [&](auto &f, int cur) -> void {
-      visit[cur] = true;
-      for(const auto &e : g[cur]){
-        if(not visit[e.to]) f(f, e.to);
-      }
-      check.push_back(cur);
-    };
+    auto dfs =
+      [&](auto &f, int cur) -> void {
+        visit[cur] = true;
+        for(const auto &e : g[cur]){
+          if(not visit[e.to]) f(f, e.to);
+        }
+        check.push_back(cur);
+      };
 
-  for(int i = 0; i < n; ++i) if(not visit[i]) dfs(dfs, i);
+    for(int i = 0; i < n; ++i) if(not visit[i]) dfs(dfs, i);
 
-  std::reverse(check.begin(), check.end());
+    std::reverse(check.begin(), check.end());
 
-  Graph<T> rg(n);
+    graph<T> rg(n);
 
-  auto rdfs =
-    [&](auto &f, int cur, int i) -> void {
-      result[cur] = i;
-      for(const auto &e : rg[cur]){
-        if(result[e.to] == -1) f(f, e.to, i);
-      }
-    };
+    auto rdfs =
+      [&](auto &f, int cur, int i) -> void {
+        result[cur] = i;
+        for(const auto &e : rg[cur]){
+          if(result[e.to] == -1) f(f, e.to, i);
+        }
+      };
 
-  for(int i = 0; i < n; ++i) for(const auto &e : g[i]) rg[e.to].emplace_back(e.to, e.from, e.cost);
+    for(int i = 0; i < n; ++i) for(const auto &e : g[i]) rg[e.to].emplace_back(e.to, e.from, e.cost);
 
-  int i = 0;
-  for(auto c : check) if(result[c] == -1) rdfs(rdfs, c, i), ++i;
+    int i = 0;
+    for(auto c : check) if(result[c] == -1) rdfs(rdfs, c, i), ++i;
 
-  return std::make_pair(result, i);
+    return std::make_pair(result, i);
+  }
 }
 #line 3 "Mylib/Graph/TopologicalSort/topological_sort.cpp"
 #include <optional>
@@ -217,38 +223,40 @@ auto strongly_connected_components(const Graph<T> &g){
  * @title Topological sort
  * @docs topological_sort.md
  */
-template <typename T>
-std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
-  const int n = g.size();
-  std::vector<int> indeg(n);
+namespace haar_lib {
+  template <typename T>
+  std::optional<std::vector<int>> topological_sort(const graph<T> &g){
+    const int n = g.size();
+    std::vector<int> indeg(n);
 
-  for(int i = 0; i < n; ++i){
-    for(auto &e : g[i]){
-      ++indeg[e.to];
-    }
-  }
-
-  std::queue<int> q;
-  for(int i = 0; i < n; ++i){
-    if(indeg[i] == 0) q.push(i);
-  }
-
-  std::vector<int> ret;
-  while(not q.empty()){
-    int cur = q.front(); q.pop();
-    ret.push_back(cur);
-    for(auto &e : g[cur]){
-      --indeg[e.to];
-      if(indeg[e.to] == 0){
-        q.push(e.to);
+    for(int i = 0; i < n; ++i){
+      for(auto &e : g[i]){
+        ++indeg[e.to];
       }
     }
-  }
 
-  if((int)ret.size() == n){
-    return {ret};
-  }else{
-    return std::nullopt;
+    std::queue<int> q;
+    for(int i = 0; i < n; ++i){
+      if(indeg[i] == 0) q.push(i);
+    }
+
+    std::vector<int> ret;
+    while(not q.empty()){
+      int cur = q.front(); q.pop();
+      ret.push_back(cur);
+      for(auto &e : g[cur]){
+        --indeg[e.to];
+        if(indeg[e.to] == 0){
+          q.push(e.to);
+        }
+      }
+    }
+
+    if((int)ret.size() == n){
+      return {ret};
+    }else{
+      return std::nullopt;
+    }
   }
 }
 #line 3 "Mylib/IO/join.cpp"
@@ -258,18 +266,22 @@ std::optional<std::vector<int>> topological_sort(const Graph<T> &g){
 /**
  * @docs join.md
  */
-template <typename ITER>
-std::string join(ITER first, ITER last, std::string delim = " "){
-  std::stringstream s;
+namespace haar_lib {
+  template <typename Iter>
+  std::string join(Iter first, Iter last, std::string delim = " "){
+    std::stringstream s;
 
-  for(auto it = first; it != last; ++it){
-    if(it != first) s << delim;
-    s << *it;
+    for(auto it = first; it != last; ++it){
+      if(it != first) s << delim;
+      s << *it;
+    }
+
+    return s.str();
   }
-
-  return s.str();
 }
 #line 9 "test/yosupo-judge/scc/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   std::cin.tie(0);
@@ -277,27 +289,27 @@ int main(){
 
   int N, M; std::cin >> N >> M;
 
-  Graph<int> g(N);
+  hl::graph<int> g(N);
   g.read<0, true, false>(M);
 
-  auto [scc, K] = strongly_connected_components(g);
+  auto [scc, K] = hl::strongly_connected_components(g);
   std::vector<std::vector<int>> ans(K);
   for(int i = 0; i < N; ++i) ans[scc[i]].push_back(i);
 
-  Graph<int> g2(K);
+  hl::graph<int> g2(K);
   for(auto &v : g){
     for(auto &e : v){
       if(scc[e.from] != scc[e.to]) g2.add_edge(scc[e.from], scc[e.to], 1);
     }
   }
 
-  auto ts = topological_sort(g2).value();
+  auto ts = hl::topological_sort(g2).value();
 
   std::cout << K << "\n";
 
   for(auto i : ts){
     auto &t = ans[i];
-    std::cout << t.size() << " " << join(t.begin(), t.end()) << "\n";
+    std::cout << t.size() << " " << hl::join(t.begin(), t.end()) << "\n";
   }
 
   return 0;

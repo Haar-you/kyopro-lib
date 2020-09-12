@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Stern-Brocot tree
+# :heavy_check_mark: Stern-Brocot tree
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#e55110d6133c602b43ca77c4caba1f06">Mylib/Number/Rational</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Rational/stern_brocot_tree.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -53,7 +53,7 @@ layout: default
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/1208/main.test.cpp.html">test/aoj/1208/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/1208/main.test.cpp.html">test/aoj/1208/main.test.cpp</a>
 
 
 ## Code
@@ -69,24 +69,26 @@ layout: default
  * @title Stern-Brocot tree
  * @docs stern_brocot_tree.md
  */
-template <typename Checker>
-void stern_brocot_tree(const Checker &check, int n, std::pair<int, int> &lower, std::pair<int, int> &upper, int64_t pl = 0, int64_t ql = 1, int64_t pr = 1, int64_t qr = 0){
-  int64_t pm = pl + pr;
-  int64_t qm = ql + qr;
+namespace haar_lib {
+  template <typename Checker>
+  void stern_brocot_tree(const Checker &check, int n, std::pair<int, int> &lower, std::pair<int, int> &upper, int64_t pl = 0, int64_t ql = 1, int64_t pr = 1, int64_t qr = 0){
+    int64_t pm = pl + pr;
+    int64_t qm = ql + qr;
 
-  if(pm > n or qm > n) return;
+    if(pm > n or qm > n) return;
 
-  auto t = check(pm, qm);
+    auto t = check(pm, qm);
 
-  if(t < 0){
-    lower = {pm, qm};
-    stern_brocot_tree(check, n, lower, upper, pm, qm, pr, qr);
-  }else if(t > 0){
-    upper = {pm, qm};
-    stern_brocot_tree(check, n, lower, upper, pl, ql, pm, qm);
-  }else{
-    lower = {pm, qm};
-    upper = {pm, qm};
+    if(t < 0){
+      lower = {pm, qm};
+      stern_brocot_tree(check, n, lower, upper, pm, qm, pr, qr);
+    }else if(t > 0){
+      upper = {pm, qm};
+      stern_brocot_tree(check, n, lower, upper, pl, ql, pm, qm);
+    }else{
+      lower = {pm, qm};
+      upper = {pm, qm};
+    }
   }
 }
 
@@ -104,24 +106,26 @@ void stern_brocot_tree(const Checker &check, int n, std::pair<int, int> &lower, 
  * @title Stern-Brocot tree
  * @docs stern_brocot_tree.md
  */
-template <typename Checker>
-void stern_brocot_tree(const Checker &check, int n, std::pair<int, int> &lower, std::pair<int, int> &upper, int64_t pl = 0, int64_t ql = 1, int64_t pr = 1, int64_t qr = 0){
-  int64_t pm = pl + pr;
-  int64_t qm = ql + qr;
+namespace haar_lib {
+  template <typename Checker>
+  void stern_brocot_tree(const Checker &check, int n, std::pair<int, int> &lower, std::pair<int, int> &upper, int64_t pl = 0, int64_t ql = 1, int64_t pr = 1, int64_t qr = 0){
+    int64_t pm = pl + pr;
+    int64_t qm = ql + qr;
 
-  if(pm > n or qm > n) return;
+    if(pm > n or qm > n) return;
 
-  auto t = check(pm, qm);
+    auto t = check(pm, qm);
 
-  if(t < 0){
-    lower = {pm, qm};
-    stern_brocot_tree(check, n, lower, upper, pm, qm, pr, qr);
-  }else if(t > 0){
-    upper = {pm, qm};
-    stern_brocot_tree(check, n, lower, upper, pl, ql, pm, qm);
-  }else{
-    lower = {pm, qm};
-    upper = {pm, qm};
+    if(t < 0){
+      lower = {pm, qm};
+      stern_brocot_tree(check, n, lower, upper, pm, qm, pr, qr);
+    }else if(t > 0){
+      upper = {pm, qm};
+      stern_brocot_tree(check, n, lower, upper, pl, ql, pm, qm);
+    }else{
+      lower = {pm, qm};
+      upper = {pm, qm};
+    }
   }
 }
 

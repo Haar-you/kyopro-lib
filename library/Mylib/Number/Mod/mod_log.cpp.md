@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#795ab137908c82fc28acbcffe5b1c757">Mylib/Number/Mod</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Mod/mod_log.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-10 05:03:27+09:00
 
 
 
@@ -54,7 +54,7 @@ layout: default
 ## Depends on
 
 * :x: <a href="mod_inv.cpp.html">Mod inverse</a>
-* :x: <a href="mod_power.cpp.html">Mod power</a>
+* :question: <a href="mod_power.cpp.html">Mod power</a>
 
 
 ## Verified with
@@ -79,54 +79,56 @@ layout: default
  * @title Mod logarithm
  * @docs mod_log.md
  */
-std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
-  if(b == 1) return 0;
+namespace haar_lib {
+  std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
+    if(b == 1) return 0;
 
-  int64_t d = 0;
+    int64_t d = 0;
 
-  while(1){
-    if(auto g = std::gcd(a, m); g != 1){
-      if(b % g != 0) return {};
+    while(1){
+      if(auto g = std::gcd(a, m); g != 1){
+        if(b % g != 0) return {};
 
-      d += 1;
-      m /= g;
-      b /= g;
-      (b *= mod_inv(a / g, m)) %= m;
+        d += 1;
+        m /= g;
+        b /= g;
+        (b *= mod_inv(a / g, m)) %= m;
 
-      if(b == 1) return d;
-    }else{
-      break;
-    }
-  }
-
-  const int64_t sq = sqrt(m) + 1;
-
-  std::unordered_map<int64_t, int64_t> mp;
-  {
-    int64_t t = 1 % m;
-
-    for(int i = 0; i < sq; ++i){
-      if(mp.find(t) == mp.end()) mp[t] = i;
-      (t *= a) %= m;
-    }
-  }
-
-  {
-    int64_t A = power(mod_inv(a, m), sq, m);
-    int64_t t = b % m;
-
-    for(int i = 0; i < sq; ++i){
-      if(mp.find(t) != mp.end()){
-        int64_t ret = i * sq + mp[t] + d;
-
-        return ret;
+        if(b == 1) return d;
+      }else{
+        break;
       }
-
-      (t *= A) %= m;
     }
-  }
 
-  return {};
+    const int64_t sq = std::sqrt(m) + 1;
+
+    std::unordered_map<int64_t, int64_t> mp;
+    {
+      int64_t t = 1 % m;
+
+      for(int i = 0; i < sq; ++i){
+        if(mp.find(t) == mp.end()) mp[t] = i;
+        (t *= a) %= m;
+      }
+    }
+
+    {
+      int64_t A = power(mod_inv(a, m), sq, m);
+      int64_t t = b % m;
+
+      for(int i = 0; i < sq; ++i){
+        if(mp.find(t) != mp.end()){
+          int64_t ret = i * sq + mp[t] + d;
+
+          return ret;
+        }
+
+        (t *= A) %= m;
+      }
+    }
+
+    return {};
+  }
 }
 
 ```
@@ -147,14 +149,16 @@ std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
  * @title Mod power
  * @docs mod_power.md
  */
-int64_t power(int64_t n, int64_t p, int64_t m){
-  int64_t ret = 1;
-  while(p > 0){
-    if(p & 1) (ret *= n) %= m;
-    (n *= n) %= m;
-    p >>= 1;
+namespace haar_lib {
+  int64_t power(int64_t n, int64_t p, int64_t m){
+    int64_t ret = 1;
+    while(p > 0){
+      if(p & 1) (ret *= n) %= m;
+      (n *= n) %= m;
+      p >>= 1;
+    }
+    return ret;
   }
-  return ret;
 }
 #line 2 "Mylib/Number/Mod/mod_inv.cpp"
 #include <utility>
@@ -164,19 +168,21 @@ int64_t power(int64_t n, int64_t p, int64_t m){
  * @title Mod inverse
  * @docs mod_inv.md
  */
-int64_t mod_inv(int64_t a, int64_t m){
-  int64_t b = m, u = 1, v = 0;
+namespace haar_lib {
+  int64_t mod_inv(int64_t a, int64_t m){
+    int64_t b = m, u = 1, v = 0;
 
-  while(b){
-    int64_t t = a / b;
-    a -= t * b; std::swap(a, b);
-    u -= t * v; std::swap(u, v);
+    while(b){
+      int64_t t = a / b;
+      a -= t * b; std::swap(a, b);
+      u -= t * v; std::swap(u, v);
+    }
+
+    u %= m;
+    if(u < 0) u += m;
+
+    return u;
   }
-
-  u %= m;
-  if(u < 0) u += m;
-
-  return u;
 }
 #line 8 "Mylib/Number/Mod/mod_log.cpp"
 
@@ -184,54 +190,56 @@ int64_t mod_inv(int64_t a, int64_t m){
  * @title Mod logarithm
  * @docs mod_log.md
  */
-std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
-  if(b == 1) return 0;
+namespace haar_lib {
+  std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
+    if(b == 1) return 0;
 
-  int64_t d = 0;
+    int64_t d = 0;
 
-  while(1){
-    if(auto g = std::gcd(a, m); g != 1){
-      if(b % g != 0) return {};
+    while(1){
+      if(auto g = std::gcd(a, m); g != 1){
+        if(b % g != 0) return {};
 
-      d += 1;
-      m /= g;
-      b /= g;
-      (b *= mod_inv(a / g, m)) %= m;
+        d += 1;
+        m /= g;
+        b /= g;
+        (b *= mod_inv(a / g, m)) %= m;
 
-      if(b == 1) return d;
-    }else{
-      break;
-    }
-  }
-
-  const int64_t sq = sqrt(m) + 1;
-
-  std::unordered_map<int64_t, int64_t> mp;
-  {
-    int64_t t = 1 % m;
-
-    for(int i = 0; i < sq; ++i){
-      if(mp.find(t) == mp.end()) mp[t] = i;
-      (t *= a) %= m;
-    }
-  }
-
-  {
-    int64_t A = power(mod_inv(a, m), sq, m);
-    int64_t t = b % m;
-
-    for(int i = 0; i < sq; ++i){
-      if(mp.find(t) != mp.end()){
-        int64_t ret = i * sq + mp[t] + d;
-
-        return ret;
+        if(b == 1) return d;
+      }else{
+        break;
       }
-
-      (t *= A) %= m;
     }
-  }
 
-  return {};
+    const int64_t sq = std::sqrt(m) + 1;
+
+    std::unordered_map<int64_t, int64_t> mp;
+    {
+      int64_t t = 1 % m;
+
+      for(int i = 0; i < sq; ++i){
+        if(mp.find(t) == mp.end()) mp[t] = i;
+        (t *= a) %= m;
+      }
+    }
+
+    {
+      int64_t A = power(mod_inv(a, m), sq, m);
+      int64_t t = b % m;
+
+      for(int i = 0; i < sq; ++i){
+        if(mp.find(t) != mp.end()){
+          int64_t ret = i * sq + mp[t] + d;
+
+          return ret;
+        }
+
+        (t *= A) %= m;
+      }
+    }
+
+    return {};
+  }
 }
 
 ```

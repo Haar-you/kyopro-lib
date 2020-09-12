@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3aaad417c82174440088b5eea559262a">Mylib/Misc</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Misc/roman_numerals.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -48,87 +48,89 @@ layout: default
  * @title Roman numerals
  * @docs roman_numerals.md
  */
-int roman_to_num(std::string s){
-  int ret = 0;
+namespace haar_lib::misn {
+  int roman_to_num(std::string s){
+    int ret = 0;
 
-  for(int i = 0; i < (int)s.size(); ++i){
-    switch(s[i]){
-    case 'I': {
-      if(i + 1 < (int)s.size() and (s[i + 1] == 'V' or s[i + 1] == 'X')){
-        ret -= 1;
-      }else{
-        ret += 1;
+    for(int i = 0; i < (int)s.size(); ++i){
+      switch(s[i]){
+      case 'I': {
+        if(i + 1 < (int)s.size() and (s[i + 1] == 'V' or s[i + 1] == 'X')){
+          ret -= 1;
+        }else{
+          ret += 1;
+        }
+        break;
       }
-      break;
-    }
 
-    case 'V': ret += 5; break;
+      case 'V': ret += 5; break;
 
-    case 'X': {
-      if(i + 1 < (int)s.size() and (s[i + 1] == 'L' or s[i + 1] == 'C')){
-        ret -= 10;
-      }else{
-        ret += 10;
+      case 'X': {
+        if(i + 1 < (int)s.size() and (s[i + 1] == 'L' or s[i + 1] == 'C')){
+          ret -= 10;
+        }else{
+          ret += 10;
+        }
+        break;
       }
-      break;
-    }
 
-    case 'L': ret += 50; break;
+      case 'L': ret += 50; break;
 
-    case 'C': {
-      if(i + 1 < (int)s.size() and (s[i + 1] == 'D' or s[i + 1] == 'M')){
-        ret -= 100;
-      }else{
-        ret += 100;
+      case 'C': {
+        if(i + 1 < (int)s.size() and (s[i + 1] == 'D' or s[i + 1] == 'M')){
+          ret -= 100;
+        }else{
+          ret += 100;
+        }
+        break;
       }
-      break;
+
+      case 'D': ret += 500; break;
+
+      case 'M': ret += 1000; break;
+      }
     }
 
-    case 'D': ret += 500; break;
+    return ret;
+  }
 
-    case 'M': ret += 1000; break;
+  std::string num_to_roman(int n){
+    std::string ret = "";
+
+    if(n >= 1000){
+      int k = n / 1000;
+      ret += std::string(k, 'M');
+      n %= 1000;
     }
+
+    if(n >= 100){
+      int k = n / 100;
+      if(k <= 3) ret += std::string(k, 'C');
+      else if(k == 4) ret += "CD";
+      else if(k <= 8) ret += "D" + std::string(k - 5, 'C');
+      else ret += "CM";
+
+      n %= 100;
+    }
+
+    if(n >= 10){
+      int k = n / 10;
+      if(k <= 3) ret += std::string(k, 'X');
+      else if(k == 4) ret += "XL";
+      else if(k <= 8) ret += "L" + std::string(k - 5, 'X');
+      else ret += "XC";
+
+      n %= 10;
+    }
+
+    int k = n;
+    if(k <= 3) ret += std::string(k, 'I');
+    else if(k == 4) ret += "IV";
+    else if(k <= 8) ret += "V" + std::string(k - 5, 'I');
+    else ret += "IX";
+
+    return ret;
   }
-
-  return ret;
-}
-
-std::string num_to_roman(int n){
-  std::string ret = "";
-
-  if(n >= 1000){
-    int k = n / 1000;
-    ret += std::string(k, 'M');
-    n %= 1000;
-  }
-
-  if(n >= 100){
-    int k = n / 100;
-    if(k <= 3) ret += std::string(k, 'C');
-    else if(k == 4) ret += "CD";
-    else if(k <= 8) ret += "D" + std::string(k - 5, 'C');
-    else ret += "CM";
-
-    n %= 100;
-  }
-
-  if(n >= 10){
-    int k = n / 10;
-    if(k <= 3) ret += std::string(k, 'X');
-    else if(k == 4) ret += "XL";
-    else if(k <= 8) ret += "L" + std::string(k - 5, 'X');
-    else ret += "XC";
-
-    n %= 10;
-  }
-
-  int k = n;
-  if(k <= 3) ret += std::string(k, 'I');
-  else if(k == 4) ret += "IV";
-  else if(k <= 8) ret += "V" + std::string(k - 5, 'I');
-  else ret += "IX";
-
-  return ret;
 }
 
 ```
@@ -144,87 +146,89 @@ std::string num_to_roman(int n){
  * @title Roman numerals
  * @docs roman_numerals.md
  */
-int roman_to_num(std::string s){
-  int ret = 0;
+namespace haar_lib::misn {
+  int roman_to_num(std::string s){
+    int ret = 0;
 
-  for(int i = 0; i < (int)s.size(); ++i){
-    switch(s[i]){
-    case 'I': {
-      if(i + 1 < (int)s.size() and (s[i + 1] == 'V' or s[i + 1] == 'X')){
-        ret -= 1;
-      }else{
-        ret += 1;
+    for(int i = 0; i < (int)s.size(); ++i){
+      switch(s[i]){
+      case 'I': {
+        if(i + 1 < (int)s.size() and (s[i + 1] == 'V' or s[i + 1] == 'X')){
+          ret -= 1;
+        }else{
+          ret += 1;
+        }
+        break;
       }
-      break;
-    }
 
-    case 'V': ret += 5; break;
+      case 'V': ret += 5; break;
 
-    case 'X': {
-      if(i + 1 < (int)s.size() and (s[i + 1] == 'L' or s[i + 1] == 'C')){
-        ret -= 10;
-      }else{
-        ret += 10;
+      case 'X': {
+        if(i + 1 < (int)s.size() and (s[i + 1] == 'L' or s[i + 1] == 'C')){
+          ret -= 10;
+        }else{
+          ret += 10;
+        }
+        break;
       }
-      break;
-    }
 
-    case 'L': ret += 50; break;
+      case 'L': ret += 50; break;
 
-    case 'C': {
-      if(i + 1 < (int)s.size() and (s[i + 1] == 'D' or s[i + 1] == 'M')){
-        ret -= 100;
-      }else{
-        ret += 100;
+      case 'C': {
+        if(i + 1 < (int)s.size() and (s[i + 1] == 'D' or s[i + 1] == 'M')){
+          ret -= 100;
+        }else{
+          ret += 100;
+        }
+        break;
       }
-      break;
+
+      case 'D': ret += 500; break;
+
+      case 'M': ret += 1000; break;
+      }
     }
 
-    case 'D': ret += 500; break;
+    return ret;
+  }
 
-    case 'M': ret += 1000; break;
+  std::string num_to_roman(int n){
+    std::string ret = "";
+
+    if(n >= 1000){
+      int k = n / 1000;
+      ret += std::string(k, 'M');
+      n %= 1000;
     }
+
+    if(n >= 100){
+      int k = n / 100;
+      if(k <= 3) ret += std::string(k, 'C');
+      else if(k == 4) ret += "CD";
+      else if(k <= 8) ret += "D" + std::string(k - 5, 'C');
+      else ret += "CM";
+
+      n %= 100;
+    }
+
+    if(n >= 10){
+      int k = n / 10;
+      if(k <= 3) ret += std::string(k, 'X');
+      else if(k == 4) ret += "XL";
+      else if(k <= 8) ret += "L" + std::string(k - 5, 'X');
+      else ret += "XC";
+
+      n %= 10;
+    }
+
+    int k = n;
+    if(k <= 3) ret += std::string(k, 'I');
+    else if(k == 4) ret += "IV";
+    else if(k <= 8) ret += "V" + std::string(k - 5, 'I');
+    else ret += "IX";
+
+    return ret;
   }
-
-  return ret;
-}
-
-std::string num_to_roman(int n){
-  std::string ret = "";
-
-  if(n >= 1000){
-    int k = n / 1000;
-    ret += std::string(k, 'M');
-    n %= 1000;
-  }
-
-  if(n >= 100){
-    int k = n / 100;
-    if(k <= 3) ret += std::string(k, 'C');
-    else if(k == 4) ret += "CD";
-    else if(k <= 8) ret += "D" + std::string(k - 5, 'C');
-    else ret += "CM";
-
-    n %= 100;
-  }
-
-  if(n >= 10){
-    int k = n / 10;
-    if(k <= 3) ret += std::string(k, 'X');
-    else if(k == 4) ret += "XL";
-    else if(k <= 8) ret += "L" + std::string(k - 5, 'X');
-    else ret += "XC";
-
-    n %= 10;
-  }
-
-  int k = n;
-  if(k <= 3) ret += std::string(k, 'I');
-  else if(k == 4) ret += "IV";
-  else if(k <= 8) ret += "V" + std::string(k - 5, 'I');
-  else ret += "IX";
-
-  return ret;
 }
 
 ```

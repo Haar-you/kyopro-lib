@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Skew heap
+# :heavy_check_mark: Skew heap
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#f151d59e79c7ff7f731ff52cf9b782e4">Mylib/DataStructure/Heap</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Heap/skew_heap.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
 
 
 ## Code
@@ -54,44 +54,46 @@ layout: default
  * @title Skew heap
  * @docs skew_heap.md
  */
-template <typename T, class Compare = std::less<T>>
-class SkewHeap {
-  struct node {
-    T val;
-    node *left, *right;
-    int size;
-    node(const T &val): val(val), left(nullptr), right(nullptr), size(1){}
+namespace haar_lib {
+  template <typename T, class Compare = std::less<T>>
+  class skew_heap {
+    struct node {
+      T val;
+      node *left, *right;
+      int size;
+      node(const T &val): val(val), left(nullptr), right(nullptr), size(1){}
+    };
+
+    node *root;
+    Compare compare;
+
+  public:
+    skew_heap(): root(nullptr), compare(Compare()){}
+    skew_heap(const Compare &compare): root(nullptr), compare(compare){}
+
+  protected:
+    node* meld(node *a, node *b){
+      if(!a) return b;
+      if(!b) return a;
+
+      if(compare(a->val, b->val)) std::swap(a, b);
+
+      a->size += b->size;
+      a->right = meld(a->right, b);
+      std::swap(a->left, a->right);
+
+      return a;
+    }
+
+  public:
+    void meld(skew_heap &heap){root = meld(root, heap.root); heap.root = nullptr;}
+    void push(const T &val){root = meld(root, new node(val));}
+    const T& top() const {return root->val;}
+    void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}
+    bool empty() const {return root == nullptr;}
+    size_t size() const {return root ? root->size : 0;}
   };
-
-  node *root;
-  Compare compare;
-
-public:
-  SkewHeap(): root(nullptr), compare(Compare()){}
-  SkewHeap(const Compare &compare): root(nullptr), compare(compare){}
-
-protected:
-  node* meld(node *a, node *b){
-    if(!a) return b;
-    if(!b) return a;
-
-    if(compare(a->val, b->val)) std::swap(a, b);
-
-    a->size += b->size;
-    a->right = meld(a->right, b);
-    std::swap(a->left, a->right);
-
-    return a;
-  }
-
-public:
-  void meld(SkewHeap &heap){root = meld(root, heap.root); heap.root = nullptr;}
-  void push(const T &val){root = meld(root, new node(val));}
-  const T& top() const {return root->val;}
-  void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}
-  bool empty() const {return root == nullptr;}
-  size_t size() const {return root ? root->size : 0;}
-};
+}
 
 ```
 {% endraw %}
@@ -107,44 +109,46 @@ public:
  * @title Skew heap
  * @docs skew_heap.md
  */
-template <typename T, class Compare = std::less<T>>
-class SkewHeap {
-  struct node {
-    T val;
-    node *left, *right;
-    int size;
-    node(const T &val): val(val), left(nullptr), right(nullptr), size(1){}
+namespace haar_lib {
+  template <typename T, class Compare = std::less<T>>
+  class skew_heap {
+    struct node {
+      T val;
+      node *left, *right;
+      int size;
+      node(const T &val): val(val), left(nullptr), right(nullptr), size(1){}
+    };
+
+    node *root;
+    Compare compare;
+
+  public:
+    skew_heap(): root(nullptr), compare(Compare()){}
+    skew_heap(const Compare &compare): root(nullptr), compare(compare){}
+
+  protected:
+    node* meld(node *a, node *b){
+      if(!a) return b;
+      if(!b) return a;
+
+      if(compare(a->val, b->val)) std::swap(a, b);
+
+      a->size += b->size;
+      a->right = meld(a->right, b);
+      std::swap(a->left, a->right);
+
+      return a;
+    }
+
+  public:
+    void meld(skew_heap &heap){root = meld(root, heap.root); heap.root = nullptr;}
+    void push(const T &val){root = meld(root, new node(val));}
+    const T& top() const {return root->val;}
+    void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}
+    bool empty() const {return root == nullptr;}
+    size_t size() const {return root ? root->size : 0;}
   };
-
-  node *root;
-  Compare compare;
-
-public:
-  SkewHeap(): root(nullptr), compare(Compare()){}
-  SkewHeap(const Compare &compare): root(nullptr), compare(compare){}
-
-protected:
-  node* meld(node *a, node *b){
-    if(!a) return b;
-    if(!b) return a;
-
-    if(compare(a->val, b->val)) std::swap(a, b);
-
-    a->size += b->size;
-    a->right = meld(a->right, b);
-    std::swap(a->left, a->right);
-
-    return a;
-  }
-
-public:
-  void meld(SkewHeap &heap){root = meld(root, heap.root); heap.root = nullptr;}
-  void push(const T &val){root = meld(root, new node(val));}
-  const T& top() const {return root->val;}
-  void pop(){node *temp = root; root = meld(root->left, root->right); delete temp;}
-  bool empty() const {return root == nullptr;}
-  size_t size() const {return root ? root->size : 0;}
-};
+}
 
 ```
 {% endraw %}

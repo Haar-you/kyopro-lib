@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Graph vertex coloring
+# :heavy_check_mark: Graph vertex coloring
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#acf9ec20eaed2eb3d3c1a731ebc2fbe1">Mylib/Graph/Coloring</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Graph/Coloring/chromatic_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -56,12 +56,12 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../Number/Mod/mod_power.cpp.html">Mod power</a>
+* :question: <a href="../../Number/Mod/mod_power.cpp.html">Mod power</a>
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/2136/main.test.cpp.html">test/aoj/2136/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2136/main.test.cpp.html">test/aoj/2136/main.test.cpp</a>
 
 
 ## Code
@@ -79,49 +79,51 @@ layout: default
  * @title Graph vertex coloring
  * @docs chromatic_number.md
  */
-int chromatic_number(const std::vector<std::vector<int>> &graph){
-  static constexpr int mod = 1000000007;
-  const int N = graph.size();
+namespace haar_lib {
+  int chromatic_number(const std::vector<std::vector<int>> &graph){
+    static constexpr int mod = 1000000007;
+    const int N = graph.size();
 
-  std::vector<int> g(N);
-  for(int i = 0; i < N; ++i){
-    for(auto j : graph[i]){
-      g[i] |= (1 << j);
-    }
-  }
-
-  std::vector<int64_t> I(1 << N);
-  I[0] = 1;
-  for(int i = 1; i < (1 << N); ++i){
-    int c = __builtin_ctz(i);
-    I[i] = I[i - (1 << c)] + I[(i - (1 << c)) & (~g[c])];
-    if(I[i] >= mod) I[i] -= mod;
-  }
-
-  const auto check =
-    [&](int k){
-      int64_t t = 0;
-      for(int i = 0; i < (1 << N); ++i){
-        if(__builtin_popcount(i) % 2 == 1) t -= power(I[i], k, mod);
-        else t += power(I[i], k, mod);
-        if(t < 0) t += mod;
-        if(t >= mod) t -= mod;
+    std::vector<int> g(N);
+    for(int i = 0; i < N; ++i){
+      for(auto j : graph[i]){
+        g[i] |= (1 << j);
       }
-      return (t % mod != 0);
-    };
-
-  int lb = 0, ub = N;
-  while(abs(lb - ub) > 1){
-    const auto mid = (lb + ub) / 2;
-
-    if(check(mid)){
-      ub = mid;
-    }else{
-      lb = mid;
     }
-  }
 
-  return ub;
+    std::vector<int64_t> I(1 << N);
+    I[0] = 1;
+    for(int i = 1; i < (1 << N); ++i){
+      int c = __builtin_ctz(i);
+      I[i] = I[i - (1 << c)] + I[(i - (1 << c)) & (~g[c])];
+      if(I[i] >= mod) I[i] -= mod;
+    }
+
+    const auto check =
+      [&](int k){
+        int64_t t = 0;
+        for(int i = 0; i < (1 << N); ++i){
+          if(__builtin_popcount(i) % 2 == 1) t -= power(I[i], k, mod);
+          else t += power(I[i], k, mod);
+          if(t < 0) t += mod;
+          if(t >= mod) t -= mod;
+        }
+        return (t % mod != 0);
+      };
+
+    int lb = 0, ub = N;
+    while(std::abs(lb - ub) > 1){
+      const auto mid = (lb + ub) / 2;
+
+      if(check(mid)){
+        ub = mid;
+      }else{
+        lb = mid;
+      }
+    }
+
+    return ub;
+  }
 }
 
 ```
@@ -140,14 +142,16 @@ int chromatic_number(const std::vector<std::vector<int>> &graph){
  * @title Mod power
  * @docs mod_power.md
  */
-int64_t power(int64_t n, int64_t p, int64_t m){
-  int64_t ret = 1;
-  while(p > 0){
-    if(p & 1) (ret *= n) %= m;
-    (n *= n) %= m;
-    p >>= 1;
+namespace haar_lib {
+  int64_t power(int64_t n, int64_t p, int64_t m){
+    int64_t ret = 1;
+    while(p > 0){
+      if(p & 1) (ret *= n) %= m;
+      (n *= n) %= m;
+      p >>= 1;
+    }
+    return ret;
   }
-  return ret;
 }
 #line 6 "Mylib/Graph/Coloring/chromatic_number.cpp"
 
@@ -155,49 +159,51 @@ int64_t power(int64_t n, int64_t p, int64_t m){
  * @title Graph vertex coloring
  * @docs chromatic_number.md
  */
-int chromatic_number(const std::vector<std::vector<int>> &graph){
-  static constexpr int mod = 1000000007;
-  const int N = graph.size();
+namespace haar_lib {
+  int chromatic_number(const std::vector<std::vector<int>> &graph){
+    static constexpr int mod = 1000000007;
+    const int N = graph.size();
 
-  std::vector<int> g(N);
-  for(int i = 0; i < N; ++i){
-    for(auto j : graph[i]){
-      g[i] |= (1 << j);
-    }
-  }
-
-  std::vector<int64_t> I(1 << N);
-  I[0] = 1;
-  for(int i = 1; i < (1 << N); ++i){
-    int c = __builtin_ctz(i);
-    I[i] = I[i - (1 << c)] + I[(i - (1 << c)) & (~g[c])];
-    if(I[i] >= mod) I[i] -= mod;
-  }
-
-  const auto check =
-    [&](int k){
-      int64_t t = 0;
-      for(int i = 0; i < (1 << N); ++i){
-        if(__builtin_popcount(i) % 2 == 1) t -= power(I[i], k, mod);
-        else t += power(I[i], k, mod);
-        if(t < 0) t += mod;
-        if(t >= mod) t -= mod;
+    std::vector<int> g(N);
+    for(int i = 0; i < N; ++i){
+      for(auto j : graph[i]){
+        g[i] |= (1 << j);
       }
-      return (t % mod != 0);
-    };
-
-  int lb = 0, ub = N;
-  while(abs(lb - ub) > 1){
-    const auto mid = (lb + ub) / 2;
-
-    if(check(mid)){
-      ub = mid;
-    }else{
-      lb = mid;
     }
-  }
 
-  return ub;
+    std::vector<int64_t> I(1 << N);
+    I[0] = 1;
+    for(int i = 1; i < (1 << N); ++i){
+      int c = __builtin_ctz(i);
+      I[i] = I[i - (1 << c)] + I[(i - (1 << c)) & (~g[c])];
+      if(I[i] >= mod) I[i] -= mod;
+    }
+
+    const auto check =
+      [&](int k){
+        int64_t t = 0;
+        for(int i = 0; i < (1 << N); ++i){
+          if(__builtin_popcount(i) % 2 == 1) t -= power(I[i], k, mod);
+          else t += power(I[i], k, mod);
+          if(t < 0) t += mod;
+          if(t >= mod) t -= mod;
+        }
+        return (t % mod != 0);
+      };
+
+    int lb = 0, ub = N;
+    while(std::abs(lb - ub) > 1){
+      const auto mid = (lb + ub) / 2;
+
+      if(check(mid)){
+        ub = mid;
+      }else{
+        lb = mid;
+      }
+    }
+
+    return ub;
+  }
 }
 
 ```

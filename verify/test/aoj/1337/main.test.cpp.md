@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/1337/main.test.cpp
+# :heavy_check_mark: test/aoj/1337/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#a61f1640cc9f3ae71d742eade5b6fb71">test/aoj/1337</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1337/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1337">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1337</a>
@@ -39,9 +39,9 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
-* :x: <a href="../../../../library/Mylib/Utils/compressor.cpp.html">Compressor</a>
+* :question: <a href="../../../../library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/Utils/compressor.cpp.html">Compressor</a>
 
 
 ## Code
@@ -57,6 +57,8 @@ layout: default
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 
+namespace hl = haar_lib;
+
 const int H = 200;
 const int W = 200;
 
@@ -67,12 +69,12 @@ int main(){
   int n;
 
   while(std::cin >> n, n){
-    auto [l, t, r, b] = input_tuple_vector<int, int, int, int>(n);
+    auto [l, t, r, b] = hl::input_tuple_vector<int, int, int, int>(n);
 
     int64_t a[H][W] = {};
 
-    Compressor<int>().add(l, r, -1).build().compress(l, r);
-    Compressor<int>().add(t, b, -1).build().compress(t, b);
+    hl::compressor<int>().add(l, r, -1).build().compress(l, r);
+    hl::compressor<int>().add(t, b, -1).build().compress(t, b);
 
     for(int i = 0; i < n; ++i){
       for(int x = l[i]; x < r[i]; ++x){
@@ -82,7 +84,7 @@ int main(){
       }
     }
 
-    UnionFind uf(H * W);
+    hl::unionfind uf(H * W);
     int index[H][W];
     {
       int k = 0;
@@ -101,7 +103,7 @@ int main(){
       }
     }
 
-    int ans = uf.count_group();
+    int ans = uf.count_groups();
 
     std::cout << ans << "\n";
   }
@@ -127,118 +129,143 @@ int main(){
  * @title Compressor
  * @docs compressor.md
  */
-template <typename T>
-class Compressor {
-  std::vector<T> data;
+namespace haar_lib {
+  template <typename T>
+  class compressor {
+    std::vector<T> data;
 
-public:
-  auto& add(const T &val){
-    data.push_back(val);
-    return *this;
-  }
+  public:
+    auto& add(const T &val){
+      data.push_back(val);
+      return *this;
+    }
 
-  auto& add(const std::vector<T> &vals){
-    data.insert(data.end(), vals.begin(), vals.end());
-    return *this;
-  }
+    auto& add(const std::vector<T> &vals){
+      data.insert(data.end(), vals.begin(), vals.end());
+      return *this;
+    }
 
-  template <typename U, typename ... Args>
-  auto& add(const U &val, const Args &... args){
-    add(val);
-    return add(args ...);
-  }
+    template <typename U, typename ... Args>
+    auto& add(const U &val, const Args &... args){
+      add(val);
+      return add(args ...);
+    }
 
-  auto& build(){
-    std::sort(data.begin(), data.end());
-    data.erase(std::unique(data.begin(), data.end()), data.end());
-    return *this;
-  }
+    auto& build(){
+      std::sort(data.begin(), data.end());
+      data.erase(std::unique(data.begin(), data.end()), data.end());
+      return *this;
+    }
 
-  int get_index(const T &val) const {
-    return std::lower_bound(data.begin(), data.end(), val) - data.begin();
-  }
+    int get_index(const T &val) const {
+      return std::lower_bound(data.begin(), data.end(), val) - data.begin();
+    }
 
-  auto& compress(std::vector<T> &vals) const {
-    for(auto &x : vals) x = get_index(x);
-    return *this;
-  }
+    auto& compress(std::vector<T> &vals) const {
+      for(auto &x : vals) x = get_index(x);
+      return *this;
+    }
 
-  auto& compress(T &val) const {
-    val = get_index(val);
-    return *this;
-  }
+    auto& compress(T &val) const {
+      val = get_index(val);
+      return *this;
+    }
 
-  template <typename U, typename ... Args>
-  auto& compress(U &val, Args &... args) const {
-    compress(val);
-    return compress(args ...);
-  }
+    template <typename U, typename ... Args>
+    auto& compress(U &val, Args &... args) const {
+      compress(val);
+      return compress(args ...);
+    }
 
-  auto& decompress(std::vector<T> &vals) const {
-    for(auto &x : vals) x = data[x];
-    return *this;
-  }
+    auto& decompress(std::vector<T> &vals) const {
+      for(auto &x : vals) x = data[x];
+      return *this;
+    }
 
-  auto& decompress(T &val) const {
-    val = data[val];
-    return *this;
-  }
+    auto& decompress(T &val) const {
+      val = data[val];
+      return *this;
+    }
 
-  template <typename U, typename ... Args>
-  auto& decompress(U &val, Args &... args) const {
-    decompress(val);
-    return decompress(args ...);
-  }
+    template <typename U, typename ... Args>
+    auto& decompress(U &val, Args &... args) const {
+      decompress(val);
+      return decompress(args ...);
+    }
 
-  int size() const {return data.size();}
-  T operator[](int index) const {return data[index];}
-};
+    int size() const {return data.size();}
+    T operator[](int index) const {return data[index];}
+  };
+}
 #line 3 "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include <numeric>
+#line 5 "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
 /**
  * @title Union-find
  * @docs unionfind.md
  */
-class UnionFind {
-  std::vector<int> parent, depth, size;
-  int count;
+namespace haar_lib {
+  class unionfind {
+    int n;
+    mutable std::vector<int> parent;
+    std::vector<int> depth, size;
+    int count;
 
-public:
-  UnionFind(){}
-  UnionFind(int n): parent(n), depth(n, 1), size(n, 1), count(n){
-    std::iota(parent.begin(), parent.end(), 0);
-  }
+  public:
+    unionfind(){}
+    unionfind(int n): n(n), parent(n), depth(n, 1), size(n, 1), count(n){
+      std::iota(parent.begin(), parent.end(), 0);
+    }
 
-  int root_of(int i){
-    if(parent[i] == i) return i;
-    else return parent[i] = root_of(parent[i]);
-  }
+    int root_of(int i) const {
+      if(parent[i] == i) return i;
+      else return parent[i] = root_of(parent[i]);
+    }
 
-  bool is_same(int i, int j){return root_of(i) == root_of(j);}
+    bool is_same(int i, int j) const {return root_of(i) == root_of(j);}
 
-  int merge(int i, int j){
-    const int ri = root_of(i), rj = root_of(j);
-    if(ri == rj) return ri;
-    else{
-      --count;
-      if(depth[ri] < depth[rj]){
-        parent[ri] = rj;
-        size[rj] += size[ri];
-        return rj;
-      }else{
-        parent[rj] = ri;
-        size[ri] += size[rj];
-        if(depth[ri] == depth[rj]) ++depth[ri];
-        return ri;
+    int merge(int i, int j){
+      const int ri = root_of(i), rj = root_of(j);
+      if(ri == rj) return ri;
+      else{
+        --count;
+        if(depth[ri] < depth[rj]){
+          parent[ri] = rj;
+          size[rj] += size[ri];
+          return rj;
+        }else{
+          parent[rj] = ri;
+          size[ri] += size[rj];
+          if(depth[ri] == depth[rj]) ++depth[ri];
+          return ri;
+        }
       }
     }
-  }
 
-  int size_of(int i){return size[root_of(i)];}
+    int size_of(int i) const {return size[root_of(i)];}
 
-  int count_group(){return count;}
-};
+    int count_groups() const {return count;}
+
+    auto get_groups() const {
+      std::vector<std::vector<int>> ret(n);
+
+      for(int i = 0; i < n; ++i){
+        ret[root_of(i)].push_back(i);
+      }
+
+      ret.erase(
+        std::remove_if(
+          ret.begin(), ret.end(),
+          [](const auto &a){return a.empty();}
+        ),
+        ret.end()
+      );
+
+      return ret;
+    }
+  };
+}
 #line 4 "Mylib/IO/input_tuple_vector.cpp"
 #include <tuple>
 #include <utility>
@@ -247,28 +274,32 @@ public:
 /**
  * @docs input_tuple_vector.md
  */
-template <typename T, size_t ... I>
-void input_tuple_vector_init(T &val, int N, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0) ...};
-}
-
-template <typename T, size_t ... I>
-void input_tuple_vector_helper(T &val, int i, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0) ...};
-}
-
-template <typename ... Args>
-auto input_tuple_vector(int N){
-  std::tuple<std::vector<Args> ...> ret;
-
-  input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof ... (Args)>());
-  for(int i = 0; i < N; ++i){
-    input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof ... (Args)>());
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  void input_tuple_vector_init(T &val, int N, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)), 0) ...};
   }
 
-  return ret;
+  template <typename T, size_t ... I>
+  void input_tuple_vector_helper(T &val, int i, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(std::cin >> std::get<I>(val)[i]), 0) ...};
+  }
+
+  template <typename ... Args>
+  auto input_tuple_vector(int N){
+    std::tuple<std::vector<Args> ...> ret;
+
+    input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof ... (Args)>());
+    for(int i = 0; i < N; ++i){
+      input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof ... (Args)>());
+    }
+
+    return ret;
+  }
 }
 #line 8 "test/aoj/1337/main.test.cpp"
+
+namespace hl = haar_lib;
 
 const int H = 200;
 const int W = 200;
@@ -280,12 +311,12 @@ int main(){
   int n;
 
   while(std::cin >> n, n){
-    auto [l, t, r, b] = input_tuple_vector<int, int, int, int>(n);
+    auto [l, t, r, b] = hl::input_tuple_vector<int, int, int, int>(n);
 
     int64_t a[H][W] = {};
 
-    Compressor<int>().add(l, r, -1).build().compress(l, r);
-    Compressor<int>().add(t, b, -1).build().compress(t, b);
+    hl::compressor<int>().add(l, r, -1).build().compress(l, r);
+    hl::compressor<int>().add(t, b, -1).build().compress(t, b);
 
     for(int i = 0; i < n; ++i){
       for(int x = l[i]; x < r[i]; ++x){
@@ -295,7 +326,7 @@ int main(){
       }
     }
 
-    UnionFind uf(H * W);
+    hl::unionfind uf(H * W);
     int index[H][W];
     {
       int k = 0;
@@ -314,7 +345,7 @@ int main(){
       }
     }
 
-    int ans = uf.count_group();
+    int ans = uf.count_groups();
 
     std::cout << ans << "\n";
   }

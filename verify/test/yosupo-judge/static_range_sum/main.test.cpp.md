@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#e057ba653ff4e1918cbb7491bf73d8e0">test/yosupo-judge/static_range_sum</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/static_range_sum/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/static_range_sum">https://judge.yosupo.jp/problem/static_range_sum</a>
@@ -40,9 +40,9 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp.html">1D cumulative sum</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -57,17 +57,19 @@ layout: default
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, Q; std::cin >> N >> Q;
 
-  auto a = input_vector<int64_t>(N);
+  auto a = hl::input_vector<int64_t>(N);
 
-  auto c = CumulativeSum1D(a).build();
+  auto c = hl::cumulative_sum_1d(a).build();
 
-  for(auto [l, r] : input_tuples<int, int>(Q)){
+  for(auto [l, r] : hl::input_tuples<int, int>(Q)){
     std::cout << c.get(l, r) << "\n";
   }
 
@@ -93,66 +95,70 @@ int main(){
  * @title 1D cumulative sum
  * @docs cumulative_sum_1d.md
  */
-template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
-class CumulativeSum1D {
-  std::vector<T> data;
-  const int N;
-  const Add add;
-  const Minus minus;
-  bool is_built = false;
+namespace haar_lib {
+  template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
+  class cumulative_sum_1d {
+    std::vector<T> data;
+    const int N;
+    const Add add;
+    const Minus minus;
+    bool is_built = false;
 
-public:
-  CumulativeSum1D(const std::vector<T> &a, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
-    N(a.size()), add(add), minus(minus)
-  {
-    data.assign(N + 1, e);
-    for(int i = 0; i < N; ++i) data[i + 1] = a[i];
-  }
+  public:
+    cumulative_sum_1d(const std::vector<T> &a, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
+      N(a.size()), add(add), minus(minus)
+    {
+      data.assign(N + 1, e);
+      for(int i = 0; i < N; ++i) data[i + 1] = a[i];
+    }
 
-  CumulativeSum1D(int N, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
-    N(N), add(add), minus(minus)
-  {
-    data.assign(N + 1, e);
-  }
+    cumulative_sum_1d(int N, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
+      N(N), add(add), minus(minus)
+    {
+      data.assign(N + 1, e);
+    }
 
-  auto& update(int i, const T &val){
-    assert(not is_built);
-    data[i + 1] = add(data[i + 1], val);
-    return *this;
-  }
+    auto& update(int i, const T &val){
+      assert(not is_built);
+      data[i + 1] = add(data[i + 1], val);
+      return *this;
+    }
 
-  auto& build(){
-    assert(not is_built);
-    for(int i = 0; i < N; ++i) data[i + 1] = add(data[i + 1], data[i]);
-    is_built = true;
-    return *this;
-  }
+    auto& build(){
+      assert(not is_built);
+      for(int i = 0; i < N; ++i) data[i + 1] = add(data[i + 1], data[i]);
+      is_built = true;
+      return *this;
+    }
 
-  /**
-   * @attention [i, j)
-   */
-  T get(int i, int j) const {
-    assert(is_built);
-    return minus(data[j], data[i]);
-  }
-};
+    /**
+     * @attention [i, j)
+     */
+    T get(int i, int j) const {
+      assert(is_built);
+      return minus(data[j], data[i]);
+    }
+  };
+}
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
  * @docs input_vector.md
  */
-template <typename T>
-std::vector<T> input_vector(int N){
-  std::vector<T> ret(N);
-  for(int i = 0; i < N; ++i) std::cin >> ret[i];
-  return ret;
-}
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> input_vector(int N){
+    std::vector<T> ret(N);
+    for(int i = 0; i < N; ++i) std::cin >> ret[i];
+    return ret;
+  }
 
-template <typename T>
-std::vector<std::vector<T>> input_vector(int N, int M){
-  std::vector<std::vector<T>> ret(N);
-  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
-  return ret;
+  template <typename T>
+  std::vector<std::vector<T>> input_vector(int N, int M){
+    std::vector<std::vector<T>> ret(N);
+    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+    return ret;
+  }
 }
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
@@ -163,68 +169,74 @@ std::vector<std::vector<T>> input_vector(int N, int M){
 /**
  * @docs input_tuple.md
  */
-template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
-}
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
+  }
 
-template <typename T, typename U>
-std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
-  s >> value.first >> value.second;
-  return s;
-}
+  template <typename T, typename U>
+  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+    s >> value.first >> value.second;
+    return s;
+  }
 
-template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
-  return s;
+  template <typename ... Args>
+  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
+    return s;
+  }
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
-template <typename ... Args>
-class InputTuples {
-  struct iter {
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuples {
+    struct iter {
+      using value_type = std::tuple<Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N, c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
+      value_type operator*(){
+        if(not fetched){
+          std::cin >> value;
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuples(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples(int N){
+    return InputTuples<Args ...>(N);
+  }
 }
 #line 7 "test/yosupo-judge/static_range_sum/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   std::cin.tie(0);
@@ -232,11 +244,11 @@ int main(){
 
   int N, Q; std::cin >> N >> Q;
 
-  auto a = input_vector<int64_t>(N);
+  auto a = hl::input_vector<int64_t>(N);
 
-  auto c = CumulativeSum1D(a).build();
+  auto c = hl::cumulative_sum_1d(a).build();
 
-  for(auto [l, r] : input_tuples<int, int>(Q)){
+  for(auto [l, r] : hl::input_tuples<int, int>(Q)){
     std::cout << c.get(l, r) << "\n";
   }
 

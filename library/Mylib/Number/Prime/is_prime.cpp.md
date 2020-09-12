@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#26f1f261bc4e83492156752f5caf0111">Mylib/Number/Prime</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Number/Prime/is_prime.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-06-02 05:58:35+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -52,12 +52,14 @@ layout: default
  * @title Primality test (Trial division)
  * @docs is_prime.md
  */
-bool is_prime(int n){
-  if(n <= 1) return false;
-  for(int i = 2; i * i <= n; ++i){
-    if(n % i == 0) return false;
+namespace haar_lib {
+  bool is_prime(int n){
+    if(n <= 1) return false;
+    for(int i = 2; i * i <= n; ++i){
+      if(n % i == 0) return false;
+    }
+    return true;
   }
-  return true;
 }
 
 ```
@@ -72,12 +74,14 @@ bool is_prime(int n){
  * @title Primality test (Trial division)
  * @docs is_prime.md
  */
-bool is_prime(int n){
-  if(n <= 1) return false;
-  for(int i = 2; i * i <= n; ++i){
-    if(n % i == 0) return false;
+namespace haar_lib {
+  bool is_prime(int n){
+    if(n <= 1) return false;
+    for(int i = 2; i * i <= n; ++i){
+      if(n % i == 0) return false;
+    }
+    return true;
   }
-  return true;
 }
 
 ```

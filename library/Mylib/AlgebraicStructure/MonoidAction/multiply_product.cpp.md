@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#7bd9a37defae28fe1746a7ffe2a62491">Mylib/AlgebraicStructure/MonoidAction</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -55,25 +55,27 @@ layout: default
  * @title Range multiply / Range product
  * @docs multiply_product.md
  */
-template <typename T, typename U>
-struct MultiplyProduct {
-  using monoid_get = ProductMonoid<T>;
-  using monoid_update = ProductMonoid<U>;
-  using value_type_get = typename monoid_get::value_type;
-  using value_type_update = typename monoid_update::value_type;
-  monoid_get M1;
-  monoid_update M2;
+namespace haar_lib {
+  template <typename T, typename U>
+  struct multiply_product {
+    using monoid_get = product_monoid<T>;
+    using monoid_update = product_monoid<U>;
+    using value_type_get = typename monoid_get::value_type;
+    using value_type_update = typename monoid_update::value_type;
+    monoid_get M1;
+    monoid_update M2;
 
-  value_type_get id_get() const {return M1.id();}
-  value_type_update id_update() const {return M2.id();}
+    value_type_get id_get() const {return M1.id();}
+    value_type_update id_update() const {return M2.id();}
 
-  value_type_get op_get(value_type_get a, value_type_get b) const {return M1.op(a, b);}
-  value_type_update op_update(value_type_update a, value_type_update b) const {return M2.op(a, b);}
+    value_type_get op_get(value_type_get a, value_type_get b) const {return M1.op(a, b);}
+    value_type_update op_update(value_type_update a, value_type_update b) const {return M2.op(a, b);}
 
-  value_type_get op(value_type_get a, value_type_update b, int len) const {
-    return a * times<monoid_update>(b, len);
-  }
-};
+    value_type_get op(value_type_get a, value_type_update b, int len) const {
+      return a * times<monoid_update>(b, len);
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -87,30 +89,34 @@ struct MultiplyProduct {
  * @title Product monoid
  * @docs product.md
  */
-template <typename T>
-struct ProductMonoid {
-  using value_type = T;
-  value_type operator()() const {return 1;}
-  value_type operator()(value_type a, value_type b) const {return a * b;}
-};
+namespace haar_lib {
+  template <typename T>
+  struct product_monoid {
+    using value_type = T;
+    value_type operator()() const {return 1;}
+    value_type operator()(value_type a, value_type b) const {return a * b;}
+  };
+}
 #line 2 "Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp"
 #include <cstdint>
 
 /**
  * @docs monoid_utils.md
  */
-template <typename Monoid, typename value_type = typename Monoid::value_type>
-value_type times(value_type a, int64_t p){
-  Monoid M;
-  auto ret = M.id();
+namespace haar_lib {
+  template <typename Monoid, typename value_type = typename Monoid::value_type>
+  value_type times(value_type a, int64_t p){
+    Monoid M;
+    auto ret = M.id();
 
-  while(p > 0){
-    if(p & 1) ret = M.op(ret, a);
-    a = M.op(a, a);
-    p >>= 1;
+    while(p > 0){
+      if(p & 1) ret = M.op(ret, a);
+      a = M.op(a, a);
+      p >>= 1;
+    }
+
+    return ret;
   }
-
-  return ret;
 }
 #line 4 "Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp"
 
@@ -118,25 +124,27 @@ value_type times(value_type a, int64_t p){
  * @title Range multiply / Range product
  * @docs multiply_product.md
  */
-template <typename T, typename U>
-struct MultiplyProduct {
-  using monoid_get = ProductMonoid<T>;
-  using monoid_update = ProductMonoid<U>;
-  using value_type_get = typename monoid_get::value_type;
-  using value_type_update = typename monoid_update::value_type;
-  monoid_get M1;
-  monoid_update M2;
+namespace haar_lib {
+  template <typename T, typename U>
+  struct multiply_product {
+    using monoid_get = product_monoid<T>;
+    using monoid_update = product_monoid<U>;
+    using value_type_get = typename monoid_get::value_type;
+    using value_type_update = typename monoid_update::value_type;
+    monoid_get M1;
+    monoid_update M2;
 
-  value_type_get id_get() const {return M1.id();}
-  value_type_update id_update() const {return M2.id();}
+    value_type_get id_get() const {return M1.id();}
+    value_type_update id_update() const {return M2.id();}
 
-  value_type_get op_get(value_type_get a, value_type_get b) const {return M1.op(a, b);}
-  value_type_update op_update(value_type_update a, value_type_update b) const {return M2.op(a, b);}
+    value_type_get op_get(value_type_get a, value_type_get b) const {return M1.op(a, b);}
+    value_type_update op_update(value_type_update a, value_type_update b) const {return M2.op(a, b);}
 
-  value_type_get op(value_type_get a, value_type_update b, int len) const {
-    return a * times<monoid_update>(b, len);
-  }
-};
+    value_type_get op(value_type_get a, value_type_update b, int len) const {
+      return a * times<monoid_update>(b, len);
+    }
+  };
+}
 
 ```
 {% endraw %}

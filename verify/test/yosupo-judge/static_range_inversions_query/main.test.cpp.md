@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#6a29c5e431615f0854be5d2b0bff9042">test/yosupo-judge/static_range_inversions_query</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/yosupo-judge/static_range_inversions_query/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-10 05:03:27+09:00
 
 
 * see: <a href="https://judge.yosupo.jp/problem/static_range_inversions_query">https://judge.yosupo.jp/problem/static_range_inversions_query</a>
@@ -39,12 +39,12 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/Algorithm/Mo/mo_algorithm.cpp.html">Mo's algorithm</a>
+* :question: <a href="../../../../library/Mylib/Algorithm/Mo/mo_algorithm.cpp.html">Mo's algorithm</a>
 * :x: <a href="../../../../library/Mylib/Algorithm/Query/range_inversions_query.cpp.html">Range inversions query</a>
 * :x: <a href="../../../../library/Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp.html">Fenwick tree (Add)</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -60,16 +60,18 @@ layout: default
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/Algorithm/Query/range_inversions_query.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, Q; std::cin >> N >> Q;
-  auto A = input_vector<int>(N);
+  auto A = hl::input_vector<int>(N);
 
-  RangeInversionsQuery riq(A);
+  hl::range_inversions_query riq(A);
 
-  for(auto [l, r] : input_tuples<int, int>(Q)){
+  for(auto [l, r] : hl::input_tuples<int, int>(Q)){
     riq.add(l, r);
   }
 
@@ -98,18 +100,20 @@ int main(){
 /**
  * @docs input_vector.md
  */
-template <typename T>
-std::vector<T> input_vector(int N){
-  std::vector<T> ret(N);
-  for(int i = 0; i < N; ++i) std::cin >> ret[i];
-  return ret;
-}
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> input_vector(int N){
+    std::vector<T> ret(N);
+    for(int i = 0; i < N; ++i) std::cin >> ret[i];
+    return ret;
+  }
 
-template <typename T>
-std::vector<std::vector<T>> input_vector(int N, int M){
-  std::vector<std::vector<T>> ret(N);
-  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
-  return ret;
+  template <typename T>
+  std::vector<std::vector<T>> input_vector(int N, int M){
+    std::vector<std::vector<T>> ret(N);
+    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+    return ret;
+  }
 }
 #line 4 "Mylib/IO/input_tuples.cpp"
 #include <tuple>
@@ -120,66 +124,70 @@ std::vector<std::vector<T>> input_vector(int N, int M){
 /**
  * @docs input_tuple.md
  */
-template <typename T, size_t ... I>
-static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
-  (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
-}
+namespace haar_lib {
+  template <typename T, size_t ... I>
+  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){
+    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};
+  }
 
-template <typename T, typename U>
-std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
-  s >> value.first >> value.second;
-  return s;
-}
+  template <typename T, typename U>
+  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){
+    s >> value.first >> value.second;
+    return s;
+  }
 
-template <typename ... Args>
-std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
-  input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
-  return s;
+  template <typename ... Args>
+  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){
+    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());
+    return s;
+  }
 }
 #line 8 "Mylib/IO/input_tuples.cpp"
 
 /**
  * @docs input_tuples.md
  */
-template <typename ... Args>
-class InputTuples {
-  struct iter {
-    using value_type = std::tuple<Args ...>;
-    value_type value;
-    bool fetched = false;
-    int N, c = 0;
+namespace haar_lib {
+  template <typename ... Args>
+  class InputTuples {
+    struct iter {
+      using value_type = std::tuple<Args ...>;
+      value_type value;
+      bool fetched = false;
+      int N, c = 0;
 
-    value_type operator*(){
-      if(not fetched){
-        std::cin >> value;
+      value_type operator*(){
+        if(not fetched){
+          std::cin >> value;
+        }
+        return value;
       }
-      return value;
-    }
 
-    void operator++(){
-      ++c;
-      fetched = false;
-    }
+      void operator++(){
+        ++c;
+        fetched = false;
+      }
 
-    bool operator!=(iter &) const {
-      return c < N;
-    }
+      bool operator!=(iter &) const {
+        return c < N;
+      }
 
-    iter(int N): N(N){}
+      iter(int N): N(N){}
+    };
+
+    int N;
+
+  public:
+    InputTuples(int N): N(N){}
+
+    iter begin() const {return iter(N);}
+    iter end() const {return iter(N);}
   };
 
-  int N;
-
-public:
-  InputTuples(int N): N(N){}
-
-  iter begin() const {return iter(N);}
-  iter end() const {return iter(N);}
-};
-
-template <typename ... Args>
-auto input_tuples(int N){
-  return InputTuples<Args ...>(N);
+  template <typename ... Args>
+  auto input_tuples(int N){
+    return InputTuples<Args ...>(N);
+  }
 }
 #line 4 "Mylib/Algorithm/Query/range_inversions_query.cpp"
 #include <algorithm>
@@ -189,42 +197,44 @@ auto input_tuples(int N){
  * @title Fenwick tree (Add)
  * @docs fenwick_tree_add.md
  */
-template <typename T>
-class FenwickTreeAdd {
-  using value_type = T;
+namespace haar_lib {
+  template <typename T>
+  class fenwick_tree_add {
+    using value_type = T;
 
-  int size;
-  std::vector<value_type> data;
+    int size;
+    std::vector<value_type> data;
 
-public:
-  FenwickTreeAdd(){}
-  FenwickTreeAdd(int size): size(size), data(size + 1, 0){}
+  public:
+    fenwick_tree_add(){}
+    fenwick_tree_add(int size): size(size), data(size + 1, 0){}
 
-  void update(int i, value_type val){
-    i += 1; // 1-index
+    void update(int i, value_type val){
+      i += 1; // 1-index
 
-    while(i <= size){
-      data[i] = data[i] + val;
-      i += i & (-i);
-    }
-  }
-
-  value_type get(int i) const { // [0, i)
-    value_type ret = 0;
-    i += 1; // 1-index
-
-    while(i > 0){
-      ret = ret + data[i];
-      i -= i & (-i);
+      while(i <= size){
+        data[i] = data[i] + val;
+        i += i & (-i);
+      }
     }
 
-    return ret;
-  }
+    value_type get(int i) const { // [0, i)
+      value_type ret = 0;
+      i += 1; // 1-index
 
-  value_type get(int l, int r) const { // [l, r)
-    return get(r - 1) - get(l - 1);
-  }
-};
+      while(i > 0){
+        ret = ret + data[i];
+        i -= i & (-i);
+      }
+
+      return ret;
+    }
+
+    value_type get(int l, int r) const { // [l, r)
+      return get(r - 1) - get(l - 1);
+    }
+  };
+}
 #line 4 "Mylib/Algorithm/Mo/mo_algorithm.cpp"
 #include <cassert>
 #include <cmath>
@@ -233,77 +243,83 @@ public:
  * @title Mo's algorithm
  * @docs mo_algorithm.md
  */
-template <typename F, typename G, typename H>
-class MoAlgorithm {
-  int N, Q, index, width;
-  std::vector<int> left, right, ord;
+namespace haar_lib {
+  template <typename AppendLeft, typename AppendRight, typename RemoveLeft, typename RemoveRight, typename Query>
+  class mo_algorithm {
+    int N, Q, index, width;
+    std::vector<int> left, right, ord;
 
-  const F append;
-  const G remove;
-  const H query;
+    const AppendLeft append_left;
+    const AppendRight append_right;
+    const RemoveLeft remove_left;
+    const RemoveRight remove_right;
+    const Query query;
 
-  bool is_built = false;
+    bool is_built = false;
 
-public:
-  MoAlgorithm(int N, int Q, const F &append, const G &remove, const H &query):
-    N(N), Q(Q), index(0), width(sqrt(N)),
-    left(Q), right(Q), ord(Q),
-    append(append), remove(remove), query(query)
-  {}
+  public:
+    mo_algorithm(
+      int N, int Q,
+      const AppendLeft &append_left, const AppendRight &append_right,
+      const RemoveLeft &remove_left, const RemoveRight &remove_right,
+      const Query &query
+    ):
+      N(N), Q(Q), index(0), width(std::sqrt(N)),
+      left(Q), right(Q), ord(Q),
+      append_left(append_left), append_right(append_right),
+      remove_left(remove_left), remove_right(remove_right),
+      query(query)
+    {}
 
-  // [l, r)
-  void add(int l, int r){
-    left[index] = l;
-    right[index] = r;
-    ord[index] = index;
-    ++index;
-  }
-
-  void build(){
-    std::sort(
-      ord.begin(),
-      ord.end(),
-      [&](int i, int j){
-        const int a = left[i] / width, b = left[j] / width;
-        if(a == b){
-          if(a & 1){
-            return right[i] < right[j];
-          }else{
-            return right[i] > right[j];
-          }
-        }else{
-          return a < b;
-        }
-      }
-    );
-
-    is_built = true;
-  }
-
-  void run(){
-    assert(is_built);
-
-    int q = 0;
-    int l = left[ord[0]], r = left[ord[0]];
-
-    for(int i = 0; i < Q; ++i){
-      int id = ord[q++];
-
-      while(l != left[id] or r != right[id]){
-        if(l > left[id]) append(--l, -1);
-        if(l < left[id]) remove(l++, -1);
-        if(r < right[id]) append(r++, 1);
-        if(r > right[id]) remove(--r, 1);
-      }
-
-      query(id);
+    // [l, r)
+    void add(int l, int r){
+      left[index] = l;
+      right[index] = r;
+      ord[index] = index;
+      ++index;
     }
-  }
-};
 
-template <typename F, typename G, typename H>
-auto make_mo(int N, int Q, F append, G remove, H query){
-  return MoAlgorithm<F, G, H>(N, Q, append, remove, query);
+    void build(){
+      std::sort(
+        ord.begin(),
+        ord.end(),
+        [&](int i, int j){
+          const int a = left[i] / width, b = left[j] / width;
+          if(a == b){
+            if(a & 1){
+              return right[i] < right[j];
+            }else{
+              return right[i] > right[j];
+            }
+          }else{
+            return a < b;
+          }
+        }
+      );
+
+      is_built = true;
+    }
+
+    void run(){
+      assert(is_built);
+
+      int q = 0;
+      int l = left[ord[0]], r = left[ord[0]];
+
+      for(int i = 0; i < Q; ++i){
+        int id = ord[q++];
+
+        while(l != left[id] or r != right[id]){
+          if(l > left[id]) append_left(--l);
+          if(l < left[id]) remove_left(l++);
+          if(r < right[id]) append_right(r++);
+          if(r > right[id]) remove_right(--r);
+        }
+
+        query(id);
+      }
+    }
+  };
 }
 #line 7 "Mylib/Algorithm/Query/range_inversions_query.cpp"
 
@@ -311,75 +327,92 @@ auto make_mo(int N, int Q, F append, G remove, H query){
  * @title Range inversions query
  * @docs range_inversions_query.md
  */
-template <typename T>
-class RangeInversionsQuery {
-  std::vector<int> a;
-  int N;
-  std::vector<std::pair<int, int>> qs;
+namespace haar_lib {
+  template <typename T>
+  class range_inversions_query {
+    std::vector<int> a;
+    int N;
+    std::vector<std::pair<int, int>> qs;
 
-public:
-  RangeInversionsQuery(std::vector<T> a_): N(a_.size()){
-    auto b = a_;
-    std::sort(b.begin(), b.end());
-    b.erase(std::unique(b.begin(), b.end()), b.end());
+  public:
+    range_inversions_query(std::vector<T> a_): N(a_.size()){
+      auto b = a_;
+      std::sort(b.begin(), b.end());
+      b.erase(std::unique(b.begin(), b.end()), b.end());
 
-    for(auto x : a_){
-      const int i = std::lower_bound(b.begin(), b.end(), x) - b.begin();
-      a.push_back(i);
-    }
-  }
-
-  void add(int l, int r){ // [l, r)
-    qs.emplace_back(l, r);
-  }
-
-  auto solve(){
-    const int Q = qs.size();
-    FenwickTreeAdd<int64_t> b(N);
-
-    int64_t t = 0;
-    std::vector<int64_t> ans(Q);
-
-    auto append =
-      [&](int i, int d){
-        if(d == -1) t += b.get(0, a[i]);
-        else t += b.get(a[i] + 1, N);
-        b.update(a[i], 1);
-      };
-
-    auto remove =
-      [&](int i, int d){
-        if(d == -1) t -= b.get(0, a[i]);
-        else t -= b.get(a[i] + 1, N);
-        b.update(a[i], -1);
-      };
-
-    auto query = [&](int i){ans[i] = t;};
-
-    auto mo = make_mo(N, Q, append, remove, query);
-
-    for(auto [l, r] : qs){
-      mo.add(l, r);
+      for(auto x : a_){
+        const int i = std::lower_bound(b.begin(), b.end(), x) - b.begin();
+        a.push_back(i);
+      }
     }
 
-    mo.build();
-    mo.run();
+    void add(int l, int r){ // [l, r)
+      qs.emplace_back(l, r);
+    }
 
-    return ans;
-  }
-};
+    auto solve(){
+      const int Q = qs.size();
+      fenwick_tree_add<int64_t> b(N);
+
+      int64_t t = 0;
+      std::vector<int64_t> ans(Q);
+
+      auto append_left =
+        [&](int i){
+          t += b.get(0, a[i]);
+          b.update(a[i], 1);
+        };
+
+      auto append_right =
+        [&](int i){
+          t += b.get(a[i] + 1, N);
+          b.update(a[i], 1);
+        };
+
+      auto remove_left =
+        [&](int i){
+          t -= b.get(0, a[i]);
+          b.update(a[i], -1);
+        };
+
+      auto remove_right =
+        [&](int i){
+          t -= b.get(a[i] + 1, N);
+          b.update(a[i], -1);
+        };
+
+      auto query = [&](int i){ans[i] = t;};
+
+      auto mo =
+        mo_algorithm(
+          N, Q, append_left, append_right, remove_left, remove_right, query
+        );
+
+      for(auto [l, r] : qs){
+        mo.add(l, r);
+      }
+
+      mo.build();
+      mo.run();
+
+      return ans;
+    }
+  };
+}
 #line 8 "test/yosupo-judge/static_range_inversions_query/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, Q; std::cin >> N >> Q;
-  auto A = input_vector<int>(N);
+  auto A = hl::input_vector<int>(N);
 
-  RangeInversionsQuery riq(A);
+  hl::range_inversions_query riq(A);
 
-  for(auto [l, r] : input_tuples<int, int>(Q)){
+  for(auto [l, r] : hl::input_tuples<int, int>(Q)){
     riq.add(l, r);
   }
 

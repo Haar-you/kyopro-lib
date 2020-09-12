@@ -25,13 +25,13 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: test/aoj/1308/main.test.cpp
+# :heavy_check_mark: test/aoj/1308/main.test.cpp
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#91fd4443c2280843651bf249ceada703">test/aoj/1308</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/1308/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 09:10:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1308">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1308</a>
@@ -39,8 +39,8 @@ layout: default
 
 ## Depends on
 
-* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :x: <a href="../../../../library/Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp.html">Simultaneous linear equations (Mod2)</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :heavy_check_mark: <a href="../../../../library/Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp.html">Simultaneous linear equations (Mod2)</a>
 
 
 ## Code
@@ -56,13 +56,15 @@ layout: default
 #include "Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int m, n, d;
   while(std::cin >> m >> n >> d, m){
-    auto s = input_vector<int>(n, m);
+    auto s = hl::input_vector<int>(n, m);
 
     auto a = std::vector(n * m, std::bitset<25 * 25>());
     std::vector<bool> b(n * m);
@@ -94,7 +96,7 @@ int main(){
       }
     }
 
-    std::cout << (bool)(binary_simultaneous_linear_equations(a, b)) << std::endl;
+    std::cout << (bool)(hl::binary_simultaneous_linear_equations(a, b)) << std::endl;
   }
 
   return 0;
@@ -121,78 +123,84 @@ int main(){
  * @title Simultaneous linear equations (Mod2)
  * @docs binary_simultaneous_linear_equations.md
  */
-namespace binary_simultaneous_linear_equations_impl {
+namespace haar_lib {
+  namespace binary_simultaneous_linear_equations_impl {
+    template <size_t N>
+    struct result {
+      int rank, dim;
+      std::vector<bool> solution;
+    };
+  }
+
   template <size_t N>
-  struct Result {
-    int rank, dim;
-    std::vector<bool> solution;
-  };
-}
+  auto binary_simultaneous_linear_equations(std::vector<std::bitset<N>> a, std::vector<bool> b){
+    using result = binary_simultaneous_linear_equations_impl::result<N>;
+    std::optional<result> ret;
 
-template <size_t N>
-auto binary_simultaneous_linear_equations(std::vector<std::bitset<N>> a, std::vector<bool> b){
-  using Result = binary_simultaneous_linear_equations_impl::Result<N>;
-  std::optional<Result> ret;
+    const int n = a.size(), m = N;
+    int rank = 0;
 
-  const int n = a.size(), m = N;
-  int rank = 0;
+    for(int j = 0; j < m; ++j){
+      int pivot = -1;
+      for(int i = rank; i < n; ++i){
+        if(a[i][j]){
+          pivot = i;
+          break;
+        }
+      }
 
-  for(int j = 0; j < m; ++j){
-    int pivot = -1;
+      if(pivot == -1) continue;
+      std::swap(a[pivot], a[rank]);
+      swap(b[pivot], b[rank]);
+
+      for(int i = 0; i < n; ++i){
+        if(i != rank and a[i][j]){
+          a[i] ^= a[rank];
+          b[i] = b[i] ^ b[rank];
+        }
+      }
+
+      ++rank;
+    }
+
     for(int i = rank; i < n; ++i){
-      if(a[i][j]){
-        pivot = i;
-        break;
+      if(b[i]){
+        return ret;
       }
     }
 
-    if(pivot == -1) continue;
-    std::swap(a[pivot], a[rank]);
-    swap(b[pivot], b[rank]);
+    const int dim = m - rank;
 
-    for(int i = 0; i < n; ++i){
-      if(i != rank and a[i][j]){
-        a[i] ^= a[rank];
-        b[i] = b[i] ^ b[rank];
-      }
-    }
+    std::vector<bool> solution(m);
+    for(int i = 0; i < rank; ++i) solution[i] = b[i];
 
-    ++rank;
+    ret = result({rank, dim, solution});
+    return ret;
   }
-
-  for(int i = rank; i < n; ++i){
-    if(b[i]){
-      return ret;
-    }
-  }
-
-  const int dim = m - rank;
-
-  std::vector<bool> solution(m);
-  for(int i = 0; i < rank; ++i) solution[i] = b[i];
-
-  ret = Result({rank, dim, solution});
-  return ret;
 }
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
  * @docs input_vector.md
  */
-template <typename T>
-std::vector<T> input_vector(int N){
-  std::vector<T> ret(N);
-  for(int i = 0; i < N; ++i) std::cin >> ret[i];
-  return ret;
-}
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> input_vector(int N){
+    std::vector<T> ret(N);
+    for(int i = 0; i < N; ++i) std::cin >> ret[i];
+    return ret;
+  }
 
-template <typename T>
-std::vector<std::vector<T>> input_vector(int N, int M){
-  std::vector<std::vector<T>> ret(N);
-  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
-  return ret;
+  template <typename T>
+  std::vector<std::vector<T>> input_vector(int N, int M){
+    std::vector<std::vector<T>> ret(N);
+    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+    return ret;
+  }
 }
 #line 8 "test/aoj/1308/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   std::cin.tie(0);
@@ -200,7 +208,7 @@ int main(){
 
   int m, n, d;
   while(std::cin >> m >> n >> d, m){
-    auto s = input_vector<int>(n, m);
+    auto s = hl::input_vector<int>(n, m);
 
     auto a = std::vector(n * m, std::bitset<25 * 25>());
     std::vector<bool> b(n * m);
@@ -232,7 +240,7 @@ int main(){
       }
     }
 
-    std::cout << (bool)(binary_simultaneous_linear_equations(a, b)) << std::endl;
+    std::cout << (bool)(hl::binary_simultaneous_linear_equations(a, b)) << std::endl;
   }
 
   return 0;

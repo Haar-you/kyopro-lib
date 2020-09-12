@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#9a3b4a53b7b2b8e6ef2197e51a686fad">test/aoj/ALDS1_5_D</a>
 * <a href="{{ site.github.repository_url }}/blob/master/test/aoj/ALDS1_5_D/main.test.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 * see: <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D">http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D</a>
@@ -40,7 +40,7 @@ layout: default
 ## Depends on
 
 * :x: <a href="../../../../library/Mylib/Algorithm/InversionNumber/inversion_number.cpp.html">Inversion number</a>
-* :x: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
+* :question: <a href="../../../../library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
 
 
 ## Code
@@ -56,12 +56,14 @@ layout: default
 #include "Mylib/Algorithm/InversionNumber/inversion_number.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
+namespace hl = haar_lib;
+
 int main(){
   int n; std::cin >> n;
 
-  auto a = input_vector<int>(n);
+  auto a = hl::input_vector<int>(n);
 
-  auto ans = inversion_number(a, std::greater<int>());
+  auto ans = hl::inversion_number(a, std::greater<int>());
   std::cout << ans << std::endl;
 
   return 0;
@@ -86,68 +88,74 @@ int main(){
  * @title Inversion number
  * @docs inversion_number.md
  */
-namespace inversion_number_impl {
-  template <typename T, typename Compare>
-  int64_t rec(std::vector<T> &a, const Compare &compare){
-    const int n = a.size();
-    if(n <= 1) return 0;
+namespace haar_lib {
+  namespace inversion_number_impl {
+    template <typename T, typename Compare>
+    int64_t rec(std::vector<T> &a, const Compare &compare){
+      const int n = a.size();
+      if(n <= 1) return 0;
 
-    int64_t ret = 0;
+      int64_t ret = 0;
 
-    std::vector<T> b(a.begin(), a.begin() + n / 2);
-    std::vector<T> c(a.begin() + n / 2, a.end());
+      std::vector<T> b(a.begin(), a.begin() + n / 2);
+      std::vector<T> c(a.begin() + n / 2, a.end());
 
-    ret += rec(b, compare);
-    ret += rec(c, compare);
+      ret += rec(b, compare);
+      ret += rec(c, compare);
 
-    int ai = 0, bi = 0, ci = 0;
+      int ai = 0, bi = 0, ci = 0;
 
-    while(ai < n){
-      if(bi < (int)b.size() and (ci == (int)c.size() or not compare(b[bi], c[ci]))){
-        a[ai] = b[bi];
-        ++bi;
-      }else{
-        ret += n / 2 - bi;
-        a[ai] = c[ci];
-        ++ci;
+      while(ai < n){
+        if(bi < (int)b.size() and (ci == (int)c.size() or not compare(b[bi], c[ci]))){
+          a[ai] = b[bi];
+          ++bi;
+        }else{
+          ret += n / 2 - bi;
+          a[ai] = c[ci];
+          ++ci;
+        }
+        ++ai;
       }
-      ++ai;
+
+      return ret;
     }
-
-    return ret;
   }
-}
 
-template <typename T, typename Compare>
-int64_t inversion_number(std::vector<T> a, const Compare &compare){
-  return inversion_number_impl::rec(a, compare);
+  template <typename T, typename Compare>
+  int64_t inversion_number(std::vector<T> a, const Compare &compare){
+    return inversion_number_impl::rec(a, compare);
+  }
 }
 #line 4 "Mylib/IO/input_vector.cpp"
 
 /**
  * @docs input_vector.md
  */
-template <typename T>
-std::vector<T> input_vector(int N){
-  std::vector<T> ret(N);
-  for(int i = 0; i < N; ++i) std::cin >> ret[i];
-  return ret;
-}
+namespace haar_lib {
+  template <typename T>
+  std::vector<T> input_vector(int N){
+    std::vector<T> ret(N);
+    for(int i = 0; i < N; ++i) std::cin >> ret[i];
+    return ret;
+  }
 
-template <typename T>
-std::vector<std::vector<T>> input_vector(int N, int M){
-  std::vector<std::vector<T>> ret(N);
-  for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
-  return ret;
+  template <typename T>
+  std::vector<std::vector<T>> input_vector(int N, int M){
+    std::vector<std::vector<T>> ret(N);
+    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);
+    return ret;
+  }
 }
 #line 8 "test/aoj/ALDS1_5_D/main.test.cpp"
+
+namespace hl = haar_lib;
 
 int main(){
   int n; std::cin >> n;
 
-  auto a = input_vector<int>(n);
+  auto a = hl::input_vector<int>(n);
 
-  auto ans = inversion_number(a, std::greater<int>());
+  auto ans = hl::inversion_number(a, std::greater<int>());
   std::cout << ans << std::endl;
 
   return 0;

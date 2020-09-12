@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#0d7e284bb2256ddef55e56b25bfaf3f1">Mylib/DataStructure/Array</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DataStructure/Array/rollbackable_vector.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -57,55 +57,89 @@ layout: default
 ```cpp
 #pragma once
 #include <vector>
+#include <variant>
+#include <initializer_list>
+#include <utility>
+#include <iostream>
 
 /**
  * @title Rollbackable vector
  * @docs rollbackable_vector.md
  */
-template <typename T>
-class RollbackableVector {
-  using value_type = T;
+namespace haar_lib {
+  template <typename T>
+  class rollbackable_vector {
+    using value_type = T;
 
-  std::vector<T> data;
-  std::vector<std::vector<T>> stock;
-  std::vector<int> history;
+    std::vector<T> data;
 
-public:
-  void push_back(const T &value){
-    data.push_back(value);
-    stock.push_back({value});
-    history.push_back(-1);
-  }
+    using Update = std::pair<T, int>;
+    struct PushBack {};
+    using PopBack = T;
 
-  void set(int i, const T &value){
-    data[i] = value;
-    stock[i].push_back(value);
-    history.push_back(i);
-  }
+    std::vector<std::variant<Update, PushBack, PopBack>> history;
 
-  void roll_back(){
-    const int i = history.back(); history.pop_back();
+  public:
+    rollbackable_vector(){}
+    rollbackable_vector(size_t n): data(n){}
+    rollbackable_vector(std::vector<T> a): data(a){}
+    rollbackable_vector(std::initializer_list<T> a): data(a.begin(), a.end()){}
 
-    if(i == -1){
-      data.pop_back();
-      stock.pop_back();
-    }else{
-      stock[i].pop_back();
-      data[i] = stock[i].back();
+    void push_back(const T &value){
+      history.push_back(PushBack());
+      data.push_back(value);
     }
-  }
 
-  const value_type& operator[](int i) const {return data[i];}
+    void pop_back(){
+      history.push_back(PopBack(data.back()));
+      data.pop_back();
+    }
 
-  auto cbegin() const {return data.cbegin();}
-  auto cend() const {return data.cend();}
+    void set(int i, const T &value){
+      history.push_back(Update(data[i], i));
+      data[i] = value;
+    }
 
-  int size() const {return data.size();}
-  bool empty() const {return data.empty();}
+    void roll_back(){
+      if(std::holds_alternative<Update>(history.back())){
+        auto [value, i] = std::get<Update>(history.back());
+        data[i] = value;
+      }else if(std::holds_alternative<PushBack>(history.back())){
+        data.pop_back();
+      }else if(std::holds_alternative<PopBack>(history.back())){
+        auto value = std::get<PopBack>(history.back());
+        data.push_back(value);
+      }
 
-  const T& back() const {return data.back();}
-  const T& front() const {return data.front();}
-};
+      history.pop_back();
+    }
+
+    bool rollbackable() const {
+      return not history.empty();
+    }
+
+    const value_type& operator[](int i) const {return data[i];}
+
+    auto cbegin() const {return data.cbegin();}
+    auto cend() const {return data.cend();}
+
+    int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+
+    const T& back() const {return data.back();}
+    const T& front() const {return data.front();}
+
+    friend std::ostream& operator<<(std::ostream &s, const rollbackable_vector &a){
+      s << "{";
+      for(auto it = a.cbegin(); it != a.cend(); ++it){
+        if(it != a.cbegin()) s << ", ";
+        s << *it;
+      }
+      s << "}";
+      return s;
+    }
+  };
+}
 
 ```
 {% endraw %}
@@ -115,55 +149,89 @@ public:
 ```cpp
 #line 2 "Mylib/DataStructure/Array/rollbackable_vector.cpp"
 #include <vector>
+#include <variant>
+#include <initializer_list>
+#include <utility>
+#include <iostream>
 
 /**
  * @title Rollbackable vector
  * @docs rollbackable_vector.md
  */
-template <typename T>
-class RollbackableVector {
-  using value_type = T;
+namespace haar_lib {
+  template <typename T>
+  class rollbackable_vector {
+    using value_type = T;
 
-  std::vector<T> data;
-  std::vector<std::vector<T>> stock;
-  std::vector<int> history;
+    std::vector<T> data;
 
-public:
-  void push_back(const T &value){
-    data.push_back(value);
-    stock.push_back({value});
-    history.push_back(-1);
-  }
+    using Update = std::pair<T, int>;
+    struct PushBack {};
+    using PopBack = T;
 
-  void set(int i, const T &value){
-    data[i] = value;
-    stock[i].push_back(value);
-    history.push_back(i);
-  }
+    std::vector<std::variant<Update, PushBack, PopBack>> history;
 
-  void roll_back(){
-    const int i = history.back(); history.pop_back();
+  public:
+    rollbackable_vector(){}
+    rollbackable_vector(size_t n): data(n){}
+    rollbackable_vector(std::vector<T> a): data(a){}
+    rollbackable_vector(std::initializer_list<T> a): data(a.begin(), a.end()){}
 
-    if(i == -1){
-      data.pop_back();
-      stock.pop_back();
-    }else{
-      stock[i].pop_back();
-      data[i] = stock[i].back();
+    void push_back(const T &value){
+      history.push_back(PushBack());
+      data.push_back(value);
     }
-  }
 
-  const value_type& operator[](int i) const {return data[i];}
+    void pop_back(){
+      history.push_back(PopBack(data.back()));
+      data.pop_back();
+    }
 
-  auto cbegin() const {return data.cbegin();}
-  auto cend() const {return data.cend();}
+    void set(int i, const T &value){
+      history.push_back(Update(data[i], i));
+      data[i] = value;
+    }
 
-  int size() const {return data.size();}
-  bool empty() const {return data.empty();}
+    void roll_back(){
+      if(std::holds_alternative<Update>(history.back())){
+        auto [value, i] = std::get<Update>(history.back());
+        data[i] = value;
+      }else if(std::holds_alternative<PushBack>(history.back())){
+        data.pop_back();
+      }else if(std::holds_alternative<PopBack>(history.back())){
+        auto value = std::get<PopBack>(history.back());
+        data.push_back(value);
+      }
 
-  const T& back() const {return data.back();}
-  const T& front() const {return data.front();}
-};
+      history.pop_back();
+    }
+
+    bool rollbackable() const {
+      return not history.empty();
+    }
+
+    const value_type& operator[](int i) const {return data[i];}
+
+    auto cbegin() const {return data.cbegin();}
+    auto cend() const {return data.cend();}
+
+    int size() const {return data.size();}
+    bool empty() const {return data.empty();}
+
+    const T& back() const {return data.back();}
+    const T& front() const {return data.front();}
+
+    friend std::ostream& operator<<(std::ostream &s, const rollbackable_vector &a){
+      s << "{";
+      for(auto it = a.cbegin(); it != a.cend(); ++it){
+        if(it != a.cbegin()) s << ", ";
+        s << *it;
+      }
+      s << "}";
+      return s;
+    }
+  };
+}
 
 ```
 {% endraw %}

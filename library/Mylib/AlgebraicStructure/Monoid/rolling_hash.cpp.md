@@ -25,20 +25,20 @@ layout: default
 <link rel="stylesheet" href="../../../../assets/css/copy-button.css" />
 
 
-# :x: Rolling hash monoid
+# :heavy_check_mark: Rolling hash monoid
 
 <a href="../../../../index.html">Back to top page</a>
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/rolling_hash.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
 
 ## Verified with
 
-* :x: <a href="../../../../verify/test/aoj/2444/main.test.cpp.html">test/aoj/2444/main.test.cpp</a>
+* :heavy_check_mark: <a href="../../../../verify/test/aoj/2444/main.test.cpp.html">test/aoj/2444/main.test.cpp</a>
 
 
 ## Code
@@ -54,44 +54,46 @@ layout: default
  * @title Rolling hash monoid
  * @docs rolling_hash.md
  */
-template <size_t N>
-struct RollingHashMonoid {
-  static std::array<int64_t, N> base;
-  static int64_t mod;
+namespace haar_lib {
+  template <size_t N>
+  struct rolling_hash_monoid {
+    static std::array<int64_t, N> base;
+    static int64_t mod;
 
-  using value_type = std::pair<std::array<int64_t, N>, std::array<int64_t, N>>;
+    using value_type = std::pair<std::array<int64_t, N>, std::array<int64_t, N>>;
 
-  value_type operator()() const {
-    value_type ret;
-    for(size_t i = 0; i < N; ++i){
-      ret.first[i] = 0LL;
-      ret.second[i] = 1LL;
+    value_type operator()() const {
+      value_type ret;
+      for(size_t i = 0; i < N; ++i){
+        ret.first[i] = 0LL;
+        ret.second[i] = 1LL;
+      }
+      return ret;
     }
-    return ret;
-  }
 
-  value_type operator()(const value_type &a, const value_type &b) const {
-    value_type ret;
-    for(size_t i = 0; i < N; ++i){
-      ret.first[i] = (a.first[i] + b.first[i] * a.second[i] % mod) % mod;
-      ret.second[i] = a.second[i] * b.second[i] % mod;
+    value_type operator()(const value_type &a, const value_type &b) const {
+      value_type ret;
+      for(size_t i = 0; i < N; ++i){
+        ret.first[i] = (a.first[i] + b.first[i] * a.second[i] % mod) % mod;
+        ret.second[i] = a.second[i] * b.second[i] % mod;
+      }
+      return ret;
     }
-    return ret;
-  }
 
-  template <typename T>
-  static value_type make(T a){
-    value_type ret;
-    for(size_t i = 0; i < N; ++i){
-      ret.first[i] = (int64_t)a % mod;
-      ret.second[i] = base[i];
+    template <typename T>
+    static value_type make(T a){
+      value_type ret;
+      for(size_t i = 0; i < N; ++i){
+        ret.first[i] = (int64_t)a % mod;
+        ret.second[i] = base[i];
+      }
+      return ret;
     }
-    return ret;
-  }
-};
+  };
 
-template <size_t N> std::array<int64_t, N> RollingHashMonoid<N>::base;
-template <size_t N> int64_t RollingHashMonoid<N>::mod;
+  template <size_t N> std::array<int64_t, N> rolling_hash_monoid<N>::base;
+  template <size_t N> int64_t rolling_hash_monoid<N>::mod;
+}
 
 ```
 {% endraw %}
@@ -107,44 +109,46 @@ template <size_t N> int64_t RollingHashMonoid<N>::mod;
  * @title Rolling hash monoid
  * @docs rolling_hash.md
  */
-template <size_t N>
-struct RollingHashMonoid {
-  static std::array<int64_t, N> base;
-  static int64_t mod;
+namespace haar_lib {
+  template <size_t N>
+  struct rolling_hash_monoid {
+    static std::array<int64_t, N> base;
+    static int64_t mod;
 
-  using value_type = std::pair<std::array<int64_t, N>, std::array<int64_t, N>>;
+    using value_type = std::pair<std::array<int64_t, N>, std::array<int64_t, N>>;
 
-  value_type operator()() const {
-    value_type ret;
-    for(size_t i = 0; i < N; ++i){
-      ret.first[i] = 0LL;
-      ret.second[i] = 1LL;
+    value_type operator()() const {
+      value_type ret;
+      for(size_t i = 0; i < N; ++i){
+        ret.first[i] = 0LL;
+        ret.second[i] = 1LL;
+      }
+      return ret;
     }
-    return ret;
-  }
 
-  value_type operator()(const value_type &a, const value_type &b) const {
-    value_type ret;
-    for(size_t i = 0; i < N; ++i){
-      ret.first[i] = (a.first[i] + b.first[i] * a.second[i] % mod) % mod;
-      ret.second[i] = a.second[i] * b.second[i] % mod;
+    value_type operator()(const value_type &a, const value_type &b) const {
+      value_type ret;
+      for(size_t i = 0; i < N; ++i){
+        ret.first[i] = (a.first[i] + b.first[i] * a.second[i] % mod) % mod;
+        ret.second[i] = a.second[i] * b.second[i] % mod;
+      }
+      return ret;
     }
-    return ret;
-  }
 
-  template <typename T>
-  static value_type make(T a){
-    value_type ret;
-    for(size_t i = 0; i < N; ++i){
-      ret.first[i] = (int64_t)a % mod;
-      ret.second[i] = base[i];
+    template <typename T>
+    static value_type make(T a){
+      value_type ret;
+      for(size_t i = 0; i < N; ++i){
+        ret.first[i] = (int64_t)a % mod;
+        ret.second[i] = base[i];
+      }
+      return ret;
     }
-    return ret;
-  }
-};
+  };
 
-template <size_t N> std::array<int64_t, N> RollingHashMonoid<N>::base;
-template <size_t N> int64_t RollingHashMonoid<N>::mod;
+  template <size_t N> std::array<int64_t, N> rolling_hash_monoid<N>::base;
+  template <size_t N> int64_t rolling_hash_monoid<N>::mod;
+}
 
 ```
 {% endraw %}

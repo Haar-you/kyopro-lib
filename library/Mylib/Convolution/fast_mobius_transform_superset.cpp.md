@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#d1ac32c11c508fec0764fa012d8d2913">Mylib/Convolution</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Convolution/fast_mobius_transform_superset.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -74,14 +74,16 @@ layout: default
  * @title Fast Möbius transform (Supersets)
  * @docs fast_mobius_transform_superset.md
  */
-template <typename T, typename Func = std::minus<T>>
-std::vector<T> fast_mobius_transform_superset(std::vector<T> f, const Func &op = std::minus<T>()){
-  for(int i = 0; (1 << i) < (int)f.size(); ++i){
-    for(int j = 0; j < (int)f.size(); ++j){
-      if(!(j & (1 << i))) f[j] = op(f[j], f[j ^ (1 << i)]);
+namespace haar_lib {
+  template <typename T, typename Func = std::minus<T>>
+  std::vector<T> fast_mobius_transform_superset(std::vector<T> f, const Func &op = std::minus<T>()){
+    for(int i = 0; (1 << i) < (int)f.size(); ++i){
+      for(int j = 0; j < (int)f.size(); ++j){
+        if(!(j & (1 << i))) f[j] = op(f[j], f[j ^ (1 << i)]);
+      }
     }
+    return f;
   }
-  return f;
 }
 
 ```
@@ -98,14 +100,16 @@ std::vector<T> fast_mobius_transform_superset(std::vector<T> f, const Func &op =
  * @title Fast Möbius transform (Supersets)
  * @docs fast_mobius_transform_superset.md
  */
-template <typename T, typename Func = std::minus<T>>
-std::vector<T> fast_mobius_transform_superset(std::vector<T> f, const Func &op = std::minus<T>()){
-  for(int i = 0; (1 << i) < (int)f.size(); ++i){
-    for(int j = 0; j < (int)f.size(); ++j){
-      if(!(j & (1 << i))) f[j] = op(f[j], f[j ^ (1 << i)]);
+namespace haar_lib {
+  template <typename T, typename Func = std::minus<T>>
+  std::vector<T> fast_mobius_transform_superset(std::vector<T> f, const Func &op = std::minus<T>()){
+    for(int i = 0; (1 << i) < (int)f.size(); ++i){
+      for(int j = 0; j < (int)f.size(); ++j){
+        if(!(j & (1 << i))) f[j] = op(f[j], f[j ^ (1 << i)]);
+      }
     }
+    return f;
   }
-  return f;
 }
 
 ```

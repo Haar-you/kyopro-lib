@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../index.html#3a96c66483797c15eff4c0c3d8733619">Mylib/DynamicProgramming</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/DynamicProgramming/longest_increasing_subsequence.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -69,20 +69,22 @@ layout: default
  * @title Longest increasing subsequence
  * @docs longest_increasing_subsequence.md
  */
-template <typename Container, typename T = typename Container::value_type>
-int lis(const Container &xs){
-  std::vector<T> dp;
-  dp.reserve(xs.size());
+namespace haar_lib {
+  template <typename Container, typename T = typename Container::value_type>
+  int lis(const Container &xs){
+    std::vector<T> dp;
+    dp.reserve(xs.size());
 
-  for(auto x : xs){
-    if(dp.empty() or dp.back() < x){
-      dp.push_back(x);
-    }else{
-      dp[std::lower_bound(dp.begin(), dp.end(), x) - dp.begin()] = x;
+    for(auto x : xs){
+      if(dp.empty() or dp.back() < x){
+        dp.push_back(x);
+      }else{
+        dp[std::lower_bound(dp.begin(), dp.end(), x) - dp.begin()] = x;
+      }
     }
-  }
 
-  return dp.size();
+    return dp.size();
+  }
 }
 
 ```
@@ -99,20 +101,22 @@ int lis(const Container &xs){
  * @title Longest increasing subsequence
  * @docs longest_increasing_subsequence.md
  */
-template <typename Container, typename T = typename Container::value_type>
-int lis(const Container &xs){
-  std::vector<T> dp;
-  dp.reserve(xs.size());
+namespace haar_lib {
+  template <typename Container, typename T = typename Container::value_type>
+  int lis(const Container &xs){
+    std::vector<T> dp;
+    dp.reserve(xs.size());
 
-  for(auto x : xs){
-    if(dp.empty() or dp.back() < x){
-      dp.push_back(x);
-    }else{
-      dp[std::lower_bound(dp.begin(), dp.end(), x) - dp.begin()] = x;
+    for(auto x : xs){
+      if(dp.empty() or dp.back() < x){
+        dp.push_back(x);
+      }else{
+        dp[std::lower_bound(dp.begin(), dp.end(), x) - dp.begin()] = x;
+      }
     }
-  }
 
-  return dp.size();
+    return dp.size();
+  }
 }
 
 ```

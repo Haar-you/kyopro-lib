@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#ebf5673f586fe469e71716464f05c5ea">Mylib/Algorithm/InversionNumber</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/Algorithm/InversionNumber/inversion_number.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-06 11:15:59+09:00
+    - Last commit date: 2020-09-08 17:46:14+09:00
 
 
 
@@ -54,41 +54,43 @@ layout: default
  * @title Inversion number
  * @docs inversion_number.md
  */
-namespace inversion_number_impl {
-  template <typename T, typename Compare>
-  int64_t rec(std::vector<T> &a, const Compare &compare){
-    const int n = a.size();
-    if(n <= 1) return 0;
+namespace haar_lib {
+  namespace inversion_number_impl {
+    template <typename T, typename Compare>
+    int64_t rec(std::vector<T> &a, const Compare &compare){
+      const int n = a.size();
+      if(n <= 1) return 0;
 
-    int64_t ret = 0;
+      int64_t ret = 0;
 
-    std::vector<T> b(a.begin(), a.begin() + n / 2);
-    std::vector<T> c(a.begin() + n / 2, a.end());
+      std::vector<T> b(a.begin(), a.begin() + n / 2);
+      std::vector<T> c(a.begin() + n / 2, a.end());
 
-    ret += rec(b, compare);
-    ret += rec(c, compare);
+      ret += rec(b, compare);
+      ret += rec(c, compare);
 
-    int ai = 0, bi = 0, ci = 0;
+      int ai = 0, bi = 0, ci = 0;
 
-    while(ai < n){
-      if(bi < (int)b.size() and (ci == (int)c.size() or not compare(b[bi], c[ci]))){
-        a[ai] = b[bi];
-        ++bi;
-      }else{
-        ret += n / 2 - bi;
-        a[ai] = c[ci];
-        ++ci;
+      while(ai < n){
+        if(bi < (int)b.size() and (ci == (int)c.size() or not compare(b[bi], c[ci]))){
+          a[ai] = b[bi];
+          ++bi;
+        }else{
+          ret += n / 2 - bi;
+          a[ai] = c[ci];
+          ++ci;
+        }
+        ++ai;
       }
-      ++ai;
+
+      return ret;
     }
-
-    return ret;
   }
-}
 
-template <typename T, typename Compare>
-int64_t inversion_number(std::vector<T> a, const Compare &compare){
-  return inversion_number_impl::rec(a, compare);
+  template <typename T, typename Compare>
+  int64_t inversion_number(std::vector<T> a, const Compare &compare){
+    return inversion_number_impl::rec(a, compare);
+  }
 }
 
 ```
@@ -105,41 +107,43 @@ int64_t inversion_number(std::vector<T> a, const Compare &compare){
  * @title Inversion number
  * @docs inversion_number.md
  */
-namespace inversion_number_impl {
-  template <typename T, typename Compare>
-  int64_t rec(std::vector<T> &a, const Compare &compare){
-    const int n = a.size();
-    if(n <= 1) return 0;
+namespace haar_lib {
+  namespace inversion_number_impl {
+    template <typename T, typename Compare>
+    int64_t rec(std::vector<T> &a, const Compare &compare){
+      const int n = a.size();
+      if(n <= 1) return 0;
 
-    int64_t ret = 0;
+      int64_t ret = 0;
 
-    std::vector<T> b(a.begin(), a.begin() + n / 2);
-    std::vector<T> c(a.begin() + n / 2, a.end());
+      std::vector<T> b(a.begin(), a.begin() + n / 2);
+      std::vector<T> c(a.begin() + n / 2, a.end());
 
-    ret += rec(b, compare);
-    ret += rec(c, compare);
+      ret += rec(b, compare);
+      ret += rec(c, compare);
 
-    int ai = 0, bi = 0, ci = 0;
+      int ai = 0, bi = 0, ci = 0;
 
-    while(ai < n){
-      if(bi < (int)b.size() and (ci == (int)c.size() or not compare(b[bi], c[ci]))){
-        a[ai] = b[bi];
-        ++bi;
-      }else{
-        ret += n / 2 - bi;
-        a[ai] = c[ci];
-        ++ci;
+      while(ai < n){
+        if(bi < (int)b.size() and (ci == (int)c.size() or not compare(b[bi], c[ci]))){
+          a[ai] = b[bi];
+          ++bi;
+        }else{
+          ret += n / 2 - bi;
+          a[ai] = c[ci];
+          ++ci;
+        }
+        ++ai;
       }
-      ++ai;
+
+      return ret;
     }
-
-    return ret;
   }
-}
 
-template <typename T, typename Compare>
-int64_t inversion_number(std::vector<T> a, const Compare &compare){
-  return inversion_number_impl::rec(a, compare);
+  template <typename T, typename Compare>
+  int64_t inversion_number(std::vector<T> a, const Compare &compare){
+    return inversion_number_impl::rec(a, compare);
+  }
 }
 
 ```

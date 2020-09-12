@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../../../index.html#b9ce8b1117f3871719e4d3859e7574c9">Mylib/AlgebraicStructure/Monoid</a>
 * <a href="{{ site.github.repository_url }}/blob/master/Mylib/AlgebraicStructure/Monoid/product_matrix.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-09-02 21:08:27+09:00
+    - Last commit date: 2020-09-09 02:56:29+09:00
 
 
 
@@ -52,12 +52,14 @@ layout: default
  * @title Product matrix monoid
  * @docs product_matrix.md
  */
-template <typename T>
-struct ProductMatrixMonoid {
-  using value_type = T;
-  value_type operator()() const {return T::make_unit();}
-  value_type operator()(const value_type &a, const value_type &b) const {return a * b;}
-};
+namespace haar_lib {
+  template <typename T>
+  struct product_matrix_monoid {
+    using value_type = T;
+    value_type operator()() const {return T::make_unit();}
+    value_type operator()(const value_type &a, const value_type &b) const {return a * b;}
+  };
+}
 
 ```
 {% endraw %}
@@ -71,12 +73,14 @@ struct ProductMatrixMonoid {
  * @title Product matrix monoid
  * @docs product_matrix.md
  */
-template <typename T>
-struct ProductMatrixMonoid {
-  using value_type = T;
-  value_type operator()() const {return T::make_unit();}
-  value_type operator()(const value_type &a, const value_type &b) const {return a * b;}
-};
+namespace haar_lib {
+  template <typename T>
+  struct product_matrix_monoid {
+    using value_type = T;
+    value_type operator()() const {return T::make_unit();}
+    value_type operator()(const value_type &a, const value_type &b) const {return a * b;}
+  };
+}
 
 ```
 {% endraw %}
