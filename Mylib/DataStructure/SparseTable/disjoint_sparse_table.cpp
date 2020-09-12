@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <cassert>
+#include <optional>
 
 /**
  * @title Disjoint sparse table
@@ -50,8 +51,8 @@ namespace haar_lib {
       build(0, 1 << logN, logN - 1);
     }
 
-    value_type get(int l, int r) const {
-      assert(l < r);
+    std::optional<value_type> get(int l, int r) const {
+      if(l == r) return std::nullopt;
       --r;
 
       if(l == r) return A[l];

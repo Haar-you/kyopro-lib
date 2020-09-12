@@ -2,6 +2,7 @@
 #include <vector>
 #include <utility>
 #include <algorithm>
+#include <optional>
 
 /**
  * @title Sparse table (2D)
@@ -55,7 +56,8 @@ namespace haar_lib {
       for(int i = 2; i < std::max(n, m) + 1; ++i) log_table[i] = log_table[i >> 1] + 1;
     }
 
-    value_type get(int r1, int c1, int r2, int c2) const { // [(r1, c1), (r2, c2))
+    std::optional<value_type> get(int r1, int c1, int r2, int c2) const { // [(r1, c1), (r2, c2))
+      if(r1 == r2 or c1 == c2) return std::nullopt;
       const int kr = log_table[r2 - r1];
       const int kc = log_table[c2 - c1];
 
