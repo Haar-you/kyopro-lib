@@ -1,5 +1,7 @@
 #pragma once
 #include <vector>
+#include <algorithm>
+#include <functional>
 
 /**
  * @title Segment tree
@@ -54,6 +56,56 @@ namespace haar_lib {
     template <typename T>
     void init(const T &val){
       init_with_vector(std::vector<value_type>(hsize, val));
+    }
+
+  private:
+    template <bool Lower, typename F>
+    int bound(const int l, const int r, value_type x, F f) const {
+      std::vector<int> pl, pr;
+      int L = l + hsize;
+      int R = r + hsize;
+      while(L < R){
+        if(R & 1) pr.push_back(--R);
+        if(L & 1) pl.push_back(L++);
+        L >>= 1, R >>= 1;
+      }
+
+      std::reverse(pr.begin(), pr.end());
+      pl.insert(pl.end(), pr.begin(), pr.end());
+
+      value_type a = M();
+
+      for(int i : pl){
+        auto b = M(a, data[i]);
+
+        if((Lower and not f(b, x)) or (not Lower and f(x, b))){
+          while(i < hsize){
+            if(auto c = M(a, data[i << 1 | 0]); (Lower and not f(c, x)) or (not Lower and f(x, c))){
+              i = i << 1 | 0;
+            }else{
+              a = c;
+              i = i << 1 | 1;
+            }
+          }
+
+          return i - hsize;
+        }
+
+        a = b;
+      }
+
+      return r;
+    }
+
+  public:
+    template <typename F = std::less<value_type>>
+    int lower_bound(int l, int r, value_type x, F f = F()) const {
+      return bound<true>(l, r, x, f);
+    }
+
+    template <typename F = std::less<value_type>>
+    int upper_bound(int l, int r, value_type x, F f = F()) const {
+      return bound<false>(l, r, x, f);
     }
   };
 }
