@@ -1,7 +1,7 @@
 #pragma once
 #include <random>
 #include <optional>
-#include "Mylib/Number/Mod/mod_power.cpp"
+#include "Mylib/Number/Mod/mod_pow.cpp"
 
 /**
  * @title Mod sqrt
@@ -12,10 +12,10 @@ namespace haar_lib {
     if(p == 2) return a % 2;
     if(a == 0) return 0;
 
-    int64_t b = power(a, (p - 1) / 2, p);
+    int64_t b = mod_pow(a, (p - 1) / 2, p);
 
     if(b == p - 1) return {};
-    if(p % 4 == 3) return power(a, (p + 1) / 4, p);
+    if(p % 4 == 3) return mod_pow(a, (p + 1) / 4, p);
 
     int64_t q = p - 1, s = 0;
     while(q % 2 == 0){
@@ -29,13 +29,13 @@ namespace haar_lib {
     int64_t z;
     while(1){
       z = dist(rand);
-      if(power(z, (p - 1) / 2, p) == p - 1) break;
+      if(mod_pow(z, (p - 1) / 2, p) == p - 1) break;
     }
 
     int64_t m = s;
-    int64_t c = power(z, q, p);
-    int64_t t = power(a, q, p);
-    int64_t r = power(a, (q + 1) / 2, p);
+    int64_t c = mod_pow(z, q, p);
+    int64_t t = mod_pow(a, q, p);
+    int64_t r = mod_pow(a, (q + 1) / 2, p);
 
     while(1){
       if(t == 0) return 0;
@@ -47,7 +47,7 @@ namespace haar_lib {
         if(T == 1) break;
       }
 
-      int64_t b = power(c, 1LL << (m - i - 1), p);
+      int64_t b = mod_pow(c, 1LL << (m - i - 1), p);
 
       m = i;
       c = b * b % p;

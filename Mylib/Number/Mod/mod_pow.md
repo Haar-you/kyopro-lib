@@ -1,6 +1,6 @@
 ## Operations
 
-- `power(n, p, m)`
+- `mod_pow(n, p, m)`
 	- $n ^ p \pmod m$を求める。
 	- Time complexity $O(\log p)$
 

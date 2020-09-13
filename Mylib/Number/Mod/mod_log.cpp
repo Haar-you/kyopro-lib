@@ -3,7 +3,7 @@
 #include <optional>
 #include <numeric>
 #include <cmath>
-#include "Mylib/Number/Mod/mod_power.cpp"
+#include "Mylib/Number/Mod/mod_pow.cpp"
 #include "Mylib/Number/Mod/mod_inv.cpp"
 
 /**
@@ -44,7 +44,7 @@ namespace haar_lib {
     }
 
     {
-      int64_t A = power(mod_inv(a, m), sq, m);
+      int64_t A = mod_pow(mod_inv(a, m), sq, m);
       int64_t t = b % m;
 
       for(int i = 0; i < sq; ++i){

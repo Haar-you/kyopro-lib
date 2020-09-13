@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <bitset>
-#include "Mylib/Number/Mod/mod_power.cpp"
+#include "Mylib/Number/Mod/mod_pow.cpp"
 #include "Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
@@ -49,7 +49,7 @@ int main(){
 
   int64_t ans = 0;
   if(res){
-    ans = hl::power(2, R * C - (*res).rank, mod);
+    ans = hl::mod_pow(2, R * C - (*res).rank, mod);
   }
 
   std::cout << ans << std::endl;

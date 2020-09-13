@@ -2,7 +2,7 @@
 #include <vector>
 #include <cstdint>
 #include <cmath>
-#include "Mylib/Number/Mod/mod_power.cpp"
+#include "Mylib/Number/Mod/mod_pow.cpp"
 
 /**
  * @title Graph vertex coloring
@@ -32,8 +32,8 @@ namespace haar_lib {
       [&](int k){
         int64_t t = 0;
         for(int i = 0; i < (1 << N); ++i){
-          if(__builtin_popcount(i) % 2 == 1) t -= power(I[i], k, mod);
-          else t += power(I[i], k, mod);
+          if(__builtin_popcount(i) % 2 == 1) t -= mod_pow(I[i], k, mod);
+          else t += mod_pow(I[i], k, mod);
           if(t < 0) t += mod;
           if(t >= mod) t -= mod;
         }
