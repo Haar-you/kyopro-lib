@@ -23,7 +23,7 @@ namespace haar_lib {
 
     T ret = 0;
     for(int i = 1; i <= k; ++i){
-      ret += t[k - i] * T::power(i, n) * ft.inv_factorial(i);
+      ret += t[k - i] * T::pow(i, n) * ft.inv_factorial(i);
     }
 
     return ret;

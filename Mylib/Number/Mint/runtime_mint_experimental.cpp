@@ -7,14 +7,17 @@
 namespace haar_lib::experimental {
   template <int *M>
   class runtime_modint {
-  public:
     int64_t val;
+
+  public:
     runtime_modint(): val(0){}
     runtime_modint(int64_t n){
       if(n >= (*M)) val = n % (*M);
       else if(n < 0) val = n % (*M) + (*M);
       else val = n;
     }
+
+    static auto mod(){return *M;}
 
     auto operator+(const runtime_modint &a) const {return runtime_modint(val + a.val);}
     auto operator-(const runtime_modint &a) const {return runtime_modint(val - a.val);}
@@ -30,13 +33,13 @@ namespace haar_lib::experimental {
     bool operator==(const runtime_modint &a) const {return val == a.val;}
     bool operator!=(const runtime_modint &a) const {return val != a.val;}
 
-    static auto power(int64_t n, int64_t p){
+    static auto pow(int64_t n, int64_t p){
       runtime_modint ret = 1, e = n;
       for(; p; e *= e, p >>= 1) if(p & 1) ret *= e;
       return ret;
     }
 
-    auto power(int64_t p) const {
+    auto pow(int64_t p) const {
       runtime_modint ret = 1, e = val;
       for(; p; e *= e, p >>= 1) if(p & 1) ret *= e;
       return ret;

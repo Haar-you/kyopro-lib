@@ -7,7 +7,7 @@
  */
 namespace haar_lib {
   template <int64_t M_>
-  struct montgomery {
+  class montgomery {
     constexpr static int64_t MOD = M_;
     constexpr static int b = 64 - __builtin_clzll(MOD);
     constexpr static int64_t R = 1LL << b;
@@ -37,6 +37,7 @@ namespace haar_lib {
 
     int64_t val;
 
+  public:
     montgomery(): val(0){}
     montgomery(int64_t a){
       if(a < 0){
@@ -50,6 +51,8 @@ namespace haar_lib {
       val = reduce(a * R2);
     }
     montgomery(const montgomery &that): val(that.val){}
+
+    constexpr static auto mod(){return MOD;}
 
     auto& operator+=(const montgomery &that){
       val += that.val;
@@ -84,7 +87,7 @@ namespace haar_lib {
     auto operator*(const montgomery &that) const {auto ret = *this; return ret *= that;}
     auto operator/(const montgomery &that) const {auto ret = *this; return ret /= that;}
 
-    auto power(int64_t p) const {
+    auto pow(int64_t p) const {
       montgomery ret = 1, e = *this;
 
       while(p > 0){
@@ -96,9 +99,9 @@ namespace haar_lib {
       return ret;
     }
 
-    static auto power(int64_t n, int64_t p){return montgomery(n).power(p);}
+    static auto pow(int64_t n, int64_t p){return montgomery(n).pow(p);}
 
-    auto inv() const {return power(MOD - 2);}
+    auto inv() const {return pow(MOD - 2);}
     static auto inv(int64_t n){return montgomery(n).inv();}
 
     friend auto operator+(int64_t a, const montgomery &b) {return montgomery(a) + b;}

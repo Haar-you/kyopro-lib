@@ -162,7 +162,7 @@ namespace haar_lib {
       return ret;
     }
 
-    auto power(int64_t M) const {
+    auto pow(int64_t M) const {
       assert(M >= 0);
 
       const int n = data.size();
@@ -180,7 +180,7 @@ namespace haar_lib {
       formal_power_series ret = *this;
       ret = (ret.shift(-k)) * a.inv();
       ret = (ret.log() * (T)M).exp();
-      ret = (ret * a.power(M)).shift(M * k);
+      ret = (ret * a.pow(M)).shift(M * k);
 
       return ret;
     }

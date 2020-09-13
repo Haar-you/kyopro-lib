@@ -23,7 +23,7 @@ int main(){
 
   auto ntt = NTT();
   FPS::convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
-  FPS::get_sqrt = [&](const auto &a){return hl::mod_sqrt((int64_t)a, mint::MOD);};
+  FPS::get_sqrt = [&](const auto &a){return hl::mod_sqrt((int64_t)a, mint::mod());};
 
   int N; std::cin >> N;
   auto a = hl::input_vector<mint>(N);

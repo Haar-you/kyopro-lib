@@ -25,7 +25,7 @@ int main(){
 
   int N, M; std::cin >> N >> M;
   auto a = hl::input_vector<mint>(N);
-  auto ans = FPS(a).power(M);
+  auto ans = FPS(a).pow(M);
 
   std::cout << hl::join(ans.begin(), ans.begin() + N) << "\n";
 

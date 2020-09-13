@@ -55,7 +55,7 @@ int main(){
 
     ans = 1;
     for(int i = 0; i < N; ++i){
-      ans *= mint::power(A[i], p[i]);
+      ans *= mint::pow(A[i], p[i]);
     }
   }
 

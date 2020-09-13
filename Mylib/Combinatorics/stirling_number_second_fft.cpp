@@ -20,7 +20,7 @@ namespace haar_lib {
 
     for(int i = 0; i <= N; ++i){
       if(m[i] == 0){
-        a[i] = T::power(i, N);
+        a[i] = T::pow(i, N);
       }else{
         a[i] = a[m[i]] * a[i / m[i]];
       }

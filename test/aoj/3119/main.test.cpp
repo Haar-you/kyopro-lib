@@ -22,7 +22,7 @@ int main(){
   dp = hl::fast_zeta_transform_superset(dp);
 
   std::vector<mint> f(1 << 20);
-  for(int i = 0; i < 1 << 20; ++i) f[i] = mint::power(2, dp[i]) - 1;
+  for(int i = 0; i < 1 << 20; ++i) f[i] = mint::pow(2, dp[i]) - 1;
 
   auto ans = hl::fast_mobius_transform_superset(f);
 

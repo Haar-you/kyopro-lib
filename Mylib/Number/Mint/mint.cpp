@@ -9,9 +9,11 @@
 namespace haar_lib {
   template <int32_t M>
   class modint {
-  public:
     constexpr static int32_t MOD = M;
     uint32_t val;
+
+  public:
+    constexpr static auto mod(){return MOD;}
 
     constexpr modint(): val(0){}
     constexpr modint(int64_t n){
@@ -54,8 +56,8 @@ namespace haar_lib {
     constexpr auto operator++(int){auto t = *this; *this += 1; return t;}
     constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}
 
-    constexpr static modint power(int64_t n, int64_t p){
-      if(p < 0) return power(n, -p).inv();
+    constexpr static modint pow(int64_t n, int64_t p){
+      if(p < 0) return pow(n, -p).inv();
 
       int64_t ret = 1, e = n % M;
       for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e) %= M;
@@ -79,7 +81,7 @@ namespace haar_lib {
 
     constexpr static auto frac(int64_t a, int64_t b){return modint(a) / modint(b);}
 
-    constexpr auto power(int64_t p) const {return power(val, p);}
+    constexpr auto pow(int64_t p) const {return pow(val, p);}
     constexpr auto inv() const {return inv(val);}
 
     friend constexpr auto operator-(const modint &a){return modint(M - a.val);}

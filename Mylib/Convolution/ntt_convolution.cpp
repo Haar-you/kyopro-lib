@@ -28,7 +28,7 @@ namespace haar_lib {
     {
       static_assert((MAX_SIZE & (MAX_SIZE - 1)) == 0, "MAX_SIZE must be power of 2.");
 
-      T t = T::power(PRIM_ROOT, (T::MOD - 1) >> (MAX_POWER + 2));
+      T t = T::pow(PRIM_ROOT, (T::mod() - 1) >> (MAX_POWER + 2));
       T s = t.inv();
 
       for(int i = MAX_POWER - 1; i >= 0; --i){
@@ -104,8 +104,8 @@ namespace haar_lib {
     static constexpr int M2 = 469762049, P2 = 3;
     static constexpr int M3 = 1224736769, P3 = 3;
 
-    for(auto &x : f) x %= T::MOD;
-    for(auto &x : g) x %= T::MOD;
+    for(auto &x : f) x %= T::mod();
+    for(auto &x : g) x %= T::mod();
 
     auto res1 = number_theoretic_transform<modint<M1>, P1, 1 << 20>().convolve(f, g);
     auto res2 = number_theoretic_transform<modint<M2>, P2, 1 << 20>().convolve(f, g);

@@ -13,8 +13,8 @@ namespace haar_lib {
 
     T ret = 0;
     for(int i = 1; i <= k; ++i){
-      if((k - i) % 2 == 0) ret += ft.C(k, i) * T::power(i, n);
-      else ret -= ft.C(k, i) * T::power(i, n);
+      if((k - i) % 2 == 0) ret += ft.C(k, i) * T::pow(i, n);
+      else ret -= ft.C(k, i) * T::pow(i, n);
     }
     ret *= ft.inv_factorial(k);
     return ret;

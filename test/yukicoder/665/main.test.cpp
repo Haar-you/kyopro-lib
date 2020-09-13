@@ -21,7 +21,7 @@ int main(){
   mint ans = 0;
 
   for(int64_t i = 0; i <= k; ++i){
-    ans += ft.C(k + 1, i) * b[i] * mint::power(n + 1, k + 1 - i);
+    ans += ft.C(k + 1, i) * b[i] * mint::pow(n + 1, k + 1 - i);
   }
 
   ans /= k + 1;
