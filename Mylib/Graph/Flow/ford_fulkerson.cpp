@@ -11,7 +11,7 @@ namespace haar_lib {
   class ford_fulkerson {
   public:
     struct edge {
-      int to, rev;
+      int from, to, rev;
       T cap;
       bool is_rev;
     };
@@ -40,20 +40,12 @@ namespace haar_lib {
     }
 
   public:
-    ford_fulkerson(const std::vector<std::vector<std::pair<int, T>>> &g):
-      size(g.size()), graph(size), visit(size)
-    {
-      for(int i = 0; i < size; ++i){
-        for(auto &[j, c] : g[i]){
-          add_edge(i, j, c);
-        }
-      }
-    }
+    ford_fulkerson(){}
     ford_fulkerson(int size): size(size), graph(size), visit(size){}
 
     void add_edge(int from, int to, const T &cap){
-      graph[from].push_back((edge){to, (int)graph[to].size(), cap, false});
-      graph[to].push_back((edge){from, (int)graph[from].size() - 1, 0, true});
+      graph[from].push_back({from, to, (int)graph[to].size(), cap, false});
+      graph[to].push_back({to, from, (int)graph[from].size() - 1, 0, true});
     }
 
     void reset_flow(){
@@ -78,8 +70,10 @@ namespace haar_lib {
       }
     }
 
-    const std::vector<std::vector<edge>>& get_graph(){
-      return graph;
+    std::vector<edge> edges() const {
+      std::vector<edge> ret;
+      for(auto &v : graph) ret.insert(ret.end(), v.begin(), v.end());
+      return ret;
     }
   };
 }

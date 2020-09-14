@@ -30,12 +30,12 @@ namespace haar_lib {
     }
 
     auto get_matching(){
-      auto g = f.get_graph();
+      const auto g = f.edges();
       std::vector<std::pair<int, int>> ret;
 
-      for(int i = 0; i < (int)g.size() - 2; ++i){
-        for(const auto &e : g[i]){
-          if((not e.is_rev) and e.cap == 0 and e.to != t) ret.emplace_back(i, e.to - L);
+      for(auto &e : g){
+        if(not e.is_rev and e.cap == 0 and e.from != s and e.to != t){
+          ret.emplace_back(e.from, e.to - L);
         }
       }
 

@@ -44,7 +44,7 @@ int main(){
     }
   }
 
-  int ans = -psp.solve();
+  auto ans = -psp.solve();
   std::cout << ans << std::endl;
 
   return 0;

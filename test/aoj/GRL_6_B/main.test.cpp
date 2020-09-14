@@ -15,9 +15,8 @@ int main(){
     f.add_edge(u, v, c, d);
   }
 
-  int ret;
-
-  if(f.solve(0, V - 1, F, ret) == F){
+  auto [flow, ret] = f.solve(0, V - 1, F);
+  if(flow == F){
     std::cout << ret << std::endl;
   }else{
     std::cout << -1 << std::endl;

@@ -29,6 +29,7 @@ namespace haar_lib {
     std::vector<std::vector<edge>> g;
 
   public:
+    minimum_cost_flow(){}
     minimum_cost_flow(int size): size(size), g(size){}
 
     void add_edge(int from, int to, T cap, U cost){
@@ -36,9 +37,9 @@ namespace haar_lib {
       g[to].emplace_back(to, from, 0, -cost, g[from].size() - 1, true);
     }
 
-    T solve(int src, int dst, const T &f, U &ret){
+    std::pair<T, U> solve(int src, int dst, const T &f){
       using P = std::pair<U, int>;
-      ret = 0;
+      U ret = 0;
       T flow = f;
       std::vector<U> h(size, 0), cost(size);
       std::vector<bool> is_inf(size, true);
@@ -76,7 +77,7 @@ namespace haar_lib {
           }
         }
 
-        if(is_inf[dst]) return f - flow; // dstへ到達不可能
+        if(is_inf[dst]) return {f - flow, ret}; // dstへ到達不可能
 
         for(int i = 0; i < size; ++i) h[i] += cost[i];
 
@@ -97,11 +98,13 @@ namespace haar_lib {
         }
       }
 
-      return f;
+      return {f - flow, ret};
     }
 
-    const std::vector<std::vector<edge>>& get_graph(){
-      return g;
+    std::vector<edge> edges() const {
+      std::vector<edge> ret;
+      for(auto &v : g) ret.insert(ret.end(), v.begin(), v.end());
+      return ret;
     }
   };
 }

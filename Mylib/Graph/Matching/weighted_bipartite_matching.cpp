@@ -26,20 +26,17 @@ namespace haar_lib {
     }
 
     T solve(int flow){
-      T ret;
-      f.solve(s, t, flow, ret);
+      T ret = f.solve(s, t, flow).second;
       return ret * (MIN_MATCHING ? 1 : -1);
     }
 
     auto get_matching(){
-      auto g = f.get_graph();
+      const auto g = f.edges();
       std::vector<std::tuple<int, int, T>> ret;
 
-      for(int i = 0; i < L; ++i){
-        for(auto &e : g[i]){
-          if(not e.is_rev and e.to != t and e.cap == 0){
-            ret.emplace_back(i, e.to - L, e.cost * (MIN_MATCHING ? 1 : -1));
-          }
+      for(auto &e : g){
+        if(not e.is_rev and e.from != s and e.to != t and e.cap == 0){
+          ret.emplace_back(e.from, e.to - L, e.cost * (MIN_MATCHING ? 1 : -1));
         }
       }
 

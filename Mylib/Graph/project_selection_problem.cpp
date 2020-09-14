@@ -3,6 +3,7 @@
 #include <utility>
 #include <cassert>
 #include <limits>
+#include <tuple>
 
 /*
  * @title Project selection problem
@@ -12,18 +13,19 @@ namespace haar_lib {
   template <typename T, typename Flow>
   class project_selection_problem {
     int N, s, t;
-    std::vector<std::vector<std::pair<int, T>>> graph;
+    std::vector<std::tuple<int, int, T>> g;
     T default_gain;
+    int nodes;
 
     constexpr static T INF = std::numeric_limits<T>::max();
 
   public:
-    project_selection_problem(int N): N(N), s(N), t(N + 1), graph(N + 2), default_gain(0){}
+    project_selection_problem(int N): N(N), s(N), t(N + 1), default_gain(0), nodes(N + 2){}
 
     void penalty_if_red(int i, T c){
       assert(c >= 0);
       assert(0 <= i and i < N);
-      graph[i].emplace_back(t, c);
+      g.emplace_back(i, t, c);
     }
 
     void gain_if_red(int i, T c){
@@ -36,7 +38,7 @@ namespace haar_lib {
     void penalty_if_blue(int i, T c){
       assert(c >= 0);
       assert(0 <= i and i < N);
-      graph[s].emplace_back(i, c);
+      g.emplace_back(s, i, c);
     }
 
     void gain_if_blue(int i, T c){
@@ -50,15 +52,15 @@ namespace haar_lib {
       assert(c >= 0);
       assert(0 <= i and i < N);
       assert(0 <= j and j < N);
-      graph[i].emplace_back(j, c);
+      g.emplace_back(i, j, c);
     }
 
     void penalty_if_different(int i, int j, T c){
       assert(c >= 0);
       assert(0 <= i and i < N);
       assert(0 <= j and j < N);
-      graph[i].emplace_back(j, c);
-      graph[j].emplace_back(i, c);
+      g.emplace_back(i, j, c);
+      g.emplace_back(j, i, c);
     }
 
     void must_be_red(int i){
@@ -82,12 +84,11 @@ namespace haar_lib {
       assert(0 <= i and i < N);
       assert(0 <= j and j < N);
       default_gain += c;
-      int w = graph.size();
-      graph.emplace_back();
+      int w = nodes++;
 
-      graph[s].emplace_back(w, c);
-      graph[w].emplace_back(i, INF);
-      graph[w].emplace_back(j, INF);
+      g.emplace_back(s, w, c);
+      g.emplace_back(w, i, INF);
+      g.emplace_back(w, j, INF);
     }
 
     void gain_if_blue_blue(int i, int j, T c){
@@ -95,16 +96,16 @@ namespace haar_lib {
       assert(0 <= i and i < N);
       assert(0 <= j and j < N);
       default_gain += c;
-      int w = graph.size();
-      graph.emplace_back();
+      int w = nodes++;
 
-      graph[w].emplace_back(t, c);
-      graph[i].emplace_back(w, INF);
-      graph[j].emplace_back(w, INF);
+      g.emplace_back(w, t, c);
+      g.emplace_back(i, w, INF);
+      g.emplace_back(j, w, INF);
     }
 
     T solve(){
-      Flow flow(graph);
+      Flow flow(nodes);
+      for(auto [i, j, w] : g) flow.add_edge(i, j, w);
       return default_gain - flow.solve(s, t);
     }
   };

@@ -13,8 +13,7 @@ namespace haar_lib {
   struct push_relabel {
   private:
     struct edge {
-      int from, to;
-      int rev;
+      int from, to, rev;
       T cap;
       bool is_rev;
     };
@@ -95,16 +94,6 @@ namespace haar_lib {
   public:
     push_relabel(){}
     push_relabel(int N): N(N), g(N), excess(N), height(N){}
-    push_relabel(std::vector<std::vector<std::pair<int, T>>> g):
-      N(g.size()), g(N), excess(N), height(N)
-    {
-      for(int i = 0; i < N; ++i){
-        for(auto [j, c] : g[i]){
-          add_edge(i, j, c);
-        }
-      }
-    }
-
 
     void add_edge(int from, int to, T c){
       g[from].push_back({from, to, (int)g[to].size(), c, false});
@@ -143,6 +132,12 @@ namespace haar_lib {
       }
 
       return excess[t];
+    }
+
+    std::vector<edge> edges() const {
+      std::vector<edge> ret;
+      for(auto &v : g) ret.insert(ret.end(), v.begin(), v.end());
+      return ret;
     }
   };
 }
