@@ -38,12 +38,9 @@ int main(){
       int u, v; std::cin >> u >> v;
 
       int64_t ans = 0;
-      hld.path_query_vertex(
-        u, v,
-        [&](int l, int r){
-          ans += seg.get(l, r);
-        }
-      );
+      for(auto [l, r, d] : hld.path_query_vertex(u, v)){
+        ans += seg.get(l, r);
+      }
 
       std::cout << ans << "\n";
     }

@@ -40,12 +40,8 @@ int main(){
       seg.update(i, seg[i] + x);
     }else{
       int64_t ans = 0;
-      hld.subtree_query_vertex(
-        u,
-        [&](int l, int r){
-          ans += seg.get(l, r);
-        }
-      );
+      auto [l, r] = hld.subtree_query_vertex(u);
+      ans += seg.get(l, r);
 
       std::cout << ans << "\n";
     }

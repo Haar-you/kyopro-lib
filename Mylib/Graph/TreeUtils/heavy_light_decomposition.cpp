@@ -58,65 +58,68 @@ namespace haar_lib {
       dfs_build(tr, root, i);
     }
 
-    template <typename Func> // std::function<void(int, int)>
-    void path_query_vertex(int x, int y, const Func &f) const {
-      while(1){
-        if(id[x] > id[y]) std::swap(x, y);
-        f(std::max(id[head[y]], id[x]), id[y] + 1);
-        if(head[x] == head[y]) return;
-        y = par[head[y]];
-      }
-    }
-
-    template <typename LeftFunc, typename RightFunc>
-    void path_query_vertex(int x, int y, const LeftFunc &f, const RightFunc &g) const {
+    std::vector<std::tuple<int, int, bool>> path_query_vertex(int x, int y) const {
+      std::vector<std::tuple<int, int, bool>> ret;
       const int w = lca(x, y);
 
-      path_query_vertex(x, w, f);
+      {
+        int y = w;
+        bool d = true;
+        while(1){
+          if(id[x] > id[y]) std::swap(x, y), d = not d;
+          int l = std::max(id[head[y]], id[x]), r = id[y] + 1;
+          if(l != r) ret.emplace_back(l, r, d);
+          if(head[x] == head[y]) break;
+          y = par[head[y]];
+        }
+      }
 
       x = y;
       y = w;
 
-      while(1){
-        if(id[x] > id[y]){
-          std::swap(x, y);
+      {
+        std::vector<std::tuple<int, int, bool>> temp;
+        bool d = false;
+        while(1){
+          if(id[x] > id[y]) std::swap(x, y), d = not d;
+          int l = std::max({id[head[y]], id[x], id[w] + 1}), r = id[y] + 1;
+          if(l != r) temp.emplace_back(l, r, d);
+          if(head[x] == head[y]) break;
+          y = par[head[y]];
         }
-        g(std::max({id[head[y]], id[x], id[w] + 1}), id[y] + 1);
-        if(head[x] == head[y]) return;
-        y = par[head[y]];
+
+        std::reverse(temp.begin(), temp.end());
+        ret.insert(ret.end(), temp.begin(), temp.end());
       }
+
+      return ret;
     }
 
-    template <typename Func> // std::function<void(int, int)>
-    void path_query_edge(int x, int y, const Func &f) const {
+    std::vector<std::pair<int, int>> path_query_edge(int x, int y) const {
+      std::vector<std::pair<int, int>> ret;
       while(1){
         if(id[x] > id[y]) std::swap(x, y);
         if(head[x] == head[y]){
-          if(x != y) f(id[x] + 1, id[y] + 1);
-          return;
+          if(x != y) ret.emplace_back(id[x] + 1, id[y] + 1);
+          break;
         }
-        f(id[head[y]], id[y] + 1);
+        ret.emplace_back(id[head[y]], id[y] + 1);
         y = par[head[y]];
       }
+      return ret;
     }
 
-    template <typename Func> // std::function<void(int, int)>
-    void subtree_query_edge(int x, const Func &f) const {
-      f(id[x] + 1, end[x]);
+    std::pair<int, int> subtree_query_edge(int x) const {
+      return {id[x] + 1, end[x]};
     }
 
-    template <typename Func> // std::function<void(int, int)>
-    void subtree_query_vertex(int x, const Func &f) const {
-      f(id[x], end[x]);
+    std::pair<int, int> subtree_query_vertex(int x) const {
+      return {id[x], end[x]};
     }
 
     int get_edge_id(int u, int v) const { // 辺に対応するid
-      if(par[u] == v){
-        return id[u];
-      }else if(par[v] == u){
-        return id[v];
-      }
-
+      if(par[u] == v) return id[u];
+      if(par[v] == u) return id[v];
       return -1;
     }
 

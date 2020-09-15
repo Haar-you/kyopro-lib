@@ -43,21 +43,13 @@ int main(){
     }else{
       int64_t u, v, x; std::cin >> u >> v >> x;
 
-      auto left = M(), right = M();
+      auto res = M();
+      for(auto [l, r, d] : hld.path_query_vertex(u, v)){
+        if(d) res = M(res, seg.fold_left(l, r));
+        else res = M(res, seg.fold_right(l, r));
+      }
 
-      hld.path_query_vertex(
-        u, v,
-        [&](int l, int r){
-          left = M(left, seg.fold_right(l, r));
-        },
-        [&](int l, int r){
-          right = M(seg.fold_left(l, r), right);
-        }
-      );
-
-      auto a = M(left, right);
-
-      mint ans = a.first * x + a.second;
+      mint ans = res.first * x + res.second;
       std::cout << ans << "\n";
     }
   }

@@ -56,13 +56,10 @@ int main(){
 
       int lca = *seg2.get(L - 1, R);
       int ans = 0;
-      hld.path_query_vertex(
-        0,
-        lca,
-        [&](int l, int r){
-          ans = std::max(ans, seg1.get(l, r).value());
-        }
-      );
+
+      for(auto [l, r, d] : hld.path_query_vertex(0, lca)){
+        ans = std::max(ans, seg1.get(l, r).value());
+      }
 
       std::cout << ans << "\n";
     }
