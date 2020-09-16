@@ -1,3 +1,8 @@
+---
+title: 0-1 Knapsack problem (Small quantity)
+documentation_of: Mylib/TypicalProblem/KnapsackProblem/knapsack_small_quantity.cpp
+---
+
 ## Operations
 
 - `knapsack_small_quantity(int N, Weight cap, Weight w[N], Value v[N])`
@@ -5,6 +10,8 @@
 	- Time complexity $O(2^{N/2} N)$
 
 ## Requirements
+
+## Notes
 
 ## Problems
 

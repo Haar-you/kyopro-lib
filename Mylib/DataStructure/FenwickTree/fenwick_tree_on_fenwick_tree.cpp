@@ -4,10 +4,6 @@
 #include <algorithm>
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
 
-/**
- * @title Fenwick tree (On Fenwick tree)
- * @docs fenwick_tree_on_fenwick_tree.md
- */
 namespace haar_lib {
   template <typename AbelianGroup>
   class fenwick_tree_on_fenwick_tree {

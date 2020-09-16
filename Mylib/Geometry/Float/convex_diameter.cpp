@@ -2,10 +2,6 @@
 #include <algorithm>
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
-/**
- * @title Convex diameter
- * @docs convex_diameter.md
- */
 namespace haar_lib {
   template <typename T>
   T convex_diameter(const polygon<T> &ps){

@@ -1,10 +1,6 @@
 #pragma once
 #include <iostream>
 
-/**
- * @title Dice
- * @docs dice.md
- */
 namespace haar_lib {
   struct dice {
     int top, bottom, front, back, right, left;

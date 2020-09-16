@@ -2,10 +2,6 @@
 #include <vector>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Euler tour (Vertex)
- * @docs euler_tour_vertex.md
- */
 namespace haar_lib {
   template <typename T>
   class euler_tour_vertex {

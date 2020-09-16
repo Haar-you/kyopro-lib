@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Bitand monoid
- * @docs bitand.md
- */
 namespace haar_lib {
   template <typename T>
   struct bitand_monoid {

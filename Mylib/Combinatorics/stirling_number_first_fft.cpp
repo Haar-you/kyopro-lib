@@ -3,10 +3,6 @@
 #include <algorithm>
 #include "Mylib/Math/polynomial_taylor_shift.cpp"
 
-/**
- * @title Stirling numbers of the first kind (FFT)
- * @docs stirling_number_first_fft.md
- */
 namespace haar_lib {
   template <typename T, typename Conv>
   std::vector<T> stirling_number_of_first_kind_fft(int N, const Conv &convolve){

@@ -2,10 +2,6 @@
 #include <vector>
 #include <algorithm>
 
-/**
- * @title Knapsack problem (Without quantity limitations)
- * @docs knapsack_unlimited.md
- */
 namespace haar_lib {
   template <typename Weight, typename Value>
   Value knapsack_unlimited(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){

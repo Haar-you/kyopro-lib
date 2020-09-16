@@ -4,10 +4,6 @@
 #include <cassert>
 #include <cmath>
 
-/**
- * @title Mo's algorithm
- * @docs mo_algorithm.md
- */
 namespace haar_lib {
   template <typename AppendLeft, typename AppendRight, typename RemoveLeft, typename RemoveRight, typename Query>
   class mo_algorithm {

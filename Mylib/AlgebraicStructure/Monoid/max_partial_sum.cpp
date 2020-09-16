@@ -3,10 +3,6 @@
 #include <algorithm>
 #include <iostream>
 
-/**
- * @title Max partial sum monoid
- * @docs max_partial_sum.md
- */
 namespace haar_lib {
   template <typename T>
   struct max_partial_sum_monoid {

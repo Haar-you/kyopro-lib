@@ -1,3 +1,8 @@
+---
+title: Enumerate supersets (Descending order)
+documentation_of: Mylib/Bit/enumerate_supersets_desc.cpp
+---
+
 ## Operations
 
 - `for(int i : SupersetDesc(a, n)){...}`

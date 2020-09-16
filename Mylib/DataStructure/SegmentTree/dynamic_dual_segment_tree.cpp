@@ -1,10 +1,6 @@
 #pragma once
 #include <unordered_map>
 
-/**
- * @title Dynamic dual segment tree
- * @docs dynamic_dual_segment_tree.md
- */
 namespace haar_lib {
   template <typename Monoid>
   class dynamic_dual_segment_tree {

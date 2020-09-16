@@ -1,3 +1,8 @@
+---
+title: Subset sum problem (With quantity limitations)
+documentation_of: Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp
+---
+
 ## Operations
 
 - `subset_sum_limited(N, K, a[N], m[N])`

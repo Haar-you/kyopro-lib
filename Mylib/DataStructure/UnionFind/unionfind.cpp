@@ -3,10 +3,6 @@
 #include <numeric>
 #include <algorithm>
 
-/**
- * @title Union-find
- * @docs unionfind.md
- */
 namespace haar_lib {
   class unionfind {
     int n;

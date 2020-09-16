@@ -1,3 +1,8 @@
+---
+title: Knapsack problem (With quantity limitations)
+documentation_of: Mylib/TypicalProblem/KnapsackProblem/knapsack_limited.cpp
+---
+
 ## Operations
 
 - `knapsack_limited(int N, Weight cap, Weight w[N], Value v[N], int m[N])`
@@ -5,6 +10,8 @@
 	- Time complexity $O(N cap \log \max m)$
 
 ## Requirements
+
+## Notes
 
 ## Problems
 

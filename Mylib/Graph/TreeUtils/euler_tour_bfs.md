@@ -1,3 +1,8 @@
+---
+title: Euler tour (BFS)
+documentation_of: Mylib/Graph/TreeUtils/euler_tour_bfs.cpp
+---
+
 ## Operations
 
 - `EulerTourBFS(tree, int root)`
@@ -25,5 +30,4 @@
 
 - [https://niuez.hatenablog.com/entry/2019/10/05/002503](https://niuez.hatenablog.com/entry/2019/10/05/002503)
 - [https://niuez.github.io/posts/entry/2019/10/05/002503/](https://niuez.github.io/posts/entry/2019/10/05/002503/)
-
 

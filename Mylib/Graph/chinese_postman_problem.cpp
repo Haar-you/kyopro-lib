@@ -3,10 +3,6 @@
 #include <algorithm>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Chinese postman problem
- * @docs chinese_postman_problem.md
- */
 namespace haar_lib {
   template <typename T>
   T chinese_postman_problem(const graph<T> &g){

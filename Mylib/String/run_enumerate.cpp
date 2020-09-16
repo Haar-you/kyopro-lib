@@ -6,10 +6,6 @@
 #include <algorithm>
 #include "Mylib/String/z_algorithm.cpp"
 
-/**
- * @title Run enumerate
- * @docs run_enumerate.md
- */
 namespace haar_lib {
   namespace run_enumerate_impl {
     auto aux(const std::string &first, const std::string &second){

@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Möbius function
- * @docs mobius_function.md
- */
 namespace haar_lib {
   template <typename Checker>
   std::vector<int> mobius_function(int n, Checker is_prime){

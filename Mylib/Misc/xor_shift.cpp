@@ -1,10 +1,6 @@
 #pragma once
 #include <cstdint>
 
-/**
- * @title Xorshift
- * @docs xor_shift.md
- */
 namespace haar_lib {
   struct xor_shift {
     static uint64_t rand(){

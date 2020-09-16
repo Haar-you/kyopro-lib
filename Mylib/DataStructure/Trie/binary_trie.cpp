@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Binary trie
- * @docs binary_trie.md
- */
 namespace haar_lib {
   template <typename T, unsigned int B>
   class binary_trie {

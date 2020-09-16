@@ -1,3 +1,8 @@
+---
+title: Yen's algorithm
+documentation_of: Mylib/Graph/ShortestPath/yen_algorithm.cpp
+---
+
 ## Operations
 
 ## Requirements

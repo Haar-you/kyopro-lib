@@ -3,10 +3,6 @@
 #include <functional>
 #include <utility>
 
-/**
- * @title Binary heap
- * @docs binary_heap.md
- */
 namespace haar_lib {
   template <typename T, typename Compare = std::less<T>>
   class binary_heap {

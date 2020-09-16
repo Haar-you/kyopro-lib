@@ -2,9 +2,6 @@
 #include <set>
 #include <utility>
 
-/**
- * @docs merge_technique.md
- */
 namespace haar_lib {
   template <typename T>
   void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){

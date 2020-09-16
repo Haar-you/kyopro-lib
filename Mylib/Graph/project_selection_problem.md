@@ -1,3 +1,8 @@
+---
+title: Project selection problem
+documentation_of: Mylib/Graph/project_selection_problem.cpp
+---
+
 ## Operations
 
 - `ProjectSelectionProblem(N)`

@@ -1,3 +1,8 @@
+---
+title: Closed interval
+documentation_of: Mylib/Math/closed_interval.cpp
+---
+
 ## Operations
 
 一つの閉区間を管理する。

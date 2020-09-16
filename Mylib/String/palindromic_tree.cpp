@@ -5,10 +5,6 @@
 #include <algorithm>
 #include <string_view>
 
-/**
- * @title Palindromic tree
- * @docs palindromic_tree
- */
 namespace haar_lib {
   class palindromic_tree {
     struct node {

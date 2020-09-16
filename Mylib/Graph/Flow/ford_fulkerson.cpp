@@ -2,10 +2,6 @@
 #include <vector>
 #include <algorithm>
 
-/**
- * @title Ford-Fulkerson algorithm
- * @docs ford_fulkerson.md
- */
 namespace haar_lib {
   template <typename T>
   class ford_fulkerson {

@@ -1,8 +1,15 @@
+---
+title: Largest rectangle in histogram
+documentation_of: Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle_in_histogram.cpp
+---
+
 ## Operations
 - `max_rectangle_in_histogram(T h[N])`
 	- Time complexity $O(N)$
 
 ## Requirements
+
+## Notes
 
 ## Problems
 

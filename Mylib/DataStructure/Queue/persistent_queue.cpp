@@ -3,10 +3,6 @@
 #include <iostream>
 #include <vector>
 
-/**
- * @title Persistent queue
- * @docs persistent_queue.md
- */
 namespace haar_lib {
   template <typename T>
   class persistent_queue {

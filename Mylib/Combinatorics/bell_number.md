@@ -1,8 +1,19 @@
+---
+title: Bell number
+documentation_of: Mylib/Combinatorics/bell_number.cpp
+---
+
 ## Operations
 
 - `bell_number(Ft, int n, int k)`
 	- n個の区別するボールをk個の区別しない箱に分配するような方法の総数。
 	- Time complexity $O(\min(k, n)\ \log n)$
+
+## Requirements
+
+## Notes
+
+## Problems
 
 ## References
 

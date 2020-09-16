@@ -1,10 +1,6 @@
 #pragma once
 #include <cstdint>
 
-/**
- * @title Dynamic lazy segment tree
- * @docs dynamic_lazy_segment_tree.md
- */
 namespace haar_lib {
   template <typename Monoid>
   class dynamic_lazy_segment_tree {

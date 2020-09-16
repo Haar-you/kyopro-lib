@@ -3,10 +3,6 @@
 #include <optional>
 #include <utility>
 
-/**
- * @title Simultaneous linear equations (Floating point number)
- * @docs float_simultaneous_linear_equations.md
- */
 namespace haar_lib {
   namespace float_simultaneous_linear_equations_impl {
     template <typename T>

@@ -1,10 +1,6 @@
 #pragma once
 #include <cstdint>
 
-/**
- * @title Count number of prime factor p of $a!$
- * @docs factorial_prime_factorization.md
- */
 namespace haar_lib {
   int64_t factorial_prime_factorization(int64_t a, int64_t p){
     int64_t ret = 0, q = p;

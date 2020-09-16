@@ -1,3 +1,8 @@
+---
+title: Manacher algorithm
+documentation_of: Mylib/String/manacher.cpp
+---
+
 ## Operations
 
 - `manacher(s)`

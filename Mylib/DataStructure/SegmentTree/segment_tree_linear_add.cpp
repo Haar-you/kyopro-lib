@@ -2,10 +2,6 @@
 #include <vector>
 #include <utility>
 
-/**
- * @title Segment tree (Add $ai + b$)
- * @docs segment_tree_linear_add.md
- */
 namespace haar_lib {
   template <typename T>
   class segment_tree_linear_add {

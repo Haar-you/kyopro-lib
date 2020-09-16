@@ -3,10 +3,6 @@
 #include <deque>
 #include <utility>
 
-/**
- * @title Sliding window minmax
- * @docs sliding_minmax.md
- */
 namespace haar_lib {
   template <typename T>
   std::vector<std::pair<T, T>> sliding_minmax(const std::vector<T> &a, int k){

@@ -4,10 +4,6 @@
 #include <string>
 #include <queue>
 
-/**
- * @title Aho-Corasick algorithm
- * @docs aho_corasick.md
- */
 namespace haar_lib {
   class aho_corasick {
   public:

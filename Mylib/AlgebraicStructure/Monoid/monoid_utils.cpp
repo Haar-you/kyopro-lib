@@ -1,9 +1,6 @@
 #pragma once
 #include <cstdint>
 
-/**
- * @docs monoid_utils.md
- */
 namespace haar_lib {
   template <typename Monoid, typename value_type = typename Monoid::value_type>
   value_type times(value_type a, int64_t p){

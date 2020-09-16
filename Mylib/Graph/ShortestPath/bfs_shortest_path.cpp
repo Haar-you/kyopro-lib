@@ -4,10 +4,6 @@
 #include <queue>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title BFS shortest path
- * @docs bfs_shortest_path.md
- */
 namespace haar_lib {
   template <typename T>
   std::vector<std::optional<int64_t>> bfs_shortest_path(const graph<T> &g, const std::vector<int> &src){

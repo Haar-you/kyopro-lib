@@ -4,10 +4,6 @@
 #include <initializer_list>
 #include <cassert>
 
-/**
- * @title Formal power series
- * @docs formal_power_series.md
- */
 namespace haar_lib {
   template <typename T>
   struct formal_power_series {

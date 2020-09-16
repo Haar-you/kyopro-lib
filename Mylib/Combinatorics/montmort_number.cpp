@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Montmort number
- * @docs montmort_number.md
- */
 namespace haar_lib {
   template <typename T>
   auto montmort_number(int n){

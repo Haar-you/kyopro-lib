@@ -1,10 +1,6 @@
 #pragma once
 #include <utility>
 
-/**
- * @title Pair monoid
- * @docs pair.md
- */
 namespace haar_lib {
   template <typename Monoid1, typename Monoid2>
   struct pair_monoid {

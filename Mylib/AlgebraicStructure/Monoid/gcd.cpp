@@ -1,10 +1,6 @@
 #pragma once
 #include <numeric>
 
-/**
- * @title GCD monoid
- * @docs gcd.md
- */
 namespace haar_lib {
   template <typename T>
   struct gcd_monoid {

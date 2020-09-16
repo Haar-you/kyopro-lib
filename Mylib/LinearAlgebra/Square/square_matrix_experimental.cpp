@@ -2,8 +2,6 @@
 #include <vector>
 #include <utility>
 
-/**
- */
 namespace haar_lib::experimental {
   template <typename T, int *N>
   struct square_matrix {

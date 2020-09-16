@@ -1,3 +1,8 @@
+---
+title: Factorial table
+documentation_of: Mylib/Combinatorics/factorial_table.cpp
+---
+
 ## Operations
 
 - `FactorialTable(int N)`
@@ -8,3 +13,11 @@
 - `P(int n, int k)` : return $_nP_k$
 - `C(int n, int k)` : return $_nC_k$
 - `H(int n, int k)` : return $_nH_k = _{n+k-1}C_k$
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References

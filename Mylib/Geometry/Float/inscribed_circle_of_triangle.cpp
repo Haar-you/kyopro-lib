@@ -1,10 +1,6 @@
 #pragma once
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
-/**
- * @title Inscribed circle of a triangle
- * @docs inscribed_circle_of_triangle.md
- */
 namespace haar_lib {
   template <typename T>
   circle<T> inscribed_circle_of_triangle(const point<T> &a, const point<T> &b, const point<T> &c){

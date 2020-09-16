@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Fenwick tree (Add)
- * @docs fenwick_tree_add.md
- */
 namespace haar_lib {
   template <typename T>
   class fenwick_tree_add {

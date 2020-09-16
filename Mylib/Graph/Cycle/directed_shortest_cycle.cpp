@@ -6,10 +6,6 @@
 #include <climits>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Directed shortest cycle
- * @docs directed_shortest_cycle.md
- */
 namespace haar_lib {
   template <typename T>
   struct direct_shortest_cycle {

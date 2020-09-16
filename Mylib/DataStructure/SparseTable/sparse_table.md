@@ -1,3 +1,8 @@
+---
+title: Sparse table
+documentation_of: Mylib/DataStructure/SparseTable/sparse_table.cpp
+---
+
 ## Operations
 
 - `SparseTable(v[n])`
@@ -10,3 +15,9 @@
 
 - `Semilattice`は冪等性・可換性・結合性を満たす`op`を持つ。
 	- `max`, `min`, `gcd`, `lcm`, `and`, `or`など
+
+## Notes
+
+## Problems
+
+## References

@@ -2,9 +2,6 @@
 #include <utility>
 #include <cstdint>
 
-/**
- * @docs with_count.md
- */
 namespace haar_lib {
   template <typename Monoid>
   struct with_count {

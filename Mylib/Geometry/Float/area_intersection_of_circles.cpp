@@ -2,10 +2,6 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/intersect_circles.cpp"
 
-/**
- * @title Area of intersection between two circles
- * @docs area_intersection_of_circles.md
- */
 namespace haar_lib {
   template <typename T>
   T area_of_intersection_of_circles(const circle<T> &a, const circle<T> &b){

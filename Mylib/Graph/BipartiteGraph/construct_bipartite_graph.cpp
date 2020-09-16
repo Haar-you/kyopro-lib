@@ -1,10 +1,6 @@
 #pragma once
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
-/**
- * @title Check bipartite graph (Using union-find)
- * @docs construct_bipartite_graph.md
- */
 namespace haar_lib {
   class bipartite_graph {
     int n;

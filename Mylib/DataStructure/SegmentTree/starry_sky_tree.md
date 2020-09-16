@@ -1,3 +1,8 @@
+---
+title: Starry-sky tree
+documentation_of: Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp
+---
+
 ## Operations
 
 - `StarrySkyTree(n)`

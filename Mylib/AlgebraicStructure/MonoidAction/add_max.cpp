@@ -1,10 +1,6 @@
 #pragma once
 #include <optional>
 
-/**
- * @title Range add / Range max
- * @docs add_max.md
- */
 namespace haar_lib {
   template <typename T, typename U>
   struct add_max {

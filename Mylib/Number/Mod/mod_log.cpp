@@ -6,10 +6,6 @@
 #include "Mylib/Number/Mod/mod_pow.cpp"
 #include "Mylib/Number/Mod/mod_inv.cpp"
 
-/**
- * @title Mod logarithm
- * @docs mod_log.md
- */
 namespace haar_lib {
   std::optional<int64_t> mod_log(int64_t a, int64_t b, int64_t m){
     if(b == 1) return 0;

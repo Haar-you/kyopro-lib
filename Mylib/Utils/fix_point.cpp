@@ -1,10 +1,6 @@
 #pragma once
 #include <utility>
 
-/**
- * @title Fixed point combinator
- * @docs fix_point.md
- */
 namespace haar_lib {
   template <typename F>
   struct fix_point : F {

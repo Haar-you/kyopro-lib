@@ -2,10 +2,6 @@
 #include <cmath>
 #include <vector>
 
-/**
- * @title Real solutions of quadratic equation
- * @docs quadratic_equation.md
- */
 namespace haar_lib {
   std::vector<double> quadratic_equation(double a, double b, double c){
     double d = b * b - 4 * a * c;

@@ -2,10 +2,6 @@
 #include <vector>
 #include <functional>
 
-/**
- * @title Fast Möbius transform (Subsets)
- * @docs fast_mobius_transform_subset.md
- */
 namespace haar_lib {
   template <typename T, typename Func = std::minus<T>>
   std::vector<T> fast_mobius_transform_subset(std::vector<T> f, const Func &op = std::minus<T>()){

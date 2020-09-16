@@ -1,3 +1,14 @@
+---
+title: Persistent union-find
+documentation_of: Mylib/DataStructure/UnionFind/persistent_unionfind.cpp
+---
+
+## Operations
+
+## Requirements
+
+## Notes
+
 ## Problems
 
 - [Persistent UnionFind](https://judge.yosupo.jp/problem/persistent_unionfind)

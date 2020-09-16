@@ -2,10 +2,6 @@
 #include <vector>
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
-/**
- * @title Intersection between a line and a segment
- * @docs intersect_line_segment.md
- */
 namespace haar_lib {
   namespace intersect_line_segment {
     enum status_t {

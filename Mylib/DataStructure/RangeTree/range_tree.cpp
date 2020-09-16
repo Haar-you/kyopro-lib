@@ -4,9 +4,6 @@
 #include <algorithm>
 #include <iterator>
 
-/**
- * @docs range_tree.md
- */
 namespace haar_lib {
   class range_tree {
     int N = 0;

@@ -4,10 +4,6 @@
 #include <cassert>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Bellman-Ford algorithm
- * @docs bellman_ford.md
- */
 namespace haar_lib {
   namespace bellman_ford_impl {
     template <typename T>

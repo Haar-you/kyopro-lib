@@ -1,10 +1,6 @@
 #pragma once
 #include <utility>
 
-/**
- * @title Affine monoid
- * @docs affine.md
- */
 namespace haar_lib {
   template <typename T>
   struct affine_monoid {

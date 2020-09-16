@@ -3,10 +3,6 @@
 #include <cmath>
 #include <vector>
 
-/**
- * @title Geometry template
- * @docs geometry_template.md
- */
 namespace haar_lib {
   template <typename T>
   struct vec {

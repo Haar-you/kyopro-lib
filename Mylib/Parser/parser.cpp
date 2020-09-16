@@ -2,10 +2,6 @@
 #include <string>
 #include <cassert>
 
-/**
- * @title Parsing
- * @docs parser.md
- */
 namespace haar_lib {
   struct parser {
     using state = std::string::const_iterator;

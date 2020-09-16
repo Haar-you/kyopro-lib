@@ -1,3 +1,8 @@
+---
+title: Persistent segment tree
+documentation_of: Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp
+---
+
 ## Operations
 モノイド$(M, \circ, e)$上の列を扱う。
 - `PersistentSegmentTree(n)`

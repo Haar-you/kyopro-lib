@@ -1,10 +1,6 @@
 #pragma once
 #include <array>
 
-/**
- * @title Range xor / Range sum
- * @docs xor_sum.md
- */
 namespace haar_lib {
   template <typename U, int B>
   struct bitxor_sum {

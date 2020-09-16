@@ -1,3 +1,8 @@
+---
+title: Trie
+documentation_of: Mylib/String/trie.cpp
+---
+
 ## Operations
 
 ## Requirements

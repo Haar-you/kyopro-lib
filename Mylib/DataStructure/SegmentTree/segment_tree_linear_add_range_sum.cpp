@@ -2,10 +2,6 @@
 #include <vector>
 #include <utility>
 
-/**
- * @title Segment tree (Add $ai + b$, Range sum)
- * @docs segment_tree_linear_add_range_sum.md
- */
 namespace haar_lib {
   template <typename T>
   class segment_tree_linear_add_range_sum {

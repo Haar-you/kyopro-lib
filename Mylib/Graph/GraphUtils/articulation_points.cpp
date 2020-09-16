@@ -3,10 +3,6 @@
 #include <algorithm>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Articulation points
- * @docs articulation_points.md
- */
 namespace haar_lib {
   namespace articulation_points_impl {
     template <typename T>

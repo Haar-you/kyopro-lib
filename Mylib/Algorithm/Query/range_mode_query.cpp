@@ -4,10 +4,6 @@
 #include <utility>
 #include <cmath>
 
-/**
- * @title Range mode query
- * @docs range_mode_query.md
- */
 namespace haar_lib {
   template <typename T>
   class range_mode_query {

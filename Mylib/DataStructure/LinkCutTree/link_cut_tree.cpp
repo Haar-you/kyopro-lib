@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Link/cut tree
- * @docs link_cut_tree.md
- */
 namespace haar_lib {
   template <typename Monoid>
   struct link_cut_node {

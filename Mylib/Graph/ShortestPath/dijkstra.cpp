@@ -6,10 +6,6 @@
 #include <functional>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Dijkstra algorithm
- * @docs dijkstra.md
- */
 namespace haar_lib {
   template <typename T>
   auto dijkstra(const graph<T> &graph, std::vector<int> src){

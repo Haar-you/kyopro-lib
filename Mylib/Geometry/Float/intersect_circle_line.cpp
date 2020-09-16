@@ -3,10 +3,6 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/distance_line_point.cpp"
 
-/**
- * @title Intersection between a circle and a line
- * @docs intersect_circle_line.md
- */
 namespace haar_lib {
   namespace intersect_circle_line {
     enum status_t {

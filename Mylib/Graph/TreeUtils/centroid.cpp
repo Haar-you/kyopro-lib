@@ -2,10 +2,6 @@
 #include <vector>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Enumerate centroids
- * @docs centroid.md
- */
 namespace haar_lib {
   namespace enumerate_centroids_impl {
     template <typename T>

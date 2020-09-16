@@ -3,9 +3,6 @@
 #include <limits>
 #include <algorithm>
 
-/**
- * @docs with_max_index.md
- */
 namespace haar_lib {
   template <typename Monoid>
   struct with_max_index {

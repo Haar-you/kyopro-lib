@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title 1D Imos algorithm
- * @docs imos_1d.md
- */
 namespace haar_lib {
   template <typename T>
   struct imos_1d {

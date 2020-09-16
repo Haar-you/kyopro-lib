@@ -2,10 +2,6 @@
 #include <vector>
 #include <iostream>
 
-/**
- * @title Basic graph
- * @docs graph.md
- */
 namespace haar_lib {
   template <typename T>
   struct edge {

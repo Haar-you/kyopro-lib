@@ -2,10 +2,6 @@
 #include <vector>
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
-/**
- * @title Intersection between two circles
- * @docs intersect_circles.md
- */
 namespace haar_lib {
   namespace intersect_circles {
     enum status_t {

@@ -1,3 +1,8 @@
+---
+title: Chinese postman problem
+documentation_of: Mylib/Graph/chinese_postman_problem.cpp
+---
+
 ## Operations
 
 - `chinese_postman_problem(g)`

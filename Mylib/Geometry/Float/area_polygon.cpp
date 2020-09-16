@@ -1,10 +1,6 @@
 #pragma once
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
-/**
- * @title Area of polygon
- * @docs area_polygon.md
- */
 namespace haar_lib {
   template <typename T>
   T area(const polygon<T> &ps){

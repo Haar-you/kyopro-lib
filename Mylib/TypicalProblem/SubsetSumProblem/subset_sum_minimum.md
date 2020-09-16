@@ -1,3 +1,8 @@
+---
+title: Subset sum problem (Minimum)
+documentation_of: Mylib/TypicalProblem/SubsetSumProblem/subset_sum_minimum.cpp
+---
+
 ## Operations
 
 - `subset_sum_minimum(N, K, a[N])`

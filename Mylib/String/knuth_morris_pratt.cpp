@@ -3,10 +3,6 @@
 #include <string>
 #include <string_view>
 
-/**
- * @title Knuth-Morris-Pratt algorithm
- * @docs knuth_morris_pratt.md
- */
 namespace haar_lib {
   struct knuth_morris_pratt {
     int M;

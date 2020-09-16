@@ -1,8 +1,19 @@
+---
+title: Bernoulli number
+documentation_of: Mylib/Combinatorics/bernoulli_number.cpp
+---
+
 ## Operations
 
 - `bernoulli_number(Ft, int n)`
 	- $B_0$ ~ $B_n$を列挙する。
 	- Time complexity $O(N^2)$
+
+## Requirements
+
+## Notes
+
+## Problems
 
 ## References
 

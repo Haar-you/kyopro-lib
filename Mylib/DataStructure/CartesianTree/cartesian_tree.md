@@ -1,3 +1,8 @@
+---
+title: Cartesian tree
+documentation_of: Mylib/DataStructure/CartesianTree/cartesian_tree.cpp
+---
+
 ## Operations
 
 ## Requirements

@@ -1,3 +1,8 @@
+---
+title: Interval scheduling problem (Allow no more than k intervals to overlap)
+documentation_of: Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp
+---
+
 ## Operations
 
 - `interval_scheduling_k(l[N], r[N], k)`

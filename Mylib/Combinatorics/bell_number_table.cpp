@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Bell number (Table)
- * @docs bell_number_table.md
- */
 namespace haar_lib {
   template <typename T>
   auto bell_number_table(int n){

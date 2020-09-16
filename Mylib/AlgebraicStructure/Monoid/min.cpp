@@ -2,10 +2,6 @@
 #include <algorithm>
 #include <optional>
 
-/**
- * @title Min monoid
- * @docs min.md
- */
 namespace haar_lib {
   template <typename T>
   struct min_monoid {

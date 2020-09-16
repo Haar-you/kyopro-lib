@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Subset sum problem (Count, FPS)
- * @docs subset_sum_count_fps.md
- */
 namespace haar_lib {
   template <typename Fps>
   auto subset_sum_count_fps(std::vector<int> s, int t){

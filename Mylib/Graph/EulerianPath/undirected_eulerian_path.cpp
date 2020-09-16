@@ -4,10 +4,6 @@
 #include <optional>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Undirected Eulerian path
- * @docs undirected_eulerian_path.md
- */
 namespace haar_lib {
   class undirected_eulerian_path {
     const int n; // node count

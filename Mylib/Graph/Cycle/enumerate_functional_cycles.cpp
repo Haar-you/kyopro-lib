@@ -3,10 +3,6 @@
 #include <optional>
 #include <algorithm>
 
-/**
- * @title Enumerate cycles in functional graph
- * @docs enumerate_functional_cycles.md
- */
 namespace haar_lib {
   namespace enumerate_functional_cycles_impl {
     constexpr static int SEARCHED = 1;

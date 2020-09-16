@@ -3,10 +3,6 @@
 #include <stack>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Two edge connected components
- * @docs two_edge_connected_components.md
- */
 namespace haar_lib {
   namespace two_edge_connected_components_impl {
     template <typename T>

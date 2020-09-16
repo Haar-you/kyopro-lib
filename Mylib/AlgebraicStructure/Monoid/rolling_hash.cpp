@@ -2,10 +2,6 @@
 #include <array>
 #include <utility>
 
-/**
- * @title Rolling hash monoid
- * @docs rolling_hash.md
- */
 namespace haar_lib {
   template <size_t N>
   struct rolling_hash_monoid {

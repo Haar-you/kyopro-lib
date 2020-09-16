@@ -2,10 +2,6 @@
 #include <vector>
 #include <numeric>
 
-/**
- * @title Euler's totient function (Enumerate)
- * @docs euler_phi_function_table.md
- */
 namespace haar_lib {
   auto totient_table(int n){
     std::vector<int> ret(n + 1);

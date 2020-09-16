@@ -2,10 +2,6 @@
 #include <utility>
 #include <cstdint>
 
-/**
- * @title Greatest common divisor / Least common multiple
- * @docs gcd_lcm.md
- */
 namespace haar_lib {
   int64_t gcd(int64_t a, int64_t b){
     if(a < b) std::swap(a, b);

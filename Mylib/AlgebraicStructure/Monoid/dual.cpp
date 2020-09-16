@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Dual monoid
- * @docs dual.md
- */
 namespace haar_lib {
   template <typename Monoid>
   struct dual_monoid {

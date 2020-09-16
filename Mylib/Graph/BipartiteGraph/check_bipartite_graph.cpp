@@ -5,10 +5,6 @@
 #include <utility>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Check bipartite graph
- * @docs check_bipartite_graph.md
- */
 namespace haar_lib {
   template <typename T>
   auto check_bipartite_graph(const graph<T> &g){

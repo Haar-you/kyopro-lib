@@ -2,10 +2,6 @@
 #include <vector>
 #include <cstdint>
 
-/**
- * @title Sieve of Atkin
- * @docs atkin_sieve.md
- */
 namespace haar_lib {
   class atkin_sieve {
     std::vector<bool> is_prime;

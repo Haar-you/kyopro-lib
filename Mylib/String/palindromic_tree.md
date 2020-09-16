@@ -1,3 +1,8 @@
+---
+title: Palindromic tree
+documentation_of: Mylib/String/palindromic_tree.cpp
+---
+
 ## Operations
 
 ## Requirements

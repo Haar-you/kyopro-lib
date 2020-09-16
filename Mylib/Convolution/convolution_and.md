@@ -1,3 +1,8 @@
+---
+title: Convolution (Index bitwise AND)
+documentation_of: Mylib/Convolution/convolution_and.cpp
+---
+
 ## Operations
 
 - `convolution_and(f[N], g[N])`

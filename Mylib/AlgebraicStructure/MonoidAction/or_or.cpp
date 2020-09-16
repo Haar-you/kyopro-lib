@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Range bitor / Range bitor
- * @docs or_or.md
- */
 namespace haar_lib {
   template <typename T, typename U>
   struct bitor_bitor {

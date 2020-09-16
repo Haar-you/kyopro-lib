@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Sieve of Eratosthenes
- * @docs eratosthenes_sieve.md
- */
 namespace haar_lib {
   class eratosthenes_sieve {
     std::vector<bool> is_prime;

@@ -4,10 +4,6 @@
 #include <queue>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Topological sort (Lexicographically minimum)
- * @docs topological_sort_lexicographical.md
- */
 namespace haar_lib {
   template <typename T>
   std::optional<std::vector<int>> topological_sort_lexicographical(const graph<T> &g){

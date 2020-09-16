@@ -1,3 +1,8 @@
+---
+title: Chu-Liu/Edmonds algorithm
+documentation_of: Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
+---
+
 ## Operations
 
 - `solve(g, r)`

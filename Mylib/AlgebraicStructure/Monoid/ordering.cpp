@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Ordering monoid
- * @docs ordering.md
- */
 namespace haar_lib {
   struct ordering_monoid {
     using value_type = int;

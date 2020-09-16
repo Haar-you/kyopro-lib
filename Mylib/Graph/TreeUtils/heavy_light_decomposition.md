@@ -1,3 +1,8 @@
+---
+title: Heavy-light decomposition
+documentation_of: Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp
+---
+
 ## Operations
 
 - `HLDecomposition(tree, root)`

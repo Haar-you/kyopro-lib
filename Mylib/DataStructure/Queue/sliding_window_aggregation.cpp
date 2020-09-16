@@ -3,10 +3,6 @@
 #include <stack>
 #include <optional>
 
-/**
- * @title Sliding window aggregation
- * @docs sliding_window_aggregation.md
- */
 namespace haar_lib {
   template <typename Semigroup>
   class sliding_window_aggregation {

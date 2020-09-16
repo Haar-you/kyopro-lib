@@ -3,10 +3,6 @@
 #include <tuple>
 #include <optional>
 
-/**
- * @title Cartesian tree
- * @docs cartesian_tree.md
- */
 namespace haar_lib {
   template <typename T, typename Compare>
   auto cartesian_tree(const std::vector<T> &a, Compare compare){

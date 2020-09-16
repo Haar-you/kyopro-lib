@@ -1,10 +1,6 @@
 #pragma once
 #include <cstdint>
 
-/**
- * @title Bit reverse
- * @docs bit_reverse.md
- */
 namespace haar_lib {
   int32_t bit_reverse(int32_t a){
     a = ((a & 0x55555555) << 1) | ((a & 0xaaaaaaaa) >> 1);

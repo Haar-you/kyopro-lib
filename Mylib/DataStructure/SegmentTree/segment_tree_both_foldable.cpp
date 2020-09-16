@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Segment tree (Both foldable)
- * @docs segment_tree_both_foldable.md
- */
 namespace haar_lib {
   template <typename Monoid>
   class segment_tree_both_foldable {

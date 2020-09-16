@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Subset sum problem (With quantity limitations)
- * @docs subset_sum_limited.md
- */
 namespace haar_lib {
   auto subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vector<int> &m){
     std::vector<int> dp(K + 1, -1);

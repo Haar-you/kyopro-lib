@@ -1,3 +1,8 @@
+---
+title: Check bipartite graph (Using union-find)
+documentation_of: Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp
+---
+
 ## Operations
 
 ## Requirements

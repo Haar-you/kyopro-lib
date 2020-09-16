@@ -2,10 +2,6 @@
 #include <vector>
 #include <algorithm>
 
-/**
- * @title Longest path on DAG
- * @docs dag_longest_path.md
- */
 namespace haar_lib {
   int dag_longest_path(const std::vector<std::vector<int>> &g){
     const int n = g.size();

@@ -2,10 +2,6 @@
 #include <functional>
 #include <utility>
 
-/**
- * @title Leftist heap
- * @docs leftist_heap.md
- */
 namespace haar_lib {
   template <typename T, class Compare = std::less<T>>
   class leftist_heap {

@@ -1,3 +1,8 @@
+---
+title: 0-1 Knapsack problem (Small value)
+documentation_of: Mylib/TypicalProblem/KnapsackProblem/knapsack_small_value.cpp
+---
+
 ## Operations
 
 - `knapsack_small_value(int N, Weight cap, Weight w[N], Value v[N])`
@@ -5,6 +10,8 @@
 	- Time complexity $O(N \sum v)$
 
 ## Requirements
+
+## Notes
 
 ## Problems
 

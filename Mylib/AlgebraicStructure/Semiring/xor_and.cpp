@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Xor-and semiring
- * @docs xor_and.md
- */
 namespace haar_lib {
   template <typename T>
   struct xor_and_semiring {

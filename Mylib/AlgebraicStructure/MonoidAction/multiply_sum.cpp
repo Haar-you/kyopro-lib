@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Range multiply / Range sum
- * @docs multiply_sum.md
- */
 namespace haar_lib {
   template <typename T, typename U>
   struct multiply_sum {

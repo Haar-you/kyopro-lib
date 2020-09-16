@@ -1,3 +1,8 @@
+---
+title: Longest common subsequence
+documentation_of: Mylib/String/longest_common_subsequence.cpp
+---
+
 ## Operations
 
 - `lcs(a[N], b[M])`

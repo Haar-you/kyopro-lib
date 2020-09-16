@@ -1,3 +1,8 @@
+---
+title: Undirected Eulerian path
+documentation_of: Mylib/Graph/EulerianPath/undirected_eulerian_path.cpp
+---
+
 ## Operations
 
 ## Requirements

@@ -1,3 +1,8 @@
+---
+title: Persistent queue
+documentation_of: Mylib/DataStructure/Queue/persistent_queue.cpp
+---
+
 ## Operations
 
 - `push`

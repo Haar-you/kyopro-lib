@@ -2,10 +2,6 @@
 #include <algorithm>
 #include <optional>
 
-/**
- * @title Max monoid
- * @docs max.md
- */
 namespace haar_lib {
   template <typename T>
   struct max_monoid {

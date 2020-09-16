@@ -1,3 +1,8 @@
+---
+title: Segment tree (2D)
+documentation_of: Mylib/DataStructure/SegmentTree/segment_tree_2d.cpp
+---
+
 ## Operations
 モノイド$(M, \oplus, e)$上の二次元配列を扱う。
 - `SegmentTree2D(w, h)`

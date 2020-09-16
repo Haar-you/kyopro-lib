@@ -1,10 +1,6 @@
 #pragma once
 #include <cstddef>
 
-/**
- * @title starts_with
- * @docs starts_with.md
- */
 namespace haar_lib {
   template <typename Container, typename T = typename Container::value_type>
   bool starts_with(const Container &str, const Container &prefix){

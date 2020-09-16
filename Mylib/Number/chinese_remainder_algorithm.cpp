@@ -3,10 +3,6 @@
 #include <tuple>
 #include "Mylib/Number/extended_gcd.cpp"
 
-/**
- * @title Chinese remainder theorem
- * @docs chinese_remainder_algorithm.md
- */
 namespace haar_lib {
   bool chinese_remainder_algorithm(int64_t b1, int64_t m1, int64_t b2, int64_t m2, int64_t &r, int64_t &m){
     int64_t p, q, d;

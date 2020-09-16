@@ -6,10 +6,6 @@
 #include "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 #include "Mylib/Graph/TopologicalSort/topological_sort.cpp"
 
-/**
- * @title 2-SAT
- * @docs two_sat.md
- */
 namespace haar_lib {
   class two_sat {
     const int n;

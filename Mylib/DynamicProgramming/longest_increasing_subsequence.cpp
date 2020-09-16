@@ -2,10 +2,6 @@
 #include <vector>
 #include <algorithm>
 
-/**
- * @title Longest increasing subsequence
- * @docs longest_increasing_subsequence.md
- */
 namespace haar_lib {
   template <typename Container, typename T = typename Container::value_type>
   int lis(const Container &xs){

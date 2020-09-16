@@ -8,10 +8,6 @@
 #include "Mylib/Misc/int128.cpp"
 #include "Mylib/Number/Prime/miller_rabin.cpp"
 
-/**
- * @title Prime factorization (Pollard's rho algorithm)
- * @docs pollard_rho.md
- */
 namespace haar_lib {
   namespace pollard_rho_impl {
     int128_t f(int128_t x){

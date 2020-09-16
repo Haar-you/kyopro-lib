@@ -2,10 +2,6 @@
 #include <vector>
 #include <numeric>
 
-/**
- * @title Weighted union-find
- * @docs weighted_unionfind.md
- */
 namespace haar_lib {
   template <typename T>
   class weighted_unionfind {

@@ -1,3 +1,8 @@
+---
+title: Weighted maximum bipartite matching
+documentation_of: Mylib/Graph/Matching/weighted_bipartite_matching.cpp
+---
+
 ## Operations
 
 ## Requirements

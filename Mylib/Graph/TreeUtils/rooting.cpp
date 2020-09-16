@@ -1,10 +1,6 @@
 #pragma once
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Rooting
- * @docs rooting.md
- */
 namespace haar_lib {
   template <typename T>
   void rooting(tree<T> &tr, int cur, int par = -1){

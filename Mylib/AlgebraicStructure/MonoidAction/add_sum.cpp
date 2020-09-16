@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Range add / Range sum
- * @docs add_sum.md
- */
 namespace haar_lib {
   template <typename T, typename U>
   struct add_sum {

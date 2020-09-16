@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Bitxor monoid
- * @docs bitxor.md
- */
 namespace haar_lib {
   template <typename T>
   struct bitxor_monoid {

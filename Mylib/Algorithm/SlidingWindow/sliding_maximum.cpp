@@ -2,10 +2,6 @@
 #include <vector>
 #include <deque>
 
-/**
- * @title Sliding window maximum
- * @docs sliding_maximum.md
- */
 namespace haar_lib {
   template <typename T>
   std::vector<T> sliding_maximum(const std::vector<T> &a, int k){

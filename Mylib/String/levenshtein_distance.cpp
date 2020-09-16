@@ -2,10 +2,6 @@
 #include <vector>
 #include <algorithm>
 
-/**
- * @title Levenshtein distance / Edit distance
- * @docs levenshtein_distance.md
- */
 namespace haar_lib {
   template <typename Container, typename T = typename Container::value_type>
   int levenshtein_distance(const Container &a, const Container &b){

@@ -2,10 +2,6 @@
 #include <iostream>
 #include <utility>
 
-/**
- * @title Modint
- * @docs mint.md
- */
 namespace haar_lib {
   template <int32_t M>
   class modint {

@@ -3,10 +3,6 @@
 #include <algorithm>
 #include <functional>
 
-/**
- * @title Segment tree
- * @docs segment_tree.md
- */
 namespace haar_lib {
   template <typename Monoid>
   class segment_tree {

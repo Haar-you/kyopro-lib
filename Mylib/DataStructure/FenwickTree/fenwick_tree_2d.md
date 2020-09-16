@@ -1,3 +1,8 @@
+---
+title: Fenwick tree (2D)
+documentation_of: Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp
+---
+
 ## Operations
 可換群$(G, +, e)$上の二次元配列を扱う。
 - `FenwickTree2D(w, h)`

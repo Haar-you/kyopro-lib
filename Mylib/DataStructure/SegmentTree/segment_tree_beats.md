@@ -1,3 +1,8 @@
+---
+title: Segment tree beats
+documentation_of: Mylib/DataStructure/SegmentTree/segment_tree_beats.cpp
+---
+
 ## Operations
 
 - `SegmentTreeBeats(n)`

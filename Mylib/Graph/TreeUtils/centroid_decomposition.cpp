@@ -2,10 +2,6 @@
 #include <vector>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Centroid decomposition
- * @docs centroid_decomposition.md
- */
 namespace haar_lib {
   template <typename T>
   class centroid_decomposition {

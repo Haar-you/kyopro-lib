@@ -1,8 +1,15 @@
+---
+title: Largest rectangle
+documentation_of: Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle.cpp
+---
+
 ## Operations
 - `max_rectangle_in_histogram(T h[H][W])`
 	- Time complexity $O(HW)$
 
 ## Requirements
+
+## Notes
 
 ## Problems
 

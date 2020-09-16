@@ -6,10 +6,6 @@
 #include <functional>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Yen's algorithm
- * @docs yen_algorithm.md
- */
 namespace haar_lib {
   namespace yen_algorithm_impl {
     template <typename T>

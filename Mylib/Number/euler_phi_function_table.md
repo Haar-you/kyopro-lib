@@ -1,3 +1,8 @@
+---
+title: Euler's totient function (Enumerate)
+documentation_of: Mylib/Number/euler_phi_function_table.cpp
+---
+
 ## Operations
 
 - `totient_table(n)`

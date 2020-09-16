@@ -5,9 +5,6 @@
 #include <numeric>
 #include <initializer_list>
 
-/**
- * @docs sort_simultaneously.md
- */
 namespace haar_lib {
   template <typename Compare, typename ... Args>
   void sort_simultaneously(const Compare &compare, std::vector<Args> &... args){

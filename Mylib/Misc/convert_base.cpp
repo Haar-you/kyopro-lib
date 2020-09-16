@@ -2,10 +2,6 @@
 #include <vector>
 #include <algorithm>
 
-/**
- * @title Convert base
- * @docs convert_base.md
- */
 namespace haar_lib {
   std::vector<int64_t> convert_base_to(int64_t val, int64_t base){
     if(val == 0) return {0};

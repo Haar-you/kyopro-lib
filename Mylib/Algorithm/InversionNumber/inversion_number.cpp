@@ -2,10 +2,6 @@
 #include <vector>
 #include <cstdint>
 
-/**
- * @title Inversion number
- * @docs inversion_number.md
- */
 namespace haar_lib {
   namespace inversion_number_impl {
     template <typename T, typename Compare>

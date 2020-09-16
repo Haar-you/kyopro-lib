@@ -4,9 +4,6 @@
 #include <utility>
 #include <initializer_list>
 
-/**
- * @docs input_tuple.md
- */
 namespace haar_lib {
   template <typename T, size_t ... I>
   static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){

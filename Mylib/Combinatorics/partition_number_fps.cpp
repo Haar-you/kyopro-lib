@@ -2,10 +2,6 @@
 #include <vector>
 #include <cmath>
 
-/**
- * @title Partition number (FPS)
- * @docs partition_number_fps.cpp
- */
 namespace haar_lib {
   template <typename Fps>
   auto partition_number_fps(int N){

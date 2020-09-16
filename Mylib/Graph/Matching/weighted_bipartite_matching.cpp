@@ -2,10 +2,6 @@
 #include <vector>
 #include <tuple>
 
-/**
- * @title Weighted maximum bipartite matching
- * @docs weighted_bipartite_matching.md
- */
 namespace haar_lib {
   template <typename T, typename MinCostFlow, bool MIN_MATCHING = false>
   class weighted_bipartite_matching {

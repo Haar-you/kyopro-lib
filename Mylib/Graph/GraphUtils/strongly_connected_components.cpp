@@ -3,10 +3,6 @@
 #include <algorithm>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Strongly connected components
- * @docs strongly_connected_components.md
- */
 namespace haar_lib {
   template <typename T>
   auto strongly_connected_components(const graph<T> &g){

@@ -2,9 +2,6 @@
 #include <iostream>
 #include <string>
 
-/**
- * @docs polynomial_viewer.md
- */
 template <typename Container>
 class PolynomialViewer {
   Container data;

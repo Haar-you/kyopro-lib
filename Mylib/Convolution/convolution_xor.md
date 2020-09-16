@@ -1,3 +1,8 @@
+---
+title: Convolution (Index bitwise XOR)
+documentation_of: Mylib/Convolution/convolution_xor.cpp
+---
+
 ## Operations
 
 - `convolution_xor(f[N], g[N])`

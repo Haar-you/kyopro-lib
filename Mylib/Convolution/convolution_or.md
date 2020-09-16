@@ -1,3 +1,8 @@
+---
+title: Convolution (Index bitwise OR)
+documentation_of: Mylib/Convolution/convolution_or.cpp
+---
+
 ## Operations
 
 - `convolution_or(f[N], g[N])`

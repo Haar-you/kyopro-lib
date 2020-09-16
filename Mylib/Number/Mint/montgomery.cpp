@@ -1,10 +1,6 @@
 #pragma once
 #include <iostream>
 
-/**
- * @title Montgomery multiplication
- * @docs montgomery.md
- */
 namespace haar_lib {
   template <int64_t M_>
   class montgomery {

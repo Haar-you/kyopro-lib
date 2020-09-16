@@ -2,10 +2,6 @@
 #include <cmath>
 #include <vector>
 
-/**
- * @title Partition number (Enumerate $P(n, n)$)
- * @docs partition_number_n.md
- */
 namespace haar_lib {
   template <typename T>
   auto partition_number_n(int N){

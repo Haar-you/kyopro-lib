@@ -4,10 +4,6 @@
 #include <algorithm>
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp"
 
-/**
- * @title Range count query
- * @docs range_count_query.md
- */
 namespace haar_lib {
   template <typename T>
   struct range_count_query {

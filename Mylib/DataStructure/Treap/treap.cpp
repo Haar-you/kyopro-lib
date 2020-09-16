@@ -3,10 +3,6 @@
 #include <utility>
 #include <tuple>
 
-/**
- * @title Treap
- * @docs treap.md
- */
 namespace haar_lib {
   template <typename Monoid>
   struct treap_node {

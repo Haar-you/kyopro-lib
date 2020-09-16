@@ -1,3 +1,8 @@
+---
+title: Check bipartite graph
+documentation_of: Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp
+---
+
 ## Operations
 
 ## Requirements

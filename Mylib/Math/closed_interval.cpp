@@ -4,10 +4,6 @@
 #include <iostream>
 #include <algorithm>
 
-/**
- * @title Closed interval
- * @docs closed_interval.md
- */
 namespace haar_lib {
   template <typename T>
   struct closed_interval {

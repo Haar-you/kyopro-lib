@@ -1,3 +1,8 @@
+---
+title: Mod inverse
+documentation_of: Mylib/Number/Mod/mod_inv.cpp
+---
+
 ## Operations
 
 - `mod_inv(a, m)`

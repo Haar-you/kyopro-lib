@@ -3,10 +3,6 @@
 #include <optional>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Warshall-Floyd algorithm
- * @docs warshall_floyd.md
- */
 namespace haar_lib {
   namespace warshall_floyd_impl {
     template <typename T>

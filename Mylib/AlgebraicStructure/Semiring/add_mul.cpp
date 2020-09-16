@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Add-mul semiring
- * @docs add_mul.md
- */
 namespace haar_lib {
   template <typename T>
   struct add_mul_semiring {

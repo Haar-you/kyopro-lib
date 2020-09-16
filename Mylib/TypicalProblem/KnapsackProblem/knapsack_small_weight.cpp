@@ -2,10 +2,6 @@
 #include <vector>
 #include <algorithm>
 
-/**
- * @title 0-1 Knapsack problem (Small weight)
- * @docs knapsack_small_weight.md
- */
 namespace haar_lib {
   template <typename Weight, typename Value>
   Value knapsack_small_weight(int N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){

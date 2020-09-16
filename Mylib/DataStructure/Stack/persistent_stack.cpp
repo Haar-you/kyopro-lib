@@ -1,10 +1,6 @@
 #pragma once
 #include <iostream>
 
-/**
- * @title Persistent stack
- * @docs persistent_stack.md
- */
 namespace haar_lib {
   template <typename T>
   struct persistent_stack {

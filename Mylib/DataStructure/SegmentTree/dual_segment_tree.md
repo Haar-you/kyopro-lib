@@ -1,3 +1,8 @@
+---
+title: Dual segment tree
+documentation_of: Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp
+---
+
 ## Operations
 モノイド$(M, \circ, e)$上の列を扱う。
 - `DualSegmentTree(n)`

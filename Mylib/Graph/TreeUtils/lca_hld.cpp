@@ -3,10 +3,6 @@
 #include <utility>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Lowest common ancestor (HLD)
- * @docs lca_hld.md
- */
 namespace haar_lib {
   template <typename T>
   class lowest_common_ancestor_hld {

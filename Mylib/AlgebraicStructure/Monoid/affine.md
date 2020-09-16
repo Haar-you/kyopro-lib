@@ -1,3 +1,8 @@
+---
+title: Affine monoid
+documentation_of: Mylib/AlgebraicStructure/Monoid/affine.cpp
+---
+
 ## Operations
 
 - `id()`

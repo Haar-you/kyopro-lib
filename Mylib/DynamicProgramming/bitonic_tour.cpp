@@ -4,10 +4,6 @@
 #include <algorithm>
 #include <cmath>
 
-/**
- * @title Bitonic tour
- * @docs bitonic_tour.md
- */
 namespace haar_lib {
   template <typename T>
   double bitonic_tour(int n, const std::vector<T> &x, const std::vector<T> &y){

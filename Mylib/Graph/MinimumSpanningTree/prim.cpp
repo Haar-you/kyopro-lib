@@ -3,10 +3,6 @@
 #include <queue>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Prim algorithm
- * @docs prim.md
- */
 namespace haar_lib {
   template <typename T>
   std::vector<edge<T>> prim(const graph<T> &graph){

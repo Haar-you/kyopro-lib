@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Segment tree (2D)
- * @docs segment_tree_2d.md
- */
 namespace haar_lib {
   template <typename Monoid>
   class segment_tree_2d {

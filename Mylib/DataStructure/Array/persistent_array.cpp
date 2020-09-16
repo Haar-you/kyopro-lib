@@ -3,10 +3,6 @@
 #include <vector>
 #include <iostream>
 
-/**
- * @title Persistent array
- * @docs persistent_array.md
- */
 namespace haar_lib {
   template <typename T>
   class persistent_array {

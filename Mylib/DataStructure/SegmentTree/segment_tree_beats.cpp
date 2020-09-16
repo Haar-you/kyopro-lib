@@ -3,10 +3,6 @@
 #include <limits>
 #include <algorithm>
 
-/**
- * @title Segment tree beats
- * @docs segment_tree_beats.md
- */
 namespace haar_lib {
   class segment_tree_beats {
     using value_type = int64_t;

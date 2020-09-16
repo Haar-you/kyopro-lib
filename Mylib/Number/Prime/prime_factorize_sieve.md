@@ -1,3 +1,8 @@
+---
+title: Prime factorization (Sieve)
+documentation_of: Mylib/Number/Prime/prime_factorize_sieve.cpp
+---
+
 ## Operations
 
 - `PrimeFactorize(int N)`
@@ -7,3 +12,11 @@
 - `factorize(int N)`
 	- `N`の素因数を昇順に列挙する。
 	- 素因数の個数だけループが回る。
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References

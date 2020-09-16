@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Primality test (Trial division)
- * @docs is_prime.md
- */
 namespace haar_lib {
   bool is_prime(int n){
     if(n <= 1) return false;

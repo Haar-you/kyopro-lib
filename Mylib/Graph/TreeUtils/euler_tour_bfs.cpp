@@ -3,10 +3,6 @@
 #include <queue>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Euler tour (BFS)
- * @docs euler_tour_bfs.md
- */
 namespace haar_lib {
   template <typename T>
   struct euler_tour_bfs {

@@ -1,3 +1,8 @@
+---
+title: Wavelet matrix
+documentation_of: Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp
+---
+
 ## Operations
 
 - `access(int i)`
@@ -24,6 +29,10 @@
 	- `[l, r)`で`[lb, ub)`を満たす値の個数
 - `top_k(int l, int r, int k)`
 	- `[l, r)`で値の出現頻度が高い順に`k`個を列挙する。
+
+## Requirements
+
+## Notes
 
 ## Problems
 

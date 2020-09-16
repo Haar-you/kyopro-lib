@@ -3,10 +3,6 @@
 #include <functional>
 #include <cassert>
 
-/**
- * @title 1D cumulative sum
- * @docs cumulative_sum_1d.md
- */
 namespace haar_lib {
   template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
   class cumulative_sum_1d {

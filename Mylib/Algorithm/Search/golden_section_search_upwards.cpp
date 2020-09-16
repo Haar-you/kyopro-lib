@@ -2,10 +2,6 @@
 #include <functional>
 #include <cmath>
 
-/**
- * @title Golden section search (Convex upwards)
- * @docs golden_section_search_upwards.md
- */
 namespace haar_lib {
   template <typename T = double, typename Func = std::function<T(T)>>
   T golden_section_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){

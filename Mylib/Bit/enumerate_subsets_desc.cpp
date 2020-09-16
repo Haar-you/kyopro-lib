@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Enumerate subsets (Descending order)
- * @docs enumerate_subsets_desc.md
- */
 namespace haar_lib {
   template <typename Func>
   void enumerate_subsets_desc(int a, const Func &f){

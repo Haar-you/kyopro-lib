@@ -1,3 +1,8 @@
+---
+title: Range edge graph
+documentation_of: Mylib/Graph/Template/range_edge_graph.cpp
+---
+
 ## Operations
 
 ## Requirements

@@ -4,10 +4,6 @@
 #include <utility>
 #include <tuple>
 
-/**
- * @title Unzip function
- * @docs unzip.cpp
- */
 namespace haar_lib {
   template <typename T, typename U, size_t ... I>
   void unzip_helper(T &ret, U &a, std::index_sequence<I ...>){

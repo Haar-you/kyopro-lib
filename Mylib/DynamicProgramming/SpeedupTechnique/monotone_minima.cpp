@@ -2,10 +2,6 @@
 #include <vector>
 #include <utility>
 
-/**
- * @title Monotone minima
- * @docs monotone_minima.md
- */
 namespace haar_lib {
   namespace monotone_minima_impl {
     template <typename T, typename F>

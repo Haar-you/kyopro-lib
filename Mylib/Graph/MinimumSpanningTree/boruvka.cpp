@@ -4,10 +4,6 @@
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
-/**
- * @title Borůvka algorithm
- * @docs boruvka.md
- */
 namespace haar_lib {
   template <typename T>
   auto boruvka(const graph<T> &g){

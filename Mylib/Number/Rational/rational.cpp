@@ -3,10 +3,6 @@
 #include <iostream>
 #include <cmath>
 
-/**
- * @title Rational number
- * @docs rational.md
- */
 namespace haar_lib {
   class rational {
   public:

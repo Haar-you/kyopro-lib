@@ -6,10 +6,6 @@
 #include <algorithm>
 #include <tuple>
 
-/**
- * @title Minimum cost flow
- * @docs minimum_cost_flow.md
- */
 namespace haar_lib {
   template <typename T, typename U>
   class minimum_cost_flow {

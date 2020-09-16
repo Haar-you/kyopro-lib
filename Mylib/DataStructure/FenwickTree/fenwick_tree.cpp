@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Fenwick tree
- * @docs fenwick_tree.md
- */
 namespace haar_lib {
   template <typename AbelianGroup>
   class fenwick_tree {

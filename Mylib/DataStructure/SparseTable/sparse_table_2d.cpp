@@ -4,10 +4,6 @@
 #include <algorithm>
 #include <optional>
 
-/**
- * @title Sparse table (2D)
- * @docs sparse_table_2d.md
- */
 namespace haar_lib {
   template <typename Semilattice>
   class sparse_table_2d {

@@ -4,10 +4,6 @@
 #include <climits>
 #include <cassert>
 
-/**
- * @title Maximum bipartite matching
- * @docs bipartite_matching.md
- */
 namespace haar_lib {
   template <typename MaxFlow>
   class bipartite_matching {

@@ -4,10 +4,6 @@
 #include <utility>
 #include <bitset>
 
-/**
- * @title Simultaneous linear equations (Mod2)
- * @docs binary_simultaneous_linear_equations.md
- */
 namespace haar_lib {
   namespace binary_simultaneous_linear_equations_impl {
     template <size_t N>

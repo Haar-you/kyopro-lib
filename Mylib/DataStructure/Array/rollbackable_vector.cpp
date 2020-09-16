@@ -5,10 +5,6 @@
 #include <utility>
 #include <iostream>
 
-/**
- * @title Rollbackable vector
- * @docs rollbackable_vector.md
- */
 namespace haar_lib {
   template <typename T>
   class rollbackable_vector {

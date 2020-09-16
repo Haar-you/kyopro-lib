@@ -3,10 +3,6 @@
 #include <stack>
 #include <utility>
 
-/**
- * @title Largest rectangle in histogram
- * @docs max_rectangle_in_histogram.md
- */
 namespace haar_lib {
   template <typename T>
   T max_rectangle_in_histogram(const std::vector<T> &h){

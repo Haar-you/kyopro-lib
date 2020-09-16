@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Subset sum problem (Count)
- * @docs subset_sum_count.md
- */
 namespace haar_lib {
   template <typename T>
   auto subset_sum_count(int N, int K, const std::vector<int> &a){

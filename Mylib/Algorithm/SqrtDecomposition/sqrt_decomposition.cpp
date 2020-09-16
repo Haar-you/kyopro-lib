@@ -2,10 +2,6 @@
 #include <algorithm>
 #include <cmath>
 
-/**
- * @title Sqrt decomposition
- * @docs sqrt_decomposition.md
- */
 namespace haar_lib {
   struct sqrt_decomposition {
     const int N;

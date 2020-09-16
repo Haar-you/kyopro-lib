@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title 128-bit int
- * @docs int128.md
- */
 namespace haar_lib {
 #ifdef __SIZEOF_INT128__
   using uint128_t = __uint128_t;

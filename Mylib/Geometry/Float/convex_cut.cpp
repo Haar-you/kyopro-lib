@@ -3,10 +3,6 @@
 #include "Mylib/Geometry/Float/intersect_line_segment.cpp"
 #include "Mylib/Geometry/Float/ccw.cpp"
 
-/**
- * @title Convex cut
- * @docs convex_cut.md
- */
 namespace haar_lib {
   template <typename T>
   void convex_cut(const polygon<T> &ps, const line<T> &l, polygon<T> &left, polygon<T> &right){

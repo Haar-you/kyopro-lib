@@ -6,8 +6,6 @@
 #include <tuple>
 
 /*
- * @title Project selection problem
- * @docs project_selection_problem.md
  */
 namespace haar_lib {
   template <typename T, typename Flow>

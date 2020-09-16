@@ -1,10 +1,6 @@
 #pragma once
 #include <functional>
 
-/**
- * @title Binary exponentiation
- * @docs power.md
- */
 namespace haar_lib {
   template <typename T>
   T power(T n, int64_t p, const T &e, const std::function<T(T, T)> &f){

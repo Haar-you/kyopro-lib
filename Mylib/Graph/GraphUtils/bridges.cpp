@@ -3,10 +3,6 @@
 #include <algorithm>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Bridges
- * @docs bridges.md
- */
 namespace haar_lib {
   namespace bridges_impl {
     template <typename T>

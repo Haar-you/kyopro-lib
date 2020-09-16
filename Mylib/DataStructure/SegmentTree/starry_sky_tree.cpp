@@ -3,10 +3,6 @@
 #include <optional>
 #include <algorithm>
 
-/**
- * @title Starry-sky tree
- * @docs starry_sky_tree.md
- */
 namespace haar_lib {
   template <typename T, typename Compare>
   class starry_sky_tree {

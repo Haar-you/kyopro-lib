@@ -1,10 +1,6 @@
 #pragma once
 #include "Mylib/Number/euler_phi_function.cpp"
 
-/**
- * @title Tetration
- * @docs tetration.md
- */
 namespace haar_lib {
   namespace tetration_impl {
     int rec(int64_t a, int64_t b, int64_t m){

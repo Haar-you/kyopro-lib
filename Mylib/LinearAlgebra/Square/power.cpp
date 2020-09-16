@@ -1,10 +1,6 @@
 #pragma once
 #include <cstdint>
 
-/**
- * @title Power of a matrix
- * @docs power.md
- */
 namespace haar_lib {
   template <typename M>
   M power(M a, uint64_t p){

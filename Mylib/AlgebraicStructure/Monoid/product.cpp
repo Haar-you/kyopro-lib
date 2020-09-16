@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Product monoid
- * @docs product.md
- */
 namespace haar_lib {
   template <typename T>
   struct product_monoid {

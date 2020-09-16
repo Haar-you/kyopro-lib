@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Determinant
- * @docs determinant.md
- */
 namespace haar_lib {
   template <typename M, typename T = typename M::value_type>
   T determinant(M m){

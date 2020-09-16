@@ -1,10 +1,6 @@
 #pragma once
 #include <optional>
 
-/**
- * @title Range add / Range min
- * @docs add_min.md
- */
 namespace haar_lib {
   template <typename T, typename U>
   struct add_min {

@@ -2,10 +2,6 @@
 #include <vector>
 #include <optional>
 
-/**
- * @title Warshall-Floyd algorithm (For adjacency matrix graph)
- * @docs warshall_floyd_for_matrix_graph.md
- */
 namespace haar_lib {
   namespace warshall_floyd_for_matrix_impl {
     template <typename T>

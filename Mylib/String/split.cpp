@@ -2,10 +2,6 @@
 #include <string>
 #include <vector>
 
-/**
- * @title split
- * @docs split.md
- */
 namespace haar_lib {
   auto split(const std::string &s, const std::string &delim){
     std::vector<std::string> ret;

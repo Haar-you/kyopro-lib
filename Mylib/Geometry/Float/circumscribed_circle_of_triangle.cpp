@@ -1,10 +1,6 @@
 #pragma once
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
-/**
- * @title Circumscribed circle of a triangle
- * @docs circumscribed_circle_of_triangle.md
- */
 namespace haar_lib {
   template <typename T>
   circle<T> circumscribed_circle_of_triangle(const point<T> &a, const point<T> &b, const point<T> &c){

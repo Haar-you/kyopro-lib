@@ -2,10 +2,6 @@
 #include <cstdint>
 #include "Mylib/Combinatorics/factorial_table.cpp"
 
-/**
- * @title Stirling numbers of the second kind
- * @docs stirling_number_second.md
- */
 namespace haar_lib {
   template <typename Ft, typename T = typename Ft::value_type>
   T stirling_number_of_second_kind(int64_t n, int64_t k, const Ft &ft){

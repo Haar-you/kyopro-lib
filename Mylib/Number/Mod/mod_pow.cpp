@@ -1,10 +1,6 @@
 #pragma once
 #include <cstdint>
 
-/**
- * @title Mod pow
- * @docs mod_pow.md
- */
 namespace haar_lib {
   int64_t mod_pow(int64_t n, int64_t p, int64_t m){
     int64_t ret = 1;

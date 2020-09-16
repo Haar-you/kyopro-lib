@@ -3,10 +3,6 @@
 #include <algorithm>
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
-/**
- * @title Convex hull
- * @docs convex_hull.md
- */
 namespace haar_lib {
   template <typename T>
   std::vector<point<T>> upper_hull(polygon<T> pts, bool upper = true){

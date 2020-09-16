@@ -1,3 +1,8 @@
+---
+title: Dihedral group
+documentation_of: Mylib/AlgebraicStructure/Group/dihedral.cpp
+---
+
 ## Operations
 
 ## Requirements

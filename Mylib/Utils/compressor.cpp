@@ -2,10 +2,6 @@
 #include <vector>
 #include <algorithm>
 
-/**
- * @title Compressor
- * @docs compressor.md
- */
 namespace haar_lib {
   template <typename T>
   class compressor {

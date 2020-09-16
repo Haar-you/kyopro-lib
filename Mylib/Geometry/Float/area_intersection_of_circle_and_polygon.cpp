@@ -3,10 +3,6 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/intersect_circle_segment.cpp"
 
-/**
- * @title Area of intersection between a circle and a polygon
- * @docs area_intersection_of_circle_and_polygon.md
- */
 namespace haar_lib {
   template <typename T>
   T area_intersection_of_circle_and_polygon(const circle<T> &cl, const polygon<T> &ps){

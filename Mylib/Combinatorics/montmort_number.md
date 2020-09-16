@@ -1,9 +1,17 @@
+---
+title: Montmort number
+documentation_of: Mylib/Combinatorics/montmort_number.cpp
+---
+
 ## Operations
 
 - `montmort_number(int n)`
 	- 長さ$0$~$n$の完全順列の個数を列挙する。
 	- Time complexity $O(n)$
 
+## Requirements
+
+## Notes
 
 ## Problems
 

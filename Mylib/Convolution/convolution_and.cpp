@@ -3,10 +3,6 @@
 #include "Mylib/Convolution/fast_zeta_transform_superset.cpp"
 #include "Mylib/Convolution/fast_mobius_transform_superset.cpp"
 
-/**
- * @title Convolution (Index bitwise AND)
- * @docs convolution_and.md
- */
 namespace haar_lib {
   template <typename T>
   std::vector<T> convolution_and(std::vector<T> f, std::vector<T> g){

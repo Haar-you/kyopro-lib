@@ -1,3 +1,8 @@
+---
+title: BFS on a grid
+documentation_of: Mylib/Grid/grid_bfs.cpp
+---
+
 ## Operations
 
 ## Requirements

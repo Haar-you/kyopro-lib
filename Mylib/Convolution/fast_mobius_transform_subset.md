@@ -1,3 +1,8 @@
+---
+title: Fast Möbius transform (Subsets)
+documentation_of: Mylib/Convolution/fast_mobius_transform_subset.cpp
+---
+
 ## Operations
 
 - `fast_mobius_transform_subset(f[N], op = std::minus())`

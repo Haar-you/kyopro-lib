@@ -2,10 +2,6 @@
 #include <limits>
 #include <algorithm>
 
-/**
- * @title Bounded max monoid
- * @docs bounded_max.md
- */
 namespace haar_lib {
   template <typename T>
   struct bounded_max_monoid {

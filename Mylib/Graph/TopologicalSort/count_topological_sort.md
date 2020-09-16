@@ -1,3 +1,8 @@
+---
+title: Count topological sort
+documentation_of: Mylib/Graph/TopologicalSort/count_topological_sort.cpp
+---
+
 ## Operations
 
 - `count_topological_sort(g)`

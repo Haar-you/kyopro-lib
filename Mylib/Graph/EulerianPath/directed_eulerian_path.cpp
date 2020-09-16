@@ -5,10 +5,6 @@
 #include <algorithm>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Directed Eulerian path
- * @docs directed_eulerian_path.md
- */
 namespace haar_lib {
   class directed_eulerian_path {
     const int n; // node count

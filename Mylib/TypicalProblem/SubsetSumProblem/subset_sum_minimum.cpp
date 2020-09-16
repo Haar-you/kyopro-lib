@@ -3,10 +3,6 @@
 #include <algorithm>
 #include <climits>
 
-/**
- * @title Subset sum problem (Minimum)
- * @docs subset_sum_minimum.md
- */
 namespace haar_lib {
   auto subset_sum_minimum(int N, int K, const std::vector<int> &a){
     std::vector<std::vector<int64_t>> dp(2, std::vector<int64_t>(K + 1, INT_MAX));

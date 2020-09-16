@@ -4,10 +4,6 @@
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/TreeUtils/tree_distance.cpp"
 
-/**
- * @title Tree height
- * @docs tree_height.md
- */
 namespace haar_lib {
   template <typename T>
   std::vector<T> tree_height(const tree<T> &tr){

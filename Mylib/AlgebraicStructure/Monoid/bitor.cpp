@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Bitor monoid
- * @docs bitor.md
- */
 namespace haar_lib {
   template <typename T>
   struct bitor_monoid {

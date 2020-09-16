@@ -3,10 +3,6 @@
 #include <stack>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Tree distance
- * @docs tree_distance.md
- */
 namespace haar_lib {
   template <typename T>
   std::vector<T> tree_distance(const tree<T> &tr, int root){

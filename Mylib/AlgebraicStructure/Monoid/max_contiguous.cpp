@@ -2,10 +2,6 @@
 #include <tuple>
 #include <algorithm>
 
-/**
- * @title Max contiguous monoid
- * @docs max_contiguous.md
- */
 namespace haar_lib {
   struct max_contiguous_monoid {
     using value_type = std::tuple<int, int, int, int>;

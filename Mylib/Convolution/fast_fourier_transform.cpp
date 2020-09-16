@@ -4,10 +4,6 @@
 #include <cassert>
 #include <utility>
 
-/**
- * @title Fast Fourier transform
- * @docs fast_fourier_transform.md
- */
 namespace haar_lib {
   template <typename T = double, bool INVERSE = false>
   auto fast_fourier_transform(std::vector<std::complex<T>> f){

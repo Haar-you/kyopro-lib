@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title 1D Imos algorithm (Linear addition)
- * @docs linear_imos_1d.md
- */
 namespace haar_lib {
   template <typename T>
   struct linear_imos_1d {

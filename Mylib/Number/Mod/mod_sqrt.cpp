@@ -3,10 +3,6 @@
 #include <optional>
 #include "Mylib/Number/Mod/mod_pow.cpp"
 
-/**
- * @title Mod sqrt
- * @docs mod_sqrt.md
- */
 namespace haar_lib {
   std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){
     if(p == 2) return a % 2;

@@ -1,3 +1,8 @@
+---
+title: Count number of prime factor p of $a!$
+documentation_of: Mylib/Number/Prime/factorial_prime_factorization.cpp
+---
+
 ## Operations
 
 ## Requirements

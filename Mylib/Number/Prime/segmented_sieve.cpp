@@ -3,10 +3,6 @@
 #include <cstdint>
 #include <cassert>
 
-/**
- * @title Segmented sieve
- * @docs segmented_sieve.md
- */
 namespace haar_lib {
   template <typename Checker>
   class segmented_sieve {

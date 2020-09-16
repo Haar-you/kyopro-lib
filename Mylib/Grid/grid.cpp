@@ -3,10 +3,6 @@
 #include <iostream>
 #include <utility>
 
-/**
- * @title Grid template
- * @docs grid.md
- */
 namespace haar_lib {
   struct cell {
     int x, y;

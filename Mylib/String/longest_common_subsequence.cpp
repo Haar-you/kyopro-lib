@@ -2,10 +2,6 @@
 #include <vector>
 #include <algorithm>
 
-/**
- * @title Longest common subsequence
- * @docs longest_common_subsequence.md
- */
 namespace haar_lib {
   template <typename Container, typename T = typename Container::value_type>
   int lcs(const Container &a, const Container &b){

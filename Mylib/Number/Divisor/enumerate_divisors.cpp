@@ -2,10 +2,6 @@
 #include <vector>
 #include <algorithm>
 
-/**
- * @title Enumerate divisors
- * @docs enumerate_divisors.md
- */
 namespace haar_lib {
   std::vector<int64_t> enumerate_divisors(int64_t n){
     std::vector<int64_t> temp, ret;

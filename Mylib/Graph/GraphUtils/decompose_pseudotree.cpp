@@ -3,10 +3,6 @@
 #include <queue>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Decompose pseudotree
- * @docs decompose_pseudotree.md
- */
 namespace haar_lib {
   template <typename T>
   struct pseudo_tree {

@@ -3,10 +3,6 @@
 #include <initializer_list>
 #include "Mylib/Misc/int128.cpp"
 
-/**
- * @title Primality test (Miller-Rabin algorithm)
- * @docs miller_rabin.md
- */
 namespace haar_lib {
   namespace miller_rabin_impl {
     uint128_t power(uint128_t a, uint128_t b, uint128_t p){

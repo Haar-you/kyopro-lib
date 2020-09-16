@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Persistent segment tree
- * @docs persistent_segment_tree.md
- */
 namespace haar_lib {
   template <typename Monoid>
   class persistent_segment_tree {

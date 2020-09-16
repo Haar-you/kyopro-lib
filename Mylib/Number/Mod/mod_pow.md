@@ -1,3 +1,8 @@
+---
+title: Mod pow
+documentation_of: Mylib/Number/Mod/mod_pow.cpp
+---
+
 ## Operations
 
 - `mod_pow(n, p, m)`

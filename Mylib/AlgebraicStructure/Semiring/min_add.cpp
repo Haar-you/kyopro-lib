@@ -2,10 +2,6 @@
 #include <optional>
 #include <algorithm>
 
-/**
- * @title Min-add semiring
- * @docs min_add.md
- */
 namespace haar_lib {
   template <typename T>
   struct min_add_semiring {

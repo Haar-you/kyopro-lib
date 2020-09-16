@@ -1,3 +1,8 @@
+---
+title: Möbius function
+documentation_of: Mylib/Number/mobius_function.cpp
+---
+
 ## Operations
 
 ## Requirements

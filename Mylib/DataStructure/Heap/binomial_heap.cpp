@@ -4,10 +4,6 @@
 #include <functional>
 #include <cassert>
 
-/**
- * @title Binomial heap
- * @docs binomial_heap.md
- */
 namespace haar_lib {
   template <typename T, typename Compare = std::less<T>>
   class binomial_heap {

@@ -4,10 +4,6 @@
 #include <queue>
 #include <algorithm>
 
-/**
- * @title Dinic algorithm
- * @docs dinic.md
- */
 namespace haar_lib {
   template <typename T>
   class dinic {

@@ -2,10 +2,6 @@
 #include <vector>
 #include <cassert>
 
-/**
- * @title Convolution (Index bitwise XOR)
- * @docs convolution_xor.md
- */
 namespace haar_lib {
   template <typename T>
   std::vector<T> convolution_xor(std::vector<T> f, std::vector<T> g){

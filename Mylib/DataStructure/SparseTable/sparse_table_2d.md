@@ -1,3 +1,8 @@
+---
+title: Sparse table (2D)
+documentation_of: Mylib/DataStructure/SparseTable/sparse_table_2d.cpp
+---
+
 ## Operations
 
 - `SparseTable2D(v[n][m])`
@@ -10,6 +15,8 @@
 
 - `Semilattice`は冪等性・可換性・結合性を満たす`op`を持つ。
 	- `max`, `min`, `gcd`, `lcm`, `and`, `or`など
+
+## Notes
 
 ## Problems
 

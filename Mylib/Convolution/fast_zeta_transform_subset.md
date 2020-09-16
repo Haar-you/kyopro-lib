@@ -1,3 +1,8 @@
+---
+title: Fast Zeta transform (Subsets)
+documentation_of: Mylib/Convolution/fast_zeta_transform_subset.cpp
+---
+
 ## Operations
 
 - `fast_zeta_transform_subset(f[N], op = std::plus())`

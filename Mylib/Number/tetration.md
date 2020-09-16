@@ -1,3 +1,8 @@
+---
+title: Tetration
+documentation_of: Mylib/Number/tetration.cpp
+---
+
 ## Operations
 
 ## Requirements

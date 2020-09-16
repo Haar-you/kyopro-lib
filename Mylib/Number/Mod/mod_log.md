@@ -1,3 +1,8 @@
+---
+title: Mod logarithm
+documentation_of: Mylib/Number/Mod/mod_log.cpp
+---
+
 ## Operations
 
 - `mod_log(a, b, n)`

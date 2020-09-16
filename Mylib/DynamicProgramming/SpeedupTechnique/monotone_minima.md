@@ -1,3 +1,8 @@
+---
+title: Monotone minima
+documentation_of: Mylib/DynamicProgramming/SpeedupTechnique/monotone_minima.cpp
+---
+
 ## Operations
 
 ## Requirements

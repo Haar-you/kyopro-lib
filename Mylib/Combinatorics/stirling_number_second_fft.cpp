@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Stirling numbers of the second kind (FFT)
- * @docs stirling_number_second_fft.md
- */
 namespace haar_lib {
   template <typename T, typename Conv>
   auto stirling_number_of_second_kind_fft(int N, const Conv &convolve){

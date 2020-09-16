@@ -9,10 +9,6 @@
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/MinimumSpanningTree/kruskal.cpp"
 
-/**
- * @title Manhattan distance MST
- * @docs manhattan_minimum_spanning_tree.md
- */
 namespace haar_lib {
   template <typename T>
   std::vector<edge<T>> manhattan_minimum_spanning_tree(std::vector<T> x, std::vector<T> y){

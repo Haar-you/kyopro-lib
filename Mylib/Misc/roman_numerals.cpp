@@ -1,10 +1,6 @@
 #pragma once
 #include <string>
 
-/**
- * @title Roman numerals
- * @docs roman_numerals.md
- */
 namespace haar_lib::misn {
   int roman_to_num(std::string s){
     int ret = 0;

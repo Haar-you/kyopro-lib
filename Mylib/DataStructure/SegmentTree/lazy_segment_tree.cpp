@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Lazy segment tree
- * @docs lazy_segment_tree.md
- */
 namespace haar_lib {
   template <typename Monoid>
   class lazy_segment_tree {

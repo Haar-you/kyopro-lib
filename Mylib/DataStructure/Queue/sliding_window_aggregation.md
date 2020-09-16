@@ -1,3 +1,8 @@
+---
+title: Sliding window aggregation
+documentation_of: Mylib/DataStructure/Queue/sliding_window_aggregation.cpp
+---
+
 ## Operations
 
 ## Requirements

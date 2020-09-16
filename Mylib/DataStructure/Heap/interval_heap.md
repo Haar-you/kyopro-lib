@@ -1,3 +1,8 @@
+---
+title: Interval heap
+documentation_of: Mylib/DataStructure/Heap/interval_heap.cpp
+---
+
 ## Operations
 
 ## Requirements

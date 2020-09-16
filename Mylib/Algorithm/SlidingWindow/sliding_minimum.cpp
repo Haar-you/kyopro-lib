@@ -2,10 +2,6 @@
 #include <vector>
 #include <deque>
 
-/**
- * @title Sliding window minimum
- * @docs sliding_minimum.md
- */
 namespace haar_lib {
   template <typename T>
   std::vector<T> sliding_minimum(const std::vector<T> &a, int k){

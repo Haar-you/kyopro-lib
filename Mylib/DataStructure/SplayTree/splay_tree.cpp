@@ -2,10 +2,6 @@
 #include <utility>
 #include <tuple>
 
-/**
- * @title Splay tree
- * @docs splay_tree.md
- */
 namespace haar_lib {
   template <typename Monoid>
   struct splay_node {

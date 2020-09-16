@@ -2,10 +2,6 @@
 #include "Mylib/AlgebraicStructure/Monoid/product.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp"
 
-/**
- * @title Range multiply / Range product
- * @docs multiply_product.md
- */
 namespace haar_lib {
   template <typename T, typename U>
   struct multiply_product {

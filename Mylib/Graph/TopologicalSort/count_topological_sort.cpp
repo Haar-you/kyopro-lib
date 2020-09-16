@@ -2,10 +2,6 @@
 #include <vector>
 #include <cstdint>
 
-/**
- * @title Count topological sort
- * @docs count_topological_sort.md
- */
 namespace haar_lib {
   int64_t count_topological_sort(const std::vector<int> &g){
     const int n = g.size();

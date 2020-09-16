@@ -4,10 +4,6 @@
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
 
-/**
- * @title Chu-Liu/Edmonds algorithm
- * @docs chu_liu_edmonds.md
- */
 namespace haar_lib {
   namespace chu_liu_edmonds_impl {
     template <typename T>

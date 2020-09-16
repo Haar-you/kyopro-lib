@@ -1,3 +1,8 @@
+---
+title: Fixed point combinator
+documentation_of: Mylib/Utils/fix_point.cpp
+---
+
 ## Operations
 
 ## Requirements

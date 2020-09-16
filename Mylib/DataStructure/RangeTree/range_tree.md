@@ -1,3 +1,8 @@
+---
+title: 
+documentation_of: Mylib/DataStructure/RangeTree/range_tree.cpp
+---
+
 ## Operations
 
 - `add(int x, int y)`
@@ -14,6 +19,10 @@
 - `build`は唯一回だけ呼び出される。
 - 必ず`add`, `build`, `get`の順で実行する。
 
+## Notes
+
 ## Problems
 
 - [AOJ DSL_2_C Range Search (kD Tree)](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_C)
+
+## References

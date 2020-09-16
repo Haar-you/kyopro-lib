@@ -1,3 +1,8 @@
+---
+title: Formal power series
+documentation_of: Mylib/Math/formal_power_series.cpp
+---
+
 ## Operations
 
 ## Requirements

@@ -1,3 +1,8 @@
+---
+title: Mo's algorithm
+documentation_of: Mylib/Algorithm/Mo/mo_algorithm.cpp
+---
+
 ## Operations
 
 - `MoAlgorithm`
@@ -18,6 +23,8 @@
 - `query(int i)`
 	- `i`番目のクエリを処理する操作。
 - 必ず`add`, `build`, `run`の順で実行する。
+
+## Notes
 
 ## Problems
 

@@ -1,3 +1,8 @@
+---
+title: Range count query
+documentation_of: Mylib/Algorithm/Query/range_count_query.cpp
+---
+
 ## Operations
 
 区間に含まれる要素の種類数を求めるクエリを処理する。

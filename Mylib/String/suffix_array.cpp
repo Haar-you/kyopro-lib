@@ -4,10 +4,6 @@
 #include <algorithm>
 #include <deque>
 
-/**
- * @title Suffix array
- * @docs suffix_array.md
- */
 namespace haar_lib {
   template <typename Container>
   struct suffix_array {

@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Trivial monoid
- * @docs trivial.md
- */
 namespace haar_lib {
   template <typename T>
   struct trivial_monoid {

@@ -2,10 +2,6 @@
 #include <utility>
 #include <cmath>
 
-/**
- * @title Binary GCD
- * @docs binary_gcd.md
- */
 namespace haar_lib {
   int64_t binary_gcd(int64_t a, int64_t b){
     int64_t g = 1;

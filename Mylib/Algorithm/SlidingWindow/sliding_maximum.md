@@ -1,3 +1,8 @@
+---
+title: Sliding window maximum
+documentation_of: Mylib/Algorithm/SlidingWindow/sliding_maximum.cpp
+---
+
 ## Operations
 
 ## Requirements

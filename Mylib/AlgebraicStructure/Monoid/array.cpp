@@ -1,10 +1,6 @@
 #pragma once
 #include <array>
 
-/**
- * @title Array monoid
- * @docs array.md
- */
 namespace haar_lib {
   template <typename Monoid, int B>
   struct array_monoid {

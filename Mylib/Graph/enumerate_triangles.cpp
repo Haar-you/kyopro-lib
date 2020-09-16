@@ -4,10 +4,6 @@
 #include <unordered_set>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Enumerate triangles
- * @docs enumerate_triangles.md
- */
 namespace haar_lib {
   template <typename T>
   std::vector<std::tuple<int, int, int>> enumerate_triangles(const graph<T> &g){

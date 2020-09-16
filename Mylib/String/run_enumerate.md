@@ -1,3 +1,8 @@
+---
+title: Run enumerate
+documentation_of: Mylib/String/run_enumerate.cpp
+---
+
 ## Operations
 
 ## Requirements

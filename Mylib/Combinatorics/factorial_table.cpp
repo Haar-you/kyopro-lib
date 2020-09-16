@@ -3,10 +3,6 @@
 #include <cassert>
 #include <cstdint>
 
-/**
- * @title Factorial table
- * @docs factorial_table.md
- */
 namespace haar_lib {
   template <typename T>
   class factorial_table {

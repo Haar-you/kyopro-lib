@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Gray code
- * @docs gray_code.md
- */
 namespace haar_lib {
   template <typename Func>
   void gray_code(int n, const Func &f){

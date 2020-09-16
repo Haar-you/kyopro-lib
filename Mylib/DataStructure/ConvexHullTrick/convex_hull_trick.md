@@ -1,3 +1,8 @@
+---
+title: Convex hull trick
+documentation_of: Mylib/DataStructure/ConvexHullTrick/convex_hull_trick.cpp
+---
+
 ## Operations
 
 - `Comparator = std::greater<T>`の場合
@@ -16,6 +21,10 @@
 		- `x`は単調増加
 		- `f(x)`の最大値を得る。
 
+## Requirements
+
+## Notes
+
 ## Problems
 
 - [EDPC Z - Frog 3](https://atcoder.jp/contests/dp/tasks/dp_z) (Minクエリ)
@@ -24,4 +33,3 @@
 ## References
 
 - [http://satanic0258.hatenablog.com/entry/2016/08/16/181331](http://satanic0258.hatenablog.com/entry/2016/08/16/181331)
-

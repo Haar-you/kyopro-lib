@@ -3,9 +3,6 @@
 #include <sstream>
 #include <string>
 
-/**
- * @docs join.md
- */
 namespace haar_lib {
   template <typename Iter>
   std::string join(Iter first, Iter last, std::string delim = " "){

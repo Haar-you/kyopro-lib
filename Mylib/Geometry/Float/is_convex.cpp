@@ -3,10 +3,6 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/ccw.cpp"
 
-/**
- * @title Check convex
- * @docs is_convex.md
- */
 namespace haar_lib {
   template <typename T>
   bool is_convex(const polygon<T> &ps){

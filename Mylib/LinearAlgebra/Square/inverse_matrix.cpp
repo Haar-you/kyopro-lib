@@ -1,10 +1,6 @@
 #pragma once
 #include <utility>
 
-/**
- * @title Inverse matrix
- * @docs inverse_matrix.md
- */
 namespace haar_lib {
   template <typename M>
   bool inverse_matrix(M m, M &ret){

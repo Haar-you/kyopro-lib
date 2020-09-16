@@ -2,10 +2,6 @@
 #include <chrono>
 #include <iostream>
 
-/**
- * @title Timer
- * @docs timer.md
- */
 namespace haar_lib {
 template <typename F>
 void timer(F f){

@@ -4,10 +4,6 @@
 #include <algorithm>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Heavy-light decomposition
- * @docs heavy_light_decomposition.md
- */
 namespace haar_lib {
   template <typename T>
   class hl_decomposition {

@@ -3,10 +3,6 @@
 #include "Mylib/Grid/grid.cpp"
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Convert grid to graph
- * @docs grid_to_graph.md
- */
 namespace haar_lib {
   template <typename T, typename Directions, typename Index, typename Checker, typename Generator>
   graph<T> grid_to_graph(

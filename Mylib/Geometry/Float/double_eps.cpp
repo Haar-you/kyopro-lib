@@ -3,10 +3,6 @@
 #include <limits>
 #include <cmath>
 
-/**
- * @title Floating point number with eps
- * @docs double_eps.md
- */
 namespace haar_lib {
   template <typename T>
   struct double_eps {

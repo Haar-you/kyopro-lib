@@ -8,10 +8,6 @@
 #include <ext/pb_ds/tree_policy.hpp>
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
-/**
- * @title Manhattan segments intersections
- * @docs manhattan_segments_intersections.md
- */
 namespace haar_lib {
   template <typename T>
   int manhattan_segments_intersections(std::vector<segment<T>> segs){

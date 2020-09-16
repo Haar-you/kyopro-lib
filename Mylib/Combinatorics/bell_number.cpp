@@ -3,10 +3,6 @@
 #include <algorithm>
 #include "Mylib/Combinatorics/factorial_table.cpp"
 
-/**
- * @title Bell number
- * @docs bell_number.md
- */
 namespace haar_lib {
   template <typename Ft, typename T = typename Ft::value_type>
   T bell_number(int64_t n, int64_t k, const Ft &ft){

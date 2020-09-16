@@ -1,3 +1,8 @@
+---
+title: Convex hull
+documentation_of: Mylib/Geometry/Float/convex_hull.cpp
+---
+
 ## Operations
 
 ## Requirements

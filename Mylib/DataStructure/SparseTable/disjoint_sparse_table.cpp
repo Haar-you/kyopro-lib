@@ -4,10 +4,6 @@
 #include <cassert>
 #include <optional>
 
-/**
- * @title Disjoint sparse table
- * @docs disjoint_sparse_table.md
- */
 namespace haar_lib {
   template <typename Semigroup>
   class disjoint_sparse_table {

@@ -1,10 +1,6 @@
 #pragma once
 #include <cstdint>
 
-/**
- * @title Count divisors
- * @docs count_divisors.md
- */
 namespace haar_lib {
   int count_divisors(int64_t n){
     int count = 0;

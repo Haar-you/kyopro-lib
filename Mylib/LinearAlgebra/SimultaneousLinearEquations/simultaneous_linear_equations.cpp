@@ -3,10 +3,6 @@
 #include <optional>
 #include <utility>
 
-/**
- * @title Simultaneous linear equations
- * @docs simultaneous_linear_equations.md
- */
 namespace haar_lib {
   namespace simulaneous_linear_equations_impl {
     template <typename T>

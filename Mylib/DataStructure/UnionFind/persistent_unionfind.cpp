@@ -2,10 +2,6 @@
 #include <vector>
 #include "Mylib/DataStructure/Array/persistent_array.cpp"
 
-/**
- * @title Persistent union-find
- * @docs persistent_unionfind.md
- */
 namespace haar_lib {
   class persistent_unionfind {
     persistent_array<int> par;

@@ -3,10 +3,6 @@
 #include <tuple>
 #include <algorithm>
 
-/**
- * @title Zip function
- * @docs zip.md
- */
 namespace haar_lib {
   template <typename ... Args>
   auto zip(std::vector<Args> ... a){

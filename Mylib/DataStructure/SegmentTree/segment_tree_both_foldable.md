@@ -1,3 +1,8 @@
+---
+title: Segment tree (Both foldable)
+documentation_of: Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp
+---
+
 ## Operations
 モノイド$(M, \circ, e)$上の列を扱う。
 - `SegmentTreeBothFoldable()`

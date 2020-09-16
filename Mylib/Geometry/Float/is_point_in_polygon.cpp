@@ -2,10 +2,6 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/ccw.cpp"
 
-/**
- * @title Check if a point is in a polygon
- * @docs is_point_in_polygon.md
- */
 namespace haar_lib {
   namespace point_in_polygon {
     enum status {

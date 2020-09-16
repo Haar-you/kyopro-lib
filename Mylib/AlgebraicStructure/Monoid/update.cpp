@@ -1,10 +1,6 @@
 #pragma once
 #include <optional>
 
-/**
- * @title Update monoid
- * @docs update.md
- */
 namespace haar_lib {
   template <typename T>
   struct update_monoid {

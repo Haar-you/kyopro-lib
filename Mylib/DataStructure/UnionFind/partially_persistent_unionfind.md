@@ -1,3 +1,8 @@
+---
+title: Partially persistent union-find
+documentation_of: Mylib/DataStructure/UnionFind/partially_persistent_unionfind.cpp
+---
+
 ## Operations
 
 - `PartiallyPersistentUnionFind(N)`
@@ -9,6 +14,10 @@
 	- 時刻`t`での`u`が属する連結成分の大きさを返す。
 - `merge(int u, int v)`
 	- 最新の状態で`u`と`v`を連結する。
+
+## Requirements
+
+## Notes
 
 ## Problems
 

@@ -4,10 +4,6 @@
 #include <cmath>
 #include "Mylib/Number/Mod/mod_pow.cpp"
 
-/**
- * @title Graph vertex coloring
- * @docs chromatic_number.md
- */
 namespace haar_lib {
   int chromatic_number(const std::vector<std::vector<int>> &graph){
     static constexpr int mod = 1000000007;

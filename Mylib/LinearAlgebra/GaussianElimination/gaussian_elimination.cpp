@@ -2,10 +2,6 @@
 #include <vector>
 #include <utility>
 
-/**
- * @title Gaussian elimination
- * @docs gaussian_elimination.md
- */
 namespace haar_lib {
   template <typename T>
   int gaussian_elimination(std::vector<std::vector<T>> &a){

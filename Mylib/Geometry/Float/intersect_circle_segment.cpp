@@ -3,10 +3,6 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/distance_segment_point.cpp"
 
-/**
- * @title Intersection between a circle and a segment
- * @docs intersect_circle_segment.md
- */
 namespace haar_lib {
   namespace intersect_circle_segment {
     enum status_t {

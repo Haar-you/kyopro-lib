@@ -2,10 +2,6 @@
 #include <vector>
 #include <cmath>
 
-/**
- * @title Parallel binary search
- * @docs parallel_binary_search.md
- */
 namespace haar_lib {
   template <typename Init, typename Process, typename Checker>
   auto parallel_binary_search(int M, int Q, Init init, Process process, Checker checker){

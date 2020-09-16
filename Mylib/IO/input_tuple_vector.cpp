@@ -5,9 +5,6 @@
 #include <utility>
 #include <initializer_list>
 
-/**
- * @docs input_tuple_vector.md
- */
 namespace haar_lib {
   template <typename T, size_t ... I>
   void input_tuple_vector_init(T &val, int N, std::index_sequence<I ...>){

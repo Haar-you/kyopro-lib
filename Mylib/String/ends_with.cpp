@@ -1,10 +1,6 @@
 #pragma once
 #include <cstddef>
 
-/**
- * @title ends_with
- * @docs ends_with.md
- */
 namespace haar_lib {
   template <typename Container, typename T = typename Container::value_type>
   bool ends_with(const Container &str, const Container &suffix){

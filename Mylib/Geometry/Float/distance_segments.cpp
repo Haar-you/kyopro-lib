@@ -3,10 +3,6 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/distance_segment_point.cpp"
 
-/**
- * @title Distance between two segments
- * @docs distance_segments.md
- */
 namespace haar_lib {
   template <typename T>
   T distance_segments(const segment<T> &l1, const segment<T> &l2){

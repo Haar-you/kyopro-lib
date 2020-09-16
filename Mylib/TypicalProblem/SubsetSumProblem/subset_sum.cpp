@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Subset sum problem
- * @docs subset_sum.md
- */
 namespace haar_lib {
   auto subset_sum(int N, int K, const std::vector<int> &a){
     std::vector<std::vector<bool>> dp(2, std::vector<bool>(K + 1));

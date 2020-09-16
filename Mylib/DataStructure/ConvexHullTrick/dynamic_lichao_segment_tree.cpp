@@ -2,10 +2,6 @@
 #include <utility>
 #include <optional>
 
-/**
- * @title Dynamic LiChao segment tree
- * @docs dynamic_lichao_segment_tree.md
- */
 namespace haar_lib {
   template <typename T, typename Comparator>
   class dynamic_lichao_segment_tree {

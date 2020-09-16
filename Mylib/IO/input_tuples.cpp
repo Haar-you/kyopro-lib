@@ -6,9 +6,6 @@
 #include <initializer_list>
 #include "Mylib/IO/input_tuple.cpp"
 
-/**
- * @docs input_tuples.md
- */
 namespace haar_lib {
   template <typename ... Args>
   class InputTuples {

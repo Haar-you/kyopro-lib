@@ -4,10 +4,6 @@
 #include <algorithm>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Biconnected components
- * @docs biconnected_components.md
- */
 namespace haar_lib {
   namespace biconnected_components_impl {
     template <typename T>

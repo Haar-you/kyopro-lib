@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Enumerate sets of size k
- * @docs enumerate_sets_of_size_k.md
- */
 namespace haar_lib {
   template <typename Func>
   void enumerate_sets_of_size_k(int k, int n, const Func &f){

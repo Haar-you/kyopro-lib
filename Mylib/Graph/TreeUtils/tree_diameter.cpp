@@ -5,10 +5,6 @@
 #include <algorithm>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Tree diameter
- * @docs tree_diameter.md
- */
 namespace haar_lib {
   template <typename T>
   std::pair<T, std::vector<int>> tree_diameter(const tree<T> &tr){

@@ -2,10 +2,6 @@
 #include <vector>
 #include <cstdint>
 
-/**
- * @title Kitamasa algorithm
- * @docs kitamasa_algorithm.md
- */
 namespace haar_lib {
   template <typename T>
   struct kitamasa_algorithm {

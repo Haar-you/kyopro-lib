@@ -1,10 +1,6 @@
 #pragma once
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
-/**
- * @title Check clockwise-counterclockwise
- * @docs ccw.md
- */
 namespace haar_lib {
   namespace ccw {
     enum status {

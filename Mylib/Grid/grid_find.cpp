@@ -2,10 +2,6 @@
 #include <vector>
 #include "Mylib/Grid/grid.cpp"
 
-/**
- * @title Enumerate points satisfying conditions
- * @docs grid_find.md
- */
 namespace haar_lib {
   template <typename C, typename T = typename C::value_type>
   auto grid_find(const std::vector<C> &A, T value){

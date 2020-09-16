@@ -4,10 +4,6 @@
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 
-/**
- * @title Kruskal algorithm
- * @docs kruskal.md
- */
 namespace haar_lib {
   template <typename T>
   std::vector<edge<T>> kruskal(const graph<T> &graph){

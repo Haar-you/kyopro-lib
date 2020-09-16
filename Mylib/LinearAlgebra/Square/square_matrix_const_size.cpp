@@ -3,10 +3,6 @@
 #include <initializer_list>
 #include <utility>
 
-/**
- * @title Square matrix (Const size)
- * @docs square_matrix_const_size.md
- */
 namespace haar_lib {
   template <typename T, int N>
   struct square_matrix_const {

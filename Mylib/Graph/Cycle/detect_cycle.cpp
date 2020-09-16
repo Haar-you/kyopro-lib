@@ -4,10 +4,6 @@
 #include <algorithm>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Detect cycle
- * @docs detect_cycle.md
- */
 namespace haar_lib {
   namespace detect_cycle_impl {
     constexpr static int SEARCHED = 1;

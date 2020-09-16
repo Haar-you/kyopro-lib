@@ -3,10 +3,6 @@
 #include <string>
 #include <iomanip>
 
-/**
- * @title Matrix viewer
- * @docs matrix_viewer.md
- */
 template <typename M>
 void matrix_viewer([[maybe_unused]] const M &m, [[maybe_unused]] int w = 10){
 #ifdef DEBUG

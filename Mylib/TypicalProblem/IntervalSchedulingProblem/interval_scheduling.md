@@ -1,3 +1,8 @@
+---
+title: Interval scheduling problem
+documentation_of: Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling.cpp
+---
+
 ## Operations
 
 - `interval_scheduling(l[N], r[N])`

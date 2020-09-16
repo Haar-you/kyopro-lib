@@ -1,3 +1,8 @@
+---
+title: Undirected shortest cycle
+documentation_of: Mylib/Graph/Cycle/undirected_shortest_cycle.cpp
+---
+
 ## Operations
 
 - `shortest_cycle(g, src)`

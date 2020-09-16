@@ -2,10 +2,6 @@
 #include <cstdint>
 #include "Mylib/Number/Prime/prime_factorize.cpp"
 
-/**
- * @title Count coprime
- * @docs count_coprime.md
- */
 namespace haar_lib {
   int64_t count_coprime(int64_t n, int64_t m){
     const auto p = prime_factorize(m);

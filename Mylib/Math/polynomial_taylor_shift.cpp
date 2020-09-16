@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @docs Polynomial Taylor shift
- * @title polynomial_taylor_shift.md
- */
 namespace haar_lib {
   template <typename T, typename Conv>
   auto polynomial_taylor_shift(std::vector<T> a, T c, const Conv &convolve){

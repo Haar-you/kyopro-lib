@@ -1,10 +1,6 @@
 #pragma once
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
-/**
- * @title Tangent of circle
- * @docs tangent_of_circle.md
- */
 namespace haar_lib {
   template <typename T>
   std::vector<point<T>> tangent_of_circle(const circle<T> &c, const point<T> &p){

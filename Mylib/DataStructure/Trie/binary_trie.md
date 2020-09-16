@@ -1,3 +1,8 @@
+---
+title: Binary trie
+documentation_of: Mylib/DataStructure/Trie/binary_trie.cpp
+---
+
 ## Operations
 
 ## Requirements

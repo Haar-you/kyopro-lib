@@ -1,3 +1,8 @@
+---
+title: Travelling salesman problem
+documentation_of: Mylib/Graph/travelling_salesman_problem.cpp
+---
+
 ## Operations
 
 - `travelling_salesman_problem(g, int src)`

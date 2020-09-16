@@ -4,10 +4,6 @@
 #include <utility>
 #include <limits>
 
-/**
- * @title Push-relabel
- * @docs push_relabel.md
- */
 namespace haar_lib {
   template <typename T>
   struct push_relabel {

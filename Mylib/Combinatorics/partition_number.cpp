@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Partition number (Enumerate $P(n, k)$)
- * @docs partition_number.md
- */
 namespace haar_lib {
   template <typename T>
   auto partition_number(int n, int k){

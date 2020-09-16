@@ -1,10 +1,6 @@
 #pragma once
 #include <utility>
 
-/**
- * @title Range add / Range square sum
- * @docs add_square_sum.cpp
- */
 namespace haar_lib {
   template <typename T>
   struct add_square_sum {

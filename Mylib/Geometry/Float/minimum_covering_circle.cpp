@@ -4,10 +4,6 @@
 #include <algorithm>
 #include "Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp"
 
-/**
- * @title Minimum covering circle
- * @docs minimum_covering_circle.md
- */
 namespace haar_lib {
   template <typename T>
   circle<T> minimum_covering_circle(std::vector<point<T>> ps, int seed = 0){

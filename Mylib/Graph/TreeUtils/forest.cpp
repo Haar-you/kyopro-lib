@@ -4,10 +4,6 @@
 #include <utility>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Decompose forest
- * @docs forest.md
- */
 namespace haar_lib {
   template <typename T>
   struct forest {

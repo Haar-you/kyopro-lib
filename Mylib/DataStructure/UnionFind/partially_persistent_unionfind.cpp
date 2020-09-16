@@ -5,10 +5,6 @@
 #include <iterator>
 #include <numeric>
 
-/**
- * @title Partially persistent union-find
- * @docs partially_persistent_unionfind.md
- */
 namespace haar_lib {
   class partially_persistent_unionfind {
     int N;

@@ -4,10 +4,6 @@
 #include <utility>
 #include <cassert>
 
-/**
- * @title Hopcroft-Karp algorithm
- * @docs hopcroft_karp.md
- */
 namespace haar_lib {
   class hopcroft_karp {
     struct edge {

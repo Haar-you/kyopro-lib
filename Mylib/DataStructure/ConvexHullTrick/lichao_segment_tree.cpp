@@ -4,10 +4,6 @@
 #include <algorithm>
 #include <optional>
 
-/**
- * @title LiChao segment tree
- * @docs lichao_segment_tree.md
- */
 namespace haar_lib {
   template <typename T, typename Comparator>
   class lichao_segment_tree {

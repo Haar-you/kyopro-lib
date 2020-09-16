@@ -5,10 +5,6 @@
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp"
 #include "Mylib/Algorithm/Mo/mo_algorithm.cpp"
 
-/**
- * @title Range inversions query
- * @docs range_inversions_query.md
- */
 namespace haar_lib {
   template <typename T>
   class range_inversions_query {

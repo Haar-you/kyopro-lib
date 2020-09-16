@@ -1,3 +1,8 @@
+---
+title: Count coprime
+documentation_of: Mylib/Number/Prime/count_coprime.cpp
+---
+
 ## Operations
 
 - `count_coprime(n, m)`

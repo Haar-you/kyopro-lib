@@ -2,10 +2,6 @@
 #include <utility>
 #include <cstdint>
 
-/**
- * @title Mod inverse
- * @docs mod_inv.md
- */
 namespace haar_lib {
   int64_t mod_inv(int64_t a, int64_t m){
     int64_t b = m, u = 1, v = 0;

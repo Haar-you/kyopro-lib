@@ -1,10 +1,6 @@
 #pragma once
 #include <cstdint>
 
-/**
- * @title Euler's totient function
- * @docs euler_phi_function.md
- */
 namespace haar_lib {
   int64_t totient(int64_t n){
     int64_t ret = n;

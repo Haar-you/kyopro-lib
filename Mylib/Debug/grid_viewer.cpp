@@ -4,9 +4,6 @@
 #include <functional>
 #include <vector>
 
-/**
- * @docs grid_viewer.md
- */
 template <typename C>
 void grid_viewer([[maybe_unused]] const C &A, [[maybe_unused]] int width = 10){
 #ifdef DEBUG

@@ -3,10 +3,6 @@
 #include <cmath>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Lowest common ancestor (Doubling)
- * @docs lca_doubling.md
- */
 namespace haar_lib {
   template <typename T>
   class lowest_common_ancestor_doubling {

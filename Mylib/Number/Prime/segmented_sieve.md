@@ -1,3 +1,8 @@
+---
+title: Segmented sieve
+documentation_of: Mylib/Number/Prime/segmented_sieve.cpp
+---
+
 ## Operations
 
 ## Requirements

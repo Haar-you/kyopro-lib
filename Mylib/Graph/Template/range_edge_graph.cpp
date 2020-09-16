@@ -3,10 +3,6 @@
 #include <cassert>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Range edge graph
- * @docs range_edge_graph.md
- */
 namespace haar_lib {
   template <typename T>
   class range_edge_graph : public graph<T> {

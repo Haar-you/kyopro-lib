@@ -1,10 +1,6 @@
 #pragma once
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
-/**
- * @title Projection
- * @docs projection.md
- */
 namespace haar_lib {
   template <typename T>
   point<T> projection(const line<T> &l, const point<T> &p){

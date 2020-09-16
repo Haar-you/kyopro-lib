@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Manacher algorithm
- * @docs manacher.md
- */
 namespace haar_lib {
   template <typename Container>
   std::vector<int> manacher(const Container &s){

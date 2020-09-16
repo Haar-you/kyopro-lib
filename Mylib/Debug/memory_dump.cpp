@@ -3,10 +3,6 @@
 #include <cstddef>
 #include <cctype>
 
-/**
- * @title Memory dump
- * @docs memory_dump.md
- */
 void memory_dump(const void* p, size_t size){
   unsigned char *cur = (unsigned char*)p;
 

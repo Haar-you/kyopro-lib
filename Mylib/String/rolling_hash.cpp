@@ -2,10 +2,6 @@
 #include <vector>
 #include <random>
 
-/**
- * @title Rolling hash
- * @docs rolling_hash.md
- */
 namespace haar_lib {
   class rolling_hash {
     std::vector<int64_t> pow;

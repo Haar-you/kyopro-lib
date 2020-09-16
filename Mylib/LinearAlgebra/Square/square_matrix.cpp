@@ -2,10 +2,6 @@
 #include <vector>
 #include <utility>
 
-/**
- * @title Square matrix
- * @docs square_matrix.md
- */
 namespace haar_lib {
   template <typename T, class Tag>
   struct square_matrix {

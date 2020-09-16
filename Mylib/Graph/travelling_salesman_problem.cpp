@@ -4,10 +4,6 @@
 #include <algorithm>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Travelling salesman problem
- * @docs travelling_salesman_problem.md
- */
 namespace haar_lib {
   template <typename T>
   std::optional<T> travelling_salesman_problem(const graph<T> &g, int src){

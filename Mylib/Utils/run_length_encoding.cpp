@@ -3,10 +3,6 @@
 #include <utility>
 #include <cstdint>
 
-/**
- * @title Run length encoding
- * @docs run_length_encoding.md
- */
 namespace haar_lib {
   template <typename Container>
   auto run_length_encoding(const Container &v){

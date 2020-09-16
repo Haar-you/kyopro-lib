@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Sum monoid
- * @docs sum.md
- */
 namespace haar_lib {
   template <typename T>
   struct sum_monoid {

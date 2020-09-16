@@ -6,10 +6,6 @@
 #include <cmath>
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
-/**
- * @title Closest pair
- * @docs closest_pair.md
- */
 namespace haar_lib {
   namespace closest_pair_impl {
     template <typename T>

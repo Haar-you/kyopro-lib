@@ -1,3 +1,8 @@
+---
+title: Hopcroft-Karp algorithm
+documentation_of: Mylib/Graph/Matching/hopcroft_karp.cpp
+---
+
 ## Operations
 
 - `HopcroftKarp(L, R)`

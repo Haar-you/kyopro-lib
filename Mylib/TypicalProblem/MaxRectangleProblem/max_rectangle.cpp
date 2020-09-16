@@ -3,10 +3,6 @@
 #include <algorithm>
 #include "Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle_in_histogram.cpp"
 
-/**
- * @title Largest rectangle
- * @docs max_rectangle.md
- */
 namespace haar_lib {
   template <typename T>
   int max_rectangle(const std::vector<std::vector<T>> &d, T value){

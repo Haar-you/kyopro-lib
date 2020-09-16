@@ -2,10 +2,6 @@
 #include <vector>
 #include <algorithm>
 
-/**
- * @title Maximum subarray problem
- * @docs max_partial_sum.md
- */
 namespace haar_lib {
   template <typename T>
   T max_partial_sum(const std::vector<T> &v){

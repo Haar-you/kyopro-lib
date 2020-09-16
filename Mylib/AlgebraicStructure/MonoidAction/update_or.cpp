@@ -1,10 +1,6 @@
 #pragma once
 #include <optional>
 
-/**
- * @title Range update / Range bitor
- * @docs update_or.md
- */
 namespace haar_lib {
   template <typename T, typename U>
   struct update_bitor {

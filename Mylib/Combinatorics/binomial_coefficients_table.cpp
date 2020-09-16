@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Binomial coefficients table
- * @docs binomial_coefficients_table.md
- */
 namespace haar_lib {
   template <typename T>
   auto binomial_coefficients_table(int n, int k){

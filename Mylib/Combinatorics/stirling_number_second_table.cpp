@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Stirling numbers of the second kind (Table)
- * @docs stirling_number_second_table.md
- */
 namespace haar_lib {
   template <typename T>
   auto stirling_number_of_second_kind_table(int n){

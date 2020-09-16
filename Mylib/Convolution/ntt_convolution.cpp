@@ -5,10 +5,6 @@
 #include <algorithm>
 #include "Mylib/Number/Mint/mint.cpp"
 
-/**
- * @title Number theoretic transform
- * @docs ntt_convolution.md
- */
 namespace haar_lib {
   template <typename T, int PRIM_ROOT, int MAX_SIZE>
   class number_theoretic_transform {

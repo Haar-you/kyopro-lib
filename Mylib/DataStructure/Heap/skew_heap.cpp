@@ -2,10 +2,6 @@
 #include <functional>
 #include <utility>
 
-/**
- * @title Skew heap
- * @docs skew_heap.md
- */
 namespace haar_lib {
   template <typename T, class Compare = std::less<T>>
   class skew_heap {

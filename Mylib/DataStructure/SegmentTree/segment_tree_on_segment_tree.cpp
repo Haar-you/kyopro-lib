@@ -3,10 +3,6 @@
 #include <algorithm>
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 
-/**
- * @title Segment tree (On segment tree)
- * @docs segment_tree_on_segment_tree.md
- */
 namespace haar_lib {
   template <typename Monoid>
   class segment_tree_on_segment_tree {

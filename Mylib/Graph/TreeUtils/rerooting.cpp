@@ -2,10 +2,6 @@
 #include <vector>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Rerooting DP
- * @docs rerooting.md
- */
 namespace haar_lib {
   namespace rerooting_impl {
     template <typename T, typename U, typename Merge, typename EdgeF, typename VertexF>

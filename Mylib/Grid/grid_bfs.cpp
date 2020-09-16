@@ -4,10 +4,6 @@
 #include <optional>
 #include "Mylib/Grid/grid.cpp"
 
-/**
- * @title BFS on a grid
- * @docs grid_bfs.md
- */
 namespace haar_lib {
   template <typename Directions, typename Checker>
   auto grid_bfs(

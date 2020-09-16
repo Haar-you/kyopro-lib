@@ -3,10 +3,6 @@
 #include <cstdint>
 #include "Mylib/Combinatorics/factorial_table.cpp"
 
-/**
- * @title Bernoulli number
- * @docs bernoulli_number.md
- */
 namespace haar_lib {
   template <typename Ft, typename T = typename Ft::value_type>
   std::vector<T> bernoulli_number(int64_t n, const Ft &ft){

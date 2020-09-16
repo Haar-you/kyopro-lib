@@ -2,10 +2,6 @@
 #include <iostream>
 #include <variant>
 
-/**
- * @title Dihedral group
- * @docs dihedral.md
- */
 namespace haar_lib {
   template <typename Tag>
   struct dihedral_group {

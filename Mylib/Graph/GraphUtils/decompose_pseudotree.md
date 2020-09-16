@@ -1,3 +1,8 @@
+---
+title: Decompose pseudotree
+documentation_of: Mylib/Graph/GraphUtils/decompose_pseudotree.cpp
+---
+
 ## Operations
 
 ## Requirements

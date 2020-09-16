@@ -1,3 +1,8 @@
+---
+title: 2-SAT
+documentation_of: Mylib/Graph/two_sat.cpp
+---
+
 ## Operations
 
 - `TwoSat(int n)`
@@ -15,6 +20,8 @@
 
 - `add_if`, `add_or`, `not_coexist`の引数は`[1, n]`または`[-n, -1]`を満たさなければならない。
 	- 正数`i`は$x_i$を、負数`-i`は$\lnot x_i$を表す。
+
+## Notes
 
 ## Problems
 

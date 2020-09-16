@@ -1,3 +1,8 @@
+---
+title: Topological sort (Lexicographically minimum)
+documentation_of: Mylib/Graph/TopologicalSort/topological_sort_lexicographical.cpp
+---
+
 ## Operations
 
 ## Requirements

@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Enumerate subsets (Between)
- * @docs enumerate_subsets_between.md
- */
 namespace haar_lib {
   template <typename Func>
   void enumerate_subsets_between(int a, int b, const Func &f){

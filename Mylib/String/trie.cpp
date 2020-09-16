@@ -3,10 +3,6 @@
 #include <vector>
 #include <map>
 
-/**
- * @title Trie
- * @docs trie.md
- */
 namespace haar_lib {
   template <typename T>
   struct trie_node {

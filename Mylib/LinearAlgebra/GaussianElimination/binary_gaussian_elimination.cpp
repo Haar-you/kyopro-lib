@@ -3,10 +3,6 @@
 #include <bitset>
 #include <utility>
 
-/**
- * @title Gaussian elimination (Mod2)
- * @docs binary_gaussian_elimination.md
- */
 namespace haar_lib {
   template <size_t N>
   int gaussian_elimination(std::vector<std::bitset<N>> &m){

@@ -1,3 +1,8 @@
+---
+title: LiChao segment tree
+documentation_of: Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp
+---
+
 ## Operations
 
 - `LiChaoSegmentTree(xs)`
@@ -11,6 +16,10 @@
 	- `Comparator = std::greater<T>`の場合は、`x`での最大値
 	- `Comparator = std::less<T>`の場合は、`x`での最小値
 	- Time complexity $O(\log N)$
+
+## Requirements
+
+## Notes
 
 ## Problems
 

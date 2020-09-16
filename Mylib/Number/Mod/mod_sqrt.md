@@ -1,3 +1,8 @@
+---
+title: Mod sqrt
+documentation_of: Mylib/Number/Mod/mod_sqrt.cpp
+---
+
 ## Operations
 
 - `mod_sqrt(a, p)`

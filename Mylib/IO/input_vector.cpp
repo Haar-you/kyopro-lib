@@ -2,9 +2,6 @@
 #include <iostream>
 #include <vector>
 
-/**
- * @docs input_vector.md
- */
 namespace haar_lib {
   template <typename T>
   std::vector<T> input_vector(int N){

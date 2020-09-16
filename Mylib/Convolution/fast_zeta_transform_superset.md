@@ -1,3 +1,8 @@
+---
+title: Fast Zeta transform (Supersets)
+documentation_of: Mylib/Convolution/fast_zeta_transform_superset.cpp
+---
+
 ## Operations
 
 - `fast_zeta_transform_superset(f[N], op = std::plus())`

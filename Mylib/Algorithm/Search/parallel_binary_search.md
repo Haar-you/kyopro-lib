@@ -1,3 +1,8 @@
+---
+title: Parallel binary search
+documentation_of: Mylib/Algorithm/Search/parallel_binary_search.cpp
+---
+
 ## Operations
 
 ## Requirements

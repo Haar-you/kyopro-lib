@@ -3,10 +3,6 @@
 #include <optional>
 #include <cassert>
 
-/**
- * @title Succinct dictionary
- * @docs succinct_dictionary.md
- */
 namespace haar_lib {
   struct succinct_dict {
     int N;

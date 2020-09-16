@@ -2,10 +2,6 @@
 #include <vector>
 #include <functional>
 
-/**
- * @title Fast Zeta transform (Subsets)
- * @docs fast_zeta_transform_subset.md
- */
 namespace haar_lib {
   template <typename T, typename Func = std::plus<T>>
   std::vector<T> fast_zeta_transform_subset(std::vector<T> f, const Func &op = std::plus<T>()){

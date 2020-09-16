@@ -5,10 +5,6 @@
 #include <limits>
 #include <utility>
 
-/**
- * @title Interval scheduling problem
- * @docs interval_scheduling.md
- */
 namespace haar_lib {
   template <typename T>
   std::vector<std::pair<T, T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){

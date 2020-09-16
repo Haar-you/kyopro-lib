@@ -2,10 +2,6 @@
 #include <algorithm>
 #include "Mylib/DataStructure/Treap/treap.cpp"
 
-/**
- * @title Treap (Ordered set)
- * @docs ordered_treap.md
- */
 namespace haar_lib {
   template <typename Monoid>
   class ordered_treap : public treap<Monoid> {

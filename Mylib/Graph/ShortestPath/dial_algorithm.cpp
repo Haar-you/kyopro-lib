@@ -4,10 +4,6 @@
 #include <stack>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Dial's algorithm
- * @docs dial_algorithm.md
- */
 namespace haar_lib {
   auto dial_algorithm(const graph<int> &g, std::vector<int> src, int MAX){
     const int N = g.size();

@@ -2,10 +2,6 @@
 #include <chrono>
 #include <cmath>
 
-/**
- * @title Simulated annealing
- * @docs simulated_annealing.md
- */
 namespace haar_lib {
   template <typename Func>
   void simulated_annealing(int duration, double T0, double T1, Func f){

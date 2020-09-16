@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 
-/**
- * @title Dual segment tree
- * @docs dual_segment_tree.md
- */
 namespace haar_lib {
   template <typename Monoid>
   class dual_segment_tree {

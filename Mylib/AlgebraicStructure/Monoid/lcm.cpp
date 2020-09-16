@@ -1,10 +1,6 @@
 #pragma once
 #include <numeric>
 
-/**
- * @title LCM monoid
- * @docs lcm.md
- */
 namespace haar_lib {
   template <typename T>
   struct lcm_monoid {

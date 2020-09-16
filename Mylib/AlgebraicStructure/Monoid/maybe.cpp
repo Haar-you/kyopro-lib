@@ -1,10 +1,6 @@
 #pragma once
 #include <optional>
 
-/**
- * @title Maybe monoid
- * @docs maybe.md
- */
 namespace haar_lib {
   template <typename Semigroup>
   struct maybe_monoid {

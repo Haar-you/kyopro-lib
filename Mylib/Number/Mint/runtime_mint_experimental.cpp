@@ -2,8 +2,6 @@
 #include <iostream>
 #include <utility>
 
-/**
- */
 namespace haar_lib::experimental {
   template <int *M>
   class runtime_modint {

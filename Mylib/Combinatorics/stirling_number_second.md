@@ -1,8 +1,19 @@
+---
+title: Stirling numbers of the second kind
+documentation_of: Mylib/Combinatorics/stirling_number_second.cpp
+---
+
 ## Operations
 
 - `stirling_number(Ft, int n, int k)`
 	- n個の区別するボールをk個の区別しない箱に分配する(但し、すべての箱には1つ以上のボールが入る)ような方法の総数。
 	- Time complexity $O(k\log n)$
+
+## Requirements
+
+## Notes
+
+## Problems
 
 ## References
 

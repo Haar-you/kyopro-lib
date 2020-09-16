@@ -3,10 +3,6 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 #include "Mylib/Geometry/Float/ccw.cpp"
 
-/**
- * @title Intersection between two lines
- * @docs intersect_segments.md
- */
 namespace haar_lib {
   namespace intersect_segments {
     enum status_t {

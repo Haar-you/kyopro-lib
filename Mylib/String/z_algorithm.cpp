@@ -2,10 +2,6 @@
 #include <vector>
 #include <algorithm>
 
-/**
- * @title Z-algorithm
- * @docs z_algorithm
- */
 namespace haar_lib {
   template <typename Container>
   std::vector<int> z_algorithm(const Container &s){

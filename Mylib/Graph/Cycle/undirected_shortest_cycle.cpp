@@ -4,10 +4,6 @@
 #include <optional>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Undirected shortest cycle
- * @docs undirected_shortest_cycle.md
- */
 namespace haar_lib {
   template <typename T>
   std::optional<int> shortest_cycle(const graph<T> &g, const int src){

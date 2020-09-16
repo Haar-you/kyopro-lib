@@ -2,10 +2,6 @@
 #include <iostream>
 #include <utility>
 
-/**
- * @title Modint (Runtime mod)
- * @docs runtime_mint.md
- */
 namespace haar_lib {
   template <typename Tag>
   class runtime_modint {

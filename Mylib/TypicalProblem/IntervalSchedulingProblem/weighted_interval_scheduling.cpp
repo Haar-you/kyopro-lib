@@ -3,10 +3,6 @@
 #include <algorithm>
 #include <utility>
 
-/**
- * @title Weighted interval scheduling problem
- * @docs weighted_interval_scheduling.md
- */
 namespace haar_lib {
   template <typename T, typename U>
   U weighted_interval_scheduling(std::vector<T> from, std::vector<T> to, std::vector<U> value){

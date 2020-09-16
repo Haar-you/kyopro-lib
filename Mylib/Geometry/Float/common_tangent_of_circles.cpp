@@ -2,10 +2,6 @@
 #include <vector>
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
-/**
- * @title Common tangents of two circles
- * @docs common_tangent_of_circles.md
- */
 namespace haar_lib {
   template <typename T>
   std::vector<point<T>> common_tangent_of_circles(const circle<T> &a, const circle<T> &b){

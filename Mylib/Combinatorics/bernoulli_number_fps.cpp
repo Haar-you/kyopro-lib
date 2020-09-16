@@ -1,9 +1,5 @@
 #pragma once
 
-/**
- * @title Bernoulli number (FPS)
- * @docs bernoulli_number_fps.md
- */
 namespace haar_lib {
   template <typename Fps, typename Ft>
   auto bernoulli_number_fps(int N, const Ft &ft){

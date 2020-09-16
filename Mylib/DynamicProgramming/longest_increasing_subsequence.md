@@ -1,3 +1,8 @@
+---
+title: Longest increasing subsequence
+documentation_of: Mylib/DynamicProgramming/longest_increasing_subsequence.cpp
+---
+
 ## Operations
 
 - `lis(a[N])`

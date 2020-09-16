@@ -7,10 +7,6 @@
 #include <queue>
 #include "Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp"
 
-/**
- * @title Wavelet matrix
- * @docs wavelet_matrix.md
- */
 namespace haar_lib {
   template <typename T, int B>
   class wavelet_matrix {

@@ -3,10 +3,6 @@
 #include <utility>
 #include <cstdint>
 
-/**
- * @title Prime factorization
- * @docs prime_factorize.md
- */
 namespace haar_lib {
   auto prime_factorize(int64_t n){
     std::vector<std::pair<int64_t, int64_t>> ret;

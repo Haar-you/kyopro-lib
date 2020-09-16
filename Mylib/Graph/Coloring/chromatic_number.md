@@ -1,3 +1,8 @@
+---
+title: Graph vertex coloring
+documentation_of: Mylib/Graph/Coloring/chromatic_number.cpp
+---
+
 ## Operations
 
 - `chromatic_number(g)`

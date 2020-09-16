@@ -1,3 +1,8 @@
+---
+title: Union-find
+documentation_of: Mylib/DataStructure/UnionFind/unionfind.cpp
+---
+
 ## Operations
 
 - `UnionFind(n)`
@@ -11,3 +16,11 @@
 	- `i`の属する連結成分の大きさ。
 - `count_group()`
 	- 連結成分の個数を返す。
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References

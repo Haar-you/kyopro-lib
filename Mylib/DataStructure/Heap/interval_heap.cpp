@@ -3,10 +3,6 @@
 #include <utility>
 #include <functional>
 
-/**
- * @title Interval heap
- * @docs interval_heap.md
- */
 namespace haar_lib {
   template <typename T, typename Compare = std::less<T>>
   class interval_heap {

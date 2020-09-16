@@ -3,10 +3,6 @@
 #include <cassert>
 #include <cstdint>
 
-/**
- * @title Maximum independent set
- * @docs maximum_independent_set.md
- */
 namespace haar_lib {
   int64_t maximum_independent_set(const std::vector<std::vector<int>> &g){
     const int n = g.size();

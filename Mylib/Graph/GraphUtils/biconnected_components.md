@@ -1,3 +1,8 @@
+---
+title: Biconnected components
+documentation_of: Mylib/Graph/GraphUtils/biconnected_components.cpp
+---
+
 ## Operations
 
 ## Requirements

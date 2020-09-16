@@ -1,10 +1,6 @@
 #pragma once
 #include <functional>
 
-/**
- * @title Ternary search (Convex upwards)
- * @docs ternary_search_upwards.md
- */
 namespace haar_lib {
   template <typename T = double, typename Func = std::function<T(T)>>
   T ternary_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT = 100){

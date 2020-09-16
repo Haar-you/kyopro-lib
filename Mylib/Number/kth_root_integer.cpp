@@ -2,10 +2,6 @@
 #include <cassert>
 #include <cstdint>
 
-/**
- * @title Kth root integer
- * @docs kth_root_integer.md
- */
 namespace haar_lib {
   uint64_t kth_root(uint64_t a, int k){
     assert(k >= 1);

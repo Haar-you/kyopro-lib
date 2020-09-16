@@ -6,10 +6,6 @@
 #include <utility>
 #include <numeric>
 
-/**
- * @title Interval scheduling problem (Allow no more than k intervals to overlap)
- * @docs interval_scheduling_k.md
- */
 namespace haar_lib {
   auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){
     const int N = l.size();

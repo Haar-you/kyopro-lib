@@ -2,10 +2,6 @@
 #include <vector>
 #include "Mylib/String/suffix_array.cpp"
 
-/**
- * @title LCP(Longest Common Prefix) array
- * @docs lcp_array.md
- */
 namespace haar_lib {
   template <typename T>
   auto lcp_array(const suffix_array<T> &sa){

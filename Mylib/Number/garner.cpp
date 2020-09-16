@@ -2,10 +2,6 @@
 #include <vector>
 #include "Mylib/Number/Mod/mod_inv.cpp"
 
-/**
- * @title Garner algorithm
- * @docs garner.md
- */
 namespace haar_lib {
   int64_t garner_algorithm(std::vector<int64_t> r, std::vector<int64_t> m, const int64_t mod){
     m.push_back(mod);

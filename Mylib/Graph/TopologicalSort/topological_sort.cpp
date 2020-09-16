@@ -4,10 +4,6 @@
 #include <queue>
 #include "Mylib/Graph/Template/graph.cpp"
 
-/**
- * @title Topological sort
- * @docs topological_sort.md
- */
 namespace haar_lib {
   template <typename T>
   std::optional<std::vector<int>> topological_sort(const graph<T> &g){

@@ -3,10 +3,6 @@
 #include <utility>
 #include <functional>
 
-/**
- * @title Convex hull trick
- * @docs convex_hull_trick.md
- */
 namespace haar_lib {
   template <typename T, typename Comparator = std::greater<T>>
   class convex_hull_trick {

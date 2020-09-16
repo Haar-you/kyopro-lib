@@ -1,10 +1,6 @@
 #pragma once
 #include <utility>
 
-/**
- * @title Range affine / Range sum
- * @docs affine_sum.md
- */
 namespace haar_lib {
   template <typename T, typename U>
   struct affine_sum {
