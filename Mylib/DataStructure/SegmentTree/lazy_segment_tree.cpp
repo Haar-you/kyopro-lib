@@ -23,22 +23,23 @@ namespace haar_lib {
       lazy[i] = M.id_update();
     }
 
-    value_type_get update_aux(int i, int l, int r, int s, int t, const value_type_update &x){
-      propagate(i);
-      if(r <= s || t <= l) return data[i];
-      else if(s <= l && r <= t){
-        lazy[i] = M.op_update(x, lazy[i]);
-        propagate(i);
-        return data[i];
+    void propagate_top_down(int i){
+      std::vector<int> temp;
+      while(i > 1){
+        i >>= 1;
+        temp.push_back(i);
       }
-      else return data[i] = M.op_get(update_aux(i << 1 | 0, l, (l + r) / 2, s, t, x), update_aux(i << 1 | 1, (l + r) / 2, r, s, t, x));
+
+      for(auto it = temp.rbegin(); it != temp.rend(); ++it) propagate(*it);
     }
 
-    value_type_get get_aux(int i, int l, int r, int x, int y){
-      propagate(i);
-      if(r <= x || y <= l) return M.id_get();
-      else if(x <= l && r <= y) return data[i];
-      else return M.op_get(get_aux(i << 1 | 0, l, (l + r) / 2, x, y), get_aux(i << 1 | 1, (l + r) / 2, r, x, y));
+    void bottom_up(int i){
+      while(i > 1){
+        i >>= 1;
+        propagate(i << 1 | 0);
+        propagate(i << 1 | 1);
+        data[i] = M.op_get(data[i << 1 | 0], data[i << 1 | 1]);
+      }
     }
 
   public:
@@ -51,9 +52,59 @@ namespace haar_lib {
       lazy(size, M.id_update())
     {}
 
-    void update(int l, int r, const value_type_update &x){update_aux(1, 0, hsize, l, r, x);}
+    void update(int l, int r, const value_type_update &x){
+      propagate_top_down(l + hsize);
+      if(r < hsize) propagate_top_down(r + hsize);
+
+      int L = l + hsize, R = r + hsize;
+
+      while(L < R){
+        if(R & 1){
+          --R;
+          lazy[R] = M.op_update(x, lazy[R]);
+          propagate(R);
+        }
+        if(L & 1){
+          lazy[L] = M.op_update(x, lazy[L]);
+          propagate(L);
+          ++L;
+        }
+        L >>= 1;
+        R >>= 1;
+      }
+
+      bottom_up(l + hsize);
+      if(r < hsize) bottom_up(r + hsize);
+    }
+
     void update_at(int i, const value_type_update &x){update(i, i + 1, x);}
-    value_type_get get(int l, int r){return get_aux(1, 0, hsize, l, r);}
+
+    value_type_get get(int l, int r){
+      propagate_top_down(l + hsize);
+      if(r < hsize) propagate_top_down(r + hsize);
+
+      value_type_get ret_left = M.id_get(), ret_right = M.id_get();
+
+      int L = l + hsize, R = r + hsize;
+
+      while(L < R){
+        if(R & 1){
+          --R;
+          propagate(R);
+          ret_right = M.op_get(data[R], ret_right);
+        }
+        if(L & 1){
+          propagate(L);
+          ret_left = M.op_get(ret_left, data[L]);
+          ++L;
+        }
+        L >>= 1;
+        R >>= 1;
+      }
+
+      return M.op_get(ret_left, ret_right);
+    }
+
     value_type_get operator[](int i){return get(i, i + 1);}
 
     template <typename T>
