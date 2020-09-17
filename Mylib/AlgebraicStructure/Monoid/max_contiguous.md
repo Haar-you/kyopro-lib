@@ -20,5 +20,7 @@ documentation_of: Mylib/AlgebraicStructure/Monoid/max_contiguous.cpp
 
 ## Problems
 
+- [Codeforces Round #276 (Div. 1) E. Sign on Fence](https://codeforces.com/contest/484/problem/E)
+
 ## References
 

@@ -4,12 +4,14 @@
 #include <iostream>
 
 namespace haar_lib {
-  template <typename T>
-  struct max_partial_sum_monoid {
+  namespace max_partial_sum_monoid_impl {
+    template <typename T>
     struct max_partial_sum {
       T sum, left_max, right_max, partial_max;
+      max_partial_sum(){}
       max_partial_sum(T x): sum(x), left_max(x), right_max(x), partial_max(x){}
-      max_partial_sum(T sum, T left_max, T right_max, T partial_max): sum(sum), left_max(left_max), right_max(right_max), partial_max(partial_max){}
+      max_partial_sum(T sum, T left_max, T right_max, T partial_max):
+        sum(sum), left_max(left_max), right_max(right_max), partial_max(partial_max){}
 
       friend std::ostream& operator<<(std::ostream &s, const max_partial_sum &a){
         s << "(" << "sum: " << a.sum << ", "
@@ -19,7 +21,11 @@ namespace haar_lib {
         return s;
       }
     };
+  }
 
+  template <typename T>
+  struct max_partial_sum_monoid {
+    using max_partial_sum = max_partial_sum_monoid_impl::max_partial_sum<T>;
     using value_type = std::optional<max_partial_sum>;
 
     value_type operator()() const {

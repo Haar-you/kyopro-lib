@@ -11,7 +11,7 @@
 
 namespace hl = haar_lib;
 
-using Mon = hl::with_min_index<hl::min_monoid<int>>;
+using M = hl::with_min_index<hl::min_monoid<int>>;
 
 int main(){
   std::cin.tie(0);
@@ -19,11 +19,11 @@ int main(){
 
   int N, Q; std::cin >> N >> Q;
 
-  hl::segment_tree<Mon> seg(N);
+  hl::segment_tree<M> seg(N);
 
-  std::vector<Mon::value_type> a(N);
+  std::vector<M::value_type> a(N);
   for(auto [i, x] : hl::input_tuples_with_index<int>(N)){
-    a[i] = std::make_pair(x, i);
+    a[i] = {x, i};
   }
 
   seg.init_with_vector(a);
@@ -33,18 +33,18 @@ int main(){
     case 1: {
       --l, --r;
 
-      auto x = seg[l].first;
-      auto y = seg[r].first;
+      auto x = seg[l].value;
+      auto y = seg[r].value;
 
-      seg.update(l, std::make_pair(y, l));
-      seg.update(r, std::make_pair(x, r));
+      seg.update(l, {y, l});
+      seg.update(r, {x, r});
 
       break;
     }
     case 2: {
       --l, --r;
 
-      std::cout << seg.get(l, r + 1).second + 1 << "\n";
+      std::cout << seg.get(l, r + 1).index + 1 << "\n";
 
       break;
     }
