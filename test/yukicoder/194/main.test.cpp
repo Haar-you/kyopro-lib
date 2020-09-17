@@ -14,8 +14,8 @@ namespace hl = haar_lib;
 
 using mint = hl::modint<1000000007>;
 
-struct tag {};
-using M = hl::square_matrix<mint, tag>;
+static int N;
+using M = hl::square_matrix<mint, N>;
 
 std::pair<mint, mint> solve1(int64_t N, int64_t K, std::vector<int> A){
   M m;
@@ -70,9 +70,7 @@ std::pair<mint, mint> solve2(int64_t N, int64_t K, std::vector<int> A){
 }
 
 int main(){
-  int64_t N, K; std::cin >> N >> K;
-
-  M::init(N);
+  int64_t K; std::cin >> N >> K;
 
   auto A = hl::input_vector<int>(N);
 

@@ -10,16 +10,14 @@
 
 namespace hl = haar_lib;
 
-struct tag {};
-using mint = hl::runtime_modint<tag>;
-using M = hl::square_matrix<mint, tag>;
+static int n, m;
+using mint = hl::runtime_modint<m>;
+using M = hl::square_matrix<mint, n>;
 
 int main(){
-  int n, m, a, b, c, t;
-  while(std::cin >> n >> m >> a >> b >> c >> t, n){
-    mint::init(m);
-    M::init(n);
+  int a, b, c, t;
 
+  while(std::cin >> n >> m >> a >> b >> c >> t, n){
     auto s = hl::input_vector<mint>(n);
 
     M mat;

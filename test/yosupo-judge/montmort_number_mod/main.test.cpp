@@ -7,13 +7,12 @@
 
 namespace hl = haar_lib;
 
-struct tag {};
-using mint = hl::runtime_modint<tag>;
+
+static int M;
+using mint = hl::runtime_modint<M>;
 
 int main(){
-  int N, M; std::cin >> N >> M;
-
-  mint::init(M);
+  int N; std::cin >> N >> M;
 
   auto ans = hl::montmort_number<mint>(1000000);
 

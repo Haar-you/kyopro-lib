@@ -3,10 +3,9 @@
 #include <utility>
 
 namespace haar_lib {
-  template <typename Tag>
+  template <const int &M>
   class runtime_modint {
-    static uint32_t M;
-    uint64_t val;
+    int64_t val;
 
   public:
     runtime_modint(): val(0){}
@@ -61,8 +60,6 @@ namespace haar_lib {
     explicit operator int32_t() const noexcept {return val;}
     explicit operator int64_t() const noexcept {return val;}
 
-    static void init(uint32_t m){M = m;}
-
     friend auto operator-(const runtime_modint &a){return runtime_modint(-a.val);}
 
     friend auto operator+(int64_t a, const runtime_modint &b){return runtime_modint(a) + b;}
@@ -73,6 +70,4 @@ namespace haar_lib {
     friend std::istream& operator>>(std::istream &is, runtime_modint &a){is >> a.val; return is;}
     friend std::ostream& operator<<(std::ostream &os, const runtime_modint &a){os << a.val; return os;}
   };
-
-  template <typename Tag> uint32_t runtime_modint<Tag>::M;
 }

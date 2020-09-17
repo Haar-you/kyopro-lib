@@ -7,6 +7,8 @@ documentation_of: Mylib/Number/Mint/runtime_mint.cpp
 
 ## Requirements
 
+-  使用前にstatic変数`M`を設定する。
+
 ## Notes
 
 ## Problems

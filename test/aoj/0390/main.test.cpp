@@ -9,14 +9,12 @@
 
 namespace hl = haar_lib;
 
-struct tag {};
-using M = hl::dihedral_group<tag>;
+static int K;
+using M = hl::dihedral_group<K>;
 
 int main(){
-  int K, N, Q; std::cin >> K >> N >> Q;
+  int N, Q; std::cin >> K >> N >> Q;
   auto A = hl::input_vector<int>(N);
-
-  M::K = K;
 
   hl::segment_tree<M> seg(N);
 

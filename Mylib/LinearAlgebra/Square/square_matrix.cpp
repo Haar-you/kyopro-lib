@@ -3,12 +3,10 @@
 #include <utility>
 
 namespace haar_lib {
-  template <typename T, class Tag>
+  template <typename T, const int &N>
   struct square_matrix {
     using value_type = T;
 
-    static int N;
-    static void init(int n){N = n;}
     std::vector<std::vector<T>> matrix;
 
     square_matrix(): matrix(N, std::vector<T>(N)){}
@@ -35,7 +33,10 @@ namespace haar_lib {
 
     auto& operator*=(const square_matrix &val){
       std::vector<std::vector<T>> temp(N, std::vector<T>(N));
-      for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) for(int k = 0; k < N; ++k) temp[i][j] = temp[i][j] + matrix[i][k] * val[k][j];
+      for(int i = 0; i < N; ++i)
+        for(int j = 0; j < N; ++j)
+          for(int k = 0; k < N; ++k)
+            temp[i][j] = temp[i][j] + matrix[i][k] * val[k][j];
       std::swap(matrix, temp);
       return *this;
     }
@@ -54,6 +55,4 @@ namespace haar_lib {
     friend auto operator-(const square_matrix &a, const square_matrix &b){auto ret = a; ret -= b; return ret;}
     friend auto operator*(const square_matrix &a, const square_matrix &b){auto ret = a; ret *= b; return ret;}
   };
-
-  template <typename T, class Tag> int square_matrix<T, Tag>::N;
 }

@@ -5,11 +5,10 @@
 namespace haar_lib {
   template <int32_t M>
   class modint {
-    constexpr static int32_t MOD = M;
     uint32_t val;
 
   public:
-    constexpr static auto mod(){return MOD;}
+    constexpr static auto mod(){return M;}
 
     constexpr modint(): val(0){}
     constexpr modint(int64_t n){
