@@ -5,14 +5,20 @@
 #include <limits>
 
 namespace haar_lib {
-  template <typename T>
-  struct push_relabel {
-  private:
+  namespace push_relabel_impl {
+    template <typename T>
     struct edge {
       int from, to, rev;
       T cap;
       bool is_rev;
+      edge(int from, int to, int rev, T cap, bool is_rev):
+        from(from), to(to), rev(rev), cap(cap), is_rev(is_rev){}
     };
+  }
+
+  template <typename T>
+  class push_relabel {
+    using edge = push_relabel_impl::edge<T>;
 
     int N;
     std::vector<std::vector<edge>> g;
@@ -92,8 +98,8 @@ namespace haar_lib {
     push_relabel(int N): N(N), g(N), excess(N), height(N){}
 
     void add_edge(int from, int to, T c){
-      g[from].push_back({from, to, (int)g[to].size(), c, false});
-      g[to].push_back({to, from, (int)g[from].size() - 1, 0, true});
+      g[from].emplace_back(from, to, (int)g[to].size(), c, false);
+      g[to].emplace_back(to, from, (int)g[from].size() - 1, 0, true);
     }
 
     T solve(int s, int t){

@@ -3,31 +3,35 @@
 #include <algorithm>
 
 namespace haar_lib {
-  template <typename T>
-  class ford_fulkerson {
-  public:
+  namespace ford_fulkerson_impl {
+    template <typename T>
     struct edge {
       int from, to, rev;
       T cap;
       bool is_rev;
+      edge(int from, int to, int rev, T cap, bool is_rev):
+        from(from), to(to), rev(rev), cap(cap), is_rev(is_rev){}
     };
+  }
 
-  private:
+  template <typename T>
+  class ford_fulkerson {
+    using edge = ford_fulkerson_impl::edge<T>;
+
     int size;
-
-    std::vector<std::vector<edge>> graph;
+    std::vector<std::vector<edge>> g;
     std::vector<bool> visit;
 
     T dfs(int from, int to, T flow){
       if(from == to) return flow;
       visit[from] = true;
 
-      for(auto &e : graph[from]){
+      for(auto &e : g[from]){
         if(!visit[e.to] and e.cap > 0){
           T d = dfs(e.to, to, std::min(flow, e.cap));
           if(d > 0){
             e.cap -= d;
-            graph[e.to][e.rev].cap += d;
+            g[e.to][e.rev].cap += d;
             return d;
           }
         }
@@ -37,18 +41,18 @@ namespace haar_lib {
 
   public:
     ford_fulkerson(){}
-    ford_fulkerson(int size): size(size), graph(size), visit(size){}
+    ford_fulkerson(int size): size(size), g(size), visit(size){}
 
-    void add_edge(int from, int to, const T &cap){
-      graph[from].push_back({from, to, (int)graph[to].size(), cap, false});
-      graph[to].push_back({to, from, (int)graph[from].size() - 1, 0, true});
+    void add_edge(int from, int to, T c){
+      g[from].emplace_back(from, to, (int)g[to].size(), c, false);
+      g[to].emplace_back(to, from, (int)g[from].size() - 1, 0, true);
     }
 
     void reset_flow(){
-      for(auto &v : graph){
+      for(auto &v : g){
         for(auto &e : v){
           if(e.is_rev){
-            graph[e.to][e.rev].cap += e.cap;
+            g[e.to][e.rev].cap += e.cap;
             e.cap = 0;
           }
         }
@@ -68,7 +72,7 @@ namespace haar_lib {
 
     std::vector<edge> edges() const {
       std::vector<edge> ret;
-      for(auto &v : graph) ret.insert(ret.end(), v.begin(), v.end());
+      for(auto &v : g) ret.insert(ret.end(), v.begin(), v.end());
       return ret;
     }
   };
