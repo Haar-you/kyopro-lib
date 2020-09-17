@@ -12,8 +12,8 @@
 
 namespace hl = haar_lib;
 
-using D = hl::double_eps<double>;
-template <> double D::eps = 1e-7;
+static constexpr double eps = ERROR;
+using D = hl::double_eps<double, eps>;
 
 int main(){
   hl::circle<D> c;

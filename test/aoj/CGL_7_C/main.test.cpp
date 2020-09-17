@@ -9,8 +9,8 @@
 
 namespace hl = haar_lib;
 
-using D = hl::double_eps<long double>;
-template <> long double D::eps = ERROR;
+static constexpr long double eps = ERROR;
+using D = hl::double_eps<long double, eps>;
 
 int main(){
   hl::point<D> a, b, c; std::cin >> a >> b >> c;

@@ -11,8 +11,8 @@
 
 namespace hl = haar_lib;
 
-using D = hl::double_eps<double>;
-template <> double D::eps = 1e-7;
+static constexpr double eps = 1e-7;
+using D = hl::double_eps<double, eps>;
 
 bool intersect(const std::vector<hl::point<D>> &a, const std::vector<hl::point<D>> &b){
   for(int i = 0; i < (int)a.size() - 1; ++i){

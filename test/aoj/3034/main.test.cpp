@@ -13,8 +13,8 @@
 
 namespace hl = haar_lib;
 
-using D = hl::double_eps<double>;
-template <> double D::eps = ERROR;
+static constexpr double eps = ERROR;
+using D = hl::double_eps<double, eps>;
 
 D dp[15][1 << 14];
 bool check[15][1 << 14];

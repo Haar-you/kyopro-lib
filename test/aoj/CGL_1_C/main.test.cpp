@@ -8,8 +8,8 @@
 
 namespace hl = haar_lib;
 
-using D = hl::double_eps<double>;
-template <> double D::eps = 1e-7;
+static constexpr double eps = 1e-7;
+using D = hl::double_eps<double, eps>;
 
 int main(){
   hl::point<D> p0, p1; std::cin >> p0 >> p1;
