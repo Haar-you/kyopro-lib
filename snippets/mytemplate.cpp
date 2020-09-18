@@ -57,6 +57,9 @@ namespace haar_lib {}
 namespace solver {
   using namespace haar_lib;
 
+  constexpr int m1000000007 = 1000000007;
+  constexpr int m998244353 = 998244353;
+
   void init(){
     std::cin.tie(0);
     std::ios::sync_with_stdio(false);
