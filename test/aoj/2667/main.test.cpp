@@ -4,6 +4,7 @@
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp"
 #include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
@@ -16,7 +17,7 @@ int main(){
   tree.read<0, false, false>(N - 1);
 
   auto hld = hl::hl_decomposition(tree, 0);
-  hl::lazy_segment_tree<hl::add_sum<int64_t, int64_t>> seg(N);
+  hl::lazy_segment_tree<hl::sum_monoid<int64_t>, hl::sum_monoid<int64_t>, hl::add_sum> seg(N);
 
   for(auto [c] : hl::input_tuples<int>(Q)){
     if(c == 0){

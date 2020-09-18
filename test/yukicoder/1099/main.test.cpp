@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/array.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/add_square_sum.cpp"
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
@@ -16,7 +18,11 @@ int main(){
 
   auto A = hl::input_vector<int64_t>(N);
 
-  hl::lazy_segment_tree<hl::add_square_sum<int64_t>> seg(N);
+  hl::lazy_segment_tree<
+    hl::array_monoid<hl::sum_monoid<int64_t>, 2>,
+    hl::sum_monoid<int64_t>,
+    hl::add_square_sum> seg(N);
+
   for(int i = 0; i < N; ++i) seg.update_at(i, A[i]);
 
   int Q; std::cin >> Q;

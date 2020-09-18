@@ -3,6 +3,8 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/affine.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp"
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/IO/input_vector.cpp"
@@ -18,7 +20,7 @@ int main(){
 
   int N, Q; std::cin >> N >> Q;
 
-  auto seg = hl::lazy_segment_tree<hl::affine_sum<mint, mint>>(N);
+  auto seg = hl::lazy_segment_tree<hl::sum_monoid<mint>, hl::affine_monoid<mint>, hl::affine_sum>(N);
   auto a = hl::input_vector<mint>(N);
   seg.init_with_vector(a);
 

@@ -2,25 +2,27 @@
 #include <vector>
 
 namespace haar_lib {
-  template <typename Monoid>
+  template <typename MonoidGet, typename MonoidUpdate, template <typename, typename> typename Connector>
   class lazy_segment_tree {
-    using value_type_get = typename Monoid::value_type_get;
-    using value_type_update = typename Monoid::value_type_update;
-    const static Monoid M;
+    using value_type_get = typename MonoidGet::value_type;
+    using value_type_update = typename MonoidUpdate::value_type;
+    Connector<MonoidGet, MonoidUpdate> M;
+    MonoidGet M_get;
+    MonoidUpdate M_update;
 
     const int depth, size, hsize;
     std::vector<value_type_get> data;
     std::vector<value_type_update> lazy;
 
     void propagate(int i){
-      if(lazy[i] == M.id_update()) return;
+      if(lazy[i] == M_update()) return;
       if(i < hsize){
-        lazy[i << 1 | 0] = M.op_update(lazy[i], lazy[i << 1 | 0]);
-        lazy[i << 1 | 1] = M.op_update(lazy[i], lazy[i << 1 | 1]);
+        lazy[i << 1 | 0] = M_update(lazy[i], lazy[i << 1 | 0]);
+        lazy[i << 1 | 1] = M_update(lazy[i], lazy[i << 1 | 1]);
       }
       int len = hsize >> (31 - __builtin_clz(i));
-      data[i] = M.op(data[i], lazy[i], len);
-      lazy[i] = M.id_update();
+      data[i] = M(data[i], lazy[i], len);
+      lazy[i] = M_update();
     }
 
     void propagate_top_down(int i){
@@ -38,7 +40,7 @@ namespace haar_lib {
         i >>= 1;
         propagate(i << 1 | 0);
         propagate(i << 1 | 1);
-        data[i] = M.op_get(data[i << 1 | 0], data[i << 1 | 1]);
+        data[i] = M_get(data[i << 1 | 0], data[i << 1 | 1]);
       }
     }
 
@@ -48,8 +50,8 @@ namespace haar_lib {
       depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
       size(1 << depth),
       hsize(size / 2),
-      data(size, M.id_get()),
-      lazy(size, M.id_update())
+      data(size, M_get()),
+      lazy(size, M_update())
     {}
 
     void update(int l, int r, const value_type_update &x){
@@ -61,11 +63,11 @@ namespace haar_lib {
       while(L < R){
         if(R & 1){
           --R;
-          lazy[R] = M.op_update(x, lazy[R]);
+          lazy[R] = M_update(x, lazy[R]);
           propagate(R);
         }
         if(L & 1){
-          lazy[L] = M.op_update(x, lazy[L]);
+          lazy[L] = M_update(x, lazy[L]);
           propagate(L);
           ++L;
         }
@@ -83,7 +85,7 @@ namespace haar_lib {
       propagate_top_down(l + hsize);
       if(r < hsize) propagate_top_down(r + hsize);
 
-      value_type_get ret_left = M.id_get(), ret_right = M.id_get();
+      value_type_get ret_left = M_get(), ret_right = M_get();
 
       int L = l + hsize, R = r + hsize;
 
@@ -91,18 +93,18 @@ namespace haar_lib {
         if(R & 1){
           --R;
           propagate(R);
-          ret_right = M.op_get(data[R], ret_right);
+          ret_right = M_get(data[R], ret_right);
         }
         if(L & 1){
           propagate(L);
-          ret_left = M.op_get(ret_left, data[L]);
+          ret_left = M_get(ret_left, data[L]);
           ++L;
         }
         L >>= 1;
         R >>= 1;
       }
 
-      return M.op_get(ret_left, ret_right);
+      return M_get(ret_left, ret_right);
     }
 
     value_type_get operator[](int i){return get(i, i + 1);}
@@ -114,10 +116,10 @@ namespace haar_lib {
 
     template <typename T>
     void init_with_vector(const std::vector<T> &val){
-      data.assign(size, M.id_get());
-      lazy.assign(size, M.id_update());
-      for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];
-      for(int i = hsize - 1; i > 0; --i) data[i] = M.op_get(data[i << 1 | 0], data[i << 1 | 1]);
+      data.assign(size, M_get());
+      lazy.assign(size, M_update());
+      for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = (value_type_get)val[i];
+      for(int i = hsize - 1; i > 0; --i) data[i] = M_get(data[i << 1 | 0], data[i << 1 | 1]);
     }
   };
 }

@@ -3,6 +3,8 @@
 #include <iostream>
 #include <climits>
 #include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/update.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/update_min.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
@@ -11,7 +13,7 @@ namespace hl = haar_lib;
 int main(){
   int n, q; std::cin >> n >> q;
 
-  hl::lazy_segment_tree<hl::update_min<int, int>> seg(n);
+  hl::lazy_segment_tree<hl::min_monoid<int>, hl::update_monoid<int>, hl::update_min> seg(n);
 
   for(auto [type, s, t] : hl::input_tuples<int, int, int>(q)){
     if(type == 0){

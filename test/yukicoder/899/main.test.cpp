@@ -4,6 +4,8 @@
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/TreeUtils/euler_tour_bfs.cpp"
 #include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/update.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp"
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
@@ -22,7 +24,7 @@ int main(){
   auto res = hl::euler_tour_bfs<int>(tree, 0);
 
   auto A = hl::input_vector<int64_t>(N);
-  hl::lazy_segment_tree<hl::update_sum<int64_t, int64_t>> seg(N);
+  hl::lazy_segment_tree<hl::sum_monoid<int64_t>, hl::update_monoid<int64_t>, hl::update_sum> seg(N);
 
   for(int i = 0; i < N; ++i){
     res.query_at(i, [&](int l, int r){seg.update(l, r, A[i]);});

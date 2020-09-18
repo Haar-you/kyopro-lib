@@ -3,6 +3,8 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/max.cpp"
 #include "Mylib/AlgebraicStructure/MonoidAction/add_max.cpp"
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
@@ -15,7 +17,7 @@ int main(){
 
   int N; std::cin >> N;
 
-  auto seg = hl::lazy_segment_tree<hl::add_max<int64_t, int64_t>>(N - 1);
+  auto seg = hl::lazy_segment_tree<hl::max_monoid<int64_t>, hl::sum_monoid<int64_t>, hl::add_max>(N - 1);
 
   auto T = hl::input_vector<int64_t>(N - 1);
 
