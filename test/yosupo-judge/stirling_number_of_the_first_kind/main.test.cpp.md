@@ -1,0 +1,180 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':x:'
+    path: Mylib/Number/Mint/mint.cpp
+    title: Modint
+  - icon: ':x:'
+    path: Mylib/Convolution/ntt_convolution.cpp
+    title: Number theoretic transform
+  - icon: ':x:'
+    path: Mylib/Combinatorics/stirling_number_first_fft.cpp
+    title: Stirling numbers of the first kind (FFT)
+  - icon: ':x:'
+    path: Mylib/Math/polynomial_taylor_shift.cpp
+    title: polynomial_taylor_shift.md
+  - icon: ':question:'
+    path: Mylib/IO/join.cpp
+    title: Mylib/IO/join.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _pathExtension: cpp
+  _verificationStatusIcon: ':x:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind
+    links:
+    - https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind
+  bundledCode: "#line 1 \"test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind\"\
+    \n\n#include <iostream>\n#include <functional>\n#line 3 \"Mylib/Number/Mint/mint.cpp\"\
+    \n#include <utility>\n\nnamespace haar_lib {\n  template <int32_t M>\n  class\
+    \ modint {\n    uint32_t val;\n\n  public:\n    constexpr static auto mod(){return\
+    \ M;}\n\n    constexpr modint(): val(0){}\n    constexpr modint(int64_t n){\n\
+    \      if(n >= M) val = n % M;\n      else if(n < 0) val = n % M + M;\n      else\
+    \ val = n;\n    }\n\n    constexpr auto& operator=(const modint &a){val = a.val;\
+    \ return *this;}\n    constexpr auto& operator+=(const modint &a){\n      if(val\
+    \ + a.val >= M) val = (uint64_t)val + a.val - M;\n      else val += a.val;\n \
+    \     return *this;\n    }\n    constexpr auto& operator-=(const modint &a){\n\
+    \      if(val < a.val) val += M;\n      val -= a.val;\n      return *this;\n \
+    \   }\n    constexpr auto& operator*=(const modint &a){\n      val = (uint64_t)val\
+    \ * a.val % M;\n      return *this;\n    }\n    constexpr auto& operator/=(const\
+    \ modint &a){\n      val = (uint64_t)val * a.inv().val % M;\n      return *this;\n\
+    \    }\n\n    constexpr auto operator+(const modint &a) const {return modint(*this)\
+    \ += a;}\n    constexpr auto operator-(const modint &a) const {return modint(*this)\
+    \ -= a;}\n    constexpr auto operator*(const modint &a) const {return modint(*this)\
+    \ *= a;}\n    constexpr auto operator/(const modint &a) const {return modint(*this)\
+    \ /= a;}\n\n    constexpr bool operator==(const modint &a) const {return val ==\
+    \ a.val;}\n    constexpr bool operator!=(const modint &a) const {return val !=\
+    \ a.val;}\n\n    constexpr auto& operator++(){*this += 1; return *this;}\n   \
+    \ constexpr auto& operator--(){*this -= 1; return *this;}\n\n    constexpr auto\
+    \ operator++(int){auto t = *this; *this += 1; return t;}\n    constexpr auto operator--(int){auto\
+    \ t = *this; *this -= 1; return t;}\n\n    constexpr static modint pow(int64_t\
+    \ n, int64_t p){\n      if(p < 0) return pow(n, -p).inv();\n\n      int64_t ret\
+    \ = 1, e = n % M;\n      for(; p; (e *= e) %= M, p >>= 1) if(p & 1) (ret *= e)\
+    \ %= M;\n      return ret;\n    }\n\n    constexpr static modint inv(int64_t a){\n\
+    \      int64_t b = M, u = 1, v = 0;\n\n      while(b){\n        int64_t t = a\
+    \ / b;\n        a -= t * b; std::swap(a, b);\n        u -= t * v; std::swap(u,\
+    \ v);\n      }\n\n      u %= M;\n      if(u < 0) u += M;\n\n      return u;\n\
+    \    }\n\n    constexpr static auto frac(int64_t a, int64_t b){return modint(a)\
+    \ / modint(b);}\n\n    constexpr auto pow(int64_t p) const {return pow(val, p);}\n\
+    \    constexpr auto inv() const {return inv(val);}\n\n    friend constexpr auto\
+    \ operator-(const modint &a){return modint(M - a.val);}\n\n    friend constexpr\
+    \ auto operator+(int64_t a, const modint &b){return modint(a) + b;}\n    friend\
+    \ constexpr auto operator-(int64_t a, const modint &b){return modint(a) - b;}\n\
+    \    friend constexpr auto operator*(int64_t a, const modint &b){return modint(a)\
+    \ * b;}\n    friend constexpr auto operator/(int64_t a, const modint &b){return\
+    \ modint(a) / b;}\n\n    friend std::istream& operator>>(std::istream &s, modint<M>\
+    \ &a){s >> a.val; return s;}\n    friend std::ostream& operator<<(std::ostream\
+    \ &s, const modint<M> &a){s << a.val; return s;}\n\n    template <int N>\n   \
+    \ static auto div(){\n      static auto value = inv(N);\n      return value;\n\
+    \    }\n\n    explicit operator int32_t() const noexcept {return val;}\n    explicit\
+    \ operator int64_t() const noexcept {return val;}\n  };\n}\n#line 2 \"Mylib/Convolution/ntt_convolution.cpp\"\
+    \n#include <vector>\n#include <cassert>\n#line 5 \"Mylib/Convolution/ntt_convolution.cpp\"\
+    \n#include <algorithm>\n#line 7 \"Mylib/Convolution/ntt_convolution.cpp\"\n\n\
+    namespace haar_lib {\n  template <typename T, int PRIM_ROOT, int MAX_SIZE>\n \
+    \ class number_theoretic_transform {\n  public:\n    using value_type = T;\n \
+    \   constexpr static int primitive_root = PRIM_ROOT;\n\n  private:\n    const\
+    \ int MAX_POWER;\n    std::vector<T> BASE, INV_BASE;\n\n  public:\n    number_theoretic_transform():\n\
+    \      MAX_POWER(__builtin_ctz(MAX_SIZE)),\n      BASE(MAX_POWER + 1),\n     \
+    \ INV_BASE(MAX_POWER + 1)\n    {\n      static_assert((MAX_SIZE & (MAX_SIZE -\
+    \ 1)) == 0, \"MAX_SIZE must be power of 2.\");\n\n      T t = T::pow(PRIM_ROOT,\
+    \ (T::mod() - 1) >> (MAX_POWER + 2));\n      T s = t.inv();\n\n      for(int i\
+    \ = MAX_POWER - 1; i >= 0; --i){\n        t *= t;\n        s *= s;\n        BASE[i]\
+    \ = -t;\n        INV_BASE[i] = -s;\n      }\n    }\n\n    void run(std::vector<T>\
+    \ &f, bool INVERSE = false){\n      const int n = f.size();\n      assert((n &\
+    \ (n - 1)) == 0 and n <= MAX_SIZE); // \u30C7\u30FC\u30BF\u6570\u306F2\u306E\u51AA\
+    \u4E57\u500B\n\n      if(INVERSE){\n        for(int b = 1; b < n; b <<= 1){\n\
+    \          T w = 1;\n          for(int j = 0, k = 1; j < n; j += 2 * b, ++k){\n\
+    \            for(int i = 0; i < b; ++i){\n              const auto s = f[i + j];\n\
+    \              const auto t = f[i + j + b];\n\n              f[i + j] = s + t;\n\
+    \              f[i + j + b] = (s - t) * w;\n            }\n            w *= INV_BASE[__builtin_ctz(k)];\n\
+    \          }\n        }\n\n        const T t = T::inv(n);\n        for(auto &x\
+    \ : f) x *= t;\n      }else{\n        for(int b = n >> 1; b; b >>= 1){\n     \
+    \     T w = 1;\n          for(int j = 0, k = 1; j < n; j += 2 * b, ++k){\n   \
+    \         for(int i = 0; i < b; ++i){\n              const auto s = f[i + j];\n\
+    \              const auto t = f[i + j + b] * w;\n\n              f[i + j] = s\
+    \ + t;\n              f[i + j + b] = s - t;\n            }\n            w *= BASE[__builtin_ctz(k)];\n\
+    \          }\n        }\n      }\n    }\n\n    template <typename U>\n    std::vector<T>\
+    \ convolve(std::vector<U> f, std::vector<U> g){\n      const int m = f.size()\
+    \ + g.size() - 1;\n      int n = 1;\n      while(n < m) n *= 2;\n\n      std::vector<T>\
+    \ f2(n), g2(n);\n\n      for(int i = 0; i < (int)f.size(); ++i) f2[i] = f[i];\n\
+    \      for(int i = 0; i < (int)g.size(); ++i) g2[i] = g[i];\n\n      run(f2);\n\
+    \      run(g2);\n\n      for(int i = 0; i < n; ++i) f2[i] *= g2[i];\n      run(f2,\
+    \ true);\n\n      return f2;\n    }\n  };\n\n  template <typename T, typename\
+    \ U>\n  std::vector<T> convolve_general_mod(std::vector<U> f, std::vector<U> g){\n\
+    \    static constexpr int M1 = 167772161, P1 = 3;\n    static constexpr int M2\
+    \ = 469762049, P2 = 3;\n    static constexpr int M3 = 1224736769, P3 = 3;\n\n\
+    \    for(auto &x : f) x %= T::mod();\n    for(auto &x : g) x %= T::mod();\n\n\
+    \    auto res1 = number_theoretic_transform<modint<M1>, P1, 1 << 20>().convolve(f,\
+    \ g);\n    auto res2 = number_theoretic_transform<modint<M2>, P2, 1 << 20>().convolve(f,\
+    \ g);\n    auto res3 = number_theoretic_transform<modint<M3>, P3, 1 << 20>().convolve(f,\
+    \ g);\n\n    const int n = res1.size();\n\n    std::vector<T> ret(n);\n\n    const\
+    \ int64_t M12 = (int64_t)modint<M2>::inv(M1);\n    const int64_t M13 = (int64_t)modint<M3>::inv(M1);\n\
+    \    const int64_t M23 = (int64_t)modint<M3>::inv(M2);\n\n    for(int i = 0; i\
+    \ < n; ++i){\n      const int64_t r[3] = {(int64_t)res1[i], (int64_t)res2[i],\
+    \ (int64_t)res3[i]};\n\n      const int64_t t0 = r[0] % M1;\n      const int64_t\
+    \ t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2 = ((r[2] - t0 + M3)\
+    \ * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0) + T(t1) * M1 + T(t2)\
+    \ * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 3 \"Mylib/Math/polynomial_taylor_shift.cpp\"\
+    \n\nnamespace haar_lib {\n  template <typename T, typename Conv>\n  auto polynomial_taylor_shift(std::vector<T>\
+    \ a, T c, const Conv &convolve){\n    const int N = a.size();\n    T f = 1;\n\
+    \    std::vector<T> A(2 * N - 1);\n    for(int i = 0; i < N; ++i){\n      if(i)\
+    \ f *= i;\n      A[i + N - 1] = a[i] * f;\n    }\n\n    T d = 1;\n\n    std::vector<T>\
+    \ g(N);\n    g[N - 1] = f.inv();\n    for(int i = N - 2; i >= 0; --i) g[i] = g[i\
+    \ + 1] * (i + 1);\n\n    std::vector<T> B(2 * N - 1);\n    for(int i = 0; i <\
+    \ N; ++i){\n      B[N - i - 1] = d * g[i];\n      d *= c;\n    }\n\n    auto C\
+    \ = convolve(A, B);\n\n    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i)\
+    \ ret[i] = C[(N - 1) * 2 + i] * g[i];\n\n    return ret;\n  }\n}\n#line 5 \"Mylib/Combinatorics/stirling_number_first_fft.cpp\"\
+    \n\nnamespace haar_lib {\n  template <typename T, typename Conv>\n  std::vector<T>\
+    \ stirling_number_of_first_kind_fft(int N, const Conv &convolve){\n    if(N ==\
+    \ 0) return {1};\n\n    std::vector<int> p;\n    {\n      int a = N;\n\n     \
+    \ while(a > 0){\n        if(a & 1) p.push_back(1);\n        p.push_back(2);\n\
+    \        a >>= 1;\n      }\n    }\n\n    std::vector<T> ret = {1};\n\n    std::reverse(p.begin(),\
+    \ p.end());\n    int t = 0;\n    for(int x : p){\n      if(x == 1){\n        std::vector<T>\
+    \ a = {-t, 1};\n        ret = convolve(ret, a);\n\n        t += 1;\n      }else{\n\
+    \        auto s = polynomial_taylor_shift<T>(ret, -t, convolve);\n        ret\
+    \ = convolve(ret, s);\n        ret.resize(t * 2 + 1);\n\n        t *= 2;\n   \
+    \   }\n    }\n\n    ret.resize(N + 1);\n\n    return ret;\n  }\n}\n#line 3 \"\
+    Mylib/IO/join.cpp\"\n#include <sstream>\n#include <string>\n\nnamespace haar_lib\
+    \ {\n  template <typename Iter>\n  std::string join(Iter first, Iter last, std::string\
+    \ delim = \" \"){\n    std::stringstream s;\n\n    for(auto it = first; it !=\
+    \ last; ++it){\n      if(it != first) s << delim;\n      s << *it;\n    }\n\n\
+    \    return s.str();\n  }\n}\n#line 9 \"test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\nconstexpr int MOD = 998244353;\nconstexpr int\
+    \ PRIM = 3;\n\nusing mint = hl::modint<MOD>;\nusing NTT = hl::number_theoretic_transform<mint,\
+    \ PRIM, 1 << 20>;\n\nint main(){\n  using namespace std::placeholders;\n  std::cin.tie(0);\n\
+    \  std::ios::sync_with_stdio(false);\n\n  int N; std::cin >> N;\n\n  auto ntt\
+    \ = NTT();\n  auto convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);\n\
+    \  auto res = hl::stirling_number_of_first_kind_fft<mint>(N, convolve);\n\n  std::cout\
+    \ << hl::join(res.begin(), res.end()) << \"\\n\";\n\n  return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind\"\
+    \n\n#include <iostream>\n#include <functional>\n#include \"Mylib/Number/Mint/mint.cpp\"\
+    \n#include \"Mylib/Convolution/ntt_convolution.cpp\"\n#include \"Mylib/Combinatorics/stirling_number_first_fft.cpp\"\
+    \n#include \"Mylib/IO/join.cpp\"\n\nnamespace hl = haar_lib;\n\nconstexpr int\
+    \ MOD = 998244353;\nconstexpr int PRIM = 3;\n\nusing mint = hl::modint<MOD>;\n\
+    using NTT = hl::number_theoretic_transform<mint, PRIM, 1 << 20>;\n\nint main(){\n\
+    \  using namespace std::placeholders;\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
+    \n  int N; std::cin >> N;\n\n  auto ntt = NTT();\n  auto convolve = std::bind(&NTT::convolve<mint>,\
+    \ &ntt, _1, _2);\n  auto res = hl::stirling_number_of_first_kind_fft<mint>(N,\
+    \ convolve);\n\n  std::cout << hl::join(res.begin(), res.end()) << \"\\n\";\n\n\
+    \  return 0;\n}\n"
+  dependsOn:
+  - Mylib/Number/Mint/mint.cpp
+  - Mylib/Convolution/ntt_convolution.cpp
+  - Mylib/Combinatorics/stirling_number_first_fft.cpp
+  - Mylib/Math/polynomial_taylor_shift.cpp
+  - Mylib/IO/join.cpp
+  isVerificationFile: true
+  path: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+  requiredBy: []
+  timestamp: '2020-09-17 22:58:14+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
+  verifiedWith: []
+documentation_of: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+layout: document
+redirect_from:
+- /verify/test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+- /verify/test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp.html
+title: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+---

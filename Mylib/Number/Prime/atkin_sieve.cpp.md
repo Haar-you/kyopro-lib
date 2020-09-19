@@ -1,0 +1,67 @@
+---
+data:
+  _extendedDependsOn: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/yukicoder/843/main.atkin.test.cpp
+    title: test/yukicoder/843/main.atkin.test.cpp
+  _pathExtension: cpp
+  _verificationStatusIcon: ':x:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    links: []
+  bundledCode: "#line 2 \"Mylib/Number/Prime/atkin_sieve.cpp\"\n#include <vector>\n\
+    #include <cstdint>\n\nnamespace haar_lib {\n  class atkin_sieve {\n    std::vector<bool>\
+    \ is_prime;\n\n  public:\n    atkin_sieve(int MAX): is_prime(MAX + 1){\n     \
+    \ for(int64_t i = 1; i * i <= MAX; ++i){\n        for(int64_t j = 1; j * j <=\
+    \ MAX; ++j){\n          {\n            auto n = 4LL * i * i + j * j;\n       \
+    \     if(n <= MAX and (n % 12 == 1 or n % 12 == 5)){\n              is_prime[n]\
+    \ = not is_prime[n];\n            }\n          }\n          {\n            auto\
+    \ n = 3LL * i * i + j * j;\n            if(n <= MAX and n % 12 == 7){\n      \
+    \        is_prime[n] = not is_prime[n];\n            }\n          }\n        \
+    \  if(i > j){\n            auto n = 3LL * i * i - j * j;\n            if(n <=\
+    \ MAX and n % 12 == 11){\n              is_prime[n] = not is_prime[n];\n     \
+    \       }\n          }\n        }\n      }\n\n      for(int64_t i = 5; i * i <=\
+    \ MAX; ++i){\n        if(is_prime[i]){\n          for(int64_t k = i * i, j = k;\
+    \ j <= MAX; j += k){\n            is_prime[j] = false;\n          }\n        }\n\
+    \      }\n\n      is_prime[2] = is_prime[3] = true;\n    }\n\n    bool operator()(int\
+    \ i) const {\n      return is_prime[i];\n    }\n  };\n}\n"
+  code: "#pragma once\n#include <vector>\n#include <cstdint>\n\nnamespace haar_lib\
+    \ {\n  class atkin_sieve {\n    std::vector<bool> is_prime;\n\n  public:\n   \
+    \ atkin_sieve(int MAX): is_prime(MAX + 1){\n      for(int64_t i = 1; i * i <=\
+    \ MAX; ++i){\n        for(int64_t j = 1; j * j <= MAX; ++j){\n          {\n  \
+    \          auto n = 4LL * i * i + j * j;\n            if(n <= MAX and (n % 12\
+    \ == 1 or n % 12 == 5)){\n              is_prime[n] = not is_prime[n];\n     \
+    \       }\n          }\n          {\n            auto n = 3LL * i * i + j * j;\n\
+    \            if(n <= MAX and n % 12 == 7){\n              is_prime[n] = not is_prime[n];\n\
+    \            }\n          }\n          if(i > j){\n            auto n = 3LL *\
+    \ i * i - j * j;\n            if(n <= MAX and n % 12 == 11){\n              is_prime[n]\
+    \ = not is_prime[n];\n            }\n          }\n        }\n      }\n\n     \
+    \ for(int64_t i = 5; i * i <= MAX; ++i){\n        if(is_prime[i]){\n         \
+    \ for(int64_t k = i * i, j = k; j <= MAX; j += k){\n            is_prime[j] =\
+    \ false;\n          }\n        }\n      }\n\n      is_prime[2] = is_prime[3] =\
+    \ true;\n    }\n\n    bool operator()(int i) const {\n      return is_prime[i];\n\
+    \    }\n  };\n}\n"
+  dependsOn: []
+  isVerificationFile: false
+  path: Mylib/Number/Prime/atkin_sieve.cpp
+  requiredBy: []
+  timestamp: '2020-09-16 17:10:42+09:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/yukicoder/843/main.atkin.test.cpp
+documentation_of: Mylib/Number/Prime/atkin_sieve.cpp
+layout: document
+title: Sieve of Atkin
+---
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References

@@ -1,0 +1,123 @@
+---
+data:
+  _extendedDependsOn: []
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: Mylib/Algorithm/Query/range_inversions_query.cpp
+    title: Range inversions query
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/0425/main.test.cpp
+    title: test/aoj/0425/main.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/static_range_inversions_query/main.test.cpp
+    title: test/yosupo-judge/static_range_inversions_query/main.test.cpp
+  _pathExtension: cpp
+  _verificationStatusIcon: ':question:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    links: []
+  bundledCode: "#line 2 \"Mylib/Algorithm/Mo/mo_algorithm.cpp\"\n#include <vector>\n\
+    #include <algorithm>\n#include <cassert>\n#include <cmath>\n\nnamespace haar_lib\
+    \ {\n  template <typename AppendLeft, typename AppendRight, typename RemoveLeft,\
+    \ typename RemoveRight, typename Query>\n  class mo_algorithm {\n    int N, Q,\
+    \ index, width;\n    std::vector<int> left, right, ord;\n\n    const AppendLeft\
+    \ append_left;\n    const AppendRight append_right;\n    const RemoveLeft remove_left;\n\
+    \    const RemoveRight remove_right;\n    const Query query;\n\n    bool is_built\
+    \ = false;\n\n  public:\n    mo_algorithm(\n      int N, int Q,\n      const AppendLeft\
+    \ &append_left, const AppendRight &append_right,\n      const RemoveLeft &remove_left,\
+    \ const RemoveRight &remove_right,\n      const Query &query\n    ):\n      N(N),\
+    \ Q(Q), index(0), width(std::sqrt(N)),\n      left(Q), right(Q), ord(Q),\n   \
+    \   append_left(append_left), append_right(append_right),\n      remove_left(remove_left),\
+    \ remove_right(remove_right),\n      query(query)\n    {}\n\n    // [l, r)\n \
+    \   void add(int l, int r){\n      left[index] = l;\n      right[index] = r;\n\
+    \      ord[index] = index;\n      ++index;\n    }\n\n    void build(){\n     \
+    \ std::sort(\n        ord.begin(),\n        ord.end(),\n        [&](int i, int\
+    \ j){\n          const int a = left[i] / width, b = left[j] / width;\n       \
+    \   if(a == b){\n            if(a & 1){\n              return right[i] < right[j];\n\
+    \            }else{\n              return right[i] > right[j];\n            }\n\
+    \          }else{\n            return a < b;\n          }\n        }\n      );\n\
+    \n      is_built = true;\n    }\n\n    void run(){\n      assert(is_built);\n\n\
+    \      int q = 0;\n      int l = left[ord[0]], r = left[ord[0]];\n\n      for(int\
+    \ i = 0; i < Q; ++i){\n        int id = ord[q++];\n\n        while(l != left[id]\
+    \ or r != right[id]){\n          if(l > left[id]) append_left(--l);\n        \
+    \  if(l < left[id]) remove_left(l++);\n          if(r < right[id]) append_right(r++);\n\
+    \          if(r > right[id]) remove_right(--r);\n        }\n\n        query(id);\n\
+    \      }\n    }\n  };\n}\n"
+  code: "#pragma once\n#include <vector>\n#include <algorithm>\n#include <cassert>\n\
+    #include <cmath>\n\nnamespace haar_lib {\n  template <typename AppendLeft, typename\
+    \ AppendRight, typename RemoveLeft, typename RemoveRight, typename Query>\n  class\
+    \ mo_algorithm {\n    int N, Q, index, width;\n    std::vector<int> left, right,\
+    \ ord;\n\n    const AppendLeft append_left;\n    const AppendRight append_right;\n\
+    \    const RemoveLeft remove_left;\n    const RemoveRight remove_right;\n    const\
+    \ Query query;\n\n    bool is_built = false;\n\n  public:\n    mo_algorithm(\n\
+    \      int N, int Q,\n      const AppendLeft &append_left, const AppendRight &append_right,\n\
+    \      const RemoveLeft &remove_left, const RemoveRight &remove_right,\n     \
+    \ const Query &query\n    ):\n      N(N), Q(Q), index(0), width(std::sqrt(N)),\n\
+    \      left(Q), right(Q), ord(Q),\n      append_left(append_left), append_right(append_right),\n\
+    \      remove_left(remove_left), remove_right(remove_right),\n      query(query)\n\
+    \    {}\n\n    // [l, r)\n    void add(int l, int r){\n      left[index] = l;\n\
+    \      right[index] = r;\n      ord[index] = index;\n      ++index;\n    }\n\n\
+    \    void build(){\n      std::sort(\n        ord.begin(),\n        ord.end(),\n\
+    \        [&](int i, int j){\n          const int a = left[i] / width, b = left[j]\
+    \ / width;\n          if(a == b){\n            if(a & 1){\n              return\
+    \ right[i] < right[j];\n            }else{\n              return right[i] > right[j];\n\
+    \            }\n          }else{\n            return a < b;\n          }\n   \
+    \     }\n      );\n\n      is_built = true;\n    }\n\n    void run(){\n      assert(is_built);\n\
+    \n      int q = 0;\n      int l = left[ord[0]], r = left[ord[0]];\n\n      for(int\
+    \ i = 0; i < Q; ++i){\n        int id = ord[q++];\n\n        while(l != left[id]\
+    \ or r != right[id]){\n          if(l > left[id]) append_left(--l);\n        \
+    \  if(l < left[id]) remove_left(l++);\n          if(r < right[id]) append_right(r++);\n\
+    \          if(r > right[id]) remove_right(--r);\n        }\n\n        query(id);\n\
+    \      }\n    }\n  };\n}\n"
+  dependsOn: []
+  isVerificationFile: false
+  path: Mylib/Algorithm/Mo/mo_algorithm.cpp
+  requiredBy:
+  - Mylib/Algorithm/Query/range_inversions_query.cpp
+  timestamp: '2020-09-16 17:10:42+09:00'
+  verificationStatus: LIBRARY_SOME_WA
+  verifiedWith:
+  - test/aoj/0425/main.test.cpp
+  - test/yosupo-judge/static_range_inversions_query/main.test.cpp
+documentation_of: Mylib/Algorithm/Mo/mo_algorithm.cpp
+layout: document
+title: Mo's algorithm
+---
+
+## Operations
+
+- `MoAlgorithm`
+- `add(int l, int r)`
+	- クエリ`[l, r)`を追加する。
+- `build()`
+- `run()`
+- `make_mo`
+
+## Requirements
+
+- `append(int i, int d)`
+	- `i`番目の要素を追加する操作。
+    - `d = -1`で左端に追加、`d = 1`で右端に追加。
+- `remove(int i, int d)`
+	- `i`番目の要素を削除する操作。
+    - `d = -1`で左端を削除、`d = 1`で右端を削除。
+- `query(int i)`
+	- `i`番目のクエリを処理する操作。
+- 必ず`add`, `build`, `run`の順で実行する。
+
+## Notes
+
+## Problems
+
+- [Yandex.Algorithm 2011: Round 2 D. Powerful array](https://codeforces.com/contest/86/problem/D) (出現数)
+- [SPOJ DQUERY](https://www.spoj.com/problems/DQUERY/) (種類数)
+- [第3回 ドワンゴからの挑戦状 本選 B - ニワンゴくんの約数](https://atcoder.jp/contests/dwacon2017-honsen/tasks/dwango2017final_b) (積の約数の個数)
+- [Codeforces Round #221 (Div. 1) D. Tree and Queries](https://codeforces.com/contest/375/problem/D) (部分木 / 出現数k以上の種類数)
+- [Unique Art](https://www.hackerrank.com/contests/university-codesprint-4/challenges/unique-art/problem) (出現数1の種類数)
+
+## References
+
+- [https://ei1333.hateblo.jp/entry/2017/09/11/211011](https://ei1333.hateblo.jp/entry/2017/09/11/211011)
+- [https://snuke.hatenablog.com/entry/2016/07/01/000000](https://snuke.hatenablog.com/entry/2016/07/01/000000)
+- [https://www.hamayanhamayan.com/entry/2017/04/18/012937](https://www.hamayanhamayan.com/entry/2017/04/18/012937)

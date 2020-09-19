@@ -1,1071 +1,2404 @@
 ---
-layout: default
+data:
+  libraryCategories:
+  - name: Mylib/AlgebraicStructure/Group
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Mylib/AlgebraicStructure/Group/dihedral.cpp
+      title: Dihedral group
+    - icon: ':question:'
+      path: Mylib/AlgebraicStructure/Group/sum.cpp
+      title: Sum group
+  - name: Mylib/AlgebraicStructure/Monoid
+    pages:
+    - icon: ':x:'
+      path: Mylib/AlgebraicStructure/Monoid/affine.cpp
+      title: Affine monoid
+    - icon: ':x:'
+      path: Mylib/AlgebraicStructure/Monoid/array.cpp
+      title: Array monoid
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/Monoid/bitand.cpp
+      title: Bitand monoid
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/Monoid/bitor.cpp
+      title: Bitor monoid
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/Monoid/bitxor.cpp
+      title: Bitxor monoid
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/Monoid/bounded_max.cpp
+      title: Bounded max monoid
+    - icon: ':x:'
+      path: Mylib/AlgebraicStructure/Monoid/bounded_min.cpp
+      title: Bounded min monoid
+    - icon: ':x:'
+      path: Mylib/AlgebraicStructure/Monoid/dual.cpp
+      title: Dual monoid
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/Monoid/gcd.cpp
+      title: GCD monoid
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/Monoid/lcm.cpp
+      title: LCM monoid
+    - icon: ':question:'
+      path: Mylib/AlgebraicStructure/Monoid/max.cpp
+      title: Max monoid
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/Monoid/max_contiguous.cpp
+      title: Max contiguous monoid
+    - icon: ':x:'
+      path: Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp
+      title: Max partial sum monoid
+    - icon: ':x:'
+      path: Mylib/AlgebraicStructure/Monoid/maybe.cpp
+      title: Maybe monoid
+    - icon: ':question:'
+      path: Mylib/AlgebraicStructure/Monoid/min.cpp
+      title: Min monoid
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp
+      title: Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/Monoid/ordering.cpp
+      title: Ordering monoid
+    - icon: ':heavy_check_mark:'
+      path: Mylib/AlgebraicStructure/Monoid/pair.cpp
+      title: Pair monoid
+    - icon: ':x:'
+      path: Mylib/AlgebraicStructure/Monoid/product.cpp
+      title: Product monoid
+    - icon: ':x:'
+      path: Mylib/AlgebraicStructure/Monoid/product_matrix.cpp
+      title: Product matrix monoid
+    - icon: ':heavy_check_mark:'
+      path: Mylib/AlgebraicStructure/Monoid/rolling_hash.cpp
+      title: Rolling hash monoid
+    - icon: ':question:'
+      path: Mylib/AlgebraicStructure/Monoid/sum.cpp
+      title: Sum monoid
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/Monoid/sum_matrix.cpp
+      title: Sum matrix monoid
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/Monoid/transformation.cpp
+      title: Transformation monoid
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/Monoid/trivial.cpp
+      title: Trivial monoid
+    - icon: ':x:'
+      path: Mylib/AlgebraicStructure/Monoid/update.cpp
+      title: Update monoid
+    - icon: ':heavy_check_mark:'
+      path: Mylib/AlgebraicStructure/Monoid/with_count.cpp
+      title: Mylib/AlgebraicStructure/Monoid/with_count.cpp
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/Monoid/with_max_index.cpp
+      title: Mylib/AlgebraicStructure/Monoid/with_max_index.cpp
+    - icon: ':x:'
+      path: Mylib/AlgebraicStructure/Monoid/with_min_index.cpp
+      title: Mylib/AlgebraicStructure/Monoid/with_min_index.cpp
+  - name: Mylib/AlgebraicStructure/MonoidAction
+    pages:
+    - icon: ':x:'
+      path: Mylib/AlgebraicStructure/MonoidAction/add_max.cpp
+      title: Range add / Range max
+    - icon: ':heavy_check_mark:'
+      path: Mylib/AlgebraicStructure/MonoidAction/add_max_with_count.cpp
+      title: Range add / Range max with count
+    - icon: ':x:'
+      path: Mylib/AlgebraicStructure/MonoidAction/add_min.cpp
+      title: Range add / Range min
+    - icon: ':heavy_check_mark:'
+      path: Mylib/AlgebraicStructure/MonoidAction/add_min_with_count.cpp
+      title: Range add / Range min with count
+    - icon: ':x:'
+      path: Mylib/AlgebraicStructure/MonoidAction/add_square_sum.cpp
+      title: Range add / Range square sum
+    - icon: ':question:'
+      path: Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp
+      title: Range add / Range sum
+    - icon: ':x:'
+      path: Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp
+      title: Range affine / Range sum
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp
+      title: Range multiply / Range product
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/MonoidAction/multiply_sum.cpp
+      title: Range multiply / Range sum
+    - icon: ':x:'
+      path: Mylib/AlgebraicStructure/MonoidAction/update_min.cpp
+      title: Range update / Range min
+    - icon: ':x:'
+      path: Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp
+      title: Range update / Range sum
+  - name: Mylib/AlgebraicStructure/Semiring
+    pages:
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/Semiring/add_mul.cpp
+      title: Add-mul semiring
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/Semiring/min_add.cpp
+      title: Min-add semiring
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/Semiring/xor_and.cpp
+      title: Xor-and semiring
+  - name: Mylib/Algorithm/CumulativeSum
+    pages:
+    - icon: ':x:'
+      path: Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp
+      title: 1D cumulative sum
+    - icon: ':x:'
+      path: Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp
+      title: 2D cumulative sum
+  - name: Mylib/Algorithm/Imos
+    pages:
+    - icon: ':x:'
+      path: Mylib/Algorithm/Imos/imos_1d.cpp
+      title: 1D Imos algorithm
+    - icon: ':x:'
+      path: Mylib/Algorithm/Imos/imos_2d.cpp
+      title: 2D Imos algorithm
+    - icon: ':x:'
+      path: Mylib/Algorithm/Imos/linear_imos_1d.cpp
+      title: 1D Imos algorithm (Linear addition)
+  - name: Mylib/Algorithm/InversionNumber
+    pages:
+    - icon: ':x:'
+      path: Mylib/Algorithm/InversionNumber/inversion_number.cpp
+      title: Inversion number
+  - name: Mylib/Algorithm/Mo
+    pages:
+    - icon: ':question:'
+      path: Mylib/Algorithm/Mo/mo_algorithm.cpp
+      title: Mo's algorithm
+  - name: Mylib/Algorithm/Query
+    pages:
+    - icon: ':warning:'
+      path: Mylib/Algorithm/Query/range_count_query.cpp
+      title: Range count query
+    - icon: ':x:'
+      path: Mylib/Algorithm/Query/range_inversions_query.cpp
+      title: Range inversions query
+    - icon: ':warning:'
+      path: Mylib/Algorithm/Query/range_mode_query.cpp
+      title: Range mode query
+  - name: Mylib/Algorithm/Search
+    pages:
+    - icon: ':x:'
+      path: Mylib/Algorithm/Search/golden_section_search_downwards.cpp
+      title: Golden section search (Convex downwards)
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Algorithm/Search/golden_section_search_upwards.cpp
+      title: Golden section search (Convex upwards)
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Algorithm/Search/parallel_binary_search.cpp
+      title: Parallel binary search
+    - icon: ':x:'
+      path: Mylib/Algorithm/Search/ternary_search_downwards.cpp
+      title: Ternary search (Convex downwards)
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Algorithm/Search/ternary_search_upwards.cpp
+      title: Ternary search (Convex upwards)
+  - name: Mylib/Algorithm/SlidingWindow
+    pages:
+    - icon: ':warning:'
+      path: Mylib/Algorithm/SlidingWindow/sliding_maximum.cpp
+      title: Sliding window maximum
+    - icon: ':x:'
+      path: Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp
+      title: Sliding window minimum
+    - icon: ':warning:'
+      path: Mylib/Algorithm/SlidingWindow/sliding_minmax.cpp
+      title: Sliding window minmax
+  - name: Mylib/Algorithm/SqrtDecomposition
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp
+      title: Sqrt decomposition
+  - name: Mylib/Bit
+    pages:
+    - icon: ':warning:'
+      path: Mylib/Bit/bit_reverse.cpp
+      title: Bit reverse
+    - icon: ':x:'
+      path: Mylib/Bit/enumerate_sets_of_size_k.cpp
+      title: Enumerate sets of size k
+    - icon: ':question:'
+      path: Mylib/Bit/enumerate_subsets_asc.cpp
+      title: Enumerate subsets (Ascending order)
+    - icon: ':warning:'
+      path: Mylib/Bit/enumerate_subsets_between.cpp
+      title: Enumerate subsets (Between)
+    - icon: ':x:'
+      path: Mylib/Bit/enumerate_subsets_desc.cpp
+      title: Enumerate subsets (Descending order)
+    - icon: ':x:'
+      path: Mylib/Bit/enumerate_supersets_asc.cpp
+      title: Enumerate supersets (Ascending order)
+    - icon: ':x:'
+      path: Mylib/Bit/enumerate_supersets_desc.cpp
+      title: Enumerate supersets (Descending order)
+    - icon: ':warning:'
+      path: Mylib/Bit/gray_code.cpp
+      title: Gray code
+  - name: Mylib/Combinatorics
+    pages:
+    - icon: ':x:'
+      path: Mylib/Combinatorics/bell_number.cpp
+      title: Bell number
+    - icon: ':x:'
+      path: Mylib/Combinatorics/bell_number_table.cpp
+      title: Bell number (Table)
+    - icon: ':x:'
+      path: Mylib/Combinatorics/bernoulli_number.cpp
+      title: Bernoulli number
+    - icon: ':x:'
+      path: Mylib/Combinatorics/bernoulli_number_fps.cpp
+      title: Bernoulli number (FPS)
+    - icon: ':warning:'
+      path: Mylib/Combinatorics/binomial_coefficients_table.cpp
+      title: Binomial coefficients table
+    - icon: ':x:'
+      path: Mylib/Combinatorics/catalan_number.cpp
+      title: Catalan number
+    - icon: ':x:'
+      path: Mylib/Combinatorics/factorial_table.cpp
+      title: Factorial table
+    - icon: ':x:'
+      path: Mylib/Combinatorics/montmort_number.cpp
+      title: Montmort number
+    - icon: ':x:'
+      path: Mylib/Combinatorics/partition_number.cpp
+      title: Partition number (Enumerate $P(n, k)$)
+    - icon: ':x:'
+      path: Mylib/Combinatorics/partition_number_fps.cpp
+      title: Partition number (FPS)
+    - icon: ':x:'
+      path: Mylib/Combinatorics/partition_number_n.cpp
+      title: Partition number (Enumerate $P(n, n)$)
+    - icon: ':x:'
+      path: Mylib/Combinatorics/stirling_number_first_fft.cpp
+      title: Stirling numbers of the first kind (FFT)
+    - icon: ':x:'
+      path: Mylib/Combinatorics/stirling_number_second.cpp
+      title: Stirling numbers of the second kind
+    - icon: ':x:'
+      path: Mylib/Combinatorics/stirling_number_second_fft.cpp
+      title: Stirling numbers of the second kind (FFT)
+    - icon: ':x:'
+      path: Mylib/Combinatorics/stirling_number_second_table.cpp
+      title: Stirling numbers of the second kind (Table)
+  - name: Mylib/Convolution
+    pages:
+    - icon: ':warning:'
+      path: Mylib/Convolution/convolution_and.cpp
+      title: Convolution (Index bitwise AND)
+    - icon: ':warning:'
+      path: Mylib/Convolution/convolution_or.cpp
+      title: Convolution (Index bitwise OR)
+    - icon: ':warning:'
+      path: Mylib/Convolution/convolution_xor.cpp
+      title: Convolution (Index bitwise XOR)
+    - icon: ':warning:'
+      path: Mylib/Convolution/fast_fourier_transform.cpp
+      title: Fast Fourier transform
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Convolution/fast_mobius_transform_subset.cpp
+      title: "Fast M\xF6bius transform (Subsets)"
+    - icon: ':x:'
+      path: Mylib/Convolution/fast_mobius_transform_superset.cpp
+      title: "Fast M\xF6bius transform (Supersets)"
+    - icon: ':x:'
+      path: Mylib/Convolution/fast_zeta_transform_subset.cpp
+      title: Fast Zeta transform (Subsets)
+    - icon: ':x:'
+      path: Mylib/Convolution/fast_zeta_transform_superset.cpp
+      title: Fast Zeta transform (Supersets)
+    - icon: ':x:'
+      path: Mylib/Convolution/ntt_convolution.cpp
+      title: Number theoretic transform
+  - name: Mylib/DataStructure/Array
+    pages:
+    - icon: ':x:'
+      path: Mylib/DataStructure/Array/persistent_array.cpp
+      title: Persistent array
+    - icon: ':warning:'
+      path: Mylib/DataStructure/Array/rollbackable_vector.cpp
+      title: Rollbackable vector
+  - name: Mylib/DataStructure/CartesianTree
+    pages:
+    - icon: ':x:'
+      path: Mylib/DataStructure/CartesianTree/cartesian_tree.cpp
+      title: Cartesian tree
+  - name: Mylib/DataStructure/ConvexHullTrick
+    pages:
+    - icon: ':warning:'
+      path: Mylib/DataStructure/ConvexHullTrick/convex_hull_trick.cpp
+      title: Convex hull trick
+    - icon: ':x:'
+      path: Mylib/DataStructure/ConvexHullTrick/dynamic_lichao_segment_tree.cpp
+      title: Dynamic LiChao segment tree
+    - icon: ':x:'
+      path: Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp
+      title: LiChao segment tree
+  - name: Mylib/DataStructure/FenwickTree
+    pages:
+    - icon: ':x:'
+      path: Mylib/DataStructure/FenwickTree/fenwick_tree.cpp
+      title: Fenwick tree
+    - icon: ':heavy_check_mark:'
+      path: Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp
+      title: Fenwick tree (2D)
+    - icon: ':x:'
+      path: Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
+      title: Fenwick tree (Add)
+    - icon: ':x:'
+      path: Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp
+      title: Fenwick tree (On Fenwick tree)
+  - name: Mylib/DataStructure/Heap
+    pages:
+    - icon: ':x:'
+      path: Mylib/DataStructure/Heap/binary_heap.cpp
+      title: Binary heap
+    - icon: ':heavy_check_mark:'
+      path: Mylib/DataStructure/Heap/binomial_heap.cpp
+      title: Binomial heap
+    - icon: ':warning:'
+      path: Mylib/DataStructure/Heap/interval_heap.cpp
+      title: Interval heap
+    - icon: ':heavy_check_mark:'
+      path: Mylib/DataStructure/Heap/leftist_heap.cpp
+      title: Leftist heap
+    - icon: ':heavy_check_mark:'
+      path: Mylib/DataStructure/Heap/skew_heap.cpp
+      title: Skew heap
+  - name: Mylib/DataStructure/LinkCutTree
+    pages:
+    - icon: ':x:'
+      path: Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp
+      title: Link/cut tree
+  - name: Mylib/DataStructure/Queue
+    pages:
+    - icon: ':x:'
+      path: Mylib/DataStructure/Queue/persistent_queue.cpp
+      title: Persistent queue
+    - icon: ':x:'
+      path: Mylib/DataStructure/Queue/sliding_window_aggregation.cpp
+      title: Sliding window aggregation
+  - name: Mylib/DataStructure/RangeTree
+    pages:
+    - icon: ':x:'
+      path: Mylib/DataStructure/RangeTree/range_tree.cpp
+      title: Mylib/DataStructure/RangeTree/range_tree.cpp
+  - name: Mylib/DataStructure/SegmentTree
+    pages:
+    - icon: ':x:'
+      path: Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp
+      title: Dual segment tree
+    - icon: ':x:'
+      path: Mylib/DataStructure/SegmentTree/dynamic_dual_segment_tree.cpp
+      title: Dynamic dual segment tree
+    - icon: ':x:'
+      path: Mylib/DataStructure/SegmentTree/dynamic_lazy_segment_tree.cpp
+      title: Dynamic lazy segment tree
+    - icon: ':x:'
+      path: Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp
+      title: Dynamic segment tree
+    - icon: ':question:'
+      path: Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp
+      title: Lazy segment tree
+    - icon: ':x:'
+      path: Mylib/DataStructure/SegmentTree/lazy_segment_tree_with_coefficients.cpp
+      title: Lazy segment tree (Range sum, Range add, With coefficients)
+    - icon: ':x:'
+      path: Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp
+      title: Persistent segment tree
+    - icon: ':question:'
+      path: Mylib/DataStructure/SegmentTree/segment_tree.cpp
+      title: Segment tree
+    - icon: ':heavy_check_mark:'
+      path: Mylib/DataStructure/SegmentTree/segment_tree_2d.cpp
+      title: Segment tree (2D)
+    - icon: ':x:'
+      path: Mylib/DataStructure/SegmentTree/segment_tree_beats.cpp
+      title: Segment tree beats
+    - icon: ':x:'
+      path: Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp
+      title: Segment tree (Both foldable)
+    - icon: ':x:'
+      path: Mylib/DataStructure/SegmentTree/segment_tree_linear_add.cpp
+      title: Segment tree (Add $ai + b$)
+    - icon: ':warning:'
+      path: Mylib/DataStructure/SegmentTree/segment_tree_linear_add_range_sum.cpp
+      title: Segment tree (Add $ai + b$, Range sum)
+    - icon: ':x:'
+      path: Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp
+      title: Segment tree (On segment tree)
+    - icon: ':x:'
+      path: Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp
+      title: Starry-sky tree
+  - name: Mylib/DataStructure/SparseTable
+    pages:
+    - icon: ':warning:'
+      path: Mylib/DataStructure/SparseTable/disjoint_sparse_table.cpp
+      title: Disjoint sparse table
+    - icon: ':x:'
+      path: Mylib/DataStructure/SparseTable/sparse_table.cpp
+      title: Sparse table
+    - icon: ':warning:'
+      path: Mylib/DataStructure/SparseTable/sparse_table_2d.cpp
+      title: Sparse table (2D)
+  - name: Mylib/DataStructure/SplayTree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Mylib/DataStructure/SplayTree/splay_tree.cpp
+      title: Splay tree
+  - name: Mylib/DataStructure/Stack
+    pages:
+    - icon: ':warning:'
+      path: Mylib/DataStructure/Stack/persistent_stack.cpp
+      title: Persistent stack
+  - name: Mylib/DataStructure/Treap
+    pages:
+    - icon: ':warning:'
+      path: Mylib/DataStructure/Treap/ordered_treap.cpp
+      title: Treap (Ordered set)
+    - icon: ':heavy_check_mark:'
+      path: Mylib/DataStructure/Treap/treap.cpp
+      title: Treap
+  - name: Mylib/DataStructure/Trie
+    pages:
+    - icon: ':x:'
+      path: Mylib/DataStructure/Trie/binary_trie.cpp
+      title: Binary trie
+  - name: Mylib/DataStructure/UnionFind
+    pages:
+    - icon: ':warning:'
+      path: Mylib/DataStructure/UnionFind/partially_persistent_unionfind.cpp
+      title: Partially persistent union-find
+    - icon: ':x:'
+      path: Mylib/DataStructure/UnionFind/persistent_unionfind.cpp
+      title: Persistent union-find
+    - icon: ':question:'
+      path: Mylib/DataStructure/UnionFind/unionfind.cpp
+      title: Union-find
+    - icon: ':x:'
+      path: Mylib/DataStructure/UnionFind/weighted_unionfind.cpp
+      title: Weighted union-find
+  - name: Mylib/DataStructure/WaveletMatrix
+    pages:
+    - icon: ':question:'
+      path: Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp
+      title: Succinct dictionary
+    - icon: ':question:'
+      path: Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp
+      title: Wavelet matrix
+  - name: Mylib/Debug
+    pages:
+    - icon: ':warning:'
+      path: Mylib/Debug/debug.cpp
+      title: Mylib/Debug/debug.cpp
+    - icon: ':warning:'
+      path: Mylib/Debug/grid_viewer.cpp
+      title: Mylib/Debug/grid_viewer.cpp
+    - icon: ':warning:'
+      path: Mylib/Debug/matrix_viewer.cpp
+      title: Matrix viewer
+    - icon: ':warning:'
+      path: Mylib/Debug/memory_dump.cpp
+      title: Memory dump
+    - icon: ':warning:'
+      path: Mylib/Debug/polynomial_viewer.cpp
+      title: Mylib/Debug/polynomial_viewer.cpp
+  - name: Mylib/DynamicProgramming/SpeedupTechnique
+    pages:
+    - icon: ':x:'
+      path: Mylib/DynamicProgramming/SpeedupTechnique/kitamasa_algorithm.cpp
+      title: Kitamasa algorithm
+    - icon: ':warning:'
+      path: Mylib/DynamicProgramming/SpeedupTechnique/monotone_minima.cpp
+      title: Monotone minima
+  - name: Mylib/DynamicProgramming
+    pages:
+    - icon: ':x:'
+      path: Mylib/DynamicProgramming/bitonic_tour.cpp
+      title: Bitonic tour
+    - icon: ':x:'
+      path: Mylib/DynamicProgramming/longest_increasing_subsequence.cpp
+      title: Longest increasing subsequence
+    - icon: ':warning:'
+      path: Mylib/DynamicProgramming/max_partial_sum.cpp
+      title: Maximum subarray problem
+  - name: Mylib/Geometry/Float
+    pages:
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp
+      title: Area of intersection between a circle and a polygon
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/area_intersection_of_circles.cpp
+      title: Area of intersection between two circles
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/area_polygon.cpp
+      title: Area of polygon
+    - icon: ':question:'
+      path: Mylib/Geometry/Float/ccw.cpp
+      title: Check clockwise-counterclockwise
+    - icon: ':question:'
+      path: Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp
+      title: Circumscribed circle of a triangle
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/closest_pair.cpp
+      title: Closest pair
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/common_tangent_of_circles.cpp
+      title: Common tangents of two circles
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/convex_cut.cpp
+      title: Convex cut
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/convex_diameter.cpp
+      title: Convex diameter
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/convex_hull.cpp
+      title: Convex hull
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/distance_line_point.cpp
+      title: Distance between a line and a point
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/distance_segment_point.cpp
+      title: Distance between a segment and a point
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/distance_segments.cpp
+      title: Distance between two segments
+    - icon: ':question:'
+      path: Mylib/Geometry/Float/double_eps.cpp
+      title: Floating point number with eps
+    - icon: ':question:'
+      path: Mylib/Geometry/Float/geometry_template.cpp
+      title: Geometry template
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/inscribed_circle_of_triangle.cpp
+      title: Inscribed circle of a triangle
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/intersect_circle_line.cpp
+      title: Intersection between a circle and a line
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/intersect_circle_segment.cpp
+      title: Intersection between a circle and a segment
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/intersect_circles.cpp
+      title: Intersection between two circles
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/intersect_line_segment.cpp
+      title: Intersection between a line and a segment
+    - icon: ':question:'
+      path: Mylib/Geometry/Float/intersect_segments.cpp
+      title: Intersection between two segments
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/is_convex.cpp
+      title: Check convex
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/is_point_in_polygon.cpp
+      title: Check if a point is in a polygon
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/manhattan_segments_intersections.cpp
+      title: Manhattan segments intersections
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Geometry/Float/minimum_covering_circle.cpp
+      title: Minimum covering circle
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/orthogonal.cpp
+      title: Orthogonal
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/parallel.cpp
+      title: Parallel
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/projection.cpp
+      title: Projection
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/reflection.cpp
+      title: Reflection
+    - icon: ':x:'
+      path: Mylib/Geometry/Float/tangent_of_circle.cpp
+      title: Tangent of circle
+  - name: Mylib/Graph/BipartiteGraph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp
+      title: Check bipartite graph
+    - icon: ':warning:'
+      path: Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp
+      title: Check bipartite graph (Using union-find)
+  - name: Mylib/Graph/Coloring
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Graph/Coloring/chromatic_number.cpp
+      title: Graph vertex coloring
+  - name: Mylib/Graph/Cycle
+    pages:
+    - icon: ':x:'
+      path: Mylib/Graph/Cycle/detect_cycle.cpp
+      title: Detect cycle
+    - icon: ':warning:'
+      path: Mylib/Graph/Cycle/directed_shortest_cycle.cpp
+      title: Directed shortest cycle
+    - icon: ':warning:'
+      path: Mylib/Graph/Cycle/enumerate_functional_cycles.cpp
+      title: Enumerate cycles in functional graph
+    - icon: ':warning:'
+      path: Mylib/Graph/Cycle/undirected_shortest_cycle.cpp
+      title: Undirected shortest cycle
+  - name: Mylib/Graph/DAG
+    pages:
+    - icon: ':warning:'
+      path: Mylib/Graph/DAG/dag_longest_path.cpp
+      title: Longest path on DAG
+  - name: Mylib/Graph/EulerianPath
+    pages:
+    - icon: ':warning:'
+      path: Mylib/Graph/EulerianPath/directed_eulerian_path.cpp
+      title: Directed Eulerian path
+    - icon: ':warning:'
+      path: Mylib/Graph/EulerianPath/undirected_eulerian_path.cpp
+      title: Undirected Eulerian path
+  - name: Mylib/Graph/Flow
+    pages:
+    - icon: ':x:'
+      path: Mylib/Graph/Flow/dinic.cpp
+      title: Dinic algorithm
+    - icon: ':question:'
+      path: Mylib/Graph/Flow/ford_fulkerson.cpp
+      title: Ford-Fulkerson algorithm
+    - icon: ':question:'
+      path: Mylib/Graph/Flow/minimum_cost_flow.cpp
+      title: Minimum cost flow
+    - icon: ':x:'
+      path: Mylib/Graph/Flow/push_relabel.cpp
+      title: Push-relabel
+  - name: Mylib/Graph/GraphUtils
+    pages:
+    - icon: ':x:'
+      path: Mylib/Graph/GraphUtils/articulation_points.cpp
+      title: Articulation points
+    - icon: ':warning:'
+      path: Mylib/Graph/GraphUtils/biconnected_components.cpp
+      title: Biconnected components
+    - icon: ':x:'
+      path: Mylib/Graph/GraphUtils/bridges.cpp
+      title: Bridges
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Graph/GraphUtils/decompose_pseudotree.cpp
+      title: Decompose pseudotree
+    - icon: ':x:'
+      path: Mylib/Graph/GraphUtils/strongly_connected_components.cpp
+      title: Strongly connected components
+    - icon: ':x:'
+      path: Mylib/Graph/GraphUtils/two_edge_connected_components.cpp
+      title: Two edge connected components
+  - name: Mylib/Graph/Matching
+    pages:
+    - icon: ':x:'
+      path: Mylib/Graph/Matching/bipartite_matching.cpp
+      title: Maximum bipartite matching
+    - icon: ':x:'
+      path: Mylib/Graph/Matching/hopcroft_karp.cpp
+      title: Hopcroft-Karp algorithm
+    - icon: ':question:'
+      path: Mylib/Graph/Matching/weighted_bipartite_matching.cpp
+      title: Weighted maximum bipartite matching
+  - name: Mylib/Graph/MinimumSpanningTree
+    pages:
+    - icon: ':x:'
+      path: Mylib/Graph/MinimumSpanningTree/boruvka.cpp
+      title: "Bor\u016Fvka algorithm"
+    - icon: ':x:'
+      path: Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
+      title: Chu-Liu/Edmonds algorithm
+    - icon: ':x:'
+      path: Mylib/Graph/MinimumSpanningTree/kruskal.cpp
+      title: Kruskal algorithm
+    - icon: ':x:'
+      path: Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp
+      title: Manhattan distance MST
+    - icon: ':question:'
+      path: Mylib/Graph/MinimumSpanningTree/prim.cpp
+      title: Prim algorithm
+  - name: Mylib/Graph/ShortestPath
+    pages:
+    - icon: ':x:'
+      path: Mylib/Graph/ShortestPath/bellman_ford.cpp
+      title: Bellman-Ford algorithm
+    - icon: ':warning:'
+      path: Mylib/Graph/ShortestPath/bfs_0_1.cpp
+      title: 0-1 BFS
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Graph/ShortestPath/bfs_shortest_path.cpp
+      title: BFS shortest path
+    - icon: ':x:'
+      path: Mylib/Graph/ShortestPath/dial_algorithm.cpp
+      title: Dial's algorithm
+    - icon: ':question:'
+      path: Mylib/Graph/ShortestPath/dijkstra.cpp
+      title: Dijkstra algorithm
+    - icon: ':x:'
+      path: Mylib/Graph/ShortestPath/warshall_floyd.cpp
+      title: Warshall-Floyd algorithm
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp
+      title: Warshall-Floyd algorithm (For adjacency matrix graph)
+    - icon: ':x:'
+      path: Mylib/Graph/ShortestPath/yen_algorithm.cpp
+      title: Yen's algorithm
+  - name: Mylib/Graph/Template
+    pages:
+    - icon: ':question:'
+      path: Mylib/Graph/Template/graph.cpp
+      title: Basic graph
+    - icon: ':warning:'
+      path: Mylib/Graph/Template/range_edge_graph.cpp
+      title: Range edge graph
+  - name: Mylib/Graph/TopologicalSort
+    pages:
+    - icon: ':warning:'
+      path: Mylib/Graph/TopologicalSort/count_topological_sort.cpp
+      title: Count topological sort
+    - icon: ':x:'
+      path: Mylib/Graph/TopologicalSort/topological_sort.cpp
+      title: Topological sort
+    - icon: ':warning:'
+      path: Mylib/Graph/TopologicalSort/topological_sort_lexicographical.cpp
+      title: Topological sort (Lexicographically minimum)
+  - name: Mylib/Graph/TreeUtils
+    pages:
+    - icon: ':warning:'
+      path: Mylib/Graph/TreeUtils/centroid.cpp
+      title: Enumerate centroids
+    - icon: ':warning:'
+      path: Mylib/Graph/TreeUtils/centroid_decomposition.cpp
+      title: Centroid decomposition
+    - icon: ':x:'
+      path: Mylib/Graph/TreeUtils/euler_tour_bfs.cpp
+      title: Euler tour (BFS)
+    - icon: ':x:'
+      path: Mylib/Graph/TreeUtils/euler_tour_vertex.cpp
+      title: Euler tour (Vertex)
+    - icon: ':x:'
+      path: Mylib/Graph/TreeUtils/forest.cpp
+      title: Decompose forest
+    - icon: ':question:'
+      path: Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp
+      title: Heavy-light decomposition
+    - icon: ':x:'
+      path: Mylib/Graph/TreeUtils/lca_doubling.cpp
+      title: Lowest common ancestor (Doubling)
+    - icon: ':x:'
+      path: Mylib/Graph/TreeUtils/lca_hld.cpp
+      title: Lowest common ancestor (HLD)
+    - icon: ':question:'
+      path: Mylib/Graph/TreeUtils/rerooting.cpp
+      title: Rerooting DP
+    - icon: ':warning:'
+      path: Mylib/Graph/TreeUtils/rooting.cpp
+      title: Rooting
+    - icon: ':x:'
+      path: Mylib/Graph/TreeUtils/tree_diameter.cpp
+      title: Tree diameter
+    - icon: ':x:'
+      path: Mylib/Graph/TreeUtils/tree_distance.cpp
+      title: Tree distance
+    - icon: ':x:'
+      path: Mylib/Graph/TreeUtils/tree_height.cpp
+      title: Tree height
+  - name: Mylib/Graph
+    pages:
+    - icon: ':x:'
+      path: Mylib/Graph/chinese_postman_problem.cpp
+      title: Chinese postman problem
+    - icon: ':x:'
+      path: Mylib/Graph/enumerate_triangles.cpp
+      title: Enumerate triangles
+    - icon: ':x:'
+      path: Mylib/Graph/maximum_independent_set.cpp
+      title: Maximum independent set
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Graph/project_selection_problem.cpp
+      title: Project selection problem
+    - icon: ':x:'
+      path: Mylib/Graph/travelling_salesman_problem.cpp
+      title: Travelling salesman problem
+    - icon: ':x:'
+      path: Mylib/Graph/two_sat.cpp
+      title: 2-SAT
+  - name: Mylib/Grid
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Grid/grid.cpp
+      title: Grid template
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Grid/grid_bfs.cpp
+      title: BFS on a grid
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Grid/grid_find.cpp
+      title: Enumerate points satisfying conditions
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Grid/grid_to_graph.cpp
+      title: Convert grid to graph
+  - name: Mylib/Heuristic
+    pages:
+    - icon: ':warning:'
+      path: Mylib/Heuristic/simulated_annealing.cpp
+      title: Simulated annealing
+  - name: Mylib/IO
+    pages:
+    - icon: ':question:'
+      path: Mylib/IO/input_tuple.cpp
+      title: Mylib/IO/input_tuple.cpp
+    - icon: ':question:'
+      path: Mylib/IO/input_tuple_vector.cpp
+      title: Mylib/IO/input_tuple_vector.cpp
+    - icon: ':question:'
+      path: Mylib/IO/input_tuples.cpp
+      title: Mylib/IO/input_tuples.cpp
+    - icon: ':question:'
+      path: Mylib/IO/input_tuples_with_index.cpp
+      title: Mylib/IO/input_tuples_with_index.cpp
+    - icon: ':question:'
+      path: Mylib/IO/input_vector.cpp
+      title: Mylib/IO/input_vector.cpp
+    - icon: ':question:'
+      path: Mylib/IO/join.cpp
+      title: Mylib/IO/join.cpp
+  - name: Mylib/LinearAlgebra/GaussianElimination
+    pages:
+    - icon: ':x:'
+      path: Mylib/LinearAlgebra/GaussianElimination/binary_gaussian_elimination.cpp
+      title: Gaussian elimination (Mod2)
+    - icon: ':heavy_check_mark:'
+      path: Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp
+      title: Gaussian elimination
+  - name: Mylib/LinearAlgebra/SimultaneousLinearEquations
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp
+      title: Simultaneous linear equations (Mod2)
+    - icon: ':heavy_check_mark:'
+      path: Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp
+      title: Simultaneous linear equations (Floating point number)
+    - icon: ':x:'
+      path: Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp
+      title: Simultaneous linear equations
+  - name: Mylib/LinearAlgebra/Square
+    pages:
+    - icon: ':x:'
+      path: Mylib/LinearAlgebra/Square/determinant.cpp
+      title: Determinant
+    - icon: ':x:'
+      path: Mylib/LinearAlgebra/Square/inverse_matrix.cpp
+      title: Inverse matrix
+    - icon: ':question:'
+      path: Mylib/LinearAlgebra/Square/power.cpp
+      title: Power of a matrix
+    - icon: ':question:'
+      path: Mylib/LinearAlgebra/Square/square_matrix.cpp
+      title: Square matrix
+    - icon: ':x:'
+      path: Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp
+      title: Square matrix (Const size)
+  - name: Mylib/Math
+    pages:
+    - icon: ':warning:'
+      path: Mylib/Math/closed_interval.cpp
+      title: Closed interval
+    - icon: ':x:'
+      path: Mylib/Math/formal_power_series.cpp
+      title: Formal power series
+    - icon: ':x:'
+      path: Mylib/Math/polynomial_taylor_shift.cpp
+      title: polynomial_taylor_shift.md
+    - icon: ':warning:'
+      path: Mylib/Math/quadratic_equation.cpp
+      title: Real solutions of quadratic equation
+    - icon: ':x:'
+      path: Mylib/Math/sum_of_floor_of_linear.cpp
+      title: Sum of floor of linear
+  - name: Mylib/Misc
+    pages:
+    - icon: ':x:'
+      path: Mylib/Misc/convert_base.cpp
+      title: Convert base
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Misc/dice.cpp
+      title: Dice
+    - icon: ':x:'
+      path: Mylib/Misc/int128.cpp
+      title: 128-bit int
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Misc/merge_technique.cpp
+      title: Mylib/Misc/merge_technique.cpp
+    - icon: ':warning:'
+      path: Mylib/Misc/roman_numerals.cpp
+      title: Roman numerals
+    - icon: ':warning:'
+      path: Mylib/Misc/timer.cpp
+      title: Timer
+    - icon: ':warning:'
+      path: Mylib/Misc/unzip.cpp
+      title: Unzip function
+    - icon: ':warning:'
+      path: Mylib/Misc/xor_shift.cpp
+      title: Xorshift
+    - icon: ':warning:'
+      path: Mylib/Misc/zip.cpp
+      title: Zip function
+  - name: Mylib/Number/Divisor
+    pages:
+    - icon: ':warning:'
+      path: Mylib/Number/Divisor/count_divisors.cpp
+      title: Count divisors
+    - icon: ':x:'
+      path: Mylib/Number/Divisor/enumerate_divisors.cpp
+      title: Enumerate divisors
+  - name: Mylib/Number/Mint
+    pages:
+    - icon: ':x:'
+      path: Mylib/Number/Mint/mint.cpp
+      title: Modint
+    - icon: ':warning:'
+      path: Mylib/Number/Mint/montgomery.cpp
+      title: Montgomery multiplication
+    - icon: ':question:'
+      path: Mylib/Number/Mint/runtime_mint.cpp
+      title: Modint (Runtime mod)
+  - name: Mylib/Number/Mod
+    pages:
+    - icon: ':x:'
+      path: Mylib/Number/Mod/mod_inv.cpp
+      title: Mod inverse
+    - icon: ':x:'
+      path: Mylib/Number/Mod/mod_log.cpp
+      title: Mod logarithm
+    - icon: ':question:'
+      path: Mylib/Number/Mod/mod_pow.cpp
+      title: Mod pow
+    - icon: ':x:'
+      path: Mylib/Number/Mod/mod_sqrt.cpp
+      title: Mod sqrt
+  - name: Mylib/Number/Prime
+    pages:
+    - icon: ':x:'
+      path: Mylib/Number/Prime/atkin_sieve.cpp
+      title: Sieve of Atkin
+    - icon: ':x:'
+      path: Mylib/Number/Prime/count_coprime.cpp
+      title: Count coprime
+    - icon: ':x:'
+      path: Mylib/Number/Prime/eratosthenes_sieve.cpp
+      title: Sieve of Eratosthenes
+    - icon: ':warning:'
+      path: Mylib/Number/Prime/factorial_prime_factorization.cpp
+      title: Count number of prime factor p of $a!$
+    - icon: ':x:'
+      path: Mylib/Number/Prime/is_prime.cpp
+      title: Primality test (Trial division)
+    - icon: ':x:'
+      path: Mylib/Number/Prime/miller_rabin.cpp
+      title: Primality test (Miller-Rabin algorithm)
+    - icon: ':x:'
+      path: Mylib/Number/Prime/pollard_rho.cpp
+      title: Prime factorization (Pollard's rho algorithm)
+    - icon: ':x:'
+      path: Mylib/Number/Prime/prime_factorize.cpp
+      title: Prime factorization
+    - icon: ':warning:'
+      path: Mylib/Number/Prime/prime_factorize_sieve.cpp
+      title: Prime factorization (Sieve)
+    - icon: ':warning:'
+      path: Mylib/Number/Prime/segmented_sieve.cpp
+      title: Segmented sieve
+  - name: Mylib/Number/Rational
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Number/Rational/rational.cpp
+      title: Rational number
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Number/Rational/stern_brocot_tree.cpp
+      title: Stern-Brocot tree
+  - name: Mylib/Number
+    pages:
+    - icon: ':x:'
+      path: Mylib/Number/binary_gcd.cpp
+      title: Binary GCD
+    - icon: ':x:'
+      path: Mylib/Number/chinese_remainder_algorithm.cpp
+      title: Chinese remainder theorem
+    - icon: ':x:'
+      path: Mylib/Number/euler_phi_function.cpp
+      title: Euler's totient function
+    - icon: ':warning:'
+      path: Mylib/Number/euler_phi_function_table.cpp
+      title: Euler's totient function (Enumerate)
+    - icon: ':x:'
+      path: Mylib/Number/extended_gcd.cpp
+      title: Extended Euclidean algorithm
+    - icon: ':warning:'
+      path: Mylib/Number/floor_ceil.cpp
+      title: Floor function / Ceiling function
+    - icon: ':warning:'
+      path: Mylib/Number/garner.cpp
+      title: Garner algorithm
+    - icon: ':warning:'
+      path: Mylib/Number/gcd_lcm.cpp
+      title: Greatest common divisor / Least common multiple
+    - icon: ':warning:'
+      path: Mylib/Number/is_square.cpp
+      title: Check square number
+    - icon: ':x:'
+      path: Mylib/Number/kth_root_integer.cpp
+      title: Kth root integer
+    - icon: ':warning:'
+      path: Mylib/Number/mobius_function.cpp
+      title: "M\xF6bius function"
+    - icon: ':warning:'
+      path: Mylib/Number/power.cpp
+      title: Binary exponentiation
+    - icon: ':warning:'
+      path: Mylib/Number/sign_function.cpp
+      title: Sign function
+    - icon: ':x:'
+      path: Mylib/Number/tetration.cpp
+      title: Tetration
+  - name: Mylib/Parser
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Parser/parser.cpp
+      title: Parsing
+  - name: Mylib/String
+    pages:
+    - icon: ':x:'
+      path: Mylib/String/aho_corasick.cpp
+      title: Aho-Corasick algorithm
+    - icon: ':warning:'
+      path: Mylib/String/ends_with.cpp
+      title: ends_with
+    - icon: ':x:'
+      path: Mylib/String/knuth_morris_pratt.cpp
+      title: Knuth-Morris-Pratt algorithm
+    - icon: ':x:'
+      path: Mylib/String/lcp_array.cpp
+      title: LCP(Longest Common Prefix) array
+    - icon: ':x:'
+      path: Mylib/String/levenshtein_distance.cpp
+      title: Levenshtein distance / Edit distance
+    - icon: ':x:'
+      path: Mylib/String/longest_common_subsequence.cpp
+      title: Longest common subsequence
+    - icon: ':warning:'
+      path: Mylib/String/manacher.cpp
+      title: Manacher algorithm
+    - icon: ':warning:'
+      path: Mylib/String/palindromic_tree.cpp
+      title: Palindromic tree
+    - icon: ':x:'
+      path: Mylib/String/rolling_hash.cpp
+      title: Rolling hash
+    - icon: ':x:'
+      path: Mylib/String/rolling_hash_2d.cpp
+      title: Rolling hash (2D)
+    - icon: ':x:'
+      path: Mylib/String/run_enumerate.cpp
+      title: Run enumerate
+    - icon: ':heavy_check_mark:'
+      path: Mylib/String/split.cpp
+      title: split
+    - icon: ':warning:'
+      path: Mylib/String/starts_with.cpp
+      title: starts_with
+    - icon: ':x:'
+      path: Mylib/String/suffix_array.cpp
+      title: Suffix array
+    - icon: ':warning:'
+      path: Mylib/String/trie.cpp
+      title: Trie
+    - icon: ':x:'
+      path: Mylib/String/z_algorithm.cpp
+      title: Z-algorithm
+  - name: Mylib/TypicalProblem/IntervalSchedulingProblem
+    pages:
+    - icon: ':x:'
+      path: Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling.cpp
+      title: Interval scheduling problem
+    - icon: ':x:'
+      path: Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp
+      title: Interval scheduling problem (Allow no more than k intervals to overlap)
+    - icon: ':warning:'
+      path: Mylib/TypicalProblem/IntervalSchedulingProblem/weighted_interval_scheduling.cpp
+      title: Weighted interval scheduling problem
+  - name: Mylib/TypicalProblem/KnapsackProblem
+    pages:
+    - icon: ':x:'
+      path: Mylib/TypicalProblem/KnapsackProblem/knapsack_limited.cpp
+      title: Knapsack problem (With quantity limitations)
+    - icon: ':x:'
+      path: Mylib/TypicalProblem/KnapsackProblem/knapsack_small_quantity.cpp
+      title: 0-1 Knapsack problem (Small quantity)
+    - icon: ':x:'
+      path: Mylib/TypicalProblem/KnapsackProblem/knapsack_small_value.cpp
+      title: 0-1 Knapsack problem (Small value)
+    - icon: ':x:'
+      path: Mylib/TypicalProblem/KnapsackProblem/knapsack_small_weight.cpp
+      title: 0-1 Knapsack problem (Small weight)
+    - icon: ':x:'
+      path: Mylib/TypicalProblem/KnapsackProblem/knapsack_unlimited.cpp
+      title: Knapsack problem (Without quantity limitations)
+  - name: Mylib/TypicalProblem/MaxRectangleProblem
+    pages:
+    - icon: ':x:'
+      path: Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle.cpp
+      title: Largest rectangle
+    - icon: ':x:'
+      path: Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle_in_histogram.cpp
+      title: Largest rectangle in histogram
+  - name: Mylib/TypicalProblem/SubsetSumProblem
+    pages:
+    - icon: ':warning:'
+      path: Mylib/TypicalProblem/SubsetSumProblem/subset_sum.cpp
+      title: Subset sum problem
+    - icon: ':warning:'
+      path: Mylib/TypicalProblem/SubsetSumProblem/subset_sum_count.cpp
+      title: Subset sum problem (Count)
+    - icon: ':x:'
+      path: Mylib/TypicalProblem/SubsetSumProblem/subset_sum_count_fps.cpp
+      title: Subset sum problem (Count, FPS)
+    - icon: ':heavy_check_mark:'
+      path: Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp
+      title: Subset sum problem (With quantity limitations)
+    - icon: ':warning:'
+      path: Mylib/TypicalProblem/SubsetSumProblem/subset_sum_minimum.cpp
+      title: Subset sum problem (Minimum)
+  - name: Mylib/Utils
+    pages:
+    - icon: ':question:'
+      path: Mylib/Utils/compressor.cpp
+      title: Compressor
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Utils/fix_point.cpp
+      title: Fixed point combinator
+    - icon: ':warning:'
+      path: Mylib/Utils/run_length_encoding.cpp
+      title: Run length encoding
+    - icon: ':x:'
+      path: Mylib/Utils/sort_simultaneously.cpp
+      title: Mylib/Utils/sort_simultaneously.cpp
+  - name: old
+    pages:
+    - icon: ':warning:'
+      path: old/runtime_mint.cpp
+      title: old/runtime_mint.cpp
+    - icon: ':warning:'
+      path: old/square_matrix.cpp
+      title: old/square_matrix.cpp
+    - icon: ':warning:'
+      path: old/xor_sum.cpp
+      title: old/xor_sum.cpp
+  - name: snippets
+    pages:
+    - icon: ':warning:'
+      path: snippets/all.cpp
+      title: snippets/all.cpp
+    - icon: ':warning:'
+      path: snippets/bits.cpp
+      title: snippets/bits.cpp
+    - icon: ':warning:'
+      path: snippets/cauto.cpp
+      title: snippets/cauto.cpp
+    - icon: ':warning:'
+      path: snippets/debugging.cpp
+      title: snippets/debugging.cpp
+    - icon: ':warning:'
+      path: snippets/exists.cpp
+      title: snippets/exists.cpp
+    - icon: ':warning:'
+      path: snippets/fastcin.cpp
+      title: snippets/fastcin.cpp
+    - icon: ':warning:'
+      path: snippets/fore.cpp
+      title: snippets/fore.cpp
+    - icon: ':warning:'
+      path: snippets/fst.cpp
+      title: snippets/fst.cpp
+    - icon: ':warning:'
+      path: snippets/itr.cpp
+      title: snippets/itr.cpp
+    - icon: ':warning:'
+      path: snippets/lambda1.cpp
+      title: snippets/lambda1.cpp
+    - icon: ':warning:'
+      path: snippets/lambda2.cpp
+      title: snippets/lambda2.cpp
+    - icon: ':warning:'
+      path: snippets/lambda3.cpp
+      title: snippets/lambda3.cpp
+    - icon: ':warning:'
+      path: snippets/lambda4.cpp
+      title: snippets/lambda4.cpp
+    - icon: ':warning:'
+      path: snippets/main.cpp
+      title: snippets/main.cpp
+    - icon: ':warning:'
+      path: snippets/mytemplate.cpp
+      title: snippets/mytemplate.cpp
+    - icon: ':warning:'
+      path: snippets/oldtemplate.cpp
+      title: snippets/oldtemplate.cpp
+    - icon: ':warning:'
+      path: snippets/rall.cpp
+      title: snippets/rall.cpp
+    - icon: ':warning:'
+      path: snippets/range.cpp
+      title: snippets/range.cpp
+    - icon: ':warning:'
+      path: snippets/rep.cpp
+      title: snippets/rep.cpp
+    - icon: ':warning:'
+      path: snippets/rev.cpp
+      title: snippets/rev.cpp
+    - icon: ':warning:'
+      path: snippets/ritr.cpp
+      title: snippets/ritr.cpp
+    - icon: ':warning:'
+      path: snippets/snd.cpp
+      title: snippets/snd.cpp
+    - icon: ':warning:'
+      path: snippets/uniq.cpp
+      title: snippets/uniq.cpp
+  verificationCategories:
+  - name: test/aoj/0323
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/0323/main.golden.test.cpp
+      title: test/aoj/0323/main.golden.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/0323/main.ternary.test.cpp
+      title: test/aoj/0323/main.ternary.test.cpp
+  - name: test/aoj/0390
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/0390/main.test.cpp
+      title: test/aoj/0390/main.test.cpp
+  - name: test/aoj/0425
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/0425/main.test.cpp
+      title: test/aoj/0425/main.test.cpp
+  - name: test/aoj/0502
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/0502/main.test.cpp
+      title: test/aoj/0502/main.test.cpp
+  - name: test/aoj/0558
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/0558/main.graph.test.cpp
+      title: test/aoj/0558/main.graph.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/0558/main.test.cpp
+      title: test/aoj/0558/main.test.cpp
+  - name: test/aoj/0575
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/0575/main.test.cpp
+      title: test/aoj/0575/main.test.cpp
+  - name: test/aoj/1102
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/1102/main.test.cpp
+      title: test/aoj/1102/main.test.cpp
+  - name: test/aoj/1208
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/1208/main.test.cpp
+      title: test/aoj/1208/main.test.cpp
+  - name: test/aoj/1300
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/1300/main.test.cpp
+      title: test/aoj/1300/main.test.cpp
+  - name: test/aoj/1308
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/1308/main.test.cpp
+      title: test/aoj/1308/main.test.cpp
+  - name: test/aoj/1327
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/1327/main.test.cpp
+      title: test/aoj/1327/main.test.cpp
+  - name: test/aoj/1337
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/1337/main.test.cpp
+      title: test/aoj/1337/main.test.cpp
+  - name: test/aoj/1508
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/1508/main.splay_tree.test.cpp
+      title: test/aoj/1508/main.splay_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/1508/main.treap.test.cpp
+      title: test/aoj/1508/main.treap.test.cpp
+  - name: test/aoj/1549
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/1549/main.test.cpp
+      title: test/aoj/1549/main.test.cpp
+  - name: test/aoj/1595
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/1595/main.test.cpp
+      title: test/aoj/1595/main.test.cpp
+  - name: test/aoj/2136
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2136/main.test.cpp
+      title: test/aoj/2136/main.test.cpp
+  - name: test/aoj/2171
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2171/main.test.cpp
+      title: test/aoj/2171/main.test.cpp
+  - name: test/aoj/2293
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2293/main.test.cpp
+      title: test/aoj/2293/main.test.cpp
+  - name: test/aoj/2370
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2370/main.test.cpp
+      title: test/aoj/2370/main.test.cpp
+  - name: test/aoj/2401
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2401/main.test.cpp
+      title: test/aoj/2401/main.test.cpp
+  - name: test/aoj/2426
+    pages:
+    - icon: ':x:'
+      path: test/aoj/2426/main.test.cpp
+      title: test/aoj/2426/main.test.cpp
+  - name: test/aoj/2444
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2444/main.test.cpp
+      title: test/aoj/2444/main.test.cpp
+  - name: test/aoj/2446
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2446/main.test.cpp
+      title: test/aoj/2446/main.test.cpp
+  - name: test/aoj/2530
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2530/main.test.cpp
+      title: test/aoj/2530/main.test.cpp
+  - name: test/aoj/2559
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2559/main.binomial_heap.test.cpp
+      title: test/aoj/2559/main.binomial_heap.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2559/main.leftist_heap.test.cpp
+      title: test/aoj/2559/main.leftist_heap.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2559/main.skew_heap.test.cpp
+      title: test/aoj/2559/main.skew_heap.test.cpp
+  - name: test/aoj/2667
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2667/main.test.cpp
+      title: test/aoj/2667/main.test.cpp
+  - name: test/aoj/2674
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2674/main.test.cpp
+      title: test/aoj/2674/main.test.cpp
+  - name: test/aoj/2842
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2842/main.fenwick_tree.test.cpp
+      title: test/aoj/2842/main.fenwick_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2842/main.segment_tree.test.cpp
+      title: test/aoj/2842/main.segment_tree.test.cpp
+  - name: test/aoj/2891
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2891/main.test.cpp
+      title: test/aoj/2891/main.test.cpp
+  - name: test/aoj/2903
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2903/main.test.cpp
+      title: test/aoj/2903/main.test.cpp
+  - name: test/aoj/2955
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2955/main.test.cpp
+      title: test/aoj/2955/main.test.cpp
+  - name: test/aoj/3034
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/3034/main.test.cpp
+      title: test/aoj/3034/main.test.cpp
+  - name: test/aoj/3035
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/3035/main.test.cpp
+      title: test/aoj/3035/main.test.cpp
+  - name: test/aoj/3058
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/3058/main.test.cpp
+      title: test/aoj/3058/main.test.cpp
+  - name: test/aoj/3118
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/3118/main.test.cpp
+      title: test/aoj/3118/main.test.cpp
+  - name: test/aoj/3119
+    pages:
+    - icon: ':x:'
+      path: test/aoj/3119/main.test.cpp
+      title: test/aoj/3119/main.test.cpp
+  - name: test/aoj/3132
+    pages:
+    - icon: ':x:'
+      path: test/aoj/3132/main.test.cpp
+      title: test/aoj/3132/main.test.cpp
+  - name: test/aoj/3134
+    pages:
+    - icon: ':x:'
+      path: test/aoj/3134/main.test.cpp
+      title: test/aoj/3134/main.test.cpp
+  - name: test/aoj/ALDS1_10_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/ALDS1_10_C/main.test.cpp
+      title: test/aoj/ALDS1_10_C/main.test.cpp
+  - name: test/aoj/ALDS1_12_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/ALDS1_12_B/main.dial.test.cpp
+      title: test/aoj/ALDS1_12_B/main.dial.test.cpp
+  - name: test/aoj/ALDS1_14_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/ALDS1_14_B/main.kmp.test.cpp
+      title: test/aoj/ALDS1_14_B/main.kmp.test.cpp
+    - icon: ':x:'
+      path: test/aoj/ALDS1_14_B/main.test.cpp
+      title: test/aoj/ALDS1_14_B/main.test.cpp
+  - name: test/aoj/ALDS1_14_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/ALDS1_14_C/main.test.cpp
+      title: test/aoj/ALDS1_14_C/main.test.cpp
+  - name: test/aoj/ALDS1_14_D
+    pages:
+    - icon: ':x:'
+      path: test/aoj/ALDS1_14_D/main.test.cpp
+      title: test/aoj/ALDS1_14_D/main.test.cpp
+  - name: test/aoj/ALDS1_15_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/ALDS1_15_C/main.test.cpp
+      title: test/aoj/ALDS1_15_C/main.test.cpp
+  - name: test/aoj/ALDS1_1_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/ALDS1_1_C/main.test.cpp
+      title: test/aoj/ALDS1_1_C/main.test.cpp
+  - name: test/aoj/ALDS1_5_D
+    pages:
+    - icon: ':x:'
+      path: test/aoj/ALDS1_5_D/main.test.cpp
+      title: test/aoj/ALDS1_5_D/main.test.cpp
+  - name: test/aoj/ALDS1_9_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/ALDS1_9_C/main.binary.test.cpp
+      title: test/aoj/ALDS1_9_C/main.binary.test.cpp
+  - name: test/aoj/CGL_1_A
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_1_A/main.test.cpp
+      title: test/aoj/CGL_1_A/main.test.cpp
+  - name: test/aoj/CGL_1_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_1_B/main.test.cpp
+      title: test/aoj/CGL_1_B/main.test.cpp
+  - name: test/aoj/CGL_1_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_1_C/main.test.cpp
+      title: test/aoj/CGL_1_C/main.test.cpp
+  - name: test/aoj/CGL_2_A
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_2_A/main.test.cpp
+      title: test/aoj/CGL_2_A/main.test.cpp
+  - name: test/aoj/CGL_2_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_2_B/main.test.cpp
+      title: test/aoj/CGL_2_B/main.test.cpp
+  - name: test/aoj/CGL_2_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_2_C/main.test.cpp
+      title: test/aoj/CGL_2_C/main.test.cpp
+  - name: test/aoj/CGL_2_D
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_2_D/main.test.cpp
+      title: test/aoj/CGL_2_D/main.test.cpp
+  - name: test/aoj/CGL_3_A
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_3_A/main.test.cpp
+      title: test/aoj/CGL_3_A/main.test.cpp
+  - name: test/aoj/CGL_3_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_3_B/main.test.cpp
+      title: test/aoj/CGL_3_B/main.test.cpp
+  - name: test/aoj/CGL_3_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_3_C/main.test.cpp
+      title: test/aoj/CGL_3_C/main.test.cpp
+  - name: test/aoj/CGL_4_A
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_4_A/main.test.cpp
+      title: test/aoj/CGL_4_A/main.test.cpp
+  - name: test/aoj/CGL_4_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_4_B/main.test.cpp
+      title: test/aoj/CGL_4_B/main.test.cpp
+  - name: test/aoj/CGL_4_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_4_C/main.test.cpp
+      title: test/aoj/CGL_4_C/main.test.cpp
+  - name: test/aoj/CGL_5_A
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_5_A/main.test.cpp
+      title: test/aoj/CGL_5_A/main.test.cpp
+  - name: test/aoj/CGL_6_A
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_6_A/main.test.cpp
+      title: test/aoj/CGL_6_A/main.test.cpp
+  - name: test/aoj/CGL_7_A
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_7_A/main.test.cpp
+      title: test/aoj/CGL_7_A/main.test.cpp
+  - name: test/aoj/CGL_7_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_7_B/main.test.cpp
+      title: test/aoj/CGL_7_B/main.test.cpp
+  - name: test/aoj/CGL_7_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_7_C/main.test.cpp
+      title: test/aoj/CGL_7_C/main.test.cpp
+  - name: test/aoj/CGL_7_D
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_7_D/main.test.cpp
+      title: test/aoj/CGL_7_D/main.test.cpp
+  - name: test/aoj/CGL_7_E
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_7_E/main.test.cpp
+      title: test/aoj/CGL_7_E/main.test.cpp
+  - name: test/aoj/CGL_7_F
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_7_F/main.test.cpp
+      title: test/aoj/CGL_7_F/main.test.cpp
+  - name: test/aoj/CGL_7_G
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_7_G/main.test.cpp
+      title: test/aoj/CGL_7_G/main.test.cpp
+  - name: test/aoj/CGL_7_H
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_7_H/main.test.cpp
+      title: test/aoj/CGL_7_H/main.test.cpp
+  - name: test/aoj/CGL_7_I
+    pages:
+    - icon: ':x:'
+      path: test/aoj/CGL_7_I/main.test.cpp
+      title: test/aoj/CGL_7_I/main.test.cpp
+  - name: test/aoj/DPL_1_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DPL_1_B/main.test.cpp
+      title: test/aoj/DPL_1_B/main.test.cpp
+  - name: test/aoj/DPL_1_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DPL_1_C/main.test.cpp
+      title: test/aoj/DPL_1_C/main.test.cpp
+  - name: test/aoj/DPL_1_D
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DPL_1_D/main.test.cpp
+      title: test/aoj/DPL_1_D/main.test.cpp
+  - name: test/aoj/DPL_1_E
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DPL_1_E/main.test.cpp
+      title: test/aoj/DPL_1_E/main.test.cpp
+  - name: test/aoj/DPL_1_F
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DPL_1_F/main.test.cpp
+      title: test/aoj/DPL_1_F/main.test.cpp
+  - name: test/aoj/DPL_1_G
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DPL_1_G/main.test.cpp
+      title: test/aoj/DPL_1_G/main.test.cpp
+  - name: test/aoj/DPL_1_H
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DPL_1_H/main.test.cpp
+      title: test/aoj/DPL_1_H/main.test.cpp
+  - name: test/aoj/DPL_2_A
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DPL_2_A/main.test.cpp
+      title: test/aoj/DPL_2_A/main.test.cpp
+  - name: test/aoj/DPL_2_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DPL_2_B/main.test.cpp
+      title: test/aoj/DPL_2_B/main.test.cpp
+  - name: test/aoj/DPL_2_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DPL_2_C/main.test.cpp
+      title: test/aoj/DPL_2_C/main.test.cpp
+  - name: test/aoj/DPL_3_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DPL_3_B/main.test.cpp
+      title: test/aoj/DPL_3_B/main.test.cpp
+  - name: test/aoj/DPL_3_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DPL_3_C/main.test.cpp
+      title: test/aoj/DPL_3_C/main.test.cpp
+  - name: test/aoj/DPL_5_G
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DPL_5_G/main.table.test.cpp
+      title: test/aoj/DPL_5_G/main.table.test.cpp
+    - icon: ':x:'
+      path: test/aoj/DPL_5_G/main.test.cpp
+      title: test/aoj/DPL_5_G/main.test.cpp
+  - name: test/aoj/DPL_5_I
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DPL_5_I/main.table.test.cpp
+      title: test/aoj/DPL_5_I/main.table.test.cpp
+    - icon: ':x:'
+      path: test/aoj/DPL_5_I/main.test.cpp
+      title: test/aoj/DPL_5_I/main.test.cpp
+  - name: test/aoj/DPL_5_J
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DPL_5_J/main.test.cpp
+      title: test/aoj/DPL_5_J/main.test.cpp
+  - name: test/aoj/DSL_1_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DSL_1_B/main.test.cpp
+      title: test/aoj/DSL_1_B/main.test.cpp
+  - name: test/aoj/DSL_2_A
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DSL_2_A/main.test.cpp
+      title: test/aoj/DSL_2_A/main.test.cpp
+  - name: test/aoj/DSL_2_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
+      title: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
+    - icon: ':x:'
+      path: test/aoj/DSL_2_B/main.test.cpp
+      title: test/aoj/DSL_2_B/main.test.cpp
+  - name: test/aoj/DSL_2_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DSL_2_C/main.test.cpp
+      title: test/aoj/DSL_2_C/main.test.cpp
+  - name: test/aoj/DSL_2_D
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DSL_2_D/main.test.cpp
+      title: test/aoj/DSL_2_D/main.test.cpp
+  - name: test/aoj/DSL_2_E
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DSL_2_E/main.dynamic.test.cpp
+      title: test/aoj/DSL_2_E/main.dynamic.test.cpp
+    - icon: ':x:'
+      path: test/aoj/DSL_2_E/main.test.cpp
+      title: test/aoj/DSL_2_E/main.test.cpp
+  - name: test/aoj/DSL_2_F
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DSL_2_F/main.dynamic.test.cpp
+      title: test/aoj/DSL_2_F/main.dynamic.test.cpp
+    - icon: ':x:'
+      path: test/aoj/DSL_2_F/main.test.cpp
+      title: test/aoj/DSL_2_F/main.test.cpp
+  - name: test/aoj/DSL_2_G
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DSL_2_G/main.test.cpp
+      title: test/aoj/DSL_2_G/main.test.cpp
+  - name: test/aoj/DSL_2_H
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DSL_2_H/main.starry_sky.test.cpp
+      title: test/aoj/DSL_2_H/main.starry_sky.test.cpp
+    - icon: ':x:'
+      path: test/aoj/DSL_2_H/main.test.cpp
+      title: test/aoj/DSL_2_H/main.test.cpp
+  - name: test/aoj/DSL_2_I
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DSL_2_I/main.test.cpp
+      title: test/aoj/DSL_2_I/main.test.cpp
+  - name: test/aoj/DSL_3_D
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DSL_3_D/main.test.cpp
+      title: test/aoj/DSL_3_D/main.test.cpp
+  - name: test/aoj/DSL_5_A
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DSL_5_A/main.test.cpp
+      title: test/aoj/DSL_5_A/main.test.cpp
+  - name: test/aoj/DSL_5_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/DSL_5_B/main.test.cpp
+      title: test/aoj/DSL_5_B/main.test.cpp
+  - name: test/aoj/GRL_1_A
+    pages:
+    - icon: ':x:'
+      path: test/aoj/GRL_1_A/main.test.cpp
+      title: test/aoj/GRL_1_A/main.test.cpp
+  - name: test/aoj/GRL_1_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/GRL_1_B/main.test.cpp
+      title: test/aoj/GRL_1_B/main.test.cpp
+  - name: test/aoj/GRL_1_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/GRL_1_C/main.test.cpp
+      title: test/aoj/GRL_1_C/main.test.cpp
+  - name: test/aoj/GRL_2_A
+    pages:
+    - icon: ':x:'
+      path: test/aoj/GRL_2_A/main.boruvka.test.cpp
+      title: test/aoj/GRL_2_A/main.boruvka.test.cpp
+    - icon: ':x:'
+      path: test/aoj/GRL_2_A/main.kruskal.test.cpp
+      title: test/aoj/GRL_2_A/main.kruskal.test.cpp
+    - icon: ':x:'
+      path: test/aoj/GRL_2_A/main.prim.test.cpp
+      title: test/aoj/GRL_2_A/main.prim.test.cpp
+  - name: test/aoj/GRL_2_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/GRL_2_B/main.test.cpp
+      title: test/aoj/GRL_2_B/main.test.cpp
+  - name: test/aoj/GRL_3_A
+    pages:
+    - icon: ':x:'
+      path: test/aoj/GRL_3_A/main.test.cpp
+      title: test/aoj/GRL_3_A/main.test.cpp
+  - name: test/aoj/GRL_3_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/GRL_3_B/main.test.cpp
+      title: test/aoj/GRL_3_B/main.test.cpp
+  - name: test/aoj/GRL_3_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/GRL_3_C/main.test.cpp
+      title: test/aoj/GRL_3_C/main.test.cpp
+  - name: test/aoj/GRL_5_A
+    pages:
+    - icon: ':x:'
+      path: test/aoj/GRL_5_A/main.test.cpp
+      title: test/aoj/GRL_5_A/main.test.cpp
+  - name: test/aoj/GRL_5_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/GRL_5_B/main.test.cpp
+      title: test/aoj/GRL_5_B/main.test.cpp
+  - name: test/aoj/GRL_5_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/GRL_5_C/main.doubling.test.cpp
+      title: test/aoj/GRL_5_C/main.doubling.test.cpp
+    - icon: ':x:'
+      path: test/aoj/GRL_5_C/main.hld.test.cpp
+      title: test/aoj/GRL_5_C/main.hld.test.cpp
+  - name: test/aoj/GRL_6_A
+    pages:
+    - icon: ':x:'
+      path: test/aoj/GRL_6_A/main.dinic.test.cpp
+      title: test/aoj/GRL_6_A/main.dinic.test.cpp
+    - icon: ':x:'
+      path: test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp
+      title: test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp
+    - icon: ':x:'
+      path: test/aoj/GRL_6_A/main.push_relabel.test.cpp
+      title: test/aoj/GRL_6_A/main.push_relabel.test.cpp
+  - name: test/aoj/GRL_6_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/GRL_6_B/main.test.cpp
+      title: test/aoj/GRL_6_B/main.test.cpp
+  - name: test/aoj/GRL_7_A
+    pages:
+    - icon: ':x:'
+      path: test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp
+      title: test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp
+    - icon: ':x:'
+      path: test/aoj/GRL_7_A/main.test.cpp
+      title: test/aoj/GRL_7_A/main.test.cpp
+  - name: test/aoj/ITP1_3_D
+    pages:
+    - icon: ':x:'
+      path: test/aoj/ITP1_3_D/main.test.cpp
+      title: test/aoj/ITP1_3_D/main.test.cpp
+  - name: test/aoj/ITP2_11_B
+    pages:
+    - icon: ':x:'
+      path: test/aoj/ITP2_11_B/main.asc.test.cpp
+      title: test/aoj/ITP2_11_B/main.asc.test.cpp
+    - icon: ':x:'
+      path: test/aoj/ITP2_11_B/main.desc.test.cpp
+      title: test/aoj/ITP2_11_B/main.desc.test.cpp
+  - name: test/aoj/ITP2_11_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/ITP2_11_C/main.asc.test.cpp
+      title: test/aoj/ITP2_11_C/main.asc.test.cpp
+    - icon: ':x:'
+      path: test/aoj/ITP2_11_C/main.desc.test.cpp
+      title: test/aoj/ITP2_11_C/main.desc.test.cpp
+  - name: test/aoj/ITP2_11_D
+    pages:
+    - icon: ':x:'
+      path: test/aoj/ITP2_11_D/main.test.cpp
+      title: test/aoj/ITP2_11_D/main.test.cpp
+  - name: test/aoj/NTL_1_A
+    pages:
+    - icon: ':x:'
+      path: test/aoj/NTL_1_A/main.test.cpp
+      title: test/aoj/NTL_1_A/main.test.cpp
+  - name: test/aoj/NTL_1_C
+    pages:
+    - icon: ':x:'
+      path: test/aoj/NTL_1_C/main.test.cpp
+      title: test/aoj/NTL_1_C/main.test.cpp
+  - name: test/aoj/NTL_1_D
+    pages:
+    - icon: ':x:'
+      path: test/aoj/NTL_1_D/main.test.cpp
+      title: test/aoj/NTL_1_D/main.test.cpp
+    - icon: ':x:'
+      path: test/aoj/NTL_1_D/main.totient.test.cpp
+      title: test/aoj/NTL_1_D/main.totient.test.cpp
+  - name: test/aoj/NTL_1_E
+    pages:
+    - icon: ':x:'
+      path: test/aoj/NTL_1_E/main.test.cpp
+      title: test/aoj/NTL_1_E/main.test.cpp
+  - name: test/yosupo-judge/assignment
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/assignment/main.test.cpp
+      title: test/yosupo-judge/assignment/main.test.cpp
+  - name: test/yosupo-judge/bernoulli_number
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/bernoulli_number/main.test.cpp
+      title: test/yosupo-judge/bernoulli_number/main.test.cpp
+  - name: test/yosupo-judge/bipartitematching
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/bipartitematching/main.test.cpp
+      title: test/yosupo-judge/bipartitematching/main.test.cpp
+  - name: test/yosupo-judge/cartesian_tree
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/cartesian_tree/main.test.cpp
+      title: test/yosupo-judge/cartesian_tree/main.test.cpp
+  - name: test/yosupo-judge/convolution_mod
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/convolution_mod/main.test.cpp
+      title: test/yosupo-judge/convolution_mod/main.test.cpp
+  - name: test/yosupo-judge/convolution_mod_1000000007
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
+      title: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
+  - name: test/yosupo-judge/cycle_detection
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/cycle_detection/main.test.cpp
+      title: test/yosupo-judge/cycle_detection/main.test.cpp
+  - name: test/yosupo-judge/discrete_logarithm_mod
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
+      title: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
+  - name: test/yosupo-judge/dynamic_tree_vertex_add_path_sum
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
+      title: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
+  - name: test/yosupo-judge/enumerate_triangles
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/enumerate_triangles/main.test.cpp
+      title: test/yosupo-judge/enumerate_triangles/main.test.cpp
+  - name: test/yosupo-judge/exp_of_formal_power_series
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
+      title: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
+  - name: test/yosupo-judge/factorize
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/factorize/main.test.cpp
+      title: test/yosupo-judge/factorize/main.test.cpp
+  - name: test/yosupo-judge/inv_of_formal_power_series
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
+      title: test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
+  - name: test/yosupo-judge/kth_root_integer
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/kth_root_integer/main.test.cpp
+      title: test/yosupo-judge/kth_root_integer/main.test.cpp
+  - name: test/yosupo-judge/line_add_get_min
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/line_add_get_min/main.dynamic.test.cpp
+      title: test/yosupo-judge/line_add_get_min/main.dynamic.test.cpp
+    - icon: ':x:'
+      path: test/yosupo-judge/line_add_get_min/main.test.cpp
+      title: test/yosupo-judge/line_add_get_min/main.test.cpp
+  - name: test/yosupo-judge/log_of_formal_power_series
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/log_of_formal_power_series/main.test.cpp
+      title: test/yosupo-judge/log_of_formal_power_series/main.test.cpp
+  - name: test/yosupo-judge/manhattanmst
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/manhattanmst/main.test.cpp
+      title: test/yosupo-judge/manhattanmst/main.test.cpp
+  - name: test/yosupo-judge/matrix_det
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/matrix_det/main.test.cpp
+      title: test/yosupo-judge/matrix_det/main.test.cpp
+  - name: test/yosupo-judge/maximum_independent_set
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/maximum_independent_set/main.test.cpp
+      title: test/yosupo-judge/maximum_independent_set/main.test.cpp
+  - name: test/yosupo-judge/montmort_number_mod
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/montmort_number_mod/main.test.cpp
+      title: test/yosupo-judge/montmort_number_mod/main.test.cpp
+  - name: test/yosupo-judge/number_of_substrings
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/number_of_substrings/main.test.cpp
+      title: test/yosupo-judge/number_of_substrings/main.test.cpp
+  - name: test/yosupo-judge/partition_function
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/partition_function/main.fps.test.cpp
+      title: test/yosupo-judge/partition_function/main.fps.test.cpp
+    - icon: ':x:'
+      path: test/yosupo-judge/partition_function/main.test.cpp
+      title: test/yosupo-judge/partition_function/main.test.cpp
+  - name: test/yosupo-judge/persistent_queue
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/persistent_queue/main.test.cpp
+      title: test/yosupo-judge/persistent_queue/main.test.cpp
+  - name: test/yosupo-judge/persistent_unionfind
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/persistent_unionfind/main.test.cpp
+      title: test/yosupo-judge/persistent_unionfind/main.test.cpp
+  - name: test/yosupo-judge/point_add_rectangle_sum
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
+      title: test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
+  - name: test/yosupo-judge/point_set_range_composite
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/point_set_range_composite/main.test.cpp
+      title: test/yosupo-judge/point_set_range_composite/main.test.cpp
+  - name: test/yosupo-judge/polynomial_taylor_shift
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
+      title: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
+  - name: test/yosupo-judge/pow_of_formal_power_series
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
+      title: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
+  - name: test/yosupo-judge/queue_operate_all_composite
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/queue_operate_all_composite/main.test.cpp
+      title: test/yosupo-judge/queue_operate_all_composite/main.test.cpp
+  - name: test/yosupo-judge/range_affine_range_sum
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/range_affine_range_sum/main.test.cpp
+      title: test/yosupo-judge/range_affine_range_sum/main.test.cpp
+  - name: test/yosupo-judge/range_chmin_chmax_add_range_sum
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp
+      title: test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp
+  - name: test/yosupo-judge/range_kth_smallest
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/range_kth_smallest/main.test.cpp
+      title: test/yosupo-judge/range_kth_smallest/main.test.cpp
+  - name: test/yosupo-judge/rectangle_sum
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
+      title: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
+    - icon: ':x:'
+      path: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
+      title: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
+    - icon: ':x:'
+      path: test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
+      title: test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
+  - name: test/yosupo-judge/runenumerate
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/runenumerate/main.test.cpp
+      title: test/yosupo-judge/runenumerate/main.test.cpp
+  - name: test/yosupo-judge/scc
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/scc/main.test.cpp
+      title: test/yosupo-judge/scc/main.test.cpp
+  - name: test/yosupo-judge/segment_add_get_min
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/segment_add_get_min/main.dynamic.test.cpp
+      title: test/yosupo-judge/segment_add_get_min/main.dynamic.test.cpp
+    - icon: ':x:'
+      path: test/yosupo-judge/segment_add_get_min/main.test.cpp
+      title: test/yosupo-judge/segment_add_get_min/main.test.cpp
+  - name: test/yosupo-judge/set_xor_min
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/set_xor_min/main.test.cpp
+      title: test/yosupo-judge/set_xor_min/main.test.cpp
+  - name: test/yosupo-judge/sharp_p_subset_sum
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
+      title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
+  - name: test/yosupo-judge/sqrt_mod
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/sqrt_mod/main.test.cpp
+      title: test/yosupo-judge/sqrt_mod/main.test.cpp
+  - name: test/yosupo-judge/sqrt_of_formal_power_series
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
+      title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
+  - name: test/yosupo-judge/static_range_inversions_query
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/static_range_inversions_query/main.test.cpp
+      title: test/yosupo-judge/static_range_inversions_query/main.test.cpp
+  - name: test/yosupo-judge/static_range_sum
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/static_range_sum/main.test.cpp
+      title: test/yosupo-judge/static_range_sum/main.test.cpp
+  - name: test/yosupo-judge/staticrmq
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
+      title: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
+  - name: test/yosupo-judge/stirling_number_of_the_first_kind
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+      title: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+  - name: test/yosupo-judge/stirling_number_of_the_second_kind
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
+      title: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
+  - name: test/yosupo-judge/suffixarray
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/suffixarray/main.test.cpp
+      title: test/yosupo-judge/suffixarray/main.test.cpp
+  - name: test/yosupo-judge/sum_of_floor_of_linear
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/sum_of_floor_of_linear/main.test.cpp
+      title: test/yosupo-judge/sum_of_floor_of_linear/main.test.cpp
+  - name: test/yosupo-judge/system_of_linear_equations
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/system_of_linear_equations/main.test.cpp
+      title: test/yosupo-judge/system_of_linear_equations/main.test.cpp
+  - name: test/yosupo-judge/tetration_mod
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/tetration_mod/main.test.cpp
+      title: test/yosupo-judge/tetration_mod/main.test.cpp
+  - name: test/yosupo-judge/tree_diameter
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/tree_diameter/main.test.cpp
+      title: test/yosupo-judge/tree_diameter/main.test.cpp
+  - name: test/yosupo-judge/two_edge_connected_components
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/two_edge_connected_components/main.test.cpp
+      title: test/yosupo-judge/two_edge_connected_components/main.test.cpp
+  - name: test/yosupo-judge/two_sat
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/two_sat/main.test.cpp
+      title: test/yosupo-judge/two_sat/main.test.cpp
+  - name: test/yosupo-judge/unionfind
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/unionfind/main.test.cpp
+      title: test/yosupo-judge/unionfind/main.test.cpp
+  - name: test/yosupo-judge/vertex_add_path_sum
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/vertex_add_path_sum/main.test.cpp
+      title: test/yosupo-judge/vertex_add_path_sum/main.test.cpp
+  - name: test/yosupo-judge/vertex_add_subtree_sum
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp
+      title: test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp
+    - icon: ':x:'
+      path: test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
+      title: test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
+  - name: test/yosupo-judge/vertex_set_path_composite
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+      title: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+  - name: test/yosupo-judge/zalgorithm
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/zalgorithm/main.test.cpp
+      title: test/yosupo-judge/zalgorithm/main.test.cpp
+  - name: test/yukicoder/1030
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/1030/main.test.cpp
+      title: test/yukicoder/1030/main.test.cpp
+  - name: test/yukicoder/1069
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/1069/main.test.cpp
+      title: test/yukicoder/1069/main.test.cpp
+  - name: test/yukicoder/1084
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/1084/main.segment_tree.test.cpp
+      title: test/yukicoder/1084/main.segment_tree.test.cpp
+    - icon: ':x:'
+      path: test/yukicoder/1084/main.test.cpp
+      title: test/yukicoder/1084/main.test.cpp
+  - name: test/yukicoder/1099
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/1099/main.test.cpp
+      title: test/yukicoder/1099/main.test.cpp
+  - name: test/yukicoder/117
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/117/main.test.cpp
+      title: test/yukicoder/117/main.test.cpp
+  - name: test/yukicoder/184
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/184/main.test.cpp
+      title: test/yukicoder/184/main.test.cpp
+  - name: test/yukicoder/186
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/186/main.test.cpp
+      title: test/yukicoder/186/main.test.cpp
+  - name: test/yukicoder/194
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/194/main.test.cpp
+      title: test/yukicoder/194/main.test.cpp
+  - name: test/yukicoder/235
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/235/main.test.cpp
+      title: test/yukicoder/235/main.test.cpp
+  - name: test/yukicoder/3030
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/3030/main.test.cpp
+      title: test/yukicoder/3030/main.test.cpp
+  - name: test/yukicoder/306
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/306/main.golden.test.cpp
+      title: test/yukicoder/306/main.golden.test.cpp
+    - icon: ':x:'
+      path: test/yukicoder/306/main.ternary.test.cpp
+      title: test/yukicoder/306/main.ternary.test.cpp
+  - name: test/yukicoder/430
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/430/main.aho_corasick.test.cpp
+      title: test/yukicoder/430/main.aho_corasick.test.cpp
+  - name: test/yukicoder/499
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/499/main.test.cpp
+      title: test/yukicoder/499/main.test.cpp
+  - name: test/yukicoder/510
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/510/main.test.cpp
+      title: test/yukicoder/510/main.test.cpp
+  - name: test/yukicoder/580
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/580/main.test.cpp
+      title: test/yukicoder/580/main.test.cpp
+  - name: test/yukicoder/631
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/631/main.starry_sky.test.cpp
+      title: test/yukicoder/631/main.starry_sky.test.cpp
+    - icon: ':x:'
+      path: test/yukicoder/631/main.test.cpp
+      title: test/yukicoder/631/main.test.cpp
+  - name: test/yukicoder/658
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/658/main.test.cpp
+      title: test/yukicoder/658/main.test.cpp
+  - name: test/yukicoder/660
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/660/main.test.cpp
+      title: test/yukicoder/660/main.test.cpp
+  - name: test/yukicoder/665
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/665/main.test.cpp
+      title: test/yukicoder/665/main.test.cpp
+  - name: test/yukicoder/755
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/755/main.test.cpp
+      title: test/yukicoder/755/main.test.cpp
+  - name: test/yukicoder/776
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/776/main.test.cpp
+      title: test/yukicoder/776/main.test.cpp
+  - name: test/yukicoder/782
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/782/main.test.cpp
+      title: test/yukicoder/782/main.test.cpp
+  - name: test/yukicoder/789
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/789/main.test.cpp
+      title: test/yukicoder/789/main.test.cpp
+  - name: test/yukicoder/843
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/843/main.atkin.test.cpp
+      title: test/yukicoder/843/main.atkin.test.cpp
+    - icon: ':x:'
+      path: test/yukicoder/843/main.eratosthenes.test.cpp
+      title: test/yukicoder/843/main.eratosthenes.test.cpp
+  - name: test/yukicoder/875
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/875/main.test.cpp
+      title: test/yukicoder/875/main.test.cpp
+  - name: test/yukicoder/899
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/899/main.test.cpp
+      title: test/yukicoder/899/main.test.cpp
+  - name: test/yukicoder/919
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/919/main.test.cpp
+      title: test/yukicoder/919/main.test.cpp
+  - name: test/yukicoder/922
+    pages:
+    - icon: ':x:'
+      path: test/yukicoder/922/main.test.cpp
+      title: test/yukicoder/922/main.test.cpp
+layout: toppage
 ---
-
-<!-- mathjax config similar to math.stackexchange -->
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    TeX: { equationNumbers: { autoNumber: "AMS" }},
-    tex2jax: {
-      inlineMath: [ ['$','$'] ],
-      processEscapes: true
-    },
-    "HTML-CSS": { matchFontHeight: false },
-    displayAlign: "left",
-    displayIndent: "2em"
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-balloon-js@1.1.2/jquery.balloon.min.js" integrity="sha256-ZEYs9VrgAeNuPvs15E39OsyOJaIkXEEt10fzxJ20+2I=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="assets/js/copy-button.js"></script>
-<link rel="stylesheet" href="assets/css/copy-button.css" />
-
-
-# {{ site.title }}
-
-[![Actions Status]({{ site.github.repository_url }}/workflows/verify/badge.svg)]({{ site.github.repository_url }}/actions)
-<a href="{{ site.github.repository_url }}"><img src="https://img.shields.io/github/last-commit/{{ site.github.owner_name }}/{{ site.github.repository_name }}" /></a>
-
-{% if site.github.project_tagline %}{{ site.github.project_tagline }}{% else %}This documentation is automatically generated by <a href="https://github.com/online-judge-tools/verification-helper">online-judge-tools/verification-helper</a>.{% endif %}
-
-## Library Files
-
-<div id="a11cf6f4bd6e76e33e4d7136e3eb98bc"></div>
-
-### Mylib/AlgebraicStructure/Group
-
-* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Group/dihedral.cpp.html">Dihedral group</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/Group/sum.cpp.html">Sum group</a>
-
-
-<div id="b9ce8b1117f3871719e4d3859e7574c9"></div>
-
-### Mylib/AlgebraicStructure/Monoid
-
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/affine.cpp.html">Affine monoid</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/array.cpp.html">Array monoid</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/bitand.cpp.html">Bitand monoid</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/bitor.cpp.html">Bitor monoid</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/bitxor.cpp.html">Bitxor monoid</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/bounded_max.cpp.html">Bounded max monoid</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/bounded_min.cpp.html">Bounded min monoid</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/dual.cpp.html">Dual monoid</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/gcd.cpp.html">GCD monoid</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/lcm.cpp.html">LCM monoid</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/max.cpp.html">Max monoid</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/max_contiguous.cpp.html">Max contiguous monoid</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp.html">Max partial sum monoid</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/maybe.cpp.html">Maybe monoid</a>
-* :question: <a href="library/Mylib/AlgebraicStructure/Monoid/min.cpp.html">Min monoid</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp.html">Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/ordering.cpp.html">Ordering monoid</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/pair.cpp.html">Pair monoid</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/product.cpp.html">Product monoid</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/product_matrix.cpp.html">Product matrix monoid</a>
-* :heavy_check_mark: <a href="library/Mylib/AlgebraicStructure/Monoid/rolling_hash.cpp.html">Rolling hash monoid</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/sum.cpp.html">Sum monoid</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/sum_matrix.cpp.html">Sum matrix monoid</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/transformation.cpp.html">Transformation monoid</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/trivial.cpp.html">Trivial monoid</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/update.cpp.html">Update monoid</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/with_count.cpp.html">Mylib/AlgebraicStructure/Monoid/with_count.cpp</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Monoid/with_max_index.cpp.html">Mylib/AlgebraicStructure/Monoid/with_max_index.cpp</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/Monoid/with_min_index.cpp.html">Mylib/AlgebraicStructure/Monoid/with_min_index.cpp</a>
-
-
-<div id="7bd9a37defae28fe1746a7ffe2a62491"></div>
-
-### Mylib/AlgebraicStructure/MonoidAction
-
-* :x: <a href="library/Mylib/AlgebraicStructure/MonoidAction/add_max.cpp.html">Range add / Range max</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/MonoidAction/add_min.cpp.html">Range add / Range min</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/MonoidAction/add_square_sum.cpp.html">Range add / Range square sum</a>
-* :question: <a href="library/Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp.html">Range add / Range sum</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp.html">Range affine / Range sum</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp.html">Range multiply / Range product</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/multiply_sum.cpp.html">Range multiply / Range sum</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/or_or.cpp.html">Range bitor / Range bitor</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/MonoidAction/update_min.cpp.html">Range update / Range min</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/update_or.cpp.html">Range update / Range bitor</a>
-* :x: <a href="library/Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp.html">Range update / Range sum</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/MonoidAction/xor_sum.cpp.html">Range xor / Range sum</a>
-
-
-<div id="3df95940e092844fc072dd50b6844b29"></div>
-
-### Mylib/AlgebraicStructure/Semiring
-
-* :warning: <a href="library/Mylib/AlgebraicStructure/Semiring/add_mul.cpp.html">Add-mul semiring</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Semiring/min_add.cpp.html">Min-add semiring</a>
-* :warning: <a href="library/Mylib/AlgebraicStructure/Semiring/xor_and.cpp.html">Xor-and semiring</a>
-
-
-<div id="606b6851a96c8708fa4cdcf98aebb7c1"></div>
-
-### Mylib/Algorithm/CumulativeSum
-
-* :x: <a href="library/Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp.html">1D cumulative sum</a>
-* :x: <a href="library/Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp.html">2D cumulative sum</a>
-
-
-<div id="6dc6d5a2cac82b39a08fd9ff32ab6e48"></div>
-
-### Mylib/Algorithm/Imos
-
-* :x: <a href="library/Mylib/Algorithm/Imos/imos_1d.cpp.html">1D Imos algorithm</a>
-* :x: <a href="library/Mylib/Algorithm/Imos/imos_2d.cpp.html">2D Imos algorithm</a>
-* :x: <a href="library/Mylib/Algorithm/Imos/linear_imos_1d.cpp.html">1D Imos algorithm (Linear addition)</a>
-
-
-<div id="ebf5673f586fe469e71716464f05c5ea"></div>
-
-### Mylib/Algorithm/InversionNumber
-
-* :x: <a href="library/Mylib/Algorithm/InversionNumber/inversion_number.cpp.html">Inversion number</a>
-
-
-<div id="1534504632931a6652ca965283803a2e"></div>
-
-### Mylib/Algorithm/Mo
-
-* :question: <a href="library/Mylib/Algorithm/Mo/mo_algorithm.cpp.html">Mo's algorithm</a>
-
-
-<div id="f3e3957dafbf526c46359105e1a71d64"></div>
-
-### Mylib/Algorithm/Query
-
-* :warning: <a href="library/Mylib/Algorithm/Query/range_count_query.cpp.html">Range count query</a>
-* :x: <a href="library/Mylib/Algorithm/Query/range_inversions_query.cpp.html">Range inversions query</a>
-* :warning: <a href="library/Mylib/Algorithm/Query/range_mode_query.cpp.html">Range mode query</a>
-
-
-<div id="a7582795d3062b8fdf2ece0fd4f2d90d"></div>
-
-### Mylib/Algorithm/Search
-
-* :x: <a href="library/Mylib/Algorithm/Search/golden_section_search_downwards.cpp.html">Golden section search (Convex downwards)</a>
-* :heavy_check_mark: <a href="library/Mylib/Algorithm/Search/golden_section_search_upwards.cpp.html">Golden section search (Convex upwards)</a>
-* :heavy_check_mark: <a href="library/Mylib/Algorithm/Search/parallel_binary_search.cpp.html">Parallel binary search</a>
-* :x: <a href="library/Mylib/Algorithm/Search/ternary_search_downwards.cpp.html">Ternary search (Convex downwards)</a>
-* :heavy_check_mark: <a href="library/Mylib/Algorithm/Search/ternary_search_upwards.cpp.html">Ternary search (Convex upwards)</a>
-
-
-<div id="1d0203f9a0b34121f2fb0bb17b094d0f"></div>
-
-### Mylib/Algorithm/SlidingWindow
-
-* :warning: <a href="library/Mylib/Algorithm/SlidingWindow/sliding_maximum.cpp.html">Sliding window maximum</a>
-* :x: <a href="library/Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp.html">Sliding window minimum</a>
-* :warning: <a href="library/Mylib/Algorithm/SlidingWindow/sliding_minmax.cpp.html">Sliding window minmax</a>
-
-
-<div id="c78b3868045887a7ae97845e4050078a"></div>
-
-### Mylib/Algorithm/SqrtDecomposition
-
-* :warning: <a href="library/Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp.html">Sqrt decomposition</a>
-
-
-<div id="fe4a83e4dc2a7f834ed4cd85d6972a53"></div>
-
-### Mylib/Bit
-
-* :warning: <a href="library/Mylib/Bit/bit_reverse.cpp.html">Bit reverse</a>
-* :x: <a href="library/Mylib/Bit/enumerate_sets_of_size_k.cpp.html">Enumerate sets of size k</a>
-* :x: <a href="library/Mylib/Bit/enumerate_subsets_asc.cpp.html">Enumerate subsets (Ascending order)</a>
-* :warning: <a href="library/Mylib/Bit/enumerate_subsets_between.cpp.html">Enumerate subsets (Between)</a>
-* :x: <a href="library/Mylib/Bit/enumerate_subsets_desc.cpp.html">Enumerate subsets (Descending order)</a>
-* :x: <a href="library/Mylib/Bit/enumerate_supersets_asc.cpp.html">Enumerate supersets (Ascending order)</a>
-* :x: <a href="library/Mylib/Bit/enumerate_supersets_desc.cpp.html">Enumerate supersets (Descending order)</a>
-* :warning: <a href="library/Mylib/Bit/gray_code.cpp.html">Gray code</a>
-
-
-<div id="8fcb53b240254087f9d87015c4533bd0"></div>
-
-### Mylib/Combinatorics
-
-* :x: <a href="library/Mylib/Combinatorics/bell_number.cpp.html">Bell number</a>
-* :x: <a href="library/Mylib/Combinatorics/bell_number_table.cpp.html">Bell number (Table)</a>
-* :x: <a href="library/Mylib/Combinatorics/bernoulli_number.cpp.html">Bernoulli number</a>
-* :x: <a href="library/Mylib/Combinatorics/bernoulli_number_fps.cpp.html">Bernoulli number (FPS)</a>
-* :warning: <a href="library/Mylib/Combinatorics/binomial_coefficients_table.cpp.html">Binomial coefficients table</a>
-* :x: <a href="library/Mylib/Combinatorics/catalan_number.cpp.html">Catalan number</a>
-* :x: <a href="library/Mylib/Combinatorics/factorial_table.cpp.html">Factorial table</a>
-* :x: <a href="library/Mylib/Combinatorics/montmort_number.cpp.html">Montmort number</a>
-* :x: <a href="library/Mylib/Combinatorics/partition_number.cpp.html">Partition number (Enumerate $P(n, k)$)</a>
-* :x: <a href="library/Mylib/Combinatorics/partition_number_fps.cpp.html">Partition number (FPS)</a>
-* :x: <a href="library/Mylib/Combinatorics/partition_number_n.cpp.html">Partition number (Enumerate $P(n, n)$)</a>
-* :x: <a href="library/Mylib/Combinatorics/stirling_number_first_fft.cpp.html">Stirling numbers of the first kind (FFT)</a>
-* :x: <a href="library/Mylib/Combinatorics/stirling_number_second.cpp.html">Stirling numbers of the second kind</a>
-* :x: <a href="library/Mylib/Combinatorics/stirling_number_second_fft.cpp.html">Stirling numbers of the second kind (FFT)</a>
-* :x: <a href="library/Mylib/Combinatorics/stirling_number_second_table.cpp.html">Stirling numbers of the second kind (Table)</a>
-
-
-<div id="d1ac32c11c508fec0764fa012d8d2913"></div>
-
-### Mylib/Convolution
-
-* :warning: <a href="library/Mylib/Convolution/convolution_and.cpp.html">Convolution (Index bitwise AND)</a>
-* :warning: <a href="library/Mylib/Convolution/convolution_or.cpp.html">Convolution (Index bitwise OR)</a>
-* :warning: <a href="library/Mylib/Convolution/convolution_xor.cpp.html">Convolution (Index bitwise XOR)</a>
-* :warning: <a href="library/Mylib/Convolution/fast_fourier_transform.cpp.html">Fast Fourier transform</a>
-* :heavy_check_mark: <a href="library/Mylib/Convolution/fast_mobius_transform_subset.cpp.html">Fast Möbius transform (Subsets)</a>
-* :x: <a href="library/Mylib/Convolution/fast_mobius_transform_superset.cpp.html">Fast Möbius transform (Supersets)</a>
-* :x: <a href="library/Mylib/Convolution/fast_zeta_transform_subset.cpp.html">Fast Zeta transform (Subsets)</a>
-* :x: <a href="library/Mylib/Convolution/fast_zeta_transform_superset.cpp.html">Fast Zeta transform (Supersets)</a>
-* :x: <a href="library/Mylib/Convolution/ntt_convolution.cpp.html">Number theoretic transform</a>
-
-
-<div id="0d7e284bb2256ddef55e56b25bfaf3f1"></div>
-
-### Mylib/DataStructure/Array
-
-* :x: <a href="library/Mylib/DataStructure/Array/persistent_array.cpp.html">Persistent array</a>
-* :warning: <a href="library/Mylib/DataStructure/Array/rollbackable_vector.cpp.html">Rollbackable vector</a>
-
-
-<div id="b28da20868b326226cf0a4223d060067"></div>
-
-### Mylib/DataStructure/CartesianTree
-
-* :x: <a href="library/Mylib/DataStructure/CartesianTree/cartesian_tree.cpp.html">Cartesian tree</a>
-
-
-<div id="0d6a910a839d6d45cd0c637d5901795e"></div>
-
-### Mylib/DataStructure/ConvexHullTrick
-
-* :warning: <a href="library/Mylib/DataStructure/ConvexHullTrick/convex_hull_trick.cpp.html">Convex hull trick</a>
-* :x: <a href="library/Mylib/DataStructure/ConvexHullTrick/dynamic_lichao_segment_tree.cpp.html">Dynamic LiChao segment tree</a>
-* :x: <a href="library/Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp.html">LiChao segment tree</a>
-
-
-<div id="2f58e2c328298747e7665b6f6b5791ad"></div>
-
-### Mylib/DataStructure/FenwickTree
-
-* :x: <a href="library/Mylib/DataStructure/FenwickTree/fenwick_tree.cpp.html">Fenwick tree</a>
-* :x: <a href="library/Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp.html">Fenwick tree (2D)</a>
-* :x: <a href="library/Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp.html">Fenwick tree (Add)</a>
-* :x: <a href="library/Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp.html">Fenwick tree (On Fenwick tree)</a>
-
-
-<div id="f151d59e79c7ff7f731ff52cf9b782e4"></div>
-
-### Mylib/DataStructure/Heap
-
-* :x: <a href="library/Mylib/DataStructure/Heap/binary_heap.cpp.html">Binary heap</a>
-* :heavy_check_mark: <a href="library/Mylib/DataStructure/Heap/binomial_heap.cpp.html">Binomial heap</a>
-* :warning: <a href="library/Mylib/DataStructure/Heap/interval_heap.cpp.html">Interval heap</a>
-* :heavy_check_mark: <a href="library/Mylib/DataStructure/Heap/leftist_heap.cpp.html">Leftist heap</a>
-* :heavy_check_mark: <a href="library/Mylib/DataStructure/Heap/skew_heap.cpp.html">Skew heap</a>
-
-
-<div id="a178be27fdfe56586a4fa516e8dee442"></div>
-
-### Mylib/DataStructure/LinkCutTree
-
-* :x: <a href="library/Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp.html">Link/cut tree</a>
-
-
-<div id="6b1c73113eb1a95c1a861edccc8def0a"></div>
-
-### Mylib/DataStructure/Queue
-
-* :x: <a href="library/Mylib/DataStructure/Queue/persistent_queue.cpp.html">Persistent queue</a>
-* :x: <a href="library/Mylib/DataStructure/Queue/sliding_window_aggregation.cpp.html">Sliding window aggregation</a>
-
-
-<div id="51d0b2ed49c1a9da73d4d3864cf91f26"></div>
-
-### Mylib/DataStructure/RangeTree
-
-* :x: <a href="library/Mylib/DataStructure/RangeTree/range_tree.cpp.html">Mylib/DataStructure/RangeTree/range_tree.cpp</a>
-
-
-<div id="7a59141fbb54053c332fbe894553f051"></div>
-
-### Mylib/DataStructure/SegmentTree
-
-* :x: <a href="library/Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp.html">Dual segment tree</a>
-* :x: <a href="library/Mylib/DataStructure/SegmentTree/dynamic_dual_segment_tree.cpp.html">Dynamic dual segment tree</a>
-* :x: <a href="library/Mylib/DataStructure/SegmentTree/dynamic_lazy_segment_tree.cpp.html">Dynamic lazy segment tree</a>
-* :x: <a href="library/Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp.html">Dynamic segment tree</a>
-* :question: <a href="library/Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp.html">Lazy segment tree</a>
-* :x: <a href="library/Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp.html">Persistent segment tree</a>
-* :question: <a href="library/Mylib/DataStructure/SegmentTree/segment_tree.cpp.html">Segment tree</a>
-* :x: <a href="library/Mylib/DataStructure/SegmentTree/segment_tree_2d.cpp.html">Segment tree (2D)</a>
-* :x: <a href="library/Mylib/DataStructure/SegmentTree/segment_tree_beats.cpp.html">Segment tree beats</a>
-* :x: <a href="library/Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp.html">Segment tree (Both foldable)</a>
-* :x: <a href="library/Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp.html">Segment tree (On segment tree)</a>
-* :x: <a href="library/Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp.html">Starry-sky tree</a>
-
-
-<div id="9f519a6857abe7364ea5fbe97ba369aa"></div>
-
-### Mylib/DataStructure/SparseTable
-
-* :warning: <a href="library/Mylib/DataStructure/SparseTable/disjoint_sparse_table.cpp.html">Disjoint sparse table</a>
-* :x: <a href="library/Mylib/DataStructure/SparseTable/sparse_table.cpp.html">Sparse table</a>
-* :warning: <a href="library/Mylib/DataStructure/SparseTable/sparse_table_2d.cpp.html">Sparse table (2D)</a>
-
-
-<div id="de940accc238379dfea959424e331579"></div>
-
-### Mylib/DataStructure/SplayTree
-
-* :heavy_check_mark: <a href="library/Mylib/DataStructure/SplayTree/splay_tree.cpp.html">Splay tree</a>
-
-
-<div id="12526f91d29b13109723e3d0cc6a4265"></div>
-
-### Mylib/DataStructure/Stack
-
-* :warning: <a href="library/Mylib/DataStructure/Stack/persistent_stack.cpp.html">Persistent stack</a>
-
-
-<div id="f1faa641fd949a91e292dddd575fe73e"></div>
-
-### Mylib/DataStructure/Treap
-
-* :warning: <a href="library/Mylib/DataStructure/Treap/ordered_treap.cpp.html">Treap (Ordered set)</a>
-* :heavy_check_mark: <a href="library/Mylib/DataStructure/Treap/treap.cpp.html">Treap</a>
-
-
-<div id="aacfe2e228752c2f7bc46438cb1a6bd5"></div>
-
-### Mylib/DataStructure/Trie
-
-* :x: <a href="library/Mylib/DataStructure/Trie/binary_trie.cpp.html">Binary trie</a>
-
-
-<div id="3ff74e8366c88d06b530f361450b1117"></div>
-
-### Mylib/DataStructure/UnionFind
-
-* :warning: <a href="library/Mylib/DataStructure/UnionFind/partially_persistent_unionfind.cpp.html">Partially persistent union-find</a>
-* :x: <a href="library/Mylib/DataStructure/UnionFind/persistent_unionfind.cpp.html">Persistent union-find</a>
-* :question: <a href="library/Mylib/DataStructure/UnionFind/unionfind.cpp.html">Union-find</a>
-* :x: <a href="library/Mylib/DataStructure/UnionFind/weighted_unionfind.cpp.html">Weighted union-find</a>
-
-
-<div id="def74daadbbb39361c0a507a6463f6db"></div>
-
-### Mylib/DataStructure/WaveletMatrix
-
-* :question: <a href="library/Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp.html">Succinct dictionary</a>
-* :question: <a href="library/Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp.html">Wavelet matrix</a>
-
-
-<div id="0f67555b3039d368e55db69bb4454f7e"></div>
-
-### Mylib/Debug
-
-* :warning: <a href="library/Mylib/Debug/debug.cpp.html">Mylib/Debug/debug.cpp</a>
-* :warning: <a href="library/Mylib/Debug/grid_viewer.cpp.html">Mylib/Debug/grid_viewer.cpp</a>
-* :warning: <a href="library/Mylib/Debug/matrix_viewer.cpp.html">Matrix viewer</a>
-* :warning: <a href="library/Mylib/Debug/memory_dump.cpp.html">Memory dump</a>
-* :warning: <a href="library/Mylib/Debug/polynomial_viewer.cpp.html">Mylib/Debug/polynomial_viewer.cpp</a>
-
-
-<div id="3a96c66483797c15eff4c0c3d8733619"></div>
-
-### Mylib/DynamicProgramming
-
-* :x: <a href="library/Mylib/DynamicProgramming/bitonic_tour.cpp.html">Bitonic tour</a>
-* :x: <a href="library/Mylib/DynamicProgramming/longest_increasing_subsequence.cpp.html">Longest increasing subsequence</a>
-* :warning: <a href="library/Mylib/DynamicProgramming/max_partial_sum.cpp.html">Maximum subarray problem</a>
-
-
-<div id="826136648af25fa7c5e97a1b794f9784"></div>
-
-### Mylib/DynamicProgramming/SpeedupTechnique
-
-* :x: <a href="library/Mylib/DynamicProgramming/SpeedupTechnique/kitamasa_algorithm.cpp.html">Kitamasa algorithm</a>
-* :warning: <a href="library/Mylib/DynamicProgramming/SpeedupTechnique/monotone_minima.cpp.html">Monotone minima</a>
-
-
-<div id="090220fbd726178f7b9d402d3ae3f683"></div>
-
-### Mylib/Geometry/Float
-
-* :x: <a href="library/Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp.html">Area of intersection between a circle and a polygon</a>
-* :x: <a href="library/Mylib/Geometry/Float/area_intersection_of_circles.cpp.html">Area of intersection between two circles</a>
-* :x: <a href="library/Mylib/Geometry/Float/area_polygon.cpp.html">Area of polygon</a>
-* :question: <a href="library/Mylib/Geometry/Float/ccw.cpp.html">Check clockwise-counterclockwise</a>
-* :x: <a href="library/Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp.html">Circumscribed circle of a triangle</a>
-* :x: <a href="library/Mylib/Geometry/Float/closest_pair.cpp.html">Closest pair</a>
-* :x: <a href="library/Mylib/Geometry/Float/common_tangent_of_circles.cpp.html">Common tangents of two circles</a>
-* :x: <a href="library/Mylib/Geometry/Float/convex_cut.cpp.html">Convex cut</a>
-* :x: <a href="library/Mylib/Geometry/Float/convex_diameter.cpp.html">Convex diameter</a>
-* :x: <a href="library/Mylib/Geometry/Float/convex_hull.cpp.html">Convex hull</a>
-* :x: <a href="library/Mylib/Geometry/Float/distance_line_point.cpp.html">Distance between a line and a point</a>
-* :x: <a href="library/Mylib/Geometry/Float/distance_segment_point.cpp.html">Distance between a segment and a point</a>
-* :x: <a href="library/Mylib/Geometry/Float/distance_segments.cpp.html">Distance between two segments</a>
-* :question: <a href="library/Mylib/Geometry/Float/double_eps.cpp.html">Floating point number with eps</a>
-* :question: <a href="library/Mylib/Geometry/Float/geometry_template.cpp.html">Geometry template</a>
-* :x: <a href="library/Mylib/Geometry/Float/inscribed_circle_of_triangle.cpp.html">Inscribed circle of a triangle</a>
-* :x: <a href="library/Mylib/Geometry/Float/intersect_circle_line.cpp.html">Intersection between a circle and a line</a>
-* :x: <a href="library/Mylib/Geometry/Float/intersect_circle_segment.cpp.html">Intersection between a circle and a segment</a>
-* :x: <a href="library/Mylib/Geometry/Float/intersect_circles.cpp.html">Intersection between two circles</a>
-* :x: <a href="library/Mylib/Geometry/Float/intersect_line_segment.cpp.html">Intersection between a line and a segment</a>
-* :question: <a href="library/Mylib/Geometry/Float/intersect_segments.cpp.html">Intersection between two lines</a>
-* :x: <a href="library/Mylib/Geometry/Float/is_convex.cpp.html">Check convex</a>
-* :x: <a href="library/Mylib/Geometry/Float/is_point_in_polygon.cpp.html">Check if a point is in a polygon</a>
-* :x: <a href="library/Mylib/Geometry/Float/manhattan_segments_intersections.cpp.html">Manhattan segments intersections</a>
-* :x: <a href="library/Mylib/Geometry/Float/minimum_covering_circle.cpp.html">Minimum covering circle</a>
-* :x: <a href="library/Mylib/Geometry/Float/orthogonal.cpp.html">Orthogonal</a>
-* :x: <a href="library/Mylib/Geometry/Float/parallel.cpp.html">Parallel</a>
-* :x: <a href="library/Mylib/Geometry/Float/projection.cpp.html">Projection</a>
-* :x: <a href="library/Mylib/Geometry/Float/reflection.cpp.html">Reflection</a>
-* :x: <a href="library/Mylib/Geometry/Float/tangent_of_circle.cpp.html">Tangent of circle</a>
-
-
-<div id="791a56799ce3ef8e4fb5da8cbce3a9bf"></div>
-
-### Mylib/Graph
-
-* :x: <a href="library/Mylib/Graph/chinese_postman_problem.cpp.html">Chinese postman problem</a>
-* :x: <a href="library/Mylib/Graph/enumerate_triangles.cpp.html">Enumerate triangles</a>
-* :x: <a href="library/Mylib/Graph/maximum_independent_set.cpp.html">Maximum independent set</a>
-* :x: <a href="library/Mylib/Graph/project_selection_problem.cpp.html">Project selection problem</a>
-* :x: <a href="library/Mylib/Graph/travelling_salesman_problem.cpp.html">Travelling salesman problem</a>
-* :x: <a href="library/Mylib/Graph/two_sat.cpp.html">2-SAT</a>
-
-
-<div id="3b87eee7aef75da88610c966a8da844f"></div>
-
-### Mylib/Graph/BipartiteGraph
-
-* :heavy_check_mark: <a href="library/Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp.html">Check bipartite graph</a>
-* :warning: <a href="library/Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp.html">Check bipartite graph (Using union-find)</a>
-
-
-<div id="acf9ec20eaed2eb3d3c1a731ebc2fbe1"></div>
-
-### Mylib/Graph/Coloring
-
-* :heavy_check_mark: <a href="library/Mylib/Graph/Coloring/chromatic_number.cpp.html">Graph vertex coloring</a>
-
-
-<div id="a962efc2861dbe1e0963e7d8bf7dda18"></div>
-
-### Mylib/Graph/Cycle
-
-* :x: <a href="library/Mylib/Graph/Cycle/detect_cycle.cpp.html">Detect cycle</a>
-* :warning: <a href="library/Mylib/Graph/Cycle/directed_shortest_cycle.cpp.html">Directed shortest cycle</a>
-* :warning: <a href="library/Mylib/Graph/Cycle/enumerate_functional_cycles.cpp.html">Enumerate cycles in functional graph</a>
-* :warning: <a href="library/Mylib/Graph/Cycle/undirected_shortest_cycle.cpp.html">Undirected shortest cycle</a>
-
-
-<div id="65714f932d9658b7e9e55eb052732de1"></div>
-
-### Mylib/Graph/DAG
-
-* :warning: <a href="library/Mylib/Graph/DAG/dag_longest_path.cpp.html">Longest path on DAG</a>
-
-
-<div id="b40e1d8162bf14ce6637a69e4e4fb68d"></div>
-
-### Mylib/Graph/EulerianPath
-
-* :warning: <a href="library/Mylib/Graph/EulerianPath/directed_eulerian_path.cpp.html">Directed Eulerian path</a>
-* :warning: <a href="library/Mylib/Graph/EulerianPath/undirected_eulerian_path.cpp.html">Undirected Eulerian path</a>
-
-
-<div id="ecd047c70c23d80351a9f133b49a4638"></div>
-
-### Mylib/Graph/Flow
-
-* :x: <a href="library/Mylib/Graph/Flow/dinic.cpp.html">Dinic algorithm</a>
-* :x: <a href="library/Mylib/Graph/Flow/ford_fulkerson.cpp.html">Ford-Fulkerson algorithm</a>
-* :question: <a href="library/Mylib/Graph/Flow/minimum_cost_flow.cpp.html">Minimum cost flow</a>
-* :x: <a href="library/Mylib/Graph/Flow/push_relabel.cpp.html">Push-relabel</a>
-
-
-<div id="0520734517f09caa086d1aa01fa4b9e4"></div>
-
-### Mylib/Graph/GraphUtils
-
-* :x: <a href="library/Mylib/Graph/GraphUtils/articulation_points.cpp.html">Articulation points</a>
-* :warning: <a href="library/Mylib/Graph/GraphUtils/biconnected_components.cpp.html">Biconnected components</a>
-* :x: <a href="library/Mylib/Graph/GraphUtils/bridges.cpp.html">Bridges</a>
-* :x: <a href="library/Mylib/Graph/GraphUtils/decompose_pseudotree.cpp.html">Decompose pseudotree</a>
-* :x: <a href="library/Mylib/Graph/GraphUtils/strongly_connected_components.cpp.html">Strongly connected components</a>
-* :x: <a href="library/Mylib/Graph/GraphUtils/two_edge_connected_components.cpp.html">Two edge connected components</a>
-
-
-<div id="65eb1c5db2b1bd726d58cf661f149e7c"></div>
-
-### Mylib/Graph/Matching
-
-* :x: <a href="library/Mylib/Graph/Matching/bipartite_matching.cpp.html">Maximum bipartite matching</a>
-* :x: <a href="library/Mylib/Graph/Matching/hopcroft_karp.cpp.html">Hopcroft-Karp algorithm</a>
-* :question: <a href="library/Mylib/Graph/Matching/weighted_bipartite_matching.cpp.html">Weighted maximum bipartite matching</a>
-
-
-<div id="cb5ed95d97b7ee8efcbdf177a47dc7b7"></div>
-
-### Mylib/Graph/MinimumSpanningTree
-
-* :x: <a href="library/Mylib/Graph/MinimumSpanningTree/boruvka.cpp.html">Borůvka algorithm</a>
-* :x: <a href="library/Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp.html">Chu-Liu/Edmonds algorithm</a>
-* :x: <a href="library/Mylib/Graph/MinimumSpanningTree/kruskal.cpp.html">Kruskal algorithm</a>
-* :x: <a href="library/Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp.html">Manhattan distance MST</a>
-* :question: <a href="library/Mylib/Graph/MinimumSpanningTree/prim.cpp.html">Prim algorithm</a>
-
-
-<div id="9a0780c4ad89eac4e850657d1e57c23a"></div>
-
-### Mylib/Graph/ShortestPath
-
-* :x: <a href="library/Mylib/Graph/ShortestPath/bellman_ford.cpp.html">Bellman-Ford algorithm</a>
-* :warning: <a href="library/Mylib/Graph/ShortestPath/bfs_0_1.cpp.html">0-1 BFS</a>
-* :heavy_check_mark: <a href="library/Mylib/Graph/ShortestPath/bfs_shortest_path.cpp.html">BFS shortest path</a>
-* :x: <a href="library/Mylib/Graph/ShortestPath/dial_algorithm.cpp.html">Dial's algorithm</a>
-* :question: <a href="library/Mylib/Graph/ShortestPath/dijkstra.cpp.html">Dijkstra algorithm</a>
-* :x: <a href="library/Mylib/Graph/ShortestPath/warshall_floyd.cpp.html">Warshall-Floyd algorithm</a>
-* :heavy_check_mark: <a href="library/Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp.html">Warshall-Floyd algorithm (For adjacency matrix graph)</a>
-* :x: <a href="library/Mylib/Graph/ShortestPath/yen_algorithm.cpp.html">Yen's algorithm</a>
-
-
-<div id="d9afcc29a820df9cbf03e35749db39d5"></div>
-
-### Mylib/Graph/Template
-
-* :question: <a href="library/Mylib/Graph/Template/graph.cpp.html">Basic graph</a>
-* :warning: <a href="library/Mylib/Graph/Template/range_edge_graph.cpp.html">Range edge graph</a>
-
-
-<div id="5cfab8f1bec9f4a2c22b88bddb7720db"></div>
-
-### Mylib/Graph/TopologicalSort
-
-* :warning: <a href="library/Mylib/Graph/TopologicalSort/count_topological_sort.cpp.html">Count topological sort</a>
-* :x: <a href="library/Mylib/Graph/TopologicalSort/topological_sort.cpp.html">Topological sort</a>
-* :warning: <a href="library/Mylib/Graph/TopologicalSort/topological_sort_lexicographical.cpp.html">Topological sort (Lexicographically minimum)</a>
-
-
-<div id="a41ea9974466d4f509bcbf59f2ee921e"></div>
-
-### Mylib/Graph/TreeUtils
-
-* :warning: <a href="library/Mylib/Graph/TreeUtils/centroid.cpp.html">Enumerate centroids</a>
-* :warning: <a href="library/Mylib/Graph/TreeUtils/centroid_decomposition.cpp.html">Centroid decomposition</a>
-* :x: <a href="library/Mylib/Graph/TreeUtils/euler_tour_bfs.cpp.html">Euler tour (BFS)</a>
-* :x: <a href="library/Mylib/Graph/TreeUtils/euler_tour_vertex.cpp.html">Euler tour (Vertex)</a>
-* :x: <a href="library/Mylib/Graph/TreeUtils/forest.cpp.html">Decompose forest</a>
-* :question: <a href="library/Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp.html">Heavy-light decomposition</a>
-* :x: <a href="library/Mylib/Graph/TreeUtils/lca_doubling.cpp.html">Lowest common ancestor (Doubling)</a>
-* :x: <a href="library/Mylib/Graph/TreeUtils/lca_hld.cpp.html">Lowest common ancestor (HLD)</a>
-* :question: <a href="library/Mylib/Graph/TreeUtils/rerooting.cpp.html">Rerooting DP</a>
-* :warning: <a href="library/Mylib/Graph/TreeUtils/rooting.cpp.html">Rooting</a>
-* :x: <a href="library/Mylib/Graph/TreeUtils/tree_diameter.cpp.html">Tree diameter</a>
-* :x: <a href="library/Mylib/Graph/TreeUtils/tree_distance.cpp.html">Tree distance</a>
-* :x: <a href="library/Mylib/Graph/TreeUtils/tree_height.cpp.html">Tree height</a>
-
-
-<div id="437b04c37f52e5b35f1d2c24c546c491"></div>
-
-### Mylib/Grid
-
-* :heavy_check_mark: <a href="library/Mylib/Grid/grid.cpp.html">Grid template</a>
-* :heavy_check_mark: <a href="library/Mylib/Grid/grid_bfs.cpp.html">BFS on a grid</a>
-* :heavy_check_mark: <a href="library/Mylib/Grid/grid_find.cpp.html">Enumerate points satisfying conditions</a>
-* :heavy_check_mark: <a href="library/Mylib/Grid/grid_to_graph.cpp.html">Convert grid to graph</a>
-
-
-<div id="8196a7a5355e165a1b784acd0a3f4854"></div>
-
-### Mylib/Heuristic
-
-* :warning: <a href="library/Mylib/Heuristic/simulated_annealing.cpp.html">Simulated annealing</a>
-
-
-<div id="7f8c074a28e3c2f263a02491ce2132dd"></div>
-
-### Mylib/IO
-
-* :question: <a href="library/Mylib/IO/input_tuple.cpp.html">Mylib/IO/input_tuple.cpp</a>
-* :question: <a href="library/Mylib/IO/input_tuple_vector.cpp.html">Mylib/IO/input_tuple_vector.cpp</a>
-* :question: <a href="library/Mylib/IO/input_tuples.cpp.html">Mylib/IO/input_tuples.cpp</a>
-* :question: <a href="library/Mylib/IO/input_tuples_with_index.cpp.html">Mylib/IO/input_tuples_with_index.cpp</a>
-* :question: <a href="library/Mylib/IO/input_vector.cpp.html">Mylib/IO/input_vector.cpp</a>
-* :question: <a href="library/Mylib/IO/join.cpp.html">Mylib/IO/join.cpp</a>
-
-
-<div id="4efd5e2a9807175bf43e4c1857b5bc52"></div>
-
-### Mylib/LinearAlgebra/GaussianElimination
-
-* :x: <a href="library/Mylib/LinearAlgebra/GaussianElimination/binary_gaussian_elimination.cpp.html">Gaussian elimination (Mod2)</a>
-* :heavy_check_mark: <a href="library/Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp.html">Gaussian elimination</a>
-
-
-<div id="0f2e8b5b008805076abcf42bbba8c8c1"></div>
-
-### Mylib/LinearAlgebra/SimultaneousLinearEquations
-
-* :heavy_check_mark: <a href="library/Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp.html">Simultaneous linear equations (Mod2)</a>
-* :heavy_check_mark: <a href="library/Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp.html">Simultaneous linear equations (Floating point number)</a>
-* :x: <a href="library/Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp.html">Simultaneous linear equations</a>
-
-
-<div id="b58b3fdb1287502881e9117a37552614"></div>
-
-### Mylib/LinearAlgebra/Square
-
-* :x: <a href="library/Mylib/LinearAlgebra/Square/determinant.cpp.html">Determinant</a>
-* :x: <a href="library/Mylib/LinearAlgebra/Square/inverse_matrix.cpp.html">Inverse matrix</a>
-* :question: <a href="library/Mylib/LinearAlgebra/Square/power.cpp.html">Power of a matrix</a>
-* :question: <a href="library/Mylib/LinearAlgebra/Square/square_matrix.cpp.html">Square matrix</a>
-* :x: <a href="library/Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp.html">Square matrix (Const size)</a>
-* :warning: <a href="library/Mylib/LinearAlgebra/Square/square_matrix_experimental.cpp.html">Mylib/LinearAlgebra/Square/square_matrix_experimental.cpp</a>
-
-
-<div id="c20232aa0a6a3c1c77a782d17f007d0b"></div>
-
-### Mylib/Math
-
-* :warning: <a href="library/Mylib/Math/closed_interval.cpp.html">Closed interval</a>
-* :x: <a href="library/Mylib/Math/formal_power_series.cpp.html">Formal power series</a>
-* :x: <a href="library/Mylib/Math/polynomial_taylor_shift.cpp.html">polynomial_taylor_shift.md</a>
-* :warning: <a href="library/Mylib/Math/quadratic_equation.cpp.html">Real solutions of quadratic equation</a>
-
-
-<div id="3aaad417c82174440088b5eea559262a"></div>
-
-### Mylib/Misc
-
-* :x: <a href="library/Mylib/Misc/convert_base.cpp.html">Convert base</a>
-* :heavy_check_mark: <a href="library/Mylib/Misc/dice.cpp.html">Dice</a>
-* :x: <a href="library/Mylib/Misc/int128.cpp.html">128-bit int</a>
-* :heavy_check_mark: <a href="library/Mylib/Misc/merge_technique.cpp.html">Mylib/Misc/merge_technique.cpp</a>
-* :warning: <a href="library/Mylib/Misc/roman_numerals.cpp.html">Roman numerals</a>
-* :warning: <a href="library/Mylib/Misc/timer.cpp.html">Timer</a>
-* :warning: <a href="library/Mylib/Misc/unzip.cpp.html">Unzip function</a>
-* :warning: <a href="library/Mylib/Misc/xor_shift.cpp.html">Xorshift</a>
-* :warning: <a href="library/Mylib/Misc/zip.cpp.html">Zip function</a>
-
-
-<div id="5fda78fda98ef9fc0f87c6b50d529f19"></div>
-
-### Mylib/Number
-
-* :x: <a href="library/Mylib/Number/binary_gcd.cpp.html">Binary GCD</a>
-* :x: <a href="library/Mylib/Number/chinese_remainder_algorithm.cpp.html">Chinese remainder theorem</a>
-* :x: <a href="library/Mylib/Number/euler_phi_function.cpp.html">Euler's totient function</a>
-* :warning: <a href="library/Mylib/Number/euler_phi_function_table.cpp.html">Euler's totient function (Enumerate)</a>
-* :x: <a href="library/Mylib/Number/extended_gcd.cpp.html">Extended Euclidean algorithm</a>
-* :warning: <a href="library/Mylib/Number/floor_ceil.cpp.html">Floor function / Ceiling function</a>
-* :warning: <a href="library/Mylib/Number/garner.cpp.html">Garner algorithm</a>
-* :warning: <a href="library/Mylib/Number/gcd_lcm.cpp.html">Greatest common divisor / Least common multiple</a>
-* :warning: <a href="library/Mylib/Number/is_square.cpp.html">Check square number</a>
-* :x: <a href="library/Mylib/Number/kth_root_integer.cpp.html">Kth root integer</a>
-* :warning: <a href="library/Mylib/Number/mobius_function.cpp.html">Möbius function</a>
-* :warning: <a href="library/Mylib/Number/power.cpp.html">Binary exponentiation</a>
-* :warning: <a href="library/Mylib/Number/sign_function.cpp.html">Sign function</a>
-* :x: <a href="library/Mylib/Number/tetration.cpp.html">Tetration</a>
-
-
-<div id="e1d7bebd3991495167778e37d1d75d40"></div>
-
-### Mylib/Number/Divisor
-
-* :warning: <a href="library/Mylib/Number/Divisor/count_divisors.cpp.html">Count divisors</a>
-* :x: <a href="library/Mylib/Number/Divisor/enumerate_divisors.cpp.html">Enumerate divisors</a>
-
-
-<div id="ed8374f4a8b62e2301eb75f9564224fe"></div>
-
-### Mylib/Number/Mint
-
-* :x: <a href="library/Mylib/Number/Mint/mint.cpp.html">Modint</a>
-* :warning: <a href="library/Mylib/Number/Mint/montgomery.cpp.html">Montgomery multiplication</a>
-* :question: <a href="library/Mylib/Number/Mint/runtime_mint.cpp.html">Modint (Runtime mod)</a>
-* :warning: <a href="library/Mylib/Number/Mint/runtime_mint_experimental.cpp.html">Mylib/Number/Mint/runtime_mint_experimental.cpp</a>
-
-
-<div id="795ab137908c82fc28acbcffe5b1c757"></div>
-
-### Mylib/Number/Mod
-
-* :x: <a href="library/Mylib/Number/Mod/mod_inv.cpp.html">Mod inverse</a>
-* :x: <a href="library/Mylib/Number/Mod/mod_log.cpp.html">Mod logarithm</a>
-* :question: <a href="library/Mylib/Number/Mod/mod_power.cpp.html">Mod power</a>
-* :x: <a href="library/Mylib/Number/Mod/mod_sqrt.cpp.html">Mod sqrt</a>
-
-
-<div id="26f1f261bc4e83492156752f5caf0111"></div>
-
-### Mylib/Number/Prime
-
-* :x: <a href="library/Mylib/Number/Prime/atkin_sieve.cpp.html">Sieve of Atkin</a>
-* :x: <a href="library/Mylib/Number/Prime/count_coprime.cpp.html">Count coprime</a>
-* :x: <a href="library/Mylib/Number/Prime/eratosthenes_sieve.cpp.html">Sieve of Eratosthenes</a>
-* :warning: <a href="library/Mylib/Number/Prime/factorial_prime_factorization.cpp.html">Count number of prime factor p of $a!$</a>
-* :x: <a href="library/Mylib/Number/Prime/is_prime.cpp.html">Primality test (Trial division)</a>
-* :x: <a href="library/Mylib/Number/Prime/miller_rabin.cpp.html">Primality test (Miller-Rabin algorithm)</a>
-* :x: <a href="library/Mylib/Number/Prime/pollard_rho.cpp.html">Prime factorization (Pollard's rho algorithm)</a>
-* :x: <a href="library/Mylib/Number/Prime/prime_factorize.cpp.html">Prime factorization</a>
-* :warning: <a href="library/Mylib/Number/Prime/prime_factorize_sieve.cpp.html">Prime factorization (Sieve)</a>
-* :warning: <a href="library/Mylib/Number/Prime/segmented_sieve.cpp.html">Segmented sieve</a>
-
-
-<div id="e55110d6133c602b43ca77c4caba1f06"></div>
-
-### Mylib/Number/Rational
-
-* :heavy_check_mark: <a href="library/Mylib/Number/Rational/rational.cpp.html">Rational number</a>
-* :heavy_check_mark: <a href="library/Mylib/Number/Rational/stern_brocot_tree.cpp.html">Stern-Brocot tree</a>
-
-
-<div id="3137e84ecea04d2bbca689ed3c72bc37"></div>
-
-### Mylib/Parser
-
-* :heavy_check_mark: <a href="library/Mylib/Parser/parser.cpp.html">Parsing</a>
-
-
-<div id="d75653ebf9facf6e669959c8c0d9cbcf"></div>
-
-### Mylib/String
-
-* :x: <a href="library/Mylib/String/aho_corasick.cpp.html">Aho-Corasick algorithm</a>
-* :warning: <a href="library/Mylib/String/ends_with.cpp.html">ends_with</a>
-* :x: <a href="library/Mylib/String/knuth_morris_pratt.cpp.html">Knuth-Morris-Pratt algorithm</a>
-* :x: <a href="library/Mylib/String/lcp_array.cpp.html">LCP(Longest Common Prefix) array</a>
-* :x: <a href="library/Mylib/String/levenshtein_distance.cpp.html">Levenshtein distance / Edit distance</a>
-* :x: <a href="library/Mylib/String/longest_common_subsequence.cpp.html">Longest common subsequence</a>
-* :warning: <a href="library/Mylib/String/manacher.cpp.html">Manacher algorithm</a>
-* :warning: <a href="library/Mylib/String/palindromic_tree.cpp.html">Palindromic tree</a>
-* :x: <a href="library/Mylib/String/rolling_hash.cpp.html">Rolling hash</a>
-* :x: <a href="library/Mylib/String/rolling_hash_2d.cpp.html">Rolling hash (2D)</a>
-* :x: <a href="library/Mylib/String/run_enumerate.cpp.html">Run enumerate</a>
-* :heavy_check_mark: <a href="library/Mylib/String/split.cpp.html">split</a>
-* :warning: <a href="library/Mylib/String/starts_with.cpp.html">starts_with</a>
-* :x: <a href="library/Mylib/String/suffix_array.cpp.html">Suffix array</a>
-* :warning: <a href="library/Mylib/String/trie.cpp.html">Trie</a>
-* :x: <a href="library/Mylib/String/z_algorithm.cpp.html">Z-algorithm</a>
-
-
-<div id="a1062884f064c2b3be412505b6627108"></div>
-
-### Mylib/TypicalProblem/IntervalSchedulingProblem
-
-* :x: <a href="library/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling.cpp.html">Interval scheduling problem</a>
-* :x: <a href="library/Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp.html">Interval scheduling problem (Allow no more than k intervals to overlap)</a>
-* :warning: <a href="library/Mylib/TypicalProblem/IntervalSchedulingProblem/weighted_interval_scheduling.cpp.html">Weighted interval scheduling problem</a>
-
-
-<div id="4bc951e5ca9130b2259fc85dc53eb972"></div>
-
-### Mylib/TypicalProblem/KnapsackProblem
-
-* :x: <a href="library/Mylib/TypicalProblem/KnapsackProblem/knapsack_limited.cpp.html">Knapsack problem (With quantity limitations)</a>
-* :x: <a href="library/Mylib/TypicalProblem/KnapsackProblem/knapsack_small_quantity.cpp.html">0-1 Knapsack problem (Small quantity)</a>
-* :x: <a href="library/Mylib/TypicalProblem/KnapsackProblem/knapsack_small_value.cpp.html">0-1 Knapsack problem (Small value)</a>
-* :x: <a href="library/Mylib/TypicalProblem/KnapsackProblem/knapsack_small_weight.cpp.html">0-1 Knapsack problem (Small weight)</a>
-* :x: <a href="library/Mylib/TypicalProblem/KnapsackProblem/knapsack_unlimited.cpp.html">Knapsack problem (Without quantity limitations)</a>
-
-
-<div id="e5c03cf251a1c8b45af0c48200d5638e"></div>
-
-### Mylib/TypicalProblem/MaxRectangleProblem
-
-* :x: <a href="library/Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle.cpp.html">Largest rectangle</a>
-* :x: <a href="library/Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle_in_histogram.cpp.html">Largest rectangle in histogram</a>
-
-
-<div id="2e380218d9fd214c2f91a8ade734af1c"></div>
-
-### Mylib/TypicalProblem/SubsetSumProblem
-
-* :warning: <a href="library/Mylib/TypicalProblem/SubsetSumProblem/subset_sum.cpp.html">Subset sum problem</a>
-* :warning: <a href="library/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_count.cpp.html">Subset sum problem (Count)</a>
-* :x: <a href="library/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_count_fps.cpp.html">Subset sum problem (Count, FPS)</a>
-* :question: <a href="library/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp.html">Subset sum problem (With quantity limitations)</a>
-* :warning: <a href="library/Mylib/TypicalProblem/SubsetSumProblem/subset_sum_minimum.cpp.html">Subset sum problem (Minimum)</a>
-
-
-<div id="cf1ec978dae666792e23e53a3672d204"></div>
-
-### Mylib/Utils
-
-* :question: <a href="library/Mylib/Utils/compressor.cpp.html">Compressor</a>
-* :question: <a href="library/Mylib/Utils/fix_point.cpp.html">Fixed point combinator</a>
-* :warning: <a href="library/Mylib/Utils/run_length_encoding.cpp.html">Run length encoding</a>
-* :x: <a href="library/Mylib/Utils/sort_simultaneously.cpp.html">Mylib/Utils/sort_simultaneously.cpp</a>
-
-
-<div id="67be68a348da3b850fb7daa10b034528"></div>
-
-### snippets
-
-* :warning: <a href="library/snippets/all.cpp.html">snippets/all.cpp</a>
-* :warning: <a href="library/snippets/bits.cpp.html">snippets/bits.cpp</a>
-* :warning: <a href="library/snippets/cauto.cpp.html">snippets/cauto.cpp</a>
-* :warning: <a href="library/snippets/debugging.cpp.html">snippets/debugging.cpp</a>
-* :warning: <a href="library/snippets/exists.cpp.html">snippets/exists.cpp</a>
-* :warning: <a href="library/snippets/fastcin.cpp.html">snippets/fastcin.cpp</a>
-* :warning: <a href="library/snippets/fore.cpp.html">snippets/fore.cpp</a>
-* :warning: <a href="library/snippets/fst.cpp.html">snippets/fst.cpp</a>
-* :warning: <a href="library/snippets/itr.cpp.html">snippets/itr.cpp</a>
-* :warning: <a href="library/snippets/lambda1.cpp.html">snippets/lambda1.cpp</a>
-* :warning: <a href="library/snippets/lambda2.cpp.html">snippets/lambda2.cpp</a>
-* :warning: <a href="library/snippets/lambda3.cpp.html">snippets/lambda3.cpp</a>
-* :warning: <a href="library/snippets/lambda4.cpp.html">snippets/lambda4.cpp</a>
-* :warning: <a href="library/snippets/main.cpp.html">snippets/main.cpp</a>
-* :warning: <a href="library/snippets/mytemplate.cpp.html">snippets/mytemplate.cpp</a>
-* :warning: <a href="library/snippets/oldtemplate.cpp.html">snippets/oldtemplate.cpp</a>
-* :warning: <a href="library/snippets/rall.cpp.html">snippets/rall.cpp</a>
-* :warning: <a href="library/snippets/range.cpp.html">snippets/range.cpp</a>
-* :warning: <a href="library/snippets/rep.cpp.html">snippets/rep.cpp</a>
-* :warning: <a href="library/snippets/rev.cpp.html">snippets/rev.cpp</a>
-* :warning: <a href="library/snippets/ritr.cpp.html">snippets/ritr.cpp</a>
-* :warning: <a href="library/snippets/snd.cpp.html">snippets/snd.cpp</a>
-* :warning: <a href="library/snippets/uniq.cpp.html">snippets/uniq.cpp</a>
-
-
-## Verify Files
-
-* :heavy_check_mark: <a href="verify/test/aoj/0323/main.golden.test.cpp.html">test/aoj/0323/main.golden.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/0323/main.ternary.test.cpp.html">test/aoj/0323/main.ternary.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/0390/main.test.cpp.html">test/aoj/0390/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/0425/main.test.cpp.html">test/aoj/0425/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/0502/main.test.cpp.html">test/aoj/0502/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/0558/main.graph.test.cpp.html">test/aoj/0558/main.graph.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/0558/main.test.cpp.html">test/aoj/0558/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/0575/main.test.cpp.html">test/aoj/0575/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/1102/main.test.cpp.html">test/aoj/1102/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/1208/main.test.cpp.html">test/aoj/1208/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/1300/main.test.cpp.html">test/aoj/1300/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/1308/main.test.cpp.html">test/aoj/1308/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/1327/main.test.cpp.html">test/aoj/1327/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/1337/main.test.cpp.html">test/aoj/1337/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/1508/main.splay_tree.test.cpp.html">test/aoj/1508/main.splay_tree.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/1508/main.treap.test.cpp.html">test/aoj/1508/main.treap.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/1549/main.test.cpp.html">test/aoj/1549/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/1595/main.test.cpp.html">test/aoj/1595/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/2136/main.test.cpp.html">test/aoj/2136/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/2171/main.test.cpp.html">test/aoj/2171/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/2293/main.test.cpp.html">test/aoj/2293/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/2370/main.test.cpp.html">test/aoj/2370/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/2401/main.test.cpp.html">test/aoj/2401/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/2426/main.test.cpp.html">test/aoj/2426/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/2444/main.test.cpp.html">test/aoj/2444/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/2446/main.test.cpp.html">test/aoj/2446/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/2530/main.test.cpp.html">test/aoj/2530/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/2559/main.binomial_heap.test.cpp.html">test/aoj/2559/main.binomial_heap.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/2559/main.leftist_heap.test.cpp.html">test/aoj/2559/main.leftist_heap.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/2559/main.skew_heap.test.cpp.html">test/aoj/2559/main.skew_heap.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/2667/main.test.cpp.html">test/aoj/2667/main.test.cpp</a>
-* :heavy_check_mark: <a href="verify/test/aoj/2674/main.test.cpp.html">test/aoj/2674/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/2842/main.fenwick_tree.test.cpp.html">test/aoj/2842/main.fenwick_tree.test.cpp</a>
-* :x: <a href="verify/test/aoj/2842/main.segment_tree.test.cpp.html">test/aoj/2842/main.segment_tree.test.cpp</a>
-* :x: <a href="verify/test/aoj/2891/main.test.cpp.html">test/aoj/2891/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/2903/main.test.cpp.html">test/aoj/2903/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/2955/main.test.cpp.html">test/aoj/2955/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/3034/main.test.cpp.html">test/aoj/3034/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/3058/main.test.cpp.html">test/aoj/3058/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/3119/main.test.cpp.html">test/aoj/3119/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/3132/main.test.cpp.html">test/aoj/3132/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/3134/main.test.cpp.html">test/aoj/3134/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/ALDS1_10_C/main.test.cpp.html">test/aoj/ALDS1_10_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/ALDS1_12_B/main.dial.test.cpp.html">test/aoj/ALDS1_12_B/main.dial.test.cpp</a>
-* :x: <a href="verify/test/aoj/ALDS1_14_B/main.kmp.test.cpp.html">test/aoj/ALDS1_14_B/main.kmp.test.cpp</a>
-* :x: <a href="verify/test/aoj/ALDS1_14_B/main.test.cpp.html">test/aoj/ALDS1_14_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/ALDS1_14_C/main.test.cpp.html">test/aoj/ALDS1_14_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/ALDS1_14_D/main.test.cpp.html">test/aoj/ALDS1_14_D/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/ALDS1_15_C/main.test.cpp.html">test/aoj/ALDS1_15_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/ALDS1_1_C/main.test.cpp.html">test/aoj/ALDS1_1_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/ALDS1_5_D/main.test.cpp.html">test/aoj/ALDS1_5_D/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/ALDS1_9_C/main.binary.test.cpp.html">test/aoj/ALDS1_9_C/main.binary.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_1_A/main.test.cpp.html">test/aoj/CGL_1_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_1_B/main.test.cpp.html">test/aoj/CGL_1_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_1_C/main.test.cpp.html">test/aoj/CGL_1_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_2_A/main.test.cpp.html">test/aoj/CGL_2_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_2_B/main.test.cpp.html">test/aoj/CGL_2_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_2_C/main.test.cpp.html">test/aoj/CGL_2_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_2_D/main.test.cpp.html">test/aoj/CGL_2_D/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_3_A/main.test.cpp.html">test/aoj/CGL_3_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_3_B/main.test.cpp.html">test/aoj/CGL_3_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_3_C/main.test.cpp.html">test/aoj/CGL_3_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_4_A/main.test.cpp.html">test/aoj/CGL_4_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_4_B/main.test.cpp.html">test/aoj/CGL_4_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_4_C/main.test.cpp.html">test/aoj/CGL_4_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_5_A/main.test.cpp.html">test/aoj/CGL_5_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_6_A/main.test.cpp.html">test/aoj/CGL_6_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_7_A/main.test.cpp.html">test/aoj/CGL_7_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_7_B/main.test.cpp.html">test/aoj/CGL_7_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_7_C/main.test.cpp.html">test/aoj/CGL_7_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_7_D/main.test.cpp.html">test/aoj/CGL_7_D/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_7_E/main.test.cpp.html">test/aoj/CGL_7_E/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_7_F/main.test.cpp.html">test/aoj/CGL_7_F/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_7_G/main.test.cpp.html">test/aoj/CGL_7_G/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_7_H/main.test.cpp.html">test/aoj/CGL_7_H/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/CGL_7_I/main.test.cpp.html">test/aoj/CGL_7_I/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_1_B/main.test.cpp.html">test/aoj/DPL_1_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_1_C/main.test.cpp.html">test/aoj/DPL_1_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_1_D/main.test.cpp.html">test/aoj/DPL_1_D/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_1_E/main.test.cpp.html">test/aoj/DPL_1_E/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_1_F/main.test.cpp.html">test/aoj/DPL_1_F/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_1_G/main.test.cpp.html">test/aoj/DPL_1_G/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_1_H/main.test.cpp.html">test/aoj/DPL_1_H/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_2_A/main.test.cpp.html">test/aoj/DPL_2_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_2_B/main.test.cpp.html">test/aoj/DPL_2_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_2_C/main.test.cpp.html">test/aoj/DPL_2_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_3_B/main.test.cpp.html">test/aoj/DPL_3_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_3_C/main.test.cpp.html">test/aoj/DPL_3_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_5_G/main.table.test.cpp.html">test/aoj/DPL_5_G/main.table.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_5_G/main.test.cpp.html">test/aoj/DPL_5_G/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_5_I/main.table.test.cpp.html">test/aoj/DPL_5_I/main.table.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_5_I/main.test.cpp.html">test/aoj/DPL_5_I/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DPL_5_J/main.test.cpp.html">test/aoj/DPL_5_J/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DSL_1_B/main.test.cpp.html">test/aoj/DSL_1_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DSL_2_A/main.test.cpp.html">test/aoj/DSL_2_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DSL_2_B/main.fenwick_tree.test.cpp.html">test/aoj/DSL_2_B/main.fenwick_tree.test.cpp</a>
-* :x: <a href="verify/test/aoj/DSL_2_B/main.test.cpp.html">test/aoj/DSL_2_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DSL_2_C/main.test.cpp.html">test/aoj/DSL_2_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DSL_2_D/main.test.cpp.html">test/aoj/DSL_2_D/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DSL_2_E/main.dynamic.test.cpp.html">test/aoj/DSL_2_E/main.dynamic.test.cpp</a>
-* :x: <a href="verify/test/aoj/DSL_2_E/main.test.cpp.html">test/aoj/DSL_2_E/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DSL_2_F/main.dynamic.test.cpp.html">test/aoj/DSL_2_F/main.dynamic.test.cpp</a>
-* :x: <a href="verify/test/aoj/DSL_2_F/main.test.cpp.html">test/aoj/DSL_2_F/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DSL_2_G/main.test.cpp.html">test/aoj/DSL_2_G/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DSL_2_H/main.starry_sky.test.cpp.html">test/aoj/DSL_2_H/main.starry_sky.test.cpp</a>
-* :x: <a href="verify/test/aoj/DSL_2_H/main.test.cpp.html">test/aoj/DSL_2_H/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DSL_2_I/main.test.cpp.html">test/aoj/DSL_2_I/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DSL_3_D/main.test.cpp.html">test/aoj/DSL_3_D/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DSL_5_A/main.test.cpp.html">test/aoj/DSL_5_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/DSL_5_B/main.test.cpp.html">test/aoj/DSL_5_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_1_A/main.test.cpp.html">test/aoj/GRL_1_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_1_B/main.test.cpp.html">test/aoj/GRL_1_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_1_C/main.test.cpp.html">test/aoj/GRL_1_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_2_A/main.boruvka.test.cpp.html">test/aoj/GRL_2_A/main.boruvka.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_2_A/main.kruskal.test.cpp.html">test/aoj/GRL_2_A/main.kruskal.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_2_A/main.prim.test.cpp.html">test/aoj/GRL_2_A/main.prim.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_2_B/main.test.cpp.html">test/aoj/GRL_2_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_3_A/main.test.cpp.html">test/aoj/GRL_3_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_3_B/main.test.cpp.html">test/aoj/GRL_3_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_3_C/main.test.cpp.html">test/aoj/GRL_3_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_5_A/main.test.cpp.html">test/aoj/GRL_5_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_5_B/main.test.cpp.html">test/aoj/GRL_5_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_5_C/main.doubling.test.cpp.html">test/aoj/GRL_5_C/main.doubling.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_5_C/main.hld.test.cpp.html">test/aoj/GRL_5_C/main.hld.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_6_A/main.dinic.test.cpp.html">test/aoj/GRL_6_A/main.dinic.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp.html">test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_6_A/main.push_relabel.test.cpp.html">test/aoj/GRL_6_A/main.push_relabel.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_6_B/main.test.cpp.html">test/aoj/GRL_6_B/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp.html">test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp</a>
-* :x: <a href="verify/test/aoj/GRL_7_A/main.test.cpp.html">test/aoj/GRL_7_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/ITP1_3_D/main.test.cpp.html">test/aoj/ITP1_3_D/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/ITP2_11_B/main.asc.test.cpp.html">test/aoj/ITP2_11_B/main.asc.test.cpp</a>
-* :x: <a href="verify/test/aoj/ITP2_11_B/main.desc.test.cpp.html">test/aoj/ITP2_11_B/main.desc.test.cpp</a>
-* :x: <a href="verify/test/aoj/ITP2_11_C/main.asc.test.cpp.html">test/aoj/ITP2_11_C/main.asc.test.cpp</a>
-* :x: <a href="verify/test/aoj/ITP2_11_C/main.desc.test.cpp.html">test/aoj/ITP2_11_C/main.desc.test.cpp</a>
-* :x: <a href="verify/test/aoj/ITP2_11_D/main.test.cpp.html">test/aoj/ITP2_11_D/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/NTL_1_A/main.test.cpp.html">test/aoj/NTL_1_A/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/NTL_1_C/main.test.cpp.html">test/aoj/NTL_1_C/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/NTL_1_D/main.test.cpp.html">test/aoj/NTL_1_D/main.test.cpp</a>
-* :x: <a href="verify/test/aoj/NTL_1_D/main.totient.test.cpp.html">test/aoj/NTL_1_D/main.totient.test.cpp</a>
-* :x: <a href="verify/test/aoj/NTL_1_E/main.test.cpp.html">test/aoj/NTL_1_E/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/assignment/main.test.cpp.html">test/yosupo-judge/assignment/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/bernoulli_number/main.test.cpp.html">test/yosupo-judge/bernoulli_number/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/bipartitematching/main.test.cpp.html">test/yosupo-judge/bipartitematching/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/cartesian_tree/main.test.cpp.html">test/yosupo-judge/cartesian_tree/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/convolution_mod/main.test.cpp.html">test/yosupo-judge/convolution_mod/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/convolution_mod_1000000007/main.test.cpp.html">test/yosupo-judge/convolution_mod_1000000007/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/cycle_detection/main.test.cpp.html">test/yosupo-judge/cycle_detection/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/discrete_logarithm_mod/main.test.cpp.html">test/yosupo-judge/discrete_logarithm_mod/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp.html">test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/enumerate_triangles/main.test.cpp.html">test/yosupo-judge/enumerate_triangles/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/exp_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/exp_of_formal_power_series/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/factorize/main.test.cpp.html">test/yosupo-judge/factorize/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/inv_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/inv_of_formal_power_series/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/kth_root_integer/main.test.cpp.html">test/yosupo-judge/kth_root_integer/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/line_add_get_min/main.dynamic.test.cpp.html">test/yosupo-judge/line_add_get_min/main.dynamic.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/line_add_get_min/main.test.cpp.html">test/yosupo-judge/line_add_get_min/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/log_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/log_of_formal_power_series/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/manhattanmst/main.test.cpp.html">test/yosupo-judge/manhattanmst/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/matrix_det/main.test.cpp.html">test/yosupo-judge/matrix_det/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/maximum_independent_set/main.test.cpp.html">test/yosupo-judge/maximum_independent_set/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/montmort_number_mod/main.test.cpp.html">test/yosupo-judge/montmort_number_mod/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/number_of_substrings/main.test.cpp.html">test/yosupo-judge/number_of_substrings/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/partition_function/main.fps.test.cpp.html">test/yosupo-judge/partition_function/main.fps.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/partition_function/main.test.cpp.html">test/yosupo-judge/partition_function/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/persistent_queue/main.test.cpp.html">test/yosupo-judge/persistent_queue/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/persistent_unionfind/main.test.cpp.html">test/yosupo-judge/persistent_unionfind/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/point_add_rectangle_sum/main.test.cpp.html">test/yosupo-judge/point_add_rectangle_sum/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/point_set_range_composite/main.test.cpp.html">test/yosupo-judge/point_set_range_composite/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/polynomial_taylor_shift/main.test.cpp.html">test/yosupo-judge/polynomial_taylor_shift/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/pow_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/pow_of_formal_power_series/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/queue_operate_all_composite/main.test.cpp.html">test/yosupo-judge/queue_operate_all_composite/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/range_affine_range_sum/main.test.cpp.html">test/yosupo-judge/range_affine_range_sum/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp.html">test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/range_kth_smallest/main.test.cpp.html">test/yosupo-judge/range_kth_smallest/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp.html">test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/runenumerate/main.test.cpp.html">test/yosupo-judge/runenumerate/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/scc/main.test.cpp.html">test/yosupo-judge/scc/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/segment_add_get_min/main.dynamic.test.cpp.html">test/yosupo-judge/segment_add_get_min/main.dynamic.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/segment_add_get_min/main.test.cpp.html">test/yosupo-judge/segment_add_get_min/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/set_xor_min/main.test.cpp.html">test/yosupo-judge/set_xor_min/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/sharp_p_subset_sum/main.test.cpp.html">test/yosupo-judge/sharp_p_subset_sum/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/sqrt_mod/main.test.cpp.html">test/yosupo-judge/sqrt_mod/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp.html">test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/static_range_inversions_query/main.test.cpp.html">test/yosupo-judge/static_range_inversions_query/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/static_range_sum/main.test.cpp.html">test/yosupo-judge/static_range_sum/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/staticrmq/main.sparse_table.test.cpp.html">test/yosupo-judge/staticrmq/main.sparse_table.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp.html">test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/suffixarray/main.test.cpp.html">test/yosupo-judge/suffixarray/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/system_of_linear_equations/main.test.cpp.html">test/yosupo-judge/system_of_linear_equations/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/tetration_mod/main.test.cpp.html">test/yosupo-judge/tetration_mod/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/tree_diameter/main.test.cpp.html">test/yosupo-judge/tree_diameter/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/two_edge_connected_components/main.test.cpp.html">test/yosupo-judge/two_edge_connected_components/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/two_sat/main.test.cpp.html">test/yosupo-judge/two_sat/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/unionfind/main.test.cpp.html">test/yosupo-judge/unionfind/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/vertex_add_path_sum/main.test.cpp.html">test/yosupo-judge/vertex_add_path_sum/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp.html">test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/vertex_set_path_composite/main.test.cpp.html">test/yosupo-judge/vertex_set_path_composite/main.test.cpp</a>
-* :x: <a href="verify/test/yosupo-judge/zalgorithm/main.test.cpp.html">test/yosupo-judge/zalgorithm/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/1030/main.test.cpp.html">test/yukicoder/1030/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/1069/main.test.cpp.html">test/yukicoder/1069/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/1084/main.test.cpp.html">test/yukicoder/1084/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/1099/main.test.cpp.html">test/yukicoder/1099/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/117/main.test.cpp.html">test/yukicoder/117/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/184/main.test.cpp.html">test/yukicoder/184/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/186/main.test.cpp.html">test/yukicoder/186/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/194/main.test.cpp.html">test/yukicoder/194/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/3030/main.test.cpp.html">test/yukicoder/3030/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/306/main.golden.test.cpp.html">test/yukicoder/306/main.golden.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/306/main.ternary.test.cpp.html">test/yukicoder/306/main.ternary.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/430/main.aho_corasick.test.cpp.html">test/yukicoder/430/main.aho_corasick.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/499/main.test.cpp.html">test/yukicoder/499/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/510/main.test.cpp.html">test/yukicoder/510/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/580/main.test.cpp.html">test/yukicoder/580/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/631/main.starry_sky.test.cpp.html">test/yukicoder/631/main.starry_sky.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/631/main.test.cpp.html">test/yukicoder/631/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/658/main.test.cpp.html">test/yukicoder/658/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/660/main.test.cpp.html">test/yukicoder/660/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/665/main.test.cpp.html">test/yukicoder/665/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/755/main.test.cpp.html">test/yukicoder/755/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/776/main.test.cpp.html">test/yukicoder/776/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/782/main.test.cpp.html">test/yukicoder/782/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/789/main.test.cpp.html">test/yukicoder/789/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/843/main.atkin.test.cpp.html">test/yukicoder/843/main.atkin.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/843/main.eratosthenes.test.cpp.html">test/yukicoder/843/main.eratosthenes.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/875/main.test.cpp.html">test/yukicoder/875/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/899/main.test.cpp.html">test/yukicoder/899/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/919/main.test.cpp.html">test/yukicoder/919/main.test.cpp</a>
-* :x: <a href="verify/test/yukicoder/922/main.test.cpp.html">test/yukicoder/922/main.test.cpp</a>
-
-
