@@ -18,13 +18,14 @@ namespace haar_lib {
       const auto &p1 = ps[i];
       const auto &p2 = ps[(i + 1) % n];
 
-      const auto [t, res] = intersect_circle_segment::check(cl, line<T>(p1, p2));
+      const auto t = intersect_circle_segment(cl, line<T>(p1, p2));
+      auto res = t.crosspoints;
 
       const T d1 = abs(p1 - c);
       const T d2 = abs(p2 - c);
 
       if(res.size() == 0){
-        if(t == intersect_circle_segment::INSIDE){ // if inside
+        if(t.is_inside()){ // if inside
           temp += cross(p1 - c, p2 - c) / 2;
         }else{ // if outside
           temp += r * r * angle_diff(p1 - c, p2 - c) / 2;

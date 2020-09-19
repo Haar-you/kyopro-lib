@@ -24,16 +24,20 @@ int main(){
   for(auto [p0, p1] : hl::input_tuples<hl::point<D>, hl::point<D>>(q)){
     hl::line<D> l(p0, p1);
 
-    auto [s, ans] = hl::intersect_circle_line::check(c, l);
+    const auto s = hl::intersect_circle_line(c, l);
+    auto ans = s.crosspoints;
 
-    std::sort(ans.begin(), ans.end(), [](const auto &a, const auto &b){return a.x < b.x or (a.x == b.x and a.y < b.y);});
+    std::sort(
+      ans.begin(), ans.end(),
+      [](const auto &a, const auto &b){return a.x < b.x or (a.x == b.x and a.y < b.y);}
+    );
 
     std::cout << std::fixed << std::setprecision(12);
 
-    if(s == hl::intersect_circle_line::TANGENT){
+    if(s.is_tangent()){
       std::cout << ans[0].x << " " << ans[0].y << " ";
       std::cout << ans[0].x << " " << ans[0].y << std::endl;
-    }else if(s == hl::intersect_circle_line::CROSSED){
+    }else if(s.is_crossed()){
       std::cout << ans[0].x << " " << ans[0].y << " ";
       std::cout << ans[1].x << " " << ans[1].y << std::endl;
     }

@@ -19,7 +19,7 @@ bool intersect(const std::vector<hl::point<D>> &a, const std::vector<hl::point<D
     for(int j = 0; j < (int)b.size() - 1; ++j){
       auto l1 = hl::line<D>(a[i], a[i + 1]);
       auto l2 = hl::line<D>(b[j], b[j + 1]);
-      if(hl::intersect_segments::check(l1, l2).status != hl::intersect_segments::NOT_INTERSECTING){
+      if(not hl::intersect_segments(l1, l2).is_not_intersected()){
         return true;
       }
     }

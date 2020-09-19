@@ -14,14 +14,13 @@ int main(){
   hl::circle<D> c1, c2;
   std::cin >> c1.center >> c1.radius >> c2.center >> c2.radius;
 
-  switch(hl::intersect_circles::check(c1, c2).status){
-  case hl::intersect_circles::INSIDE: std::cout << 0 << std::endl; break;
-  case hl::intersect_circles::INSCRIBED: std::cout << 1 << std::endl; break;
-  case hl::intersect_circles::INTERSECT: std::cout << 2 << std::endl; break;
-  case hl::intersect_circles::CIRCUMSCRIBED: std::cout << 3 << std::endl; break;
-  case hl::intersect_circles::OUTSIDE: std::cout << 4 << std::endl; break;
-  default: break;
-  }
+  const auto s = hl::intersect_circles(c1, c2);
+
+  if(s.is_inside()) std::cout << 0 << std::endl;
+  if(s.is_inscribed()) std::cout << 1 << std::endl;
+  if(s.is_intersected()) std::cout << 2 << std::endl;
+  if(s.is_circumscribed()) std::cout << 3 << std::endl;
+  if(s.is_outside()) std::cout << 4 << std::endl;
 
   return 0;
 }

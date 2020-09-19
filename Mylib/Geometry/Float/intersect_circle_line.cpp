@@ -4,36 +4,36 @@
 #include "Mylib/Geometry/Float/distance_line_point.cpp"
 
 namespace haar_lib {
-  namespace intersect_circle_line {
-    enum status_t {
-                 OUTSIDE = 0b001,
-                 TANGENT = 0b010,
-                 CROSSED = 0b100
-    };
-
+  namespace intersect_circle_line_impl {
+    enum class status_t { OUTSIDE, TANGENT, CROSSED };
     template <typename T>
     struct result {
       status_t status;
       std::vector<point<T>> crosspoints;
+      bool is_outside() const {return status == status_t::OUTSIDE;}
+      bool is_tangent() const {return status == status_t::TANGENT;}
+      bool is_crossed() const {return status == status_t::CROSSED;}
     };
+  }
 
-    template <typename T>
-    auto check(const circle<T> &c, const line<T> &l){
-      const T d = distance_line_point(l, c.center);
+  template <typename T>
+  auto intersect_circle_line(const circle<T> &c, const line<T> &l){
+    using namespace intersect_circle_line_impl;
 
-      if(d > c.radius){
-        return result<T>({OUTSIDE, {}});
-      }
+    const T d = distance_line_point(l, c.center);
 
-      const auto n = normal(l);
-      const auto b = l.from + diff(l) * cross(n, c.center + n - l.from) / cross(n, diff(l));
-
-      if(d == c.radius){
-        return result<T>({TANGENT, {b}});
-      }
-
-      const T a = sqrt(c.radius * c.radius - d * d);
-      return result<T>({CROSSED, {b + unit(l) * a, b - unit(l) * a}});
+    if(d > c.radius){
+      return result<T>({status_t::OUTSIDE, {}});
     }
+
+    const auto n = normal(l);
+    const auto b = l.from + diff(l) * cross(n, c.center + n - l.from) / cross(n, diff(l));
+
+    if(d == c.radius){
+      return result<T>({status_t::TANGENT, {b}});
+    }
+
+    const T a = sqrt(c.radius * c.radius - d * d);
+    return result<T>({status_t::CROSSED, {b + unit(l) * a, b - unit(l) * a}});
   }
 }

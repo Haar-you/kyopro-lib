@@ -1,5 +1,5 @@
 ---
-title: Intersection between two lines
+title: Intersection between two segments
 documentation_of: Mylib/Geometry/Float/intersect_segments.cpp
 ---
 

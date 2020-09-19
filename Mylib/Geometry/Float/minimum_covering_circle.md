@@ -5,6 +5,9 @@ documentation_of: Mylib/Geometry/Float/minimum_covering_circle.cpp
 
 ## Operations
 
+- `minimum_covering_circle(ps, seed)`
+  - 点集合`ps`を内包する最小の円を返す。
+
 ## Requirements
 
 ## Notes

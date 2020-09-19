@@ -17,7 +17,8 @@ int main(){
   for(auto [p0, p1, p2, p3] : hl::input_tuples<hl::point<D>, hl::point<D>, hl::point<D>, hl::point<D>>(q)){
     hl::segment<D> s1(p0, p1), s2(p2, p3);
 
-    if(hl::intersect_segments::check(s1, s2).status & (hl::intersect_segments::INTERSECTING | hl::intersect_segments::OVERLAPPED)){
+    const auto s = hl::intersect_segments(s1, s2);
+    if(s.is_intersected() or s.is_overlapped()){
       std::cout << 1 << std::endl;
     }else{
       std::cout << 0 << std::endl;

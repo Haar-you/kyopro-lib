@@ -5,19 +5,17 @@
 namespace haar_lib {
   template <typename T>
   T area_of_intersection_of_circles(const circle<T> &a, const circle<T> &b){
-    auto [s, p] = intersect_circles::check(a, b);
+    const auto s = intersect_circles(a, b);
+    auto p = s.crosspoints;
 
-    switch(s){
-    case intersect_circles::SAME: {
+    if(s.is_same()){
       return a.radius * a.radius * M_PI;
     }
-    case intersect_circles::INSIDE:
-    case intersect_circles::INSCRIBED: {
+    else if(s.is_inside() or s.is_inscribed()){
       return std::min(a.radius * a.radius * M_PI, b.radius * b.radius * M_PI);
     }
-    case intersect_circles::INTERSECT: {
+    else if(s.is_intersected()){
       T ret = 0;
-
       auto d = abs(a.center - b.center);
 
       {
@@ -32,11 +30,7 @@ namespace haar_lib {
 
       return ret;
     }
-    case intersect_circles::CIRCUMSCRIBED:
-    case intersect_circles::OUTSIDE: {
-      return 0;
-    }
-    }
+
     return 0;
   }
 }

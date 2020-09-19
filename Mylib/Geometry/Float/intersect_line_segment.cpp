@@ -3,36 +3,41 @@
 #include "Mylib/Geometry/Float/geometry_template.cpp"
 
 namespace haar_lib {
-  namespace intersect_line_segment {
-    enum status_t {
-                 LEFTSIDE   = 0b0001,
-                 RIGHTSIDE  = 0b0010,
-                 OVERLAPPED = 0b0100,
-                 CROSSED    = 0b1000,
-    };
-
+  namespace intersect_line_segment_impl {
+    enum class status_t { LEFTSIDE, RIGHTSIDE, OVERLAPPED, CROSSED };
     template <typename T>
     struct result {
       status_t status;
       std::vector<point<T>> crosspoints;
+      bool is_leftside() const {return status == status_t::LEFTSIDE;}
+      bool is_rightside() const {return status == status_t::RIGHTSIDE;}
+      bool is_overlapped() const {return status == status_t::OVERLAPPED;}
+      bool is_crossed() const {return status == status_t::CROSSED;}
     };
+  }
 
-    template <typename T>
-    auto check(const line<T> &l, const segment<T> &s){
-      const T a = cross(diff(l), s.from - l.from);
-      const T b = cross(diff(l), s.to - l.from);
+  template <typename T>
+  auto intersect_line_segment(const line<T> &l, const segment<T> &s){
+    using namespace intersect_line_segment_impl;
 
-      if(a == 0 and b == 0){
-        return result<T>({OVERLAPPED, {}});
-      }
-      else if(a < 0 and b < 0){
-        return result<T>({RIGHTSIDE, {}});
-      }
-      else if(a > 0 and b > 0){
-        return result<T>({LEFTSIDE, {}});
-      }
+    const T a = cross(diff(l), s.from - l.from);
+    const T b = cross(diff(l), s.to - l.from);
 
-      return result<T>({CROSSED, {s.from + diff(s) * cross(diff(l), l.from - s.from) / cross(l, s)}});
+    if(a == 0 and b == 0){
+      return result<T>({status_t::OVERLAPPED, {}});
     }
+    else if(a < 0 and b < 0){
+      return result<T>({status_t::RIGHTSIDE, {}});
+    }
+    else if(a > 0 and b > 0){
+      return result<T>({status_t::LEFTSIDE, {}});
+    }
+
+    return result<T>(
+      {
+       status_t::CROSSED,
+       {s.from + diff(s) * cross(diff(l), l.from - s.from) / cross(l, s)}
+      }
+    );
   }
 }

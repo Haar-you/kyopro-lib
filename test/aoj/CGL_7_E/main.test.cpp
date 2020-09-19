@@ -18,9 +18,12 @@ int main(){
   hl::circle<D> c1, c2;
   std::cin >> c1.center >> c1.radius >> c2.center >> c2.radius;
 
-  auto [s, ans] = hl::intersect_circles::check(c1, c2);
+  auto ans = hl::intersect_circles(c1, c2).crosspoints;
 
-  std::sort(ans.begin(), ans.end(), [](const auto &a, const auto &b){return a.x < b.x or (a.x == b.x and a.y < b.y);});
+  std::sort(
+    ans.begin(), ans.end(),
+    [](const auto &a, const auto &b){return a.x < b.x or (a.x == b.x and a.y < b.y);}
+  );
 
   std::cout << std::fixed << std::setprecision(12);
 

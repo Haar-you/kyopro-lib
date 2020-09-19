@@ -18,11 +18,10 @@ int main(){
 
   int q; std::cin >> q;
   for(auto [p] : hl::input_tuples<hl::point<D>>(q)){
-    switch(hl::point_in_polygon::check(p, ps)){
-    case hl::point_in_polygon::INCLUSION: std::cout << 2 << std::endl; break;
-    case hl::point_in_polygon::ON_SEGMENT: std::cout << 1 << std::endl; break;
-    case hl::point_in_polygon::OUTSIDE: std::cout << 0 << std::endl; break;
-    }
+    const auto s = point_in_polygon(p, ps);
+    if(s.is_inclusion()) std::cout << 2 << std::endl;
+    if(s.is_on_segment()) std::cout << 1 << std::endl;
+    if(s.is_outside()) std::cout << 0 << std::endl;
   }
 
   return 0;

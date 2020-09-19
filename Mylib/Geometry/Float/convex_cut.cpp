@@ -9,23 +9,20 @@ namespace haar_lib {
     const int n = ps.size();
 
     for(int i = 0; i < n; ++i){
-      auto [s, c] = intersect_line_segment::check(l, line<T>(ps[i], ps[(i + 1) % n]));
-      switch(s){
-      case intersect_line_segment::LEFTSIDE:{
+      const auto s = intersect_line_segment(l, line<T>(ps[i], ps[(i + 1) % n]));
+      auto c = s.crosspoints;
+      if(s.is_leftside()){
         left.push_back(ps[i]);
-        break;
       }
-      case intersect_line_segment::RIGHTSIDE:{
+      else if(s.is_rightside()){
         right.push_back(ps[i]);
-        break;
       }
-      case intersect_line_segment::OVERLAPPED:{
+      else if(s.is_overlapped()){
         right.push_back(ps[i]);
         left.push_back(ps[i]);
-        break;
       }
-      case intersect_line_segment::CROSSED:{
-        if(ccw::ccw(l.from, l.to, ps[i]) == ccw::CLOCKWISE){
+      else if(s.is_crossed()){
+        if(check_ccw(l.from, l.to, ps[i]).is_clockwise()){
           right.push_back(ps[i]);
         }else{
           left.push_back(ps[i]);
@@ -33,8 +30,6 @@ namespace haar_lib {
 
         left.push_back(c[0]);
         right.push_back(c[0]);
-        break;
-      }
       }
     }
   }

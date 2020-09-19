@@ -19,7 +19,7 @@ int main(){
   for(auto [p0, p1, p2, p3] : hl::input_tuples<hl::point<D>, hl::point<D>, hl::point<D>, hl::point<D>>(q)){
     hl::segment<D> s1(p0, p1), s2(p2, p3);
 
-    hl::point<D> c = hl::intersect_segments::check(s1, s2).crosspoints[0];
+    hl::point<D> c = hl::intersect_segments(s1, s2).crosspoints[0];
 
     std::cout << std::fixed << std::setprecision(12) << c.x << " " << c.y << std::endl;
   }
