@@ -4,7 +4,6 @@
 #include <cassert>
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/GraphUtils/strongly_connected_components.cpp"
-#include "Mylib/Graph/TopologicalSort/topological_sort.cpp"
 
 namespace haar_lib {
   class two_sat {
@@ -50,28 +49,13 @@ namespace haar_lib {
       auto [scc, m] = strongly_connected_components(g);
 
       for(int i = 0; i < n; ++i){
-        if(scc[i] == scc[i + n]) return {};
+        if(scc[i] == scc[i + n]) return std::nullopt;
       }
-
-      graph<int> g2(m);
-
-      for(int i = 0; i < 2 * n; ++i){
-        for(auto &e : g[i]){
-          if(scc[e.from] != scc[e.to]){
-            g2.add_edge(scc[e.from], scc[e.to], 1);
-          }
-        }
-      }
-
-      auto ts = *topological_sort(g2);
-
-      std::vector<int> r(m);
-      for(int i = 0; i < m; ++i) r[ts[i]] = i;
 
       std::vector<bool> ret(n);
-      for(int i = 0; i < n; ++i) ret[i] = r[scc[i]] > r[scc[i + n]];
+      for(int i = 0; i < n; ++i) ret[i] = scc[i] > scc[i + n];
 
-      return {ret};
+      return ret;
     }
   };
 }

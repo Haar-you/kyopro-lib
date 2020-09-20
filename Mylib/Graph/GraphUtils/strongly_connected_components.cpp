@@ -8,38 +8,47 @@ namespace haar_lib {
   auto strongly_connected_components(const graph<T> &g){
     const int n = g.size();
 
-    std::vector<bool> visit(n);
-    std::vector<int> check(n);
-    std::vector<int> result(n, -1);
+    std::vector<int> ret(n), low(n, -1), ord(n, -1), S;
+    std::vector<bool> check(n);
+    S.reserve(n);
+    int t = 0;
+    int k = 0;
 
     auto dfs =
-      [&](auto &f, int cur) -> void {
-        visit[cur] = true;
-        for(const auto &e : g[cur]){
-          if(not visit[e.to]) f(f, e.to);
+      [&](auto &dfs, int cur) -> void {
+        low[cur] = ord[cur] = t++;
+        S.push_back(cur);
+        check[cur] = true;
+
+        for(auto &e : g[cur]){
+          if(ord[e.to] == -1){
+            dfs(dfs, e.to);
+            low[cur] = std::min(low[cur], low[e.to]);
+          }else if(check[e.to]){
+            low[cur] = std::min(low[cur], low[e.to]);
+          }
         }
-        check.push_back(cur);
+
+        if(low[cur] == ord[cur]){
+          while(true){
+            int u = S.back(); S.pop_back();
+            check[u] = false;
+            ret[u] = k;
+            if(cur == u) break;
+          }
+          ++k;
+        }
       };
 
-    for(int i = 0; i < n; ++i) if(not visit[i]) dfs(dfs, i);
+    for(int i = 0; i < n; ++i){
+      if(ord[i] == -1){
+        t = 0;
+        dfs(dfs, i);
+      }
+    }
 
-    std::reverse(check.begin(), check.end());
+    for(auto &x : ret) x = k - 1 - x;
 
-    graph<T> rg(n);
-
-    auto rdfs =
-      [&](auto &f, int cur, int i) -> void {
-        result[cur] = i;
-        for(const auto &e : rg[cur]){
-          if(result[e.to] == -1) f(f, e.to, i);
-        }
-      };
-
-    for(int i = 0; i < n; ++i) for(const auto &e : g[i]) rg[e.to].emplace_back(e.to, e.from, e.cost);
-
-    int i = 0;
-    for(auto c : check) if(result[c] == -1) rdfs(rdfs, c, i), ++i;
-
-    return std::make_pair(result, i);
+    return std::make_pair(ret, k);
   }
 }
