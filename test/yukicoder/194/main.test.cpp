@@ -7,7 +7,6 @@
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/LinearAlgebra/Square/square_matrix.cpp"
 #include "Mylib/LinearAlgebra/Square/inverse_matrix.cpp"
-#include "Mylib/LinearAlgebra/Square/power.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 namespace hl = haar_lib;
@@ -28,19 +27,18 @@ std::pair<mint, mint> solve1(int64_t N, int64_t K, std::vector<int> A){
   mint f = 0;
 
   {
-    auto m2 = hl::power(m, K - N);
+    auto m2 = m.pow(K - N);
     for(int i = 0; i < N; ++i) f += m2[0][i] * A[i];
   }
 
   mint s = std::accumulate(A.begin(), A.end(), mint(0));
 
   {
-    auto t = M::make_unit() - m;
-    M c;
-    hl::inverse_matrix(t, c);
+    auto t = M::unit() - m;
+    M c = hl::inverse_matrix(t).value();
 
-    auto temp = (M::make_unit() - hl::power(m, K - N + 1)) * c;
-    temp -= M::make_unit();
+    auto temp = (M::unit() - m.pow(K - N + 1)) * c;
+    temp -= M::unit();
 
     for(int i = 0; i < N; ++i) s += temp[0][i] * A[i];
   }

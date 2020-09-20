@@ -22,12 +22,16 @@ namespace haar_lib {
     }
 
     auto& operator+=(const square_matrix &val){
-      for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] + val[i][j];
+      for(int i = 0; i < N; ++i)
+        for(int j = 0; j < N; ++j)
+          matrix[i][j] = matrix[i][j] + val[i][j];
       return *this;
     }
 
     auto& operator-=(const square_matrix &val){
-      for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] - val[i][j];
+      for(int i = 0; i < N; ++i)
+        for(int j = 0; j < N; ++j)
+          matrix[i][j] = matrix[i][j] - val[i][j];
       return *this;
     }
 
@@ -36,7 +40,7 @@ namespace haar_lib {
       for(int i = 0; i < N; ++i)
         for(int j = 0; j < N; ++j)
           for(int k = 0; k < N; ++k)
-            temp[i][j] = temp[i][j] + matrix[i][k] * val[k][j];
+            temp[i][j] += matrix[i][k] * val[k][j];
       std::swap(matrix, temp);
       return *this;
     }
@@ -45,14 +49,33 @@ namespace haar_lib {
     auto& operator[](size_t i){return matrix[i];}
     int size() const {return N;}
 
-    static auto make_unit(){
+    static auto unit(){
       square_matrix ret;
       for(int i = 0; i < N; ++i) ret[i][i] = 1;
       return ret;
     }
 
-    friend auto operator+(const square_matrix &a, const square_matrix &b){auto ret = a; ret += b; return ret;}
-    friend auto operator-(const square_matrix &a, const square_matrix &b){auto ret = a; ret -= b; return ret;}
-    friend auto operator*(const square_matrix &a, const square_matrix &b){auto ret = a; ret *= b; return ret;}
+    friend auto operator+(const square_matrix &a, const square_matrix &b){
+      auto ret = a; return ret += b;
+    }
+    friend auto operator-(const square_matrix &a, const square_matrix &b){
+      auto ret = a; return ret -= b;
+    }
+    friend auto operator*(const square_matrix &a, const square_matrix &b){
+      auto ret = a; return ret *= b;
+    }
+
+    auto pow(uint64_t p) const {
+      auto ret = unit();
+      auto a = *this;
+
+      while(p > 0){
+        if(p & 1) ret *= a;
+        a *= a;
+        p >>= 1;
+      }
+
+      return ret;
+    }
   };
 }

@@ -4,7 +4,6 @@
 #include <vector>
 #include "Mylib/Number/Mint/runtime_mint.cpp"
 #include "Mylib/LinearAlgebra/Square/square_matrix.cpp"
-#include "Mylib/LinearAlgebra/Square/power.cpp"
 #include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
@@ -28,7 +27,7 @@ int main(){
       if(i + 1 < n) mat[i][i + 1] = c;
     }
 
-    mat = hl::power(mat, t);
+    mat = mat.pow(t);
 
     std::vector<mint> ans(n);
 

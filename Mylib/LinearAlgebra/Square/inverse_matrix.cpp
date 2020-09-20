@@ -1,13 +1,13 @@
 #pragma once
 #include <utility>
+#include <optional>
 
 namespace haar_lib {
   template <typename M>
-  bool inverse_matrix(M m, M &ret){
+  std::optional<M> inverse_matrix(M m){
     using T = typename M::value_type;
     const int N = m.size();
-
-    ret = M::make_unit();
+    M ret = M::unit();
 
     for(int i = 0; i < N; ++i){
       int p = i;
@@ -24,7 +24,7 @@ namespace haar_lib {
       {
         T d = m[i][i];
 
-        if(d == 0) return false;
+        if(d == 0) return std::nullopt;
 
         for(int j = 0; j < N; ++j){
           m[i][j] /= d;
@@ -42,6 +42,6 @@ namespace haar_lib {
       }
     }
 
-    return true;
+    return ret;
   }
 }
