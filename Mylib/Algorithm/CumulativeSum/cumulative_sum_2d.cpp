@@ -7,27 +7,26 @@ namespace haar_lib {
   template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
   class cumulative_sum_2d {
     std::vector<std::vector<T>> data;
-    const int N, M;
-    const Add add;
-    const Minus minus;
+    int N, M;
+    Add add;
+    Minus minus;
     bool is_built = false;
 
   public:
-    cumulative_sum_2d(const std::vector<std::vector<T>> &a, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
-      N(a.size()), M(a[0].size()), add(add), minus(minus)
-    {
-      data.assign(N + 1, std::vector<T>(M + 1, e));
-      for(int i = 0; i < N; ++i){
-        for(int j = 0; j < M; ++j){
-          data[i + 1][j + 1] = a[i][j];
-        }
-      }
-    }
-
+    cumulative_sum_2d(){}
     cumulative_sum_2d(int N, int M, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
       N(N), M(M), add(add), minus(minus)
     {
       data.assign(N + 1, std::vector<T>(M + 1, e));
+    }
+
+    auto& update(const std::vector<std::vector<T>> &a){
+      for(int i = 0; i < N; ++i){
+        for(int j = 0; j < M; ++j){
+          data[i + 1][j + 1] = add(data[i + 1][j + 1], a[i][j]);
+        }
+      }
+      return *this;
     }
 
     auto& update(int i, int j, const T &val){

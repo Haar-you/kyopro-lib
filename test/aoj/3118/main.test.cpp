@@ -32,7 +32,7 @@ int main(){
       const int size = r - l;
 
       std::vector<int64_t> d(size);
-      for(int j = 0; j < size; ++j) d[j] = A[l+j] - B[l+j];
+      for(int j = 0; j < size; ++j) d[j] = A[l + j] - B[l + j];
 
       std::vector<int> ord(size);
       std::iota(ord.begin(), ord.end(), 0);
