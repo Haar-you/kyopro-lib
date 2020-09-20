@@ -1,6 +1,6 @@
 ---
 title: Largest rectangle
-documentation_of: Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle.cpp
+documentation_of: Mylib/Typical/MaxRectangleProblem/max_rectangle.cpp
 ---
 
 ## Operations

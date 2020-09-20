@@ -1,6 +1,6 @@
 ---
 title: 0-1 Knapsack problem (Small weight)
-documentation_of: Mylib/TypicalProblem/KnapsackProblem/knapsack_small_weight.cpp
+documentation_of: Mylib/Typical/KnapsackProblem/knapsack_small_weight.cpp
 ---
 
 ## Operations

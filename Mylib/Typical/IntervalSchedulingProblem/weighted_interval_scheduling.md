@@ -1,6 +1,6 @@
 ---
 title: Weighted interval scheduling problem
-documentation_of: Mylib/TypicalProblem/IntervalSchedulingProblem/weighted_interval_scheduling.cpp
+documentation_of: Mylib/Typical/IntervalSchedulingProblem/weighted_interval_scheduling.cpp
 ---
 
 ## Operations

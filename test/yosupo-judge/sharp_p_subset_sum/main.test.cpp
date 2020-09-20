@@ -7,7 +7,7 @@
 #include "Mylib/Number/Mint/mint.cpp"
 #include "Mylib/Convolution/ntt_convolution.cpp"
 #include "Mylib/Math/formal_power_series.cpp"
-#include "Mylib/TypicalProblem/SubsetSumProblem/subset_sum_count_fps.cpp"
+#include "Mylib/Typical/SubsetSumProblem/subset_sum_count_fps.cpp"
 
 namespace hl = haar_lib;
 

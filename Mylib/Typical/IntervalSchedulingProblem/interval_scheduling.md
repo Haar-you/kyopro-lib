@@ -1,6 +1,6 @@
 ---
 title: Interval scheduling problem
-documentation_of: Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling.cpp
+documentation_of: Mylib/Typical/IntervalSchedulingProblem/interval_scheduling.cpp
 ---
 
 ## Operations

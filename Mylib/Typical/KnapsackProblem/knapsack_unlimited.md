@@ -1,6 +1,6 @@
 ---
 title: Knapsack problem (Without quantity limitations)
-documentation_of: Mylib/TypicalProblem/KnapsackProblem/knapsack_unlimited.cpp
+documentation_of: Mylib/Typical/KnapsackProblem/knapsack_unlimited.cpp
 ---
 
 ## Operations

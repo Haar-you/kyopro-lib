@@ -1,6 +1,6 @@
 ---
 title: Largest rectangle in histogram
-documentation_of: Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle_in_histogram.cpp
+documentation_of: Mylib/Typical/MaxRectangleProblem/max_rectangle_in_histogram.cpp
 ---
 
 ## Operations

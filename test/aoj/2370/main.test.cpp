@@ -4,9 +4,9 @@
 #include <vector>
 #include <map>
 #include <algorithm>
-#include "Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp"
-#include "Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp"
 #include "Mylib/Graph/Template/graph.cpp"
+#include "Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp"
+#include "Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp"
 
 namespace hl = haar_lib;
 

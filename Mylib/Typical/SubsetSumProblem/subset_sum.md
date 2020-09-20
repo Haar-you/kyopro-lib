@@ -1,6 +1,6 @@
 ---
 title: Subset sum problem
-documentation_of: Mylib/TypicalProblem/SubsetSumProblem/subset_sum.cpp
+documentation_of: Mylib/Typical/SubsetSumProblem/subset_sum.cpp
 ---
 
 ## Operations

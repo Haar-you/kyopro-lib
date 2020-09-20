@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <functional>
-#include "Mylib/Algorithm/InversionNumber/inversion_number.cpp"
+#include "Mylib/Typical/InversionNumber/inversion_number.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 namespace hl = haar_lib;

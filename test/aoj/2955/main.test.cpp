@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include "Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp"
+#include "Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp"
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
 #include "Mylib/IO/input_vector.cpp"
 

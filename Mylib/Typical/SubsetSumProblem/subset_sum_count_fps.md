@@ -1,6 +1,6 @@
 ---
 title: Subset sum problem (Count, FPS)
-documentation_of: Mylib/TypicalProblem/SubsetSumProblem/subset_sum_count_fps.cpp
+documentation_of: Mylib/Typical/SubsetSumProblem/subset_sum_count_fps.cpp
 ---
 
 ## Operations
