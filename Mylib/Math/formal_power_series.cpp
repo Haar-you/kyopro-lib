@@ -14,9 +14,12 @@ namespace haar_lib {
 
     std::vector<T> data;
 
+    formal_power_series(){}
+    explicit formal_power_series(int N): data(N){}
     formal_power_series(const std::vector<T> &data): data(data){}
     formal_power_series(std::initializer_list<T> init): data(init.begin(), init.end()){}
-    formal_power_series(int N): data(N){}
+    formal_power_series(const formal_power_series &a): data(a.data){}
+    formal_power_series(formal_power_series &&a) noexcept {*this = std::move(a);}
 
     int size() const {
       return data.size();
@@ -37,18 +40,64 @@ namespace haar_lib {
       data.resize(n);
     }
 
+    auto& operator=(formal_power_series &&rhs) noexcept {
+      if(this != &rhs){
+        data = std::move(rhs.data);
+      }
+      return *this;
+    }
+
+    auto& operator+=(const formal_power_series &rhs){
+      if(data.size() < rhs.size()) data.resize(rhs.size());
+      for(int i = 0; i < rhs.size(); ++i) data[i] += rhs[i];
+      return *this;
+    }
+
+    auto& operator+=(T rhs){
+      data[0] += rhs;
+      return *this;
+    }
+
+    auto operator+(T rhs) const {
+      auto ret = *this;
+      return ret += rhs;
+    }
+
     auto operator+(const formal_power_series &rhs) const {
-      std::vector<T> ret(data);
-      ret.resize(rhs.size());
-      for(int i = 0; i < (int)rhs.size(); ++i) ret[i] += rhs[i];
-      return formal_power_series(ret);
+      auto ret = *this;
+      return ret += rhs;
+    }
+
+    auto& operator-=(const formal_power_series &rhs){
+      if(data.size() < rhs.size()) data.resize(rhs.size());
+      for(int i = 0; i < rhs.size(); ++i) data[i] -= rhs[i];
+      return *this;
+    }
+
+    auto& operator-=(T rhs){
+      data[0] -= rhs;
+      return *this;
+    }
+
+    auto operator-(T rhs) const {
+      auto ret = *this;
+      return ret -= rhs;
     }
 
     auto operator-(const formal_power_series &rhs) const {
-      std::vector<T> ret(data);
-      ret.resize(rhs.size());
-      for(int i = 0; i < (int)rhs.size(); ++i) ret[i] -= rhs[i];
-      return formal_power_series(ret);
+      auto ret = *this;
+      return ret -= rhs;
+    }
+
+    auto operator-() const {
+      auto ret = *this;
+      for(auto &x : ret) x = -x;
+      return ret;
+    }
+
+    auto& operator*=(const formal_power_series &rhs){
+      data = convolve(data, rhs.data);
+      return *this;
     }
 
     auto operator*(const formal_power_series &rhs) const {
@@ -56,10 +105,14 @@ namespace haar_lib {
       return formal_power_series(ret);
     }
 
-    auto operator*(T b) const {
-      std::vector<T> ret(data);
-      for(auto &x : ret) x *= b;
-      return formal_power_series(ret);
+    auto& operator*=(T rhs){
+      for(auto &x : data) x *= rhs;
+      return *this;
+    }
+
+    auto operator*(T rhs) const {
+      auto ret = *this;
+      return ret *= rhs;
     }
 
     auto differentiate() const {
