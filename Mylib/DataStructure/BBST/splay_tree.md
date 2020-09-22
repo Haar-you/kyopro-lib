@@ -1,6 +1,6 @@
 ---
 title: Splay tree
-documentation_of: Mylib/DataStructure/SplayTree/splay_tree.cpp
+documentation_of: Mylib/DataStructure/BBST/splay_tree.cpp
 ---
 
 ## Operations

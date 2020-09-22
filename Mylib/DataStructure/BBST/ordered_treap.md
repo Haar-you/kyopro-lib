@@ -1,6 +1,6 @@
 ---
 title: Treap (Ordered set)
-documentation_of: Mylib/DataStructure/Treap/ordered_treap.cpp
+documentation_of: Mylib/DataStructure/BBST/ordered_treap.cpp
 ---
 
 ## Operations
