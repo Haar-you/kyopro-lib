@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/DynamicProgramming/longest_increasing_subsequence.cpp"
+#include "Mylib/Typical/LongestSubsequence/longest_increasing_subsequence.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 namespace hl = haar_lib;
@@ -12,7 +12,7 @@ int main(){
 
   auto a = hl::input_vector<int>(N);
 
-  auto ans = hl::lis(a);
+  auto ans = hl::longest_increasing_subsequence(a).size();
   std::cout << ans << std::endl;
 
   return 0;
