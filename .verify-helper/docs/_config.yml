@@ -3,3 +3,4 @@ docs: {}
 plugins:
 - jemoji
 theme: jekyll-theme-hacker
+exclude: ["./snippets/", "./old/"]
