@@ -3,13 +3,14 @@
 
 namespace haar_lib {
   template <typename Monoid, typename value_type = typename Monoid::value_type>
-  value_type times(value_type a, int64_t p){
-    Monoid M;
-    auto ret = M.id();
+  value_type pow(value_type a, int64_t p){
+    assert(p >= 0);
+    const Monoid M;
+    auto ret = M();
 
     while(p > 0){
-      if(p & 1) ret = M.op(ret, a);
-      a = M.op(a, a);
+      if(p & 1) ret = M(ret, a);
+      a = M(a, a);
       p >>= 1;
     }
 

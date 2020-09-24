@@ -1,5 +1,5 @@
 #pragma once
-#include "Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp"
+#include "Mylib/Number/pow.cpp"
 
 namespace haar_lib {
   template <typename MonoidGet, typename MonoidUpdate>
@@ -8,7 +8,7 @@ namespace haar_lib {
     using value_type_update = typename MonoidUpdate::value_type;
 
     value_type_get operator()(value_type_get a, value_type_update b, int len) const {
-      return a * times<MonoidUpdate>(b, len);
+      return a * pow<MonoidUpdate>(b, len);
     }
   };
 }
