@@ -54,7 +54,6 @@ int main(){
   auto mo = hl::mo_algorithm(N, Q, left, right, left, right, query);
 
   for(int i = 0; i < Q; ++i) mo.add(std::get<1>(qs[i]), std::get<2>(qs[i]) + 1);
-  mo.build();
   mo.run();
 
   for(int i = 0; i < Q; ++i) std::cout << ans[i] << "\n";

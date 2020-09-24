@@ -40,29 +40,19 @@ namespace haar_lib {
       ++index;
     }
 
-    void build(){
+    void run(){
       std::sort(
-        ord.begin(),
-        ord.end(),
+        ord.begin(), ord.end(),
         [&](int i, int j){
           const int a = left[i] / width, b = left[j] / width;
           if(a == b){
-            if(a & 1){
-              return right[i] < right[j];
-            }else{
-              return right[i] > right[j];
-            }
+            if(a & 1) return right[i] < right[j];
+            else return right[i] > right[j];
           }else{
             return a < b;
           }
         }
       );
-
-      is_built = true;
-    }
-
-    void run(){
-      assert(is_built);
 
       int q = 0;
       int l = left[ord[0]], r = left[ord[0]];

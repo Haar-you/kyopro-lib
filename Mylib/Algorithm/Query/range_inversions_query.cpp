@@ -70,7 +70,6 @@ namespace haar_lib {
         mo.add(l, r);
       }
 
-      mo.build();
       mo.run();
 
       return ans;
