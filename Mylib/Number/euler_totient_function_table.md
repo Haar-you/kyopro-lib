@@ -1,6 +1,6 @@
 ---
 title: Euler's totient function (Enumerate)
-documentation_of: Mylib/Number/euler_phi_function_table.cpp
+documentation_of: Mylib/Number/euler_totient_function_table.cpp
 ---
 
 ## Operations
