@@ -39,7 +39,7 @@ int main(){
 
   hl::segment_tree<hl::max_monoid<int>> seg1(N);
   for(int i = 0; i < N; ++i){
-    seg1.update(hld.get_id(i), {C[i]});
+    seg1.set(hld.get_id(i), {C[i]});
   }
 
   hl::segment_tree<hl::maybe_monoid<lca_semigroup>> seg2(K);
@@ -50,15 +50,15 @@ int main(){
       int X, Y; std::cin >> X >> Y;
       --X; --Y;
 
-      seg2.update(X, Y);
+      seg2.set(X, Y);
     }else{
       int L, R; std::cin >> L >> R;
 
-      int lca = *seg2.get(L - 1, R);
+      int lca = *seg2.fold(L - 1, R);
       int ans = 0;
 
       for(auto [l, r, d] : hld.path_query_vertex(0, lca)){
-        ans = std::max(ans, seg1.get(l, r).value());
+        ans = std::max(ans, seg1.fold(l, r).value());
       }
 
       std::cout << ans << "\n";

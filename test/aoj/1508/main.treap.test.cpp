@@ -14,7 +14,7 @@ int main(){
   hl::treap<hl::min_monoid<int>> s(n);
 
   for(auto [i, a] : hl::input_tuples_with_index<int>(n)){
-    s.update(i, {a});
+    s.set(i, {a});
   }
 
   for(auto [x, y, z] : hl::input_tuples<int, int, int>(q)){
@@ -26,7 +26,7 @@ int main(){
       auto ans = s.fold(y, z + 1).value();
       std::cout << ans << std::endl;
     }else{
-      s.update(y, z);
+      s.set(y, z);
     }
   }
 

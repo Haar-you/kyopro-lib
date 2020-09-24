@@ -29,7 +29,7 @@ int main(){
       int b, c; std::cin >> b >> c;
       seg.update(l, r, std::make_pair(b, c));
     }else{
-      std::cout << seg.get(l, r) << "\n";
+      std::cout << seg.fold(l, r) << "\n";
     }
   }
 

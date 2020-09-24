@@ -31,7 +31,7 @@ int main(){
   }
 
   for(auto [l, d, r, u] : hl::input_tuples<int64_t, int64_t, int64_t, int64_t>(Q)){
-    auto ans = seg.get({l, d}, {r, u});
+    auto ans = seg.fold({l, d}, {r, u});
     std::cout << ans << std::endl;
   }
 

@@ -17,7 +17,7 @@ int main(){
   hl::link_cut_tree<hl::sum_monoid<int64_t>> lct(N);
 
   for(auto [i, a] : hl::input_tuples_with_index<int64_t>(N)){
-    lct.update(i, a);
+    lct.set(i, a);
   }
 
   for(auto [u, v] : hl::input_tuples<int, int>(N - 1)){
@@ -34,12 +34,12 @@ int main(){
     }
     case 1: {
       int p, x; std::cin >> p >> x;
-      lct.update(p, lct.at(p) + x);
+      lct.update(p, x);
       break;
     }
     case 2: {
       int u, v; std::cin >> u >> v;
-      auto ans = lct.get(u, v);
+      auto ans = lct.fold(u, v);
       std::cout << ans << std::endl;
       break;
     }

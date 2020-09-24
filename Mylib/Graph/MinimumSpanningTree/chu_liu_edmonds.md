@@ -5,7 +5,7 @@ documentation_of: Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
 
 ## Operations
 
-- `solve(g, r)`
+- `chu_liu_edmonds(g, r)`
 	- `r`を根とする`g`の最小有向全域木の辺集合を返す。
 	- Time complexity $O(VE)$
 

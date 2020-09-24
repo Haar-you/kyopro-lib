@@ -66,12 +66,12 @@ namespace haar_lib {
       update(1, 0, hsize, l, r, a, b);
     }
 
-    T get(int l, int r){
+    T fold(int l, int r){
       return get(1, 0, hsize, l, r);
     }
 
     T operator[](int i){
-      return get(i, i + 1);
+      return fold(i, i + 1);
     }
   };
 }

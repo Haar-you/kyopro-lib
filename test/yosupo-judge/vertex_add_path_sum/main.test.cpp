@@ -25,7 +25,7 @@ int main(){
   auto seg = hl::segment_tree<hl::sum_monoid<int64_t>>(N);
 
   for(int i = 0; i < N; ++i){
-    seg.update(hld.get_id(i), a[i]);
+    seg.set(hld.get_id(i), a[i]);
   }
 
   for(auto [t] : hl::input_tuples<int>(Q)){
@@ -33,13 +33,13 @@ int main(){
       int p, x; std::cin >> p >> x;
 
       int i = hld.get_id(p);
-      seg.update(i, seg[i] + x);
+      seg.update(i, x);
     }else{
       int u, v; std::cin >> u >> v;
 
       int64_t ans = 0;
       for(auto [l, r, d] : hld.path_query_vertex(u, v)){
-        ans += seg.get(l, r);
+        ans += seg.fold(l, r);
       }
 
       std::cout << ans << "\n";

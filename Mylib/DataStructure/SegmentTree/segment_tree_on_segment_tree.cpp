@@ -73,7 +73,7 @@ namespace haar_lib {
 
       while(i >= 1){
         int j = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y) - c_ys[i].begin();
-        segs[i].update(j, M(segs[i][j], val));
+        segs[i].update(j, val);
 
         i >>= 1;
       }
@@ -84,12 +84,11 @@ namespace haar_lib {
       int l = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y1) - c_ys[i].begin();
       int r = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y2) - c_ys[i].begin();
 
-      return segs[i].get(l, r);
+      return segs[i].fold(l, r);
     }
 
   public:
-    // [x1, x2), [y1, y2)
-    value_type get(std::pair<int64_t, int64_t> p1, std::pair<int64_t, int64_t> p2) const {
+    value_type fold(std::pair<int64_t, int64_t> p1, std::pair<int64_t, int64_t> p2) const {
       const auto [x1, y1] = p1;
       const auto [x2, y2] = p2;
       int l = std::lower_bound(c_xs.begin(), c_xs.end(), x1) - c_xs.begin() + x_size / 2;

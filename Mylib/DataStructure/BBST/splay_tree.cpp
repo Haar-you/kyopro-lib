@@ -166,7 +166,7 @@ namespace haar_lib {
     const value_type get(int index){root = node::get(root, index); return root->value;}
     const value_type operator[](int index){return get(index);}
 
-    void update(int index, const value_type &value){
+    void set(int index, const value_type &value){
       root = node::get(root, index); root->value = value; root->update();
     }
 

@@ -25,7 +25,7 @@ namespace haar_lib {
       }
     }
 
-    value_type get(int i) const { // [0, i)
+    value_type fold(int i) const { // [0, i)
       value_type ret = G();
       i += 1; // 1-index
 
@@ -37,12 +37,12 @@ namespace haar_lib {
       return ret;
     }
 
-    value_type get(int l, int r) const { // [l, r)
-      return G(get(r - 1), G.inv(get(l - 1)));
+    value_type fold(int l, int r) const { // [l, r)
+      return G(fold(r - 1), G.inv(fold(l - 1)));
     }
 
     value_type operator[](int x) const {
-      return get(x, x + 1);
+      return fold(x, x + 1);
     }
   };
 }

@@ -29,7 +29,7 @@ int main(){
   auto hld = hl::hl_decomposition(tree, 0);
 
   for(int i = 0; i < N; ++i){
-    seg.update(hld.get_id(i), a[i]);
+    seg.set(hld.get_id(i), a[i]);
   }
 
   for(auto [t, u] : hl::input_tuples<int, int>(Q)){
@@ -37,11 +37,11 @@ int main(){
       int x; std::cin >> x;
 
       int i = hld.get_id(u);
-      seg.update(i, seg[i] + x);
+      seg.update(i, x);
     }else{
       int64_t ans = 0;
       auto [l, r] = hld.subtree_query_vertex(u);
-      ans += seg.get(l, r);
+      ans += seg.fold(l, r);
 
       std::cout << ans << "\n";
     }

@@ -50,7 +50,7 @@ int main(){
       int h1, w1, h2, w2; std::cin >> h1 >> w1 >> h2 >> w2;
       --h1, --w1;
 
-      std::cout << seg1.get({h1, w1}, {h2, w2}) << " " << seg2.get({h1, w1}, {h2, w2}) << std::endl;
+      std::cout << seg1.fold({h1, w1}, {h2, w2}) << " " << seg2.fold({h1, w1}, {h2, w2}) << std::endl;
     }
   }
 

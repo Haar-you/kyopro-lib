@@ -66,7 +66,7 @@ namespace haar_lib {
       bottom_up(r + hsize);
     }
 
-    T get(int l, int r) const {
+    T fold(int l, int r) const {
       return *get(1, 0, hsize, l, r, 0);
     }
 

@@ -14,9 +14,9 @@ int main(){
 
   for(auto [type, x, y] : hl::input_tuples<int, int, int>(q)){
     if(type == 0){
-      seg.update(x - 1, seg[x - 1] + y);
+      seg.update(x - 1, y);
     }else{
-      std::cout << seg.get(x - 1, y) << std::endl;
+      std::cout << seg.fold(x - 1, y) << std::endl;
     }
   }
 

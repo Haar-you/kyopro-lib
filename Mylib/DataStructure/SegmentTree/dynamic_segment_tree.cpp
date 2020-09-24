@@ -51,16 +51,20 @@ namespace haar_lib {
       root = new node(M());
     }
 
-    void update(int64_t i, const value_type &x){
+    void set(int64_t i, const value_type &x){
       update(root, 0, hsize, i, x);
     }
 
-    value_type get(int64_t l, int64_t r) const {
+    void update(int64_t i, const value_type &x){
+      set(i, M((*this)[i], x));
+    }
+
+    value_type fold(int64_t l, int64_t r) const {
       return get(root, 0, hsize, l, r);
     }
 
     value_type operator[](int64_t i) const {
-      return get(i, i + 1);
+      return fold(i, i + 1);
     }
   };
 }

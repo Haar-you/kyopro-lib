@@ -47,7 +47,7 @@ namespace haar_lib {
       build(0, 1 << logN, logN - 1);
     }
 
-    std::optional<value_type> get(int l, int r) const {
+    std::optional<value_type> fold(int l, int r) const {
       if(l == r) return std::nullopt;
       --r;
 

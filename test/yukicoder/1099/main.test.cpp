@@ -23,7 +23,7 @@ int main(){
     hl::sum_monoid<int64_t>,
     hl::add_square_sum> seg(N);
 
-  for(int i = 0; i < N; ++i) seg.update_at(i, A[i]);
+  for(int i = 0; i < N; ++i) seg.update(i, A[i]);
 
   int Q; std::cin >> Q;
 
@@ -33,7 +33,7 @@ int main(){
       seg.update(l - 1, r, x);
     }else{
       int l, r; std::cin >> l >> r;
-      std::cout << std::get<1>(seg.get(l - 1, r)) << "\n";
+      std::cout << std::get<1>(seg.fold(l - 1, r)) << "\n";
     }
   }
 

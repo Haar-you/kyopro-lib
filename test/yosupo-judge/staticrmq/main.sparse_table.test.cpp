@@ -20,7 +20,7 @@ int main(){
   hl::sparse_table<hl::bounded_min_monoid<int>> s(a);
 
   for(auto [l, r] : hl::input_tuples<int, int>(Q)){
-    std::cout << s.get(l, r).value() << "\n";
+    std::cout << s.fold(l, r).value() << "\n";
   }
 
   return 0;

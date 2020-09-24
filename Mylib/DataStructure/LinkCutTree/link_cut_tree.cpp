@@ -177,17 +177,21 @@ namespace haar_lib {
       node::evert(nodes[k]);
     }
 
-    void update(int k, value_type x){
+    void set(int k, value_type x){
       node::evert(nodes[k]);
       nodes[k]->value = x;
       nodes[k]->push_down();
     }
 
-    value_type at(int k){
+    void update(int k, value_type x){
+      set(k, M(get(k), x));
+    }
+
+    value_type get(int k) const {
       return nodes[k]->value;
     }
 
-    value_type get(int i, int j){
+    value_type fold(int i, int j){
       node::evert(nodes[i]);
       node::expose(nodes[j]);
       return nodes[j]->result;

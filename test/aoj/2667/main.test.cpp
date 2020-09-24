@@ -25,7 +25,7 @@ int main(){
 
       int64_t ans = 0;
       for(auto [l, r] : hld.path_query_edge(u, v)){
-        ans += seg.get(l, r);
+        ans += seg.fold(l, r);
       }
       std::cout << ans << std::endl;
     }else{

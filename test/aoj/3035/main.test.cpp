@@ -58,8 +58,8 @@ int main(){
 
       std::map<int64_t, int64_t> m;
 
-      auto x = std::vector{seg_h_max.get(a, b), seg_h_min.get(a, b)};
-      auto y = std::vector{seg_w_max.get(c, d), seg_w_min.get(c, d)};
+      auto x = std::vector{seg_h_max.fold(a, b), seg_h_min.fold(a, b)};
+      auto y = std::vector{seg_w_max.fold(c, d), seg_w_min.fold(c, d)};
 
       if(x[0].value == x[1].value) x.pop_back();
       if(y[0].value == y[1].value) y.pop_back();
@@ -96,8 +96,8 @@ int main(){
 
       std::map<int64_t, int64_t> m;
 
-      auto x = std::vector{seg_h_max.get(a, b), seg_h_min.get(a, b)};
-      auto y = std::vector{seg_w_max.get(c, d), seg_w_min.get(c, d)};
+      auto x = std::vector{seg_h_max.fold(a, b), seg_h_min.fold(a, b)};
+      auto y = std::vector{seg_w_max.fold(c, d), seg_w_min.fold(c, d)};
 
       if(x[0].value == x[1].value) x.pop_back();
       if(y[0].value == y[1].value) y.pop_back();

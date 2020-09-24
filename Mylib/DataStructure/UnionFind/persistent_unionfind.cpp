@@ -36,11 +36,11 @@ namespace haar_lib {
       persistent_array<int> ret = par;
 
       if(size_i > size_j){
-        ret = ret.update(ri, -(size_i + size_j));
-        ret = ret.update(rj, ri);
+        ret = ret.set(ri, -(size_i + size_j));
+        ret = ret.set(rj, ri);
       }else{
-        ret = ret.update(rj, -(size_i + size_j));
-        ret = ret.update(ri, rj);
+        ret = ret.set(rj, -(size_i + size_j));
+        ret = ret.set(ri, rj);
       }
 
       return persistent_unionfind(ret);

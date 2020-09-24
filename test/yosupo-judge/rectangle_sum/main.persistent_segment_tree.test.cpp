@@ -36,7 +36,7 @@ int main(){
 
   for(int i = 0; i < N; ++i){
     auto &s = seg.back();
-    seg.push_back(s.update(x[i], s[x[i]] + w[i]));
+    seg.push_back(s.update(x[i], w[i]));
   }
 
   for(auto [l, d, r, u] : hl::input_tuples<int64_t, int64_t, int64_t, int64_t>(Q)){
@@ -46,7 +46,7 @@ int main(){
     u = std::lower_bound(y.begin(), y.end(), u) - y.begin();
     d = std::lower_bound(y.begin(), y.end(), d) - y.begin();
 
-    auto ans = seg[u].get(l, r) - seg[d].get(l, r);
+    auto ans = seg[u].fold(l, r) - seg[d].fold(l, r);
     std::cout << ans << "\n";
   }
 

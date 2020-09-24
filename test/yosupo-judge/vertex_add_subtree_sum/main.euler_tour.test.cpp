@@ -31,7 +31,7 @@ int main(){
     et.point_query(
       i,
       [&](int j){
-        seg.update(j, a[i]);
+        seg.set(j, a[i]);
       }
     );
   }
@@ -43,7 +43,7 @@ int main(){
       et.point_query(
         u,
         [&](int j){
-          seg.update(j, seg[j] + x);
+          seg.update(j, x);
         }
       );
     }else{
@@ -51,7 +51,7 @@ int main(){
       et.subtree_query(
         u,
         [&](int l, int r){
-          ans += seg.get(l, r);
+          ans += seg.fold(l, r);
         }
       );
 

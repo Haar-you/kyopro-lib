@@ -20,11 +20,11 @@ int main(){
 
   for(int i = 0; i < N; ++i){
     if(A[i] > 0){
-      seg.update(i, M::R({A[i] % K}));
+      seg.set(i, M::R({A[i] % K}));
     }else if(A[i] < 0){
-      seg.update(i, M::R({A[i] % K + K}));
+      seg.set(i, M::R({A[i] % K + K}));
     }else{
-      seg.update(i, M::S({0}));
+      seg.set(i, M::S({0}));
     }
   }
 
@@ -33,10 +33,10 @@ int main(){
 
     auto x = seg[L];
     auto y = seg[R];
-    seg.update(L, y);
-    seg.update(R, x);
+    seg.set(L, y);
+    seg.set(R, x);
 
-    auto res = seg.get(0, N);
+    auto res = seg.fold(0, N);
 
     if(std::holds_alternative<M::R>(res)){
       int ans = (K - std::get<M::R>(res).value) % K + 1;

@@ -37,14 +37,14 @@ namespace haar_lib {
         for(int i : ord){
           int lb = std::lower_bound(Y.begin(), Y.end(), y[i]) - Y.begin();
 
-          if(auto res = seg.get(lb, N); res){
+          if(auto res = seg.fold(lb, N); res){
             auto j = res->second;
             T c = std::abs(x[i] - x[j]) + std::abs(y[i] - y[j]);
             g.add_edge(i, j, c);
           }
 
           if(auto res = seg[lb]; not res or x[i] + y[i] < res->first){
-            seg.update(lb, {{x[i] + y[i], i}});
+            seg.set(lb, {{x[i] + y[i], i}});
           }
         }
       };

@@ -20,7 +20,7 @@ int main(){
 
   hl::segment_tree<hl::pair_monoid<Monoid1, Monoid2>> seg(n);
   for(int i = 0; i < n; ++i){
-    seg.update(i, {Monoid1::value_type(s[i]), Monoid2::value_type(s[i])});
+    seg.set(i, {Monoid1::value_type(s[i]), Monoid2::value_type(s[i])});
   }
 
   std::set<std::pair<int64_t, int64_t>> set;
@@ -37,7 +37,7 @@ int main(){
       else --r;
     }
 
-    auto t = seg.get(l, r);
+    auto t = seg.fold(l, r);
     set.emplace(t.first.hash, t.second.hash);
   }
 

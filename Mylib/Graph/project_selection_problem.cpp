@@ -5,8 +5,6 @@
 #include <limits>
 #include <tuple>
 
-/*
- */
 namespace haar_lib {
   template <typename T, typename Flow>
   class project_selection_problem {

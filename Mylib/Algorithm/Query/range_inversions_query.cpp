@@ -37,25 +37,25 @@ namespace haar_lib {
 
       auto append_left =
         [&](int i){
-          t += b.get(0, a[i]);
+          t += b.fold(0, a[i]);
           b.update(a[i], 1);
         };
 
       auto append_right =
         [&](int i){
-          t += b.get(a[i] + 1, N);
+          t += b.fold(a[i] + 1, N);
           b.update(a[i], 1);
         };
 
       auto remove_left =
         [&](int i){
-          t -= b.get(0, a[i]);
+          t -= b.fold(0, a[i]);
           b.update(a[i], -1);
         };
 
       auto remove_right =
         [&](int i){
-          t -= b.get(a[i] + 1, N);
+          t -= b.fold(a[i] + 1, N);
           b.update(a[i], -1);
         };
 

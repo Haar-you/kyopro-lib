@@ -15,9 +15,9 @@ int main(){
 
   for(auto [type, x, y] : hl::input_tuples<int, int, int>(q)){
     if(type == 0){
-      seg.update(x, y);
+      seg.set(x, y);
     }else{
-      std::cout << seg.get(x, y + 1).value_or(INT_MAX) << std::endl;
+      std::cout << seg.fold(x, y + 1).value_or(INT_MAX) << std::endl;
     }
   }
 

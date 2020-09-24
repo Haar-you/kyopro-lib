@@ -32,7 +32,7 @@ namespace haar_lib {
       for(int i = 2; i < n + 1; ++i) log_table[i] = log_table[i >> 1] + 1;
     }
 
-    std::optional<value_type> get(int s, int t) const { // [s, t)
+    std::optional<value_type> fold(int s, int t) const { // [s, t)
       if(s == t) return std::nullopt;
       int k = log_table[t - s];
       return S(a[s][k], a[t - (1 << k)][k]);

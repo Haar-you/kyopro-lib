@@ -19,9 +19,9 @@ int main(){
 
   for(auto [q, x, y] : hl::input_tuples<int, int, int>(n)){
     if(q == 0){
-      seg.update(x, seg[x] + y);
+      seg.update(x, y);
     }else{
-      ans += seg.get(x, y + 1);
+      ans += seg.fold(x, y + 1);
     }
   }
 

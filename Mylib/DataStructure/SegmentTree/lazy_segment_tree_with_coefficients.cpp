@@ -52,9 +52,9 @@ namespace haar_lib {
     }
 
     void update(int l, int r, const T &x){update(1, 0, hsize, l, r, x);}
-    void update_at(int i, const T &x){update(i, i + 1, x);}
-    T get(int l, int r){return get(1, 0, hsize, l, r);}
-    T operator[](int i){return get(i, i + 1);}
+    void update(int i, const T &x){update(i, i + 1, x);}
+    T fold(int l, int r){return get(1, 0, hsize, l, r);}
+    T operator[](int i){return fold(i, i + 1);}
 
     void init(const T &val){
       init_with_vector(std::vector<T>(hsize, val));

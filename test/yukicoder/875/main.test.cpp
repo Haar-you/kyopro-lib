@@ -36,15 +36,15 @@ int main(){
       auto x = seg[l].value;
       auto y = seg[r].value;
 
-      seg.update(l, {y, l});
-      seg.update(r, {x, r});
+      seg.set(l, {y, l});
+      seg.set(r, {x, r});
 
       break;
     }
     case 2: {
       --l, --r;
 
-      std::cout << seg.get(l, r + 1).index + 1 << "\n";
+      std::cout << seg.fold(l, r + 1).index + 1 << "\n";
 
       break;
     }

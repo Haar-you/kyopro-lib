@@ -22,7 +22,7 @@ namespace haar_lib {
 
     auto operator[](int i) const {return data[hsize + i];}
 
-    auto get(int x, int y) const {
+    auto fold(int x, int y) const {
       value_type ret_left = M();
       value_type ret_right = M();
 
@@ -36,9 +36,15 @@ namespace haar_lib {
       return M(ret_left, ret_right);
     }
 
-    void update(int i, const value_type &x){
+    void set(int i, const value_type &x){
       i += hsize;
       data[i] = x;
+      while(i > 1) i >>= 1, data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);
+    }
+
+    void update(int i, const value_type &x){
+      i += hsize;
+      data[i] = M(data[i], x);
       while(i > 1) i >>= 1, data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);
     }
 

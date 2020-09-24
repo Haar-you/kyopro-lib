@@ -16,7 +16,7 @@ int main(){
     if(type == 0){
       fen.update(x - 1, y);
     }else{
-      std::cout << fen.get(x - 1, y) << std::endl;
+      std::cout << fen.fold(x - 1, y) << std::endl;
     }
   }
 

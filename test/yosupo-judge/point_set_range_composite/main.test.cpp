@@ -20,16 +20,16 @@ int main(){
   auto seg = hl::segment_tree<M>(N);
 
   for(auto [i, a, b] : hl::input_tuples_with_index<int, int>(N)){
-    seg.update(i, {a, b});
+    seg.set(i, {a, b});
   }
 
   for(auto [t] : hl::input_tuples<int>(Q)){
     if(t == 0){
       int p, c, d; std::cin >> p >> c >> d;
-      seg.update(p, {c, d});
+      seg.set(p, {c, d});
     }else{
       int l, r, x; std::cin >> l >> r >> x;
-      auto [a, b] = seg.get(l, r);
+      auto [a, b] = seg.fold(l, r);
       std::cout << a * x + b << std::endl;
     }
   }

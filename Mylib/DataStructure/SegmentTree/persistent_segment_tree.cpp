@@ -46,15 +46,15 @@ namespace haar_lib {
     }
 
   protected:
-    node* update(node *t, int l, int r, int pos, const value_type &val) const {
+    node* set(node *t, int l, int r, int pos, const value_type &val) const {
       if(r <= pos or pos + 1 <= l){
         return t;
       }else if(pos <= l and r <= pos + 1){
         return new node(val);
       }else{
         const int m = (l + r) >> 1;
-        auto lp = update(t->left, l, m, pos, val);
-        auto rp = update(t->right, m, r, pos, val);
+        auto lp = set(t->left, l, m, pos, val);
+        auto rp = set(t->right, m, r, pos, val);
 
         node *s = new node(M(lp->value, rp->value));
 
@@ -66,9 +66,13 @@ namespace haar_lib {
     }
 
   public:
-    persistent_segment_tree update(int i, const value_type &val) const {
-      node *t = update(root, 0, 1 << (depth - 1), i, val);
+    persistent_segment_tree set(int i, const value_type &val) const {
+      node *t = set(root, 0, 1 << (depth - 1), i, val);
       return persistent_segment_tree(depth, t);
+    }
+
+    persistent_segment_tree update(int i, const value_type &val) const {
+      return set(i, M((*this)[i], val));
     }
 
   protected:
@@ -80,12 +84,12 @@ namespace haar_lib {
     }
 
   public:
-    value_type get(int i, int j) const {
+    value_type fold(int i, int j) const {
       return get(root, i, j, 0, 1 << (depth - 1));
     }
 
     value_type operator[](int i) const {
-      return get(i, i + 1);
+      return fold(i, i + 1);
     }
   };
 }

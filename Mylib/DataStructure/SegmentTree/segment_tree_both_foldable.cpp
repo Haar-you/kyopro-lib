@@ -49,7 +49,7 @@ namespace haar_lib {
       return M(ret_right, ret_left);
     }
 
-    void update(int i, const value_type &x){
+    void set(int i, const value_type &x){
       i += hsize;
       data_left[i] = data_right[i] = x;
       while(i > 1){

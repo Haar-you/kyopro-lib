@@ -5,7 +5,7 @@ documentation_of: Mylib/Graph/project_selection_problem.cpp
 
 ## Operations
 
-- `ProjectSelectionProblem(N)`
+- `project_selection_problem(N)`
 - `penalty_if_red(int i, T c)`
 	- `i`を<font color="red">赤</font>に塗ると`c`の損失になる。
 - `gain_if_red(int i, T c)`
@@ -29,6 +29,7 @@ documentation_of: Mylib/Graph/project_selection_problem.cpp
 - `gain_if_blue_blue(int i, int j, T c)`
 	- `i`と`j`をともに<font color="blue">青</font>に塗ると`c`の利益を得る。
 - `solve()`
+    - 得られる利益の最大値を返す。
 
 ## Requirements
 

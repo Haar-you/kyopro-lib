@@ -5,7 +5,7 @@ documentation_of: Mylib/Graph/two_sat.cpp
 
 ## Operations
 
-- `TwoSat(int n)`
+- `two_sat(int n)`
 - `add_if(int a, int b)`
 	- $a \rightarrow b$を導入する。
 - `add_or(int a, int b)`

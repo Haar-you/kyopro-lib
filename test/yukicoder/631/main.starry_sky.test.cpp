@@ -32,7 +32,7 @@ int main(){
 
     seg.update(L, R + 1, D);
 
-    auto ans = seg.get(0, N - 1);
+    auto ans = seg.fold(0, N - 1);
     std::cout << ans << std::endl;
   }
 

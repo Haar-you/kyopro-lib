@@ -18,7 +18,7 @@ int main(){
       int x; std::cin >> x;
       seg.update(s - 1, t, x);
     }else{
-      std::cout << seg.get(s - 1, t) << std::endl;
+      std::cout << seg.fold(s - 1, t) << std::endl;
     }
   }
 

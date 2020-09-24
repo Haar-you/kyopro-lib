@@ -21,6 +21,7 @@ namespace haar_lib {
     }
 
     auto& update(const std::vector<std::vector<T>> &a){
+      assert(not is_built);
       for(int i = 0; i < N; ++i){
         for(int j = 0; j < M; ++j){
           data[i + 1][j + 1] = add(data[i + 1][j + 1], a[i][j]);
@@ -43,7 +44,7 @@ namespace haar_lib {
       return *this;
     }
 
-    T get(std::pair<int, int> p1, std::pair<int, int> p2) const { // [x1, x2), [y1, y2)
+    T fold(std::pair<int, int> p1, std::pair<int, int> p2) const { // [x1, x2), [y1, y2)
       assert(is_built);
       const auto [x1, y1] = p1;
       const auto [x2, y2] = p2;

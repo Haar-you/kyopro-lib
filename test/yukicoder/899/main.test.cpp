@@ -37,7 +37,7 @@ int main(){
 
     auto f =
       [&](int l, int r){
-        ans += seg.get(l, r);
+        ans += seg.fold(l, r);
         seg.update(l, r, 0);
       };
 

@@ -49,7 +49,7 @@ namespace haar_lib {
           ++cur;
         }
 
-        ret[i] = b.get(l, r);
+        ret[i] = b.fold(l, r);
       }
 
       return ret;

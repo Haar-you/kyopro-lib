@@ -95,7 +95,7 @@ namespace haar_lib {
     }
 
   protected:
-    node* update(node *prev, int i, const T &val) const {
+    node* set(node *prev, int i, const T &val) const {
       if(prev->is_terminal) return new node(val);
 
       int k = get_size(prev->left);
@@ -103,19 +103,19 @@ namespace haar_lib {
       node *t = new node();
       if(i < k){
         t->right = prev->right;
-        t->left = update(prev->left, i, val);
+        t->left = set(prev->left, i, val);
         t->size = get_size(t->right) + get_size(t->left);
       }else{
         t->left = prev->left;
-        t->right = update(prev->right, i - k, val);
+        t->right = set(prev->right, i - k, val);
         t->size = get_size(t->right) + get_size(t->left);
       }
       return t;
     }
 
   public:
-    persistent_array update(int i, const T &val) const {
-      node *ret = update(root, i, val);
+    persistent_array set(int i, const T &val) const {
+      node *ret = set(root, i, val);
       return persistent_array(ret);
     }
 

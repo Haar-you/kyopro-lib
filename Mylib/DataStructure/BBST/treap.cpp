@@ -156,7 +156,7 @@ namespace haar_lib {
 
     void reverse(int l, int r){node::reverse(root, l, r);}
 
-    void update(int k, const value_type &value){node::update_node(root, k, value);}
+    void set(int k, const value_type &value){node::update_node(root, k, value);}
 
     value_type get(int k){return (node::get_node(root, k))->value;}
     value_type operator[](int k){return get(k);}

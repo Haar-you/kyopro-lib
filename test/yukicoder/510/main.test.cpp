@@ -32,7 +32,7 @@ int main(){
   std::vector<mint> x(n), y(n);
 
   for(int i = 0; i < n; ++i){
-    seg.update(i, f(x[i], y[i]));
+    seg.set(i, f(x[i], y[i]));
   }
 
   for(auto [c, i] : hl::input_tuples<char, int>(q)){
@@ -40,14 +40,14 @@ int main(){
       int v; std::cin >> v;
       x[i] = v;
 
-      seg.update(i, f(x[i], y[i]));
+      seg.set(i, f(x[i], y[i]));
     }else if(c == 'y'){
       int v; std::cin >> v;
       y[i] = v;
 
-      seg.update(i, f(x[i], y[i]));
+      seg.set(i, f(x[i], y[i]));
     }else{
-      auto m = seg.get(0, i);
+      auto m = seg.fold(0, i);
       auto ans = m[0][0] + m[0][1] + m[0][2] + m[0][3];
       std::cout << ans << "\n";
     }

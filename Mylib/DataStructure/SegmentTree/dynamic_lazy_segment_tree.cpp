@@ -84,12 +84,12 @@ namespace haar_lib {
       update(root, 0, hsize, l, r, value);
     }
 
-    value_type_get get(int64_t l, int64_t r){
+    value_type_get fold(int64_t l, int64_t r){
       return get(root, 0, hsize, l, r);
     }
 
     value_type_get operator[](int64_t i){
-      return get(i, i + 1);
+      return fold(i, i + 1);
     }
   };
 }

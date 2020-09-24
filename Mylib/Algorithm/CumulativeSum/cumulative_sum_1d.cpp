@@ -40,9 +40,9 @@ namespace haar_lib {
       return *this;
     }
 
-    T get(int i, int j) const {
+    T fold(int l, int r) const {
       assert(is_built);
-      return minus(data[j], data[i]);
+      return minus(data[r], data[l]);
     }
   };
 }

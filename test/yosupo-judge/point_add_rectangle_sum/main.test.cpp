@@ -51,7 +51,7 @@ int main(){
       seg.update({x, y}, w);
     }else{
       auto [l, d, r, u] = std::get<1>(q);
-      std::cout << seg.get({l, d}, {r, u}) << "\n";
+      std::cout << seg.fold({l, d}, {r, u}) << "\n";
     }
   }
 

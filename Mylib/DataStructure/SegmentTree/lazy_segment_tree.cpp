@@ -79,9 +79,9 @@ namespace haar_lib {
       if(r < hsize) bottom_up(r + hsize);
     }
 
-    void update_at(int i, const value_type_update &x){update(i, i + 1, x);}
+    void update(int i, const value_type_update &x){update(i, i + 1, x);}
 
-    value_type_get get(int l, int r){
+    value_type_get fold(int l, int r){
       propagate_top_down(l + hsize);
       if(r < hsize) propagate_top_down(r + hsize);
 
@@ -107,7 +107,7 @@ namespace haar_lib {
       return M_get(ret_left, ret_right);
     }
 
-    value_type_get operator[](int i){return get(i, i + 1);}
+    value_type_get operator[](int i){return fold(i, i + 1);}
 
     template <typename T>
     void init(const T &val){

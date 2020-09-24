@@ -48,7 +48,7 @@ int main(){
       --X, --Y;
       mint ans = 0;
       for(auto [l, r, d] : hld.path_query_vertex(X, Y)){
-        ans += seg.get(l, r);
+        ans += seg.fold(l, r);
       }
       std::cout << ans << "\n";
     }

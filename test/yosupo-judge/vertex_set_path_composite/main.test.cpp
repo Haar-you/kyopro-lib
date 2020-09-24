@@ -32,14 +32,14 @@ int main(){
   hl::segment_tree_both_foldable<Monoid> seg(N);
 
   for(int i = 0; i < N; ++i){
-    seg.update(hld.get_id(i), f[i]);
+    seg.set(hld.get_id(i), f[i]);
   }
 
   for(auto [type] : hl::input_tuples<int>(Q)){
     if(type == 0){
       int64_t p, c, d; std::cin >> p >> c >> d;
 
-      seg.update(hld.get_id(p), std::make_pair(c, d));
+      seg.set(hld.get_id(p), std::make_pair(c, d));
     }else{
       int64_t u, v, x; std::cin >> u >> v >> x;
 
