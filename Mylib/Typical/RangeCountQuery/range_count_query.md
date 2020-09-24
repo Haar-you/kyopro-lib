@@ -1,6 +1,6 @@
 ---
 title: Range count query
-documentation_of: Mylib/Algorithm/Query/range_count_query.cpp
+documentation_of: Mylib/Typical/RangeCountQuery/range_count_query.cpp
 ---
 
 ## Operations

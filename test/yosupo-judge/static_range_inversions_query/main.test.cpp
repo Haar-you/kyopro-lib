@@ -4,7 +4,7 @@
 #include <vector>
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
-#include "Mylib/Algorithm/Query/range_inversions_query.cpp"
+#include "Mylib/Typical/InversionNumber/range_inversions_query.cpp"
 
 namespace hl = haar_lib;
 
