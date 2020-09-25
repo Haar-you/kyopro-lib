@@ -2,4 +2,4 @@
 # name: lambda1
 # key: lam1
 # --
-[](const auto &$1){$0}
+[$1](const auto &$2){$0}
