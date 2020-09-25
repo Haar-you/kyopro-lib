@@ -1,5 +1,5 @@
 #pragma once
-#include "Mylib/Number/euler_phi_function.cpp"
+#include "Mylib/Number/euler_totient_function.cpp"
 
 namespace haar_lib {
   namespace tetration_impl {
