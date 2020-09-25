@@ -24,7 +24,6 @@ namespace haar_lib {
 
     value_type fold(int i) const { // [0, i)
       value_type ret = 0;
-      i += 1; // 1-index
 
       while(i > 0){
         ret = ret + data[i];
@@ -35,7 +34,7 @@ namespace haar_lib {
     }
 
     value_type fold(int l, int r) const { // [l, r)
-      return fold(r - 1) - fold(l - 1);
+      return fold(r) - fold(l);
     }
 
     value_type operator[](int x) const {

@@ -13,7 +13,6 @@ namespace haar_lib {
   private:
     value_type get_w(int i, int y) const {
       value_type ret = G();
-      i += 1;
       while(i > 0){
         ret = G(ret, data[i][y]);
         i -= i & (-i);
@@ -22,12 +21,11 @@ namespace haar_lib {
     }
 
     value_type get_w(int l, int r, int y) const {
-      return G(get_w(r - 1, y), G.inv(get_w(l - 1, y)));
+      return G(get_w(r, y), G.inv(get_w(l, y)));
     }
 
     value_type get(int x1, int x2, int y) const {
       value_type ret = G();
-      y += 1;
       while(y > 0){
         ret = G(ret, get_w(x1, x2, y));
         y -= y & (-y);
@@ -45,7 +43,7 @@ namespace haar_lib {
     value_type fold(std::pair<int, int> p1, std::pair<int, int> p2) const {
       const auto [x1, y1] = p1;
       const auto [x2, y2] = p2;
-      return G(get(x1, x2, y2 - 1), G.inv(get(x1, x2, y1 - 1)));
+      return G(get(x1, x2, y2), G.inv(get(x1, x2, y1)));
     }
 
     value_type operator[](std::pair<int, int> p) const {
