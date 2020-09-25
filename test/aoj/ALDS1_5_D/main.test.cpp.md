@@ -1,8 +1,8 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
-    path: Mylib/Algorithm/InversionNumber/inversion_number.cpp
+  - icon: ':heavy_check_mark:'
+    path: Mylib/Typical/InversionNumber/inversion_number.cpp
     title: Inversion number
   - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
@@ -10,7 +10,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D
@@ -18,11 +18,11 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D
   bundledCode: "#line 1 \"test/aoj/ALDS1_5_D/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D\"\
     \n\n#include <iostream>\n#include <vector>\n#include <functional>\n#line 3 \"\
-    Mylib/Algorithm/InversionNumber/inversion_number.cpp\"\n#include <cstdint>\n\n\
-    namespace haar_lib {\n  namespace inversion_number_impl {\n    template <typename\
-    \ T, typename Compare>\n    int64_t rec(std::vector<T> &a, const Compare &compare){\n\
-    \      const int n = a.size();\n      if(n <= 1) return 0;\n\n      int64_t ret\
-    \ = 0;\n\n      std::vector<T> b(a.begin(), a.begin() + n / 2);\n      std::vector<T>\
+    Mylib/Typical/InversionNumber/inversion_number.cpp\"\n#include <cstdint>\n\nnamespace\
+    \ haar_lib {\n  namespace inversion_number_impl {\n    template <typename T, typename\
+    \ Compare>\n    int64_t rec(std::vector<T> &a, const Compare &compare){\n    \
+    \  const int n = a.size();\n      if(n <= 1) return 0;\n\n      int64_t ret =\
+    \ 0;\n\n      std::vector<T> b(a.begin(), a.begin() + n / 2);\n      std::vector<T>\
     \ c(a.begin() + n / 2, a.end());\n\n      ret += rec(b, compare);\n      ret +=\
     \ rec(c, compare);\n\n      int ai = 0, bi = 0, ci = 0;\n\n      while(ai < n){\n\
     \        if(bi < (int)b.size() and (ci == (int)c.size() or not compare(b[bi],\
@@ -42,18 +42,18 @@ data:
     \ << std::endl;\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D\"\
     \n\n#include <iostream>\n#include <vector>\n#include <functional>\n#include \"\
-    Mylib/Algorithm/InversionNumber/inversion_number.cpp\"\n#include \"Mylib/IO/input_vector.cpp\"\
+    Mylib/Typical/InversionNumber/inversion_number.cpp\"\n#include \"Mylib/IO/input_vector.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nint main(){\n  int n; std::cin >> n;\n\n  auto\
     \ a = hl::input_vector<int>(n);\n\n  auto ans = hl::inversion_number(a, std::greater<int>());\n\
     \  std::cout << ans << std::endl;\n\n  return 0;\n}\n"
   dependsOn:
-  - Mylib/Algorithm/InversionNumber/inversion_number.cpp
+  - Mylib/Typical/InversionNumber/inversion_number.cpp
   - Mylib/IO/input_vector.cpp
   isVerificationFile: true
   path: test/aoj/ALDS1_5_D/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2020-09-21 02:36:12+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/ALDS1_5_D/main.test.cpp
 layout: document

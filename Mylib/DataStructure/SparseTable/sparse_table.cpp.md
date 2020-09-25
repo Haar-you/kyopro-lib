@@ -23,7 +23,7 @@ data:
     \       for(int i = 0; i < n; ++i){\n          a[i][j] = S(a[i][j - 1], a[std::min<int>(n\
     \ - 1, i + (1 << (j - 1)))][j - 1]);\n        }\n      }\n\n      log_table.assign(n\
     \ + 1, 0);\n      for(int i = 2; i < n + 1; ++i) log_table[i] = log_table[i >>\
-    \ 1] + 1;\n    }\n\n    std::optional<value_type> get(int s, int t) const { //\
+    \ 1] + 1;\n    }\n\n    std::optional<value_type> fold(int s, int t) const { //\
     \ [s, t)\n      if(s == t) return std::nullopt;\n      int k = log_table[t - s];\n\
     \      return S(a[s][k], a[t - (1 << k)][k]);\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <utility>\n#include <algorithm>\n\
@@ -37,7 +37,7 @@ data:
     \ ++j){\n        for(int i = 0; i < n; ++i){\n          a[i][j] = S(a[i][j - 1],\
     \ a[std::min<int>(n - 1, i + (1 << (j - 1)))][j - 1]);\n        }\n      }\n\n\
     \      log_table.assign(n + 1, 0);\n      for(int i = 2; i < n + 1; ++i) log_table[i]\
-    \ = log_table[i >> 1] + 1;\n    }\n\n    std::optional<value_type> get(int s,\
+    \ = log_table[i >> 1] + 1;\n    }\n\n    std::optional<value_type> fold(int s,\
     \ int t) const { // [s, t)\n      if(s == t) return std::nullopt;\n      int k\
     \ = log_table[t - s];\n      return S(a[s][k], a[t - (1 << k)][k]);\n    }\n \
     \ };\n}\n"
@@ -45,7 +45,7 @@ data:
   isVerificationFile: false
   path: Mylib/DataStructure/SparseTable/sparse_table.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/staticrmq/main.sparse_table.test.cpp

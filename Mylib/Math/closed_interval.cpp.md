@@ -36,8 +36,16 @@ data:
     \  }\n\n    return a;\n  }\n\n  template <typename T>\n  auto right_expand(closed_interval<T>\
     \ a, T x){\n    if(a.value and (a.value)->second){\n      *((a.value)->second)\
     \ += x;\n      if((a.value)->first and *((a.value)->first) > *((a.value)->second)){\n\
-    \        return closed_interval<T>();\n      }\n    }\n\n    return a;\n  }\n\
-    }\n"
+    \        return closed_interval<T>();\n      }\n    }\n\n    return a;\n  }\n\n\
+    \  template <typename T>\n  auto operator+(closed_interval<T> a, T k){\n    if(a.value){\n\
+    \      if(a.value->first) a.value->first.value() += k;\n      if(a.value->second)\
+    \ a.value->second.value() += k;\n    }\n    return a;\n  }\n\n  template <typename\
+    \ T>\n  auto operator-(closed_interval<T> a, T k){\n    if(a.value){\n      if(a.value->first)\
+    \ a.value->first.value() -= k;\n      if(a.value->second) a.value->second.value()\
+    \ -= k;\n    }\n    return a;\n  }\n\n  template <typename T>\n  auto operator*(closed_interval<T>\
+    \ a, T k){\n    if(a.value){\n      if(k < 0) std::swap(a.value->first, a.value->second);\n\
+    \      if(a.value->first) a.value->first.value() *= k;\n      if(a.value->second)\
+    \ a.value->second.value() *= k;\n    }\n    return a;\n  }\n}\n"
   code: "#pragma once\n#include <optional>\n#include <utility>\n#include <iostream>\n\
     #include <algorithm>\n\nnamespace haar_lib {\n  template <typename T>\n  struct\
     \ closed_interval {\n    std::optional<std::pair<std::optional<T>, std::optional<T>>>\
@@ -66,12 +74,21 @@ data:
     \  template <typename T>\n  auto right_expand(closed_interval<T> a, T x){\n  \
     \  if(a.value and (a.value)->second){\n      *((a.value)->second) += x;\n    \
     \  if((a.value)->first and *((a.value)->first) > *((a.value)->second)){\n    \
-    \    return closed_interval<T>();\n      }\n    }\n\n    return a;\n  }\n}\n"
+    \    return closed_interval<T>();\n      }\n    }\n\n    return a;\n  }\n\n  template\
+    \ <typename T>\n  auto operator+(closed_interval<T> a, T k){\n    if(a.value){\n\
+    \      if(a.value->first) a.value->first.value() += k;\n      if(a.value->second)\
+    \ a.value->second.value() += k;\n    }\n    return a;\n  }\n\n  template <typename\
+    \ T>\n  auto operator-(closed_interval<T> a, T k){\n    if(a.value){\n      if(a.value->first)\
+    \ a.value->first.value() -= k;\n      if(a.value->second) a.value->second.value()\
+    \ -= k;\n    }\n    return a;\n  }\n\n  template <typename T>\n  auto operator*(closed_interval<T>\
+    \ a, T k){\n    if(a.value){\n      if(k < 0) std::swap(a.value->first, a.value->second);\n\
+    \      if(a.value->first) a.value->first.value() *= k;\n      if(a.value->second)\
+    \ a.value->second.value() *= k;\n    }\n    return a;\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Math/closed_interval.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-26 05:16:45+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/Math/closed_interval.cpp

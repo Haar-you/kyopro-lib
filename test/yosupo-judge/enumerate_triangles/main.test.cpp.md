@@ -10,7 +10,7 @@ data:
   - icon: ':x:'
     path: Mylib/Graph/enumerate_triangles.cpp
     title: Enumerate triangles
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

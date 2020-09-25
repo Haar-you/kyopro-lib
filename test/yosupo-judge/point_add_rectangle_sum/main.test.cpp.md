@@ -33,18 +33,20 @@ data:
     \ data;\n\n  public:\n    segment_tree(){}\n    segment_tree(int n):\n      depth(n\
     \ > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),\n      size(1 << depth), hsize(size\
     \ / 2),\n      data(size, M())\n    {}\n\n    auto operator[](int i) const {return\
-    \ data[hsize + i];}\n\n    auto get(int x, int y) const {\n      value_type ret_left\
+    \ data[hsize + i];}\n\n    auto fold(int x, int y) const {\n      value_type ret_left\
     \ = M();\n      value_type ret_right = M();\n\n      int l = x + hsize, r = y\
     \ + hsize;\n      while(l < r){\n        if(r & 1) ret_right = M(data[--r], ret_right);\n\
     \        if(l & 1) ret_left = M(ret_left, data[l++]);\n        l >>= 1, r >>=\
-    \ 1;\n      }\n\n      return M(ret_left, ret_right);\n    }\n\n    void update(int\
+    \ 1;\n      }\n\n      return M(ret_left, ret_right);\n    }\n\n    void set(int\
     \ i, const value_type &x){\n      i += hsize;\n      data[i] = x;\n      while(i\
     \ > 1) i >>= 1, data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n  \
-    \  template <typename T>\n    void init_with_vector(const std::vector<T> &val){\n\
-    \      data.assign(size, M());\n      for(int i = 0; i < (int)val.size(); ++i)\
-    \ data[hsize + i] = val[i];\n      for(int i = hsize - 1; i >= 1; --i) data[i]\
-    \ = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n    template <typename T>\n\
-    \    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
+    \  void update(int i, const value_type &x){\n      i += hsize;\n      data[i]\
+    \ = M(data[i], x);\n      while(i > 1) i >>= 1, data[i] = M(data[i << 1 | 0],\
+    \ data[i << 1 | 1]);\n    }\n\n    template <typename T>\n    void init_with_vector(const\
+    \ std::vector<T> &val){\n      data.assign(size, M());\n      for(int i = 0; i\
+    \ < (int)val.size(); ++i) data[hsize + i] = val[i];\n      for(int i = hsize -\
+    \ 1; i >= 1; --i) data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n\
+    \    template <typename T>\n    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
     \ val));\n    }\n\n  private:\n    template <bool Lower, typename F>\n    int\
     \ bound(const int l, const int r, value_type x, F f) const {\n      std::vector<int>\
     \ pl, pr;\n      int L = l + hsize;\n      int R = r + hsize;\n      while(L <\
@@ -86,19 +88,18 @@ data:
     \ &val){\n      const auto [x, y] = p;\n      int i = std::lower_bound(c_xs.begin(),\
     \ c_xs.end(), x) - c_xs.begin() + x_size / 2;\n\n      while(i >= 1){\n      \
     \  int j = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y) - c_ys[i].begin();\n\
-    \        segs[i].update(j, M(segs[i][j], val));\n\n        i >>= 1;\n      }\n\
-    \    }\n\n  private:\n    value_type get_sub(int i, int64_t y1, int64_t y2) const\
-    \ {\n      int l = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y1) - c_ys[i].begin();\n\
-    \      int r = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y2) - c_ys[i].begin();\n\
-    \n      return segs[i].get(l, r);\n    }\n\n  public:\n    // [x1, x2), [y1, y2)\n\
-    \    value_type get(std::pair<int64_t, int64_t> p1, std::pair<int64_t, int64_t>\
-    \ p2) const {\n      const auto [x1, y1] = p1;\n      const auto [x2, y2] = p2;\n\
-    \      int l = std::lower_bound(c_xs.begin(), c_xs.end(), x1) - c_xs.begin() +\
-    \ x_size / 2;\n      int r = std::lower_bound(c_xs.begin(), c_xs.end(), x2) -\
-    \ c_xs.begin() + x_size / 2;\n\n      value_type ret = M();\n\n      while(l <\
-    \ r){\n        if(r & 1) ret = M(ret, get_sub(--r, y1, y2));\n        if(l & 1)\
-    \ ret = M(ret, get_sub(l++, y1, y2));\n        l >>= 1;\n        r >>= 1;\n  \
-    \    }\n\n      return ret;\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/sum.cpp\"\
+    \        segs[i].update(j, val);\n\n        i >>= 1;\n      }\n    }\n\n  private:\n\
+    \    value_type get_sub(int i, int64_t y1, int64_t y2) const {\n      int l =\
+    \ std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y1) - c_ys[i].begin();\n  \
+    \    int r = std::lower_bound(c_ys[i].begin(), c_ys[i].end(), y2) - c_ys[i].begin();\n\
+    \n      return segs[i].fold(l, r);\n    }\n\n  public:\n    value_type fold(std::pair<int64_t,\
+    \ int64_t> p1, std::pair<int64_t, int64_t> p2) const {\n      const auto [x1,\
+    \ y1] = p1;\n      const auto [x2, y2] = p2;\n      int l = std::lower_bound(c_xs.begin(),\
+    \ c_xs.end(), x1) - c_xs.begin() + x_size / 2;\n      int r = std::lower_bound(c_xs.begin(),\
+    \ c_xs.end(), x2) - c_xs.begin() + x_size / 2;\n\n      value_type ret = M();\n\
+    \n      while(l < r){\n        if(r & 1) ret = M(ret, get_sub(--r, y1, y2));\n\
+    \        if(l & 1) ret = M(ret, get_sub(l++, y1, y2));\n        l >>= 1;\n   \
+    \     r >>= 1;\n      }\n\n      return ret;\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/sum.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  struct sum_monoid {\n   \
     \ using value_type = T;\n    value_type operator()() const {return 0;}\n    value_type\
     \ operator()(value_type a, value_type b) const {return a + b;}\n  };\n}\n#line\
@@ -124,7 +125,7 @@ data:
     \  }\n\n  seg.build();\n\n  for(int i = 0; i < N; ++i){\n    seg.update({x[i],\
     \ y[i]}, w[i]);\n  }\n\n  for(auto q : queries){\n    if(q.index() == 0){\n  \
     \    auto [x, y, w] = std::get<0>(q);\n      seg.update({x, y}, w);\n    }else{\n\
-    \      auto [l, d, r, u] = std::get<1>(q);\n      std::cout << seg.get({l, d},\
+    \      auto [l, d, r, u] = std::get<1>(q);\n      std::cout << seg.fold({l, d},\
     \ {r, u}) << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\
     \n\n#include <iostream>\n#include <variant>\n#include <tuple>\n#include <vector>\n\
@@ -142,7 +143,7 @@ data:
     \  }\n\n  seg.build();\n\n  for(int i = 0; i < N; ++i){\n    seg.update({x[i],\
     \ y[i]}, w[i]);\n  }\n\n  for(auto q : queries){\n    if(q.index() == 0){\n  \
     \    auto [x, y, w] = std::get<0>(q);\n      seg.update({x, y}, w);\n    }else{\n\
-    \      auto [l, d, r, u] = std::get<1>(q);\n      std::cout << seg.get({l, d},\
+    \      auto [l, d, r, u] = std::get<1>(q);\n      std::cout << seg.fold({l, d},\
     \ {r, u}) << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp
@@ -152,7 +153,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/point_add_rectangle_sum/main.test.cpp

@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':x:'
-    path: Mylib/Algorithm/Query/range_inversions_query.cpp
+    path: Mylib/Typical/InversionNumber/range_inversions_query.cpp
     title: Range inversions query
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -31,17 +31,15 @@ data:
     \   append_left(append_left), append_right(append_right),\n      remove_left(remove_left),\
     \ remove_right(remove_right),\n      query(query)\n    {}\n\n    // [l, r)\n \
     \   void add(int l, int r){\n      left[index] = l;\n      right[index] = r;\n\
-    \      ord[index] = index;\n      ++index;\n    }\n\n    void build(){\n     \
-    \ std::sort(\n        ord.begin(),\n        ord.end(),\n        [&](int i, int\
-    \ j){\n          const int a = left[i] / width, b = left[j] / width;\n       \
-    \   if(a == b){\n            if(a & 1){\n              return right[i] < right[j];\n\
-    \            }else{\n              return right[i] > right[j];\n            }\n\
-    \          }else{\n            return a < b;\n          }\n        }\n      );\n\
-    \n      is_built = true;\n    }\n\n    void run(){\n      assert(is_built);\n\n\
-    \      int q = 0;\n      int l = left[ord[0]], r = left[ord[0]];\n\n      for(int\
-    \ i = 0; i < Q; ++i){\n        int id = ord[q++];\n\n        while(l != left[id]\
-    \ or r != right[id]){\n          if(l > left[id]) append_left(--l);\n        \
-    \  if(l < left[id]) remove_left(l++);\n          if(r < right[id]) append_right(r++);\n\
+    \      ord[index] = index;\n      ++index;\n    }\n\n    void run(){\n      std::sort(\n\
+    \        ord.begin(), ord.end(),\n        [&](int i, int j){\n          const\
+    \ int a = left[i] / width, b = left[j] / width;\n          if(a == b){\n     \
+    \       if(a & 1) return right[i] < right[j];\n            else return right[i]\
+    \ > right[j];\n          }else{\n            return a < b;\n          }\n    \
+    \    }\n      );\n\n      int q = 0;\n      int l = left[ord[0]], r = left[ord[0]];\n\
+    \n      for(int i = 0; i < Q; ++i){\n        int id = ord[q++];\n\n        while(l\
+    \ != left[id] or r != right[id]){\n          if(l > left[id]) append_left(--l);\n\
+    \          if(l < left[id]) remove_left(l++);\n          if(r < right[id]) append_right(r++);\n\
     \          if(r > right[id]) remove_right(--r);\n        }\n\n        query(id);\n\
     \      }\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <algorithm>\n#include <cassert>\n\
@@ -58,24 +56,22 @@ data:
     \      remove_left(remove_left), remove_right(remove_right),\n      query(query)\n\
     \    {}\n\n    // [l, r)\n    void add(int l, int r){\n      left[index] = l;\n\
     \      right[index] = r;\n      ord[index] = index;\n      ++index;\n    }\n\n\
-    \    void build(){\n      std::sort(\n        ord.begin(),\n        ord.end(),\n\
-    \        [&](int i, int j){\n          const int a = left[i] / width, b = left[j]\
-    \ / width;\n          if(a == b){\n            if(a & 1){\n              return\
-    \ right[i] < right[j];\n            }else{\n              return right[i] > right[j];\n\
-    \            }\n          }else{\n            return a < b;\n          }\n   \
-    \     }\n      );\n\n      is_built = true;\n    }\n\n    void run(){\n      assert(is_built);\n\
-    \n      int q = 0;\n      int l = left[ord[0]], r = left[ord[0]];\n\n      for(int\
-    \ i = 0; i < Q; ++i){\n        int id = ord[q++];\n\n        while(l != left[id]\
-    \ or r != right[id]){\n          if(l > left[id]) append_left(--l);\n        \
-    \  if(l < left[id]) remove_left(l++);\n          if(r < right[id]) append_right(r++);\n\
-    \          if(r > right[id]) remove_right(--r);\n        }\n\n        query(id);\n\
-    \      }\n    }\n  };\n}\n"
+    \    void run(){\n      std::sort(\n        ord.begin(), ord.end(),\n        [&](int\
+    \ i, int j){\n          const int a = left[i] / width, b = left[j] / width;\n\
+    \          if(a == b){\n            if(a & 1) return right[i] < right[j];\n  \
+    \          else return right[i] > right[j];\n          }else{\n            return\
+    \ a < b;\n          }\n        }\n      );\n\n      int q = 0;\n      int l =\
+    \ left[ord[0]], r = left[ord[0]];\n\n      for(int i = 0; i < Q; ++i){\n     \
+    \   int id = ord[q++];\n\n        while(l != left[id] or r != right[id]){\n  \
+    \        if(l > left[id]) append_left(--l);\n          if(l < left[id]) remove_left(l++);\n\
+    \          if(r < right[id]) append_right(r++);\n          if(r > right[id]) remove_right(--r);\n\
+    \        }\n\n        query(id);\n      }\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Algorithm/Mo/mo_algorithm.cpp
   requiredBy:
-  - Mylib/Algorithm/Query/range_inversions_query.cpp
-  timestamp: '2020-09-16 17:10:42+09:00'
+  - Mylib/Typical/InversionNumber/range_inversions_query.cpp
+  timestamp: '2020-09-25 04:49:59+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/0425/main.test.cpp

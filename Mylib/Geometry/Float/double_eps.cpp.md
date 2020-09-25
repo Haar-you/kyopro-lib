@@ -27,7 +27,7 @@ data:
   - icon: ':x:'
     path: test/aoj/CGL_7_F/main.test.cpp
     title: test/aoj/CGL_7_F/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_1_A/main.test.cpp
     title: test/aoj/CGL_1_A/main.test.cpp
   - icon: ':heavy_check_mark:'
@@ -39,7 +39,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2136/main.test.cpp
     title: test/aoj/2136/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_2_B/main.test.cpp
     title: test/aoj/CGL_2_B/main.test.cpp
   - icon: ':x:'
@@ -57,13 +57,13 @@ data:
   - icon: ':x:'
     path: test/aoj/CGL_4_A/main.test.cpp
     title: test/aoj/CGL_4_A/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_2_A/main.test.cpp
     title: test/aoj/CGL_2_A/main.test.cpp
   - icon: ':x:'
     path: test/aoj/CGL_3_B/main.test.cpp
     title: test/aoj/CGL_3_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_2_C/main.test.cpp
     title: test/aoj/CGL_2_C/main.test.cpp
   - icon: ':x:'
@@ -72,10 +72,10 @@ data:
   - icon: ':x:'
     path: test/aoj/CGL_7_A/main.test.cpp
     title: test/aoj/CGL_7_A/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_1_C/main.test.cpp
     title: test/aoj/CGL_1_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_1_B/main.test.cpp
     title: test/aoj/CGL_1_B/main.test.cpp
   _pathExtension: cpp

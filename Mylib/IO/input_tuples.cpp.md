@@ -60,7 +60,7 @@ data:
   - icon: ':x:'
     path: test/aoj/DSL_1_B/main.test.cpp
     title: test/aoj/DSL_1_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_1_A/main.test.cpp
     title: test/aoj/CGL_1_A/main.test.cpp
   - icon: ':heavy_check_mark:'
@@ -84,7 +84,7 @@ data:
   - icon: ':x:'
     path: test/aoj/DSL_2_E/main.dynamic.test.cpp
     title: test/aoj/DSL_2_E/main.dynamic.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_2_B/main.test.cpp
     title: test/aoj/CGL_2_B/main.test.cpp
   - icon: ':heavy_check_mark:'
@@ -96,7 +96,7 @@ data:
   - icon: ':x:'
     path: test/aoj/CGL_7_D/main.test.cpp
     title: test/aoj/CGL_7_D/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/ALDS1_14_D/main.test.cpp
     title: test/aoj/ALDS1_14_D/main.test.cpp
   - icon: ':x:'
@@ -108,10 +108,10 @@ data:
   - icon: ':x:'
     path: test/aoj/DSL_5_A/main.test.cpp
     title: test/aoj/DSL_5_A/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/ALDS1_1_C/main.test.cpp
     title: test/aoj/ALDS1_1_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_2_A/main.test.cpp
     title: test/aoj/CGL_2_A/main.test.cpp
   - icon: ':x:'
@@ -135,7 +135,7 @@ data:
   - icon: ':x:'
     path: test/aoj/GRL_5_C/main.doubling.test.cpp
     title: test/aoj/GRL_5_C/main.doubling.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_2_C/main.test.cpp
     title: test/aoj/CGL_2_C/main.test.cpp
   - icon: ':x:'
@@ -153,19 +153,19 @@ data:
   - icon: ':x:'
     path: test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp
     title: test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/3132/main.test.cpp
     title: test/aoj/3132/main.test.cpp
   - icon: ':x:'
     path: test/aoj/GRL_3_C/main.test.cpp
     title: test/aoj/GRL_3_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_1_C/main.test.cpp
     title: test/aoj/CGL_1_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/ALDS1_10_C/main.test.cpp
     title: test/aoj/ALDS1_10_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_1_B/main.test.cpp
     title: test/aoj/CGL_1_B/main.test.cpp
   - icon: ':x:'

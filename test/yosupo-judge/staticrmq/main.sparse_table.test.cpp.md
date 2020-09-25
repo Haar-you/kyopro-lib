@@ -39,7 +39,7 @@ data:
     \ i = 0; i < n; ++i){\n          a[i][j] = S(a[i][j - 1], a[std::min<int>(n -\
     \ 1, i + (1 << (j - 1)))][j - 1]);\n        }\n      }\n\n      log_table.assign(n\
     \ + 1, 0);\n      for(int i = 2; i < n + 1; ++i) log_table[i] = log_table[i >>\
-    \ 1] + 1;\n    }\n\n    std::optional<value_type> get(int s, int t) const { //\
+    \ 1] + 1;\n    }\n\n    std::optional<value_type> fold(int s, int t) const { //\
     \ [s, t)\n      if(s == t) return std::nullopt;\n      int k = log_table[t - s];\n\
     \      return S(a[s][k], a[t - (1 << k)][k]);\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/bounded_min.cpp\"\
     \n#include <limits>\n#line 4 \"Mylib/AlgebraicStructure/Monoid/bounded_min.cpp\"\
@@ -76,8 +76,8 @@ data:
     \ = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  int N, Q; std::cin >> N >> Q;\n\n  auto a = hl::input_vector<int>(N);\n\n\
     \  hl::sparse_table<hl::bounded_min_monoid<int>> s(a);\n\n  for(auto [l, r] :\
-    \ hl::input_tuples<int, int>(Q)){\n    std::cout << s.get(l, r).value() << \"\\\
-    n\";\n  }\n\n  return 0;\n}\n"
+    \ hl::input_tuples<int, int>(Q)){\n    std::cout << s.fold(l, r).value() << \"\
+    \\n\";\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n\n#include\
     \ <iostream>\n#include <vector>\n#include \"Mylib/DataStructure/SparseTable/sparse_table.cpp\"\
     \n#include \"Mylib/AlgebraicStructure/Monoid/bounded_min.cpp\"\n#include \"Mylib/IO/input_vector.cpp\"\
@@ -85,7 +85,7 @@ data:
     \  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int N, Q; std::cin\
     \ >> N >> Q;\n\n  auto a = hl::input_vector<int>(N);\n\n  hl::sparse_table<hl::bounded_min_monoid<int>>\
     \ s(a);\n\n  for(auto [l, r] : hl::input_tuples<int, int>(Q)){\n    std::cout\
-    \ << s.get(l, r).value() << \"\\n\";\n  }\n\n  return 0;\n}\n"
+    \ << s.fold(l, r).value() << \"\\n\";\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/DataStructure/SparseTable/sparse_table.cpp
   - Mylib/AlgebraicStructure/Monoid/bounded_min.cpp
@@ -95,7 +95,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp

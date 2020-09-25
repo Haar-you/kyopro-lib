@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp
-    title: Check bipartite graph
   - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
   - icon: ':heavy_check_mark:'
-    path: Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp
+    path: Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp
+    title: Check bipartite graph
+  - icon: ':heavy_check_mark:'
+    path: Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp
     title: Subset sum problem (With quantity limitations)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -21,17 +21,15 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2370
   bundledCode: "#line 1 \"test/aoj/2370/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2370\"\
     \n\n#include <iostream>\n#include <vector>\n#include <map>\n#include <algorithm>\n\
-    #line 3 \"Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp\"\n#include <optional>\n\
-    #include <stack>\n#include <utility>\n#line 4 \"Mylib/Graph/Template/graph.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T>\n  struct edge {\n    int from,\
-    \ to;\n    T cost;\n    int index = -1;\n    edge(){}\n    edge(int from, int\
-    \ to, T cost): from(from), to(to), cost(cost){}\n    edge(int from, int to, T\
-    \ cost, int index): from(from), to(to), cost(cost), index(index){}\n  };\n\n \
-    \ template <typename T>\n  struct graph {\n    using weight_type = T;\n    using\
-    \ edge_type = edge<T>;\n\n    std::vector<std::vector<edge<T>>> data;\n\n    auto&\
-    \ operator[](size_t i){return data[i];}\n    const auto& operator[](size_t i)\
-    \ const {return data[i];}\n\n    auto begin() const {return data.begin();}\n \
-    \   auto end() const {return data.end();}\n\n    graph(){}\n    graph(int N):\
+    #line 4 \"Mylib/Graph/Template/graph.cpp\"\n\nnamespace haar_lib {\n  template\
+    \ <typename T>\n  struct edge {\n    int from, to;\n    T cost;\n    int index\
+    \ = -1;\n    edge(){}\n    edge(int from, int to, T cost): from(from), to(to),\
+    \ cost(cost){}\n    edge(int from, int to, T cost, int index): from(from), to(to),\
+    \ cost(cost), index(index){}\n  };\n\n  template <typename T>\n  struct graph\
+    \ {\n    using weight_type = T;\n    using edge_type = edge<T>;\n\n    std::vector<std::vector<edge<T>>>\
+    \ data;\n\n    auto& operator[](size_t i){return data[i];}\n    const auto& operator[](size_t\
+    \ i) const {return data[i];}\n\n    auto begin() const {return data.begin();}\n\
+    \    auto end() const {return data.end();}\n\n    graph(){}\n    graph(int N):\
     \ data(N){}\n\n    bool empty() const {return data.empty();}\n    int size() const\
     \ {return data.size();}\n\n    void add_edge(int i, int j, T w, int index = -1){\n\
     \      data[i].emplace_back(i, j, w, index);\n    }\n\n    void add_undirected(int\
@@ -41,7 +39,8 @@ data:
     \ u, v; std::cin >> u >> v;\n        u -= I;\n        v -= I;\n        T w = 1;\n\
     \        if(WEIGHTED) std::cin >> w;\n        if(DIRECTED) add_edge(u, v, w, i);\n\
     \        else add_undirected(u, v, w, i);\n      }\n    }\n  };\n\n  template\
-    \ <typename T>\n  using tree = graph<T>;\n}\n#line 7 \"Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp\"\
+    \ <typename T>\n  using tree = graph<T>;\n}\n#line 3 \"Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp\"\
+    \n#include <optional>\n#include <stack>\n#include <utility>\n#line 7 \"Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  auto check_bipartite_graph(const\
     \ graph<T> &g){\n    std::vector<std::optional<std::pair<std::vector<int>, std::vector<int>>>>\
     \ ret;\n\n    const int N = g.size();\n\n    std::vector<int> check(N, -1);\n\
@@ -58,7 +57,7 @@ data:
     \       }\n\n                st.push(e.to);\n              }\n            }\n\
     \          }\n\n          return true;\n        }();\n\n      if(res){\n     \
     \   ret.emplace_back(std::make_pair(a, b));\n      }else{\n        ret.emplace_back();\n\
-    \      }\n    }\n\n    return ret;\n  }\n}\n#line 3 \"Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp\"\
+    \      }\n    }\n\n    return ret;\n  }\n}\n#line 3 \"Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp\"\
     \n\nnamespace haar_lib {\n  auto subset_sum_limited(int N, int K, const std::vector<int>\
     \ &a, const std::vector<int> &m){\n    std::vector<int> dp(K + 1, -1);\n\n   \
     \ dp[0] = 0;\n    for(int i = 0; i < N; ++i){\n      for(int j = 0; j <= K; ++j){\n\
@@ -80,10 +79,10 @@ data:
     \ << \"\\n\";\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2370\"\
     \n\n#include <iostream>\n#include <vector>\n#include <map>\n#include <algorithm>\n\
-    #include \"Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp\"\n#include \"\
-    Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp\"\n#include \"Mylib/Graph/Template/graph.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nint main(){\n  int V, E; std::cin >> V >> E;\n\
-    \n  hl::graph<int> g(V);\n  g.read<1, false, false>(E);\n\n  auto res = hl::check_bipartite_graph(g);\n\
+    #include \"Mylib/Graph/Template/graph.cpp\"\n#include \"Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp\"\
+    \n#include \"Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp\"\n\nnamespace\
+    \ hl = haar_lib;\n\nint main(){\n  int V, E; std::cin >> V >> E;\n\n  hl::graph<int>\
+    \ g(V);\n  g.read<1, false, false>(E);\n\n  auto res = hl::check_bipartite_graph(g);\n\
     \n  if(std::all_of(res.begin(), res.end(), [](const auto &a){return (bool)a;})){\n\
     \    int k = 0;\n\n    std::map<int, int> c;\n\n    for(auto &x : res){\n    \
     \  int a = (*x).first.size();\n      int b = (*x).second.size();\n\n      k +=\
@@ -95,13 +94,13 @@ data:
     \  ans -= E;\n    std::cout << ans << \"\\n\";\n  }else{\n    std::cout << -1\
     \ << \"\\n\";\n  }\n\n  return 0;\n}\n"
   dependsOn:
-  - Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp
   - Mylib/Graph/Template/graph.cpp
-  - Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp
+  - Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp
+  - Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp
   isVerificationFile: true
   path: test/aoj/2370/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-21 02:36:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/2370/main.test.cpp

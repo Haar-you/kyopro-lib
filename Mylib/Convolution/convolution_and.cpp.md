@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/fast_zeta_transform_superset.cpp
     title: Fast Zeta transform (Supersets)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/fast_mobius_transform_superset.cpp
     title: "Fast M\xF6bius transform (Supersets)"
   _extendedRequiredBy: []

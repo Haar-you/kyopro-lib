@@ -36,7 +36,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/3058/main.test.cpp
     title: test/aoj/3058/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/ALDS1_14_C/main.test.cpp
     title: test/aoj/ALDS1_14_C/main.test.cpp
   - icon: ':x:'
@@ -90,7 +90,7 @@ data:
   - icon: ':x:'
     path: test/aoj/DPL_3_C/main.test.cpp
     title: test/aoj/DPL_3_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/ALDS1_5_D/main.test.cpp
     title: test/aoj/ALDS1_5_D/main.test.cpp
   - icon: ':x:'
@@ -99,7 +99,7 @@ data:
   - icon: ':x:'
     path: test/aoj/CGL_4_C/main.test.cpp
     title: test/aoj/CGL_4_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/3134/main.test.cpp
     title: test/aoj/3134/main.test.cpp
   - icon: ':x:'
@@ -114,7 +114,7 @@ data:
   - icon: ':x:'
     path: test/aoj/DPL_1_D/main.test.cpp
     title: test/aoj/DPL_1_D/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/3119/main.test.cpp
     title: test/aoj/3119/main.test.cpp
   - icon: ':x:'

@@ -4,19 +4,10 @@ data:
   - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
-  _extendedRequiredBy:
-  - icon: ':x:'
-    path: Mylib/Graph/two_sat.cpp
-    title: 2-SAT
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/yosupo-judge/two_sat/main.test.cpp
-    title: test/yosupo-judge/two_sat/main.test.cpp
-  - icon: ':x:'
-    path: test/yosupo-judge/scc/main.test.cpp
-    title: test/yosupo-judge/scc/main.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     links: []
@@ -67,13 +58,10 @@ data:
   - Mylib/Graph/Template/graph.cpp
   isVerificationFile: false
   path: Mylib/Graph/TopologicalSort/topological_sort.cpp
-  requiredBy:
-  - Mylib/Graph/two_sat.cpp
+  requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - test/yosupo-judge/two_sat/main.test.cpp
-  - test/yosupo-judge/scc/main.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: Mylib/Graph/TopologicalSort/topological_sort.cpp
 layout: document
 title: Topological sort

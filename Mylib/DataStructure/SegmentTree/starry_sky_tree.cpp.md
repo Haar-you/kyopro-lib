@@ -34,7 +34,7 @@ data:
     \ int r, T val){\n      int L = l + hsize;\n      int R = r + hsize;\n\n     \
     \ while(L < R){\n        if(R & 1) --R, data[R] += val;\n        if(L & 1) data[L]\
     \ += val, ++L;\n        L >>= 1;\n        R >>= 1;\n      }\n\n      bottom_up(l\
-    \ + hsize);\n      bottom_up(r + hsize);\n    }\n\n    T get(int l, int r) const\
+    \ + hsize);\n      bottom_up(r + hsize);\n    }\n\n    T fold(int l, int r) const\
     \ {\n      return *get(1, 0, hsize, l, r, 0);\n    }\n\n    template <typename\
     \ U>\n    void init_with_vector(std::vector<U> &a){\n      for(int i = 0; i <\
     \ (int)a.size(); ++i){\n        data[hsize + i] = a[i];\n      }\n\n      for(int\
@@ -60,7 +60,7 @@ data:
     \ int r, T val){\n      int L = l + hsize;\n      int R = r + hsize;\n\n     \
     \ while(L < R){\n        if(R & 1) --R, data[R] += val;\n        if(L & 1) data[L]\
     \ += val, ++L;\n        L >>= 1;\n        R >>= 1;\n      }\n\n      bottom_up(l\
-    \ + hsize);\n      bottom_up(r + hsize);\n    }\n\n    T get(int l, int r) const\
+    \ + hsize);\n      bottom_up(r + hsize);\n    }\n\n    T fold(int l, int r) const\
     \ {\n      return *get(1, 0, hsize, l, r, 0);\n    }\n\n    template <typename\
     \ U>\n    void init_with_vector(std::vector<U> &a){\n      for(int i = 0; i <\
     \ (int)a.size(); ++i){\n        data[hsize + i] = a[i];\n      }\n\n      for(int\
@@ -71,7 +71,7 @@ data:
   isVerificationFile: false
   path: Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/DSL_2_H/main.starry_sky.test.cpp

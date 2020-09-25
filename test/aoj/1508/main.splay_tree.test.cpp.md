@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Mylib/DataStructure/SplayTree/splay_tree.cpp
+    path: Mylib/DataStructure/BBST/splay_tree.cpp
     title: Splay tree
   - icon: ':question:'
     path: Mylib/AlgebraicStructure/Monoid/min.cpp
@@ -27,15 +27,15 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508
   bundledCode: "#line 1 \"test/aoj/1508/main.splay_tree.test.cpp\"\n#define PROBLEM\
     \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508\"\n\n#include\
-    \ <iostream>\n#line 2 \"Mylib/DataStructure/SplayTree/splay_tree.cpp\"\n#include\
-    \ <utility>\n#include <tuple>\n\nnamespace haar_lib {\n  template <typename Monoid>\n\
-    \  struct splay_node {\n    using node = splay_node<Monoid>;\n    using value_type\
-    \ = typename Monoid::value_type;\n    const static Monoid M;\n\n    node *left\
-    \ = nullptr, *right = nullptr, *parent = nullptr;\n    int size;\n    value_type\
-    \ value = M(), result = M();\n\n    splay_node(): size(1){}\n    splay_node(const\
-    \ value_type &value): size(1), value(value){}\n\n    void rotate(){\n      node\
-    \ *p, *pp, *c;\n\n      p = this->parent;\n      pp = p->parent;\n\n      if(p->left\
-    \ == this){\n        c = this->right;\n        p->set_left(c);\n        this->set_right(p);\n\
+    \ <iostream>\n#line 2 \"Mylib/DataStructure/BBST/splay_tree.cpp\"\n#include <utility>\n\
+    #include <tuple>\n\nnamespace haar_lib {\n  template <typename Monoid>\n  struct\
+    \ splay_node {\n    using node = splay_node<Monoid>;\n    using value_type = typename\
+    \ Monoid::value_type;\n    const static Monoid M;\n\n    node *left = nullptr,\
+    \ *right = nullptr, *parent = nullptr;\n    int size;\n    value_type value =\
+    \ M(), result = M();\n\n    splay_node(): size(1){}\n    splay_node(const value_type\
+    \ &value): size(1), value(value){}\n\n    void rotate(){\n      node *p, *pp,\
+    \ *c;\n\n      p = this->parent;\n      pp = p->parent;\n\n      if(p->left ==\
+    \ this){\n        c = this->right;\n        p->set_left(c);\n        this->set_right(p);\n\
     \      }else{\n        c = this->left;\n        p->set_right(c);\n        this->set_left(p);\n\
     \      }\n\n      if(pp){\n        if(pp->left == p) pp->left = this;\n      \
     \  if(pp->right == p) pp->right = this;\n      }\n\n      this->parent = pp;\n\
@@ -77,7 +77,7 @@ data:
     \ value_type &value){return splay_tree(new node(value));}\n\n    int size() const\
     \ {return root ? root->size : 0;}\n    bool empty() const {return !root;}\n\n\
     \    const value_type get(int index){root = node::get(root, index); return root->value;}\n\
-    \    const value_type operator[](int index){return get(index);}\n\n    void update(int\
+    \    const value_type operator[](int index){return get(index);}\n\n    void set(int\
     \ index, const value_type &value){\n      root = node::get(root, index); root->value\
     \ = value; root->update();\n    }\n\n    void merge_right(splay_tree &right){\n\
     \      root = node::merge(root, right.root); right.root = nullptr;\n    }\n\n\
@@ -138,24 +138,24 @@ data:
     \    return InputTuplesWithIndex<Args ...>(N);\n  }\n}\n#line 8 \"test/aoj/1508/main.splay_tree.test.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nint main(){\n  int n, q; std::cin >> n >> q;\n\
     \n  hl::splay_tree<hl::min_monoid<int>> s(n);\n\n  for(auto [i, a] : hl::input_tuples_with_index<int>(n)){\n\
-    \    s.update(i, {a});\n  }\n\n  for(auto [x, y, z] : hl::input_tuples<int, int,\
+    \    s.set(i, {a});\n  }\n\n  for(auto [x, y, z] : hl::input_tuples<int, int,\
     \ int>(q)){\n    if(x == 0){\n      auto temp = s.get(z).value();\n      s.erase(z);\n\
     \      s.insert(y, {temp});\n    }else if(x == 1){\n      auto ans = s.fold(y,\
-    \ z + 1).value();\n      std::cout << ans << std::endl;\n    }else{\n      s.update(y,\
+    \ z + 1).value();\n      std::cout << ans << std::endl;\n    }else{\n      s.set(y,\
     \ z);\n    }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508\"\
-    \n\n#include <iostream>\n#include \"Mylib/DataStructure/SplayTree/splay_tree.cpp\"\
-    \n#include \"Mylib/AlgebraicStructure/Monoid/min.cpp\"\n#include \"Mylib/IO/input_tuples.cpp\"\
+    \n\n#include <iostream>\n#include \"Mylib/DataStructure/BBST/splay_tree.cpp\"\n\
+    #include \"Mylib/AlgebraicStructure/Monoid/min.cpp\"\n#include \"Mylib/IO/input_tuples.cpp\"\
     \n#include \"Mylib/IO/input_tuples_with_index.cpp\"\n\nnamespace hl = haar_lib;\n\
     \nint main(){\n  int n, q; std::cin >> n >> q;\n\n  hl::splay_tree<hl::min_monoid<int>>\
-    \ s(n);\n\n  for(auto [i, a] : hl::input_tuples_with_index<int>(n)){\n    s.update(i,\
+    \ s(n);\n\n  for(auto [i, a] : hl::input_tuples_with_index<int>(n)){\n    s.set(i,\
     \ {a});\n  }\n\n  for(auto [x, y, z] : hl::input_tuples<int, int, int>(q)){\n\
     \    if(x == 0){\n      auto temp = s.get(z).value();\n      s.erase(z);\n   \
     \   s.insert(y, {temp});\n    }else if(x == 1){\n      auto ans = s.fold(y, z\
-    \ + 1).value();\n      std::cout << ans << std::endl;\n    }else{\n      s.update(y,\
+    \ + 1).value();\n      std::cout << ans << std::endl;\n    }else{\n      s.set(y,\
     \ z);\n    }\n  }\n\n  return 0;\n}\n"
   dependsOn:
-  - Mylib/DataStructure/SplayTree/splay_tree.cpp
+  - Mylib/DataStructure/BBST/splay_tree.cpp
   - Mylib/AlgebraicStructure/Monoid/min.cpp
   - Mylib/IO/input_tuples.cpp
   - Mylib/IO/input_tuple.cpp
@@ -163,7 +163,7 @@ data:
   isVerificationFile: true
   path: test/aoj/1508/main.splay_tree.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/1508/main.splay_tree.test.cpp

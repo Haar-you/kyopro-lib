@@ -24,7 +24,7 @@ data:
     \      data(logN, std::vector<value_type>(1 << logN))\n    {\n      A.resize(1\
     \ << logN);\n      if(logN > 0) std::copy(A.begin(), A.end(), data[0].begin());\n\
     \      build(0, 1 << logN, logN - 1);\n    }\n\n    std::optional<value_type>\
-    \ get(int l, int r) const {\n      if(l == r) return std::nullopt;\n      --r;\n\
+    \ fold(int l, int r) const {\n      if(l == r) return std::nullopt;\n      --r;\n\
     \n      if(l == r) return A[l];\n\n      const int k = 31 - __builtin_clz(l ^\
     \ r);\n      return S(data[k][l], data[k][r]);\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <algorithm>\n#include <cassert>\n\
@@ -42,14 +42,14 @@ data:
     \      data(logN, std::vector<value_type>(1 << logN))\n    {\n      A.resize(1\
     \ << logN);\n      if(logN > 0) std::copy(A.begin(), A.end(), data[0].begin());\n\
     \      build(0, 1 << logN, logN - 1);\n    }\n\n    std::optional<value_type>\
-    \ get(int l, int r) const {\n      if(l == r) return std::nullopt;\n      --r;\n\
+    \ fold(int l, int r) const {\n      if(l == r) return std::nullopt;\n      --r;\n\
     \n      if(l == r) return A[l];\n\n      const int k = 31 - __builtin_clz(l ^\
     \ r);\n      return S(data[k][l], data[k][r]);\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/DataStructure/SparseTable/disjoint_sparse_table.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/DataStructure/SparseTable/disjoint_sparse_table.cpp

@@ -44,8 +44,8 @@ data:
     \      int R = r + hsize;\n\n      while(L < R){\n        if(R & 1) --R, data[R]\
     \ += val;\n        if(L & 1) data[L] += val, ++L;\n        L >>= 1;\n        R\
     \ >>= 1;\n      }\n\n      bottom_up(l + hsize);\n      bottom_up(r + hsize);\n\
-    \    }\n\n    T get(int l, int r) const {\n      return *get(1, 0, hsize, l, r,\
-    \ 0);\n    }\n\n    template <typename U>\n    void init_with_vector(std::vector<U>\
+    \    }\n\n    T fold(int l, int r) const {\n      return *get(1, 0, hsize, l,\
+    \ r, 0);\n    }\n\n    template <typename U>\n    void init_with_vector(std::vector<U>\
     \ &a){\n      for(int i = 0; i < (int)a.size(); ++i){\n        data[hsize + i]\
     \ = a[i];\n      }\n\n      for(int i = hsize - 1; i >= 1; --i){\n        data[i]\
     \ = f(data[i << 1 | 0], data[i << 1 | 1]);\n      }\n\n      for(int i = size\
@@ -81,7 +81,7 @@ data:
     \ - 1);\n\n  auto T = hl::input_vector<int64_t>(N - 1);\n\n  for(int i = 0; i\
     \ < N - 1; ++i){\n    T[i] += 3 * (N - 1 - i);\n  }\n\n  seg.init_with_vector(T);\n\
     \n  int M; std::cin >> M;\n\n  for(auto [L, R, D] : hl::input_tuples<int, int,\
-    \ int>(M)){\n    --L, --R;\n\n    seg.update(L, R + 1, D);\n\n    auto ans = seg.get(0,\
+    \ int>(M)){\n    --L, --R;\n\n    seg.update(L, R + 1, D);\n\n    auto ans = seg.fold(0,\
     \ N - 1);\n    std::cout << ans << std::endl;\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/631\"\n\n#include <iostream>\n\
     #include <vector>\n#include <functional>\n#include \"Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp\"\
@@ -91,7 +91,7 @@ data:
     \ - 1);\n\n  auto T = hl::input_vector<int64_t>(N - 1);\n\n  for(int i = 0; i\
     \ < N - 1; ++i){\n    T[i] += 3 * (N - 1 - i);\n  }\n\n  seg.init_with_vector(T);\n\
     \n  int M; std::cin >> M;\n\n  for(auto [L, R, D] : hl::input_tuples<int, int,\
-    \ int>(M)){\n    --L, --R;\n\n    seg.update(L, R + 1, D);\n\n    auto ans = seg.get(0,\
+    \ int>(M)){\n    --L, --R;\n\n    seg.update(L, R + 1, D);\n\n    auto ans = seg.fold(0,\
     \ N - 1);\n    std::cout << ans << std::endl;\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp
@@ -101,7 +101,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/631/main.starry_sky.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/631/main.starry_sky.test.cpp

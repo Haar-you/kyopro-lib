@@ -10,7 +10,7 @@ data:
   - icon: ':x:'
     path: Mylib/AlgebraicStructure/Monoid/dual.cpp
     title: Dual monoid
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   - icon: ':question:'
@@ -41,59 +41,61 @@ data:
     \   segment_tree(){}\n    segment_tree(int n):\n      depth(n > 1 ? 32 - __builtin_clz(n\
     \ - 1) + 1 : 1),\n      size(1 << depth), hsize(size / 2),\n      data(size, M())\n\
     \    {}\n\n    auto operator[](int i) const {return data[hsize + i];}\n\n    auto\
-    \ get(int x, int y) const {\n      value_type ret_left = M();\n      value_type\
+    \ fold(int x, int y) const {\n      value_type ret_left = M();\n      value_type\
     \ ret_right = M();\n\n      int l = x + hsize, r = y + hsize;\n      while(l <\
     \ r){\n        if(r & 1) ret_right = M(data[--r], ret_right);\n        if(l &\
     \ 1) ret_left = M(ret_left, data[l++]);\n        l >>= 1, r >>= 1;\n      }\n\n\
-    \      return M(ret_left, ret_right);\n    }\n\n    void update(int i, const value_type\
+    \      return M(ret_left, ret_right);\n    }\n\n    void set(int i, const value_type\
     \ &x){\n      i += hsize;\n      data[i] = x;\n      while(i > 1) i >>= 1, data[i]\
+    \ = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n    void update(int i, const\
+    \ value_type &x){\n      i += hsize;\n      data[i] = M(data[i], x);\n      while(i\
+    \ > 1) i >>= 1, data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n  \
+    \  template <typename T>\n    void init_with_vector(const std::vector<T> &val){\n\
+    \      data.assign(size, M());\n      for(int i = 0; i < (int)val.size(); ++i)\
+    \ data[hsize + i] = val[i];\n      for(int i = hsize - 1; i >= 1; --i) data[i]\
     \ = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n    template <typename T>\n\
-    \    void init_with_vector(const std::vector<T> &val){\n      data.assign(size,\
-    \ M());\n      for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];\n\
-    \      for(int i = hsize - 1; i >= 1; --i) data[i] = M(data[i << 1 | 0], data[i\
-    \ << 1 | 1]);\n    }\n\n    template <typename T>\n    void init(const T &val){\n\
-    \      init_with_vector(std::vector<value_type>(hsize, val));\n    }\n\n  private:\n\
-    \    template <bool Lower, typename F>\n    int bound(const int l, const int r,\
-    \ value_type x, F f) const {\n      std::vector<int> pl, pr;\n      int L = l\
-    \ + hsize;\n      int R = r + hsize;\n      while(L < R){\n        if(R & 1) pr.push_back(--R);\n\
-    \        if(L & 1) pl.push_back(L++);\n        L >>= 1, R >>= 1;\n      }\n\n\
-    \      std::reverse(pr.begin(), pr.end());\n      pl.insert(pl.end(), pr.begin(),\
-    \ pr.end());\n\n      value_type a = M();\n\n      for(int i : pl){\n        auto\
-    \ b = M(a, data[i]);\n\n        if((Lower and not f(b, x)) or (not Lower and f(x,\
-    \ b))){\n          while(i < hsize){\n            if(auto c = M(a, data[i << 1\
-    \ | 0]); (Lower and not f(c, x)) or (not Lower and f(x, c))){\n              i\
-    \ = i << 1 | 0;\n            }else{\n              a = c;\n              i = i\
-    \ << 1 | 1;\n            }\n          }\n\n          return i - hsize;\n     \
-    \   }\n\n        a = b;\n      }\n\n      return r;\n    }\n\n  public:\n    template\
-    \ <typename F = std::less<value_type>>\n    int lower_bound(int l, int r, value_type\
-    \ x, F f = F()) const {\n      return bound<true>(l, r, x, f);\n    }\n\n    template\
-    \ <typename F = std::less<value_type>>\n    int upper_bound(int l, int r, value_type\
-    \ x, F f = F()) const {\n      return bound<false>(l, r, x, f);\n    }\n  };\n\
-    }\n#line 3 \"Mylib/AlgebraicStructure/Monoid/affine.cpp\"\n\nnamespace haar_lib\
-    \ {\n  template <typename T>\n  struct affine_monoid {\n    using value_type =\
-    \ std::pair<T, T>;\n    value_type operator()() const {return std::make_pair(1,\
-    \ 0);}\n    value_type operator()(const value_type &a, const value_type &b) const\
-    \ {\n      return std::make_pair(a.first * b.first, a.first * b.second + a.second);\n\
-    \    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/dual.cpp\"\n\nnamespace\
-    \ haar_lib {\n  template <typename Monoid>\n  struct dual_monoid {\n    using\
-    \ value_type = typename Monoid::value_type;\n    const static Monoid M;\n    value_type\
-    \ operator()() const {return M();}\n    value_type operator()(const value_type\
-    \ &a, const value_type &b) const {return M(b, a);}\n  };\n}\n#line 4 \"Mylib/Number/Mint/mint.cpp\"\
-    \n\nnamespace haar_lib {\n  template <int32_t M>\n  class modint {\n    uint32_t\
-    \ val;\n\n  public:\n    constexpr static auto mod(){return M;}\n\n    constexpr\
-    \ modint(): val(0){}\n    constexpr modint(int64_t n){\n      if(n >= M) val =\
-    \ n % M;\n      else if(n < 0) val = n % M + M;\n      else val = n;\n    }\n\n\
-    \    constexpr auto& operator=(const modint &a){val = a.val; return *this;}\n\
-    \    constexpr auto& operator+=(const modint &a){\n      if(val + a.val >= M)\
-    \ val = (uint64_t)val + a.val - M;\n      else val += a.val;\n      return *this;\n\
-    \    }\n    constexpr auto& operator-=(const modint &a){\n      if(val < a.val)\
-    \ val += M;\n      val -= a.val;\n      return *this;\n    }\n    constexpr auto&\
-    \ operator*=(const modint &a){\n      val = (uint64_t)val * a.val % M;\n     \
-    \ return *this;\n    }\n    constexpr auto& operator/=(const modint &a){\n   \
-    \   val = (uint64_t)val * a.inv().val % M;\n      return *this;\n    }\n\n   \
-    \ constexpr auto operator+(const modint &a) const {return modint(*this) += a;}\n\
-    \    constexpr auto operator-(const modint &a) const {return modint(*this) -=\
-    \ a;}\n    constexpr auto operator*(const modint &a) const {return modint(*this)\
+    \    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
+    \ val));\n    }\n\n  private:\n    template <bool Lower, typename F>\n    int\
+    \ bound(const int l, const int r, value_type x, F f) const {\n      std::vector<int>\
+    \ pl, pr;\n      int L = l + hsize;\n      int R = r + hsize;\n      while(L <\
+    \ R){\n        if(R & 1) pr.push_back(--R);\n        if(L & 1) pl.push_back(L++);\n\
+    \        L >>= 1, R >>= 1;\n      }\n\n      std::reverse(pr.begin(), pr.end());\n\
+    \      pl.insert(pl.end(), pr.begin(), pr.end());\n\n      value_type a = M();\n\
+    \n      for(int i : pl){\n        auto b = M(a, data[i]);\n\n        if((Lower\
+    \ and not f(b, x)) or (not Lower and f(x, b))){\n          while(i < hsize){\n\
+    \            if(auto c = M(a, data[i << 1 | 0]); (Lower and not f(c, x)) or (not\
+    \ Lower and f(x, c))){\n              i = i << 1 | 0;\n            }else{\n  \
+    \            a = c;\n              i = i << 1 | 1;\n            }\n          }\n\
+    \n          return i - hsize;\n        }\n\n        a = b;\n      }\n\n      return\
+    \ r;\n    }\n\n  public:\n    template <typename F = std::less<value_type>>\n\
+    \    int lower_bound(int l, int r, value_type x, F f = F()) const {\n      return\
+    \ bound<true>(l, r, x, f);\n    }\n\n    template <typename F = std::less<value_type>>\n\
+    \    int upper_bound(int l, int r, value_type x, F f = F()) const {\n      return\
+    \ bound<false>(l, r, x, f);\n    }\n  };\n}\n#line 3 \"Mylib/AlgebraicStructure/Monoid/affine.cpp\"\
+    \n\nnamespace haar_lib {\n  template <typename T>\n  struct affine_monoid {\n\
+    \    using value_type = std::pair<T, T>;\n    value_type operator()() const {return\
+    \ std::make_pair(1, 0);}\n    value_type operator()(const value_type &a, const\
+    \ value_type &b) const {\n      return std::make_pair(a.first * b.first, a.first\
+    \ * b.second + a.second);\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/dual.cpp\"\
+    \n\nnamespace haar_lib {\n  template <typename Monoid>\n  struct dual_monoid {\n\
+    \    using value_type = typename Monoid::value_type;\n    const static Monoid\
+    \ M;\n    value_type operator()() const {return M();}\n    value_type operator()(const\
+    \ value_type &a, const value_type &b) const {return M(b, a);}\n  };\n}\n#line\
+    \ 4 \"Mylib/Number/Mint/mint.cpp\"\n\nnamespace haar_lib {\n  template <int32_t\
+    \ M>\n  class modint {\n    uint32_t val;\n\n  public:\n    constexpr static auto\
+    \ mod(){return M;}\n\n    constexpr modint(): val(0){}\n    constexpr modint(int64_t\
+    \ n){\n      if(n >= M) val = n % M;\n      else if(n < 0) val = n % M + M;\n\
+    \      else val = n;\n    }\n\n    constexpr auto& operator=(const modint &a){val\
+    \ = a.val; return *this;}\n    constexpr auto& operator+=(const modint &a){\n\
+    \      if(val + a.val >= M) val = (uint64_t)val + a.val - M;\n      else val +=\
+    \ a.val;\n      return *this;\n    }\n    constexpr auto& operator-=(const modint\
+    \ &a){\n      if(val < a.val) val += M;\n      val -= a.val;\n      return *this;\n\
+    \    }\n    constexpr auto& operator*=(const modint &a){\n      val = (uint64_t)val\
+    \ * a.val % M;\n      return *this;\n    }\n    constexpr auto& operator/=(const\
+    \ modint &a){\n      val = (uint64_t)val * a.inv().val % M;\n      return *this;\n\
+    \    }\n\n    constexpr auto operator+(const modint &a) const {return modint(*this)\
+    \ += a;}\n    constexpr auto operator-(const modint &a) const {return modint(*this)\
+    \ -= a;}\n    constexpr auto operator*(const modint &a) const {return modint(*this)\
     \ *= a;}\n    constexpr auto operator/(const modint &a) const {return modint(*this)\
     \ /= a;}\n\n    constexpr bool operator==(const modint &a) const {return val ==\
     \ a.val;}\n    constexpr bool operator!=(const modint &a) const {return val !=\
@@ -156,11 +158,11 @@ data:
     \n\nnamespace hl = haar_lib;\n\nusing mint = hl::modint<998244353>;\nusing M =\
     \ hl::dual_monoid<hl::affine_monoid<mint>>;\n\nint main(){\n  int N, Q; std::cin\
     \ >> N >> Q;\n\n  auto seg = hl::segment_tree<M>(N);\n\n  for(auto [i, a, b] :\
-    \ hl::input_tuples_with_index<int, int>(N)){\n    seg.update(i, {a, b});\n  }\n\
-    \n  for(auto [t] : hl::input_tuples<int>(Q)){\n    if(t == 0){\n      int p, c,\
-    \ d; std::cin >> p >> c >> d;\n      seg.update(p, {c, d});\n    }else{\n    \
-    \  int l, r, x; std::cin >> l >> r >> x;\n      auto [a, b] = seg.get(l, r);\n\
-    \      std::cout << a * x + b << std::endl;\n    }\n  }\n\n  return 0;\n}\n"
+    \ hl::input_tuples_with_index<int, int>(N)){\n    seg.set(i, {a, b});\n  }\n\n\
+    \  for(auto [t] : hl::input_tuples<int>(Q)){\n    if(t == 0){\n      int p, c,\
+    \ d; std::cin >> p >> c >> d;\n      seg.set(p, {c, d});\n    }else{\n      int\
+    \ l, r, x; std::cin >> l >> r >> x;\n      auto [a, b] = seg.fold(l, r);\n   \
+    \   std::cout << a * x + b << std::endl;\n    }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n\n#include <iostream>\n#include <utility>\n#include \"Mylib/DataStructure/SegmentTree/segment_tree.cpp\"\
     \n#include \"Mylib/AlgebraicStructure/Monoid/affine.cpp\"\n#include \"Mylib/AlgebraicStructure/Monoid/dual.cpp\"\
@@ -168,10 +170,10 @@ data:
     \n#include \"Mylib/IO/input_tuples_with_index.cpp\"\n\nnamespace hl = haar_lib;\n\
     \nusing mint = hl::modint<998244353>;\nusing M = hl::dual_monoid<hl::affine_monoid<mint>>;\n\
     \nint main(){\n  int N, Q; std::cin >> N >> Q;\n\n  auto seg = hl::segment_tree<M>(N);\n\
-    \n  for(auto [i, a, b] : hl::input_tuples_with_index<int, int>(N)){\n    seg.update(i,\
+    \n  for(auto [i, a, b] : hl::input_tuples_with_index<int, int>(N)){\n    seg.set(i,\
     \ {a, b});\n  }\n\n  for(auto [t] : hl::input_tuples<int>(Q)){\n    if(t == 0){\n\
-    \      int p, c, d; std::cin >> p >> c >> d;\n      seg.update(p, {c, d});\n \
-    \   }else{\n      int l, r, x; std::cin >> l >> r >> x;\n      auto [a, b] = seg.get(l,\
+    \      int p, c, d; std::cin >> p >> c >> d;\n      seg.set(p, {c, d});\n    }else{\n\
+    \      int l, r, x; std::cin >> l >> r >> x;\n      auto [a, b] = seg.fold(l,\
     \ r);\n      std::cout << a * x + b << std::endl;\n    }\n  }\n\n  return 0;\n\
     }\n"
   dependsOn:
@@ -185,7 +187,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/point_set_range_composite/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-17 22:58:14+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/point_set_range_composite/main.test.cpp

@@ -78,69 +78,71 @@ data:
     \ k){\n      node::expose(nodes[k]);\n    }\n\n    void cut(int i, int j){\n \
     \     node::cut(nodes[i], nodes[j]);\n    }\n\n    void link(int i, int j){\n\
     \      node::link(nodes[i], nodes[j]);\n    }\n\n    void evert(int k){\n    \
-    \  node::evert(nodes[k]);\n    }\n\n    void update(int k, value_type x){\n  \
-    \    node::evert(nodes[k]);\n      nodes[k]->value = x;\n      nodes[k]->push_down();\n\
-    \    }\n\n    value_type at(int k){\n      return nodes[k]->value;\n    }\n\n\
-    \    value_type get(int i, int j){\n      node::evert(nodes[i]);\n      node::expose(nodes[j]);\n\
-    \      return nodes[j]->result;\n    }\n  };\n}\n#line 4 \"Mylib/IO/input_tuples.cpp\"\
-    \n#include <tuple>\n#include <utility>\n#include <initializer_list>\n#line 6 \"\
-    Mylib/IO/input_tuple.cpp\"\n\nnamespace haar_lib {\n  template <typename T, size_t\
-    \ ... I>\n  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I\
-    \ ...>){\n    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)\
-    \ ...};\n  }\n\n  template <typename T, typename U>\n  std::istream& operator>>(std::istream\
-    \ &s, std::pair<T, U> &value){\n    s >> value.first >> value.second;\n    return\
-    \ s;\n  }\n\n  template <typename ... Args>\n  std::istream& operator>>(std::istream\
-    \ &s, std::tuple<Args ...> &value){\n    input_tuple_helper(s, value, std::make_index_sequence<sizeof\
-    \ ... (Args)>());\n    return s;\n  }\n}\n#line 8 \"Mylib/IO/input_tuples.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename ... Args>\n  class InputTuples\
-    \ {\n    struct iter {\n      using value_type = std::tuple<Args ...>;\n     \
-    \ value_type value;\n      bool fetched = false;\n      int N, c = 0;\n\n    \
-    \  value_type operator*(){\n        if(not fetched){\n          std::cin >> value;\n\
+    \  node::evert(nodes[k]);\n    }\n\n    void set(int k, value_type x){\n     \
+    \ node::evert(nodes[k]);\n      nodes[k]->value = x;\n      nodes[k]->push_down();\n\
+    \    }\n\n    void update(int k, value_type x){\n      set(k, M(get(k), x));\n\
+    \    }\n\n    value_type get(int k) const {\n      return nodes[k]->value;\n \
+    \   }\n\n    value_type fold(int i, int j){\n      node::evert(nodes[i]);\n  \
+    \    node::expose(nodes[j]);\n      return nodes[j]->result;\n    }\n  };\n}\n\
+    #line 4 \"Mylib/IO/input_tuples.cpp\"\n#include <tuple>\n#include <utility>\n\
+    #include <initializer_list>\n#line 6 \"Mylib/IO/input_tuple.cpp\"\n\nnamespace\
+    \ haar_lib {\n  template <typename T, size_t ... I>\n  static void input_tuple_helper(std::istream\
+    \ &s, T &val, std::index_sequence<I ...>){\n    (void)std::initializer_list<int>{(void(s\
+    \ >> std::get<I>(val)), 0) ...};\n  }\n\n  template <typename T, typename U>\n\
+    \  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){\n    s >>\
+    \ value.first >> value.second;\n    return s;\n  }\n\n  template <typename ...\
+    \ Args>\n  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){\n\
+    \    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());\n\
+    \    return s;\n  }\n}\n#line 8 \"Mylib/IO/input_tuples.cpp\"\n\nnamespace haar_lib\
+    \ {\n  template <typename ... Args>\n  class InputTuples {\n    struct iter {\n\
+    \      using value_type = std::tuple<Args ...>;\n      value_type value;\n   \
+    \   bool fetched = false;\n      int N, c = 0;\n\n      value_type operator*(){\n\
+    \        if(not fetched){\n          std::cin >> value;\n        }\n        return\
+    \ value;\n      }\n\n      void operator++(){\n        ++c;\n        fetched =\
+    \ false;\n      }\n\n      bool operator!=(iter &) const {\n        return c <\
+    \ N;\n      }\n\n      iter(int N): N(N){}\n    };\n\n    int N;\n\n  public:\n\
+    \    InputTuples(int N): N(N){}\n\n    iter begin() const {return iter(N);}\n\
+    \    iter end() const {return iter(N);}\n  };\n\n  template <typename ... Args>\n\
+    \  auto input_tuples(int N){\n    return InputTuples<Args ...>(N);\n  }\n}\n#line\
+    \ 8 \"Mylib/IO/input_tuples_with_index.cpp\"\n\nnamespace haar_lib {\n  template\
+    \ <typename ... Args>\n  class InputTuplesWithIndex {\n    struct iter {\n   \
+    \   using value_type = std::tuple<int, Args ...>;\n      value_type value;\n \
+    \     bool fetched = false;\n      int N;\n      int c = 0;\n\n      value_type\
+    \ operator*(){\n        if(not fetched){\n          std::tuple<Args ...> temp;\
+    \ std::cin >> temp;\n          value = std::tuple_cat(std::make_tuple(c), temp);\n\
     \        }\n        return value;\n      }\n\n      void operator++(){\n     \
     \   ++c;\n        fetched = false;\n      }\n\n      bool operator!=(iter &) const\
     \ {\n        return c < N;\n      }\n\n      iter(int N): N(N){}\n    };\n\n \
-    \   int N;\n\n  public:\n    InputTuples(int N): N(N){}\n\n    iter begin() const\
-    \ {return iter(N);}\n    iter end() const {return iter(N);}\n  };\n\n  template\
-    \ <typename ... Args>\n  auto input_tuples(int N){\n    return InputTuples<Args\
-    \ ...>(N);\n  }\n}\n#line 8 \"Mylib/IO/input_tuples_with_index.cpp\"\n\nnamespace\
-    \ haar_lib {\n  template <typename ... Args>\n  class InputTuplesWithIndex {\n\
-    \    struct iter {\n      using value_type = std::tuple<int, Args ...>;\n    \
-    \  value_type value;\n      bool fetched = false;\n      int N;\n      int c =\
-    \ 0;\n\n      value_type operator*(){\n        if(not fetched){\n          std::tuple<Args\
-    \ ...> temp; std::cin >> temp;\n          value = std::tuple_cat(std::make_tuple(c),\
-    \ temp);\n        }\n        return value;\n      }\n\n      void operator++(){\n\
-    \        ++c;\n        fetched = false;\n      }\n\n      bool operator!=(iter\
-    \ &) const {\n        return c < N;\n      }\n\n      iter(int N): N(N){}\n  \
-    \  };\n\n    int N;\n\n  public:\n    InputTuplesWithIndex(int N): N(N){}\n\n\
-    \    iter begin() const {return iter(N);}\n    iter end() const {return iter(N);}\n\
-    \  };\n\n  template <typename ... Args>\n  auto input_tuples_with_index(int N){\n\
-    \    return InputTuplesWithIndex<Args ...>(N);\n  }\n}\n#line 8 \"test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp\"\
+    \   int N;\n\n  public:\n    InputTuplesWithIndex(int N): N(N){}\n\n    iter begin()\
+    \ const {return iter(N);}\n    iter end() const {return iter(N);}\n  };\n\n  template\
+    \ <typename ... Args>\n  auto input_tuples_with_index(int N){\n    return InputTuplesWithIndex<Args\
+    \ ...>(N);\n  }\n}\n#line 8 \"test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  int N, Q; std::cin >> N >> Q;\n\n  hl::link_cut_tree<hl::sum_monoid<int64_t>>\
     \ lct(N);\n\n  for(auto [i, a] : hl::input_tuples_with_index<int64_t>(N)){\n \
-    \   lct.update(i, a);\n  }\n\n  for(auto [u, v] : hl::input_tuples<int, int>(N\
-    \ - 1)){\n    lct.link(u, v);\n  }\n\n  for(auto [type] : hl::input_tuples<int>(Q)){\n\
+    \   lct.set(i, a);\n  }\n\n  for(auto [u, v] : hl::input_tuples<int, int>(N -\
+    \ 1)){\n    lct.link(u, v);\n  }\n\n  for(auto [type] : hl::input_tuples<int>(Q)){\n\
     \    switch(type){\n    case 0: {\n      int u, v, w, x; std::cin >> u >> v >>\
     \ w >> x;\n      lct.cut(u, v);\n      lct.link(w, x);\n      break;\n    }\n\
-    \    case 1: {\n      int p, x; std::cin >> p >> x;\n      lct.update(p, lct.at(p)\
-    \ + x);\n      break;\n    }\n    case 2: {\n      int u, v; std::cin >> u >>\
-    \ v;\n      auto ans = lct.get(u, v);\n      std::cout << ans << std::endl;\n\
-    \      break;\n    }\n    }\n  }\n\n  return 0;\n}\n"
+    \    case 1: {\n      int p, x; std::cin >> p >> x;\n      lct.update(p, x);\n\
+    \      break;\n    }\n    case 2: {\n      int u, v; std::cin >> u >> v;\n   \
+    \   auto ans = lct.fold(u, v);\n      std::cout << ans << std::endl;\n      break;\n\
+    \    }\n    }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_path_sum\"\
     \n\n#include <iostream>\n#include \"Mylib/AlgebraicStructure/Monoid/sum.cpp\"\n\
     #include \"Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp\"\n#include \"Mylib/IO/input_tuples.cpp\"\
     \n#include \"Mylib/IO/input_tuples_with_index.cpp\"\n\nnamespace hl = haar_lib;\n\
     \nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int\
     \ N, Q; std::cin >> N >> Q;\n\n  hl::link_cut_tree<hl::sum_monoid<int64_t>> lct(N);\n\
-    \n  for(auto [i, a] : hl::input_tuples_with_index<int64_t>(N)){\n    lct.update(i,\
+    \n  for(auto [i, a] : hl::input_tuples_with_index<int64_t>(N)){\n    lct.set(i,\
     \ a);\n  }\n\n  for(auto [u, v] : hl::input_tuples<int, int>(N - 1)){\n    lct.link(u,\
     \ v);\n  }\n\n  for(auto [type] : hl::input_tuples<int>(Q)){\n    switch(type){\n\
     \    case 0: {\n      int u, v, w, x; std::cin >> u >> v >> w >> x;\n      lct.cut(u,\
     \ v);\n      lct.link(w, x);\n      break;\n    }\n    case 1: {\n      int p,\
-    \ x; std::cin >> p >> x;\n      lct.update(p, lct.at(p) + x);\n      break;\n\
-    \    }\n    case 2: {\n      int u, v; std::cin >> u >> v;\n      auto ans = lct.get(u,\
-    \ v);\n      std::cout << ans << std::endl;\n      break;\n    }\n    }\n  }\n\
-    \n  return 0;\n}\n"
+    \ x; std::cin >> p >> x;\n      lct.update(p, x);\n      break;\n    }\n    case\
+    \ 2: {\n      int u, v; std::cin >> u >> v;\n      auto ans = lct.fold(u, v);\n\
+    \      std::cout << ans << std::endl;\n      break;\n    }\n    }\n  }\n\n  return\
+    \ 0;\n}\n"
   dependsOn:
   - Mylib/AlgebraicStructure/Monoid/sum.cpp
   - Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp
@@ -150,7 +152,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp

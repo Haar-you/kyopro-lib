@@ -39,18 +39,20 @@ data:
     \        else add_undirected(u, v, w, i);\n      }\n    }\n  };\n\n  template\
     \ <typename T>\n  using tree = graph<T>;\n}\n#line 5 \"Mylib/Graph/GraphUtils/strongly_connected_components.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  auto strongly_connected_components(const\
-    \ graph<T> &g){\n    const int n = g.size();\n\n    std::vector<bool> visit(n);\n\
-    \    std::vector<int> check(n);\n    std::vector<int> result(n, -1);\n\n    auto\
-    \ dfs =\n      [&](auto &f, int cur) -> void {\n        visit[cur] = true;\n \
-    \       for(const auto &e : g[cur]){\n          if(not visit[e.to]) f(f, e.to);\n\
-    \        }\n        check.push_back(cur);\n      };\n\n    for(int i = 0; i <\
-    \ n; ++i) if(not visit[i]) dfs(dfs, i);\n\n    std::reverse(check.begin(), check.end());\n\
-    \n    graph<T> rg(n);\n\n    auto rdfs =\n      [&](auto &f, int cur, int i) ->\
-    \ void {\n        result[cur] = i;\n        for(const auto &e : rg[cur]){\n  \
-    \        if(result[e.to] == -1) f(f, e.to, i);\n        }\n      };\n\n    for(int\
-    \ i = 0; i < n; ++i) for(const auto &e : g[i]) rg[e.to].emplace_back(e.to, e.from,\
-    \ e.cost);\n\n    int i = 0;\n    for(auto c : check) if(result[c] == -1) rdfs(rdfs,\
-    \ c, i), ++i;\n\n    return std::make_pair(result, i);\n  }\n}\n#line 6 \"Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp\"\
+    \ graph<T> &g){\n    const int n = g.size();\n\n    std::vector<int> ret(n), low(n,\
+    \ -1), ord(n, -1), S;\n    std::vector<bool> check(n);\n    S.reserve(n);\n  \
+    \  int t = 0;\n    int k = 0;\n\n    auto dfs =\n      [&](auto &dfs, int cur)\
+    \ -> void {\n        low[cur] = ord[cur] = t++;\n        S.push_back(cur);\n \
+    \       check[cur] = true;\n\n        for(auto &e : g[cur]){\n          if(ord[e.to]\
+    \ == -1){\n            dfs(dfs, e.to);\n            low[cur] = std::min(low[cur],\
+    \ low[e.to]);\n          }else if(check[e.to]){\n            low[cur] = std::min(low[cur],\
+    \ low[e.to]);\n          }\n        }\n\n        if(low[cur] == ord[cur]){\n \
+    \         while(true){\n            int u = S.back(); S.pop_back();\n        \
+    \    check[u] = false;\n            ret[u] = k;\n            if(cur == u) break;\n\
+    \          }\n          ++k;\n        }\n      };\n\n    for(int i = 0; i < n;\
+    \ ++i){\n      if(ord[i] == -1){\n        t = 0;\n        dfs(dfs, i);\n     \
+    \ }\n    }\n\n    for(auto &x : ret) x = k - 1 - x;\n\n    return std::make_pair(ret,\
+    \ k);\n  }\n}\n#line 6 \"Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp\"\
     \n\nnamespace haar_lib {\n  namespace chu_liu_edmonds_impl {\n    template <typename\
     \ T>\n    graph<T> rec(graph<T> g, int r){\n      const int N = g.size();\n\n\
     \      graph<T> in_edges(N);\n\n      for(int i = 0; i < N; ++i){\n        if(i\
@@ -127,7 +129,7 @@ data:
   isVerificationFile: false
   path: Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-21 06:13:54+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/GRL_2_B/main.test.cpp
@@ -138,7 +140,7 @@ title: Chu-Liu/Edmonds algorithm
 
 ## Operations
 
-- `solve(g, r)`
+- `chu_liu_edmonds(g, r)`
 	- `r`を根とする`g`の最小有向全域木の辺集合を返す。
 	- Time complexity $O(VE)$
 

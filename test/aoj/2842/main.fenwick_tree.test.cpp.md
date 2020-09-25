@@ -34,19 +34,18 @@ data:
     \ {\n    using value_type = typename AbelianGroup::value_type;\n    const static\
     \ AbelianGroup G;\n\n    int w, h;\n    std::vector<std::vector<value_type>> data;\n\
     \n  private:\n    value_type get_w(int i, int y) const {\n      value_type ret\
-    \ = G();\n      i += 1;\n      while(i > 0){\n        ret = G(ret, data[i][y]);\n\
-    \        i -= i & (-i);\n      }\n      return ret;\n    }\n\n    value_type get_w(int\
-    \ l, int r, int y) const {\n      return G(get_w(r - 1, y), G.inv(get_w(l - 1,\
-    \ y)));\n    }\n\n    value_type get(int x1, int x2, int y) const {\n      value_type\
-    \ ret = G();\n      y += 1;\n      while(y > 0){\n        ret = G(ret, get_w(x1,\
-    \ x2, y));\n        y -= y & (-y);\n      }\n      return ret;\n    }\n\n  public:\n\
-    \    fenwick_tree_2d(int width, int height){\n      w = width;\n      h = height;\n\
-    \      data = std::vector<std::vector<value_type>>(w + 1, std::vector<value_type>(h\
-    \ + 1));\n    }\n\n    value_type get(std::pair<int, int> p1, std::pair<int, int>\
-    \ p2) const { // [(x1, y1), (x2, y2))\n      const auto [x1, y1] = p1;\n     \
-    \ const auto [x2, y2] = p2;\n      return G(get(x1, x2, y2 - 1), G.inv(get(x1,\
-    \ x2, y1 - 1)));\n    }\n\n    value_type operator[](std::pair<int, int> p) const\
-    \ {\n      const auto [x, y] = p;\n      return get({x, y}, {x + 1, y + 1});\n\
+    \ = G();\n      while(i > 0){\n        ret = G(ret, data[i][y]);\n        i -=\
+    \ i & (-i);\n      }\n      return ret;\n    }\n\n    value_type get_w(int l,\
+    \ int r, int y) const {\n      return G(get_w(r, y), G.inv(get_w(l, y)));\n  \
+    \  }\n\n    value_type get(int x1, int x2, int y) const {\n      value_type ret\
+    \ = G();\n      while(y > 0){\n        ret = G(ret, get_w(x1, x2, y));\n     \
+    \   y -= y & (-y);\n      }\n      return ret;\n    }\n\n  public:\n    fenwick_tree_2d(int\
+    \ width, int height){\n      w = width;\n      h = height;\n      data = std::vector<std::vector<value_type>>(w\
+    \ + 1, std::vector<value_type>(h + 1));\n    }\n\n    value_type fold(std::pair<int,\
+    \ int> p1, std::pair<int, int> p2) const {\n      const auto [x1, y1] = p1;\n\
+    \      const auto [x2, y2] = p2;\n      return G(get(x1, x2, y2), G.inv(get(x1,\
+    \ x2, y1)));\n    }\n\n    value_type operator[](std::pair<int, int> p) const\
+    \ {\n      const auto [x, y] = p;\n      return fold({x, y}, {x + 1, y + 1});\n\
     \    }\n\n    void update(std::pair<int, int> p, const value_type &val){\n   \
     \   auto [x, y] = p;\n      x += 1;\n      y += 1;\n\n      for(int i = x; i <=\
     \ w; i += i & (-i)){\n        for(int j = y; j <= h; j += j & (-j)){\n       \
@@ -82,9 +81,9 @@ data:
     \    seg2.update({h, w}, 1);\n      q.emplace(h, w, t);\n    }else if(c == 1){\n\
     \      int h, w; std::cin >> h >> w;\n      --h, --w;\n\n      if(seg1[{h, w}]\
     \ == 1) seg1.update({h, w}, -1);\n    }else{\n      int h1, w1, h2, w2; std::cin\
-    \ >> h1 >> w1 >> h2 >> w2;\n      --h1, --w1;\n\n      std::cout << seg1.get({h1,\
-    \ w1}, {h2, w2}) << \" \" << seg2.get({h1, w1}, {h2, w2}) << std::endl;\n    }\n\
-    \  }\n\n  return 0;\n}\n"
+    \ >> h1 >> w1 >> h2 >> w2;\n      --h1, --w1;\n\n      std::cout << seg1.fold({h1,\
+    \ w1}, {h2, w2}) << \" \" << seg2.fold({h1, w1}, {h2, w2}) << std::endl;\n   \
+    \ }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2842\"\
     \n\n#include <iostream>\n#include <queue>\n#include <tuple>\n#include \"Mylib/AlgebraicStructure/Group/sum.cpp\"\
     \n#include \"Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp\"\n#include \"\
@@ -100,8 +99,9 @@ data:
     \ w}, 1);\n      q.emplace(h, w, t);\n    }else if(c == 1){\n      int h, w; std::cin\
     \ >> h >> w;\n      --h, --w;\n\n      if(seg1[{h, w}] == 1) seg1.update({h, w},\
     \ -1);\n    }else{\n      int h1, w1, h2, w2; std::cin >> h1 >> w1 >> h2 >> w2;\n\
-    \      --h1, --w1;\n\n      std::cout << seg1.get({h1, w1}, {h2, w2}) << \" \"\
-    \ << seg2.get({h1, w1}, {h2, w2}) << std::endl;\n    }\n  }\n\n  return 0;\n}\n"
+    \      --h1, --w1;\n\n      std::cout << seg1.fold({h1, w1}, {h2, w2}) << \" \"\
+    \ << seg2.fold({h1, w1}, {h2, w2}) << std::endl;\n    }\n  }\n\n  return 0;\n\
+    }\n"
   dependsOn:
   - Mylib/AlgebraicStructure/Group/sum.cpp
   - Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp
@@ -110,7 +110,7 @@ data:
   isVerificationFile: true
   path: test/aoj/2842/main.fenwick_tree.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-26 08:06:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/2842/main.fenwick_tree.test.cpp

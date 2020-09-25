@@ -74,8 +74,8 @@ data:
     \n  std::vector<std::vector<int64_t>> s(NUM);\n  std::vector<std::vector<int64_t>>\
     \ left(NUM), right(NUM);\n  std::vector<int64_t> sum(NUM);\n\n  auto f =\n   \
     \ [&](int i, int l, int r){\n      const int size = r - l;\n\n      std::vector<int64_t>\
-    \ d(size);\n      for(int j = 0; j < size; ++j) d[j] = A[l+j] - B[l+j];\n\n  \
-    \    std::vector<int> ord(size);\n      std::iota(ord.begin(), ord.end(), 0);\n\
+    \ d(size);\n      for(int j = 0; j < size; ++j) d[j] = A[l + j] - B[l + j];\n\n\
+    \      std::vector<int> ord(size);\n      std::iota(ord.begin(), ord.end(), 0);\n\
     \      std::sort(ord.begin(), ord.end(), [&](int i_, int j_){return d[i_] < d[j_];});\n\
     \n      s[i].assign(size, 0);\n\n      left[i].assign(size, 0);\n      right[i].assign(size,\
     \ 0);\n\n      for(int j = 0; j < size; ++j){\n        s[i][j] = d[ord[j]];\n\
@@ -107,8 +107,8 @@ data:
     \n  std::vector<std::vector<int64_t>> s(NUM);\n  std::vector<std::vector<int64_t>>\
     \ left(NUM), right(NUM);\n  std::vector<int64_t> sum(NUM);\n\n  auto f =\n   \
     \ [&](int i, int l, int r){\n      const int size = r - l;\n\n      std::vector<int64_t>\
-    \ d(size);\n      for(int j = 0; j < size; ++j) d[j] = A[l+j] - B[l+j];\n\n  \
-    \    std::vector<int> ord(size);\n      std::iota(ord.begin(), ord.end(), 0);\n\
+    \ d(size);\n      for(int j = 0; j < size; ++j) d[j] = A[l + j] - B[l + j];\n\n\
+    \      std::vector<int> ord(size);\n      std::iota(ord.begin(), ord.end(), 0);\n\
     \      std::sort(ord.begin(), ord.end(), [&](int i_, int j_){return d[i_] < d[j_];});\n\
     \n      s[i].assign(size, 0);\n\n      left[i].assign(size, 0);\n      right[i].assign(size,\
     \ 0);\n\n      for(int j = 0; j < size; ++j){\n        s[i][j] = d[ord[j]];\n\
@@ -138,7 +138,7 @@ data:
   isVerificationFile: true
   path: test/aoj/3118/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-18 11:39:15+09:00'
+  timestamp: '2020-09-20 16:28:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/3118/main.test.cpp

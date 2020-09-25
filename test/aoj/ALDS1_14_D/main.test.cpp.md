@@ -7,13 +7,13 @@ data:
   - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Mylib/IO/input_tuple.cpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/String/suffix_array.cpp
     title: Suffix array
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_D
@@ -121,7 +121,7 @@ data:
   path: test/aoj/ALDS1_14_D/main.test.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/ALDS1_14_D/main.test.cpp
 layout: document

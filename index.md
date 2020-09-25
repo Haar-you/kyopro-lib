@@ -57,15 +57,15 @@ data:
       path: Mylib/AlgebraicStructure/Monoid/min.cpp
       title: Min monoid
     - icon: ':warning:'
-      path: Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp
-      title: Mylib/AlgebraicStructure/Monoid/monoid_utils.cpp
+      path: Mylib/AlgebraicStructure/Monoid/min_max.cpp
+      title: Min-Max monoid
     - icon: ':warning:'
       path: Mylib/AlgebraicStructure/Monoid/ordering.cpp
       title: Ordering monoid
     - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/Monoid/pair.cpp
       title: Pair monoid
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/Monoid/product.cpp
       title: Product monoid
     - icon: ':x:'
@@ -118,6 +118,9 @@ data:
     - icon: ':question:'
       path: Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp
       title: Range add / Range sum
+    - icon: ':warning:'
+      path: Mylib/AlgebraicStructure/MonoidAction/affine_min_max.cpp
+      title: Range affine / Range min-max
     - icon: ':x:'
       path: Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp
       title: Range affine / Range sum
@@ -144,6 +147,11 @@ data:
     - icon: ':warning:'
       path: Mylib/AlgebraicStructure/Semiring/xor_and.cpp
       title: Xor-and semiring
+  - name: Mylib/Algorithm/CartesianTree
+    pages:
+    - icon: ':x:'
+      path: Mylib/Algorithm/CartesianTree/cartesian_tree.cpp
+      title: Cartesian tree
   - name: Mylib/Algorithm/CumulativeSum
     pages:
     - icon: ':x:'
@@ -163,27 +171,11 @@ data:
     - icon: ':x:'
       path: Mylib/Algorithm/Imos/linear_imos_1d.cpp
       title: 1D Imos algorithm (Linear addition)
-  - name: Mylib/Algorithm/InversionNumber
-    pages:
-    - icon: ':x:'
-      path: Mylib/Algorithm/InversionNumber/inversion_number.cpp
-      title: Inversion number
   - name: Mylib/Algorithm/Mo
     pages:
     - icon: ':question:'
       path: Mylib/Algorithm/Mo/mo_algorithm.cpp
       title: Mo's algorithm
-  - name: Mylib/Algorithm/Query
-    pages:
-    - icon: ':warning:'
-      path: Mylib/Algorithm/Query/range_count_query.cpp
-      title: Range count query
-    - icon: ':x:'
-      path: Mylib/Algorithm/Query/range_inversions_query.cpp
-      title: Range inversions query
-    - icon: ':warning:'
-      path: Mylib/Algorithm/Query/range_mode_query.cpp
-      title: Range mode query
   - name: Mylib/Algorithm/Search
     pages:
     - icon: ':x:'
@@ -307,13 +299,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/fast_mobius_transform_subset.cpp
       title: "Fast M\xF6bius transform (Subsets)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/fast_mobius_transform_superset.cpp
       title: "Fast M\xF6bius transform (Supersets)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/fast_zeta_transform_subset.cpp
       title: Fast Zeta transform (Subsets)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/fast_zeta_transform_superset.cpp
       title: Fast Zeta transform (Supersets)
     - icon: ':x:'
@@ -327,11 +319,17 @@ data:
     - icon: ':warning:'
       path: Mylib/DataStructure/Array/rollbackable_vector.cpp
       title: Rollbackable vector
-  - name: Mylib/DataStructure/CartesianTree
+  - name: Mylib/DataStructure/BBST
     pages:
-    - icon: ':x:'
-      path: Mylib/DataStructure/CartesianTree/cartesian_tree.cpp
-      title: Cartesian tree
+    - icon: ':warning:'
+      path: Mylib/DataStructure/BBST/ordered_treap.cpp
+      title: Treap (Ordered set)
+    - icon: ':heavy_check_mark:'
+      path: Mylib/DataStructure/BBST/splay_tree.cpp
+      title: Splay tree
+    - icon: ':heavy_check_mark:'
+      path: Mylib/DataStructure/BBST/treap.cpp
+      title: Treap
   - name: Mylib/DataStructure/ConvexHullTrick
     pages:
     - icon: ':warning:'
@@ -359,7 +357,7 @@ data:
       title: Fenwick tree (On Fenwick tree)
   - name: Mylib/DataStructure/Heap
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/Heap/binary_heap.cpp
       title: Binary heap
     - icon: ':heavy_check_mark:'
@@ -450,24 +448,11 @@ data:
     - icon: ':warning:'
       path: Mylib/DataStructure/SparseTable/sparse_table_2d.cpp
       title: Sparse table (2D)
-  - name: Mylib/DataStructure/SplayTree
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: Mylib/DataStructure/SplayTree/splay_tree.cpp
-      title: Splay tree
   - name: Mylib/DataStructure/Stack
     pages:
     - icon: ':warning:'
       path: Mylib/DataStructure/Stack/persistent_stack.cpp
       title: Persistent stack
-  - name: Mylib/DataStructure/Treap
-    pages:
-    - icon: ':warning:'
-      path: Mylib/DataStructure/Treap/ordered_treap.cpp
-      title: Treap (Ordered set)
-    - icon: ':heavy_check_mark:'
-      path: Mylib/DataStructure/Treap/treap.cpp
-      title: Treap
   - name: Mylib/DataStructure/Trie
     pages:
     - icon: ':x:'
@@ -525,9 +510,6 @@ data:
     - icon: ':x:'
       path: Mylib/DynamicProgramming/bitonic_tour.cpp
       title: Bitonic tour
-    - icon: ':x:'
-      path: Mylib/DynamicProgramming/longest_increasing_subsequence.cpp
-      title: Longest increasing subsequence
     - icon: ':warning:'
       path: Mylib/DynamicProgramming/max_partial_sum.cpp
       title: Maximum subarray problem
@@ -593,7 +575,7 @@ data:
     - icon: ':x:'
       path: Mylib/Geometry/Float/intersect_line_segment.cpp
       title: Intersection between a line and a segment
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/intersect_segments.cpp
       title: Intersection between two segments
     - icon: ':x:'
@@ -608,16 +590,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/minimum_covering_circle.cpp
       title: Minimum covering circle
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/orthogonal.cpp
       title: Orthogonal
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/parallel.cpp
       title: Parallel
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/projection.cpp
       title: Projection
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/reflection.cpp
       title: Reflection
     - icon: ':x:'
@@ -736,12 +718,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Graph/ShortestPath/bfs_shortest_path.cpp
       title: BFS shortest path
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/ShortestPath/dial_algorithm.cpp
       title: Dial's algorithm
     - icon: ':question:'
       path: Mylib/Graph/ShortestPath/dijkstra.cpp
       title: Dijkstra algorithm
+    - icon: ':x:'
+      path: Mylib/Graph/ShortestPath/spfa.cpp
+      title: SPFA
     - icon: ':x:'
       path: Mylib/Graph/ShortestPath/warshall_floyd.cpp
       title: Warshall-Floyd algorithm
@@ -764,7 +749,7 @@ data:
     - icon: ':warning:'
       path: Mylib/Graph/TopologicalSort/count_topological_sort.cpp
       title: Count topological sort
-    - icon: ':x:'
+    - icon: ':warning:'
       path: Mylib/Graph/TopologicalSort/topological_sort.cpp
       title: Topological sort
     - icon: ':warning:'
@@ -898,9 +883,6 @@ data:
       path: Mylib/LinearAlgebra/Square/inverse_matrix.cpp
       title: Inverse matrix
     - icon: ':question:'
-      path: Mylib/LinearAlgebra/Square/power.cpp
-      title: Power of a matrix
-    - icon: ':question:'
       path: Mylib/LinearAlgebra/Square/square_matrix.cpp
       title: Square matrix
     - icon: ':x:'
@@ -938,6 +920,9 @@ data:
       path: Mylib/Misc/merge_technique.cpp
       title: Mylib/Misc/merge_technique.cpp
     - icon: ':warning:'
+      path: Mylib/Misc/rho.cpp
+      title: Mylib/Misc/rho.cpp
+    - icon: ':warning:'
       path: Mylib/Misc/roman_numerals.cpp
       title: Roman numerals
     - icon: ':warning:'
@@ -962,7 +947,7 @@ data:
       title: Enumerate divisors
   - name: Mylib/Number/Mint
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Number/Mint/mint.cpp
       title: Modint
     - icon: ':warning:'
@@ -999,7 +984,7 @@ data:
     - icon: ':warning:'
       path: Mylib/Number/Prime/factorial_prime_factorization.cpp
       title: Count number of prime factor p of $a!$
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Number/Prime/is_prime.cpp
       title: Primality test (Trial division)
     - icon: ':x:'
@@ -1034,10 +1019,10 @@ data:
       path: Mylib/Number/chinese_remainder_algorithm.cpp
       title: Chinese remainder theorem
     - icon: ':x:'
-      path: Mylib/Number/euler_phi_function.cpp
+      path: Mylib/Number/euler_totient_function.cpp
       title: Euler's totient function
     - icon: ':warning:'
-      path: Mylib/Number/euler_phi_function_table.cpp
+      path: Mylib/Number/euler_totient_function_table.cpp
       title: Euler's totient function (Enumerate)
     - icon: ':x:'
       path: Mylib/Number/extended_gcd.cpp
@@ -1061,8 +1046,8 @@ data:
       path: Mylib/Number/mobius_function.cpp
       title: "M\xF6bius function"
     - icon: ':warning:'
-      path: Mylib/Number/power.cpp
-      title: Binary exponentiation
+      path: Mylib/Number/pow.cpp
+      title: Mylib/Number/pow.cpp
     - icon: ':warning:'
       path: Mylib/Number/sign_function.cpp
       title: Sign function
@@ -1082,7 +1067,7 @@ data:
     - icon: ':warning:'
       path: Mylib/String/ends_with.cpp
       title: ends_with
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/String/knuth_morris_pratt.cpp
       title: Knuth-Morris-Pratt algorithm
     - icon: ':x:'
@@ -1091,7 +1076,7 @@ data:
     - icon: ':x:'
       path: Mylib/String/levenshtein_distance.cpp
       title: Levenshtein distance / Edit distance
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/String/longest_common_subsequence.cpp
       title: Longest common subsequence
     - icon: ':warning:'
@@ -1100,10 +1085,10 @@ data:
     - icon: ':warning:'
       path: Mylib/String/palindromic_tree.cpp
       title: Palindromic tree
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/String/rolling_hash.cpp
       title: Rolling hash
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/String/rolling_hash_2d.cpp
       title: Rolling hash (2D)
     - icon: ':x:'
@@ -1115,7 +1100,7 @@ data:
     - icon: ':warning:'
       path: Mylib/String/starts_with.cpp
       title: starts_with
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/String/suffix_array.cpp
       title: Suffix array
     - icon: ':warning:'
@@ -1124,58 +1109,81 @@ data:
     - icon: ':x:'
       path: Mylib/String/z_algorithm.cpp
       title: Z-algorithm
-  - name: Mylib/TypicalProblem/IntervalSchedulingProblem
+  - name: Mylib/Typical/IntervalSchedulingProblem
     pages:
-    - icon: ':x:'
-      path: Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling.cpp
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Typical/IntervalSchedulingProblem/interval_scheduling.cpp
       title: Interval scheduling problem
     - icon: ':x:'
-      path: Mylib/TypicalProblem/IntervalSchedulingProblem/interval_scheduling_k.cpp
+      path: Mylib/Typical/IntervalSchedulingProblem/interval_scheduling_k.cpp
       title: Interval scheduling problem (Allow no more than k intervals to overlap)
     - icon: ':warning:'
-      path: Mylib/TypicalProblem/IntervalSchedulingProblem/weighted_interval_scheduling.cpp
+      path: Mylib/Typical/IntervalSchedulingProblem/weighted_interval_scheduling.cpp
       title: Weighted interval scheduling problem
-  - name: Mylib/TypicalProblem/KnapsackProblem
+  - name: Mylib/Typical/InversionNumber
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Typical/InversionNumber/inversion_number.cpp
+      title: Inversion number
+    - icon: ':x:'
+      path: Mylib/Typical/InversionNumber/range_inversions_query.cpp
+      title: Range inversions query
+  - name: Mylib/Typical/KnapsackProblem
     pages:
     - icon: ':x:'
-      path: Mylib/TypicalProblem/KnapsackProblem/knapsack_limited.cpp
+      path: Mylib/Typical/KnapsackProblem/knapsack_limited.cpp
       title: Knapsack problem (With quantity limitations)
     - icon: ':x:'
-      path: Mylib/TypicalProblem/KnapsackProblem/knapsack_small_quantity.cpp
+      path: Mylib/Typical/KnapsackProblem/knapsack_small_quantity.cpp
       title: 0-1 Knapsack problem (Small quantity)
     - icon: ':x:'
-      path: Mylib/TypicalProblem/KnapsackProblem/knapsack_small_value.cpp
+      path: Mylib/Typical/KnapsackProblem/knapsack_small_value.cpp
       title: 0-1 Knapsack problem (Small value)
     - icon: ':x:'
-      path: Mylib/TypicalProblem/KnapsackProblem/knapsack_small_weight.cpp
+      path: Mylib/Typical/KnapsackProblem/knapsack_small_weight.cpp
       title: 0-1 Knapsack problem (Small weight)
     - icon: ':x:'
-      path: Mylib/TypicalProblem/KnapsackProblem/knapsack_unlimited.cpp
+      path: Mylib/Typical/KnapsackProblem/knapsack_unlimited.cpp
       title: Knapsack problem (Without quantity limitations)
-  - name: Mylib/TypicalProblem/MaxRectangleProblem
+  - name: Mylib/Typical/LongestSubsequence
     pages:
     - icon: ':x:'
-      path: Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle.cpp
+      path: Mylib/Typical/LongestSubsequence/longest_increasing_subsequence.cpp
+      title: Longest increasing subsequence
+  - name: Mylib/Typical/MaxRectangleProblem
+    pages:
+    - icon: ':x:'
+      path: Mylib/Typical/MaxRectangleProblem/max_rectangle.cpp
       title: Largest rectangle
     - icon: ':x:'
-      path: Mylib/TypicalProblem/MaxRectangleProblem/max_rectangle_in_histogram.cpp
+      path: Mylib/Typical/MaxRectangleProblem/max_rectangle_in_histogram.cpp
       title: Largest rectangle in histogram
-  - name: Mylib/TypicalProblem/SubsetSumProblem
+  - name: Mylib/Typical/RangeCountQuery
     pages:
     - icon: ':warning:'
-      path: Mylib/TypicalProblem/SubsetSumProblem/subset_sum.cpp
+      path: Mylib/Typical/RangeCountQuery/range_count_query.cpp
+      title: Range count query
+  - name: Mylib/Typical/RangeModeQuery
+    pages:
+    - icon: ':warning:'
+      path: Mylib/Typical/RangeModeQuery/range_mode_query.cpp
+      title: Range mode query
+  - name: Mylib/Typical/SubsetSumProblem
+    pages:
+    - icon: ':warning:'
+      path: Mylib/Typical/SubsetSumProblem/subset_sum.cpp
       title: Subset sum problem
     - icon: ':warning:'
-      path: Mylib/TypicalProblem/SubsetSumProblem/subset_sum_count.cpp
+      path: Mylib/Typical/SubsetSumProblem/subset_sum_count.cpp
       title: Subset sum problem (Count)
     - icon: ':x:'
-      path: Mylib/TypicalProblem/SubsetSumProblem/subset_sum_count_fps.cpp
+      path: Mylib/Typical/SubsetSumProblem/subset_sum_count_fps.cpp
       title: Subset sum problem (Count, FPS)
     - icon: ':heavy_check_mark:'
-      path: Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp
+      path: Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp
       title: Subset sum problem (With quantity limitations)
     - icon: ':warning:'
-      path: Mylib/TypicalProblem/SubsetSumProblem/subset_sum_minimum.cpp
+      path: Mylib/Typical/SubsetSumProblem/subset_sum_minimum.cpp
       title: Subset sum problem (Minimum)
   - name: Mylib/Utils
     pages:
@@ -1191,88 +1199,6 @@ data:
     - icon: ':x:'
       path: Mylib/Utils/sort_simultaneously.cpp
       title: Mylib/Utils/sort_simultaneously.cpp
-  - name: old
-    pages:
-    - icon: ':warning:'
-      path: old/runtime_mint.cpp
-      title: old/runtime_mint.cpp
-    - icon: ':warning:'
-      path: old/square_matrix.cpp
-      title: old/square_matrix.cpp
-    - icon: ':warning:'
-      path: old/xor_sum.cpp
-      title: old/xor_sum.cpp
-  - name: snippets
-    pages:
-    - icon: ':warning:'
-      path: snippets/all.cpp
-      title: snippets/all.cpp
-    - icon: ':warning:'
-      path: snippets/bits.cpp
-      title: snippets/bits.cpp
-    - icon: ':warning:'
-      path: snippets/cauto.cpp
-      title: snippets/cauto.cpp
-    - icon: ':warning:'
-      path: snippets/debugging.cpp
-      title: snippets/debugging.cpp
-    - icon: ':warning:'
-      path: snippets/exists.cpp
-      title: snippets/exists.cpp
-    - icon: ':warning:'
-      path: snippets/fastcin.cpp
-      title: snippets/fastcin.cpp
-    - icon: ':warning:'
-      path: snippets/fore.cpp
-      title: snippets/fore.cpp
-    - icon: ':warning:'
-      path: snippets/fst.cpp
-      title: snippets/fst.cpp
-    - icon: ':warning:'
-      path: snippets/itr.cpp
-      title: snippets/itr.cpp
-    - icon: ':warning:'
-      path: snippets/lambda1.cpp
-      title: snippets/lambda1.cpp
-    - icon: ':warning:'
-      path: snippets/lambda2.cpp
-      title: snippets/lambda2.cpp
-    - icon: ':warning:'
-      path: snippets/lambda3.cpp
-      title: snippets/lambda3.cpp
-    - icon: ':warning:'
-      path: snippets/lambda4.cpp
-      title: snippets/lambda4.cpp
-    - icon: ':warning:'
-      path: snippets/main.cpp
-      title: snippets/main.cpp
-    - icon: ':warning:'
-      path: snippets/mytemplate.cpp
-      title: snippets/mytemplate.cpp
-    - icon: ':warning:'
-      path: snippets/oldtemplate.cpp
-      title: snippets/oldtemplate.cpp
-    - icon: ':warning:'
-      path: snippets/rall.cpp
-      title: snippets/rall.cpp
-    - icon: ':warning:'
-      path: snippets/range.cpp
-      title: snippets/range.cpp
-    - icon: ':warning:'
-      path: snippets/rep.cpp
-      title: snippets/rep.cpp
-    - icon: ':warning:'
-      path: snippets/rev.cpp
-      title: snippets/rev.cpp
-    - icon: ':warning:'
-      path: snippets/ritr.cpp
-      title: snippets/ritr.cpp
-    - icon: ':warning:'
-      path: snippets/snd.cpp
-      title: snippets/snd.cpp
-    - icon: ':warning:'
-      path: snippets/uniq.cpp
-      title: snippets/uniq.cpp
   verificationCategories:
   - name: test/aoj/0323
     pages:
@@ -1469,95 +1395,95 @@ data:
       title: test/aoj/3118/main.test.cpp
   - name: test/aoj/3119
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/3119/main.test.cpp
       title: test/aoj/3119/main.test.cpp
   - name: test/aoj/3132
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/3132/main.test.cpp
       title: test/aoj/3132/main.test.cpp
   - name: test/aoj/3134
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/3134/main.test.cpp
       title: test/aoj/3134/main.test.cpp
   - name: test/aoj/ALDS1_10_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ALDS1_10_C/main.test.cpp
       title: test/aoj/ALDS1_10_C/main.test.cpp
   - name: test/aoj/ALDS1_12_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ALDS1_12_B/main.dial.test.cpp
       title: test/aoj/ALDS1_12_B/main.dial.test.cpp
   - name: test/aoj/ALDS1_14_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ALDS1_14_B/main.kmp.test.cpp
       title: test/aoj/ALDS1_14_B/main.kmp.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ALDS1_14_B/main.test.cpp
       title: test/aoj/ALDS1_14_B/main.test.cpp
   - name: test/aoj/ALDS1_14_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ALDS1_14_C/main.test.cpp
       title: test/aoj/ALDS1_14_C/main.test.cpp
   - name: test/aoj/ALDS1_14_D
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ALDS1_14_D/main.test.cpp
       title: test/aoj/ALDS1_14_D/main.test.cpp
   - name: test/aoj/ALDS1_15_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ALDS1_15_C/main.test.cpp
       title: test/aoj/ALDS1_15_C/main.test.cpp
   - name: test/aoj/ALDS1_1_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ALDS1_1_C/main.test.cpp
       title: test/aoj/ALDS1_1_C/main.test.cpp
   - name: test/aoj/ALDS1_5_D
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ALDS1_5_D/main.test.cpp
       title: test/aoj/ALDS1_5_D/main.test.cpp
   - name: test/aoj/ALDS1_9_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ALDS1_9_C/main.binary.test.cpp
       title: test/aoj/ALDS1_9_C/main.binary.test.cpp
   - name: test/aoj/CGL_1_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_1_A/main.test.cpp
       title: test/aoj/CGL_1_A/main.test.cpp
   - name: test/aoj/CGL_1_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_1_B/main.test.cpp
       title: test/aoj/CGL_1_B/main.test.cpp
   - name: test/aoj/CGL_1_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_1_C/main.test.cpp
       title: test/aoj/CGL_1_C/main.test.cpp
   - name: test/aoj/CGL_2_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_2_A/main.test.cpp
       title: test/aoj/CGL_2_A/main.test.cpp
   - name: test/aoj/CGL_2_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_2_B/main.test.cpp
       title: test/aoj/CGL_2_B/main.test.cpp
   - name: test/aoj/CGL_2_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_2_C/main.test.cpp
       title: test/aoj/CGL_2_C/main.test.cpp
   - name: test/aoj/CGL_2_D
@@ -1815,6 +1741,9 @@ data:
       title: test/aoj/GRL_1_A/main.test.cpp
   - name: test/aoj/GRL_1_B
     pages:
+    - icon: ':x:'
+      path: test/aoj/GRL_1_B/main.spfa.test.cpp
+      title: test/aoj/GRL_1_B/main.spfa.test.cpp
     - icon: ':x:'
       path: test/aoj/GRL_1_B/main.test.cpp
       title: test/aoj/GRL_1_B/main.test.cpp

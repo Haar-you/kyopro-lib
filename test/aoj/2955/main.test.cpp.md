@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp
+    path: Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp
     title: Subset sum problem (With quantity limitations)
   - icon: ':question:'
     path: Mylib/DataStructure/UnionFind/unionfind.cpp
@@ -20,7 +20,7 @@ data:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2955
   bundledCode: "#line 1 \"test/aoj/2955/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2955\"\
-    \n\n#include <iostream>\n#include <vector>\n#include <map>\n#line 3 \"Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#include <map>\n#line 3 \"Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp\"\
     \n\nnamespace haar_lib {\n  auto subset_sum_limited(int N, int K, const std::vector<int>\
     \ &a, const std::vector<int> &m){\n    std::vector<int> dp(K + 1, -1);\n\n   \
     \ dp[0] = 0;\n    for(int i = 0; i < N; ++i){\n      for(int j = 0; j <= K; ++j){\n\
@@ -62,7 +62,7 @@ data:
     \ a, m)[R];\n\n  std::cout << (ans ? \"Yes\" : \"No\") << std::endl;\n\n  return\
     \ 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2955\"\
-    \n\n#include <iostream>\n#include <vector>\n#include <map>\n#include \"Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#include <map>\n#include \"Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp\"\
     \n#include \"Mylib/DataStructure/UnionFind/unionfind.cpp\"\n#include \"Mylib/IO/input_vector.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nint main(){\n  int N, R; std::cin >> N >> R;\n\
     \n  auto p = hl::input_vector<int>(N);\n  for(auto &x : p) x -= 1;\n\n  hl::unionfind\
@@ -73,13 +73,13 @@ data:
     \ a, m)[R];\n\n  std::cout << (ans ? \"Yes\" : \"No\") << std::endl;\n\n  return\
     \ 0;\n}\n"
   dependsOn:
-  - Mylib/TypicalProblem/SubsetSumProblem/subset_sum_limited.cpp
+  - Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp
   - Mylib/DataStructure/UnionFind/unionfind.cpp
   - Mylib/IO/input_vector.cpp
   isVerificationFile: true
   path: test/aoj/2955/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-21 02:36:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/2955/main.test.cpp

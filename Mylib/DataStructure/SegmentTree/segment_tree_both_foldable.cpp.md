@@ -28,19 +28,19 @@ data:
     \ = M();\n\n      int l = x + hsize, r = y + hsize;\n      while(l < r){\n   \
     \     if(r & 1) ret_right = M(ret_right, data_right[--r]);\n        if(l & 1)\
     \ ret_left = M(data_right[l++], ret_left);\n        l >>= 1, r >>= 1;\n      }\n\
-    \n      return M(ret_right, ret_left);\n    }\n\n    void update(int i, const\
-    \ value_type &x){\n      i += hsize;\n      data_left[i] = data_right[i] = x;\n\
-    \      while(i > 1){\n        i >>= 1;\n        data_left[i] = M(data_left[i <<\
-    \ 1 | 0], data_left[i << 1 | 1]);\n        data_right[i] = M(data_right[i << 1\
-    \ | 1], data_right[i << 1 | 0]);\n      }\n    }\n\n    template <typename T>\n\
-    \    void init_with_vector(const std::vector<T> &val){\n      data_left.assign(size,\
-    \ M());\n      data_right.assign(size, M());\n\n      for(int i = 0; i < (int)val.size();\
-    \ ++i){\n        data_left[hsize + i] = val[i];\n        data_right[hsize + i]\
-    \ = val[i];\n      }\n      for(int i = hsize - 1; i >= 1; --i){\n        data_left[i]\
-    \ = M(data_left[i << 1 | 0], data_left[i << 1 | 1]);\n        data_right[i] =\
-    \ M(data_right[i << 1 | 1], data_right[i << 1 | 0]);\n      }\n    }\n\n    template\
-    \ <typename T>\n    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
-    \ val));\n    }\n  };\n}\n"
+    \n      return M(ret_right, ret_left);\n    }\n\n    void set(int i, const value_type\
+    \ &x){\n      i += hsize;\n      data_left[i] = data_right[i] = x;\n      while(i\
+    \ > 1){\n        i >>= 1;\n        data_left[i] = M(data_left[i << 1 | 0], data_left[i\
+    \ << 1 | 1]);\n        data_right[i] = M(data_right[i << 1 | 1], data_right[i\
+    \ << 1 | 0]);\n      }\n    }\n\n    template <typename T>\n    void init_with_vector(const\
+    \ std::vector<T> &val){\n      data_left.assign(size, M());\n      data_right.assign(size,\
+    \ M());\n\n      for(int i = 0; i < (int)val.size(); ++i){\n        data_left[hsize\
+    \ + i] = val[i];\n        data_right[hsize + i] = val[i];\n      }\n      for(int\
+    \ i = hsize - 1; i >= 1; --i){\n        data_left[i] = M(data_left[i << 1 | 0],\
+    \ data_left[i << 1 | 1]);\n        data_right[i] = M(data_right[i << 1 | 1], data_right[i\
+    \ << 1 | 0]);\n      }\n    }\n\n    template <typename T>\n    void init(const\
+    \ T &val){\n      init_with_vector(std::vector<value_type>(hsize, val));\n   \
+    \ }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n\nnamespace haar_lib {\n  template <typename\
     \ Monoid>\n  class segment_tree_both_foldable {\n    using value_type = typename\
     \ Monoid::value_type;\n    const static Monoid M;\n\n    const int depth, size,\
@@ -58,11 +58,11 @@ data:
     \ + hsize;\n      while(l < r){\n        if(r & 1) ret_right = M(ret_right, data_right[--r]);\n\
     \        if(l & 1) ret_left = M(data_right[l++], ret_left);\n        l >>= 1,\
     \ r >>= 1;\n      }\n\n      return M(ret_right, ret_left);\n    }\n\n    void\
-    \ update(int i, const value_type &x){\n      i += hsize;\n      data_left[i] =\
-    \ data_right[i] = x;\n      while(i > 1){\n        i >>= 1;\n        data_left[i]\
-    \ = M(data_left[i << 1 | 0], data_left[i << 1 | 1]);\n        data_right[i] =\
-    \ M(data_right[i << 1 | 1], data_right[i << 1 | 0]);\n      }\n    }\n\n    template\
-    \ <typename T>\n    void init_with_vector(const std::vector<T> &val){\n      data_left.assign(size,\
+    \ set(int i, const value_type &x){\n      i += hsize;\n      data_left[i] = data_right[i]\
+    \ = x;\n      while(i > 1){\n        i >>= 1;\n        data_left[i] = M(data_left[i\
+    \ << 1 | 0], data_left[i << 1 | 1]);\n        data_right[i] = M(data_right[i <<\
+    \ 1 | 1], data_right[i << 1 | 0]);\n      }\n    }\n\n    template <typename T>\n\
+    \    void init_with_vector(const std::vector<T> &val){\n      data_left.assign(size,\
     \ M());\n      data_right.assign(size, M());\n\n      for(int i = 0; i < (int)val.size();\
     \ ++i){\n        data_left[hsize + i] = val[i];\n        data_right[hsize + i]\
     \ = val[i];\n      }\n      for(int i = hsize - 1; i >= 1; --i){\n        data_left[i]\
@@ -74,7 +74,7 @@ data:
   isVerificationFile: false
   path: Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/vertex_set_path_composite/main.test.cpp

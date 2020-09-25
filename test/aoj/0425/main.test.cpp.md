@@ -66,19 +66,18 @@ data:
     \ append_right(append_right),\n      remove_left(remove_left), remove_right(remove_right),\n\
     \      query(query)\n    {}\n\n    // [l, r)\n    void add(int l, int r){\n  \
     \    left[index] = l;\n      right[index] = r;\n      ord[index] = index;\n  \
-    \    ++index;\n    }\n\n    void build(){\n      std::sort(\n        ord.begin(),\n\
-    \        ord.end(),\n        [&](int i, int j){\n          const int a = left[i]\
-    \ / width, b = left[j] / width;\n          if(a == b){\n            if(a & 1){\n\
-    \              return right[i] < right[j];\n            }else{\n             \
-    \ return right[i] > right[j];\n            }\n          }else{\n            return\
-    \ a < b;\n          }\n        }\n      );\n\n      is_built = true;\n    }\n\n\
-    \    void run(){\n      assert(is_built);\n\n      int q = 0;\n      int l = left[ord[0]],\
-    \ r = left[ord[0]];\n\n      for(int i = 0; i < Q; ++i){\n        int id = ord[q++];\n\
-    \n        while(l != left[id] or r != right[id]){\n          if(l > left[id])\
-    \ append_left(--l);\n          if(l < left[id]) remove_left(l++);\n          if(r\
-    \ < right[id]) append_right(r++);\n          if(r > right[id]) remove_right(--r);\n\
-    \        }\n\n        query(id);\n      }\n    }\n  };\n}\n#line 11 \"test/aoj/0425/main.test.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
+    \    ++index;\n    }\n\n    void run(){\n      std::sort(\n        ord.begin(),\
+    \ ord.end(),\n        [&](int i, int j){\n          const int a = left[i] / width,\
+    \ b = left[j] / width;\n          if(a == b){\n            if(a & 1) return right[i]\
+    \ < right[j];\n            else return right[i] > right[j];\n          }else{\n\
+    \            return a < b;\n          }\n        }\n      );\n\n      int q =\
+    \ 0;\n      int l = left[ord[0]], r = left[ord[0]];\n\n      for(int i = 0; i\
+    \ < Q; ++i){\n        int id = ord[q++];\n\n        while(l != left[id] or r !=\
+    \ right[id]){\n          if(l > left[id]) append_left(--l);\n          if(l <\
+    \ left[id]) remove_left(l++);\n          if(r < right[id]) append_right(r++);\n\
+    \          if(r > right[id]) remove_right(--r);\n        }\n\n        query(id);\n\
+    \      }\n    }\n  };\n}\n#line 11 \"test/aoj/0425/main.test.cpp\"\n\nnamespace\
+    \ hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  int N, K, Q; std::cin >> N >> K >> Q;\n\n  auto [a, b] = hl::input_tuple_vector<int,\
     \ int>(K);\n  for(auto &x : a) --x;\n  for(auto &x : b) --x;\n\n  std::vector<std::tuple<int,\
     \ int, int, int>> qs;\n  for(auto [type, s, t, x] : hl::input_tuples<int, int,\
@@ -91,8 +90,8 @@ data:
     \      if(std::get<0>(qs[i]) == 1) ans[i] = p[std::get<3>(qs[i])] + 1;\n     \
     \ else ans[i] = q[std::get<3>(qs[i])] + 1;\n    };\n\n  auto mo = hl::mo_algorithm(N,\
     \ Q, left, right, left, right, query);\n\n  for(int i = 0; i < Q; ++i) mo.add(std::get<1>(qs[i]),\
-    \ std::get<2>(qs[i]) + 1);\n  mo.build();\n  mo.run();\n\n  for(int i = 0; i <\
-    \ Q; ++i) std::cout << ans[i] << \"\\n\";\n\n  return 0;\n}\n"
+    \ std::get<2>(qs[i]) + 1);\n  mo.run();\n\n  for(int i = 0; i < Q; ++i) std::cout\
+    \ << ans[i] << \"\\n\";\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0425\"\
     \n\n#include <iostream>\n#include <vector>\n#include <tuple>\n#include <numeric>\n\
     #include <utility>\n#include \"Mylib/IO/input_tuple_vector.cpp\"\n#include \"\
@@ -110,8 +109,8 @@ data:
     \      if(std::get<0>(qs[i]) == 1) ans[i] = p[std::get<3>(qs[i])] + 1;\n     \
     \ else ans[i] = q[std::get<3>(qs[i])] + 1;\n    };\n\n  auto mo = hl::mo_algorithm(N,\
     \ Q, left, right, left, right, query);\n\n  for(int i = 0; i < Q; ++i) mo.add(std::get<1>(qs[i]),\
-    \ std::get<2>(qs[i]) + 1);\n  mo.build();\n  mo.run();\n\n  for(int i = 0; i <\
-    \ Q; ++i) std::cout << ans[i] << \"\\n\";\n\n  return 0;\n}\n"
+    \ std::get<2>(qs[i]) + 1);\n  mo.run();\n\n  for(int i = 0; i < Q; ++i) std::cout\
+    \ << ans[i] << \"\\n\";\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/IO/input_tuple_vector.cpp
   - Mylib/IO/input_tuples.cpp
@@ -120,7 +119,7 @@ data:
   isVerificationFile: true
   path: test/aoj/0425/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 04:49:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/0425/main.test.cpp

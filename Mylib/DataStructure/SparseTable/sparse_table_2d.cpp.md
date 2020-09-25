@@ -29,13 +29,12 @@ data:
     \ + (1 << (x - 1)))][x - 1][j][y]);\n            }\n          }\n        }\n \
     \     }\n\n      log_table.assign(std::max(n, m) + 1, 0);\n      for(int i = 2;\
     \ i < std::max(n, m) + 1; ++i) log_table[i] = log_table[i >> 1] + 1;\n    }\n\n\
-    \    std::optional<value_type> get(int r1, int c1, int r2, int c2) const { //\
-    \ [(r1, c1), (r2, c2))\n      if(r1 == r2 or c1 == c2) return std::nullopt;\n\
-    \      const int kr = log_table[r2 - r1];\n      const int kc = log_table[c2 -\
-    \ c1];\n\n      const value_type x = S(a[r1][kr][c1][kc], a[r1][kr][c2 - (1 <<\
-    \ kc)][kc]);\n      const value_type y = S(a[r2 - (1 << kr)][kr][c1][kc], a[r2\
-    \ - (1 << kr)][kr][c2 - (1 << kc)][kc]);\n\n      return S(x, y);\n    }\n  };\n\
-    }\n"
+    \    std::optional<value_type> fold(int r1, int c1, int r2, int c2) const {\n\
+    \      if(r1 == r2 or c1 == c2) return std::nullopt;\n      const int kr = log_table[r2\
+    \ - r1];\n      const int kc = log_table[c2 - c1];\n\n      const value_type x\
+    \ = S(a[r1][kr][c1][kc], a[r1][kr][c2 - (1 << kc)][kc]);\n      const value_type\
+    \ y = S(a[r2 - (1 << kr)][kr][c1][kc], a[r2 - (1 << kr)][kr][c2 - (1 << kc)][kc]);\n\
+    \n      return S(x, y);\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <utility>\n#include <algorithm>\n\
     #include <optional>\n\nnamespace haar_lib {\n  template <typename Semilattice>\n\
     \  class sparse_table_2d {\n    using value_type = typename Semilattice::value_type;\n\
@@ -56,18 +55,17 @@ data:
     \ + (1 << (x - 1)))][x - 1][j][y]);\n            }\n          }\n        }\n \
     \     }\n\n      log_table.assign(std::max(n, m) + 1, 0);\n      for(int i = 2;\
     \ i < std::max(n, m) + 1; ++i) log_table[i] = log_table[i >> 1] + 1;\n    }\n\n\
-    \    std::optional<value_type> get(int r1, int c1, int r2, int c2) const { //\
-    \ [(r1, c1), (r2, c2))\n      if(r1 == r2 or c1 == c2) return std::nullopt;\n\
-    \      const int kr = log_table[r2 - r1];\n      const int kc = log_table[c2 -\
-    \ c1];\n\n      const value_type x = S(a[r1][kr][c1][kc], a[r1][kr][c2 - (1 <<\
-    \ kc)][kc]);\n      const value_type y = S(a[r2 - (1 << kr)][kr][c1][kc], a[r2\
-    \ - (1 << kr)][kr][c2 - (1 << kc)][kc]);\n\n      return S(x, y);\n    }\n  };\n\
-    }\n"
+    \    std::optional<value_type> fold(int r1, int c1, int r2, int c2) const {\n\
+    \      if(r1 == r2 or c1 == c2) return std::nullopt;\n      const int kr = log_table[r2\
+    \ - r1];\n      const int kc = log_table[c2 - c1];\n\n      const value_type x\
+    \ = S(a[r1][kr][c1][kc], a[r1][kr][c2 - (1 << kc)][kc]);\n      const value_type\
+    \ y = S(a[r2 - (1 << kr)][kr][c1][kc], a[r2 - (1 << kr)][kr][c2 - (1 << kc)][kc]);\n\
+    \n      return S(x, y);\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/DataStructure/SparseTable/sparse_table_2d.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/DataStructure/SparseTable/sparse_table_2d.cpp

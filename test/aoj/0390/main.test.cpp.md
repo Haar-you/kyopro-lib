@@ -80,18 +80,20 @@ data:
     \ data;\n\n  public:\n    segment_tree(){}\n    segment_tree(int n):\n      depth(n\
     \ > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),\n      size(1 << depth), hsize(size\
     \ / 2),\n      data(size, M())\n    {}\n\n    auto operator[](int i) const {return\
-    \ data[hsize + i];}\n\n    auto get(int x, int y) const {\n      value_type ret_left\
+    \ data[hsize + i];}\n\n    auto fold(int x, int y) const {\n      value_type ret_left\
     \ = M();\n      value_type ret_right = M();\n\n      int l = x + hsize, r = y\
     \ + hsize;\n      while(l < r){\n        if(r & 1) ret_right = M(data[--r], ret_right);\n\
     \        if(l & 1) ret_left = M(ret_left, data[l++]);\n        l >>= 1, r >>=\
-    \ 1;\n      }\n\n      return M(ret_left, ret_right);\n    }\n\n    void update(int\
+    \ 1;\n      }\n\n      return M(ret_left, ret_right);\n    }\n\n    void set(int\
     \ i, const value_type &x){\n      i += hsize;\n      data[i] = x;\n      while(i\
     \ > 1) i >>= 1, data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n  \
-    \  template <typename T>\n    void init_with_vector(const std::vector<T> &val){\n\
-    \      data.assign(size, M());\n      for(int i = 0; i < (int)val.size(); ++i)\
-    \ data[hsize + i] = val[i];\n      for(int i = hsize - 1; i >= 1; --i) data[i]\
-    \ = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n    template <typename T>\n\
-    \    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
+    \  void update(int i, const value_type &x){\n      i += hsize;\n      data[i]\
+    \ = M(data[i], x);\n      while(i > 1) i >>= 1, data[i] = M(data[i << 1 | 0],\
+    \ data[i << 1 | 1]);\n    }\n\n    template <typename T>\n    void init_with_vector(const\
+    \ std::vector<T> &val){\n      data.assign(size, M());\n      for(int i = 0; i\
+    \ < (int)val.size(); ++i) data[hsize + i] = val[i];\n      for(int i = hsize -\
+    \ 1; i >= 1; --i) data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n\
+    \    template <typename T>\n    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
     \ val));\n    }\n\n  private:\n    template <bool Lower, typename F>\n    int\
     \ bound(const int l, const int r, value_type x, F f) const {\n      std::vector<int>\
     \ pl, pr;\n      int L = l + hsize;\n      int R = r + hsize;\n      while(L <\
@@ -112,11 +114,11 @@ data:
     \n\nnamespace hl = haar_lib;\n\nstatic int K;\nusing M = hl::dihedral_group<K>;\n\
     \nint main(){\n  int N, Q; std::cin >> K >> N >> Q;\n  auto A = hl::input_vector<int>(N);\n\
     \n  hl::segment_tree<M> seg(N);\n\n  for(int i = 0; i < N; ++i){\n    if(A[i]\
-    \ > 0){\n      seg.update(i, M::R({A[i] % K}));\n    }else if(A[i] < 0){\n   \
-    \   seg.update(i, M::R({A[i] % K + K}));\n    }else{\n      seg.update(i, M::S({0}));\n\
-    \    }\n  }\n\n  for(auto [L, R] : hl::input_tuples<int, int>(Q)){\n    --L, --R;\n\
-    \n    auto x = seg[L];\n    auto y = seg[R];\n    seg.update(L, y);\n    seg.update(R,\
-    \ x);\n\n    auto res = seg.get(0, N);\n\n    if(std::holds_alternative<M::R>(res)){\n\
+    \ > 0){\n      seg.set(i, M::R({A[i] % K}));\n    }else if(A[i] < 0){\n      seg.set(i,\
+    \ M::R({A[i] % K + K}));\n    }else{\n      seg.set(i, M::S({0}));\n    }\n  }\n\
+    \n  for(auto [L, R] : hl::input_tuples<int, int>(Q)){\n    --L, --R;\n\n    auto\
+    \ x = seg[L];\n    auto y = seg[R];\n    seg.set(L, y);\n    seg.set(R, x);\n\n\
+    \    auto res = seg.fold(0, N);\n\n    if(std::holds_alternative<M::R>(res)){\n\
     \      int ans = (K - std::get<M::R>(res).value) % K + 1;\n      std::cout <<\
     \ ans << \"\\n\";\n    }else{\n      int ans = -(std::get<M::S>(res).value + 1);\n\
     \      std::cout << ans << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
@@ -127,11 +129,11 @@ data:
     \ = haar_lib;\n\nstatic int K;\nusing M = hl::dihedral_group<K>;\n\nint main(){\n\
     \  int N, Q; std::cin >> K >> N >> Q;\n  auto A = hl::input_vector<int>(N);\n\n\
     \  hl::segment_tree<M> seg(N);\n\n  for(int i = 0; i < N; ++i){\n    if(A[i] >\
-    \ 0){\n      seg.update(i, M::R({A[i] % K}));\n    }else if(A[i] < 0){\n     \
-    \ seg.update(i, M::R({A[i] % K + K}));\n    }else{\n      seg.update(i, M::S({0}));\n\
-    \    }\n  }\n\n  for(auto [L, R] : hl::input_tuples<int, int>(Q)){\n    --L, --R;\n\
-    \n    auto x = seg[L];\n    auto y = seg[R];\n    seg.update(L, y);\n    seg.update(R,\
-    \ x);\n\n    auto res = seg.get(0, N);\n\n    if(std::holds_alternative<M::R>(res)){\n\
+    \ 0){\n      seg.set(i, M::R({A[i] % K}));\n    }else if(A[i] < 0){\n      seg.set(i,\
+    \ M::R({A[i] % K + K}));\n    }else{\n      seg.set(i, M::S({0}));\n    }\n  }\n\
+    \n  for(auto [L, R] : hl::input_tuples<int, int>(Q)){\n    --L, --R;\n\n    auto\
+    \ x = seg[L];\n    auto y = seg[R];\n    seg.set(L, y);\n    seg.set(R, x);\n\n\
+    \    auto res = seg.fold(0, N);\n\n    if(std::holds_alternative<M::R>(res)){\n\
     \      int ans = (K - std::get<M::R>(res).value) % K + 1;\n      std::cout <<\
     \ ans << \"\\n\";\n    }else{\n      int ans = -(std::get<M::S>(res).value + 1);\n\
     \      std::cout << ans << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
@@ -144,7 +146,7 @@ data:
   isVerificationFile: true
   path: test/aoj/0390/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-17 22:58:14+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/0390/main.test.cpp

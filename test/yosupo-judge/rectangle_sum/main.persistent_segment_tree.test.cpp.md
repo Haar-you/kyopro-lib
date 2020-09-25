@@ -60,22 +60,23 @@ data:
     \ init(root, init_list, 1, pos);\n    }\n\n    persistent_segment_tree(int size,\
     \ const value_type &value = M()){\n      depth = size == 1 ? 1 : 32 - __builtin_clz(size\
     \ - 1) + 1;\n      int pos = 0;\n      root = init(root, std::vector<value_type>(size,\
-    \ value), 1, pos);\n    }\n\n  protected:\n    node* update(node *t, int l, int\
-    \ r, int pos, const value_type &val) const {\n      if(r <= pos or pos + 1 <=\
-    \ l){\n        return t;\n      }else if(pos <= l and r <= pos + 1){\n       \
-    \ return new node(val);\n      }else{\n        const int m = (l + r) >> 1;\n \
-    \       auto lp = update(t->left, l, m, pos, val);\n        auto rp = update(t->right,\
-    \ m, r, pos, val);\n\n        node *s = new node(M(lp->value, rp->value));\n\n\
-    \        s->left = lp;\n        s->right = rp;\n\n        return s;\n      }\n\
-    \    }\n\n  public:\n    persistent_segment_tree update(int i, const value_type\
-    \ &val) const {\n      node *t = update(root, 0, 1 << (depth - 1), i, val);\n\
-    \      return persistent_segment_tree(depth, t);\n    }\n\n  protected:\n    value_type\
-    \ get(node *t, int i, int j, int l, int r) const {\n      if(i <= l and r <= j)\
-    \ return t->value;\n      if(r <= i or j <= l) return M();\n      const int m\
-    \ = (l + r) >> 1;\n      return M(get(t->left, i, j, l, m), get(t->right, i, j,\
-    \ m, r));\n    }\n\n  public:\n    value_type get(int i, int j) const {\n    \
-    \  return get(root, i, j, 0, 1 << (depth - 1));\n    }\n\n    value_type operator[](int\
-    \ i) const {\n      return get(i, i + 1);\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/sum.cpp\"\
+    \ value), 1, pos);\n    }\n\n  protected:\n    node* set(node *t, int l, int r,\
+    \ int pos, const value_type &val) const {\n      if(r <= pos or pos + 1 <= l){\n\
+    \        return t;\n      }else if(pos <= l and r <= pos + 1){\n        return\
+    \ new node(val);\n      }else{\n        const int m = (l + r) >> 1;\n        auto\
+    \ lp = set(t->left, l, m, pos, val);\n        auto rp = set(t->right, m, r, pos,\
+    \ val);\n\n        node *s = new node(M(lp->value, rp->value));\n\n        s->left\
+    \ = lp;\n        s->right = rp;\n\n        return s;\n      }\n    }\n\n  public:\n\
+    \    persistent_segment_tree set(int i, const value_type &val) const {\n     \
+    \ node *t = set(root, 0, 1 << (depth - 1), i, val);\n      return persistent_segment_tree(depth,\
+    \ t);\n    }\n\n    persistent_segment_tree update(int i, const value_type &val)\
+    \ const {\n      return set(i, M((*this)[i], val));\n    }\n\n  protected:\n \
+    \   value_type get(node *t, int i, int j, int l, int r) const {\n      if(i <=\
+    \ l and r <= j) return t->value;\n      if(r <= i or j <= l) return M();\n   \
+    \   const int m = (l + r) >> 1;\n      return M(get(t->left, i, j, l, m), get(t->right,\
+    \ i, j, m, r));\n    }\n\n  public:\n    value_type fold(int i, int j) const {\n\
+    \      return get(root, i, j, 0, 1 << (depth - 1));\n    }\n\n    value_type operator[](int\
+    \ i) const {\n      return fold(i, i + 1);\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/sum.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  struct sum_monoid {\n   \
     \ using value_type = T;\n    value_type operator()() const {return 0;}\n    value_type\
     \ operator()(value_type a, value_type b) const {return a + b;}\n  };\n}\n#line\
@@ -137,10 +138,10 @@ data:
     \      return y[i] < y[j];\n    },\n    x, y, w\n  );\n\n  auto c = hl::compressor<int64_t>().add(x).build().compress(x);\n\
     \  const int m = c.size();\n\n  std::vector<Seg> seg;\n  seg.push_back(Seg(m));\n\
     \n  for(int i = 0; i < N; ++i){\n    auto &s = seg.back();\n    seg.push_back(s.update(x[i],\
-    \ s[x[i]] + w[i]));\n  }\n\n  for(auto [l, d, r, u] : hl::input_tuples<int64_t,\
-    \ int64_t, int64_t, int64_t>(Q)){\n    l = c.get_index(l);\n    r = c.get_index(r);\n\
-    \n    u = std::lower_bound(y.begin(), y.end(), u) - y.begin();\n    d = std::lower_bound(y.begin(),\
-    \ y.end(), d) - y.begin();\n\n    auto ans = seg[u].get(l, r) - seg[d].get(l,\
+    \ w[i]));\n  }\n\n  for(auto [l, d, r, u] : hl::input_tuples<int64_t, int64_t,\
+    \ int64_t, int64_t>(Q)){\n    l = c.get_index(l);\n    r = c.get_index(r);\n\n\
+    \    u = std::lower_bound(y.begin(), y.end(), u) - y.begin();\n    d = std::lower_bound(y.begin(),\
+    \ y.end(), d) - y.begin();\n\n    auto ans = seg[u].fold(l, r) - seg[d].fold(l,\
     \ r);\n    std::cout << ans << \"\\n\";\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\n\n#include\
     \ <iostream>\n#include <vector>\n#include \"Mylib/Utils/sort_simultaneously.cpp\"\
@@ -154,10 +155,10 @@ data:
     \      return y[i] < y[j];\n    },\n    x, y, w\n  );\n\n  auto c = hl::compressor<int64_t>().add(x).build().compress(x);\n\
     \  const int m = c.size();\n\n  std::vector<Seg> seg;\n  seg.push_back(Seg(m));\n\
     \n  for(int i = 0; i < N; ++i){\n    auto &s = seg.back();\n    seg.push_back(s.update(x[i],\
-    \ s[x[i]] + w[i]));\n  }\n\n  for(auto [l, d, r, u] : hl::input_tuples<int64_t,\
-    \ int64_t, int64_t, int64_t>(Q)){\n    l = c.get_index(l);\n    r = c.get_index(r);\n\
-    \n    u = std::lower_bound(y.begin(), y.end(), u) - y.begin();\n    d = std::lower_bound(y.begin(),\
-    \ y.end(), d) - y.begin();\n\n    auto ans = seg[u].get(l, r) - seg[d].get(l,\
+    \ w[i]));\n  }\n\n  for(auto [l, d, r, u] : hl::input_tuples<int64_t, int64_t,\
+    \ int64_t, int64_t>(Q)){\n    l = c.get_index(l);\n    r = c.get_index(r);\n\n\
+    \    u = std::lower_bound(y.begin(), y.end(), u) - y.begin();\n    d = std::lower_bound(y.begin(),\
+    \ y.end(), d) - y.begin();\n\n    auto ans = seg[u].fold(l, r) - seg[d].fold(l,\
     \ r);\n    std::cout << ans << \"\\n\";\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Utils/sort_simultaneously.cpp
@@ -170,7 +171,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp

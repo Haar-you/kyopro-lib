@@ -32,9 +32,9 @@ data:
     \ l and r <= y) return data[i];\n      return\n        get(i << 1 | 0, l, (l +\
     \ r) / 2, x, y) +\n        get(i << 1 | 1, (l + r) / 2, r, x, y);\n    }\n\n \
     \ public:\n    void update(int l, int r, T a, T b){\n      update(1, 0, hsize,\
-    \ l, r, a, b);\n    }\n\n    T get(int l, int r){\n      return get(1, 0, hsize,\
-    \ l, r);\n    }\n\n    T operator[](int i){\n      return get(i, i + 1);\n   \
-    \ }\n  };\n}\n"
+    \ l, r, a, b);\n    }\n\n    T fold(int l, int r){\n      return get(1, 0, hsize,\
+    \ l, r);\n    }\n\n    T operator[](int i){\n      return fold(i, i + 1);\n  \
+    \  }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <utility>\n\nnamespace haar_lib\
     \ {\n  template <typename T>\n  class segment_tree_linear_add_range_sum {\n  \
     \  using P = std::pair<T, T>;\n\n    int depth, size, hsize;\n    std::vector<T>\
@@ -58,14 +58,14 @@ data:
     \     if(r <= x or y <= l) return 0;\n      if(x <= l and r <= y) return data[i];\n\
     \      return\n        get(i << 1 | 0, l, (l + r) / 2, x, y) +\n        get(i\
     \ << 1 | 1, (l + r) / 2, r, x, y);\n    }\n\n  public:\n    void update(int l,\
-    \ int r, T a, T b){\n      update(1, 0, hsize, l, r, a, b);\n    }\n\n    T get(int\
+    \ int r, T a, T b){\n      update(1, 0, hsize, l, r, a, b);\n    }\n\n    T fold(int\
     \ l, int r){\n      return get(1, 0, hsize, l, r);\n    }\n\n    T operator[](int\
-    \ i){\n      return get(i, i + 1);\n    }\n  };\n}\n"
+    \ i){\n      return fold(i, i + 1);\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/DataStructure/SegmentTree/segment_tree_linear_add_range_sum.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/DataStructure/SegmentTree/segment_tree_linear_add_range_sum.cpp

@@ -123,8 +123,8 @@ data:
     \          propagate(R);\n        }\n        if(L & 1){\n          lazy[L] = M_update(x,\
     \ lazy[L]);\n          propagate(L);\n          ++L;\n        }\n        L >>=\
     \ 1;\n        R >>= 1;\n      }\n\n      bottom_up(l + hsize);\n      if(r < hsize)\
-    \ bottom_up(r + hsize);\n    }\n\n    void update_at(int i, const value_type_update\
-    \ &x){update(i, i + 1, x);}\n\n    value_type_get get(int l, int r){\n      propagate_top_down(l\
+    \ bottom_up(r + hsize);\n    }\n\n    void update(int i, const value_type_update\
+    \ &x){update(i, i + 1, x);}\n\n    value_type_get fold(int l, int r){\n      propagate_top_down(l\
     \ + hsize);\n      if(r < hsize) propagate_top_down(r + hsize);\n\n      value_type_get\
     \ ret_left = M_get(), ret_right = M_get();\n\n      int L = l + hsize, R = r +\
     \ hsize;\n\n      while(L < R){\n        if(R & 1){\n          --R;\n        \
@@ -132,9 +132,9 @@ data:
     \        if(L & 1){\n          propagate(L);\n          ret_left = M_get(ret_left,\
     \ data[L]);\n          ++L;\n        }\n        L >>= 1;\n        R >>= 1;\n \
     \     }\n\n      return M_get(ret_left, ret_right);\n    }\n\n    value_type_get\
-    \ operator[](int i){return get(i, i + 1);}\n\n    template <typename T>\n    void\
-    \ init(const T &val){\n      init_with_vector(std::vector<T>(hsize, val));\n \
-    \   }\n\n    template <typename T>\n    void init_with_vector(const std::vector<T>\
+    \ operator[](int i){return fold(i, i + 1);}\n\n    template <typename T>\n   \
+    \ void init(const T &val){\n      init_with_vector(std::vector<T>(hsize, val));\n\
+    \    }\n\n    template <typename T>\n    void init_with_vector(const std::vector<T>\
     \ &val){\n      data.assign(size, M_get());\n      lazy.assign(size, M_update());\n\
     \      for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = (value_type_get)val[i];\n\
     \      for(int i = hsize - 1; i > 0; --i) data[i] = M_get(data[i << 1 | 0], data[i\
@@ -173,7 +173,7 @@ data:
     \ 0);\n  hl::lazy_segment_tree<hl::sum_monoid<int64_t>, hl::sum_monoid<int64_t>,\
     \ hl::add_sum> seg(N);\n\n  for(auto [c] : hl::input_tuples<int>(Q)){\n    if(c\
     \ == 0){\n      int u, v; std::cin >> u >> v;\n\n      int64_t ans = 0;\n    \
-    \  for(auto [l, r] : hld.path_query_edge(u, v)){\n        ans += seg.get(l, r);\n\
+    \  for(auto [l, r] : hld.path_query_edge(u, v)){\n        ans += seg.fold(l, r);\n\
     \      }\n      std::cout << ans << std::endl;\n    }else{\n      int v, x; std::cin\
     \ >> v >> x;\n\n      auto [l, r] = hld.subtree_query_edge(v);\n      seg.update(l,\
     \ r, x);\n    }\n  }\n\n  return 0;\n}\n"
@@ -186,7 +186,7 @@ data:
     \ false>(N - 1);\n\n  auto hld = hl::hl_decomposition(tree, 0);\n  hl::lazy_segment_tree<hl::sum_monoid<int64_t>,\
     \ hl::sum_monoid<int64_t>, hl::add_sum> seg(N);\n\n  for(auto [c] : hl::input_tuples<int>(Q)){\n\
     \    if(c == 0){\n      int u, v; std::cin >> u >> v;\n\n      int64_t ans = 0;\n\
-    \      for(auto [l, r] : hld.path_query_edge(u, v)){\n        ans += seg.get(l,\
+    \      for(auto [l, r] : hld.path_query_edge(u, v)){\n        ans += seg.fold(l,\
     \ r);\n      }\n      std::cout << ans << std::endl;\n    }else{\n      int v,\
     \ x; std::cin >> v >> x;\n\n      auto [l, r] = hld.subtree_query_edge(v);\n \
     \     seg.update(l, r, x);\n    }\n  }\n\n  return 0;\n}\n"
@@ -201,7 +201,7 @@ data:
   isVerificationFile: true
   path: test/aoj/2667/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-18 18:43:57+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/2667/main.test.cpp

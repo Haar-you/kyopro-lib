@@ -106,41 +106,43 @@ data:
     \ size, hsize;\n    std::vector<value_type> data;\n\n  public:\n    segment_tree(){}\n\
     \    segment_tree(int n):\n      depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 :\
     \ 1),\n      size(1 << depth), hsize(size / 2),\n      data(size, M())\n    {}\n\
-    \n    auto operator[](int i) const {return data[hsize + i];}\n\n    auto get(int\
+    \n    auto operator[](int i) const {return data[hsize + i];}\n\n    auto fold(int\
     \ x, int y) const {\n      value_type ret_left = M();\n      value_type ret_right\
     \ = M();\n\n      int l = x + hsize, r = y + hsize;\n      while(l < r){\n   \
     \     if(r & 1) ret_right = M(data[--r], ret_right);\n        if(l & 1) ret_left\
     \ = M(ret_left, data[l++]);\n        l >>= 1, r >>= 1;\n      }\n\n      return\
-    \ M(ret_left, ret_right);\n    }\n\n    void update(int i, const value_type &x){\n\
+    \ M(ret_left, ret_right);\n    }\n\n    void set(int i, const value_type &x){\n\
     \      i += hsize;\n      data[i] = x;\n      while(i > 1) i >>= 1, data[i] =\
-    \ M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n    template <typename T>\n\
-    \    void init_with_vector(const std::vector<T> &val){\n      data.assign(size,\
-    \ M());\n      for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = val[i];\n\
-    \      for(int i = hsize - 1; i >= 1; --i) data[i] = M(data[i << 1 | 0], data[i\
-    \ << 1 | 1]);\n    }\n\n    template <typename T>\n    void init(const T &val){\n\
-    \      init_with_vector(std::vector<value_type>(hsize, val));\n    }\n\n  private:\n\
-    \    template <bool Lower, typename F>\n    int bound(const int l, const int r,\
-    \ value_type x, F f) const {\n      std::vector<int> pl, pr;\n      int L = l\
-    \ + hsize;\n      int R = r + hsize;\n      while(L < R){\n        if(R & 1) pr.push_back(--R);\n\
-    \        if(L & 1) pl.push_back(L++);\n        L >>= 1, R >>= 1;\n      }\n\n\
-    \      std::reverse(pr.begin(), pr.end());\n      pl.insert(pl.end(), pr.begin(),\
-    \ pr.end());\n\n      value_type a = M();\n\n      for(int i : pl){\n        auto\
-    \ b = M(a, data[i]);\n\n        if((Lower and not f(b, x)) or (not Lower and f(x,\
-    \ b))){\n          while(i < hsize){\n            if(auto c = M(a, data[i << 1\
-    \ | 0]); (Lower and not f(c, x)) or (not Lower and f(x, c))){\n              i\
-    \ = i << 1 | 0;\n            }else{\n              a = c;\n              i = i\
-    \ << 1 | 1;\n            }\n          }\n\n          return i - hsize;\n     \
-    \   }\n\n        a = b;\n      }\n\n      return r;\n    }\n\n  public:\n    template\
-    \ <typename F = std::less<value_type>>\n    int lower_bound(int l, int r, value_type\
-    \ x, F f = F()) const {\n      return bound<true>(l, r, x, f);\n    }\n\n    template\
-    \ <typename F = std::less<value_type>>\n    int upper_bound(int l, int r, value_type\
-    \ x, F f = F()) const {\n      return bound<false>(l, r, x, f);\n    }\n  };\n\
-    }\n#line 3 \"Mylib/AlgebraicStructure/Monoid/max.cpp\"\n#include <optional>\n\n\
-    namespace haar_lib {\n  template <typename T>\n  struct max_monoid {\n    using\
-    \ value_type = std::optional<T>;\n\n    value_type operator()() const {return\
-    \ {};}\n    value_type operator()(const value_type &a, const value_type &b) const\
-    \ {\n      if(not a) return b;\n      if(not b) return a;\n      return {std::max(*a,\
-    \ *b)};\n    }\n  };\n}\n#line 3 \"Mylib/AlgebraicStructure/Monoid/maybe.cpp\"\
+    \ M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n    void update(int i, const\
+    \ value_type &x){\n      i += hsize;\n      data[i] = M(data[i], x);\n      while(i\
+    \ > 1) i >>= 1, data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n  \
+    \  template <typename T>\n    void init_with_vector(const std::vector<T> &val){\n\
+    \      data.assign(size, M());\n      for(int i = 0; i < (int)val.size(); ++i)\
+    \ data[hsize + i] = val[i];\n      for(int i = hsize - 1; i >= 1; --i) data[i]\
+    \ = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n    template <typename T>\n\
+    \    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
+    \ val));\n    }\n\n  private:\n    template <bool Lower, typename F>\n    int\
+    \ bound(const int l, const int r, value_type x, F f) const {\n      std::vector<int>\
+    \ pl, pr;\n      int L = l + hsize;\n      int R = r + hsize;\n      while(L <\
+    \ R){\n        if(R & 1) pr.push_back(--R);\n        if(L & 1) pl.push_back(L++);\n\
+    \        L >>= 1, R >>= 1;\n      }\n\n      std::reverse(pr.begin(), pr.end());\n\
+    \      pl.insert(pl.end(), pr.begin(), pr.end());\n\n      value_type a = M();\n\
+    \n      for(int i : pl){\n        auto b = M(a, data[i]);\n\n        if((Lower\
+    \ and not f(b, x)) or (not Lower and f(x, b))){\n          while(i < hsize){\n\
+    \            if(auto c = M(a, data[i << 1 | 0]); (Lower and not f(c, x)) or (not\
+    \ Lower and f(x, c))){\n              i = i << 1 | 0;\n            }else{\n  \
+    \            a = c;\n              i = i << 1 | 1;\n            }\n          }\n\
+    \n          return i - hsize;\n        }\n\n        a = b;\n      }\n\n      return\
+    \ r;\n    }\n\n  public:\n    template <typename F = std::less<value_type>>\n\
+    \    int lower_bound(int l, int r, value_type x, F f = F()) const {\n      return\
+    \ bound<true>(l, r, x, f);\n    }\n\n    template <typename F = std::less<value_type>>\n\
+    \    int upper_bound(int l, int r, value_type x, F f = F()) const {\n      return\
+    \ bound<false>(l, r, x, f);\n    }\n  };\n}\n#line 3 \"Mylib/AlgebraicStructure/Monoid/max.cpp\"\
+    \n#include <optional>\n\nnamespace haar_lib {\n  template <typename T>\n  struct\
+    \ max_monoid {\n    using value_type = std::optional<T>;\n\n    value_type operator()()\
+    \ const {return {};}\n    value_type operator()(const value_type &a, const value_type\
+    \ &b) const {\n      if(not a) return b;\n      if(not b) return a;\n      return\
+    \ {std::max(*a, *b)};\n    }\n  };\n}\n#line 3 \"Mylib/AlgebraicStructure/Monoid/maybe.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename Semigroup>\n  struct maybe_monoid\
     \ {\n    using value_type = std::optional<typename Semigroup::value_type>;\n \
     \   const static Semigroup S;\n\n    value_type operator()() const {return std::nullopt;}\n\
@@ -180,13 +182,13 @@ data:
     \  for(auto &x : A) --x;\n\n  hl::tree<int> tree(N);\n  tree.read<1, false, false>(N\
     \ - 1);\n\n  hl::hl_decomposition<int> hld(tree, 0);\n  lca_semigroup::lca = [&](int\
     \ a, int b){return hld.lca(a, b);};\n\n  hl::segment_tree<hl::max_monoid<int>>\
-    \ seg1(N);\n  for(int i = 0; i < N; ++i){\n    seg1.update(hld.get_id(i), {C[i]});\n\
+    \ seg1(N);\n  for(int i = 0; i < N; ++i){\n    seg1.set(hld.get_id(i), {C[i]});\n\
     \  }\n\n  hl::segment_tree<hl::maybe_monoid<lca_semigroup>> seg2(K);\n  seg2.init_with_vector(A);\n\
     \n  for(auto [T] : hl::input_tuples<int>(Q)){\n    if(T == 1){\n      int X, Y;\
-    \ std::cin >> X >> Y;\n      --X; --Y;\n\n      seg2.update(X, Y);\n    }else{\n\
-    \      int L, R; std::cin >> L >> R;\n\n      int lca = *seg2.get(L - 1, R);\n\
+    \ std::cin >> X >> Y;\n      --X; --Y;\n\n      seg2.set(X, Y);\n    }else{\n\
+    \      int L, R; std::cin >> L >> R;\n\n      int lca = *seg2.fold(L - 1, R);\n\
     \      int ans = 0;\n\n      for(auto [l, r, d] : hld.path_query_vertex(0, lca)){\n\
-    \        ans = std::max(ans, seg1.get(l, r).value());\n      }\n\n      std::cout\
+    \        ans = std::max(ans, seg1.fold(l, r).value());\n      }\n\n      std::cout\
     \ << ans << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/1030\"\n\n#include <iostream>\n\
     #include <functional>\n#include <algorithm>\n#include <vector>\n#include \"Mylib/Graph/Template/graph.cpp\"\
@@ -202,12 +204,12 @@ data:
     \ tree(N);\n  tree.read<1, false, false>(N - 1);\n\n  hl::hl_decomposition<int>\
     \ hld(tree, 0);\n  lca_semigroup::lca = [&](int a, int b){return hld.lca(a, b);};\n\
     \n  hl::segment_tree<hl::max_monoid<int>> seg1(N);\n  for(int i = 0; i < N; ++i){\n\
-    \    seg1.update(hld.get_id(i), {C[i]});\n  }\n\n  hl::segment_tree<hl::maybe_monoid<lca_semigroup>>\
+    \    seg1.set(hld.get_id(i), {C[i]});\n  }\n\n  hl::segment_tree<hl::maybe_monoid<lca_semigroup>>\
     \ seg2(K);\n  seg2.init_with_vector(A);\n\n  for(auto [T] : hl::input_tuples<int>(Q)){\n\
     \    if(T == 1){\n      int X, Y; std::cin >> X >> Y;\n      --X; --Y;\n\n   \
-    \   seg2.update(X, Y);\n    }else{\n      int L, R; std::cin >> L >> R;\n\n  \
-    \    int lca = *seg2.get(L - 1, R);\n      int ans = 0;\n\n      for(auto [l,\
-    \ r, d] : hld.path_query_vertex(0, lca)){\n        ans = std::max(ans, seg1.get(l,\
+    \   seg2.set(X, Y);\n    }else{\n      int L, R; std::cin >> L >> R;\n\n     \
+    \ int lca = *seg2.fold(L - 1, R);\n      int ans = 0;\n\n      for(auto [l, r,\
+    \ d] : hld.path_query_vertex(0, lca)){\n        ans = std::max(ans, seg1.fold(l,\
     \ r).value());\n      }\n\n      std::cout << ans << \"\\n\";\n    }\n  }\n\n\
     \  return 0;\n}\n"
   dependsOn:
@@ -222,7 +224,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/1030/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/1030/main.test.cpp

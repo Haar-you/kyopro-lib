@@ -130,8 +130,8 @@ data:
     \          propagate(R);\n        }\n        if(L & 1){\n          lazy[L] = M_update(x,\
     \ lazy[L]);\n          propagate(L);\n          ++L;\n        }\n        L >>=\
     \ 1;\n        R >>= 1;\n      }\n\n      bottom_up(l + hsize);\n      if(r < hsize)\
-    \ bottom_up(r + hsize);\n    }\n\n    void update_at(int i, const value_type_update\
-    \ &x){update(i, i + 1, x);}\n\n    value_type_get get(int l, int r){\n      propagate_top_down(l\
+    \ bottom_up(r + hsize);\n    }\n\n    void update(int i, const value_type_update\
+    \ &x){update(i, i + 1, x);}\n\n    value_type_get fold(int l, int r){\n      propagate_top_down(l\
     \ + hsize);\n      if(r < hsize) propagate_top_down(r + hsize);\n\n      value_type_get\
     \ ret_left = M_get(), ret_right = M_get();\n\n      int L = l + hsize, R = r +\
     \ hsize;\n\n      while(L < R){\n        if(R & 1){\n          --R;\n        \
@@ -139,9 +139,9 @@ data:
     \        if(L & 1){\n          propagate(L);\n          ret_left = M_get(ret_left,\
     \ data[L]);\n          ++L;\n        }\n        L >>= 1;\n        R >>= 1;\n \
     \     }\n\n      return M_get(ret_left, ret_right);\n    }\n\n    value_type_get\
-    \ operator[](int i){return get(i, i + 1);}\n\n    template <typename T>\n    void\
-    \ init(const T &val){\n      init_with_vector(std::vector<T>(hsize, val));\n \
-    \   }\n\n    template <typename T>\n    void init_with_vector(const std::vector<T>\
+    \ operator[](int i){return fold(i, i + 1);}\n\n    template <typename T>\n   \
+    \ void init(const T &val){\n      init_with_vector(std::vector<T>(hsize, val));\n\
+    \    }\n\n    template <typename T>\n    void init_with_vector(const std::vector<T>\
     \ &val){\n      data.assign(size, M_get());\n      lazy.assign(size, M_update());\n\
     \      for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = (value_type_get)val[i];\n\
     \      for(int i = hsize - 1; i > 0; --i) data[i] = M_get(data[i << 1 | 0], data[i\
@@ -160,31 +160,32 @@ data:
     \ {\n      int c, d, v; std::cin >> c >> d >> v;\n      --c;\n      seg_w_max.update(c,\
     \ d, v);\n      seg_w_min.update(c, d, v);\n      break;\n    }\n\n    case 3:\
     \ {\n      int64_t a, b, c, d; std::cin >> a >> b >> c >> d;\n      --a, --c;\n\
-    \n      std::map<int64_t, int64_t> m;\n\n      auto x = std::vector{seg_h_max.get(a,\
-    \ b), seg_h_min.get(a, b)};\n      auto y = std::vector{seg_w_max.get(c, d), seg_w_min.get(c,\
-    \ d)};\n\n      if(x[0].value == x[1].value) x.pop_back();\n      if(y[0].value\
-    \ == y[1].value) y.pop_back();\n\n      int64_t M = LLONG_MAX;\n      for(auto\
-    \ p : x){\n        for(auto q : y){\n          M = std::min(M, *p.value * *q.value);\n\
-    \        }\n      }\n\n      if(M == 0){\n        int64_t p = 0;\n        for(auto\
-    \ e : x) if(e.value == 0) p += e.count;\n        int64_t q = 0;\n        for(auto\
-    \ e : y) if(e.value == 0) q += e.count;\n        m[0] = (b - a) * q + (d - c)\
-    \ * p - p * q;\n      }else{\n        for(auto p : x){\n          for(auto q :\
-    \ y){\n            m[*p.value * *q.value] += p.count * q.count;\n          }\n\
-    \        }\n      }\n\n      std::cout << m.begin()->first << \" \" << m.begin()->second\
-    \ << \"\\n\";\n\n      break;\n    }\n\n    case 4: {\n      int64_t a, b, c,\
-    \ d; std::cin >> a >> b >> c >> d;\n      --a, --c;\n\n      std::map<int64_t,\
-    \ int64_t> m;\n\n      auto x = std::vector{seg_h_max.get(a, b), seg_h_min.get(a,\
-    \ b)};\n      auto y = std::vector{seg_w_max.get(c, d), seg_w_min.get(c, d)};\n\
-    \n      if(x[0].value == x[1].value) x.pop_back();\n      if(y[0].value == y[1].value)\
-    \ y.pop_back();\n\n      int64_t M = LLONG_MIN;\n      for(auto p : x){\n    \
-    \    for(auto q : y){\n          M = std::max(M, *p.value * *q.value);\n     \
-    \   }\n      }\n\n      if(M == 0){\n        int64_t p = 0;\n        for(auto\
-    \ e : x) if(e.value == 0) p += e.count;\n        int64_t q = 0;\n        for(auto\
-    \ e : y) if(e.value == 0) q += e.count;\n        m[0] = (b - a) * q + (d - c)\
-    \ * p - p * q;\n      }else{\n        for(auto p : x){\n          for(auto q :\
-    \ y){\n            m[*p.value * *q.value] += p.count * q.count;\n          }\n\
-    \        }\n      }\n\n      std::cout << m.rbegin()->first << \" \" << m.rbegin()->second\
-    \ << \"\\n\";\n\n      break;\n    }\n    }\n  }\n\n  return 0;\n}\n"
+    \n      std::map<int64_t, int64_t> m;\n\n      auto x = std::vector{seg_h_max.fold(a,\
+    \ b), seg_h_min.fold(a, b)};\n      auto y = std::vector{seg_w_max.fold(c, d),\
+    \ seg_w_min.fold(c, d)};\n\n      if(x[0].value == x[1].value) x.pop_back();\n\
+    \      if(y[0].value == y[1].value) y.pop_back();\n\n      int64_t M = LLONG_MAX;\n\
+    \      for(auto p : x){\n        for(auto q : y){\n          M = std::min(M, *p.value\
+    \ * *q.value);\n        }\n      }\n\n      if(M == 0){\n        int64_t p = 0;\n\
+    \        for(auto e : x) if(e.value == 0) p += e.count;\n        int64_t q = 0;\n\
+    \        for(auto e : y) if(e.value == 0) q += e.count;\n        m[0] = (b - a)\
+    \ * q + (d - c) * p - p * q;\n      }else{\n        for(auto p : x){\n       \
+    \   for(auto q : y){\n            m[*p.value * *q.value] += p.count * q.count;\n\
+    \          }\n        }\n      }\n\n      std::cout << m.begin()->first << \"\
+    \ \" << m.begin()->second << \"\\n\";\n\n      break;\n    }\n\n    case 4: {\n\
+    \      int64_t a, b, c, d; std::cin >> a >> b >> c >> d;\n      --a, --c;\n\n\
+    \      std::map<int64_t, int64_t> m;\n\n      auto x = std::vector{seg_h_max.fold(a,\
+    \ b), seg_h_min.fold(a, b)};\n      auto y = std::vector{seg_w_max.fold(c, d),\
+    \ seg_w_min.fold(c, d)};\n\n      if(x[0].value == x[1].value) x.pop_back();\n\
+    \      if(y[0].value == y[1].value) y.pop_back();\n\n      int64_t M = LLONG_MIN;\n\
+    \      for(auto p : x){\n        for(auto q : y){\n          M = std::max(M, *p.value\
+    \ * *q.value);\n        }\n      }\n\n      if(M == 0){\n        int64_t p = 0;\n\
+    \        for(auto e : x) if(e.value == 0) p += e.count;\n        int64_t q = 0;\n\
+    \        for(auto e : y) if(e.value == 0) q += e.count;\n        m[0] = (b - a)\
+    \ * q + (d - c) * p - p * q;\n      }else{\n        for(auto p : x){\n       \
+    \   for(auto q : y){\n            m[*p.value * *q.value] += p.count * q.count;\n\
+    \          }\n        }\n      }\n\n      std::cout << m.rbegin()->first << \"\
+    \ \" << m.rbegin()->second << \"\\n\";\n\n      break;\n    }\n    }\n  }\n\n\
+    \  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3035\"\
     \n\n#include <iostream>\n#include <algorithm>\n#include <map>\n#include <climits>\n\
     #include \"Mylib/IO/input_vector.cpp\"\n#include \"Mylib/IO/input_tuples.cpp\"\
@@ -207,31 +208,32 @@ data:
     \ {\n      int c, d, v; std::cin >> c >> d >> v;\n      --c;\n      seg_w_max.update(c,\
     \ d, v);\n      seg_w_min.update(c, d, v);\n      break;\n    }\n\n    case 3:\
     \ {\n      int64_t a, b, c, d; std::cin >> a >> b >> c >> d;\n      --a, --c;\n\
-    \n      std::map<int64_t, int64_t> m;\n\n      auto x = std::vector{seg_h_max.get(a,\
-    \ b), seg_h_min.get(a, b)};\n      auto y = std::vector{seg_w_max.get(c, d), seg_w_min.get(c,\
-    \ d)};\n\n      if(x[0].value == x[1].value) x.pop_back();\n      if(y[0].value\
-    \ == y[1].value) y.pop_back();\n\n      int64_t M = LLONG_MAX;\n      for(auto\
-    \ p : x){\n        for(auto q : y){\n          M = std::min(M, *p.value * *q.value);\n\
-    \        }\n      }\n\n      if(M == 0){\n        int64_t p = 0;\n        for(auto\
-    \ e : x) if(e.value == 0) p += e.count;\n        int64_t q = 0;\n        for(auto\
-    \ e : y) if(e.value == 0) q += e.count;\n        m[0] = (b - a) * q + (d - c)\
-    \ * p - p * q;\n      }else{\n        for(auto p : x){\n          for(auto q :\
-    \ y){\n            m[*p.value * *q.value] += p.count * q.count;\n          }\n\
-    \        }\n      }\n\n      std::cout << m.begin()->first << \" \" << m.begin()->second\
-    \ << \"\\n\";\n\n      break;\n    }\n\n    case 4: {\n      int64_t a, b, c,\
-    \ d; std::cin >> a >> b >> c >> d;\n      --a, --c;\n\n      std::map<int64_t,\
-    \ int64_t> m;\n\n      auto x = std::vector{seg_h_max.get(a, b), seg_h_min.get(a,\
-    \ b)};\n      auto y = std::vector{seg_w_max.get(c, d), seg_w_min.get(c, d)};\n\
-    \n      if(x[0].value == x[1].value) x.pop_back();\n      if(y[0].value == y[1].value)\
-    \ y.pop_back();\n\n      int64_t M = LLONG_MIN;\n      for(auto p : x){\n    \
-    \    for(auto q : y){\n          M = std::max(M, *p.value * *q.value);\n     \
-    \   }\n      }\n\n      if(M == 0){\n        int64_t p = 0;\n        for(auto\
-    \ e : x) if(e.value == 0) p += e.count;\n        int64_t q = 0;\n        for(auto\
-    \ e : y) if(e.value == 0) q += e.count;\n        m[0] = (b - a) * q + (d - c)\
-    \ * p - p * q;\n      }else{\n        for(auto p : x){\n          for(auto q :\
-    \ y){\n            m[*p.value * *q.value] += p.count * q.count;\n          }\n\
-    \        }\n      }\n\n      std::cout << m.rbegin()->first << \" \" << m.rbegin()->second\
-    \ << \"\\n\";\n\n      break;\n    }\n    }\n  }\n\n  return 0;\n}\n"
+    \n      std::map<int64_t, int64_t> m;\n\n      auto x = std::vector{seg_h_max.fold(a,\
+    \ b), seg_h_min.fold(a, b)};\n      auto y = std::vector{seg_w_max.fold(c, d),\
+    \ seg_w_min.fold(c, d)};\n\n      if(x[0].value == x[1].value) x.pop_back();\n\
+    \      if(y[0].value == y[1].value) y.pop_back();\n\n      int64_t M = LLONG_MAX;\n\
+    \      for(auto p : x){\n        for(auto q : y){\n          M = std::min(M, *p.value\
+    \ * *q.value);\n        }\n      }\n\n      if(M == 0){\n        int64_t p = 0;\n\
+    \        for(auto e : x) if(e.value == 0) p += e.count;\n        int64_t q = 0;\n\
+    \        for(auto e : y) if(e.value == 0) q += e.count;\n        m[0] = (b - a)\
+    \ * q + (d - c) * p - p * q;\n      }else{\n        for(auto p : x){\n       \
+    \   for(auto q : y){\n            m[*p.value * *q.value] += p.count * q.count;\n\
+    \          }\n        }\n      }\n\n      std::cout << m.begin()->first << \"\
+    \ \" << m.begin()->second << \"\\n\";\n\n      break;\n    }\n\n    case 4: {\n\
+    \      int64_t a, b, c, d; std::cin >> a >> b >> c >> d;\n      --a, --c;\n\n\
+    \      std::map<int64_t, int64_t> m;\n\n      auto x = std::vector{seg_h_max.fold(a,\
+    \ b), seg_h_min.fold(a, b)};\n      auto y = std::vector{seg_w_max.fold(c, d),\
+    \ seg_w_min.fold(c, d)};\n\n      if(x[0].value == x[1].value) x.pop_back();\n\
+    \      if(y[0].value == y[1].value) y.pop_back();\n\n      int64_t M = LLONG_MIN;\n\
+    \      for(auto p : x){\n        for(auto q : y){\n          M = std::max(M, *p.value\
+    \ * *q.value);\n        }\n      }\n\n      if(M == 0){\n        int64_t p = 0;\n\
+    \        for(auto e : x) if(e.value == 0) p += e.count;\n        int64_t q = 0;\n\
+    \        for(auto e : y) if(e.value == 0) q += e.count;\n        m[0] = (b - a)\
+    \ * q + (d - c) * p - p * q;\n      }else{\n        for(auto p : x){\n       \
+    \   for(auto q : y){\n            m[*p.value * *q.value] += p.count * q.count;\n\
+    \          }\n        }\n      }\n\n      std::cout << m.rbegin()->first << \"\
+    \ \" << m.rbegin()->second << \"\\n\";\n\n      break;\n    }\n    }\n  }\n\n\
+    \  return 0;\n}\n"
   dependsOn:
   - Mylib/IO/input_vector.cpp
   - Mylib/IO/input_tuples.cpp
@@ -246,7 +248,7 @@ data:
   isVerificationFile: true
   path: test/aoj/3035/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-18 18:43:57+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/3035/main.test.cpp

@@ -44,9 +44,9 @@ data:
     \      depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),\n      size(1LL <<\
     \ depth),\n      hsize(size / 2)\n    {\n      root = new node(M_get(), M_update());\n\
     \    }\n\n    void update(int64_t l, int64_t r, value_type_update value){\n  \
-    \    update(root, 0, hsize, l, r, value);\n    }\n\n    value_type_get get(int64_t\
+    \    update(root, 0, hsize, l, r, value);\n    }\n\n    value_type_get fold(int64_t\
     \ l, int64_t r){\n      return get(root, 0, hsize, l, r);\n    }\n\n    value_type_get\
-    \ operator[](int64_t i){\n      return get(i, i + 1);\n    }\n  };\n}\n"
+    \ operator[](int64_t i){\n      return fold(i, i + 1);\n    }\n  };\n}\n"
   code: "#pragma once\n#include <cstdint>\n\nnamespace haar_lib {\n  template <typename\
     \ MonoidGet, typename MonoidUpdate, template <typename, typename> typename Connector>\n\
     \  class dynamic_lazy_segment_tree {\n    using value_type_get = typename MonoidGet::value_type;\n\
@@ -79,14 +79,14 @@ data:
     \      depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),\n      size(1LL <<\
     \ depth),\n      hsize(size / 2)\n    {\n      root = new node(M_get(), M_update());\n\
     \    }\n\n    void update(int64_t l, int64_t r, value_type_update value){\n  \
-    \    update(root, 0, hsize, l, r, value);\n    }\n\n    value_type_get get(int64_t\
+    \    update(root, 0, hsize, l, r, value);\n    }\n\n    value_type_get fold(int64_t\
     \ l, int64_t r){\n      return get(root, 0, hsize, l, r);\n    }\n\n    value_type_get\
-    \ operator[](int64_t i){\n      return get(i, i + 1);\n    }\n  };\n}\n"
+    \ operator[](int64_t i){\n      return fold(i, i + 1);\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/DataStructure/SegmentTree/dynamic_lazy_segment_tree.cpp
   requiredBy: []
-  timestamp: '2020-09-18 18:43:57+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/DSL_2_F/main.dynamic.test.cpp

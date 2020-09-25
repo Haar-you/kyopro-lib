@@ -40,18 +40,20 @@ data:
     \ data;\n\n  public:\n    segment_tree(){}\n    segment_tree(int n):\n      depth(n\
     \ > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),\n      size(1 << depth), hsize(size\
     \ / 2),\n      data(size, M())\n    {}\n\n    auto operator[](int i) const {return\
-    \ data[hsize + i];}\n\n    auto get(int x, int y) const {\n      value_type ret_left\
+    \ data[hsize + i];}\n\n    auto fold(int x, int y) const {\n      value_type ret_left\
     \ = M();\n      value_type ret_right = M();\n\n      int l = x + hsize, r = y\
     \ + hsize;\n      while(l < r){\n        if(r & 1) ret_right = M(data[--r], ret_right);\n\
     \        if(l & 1) ret_left = M(ret_left, data[l++]);\n        l >>= 1, r >>=\
-    \ 1;\n      }\n\n      return M(ret_left, ret_right);\n    }\n\n    void update(int\
+    \ 1;\n      }\n\n      return M(ret_left, ret_right);\n    }\n\n    void set(int\
     \ i, const value_type &x){\n      i += hsize;\n      data[i] = x;\n      while(i\
     \ > 1) i >>= 1, data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n  \
-    \  template <typename T>\n    void init_with_vector(const std::vector<T> &val){\n\
-    \      data.assign(size, M());\n      for(int i = 0; i < (int)val.size(); ++i)\
-    \ data[hsize + i] = val[i];\n      for(int i = hsize - 1; i >= 1; --i) data[i]\
-    \ = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n    template <typename T>\n\
-    \    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
+    \  void update(int i, const value_type &x){\n      i += hsize;\n      data[i]\
+    \ = M(data[i], x);\n      while(i > 1) i >>= 1, data[i] = M(data[i << 1 | 0],\
+    \ data[i << 1 | 1]);\n    }\n\n    template <typename T>\n    void init_with_vector(const\
+    \ std::vector<T> &val){\n      data.assign(size, M());\n      for(int i = 0; i\
+    \ < (int)val.size(); ++i) data[hsize + i] = val[i];\n      for(int i = hsize -\
+    \ 1; i >= 1; --i) data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n\
+    \    template <typename T>\n    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
     \ val));\n    }\n\n  private:\n    template <bool Lower, typename F>\n    int\
     \ bound(const int l, const int r, value_type x, F f) const {\n      std::vector<int>\
     \ pl, pr;\n      int L = l + hsize;\n      int R = r + hsize;\n      while(L <\
@@ -125,10 +127,10 @@ data:
     \ i, int j){\n            if(y[i] - x[i] == y[j] - x[j]) return x[i] > x[j];\n\
     \            return y[i] - x[i] < y[j] - x[j];\n          }\n        );\n\n  \
     \      for(int i : ord){\n          int lb = std::lower_bound(Y.begin(), Y.end(),\
-    \ y[i]) - Y.begin();\n\n          if(auto res = seg.get(lb, N); res){\n      \
-    \      auto j = res->second;\n            T c = std::abs(x[i] - x[j]) + std::abs(y[i]\
+    \ y[i]) - Y.begin();\n\n          if(auto res = seg.fold(lb, N); res){\n     \
+    \       auto j = res->second;\n            T c = std::abs(x[i] - x[j]) + std::abs(y[i]\
     \ - y[j]);\n            g.add_edge(i, j, c);\n          }\n\n          if(auto\
-    \ res = seg[lb]; not res or x[i] + y[i] < res->first){\n            seg.update(lb,\
+    \ res = seg[lb]; not res or x[i] + y[i] < res->first){\n            seg.set(lb,\
     \ {{x[i] + y[i], i}});\n          }\n        }\n      };\n\n    for(int i = 0;\
     \ i < 2; ++i){\n      for(int j = 0; j < 2; ++j){\n        for(int k = 0; k <\
     \ 2; ++k){\n          f();\n          for(int l = 0; l < N; ++l) std::swap(x[l],\
@@ -149,10 +151,10 @@ data:
     \ i, int j){\n            if(y[i] - x[i] == y[j] - x[j]) return x[i] > x[j];\n\
     \            return y[i] - x[i] < y[j] - x[j];\n          }\n        );\n\n  \
     \      for(int i : ord){\n          int lb = std::lower_bound(Y.begin(), Y.end(),\
-    \ y[i]) - Y.begin();\n\n          if(auto res = seg.get(lb, N); res){\n      \
-    \      auto j = res->second;\n            T c = std::abs(x[i] - x[j]) + std::abs(y[i]\
+    \ y[i]) - Y.begin();\n\n          if(auto res = seg.fold(lb, N); res){\n     \
+    \       auto j = res->second;\n            T c = std::abs(x[i] - x[j]) + std::abs(y[i]\
     \ - y[j]);\n            g.add_edge(i, j, c);\n          }\n\n          if(auto\
-    \ res = seg[lb]; not res or x[i] + y[i] < res->first){\n            seg.update(lb,\
+    \ res = seg[lb]; not res or x[i] + y[i] < res->first){\n            seg.set(lb,\
     \ {{x[i] + y[i], i}});\n          }\n        }\n      };\n\n    for(int i = 0;\
     \ i < 2; ++i){\n      for(int j = 0; j < 2; ++j){\n        for(int k = 0; k <\
     \ 2; ++k){\n          f();\n          for(int l = 0; l < N; ++l) std::swap(x[l],\
@@ -168,7 +170,7 @@ data:
   isVerificationFile: false
   path: Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/manhattanmst/main.test.cpp

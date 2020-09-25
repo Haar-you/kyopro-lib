@@ -42,12 +42,12 @@ data:
     \    fenwick_tree(int size):\n      size(size), data(size + 1, G())\n    {}\n\n\
     \    void update(int i, const value_type &val){\n      i += 1; // 1-index\n\n\
     \      while(i <= size){\n        data[i] = G(data[i], val);\n        i += i &\
-    \ (-i);\n      }\n    }\n\n    value_type get(int i) const { // [0, i)\n     \
-    \ value_type ret = G();\n      i += 1; // 1-index\n\n      while(i > 0){\n   \
-    \     ret = G(ret, data[i]);\n        i -= i & (-i);\n      }\n\n      return\
-    \ ret;\n    }\n\n    value_type get(int l, int r) const { // [l, r)\n      return\
-    \ G(get(r - 1), G.inv(get(l - 1)));\n    }\n\n    value_type operator[](int x)\
-    \ const {\n      return get(x, x + 1);\n    }\n  };\n}\n#line 3 \"Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp\"\
+    \ (-i);\n      }\n    }\n\n    value_type fold(int i) const { // [0, i)\n    \
+    \  value_type ret = G();\n\n      while(i > 0){\n        ret = G(ret, data[i]);\n\
+    \        i -= i & (-i);\n      }\n\n      return ret;\n    }\n\n    value_type\
+    \ fold(int l, int r) const { // [l, r)\n      return G(fold(r), G.inv(fold(l)));\n\
+    \    }\n\n    value_type operator[](int x) const {\n      return fold(x, x + 1);\n\
+    \    }\n  };\n}\n#line 3 \"Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp\"\
     \n#include <numeric>\n#include <algorithm>\n#line 6 \"Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename AbelianGroup>\n  class fenwick_tree_on_fenwick_tree\
     \ {\n    using value_type = typename AbelianGroup::value_type;\n    const static\
@@ -74,11 +74,11 @@ data:
     \ get(int i, int64_t y1, int64_t y2) const {\n      value_type ret = G();\n  \
     \    for(; i > 0; i -= i & (-i)){\n        int l = std::lower_bound(c_ys[i].begin(),\
     \ c_ys[i].end(), y1) - c_ys[i].begin();\n        int r = std::lower_bound(c_ys[i].begin(),\
-    \ c_ys[i].end(), y2) - c_ys[i].begin();\n        ret = G(ret, segs[i].get(l, r));\n\
-    \      }\n      return ret;\n    }\n\n  public:\n    // [x1, x2), [y1, y2)\n \
-    \   value_type get(std::pair<int64_t, int64_t> p1, std::pair<int64_t, int64_t>\
-    \ p2) const {\n      const auto [x1, y1] = p1;\n      const auto [x2, y2] = p2;\n\
-    \      int l = std::lower_bound(c_xs.begin(), c_xs.end(), x1) - c_xs.begin();\n\
+    \ c_ys[i].end(), y2) - c_ys[i].begin();\n        ret = G(ret, segs[i].fold(l,\
+    \ r));\n      }\n      return ret;\n    }\n\n  public:\n    // [x1, x2), [y1,\
+    \ y2)\n    value_type fold(std::pair<int64_t, int64_t> p1, std::pair<int64_t,\
+    \ int64_t> p2) const {\n      const auto [x1, y1] = p1;\n      const auto [x2,\
+    \ y2] = p2;\n      int l = std::lower_bound(c_xs.begin(), c_xs.end(), x1) - c_xs.begin();\n\
     \      int r = std::lower_bound(c_xs.begin(), c_xs.end(), x2) - c_xs.begin();\n\
     \      return G(get(r, y1, y2), G.inv(get(l, y1, y2)));\n    }\n  };\n}\n#line\
     \ 4 \"Mylib/IO/input_tuple_vector.cpp\"\n#include <tuple>\n#include <utility>\n\
@@ -117,7 +117,7 @@ data:
     \ seg;\n\n  for(int i = 0; i < N; ++i){\n    seg.add(x[i], y[i]);\n  }\n\n  seg.build();\n\
     \n  for(int i = 0; i < N; ++i){\n    seg.update({x[i], y[i]}, w[i]);\n  }\n\n\
     \  for(auto [l, d, r, u] : hl::input_tuples<int64_t, int64_t, int64_t, int64_t>(Q)){\n\
-    \    auto ans = seg.get({l, d}, {r, u});\n    std::cout << ans << std::endl;\n\
+    \    auto ans = seg.fold({l, d}, {r, u});\n    std::cout << ans << std::endl;\n\
     \  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\n\n#include\
     \ <iostream>\n#include <vector>\n#include \"Mylib/AlgebraicStructure/Group/sum.cpp\"\
@@ -129,7 +129,7 @@ data:
     \ seg;\n\n  for(int i = 0; i < N; ++i){\n    seg.add(x[i], y[i]);\n  }\n\n  seg.build();\n\
     \n  for(int i = 0; i < N; ++i){\n    seg.update({x[i], y[i]}, w[i]);\n  }\n\n\
     \  for(auto [l, d, r, u] : hl::input_tuples<int64_t, int64_t, int64_t, int64_t>(Q)){\n\
-    \    auto ans = seg.get({l, d}, {r, u});\n    std::cout << ans << std::endl;\n\
+    \    auto ans = seg.fold({l, d}, {r, u});\n    std::cout << ans << std::endl;\n\
     \  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/AlgebraicStructure/Group/sum.cpp
@@ -141,7 +141,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-26 08:06:35+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp

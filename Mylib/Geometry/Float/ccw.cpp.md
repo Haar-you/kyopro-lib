@@ -5,7 +5,7 @@ data:
     path: Mylib/Geometry/Float/geometry_template.cpp
     title: Geometry template
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/intersect_segments.cpp
     title: Intersection between two segments
   - icon: ':x:'
@@ -24,19 +24,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2136/main.test.cpp
     title: test/aoj/2136/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_2_B/main.test.cpp
     title: test/aoj/CGL_2_B/main.test.cpp
   - icon: ':x:'
     path: test/aoj/CGL_3_B/main.test.cpp
     title: test/aoj/CGL_3_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_2_C/main.test.cpp
     title: test/aoj/CGL_2_C/main.test.cpp
   - icon: ':x:'
     path: test/aoj/CGL_4_C/main.test.cpp
     title: test/aoj/CGL_4_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_1_C/main.test.cpp
     title: test/aoj/CGL_1_C/main.test.cpp
   _pathExtension: cpp

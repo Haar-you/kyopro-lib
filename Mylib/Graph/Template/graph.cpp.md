@@ -11,6 +11,9 @@ data:
   - icon: ':warning:'
     path: Mylib/Graph/Template/range_edge_graph.cpp
     title: Range edge graph
+  - icon: ':x:'
+    path: Mylib/Graph/ShortestPath/spfa.cpp
+    title: SPFA
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/ShortestPath/bfs_shortest_path.cpp
     title: BFS shortest path
@@ -29,7 +32,7 @@ data:
   - icon: ':x:'
     path: Mylib/Graph/ShortestPath/warshall_floyd.cpp
     title: Warshall-Floyd algorithm
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/ShortestPath/dial_algorithm.cpp
     title: Dial's algorithm
   - icon: ':warning:'
@@ -119,7 +122,7 @@ data:
   - icon: ':warning:'
     path: Mylib/Graph/TopologicalSort/topological_sort_lexicographical.cpp
     title: Topological sort (Lexicographically minimum)
-  - icon: ':x:'
+  - icon: ':warning:'
     path: Mylib/Graph/TopologicalSort/topological_sort.cpp
     title: Topological sort
   - icon: ':heavy_check_mark:'
@@ -174,7 +177,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/1595/main.test.cpp
     title: test/aoj/1595/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/ALDS1_12_B/main.dial.test.cpp
     title: test/aoj/ALDS1_12_B/main.dial.test.cpp
   - icon: ':x:'
@@ -183,6 +186,9 @@ data:
   - icon: ':x:'
     path: test/aoj/GRL_1_B/main.test.cpp
     title: test/aoj/GRL_1_B/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/GRL_1_B/main.spfa.test.cpp
+    title: test/aoj/GRL_1_B/main.spfa.test.cpp
   - icon: ':x:'
     path: test/aoj/DPL_2_A/main.test.cpp
     title: test/aoj/DPL_2_A/main.test.cpp
@@ -315,6 +321,7 @@ data:
   - Mylib/Grid/grid_to_graph.cpp
   - Mylib/Graph/travelling_salesman_problem.cpp
   - Mylib/Graph/Template/range_edge_graph.cpp
+  - Mylib/Graph/ShortestPath/spfa.cpp
   - Mylib/Graph/ShortestPath/bfs_shortest_path.cpp
   - Mylib/Graph/ShortestPath/yen_algorithm.cpp
   - Mylib/Graph/ShortestPath/dijkstra.cpp
@@ -375,6 +382,7 @@ data:
   - test/aoj/ALDS1_12_B/main.dial.test.cpp
   - test/aoj/GRL_5_B/main.test.cpp
   - test/aoj/GRL_1_B/main.test.cpp
+  - test/aoj/GRL_1_B/main.spfa.test.cpp
   - test/aoj/DPL_2_A/main.test.cpp
   - test/aoj/GRL_3_A/main.test.cpp
   - test/aoj/DPL_2_B/main.test.cpp

@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Mylib/IO/input_vector.cpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   - icon: ':x:'

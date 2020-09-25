@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   - icon: ':x:'
@@ -88,41 +88,47 @@ data:
     \ == val.matrix;}\n    bool operator!=(const square_matrix_const &val) const {return\
     \ !(*this == val);}\n\n    auto& operator=(const square_matrix_const &val){\n\
     \      this->matrix = val.matrix;\n      return *this;\n    }\n\n    auto& operator+=(const\
-    \ square_matrix_const &val){\n      for(int i = 0; i < N; ++i) for(int j = 0;\
-    \ j < N; ++j) matrix[i][j] = matrix[i][j] + val[i][j];\n      return *this;\n\
-    \    }\n\n    auto& operator-=(const square_matrix_const &val){\n      for(int\
-    \ i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] -\
-    \ val[i][j];\n      return *this;\n    }\n\n    auto& operator*=(const square_matrix_const\
-    \ &val){\n      std::array<std::array<T, N>, N> temp = {};\n      for(int i =\
-    \ 0; i < N; ++i) for(int j = 0; j < N; ++j) for(int k = 0; k < N; ++k) temp[i][j]\
-    \ = temp[i][j] + matrix[i][k] * val[k][j];\n      std::swap(matrix, temp);\n \
-    \     return *this;\n    }\n\n    const auto& operator[](size_t i) const {return\
-    \ matrix[i];}\n    auto& operator[](size_t i){return matrix[i];}\n    int size()\
-    \ const {return N;}\n\n    static auto make_unit(){\n      square_matrix_const\
-    \ ret;\n      for(size_t i = 0; i < N; ++i) ret[i][i] = 1;\n      return ret;\n\
-    \    }\n\n    friend auto operator+(const square_matrix_const &a, const square_matrix_const\
-    \ &b){auto ret = a; ret += b; return ret;}\n    friend auto operator-(const square_matrix_const\
-    \ &a, const square_matrix_const &b){auto ret = a; ret -= b; return ret;}\n   \
-    \ friend auto operator*(const square_matrix_const &a, const square_matrix_const\
-    \ &b){auto ret = a; ret *= b; return ret;}\n  };\n}\n#line 3 \"Mylib/DataStructure/SegmentTree/segment_tree.cpp\"\
+    \ square_matrix_const &val){\n      for(int i = 0; i < N; ++i)\n        for(int\
+    \ j = 0; j < N; ++j)\n          matrix[i][j] = matrix[i][j] + val[i][j];\n   \
+    \   return *this;\n    }\n\n    auto& operator-=(const square_matrix_const &val){\n\
+    \      for(int i = 0; i < N; ++i)\n        for(int j = 0; j < N; ++j)\n      \
+    \    matrix[i][j] = matrix[i][j] - val[i][j];\n      return *this;\n    }\n\n\
+    \    auto& operator*=(const square_matrix_const &val){\n      std::array<std::array<T,\
+    \ N>, N> temp = {};\n      for(int i = 0; i < N; ++i)\n        for(int j = 0;\
+    \ j < N; ++j)\n          for(int k = 0; k < N; ++k)\n            temp[i][j] +=\
+    \ matrix[i][k] * val[k][j];\n      std::swap(matrix, temp);\n      return *this;\n\
+    \    }\n\n    const auto& operator[](size_t i) const {return matrix[i];}\n   \
+    \ auto& operator[](size_t i){return matrix[i];}\n    int size() const {return\
+    \ N;}\n\n    static auto unit(){\n      square_matrix_const ret;\n      for(size_t\
+    \ i = 0; i < N; ++i) ret[i][i] = 1;\n      return ret;\n    }\n\n    friend auto\
+    \ operator+(const square_matrix_const &a, const square_matrix_const &b){\n   \
+    \   auto ret = a; return ret += b;\n    }\n    friend auto operator-(const square_matrix_const\
+    \ &a, const square_matrix_const &b){\n      auto ret = a; return ret -= b;\n \
+    \   }\n    friend auto operator*(const square_matrix_const &a, const square_matrix_const\
+    \ &b){\n      auto ret = a; return ret *= b;\n    }\n\n    auto pow(uint64_t p)\
+    \ const {\n      auto ret = unit();\n      auto a = *this;\n\n      while(p >\
+    \ 0){\n        if(p & 1) ret *= a;\n        a *= a;\n        p >>= 1;\n      }\n\
+    \n      return ret;\n    }\n  };\n}\n#line 3 \"Mylib/DataStructure/SegmentTree/segment_tree.cpp\"\
     \n#include <algorithm>\n#include <functional>\n\nnamespace haar_lib {\n  template\
     \ <typename Monoid>\n  class segment_tree {\n    using value_type = typename Monoid::value_type;\n\
     \    const static Monoid M;\n\n    int depth, size, hsize;\n    std::vector<value_type>\
     \ data;\n\n  public:\n    segment_tree(){}\n    segment_tree(int n):\n      depth(n\
     \ > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),\n      size(1 << depth), hsize(size\
     \ / 2),\n      data(size, M())\n    {}\n\n    auto operator[](int i) const {return\
-    \ data[hsize + i];}\n\n    auto get(int x, int y) const {\n      value_type ret_left\
+    \ data[hsize + i];}\n\n    auto fold(int x, int y) const {\n      value_type ret_left\
     \ = M();\n      value_type ret_right = M();\n\n      int l = x + hsize, r = y\
     \ + hsize;\n      while(l < r){\n        if(r & 1) ret_right = M(data[--r], ret_right);\n\
     \        if(l & 1) ret_left = M(ret_left, data[l++]);\n        l >>= 1, r >>=\
-    \ 1;\n      }\n\n      return M(ret_left, ret_right);\n    }\n\n    void update(int\
+    \ 1;\n      }\n\n      return M(ret_left, ret_right);\n    }\n\n    void set(int\
     \ i, const value_type &x){\n      i += hsize;\n      data[i] = x;\n      while(i\
     \ > 1) i >>= 1, data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n  \
-    \  template <typename T>\n    void init_with_vector(const std::vector<T> &val){\n\
-    \      data.assign(size, M());\n      for(int i = 0; i < (int)val.size(); ++i)\
-    \ data[hsize + i] = val[i];\n      for(int i = hsize - 1; i >= 1; --i) data[i]\
-    \ = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n    template <typename T>\n\
-    \    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
+    \  void update(int i, const value_type &x){\n      i += hsize;\n      data[i]\
+    \ = M(data[i], x);\n      while(i > 1) i >>= 1, data[i] = M(data[i << 1 | 0],\
+    \ data[i << 1 | 1]);\n    }\n\n    template <typename T>\n    void init_with_vector(const\
+    \ std::vector<T> &val){\n      data.assign(size, M());\n      for(int i = 0; i\
+    \ < (int)val.size(); ++i) data[hsize + i] = val[i];\n      for(int i = hsize -\
+    \ 1; i >= 1; --i) data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n\
+    \    template <typename T>\n    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
     \ val));\n    }\n\n  private:\n    template <bool Lower, typename F>\n    int\
     \ bound(const int l, const int r, value_type x, F f) const {\n      std::vector<int>\
     \ pl, pr;\n      int L = l + hsize;\n      int R = r + hsize;\n      while(L <\
@@ -141,7 +147,7 @@ data:
     \    int upper_bound(int l, int r, value_type x, F f = F()) const {\n      return\
     \ bound<false>(l, r, x, f);\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/product_matrix.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  struct product_matrix_monoid\
-    \ {\n    using value_type = T;\n    value_type operator()() const {return T::make_unit();}\n\
+    \ {\n    using value_type = T;\n    value_type operator()() const {return T::unit();}\n\
     \    value_type operator()(const value_type &a, const value_type &b) const {return\
     \ a * b;}\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/dual.cpp\"\n\nnamespace\
     \ haar_lib {\n  template <typename Monoid>\n  struct dual_monoid {\n    using\
@@ -174,12 +180,12 @@ data:
     \ 0, 1},\n             {0, 2 * y, y * y, 1},\n             {0, 0, 0, 1}\n  };\n\
     \  return ret;\n}\n\nint main(){\n  int n, q; std::cin >> n >> q;\n\n  hl::segment_tree<Monoid>\
     \ seg(n);\n  std::vector<mint> x(n), y(n);\n\n  for(int i = 0; i < n; ++i){\n\
-    \    seg.update(i, f(x[i], y[i]));\n  }\n\n  for(auto [c, i] : hl::input_tuples<char,\
+    \    seg.set(i, f(x[i], y[i]));\n  }\n\n  for(auto [c, i] : hl::input_tuples<char,\
     \ int>(q)){\n    if(c == 'x'){\n      int v; std::cin >> v;\n      x[i] = v;\n\
-    \n      seg.update(i, f(x[i], y[i]));\n    }else if(c == 'y'){\n      int v; std::cin\
-    \ >> v;\n      y[i] = v;\n\n      seg.update(i, f(x[i], y[i]));\n    }else{\n\
-    \      auto m = seg.get(0, i);\n      auto ans = m[0][0] + m[0][1] + m[0][2] +\
-    \ m[0][3];\n      std::cout << ans << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
+    \n      seg.set(i, f(x[i], y[i]));\n    }else if(c == 'y'){\n      int v; std::cin\
+    \ >> v;\n      y[i] = v;\n\n      seg.set(i, f(x[i], y[i]));\n    }else{\n   \
+    \   auto m = seg.fold(0, i);\n      auto ans = m[0][0] + m[0][1] + m[0][2] + m[0][3];\n\
+    \      std::cout << ans << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/510\"\n\n#include <iostream>\n\
     #include <vector>\n#include \"Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp\"\
     \n#include \"Mylib/DataStructure/SegmentTree/segment_tree.cpp\"\n#include \"Mylib/AlgebraicStructure/Monoid/product_matrix.cpp\"\
@@ -190,13 +196,13 @@ data:
     \      {0, y, 0, 1},\n             {0, 2 * y, y * y, 1},\n             {0, 0,\
     \ 0, 1}\n  };\n  return ret;\n}\n\nint main(){\n  int n, q; std::cin >> n >> q;\n\
     \n  hl::segment_tree<Monoid> seg(n);\n  std::vector<mint> x(n), y(n);\n\n  for(int\
-    \ i = 0; i < n; ++i){\n    seg.update(i, f(x[i], y[i]));\n  }\n\n  for(auto [c,\
-    \ i] : hl::input_tuples<char, int>(q)){\n    if(c == 'x'){\n      int v; std::cin\
-    \ >> v;\n      x[i] = v;\n\n      seg.update(i, f(x[i], y[i]));\n    }else if(c\
-    \ == 'y'){\n      int v; std::cin >> v;\n      y[i] = v;\n\n      seg.update(i,\
-    \ f(x[i], y[i]));\n    }else{\n      auto m = seg.get(0, i);\n      auto ans =\
-    \ m[0][0] + m[0][1] + m[0][2] + m[0][3];\n      std::cout << ans << \"\\n\";\n\
-    \    }\n  }\n\n  return 0;\n}\n"
+    \ i = 0; i < n; ++i){\n    seg.set(i, f(x[i], y[i]));\n  }\n\n  for(auto [c, i]\
+    \ : hl::input_tuples<char, int>(q)){\n    if(c == 'x'){\n      int v; std::cin\
+    \ >> v;\n      x[i] = v;\n\n      seg.set(i, f(x[i], y[i]));\n    }else if(c ==\
+    \ 'y'){\n      int v; std::cin >> v;\n      y[i] = v;\n\n      seg.set(i, f(x[i],\
+    \ y[i]));\n    }else{\n      auto m = seg.fold(0, i);\n      auto ans = m[0][0]\
+    \ + m[0][1] + m[0][2] + m[0][3];\n      std::cout << ans << \"\\n\";\n    }\n\
+    \  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Number/Mint/mint.cpp
   - Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp
@@ -208,7 +214,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/510/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-17 22:58:14+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/510/main.test.cpp

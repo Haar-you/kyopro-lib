@@ -114,8 +114,8 @@ data:
     \        }\n        if(L & 1){\n          lazy[L] = M_update(x, lazy[L]);\n  \
     \        propagate(L);\n          ++L;\n        }\n        L >>= 1;\n        R\
     \ >>= 1;\n      }\n\n      bottom_up(l + hsize);\n      if(r < hsize) bottom_up(r\
-    \ + hsize);\n    }\n\n    void update_at(int i, const value_type_update &x){update(i,\
-    \ i + 1, x);}\n\n    value_type_get get(int l, int r){\n      propagate_top_down(l\
+    \ + hsize);\n    }\n\n    void update(int i, const value_type_update &x){update(i,\
+    \ i + 1, x);}\n\n    value_type_get fold(int l, int r){\n      propagate_top_down(l\
     \ + hsize);\n      if(r < hsize) propagate_top_down(r + hsize);\n\n      value_type_get\
     \ ret_left = M_get(), ret_right = M_get();\n\n      int L = l + hsize, R = r +\
     \ hsize;\n\n      while(L < R){\n        if(R & 1){\n          --R;\n        \
@@ -123,9 +123,9 @@ data:
     \        if(L & 1){\n          propagate(L);\n          ret_left = M_get(ret_left,\
     \ data[L]);\n          ++L;\n        }\n        L >>= 1;\n        R >>= 1;\n \
     \     }\n\n      return M_get(ret_left, ret_right);\n    }\n\n    value_type_get\
-    \ operator[](int i){return get(i, i + 1);}\n\n    template <typename T>\n    void\
-    \ init(const T &val){\n      init_with_vector(std::vector<T>(hsize, val));\n \
-    \   }\n\n    template <typename T>\n    void init_with_vector(const std::vector<T>\
+    \ operator[](int i){return fold(i, i + 1);}\n\n    template <typename T>\n   \
+    \ void init(const T &val){\n      init_with_vector(std::vector<T>(hsize, val));\n\
+    \    }\n\n    template <typename T>\n    void init_with_vector(const std::vector<T>\
     \ &val){\n      data.assign(size, M_get());\n      lazy.assign(size, M_update());\n\
     \      for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = (value_type_get)val[i];\n\
     \      for(int i = hsize - 1; i > 0; --i) data[i] = M_get(data[i << 1 | 0], data[i\
@@ -175,7 +175,7 @@ data:
     \ hl::update_sum> seg(N);\n\n  for(int i = 0; i < N; ++i){\n    res.query_at(i,\
     \ [&](int l, int r){seg.update(l, r, A[i]);});\n  }\n\n  int Q; std::cin >> Q;\n\
     \n  for(auto [x] : hl::input_tuples<int>(Q)){\n    int64_t ans = 0;\n\n    auto\
-    \ f =\n      [&](int l, int r){\n        ans += seg.get(l, r);\n        seg.update(l,\
+    \ f =\n      [&](int l, int r){\n        ans += seg.fold(l, r);\n        seg.update(l,\
     \ r, 0);\n      };\n\n    // \u89AA\u306E\u89AA\n    res.query_at(res.get_ancestor(x,\
     \ 2), f);\n\n    // \u89AA\n    res.query_at(res.get_ancestor(x, 1), f);\n\n \
     \   // \u89AA\u306E\u5B50\n    res.query_children(res.get_parent(x), 1, f);\n\n\
@@ -197,7 +197,7 @@ data:
     \ hl::update_sum> seg(N);\n\n  for(int i = 0; i < N; ++i){\n    res.query_at(i,\
     \ [&](int l, int r){seg.update(l, r, A[i]);});\n  }\n\n  int Q; std::cin >> Q;\n\
     \n  for(auto [x] : hl::input_tuples<int>(Q)){\n    int64_t ans = 0;\n\n    auto\
-    \ f =\n      [&](int l, int r){\n        ans += seg.get(l, r);\n        seg.update(l,\
+    \ f =\n      [&](int l, int r){\n        ans += seg.fold(l, r);\n        seg.update(l,\
     \ r, 0);\n      };\n\n    // \u89AA\u306E\u89AA\n    res.query_at(res.get_ancestor(x,\
     \ 2), f);\n\n    // \u89AA\n    res.query_at(res.get_ancestor(x, 1), f);\n\n \
     \   // \u89AA\u306E\u5B50\n    res.query_children(res.get_parent(x), 1, f);\n\n\
@@ -219,7 +219,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/899/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-18 18:43:57+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/899/main.test.cpp

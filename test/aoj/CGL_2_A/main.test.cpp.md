@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: Mylib/Geometry/Float/double_eps.cpp
     title: Floating point number with eps
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/parallel.cpp
     title: Parallel
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/orthogonal.cpp
     title: Orthogonal
   - icon: ':question:'
@@ -22,7 +22,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A
@@ -168,7 +168,7 @@ data:
   path: test/aoj/CGL_2_A/main.test.cpp
   requiredBy: []
   timestamp: '2020-09-17 21:27:45+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/CGL_2_A/main.test.cpp
 layout: document

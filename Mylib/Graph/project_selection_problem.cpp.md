@@ -16,43 +16,9 @@ data:
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/project_selection_problem.cpp\"\n#include <vector>\n\
     #include <utility>\n#include <cassert>\n#include <limits>\n#include <tuple>\n\n\
-    /*\n */\nnamespace haar_lib {\n  template <typename T, typename Flow>\n  class\
-    \ project_selection_problem {\n    int N, s, t;\n    std::vector<std::tuple<int,\
-    \ int, T>> g;\n    T default_gain;\n    int nodes;\n\n    constexpr static T INF\
-    \ = std::numeric_limits<T>::max();\n\n  public:\n    project_selection_problem(int\
-    \ N): N(N), s(N), t(N + 1), default_gain(0), nodes(N + 2){}\n\n    void penalty_if_red(int\
-    \ i, T c){\n      assert(c >= 0);\n      assert(0 <= i and i < N);\n      g.emplace_back(i,\
-    \ t, c);\n    }\n\n    void gain_if_red(int i, T c){\n      assert(c >= 0);\n\
-    \      assert(0 <= i and i < N);\n      default_gain += c;\n      penalty_if_blue(i,\
-    \ c);\n    }\n\n    void penalty_if_blue(int i, T c){\n      assert(c >= 0);\n\
-    \      assert(0 <= i and i < N);\n      g.emplace_back(s, i, c);\n    }\n\n  \
-    \  void gain_if_blue(int i, T c){\n      assert(c >= 0);\n      assert(0 <= i\
-    \ and i < N);\n      default_gain += c;\n      penalty_if_red(i, c);\n    }\n\n\
-    \    void penalty_if_red_blue(int i, int j, T c){\n      assert(c >= 0);\n   \
-    \   assert(0 <= i and i < N);\n      assert(0 <= j and j < N);\n      g.emplace_back(i,\
-    \ j, c);\n    }\n\n    void penalty_if_different(int i, int j, T c){\n      assert(c\
-    \ >= 0);\n      assert(0 <= i and i < N);\n      assert(0 <= j and j < N);\n \
-    \     g.emplace_back(i, j, c);\n      g.emplace_back(j, i, c);\n    }\n\n    void\
-    \ must_be_red(int i){\n      assert(0 <= i and i < N);\n      penalty_if_blue(i,\
-    \ INF);\n    }\n\n    void must_be_blue(int i){\n      assert(0 <= i and i < N);\n\
-    \      penalty_if_red(i, INF);\n    }\n\n    void if_red_then_must_be_red(int\
-    \ i, int j){\n      assert(0 <= i and i < N);\n      assert(0 <= j and j < N);\n\
-    \      penalty_if_red_blue(i, j, INF);\n    }\n\n    void gain_if_red_red(int\
-    \ i, int j, T c){\n      assert(c >= 0);\n      assert(0 <= i and i < N);\n  \
-    \    assert(0 <= j and j < N);\n      default_gain += c;\n      int w = nodes++;\n\
-    \n      g.emplace_back(s, w, c);\n      g.emplace_back(w, i, INF);\n      g.emplace_back(w,\
-    \ j, INF);\n    }\n\n    void gain_if_blue_blue(int i, int j, T c){\n      assert(c\
-    \ >= 0);\n      assert(0 <= i and i < N);\n      assert(0 <= j and j < N);\n \
-    \     default_gain += c;\n      int w = nodes++;\n\n      g.emplace_back(w, t,\
-    \ c);\n      g.emplace_back(i, w, INF);\n      g.emplace_back(j, w, INF);\n  \
-    \  }\n\n    T solve(){\n      Flow flow(nodes);\n      for(auto [i, j, w] : g)\
-    \ flow.add_edge(i, j, w);\n      return default_gain - flow.solve(s, t);\n   \
-    \ }\n  };\n}\n"
-  code: "#pragma once\n#include <vector>\n#include <utility>\n#include <cassert>\n\
-    #include <limits>\n#include <tuple>\n\n/*\n */\nnamespace haar_lib {\n  template\
-    \ <typename T, typename Flow>\n  class project_selection_problem {\n    int N,\
-    \ s, t;\n    std::vector<std::tuple<int, int, T>> g;\n    T default_gain;\n  \
-    \  int nodes;\n\n    constexpr static T INF = std::numeric_limits<T>::max();\n\
+    namespace haar_lib {\n  template <typename T, typename Flow>\n  class project_selection_problem\
+    \ {\n    int N, s, t;\n    std::vector<std::tuple<int, int, T>> g;\n    T default_gain;\n\
+    \    int nodes;\n\n    constexpr static T INF = std::numeric_limits<T>::max();\n\
     \n  public:\n    project_selection_problem(int N): N(N), s(N), t(N + 1), default_gain(0),\
     \ nodes(N + 2){}\n\n    void penalty_if_red(int i, T c){\n      assert(c >= 0);\n\
     \      assert(0 <= i and i < N);\n      g.emplace_back(i, t, c);\n    }\n\n  \
@@ -81,11 +47,44 @@ data:
     \ w, INF);\n      g.emplace_back(j, w, INF);\n    }\n\n    T solve(){\n      Flow\
     \ flow(nodes);\n      for(auto [i, j, w] : g) flow.add_edge(i, j, w);\n      return\
     \ default_gain - flow.solve(s, t);\n    }\n  };\n}\n"
+  code: "#pragma once\n#include <vector>\n#include <utility>\n#include <cassert>\n\
+    #include <limits>\n#include <tuple>\n\nnamespace haar_lib {\n  template <typename\
+    \ T, typename Flow>\n  class project_selection_problem {\n    int N, s, t;\n \
+    \   std::vector<std::tuple<int, int, T>> g;\n    T default_gain;\n    int nodes;\n\
+    \n    constexpr static T INF = std::numeric_limits<T>::max();\n\n  public:\n \
+    \   project_selection_problem(int N): N(N), s(N), t(N + 1), default_gain(0), nodes(N\
+    \ + 2){}\n\n    void penalty_if_red(int i, T c){\n      assert(c >= 0);\n    \
+    \  assert(0 <= i and i < N);\n      g.emplace_back(i, t, c);\n    }\n\n    void\
+    \ gain_if_red(int i, T c){\n      assert(c >= 0);\n      assert(0 <= i and i <\
+    \ N);\n      default_gain += c;\n      penalty_if_blue(i, c);\n    }\n\n    void\
+    \ penalty_if_blue(int i, T c){\n      assert(c >= 0);\n      assert(0 <= i and\
+    \ i < N);\n      g.emplace_back(s, i, c);\n    }\n\n    void gain_if_blue(int\
+    \ i, T c){\n      assert(c >= 0);\n      assert(0 <= i and i < N);\n      default_gain\
+    \ += c;\n      penalty_if_red(i, c);\n    }\n\n    void penalty_if_red_blue(int\
+    \ i, int j, T c){\n      assert(c >= 0);\n      assert(0 <= i and i < N);\n  \
+    \    assert(0 <= j and j < N);\n      g.emplace_back(i, j, c);\n    }\n\n    void\
+    \ penalty_if_different(int i, int j, T c){\n      assert(c >= 0);\n      assert(0\
+    \ <= i and i < N);\n      assert(0 <= j and j < N);\n      g.emplace_back(i, j,\
+    \ c);\n      g.emplace_back(j, i, c);\n    }\n\n    void must_be_red(int i){\n\
+    \      assert(0 <= i and i < N);\n      penalty_if_blue(i, INF);\n    }\n\n  \
+    \  void must_be_blue(int i){\n      assert(0 <= i and i < N);\n      penalty_if_red(i,\
+    \ INF);\n    }\n\n    void if_red_then_must_be_red(int i, int j){\n      assert(0\
+    \ <= i and i < N);\n      assert(0 <= j and j < N);\n      penalty_if_red_blue(i,\
+    \ j, INF);\n    }\n\n    void gain_if_red_red(int i, int j, T c){\n      assert(c\
+    \ >= 0);\n      assert(0 <= i and i < N);\n      assert(0 <= j and j < N);\n \
+    \     default_gain += c;\n      int w = nodes++;\n\n      g.emplace_back(s, w,\
+    \ c);\n      g.emplace_back(w, i, INF);\n      g.emplace_back(w, j, INF);\n  \
+    \  }\n\n    void gain_if_blue_blue(int i, int j, T c){\n      assert(c >= 0);\n\
+    \      assert(0 <= i and i < N);\n      assert(0 <= j and j < N);\n      default_gain\
+    \ += c;\n      int w = nodes++;\n\n      g.emplace_back(w, t, c);\n      g.emplace_back(i,\
+    \ w, INF);\n      g.emplace_back(j, w, INF);\n    }\n\n    T solve(){\n      Flow\
+    \ flow(nodes);\n      for(auto [i, j, w] : g) flow.add_edge(i, j, w);\n      return\
+    \ default_gain - flow.solve(s, t);\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Graph/project_selection_problem.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/3058/main.test.cpp
@@ -97,7 +96,7 @@ title: Project selection problem
 
 ## Operations
 
-- `ProjectSelectionProblem(N)`
+- `project_selection_problem(N)`
 - `penalty_if_red(int i, T c)`
 	- `i`を<font color="red">赤</font>に塗ると`c`の損失になる。
 - `gain_if_red(int i, T c)`
@@ -121,6 +120,7 @@ title: Project selection problem
 - `gain_if_blue_blue(int i, int j, T c)`
 	- `i`と`j`をともに<font color="blue">青</font>に塗ると`c`の利益を得る。
 - `solve()`
+    - 得られる利益の最大値を返す。
 
 ## Requirements
 

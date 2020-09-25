@@ -6,11 +6,11 @@ data:
     title: Basic graph
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/ALDS1_12_B/main.dial.test.cpp
     title: test/aoj/ALDS1_12_B/main.dial.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     links: []
@@ -63,7 +63,7 @@ data:
   path: Mylib/Graph/ShortestPath/dial_algorithm.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/ALDS1_12_B/main.dial.test.cpp
 documentation_of: Mylib/Graph/ShortestPath/dial_algorithm.cpp

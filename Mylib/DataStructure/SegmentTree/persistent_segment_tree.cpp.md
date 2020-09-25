@@ -29,22 +29,23 @@ data:
     \ init(root, init_list, 1, pos);\n    }\n\n    persistent_segment_tree(int size,\
     \ const value_type &value = M()){\n      depth = size == 1 ? 1 : 32 - __builtin_clz(size\
     \ - 1) + 1;\n      int pos = 0;\n      root = init(root, std::vector<value_type>(size,\
-    \ value), 1, pos);\n    }\n\n  protected:\n    node* update(node *t, int l, int\
-    \ r, int pos, const value_type &val) const {\n      if(r <= pos or pos + 1 <=\
-    \ l){\n        return t;\n      }else if(pos <= l and r <= pos + 1){\n       \
-    \ return new node(val);\n      }else{\n        const int m = (l + r) >> 1;\n \
-    \       auto lp = update(t->left, l, m, pos, val);\n        auto rp = update(t->right,\
-    \ m, r, pos, val);\n\n        node *s = new node(M(lp->value, rp->value));\n\n\
-    \        s->left = lp;\n        s->right = rp;\n\n        return s;\n      }\n\
-    \    }\n\n  public:\n    persistent_segment_tree update(int i, const value_type\
-    \ &val) const {\n      node *t = update(root, 0, 1 << (depth - 1), i, val);\n\
-    \      return persistent_segment_tree(depth, t);\n    }\n\n  protected:\n    value_type\
-    \ get(node *t, int i, int j, int l, int r) const {\n      if(i <= l and r <= j)\
-    \ return t->value;\n      if(r <= i or j <= l) return M();\n      const int m\
-    \ = (l + r) >> 1;\n      return M(get(t->left, i, j, l, m), get(t->right, i, j,\
-    \ m, r));\n    }\n\n  public:\n    value_type get(int i, int j) const {\n    \
-    \  return get(root, i, j, 0, 1 << (depth - 1));\n    }\n\n    value_type operator[](int\
-    \ i) const {\n      return get(i, i + 1);\n    }\n  };\n}\n"
+    \ value), 1, pos);\n    }\n\n  protected:\n    node* set(node *t, int l, int r,\
+    \ int pos, const value_type &val) const {\n      if(r <= pos or pos + 1 <= l){\n\
+    \        return t;\n      }else if(pos <= l and r <= pos + 1){\n        return\
+    \ new node(val);\n      }else{\n        const int m = (l + r) >> 1;\n        auto\
+    \ lp = set(t->left, l, m, pos, val);\n        auto rp = set(t->right, m, r, pos,\
+    \ val);\n\n        node *s = new node(M(lp->value, rp->value));\n\n        s->left\
+    \ = lp;\n        s->right = rp;\n\n        return s;\n      }\n    }\n\n  public:\n\
+    \    persistent_segment_tree set(int i, const value_type &val) const {\n     \
+    \ node *t = set(root, 0, 1 << (depth - 1), i, val);\n      return persistent_segment_tree(depth,\
+    \ t);\n    }\n\n    persistent_segment_tree update(int i, const value_type &val)\
+    \ const {\n      return set(i, M((*this)[i], val));\n    }\n\n  protected:\n \
+    \   value_type get(node *t, int i, int j, int l, int r) const {\n      if(i <=\
+    \ l and r <= j) return t->value;\n      if(r <= i or j <= l) return M();\n   \
+    \   const int m = (l + r) >> 1;\n      return M(get(t->left, i, j, l, m), get(t->right,\
+    \ i, j, m, r));\n    }\n\n  public:\n    value_type fold(int i, int j) const {\n\
+    \      return get(root, i, j, 0, 1 << (depth - 1));\n    }\n\n    value_type operator[](int\
+    \ i) const {\n      return fold(i, i + 1);\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n\nnamespace haar_lib {\n  template <typename\
     \ Monoid>\n  class persistent_segment_tree {\n    using value_type = typename\
     \ Monoid::value_type;\n    const static Monoid M;\n\n    struct node {\n     \
@@ -62,27 +63,28 @@ data:
     \ = 0;\n      root = init(root, init_list, 1, pos);\n    }\n\n    persistent_segment_tree(int\
     \ size, const value_type &value = M()){\n      depth = size == 1 ? 1 : 32 - __builtin_clz(size\
     \ - 1) + 1;\n      int pos = 0;\n      root = init(root, std::vector<value_type>(size,\
-    \ value), 1, pos);\n    }\n\n  protected:\n    node* update(node *t, int l, int\
-    \ r, int pos, const value_type &val) const {\n      if(r <= pos or pos + 1 <=\
-    \ l){\n        return t;\n      }else if(pos <= l and r <= pos + 1){\n       \
-    \ return new node(val);\n      }else{\n        const int m = (l + r) >> 1;\n \
-    \       auto lp = update(t->left, l, m, pos, val);\n        auto rp = update(t->right,\
-    \ m, r, pos, val);\n\n        node *s = new node(M(lp->value, rp->value));\n\n\
-    \        s->left = lp;\n        s->right = rp;\n\n        return s;\n      }\n\
-    \    }\n\n  public:\n    persistent_segment_tree update(int i, const value_type\
-    \ &val) const {\n      node *t = update(root, 0, 1 << (depth - 1), i, val);\n\
-    \      return persistent_segment_tree(depth, t);\n    }\n\n  protected:\n    value_type\
-    \ get(node *t, int i, int j, int l, int r) const {\n      if(i <= l and r <= j)\
-    \ return t->value;\n      if(r <= i or j <= l) return M();\n      const int m\
-    \ = (l + r) >> 1;\n      return M(get(t->left, i, j, l, m), get(t->right, i, j,\
-    \ m, r));\n    }\n\n  public:\n    value_type get(int i, int j) const {\n    \
-    \  return get(root, i, j, 0, 1 << (depth - 1));\n    }\n\n    value_type operator[](int\
-    \ i) const {\n      return get(i, i + 1);\n    }\n  };\n}\n"
+    \ value), 1, pos);\n    }\n\n  protected:\n    node* set(node *t, int l, int r,\
+    \ int pos, const value_type &val) const {\n      if(r <= pos or pos + 1 <= l){\n\
+    \        return t;\n      }else if(pos <= l and r <= pos + 1){\n        return\
+    \ new node(val);\n      }else{\n        const int m = (l + r) >> 1;\n        auto\
+    \ lp = set(t->left, l, m, pos, val);\n        auto rp = set(t->right, m, r, pos,\
+    \ val);\n\n        node *s = new node(M(lp->value, rp->value));\n\n        s->left\
+    \ = lp;\n        s->right = rp;\n\n        return s;\n      }\n    }\n\n  public:\n\
+    \    persistent_segment_tree set(int i, const value_type &val) const {\n     \
+    \ node *t = set(root, 0, 1 << (depth - 1), i, val);\n      return persistent_segment_tree(depth,\
+    \ t);\n    }\n\n    persistent_segment_tree update(int i, const value_type &val)\
+    \ const {\n      return set(i, M((*this)[i], val));\n    }\n\n  protected:\n \
+    \   value_type get(node *t, int i, int j, int l, int r) const {\n      if(i <=\
+    \ l and r <= j) return t->value;\n      if(r <= i or j <= l) return M();\n   \
+    \   const int m = (l + r) >> 1;\n      return M(get(t->left, i, j, l, m), get(t->right,\
+    \ i, j, m, r));\n    }\n\n  public:\n    value_type fold(int i, int j) const {\n\
+    \      return get(root, i, j, 0, 1 << (depth - 1));\n    }\n\n    value_type operator[](int\
+    \ i) const {\n      return fold(i, i + 1);\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp

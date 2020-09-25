@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   - icon: ':question:'
@@ -162,15 +162,15 @@ data:
     \     int l = x + hsize, r = y + hsize;\n      while(l < r){\n        if(r & 1)\
     \ ret_right = M(ret_right, data_right[--r]);\n        if(l & 1) ret_left = M(data_right[l++],\
     \ ret_left);\n        l >>= 1, r >>= 1;\n      }\n\n      return M(ret_right,\
-    \ ret_left);\n    }\n\n    void update(int i, const value_type &x){\n      i +=\
-    \ hsize;\n      data_left[i] = data_right[i] = x;\n      while(i > 1){\n     \
-    \   i >>= 1;\n        data_left[i] = M(data_left[i << 1 | 0], data_left[i << 1\
-    \ | 1]);\n        data_right[i] = M(data_right[i << 1 | 1], data_right[i << 1\
-    \ | 0]);\n      }\n    }\n\n    template <typename T>\n    void init_with_vector(const\
-    \ std::vector<T> &val){\n      data_left.assign(size, M());\n      data_right.assign(size,\
-    \ M());\n\n      for(int i = 0; i < (int)val.size(); ++i){\n        data_left[hsize\
-    \ + i] = val[i];\n        data_right[hsize + i] = val[i];\n      }\n      for(int\
-    \ i = hsize - 1; i >= 1; --i){\n        data_left[i] = M(data_left[i << 1 | 0],\
+    \ ret_left);\n    }\n\n    void set(int i, const value_type &x){\n      i += hsize;\n\
+    \      data_left[i] = data_right[i] = x;\n      while(i > 1){\n        i >>= 1;\n\
+    \        data_left[i] = M(data_left[i << 1 | 0], data_left[i << 1 | 1]);\n   \
+    \     data_right[i] = M(data_right[i << 1 | 1], data_right[i << 1 | 0]);\n   \
+    \   }\n    }\n\n    template <typename T>\n    void init_with_vector(const std::vector<T>\
+    \ &val){\n      data_left.assign(size, M());\n      data_right.assign(size, M());\n\
+    \n      for(int i = 0; i < (int)val.size(); ++i){\n        data_left[hsize + i]\
+    \ = val[i];\n        data_right[hsize + i] = val[i];\n      }\n      for(int i\
+    \ = hsize - 1; i >= 1; --i){\n        data_left[i] = M(data_left[i << 1 | 0],\
     \ data_left[i << 1 | 1]);\n        data_right[i] = M(data_right[i << 1 | 1], data_right[i\
     \ << 1 | 0]);\n      }\n    }\n\n    template <typename T>\n    void init(const\
     \ T &val){\n      init_with_vector(std::vector<value_type>(hsize, val));\n   \
@@ -215,9 +215,9 @@ data:
     \n  int N, Q; std::cin >> N >> Q;\n\n  auto f = hl::input_vector<std::pair<mint,\
     \ mint>>(N);\n  hl::tree<int> tree(N);\n  tree.read<0, false, false>(N - 1);\n\
     \n  hl::hl_decomposition<int> hld(tree, 0);\n  hl::segment_tree_both_foldable<Monoid>\
-    \ seg(N);\n\n  for(int i = 0; i < N; ++i){\n    seg.update(hld.get_id(i), f[i]);\n\
+    \ seg(N);\n\n  for(int i = 0; i < N; ++i){\n    seg.set(hld.get_id(i), f[i]);\n\
     \  }\n\n  for(auto [type] : hl::input_tuples<int>(Q)){\n    if(type == 0){\n \
-    \     int64_t p, c, d; std::cin >> p >> c >> d;\n\n      seg.update(hld.get_id(p),\
+    \     int64_t p, c, d; std::cin >> p >> c >> d;\n\n      seg.set(hld.get_id(p),\
     \ std::make_pair(c, d));\n    }else{\n      int64_t u, v, x; std::cin >> u >>\
     \ v >> x;\n\n      auto res = M();\n      for(auto [l, r, d] : hld.path_query_vertex(u,\
     \ v)){\n        if(d) res = M(res, seg.fold_left(l, r));\n        else res = M(res,\
@@ -235,12 +235,12 @@ data:
     \ >> N >> Q;\n\n  auto f = hl::input_vector<std::pair<mint, mint>>(N);\n  hl::tree<int>\
     \ tree(N);\n  tree.read<0, false, false>(N - 1);\n\n  hl::hl_decomposition<int>\
     \ hld(tree, 0);\n  hl::segment_tree_both_foldable<Monoid> seg(N);\n\n  for(int\
-    \ i = 0; i < N; ++i){\n    seg.update(hld.get_id(i), f[i]);\n  }\n\n  for(auto\
-    \ [type] : hl::input_tuples<int>(Q)){\n    if(type == 0){\n      int64_t p, c,\
-    \ d; std::cin >> p >> c >> d;\n\n      seg.update(hld.get_id(p), std::make_pair(c,\
-    \ d));\n    }else{\n      int64_t u, v, x; std::cin >> u >> v >> x;\n\n      auto\
-    \ res = M();\n      for(auto [l, r, d] : hld.path_query_vertex(u, v)){\n     \
-    \   if(d) res = M(res, seg.fold_left(l, r));\n        else res = M(res, seg.fold_right(l,\
+    \ i = 0; i < N; ++i){\n    seg.set(hld.get_id(i), f[i]);\n  }\n\n  for(auto [type]\
+    \ : hl::input_tuples<int>(Q)){\n    if(type == 0){\n      int64_t p, c, d; std::cin\
+    \ >> p >> c >> d;\n\n      seg.set(hld.get_id(p), std::make_pair(c, d));\n   \
+    \ }else{\n      int64_t u, v, x; std::cin >> u >> v >> x;\n\n      auto res =\
+    \ M();\n      for(auto [l, r, d] : hld.path_query_vertex(u, v)){\n        if(d)\
+    \ res = M(res, seg.fold_left(l, r));\n        else res = M(res, seg.fold_right(l,\
     \ r));\n      }\n\n      mint ans = res.first * x + res.second;\n      std::cout\
     \ << ans << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
   dependsOn:
@@ -256,7 +256,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-17 22:58:14+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/vertex_set_path_composite/main.test.cpp

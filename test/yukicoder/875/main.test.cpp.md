@@ -36,18 +36,20 @@ data:
     \ data;\n\n  public:\n    segment_tree(){}\n    segment_tree(int n):\n      depth(n\
     \ > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),\n      size(1 << depth), hsize(size\
     \ / 2),\n      data(size, M())\n    {}\n\n    auto operator[](int i) const {return\
-    \ data[hsize + i];}\n\n    auto get(int x, int y) const {\n      value_type ret_left\
+    \ data[hsize + i];}\n\n    auto fold(int x, int y) const {\n      value_type ret_left\
     \ = M();\n      value_type ret_right = M();\n\n      int l = x + hsize, r = y\
     \ + hsize;\n      while(l < r){\n        if(r & 1) ret_right = M(data[--r], ret_right);\n\
     \        if(l & 1) ret_left = M(ret_left, data[l++]);\n        l >>= 1, r >>=\
-    \ 1;\n      }\n\n      return M(ret_left, ret_right);\n    }\n\n    void update(int\
+    \ 1;\n      }\n\n      return M(ret_left, ret_right);\n    }\n\n    void set(int\
     \ i, const value_type &x){\n      i += hsize;\n      data[i] = x;\n      while(i\
     \ > 1) i >>= 1, data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n  \
-    \  template <typename T>\n    void init_with_vector(const std::vector<T> &val){\n\
-    \      data.assign(size, M());\n      for(int i = 0; i < (int)val.size(); ++i)\
-    \ data[hsize + i] = val[i];\n      for(int i = hsize - 1; i >= 1; --i) data[i]\
-    \ = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n    template <typename T>\n\
-    \    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
+    \  void update(int i, const value_type &x){\n      i += hsize;\n      data[i]\
+    \ = M(data[i], x);\n      while(i > 1) i >>= 1, data[i] = M(data[i << 1 | 0],\
+    \ data[i << 1 | 1]);\n    }\n\n    template <typename T>\n    void init_with_vector(const\
+    \ std::vector<T> &val){\n      data.assign(size, M());\n      for(int i = 0; i\
+    \ < (int)val.size(); ++i) data[hsize + i] = val[i];\n      for(int i = hsize -\
+    \ 1; i >= 1; --i) data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n\
+    \    template <typename T>\n    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
     \ val));\n    }\n\n  private:\n    template <bool Lower, typename F>\n    int\
     \ bound(const int l, const int r, value_type x, F f) const {\n      std::vector<int>\
     \ pl, pr;\n      int L = l + hsize;\n      int R = r + hsize;\n      while(L <\
@@ -119,10 +121,10 @@ data:
     \ a(N);\n  for(auto [i, x] : hl::input_tuples_with_index<int>(N)){\n    a[i] =\
     \ {x, i};\n  }\n\n  seg.init_with_vector(a);\n\n  for(auto [type, l, r] : hl::input_tuples<int,\
     \ int, int>(Q)){\n    switch(type){\n    case 1: {\n      --l, --r;\n\n      auto\
-    \ x = seg[l].value;\n      auto y = seg[r].value;\n\n      seg.update(l, {y, l});\n\
-    \      seg.update(r, {x, r});\n\n      break;\n    }\n    case 2: {\n      --l,\
-    \ --r;\n\n      std::cout << seg.get(l, r + 1).index + 1 << \"\\n\";\n\n     \
-    \ break;\n    }\n    }\n  }\n\n  return 0;\n}\n"
+    \ x = seg[l].value;\n      auto y = seg[r].value;\n\n      seg.set(l, {y, l});\n\
+    \      seg.set(r, {x, r});\n\n      break;\n    }\n    case 2: {\n      --l, --r;\n\
+    \n      std::cout << seg.fold(l, r + 1).index + 1 << \"\\n\";\n\n      break;\n\
+    \    }\n    }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/875\"\n\n#include <iostream>\n\
     #include <vector>\n#include <utility>\n#include \"Mylib/DataStructure/SegmentTree/segment_tree.cpp\"\
     \n#include \"Mylib/AlgebraicStructure/Monoid/min.cpp\"\n#include \"Mylib/AlgebraicStructure/Monoid/with_min_index.cpp\"\
@@ -133,10 +135,10 @@ data:
     \ a(N);\n  for(auto [i, x] : hl::input_tuples_with_index<int>(N)){\n    a[i] =\
     \ {x, i};\n  }\n\n  seg.init_with_vector(a);\n\n  for(auto [type, l, r] : hl::input_tuples<int,\
     \ int, int>(Q)){\n    switch(type){\n    case 1: {\n      --l, --r;\n\n      auto\
-    \ x = seg[l].value;\n      auto y = seg[r].value;\n\n      seg.update(l, {y, l});\n\
-    \      seg.update(r, {x, r});\n\n      break;\n    }\n    case 2: {\n      --l,\
-    \ --r;\n\n      std::cout << seg.get(l, r + 1).index + 1 << \"\\n\";\n\n     \
-    \ break;\n    }\n    }\n  }\n\n  return 0;\n}\n"
+    \ x = seg[l].value;\n      auto y = seg[r].value;\n\n      seg.set(l, {y, l});\n\
+    \      seg.set(r, {x, r});\n\n      break;\n    }\n    case 2: {\n      --l, --r;\n\
+    \n      std::cout << seg.fold(l, r + 1).index + 1 << \"\\n\";\n\n      break;\n\
+    \    }\n    }\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/DataStructure/SegmentTree/segment_tree.cpp
   - Mylib/AlgebraicStructure/Monoid/min.cpp
@@ -147,7 +149,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/875/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-18 01:14:06+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/875/main.test.cpp

@@ -25,12 +25,11 @@ data:
     \  size(size), data(size + 1, G())\n    {}\n\n    void update(int i, const value_type\
     \ &val){\n      i += 1; // 1-index\n\n      while(i <= size){\n        data[i]\
     \ = G(data[i], val);\n        i += i & (-i);\n      }\n    }\n\n    value_type\
-    \ get(int i) const { // [0, i)\n      value_type ret = G();\n      i += 1; //\
-    \ 1-index\n\n      while(i > 0){\n        ret = G(ret, data[i]);\n        i -=\
-    \ i & (-i);\n      }\n\n      return ret;\n    }\n\n    value_type get(int l,\
-    \ int r) const { // [l, r)\n      return G(get(r - 1), G.inv(get(l - 1)));\n \
-    \   }\n\n    value_type operator[](int x) const {\n      return get(x, x + 1);\n\
-    \    }\n  };\n}\n"
+    \ fold(int i) const { // [0, i)\n      value_type ret = G();\n\n      while(i\
+    \ > 0){\n        ret = G(ret, data[i]);\n        i -= i & (-i);\n      }\n\n \
+    \     return ret;\n    }\n\n    value_type fold(int l, int r) const { // [l, r)\n\
+    \      return G(fold(r), G.inv(fold(l)));\n    }\n\n    value_type operator[](int\
+    \ x) const {\n      return fold(x, x + 1);\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n\nnamespace haar_lib {\n  template <typename\
     \ AbelianGroup>\n  class fenwick_tree {\n    using value_type = typename AbelianGroup::value_type;\n\
     \    const static AbelianGroup G;\n\n    int size;\n    std::vector<value_type>\
@@ -38,18 +37,17 @@ data:
     \  size(size), data(size + 1, G())\n    {}\n\n    void update(int i, const value_type\
     \ &val){\n      i += 1; // 1-index\n\n      while(i <= size){\n        data[i]\
     \ = G(data[i], val);\n        i += i & (-i);\n      }\n    }\n\n    value_type\
-    \ get(int i) const { // [0, i)\n      value_type ret = G();\n      i += 1; //\
-    \ 1-index\n\n      while(i > 0){\n        ret = G(ret, data[i]);\n        i -=\
-    \ i & (-i);\n      }\n\n      return ret;\n    }\n\n    value_type get(int l,\
-    \ int r) const { // [l, r)\n      return G(get(r - 1), G.inv(get(l - 1)));\n \
-    \   }\n\n    value_type operator[](int x) const {\n      return get(x, x + 1);\n\
-    \    }\n  };\n}\n"
+    \ fold(int i) const { // [0, i)\n      value_type ret = G();\n\n      while(i\
+    \ > 0){\n        ret = G(ret, data[i]);\n        i -= i & (-i);\n      }\n\n \
+    \     return ret;\n    }\n\n    value_type fold(int l, int r) const { // [l, r)\n\
+    \      return G(fold(r), G.inv(fold(l)));\n    }\n\n    value_type operator[](int\
+    \ x) const {\n      return fold(x, x + 1);\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/DataStructure/FenwickTree/fenwick_tree.cpp
   requiredBy:
   - Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-26 08:06:35+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/DSL_2_B/main.fenwick_tree.test.cpp

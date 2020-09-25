@@ -8,9 +8,6 @@ data:
     path: Mylib/LinearAlgebra/Square/square_matrix.cpp
     title: Square matrix
   - icon: ':question:'
-    path: Mylib/LinearAlgebra/Square/power.cpp
-    title: Power of a matrix
-  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: Mylib/IO/join.cpp
   - icon: ':question:'
@@ -70,69 +67,67 @@ data:
     \    bool operator!=(const square_matrix &val) const {return !(*this == val);}\n\
     \n    auto& operator=(const square_matrix &val){\n      this->matrix = val.matrix;\n\
     \      return *this;\n    }\n\n    auto& operator+=(const square_matrix &val){\n\
-    \      for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j]\
-    \ + val[i][j];\n      return *this;\n    }\n\n    auto& operator-=(const square_matrix\
-    \ &val){\n      for(int i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j]\
-    \ = matrix[i][j] - val[i][j];\n      return *this;\n    }\n\n    auto& operator*=(const\
-    \ square_matrix &val){\n      std::vector<std::vector<T>> temp(N, std::vector<T>(N));\n\
     \      for(int i = 0; i < N; ++i)\n        for(int j = 0; j < N; ++j)\n      \
-    \    for(int k = 0; k < N; ++k)\n            temp[i][j] = temp[i][j] + matrix[i][k]\
-    \ * val[k][j];\n      std::swap(matrix, temp);\n      return *this;\n    }\n\n\
-    \    const auto& operator[](size_t i) const {return matrix[i];}\n    auto& operator[](size_t\
-    \ i){return matrix[i];}\n    int size() const {return N;}\n\n    static auto make_unit(){\n\
-    \      square_matrix ret;\n      for(int i = 0; i < N; ++i) ret[i][i] = 1;\n \
-    \     return ret;\n    }\n\n    friend auto operator+(const square_matrix &a,\
-    \ const square_matrix &b){auto ret = a; ret += b; return ret;}\n    friend auto\
-    \ operator-(const square_matrix &a, const square_matrix &b){auto ret = a; ret\
-    \ -= b; return ret;}\n    friend auto operator*(const square_matrix &a, const\
-    \ square_matrix &b){auto ret = a; ret *= b; return ret;}\n  };\n}\n#line 2 \"\
-    Mylib/LinearAlgebra/Square/power.cpp\"\n#include <cstdint>\n\nnamespace haar_lib\
-    \ {\n  template <typename M>\n  M power(M a, uint64_t p){\n    if(p == 0) return\
-    \ M::make_unit();\n    if(p == 1) return a;\n\n    M temp = power(a, p >> 1);\n\
-    \    auto ret = temp * temp;\n\n    if(p & 1) ret *= a;\n\n    return ret;\n \
-    \ }\n}\n#line 3 \"Mylib/IO/join.cpp\"\n#include <sstream>\n#include <string>\n\
-    \nnamespace haar_lib {\n  template <typename Iter>\n  std::string join(Iter first,\
-    \ Iter last, std::string delim = \" \"){\n    std::stringstream s;\n\n    for(auto\
-    \ it = first; it != last; ++it){\n      if(it != first) s << delim;\n      s <<\
-    \ *it;\n    }\n\n    return s.str();\n  }\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\
+    \    matrix[i][j] = matrix[i][j] + val[i][j];\n      return *this;\n    }\n\n\
+    \    auto& operator-=(const square_matrix &val){\n      for(int i = 0; i < N;\
+    \ ++i)\n        for(int j = 0; j < N; ++j)\n          matrix[i][j] = matrix[i][j]\
+    \ - val[i][j];\n      return *this;\n    }\n\n    auto& operator*=(const square_matrix\
+    \ &val){\n      std::vector<std::vector<T>> temp(N, std::vector<T>(N));\n    \
+    \  for(int i = 0; i < N; ++i)\n        for(int j = 0; j < N; ++j)\n          for(int\
+    \ k = 0; k < N; ++k)\n            temp[i][j] += matrix[i][k] * val[k][j];\n  \
+    \    std::swap(matrix, temp);\n      return *this;\n    }\n\n    const auto& operator[](size_t\
+    \ i) const {return matrix[i];}\n    auto& operator[](size_t i){return matrix[i];}\n\
+    \    int size() const {return N;}\n\n    static auto unit(){\n      square_matrix\
+    \ ret;\n      for(int i = 0; i < N; ++i) ret[i][i] = 1;\n      return ret;\n \
+    \   }\n\n    friend auto operator+(const square_matrix &a, const square_matrix\
+    \ &b){\n      auto ret = a; return ret += b;\n    }\n    friend auto operator-(const\
+    \ square_matrix &a, const square_matrix &b){\n      auto ret = a; return ret -=\
+    \ b;\n    }\n    friend auto operator*(const square_matrix &a, const square_matrix\
+    \ &b){\n      auto ret = a; return ret *= b;\n    }\n\n    auto pow(uint64_t p)\
+    \ const {\n      auto ret = unit();\n      auto a = *this;\n\n      while(p >\
+    \ 0){\n        if(p & 1) ret *= a;\n        a *= a;\n        p >>= 1;\n      }\n\
+    \n      return ret;\n    }\n  };\n}\n#line 3 \"Mylib/IO/join.cpp\"\n#include <sstream>\n\
+    #include <string>\n\nnamespace haar_lib {\n  template <typename Iter>\n  std::string\
+    \ join(Iter first, Iter last, std::string delim = \" \"){\n    std::stringstream\
+    \ s;\n\n    for(auto it = first; it != last; ++it){\n      if(it != first) s <<\
+    \ delim;\n      s << *it;\n    }\n\n    return s.str();\n  }\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  std::vector<T> input_vector(int\
     \ N){\n    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i) std::cin >>\
     \ ret[i];\n    return ret;\n  }\n\n  template <typename T>\n  std::vector<std::vector<T>>\
     \ input_vector(int N, int M){\n    std::vector<std::vector<T>> ret(N);\n    for(int\
     \ i = 0; i < N; ++i) ret[i] = input_vector<T>(M);\n    return ret;\n  }\n}\n#line\
-    \ 10 \"test/aoj/1327/main.test.cpp\"\n\nnamespace hl = haar_lib;\n\nstatic int\
+    \ 9 \"test/aoj/1327/main.test.cpp\"\n\nnamespace hl = haar_lib;\n\nstatic int\
     \ n, m;\nusing mint = hl::runtime_modint<m>;\nusing M = hl::square_matrix<mint,\
     \ n>;\n\nint main(){\n  int a, b, c, t;\n\n  while(std::cin >> n >> m >> a >>\
     \ b >> c >> t, n){\n    auto s = hl::input_vector<mint>(n);\n\n    M mat;\n\n\
     \    for(int i = 0; i < n; ++i){\n      if(i - 1 >= 0) mat[i][i - 1] = a;\n  \
     \    mat[i][i] = b;\n      if(i + 1 < n) mat[i][i + 1] = c;\n    }\n\n    mat\
-    \ = hl::power(mat, t);\n\n    std::vector<mint> ans(n);\n\n    for(int i = 0;\
-    \ i < n; ++i){\n      for(int j = 0; j < n; ++j){\n        ans[i] += mat[i][j]\
-    \ * s[j];\n      }\n    }\n\n    std::cout << hl::join(ans.begin(), ans.end())\
-    \ << \"\\n\";\n  }\n\n  return 0;\n}\n"
+    \ = mat.pow(t);\n\n    std::vector<mint> ans(n);\n\n    for(int i = 0; i < n;\
+    \ ++i){\n      for(int j = 0; j < n; ++j){\n        ans[i] += mat[i][j] * s[j];\n\
+    \      }\n    }\n\n    std::cout << hl::join(ans.begin(), ans.end()) << \"\\n\"\
+    ;\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327\"\
     \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/Number/Mint/runtime_mint.cpp\"\
-    \n#include \"Mylib/LinearAlgebra/Square/square_matrix.cpp\"\n#include \"Mylib/LinearAlgebra/Square/power.cpp\"\
-    \n#include \"Mylib/IO/join.cpp\"\n#include \"Mylib/IO/input_vector.cpp\"\n\nnamespace\
-    \ hl = haar_lib;\n\nstatic int n, m;\nusing mint = hl::runtime_modint<m>;\nusing\
-    \ M = hl::square_matrix<mint, n>;\n\nint main(){\n  int a, b, c, t;\n\n  while(std::cin\
-    \ >> n >> m >> a >> b >> c >> t, n){\n    auto s = hl::input_vector<mint>(n);\n\
-    \n    M mat;\n\n    for(int i = 0; i < n; ++i){\n      if(i - 1 >= 0) mat[i][i\
-    \ - 1] = a;\n      mat[i][i] = b;\n      if(i + 1 < n) mat[i][i + 1] = c;\n  \
-    \  }\n\n    mat = hl::power(mat, t);\n\n    std::vector<mint> ans(n);\n\n    for(int\
-    \ i = 0; i < n; ++i){\n      for(int j = 0; j < n; ++j){\n        ans[i] += mat[i][j]\
-    \ * s[j];\n      }\n    }\n\n    std::cout << hl::join(ans.begin(), ans.end())\
-    \ << \"\\n\";\n  }\n\n  return 0;\n}\n"
+    \n#include \"Mylib/LinearAlgebra/Square/square_matrix.cpp\"\n#include \"Mylib/IO/join.cpp\"\
+    \n#include \"Mylib/IO/input_vector.cpp\"\n\nnamespace hl = haar_lib;\n\nstatic\
+    \ int n, m;\nusing mint = hl::runtime_modint<m>;\nusing M = hl::square_matrix<mint,\
+    \ n>;\n\nint main(){\n  int a, b, c, t;\n\n  while(std::cin >> n >> m >> a >>\
+    \ b >> c >> t, n){\n    auto s = hl::input_vector<mint>(n);\n\n    M mat;\n\n\
+    \    for(int i = 0; i < n; ++i){\n      if(i - 1 >= 0) mat[i][i - 1] = a;\n  \
+    \    mat[i][i] = b;\n      if(i + 1 < n) mat[i][i + 1] = c;\n    }\n\n    mat\
+    \ = mat.pow(t);\n\n    std::vector<mint> ans(n);\n\n    for(int i = 0; i < n;\
+    \ ++i){\n      for(int j = 0; j < n; ++j){\n        ans[i] += mat[i][j] * s[j];\n\
+    \      }\n    }\n\n    std::cout << hl::join(ans.begin(), ans.end()) << \"\\n\"\
+    ;\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Number/Mint/runtime_mint.cpp
   - Mylib/LinearAlgebra/Square/square_matrix.cpp
-  - Mylib/LinearAlgebra/Square/power.cpp
   - Mylib/IO/join.cpp
   - Mylib/IO/input_vector.cpp
   isVerificationFile: true
   path: test/aoj/1327/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-17 22:58:14+09:00'
+  timestamp: '2020-09-21 01:58:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/1327/main.test.cpp

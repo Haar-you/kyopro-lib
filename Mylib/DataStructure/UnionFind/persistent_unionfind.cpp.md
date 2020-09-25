@@ -42,15 +42,14 @@ data:
     \ const {\n      if(t->is_terminal) return *(t->value);\n\n      int k = get_size(t->left);\n\
     \      if(i < k) return get(t->left, i);\n      else return get(t->right, i -\
     \ k);\n    }\n\n  public:\n    T operator[](int i) const {\n      return get(root,\
-    \ i);\n    }\n\n  protected:\n    node* update(node *prev, int i, const T &val)\
-    \ const {\n      if(prev->is_terminal) return new node(val);\n\n      int k =\
-    \ get_size(prev->left);\n\n      node *t = new node();\n      if(i < k){\n   \
-    \     t->right = prev->right;\n        t->left = update(prev->left, i, val);\n\
-    \        t->size = get_size(t->right) + get_size(t->left);\n      }else{\n   \
-    \     t->left = prev->left;\n        t->right = update(prev->right, i - k, val);\n\
-    \        t->size = get_size(t->right) + get_size(t->left);\n      }\n      return\
-    \ t;\n    }\n\n  public:\n    persistent_array update(int i, const T &val) const\
-    \ {\n      node *ret = update(root, i, val);\n      return persistent_array(ret);\n\
+    \ i);\n    }\n\n  protected:\n    node* set(node *prev, int i, const T &val) const\
+    \ {\n      if(prev->is_terminal) return new node(val);\n\n      int k = get_size(prev->left);\n\
+    \n      node *t = new node();\n      if(i < k){\n        t->right = prev->right;\n\
+    \        t->left = set(prev->left, i, val);\n        t->size = get_size(t->right)\
+    \ + get_size(t->left);\n      }else{\n        t->left = prev->left;\n        t->right\
+    \ = set(prev->right, i - k, val);\n        t->size = get_size(t->right) + get_size(t->left);\n\
+    \      }\n      return t;\n    }\n\n  public:\n    persistent_array set(int i,\
+    \ const T &val) const {\n      node *ret = set(root, i, val);\n      return persistent_array(ret);\n\
     \    }\n\n  protected:\n    void traverse(node *t, std::vector<T> &ret) const\
     \ {\n      if(!t) return;\n\n      if(t->is_terminal){\n        ret.push_back(*(t->value));\n\
     \        return;\n      }\n\n      traverse(t->left, ret);\n      traverse(t->right,\
@@ -70,10 +69,10 @@ data:
     \ merge(int i, int j) const {\n      const int ri = root_of(i), rj = root_of(j);\n\
     \      if(ri == rj) return *this;\n\n      const int size_i = -par[ri];\n    \
     \  const int size_j = -par[rj];\n\n      persistent_array<int> ret = par;\n\n\
-    \      if(size_i > size_j){\n        ret = ret.update(ri, -(size_i + size_j));\n\
-    \        ret = ret.update(rj, ri);\n      }else{\n        ret = ret.update(rj,\
-    \ -(size_i + size_j));\n        ret = ret.update(ri, rj);\n      }\n\n      return\
-    \ persistent_unionfind(ret);\n    }\n  };\n}\n"
+    \      if(size_i > size_j){\n        ret = ret.set(ri, -(size_i + size_j));\n\
+    \        ret = ret.set(rj, ri);\n      }else{\n        ret = ret.set(rj, -(size_i\
+    \ + size_j));\n        ret = ret.set(ri, rj);\n      }\n\n      return persistent_unionfind(ret);\n\
+    \    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include \"Mylib/DataStructure/Array/persistent_array.cpp\"\
     \n\nnamespace haar_lib {\n  class persistent_unionfind {\n    persistent_array<int>\
     \ par;\n\n    persistent_unionfind(persistent_array<int> par): par(par){}\n\n\
@@ -85,16 +84,16 @@ data:
     \ merge(int i, int j) const {\n      const int ri = root_of(i), rj = root_of(j);\n\
     \      if(ri == rj) return *this;\n\n      const int size_i = -par[ri];\n    \
     \  const int size_j = -par[rj];\n\n      persistent_array<int> ret = par;\n\n\
-    \      if(size_i > size_j){\n        ret = ret.update(ri, -(size_i + size_j));\n\
-    \        ret = ret.update(rj, ri);\n      }else{\n        ret = ret.update(rj,\
-    \ -(size_i + size_j));\n        ret = ret.update(ri, rj);\n      }\n\n      return\
-    \ persistent_unionfind(ret);\n    }\n  };\n}\n"
+    \      if(size_i > size_j){\n        ret = ret.set(ri, -(size_i + size_j));\n\
+    \        ret = ret.set(rj, ri);\n      }else{\n        ret = ret.set(rj, -(size_i\
+    \ + size_j));\n        ret = ret.set(ri, rj);\n      }\n\n      return persistent_unionfind(ret);\n\
+    \    }\n  };\n}\n"
   dependsOn:
   - Mylib/DataStructure/Array/persistent_array.cpp
   isVerificationFile: false
   path: Mylib/DataStructure/UnionFind/persistent_unionfind.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/persistent_unionfind/main.test.cpp

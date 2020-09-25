@@ -11,7 +11,7 @@ data:
     path: Mylib/Number/tetration.cpp
     title: Tetration
   - icon: ':x:'
-    path: Mylib/Number/euler_phi_function.cpp
+    path: Mylib/Number/euler_totient_function.cpp
     title: Euler's totient function
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -44,7 +44,7 @@ data:
     \   int N;\n\n  public:\n    InputTuples(int N): N(N){}\n\n    iter begin() const\
     \ {return iter(N);}\n    iter end() const {return iter(N);}\n  };\n\n  template\
     \ <typename ... Args>\n  auto input_tuples(int N){\n    return InputTuples<Args\
-    \ ...>(N);\n  }\n}\n#line 2 \"Mylib/Number/euler_phi_function.cpp\"\n#include\
+    \ ...>(N);\n  }\n}\n#line 2 \"Mylib/Number/euler_totient_function.cpp\"\n#include\
     \ <cstdint>\n\nnamespace haar_lib {\n  int64_t totient(int64_t n){\n    int64_t\
     \ ret = n;\n\n    for(int64_t i = 2; i * i <= n; ++i){\n      if(n % i == 0){\n\
     \        ret -= ret / i;\n        while(n % i == 0) n /= i;\n      }\n    }\n\n\
@@ -75,11 +75,11 @@ data:
   - Mylib/IO/input_tuples.cpp
   - Mylib/IO/input_tuple.cpp
   - Mylib/Number/tetration.cpp
-  - Mylib/Number/euler_phi_function.cpp
+  - Mylib/Number/euler_totient_function.cpp
   isVerificationFile: true
   path: test/yosupo-judge/tetration_mod/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-26 05:28:21+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/tetration_mod/main.test.cpp

@@ -59,8 +59,8 @@ data:
     \          propagate(R);\n        }\n        if(L & 1){\n          lazy[L] = M_update(x,\
     \ lazy[L]);\n          propagate(L);\n          ++L;\n        }\n        L >>=\
     \ 1;\n        R >>= 1;\n      }\n\n      bottom_up(l + hsize);\n      if(r < hsize)\
-    \ bottom_up(r + hsize);\n    }\n\n    void update_at(int i, const value_type_update\
-    \ &x){update(i, i + 1, x);}\n\n    value_type_get get(int l, int r){\n      propagate_top_down(l\
+    \ bottom_up(r + hsize);\n    }\n\n    void update(int i, const value_type_update\
+    \ &x){update(i, i + 1, x);}\n\n    value_type_get fold(int l, int r){\n      propagate_top_down(l\
     \ + hsize);\n      if(r < hsize) propagate_top_down(r + hsize);\n\n      value_type_get\
     \ ret_left = M_get(), ret_right = M_get();\n\n      int L = l + hsize, R = r +\
     \ hsize;\n\n      while(L < R){\n        if(R & 1){\n          --R;\n        \
@@ -68,9 +68,9 @@ data:
     \        if(L & 1){\n          propagate(L);\n          ret_left = M_get(ret_left,\
     \ data[L]);\n          ++L;\n        }\n        L >>= 1;\n        R >>= 1;\n \
     \     }\n\n      return M_get(ret_left, ret_right);\n    }\n\n    value_type_get\
-    \ operator[](int i){return get(i, i + 1);}\n\n    template <typename T>\n    void\
-    \ init(const T &val){\n      init_with_vector(std::vector<T>(hsize, val));\n \
-    \   }\n\n    template <typename T>\n    void init_with_vector(const std::vector<T>\
+    \ operator[](int i){return fold(i, i + 1);}\n\n    template <typename T>\n   \
+    \ void init(const T &val){\n      init_with_vector(std::vector<T>(hsize, val));\n\
+    \    }\n\n    template <typename T>\n    void init_with_vector(const std::vector<T>\
     \ &val){\n      data.assign(size, M_get());\n      lazy.assign(size, M_update());\n\
     \      for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = (value_type_get)val[i];\n\
     \      for(int i = hsize - 1; i > 0; --i) data[i] = M_get(data[i << 1 | 0], data[i\
@@ -120,7 +120,7 @@ data:
     \ hl::add_max>(N - 1);\n\n  auto T = hl::input_vector<int64_t>(N - 1);\n\n  for(int\
     \ i = 0; i < N - 1; ++i){\n    T[i] += 3 * (N - 1 - i);\n  }\n\n  seg.init_with_vector(T);\n\
     \n  int M; std::cin >> M;\n\n  for(auto [L, R, D] : hl::input_tuples<int, int,\
-    \ int>(M)){\n    --L, --R;\n\n    seg.update(L, R + 1, D);\n\n    auto ans = seg.get(0,\
+    \ int>(M)){\n    --L, --R;\n\n    seg.update(L, R + 1, D);\n\n    auto ans = seg.fold(0,\
     \ N - 1).value();\n    std::cout << ans << std::endl;\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/631\"\n\n#include <iostream>\n\
     #include <vector>\n#include \"Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp\"\
@@ -133,7 +133,7 @@ data:
     \ - 1);\n\n  for(int i = 0; i < N - 1; ++i){\n    T[i] += 3 * (N - 1 - i);\n \
     \ }\n\n  seg.init_with_vector(T);\n\n  int M; std::cin >> M;\n\n  for(auto [L,\
     \ R, D] : hl::input_tuples<int, int, int>(M)){\n    --L, --R;\n\n    seg.update(L,\
-    \ R + 1, D);\n\n    auto ans = seg.get(0, N - 1).value();\n    std::cout << ans\
+    \ R + 1, D);\n\n    auto ans = seg.fold(0, N - 1).value();\n    std::cout << ans\
     \ << std::endl;\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp
@@ -146,7 +146,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/631/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-18 18:43:57+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/631/main.test.cpp

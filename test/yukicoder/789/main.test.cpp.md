@@ -42,11 +42,12 @@ data:
     \ + r) >> 1;\n      return M(get(t->left, l, m, x, y), get(t->right, m, r, x,\
     \ y));\n    }\n\n  public:\n    dynamic_segment_tree(int64_t n):\n      depth(n\
     \ > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),\n      size(1LL << depth),\n   \
-    \   hsize(size / 2)\n    {\n      root = new node(M());\n    }\n\n    void update(int64_t\
+    \   hsize(size / 2)\n    {\n      root = new node(M());\n    }\n\n    void set(int64_t\
     \ i, const value_type &x){\n      update(root, 0, hsize, i, x);\n    }\n\n   \
-    \ value_type get(int64_t l, int64_t r) const {\n      return get(root, 0, hsize,\
-    \ l, r);\n    }\n\n    value_type operator[](int64_t i) const {\n      return\
-    \ get(i, i + 1);\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/sum.cpp\"\
+    \ void update(int64_t i, const value_type &x){\n      set(i, M((*this)[i], x));\n\
+    \    }\n\n    value_type fold(int64_t l, int64_t r) const {\n      return get(root,\
+    \ 0, hsize, l, r);\n    }\n\n    value_type operator[](int64_t i) const {\n  \
+    \    return fold(i, i + 1);\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/sum.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  struct sum_monoid {\n   \
     \ using value_type = T;\n    value_type operator()() const {return 0;}\n    value_type\
     \ operator()(value_type a, value_type b) const {return a + b;}\n  };\n}\n#line\
@@ -74,18 +75,18 @@ data:
     \ hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  int n; std::cin >> n;\n\n  hl::dynamic_segment_tree<hl::sum_monoid<int64_t>>\
     \ seg(1000000001);\n\n  int64_t ans = 0;\n\n  for(auto [q, x, y] : hl::input_tuples<int,\
-    \ int, int>(n)){\n    if(q == 0){\n      seg.update(x, seg[x] + y);\n    }else{\n\
-    \      ans += seg.get(x, y + 1);\n    }\n  }\n\n  std::cout << ans << \"\\n\"\
-    ;\n\n  return 0;\n}\n"
+    \ int, int>(n)){\n    if(q == 0){\n      seg.update(x, y);\n    }else{\n     \
+    \ ans += seg.fold(x, y + 1);\n    }\n  }\n\n  std::cout << ans << \"\\n\";\n\n\
+    \  return 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/789\"\n\n#include <iostream>\n\
     #include \"Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp\"\n#include\
     \ \"Mylib/AlgebraicStructure/Monoid/sum.cpp\"\n#include \"Mylib/IO/input_tuples.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  int n; std::cin >> n;\n\n  hl::dynamic_segment_tree<hl::sum_monoid<int64_t>>\
     \ seg(1000000001);\n\n  int64_t ans = 0;\n\n  for(auto [q, x, y] : hl::input_tuples<int,\
-    \ int, int>(n)){\n    if(q == 0){\n      seg.update(x, seg[x] + y);\n    }else{\n\
-    \      ans += seg.get(x, y + 1);\n    }\n  }\n\n  std::cout << ans << \"\\n\"\
-    ;\n\n  return 0;\n}\n"
+    \ int, int>(n)){\n    if(q == 0){\n      seg.update(x, y);\n    }else{\n     \
+    \ ans += seg.fold(x, y + 1);\n    }\n  }\n\n  std::cout << ans << \"\\n\";\n\n\
+    \  return 0;\n}\n"
   dependsOn:
   - Mylib/DataStructure/SegmentTree/dynamic_segment_tree.cpp
   - Mylib/AlgebraicStructure/Monoid/sum.cpp
@@ -94,7 +95,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/789/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/789/main.test.cpp

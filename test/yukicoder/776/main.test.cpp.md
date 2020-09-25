@@ -54,18 +54,20 @@ data:
     \ data;\n\n  public:\n    segment_tree(){}\n    segment_tree(int n):\n      depth(n\
     \ > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),\n      size(1 << depth), hsize(size\
     \ / 2),\n      data(size, M())\n    {}\n\n    auto operator[](int i) const {return\
-    \ data[hsize + i];}\n\n    auto get(int x, int y) const {\n      value_type ret_left\
+    \ data[hsize + i];}\n\n    auto fold(int x, int y) const {\n      value_type ret_left\
     \ = M();\n      value_type ret_right = M();\n\n      int l = x + hsize, r = y\
     \ + hsize;\n      while(l < r){\n        if(r & 1) ret_right = M(data[--r], ret_right);\n\
     \        if(l & 1) ret_left = M(ret_left, data[l++]);\n        l >>= 1, r >>=\
-    \ 1;\n      }\n\n      return M(ret_left, ret_right);\n    }\n\n    void update(int\
+    \ 1;\n      }\n\n      return M(ret_left, ret_right);\n    }\n\n    void set(int\
     \ i, const value_type &x){\n      i += hsize;\n      data[i] = x;\n      while(i\
     \ > 1) i >>= 1, data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n  \
-    \  template <typename T>\n    void init_with_vector(const std::vector<T> &val){\n\
-    \      data.assign(size, M());\n      for(int i = 0; i < (int)val.size(); ++i)\
-    \ data[hsize + i] = val[i];\n      for(int i = hsize - 1; i >= 1; --i) data[i]\
-    \ = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n    template <typename T>\n\
-    \    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
+    \  void update(int i, const value_type &x){\n      i += hsize;\n      data[i]\
+    \ = M(data[i], x);\n      while(i > 1) i >>= 1, data[i] = M(data[i << 1 | 0],\
+    \ data[i << 1 | 1]);\n    }\n\n    template <typename T>\n    void init_with_vector(const\
+    \ std::vector<T> &val){\n      data.assign(size, M());\n      for(int i = 0; i\
+    \ < (int)val.size(); ++i) data[hsize + i] = val[i];\n      for(int i = hsize -\
+    \ 1; i >= 1; --i) data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n\
+    \    template <typename T>\n    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
     \ val));\n    }\n\n  private:\n    template <bool Lower, typename F>\n    int\
     \ bound(const int l, const int r, value_type x, F f) const {\n      std::vector<int>\
     \ pl, pr;\n      int L = l + hsize;\n      int R = r + hsize;\n      while(L <\
@@ -108,45 +110,45 @@ data:
     \  }\n\n  template <typename T>\n  std::vector<std::vector<T>> input_vector(int\
     \ N, int M){\n    std::vector<std::vector<T>> ret(N);\n    for(int i = 0; i <\
     \ N; ++i) ret[i] = input_vector<T>(M);\n    return ret;\n  }\n}\n#line 12 \"test/yukicoder/776/main.test.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nusing Mon = hl::max_partial_sum_monoid<int64_t>;\n\
-    \nint main(){\n  int N, Q; std::cin >> N >> Q;\n\n  hl::segment_tree<Mon> seg(N);\n\
+    \n\nnamespace hl = haar_lib;\n\nusing M = hl::max_partial_sum_monoid<int64_t>;\n\
+    \nint main(){\n  int N, Q; std::cin >> N >> Q;\n\n  hl::segment_tree<M> seg(N);\n\
     \n  auto a = hl::input_vector<int64_t>(N);\n  for(int i = 0; i < N; ++i){\n  \
-    \  seg.update(i, Mon::max_partial_sum(a[i]));\n  }\n\n  for(auto [type] : hl::input_tuples<std::string>(Q)){\n\
+    \  seg.set(i, M::max_partial_sum(a[i]));\n  }\n\n  for(auto [type] : hl::input_tuples<std::string>(Q)){\n\
     \    if(type == \"set\"){\n      int i, x; std::cin >> i >> x;\n      --i;\n \
-    \     seg.update(i, Mon::max_partial_sum(x));\n      a[i] = x;\n    }else{\n \
-    \     int l1, l2, r1, r2; std::cin >> l1 >> l2 >> r1 >> r2;\n      --l1, --l2,\
-    \ --r1, --r2;\n\n      r1 = std::max(l1, r1);\n      l2 = std::min(l2, r2);\n\n\
-    \      int64_t ans = LLONG_MIN;\n\n      auto f =\n        [&](int L1, int L2,\
-    \ int R1, int R2){\n          auto ret =\n            seg.get(L1, L2 + 1).value_or(Mon::max_partial_sum(0)).right_max\
-    \ +\n            seg.get(L2 + 1, R1).value_or(Mon::max_partial_sum(0)).sum +\n\
-    \            seg.get(R1, R2 + 1).value_or(Mon::max_partial_sum(0)).left_max;\n\
-    \n          if(L2 == R1) ret -= a[L2];\n\n          return ret;\n        };\n\n\
+    \     seg.set(i, M::max_partial_sum(x));\n      a[i] = x;\n    }else{\n      int\
+    \ l1, l2, r1, r2; std::cin >> l1 >> l2 >> r1 >> r2;\n      --l1, --l2, --r1, --r2;\n\
+    \n      r1 = std::max(l1, r1);\n      l2 = std::min(l2, r2);\n\n      int64_t\
+    \ ans = LLONG_MIN;\n\n      auto f =\n        [&](int L1, int L2, int R1, int\
+    \ R2){\n          auto ret =\n            seg.fold(L1, L2 + 1).value_or(M::max_partial_sum(0)).right_max\
+    \ +\n            seg.fold(L2 + 1, R1).value_or(M::max_partial_sum(0)).sum +\n\
+    \            seg.fold(R1, R2 + 1).value_or(M::max_partial_sum(0)).left_max;\n\n\
+    \          if(L2 == R1) ret -= a[L2];\n\n          return ret;\n        };\n\n\
     \      if(l2 <= r1){\n        ans = f(l1, l2, r1, r2);\n      }else{\n       \
     \ ans = std::max(ans, f(l1, r1, r1, r2));\n        ans = std::max(ans, f(l1, l2,\
-    \ l2, r2));\n        ans = std::max(ans, seg.get(r1, l2 + 1)->partial_max);\n\
+    \ l2, r2));\n        ans = std::max(ans, seg.fold(r1, l2 + 1)->partial_max);\n\
     \      }\n\n      std::cout << ans << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/776\"\n\n#include <iostream>\n\
     #include <vector>\n#include <string>\n#include <algorithm>\n#include <climits>\n\
     #include \"Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp\"\n#include \"\
     Mylib/DataStructure/SegmentTree/segment_tree.cpp\"\n#include \"Mylib/IO/input_tuples.cpp\"\
     \n#include \"Mylib/IO/input_vector.cpp\"\n\nnamespace hl = haar_lib;\n\nusing\
-    \ Mon = hl::max_partial_sum_monoid<int64_t>;\n\nint main(){\n  int N, Q; std::cin\
-    \ >> N >> Q;\n\n  hl::segment_tree<Mon> seg(N);\n\n  auto a = hl::input_vector<int64_t>(N);\n\
-    \  for(int i = 0; i < N; ++i){\n    seg.update(i, Mon::max_partial_sum(a[i]));\n\
-    \  }\n\n  for(auto [type] : hl::input_tuples<std::string>(Q)){\n    if(type ==\
-    \ \"set\"){\n      int i, x; std::cin >> i >> x;\n      --i;\n      seg.update(i,\
-    \ Mon::max_partial_sum(x));\n      a[i] = x;\n    }else{\n      int l1, l2, r1,\
-    \ r2; std::cin >> l1 >> l2 >> r1 >> r2;\n      --l1, --l2, --r1, --r2;\n\n   \
-    \   r1 = std::max(l1, r1);\n      l2 = std::min(l2, r2);\n\n      int64_t ans\
-    \ = LLONG_MIN;\n\n      auto f =\n        [&](int L1, int L2, int R1, int R2){\n\
-    \          auto ret =\n            seg.get(L1, L2 + 1).value_or(Mon::max_partial_sum(0)).right_max\
-    \ +\n            seg.get(L2 + 1, R1).value_or(Mon::max_partial_sum(0)).sum +\n\
-    \            seg.get(R1, R2 + 1).value_or(Mon::max_partial_sum(0)).left_max;\n\
-    \n          if(L2 == R1) ret -= a[L2];\n\n          return ret;\n        };\n\n\
-    \      if(l2 <= r1){\n        ans = f(l1, l2, r1, r2);\n      }else{\n       \
-    \ ans = std::max(ans, f(l1, r1, r1, r2));\n        ans = std::max(ans, f(l1, l2,\
-    \ l2, r2));\n        ans = std::max(ans, seg.get(r1, l2 + 1)->partial_max);\n\
-    \      }\n\n      std::cout << ans << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
+    \ M = hl::max_partial_sum_monoid<int64_t>;\n\nint main(){\n  int N, Q; std::cin\
+    \ >> N >> Q;\n\n  hl::segment_tree<M> seg(N);\n\n  auto a = hl::input_vector<int64_t>(N);\n\
+    \  for(int i = 0; i < N; ++i){\n    seg.set(i, M::max_partial_sum(a[i]));\n  }\n\
+    \n  for(auto [type] : hl::input_tuples<std::string>(Q)){\n    if(type == \"set\"\
+    ){\n      int i, x; std::cin >> i >> x;\n      --i;\n      seg.set(i, M::max_partial_sum(x));\n\
+    \      a[i] = x;\n    }else{\n      int l1, l2, r1, r2; std::cin >> l1 >> l2 >>\
+    \ r1 >> r2;\n      --l1, --l2, --r1, --r2;\n\n      r1 = std::max(l1, r1);\n \
+    \     l2 = std::min(l2, r2);\n\n      int64_t ans = LLONG_MIN;\n\n      auto f\
+    \ =\n        [&](int L1, int L2, int R1, int R2){\n          auto ret =\n    \
+    \        seg.fold(L1, L2 + 1).value_or(M::max_partial_sum(0)).right_max +\n  \
+    \          seg.fold(L2 + 1, R1).value_or(M::max_partial_sum(0)).sum +\n      \
+    \      seg.fold(R1, R2 + 1).value_or(M::max_partial_sum(0)).left_max;\n\n    \
+    \      if(L2 == R1) ret -= a[L2];\n\n          return ret;\n        };\n\n   \
+    \   if(l2 <= r1){\n        ans = f(l1, l2, r1, r2);\n      }else{\n        ans\
+    \ = std::max(ans, f(l1, r1, r1, r2));\n        ans = std::max(ans, f(l1, l2, l2,\
+    \ r2));\n        ans = std::max(ans, seg.fold(r1, l2 + 1)->partial_max);\n   \
+    \   }\n\n      std::cout << ans << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp
   - Mylib/DataStructure/SegmentTree/segment_tree.cpp
@@ -156,7 +158,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/776/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-18 01:14:06+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/776/main.test.cpp

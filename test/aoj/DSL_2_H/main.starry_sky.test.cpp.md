@@ -41,7 +41,7 @@ data:
     \ int r, T val){\n      int L = l + hsize;\n      int R = r + hsize;\n\n     \
     \ while(L < R){\n        if(R & 1) --R, data[R] += val;\n        if(L & 1) data[L]\
     \ += val, ++L;\n        L >>= 1;\n        R >>= 1;\n      }\n\n      bottom_up(l\
-    \ + hsize);\n      bottom_up(r + hsize);\n    }\n\n    T get(int l, int r) const\
+    \ + hsize);\n      bottom_up(r + hsize);\n    }\n\n    T fold(int l, int r) const\
     \ {\n      return *get(1, 0, hsize, l, r, 0);\n    }\n\n    template <typename\
     \ U>\n    void init_with_vector(std::vector<U> &a){\n      for(int i = 0; i <\
     \ (int)a.size(); ++i){\n        data[hsize + i] = a[i];\n      }\n\n      for(int\
@@ -71,7 +71,7 @@ data:
     namespace hl = haar_lib;\n\nint main(){\n  int n, q; std::cin >> n >> q;\n\n \
     \ hl::starry_sky_tree<int, std::less<>> seg(n);\n\n  for(auto [type, s, t] : hl::input_tuples<int,\
     \ int, int>(q)){\n    if(type == 0){\n      int x; std::cin >> x;\n      seg.update(s,\
-    \ t + 1, x);\n    }else{\n      std::cout << seg.get(s, t + 1) << std::endl;\n\
+    \ t + 1, x);\n    }else{\n      std::cout << seg.fold(s, t + 1) << std::endl;\n\
     \    }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H\"\
     \n\n#include <iostream>\n#include <functional>\n#include \"Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp\"\
@@ -79,7 +79,7 @@ data:
     \  int n, q; std::cin >> n >> q;\n\n  hl::starry_sky_tree<int, std::less<>> seg(n);\n\
     \n  for(auto [type, s, t] : hl::input_tuples<int, int, int>(q)){\n    if(type\
     \ == 0){\n      int x; std::cin >> x;\n      seg.update(s, t + 1, x);\n    }else{\n\
-    \      std::cout << seg.get(s, t + 1) << std::endl;\n    }\n  }\n\n  return 0;\n\
+    \      std::cout << seg.fold(s, t + 1) << std::endl;\n    }\n  }\n\n  return 0;\n\
     }\n"
   dependsOn:
   - Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp
@@ -88,7 +88,7 @@ data:
   isVerificationFile: true
   path: test/aoj/DSL_2_H/main.starry_sky.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/aoj/DSL_2_H/main.starry_sky.test.cpp

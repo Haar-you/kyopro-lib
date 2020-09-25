@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: Mylib/IO/join.cpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   - icon: ':x:'

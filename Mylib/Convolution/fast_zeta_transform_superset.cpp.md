@@ -6,11 +6,11 @@ data:
     path: Mylib/Convolution/convolution_and.cpp
     title: Convolution (Index bitwise AND)
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/3119/main.test.cpp
     title: test/aoj/3119/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     links: []
@@ -33,7 +33,7 @@ data:
   requiredBy:
   - Mylib/Convolution/convolution_and.cpp
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/3119/main.test.cpp
 documentation_of: Mylib/Convolution/fast_zeta_transform_superset.cpp

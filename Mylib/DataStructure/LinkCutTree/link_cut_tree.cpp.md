@@ -58,11 +58,12 @@ data:
     \ k){\n      node::expose(nodes[k]);\n    }\n\n    void cut(int i, int j){\n \
     \     node::cut(nodes[i], nodes[j]);\n    }\n\n    void link(int i, int j){\n\
     \      node::link(nodes[i], nodes[j]);\n    }\n\n    void evert(int k){\n    \
-    \  node::evert(nodes[k]);\n    }\n\n    void update(int k, value_type x){\n  \
-    \    node::evert(nodes[k]);\n      nodes[k]->value = x;\n      nodes[k]->push_down();\n\
-    \    }\n\n    value_type at(int k){\n      return nodes[k]->value;\n    }\n\n\
-    \    value_type get(int i, int j){\n      node::evert(nodes[i]);\n      node::expose(nodes[j]);\n\
-    \      return nodes[j]->result;\n    }\n  };\n}\n"
+    \  node::evert(nodes[k]);\n    }\n\n    void set(int k, value_type x){\n     \
+    \ node::evert(nodes[k]);\n      nodes[k]->value = x;\n      nodes[k]->push_down();\n\
+    \    }\n\n    void update(int k, value_type x){\n      set(k, M(get(k), x));\n\
+    \    }\n\n    value_type get(int k) const {\n      return nodes[k]->value;\n \
+    \   }\n\n    value_type fold(int i, int j){\n      node::evert(nodes[i]);\n  \
+    \    node::expose(nodes[j]);\n      return nodes[j]->result;\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n\nnamespace haar_lib {\n  template <typename\
     \ Monoid>\n  struct link_cut_node {\n    using value_type = typename Monoid::value_type;\n\
     \    using node = link_cut_node;\n    const static Monoid M;\n\n    int subsize;\n\
@@ -110,16 +111,17 @@ data:
     \ k){\n      node::expose(nodes[k]);\n    }\n\n    void cut(int i, int j){\n \
     \     node::cut(nodes[i], nodes[j]);\n    }\n\n    void link(int i, int j){\n\
     \      node::link(nodes[i], nodes[j]);\n    }\n\n    void evert(int k){\n    \
-    \  node::evert(nodes[k]);\n    }\n\n    void update(int k, value_type x){\n  \
-    \    node::evert(nodes[k]);\n      nodes[k]->value = x;\n      nodes[k]->push_down();\n\
-    \    }\n\n    value_type at(int k){\n      return nodes[k]->value;\n    }\n\n\
-    \    value_type get(int i, int j){\n      node::evert(nodes[i]);\n      node::expose(nodes[j]);\n\
-    \      return nodes[j]->result;\n    }\n  };\n}\n"
+    \  node::evert(nodes[k]);\n    }\n\n    void set(int k, value_type x){\n     \
+    \ node::evert(nodes[k]);\n      nodes[k]->value = x;\n      nodes[k]->push_down();\n\
+    \    }\n\n    void update(int k, value_type x){\n      set(k, M(get(k), x));\n\
+    \    }\n\n    value_type get(int k) const {\n      return nodes[k]->value;\n \
+    \   }\n\n    value_type fold(int i, int j){\n      node::evert(nodes[i]);\n  \
+    \    node::expose(nodes[j]);\n      return nodes[j]->result;\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp

@@ -59,8 +59,8 @@ data:
     \          propagate(R);\n        }\n        if(L & 1){\n          lazy[L] = M_update(x,\
     \ lazy[L]);\n          propagate(L);\n          ++L;\n        }\n        L >>=\
     \ 1;\n        R >>= 1;\n      }\n\n      bottom_up(l + hsize);\n      if(r < hsize)\
-    \ bottom_up(r + hsize);\n    }\n\n    void update_at(int i, const value_type_update\
-    \ &x){update(i, i + 1, x);}\n\n    value_type_get get(int l, int r){\n      propagate_top_down(l\
+    \ bottom_up(r + hsize);\n    }\n\n    void update(int i, const value_type_update\
+    \ &x){update(i, i + 1, x);}\n\n    value_type_get fold(int l, int r){\n      propagate_top_down(l\
     \ + hsize);\n      if(r < hsize) propagate_top_down(r + hsize);\n\n      value_type_get\
     \ ret_left = M_get(), ret_right = M_get();\n\n      int L = l + hsize, R = r +\
     \ hsize;\n\n      while(L < R){\n        if(R & 1){\n          --R;\n        \
@@ -68,9 +68,9 @@ data:
     \        if(L & 1){\n          propagate(L);\n          ret_left = M_get(ret_left,\
     \ data[L]);\n          ++L;\n        }\n        L >>= 1;\n        R >>= 1;\n \
     \     }\n\n      return M_get(ret_left, ret_right);\n    }\n\n    value_type_get\
-    \ operator[](int i){return get(i, i + 1);}\n\n    template <typename T>\n    void\
-    \ init(const T &val){\n      init_with_vector(std::vector<T>(hsize, val));\n \
-    \   }\n\n    template <typename T>\n    void init_with_vector(const std::vector<T>\
+    \ operator[](int i){return fold(i, i + 1);}\n\n    template <typename T>\n   \
+    \ void init(const T &val){\n      init_with_vector(std::vector<T>(hsize, val));\n\
+    \    }\n\n    template <typename T>\n    void init_with_vector(const std::vector<T>\
     \ &val){\n      data.assign(size, M_get());\n      lazy.assign(size, M_update());\n\
     \      for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = (value_type_get)val[i];\n\
     \      for(int i = hsize - 1; i > 0; --i) data[i] = M_get(data[i << 1 | 0], data[i\
@@ -121,11 +121,12 @@ data:
     \ main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int N;\
     \ std::cin >> N;\n\n  auto A = hl::input_vector<int64_t>(N);\n\n  hl::lazy_segment_tree<\n\
     \    hl::array_monoid<hl::sum_monoid<int64_t>, 2>,\n    hl::sum_monoid<int64_t>,\n\
-    \    hl::add_square_sum> seg(N);\n\n  for(int i = 0; i < N; ++i) seg.update_at(i,\
+    \    hl::add_square_sum> seg(N);\n\n  for(int i = 0; i < N; ++i) seg.update(i,\
     \ A[i]);\n\n  int Q; std::cin >> Q;\n\n  for(auto [type] : hl::input_tuples<int>(Q)){\n\
     \    if(type == 1){\n      int l, r, x; std::cin >> l >> r >> x;\n      seg.update(l\
     \ - 1, r, x);\n    }else{\n      int l, r; std::cin >> l >> r;\n      std::cout\
-    \ << std::get<1>(seg.get(l - 1, r)) << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
+    \ << std::get<1>(seg.fold(l - 1, r)) << \"\\n\";\n    }\n  }\n\n  return 0;\n\
+    }\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/1099\"\n\n#include <iostream>\n\
     #include \"Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp\"\n#include \"\
     Mylib/AlgebraicStructure/Monoid/array.cpp\"\n#include \"Mylib/AlgebraicStructure/Monoid/sum.cpp\"\
@@ -134,11 +135,12 @@ data:
     \ hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  int N; std::cin >> N;\n\n  auto A = hl::input_vector<int64_t>(N);\n\n  hl::lazy_segment_tree<\n\
     \    hl::array_monoid<hl::sum_monoid<int64_t>, 2>,\n    hl::sum_monoid<int64_t>,\n\
-    \    hl::add_square_sum> seg(N);\n\n  for(int i = 0; i < N; ++i) seg.update_at(i,\
+    \    hl::add_square_sum> seg(N);\n\n  for(int i = 0; i < N; ++i) seg.update(i,\
     \ A[i]);\n\n  int Q; std::cin >> Q;\n\n  for(auto [type] : hl::input_tuples<int>(Q)){\n\
     \    if(type == 1){\n      int l, r, x; std::cin >> l >> r >> x;\n      seg.update(l\
     \ - 1, r, x);\n    }else{\n      int l, r; std::cin >> l >> r;\n      std::cout\
-    \ << std::get<1>(seg.get(l - 1, r)) << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
+    \ << std::get<1>(seg.fold(l - 1, r)) << \"\\n\";\n    }\n  }\n\n  return 0;\n\
+    }\n"
   dependsOn:
   - Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp
   - Mylib/AlgebraicStructure/Monoid/array.cpp
@@ -150,7 +152,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/1099/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-18 18:43:57+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/1099/main.test.cpp

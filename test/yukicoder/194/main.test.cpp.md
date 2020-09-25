@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   - icon: ':question:'
@@ -10,9 +10,6 @@ data:
   - icon: ':x:'
     path: Mylib/LinearAlgebra/Square/inverse_matrix.cpp
     title: Inverse matrix
-  - icon: ':question:'
-    path: Mylib/LinearAlgebra/Square/power.cpp
-    title: Power of a matrix
   - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Mylib/IO/input_vector.cpp
@@ -77,95 +74,91 @@ data:
     \ const {return matrix == val.matrix;}\n    bool operator!=(const square_matrix\
     \ &val) const {return !(*this == val);}\n\n    auto& operator=(const square_matrix\
     \ &val){\n      this->matrix = val.matrix;\n      return *this;\n    }\n\n   \
-    \ auto& operator+=(const square_matrix &val){\n      for(int i = 0; i < N; ++i)\
-    \ for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] + val[i][j];\n      return\
-    \ *this;\n    }\n\n    auto& operator-=(const square_matrix &val){\n      for(int\
-    \ i = 0; i < N; ++i) for(int j = 0; j < N; ++j) matrix[i][j] = matrix[i][j] -\
-    \ val[i][j];\n      return *this;\n    }\n\n    auto& operator*=(const square_matrix\
-    \ &val){\n      std::vector<std::vector<T>> temp(N, std::vector<T>(N));\n    \
-    \  for(int i = 0; i < N; ++i)\n        for(int j = 0; j < N; ++j)\n          for(int\
-    \ k = 0; k < N; ++k)\n            temp[i][j] = temp[i][j] + matrix[i][k] * val[k][j];\n\
-    \      std::swap(matrix, temp);\n      return *this;\n    }\n\n    const auto&\
-    \ operator[](size_t i) const {return matrix[i];}\n    auto& operator[](size_t\
-    \ i){return matrix[i];}\n    int size() const {return N;}\n\n    static auto make_unit(){\n\
-    \      square_matrix ret;\n      for(int i = 0; i < N; ++i) ret[i][i] = 1;\n \
-    \     return ret;\n    }\n\n    friend auto operator+(const square_matrix &a,\
-    \ const square_matrix &b){auto ret = a; ret += b; return ret;}\n    friend auto\
-    \ operator-(const square_matrix &a, const square_matrix &b){auto ret = a; ret\
-    \ -= b; return ret;}\n    friend auto operator*(const square_matrix &a, const\
-    \ square_matrix &b){auto ret = a; ret *= b; return ret;}\n  };\n}\n#line 3 \"\
-    Mylib/LinearAlgebra/Square/inverse_matrix.cpp\"\n\nnamespace haar_lib {\n  template\
-    \ <typename M>\n  bool inverse_matrix(M m, M &ret){\n    using T = typename M::value_type;\n\
-    \    const int N = m.size();\n\n    ret = M::make_unit();\n\n    for(int i = 0;\
-    \ i < N; ++i){\n      int p = i;\n      for(int j = i; j < N; ++j){\n        if(m[i][j]\
-    \ != 0){\n          p = j;\n          break;\n        }\n      }\n\n      std::swap(m[i],\
-    \ m[p]);\n      std::swap(ret[i], ret[p]);\n\n      {\n        T d = m[i][i];\n\
-    \n        if(d == 0) return false;\n\n        for(int j = 0; j < N; ++j){\n  \
-    \        m[i][j] /= d;\n          ret[i][j] /= d;\n        }\n      }\n\n    \
-    \  for(int j = 0; j < N; ++j){\n        if(i == j) continue;\n        T d = m[j][i]\
-    \ / m[i][i];\n        for(int k = 0; k < N; ++k){\n          m[j][k] -= m[i][k]\
-    \ * d;\n          ret[j][k] -= ret[i][k] * d;\n        }\n      }\n    }\n\n \
-    \   return true;\n  }\n}\n#line 2 \"Mylib/LinearAlgebra/Square/power.cpp\"\n#include\
-    \ <cstdint>\n\nnamespace haar_lib {\n  template <typename M>\n  M power(M a, uint64_t\
-    \ p){\n    if(p == 0) return M::make_unit();\n    if(p == 1) return a;\n\n   \
-    \ M temp = power(a, p >> 1);\n    auto ret = temp * temp;\n\n    if(p & 1) ret\
-    \ *= a;\n\n    return ret;\n  }\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\n\n\
-    namespace haar_lib {\n  template <typename T>\n  std::vector<T> input_vector(int\
+    \ auto& operator+=(const square_matrix &val){\n      for(int i = 0; i < N; ++i)\n\
+    \        for(int j = 0; j < N; ++j)\n          matrix[i][j] = matrix[i][j] + val[i][j];\n\
+    \      return *this;\n    }\n\n    auto& operator-=(const square_matrix &val){\n\
+    \      for(int i = 0; i < N; ++i)\n        for(int j = 0; j < N; ++j)\n      \
+    \    matrix[i][j] = matrix[i][j] - val[i][j];\n      return *this;\n    }\n\n\
+    \    auto& operator*=(const square_matrix &val){\n      std::vector<std::vector<T>>\
+    \ temp(N, std::vector<T>(N));\n      for(int i = 0; i < N; ++i)\n        for(int\
+    \ j = 0; j < N; ++j)\n          for(int k = 0; k < N; ++k)\n            temp[i][j]\
+    \ += matrix[i][k] * val[k][j];\n      std::swap(matrix, temp);\n      return *this;\n\
+    \    }\n\n    const auto& operator[](size_t i) const {return matrix[i];}\n   \
+    \ auto& operator[](size_t i){return matrix[i];}\n    int size() const {return\
+    \ N;}\n\n    static auto unit(){\n      square_matrix ret;\n      for(int i =\
+    \ 0; i < N; ++i) ret[i][i] = 1;\n      return ret;\n    }\n\n    friend auto operator+(const\
+    \ square_matrix &a, const square_matrix &b){\n      auto ret = a; return ret +=\
+    \ b;\n    }\n    friend auto operator-(const square_matrix &a, const square_matrix\
+    \ &b){\n      auto ret = a; return ret -= b;\n    }\n    friend auto operator*(const\
+    \ square_matrix &a, const square_matrix &b){\n      auto ret = a; return ret *=\
+    \ b;\n    }\n\n    auto pow(uint64_t p) const {\n      auto ret = unit();\n  \
+    \    auto a = *this;\n\n      while(p > 0){\n        if(p & 1) ret *= a;\n   \
+    \     a *= a;\n        p >>= 1;\n      }\n\n      return ret;\n    }\n  };\n}\n\
+    #line 3 \"Mylib/LinearAlgebra/Square/inverse_matrix.cpp\"\n#include <optional>\n\
+    \nnamespace haar_lib {\n  template <typename M>\n  std::optional<M> inverse_matrix(M\
+    \ m){\n    using T = typename M::value_type;\n    const int N = m.size();\n  \
+    \  M ret = M::unit();\n\n    for(int i = 0; i < N; ++i){\n      int p = i;\n \
+    \     for(int j = i; j < N; ++j){\n        if(m[i][j] != 0){\n          p = j;\n\
+    \          break;\n        }\n      }\n\n      std::swap(m[i], m[p]);\n      std::swap(ret[i],\
+    \ ret[p]);\n\n      {\n        T d = m[i][i];\n\n        if(d == 0) return std::nullopt;\n\
+    \n        for(int j = 0; j < N; ++j){\n          m[i][j] /= d;\n          ret[i][j]\
+    \ /= d;\n        }\n      }\n\n      for(int j = 0; j < N; ++j){\n        if(i\
+    \ == j) continue;\n        T d = m[j][i] / m[i][i];\n        for(int k = 0; k\
+    \ < N; ++k){\n          m[j][k] -= m[i][k] * d;\n          ret[j][k] -= ret[i][k]\
+    \ * d;\n        }\n      }\n    }\n\n    return ret;\n  }\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\
+    \n\nnamespace haar_lib {\n  template <typename T>\n  std::vector<T> input_vector(int\
     \ N){\n    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i) std::cin >>\
     \ ret[i];\n    return ret;\n  }\n\n  template <typename T>\n  std::vector<std::vector<T>>\
     \ input_vector(int N, int M){\n    std::vector<std::vector<T>> ret(N);\n    for(int\
     \ i = 0; i < N; ++i) ret[i] = input_vector<T>(M);\n    return ret;\n  }\n}\n#line\
-    \ 12 \"test/yukicoder/194/main.test.cpp\"\n\nnamespace hl = haar_lib;\n\nusing\
+    \ 11 \"test/yukicoder/194/main.test.cpp\"\n\nnamespace hl = haar_lib;\n\nusing\
     \ mint = hl::modint<1000000007>;\n\nstatic int N;\nusing M = hl::square_matrix<mint,\
     \ N>;\n\nstd::pair<mint, mint> solve1(int64_t N, int64_t K, std::vector<int> A){\n\
     \  M m;\n\n  for(int i = 0; i < N; ++i) m[0][i] = 1;\n  for(int i = 0; i < N -\
     \ 1; ++i) m[i + 1][i] = 1;\n\n  std::reverse(A.begin(), A.end());\n\n  mint f\
-    \ = 0;\n\n  {\n    auto m2 = hl::power(m, K - N);\n    for(int i = 0; i < N; ++i)\
-    \ f += m2[0][i] * A[i];\n  }\n\n  mint s = std::accumulate(A.begin(), A.end(),\
-    \ mint(0));\n\n  {\n    auto t = M::make_unit() - m;\n    M c;\n    hl::inverse_matrix(t,\
-    \ c);\n\n    auto temp = (M::make_unit() - hl::power(m, K - N + 1)) * c;\n   \
-    \ temp -= M::make_unit();\n\n    for(int i = 0; i < N; ++i) s += temp[0][i] *\
-    \ A[i];\n  }\n\n  return {f, s};\n}\n\nstd::pair<mint, mint> solve2(int64_t N,\
-    \ int64_t K, std::vector<int> A){\n  std::vector<mint> v(K);\n\n  mint temp =\
-    \ 0;\n  for(int i = 0; i < N; ++i){\n    temp += A[i];\n    v[i] = A[i];\n  }\n\
-    \n  for(int i = N; i < K; ++i){\n    v[i] = temp;\n    temp += v[i];\n    temp\
-    \ -= v[i - N];\n  }\n\n  mint f = v.back();\n  mint s = std::accumulate(v.begin(),\
-    \ v.end(), mint(0));\n\n  return {f, s};\n}\n\nint main(){\n  int64_t K; std::cin\
-    \ >> N >> K;\n\n  auto A = hl::input_vector<int>(N);\n\n  auto [f, s] = K > 1000000\
-    \ ? solve1(N, K, A) : solve2(N, K, A);\n  std::cout << f << \" \" << s << \"\\\
-    n\";\n\n  return 0;\n}\n"
+    \ = 0;\n\n  {\n    auto m2 = m.pow(K - N);\n    for(int i = 0; i < N; ++i) f +=\
+    \ m2[0][i] * A[i];\n  }\n\n  mint s = std::accumulate(A.begin(), A.end(), mint(0));\n\
+    \n  {\n    auto t = M::unit() - m;\n    M c = hl::inverse_matrix(t).value();\n\
+    \n    auto temp = (M::unit() - m.pow(K - N + 1)) * c;\n    temp -= M::unit();\n\
+    \n    for(int i = 0; i < N; ++i) s += temp[0][i] * A[i];\n  }\n\n  return {f,\
+    \ s};\n}\n\nstd::pair<mint, mint> solve2(int64_t N, int64_t K, std::vector<int>\
+    \ A){\n  std::vector<mint> v(K);\n\n  mint temp = 0;\n  for(int i = 0; i < N;\
+    \ ++i){\n    temp += A[i];\n    v[i] = A[i];\n  }\n\n  for(int i = N; i < K; ++i){\n\
+    \    v[i] = temp;\n    temp += v[i];\n    temp -= v[i - N];\n  }\n\n  mint f =\
+    \ v.back();\n  mint s = std::accumulate(v.begin(), v.end(), mint(0));\n\n  return\
+    \ {f, s};\n}\n\nint main(){\n  int64_t K; std::cin >> N >> K;\n\n  auto A = hl::input_vector<int>(N);\n\
+    \n  auto [f, s] = K > 1000000 ? solve1(N, K, A) : solve2(N, K, A);\n  std::cout\
+    \ << f << \" \" << s << \"\\n\";\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/194\"\n\n#include <iostream>\n\
     #include <vector>\n#include <algorithm>\n#include <numeric>\n#include \"Mylib/Number/Mint/mint.cpp\"\
     \n#include \"Mylib/LinearAlgebra/Square/square_matrix.cpp\"\n#include \"Mylib/LinearAlgebra/Square/inverse_matrix.cpp\"\
-    \n#include \"Mylib/LinearAlgebra/Square/power.cpp\"\n#include \"Mylib/IO/input_vector.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nusing mint = hl::modint<1000000007>;\n\nstatic\
-    \ int N;\nusing M = hl::square_matrix<mint, N>;\n\nstd::pair<mint, mint> solve1(int64_t\
-    \ N, int64_t K, std::vector<int> A){\n  M m;\n\n  for(int i = 0; i < N; ++i) m[0][i]\
-    \ = 1;\n  for(int i = 0; i < N - 1; ++i) m[i + 1][i] = 1;\n\n  std::reverse(A.begin(),\
-    \ A.end());\n\n  mint f = 0;\n\n  {\n    auto m2 = hl::power(m, K - N);\n    for(int\
-    \ i = 0; i < N; ++i) f += m2[0][i] * A[i];\n  }\n\n  mint s = std::accumulate(A.begin(),\
-    \ A.end(), mint(0));\n\n  {\n    auto t = M::make_unit() - m;\n    M c;\n    hl::inverse_matrix(t,\
-    \ c);\n\n    auto temp = (M::make_unit() - hl::power(m, K - N + 1)) * c;\n   \
-    \ temp -= M::make_unit();\n\n    for(int i = 0; i < N; ++i) s += temp[0][i] *\
-    \ A[i];\n  }\n\n  return {f, s};\n}\n\nstd::pair<mint, mint> solve2(int64_t N,\
-    \ int64_t K, std::vector<int> A){\n  std::vector<mint> v(K);\n\n  mint temp =\
-    \ 0;\n  for(int i = 0; i < N; ++i){\n    temp += A[i];\n    v[i] = A[i];\n  }\n\
-    \n  for(int i = N; i < K; ++i){\n    v[i] = temp;\n    temp += v[i];\n    temp\
-    \ -= v[i - N];\n  }\n\n  mint f = v.back();\n  mint s = std::accumulate(v.begin(),\
-    \ v.end(), mint(0));\n\n  return {f, s};\n}\n\nint main(){\n  int64_t K; std::cin\
-    \ >> N >> K;\n\n  auto A = hl::input_vector<int>(N);\n\n  auto [f, s] = K > 1000000\
-    \ ? solve1(N, K, A) : solve2(N, K, A);\n  std::cout << f << \" \" << s << \"\\\
-    n\";\n\n  return 0;\n}\n"
+    \n#include \"Mylib/IO/input_vector.cpp\"\n\nnamespace hl = haar_lib;\n\nusing\
+    \ mint = hl::modint<1000000007>;\n\nstatic int N;\nusing M = hl::square_matrix<mint,\
+    \ N>;\n\nstd::pair<mint, mint> solve1(int64_t N, int64_t K, std::vector<int> A){\n\
+    \  M m;\n\n  for(int i = 0; i < N; ++i) m[0][i] = 1;\n  for(int i = 0; i < N -\
+    \ 1; ++i) m[i + 1][i] = 1;\n\n  std::reverse(A.begin(), A.end());\n\n  mint f\
+    \ = 0;\n\n  {\n    auto m2 = m.pow(K - N);\n    for(int i = 0; i < N; ++i) f +=\
+    \ m2[0][i] * A[i];\n  }\n\n  mint s = std::accumulate(A.begin(), A.end(), mint(0));\n\
+    \n  {\n    auto t = M::unit() - m;\n    M c = hl::inverse_matrix(t).value();\n\
+    \n    auto temp = (M::unit() - m.pow(K - N + 1)) * c;\n    temp -= M::unit();\n\
+    \n    for(int i = 0; i < N; ++i) s += temp[0][i] * A[i];\n  }\n\n  return {f,\
+    \ s};\n}\n\nstd::pair<mint, mint> solve2(int64_t N, int64_t K, std::vector<int>\
+    \ A){\n  std::vector<mint> v(K);\n\n  mint temp = 0;\n  for(int i = 0; i < N;\
+    \ ++i){\n    temp += A[i];\n    v[i] = A[i];\n  }\n\n  for(int i = N; i < K; ++i){\n\
+    \    v[i] = temp;\n    temp += v[i];\n    temp -= v[i - N];\n  }\n\n  mint f =\
+    \ v.back();\n  mint s = std::accumulate(v.begin(), v.end(), mint(0));\n\n  return\
+    \ {f, s};\n}\n\nint main(){\n  int64_t K; std::cin >> N >> K;\n\n  auto A = hl::input_vector<int>(N);\n\
+    \n  auto [f, s] = K > 1000000 ? solve1(N, K, A) : solve2(N, K, A);\n  std::cout\
+    \ << f << \" \" << s << \"\\n\";\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Number/Mint/mint.cpp
   - Mylib/LinearAlgebra/Square/square_matrix.cpp
   - Mylib/LinearAlgebra/Square/inverse_matrix.cpp
-  - Mylib/LinearAlgebra/Square/power.cpp
   - Mylib/IO/input_vector.cpp
   isVerificationFile: true
   path: test/yukicoder/194/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-17 22:58:14+09:00'
+  timestamp: '2020-09-21 01:58:13+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/194/main.test.cpp

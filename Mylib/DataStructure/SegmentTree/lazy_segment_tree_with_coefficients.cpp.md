@@ -32,9 +32,9 @@ data:
     \      lazy(size, 0),\n      coeff(size, 0)\n    {\n      for(int i = hsize; i\
     \ < size; ++i) coeff[i] = coeff_[i - hsize];\n      for(int i = hsize; --i >=\
     \ 1;) coeff[i] = coeff[i << 1 | 0] + coeff[i << 1 | 1];\n    }\n\n    void update(int\
-    \ l, int r, const T &x){update(1, 0, hsize, l, r, x);}\n    void update_at(int\
-    \ i, const T &x){update(i, i + 1, x);}\n    T get(int l, int r){return get(1,\
-    \ 0, hsize, l, r);}\n    T operator[](int i){return get(i, i + 1);}\n\n    void\
+    \ l, int r, const T &x){update(1, 0, hsize, l, r, x);}\n    void update(int i,\
+    \ const T &x){update(i, i + 1, x);}\n    T fold(int l, int r){return get(1, 0,\
+    \ hsize, l, r);}\n    T operator[](int i){return fold(i, i + 1);}\n\n    void\
     \ init(const T &val){\n      init_with_vector(std::vector<T>(hsize, val));\n \
     \   }\n\n    void init_with_vector(const std::vector<T> &val){\n      data.assign(size,\
     \ 0);\n      lazy.assign(size, 0);\n      for(int i = 0; i < (int)val.size();\
@@ -61,9 +61,9 @@ data:
     \ 0)\n    {\n      for(int i = hsize; i < size; ++i) coeff[i] = coeff_[i - hsize];\n\
     \      for(int i = hsize; --i >= 1;) coeff[i] = coeff[i << 1 | 0] + coeff[i <<\
     \ 1 | 1];\n    }\n\n    void update(int l, int r, const T &x){update(1, 0, hsize,\
-    \ l, r, x);}\n    void update_at(int i, const T &x){update(i, i + 1, x);}\n  \
-    \  T get(int l, int r){return get(1, 0, hsize, l, r);}\n    T operator[](int i){return\
-    \ get(i, i + 1);}\n\n    void init(const T &val){\n      init_with_vector(std::vector<T>(hsize,\
+    \ l, r, x);}\n    void update(int i, const T &x){update(i, i + 1, x);}\n    T\
+    \ fold(int l, int r){return get(1, 0, hsize, l, r);}\n    T operator[](int i){return\
+    \ fold(i, i + 1);}\n\n    void init(const T &val){\n      init_with_vector(std::vector<T>(hsize,\
     \ val));\n    }\n\n    void init_with_vector(const std::vector<T> &val){\n   \
     \   data.assign(size, 0);\n      lazy.assign(size, 0);\n      for(int i = 0; i\
     \ < (int)val.size(); ++i) data[hsize + i] = val[i];\n      for(int i = hsize;\
@@ -72,7 +72,7 @@ data:
   isVerificationFile: false
   path: Mylib/DataStructure/SegmentTree/lazy_segment_tree_with_coefficients.cpp
   requiredBy: []
-  timestamp: '2020-09-16 21:53:52+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yukicoder/235/main.test.cpp

@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Mylib/DataStructure/Treap/treap.cpp
+    path: Mylib/DataStructure/BBST/treap.cpp
     title: Treap
   - icon: ':question:'
     path: Mylib/AlgebraicStructure/Monoid/min.cpp
@@ -27,7 +27,7 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508
   bundledCode: "#line 1 \"test/aoj/1508/main.treap.test.cpp\"\n#define PROBLEM \"\
     http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508\"\n\n#include <iostream>\n\
-    #line 2 \"Mylib/DataStructure/Treap/treap.cpp\"\n#include <random>\n#include <utility>\n\
+    #line 2 \"Mylib/DataStructure/BBST/treap.cpp\"\n#include <random>\n#include <utility>\n\
     #include <tuple>\n\nnamespace haar_lib {\n  template <typename Monoid>\n  struct\
     \ treap_node {\n    using node = treap_node<Monoid>;\n    using value_type = typename\
     \ Monoid::value_type;\n    const static Monoid M;\n\n    static std::mt19937 rand;\n\
@@ -82,7 +82,7 @@ data:
     \ = nullptr;\n    }\n\n    std::pair<treap, treap> split(int k){\n      node *l,\
     \ *r; std::tie(l, r) = node::split(root, k);\n      return std::make_pair(treap(l),\
     \ treap(r));\n    }\n\n    void reverse(int l, int r){node::reverse(root, l, r);}\n\
-    \n    void update(int k, const value_type &value){node::update_node(root, k, value);}\n\
+    \n    void set(int k, const value_type &value){node::update_node(root, k, value);}\n\
     \n    value_type get(int k){return (node::get_node(root, k))->value;}\n    value_type\
     \ operator[](int k){return get(k);}\n\n    value_type fold(){return node::sum(root);}\n\
     \    value_type fold(int l, int r){\n      node *left, *mid, *right;\n      std::tie(mid,\
@@ -134,24 +134,24 @@ data:
     \    return InputTuplesWithIndex<Args ...>(N);\n  }\n}\n#line 8 \"test/aoj/1508/main.treap.test.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nint main(){\n  int n, q; std::cin >> n >> q;\n\
     \n  hl::treap<hl::min_monoid<int>> s(n);\n\n  for(auto [i, a] : hl::input_tuples_with_index<int>(n)){\n\
-    \    s.update(i, {a});\n  }\n\n  for(auto [x, y, z] : hl::input_tuples<int, int,\
+    \    s.set(i, {a});\n  }\n\n  for(auto [x, y, z] : hl::input_tuples<int, int,\
     \ int>(q)){\n    if(x == 0){\n      auto temp = s.get(z).value();\n      s.erase(z);\n\
     \      s.insert(y, {temp});\n    }else if(x == 1){\n      auto ans = s.fold(y,\
-    \ z + 1).value();\n      std::cout << ans << std::endl;\n    }else{\n      s.update(y,\
+    \ z + 1).value();\n      std::cout << ans << std::endl;\n    }else{\n      s.set(y,\
     \ z);\n    }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508\"\
-    \n\n#include <iostream>\n#include \"Mylib/DataStructure/Treap/treap.cpp\"\n#include\
+    \n\n#include <iostream>\n#include \"Mylib/DataStructure/BBST/treap.cpp\"\n#include\
     \ \"Mylib/AlgebraicStructure/Monoid/min.cpp\"\n#include \"Mylib/IO/input_tuples.cpp\"\
     \n#include \"Mylib/IO/input_tuples_with_index.cpp\"\n\nnamespace hl = haar_lib;\n\
     \nint main(){\n  int n, q; std::cin >> n >> q;\n\n  hl::treap<hl::min_monoid<int>>\
-    \ s(n);\n\n  for(auto [i, a] : hl::input_tuples_with_index<int>(n)){\n    s.update(i,\
+    \ s(n);\n\n  for(auto [i, a] : hl::input_tuples_with_index<int>(n)){\n    s.set(i,\
     \ {a});\n  }\n\n  for(auto [x, y, z] : hl::input_tuples<int, int, int>(q)){\n\
     \    if(x == 0){\n      auto temp = s.get(z).value();\n      s.erase(z);\n   \
     \   s.insert(y, {temp});\n    }else if(x == 1){\n      auto ans = s.fold(y, z\
-    \ + 1).value();\n      std::cout << ans << std::endl;\n    }else{\n      s.update(y,\
+    \ + 1).value();\n      std::cout << ans << std::endl;\n    }else{\n      s.set(y,\
     \ z);\n    }\n  }\n\n  return 0;\n}\n"
   dependsOn:
-  - Mylib/DataStructure/Treap/treap.cpp
+  - Mylib/DataStructure/BBST/treap.cpp
   - Mylib/AlgebraicStructure/Monoid/min.cpp
   - Mylib/IO/input_tuples.cpp
   - Mylib/IO/input_tuple.cpp
@@ -159,7 +159,7 @@ data:
   isVerificationFile: true
   path: test/aoj/1508/main.treap.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/1508/main.treap.test.cpp

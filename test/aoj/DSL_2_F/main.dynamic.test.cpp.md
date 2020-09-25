@@ -63,10 +63,10 @@ data:
     \      depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),\n      size(1LL <<\
     \ depth),\n      hsize(size / 2)\n    {\n      root = new node(M_get(), M_update());\n\
     \    }\n\n    void update(int64_t l, int64_t r, value_type_update value){\n  \
-    \    update(root, 0, hsize, l, r, value);\n    }\n\n    value_type_get get(int64_t\
+    \    update(root, 0, hsize, l, r, value);\n    }\n\n    value_type_get fold(int64_t\
     \ l, int64_t r){\n      return get(root, 0, hsize, l, r);\n    }\n\n    value_type_get\
-    \ operator[](int64_t i){\n      return get(i, i + 1);\n    }\n  };\n}\n#line 2\
-    \ \"Mylib/AlgebraicStructure/Monoid/update.cpp\"\n#include <optional>\n\nnamespace\
+    \ operator[](int64_t i){\n      return fold(i, i + 1);\n    }\n  };\n}\n#line\
+    \ 2 \"Mylib/AlgebraicStructure/Monoid/update.cpp\"\n#include <optional>\n\nnamespace\
     \ haar_lib {\n  template <typename T>\n  struct update_monoid {\n    using value_type\
     \ = std::optional<T>;\n    value_type operator()() const {return std::nullopt;}\n\
     \    value_type operator()(const value_type &a, const value_type &b) const {return\
@@ -106,7 +106,7 @@ data:
     \n  hl::dynamic_lazy_segment_tree<hl::min_monoid<int>, hl::update_monoid<int>,\
     \ hl::update_min> seg(n);\n\n  for(auto [type, s, t] : hl::input_tuples<int, int,\
     \ int>(q)){\n    if(type == 0){\n      int x; std::cin >> x;\n      seg.update(s,\
-    \ t + 1, x);\n    }else{\n      std::cout << seg.get(s, t + 1).value_or(INT_MAX)\
+    \ t + 1, x);\n    }else{\n      std::cout << seg.fold(s, t + 1).value_or(INT_MAX)\
     \ << std::endl;\n    }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F\"\
     \n\n#include <iostream>\n#include <climits>\n#include \"Mylib/DataStructure/SegmentTree/dynamic_lazy_segment_tree.cpp\"\
@@ -116,7 +116,7 @@ data:
     \ int n, q; std::cin >> n >> q;\n\n  hl::dynamic_lazy_segment_tree<hl::min_monoid<int>,\
     \ hl::update_monoid<int>, hl::update_min> seg(n);\n\n  for(auto [type, s, t] :\
     \ hl::input_tuples<int, int, int>(q)){\n    if(type == 0){\n      int x; std::cin\
-    \ >> x;\n      seg.update(s, t + 1, x);\n    }else{\n      std::cout << seg.get(s,\
+    \ >> x;\n      seg.update(s, t + 1, x);\n    }else{\n      std::cout << seg.fold(s,\
     \ t + 1).value_or(INT_MAX) << std::endl;\n    }\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/DataStructure/SegmentTree/dynamic_lazy_segment_tree.cpp
@@ -128,7 +128,7 @@ data:
   isVerificationFile: true
   path: test/aoj/DSL_2_F/main.dynamic.test.cpp
   requiredBy: []
-  timestamp: '2020-09-18 18:43:57+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/aoj/DSL_2_F/main.dynamic.test.cpp

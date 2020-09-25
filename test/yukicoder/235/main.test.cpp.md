@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Mylib/IO/input_tuple.cpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   - icon: ':question:'
@@ -195,9 +195,9 @@ data:
     \ 0)\n    {\n      for(int i = hsize; i < size; ++i) coeff[i] = coeff_[i - hsize];\n\
     \      for(int i = hsize; --i >= 1;) coeff[i] = coeff[i << 1 | 0] + coeff[i <<\
     \ 1 | 1];\n    }\n\n    void update(int l, int r, const T &x){update(1, 0, hsize,\
-    \ l, r, x);}\n    void update_at(int i, const T &x){update(i, i + 1, x);}\n  \
-    \  T get(int l, int r){return get(1, 0, hsize, l, r);}\n    T operator[](int i){return\
-    \ get(i, i + 1);}\n\n    void init(const T &val){\n      init_with_vector(std::vector<T>(hsize,\
+    \ l, r, x);}\n    void update(int i, const T &x){update(i, i + 1, x);}\n    T\
+    \ fold(int l, int r){return get(1, 0, hsize, l, r);}\n    T operator[](int i){return\
+    \ fold(i, i + 1);}\n\n    void init(const T &val){\n      init_with_vector(std::vector<T>(hsize,\
     \ val));\n    }\n\n    void init_with_vector(const std::vector<T> &val){\n   \
     \   data.assign(size, 0);\n      lazy.assign(size, 0);\n      for(int i = 0; i\
     \ < (int)val.size(); ++i) data[hsize + i] = val[i];\n      for(int i = hsize;\
@@ -213,8 +213,8 @@ data:
     \ >> X >> Y >> Z;\n      --X, --Y;\n      for(auto [l, r, d] : hld.path_query_vertex(X,\
     \ Y)){\n        seg.update(l, r, Z);\n      }\n    }else{\n      int X, Y; std::cin\
     \ >> X >> Y;\n      --X, --Y;\n      mint ans = 0;\n      for(auto [l, r, d] :\
-    \ hld.path_query_vertex(X, Y)){\n        ans += seg.get(l, r);\n      }\n    \
-    \  std::cout << ans << \"\\n\";\n    }\n  }\n}\n"
+    \ hld.path_query_vertex(X, Y)){\n        ans += seg.fold(l, r);\n      }\n   \
+    \   std::cout << ans << \"\\n\";\n    }\n  }\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/235\"\n\n#include <iostream>\n\
     #include \"Mylib/IO/input_vector.cpp\"\n#include \"Mylib/IO/input_tuples.cpp\"\
     \n#include \"Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/Graph/Template/graph.cpp\"\
@@ -231,8 +231,8 @@ data:
     \ >> X >> Y >> Z;\n      --X, --Y;\n      for(auto [l, r, d] : hld.path_query_vertex(X,\
     \ Y)){\n        seg.update(l, r, Z);\n      }\n    }else{\n      int X, Y; std::cin\
     \ >> X >> Y;\n      --X, --Y;\n      mint ans = 0;\n      for(auto [l, r, d] :\
-    \ hld.path_query_vertex(X, Y)){\n        ans += seg.get(l, r);\n      }\n    \
-    \  std::cout << ans << \"\\n\";\n    }\n  }\n}\n"
+    \ hld.path_query_vertex(X, Y)){\n        ans += seg.fold(l, r);\n      }\n   \
+    \   std::cout << ans << \"\\n\";\n    }\n  }\n}\n"
   dependsOn:
   - Mylib/IO/input_vector.cpp
   - Mylib/IO/input_tuples.cpp
@@ -245,7 +245,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/235/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-17 22:58:14+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/235/main.test.cpp

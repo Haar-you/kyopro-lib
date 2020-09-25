@@ -13,7 +13,7 @@ data:
   - icon: ':x:'
     path: Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp
     title: Range affine / Range sum
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   - icon: ':question:'
@@ -63,8 +63,8 @@ data:
     \          propagate(R);\n        }\n        if(L & 1){\n          lazy[L] = M_update(x,\
     \ lazy[L]);\n          propagate(L);\n          ++L;\n        }\n        L >>=\
     \ 1;\n        R >>= 1;\n      }\n\n      bottom_up(l + hsize);\n      if(r < hsize)\
-    \ bottom_up(r + hsize);\n    }\n\n    void update_at(int i, const value_type_update\
-    \ &x){update(i, i + 1, x);}\n\n    value_type_get get(int l, int r){\n      propagate_top_down(l\
+    \ bottom_up(r + hsize);\n    }\n\n    void update(int i, const value_type_update\
+    \ &x){update(i, i + 1, x);}\n\n    value_type_get fold(int l, int r){\n      propagate_top_down(l\
     \ + hsize);\n      if(r < hsize) propagate_top_down(r + hsize);\n\n      value_type_get\
     \ ret_left = M_get(), ret_right = M_get();\n\n      int L = l + hsize, R = r +\
     \ hsize;\n\n      while(L < R){\n        if(R & 1){\n          --R;\n        \
@@ -72,9 +72,9 @@ data:
     \        if(L & 1){\n          propagate(L);\n          ret_left = M_get(ret_left,\
     \ data[L]);\n          ++L;\n        }\n        L >>= 1;\n        R >>= 1;\n \
     \     }\n\n      return M_get(ret_left, ret_right);\n    }\n\n    value_type_get\
-    \ operator[](int i){return get(i, i + 1);}\n\n    template <typename T>\n    void\
-    \ init(const T &val){\n      init_with_vector(std::vector<T>(hsize, val));\n \
-    \   }\n\n    template <typename T>\n    void init_with_vector(const std::vector<T>\
+    \ operator[](int i){return fold(i, i + 1);}\n\n    template <typename T>\n   \
+    \ void init(const T &val){\n      init_with_vector(std::vector<T>(hsize, val));\n\
+    \    }\n\n    template <typename T>\n    void init_with_vector(const std::vector<T>\
     \ &val){\n      data.assign(size, M_get());\n      lazy.assign(size, M_update());\n\
     \      for(int i = 0; i < (int)val.size(); ++i) data[hsize + i] = (value_type_get)val[i];\n\
     \      for(int i = hsize - 1; i > 0; --i) data[i] = M_get(data[i << 1 | 0], data[i\
@@ -167,7 +167,7 @@ data:
     \  auto a = hl::input_vector<mint>(N);\n  seg.init_with_vector(a);\n\n  for(auto\
     \ [t, l, r] : hl::input_tuples<int, int, int>(Q)){\n    if(t == 0){\n      int\
     \ b, c; std::cin >> b >> c;\n      seg.update(l, r, std::make_pair(b, c));\n \
-    \   }else{\n      std::cout << seg.get(l, r) << \"\\n\";\n    }\n  }\n\n  return\
+    \   }else{\n      std::cout << seg.fold(l, r) << \"\\n\";\n    }\n  }\n\n  return\
     \ 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\
     \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp\"\
@@ -180,8 +180,8 @@ data:
     \ hl::affine_monoid<mint>, hl::affine_sum>(N);\n  auto a = hl::input_vector<mint>(N);\n\
     \  seg.init_with_vector(a);\n\n  for(auto [t, l, r] : hl::input_tuples<int, int,\
     \ int>(Q)){\n    if(t == 0){\n      int b, c; std::cin >> b >> c;\n      seg.update(l,\
-    \ r, std::make_pair(b, c));\n    }else{\n      std::cout << seg.get(l, r) << \"\
-    \\n\";\n    }\n  }\n\n  return 0;\n}\n"
+    \ r, std::make_pair(b, c));\n    }else{\n      std::cout << seg.fold(l, r) <<\
+    \ \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp
   - Mylib/AlgebraicStructure/Monoid/sum.cpp
@@ -194,7 +194,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/range_affine_range_sum/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-18 18:43:57+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/range_affine_range_sum/main.test.cpp

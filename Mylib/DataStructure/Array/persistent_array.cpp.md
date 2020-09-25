@@ -40,15 +40,15 @@ data:
     \n  protected:\n    T get(node *t, int i) const {\n      if(t->is_terminal) return\
     \ *(t->value);\n\n      int k = get_size(t->left);\n      if(i < k) return get(t->left,\
     \ i);\n      else return get(t->right, i - k);\n    }\n\n  public:\n    T operator[](int\
-    \ i) const {\n      return get(root, i);\n    }\n\n  protected:\n    node* update(node\
+    \ i) const {\n      return get(root, i);\n    }\n\n  protected:\n    node* set(node\
     \ *prev, int i, const T &val) const {\n      if(prev->is_terminal) return new\
     \ node(val);\n\n      int k = get_size(prev->left);\n\n      node *t = new node();\n\
-    \      if(i < k){\n        t->right = prev->right;\n        t->left = update(prev->left,\
+    \      if(i < k){\n        t->right = prev->right;\n        t->left = set(prev->left,\
     \ i, val);\n        t->size = get_size(t->right) + get_size(t->left);\n      }else{\n\
-    \        t->left = prev->left;\n        t->right = update(prev->right, i - k,\
-    \ val);\n        t->size = get_size(t->right) + get_size(t->left);\n      }\n\
-    \      return t;\n    }\n\n  public:\n    persistent_array update(int i, const\
-    \ T &val) const {\n      node *ret = update(root, i, val);\n      return persistent_array(ret);\n\
+    \        t->left = prev->left;\n        t->right = set(prev->right, i - k, val);\n\
+    \        t->size = get_size(t->right) + get_size(t->left);\n      }\n      return\
+    \ t;\n    }\n\n  public:\n    persistent_array set(int i, const T &val) const\
+    \ {\n      node *ret = set(root, i, val);\n      return persistent_array(ret);\n\
     \    }\n\n  protected:\n    void traverse(node *t, std::vector<T> &ret) const\
     \ {\n      if(!t) return;\n\n      if(t->is_terminal){\n        ret.push_back(*(t->value));\n\
     \        return;\n      }\n\n      traverse(t->left, ret);\n      traverse(t->right,\
@@ -84,15 +84,14 @@ data:
     \ const {\n      if(t->is_terminal) return *(t->value);\n\n      int k = get_size(t->left);\n\
     \      if(i < k) return get(t->left, i);\n      else return get(t->right, i -\
     \ k);\n    }\n\n  public:\n    T operator[](int i) const {\n      return get(root,\
-    \ i);\n    }\n\n  protected:\n    node* update(node *prev, int i, const T &val)\
-    \ const {\n      if(prev->is_terminal) return new node(val);\n\n      int k =\
-    \ get_size(prev->left);\n\n      node *t = new node();\n      if(i < k){\n   \
-    \     t->right = prev->right;\n        t->left = update(prev->left, i, val);\n\
-    \        t->size = get_size(t->right) + get_size(t->left);\n      }else{\n   \
-    \     t->left = prev->left;\n        t->right = update(prev->right, i - k, val);\n\
-    \        t->size = get_size(t->right) + get_size(t->left);\n      }\n      return\
-    \ t;\n    }\n\n  public:\n    persistent_array update(int i, const T &val) const\
-    \ {\n      node *ret = update(root, i, val);\n      return persistent_array(ret);\n\
+    \ i);\n    }\n\n  protected:\n    node* set(node *prev, int i, const T &val) const\
+    \ {\n      if(prev->is_terminal) return new node(val);\n\n      int k = get_size(prev->left);\n\
+    \n      node *t = new node();\n      if(i < k){\n        t->right = prev->right;\n\
+    \        t->left = set(prev->left, i, val);\n        t->size = get_size(t->right)\
+    \ + get_size(t->left);\n      }else{\n        t->left = prev->left;\n        t->right\
+    \ = set(prev->right, i - k, val);\n        t->size = get_size(t->right) + get_size(t->left);\n\
+    \      }\n      return t;\n    }\n\n  public:\n    persistent_array set(int i,\
+    \ const T &val) const {\n      node *ret = set(root, i, val);\n      return persistent_array(ret);\n\
     \    }\n\n  protected:\n    void traverse(node *t, std::vector<T> &ret) const\
     \ {\n      if(!t) return;\n\n      if(t->is_terminal){\n        ret.push_back(*(t->value));\n\
     \        return;\n      }\n\n      traverse(t->left, ret);\n      traverse(t->right,\
@@ -107,7 +106,7 @@ data:
   path: Mylib/DataStructure/Array/persistent_array.cpp
   requiredBy:
   - Mylib/DataStructure/UnionFind/persistent_unionfind.cpp
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-25 01:38:58+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/persistent_unionfind/main.test.cpp

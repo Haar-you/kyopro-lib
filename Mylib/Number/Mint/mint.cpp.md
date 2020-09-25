@@ -21,7 +21,7 @@ data:
   - icon: ':x:'
     path: test/aoj/DPL_5_G/main.table.test.cpp
     title: test/aoj/DPL_5_G/main.table.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/3119/main.test.cpp
     title: test/aoj/3119/main.test.cpp
   - icon: ':x:'
@@ -115,7 +115,7 @@ data:
     path: test/yukicoder/194/main.test.cpp
     title: test/yukicoder/194/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     links: []
@@ -210,7 +210,7 @@ data:
   requiredBy:
   - Mylib/Convolution/ntt_convolution.cpp
   timestamp: '2020-09-17 22:58:14+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/DPL_5_I/main.test.cpp
   - test/aoj/DPL_5_I/main.table.test.cpp
