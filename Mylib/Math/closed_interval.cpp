@@ -93,4 +93,32 @@ namespace haar_lib {
 
     return a;
   }
+
+  template <typename T>
+  auto operator+(closed_interval<T> a, T k){
+    if(a.value){
+      if(a.value->first) a.value->first.value() += k;
+      if(a.value->second) a.value->second.value() += k;
+    }
+    return a;
+  }
+
+  template <typename T>
+  auto operator-(closed_interval<T> a, T k){
+    if(a.value){
+      if(a.value->first) a.value->first.value() -= k;
+      if(a.value->second) a.value->second.value() -= k;
+    }
+    return a;
+  }
+
+  template <typename T>
+  auto operator*(closed_interval<T> a, T k){
+    if(a.value){
+      if(k < 0) std::swap(a.value->first, a.value->second);
+      if(a.value->first) a.value->first.value() *= k;
+      if(a.value->second) a.value->second.value() *= k;
+    }
+    return a;
+  }
 }
