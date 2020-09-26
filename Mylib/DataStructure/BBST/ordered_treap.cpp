@@ -1,6 +1,6 @@
 #pragma once
 #include <algorithm>
-#include "Mylib/DataStructure/Treap/treap.cpp"
+#include "Mylib/DataStructure/BBST/treap.cpp"
 
 namespace haar_lib {
   template <typename Monoid>
