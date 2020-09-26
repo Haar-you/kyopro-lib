@@ -28,14 +28,14 @@ namespace haar_lib {
       min_sum_ += lb;
     }
 
-    std::optional<capacity_type> solve(int s, int t){
+    std::optional<capacity_type> max_flow(int s, int t){
       assert(0 <= s and s < N_);
       assert(0 <= t and t < N_);
 
-      auto a = flow_.solve(S_, T_);
-      auto b = flow_.solve(s, T_);
-      auto c = flow_.solve(S_, t);
-      auto d = flow_.solve(s, t);
+      auto a = flow_.max_flow(S_, T_);
+      auto b = flow_.max_flow(s, T_);
+      auto c = flow_.max_flow(S_, t);
+      auto d = flow_.max_flow(s, t);
 
       if(a + b == min_sum_ and a + c == min_sum_) return b + d;
       return std::nullopt;

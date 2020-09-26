@@ -24,7 +24,7 @@ int main(){
     }
   }
 
-  auto ans = m.solve(N);
+  auto ans = m.match(N);
   std::cout << ans << std::endl;
 
   auto matching = m.get_matching();

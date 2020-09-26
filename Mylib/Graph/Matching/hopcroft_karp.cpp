@@ -75,7 +75,7 @@ namespace haar_lib {
       graph[y].push_back((edge){y, x, (int)graph[x].size() - 1, true});
     }
 
-    int solve(){
+    int match(){
       int ret = 0;
 
       while(bfs()){

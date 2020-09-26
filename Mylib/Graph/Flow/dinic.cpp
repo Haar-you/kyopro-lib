@@ -78,7 +78,7 @@ namespace haar_lib {
       g[to].emplace_back(to, from, (int)g[from].size() - 1, 0, true);
     }
 
-    T solve(int s, int t){
+    T max_flow(int s, int t){
       T f = 0;
       while(build_level(s, t)){
         T a = 0;

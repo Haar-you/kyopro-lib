@@ -21,8 +21,8 @@ namespace haar_lib {
       f.add_edge(i, L + j, 1);
     }
 
-    int solve(){
-      return f.solve(s, t);
+    int match(){
+      return f.max_flow(s, t);
     }
 
     auto get_matching(){

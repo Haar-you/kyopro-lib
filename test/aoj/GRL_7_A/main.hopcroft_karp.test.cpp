@@ -15,7 +15,7 @@ int main(){
     b.add_edge(x, y);
   }
 
-  int ans = b.solve();
+  int ans = b.match();
 
   std::cout << ans << std::endl;
 

@@ -15,7 +15,7 @@ int main(){
     f.add_edge(u, v, c, d);
   }
 
-  auto [flow, ret] = f.solve(0, V - 1, F);
+  auto [flow, ret] = f.min_cost_flow(0, V - 1, F);
   if(flow == F){
     std::cout << ret << std::endl;
   }else{

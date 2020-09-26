@@ -102,7 +102,7 @@ namespace haar_lib {
     T solve(){
       Flow flow(nodes);
       for(auto [i, j, w] : g) flow.add_edge(i, j, w);
-      return default_gain - flow.solve(s, t);
+      return default_gain - flow.max_flow(s, t);
     }
   };
 }

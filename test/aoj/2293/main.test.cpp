@@ -29,7 +29,7 @@ int main(){
     m.add_edge(i, std::lower_bound(ls.begin(), ls.end(), B[i]) - ls.begin(), A[i]);
   }
 
-  int ans = m.solve(n);
+  int ans = m.match(n);
 
   std::cout << ans << std::endl;
 

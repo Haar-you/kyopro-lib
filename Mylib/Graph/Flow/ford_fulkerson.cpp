@@ -62,7 +62,7 @@ namespace haar_lib {
       }
     }
 
-    T solve(int s, int t){
+    T max_flow(int s, int t){
       T ret = 0;
 
       while(1){

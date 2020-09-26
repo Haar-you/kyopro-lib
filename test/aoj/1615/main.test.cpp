@@ -34,7 +34,7 @@ int main(){
           flow.add_edge(m + i, t, lb, ub);
         }
 
-        return flow.solve(s, t).value_or(-1) == m;
+        return flow.max_flow(s, t).value_or(-1) == m;
       };
 
     int lb = 0, ub = n;

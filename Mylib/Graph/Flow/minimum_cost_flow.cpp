@@ -21,8 +21,12 @@ namespace haar_lib {
 
   template <typename Capacity, typename Cost>
   class minimum_cost_flow {
+  public:
     using edge = minimum_cost_flow_impl::edge<Capacity, Cost>;
+    using capacity_type = Capacity;
+    using cost_type = Cost;
 
+  private:
     int size;
     std::vector<std::vector<edge>> g;
 
@@ -35,7 +39,7 @@ namespace haar_lib {
       g[to].emplace_back(to, from, g[from].size() - 1, 0, -cost, true);
     }
 
-    std::pair<Capacity, Cost> solve(int src, int dst, const Capacity &f){
+    std::pair<Capacity, Cost> min_cost_flow(int src, int dst, const Capacity &f){
       using P = std::pair<Cost, int>;
       Cost ret = 0;
       Capacity flow = f;

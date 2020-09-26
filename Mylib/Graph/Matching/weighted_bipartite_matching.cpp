@@ -21,8 +21,8 @@ namespace haar_lib {
       f.add_edge(from, L + to, 1, gain * (MIN_MATCHING ? 1 : -1));
     }
 
-    T solve(int flow){
-      T ret = f.solve(s, t, flow).second;
+    T match(int flow){
+      T ret = f.min_cost_flow(s, t, flow).second;
       return ret * (MIN_MATCHING ? 1 : -1);
     }
 

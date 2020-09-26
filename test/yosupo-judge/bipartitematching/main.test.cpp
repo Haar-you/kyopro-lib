@@ -14,7 +14,7 @@ int main(){
     hk.add_edge(a, b);
   }
 
-  hk.solve();
+  hk.match();
 
   auto ans = hk.get_matching();
 
