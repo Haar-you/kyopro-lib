@@ -1,5 +1,6 @@
 #pragma once
 #include <cstdint>
+#include <cassert>
 
 namespace haar_lib {
   template <typename Monoid, typename value_type = typename Monoid::value_type>

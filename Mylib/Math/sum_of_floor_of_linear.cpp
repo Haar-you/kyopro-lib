@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 
 namespace haar_lib {
   int64_t sum_of_floor_of_linear(int64_t N, int64_t M, int64_t A, int64_t B){

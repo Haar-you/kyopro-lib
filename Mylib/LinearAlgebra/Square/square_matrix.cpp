@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <utility>
+#include <cstdint>
 
 namespace haar_lib {
   template <typename T, const int &N>
