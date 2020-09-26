@@ -18,8 +18,11 @@ namespace haar_lib {
 
   template <typename T>
   class push_relabel {
+  public:
     using edge = push_relabel_impl::edge<T>;
+    using capacity_type = T;
 
+  private:
     int N;
     std::vector<std::vector<edge>> g;
     std::vector<T> excess;

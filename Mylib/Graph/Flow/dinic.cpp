@@ -18,8 +18,11 @@ namespace haar_lib {
 
   template <typename T>
   class dinic {
+  public:
     using edge = dinic_impl::edge<T>;
+    using capacity_type = T;
 
+  private:
     int size;
     std::vector<std::vector<edge>> g;
     std::vector<int> level;

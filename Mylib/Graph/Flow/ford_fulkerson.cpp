@@ -16,8 +16,11 @@ namespace haar_lib {
 
   template <typename T>
   class ford_fulkerson {
+  public:
     using edge = ford_fulkerson_impl::edge<T>;
+    using capacity_type = T;
 
+  private:
     int size;
     std::vector<std::vector<edge>> g;
     std::vector<bool> visit;
