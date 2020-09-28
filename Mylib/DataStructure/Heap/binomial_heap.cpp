@@ -7,6 +7,10 @@
 namespace haar_lib {
   template <typename T, typename Compare = std::less<T>>
   class binomial_heap {
+  public:
+    using value_type = T;
+
+  private:
     struct node {
       T value;
       std::vector<node*> children;
@@ -15,13 +19,13 @@ namespace haar_lib {
 
     constexpr static int MAX = 31;
 
-    std::array<node*, MAX> roots;
-    Compare compare;
-    int top_index = -1;
-    int heap_size = 0;
+    std::array<node*, MAX> roots_;
+    Compare compare_;
+    int top_index_ = -1;
+    int heap_size_ = 0;
 
     node* merge(node *a, node *b){
-      if(compare(a->value, b->value)) std::swap(a, b);
+      if(compare_(a->value, b->value)) std::swap(a, b);
       a->children.push_back(b);
       return a;
     }
@@ -33,21 +37,21 @@ namespace haar_lib {
       for(int i = 0; i < MAX; ++i){
         std::vector<node*> temp;
         if(s){temp.push_back(s); s = nullptr;}
-        if(roots[i]){temp.push_back(roots[i]); roots[i] = nullptr;}
+        if(roots_[i]){temp.push_back(roots_[i]); roots_[i] = nullptr;}
         if(i < (int)c.size() and c[i]){temp.push_back(c[i]); c[i] = nullptr;}
 
         switch(temp.size()){
-        case 1: roots[i] = temp[0]; break;
+        case 1: roots_[i] = temp[0]; break;
         case 2: s = merge(temp[0], temp[1]); break;
-        case 3: roots[i] = temp[0]; s = merge(temp[1], temp[2]); break;
+        case 3: roots_[i] = temp[0]; s = merge(temp[1], temp[2]); break;
         }
       }
 
-      top_index = -1;
+      top_index_ = -1;
       for(int i = 0; i < MAX; ++i){
-        if(roots[i]){
-          if(top_index == -1 or compare(roots[top_index]->value, roots[i]->value)){
-            top_index = i;
+        if(roots_[i]){
+          if(top_index_ == -1 or compare_(roots_[top_index_]->value, roots_[i]->value)){
+            top_index_ = i;
           }
         }
       }
@@ -55,43 +59,43 @@ namespace haar_lib {
 
   public:
     binomial_heap(){
-      roots.fill(nullptr);
-      compare = Compare();
+      roots_.fill(nullptr);
+      compare_ = Compare();
     }
 
     int size() const {
-      return heap_size;
+      return heap_size_;
     }
 
     bool empty() const {
-      return heap_size == 0;
+      return heap_size_ == 0;
     }
 
     void push(const T &value){
-      heap_size += 1;
+      heap_size_ += 1;
       node *t = new node(value);
 
       meld(std::vector<node*>({t}));
     }
 
     const T& top() const {
-      return roots[top_index]->value;
+      return roots_[top_index_]->value;
     }
 
     void pop(){
-      heap_size -= 1;
+      heap_size_ -= 1;
 
-      node *t = roots[top_index];
-      roots[top_index] = nullptr;
+      node *t = roots_[top_index_];
+      roots_[top_index_] = nullptr;
       meld(t->children);
 
       delete t;
     }
 
     void meld(binomial_heap &rhs){
-      heap_size += rhs.heap_size;
-      meld(rhs.roots);
-      rhs.roots.fill(nullptr);
+      heap_size_ += rhs.heap_size_;
+      meld(rhs.roots_);
+      rhs.roots_.fill(nullptr);
     }
   };
 }

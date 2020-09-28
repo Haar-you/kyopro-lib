@@ -7,11 +7,10 @@
 #include "Mylib/AlgebraicStructure/Monoid/min.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/Graph/Template/graph.cpp"
-#include "Mylib/Graph/MinimumSpanningTree/kruskal.cpp"
 
 namespace haar_lib {
-  template <typename T>
-  std::vector<edge<T>> manhattan_minimum_spanning_tree(std::vector<T> x, std::vector<T> y){
+  template <typename T, typename MST>
+  std::vector<edge<T>> manhattan_minimum_spanning_tree(std::vector<T> x, std::vector<T> y, MST mst){
     const int N = x.size();
     graph<T> g(N);
     segment_tree<min_monoid<std::pair<T, int>>> seg(N);
@@ -60,6 +59,6 @@ namespace haar_lib {
       for(int l = 0; l < N; ++l) y[l] = -y[l];
     }
 
-    return kruskal(g);
+    return mst(g);
   }
 }

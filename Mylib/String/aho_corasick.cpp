@@ -6,41 +6,41 @@
 
 namespace haar_lib {
   class aho_corasick {
-  public:
-    int n;
-    std::vector<std::unordered_map<char, int>> trie;
-    std::vector<int> failure_edge;
-    std::vector<std::string> dict;
-    std::vector<std::vector<int>> dict_index;
+    int n_;
+    std::vector<std::unordered_map<char, int>> trie_;
+    std::vector<int> failure_edge_;
+    std::vector<std::string> dict_;
+    std::vector<std::vector<int>> dict_index_;
 
-    aho_corasick(): n(1), trie(1), failure_edge(1){}
+  public:
+    aho_corasick(): n_(1), trie_(1), failure_edge_(1){}
 
     void add(const std::string &s){
-      dict.push_back(s);
+      dict_.push_back(s);
 
       int cur = 0;
 
       for(int i = 0; i < (int)s.size(); ++i){
         char c = s[i];
 
-        if(trie[cur].find(c) != trie[cur].end()){
-          cur = trie[cur][c];
+        if(trie_[cur].find(c) != trie_[cur].end()){
+          cur = trie_[cur][c];
         }else{
-          ++n;
-          trie.resize(n);
+          ++n_;
+          trie_.resize(n_);
 
-          trie[cur][c] = n - 1;
+          trie_[cur][c] = n_ - 1;
 
-          cur = trie[cur][c];
+          cur = trie_[cur][c];
         }
       }
 
-      dict_index.resize(n);
-      dict_index[cur].push_back(dict.size() - 1);
+      dict_index_.resize(n_);
+      dict_index_[cur].push_back(dict_.size() - 1);
     }
 
     void build(){
-      failure_edge.resize(n);
+      failure_edge_.resize(n_);
 
       std::queue<int> dq;
       dq.push(0);
@@ -48,31 +48,31 @@ namespace haar_lib {
       while(not dq.empty()){
         int cur = dq.front(); dq.pop();
 
-        for(auto &kv : trie[cur]){
+        for(auto &kv : trie_[cur]){
           char c = kv.first;
           int next = kv.second;
 
           if(cur == 0){
-            failure_edge[next] = 0;
+            failure_edge_[next] = 0;
 
           }else{
-            int i = failure_edge[cur];
+            int i = failure_edge_[cur];
             int j = 0;
 
             while(1){
-              if(trie[i].find(c) != trie[i].end()){
-                j = trie[i][c];
+              if(trie_[i].find(c) != trie_[i].end()){
+                j = trie_[i][c];
                 break;
               }else{
                 if(i == 0) break;
-                i = failure_edge[i];
+                i = failure_edge_[i];
               }
             }
 
-            failure_edge[next] = j;
+            failure_edge_[next] = j;
 
-            for(auto k : dict_index[failure_edge[next]]){
-              dict_index[next].push_back(k);
+            for(auto k : dict_index_[failure_edge_[next]]){
+              dict_index_[next].push_back(k);
             }
           }
 
@@ -86,16 +86,16 @@ namespace haar_lib {
       int cur = 0;
 
       for(int i = 0; i < (int)s.size(); ++i){
-        char c = s[i];
+        const char c = s[i];
 
-        while(cur != 0 and trie[cur].find(c) == trie[cur].end()){
-          cur = failure_edge[cur];
+        while(cur != 0 and trie_[cur].find(c) == trie_[cur].end()){
+          cur = failure_edge_[cur];
         }
 
-        cur = trie[cur][c];
+        cur = trie_[cur][c];
 
-        for(auto j : dict_index[cur]){
-          int len = dict[j].size();
+        for(auto j : dict_index_[cur]){
+          const int len = dict_[j].size();
           f(i - len + 1, len);
         }
       }

@@ -27,25 +27,25 @@ namespace haar_lib {
     using cost_type = Cost;
 
   private:
-    int size;
-    std::vector<std::vector<edge>> g;
+    int size_;
+    std::vector<std::vector<edge>> g_;
 
   public:
     minimum_cost_flow(){}
-    minimum_cost_flow(int size): size(size), g(size){}
+    minimum_cost_flow(int size): size_(size), g_(size){}
 
     void add_edge(int from, int to, Capacity cap, Cost cost){
-      g[from].emplace_back(from, to, g[to].size(), cap, cost, false);
-      g[to].emplace_back(to, from, g[from].size() - 1, 0, -cost, true);
+      g_[from].emplace_back(from, to, g_[to].size(), cap, cost, false);
+      g_[to].emplace_back(to, from, g_[from].size() - 1, 0, -cost, true);
     }
 
     std::pair<Capacity, Cost> min_cost_flow(int src, int dst, const Capacity &f){
       using P = std::pair<Cost, int>;
       Cost ret = 0;
       Capacity flow = f;
-      std::vector<Cost> h(size, 0), cost(size);
-      std::vector<bool> is_inf(size, true);
-      std::vector<int> prev_node(size), prev_edge(size);
+      std::vector<Cost> h(size_, 0), cost(size_);
+      std::vector<bool> is_inf(size_, true);
+      std::vector<int> prev_node(size_), prev_edge(size_);
       std::priority_queue<P, std::vector<P>, std::greater<P>> pq;
 
       while(flow > 0){
@@ -56,14 +56,14 @@ namespace haar_lib {
         pq.emplace(0, src);
         is_inf[src] = false;
 
-        while(!pq.empty()){
+        while(not pq.empty()){
           Cost c;
           int v;
           std::tie(c, v) = pq.top(); pq.pop();
 
           if(cost[v] < c) continue;
-          for(int i = 0; i < (int)g[v].size(); ++i){
-            edge &e = g[v][i];
+          for(int i = 0; i < (int)g_[v].size(); ++i){
+            edge &e = g_[v][i];
             int w = e.to;
             Capacity cap = e.cap;
             Cost cst = e.cost;
@@ -81,12 +81,12 @@ namespace haar_lib {
 
         if(is_inf[dst]) return {f - flow, ret}; // dstへ到達不可能
 
-        for(int i = 0; i < size; ++i) h[i] += cost[i];
+        for(int i = 0; i < size_; ++i) h[i] += cost[i];
 
         // src -> dst の最小コスト経路へ流せる量(df)を決定する。
         Capacity df = flow;
         for(int cur = dst; cur != src; cur = prev_node[cur]){
-          df = std::min(df, g[prev_node[cur]][prev_edge[cur]].cap);
+          df = std::min(df, g_[prev_node[cur]][prev_edge[cur]].cap);
         }
 
         flow -= df;
@@ -94,9 +94,9 @@ namespace haar_lib {
 
         // capの更新
         for(int cur = dst; cur != src; cur = prev_node[cur]){
-          edge &e = g[prev_node[cur]][prev_edge[cur]];
+          edge &e = g_[prev_node[cur]][prev_edge[cur]];
           e.cap -= df;
-          g[cur][e.rev].cap += df;
+          g_[cur][e.rev].cap += df;
         }
       }
 
@@ -105,7 +105,7 @@ namespace haar_lib {
 
     std::vector<edge> edges() const {
       std::vector<edge> ret;
-      for(auto &v : g) ret.insert(ret.end(), v.begin(), v.end());
+      for(auto &v : g_) ret.insert(ret.end(), v.begin(), v.end());
       return ret;
     }
   };

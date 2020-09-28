@@ -5,34 +5,37 @@
 
 namespace haar_lib {
   class segment_tree_beats {
+  public:
     using value_type = int64_t;
 
-    const int depth, size, hsize;
+  private:
+    int depth_, size_, hsize_;
 
-    std::vector<value_type> fst_max, snd_max;
-    std::vector<int> max_count;
+    std::vector<value_type> fst_max_, snd_max_;
+    std::vector<int> max_count_;
 
-    std::vector<value_type> fst_min, snd_min;
-    std::vector<int> min_count;
+    std::vector<value_type> fst_min_, snd_min_;
+    std::vector<int> min_count_;
 
-    std::vector<value_type> sum, lazy_add;
+    std::vector<value_type> sum_, lazy_add_;
 
   public:
+    segment_tree_beats(){}
     segment_tree_beats(int n):
-      depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
-      size(1 << depth),
-      hsize(size / 2),
+      depth_(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),
+      size_(1 << depth_),
+      hsize_(size_ / 2),
 
-      fst_max(size, std::numeric_limits<value_type>::min()),
-      snd_max(size, std::numeric_limits<value_type>::min()),
-      max_count(size, 0),
+      fst_max_(size_, std::numeric_limits<value_type>::min()),
+      snd_max_(size_, std::numeric_limits<value_type>::min()),
+      max_count_(size_, 0),
 
-      fst_min(size, std::numeric_limits<value_type>::max()),
-      snd_min(size, std::numeric_limits<value_type>::max()),
-      min_count(size, 0),
+      fst_min_(size_, std::numeric_limits<value_type>::max()),
+      snd_min_(size_, std::numeric_limits<value_type>::max()),
+      min_count_(size_, 0),
 
-      sum(size, 0),
-      lazy_add(size, 0)
+      sum_(size_, 0),
+      lazy_add_(size_, 0)
     {}
 
   private:
@@ -40,86 +43,86 @@ namespace haar_lib {
     int rc(int i) const {return i << 1 | 1;} // right child
 
     void update_node_max(int i, value_type x){
-      sum[i] += (x - fst_max[i]) * max_count[i];
+      sum_[i] += (x - fst_max_[i]) * max_count_[i];
 
-      if(fst_max[i] == fst_min[i]) fst_max[i] = fst_min[i] = x;
-      else if(fst_max[i] == snd_min[i]) fst_max[i] = snd_min[i] = x;
-      else fst_max[i] = x;
+      if(fst_max_[i] == fst_min_[i]) fst_max_[i] = fst_min_[i] = x;
+      else if(fst_max_[i] == snd_min_[i]) fst_max_[i] = snd_min_[i] = x;
+      else fst_max_[i] = x;
     }
 
     void update_node_min(int i, value_type x){
-      sum[i] += (x - fst_min[i]) * min_count[i];
+      sum_[i] += (x - fst_min_[i]) * min_count_[i];
 
-      if(fst_max[i] == fst_min[i]) fst_max[i] = fst_min[i] = x;
-      else if(snd_max[i] == fst_min[i]) snd_max[i] = fst_min[i] = x;
-      else fst_min[i] = x;
+      if(fst_max_[i] == fst_min_[i]) fst_max_[i] = fst_min_[i] = x;
+      else if(snd_max_[i] == fst_min_[i]) snd_max_[i] = fst_min_[i] = x;
+      else fst_min_[i] = x;
     }
 
     void update_node_add(int i, value_type x){
-      const int len = hsize >> (31 - __builtin_clz(i));
+      const int len = hsize_ >> (31 - __builtin_clz(i));
 
-      sum[i] += x * len;
-      fst_max[i] += x;
-      if(snd_max[i] != std::numeric_limits<value_type>::min()) snd_max[i] += x;
-      fst_min[i] += x;
-      if(snd_min[i] != std::numeric_limits<value_type>::max()) snd_min[i] += x;
+      sum_[i] += x * len;
+      fst_max_[i] += x;
+      if(snd_max_[i] != std::numeric_limits<value_type>::min()) snd_max_[i] += x;
+      fst_min_[i] += x;
+      if(snd_min_[i] != std::numeric_limits<value_type>::max()) snd_min_[i] += x;
 
-      lazy_add[i] += x;
+      lazy_add_[i] += x;
     }
 
     void propagate(int i){
-      if(i >= hsize) return;
+      if(i >= hsize_) return;
 
-      if(lazy_add[i] != 0){
-        update_node_add(lc(i), lazy_add[i]);
-        update_node_add(rc(i), lazy_add[i]);
-        lazy_add[i] = 0;
+      if(lazy_add_[i] != 0){
+        update_node_add(lc(i), lazy_add_[i]);
+        update_node_add(rc(i), lazy_add_[i]);
+        lazy_add_[i] = 0;
       }
 
-      if(fst_max[i] < fst_max[lc(i)]) update_node_max(lc(i), fst_max[i]);
-      if(fst_min[i] > fst_min[lc(i)]) update_node_min(lc(i), fst_min[i]);
+      if(fst_max_[i] < fst_max_[lc(i)]) update_node_max(lc(i), fst_max_[i]);
+      if(fst_min_[i] > fst_min_[lc(i)]) update_node_min(lc(i), fst_min_[i]);
 
-      if(fst_max[i] < fst_max[rc(i)]) update_node_max(rc(i), fst_max[i]);
-      if(fst_min[i] > fst_min[rc(i)]) update_node_min(rc(i), fst_min[i]);
+      if(fst_max_[i] < fst_max_[rc(i)]) update_node_max(rc(i), fst_max_[i]);
+      if(fst_min_[i] > fst_min_[rc(i)]) update_node_min(rc(i), fst_min_[i]);
     }
 
     void bottom_up(int i){
       const int L = lc(i);
       const int R = rc(i);
 
-      sum[i] = sum[L] + sum[R];
+      sum_[i] = sum_[L] + sum_[R];
 
-      fst_max[i] = std::max(fst_max[L], fst_max[R]);
+      fst_max_[i] = std::max(fst_max_[L], fst_max_[R]);
 
-      if(fst_max[L] < fst_max[R]){
-        max_count[i] = max_count[R];
-        snd_max[i] = std::max(fst_max[L], snd_max[R]);
-      }else if(fst_max[L] > fst_max[R]){
-        max_count[i] = max_count[L];
-        snd_max[i] = std::max(snd_max[L], fst_max[R]);
+      if(fst_max_[L] < fst_max_[R]){
+        max_count_[i] = max_count_[R];
+        snd_max_[i] = std::max(fst_max_[L], snd_max_[R]);
+      }else if(fst_max_[L] > fst_max_[R]){
+        max_count_[i] = max_count_[L];
+        snd_max_[i] = std::max(snd_max_[L], fst_max_[R]);
       }else{
-        max_count[i] = max_count[L] + max_count[R];
-        snd_max[i] = std::max(snd_max[L], snd_max[R]);
+        max_count_[i] = max_count_[L] + max_count_[R];
+        snd_max_[i] = std::max(snd_max_[L], snd_max_[R]);
       }
 
-      fst_min[i] = std::min(fst_min[L], fst_min[R]);
+      fst_min_[i] = std::min(fst_min_[L], fst_min_[R]);
 
-      if(fst_min[L] > fst_min[R]){
-        min_count[i] = min_count[R];
-        snd_min[i] = std::min(fst_min[L], snd_min[R]);
-      }else if(fst_min[L] < fst_min[R]){
-        min_count[i] = min_count[L];
-        snd_min[i] = std::min(snd_min[L], fst_min[R]);
+      if(fst_min_[L] > fst_min_[R]){
+        min_count_[i] = min_count_[R];
+        snd_min_[i] = std::min(fst_min_[L], snd_min_[R]);
+      }else if(fst_min_[L] < fst_min_[R]){
+        min_count_[i] = min_count_[L];
+        snd_min_[i] = std::min(snd_min_[L], fst_min_[R]);
       }else{
-        min_count[i] = min_count[L] + min_count[R];
-        snd_min[i] = std::min(snd_min[L], snd_min[R]);
+        min_count_[i] = min_count_[L] + min_count_[R];
+        snd_min_[i] = std::min(snd_min_[L], snd_min_[R]);
       }
     }
 
   private:
     void chmin(int i, int l, int r, int s, int t, value_type x){
-      if(r <= s or t <= l or fst_max[i] <= x) return;
-      if(s <= l and r <= t and snd_max[i] < x){
+      if(r <= s or t <= l or fst_max_[i] <= x) return;
+      if(s <= l and r <= t and snd_max_[i] < x){
         update_node_max(i, x);
         return;
       }
@@ -131,12 +134,12 @@ namespace haar_lib {
     }
 
   public:
-    void chmin(int l, int r, value_type x){chmin(1, 0, hsize, l, r, x);}
+    void chmin(int l, int r, value_type x){chmin(1, 0, hsize_, l, r, x);}
 
   private:
     void chmax(int i, int l, int r, int s, int t, value_type x){
-      if(r <= s or t <= l or fst_min[i] >= x) return;
-      if(s <= l and r <= t and snd_min[i] > x){
+      if(r <= s or t <= l or fst_min_[i] >= x) return;
+      if(s <= l and r <= t and snd_min_[i] > x){
         update_node_min(i, x);
         return;
       }
@@ -148,7 +151,7 @@ namespace haar_lib {
     }
 
   public:
-    void chmax(int l, int r, value_type x){chmax(1, 0, hsize, l, r, x);}
+    void chmax(int l, int r, value_type x){chmax(1, 0, hsize_, l, r, x);}
 
   private:
     void add(int i, int l, int r, int s, int t, value_type x){
@@ -165,42 +168,42 @@ namespace haar_lib {
     }
 
   public:
-    void add(int l, int r, value_type x){add(1, 0, hsize, l, r, x);}
+    void add(int l, int r, value_type x){add(1, 0, hsize_, l, r, x);}
 
   private:
     value_type get_sum(int i, int l, int r, int s, int t){
       if(r <= s or t <= l) return 0;
-      if(s <= l and r <= t) return sum[i];
+      if(s <= l and r <= t) return sum_[i];
 
       propagate(i);
       return get_sum(lc(i), l, (l + r) / 2, s, t) + get_sum(rc(i), (l + r) / 2, r, s, t);
     }
 
   public:
-    value_type get_sum(int l, int r){return get_sum(1, 0, hsize, l, r);}
+    value_type get_sum(int l, int r){return get_sum(1, 0, hsize_, l, r);}
 
   public:
     void init_with_vector(const std::vector<value_type> &v){
-      fst_max.assign(size, std::numeric_limits<value_type>::min());
-      snd_max.assign(size, std::numeric_limits<value_type>::min());
-      max_count.assign(size, 1);
+      fst_max_.assign(size_, std::numeric_limits<value_type>::min());
+      snd_max_.assign(size_, std::numeric_limits<value_type>::min());
+      max_count_.assign(size_, 1);
 
-      fst_min.assign(size, std::numeric_limits<value_type>::max());
-      snd_min.assign(size, std::numeric_limits<value_type>::max());
-      min_count.assign(size, 1);
+      fst_min_.assign(size_, std::numeric_limits<value_type>::max());
+      snd_min_.assign(size_, std::numeric_limits<value_type>::max());
+      min_count_.assign(size_, 1);
 
-      sum.assign(size, 0);
-      lazy_add.assign(size, 0);
+      sum_.assign(size_, 0);
+      lazy_add_.assign(size_, 0);
 
       for(int i = 0; i < (int)v.size(); ++i){
-        fst_max[hsize + i] = v[i];
-        max_count[hsize + i] = 1;
-        fst_min[hsize + i] = v[i];
-        min_count[hsize + i] = 1;
-        sum[hsize + i] = v[i];
+        fst_max_[hsize_ + i] = v[i];
+        max_count_[hsize_ + i] = 1;
+        fst_min_[hsize_ + i] = v[i];
+        min_count_[hsize_ + i] = 1;
+        sum_[hsize_ + i] = v[i];
       }
 
-      for(int i = hsize - 1; i > 0; --i) bottom_up(i);
+      for(int i = hsize_; --i >= 1;) bottom_up(i);
     }
   };
 }

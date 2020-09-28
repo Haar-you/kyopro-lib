@@ -8,10 +8,10 @@ namespace haar_lib {
   template <typename T>
   struct forest {
     std::vector<tree<T>> trees;
-    std::vector<int> tree_id;
-    std::vector<int> vertex_id;
+    std::vector<int> tree_id, vertex_id;
     std::vector<std::vector<int>> rid;
 
+    forest(){}
     forest(const graph<T> &g){
       const int N = g.size();
 

@@ -7,43 +7,47 @@
 namespace haar_lib {
   template <typename T, typename Comparator>
   class lichao_segment_tree {
+  public:
+    using value_type = T;
+
+  private:
     using line = std::pair<T, T>;
 
-    const Comparator cmp = Comparator();
-    std::vector<T> xs;
-    int n;
-
-    std::vector<std::optional<line>> data;
-    std::vector<std::pair<int, int>> range;
+    Comparator cmp_ = Comparator();
+    std::vector<T> xs_;
+    int n_;
+    std::vector<std::optional<line>> data_;
+    std::vector<std::pair<int, int>> range_;
 
     T chm(const T &a, const T &b) const {
-      return cmp(a, b) ? a : b;
+      return cmp_(a, b) ? a : b;
     }
 
-    void init_range(int i, int left, int right){
-      if(i >= 2 * n) return;
+    void init_range_(int i, int left, int right){
+      if(i >= 2 * n_) return;
 
-      range[i] = std::make_pair(left, right);
+      range_[i] = std::make_pair(left, right);
       const int mid = (left + right) / 2;
-      init_range(i << 1 | 0, left, mid);
-      init_range(i << 1 | 1, mid, right);
+      init_range_(i << 1 | 0, left, mid);
+      init_range_(i << 1 | 1, mid, right);
     }
 
   public:
-    lichao_segment_tree(std::vector<T> xs_): xs(xs_){
-      std::sort(xs.begin(), xs.end());
-      xs.erase(std::unique(xs.begin(), xs.end()), xs.end());
+    lichao_segment_tree(){}
+    lichao_segment_tree(std::vector<T> xs): xs_(xs){
+      std::sort(xs_.begin(), xs_.end());
+      xs_.erase(std::unique(xs_.begin(), xs_.end()), xs_.end());
 
-      n = 1;
-      while(n < (int)xs.size()) n *= 2;
+      n_ = 1;
+      while(n_ < (int)xs_.size()) n_ *= 2;
 
-      const auto m = xs.back();
-      xs.resize(n, m);
+      const auto m = xs_.back();
+      xs_.resize(n_, m);
 
-      data.assign(2 * n, std::nullopt);
+      data_.assign(2 * n_, std::nullopt);
 
-      range.resize(2 * n);
-      init_range(1, 0, n);
+      range_.resize(2 * n_);
+      init_range_(1, 0, n_);
     }
 
     T apply(const line &l, const T &x) const {
@@ -52,21 +56,21 @@ namespace haar_lib {
 
   private:
     void update(int i, line new_line, int l, int r){
-      if(not data[i]){
-        data[i] = new_line;
+      if(not data_[i]){
+        data_[i] = new_line;
         return;
       }
 
       const int m = (l + r) / 2;
 
-      auto lx = xs[l], mx = xs[m], rx = xs[r - 1];
+      auto lx = xs_[l], mx = xs_[m], rx = xs_[r - 1];
 
-      bool left = cmp(apply(new_line, lx), apply(*data[i], lx));
-      bool mid = cmp(apply(new_line, mx), apply(*data[i], mx));
-      bool right = cmp(apply(new_line, rx), apply(*data[i], rx));
+      bool left = cmp_(apply(new_line, lx), apply(*data_[i], lx));
+      bool mid = cmp_(apply(new_line, mx), apply(*data_[i], mx));
+      bool right = cmp_(apply(new_line, rx), apply(*data_[i], rx));
 
       if(left and right){
-        data[i] = new_line;
+        data_[i] = new_line;
         return;
       }
 
@@ -75,7 +79,7 @@ namespace haar_lib {
       }
 
       if(mid){
-        std::swap(*data[i], new_line);
+        std::swap(*data_[i], new_line);
       }
 
       if(left != mid){
@@ -87,25 +91,25 @@ namespace haar_lib {
 
   public:
     void add_line(T a, T b){
-      update(1, std::make_pair(a, b), 0, n);
+      update(1, std::make_pair(a, b), 0, n_);
     }
 
     // [l, r)
     void add_segment(T l, T r, T a, T b){
-      int left = std::lower_bound(xs.begin(), xs.end(), l) - xs.begin();
-      int right = std::lower_bound(xs.begin(), xs.end(), r) - xs.begin();
+      int left = std::lower_bound(xs_.begin(), xs_.end(), l) - xs_.begin();
+      int right = std::lower_bound(xs_.begin(), xs_.end(), r) - xs_.begin();
 
-      int L = left + n;
-      int R = right + n;
+      int L = left + n_;
+      int R = right + n_;
 
       while(L < R){
         if(R & 1){
           --R;
-          update(R, std::make_pair(a, b), range[R].first, range[R].second);
+          update(R, std::make_pair(a, b), range_[R].first, range_[R].second);
         }
 
         if(L & 1){
-          update(L, std::make_pair(a, b), range[L].first, range[L].second);
+          update(L, std::make_pair(a, b), range_[L].first, range_[L].second);
           ++L;
         }
 
@@ -116,15 +120,15 @@ namespace haar_lib {
 
   public:
     auto operator()(const T &x) const {
-      const int i = std::lower_bound(xs.begin(), xs.end(), x) - xs.begin();
-      int k = i + n;
+      const int i = std::lower_bound(xs_.begin(), xs_.end(), x) - xs_.begin();
+      int k = i + n_;
 
       std::optional<T> ret;
 
       while(k > 0){
-        if(data[k]){
-          if(not ret) ret = apply(*data[k], xs[i]);
-          else ret = chm(*ret, apply(*data[k], xs[i]));
+        if(data_[k]){
+          if(not ret) ret = apply(*data_[k], xs_[i]);
+          else ret = chm(*ret, apply(*data_[k], xs_[i]));
         }
         k >>= 1;
       }

@@ -6,13 +6,13 @@
 namespace haar_lib {
   template <typename T>
   class lowest_common_ancestor_doubling {
-  private:
-    std::vector<std::vector<int>> parent;
-    int n, log2n;
+    int n_, log2n_;
+    std::vector<std::vector<int>> parent_;
+    std::vector<int> depth_;
 
     void dfs(const tree<T> &tr, int cur, int par, int d){
-      parent[cur][0] = par;
-      depth[cur] = d;
+      parent_[cur][0] = par;
+      depth_[cur] = d;
 
       for(auto &e : tr[cur]){
         if(e.to != par){
@@ -22,34 +22,29 @@ namespace haar_lib {
     }
 
   public:
-    std::vector<int> depth;
-
     lowest_common_ancestor_doubling(){}
     lowest_common_ancestor_doubling(const tree<T> &tr, int root):
-      n(tr.size()), depth(n)
+      n_(tr.size()), log2n_((int)ceil(log2(n_)) + 1), parent_(n_, std::vector<int>(log2n_)), depth_(n_)
     {
-      log2n = (int)ceil(log2(n)) + 1;
-      parent = std::vector(n, std::vector<int>(log2n, 0));
-
       dfs(tr, root, -1, 0);
-      for(int k = 0; k < log2n - 1; ++k){
-        for(int v = 0; v < n; ++v){
-          if(parent[v][k] == -1) parent[v][k + 1] = -1;
-          else parent[v][k + 1] = parent[parent[v][k]][k];
+      for(int k = 0; k < log2n_ - 1; ++k){
+        for(int v = 0; v < n_; ++v){
+          if(parent_[v][k] == -1) parent_[v][k + 1] = -1;
+          else parent_[v][k + 1] = parent_[parent_[v][k]][k];
         }
       }
     }
 
     int lca(int a, int b) const {
-      if(depth[a] >= depth[b]) std::swap(a, b);
-      for(int k = 0; k < log2n; ++k){
-        if((depth[b] - depth[a]) >> k & 1) b = parent[b][k];
+      if(depth_[a] >= depth_[b]) std::swap(a, b);
+      for(int k = 0; k < log2n_; ++k){
+        if((depth_[b] - depth_[a]) >> k & 1) b = parent_[b][k];
       }
       if(a == b) return a;
-      for(int k = log2n; --k >= 0;){
-        if(parent[a][k] != parent[b][k]){a = parent[a][k]; b = parent[b][k];}
+      for(int k = log2n_; --k >= 0;){
+        if(parent_[a][k] != parent_[b][k]){a = parent_[a][k]; b = parent_[b][k];}
       }
-      return parent[a][0];
+      return parent_[a][0];
     }
 
     int operator()(int a, int b) const {return lca(a, b);}

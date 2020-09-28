@@ -6,20 +6,28 @@ namespace haar_lib {
   struct imos_1d {
     using value_type = T;
 
-    std::vector<T> data;
-    imos_1d(int n): data(n + 1){}
+  private:
+    std::vector<T> data_;
+    int n_;
 
-    void add(int a, int b, const T& val){ // [a, b)
-      data[a] += 1;
-      data[b] -= 1;
+  public:
+    imos_1d(){}
+    imos_1d(int n): data_(n), n_(n){}
+
+    void add(int l, int r, const T& val){ // [l, r)
+      data_[l] += 1;
+      if(r < n_) data_[r] -= 1;
     }
 
     void build(){
-      for(int i = 0; i < (int)data.size() - 1; ++i){
-        data[i + 1] += data[i];
+      for(int i = 1; i < n_; ++i){
+        data_[i] += data_[i - 1];
       }
     }
 
-    T operator[](size_t i) const {return data[i];}
+    T operator[](size_t i) const {return data_[i];}
+
+    auto begin() const {return data_.begin();}
+    auto end() const {return data_.end();}
   };
 }

@@ -141,7 +141,7 @@ int main(){
     }
 
     int64_t l = 1;
-    for(int i = 0; i < n; ++i) l = std::lcm(l, ans[i].deno);
+    for(int i = 0; i < n; ++i) l = std::lcm(l, ans[i].denominator());
 
     for(int i = 0; i < n; ++i) ans[i] *= l;
 

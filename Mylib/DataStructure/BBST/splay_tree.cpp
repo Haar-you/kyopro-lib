@@ -145,66 +145,70 @@ namespace haar_lib {
   };
 
   template <typename Monoid>
-  struct splay_tree {
-    using node = splay_node<Monoid>;
+  class splay_tree {
+  public:
     using value_type = typename Monoid::value_type;
-    const static Monoid M;
 
-    node *root;
+  private:
+    using node = splay_node<Monoid>;
+    Monoid M_;
+    node *root_;
 
-    splay_tree(): root(nullptr){}
-    splay_tree(node *root): root(root){}
-    splay_tree(int N): root(nullptr){
-      for(int i = 0; i < N; ++i) push_back(M());
+    splay_tree(node *root): root_(root){}
+
+  public:
+    splay_tree(): root_(nullptr){}
+    splay_tree(int N): root_(nullptr){
+      for(int i = 0; i < N; ++i) push_back(M_());
     }
 
     static auto singleton(const value_type &value){return splay_tree(new node(value));}
 
-    int size() const {return root ? root->size : 0;}
-    bool empty() const {return !root;}
+    int size() const {return root_ ? root_->size : 0;}
+    bool empty() const {return not root_;}
 
-    const value_type get(int index){root = node::get(root, index); return root->value;}
+    const value_type get(int index){root_ = node::get(root_, index); return root_->value;}
     const value_type operator[](int index){return get(index);}
 
     void set(int index, const value_type &value){
-      root = node::get(root, index); root->value = value; root->update();
+      root_ = node::get(root_, index); root_->value = value; root_->update();
     }
 
     void merge_right(splay_tree &right){
-      root = node::merge(root, right.root); right.root = nullptr;
+      root_ = node::merge(root_, right.root); right.root_ = nullptr;
     }
 
     void merge_left(splay_tree &left){
-      root = node::merge(left.root, root); left.root = nullptr;
+      root_ = node::merge(left.root_, root_); left.root_ = nullptr;
     }
 
     auto split(int index){
-      node *left, *right; std::tie(left, right) = node::split(root, index);
+      node *left, *right; std::tie(left, right) = node::split(root_, index);
       return std::make_pair(splay_tree(left), splay_tree(right));
     }
 
     void insert(int index, const value_type &value){
-      auto s = node::split(root, index);
-      root = node::merge(s.first, node::merge(new node(value), s.second));
+      auto s = node::split(root_, index);
+      root_ = node::merge(s.first, node::merge(new node(value), s.second));
     }
 
     void erase(int index){
       node *left, *right;
-      std::tie(left, right) = node::split(root, index);
+      std::tie(left, right) = node::split(root_, index);
       std::tie(std::ignore, right) = node::split(right, 1);
-      root = node::merge(left, right);
+      root_ = node::merge(left, right);
     }
 
-    const value_type fold(){return root->result;}
+    const value_type fold(){return root_->result;}
     const value_type fold(int l, int r){ // [l, r)
       node *left, *mid, *right;
-      std::tie(mid, right) = node::split(root, r);
+      std::tie(mid, right) = node::split(root_, r);
       std::tie(left, mid) = node::split(mid, l);
 
       auto ret = mid->result;
 
       mid = node::merge(left, mid);
-      root = node::merge(mid, right);
+      root_ = node::merge(mid, right);
 
       return ret;
     }
@@ -217,7 +221,7 @@ namespace haar_lib {
 
     template <typename Func>
     void traverse(const Func &f) const {
-      node::traverse(root, f);
+      node::traverse(root_, f);
     }
   };
 }

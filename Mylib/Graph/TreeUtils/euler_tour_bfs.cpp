@@ -5,17 +5,15 @@
 
 namespace haar_lib {
   template <typename T>
-  struct euler_tour_bfs {
-    int N;
-    std::vector<int> parent;
-    std::vector<int> depth;
+  class euler_tour_bfs {
+    int N_;
+    std::vector<int> parent_, depth_, left_, right_;
+    std::vector<std::vector<int>> bfs_order_, dfs_order_;
 
-    std::vector<std::vector<int>> bfs_order;
-    std::vector<std::vector<int>> dfs_order;
-    std::vector<int> left, right;
-
+  public:
+    euler_tour_bfs(){}
     euler_tour_bfs(const tree<T> &tr, int root):
-      N(tr.size()), parent(N), depth(N), left(N), right(N)
+      N_(tr.size()), parent_(N_), depth_(N_), left_(N_), right_(N_)
     {
       {
         int ord = 0;
@@ -30,25 +28,26 @@ namespace haar_lib {
         while(not q.empty()){
           auto [i, d] = q.front(); q.pop();
 
-          if((int)bfs_order.size() <= d) bfs_order.emplace_back();
-          bfs_order[d].push_back(ord);
+          if((int)bfs_order_.size() <= d) bfs_order_.emplace_back();
+          bfs_order_[d].push_back(ord);
           ++ord;
 
           for(auto &e : tr[i]){
-            if(e.to == parent[i]) continue;
+            if(e.to == parent_[i]) continue;
             q.emplace(e.to, d + 1);
           }
         }
       }
     }
 
+  private:
     void dfs(const tree<T> &tr, int cur, int par, int d, int &ord){
-      parent[cur] = par;
-      depth[cur] = d;
+      parent_[cur] = par;
+      depth_[cur] = d;
 
-      if((int)dfs_order.size() <= d) dfs_order.emplace_back();
-      dfs_order[d].push_back(ord);
-      left[cur] = ord;
+      if((int)dfs_order_.size() <= d) dfs_order_.emplace_back();
+      dfs_order_[d].push_back(ord);
+      left_[cur] = ord;
       ++ord;
 
       for(auto &e : tr[cur]){
@@ -56,22 +55,22 @@ namespace haar_lib {
         dfs(tr, e.to, cur, d + 1, ord);
       }
 
-      right[cur] = ord;
+      right_[cur] = ord;
     }
 
   public:
     template <typename Func>
     void query_children(int i, int d, const Func &f) const {
       if(i != -1){
-        d += depth[i];
-        if((int)bfs_order.size() > d){
-          int l = std::lower_bound(dfs_order[d].begin(), dfs_order[d].end(), left[i]) - dfs_order[d].begin();
-          int r = std::lower_bound(dfs_order[d].begin(), dfs_order[d].end(), right[i]) - dfs_order[d].begin();
+        d += depth_[i];
+        if((int)bfs_order_.size() > d){
+          int l = std::lower_bound(dfs_order_[d].begin(), dfs_order_[d].end(), left_[i]) - dfs_order_[d].begin();
+          int r = std::lower_bound(dfs_order_[d].begin(), dfs_order_[d].end(), right_[i]) - dfs_order_[d].begin();
 
-          if(l >= (int)bfs_order[d].size()) return;
+          if(l >= (int)bfs_order_[d].size()) return;
           if(r == l) return;
 
-          f(bfs_order[d][l], bfs_order[d][r - 1] + 1);
+          f(bfs_order_[d][l], bfs_order_[d][r - 1] + 1);
         }
       }
     }
@@ -83,7 +82,7 @@ namespace haar_lib {
 
     int get_parent(int i) const {
       if(i == -1) return -1;
-      return parent[i];
+      return parent_[i];
     }
 
     int get_ancestor(int i, int k) const {

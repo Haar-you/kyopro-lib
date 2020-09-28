@@ -6,34 +6,36 @@
 
 namespace haar_lib {
   template <typename Container>
-  struct suffix_array {
-    Container s;
-    int N;
-    std::vector<int> data;
+  class suffix_array {
+    Container s_;
+    int N_;
+    std::vector<int> data_;
 
-    suffix_array(Container s_): s(s_), N(s.size()), data(N){
-      if(N == 1){
-        data = {1, 0};
+  public:
+    suffix_array(){}
+    suffix_array(Container s): s_(s), N_(s_.size()), data_(N_){
+      if(N_ == 1){
+        data_ = {1, 0};
         return;
       }
 
-      s.resize(N + 1);
+      s_.resize(N_ + 1);
 
-      std::string LS(N + 1, 'S');
-      for(int i = N; --i >= 0;){
-        if(s[i] < s[i + 1]) LS[i] = 'S';
-        else if(s[i] > s[i + 1]) LS[i] = 'L';
+      std::string LS(N_ + 1, 'S');
+      for(int i = N_; --i >= 0;){
+        if(s_[i] < s_[i + 1]) LS[i] = 'S';
+        else if(s_[i] > s_[i + 1]) LS[i] = 'L';
         else LS[i] = LS[i + 1];
       }
 
-      const int bucket_count = *std::max_element(s.begin(), s.end());
+      const int bucket_count = *std::max_element(s_.begin(), s_.end());
       std::vector<int> bucket_size(bucket_count + 1);
-      for(auto x : s) bucket_size[x] += 1;
+      for(auto x : s_) bucket_size[x] += 1;
 
       auto induced_sort =
         [&](std::vector<int> LMS){
-          std::vector<int> bucket(N + 1, -1);
-          std::vector<bool> is_lms(N + 1);
+          std::vector<int> bucket(N_ + 1, -1);
+          std::vector<bool> is_lms(N_ + 1);
 
           std::vector<std::deque<int>> empty(bucket_count + 1);
 
@@ -46,21 +48,21 @@ namespace haar_lib {
 
           std::reverse(LMS.begin(), LMS.end());
           for(auto x : LMS){
-            int i = empty[s[x]].back(); empty[s[x]].pop_back();
+            int i = empty[s_[x]].back(); empty[s_[x]].pop_back();
 
             bucket[i] = x;
             is_lms[i] = true;
           }
 
-          for(int i = 0; i <= N; ++i){
+          for(int i = 0; i <= N_; ++i){
             if(bucket[i] >= 1 and LS[bucket[i] - 1] == 'L'){
-              auto x = s[bucket[i] - 1];
+              auto x = s_[bucket[i] - 1];
               int j = empty[x].front(); empty[x].pop_front();
               bucket[j] = bucket[i] - 1;
             }
           }
 
-          for(int i = 0; i <= N; ++i){
+          for(int i = 0; i <= N_; ++i){
             if(is_lms[i]){
               bucket[i] = -1;
             }
@@ -75,26 +77,26 @@ namespace haar_lib {
             }
           }
 
-          for(int i = N; i >= 0; --i){
+          for(int i = N_; i >= 0; --i){
             if(bucket[i] >= 1 and LS[bucket[i] - 1] == 'S'){
-              auto x = s[bucket[i] - 1];
+              auto x = s_[bucket[i] - 1];
               int j = empty[x].back(); empty[x].pop_back();
               bucket[j] = bucket[i] - 1;
             }
           }
 
-          bucket[0] = N;
+          bucket[0] = N_;
           return bucket;
         };
 
       std::vector<int> LMS;
-      for(int i = 1; i <= N; ++i){
+      for(int i = 1; i <= N_; ++i){
         if(LS[i] == 'S' and LS[i - 1] == 'L'){
           LMS.push_back(i);
         }
       }
 
-      std::vector<int> LMS_bucket_length(N + 1, 1);
+      std::vector<int> LMS_bucket_length(N_ + 1, 1);
       for(int i = 0; i < (int)LMS.size() - 1; ++i){
         LMS_bucket_length[LMS[i]] = LMS[i + 1] - LMS[i] + 1;
       }
@@ -108,7 +110,7 @@ namespace haar_lib {
         }
       }
 
-      std::vector<int> rank(N + 1);
+      std::vector<int> rank(N_ + 1);
       rank[LMS_substr_sorted[0]] = 1;
 
       for(int i = 1, k = 1; i < (int)LMS_substr_sorted.size(); ++i){
@@ -118,7 +120,7 @@ namespace haar_lib {
         if(LMS_bucket_length[x] != LMS_bucket_length[y]) eq = false;
         else{
           for(int j = 0; j < LMS_bucket_length[x]; ++j){
-            if(s[x + j] != s[y + j]) eq = false;
+            if(s_[x + j] != s_[y + j]) eq = false;
           }
         }
 
@@ -127,32 +129,34 @@ namespace haar_lib {
       }
 
       std::vector<int> t;
-      for(int i = 0; i <= N; ++i){
+      for(int i = 0; i <= N_; ++i){
         if(rank[i] != 0) t.push_back(rank[i]);
       }
 
-      auto sa = suffix_array<std::vector<int>>(t).data;
+      auto sa = suffix_array<std::vector<int>>(t);
 
       std::vector<int> LMS_sorted;
       for(int i = 1; i < (int)sa.size(); ++i){
         LMS_sorted.push_back(LMS[sa[i]]);
       }
 
-      data = induced_sort(LMS_sorted);
+      data_ = induced_sort(LMS_sorted);
     }
 
-    int operator[](size_t i) const {return data[i];}
-    auto begin() const {return data.begin();}
-    auto end() const {return data.end();}
-    size_t size() const {return data.size();}
+    int operator[](size_t i) const {return data_[i];}
+    auto begin() const {return data_.begin();}
+    auto end() const {return data_.end();}
+    size_t size() const {return data_.size();}
+    const auto& data() const {return data_;}
+    const auto& str() const {return s_;}
 
-    int lower_bound(const Container &s_) const {
+    int lower_bound(const Container &a) const {
       auto check =
         [&](int x){
-          for(int i = 0; i < (int)s_.size(); ++i){
-            if(data[x] + i >= (int)s.size()) return false;
-            if(s_[i] < s[data[x] + i]) return true;
-            if(s_[i] > s[data[x] + i]) return false;
+          for(int i = 0; i < (int)a.size(); ++i){
+            if(data_[x] + i >= (int)s_.size()) return false;
+            if(a[i] < s_[data_[x] + i]) return true;
+            if(a[i] > s_[data_[x] + i]) return false;
           }
           return true;
         };
@@ -167,8 +171,8 @@ namespace haar_lib {
       return ub;
     }
 
-    int upper_bound(const Container &s_) const {
-      Container t(s_);
+    int upper_bound(const Container &s) const {
+      Container t(s);
 
       ++t.back();
       int ret = lower_bound(t);

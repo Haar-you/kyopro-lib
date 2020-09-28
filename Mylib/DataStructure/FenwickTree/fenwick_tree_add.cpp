@@ -4,20 +4,22 @@
 namespace haar_lib {
   template <typename T>
   class fenwick_tree_add {
+  public:
     using value_type = T;
 
-    int size;
-    std::vector<value_type> data;
+  private:
+    int size_;
+    std::vector<value_type> data_;
 
   public:
     fenwick_tree_add(){}
-    fenwick_tree_add(int size): size(size), data(size + 1, 0){}
+    fenwick_tree_add(int size): size_(size), data_(size + 1, 0){}
 
     void update(int i, value_type val){
       i += 1; // 1-index
 
-      while(i <= size){
-        data[i] = data[i] + val;
+      while(i <= size_){
+        data_[i] = data_[i] + val;
         i += i & (-i);
       }
     }
@@ -26,7 +28,7 @@ namespace haar_lib {
       value_type ret = 0;
 
       while(i > 0){
-        ret = ret + data[i];
+        ret = ret + data_[i];
         i -= i & (-i);
       }
 

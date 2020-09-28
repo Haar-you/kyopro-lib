@@ -17,7 +17,7 @@ namespace haar_lib {
 
       if(h) --h;
       while(j + h < n and i + h < n){
-        if(sa.s[j + h] != sa.s[i + h]) break;
+        if(sa.str()[j + h] != sa.str()[i + h]) break;
         ++h;
       }
 

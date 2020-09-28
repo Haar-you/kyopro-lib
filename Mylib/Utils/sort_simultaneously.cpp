@@ -6,6 +6,15 @@
 #include <initializer_list>
 
 namespace haar_lib {
+  namespace sort_simultaneously_impl {
+    template <typename T>
+    void sub(int N, const std::vector<int> &ord, std::vector<T> &a){
+      std::vector<T> temp(N);
+      for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];
+      std::swap(temp, a);
+    }
+  }
+
   template <typename Compare, typename ... Args>
   void sort_simultaneously(const Compare &compare, std::vector<Args> &... args){
     const int N = std::max({args.size() ...});
@@ -14,12 +23,6 @@ namespace haar_lib {
     std::sort(ord.begin(), ord.end(), compare);
 
     (void)std::initializer_list<int>{
-      (void(
-        [&](){
-          auto temp = args;
-          for(int i = 0; i < N; ++i) temp[i] = args[ord[i]];
-          std::swap(temp, args);
-        }()
-      ), 0) ...};
+      (void(sort_simultaneously_impl::sub(N, ord, args)), 0) ...};
   }
 }

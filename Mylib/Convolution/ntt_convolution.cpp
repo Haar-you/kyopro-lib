@@ -11,27 +11,28 @@ namespace haar_lib {
   public:
     using value_type = T;
     constexpr static int primitive_root = PRIM_ROOT;
+    constexpr static int max_size = MAX_SIZE;
 
   private:
-    const int MAX_POWER;
-    std::vector<T> BASE, INV_BASE;
+    const int MAX_POWER_;
+    std::vector<T> BASE_, INV_BASE_;
 
   public:
     number_theoretic_transform():
-      MAX_POWER(__builtin_ctz(MAX_SIZE)),
-      BASE(MAX_POWER + 1),
-      INV_BASE(MAX_POWER + 1)
+      MAX_POWER_(__builtin_ctz(MAX_SIZE)),
+      BASE_(MAX_POWER_ + 1),
+      INV_BASE_(MAX_POWER_ + 1)
     {
       static_assert((MAX_SIZE & (MAX_SIZE - 1)) == 0, "MAX_SIZE must be power of 2.");
 
-      T t = T::pow(PRIM_ROOT, (T::mod() - 1) >> (MAX_POWER + 2));
+      T t = T::pow(PRIM_ROOT, (T::mod() - 1) >> (MAX_POWER_ + 2));
       T s = t.inv();
 
-      for(int i = MAX_POWER - 1; i >= 0; --i){
+      for(int i = MAX_POWER_; --i >= 0;){
         t *= t;
         s *= s;
-        BASE[i] = -t;
-        INV_BASE[i] = -s;
+        BASE_[i] = -t;
+        INV_BASE_[i] = -s;
       }
     }
 
@@ -50,7 +51,7 @@ namespace haar_lib {
               f[i + j] = s + t;
               f[i + j + b] = (s - t) * w;
             }
-            w *= INV_BASE[__builtin_ctz(k)];
+            w *= INV_BASE_[__builtin_ctz(k)];
           }
         }
 
@@ -67,7 +68,7 @@ namespace haar_lib {
               f[i + j] = s + t;
               f[i + j + b] = s - t;
             }
-            w *= BASE[__builtin_ctz(k)];
+            w *= BASE_[__builtin_ctz(k)];
           }
         }
       }

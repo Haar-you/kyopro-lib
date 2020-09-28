@@ -6,55 +6,58 @@
 
 namespace haar_lib {
   template <typename T>
-  struct formal_power_series {
+  class formal_power_series {
+  public:
     using value_type = T;
 
     static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
     static std::function<std::optional<T>(T)> get_sqrt;
 
-    std::vector<T> data;
+  private:
+    std::vector<T> data_;
 
+  public:
     formal_power_series(){}
-    explicit formal_power_series(int N): data(N){}
-    formal_power_series(const std::vector<T> &data): data(data){}
-    formal_power_series(std::initializer_list<T> init): data(init.begin(), init.end()){}
-    formal_power_series(const formal_power_series &a): data(a.data){}
+    explicit formal_power_series(int N): data_(N){}
+    formal_power_series(const std::vector<T> &data_): data_(data_){}
+    formal_power_series(std::initializer_list<T> init): data_(init.begin(), init.end()){}
+    formal_power_series(const formal_power_series &a): data_(a.data_){}
     formal_power_series(formal_power_series &&a) noexcept {*this = std::move(a);}
 
     int size() const {
-      return data.size();
+      return data_.size();
     }
 
     const T& operator[](int i) const {
-      return data[i];
+      return data_[i];
     }
 
     T& operator[](int i){
-      return data[i];
+      return data_[i];
     }
 
-    auto begin() {return data.begin();}
-    auto end() {return data.end();}
+    auto begin() {return data_.begin();}
+    auto end() {return data_.end();}
 
     void resize(int n){
-      data.resize(n);
+      data_.resize(n);
     }
 
     auto& operator=(formal_power_series &&rhs) noexcept {
       if(this != &rhs){
-        data = std::move(rhs.data);
+        data_ = std::move(rhs.data_);
       }
       return *this;
     }
 
     auto& operator+=(const formal_power_series &rhs){
-      if(data.size() < rhs.size()) data.resize(rhs.size());
-      for(int i = 0; i < rhs.size(); ++i) data[i] += rhs[i];
+      if(data_.size() < rhs.size()) data_.resize(rhs.size());
+      for(int i = 0; i < rhs.size(); ++i) data_[i] += rhs[i];
       return *this;
     }
 
     auto& operator+=(T rhs){
-      data[0] += rhs;
+      data_[0] += rhs;
       return *this;
     }
 
@@ -69,13 +72,13 @@ namespace haar_lib {
     }
 
     auto& operator-=(const formal_power_series &rhs){
-      if(data.size() < rhs.size()) data.resize(rhs.size());
-      for(int i = 0; i < rhs.size(); ++i) data[i] -= rhs[i];
+      if(data_.size() < rhs.size()) data_.resize(rhs.size());
+      for(int i = 0; i < rhs.size(); ++i) data_[i] -= rhs[i];
       return *this;
     }
 
     auto& operator-=(T rhs){
-      data[0] -= rhs;
+      data_[0] -= rhs;
       return *this;
     }
 
@@ -96,17 +99,17 @@ namespace haar_lib {
     }
 
     auto& operator*=(const formal_power_series &rhs){
-      data = convolve(data, rhs.data);
+      data_ = convolve(data_, rhs.data_);
       return *this;
     }
 
     auto operator*(const formal_power_series &rhs) const {
-      auto ret = convolve(data, rhs.data);
+      auto ret = convolve(data_, rhs.data_);
       return formal_power_series(ret);
     }
 
     auto& operator*=(T rhs){
-      for(auto &x : data) x *= rhs;
+      for(auto &x : data_) x *= rhs;
       return *this;
     }
 
@@ -116,35 +119,35 @@ namespace haar_lib {
     }
 
     auto differentiate() const {
-      const int n = data.size();
+      const int n = data_.size();
       std::vector<T> ret(n - 1);
       for(int i = 0; i < n - 1; ++i){
-        ret[i] = data[i + 1] * (i + 1);
+        ret[i] = data_[i + 1] * (i + 1);
       }
 
       return formal_power_series(ret);
     }
 
     auto integrate() const {
-      const int n = data.size();
+      const int n = data_.size();
       std::vector<T> ret(n + 1);
       for(int i = 0; i < n; ++i){
-        ret[i + 1] = data[i] / (i + 1);
+        ret[i + 1] = data_[i] / (i + 1);
       }
 
       return formal_power_series(ret);
     }
 
     auto inv() const {
-      assert(data[0] != 0);
-      const int n = data.size();
+      assert(data_[0] != 0);
+      const int n = data_.size();
 
       int t = 1;
-      std::vector<T> ret = {data[0].inv()};
+      std::vector<T> ret = {data_[0].inv()};
       ret.reserve(n * 2);
 
       while(t <= n * 2){
-        std::vector<T> c(data.begin(), data.begin() + std::min(t, n));
+        std::vector<T> c(data_.begin(), data_.begin() + std::min(t, n));
         c = convolve(c, convolve(ret, ret));
 
         c.resize(t);
@@ -163,15 +166,15 @@ namespace haar_lib {
     }
 
     auto log() const {
-      assert(data[0] == 1);
-      const int n = data.size();
+      assert(data_[0] == 1);
+      const int n = data_.size();
       auto ret = (differentiate() * inv()).integrate();
       ret.resize(n);
       return ret;
     }
 
     auto exp() const {
-      const int n = data.size();
+      const int n = data_.size();
 
       int t = 1;
       formal_power_series b({1});
@@ -183,7 +186,7 @@ namespace haar_lib {
 
         for(int i = 0; i < t; ++i) temp[i] = -temp[i];
         temp[0] += 1;
-        for(int i = 0; i < std::min(t, n); ++i) temp[i] += data[i];
+        for(int i = 0; i < std::min(t, n); ++i) temp[i] += data_[i];
 
         b = b * temp;
         b.resize(t);
@@ -195,16 +198,16 @@ namespace haar_lib {
     }
 
     auto shift(int64_t k) const {
-      const int64_t n = data.size();
+      const int64_t n = data_.size();
       formal_power_series ret(n);
 
       if(k >= 0){
         for(int64_t i = k; i < n; ++i){
-          ret[i] = data[i - k];
+          ret[i] = data_[i - k];
         }
       }else{
         for(int64_t i = 0; i < n + k; ++i){
-          ret[i] = data[i - k];
+          ret[i] = data_[i - k];
         }
       }
 
@@ -214,17 +217,17 @@ namespace haar_lib {
     auto pow(int64_t M) const {
       assert(M >= 0);
 
-      const int n = data.size();
+      const int n = data_.size();
       int k = 0;
       for(; k < n; ++k){
-        if(data[k] != 0){
+        if(data_[k] != 0){
           break;
         }
       }
 
       if(k >= n) return *this;
 
-      T a = data[k];
+      T a = data_[k];
 
       formal_power_series ret = *this;
       ret = (ret.shift(-k)) * a.inv();
@@ -235,21 +238,21 @@ namespace haar_lib {
     }
 
     std::optional<formal_power_series> sqrt() const {
-      const int n = data.size();
+      const int n = data_.size();
       int k = 0;
-      for(; k < n; ++k) if(data[k] != 0) break;
+      for(; k < n; ++k) if(data_[k] != 0) break;
 
       if(k >= n) return *this;
       if(k % 2 != 0) return {};
 
       int t = 1;
-      auto x = get_sqrt(data[k]);
+      auto x = get_sqrt(data_[k]);
 
       if(not x) return {};
 
       const int m = n - k;
 
-      auto it = data.begin() + k;
+      auto it = data_.begin() + k;
       formal_power_series ret({*x});
 
       while(t <= m * 2){

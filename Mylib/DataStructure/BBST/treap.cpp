@@ -120,64 +120,66 @@ namespace haar_lib {
 
   template <typename Monoid>
   class treap {
+  public:
+    using value_type = typename Monoid::value_type;
+
   protected:
     using node = treap_node<Monoid>;
-    using value_type = typename Monoid::value_type;
-    const static Monoid M;
+    Monoid M_;
+    node *root_ = nullptr;
 
-    node *root = nullptr;
+    treap(node *t): root_(t){}
 
   public:
     treap(){}
-    treap(int n){for(int i = 0; i < n; ++i) push_back(M());}
-    treap(node *t): root(t){}
+    treap(int n){for(int i = 0; i < n; ++i) push_back(M_());}
 
-    int size() const {return node::count(root);}
-    bool empty() const {return !root;}
+    int size() const {return node::count(root_);}
+    bool empty() const {return not root_;}
 
-    void insert(int k, const value_type &val = M()){
-      root = node::insert(root, k, val);
+    void insert(int k, const value_type &val){
+      root_ = node::insert(root_, k, val);
     }
 
-    void erase(int k){root = node::erase(root, k);}
+    void erase(int k){root_ = node::erase(root_, k);}
 
     void merge_left(treap &left){
-      root = node::merge(left.root, root); left.root = nullptr;
+      root_ = node::merge(left.root_, root_); left.root_ = nullptr;
     }
 
     void merge_right(treap &right){
-      root = node::merge(root, right.root); right.root = nullptr;
+      root_ = node::merge(root_, right.root_); right.root_ = nullptr;
     }
 
     std::pair<treap, treap> split(int k){
-      node *l, *r; std::tie(l, r) = node::split(root, k);
+      node *l, *r; std::tie(l, r) = node::split(root_, k);
       return std::make_pair(treap(l), treap(r));
     }
 
-    void reverse(int l, int r){node::reverse(root, l, r);}
+    void reverse(int l, int r){node::reverse(root_, l, r);}
 
-    void set(int k, const value_type &value){node::update_node(root, k, value);}
+    void set(int k, const value_type &value){node::update_node(root_, k, value);}
 
-    value_type get(int k){return (node::get_node(root, k))->value;}
+    value_type get(int k){return (node::get_node(root_, k))->value;}
     value_type operator[](int k){return get(k);}
 
-    value_type fold(){return node::sum(root);}
+    value_type fold(){return node::sum(root_);}
     value_type fold(int l, int r){
       node *left, *mid, *right;
-      std::tie(mid, right) = node::split(root, r);
+      std::tie(mid, right) = node::split(root_, r);
       std::tie(left, mid) = node::split(mid, l);
 
       auto ret = node::sum(mid);
 
       mid = node::merge(left, mid);
-      root = node::merge(mid, right);
+      root_ = node::merge(mid, right);
 
       return ret;
     }
 
     template <typename Func>
     void traverse(const Func &f){
-      node::traverse(root, f);
+      node::traverse(root_, f);
     }
 
     void push_front(const value_type &val){insert(0, val);}

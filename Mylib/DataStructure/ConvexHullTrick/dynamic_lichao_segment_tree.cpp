@@ -5,9 +5,11 @@
 namespace haar_lib {
   template <typename T, typename Comparator>
   class dynamic_lichao_segment_tree {
-    using line = std::pair<T, T>;
+  public:
+    using value_type = T;
 
-    const Comparator cmp = Comparator();
+  private:
+    using line = std::pair<T, T>;
 
     struct node {
       std::optional<line> value;
@@ -16,15 +18,17 @@ namespace haar_lib {
       node(std::optional<line> value, int64_t l, int64_t r): value(value), l(l), r(r){}
     };
 
-    int64_t MIN, MAX;
-    node *root = nullptr;
+    Comparator cmp_ = Comparator();
+    int64_t MIN_, MAX_;
+    node *root_ = nullptr;
 
     T chm(const T &a, const T &b) const {
-      return cmp(a, b) ? a : b;
+      return cmp_(a, b) ? a : b;
     }
 
   public:
-    dynamic_lichao_segment_tree(int64_t MIN, int64_t MAX): MIN(MIN), MAX(MAX){}
+    dynamic_lichao_segment_tree(){}
+    dynamic_lichao_segment_tree(int64_t MIN, int64_t MAX): MIN_(MIN), MAX_(MAX){}
 
     T apply(const line &l, const T &x) const {
       return l.first * x + l.second;
@@ -42,7 +46,7 @@ namespace haar_lib {
       }
 
       if(l + 1 == r){
-        if(cmp(apply(new_line, l), apply(*(t->value), l))){
+        if(cmp_(apply(new_line, l), apply(*(t->value), l))){
           t->value = new_line;
         }
         return t;
@@ -50,9 +54,9 @@ namespace haar_lib {
 
       const auto m = (l + r) / 2;
 
-      bool left = cmp(apply(new_line, l), apply(*(t->value), l));
-      bool mid = cmp(apply(new_line, m), apply(*(t->value), m));
-      bool right = cmp(apply(new_line, r), apply(*(t->value), r));
+      bool left = cmp_(apply(new_line, l), apply(*(t->value), l));
+      bool mid = cmp_(apply(new_line, m), apply(*(t->value), m));
+      bool right = cmp_(apply(new_line, r), apply(*(t->value), r));
 
       if(left and right){
         t->value = new_line;
@@ -90,8 +94,8 @@ namespace haar_lib {
       else{
         if(t->value){
           if(
-            cmp(apply(*(t->value), l), apply(new_line, l)) and
-            cmp(apply(*(t->value), r), apply(new_line, r))
+            cmp_(apply(*(t->value), l), apply(new_line, l)) and
+            cmp_(apply(*(t->value), r), apply(new_line, r))
           ){
             return t;
           }
@@ -108,16 +112,16 @@ namespace haar_lib {
 
   public:
     void add_line(T a, T b){
-      root = update(root, std::make_pair(a, b), MIN, MAX);
+      root_ = update(root_, std::make_pair(a, b), MIN_, MAX_);
     }
 
     void add_segment(int64_t l, int64_t r, T a, T b){
-      root = update_segment(root, std::make_pair(a, b), MIN, MAX, l, r);
+      root_ = update_segment(root_, std::make_pair(a, b), MIN_, MAX_, l, r);
     }
 
     auto operator()(const int64_t &x) const {
       std::optional<T> ret;
-      node *cur = root;
+      node *cur = root_;
 
       while(cur){
         if(cur->value){

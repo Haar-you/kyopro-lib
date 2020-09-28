@@ -2,9 +2,9 @@
 #include <iostream>
 
 namespace haar_lib {
-  template <int64_t M_>
+  template <int64_t M>
   class montgomery {
-    constexpr static int64_t MOD = M_;
+    constexpr static int64_t MOD = M;
     constexpr static int b = 64 - __builtin_clzll(MOD);
     constexpr static int64_t R = 1LL << b;
     constexpr static int64_t R2 = (R % MOD) * (R % MOD) % MOD;
@@ -31,10 +31,10 @@ namespace haar_lib {
       return ret;
     }
 
-    int64_t val;
+    int64_t val_;
 
   public:
-    montgomery(): val(0){}
+    montgomery(): val_(0){}
     montgomery(int64_t a){
       if(a < 0){
         if(a < -MOD) a = a % MOD + MOD;
@@ -44,26 +44,26 @@ namespace haar_lib {
         else a %= MOD;
       }
 
-      val = reduce(a * R2);
+      val_ = reduce(a * R2);
     }
-    montgomery(const montgomery &that): val(that.val){}
+    montgomery(const montgomery &that): val_(that.val_){}
 
     constexpr static auto mod(){return MOD;}
 
     auto& operator+=(const montgomery &that){
-      val += that.val;
-      if(val >= MOD) val -= MOD;
+      val_ += that.val_;
+      if(val_ >= MOD) val_ -= MOD;
       return *this;
     }
 
     auto& operator-=(const montgomery &that){
-      val -= that.val;
-      if(val < 0) val += MOD;
+      val_ -= that.val_;
+      if(val_ < 0) val_ += MOD;
       return *this;
     }
 
     auto& operator*=(const montgomery &that){
-      val = reduce(val * that.val);
+      val_ = reduce(val_ * that.val_);
       return *this;
     }
 
@@ -106,13 +106,13 @@ namespace haar_lib {
     friend auto operator/(int64_t a, const montgomery &b) {return montgomery(a) / b;}
 
     bool operator==(const montgomery &that) const {
-      return (val >= MOD ? val - MOD : val) == (that.val >= MOD ? that.val - MOD : that.val);
+      return (val_ >= MOD ? val_ - MOD : val_) == (that.val_ >= MOD ? that.val_ - MOD : that.val_);
     }
 
     bool operator!=(const montgomery &that) const {return !(*this == that);}
 
     friend std::ostream& operator<<(std::ostream& s, const montgomery &a){
-      return s << reduce(a.val);
+      return s << reduce(a.val_);
     }
 
     friend std::istream& operator>>(std::istream& s, montgomery &a){
@@ -121,7 +121,7 @@ namespace haar_lib {
       return s;
     }
 
-    explicit operator int32_t() const {return reduce(val);}
-    explicit operator int64_t() const {return reduce(val);}
+    explicit operator int32_t() const {return reduce(val_);}
+    explicit operator int64_t() const {return reduce(val_);}
   };
 }

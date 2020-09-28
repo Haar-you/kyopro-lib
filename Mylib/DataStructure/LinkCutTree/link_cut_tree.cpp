@@ -147,54 +147,58 @@ namespace haar_lib {
 
   template <typename Monoid>
   class link_cut_tree {
+  public:
     using value_type = typename Monoid::value_type;
-    using node = link_cut_node<Monoid>;
-    const static Monoid M;
 
-    int N;
-    std::vector<node*> nodes;
+  private:
+    using node = link_cut_node<Monoid>;
+    Monoid M_;
+
+    int N_;
+    std::vector<node*> nodes_;
 
   public:
-    link_cut_tree(int N): N(N), nodes(N){
-      for(int i = 0; i < N; ++i){
-        nodes[i] = new node();
+    link_cut_tree(){}
+    link_cut_tree(int N): N_(N), nodes_(N){
+      for(int i = 0; i < N_; ++i){
+        nodes_[i] = new node();
       }
     }
 
     void expose(int k){
-      node::expose(nodes[k]);
+      node::expose(nodes_[k]);
     }
 
     void cut(int i, int j){
-      node::cut(nodes[i], nodes[j]);
+      node::cut(nodes_[i], nodes_[j]);
     }
 
     void link(int i, int j){
-      node::link(nodes[i], nodes[j]);
+      node::link(nodes_[i], nodes_[j]);
     }
 
     void evert(int k){
-      node::evert(nodes[k]);
+      node::evert(nodes_[k]);
     }
 
     void set(int k, value_type x){
-      node::evert(nodes[k]);
-      nodes[k]->value = x;
-      nodes[k]->push_down();
+      node::evert(nodes_[k]);
+      nodes_[k]->value = x;
+      nodes_[k]->push_down();
     }
 
     void update(int k, value_type x){
-      set(k, M(get(k), x));
+      set(k, M_(get(k), x));
     }
 
     value_type get(int k) const {
-      return nodes[k]->value;
+      return nodes_[k]->value;
     }
 
     value_type fold(int i, int j){
-      node::evert(nodes[i]);
-      node::expose(nodes[j]);
-      return nodes[j]->result;
+      node::evert(nodes_[i]);
+      node::expose(nodes_[j]);
+      return nodes_[j]->result;
     }
   };
 }

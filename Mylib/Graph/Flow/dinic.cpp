@@ -23,25 +23,24 @@ namespace haar_lib {
     using capacity_type = T;
 
   private:
-    int size;
-    std::vector<std::vector<edge>> g;
-    std::vector<int> level;
+    std::vector<std::vector<edge>> g_;
+    std::vector<int> level_;
 
     bool build_level(int s, int t){
-      std::fill(level.begin(), level.end(), 0);
-      level[s] = 1;
+      std::fill(level_.begin(), level_.end(), 0);
+      level_[s] = 1;
       std::queue<int> q;
       q.push(s);
       while(not q.empty()){
         int cur = q.front(); q.pop();
-        for(auto &e : g[cur]){
-          if(level[e.to] == 0 and e.cap > 0){
-            level[e.to] = level[e.from] + 1;
+        for(auto &e : g_[cur]){
+          if(level_[e.to] == 0 and e.cap > 0){
+            level_[e.to] = level_[e.from] + 1;
             q.push(e.to);
           }
         }
       }
-      return level[t] != 0;
+      return level_[t] != 0;
     }
 
     void dfs(std::vector<edge*> &path, T &flow, int cur, int t){
@@ -54,13 +53,13 @@ namespace haar_lib {
 
         for(auto e : path){
           (*e).cap -= f;
-          g[e->to][e->rev].cap += f;
+          g_[e->to][e->rev].cap += f;
         }
 
         flow += f;
       }else{
-        for(auto &e : g[cur]){
-          if(e.cap > 0 and level[e.to] > level[e.from]){
+        for(auto &e : g_[cur]){
+          if(e.cap > 0 and level_[e.to] > level_[e.from]){
             path.emplace_back(&e);
             dfs(path, flow, e.to, t);
             path.pop_back();
@@ -71,11 +70,11 @@ namespace haar_lib {
 
   public:
     dinic(){}
-    dinic(int size): size(size), g(size), level(size){}
+    dinic(int size): g_(size), level_(size){}
 
     void add_edge(int from, int to, T c){
-      g[from].emplace_back(from, to, (int)g[to].size(), c, false);
-      g[to].emplace_back(to, from, (int)g[from].size() - 1, 0, true);
+      g_[from].emplace_back(from, to, (int)g_[to].size(), c, false);
+      g_[to].emplace_back(to, from, (int)g_[from].size() - 1, 0, true);
     }
 
     T max_flow(int s, int t){
@@ -91,7 +90,7 @@ namespace haar_lib {
 
     std::vector<edge> edges() const {
       std::vector<edge> ret;
-      for(auto &v : g) ret.insert(ret.end(), v.begin(), v.end());
+      for(auto &v : g_) ret.insert(ret.end(), v.begin(), v.end());
       return ret;
     }
   };

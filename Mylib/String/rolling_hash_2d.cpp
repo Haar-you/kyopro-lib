@@ -4,16 +4,17 @@
 
 namespace haar_lib {
   class rolling_hash_2d {
-    std::vector<int64_t> pow_w, pow_h;
-    int64_t MOD, BASEW, BASEH;
+    std::vector<int64_t> pow_w_, pow_h_;
+    int64_t MOD_, BASEW_, BASEH_;
 
   public:
-    rolling_hash_2d(int width, int height, int MOD, int BASEW, int BASEH): MOD(MOD), BASEW(BASEW), BASEH(BASEH){
-      pow_w.resize(width + 1);
-      pow_h.resize(height + 1);
-      pow_w[0] = pow_h[0] = 1;
-      for(int i = 1; i <= width; ++i) pow_w[i] = pow_w[i - 1] * BASEW % MOD;
-      for(int i = 1; i <= height; ++i) pow_h[i] = pow_h[i - 1] * BASEH % MOD;
+    rolling_hash_2d(){}
+    rolling_hash_2d(int width, int height, int MOD, int BASEW, int BASEH): MOD_(MOD), BASEW_(BASEW), BASEH_(BASEH){
+      pow_w_.resize(width + 1);
+      pow_h_.resize(height + 1);
+      pow_w_[0] = pow_h_[0] = 1;
+      for(int i = 1; i <= width; ++i) pow_w_[i] = pow_w_[i - 1] * BASEW_ % MOD_;
+      for(int i = 1; i <= height; ++i) pow_h_[i] = pow_h_[i - 1] * BASEH_ % MOD_;
     }
 
     template <typename T>
@@ -23,12 +24,12 @@ namespace haar_lib {
 
       for(int i = 0; i < n; ++i){
         for(int j = 0; j < m; ++j){
-          ret[i + 1][j + 1] = (ret[i + 1][j] * BASEW + s[i][j]) % MOD;
+          ret[i + 1][j + 1] = (ret[i + 1][j] * BASEW_ + s[i][j]) % MOD_;
         }
       }
       for(int i = 0; i < n; ++i){
         for(int j = 0; j < m; ++j){
-          ret[i + 1][j + 1] = (ret[i][j + 1] * BASEH + ret[i + 1][j + 1]) % MOD;
+          ret[i + 1][j + 1] = (ret[i][j + 1] * BASEH_ + ret[i + 1][j + 1]) % MOD_;
         }
       }
 
@@ -42,9 +43,9 @@ namespace haar_lib {
       for(int i = 0; i < n; ++i){
         int64_t temp = 0;
         for(int j = 0; j < m; ++j){
-          temp = (temp * BASEW + s[i][j]) % MOD;
+          temp = (temp * BASEW_ + s[i][j]) % MOD_;
         }
-        ret = (ret * BASEH + temp) % MOD;
+        ret = (ret * BASEH_ + temp) % MOD_;
       }
       return ret;
     }
@@ -54,11 +55,11 @@ namespace haar_lib {
      */
     int64_t get(const std::vector<std::vector<int64_t>> &table, int i1, int j1, int i2, int j2) const {
       const auto a = table[i2][j2];
-      const auto b = table[i1][j2] * pow_h[i2 - i1] % MOD;
-      const auto c = table[i2][j1] * pow_w[j2 - j1] % MOD;
-      const auto d = table[i1][j1] * pow_h[i2 - i1] % MOD * pow_w[j2 - j1] % MOD;
+      const auto b = table[i1][j2] * pow_h_[i2 - i1] % MOD_;
+      const auto c = table[i2][j1] * pow_w_[j2 - j1] % MOD_;
+      const auto d = table[i1][j1] * pow_h_[i2 - i1] % MOD_ * pow_w_[j2 - j1] % MOD_;
 
-      return (((a - b + MOD) % MOD - c + MOD) % MOD + d + MOD) % MOD;
+      return (((a - b + MOD_) % MOD_ - c + MOD_) % MOD_ + d + MOD_) % MOD_;
     }
 
     template <typename T>

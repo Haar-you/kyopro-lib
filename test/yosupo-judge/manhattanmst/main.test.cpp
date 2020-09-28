@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Mylib/IO/input_tuple_vector.cpp"
 #include "Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp"
+#include "Mylib/Graph/MinimumSpanningTree/kruskal.cpp"
 
 namespace hl = haar_lib;
 
@@ -14,7 +15,7 @@ int main(){
 
   auto [x, y] = hl::input_tuple_vector<int64_t, int64_t>(N);
 
-  auto res = hl::manhattan_minimum_spanning_tree(x, y);
+  auto res = hl::manhattan_minimum_spanning_tree(x, y, hl::kruskal<int64_t>);
 
   int64_t ans = 0;
 

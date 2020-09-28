@@ -15,14 +15,17 @@ namespace haar_lib {
       }
     }
 
-    std::sort(edges.begin(), edges.end(), [](const auto &a, const auto &b){return a.cost < b.cost;});
+    std::sort(
+      edges.begin(), edges.end(),
+      [](const auto &a, const auto &b){return a.cost < b.cost;}
+    );
 
     unionfind uf(n);
 
     std::vector<edge<T>> ret;
 
     for(auto &e : edges){
-      if(!uf.is_same(e.from, e.to)){
+      if(not uf.is_same(e.from, e.to)){
         uf.merge(e.from, e.to);
         ret.push_back(e);
       }

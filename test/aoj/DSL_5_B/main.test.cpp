@@ -18,10 +18,8 @@ int main(){
   imos.build();
 
   int ans = 0;
-  for(int i = 0; i < 1000; ++i){
-    for(int j = 0; j < 1000; ++j){
-      ans = std::max(ans, imos[i][j]);
-    }
+  for(auto &v : imos){
+    ans = std::max(ans, *std::max_element(v.begin(), v.end()));
   }
 
   std::cout << ans << std::endl;

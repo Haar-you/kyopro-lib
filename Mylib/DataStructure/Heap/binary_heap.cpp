@@ -6,38 +6,41 @@
 namespace haar_lib {
   template <typename T, typename Compare = std::less<T>>
   class binary_heap {
-    std::vector<T> data;
+  public:
+    using value_type = T;
+
+  private:
+    std::vector<T> data_;
+    Compare compare_;
 
     int left(int i) const {return i * 2 + 1;}
     int right(int i) const {return i * 2 + 2;}
     int parent(int i) const {return (i - 1) >> 1;}
 
-    Compare compare;
-
   public:
-    binary_heap(): compare(Compare()){}
-    binary_heap(size_t capacity): compare(Compare()){data.reserve(capacity);}
+    binary_heap(): compare_(Compare()){}
+    binary_heap(size_t capacity): compare_(Compare()){data_.reserve(capacity);}
 
     void push(T value){
-      data.emplace_back(value);
+      data_.emplace_back(value);
 
-      int i = (int)data.size() - 1;
+      int i = (int)data_.size() - 1;
 
       while(i > 0){
         int p = parent(i);
-        if(compare(data[i], data[p])) break;
-        std::swap(data[i], data[p]);
+        if(compare_(data_[i], data_[p])) break;
+        std::swap(data_[i], data_[p]);
         i = p;
       }
     }
 
     T top() const {
-      return data.front();
+      return data_.front();
     }
 
     void pop(){
-      data.front() = data.back();
-      data.pop_back();
+      data_.front() = data_.back();
+      data_.pop_back();
 
       int i = 0;
 
@@ -45,18 +48,18 @@ namespace haar_lib {
         int l = left(i);
         int r = right(i);
 
-        if((int)data.size() <= l) break;
-        if((int)data.size() <= r){
-          if(compare(data[l], data[i])) break;
-          std::swap(data[l], data[i]);
+        if((int)data_.size() <= l) break;
+        if((int)data_.size() <= r){
+          if(compare_(data_[l], data_[i])) break;
+          std::swap(data_[l], data_[i]);
           i = l;
         }else{
-          if(compare(data[l], data[i]) and compare(data[r], data[i])) break;
-          if(compare(data[r], data[l])){
-            std::swap(data[l], data[i]);
+          if(compare_(data_[l], data_[i]) and compare_(data_[r], data_[i])) break;
+          if(compare_(data_[r], data_[l])){
+            std::swap(data_[l], data_[i]);
             i = l;
           }else{
-            std::swap(data[r], data[i]);
+            std::swap(data_[r], data_[i]);
             i = r;
           }
         }
@@ -64,11 +67,11 @@ namespace haar_lib {
     }
 
     bool empty() const {
-      return data.empty();
+      return data_.empty();
     }
 
     size_t size() const {
-      return data.size();
+      return data_.size();
     }
   };
 }

@@ -1,11 +1,13 @@
 #pragma once
 #include <chrono>
 #include <cmath>
+#include <cassert>
 
 namespace haar_lib {
   template <typename Func>
   void simulated_annealing(int duration, double T0, double T1, Func f){
     using namespace std::chrono;
+    assert(T0 >= T1);
 
     auto s = system_clock::now();
 

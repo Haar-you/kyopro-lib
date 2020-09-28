@@ -7,24 +7,25 @@
 
 namespace haar_lib {
   class two_sat {
-    const int n;
-    graph<int> g;
+    int n_;
+    graph<int> g_;
 
     int f(int i){
       assert(i != 0);
-      assert(std::abs(i) <= n);
+      assert(std::abs(i) <= n_);
       if(i > 0) return i - 1;
-      else return std::abs(i) - 1 + n;
+      else return std::abs(i) - 1 + n_;
     }
 
   public:
-    two_sat(int n): n(n), g(2 * n){}
+    two_sat(){}
+    two_sat(int n): n_(n), g_(2 * n){}
 
     /**
      * @note a→bを導入する
      */
     void add_if(int a, int b){
-      g.add_edge(f(a), f(b), 1);
+      g_.add_edge(f(a), f(b), 1);
     }
 
     /**
@@ -46,14 +47,14 @@ namespace haar_lib {
 
   public:
     std::optional<std::vector<bool>> solve() const {
-      auto [scc, m] = strongly_connected_components(g);
+      auto [scc, m] = strongly_connected_components(g_);
 
-      for(int i = 0; i < n; ++i){
-        if(scc[i] == scc[i + n]) return std::nullopt;
+      for(int i = 0; i < n_; ++i){
+        if(scc[i] == scc[i + n_]) return std::nullopt;
       }
 
-      std::vector<bool> ret(n);
-      for(int i = 0; i < n; ++i) ret[i] = scc[i] > scc[i + n];
+      std::vector<bool> ret(n_);
+      for(int i = 0; i < n_; ++i) ret[i] = scc[i] > scc[i + n_];
 
       return ret;
     }

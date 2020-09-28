@@ -4,27 +4,27 @@
 
 namespace haar_lib {
   class rolling_hash {
-    std::vector<int64_t> pow;
-    int64_t MOD, BASE;
+    std::vector<int64_t> pow_;
+    int64_t MOD_, BASE_;
 
   public:
-    rolling_hash(int size, int MOD, int BASE): MOD(MOD), BASE(BASE){
-      pow.resize(size + 1);
-      pow[0] = 1;
-      for(int i = 1; i <= size; ++i) pow[i] = pow[i - 1] * BASE % MOD;
+    rolling_hash(){}
+    rolling_hash(int size, int MOD, int BASE): MOD_(MOD), BASE_(BASE){
+      pow_.assign(size + 1, 1);
+      for(int i = 1; i <= size; ++i) pow_[i] = pow_[i - 1] * BASE_ % MOD_;
     }
 
     template <typename T>
     auto gen_hash_table(const T &s) const {
       std::vector<int64_t> ret(s.size() + 1);
-      for(int i = 0; i < (int)s.size(); ++i) ret[i + 1] = (ret[i] * BASE + s[i]) % MOD;
+      for(int i = 0; i < (int)s.size(); ++i) ret[i + 1] = (ret[i] * BASE_ + s[i]) % MOD_;
       return ret;
     }
 
     template <typename T>
     auto gen_hash(const T &s) const {
       int64_t ret = 0;
-      for(int i = 0; i < (int)s.size(); ++i) ret = (ret * BASE + s[i]) % MOD;
+      for(int i = 0; i < (int)s.size(); ++i) ret = (ret * BASE_ + s[i]) % MOD_;
       return ret;
     }
 
@@ -32,7 +32,7 @@ namespace haar_lib {
      * @attention [l, r)
      */
     int64_t get(const std::vector<int64_t> &table, int l, int r) const {
-      return (table[r] - table[l] * pow[r - l] % MOD + MOD * MOD) % MOD;
+      return (table[r] - table[l] * pow_[r - l] % MOD_ + MOD_ * MOD_) % MOD_;
     }
 
     template <typename T>

@@ -6,6 +6,10 @@
 namespace haar_lib {
   template <typename T>
   class persistent_array {
+  public:
+    using value_type = T;
+
+  private:
     struct node {
       bool is_terminal;
       int size = 1;
@@ -16,18 +20,17 @@ namespace haar_lib {
       node(T v): is_terminal(true), value(new T(v)){}
     };
 
-    size_t size;
-    int depth;
-
-    node* root = nullptr;
+    size_t size_;
+    int depth_;
+    node* root_ = nullptr;
 
     int get_size(node *t) const {
-      return !t ? 0 : t->size;
+      return t ? t->size : 0;
     }
 
     node* init(int s, int d){
       if(s == 0) return nullptr;
-      if(d == depth){
+      if(d == depth_){
         return new node(T());
       }else{
         node *t = new node();
@@ -39,7 +42,7 @@ namespace haar_lib {
     }
 
     void apply_init(node *t, const std::vector<T> &ret, int &i) {
-      if(!t) return;
+      if(not t) return;
 
       if(t->is_terminal){
         *(t->value) = ret[i];
@@ -51,33 +54,33 @@ namespace haar_lib {
       apply_init(t->right, ret, i);
     }
 
-    persistent_array(node *root): root(root){}
+    persistent_array(node *root): root_(root){}
 
     void calc_depth(int size){
-      depth = 1;
-      while((int)size > (1 << depth)) depth += 1;
-      depth += 1;
+      depth_ = 1;
+      while((int)size_ > (1 << depth_)) depth_ += 1;
+      depth_ += 1;
     }
 
   public:
     persistent_array(){}
-    persistent_array(size_t size): size(size){
-      calc_depth(size);
-      root = init(size, 1);
+    persistent_array(size_t size): size_(size){
+      calc_depth(size_);
+      root_ = init(size_, 1);
     }
 
-    persistent_array(const std::vector<T> &v): size(v.size()){
-      calc_depth(size);
-      root = init(size, 1);
+    persistent_array(const std::vector<T> &v): size_(v.size()){
+      calc_depth(size_);
+      root_ = init(size_, 1);
 
       int i = 0;
-      apply_init(root, v, i);
+      apply_init(root_, v, i);
     }
 
     persistent_array(const persistent_array &v){
-      this->root = v.root;
-      this->size = v.size;
-      this->depth = v.depth;
+      this->root_ = v.root_;
+      this->size_ = v.size_;
+      this->depth_ = v.depth_;
     }
 
   protected:
@@ -91,7 +94,7 @@ namespace haar_lib {
 
   public:
     T operator[](int i) const {
-      return get(root, i);
+      return get(root_, i);
     }
 
   protected:
@@ -115,13 +118,13 @@ namespace haar_lib {
 
   public:
     persistent_array set(int i, const T &val) const {
-      node *ret = set(root, i, val);
+      node *ret = set(root_, i, val);
       return persistent_array(ret);
     }
 
   protected:
     void traverse(node *t, std::vector<T> &ret) const {
-      if(!t) return;
+      if(not t) return;
 
       if(t->is_terminal){
         ret.push_back(*(t->value));
@@ -135,7 +138,7 @@ namespace haar_lib {
   public:
     std::vector<T> traverse() const {
       std::vector<T> ret;
-      traverse(root, ret);
+      traverse(root_, ret);
       return ret;
     }
 

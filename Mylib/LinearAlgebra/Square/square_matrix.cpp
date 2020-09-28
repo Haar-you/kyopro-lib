@@ -8,31 +8,33 @@ namespace haar_lib {
   struct square_matrix {
     using value_type = T;
 
-    std::vector<std::vector<T>> matrix;
+  private:
+    std::vector<std::vector<T>> data_;
 
-    square_matrix(): matrix(N, std::vector<T>(N)){}
-    square_matrix(const T &val): matrix(N, std::vector<T>(N, val)){}
-    square_matrix(const std::vector<std::vector<T>> &matrix): matrix(matrix){}
+  public:
+    square_matrix(): data_(N, std::vector<T>(N)){}
+    square_matrix(const T &val): data_(N, std::vector<T>(N, val)){}
+    square_matrix(const std::vector<std::vector<T>> &matrix): data_(matrix){}
 
-    bool operator==(const square_matrix &val) const {return matrix == val.matrix;}
+    bool operator==(const square_matrix &val) const {return data_ == val.data_;}
     bool operator!=(const square_matrix &val) const {return !(*this == val);}
 
     auto& operator=(const square_matrix &val){
-      this->matrix = val.matrix;
+      this->data_ = val.data_;
       return *this;
     }
 
     auto& operator+=(const square_matrix &val){
       for(int i = 0; i < N; ++i)
         for(int j = 0; j < N; ++j)
-          matrix[i][j] = matrix[i][j] + val[i][j];
+          data_[i][j] = data_[i][j] + val[i][j];
       return *this;
     }
 
     auto& operator-=(const square_matrix &val){
       for(int i = 0; i < N; ++i)
         for(int j = 0; j < N; ++j)
-          matrix[i][j] = matrix[i][j] - val[i][j];
+          data_[i][j] = data_[i][j] - val[i][j];
       return *this;
     }
 
@@ -41,13 +43,13 @@ namespace haar_lib {
       for(int i = 0; i < N; ++i)
         for(int j = 0; j < N; ++j)
           for(int k = 0; k < N; ++k)
-            temp[i][j] += matrix[i][k] * val[k][j];
-      std::swap(matrix, temp);
+            temp[i][j] += data_[i][k] * val[k][j];
+      std::swap(data_, temp);
       return *this;
     }
 
-    const auto& operator[](size_t i) const {return matrix[i];}
-    auto& operator[](size_t i){return matrix[i];}
+    const auto& operator[](size_t i) const {return data_[i];}
+    auto& operator[](size_t i){return data_[i];}
     int size() const {return N;}
 
     static auto unit(){

@@ -5,7 +5,10 @@
 namespace haar_lib {
   template <typename Monoid>
   class ordered_treap : public treap<Monoid> {
+  public:
     using value_type = typename Monoid::value_type;
+
+  private:
     using node = treap_node<Monoid>;
     using super = treap<Monoid>;
 
@@ -14,7 +17,7 @@ namespace haar_lib {
 
   protected:
     int lower_bound(node *t, const value_type &val){
-      if(!t) return 0;
+      if(not t) return 0;
       int c = super::count(t->left);
       if(t->value >= val) return std::min(c, lower_bound(t->left, val));
       else return c + 1 + lower_bound(t->right, val);
@@ -27,7 +30,7 @@ namespace haar_lib {
 
   protected:
     int upper_bound(node *t, const value_type &val){
-      if(!t) return 0;
+      if(not t) return 0;
       int c = super::count(t->left);
       if(t->val > val) return std::min(c, upper_bound(t->left, val));
       else return c + 1 + upper_bound(t->right, val);

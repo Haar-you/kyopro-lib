@@ -7,48 +7,49 @@
 namespace haar_lib {
   template <typename T>
   class hl_decomposition {
-    int n;
+    int n_;
 
-    std::vector<int> sub, // subtree size
-      par, // parent id
-      head, // chain head id
-      id, // id[original id] = hld id
-      rid, // rid[hld id] = original id
-      next, // next node in a chain
-      end; //
+    std::vector<int> sub_, // subtree size
+      par_, // parent id
+      head_, // chain head id
+      id_, // id[original id] = hld id
+      rid_, // rid[hld id] = original id
+      next_, // next node in a chain
+      end_; //
 
     int dfs_sub(tree<T> &tr, int cur, int p){
-      par[cur] = p;
+      par_[cur] = p;
       int t = 0;
       for(auto &e : tr[cur]){
         if(e.to == p) continue;
-        sub[cur] += dfs_sub(tr, e.to, cur);
-        if(sub[e.to] > t){
-          t = sub[e.to];
-          next[cur] = e.to;
+        sub_[cur] += dfs_sub(tr, e.to, cur);
+        if(sub_[e.to] > t){
+          t = sub_[e.to];
+          next_[cur] = e.to;
           std::swap(e, tr[cur][0]);
         }
       }
-      return sub[cur];
+      return sub_[cur];
     }
 
     void dfs_build(const tree<T> &tr, int cur, int &i){
-      id[cur] = i;
-      rid[i] = cur;
+      id_[cur] = i;
+      rid_[i] = cur;
       ++i;
 
       for(auto &e : tr[cur]){
-        if(e.to == par[cur]) continue;
-        head[e.to] = (e.to == tr[cur][0].to ? head[cur] : e.to);
+        if(e.to == par_[cur]) continue;
+        head_[e.to] = (e.to == tr[cur][0].to ? head_[cur] : e.to);
         dfs_build(tr, e.to, i);
       }
 
-      end[cur] = i;
+      end_[cur] = i;
     }
 
   public:
+    hl_decomposition(){}
     hl_decomposition(tree<T> tr, int root):
-      n(tr.size()), sub(n, 1), par(n, -1), head(n), id(n), rid(n), next(n, -1), end(n, -1){
+      n_(tr.size()), sub_(n_, 1), par_(n_, -1), head_(n_), id_(n_), rid_(n_), next_(n_, -1), end_(n_, -1){
       dfs_sub(tr, root, -1);
       int i = 0;
       dfs_build(tr, root, i);
@@ -62,11 +63,11 @@ namespace haar_lib {
         int y = w;
         bool d = true;
         while(1){
-          if(id[x] > id[y]) std::swap(x, y), d = not d;
-          int l = std::max(id[head[y]], id[x]), r = id[y] + 1;
+          if(id_[x] > id_[y]) std::swap(x, y), d = not d;
+          int l = std::max(id_[head_[y]], id_[x]), r = id_[y] + 1;
           if(l != r) ret.emplace_back(l, r, d);
-          if(head[x] == head[y]) break;
-          y = par[head[y]];
+          if(head_[x] == head_[y]) break;
+          y = par_[head_[y]];
         }
       }
 
@@ -77,11 +78,11 @@ namespace haar_lib {
         std::vector<std::tuple<int, int, bool>> temp;
         bool d = false;
         while(1){
-          if(id[x] > id[y]) std::swap(x, y), d = not d;
-          int l = std::max({id[head[y]], id[x], id[w] + 1}), r = id[y] + 1;
+          if(id_[x] > id_[y]) std::swap(x, y), d = not d;
+          int l = std::max({id_[head_[y]], id_[x], id_[w] + 1}), r = id_[y] + 1;
           if(l != r) temp.emplace_back(l, r, d);
-          if(head[x] == head[y]) break;
-          y = par[head[y]];
+          if(head_[x] == head_[y]) break;
+          y = par_[head_[y]];
         }
 
         std::reverse(temp.begin(), temp.end());
@@ -94,43 +95,43 @@ namespace haar_lib {
     std::vector<std::pair<int, int>> path_query_edge(int x, int y) const {
       std::vector<std::pair<int, int>> ret;
       while(1){
-        if(id[x] > id[y]) std::swap(x, y);
-        if(head[x] == head[y]){
-          if(x != y) ret.emplace_back(id[x] + 1, id[y] + 1);
+        if(id_[x] > id_[y]) std::swap(x, y);
+        if(head_[x] == head_[y]){
+          if(x != y) ret.emplace_back(id_[x] + 1, id_[y] + 1);
           break;
         }
-        ret.emplace_back(id[head[y]], id[y] + 1);
-        y = par[head[y]];
+        ret.emplace_back(id_[head_[y]], id_[y] + 1);
+        y = par_[head_[y]];
       }
       return ret;
     }
 
     std::pair<int, int> subtree_query_edge(int x) const {
-      return {id[x] + 1, end[x]};
+      return {id_[x] + 1, end_[x]};
     }
 
     std::pair<int, int> subtree_query_vertex(int x) const {
-      return {id[x], end[x]};
+      return {id_[x], end_[x]};
     }
 
     int get_edge_id(int u, int v) const { // 辺に対応するid
-      if(par[u] == v) return id[u];
-      if(par[v] == u) return id[v];
+      if(par_[u] == v) return id_[u];
+      if(par_[v] == u) return id_[v];
       return -1;
     }
 
-    int parent(int x) const {return par[x];};
+    int parent(int x) const {return par_[x];};
 
     int lca(int u, int v) const {
       while(1){
-        if(id[u] > id[v]) std::swap(u, v);
-        if(head[u] == head[v]) return u;
-        v = par[head[v]];
+        if(id_[u] > id_[v]) std::swap(u, v);
+        if(head_[u] == head_[v]) return u;
+        v = par_[head_[v]];
       }
     }
 
     int get_id(int x) const {
-      return id[x];
+      return id_[x];
     }
   };
 }

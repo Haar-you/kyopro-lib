@@ -23,29 +23,29 @@ namespace haar_lib {
     using capacity_type = T;
 
   private:
-    int N;
-    std::vector<std::vector<edge>> g;
-    std::vector<T> excess;
-    std::vector<int> height;
-    std::queue<int> next_active_vertex;
+    int N_;
+    std::vector<std::vector<edge>> g_;
+    std::vector<T> excess_;
+    std::vector<int> height_;
+    std::queue<int> next_active_vertex_;
     constexpr static T inf = std::numeric_limits<T>::max();
 
     void init(int s, int t){
-      excess[s] = inf;
+      excess_[s] = inf;
 
-      for(auto &e : g[s]){
+      for(auto &e : g_[s]){
         push(e, s, t);
       }
 
       {
-        for(int i = 0; i < N; ++i){
-          height[i] = N;
+        for(int i = 0; i < N_; ++i){
+          height_[i] = N_;
         }
 
         std::queue<int> q;
-        std::vector<bool> check(N);
+        std::vector<bool> check(N_);
         q.push(t);
-        height[t] = 0;
+        height_[t] = 0;
 
         while(not q.empty()){
           const int i = q.front(); q.pop();
@@ -53,56 +53,56 @@ namespace haar_lib {
           if(check[i]) continue;
           check[i] = true;
 
-          for(auto &e : g[i]){
+          for(auto &e : g_[i]){
             if(not e.is_rev) continue;
-            if(height[e.from] + 1 < height[e.to]){
-              height[e.to] = height[e.from] + 1;
+            if(height_[e.from] + 1 < height_[e.to]){
+              height_[e.to] = height_[e.from] + 1;
               q.push(e.to);
             }
           }
         }
 
-        height[s] = N;
+        height_[s] = N_;
       }
     }
 
     bool is_pushable(const edge &e){
-      if(excess[e.from] == 0) return false;
-      if(height[e.from] != height[e.to] + 1) return false;
+      if(excess_[e.from] == 0) return false;
+      if(height_[e.from] != height_[e.to] + 1) return false;
       if(e.cap == 0) return false;
       return true;
     }
 
     void push(edge &e, int, int){
-      auto &r = g[e.to][e.rev];
+      auto &r = g_[e.to][e.rev];
 
-      T flow = std::min(e.cap, excess[e.from]);
+      T flow = std::min(e.cap, excess_[e.from]);
 
       e.cap -= flow;
       r.cap += flow;
 
-      excess[e.from] -= flow;
-      excess[e.to] += flow;
+      excess_[e.from] -= flow;
+      excess_[e.to] += flow;
 
-      if(excess[e.to] == flow) next_active_vertex.push(e.to);
+      if(excess_[e.to] == flow) next_active_vertex_.push(e.to);
     }
 
     void relabel(int i, int, int){
       int a = std::numeric_limits<int>::max() / 2;
-      for(auto &e : g[i]){
-        if(e.cap > 0) a = std::min(a, height[e.to]);
+      for(auto &e : g_[i]){
+        if(e.cap > 0) a = std::min(a, height_[e.to]);
       }
 
-      height[i] = a + 1;
+      height_[i] = a + 1;
     }
 
   public:
     push_relabel(){}
-    push_relabel(int N): N(N), g(N), excess(N), height(N){}
+    push_relabel(int N): N_(N), g_(N), excess_(N), height_(N){}
 
     void add_edge(int from, int to, T c){
-      g[from].emplace_back(from, to, (int)g[to].size(), c, false);
-      g[to].emplace_back(to, from, (int)g[from].size() - 1, 0, true);
+      g_[from].emplace_back(from, to, (int)g_[to].size(), c, false);
+      g_[to].emplace_back(to, from, (int)g_[from].size() - 1, 0, true);
     }
 
     T max_flow(int s, int t){
@@ -111,19 +111,19 @@ namespace haar_lib {
       while(true){
         int index = -1;
 
-        while(not next_active_vertex.empty()){
-          int i = next_active_vertex.front();
-          if(i != s and i != t and excess[i] > 0){
+        while(not next_active_vertex_.empty()){
+          int i = next_active_vertex_.front();
+          if(i != s and i != t and excess_[i] > 0){
             index = i;
             break;
           }
-          next_active_vertex.pop();
+          next_active_vertex_.pop();
         }
 
         if(index == -1) break;
 
         bool ok = false;
-        for(auto &e : g[index]){
+        for(auto &e : g_[index]){
           if(is_pushable(e)){
             push(e, s, t);
             ok = true;
@@ -136,12 +136,12 @@ namespace haar_lib {
         }
       }
 
-      return excess[t];
+      return excess_[t];
     }
 
     std::vector<edge> edges() const {
       std::vector<edge> ret;
-      for(auto &v : g) ret.insert(ret.end(), v.begin(), v.end());
+      for(auto &v : g_) ret.insert(ret.end(), v.begin(), v.end());
       return ret;
     }
   };

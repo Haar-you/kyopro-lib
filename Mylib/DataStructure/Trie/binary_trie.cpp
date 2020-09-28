@@ -4,6 +4,9 @@
 namespace haar_lib {
   template <typename T, unsigned int B>
   class binary_trie {
+  public:
+    using value_type = T;
+
   protected:
     struct node {
       int count;
@@ -13,7 +16,7 @@ namespace haar_lib {
       }
     };
 
-    node *root = nullptr;
+    node *root_ = nullptr;
 
   protected:
     int count(node *t) const {return t ? t->count : 0;}
@@ -29,12 +32,12 @@ namespace haar_lib {
 
   public:
     int count(T val) const {
-      return count(root, val);
+      return count(root_, val);
     }
 
   public:
-    int size() const {return root ? root->count : 0;}
-    bool empty() const {return !root;}
+    int size() const {return root_ ? root_->count : 0;}
+    bool empty() const {return !root_;}
 
   protected:
     void to_list(node *t, T val, std::vector<T> &ret) const {
@@ -48,7 +51,7 @@ namespace haar_lib {
   public:
     std::vector<T> to_list() const {
       std::vector<T> ret;
-      to_list(root, 0, ret);
+      to_list(root_, 0, ret);
       return ret;
     }
 
@@ -66,7 +69,7 @@ namespace haar_lib {
 
   public:
     void insert(T val){
-      root = insert(root, val);
+      root_ = insert(root_, val);
     }
 
   protected:
@@ -84,7 +87,7 @@ namespace haar_lib {
 
   public:
     void erase(T val){
-      root = erase(root, val);
+      root_ = erase(root_, val);
     }
 
   protected:
@@ -97,7 +100,7 @@ namespace haar_lib {
 
   public:
     T min_element(T diff = 0) const {
-      return min_element(root, diff);
+      return min_element(root_, diff);
     }
 
   protected:
@@ -110,7 +113,7 @@ namespace haar_lib {
 
   public:
     T max_element(T diff = 0) const {
-      return max_element(root, diff);
+      return max_element(root_, diff);
     }
 
   protected:
@@ -136,11 +139,11 @@ namespace haar_lib {
 
   public:
     int lower_bound(T val) const {
-      return lower_bound(root, val);
+      return lower_bound(root_, val);
     }
 
     int upper_bound(T val) const {
-      return lower_bound(root, val + 1);
+      return lower_bound(root_, val + 1);
     }
   };
 }

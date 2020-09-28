@@ -8,7 +8,8 @@ namespace haar_lib {
   class range_edge_graph : public graph<T> {
     using super = graph<T>;
 
-    int k, N;
+    int k_, N_;
+
     int calc_size(int N) const {
       int ret = 1;
       while(ret < N) ret *= 2;
@@ -16,15 +17,16 @@ namespace haar_lib {
     }
 
   public:
-    range_edge_graph(int N): graph<T>(5 * (k = (calc_size(N)))), N(N){
-      for(int i = 2; i < 2 * k; ++i){
-        super::add_edge(k + (i >> 1), k + i, 0);
-        super::add_edge(3 * k + i, 3 * k + (i >> 1), 0);
+    range_edge_graph(){}
+    range_edge_graph(int N): graph<T>(5 * (k_ = (calc_size(N)))), N_(N){
+      for(int i = 2; i < 2 * k_; ++i){
+        super::add_edge(k_ + (i >> 1), k_ + i, 0);
+        super::add_edge(3 * k_ + i, 3 * k_ + (i >> 1), 0);
       }
 
-      for(int i = 0; i < N; ++i){
-        super::add_edge(2 * k + i, i, 0);
-        super::add_edge(i, 4 * k + i, 0);
+      for(int i = 0; i < N_; ++i){
+        super::add_edge(2 * k_ + i, i, 0);
+        super::add_edge(i, 4 * k_ + i, 0);
       }
     }
 
@@ -34,17 +36,17 @@ namespace haar_lib {
 
     void add_edge(int i, std::pair<int, int> p, T w){
       auto [l, r] = p;
-      for(l += k, r += k; l < r; l >>= 1, r >>= 1){
-        if(l & 1) super::add_edge(i, l + k, w), ++l;
-        if(r & 1) --r, super::add_edge(i, r + k, w);
+      for(l += k_, r += k_; l < r; l >>= 1, r >>= 1){
+        if(l & 1) super::add_edge(i, l + k_, w), ++l;
+        if(r & 1) --r, super::add_edge(i, r + k_, w);
       }
     }
 
     void add_edge(std::pair<int, int> p, int i, T w){
       auto [l, r] = p;
-      for(l += k, r += k; l < r; l >>= 1, r >>= 1){
-        if(l & 1) super::add_edge(l + 3 * k, i, w), ++l;
-        if(r & 1) --r, super::add_edge(r + 3 * k, i, w);
+      for(l += k_, r += k_; l < r; l >>= 1, r >>= 1){
+        if(l & 1) super::add_edge(l + 3 * k_, i, w), ++l;
+        if(r & 1) --r, super::add_edge(r + 3 * k_, i, w);
       }
     }
 

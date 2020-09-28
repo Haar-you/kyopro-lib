@@ -11,6 +11,7 @@ namespace haar_lib {
     std::vector<std::tuple<int, int, int>> qs;
     int N;
 
+    range_count_query(){}
     range_count_query(std::vector<T> a_): N(a_.size()){
       auto temp = a_;
       std::sort(temp.begin(), temp.end());

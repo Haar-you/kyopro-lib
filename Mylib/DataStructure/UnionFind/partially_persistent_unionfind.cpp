@@ -7,24 +7,23 @@
 
 namespace haar_lib {
   class partially_persistent_unionfind {
-    int N;
-    std::vector<std::vector<std::pair<int, int>>> P;
-    std::vector<int> par;
-    int T = 0;
-    std::vector<int> rank;
+    int N_, T_ = 0;
+    std::vector<std::vector<std::pair<int, int>>> P_;
+    std::vector<int> par_, rank_;
 
   public:
-    partially_persistent_unionfind(int N): N(N), P(N), par(N), rank(N, 1){
-      for(int i = 0; i < N; ++i) P[i].emplace_back(0, 1);
-      std::iota(par.begin(), par.end(), 0);
+    partially_persistent_unionfind(){}
+    partially_persistent_unionfind(int N): N_(N), P_(N), par_(N), rank_(N, 1){
+      for(int i = 0; i < N_; ++i) P_[i].emplace_back(0, 1);
+      std::iota(par_.begin(), par_.end(), 0);
     }
 
     int root_of(int i, int t){
-      if(par[i] == i) return i;
+      if(par_[i] == i) return i;
 
-      if(P[i].back().first == 0 || t < P[i].back().first) return i;
-      else if(t == P[i].back().first) return P[i].back().second;
-      return root_of(par[i], t);
+      if(P_[i].back().first == 0 or t < P_[i].back().first) return i;
+      else if(t == P_[i].back().first) return P_[i].back().second;
+      return root_of(par_[i], t);
     }
 
     bool is_same(int u, int v, int t){
@@ -33,28 +32,28 @@ namespace haar_lib {
 
     int size_of(int u, int t){
       u = root_of(u, t);
-      auto it = std::prev(std::lower_bound(P[u].begin(), P[u].end(), std::make_pair(t + 1, 0)));
+      auto it = std::prev(std::lower_bound(P_[u].begin(), P_[u].end(), std::make_pair(t + 1, 0)));
       return it->second;
     }
 
     void merge(int u, int v){
-      u = root_of(u, T);
-      v = root_of(v, T);
-      ++T;
+      u = root_of(u, T_);
+      v = root_of(v, T_);
+      ++T_;
 
       if(u == v) return;
 
-      const int s = size_of(u, T - 1) + size_of(v, T - 1);
+      const int s = size_of(u, T_ - 1) + size_of(v, T_ - 1);
 
-      if(rank[u] < rank[v]){
-        par[u] = par[v] = v;
-        P[u].emplace_back(T, v);
-        P[v].emplace_back(T, s);
+      if(rank_[u] < rank_[v]){
+        par_[u] = par_[v] = v;
+        P_[u].emplace_back(T_, v);
+        P_[v].emplace_back(T_, s);
       }else{
-        par[u] = par[v] = u;
-        P[v].emplace_back(T, u);
-        P[u].emplace_back(T, s);
-        if(rank[u] == rank[v]) ++rank[u];
+        par_[u] = par_[v] = u;
+        P_[v].emplace_back(T_, u);
+        P_[u].emplace_back(T_, s);
+        if(rank_[u] == rank_[v]) ++rank_[u];
       }
     }
   };

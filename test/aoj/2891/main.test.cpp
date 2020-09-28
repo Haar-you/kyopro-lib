@@ -19,7 +19,7 @@ int main(){
   for(auto [a, b] : hl::input_tuples<int, int>(Q)){
     --a, --b;
 
-    if(res.in_loop[a] and res.in_loop[b]){
+    if(res.in_loop(a) and res.in_loop(b)){
       std::cout << 2 << "\n";
     }else{
       std::cout << 1 << "\n";

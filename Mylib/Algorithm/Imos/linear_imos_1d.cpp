@@ -3,35 +3,38 @@
 
 namespace haar_lib {
   template <typename T>
-  struct linear_imos_1d {
+  class linear_imos_1d {
+  public:
     using value_type = T;
 
-    std::vector<T> vec_a, vec_a_end, vec_b, vec;
-    int n;
+  private:
+    int n_;
+    std::vector<T> vec_a_, vec_a_end_, vec_b_, vec_;
 
+  public:
     linear_imos_1d(int n):
-      vec_a(n + 1), vec_a_end(n + 1), vec_b(n + 1), vec(n + 1), n(n){}
+      n_(n), vec_a_(n_ + 1), vec_a_end_(n_ + 1), vec_b_(n_ + 1), vec_(n_ + 1){}
 
     void add(int s, int t, const T &a, const T &b){ // x ∈ [s, t)にax+bを加算する。
-      vec_a[s + 1] += a;
-      vec_a[t] -= a;
+      vec_a_[s + 1] += a;
+      vec_a_[t] -= a;
 
-      vec_a_end[t] -= a * (t - s - 1);
+      vec_a_end_[t] -= a * (t - s - 1);
 
-      vec_b[s] += a * s + b;
-      vec_b[t] -= a * s + b;
+      vec_b_[s] += a * s + b;
+      vec_b_[t] -= a * s + b;
     }
 
     void build(){
-      for(int i = 0; i < n; ++i) vec_a[i + 1] += vec_a[i];
-      for(int i = 0; i <= n; ++i) vec_a[i] += vec_a_end[i];
-      for(int i = 0; i < n; ++i) vec_a[i + 1] += vec_a[i];
+      for(int i = 0; i < n_; ++i) vec_a_[i + 1] += vec_a_[i];
+      for(int i = 0; i <= n_; ++i) vec_a_[i] += vec_a_end_[i];
+      for(int i = 0; i < n_; ++i) vec_a_[i + 1] += vec_a_[i];
 
-      for(int i = 0; i < n; ++i) vec_b[i + 1] += vec_b[i];
+      for(int i = 0; i < n_; ++i) vec_b_[i + 1] += vec_b_[i];
 
-      for(int i = 0; i <= n; ++i) vec[i] = vec_a[i] + vec_b[i];
+      for(int i = 0; i <= n_; ++i) vec_[i] = vec_a_[i] + vec_b_[i];
     }
 
-    T operator[](size_t i) const {return vec[i];}
+    T operator[](size_t i) const {return vec_[i];}
   };
 }

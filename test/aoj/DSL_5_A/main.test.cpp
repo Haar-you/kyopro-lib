@@ -17,11 +17,7 @@ int main(){
 
   imos.build();
 
-  int ans = 0;
-
-  for(int i = 0; i <= T; ++i){
-    ans = std::max(ans, imos[i]);
-  }
+  int ans = *std::max_element(imos.begin(), imos.end());
 
   std::cout << ans << std::endl;
 

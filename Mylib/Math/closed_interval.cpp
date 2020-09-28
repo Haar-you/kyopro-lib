@@ -10,7 +10,8 @@ namespace haar_lib {
     std::optional<std::pair<std::optional<T>, std::optional<T>>> value;
 
     closed_interval(){}
-    closed_interval(std::optional<T> l, std::optional<T> r): value(std::make_pair(l, r)){}
+    closed_interval(std::optional<T> l, std::optional<T> r):
+      value(std::make_pair(l, r)){}
 
     friend std::ostream& operator<<(std::ostream &s, const closed_interval<T> &a){
       s << "[";

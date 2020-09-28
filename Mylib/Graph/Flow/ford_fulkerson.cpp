@@ -21,20 +21,20 @@ namespace haar_lib {
     using capacity_type = T;
 
   private:
-    int size;
-    std::vector<std::vector<edge>> g;
-    std::vector<bool> visit;
+    int size_;
+    std::vector<std::vector<edge>> g_;
+    std::vector<bool> visit_;
 
     T dfs(int from, int to, T flow){
       if(from == to) return flow;
-      visit[from] = true;
+      visit_[from] = true;
 
-      for(auto &e : g[from]){
-        if(!visit[e.to] and e.cap > 0){
+      for(auto &e : g_[from]){
+        if(not visit_[e.to] and e.cap > 0){
           T d = dfs(e.to, to, std::min(flow, e.cap));
           if(d > 0){
             e.cap -= d;
-            g[e.to][e.rev].cap += d;
+            g_[e.to][e.rev].cap += d;
             return d;
           }
         }
@@ -44,18 +44,18 @@ namespace haar_lib {
 
   public:
     ford_fulkerson(){}
-    ford_fulkerson(int size): size(size), g(size), visit(size){}
+    ford_fulkerson(int size): size_(size), g_(size), visit_(size){}
 
     void add_edge(int from, int to, T c){
-      g[from].emplace_back(from, to, (int)g[to].size(), c, false);
-      g[to].emplace_back(to, from, (int)g[from].size() - 1, 0, true);
+      g_[from].emplace_back(from, to, (int)g_[to].size(), c, false);
+      g_[to].emplace_back(to, from, (int)g_[from].size() - 1, 0, true);
     }
 
     void reset_flow(){
-      for(auto &v : g){
+      for(auto &v : g_){
         for(auto &e : v){
           if(e.is_rev){
-            g[e.to][e.rev].cap += e.cap;
+            g_[e.to][e.rev].cap += e.cap;
             e.cap = 0;
           }
         }
@@ -66,7 +66,7 @@ namespace haar_lib {
       T ret = 0;
 
       while(1){
-        visit.assign(size, false);
+        visit_.assign(size_, false);
         T flow = dfs(s, t, std::numeric_limits<T>::max());
         if(flow == 0) return ret;
         ret += flow;
@@ -75,7 +75,7 @@ namespace haar_lib {
 
     std::vector<edge> edges() const {
       std::vector<edge> ret;
-      for(auto &v : g) ret.insert(ret.end(), v.begin(), v.end());
+      for(auto &v : g_) ret.insert(ret.end(), v.begin(), v.end());
       return ret;
     }
   };

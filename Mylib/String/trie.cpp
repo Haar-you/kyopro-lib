@@ -5,44 +5,44 @@
 
 namespace haar_lib {
   template <typename T>
-  struct trie_node {
-    std::map<char, trie_node*> children;
-    T val;
+  class trie_node {
+    std::map<char, trie_node*> children_;
+    T val_;
 
   public:
     trie_node(){}
-    trie_node(T val): val(val){}
+    trie_node(T val): val_(val){}
 
-    const T& value() const {return val;}
-    T& value(){return val;}
+    const T& value() const {return val_;}
+    T& value(){return val_;}
 
     trie_node* insert(char c, const T &v){
-      if(children.find(c) != children.end()){
-        children[c]->val = v;
+      if(children_.find(c) != children_.end()){
+        children_[c]->val_ = v;
       }else{
-        children[c] = new trie_node<T>(v);
+        children_[c] = new trie_node<T>(v);
       }
 
-      return children[c];
+      return children_[c];
     }
 
     template <typename Iter>
     trie_node* insert(Iter first, Iter last, const T &v){
       if(first == last){
-        val = v;
+        val_ = v;
         return this;
       }else{
         const auto c = *first;
-        if(children.find(c) == children.end()){
-          children[c] = new trie_node(T());
+        if(children_.find(c) == children_.end()){
+          children_[c] = new trie_node(T());
         }
 
-        return children[c]->insert(first + 1, last, v);
+        return children_[c]->insert(first + 1, last, v);
       }
     }
 
     trie_node* find(char c){
-      if(children.find(c) != children.end()) return children[c];
+      if(children_.find(c) != children_.end()) return children_[c];
       else return nullptr;
     }
   };
@@ -51,11 +51,14 @@ namespace haar_lib {
   struct trie {
     using node = trie_node<T>;
 
-    node *root;
+  private:
+    node *root_;
 
-    trie(){
-      root = new node(T());
-    }
+  public:
+    trie(){}
+    trie(): root_(new node(T())){}
+
+    node* root() const {return root;}
 
     template <typename Iter>
     node* insert(Iter first, Iter last, const T &v){

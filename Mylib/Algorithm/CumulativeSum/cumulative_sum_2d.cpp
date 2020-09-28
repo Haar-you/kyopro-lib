@@ -6,49 +6,57 @@
 namespace haar_lib {
   template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
   class cumulative_sum_2d {
-    std::vector<std::vector<T>> data;
-    int N, M;
-    Add add;
-    Minus minus;
-    bool is_built = false;
+  public:
+    using value_type = T;
+
+  private:
+    std::vector<std::vector<T>> data_;
+    int N_, M_;
+    Add add_;
+    Minus minus_;
+    bool is_built_ = false;
 
   public:
     cumulative_sum_2d(){}
     cumulative_sum_2d(int N, int M, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()):
-      N(N), M(M), add(add), minus(minus)
+      N_(N), M_(M), add_(add), minus_(minus)
     {
-      data.assign(N + 1, std::vector<T>(M + 1, e));
+      data_.assign(N_ + 1, std::vector<T>(M_ + 1, e));
     }
 
     auto& update(const std::vector<std::vector<T>> &a){
-      assert(not is_built);
-      for(int i = 0; i < N; ++i){
-        for(int j = 0; j < M; ++j){
-          data[i + 1][j + 1] = add(data[i + 1][j + 1], a[i][j]);
+      assert(not is_built_);
+      for(int i = 0; i < N_; ++i){
+        for(int j = 0; j < M_; ++j){
+          data_[i + 1][j + 1] = add_(data_[i + 1][j + 1], a[i][j]);
         }
       }
       return *this;
     }
 
     auto& update(int i, int j, const T &val){
-      assert(not is_built);
-      data[i + 1][j + 1] = add(data[i + 1][j + 1], val);
+      assert(not is_built_);
+      data_[i + 1][j + 1] = add_(data_[i + 1][j + 1], val);
       return *this;
     }
 
     auto& build(){
-      assert(not is_built);
-      for(int i = 1; i <= N; ++i) for(int j = 0; j <= M; ++j) data[i][j] = add(data[i][j], data[i - 1][j]);
-      for(int i = 0; i <= N; ++i) for(int j = 1; j <= M; ++j) data[i][j] = add(data[i][j], data[i][j - 1]);
-      is_built = true;
+      assert(not is_built_);
+      for(int i = 1; i <= N_; ++i)
+        for(int j = 0; j <= M_; ++j)
+          data_[i][j] = add_(data_[i][j], data_[i - 1][j]);
+      for(int i = 0; i <= N_; ++i)
+        for(int j = 1; j <= M_; ++j)
+          data_[i][j] = add_(data_[i][j], data_[i][j - 1]);
+      is_built_ = true;
       return *this;
     }
 
-    T fold(std::pair<int, int> p1, std::pair<int, int> p2) const { // [x1, x2), [y1, y2)
-      assert(is_built);
+    T fold(std::pair<int, int> p1, std::pair<int, int> p2) const {
+      assert(is_built_);
       const auto [x1, y1] = p1;
       const auto [x2, y2] = p2;
-      return add(minus(data[x2][y2], add(data[x1][y2], data[x2][y1])), data[x1][y1]);
+      return add_(minus_(data_[x2][y2], add_(data_[x1][y2], data_[x2][y1])), data_[x1][y1]);
     }
   };
 }
