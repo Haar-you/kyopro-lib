@@ -70,7 +70,7 @@ namespace haar_lib {
       update_node_status();
       parent = g;
 
-      if(!g) return;
+      if(not g) return;
 
       if(g->left == p) g->left = this;
       if(g->right == p) g->right = this;
@@ -95,7 +95,7 @@ namespace haar_lib {
             rot(flag);
           }else{
             rot(flag);
-            rot(!flag);
+            rot(not flag);
           }
         }
       }

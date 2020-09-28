@@ -22,7 +22,7 @@ namespace haar_lib {
     int count(node *t) const {return t ? t->count : 0;}
 
     int count(node *t, T val, unsigned int depth = 1) const {
-      if(!t) return 0;
+      if(not t) return 0;
 
       if(depth > B) return t->count;
 
@@ -37,12 +37,12 @@ namespace haar_lib {
 
   public:
     int size() const {return root_ ? root_->count : 0;}
-    bool empty() const {return !root_;}
+    bool empty() const {return not root_;}
 
   protected:
     void to_list(node *t, T val, std::vector<T> &ret) const {
-      if(!t) return;
-      if(!t->ch[0] and !t->ch[1]) for(int i = 0; i < t->count; ++i) ret.push_back(val);
+      if(not t) return;
+      if(not t->ch[0] and not t->ch[1]) for(int i = 0; i < t->count; ++i) ret.push_back(val);
 
       if(t->ch[0]) to_list(t->ch[0], val << 1, ret);
       if(t->ch[1]) to_list(t->ch[1], (val << 1) | 1, ret);
@@ -57,7 +57,7 @@ namespace haar_lib {
 
   protected:
     node* insert(node *t, T val, unsigned int depth = 1){
-      if(!t) t = new node();
+      if(not t) t = new node();
 
       ++(t->count);
       if(depth > B) return t;
@@ -74,7 +74,7 @@ namespace haar_lib {
 
   protected:
     node* erase(node *t, T val, unsigned int depth = 1){
-      if(!t) return t;
+      if(not t) return t;
 
       --(t->count);
       if(t->count == 0) return nullptr;
@@ -94,7 +94,7 @@ namespace haar_lib {
     T min_element(node *t, T diff, unsigned int depth = 1) const {
       if(depth > B) return 0;
       int b = (diff >> (B - depth)) & 1;
-      b ^= !t->ch[b];
+      b ^= not t->ch[b];
       return min_element(t->ch[b], diff, depth + 1) | (b << (B - depth));
     }
 
@@ -106,8 +106,8 @@ namespace haar_lib {
   protected:
     T max_element(node *t, T diff, unsigned int depth = 1) const {
       if(depth > B) return 0;
-      int b = !((diff >> (B - depth)) & 1);
-      b ^= !t->ch[b];
+      int b = not ((diff >> (B - depth)) & 1);
+      b ^= not t->ch[b];
       return max_element(t->ch[b], diff, depth + 1) | (b << (B - depth));
     }
 
@@ -132,7 +132,7 @@ namespace haar_lib {
 
   protected:
     int lower_bound(node *t, T val, unsigned int depth = 1) const {
-      if(!t) return 0;
+      if(not t) return 0;
       int b = (val >> (B - depth)) & 1;
       return (b ? count(t->ch[0]) : 0) + lower_bound(t->ch[b], val, depth + 1);
     }

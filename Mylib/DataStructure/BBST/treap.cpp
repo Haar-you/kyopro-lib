@@ -20,8 +20,8 @@ namespace haar_lib {
     treap_node(): priority(rand()){}
     treap_node(const value_type &value): value(value), result(value), priority(rand()){}
 
-    static int count(node *t) {return !t ? 0 : t->size;}
-    static value_type sum(node *t) {return !t ? M() : t->result;}
+    static int count(node *t) {return t ? t->size : 0;}
+    static value_type sum(node *t) {return t ? t->result : M();}
 
     static node* update_node_status(node *t){
       t->size = count(t->right) + count(t->left) + 1;
@@ -30,7 +30,7 @@ namespace haar_lib {
     }
 
     static void pushdown(node *t){
-      if(!t) return;
+      if(not t) return;
       if(t->rev){
         std::swap(t->left, t->right);
         if(t->left) t->left->rev ^= true;
@@ -53,7 +53,7 @@ namespace haar_lib {
     }
 
     static std::pair<node*, node*> split(node *t, int k){
-      if(!t) return std::make_pair(nullptr, nullptr);
+      if(not t) return std::make_pair(nullptr, nullptr);
       pushdown(t);
       const int c = count(t->left);
       if(k <= c){
@@ -70,7 +70,7 @@ namespace haar_lib {
     static node* merge(node *l, node *r){
       pushdown(l);
       pushdown(r);
-      if(!l || !r) return !l ? r : l;
+      if(not l or not r) return l ? l : r;
       if(l->priority > r->priority){
         l->right = merge(l->right, r);
         return update_node_status(l);
@@ -97,7 +97,7 @@ namespace haar_lib {
     }
 
     static node* get_node(node *t, int k){
-      if(!t) return t;
+      if(not t) return t;
       pushdown(t);
       int c = count(t->left);
       if(k == c) return t;

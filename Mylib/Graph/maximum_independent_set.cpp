@@ -40,7 +40,7 @@ namespace haar_lib {
     }
 
     for(int s = 0; s < (1 << h2); ++s){
-      if(!dp2[s]){
+      if(not dp2[s]){
         for(int j = 0; j < h2; ++j){
           dp2[s | (1 << j)] = false;
         }

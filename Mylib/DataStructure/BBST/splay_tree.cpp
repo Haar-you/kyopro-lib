@@ -44,7 +44,7 @@ namespace haar_lib {
     }
 
     int status(){
-      if(!this->parent) return 0;
+      if(not this->parent) return 0;
       if(this->parent->left == this) return 1;
       if(this->parent->right == this) return -1;
       return 0;
@@ -85,7 +85,7 @@ namespace haar_lib {
     }
 
     static node* get(node *root, int index){
-      if(!root) return root;
+      if(not root) return root;
       node *cur = root;
 
       while(1){
@@ -104,8 +104,8 @@ namespace haar_lib {
     }
 
     static node* merge(node *left, node *right){
-      if(!left) return right;
-      if(!right) return left;
+      if(not left) return right;
+      if(not right) return left;
 
       node *cur = node::get(left, left->size - 1);
 
@@ -119,7 +119,7 @@ namespace haar_lib {
     }
 
     static std::pair<node*, node*> split(node *root, int index){
-      if(!root) return std::make_pair(nullptr, nullptr);
+      if(not root) return std::make_pair(nullptr, nullptr);
       if(index >= root->size) return std::make_pair(root, nullptr);
 
       auto *cur = node::get(root, index);

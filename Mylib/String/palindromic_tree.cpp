@@ -55,7 +55,7 @@ namespace haar_lib {
 
         node *next = t->children[s[i]];
 
-        if(!next->suffix_link){
+        if(not next->suffix_link){
           if(next->length == 1){
             next->suffix_link = even_root;
             even_root->reverse_suffix_links.emplace_back(next);

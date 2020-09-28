@@ -57,7 +57,7 @@ namespace haar_lib {
       return os;
     }
 
-    friend bool operator==(const rational &a, const rational &b){return a.nume_ == b.nume_ && a.deno_ == b.deno_;}
+    friend bool operator==(const rational &a, const rational &b){return a.nume_ == b.nume_ and a.deno_ == b.deno_;}
     friend bool operator!=(const rational &a, const rational &b){return !(a == b);}
     friend bool operator<(const rational &a, const rational &b){return a.nume_ * b.deno_ < b.nume_ * a.deno_;}
     friend bool operator<=(const rational &a, const rational &b){return a.nume_ * b.deno_ <= b.nume_ * a.deno_;}
