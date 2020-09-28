@@ -7,6 +7,7 @@
   - `update(i, x)`: a[i] $\leftarrow$ a[i] + x
   - `update(l, r, x)`: a[i] $\leftarrow$ a[i] + x ($l \le i \lt r$)
   - `fold(l, r)`: $\sum_{l \le i \lt r}$ a[i]
+  - `fold_all()`: $\sum_{0 \le i \lt N}$ a[i]
   - `[i]`: a[i]
 
 - `graph`関連ライブラリの関数名

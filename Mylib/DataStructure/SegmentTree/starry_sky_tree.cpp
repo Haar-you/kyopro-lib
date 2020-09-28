@@ -74,6 +74,10 @@ namespace haar_lib {
       return *get(1, 0, hsize_, l, r, 0);
     }
 
+    T fold_all() const {
+      return data_[1];
+    }
+
     template <typename U>
     void init_with_vector(std::vector<U> &a){
       for(int i = 0; i < (int)a.size(); ++i){

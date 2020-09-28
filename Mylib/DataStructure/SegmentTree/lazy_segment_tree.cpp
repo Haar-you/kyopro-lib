@@ -110,6 +110,10 @@ namespace haar_lib {
       return M_get_(ret_left, ret_right);
     }
 
+    value_type_get fold_all(){
+      return fold(0, hsize_);
+    }
+
     value_type_get operator[](int i){return fold(i, i + 1);}
 
     template <typename T>

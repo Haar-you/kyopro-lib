@@ -38,6 +38,10 @@ namespace haar_lib {
       return M_(ret_left, ret_right);
     }
 
+    auto fold_all() const {
+      return data_[1];
+    }
+
     void set(int i, const value_type &x){
       i += hsize_;
       data_[i] = x;

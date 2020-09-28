@@ -34,7 +34,7 @@ int main(){
 
     seg.update(L, R + 1, D);
 
-    auto ans = seg.fold(0, N - 1).value();
+    auto ans = seg.fold_all().value();
     std::cout << ans << std::endl;
   }
 

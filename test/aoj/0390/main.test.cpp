@@ -36,7 +36,7 @@ int main(){
     seg.set(L, y);
     seg.set(R, x);
 
-    auto res = seg.fold(0, N);
+    auto res = seg.fold_all();
 
     if(std::holds_alternative<M::R>(res)){
       int ans = (K - std::get<M::R>(res).value) % K + 1;
