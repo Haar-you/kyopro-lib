@@ -1,4 +1,5 @@
 #pragma once
+#include <utility>
 
 namespace haar_lib {
   template <typename M, typename T = typename M::value_type>
@@ -10,7 +11,7 @@ namespace haar_lib {
       if(m[i][i] == 0){
         for(int j = i + 1; j < N; ++j){
           if(m[j][i] != 0){
-            m[i].swap(m[j]);
+            std::swap(m[i], m[j]);
             (s += 1) %= 2;
             break;
           }

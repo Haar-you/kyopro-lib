@@ -48,7 +48,7 @@ int main(){
       seg.set(i, f(x[i], y[i]));
     }else{
       auto m = seg.fold(0, i);
-      auto ans = m[0][0] + m[0][1] + m[0][2] + m[0][3];
+      auto ans = dot(m[0], Mat::vector_type({1, 1, 1, 1}));
       std::cout << ans << "\n";
     }
   }

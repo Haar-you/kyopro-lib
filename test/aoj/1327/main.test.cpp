@@ -11,7 +11,7 @@ namespace hl = haar_lib;
 
 static int n, m;
 using mint = hl::runtime_modint<m>;
-using M = hl::square_matrix<mint, n>;
+using M = hl::square_matrix_dyn<mint, n>;
 
 int main(){
   int a, b, c, t;
@@ -29,13 +29,7 @@ int main(){
 
     mat = mat.pow(t);
 
-    std::vector<mint> ans(n);
-
-    for(int i = 0; i < n; ++i){
-      for(int j = 0; j < n; ++j){
-        ans[i] += mat[i][j] * s[j];
-      }
-    }
+    auto ans = mat * M::vector_type(s);
 
     std::cout << hl::join(ans.begin(), ans.end()) << "\n";
   }

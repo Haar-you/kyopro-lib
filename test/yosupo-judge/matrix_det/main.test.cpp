@@ -11,7 +11,7 @@ namespace hl = haar_lib;
 using mint = hl::modint<998244353>;
 
 static int N;
-using Mat = hl::square_matrix<mint, N>;
+using Mat = hl::square_matrix_dyn<mint, N>;
 
 int main(){
   std::cin.tie(0);

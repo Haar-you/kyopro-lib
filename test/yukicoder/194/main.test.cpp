@@ -14,7 +14,7 @@ namespace hl = haar_lib;
 using mint = hl::modint<1000000007>;
 
 static int N;
-using M = hl::square_matrix<mint, N>;
+using M = hl::square_matrix_dyn<mint, N>;
 
 std::pair<mint, mint> solve1(int64_t N, int64_t K, std::vector<int> A){
   M m;
@@ -34,13 +34,10 @@ std::pair<mint, mint> solve1(int64_t N, int64_t K, std::vector<int> A){
   mint s = std::accumulate(A.begin(), A.end(), mint(0));
 
   {
-    auto t = M::unit() - m;
-    M c = hl::inverse_matrix(t).value();
+    auto c = hl::inverse_matrix(M::unit() - m).value();
+    auto temp = (M::unit() - m.pow(K - N + 1)) * c - M::unit();
 
-    auto temp = (M::unit() - m.pow(K - N + 1)) * c;
-    temp -= M::unit();
-
-    for(int i = 0; i < N; ++i) s += temp[0][i] * A[i];
+    s += dot(temp[0], M::vector_type(A));
   }
 
   return {f, s};
