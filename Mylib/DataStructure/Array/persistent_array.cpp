@@ -56,7 +56,7 @@ namespace haar_lib {
 
     persistent_array(node *root): root_(root){}
 
-    void calc_depth(int size){
+    void calc_depth(){
       depth_ = 1;
       while((int)size_ > (1 << depth_)) depth_ += 1;
       depth_ += 1;
@@ -65,12 +65,12 @@ namespace haar_lib {
   public:
     persistent_array(){}
     persistent_array(size_t size): size_(size){
-      calc_depth(size_);
+      calc_depth();
       root_ = init(size_, 1);
     }
 
     persistent_array(const std::vector<T> &v): size_(v.size()){
-      calc_depth(size_);
+      calc_depth();
       root_ = init(size_, 1);
 
       int i = 0;

@@ -37,8 +37,8 @@ namespace haar_lib {
     }
 
     bool operator()(int i) const {
-      assert(L <= i and i <= R);
-      return data_[i - L];
+      assert(L_ <= i and i <= R_);
+      return data_[i - L_];
     }
   };
 }

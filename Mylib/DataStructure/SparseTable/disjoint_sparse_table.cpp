@@ -44,7 +44,7 @@ namespace haar_lib {
       A_(a),
       data_(logN_, std::vector<value_type>(1 << logN_))
     {
-      A_.resize(1 << logN);
+      A_.resize(1 << logN_);
       if(logN_ > 0) std::copy(A_.begin(), A_.end(), data_[0].begin());
       build(0, 1 << logN_, logN_ - 1);
     }

@@ -55,7 +55,6 @@ namespace haar_lib {
     node *root_;
 
   public:
-    trie(){}
     trie(): root_(new node(T())){}
 
     node* root() const {return root;}
