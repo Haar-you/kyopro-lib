@@ -86,8 +86,8 @@ namespace haar_lib {
     friend constexpr auto operator*(int64_t a, const modint &b){return modint(a) * b;}
     friend constexpr auto operator/(int64_t a, const modint &b){return modint(a) / b;}
 
-    friend std::istream& operator>>(std::istream &s, modint<M> &a){s >> a.val_; return s;}
-    friend std::ostream& operator<<(std::ostream &s, const modint<M> &a){s << a.val_; return s;}
+    friend std::istream& operator>>(std::istream &s, modint &a){s >> a.val_; return s;}
+    friend std::ostream& operator<<(std::ostream &s, const modint &a){s << a.val_; return s;}
 
     template <int N>
     static auto div(){
