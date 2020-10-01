@@ -12,7 +12,7 @@ int main(){
   hl::imos_2d<int> imos(1000, 1000);
 
   for(auto [x1, y1, x2, y2] : hl::input_tuples<int, int, int, int>(N)){
-    imos.add(x1, y1, x2, y2);
+    imos.update({x1, y1}, {x2, y2}, 1);
   }
 
   imos.build();

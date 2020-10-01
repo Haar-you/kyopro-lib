@@ -12,7 +12,7 @@ int main(){
   hl::imos_1d<int> imos(T + 1);
 
   for(auto [l, r] : hl::input_tuples<int, int>(N)){
-    imos.add(l, r, 1);
+    imos.update(l, r, 1);
   }
 
   imos.build();

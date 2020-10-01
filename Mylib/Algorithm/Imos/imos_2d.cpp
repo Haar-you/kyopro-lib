@@ -14,11 +14,14 @@ namespace haar_lib {
     imos_2d(){}
     imos_2d(int n, int m): data_(n, std::vector<T>(m)), n_(n), m_(m){}
 
-    void add(int a1, int b1, int a2, int b2){ // [a1, a2) [b1, b2)
-      data_[a1][b1] += 1;
-      if(a2 < n_ and b2 < m_) data_[a2][b2] += 1;
-      if(b2 < m_) data_[a1][b2] -= 1;
-      if(a2 < n_) data_[a2][b1] -= 1;
+    void update(std::pair<int, int> p1, std::pair<int, int> p2, T val){
+      const auto [x1, y1] = p1;
+      const auto [x2, y2] = p2;
+
+      data_[x1][y1] += val;
+      if(x2 < n_ and y2 < m_) data_[x2][y2] += val;
+      if(y2 < m_) data_[x1][y2] -= val;
+      if(x2 < n_) data_[x2][y1] -= val;
     }
 
     void build(){

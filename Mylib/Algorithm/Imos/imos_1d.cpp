@@ -14,7 +14,7 @@ namespace haar_lib {
     imos_1d(){}
     imos_1d(int n): data_(n), n_(n){}
 
-    void add(int l, int r, const T& val){ // [l, r)
+    void update(int l, int r, T val){ // [l, r)
       data_[l] += 1;
       if(r < n_) data_[r] -= 1;
     }
