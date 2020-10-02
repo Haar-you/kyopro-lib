@@ -10,10 +10,13 @@
 
 namespace hl = haar_lib;
 
+using update = hl::update_monoid<int>;
+using min = hl::min_monoid<int>;
+
 int main(){
   int n, q; std::cin >> n >> q;
 
-  hl::lazy_segment_tree<hl::min_monoid<int>, hl::update_monoid<int>, hl::update_min> seg(n);
+  hl::lazy_segment_tree<hl::update_min<update, min>> seg(n);
 
   for(auto [type, s, t] : hl::input_tuples<int, int, int>(q)){
     if(type == 0){

@@ -9,10 +9,13 @@
 
 namespace hl = haar_lib;
 
+using min = hl::min_monoid<int64_t>;
+using sum = hl::sum_monoid<int64_t>;
+
 int main(){
   int n, q; std::cin >> n >> q;
 
-  hl::lazy_segment_tree<hl::min_monoid<int64_t>, hl::sum_monoid<int64_t>, hl::add_min> seg(n);
+  hl::lazy_segment_tree<hl::add_min<sum, min>> seg(n);
   seg.init(0);
 
   for(auto [type, s, t] : hl::input_tuples<int, int, int>(q)){

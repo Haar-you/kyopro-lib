@@ -11,13 +11,16 @@
 
 namespace hl = haar_lib;
 
+using max = hl::max_monoid<int64_t>;
+using sum = hl::sum_monoid<int64_t>;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N; std::cin >> N;
 
-  auto seg = hl::lazy_segment_tree<hl::max_monoid<int64_t>, hl::sum_monoid<int64_t>, hl::add_max>(N - 1);
+  auto seg = hl::lazy_segment_tree<hl::add_max<sum, max>>(N - 1);
 
   auto T = hl::input_vector<int64_t>(N - 1);
 

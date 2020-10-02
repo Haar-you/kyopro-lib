@@ -16,6 +16,12 @@
 
 namespace hl = haar_lib;
 
+using sum = hl::sum_monoid<int64_t>;
+using max_with_count = hl::with_count<hl::max_monoid<int64_t>>;
+using min_with_count = hl::with_count<hl::min_monoid<int64_t>>;
+using add_max_with_count = hl::add_max_with_count<sum, max_with_count>;
+using add_min_with_count = hl::add_min_with_count<sum, min_with_count>;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -24,10 +30,10 @@ int main(){
   auto A = hl::input_vector<int64_t>(H);
   auto B = hl::input_vector<int64_t>(W);
 
-  auto seg_h_max = hl::lazy_segment_tree<hl::with_count<hl::max_monoid<int64_t>>, hl::sum_monoid<int64_t>, hl::add_max_with_count>(H);
-  auto seg_h_min = hl::lazy_segment_tree<hl::with_count<hl::min_monoid<int64_t>>, hl::sum_monoid<int64_t>, hl::add_min_with_count>(H);
-  auto seg_w_max = hl::lazy_segment_tree<hl::with_count<hl::max_monoid<int64_t>>, hl::sum_monoid<int64_t>, hl::add_max_with_count>(W);
-  auto seg_w_min = hl::lazy_segment_tree<hl::with_count<hl::min_monoid<int64_t>>, hl::sum_monoid<int64_t>, hl::add_min_with_count>(W);
+  auto seg_h_max = hl::lazy_segment_tree<add_max_with_count>(H);
+  auto seg_h_min = hl::lazy_segment_tree<add_min_with_count>(H);
+  auto seg_w_max = hl::lazy_segment_tree<add_max_with_count>(W);
+  auto seg_w_min = hl::lazy_segment_tree<add_min_with_count>(W);
 
   seg_h_max.init_with_vector(A);
   seg_h_min.init_with_vector(A);

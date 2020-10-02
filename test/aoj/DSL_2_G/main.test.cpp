@@ -8,10 +8,12 @@
 
 namespace hl = haar_lib;
 
+using sum = hl::sum_monoid<int64_t>;
+
 int main(){
   int n, q; std::cin >> n >> q;
 
-  hl::lazy_segment_tree<hl::sum_monoid<int64_t>, hl::sum_monoid<int64_t>, hl::add_sum> seg(n);
+  hl::lazy_segment_tree<hl::add_sum<sum, sum>> seg(n);
 
   for(auto [type, s, t] : hl::input_tuples<int, int, int>(q)){
     if(type == 0){

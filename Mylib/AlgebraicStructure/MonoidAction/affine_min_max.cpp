@@ -1,8 +1,10 @@
 #pragma once
 
 namespace haar_lib {
-  template <typename MonoidGet, typename MonoidUpdate>
+  template <typename MonoidUpdate, typename MonoidGet>
   struct affine_min_max {
+    using monoid_get = MonoidGet;
+    using monoid_update = MonoidUpdate;
     using value_type_get = typename MonoidGet::value_type;
     using value_type_update = typename MonoidUpdate::value_type;
 

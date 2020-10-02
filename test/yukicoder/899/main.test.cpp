@@ -12,6 +12,9 @@
 
 namespace hl = haar_lib;
 
+using update = hl::update_monoid<int64_t>;
+using sum = hl::sum_monoid<int64_t>;
+
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
@@ -24,7 +27,7 @@ int main(){
   auto res = hl::euler_tour_bfs<int>(tree, 0);
 
   auto A = hl::input_vector<int64_t>(N);
-  hl::lazy_segment_tree<hl::sum_monoid<int64_t>, hl::update_monoid<int64_t>, hl::update_sum> seg(N);
+  hl::lazy_segment_tree<hl::update_sum<update, sum>> seg(N);
 
   for(int i = 0; i < N; ++i){
     res.query_at(i, [&](int l, int r){seg.update(l, r, A[i]);});

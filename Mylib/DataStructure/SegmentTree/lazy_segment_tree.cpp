@@ -2,16 +2,18 @@
 #include <vector>
 
 namespace haar_lib {
-  template <typename MonoidGet, typename MonoidUpdate, template <typename, typename> typename Connector>
+  template <typename Monoid>
   class lazy_segment_tree {
   public:
-    using value_type_get = typename MonoidGet::value_type;
-    using value_type_update = typename MonoidUpdate::value_type;
+    using monoid_get = typename Monoid::monoid_get;
+    using monoid_update = typename Monoid::monoid_update;
+    using value_type_get = typename monoid_get::value_type;
+    using value_type_update = typename monoid_update::value_type;
 
   private:
-    Connector<MonoidGet, MonoidUpdate> M_;
-    MonoidGet M_get_;
-    MonoidUpdate M_update_;
+    Monoid M_;
+    monoid_get M_get_;
+    monoid_update M_update_;
 
     int depth_, size_, hsize_;
     std::vector<value_type_get> data_;
