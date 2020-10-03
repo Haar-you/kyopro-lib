@@ -21,7 +21,7 @@ int main(){
 
   auto [A, B] = hl::input_tuple_vector<int64_t, int64_t>(N);
 
-  const int NUM = sd.BLOCK_NUM;
+  const int NUM = sd.block_num();
 
   std::vector<std::vector<int64_t>> s(NUM);
   std::vector<std::vector<int64_t>> left(NUM), right(NUM);

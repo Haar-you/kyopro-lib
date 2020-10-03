@@ -22,33 +22,33 @@ int main(){
 
   hl::forest<int64_t> forest(g);
 
-  const int tree_num = forest.trees.size();
+  const int tree_num = forest.trees().size();
   std::vector<hl::lowest_common_ancestor_doubling<int64_t>> lcas(tree_num);
   std::vector<std::vector<int64_t>> dists(tree_num);
 
   for(int i = 0; i < tree_num; ++i){
-    lcas[i] = hl::lowest_common_ancestor_doubling(forest.trees[i], 0);
-    dists[i] = hl::tree_distance(forest.trees[i], 0);
+    lcas[i] = hl::lowest_common_ancestor_doubling(forest.trees()[i], 0);
+    dists[i] = hl::tree_distance(forest.trees()[i], 0);
   }
 
   std::vector<std::vector<int>> plans(tree_num);
   for(int i = 0; i < tree_num; ++i){
-    plans[i] = std::vector<int>(forest.trees[i].size());
+    plans[i] = std::vector<int>(forest.trees()[i].size());
   }
 
   for(auto [a, b] : hl::input_tuples<int, int>(Q)){
     --a, --b;
 
     if(forest.in_same_tree(a, b)){
-      ans += lcas[forest.tree_id[a]].distance(forest.vertex_id[a], forest.vertex_id[b], dists[forest.tree_id[a]]);
+      ans += lcas[forest.tree_id(a)].distance(forest.vertex_id(a), forest.vertex_id(b), dists[forest.tree_id(a)]);
     }else{
-      plans[forest.tree_id[a]][forest.vertex_id[a]] += 1;
-      plans[forest.tree_id[b]][forest.vertex_id[b]] += 1;
+      plans[forest.tree_id(a)][forest.vertex_id(a)] += 1;
+      plans[forest.tree_id(b)][forest.vertex_id(b)] += 1;
     }
   }
 
   for(int i = 0; i < tree_num; ++i){
-    const auto &tree = forest.trees[i];
+    const auto &tree = forest.trees()[i];
     const auto &plan = plans[i];
 
     auto res =

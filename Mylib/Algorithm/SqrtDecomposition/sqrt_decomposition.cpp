@@ -3,30 +3,30 @@
 #include <cmath>
 
 namespace haar_lib {
-  struct sqrt_decomposition {
-    const int N;
-    const int BLOCK_SIZE;
-    const int BLOCK_NUM;
+  class sqrt_decomposition {
+    int N_, BLOCK_SIZE_, BLOCK_NUM_;
 
+  public:
     sqrt_decomposition(int N):
-      N(N), BLOCK_SIZE((int)std::sqrt(N)), BLOCK_NUM((N + BLOCK_SIZE - 1) / BLOCK_SIZE)
-    {
-    }
+      N_(N), BLOCK_SIZE_((int)std::sqrt(N)), BLOCK_NUM_((N + BLOCK_SIZE_ - 1) / BLOCK_SIZE_){}
+
+    int block_size() const {return BLOCK_SIZE_;}
+    int block_num() const {return BLOCK_NUM_;}
 
     template <typename Func>
     void init(const Func &f){
-      for(int i = 0; i < BLOCK_NUM; ++i){
-        const int L = i * BLOCK_SIZE;
-        const int R = std::min<int>(N, (i + 1) * BLOCK_SIZE);
+      for(int i = 0; i < BLOCK_NUM_; ++i){
+        const int L = i * BLOCK_SIZE_;
+        const int R = std::min<int>(N_, (i + 1) * BLOCK_SIZE_);
         f(i, L, R);
       }
     }
 
     template <typename FuncBlock, typename FuncRange>
-    void query(int l, int r, const FuncBlock &func_block, const FuncRange &func_range){ // [l, r)
-      for(int i = 0; i < BLOCK_NUM; ++i){
-        const int L = i * BLOCK_SIZE;
-        const int R = std::min<int>(N, (i + 1) * BLOCK_SIZE);
+    void query(int l, int r, const FuncBlock &func_block, const FuncRange &func_range){
+      for(int i = 0; i < BLOCK_NUM_; ++i){
+        const int L = i * BLOCK_SIZE_;
+        const int R = std::min<int>(N_, (i + 1) * BLOCK_SIZE_);
 
         if(l <= L and R <= r){
           func_block(i, L, R);

@@ -6,46 +6,46 @@
 
 namespace haar_lib {
   template <typename T>
-  struct range_count_query {
-    std::vector<int> a;
-    std::vector<std::tuple<int, int, int>> qs;
-    int N;
+  class range_count_query {
+    std::vector<int> a_;
+    std::vector<std::tuple<int, int, int>> qs_;
+    int N_;
 
+  public:
     range_count_query(){}
-    range_count_query(std::vector<T> a_): N(a_.size()){
-      auto temp = a_;
+    range_count_query(std::vector<T> a): N_(a.size()){
+      auto temp = a;
       std::sort(temp.begin(), temp.end());
       temp.erase(std::unique(temp.begin(), temp.end()), temp.end());
 
-      for(auto x : a_){
-        int i = std::lower_bound(temp.begin(), temp.end(), x) - temp.begin();
-        a.push_back(i);
+      for(auto x : a){
+        const int i = std::lower_bound(temp.begin(), temp.end(), x) - temp.begin();
+        a_.push_back(i);
       }
     }
 
     void add(int l, int r){ // [l, r)
-      const int i = qs.size();
-      qs.emplace_back(r, l, i);
+      const int i = qs_.size();
+      qs_.emplace_back(r, l, i);
     }
 
     auto solve(){
-      std::sort(qs.begin(), qs.end());
+      std::sort(qs_.begin(), qs_.end());
 
-      fenwick_tree_add<int> b(N);
+      fenwick_tree_add<int> b(N_);
 
-      const int Q = qs.size();
-      std::vector<int> last_index(N, -1);
-      std::vector<int> ret(Q);
+      const int Q = qs_.size();
+      std::vector<int> last_index(N_, -1), ret(Q);
 
       int cur = 0;
-      for(auto [r, l, i] : qs){
+      for(auto [r, l, i] : qs_){
         while(cur < r){
-          if(last_index[a[cur]] != -1){
-            b.update(last_index[a[cur]], -1);
+          if(last_index[a_[cur]] != -1){
+            b.update(last_index[a_[cur]], -1);
           }
 
-          last_index[a[cur]] = cur;
-          b.update(last_index[a[cur]], 1);
+          last_index[a_[cur]] = cur;
+          b.update(last_index[a_[cur]], 1);
 
           ++cur;
         }

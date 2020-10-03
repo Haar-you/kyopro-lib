@@ -6,17 +6,18 @@
 
 namespace haar_lib {
   template <typename T>
-  struct forest {
-    std::vector<tree<T>> trees;
-    std::vector<int> tree_id, vertex_id;
-    std::vector<std::vector<int>> rid;
+  class forest {
+    std::vector<tree<T>> trees_;
+    std::vector<int> tree_id_, vertex_id_;
+    std::vector<std::vector<int>> rid_;
 
+  public:
     forest(){}
     forest(const graph<T> &g){
       const int N = g.size();
 
-      tree_id.resize(N);
-      vertex_id.resize(N);
+      tree_id_.resize(N);
+      vertex_id_.resize(N);
 
       std::vector<bool> check(N);
 
@@ -41,27 +42,33 @@ namespace haar_lib {
           dfs(dfs, i, vertices, edges);
 
           const int m = vertices.size();
-          const int k = trees.size();
+          const int k = trees_.size();
 
-          rid.emplace_back(m);
+          rid_.emplace_back(m);
 
           for(int i = 0; i < (int)vertices.size(); ++i){
-            tree_id[vertices[i]] = k;
-            vertex_id[vertices[i]] = i;
-            rid[k][i] = vertices[i];
+            tree_id_[vertices[i]] = k;
+            vertex_id_[vertices[i]] = i;
+            rid_[k][i] = vertices[i];
           }
 
-          trees.push_back(m);
+          trees_.push_back(m);
 
           for(auto &e : edges){
-            trees[k].add_edge(vertex_id[e.from], vertex_id[e.to], e.cost);
+            trees_[k].add_edge(vertex_id_[e.from], vertex_id_[e.to], e.cost);
           }
         }
       }
     }
 
+    const auto& trees() const {return trees_;}
+    auto id(int i) const {return std::make_pair(tree_id_[i], vertex_id_[i]);}
+    int tree_id(int i) const {return tree_id_[i];}
+    int vertex_id(int i) const {return vertex_id_[i];}
+    int rid(int t, int u) const {return rid_[t][u];}
+
     bool in_same_tree(int i, int j) const {
-      return tree_id[i] == tree_id[j];
+      return tree_id_[i] == tree_id_[j];
     }
   };
 }

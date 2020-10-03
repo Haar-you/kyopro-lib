@@ -15,21 +15,22 @@ namespace haar_lib {
       std::vector<node*> reverse_suffix_links;
     };
 
-    node *even_root, *odd_root;
+    node *even_root_, *odd_root_;
     int size_ = 2;
 
   public:
+    palindromic_tree(){}
     palindromic_tree(const std::string_view &s){
-      even_root = new node();
-      even_root->length = 0;
+      even_root_ = new node();
+      even_root_->length = 0;
 
-      odd_root = new node();
-      odd_root->length = -1;
+      odd_root_ = new node();
+      odd_root_->length = -1;
 
-      even_root->suffix_link = odd_root;
-      odd_root->reverse_suffix_links.emplace_back(even_root);
+      even_root_->suffix_link = odd_root_;
+      odd_root_->reverse_suffix_links.emplace_back(even_root_);
 
-      node *cur = odd_root;
+      node *cur = odd_root_;
 
       const int N = s.size();
 
@@ -57,8 +58,8 @@ namespace haar_lib {
 
         if(not next->suffix_link){
           if(next->length == 1){
-            next->suffix_link = even_root;
-            even_root->reverse_suffix_links.emplace_back(next);
+            next->suffix_link = even_root_;
+            even_root_->reverse_suffix_links.emplace_back(next);
           }else{
             node *p = cur;
 
@@ -95,7 +96,7 @@ namespace haar_lib {
 
   public:
     int longest() const {
-      int ret = std::max(longest_(odd_root), longest_(even_root));
+      int ret = std::max(longest_(odd_root_), longest_(even_root_));
       return ret;
     }
 
@@ -107,7 +108,7 @@ namespace haar_lib {
         ret += count_sub_palindromes_(s, c);
       }
 
-      if(t != odd_root and t != even_root) c += ret;
+      if(t != odd_root_ and t != even_root_) c += ret;
 
       return ret;
     }
@@ -115,7 +116,7 @@ namespace haar_lib {
   public:
     int count_sub_palindromes() const {
       int ret = 0;
-      count_sub_palindromes_(odd_root, ret);
+      count_sub_palindromes_(odd_root_, ret);
       return ret;
     }
   };
