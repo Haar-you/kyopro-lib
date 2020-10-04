@@ -1,5 +1,5 @@
 ---
-title: 
+title: Range tree
 documentation_of: Mylib/DataStructure/RangeTree/range_tree.cpp
 ---
 
