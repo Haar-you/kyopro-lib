@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/enumerate_triangles.cpp\"\n#include <vector>\n\
     #include <tuple>\n#include <unordered_set>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\

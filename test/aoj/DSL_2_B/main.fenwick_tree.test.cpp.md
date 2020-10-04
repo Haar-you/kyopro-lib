@@ -1,18 +1,18 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':question:'
+    path: Mylib/AlgebraicStructure/Group/sum.cpp
+    title: Sum group
   - icon: ':x:'
     path: Mylib/DataStructure/FenwickTree/fenwick_tree.cpp
     title: Fenwick tree
   - icon: ':question:'
-    path: Mylib/AlgebraicStructure/Group/sum.cpp
-    title: Sum group
+    path: Mylib/IO/input_tuple.cpp
+    title: Input tuple
   - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
-  - icon: ':question:'
-    path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+    title: Input tuples
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -26,16 +26,16 @@ data:
     \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B\"\n\n#include\
     \ <iostream>\n#line 2 \"Mylib/DataStructure/FenwickTree/fenwick_tree.cpp\"\n#include\
     \ <vector>\n\nnamespace haar_lib {\n  template <typename AbelianGroup>\n  class\
-    \ fenwick_tree {\n    using value_type = typename AbelianGroup::value_type;\n\
-    \    const static AbelianGroup G;\n\n    int size;\n    std::vector<value_type>\
-    \ data;\n\n  public:\n    fenwick_tree(){}\n    fenwick_tree(int size):\n    \
-    \  size(size), data(size + 1, G())\n    {}\n\n    void update(int i, const value_type\
-    \ &val){\n      i += 1; // 1-index\n\n      while(i <= size){\n        data[i]\
-    \ = G(data[i], val);\n        i += i & (-i);\n      }\n    }\n\n    value_type\
-    \ fold(int i) const { // [0, i)\n      value_type ret = G();\n\n      while(i\
-    \ > 0){\n        ret = G(ret, data[i]);\n        i -= i & (-i);\n      }\n\n \
-    \     return ret;\n    }\n\n    value_type fold(int l, int r) const { // [l, r)\n\
-    \      return G(fold(r), G.inv(fold(l)));\n    }\n\n    value_type operator[](int\
+    \ fenwick_tree {\n  public:\n    using value_type = typename AbelianGroup::value_type;\n\
+    \n  private:\n    AbelianGroup G_;\n    int size_;\n    std::vector<value_type>\
+    \ data_;\n\n  public:\n    fenwick_tree(){}\n    fenwick_tree(int size):\n   \
+    \   size_(size), data_(size + 1, G_()){}\n\n    void update(int i, const value_type\
+    \ &val){\n      i += 1; // 1-index\n\n      while(i <= size_){\n        data_[i]\
+    \ = G_(data_[i], val);\n        i += i & (-i);\n      }\n    }\n\n    value_type\
+    \ fold(int i) const { // [0, i)\n      value_type ret = G_();\n\n      while(i\
+    \ > 0){\n        ret = G_(ret, data_[i]);\n        i -= i & (-i);\n      }\n\n\
+    \      return ret;\n    }\n\n    value_type fold(int l, int r) const { // [l,\
+    \ r)\n      return G_(fold(r), G_.inv(fold(l)));\n    }\n\n    value_type operator[](int\
     \ x) const {\n      return fold(x, x + 1);\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Group/sum.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  struct sum_group {\n    using\
     \ value_type = T;\n\n    value_type operator()() const {return 0;}\n    value_type\
@@ -82,7 +82,7 @@ data:
   isVerificationFile: true
   path: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
   requiredBy: []
-  timestamp: '2020-09-26 08:06:35+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp

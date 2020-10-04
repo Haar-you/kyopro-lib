@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Combinatorics/partition_number_n.cpp\"\n#include <cmath>\n\
     #include <vector>\n\nnamespace haar_lib {\n  template <typename T>\n  auto partition_number_n(int\

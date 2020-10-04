@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Combinatorics/stirling_number_second_fft.cpp\"\n#include\
     \ <vector>\n\nnamespace haar_lib {\n  template <typename T, typename Conv>\n \

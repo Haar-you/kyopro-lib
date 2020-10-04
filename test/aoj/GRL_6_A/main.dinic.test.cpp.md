@@ -1,15 +1,15 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Graph/Flow/dinic.cpp
     title: Dinic algorithm
   - icon: ':question:'
-    path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
-  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+    title: Input tuple
+  - icon: ':question:'
+    path: Mylib/IO/input_tuples.cpp
+    title: Input tuples
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -27,28 +27,28 @@ data:
     \ edge {\n      int from, to, rev;\n      T cap;\n      bool is_rev;\n      edge(int\
     \ from, int to, int rev, T cap, bool is_rev):\n        from(from), to(to), rev(rev),\
     \ cap(cap), is_rev(is_rev){}\n    };\n  }\n\n  template <typename T>\n  class\
-    \ dinic {\n    using edge = dinic_impl::edge<T>;\n\n    int size;\n    std::vector<std::vector<edge>>\
-    \ g;\n    std::vector<int> level;\n\n    bool build_level(int s, int t){\n   \
-    \   std::fill(level.begin(), level.end(), 0);\n      level[s] = 1;\n      std::queue<int>\
-    \ q;\n      q.push(s);\n      while(not q.empty()){\n        int cur = q.front();\
-    \ q.pop();\n        for(auto &e : g[cur]){\n          if(level[e.to] == 0 and\
-    \ e.cap > 0){\n            level[e.to] = level[e.from] + 1;\n            q.push(e.to);\n\
-    \          }\n        }\n      }\n      return level[t] != 0;\n    }\n\n    void\
-    \ dfs(std::vector<edge*> &path, T &flow, int cur, int t){\n      if(cur == t){\n\
-    \        T f = std::numeric_limits<T>::max();\n\n        for(auto e : path){\n\
-    \          f = std::min(f, (*e).cap);\n        }\n\n        for(auto e : path){\n\
-    \          (*e).cap -= f;\n          g[e->to][e->rev].cap += f;\n        }\n\n\
-    \        flow += f;\n      }else{\n        for(auto &e : g[cur]){\n          if(e.cap\
-    \ > 0 and level[e.to] > level[e.from]){\n            path.emplace_back(&e);\n\
-    \            dfs(path, flow, e.to, t);\n            path.pop_back();\n       \
-    \   }\n        }\n      }\n    }\n\n  public:\n    dinic(){}\n    dinic(int size):\
-    \ size(size), g(size), level(size){}\n\n    void add_edge(int from, int to, T\
-    \ c){\n      g[from].emplace_back(from, to, (int)g[to].size(), c, false);\n  \
-    \    g[to].emplace_back(to, from, (int)g[from].size() - 1, 0, true);\n    }\n\n\
-    \    T solve(int s, int t){\n      T f = 0;\n      while(build_level(s, t)){\n\
-    \        T a = 0;\n        std::vector<edge*> path;\n        dfs(path, a, s, t);\n\
-    \        f += a;\n      }\n      return f;\n    }\n\n    std::vector<edge> edges()\
-    \ const {\n      std::vector<edge> ret;\n      for(auto &v : g) ret.insert(ret.end(),\
+    \ dinic {\n  public:\n    using edge = dinic_impl::edge<T>;\n    using capacity_type\
+    \ = T;\n\n  private:\n    std::vector<std::vector<edge>> g_;\n    std::vector<int>\
+    \ level_;\n\n    bool build_level(int s, int t){\n      std::fill(level_.begin(),\
+    \ level_.end(), 0);\n      level_[s] = 1;\n      std::queue<int> q;\n      q.push(s);\n\
+    \      while(not q.empty()){\n        int cur = q.front(); q.pop();\n        for(auto\
+    \ &e : g_[cur]){\n          if(level_[e.to] == 0 and e.cap > 0){\n           \
+    \ level_[e.to] = level_[e.from] + 1;\n            q.push(e.to);\n          }\n\
+    \        }\n      }\n      return level_[t] != 0;\n    }\n\n    void dfs(std::vector<edge*>\
+    \ &path, T &flow, int cur, int t){\n      if(cur == t){\n        T f = std::numeric_limits<T>::max();\n\
+    \n        for(auto e : path){\n          f = std::min(f, (*e).cap);\n        }\n\
+    \n        for(auto e : path){\n          (*e).cap -= f;\n          g_[e->to][e->rev].cap\
+    \ += f;\n        }\n\n        flow += f;\n      }else{\n        for(auto &e :\
+    \ g_[cur]){\n          if(e.cap > 0 and level_[e.to] > level_[e.from]){\n    \
+    \        path.emplace_back(&e);\n            dfs(path, flow, e.to, t);\n     \
+    \       path.pop_back();\n          }\n        }\n      }\n    }\n\n  public:\n\
+    \    dinic(){}\n    dinic(int size): g_(size), level_(size){}\n\n    void add_edge(int\
+    \ from, int to, T c){\n      g_[from].emplace_back(from, to, (int)g_[to].size(),\
+    \ c, false);\n      g_[to].emplace_back(to, from, (int)g_[from].size() - 1, 0,\
+    \ true);\n    }\n\n    T max_flow(int s, int t){\n      T f = 0;\n      while(build_level(s,\
+    \ t)){\n        T a = 0;\n        std::vector<edge*> path;\n        dfs(path,\
+    \ a, s, t);\n        f += a;\n      }\n      return f;\n    }\n\n    std::vector<edge>\
+    \ edges() const {\n      std::vector<edge> ret;\n      for(auto &v : g_) ret.insert(ret.end(),\
     \ v.begin(), v.end());\n      return ret;\n    }\n  };\n}\n#line 4 \"Mylib/IO/input_tuples.cpp\"\
     \n#include <tuple>\n#line 6 \"Mylib/IO/input_tuples.cpp\"\n#include <initializer_list>\n\
     #line 6 \"Mylib/IO/input_tuple.cpp\"\n\nnamespace haar_lib {\n  template <typename\
@@ -72,14 +72,14 @@ data:
     \ N){\n    return InputTuples<Args ...>(N);\n  }\n}\n#line 7 \"test/aoj/GRL_6_A/main.dinic.test.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nint main(){\n  int V, E; std::cin >> V >> E;\n\
     \n  hl::dinic<int> f(V);\n\n  for(auto [s, t, c] : hl::input_tuples<int, int,\
-    \ int>(E)){\n    f.add_edge(s, t, c);\n  }\n\n  auto ans = f.solve(0, V - 1);\n\
+    \ int>(E)){\n    f.add_edge(s, t, c);\n  }\n\n  auto ans = f.max_flow(0, V - 1);\n\
     \  std::cout << ans << std::endl;\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A\"\
     \n\n#include <iostream>\n#include <climits>\n#include \"Mylib/Graph/Flow/dinic.cpp\"\
     \n#include \"Mylib/IO/input_tuples.cpp\"\n\nnamespace hl = haar_lib;\n\nint main(){\n\
     \  int V, E; std::cin >> V >> E;\n\n  hl::dinic<int> f(V);\n\n  for(auto [s, t,\
     \ c] : hl::input_tuples<int, int, int>(E)){\n    f.add_edge(s, t, c);\n  }\n\n\
-    \  auto ans = f.solve(0, V - 1);\n  std::cout << ans << std::endl;\n\n  return\
+    \  auto ans = f.max_flow(0, V - 1);\n  std::cout << ans << std::endl;\n\n  return\
     \ 0;\n}\n"
   dependsOn:
   - Mylib/Graph/Flow/dinic.cpp
@@ -88,7 +88,7 @@ data:
   isVerificationFile: true
   path: test/aoj/GRL_6_A/main.dinic.test.cpp
   requiredBy: []
-  timestamp: '2020-09-17 19:52:35+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/aoj/GRL_6_A/main.dinic.test.cpp

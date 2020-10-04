@@ -5,14 +5,14 @@ data:
     path: Mylib/Graph/maximum_independent_set.cpp
     title: Maximum independent set
   - icon: ':question:'
-    path: Mylib/IO/join.cpp
-    title: Mylib/IO/join.cpp
+    path: Mylib/IO/input_tuple.cpp
+    title: Input tuple
   - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
+    title: Input tuples
   - icon: ':question:'
-    path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+    path: Mylib/IO/join.cpp
+    title: join function
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -38,8 +38,8 @@ data:
     \ dp2(1 << h2, true); // dp2[S] := S\u304C\u72EC\u7ACB\u96C6\u5408\u304B?\n  \
     \  for(int i = h1; i < n; ++i){\n      for(int j = h1; j < n; ++j){\n        if(g[i][j])\
     \ dp2[(1 << (i - h1)) | (1 << (j - h1))] = false;\n      }\n    }\n\n    for(int\
-    \ s = 0; s < (1 << h2); ++s){\n      if(!dp2[s]){\n        for(int j = 0; j <\
-    \ h2; ++j){\n          dp2[s | (1 << j)] = false;\n        }\n      }\n    }\n\
+    \ s = 0; s < (1 << h2); ++s){\n      if(not dp2[s]){\n        for(int j = 0; j\
+    \ < h2; ++j){\n          dp2[s | (1 << j)] = false;\n        }\n      }\n    }\n\
     \n    std::vector<int> dp3(1 << h1, 0); // S1\u3068\u63A5\u7D9A\u3057\u306A\u3044\
     V2\u306E\u6700\u5927\u306E\u90E8\u5206\u96C6\u5408\n    dp3[0] = (1 << h2) - 1;\n\
     \    for(int i = 0; i < h1; ++i){\n      int t = 0;\n      for(int j = h1; j <\
@@ -107,7 +107,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/maximum_independent_set/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-29 00:55:13+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/maximum_independent_set/main.test.cpp

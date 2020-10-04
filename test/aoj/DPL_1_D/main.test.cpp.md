@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':question:'
+    path: Mylib/IO/input_vector.cpp
+    title: Input vector
   - icon: ':x:'
     path: Mylib/Typical/LongestSubsequence/longest_increasing_subsequence.cpp
     title: Longest increasing subsequence
-  - icon: ':question:'
-    path: Mylib/IO/input_vector.cpp
-    title: Mylib/IO/input_vector.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

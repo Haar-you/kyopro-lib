@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: Mylib/Graph/Template/graph.cpp
-    title: Basic graph
   - icon: ':x:'
     path: Mylib/Graph/ShortestPath/warshall_floyd.cpp
     title: Warshall-Floyd algorithm
+  - icon: ':question:'
+    path: Mylib/Graph/Template/graph.cpp
+    title: Basic graph
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/mobius_function.cpp\"\n#include <vector>\n\n\
     namespace haar_lib {\n  template <typename Checker>\n  std::vector<int> mobius_function(int\

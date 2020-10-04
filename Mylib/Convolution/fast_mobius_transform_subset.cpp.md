@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Convolution/fast_mobius_transform_subset.cpp\"\n#include\
     \ <vector>\n#include <functional>\n\nnamespace haar_lib {\n  template <typename\

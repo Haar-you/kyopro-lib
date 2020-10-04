@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':x:'
-    path: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
-    title: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+    path: test/yosupo-judge/point_set_range_composite/main.test.cpp
+    title: test/yosupo-judge/point_set_range_composite/main.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/queue_operate_all_composite/main.test.cpp
     title: test/yosupo-judge/queue_operate_all_composite/main.test.cpp
@@ -13,12 +13,11 @@ data:
     path: test/yosupo-judge/range_affine_range_sum/main.test.cpp
     title: test/yosupo-judge/range_affine_range_sum/main.test.cpp
   - icon: ':x:'
-    path: test/yosupo-judge/point_set_range_composite/main.test.cpp
-    title: test/yosupo-judge/point_set_range_composite/main.test.cpp
+    path: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+    title: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/affine.cpp\"\n#include <utility>\n\
     \nnamespace haar_lib {\n  template <typename T>\n  struct affine_monoid {\n  \

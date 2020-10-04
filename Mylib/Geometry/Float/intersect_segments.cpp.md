@@ -2,26 +2,25 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: Mylib/Geometry/Float/geometry_template.cpp
-    title: Geometry template
-  - icon: ':question:'
     path: Mylib/Geometry/Float/ccw.cpp
     title: Check clockwise-counterclockwise
+  - icon: ':question:'
+    path: Mylib/Geometry/Float/geometry_template.cpp
+    title: Geometry template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2136/main.test.cpp
     title: test/aoj/2136/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/aoj/CGL_2_B/main.test.cpp
     title: test/aoj/CGL_2_B/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/aoj/CGL_2_C/main.test.cpp
     title: test/aoj/CGL_2_C/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/intersect_segments.cpp\"\n#include\
     \ <vector>\n#line 2 \"Mylib/Geometry/Float/geometry_template.cpp\"\n#include <iostream>\n\
@@ -137,7 +136,7 @@ data:
   path: Mylib/Geometry/Float/intersect_segments.cpp
   requiredBy: []
   timestamp: '2020-09-19 20:03:12+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/2136/main.test.cpp
   - test/aoj/CGL_2_B/main.test.cpp

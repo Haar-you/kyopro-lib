@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
-  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+    title: Input tuple
+  - icon: ':question:'
+    path: Mylib/IO/input_tuples.cpp
+    title: Input tuples
   - icon: ':x:'
     path: Mylib/Number/kth_root_integer.cpp
     title: Kth root integer

@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/with_count.cpp\"\n#include\
     \ <utility>\n#include <cstdint>\n\nnamespace haar_lib {\n  namespace with_count_impl\
@@ -44,7 +43,7 @@ data:
   - test/aoj/3035/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Monoid/with_count.cpp
 layout: document
-title: null
+title: With count
 ---
 
 ## Operations

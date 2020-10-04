@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Typical/IntervalSchedulingProblem/interval_scheduling_k.cpp\"\
     \n#include <vector>\n#include <set>\n#include <iterator>\n#include <algorithm>\n\

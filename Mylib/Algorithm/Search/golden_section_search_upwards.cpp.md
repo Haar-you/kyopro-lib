@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Algorithm/Search/golden_section_search_upwards.cpp\"\
     \n#include <functional>\n#include <cmath>\n\nnamespace haar_lib {\n  template\

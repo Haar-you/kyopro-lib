@@ -1,15 +1,15 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: Mylib/Graph/Template/graph.cpp
-    title: Basic graph
   - icon: ':x:'
     path: Mylib/Graph/GraphUtils/two_edge_connected_components.cpp
     title: Two edge connected components
   - icon: ':question:'
+    path: Mylib/Graph/Template/graph.cpp
+    title: Basic graph
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
-    title: Mylib/IO/join.cpp
+    title: join function
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

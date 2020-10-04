@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/travelling_salesman_problem.cpp\"\n#include\
     \ <vector>\n#include <optional>\n#include <algorithm>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\

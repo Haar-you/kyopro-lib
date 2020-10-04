@@ -2,29 +2,29 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: Mylib/Graph/Template/graph.cpp
-    title: Basic graph
-  - icon: ':question:'
-    path: Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp
-    title: Heavy-light decomposition
-  - icon: ':question:'
-    path: Mylib/DataStructure/SegmentTree/segment_tree.cpp
-    title: Segment tree
-  - icon: ':question:'
     path: Mylib/AlgebraicStructure/Monoid/max.cpp
     title: Max monoid
   - icon: ':x:'
     path: Mylib/AlgebraicStructure/Monoid/maybe.cpp
     title: Maybe monoid
   - icon: ':question:'
-    path: Mylib/IO/input_vector.cpp
-    title: Mylib/IO/input_vector.cpp
+    path: Mylib/DataStructure/SegmentTree/segment_tree.cpp
+    title: Segment tree
   - icon: ':question:'
-    path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
+    path: Mylib/Graph/Template/graph.cpp
+    title: Basic graph
+  - icon: ':question:'
+    path: Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp
+    title: Heavy-light decomposition
   - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+    title: Input tuple
+  - icon: ':question:'
+    path: Mylib/IO/input_tuples.cpp
+    title: Input tuples
+  - icon: ':question:'
+    path: Mylib/IO/input_vector.cpp
+    title: Input vector
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -58,91 +58,94 @@ data:
     \ <typename T>\n  using tree = graph<T>;\n}\n#line 3 \"Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp\"\
     \n#include <utility>\n#line 6 \"Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  class hl_decomposition {\n\
-    \    int n;\n\n    std::vector<int> sub, // subtree size\n      par, // parent\
-    \ id\n      head, // chain head id\n      id, // id[original id] = hld id\n  \
-    \    rid, // rid[hld id] = original id\n      next, // next node in a chain\n\
-    \      end; //\n\n    int dfs_sub(tree<T> &tr, int cur, int p){\n      par[cur]\
+    \    int n_;\n\n    std::vector<int> sub_, // subtree size\n      par_, // parent\
+    \ id\n      head_, // chain head id\n      id_, // id[original id] = hld id\n\
+    \      rid_, // rid[hld id] = original id\n      next_, // next node in a chain\n\
+    \      end_; //\n\n    int dfs_sub(tree<T> &tr, int cur, int p){\n      par_[cur]\
     \ = p;\n      int t = 0;\n      for(auto &e : tr[cur]){\n        if(e.to == p)\
-    \ continue;\n        sub[cur] += dfs_sub(tr, e.to, cur);\n        if(sub[e.to]\
-    \ > t){\n          t = sub[e.to];\n          next[cur] = e.to;\n          std::swap(e,\
-    \ tr[cur][0]);\n        }\n      }\n      return sub[cur];\n    }\n\n    void\
-    \ dfs_build(const tree<T> &tr, int cur, int &i){\n      id[cur] = i;\n      rid[i]\
-    \ = cur;\n      ++i;\n\n      for(auto &e : tr[cur]){\n        if(e.to == par[cur])\
-    \ continue;\n        head[e.to] = (e.to == tr[cur][0].to ? head[cur] : e.to);\n\
-    \        dfs_build(tr, e.to, i);\n      }\n\n      end[cur] = i;\n    }\n\n  public:\n\
-    \    hl_decomposition(tree<T> tr, int root):\n      n(tr.size()), sub(n, 1), par(n,\
-    \ -1), head(n), id(n), rid(n), next(n, -1), end(n, -1){\n      dfs_sub(tr, root,\
-    \ -1);\n      int i = 0;\n      dfs_build(tr, root, i);\n    }\n\n    std::vector<std::tuple<int,\
-    \ int, bool>> path_query_vertex(int x, int y) const {\n      std::vector<std::tuple<int,\
+    \ continue;\n        sub_[cur] += dfs_sub(tr, e.to, cur);\n        if(sub_[e.to]\
+    \ > t){\n          t = sub_[e.to];\n          next_[cur] = e.to;\n          std::swap(e,\
+    \ tr[cur][0]);\n        }\n      }\n      return sub_[cur];\n    }\n\n    void\
+    \ dfs_build(const tree<T> &tr, int cur, int &i){\n      id_[cur] = i;\n      rid_[i]\
+    \ = cur;\n      ++i;\n\n      for(auto &e : tr[cur]){\n        if(e.to == par_[cur])\
+    \ continue;\n        head_[e.to] = (e.to == tr[cur][0].to ? head_[cur] : e.to);\n\
+    \        dfs_build(tr, e.to, i);\n      }\n\n      end_[cur] = i;\n    }\n\n \
+    \ public:\n    hl_decomposition(){}\n    hl_decomposition(tree<T> tr, int root):\n\
+    \      n_(tr.size()), sub_(n_, 1), par_(n_, -1), head_(n_), id_(n_), rid_(n_),\
+    \ next_(n_, -1), end_(n_, -1){\n      dfs_sub(tr, root, -1);\n      int i = 0;\n\
+    \      dfs_build(tr, root, i);\n    }\n\n    std::vector<std::tuple<int, int,\
+    \ bool>> path_query_vertex(int x, int y) const {\n      std::vector<std::tuple<int,\
     \ int, bool>> ret;\n      const int w = lca(x, y);\n\n      {\n        int y =\
-    \ w;\n        bool d = true;\n        while(1){\n          if(id[x] > id[y]) std::swap(x,\
-    \ y), d = not d;\n          int l = std::max(id[head[y]], id[x]), r = id[y] +\
-    \ 1;\n          if(l != r) ret.emplace_back(l, r, d);\n          if(head[x] ==\
-    \ head[y]) break;\n          y = par[head[y]];\n        }\n      }\n\n      x\
-    \ = y;\n      y = w;\n\n      {\n        std::vector<std::tuple<int, int, bool>>\
-    \ temp;\n        bool d = false;\n        while(1){\n          if(id[x] > id[y])\
-    \ std::swap(x, y), d = not d;\n          int l = std::max({id[head[y]], id[x],\
-    \ id[w] + 1}), r = id[y] + 1;\n          if(l != r) temp.emplace_back(l, r, d);\n\
-    \          if(head[x] == head[y]) break;\n          y = par[head[y]];\n      \
-    \  }\n\n        std::reverse(temp.begin(), temp.end());\n        ret.insert(ret.end(),\
+    \ w;\n        bool d = true;\n        while(1){\n          if(id_[x] > id_[y])\
+    \ std::swap(x, y), d = not d;\n          int l = std::max(id_[head_[y]], id_[x]),\
+    \ r = id_[y] + 1;\n          if(l != r) ret.emplace_back(l, r, d);\n         \
+    \ if(head_[x] == head_[y]) break;\n          y = par_[head_[y]];\n        }\n\
+    \      }\n\n      x = y;\n      y = w;\n\n      {\n        std::vector<std::tuple<int,\
+    \ int, bool>> temp;\n        bool d = false;\n        while(1){\n          if(id_[x]\
+    \ > id_[y]) std::swap(x, y), d = not d;\n          int l = std::max({id_[head_[y]],\
+    \ id_[x], id_[w] + 1}), r = id_[y] + 1;\n          if(l != r) temp.emplace_back(l,\
+    \ r, d);\n          if(head_[x] == head_[y]) break;\n          y = par_[head_[y]];\n\
+    \        }\n\n        std::reverse(temp.begin(), temp.end());\n        ret.insert(ret.end(),\
     \ temp.begin(), temp.end());\n      }\n\n      return ret;\n    }\n\n    std::vector<std::pair<int,\
     \ int>> path_query_edge(int x, int y) const {\n      std::vector<std::pair<int,\
-    \ int>> ret;\n      while(1){\n        if(id[x] > id[y]) std::swap(x, y);\n  \
-    \      if(head[x] == head[y]){\n          if(x != y) ret.emplace_back(id[x] +\
-    \ 1, id[y] + 1);\n          break;\n        }\n        ret.emplace_back(id[head[y]],\
-    \ id[y] + 1);\n        y = par[head[y]];\n      }\n      return ret;\n    }\n\n\
-    \    std::pair<int, int> subtree_query_edge(int x) const {\n      return {id[x]\
-    \ + 1, end[x]};\n    }\n\n    std::pair<int, int> subtree_query_vertex(int x)\
-    \ const {\n      return {id[x], end[x]};\n    }\n\n    int get_edge_id(int u,\
-    \ int v) const { // \u8FBA\u306B\u5BFE\u5FDC\u3059\u308Bid\n      if(par[u] ==\
-    \ v) return id[u];\n      if(par[v] == u) return id[v];\n      return -1;\n  \
-    \  }\n\n    int parent(int x) const {return par[x];};\n\n    int lca(int u, int\
-    \ v) const {\n      while(1){\n        if(id[u] > id[v]) std::swap(u, v);\n  \
-    \      if(head[u] == head[v]) return u;\n        v = par[head[v]];\n      }\n\
-    \    }\n\n    int get_id(int x) const {\n      return id[x];\n    }\n  };\n}\n\
-    #line 5 \"Mylib/DataStructure/SegmentTree/segment_tree.cpp\"\n\nnamespace haar_lib\
-    \ {\n  template <typename Monoid>\n  class segment_tree {\n    using value_type\
-    \ = typename Monoid::value_type;\n    const static Monoid M;\n\n    int depth,\
-    \ size, hsize;\n    std::vector<value_type> data;\n\n  public:\n    segment_tree(){}\n\
-    \    segment_tree(int n):\n      depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 :\
-    \ 1),\n      size(1 << depth), hsize(size / 2),\n      data(size, M())\n    {}\n\
-    \n    auto operator[](int i) const {return data[hsize + i];}\n\n    auto fold(int\
-    \ x, int y) const {\n      value_type ret_left = M();\n      value_type ret_right\
-    \ = M();\n\n      int l = x + hsize, r = y + hsize;\n      while(l < r){\n   \
-    \     if(r & 1) ret_right = M(data[--r], ret_right);\n        if(l & 1) ret_left\
-    \ = M(ret_left, data[l++]);\n        l >>= 1, r >>= 1;\n      }\n\n      return\
-    \ M(ret_left, ret_right);\n    }\n\n    void set(int i, const value_type &x){\n\
-    \      i += hsize;\n      data[i] = x;\n      while(i > 1) i >>= 1, data[i] =\
-    \ M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n    void update(int i, const\
-    \ value_type &x){\n      i += hsize;\n      data[i] = M(data[i], x);\n      while(i\
-    \ > 1) i >>= 1, data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n  \
-    \  template <typename T>\n    void init_with_vector(const std::vector<T> &val){\n\
-    \      data.assign(size, M());\n      for(int i = 0; i < (int)val.size(); ++i)\
-    \ data[hsize + i] = val[i];\n      for(int i = hsize - 1; i >= 1; --i) data[i]\
-    \ = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n    template <typename T>\n\
-    \    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
+    \ int>> ret;\n      while(1){\n        if(id_[x] > id_[y]) std::swap(x, y);\n\
+    \        if(head_[x] == head_[y]){\n          if(x != y) ret.emplace_back(id_[x]\
+    \ + 1, id_[y] + 1);\n          break;\n        }\n        ret.emplace_back(id_[head_[y]],\
+    \ id_[y] + 1);\n        y = par_[head_[y]];\n      }\n      return ret;\n    }\n\
+    \n    std::pair<int, int> subtree_query_edge(int x) const {\n      return {id_[x]\
+    \ + 1, end_[x]};\n    }\n\n    std::pair<int, int> subtree_query_vertex(int x)\
+    \ const {\n      return {id_[x], end_[x]};\n    }\n\n    int get_edge_id(int u,\
+    \ int v) const { // \u8FBA\u306B\u5BFE\u5FDC\u3059\u308Bid\n      if(par_[u] ==\
+    \ v) return id_[u];\n      if(par_[v] == u) return id_[v];\n      return -1;\n\
+    \    }\n\n    int parent(int x) const {return par_[x];};\n\n    int lca(int u,\
+    \ int v) const {\n      while(1){\n        if(id_[u] > id_[v]) std::swap(u, v);\n\
+    \        if(head_[u] == head_[v]) return u;\n        v = par_[head_[v]];\n   \
+    \   }\n    }\n\n    int get_id(int x) const {\n      return id_[x];\n    }\n \
+    \ };\n}\n#line 5 \"Mylib/DataStructure/SegmentTree/segment_tree.cpp\"\n\nnamespace\
+    \ haar_lib {\n  template <typename Monoid>\n  class segment_tree {\n  public:\n\
+    \    using value_type = typename Monoid::value_type;\n\n  private:\n    Monoid\
+    \ M_;\n    int depth_, size_, hsize_;\n    std::vector<value_type> data_;\n\n\
+    \  public:\n    segment_tree(){}\n    segment_tree(int n):\n      depth_(n > 1\
+    \ ? 32 - __builtin_clz(n - 1) + 1 : 1),\n      size_(1 << depth_), hsize_(size_\
+    \ / 2),\n      data_(size_, M_())\n    {}\n\n    auto operator[](int i) const\
+    \ {return data_[hsize_ + i];}\n\n    auto fold(int x, int y) const {\n      value_type\
+    \ ret_left = M_();\n      value_type ret_right = M_();\n\n      int l = x + hsize_,\
+    \ r = y + hsize_;\n      while(l < r){\n        if(r & 1) ret_right = M_(data_[--r],\
+    \ ret_right);\n        if(l & 1) ret_left = M_(ret_left, data_[l++]);\n      \
+    \  l >>= 1, r >>= 1;\n      }\n\n      return M_(ret_left, ret_right);\n    }\n\
+    \n    auto fold_all() const {\n      return data_[1];\n    }\n\n    void set(int\
+    \ i, const value_type &x){\n      i += hsize_;\n      data_[i] = x;\n      while(i\
+    \ > 1) i >>= 1, data_[i] = M_(data_[i << 1 | 0], data_[i << 1 | 1]);\n    }\n\n\
+    \    void update(int i, const value_type &x){\n      i += hsize_;\n      data_[i]\
+    \ = M_(data_[i], x);\n      while(i > 1) i >>= 1, data_[i] = M_(data_[i << 1 |\
+    \ 0], data_[i << 1 | 1]);\n    }\n\n    template <typename T>\n    void init_with_vector(const\
+    \ std::vector<T> &val){\n      data_.assign(size_, M_());\n      for(int i = 0;\
+    \ i < (int)val.size(); ++i) data_[hsize_ + i] = val[i];\n      for(int i = hsize_;\
+    \ --i >= 1;) data_[i] = M_(data_[i << 1 | 0], data_[i << 1 | 1]);\n    }\n\n \
+    \   template <typename T>\n    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize_,\
     \ val));\n    }\n\n  private:\n    template <bool Lower, typename F>\n    int\
     \ bound(const int l, const int r, value_type x, F f) const {\n      std::vector<int>\
-    \ pl, pr;\n      int L = l + hsize;\n      int R = r + hsize;\n      while(L <\
-    \ R){\n        if(R & 1) pr.push_back(--R);\n        if(L & 1) pl.push_back(L++);\n\
+    \ pl, pr;\n      int L = l + hsize_;\n      int R = r + hsize_;\n      while(L\
+    \ < R){\n        if(R & 1) pr.push_back(--R);\n        if(L & 1) pl.push_back(L++);\n\
     \        L >>= 1, R >>= 1;\n      }\n\n      std::reverse(pr.begin(), pr.end());\n\
-    \      pl.insert(pl.end(), pr.begin(), pr.end());\n\n      value_type a = M();\n\
-    \n      for(int i : pl){\n        auto b = M(a, data[i]);\n\n        if((Lower\
-    \ and not f(b, x)) or (not Lower and f(x, b))){\n          while(i < hsize){\n\
-    \            if(auto c = M(a, data[i << 1 | 0]); (Lower and not f(c, x)) or (not\
-    \ Lower and f(x, c))){\n              i = i << 1 | 0;\n            }else{\n  \
-    \            a = c;\n              i = i << 1 | 1;\n            }\n          }\n\
-    \n          return i - hsize;\n        }\n\n        a = b;\n      }\n\n      return\
-    \ r;\n    }\n\n  public:\n    template <typename F = std::less<value_type>>\n\
-    \    int lower_bound(int l, int r, value_type x, F f = F()) const {\n      return\
-    \ bound<true>(l, r, x, f);\n    }\n\n    template <typename F = std::less<value_type>>\n\
-    \    int upper_bound(int l, int r, value_type x, F f = F()) const {\n      return\
-    \ bound<false>(l, r, x, f);\n    }\n  };\n}\n#line 3 \"Mylib/AlgebraicStructure/Monoid/max.cpp\"\
-    \n#include <optional>\n\nnamespace haar_lib {\n  template <typename T>\n  struct\
-    \ max_monoid {\n    using value_type = std::optional<T>;\n\n    value_type operator()()\
-    \ const {return {};}\n    value_type operator()(const value_type &a, const value_type\
-    \ &b) const {\n      if(not a) return b;\n      if(not b) return a;\n      return\
-    \ {std::max(*a, *b)};\n    }\n  };\n}\n#line 3 \"Mylib/AlgebraicStructure/Monoid/maybe.cpp\"\
+    \      pl.insert(pl.end(), pr.begin(), pr.end());\n\n      value_type a = M_();\n\
+    \n      for(int i : pl){\n        auto b = M_(a, data_[i]);\n\n        if((Lower\
+    \ and not f(b, x)) or (not Lower and f(x, b))){\n          while(i < hsize_){\n\
+    \            const auto c = M_(a, data_[i << 1 | 0]);\n            if((Lower and\
+    \ not f(c, x)) or (not Lower and f(x, c))){\n              i = i << 1 | 0;\n \
+    \           }else{\n              a = c;\n              i = i << 1 | 1;\n    \
+    \        }\n          }\n\n          return i - hsize_;\n        }\n\n       \
+    \ a = b;\n      }\n\n      return r;\n    }\n\n  public:\n    template <typename\
+    \ F = std::less<value_type>>\n    int lower_bound(int l, int r, value_type x,\
+    \ F f = F()) const {\n      return bound<true>(l, r, x, f);\n    }\n\n    template\
+    \ <typename F = std::less<value_type>>\n    int upper_bound(int l, int r, value_type\
+    \ x, F f = F()) const {\n      return bound<false>(l, r, x, f);\n    }\n  };\n\
+    }\n#line 3 \"Mylib/AlgebraicStructure/Monoid/max.cpp\"\n#include <optional>\n\n\
+    namespace haar_lib {\n  template <typename T>\n  struct max_monoid {\n    using\
+    \ value_type = std::optional<T>;\n\n    value_type operator()() const {return\
+    \ {};}\n    value_type operator()(const value_type &a, const value_type &b) const\
+    \ {\n      if(not a) return b;\n      if(not b) return a;\n      return {std::max(*a,\
+    \ *b)};\n    }\n  };\n}\n#line 3 \"Mylib/AlgebraicStructure/Monoid/maybe.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename Semigroup>\n  struct maybe_monoid\
     \ {\n    using value_type = std::optional<typename Semigroup::value_type>;\n \
     \   const static Semigroup S;\n\n    value_type operator()() const {return std::nullopt;}\n\
@@ -224,7 +227,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/1030/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-25 01:38:58+09:00'
+  timestamp: '2020-09-28 13:26:18+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/1030/main.test.cpp

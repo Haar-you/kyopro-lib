@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Typical/SubsetSumProblem/subset_sum_count.cpp\"\n\
     #include <vector>\n\nnamespace haar_lib {\n  template <typename T>\n  auto subset_sum_count(int\

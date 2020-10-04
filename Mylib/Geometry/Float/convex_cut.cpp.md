@@ -2,14 +2,14 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
+    path: Mylib/Geometry/Float/ccw.cpp
+    title: Check clockwise-counterclockwise
+  - icon: ':question:'
     path: Mylib/Geometry/Float/geometry_template.cpp
     title: Geometry template
   - icon: ':x:'
     path: Mylib/Geometry/Float/intersect_line_segment.cpp
     title: Intersection between a line and a segment
-  - icon: ':question:'
-    path: Mylib/Geometry/Float/ccw.cpp
-    title: Check clockwise-counterclockwise
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':x:'
@@ -18,7 +18,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/geometry_template.cpp\"\n#include <iostream>\n\
     #include <cmath>\n#include <vector>\n\nnamespace haar_lib {\n  template <typename\

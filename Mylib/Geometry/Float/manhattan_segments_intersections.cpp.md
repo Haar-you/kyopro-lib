@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/manhattan_segments_intersections.cpp\"\
     \n#include <vector>\n#include <algorithm>\n#include <utility>\n#include <tuple>\n\

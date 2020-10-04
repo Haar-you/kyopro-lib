@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Algorithm/CartesianTree/cartesian_tree.cpp\"\n#include\
     \ <vector>\n#include <tuple>\n#include <optional>\n\nnamespace haar_lib {\n  template\

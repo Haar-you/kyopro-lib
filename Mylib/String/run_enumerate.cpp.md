@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/String/run_enumerate.cpp\"\n#include <string>\n#include\
     \ <tuple>\n#include <map>\n#include <utility>\n#include <algorithm>\n#line 2 \"\

@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':question:'
+    path: Mylib/IO/input_tuple_vector.cpp
+    title: Input tuple vector
   - icon: ':heavy_check_mark:'
     path: Mylib/Typical/IntervalSchedulingProblem/interval_scheduling.cpp
     title: Interval scheduling problem
-  - icon: ':question:'
-    path: Mylib/IO/input_tuple_vector.cpp
-    title: Mylib/IO/input_tuple_vector.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

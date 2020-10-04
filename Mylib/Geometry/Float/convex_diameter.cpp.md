@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/convex_diameter.cpp\"\n#include <algorithm>\n\
     #line 2 \"Mylib/Geometry/Float/geometry_template.cpp\"\n#include <iostream>\n\

@@ -9,24 +9,25 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp\"\n\
-    \nnamespace haar_lib {\n  template <typename MonoidGet, typename MonoidUpdate>\n\
-    \  struct affine_sum {\n    using value_type_get = typename MonoidGet::value_type;\n\
+    \nnamespace haar_lib {\n  template <typename MonoidUpdate, typename MonoidGet>\n\
+    \  struct affine_sum {\n    using monoid_get = MonoidGet;\n    using monoid_update\
+    \ = MonoidUpdate;\n    using value_type_get = typename MonoidGet::value_type;\n\
     \    using value_type_update = typename MonoidUpdate::value_type;\n\n    value_type_get\
     \ operator()(value_type_get a, value_type_update b, int len) const {\n      return\
     \ b.first * a + b.second * len;\n    }\n  };\n}\n"
-  code: "#pragma once\n\nnamespace haar_lib {\n  template <typename MonoidGet, typename\
-    \ MonoidUpdate>\n  struct affine_sum {\n    using value_type_get = typename MonoidGet::value_type;\n\
-    \    using value_type_update = typename MonoidUpdate::value_type;\n\n    value_type_get\
-    \ operator()(value_type_get a, value_type_update b, int len) const {\n      return\
-    \ b.first * a + b.second * len;\n    }\n  };\n}\n"
+  code: "#pragma once\n\nnamespace haar_lib {\n  template <typename MonoidUpdate,\
+    \ typename MonoidGet>\n  struct affine_sum {\n    using monoid_get = MonoidGet;\n\
+    \    using monoid_update = MonoidUpdate;\n    using value_type_get = typename\
+    \ MonoidGet::value_type;\n    using value_type_update = typename MonoidUpdate::value_type;\n\
+    \n    value_type_get operator()(value_type_get a, value_type_update b, int len)\
+    \ const {\n      return b.first * a + b.second * len;\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp
   requiredBy: []
-  timestamp: '2020-09-18 18:43:57+09:00'
+  timestamp: '2020-10-02 17:13:14+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/range_affine_range_sum/main.test.cpp

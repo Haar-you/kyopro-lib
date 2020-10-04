@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Bit/enumerate_subsets_between.cpp\"\n\nnamespace haar_lib\
     \ {\n  template <typename Func>\n  void enumerate_subsets_between(int a, int b,\

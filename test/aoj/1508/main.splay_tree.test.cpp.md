@@ -1,21 +1,21 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':question:'
+    path: Mylib/AlgebraicStructure/Monoid/min.cpp
+    title: Min monoid
   - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/BBST/splay_tree.cpp
     title: Splay tree
   - icon: ':question:'
-    path: Mylib/AlgebraicStructure/Monoid/min.cpp
-    title: Min monoid
+    path: Mylib/IO/input_tuple.cpp
+    title: Input tuple
   - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
-  - icon: ':question:'
-    path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+    title: Input tuples
   - icon: ':question:'
     path: Mylib/IO/input_tuples_with_index.cpp
-    title: Mylib/IO/input_tuples_with_index.cpp
+    title: Input tuples with index
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -40,9 +40,9 @@ data:
     \      }\n\n      if(pp){\n        if(pp->left == p) pp->left = this;\n      \
     \  if(pp->right == p) pp->right = this;\n      }\n\n      this->parent = pp;\n\
     \n      p->update();\n      this->update();\n    }\n\n    int status(){\n    \
-    \  if(!this->parent) return 0;\n      if(this->parent->left == this) return 1;\n\
-    \      if(this->parent->right == this) return -1;\n      return 0;\n    }\n\n\
-    \    void splay(){\n      while(status() != 0){\n        if(this->parent->status()\
+    \  if(not this->parent) return 0;\n      if(this->parent->left == this) return\
+    \ 1;\n      if(this->parent->right == this) return -1;\n      return 0;\n    }\n\
+    \n    void splay(){\n      while(status() != 0){\n        if(this->parent->status()\
     \ == 0){\n          this->rotate();\n        }else if(this->status() == this->parent->status()){\n\
     \          this->parent->rotate();\n          this->rotate();\n        }else{\n\
     \          this->rotate();\n          this->rotate();\n        }\n      }\n  \
@@ -53,52 +53,53 @@ data:
     \    }\n\n    void set_left(node *l){\n      this->left = l;\n      if(l) l->parent\
     \ = this;\n    }\n\n    void set_right(node *r){\n      this->right = r;\n   \
     \   if(r) r->parent = this;\n    }\n\n    static node* get(node *root, int index){\n\
-    \      if(!root) return root;\n      node *cur = root;\n\n      while(1){\n  \
-    \      int lsize = cur->left ? cur->left->size : 0;\n\n        if(index < lsize){\n\
+    \      if(not root) return root;\n      node *cur = root;\n\n      while(1){\n\
+    \        int lsize = cur->left ? cur->left->size : 0;\n\n        if(index < lsize){\n\
     \          cur = cur->left;\n        }else if(index == lsize){\n          cur->splay();\n\
     \          return cur;\n        }else{\n          cur = cur->right;\n        \
     \  index -= lsize + 1;\n        }\n      }\n    }\n\n    static node* merge(node\
-    \ *left, node *right){\n      if(!left) return right;\n      if(!right) return\
-    \ left;\n\n      node *cur = node::get(left, left->size - 1);\n\n      cur->right\
-    \ = right;\n      right->parent = cur;\n\n      right->update();\n      cur->update();\n\
-    \n      return cur;\n    }\n\n    static std::pair<node*, node*> split(node *root,\
-    \ int index){\n      if(!root) return std::make_pair(nullptr, nullptr);\n    \
-    \  if(index >= root->size) return std::make_pair(root, nullptr);\n\n      auto\
-    \ *cur = node::get(root, index);\n      auto *left = cur->left;\n\n      if(left)\
-    \ left->parent = nullptr;\n      cur->left = nullptr;\n\n      if(left) left->update();\n\
-    \      cur->update();\n\n      return std::make_pair(left, cur);\n    }\n\n  \
-    \  template <typename Func>\n    static void traverse(node *cur, const Func &f){\n\
-    \      if(cur){\n        traverse(cur->left, f);\n        f(*cur);\n        traverse(cur->right,\
-    \ f);\n      }\n    }\n  };\n\n  template <typename Monoid>\n  struct splay_tree\
-    \ {\n    using node = splay_node<Monoid>;\n    using value_type = typename Monoid::value_type;\n\
-    \    const static Monoid M;\n\n    node *root;\n\n    splay_tree(): root(nullptr){}\n\
-    \    splay_tree(node *root): root(root){}\n    splay_tree(int N): root(nullptr){\n\
-    \      for(int i = 0; i < N; ++i) push_back(M());\n    }\n\n    static auto singleton(const\
-    \ value_type &value){return splay_tree(new node(value));}\n\n    int size() const\
-    \ {return root ? root->size : 0;}\n    bool empty() const {return !root;}\n\n\
-    \    const value_type get(int index){root = node::get(root, index); return root->value;}\n\
-    \    const value_type operator[](int index){return get(index);}\n\n    void set(int\
-    \ index, const value_type &value){\n      root = node::get(root, index); root->value\
-    \ = value; root->update();\n    }\n\n    void merge_right(splay_tree &right){\n\
-    \      root = node::merge(root, right.root); right.root = nullptr;\n    }\n\n\
-    \    void merge_left(splay_tree &left){\n      root = node::merge(left.root, root);\
-    \ left.root = nullptr;\n    }\n\n    auto split(int index){\n      node *left,\
-    \ *right; std::tie(left, right) = node::split(root, index);\n      return std::make_pair(splay_tree(left),\
+    \ *left, node *right){\n      if(not left) return right;\n      if(not right)\
+    \ return left;\n\n      node *cur = node::get(left, left->size - 1);\n\n     \
+    \ cur->right = right;\n      right->parent = cur;\n\n      right->update();\n\
+    \      cur->update();\n\n      return cur;\n    }\n\n    static std::pair<node*,\
+    \ node*> split(node *root, int index){\n      if(not root) return std::make_pair(nullptr,\
+    \ nullptr);\n      if(index >= root->size) return std::make_pair(root, nullptr);\n\
+    \n      auto *cur = node::get(root, index);\n      auto *left = cur->left;\n\n\
+    \      if(left) left->parent = nullptr;\n      cur->left = nullptr;\n\n      if(left)\
+    \ left->update();\n      cur->update();\n\n      return std::make_pair(left, cur);\n\
+    \    }\n\n    template <typename Func>\n    static void traverse(node *cur, const\
+    \ Func &f){\n      if(cur){\n        traverse(cur->left, f);\n        f(*cur);\n\
+    \        traverse(cur->right, f);\n      }\n    }\n  };\n\n  template <typename\
+    \ Monoid>\n  class splay_tree {\n  public:\n    using value_type = typename Monoid::value_type;\n\
+    \n  private:\n    using node = splay_node<Monoid>;\n    Monoid M_;\n    node *root_;\n\
+    \n    splay_tree(node *root): root_(root){}\n\n  public:\n    splay_tree(): root_(nullptr){}\n\
+    \    splay_tree(int N): root_(nullptr){\n      for(int i = 0; i < N; ++i) push_back(M_());\n\
+    \    }\n\n    static auto singleton(const value_type &value){return splay_tree(new\
+    \ node(value));}\n\n    int size() const {return root_ ? root_->size : 0;}\n \
+    \   bool empty() const {return not root_;}\n\n    const value_type get(int index){root_\
+    \ = node::get(root_, index); return root_->value;}\n    const value_type operator[](int\
+    \ index){return get(index);}\n\n    void set(int index, const value_type &value){\n\
+    \      root_ = node::get(root_, index); root_->value = value; root_->update();\n\
+    \    }\n\n    void merge_right(splay_tree &right){\n      root_ = node::merge(root_,\
+    \ right.root); right.root_ = nullptr;\n    }\n\n    void merge_left(splay_tree\
+    \ &left){\n      root_ = node::merge(left.root_, root_); left.root_ = nullptr;\n\
+    \    }\n\n    auto split(int index){\n      node *left, *right; std::tie(left,\
+    \ right) = node::split(root_, index);\n      return std::make_pair(splay_tree(left),\
     \ splay_tree(right));\n    }\n\n    void insert(int index, const value_type &value){\n\
-    \      auto s = node::split(root, index);\n      root = node::merge(s.first, node::merge(new\
-    \ node(value), s.second));\n    }\n\n    void erase(int index){\n      node *left,\
-    \ *right;\n      std::tie(left, right) = node::split(root, index);\n      std::tie(std::ignore,\
-    \ right) = node::split(right, 1);\n      root = node::merge(left, right);\n  \
-    \  }\n\n    const value_type fold(){return root->result;}\n    const value_type\
-    \ fold(int l, int r){ // [l, r)\n      node *left, *mid, *right;\n      std::tie(mid,\
-    \ right) = node::split(root, r);\n      std::tie(left, mid) = node::split(mid,\
-    \ l);\n\n      auto ret = mid->result;\n\n      mid = node::merge(left, mid);\n\
-    \      root = node::merge(mid, right);\n\n      return ret;\n    }\n\n    void\
-    \ push_back(const value_type &value){insert(size(), value);}\n    void push_front(const\
-    \ value_type &value){insert(0, value);}\n\n    void pop_back(){erase(size() -\
-    \ 1);}\n    void pop_front(){erase(0);}\n\n    template <typename Func>\n    void\
-    \ traverse(const Func &f) const {\n      node::traverse(root, f);\n    }\n  };\n\
-    }\n#line 2 \"Mylib/AlgebraicStructure/Monoid/min.cpp\"\n#include <algorithm>\n\
+    \      auto s = node::split(root_, index);\n      root_ = node::merge(s.first,\
+    \ node::merge(new node(value), s.second));\n    }\n\n    void erase(int index){\n\
+    \      node *left, *right;\n      std::tie(left, right) = node::split(root_, index);\n\
+    \      std::tie(std::ignore, right) = node::split(right, 1);\n      root_ = node::merge(left,\
+    \ right);\n    }\n\n    const value_type fold(){return root_->result;}\n    const\
+    \ value_type fold(int l, int r){ // [l, r)\n      node *left, *mid, *right;\n\
+    \      std::tie(mid, right) = node::split(root_, r);\n      std::tie(left, mid)\
+    \ = node::split(mid, l);\n\n      auto ret = mid->result;\n\n      mid = node::merge(left,\
+    \ mid);\n      root_ = node::merge(mid, right);\n\n      return ret;\n    }\n\n\
+    \    void push_back(const value_type &value){insert(size(), value);}\n    void\
+    \ push_front(const value_type &value){insert(0, value);}\n\n    void pop_back(){erase(size()\
+    \ - 1);}\n    void pop_front(){erase(0);}\n\n    template <typename Func>\n  \
+    \  void traverse(const Func &f) const {\n      node::traverse(root_, f);\n   \
+    \ }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/min.cpp\"\n#include <algorithm>\n\
     #include <optional>\n\nnamespace haar_lib {\n  template <typename T>\n  struct\
     \ min_monoid {\n    using value_type = std::optional<T>;\n\n    value_type operator()()\
     \ const {return {};}\n    value_type operator()(const value_type &a, const value_type\
@@ -163,7 +164,7 @@ data:
   isVerificationFile: true
   path: test/aoj/1508/main.splay_tree.test.cpp
   requiredBy: []
-  timestamp: '2020-09-25 01:38:58+09:00'
+  timestamp: '2020-09-29 00:55:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/1508/main.splay_tree.test.cpp

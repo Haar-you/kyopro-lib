@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/kth_root_integer.cpp\"\n#include <cassert>\n\
     #include <cstdint>\n\nnamespace haar_lib {\n  uint64_t kth_root(uint64_t a, int\

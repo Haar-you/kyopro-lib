@@ -6,7 +6,7 @@ data:
     title: Enumerate supersets (Descending order)
   - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
-    title: Mylib/IO/input_vector.cpp
+    title: Input vector
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

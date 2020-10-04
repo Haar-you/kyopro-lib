@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: Mylib/Graph/Template/graph.cpp
-    title: Basic graph
-  - icon: ':question:'
     path: Mylib/Graph/ShortestPath/dijkstra.cpp
     title: Dijkstra algorithm
+  - icon: ':question:'
+    path: Mylib/Graph/Template/graph.cpp
+    title: Basic graph
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/2426/main.test.cpp
     title: test/aoj/2426/main.test.cpp
   - icon: ':x:'
@@ -13,41 +13,44 @@ data:
     path: test/yukicoder/235/main.test.cpp
     title: test/yukicoder/235/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Utils/sort_simultaneously.cpp\"\n#include <vector>\n\
     #include <utility>\n#include <algorithm>\n#include <numeric>\n#include <initializer_list>\n\
-    \nnamespace haar_lib {\n  template <typename Compare, typename ... Args>\n  void\
+    \nnamespace haar_lib {\n  namespace sort_simultaneously_impl {\n    template <typename\
+    \ T>\n    void sub(int N, const std::vector<int> &ord, std::vector<T> &a){\n \
+    \     std::vector<T> temp(N);\n      for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];\n\
+    \      std::swap(temp, a);\n    }\n  }\n\n  template <typename Compare, typename\
+    \ ... Args>\n  void sort_simultaneously(const Compare &compare, std::vector<Args>\
+    \ &... args){\n    const int N = std::max({args.size() ...});\n    std::vector<int>\
+    \ ord(N);\n    std::iota(ord.begin(), ord.end(), 0);\n    std::sort(ord.begin(),\
+    \ ord.end(), compare);\n\n    (void)std::initializer_list<int>{\n      (void(sort_simultaneously_impl::sub(N,\
+    \ ord, args)), 0) ...};\n  }\n}\n"
+  code: "#pragma once\n#include <vector>\n#include <utility>\n#include <algorithm>\n\
+    #include <numeric>\n#include <initializer_list>\n\nnamespace haar_lib {\n  namespace\
+    \ sort_simultaneously_impl {\n    template <typename T>\n    void sub(int N, const\
+    \ std::vector<int> &ord, std::vector<T> &a){\n      std::vector<T> temp(N);\n\
+    \      for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];\n      std::swap(temp,\
+    \ a);\n    }\n  }\n\n  template <typename Compare, typename ... Args>\n  void\
     \ sort_simultaneously(const Compare &compare, std::vector<Args> &... args){\n\
     \    const int N = std::max({args.size() ...});\n    std::vector<int> ord(N);\n\
     \    std::iota(ord.begin(), ord.end(), 0);\n    std::sort(ord.begin(), ord.end(),\
-    \ compare);\n\n    (void)std::initializer_list<int>{\n      (void(\n        [&](){\n\
-    \          auto temp = args;\n          for(int i = 0; i < N; ++i) temp[i] = args[ord[i]];\n\
-    \          std::swap(temp, args);\n        }()\n      ), 0) ...};\n  }\n}\n"
-  code: "#pragma once\n#include <vector>\n#include <utility>\n#include <algorithm>\n\
-    #include <numeric>\n#include <initializer_list>\n\nnamespace haar_lib {\n  template\
-    \ <typename Compare, typename ... Args>\n  void sort_simultaneously(const Compare\
-    \ &compare, std::vector<Args> &... args){\n    const int N = std::max({args.size()\
-    \ ...});\n    std::vector<int> ord(N);\n    std::iota(ord.begin(), ord.end(),\
-    \ 0);\n    std::sort(ord.begin(), ord.end(), compare);\n\n    (void)std::initializer_list<int>{\n\
-    \      (void(\n        [&](){\n          auto temp = args;\n          for(int\
-    \ i = 0; i < N; ++i) temp[i] = args[ord[i]];\n          std::swap(temp, args);\n\
-    \        }()\n      ), 0) ...};\n  }\n}\n"
+    \ compare);\n\n    (void)std::initializer_list<int>{\n      (void(sort_simultaneously_impl::sub(N,\
+    \ ord, args)), 0) ...};\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Utils/sort_simultaneously.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2020-09-28 09:27:15+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/2426/main.test.cpp
   - test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
   - test/yukicoder/235/main.test.cpp
 documentation_of: Mylib/Utils/sort_simultaneously.cpp
 layout: document
-title: null
+title: Sort simultaneously
 ---
 
 ## Operations

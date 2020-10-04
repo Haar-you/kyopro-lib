@@ -6,22 +6,21 @@ data:
     title: Basic graph
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/aoj/GRL_2_A/main.prim.test.cpp
-    title: test/aoj/GRL_2_A/main.prim.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/2559/main.leftist_heap.test.cpp
-    title: test/aoj/2559/main.leftist_heap.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/2559/main.binomial_heap.test.cpp
     title: test/aoj/2559/main.binomial_heap.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/aoj/2559/main.leftist_heap.test.cpp
+    title: test/aoj/2559/main.leftist_heap.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/aoj/2559/main.skew_heap.test.cpp
     title: test/aoj/2559/main.skew_heap.test.cpp
+  - icon: ':x:'
+    path: test/aoj/GRL_2_A/main.prim.test.cpp
+    title: test/aoj/GRL_2_A/main.prim.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':question:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/MinimumSpanningTree/prim.cpp\"\n#include <vector>\n\
     #include <queue>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\n#include <iostream>\n\

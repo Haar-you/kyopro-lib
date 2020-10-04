@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/rolling_hash.cpp\"\n#include\
     \ <array>\n#include <utility>\n\nnamespace haar_lib {\n  namespace rolling_hash_monoid_impl\

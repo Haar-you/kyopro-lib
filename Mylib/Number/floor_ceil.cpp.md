@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/floor_ceil.cpp\"\n#include <cstdint>\n#include\
     \ <cmath>\n\nnamespace haar_lib {\n  int64_t ceil(int64_t a, int64_t b){\n   \

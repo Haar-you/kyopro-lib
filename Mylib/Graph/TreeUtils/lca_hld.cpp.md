@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/TreeUtils/lca_hld.cpp\"\n#include <vector>\n\
     #include <utility>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\n#include <iostream>\n\
@@ -36,48 +35,48 @@ data:
     \        else add_undirected(u, v, w, i);\n      }\n    }\n  };\n\n  template\
     \ <typename T>\n  using tree = graph<T>;\n}\n#line 5 \"Mylib/Graph/TreeUtils/lca_hld.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  class lowest_common_ancestor_hld\
-    \ {\n    int n;\n    std::vector<int> sub, par, head, id;\n\n    int dfs_sub(int\
-    \ cur, int p, tree<T> &tr){\n      par[cur] = p;\n      int t = 0;\n      for(auto\
-    \ &e : tr[cur]){\n        if(e.to == p) continue;\n        sub[cur] += dfs_sub(e.to,\
-    \ cur, tr);\n        if(sub[e.to] > t){\n          t = sub[e.to];\n          std::swap(e,\
-    \ tr[cur][0]);\n        }\n      }\n      return sub[cur];\n    }\n\n    void\
-    \ dfs_build(int cur, int &i, tree<T> &tr){\n      id[cur] = i;\n      ++i;\n\n\
-    \      for(auto &e : tr[cur]){\n        if(e.to == par[cur]) continue;\n     \
-    \   head[e.to] = (e.to == tr[cur][0].to ? head[cur] : e.to);\n        dfs_build(e.to,\
-    \ i, tr);\n      }\n    }\n\n  public:\n    lowest_common_ancestor_hld(tree<T>\
-    \ tr, int root):\n      n(tr.size()), sub(n, 1), par(n, -1), head(n), id(n){\n\
-    \      dfs_sub(root, -1, tr);\n      int i = 0;\n      dfs_build(root, i, tr);\n\
-    \    }\n\n    int lca(int u, int v) const {\n      while(1){\n        if(id[u]\
-    \ > id[v]) std::swap(u, v);\n        if(head[u] == head[v]) return u;\n      \
-    \  v = par[head[v]];\n      }\n    }\n\n    int operator()(int u, int v) const\
-    \ {return lca(u, v);}\n\n    T distance(int u, int v, const std::vector<T> &dist)\
-    \ const {\n      return dist[u] + dist[v] - 2 * dist[lca(u, v)];\n    }\n  };\n\
-    }\n"
+    \ {\n    int n_;\n    std::vector<int> sub_, par_, head_, id_;\n\n    int dfs_sub(int\
+    \ cur, int p, tree<T> &tr){\n      par_[cur] = p;\n      int t = 0;\n      for(auto\
+    \ &e : tr[cur]){\n        if(e.to == p) continue;\n        sub_[cur] += dfs_sub(e.to,\
+    \ cur, tr);\n        if(sub_[e.to] > t){\n          t = sub_[e.to];\n        \
+    \  std::swap(e, tr[cur][0]);\n        }\n      }\n      return sub_[cur];\n  \
+    \  }\n\n    void dfs_build(int cur, int &i, tree<T> &tr){\n      id_[cur] = i;\n\
+    \      ++i;\n\n      for(auto &e : tr[cur]){\n        if(e.to == par_[cur]) continue;\n\
+    \        head_[e.to] = (e.to == tr[cur][0].to ? head_[cur] : e.to);\n        dfs_build(e.to,\
+    \ i, tr);\n      }\n    }\n\n  public:\n    lowest_common_ancestor_hld(){}\n \
+    \   lowest_common_ancestor_hld(tree<T> tr, int root):\n      n_(tr.size()), sub_(n_,\
+    \ 1), par_(n_, -1), head_(n_), id_(n_){\n      dfs_sub(root, -1, tr);\n      int\
+    \ i = 0;\n      dfs_build(root, i, tr);\n    }\n\n    int lca(int u, int v) const\
+    \ {\n      while(1){\n        if(id_[u] > id_[v]) std::swap(u, v);\n        if(head_[u]\
+    \ == head_[v]) return u;\n        v = par_[head_[v]];\n      }\n    }\n\n    int\
+    \ operator()(int u, int v) const {return lca(u, v);}\n\n    T distance(int u,\
+    \ int v, const std::vector<T> &dist) const {\n      return dist[u] + dist[v] -\
+    \ 2 * dist[lca(u, v)];\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <utility>\n#include \"Mylib/Graph/Template/graph.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  class lowest_common_ancestor_hld\
-    \ {\n    int n;\n    std::vector<int> sub, par, head, id;\n\n    int dfs_sub(int\
-    \ cur, int p, tree<T> &tr){\n      par[cur] = p;\n      int t = 0;\n      for(auto\
-    \ &e : tr[cur]){\n        if(e.to == p) continue;\n        sub[cur] += dfs_sub(e.to,\
-    \ cur, tr);\n        if(sub[e.to] > t){\n          t = sub[e.to];\n          std::swap(e,\
-    \ tr[cur][0]);\n        }\n      }\n      return sub[cur];\n    }\n\n    void\
-    \ dfs_build(int cur, int &i, tree<T> &tr){\n      id[cur] = i;\n      ++i;\n\n\
-    \      for(auto &e : tr[cur]){\n        if(e.to == par[cur]) continue;\n     \
-    \   head[e.to] = (e.to == tr[cur][0].to ? head[cur] : e.to);\n        dfs_build(e.to,\
-    \ i, tr);\n      }\n    }\n\n  public:\n    lowest_common_ancestor_hld(tree<T>\
-    \ tr, int root):\n      n(tr.size()), sub(n, 1), par(n, -1), head(n), id(n){\n\
-    \      dfs_sub(root, -1, tr);\n      int i = 0;\n      dfs_build(root, i, tr);\n\
-    \    }\n\n    int lca(int u, int v) const {\n      while(1){\n        if(id[u]\
-    \ > id[v]) std::swap(u, v);\n        if(head[u] == head[v]) return u;\n      \
-    \  v = par[head[v]];\n      }\n    }\n\n    int operator()(int u, int v) const\
-    \ {return lca(u, v);}\n\n    T distance(int u, int v, const std::vector<T> &dist)\
-    \ const {\n      return dist[u] + dist[v] - 2 * dist[lca(u, v)];\n    }\n  };\n\
-    }\n"
+    \ {\n    int n_;\n    std::vector<int> sub_, par_, head_, id_;\n\n    int dfs_sub(int\
+    \ cur, int p, tree<T> &tr){\n      par_[cur] = p;\n      int t = 0;\n      for(auto\
+    \ &e : tr[cur]){\n        if(e.to == p) continue;\n        sub_[cur] += dfs_sub(e.to,\
+    \ cur, tr);\n        if(sub_[e.to] > t){\n          t = sub_[e.to];\n        \
+    \  std::swap(e, tr[cur][0]);\n        }\n      }\n      return sub_[cur];\n  \
+    \  }\n\n    void dfs_build(int cur, int &i, tree<T> &tr){\n      id_[cur] = i;\n\
+    \      ++i;\n\n      for(auto &e : tr[cur]){\n        if(e.to == par_[cur]) continue;\n\
+    \        head_[e.to] = (e.to == tr[cur][0].to ? head_[cur] : e.to);\n        dfs_build(e.to,\
+    \ i, tr);\n      }\n    }\n\n  public:\n    lowest_common_ancestor_hld(){}\n \
+    \   lowest_common_ancestor_hld(tree<T> tr, int root):\n      n_(tr.size()), sub_(n_,\
+    \ 1), par_(n_, -1), head_(n_), id_(n_){\n      dfs_sub(root, -1, tr);\n      int\
+    \ i = 0;\n      dfs_build(root, i, tr);\n    }\n\n    int lca(int u, int v) const\
+    \ {\n      while(1){\n        if(id_[u] > id_[v]) std::swap(u, v);\n        if(head_[u]\
+    \ == head_[v]) return u;\n        v = par_[head_[v]];\n      }\n    }\n\n    int\
+    \ operator()(int u, int v) const {return lca(u, v);}\n\n    T distance(int u,\
+    \ int v, const std::vector<T> &dist) const {\n      return dist[u] + dist[v] -\
+    \ 2 * dist[lca(u, v)];\n    }\n  };\n}\n"
   dependsOn:
   - Mylib/Graph/Template/graph.cpp
   isVerificationFile: false
   path: Mylib/Graph/TreeUtils/lca_hld.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/GRL_5_C/main.hld.test.cpp

@@ -10,18 +10,17 @@ data:
     title: Area of intersection between two circles
   _extendedVerifiedWith:
   - icon: ':x:'
+    path: test/aoj/CGL_7_A/main.test.cpp
+    title: test/aoj/CGL_7_A/main.test.cpp
+  - icon: ':x:'
     path: test/aoj/CGL_7_E/main.test.cpp
     title: test/aoj/CGL_7_E/main.test.cpp
   - icon: ':x:'
     path: test/aoj/CGL_7_I/main.test.cpp
     title: test/aoj/CGL_7_I/main.test.cpp
-  - icon: ':x:'
-    path: test/aoj/CGL_7_A/main.test.cpp
-    title: test/aoj/CGL_7_A/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/intersect_circles.cpp\"\n#include <vector>\n\
     #line 2 \"Mylib/Geometry/Float/geometry_template.cpp\"\n#include <iostream>\n\

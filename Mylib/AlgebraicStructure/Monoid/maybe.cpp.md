@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/maybe.cpp\"\n#include <optional>\n\
     \nnamespace haar_lib {\n  template <typename Semigroup>\n  struct maybe_monoid\

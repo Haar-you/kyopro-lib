@@ -6,11 +6,11 @@ data:
     title: Basic graph
   _extendedRequiredBy:
   - icon: ':x:'
-    path: Mylib/Graph/two_sat.cpp
-    title: 2-SAT
-  - icon: ':x:'
     path: Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
     title: Chu-Liu/Edmonds algorithm
+  - icon: ':x:'
+    path: Mylib/Graph/two_sat.cpp
+    title: 2-SAT
   _extendedVerifiedWith:
   - icon: ':x:'
     path: test/aoj/GRL_2_B/main.test.cpp
@@ -19,15 +19,14 @@ data:
     path: test/aoj/GRL_3_C/main.test.cpp
     title: test/aoj/GRL_3_C/main.test.cpp
   - icon: ':x:'
-    path: test/yosupo-judge/two_sat/main.test.cpp
-    title: test/yosupo-judge/two_sat/main.test.cpp
-  - icon: ':x:'
     path: test/yosupo-judge/scc/main.test.cpp
     title: test/yosupo-judge/scc/main.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/two_sat/main.test.cpp
+    title: test/yosupo-judge/two_sat/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/GraphUtils/strongly_connected_components.cpp\"\
     \n#include <vector>\n#include <algorithm>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\

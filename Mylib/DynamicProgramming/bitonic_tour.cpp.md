@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/DynamicProgramming/bitonic_tour.cpp\"\n#include <vector>\n\
     #include <limits>\n#include <algorithm>\n#include <cmath>\n\nnamespace haar_lib\

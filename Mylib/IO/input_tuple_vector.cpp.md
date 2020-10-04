@@ -3,57 +3,66 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/aoj/DPL_1_H/main.test.cpp
-    title: test/aoj/DPL_1_H/main.test.cpp
-  - icon: ':x:'
-    path: test/aoj/DPL_1_G/main.test.cpp
-    title: test/aoj/DPL_1_G/main.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/0323/main.ternary.test.cpp
-    title: test/aoj/0323/main.ternary.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/0323/main.golden.test.cpp
     title: test/aoj/0323/main.golden.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/aoj/2293/main.test.cpp
-    title: test/aoj/2293/main.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/0575/main.test.cpp
-    title: test/aoj/0575/main.test.cpp
-  - icon: ':x:'
-    path: test/aoj/DPL_2_C/main.test.cpp
-    title: test/aoj/DPL_2_C/main.test.cpp
+    path: test/aoj/0323/main.ternary.test.cpp
+    title: test/aoj/0323/main.ternary.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/0425/main.test.cpp
     title: test/aoj/0425/main.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/0575/main.test.cpp
+    title: test/aoj/0575/main.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/1337/main.test.cpp
+    title: test/aoj/1337/main.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/1615/main.test.cpp
+    title: test/aoj/1615/main.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/2293/main.test.cpp
+    title: test/aoj/2293/main.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/2426/main.test.cpp
+    title: test/aoj/2426/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/3118/main.test.cpp
+    title: test/aoj/3118/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/3132/main.test.cpp
+    title: test/aoj/3132/main.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/ALDS1_15_C/main.test.cpp
+    title: test/aoj/ALDS1_15_C/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/DPL_1_B/main.test.cpp
+    title: test/aoj/DPL_1_B/main.test.cpp
   - icon: ':x:'
     path: test/aoj/DPL_1_C/main.test.cpp
     title: test/aoj/DPL_1_C/main.test.cpp
   - icon: ':x:'
-    path: test/aoj/DPL_1_B/main.test.cpp
-    title: test/aoj/DPL_1_B/main.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/3118/main.test.cpp
-    title: test/aoj/3118/main.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/ALDS1_15_C/main.test.cpp
-    title: test/aoj/ALDS1_15_C/main.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/1337/main.test.cpp
-    title: test/aoj/1337/main.test.cpp
-  - icon: ':x:'
-    path: test/aoj/2426/main.test.cpp
-    title: test/aoj/2426/main.test.cpp
-  - icon: ':x:'
     path: test/aoj/DPL_1_F/main.test.cpp
     title: test/aoj/DPL_1_F/main.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/3132/main.test.cpp
-    title: test/aoj/3132/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/DPL_1_G/main.test.cpp
+    title: test/aoj/DPL_1_G/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/DPL_1_H/main.test.cpp
+    title: test/aoj/DPL_1_H/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/DPL_2_C/main.test.cpp
+    title: test/aoj/DPL_2_C/main.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/manhattanmst/main.test.cpp
+    title: test/yosupo-judge/manhattanmst/main.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
     title: test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
+    title: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
     title: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
@@ -61,18 +70,11 @@ data:
     path: test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
     title: test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
   - icon: ':x:'
-    path: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
-    title: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
-  - icon: ':x:'
-    path: test/yosupo-judge/manhattanmst/main.test.cpp
-    title: test/yosupo-judge/manhattanmst/main.test.cpp
-  - icon: ':x:'
     path: test/yukicoder/1069/main.test.cpp
     title: test/yukicoder/1069/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':question:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/IO/input_tuple_vector.cpp\"\n#include <iostream>\n\
     #include <vector>\n#include <tuple>\n#include <utility>\n#include <initializer_list>\n\
@@ -103,6 +105,7 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/aoj/1615/main.test.cpp
   - test/aoj/DPL_1_H/main.test.cpp
   - test/aoj/DPL_1_G/main.test.cpp
   - test/aoj/0323/main.ternary.test.cpp
@@ -127,7 +130,7 @@ data:
   - test/yukicoder/1069/main.test.cpp
 documentation_of: Mylib/IO/input_tuple_vector.cpp
 layout: document
-title: null
+title: Input tuple vector
 ---
 
 ## Operations

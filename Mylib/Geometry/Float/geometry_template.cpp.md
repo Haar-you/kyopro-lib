@@ -3,172 +3,171 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':x:'
-    path: Mylib/Geometry/Float/common_tangent_of_circles.cpp
-    title: Common tangents of two circles
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Geometry/Float/intersect_segments.cpp
-    title: Intersection between two segments
-  - icon: ':x:'
-    path: Mylib/Geometry/Float/convex_diameter.cpp
-    title: Convex diameter
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Geometry/Float/parallel.cpp
-    title: Parallel
-  - icon: ':question:'
-    path: Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp
-    title: Circumscribed circle of a triangle
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Geometry/Float/orthogonal.cpp
-    title: Orthogonal
-  - icon: ':x:'
-    path: Mylib/Geometry/Float/manhattan_segments_intersections.cpp
-    title: Manhattan segments intersections
+    path: Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp
+    title: Area of intersection between a circle and a polygon
   - icon: ':x:'
     path: Mylib/Geometry/Float/area_intersection_of_circles.cpp
     title: Area of intersection between two circles
   - icon: ':x:'
-    path: Mylib/Geometry/Float/convex_hull.cpp
-    title: Convex hull
+    path: Mylib/Geometry/Float/area_polygon.cpp
+    title: Area of polygon
+  - icon: ':question:'
+    path: Mylib/Geometry/Float/ccw.cpp
+    title: Check clockwise-counterclockwise
+  - icon: ':question:'
+    path: Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp
+    title: Circumscribed circle of a triangle
   - icon: ':x:'
     path: Mylib/Geometry/Float/closest_pair.cpp
     title: Closest pair
   - icon: ':x:'
-    path: Mylib/Geometry/Float/is_point_in_polygon.cpp
-    title: Check if a point is in a polygon
-  - icon: ':x:'
-    path: Mylib/Geometry/Float/intersect_circle_line.cpp
-    title: Intersection between a circle and a line
-  - icon: ':question:'
-    path: Mylib/Geometry/Float/ccw.cpp
-    title: Check clockwise-counterclockwise
-  - icon: ':x:'
-    path: Mylib/Geometry/Float/distance_segment_point.cpp
-    title: Distance between a segment and a point
-  - icon: ':x:'
-    path: Mylib/Geometry/Float/inscribed_circle_of_triangle.cpp
-    title: Inscribed circle of a triangle
-  - icon: ':x:'
-    path: Mylib/Geometry/Float/intersect_circles.cpp
-    title: Intersection between two circles
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Geometry/Float/projection.cpp
-    title: Projection
-  - icon: ':x:'
-    path: Mylib/Geometry/Float/is_convex.cpp
-    title: Check convex
-  - icon: ':x:'
-    path: Mylib/Geometry/Float/intersect_line_segment.cpp
-    title: Intersection between a line and a segment
-  - icon: ':x:'
-    path: Mylib/Geometry/Float/intersect_circle_segment.cpp
-    title: Intersection between a circle and a segment
-  - icon: ':x:'
-    path: Mylib/Geometry/Float/distance_segments.cpp
-    title: Distance between two segments
-  - icon: ':x:'
-    path: Mylib/Geometry/Float/tangent_of_circle.cpp
-    title: Tangent of circle
+    path: Mylib/Geometry/Float/common_tangent_of_circles.cpp
+    title: Common tangents of two circles
   - icon: ':x:'
     path: Mylib/Geometry/Float/convex_cut.cpp
     title: Convex cut
   - icon: ':x:'
-    path: Mylib/Geometry/Float/area_polygon.cpp
-    title: Area of polygon
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Geometry/Float/reflection.cpp
-    title: Reflection
+    path: Mylib/Geometry/Float/convex_diameter.cpp
+    title: Convex diameter
   - icon: ':x:'
-    path: Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp
-    title: Area of intersection between a circle and a polygon
+    path: Mylib/Geometry/Float/convex_hull.cpp
+    title: Convex hull
   - icon: ':x:'
     path: Mylib/Geometry/Float/distance_line_point.cpp
     title: Distance between a line and a point
+  - icon: ':x:'
+    path: Mylib/Geometry/Float/distance_segment_point.cpp
+    title: Distance between a segment and a point
+  - icon: ':x:'
+    path: Mylib/Geometry/Float/distance_segments.cpp
+    title: Distance between two segments
+  - icon: ':x:'
+    path: Mylib/Geometry/Float/inscribed_circle_of_triangle.cpp
+    title: Inscribed circle of a triangle
+  - icon: ':x:'
+    path: Mylib/Geometry/Float/intersect_circle_line.cpp
+    title: Intersection between a circle and a line
+  - icon: ':x:'
+    path: Mylib/Geometry/Float/intersect_circle_segment.cpp
+    title: Intersection between a circle and a segment
+  - icon: ':x:'
+    path: Mylib/Geometry/Float/intersect_circles.cpp
+    title: Intersection between two circles
+  - icon: ':x:'
+    path: Mylib/Geometry/Float/intersect_line_segment.cpp
+    title: Intersection between a line and a segment
+  - icon: ':question:'
+    path: Mylib/Geometry/Float/intersect_segments.cpp
+    title: Intersection between two segments
+  - icon: ':x:'
+    path: Mylib/Geometry/Float/is_convex.cpp
+    title: Check convex
+  - icon: ':x:'
+    path: Mylib/Geometry/Float/is_point_in_polygon.cpp
+    title: Check if a point is in a polygon
+  - icon: ':x:'
+    path: Mylib/Geometry/Float/manhattan_segments_intersections.cpp
+    title: Manhattan segments intersections
   - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/minimum_covering_circle.cpp
     title: Minimum covering circle
+  - icon: ':x:'
+    path: Mylib/Geometry/Float/orthogonal.cpp
+    title: Orthogonal
+  - icon: ':x:'
+    path: Mylib/Geometry/Float/parallel.cpp
+    title: Parallel
+  - icon: ':x:'
+    path: Mylib/Geometry/Float/projection.cpp
+    title: Projection
+  - icon: ':x:'
+    path: Mylib/Geometry/Float/reflection.cpp
+    title: Reflection
+  - icon: ':x:'
+    path: Mylib/Geometry/Float/tangent_of_circle.cpp
+    title: Tangent of circle
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/aoj/CGL_3_C/main.test.cpp
-    title: test/aoj/CGL_3_C/main.test.cpp
-  - icon: ':x:'
-    path: test/aoj/CGL_7_C/main.test.cpp
-    title: test/aoj/CGL_7_C/main.test.cpp
-  - icon: ':x:'
-    path: test/aoj/CGL_4_B/main.test.cpp
-    title: test/aoj/CGL_4_B/main.test.cpp
-  - icon: ':x:'
-    path: test/aoj/CGL_6_A/main.test.cpp
-    title: test/aoj/CGL_6_A/main.test.cpp
-  - icon: ':x:'
-    path: test/aoj/CGL_7_E/main.test.cpp
-    title: test/aoj/CGL_7_E/main.test.cpp
-  - icon: ':x:'
-    path: test/aoj/CGL_2_D/main.test.cpp
-    title: test/aoj/CGL_2_D/main.test.cpp
-  - icon: ':x:'
-    path: test/aoj/CGL_7_I/main.test.cpp
-    title: test/aoj/CGL_7_I/main.test.cpp
-  - icon: ':x:'
-    path: test/aoj/CGL_7_H/main.test.cpp
-    title: test/aoj/CGL_7_H/main.test.cpp
-  - icon: ':x:'
-    path: test/aoj/CGL_7_F/main.test.cpp
-    title: test/aoj/CGL_7_F/main.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/CGL_1_A/main.test.cpp
-    title: test/aoj/CGL_1_A/main.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/3034/main.test.cpp
-    title: test/aoj/3034/main.test.cpp
-  - icon: ':x:'
-    path: test/aoj/CGL_7_G/main.test.cpp
-    title: test/aoj/CGL_7_G/main.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/2136/main.test.cpp
     title: test/aoj/2136/main.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/aoj/3034/main.test.cpp
+    title: test/aoj/3034/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_1_A/main.test.cpp
+    title: test/aoj/CGL_1_A/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_1_B/main.test.cpp
+    title: test/aoj/CGL_1_B/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_1_C/main.test.cpp
+    title: test/aoj/CGL_1_C/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_2_A/main.test.cpp
+    title: test/aoj/CGL_2_A/main.test.cpp
+  - icon: ':x:'
     path: test/aoj/CGL_2_B/main.test.cpp
     title: test/aoj/CGL_2_B/main.test.cpp
   - icon: ':x:'
-    path: test/aoj/CGL_7_D/main.test.cpp
-    title: test/aoj/CGL_7_D/main.test.cpp
+    path: test/aoj/CGL_2_C/main.test.cpp
+    title: test/aoj/CGL_2_C/main.test.cpp
   - icon: ':x:'
-    path: test/aoj/CGL_5_A/main.test.cpp
-    title: test/aoj/CGL_5_A/main.test.cpp
-  - icon: ':x:'
-    path: test/aoj/CGL_7_B/main.test.cpp
-    title: test/aoj/CGL_7_B/main.test.cpp
+    path: test/aoj/CGL_2_D/main.test.cpp
+    title: test/aoj/CGL_2_D/main.test.cpp
   - icon: ':x:'
     path: test/aoj/CGL_3_A/main.test.cpp
     title: test/aoj/CGL_3_A/main.test.cpp
   - icon: ':x:'
-    path: test/aoj/CGL_4_A/main.test.cpp
-    title: test/aoj/CGL_4_A/main.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/CGL_2_A/main.test.cpp
-    title: test/aoj/CGL_2_A/main.test.cpp
-  - icon: ':x:'
     path: test/aoj/CGL_3_B/main.test.cpp
     title: test/aoj/CGL_3_B/main.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/CGL_2_C/main.test.cpp
-    title: test/aoj/CGL_2_C/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_3_C/main.test.cpp
+    title: test/aoj/CGL_3_C/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_4_A/main.test.cpp
+    title: test/aoj/CGL_4_A/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_4_B/main.test.cpp
+    title: test/aoj/CGL_4_B/main.test.cpp
   - icon: ':x:'
     path: test/aoj/CGL_4_C/main.test.cpp
     title: test/aoj/CGL_4_C/main.test.cpp
   - icon: ':x:'
+    path: test/aoj/CGL_5_A/main.test.cpp
+    title: test/aoj/CGL_5_A/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_6_A/main.test.cpp
+    title: test/aoj/CGL_6_A/main.test.cpp
+  - icon: ':x:'
     path: test/aoj/CGL_7_A/main.test.cpp
     title: test/aoj/CGL_7_A/main.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/CGL_1_C/main.test.cpp
-    title: test/aoj/CGL_1_C/main.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/CGL_1_B/main.test.cpp
-    title: test/aoj/CGL_1_B/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_7_B/main.test.cpp
+    title: test/aoj/CGL_7_B/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_7_C/main.test.cpp
+    title: test/aoj/CGL_7_C/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_7_D/main.test.cpp
+    title: test/aoj/CGL_7_D/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_7_E/main.test.cpp
+    title: test/aoj/CGL_7_E/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_7_F/main.test.cpp
+    title: test/aoj/CGL_7_F/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_7_G/main.test.cpp
+    title: test/aoj/CGL_7_G/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_7_H/main.test.cpp
+    title: test/aoj/CGL_7_H/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_7_I/main.test.cpp
+    title: test/aoj/CGL_7_I/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':question:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/geometry_template.cpp\"\n#include <iostream>\n\
     #include <cmath>\n#include <vector>\n\nnamespace haar_lib {\n  template <typename\

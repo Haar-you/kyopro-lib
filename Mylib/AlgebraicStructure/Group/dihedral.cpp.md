@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Group/dihedral.cpp\"\n#include\
     \ <iostream>\n#include <variant>\n\nnamespace haar_lib {\n  namespace dihedral_group_impl\

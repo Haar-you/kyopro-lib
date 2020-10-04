@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Debug/matrix_viewer.cpp\"\n#include <iostream>\n#include\
     \ <string>\n#include <iomanip>\n\ntemplate <typename M>\nvoid matrix_viewer([[maybe_unused]]\

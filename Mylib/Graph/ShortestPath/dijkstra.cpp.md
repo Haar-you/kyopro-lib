@@ -15,7 +15,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':question:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/ShortestPath/dijkstra.cpp\"\n#include <vector>\n\
     #include <optional>\n#include <queue>\n#include <utility>\n#include <functional>\n\

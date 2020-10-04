@@ -7,15 +7,14 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/aoj/0558/main.test.cpp
-    title: test/aoj/0558/main.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/aoj/0558/main.graph.test.cpp
     title: test/aoj/0558/main.graph.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/0558/main.test.cpp
+    title: test/aoj/0558/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Grid/grid_find.cpp\"\n#include <vector>\n#line 2 \"\
     Mylib/Grid/grid.cpp\"\n#include <array>\n#include <iostream>\n#include <utility>\n\

@@ -9,7 +9,7 @@ data:
     title: Tree diameter
   - icon: ':question:'
     path: Mylib/IO/join.cpp
-    title: Mylib/IO/join.cpp
+    title: join function
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

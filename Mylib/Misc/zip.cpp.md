@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Misc/zip.cpp\"\n#include <vector>\n#include <tuple>\n\
     #include <algorithm>\n\nnamespace haar_lib {\n  template <typename ... Args>\n\

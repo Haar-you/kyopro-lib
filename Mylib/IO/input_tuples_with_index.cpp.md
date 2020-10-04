@@ -3,27 +3,27 @@ data:
   _extendedDependsOn:
   - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+    title: Input tuple
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/1508/main.treap.test.cpp
-    title: test/aoj/1508/main.treap.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/1508/main.splay_tree.test.cpp
     title: test/aoj/1508/main.splay_tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/aoj/1508/main.treap.test.cpp
+    title: test/aoj/1508/main.treap.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/aoj/2136/main.test.cpp
     title: test/aoj/2136/main.test.cpp
   - icon: ':x:'
-    path: test/aoj/GRL_5_C/main.hld.test.cpp
-    title: test/aoj/GRL_5_C/main.hld.test.cpp
+    path: test/aoj/DSL_2_C/main.test.cpp
+    title: test/aoj/DSL_2_C/main.test.cpp
   - icon: ':x:'
     path: test/aoj/GRL_5_C/main.doubling.test.cpp
     title: test/aoj/GRL_5_C/main.doubling.test.cpp
   - icon: ':x:'
-    path: test/aoj/DSL_2_C/main.test.cpp
-    title: test/aoj/DSL_2_C/main.test.cpp
+    path: test/aoj/GRL_5_C/main.hld.test.cpp
+    title: test/aoj/GRL_5_C/main.hld.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
     title: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
@@ -39,7 +39,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':question:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/IO/input_tuples_with_index.cpp\"\n#include <iostream>\n\
     #include <vector>\n#include <tuple>\n#include <utility>\n#include <initializer_list>\n\
@@ -98,7 +97,7 @@ data:
   - test/yukicoder/875/main.test.cpp
 documentation_of: Mylib/IO/input_tuples_with_index.cpp
 layout: document
-title: null
+title: Input tuples with index
 ---
 
 ## Operations

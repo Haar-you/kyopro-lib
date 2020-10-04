@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp\"\n\
     #include <vector>\n#include <optional>\n#include <stack>\n#include <utility>\n\

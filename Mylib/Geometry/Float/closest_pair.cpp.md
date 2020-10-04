@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/closest_pair.cpp\"\n#include <vector>\n\
     #include <utility>\n#include <limits>\n#include <algorithm>\n#include <cmath>\n\

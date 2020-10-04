@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/euler_totient_function_table.cpp\"\n#include\
     \ <vector>\n#include <numeric>\n\nnamespace haar_lib {\n  auto totient_table(int\

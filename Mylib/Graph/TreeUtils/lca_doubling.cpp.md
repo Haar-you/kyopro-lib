@@ -15,7 +15,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/TreeUtils/lca_doubling.cpp\"\n#include <vector>\n\
     #include <cmath>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\n#include <iostream>\n\
@@ -39,50 +38,50 @@ data:
     \        else add_undirected(u, v, w, i);\n      }\n    }\n  };\n\n  template\
     \ <typename T>\n  using tree = graph<T>;\n}\n#line 5 \"Mylib/Graph/TreeUtils/lca_doubling.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  class lowest_common_ancestor_doubling\
-    \ {\n  private:\n    std::vector<std::vector<int>> parent;\n    int n, log2n;\n\
-    \n    void dfs(const tree<T> &tr, int cur, int par, int d){\n      parent[cur][0]\
-    \ = par;\n      depth[cur] = d;\n\n      for(auto &e : tr[cur]){\n        if(e.to\
-    \ != par){\n          dfs(tr, e.to, cur, d + 1);\n        }\n      }\n    }\n\n\
-    \  public:\n    std::vector<int> depth;\n\n    lowest_common_ancestor_doubling(){}\n\
-    \    lowest_common_ancestor_doubling(const tree<T> &tr, int root):\n      n(tr.size()),\
-    \ depth(n)\n    {\n      log2n = (int)ceil(log2(n)) + 1;\n      parent = std::vector(n,\
-    \ std::vector<int>(log2n, 0));\n\n      dfs(tr, root, -1, 0);\n      for(int k\
-    \ = 0; k < log2n - 1; ++k){\n        for(int v = 0; v < n; ++v){\n          if(parent[v][k]\
-    \ == -1) parent[v][k + 1] = -1;\n          else parent[v][k + 1] = parent[parent[v][k]][k];\n\
-    \        }\n      }\n    }\n\n    int lca(int a, int b) const {\n      if(depth[a]\
-    \ >= depth[b]) std::swap(a, b);\n      for(int k = 0; k < log2n; ++k){\n     \
-    \   if((depth[b] - depth[a]) >> k & 1) b = parent[b][k];\n      }\n      if(a\
-    \ == b) return a;\n      for(int k = log2n; --k >= 0;){\n        if(parent[a][k]\
-    \ != parent[b][k]){a = parent[a][k]; b = parent[b][k];}\n      }\n      return\
-    \ parent[a][0];\n    }\n\n    int operator()(int a, int b) const {return lca(a,\
-    \ b);}\n\n    T distance(int u, int v, const std::vector<T> &dist) const {\n \
-    \     return dist[u] + dist[v] - 2 * dist[lca(u, v)];\n    }\n  };\n}\n"
+    \ {\n    int n_, log2n_;\n    std::vector<std::vector<int>> parent_;\n    std::vector<int>\
+    \ depth_;\n\n    void dfs(const tree<T> &tr, int cur, int par, int d){\n     \
+    \ parent_[cur][0] = par;\n      depth_[cur] = d;\n\n      for(auto &e : tr[cur]){\n\
+    \        if(e.to != par){\n          dfs(tr, e.to, cur, d + 1);\n        }\n \
+    \     }\n    }\n\n  public:\n    lowest_common_ancestor_doubling(){}\n    lowest_common_ancestor_doubling(const\
+    \ tree<T> &tr, int root):\n      n_(tr.size()), log2n_((int)ceil(log2(n_)) + 1),\
+    \ parent_(n_, std::vector<int>(log2n_)), depth_(n_)\n    {\n      dfs(tr, root,\
+    \ -1, 0);\n      for(int k = 0; k < log2n_ - 1; ++k){\n        for(int v = 0;\
+    \ v < n_; ++v){\n          if(parent_[v][k] == -1) parent_[v][k + 1] = -1;\n \
+    \         else parent_[v][k + 1] = parent_[parent_[v][k]][k];\n        }\n   \
+    \   }\n    }\n\n    int lca(int a, int b) const {\n      if(depth_[a] >= depth_[b])\
+    \ std::swap(a, b);\n      for(int k = 0; k < log2n_; ++k){\n        if((depth_[b]\
+    \ - depth_[a]) >> k & 1) b = parent_[b][k];\n      }\n      if(a == b) return\
+    \ a;\n      for(int k = log2n_; --k >= 0;){\n        if(parent_[a][k] != parent_[b][k]){a\
+    \ = parent_[a][k]; b = parent_[b][k];}\n      }\n      return parent_[a][0];\n\
+    \    }\n\n    int operator()(int a, int b) const {return lca(a, b);}\n\n    T\
+    \ distance(int u, int v, const std::vector<T> &dist) const {\n      return dist[u]\
+    \ + dist[v] - 2 * dist[lca(u, v)];\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <cmath>\n#include \"Mylib/Graph/Template/graph.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  class lowest_common_ancestor_doubling\
-    \ {\n  private:\n    std::vector<std::vector<int>> parent;\n    int n, log2n;\n\
-    \n    void dfs(const tree<T> &tr, int cur, int par, int d){\n      parent[cur][0]\
-    \ = par;\n      depth[cur] = d;\n\n      for(auto &e : tr[cur]){\n        if(e.to\
-    \ != par){\n          dfs(tr, e.to, cur, d + 1);\n        }\n      }\n    }\n\n\
-    \  public:\n    std::vector<int> depth;\n\n    lowest_common_ancestor_doubling(){}\n\
-    \    lowest_common_ancestor_doubling(const tree<T> &tr, int root):\n      n(tr.size()),\
-    \ depth(n)\n    {\n      log2n = (int)ceil(log2(n)) + 1;\n      parent = std::vector(n,\
-    \ std::vector<int>(log2n, 0));\n\n      dfs(tr, root, -1, 0);\n      for(int k\
-    \ = 0; k < log2n - 1; ++k){\n        for(int v = 0; v < n; ++v){\n          if(parent[v][k]\
-    \ == -1) parent[v][k + 1] = -1;\n          else parent[v][k + 1] = parent[parent[v][k]][k];\n\
-    \        }\n      }\n    }\n\n    int lca(int a, int b) const {\n      if(depth[a]\
-    \ >= depth[b]) std::swap(a, b);\n      for(int k = 0; k < log2n; ++k){\n     \
-    \   if((depth[b] - depth[a]) >> k & 1) b = parent[b][k];\n      }\n      if(a\
-    \ == b) return a;\n      for(int k = log2n; --k >= 0;){\n        if(parent[a][k]\
-    \ != parent[b][k]){a = parent[a][k]; b = parent[b][k];}\n      }\n      return\
-    \ parent[a][0];\n    }\n\n    int operator()(int a, int b) const {return lca(a,\
-    \ b);}\n\n    T distance(int u, int v, const std::vector<T> &dist) const {\n \
-    \     return dist[u] + dist[v] - 2 * dist[lca(u, v)];\n    }\n  };\n}\n"
+    \ {\n    int n_, log2n_;\n    std::vector<std::vector<int>> parent_;\n    std::vector<int>\
+    \ depth_;\n\n    void dfs(const tree<T> &tr, int cur, int par, int d){\n     \
+    \ parent_[cur][0] = par;\n      depth_[cur] = d;\n\n      for(auto &e : tr[cur]){\n\
+    \        if(e.to != par){\n          dfs(tr, e.to, cur, d + 1);\n        }\n \
+    \     }\n    }\n\n  public:\n    lowest_common_ancestor_doubling(){}\n    lowest_common_ancestor_doubling(const\
+    \ tree<T> &tr, int root):\n      n_(tr.size()), log2n_((int)ceil(log2(n_)) + 1),\
+    \ parent_(n_, std::vector<int>(log2n_)), depth_(n_)\n    {\n      dfs(tr, root,\
+    \ -1, 0);\n      for(int k = 0; k < log2n_ - 1; ++k){\n        for(int v = 0;\
+    \ v < n_; ++v){\n          if(parent_[v][k] == -1) parent_[v][k + 1] = -1;\n \
+    \         else parent_[v][k + 1] = parent_[parent_[v][k]][k];\n        }\n   \
+    \   }\n    }\n\n    int lca(int a, int b) const {\n      if(depth_[a] >= depth_[b])\
+    \ std::swap(a, b);\n      for(int k = 0; k < log2n_; ++k){\n        if((depth_[b]\
+    \ - depth_[a]) >> k & 1) b = parent_[b][k];\n      }\n      if(a == b) return\
+    \ a;\n      for(int k = log2n_; --k >= 0;){\n        if(parent_[a][k] != parent_[b][k]){a\
+    \ = parent_[a][k]; b = parent_[b][k];}\n      }\n      return parent_[a][0];\n\
+    \    }\n\n    int operator()(int a, int b) const {return lca(a, b);}\n\n    T\
+    \ distance(int u, int v, const std::vector<T> &dist) const {\n      return dist[u]\
+    \ + dist[v] - 2 * dist[lca(u, v)];\n    }\n  };\n}\n"
   dependsOn:
   - Mylib/Graph/Template/graph.cpp
   isVerificationFile: false
   path: Mylib/Graph/TreeUtils/lca_doubling.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/GRL_5_C/main.doubling.test.cpp

@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/chinese_remainder_algorithm.cpp\"\n#include\
     \ <vector>\n#include <optional>\n#line 2 \"Mylib/Number/extended_gcd.cpp\"\n#include\

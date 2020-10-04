@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Utils/run_length_encoding.cpp\"\n#include <vector>\n\
     #include <utility>\n#include <cstdint>\n\nnamespace haar_lib {\n  template <typename\

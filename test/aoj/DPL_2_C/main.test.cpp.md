@@ -6,7 +6,7 @@ data:
     title: Bitonic tour
   - icon: ':question:'
     path: Mylib/IO/input_tuple_vector.cpp
-    title: Mylib/IO/input_tuple_vector.cpp
+    title: Input tuple vector
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

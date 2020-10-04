@@ -5,11 +5,11 @@ data:
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
   - icon: ':x:'
-    path: Mylib/Graph/TreeUtils/lca_doubling.cpp
-    title: Lowest common ancestor (Doubling)
-  - icon: ':x:'
     path: Mylib/Graph/TreeUtils/forest.cpp
     title: Decompose forest
+  - icon: ':x:'
+    path: Mylib/Graph/TreeUtils/lca_doubling.cpp
+    title: Lowest common ancestor (Doubling)
   - icon: ':question:'
     path: Mylib/Graph/TreeUtils/rerooting.cpp
     title: Rerooting DP
@@ -17,11 +17,11 @@ data:
     path: Mylib/Graph/TreeUtils/tree_distance.cpp
     title: Tree distance
   - icon: ':question:'
-    path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
-  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+    title: Input tuple
+  - icon: ':question:'
+    path: Mylib/IO/input_tuples.cpp
+    title: Input tuples
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -54,29 +54,29 @@ data:
     \ <typename T>\n  using tree = graph<T>;\n}\n#line 3 \"Mylib/Graph/TreeUtils/lca_doubling.cpp\"\
     \n#include <cmath>\n#line 5 \"Mylib/Graph/TreeUtils/lca_doubling.cpp\"\n\nnamespace\
     \ haar_lib {\n  template <typename T>\n  class lowest_common_ancestor_doubling\
-    \ {\n  private:\n    std::vector<std::vector<int>> parent;\n    int n, log2n;\n\
-    \n    void dfs(const tree<T> &tr, int cur, int par, int d){\n      parent[cur][0]\
-    \ = par;\n      depth[cur] = d;\n\n      for(auto &e : tr[cur]){\n        if(e.to\
-    \ != par){\n          dfs(tr, e.to, cur, d + 1);\n        }\n      }\n    }\n\n\
-    \  public:\n    std::vector<int> depth;\n\n    lowest_common_ancestor_doubling(){}\n\
-    \    lowest_common_ancestor_doubling(const tree<T> &tr, int root):\n      n(tr.size()),\
-    \ depth(n)\n    {\n      log2n = (int)ceil(log2(n)) + 1;\n      parent = std::vector(n,\
-    \ std::vector<int>(log2n, 0));\n\n      dfs(tr, root, -1, 0);\n      for(int k\
-    \ = 0; k < log2n - 1; ++k){\n        for(int v = 0; v < n; ++v){\n          if(parent[v][k]\
-    \ == -1) parent[v][k + 1] = -1;\n          else parent[v][k + 1] = parent[parent[v][k]][k];\n\
-    \        }\n      }\n    }\n\n    int lca(int a, int b) const {\n      if(depth[a]\
-    \ >= depth[b]) std::swap(a, b);\n      for(int k = 0; k < log2n; ++k){\n     \
-    \   if((depth[b] - depth[a]) >> k & 1) b = parent[b][k];\n      }\n      if(a\
-    \ == b) return a;\n      for(int k = log2n; --k >= 0;){\n        if(parent[a][k]\
-    \ != parent[b][k]){a = parent[a][k]; b = parent[b][k];}\n      }\n      return\
-    \ parent[a][0];\n    }\n\n    int operator()(int a, int b) const {return lca(a,\
-    \ b);}\n\n    T distance(int u, int v, const std::vector<T> &dist) const {\n \
-    \     return dist[u] + dist[v] - 2 * dist[lca(u, v)];\n    }\n  };\n}\n#line 3\
-    \ \"Mylib/Graph/TreeUtils/forest.cpp\"\n#include <algorithm>\n#line 6 \"Mylib/Graph/TreeUtils/forest.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T>\n  struct forest {\n    std::vector<tree<T>>\
-    \ trees;\n    std::vector<int> tree_id;\n    std::vector<int> vertex_id;\n   \
-    \ std::vector<std::vector<int>> rid;\n\n    forest(const graph<T> &g){\n     \
-    \ const int N = g.size();\n\n      tree_id.resize(N);\n      vertex_id.resize(N);\n\
+    \ {\n    int n_, log2n_;\n    std::vector<std::vector<int>> parent_;\n    std::vector<int>\
+    \ depth_;\n\n    void dfs(const tree<T> &tr, int cur, int par, int d){\n     \
+    \ parent_[cur][0] = par;\n      depth_[cur] = d;\n\n      for(auto &e : tr[cur]){\n\
+    \        if(e.to != par){\n          dfs(tr, e.to, cur, d + 1);\n        }\n \
+    \     }\n    }\n\n  public:\n    lowest_common_ancestor_doubling(){}\n    lowest_common_ancestor_doubling(const\
+    \ tree<T> &tr, int root):\n      n_(tr.size()), log2n_((int)ceil(log2(n_)) + 1),\
+    \ parent_(n_, std::vector<int>(log2n_)), depth_(n_)\n    {\n      dfs(tr, root,\
+    \ -1, 0);\n      for(int k = 0; k < log2n_ - 1; ++k){\n        for(int v = 0;\
+    \ v < n_; ++v){\n          if(parent_[v][k] == -1) parent_[v][k + 1] = -1;\n \
+    \         else parent_[v][k + 1] = parent_[parent_[v][k]][k];\n        }\n   \
+    \   }\n    }\n\n    int lca(int a, int b) const {\n      if(depth_[a] >= depth_[b])\
+    \ std::swap(a, b);\n      for(int k = 0; k < log2n_; ++k){\n        if((depth_[b]\
+    \ - depth_[a]) >> k & 1) b = parent_[b][k];\n      }\n      if(a == b) return\
+    \ a;\n      for(int k = log2n_; --k >= 0;){\n        if(parent_[a][k] != parent_[b][k]){a\
+    \ = parent_[a][k]; b = parent_[b][k];}\n      }\n      return parent_[a][0];\n\
+    \    }\n\n    int operator()(int a, int b) const {return lca(a, b);}\n\n    T\
+    \ distance(int u, int v, const std::vector<T> &dist) const {\n      return dist[u]\
+    \ + dist[v] - 2 * dist[lca(u, v)];\n    }\n  };\n}\n#line 3 \"Mylib/Graph/TreeUtils/forest.cpp\"\
+    \n#include <algorithm>\n#line 6 \"Mylib/Graph/TreeUtils/forest.cpp\"\n\nnamespace\
+    \ haar_lib {\n  template <typename T>\n  class forest {\n    std::vector<tree<T>>\
+    \ trees_;\n    std::vector<int> tree_id_, vertex_id_;\n    std::vector<std::vector<int>>\
+    \ rid_;\n\n  public:\n    forest(){}\n    forest(const graph<T> &g){\n      const\
+    \ int N = g.size();\n\n      tree_id_.resize(N);\n      vertex_id_.resize(N);\n\
     \n      std::vector<bool> check(N);\n\n      auto dfs =\n        [&](auto &dfs,\
     \ int cur, std::vector<int> &vertices, std::vector<edge<T>> &edges) -> void {\n\
     \          check[cur] = true;\n          vertices.push_back(cur);\n\n        \
@@ -85,36 +85,39 @@ data:
     \          }\n        };\n\n      for(int i = 0; i < N; ++i){\n        if(not\
     \ check[i]){\n          std::vector<int> vertices;\n          std::vector<edge<T>>\
     \ edges;\n          dfs(dfs, i, vertices, edges);\n\n          const int m = vertices.size();\n\
-    \          const int k = trees.size();\n\n          rid.emplace_back(m);\n\n \
-    \         for(int i = 0; i < (int)vertices.size(); ++i){\n            tree_id[vertices[i]]\
-    \ = k;\n            vertex_id[vertices[i]] = i;\n            rid[k][i] = vertices[i];\n\
-    \          }\n\n          trees.push_back(m);\n\n          for(auto &e : edges){\n\
-    \            trees[k].add_edge(vertex_id[e.from], vertex_id[e.to], e.cost);\n\
-    \          }\n        }\n      }\n    }\n\n    bool in_same_tree(int i, int j)\
-    \ const {\n      return tree_id[i] == tree_id[j];\n    }\n  };\n}\n#line 4 \"\
-    Mylib/Graph/TreeUtils/rerooting.cpp\"\n\nnamespace haar_lib {\n  namespace rerooting_impl\
-    \ {\n    template <typename T, typename U, typename Merge, typename EdgeF, typename\
-    \ VertexF>\n    T rec1(\n      tree<U> &tr,\n      T id,\n      const Merge &merge,\n\
-    \      const EdgeF &f,\n      const VertexF &g,\n      std::vector<std::vector<T>>\
-    \ &dp,\n      int cur,\n      int par = -1\n    ){\n      T acc = id;\n\n    \
-    \  for(int i = 0; i < (int)tr[cur].size(); ++i){\n        auto &e = tr[cur][i];\n\
-    \        if(e.to == par) continue;\n        dp[cur][i] = rec1(tr, id, merge, f,\
-    \ g, dp, e.to, cur);\n        acc = merge(acc, f(dp[cur][i], e));\n      }\n\n\
-    \      return g(acc, cur);\n    }\n\n    template <typename T, typename U, typename\
-    \ Merge, typename EdgeF, typename VertexF>\n    void rec2(\n      const tree<U>\
+    \          const int k = trees_.size();\n\n          rid_.emplace_back(m);\n\n\
+    \          for(int i = 0; i < (int)vertices.size(); ++i){\n            tree_id_[vertices[i]]\
+    \ = k;\n            vertex_id_[vertices[i]] = i;\n            rid_[k][i] = vertices[i];\n\
+    \          }\n\n          trees_.push_back(m);\n\n          for(auto &e : edges){\n\
+    \            trees_[k].add_edge(vertex_id_[e.from], vertex_id_[e.to], e.cost);\n\
+    \          }\n        }\n      }\n    }\n\n    const auto& trees() const {return\
+    \ trees_;}\n    auto id(int i) const {return std::make_pair(tree_id_[i], vertex_id_[i]);}\n\
+    \    int tree_id(int i) const {return tree_id_[i];}\n    int vertex_id(int i)\
+    \ const {return vertex_id_[i];}\n    int rid(int t, int u) const {return rid_[t][u];}\n\
+    \n    bool in_same_tree(int i, int j) const {\n      return tree_id_[i] == tree_id_[j];\n\
+    \    }\n  };\n}\n#line 4 \"Mylib/Graph/TreeUtils/rerooting.cpp\"\n\nnamespace\
+    \ haar_lib {\n  namespace rerooting_impl {\n    template <typename T, typename\
+    \ U, typename Merge, typename EdgeF, typename VertexF>\n    T rec1(\n      tree<U>\
     \ &tr,\n      T id,\n      const Merge &merge,\n      const EdgeF &f,\n      const\
     \ VertexF &g,\n      std::vector<std::vector<T>> &dp,\n      int cur,\n      int\
-    \ par,\n      T value\n    ){\n      const int l = tr[cur].size();\n\n      for(int\
-    \ i = 0; i < l; ++i){\n        if(tr[cur][i].to == par){\n          dp[cur][i]\
-    \ = value;\n        }\n      }\n\n      std::vector<T> left(l + 1, id), right(l\
-    \ + 1, id);\n\n      for(int i = 0; i < l - 1; ++i){\n        const auto &e =\
-    \ tr[cur][i];\n        left[i + 1] = merge(left[i], f(dp[cur][i], e));\n     \
-    \ }\n\n      for(int i = l - 1; i >= 1; --i){\n        const auto &e = tr[cur][i];\n\
-    \        right[i - 1] = merge(right[i], f(dp[cur][i], e));\n      }\n\n      for(int\
-    \ i = 0; i < l; ++i){\n        const auto &e = tr[cur][i];\n        if(e.to ==\
-    \ par) continue;\n\n        rec2(tr, id, merge, f, g, dp, e.to, cur, g(merge(left[i],\
-    \ right[i]), cur));\n      }\n    }\n  }\n\n  template <typename T, typename U,\
-    \ typename Merge, typename EdgeF, typename VertexF>\n  auto rerooting(tree<U>\
+    \ par = -1\n    ){\n      T acc = id;\n\n      for(int i = 0; i < (int)tr[cur].size();\
+    \ ++i){\n        auto &e = tr[cur][i];\n        if(e.to == par) continue;\n  \
+    \      dp[cur][i] = rec1(tr, id, merge, f, g, dp, e.to, cur);\n        acc = merge(acc,\
+    \ f(dp[cur][i], e));\n      }\n\n      return g(acc, cur);\n    }\n\n    template\
+    \ <typename T, typename U, typename Merge, typename EdgeF, typename VertexF>\n\
+    \    void rec2(\n      const tree<U> &tr,\n      T id,\n      const Merge &merge,\n\
+    \      const EdgeF &f,\n      const VertexF &g,\n      std::vector<std::vector<T>>\
+    \ &dp,\n      int cur,\n      int par,\n      T value\n    ){\n      const int\
+    \ l = tr[cur].size();\n\n      for(int i = 0; i < l; ++i){\n        if(tr[cur][i].to\
+    \ == par){\n          dp[cur][i] = value;\n        }\n      }\n\n      std::vector<T>\
+    \ left(l + 1, id), right(l + 1, id);\n\n      for(int i = 0; i < l - 1; ++i){\n\
+    \        const auto &e = tr[cur][i];\n        left[i + 1] = merge(left[i], f(dp[cur][i],\
+    \ e));\n      }\n\n      for(int i = l - 1; i >= 1; --i){\n        const auto\
+    \ &e = tr[cur][i];\n        right[i - 1] = merge(right[i], f(dp[cur][i], e));\n\
+    \      }\n\n      for(int i = 0; i < l; ++i){\n        const auto &e = tr[cur][i];\n\
+    \        if(e.to == par) continue;\n\n        rec2(tr, id, merge, f, g, dp, e.to,\
+    \ cur, g(merge(left[i], right[i]), cur));\n      }\n    }\n  }\n\n  template <typename\
+    \ T, typename U, typename Merge, typename EdgeF, typename VertexF>\n  auto rerooting(tree<U>\
     \ tr, T id, Merge merge, EdgeF f, VertexF g){\n    const int N = tr.size();\n\
     \    std::vector<std::vector<T>> dp(N);\n    std::vector<T> ret(N, id);\n\n  \
     \  for(int i = 0; i < N; ++i) dp[i].assign(tr[i].size(), id);\n    rerooting_impl::rec1(tr,\
@@ -152,17 +155,17 @@ data:
     \ N){\n    return InputTuples<Args ...>(N);\n  }\n}\n#line 12 \"test/yukicoder/922/main.test.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nint main(){\n  int N, M, Q; std::cin >> N >> M\
     \ >> Q;\n\n  hl::graph<int64_t> g(N);\n  g.read<1, false, false>(M);\n\n  int64_t\
-    \ ans = 0;\n\n  hl::forest<int64_t> forest(g);\n\n  const int tree_num = forest.trees.size();\n\
+    \ ans = 0;\n\n  hl::forest<int64_t> forest(g);\n\n  const int tree_num = forest.trees().size();\n\
     \  std::vector<hl::lowest_common_ancestor_doubling<int64_t>> lcas(tree_num);\n\
     \  std::vector<std::vector<int64_t>> dists(tree_num);\n\n  for(int i = 0; i <\
-    \ tree_num; ++i){\n    lcas[i] = hl::lowest_common_ancestor_doubling(forest.trees[i],\
-    \ 0);\n    dists[i] = hl::tree_distance(forest.trees[i], 0);\n  }\n\n  std::vector<std::vector<int>>\
-    \ plans(tree_num);\n  for(int i = 0; i < tree_num; ++i){\n    plans[i] = std::vector<int>(forest.trees[i].size());\n\
+    \ tree_num; ++i){\n    lcas[i] = hl::lowest_common_ancestor_doubling(forest.trees()[i],\
+    \ 0);\n    dists[i] = hl::tree_distance(forest.trees()[i], 0);\n  }\n\n  std::vector<std::vector<int>>\
+    \ plans(tree_num);\n  for(int i = 0; i < tree_num; ++i){\n    plans[i] = std::vector<int>(forest.trees()[i].size());\n\
     \  }\n\n  for(auto [a, b] : hl::input_tuples<int, int>(Q)){\n    --a, --b;\n\n\
-    \    if(forest.in_same_tree(a, b)){\n      ans += lcas[forest.tree_id[a]].distance(forest.vertex_id[a],\
-    \ forest.vertex_id[b], dists[forest.tree_id[a]]);\n    }else{\n      plans[forest.tree_id[a]][forest.vertex_id[a]]\
-    \ += 1;\n      plans[forest.tree_id[b]][forest.vertex_id[b]] += 1;\n    }\n  }\n\
-    \n  for(int i = 0; i < tree_num; ++i){\n    const auto &tree = forest.trees[i];\n\
+    \    if(forest.in_same_tree(a, b)){\n      ans += lcas[forest.tree_id(a)].distance(forest.vertex_id(a),\
+    \ forest.vertex_id(b), dists[forest.tree_id(a)]);\n    }else{\n      plans[forest.tree_id(a)][forest.vertex_id(a)]\
+    \ += 1;\n      plans[forest.tree_id(b)][forest.vertex_id(b)] += 1;\n    }\n  }\n\
+    \n  for(int i = 0; i < tree_num; ++i){\n    const auto &tree = forest.trees()[i];\n\
     \    const auto &plan = plans[i];\n\n    auto res =\n      hl::rerooting<std::pair<int,\
     \ int>>(\n        tree,\n        std::make_pair(0, 0),\n        [](const auto\
     \ &a, const auto &b){\n          return std::make_pair(a.first + b.first, a.second\
@@ -180,16 +183,16 @@ data:
     \n#include \"Mylib/IO/input_tuples.cpp\"\n\nnamespace hl = haar_lib;\n\nint main(){\n\
     \  int N, M, Q; std::cin >> N >> M >> Q;\n\n  hl::graph<int64_t> g(N);\n  g.read<1,\
     \ false, false>(M);\n\n  int64_t ans = 0;\n\n  hl::forest<int64_t> forest(g);\n\
-    \n  const int tree_num = forest.trees.size();\n  std::vector<hl::lowest_common_ancestor_doubling<int64_t>>\
+    \n  const int tree_num = forest.trees().size();\n  std::vector<hl::lowest_common_ancestor_doubling<int64_t>>\
     \ lcas(tree_num);\n  std::vector<std::vector<int64_t>> dists(tree_num);\n\n  for(int\
-    \ i = 0; i < tree_num; ++i){\n    lcas[i] = hl::lowest_common_ancestor_doubling(forest.trees[i],\
-    \ 0);\n    dists[i] = hl::tree_distance(forest.trees[i], 0);\n  }\n\n  std::vector<std::vector<int>>\
-    \ plans(tree_num);\n  for(int i = 0; i < tree_num; ++i){\n    plans[i] = std::vector<int>(forest.trees[i].size());\n\
+    \ i = 0; i < tree_num; ++i){\n    lcas[i] = hl::lowest_common_ancestor_doubling(forest.trees()[i],\
+    \ 0);\n    dists[i] = hl::tree_distance(forest.trees()[i], 0);\n  }\n\n  std::vector<std::vector<int>>\
+    \ plans(tree_num);\n  for(int i = 0; i < tree_num; ++i){\n    plans[i] = std::vector<int>(forest.trees()[i].size());\n\
     \  }\n\n  for(auto [a, b] : hl::input_tuples<int, int>(Q)){\n    --a, --b;\n\n\
-    \    if(forest.in_same_tree(a, b)){\n      ans += lcas[forest.tree_id[a]].distance(forest.vertex_id[a],\
-    \ forest.vertex_id[b], dists[forest.tree_id[a]]);\n    }else{\n      plans[forest.tree_id[a]][forest.vertex_id[a]]\
-    \ += 1;\n      plans[forest.tree_id[b]][forest.vertex_id[b]] += 1;\n    }\n  }\n\
-    \n  for(int i = 0; i < tree_num; ++i){\n    const auto &tree = forest.trees[i];\n\
+    \    if(forest.in_same_tree(a, b)){\n      ans += lcas[forest.tree_id(a)].distance(forest.vertex_id(a),\
+    \ forest.vertex_id(b), dists[forest.tree_id(a)]);\n    }else{\n      plans[forest.tree_id(a)][forest.vertex_id(a)]\
+    \ += 1;\n      plans[forest.tree_id(b)][forest.vertex_id(b)] += 1;\n    }\n  }\n\
+    \n  for(int i = 0; i < tree_num; ++i){\n    const auto &tree = forest.trees()[i];\n\
     \    const auto &plan = plans[i];\n\n    auto res =\n      hl::rerooting<std::pair<int,\
     \ int>>(\n        tree,\n        std::make_pair(0, 0),\n        [](const auto\
     \ &a, const auto &b){\n          return std::make_pair(a.first + b.first, a.second\
@@ -211,7 +214,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/922/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-10-03 19:28:56+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/922/main.test.cpp

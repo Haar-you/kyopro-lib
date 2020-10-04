@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/String/starts_with.cpp\"\n#include <cstddef>\n\nnamespace\
     \ haar_lib {\n  template <typename Container, typename T = typename Container::value_type>\n\

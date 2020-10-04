@@ -8,11 +8,11 @@ data:
     path: Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp
     title: Fenwick tree (2D)
   - icon: ':question:'
-    path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
-  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+    title: Input tuple
+  - icon: ':question:'
+    path: Mylib/IO/input_tuples.cpp
+    title: Input tuples
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -31,26 +31,26 @@ data:
     \    value_type inv(const value_type &a) const {return -a;}\n  };\n}\n#line 2\
     \ \"Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp\"\n#include <vector>\n\
     \nnamespace haar_lib {\n  template <typename AbelianGroup>\n  class fenwick_tree_2d\
-    \ {\n    using value_type = typename AbelianGroup::value_type;\n    const static\
-    \ AbelianGroup G;\n\n    int w, h;\n    std::vector<std::vector<value_type>> data;\n\
-    \n  private:\n    value_type get_w(int i, int y) const {\n      value_type ret\
-    \ = G();\n      while(i > 0){\n        ret = G(ret, data[i][y]);\n        i -=\
-    \ i & (-i);\n      }\n      return ret;\n    }\n\n    value_type get_w(int l,\
-    \ int r, int y) const {\n      return G(get_w(r, y), G.inv(get_w(l, y)));\n  \
-    \  }\n\n    value_type get(int x1, int x2, int y) const {\n      value_type ret\
-    \ = G();\n      while(y > 0){\n        ret = G(ret, get_w(x1, x2, y));\n     \
-    \   y -= y & (-y);\n      }\n      return ret;\n    }\n\n  public:\n    fenwick_tree_2d(int\
-    \ width, int height){\n      w = width;\n      h = height;\n      data = std::vector<std::vector<value_type>>(w\
-    \ + 1, std::vector<value_type>(h + 1));\n    }\n\n    value_type fold(std::pair<int,\
+    \ {\n  public:\n    using value_type = typename AbelianGroup::value_type;\n\n\
+    \  private:\n    AbelianGroup G_;\n\n    int w_, h_;\n    std::vector<std::vector<value_type>>\
+    \ data_;\n\n  private:\n    value_type get_w(int i, int y) const {\n      value_type\
+    \ ret = G_();\n      while(i > 0){\n        ret = G_(ret, data_[i][y]);\n    \
+    \    i -= i & (-i);\n      }\n      return ret;\n    }\n\n    value_type get_w(int\
+    \ l, int r, int y) const {\n      return G_(get_w(r, y), G_.inv(get_w(l, y)));\n\
+    \    }\n\n    value_type get(int x1, int x2, int y) const {\n      value_type\
+    \ ret = G_();\n      while(y > 0){\n        ret = G_(ret, get_w(x1, x2, y));\n\
+    \        y -= y & (-y);\n      }\n      return ret;\n    }\n\n  public:\n    fenwick_tree_2d(){}\n\
+    \    fenwick_tree_2d(int width, int height):\n      w_(width), h_(height), data_(w_\
+    \ + 1, std::vector<value_type>(h_ + 1, G_())){}\n\n    value_type fold(std::pair<int,\
     \ int> p1, std::pair<int, int> p2) const {\n      const auto [x1, y1] = p1;\n\
-    \      const auto [x2, y2] = p2;\n      return G(get(x1, x2, y2), G.inv(get(x1,\
+    \      const auto [x2, y2] = p2;\n      return G_(get(x1, x2, y2), G_.inv(get(x1,\
     \ x2, y1)));\n    }\n\n    value_type operator[](std::pair<int, int> p) const\
     \ {\n      const auto [x, y] = p;\n      return fold({x, y}, {x + 1, y + 1});\n\
     \    }\n\n    void update(std::pair<int, int> p, const value_type &val){\n   \
     \   auto [x, y] = p;\n      x += 1;\n      y += 1;\n\n      for(int i = x; i <=\
-    \ w; i += i & (-i)){\n        for(int j = y; j <= h; j += j & (-j)){\n       \
-    \   data[i][j] = G(data[i][j], val);\n        }\n      }\n    }\n  };\n}\n#line\
-    \ 5 \"Mylib/IO/input_tuples.cpp\"\n#include <utility>\n#include <initializer_list>\n\
+    \ w_; i += i & (-i)){\n        for(int j = y; j <= h_; j += j & (-j)){\n     \
+    \     data_[i][j] = G_(data_[i][j], val);\n        }\n      }\n    }\n  };\n}\n\
+    #line 5 \"Mylib/IO/input_tuples.cpp\"\n#include <utility>\n#include <initializer_list>\n\
     #line 6 \"Mylib/IO/input_tuple.cpp\"\n\nnamespace haar_lib {\n  template <typename\
     \ T, size_t ... I>\n  static void input_tuple_helper(std::istream &s, T &val,\
     \ std::index_sequence<I ...>){\n    (void)std::initializer_list<int>{(void(s >>\
@@ -110,7 +110,7 @@ data:
   isVerificationFile: true
   path: test/aoj/2842/main.fenwick_tree.test.cpp
   requiredBy: []
-  timestamp: '2020-09-26 08:06:35+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/2842/main.fenwick_tree.test.cpp

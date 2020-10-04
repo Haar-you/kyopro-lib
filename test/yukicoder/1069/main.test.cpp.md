@@ -1,21 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: Mylib/IO/input_tuple_vector.cpp
-    title: Mylib/IO/input_tuple_vector.cpp
-  - icon: ':question:'
-    path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
-  - icon: ':question:'
-    path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
   - icon: ':x:'
     path: Mylib/Graph/ShortestPath/yen_algorithm.cpp
     title: Yen's algorithm
   - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
+  - icon: ':question:'
+    path: Mylib/IO/input_tuple.cpp
+    title: Input tuple
+  - icon: ':question:'
+    path: Mylib/IO/input_tuple_vector.cpp
+    title: Input tuple vector
+  - icon: ':question:'
+    path: Mylib/IO/input_tuples.cpp
+    title: Input tuples
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

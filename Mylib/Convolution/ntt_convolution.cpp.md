@@ -1,35 +1,44 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':x:'
-    path: test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
-    title: test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
-  - icon: ':x:'
-    path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
-    title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
-  - icon: ':x:'
-    path: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
-    title: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
-  - icon: ':x:'
-    path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
-    title: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
-  - icon: ':x:'
     path: test/yosupo-judge/bernoulli_number/main.test.cpp
     title: test/yosupo-judge/bernoulli_number/main.test.cpp
-  - icon: ':x:'
-    path: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
-    title: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/convolution_mod/main.test.cpp
     title: test/yosupo-judge/convolution_mod/main.test.cpp
   - icon: ':x:'
+    path: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
+    title: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
+    title: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
+    title: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
+    title: test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
+  - icon: ':x:'
     path: test/yosupo-judge/log_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/log_of_formal_power_series/main.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/partition_function/main.fps.test.cpp
+    title: test/yosupo-judge/partition_function/main.fps.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
+    title: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
+    title: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
+    title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
@@ -37,40 +46,33 @@ data:
     path: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
   - icon: ':x:'
-    path: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
-    title: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
-  - icon: ':x:'
-    path: test/yosupo-judge/partition_function/main.fps.test.cpp
-    title: test/yosupo-judge/partition_function/main.fps.test.cpp
-  - icon: ':x:'
-    path: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
-    title: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
+    path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
+    title: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Convolution/ntt_convolution.cpp\"\n#include <vector>\n\
     #include <cassert>\n#include <utility>\n#include <algorithm>\n#line 2 \"Mylib/Number/Mint/mint.cpp\"\
     \n#include <iostream>\n#line 4 \"Mylib/Number/Mint/mint.cpp\"\n\nnamespace haar_lib\
-    \ {\n  template <int32_t M>\n  class modint {\n    uint32_t val;\n\n  public:\n\
-    \    constexpr static auto mod(){return M;}\n\n    constexpr modint(): val(0){}\n\
-    \    constexpr modint(int64_t n){\n      if(n >= M) val = n % M;\n      else if(n\
-    \ < 0) val = n % M + M;\n      else val = n;\n    }\n\n    constexpr auto& operator=(const\
-    \ modint &a){val = a.val; return *this;}\n    constexpr auto& operator+=(const\
-    \ modint &a){\n      if(val + a.val >= M) val = (uint64_t)val + a.val - M;\n \
-    \     else val += a.val;\n      return *this;\n    }\n    constexpr auto& operator-=(const\
-    \ modint &a){\n      if(val < a.val) val += M;\n      val -= a.val;\n      return\
-    \ *this;\n    }\n    constexpr auto& operator*=(const modint &a){\n      val =\
-    \ (uint64_t)val * a.val % M;\n      return *this;\n    }\n    constexpr auto&\
-    \ operator/=(const modint &a){\n      val = (uint64_t)val * a.inv().val % M;\n\
-    \      return *this;\n    }\n\n    constexpr auto operator+(const modint &a) const\
-    \ {return modint(*this) += a;}\n    constexpr auto operator-(const modint &a)\
-    \ const {return modint(*this) -= a;}\n    constexpr auto operator*(const modint\
-    \ &a) const {return modint(*this) *= a;}\n    constexpr auto operator/(const modint\
-    \ &a) const {return modint(*this) /= a;}\n\n    constexpr bool operator==(const\
-    \ modint &a) const {return val == a.val;}\n    constexpr bool operator!=(const\
-    \ modint &a) const {return val != a.val;}\n\n    constexpr auto& operator++(){*this\
+    \ {\n  template <int32_t M>\n  class modint {\n    uint32_t val_;\n\n  public:\n\
+    \    constexpr static auto mod(){return M;}\n\n    constexpr modint(): val_(0){}\n\
+    \    constexpr modint(int64_t n){\n      if(n >= M) val_ = n % M;\n      else\
+    \ if(n < 0) val_ = n % M + M;\n      else val_ = n;\n    }\n\n    constexpr auto&\
+    \ operator=(const modint &a){val_ = a.val_; return *this;}\n    constexpr auto&\
+    \ operator+=(const modint &a){\n      if(val_ + a.val_ >= M) val_ = (uint64_t)val_\
+    \ + a.val_ - M;\n      else val_ += a.val_;\n      return *this;\n    }\n    constexpr\
+    \ auto& operator-=(const modint &a){\n      if(val_ < a.val_) val_ += M;\n   \
+    \   val_ -= a.val_;\n      return *this;\n    }\n    constexpr auto& operator*=(const\
+    \ modint &a){\n      val_ = (uint64_t)val_ * a.val_ % M;\n      return *this;\n\
+    \    }\n    constexpr auto& operator/=(const modint &a){\n      val_ = (uint64_t)val_\
+    \ * a.inv().val_ % M;\n      return *this;\n    }\n\n    constexpr auto operator+(const\
+    \ modint &a) const {return modint(*this) += a;}\n    constexpr auto operator-(const\
+    \ modint &a) const {return modint(*this) -= a;}\n    constexpr auto operator*(const\
+    \ modint &a) const {return modint(*this) *= a;}\n    constexpr auto operator/(const\
+    \ modint &a) const {return modint(*this) /= a;}\n\n    constexpr bool operator==(const\
+    \ modint &a) const {return val_ == a.val_;}\n    constexpr bool operator!=(const\
+    \ modint &a) const {return val_ != a.val_;}\n\n    constexpr auto& operator++(){*this\
     \ += 1; return *this;}\n    constexpr auto& operator--(){*this -= 1; return *this;}\n\
     \n    constexpr auto operator++(int){auto t = *this; *this += 1; return t;}\n\
     \    constexpr auto operator--(int){auto t = *this; *this -= 1; return t;}\n\n\
@@ -82,41 +84,41 @@ data:
     \ b);\n        u -= t * v; std::swap(u, v);\n      }\n\n      u %= M;\n      if(u\
     \ < 0) u += M;\n\n      return u;\n    }\n\n    constexpr static auto frac(int64_t\
     \ a, int64_t b){return modint(a) / modint(b);}\n\n    constexpr auto pow(int64_t\
-    \ p) const {return pow(val, p);}\n    constexpr auto inv() const {return inv(val);}\n\
-    \n    friend constexpr auto operator-(const modint &a){return modint(M - a.val);}\n\
+    \ p) const {return pow(val_, p);}\n    constexpr auto inv() const {return inv(val_);}\n\
+    \n    friend constexpr auto operator-(const modint &a){return modint(M - a.val_);}\n\
     \n    friend constexpr auto operator+(int64_t a, const modint &b){return modint(a)\
     \ + b;}\n    friend constexpr auto operator-(int64_t a, const modint &b){return\
     \ modint(a) - b;}\n    friend constexpr auto operator*(int64_t a, const modint\
     \ &b){return modint(a) * b;}\n    friend constexpr auto operator/(int64_t a, const\
     \ modint &b){return modint(a) / b;}\n\n    friend std::istream& operator>>(std::istream\
-    \ &s, modint<M> &a){s >> a.val; return s;}\n    friend std::ostream& operator<<(std::ostream\
-    \ &s, const modint<M> &a){s << a.val; return s;}\n\n    template <int N>\n   \
-    \ static auto div(){\n      static auto value = inv(N);\n      return value;\n\
-    \    }\n\n    explicit operator int32_t() const noexcept {return val;}\n    explicit\
-    \ operator int64_t() const noexcept {return val;}\n  };\n}\n#line 7 \"Mylib/Convolution/ntt_convolution.cpp\"\
+    \ &s, modint &a){s >> a.val_; return s;}\n    friend std::ostream& operator<<(std::ostream\
+    \ &s, const modint &a){s << a.val_; return s;}\n\n    template <int N>\n    static\
+    \ auto div(){\n      static auto value = inv(N);\n      return value;\n    }\n\
+    \n    explicit operator int32_t() const noexcept {return val_;}\n    explicit\
+    \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 7 \"Mylib/Convolution/ntt_convolution.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T, int PRIM_ROOT, int MAX_SIZE>\n\
     \  class number_theoretic_transform {\n  public:\n    using value_type = T;\n\
-    \    constexpr static int primitive_root = PRIM_ROOT;\n\n  private:\n    const\
-    \ int MAX_POWER;\n    std::vector<T> BASE, INV_BASE;\n\n  public:\n    number_theoretic_transform():\n\
-    \      MAX_POWER(__builtin_ctz(MAX_SIZE)),\n      BASE(MAX_POWER + 1),\n     \
-    \ INV_BASE(MAX_POWER + 1)\n    {\n      static_assert((MAX_SIZE & (MAX_SIZE -\
-    \ 1)) == 0, \"MAX_SIZE must be power of 2.\");\n\n      T t = T::pow(PRIM_ROOT,\
-    \ (T::mod() - 1) >> (MAX_POWER + 2));\n      T s = t.inv();\n\n      for(int i\
-    \ = MAX_POWER - 1; i >= 0; --i){\n        t *= t;\n        s *= s;\n        BASE[i]\
-    \ = -t;\n        INV_BASE[i] = -s;\n      }\n    }\n\n    void run(std::vector<T>\
+    \    constexpr static int primitive_root = PRIM_ROOT;\n    constexpr static int\
+    \ max_size = MAX_SIZE;\n\n  private:\n    const int MAX_POWER_;\n    std::vector<T>\
+    \ BASE_, INV_BASE_;\n\n  public:\n    number_theoretic_transform():\n      MAX_POWER_(__builtin_ctz(MAX_SIZE)),\n\
+    \      BASE_(MAX_POWER_ + 1),\n      INV_BASE_(MAX_POWER_ + 1)\n    {\n      static_assert((MAX_SIZE\
+    \ & (MAX_SIZE - 1)) == 0, \"MAX_SIZE must be power of 2.\");\n\n      T t = T::pow(PRIM_ROOT,\
+    \ (T::mod() - 1) >> (MAX_POWER_ + 2));\n      T s = t.inv();\n\n      for(int\
+    \ i = MAX_POWER_; --i >= 0;){\n        t *= t;\n        s *= s;\n        BASE_[i]\
+    \ = -t;\n        INV_BASE_[i] = -s;\n      }\n    }\n\n    void run(std::vector<T>\
     \ &f, bool INVERSE = false){\n      const int n = f.size();\n      assert((n &\
     \ (n - 1)) == 0 and n <= MAX_SIZE); // \u30C7\u30FC\u30BF\u6570\u306F2\u306E\u51AA\
     \u4E57\u500B\n\n      if(INVERSE){\n        for(int b = 1; b < n; b <<= 1){\n\
     \          T w = 1;\n          for(int j = 0, k = 1; j < n; j += 2 * b, ++k){\n\
     \            for(int i = 0; i < b; ++i){\n              const auto s = f[i + j];\n\
     \              const auto t = f[i + j + b];\n\n              f[i + j] = s + t;\n\
-    \              f[i + j + b] = (s - t) * w;\n            }\n            w *= INV_BASE[__builtin_ctz(k)];\n\
+    \              f[i + j + b] = (s - t) * w;\n            }\n            w *= INV_BASE_[__builtin_ctz(k)];\n\
     \          }\n        }\n\n        const T t = T::inv(n);\n        for(auto &x\
     \ : f) x *= t;\n      }else{\n        for(int b = n >> 1; b; b >>= 1){\n     \
     \     T w = 1;\n          for(int j = 0, k = 1; j < n; j += 2 * b, ++k){\n   \
     \         for(int i = 0; i < b; ++i){\n              const auto s = f[i + j];\n\
     \              const auto t = f[i + j + b] * w;\n\n              f[i + j] = s\
-    \ + t;\n              f[i + j + b] = s - t;\n            }\n            w *= BASE[__builtin_ctz(k)];\n\
+    \ + t;\n              f[i + j + b] = s - t;\n            }\n            w *= BASE_[__builtin_ctz(k)];\n\
     \          }\n        }\n      }\n    }\n\n    template <typename U>\n    std::vector<T>\
     \ convolve(std::vector<U> f, std::vector<U> g){\n      const int m = f.size()\
     \ + g.size() - 1;\n      int n = 1;\n      while(n < m) n *= 2;\n\n      std::vector<T>\
@@ -143,26 +145,27 @@ data:
     #include <algorithm>\n#include \"Mylib/Number/Mint/mint.cpp\"\n\nnamespace haar_lib\
     \ {\n  template <typename T, int PRIM_ROOT, int MAX_SIZE>\n  class number_theoretic_transform\
     \ {\n  public:\n    using value_type = T;\n    constexpr static int primitive_root\
-    \ = PRIM_ROOT;\n\n  private:\n    const int MAX_POWER;\n    std::vector<T> BASE,\
-    \ INV_BASE;\n\n  public:\n    number_theoretic_transform():\n      MAX_POWER(__builtin_ctz(MAX_SIZE)),\n\
-    \      BASE(MAX_POWER + 1),\n      INV_BASE(MAX_POWER + 1)\n    {\n      static_assert((MAX_SIZE\
+    \ = PRIM_ROOT;\n    constexpr static int max_size = MAX_SIZE;\n\n  private:\n\
+    \    const int MAX_POWER_;\n    std::vector<T> BASE_, INV_BASE_;\n\n  public:\n\
+    \    number_theoretic_transform():\n      MAX_POWER_(__builtin_ctz(MAX_SIZE)),\n\
+    \      BASE_(MAX_POWER_ + 1),\n      INV_BASE_(MAX_POWER_ + 1)\n    {\n      static_assert((MAX_SIZE\
     \ & (MAX_SIZE - 1)) == 0, \"MAX_SIZE must be power of 2.\");\n\n      T t = T::pow(PRIM_ROOT,\
-    \ (T::mod() - 1) >> (MAX_POWER + 2));\n      T s = t.inv();\n\n      for(int i\
-    \ = MAX_POWER - 1; i >= 0; --i){\n        t *= t;\n        s *= s;\n        BASE[i]\
-    \ = -t;\n        INV_BASE[i] = -s;\n      }\n    }\n\n    void run(std::vector<T>\
+    \ (T::mod() - 1) >> (MAX_POWER_ + 2));\n      T s = t.inv();\n\n      for(int\
+    \ i = MAX_POWER_; --i >= 0;){\n        t *= t;\n        s *= s;\n        BASE_[i]\
+    \ = -t;\n        INV_BASE_[i] = -s;\n      }\n    }\n\n    void run(std::vector<T>\
     \ &f, bool INVERSE = false){\n      const int n = f.size();\n      assert((n &\
     \ (n - 1)) == 0 and n <= MAX_SIZE); // \u30C7\u30FC\u30BF\u6570\u306F2\u306E\u51AA\
     \u4E57\u500B\n\n      if(INVERSE){\n        for(int b = 1; b < n; b <<= 1){\n\
     \          T w = 1;\n          for(int j = 0, k = 1; j < n; j += 2 * b, ++k){\n\
     \            for(int i = 0; i < b; ++i){\n              const auto s = f[i + j];\n\
     \              const auto t = f[i + j + b];\n\n              f[i + j] = s + t;\n\
-    \              f[i + j + b] = (s - t) * w;\n            }\n            w *= INV_BASE[__builtin_ctz(k)];\n\
+    \              f[i + j + b] = (s - t) * w;\n            }\n            w *= INV_BASE_[__builtin_ctz(k)];\n\
     \          }\n        }\n\n        const T t = T::inv(n);\n        for(auto &x\
     \ : f) x *= t;\n      }else{\n        for(int b = n >> 1; b; b >>= 1){\n     \
     \     T w = 1;\n          for(int j = 0, k = 1; j < n; j += 2 * b, ++k){\n   \
     \         for(int i = 0; i < b; ++i){\n              const auto s = f[i + j];\n\
     \              const auto t = f[i + j + b] * w;\n\n              f[i + j] = s\
-    \ + t;\n              f[i + j + b] = s - t;\n            }\n            w *= BASE[__builtin_ctz(k)];\n\
+    \ + t;\n              f[i + j + b] = s - t;\n            }\n            w *= BASE_[__builtin_ctz(k)];\n\
     \          }\n        }\n      }\n    }\n\n    template <typename U>\n    std::vector<T>\
     \ convolve(std::vector<U> f, std::vector<U> g){\n      const int m = f.size()\
     \ + g.size() - 1;\n      int n = 1;\n      while(n < m) n *= 2;\n\n      std::vector<T>\
@@ -190,7 +193,7 @@ data:
   isVerificationFile: false
   path: Mylib/Convolution/ntt_convolution.cpp
   requiredBy: []
-  timestamp: '2020-09-17 22:58:14+09:00'
+  timestamp: '2020-09-30 07:57:28+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
@@ -204,6 +207,7 @@ data:
   - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
   - test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
   - test/yosupo-judge/partition_function/main.fps.test.cpp
   - test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
 documentation_of: Mylib/Convolution/ntt_convolution.cpp

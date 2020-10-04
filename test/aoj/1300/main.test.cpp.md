@@ -1,21 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Parser/parser.cpp
-    title: Parsing
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Number/Rational/rational.cpp
-    title: Rational number
+  - icon: ':question:'
+    path: Mylib/IO/join.cpp
+    title: join function
   - icon: ':heavy_check_mark:'
     path: Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp
     title: Gaussian elimination
   - icon: ':heavy_check_mark:'
+    path: Mylib/Number/Rational/rational.cpp
+    title: Rational number
+  - icon: ':heavy_check_mark:'
+    path: Mylib/Parser/parser.cpp
+    title: Parsing
+  - icon: ':heavy_check_mark:'
     path: Mylib/String/split.cpp
     title: split
-  - icon: ':question:'
-    path: Mylib/IO/join.cpp
-    title: Mylib/IO/join.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -56,35 +56,38 @@ data:
     \    (ret *= 10) += (T)(get_digit());\n      }\n      return ret;\n    }\n  };\n\
     }\n#line 2 \"Mylib/Number/Rational/rational.cpp\"\n#include <numeric>\n#line 4\
     \ \"Mylib/Number/Rational/rational.cpp\"\n#include <cmath>\n\nnamespace haar_lib\
-    \ {\n  class rational {\n  public:\n    int64_t nume, deno;\n    rational(): nume(0),\
-    \ deno(1){}\n    rational(int64_t num): nume(num), deno(1){}\n    rational(int64_t\
-    \ num, int64_t den){\n      int64_t g = std::gcd(num, den);\n      nume = num\
-    \ / g;\n      deno = den / g;\n      if(deno < 0){\n        nume = -nume;\n  \
-    \      deno = -deno;\n      }\n    }\n\n    auto operator+(const rational &b){\n\
-    \      int64_t l = std::lcm((*this).deno, b.deno);\n      return rational(l /\
-    \ (*this).deno * (*this).nume + l / b.deno * b.nume, l);\n    }\n\n    auto operator-(const\
-    \ rational &b){\n      int64_t l = std::lcm((*this).deno, b.deno);\n      return\
-    \ rational(l / (*this).deno * (*this).nume - l / b.deno * b.nume, l);\n    }\n\
-    \n    auto operator*(const rational &b){\n      return rational((*this).nume *\
-    \ b.nume, (*this).deno * b.deno);\n    }\n\n    auto operator/(const rational\
-    \ &b){\n      return rational((*this).nume * b.deno, (*this).deno * b.nume);\n\
-    \    }\n\n    auto& operator+=(const rational &a){*this = *this + a; return *this;}\n\
-    \    auto& operator-=(const rational &a){*this = *this - a; return *this;}\n \
-    \   auto& operator*=(const rational &a){*this = *this * a; return *this;}\n  \
-    \  auto& operator/=(const rational &a){*this = *this / a; return *this;}\n\n \
-    \   explicit operator double() const {return (double)nume / deno;}\n    explicit\
-    \ operator long double() const {return (long double)nume / deno;}\n  };\n\n  std::ostream&\
-    \ operator<<(std::ostream &os, const rational &r){\n    if(r.deno == 1) os <<\
-    \ r.nume;\n    else os << r.nume << \"/\" << r.deno;\n    return os;\n  }\n\n\
-    \  auto operator-(const rational &a){return rational(-a.nume, a.deno);}\n\n  bool\
-    \ operator==(const rational &a, const rational &b){return a.nume == b.nume &&\
-    \ a.deno == b.deno;}\n  bool operator!=(const rational &a, const rational &b){return\
-    \ !(a == b);}\n  bool operator<(const rational &a, const rational &b){return a.nume\
-    \ * b.deno < b.nume * a.deno;}\n  bool operator<=(const rational &a, const rational\
-    \ &b){return a.nume * b.deno <= b.nume * a.deno;}\n  bool operator>(const rational\
-    \ &a, const rational &b){return !(a <= b);}\n  bool operator>=(const rational\
-    \ &a, const rational &b){return !(a < b);}\n\n  auto abs(const rational &a){return\
-    \ rational(std::abs(a.nume), std::abs(a.deno));}\n}\n#line 3 \"Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp\"\
+    \ {\n  class rational {\n    int64_t nume_, deno_;\n\n  public:\n    rational():\
+    \ nume_(0), deno_(1){}\n    rational(int64_t nume): nume_(nume), deno_(1){}\n\
+    \    rational(int64_t nume, int64_t deno){\n      const int64_t g = std::gcd(nume,\
+    \ deno);\n      nume_ = nume / g;\n      deno_ = deno / g;\n      if(deno_ < 0){\n\
+    \        nume_ = -nume_;\n        deno_ = -deno_;\n      }\n    }\n\n    int64_t\
+    \ numerator() const {return nume_;}\n    int64_t denominator() const {return deno_;}\n\
+    \n    auto operator+(const rational &b){\n      int64_t l = std::lcm((*this).deno_,\
+    \ b.deno_);\n      return rational(l / (*this).deno_ * (*this).nume_ + l / b.deno_\
+    \ * b.nume_, l);\n    }\n\n    auto operator-(const rational &b){\n      int64_t\
+    \ l = std::lcm((*this).deno_, b.deno_);\n      return rational(l / (*this).deno_\
+    \ * (*this).nume_ - l / b.deno_ * b.nume_, l);\n    }\n\n    auto operator*(const\
+    \ rational &b){\n      return rational((*this).nume_ * b.nume_, (*this).deno_\
+    \ * b.deno_);\n    }\n\n    auto operator/(const rational &b){\n      return rational((*this).nume_\
+    \ * b.deno_, (*this).deno_ * b.nume_);\n    }\n\n    auto& operator+=(const rational\
+    \ &a){*this = *this + a; return *this;}\n    auto& operator-=(const rational &a){*this\
+    \ = *this - a; return *this;}\n    auto& operator*=(const rational &a){*this =\
+    \ *this * a; return *this;}\n    auto& operator/=(const rational &a){*this = *this\
+    \ / a; return *this;}\n\n    explicit operator double() const {return (double)nume_\
+    \ / deno_;}\n    explicit operator long double() const {return (long double)nume_\
+    \ / deno_;}\n\n    auto operator-(){return rational(-nume_, deno_);}\n\n    friend\
+    \ std::ostream& operator<<(std::ostream &os, const rational &r){\n      if(r.deno_\
+    \ == 1) os << r.nume_;\n      else os << r.nume_ << \"/\" << r.deno_;\n      return\
+    \ os;\n    }\n\n    friend bool operator==(const rational &a, const rational &b){return\
+    \ a.nume_ == b.nume_ and a.deno_ == b.deno_;}\n    friend bool operator!=(const\
+    \ rational &a, const rational &b){return !(a == b);}\n    friend bool operator<(const\
+    \ rational &a, const rational &b){return a.nume_ * b.deno_ < b.nume_ * a.deno_;}\n\
+    \    friend bool operator<=(const rational &a, const rational &b){return a.nume_\
+    \ * b.deno_ <= b.nume_ * a.deno_;}\n    friend bool operator>(const rational &a,\
+    \ const rational &b){return !(a <= b);}\n    friend bool operator>=(const rational\
+    \ &a, const rational &b){return !(a < b);}\n\n    friend auto abs(const rational\
+    \ &a){\n      return rational(std::abs(a.nume_), std::abs(a.deno_));\n    }\n\
+    \  };\n}\n#line 3 \"Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp\"\
     \n#include <utility>\n\nnamespace haar_lib {\n  template <typename T>\n  int gaussian_elimination(std::vector<std::vector<T>>\
     \ &a){\n    const int h = a.size();\n    const int w = a[0].size();\n    int rank\
     \ = 0;\n\n    for(int j = 0; j < w; ++j){\n      int pivot = -1;\n\n      for(int\
@@ -137,9 +140,9 @@ data:
     \  for(int j = 0; j < n; ++j){\n        if(ans[j] == 0){\n          k = j;\n \
     \         coef = mat[i][j];\n        }else{\n          cons += mat[i][j] * ans[j];\n\
     \        }\n      }\n\n      ans[k] = -cons / coef;\n    }\n\n    int64_t l =\
-    \ 1;\n    for(int i = 0; i < n; ++i) l = std::lcm(l, ans[i].deno);\n\n    for(int\
-    \ i = 0; i < n; ++i) ans[i] *= l;\n\n    std::cout << hl::join(ans.begin(), ans.end())\
-    \ << \"\\n\";\n  }\n\n  return 0;\n}\n"
+    \ 1;\n    for(int i = 0; i < n; ++i) l = std::lcm(l, ans[i].denominator());\n\n\
+    \    for(int i = 0; i < n; ++i) ans[i] *= l;\n\n    std::cout << hl::join(ans.begin(),\
+    \ ans.end()) << \"\\n\";\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1300\"\
     \n\n#include <iostream>\n#include <map>\n#include <string>\n#include <vector>\n\
     #include \"Mylib/Parser/parser.cpp\"\n#include \"Mylib/Number/Rational/rational.cpp\"\
@@ -177,9 +180,9 @@ data:
     \  for(int j = 0; j < n; ++j){\n        if(ans[j] == 0){\n          k = j;\n \
     \         coef = mat[i][j];\n        }else{\n          cons += mat[i][j] * ans[j];\n\
     \        }\n      }\n\n      ans[k] = -cons / coef;\n    }\n\n    int64_t l =\
-    \ 1;\n    for(int i = 0; i < n; ++i) l = std::lcm(l, ans[i].deno);\n\n    for(int\
-    \ i = 0; i < n; ++i) ans[i] *= l;\n\n    std::cout << hl::join(ans.begin(), ans.end())\
-    \ << \"\\n\";\n  }\n\n  return 0;\n}\n"
+    \ 1;\n    for(int i = 0; i < n; ++i) l = std::lcm(l, ans[i].denominator());\n\n\
+    \    for(int i = 0; i < n; ++i) ans[i] *= l;\n\n    std::cout << hl::join(ans.begin(),\
+    \ ans.end()) << \"\\n\";\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Parser/parser.cpp
   - Mylib/Number/Rational/rational.cpp
@@ -189,7 +192,7 @@ data:
   isVerificationFile: true
   path: test/aoj/1300/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-29 00:55:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/1300/main.test.cpp

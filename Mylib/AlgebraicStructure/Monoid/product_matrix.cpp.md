@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/product_matrix.cpp\"\n\n\
     namespace haar_lib {\n  template <typename T>\n  struct product_matrix_monoid\

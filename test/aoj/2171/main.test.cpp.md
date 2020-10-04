@@ -4,12 +4,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp
     title: Warshall-Floyd algorithm (For adjacency matrix graph)
+  - icon: ':question:'
+    path: Mylib/IO/input_vector.cpp
+    title: Input vector
   - icon: ':heavy_check_mark:'
     path: Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp
     title: Simultaneous linear equations (Floating point number)
-  - icon: ':question:'
-    path: Mylib/IO/input_vector.cpp
-    title: Mylib/IO/input_vector.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

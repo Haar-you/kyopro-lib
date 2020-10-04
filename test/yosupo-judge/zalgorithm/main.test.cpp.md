@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':question:'
+    path: Mylib/IO/join.cpp
+    title: join function
   - icon: ':x:'
     path: Mylib/String/z_algorithm.cpp
     title: Z-algorithm
-  - icon: ':question:'
-    path: Mylib/IO/join.cpp
-    title: Mylib/IO/join.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

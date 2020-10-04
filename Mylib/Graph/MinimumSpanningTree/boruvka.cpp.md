@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: Mylib/Graph/Template/graph.cpp
-    title: Basic graph
-  - icon: ':question:'
     path: Mylib/DataStructure/UnionFind/unionfind.cpp
     title: Union-find
+  - icon: ':question:'
+    path: Mylib/Graph/Template/graph.cpp
+    title: Basic graph
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':x:'
@@ -15,7 +15,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/MinimumSpanningTree/boruvka.cpp\"\n#include\
     \ <vector>\n#include <utility>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\n#include\
@@ -39,24 +38,24 @@ data:
     \        else add_undirected(u, v, w, i);\n      }\n    }\n  };\n\n  template\
     \ <typename T>\n  using tree = graph<T>;\n}\n#line 3 \"Mylib/DataStructure/UnionFind/unionfind.cpp\"\
     \n#include <numeric>\n#include <algorithm>\n\nnamespace haar_lib {\n  class unionfind\
-    \ {\n    int n;\n    mutable std::vector<int> parent;\n    std::vector<int> depth,\
-    \ size;\n    int count;\n\n  public:\n    unionfind(){}\n    unionfind(int n):\
-    \ n(n), parent(n), depth(n, 1), size(n, 1), count(n){\n      std::iota(parent.begin(),\
-    \ parent.end(), 0);\n    }\n\n    int root_of(int i) const {\n      if(parent[i]\
-    \ == i) return i;\n      else return parent[i] = root_of(parent[i]);\n    }\n\n\
-    \    bool is_same(int i, int j) const {return root_of(i) == root_of(j);}\n\n \
-    \   int merge(int i, int j){\n      const int ri = root_of(i), rj = root_of(j);\n\
-    \      if(ri == rj) return ri;\n      else{\n        --count;\n        if(depth[ri]\
-    \ < depth[rj]){\n          parent[ri] = rj;\n          size[rj] += size[ri];\n\
-    \          return rj;\n        }else{\n          parent[rj] = ri;\n          size[ri]\
-    \ += size[rj];\n          if(depth[ri] == depth[rj]) ++depth[ri];\n          return\
-    \ ri;\n        }\n      }\n    }\n\n    int size_of(int i) const {return size[root_of(i)];}\n\
-    \n    int count_groups() const {return count;}\n\n    auto get_groups() const\
-    \ {\n      std::vector<std::vector<int>> ret(n);\n\n      for(int i = 0; i < n;\
-    \ ++i){\n        ret[root_of(i)].push_back(i);\n      }\n\n      ret.erase(\n\
-    \        std::remove_if(\n          ret.begin(), ret.end(),\n          [](const\
-    \ auto &a){return a.empty();}\n        ),\n        ret.end()\n      );\n\n   \
-    \   return ret;\n    }\n  };\n}\n#line 6 \"Mylib/Graph/MinimumSpanningTree/boruvka.cpp\"\
+    \ {\n    int n_, count_;\n    mutable std::vector<int> parent_;\n    std::vector<int>\
+    \ depth_, size_;\n\n  public:\n    unionfind(){}\n    unionfind(int n): n_(n),\
+    \ count_(n), parent_(n), depth_(n, 1), size_(n, 1){\n      std::iota(parent_.begin(),\
+    \ parent_.end(), 0);\n    }\n\n    int root_of(int i) const {\n      if(parent_[i]\
+    \ == i) return i;\n      else return parent_[i] = root_of(parent_[i]);\n    }\n\
+    \n    bool is_same(int i, int j) const {return root_of(i) == root_of(j);}\n\n\
+    \    int merge(int i, int j){\n      const int ri = root_of(i), rj = root_of(j);\n\
+    \      if(ri == rj) return ri;\n      else{\n        --count_;\n        if(depth_[ri]\
+    \ < depth_[rj]){\n          parent_[ri] = rj;\n          size_[rj] += size_[ri];\n\
+    \          return rj;\n        }else{\n          parent_[rj] = ri;\n         \
+    \ size_[ri] += size_[rj];\n          if(depth_[ri] == depth_[rj]) ++depth_[ri];\n\
+    \          return ri;\n        }\n      }\n    }\n\n    int size_of(int i) const\
+    \ {return size_[root_of(i)];}\n\n    int count_groups() const {return count_;}\n\
+    \n    auto get_groups() const {\n      std::vector<std::vector<int>> ret(n_);\n\
+    \n      for(int i = 0; i < n_; ++i){\n        ret[root_of(i)].push_back(i);\n\
+    \      }\n\n      ret.erase(\n        std::remove_if(\n          ret.begin(),\
+    \ ret.end(),\n          [](const auto &a){return a.empty();}\n        ),\n   \
+    \     ret.end()\n      );\n\n      return ret;\n    }\n  };\n}\n#line 6 \"Mylib/Graph/MinimumSpanningTree/boruvka.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  auto boruvka(const graph<T>\
     \ &g){\n    std::vector<edge<T>> ret;\n    const int N = g.size();\n\n    unionfind\
     \ uf(N);\n    std::vector<std::vector<int>> c(N);\n    for(int i = 0; i < N; ++i)\
@@ -94,7 +93,7 @@ data:
   isVerificationFile: false
   path: Mylib/Graph/MinimumSpanningTree/boruvka.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/GRL_2_A/main.boruvka.test.cpp

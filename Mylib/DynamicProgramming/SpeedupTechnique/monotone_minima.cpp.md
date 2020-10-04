@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/DynamicProgramming/SpeedupTechnique/monotone_minima.cpp\"\
     \n#include <vector>\n#include <utility>\n\nnamespace haar_lib {\n  namespace monotone_minima_impl\

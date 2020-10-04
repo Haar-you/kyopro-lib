@@ -2,32 +2,32 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
+    path: Mylib/Geometry/Float/ccw.cpp
+    title: Check clockwise-counterclockwise
+  - icon: ':question:'
     path: Mylib/Geometry/Float/double_eps.cpp
     title: Floating point number with eps
   - icon: ':question:'
     path: Mylib/Geometry/Float/geometry_template.cpp
     title: Geometry template
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Geometry/Float/intersect_segments.cpp
     title: Intersection between two segments
-  - icon: ':question:'
-    path: Mylib/Geometry/Float/ccw.cpp
-    title: Check clockwise-counterclockwise
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Coloring/chromatic_number.cpp
     title: Graph vertex coloring
   - icon: ':question:'
-    path: Mylib/Number/Mod/mod_pow.cpp
-    title: Mod pow
-  - icon: ':question:'
-    path: Mylib/IO/input_vector.cpp
-    title: Mylib/IO/input_vector.cpp
+    path: Mylib/IO/input_tuple.cpp
+    title: Input tuple
   - icon: ':question:'
     path: Mylib/IO/input_tuples_with_index.cpp
-    title: Mylib/IO/input_tuples_with_index.cpp
+    title: Input tuples with index
   - icon: ':question:'
-    path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+    path: Mylib/IO/input_vector.cpp
+    title: Input vector
+  - icon: ':question:'
+    path: Mylib/Number/Mod/mod_pow.cpp
+    title: Mod pow
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -40,37 +40,38 @@ data:
   bundledCode: "#line 1 \"test/aoj/2136/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2136\"\
     \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/Geometry/Float/double_eps.cpp\"\
     \n#include <limits>\n#include <cmath>\n\nnamespace haar_lib {\n  template <typename\
-    \ T, const T &eps>\n  struct double_eps {\n    using value_type = T;\n\n    T\
-    \ value;\n\n    double_eps(): value(0){}\n    double_eps(T value): value(value){}\n\
-    \n    auto& operator=(const double_eps &rhs){this->value = rhs.value; return *this;}\n\
-    \    auto& operator+=(const double_eps &rhs){this->value += rhs.value; return\
-    \ *this;}\n    auto& operator-=(const double_eps &rhs){this->value -= rhs.value;\
-    \ return *this;}\n    auto& operator*=(const double_eps &rhs){this->value *= rhs.value;\
-    \ return *this;}\n    auto& operator/=(const double_eps &rhs){this->value /= rhs.value;\
-    \ return *this;}\n\n    auto operator+(const double_eps &rhs) const {return double_eps(this->value\
-    \ + rhs.value);}\n    auto operator-(const double_eps &rhs) const {return double_eps(this->value\
-    \ - rhs.value);}\n    auto operator*(const double_eps &rhs) const {return double_eps(this->value\
-    \ * rhs.value);}\n    auto operator/(const double_eps &rhs) const {return double_eps(this->value\
-    \ / rhs.value);}\n\n    bool operator==(const double_eps &rhs) const {return std::abs(this->value\
-    \ - rhs.value) < eps;}\n    bool operator!=(const double_eps &rhs) const {return\
-    \ !(*this == rhs);}\n    bool operator<(const double_eps &rhs) const {return this->value\
-    \ - rhs.value < -eps;}\n    bool operator<=(const double_eps &rhs) const {return\
-    \ this->value - rhs.value < eps;}\n    bool operator>(const double_eps &rhs) const\
-    \ {return !(*this <= rhs);}\n    bool operator>=(const double_eps &rhs) const\
-    \ {return !(*this < rhs);}\n\n    auto operator-() const {return double_eps(-(this->value));}\n\
-    \n    explicit operator double() const noexcept {return value;}\n    explicit\
-    \ operator long double() const noexcept {return value;}\n\n    friend std::ostream&\
-    \ operator<<(std::ostream &s, const double_eps &rhs){s << rhs.value; return s;}\n\
-    \    friend std::istream& operator>>(std::istream &s, double_eps &rhs){s >> rhs.value;\
-    \ return s;}\n\n    friend double_eps sin(double_eps x){return std::sin((T)x);}\n\
-    \    friend double_eps cos(double_eps x){return std::cos((T)x);}\n    friend double_eps\
-    \ tan(double_eps x){return std::tan((T)x);}\n    friend double_eps acos(double_eps\
-    \ x){return std::acos((T)x);}\n    friend double_eps atan2(double_eps y, double_eps\
-    \ x){return std::atan2((T)y, (T)x);}\n    friend double_eps abs(double_eps x){return\
-    \ std::abs((T)x);}\n    friend double_eps sqrt(double_eps x){return std::sqrt(std::max<T>(0,\
-    \ (T)x));}\n  };\n}\n\nnamespace std {\n  template <typename T, const T &eps>\n\
-    \  class numeric_limits<haar_lib::double_eps<T, eps>> {\n  public:\n    static\
-    \ haar_lib::double_eps<T, eps> infinity() {return numeric_limits<T>::infinity();}\n\
+    \ T, const T &eps>\n  struct double_eps {\n    using value_type = T;\n\n  private:\n\
+    \    T value_;\n\n  public:\n    double_eps(): value_(0){}\n    double_eps(T value_):\
+    \ value_(value_){}\n\n    auto& operator=(const double_eps &rhs){this->value_\
+    \ = rhs.value_; return *this;}\n    auto& operator+=(const double_eps &rhs){this->value_\
+    \ += rhs.value_; return *this;}\n    auto& operator-=(const double_eps &rhs){this->value_\
+    \ -= rhs.value_; return *this;}\n    auto& operator*=(const double_eps &rhs){this->value_\
+    \ *= rhs.value_; return *this;}\n    auto& operator/=(const double_eps &rhs){this->value_\
+    \ /= rhs.value_; return *this;}\n\n    auto operator+(const double_eps &rhs) const\
+    \ {return double_eps(this->value_ + rhs.value_);}\n    auto operator-(const double_eps\
+    \ &rhs) const {return double_eps(this->value_ - rhs.value_);}\n    auto operator*(const\
+    \ double_eps &rhs) const {return double_eps(this->value_ * rhs.value_);}\n   \
+    \ auto operator/(const double_eps &rhs) const {return double_eps(this->value_\
+    \ / rhs.value_);}\n\n    bool operator==(const double_eps &rhs) const {return\
+    \ std::abs(this->value_ - rhs.value_) < eps;}\n    bool operator!=(const double_eps\
+    \ &rhs) const {return !(*this == rhs);}\n    bool operator<(const double_eps &rhs)\
+    \ const {return this->value_ - rhs.value_ < -eps;}\n    bool operator<=(const\
+    \ double_eps &rhs) const {return this->value_ - rhs.value_ < eps;}\n    bool operator>(const\
+    \ double_eps &rhs) const {return !(*this <= rhs);}\n    bool operator>=(const\
+    \ double_eps &rhs) const {return !(*this < rhs);}\n\n    auto operator-() const\
+    \ {return double_eps(-(this->value_));}\n\n    explicit operator double() const\
+    \ noexcept {return value_;}\n    explicit operator long double() const noexcept\
+    \ {return value_;}\n\n    friend std::ostream& operator<<(std::ostream &s, const\
+    \ double_eps &rhs){s << rhs.value_; return s;}\n    friend std::istream& operator>>(std::istream\
+    \ &s, double_eps &rhs){s >> rhs.value_; return s;}\n\n    friend double_eps sin(double_eps\
+    \ x){return std::sin((T)x);}\n    friend double_eps cos(double_eps x){return std::cos((T)x);}\n\
+    \    friend double_eps tan(double_eps x){return std::tan((T)x);}\n    friend double_eps\
+    \ acos(double_eps x){return std::acos((T)x);}\n    friend double_eps atan2(double_eps\
+    \ y, double_eps x){return std::atan2((T)y, (T)x);}\n    friend double_eps abs(double_eps\
+    \ x){return std::abs((T)x);}\n    friend double_eps sqrt(double_eps x){return\
+    \ std::sqrt(std::max<T>(0, (T)x));}\n  };\n}\n\nnamespace std {\n  template <typename\
+    \ T, const T &eps>\n  class numeric_limits<haar_lib::double_eps<T, eps>> {\n \
+    \ public:\n    static haar_lib::double_eps<T, eps> infinity() {return numeric_limits<T>::infinity();}\n\
     \    static haar_lib::double_eps<T, eps> min() {return numeric_limits<T>::min();}\n\
     \    static haar_lib::double_eps<T, eps> max() {return numeric_limits<T>::max();}\n\
     \    static haar_lib::double_eps<T, eps> lowest() {return numeric_limits<T>::lowest();}\n\
@@ -252,7 +253,7 @@ data:
   isVerificationFile: true
   path: test/aoj/2136/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-19 20:03:12+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/2136/main.test.cpp

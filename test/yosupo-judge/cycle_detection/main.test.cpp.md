@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: Mylib/Graph/Template/graph.cpp
-    title: Basic graph
   - icon: ':x:'
     path: Mylib/Graph/Cycle/detect_cycle.cpp
     title: Detect cycle
+  - icon: ':question:'
+    path: Mylib/Graph/Template/graph.cpp
+    title: Basic graph
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

@@ -15,71 +15,129 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':question:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/LinearAlgebra/Square/square_matrix.cpp\"\n#include\
-    \ <vector>\n#include <utility>\n\nnamespace haar_lib {\n  template <typename T,\
-    \ const int &N>\n  struct square_matrix {\n    using value_type = T;\n\n    std::vector<std::vector<T>>\
-    \ matrix;\n\n    square_matrix(): matrix(N, std::vector<T>(N)){}\n    square_matrix(const\
-    \ T &val): matrix(N, std::vector<T>(N, val)){}\n    square_matrix(const std::vector<std::vector<T>>\
-    \ &matrix): matrix(matrix){}\n\n    bool operator==(const square_matrix &val)\
-    \ const {return matrix == val.matrix;}\n    bool operator!=(const square_matrix\
-    \ &val) const {return !(*this == val);}\n\n    auto& operator=(const square_matrix\
-    \ &val){\n      this->matrix = val.matrix;\n      return *this;\n    }\n\n   \
-    \ auto& operator+=(const square_matrix &val){\n      for(int i = 0; i < N; ++i)\n\
-    \        for(int j = 0; j < N; ++j)\n          matrix[i][j] = matrix[i][j] + val[i][j];\n\
-    \      return *this;\n    }\n\n    auto& operator-=(const square_matrix &val){\n\
-    \      for(int i = 0; i < N; ++i)\n        for(int j = 0; j < N; ++j)\n      \
-    \    matrix[i][j] = matrix[i][j] - val[i][j];\n      return *this;\n    }\n\n\
-    \    auto& operator*=(const square_matrix &val){\n      std::vector<std::vector<T>>\
-    \ temp(N, std::vector<T>(N));\n      for(int i = 0; i < N; ++i)\n        for(int\
-    \ j = 0; j < N; ++j)\n          for(int k = 0; k < N; ++k)\n            temp[i][j]\
-    \ += matrix[i][k] * val[k][j];\n      std::swap(matrix, temp);\n      return *this;\n\
-    \    }\n\n    const auto& operator[](size_t i) const {return matrix[i];}\n   \
-    \ auto& operator[](size_t i){return matrix[i];}\n    int size() const {return\
-    \ N;}\n\n    static auto unit(){\n      square_matrix ret;\n      for(int i =\
-    \ 0; i < N; ++i) ret[i][i] = 1;\n      return ret;\n    }\n\n    friend auto operator+(const\
-    \ square_matrix &a, const square_matrix &b){\n      auto ret = a; return ret +=\
-    \ b;\n    }\n    friend auto operator-(const square_matrix &a, const square_matrix\
-    \ &b){\n      auto ret = a; return ret -= b;\n    }\n    friend auto operator*(const\
-    \ square_matrix &a, const square_matrix &b){\n      auto ret = a; return ret *=\
-    \ b;\n    }\n\n    auto pow(uint64_t p) const {\n      auto ret = unit();\n  \
-    \    auto a = *this;\n\n      while(p > 0){\n        if(p & 1) ret *= a;\n   \
-    \     a *= a;\n        p >>= 1;\n      }\n\n      return ret;\n    }\n  };\n}\n"
-  code: "#pragma once\n#include <vector>\n#include <utility>\n\nnamespace haar_lib\
-    \ {\n  template <typename T, const int &N>\n  struct square_matrix {\n    using\
-    \ value_type = T;\n\n    std::vector<std::vector<T>> matrix;\n\n    square_matrix():\
-    \ matrix(N, std::vector<T>(N)){}\n    square_matrix(const T &val): matrix(N, std::vector<T>(N,\
-    \ val)){}\n    square_matrix(const std::vector<std::vector<T>> &matrix): matrix(matrix){}\n\
-    \n    bool operator==(const square_matrix &val) const {return matrix == val.matrix;}\n\
-    \    bool operator!=(const square_matrix &val) const {return !(*this == val);}\n\
-    \n    auto& operator=(const square_matrix &val){\n      this->matrix = val.matrix;\n\
-    \      return *this;\n    }\n\n    auto& operator+=(const square_matrix &val){\n\
-    \      for(int i = 0; i < N; ++i)\n        for(int j = 0; j < N; ++j)\n      \
-    \    matrix[i][j] = matrix[i][j] + val[i][j];\n      return *this;\n    }\n\n\
-    \    auto& operator-=(const square_matrix &val){\n      for(int i = 0; i < N;\
-    \ ++i)\n        for(int j = 0; j < N; ++j)\n          matrix[i][j] = matrix[i][j]\
-    \ - val[i][j];\n      return *this;\n    }\n\n    auto& operator*=(const square_matrix\
-    \ &val){\n      std::vector<std::vector<T>> temp(N, std::vector<T>(N));\n    \
-    \  for(int i = 0; i < N; ++i)\n        for(int j = 0; j < N; ++j)\n          for(int\
-    \ k = 0; k < N; ++k)\n            temp[i][j] += matrix[i][k] * val[k][j];\n  \
-    \    std::swap(matrix, temp);\n      return *this;\n    }\n\n    const auto& operator[](size_t\
-    \ i) const {return matrix[i];}\n    auto& operator[](size_t i){return matrix[i];}\n\
-    \    int size() const {return N;}\n\n    static auto unit(){\n      square_matrix\
+    \ <vector>\n#include <utility>\n#include <cstdint>\n#include <iostream>\n\nnamespace\
+    \ haar_lib {\n  template <typename T, int &N>\n  class vector_dyn {\n  public:\n\
+    \    using value_type = T;\n\n  private:\n    std::vector<T> data_;\n\n  public:\n\
+    \    vector_dyn(): data_(N){}\n    vector_dyn(T value): data_(N, value){}\n  \
+    \  vector_dyn(std::initializer_list<T> list): data_(N){\n      int i = 0;\n  \
+    \    for(auto it = list.begin(); it != list.end(); ++it) data_[i++] = *it;\n \
+    \   }\n    vector_dyn(const vector_dyn &that): data_(that.data_){}\n\n    template\
+    \ <typename U>\n    vector_dyn(const std::vector<U> &that): data_(that.begin(),\
+    \ that.end()){}\n\n    bool operator==(const vector_dyn &that){return data_ ==\
+    \ that.data_;}\n    bool operator!=(const vector_dyn &that){return !(*this ==\
+    \ that);}\n\n    auto& operator=(const vector_dyn &that){\n      data_ = that.data_;\n\
+    \      return *this;\n    }\n\n    auto& operator+=(const vector_dyn &that){\n\
+    \      for(int i = 0; i < N; ++i) data_[i] += that.data_[i];\n      return *this;\n\
+    \    }\n\n    auto& operator-=(const vector_dyn &that){\n      for(int i = 0;\
+    \ i < N; ++i) data_[i] -= that.data_[i];\n      return *this;\n    }\n\n    friend\
+    \ auto dot(const vector_dyn &a, const vector_dyn &b){\n      T ret = 0;\n    \
+    \  for(int i = 0; i < N; ++i) ret += a.data_[i] * b.data_[i];\n      return ret;\n\
+    \    }\n\n    auto operator+(const vector_dyn &that) const {\n      return vector(*this)\
+    \ += that;\n    }\n\n    auto operator-(const vector_dyn &that) const {\n    \
+    \  return vector(*this) -= that;\n    }\n\n    auto& operator[](int i){return\
+    \ data_[i];}\n    const auto& operator[](int i) const {return data_[i];}\n   \
+    \ auto begin() const {return data_.begin();}\n    auto end() const {return data_.end();}\n\
+    \n    int size() const {return N;}\n\n    friend std::ostream& operator<<(std::ostream\
+    \ &s, const vector_dyn &a){\n      s << \"{\";\n      for(auto it = a.data_.begin();\
+    \ it != a.data_.end(); ++it){\n        if(it != a.data_.begin()) s << \",\";\n\
+    \        s << *it;\n      }\n      s << \"}\";\n      return s;\n    }\n  };\n\
+    \n\n  template <typename T, int &N>\n  class square_matrix_dyn {\n  public:\n\
+    \    using value_type = T;\n    using vector_type = vector_dyn<T, N>;\n\n  private:\n\
+    \    std::vector<vector_type> data_;\n\n  public:\n    square_matrix_dyn(): data_(N,\
+    \ vector_type()){}\n    square_matrix_dyn(const T &val): data_(N, vector_type(val)){}\n\
+    \    square_matrix_dyn(std::initializer_list<std::initializer_list<T>> list):\
+    \ data_(N){\n      int i = 0;\n      for(auto it = list.begin(); it != list.end();\
+    \ ++it){\n        data_[i++] = vector_type(*it);\n      }\n    }\n    square_matrix_dyn(const\
+    \ square_matrix_dyn &that): data_(that.data_){}\n    square_matrix_dyn(const std::vector<std::vector<T>>\
+    \ &that): data_(N){\n      for(int i = 0; i < N; ++i) data_[i] = that[i];\n  \
+    \  }\n\n    bool operator==(const square_matrix_dyn &that) const {return data_\
+    \ == that.data_;}\n    bool operator!=(const square_matrix_dyn &that) const {return\
+    \ !(*this == that);}\n\n    auto& operator=(const square_matrix_dyn &that){\n\
+    \      data_ = that.data_;\n      return *this;\n    }\n\n    auto& operator+=(const\
+    \ square_matrix_dyn &that){\n      for(int i = 0; i < N; ++i) data_[i] += that.data_[i];\n\
+    \      return *this;\n    }\n\n    auto& operator-=(const square_matrix_dyn &that){\n\
+    \      for(int i = 0; i < N; ++i) data_[i] -= that.data_[i];\n      return *this;\n\
+    \    }\n\n    auto& operator*=(const square_matrix_dyn &that){\n      square_matrix_dyn\
+    \ ret;\n      for(int i = 0; i < N; ++i)\n        for(int j = 0; j < N; ++j)\n\
+    \          for(int k = 0; k < N; ++k)\n            ret[i][j] += data_[i][k] *\
+    \ that.data_[k][j];\n      return *this = ret;\n    }\n\n    const auto& operator[](int\
+    \ i) const {return data_[i];}\n    auto& operator[](int i){return data_[i];}\n\
+    \    int size() const {return N;}\n\n    static auto unit(){\n      square_matrix_dyn\
     \ ret;\n      for(int i = 0; i < N; ++i) ret[i][i] = 1;\n      return ret;\n \
-    \   }\n\n    friend auto operator+(const square_matrix &a, const square_matrix\
-    \ &b){\n      auto ret = a; return ret += b;\n    }\n    friend auto operator-(const\
-    \ square_matrix &a, const square_matrix &b){\n      auto ret = a; return ret -=\
-    \ b;\n    }\n    friend auto operator*(const square_matrix &a, const square_matrix\
-    \ &b){\n      auto ret = a; return ret *= b;\n    }\n\n    auto pow(uint64_t p)\
-    \ const {\n      auto ret = unit();\n      auto a = *this;\n\n      while(p >\
-    \ 0){\n        if(p & 1) ret *= a;\n        a *= a;\n        p >>= 1;\n      }\n\
-    \n      return ret;\n    }\n  };\n}\n"
+    \   }\n\n    auto operator+(const square_matrix_dyn &that){\n      return square_matrix_dyn(*this)\
+    \ += that;\n    }\n    auto operator-(const square_matrix_dyn &that){\n      return\
+    \ square_matrix_dyn(*this) -= that;\n    }\n    auto operator*(const square_matrix_dyn\
+    \ &that){\n      return square_matrix_dyn(*this) *= that;\n    }\n\n    auto pow(uint64_t\
+    \ p) const {\n      auto ret = unit();\n      auto a = *this;\n\n      while(p\
+    \ > 0){\n        if(p & 1) ret *= a;\n        a *= a;\n        p >>= 1;\n    \
+    \  }\n\n      return ret;\n    }\n\n    auto operator*(const vector_type &that){\n\
+    \      vector_type ret;\n      for(int i = 0; i < N; ++i) ret[i] = dot(data_[i],\
+    \ that);\n      return ret;\n    }\n  };\n}\n"
+  code: "#pragma once\n#include <vector>\n#include <utility>\n#include <cstdint>\n\
+    #include <iostream>\n\nnamespace haar_lib {\n  template <typename T, int &N>\n\
+    \  class vector_dyn {\n  public:\n    using value_type = T;\n\n  private:\n  \
+    \  std::vector<T> data_;\n\n  public:\n    vector_dyn(): data_(N){}\n    vector_dyn(T\
+    \ value): data_(N, value){}\n    vector_dyn(std::initializer_list<T> list): data_(N){\n\
+    \      int i = 0;\n      for(auto it = list.begin(); it != list.end(); ++it) data_[i++]\
+    \ = *it;\n    }\n    vector_dyn(const vector_dyn &that): data_(that.data_){}\n\
+    \n    template <typename U>\n    vector_dyn(const std::vector<U> &that): data_(that.begin(),\
+    \ that.end()){}\n\n    bool operator==(const vector_dyn &that){return data_ ==\
+    \ that.data_;}\n    bool operator!=(const vector_dyn &that){return !(*this ==\
+    \ that);}\n\n    auto& operator=(const vector_dyn &that){\n      data_ = that.data_;\n\
+    \      return *this;\n    }\n\n    auto& operator+=(const vector_dyn &that){\n\
+    \      for(int i = 0; i < N; ++i) data_[i] += that.data_[i];\n      return *this;\n\
+    \    }\n\n    auto& operator-=(const vector_dyn &that){\n      for(int i = 0;\
+    \ i < N; ++i) data_[i] -= that.data_[i];\n      return *this;\n    }\n\n    friend\
+    \ auto dot(const vector_dyn &a, const vector_dyn &b){\n      T ret = 0;\n    \
+    \  for(int i = 0; i < N; ++i) ret += a.data_[i] * b.data_[i];\n      return ret;\n\
+    \    }\n\n    auto operator+(const vector_dyn &that) const {\n      return vector(*this)\
+    \ += that;\n    }\n\n    auto operator-(const vector_dyn &that) const {\n    \
+    \  return vector(*this) -= that;\n    }\n\n    auto& operator[](int i){return\
+    \ data_[i];}\n    const auto& operator[](int i) const {return data_[i];}\n   \
+    \ auto begin() const {return data_.begin();}\n    auto end() const {return data_.end();}\n\
+    \n    int size() const {return N;}\n\n    friend std::ostream& operator<<(std::ostream\
+    \ &s, const vector_dyn &a){\n      s << \"{\";\n      for(auto it = a.data_.begin();\
+    \ it != a.data_.end(); ++it){\n        if(it != a.data_.begin()) s << \",\";\n\
+    \        s << *it;\n      }\n      s << \"}\";\n      return s;\n    }\n  };\n\
+    \n\n  template <typename T, int &N>\n  class square_matrix_dyn {\n  public:\n\
+    \    using value_type = T;\n    using vector_type = vector_dyn<T, N>;\n\n  private:\n\
+    \    std::vector<vector_type> data_;\n\n  public:\n    square_matrix_dyn(): data_(N,\
+    \ vector_type()){}\n    square_matrix_dyn(const T &val): data_(N, vector_type(val)){}\n\
+    \    square_matrix_dyn(std::initializer_list<std::initializer_list<T>> list):\
+    \ data_(N){\n      int i = 0;\n      for(auto it = list.begin(); it != list.end();\
+    \ ++it){\n        data_[i++] = vector_type(*it);\n      }\n    }\n    square_matrix_dyn(const\
+    \ square_matrix_dyn &that): data_(that.data_){}\n    square_matrix_dyn(const std::vector<std::vector<T>>\
+    \ &that): data_(N){\n      for(int i = 0; i < N; ++i) data_[i] = that[i];\n  \
+    \  }\n\n    bool operator==(const square_matrix_dyn &that) const {return data_\
+    \ == that.data_;}\n    bool operator!=(const square_matrix_dyn &that) const {return\
+    \ !(*this == that);}\n\n    auto& operator=(const square_matrix_dyn &that){\n\
+    \      data_ = that.data_;\n      return *this;\n    }\n\n    auto& operator+=(const\
+    \ square_matrix_dyn &that){\n      for(int i = 0; i < N; ++i) data_[i] += that.data_[i];\n\
+    \      return *this;\n    }\n\n    auto& operator-=(const square_matrix_dyn &that){\n\
+    \      for(int i = 0; i < N; ++i) data_[i] -= that.data_[i];\n      return *this;\n\
+    \    }\n\n    auto& operator*=(const square_matrix_dyn &that){\n      square_matrix_dyn\
+    \ ret;\n      for(int i = 0; i < N; ++i)\n        for(int j = 0; j < N; ++j)\n\
+    \          for(int k = 0; k < N; ++k)\n            ret[i][j] += data_[i][k] *\
+    \ that.data_[k][j];\n      return *this = ret;\n    }\n\n    const auto& operator[](int\
+    \ i) const {return data_[i];}\n    auto& operator[](int i){return data_[i];}\n\
+    \    int size() const {return N;}\n\n    static auto unit(){\n      square_matrix_dyn\
+    \ ret;\n      for(int i = 0; i < N; ++i) ret[i][i] = 1;\n      return ret;\n \
+    \   }\n\n    auto operator+(const square_matrix_dyn &that){\n      return square_matrix_dyn(*this)\
+    \ += that;\n    }\n    auto operator-(const square_matrix_dyn &that){\n      return\
+    \ square_matrix_dyn(*this) -= that;\n    }\n    auto operator*(const square_matrix_dyn\
+    \ &that){\n      return square_matrix_dyn(*this) *= that;\n    }\n\n    auto pow(uint64_t\
+    \ p) const {\n      auto ret = unit();\n      auto a = *this;\n\n      while(p\
+    \ > 0){\n        if(p & 1) ret *= a;\n        a *= a;\n        p >>= 1;\n    \
+    \  }\n\n      return ret;\n    }\n\n    auto operator*(const vector_type &that){\n\
+    \      vector_type ret;\n      for(int i = 0; i < N; ++i) ret[i] = dot(data_[i],\
+    \ that);\n      return ret;\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/LinearAlgebra/Square/square_matrix.cpp
   requiredBy: []
-  timestamp: '2020-09-21 01:58:13+09:00'
+  timestamp: '2020-09-29 07:58:04+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/1327/main.test.cpp

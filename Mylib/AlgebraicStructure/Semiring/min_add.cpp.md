@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Semiring/min_add.cpp\"\n#include\
     \ <optional>\n#include <algorithm>\n\nnamespace haar_lib {\n  template <typename\

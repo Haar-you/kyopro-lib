@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: Mylib/Number/Mod/mod_pow.cpp
-    title: Mod pow
   - icon: ':x:'
     path: Mylib/Number/Mod/mod_inv.cpp
     title: Mod inverse
+  - icon: ':question:'
+    path: Mylib/Number/Mod/mod_pow.cpp
+    title: Mod pow
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':x:'
@@ -15,7 +15,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Mod/mod_log.cpp\"\n#include <unordered_map>\n\
     #include <optional>\n#include <numeric>\n#include <cmath>\n#line 2 \"Mylib/Number/Mod/mod_pow.cpp\"\

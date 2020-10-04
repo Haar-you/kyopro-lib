@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/TreeUtils/euler_tour_vertex.cpp\"\n#include\
     \ <vector>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\n#include <iostream>\n\n\
@@ -36,32 +35,34 @@ data:
     \        else add_undirected(u, v, w, i);\n      }\n    }\n  };\n\n  template\
     \ <typename T>\n  using tree = graph<T>;\n}\n#line 4 \"Mylib/Graph/TreeUtils/euler_tour_vertex.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  class euler_tour_vertex {\n\
-    \    int pos = 0;\n    std::vector<int> begin, end;\n\n    void dfs(int cur, int\
-    \ par, const tree<T> &tr){\n      begin[cur] = pos++;\n\n      for(auto &e : tr[cur]){\n\
-    \        if(e.to == par) continue;\n        dfs(e.to, cur, tr);\n      }\n\n \
-    \     end[cur] = pos;\n    }\n\n  public:\n    euler_tour_vertex(const tree<T>\
-    \ &tr, int root): begin(tr.size()), end(tr.size()){\n      dfs(root, -1, tr);\n\
-    \    }\n\n    template <typename F> // F = std::function<void(int, int)>\n   \
-    \ void subtree_query(int i, const F &f){\n      f(begin[i], end[i]);\n    }\n\n\
-    \    template <typename F> // F = std::function<void(int)>\n    void point_query(int\
-    \ i, const F &f){\n      f(begin[i]);\n    }\n  };\n}\n"
+    \    int pos_ = 0;\n    std::vector<int> begin_, end_;\n\n    void dfs(int cur,\
+    \ int par, const tree<T> &tr){\n      begin_[cur] = pos_++;\n\n      for(auto\
+    \ &e : tr[cur]){\n        if(e.to == par) continue;\n        dfs(e.to, cur, tr);\n\
+    \      }\n\n      end_[cur] = pos_;\n    }\n\n  public:\n    euler_tour_vertex(){}\n\
+    \    euler_tour_vertex(const tree<T> &tr, int root):\n      begin_(tr.size()),\
+    \ end_(tr.size()){\n      dfs(root, -1, tr);\n    }\n\n    template <typename\
+    \ F> // F = std::function<void(int, int)>\n    void subtree_query(int i, const\
+    \ F &f){\n      f(begin_[i], end_[i]);\n    }\n\n    template <typename F> //\
+    \ F = std::function<void(int)>\n    void point_query(int i, const F &f){\n   \
+    \   f(begin_[i]);\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include \"Mylib/Graph/Template/graph.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  class euler_tour_vertex {\n\
-    \    int pos = 0;\n    std::vector<int> begin, end;\n\n    void dfs(int cur, int\
-    \ par, const tree<T> &tr){\n      begin[cur] = pos++;\n\n      for(auto &e : tr[cur]){\n\
-    \        if(e.to == par) continue;\n        dfs(e.to, cur, tr);\n      }\n\n \
-    \     end[cur] = pos;\n    }\n\n  public:\n    euler_tour_vertex(const tree<T>\
-    \ &tr, int root): begin(tr.size()), end(tr.size()){\n      dfs(root, -1, tr);\n\
-    \    }\n\n    template <typename F> // F = std::function<void(int, int)>\n   \
-    \ void subtree_query(int i, const F &f){\n      f(begin[i], end[i]);\n    }\n\n\
-    \    template <typename F> // F = std::function<void(int)>\n    void point_query(int\
-    \ i, const F &f){\n      f(begin[i]);\n    }\n  };\n}\n"
+    \    int pos_ = 0;\n    std::vector<int> begin_, end_;\n\n    void dfs(int cur,\
+    \ int par, const tree<T> &tr){\n      begin_[cur] = pos_++;\n\n      for(auto\
+    \ &e : tr[cur]){\n        if(e.to == par) continue;\n        dfs(e.to, cur, tr);\n\
+    \      }\n\n      end_[cur] = pos_;\n    }\n\n  public:\n    euler_tour_vertex(){}\n\
+    \    euler_tour_vertex(const tree<T> &tr, int root):\n      begin_(tr.size()),\
+    \ end_(tr.size()){\n      dfs(root, -1, tr);\n    }\n\n    template <typename\
+    \ F> // F = std::function<void(int, int)>\n    void subtree_query(int i, const\
+    \ F &f){\n      f(begin_[i], end_[i]);\n    }\n\n    template <typename F> //\
+    \ F = std::function<void(int)>\n    void point_query(int i, const F &f){\n   \
+    \   f(begin_[i]);\n    }\n  };\n}\n"
   dependsOn:
   - Mylib/Graph/Template/graph.cpp
   isVerificationFile: false
   path: Mylib/Graph/TreeUtils/euler_tour_vertex.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp

@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Algorithm/SlidingWindow/sliding_minmax.cpp\"\n#include\
     \ <vector>\n#include <deque>\n#include <utility>\n\nnamespace haar_lib {\n  template\

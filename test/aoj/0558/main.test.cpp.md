@@ -12,7 +12,7 @@ data:
     title: Enumerate points satisfying conditions
   - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
-    title: Mylib/IO/input_vector.cpp
+    title: Input vector
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

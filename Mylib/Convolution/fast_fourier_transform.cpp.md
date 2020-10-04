@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Convolution/fast_fourier_transform.cpp\"\n#include\
     \ <vector>\n#include <complex>\n#include <cassert>\n#include <utility>\n\nnamespace\

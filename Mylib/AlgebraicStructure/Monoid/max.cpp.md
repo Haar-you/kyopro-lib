@@ -7,15 +7,14 @@ data:
     path: test/aoj/3035/main.test.cpp
     title: test/aoj/3035/main.test.cpp
   - icon: ':x:'
-    path: test/yukicoder/631/main.test.cpp
-    title: test/yukicoder/631/main.test.cpp
-  - icon: ':x:'
     path: test/yukicoder/1030/main.test.cpp
     title: test/yukicoder/1030/main.test.cpp
+  - icon: ':x:'
+    path: test/yukicoder/631/main.test.cpp
+    title: test/yukicoder/631/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':question:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/max.cpp\"\n#include <algorithm>\n\
     #include <optional>\n\nnamespace haar_lib {\n  template <typename T>\n  struct\

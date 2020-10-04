@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp\"\
     \n#include <vector>\n#include <optional>\n#include <utility>\n\nnamespace haar_lib\

@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/bounded_max.cpp\"\n#include\
     \ <limits>\n#include <algorithm>\n\nnamespace haar_lib {\n  template <typename\

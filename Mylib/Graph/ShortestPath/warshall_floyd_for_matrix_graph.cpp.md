@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp\"\
     \n#include <vector>\n#include <optional>\n\nnamespace haar_lib {\n  namespace\

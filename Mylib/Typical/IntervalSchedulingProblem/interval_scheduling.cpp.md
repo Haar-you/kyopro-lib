@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Typical/IntervalSchedulingProblem/interval_scheduling.cpp\"\
     \n#include <vector>\n#include <numeric>\n#include <algorithm>\n#include <limits>\n\

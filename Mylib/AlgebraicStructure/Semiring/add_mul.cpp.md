@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Semiring/add_mul.cpp\"\n\nnamespace\
     \ haar_lib {\n  template <typename T>\n  struct add_mul_semiring {\n    using\

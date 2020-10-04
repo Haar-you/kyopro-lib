@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/ShortestPath/bfs_0_1.cpp\"\n#include <vector>\n\
     #include <deque>\n#include <optional>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\

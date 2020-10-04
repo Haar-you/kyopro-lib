@@ -6,13 +6,12 @@ data:
     title: Geometry template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/aoj/CGL_2_A/main.test.cpp
     title: test/aoj/CGL_2_A/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/geometry_template.cpp\"\n#include <iostream>\n\
     #include <cmath>\n#include <vector>\n\nnamespace haar_lib {\n  template <typename\
@@ -74,7 +73,7 @@ data:
   path: Mylib/Geometry/Float/parallel.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/CGL_2_A/main.test.cpp
 documentation_of: Mylib/Geometry/Float/parallel.cpp

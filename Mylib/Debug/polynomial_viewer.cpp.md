@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Debug/polynomial_viewer.cpp\"\n#include <iostream>\n\
     #include <string>\n\ntemplate <typename Container>\nclass PolynomialViewer {\n\

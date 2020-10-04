@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Typical/IntervalSchedulingProblem/weighted_interval_scheduling.cpp\"\
     \n#include <vector>\n#include <algorithm>\n#include <utility>\n\nnamespace haar_lib\

@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Debug/memory_dump.cpp\"\n#include <cstdio>\n#include\
     \ <cstddef>\n#include <cctype>\n\nvoid memory_dump(const void* p, size_t size){\n\

@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Misc/xor_shift.cpp\"\n#include <cstdint>\n\nnamespace\
     \ haar_lib {\n  struct xor_shift {\n    static uint64_t rand(){\n      static\

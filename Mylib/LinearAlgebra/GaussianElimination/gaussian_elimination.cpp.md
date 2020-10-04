@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp\"\
     \n#include <vector>\n#include <utility>\n\nnamespace haar_lib {\n  template <typename\

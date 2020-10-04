@@ -1,18 +1,18 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
-    path: Mylib/Number/Mod/mod_sqrt.cpp
-    title: Mod sqrt
+  - icon: ':question:'
+    path: Mylib/IO/input_tuple.cpp
+    title: Input tuple
+  - icon: ':question:'
+    path: Mylib/IO/input_tuples.cpp
+    title: Input tuples
   - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':question:'
-    path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
-  - icon: ':question:'
-    path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+  - icon: ':x:'
+    path: Mylib/Number/Mod/mod_sqrt.cpp
+    title: Mod sqrt
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

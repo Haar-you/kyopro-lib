@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':question:'
+    path: Mylib/IO/input_tuple_vector.cpp
+    title: Input tuple vector
   - icon: ':x:'
     path: Mylib/Typical/KnapsackProblem/knapsack_unlimited.cpp
     title: Knapsack problem (Without quantity limitations)
-  - icon: ':question:'
-    path: Mylib/IO/input_tuple_vector.cpp
-    title: Mylib/IO/input_tuple_vector.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

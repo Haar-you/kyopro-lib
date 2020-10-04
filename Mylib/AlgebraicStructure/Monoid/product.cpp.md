@@ -3,13 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/aoj/3132/main.test.cpp
     title: test/aoj/3132/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/product.cpp\"\n\nnamespace\
     \ haar_lib {\n  template <typename T>\n  struct product_monoid {\n    using value_type\
@@ -24,7 +23,7 @@ data:
   path: Mylib/AlgebraicStructure/Monoid/product.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/3132/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Monoid/product.cpp

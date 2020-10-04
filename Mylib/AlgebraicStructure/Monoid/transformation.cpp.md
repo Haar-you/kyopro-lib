@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/transformation.cpp\"\n#include\
     \ <array>\n\nnamespace haar_lib {\n  template <size_t N>\n  struct transformation_monoid\

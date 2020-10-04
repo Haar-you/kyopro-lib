@@ -4,14 +4,14 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':x:'
-    path: test/aoj/DSL_2_F/main.test.cpp
-    title: test/aoj/DSL_2_F/main.test.cpp
+    path: test/aoj/DSL_2_D/main.test.cpp
+    title: test/aoj/DSL_2_D/main.test.cpp
   - icon: ':x:'
     path: test/aoj/DSL_2_F/main.dynamic.test.cpp
     title: test/aoj/DSL_2_F/main.dynamic.test.cpp
   - icon: ':x:'
-    path: test/aoj/DSL_2_D/main.test.cpp
-    title: test/aoj/DSL_2_D/main.test.cpp
+    path: test/aoj/DSL_2_F/main.test.cpp
+    title: test/aoj/DSL_2_F/main.test.cpp
   - icon: ':x:'
     path: test/aoj/DSL_2_I/main.test.cpp
     title: test/aoj/DSL_2_I/main.test.cpp
@@ -21,7 +21,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/update.cpp\"\n#include <optional>\n\
     \nnamespace haar_lib {\n  template <typename T>\n  struct update_monoid {\n  \

@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Misc/dice.cpp\"\n#include <iostream>\n\nnamespace\
     \ haar_lib {\n  struct dice {\n    int top, bottom, front, back, right, left;\n\

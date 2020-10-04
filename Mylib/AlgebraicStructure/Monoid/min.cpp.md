@@ -6,27 +6,27 @@ data:
     path: Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp
     title: Manhattan distance MST
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/aoj/DSL_2_F/main.test.cpp
-    title: test/aoj/DSL_2_F/main.test.cpp
-  - icon: ':x:'
-    path: test/aoj/DSL_2_F/main.dynamic.test.cpp
-    title: test/aoj/DSL_2_F/main.dynamic.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/1508/main.treap.test.cpp
-    title: test/aoj/1508/main.treap.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/1508/main.splay_tree.test.cpp
     title: test/aoj/1508/main.splay_tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/aoj/1508/main.treap.test.cpp
+    title: test/aoj/1508/main.treap.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/aoj/3035/main.test.cpp
     title: test/aoj/3035/main.test.cpp
   - icon: ':x:'
-    path: test/aoj/DSL_2_H/main.test.cpp
-    title: test/aoj/DSL_2_H/main.test.cpp
-  - icon: ':x:'
     path: test/aoj/DSL_2_A/main.test.cpp
     title: test/aoj/DSL_2_A/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/DSL_2_F/main.dynamic.test.cpp
+    title: test/aoj/DSL_2_F/main.dynamic.test.cpp
+  - icon: ':x:'
+    path: test/aoj/DSL_2_F/main.test.cpp
+    title: test/aoj/DSL_2_F/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/DSL_2_H/main.test.cpp
+    title: test/aoj/DSL_2_H/main.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/manhattanmst/main.test.cpp
     title: test/yosupo-judge/manhattanmst/main.test.cpp
@@ -36,7 +36,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':question:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/min.cpp\"\n#include <algorithm>\n\
     #include <optional>\n\nnamespace haar_lib {\n  template <typename T>\n  struct\

@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Algorithm/Search/parallel_binary_search.cpp\"\n#include\
     \ <vector>\n#include <cmath>\n\nnamespace haar_lib {\n  template <typename Init,\

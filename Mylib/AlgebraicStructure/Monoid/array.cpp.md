@@ -2,14 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/yukicoder/1099/main.test.cpp
-    title: test/yukicoder/1099/main.test.cpp
+  _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/array.cpp\"\n#include <array>\n\
     \nnamespace haar_lib {\n  template <typename Monoid, int B>\n  struct array_monoid\
@@ -31,9 +27,8 @@ data:
   path: Mylib/AlgebraicStructure/Monoid/array.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - test/yukicoder/1099/main.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: Mylib/AlgebraicStructure/Monoid/array.cpp
 layout: document
 title: Array monoid

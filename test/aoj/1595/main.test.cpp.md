@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: Mylib/Graph/TreeUtils/rerooting.cpp
-    title: Rerooting DP
-  - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
+  - icon: ':question:'
+    path: Mylib/Graph/TreeUtils/rerooting.cpp
+    title: Rerooting DP
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

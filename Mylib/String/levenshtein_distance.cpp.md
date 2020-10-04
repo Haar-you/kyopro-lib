@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/String/levenshtein_distance.cpp\"\n#include <vector>\n\
     #include <algorithm>\n\nnamespace haar_lib {\n  template <typename Container,\

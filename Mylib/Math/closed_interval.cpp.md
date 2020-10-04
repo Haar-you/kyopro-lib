@@ -6,13 +6,12 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Math/closed_interval.cpp\"\n#include <optional>\n\
     #include <utility>\n#include <iostream>\n#include <algorithm>\n\nnamespace haar_lib\
     \ {\n  template <typename T>\n  struct closed_interval {\n    std::optional<std::pair<std::optional<T>,\
     \ std::optional<T>>> value;\n\n    closed_interval(){}\n    closed_interval(std::optional<T>\
-    \ l, std::optional<T> r): value(std::make_pair(l, r)){}\n\n    friend std::ostream&\
+    \ l, std::optional<T> r):\n      value(std::make_pair(l, r)){}\n\n    friend std::ostream&\
     \ operator<<(std::ostream &s, const closed_interval<T> &a){\n      s << \"[\"\
     ;\n      if(a.value){\n        if((a.value)->first) s << *((a.value)->first);\n\
     \        else s << \"-\u221E \";\n        s << \",\";\n        if((a.value)->second)\
@@ -50,7 +49,7 @@ data:
     #include <algorithm>\n\nnamespace haar_lib {\n  template <typename T>\n  struct\
     \ closed_interval {\n    std::optional<std::pair<std::optional<T>, std::optional<T>>>\
     \ value;\n\n    closed_interval(){}\n    closed_interval(std::optional<T> l, std::optional<T>\
-    \ r): value(std::make_pair(l, r)){}\n\n    friend std::ostream& operator<<(std::ostream\
+    \ r):\n      value(std::make_pair(l, r)){}\n\n    friend std::ostream& operator<<(std::ostream\
     \ &s, const closed_interval<T> &a){\n      s << \"[\";\n      if(a.value){\n \
     \       if((a.value)->first) s << *((a.value)->first);\n        else s << \"-\u221E\
     \ \";\n        s << \",\";\n        if((a.value)->second) s << *((a.value)->second);\n\
@@ -88,7 +87,7 @@ data:
   isVerificationFile: false
   path: Mylib/Math/closed_interval.cpp
   requiredBy: []
-  timestamp: '2020-09-26 05:16:45+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/Math/closed_interval.cpp

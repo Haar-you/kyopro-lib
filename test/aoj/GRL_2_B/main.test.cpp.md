@@ -1,15 +1,15 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: Mylib/Graph/Template/graph.cpp
-    title: Basic graph
-  - icon: ':x:'
-    path: Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
-    title: Chu-Liu/Edmonds algorithm
   - icon: ':x:'
     path: Mylib/Graph/GraphUtils/strongly_connected_components.cpp
     title: Strongly connected components
+  - icon: ':x:'
+    path: Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
+    title: Chu-Liu/Edmonds algorithm
+  - icon: ':question:'
+    path: Mylib/Graph/Template/graph.cpp
+    title: Basic graph
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

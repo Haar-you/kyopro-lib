@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/LinearAlgebra/Square/inverse_matrix.cpp\"\n#include\
     \ <utility>\n#include <optional>\n\nnamespace haar_lib {\n  template <typename\

@@ -15,7 +15,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Mod/mod_inv.cpp\"\n#include <utility>\n#include\
     \ <cstdint>\n\nnamespace haar_lib {\n  int64_t mod_inv(int64_t a, int64_t m){\n\

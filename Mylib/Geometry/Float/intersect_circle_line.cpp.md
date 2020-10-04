@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: Mylib/Geometry/Float/geometry_template.cpp
-    title: Geometry template
   - icon: ':x:'
     path: Mylib/Geometry/Float/distance_line_point.cpp
     title: Distance between a line and a point
+  - icon: ':question:'
+    path: Mylib/Geometry/Float/geometry_template.cpp
+    title: Geometry template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':x:'
@@ -15,7 +15,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/intersect_circle_line.cpp\"\n#include\
     \ <vector>\n#line 2 \"Mylib/Geometry/Float/geometry_template.cpp\"\n#include <iostream>\n\

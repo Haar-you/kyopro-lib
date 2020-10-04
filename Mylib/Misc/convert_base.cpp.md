@@ -4,15 +4,14 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':x:'
-    path: test/yukicoder/782/main.test.cpp
-    title: test/yukicoder/782/main.test.cpp
-  - icon: ':x:'
     path: test/yukicoder/499/main.test.cpp
     title: test/yukicoder/499/main.test.cpp
+  - icon: ':x:'
+    path: test/yukicoder/782/main.test.cpp
+    title: test/yukicoder/782/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Misc/convert_base.cpp\"\n#include <vector>\n#include\
     \ <algorithm>\n\nnamespace haar_lib {\n  std::vector<int64_t> convert_base_to(int64_t\

@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 1 \"Mylib/Debug/debug.cpp\"\n#include <iostream>\n#include <iomanip>\n\
     #include <vector>\n#include <array>\n#include <deque>\n#include <stack>\n#include\

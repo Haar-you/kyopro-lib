@@ -2,17 +2,17 @@
 data:
   _extendedDependsOn:
   - icon: ':x:'
-    path: Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp
-    title: Dual segment tree
-  - icon: ':x:'
     path: Mylib/AlgebraicStructure/Monoid/update.cpp
     title: Update monoid
-  - icon: ':question:'
-    path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
+  - icon: ':x:'
+    path: Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp
+    title: Dual segment tree
   - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+    title: Input tuple
+  - icon: ':question:'
+    path: Mylib/IO/input_tuples.cpp
+    title: Input tuples
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -25,25 +25,26 @@ data:
   bundledCode: "#line 1 \"test/aoj/DSL_2_D/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D\"\
     \n\n#include <iostream>\n#include <climits>\n#line 2 \"Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp\"\
     \n#include <vector>\n\nnamespace haar_lib {\n  template <typename Monoid>\n  class\
-    \ dual_segment_tree {\n    using value_type = typename Monoid::value_type;\n \
-    \   const static Monoid M;\n\n    const int depth, size, hsize;\n    std::vector<value_type>\
-    \ data;\n\n    void propagate(int i){\n      if(i < hsize){\n        data[i <<\
-    \ 1 | 0] = M(data[i], data[i << 1 | 0]);\n        data[i << 1 | 1] = M(data[i],\
-    \ data[i << 1 | 1]);\n        data[i] = M();\n      }\n    }\n\n    void propagate_top_down(int\
+    \ dual_segment_tree {\n  public:\n    using value_type = typename Monoid::value_type;\n\
+    \n  private:\n    Monoid M_;\n    int depth_, size_, hsize_;\n    std::vector<value_type>\
+    \ data_;\n\n    void propagate(int i){\n      if(i < hsize_){\n        data_[i\
+    \ << 1 | 0] = M_(data_[i], data_[i << 1 | 0]);\n        data_[i << 1 | 1] = M_(data_[i],\
+    \ data_[i << 1 | 1]);\n        data_[i] = M_();\n      }\n    }\n\n    void propagate_top_down(int\
     \ i){\n      std::vector<int> temp;\n      while(i > 1){\n        i >>= 1;\n \
     \       temp.push_back(i);\n      }\n\n      for(auto it = temp.rbegin(); it !=\
-    \ temp.rend(); ++it) propagate(*it);\n    }\n\n  public:\n    dual_segment_tree(int\
-    \ n):\n      depth(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),\n      size(1 <<\
-    \ depth), hsize(size / 2),\n      data(size, M())\n    {}\n\n    void update(int\
-    \ l, int r, const value_type &x){\n      propagate_top_down(l + hsize);\n    \
-    \  propagate_top_down(r + hsize);\n\n      int L = l + hsize;\n      int R = r\
-    \ + hsize;\n\n      while(L < R){\n        if(R & 1) --R, data[R] = M(x, data[R]);\n\
-    \        if(L & 1) data[L] = M(x, data[L]), ++L;\n        L >>= 1, R >>= 1;\n\
-    \      }\n    }\n\n    value_type operator[](int i){\n      propagate_top_down(i\
-    \ + hsize);\n      return data[i + hsize];\n    }\n\n    template <typename T>\n\
-    \    void init_with_vector(const std::vector<T> &a){\n      data.assign(size,\
-    \ M());\n      for(int i = 0; i < (int)a.size(); ++i) data[hsize + i] = a[i];\n\
-    \    }\n\n    template <typename T>\n    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
+    \ temp.rend(); ++it) propagate(*it);\n    }\n\n  public:\n    dual_segment_tree(){}\n\
+    \    dual_segment_tree(int n):\n      depth_(n > 1 ? 32 - __builtin_clz(n - 1)\
+    \ + 1 : 1),\n      size_(1 << depth_), hsize_(size_ / 2),\n      data_(size_,\
+    \ M_())\n    {}\n\n    void update(int l, int r, const value_type &x){\n     \
+    \ propagate_top_down(l + hsize_);\n      propagate_top_down(r + hsize_);\n\n \
+    \     int L = l + hsize_;\n      int R = r + hsize_;\n\n      while(L < R){\n\
+    \        if(R & 1) --R, data_[R] = M_(x, data_[R]);\n        if(L & 1) data_[L]\
+    \ = M_(x, data_[L]), ++L;\n        L >>= 1, R >>= 1;\n      }\n    }\n\n    value_type\
+    \ operator[](int i){\n      propagate_top_down(i + hsize_);\n      return data_[i\
+    \ + hsize_];\n    }\n\n    template <typename T>\n    void init_with_vector(const\
+    \ std::vector<T> &a){\n      data_.assign(size_, M_());\n      for(int i = 0;\
+    \ i < (int)a.size(); ++i) data_[hsize_ + i] = a[i];\n    }\n\n    template <typename\
+    \ T>\n    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize_,\
     \ val));\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/update.cpp\"\
     \n#include <optional>\n\nnamespace haar_lib {\n  template <typename T>\n  struct\
     \ update_monoid {\n    using value_type = std::optional<T>;\n    value_type operator()()\
@@ -92,7 +93,7 @@ data:
   isVerificationFile: true
   path: test/aoj/DSL_2_D/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/aoj/DSL_2_D/main.test.cpp

@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/Template/range_edge_graph.cpp\"\n#include <utility>\n\
     #include <cassert>\n#line 2 \"Mylib/Graph/Template/graph.cpp\"\n#include <vector>\n\
@@ -33,50 +32,52 @@ data:
     \        else add_undirected(u, v, w, i);\n      }\n    }\n  };\n\n  template\
     \ <typename T>\n  using tree = graph<T>;\n}\n#line 5 \"Mylib/Graph/Template/range_edge_graph.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  class range_edge_graph :\
-    \ public graph<T> {\n    using super = graph<T>;\n\n    int k, N;\n    int calc_size(int\
-    \ N) const {\n      int ret = 1;\n      while(ret < N) ret *= 2;\n      return\
-    \ ret;\n    }\n\n  public:\n    range_edge_graph(int N): graph<T>(5 * (k = (calc_size(N)))),\
-    \ N(N){\n      for(int i = 2; i < 2 * k; ++i){\n        super::add_edge(k + (i\
-    \ >> 1), k + i, 0);\n        super::add_edge(3 * k + i, 3 * k + (i >> 1), 0);\n\
-    \      }\n\n      for(int i = 0; i < N; ++i){\n        super::add_edge(2 * k +\
-    \ i, i, 0);\n        super::add_edge(i, 4 * k + i, 0);\n      }\n    }\n\n   \
-    \ void add_edge(int i, int j, T w){\n      super::add_edge(i, j, w);\n    }\n\n\
-    \    void add_edge(int i, std::pair<int, int> p, T w){\n      auto [l, r] = p;\n\
-    \      for(l += k, r += k; l < r; l >>= 1, r >>= 1){\n        if(l & 1) super::add_edge(i,\
-    \ l + k, w), ++l;\n        if(r & 1) --r, super::add_edge(i, r + k, w);\n    \
-    \  }\n    }\n\n    void add_edge(std::pair<int, int> p, int i, T w){\n      auto\
-    \ [l, r] = p;\n      for(l += k, r += k; l < r; l >>= 1, r >>= 1){\n        if(l\
-    \ & 1) super::add_edge(l + 3 * k, i, w), ++l;\n        if(r & 1) --r, super::add_edge(r\
-    \ + 3 * k, i, w);\n      }\n    }\n\n    void add_edge(std::pair<int, int> p,\
-    \ std::pair<int, int> q, T w){\n      int x = super::size();\n      super::ds.emplace_back();\n\
-    \      int y = super::size();\n      super::ds.emplace_back();\n\n      add_edge(p,\
-    \ x, 0);\n      add_edge(x, y, w);\n      add_edge(y, q, 0);\n    }\n  };\n}\n"
+    \ public graph<T> {\n    using super = graph<T>;\n\n    int k_, N_;\n\n    int\
+    \ calc_size(int N) const {\n      int ret = 1;\n      while(ret < N) ret *= 2;\n\
+    \      return ret;\n    }\n\n  public:\n    range_edge_graph(){}\n    range_edge_graph(int\
+    \ N): graph<T>(5 * (k_ = (calc_size(N)))), N_(N){\n      for(int i = 2; i < 2\
+    \ * k_; ++i){\n        super::add_edge(k_ + (i >> 1), k_ + i, 0);\n        super::add_edge(3\
+    \ * k_ + i, 3 * k_ + (i >> 1), 0);\n      }\n\n      for(int i = 0; i < N_; ++i){\n\
+    \        super::add_edge(2 * k_ + i, i, 0);\n        super::add_edge(i, 4 * k_\
+    \ + i, 0);\n      }\n    }\n\n    void add_edge(int i, int j, T w){\n      super::add_edge(i,\
+    \ j, w);\n    }\n\n    void add_edge(int i, std::pair<int, int> p, T w){\n   \
+    \   auto [l, r] = p;\n      for(l += k_, r += k_; l < r; l >>= 1, r >>= 1){\n\
+    \        if(l & 1) super::add_edge(i, l + k_, w), ++l;\n        if(r & 1) --r,\
+    \ super::add_edge(i, r + k_, w);\n      }\n    }\n\n    void add_edge(std::pair<int,\
+    \ int> p, int i, T w){\n      auto [l, r] = p;\n      for(l += k_, r += k_; l\
+    \ < r; l >>= 1, r >>= 1){\n        if(l & 1) super::add_edge(l + 3 * k_, i, w),\
+    \ ++l;\n        if(r & 1) --r, super::add_edge(r + 3 * k_, i, w);\n      }\n \
+    \   }\n\n    void add_edge(std::pair<int, int> p, std::pair<int, int> q, T w){\n\
+    \      int x = super::size();\n      super::ds.emplace_back();\n      int y =\
+    \ super::size();\n      super::ds.emplace_back();\n\n      add_edge(p, x, 0);\n\
+    \      add_edge(x, y, w);\n      add_edge(y, q, 0);\n    }\n  };\n}\n"
   code: "#pragma once\n#include <utility>\n#include <cassert>\n#include \"Mylib/Graph/Template/graph.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  class range_edge_graph :\
-    \ public graph<T> {\n    using super = graph<T>;\n\n    int k, N;\n    int calc_size(int\
-    \ N) const {\n      int ret = 1;\n      while(ret < N) ret *= 2;\n      return\
-    \ ret;\n    }\n\n  public:\n    range_edge_graph(int N): graph<T>(5 * (k = (calc_size(N)))),\
-    \ N(N){\n      for(int i = 2; i < 2 * k; ++i){\n        super::add_edge(k + (i\
-    \ >> 1), k + i, 0);\n        super::add_edge(3 * k + i, 3 * k + (i >> 1), 0);\n\
-    \      }\n\n      for(int i = 0; i < N; ++i){\n        super::add_edge(2 * k +\
-    \ i, i, 0);\n        super::add_edge(i, 4 * k + i, 0);\n      }\n    }\n\n   \
-    \ void add_edge(int i, int j, T w){\n      super::add_edge(i, j, w);\n    }\n\n\
-    \    void add_edge(int i, std::pair<int, int> p, T w){\n      auto [l, r] = p;\n\
-    \      for(l += k, r += k; l < r; l >>= 1, r >>= 1){\n        if(l & 1) super::add_edge(i,\
-    \ l + k, w), ++l;\n        if(r & 1) --r, super::add_edge(i, r + k, w);\n    \
-    \  }\n    }\n\n    void add_edge(std::pair<int, int> p, int i, T w){\n      auto\
-    \ [l, r] = p;\n      for(l += k, r += k; l < r; l >>= 1, r >>= 1){\n        if(l\
-    \ & 1) super::add_edge(l + 3 * k, i, w), ++l;\n        if(r & 1) --r, super::add_edge(r\
-    \ + 3 * k, i, w);\n      }\n    }\n\n    void add_edge(std::pair<int, int> p,\
-    \ std::pair<int, int> q, T w){\n      int x = super::size();\n      super::ds.emplace_back();\n\
-    \      int y = super::size();\n      super::ds.emplace_back();\n\n      add_edge(p,\
-    \ x, 0);\n      add_edge(x, y, w);\n      add_edge(y, q, 0);\n    }\n  };\n}\n"
+    \ public graph<T> {\n    using super = graph<T>;\n\n    int k_, N_;\n\n    int\
+    \ calc_size(int N) const {\n      int ret = 1;\n      while(ret < N) ret *= 2;\n\
+    \      return ret;\n    }\n\n  public:\n    range_edge_graph(){}\n    range_edge_graph(int\
+    \ N): graph<T>(5 * (k_ = (calc_size(N)))), N_(N){\n      for(int i = 2; i < 2\
+    \ * k_; ++i){\n        super::add_edge(k_ + (i >> 1), k_ + i, 0);\n        super::add_edge(3\
+    \ * k_ + i, 3 * k_ + (i >> 1), 0);\n      }\n\n      for(int i = 0; i < N_; ++i){\n\
+    \        super::add_edge(2 * k_ + i, i, 0);\n        super::add_edge(i, 4 * k_\
+    \ + i, 0);\n      }\n    }\n\n    void add_edge(int i, int j, T w){\n      super::add_edge(i,\
+    \ j, w);\n    }\n\n    void add_edge(int i, std::pair<int, int> p, T w){\n   \
+    \   auto [l, r] = p;\n      for(l += k_, r += k_; l < r; l >>= 1, r >>= 1){\n\
+    \        if(l & 1) super::add_edge(i, l + k_, w), ++l;\n        if(r & 1) --r,\
+    \ super::add_edge(i, r + k_, w);\n      }\n    }\n\n    void add_edge(std::pair<int,\
+    \ int> p, int i, T w){\n      auto [l, r] = p;\n      for(l += k_, r += k_; l\
+    \ < r; l >>= 1, r >>= 1){\n        if(l & 1) super::add_edge(l + 3 * k_, i, w),\
+    \ ++l;\n        if(r & 1) --r, super::add_edge(r + 3 * k_, i, w);\n      }\n \
+    \   }\n\n    void add_edge(std::pair<int, int> p, std::pair<int, int> q, T w){\n\
+    \      int x = super::size();\n      super::ds.emplace_back();\n      int y =\
+    \ super::size();\n      super::ds.emplace_back();\n\n      add_edge(p, x, 0);\n\
+    \      add_edge(x, y, w);\n      add_edge(y, q, 0);\n    }\n  };\n}\n"
   dependsOn:
   - Mylib/Graph/Template/graph.cpp
   isVerificationFile: false
   path: Mylib/Graph/Template/range_edge_graph.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/Graph/Template/range_edge_graph.cpp

@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Combinatorics/bell_number_table.cpp\"\n#include <vector>\n\
     \nnamespace haar_lib {\n  template <typename T>\n  auto bell_number_table(int\

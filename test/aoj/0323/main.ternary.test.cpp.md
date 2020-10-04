@@ -6,7 +6,7 @@ data:
     title: Ternary search (Convex upwards)
   - icon: ':question:'
     path: Mylib/IO/input_tuple_vector.cpp
-    title: Mylib/IO/input_tuple_vector.cpp
+    title: Input tuple vector
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

@@ -6,66 +6,67 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/DataStructure/Array/rollbackable_vector.cpp\"\n#include\
     \ <vector>\n#include <variant>\n#include <initializer_list>\n#include <utility>\n\
     #include <iostream>\n\nnamespace haar_lib {\n  template <typename T>\n  class\
-    \ rollbackable_vector {\n    using value_type = T;\n\n    std::vector<T> data;\n\
-    \n    using Update = std::pair<T, int>;\n    struct PushBack {};\n    using PopBack\
-    \ = T;\n\n    std::vector<std::variant<Update, PushBack, PopBack>> history;\n\n\
-    \  public:\n    rollbackable_vector(){}\n    rollbackable_vector(size_t n): data(n){}\n\
-    \    rollbackable_vector(std::vector<T> a): data(a){}\n    rollbackable_vector(std::initializer_list<T>\
-    \ a): data(a.begin(), a.end()){}\n\n    void push_back(const T &value){\n    \
-    \  history.push_back(PushBack());\n      data.push_back(value);\n    }\n\n   \
-    \ void pop_back(){\n      history.push_back(PopBack(data.back()));\n      data.pop_back();\n\
-    \    }\n\n    void set(int i, const T &value){\n      history.push_back(Update(data[i],\
-    \ i));\n      data[i] = value;\n    }\n\n    void roll_back(){\n      if(std::holds_alternative<Update>(history.back())){\n\
-    \        auto [value, i] = std::get<Update>(history.back());\n        data[i]\
-    \ = value;\n      }else if(std::holds_alternative<PushBack>(history.back())){\n\
-    \        data.pop_back();\n      }else if(std::holds_alternative<PopBack>(history.back())){\n\
-    \        auto value = std::get<PopBack>(history.back());\n        data.push_back(value);\n\
-    \      }\n\n      history.pop_back();\n    }\n\n    bool rollbackable() const\
-    \ {\n      return not history.empty();\n    }\n\n    const value_type& operator[](int\
-    \ i) const {return data[i];}\n\n    auto cbegin() const {return data.cbegin();}\n\
-    \    auto cend() const {return data.cend();}\n\n    int size() const {return data.size();}\n\
-    \    bool empty() const {return data.empty();}\n\n    const T& back() const {return\
-    \ data.back();}\n    const T& front() const {return data.front();}\n\n    friend\
-    \ std::ostream& operator<<(std::ostream &s, const rollbackable_vector &a){\n \
-    \     s << \"{\";\n      for(auto it = a.cbegin(); it != a.cend(); ++it){\n  \
-    \      if(it != a.cbegin()) s << \", \";\n        s << *it;\n      }\n      s\
-    \ << \"}\";\n      return s;\n    }\n  };\n}\n"
+    \ rollbackable_vector {\n  public:\n    using value_type = T;\n\n  private:\n\
+    \    std::vector<T> data_;\n\n    using Update = std::pair<T, int>;\n    struct\
+    \ PushBack {};\n    using PopBack = T;\n\n    std::vector<std::variant<Update,\
+    \ PushBack, PopBack>> history_;\n\n  public:\n    rollbackable_vector(){}\n  \
+    \  rollbackable_vector(size_t n): data_(n){}\n    rollbackable_vector(std::vector<T>\
+    \ a): data_(a){}\n    rollbackable_vector(std::initializer_list<T> a): data_(a.begin(),\
+    \ a.end()){}\n\n    void push_back(const T &value){\n      history_.push_back(PushBack());\n\
+    \      data_.push_back(value);\n    }\n\n    void pop_back(){\n      history_.push_back(PopBack(data_.back()));\n\
+    \      data_.pop_back();\n    }\n\n    void set(int i, const T &value){\n    \
+    \  history_.push_back(Update(data_[i], i));\n      data_[i] = value;\n    }\n\n\
+    \    void roll_back(){\n      if(std::holds_alternative<Update>(history_.back())){\n\
+    \        auto [value, i] = std::get<Update>(history_.back());\n        data_[i]\
+    \ = value;\n      }else if(std::holds_alternative<PushBack>(history_.back())){\n\
+    \        data_.pop_back();\n      }else if(std::holds_alternative<PopBack>(history_.back())){\n\
+    \        auto value = std::get<PopBack>(history_.back());\n        data_.push_back(value);\n\
+    \      }\n\n      history_.pop_back();\n    }\n\n    bool rollbackable() const\
+    \ {\n      return not history_.empty();\n    }\n\n    const value_type& operator[](int\
+    \ i) const {return data_[i];}\n\n    auto cbegin() const {return data_.cbegin();}\n\
+    \    auto cend() const {return data_.cend();}\n\n    int size() const {return\
+    \ data_.size();}\n    bool empty() const {return data_.empty();}\n\n    const\
+    \ T& back() const {return data_.back();}\n    const T& front() const {return data_.front();}\n\
+    \n    friend std::ostream& operator<<(std::ostream &s, const rollbackable_vector\
+    \ &a){\n      s << \"{\";\n      for(auto it = a.cbegin(); it != a.cend(); ++it){\n\
+    \        if(it != a.cbegin()) s << \", \";\n        s << *it;\n      }\n     \
+    \ s << \"}\";\n      return s;\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <variant>\n#include <initializer_list>\n\
     #include <utility>\n#include <iostream>\n\nnamespace haar_lib {\n  template <typename\
-    \ T>\n  class rollbackable_vector {\n    using value_type = T;\n\n    std::vector<T>\
-    \ data;\n\n    using Update = std::pair<T, int>;\n    struct PushBack {};\n  \
-    \  using PopBack = T;\n\n    std::vector<std::variant<Update, PushBack, PopBack>>\
-    \ history;\n\n  public:\n    rollbackable_vector(){}\n    rollbackable_vector(size_t\
-    \ n): data(n){}\n    rollbackable_vector(std::vector<T> a): data(a){}\n    rollbackable_vector(std::initializer_list<T>\
-    \ a): data(a.begin(), a.end()){}\n\n    void push_back(const T &value){\n    \
-    \  history.push_back(PushBack());\n      data.push_back(value);\n    }\n\n   \
-    \ void pop_back(){\n      history.push_back(PopBack(data.back()));\n      data.pop_back();\n\
-    \    }\n\n    void set(int i, const T &value){\n      history.push_back(Update(data[i],\
-    \ i));\n      data[i] = value;\n    }\n\n    void roll_back(){\n      if(std::holds_alternative<Update>(history.back())){\n\
-    \        auto [value, i] = std::get<Update>(history.back());\n        data[i]\
-    \ = value;\n      }else if(std::holds_alternative<PushBack>(history.back())){\n\
-    \        data.pop_back();\n      }else if(std::holds_alternative<PopBack>(history.back())){\n\
-    \        auto value = std::get<PopBack>(history.back());\n        data.push_back(value);\n\
-    \      }\n\n      history.pop_back();\n    }\n\n    bool rollbackable() const\
-    \ {\n      return not history.empty();\n    }\n\n    const value_type& operator[](int\
-    \ i) const {return data[i];}\n\n    auto cbegin() const {return data.cbegin();}\n\
-    \    auto cend() const {return data.cend();}\n\n    int size() const {return data.size();}\n\
-    \    bool empty() const {return data.empty();}\n\n    const T& back() const {return\
-    \ data.back();}\n    const T& front() const {return data.front();}\n\n    friend\
-    \ std::ostream& operator<<(std::ostream &s, const rollbackable_vector &a){\n \
-    \     s << \"{\";\n      for(auto it = a.cbegin(); it != a.cend(); ++it){\n  \
-    \      if(it != a.cbegin()) s << \", \";\n        s << *it;\n      }\n      s\
-    \ << \"}\";\n      return s;\n    }\n  };\n}\n"
+    \ T>\n  class rollbackable_vector {\n  public:\n    using value_type = T;\n\n\
+    \  private:\n    std::vector<T> data_;\n\n    using Update = std::pair<T, int>;\n\
+    \    struct PushBack {};\n    using PopBack = T;\n\n    std::vector<std::variant<Update,\
+    \ PushBack, PopBack>> history_;\n\n  public:\n    rollbackable_vector(){}\n  \
+    \  rollbackable_vector(size_t n): data_(n){}\n    rollbackable_vector(std::vector<T>\
+    \ a): data_(a){}\n    rollbackable_vector(std::initializer_list<T> a): data_(a.begin(),\
+    \ a.end()){}\n\n    void push_back(const T &value){\n      history_.push_back(PushBack());\n\
+    \      data_.push_back(value);\n    }\n\n    void pop_back(){\n      history_.push_back(PopBack(data_.back()));\n\
+    \      data_.pop_back();\n    }\n\n    void set(int i, const T &value){\n    \
+    \  history_.push_back(Update(data_[i], i));\n      data_[i] = value;\n    }\n\n\
+    \    void roll_back(){\n      if(std::holds_alternative<Update>(history_.back())){\n\
+    \        auto [value, i] = std::get<Update>(history_.back());\n        data_[i]\
+    \ = value;\n      }else if(std::holds_alternative<PushBack>(history_.back())){\n\
+    \        data_.pop_back();\n      }else if(std::holds_alternative<PopBack>(history_.back())){\n\
+    \        auto value = std::get<PopBack>(history_.back());\n        data_.push_back(value);\n\
+    \      }\n\n      history_.pop_back();\n    }\n\n    bool rollbackable() const\
+    \ {\n      return not history_.empty();\n    }\n\n    const value_type& operator[](int\
+    \ i) const {return data_[i];}\n\n    auto cbegin() const {return data_.cbegin();}\n\
+    \    auto cend() const {return data_.cend();}\n\n    int size() const {return\
+    \ data_.size();}\n    bool empty() const {return data_.empty();}\n\n    const\
+    \ T& back() const {return data_.back();}\n    const T& front() const {return data_.front();}\n\
+    \n    friend std::ostream& operator<<(std::ostream &s, const rollbackable_vector\
+    \ &a){\n      s << \"{\";\n      for(auto it = a.cbegin(); it != a.cend(); ++it){\n\
+    \        if(it != a.cbegin()) s << \", \";\n        s << *it;\n      }\n     \
+    \ s << \"}\";\n      return s;\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/DataStructure/Array/rollbackable_vector.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/DataStructure/Array/rollbackable_vector.cpp

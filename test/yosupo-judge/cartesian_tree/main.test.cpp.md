@@ -1,15 +1,15 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: Mylib/IO/input_vector.cpp
-    title: Mylib/IO/input_vector.cpp
-  - icon: ':question:'
-    path: Mylib/IO/join.cpp
-    title: Mylib/IO/join.cpp
   - icon: ':x:'
     path: Mylib/Algorithm/CartesianTree/cartesian_tree.cpp
     title: Cartesian tree
+  - icon: ':question:'
+    path: Mylib/IO/input_vector.cpp
+    title: Input vector
+  - icon: ':question:'
+    path: Mylib/IO/join.cpp
+    title: join function
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

@@ -9,17 +9,18 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/MonoidAction/add_max_with_count.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename MonoidGet, typename MonoidUpdate>\n\
-    \  struct add_max_with_count {\n    using value_type_get = typename MonoidGet::value_type;\n\
+    \n\nnamespace haar_lib {\n  template <typename MonoidUpdate, typename MonoidGet>\n\
+    \  struct add_max_with_count {\n    using monoid_get = MonoidGet;\n    using monoid_update\
+    \ = MonoidUpdate;\n    using value_type_get = typename MonoidGet::value_type;\n\
     \    using value_type_update = typename MonoidUpdate::value_type;\n\n    value_type_get\
     \ operator()(const value_type_get &a, const value_type_update &b, int) const {\n\
     \      return {a.value ? a.value.value() + b : a.value, a.count};\n    }\n  };\n\
     }\n"
-  code: "#pragma once\n\nnamespace haar_lib {\n  template <typename MonoidGet, typename\
-    \ MonoidUpdate>\n  struct add_max_with_count {\n    using value_type_get = typename\
+  code: "#pragma once\n\nnamespace haar_lib {\n  template <typename MonoidUpdate,\
+    \ typename MonoidGet>\n  struct add_max_with_count {\n    using monoid_get = MonoidGet;\n\
+    \    using monoid_update = MonoidUpdate;\n    using value_type_get = typename\
     \ MonoidGet::value_type;\n    using value_type_update = typename MonoidUpdate::value_type;\n\
     \n    value_type_get operator()(const value_type_get &a, const value_type_update\
     \ &b, int) const {\n      return {a.value ? a.value.value() + b : a.value, a.count};\n\
@@ -28,7 +29,7 @@ data:
   isVerificationFile: false
   path: Mylib/AlgebraicStructure/MonoidAction/add_max_with_count.cpp
   requiredBy: []
-  timestamp: '2020-09-18 18:43:57+09:00'
+  timestamp: '2020-10-02 17:13:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/3035/main.test.cpp

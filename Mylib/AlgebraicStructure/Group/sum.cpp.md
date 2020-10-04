@@ -3,19 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
-    title: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/2842/main.fenwick_tree.test.cpp
     title: test/aoj/2842/main.fenwick_tree.test.cpp
+  - icon: ':x:'
+    path: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
+    title: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
     title: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':question:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Group/sum.cpp\"\n\nnamespace haar_lib\
     \ {\n  template <typename T>\n  struct sum_group {\n    using value_type = T;\n\

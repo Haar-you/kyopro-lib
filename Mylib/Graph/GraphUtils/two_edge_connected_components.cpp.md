@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/GraphUtils/two_edge_connected_components.cpp\"\
     \n#include <vector>\n#include <stack>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\

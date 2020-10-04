@@ -2,23 +2,23 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Mylib/Grid/grid.cpp
-    title: Grid template
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Grid/grid_to_graph.cpp
-    title: Convert grid to graph
+    path: Mylib/Graph/ShortestPath/bfs_shortest_path.cpp
+    title: BFS shortest path
   - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
   - icon: ':heavy_check_mark:'
+    path: Mylib/Grid/grid.cpp
+    title: Grid template
+  - icon: ':heavy_check_mark:'
     path: Mylib/Grid/grid_find.cpp
     title: Enumerate points satisfying conditions
   - icon: ':heavy_check_mark:'
-    path: Mylib/Graph/ShortestPath/bfs_shortest_path.cpp
-    title: BFS shortest path
+    path: Mylib/Grid/grid_to_graph.cpp
+    title: Convert grid to graph
   - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
-    title: Mylib/IO/input_vector.cpp
+    title: Input vector
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

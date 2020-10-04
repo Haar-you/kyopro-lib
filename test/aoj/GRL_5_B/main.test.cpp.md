@@ -5,11 +5,11 @@ data:
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
   - icon: ':x:'
-    path: Mylib/Graph/TreeUtils/tree_height.cpp
-    title: Tree height
-  - icon: ':x:'
     path: Mylib/Graph/TreeUtils/tree_distance.cpp
     title: Tree distance
+  - icon: ':x:'
+    path: Mylib/Graph/TreeUtils/tree_height.cpp
+    title: Tree height
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

@@ -1,18 +1,18 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':question:'
+    path: Mylib/IO/input_tuple.cpp
+    title: Input tuple
+  - icon: ':question:'
+    path: Mylib/IO/input_tuples.cpp
+    title: Input tuples
+  - icon: ':question:'
+    path: Mylib/IO/join.cpp
+    title: join function
   - icon: ':x:'
     path: Mylib/Misc/convert_base.cpp
     title: Convert base
-  - icon: ':question:'
-    path: Mylib/IO/join.cpp
-    title: Mylib/IO/join.cpp
-  - icon: ':question:'
-    path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
-  - icon: ':question:'
-    path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

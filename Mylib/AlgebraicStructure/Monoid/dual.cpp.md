@@ -4,21 +4,20 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':x:'
-    path: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
-    title: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+    path: test/yosupo-judge/point_set_range_composite/main.test.cpp
+    title: test/yosupo-judge/point_set_range_composite/main.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/queue_operate_all_composite/main.test.cpp
     title: test/yosupo-judge/queue_operate_all_composite/main.test.cpp
   - icon: ':x:'
-    path: test/yosupo-judge/point_set_range_composite/main.test.cpp
-    title: test/yosupo-judge/point_set_range_composite/main.test.cpp
+    path: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+    title: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
   - icon: ':x:'
     path: test/yukicoder/510/main.test.cpp
     title: test/yukicoder/510/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/dual.cpp\"\n\nnamespace\
     \ haar_lib {\n  template <typename Monoid>\n  struct dual_monoid {\n    using\

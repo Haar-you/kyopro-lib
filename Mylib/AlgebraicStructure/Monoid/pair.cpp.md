@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/pair.cpp\"\n#include <utility>\n\
     \nnamespace haar_lib {\n  template <typename Monoid1, typename Monoid2>\n  struct\

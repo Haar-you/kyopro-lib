@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Grid/grid_bfs.cpp\"\n#include <vector>\n#include <queue>\n\
     #include <optional>\n#line 2 \"Mylib/Grid/grid.cpp\"\n#include <array>\n#include\

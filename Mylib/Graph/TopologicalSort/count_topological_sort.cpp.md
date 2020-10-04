@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/TopologicalSort/count_topological_sort.cpp\"\
     \n#include <vector>\n#include <cstdint>\n\nnamespace haar_lib {\n  int64_t count_topological_sort(const\

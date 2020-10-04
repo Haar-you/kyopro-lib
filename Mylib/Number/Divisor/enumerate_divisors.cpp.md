@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Divisor/enumerate_divisors.cpp\"\n#include\
     \ <vector>\n#include <algorithm>\n\nnamespace haar_lib {\n  std::vector<int64_t>\

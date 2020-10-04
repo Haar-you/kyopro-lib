@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/with_min_index.cpp\"\n#include\
     \ <utility>\n#include <limits>\n#include <algorithm>\n\nnamespace haar_lib {\n\
@@ -44,7 +43,7 @@ data:
   - test/yukicoder/875/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Monoid/with_min_index.cpp
 layout: document
-title: null
+title: With min index
 ---
 
 ## Operations

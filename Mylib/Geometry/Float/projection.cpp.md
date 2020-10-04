@@ -5,20 +5,19 @@ data:
     path: Mylib/Geometry/Float/geometry_template.cpp
     title: Geometry template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/Geometry/Float/reflection.cpp
     title: Reflection
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/aoj/CGL_1_A/main.test.cpp
     title: test/aoj/CGL_1_A/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/aoj/CGL_1_B/main.test.cpp
     title: test/aoj/CGL_1_B/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/geometry_template.cpp\"\n#include <iostream>\n\
     #include <cmath>\n#include <vector>\n\nnamespace haar_lib {\n  template <typename\
@@ -83,7 +82,7 @@ data:
   requiredBy:
   - Mylib/Geometry/Float/reflection.cpp
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/CGL_1_A/main.test.cpp
   - test/aoj/CGL_1_B/main.test.cpp

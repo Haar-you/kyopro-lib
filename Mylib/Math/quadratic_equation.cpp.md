@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Math/quadratic_equation.cpp\"\n#include <cmath>\n\
     #include <vector>\n\nnamespace haar_lib {\n  std::vector<double> quadratic_equation(double\

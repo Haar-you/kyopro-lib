@@ -18,7 +18,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Prime/miller_rabin.cpp\"\n#include <cstdint>\n\
     #include <initializer_list>\n#line 2 \"Mylib/Misc/int128.cpp\"\n\nnamespace haar_lib\

@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Algorithm/Search/ternary_search_downwards.cpp\"\n\
     #include <functional>\n\nnamespace haar_lib {\n  template <typename T = double,\

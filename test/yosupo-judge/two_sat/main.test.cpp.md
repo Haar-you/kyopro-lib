@@ -2,23 +2,23 @@
 data:
   _extendedDependsOn:
   - icon: ':x:'
-    path: Mylib/Graph/two_sat.cpp
-    title: 2-SAT
+    path: Mylib/Graph/GraphUtils/strongly_connected_components.cpp
+    title: Strongly connected components
   - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
   - icon: ':x:'
-    path: Mylib/Graph/GraphUtils/strongly_connected_components.cpp
-    title: Strongly connected components
-  - icon: ':question:'
-    path: Mylib/IO/join.cpp
-    title: Mylib/IO/join.cpp
-  - icon: ':question:'
-    path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
+    path: Mylib/Graph/two_sat.cpp
+    title: 2-SAT
   - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+    title: Input tuple
+  - icon: ':question:'
+    path: Mylib/IO/input_tuples.cpp
+    title: Input tuples
+  - icon: ':question:'
+    path: Mylib/IO/join.cpp
+    title: join function
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -66,21 +66,21 @@ data:
     \ ++i){\n      if(ord[i] == -1){\n        t = 0;\n        dfs(dfs, i);\n     \
     \ }\n    }\n\n    for(auto &x : ret) x = k - 1 - x;\n\n    return std::make_pair(ret,\
     \ k);\n  }\n}\n#line 7 \"Mylib/Graph/two_sat.cpp\"\n\nnamespace haar_lib {\n \
-    \ class two_sat {\n    const int n;\n    graph<int> g;\n\n    int f(int i){\n\
-    \      assert(i != 0);\n      assert(std::abs(i) <= n);\n      if(i > 0) return\
-    \ i - 1;\n      else return std::abs(i) - 1 + n;\n    }\n\n  public:\n    two_sat(int\
-    \ n): n(n), g(2 * n){}\n\n    /**\n     * @note a\u2192b\u3092\u5C0E\u5165\u3059\
-    \u308B\n     */\n    void add_if(int a, int b){\n      g.add_edge(f(a), f(b),\
-    \ 1);\n    }\n\n    /**\n     * @note a\u2228b\u3092\u5C0E\u5165\u3059\u308B\n\
-    \     * @note a \u2228 b <=> (!a => b) \u2227 (!b => a)\n     */\n    void add_or(int\
+    \ class two_sat {\n    int n_;\n    graph<int> g_;\n\n    int f(int i){\n    \
+    \  assert(i != 0);\n      assert(std::abs(i) <= n_);\n      if(i > 0) return i\
+    \ - 1;\n      else return std::abs(i) - 1 + n_;\n    }\n\n  public:\n    two_sat(){}\n\
+    \    two_sat(int n): n_(n), g_(2 * n){}\n\n    /**\n     * @note a\u2192b\u3092\
+    \u5C0E\u5165\u3059\u308B\n     */\n    void add_if(int a, int b){\n      g_.add_edge(f(a),\
+    \ f(b), 1);\n    }\n\n    /**\n     * @note a\u2228b\u3092\u5C0E\u5165\u3059\u308B\
+    \n     * @note a \u2228 b <=> (!a => b) \u2227 (!b => a)\n     */\n    void add_or(int\
     \ a, int b){\n      add_if(-a, b);\n      add_if(-b, a);\n    }\n\n    /**\n \
     \    * @note \xAC(a\u2227b)\u3092\u5C0E\u5165\u3059\u308B\n     * @note !(A \u2227\
     \ B) <=> (!A \u2228 !B)\n     */\n    void not_coexist(int a, int b){\n      add_or(-a,\
     \ -b);\n    }\n\n  public:\n    std::optional<std::vector<bool>> solve() const\
-    \ {\n      auto [scc, m] = strongly_connected_components(g);\n\n      for(int\
-    \ i = 0; i < n; ++i){\n        if(scc[i] == scc[i + n]) return std::nullopt;\n\
-    \      }\n\n      std::vector<bool> ret(n);\n      for(int i = 0; i < n; ++i)\
-    \ ret[i] = scc[i] > scc[i + n];\n\n      return ret;\n    }\n  };\n}\n#line 3\
+    \ {\n      auto [scc, m] = strongly_connected_components(g_);\n\n      for(int\
+    \ i = 0; i < n_; ++i){\n        if(scc[i] == scc[i + n_]) return std::nullopt;\n\
+    \      }\n\n      std::vector<bool> ret(n_);\n      for(int i = 0; i < n_; ++i)\
+    \ ret[i] = scc[i] > scc[i + n_];\n\n      return ret;\n    }\n  };\n}\n#line 3\
     \ \"Mylib/IO/join.cpp\"\n#include <sstream>\n#line 5 \"Mylib/IO/join.cpp\"\n\n\
     namespace haar_lib {\n  template <typename Iter>\n  std::string join(Iter first,\
     \ Iter last, std::string delim = \" \"){\n    std::stringstream s;\n\n    for(auto\
@@ -135,7 +135,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/two_sat/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-21 06:13:54+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/two_sat/main.test.cpp

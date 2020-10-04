@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Typical/MaxRectangleProblem/max_rectangle.cpp\"\n\
     #include <vector>\n#include <algorithm>\n#line 3 \"Mylib/Typical/MaxRectangleProblem/max_rectangle_in_histogram.cpp\"\

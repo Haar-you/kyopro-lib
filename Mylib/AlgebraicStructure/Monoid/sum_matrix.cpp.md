@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/sum_matrix.cpp\"\n\nnamespace\
     \ haar_lib {\n  template <typename T>\n  struct sum_matrix_monoid {\n    using\

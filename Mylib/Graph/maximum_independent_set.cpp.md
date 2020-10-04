@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/maximum_independent_set.cpp\"\n#include <vector>\n\
     #include <cassert>\n#include <cstdint>\n\nnamespace haar_lib {\n  int64_t maximum_independent_set(const\
@@ -25,8 +24,8 @@ data:
     \ dp2(1 << h2, true); // dp2[S] := S\u304C\u72EC\u7ACB\u96C6\u5408\u304B?\n  \
     \  for(int i = h1; i < n; ++i){\n      for(int j = h1; j < n; ++j){\n        if(g[i][j])\
     \ dp2[(1 << (i - h1)) | (1 << (j - h1))] = false;\n      }\n    }\n\n    for(int\
-    \ s = 0; s < (1 << h2); ++s){\n      if(!dp2[s]){\n        for(int j = 0; j <\
-    \ h2; ++j){\n          dp2[s | (1 << j)] = false;\n        }\n      }\n    }\n\
+    \ s = 0; s < (1 << h2); ++s){\n      if(not dp2[s]){\n        for(int j = 0; j\
+    \ < h2; ++j){\n          dp2[s | (1 << j)] = false;\n        }\n      }\n    }\n\
     \n    std::vector<int> dp3(1 << h1, 0); // S1\u3068\u63A5\u7D9A\u3057\u306A\u3044\
     V2\u306E\u6700\u5927\u306E\u90E8\u5206\u96C6\u5408\n    dp3[0] = (1 << h2) - 1;\n\
     \    for(int i = 0; i < h1; ++i){\n      int t = 0;\n      for(int j = h1; j <\
@@ -59,8 +58,8 @@ data:
     \ dp2(1 << h2, true); // dp2[S] := S\u304C\u72EC\u7ACB\u96C6\u5408\u304B?\n  \
     \  for(int i = h1; i < n; ++i){\n      for(int j = h1; j < n; ++j){\n        if(g[i][j])\
     \ dp2[(1 << (i - h1)) | (1 << (j - h1))] = false;\n      }\n    }\n\n    for(int\
-    \ s = 0; s < (1 << h2); ++s){\n      if(!dp2[s]){\n        for(int j = 0; j <\
-    \ h2; ++j){\n          dp2[s | (1 << j)] = false;\n        }\n      }\n    }\n\
+    \ s = 0; s < (1 << h2); ++s){\n      if(not dp2[s]){\n        for(int j = 0; j\
+    \ < h2; ++j){\n          dp2[s | (1 << j)] = false;\n        }\n      }\n    }\n\
     \n    std::vector<int> dp3(1 << h1, 0); // S1\u3068\u63A5\u7D9A\u3057\u306A\u3044\
     V2\u306E\u6700\u5927\u306E\u90E8\u5206\u96C6\u5408\n    dp3[0] = (1 << h2) - 1;\n\
     \    for(int i = 0; i < h1; ++i){\n      int t = 0;\n      for(int j = h1; j <\
@@ -83,7 +82,7 @@ data:
   isVerificationFile: false
   path: Mylib/Graph/maximum_independent_set.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-29 00:55:13+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/maximum_independent_set/main.test.cpp

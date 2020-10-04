@@ -6,14 +6,14 @@ data:
     title: Geometry template
   _extendedRequiredBy:
   - icon: ':x:'
-    path: Mylib/Geometry/Float/intersect_circle_segment.cpp
-    title: Intersection between a circle and a segment
+    path: Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp
+    title: Area of intersection between a circle and a polygon
   - icon: ':x:'
     path: Mylib/Geometry/Float/distance_segments.cpp
     title: Distance between two segments
   - icon: ':x:'
-    path: Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp
-    title: Area of intersection between a circle and a polygon
+    path: Mylib/Geometry/Float/intersect_circle_segment.cpp
+    title: Intersection between a circle and a segment
   _extendedVerifiedWith:
   - icon: ':x:'
     path: test/aoj/CGL_2_D/main.test.cpp
@@ -24,7 +24,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/geometry_template.cpp\"\n#include <iostream>\n\
     #include <cmath>\n#include <vector>\n\nnamespace haar_lib {\n  template <typename\

@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Bit/enumerate_sets_of_size_k.cpp\"\n\nnamespace haar_lib\
     \ {\n  template <typename Func>\n  void enumerate_sets_of_size_k(int k, int n,\

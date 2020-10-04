@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/with_max_index.cpp\"\n#include\
     \ <utility>\n#include <limits>\n#include <algorithm>\n\nnamespace haar_lib {\n\
@@ -39,7 +38,7 @@ data:
   verifiedWith: []
 documentation_of: Mylib/AlgebraicStructure/Monoid/with_max_index.cpp
 layout: document
-title: null
+title: With max index
 ---
 
 ## Operations

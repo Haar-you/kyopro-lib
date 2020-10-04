@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Prime/factorial_prime_factorization.cpp\"\n\
     #include <cstdint>\n\nnamespace haar_lib {\n  int64_t factorial_prime_factorization(int64_t\

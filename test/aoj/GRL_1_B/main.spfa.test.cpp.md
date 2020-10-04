@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: Mylib/Graph/Template/graph.cpp
-    title: Basic graph
   - icon: ':x:'
     path: Mylib/Graph/ShortestPath/spfa.cpp
     title: SPFA
+  - icon: ':question:'
+    path: Mylib/Graph/Template/graph.cpp
+    title: Basic graph
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

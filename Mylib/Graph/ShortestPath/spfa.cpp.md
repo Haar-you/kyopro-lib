@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/ShortestPath/spfa.cpp\"\n#include <vector>\n\
     #include <optional>\n#include <queue>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\

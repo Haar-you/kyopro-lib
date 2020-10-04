@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
-  - icon: ':question:'
-    path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
-  - icon: ':question:'
-    path: Mylib/IO/input_tuple_vector.cpp
-    title: Mylib/IO/input_tuple_vector.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp
     title: Sqrt decomposition
+  - icon: ':question:'
+    path: Mylib/IO/input_tuple.cpp
+    title: Input tuple
+  - icon: ':question:'
+    path: Mylib/IO/input_tuple_vector.cpp
+    title: Input tuple vector
+  - icon: ':question:'
+    path: Mylib/IO/input_tuples.cpp
+    title: Input tuples
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3118
@@ -54,23 +54,24 @@ data:
     \n    input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof ... (Args)>());\n\
     \    for(int i = 0; i < N; ++i){\n      input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof\
     \ ... (Args)>());\n    }\n\n    return ret;\n  }\n}\n#line 3 \"Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp\"\
-    \n#include <cmath>\n\nnamespace haar_lib {\n  struct sqrt_decomposition {\n  \
-    \  const int N;\n    const int BLOCK_SIZE;\n    const int BLOCK_NUM;\n\n    sqrt_decomposition(int\
-    \ N):\n      N(N), BLOCK_SIZE((int)std::sqrt(N)), BLOCK_NUM((N + BLOCK_SIZE -\
-    \ 1) / BLOCK_SIZE)\n    {\n    }\n\n    template <typename Func>\n    void init(const\
-    \ Func &f){\n      for(int i = 0; i < BLOCK_NUM; ++i){\n        const int L =\
-    \ i * BLOCK_SIZE;\n        const int R = std::min<int>(N, (i + 1) * BLOCK_SIZE);\n\
-    \        f(i, L, R);\n      }\n    }\n\n    template <typename FuncBlock, typename\
-    \ FuncRange>\n    void query(int l, int r, const FuncBlock &func_block, const\
-    \ FuncRange &func_range){ // [l, r)\n      for(int i = 0; i < BLOCK_NUM; ++i){\n\
-    \        const int L = i * BLOCK_SIZE;\n        const int R = std::min<int>(N,\
-    \ (i + 1) * BLOCK_SIZE);\n\n        if(l <= L and R <= r){\n          func_block(i,\
+    \n#include <cmath>\n\nnamespace haar_lib {\n  class sqrt_decomposition {\n   \
+    \ int N_, BLOCK_SIZE_, BLOCK_NUM_;\n\n  public:\n    sqrt_decomposition(int N):\n\
+    \      N_(N), BLOCK_SIZE_((int)std::sqrt(N)), BLOCK_NUM_((N + BLOCK_SIZE_ - 1)\
+    \ / BLOCK_SIZE_){}\n\n    int block_size() const {return BLOCK_SIZE_;}\n    int\
+    \ block_num() const {return BLOCK_NUM_;}\n\n    template <typename Func>\n   \
+    \ void init(const Func &f){\n      for(int i = 0; i < BLOCK_NUM_; ++i){\n    \
+    \    const int L = i * BLOCK_SIZE_;\n        const int R = std::min<int>(N_, (i\
+    \ + 1) * BLOCK_SIZE_);\n        f(i, L, R);\n      }\n    }\n\n    template <typename\
+    \ FuncBlock, typename FuncRange>\n    void query(int l, int r, const FuncBlock\
+    \ &func_block, const FuncRange &func_range){\n      for(int i = 0; i < BLOCK_NUM_;\
+    \ ++i){\n        const int L = i * BLOCK_SIZE_;\n        const int R = std::min<int>(N_,\
+    \ (i + 1) * BLOCK_SIZE_);\n\n        if(l <= L and R <= r){\n          func_block(i,\
     \ L, R);\n        }else if((L <= l and l < R) or (L < r and r <= R)){\n      \
     \    func_range(i, L, R, std::max(l, L), std::min(r, R));\n        }\n      }\n\
     \    }\n  };\n}\n#line 11 \"test/aoj/3118/main.test.cpp\"\n\nnamespace hl = haar_lib;\n\
     \nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int\
     \ N, Q; std::cin >> N >> Q;\n\n  hl::sqrt_decomposition sd(N);\n\n  auto [A, B]\
-    \ = hl::input_tuple_vector<int64_t, int64_t>(N);\n\n  const int NUM = sd.BLOCK_NUM;\n\
+    \ = hl::input_tuple_vector<int64_t, int64_t>(N);\n\n  const int NUM = sd.block_num();\n\
     \n  std::vector<std::vector<int64_t>> s(NUM);\n  std::vector<std::vector<int64_t>>\
     \ left(NUM), right(NUM);\n  std::vector<int64_t> sum(NUM);\n\n  auto f =\n   \
     \ [&](int i, int l, int r){\n      const int size = r - l;\n\n      std::vector<int64_t>\
@@ -103,7 +104,7 @@ data:
     \n#include \"Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp\"\n\nnamespace\
     \ hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  int N, Q; std::cin >> N >> Q;\n\n  hl::sqrt_decomposition sd(N);\n\n  auto\
-    \ [A, B] = hl::input_tuple_vector<int64_t, int64_t>(N);\n\n  const int NUM = sd.BLOCK_NUM;\n\
+    \ [A, B] = hl::input_tuple_vector<int64_t, int64_t>(N);\n\n  const int NUM = sd.block_num();\n\
     \n  std::vector<std::vector<int64_t>> s(NUM);\n  std::vector<std::vector<int64_t>>\
     \ left(NUM), right(NUM);\n  std::vector<int64_t> sum(NUM);\n\n  auto f =\n   \
     \ [&](int i, int l, int r){\n      const int size = r - l;\n\n      std::vector<int64_t>\
@@ -138,8 +139,8 @@ data:
   isVerificationFile: true
   path: test/aoj/3118/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-20 16:28:29+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2020-10-03 19:28:56+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/aoj/3118/main.test.cpp
 layout: document

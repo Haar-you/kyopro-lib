@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Typical/SubsetSumProblem/subset_sum_count_fps.cpp\"\
     \n#include <vector>\n\nnamespace haar_lib {\n  template <typename Fps>\n  auto\

@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Bit/gray_code.cpp\"\n\nnamespace haar_lib {\n  template\
     \ <typename Func>\n  void gray_code(int n, const Func &f){\n    for(int i = 0;\

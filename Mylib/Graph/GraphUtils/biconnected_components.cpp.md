@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/GraphUtils/biconnected_components.cpp\"\n#include\
     \ <vector>\n#include <stack>\n#include <algorithm>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\

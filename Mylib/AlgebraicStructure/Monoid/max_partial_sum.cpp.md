@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp\"\n\
     #include <optional>\n#include <algorithm>\n#include <iostream>\n\nnamespace haar_lib\

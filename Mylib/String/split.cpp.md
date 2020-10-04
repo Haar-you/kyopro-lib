@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/String/split.cpp\"\n#include <string>\n#include <vector>\n\
     \nnamespace haar_lib {\n  auto split(const std::string &s, const std::string &delim){\n\

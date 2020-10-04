@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/GraphUtils/decompose_pseudotree.cpp\"\n#include\
     \ <vector>\n#include <queue>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\n#include\
@@ -35,49 +34,53 @@ data:
     \        if(WEIGHTED) std::cin >> w;\n        if(DIRECTED) add_edge(u, v, w, i);\n\
     \        else add_undirected(u, v, w, i);\n      }\n    }\n  };\n\n  template\
     \ <typename T>\n  using tree = graph<T>;\n}\n#line 5 \"Mylib/Graph/GraphUtils/decompose_pseudotree.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T>\n  struct pseudo_tree {\n  \
-    \  const int n;\n    std::vector<bool> in_loop;\n    std::vector<int> group;\n\
-    \n    void dfs(int cur, int par, const graph<T> &g){\n      group[cur] = group[par];\n\
+    \n\nnamespace haar_lib {\n  template <typename T>\n  class pseudo_tree {\n   \
+    \ int n_;\n    std::vector<bool> in_loop_;\n    std::vector<int> group_;\n\n \
+    \   void dfs(int cur, int par, const graph<T> &g){\n      group_[cur] = group_[par];\n\
     \n      for(auto &e : g[cur]){\n        if(e.to == par) continue;\n        dfs(e.to,\
-    \ cur, g);\n      }\n    }\n\n    pseudo_tree(const graph<T> &g): n(g.size()),\
-    \ in_loop(n, true), group(n){\n      std::vector<int> indeg(n);\n      std::vector<bool>\
-    \ visited(n);\n      std::queue<int> q;\n\n      for(int i = 0; i < n; ++i){\n\
-    \        for(auto &e : g[i]){\n          ++indeg[e.to];\n        }\n      }\n\n\
-    \      for(int i = 0; i < n; ++i){\n        if(indeg[i] == 1){\n          q.push(i);\n\
-    \        }\n      }\n\n      while(not q.empty()){\n        int cur = q.front();\
-    \ q.pop();\n\n        in_loop[cur] = false;\n\n        if(visited[cur]) continue;\n\
-    \        visited[cur] = true;\n\n        for(auto &e : g[cur]){\n          if(not\
-    \ visited[e.to]){\n            --indeg[e.to];\n            if(indeg[e.to] == 1){\n\
-    \              q.push(e.to);\n            }\n          }\n        }\n      }\n\
-    \n      for(int i = 0; i < n; ++i){\n        if(in_loop[i]){\n          for(auto\
-    \ &e : g[i]){\n            if(not in_loop[e.to]){\n              group[i] = i;\n\
-    \              dfs(e.to, i, g);\n              break;\n            }\n       \
-    \   }\n        }\n      }\n    }\n  };\n}\n"
+    \ cur, g);\n      }\n    }\n\n  public:\n    pseudo_tree(){}\n    pseudo_tree(const\
+    \ graph<T> &g): n_(g.size()), in_loop_(n_, true), group_(n_){\n      std::vector<int>\
+    \ indeg(n_);\n      std::vector<bool> visited(n_);\n      std::queue<int> q;\n\
+    \n      for(int i = 0; i < n_; ++i){\n        for(auto &e : g[i]){\n         \
+    \ ++indeg[e.to];\n        }\n      }\n\n      for(int i = 0; i < n_; ++i){\n \
+    \       if(indeg[i] == 1){\n          q.push(i);\n        }\n      }\n\n     \
+    \ while(not q.empty()){\n        int cur = q.front(); q.pop();\n\n        in_loop_[cur]\
+    \ = false;\n\n        if(visited[cur]) continue;\n        visited[cur] = true;\n\
+    \n        for(auto &e : g[cur]){\n          if(not visited[e.to]){\n         \
+    \   --indeg[e.to];\n            if(indeg[e.to] == 1){\n              q.push(e.to);\n\
+    \            }\n          }\n        }\n      }\n\n      for(int i = 0; i < n_;\
+    \ ++i){\n        if(in_loop_[i]){\n          for(auto &e : g[i]){\n          \
+    \  if(not in_loop_[e.to]){\n              group_[i] = i;\n              dfs(e.to,\
+    \ i, g);\n              break;\n            }\n          }\n        }\n      }\n\
+    \    }\n\n    bool in_loop(int i) const {return in_loop_[i];}\n    int group(int\
+    \ i) const {return group_[i];}\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <queue>\n#include \"Mylib/Graph/Template/graph.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T>\n  struct pseudo_tree {\n  \
-    \  const int n;\n    std::vector<bool> in_loop;\n    std::vector<int> group;\n\
-    \n    void dfs(int cur, int par, const graph<T> &g){\n      group[cur] = group[par];\n\
+    \n\nnamespace haar_lib {\n  template <typename T>\n  class pseudo_tree {\n   \
+    \ int n_;\n    std::vector<bool> in_loop_;\n    std::vector<int> group_;\n\n \
+    \   void dfs(int cur, int par, const graph<T> &g){\n      group_[cur] = group_[par];\n\
     \n      for(auto &e : g[cur]){\n        if(e.to == par) continue;\n        dfs(e.to,\
-    \ cur, g);\n      }\n    }\n\n    pseudo_tree(const graph<T> &g): n(g.size()),\
-    \ in_loop(n, true), group(n){\n      std::vector<int> indeg(n);\n      std::vector<bool>\
-    \ visited(n);\n      std::queue<int> q;\n\n      for(int i = 0; i < n; ++i){\n\
-    \        for(auto &e : g[i]){\n          ++indeg[e.to];\n        }\n      }\n\n\
-    \      for(int i = 0; i < n; ++i){\n        if(indeg[i] == 1){\n          q.push(i);\n\
-    \        }\n      }\n\n      while(not q.empty()){\n        int cur = q.front();\
-    \ q.pop();\n\n        in_loop[cur] = false;\n\n        if(visited[cur]) continue;\n\
-    \        visited[cur] = true;\n\n        for(auto &e : g[cur]){\n          if(not\
-    \ visited[e.to]){\n            --indeg[e.to];\n            if(indeg[e.to] == 1){\n\
-    \              q.push(e.to);\n            }\n          }\n        }\n      }\n\
-    \n      for(int i = 0; i < n; ++i){\n        if(in_loop[i]){\n          for(auto\
-    \ &e : g[i]){\n            if(not in_loop[e.to]){\n              group[i] = i;\n\
-    \              dfs(e.to, i, g);\n              break;\n            }\n       \
-    \   }\n        }\n      }\n    }\n  };\n}\n"
+    \ cur, g);\n      }\n    }\n\n  public:\n    pseudo_tree(){}\n    pseudo_tree(const\
+    \ graph<T> &g): n_(g.size()), in_loop_(n_, true), group_(n_){\n      std::vector<int>\
+    \ indeg(n_);\n      std::vector<bool> visited(n_);\n      std::queue<int> q;\n\
+    \n      for(int i = 0; i < n_; ++i){\n        for(auto &e : g[i]){\n         \
+    \ ++indeg[e.to];\n        }\n      }\n\n      for(int i = 0; i < n_; ++i){\n \
+    \       if(indeg[i] == 1){\n          q.push(i);\n        }\n      }\n\n     \
+    \ while(not q.empty()){\n        int cur = q.front(); q.pop();\n\n        in_loop_[cur]\
+    \ = false;\n\n        if(visited[cur]) continue;\n        visited[cur] = true;\n\
+    \n        for(auto &e : g[cur]){\n          if(not visited[e.to]){\n         \
+    \   --indeg[e.to];\n            if(indeg[e.to] == 1){\n              q.push(e.to);\n\
+    \            }\n          }\n        }\n      }\n\n      for(int i = 0; i < n_;\
+    \ ++i){\n        if(in_loop_[i]){\n          for(auto &e : g[i]){\n          \
+    \  if(not in_loop_[e.to]){\n              group_[i] = i;\n              dfs(e.to,\
+    \ i, g);\n              break;\n            }\n          }\n        }\n      }\n\
+    \    }\n\n    bool in_loop(int i) const {return in_loop_[i];}\n    int group(int\
+    \ i) const {return group_[i];}\n  };\n}\n"
   dependsOn:
   - Mylib/Graph/Template/graph.cpp
   isVerificationFile: false
   path: Mylib/Graph/GraphUtils/decompose_pseudotree.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/2891/main.test.cpp

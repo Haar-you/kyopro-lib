@@ -14,7 +14,7 @@ data:
     - icon: ':x:'
       path: Mylib/AlgebraicStructure/Monoid/affine.cpp
       title: Affine monoid
-    - icon: ':x:'
+    - icon: ':warning:'
       path: Mylib/AlgebraicStructure/Monoid/array.cpp
       title: Array monoid
     - icon: ':warning:'
@@ -65,7 +65,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/Monoid/pair.cpp
       title: Pair monoid
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/AlgebraicStructure/Monoid/product.cpp
       title: Product monoid
     - icon: ':x:'
@@ -91,13 +91,13 @@ data:
       title: Update monoid
     - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/Monoid/with_count.cpp
-      title: Mylib/AlgebraicStructure/Monoid/with_count.cpp
+      title: With count
     - icon: ':warning:'
       path: Mylib/AlgebraicStructure/Monoid/with_max_index.cpp
-      title: Mylib/AlgebraicStructure/Monoid/with_max_index.cpp
+      title: With max index
     - icon: ':x:'
       path: Mylib/AlgebraicStructure/Monoid/with_min_index.cpp
-      title: Mylib/AlgebraicStructure/Monoid/with_min_index.cpp
+      title: With min index
   - name: Mylib/AlgebraicStructure/MonoidAction
     pages:
     - icon: ':x:'
@@ -206,7 +206,7 @@ data:
       title: Sliding window minmax
   - name: Mylib/Algorithm/SqrtDecomposition
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp
       title: Sqrt decomposition
   - name: Mylib/Bit
@@ -270,6 +270,9 @@ data:
     - icon: ':x:'
       path: Mylib/Combinatorics/partition_number_n.cpp
       title: Partition number (Enumerate $P(n, n)$)
+    - icon: ':warning:'
+      path: Mylib/Combinatorics/semifactorial.cpp
+      title: Semifactorial
     - icon: ':x:'
       path: Mylib/Combinatorics/stirling_number_first_fft.cpp
       title: Stirling numbers of the first kind (FFT)
@@ -299,13 +302,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/fast_mobius_transform_subset.cpp
       title: "Fast M\xF6bius transform (Subsets)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/Convolution/fast_mobius_transform_superset.cpp
       title: "Fast M\xF6bius transform (Supersets)"
     - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/fast_zeta_transform_subset.cpp
       title: Fast Zeta transform (Subsets)
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/Convolution/fast_zeta_transform_superset.cpp
       title: Fast Zeta transform (Supersets)
     - icon: ':x:'
@@ -357,7 +360,7 @@ data:
       title: Fenwick tree (On Fenwick tree)
   - name: Mylib/DataStructure/Heap
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/DataStructure/Heap/binary_heap.cpp
       title: Binary heap
     - icon: ':heavy_check_mark:'
@@ -575,7 +578,7 @@ data:
     - icon: ':x:'
       path: Mylib/Geometry/Float/intersect_line_segment.cpp
       title: Intersection between a line and a segment
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Geometry/Float/intersect_segments.cpp
       title: Intersection between two segments
     - icon: ':x:'
@@ -590,16 +593,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/minimum_covering_circle.cpp
       title: Minimum covering circle
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/Geometry/Float/orthogonal.cpp
       title: Orthogonal
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/Geometry/Float/parallel.cpp
       title: Parallel
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/Geometry/Float/projection.cpp
       title: Projection
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/Geometry/Float/reflection.cpp
       title: Reflection
     - icon: ':x:'
@@ -647,12 +650,15 @@ data:
       title: Undirected Eulerian path
   - name: Mylib/Graph/Flow
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Graph/Flow/dinic.cpp
       title: Dinic algorithm
     - icon: ':question:'
       path: Mylib/Graph/Flow/ford_fulkerson.cpp
       title: Ford-Fulkerson algorithm
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Graph/Flow/max_flow_with_lower_bound.cpp
+      title: Maximum flow with lower bound
     - icon: ':question:'
       path: Mylib/Graph/Flow/minimum_cost_flow.cpp
       title: Minimum cost flow
@@ -804,10 +810,13 @@ data:
     - icon: ':x:'
       path: Mylib/Graph/enumerate_triangles.cpp
       title: Enumerate triangles
+    - icon: ':warning:'
+      path: Mylib/Graph/lsi.cpp
+      title: Linear system incidence
     - icon: ':x:'
       path: Mylib/Graph/maximum_independent_set.cpp
       title: Maximum independent set
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Graph/project_selection_problem.cpp
       title: Project selection problem
     - icon: ':x:'
@@ -839,22 +848,22 @@ data:
     pages:
     - icon: ':question:'
       path: Mylib/IO/input_tuple.cpp
-      title: Mylib/IO/input_tuple.cpp
+      title: Input tuple
     - icon: ':question:'
       path: Mylib/IO/input_tuple_vector.cpp
-      title: Mylib/IO/input_tuple_vector.cpp
+      title: Input tuple vector
     - icon: ':question:'
       path: Mylib/IO/input_tuples.cpp
-      title: Mylib/IO/input_tuples.cpp
+      title: Input tuples
     - icon: ':question:'
       path: Mylib/IO/input_tuples_with_index.cpp
-      title: Mylib/IO/input_tuples_with_index.cpp
+      title: Input tuples with index
     - icon: ':question:'
       path: Mylib/IO/input_vector.cpp
-      title: Mylib/IO/input_vector.cpp
+      title: Input vector
     - icon: ':question:'
       path: Mylib/IO/join.cpp
-      title: Mylib/IO/join.cpp
+      title: join function
   - name: Mylib/LinearAlgebra/GaussianElimination
     pages:
     - icon: ':x:'
@@ -898,7 +907,7 @@ data:
       title: Formal power series
     - icon: ':x:'
       path: Mylib/Math/polynomial_taylor_shift.cpp
-      title: polynomial_taylor_shift.md
+      title: Polynomial taylor shift
     - icon: ':warning:'
       path: Mylib/Math/quadratic_equation.cpp
       title: Real solutions of quadratic equation
@@ -918,7 +927,7 @@ data:
       title: 128-bit int
     - icon: ':heavy_check_mark:'
       path: Mylib/Misc/merge_technique.cpp
-      title: Mylib/Misc/merge_technique.cpp
+      title: Merge technique
     - icon: ':warning:'
       path: Mylib/Misc/rho.cpp
       title: Mylib/Misc/rho.cpp
@@ -947,10 +956,13 @@ data:
       title: Enumerate divisors
   - name: Mylib/Number/Mint
     pages:
-    - icon: ':question:'
+    - icon: ':x:'
       path: Mylib/Number/Mint/mint.cpp
       title: Modint
     - icon: ':warning:'
+      path: Mylib/Number/Mint/mint_2.cpp
+      title: Modint (mod 2)
+    - icon: ':x:'
       path: Mylib/Number/Mint/montgomery.cpp
       title: Montgomery multiplication
     - icon: ':question:'
@@ -1047,7 +1059,7 @@ data:
       title: "M\xF6bius function"
     - icon: ':warning:'
       path: Mylib/Number/pow.cpp
-      title: Mylib/Number/pow.cpp
+      title: Binary exponentiation
     - icon: ':warning:'
       path: Mylib/Number/sign_function.cpp
       title: Sign function
@@ -1067,7 +1079,7 @@ data:
     - icon: ':warning:'
       path: Mylib/String/ends_with.cpp
       title: ends_with
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/String/knuth_morris_pratt.cpp
       title: Knuth-Morris-Pratt algorithm
     - icon: ':x:'
@@ -1085,10 +1097,10 @@ data:
     - icon: ':warning:'
       path: Mylib/String/palindromic_tree.cpp
       title: Palindromic tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/String/rolling_hash.cpp
       title: Rolling hash
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/String/rolling_hash_2d.cpp
       title: Rolling hash (2D)
     - icon: ':x:'
@@ -1100,7 +1112,7 @@ data:
     - icon: ':warning:'
       path: Mylib/String/starts_with.cpp
       title: starts_with
-    - icon: ':question:'
+    - icon: ':x:'
       path: Mylib/String/suffix_array.cpp
       title: Suffix array
     - icon: ':warning:'
@@ -1196,9 +1208,9 @@ data:
     - icon: ':warning:'
       path: Mylib/Utils/run_length_encoding.cpp
       title: Run length encoding
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Utils/sort_simultaneously.cpp
-      title: Mylib/Utils/sort_simultaneously.cpp
+      title: Sort simultaneously
   verificationCategories:
   - name: test/aoj/0323
     pages:
@@ -1284,6 +1296,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/1595/main.test.cpp
       title: test/aoj/1595/main.test.cpp
+  - name: test/aoj/1615
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/1615/main.test.cpp
+      title: test/aoj/1615/main.test.cpp
   - name: test/aoj/2136
     pages:
     - icon: ':heavy_check_mark:'
@@ -1311,7 +1328,7 @@ data:
       title: test/aoj/2401/main.test.cpp
   - name: test/aoj/2426
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/2426/main.test.cpp
       title: test/aoj/2426/main.test.cpp
   - name: test/aoj/2444
@@ -1385,22 +1402,22 @@ data:
       title: test/aoj/3035/main.test.cpp
   - name: test/aoj/3058
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/3058/main.test.cpp
       title: test/aoj/3058/main.test.cpp
   - name: test/aoj/3118
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/3118/main.test.cpp
       title: test/aoj/3118/main.test.cpp
   - name: test/aoj/3119
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/3119/main.test.cpp
       title: test/aoj/3119/main.test.cpp
   - name: test/aoj/3132
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/3132/main.test.cpp
       title: test/aoj/3132/main.test.cpp
   - name: test/aoj/3134
@@ -1408,6 +1425,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/3134/main.test.cpp
       title: test/aoj/3134/main.test.cpp
+  - name: test/aoj/3165
+    pages:
+    - icon: ':x:'
+      path: test/aoj/3165/main.test.cpp
+      title: test/aoj/3165/main.test.cpp
+    - icon: ':x:'
+      path: test/aoj/3165/main.test.imos.cpp
+      title: test/aoj/3165/main.test.imos.cpp
   - name: test/aoj/ALDS1_10_C
     pages:
     - icon: ':heavy_check_mark:'
@@ -1420,20 +1445,20 @@ data:
       title: test/aoj/ALDS1_12_B/main.dial.test.cpp
   - name: test/aoj/ALDS1_14_B
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/ALDS1_14_B/main.kmp.test.cpp
       title: test/aoj/ALDS1_14_B/main.kmp.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/ALDS1_14_B/main.test.cpp
       title: test/aoj/ALDS1_14_B/main.test.cpp
   - name: test/aoj/ALDS1_14_C
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/ALDS1_14_C/main.test.cpp
       title: test/aoj/ALDS1_14_C/main.test.cpp
   - name: test/aoj/ALDS1_14_D
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/ALDS1_14_D/main.test.cpp
       title: test/aoj/ALDS1_14_D/main.test.cpp
   - name: test/aoj/ALDS1_15_C
@@ -1453,37 +1478,37 @@ data:
       title: test/aoj/ALDS1_5_D/main.test.cpp
   - name: test/aoj/ALDS1_9_C
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/ALDS1_9_C/main.binary.test.cpp
       title: test/aoj/ALDS1_9_C/main.binary.test.cpp
   - name: test/aoj/CGL_1_A
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/CGL_1_A/main.test.cpp
       title: test/aoj/CGL_1_A/main.test.cpp
   - name: test/aoj/CGL_1_B
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/CGL_1_B/main.test.cpp
       title: test/aoj/CGL_1_B/main.test.cpp
   - name: test/aoj/CGL_1_C
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/CGL_1_C/main.test.cpp
       title: test/aoj/CGL_1_C/main.test.cpp
   - name: test/aoj/CGL_2_A
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/CGL_2_A/main.test.cpp
       title: test/aoj/CGL_2_A/main.test.cpp
   - name: test/aoj/CGL_2_B
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/CGL_2_B/main.test.cpp
       title: test/aoj/CGL_2_B/main.test.cpp
   - name: test/aoj/CGL_2_C
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/CGL_2_C/main.test.cpp
       title: test/aoj/CGL_2_C/main.test.cpp
   - name: test/aoj/CGL_2_D
@@ -1927,6 +1952,9 @@ data:
   - name: test/yosupo-judge/exp_of_formal_power_series
     pages:
     - icon: ':x:'
+      path: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
+      title: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
+    - icon: ':x:'
       path: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
       title: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
   - name: test/yosupo-judge/factorize
@@ -2187,14 +2215,6 @@ data:
     - icon: ':x:'
       path: test/yukicoder/1069/main.test.cpp
       title: test/yukicoder/1069/main.test.cpp
-  - name: test/yukicoder/1084
-    pages:
-    - icon: ':x:'
-      path: test/yukicoder/1084/main.segment_tree.test.cpp
-      title: test/yukicoder/1084/main.segment_tree.test.cpp
-    - icon: ':x:'
-      path: test/yukicoder/1084/main.test.cpp
-      title: test/yukicoder/1084/main.test.cpp
   - name: test/yukicoder/1099
     pages:
     - icon: ':x:'
@@ -2331,3 +2351,4 @@ data:
       title: test/yukicoder/922/main.test.cpp
 layout: toppage
 ---
+- [命名規則](./naming_rules)

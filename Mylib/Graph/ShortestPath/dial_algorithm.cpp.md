@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/ShortestPath/dial_algorithm.cpp\"\n#include\
     \ <vector>\n#include <optional>\n#include <stack>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\

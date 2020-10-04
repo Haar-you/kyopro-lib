@@ -15,7 +15,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/TreeUtils/tree_diameter.cpp\"\n#include <vector>\n\
     #include <utility>\n#include <stack>\n#include <algorithm>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\

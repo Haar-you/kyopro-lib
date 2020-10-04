@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/garner.cpp\"\n#include <vector>\n#line 2 \"\
     Mylib/Number/Mod/mod_inv.cpp\"\n#include <utility>\n#include <cstdint>\n\nnamespace\

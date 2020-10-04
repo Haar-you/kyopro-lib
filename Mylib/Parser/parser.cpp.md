@@ -7,15 +7,14 @@ data:
     path: test/aoj/1102/main.test.cpp
     title: test/aoj/1102/main.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/aoj/2401/main.test.cpp
-    title: test/aoj/2401/main.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/aoj/1300/main.test.cpp
     title: test/aoj/1300/main.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/2401/main.test.cpp
+    title: test/aoj/2401/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Parser/parser.cpp\"\n#include <string>\n#include <cassert>\n\
     \nnamespace haar_lib {\n  struct parser {\n    using state = std::string::const_iterator;\n\

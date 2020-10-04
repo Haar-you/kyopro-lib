@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Prime/count_coprime.cpp\"\n#include <cstdint>\n\
     #line 2 \"Mylib/Number/Prime/prime_factorize.cpp\"\n#include <vector>\n#include\

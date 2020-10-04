@@ -7,15 +7,14 @@ data:
     title: Count coprime
   _extendedVerifiedWith:
   - icon: ':x:'
-    path: test/aoj/NTL_1_D/main.test.cpp
-    title: test/aoj/NTL_1_D/main.test.cpp
-  - icon: ':x:'
     path: test/aoj/NTL_1_A/main.test.cpp
     title: test/aoj/NTL_1_A/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/NTL_1_D/main.test.cpp
+    title: test/aoj/NTL_1_D/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Prime/prime_factorize.cpp\"\n#include <vector>\n\
     #include <utility>\n#include <cstdint>\n\nnamespace haar_lib {\n  auto prime_factorize(int64_t\

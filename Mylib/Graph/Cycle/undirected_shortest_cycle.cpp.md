@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/Cycle/undirected_shortest_cycle.cpp\"\n#include\
     \ <vector>\n#include <queue>\n#include <optional>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\

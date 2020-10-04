@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Grid/grid.cpp
-    title: Grid template
   - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
+  - icon: ':heavy_check_mark:'
+    path: Mylib/Grid/grid.cpp
+    title: Grid template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -15,7 +15,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Grid/grid_to_graph.cpp\"\n#include <vector>\n#line\
     \ 2 \"Mylib/Grid/grid.cpp\"\n#include <array>\n#include <iostream>\n#include <utility>\n\

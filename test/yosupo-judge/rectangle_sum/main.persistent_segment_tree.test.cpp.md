@@ -1,27 +1,27 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
-    path: Mylib/Utils/sort_simultaneously.cpp
-    title: Mylib/Utils/sort_simultaneously.cpp
+  - icon: ':question:'
+    path: Mylib/AlgebraicStructure/Monoid/sum.cpp
+    title: Sum monoid
   - icon: ':x:'
     path: Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp
     title: Persistent segment tree
   - icon: ':question:'
-    path: Mylib/AlgebraicStructure/Monoid/sum.cpp
-    title: Sum monoid
+    path: Mylib/IO/input_tuple.cpp
+    title: Input tuple
+  - icon: ':question:'
+    path: Mylib/IO/input_tuple_vector.cpp
+    title: Input tuple vector
+  - icon: ':question:'
+    path: Mylib/IO/input_tuples.cpp
+    title: Input tuples
   - icon: ':question:'
     path: Mylib/Utils/compressor.cpp
     title: Compressor
   - icon: ':question:'
-    path: Mylib/IO/input_tuple_vector.cpp
-    title: Mylib/IO/input_tuple_vector.cpp
-  - icon: ':question:'
-    path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
-  - icon: ':question:'
-    path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+    path: Mylib/Utils/sort_simultaneously.cpp
+    title: Sort simultaneously
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -35,75 +35,78 @@ data:
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\n\n#include\
     \ <iostream>\n#include <vector>\n#line 3 \"Mylib/Utils/sort_simultaneously.cpp\"\
     \n#include <utility>\n#include <algorithm>\n#include <numeric>\n#include <initializer_list>\n\
-    \nnamespace haar_lib {\n  template <typename Compare, typename ... Args>\n  void\
-    \ sort_simultaneously(const Compare &compare, std::vector<Args> &... args){\n\
-    \    const int N = std::max({args.size() ...});\n    std::vector<int> ord(N);\n\
-    \    std::iota(ord.begin(), ord.end(), 0);\n    std::sort(ord.begin(), ord.end(),\
-    \ compare);\n\n    (void)std::initializer_list<int>{\n      (void(\n        [&](){\n\
-    \          auto temp = args;\n          for(int i = 0; i < N; ++i) temp[i] = args[ord[i]];\n\
-    \          std::swap(temp, args);\n        }()\n      ), 0) ...};\n  }\n}\n#line\
-    \ 3 \"Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp\"\n\nnamespace\
-    \ haar_lib {\n  template <typename Monoid>\n  class persistent_segment_tree {\n\
-    \    using value_type = typename Monoid::value_type;\n    const static Monoid\
-    \ M;\n\n    struct node {\n      value_type value;\n      node *left = nullptr,\
-    \ *right = nullptr;\n      node(const value_type &value): value(value){}\n   \
-    \ };\n\n    int depth;\n    node *root = nullptr;\n\n    persistent_segment_tree(int\
-    \ depth, node *root): depth(depth), root(root){}\n\n    node* init(node *t, const\
-    \ std::vector<value_type> &init_list, int d, int &pos){\n      if(d == depth){\n\
-    \        t = new node(pos < (int)init_list.size() ? init_list[pos] : M());\n \
-    \       ++pos;\n      }else{\n        t = new node(M());\n        t->left = init(t->left,\
-    \ init_list, d + 1, pos);\n        t->right = init(t->right, init_list, d + 1,\
-    \ pos);\n        t->value = M(t->left->value, t->right->value);\n      }\n   \
-    \   return t;\n    }\n\n  public:\n    persistent_segment_tree(const std::vector<value_type>\
-    \ &init_list){\n      const int size = init_list.size();\n      depth = size ==\
-    \ 1 ? 1 : 32 - __builtin_clz(size - 1) + 1;\n      int pos = 0;\n      root =\
-    \ init(root, init_list, 1, pos);\n    }\n\n    persistent_segment_tree(int size,\
-    \ const value_type &value = M()){\n      depth = size == 1 ? 1 : 32 - __builtin_clz(size\
-    \ - 1) + 1;\n      int pos = 0;\n      root = init(root, std::vector<value_type>(size,\
-    \ value), 1, pos);\n    }\n\n  protected:\n    node* set(node *t, int l, int r,\
-    \ int pos, const value_type &val) const {\n      if(r <= pos or pos + 1 <= l){\n\
-    \        return t;\n      }else if(pos <= l and r <= pos + 1){\n        return\
-    \ new node(val);\n      }else{\n        const int m = (l + r) >> 1;\n        auto\
-    \ lp = set(t->left, l, m, pos, val);\n        auto rp = set(t->right, m, r, pos,\
-    \ val);\n\n        node *s = new node(M(lp->value, rp->value));\n\n        s->left\
-    \ = lp;\n        s->right = rp;\n\n        return s;\n      }\n    }\n\n  public:\n\
-    \    persistent_segment_tree set(int i, const value_type &val) const {\n     \
-    \ node *t = set(root, 0, 1 << (depth - 1), i, val);\n      return persistent_segment_tree(depth,\
-    \ t);\n    }\n\n    persistent_segment_tree update(int i, const value_type &val)\
-    \ const {\n      return set(i, M((*this)[i], val));\n    }\n\n  protected:\n \
-    \   value_type get(node *t, int i, int j, int l, int r) const {\n      if(i <=\
-    \ l and r <= j) return t->value;\n      if(r <= i or j <= l) return M();\n   \
-    \   const int m = (l + r) >> 1;\n      return M(get(t->left, i, j, l, m), get(t->right,\
-    \ i, j, m, r));\n    }\n\n  public:\n    value_type fold(int i, int j) const {\n\
-    \      return get(root, i, j, 0, 1 << (depth - 1));\n    }\n\n    value_type operator[](int\
-    \ i) const {\n      return fold(i, i + 1);\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/sum.cpp\"\
+    \nnamespace haar_lib {\n  namespace sort_simultaneously_impl {\n    template <typename\
+    \ T>\n    void sub(int N, const std::vector<int> &ord, std::vector<T> &a){\n \
+    \     std::vector<T> temp(N);\n      for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];\n\
+    \      std::swap(temp, a);\n    }\n  }\n\n  template <typename Compare, typename\
+    \ ... Args>\n  void sort_simultaneously(const Compare &compare, std::vector<Args>\
+    \ &... args){\n    const int N = std::max({args.size() ...});\n    std::vector<int>\
+    \ ord(N);\n    std::iota(ord.begin(), ord.end(), 0);\n    std::sort(ord.begin(),\
+    \ ord.end(), compare);\n\n    (void)std::initializer_list<int>{\n      (void(sort_simultaneously_impl::sub(N,\
+    \ ord, args)), 0) ...};\n  }\n}\n#line 3 \"Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp\"\
+    \n\nnamespace haar_lib {\n  template <typename Monoid>\n  class persistent_segment_tree\
+    \ {\n  public:\n    using value_type = typename Monoid::value_type;\n\n  private:\n\
+    \    struct node {\n      value_type value;\n      node *left = nullptr, *right\
+    \ = nullptr;\n      node(const value_type &value): value(value){}\n    };\n\n\
+    \    Monoid M_;\n    int depth_;\n    node *root_ = nullptr;\n\n    persistent_segment_tree(int\
+    \ depth, node *root): depth_(depth), root_(root){}\n\n    node* assign(node *t,\
+    \ const std::vector<value_type> &init_list, int d, int &pos){\n      if(d == depth_){\n\
+    \        t = new node(pos < (int)init_list.size() ? init_list[pos] : M_());\n\
+    \        ++pos;\n      }else{\n        t = new node(M_());\n        t->left =\
+    \ assign(t->left, init_list, d + 1, pos);\n        t->right = assign(t->right,\
+    \ init_list, d + 1, pos);\n        t->value = M_(t->left->value, t->right->value);\n\
+    \      }\n      return t;\n    }\n\n    void init(const std::vector<value_type>\
+    \ &init_list){\n      const int size = init_list.size();\n      depth_ = size\
+    \ == 1 ? 1 : 32 - __builtin_clz(size - 1) + 1;\n      int pos = 0;\n      root_\
+    \ = assign(root_, init_list, 1, pos);\n    }\n\n  public:\n    persistent_segment_tree(){}\n\
+    \    persistent_segment_tree(const std::vector<value_type> &init_list){\n    \
+    \  init(init_list);\n    }\n    persistent_segment_tree(int size){\n      init(std::vector(size,\
+    \ M_()));\n    }\n    persistent_segment_tree(int size, const value_type &value){\n\
+    \      init(std::vector(size, value));\n    }\n\n  protected:\n    node* set(node\
+    \ *t, int l, int r, int pos, const value_type &val) const {\n      if(r <= pos\
+    \ or pos + 1 <= l){\n        return t;\n      }else if(pos <= l and r <= pos +\
+    \ 1){\n        return new node(val);\n      }else{\n        const int m = (l +\
+    \ r) >> 1;\n        auto lp = set(t->left, l, m, pos, val);\n        auto rp =\
+    \ set(t->right, m, r, pos, val);\n\n        node *s = new node(M_(lp->value, rp->value));\n\
+    \n        s->left = lp;\n        s->right = rp;\n\n        return s;\n      }\n\
+    \    }\n\n  public:\n    persistent_segment_tree set(int i, const value_type &val)\
+    \ const {\n      node *t = set(root_, 0, 1 << (depth_ - 1), i, val);\n      return\
+    \ persistent_segment_tree(depth_, t);\n    }\n\n    persistent_segment_tree update(int\
+    \ i, const value_type &val) const {\n      return set(i, M_((*this)[i], val));\n\
+    \    }\n\n  protected:\n    value_type get(node *t, int i, int j, int l, int r)\
+    \ const {\n      if(i <= l and r <= j) return t->value;\n      if(r <= i or j\
+    \ <= l) return M_();\n      const int m = (l + r) >> 1;\n      return M_(get(t->left,\
+    \ i, j, l, m), get(t->right, i, j, m, r));\n    }\n\n  public:\n    value_type\
+    \ fold(int i, int j) const {\n      return get(root_, i, j, 0, 1 << (depth_ -\
+    \ 1));\n    }\n\n    value_type operator[](int i) const {\n      return fold(i,\
+    \ i + 1);\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/sum.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  struct sum_monoid {\n   \
     \ using value_type = T;\n    value_type operator()() const {return 0;}\n    value_type\
     \ operator()(value_type a, value_type b) const {return a + b;}\n  };\n}\n#line\
     \ 4 \"Mylib/Utils/compressor.cpp\"\n\nnamespace haar_lib {\n  template <typename\
-    \ T>\n  class compressor {\n    std::vector<T> data;\n\n  public:\n    auto& add(const\
-    \ T &val){\n      data.push_back(val);\n      return *this;\n    }\n\n    auto&\
-    \ add(const std::vector<T> &vals){\n      data.insert(data.end(), vals.begin(),\
-    \ vals.end());\n      return *this;\n    }\n\n    template <typename U, typename\
-    \ ... Args>\n    auto& add(const U &val, const Args &... args){\n      add(val);\n\
-    \      return add(args ...);\n    }\n\n    auto& build(){\n      std::sort(data.begin(),\
-    \ data.end());\n      data.erase(std::unique(data.begin(), data.end()), data.end());\n\
-    \      return *this;\n    }\n\n    int get_index(const T &val) const {\n     \
-    \ return std::lower_bound(data.begin(), data.end(), val) - data.begin();\n   \
-    \ }\n\n    auto& compress(std::vector<T> &vals) const {\n      for(auto &x : vals)\
-    \ x = get_index(x);\n      return *this;\n    }\n\n    auto& compress(T &val)\
-    \ const {\n      val = get_index(val);\n      return *this;\n    }\n\n    template\
-    \ <typename U, typename ... Args>\n    auto& compress(U &val, Args &... args)\
-    \ const {\n      compress(val);\n      return compress(args ...);\n    }\n\n \
-    \   auto& decompress(std::vector<T> &vals) const {\n      for(auto &x : vals)\
-    \ x = data[x];\n      return *this;\n    }\n\n    auto& decompress(T &val) const\
-    \ {\n      val = data[val];\n      return *this;\n    }\n\n    template <typename\
-    \ U, typename ... Args>\n    auto& decompress(U &val, Args &... args) const {\n\
-    \      decompress(val);\n      return decompress(args ...);\n    }\n\n    int\
-    \ size() const {return data.size();}\n    T operator[](int index) const {return\
-    \ data[index];}\n  };\n}\n#line 4 \"Mylib/IO/input_tuple_vector.cpp\"\n#include\
-    \ <tuple>\n#line 7 \"Mylib/IO/input_tuple_vector.cpp\"\n\nnamespace haar_lib {\n\
-    \  template <typename T, size_t ... I>\n  void input_tuple_vector_init(T &val,\
+    \ T>\n  class compressor {\n    std::vector<T> data_;\n\n  public:\n    auto&\
+    \ add(const T &val){\n      data_.push_back(val);\n      return *this;\n    }\n\
+    \n    auto& add(const std::vector<T> &vals){\n      data_.insert(data_.end(),\
+    \ vals.begin(), vals.end());\n      return *this;\n    }\n\n    template <typename\
+    \ U, typename ... Args>\n    auto& add(const U &val, const Args &... args){\n\
+    \      add(val);\n      return add(args ...);\n    }\n\n    auto& build(){\n \
+    \     std::sort(data_.begin(), data_.end());\n      data_.erase(std::unique(data_.begin(),\
+    \ data_.end()), data_.end());\n      return *this;\n    }\n\n    int get_index(const\
+    \ T &val) const {\n      return std::lower_bound(data_.begin(), data_.end(), val)\
+    \ - data_.begin();\n    }\n\n    auto& compress(std::vector<T> &vals) const {\n\
+    \      for(auto &x : vals) x = get_index(x);\n      return *this;\n    }\n\n \
+    \   auto& compress(T &val) const {\n      val = get_index(val);\n      return\
+    \ *this;\n    }\n\n    template <typename U, typename ... Args>\n    auto& compress(U\
+    \ &val, Args &... args) const {\n      compress(val);\n      return compress(args\
+    \ ...);\n    }\n\n    auto& decompress(std::vector<T> &vals) const {\n      for(auto\
+    \ &x : vals) x = data_[x];\n      return *this;\n    }\n\n    auto& decompress(T\
+    \ &val) const {\n      val = data_[val];\n      return *this;\n    }\n\n    template\
+    \ <typename U, typename ... Args>\n    auto& decompress(U &val, Args &... args)\
+    \ const {\n      decompress(val);\n      return decompress(args ...);\n    }\n\
+    \n    int size() const {return data_.size();}\n    T operator[](int index) const\
+    \ {return data_[index];}\n  };\n}\n#line 4 \"Mylib/IO/input_tuple_vector.cpp\"\
+    \n#include <tuple>\n#line 7 \"Mylib/IO/input_tuple_vector.cpp\"\n\nnamespace haar_lib\
+    \ {\n  template <typename T, size_t ... I>\n  void input_tuple_vector_init(T &val,\
     \ int N, std::index_sequence<I ...>){\n    (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)),\
     \ 0) ...};\n  }\n\n  template <typename T, size_t ... I>\n  void input_tuple_vector_helper(T\
     \ &val, int i, std::index_sequence<I ...>){\n    (void)std::initializer_list<int>{(void(std::cin\
@@ -171,7 +174,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2020-09-25 01:38:58+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp

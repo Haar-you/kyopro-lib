@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/gcd.cpp\"\n#include <numeric>\n\
     \nnamespace haar_lib {\n  template <typename T>\n  struct gcd_monoid {\n    using\

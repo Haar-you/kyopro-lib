@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/String/longest_common_subsequence.cpp\"\n#include\
     \ <vector>\n#include <algorithm>\n\nnamespace haar_lib {\n  template <typename\

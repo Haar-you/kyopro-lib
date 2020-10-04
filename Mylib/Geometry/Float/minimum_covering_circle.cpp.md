@@ -15,7 +15,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/minimum_covering_circle.cpp\"\n#include\
     \ <vector>\n#include <random>\n#include <algorithm>\n#line 2 \"Mylib/Geometry/Float/geometry_template.cpp\"\

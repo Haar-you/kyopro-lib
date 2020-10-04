@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Prime/is_prime.cpp\"\n\nnamespace haar_lib\
     \ {\n  bool is_prime(int n){\n    if(n <= 1) return false;\n    for(int i = 2;\

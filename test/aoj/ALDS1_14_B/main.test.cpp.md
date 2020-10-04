@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/String/rolling_hash.cpp
     title: Rolling hash
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B
@@ -17,18 +17,18 @@ data:
     http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_14_B\"\n\n#include\
     \ <iostream>\n#include <string>\n#line 2 \"Mylib/String/rolling_hash.cpp\"\n#include\
     \ <vector>\n#include <random>\n\nnamespace haar_lib {\n  class rolling_hash {\n\
-    \    std::vector<int64_t> pow;\n    int64_t MOD, BASE;\n\n  public:\n    rolling_hash(int\
-    \ size, int MOD, int BASE): MOD(MOD), BASE(BASE){\n      pow.resize(size + 1);\n\
-    \      pow[0] = 1;\n      for(int i = 1; i <= size; ++i) pow[i] = pow[i - 1] *\
-    \ BASE % MOD;\n    }\n\n    template <typename T>\n    auto gen_hash_table(const\
+    \    std::vector<int64_t> pow_;\n    int64_t MOD_, BASE_;\n\n  public:\n    rolling_hash(){}\n\
+    \    rolling_hash(int size, int MOD, int BASE): MOD_(MOD), BASE_(BASE){\n    \
+    \  pow_.assign(size + 1, 1);\n      for(int i = 1; i <= size; ++i) pow_[i] = pow_[i\
+    \ - 1] * BASE_ % MOD_;\n    }\n\n    template <typename T>\n    auto gen_hash_table(const\
     \ T &s) const {\n      std::vector<int64_t> ret(s.size() + 1);\n      for(int\
-    \ i = 0; i < (int)s.size(); ++i) ret[i + 1] = (ret[i] * BASE + s[i]) % MOD;\n\
+    \ i = 0; i < (int)s.size(); ++i) ret[i + 1] = (ret[i] * BASE_ + s[i]) % MOD_;\n\
     \      return ret;\n    }\n\n    template <typename T>\n    auto gen_hash(const\
     \ T &s) const {\n      int64_t ret = 0;\n      for(int i = 0; i < (int)s.size();\
-    \ ++i) ret = (ret * BASE + s[i]) % MOD;\n      return ret;\n    }\n\n    /**\n\
+    \ ++i) ret = (ret * BASE_ + s[i]) % MOD_;\n      return ret;\n    }\n\n    /**\n\
     \     * @attention [l, r)\n     */\n    int64_t get(const std::vector<int64_t>\
-    \ &table, int l, int r) const {\n      return (table[r] - table[l] * pow[r - l]\
-    \ % MOD + MOD * MOD) % MOD;\n    }\n\n    template <typename T>\n    std::vector<int>\
+    \ &table, int l, int r) const {\n      return (table[r] - table[l] * pow_[r -\
+    \ l] % MOD_ + MOD_ * MOD_) % MOD_;\n    }\n\n    template <typename T>\n    std::vector<int>\
     \ find(const T &s, const T &pattern) const {\n      auto hp = gen_hash(pattern);\n\
     \      auto hs = gen_hash_table(s);\n      std::vector<int> ret;\n      for(int\
     \ i = 0; i <= ((int)s.size() - (int)pattern.size()); ++i){\n        if(hp == get(hs,\
@@ -49,8 +49,8 @@ data:
   isVerificationFile: true
   path: test/aoj/ALDS1_14_B/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2020-09-28 09:27:15+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/aoj/ALDS1_14_B/main.test.cpp
 layout: document

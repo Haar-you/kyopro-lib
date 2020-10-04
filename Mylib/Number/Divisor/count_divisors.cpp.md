@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Divisor/count_divisors.cpp\"\n#include <cstdint>\n\
     \nnamespace haar_lib {\n  int count_divisors(int64_t n){\n    int count = 0;\n\

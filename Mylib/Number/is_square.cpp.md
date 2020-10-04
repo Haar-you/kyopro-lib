@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/is_square.cpp\"\n\nnamespace haar_lib {\n \
     \ template <typename T>\n  bool is_square(T n){\n    T rt = sqrt(n);\n    return\

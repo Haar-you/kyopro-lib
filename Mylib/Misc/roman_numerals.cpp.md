@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Misc/roman_numerals.cpp\"\n#include <string>\n\nnamespace\
     \ haar_lib::misn {\n  int roman_to_num(std::string s){\n    int ret = 0;\n\n \

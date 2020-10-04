@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/TopologicalSort/topological_sort.cpp\"\n#include\
     \ <vector>\n#include <optional>\n#include <queue>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\

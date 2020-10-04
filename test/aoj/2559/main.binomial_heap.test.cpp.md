@@ -1,21 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: Mylib/Graph/Template/graph.cpp
-    title: Basic graph
-  - icon: ':question:'
-    path: Mylib/Graph/MinimumSpanningTree/prim.cpp
-    title: Prim algorithm
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Utils/fix_point.cpp
-    title: Fixed point combinator
   - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/Heap/binomial_heap.cpp
     title: Binomial heap
+  - icon: ':question:'
+    path: Mylib/Graph/MinimumSpanningTree/prim.cpp
+    title: Prim algorithm
+  - icon: ':question:'
+    path: Mylib/Graph/Template/graph.cpp
+    title: Basic graph
   - icon: ':heavy_check_mark:'
     path: Mylib/Misc/merge_technique.cpp
-    title: Mylib/Misc/merge_technique.cpp
+    title: Merge technique
+  - icon: ':heavy_check_mark:'
+    path: Mylib/Utils/fix_point.cpp
+    title: Fixed point combinator
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -67,36 +67,37 @@ data:
     \  inline constexpr auto make_fix_point(F &f){\n    return fix_point<F>(std::forward<F>(f));\n\
     \  }\n}\n#line 3 \"Mylib/DataStructure/Heap/binomial_heap.cpp\"\n#include <array>\n\
     #include <functional>\n#include <cassert>\n\nnamespace haar_lib {\n  template\
-    \ <typename T, typename Compare = std::less<T>>\n  class binomial_heap {\n   \
-    \ struct node {\n      T value;\n      std::vector<node*> children;\n      node(T\
-    \ value): value(value){}\n    };\n\n    constexpr static int MAX = 31;\n\n   \
-    \ std::array<node*, MAX> roots;\n    Compare compare;\n    int top_index = -1;\n\
-    \    int heap_size = 0;\n\n    node* merge(node *a, node *b){\n      if(compare(a->value,\
-    \ b->value)) std::swap(a, b);\n      a->children.push_back(b);\n      return a;\n\
-    \    }\n\n    template <typename Container>\n    void meld(Container c){\n   \
-    \   node *s = nullptr;\n\n      for(int i = 0; i < MAX; ++i){\n        std::vector<node*>\
-    \ temp;\n        if(s){temp.push_back(s); s = nullptr;}\n        if(roots[i]){temp.push_back(roots[i]);\
-    \ roots[i] = nullptr;}\n        if(i < (int)c.size() and c[i]){temp.push_back(c[i]);\
-    \ c[i] = nullptr;}\n\n        switch(temp.size()){\n        case 1: roots[i] =\
-    \ temp[0]; break;\n        case 2: s = merge(temp[0], temp[1]); break;\n     \
-    \   case 3: roots[i] = temp[0]; s = merge(temp[1], temp[2]); break;\n        }\n\
-    \      }\n\n      top_index = -1;\n      for(int i = 0; i < MAX; ++i){\n     \
-    \   if(roots[i]){\n          if(top_index == -1 or compare(roots[top_index]->value,\
-    \ roots[i]->value)){\n            top_index = i;\n          }\n        }\n   \
-    \   }\n    }\n\n  public:\n    binomial_heap(){\n      roots.fill(nullptr);\n\
-    \      compare = Compare();\n    }\n\n    int size() const {\n      return heap_size;\n\
-    \    }\n\n    bool empty() const {\n      return heap_size == 0;\n    }\n\n  \
-    \  void push(const T &value){\n      heap_size += 1;\n      node *t = new node(value);\n\
+    \ <typename T, typename Compare = std::less<T>>\n  class binomial_heap {\n  public:\n\
+    \    using value_type = T;\n\n  private:\n    struct node {\n      T value;\n\
+    \      std::vector<node*> children;\n      node(T value): value(value){}\n   \
+    \ };\n\n    constexpr static int MAX = 31;\n\n    std::array<node*, MAX> roots_;\n\
+    \    Compare compare_;\n    int top_index_ = -1;\n    int heap_size_ = 0;\n\n\
+    \    node* merge(node *a, node *b){\n      if(compare_(a->value, b->value)) std::swap(a,\
+    \ b);\n      a->children.push_back(b);\n      return a;\n    }\n\n    template\
+    \ <typename Container>\n    void meld(Container c){\n      node *s = nullptr;\n\
+    \n      for(int i = 0; i < MAX; ++i){\n        std::vector<node*> temp;\n    \
+    \    if(s){temp.push_back(s); s = nullptr;}\n        if(roots_[i]){temp.push_back(roots_[i]);\
+    \ roots_[i] = nullptr;}\n        if(i < (int)c.size() and c[i]){temp.push_back(c[i]);\
+    \ c[i] = nullptr;}\n\n        switch(temp.size()){\n        case 1: roots_[i]\
+    \ = temp[0]; break;\n        case 2: s = merge(temp[0], temp[1]); break;\n   \
+    \     case 3: roots_[i] = temp[0]; s = merge(temp[1], temp[2]); break;\n     \
+    \   }\n      }\n\n      top_index_ = -1;\n      for(int i = 0; i < MAX; ++i){\n\
+    \        if(roots_[i]){\n          if(top_index_ == -1 or compare_(roots_[top_index_]->value,\
+    \ roots_[i]->value)){\n            top_index_ = i;\n          }\n        }\n \
+    \     }\n    }\n\n  public:\n    binomial_heap(){\n      roots_.fill(nullptr);\n\
+    \      compare_ = Compare();\n    }\n\n    int size() const {\n      return heap_size_;\n\
+    \    }\n\n    bool empty() const {\n      return heap_size_ == 0;\n    }\n\n \
+    \   void push(const T &value){\n      heap_size_ += 1;\n      node *t = new node(value);\n\
     \n      meld(std::vector<node*>({t}));\n    }\n\n    const T& top() const {\n\
-    \      return roots[top_index]->value;\n    }\n\n    void pop(){\n      heap_size\
-    \ -= 1;\n\n      node *t = roots[top_index];\n      roots[top_index] = nullptr;\n\
+    \      return roots_[top_index_]->value;\n    }\n\n    void pop(){\n      heap_size_\
+    \ -= 1;\n\n      node *t = roots_[top_index_];\n      roots_[top_index_] = nullptr;\n\
     \      meld(t->children);\n\n      delete t;\n    }\n\n    void meld(binomial_heap\
-    \ &rhs){\n      heap_size += rhs.heap_size;\n      meld(rhs.roots);\n      rhs.roots.fill(nullptr);\n\
-    \    }\n  };\n}\n#line 4 \"Mylib/Misc/merge_technique.cpp\"\n\nnamespace haar_lib\
-    \ {\n  template <typename T>\n  void merge_technique(std::set<T> &res, std::set<T>\
-    \ &a, std::set<T> &b){\n    if(a.size() > b.size()){\n      a.insert(b.begin(),\
-    \ b.end());\n      std::swap(res, a);\n    }else{\n      b.insert(a.begin(), a.end());\n\
-    \      std::swap(res, b);\n    }\n  }\n}\n#line 13 \"test/aoj/2559/main.binomial_heap.test.cpp\"\
+    \ &rhs){\n      heap_size_ += rhs.heap_size_;\n      meld(rhs.roots_);\n     \
+    \ rhs.roots_.fill(nullptr);\n    }\n  };\n}\n#line 4 \"Mylib/Misc/merge_technique.cpp\"\
+    \n\nnamespace haar_lib {\n  template <typename T>\n  void merge_technique(std::set<T>\
+    \ &res, std::set<T> &a, std::set<T> &b){\n    if(a.size() > b.size()){\n     \
+    \ a.insert(b.begin(), b.end());\n      std::swap(res, a);\n    }else{\n      b.insert(a.begin(),\
+    \ a.end());\n      std::swap(res, b);\n    }\n  }\n}\n#line 13 \"test/aoj/2559/main.binomial_heap.test.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nint main(){\n  int n, m; std::cin >> n >> m;\n\
     \n  hl::graph<int64_t> g(n);\n  g.read<1, false>(m);\n\n  std::map<std::pair<int,\
     \ int>, int> index;\n  for(auto &a : g){\n    for(auto &e : a) index[{e.from,\
@@ -157,7 +158,7 @@ data:
   isVerificationFile: true
   path: test/aoj/2559/main.binomial_heap.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/2559/main.binomial_heap.test.cpp

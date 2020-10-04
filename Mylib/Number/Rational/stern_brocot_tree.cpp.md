@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Rational/stern_brocot_tree.cpp\"\n#include\
     \ <utility>\n#include <cstdint>\n\nnamespace haar_lib {\n  template <typename\

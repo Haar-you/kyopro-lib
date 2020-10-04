@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/aoj/2559/main.leftist_heap.test.cpp
-    title: test/aoj/2559/main.leftist_heap.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/aoj/2559/main.binomial_heap.test.cpp
     title: test/aoj/2559/main.binomial_heap.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/2559/main.leftist_heap.test.cpp
+    title: test/aoj/2559/main.leftist_heap.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/2559/main.skew_heap.test.cpp
     title: test/aoj/2559/main.skew_heap.test.cpp
@@ -18,7 +18,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Utils/fix_point.cpp\"\n#include <utility>\n\nnamespace\
     \ haar_lib {\n  template <typename F>\n  struct fix_point : F {\n    explicit\

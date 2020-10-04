@@ -22,15 +22,14 @@ data:
     path: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
     title: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
   - icon: ':x:'
-    path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-    title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-  - icon: ':x:'
     path: test/yosupo-judge/sqrt_mod/main.test.cpp
     title: test/yosupo-judge/sqrt_mod/main.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
+    title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':question:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Mod/mod_pow.cpp\"\n#include <cstdint>\n\nnamespace\
     \ haar_lib {\n  int64_t mod_pow(int64_t n, int64_t p, int64_t m){\n    int64_t\

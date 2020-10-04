@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Convolution/convolution_xor.cpp\"\n#include <vector>\n\
     #include <cassert>\n\nnamespace haar_lib {\n  template <typename T>\n  std::vector<T>\

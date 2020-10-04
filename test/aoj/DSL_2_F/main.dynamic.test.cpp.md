@@ -1,24 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
-    path: Mylib/DataStructure/SegmentTree/dynamic_lazy_segment_tree.cpp
-    title: Dynamic lazy segment tree
-  - icon: ':x:'
-    path: Mylib/AlgebraicStructure/Monoid/update.cpp
-    title: Update monoid
   - icon: ':question:'
     path: Mylib/AlgebraicStructure/Monoid/min.cpp
     title: Min monoid
   - icon: ':x:'
+    path: Mylib/AlgebraicStructure/Monoid/update.cpp
+    title: Update monoid
+  - icon: ':x:'
     path: Mylib/AlgebraicStructure/MonoidAction/update_min.cpp
     title: Range update / Range min
-  - icon: ':question:'
-    path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
+  - icon: ':x:'
+    path: Mylib/DataStructure/SegmentTree/dynamic_lazy_segment_tree.cpp
+    title: Dynamic lazy segment tree
   - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+    title: Input tuple
+  - icon: ':question:'
+    path: Mylib/IO/input_tuples.cpp
+    title: Input tuples
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -31,54 +31,56 @@ data:
   bundledCode: "#line 1 \"test/aoj/DSL_2_F/main.dynamic.test.cpp\"\n#define PROBLEM\
     \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F\"\n\n#include\
     \ <iostream>\n#include <climits>\n#line 2 \"Mylib/DataStructure/SegmentTree/dynamic_lazy_segment_tree.cpp\"\
-    \n#include <cstdint>\n\nnamespace haar_lib {\n  template <typename MonoidGet,\
-    \ typename MonoidUpdate, template <typename, typename> typename Connector>\n \
-    \ class dynamic_lazy_segment_tree {\n    using value_type_get = typename MonoidGet::value_type;\n\
-    \    using value_type_update = typename MonoidUpdate::value_type;\n    Connector<MonoidGet,\
-    \ MonoidUpdate> M;\n    MonoidGet M_get;\n    MonoidUpdate M_update;\n\n    struct\
-    \ node {\n      value_type_get value;\n      value_type_update lazy;\n      node\
-    \ *left = nullptr, *right = nullptr;\n      node(){}\n      node(const value_type_get\
-    \ &value, const value_type_update &lazy): value(value), lazy(lazy){}\n    };\n\
-    \n    int64_t depth, size, hsize;\n    node *root = nullptr;\n\n    void propagate(node\
-    \ *t, int64_t l, int64_t r){\n      if(t->lazy == M_update()) return;\n      if(r\
-    \ - l > 1){\n        if(not t->left) t->left = new node(M_get(), M_update());\n\
-    \        t->left->lazy = M_update(t->lazy, t->left->lazy);\n        if(not t->right)\
-    \ t->right = new node(M_get(), M_update());\n        t->right->lazy = M_update(t->lazy,\
-    \ t->right->lazy);\n      }\n      int64_t len = r - l;\n      t->value = M(t->value,\
-    \ t->lazy, len);\n      t->lazy = M_update();\n    }\n\n    node* update(node\
-    \ *t, int64_t l, int64_t r, int64_t x, int64_t y, value_type_update value){\n\
-    \      if(not t) t = new node(M_get(), M_update());\n\n      propagate(t, l, r);\n\
-    \      if(r - l == 1){\n        if(x <= l and r <= y) t->lazy = M_update(value,\
+    \n#include <cstdint>\n\nnamespace haar_lib {\n  template <typename Monoid>\n \
+    \ class dynamic_lazy_segment_tree {\n  public:\n    using monoid_get = typename\
+    \ Monoid::monoid_get;\n    using monoid_update = typename Monoid::monoid_update;\n\
+    \    using value_type_get = typename monoid_get::value_type;\n    using value_type_update\
+    \ = typename monoid_update::value_type;\n\n  private:\n    struct node {\n   \
+    \   value_type_get value;\n      value_type_update lazy;\n      node *left = nullptr,\
+    \ *right = nullptr;\n      node(){}\n      node(const value_type_get &value, const\
+    \ value_type_update &lazy):\n        value(value), lazy(lazy){}\n    };\n\n  \
+    \  Monoid M_;\n    monoid_get M_get_;\n    monoid_update M_update_;\n\n    int64_t\
+    \ depth_, size_, hsize_;\n    node *root_ = nullptr;\n\n    void propagate(node\
+    \ *t, int64_t l, int64_t r){\n      if(t->lazy == M_update_()) return;\n     \
+    \ if(r - l > 1){\n        if(not t->left) t->left = new node(M_get_(), M_update_());\n\
+    \        t->left->lazy = M_update_(t->lazy, t->left->lazy);\n        if(not t->right)\
+    \ t->right = new node(M_get_(), M_update_());\n        t->right->lazy = M_update_(t->lazy,\
+    \ t->right->lazy);\n      }\n      const int64_t len = r - l;\n      t->value\
+    \ = M_(t->value, t->lazy, len);\n      t->lazy = M_update_();\n    }\n\n    node*\
+    \ update(node *t, int64_t l, int64_t r, int64_t x, int64_t y, value_type_update\
+    \ value){\n      if(not t) t = new node(M_get_(), M_update_());\n\n      propagate(t,\
+    \ l, r);\n      if(r - l == 1){\n        if(x <= l and r <= y) t->lazy = M_update_(value,\
     \ t->lazy);\n        propagate(t, l, r);\n        return t;\n      }\n\n     \
     \ if(r < x or y < l) return t;\n      if(x <= l and r <= y){\n        t->lazy\
-    \ = M_update(value, t->lazy);\n        propagate(t, l, r);\n        return t;\n\
+    \ = M_update_(value, t->lazy);\n        propagate(t, l, r);\n        return t;\n\
     \      }\n\n      t->left = update(t->left, l, (l + r) / 2, x, y, value);\n  \
     \    t->right = update(t->right, (l + r) / 2, r, x, y, value);\n      t->value\
-    \ = M_get(t->left->value, t->right->value);\n\n      return t;\n    }\n\n    value_type_get\
-    \ get(node *t, int64_t l, int64_t r, int64_t x, int64_t y){\n      if(not t) return\
-    \ M_get();\n\n      propagate(t, l, r);\n      if(r <= x or y <= l) return M_get();\n\
-    \      if(x <= l and r <= y) return t->value;\n\n      return M_get(\n       \
-    \ get(t->left, l, (l + r) / 2, x, y),\n        get(t->right, (l + r) / 2, r, x,\
-    \ y)\n      );\n    }\n\n  public:\n    dynamic_lazy_segment_tree(int64_t n):\n\
-    \      depth(n > 1 ? 64 - __builtin_clzll(n - 1) + 1 : 1),\n      size(1LL <<\
-    \ depth),\n      hsize(size / 2)\n    {\n      root = new node(M_get(), M_update());\n\
-    \    }\n\n    void update(int64_t l, int64_t r, value_type_update value){\n  \
-    \    update(root, 0, hsize, l, r, value);\n    }\n\n    value_type_get fold(int64_t\
-    \ l, int64_t r){\n      return get(root, 0, hsize, l, r);\n    }\n\n    value_type_get\
-    \ operator[](int64_t i){\n      return fold(i, i + 1);\n    }\n  };\n}\n#line\
-    \ 2 \"Mylib/AlgebraicStructure/Monoid/update.cpp\"\n#include <optional>\n\nnamespace\
-    \ haar_lib {\n  template <typename T>\n  struct update_monoid {\n    using value_type\
-    \ = std::optional<T>;\n    value_type operator()() const {return std::nullopt;}\n\
-    \    value_type operator()(const value_type &a, const value_type &b) const {return\
-    \ (a ? a : b);}\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/min.cpp\"\n\
-    #include <algorithm>\n#line 4 \"Mylib/AlgebraicStructure/Monoid/min.cpp\"\n\n\
+    \ = M_get_(t->left->value, t->right->value);\n\n      return t;\n    }\n\n   \
+    \ value_type_get get(node *t, int64_t l, int64_t r, int64_t x, int64_t y){\n \
+    \     if(not t) return M_get_();\n\n      propagate(t, l, r);\n      if(r <= x\
+    \ or y <= l) return M_get_();\n      if(x <= l and r <= y) return t->value;\n\n\
+    \      return M_get_(\n        get(t->left, l, (l + r) / 2, x, y),\n        get(t->right,\
+    \ (l + r) / 2, r, x, y)\n      );\n    }\n\n  public:\n    dynamic_lazy_segment_tree(){}\n\
+    \    dynamic_lazy_segment_tree(int64_t n):\n      depth_(n > 1 ? 64 - __builtin_clzll(n\
+    \ - 1) + 1 : 1),\n      size_(1LL << depth_),\n      hsize_(size_ / 2)\n    {\n\
+    \      root_ = new node(M_get_(), M_update_());\n    }\n\n    void update(int64_t\
+    \ l, int64_t r, value_type_update value){\n      update(root_, 0, hsize_, l, r,\
+    \ value);\n    }\n\n    value_type_get fold(int64_t l, int64_t r){\n      return\
+    \ get(root_, 0, hsize_, l, r);\n    }\n\n    value_type_get operator[](int64_t\
+    \ i){\n      return fold(i, i + 1);\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/update.cpp\"\
+    \n#include <optional>\n\nnamespace haar_lib {\n  template <typename T>\n  struct\
+    \ update_monoid {\n    using value_type = std::optional<T>;\n    value_type operator()()\
+    \ const {return std::nullopt;}\n    value_type operator()(const value_type &a,\
+    \ const value_type &b) const {return (a ? a : b);}\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/min.cpp\"\
+    \n#include <algorithm>\n#line 4 \"Mylib/AlgebraicStructure/Monoid/min.cpp\"\n\n\
     namespace haar_lib {\n  template <typename T>\n  struct min_monoid {\n    using\
     \ value_type = std::optional<T>;\n\n    value_type operator()() const {return\
     \ {};}\n    value_type operator()(const value_type &a, const value_type &b) const\
     \ {\n      if(not a) return b;\n      if(not b) return a;\n      return {std::min(*a,\
     \ *b)};\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/MonoidAction/update_min.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename MonoidGet, typename MonoidUpdate>\n\
-    \  struct update_min {\n    using value_type_get = typename MonoidGet::value_type;\n\
+    \n\nnamespace haar_lib {\n  template <typename MonoidUpdate, typename MonoidGet>\n\
+    \  struct update_min {\n    using monoid_get = MonoidGet;\n    using monoid_update\
+    \ = MonoidUpdate;\n    using value_type_get = typename MonoidGet::value_type;\n\
     \    using value_type_update = typename MonoidUpdate::value_type;\n\n    value_type_get\
     \ operator()(value_type_get a, value_type_update b, int) const {\n      return\
     \ b ? *b : a;\n    }\n  };\n}\n#line 3 \"Mylib/IO/input_tuples.cpp\"\n#include\
@@ -102,22 +104,24 @@ data:
     \ N): N(N){}\n\n    iter begin() const {return iter(N);}\n    iter end() const\
     \ {return iter(N);}\n  };\n\n  template <typename ... Args>\n  auto input_tuples(int\
     \ N){\n    return InputTuples<Args ...>(N);\n  }\n}\n#line 10 \"test/aoj/DSL_2_F/main.dynamic.test.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nint main(){\n  int n, q; std::cin >> n >> q;\n\
-    \n  hl::dynamic_lazy_segment_tree<hl::min_monoid<int>, hl::update_monoid<int>,\
-    \ hl::update_min> seg(n);\n\n  for(auto [type, s, t] : hl::input_tuples<int, int,\
-    \ int>(q)){\n    if(type == 0){\n      int x; std::cin >> x;\n      seg.update(s,\
-    \ t + 1, x);\n    }else{\n      std::cout << seg.fold(s, t + 1).value_or(INT_MAX)\
-    \ << std::endl;\n    }\n  }\n\n  return 0;\n}\n"
+    \n\nnamespace hl = haar_lib;\n\nusing update = hl::update_monoid<int>;\nusing\
+    \ min = hl::min_monoid<int>;\n\nint main(){\n  int n, q; std::cin >> n >> q;\n\
+    \n  hl::dynamic_lazy_segment_tree<hl::update_min<update, min>> seg(n);\n\n  for(auto\
+    \ [type, s, t] : hl::input_tuples<int, int, int>(q)){\n    if(type == 0){\n  \
+    \    int x; std::cin >> x;\n      seg.update(s, t + 1, x);\n    }else{\n     \
+    \ std::cout << seg.fold(s, t + 1).value_or(INT_MAX) << std::endl;\n    }\n  }\n\
+    \n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F\"\
     \n\n#include <iostream>\n#include <climits>\n#include \"Mylib/DataStructure/SegmentTree/dynamic_lazy_segment_tree.cpp\"\
     \n#include \"Mylib/AlgebraicStructure/Monoid/update.cpp\"\n#include \"Mylib/AlgebraicStructure/Monoid/min.cpp\"\
     \n#include \"Mylib/AlgebraicStructure/MonoidAction/update_min.cpp\"\n#include\
-    \ \"Mylib/IO/input_tuples.cpp\"\n\nnamespace hl = haar_lib;\n\nint main(){\n \
-    \ int n, q; std::cin >> n >> q;\n\n  hl::dynamic_lazy_segment_tree<hl::min_monoid<int>,\
-    \ hl::update_monoid<int>, hl::update_min> seg(n);\n\n  for(auto [type, s, t] :\
-    \ hl::input_tuples<int, int, int>(q)){\n    if(type == 0){\n      int x; std::cin\
-    \ >> x;\n      seg.update(s, t + 1, x);\n    }else{\n      std::cout << seg.fold(s,\
-    \ t + 1).value_or(INT_MAX) << std::endl;\n    }\n  }\n\n  return 0;\n}\n"
+    \ \"Mylib/IO/input_tuples.cpp\"\n\nnamespace hl = haar_lib;\n\nusing update =\
+    \ hl::update_monoid<int>;\nusing min = hl::min_monoid<int>;\n\nint main(){\n \
+    \ int n, q; std::cin >> n >> q;\n\n  hl::dynamic_lazy_segment_tree<hl::update_min<update,\
+    \ min>> seg(n);\n\n  for(auto [type, s, t] : hl::input_tuples<int, int, int>(q)){\n\
+    \    if(type == 0){\n      int x; std::cin >> x;\n      seg.update(s, t + 1, x);\n\
+    \    }else{\n      std::cout << seg.fold(s, t + 1).value_or(INT_MAX) << std::endl;\n\
+    \    }\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/DataStructure/SegmentTree/dynamic_lazy_segment_tree.cpp
   - Mylib/AlgebraicStructure/Monoid/update.cpp
@@ -128,7 +132,7 @@ data:
   isVerificationFile: true
   path: test/aoj/DSL_2_F/main.dynamic.test.cpp
   requiredBy: []
-  timestamp: '2020-09-25 01:38:58+09:00'
+  timestamp: '2020-10-02 17:13:14+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/aoj/DSL_2_F/main.dynamic.test.cpp

@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Bit/bit_reverse.cpp\"\n#include <cstdint>\n\nnamespace\
     \ haar_lib {\n  int32_t bit_reverse(int32_t a){\n    a = ((a & 0x55555555) <<\

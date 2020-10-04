@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Misc/rho.cpp\"\n#include <vector>\n#include <utility>\n\
     \ntemplate <typename F>\nstd::pair<int, int> rho(int N, int first, F f){\n  std::vector<int>\

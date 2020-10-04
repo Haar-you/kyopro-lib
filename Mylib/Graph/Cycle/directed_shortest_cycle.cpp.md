@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/Cycle/directed_shortest_cycle.cpp\"\n#include\
     \ <vector>\n#include <optional>\n#include <queue>\n#include <algorithm>\n#include\
@@ -33,46 +32,42 @@ data:
     \        if(WEIGHTED) std::cin >> w;\n        if(DIRECTED) add_edge(u, v, w, i);\n\
     \        else add_undirected(u, v, w, i);\n      }\n    }\n  };\n\n  template\
     \ <typename T>\n  using tree = graph<T>;\n}\n#line 8 \"Mylib/Graph/Cycle/directed_shortest_cycle.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T>\n  struct direct_shortest_cycle\
-    \ {\n    const int N;\n    std::optional<std::vector<int>> cycle;\n\n    void\
-    \ bfs(int i, const graph<T> &g, int &min_len){\n      std::queue<int> q;\n   \
-    \   q.push(i);\n\n      std::vector<int> dist(N), pre(N);\n      std::vector<bool>\
-    \ visited(N);\n\n      while(not q.empty()){\n        int cur = q.front(); q.pop();\n\
-    \n        if(visited[cur]) continue;\n        visited[cur] = true;\n\n       \
-    \ for(auto &e : g[cur]){\n          if(e.to == i){\n            if(dist[cur] <\
-    \ min_len){\n              min_len = dist[cur];\n              cycle = std::vector<int>();\n\
-    \n              int j = cur;\n              while(1){\n                (*cycle).push_back(j);\n\
-    \                if(j == i) break;\n\n                j = pre[j];\n          \
-    \    }\n\n              std::reverse((*cycle).begin(), (*cycle).end());\n    \
-    \        }\n\n            return;\n          }\n\n          if(not visited[e.to]){\n\
-    \            dist[e.to] = dist[cur] + 1;\n            pre[e.to] = cur;\n     \
-    \       q.push(e.to);\n          }\n        }\n      }\n    }\n\n    direct_shortest_cycle(const\
-    \ graph<T> &g): N(g.size()){\n      int min_len = INT_MAX;\n\n      for(int i\
-    \ = 0; i < N; ++i){\n        bfs(i, g, min_len);\n      }\n    }\n  };\n}\n"
+    \n\nnamespace haar_lib {\n  template <typename T>\n  std::optional<std::vector<int>>\
+    \ direct_shortest_cycle(const graph<T> &g, int src){\n    std::optional<std::vector<int>>\
+    \ ret;\n    const int N = g.size();\n    int min_len = INT_MAX;\n    std::queue<int>\
+    \ q;\n    q.push(src);\n\n    std::vector<int> dist(N), pre(N);\n    std::vector<bool>\
+    \ visited(N);\n\n    while(not q.empty()){\n      int cur = q.front(); q.pop();\n\
+    \n      if(visited[cur]) continue;\n      visited[cur] = true;\n\n      for(auto\
+    \ &e : g[cur]){\n        if(e.to == src){\n          if(dist[cur] < min_len){\n\
+    \            min_len = dist[cur];\n            ret = std::vector<int>();\n\n \
+    \           int j = cur;\n            while(1){\n              (*ret).push_back(j);\n\
+    \              if(j == src) break;\n\n              j = pre[j];\n            }\n\
+    \n            std::reverse((*ret).begin(), (*ret).end());\n          }\n\n   \
+    \       return ret;\n        }\n\n        if(not visited[e.to]){\n          dist[e.to]\
+    \ = dist[cur] + 1;\n          pre[e.to] = cur;\n          q.push(e.to);\n    \
+    \    }\n      }\n    }\n\n    return ret;\n  }\n}\n"
   code: "#pragma once\n#include <vector>\n#include <optional>\n#include <queue>\n\
     #include <algorithm>\n#include <climits>\n#include \"Mylib/Graph/Template/graph.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T>\n  struct direct_shortest_cycle\
-    \ {\n    const int N;\n    std::optional<std::vector<int>> cycle;\n\n    void\
-    \ bfs(int i, const graph<T> &g, int &min_len){\n      std::queue<int> q;\n   \
-    \   q.push(i);\n\n      std::vector<int> dist(N), pre(N);\n      std::vector<bool>\
-    \ visited(N);\n\n      while(not q.empty()){\n        int cur = q.front(); q.pop();\n\
-    \n        if(visited[cur]) continue;\n        visited[cur] = true;\n\n       \
-    \ for(auto &e : g[cur]){\n          if(e.to == i){\n            if(dist[cur] <\
-    \ min_len){\n              min_len = dist[cur];\n              cycle = std::vector<int>();\n\
-    \n              int j = cur;\n              while(1){\n                (*cycle).push_back(j);\n\
-    \                if(j == i) break;\n\n                j = pre[j];\n          \
-    \    }\n\n              std::reverse((*cycle).begin(), (*cycle).end());\n    \
-    \        }\n\n            return;\n          }\n\n          if(not visited[e.to]){\n\
-    \            dist[e.to] = dist[cur] + 1;\n            pre[e.to] = cur;\n     \
-    \       q.push(e.to);\n          }\n        }\n      }\n    }\n\n    direct_shortest_cycle(const\
-    \ graph<T> &g): N(g.size()){\n      int min_len = INT_MAX;\n\n      for(int i\
-    \ = 0; i < N; ++i){\n        bfs(i, g, min_len);\n      }\n    }\n  };\n}\n"
+    \n\nnamespace haar_lib {\n  template <typename T>\n  std::optional<std::vector<int>>\
+    \ direct_shortest_cycle(const graph<T> &g, int src){\n    std::optional<std::vector<int>>\
+    \ ret;\n    const int N = g.size();\n    int min_len = INT_MAX;\n    std::queue<int>\
+    \ q;\n    q.push(src);\n\n    std::vector<int> dist(N), pre(N);\n    std::vector<bool>\
+    \ visited(N);\n\n    while(not q.empty()){\n      int cur = q.front(); q.pop();\n\
+    \n      if(visited[cur]) continue;\n      visited[cur] = true;\n\n      for(auto\
+    \ &e : g[cur]){\n        if(e.to == src){\n          if(dist[cur] < min_len){\n\
+    \            min_len = dist[cur];\n            ret = std::vector<int>();\n\n \
+    \           int j = cur;\n            while(1){\n              (*ret).push_back(j);\n\
+    \              if(j == src) break;\n\n              j = pre[j];\n            }\n\
+    \n            std::reverse((*ret).begin(), (*ret).end());\n          }\n\n   \
+    \       return ret;\n        }\n\n        if(not visited[e.to]){\n          dist[e.to]\
+    \ = dist[cur] + 1;\n          pre[e.to] = cur;\n          q.push(e.to);\n    \
+    \    }\n      }\n    }\n\n    return ret;\n  }\n}\n"
   dependsOn:
   - Mylib/Graph/Template/graph.cpp
   isVerificationFile: false
   path: Mylib/Graph/Cycle/directed_shortest_cycle.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-10-03 19:28:56+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/Graph/Cycle/directed_shortest_cycle.cpp

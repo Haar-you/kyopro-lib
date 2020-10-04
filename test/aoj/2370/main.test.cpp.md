@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: Mylib/Graph/Template/graph.cpp
-    title: Basic graph
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp
     title: Check bipartite graph
+  - icon: ':question:'
+    path: Mylib/Graph/Template/graph.cpp
+    title: Basic graph
   - icon: ':heavy_check_mark:'
     path: Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp
     title: Subset sum problem (With quantity limitations)

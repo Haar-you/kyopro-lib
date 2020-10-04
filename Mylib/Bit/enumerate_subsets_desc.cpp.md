@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Bit/enumerate_subsets_desc.cpp\"\n\nnamespace haar_lib\
     \ {\n  template <typename Func>\n  void enumerate_subsets_desc(int a, const Func\

@@ -1,18 +1,18 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
-  - icon: ':question:'
-    path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
-  - icon: ':question:'
-    path: Mylib/Graph/Template/graph.cpp
-    title: Basic graph
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/GraphUtils/decompose_pseudotree.cpp
     title: Decompose pseudotree
+  - icon: ':question:'
+    path: Mylib/Graph/Template/graph.cpp
+    title: Basic graph
+  - icon: ':question:'
+    path: Mylib/IO/input_tuple.cpp
+    title: Input tuple
+  - icon: ':question:'
+    path: Mylib/IO/input_tuples.cpp
+    title: Input tuples
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -63,28 +63,30 @@ data:
     \        else add_undirected(u, v, w, i);\n      }\n    }\n  };\n\n  template\
     \ <typename T>\n  using tree = graph<T>;\n}\n#line 3 \"Mylib/Graph/GraphUtils/decompose_pseudotree.cpp\"\
     \n#include <queue>\n#line 5 \"Mylib/Graph/GraphUtils/decompose_pseudotree.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T>\n  struct pseudo_tree {\n  \
-    \  const int n;\n    std::vector<bool> in_loop;\n    std::vector<int> group;\n\
-    \n    void dfs(int cur, int par, const graph<T> &g){\n      group[cur] = group[par];\n\
+    \n\nnamespace haar_lib {\n  template <typename T>\n  class pseudo_tree {\n   \
+    \ int n_;\n    std::vector<bool> in_loop_;\n    std::vector<int> group_;\n\n \
+    \   void dfs(int cur, int par, const graph<T> &g){\n      group_[cur] = group_[par];\n\
     \n      for(auto &e : g[cur]){\n        if(e.to == par) continue;\n        dfs(e.to,\
-    \ cur, g);\n      }\n    }\n\n    pseudo_tree(const graph<T> &g): n(g.size()),\
-    \ in_loop(n, true), group(n){\n      std::vector<int> indeg(n);\n      std::vector<bool>\
-    \ visited(n);\n      std::queue<int> q;\n\n      for(int i = 0; i < n; ++i){\n\
-    \        for(auto &e : g[i]){\n          ++indeg[e.to];\n        }\n      }\n\n\
-    \      for(int i = 0; i < n; ++i){\n        if(indeg[i] == 1){\n          q.push(i);\n\
-    \        }\n      }\n\n      while(not q.empty()){\n        int cur = q.front();\
-    \ q.pop();\n\n        in_loop[cur] = false;\n\n        if(visited[cur]) continue;\n\
-    \        visited[cur] = true;\n\n        for(auto &e : g[cur]){\n          if(not\
-    \ visited[e.to]){\n            --indeg[e.to];\n            if(indeg[e.to] == 1){\n\
-    \              q.push(e.to);\n            }\n          }\n        }\n      }\n\
-    \n      for(int i = 0; i < n; ++i){\n        if(in_loop[i]){\n          for(auto\
-    \ &e : g[i]){\n            if(not in_loop[e.to]){\n              group[i] = i;\n\
-    \              dfs(e.to, i, g);\n              break;\n            }\n       \
-    \   }\n        }\n      }\n    }\n  };\n}\n#line 7 \"test/aoj/2891/main.test.cpp\"\
+    \ cur, g);\n      }\n    }\n\n  public:\n    pseudo_tree(){}\n    pseudo_tree(const\
+    \ graph<T> &g): n_(g.size()), in_loop_(n_, true), group_(n_){\n      std::vector<int>\
+    \ indeg(n_);\n      std::vector<bool> visited(n_);\n      std::queue<int> q;\n\
+    \n      for(int i = 0; i < n_; ++i){\n        for(auto &e : g[i]){\n         \
+    \ ++indeg[e.to];\n        }\n      }\n\n      for(int i = 0; i < n_; ++i){\n \
+    \       if(indeg[i] == 1){\n          q.push(i);\n        }\n      }\n\n     \
+    \ while(not q.empty()){\n        int cur = q.front(); q.pop();\n\n        in_loop_[cur]\
+    \ = false;\n\n        if(visited[cur]) continue;\n        visited[cur] = true;\n\
+    \n        for(auto &e : g[cur]){\n          if(not visited[e.to]){\n         \
+    \   --indeg[e.to];\n            if(indeg[e.to] == 1){\n              q.push(e.to);\n\
+    \            }\n          }\n        }\n      }\n\n      for(int i = 0; i < n_;\
+    \ ++i){\n        if(in_loop_[i]){\n          for(auto &e : g[i]){\n          \
+    \  if(not in_loop_[e.to]){\n              group_[i] = i;\n              dfs(e.to,\
+    \ i, g);\n              break;\n            }\n          }\n        }\n      }\n\
+    \    }\n\n    bool in_loop(int i) const {return in_loop_[i];}\n    int group(int\
+    \ i) const {return group_[i];}\n  };\n}\n#line 7 \"test/aoj/2891/main.test.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nint main(){\n  int N; std::cin >> N;\n\n  hl::graph<int>\
     \ g(N);\n  g.read<1, false, false>(N);\n\n  auto res = hl::pseudo_tree<int>(g);\n\
     \n  int Q; std::cin >> Q;\n  for(auto [a, b] : hl::input_tuples<int, int>(Q)){\n\
-    \    --a, --b;\n\n    if(res.in_loop[a] and res.in_loop[b]){\n      std::cout\
+    \    --a, --b;\n\n    if(res.in_loop(a) and res.in_loop(b)){\n      std::cout\
     \ << 2 << \"\\n\";\n    }else{\n      std::cout << 1 << \"\\n\";\n    }\n  }\n\
     \n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2891\"\
@@ -93,7 +95,7 @@ data:
     \ = haar_lib;\n\nint main(){\n  int N; std::cin >> N;\n\n  hl::graph<int> g(N);\n\
     \  g.read<1, false, false>(N);\n\n  auto res = hl::pseudo_tree<int>(g);\n\n  int\
     \ Q; std::cin >> Q;\n  for(auto [a, b] : hl::input_tuples<int, int>(Q)){\n   \
-    \ --a, --b;\n\n    if(res.in_loop[a] and res.in_loop[b]){\n      std::cout <<\
+    \ --a, --b;\n\n    if(res.in_loop(a) and res.in_loop(b)){\n      std::cout <<\
     \ 2 << \"\\n\";\n    }else{\n      std::cout << 1 << \"\\n\";\n    }\n  }\n\n\
     \  return 0;\n}\n"
   dependsOn:
@@ -104,7 +106,7 @@ data:
   isVerificationFile: true
   path: test/aoj/2891/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/2891/main.test.cpp

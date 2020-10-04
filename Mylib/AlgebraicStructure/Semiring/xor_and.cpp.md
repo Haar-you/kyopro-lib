@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Semiring/xor_and.cpp\"\n\nnamespace\
     \ haar_lib {\n  template <typename T>\n  struct xor_and_semiring {\n    using\

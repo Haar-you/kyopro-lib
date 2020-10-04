@@ -1,25 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/AlgebraicStructure/Monoid/product.cpp
     title: Product monoid
   - icon: ':question:'
     path: Mylib/DataStructure/SegmentTree/segment_tree.cpp
     title: Segment tree
   - icon: ':question:'
+    path: Mylib/IO/input_tuple.cpp
+    title: Input tuple
+  - icon: ':question:'
     path: Mylib/IO/input_tuple_vector.cpp
-    title: Mylib/IO/input_tuple_vector.cpp
+    title: Input tuple vector
   - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
-  - icon: ':question:'
-    path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+    title: Input tuples
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: 1e-7
@@ -34,45 +34,47 @@ data:
     \ operator()(value_type a, value_type b) const {return a * b;}\n  };\n}\n#line\
     \ 4 \"Mylib/DataStructure/SegmentTree/segment_tree.cpp\"\n#include <functional>\n\
     \nnamespace haar_lib {\n  template <typename Monoid>\n  class segment_tree {\n\
-    \    using value_type = typename Monoid::value_type;\n    const static Monoid\
-    \ M;\n\n    int depth, size, hsize;\n    std::vector<value_type> data;\n\n  public:\n\
-    \    segment_tree(){}\n    segment_tree(int n):\n      depth(n > 1 ? 32 - __builtin_clz(n\
-    \ - 1) + 1 : 1),\n      size(1 << depth), hsize(size / 2),\n      data(size, M())\n\
-    \    {}\n\n    auto operator[](int i) const {return data[hsize + i];}\n\n    auto\
-    \ fold(int x, int y) const {\n      value_type ret_left = M();\n      value_type\
-    \ ret_right = M();\n\n      int l = x + hsize, r = y + hsize;\n      while(l <\
-    \ r){\n        if(r & 1) ret_right = M(data[--r], ret_right);\n        if(l &\
-    \ 1) ret_left = M(ret_left, data[l++]);\n        l >>= 1, r >>= 1;\n      }\n\n\
-    \      return M(ret_left, ret_right);\n    }\n\n    void set(int i, const value_type\
-    \ &x){\n      i += hsize;\n      data[i] = x;\n      while(i > 1) i >>= 1, data[i]\
-    \ = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n    void update(int i, const\
-    \ value_type &x){\n      i += hsize;\n      data[i] = M(data[i], x);\n      while(i\
-    \ > 1) i >>= 1, data[i] = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n  \
-    \  template <typename T>\n    void init_with_vector(const std::vector<T> &val){\n\
-    \      data.assign(size, M());\n      for(int i = 0; i < (int)val.size(); ++i)\
-    \ data[hsize + i] = val[i];\n      for(int i = hsize - 1; i >= 1; --i) data[i]\
-    \ = M(data[i << 1 | 0], data[i << 1 | 1]);\n    }\n\n    template <typename T>\n\
-    \    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize,\
+    \  public:\n    using value_type = typename Monoid::value_type;\n\n  private:\n\
+    \    Monoid M_;\n    int depth_, size_, hsize_;\n    std::vector<value_type> data_;\n\
+    \n  public:\n    segment_tree(){}\n    segment_tree(int n):\n      depth_(n >\
+    \ 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),\n      size_(1 << depth_), hsize_(size_\
+    \ / 2),\n      data_(size_, M_())\n    {}\n\n    auto operator[](int i) const\
+    \ {return data_[hsize_ + i];}\n\n    auto fold(int x, int y) const {\n      value_type\
+    \ ret_left = M_();\n      value_type ret_right = M_();\n\n      int l = x + hsize_,\
+    \ r = y + hsize_;\n      while(l < r){\n        if(r & 1) ret_right = M_(data_[--r],\
+    \ ret_right);\n        if(l & 1) ret_left = M_(ret_left, data_[l++]);\n      \
+    \  l >>= 1, r >>= 1;\n      }\n\n      return M_(ret_left, ret_right);\n    }\n\
+    \n    auto fold_all() const {\n      return data_[1];\n    }\n\n    void set(int\
+    \ i, const value_type &x){\n      i += hsize_;\n      data_[i] = x;\n      while(i\
+    \ > 1) i >>= 1, data_[i] = M_(data_[i << 1 | 0], data_[i << 1 | 1]);\n    }\n\n\
+    \    void update(int i, const value_type &x){\n      i += hsize_;\n      data_[i]\
+    \ = M_(data_[i], x);\n      while(i > 1) i >>= 1, data_[i] = M_(data_[i << 1 |\
+    \ 0], data_[i << 1 | 1]);\n    }\n\n    template <typename T>\n    void init_with_vector(const\
+    \ std::vector<T> &val){\n      data_.assign(size_, M_());\n      for(int i = 0;\
+    \ i < (int)val.size(); ++i) data_[hsize_ + i] = val[i];\n      for(int i = hsize_;\
+    \ --i >= 1;) data_[i] = M_(data_[i << 1 | 0], data_[i << 1 | 1]);\n    }\n\n \
+    \   template <typename T>\n    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize_,\
     \ val));\n    }\n\n  private:\n    template <bool Lower, typename F>\n    int\
     \ bound(const int l, const int r, value_type x, F f) const {\n      std::vector<int>\
-    \ pl, pr;\n      int L = l + hsize;\n      int R = r + hsize;\n      while(L <\
-    \ R){\n        if(R & 1) pr.push_back(--R);\n        if(L & 1) pl.push_back(L++);\n\
+    \ pl, pr;\n      int L = l + hsize_;\n      int R = r + hsize_;\n      while(L\
+    \ < R){\n        if(R & 1) pr.push_back(--R);\n        if(L & 1) pl.push_back(L++);\n\
     \        L >>= 1, R >>= 1;\n      }\n\n      std::reverse(pr.begin(), pr.end());\n\
-    \      pl.insert(pl.end(), pr.begin(), pr.end());\n\n      value_type a = M();\n\
-    \n      for(int i : pl){\n        auto b = M(a, data[i]);\n\n        if((Lower\
-    \ and not f(b, x)) or (not Lower and f(x, b))){\n          while(i < hsize){\n\
-    \            if(auto c = M(a, data[i << 1 | 0]); (Lower and not f(c, x)) or (not\
-    \ Lower and f(x, c))){\n              i = i << 1 | 0;\n            }else{\n  \
-    \            a = c;\n              i = i << 1 | 1;\n            }\n          }\n\
-    \n          return i - hsize;\n        }\n\n        a = b;\n      }\n\n      return\
-    \ r;\n    }\n\n  public:\n    template <typename F = std::less<value_type>>\n\
-    \    int lower_bound(int l, int r, value_type x, F f = F()) const {\n      return\
-    \ bound<true>(l, r, x, f);\n    }\n\n    template <typename F = std::less<value_type>>\n\
-    \    int upper_bound(int l, int r, value_type x, F f = F()) const {\n      return\
-    \ bound<false>(l, r, x, f);\n    }\n  };\n}\n#line 4 \"Mylib/IO/input_tuple_vector.cpp\"\
-    \n#include <tuple>\n#include <utility>\n#include <initializer_list>\n\nnamespace\
-    \ haar_lib {\n  template <typename T, size_t ... I>\n  void input_tuple_vector_init(T\
-    \ &val, int N, std::index_sequence<I ...>){\n    (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)),\
+    \      pl.insert(pl.end(), pr.begin(), pr.end());\n\n      value_type a = M_();\n\
+    \n      for(int i : pl){\n        auto b = M_(a, data_[i]);\n\n        if((Lower\
+    \ and not f(b, x)) or (not Lower and f(x, b))){\n          while(i < hsize_){\n\
+    \            const auto c = M_(a, data_[i << 1 | 0]);\n            if((Lower and\
+    \ not f(c, x)) or (not Lower and f(x, c))){\n              i = i << 1 | 0;\n \
+    \           }else{\n              a = c;\n              i = i << 1 | 1;\n    \
+    \        }\n          }\n\n          return i - hsize_;\n        }\n\n       \
+    \ a = b;\n      }\n\n      return r;\n    }\n\n  public:\n    template <typename\
+    \ F = std::less<value_type>>\n    int lower_bound(int l, int r, value_type x,\
+    \ F f = F()) const {\n      return bound<true>(l, r, x, f);\n    }\n\n    template\
+    \ <typename F = std::less<value_type>>\n    int upper_bound(int l, int r, value_type\
+    \ x, F f = F()) const {\n      return bound<false>(l, r, x, f);\n    }\n  };\n\
+    }\n#line 4 \"Mylib/IO/input_tuple_vector.cpp\"\n#include <tuple>\n#include <utility>\n\
+    #include <initializer_list>\n\nnamespace haar_lib {\n  template <typename T, size_t\
+    \ ... I>\n  void input_tuple_vector_init(T &val, int N, std::index_sequence<I\
+    \ ...>){\n    (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)),\
     \ 0) ...};\n  }\n\n  template <typename T, size_t ... I>\n  void input_tuple_vector_helper(T\
     \ &val, int i, std::index_sequence<I ...>){\n    (void)std::initializer_list<int>{(void(std::cin\
     \ >> std::get<I>(val)[i]), 0) ...};\n  }\n\n  template <typename ... Args>\n \
@@ -127,8 +129,8 @@ data:
   isVerificationFile: true
   path: test/aoj/3132/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-25 01:38:58+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2020-09-28 13:26:18+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/aoj/3132/main.test.cpp
 layout: document

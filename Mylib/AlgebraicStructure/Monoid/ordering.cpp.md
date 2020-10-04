@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/ordering.cpp\"\n\nnamespace\
     \ haar_lib {\n  struct ordering_monoid {\n    using value_type = int;\n    value_type\

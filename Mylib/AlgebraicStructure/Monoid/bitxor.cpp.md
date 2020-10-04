@@ -6,7 +6,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/bitxor.cpp\"\n\nnamespace\
     \ haar_lib {\n  template <typename T>\n  struct bitxor_monoid {\n    using value_type\

@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/LinearAlgebra/GaussianElimination/binary_gaussian_elimination.cpp\"\
     \n#include <vector>\n#include <bitset>\n#include <utility>\n\nnamespace haar_lib\

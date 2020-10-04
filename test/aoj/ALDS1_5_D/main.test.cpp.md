@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':question:'
+    path: Mylib/IO/input_vector.cpp
+    title: Input vector
   - icon: ':heavy_check_mark:'
     path: Mylib/Typical/InversionNumber/inversion_number.cpp
     title: Inversion number
-  - icon: ':question:'
-    path: Mylib/IO/input_vector.cpp
-    title: Mylib/IO/input_vector.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

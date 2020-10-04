@@ -15,7 +15,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Math/polynomial_taylor_shift.cpp\"\n#include <vector>\n\
     \nnamespace haar_lib {\n  template <typename T, typename Conv>\n  auto polynomial_taylor_shift(std::vector<T>\
@@ -49,7 +48,7 @@ data:
   - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
 documentation_of: Mylib/Math/polynomial_taylor_shift.cpp
 layout: document
-title: polynomial_taylor_shift.md
+title: Polynomial taylor shift
 ---
 
 ## Operations

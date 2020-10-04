@@ -2,17 +2,17 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
-  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
-  - icon: ':x:'
-    path: Mylib/Number/tetration.cpp
-    title: Tetration
+    title: Input tuple
+  - icon: ':question:'
+    path: Mylib/IO/input_tuples.cpp
+    title: Input tuples
   - icon: ':x:'
     path: Mylib/Number/euler_totient_function.cpp
     title: Euler's totient function
+  - icon: ':x:'
+    path: Mylib/Number/tetration.cpp
+    title: Tetration
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

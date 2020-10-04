@@ -5,44 +5,43 @@ data:
     path: Mylib/Geometry/Float/geometry_template.cpp
     title: Geometry template
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: Mylib/Geometry/Float/convex_cut.cpp
+    title: Convex cut
+  - icon: ':question:'
     path: Mylib/Geometry/Float/intersect_segments.cpp
     title: Intersection between two segments
-  - icon: ':x:'
-    path: Mylib/Geometry/Float/is_point_in_polygon.cpp
-    title: Check if a point is in a polygon
   - icon: ':x:'
     path: Mylib/Geometry/Float/is_convex.cpp
     title: Check convex
   - icon: ':x:'
-    path: Mylib/Geometry/Float/convex_cut.cpp
-    title: Convex cut
+    path: Mylib/Geometry/Float/is_point_in_polygon.cpp
+    title: Check if a point is in a polygon
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/aoj/CGL_3_C/main.test.cpp
-    title: test/aoj/CGL_3_C/main.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/2136/main.test.cpp
     title: test/aoj/2136/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: test/aoj/CGL_1_C/main.test.cpp
+    title: test/aoj/CGL_1_C/main.test.cpp
+  - icon: ':x:'
     path: test/aoj/CGL_2_B/main.test.cpp
     title: test/aoj/CGL_2_B/main.test.cpp
   - icon: ':x:'
-    path: test/aoj/CGL_3_B/main.test.cpp
-    title: test/aoj/CGL_3_B/main.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_2_C/main.test.cpp
     title: test/aoj/CGL_2_C/main.test.cpp
   - icon: ':x:'
+    path: test/aoj/CGL_3_B/main.test.cpp
+    title: test/aoj/CGL_3_B/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_3_C/main.test.cpp
+    title: test/aoj/CGL_3_C/main.test.cpp
+  - icon: ':x:'
     path: test/aoj/CGL_4_C/main.test.cpp
     title: test/aoj/CGL_4_C/main.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/CGL_1_C/main.test.cpp
-    title: test/aoj/CGL_1_C/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':question:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/geometry_template.cpp\"\n#include <iostream>\n\
     #include <cmath>\n#include <vector>\n\nnamespace haar_lib {\n  template <typename\

@@ -3,25 +3,24 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Mylib/Grid/grid_bfs.cpp
+    title: BFS on a grid
+  - icon: ':heavy_check_mark:'
     path: Mylib/Grid/grid_find.cpp
     title: Enumerate points satisfying conditions
   - icon: ':heavy_check_mark:'
     path: Mylib/Grid/grid_to_graph.cpp
     title: Convert grid to graph
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Grid/grid_bfs.cpp
-    title: BFS on a grid
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/0558/main.test.cpp
-    title: test/aoj/0558/main.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/0558/main.graph.test.cpp
     title: test/aoj/0558/main.graph.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/0558/main.test.cpp
+    title: test/aoj/0558/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Grid/grid.cpp\"\n#include <array>\n#include <iostream>\n\
     #include <utility>\n\nnamespace haar_lib {\n  struct cell {\n    int x, y;\n \

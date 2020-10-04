@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Bit/enumerate_supersets_asc.cpp\"\n\nnamespace haar_lib\
     \ {\n  template <typename Func>\n  void enumerate_supersets_asc(int a, int n,\

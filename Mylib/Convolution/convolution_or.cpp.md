@@ -2,17 +2,16 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Mylib/Convolution/fast_zeta_transform_subset.cpp
-    title: Fast Zeta transform (Subsets)
-  - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/fast_mobius_transform_subset.cpp
     title: "Fast M\xF6bius transform (Subsets)"
+  - icon: ':heavy_check_mark:'
+    path: Mylib/Convolution/fast_zeta_transform_subset.cpp
+    title: Fast Zeta transform (Subsets)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Convolution/convolution_or.cpp\"\n#include <vector>\n\
     #line 3 \"Mylib/Convolution/fast_zeta_transform_subset.cpp\"\n#include <functional>\n\

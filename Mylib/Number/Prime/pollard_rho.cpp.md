@@ -15,7 +15,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Prime/pollard_rho.cpp\"\n#include <optional>\n\
     #include <vector>\n#include <utility>\n#include <numeric>\n#include <algorithm>\n\

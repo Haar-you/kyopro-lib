@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':x:'
     path: Mylib/Math/polynomial_taylor_shift.cpp
-    title: polynomial_taylor_shift.md
+    title: Polynomial taylor shift
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':x:'
@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Combinatorics/stirling_number_first_fft.cpp\"\n#include\
     \ <vector>\n#include <algorithm>\n#line 3 \"Mylib/Math/polynomial_taylor_shift.cpp\"\

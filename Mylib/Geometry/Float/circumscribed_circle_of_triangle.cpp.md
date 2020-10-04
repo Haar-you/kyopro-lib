@@ -9,16 +9,15 @@ data:
     path: Mylib/Geometry/Float/minimum_covering_circle.cpp
     title: Minimum covering circle
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/aoj/CGL_7_C/main.test.cpp
-    title: test/aoj/CGL_7_C/main.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/3034/main.test.cpp
     title: test/aoj/3034/main.test.cpp
+  - icon: ':x:'
+    path: test/aoj/CGL_7_C/main.test.cpp
+    title: test/aoj/CGL_7_C/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':question:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/geometry_template.cpp\"\n#include <iostream>\n\
     #include <cmath>\n#include <vector>\n\nnamespace haar_lib {\n  template <typename\

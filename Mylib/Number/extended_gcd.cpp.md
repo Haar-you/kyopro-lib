@@ -15,7 +15,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/extended_gcd.cpp\"\n#include <tuple>\n\nnamespace\
     \ haar_lib {\n  std::tuple<int64_t, int64_t, int64_t> ext_gcd(int64_t a, int64_t\

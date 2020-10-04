@@ -1,21 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: Mylib/Graph/Template/graph.cpp
-    title: Basic graph
-  - icon: ':question:'
-    path: Mylib/Graph/MinimumSpanningTree/prim.cpp
-    title: Prim algorithm
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Utils/fix_point.cpp
-    title: Fixed point combinator
   - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/Heap/skew_heap.cpp
     title: Skew heap
+  - icon: ':question:'
+    path: Mylib/Graph/MinimumSpanningTree/prim.cpp
+    title: Prim algorithm
+  - icon: ':question:'
+    path: Mylib/Graph/Template/graph.cpp
+    title: Basic graph
   - icon: ':heavy_check_mark:'
     path: Mylib/Misc/merge_technique.cpp
-    title: Mylib/Misc/merge_technique.cpp
+    title: Merge technique
+  - icon: ':heavy_check_mark:'
+    path: Mylib/Utils/fix_point.cpp
+    title: Fixed point combinator
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -68,32 +68,33 @@ data:
     \  }\n}\n#line 2 \"Mylib/DataStructure/Heap/skew_heap.cpp\"\n#include <functional>\n\
     #line 4 \"Mylib/DataStructure/Heap/skew_heap.cpp\"\n\nnamespace haar_lib {\n \
     \ template <typename T, class Compare = std::less<T>>\n  class skew_heap {\n \
-    \   struct node {\n      T val;\n      node *left, *right;\n      int size;\n\
-    \      node(const T &val): val(val), left(nullptr), right(nullptr), size(1){}\n\
-    \    };\n\n    node *root;\n    Compare compare;\n\n  public:\n    skew_heap():\
-    \ root(nullptr), compare(Compare()){}\n    skew_heap(const Compare &compare):\
-    \ root(nullptr), compare(compare){}\n\n  protected:\n    node* meld(node *a, node\
-    \ *b){\n      if(!a) return b;\n      if(!b) return a;\n\n      if(compare(a->val,\
-    \ b->val)) std::swap(a, b);\n\n      a->size += b->size;\n      a->right = meld(a->right,\
-    \ b);\n      std::swap(a->left, a->right);\n\n      return a;\n    }\n\n  public:\n\
-    \    void meld(skew_heap &heap){root = meld(root, heap.root); heap.root = nullptr;}\n\
-    \    void push(const T &val){root = meld(root, new node(val));}\n    const T&\
-    \ top() const {return root->val;}\n    void pop(){node *temp = root; root = meld(root->left,\
-    \ root->right); delete temp;}\n    bool empty() const {return root == nullptr;}\n\
-    \    size_t size() const {return root ? root->size : 0;}\n  };\n}\n#line 4 \"\
-    Mylib/Misc/merge_technique.cpp\"\n\nnamespace haar_lib {\n  template <typename\
-    \ T>\n  void merge_technique(std::set<T> &res, std::set<T> &a, std::set<T> &b){\n\
-    \    if(a.size() > b.size()){\n      a.insert(b.begin(), b.end());\n      std::swap(res,\
-    \ a);\n    }else{\n      b.insert(a.begin(), a.end());\n      std::swap(res, b);\n\
-    \    }\n  }\n}\n#line 13 \"test/aoj/2559/main.skew_heap.test.cpp\"\n\nnamespace\
-    \ hl = haar_lib;\n\nint main(){\n  int n, m; std::cin >> n >> m;\n\n  hl::graph<int64_t>\
-    \ g(n);\n  g.read<1, false>(m);\n\n  std::map<std::pair<int, int>, int> index;\n\
-    \  for(auto &a : g){\n    for(auto &e : a) index[{e.from, e.to}] = e.index;\n\
-    \  }\n\n  auto res = hl::prim(g);\n\n  std::vector<int64_t> ans(m, -1);\n\n  if((int)res.size()\
-    \ == n - 1){\n    int64_t s = 0;\n    hl::tree<int64_t> tree(n);\n\n    for(auto\
-    \ &e : res){\n      s += e.cost;\n      tree[e.from].push_back(e);\n    }\n\n\
-    \    ans.assign(m, s);\n\n    std::vector<hl::skew_heap<std::tuple<int64_t, int,\
-    \ int>, std::greater<>>> heaps(n);\n\n    std::vector<std::set<int>> sub(n);\n\
+    \ public:\n    using value_type = T;\n\n  private:\n    struct node {\n      T\
+    \ val;\n      node *left, *right;\n      int size;\n      node(const T &val):\
+    \ val(val), left(nullptr), right(nullptr), size(1){}\n    };\n\n    node *root_;\n\
+    \    Compare compare_;\n\n  public:\n    skew_heap(): root_(nullptr), compare_(Compare()){}\n\
+    \    skew_heap(const Compare &compare_): root_(nullptr), compare_(compare_){}\n\
+    \n  protected:\n    node* meld(node *a, node *b){\n      if(not a) return b;\n\
+    \      if(not b) return a;\n\n      if(compare_(a->val, b->val)) std::swap(a,\
+    \ b);\n\n      a->size += b->size;\n      a->right = meld(a->right, b);\n    \
+    \  std::swap(a->left, a->right);\n\n      return a;\n    }\n\n  public:\n    void\
+    \ meld(skew_heap &heap){root_ = meld(root_, heap.root_); heap.root_ = nullptr;}\n\
+    \    void push(const T &val){root_ = meld(root_, new node(val));}\n    const T&\
+    \ top() const {return root_->val;}\n    void pop(){node *temp = root_; root_ =\
+    \ meld(root_->left, root_->right); delete temp;}\n    bool empty() const {return\
+    \ root_ == nullptr;}\n    size_t size() const {return root_ ? root_->size : 0;}\n\
+    \  };\n}\n#line 4 \"Mylib/Misc/merge_technique.cpp\"\n\nnamespace haar_lib {\n\
+    \  template <typename T>\n  void merge_technique(std::set<T> &res, std::set<T>\
+    \ &a, std::set<T> &b){\n    if(a.size() > b.size()){\n      a.insert(b.begin(),\
+    \ b.end());\n      std::swap(res, a);\n    }else{\n      b.insert(a.begin(), a.end());\n\
+    \      std::swap(res, b);\n    }\n  }\n}\n#line 13 \"test/aoj/2559/main.skew_heap.test.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\nint main(){\n  int n, m; std::cin >> n >> m;\n\
+    \n  hl::graph<int64_t> g(n);\n  g.read<1, false>(m);\n\n  std::map<std::pair<int,\
+    \ int>, int> index;\n  for(auto &a : g){\n    for(auto &e : a) index[{e.from,\
+    \ e.to}] = e.index;\n  }\n\n  auto res = hl::prim(g);\n\n  std::vector<int64_t>\
+    \ ans(m, -1);\n\n  if((int)res.size() == n - 1){\n    int64_t s = 0;\n    hl::tree<int64_t>\
+    \ tree(n);\n\n    for(auto &e : res){\n      s += e.cost;\n      tree[e.from].push_back(e);\n\
+    \    }\n\n    ans.assign(m, s);\n\n    std::vector<hl::skew_heap<std::tuple<int64_t,\
+    \ int, int>, std::greater<>>> heaps(n);\n\n    std::vector<std::set<int>> sub(n);\n\
     \n    hl::make_fix_point(\n      [&](auto &&f, int cur, int par, int64_t cost)\
     \ -> void {\n        for(auto &e : g[cur]){\n          heaps[cur].push({e.cost,\
     \ e.from, e.to});\n        }\n\n        sub[cur].insert(cur);\n\n        for(auto\
@@ -146,7 +147,7 @@ data:
   isVerificationFile: true
   path: test/aoj/2559/main.skew_heap.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/2559/main.skew_heap.test.cpp

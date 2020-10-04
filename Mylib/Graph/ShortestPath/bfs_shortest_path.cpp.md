@@ -12,7 +12,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/ShortestPath/bfs_shortest_path.cpp\"\n#include\
     \ <vector>\n#include <optional>\n#include <queue>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\

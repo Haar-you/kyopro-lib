@@ -2,23 +2,23 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
-  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+    title: Input tuple
+  - icon: ':question:'
+    path: Mylib/IO/input_tuples.cpp
+    title: Input tuples
   - icon: ':question:'
     path: Mylib/IO/join.cpp
-    title: Mylib/IO/join.cpp
-  - icon: ':x:'
-    path: Mylib/Number/Prime/pollard_rho.cpp
-    title: Prime factorization (Pollard's rho algorithm)
+    title: join function
   - icon: ':x:'
     path: Mylib/Misc/int128.cpp
     title: 128-bit int
   - icon: ':x:'
     path: Mylib/Number/Prime/miller_rabin.cpp
     title: Primality test (Miller-Rabin algorithm)
+  - icon: ':x:'
+    path: Mylib/Number/Prime/pollard_rho.cpp
+    title: Prime factorization (Pollard's rho algorithm)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp

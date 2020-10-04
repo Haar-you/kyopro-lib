@@ -9,26 +9,40 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/MonoidAction/add_square_sum.cpp\"\
-    \n#include <utility>\n\nnamespace haar_lib {\n  template <typename MonoidGet,\
-    \ typename MonoidUpdate>\n  struct add_square_sum {\n    using value_type_get\
-    \ = typename MonoidGet::value_type;\n    using value_type_update = typename MonoidUpdate::value_type;\n\
+    \n#include <utility>\n\nnamespace haar_lib {\n  template <typename MonoidUpdate>\n\
+    \  struct add_square_sum {\n    struct internal_type {\n      using value_type\
+    \ = typename MonoidUpdate::value_type;\n      value_type sum, square_sum;\n  \
+    \    internal_type(value_type value): sum(value), square_sum(value * value){}\n\
+    \      internal_type(value_type sum, value_type square_sum): sum(sum), square_sum(square_sum){}\n\
+    \    };\n\n    struct monoid_get {\n      using value_type = internal_type;\n\
+    \      value_type operator()() const {return {0, 0};};\n      value_type operator()(const\
+    \ value_type &a, const value_type &b){return {a.sum + b.sum, a.square_sum + b.square_sum};}\n\
+    \    };\n\n    using monoid_update = MonoidUpdate;\n    using value_type_get =\
+    \ typename monoid_get::value_type;\n    using value_type_update = typename MonoidUpdate::value_type;\n\
     \n    value_type_get operator()(const value_type_get &a, const value_type_update\
-    \ &b, int len) const {\n      return {std::get<0>(a) + b * len, std::get<1>(a)\
-    \ + b * (2 * std::get<0>(a) + b * len)};\n    }\n  };\n}\n"
+    \ &b, int len) const {\n      return {\n              a.sum + b * len,\n     \
+    \         a.square_sum + b * (2 * a.sum + b * len)\n      };\n    }\n  };\n}\n"
   code: "#pragma once\n#include <utility>\n\nnamespace haar_lib {\n  template <typename\
-    \ MonoidGet, typename MonoidUpdate>\n  struct add_square_sum {\n    using value_type_get\
-    \ = typename MonoidGet::value_type;\n    using value_type_update = typename MonoidUpdate::value_type;\n\
-    \n    value_type_get operator()(const value_type_get &a, const value_type_update\
-    \ &b, int len) const {\n      return {std::get<0>(a) + b * len, std::get<1>(a)\
-    \ + b * (2 * std::get<0>(a) + b * len)};\n    }\n  };\n}\n"
+    \ MonoidUpdate>\n  struct add_square_sum {\n    struct internal_type {\n     \
+    \ using value_type = typename MonoidUpdate::value_type;\n      value_type sum,\
+    \ square_sum;\n      internal_type(value_type value): sum(value), square_sum(value\
+    \ * value){}\n      internal_type(value_type sum, value_type square_sum): sum(sum),\
+    \ square_sum(square_sum){}\n    };\n\n    struct monoid_get {\n      using value_type\
+    \ = internal_type;\n      value_type operator()() const {return {0, 0};};\n  \
+    \    value_type operator()(const value_type &a, const value_type &b){return {a.sum\
+    \ + b.sum, a.square_sum + b.square_sum};}\n    };\n\n    using monoid_update =\
+    \ MonoidUpdate;\n    using value_type_get = typename monoid_get::value_type;\n\
+    \    using value_type_update = typename MonoidUpdate::value_type;\n\n    value_type_get\
+    \ operator()(const value_type_get &a, const value_type_update &b, int len) const\
+    \ {\n      return {\n              a.sum + b * len,\n              a.square_sum\
+    \ + b * (2 * a.sum + b * len)\n      };\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/AlgebraicStructure/MonoidAction/add_square_sum.cpp
   requiredBy: []
-  timestamp: '2020-09-18 18:43:57+09:00'
+  timestamp: '2020-10-02 17:13:14+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yukicoder/1099/main.test.cpp

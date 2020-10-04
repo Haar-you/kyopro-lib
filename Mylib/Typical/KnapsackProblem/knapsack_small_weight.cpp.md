@@ -9,7 +9,6 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Typical/KnapsackProblem/knapsack_small_weight.cpp\"\
     \n#include <vector>\n#include <algorithm>\n\nnamespace haar_lib {\n  template\

@@ -7,15 +7,14 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':x:'
-    path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-    title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-  - icon: ':x:'
     path: test/yosupo-judge/sqrt_mod/main.test.cpp
     title: test/yosupo-judge/sqrt_mod/main.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
+    title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Mod/mod_sqrt.cpp\"\n#include <random>\n#include\
     \ <optional>\n#line 2 \"Mylib/Number/Mod/mod_pow.cpp\"\n#include <cstdint>\n\n\

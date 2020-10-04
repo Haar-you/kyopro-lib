@@ -1,18 +1,18 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
-    path: Mylib/Number/Prime/miller_rabin.cpp
-    title: Primality test (Miller-Rabin algorithm)
+  - icon: ':question:'
+    path: Mylib/IO/input_tuple.cpp
+    title: Input tuple
+  - icon: ':question:'
+    path: Mylib/IO/input_tuples.cpp
+    title: Input tuples
   - icon: ':x:'
     path: Mylib/Misc/int128.cpp
     title: 128-bit int
-  - icon: ':question:'
-    path: Mylib/IO/input_tuples.cpp
-    title: Mylib/IO/input_tuples.cpp
-  - icon: ':question:'
-    path: Mylib/IO/input_tuple.cpp
-    title: Mylib/IO/input_tuple.cpp
+  - icon: ':x:'
+    path: Mylib/Number/Prime/miller_rabin.cpp
+    title: Primality test (Miller-Rabin algorithm)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
