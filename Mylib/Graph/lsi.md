@@ -1,5 +1,5 @@
 ---
-title: 
+title: Linear system incidence
 documentation_of: Mylib/Graph/lsi.cpp
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 
+title: join function
 documentation_of: Mylib/IO/join.cpp
 ---
 

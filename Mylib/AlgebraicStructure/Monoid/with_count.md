@@ -1,5 +1,5 @@
 ---
-title: 
+title: With count
 documentation_of: Mylib/AlgebraicStructure/Monoid/with_count.cpp
 ---
 

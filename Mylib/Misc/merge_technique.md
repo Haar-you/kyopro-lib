@@ -1,5 +1,5 @@
 ---
-title: 
+title: Merge technique
 documentation_of: Mylib/Misc/merge_technique.cpp
 ---
 

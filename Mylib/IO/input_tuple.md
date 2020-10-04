@@ -1,5 +1,5 @@
 ---
-title: 
+title: Input tuple
 documentation_of: Mylib/IO/input_tuple.cpp
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 
+title: Binary exponentiation
 documentation_of: Mylib/Number/pow.cpp
 ---
 

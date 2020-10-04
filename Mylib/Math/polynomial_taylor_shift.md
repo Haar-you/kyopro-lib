@@ -1,5 +1,5 @@
 ---
-title: polynomial_taylor_shift.md
+title: Polynomial taylor shift
 documentation_of: Mylib/Math/polynomial_taylor_shift.cpp
 ---
 

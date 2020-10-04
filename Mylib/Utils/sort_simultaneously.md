@@ -1,5 +1,5 @@
 ---
-title: 
+title: Sort simultaneously
 documentation_of: Mylib/Utils/sort_simultaneously.cpp
 ---
 
