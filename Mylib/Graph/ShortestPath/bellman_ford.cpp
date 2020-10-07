@@ -3,43 +3,15 @@
 #include <algorithm>
 #include <cassert>
 #include "Mylib/Graph/Template/graph.cpp"
+#include "Mylib/Math/unbounded.cpp"
 
 namespace haar_lib {
-  namespace bellman_ford_impl {
-    template <typename T>
-    struct result {
-      enum class Tag {OK, NEGLOOP, UNREACHABLE} tag;
-      T val;
-      result(Tag tag): tag(tag){}
-
-    public:
-      static auto unreachable() {return result(Tag::UNREACHABLE);}
-      static auto negloop() {return result(Tag::NEGLOOP);}
-      result(T val): tag(Tag::OK), val(val){}
-
-      bool is_unreachable() const {return tag == Tag::UNREACHABLE;}
-      bool is_negloop() const {return tag == Tag::NEGLOOP;}
-      bool is_ok() const {return tag == Tag::OK;}
-
-      T value() const {
-        assert(tag == Tag::OK);
-        return val;
-      }
-
-      friend std::ostream& operator<<(std::ostream &s, const result &a){
-        if(a.is_unreachable()) s << "∞";
-        else if(a.is_negloop()) s << "-∞";
-        else s << a.value();
-        return s;
-      }
-    };
-  }
-
   template <typename T>
   auto bellman_ford(const graph<T> &g, int src){
-    using Result = bellman_ford_impl::result<T>;
+    using type = unbounded<T>;
+
     const int n = g.size();
-    std::vector<Result> dist(n, Result::unreachable());
+    std::vector<type> dist(n, type::positive_inf());
 
     dist[src] = 0;
 
@@ -49,15 +21,15 @@ namespace haar_lib {
           int t = e.to;
           T d = e.cost;
 
-          if(dist[s].is_ok() and
-             dist[t].is_ok() and
+          if(dist[s].is_finite() and
+             dist[t].is_finite() and
              dist[s].value() + d < dist[t].value() and i == n - 1){
-            dist[t] = Result::negloop();
+            dist[t] = type::negative_inf();
           }else{
-            if(dist[s].is_ok()){
-              if(dist[t].is_unreachable()){
+            if(dist[s].is_finite()){
+              if(dist[t].is_positive_inf()){
                 dist[t] = dist[s].value() + d;
-              }else if(dist[t].is_ok()){
+              }else if(dist[t].is_finite()){
                 dist[t] = std::min(dist[t].value(), dist[s].value() + d);
               }
             }
@@ -69,8 +41,8 @@ namespace haar_lib {
     for(int i = 0; i < n; ++i){
       for(int s = 0; s < n; ++s){
         for(auto &e : g[s]){
-          if(dist[s].is_negloop()){
-            dist[e.to] = Result::negloop();
+          if(dist[s].is_negative_inf()){
+            dist[e.to] = type::negative_inf();
           }
         }
       }
