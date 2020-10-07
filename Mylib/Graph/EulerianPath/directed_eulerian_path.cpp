@@ -7,7 +7,7 @@
 namespace haar_lib {
   class directed_eulerian_path {
     int n_, edges_;
-    std::vector<std::unordered_map<int, int>> g_;
+    std::vector<std::map<int, int>> g_;
     std::vector<int> indeg_, outdeg_;
 
     void del(int i, int j){
