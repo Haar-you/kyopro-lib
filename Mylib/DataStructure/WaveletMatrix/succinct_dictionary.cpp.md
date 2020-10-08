@@ -104,11 +104,11 @@ data:
   timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/aoj/2674/main.test.cpp
-  - test/aoj/1549/main.test.cpp
-  - test/aoj/2426/main.test.cpp
-  - test/yosupo-judge/range_kth_smallest/main.test.cpp
   - test/yukicoder/919/main.test.cpp
+  - test/yosupo-judge/range_kth_smallest/main.test.cpp
+  - test/aoj/2426/main.test.cpp
+  - test/aoj/1549/main.test.cpp
+  - test/aoj/2674/main.test.cpp
 documentation_of: Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp
 layout: document
 title: Succinct dictionary

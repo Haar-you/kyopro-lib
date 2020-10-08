@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/ccw.cpp
     title: Check clockwise-counterclockwise
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/double_eps.cpp
     title: Floating point number with eps
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/geometry_template.cpp
     title: Geometry template
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/intersect_segments.cpp
     title: Intersection between two segments
   - icon: ':question:'
@@ -22,7 +22,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_B
@@ -199,7 +199,7 @@ data:
   path: test/aoj/CGL_2_B/main.test.cpp
   requiredBy: []
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/CGL_2_B/main.test.cpp
 layout: document

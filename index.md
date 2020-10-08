@@ -65,7 +65,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/Monoid/pair.cpp
       title: Pair monoid
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/Monoid/product.cpp
       title: Product monoid
     - icon: ':x:'
@@ -168,7 +168,7 @@ data:
     - icon: ':x:'
       path: Mylib/Algorithm/Imos/imos_2d.cpp
       title: 2D Imos algorithm
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Algorithm/Imos/linear_imos_1d.cpp
       title: 1D Imos algorithm (Linear addition)
   - name: Mylib/Algorithm/Mo
@@ -206,7 +206,7 @@ data:
       title: Sliding window minmax
   - name: Mylib/Algorithm/SqrtDecomposition
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp
       title: Sqrt decomposition
   - name: Mylib/Bit
@@ -214,6 +214,9 @@ data:
     - icon: ':warning:'
       path: Mylib/Bit/bit_reverse.cpp
       title: Bit reverse
+    - icon: ':warning:'
+      path: Mylib/Bit/bit_utils.cpp
+      title: Bit utils
     - icon: ':x:'
       path: Mylib/Bit/enumerate_sets_of_size_k.cpp
       title: Enumerate sets of size k
@@ -302,13 +305,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/fast_mobius_transform_subset.cpp
       title: "Fast M\xF6bius transform (Subsets)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/fast_mobius_transform_superset.cpp
       title: "Fast M\xF6bius transform (Supersets)"
     - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/fast_zeta_transform_subset.cpp
       title: Fast Zeta transform (Subsets)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/fast_zeta_transform_superset.cpp
       title: Fast Zeta transform (Supersets)
     - icon: ':x:'
@@ -360,7 +363,7 @@ data:
       title: Fenwick tree (On Fenwick tree)
   - name: Mylib/DataStructure/Heap
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/Heap/binary_heap.cpp
       title: Binary heap
     - icon: ':heavy_check_mark:'
@@ -392,7 +395,7 @@ data:
     pages:
     - icon: ':x:'
       path: Mylib/DataStructure/RangeTree/range_tree.cpp
-      title: Mylib/DataStructure/RangeTree/range_tree.cpp
+      title: Range tree
   - name: Mylib/DataStructure/SegmentTree
     pages:
     - icon: ':x:'
@@ -428,7 +431,7 @@ data:
     - icon: ':x:'
       path: Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp
       title: Segment tree (Both foldable)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/SegmentTree/segment_tree_linear_add.cpp
       title: Segment tree (Add $ai + b$)
     - icon: ':warning:'
@@ -518,94 +521,94 @@ data:
       title: Maximum subarray problem
   - name: Mylib/Geometry/Float
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp
       title: Area of intersection between a circle and a polygon
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/area_intersection_of_circles.cpp
       title: Area of intersection between two circles
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/area_polygon.cpp
       title: Area of polygon
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/ccw.cpp
       title: Check clockwise-counterclockwise
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp
       title: Circumscribed circle of a triangle
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/closest_pair.cpp
       title: Closest pair
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/common_tangent_of_circles.cpp
       title: Common tangents of two circles
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/convex_cut.cpp
       title: Convex cut
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/convex_diameter.cpp
       title: Convex diameter
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/convex_hull.cpp
       title: Convex hull
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/distance_line_point.cpp
       title: Distance between a line and a point
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/distance_segment_point.cpp
       title: Distance between a segment and a point
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/distance_segments.cpp
       title: Distance between two segments
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/double_eps.cpp
       title: Floating point number with eps
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/geometry_template.cpp
       title: Geometry template
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/inscribed_circle_of_triangle.cpp
       title: Inscribed circle of a triangle
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/intersect_circle_line.cpp
       title: Intersection between a circle and a line
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/intersect_circle_segment.cpp
       title: Intersection between a circle and a segment
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/intersect_circles.cpp
       title: Intersection between two circles
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/intersect_line_segment.cpp
       title: Intersection between a line and a segment
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/intersect_segments.cpp
       title: Intersection between two segments
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/is_convex.cpp
       title: Check convex
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/is_point_in_polygon.cpp
       title: Check if a point is in a polygon
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/manhattan_segments_intersections.cpp
       title: Manhattan segments intersections
     - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/minimum_covering_circle.cpp
       title: Minimum covering circle
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/orthogonal.cpp
       title: Orthogonal
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/parallel.cpp
       title: Parallel
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/projection.cpp
       title: Projection
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/reflection.cpp
       title: Reflection
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Geometry/Float/tangent_of_circle.cpp
       title: Tangent of circle
   - name: Mylib/Graph/BipartiteGraph
@@ -816,10 +819,10 @@ data:
     - icon: ':x:'
       path: Mylib/Graph/maximum_independent_set.cpp
       title: Maximum independent set
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/project_selection_problem.cpp
       title: Project selection problem
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/travelling_salesman_problem.cpp
       title: Travelling salesman problem
     - icon: ':x:'
@@ -914,6 +917,9 @@ data:
     - icon: ':x:'
       path: Mylib/Math/sum_of_floor_of_linear.cpp
       title: Sum of floor of linear
+    - icon: ':x:'
+      path: Mylib/Math/unbounded.cpp
+      title: Number with infinity
   - name: Mylib/Misc
     pages:
     - icon: ':x:'
@@ -956,7 +962,7 @@ data:
       title: Enumerate divisors
   - name: Mylib/Number/Mint
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Number/Mint/mint.cpp
       title: Modint
     - icon: ':warning:'
@@ -1079,13 +1085,13 @@ data:
     - icon: ':warning:'
       path: Mylib/String/ends_with.cpp
       title: ends_with
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/String/knuth_morris_pratt.cpp
       title: Knuth-Morris-Pratt algorithm
     - icon: ':x:'
       path: Mylib/String/lcp_array.cpp
       title: LCP(Longest Common Prefix) array
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/String/levenshtein_distance.cpp
       title: Levenshtein distance / Edit distance
     - icon: ':heavy_check_mark:'
@@ -1097,10 +1103,10 @@ data:
     - icon: ':warning:'
       path: Mylib/String/palindromic_tree.cpp
       title: Palindromic tree
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/String/rolling_hash.cpp
       title: Rolling hash
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/String/rolling_hash_2d.cpp
       title: Rolling hash (2D)
     - icon: ':x:'
@@ -1112,7 +1118,7 @@ data:
     - icon: ':warning:'
       path: Mylib/String/starts_with.cpp
       title: starts_with
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/String/suffix_array.cpp
       title: Suffix array
     - icon: ':warning:'
@@ -1142,24 +1148,24 @@ data:
       title: Range inversions query
   - name: Mylib/Typical/KnapsackProblem
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Typical/KnapsackProblem/knapsack_limited.cpp
       title: Knapsack problem (With quantity limitations)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Typical/KnapsackProblem/knapsack_small_quantity.cpp
       title: 0-1 Knapsack problem (Small quantity)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Typical/KnapsackProblem/knapsack_small_value.cpp
       title: 0-1 Knapsack problem (Small value)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Typical/KnapsackProblem/knapsack_small_weight.cpp
       title: 0-1 Knapsack problem (Small weight)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Typical/KnapsackProblem/knapsack_unlimited.cpp
       title: Knapsack problem (Without quantity limitations)
   - name: Mylib/Typical/LongestSubsequence
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Typical/LongestSubsequence/longest_increasing_subsequence.cpp
       title: Longest increasing subsequence
   - name: Mylib/Typical/MaxRectangleProblem
@@ -1402,22 +1408,22 @@ data:
       title: test/aoj/3035/main.test.cpp
   - name: test/aoj/3058
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/3058/main.test.cpp
       title: test/aoj/3058/main.test.cpp
   - name: test/aoj/3118
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/3118/main.test.cpp
       title: test/aoj/3118/main.test.cpp
   - name: test/aoj/3119
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/3119/main.test.cpp
       title: test/aoj/3119/main.test.cpp
   - name: test/aoj/3132
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/3132/main.test.cpp
       title: test/aoj/3132/main.test.cpp
   - name: test/aoj/3134
@@ -1427,10 +1433,10 @@ data:
       title: test/aoj/3134/main.test.cpp
   - name: test/aoj/3165
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/3165/main.test.cpp
       title: test/aoj/3165/main.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/3165/main.test.imos.cpp
       title: test/aoj/3165/main.test.imos.cpp
   - name: test/aoj/ALDS1_10_C
@@ -1445,20 +1451,20 @@ data:
       title: test/aoj/ALDS1_12_B/main.dial.test.cpp
   - name: test/aoj/ALDS1_14_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ALDS1_14_B/main.kmp.test.cpp
       title: test/aoj/ALDS1_14_B/main.kmp.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ALDS1_14_B/main.test.cpp
       title: test/aoj/ALDS1_14_B/main.test.cpp
   - name: test/aoj/ALDS1_14_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ALDS1_14_C/main.test.cpp
       title: test/aoj/ALDS1_14_C/main.test.cpp
   - name: test/aoj/ALDS1_14_D
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ALDS1_14_D/main.test.cpp
       title: test/aoj/ALDS1_14_D/main.test.cpp
   - name: test/aoj/ALDS1_15_C
@@ -1478,167 +1484,167 @@ data:
       title: test/aoj/ALDS1_5_D/main.test.cpp
   - name: test/aoj/ALDS1_9_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ALDS1_9_C/main.binary.test.cpp
       title: test/aoj/ALDS1_9_C/main.binary.test.cpp
   - name: test/aoj/CGL_1_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_1_A/main.test.cpp
       title: test/aoj/CGL_1_A/main.test.cpp
   - name: test/aoj/CGL_1_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_1_B/main.test.cpp
       title: test/aoj/CGL_1_B/main.test.cpp
   - name: test/aoj/CGL_1_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_1_C/main.test.cpp
       title: test/aoj/CGL_1_C/main.test.cpp
   - name: test/aoj/CGL_2_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_2_A/main.test.cpp
       title: test/aoj/CGL_2_A/main.test.cpp
   - name: test/aoj/CGL_2_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_2_B/main.test.cpp
       title: test/aoj/CGL_2_B/main.test.cpp
   - name: test/aoj/CGL_2_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_2_C/main.test.cpp
       title: test/aoj/CGL_2_C/main.test.cpp
   - name: test/aoj/CGL_2_D
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_2_D/main.test.cpp
       title: test/aoj/CGL_2_D/main.test.cpp
   - name: test/aoj/CGL_3_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_3_A/main.test.cpp
       title: test/aoj/CGL_3_A/main.test.cpp
   - name: test/aoj/CGL_3_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_3_B/main.test.cpp
       title: test/aoj/CGL_3_B/main.test.cpp
   - name: test/aoj/CGL_3_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_3_C/main.test.cpp
       title: test/aoj/CGL_3_C/main.test.cpp
   - name: test/aoj/CGL_4_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_4_A/main.test.cpp
       title: test/aoj/CGL_4_A/main.test.cpp
   - name: test/aoj/CGL_4_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_4_B/main.test.cpp
       title: test/aoj/CGL_4_B/main.test.cpp
   - name: test/aoj/CGL_4_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_4_C/main.test.cpp
       title: test/aoj/CGL_4_C/main.test.cpp
   - name: test/aoj/CGL_5_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_5_A/main.test.cpp
       title: test/aoj/CGL_5_A/main.test.cpp
   - name: test/aoj/CGL_6_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_6_A/main.test.cpp
       title: test/aoj/CGL_6_A/main.test.cpp
   - name: test/aoj/CGL_7_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_7_A/main.test.cpp
       title: test/aoj/CGL_7_A/main.test.cpp
   - name: test/aoj/CGL_7_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_7_B/main.test.cpp
       title: test/aoj/CGL_7_B/main.test.cpp
   - name: test/aoj/CGL_7_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_7_C/main.test.cpp
       title: test/aoj/CGL_7_C/main.test.cpp
   - name: test/aoj/CGL_7_D
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_7_D/main.test.cpp
       title: test/aoj/CGL_7_D/main.test.cpp
   - name: test/aoj/CGL_7_E
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_7_E/main.test.cpp
       title: test/aoj/CGL_7_E/main.test.cpp
   - name: test/aoj/CGL_7_F
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_7_F/main.test.cpp
       title: test/aoj/CGL_7_F/main.test.cpp
   - name: test/aoj/CGL_7_G
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_7_G/main.test.cpp
       title: test/aoj/CGL_7_G/main.test.cpp
   - name: test/aoj/CGL_7_H
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_7_H/main.test.cpp
       title: test/aoj/CGL_7_H/main.test.cpp
   - name: test/aoj/CGL_7_I
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/CGL_7_I/main.test.cpp
       title: test/aoj/CGL_7_I/main.test.cpp
   - name: test/aoj/DPL_1_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_1_B/main.test.cpp
       title: test/aoj/DPL_1_B/main.test.cpp
   - name: test/aoj/DPL_1_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_1_C/main.test.cpp
       title: test/aoj/DPL_1_C/main.test.cpp
   - name: test/aoj/DPL_1_D
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_1_D/main.test.cpp
       title: test/aoj/DPL_1_D/main.test.cpp
   - name: test/aoj/DPL_1_E
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_1_E/main.test.cpp
       title: test/aoj/DPL_1_E/main.test.cpp
   - name: test/aoj/DPL_1_F
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_1_F/main.test.cpp
       title: test/aoj/DPL_1_F/main.test.cpp
   - name: test/aoj/DPL_1_G
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_1_G/main.test.cpp
       title: test/aoj/DPL_1_G/main.test.cpp
   - name: test/aoj/DPL_1_H
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_1_H/main.test.cpp
       title: test/aoj/DPL_1_H/main.test.cpp
   - name: test/aoj/DPL_2_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_2_A/main.test.cpp
       title: test/aoj/DPL_2_A/main.test.cpp
   - name: test/aoj/DPL_2_B

@@ -15,7 +15,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2444/main.test.cpp
     title: test/aoj/2444/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/3132/main.test.cpp
     title: test/aoj/3132/main.test.cpp
   - icon: ':x:'
@@ -151,22 +151,22 @@ data:
   timestamp: '2020-09-28 13:26:18+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/aoj/0390/main.test.cpp
-  - test/aoj/DSL_2_B/main.test.cpp
-  - test/aoj/2444/main.test.cpp
-  - test/aoj/3132/main.test.cpp
-  - test/aoj/DSL_2_A/main.test.cpp
-  - test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
-  - test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp
-  - test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
-  - test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
-  - test/yosupo-judge/manhattanmst/main.test.cpp
-  - test/yosupo-judge/vertex_add_path_sum/main.test.cpp
-  - test/yosupo-judge/point_set_range_composite/main.test.cpp
-  - test/yukicoder/776/main.test.cpp
   - test/yukicoder/1030/main.test.cpp
   - test/yukicoder/510/main.test.cpp
+  - test/yukicoder/776/main.test.cpp
   - test/yukicoder/875/main.test.cpp
+  - test/yosupo-judge/manhattanmst/main.test.cpp
+  - test/yosupo-judge/vertex_add_path_sum/main.test.cpp
+  - test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
+  - test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
+  - test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp
+  - test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
+  - test/yosupo-judge/point_set_range_composite/main.test.cpp
+  - test/aoj/2444/main.test.cpp
+  - test/aoj/0390/main.test.cpp
+  - test/aoj/DSL_2_A/main.test.cpp
+  - test/aoj/3132/main.test.cpp
+  - test/aoj/DSL_2_B/main.test.cpp
 documentation_of: Mylib/DataStructure/SegmentTree/segment_tree.cpp
 layout: document
 title: Segment tree

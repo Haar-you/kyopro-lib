@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':x:'
     path: Mylib/DataStructure/RangeTree/range_tree.cpp
-    title: Mylib/DataStructure/RangeTree/range_tree.cpp
+    title: Range tree
   - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple

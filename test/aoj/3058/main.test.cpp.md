@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: Mylib/Graph/Flow/ford_fulkerson.cpp
     title: Ford-Fulkerson algorithm
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/project_selection_problem.cpp
     title: Project selection problem
   - icon: ':question:'
@@ -19,7 +19,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3058
@@ -141,7 +141,7 @@ data:
   path: test/aoj/3058/main.test.cpp
   requiredBy: []
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/3058/main.test.cpp
 layout: document

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []
@@ -196,20 +196,20 @@ data:
   timestamp: '2020-09-30 07:57:28+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
-  - test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
-  - test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
   - test/yosupo-judge/bernoulli_number/main.test.cpp
-  - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/convolution_mod/main.test.cpp
-  - test/yosupo-judge/log_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+  - test/yosupo-judge/partition_function/main.fps.test.cpp
+  - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
+  - test/yosupo-judge/log_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
-  - test/yosupo-judge/partition_function/main.fps.test.cpp
   - test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
+  - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+  - test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
+  - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/convolution_mod/main.test.cpp
+  - test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
 documentation_of: Mylib/Convolution/ntt_convolution.cpp
 layout: document
 title: Number theoretic transform

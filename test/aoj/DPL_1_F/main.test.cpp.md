@@ -4,13 +4,13 @@ data:
   - icon: ':question:'
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Typical/KnapsackProblem/knapsack_small_value.cpp
     title: 0-1 Knapsack problem (Small value)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_F
@@ -56,7 +56,7 @@ data:
   path: test/aoj/DPL_1_F/main.test.cpp
   requiredBy: []
   timestamp: '2020-09-21 02:36:12+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DPL_1_F/main.test.cpp
 layout: document

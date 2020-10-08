@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/fast_mobius_transform_superset.cpp
     title: "Fast M\xF6bius transform (Supersets)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/fast_zeta_transform_superset.cpp
     title: Fast Zeta transform (Supersets)
   - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3119
@@ -108,7 +108,7 @@ data:
   path: test/aoj/3119/main.test.cpp
   requiredBy: []
   timestamp: '2020-09-30 07:57:28+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/3119/main.test.cpp
 layout: document

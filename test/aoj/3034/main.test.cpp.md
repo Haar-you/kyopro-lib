@@ -4,13 +4,13 @@ data:
   - icon: ':question:'
     path: Mylib/Bit/enumerate_subsets_asc.cpp
     title: Enumerate subsets (Ascending order)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp
     title: Circumscribed circle of a triangle
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/double_eps.cpp
     title: Floating point number with eps
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/geometry_template.cpp
     title: Geometry template
   - icon: ':heavy_check_mark:'

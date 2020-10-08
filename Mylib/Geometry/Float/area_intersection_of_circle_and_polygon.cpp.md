@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/distance_segment_point.cpp
     title: Distance between a segment and a point
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/geometry_template.cpp
     title: Geometry template
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/intersect_circle_segment.cpp
     title: Intersection between a circle and a segment
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_7_H/main.test.cpp
     title: test/aoj/CGL_7_H/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp\"\
@@ -144,7 +144,7 @@ data:
   path: Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp
   requiredBy: []
   timestamp: '2020-09-19 20:03:12+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/CGL_7_H/main.test.cpp
 documentation_of: Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp

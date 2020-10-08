@@ -10,9 +10,9 @@ data:
   bundledCode: "#line 2 \"Mylib/Graph/EulerianPath/directed_eulerian_path.cpp\"\n\
     #include <vector>\n#include <map>\n#include <optional>\n#include <algorithm>\n\
     \nnamespace haar_lib {\n  class directed_eulerian_path {\n    int n_, edges_;\n\
-    \    std::vector<std::unordered_map<int, int>> g_;\n    std::vector<int> indeg_,\
-    \ outdeg_;\n\n    void del(int i, int j){\n      if(g_[i][j] == 1) g_[i].erase(j);\n\
-    \      else --g_[i][j];\n    }\n\n    void dfs(int cur, std::vector<int> &path){\n\
+    \    std::vector<std::map<int, int>> g_;\n    std::vector<int> indeg_, outdeg_;\n\
+    \n    void del(int i, int j){\n      if(g_[i][j] == 1) g_[i].erase(j);\n     \
+    \ else --g_[i][j];\n    }\n\n    void dfs(int cur, std::vector<int> &path){\n\
     \      if(not g_[cur].empty()){\n        const int next = g_[cur].begin()->first;\n\
     \        del(cur, next);\n        dfs(next, path);\n      }\n\n      while(not\
     \ g_[cur].empty()){\n        const int next = g_[cur].begin()->first;\n      \
@@ -32,8 +32,8 @@ data:
     \      }else{\n        return std::nullopt;\n      }\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <map>\n#include <optional>\n#include\
     \ <algorithm>\n\nnamespace haar_lib {\n  class directed_eulerian_path {\n    int\
-    \ n_, edges_;\n    std::vector<std::unordered_map<int, int>> g_;\n    std::vector<int>\
-    \ indeg_, outdeg_;\n\n    void del(int i, int j){\n      if(g_[i][j] == 1) g_[i].erase(j);\n\
+    \ n_, edges_;\n    std::vector<std::map<int, int>> g_;\n    std::vector<int> indeg_,\
+    \ outdeg_;\n\n    void del(int i, int j){\n      if(g_[i][j] == 1) g_[i].erase(j);\n\
     \      else --g_[i][j];\n    }\n\n    void dfs(int cur, std::vector<int> &path){\n\
     \      if(not g_[cur].empty()){\n        const int next = g_[cur].begin()->first;\n\
     \        del(cur, next);\n        dfs(next, path);\n      }\n\n      while(not\
@@ -56,7 +56,7 @@ data:
   isVerificationFile: false
   path: Mylib/Graph/EulerianPath/directed_eulerian_path.cpp
   requiredBy: []
-  timestamp: '2020-10-03 19:28:56+09:00'
+  timestamp: '2020-10-07 18:18:33+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/Graph/EulerianPath/directed_eulerian_path.cpp

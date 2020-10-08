@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: Mylib/Graph/Flow/ford_fulkerson.cpp
     title: Ford-Fulkerson algorithm
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/project_selection_problem.cpp
     title: Project selection problem
   - icon: ':question:'

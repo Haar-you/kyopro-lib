@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/closest_pair.cpp
     title: Closest pair
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/double_eps.cpp
     title: Floating point number with eps
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/geometry_template.cpp
     title: Geometry template
   - icon: ':question:'
@@ -16,7 +16,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.000001'
@@ -158,7 +158,7 @@ data:
   path: test/aoj/CGL_5_A/main.test.cpp
   requiredBy: []
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/CGL_5_A/main.test.cpp
 layout: document

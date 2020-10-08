@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp
     title: Area of intersection between a circle and a polygon
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/distance_segment_point.cpp
     title: Distance between a segment and a point
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/double_eps.cpp
     title: Floating point number with eps
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/geometry_template.cpp
     title: Geometry template
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/intersect_circle_segment.cpp
     title: Intersection between a circle and a segment
   - icon: ':question:'
@@ -22,7 +22,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.00001'
@@ -195,7 +195,7 @@ data:
   path: test/aoj/CGL_7_H/main.test.cpp
   requiredBy: []
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/CGL_7_H/main.test.cpp
 layout: document

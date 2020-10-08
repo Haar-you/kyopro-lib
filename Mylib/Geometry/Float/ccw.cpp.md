@@ -1,46 +1,46 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/geometry_template.cpp
     title: Geometry template
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/convex_cut.cpp
     title: Convex cut
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/intersect_segments.cpp
     title: Intersection between two segments
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/is_convex.cpp
     title: Check convex
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/is_point_in_polygon.cpp
     title: Check if a point is in a polygon
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2136/main.test.cpp
     title: test/aoj/2136/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_1_C/main.test.cpp
     title: test/aoj/CGL_1_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_2_B/main.test.cpp
     title: test/aoj/CGL_2_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_2_C/main.test.cpp
     title: test/aoj/CGL_2_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_3_B/main.test.cpp
     title: test/aoj/CGL_3_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_3_C/main.test.cpp
     title: test/aoj/CGL_3_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_4_C/main.test.cpp
     title: test/aoj/CGL_4_C/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/geometry_template.cpp\"\n#include <iostream>\n\
@@ -135,19 +135,19 @@ data:
   path: Mylib/Geometry/Float/ccw.cpp
   requiredBy:
   - Mylib/Geometry/Float/intersect_segments.cpp
+  - Mylib/Geometry/Float/convex_cut.cpp
   - Mylib/Geometry/Float/is_point_in_polygon.cpp
   - Mylib/Geometry/Float/is_convex.cpp
-  - Mylib/Geometry/Float/convex_cut.cpp
   timestamp: '2020-09-19 20:03:12+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/CGL_3_C/main.test.cpp
-  - test/aoj/2136/main.test.cpp
   - test/aoj/CGL_2_B/main.test.cpp
-  - test/aoj/CGL_3_B/main.test.cpp
-  - test/aoj/CGL_2_C/main.test.cpp
   - test/aoj/CGL_4_C/main.test.cpp
+  - test/aoj/CGL_3_B/main.test.cpp
+  - test/aoj/2136/main.test.cpp
   - test/aoj/CGL_1_C/main.test.cpp
+  - test/aoj/CGL_2_C/main.test.cpp
 documentation_of: Mylib/Geometry/Float/ccw.cpp
 layout: document
 title: Check clockwise-counterclockwise

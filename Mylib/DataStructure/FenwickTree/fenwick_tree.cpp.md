@@ -49,8 +49,8 @@ data:
   timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
   - test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
+  - test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
 documentation_of: Mylib/DataStructure/FenwickTree/fenwick_tree.cpp
 layout: document
 title: Fenwick tree

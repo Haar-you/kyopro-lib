@@ -9,77 +9,77 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/3034/main.test.cpp
     title: test/aoj/3034/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_1_A/main.test.cpp
     title: test/aoj/CGL_1_A/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_1_B/main.test.cpp
     title: test/aoj/CGL_1_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_1_C/main.test.cpp
     title: test/aoj/CGL_1_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_2_A/main.test.cpp
     title: test/aoj/CGL_2_A/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_2_B/main.test.cpp
     title: test/aoj/CGL_2_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_2_C/main.test.cpp
     title: test/aoj/CGL_2_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_2_D/main.test.cpp
     title: test/aoj/CGL_2_D/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_3_A/main.test.cpp
     title: test/aoj/CGL_3_A/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_3_B/main.test.cpp
     title: test/aoj/CGL_3_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_3_C/main.test.cpp
     title: test/aoj/CGL_3_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_4_A/main.test.cpp
     title: test/aoj/CGL_4_A/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_4_B/main.test.cpp
     title: test/aoj/CGL_4_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_4_C/main.test.cpp
     title: test/aoj/CGL_4_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_5_A/main.test.cpp
     title: test/aoj/CGL_5_A/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_7_A/main.test.cpp
     title: test/aoj/CGL_7_A/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_7_B/main.test.cpp
     title: test/aoj/CGL_7_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_7_C/main.test.cpp
     title: test/aoj/CGL_7_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_7_D/main.test.cpp
     title: test/aoj/CGL_7_D/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_7_E/main.test.cpp
     title: test/aoj/CGL_7_E/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_7_F/main.test.cpp
     title: test/aoj/CGL_7_F/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_7_G/main.test.cpp
     title: test/aoj/CGL_7_G/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_7_H/main.test.cpp
     title: test/aoj/CGL_7_H/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_7_I/main.test.cpp
     title: test/aoj/CGL_7_I/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/double_eps.cpp\"\n#include <iostream>\n\
@@ -163,33 +163,33 @@ data:
   path: Mylib/Geometry/Float/double_eps.cpp
   requiredBy: []
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/CGL_3_C/main.test.cpp
-  - test/aoj/CGL_7_C/main.test.cpp
-  - test/aoj/CGL_4_B/main.test.cpp
-  - test/aoj/CGL_7_E/main.test.cpp
   - test/aoj/CGL_2_D/main.test.cpp
-  - test/aoj/CGL_7_I/main.test.cpp
-  - test/aoj/CGL_7_H/main.test.cpp
-  - test/aoj/CGL_7_F/main.test.cpp
+  - test/aoj/CGL_3_C/main.test.cpp
   - test/aoj/CGL_1_A/main.test.cpp
-  - test/aoj/3034/main.test.cpp
-  - test/aoj/CGL_7_G/main.test.cpp
-  - test/aoj/2136/main.test.cpp
-  - test/aoj/CGL_2_B/main.test.cpp
-  - test/aoj/CGL_7_D/main.test.cpp
-  - test/aoj/CGL_5_A/main.test.cpp
-  - test/aoj/CGL_7_B/main.test.cpp
-  - test/aoj/CGL_3_A/main.test.cpp
-  - test/aoj/CGL_4_A/main.test.cpp
+  - test/aoj/CGL_7_H/main.test.cpp
   - test/aoj/CGL_2_A/main.test.cpp
-  - test/aoj/CGL_3_B/main.test.cpp
-  - test/aoj/CGL_2_C/main.test.cpp
+  - test/aoj/CGL_2_B/main.test.cpp
+  - test/aoj/CGL_7_F/main.test.cpp
   - test/aoj/CGL_4_C/main.test.cpp
-  - test/aoj/CGL_7_A/main.test.cpp
-  - test/aoj/CGL_1_C/main.test.cpp
   - test/aoj/CGL_1_B/main.test.cpp
+  - test/aoj/CGL_3_B/main.test.cpp
+  - test/aoj/CGL_7_I/main.test.cpp
+  - test/aoj/CGL_7_B/main.test.cpp
+  - test/aoj/CGL_7_C/main.test.cpp
+  - test/aoj/CGL_5_A/main.test.cpp
+  - test/aoj/CGL_7_A/main.test.cpp
+  - test/aoj/CGL_3_A/main.test.cpp
+  - test/aoj/3034/main.test.cpp
+  - test/aoj/CGL_7_D/main.test.cpp
+  - test/aoj/2136/main.test.cpp
+  - test/aoj/CGL_7_G/main.test.cpp
+  - test/aoj/CGL_1_C/main.test.cpp
+  - test/aoj/CGL_4_B/main.test.cpp
+  - test/aoj/CGL_4_A/main.test.cpp
+  - test/aoj/CGL_2_C/main.test.cpp
+  - test/aoj/CGL_7_E/main.test.cpp
 documentation_of: Mylib/Geometry/Float/double_eps.cpp
 layout: document
 title: Floating point number with eps

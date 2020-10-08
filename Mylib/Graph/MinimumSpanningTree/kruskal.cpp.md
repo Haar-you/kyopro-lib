@@ -87,8 +87,8 @@ data:
   timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/aoj/GRL_2_A/main.kruskal.test.cpp
   - test/yosupo-judge/manhattanmst/main.test.cpp
+  - test/aoj/GRL_2_A/main.kruskal.test.cpp
 documentation_of: Mylib/Graph/MinimumSpanningTree/kruskal.cpp
 layout: document
 title: Kruskal algorithm

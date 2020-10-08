@@ -49,11 +49,11 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/aoj/2136/main.test.cpp
-  - test/aoj/2530/main.test.cpp
-  - test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
   - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/sqrt_mod/main.test.cpp
+  - test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
+  - test/aoj/2530/main.test.cpp
+  - test/aoj/2136/main.test.cpp
 documentation_of: Mylib/Number/Mod/mod_pow.cpp
 layout: document
 title: Mod pow

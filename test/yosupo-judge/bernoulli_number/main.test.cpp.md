@@ -16,7 +16,7 @@ data:
   - icon: ':x:'
     path: Mylib/Math/formal_power_series.cpp
     title: Formal power series
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: Mylib/Combinatorics/partition_number.cpp
     title: Partition number (Enumerate $P(n, k)$)
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

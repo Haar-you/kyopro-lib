@@ -43,8 +43,8 @@ data:
   isVerificationFile: false
   path: Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
   requiredBy:
-  - Mylib/Typical/RangeCountQuery/range_count_query.cpp
   - Mylib/Typical/InversionNumber/range_inversions_query.cpp
+  - Mylib/Typical/RangeCountQuery/range_count_query.cpp
   timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:

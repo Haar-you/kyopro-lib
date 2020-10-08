@@ -19,7 +19,7 @@ data:
   - icon: ':question:'
     path: Mylib/IO/input_tuples_with_index.cpp
     title: Input tuples with index
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

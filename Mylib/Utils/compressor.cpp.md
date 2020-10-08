@@ -65,8 +65,8 @@ data:
   timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/aoj/1337/main.test.cpp
   - test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
+  - test/aoj/1337/main.test.cpp
 documentation_of: Mylib/Utils/compressor.cpp
 layout: document
 title: Compressor

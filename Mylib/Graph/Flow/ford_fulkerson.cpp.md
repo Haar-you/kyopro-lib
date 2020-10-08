@@ -6,7 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2903/main.test.cpp
     title: test/aoj/2903/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/3058/main.test.cpp
     title: test/aoj/3058/main.test.cpp
   - icon: ':x:'
@@ -75,10 +75,10 @@ data:
   timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/aoj/GRL_7_A/main.test.cpp
+  - test/aoj/2903/main.test.cpp
   - test/aoj/3058/main.test.cpp
   - test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp
-  - test/aoj/2903/main.test.cpp
-  - test/aoj/GRL_7_A/main.test.cpp
 documentation_of: Mylib/Graph/Flow/ford_fulkerson.cpp
 layout: document
 title: Ford-Fulkerson algorithm

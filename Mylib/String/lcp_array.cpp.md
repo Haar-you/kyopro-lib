@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/String/suffix_array.cpp
     title: Suffix array
   _extendedRequiredBy: []

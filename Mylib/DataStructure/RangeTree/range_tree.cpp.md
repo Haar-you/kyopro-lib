@@ -80,7 +80,7 @@ data:
   - test/aoj/DSL_2_C/main.test.cpp
 documentation_of: Mylib/DataStructure/RangeTree/range_tree.cpp
 layout: document
-title: null
+title: Range tree
 ---
 
 ## Operations

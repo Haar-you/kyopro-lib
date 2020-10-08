@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/3118/main.test.cpp
     title: test/aoj/3118/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp\"\
@@ -46,7 +46,7 @@ data:
   path: Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp
   requiredBy: []
   timestamp: '2020-10-03 19:28:56+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/3118/main.test.cpp
 documentation_of: Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp

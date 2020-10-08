@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: Mylib/LinearAlgebra/Square/square_matrix.cpp
     title: Square matrix
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

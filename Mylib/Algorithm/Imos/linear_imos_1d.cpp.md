@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/3165/main.test.imos.cpp
     title: test/aoj/3165/main.test.imos.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Algorithm/Imos/linear_imos_1d.cpp\"\n#include <vector>\n\
@@ -44,7 +44,7 @@ data:
   path: Mylib/Algorithm/Imos/linear_imos_1d.cpp
   requiredBy: []
   timestamp: '2020-10-01 09:22:17+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/3165/main.test.imos.cpp
 documentation_of: Mylib/Algorithm/Imos/linear_imos_1d.cpp

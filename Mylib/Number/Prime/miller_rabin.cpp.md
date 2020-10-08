@@ -64,8 +64,8 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/yosupo-judge/factorize/main.test.cpp
   - test/yukicoder/3030/main.test.cpp
+  - test/yosupo-judge/factorize/main.test.cpp
 documentation_of: Mylib/Number/Prime/miller_rabin.cpp
 layout: document
 title: Primality test (Miller-Rabin algorithm)

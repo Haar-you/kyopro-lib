@@ -7,7 +7,7 @@ data:
   - icon: ':x:'
     path: Mylib/Combinatorics/factorial_table.cpp
     title: Factorial table
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []
