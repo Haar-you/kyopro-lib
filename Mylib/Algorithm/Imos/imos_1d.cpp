@@ -21,15 +21,12 @@ namespace haar_lib {
       if(r < n_) data_[r] -= 1;
     }
 
-    void build(){
+    auto build() const {
+      std::vector<T> ret(data_);
       for(int i = 1; i < n_; ++i){
-        data_[i] += data_[i - 1];
+        ret[i] += ret[i - 1];
       }
+      return ret;
     }
-
-    T operator[](size_t i) const {return data_[i];}
-
-    auto begin() const {return data_.begin();}
-    auto end() const {return data_.end();}
   };
 }

@@ -4,51 +4,49 @@
 #include <cassert>
 
 namespace haar_lib {
-  template <typename T, typename Add = std::plus<T>, typename Minus = std::minus<T>>
+  template <typename T>
   class cumulative_sum_1d {
   public:
     using value_type = T;
 
   private:
-    std::vector<T> data_;
+    template <typename> friend class cumulative_sum_1d_builder;
     int N_;
-    Add add_;
-    Minus minus_;
-    bool is_built_ = false;
+    std::vector<T> data_;
 
   public:
-    cumulative_sum_1d(){}
-    cumulative_sum_1d(
-      int N, const T &e = 0, const Add &add = Add(), const Minus &minus = Minus()
-    ): N_(N), add_(add), minus_(minus)
-    {
-      data_.assign(N_ + 1, e);
+    T fold(int l, int r) const {
+      assert(0 <= l and l <= r and r <= N_);
+      return data_[r] - data_[l];
     }
+  };
+
+  template <typename T>
+  class cumulative_sum_1d_builder {
+    int N_;
+    std::vector<T> data_;
+
+  public:
+    cumulative_sum_1d_builder(){}
+    cumulative_sum_1d_builder(int N): N_(N), data_(N + 1){}
 
     auto& update(const std::vector<T> &a){
-      assert(not is_built_);
-      for(int i = 0; i < N_; ++i) data_[i + 1] = add_(data_[i + 1], a[i]);
+      for(int i = 0; i < N_; ++i) data_[i + 1] += a[i];
       return *this;
     }
 
     auto& update(int i, const T &val){
-      assert(not is_built_);
       assert(0 <= i and i < N_);
-      data_[i + 1] = add_(data_[i + 1], val);
+      data_[i + 1] += val;
       return *this;
     }
 
-    auto& build(){
-      assert(not is_built_);
-      for(int i = 0; i < N_; ++i) data_[i + 1] = add_(data_[i + 1], data_[i]);
-      is_built_ = true;
-      return *this;
-    }
-
-    T fold(int l, int r) const {
-      assert(is_built_);
-      assert(0 <= l and l <= r and r <= N_);
-      return minus_(data_[r], data_[l]);
+    auto build() const {
+      cumulative_sum_1d<T> ret;
+      ret.data_ = data_;
+      ret.N_ = N_;
+      for(int i = 0; i < N_; ++i) ret.data_[i + 1] += ret.data_[i];
+      return ret;
     }
   };
 }

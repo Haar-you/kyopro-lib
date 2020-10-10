@@ -15,10 +15,10 @@ int main(){
     imos.update({x1, y1}, {x2, y2}, 1);
   }
 
-  imos.build();
+  const auto res = imos.build();
 
   int ans = 0;
-  for(auto &v : imos){
+  for(auto &v : res){
     ans = std::max(ans, *std::max_element(v.begin(), v.end()));
   }
 

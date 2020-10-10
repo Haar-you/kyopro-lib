@@ -20,9 +20,9 @@ int main(){
     imos.update(l, l + k, 1, 1);
   }
 
-  imos.build();
+  const auto res = imos.build();
 
-  std::cout << hl::join(imos.begin(), imos.end()) << "\n";
+  std::cout << hl::join(res.begin(), res.end()) << "\n";
 
   return 0;
 }

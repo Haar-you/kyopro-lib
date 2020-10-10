@@ -6,30 +6,9 @@ namespace haar_lib {
   template <typename T>
   class compressor {
     std::vector<T> data_;
+    template <typename> friend class compressor_builder;
 
   public:
-    auto& add(const T &val){
-      data_.push_back(val);
-      return *this;
-    }
-
-    auto& add(const std::vector<T> &vals){
-      data_.insert(data_.end(), vals.begin(), vals.end());
-      return *this;
-    }
-
-    template <typename U, typename ... Args>
-    auto& add(const U &val, const Args &... args){
-      add(val);
-      return add(args ...);
-    }
-
-    auto& build(){
-      std::sort(data_.begin(), data_.end());
-      data_.erase(std::unique(data_.begin(), data_.end()), data_.end());
-      return *this;
-    }
-
     int get_index(const T &val) const {
       return std::lower_bound(data_.begin(), data_.end(), val) - data_.begin();
     }
@@ -68,5 +47,35 @@ namespace haar_lib {
 
     int size() const {return data_.size();}
     T operator[](int index) const {return data_[index];}
+  };
+
+  template <typename T>
+  class compressor_builder {
+    std::vector<T> data_;
+
+  public:
+    auto& add(const T &val){
+      data_.push_back(val);
+      return *this;
+    }
+
+    auto& add(const std::vector<T> &vals){
+      data_.insert(data_.end(), vals.begin(), vals.end());
+      return *this;
+    }
+
+    template <typename U, typename ... Args>
+    auto& add(const U &val, const Args &... args){
+      add(val);
+      return add(args ...);
+    }
+
+    auto build() const {
+      compressor<T> ret;
+      ret.data_ = data_;
+      std::sort(ret.data_.begin(), ret.data_.end());
+      ret.data_.erase(std::unique(ret.data_.begin(), ret.data_.end()), ret.data_.end());
+      return ret;
+    }
   };
 }

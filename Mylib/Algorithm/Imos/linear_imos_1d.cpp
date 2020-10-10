@@ -27,17 +27,19 @@ namespace haar_lib {
       vec_b_[t] -= b;
     }
 
-    void build(){
-      for(int i = 0; i < n_; ++i) vec_a_[i + 1] += vec_a_[i];
-      for(int i = 0; i <= n_; ++i) vec_a_[i] += vec_a_end_[i];
-      for(int i = 0; i < n_; ++i) vec_a_[i + 1] += vec_a_[i];
-      for(int i = 0; i < n_; ++i) vec_b_[i + 1] += vec_b_[i];
-      for(int i = 0; i < n_; ++i) data_[i] = vec_a_[i] + vec_b_[i];
+    auto build() const {
+      std::vector<T> ret(vec_a_);
+      for(int i = 0; i < n_; ++i) ret[i + 1] += ret[i];
+      for(int i = 0; i < n_; ++i) ret[i] += vec_a_end_[i];
+      for(int i = 0; i < n_; ++i) ret[i + 1] += ret[i];
+
+      std::vector<T> temp(vec_b_);
+      for(int i = 0; i < n_; ++i) temp[i + 1] += temp[i];
+      for(int i = 0; i < n_; ++i) ret[i] += temp[i];
+
+      ret.pop_back();
+
+      return ret;
     }
-
-    T operator[](size_t i) const {return data_[i];}
-
-    auto begin() const {return data_.begin();}
-    auto end() const {return data_.end();}
   };
 }

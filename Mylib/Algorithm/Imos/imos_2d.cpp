@@ -27,23 +27,20 @@ namespace haar_lib {
       if(x2 < n_) data_[x2][y1] -= val;
     }
 
-    void build(){
+    auto build() const {
+      std::vector<std::vector<T>> ret(data_);
       for(int i = 1; i < n_; ++i){
         for(int j = 0; j < m_; ++j){
-          data_[i][j] += data_[i - 1][j];
+          ret[i][j] += ret[i - 1][j];
         }
       }
 
       for(int i = 0; i < n_; ++i){
         for(int j = 1; j < m_; ++j){
-          data_[i][j] += data_[i][j - 1];
+          ret[i][j] += ret[i][j - 1];
         }
       }
+      return ret;
     }
-
-    const std::vector<T>& operator[](size_t i) const {return data_[i];}
-
-    auto begin() const {return data_.begin();}
-    auto end() const {return data_.end();}
   };
 }

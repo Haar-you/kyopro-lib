@@ -15,9 +15,9 @@ int main(){
     imos.update(l, r, 1);
   }
 
-  imos.build();
+  const auto res = imos.build();
 
-  int ans = *std::max_element(imos.begin(), imos.end());
+  int ans = *std::max_element(res.begin(), res.end());
 
   std::cout << ans << std::endl;
 

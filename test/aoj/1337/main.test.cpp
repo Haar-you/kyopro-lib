@@ -22,8 +22,8 @@ int main(){
 
     int64_t a[H][W] = {};
 
-    hl::compressor<int>().add(l, r, -1).build().compress(l, r);
-    hl::compressor<int>().add(t, b, -1).build().compress(t, b);
+    hl::compressor_builder<int>().add(l, r, -1).build().compress(l, r);
+    hl::compressor_builder<int>().add(t, b, -1).build().compress(t, b);
 
     for(int i = 0; i < n; ++i){
       for(int x = l[i]; x < r[i]; ++x){

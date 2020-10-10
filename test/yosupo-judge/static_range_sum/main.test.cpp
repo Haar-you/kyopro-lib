@@ -15,7 +15,7 @@ int main(){
 
   auto a = hl::input_vector<int64_t>(N);
 
-  auto c = hl::cumulative_sum_1d<int64_t>(N).update(a).build();
+  auto c = hl::cumulative_sum_1d_builder<int64_t>(N).update(a).build();
 
   for(auto [l, r] : hl::input_tuples<int, int>(Q)){
     std::cout << c.fold(l, r) << "\n";
