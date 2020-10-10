@@ -1,8 +1,10 @@
 #pragma once
 #include <vector>
+#include <cassert>
 
 namespace haar_lib {
   auto subset_sum(int N, int K, const std::vector<int> &a){
+    assert((int)a.size() == N);
     std::vector<std::vector<bool>> dp(2, std::vector<bool>(K + 1));
 
     dp[0][0] = true;

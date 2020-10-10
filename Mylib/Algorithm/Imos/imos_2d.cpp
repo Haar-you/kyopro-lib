@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <cassert>
 
 namespace haar_lib {
   template <typename T>
@@ -17,6 +18,8 @@ namespace haar_lib {
     void update(std::pair<int, int> p1, std::pair<int, int> p2, T val){
       const auto [x1, y1] = p1;
       const auto [x2, y2] = p2;
+      assert(0 <= x1 and x1 <= x2 and x2 <= n_);
+      assert(0 <= y1 and y1 <= y2 and y2 <= m_);
 
       data_[x1][y1] += val;
       if(x2 < n_ and y2 < m_) data_[x2][y2] += val;

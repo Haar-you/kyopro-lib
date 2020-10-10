@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <optional>
+#include <cassert>
 #include "Mylib/Number/extended_gcd.cpp"
 
 namespace haar_lib {
@@ -20,6 +21,7 @@ namespace haar_lib {
     const std::vector<int64_t> &bs,
     const std::vector<int64_t> &ms
   ){
+    assert(bs.size() == ms.size());
     int64_t R = 0, M = 1;
     for(int i = 0; i < (int)bs.size(); ++i){
       const auto res = chinese_remainder_algorithm(R, M, bs[i], ms[i]);

@@ -33,6 +33,7 @@ namespace haar_lib {
 
     auto& update(int i, const T &val){
       assert(not is_built_);
+      assert(0 <= i and i < N_);
       data_[i + 1] = add_(data_[i + 1], val);
       return *this;
     }
@@ -46,6 +47,7 @@ namespace haar_lib {
 
     T fold(int l, int r) const {
       assert(is_built_);
+      assert(0 <= l and l <= r and r <= N_);
       return minus_(data_[r], data_[l]);
     }
   };

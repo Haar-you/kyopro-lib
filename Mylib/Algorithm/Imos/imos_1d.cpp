@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <cassert>
 
 namespace haar_lib {
   template <typename T>
@@ -15,6 +16,7 @@ namespace haar_lib {
     imos_1d(int n): data_(n), n_(n){}
 
     void update(int l, int r, T val){ // [l, r)
+      assert(0 <= l and l <= r and r <= n_);
       data_[l] += 1;
       if(r < n_) data_[r] -= 1;
     }

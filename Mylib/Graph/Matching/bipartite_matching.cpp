@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include <utility>
-#include <climits>
 #include <cassert>
 
 namespace haar_lib {

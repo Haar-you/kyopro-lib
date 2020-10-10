@@ -5,6 +5,7 @@
 #include <functional>
 #include <algorithm>
 #include <tuple>
+#include <cassert>
 
 namespace haar_lib {
   namespace minimum_cost_flow_impl {
@@ -35,11 +36,16 @@ namespace haar_lib {
     minimum_cost_flow(int size): size_(size), g_(size){}
 
     void add_edge(int from, int to, Capacity cap, Cost cost){
+      assert(0 <= from and from < size_);
+      assert(0 <= to and to < size_);
       g_[from].emplace_back(from, to, g_[to].size(), cap, cost, false);
       g_[to].emplace_back(to, from, g_[from].size() - 1, 0, -cost, true);
     }
 
     std::pair<Capacity, Cost> min_cost_flow(int src, int dst, const Capacity &f){
+      assert(0 <= src and src < size_);
+      assert(0 <= dst and dst < size_);
+
       using P = std::pair<Cost, int>;
       Cost ret = 0;
       Capacity flow = f;

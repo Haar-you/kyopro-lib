@@ -1,9 +1,11 @@
 #pragma once
 #include <vector>
+#include <cassert>
 
 namespace haar_lib {
   template <typename T>
   auto subset_sum_count(int N, int K, const std::vector<int> &a){
+    assert((int)a.size() == N);
     std::vector<std::vector<T>> dp(2, std::vector<T>(K + 1));
 
     dp[0][0] = 1;

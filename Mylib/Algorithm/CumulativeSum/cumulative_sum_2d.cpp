@@ -56,6 +56,8 @@ namespace haar_lib {
       assert(is_built_);
       const auto [x1, y1] = p1;
       const auto [x2, y2] = p2;
+      assert(0 <= x1 and x1 <= x2 and x2 <= N_);
+      assert(0 <= y1 and y1 <= y2 and y2 <= M_);
       return add_(minus_(data_[x2][y2], add_(data_[x1][y2], data_[x2][y1])), data_[x1][y1]);
     }
   };

@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <tuple>
+#include <cassert>
 
 namespace haar_lib {
   template <typename T, typename MinCostFlow, bool MIN_MATCHING = false>
@@ -19,6 +20,8 @@ namespace haar_lib {
     }
 
     void add_edge(int from, int to, T gain){
+      assert(0 <= from and from < L_);
+      assert(0 <= to and to < R_);
       f_.add_edge(from, L_ + to, 1, gain * (MIN_MATCHING ? 1 : -1));
     }
 

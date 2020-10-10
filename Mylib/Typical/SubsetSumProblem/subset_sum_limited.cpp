@@ -1,8 +1,10 @@
 #pragma once
 #include <vector>
+#include <cassert>
 
 namespace haar_lib {
   auto subset_sum_limited(int N, int K, const std::vector<int> &a, const std::vector<int> &m){
+    assert((int)a.size() == N and (int)m.size() == N);
     std::vector<int> dp(K + 1, -1);
 
     dp[0] = 0;

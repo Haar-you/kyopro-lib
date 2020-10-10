@@ -2,9 +2,11 @@
 #include <vector>
 #include <algorithm>
 #include <climits>
+#include <cassert>
 
 namespace haar_lib {
   auto subset_sum_minimum(int N, int K, const std::vector<int> &a){
+    assert((int)a.size() == N);
     std::vector<std::vector<int64_t>> dp(2, std::vector<int64_t>(K + 1, INT_MAX));
 
     dp[0][0] = 0;

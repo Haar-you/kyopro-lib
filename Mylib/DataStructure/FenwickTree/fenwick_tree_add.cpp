@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <cassert>
 
 namespace haar_lib {
   template <typename T>
@@ -16,6 +17,7 @@ namespace haar_lib {
     fenwick_tree_add(int size): size_(size), data_(size + 1, 0){}
 
     void update(int i, value_type val){
+      assert(0 <= i and i < size_);
       i += 1; // 1-index
 
       while(i <= size_){
@@ -25,6 +27,7 @@ namespace haar_lib {
     }
 
     value_type fold(int i) const { // [0, i)
+      assert(0 <= i and i <= size_);
       value_type ret = 0;
 
       while(i > 0){
@@ -36,6 +39,7 @@ namespace haar_lib {
     }
 
     value_type fold(int l, int r) const { // [l, r)
+      assert(0 <= l and l <= r and r <= size_);
       return fold(r) - fold(l);
     }
 

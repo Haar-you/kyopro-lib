@@ -3,7 +3,7 @@
 #include <algorithm>
 
 namespace haar_lib {
-  template <typename Container, typename T = typename Container::value_type>
+  template <typename Container>
   int lcs(const Container &a, const Container &b){
     const int n = a.size(), m = b.size();
 

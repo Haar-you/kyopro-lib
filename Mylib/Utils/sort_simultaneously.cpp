@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <numeric>
 #include <initializer_list>
+#include <cassert>
 
 namespace haar_lib {
   namespace sort_simultaneously_impl {
@@ -18,6 +19,7 @@ namespace haar_lib {
   template <typename Compare, typename ... Args>
   void sort_simultaneously(const Compare &compare, std::vector<Args> &... args){
     const int N = std::max({args.size() ...});
+    assert((int)std::min({args.size() ...}) == N);
     std::vector<int> ord(N);
     std::iota(ord.begin(), ord.end(), 0);
     std::sort(ord.begin(), ord.end(), compare);

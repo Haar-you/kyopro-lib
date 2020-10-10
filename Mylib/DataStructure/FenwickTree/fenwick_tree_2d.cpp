@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <cassert>
 
 namespace haar_lib {
   template <typename AbelianGroup>
@@ -44,6 +45,8 @@ namespace haar_lib {
     value_type fold(std::pair<int, int> p1, std::pair<int, int> p2) const {
       const auto [x1, y1] = p1;
       const auto [x2, y2] = p2;
+      assert(0 <= x1 and x1 <= x2 and x2 <= w_);
+      assert(0 <= y1 and y1 <= y2 and y2 <= h_);
       return G_(get(x1, x2, y2), G_.inv(get(x1, x2, y1)));
     }
 
@@ -54,6 +57,8 @@ namespace haar_lib {
 
     void update(std::pair<int, int> p, const value_type &val){
       auto [x, y] = p;
+      assert(0 <= x and x < w_);
+      assert(0 <= y and y < h_);
       x += 1;
       y += 1;
 

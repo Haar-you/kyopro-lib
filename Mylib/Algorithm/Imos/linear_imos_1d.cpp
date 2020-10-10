@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <cassert>
 
 namespace haar_lib {
   template <typename T>
@@ -16,6 +17,7 @@ namespace haar_lib {
       n_(n), vec_a_(n_ + 1), vec_a_end_(n_ + 1), vec_b_(n_ + 1), data_(n_){}
 
     void update(int s, int t, const T &a, const T &b){
+      assert(0 <= s and s <= t and t <= n_);
       vec_a_[s + 1] += a;
       vec_a_[t] -= a;
 

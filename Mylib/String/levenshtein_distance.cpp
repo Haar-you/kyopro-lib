@@ -3,7 +3,7 @@
 #include <algorithm>
 
 namespace haar_lib {
-  template <typename Container, typename T = typename Container::value_type>
+  template <typename Container>
   int levenshtein_distance(const Container &a, const Container &b){
     const int n = a.size(), m = b.size();
     std::vector<std::vector<int>> dp(n + 1, std::vector<int>(m + 1, 0));

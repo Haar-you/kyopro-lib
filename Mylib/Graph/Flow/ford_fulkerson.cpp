@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <algorithm>
+#include <cassert>
 
 namespace haar_lib {
   namespace ford_fulkerson_impl {
@@ -47,6 +48,8 @@ namespace haar_lib {
     ford_fulkerson(int size): size_(size), g_(size), visit_(size){}
 
     void add_edge(int from, int to, T c){
+      assert(0 <= from and from < size_);
+      assert(0 <= to and to < size_);
       g_[from].emplace_back(from, to, (int)g_[to].size(), c, false);
       g_[to].emplace_back(to, from, (int)g_[from].size() - 1, 0, true);
     }
@@ -63,6 +66,9 @@ namespace haar_lib {
     }
 
     T max_flow(int s, int t){
+      assert(0 <= s and s < size_);
+      assert(0 <= t and t < size_);
+
       T ret = 0;
 
       while(1){

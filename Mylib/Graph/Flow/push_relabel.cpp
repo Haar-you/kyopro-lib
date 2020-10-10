@@ -3,6 +3,7 @@
 #include <queue>
 #include <utility>
 #include <limits>
+#include <cassert>
 
 namespace haar_lib {
   namespace push_relabel_impl {
@@ -101,11 +102,15 @@ namespace haar_lib {
     push_relabel(int N): N_(N), g_(N), excess_(N), height_(N){}
 
     void add_edge(int from, int to, T c){
+      assert(0 <= from and from < N_);
+      assert(0 <= to and to < N_);
       g_[from].emplace_back(from, to, (int)g_[to].size(), c, false);
       g_[to].emplace_back(to, from, (int)g_[from].size() - 1, 0, true);
     }
 
     T max_flow(int s, int t){
+      assert(0 <= s and s < N_);
+      assert(0 <= t and t < N_);
       init(s, t);
 
       while(true){

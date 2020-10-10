@@ -3,6 +3,7 @@
 #include <utility>
 #include <queue>
 #include <algorithm>
+#include <cassert>
 
 namespace haar_lib {
   namespace dinic_impl {
@@ -23,6 +24,7 @@ namespace haar_lib {
     using capacity_type = T;
 
   private:
+    int size_;
     std::vector<std::vector<edge>> g_;
     std::vector<int> level_;
 
@@ -70,14 +72,19 @@ namespace haar_lib {
 
   public:
     dinic(){}
-    dinic(int size): g_(size), level_(size){}
+    dinic(int size): size_(size), g_(size), level_(size){}
 
     void add_edge(int from, int to, T c){
+      assert(0 <= from and from < size_);
+      assert(0 <= to and to < size_);
       g_[from].emplace_back(from, to, (int)g_[to].size(), c, false);
       g_[to].emplace_back(to, from, (int)g_[from].size() - 1, 0, true);
     }
 
     T max_flow(int s, int t){
+      assert(0 <= s and s < size_);
+      assert(0 <= t and t < size_);
+
       T f = 0;
       while(build_level(s, t)){
         T a = 0;
