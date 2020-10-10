@@ -8,13 +8,12 @@
 namespace hl = haar_lib;
 
 using mint = hl::modint<1000000007>;
+const static auto ft = hl::factorial_table<mint>(3000);
 
 int main(){
-  auto ft = hl::factorial_table<mint>(3000);
-
   int N, K; std::cin >> N >> K;
 
-  std::cout << hl::bell_number(N, K, ft) << std::endl;
+  std::cout << hl::bell_number<ft>(N, K) << std::endl;
 
   return 0;
 }

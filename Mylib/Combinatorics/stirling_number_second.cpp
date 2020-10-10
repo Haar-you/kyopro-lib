@@ -3,9 +3,11 @@
 #include "Mylib/Combinatorics/factorial_table.cpp"
 
 namespace haar_lib {
-  template <typename Ft, typename T = typename Ft::value_type>
-  T stirling_number_of_second_kind(int64_t n, int64_t k, const Ft &ft){
-    if(n == 0 and k == 0) return 1;
+  template <const auto &ft>
+  auto stirling_number_of_second_kind(int64_t n, int64_t k){
+    using T = typename std::remove_reference_t<decltype(ft)>::value_type;
+
+    if(n == 0 and k == 0) return T(1);
 
     T ret = 0;
     for(int i = 1; i <= k; ++i){

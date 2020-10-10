@@ -9,15 +9,14 @@
 namespace hl = haar_lib;
 
 using mint = hl::modint<1000000007>;
+const static auto ft = hl::factorial_table<mint>(500000);
 
 int main(){
-  auto ft = hl::factorial_table<mint>(500000);
-
   int N; std::cin >> N;
 
   std::vector<mint> c(N + 1);
   for(int i = 0; i <= N; ++i){
-    c[i] = hl::catalan_number(i, ft);
+    c[i] = hl::catalan_number<ft>(i);
   }
 
   for(int i = 1; i <= N; ++i){

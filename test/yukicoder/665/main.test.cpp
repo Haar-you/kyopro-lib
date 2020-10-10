@@ -8,15 +8,15 @@
 namespace hl = haar_lib;
 
 using mint = hl::modint<1000000007>;
+const static auto ft = hl::factorial_table<mint>(30000);
 
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int64_t n, k; std::cin >> n >> k;
-  auto ft = hl::factorial_table<mint>(3 * k);
 
-  auto b = hl::bernoulli_number(k, ft);
+  auto b = hl::bernoulli_number<ft>(k);
 
   mint ans = 0;
 

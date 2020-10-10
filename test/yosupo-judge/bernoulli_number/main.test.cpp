@@ -15,6 +15,7 @@ using mint = hl::modint<998244353>;
 constexpr int PRIM_ROOT = 3;
 using FPS = hl::formal_power_series<mint>;
 using NTT = hl::number_theoretic_transform<mint, PRIM_ROOT, 1 << 20>;
+const static auto ft = hl::factorial_table<mint>(500001);
 
 int main(){
   using namespace std::placeholders;
@@ -23,12 +24,10 @@ int main(){
 
   int N; std::cin >> N;
 
-  auto ft = hl::factorial_table<mint>(N + 1);
-
   auto ntt = NTT();
   FPS::convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
 
-  auto res = hl::bernoulli_number_fps<FPS>(N, ft);
+  auto res = hl::bernoulli_number_fps<FPS, ft>(N);
   std::cout << hl::join(res.begin(), res.begin() + N + 1) << "\n";
 
   return 0;

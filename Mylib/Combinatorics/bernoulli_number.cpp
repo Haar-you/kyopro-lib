@@ -4,8 +4,9 @@
 #include "Mylib/Combinatorics/factorial_table.cpp"
 
 namespace haar_lib {
-  template <typename Ft, typename T = typename Ft::value_type>
-  std::vector<T> bernoulli_number(int64_t n, const Ft &ft){
+  template <const auto &ft>
+  auto bernoulli_number(int64_t n){
+    using T = typename std::remove_reference_t<decltype(ft)>::value_type;
     std::vector<T> ret(n + 1);
 
     ret[0] = 1;

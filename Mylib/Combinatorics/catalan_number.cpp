@@ -3,8 +3,8 @@
 #include "Mylib/Combinatorics/factorial_table.cpp"
 
 namespace haar_lib {
-  template <typename Ft, typename T = typename Ft::value_type>
-  T catalan_number(int64_t n, const Ft &ft){
+  template <const auto &ft>
+  auto catalan_number(int64_t n){
     return ft.C(2 * n, n) - ft.C(2 * n, n - 1);
   }
 }
