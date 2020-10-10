@@ -13,16 +13,14 @@
 namespace hl = haar_lib;
 
 using mint = hl::modint<998244353>;
-using FPS = hl::formal_power_series<mint>;
 using NTT = hl::number_theoretic_transform<mint, 3, 1 << 21>;
+const static auto ntt = NTT();
+using FPS = hl::formal_power_series<mint, ntt>;
 
 int main(){
-  using namespace std::placeholders;
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  auto ntt = NTT();
-  FPS::convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
   FPS::get_sqrt = [&](const auto &a){return hl::mod_sqrt((int64_t)a, mint::mod());};
 
   int N; std::cin >> N;

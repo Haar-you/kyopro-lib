@@ -5,12 +5,11 @@
 #include <cassert>
 
 namespace haar_lib {
-  template <typename T>
+  template <typename T, const auto &convolve>
   class formal_power_series {
   public:
     using value_type = T;
 
-    static std::function<std::vector<T>(std::vector<T>, std::vector<T>)> convolve;
     static std::function<std::optional<T>(T)> get_sqrt;
 
   private:
@@ -270,9 +269,6 @@ namespace haar_lib {
     }
   };
 
-  template <typename T>
-  std::function<std::vector<T>(std::vector<T>, std::vector<T>)> formal_power_series<T>::convolve;
-
-  template <typename T>
-  std::function<std::optional<T>(T)> formal_power_series<T>::get_sqrt;
+  template <typename T, const auto &convolve>
+  std::function<std::optional<T>(T)> formal_power_series<T, convolve>::get_sqrt;
 }

@@ -36,7 +36,7 @@ namespace haar_lib {
       }
     }
 
-    void run(std::vector<T> &f, bool INVERSE = false){
+    void run(std::vector<T> &f, bool INVERSE = false) const {
       const int n = f.size();
       assert((n & (n - 1)) == 0 and n <= MAX_SIZE); // データ数は2の冪乗個
 
@@ -75,7 +75,7 @@ namespace haar_lib {
     }
 
     template <typename U>
-    std::vector<T> convolve(std::vector<U> f, std::vector<U> g){
+    std::vector<T> convolve(std::vector<U> f, std::vector<U> g) const {
       const int m = f.size() + g.size() - 1;
       int n = 1;
       while(n < m) n *= 2;
@@ -92,6 +92,11 @@ namespace haar_lib {
       run(f2, true);
 
       return f2;
+    }
+
+    template <typename U>
+    std::vector<T> operator()(std::vector<U> f, std::vector<U> g) const {
+      return convolve(f, g);
     }
   };
 

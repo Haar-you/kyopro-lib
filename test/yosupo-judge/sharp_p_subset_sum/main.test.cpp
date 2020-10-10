@@ -12,19 +12,16 @@
 namespace hl = haar_lib;
 
 using mint = hl::modint<998244353>;
-using FPS = hl::formal_power_series<mint>;
 using NTT = hl::number_theoretic_transform<mint, 3, 1 << 21>;
+const static auto ntt = NTT();
+using FPS = hl::formal_power_series<mint, ntt>;
 
 int main(){
-  using namespace std::placeholders;
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   int N, T; std::cin >> N >> T;
   auto s = hl::input_vector<int>(N);
-
-  auto ntt = NTT();
-  FPS::convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);
 
   auto ans = hl::subset_sum_count_fps<FPS>(s, T);
 
