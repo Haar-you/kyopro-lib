@@ -24,21 +24,21 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3165
   bundledCode: "#line 1 \"test/aoj/3165/main.test.imos.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3165\"\
     \n\n#include <iostream>\n#line 2 \"Mylib/Algorithm/Imos/linear_imos_1d.cpp\"\n\
-    #include <vector>\n\nnamespace haar_lib {\n  template <typename T>\n  class linear_imos_1d\
-    \ {\n  public:\n    using value_type = T;\n\n  private:\n    int n_;\n    std::vector<T>\
-    \ vec_a_, vec_a_end_, vec_b_, data_;\n\n  public:\n    linear_imos_1d(int n):\n\
-    \      n_(n), vec_a_(n_ + 1), vec_a_end_(n_ + 1), vec_b_(n_ + 1), data_(n_){}\n\
-    \n    void update(int s, int t, const T &a, const T &b){\n      vec_a_[s + 1]\
-    \ += a;\n      vec_a_[t] -= a;\n\n      vec_a_end_[t] -= a * (t - s - 1);\n\n\
-    \      vec_b_[s] += b;\n      vec_b_[t] -= b;\n    }\n\n    void build(){\n  \
-    \    for(int i = 0; i < n_; ++i) vec_a_[i + 1] += vec_a_[i];\n      for(int i\
-    \ = 0; i <= n_; ++i) vec_a_[i] += vec_a_end_[i];\n      for(int i = 0; i < n_;\
-    \ ++i) vec_a_[i + 1] += vec_a_[i];\n      for(int i = 0; i < n_; ++i) vec_b_[i\
-    \ + 1] += vec_b_[i];\n      for(int i = 0; i < n_; ++i) data_[i] = vec_a_[i] +\
-    \ vec_b_[i];\n    }\n\n    T operator[](size_t i) const {return data_[i];}\n\n\
-    \    auto begin() const {return data_.begin();}\n    auto end() const {return\
-    \ data_.end();}\n  };\n}\n#line 4 \"Mylib/IO/input_tuples.cpp\"\n#include <tuple>\n\
-    #include <utility>\n#include <initializer_list>\n#line 6 \"Mylib/IO/input_tuple.cpp\"\
+    #include <vector>\n#include <cassert>\n\nnamespace haar_lib {\n  template <typename\
+    \ T>\n  class linear_imos_1d {\n  public:\n    using value_type = T;\n\n  private:\n\
+    \    int n_;\n    std::vector<T> vec_a_, vec_a_end_, vec_b_, data_;\n\n  public:\n\
+    \    linear_imos_1d(int n):\n      n_(n), vec_a_(n_ + 1), vec_a_end_(n_ + 1),\
+    \ vec_b_(n_ + 1), data_(n_){}\n\n    void update(int s, int t, const T &a, const\
+    \ T &b){\n      assert(0 <= s and s <= t and t <= n_);\n      vec_a_[s + 1] +=\
+    \ a;\n      vec_a_[t] -= a;\n\n      vec_a_end_[t] -= a * (t - s - 1);\n\n   \
+    \   vec_b_[s] += b;\n      vec_b_[t] -= b;\n    }\n\n    auto build() const {\n\
+    \      std::vector<T> ret(vec_a_);\n      for(int i = 0; i < n_; ++i) ret[i +\
+    \ 1] += ret[i];\n      for(int i = 0; i < n_; ++i) ret[i] += vec_a_end_[i];\n\
+    \      for(int i = 0; i < n_; ++i) ret[i + 1] += ret[i];\n\n      std::vector<T>\
+    \ temp(vec_b_);\n      for(int i = 0; i < n_; ++i) temp[i + 1] += temp[i];\n \
+    \     for(int i = 0; i < n_; ++i) ret[i] += temp[i];\n\n      ret.pop_back();\n\
+    \n      return ret;\n    }\n  };\n}\n#line 4 \"Mylib/IO/input_tuples.cpp\"\n#include\
+    \ <tuple>\n#include <utility>\n#include <initializer_list>\n#line 6 \"Mylib/IO/input_tuple.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T, size_t ... I>\n  static void\
     \ input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){\n \
     \   (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};\n\
@@ -65,16 +65,16 @@ data:
     \n\nnamespace hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  int N, Q; std::cin >> N >> Q;\n\n  auto imos = hl::linear_imos_1d<int64_t>(N);\n\
     \n  for(auto [l, k] : hl::input_tuples<int, int>(Q)){\n    --l;\n    imos.update(l,\
-    \ l + k, 1, 1);\n  }\n\n  imos.build();\n\n  std::cout << hl::join(imos.begin(),\
-    \ imos.end()) << \"\\n\";\n\n  return 0;\n}\n"
+    \ l + k, 1, 1);\n  }\n\n  const auto res = imos.build();\n\n  std::cout << hl::join(res.begin(),\
+    \ res.end()) << \"\\n\";\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3165\"\
     \n\n#include <iostream>\n#include \"Mylib/Algorithm/Imos/linear_imos_1d.cpp\"\n\
     #include \"Mylib/IO/input_tuples.cpp\"\n#include \"Mylib/IO/join.cpp\"\n\nnamespace\
     \ hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  int N, Q; std::cin >> N >> Q;\n\n  auto imos = hl::linear_imos_1d<int64_t>(N);\n\
     \n  for(auto [l, k] : hl::input_tuples<int, int>(Q)){\n    --l;\n    imos.update(l,\
-    \ l + k, 1, 1);\n  }\n\n  imos.build();\n\n  std::cout << hl::join(imos.begin(),\
-    \ imos.end()) << \"\\n\";\n\n  return 0;\n}\n"
+    \ l + k, 1, 1);\n  }\n\n  const auto res = imos.build();\n\n  std::cout << hl::join(res.begin(),\
+    \ res.end()) << \"\\n\";\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Algorithm/Imos/linear_imos_1d.cpp
   - Mylib/IO/input_tuples.cpp
@@ -83,7 +83,7 @@ data:
   isVerificationFile: true
   path: test/aoj/3165/main.test.imos.cpp
   requiredBy: []
-  timestamp: '2020-10-01 09:22:17+09:00'
+  timestamp: '2020-10-11 03:06:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/3165/main.test.imos.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Combinatorics/factorial_table.cpp
     title: Factorial table
   - icon: ':question:'
@@ -102,27 +102,27 @@ data:
     \ N): N(N){}\n\n    iter begin() const {return iter(N);}\n    iter end() const\
     \ {return iter(N);}\n  };\n\n  template <typename ... Args>\n  auto input_tuples(int\
     \ N){\n    return InputTuples<Args ...>(N);\n  }\n}\n#line 9 \"test/yukicoder/117/main.test.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nusing mint = hl::modint<1000000007>;\n\nint main(){\n\
-    \  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  auto ft = hl::factorial_table<mint>(2000000);\n\
-    \n  int T; std::cin >> T;\n\n  std::regex re(R\"((.)\\((.+),(.+)\\))\");\n\n \
-    \ for(auto [s] : hl::input_tuples<std::string>(T)){\n    std::smatch m;\n    std::regex_match(s,\
-    \ m, re);\n\n    char type = m[1].str()[0];\n    int N = std::stoi(m[2].str());\n\
-    \    int K = std::stoi(m[3].str());\n\n    switch(type){\n    case 'C': std::cout\
-    \ << ft.C(N, K) << \"\\n\"; break;\n    case 'P': std::cout << ft.P(N, K) << \"\
-    \\n\"; break;\n    case 'H': std::cout << ft.H(N, K) << \"\\n\"; break;\n    }\n\
-    \  }\n\n  return 0;\n}\n"
+    \n\nnamespace hl = haar_lib;\n\nusing mint = hl::modint<1000000007>;\nconst static\
+    \ auto ft = hl::factorial_table<mint>(2000000);\n\nint main(){\n  std::cin.tie(0);\n\
+    \  std::ios::sync_with_stdio(false);\n\n  int T; std::cin >> T;\n\n  std::regex\
+    \ re(R\"((.)\\((.+),(.+)\\))\");\n\n  for(auto [s] : hl::input_tuples<std::string>(T)){\n\
+    \    std::smatch m;\n    std::regex_match(s, m, re);\n\n    char type = m[1].str()[0];\n\
+    \    int N = std::stoi(m[2].str());\n    int K = std::stoi(m[3].str());\n\n  \
+    \  switch(type){\n    case 'C': std::cout << ft.C(N, K) << \"\\n\"; break;\n \
+    \   case 'P': std::cout << ft.P(N, K) << \"\\n\"; break;\n    case 'H': std::cout\
+    \ << ft.H(N, K) << \"\\n\"; break;\n    }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/117\"\n\n#include <iostream>\n\
     #include <string>\n#include <regex>\n#include \"Mylib/Number/Mint/mint.cpp\"\n\
     #include \"Mylib/Combinatorics/factorial_table.cpp\"\n#include \"Mylib/IO/input_tuples.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nusing mint = hl::modint<1000000007>;\n\nint main(){\n\
-    \  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  auto ft = hl::factorial_table<mint>(2000000);\n\
-    \n  int T; std::cin >> T;\n\n  std::regex re(R\"((.)\\((.+),(.+)\\))\");\n\n \
-    \ for(auto [s] : hl::input_tuples<std::string>(T)){\n    std::smatch m;\n    std::regex_match(s,\
-    \ m, re);\n\n    char type = m[1].str()[0];\n    int N = std::stoi(m[2].str());\n\
-    \    int K = std::stoi(m[3].str());\n\n    switch(type){\n    case 'C': std::cout\
-    \ << ft.C(N, K) << \"\\n\"; break;\n    case 'P': std::cout << ft.P(N, K) << \"\
-    \\n\"; break;\n    case 'H': std::cout << ft.H(N, K) << \"\\n\"; break;\n    }\n\
-    \  }\n\n  return 0;\n}\n"
+    \n\nnamespace hl = haar_lib;\n\nusing mint = hl::modint<1000000007>;\nconst static\
+    \ auto ft = hl::factorial_table<mint>(2000000);\n\nint main(){\n  std::cin.tie(0);\n\
+    \  std::ios::sync_with_stdio(false);\n\n  int T; std::cin >> T;\n\n  std::regex\
+    \ re(R\"((.)\\((.+),(.+)\\))\");\n\n  for(auto [s] : hl::input_tuples<std::string>(T)){\n\
+    \    std::smatch m;\n    std::regex_match(s, m, re);\n\n    char type = m[1].str()[0];\n\
+    \    int N = std::stoi(m[2].str());\n    int K = std::stoi(m[3].str());\n\n  \
+    \  switch(type){\n    case 'C': std::cout << ft.C(N, K) << \"\\n\"; break;\n \
+    \   case 'P': std::cout << ft.P(N, K) << \"\\n\"; break;\n    case 'H': std::cout\
+    \ << ft.H(N, K) << \"\\n\"; break;\n    }\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Number/Mint/mint.cpp
   - Mylib/Combinatorics/factorial_table.cpp
@@ -131,7 +131,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/117/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-30 07:57:28+09:00'
+  timestamp: '2020-10-10 12:47:45+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/117/main.test.cpp

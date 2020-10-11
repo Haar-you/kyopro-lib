@@ -51,7 +51,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/DPL_1_H/main.test.cpp
     title: test/aoj/DPL_1_H/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DPL_2_C/main.test.cpp
     title: test/aoj/DPL_2_C/main.test.cpp
   - icon: ':x:'

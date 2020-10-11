@@ -93,13 +93,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/DPL_1_D/main.test.cpp
     title: test/aoj/DPL_1_D/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DPL_3_B/main.test.cpp
     title: test/aoj/DPL_3_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DPL_3_C/main.test.cpp
     title: test/aoj/DPL_3_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_3_D/main.test.cpp
     title: test/aoj/DSL_3_D/main.test.cpp
   - icon: ':x:'

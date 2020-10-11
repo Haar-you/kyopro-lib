@@ -86,7 +86,7 @@ data:
     - icon: ':warning:'
       path: Mylib/AlgebraicStructure/Monoid/trivial.cpp
       title: Trivial monoid
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/AlgebraicStructure/Monoid/update.cpp
       title: Update monoid
     - icon: ':heavy_check_mark:'
@@ -106,7 +106,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/MonoidAction/add_max_with_count.cpp
       title: Range add / Range max with count
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/MonoidAction/add_min.cpp
       title: Range add / Range min
     - icon: ':heavy_check_mark:'
@@ -115,7 +115,7 @@ data:
     - icon: ':x:'
       path: Mylib/AlgebraicStructure/MonoidAction/add_square_sum.cpp
       title: Range add / Range square sum
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp
       title: Range add / Range sum
     - icon: ':warning:'
@@ -130,10 +130,10 @@ data:
     - icon: ':warning:'
       path: Mylib/AlgebraicStructure/MonoidAction/multiply_sum.cpp
       title: Range multiply / Range sum
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/MonoidAction/update_min.cpp
       title: Range update / Range min
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp
       title: Range update / Range sum
   - name: Mylib/AlgebraicStructure/Semiring
@@ -162,10 +162,10 @@ data:
       title: 2D cumulative sum
   - name: Mylib/Algorithm/Imos
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Algorithm/Imos/imos_1d.cpp
       title: 1D Imos algorithm
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Algorithm/Imos/imos_2d.cpp
       title: 2D Imos algorithm
     - icon: ':heavy_check_mark:'
@@ -198,7 +198,7 @@ data:
     - icon: ':warning:'
       path: Mylib/Algorithm/SlidingWindow/sliding_maximum.cpp
       title: Sliding window maximum
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp
       title: Sliding window minimum
     - icon: ':warning:'
@@ -240,10 +240,10 @@ data:
       title: Gray code
   - name: Mylib/Combinatorics
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Combinatorics/bell_number.cpp
       title: Bell number
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Combinatorics/bell_number_table.cpp
       title: Bell number (Table)
     - icon: ':x:'
@@ -258,13 +258,13 @@ data:
     - icon: ':x:'
       path: Mylib/Combinatorics/catalan_number.cpp
       title: Catalan number
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Combinatorics/factorial_table.cpp
       title: Factorial table
     - icon: ':x:'
       path: Mylib/Combinatorics/montmort_number.cpp
       title: Montmort number
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Combinatorics/partition_number.cpp
       title: Partition number (Enumerate $P(n, k)$)
     - icon: ':x:'
@@ -279,13 +279,13 @@ data:
     - icon: ':x:'
       path: Mylib/Combinatorics/stirling_number_first_fft.cpp
       title: Stirling numbers of the first kind (FFT)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Combinatorics/stirling_number_second.cpp
       title: Stirling numbers of the second kind
     - icon: ':x:'
       path: Mylib/Combinatorics/stirling_number_second_fft.cpp
       title: Stirling numbers of the second kind (FFT)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Combinatorics/stirling_number_second_table.cpp
       title: Stirling numbers of the second kind (Table)
   - name: Mylib/Convolution
@@ -349,7 +349,7 @@ data:
       title: LiChao segment tree
   - name: Mylib/DataStructure/FenwickTree
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/DataStructure/FenwickTree/fenwick_tree.cpp
       title: Fenwick tree
     - icon: ':heavy_check_mark:'
@@ -393,18 +393,18 @@ data:
       title: Sliding window aggregation
   - name: Mylib/DataStructure/RangeTree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/RangeTree/range_tree.cpp
       title: Range tree
   - name: Mylib/DataStructure/SegmentTree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp
       title: Dual segment tree
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/SegmentTree/dynamic_dual_segment_tree.cpp
       title: Dynamic dual segment tree
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/SegmentTree/dynamic_lazy_segment_tree.cpp
       title: Dynamic lazy segment tree
     - icon: ':x:'
@@ -440,7 +440,7 @@ data:
     - icon: ':x:'
       path: Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp
       title: Segment tree (On segment tree)
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp
       title: Starry-sky tree
   - name: Mylib/DataStructure/SparseTable
@@ -475,7 +475,7 @@ data:
     - icon: ':question:'
       path: Mylib/DataStructure/UnionFind/unionfind.cpp
       title: Union-find
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/UnionFind/weighted_unionfind.cpp
       title: Weighted union-find
   - name: Mylib/DataStructure/WaveletMatrix
@@ -513,7 +513,7 @@ data:
       title: Monotone minima
   - name: Mylib/DynamicProgramming
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DynamicProgramming/bitonic_tour.cpp
       title: Bitonic tour
     - icon: ':warning:'
@@ -730,7 +730,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Graph/ShortestPath/dial_algorithm.cpp
       title: Dial's algorithm
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/ShortestPath/dijkstra.cpp
       title: Dijkstra algorithm
     - icon: ':x:'
@@ -807,7 +807,7 @@ data:
       title: Tree height
   - name: Mylib/Graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/chinese_postman_problem.cpp
       title: Chinese postman problem
     - icon: ':x:'
@@ -1170,10 +1170,10 @@ data:
       title: Longest increasing subsequence
   - name: Mylib/Typical/MaxRectangleProblem
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Typical/MaxRectangleProblem/max_rectangle.cpp
       title: Largest rectangle
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Typical/MaxRectangleProblem/max_rectangle_in_histogram.cpp
       title: Largest rectangle in histogram
   - name: Mylib/Typical/RangeCountQuery
@@ -1649,125 +1649,125 @@ data:
       title: test/aoj/DPL_2_A/main.test.cpp
   - name: test/aoj/DPL_2_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_2_B/main.test.cpp
       title: test/aoj/DPL_2_B/main.test.cpp
   - name: test/aoj/DPL_2_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_2_C/main.test.cpp
       title: test/aoj/DPL_2_C/main.test.cpp
   - name: test/aoj/DPL_3_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_3_B/main.test.cpp
       title: test/aoj/DPL_3_B/main.test.cpp
   - name: test/aoj/DPL_3_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_3_C/main.test.cpp
       title: test/aoj/DPL_3_C/main.test.cpp
   - name: test/aoj/DPL_5_G
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_5_G/main.table.test.cpp
       title: test/aoj/DPL_5_G/main.table.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_5_G/main.test.cpp
       title: test/aoj/DPL_5_G/main.test.cpp
   - name: test/aoj/DPL_5_I
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_5_I/main.table.test.cpp
       title: test/aoj/DPL_5_I/main.table.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_5_I/main.test.cpp
       title: test/aoj/DPL_5_I/main.test.cpp
   - name: test/aoj/DPL_5_J
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_5_J/main.test.cpp
       title: test/aoj/DPL_5_J/main.test.cpp
   - name: test/aoj/DSL_1_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_1_B/main.test.cpp
       title: test/aoj/DSL_1_B/main.test.cpp
   - name: test/aoj/DSL_2_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_2_A/main.test.cpp
       title: test/aoj/DSL_2_A/main.test.cpp
   - name: test/aoj/DSL_2_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
       title: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_2_B/main.test.cpp
       title: test/aoj/DSL_2_B/main.test.cpp
   - name: test/aoj/DSL_2_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_2_C/main.test.cpp
       title: test/aoj/DSL_2_C/main.test.cpp
   - name: test/aoj/DSL_2_D
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_2_D/main.test.cpp
       title: test/aoj/DSL_2_D/main.test.cpp
   - name: test/aoj/DSL_2_E
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_2_E/main.dynamic.test.cpp
       title: test/aoj/DSL_2_E/main.dynamic.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_2_E/main.test.cpp
       title: test/aoj/DSL_2_E/main.test.cpp
   - name: test/aoj/DSL_2_F
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_2_F/main.dynamic.test.cpp
       title: test/aoj/DSL_2_F/main.dynamic.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_2_F/main.test.cpp
       title: test/aoj/DSL_2_F/main.test.cpp
   - name: test/aoj/DSL_2_G
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_2_G/main.test.cpp
       title: test/aoj/DSL_2_G/main.test.cpp
   - name: test/aoj/DSL_2_H
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_2_H/main.starry_sky.test.cpp
       title: test/aoj/DSL_2_H/main.starry_sky.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_2_H/main.test.cpp
       title: test/aoj/DSL_2_H/main.test.cpp
   - name: test/aoj/DSL_2_I
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_2_I/main.test.cpp
       title: test/aoj/DSL_2_I/main.test.cpp
   - name: test/aoj/DSL_3_D
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_3_D/main.test.cpp
       title: test/aoj/DSL_3_D/main.test.cpp
   - name: test/aoj/DSL_5_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_5_A/main.test.cpp
       title: test/aoj/DSL_5_A/main.test.cpp
   - name: test/aoj/DSL_5_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/DSL_5_B/main.test.cpp
       title: test/aoj/DSL_5_B/main.test.cpp
   - name: test/aoj/GRL_1_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_1_A/main.test.cpp
       title: test/aoj/GRL_1_A/main.test.cpp
   - name: test/aoj/GRL_1_B

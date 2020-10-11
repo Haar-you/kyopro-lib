@@ -15,54 +15,59 @@ data:
     links: []
   bundledCode: "#line 2 \"Mylib/Utils/compressor.cpp\"\n#include <vector>\n#include\
     \ <algorithm>\n\nnamespace haar_lib {\n  template <typename T>\n  class compressor\
-    \ {\n    std::vector<T> data_;\n\n  public:\n    auto& add(const T &val){\n  \
-    \    data_.push_back(val);\n      return *this;\n    }\n\n    auto& add(const\
-    \ std::vector<T> &vals){\n      data_.insert(data_.end(), vals.begin(), vals.end());\n\
-    \      return *this;\n    }\n\n    template <typename U, typename ... Args>\n\
-    \    auto& add(const U &val, const Args &... args){\n      add(val);\n      return\
-    \ add(args ...);\n    }\n\n    auto& build(){\n      std::sort(data_.begin(),\
-    \ data_.end());\n      data_.erase(std::unique(data_.begin(), data_.end()), data_.end());\n\
-    \      return *this;\n    }\n\n    int get_index(const T &val) const {\n     \
-    \ return std::lower_bound(data_.begin(), data_.end(), val) - data_.begin();\n\
-    \    }\n\n    auto& compress(std::vector<T> &vals) const {\n      for(auto &x\
-    \ : vals) x = get_index(x);\n      return *this;\n    }\n\n    auto& compress(T\
-    \ &val) const {\n      val = get_index(val);\n      return *this;\n    }\n\n \
-    \   template <typename U, typename ... Args>\n    auto& compress(U &val, Args\
-    \ &... args) const {\n      compress(val);\n      return compress(args ...);\n\
-    \    }\n\n    auto& decompress(std::vector<T> &vals) const {\n      for(auto &x\
-    \ : vals) x = data_[x];\n      return *this;\n    }\n\n    auto& decompress(T\
-    \ &val) const {\n      val = data_[val];\n      return *this;\n    }\n\n    template\
-    \ <typename U, typename ... Args>\n    auto& decompress(U &val, Args &... args)\
-    \ const {\n      decompress(val);\n      return decompress(args ...);\n    }\n\
-    \n    int size() const {return data_.size();}\n    T operator[](int index) const\
-    \ {return data_[index];}\n  };\n}\n"
+    \ {\n    std::vector<T> data_;\n    template <typename> friend class compressor_builder;\n\
+    \n  public:\n    int get_index(const T &val) const {\n      return std::lower_bound(data_.begin(),\
+    \ data_.end(), val) - data_.begin();\n    }\n\n    auto& compress(std::vector<T>\
+    \ &vals) const {\n      for(auto &x : vals) x = get_index(x);\n      return *this;\n\
+    \    }\n\n    auto& compress(T &val) const {\n      val = get_index(val);\n  \
+    \    return *this;\n    }\n\n    template <typename U, typename ... Args>\n  \
+    \  auto& compress(U &val, Args &... args) const {\n      compress(val);\n    \
+    \  return compress(args ...);\n    }\n\n    auto& decompress(std::vector<T> &vals)\
+    \ const {\n      for(auto &x : vals) x = data_[x];\n      return *this;\n    }\n\
+    \n    auto& decompress(T &val) const {\n      val = data_[val];\n      return\
+    \ *this;\n    }\n\n    template <typename U, typename ... Args>\n    auto& decompress(U\
+    \ &val, Args &... args) const {\n      decompress(val);\n      return decompress(args\
+    \ ...);\n    }\n\n    int size() const {return data_.size();}\n    T operator[](int\
+    \ index) const {return data_[index];}\n  };\n\n  template <typename T>\n  class\
+    \ compressor_builder {\n    std::vector<T> data_;\n\n  public:\n    auto& add(const\
+    \ T &val){\n      data_.push_back(val);\n      return *this;\n    }\n\n    auto&\
+    \ add(const std::vector<T> &vals){\n      data_.insert(data_.end(), vals.begin(),\
+    \ vals.end());\n      return *this;\n    }\n\n    template <typename U, typename\
+    \ ... Args>\n    auto& add(const U &val, const Args &... args){\n      add(val);\n\
+    \      return add(args ...);\n    }\n\n    auto build() const {\n      compressor<T>\
+    \ ret;\n      ret.data_ = data_;\n      std::sort(ret.data_.begin(), ret.data_.end());\n\
+    \      ret.data_.erase(std::unique(ret.data_.begin(), ret.data_.end()), ret.data_.end());\n\
+    \      return ret;\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <algorithm>\n\nnamespace haar_lib\
     \ {\n  template <typename T>\n  class compressor {\n    std::vector<T> data_;\n\
-    \n  public:\n    auto& add(const T &val){\n      data_.push_back(val);\n     \
-    \ return *this;\n    }\n\n    auto& add(const std::vector<T> &vals){\n      data_.insert(data_.end(),\
-    \ vals.begin(), vals.end());\n      return *this;\n    }\n\n    template <typename\
-    \ U, typename ... Args>\n    auto& add(const U &val, const Args &... args){\n\
-    \      add(val);\n      return add(args ...);\n    }\n\n    auto& build(){\n \
-    \     std::sort(data_.begin(), data_.end());\n      data_.erase(std::unique(data_.begin(),\
-    \ data_.end()), data_.end());\n      return *this;\n    }\n\n    int get_index(const\
-    \ T &val) const {\n      return std::lower_bound(data_.begin(), data_.end(), val)\
-    \ - data_.begin();\n    }\n\n    auto& compress(std::vector<T> &vals) const {\n\
-    \      for(auto &x : vals) x = get_index(x);\n      return *this;\n    }\n\n \
-    \   auto& compress(T &val) const {\n      val = get_index(val);\n      return\
-    \ *this;\n    }\n\n    template <typename U, typename ... Args>\n    auto& compress(U\
-    \ &val, Args &... args) const {\n      compress(val);\n      return compress(args\
-    \ ...);\n    }\n\n    auto& decompress(std::vector<T> &vals) const {\n      for(auto\
-    \ &x : vals) x = data_[x];\n      return *this;\n    }\n\n    auto& decompress(T\
-    \ &val) const {\n      val = data_[val];\n      return *this;\n    }\n\n    template\
-    \ <typename U, typename ... Args>\n    auto& decompress(U &val, Args &... args)\
-    \ const {\n      decompress(val);\n      return decompress(args ...);\n    }\n\
-    \n    int size() const {return data_.size();}\n    T operator[](int index) const\
-    \ {return data_[index];}\n  };\n}\n"
+    \    template <typename> friend class compressor_builder;\n\n  public:\n    int\
+    \ get_index(const T &val) const {\n      return std::lower_bound(data_.begin(),\
+    \ data_.end(), val) - data_.begin();\n    }\n\n    auto& compress(std::vector<T>\
+    \ &vals) const {\n      for(auto &x : vals) x = get_index(x);\n      return *this;\n\
+    \    }\n\n    auto& compress(T &val) const {\n      val = get_index(val);\n  \
+    \    return *this;\n    }\n\n    template <typename U, typename ... Args>\n  \
+    \  auto& compress(U &val, Args &... args) const {\n      compress(val);\n    \
+    \  return compress(args ...);\n    }\n\n    auto& decompress(std::vector<T> &vals)\
+    \ const {\n      for(auto &x : vals) x = data_[x];\n      return *this;\n    }\n\
+    \n    auto& decompress(T &val) const {\n      val = data_[val];\n      return\
+    \ *this;\n    }\n\n    template <typename U, typename ... Args>\n    auto& decompress(U\
+    \ &val, Args &... args) const {\n      decompress(val);\n      return decompress(args\
+    \ ...);\n    }\n\n    int size() const {return data_.size();}\n    T operator[](int\
+    \ index) const {return data_[index];}\n  };\n\n  template <typename T>\n  class\
+    \ compressor_builder {\n    std::vector<T> data_;\n\n  public:\n    auto& add(const\
+    \ T &val){\n      data_.push_back(val);\n      return *this;\n    }\n\n    auto&\
+    \ add(const std::vector<T> &vals){\n      data_.insert(data_.end(), vals.begin(),\
+    \ vals.end());\n      return *this;\n    }\n\n    template <typename U, typename\
+    \ ... Args>\n    auto& add(const U &val, const Args &... args){\n      add(val);\n\
+    \      return add(args ...);\n    }\n\n    auto build() const {\n      compressor<T>\
+    \ ret;\n      ret.data_ = data_;\n      std::sort(ret.data_.begin(), ret.data_.end());\n\
+    \      ret.data_.erase(std::unique(ret.data_.begin(), ret.data_.end()), ret.data_.end());\n\
+    \      return ret;\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Utils/compressor.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2020-10-11 03:06:10+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp

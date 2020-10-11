@@ -4,16 +4,16 @@ data:
   - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Typical/MaxRectangleProblem/max_rectangle.cpp
     title: Largest rectangle
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Typical/MaxRectangleProblem/max_rectangle_in_histogram.cpp
     title: Largest rectangle in histogram
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_B
@@ -65,7 +65,7 @@ data:
   path: test/aoj/DPL_3_B/main.test.cpp
   requiredBy: []
   timestamp: '2020-09-21 02:36:12+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DPL_3_B/main.test.cpp
 layout: document

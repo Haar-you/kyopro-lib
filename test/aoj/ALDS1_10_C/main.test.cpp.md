@@ -23,17 +23,17 @@ data:
     http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_10_C\"\n\n#include\
     \ <iostream>\n#include <string>\n#line 2 \"Mylib/String/longest_common_subsequence.cpp\"\
     \n#include <vector>\n#include <algorithm>\n\nnamespace haar_lib {\n  template\
-    \ <typename Container, typename T = typename Container::value_type>\n  int lcs(const\
-    \ Container &a, const Container &b){\n    const int n = a.size(), m = b.size();\n\
-    \n    std::vector<std::vector<int>> dp(n + 1, std::vector<int>(m + 1, 0));\n \
-    \   for(int i = 1; i <= n; ++i){\n      for(int j = 1; j <= m; ++j){\n       \
-    \ dp[i][j] = a[i - 1] == b[j - 1] ? dp[i - 1][j - 1] + 1 : std::max(dp[i - 1][j],\
-    \ dp[i][j - 1]);\n      }\n    }\n\n    return dp[n][m];\n  }\n}\n#line 4 \"Mylib/IO/input_tuples.cpp\"\
-    \n#include <tuple>\n#include <utility>\n#include <initializer_list>\n#line 6 \"\
-    Mylib/IO/input_tuple.cpp\"\n\nnamespace haar_lib {\n  template <typename T, size_t\
-    \ ... I>\n  static void input_tuple_helper(std::istream &s, T &val, std::index_sequence<I\
-    \ ...>){\n    (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0)\
-    \ ...};\n  }\n\n  template <typename T, typename U>\n  std::istream& operator>>(std::istream\
+    \ <typename Container>\n  int lcs(const Container &a, const Container &b){\n \
+    \   const int n = a.size(), m = b.size();\n\n    std::vector<std::vector<int>>\
+    \ dp(n + 1, std::vector<int>(m + 1, 0));\n    for(int i = 1; i <= n; ++i){\n \
+    \     for(int j = 1; j <= m; ++j){\n        dp[i][j] = a[i - 1] == b[j - 1] ?\
+    \ dp[i - 1][j - 1] + 1 : std::max(dp[i - 1][j], dp[i][j - 1]);\n      }\n    }\n\
+    \n    return dp[n][m];\n  }\n}\n#line 4 \"Mylib/IO/input_tuples.cpp\"\n#include\
+    \ <tuple>\n#include <utility>\n#include <initializer_list>\n#line 6 \"Mylib/IO/input_tuple.cpp\"\
+    \n\nnamespace haar_lib {\n  template <typename T, size_t ... I>\n  static void\
+    \ input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){\n \
+    \   (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};\n\
+    \  }\n\n  template <typename T, typename U>\n  std::istream& operator>>(std::istream\
     \ &s, std::pair<T, U> &value){\n    s >> value.first >> value.second;\n    return\
     \ s;\n  }\n\n  template <typename ... Args>\n  std::istream& operator>>(std::istream\
     \ &s, std::tuple<Args ...> &value){\n    input_tuple_helper(s, value, std::make_index_sequence<sizeof\
@@ -65,7 +65,7 @@ data:
   isVerificationFile: true
   path: test/aoj/ALDS1_10_C/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-10-10 11:12:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/ALDS1_10_C/main.test.cpp

@@ -9,16 +9,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/3035/main.test.cpp
     title: test/aoj/3035/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_2_F/main.test.cpp
     title: test/aoj/DSL_2_F/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_2_G/main.test.cpp
     title: test/aoj/DSL_2_G/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_2_H/main.test.cpp
     title: test/aoj/DSL_2_H/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_2_I/main.test.cpp
     title: test/aoj/DSL_2_I/main.test.cpp
   - icon: ':x:'

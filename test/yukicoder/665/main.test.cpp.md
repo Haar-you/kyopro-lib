@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: Mylib/Combinatorics/bernoulli_number.cpp
     title: Bernoulli number
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Combinatorics/factorial_table.cpp
     title: Factorial table
   - icon: ':question:'
@@ -79,27 +79,28 @@ data:
     \  if(n < k or n < 0 or k < 0) return 0;\n      return P(n, k) * inv_factorial(k);\n\
     \    }\n\n    T H(int64_t n, int64_t k) const {\n      if(n == 0 and k == 0) return\
     \ 1;\n      return C(n + k - 1, k);\n    }\n  };\n}\n#line 5 \"Mylib/Combinatorics/bernoulli_number.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename Ft, typename T = typename Ft::value_type>\n\
-    \  std::vector<T> bernoulli_number(int64_t n, const Ft &ft){\n    std::vector<T>\
-    \ ret(n + 1);\n\n    ret[0] = 1;\n\n    for(int64_t i = 1; i <= n; ++i){\n   \
-    \   for(int k = 0; k <= i - 1; ++k){\n        ret[i] += ft.C(i + 1, k) * ret[k];\n\
-    \      }\n      ret[i] /= i + 1;\n      ret[i] = -ret[i];\n    }\n\n    return\
-    \ ret;\n  }\n}\n#line 7 \"test/yukicoder/665/main.test.cpp\"\n\nnamespace hl =\
-    \ haar_lib;\n\nusing mint = hl::modint<1000000007>;\n\nint main(){\n  std::cin.tie(0);\n\
-    \  std::ios::sync_with_stdio(false);\n\n  int64_t n, k; std::cin >> n >> k;\n\
-    \  auto ft = hl::factorial_table<mint>(3 * k);\n\n  auto b = hl::bernoulli_number(k,\
-    \ ft);\n\n  mint ans = 0;\n\n  for(int64_t i = 0; i <= k; ++i){\n    ans += ft.C(k\
-    \ + 1, i) * b[i] * mint::pow(n + 1, k + 1 - i);\n  }\n\n  ans /= k + 1;\n\n  std::cout\
-    \ << ans << std::endl;\n\n  return 0;\n}\n"
+    \n\nnamespace haar_lib {\n  template <const auto &ft>\n  auto bernoulli_number(int64_t\
+    \ n){\n    using T = typename std::remove_reference_t<decltype(ft)>::value_type;\n\
+    \    std::vector<T> ret(n + 1);\n\n    ret[0] = 1;\n\n    for(int64_t i = 1; i\
+    \ <= n; ++i){\n      for(int k = 0; k <= i - 1; ++k){\n        ret[i] += ft.C(i\
+    \ + 1, k) * ret[k];\n      }\n      ret[i] /= i + 1;\n      ret[i] = -ret[i];\n\
+    \    }\n\n    return ret;\n  }\n}\n#line 7 \"test/yukicoder/665/main.test.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\nusing mint = hl::modint<1000000007>;\nconst static\
+    \ auto ft = hl::factorial_table<mint>(30000);\n\nint main(){\n  std::cin.tie(0);\n\
+    \  std::ios::sync_with_stdio(false);\n\n  int64_t n, k; std::cin >> n >> k;\n\n\
+    \  auto b = hl::bernoulli_number<ft>(k);\n\n  mint ans = 0;\n\n  for(int64_t i\
+    \ = 0; i <= k; ++i){\n    ans += ft.C(k + 1, i) * b[i] * mint::pow(n + 1, k +\
+    \ 1 - i);\n  }\n\n  ans /= k + 1;\n\n  std::cout << ans << std::endl;\n\n  return\
+    \ 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/665\"\n\n#include <iostream>\n\
     #include \"Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/Combinatorics/factorial_table.cpp\"\
     \n#include \"Mylib/Combinatorics/bernoulli_number.cpp\"\n\nnamespace hl = haar_lib;\n\
-    \nusing mint = hl::modint<1000000007>;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
-    \n  int64_t n, k; std::cin >> n >> k;\n  auto ft = hl::factorial_table<mint>(3\
-    \ * k);\n\n  auto b = hl::bernoulli_number(k, ft);\n\n  mint ans = 0;\n\n  for(int64_t\
-    \ i = 0; i <= k; ++i){\n    ans += ft.C(k + 1, i) * b[i] * mint::pow(n + 1, k\
-    \ + 1 - i);\n  }\n\n  ans /= k + 1;\n\n  std::cout << ans << std::endl;\n\n  return\
-    \ 0;\n}\n"
+    \nusing mint = hl::modint<1000000007>;\nconst static auto ft = hl::factorial_table<mint>(30000);\n\
+    \nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int64_t\
+    \ n, k; std::cin >> n >> k;\n\n  auto b = hl::bernoulli_number<ft>(k);\n\n  mint\
+    \ ans = 0;\n\n  for(int64_t i = 0; i <= k; ++i){\n    ans += ft.C(k + 1, i) *\
+    \ b[i] * mint::pow(n + 1, k + 1 - i);\n  }\n\n  ans /= k + 1;\n\n  std::cout <<\
+    \ ans << std::endl;\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Number/Mint/mint.cpp
   - Mylib/Combinatorics/factorial_table.cpp
@@ -107,7 +108,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/665/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-30 07:57:28+09:00'
+  timestamp: '2020-10-10 12:47:45+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/665/main.test.cpp

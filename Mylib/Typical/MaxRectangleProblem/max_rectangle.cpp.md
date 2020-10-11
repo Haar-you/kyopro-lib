@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Typical/MaxRectangleProblem/max_rectangle_in_histogram.cpp
     title: Largest rectangle in histogram
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DPL_3_B/main.test.cpp
     title: test/aoj/DPL_3_B/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Typical/MaxRectangleProblem/max_rectangle.cpp\"\n\
@@ -51,7 +51,7 @@ data:
   path: Mylib/Typical/MaxRectangleProblem/max_rectangle.cpp
   requiredBy: []
   timestamp: '2020-09-21 02:36:12+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/DPL_3_B/main.test.cpp
 documentation_of: Mylib/Typical/MaxRectangleProblem/max_rectangle.cpp

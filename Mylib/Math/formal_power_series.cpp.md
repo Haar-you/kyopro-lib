@@ -36,10 +36,9 @@ data:
     links: []
   bundledCode: "#line 2 \"Mylib/Math/formal_power_series.cpp\"\n#include <functional>\n\
     #include <vector>\n#include <initializer_list>\n#include <cassert>\n\nnamespace\
-    \ haar_lib {\n  template <typename T>\n  class formal_power_series {\n  public:\n\
-    \    using value_type = T;\n\n    static std::function<std::vector<T>(std::vector<T>,\
-    \ std::vector<T>)> convolve;\n    static std::function<std::optional<T>(T)> get_sqrt;\n\
-    \n  private:\n    std::vector<T> data_;\n\n  public:\n    formal_power_series(){}\n\
+    \ haar_lib {\n  template <typename T, const auto &convolve>\n  class formal_power_series\
+    \ {\n  public:\n    using value_type = T;\n\n    static std::function<std::optional<T>(T)>\
+    \ get_sqrt;\n\n  private:\n    std::vector<T> data_;\n\n  public:\n    formal_power_series(){}\n\
     \    explicit formal_power_series(int N): data_(N){}\n    formal_power_series(const\
     \ std::vector<T> &data_): data_(data_){}\n    formal_power_series(std::initializer_list<T>\
     \ init): data_(init.begin(), init.end()){}\n    formal_power_series(const formal_power_series\
@@ -111,17 +110,16 @@ data:
     \ it + std::min(t, m)));\n        ret.resize(t);\n        f.resize(t);\n     \
     \   ret = (ret + f * ret.inv()) * T(2).inv();\n        t <<= 1;\n      }\n\n \
     \     ret.resize(n);\n      ret = ret.shift(k / 2);\n\n      return ret;\n   \
-    \ }\n  };\n\n  template <typename T>\n  std::function<std::vector<T>(std::vector<T>,\
-    \ std::vector<T>)> formal_power_series<T>::convolve;\n\n  template <typename T>\n\
-    \  std::function<std::optional<T>(T)> formal_power_series<T>::get_sqrt;\n}\n"
+    \ }\n  };\n\n  template <typename T, const auto &convolve>\n  std::function<std::optional<T>(T)>\
+    \ formal_power_series<T, convolve>::get_sqrt;\n}\n"
   code: "#pragma once\n#include <functional>\n#include <vector>\n#include <initializer_list>\n\
-    #include <cassert>\n\nnamespace haar_lib {\n  template <typename T>\n  class formal_power_series\
-    \ {\n  public:\n    using value_type = T;\n\n    static std::function<std::vector<T>(std::vector<T>,\
-    \ std::vector<T>)> convolve;\n    static std::function<std::optional<T>(T)> get_sqrt;\n\
-    \n  private:\n    std::vector<T> data_;\n\n  public:\n    formal_power_series(){}\n\
-    \    explicit formal_power_series(int N): data_(N){}\n    formal_power_series(const\
-    \ std::vector<T> &data_): data_(data_){}\n    formal_power_series(std::initializer_list<T>\
-    \ init): data_(init.begin(), init.end()){}\n    formal_power_series(const formal_power_series\
+    #include <cassert>\n\nnamespace haar_lib {\n  template <typename T, const auto\
+    \ &convolve>\n  class formal_power_series {\n  public:\n    using value_type =\
+    \ T;\n\n    static std::function<std::optional<T>(T)> get_sqrt;\n\n  private:\n\
+    \    std::vector<T> data_;\n\n  public:\n    formal_power_series(){}\n    explicit\
+    \ formal_power_series(int N): data_(N){}\n    formal_power_series(const std::vector<T>\
+    \ &data_): data_(data_){}\n    formal_power_series(std::initializer_list<T> init):\
+    \ data_(init.begin(), init.end()){}\n    formal_power_series(const formal_power_series\
     \ &a): data_(a.data_){}\n    formal_power_series(formal_power_series &&a) noexcept\
     \ {*this = std::move(a);}\n\n    int size() const {\n      return data_.size();\n\
     \    }\n\n    const T& operator[](int i) const {\n      return data_[i];\n   \
@@ -190,14 +188,13 @@ data:
     \ it + std::min(t, m)));\n        ret.resize(t);\n        f.resize(t);\n     \
     \   ret = (ret + f * ret.inv()) * T(2).inv();\n        t <<= 1;\n      }\n\n \
     \     ret.resize(n);\n      ret = ret.shift(k / 2);\n\n      return ret;\n   \
-    \ }\n  };\n\n  template <typename T>\n  std::function<std::vector<T>(std::vector<T>,\
-    \ std::vector<T>)> formal_power_series<T>::convolve;\n\n  template <typename T>\n\
-    \  std::function<std::optional<T>(T)> formal_power_series<T>::get_sqrt;\n}\n"
+    \ }\n  };\n\n  template <typename T, const auto &convolve>\n  std::function<std::optional<T>(T)>\
+    \ formal_power_series<T, convolve>::get_sqrt;\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Math/formal_power_series.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2020-10-10 16:27:01+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/bernoulli_number/main.test.cpp

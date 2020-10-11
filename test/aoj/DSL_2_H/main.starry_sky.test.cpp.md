@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp
     title: Starry-sky tree
   - icon: ':question:'
@@ -13,7 +13,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H
@@ -91,7 +91,7 @@ data:
   path: test/aoj/DSL_2_H/main.starry_sky.test.cpp
   requiredBy: []
   timestamp: '2020-09-28 13:26:18+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DSL_2_H/main.starry_sky.test.cpp
 layout: document

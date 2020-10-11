@@ -130,45 +130,47 @@ data:
     \ (T::mod() - 1) >> (MAX_POWER_ + 2));\n      T s = t.inv();\n\n      for(int\
     \ i = MAX_POWER_; --i >= 0;){\n        t *= t;\n        s *= s;\n        BASE_[i]\
     \ = -t;\n        INV_BASE_[i] = -s;\n      }\n    }\n\n    void run(std::vector<T>\
-    \ &f, bool INVERSE = false){\n      const int n = f.size();\n      assert((n &\
-    \ (n - 1)) == 0 and n <= MAX_SIZE); // \u30C7\u30FC\u30BF\u6570\u306F2\u306E\u51AA\
-    \u4E57\u500B\n\n      if(INVERSE){\n        for(int b = 1; b < n; b <<= 1){\n\
-    \          T w = 1;\n          for(int j = 0, k = 1; j < n; j += 2 * b, ++k){\n\
-    \            for(int i = 0; i < b; ++i){\n              const auto s = f[i + j];\n\
-    \              const auto t = f[i + j + b];\n\n              f[i + j] = s + t;\n\
-    \              f[i + j + b] = (s - t) * w;\n            }\n            w *= INV_BASE_[__builtin_ctz(k)];\n\
-    \          }\n        }\n\n        const T t = T::inv(n);\n        for(auto &x\
-    \ : f) x *= t;\n      }else{\n        for(int b = n >> 1; b; b >>= 1){\n     \
-    \     T w = 1;\n          for(int j = 0, k = 1; j < n; j += 2 * b, ++k){\n   \
-    \         for(int i = 0; i < b; ++i){\n              const auto s = f[i + j];\n\
-    \              const auto t = f[i + j + b] * w;\n\n              f[i + j] = s\
-    \ + t;\n              f[i + j + b] = s - t;\n            }\n            w *= BASE_[__builtin_ctz(k)];\n\
-    \          }\n        }\n      }\n    }\n\n    template <typename U>\n    std::vector<T>\
-    \ convolve(std::vector<U> f, std::vector<U> g){\n      const int m = f.size()\
-    \ + g.size() - 1;\n      int n = 1;\n      while(n < m) n *= 2;\n\n      std::vector<T>\
-    \ f2(n), g2(n);\n\n      for(int i = 0; i < (int)f.size(); ++i) f2[i] = f[i];\n\
-    \      for(int i = 0; i < (int)g.size(); ++i) g2[i] = g[i];\n\n      run(f2);\n\
-    \      run(g2);\n\n      for(int i = 0; i < n; ++i) f2[i] *= g2[i];\n      run(f2,\
-    \ true);\n\n      return f2;\n    }\n  };\n\n  template <typename T, typename\
-    \ U>\n  std::vector<T> convolve_general_mod(std::vector<U> f, std::vector<U> g){\n\
-    \    static constexpr int M1 = 167772161, P1 = 3;\n    static constexpr int M2\
-    \ = 469762049, P2 = 3;\n    static constexpr int M3 = 1224736769, P3 = 3;\n\n\
-    \    for(auto &x : f) x %= T::mod();\n    for(auto &x : g) x %= T::mod();\n\n\
-    \    auto res1 = number_theoretic_transform<modint<M1>, P1, 1 << 20>().convolve(f,\
-    \ g);\n    auto res2 = number_theoretic_transform<modint<M2>, P2, 1 << 20>().convolve(f,\
-    \ g);\n    auto res3 = number_theoretic_transform<modint<M3>, P3, 1 << 20>().convolve(f,\
-    \ g);\n\n    const int n = res1.size();\n\n    std::vector<T> ret(n);\n\n    const\
-    \ int64_t M12 = (int64_t)modint<M2>::inv(M1);\n    const int64_t M13 = (int64_t)modint<M3>::inv(M1);\n\
-    \    const int64_t M23 = (int64_t)modint<M3>::inv(M2);\n\n    for(int i = 0; i\
-    \ < n; ++i){\n      const int64_t r[3] = {(int64_t)res1[i], (int64_t)res2[i],\
-    \ (int64_t)res3[i]};\n\n      const int64_t t0 = r[0] % M1;\n      const int64_t\
-    \ t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2 = ((r[2] - t0 + M3)\
-    \ * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0) + T(t1) * M1 + T(t2)\
-    \ * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 4 \"Mylib/Math/formal_power_series.cpp\"\
-    \n#include <initializer_list>\n#line 6 \"Mylib/Math/formal_power_series.cpp\"\n\
-    \nnamespace haar_lib {\n  template <typename T>\n  class formal_power_series {\n\
-    \  public:\n    using value_type = T;\n\n    static std::function<std::vector<T>(std::vector<T>,\
-    \ std::vector<T>)> convolve;\n    static std::function<std::optional<T>(T)> get_sqrt;\n\
+    \ &f, bool INVERSE = false) const {\n      const int n = f.size();\n      assert((n\
+    \ & (n - 1)) == 0 and n <= MAX_SIZE); // \u30C7\u30FC\u30BF\u6570\u306F2\u306E\
+    \u51AA\u4E57\u500B\n\n      if(INVERSE){\n        for(int b = 1; b < n; b <<=\
+    \ 1){\n          T w = 1;\n          for(int j = 0, k = 1; j < n; j += 2 * b,\
+    \ ++k){\n            for(int i = 0; i < b; ++i){\n              const auto s =\
+    \ f[i + j];\n              const auto t = f[i + j + b];\n\n              f[i +\
+    \ j] = s + t;\n              f[i + j + b] = (s - t) * w;\n            }\n    \
+    \        w *= INV_BASE_[__builtin_ctz(k)];\n          }\n        }\n\n       \
+    \ const T t = T::inv(n);\n        for(auto &x : f) x *= t;\n      }else{\n   \
+    \     for(int b = n >> 1; b; b >>= 1){\n          T w = 1;\n          for(int\
+    \ j = 0, k = 1; j < n; j += 2 * b, ++k){\n            for(int i = 0; i < b; ++i){\n\
+    \              const auto s = f[i + j];\n              const auto t = f[i + j\
+    \ + b] * w;\n\n              f[i + j] = s + t;\n              f[i + j + b] = s\
+    \ - t;\n            }\n            w *= BASE_[__builtin_ctz(k)];\n          }\n\
+    \        }\n      }\n    }\n\n    template <typename U>\n    std::vector<T> convolve(std::vector<U>\
+    \ f, std::vector<U> g) const {\n      const int m = f.size() + g.size() - 1;\n\
+    \      int n = 1;\n      while(n < m) n *= 2;\n\n      std::vector<T> f2(n), g2(n);\n\
+    \n      for(int i = 0; i < (int)f.size(); ++i) f2[i] = f[i];\n      for(int i\
+    \ = 0; i < (int)g.size(); ++i) g2[i] = g[i];\n\n      run(f2);\n      run(g2);\n\
+    \n      for(int i = 0; i < n; ++i) f2[i] *= g2[i];\n      run(f2, true);\n\n \
+    \     return f2;\n    }\n\n    template <typename U>\n    std::vector<T> operator()(std::vector<U>\
+    \ f, std::vector<U> g) const {\n      return convolve(f, g);\n    }\n  };\n\n\
+    \  template <typename T, typename U>\n  std::vector<T> convolve_general_mod(std::vector<U>\
+    \ f, std::vector<U> g){\n    static constexpr int M1 = 167772161, P1 = 3;\n  \
+    \  static constexpr int M2 = 469762049, P2 = 3;\n    static constexpr int M3 =\
+    \ 1224736769, P3 = 3;\n\n    for(auto &x : f) x %= T::mod();\n    for(auto &x\
+    \ : g) x %= T::mod();\n\n    auto res1 = number_theoretic_transform<modint<M1>,\
+    \ P1, 1 << 20>().convolve(f, g);\n    auto res2 = number_theoretic_transform<modint<M2>,\
+    \ P2, 1 << 20>().convolve(f, g);\n    auto res3 = number_theoretic_transform<modint<M3>,\
+    \ P3, 1 << 20>().convolve(f, g);\n\n    const int n = res1.size();\n\n    std::vector<T>\
+    \ ret(n);\n\n    const int64_t M12 = (int64_t)modint<M2>::inv(M1);\n    const\
+    \ int64_t M13 = (int64_t)modint<M3>::inv(M1);\n    const int64_t M23 = (int64_t)modint<M3>::inv(M2);\n\
+    \n    for(int i = 0; i < n; ++i){\n      const int64_t r[3] = {(int64_t)res1[i],\
+    \ (int64_t)res2[i], (int64_t)res3[i]};\n\n      const int64_t t0 = r[0] % M1;\n\
+    \      const int64_t t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2\
+    \ = ((r[2] - t0 + M3) * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0)\
+    \ + T(t1) * M1 + T(t2) * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 4 \"\
+    Mylib/Math/formal_power_series.cpp\"\n#include <initializer_list>\n#line 6 \"\
+    Mylib/Math/formal_power_series.cpp\"\n\nnamespace haar_lib {\n  template <typename\
+    \ T, const auto &convolve>\n  class formal_power_series {\n  public:\n    using\
+    \ value_type = T;\n\n    static std::function<std::optional<T>(T)> get_sqrt;\n\
     \n  private:\n    std::vector<T> data_;\n\n  public:\n    formal_power_series(){}\n\
     \    explicit formal_power_series(int N): data_(N){}\n    formal_power_series(const\
     \ std::vector<T> &data_): data_(data_){}\n    formal_power_series(std::initializer_list<T>\
@@ -241,37 +243,35 @@ data:
     \ it + std::min(t, m)));\n        ret.resize(t);\n        f.resize(t);\n     \
     \   ret = (ret + f * ret.inv()) * T(2).inv();\n        t <<= 1;\n      }\n\n \
     \     ret.resize(n);\n      ret = ret.shift(k / 2);\n\n      return ret;\n   \
-    \ }\n  };\n\n  template <typename T>\n  std::function<std::vector<T>(std::vector<T>,\
-    \ std::vector<T>)> formal_power_series<T>::convolve;\n\n  template <typename T>\n\
-    \  std::function<std::optional<T>(T)> formal_power_series<T>::get_sqrt;\n}\n#line\
-    \ 4 \"Mylib/IO/input_vector.cpp\"\n\nnamespace haar_lib {\n  template <typename\
-    \ T>\n  std::vector<T> input_vector(int N){\n    std::vector<T> ret(N);\n    for(int\
-    \ i = 0; i < N; ++i) std::cin >> ret[i];\n    return ret;\n  }\n\n  template <typename\
-    \ T>\n  std::vector<std::vector<T>> input_vector(int N, int M){\n    std::vector<std::vector<T>>\
-    \ ret(N);\n    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);\n    return\
-    \ ret;\n  }\n}\n#line 3 \"Mylib/IO/join.cpp\"\n#include <sstream>\n#include <string>\n\
-    \nnamespace haar_lib {\n  template <typename Iter>\n  std::string join(Iter first,\
-    \ Iter last, std::string delim = \" \"){\n    std::stringstream s;\n\n    for(auto\
+    \ }\n  };\n\n  template <typename T, const auto &convolve>\n  std::function<std::optional<T>(T)>\
+    \ formal_power_series<T, convolve>::get_sqrt;\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\
+    \n\nnamespace haar_lib {\n  template <typename T>\n  std::vector<T> input_vector(int\
+    \ N){\n    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i) std::cin >>\
+    \ ret[i];\n    return ret;\n  }\n\n  template <typename T>\n  std::vector<std::vector<T>>\
+    \ input_vector(int N, int M){\n    std::vector<std::vector<T>> ret(N);\n    for(int\
+    \ i = 0; i < N; ++i) ret[i] = input_vector<T>(M);\n    return ret;\n  }\n}\n#line\
+    \ 3 \"Mylib/IO/join.cpp\"\n#include <sstream>\n#include <string>\n\nnamespace\
+    \ haar_lib {\n  template <typename Iter>\n  std::string join(Iter first, Iter\
+    \ last, std::string delim = \" \"){\n    std::stringstream s;\n\n    for(auto\
     \ it = first; it != last; ++it){\n      if(it != first) s << delim;\n      s <<\
     \ *it;\n    }\n\n    return s.str();\n  }\n}\n#line 11 \"test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nusing mint = hl::montgomery<998244353>;\nusing\
-    \ FPS = hl::formal_power_series<mint>;\nusing NTT = hl::number_theoretic_transform<mint,\
-    \ 3, 1 << 21>;\n\nint main(){\n  using namespace std::placeholders;\n  std::cin.tie(0);\n\
-    \  std::ios::sync_with_stdio(false);\n\n  auto ntt = NTT();\n  FPS::convolve =\
-    \ std::bind(&NTT::convolve<mint>, &ntt, _1, _2);\n\n  int N; std::cin >> N;\n\
-    \  auto a = hl::input_vector<mint>(N);\n  auto ans = FPS(a).exp();\n\n  std::cout\
+    \ NTT = hl::number_theoretic_transform<mint, 3, 1 << 21>;\nconst static auto ntt\
+    \ = NTT();\nusing FPS = hl::formal_power_series<mint, ntt>;\n\nint main(){\n \
+    \ std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int N; std::cin >>\
+    \ N;\n  auto a = hl::input_vector<mint>(N);\n  auto ans = FPS(a).exp();\n\n  std::cout\
     \ << hl::join(ans.begin(), ans.begin() + N) << \"\\n\";\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\
     \n\n#include <iostream>\n#include <vector>\n#include <functional>\n#include \"\
     Mylib/Number/Mint/montgomery.cpp\"\n#include \"Mylib/Convolution/ntt_convolution.cpp\"\
     \n#include \"Mylib/Math/formal_power_series.cpp\"\n#include \"Mylib/IO/input_vector.cpp\"\
     \n#include \"Mylib/IO/join.cpp\"\n\nnamespace hl = haar_lib;\n\nusing mint = hl::montgomery<998244353>;\n\
-    using FPS = hl::formal_power_series<mint>;\nusing NTT = hl::number_theoretic_transform<mint,\
-    \ 3, 1 << 21>;\n\nint main(){\n  using namespace std::placeholders;\n  std::cin.tie(0);\n\
-    \  std::ios::sync_with_stdio(false);\n\n  auto ntt = NTT();\n  FPS::convolve =\
-    \ std::bind(&NTT::convolve<mint>, &ntt, _1, _2);\n\n  int N; std::cin >> N;\n\
-    \  auto a = hl::input_vector<mint>(N);\n  auto ans = FPS(a).exp();\n\n  std::cout\
-    \ << hl::join(ans.begin(), ans.begin() + N) << \"\\n\";\n\n  return 0;\n}\n"
+    using NTT = hl::number_theoretic_transform<mint, 3, 1 << 21>;\nconst static auto\
+    \ ntt = NTT();\nusing FPS = hl::formal_power_series<mint, ntt>;\n\nint main(){\n\
+    \  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int N; std::cin\
+    \ >> N;\n  auto a = hl::input_vector<mint>(N);\n  auto ans = FPS(a).exp();\n\n\
+    \  std::cout << hl::join(ans.begin(), ans.begin() + N) << \"\\n\";\n\n  return\
+    \ 0;\n}\n"
   dependsOn:
   - Mylib/Number/Mint/montgomery.cpp
   - Mylib/Convolution/ntt_convolution.cpp
@@ -282,7 +282,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
   requiredBy: []
-  timestamp: '2020-10-01 05:15:44+09:00'
+  timestamp: '2020-10-10 16:27:01+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp

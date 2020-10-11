@@ -6,11 +6,11 @@ data:
     title: Basic graph
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DPL_2_B/main.test.cpp
     title: test/aoj/DPL_2_B/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/chinese_postman_problem.cpp\"\n#include <vector>\n\
@@ -89,7 +89,7 @@ data:
   path: Mylib/Graph/chinese_postman_problem.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/DPL_2_B/main.test.cpp
 documentation_of: Mylib/Graph/chinese_postman_problem.cpp

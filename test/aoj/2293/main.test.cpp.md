@@ -21,15 +21,16 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2293
   bundledCode: "#line 1 \"test/aoj/2293/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2293\"\
     \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/Graph/Matching/weighted_bipartite_matching.cpp\"\
-    \n#include <tuple>\n\nnamespace haar_lib {\n  template <typename T, typename MinCostFlow,\
-    \ bool MIN_MATCHING = false>\n  class weighted_bipartite_matching {\n    int L_,\
-    \ R_, s_, t_;\n    MinCostFlow f_;\n\n  public:\n    weighted_bipartite_matching(){}\n\
+    \n#include <tuple>\n#include <cassert>\n\nnamespace haar_lib {\n  template <typename\
+    \ T, typename MinCostFlow, bool MIN_MATCHING = false>\n  class weighted_bipartite_matching\
+    \ {\n    int L_, R_, s_, t_;\n    MinCostFlow f_;\n\n  public:\n    weighted_bipartite_matching(){}\n\
     \    weighted_bipartite_matching(int L, int R, bool arbitrary_flow = false):\n\
     \      L_(L), R_(R), s_(L + R), t_(s_ + 1), f_(L + R + 2)\n    {\n      for(int\
     \ i = 0; i < L_; ++i) f_.add_edge(s_, i, 1, 0);\n      for(int i = 0; i < R_;\
     \ ++i) f_.add_edge(L_ + i, t_, 1, 0);\n      if(arbitrary_flow) f_.add_edge(s_,\
     \ t_, std::numeric_limits<int>::max(), 0);\n    }\n\n    void add_edge(int from,\
-    \ int to, T gain){\n      f_.add_edge(from, L_ + to, 1, gain * (MIN_MATCHING ?\
+    \ int to, T gain){\n      assert(0 <= from and from < L_);\n      assert(0 <=\
+    \ to and to < R_);\n      f_.add_edge(from, L_ + to, 1, gain * (MIN_MATCHING ?\
     \ 1 : -1));\n    }\n\n    T match(int flow){\n      T ret = f_.min_cost_flow(s_,\
     \ t_, flow).second;\n      return ret * (MIN_MATCHING ? 1 : -1);\n    }\n\n  \
     \  auto get_matching(){\n      const auto g = f_.edges();\n      std::vector<std::tuple<int,\
@@ -38,7 +39,7 @@ data:
     \ - L_, e.cost * (MIN_MATCHING ? 1 : -1));\n        }\n      }\n\n      return\
     \ ret;\n    }\n  };\n}\n#line 3 \"Mylib/Graph/Flow/minimum_cost_flow.cpp\"\n#include\
     \ <queue>\n#include <utility>\n#include <functional>\n#include <algorithm>\n#line\
-    \ 8 \"Mylib/Graph/Flow/minimum_cost_flow.cpp\"\n\nnamespace haar_lib {\n  namespace\
+    \ 9 \"Mylib/Graph/Flow/minimum_cost_flow.cpp\"\n\nnamespace haar_lib {\n  namespace\
     \ minimum_cost_flow_impl {\n    template <typename T, typename U>\n    struct\
     \ edge {\n      int from, to, rev;\n      T cap;\n      U cost;\n      bool is_rev;\n\
     \      edge(int from, int to, int rev, T cap, U cost, bool is_rev):\n        from(from),\
@@ -48,11 +49,13 @@ data:
     \ = Capacity;\n    using cost_type = Cost;\n\n  private:\n    int size_;\n   \
     \ std::vector<std::vector<edge>> g_;\n\n  public:\n    minimum_cost_flow(){}\n\
     \    minimum_cost_flow(int size): size_(size), g_(size){}\n\n    void add_edge(int\
-    \ from, int to, Capacity cap, Cost cost){\n      g_[from].emplace_back(from, to,\
+    \ from, int to, Capacity cap, Cost cost){\n      assert(0 <= from and from < size_);\n\
+    \      assert(0 <= to and to < size_);\n      g_[from].emplace_back(from, to,\
     \ g_[to].size(), cap, cost, false);\n      g_[to].emplace_back(to, from, g_[from].size()\
     \ - 1, 0, -cost, true);\n    }\n\n    std::pair<Capacity, Cost> min_cost_flow(int\
-    \ src, int dst, const Capacity &f){\n      using P = std::pair<Cost, int>;\n \
-    \     Cost ret = 0;\n      Capacity flow = f;\n      std::vector<Cost> h(size_,\
+    \ src, int dst, const Capacity &f){\n      assert(0 <= src and src < size_);\n\
+    \      assert(0 <= dst and dst < size_);\n\n      using P = std::pair<Cost, int>;\n\
+    \      Cost ret = 0;\n      Capacity flow = f;\n      std::vector<Cost> h(size_,\
     \ 0), cost(size_);\n      std::vector<bool> is_inf(size_, true);\n      std::vector<int>\
     \ prev_node(size_), prev_edge(size_);\n      std::priority_queue<P, std::vector<P>,\
     \ std::greater<P>> pq;\n\n      while(flow > 0){\n        std::fill(is_inf.begin(),\
@@ -118,7 +121,7 @@ data:
   isVerificationFile: true
   path: test/aoj/2293/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2020-10-10 11:12:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/2293/main.test.cpp

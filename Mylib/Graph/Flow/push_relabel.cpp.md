@@ -11,13 +11,13 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/Flow/push_relabel.cpp\"\n#include <vector>\n\
-    #include <queue>\n#include <utility>\n#include <limits>\n\nnamespace haar_lib\
-    \ {\n  namespace push_relabel_impl {\n    template <typename T>\n    struct edge\
-    \ {\n      int from, to, rev;\n      T cap;\n      bool is_rev;\n      edge(int\
-    \ from, int to, int rev, T cap, bool is_rev):\n        from(from), to(to), rev(rev),\
-    \ cap(cap), is_rev(is_rev){}\n    };\n  }\n\n  template <typename T>\n  class\
-    \ push_relabel {\n  public:\n    using edge = push_relabel_impl::edge<T>;\n  \
-    \  using capacity_type = T;\n\n  private:\n    int N_;\n    std::vector<std::vector<edge>>\
+    #include <queue>\n#include <utility>\n#include <limits>\n#include <cassert>\n\n\
+    namespace haar_lib {\n  namespace push_relabel_impl {\n    template <typename\
+    \ T>\n    struct edge {\n      int from, to, rev;\n      T cap;\n      bool is_rev;\n\
+    \      edge(int from, int to, int rev, T cap, bool is_rev):\n        from(from),\
+    \ to(to), rev(rev), cap(cap), is_rev(is_rev){}\n    };\n  }\n\n  template <typename\
+    \ T>\n  class push_relabel {\n  public:\n    using edge = push_relabel_impl::edge<T>;\n\
+    \    using capacity_type = T;\n\n  private:\n    int N_;\n    std::vector<std::vector<edge>>\
     \ g_;\n    std::vector<T> excess_;\n    std::vector<int> height_;\n    std::queue<int>\
     \ next_active_vertex_;\n    constexpr static T inf = std::numeric_limits<T>::max();\n\
     \n    void init(int s, int t){\n      excess_[s] = inf;\n\n      for(auto &e :\
@@ -40,9 +40,11 @@ data:
     \ / 2;\n      for(auto &e : g_[i]){\n        if(e.cap > 0) a = std::min(a, height_[e.to]);\n\
     \      }\n\n      height_[i] = a + 1;\n    }\n\n  public:\n    push_relabel(){}\n\
     \    push_relabel(int N): N_(N), g_(N), excess_(N), height_(N){}\n\n    void add_edge(int\
-    \ from, int to, T c){\n      g_[from].emplace_back(from, to, (int)g_[to].size(),\
+    \ from, int to, T c){\n      assert(0 <= from and from < N_);\n      assert(0\
+    \ <= to and to < N_);\n      g_[from].emplace_back(from, to, (int)g_[to].size(),\
     \ c, false);\n      g_[to].emplace_back(to, from, (int)g_[from].size() - 1, 0,\
-    \ true);\n    }\n\n    T max_flow(int s, int t){\n      init(s, t);\n\n      while(true){\n\
+    \ true);\n    }\n\n    T max_flow(int s, int t){\n      assert(0 <= s and s <\
+    \ N_);\n      assert(0 <= t and t < N_);\n      init(s, t);\n\n      while(true){\n\
     \        int index = -1;\n\n        while(not next_active_vertex_.empty()){\n\
     \          int i = next_active_vertex_.front();\n          if(i != s and i !=\
     \ t and excess_[i] > 0){\n            index = i;\n            break;\n       \
@@ -55,15 +57,15 @@ data:
     \ &v : g_) ret.insert(ret.end(), v.begin(), v.end());\n      return ret;\n   \
     \ }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <queue>\n#include <utility>\n#include\
-    \ <limits>\n\nnamespace haar_lib {\n  namespace push_relabel_impl {\n    template\
-    \ <typename T>\n    struct edge {\n      int from, to, rev;\n      T cap;\n  \
-    \    bool is_rev;\n      edge(int from, int to, int rev, T cap, bool is_rev):\n\
-    \        from(from), to(to), rev(rev), cap(cap), is_rev(is_rev){}\n    };\n  }\n\
-    \n  template <typename T>\n  class push_relabel {\n  public:\n    using edge =\
-    \ push_relabel_impl::edge<T>;\n    using capacity_type = T;\n\n  private:\n  \
-    \  int N_;\n    std::vector<std::vector<edge>> g_;\n    std::vector<T> excess_;\n\
-    \    std::vector<int> height_;\n    std::queue<int> next_active_vertex_;\n   \
-    \ constexpr static T inf = std::numeric_limits<T>::max();\n\n    void init(int\
+    \ <limits>\n#include <cassert>\n\nnamespace haar_lib {\n  namespace push_relabel_impl\
+    \ {\n    template <typename T>\n    struct edge {\n      int from, to, rev;\n\
+    \      T cap;\n      bool is_rev;\n      edge(int from, int to, int rev, T cap,\
+    \ bool is_rev):\n        from(from), to(to), rev(rev), cap(cap), is_rev(is_rev){}\n\
+    \    };\n  }\n\n  template <typename T>\n  class push_relabel {\n  public:\n \
+    \   using edge = push_relabel_impl::edge<T>;\n    using capacity_type = T;\n\n\
+    \  private:\n    int N_;\n    std::vector<std::vector<edge>> g_;\n    std::vector<T>\
+    \ excess_;\n    std::vector<int> height_;\n    std::queue<int> next_active_vertex_;\n\
+    \    constexpr static T inf = std::numeric_limits<T>::max();\n\n    void init(int\
     \ s, int t){\n      excess_[s] = inf;\n\n      for(auto &e : g_[s]){\n       \
     \ push(e, s, t);\n      }\n\n      {\n        for(int i = 0; i < N_; ++i){\n \
     \         height_[i] = N_;\n        }\n\n        std::queue<int> q;\n        std::vector<bool>\
@@ -83,9 +85,11 @@ data:
     \ / 2;\n      for(auto &e : g_[i]){\n        if(e.cap > 0) a = std::min(a, height_[e.to]);\n\
     \      }\n\n      height_[i] = a + 1;\n    }\n\n  public:\n    push_relabel(){}\n\
     \    push_relabel(int N): N_(N), g_(N), excess_(N), height_(N){}\n\n    void add_edge(int\
-    \ from, int to, T c){\n      g_[from].emplace_back(from, to, (int)g_[to].size(),\
+    \ from, int to, T c){\n      assert(0 <= from and from < N_);\n      assert(0\
+    \ <= to and to < N_);\n      g_[from].emplace_back(from, to, (int)g_[to].size(),\
     \ c, false);\n      g_[to].emplace_back(to, from, (int)g_[from].size() - 1, 0,\
-    \ true);\n    }\n\n    T max_flow(int s, int t){\n      init(s, t);\n\n      while(true){\n\
+    \ true);\n    }\n\n    T max_flow(int s, int t){\n      assert(0 <= s and s <\
+    \ N_);\n      assert(0 <= t and t < N_);\n      init(s, t);\n\n      while(true){\n\
     \        int index = -1;\n\n        while(not next_active_vertex_.empty()){\n\
     \          int i = next_active_vertex_.front();\n          if(i != s and i !=\
     \ t and excess_[i] > 0){\n            index = i;\n            break;\n       \
@@ -101,7 +105,7 @@ data:
   isVerificationFile: false
   path: Mylib/Graph/Flow/push_relabel.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2020-10-10 11:12:55+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/GRL_6_A/main.push_relabel.test.cpp

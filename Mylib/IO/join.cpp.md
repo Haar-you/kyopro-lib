@@ -15,7 +15,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/3165/main.test.imos.cpp
     title: test/aoj/3165/main.test.imos.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_3_D/main.test.cpp
     title: test/aoj/DSL_3_D/main.test.cpp
   - icon: ':x:'

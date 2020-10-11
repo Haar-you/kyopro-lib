@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/bell_number.cpp
     title: Bell number
   - icon: ':x:'
@@ -11,14 +11,14 @@ data:
   - icon: ':x:'
     path: Mylib/Combinatorics/catalan_number.cpp
     title: Catalan number
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/stirling_number_second.cpp
     title: Stirling numbers of the second kind
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DPL_5_G/main.test.cpp
     title: test/aoj/DPL_5_G/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DPL_5_I/main.test.cpp
     title: test/aoj/DPL_5_I/main.test.cpp
   - icon: ':x:'
@@ -34,7 +34,7 @@ data:
     path: test/yukicoder/665/main.test.cpp
     title: test/yukicoder/665/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Combinatorics/factorial_table.cpp\"\n#include <vector>\n\
@@ -80,7 +80,7 @@ data:
   - Mylib/Combinatorics/catalan_number.cpp
   - Mylib/Combinatorics/bell_number.cpp
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yukicoder/117/main.test.cpp
   - test/yukicoder/660/main.test.cpp

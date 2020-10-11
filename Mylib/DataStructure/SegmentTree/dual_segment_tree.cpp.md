@@ -3,14 +3,14 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_2_D/main.test.cpp
     title: test/aoj/DSL_2_D/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_2_E/main.test.cpp
     title: test/aoj/DSL_2_E/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp\"\n\
@@ -63,7 +63,7 @@ data:
   path: Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp
   requiredBy: []
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/DSL_2_E/main.test.cpp
   - test/aoj/DSL_2_D/main.test.cpp

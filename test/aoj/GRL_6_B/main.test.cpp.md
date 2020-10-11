@@ -22,21 +22,23 @@ data:
   bundledCode: "#line 1 \"test/aoj/GRL_6_B/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_B\"\
     \n\n#include <iostream>\n#line 2 \"Mylib/Graph/Flow/minimum_cost_flow.cpp\"\n\
     #include <vector>\n#include <queue>\n#include <utility>\n#include <functional>\n\
-    #include <algorithm>\n#include <tuple>\n\nnamespace haar_lib {\n  namespace minimum_cost_flow_impl\
-    \ {\n    template <typename T, typename U>\n    struct edge {\n      int from,\
-    \ to, rev;\n      T cap;\n      U cost;\n      bool is_rev;\n      edge(int from,\
-    \ int to, int rev, T cap, U cost, bool is_rev):\n        from(from), to(to), rev(rev),\
-    \ cap(cap), cost(cost), is_rev(is_rev){}\n    };\n  }\n\n  template <typename\
-    \ Capacity, typename Cost>\n  class minimum_cost_flow {\n  public:\n    using\
-    \ edge = minimum_cost_flow_impl::edge<Capacity, Cost>;\n    using capacity_type\
-    \ = Capacity;\n    using cost_type = Cost;\n\n  private:\n    int size_;\n   \
-    \ std::vector<std::vector<edge>> g_;\n\n  public:\n    minimum_cost_flow(){}\n\
+    #include <algorithm>\n#include <tuple>\n#include <cassert>\n\nnamespace haar_lib\
+    \ {\n  namespace minimum_cost_flow_impl {\n    template <typename T, typename\
+    \ U>\n    struct edge {\n      int from, to, rev;\n      T cap;\n      U cost;\n\
+    \      bool is_rev;\n      edge(int from, int to, int rev, T cap, U cost, bool\
+    \ is_rev):\n        from(from), to(to), rev(rev), cap(cap), cost(cost), is_rev(is_rev){}\n\
+    \    };\n  }\n\n  template <typename Capacity, typename Cost>\n  class minimum_cost_flow\
+    \ {\n  public:\n    using edge = minimum_cost_flow_impl::edge<Capacity, Cost>;\n\
+    \    using capacity_type = Capacity;\n    using cost_type = Cost;\n\n  private:\n\
+    \    int size_;\n    std::vector<std::vector<edge>> g_;\n\n  public:\n    minimum_cost_flow(){}\n\
     \    minimum_cost_flow(int size): size_(size), g_(size){}\n\n    void add_edge(int\
-    \ from, int to, Capacity cap, Cost cost){\n      g_[from].emplace_back(from, to,\
+    \ from, int to, Capacity cap, Cost cost){\n      assert(0 <= from and from < size_);\n\
+    \      assert(0 <= to and to < size_);\n      g_[from].emplace_back(from, to,\
     \ g_[to].size(), cap, cost, false);\n      g_[to].emplace_back(to, from, g_[from].size()\
     \ - 1, 0, -cost, true);\n    }\n\n    std::pair<Capacity, Cost> min_cost_flow(int\
-    \ src, int dst, const Capacity &f){\n      using P = std::pair<Cost, int>;\n \
-    \     Cost ret = 0;\n      Capacity flow = f;\n      std::vector<Cost> h(size_,\
+    \ src, int dst, const Capacity &f){\n      assert(0 <= src and src < size_);\n\
+    \      assert(0 <= dst and dst < size_);\n\n      using P = std::pair<Cost, int>;\n\
+    \      Cost ret = 0;\n      Capacity flow = f;\n      std::vector<Cost> h(size_,\
     \ 0), cost(size_);\n      std::vector<bool> is_inf(size_, true);\n      std::vector<int>\
     \ prev_node(size_), prev_edge(size_);\n      std::priority_queue<P, std::vector<P>,\
     \ std::greater<P>> pq;\n\n      while(flow > 0){\n        std::fill(is_inf.begin(),\
@@ -104,7 +106,7 @@ data:
   isVerificationFile: true
   path: test/aoj/GRL_6_B/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2020-10-10 11:12:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/aoj/GRL_6_B/main.test.cpp

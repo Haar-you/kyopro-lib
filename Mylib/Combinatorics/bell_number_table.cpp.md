@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DPL_5_G/main.table.test.cpp
     title: test/aoj/DPL_5_G/main.table.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Combinatorics/bell_number_table.cpp\"\n#include <vector>\n\
@@ -31,7 +31,7 @@ data:
   path: Mylib/Combinatorics/bell_number_table.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/DPL_5_G/main.table.test.cpp
 documentation_of: Mylib/Combinatorics/bell_number_table.cpp

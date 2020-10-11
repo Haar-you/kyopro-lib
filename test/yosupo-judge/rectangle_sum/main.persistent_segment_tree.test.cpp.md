@@ -35,12 +35,13 @@ data:
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\n\n#include\
     \ <iostream>\n#include <vector>\n#line 3 \"Mylib/Utils/sort_simultaneously.cpp\"\
     \n#include <utility>\n#include <algorithm>\n#include <numeric>\n#include <initializer_list>\n\
-    \nnamespace haar_lib {\n  namespace sort_simultaneously_impl {\n    template <typename\
-    \ T>\n    void sub(int N, const std::vector<int> &ord, std::vector<T> &a){\n \
-    \     std::vector<T> temp(N);\n      for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];\n\
-    \      std::swap(temp, a);\n    }\n  }\n\n  template <typename Compare, typename\
-    \ ... Args>\n  void sort_simultaneously(const Compare &compare, std::vector<Args>\
-    \ &... args){\n    const int N = std::max({args.size() ...});\n    std::vector<int>\
+    #include <cassert>\n\nnamespace haar_lib {\n  namespace sort_simultaneously_impl\
+    \ {\n    template <typename T>\n    void sub(int N, const std::vector<int> &ord,\
+    \ std::vector<T> &a){\n      std::vector<T> temp(N);\n      for(int i = 0; i <\
+    \ N; ++i) temp[i] = a[ord[i]];\n      std::swap(temp, a);\n    }\n  }\n\n  template\
+    \ <typename Compare, typename ... Args>\n  void sort_simultaneously(const Compare\
+    \ &compare, std::vector<Args> &... args){\n    const int N = std::max({args.size()\
+    \ ...});\n    assert((int)std::min({args.size() ...}) == N);\n    std::vector<int>\
     \ ord(N);\n    std::iota(ord.begin(), ord.end(), 0);\n    std::sort(ord.begin(),\
     \ ord.end(), compare);\n\n    (void)std::initializer_list<int>{\n      (void(sort_simultaneously_impl::sub(N,\
     \ ord, args)), 0) ...};\n  }\n}\n#line 3 \"Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp\"\
@@ -84,27 +85,30 @@ data:
     \ using value_type = T;\n    value_type operator()() const {return 0;}\n    value_type\
     \ operator()(value_type a, value_type b) const {return a + b;}\n  };\n}\n#line\
     \ 4 \"Mylib/Utils/compressor.cpp\"\n\nnamespace haar_lib {\n  template <typename\
-    \ T>\n  class compressor {\n    std::vector<T> data_;\n\n  public:\n    auto&\
-    \ add(const T &val){\n      data_.push_back(val);\n      return *this;\n    }\n\
-    \n    auto& add(const std::vector<T> &vals){\n      data_.insert(data_.end(),\
-    \ vals.begin(), vals.end());\n      return *this;\n    }\n\n    template <typename\
-    \ U, typename ... Args>\n    auto& add(const U &val, const Args &... args){\n\
-    \      add(val);\n      return add(args ...);\n    }\n\n    auto& build(){\n \
-    \     std::sort(data_.begin(), data_.end());\n      data_.erase(std::unique(data_.begin(),\
-    \ data_.end()), data_.end());\n      return *this;\n    }\n\n    int get_index(const\
-    \ T &val) const {\n      return std::lower_bound(data_.begin(), data_.end(), val)\
-    \ - data_.begin();\n    }\n\n    auto& compress(std::vector<T> &vals) const {\n\
-    \      for(auto &x : vals) x = get_index(x);\n      return *this;\n    }\n\n \
-    \   auto& compress(T &val) const {\n      val = get_index(val);\n      return\
-    \ *this;\n    }\n\n    template <typename U, typename ... Args>\n    auto& compress(U\
-    \ &val, Args &... args) const {\n      compress(val);\n      return compress(args\
-    \ ...);\n    }\n\n    auto& decompress(std::vector<T> &vals) const {\n      for(auto\
-    \ &x : vals) x = data_[x];\n      return *this;\n    }\n\n    auto& decompress(T\
+    \ T>\n  class compressor {\n    std::vector<T> data_;\n    template <typename>\
+    \ friend class compressor_builder;\n\n  public:\n    int get_index(const T &val)\
+    \ const {\n      return std::lower_bound(data_.begin(), data_.end(), val) - data_.begin();\n\
+    \    }\n\n    auto& compress(std::vector<T> &vals) const {\n      for(auto &x\
+    \ : vals) x = get_index(x);\n      return *this;\n    }\n\n    auto& compress(T\
+    \ &val) const {\n      val = get_index(val);\n      return *this;\n    }\n\n \
+    \   template <typename U, typename ... Args>\n    auto& compress(U &val, Args\
+    \ &... args) const {\n      compress(val);\n      return compress(args ...);\n\
+    \    }\n\n    auto& decompress(std::vector<T> &vals) const {\n      for(auto &x\
+    \ : vals) x = data_[x];\n      return *this;\n    }\n\n    auto& decompress(T\
     \ &val) const {\n      val = data_[val];\n      return *this;\n    }\n\n    template\
     \ <typename U, typename ... Args>\n    auto& decompress(U &val, Args &... args)\
     \ const {\n      decompress(val);\n      return decompress(args ...);\n    }\n\
     \n    int size() const {return data_.size();}\n    T operator[](int index) const\
-    \ {return data_[index];}\n  };\n}\n#line 4 \"Mylib/IO/input_tuple_vector.cpp\"\
+    \ {return data_[index];}\n  };\n\n  template <typename T>\n  class compressor_builder\
+    \ {\n    std::vector<T> data_;\n\n  public:\n    auto& add(const T &val){\n  \
+    \    data_.push_back(val);\n      return *this;\n    }\n\n    auto& add(const\
+    \ std::vector<T> &vals){\n      data_.insert(data_.end(), vals.begin(), vals.end());\n\
+    \      return *this;\n    }\n\n    template <typename U, typename ... Args>\n\
+    \    auto& add(const U &val, const Args &... args){\n      add(val);\n      return\
+    \ add(args ...);\n    }\n\n    auto build() const {\n      compressor<T> ret;\n\
+    \      ret.data_ = data_;\n      std::sort(ret.data_.begin(), ret.data_.end());\n\
+    \      ret.data_.erase(std::unique(ret.data_.begin(), ret.data_.end()), ret.data_.end());\n\
+    \      return ret;\n    }\n  };\n}\n#line 4 \"Mylib/IO/input_tuple_vector.cpp\"\
     \n#include <tuple>\n#line 7 \"Mylib/IO/input_tuple_vector.cpp\"\n\nnamespace haar_lib\
     \ {\n  template <typename T, size_t ... I>\n  void input_tuple_vector_init(T &val,\
     \ int N, std::index_sequence<I ...>){\n    (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)),\
@@ -138,7 +142,7 @@ data:
     \nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int\
     \ N, Q; std::cin >> N >> Q;\n\n  auto [x, y, w] = hl::input_tuple_vector<int64_t,\
     \ int64_t, int64_t>(N);\n\n  hl::sort_simultaneously(\n    [&](int i, int j){\n\
-    \      return y[i] < y[j];\n    },\n    x, y, w\n  );\n\n  auto c = hl::compressor<int64_t>().add(x).build().compress(x);\n\
+    \      return y[i] < y[j];\n    },\n    x, y, w\n  );\n\n  auto c = hl::compressor_builder<int64_t>().add(x).build().compress(x);\n\
     \  const int m = c.size();\n\n  std::vector<Seg> seg;\n  seg.push_back(Seg(m));\n\
     \n  for(int i = 0; i < N; ++i){\n    auto &s = seg.back();\n    seg.push_back(s.update(x[i],\
     \ w[i]));\n  }\n\n  for(auto [l, d, r, u] : hl::input_tuples<int64_t, int64_t,\
@@ -155,7 +159,7 @@ data:
     \nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int\
     \ N, Q; std::cin >> N >> Q;\n\n  auto [x, y, w] = hl::input_tuple_vector<int64_t,\
     \ int64_t, int64_t>(N);\n\n  hl::sort_simultaneously(\n    [&](int i, int j){\n\
-    \      return y[i] < y[j];\n    },\n    x, y, w\n  );\n\n  auto c = hl::compressor<int64_t>().add(x).build().compress(x);\n\
+    \      return y[i] < y[j];\n    },\n    x, y, w\n  );\n\n  auto c = hl::compressor_builder<int64_t>().add(x).build().compress(x);\n\
     \  const int m = c.size();\n\n  std::vector<Seg> seg;\n  seg.push_back(Seg(m));\n\
     \n  for(int i = 0; i < N; ++i){\n    auto &s = seg.back();\n    seg.push_back(s.update(x[i],\
     \ w[i]));\n  }\n\n  for(auto [l, d, r, u] : hl::input_tuples<int64_t, int64_t,\
@@ -174,7 +178,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2020-10-11 03:06:10+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp

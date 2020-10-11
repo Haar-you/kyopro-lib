@@ -168,16 +168,17 @@ data:
     \        if(head_[u] == head_[v]) return u;\n        v = par_[head_[v]];\n   \
     \   }\n    }\n\n    int get_id(int x) const {\n      return id_[x];\n    }\n \
     \ };\n}\n#line 5 \"Mylib/Utils/sort_simultaneously.cpp\"\n#include <numeric>\n\
-    #line 7 \"Mylib/Utils/sort_simultaneously.cpp\"\n\nnamespace haar_lib {\n  namespace\
-    \ sort_simultaneously_impl {\n    template <typename T>\n    void sub(int N, const\
-    \ std::vector<int> &ord, std::vector<T> &a){\n      std::vector<T> temp(N);\n\
-    \      for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];\n      std::swap(temp,\
+    #line 7 \"Mylib/Utils/sort_simultaneously.cpp\"\n#include <cassert>\n\nnamespace\
+    \ haar_lib {\n  namespace sort_simultaneously_impl {\n    template <typename T>\n\
+    \    void sub(int N, const std::vector<int> &ord, std::vector<T> &a){\n      std::vector<T>\
+    \ temp(N);\n      for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];\n      std::swap(temp,\
     \ a);\n    }\n  }\n\n  template <typename Compare, typename ... Args>\n  void\
     \ sort_simultaneously(const Compare &compare, std::vector<Args> &... args){\n\
-    \    const int N = std::max({args.size() ...});\n    std::vector<int> ord(N);\n\
-    \    std::iota(ord.begin(), ord.end(), 0);\n    std::sort(ord.begin(), ord.end(),\
-    \ compare);\n\n    (void)std::initializer_list<int>{\n      (void(sort_simultaneously_impl::sub(N,\
-    \ ord, args)), 0) ...};\n  }\n}\n#line 3 \"Mylib/DataStructure/SegmentTree/lazy_segment_tree_with_coefficients.cpp\"\
+    \    const int N = std::max({args.size() ...});\n    assert((int)std::min({args.size()\
+    \ ...}) == N);\n    std::vector<int> ord(N);\n    std::iota(ord.begin(), ord.end(),\
+    \ 0);\n    std::sort(ord.begin(), ord.end(), compare);\n\n    (void)std::initializer_list<int>{\n\
+    \      (void(sort_simultaneously_impl::sub(N, ord, args)), 0) ...};\n  }\n}\n\
+    #line 3 \"Mylib/DataStructure/SegmentTree/lazy_segment_tree_with_coefficients.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  class lazy_segment_tree_with_coefficients\
     \ {\n  public:\n    using value_type = T;\n\n  private:\n    int depth_, size_,\
     \ hsize_;\n    std::vector<T> data_, lazy_, coeff_;\n\n    void propagate(int\
@@ -250,7 +251,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/235/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-30 07:57:28+09:00'
+  timestamp: '2020-10-10 11:12:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/235/main.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Combinatorics/factorial_table.cpp
     title: Factorial table
   _extendedRequiredBy: []
@@ -32,18 +32,17 @@ data:
     \ P(n, k) * inv_factorial(k);\n    }\n\n    T H(int64_t n, int64_t k) const {\n\
     \      if(n == 0 and k == 0) return 1;\n      return C(n + k - 1, k);\n    }\n\
     \  };\n}\n#line 4 \"Mylib/Combinatorics/catalan_number.cpp\"\n\nnamespace haar_lib\
-    \ {\n  template <typename Ft, typename T = typename Ft::value_type>\n  T catalan_number(int64_t\
-    \ n, const Ft &ft){\n    return ft.C(2 * n, n) - ft.C(2 * n, n - 1);\n  }\n}\n"
+    \ {\n  template <const auto &ft>\n  auto catalan_number(int64_t n){\n    return\
+    \ ft.C(2 * n, n) - ft.C(2 * n, n - 1);\n  }\n}\n"
   code: "#pragma once\n#include <cstdint>\n#include \"Mylib/Combinatorics/factorial_table.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename Ft, typename T = typename Ft::value_type>\n\
-    \  T catalan_number(int64_t n, const Ft &ft){\n    return ft.C(2 * n, n) - ft.C(2\
-    \ * n, n - 1);\n  }\n}\n"
+    \n\nnamespace haar_lib {\n  template <const auto &ft>\n  auto catalan_number(int64_t\
+    \ n){\n    return ft.C(2 * n, n) - ft.C(2 * n, n - 1);\n  }\n}\n"
   dependsOn:
   - Mylib/Combinatorics/factorial_table.cpp
   isVerificationFile: false
   path: Mylib/Combinatorics/catalan_number.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2020-10-10 12:47:45+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yukicoder/660/main.test.cpp

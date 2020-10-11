@@ -4,13 +4,13 @@ data:
   - icon: ':question:'
     path: Mylib/AlgebraicStructure/Monoid/min.cpp
     title: Min monoid
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/AlgebraicStructure/Monoid/update.cpp
     title: Update monoid
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/AlgebraicStructure/MonoidAction/update_min.cpp
     title: Range update / Range min
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/SegmentTree/dynamic_lazy_segment_tree.cpp
     title: Dynamic lazy segment tree
   - icon: ':question:'
@@ -22,7 +22,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F
@@ -133,7 +133,7 @@ data:
   path: test/aoj/DSL_2_F/main.dynamic.test.cpp
   requiredBy: []
   timestamp: '2020-10-02 17:13:14+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DSL_2_F/main.dynamic.test.cpp
 layout: document

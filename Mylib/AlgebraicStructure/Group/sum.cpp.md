@@ -6,7 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2842/main.fenwick_tree.test.cpp
     title: test/aoj/2842/main.fenwick_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
     title: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
   - icon: ':x:'

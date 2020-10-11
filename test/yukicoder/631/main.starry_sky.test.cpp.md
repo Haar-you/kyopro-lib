@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp
     title: Starry-sky tree
   - icon: ':question:'

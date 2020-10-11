@@ -4,10 +4,10 @@ data:
   - icon: ':question:'
     path: Mylib/AlgebraicStructure/Monoid/sum.cpp
     title: Sum monoid
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/AlgebraicStructure/Monoid/update.cpp
     title: Update monoid
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp
     title: Range update / Range sum
   - icon: ':question:'

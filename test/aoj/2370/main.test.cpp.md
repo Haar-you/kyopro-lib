@@ -58,9 +58,10 @@ data:
     \          }\n\n          return true;\n        }();\n\n      if(res){\n     \
     \   ret.emplace_back(std::make_pair(a, b));\n      }else{\n        ret.emplace_back();\n\
     \      }\n    }\n\n    return ret;\n  }\n}\n#line 3 \"Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp\"\
-    \n\nnamespace haar_lib {\n  auto subset_sum_limited(int N, int K, const std::vector<int>\
-    \ &a, const std::vector<int> &m){\n    std::vector<int> dp(K + 1, -1);\n\n   \
-    \ dp[0] = 0;\n    for(int i = 0; i < N; ++i){\n      for(int j = 0; j <= K; ++j){\n\
+    \n#include <cassert>\n\nnamespace haar_lib {\n  auto subset_sum_limited(int N,\
+    \ int K, const std::vector<int> &a, const std::vector<int> &m){\n    assert((int)a.size()\
+    \ == N and (int)m.size() == N);\n    std::vector<int> dp(K + 1, -1);\n\n    dp[0]\
+    \ = 0;\n    for(int i = 0; i < N; ++i){\n      for(int j = 0; j <= K; ++j){\n\
     \        if(dp[j] >= 0){\n          dp[j] = m[i];\n        }else if(j < a[i] or\
     \ dp[j - a[i]] <= 0){\n          dp[j] = -1;\n        }else{\n          dp[j]\
     \ = dp[j - a[i]] - 1;\n        }\n      }\n    }\n\n    for(int i = 0; i <= K;\
@@ -100,7 +101,7 @@ data:
   isVerificationFile: true
   path: test/aoj/2370/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-21 02:36:12+09:00'
+  timestamp: '2020-10-10 11:12:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/2370/main.test.cpp

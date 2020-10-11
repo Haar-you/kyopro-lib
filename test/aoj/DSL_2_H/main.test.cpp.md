@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: Mylib/AlgebraicStructure/Monoid/sum.cpp
     title: Sum monoid
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/AlgebraicStructure/MonoidAction/add_min.cpp
     title: Range add / Range min
   - icon: ':question:'
@@ -22,7 +22,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H
@@ -137,7 +137,7 @@ data:
   path: test/aoj/DSL_2_H/main.test.cpp
   requiredBy: []
   timestamp: '2020-10-02 17:13:14+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DSL_2_H/main.test.cpp
 layout: document

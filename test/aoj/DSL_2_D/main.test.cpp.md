@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/AlgebraicStructure/Monoid/update.cpp
     title: Update monoid
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp
     title: Dual segment tree
   - icon: ':question:'
@@ -16,7 +16,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D
@@ -94,7 +94,7 @@ data:
   path: test/aoj/DSL_2_D/main.test.cpp
   requiredBy: []
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DSL_2_D/main.test.cpp
 layout: document

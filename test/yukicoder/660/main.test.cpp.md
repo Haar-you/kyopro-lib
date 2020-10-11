@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: Mylib/Combinatorics/catalan_number.cpp
     title: Catalan number
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Combinatorics/factorial_table.cpp
     title: Factorial table
   - icon: ':question:'
@@ -79,26 +79,25 @@ data:
     \      return P(n, k) * inv_factorial(k);\n    }\n\n    T H(int64_t n, int64_t\
     \ k) const {\n      if(n == 0 and k == 0) return 1;\n      return C(n + k - 1,\
     \ k);\n    }\n  };\n}\n#line 4 \"Mylib/Combinatorics/catalan_number.cpp\"\n\n\
-    namespace haar_lib {\n  template <typename Ft, typename T = typename Ft::value_type>\n\
-    \  T catalan_number(int64_t n, const Ft &ft){\n    return ft.C(2 * n, n) - ft.C(2\
-    \ * n, n - 1);\n  }\n}\n#line 8 \"test/yukicoder/660/main.test.cpp\"\n\nnamespace\
-    \ hl = haar_lib;\n\nusing mint = hl::modint<1000000007>;\n\nint main(){\n  auto\
-    \ ft = hl::factorial_table<mint>(500000);\n\n  int N; std::cin >> N;\n\n  std::vector<mint>\
-    \ c(N + 1);\n  for(int i = 0; i <= N; ++i){\n    c[i] = hl::catalan_number(i,\
-    \ ft);\n  }\n\n  for(int i = 1; i <= N; ++i){\n    c[i] += c[i - 1];\n  }\n\n\
-    \  mint ans = 0;\n\n  for(int k = 0; k <= N / 2; ++k){\n    ans += ft.C(N + 2\
-    \ * k, k);\n  }\n\n  for(int k = 0; k < N / 2; ++k){\n    ans -= ft.C(N + 2 *\
-    \ k, k) * c[N / 2 - k - 1] * 2;\n  }\n\n  std::cout << ans << std::endl;\n\n \
-    \ return 0;\n}\n"
+    namespace haar_lib {\n  template <const auto &ft>\n  auto catalan_number(int64_t\
+    \ n){\n    return ft.C(2 * n, n) - ft.C(2 * n, n - 1);\n  }\n}\n#line 8 \"test/yukicoder/660/main.test.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\nusing mint = hl::modint<1000000007>;\nconst static\
+    \ auto ft = hl::factorial_table<mint>(500000);\n\nint main(){\n  int N; std::cin\
+    \ >> N;\n\n  std::vector<mint> c(N + 1);\n  for(int i = 0; i <= N; ++i){\n   \
+    \ c[i] = hl::catalan_number<ft>(i);\n  }\n\n  for(int i = 1; i <= N; ++i){\n \
+    \   c[i] += c[i - 1];\n  }\n\n  mint ans = 0;\n\n  for(int k = 0; k <= N / 2;\
+    \ ++k){\n    ans += ft.C(N + 2 * k, k);\n  }\n\n  for(int k = 0; k < N / 2; ++k){\n\
+    \    ans -= ft.C(N + 2 * k, k) * c[N / 2 - k - 1] * 2;\n  }\n\n  std::cout <<\
+    \ ans << std::endl;\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/660\"\n\n#include <iostream>\n\
     #include <vector>\n#include \"Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/Combinatorics/factorial_table.cpp\"\
     \n#include \"Mylib/Combinatorics/catalan_number.cpp\"\n\nnamespace hl = haar_lib;\n\
-    \nusing mint = hl::modint<1000000007>;\n\nint main(){\n  auto ft = hl::factorial_table<mint>(500000);\n\
-    \n  int N; std::cin >> N;\n\n  std::vector<mint> c(N + 1);\n  for(int i = 0; i\
-    \ <= N; ++i){\n    c[i] = hl::catalan_number(i, ft);\n  }\n\n  for(int i = 1;\
-    \ i <= N; ++i){\n    c[i] += c[i - 1];\n  }\n\n  mint ans = 0;\n\n  for(int k\
-    \ = 0; k <= N / 2; ++k){\n    ans += ft.C(N + 2 * k, k);\n  }\n\n  for(int k =\
-    \ 0; k < N / 2; ++k){\n    ans -= ft.C(N + 2 * k, k) * c[N / 2 - k - 1] * 2;\n\
+    \nusing mint = hl::modint<1000000007>;\nconst static auto ft = hl::factorial_table<mint>(500000);\n\
+    \nint main(){\n  int N; std::cin >> N;\n\n  std::vector<mint> c(N + 1);\n  for(int\
+    \ i = 0; i <= N; ++i){\n    c[i] = hl::catalan_number<ft>(i);\n  }\n\n  for(int\
+    \ i = 1; i <= N; ++i){\n    c[i] += c[i - 1];\n  }\n\n  mint ans = 0;\n\n  for(int\
+    \ k = 0; k <= N / 2; ++k){\n    ans += ft.C(N + 2 * k, k);\n  }\n\n  for(int k\
+    \ = 0; k < N / 2; ++k){\n    ans -= ft.C(N + 2 * k, k) * c[N / 2 - k - 1] * 2;\n\
     \  }\n\n  std::cout << ans << std::endl;\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Number/Mint/mint.cpp
@@ -107,7 +106,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/660/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-30 07:57:28+09:00'
+  timestamp: '2020-10-10 12:47:45+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/660/main.test.cpp

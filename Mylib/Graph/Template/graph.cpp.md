@@ -59,7 +59,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/ShortestPath/dial_algorithm.cpp
     title: Dial's algorithm
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/ShortestPath/dijkstra.cpp
     title: Dijkstra algorithm
   - icon: ':x:'
@@ -119,7 +119,7 @@ data:
   - icon: ':x:'
     path: Mylib/Graph/TreeUtils/tree_height.cpp
     title: Tree height
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/chinese_postman_problem.cpp
     title: Chinese postman problem
   - icon: ':x:'
@@ -171,10 +171,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/DPL_2_A/main.test.cpp
     title: test/aoj/DPL_2_A/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/DPL_2_B/main.test.cpp
     title: test/aoj/DPL_2_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_1_A/main.test.cpp
     title: test/aoj/GRL_1_A/main.test.cpp
   - icon: ':x:'

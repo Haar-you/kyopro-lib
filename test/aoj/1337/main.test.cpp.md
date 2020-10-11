@@ -22,15 +22,9 @@ data:
   bundledCode: "#line 1 \"test/aoj/1337/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1337\"\
     \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/Utils/compressor.cpp\"\
     \n#include <algorithm>\n\nnamespace haar_lib {\n  template <typename T>\n  class\
-    \ compressor {\n    std::vector<T> data_;\n\n  public:\n    auto& add(const T\
-    \ &val){\n      data_.push_back(val);\n      return *this;\n    }\n\n    auto&\
-    \ add(const std::vector<T> &vals){\n      data_.insert(data_.end(), vals.begin(),\
-    \ vals.end());\n      return *this;\n    }\n\n    template <typename U, typename\
-    \ ... Args>\n    auto& add(const U &val, const Args &... args){\n      add(val);\n\
-    \      return add(args ...);\n    }\n\n    auto& build(){\n      std::sort(data_.begin(),\
-    \ data_.end());\n      data_.erase(std::unique(data_.begin(), data_.end()), data_.end());\n\
-    \      return *this;\n    }\n\n    int get_index(const T &val) const {\n     \
-    \ return std::lower_bound(data_.begin(), data_.end(), val) - data_.begin();\n\
+    \ compressor {\n    std::vector<T> data_;\n    template <typename> friend class\
+    \ compressor_builder;\n\n  public:\n    int get_index(const T &val) const {\n\
+    \      return std::lower_bound(data_.begin(), data_.end(), val) - data_.begin();\n\
     \    }\n\n    auto& compress(std::vector<T> &vals) const {\n      for(auto &x\
     \ : vals) x = get_index(x);\n      return *this;\n    }\n\n    auto& compress(T\
     \ &val) const {\n      val = get_index(val);\n      return *this;\n    }\n\n \
@@ -42,7 +36,16 @@ data:
     \ <typename U, typename ... Args>\n    auto& decompress(U &val, Args &... args)\
     \ const {\n      decompress(val);\n      return decompress(args ...);\n    }\n\
     \n    int size() const {return data_.size();}\n    T operator[](int index) const\
-    \ {return data_[index];}\n  };\n}\n#line 3 \"Mylib/DataStructure/UnionFind/unionfind.cpp\"\
+    \ {return data_[index];}\n  };\n\n  template <typename T>\n  class compressor_builder\
+    \ {\n    std::vector<T> data_;\n\n  public:\n    auto& add(const T &val){\n  \
+    \    data_.push_back(val);\n      return *this;\n    }\n\n    auto& add(const\
+    \ std::vector<T> &vals){\n      data_.insert(data_.end(), vals.begin(), vals.end());\n\
+    \      return *this;\n    }\n\n    template <typename U, typename ... Args>\n\
+    \    auto& add(const U &val, const Args &... args){\n      add(val);\n      return\
+    \ add(args ...);\n    }\n\n    auto build() const {\n      compressor<T> ret;\n\
+    \      ret.data_ = data_;\n      std::sort(ret.data_.begin(), ret.data_.end());\n\
+    \      ret.data_.erase(std::unique(ret.data_.begin(), ret.data_.end()), ret.data_.end());\n\
+    \      return ret;\n    }\n  };\n}\n#line 3 \"Mylib/DataStructure/UnionFind/unionfind.cpp\"\
     \n#include <numeric>\n#line 5 \"Mylib/DataStructure/UnionFind/unionfind.cpp\"\n\
     \nnamespace haar_lib {\n  class unionfind {\n    int n_, count_;\n    mutable\
     \ std::vector<int> parent_;\n    std::vector<int> depth_, size_;\n\n  public:\n\
@@ -76,36 +79,38 @@ data:
     \n\nnamespace hl = haar_lib;\n\nconst int H = 200;\nconst int W = 200;\n\nint\
     \ main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int n;\n\
     \n  while(std::cin >> n, n){\n    auto [l, t, r, b] = hl::input_tuple_vector<int,\
-    \ int, int, int>(n);\n\n    int64_t a[H][W] = {};\n\n    hl::compressor<int>().add(l,\
-    \ r, -1).build().compress(l, r);\n    hl::compressor<int>().add(t, b, -1).build().compress(t,\
-    \ b);\n\n    for(int i = 0; i < n; ++i){\n      for(int x = l[i]; x < r[i]; ++x){\n\
-    \        for(int y = b[i]; y < t[i]; ++y){\n          a[x][y] |= (1LL << i);\n\
-    \        }\n      }\n    }\n\n    hl::unionfind uf(H * W);\n    int index[H][W];\n\
-    \    {\n      int k = 0;\n      for(int i = 0; i < H; ++i){\n        for(int j\
-    \ = 0; j < W; ++j){\n          index[i][j] = k;\n          ++k;\n        }\n \
-    \     }\n    }\n\n    for(int i = 0; i < H; ++i){\n      for(int j = 0; j < W;\
-    \ ++j){\n        if(i + 1 < H and a[i][j] == a[i + 1][j]) uf.merge(index[i][j],\
-    \ index[i + 1][j]);\n        if(j + 1 < W and a[i][j] == a[i][j + 1]) uf.merge(index[i][j],\
-    \ index[i][j + 1]);\n      }\n    }\n\n    int ans = uf.count_groups();\n\n  \
-    \  std::cout << ans << \"\\n\";\n  }\n\n  return 0;\n}\n"
+    \ int, int, int>(n);\n\n    int64_t a[H][W] = {};\n\n    hl::compressor_builder<int>().add(l,\
+    \ r, -1).build().compress(l, r);\n    hl::compressor_builder<int>().add(t, b,\
+    \ -1).build().compress(t, b);\n\n    for(int i = 0; i < n; ++i){\n      for(int\
+    \ x = l[i]; x < r[i]; ++x){\n        for(int y = b[i]; y < t[i]; ++y){\n     \
+    \     a[x][y] |= (1LL << i);\n        }\n      }\n    }\n\n    hl::unionfind uf(H\
+    \ * W);\n    int index[H][W];\n    {\n      int k = 0;\n      for(int i = 0; i\
+    \ < H; ++i){\n        for(int j = 0; j < W; ++j){\n          index[i][j] = k;\n\
+    \          ++k;\n        }\n      }\n    }\n\n    for(int i = 0; i < H; ++i){\n\
+    \      for(int j = 0; j < W; ++j){\n        if(i + 1 < H and a[i][j] == a[i +\
+    \ 1][j]) uf.merge(index[i][j], index[i + 1][j]);\n        if(j + 1 < W and a[i][j]\
+    \ == a[i][j + 1]) uf.merge(index[i][j], index[i][j + 1]);\n      }\n    }\n\n\
+    \    int ans = uf.count_groups();\n\n    std::cout << ans << \"\\n\";\n  }\n\n\
+    \  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1337\"\
     \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/Utils/compressor.cpp\"\
     \n#include \"Mylib/DataStructure/UnionFind/unionfind.cpp\"\n#include \"Mylib/IO/input_tuple_vector.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nconst int H = 200;\nconst int W = 200;\n\nint\
     \ main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int n;\n\
     \n  while(std::cin >> n, n){\n    auto [l, t, r, b] = hl::input_tuple_vector<int,\
-    \ int, int, int>(n);\n\n    int64_t a[H][W] = {};\n\n    hl::compressor<int>().add(l,\
-    \ r, -1).build().compress(l, r);\n    hl::compressor<int>().add(t, b, -1).build().compress(t,\
-    \ b);\n\n    for(int i = 0; i < n; ++i){\n      for(int x = l[i]; x < r[i]; ++x){\n\
-    \        for(int y = b[i]; y < t[i]; ++y){\n          a[x][y] |= (1LL << i);\n\
-    \        }\n      }\n    }\n\n    hl::unionfind uf(H * W);\n    int index[H][W];\n\
-    \    {\n      int k = 0;\n      for(int i = 0; i < H; ++i){\n        for(int j\
-    \ = 0; j < W; ++j){\n          index[i][j] = k;\n          ++k;\n        }\n \
-    \     }\n    }\n\n    for(int i = 0; i < H; ++i){\n      for(int j = 0; j < W;\
-    \ ++j){\n        if(i + 1 < H and a[i][j] == a[i + 1][j]) uf.merge(index[i][j],\
-    \ index[i + 1][j]);\n        if(j + 1 < W and a[i][j] == a[i][j + 1]) uf.merge(index[i][j],\
-    \ index[i][j + 1]);\n      }\n    }\n\n    int ans = uf.count_groups();\n\n  \
-    \  std::cout << ans << \"\\n\";\n  }\n\n  return 0;\n}\n"
+    \ int, int, int>(n);\n\n    int64_t a[H][W] = {};\n\n    hl::compressor_builder<int>().add(l,\
+    \ r, -1).build().compress(l, r);\n    hl::compressor_builder<int>().add(t, b,\
+    \ -1).build().compress(t, b);\n\n    for(int i = 0; i < n; ++i){\n      for(int\
+    \ x = l[i]; x < r[i]; ++x){\n        for(int y = b[i]; y < t[i]; ++y){\n     \
+    \     a[x][y] |= (1LL << i);\n        }\n      }\n    }\n\n    hl::unionfind uf(H\
+    \ * W);\n    int index[H][W];\n    {\n      int k = 0;\n      for(int i = 0; i\
+    \ < H; ++i){\n        for(int j = 0; j < W; ++j){\n          index[i][j] = k;\n\
+    \          ++k;\n        }\n      }\n    }\n\n    for(int i = 0; i < H; ++i){\n\
+    \      for(int j = 0; j < W; ++j){\n        if(i + 1 < H and a[i][j] == a[i +\
+    \ 1][j]) uf.merge(index[i][j], index[i + 1][j]);\n        if(j + 1 < W and a[i][j]\
+    \ == a[i][j + 1]) uf.merge(index[i][j], index[i][j + 1]);\n      }\n    }\n\n\
+    \    int ans = uf.count_groups();\n\n    std::cout << ans << \"\\n\";\n  }\n\n\
+    \  return 0;\n}\n"
   dependsOn:
   - Mylib/Utils/compressor.cpp
   - Mylib/DataStructure/UnionFind/unionfind.cpp
@@ -113,7 +118,7 @@ data:
   isVerificationFile: true
   path: test/aoj/1337/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2020-10-11 03:06:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/1337/main.test.cpp
