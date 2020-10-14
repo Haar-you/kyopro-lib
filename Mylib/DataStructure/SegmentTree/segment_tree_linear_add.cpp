@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <utility>
+#include <cassert>
 
 namespace haar_lib {
   template <typename T>
@@ -59,6 +60,7 @@ namespace haar_lib {
     }
 
     void update(int l, int r, T a, T b){
+      assert(0 <= l and l <= r and r <= hsize_);
       int L = l + hsize_;
       int R = r + hsize_;
 
@@ -77,6 +79,7 @@ namespace haar_lib {
     }
 
     T operator[](int i){
+      assert(0 <= i and i < hsize_);
       propagate_top_down(i + hsize_);
       return data_[i + hsize_].first;
     }

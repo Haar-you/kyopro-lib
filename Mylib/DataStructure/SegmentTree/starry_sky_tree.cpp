@@ -2,6 +2,7 @@
 #include <vector>
 #include <optional>
 #include <algorithm>
+#include <cassert>
 
 namespace haar_lib {
   template <typename T, typename Compare>
@@ -56,6 +57,7 @@ namespace haar_lib {
     {}
 
     void update(int l, int r, T val){
+      assert(0 <= l and l <= r and r <= hsize_);
       int L = l + hsize_;
       int R = r + hsize_;
 
@@ -71,6 +73,7 @@ namespace haar_lib {
     }
 
     T fold(int l, int r) const {
+      assert(0 <= l and l <= r and r <= hsize_);
       return *get(1, 0, hsize_, l, r, 0);
     }
 

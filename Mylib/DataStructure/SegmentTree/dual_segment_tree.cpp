@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <cassert>
 
 namespace haar_lib {
   template <typename Monoid>
@@ -39,6 +40,7 @@ namespace haar_lib {
     {}
 
     void update(int l, int r, const value_type &x){
+      assert(0 <= l and l <= r and r <= hsize_);
       propagate_top_down(l + hsize_);
       propagate_top_down(r + hsize_);
 
@@ -53,6 +55,7 @@ namespace haar_lib {
     }
 
     value_type operator[](int i){
+      assert(0 <= i and i < hsize_);
       propagate_top_down(i + hsize_);
       return data_[i + hsize_];
     }

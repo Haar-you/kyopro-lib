@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <functional>
+#include <cassert>
 
 namespace haar_lib {
   template <typename Monoid>
@@ -22,17 +23,21 @@ namespace haar_lib {
       data_(size_, M_())
     {}
 
-    auto operator[](int i) const {return data_[hsize_ + i];}
+    auto operator[](int i) const {
+      assert(0 <= i and i < hsize_);
+      return data_[hsize_ + i];
+    }
 
-    auto fold(int x, int y) const {
+    auto fold(int l, int r) const {
+      assert(0 <= l and l <= r and r <= hsize_);
       value_type ret_left = M_();
       value_type ret_right = M_();
 
-      int l = x + hsize_, r = y + hsize_;
-      while(l < r){
-        if(r & 1) ret_right = M_(data_[--r], ret_right);
-        if(l & 1) ret_left = M_(ret_left, data_[l++]);
-        l >>= 1, r >>= 1;
+      int L = l + hsize_, R = r + hsize_;
+      while(L < R){
+        if(R & 1) ret_right = M_(data_[--R], ret_right);
+        if(L & 1) ret_left = M_(ret_left, data_[L++]);
+        L >>= 1, R >>= 1;
       }
 
       return M_(ret_left, ret_right);
@@ -43,12 +48,14 @@ namespace haar_lib {
     }
 
     void set(int i, const value_type &x){
+      assert(0 <= i and i < hsize_);
       i += hsize_;
       data_[i] = x;
       while(i > 1) i >>= 1, data_[i] = M_(data_[i << 1 | 0], data_[i << 1 | 1]);
     }
 
     void update(int i, const value_type &x){
+      assert(0 <= i and i < hsize_);
       i += hsize_;
       data_[i] = M_(data_[i], x);
       while(i > 1) i >>= 1, data_[i] = M_(data_[i << 1 | 0], data_[i << 1 | 1]);

@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <cassert>
 
 namespace haar_lib {
   template <typename Monoid>
@@ -22,13 +23,17 @@ namespace haar_lib {
       data_right_(size_, M_())
     {}
 
-    auto operator[](int i) const {return data_left_[hsize_ + i];}
+    auto operator[](int i) const {
+      assert(0 <= i and i < hsize_);
+      return data_left_[hsize_ + i];
+    }
 
-    auto fold_left(int x, int y) const {
+    auto fold_left(int l, int r) const {
+      assert(0 <= l and l <= r and r <= hsize_);
       value_type ret_left = M_();
       value_type ret_right = M_();
 
-      int l = x + hsize_, r = y + hsize_;
+      l += hsize_, r += hsize_;
       while(l < r){
         if(r & 1) ret_right = M_(data_left_[--r], ret_right);
         if(l & 1) ret_left = M_(ret_left, data_left_[l++]);
@@ -38,11 +43,12 @@ namespace haar_lib {
       return M_(ret_left, ret_right);
     }
 
-    auto fold_right(int x, int y) const {
+    auto fold_right(int l, int r) const {
+      assert(0 <= l and l <= r and r <= hsize_);
       value_type ret_left = M_();
       value_type ret_right = M_();
 
-      int l = x + hsize_, r = y + hsize_;
+      l += hsize_, r += hsize_;
       while(l < r){
         if(r & 1) ret_right = M_(ret_right, data_right_[--r]);
         if(l & 1) ret_left = M_(data_right_[l++], ret_left);
@@ -53,6 +59,7 @@ namespace haar_lib {
     }
 
     void set(int i, const value_type &x){
+      assert(0 <= i and i < hsize_);
       i += hsize_;
       data_left_[i] = data_right_[i] = x;
       while(i > 1){

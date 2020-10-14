@@ -43,7 +43,7 @@ int main(){
         [&](int L1, int L2, int R1, int R2){
           auto ret =
             seg.fold(L1, L2 + 1).value_or(M::max_partial_sum(0)).right_max +
-            seg.fold(L2 + 1, R1).value_or(M::max_partial_sum(0)).sum +
+            seg.fold(std::min(L2 + 1, R1), R1).value_or(M::max_partial_sum(0)).sum +
             seg.fold(R1, R2 + 1).value_or(M::max_partial_sum(0)).left_max;
 
           if(L2 == R1) ret -= a[L2];
@@ -54,9 +54,9 @@ int main(){
       if(l2 <= r1){
         ans = f(l1, l2, r1, r2);
       }else{
-        ans = std::max(ans, f(l1, r1, r1, r2));
-        ans = std::max(ans, f(l1, l2, l2, r2));
-        ans = std::max(ans, seg.fold(r1, l2 + 1)->partial_max);
+        if(l1 <= r1) ans = std::max(ans, f(l1, r1, r1, r2));
+        if(l2 <= r2) ans = std::max(ans, f(l1, l2, l2, r2));
+        if(r1 <= l2) ans = std::max(ans, seg.fold(r1, l2 + 1)->partial_max);
       }
 
       std::cout << ans << "\n";

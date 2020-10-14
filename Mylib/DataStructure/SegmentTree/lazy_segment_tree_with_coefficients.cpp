@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <cassert>
 
 namespace haar_lib {
   template <typename T>
@@ -55,9 +56,17 @@ namespace haar_lib {
       for(int i = hsize_; --i >= 1;) coeff_[i] = coeff_[i << 1 | 0] + coeff_[i << 1 | 1];
     }
 
-    void update(int l, int r, const T &x){update(1, 0, hsize_, l, r, x);}
+    void update(int l, int r, const T &x){
+      assert(0 <= l and l <= r and r <= hsize_);
+      update(1, 0, hsize_, l, r, x);
+    }
     void update(int i, const T &x){update(i, i + 1, x);}
-    T fold(int l, int r){return get(1, 0, hsize_, l, r);}
+
+    T fold(int l, int r){
+      assert(0 <= l and l <= r and r <= hsize_);
+      return get(1, 0, hsize_, l, r);
+    }
+    T fold_all(){return fold(0, hsize_);}
     T operator[](int i){return fold(i, i + 1);}
 
     void init(const T &val){

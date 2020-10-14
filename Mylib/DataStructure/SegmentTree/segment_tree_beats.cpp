@@ -2,6 +2,7 @@
 #include <vector>
 #include <limits>
 #include <algorithm>
+#include <cassert>
 
 namespace haar_lib {
   class segment_tree_beats {
@@ -134,7 +135,10 @@ namespace haar_lib {
     }
 
   public:
-    void chmin(int l, int r, value_type x){chmin(1, 0, hsize_, l, r, x);}
+    void chmin(int l, int r, value_type x){
+      assert(0 <= l and l <= r and r <= hsize_);
+      chmin(1, 0, hsize_, l, r, x);
+    }
 
   private:
     void chmax(int i, int l, int r, int s, int t, value_type x){
@@ -151,7 +155,10 @@ namespace haar_lib {
     }
 
   public:
-    void chmax(int l, int r, value_type x){chmax(1, 0, hsize_, l, r, x);}
+    void chmax(int l, int r, value_type x){
+      assert(0 <= l and l <= r and r <= hsize_);
+      chmax(1, 0, hsize_, l, r, x);
+    }
 
   private:
     void add(int i, int l, int r, int s, int t, value_type x){
@@ -168,7 +175,10 @@ namespace haar_lib {
     }
 
   public:
-    void add(int l, int r, value_type x){add(1, 0, hsize_, l, r, x);}
+    void add(int l, int r, value_type x){
+      assert(0 <= l and l <= r and r <= hsize_);
+      add(1, 0, hsize_, l, r, x);
+    }
 
   private:
     value_type get_sum(int i, int l, int r, int s, int t){
@@ -180,7 +190,10 @@ namespace haar_lib {
     }
 
   public:
-    value_type get_sum(int l, int r){return get_sum(1, 0, hsize_, l, r);}
+    value_type get_sum(int l, int r){
+      assert(0 <= l and l <= r and r <= hsize_);
+      return get_sum(1, 0, hsize_, l, r);
+    }
 
   public:
     void init_with_vector(const std::vector<value_type> &v){

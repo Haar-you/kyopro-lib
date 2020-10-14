@@ -50,6 +50,7 @@ namespace haar_lib {
     }
 
     std::optional<value_type> fold(int l, int r) const {
+      assert(0 <= l and l <= r and r <= N_);
       if(l == r) return std::nullopt;
       --r;
 

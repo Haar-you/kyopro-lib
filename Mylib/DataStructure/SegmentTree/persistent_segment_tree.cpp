@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <cassert>
 
 namespace haar_lib {
   template <typename Monoid>
@@ -15,7 +16,7 @@ namespace haar_lib {
     };
 
     Monoid M_;
-    int depth_;
+    int depth_, size_;
     node *root_ = nullptr;
 
     persistent_segment_tree(int depth, node *root): depth_(depth), root_(root){}
@@ -34,8 +35,8 @@ namespace haar_lib {
     }
 
     void init(const std::vector<value_type> &init_list){
-      const int size = init_list.size();
-      depth_ = size == 1 ? 1 : 32 - __builtin_clz(size - 1) + 1;
+      size_ = init_list.size();
+      depth_ = size_ == 1 ? 1 : 32 - __builtin_clz(size_ - 1) + 1;
       int pos = 0;
       root_ = assign(root_, init_list, 1, pos);
     }
@@ -74,6 +75,7 @@ namespace haar_lib {
 
   public:
     persistent_segment_tree set(int i, const value_type &val) const {
+      assert(0 <= i and i < size_);
       node *t = set(root_, 0, 1 << (depth_ - 1), i, val);
       return persistent_segment_tree(depth_, t);
     }
@@ -91,8 +93,9 @@ namespace haar_lib {
     }
 
   public:
-    value_type fold(int i, int j) const {
-      return get(root_, i, j, 0, 1 << (depth_ - 1));
+    value_type fold(int l, int r) const {
+      assert(0 <= l and l <= r and r <= size_);
+      return get(root_, l, r, 0, 1 << (depth_ - 1));
     }
 
     value_type operator[](int i) const {
