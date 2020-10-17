@@ -18,8 +18,8 @@ int main(){
 
   int n, m; std::cin >> n >> m;
 
-  auto a = hl::input_vector<int64_t>(n);
-  auto b = hl::input_vector<int64_t>(m);
+  auto a = hl::input_vector<mint>(n);
+  auto b = hl::input_vector<mint>(m);
 
   auto ans = hl::convolve_general_mod<mint>(a, b);
 

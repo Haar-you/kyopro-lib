@@ -82,8 +82,8 @@ namespace haar_lib {
 
       std::vector<T> f2(n), g2(n);
 
-      for(int i = 0; i < (int)f.size(); ++i) f2[i] = f[i];
-      for(int i = 0; i < (int)g.size(); ++i) g2[i] = g[i];
+      for(int i = 0; i < (int)f.size(); ++i) f2[i] = (int64_t)f[i];
+      for(int i = 0; i < (int)g.size(); ++i) g2[i] = (int64_t)g[i];
 
       run(f2);
       run(g2);
@@ -100,14 +100,11 @@ namespace haar_lib {
     }
   };
 
-  template <typename T, typename U>
-  std::vector<T> convolve_general_mod(std::vector<U> f, std::vector<U> g){
+  template <typename T>
+  std::vector<T> convolve_general_mod(std::vector<T> f, std::vector<T> g){
     static constexpr int M1 = 167772161, P1 = 3;
     static constexpr int M2 = 469762049, P2 = 3;
     static constexpr int M3 = 1224736769, P3 = 3;
-
-    for(auto &x : f) x %= T::mod();
-    for(auto &x : g) x %= T::mod();
 
     auto res1 = number_theoretic_transform<modint<M1>, P1, 1 << 20>().convolve(f, g);
     auto res2 = number_theoretic_transform<modint<M2>, P2, 1 << 20>().convolve(f, g);
