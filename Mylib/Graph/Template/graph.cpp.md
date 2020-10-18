@@ -14,40 +14,40 @@ data:
   - icon: ':warning:'
     path: Mylib/Graph/Cycle/undirected_shortest_cycle.cpp
     title: Undirected shortest cycle
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/GraphUtils/articulation_points.cpp
     title: Articulation points
   - icon: ':warning:'
     path: Mylib/Graph/GraphUtils/biconnected_components.cpp
     title: Biconnected components
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/GraphUtils/bridges.cpp
     title: Bridges
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/GraphUtils/decompose_pseudotree.cpp
     title: Decompose pseudotree
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Graph/GraphUtils/strongly_connected_components.cpp
     title: Strongly connected components
   - icon: ':x:'
     path: Mylib/Graph/GraphUtils/two_edge_connected_components.cpp
     title: Two edge connected components
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/MinimumSpanningTree/boruvka.cpp
     title: "Bor\u016Fvka algorithm"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
     title: Chu-Liu/Edmonds algorithm
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Graph/MinimumSpanningTree/kruskal.cpp
     title: Kruskal algorithm
   - icon: ':x:'
     path: Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp
     title: Manhattan distance MST
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/MinimumSpanningTree/prim.cpp
     title: Prim algorithm
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/ShortestPath/bellman_ford.cpp
     title: Bellman-Ford algorithm
   - icon: ':warning:'
@@ -62,10 +62,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/ShortestPath/dijkstra.cpp
     title: Dijkstra algorithm
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/ShortestPath/spfa.cpp
     title: SPFA
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/ShortestPath/warshall_floyd.cpp
     title: Warshall-Floyd algorithm
   - icon: ':x:'
@@ -98,10 +98,10 @@ data:
   - icon: ':question:'
     path: Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp
     title: Heavy-light decomposition
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Graph/TreeUtils/lca_doubling.cpp
     title: Lowest common ancestor (Doubling)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/lca_hld.cpp
     title: Lowest common ancestor (HLD)
   - icon: ':question:'
@@ -110,13 +110,13 @@ data:
   - icon: ':warning:'
     path: Mylib/Graph/TreeUtils/rooting.cpp
     title: Rooting
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Graph/TreeUtils/tree_diameter.cpp
     title: Tree diameter
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Graph/TreeUtils/tree_distance.cpp
     title: Tree distance
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/tree_height.cpp
     title: Tree height
   - icon: ':heavy_check_mark:'
@@ -177,46 +177,46 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_1_A/main.test.cpp
     title: test/aoj/GRL_1_A/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_1_B/main.spfa.test.cpp
     title: test/aoj/GRL_1_B/main.spfa.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_1_B/main.test.cpp
     title: test/aoj/GRL_1_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_1_C/main.test.cpp
     title: test/aoj/GRL_1_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_2_A/main.boruvka.test.cpp
     title: test/aoj/GRL_2_A/main.boruvka.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_2_A/main.kruskal.test.cpp
     title: test/aoj/GRL_2_A/main.kruskal.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_2_A/main.prim.test.cpp
     title: test/aoj/GRL_2_A/main.prim.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_2_B/main.test.cpp
     title: test/aoj/GRL_2_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_3_A/main.test.cpp
     title: test/aoj/GRL_3_A/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_3_B/main.test.cpp
     title: test/aoj/GRL_3_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_3_C/main.test.cpp
     title: test/aoj/GRL_3_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_5_A/main.test.cpp
     title: test/aoj/GRL_5_A/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_5_B/main.test.cpp
     title: test/aoj/GRL_5_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_5_C/main.doubling.test.cpp
     title: test/aoj/GRL_5_C/main.doubling.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_5_C/main.hld.test.cpp
     title: test/aoj/GRL_5_C/main.hld.test.cpp
   - icon: ':x:'

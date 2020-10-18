@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/lca_hld.cpp
     title: Lowest common ancestor (HLD)
   - icon: ':question:'
@@ -19,7 +19,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C
@@ -123,7 +123,7 @@ data:
   path: test/aoj/GRL_5_C/main.hld.test.cpp
   requiredBy: []
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/GRL_5_C/main.hld.test.cpp
 layout: document

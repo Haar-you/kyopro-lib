@@ -99,16 +99,15 @@ data:
     \        }\n      }\n    }\n\n    template <typename U>\n    std::vector<T> convolve(std::vector<U>\
     \ f, std::vector<U> g) const {\n      const int m = f.size() + g.size() - 1;\n\
     \      int n = 1;\n      while(n < m) n *= 2;\n\n      std::vector<T> f2(n), g2(n);\n\
-    \n      for(int i = 0; i < (int)f.size(); ++i) f2[i] = f[i];\n      for(int i\
-    \ = 0; i < (int)g.size(); ++i) g2[i] = g[i];\n\n      run(f2);\n      run(g2);\n\
-    \n      for(int i = 0; i < n; ++i) f2[i] *= g2[i];\n      run(f2, true);\n\n \
-    \     return f2;\n    }\n\n    template <typename U>\n    std::vector<T> operator()(std::vector<U>\
-    \ f, std::vector<U> g) const {\n      return convolve(f, g);\n    }\n  };\n\n\
-    \  template <typename T, typename U>\n  std::vector<T> convolve_general_mod(std::vector<U>\
-    \ f, std::vector<U> g){\n    static constexpr int M1 = 167772161, P1 = 3;\n  \
+    \n      for(int i = 0; i < (int)f.size(); ++i) f2[i] = (int64_t)f[i];\n      for(int\
+    \ i = 0; i < (int)g.size(); ++i) g2[i] = (int64_t)g[i];\n\n      run(f2);\n  \
+    \    run(g2);\n\n      for(int i = 0; i < n; ++i) f2[i] *= g2[i];\n      run(f2,\
+    \ true);\n\n      return f2;\n    }\n\n    template <typename U>\n    std::vector<T>\
+    \ operator()(std::vector<U> f, std::vector<U> g) const {\n      return convolve(f,\
+    \ g);\n    }\n  };\n\n  template <typename T>\n  std::vector<T> convolve_general_mod(std::vector<T>\
+    \ f, std::vector<T> g){\n    static constexpr int M1 = 167772161, P1 = 3;\n  \
     \  static constexpr int M2 = 469762049, P2 = 3;\n    static constexpr int M3 =\
-    \ 1224736769, P3 = 3;\n\n    for(auto &x : f) x %= T::mod();\n    for(auto &x\
-    \ : g) x %= T::mod();\n\n    auto res1 = number_theoretic_transform<modint<M1>,\
+    \ 1224736769, P3 = 3;\n\n    auto res1 = number_theoretic_transform<modint<M1>,\
     \ P1, 1 << 20>().convolve(f, g);\n    auto res2 = number_theoretic_transform<modint<M2>,\
     \ P2, 1 << 20>().convolve(f, g);\n    auto res3 = number_theoretic_transform<modint<M3>,\
     \ P3, 1 << 20>().convolve(f, g);\n\n    const int n = res1.size();\n\n    std::vector<T>\
@@ -233,7 +232,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-10 16:27:01+09:00'
+  timestamp: '2020-10-18 08:49:48+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp

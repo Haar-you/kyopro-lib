@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: Mylib/Number/chinese_remainder_algorithm.cpp
     title: Chinese remainder theorem
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/extended_gcd.cpp
     title: Extended Euclidean algorithm
   _extendedRequiredBy: []

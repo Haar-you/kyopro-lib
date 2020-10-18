@@ -3,14 +3,14 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp
     title: test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/bipartitematching/main.test.cpp
     title: test/yosupo-judge/bipartitematching/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/Matching/hopcroft_karp.cpp\"\n#include <vector>\n\
@@ -78,7 +78,7 @@ data:
   path: Mylib/Graph/Matching/hopcroft_karp.cpp
   requiredBy: []
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo-judge/bipartitematching/main.test.cpp
   - test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp

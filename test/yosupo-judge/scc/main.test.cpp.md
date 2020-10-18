@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Graph/GraphUtils/strongly_connected_components.cpp
     title: Strongly connected components
   - icon: ':question:'

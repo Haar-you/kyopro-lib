@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Flow/dinic.cpp
     title: Dinic algorithm
   - icon: ':heavy_check_mark:'

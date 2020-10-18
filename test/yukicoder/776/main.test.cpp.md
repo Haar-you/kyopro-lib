@@ -48,23 +48,26 @@ data:
     \ b->sum)),\n        std::max(b->right_max, b->sum + std::max(a->right_max, a->sum)),\n\
     \        std::max({a->partial_max, b->partial_max, a->right_max + b->left_max})\n\
     \      );\n    }\n  };\n}\n#line 4 \"Mylib/DataStructure/SegmentTree/segment_tree.cpp\"\
-    \n#include <functional>\n\nnamespace haar_lib {\n  template <typename Monoid>\n\
-    \  class segment_tree {\n  public:\n    using value_type = typename Monoid::value_type;\n\
-    \n  private:\n    Monoid M_;\n    int depth_, size_, hsize_;\n    std::vector<value_type>\
-    \ data_;\n\n  public:\n    segment_tree(){}\n    segment_tree(int n):\n      depth_(n\
-    \ > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),\n      size_(1 << depth_), hsize_(size_\
-    \ / 2),\n      data_(size_, M_())\n    {}\n\n    auto operator[](int i) const\
-    \ {return data_[hsize_ + i];}\n\n    auto fold(int x, int y) const {\n      value_type\
-    \ ret_left = M_();\n      value_type ret_right = M_();\n\n      int l = x + hsize_,\
-    \ r = y + hsize_;\n      while(l < r){\n        if(r & 1) ret_right = M_(data_[--r],\
-    \ ret_right);\n        if(l & 1) ret_left = M_(ret_left, data_[l++]);\n      \
-    \  l >>= 1, r >>= 1;\n      }\n\n      return M_(ret_left, ret_right);\n    }\n\
+    \n#include <functional>\n#include <cassert>\n\nnamespace haar_lib {\n  template\
+    \ <typename Monoid>\n  class segment_tree {\n  public:\n    using value_type =\
+    \ typename Monoid::value_type;\n\n  private:\n    Monoid M_;\n    int depth_,\
+    \ size_, hsize_;\n    std::vector<value_type> data_;\n\n  public:\n    segment_tree(){}\n\
+    \    segment_tree(int n):\n      depth_(n > 1 ? 32 - __builtin_clz(n - 1) + 1\
+    \ : 1),\n      size_(1 << depth_), hsize_(size_ / 2),\n      data_(size_, M_())\n\
+    \    {}\n\n    auto operator[](int i) const {\n      assert(0 <= i and i < hsize_);\n\
+    \      return data_[hsize_ + i];\n    }\n\n    auto fold(int l, int r) const {\n\
+    \      assert(0 <= l and l <= r and r <= hsize_);\n      value_type ret_left =\
+    \ M_();\n      value_type ret_right = M_();\n\n      int L = l + hsize_, R = r\
+    \ + hsize_;\n      while(L < R){\n        if(R & 1) ret_right = M_(data_[--R],\
+    \ ret_right);\n        if(L & 1) ret_left = M_(ret_left, data_[L++]);\n      \
+    \  L >>= 1, R >>= 1;\n      }\n\n      return M_(ret_left, ret_right);\n    }\n\
     \n    auto fold_all() const {\n      return data_[1];\n    }\n\n    void set(int\
-    \ i, const value_type &x){\n      i += hsize_;\n      data_[i] = x;\n      while(i\
-    \ > 1) i >>= 1, data_[i] = M_(data_[i << 1 | 0], data_[i << 1 | 1]);\n    }\n\n\
-    \    void update(int i, const value_type &x){\n      i += hsize_;\n      data_[i]\
-    \ = M_(data_[i], x);\n      while(i > 1) i >>= 1, data_[i] = M_(data_[i << 1 |\
-    \ 0], data_[i << 1 | 1]);\n    }\n\n    template <typename T>\n    void init_with_vector(const\
+    \ i, const value_type &x){\n      assert(0 <= i and i < hsize_);\n      i += hsize_;\n\
+    \      data_[i] = x;\n      while(i > 1) i >>= 1, data_[i] = M_(data_[i << 1 |\
+    \ 0], data_[i << 1 | 1]);\n    }\n\n    void update(int i, const value_type &x){\n\
+    \      assert(0 <= i and i < hsize_);\n      i += hsize_;\n      data_[i] = M_(data_[i],\
+    \ x);\n      while(i > 1) i >>= 1, data_[i] = M_(data_[i << 1 | 0], data_[i <<\
+    \ 1 | 1]);\n    }\n\n    template <typename T>\n    void init_with_vector(const\
     \ std::vector<T> &val){\n      data_.assign(size_, M_());\n      for(int i = 0;\
     \ i < (int)val.size(); ++i) data_[hsize_ + i] = val[i];\n      for(int i = hsize_;\
     \ --i >= 1;) data_[i] = M_(data_[i << 1 | 0], data_[i << 1 | 1]);\n    }\n\n \
@@ -122,13 +125,14 @@ data:
     \n      r1 = std::max(l1, r1);\n      l2 = std::min(l2, r2);\n\n      int64_t\
     \ ans = LLONG_MIN;\n\n      auto f =\n        [&](int L1, int L2, int R1, int\
     \ R2){\n          auto ret =\n            seg.fold(L1, L2 + 1).value_or(M::max_partial_sum(0)).right_max\
-    \ +\n            seg.fold(L2 + 1, R1).value_or(M::max_partial_sum(0)).sum +\n\
-    \            seg.fold(R1, R2 + 1).value_or(M::max_partial_sum(0)).left_max;\n\n\
-    \          if(L2 == R1) ret -= a[L2];\n\n          return ret;\n        };\n\n\
+    \ +\n            seg.fold(std::min(L2 + 1, R1), R1).value_or(M::max_partial_sum(0)).sum\
+    \ +\n            seg.fold(R1, R2 + 1).value_or(M::max_partial_sum(0)).left_max;\n\
+    \n          if(L2 == R1) ret -= a[L2];\n\n          return ret;\n        };\n\n\
     \      if(l2 <= r1){\n        ans = f(l1, l2, r1, r2);\n      }else{\n       \
-    \ ans = std::max(ans, f(l1, r1, r1, r2));\n        ans = std::max(ans, f(l1, l2,\
-    \ l2, r2));\n        ans = std::max(ans, seg.fold(r1, l2 + 1)->partial_max);\n\
-    \      }\n\n      std::cout << ans << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
+    \ if(l1 <= r1) ans = std::max(ans, f(l1, r1, r1, r2));\n        if(l2 <= r2) ans\
+    \ = std::max(ans, f(l1, l2, l2, r2));\n        if(r1 <= l2) ans = std::max(ans,\
+    \ seg.fold(r1, l2 + 1)->partial_max);\n      }\n\n      std::cout << ans << \"\
+    \\n\";\n    }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/776\"\n\n#include <iostream>\n\
     #include <vector>\n#include <string>\n#include <algorithm>\n#include <climits>\n\
     #include \"Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp\"\n#include \"\
@@ -144,13 +148,14 @@ data:
     \     l2 = std::min(l2, r2);\n\n      int64_t ans = LLONG_MIN;\n\n      auto f\
     \ =\n        [&](int L1, int L2, int R1, int R2){\n          auto ret =\n    \
     \        seg.fold(L1, L2 + 1).value_or(M::max_partial_sum(0)).right_max +\n  \
-    \          seg.fold(L2 + 1, R1).value_or(M::max_partial_sum(0)).sum +\n      \
-    \      seg.fold(R1, R2 + 1).value_or(M::max_partial_sum(0)).left_max;\n\n    \
-    \      if(L2 == R1) ret -= a[L2];\n\n          return ret;\n        };\n\n   \
-    \   if(l2 <= r1){\n        ans = f(l1, l2, r1, r2);\n      }else{\n        ans\
-    \ = std::max(ans, f(l1, r1, r1, r2));\n        ans = std::max(ans, f(l1, l2, l2,\
-    \ r2));\n        ans = std::max(ans, seg.fold(r1, l2 + 1)->partial_max);\n   \
-    \   }\n\n      std::cout << ans << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
+    \          seg.fold(std::min(L2 + 1, R1), R1).value_or(M::max_partial_sum(0)).sum\
+    \ +\n            seg.fold(R1, R2 + 1).value_or(M::max_partial_sum(0)).left_max;\n\
+    \n          if(L2 == R1) ret -= a[L2];\n\n          return ret;\n        };\n\n\
+    \      if(l2 <= r1){\n        ans = f(l1, l2, r1, r2);\n      }else{\n       \
+    \ if(l1 <= r1) ans = std::max(ans, f(l1, r1, r1, r2));\n        if(l2 <= r2) ans\
+    \ = std::max(ans, f(l1, l2, l2, r2));\n        if(r1 <= l2) ans = std::max(ans,\
+    \ seg.fold(r1, l2 + 1)->partial_max);\n      }\n\n      std::cout << ans << \"\
+    \\n\";\n    }\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp
   - Mylib/DataStructure/SegmentTree/segment_tree.cpp
@@ -160,7 +165,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/776/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-28 13:26:18+09:00'
+  timestamp: '2020-10-15 01:51:15+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/776/main.test.cpp

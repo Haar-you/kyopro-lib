@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Graph/Matching/hopcroft_karp.cpp
     title: Hopcroft-Karp algorithm
   - icon: ':question:'

@@ -4,16 +4,16 @@ data:
   - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Graph/TreeUtils/tree_distance.cpp
     title: Tree distance
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/tree_height.cpp
     title: Tree height
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_B
@@ -73,7 +73,7 @@ data:
   path: test/aoj/GRL_5_B/main.test.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/GRL_5_B/main.test.cpp
 layout: document

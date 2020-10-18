@@ -9,14 +9,14 @@ data:
     title: Basic graph
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_2_A/main.kruskal.test.cpp
     title: test/aoj/GRL_2_A/main.kruskal.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/manhattanmst/main.test.cpp
     title: test/yosupo-judge/manhattanmst/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/MinimumSpanningTree/kruskal.cpp\"\n#include\
@@ -85,7 +85,7 @@ data:
   path: Mylib/Graph/MinimumSpanningTree/kruskal.cpp
   requiredBy: []
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo-judge/manhattanmst/main.test.cpp
   - test/aoj/GRL_2_A/main.kruskal.test.cpp

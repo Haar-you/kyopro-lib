@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Flow/ford_fulkerson.cpp
     title: Ford-Fulkerson algorithm
   - icon: ':heavy_check_mark:'

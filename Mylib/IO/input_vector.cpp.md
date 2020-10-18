@@ -102,22 +102,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_3_D/main.test.cpp
     title: test/aoj/DSL_3_D/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/ITP2_11_B/main.asc.test.cpp
     title: test/aoj/ITP2_11_B/main.asc.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/ITP2_11_B/main.desc.test.cpp
     title: test/aoj/ITP2_11_B/main.desc.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/ITP2_11_C/main.asc.test.cpp
     title: test/aoj/ITP2_11_C/main.asc.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/ITP2_11_C/main.desc.test.cpp
     title: test/aoj/ITP2_11_C/main.desc.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/NTL_1_C/main.test.cpp
     title: test/aoj/NTL_1_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/assignment/main.test.cpp
     title: test/yosupo-judge/assignment/main.test.cpp
   - icon: ':x:'

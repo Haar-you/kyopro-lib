@@ -18,10 +18,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_2_C/main.test.cpp
     title: test/aoj/DSL_2_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_5_C/main.doubling.test.cpp
     title: test/aoj/GRL_5_C/main.doubling.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_5_C/main.hld.test.cpp
     title: test/aoj/GRL_5_C/main.hld.test.cpp
   - icon: ':x:'

@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Graph/TreeUtils/tree_diameter.cpp
     title: Tree diameter
   - icon: ':question:'

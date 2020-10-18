@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Flow/minimum_cost_flow.cpp
     title: Minimum cost flow
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Matching/weighted_bipartite_matching.cpp
     title: Weighted maximum bipartite matching
   - icon: ':question:'

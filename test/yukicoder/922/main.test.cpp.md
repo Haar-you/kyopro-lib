@@ -7,13 +7,13 @@ data:
   - icon: ':x:'
     path: Mylib/Graph/TreeUtils/forest.cpp
     title: Decompose forest
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Graph/TreeUtils/lca_doubling.cpp
     title: Lowest common ancestor (Doubling)
   - icon: ':question:'
     path: Mylib/Graph/TreeUtils/rerooting.cpp
     title: Rerooting DP
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Graph/TreeUtils/tree_distance.cpp
     title: Tree distance
   - icon: ':question:'

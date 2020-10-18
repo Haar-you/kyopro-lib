@@ -23,10 +23,10 @@ data:
     \ 0),\n      A_(a),\n      data_(logN_, std::vector<value_type>(1 << logN_))\n\
     \    {\n      A_.resize(1 << logN_);\n      if(logN_ > 0) std::copy(A_.begin(),\
     \ A_.end(), data_[0].begin());\n      build(0, 1 << logN_, logN_ - 1);\n    }\n\
-    \n    std::optional<value_type> fold(int l, int r) const {\n      if(l == r) return\
-    \ std::nullopt;\n      --r;\n\n      if(l == r) return A_[l];\n\n      const int\
-    \ k = 31 - __builtin_clz(l ^ r);\n      return S_(data_[k][l], data_[k][r]);\n\
-    \    }\n  };\n}\n"
+    \n    std::optional<value_type> fold(int l, int r) const {\n      assert(0 <=\
+    \ l and l <= r and r <= N_);\n      if(l == r) return std::nullopt;\n      --r;\n\
+    \n      if(l == r) return A_[l];\n\n      const int k = 31 - __builtin_clz(l ^\
+    \ r);\n      return S_(data_[k][l], data_[k][r]);\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <algorithm>\n#include <cassert>\n\
     #include <optional>\n\nnamespace haar_lib {\n  template <typename Semigroup>\n\
     \  class disjoint_sparse_table {\n  public:\n    using value_type = typename Semigroup::value_type;\n\
@@ -42,15 +42,15 @@ data:
     \ 0),\n      A_(a),\n      data_(logN_, std::vector<value_type>(1 << logN_))\n\
     \    {\n      A_.resize(1 << logN_);\n      if(logN_ > 0) std::copy(A_.begin(),\
     \ A_.end(), data_[0].begin());\n      build(0, 1 << logN_, logN_ - 1);\n    }\n\
-    \n    std::optional<value_type> fold(int l, int r) const {\n      if(l == r) return\
-    \ std::nullopt;\n      --r;\n\n      if(l == r) return A_[l];\n\n      const int\
-    \ k = 31 - __builtin_clz(l ^ r);\n      return S_(data_[k][l], data_[k][r]);\n\
-    \    }\n  };\n}\n"
+    \n    std::optional<value_type> fold(int l, int r) const {\n      assert(0 <=\
+    \ l and l <= r and r <= N_);\n      if(l == r) return std::nullopt;\n      --r;\n\
+    \n      if(l == r) return A_[l];\n\n      const int k = 31 - __builtin_clz(l ^\
+    \ r);\n      return S_(data_[k][l], data_[k][r]);\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/DataStructure/SparseTable/disjoint_sparse_table.cpp
   requiredBy: []
-  timestamp: '2020-09-30 02:01:30+09:00'
+  timestamp: '2020-10-15 01:51:15+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/DataStructure/SparseTable/disjoint_sparse_table.cpp

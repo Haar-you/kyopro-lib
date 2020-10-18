@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Bit/enumerate_subsets_asc.cpp
     title: Enumerate subsets (Ascending order)
   - icon: ':heavy_check_mark:'

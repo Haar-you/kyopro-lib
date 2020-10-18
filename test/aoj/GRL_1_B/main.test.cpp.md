@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/ShortestPath/bellman_ford.cpp
     title: Bellman-Ford algorithm
   - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Math/unbounded.cpp
     title: Number with infinity
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B
@@ -116,7 +116,7 @@ data:
   path: test/aoj/GRL_1_B/main.test.cpp
   requiredBy: []
   timestamp: '2020-10-07 09:46:40+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/GRL_1_B/main.test.cpp
 layout: document

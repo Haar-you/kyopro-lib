@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/Heap/skew_heap.cpp
     title: Skew heap
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/MinimumSpanningTree/prim.cpp
     title: Prim algorithm
   - icon: ':question:'

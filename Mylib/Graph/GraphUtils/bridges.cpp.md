@@ -6,11 +6,11 @@ data:
     title: Basic graph
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_3_B/main.test.cpp
     title: test/aoj/GRL_3_B/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/GraphUtils/bridges.cpp\"\n#include <vector>\n\
@@ -65,7 +65,7 @@ data:
   path: Mylib/Graph/GraphUtils/bridges.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/GRL_3_B/main.test.cpp
 documentation_of: Mylib/Graph/GraphUtils/bridges.cpp

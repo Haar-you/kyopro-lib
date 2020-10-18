@@ -44,12 +44,12 @@ data:
     \ ...});\n    assert((int)std::min({args.size() ...}) == N);\n    std::vector<int>\
     \ ord(N);\n    std::iota(ord.begin(), ord.end(), 0);\n    std::sort(ord.begin(),\
     \ ord.end(), compare);\n\n    (void)std::initializer_list<int>{\n      (void(sort_simultaneously_impl::sub(N,\
-    \ ord, args)), 0) ...};\n  }\n}\n#line 3 \"Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp\"\
+    \ ord, args)), 0) ...};\n  }\n}\n#line 4 \"Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename Monoid>\n  class persistent_segment_tree\
     \ {\n  public:\n    using value_type = typename Monoid::value_type;\n\n  private:\n\
     \    struct node {\n      value_type value;\n      node *left = nullptr, *right\
     \ = nullptr;\n      node(const value_type &value): value(value){}\n    };\n\n\
-    \    Monoid M_;\n    int depth_;\n    node *root_ = nullptr;\n\n    persistent_segment_tree(int\
+    \    Monoid M_;\n    int depth_, size_;\n    node *root_ = nullptr;\n\n    persistent_segment_tree(int\
     \ depth, node *root): depth_(depth), root_(root){}\n\n    node* assign(node *t,\
     \ const std::vector<value_type> &init_list, int d, int &pos){\n      if(d == depth_){\n\
     \        t = new node(pos < (int)init_list.size() ? init_list[pos] : M_());\n\
@@ -57,11 +57,11 @@ data:
     \ assign(t->left, init_list, d + 1, pos);\n        t->right = assign(t->right,\
     \ init_list, d + 1, pos);\n        t->value = M_(t->left->value, t->right->value);\n\
     \      }\n      return t;\n    }\n\n    void init(const std::vector<value_type>\
-    \ &init_list){\n      const int size = init_list.size();\n      depth_ = size\
-    \ == 1 ? 1 : 32 - __builtin_clz(size - 1) + 1;\n      int pos = 0;\n      root_\
-    \ = assign(root_, init_list, 1, pos);\n    }\n\n  public:\n    persistent_segment_tree(){}\n\
-    \    persistent_segment_tree(const std::vector<value_type> &init_list){\n    \
-    \  init(init_list);\n    }\n    persistent_segment_tree(int size){\n      init(std::vector(size,\
+    \ &init_list){\n      size_ = init_list.size();\n      depth_ = size_ == 1 ? 1\
+    \ : 32 - __builtin_clz(size_ - 1) + 1;\n      int pos = 0;\n      root_ = assign(root_,\
+    \ init_list, 1, pos);\n    }\n\n  public:\n    persistent_segment_tree(){}\n \
+    \   persistent_segment_tree(const std::vector<value_type> &init_list){\n     \
+    \ init(init_list);\n    }\n    persistent_segment_tree(int size){\n      init(std::vector(size,\
     \ M_()));\n    }\n    persistent_segment_tree(int size, const value_type &value){\n\
     \      init(std::vector(size, value));\n    }\n\n  protected:\n    node* set(node\
     \ *t, int l, int r, int pos, const value_type &val) const {\n      if(r <= pos\
@@ -71,16 +71,17 @@ data:
     \ set(t->right, m, r, pos, val);\n\n        node *s = new node(M_(lp->value, rp->value));\n\
     \n        s->left = lp;\n        s->right = rp;\n\n        return s;\n      }\n\
     \    }\n\n  public:\n    persistent_segment_tree set(int i, const value_type &val)\
-    \ const {\n      node *t = set(root_, 0, 1 << (depth_ - 1), i, val);\n      return\
-    \ persistent_segment_tree(depth_, t);\n    }\n\n    persistent_segment_tree update(int\
-    \ i, const value_type &val) const {\n      return set(i, M_((*this)[i], val));\n\
-    \    }\n\n  protected:\n    value_type get(node *t, int i, int j, int l, int r)\
-    \ const {\n      if(i <= l and r <= j) return t->value;\n      if(r <= i or j\
-    \ <= l) return M_();\n      const int m = (l + r) >> 1;\n      return M_(get(t->left,\
-    \ i, j, l, m), get(t->right, i, j, m, r));\n    }\n\n  public:\n    value_type\
-    \ fold(int i, int j) const {\n      return get(root_, i, j, 0, 1 << (depth_ -\
-    \ 1));\n    }\n\n    value_type operator[](int i) const {\n      return fold(i,\
-    \ i + 1);\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/sum.cpp\"\
+    \ const {\n      assert(0 <= i and i < size_);\n      node *t = set(root_, 0,\
+    \ 1 << (depth_ - 1), i, val);\n      return persistent_segment_tree(depth_, t);\n\
+    \    }\n\n    persistent_segment_tree update(int i, const value_type &val) const\
+    \ {\n      return set(i, M_((*this)[i], val));\n    }\n\n  protected:\n    value_type\
+    \ get(node *t, int i, int j, int l, int r) const {\n      if(i <= l and r <= j)\
+    \ return t->value;\n      if(r <= i or j <= l) return M_();\n      const int m\
+    \ = (l + r) >> 1;\n      return M_(get(t->left, i, j, l, m), get(t->right, i,\
+    \ j, m, r));\n    }\n\n  public:\n    value_type fold(int l, int r) const {\n\
+    \      assert(0 <= l and l <= r and r <= size_);\n      return get(root_, l, r,\
+    \ 0, 1 << (depth_ - 1));\n    }\n\n    value_type operator[](int i) const {\n\
+    \      return fold(i, i + 1);\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/Monoid/sum.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  struct sum_monoid {\n   \
     \ using value_type = T;\n    value_type operator()() const {return 0;}\n    value_type\
     \ operator()(value_type a, value_type b) const {return a + b;}\n  };\n}\n#line\
@@ -178,7 +179,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2020-10-11 03:06:10+09:00'
+  timestamp: '2020-10-15 01:51:15+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp

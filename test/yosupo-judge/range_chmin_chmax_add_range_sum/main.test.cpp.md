@@ -25,15 +25,15 @@ data:
   bundledCode: "#line 1 \"test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum\"\
     \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/DataStructure/SegmentTree/segment_tree_beats.cpp\"\
-    \n#include <limits>\n#include <algorithm>\n\nnamespace haar_lib {\n  class segment_tree_beats\
-    \ {\n  public:\n    using value_type = int64_t;\n\n  private:\n    int depth_,\
-    \ size_, hsize_;\n\n    std::vector<value_type> fst_max_, snd_max_;\n    std::vector<int>\
-    \ max_count_;\n\n    std::vector<value_type> fst_min_, snd_min_;\n    std::vector<int>\
-    \ min_count_;\n\n    std::vector<value_type> sum_, lazy_add_;\n\n  public:\n \
-    \   segment_tree_beats(){}\n    segment_tree_beats(int n):\n      depth_(n > 1\
-    \ ? 32 - __builtin_clz(n - 1) + 1 : 1),\n      size_(1 << depth_),\n      hsize_(size_\
-    \ / 2),\n\n      fst_max_(size_, std::numeric_limits<value_type>::min()),\n  \
-    \    snd_max_(size_, std::numeric_limits<value_type>::min()),\n      max_count_(size_,\
+    \n#include <limits>\n#include <algorithm>\n#include <cassert>\n\nnamespace haar_lib\
+    \ {\n  class segment_tree_beats {\n  public:\n    using value_type = int64_t;\n\
+    \n  private:\n    int depth_, size_, hsize_;\n\n    std::vector<value_type> fst_max_,\
+    \ snd_max_;\n    std::vector<int> max_count_;\n\n    std::vector<value_type> fst_min_,\
+    \ snd_min_;\n    std::vector<int> min_count_;\n\n    std::vector<value_type> sum_,\
+    \ lazy_add_;\n\n  public:\n    segment_tree_beats(){}\n    segment_tree_beats(int\
+    \ n):\n      depth_(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),\n      size_(1\
+    \ << depth_),\n      hsize_(size_ / 2),\n\n      fst_max_(size_, std::numeric_limits<value_type>::min()),\n\
+    \      snd_max_(size_, std::numeric_limits<value_type>::min()),\n      max_count_(size_,\
     \ 0),\n\n      fst_min_(size_, std::numeric_limits<value_type>::max()),\n    \
     \  snd_min_(size_, std::numeric_limits<value_type>::max()),\n      min_count_(size_,\
     \ 0),\n\n      sum_(size_, 0),\n      lazy_add_(size_, 0)\n    {}\n\n  private:\n\
@@ -76,26 +76,30 @@ data:
     \ snd_max_[i] < x){\n        update_node_max(i, x);\n        return;\n      }\n\
     \n      propagate(i);\n      chmin(lc(i), l, (l + r) / 2, s, t, x);\n      chmin(rc(i),\
     \ (l + r) / 2, r, s, t, x);\n      bottom_up(i);\n    }\n\n  public:\n    void\
-    \ chmin(int l, int r, value_type x){chmin(1, 0, hsize_, l, r, x);}\n\n  private:\n\
-    \    void chmax(int i, int l, int r, int s, int t, value_type x){\n      if(r\
-    \ <= s or t <= l or fst_min_[i] >= x) return;\n      if(s <= l and r <= t and\
-    \ snd_min_[i] > x){\n        update_node_min(i, x);\n        return;\n      }\n\
-    \n      propagate(i);\n      chmax(lc(i), l, (l + r) / 2, s, t, x);\n      chmax(rc(i),\
-    \ (l + r) / 2, r, s, t, x);\n      bottom_up(i);\n    }\n\n  public:\n    void\
-    \ chmax(int l, int r, value_type x){chmax(1, 0, hsize_, l, r, x);}\n\n  private:\n\
-    \    void add(int i, int l, int r, int s, int t, value_type x){\n      if(r <=\
-    \ s or t <= l) return;\n      if(s <= l and r <= t){\n        update_node_add(i,\
-    \ x);\n        return;\n      }\n\n      propagate(i);\n      add(lc(i), l, (l\
-    \ + r) / 2, s, t, x);\n      add(rc(i), (l + r) / 2, r, s, t, x);\n      bottom_up(i);\n\
-    \    }\n\n  public:\n    void add(int l, int r, value_type x){add(1, 0, hsize_,\
-    \ l, r, x);}\n\n  private:\n    value_type get_sum(int i, int l, int r, int s,\
-    \ int t){\n      if(r <= s or t <= l) return 0;\n      if(s <= l and r <= t) return\
-    \ sum_[i];\n\n      propagate(i);\n      return get_sum(lc(i), l, (l + r) / 2,\
-    \ s, t) + get_sum(rc(i), (l + r) / 2, r, s, t);\n    }\n\n  public:\n    value_type\
-    \ get_sum(int l, int r){return get_sum(1, 0, hsize_, l, r);}\n\n  public:\n  \
-    \  void init_with_vector(const std::vector<value_type> &v){\n      fst_max_.assign(size_,\
-    \ std::numeric_limits<value_type>::min());\n      snd_max_.assign(size_, std::numeric_limits<value_type>::min());\n\
-    \      max_count_.assign(size_, 1);\n\n      fst_min_.assign(size_, std::numeric_limits<value_type>::max());\n\
+    \ chmin(int l, int r, value_type x){\n      assert(0 <= l and l <= r and r <=\
+    \ hsize_);\n      chmin(1, 0, hsize_, l, r, x);\n    }\n\n  private:\n    void\
+    \ chmax(int i, int l, int r, int s, int t, value_type x){\n      if(r <= s or\
+    \ t <= l or fst_min_[i] >= x) return;\n      if(s <= l and r <= t and snd_min_[i]\
+    \ > x){\n        update_node_min(i, x);\n        return;\n      }\n\n      propagate(i);\n\
+    \      chmax(lc(i), l, (l + r) / 2, s, t, x);\n      chmax(rc(i), (l + r) / 2,\
+    \ r, s, t, x);\n      bottom_up(i);\n    }\n\n  public:\n    void chmax(int l,\
+    \ int r, value_type x){\n      assert(0 <= l and l <= r and r <= hsize_);\n  \
+    \    chmax(1, 0, hsize_, l, r, x);\n    }\n\n  private:\n    void add(int i, int\
+    \ l, int r, int s, int t, value_type x){\n      if(r <= s or t <= l) return;\n\
+    \      if(s <= l and r <= t){\n        update_node_add(i, x);\n        return;\n\
+    \      }\n\n      propagate(i);\n      add(lc(i), l, (l + r) / 2, s, t, x);\n\
+    \      add(rc(i), (l + r) / 2, r, s, t, x);\n      bottom_up(i);\n    }\n\n  public:\n\
+    \    void add(int l, int r, value_type x){\n      assert(0 <= l and l <= r and\
+    \ r <= hsize_);\n      add(1, 0, hsize_, l, r, x);\n    }\n\n  private:\n    value_type\
+    \ get_sum(int i, int l, int r, int s, int t){\n      if(r <= s or t <= l) return\
+    \ 0;\n      if(s <= l and r <= t) return sum_[i];\n\n      propagate(i);\n   \
+    \   return get_sum(lc(i), l, (l + r) / 2, s, t) + get_sum(rc(i), (l + r) / 2,\
+    \ r, s, t);\n    }\n\n  public:\n    value_type get_sum(int l, int r){\n     \
+    \ assert(0 <= l and l <= r and r <= hsize_);\n      return get_sum(1, 0, hsize_,\
+    \ l, r);\n    }\n\n  public:\n    void init_with_vector(const std::vector<value_type>\
+    \ &v){\n      fst_max_.assign(size_, std::numeric_limits<value_type>::min());\n\
+    \      snd_max_.assign(size_, std::numeric_limits<value_type>::min());\n     \
+    \ max_count_.assign(size_, 1);\n\n      fst_min_.assign(size_, std::numeric_limits<value_type>::max());\n\
     \      snd_min_.assign(size_, std::numeric_limits<value_type>::max());\n     \
     \ min_count_.assign(size_, 1);\n\n      sum_.assign(size_, 0);\n      lazy_add_.assign(size_,\
     \ 0);\n\n      for(int i = 0; i < (int)v.size(); ++i){\n        fst_max_[hsize_\
@@ -159,7 +163,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2020-10-15 01:51:15+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp

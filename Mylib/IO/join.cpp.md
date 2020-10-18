@@ -18,7 +18,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_3_D/main.test.cpp
     title: test/aoj/DSL_3_D/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/assignment/main.test.cpp
     title: test/yosupo-judge/assignment/main.test.cpp
   - icon: ':x:'

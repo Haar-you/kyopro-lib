@@ -74,57 +74,59 @@ data:
     \ const {\n      if(std::holds_alternative<R>(a)){\n        const int i = std::get<R>(a).value;\n\
     \        return R(i == 0 ? 0 : K - i);\n      }else{\n        return a;\n    \
     \  }\n    }\n  };\n}\n#line 3 \"Mylib/DataStructure/SegmentTree/segment_tree.cpp\"\
-    \n#include <algorithm>\n#include <functional>\n\nnamespace haar_lib {\n  template\
-    \ <typename Monoid>\n  class segment_tree {\n  public:\n    using value_type =\
-    \ typename Monoid::value_type;\n\n  private:\n    Monoid M_;\n    int depth_,\
-    \ size_, hsize_;\n    std::vector<value_type> data_;\n\n  public:\n    segment_tree(){}\n\
-    \    segment_tree(int n):\n      depth_(n > 1 ? 32 - __builtin_clz(n - 1) + 1\
-    \ : 1),\n      size_(1 << depth_), hsize_(size_ / 2),\n      data_(size_, M_())\n\
-    \    {}\n\n    auto operator[](int i) const {return data_[hsize_ + i];}\n\n  \
-    \  auto fold(int x, int y) const {\n      value_type ret_left = M_();\n      value_type\
-    \ ret_right = M_();\n\n      int l = x + hsize_, r = y + hsize_;\n      while(l\
-    \ < r){\n        if(r & 1) ret_right = M_(data_[--r], ret_right);\n        if(l\
-    \ & 1) ret_left = M_(ret_left, data_[l++]);\n        l >>= 1, r >>= 1;\n     \
-    \ }\n\n      return M_(ret_left, ret_right);\n    }\n\n    auto fold_all() const\
-    \ {\n      return data_[1];\n    }\n\n    void set(int i, const value_type &x){\n\
-    \      i += hsize_;\n      data_[i] = x;\n      while(i > 1) i >>= 1, data_[i]\
-    \ = M_(data_[i << 1 | 0], data_[i << 1 | 1]);\n    }\n\n    void update(int i,\
-    \ const value_type &x){\n      i += hsize_;\n      data_[i] = M_(data_[i], x);\n\
-    \      while(i > 1) i >>= 1, data_[i] = M_(data_[i << 1 | 0], data_[i << 1 | 1]);\n\
-    \    }\n\n    template <typename T>\n    void init_with_vector(const std::vector<T>\
-    \ &val){\n      data_.assign(size_, M_());\n      for(int i = 0; i < (int)val.size();\
-    \ ++i) data_[hsize_ + i] = val[i];\n      for(int i = hsize_; --i >= 1;) data_[i]\
-    \ = M_(data_[i << 1 | 0], data_[i << 1 | 1]);\n    }\n\n    template <typename\
-    \ T>\n    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize_,\
-    \ val));\n    }\n\n  private:\n    template <bool Lower, typename F>\n    int\
-    \ bound(const int l, const int r, value_type x, F f) const {\n      std::vector<int>\
-    \ pl, pr;\n      int L = l + hsize_;\n      int R = r + hsize_;\n      while(L\
-    \ < R){\n        if(R & 1) pr.push_back(--R);\n        if(L & 1) pl.push_back(L++);\n\
-    \        L >>= 1, R >>= 1;\n      }\n\n      std::reverse(pr.begin(), pr.end());\n\
-    \      pl.insert(pl.end(), pr.begin(), pr.end());\n\n      value_type a = M_();\n\
-    \n      for(int i : pl){\n        auto b = M_(a, data_[i]);\n\n        if((Lower\
-    \ and not f(b, x)) or (not Lower and f(x, b))){\n          while(i < hsize_){\n\
-    \            const auto c = M_(a, data_[i << 1 | 0]);\n            if((Lower and\
-    \ not f(c, x)) or (not Lower and f(x, c))){\n              i = i << 1 | 0;\n \
-    \           }else{\n              a = c;\n              i = i << 1 | 1;\n    \
-    \        }\n          }\n\n          return i - hsize_;\n        }\n\n       \
-    \ a = b;\n      }\n\n      return r;\n    }\n\n  public:\n    template <typename\
-    \ F = std::less<value_type>>\n    int lower_bound(int l, int r, value_type x,\
-    \ F f = F()) const {\n      return bound<true>(l, r, x, f);\n    }\n\n    template\
-    \ <typename F = std::less<value_type>>\n    int upper_bound(int l, int r, value_type\
-    \ x, F f = F()) const {\n      return bound<false>(l, r, x, f);\n    }\n  };\n\
-    }\n#line 9 \"test/aoj/0390/main.test.cpp\"\n\nnamespace hl = haar_lib;\n\nstatic\
-    \ int K;\nusing M = hl::dihedral_group<K>;\n\nint main(){\n  int N, Q; std::cin\
-    \ >> K >> N >> Q;\n  auto A = hl::input_vector<int>(N);\n\n  hl::segment_tree<M>\
-    \ seg(N);\n\n  for(int i = 0; i < N; ++i){\n    if(A[i] > 0){\n      seg.set(i,\
-    \ M::R({A[i] % K}));\n    }else if(A[i] < 0){\n      seg.set(i, M::R({A[i] % K\
-    \ + K}));\n    }else{\n      seg.set(i, M::S({0}));\n    }\n  }\n\n  for(auto\
-    \ [L, R] : hl::input_tuples<int, int>(Q)){\n    --L, --R;\n\n    auto x = seg[L];\n\
-    \    auto y = seg[R];\n    seg.set(L, y);\n    seg.set(R, x);\n\n    auto res\
-    \ = seg.fold_all();\n\n    if(std::holds_alternative<M::R>(res)){\n      int ans\
-    \ = (K - std::get<M::R>(res).value) % K + 1;\n      std::cout << ans << \"\\n\"\
-    ;\n    }else{\n      int ans = -(std::get<M::S>(res).value + 1);\n      std::cout\
-    \ << ans << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
+    \n#include <algorithm>\n#include <functional>\n#include <cassert>\n\nnamespace\
+    \ haar_lib {\n  template <typename Monoid>\n  class segment_tree {\n  public:\n\
+    \    using value_type = typename Monoid::value_type;\n\n  private:\n    Monoid\
+    \ M_;\n    int depth_, size_, hsize_;\n    std::vector<value_type> data_;\n\n\
+    \  public:\n    segment_tree(){}\n    segment_tree(int n):\n      depth_(n > 1\
+    \ ? 32 - __builtin_clz(n - 1) + 1 : 1),\n      size_(1 << depth_), hsize_(size_\
+    \ / 2),\n      data_(size_, M_())\n    {}\n\n    auto operator[](int i) const\
+    \ {\n      assert(0 <= i and i < hsize_);\n      return data_[hsize_ + i];\n \
+    \   }\n\n    auto fold(int l, int r) const {\n      assert(0 <= l and l <= r and\
+    \ r <= hsize_);\n      value_type ret_left = M_();\n      value_type ret_right\
+    \ = M_();\n\n      int L = l + hsize_, R = r + hsize_;\n      while(L < R){\n\
+    \        if(R & 1) ret_right = M_(data_[--R], ret_right);\n        if(L & 1) ret_left\
+    \ = M_(ret_left, data_[L++]);\n        L >>= 1, R >>= 1;\n      }\n\n      return\
+    \ M_(ret_left, ret_right);\n    }\n\n    auto fold_all() const {\n      return\
+    \ data_[1];\n    }\n\n    void set(int i, const value_type &x){\n      assert(0\
+    \ <= i and i < hsize_);\n      i += hsize_;\n      data_[i] = x;\n      while(i\
+    \ > 1) i >>= 1, data_[i] = M_(data_[i << 1 | 0], data_[i << 1 | 1]);\n    }\n\n\
+    \    void update(int i, const value_type &x){\n      assert(0 <= i and i < hsize_);\n\
+    \      i += hsize_;\n      data_[i] = M_(data_[i], x);\n      while(i > 1) i >>=\
+    \ 1, data_[i] = M_(data_[i << 1 | 0], data_[i << 1 | 1]);\n    }\n\n    template\
+    \ <typename T>\n    void init_with_vector(const std::vector<T> &val){\n      data_.assign(size_,\
+    \ M_());\n      for(int i = 0; i < (int)val.size(); ++i) data_[hsize_ + i] = val[i];\n\
+    \      for(int i = hsize_; --i >= 1;) data_[i] = M_(data_[i << 1 | 0], data_[i\
+    \ << 1 | 1]);\n    }\n\n    template <typename T>\n    void init(const T &val){\n\
+    \      init_with_vector(std::vector<value_type>(hsize_, val));\n    }\n\n  private:\n\
+    \    template <bool Lower, typename F>\n    int bound(const int l, const int r,\
+    \ value_type x, F f) const {\n      std::vector<int> pl, pr;\n      int L = l\
+    \ + hsize_;\n      int R = r + hsize_;\n      while(L < R){\n        if(R & 1)\
+    \ pr.push_back(--R);\n        if(L & 1) pl.push_back(L++);\n        L >>= 1, R\
+    \ >>= 1;\n      }\n\n      std::reverse(pr.begin(), pr.end());\n      pl.insert(pl.end(),\
+    \ pr.begin(), pr.end());\n\n      value_type a = M_();\n\n      for(int i : pl){\n\
+    \        auto b = M_(a, data_[i]);\n\n        if((Lower and not f(b, x)) or (not\
+    \ Lower and f(x, b))){\n          while(i < hsize_){\n            const auto c\
+    \ = M_(a, data_[i << 1 | 0]);\n            if((Lower and not f(c, x)) or (not\
+    \ Lower and f(x, c))){\n              i = i << 1 | 0;\n            }else{\n  \
+    \            a = c;\n              i = i << 1 | 1;\n            }\n          }\n\
+    \n          return i - hsize_;\n        }\n\n        a = b;\n      }\n\n     \
+    \ return r;\n    }\n\n  public:\n    template <typename F = std::less<value_type>>\n\
+    \    int lower_bound(int l, int r, value_type x, F f = F()) const {\n      return\
+    \ bound<true>(l, r, x, f);\n    }\n\n    template <typename F = std::less<value_type>>\n\
+    \    int upper_bound(int l, int r, value_type x, F f = F()) const {\n      return\
+    \ bound<false>(l, r, x, f);\n    }\n  };\n}\n#line 9 \"test/aoj/0390/main.test.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\nstatic int K;\nusing M = hl::dihedral_group<K>;\n\
+    \nint main(){\n  int N, Q; std::cin >> K >> N >> Q;\n  auto A = hl::input_vector<int>(N);\n\
+    \n  hl::segment_tree<M> seg(N);\n\n  for(int i = 0; i < N; ++i){\n    if(A[i]\
+    \ > 0){\n      seg.set(i, M::R({A[i] % K}));\n    }else if(A[i] < 0){\n      seg.set(i,\
+    \ M::R({A[i] % K + K}));\n    }else{\n      seg.set(i, M::S({0}));\n    }\n  }\n\
+    \n  for(auto [L, R] : hl::input_tuples<int, int>(Q)){\n    --L, --R;\n\n    auto\
+    \ x = seg[L];\n    auto y = seg[R];\n    seg.set(L, y);\n    seg.set(R, x);\n\n\
+    \    auto res = seg.fold_all();\n\n    if(std::holds_alternative<M::R>(res)){\n\
+    \      int ans = (K - std::get<M::R>(res).value) % K + 1;\n      std::cout <<\
+    \ ans << \"\\n\";\n    }else{\n      int ans = -(std::get<M::S>(res).value + 1);\n\
+    \      std::cout << ans << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0390\"\
     \n\n#include <iostream>\n#include <variant>\n#include \"Mylib/IO/input_vector.cpp\"\
     \n#include \"Mylib/IO/input_tuples.cpp\"\n#include \"Mylib/AlgebraicStructure/Group/dihedral.cpp\"\
@@ -149,7 +151,7 @@ data:
   isVerificationFile: true
   path: test/aoj/0390/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-28 13:26:18+09:00'
+  timestamp: '2020-10-15 01:51:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/0390/main.test.cpp

@@ -5,18 +5,18 @@ data:
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/tree_height.cpp
     title: Tree height
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_5_B/main.test.cpp
     title: test/aoj/GRL_5_B/main.test.cpp
   - icon: ':x:'
     path: test/yukicoder/922/main.test.cpp
     title: test/yukicoder/922/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/TreeUtils/tree_distance.cpp\"\n#include <vector>\n\
@@ -62,7 +62,7 @@ data:
   requiredBy:
   - Mylib/Graph/TreeUtils/tree_height.cpp
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yukicoder/922/main.test.cpp
   - test/aoj/GRL_5_B/main.test.cpp

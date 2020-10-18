@@ -5,10 +5,10 @@ data:
   - icon: ':warning:'
     path: Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp
     title: Check bipartite graph (Using union-find)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/MinimumSpanningTree/boruvka.cpp
     title: "Bor\u016Fvka algorithm"
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Graph/MinimumSpanningTree/kruskal.cpp
     title: Kruskal algorithm
   _extendedVerifiedWith:
@@ -21,10 +21,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2955/main.test.cpp
     title: test/aoj/2955/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_2_A/main.boruvka.test.cpp
     title: test/aoj/GRL_2_A/main.boruvka.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_2_A/main.kruskal.test.cpp
     title: test/aoj/GRL_2_A/main.kruskal.test.cpp
   - icon: ':x:'

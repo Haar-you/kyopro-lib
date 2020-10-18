@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/euler_totient_function.cpp
     title: Euler's totient function
   - icon: ':x:'

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Graph/GraphUtils/strongly_connected_components.cpp
     title: Strongly connected components
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
     title: Chu-Liu/Edmonds algorithm
   - icon: ':question:'
@@ -13,7 +13,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_B
@@ -109,7 +109,7 @@ data:
   path: test/aoj/GRL_2_B/main.test.cpp
   requiredBy: []
   timestamp: '2020-09-21 06:13:54+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/GRL_2_B/main.test.cpp
 layout: document

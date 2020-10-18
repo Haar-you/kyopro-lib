@@ -6,11 +6,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2293/main.test.cpp
     title: test/aoj/2293/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/assignment/main.test.cpp
     title: test/yosupo-judge/assignment/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/Matching/weighted_bipartite_matching.cpp\"\n\
@@ -53,7 +53,7 @@ data:
   path: Mylib/Graph/Matching/weighted_bipartite_matching.cpp
   requiredBy: []
   timestamp: '2020-10-10 11:12:55+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/assignment/main.test.cpp
   - test/aoj/2293/main.test.cpp

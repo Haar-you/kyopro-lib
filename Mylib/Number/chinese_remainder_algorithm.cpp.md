@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/extended_gcd.cpp
     title: Extended Euclidean algorithm
   _extendedRequiredBy: []

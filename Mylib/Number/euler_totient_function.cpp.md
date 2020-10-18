@@ -6,14 +6,14 @@ data:
     path: Mylib/Number/tetration.cpp
     title: Tetration
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/NTL_1_D/main.totient.test.cpp
     title: test/aoj/NTL_1_D/main.totient.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/tetration_mod/main.test.cpp
     title: test/yosupo-judge/tetration_mod/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/euler_totient_function.cpp\"\n#include <cstdint>\n\
@@ -31,7 +31,7 @@ data:
   requiredBy:
   - Mylib/Number/tetration.cpp
   timestamp: '2020-09-25 03:54:08+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo-judge/tetration_mod/main.test.cpp
   - test/aoj/NTL_1_D/main.totient.test.cpp

@@ -27,23 +27,26 @@ data:
     \ {return {};}\n    value_type operator()(const value_type &a, const value_type\
     \ &b) const {\n      if(not a) return b;\n      if(not b) return a;\n      return\
     \ {std::min(*a, *b)};\n    }\n  };\n}\n#line 4 \"Mylib/DataStructure/SegmentTree/segment_tree.cpp\"\
-    \n#include <functional>\n\nnamespace haar_lib {\n  template <typename Monoid>\n\
-    \  class segment_tree {\n  public:\n    using value_type = typename Monoid::value_type;\n\
-    \n  private:\n    Monoid M_;\n    int depth_, size_, hsize_;\n    std::vector<value_type>\
-    \ data_;\n\n  public:\n    segment_tree(){}\n    segment_tree(int n):\n      depth_(n\
-    \ > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),\n      size_(1 << depth_), hsize_(size_\
-    \ / 2),\n      data_(size_, M_())\n    {}\n\n    auto operator[](int i) const\
-    \ {return data_[hsize_ + i];}\n\n    auto fold(int x, int y) const {\n      value_type\
-    \ ret_left = M_();\n      value_type ret_right = M_();\n\n      int l = x + hsize_,\
-    \ r = y + hsize_;\n      while(l < r){\n        if(r & 1) ret_right = M_(data_[--r],\
-    \ ret_right);\n        if(l & 1) ret_left = M_(ret_left, data_[l++]);\n      \
-    \  l >>= 1, r >>= 1;\n      }\n\n      return M_(ret_left, ret_right);\n    }\n\
+    \n#include <functional>\n#include <cassert>\n\nnamespace haar_lib {\n  template\
+    \ <typename Monoid>\n  class segment_tree {\n  public:\n    using value_type =\
+    \ typename Monoid::value_type;\n\n  private:\n    Monoid M_;\n    int depth_,\
+    \ size_, hsize_;\n    std::vector<value_type> data_;\n\n  public:\n    segment_tree(){}\n\
+    \    segment_tree(int n):\n      depth_(n > 1 ? 32 - __builtin_clz(n - 1) + 1\
+    \ : 1),\n      size_(1 << depth_), hsize_(size_ / 2),\n      data_(size_, M_())\n\
+    \    {}\n\n    auto operator[](int i) const {\n      assert(0 <= i and i < hsize_);\n\
+    \      return data_[hsize_ + i];\n    }\n\n    auto fold(int l, int r) const {\n\
+    \      assert(0 <= l and l <= r and r <= hsize_);\n      value_type ret_left =\
+    \ M_();\n      value_type ret_right = M_();\n\n      int L = l + hsize_, R = r\
+    \ + hsize_;\n      while(L < R){\n        if(R & 1) ret_right = M_(data_[--R],\
+    \ ret_right);\n        if(L & 1) ret_left = M_(ret_left, data_[L++]);\n      \
+    \  L >>= 1, R >>= 1;\n      }\n\n      return M_(ret_left, ret_right);\n    }\n\
     \n    auto fold_all() const {\n      return data_[1];\n    }\n\n    void set(int\
-    \ i, const value_type &x){\n      i += hsize_;\n      data_[i] = x;\n      while(i\
-    \ > 1) i >>= 1, data_[i] = M_(data_[i << 1 | 0], data_[i << 1 | 1]);\n    }\n\n\
-    \    void update(int i, const value_type &x){\n      i += hsize_;\n      data_[i]\
-    \ = M_(data_[i], x);\n      while(i > 1) i >>= 1, data_[i] = M_(data_[i << 1 |\
-    \ 0], data_[i << 1 | 1]);\n    }\n\n    template <typename T>\n    void init_with_vector(const\
+    \ i, const value_type &x){\n      assert(0 <= i and i < hsize_);\n      i += hsize_;\n\
+    \      data_[i] = x;\n      while(i > 1) i >>= 1, data_[i] = M_(data_[i << 1 |\
+    \ 0], data_[i << 1 | 1]);\n    }\n\n    void update(int i, const value_type &x){\n\
+    \      assert(0 <= i and i < hsize_);\n      i += hsize_;\n      data_[i] = M_(data_[i],\
+    \ x);\n      while(i > 1) i >>= 1, data_[i] = M_(data_[i << 1 | 0], data_[i <<\
+    \ 1 | 1]);\n    }\n\n    template <typename T>\n    void init_with_vector(const\
     \ std::vector<T> &val){\n      data_.assign(size_, M_());\n      for(int i = 0;\
     \ i < (int)val.size(); ++i) data_[hsize_ + i] = val[i];\n      for(int i = hsize_;\
     \ --i >= 1;) data_[i] = M_(data_[i << 1 | 0], data_[i << 1 | 1]);\n    }\n\n \
@@ -135,7 +138,7 @@ data:
   isVerificationFile: false
   path: Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp
   requiredBy: []
-  timestamp: '2020-09-28 13:26:18+09:00'
+  timestamp: '2020-10-15 01:51:15+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/manhattanmst/main.test.cpp

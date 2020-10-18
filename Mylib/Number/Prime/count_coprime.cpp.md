@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Prime/prime_factorize.cpp
     title: Prime factorization
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/NTL_1_D/main.test.cpp
     title: test/aoj/NTL_1_D/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Prime/count_coprime.cpp\"\n#include <cstdint>\n\
@@ -40,7 +40,7 @@ data:
   path: Mylib/Number/Prime/count_coprime.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/NTL_1_D/main.test.cpp
 documentation_of: Mylib/Number/Prime/count_coprime.cpp

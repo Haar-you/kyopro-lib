@@ -5,17 +5,17 @@ data:
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
     title: Chu-Liu/Edmonds algorithm
   - icon: ':x:'
     path: Mylib/Graph/two_sat.cpp
     title: 2-SAT
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_2_B/main.test.cpp
     title: test/aoj/GRL_2_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_3_C/main.test.cpp
     title: test/aoj/GRL_3_C/main.test.cpp
   - icon: ':x:'
@@ -25,7 +25,7 @@ data:
     path: test/yosupo-judge/two_sat/main.test.cpp
     title: test/yosupo-judge/two_sat/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/GraphUtils/strongly_connected_components.cpp\"\
@@ -88,7 +88,7 @@ data:
   - Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
   - Mylib/Graph/two_sat.cpp
   timestamp: '2020-09-21 06:13:54+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo-judge/scc/main.test.cpp
   - test/yosupo-judge/two_sat/main.test.cpp

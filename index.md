@@ -217,22 +217,22 @@ data:
     - icon: ':warning:'
       path: Mylib/Bit/bit_utils.cpp
       title: Bit utils
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Bit/enumerate_sets_of_size_k.cpp
       title: Enumerate sets of size k
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Bit/enumerate_subsets_asc.cpp
       title: Enumerate subsets (Ascending order)
     - icon: ':warning:'
       path: Mylib/Bit/enumerate_subsets_between.cpp
       title: Enumerate subsets (Between)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Bit/enumerate_subsets_desc.cpp
       title: Enumerate subsets (Descending order)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Bit/enumerate_supersets_asc.cpp
       title: Enumerate supersets (Ascending order)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Bit/enumerate_supersets_desc.cpp
       title: Enumerate supersets (Descending order)
     - icon: ':warning:'
@@ -653,36 +653,36 @@ data:
       title: Undirected Eulerian path
   - name: Mylib/Graph/Flow
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/Flow/dinic.cpp
       title: Dinic algorithm
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/Flow/ford_fulkerson.cpp
       title: Ford-Fulkerson algorithm
     - icon: ':heavy_check_mark:'
       path: Mylib/Graph/Flow/max_flow_with_lower_bound.cpp
       title: Maximum flow with lower bound
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/Flow/minimum_cost_flow.cpp
       title: Minimum cost flow
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/Flow/push_relabel.cpp
       title: Push-relabel
   - name: Mylib/Graph/GraphUtils
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/GraphUtils/articulation_points.cpp
       title: Articulation points
     - icon: ':warning:'
       path: Mylib/Graph/GraphUtils/biconnected_components.cpp
       title: Biconnected components
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/GraphUtils/bridges.cpp
       title: Bridges
     - icon: ':heavy_check_mark:'
       path: Mylib/Graph/GraphUtils/decompose_pseudotree.cpp
       title: Decompose pseudotree
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Graph/GraphUtils/strongly_connected_components.cpp
       title: Strongly connected components
     - icon: ':x:'
@@ -690,35 +690,35 @@ data:
       title: Two edge connected components
   - name: Mylib/Graph/Matching
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/Matching/bipartite_matching.cpp
       title: Maximum bipartite matching
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Graph/Matching/hopcroft_karp.cpp
       title: Hopcroft-Karp algorithm
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/Matching/weighted_bipartite_matching.cpp
       title: Weighted maximum bipartite matching
   - name: Mylib/Graph/MinimumSpanningTree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/MinimumSpanningTree/boruvka.cpp
       title: "Bor\u016Fvka algorithm"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
       title: Chu-Liu/Edmonds algorithm
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Graph/MinimumSpanningTree/kruskal.cpp
       title: Kruskal algorithm
     - icon: ':x:'
       path: Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp
       title: Manhattan distance MST
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/MinimumSpanningTree/prim.cpp
       title: Prim algorithm
   - name: Mylib/Graph/ShortestPath
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/ShortestPath/bellman_ford.cpp
       title: Bellman-Ford algorithm
     - icon: ':warning:'
@@ -733,10 +733,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Graph/ShortestPath/dijkstra.cpp
       title: Dijkstra algorithm
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/ShortestPath/spfa.cpp
       title: SPFA
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/ShortestPath/warshall_floyd.cpp
       title: Warshall-Floyd algorithm
     - icon: ':heavy_check_mark:'
@@ -784,10 +784,10 @@ data:
     - icon: ':question:'
       path: Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp
       title: Heavy-light decomposition
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Graph/TreeUtils/lca_doubling.cpp
       title: Lowest common ancestor (Doubling)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/TreeUtils/lca_hld.cpp
       title: Lowest common ancestor (HLD)
     - icon: ':question:'
@@ -796,13 +796,13 @@ data:
     - icon: ':warning:'
       path: Mylib/Graph/TreeUtils/rooting.cpp
       title: Rooting
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Graph/TreeUtils/tree_diameter.cpp
       title: Tree diameter
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Graph/TreeUtils/tree_distance.cpp
       title: Tree distance
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/TreeUtils/tree_height.cpp
       title: Tree height
   - name: Mylib/Graph
@@ -908,6 +908,9 @@ data:
     - icon: ':x:'
       path: Mylib/Math/formal_power_series.cpp
       title: Formal power series
+    - icon: ':warning:'
+      path: Mylib/Math/polynomial.cpp
+      title: Polynomial
     - icon: ':x:'
       path: Mylib/Math/polynomial_taylor_shift.cpp
       title: Polynomial taylor shift
@@ -917,7 +920,7 @@ data:
     - icon: ':x:'
       path: Mylib/Math/sum_of_floor_of_linear.cpp
       title: Sum of floor of linear
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Math/unbounded.cpp
       title: Number with infinity
   - name: Mylib/Misc
@@ -947,6 +950,9 @@ data:
       path: Mylib/Misc/unzip.cpp
       title: Unzip function
     - icon: ':warning:'
+      path: Mylib/Misc/wrapped_set.cpp
+      title: Mylib/Misc/wrapped_set.cpp
+    - icon: ':warning:'
       path: Mylib/Misc/xor_shift.cpp
       title: Xorshift
     - icon: ':warning:'
@@ -957,7 +963,7 @@ data:
     - icon: ':warning:'
       path: Mylib/Number/Divisor/count_divisors.cpp
       title: Count divisors
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Number/Divisor/enumerate_divisors.cpp
       title: Enumerate divisors
   - name: Mylib/Number/Mint
@@ -993,7 +999,7 @@ data:
     - icon: ':x:'
       path: Mylib/Number/Prime/atkin_sieve.cpp
       title: Sieve of Atkin
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Number/Prime/count_coprime.cpp
       title: Count coprime
     - icon: ':x:'
@@ -1011,7 +1017,7 @@ data:
     - icon: ':x:'
       path: Mylib/Number/Prime/pollard_rho.cpp
       title: Prime factorization (Pollard's rho algorithm)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Number/Prime/prime_factorize.cpp
       title: Prime factorization
     - icon: ':warning:'
@@ -1030,19 +1036,19 @@ data:
       title: Stern-Brocot tree
   - name: Mylib/Number
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Number/binary_gcd.cpp
       title: Binary GCD
     - icon: ':x:'
       path: Mylib/Number/chinese_remainder_algorithm.cpp
       title: Chinese remainder theorem
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Number/euler_totient_function.cpp
       title: Euler's totient function
     - icon: ':warning:'
       path: Mylib/Number/euler_totient_function_table.cpp
       title: Euler's totient function (Enumerate)
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Number/extended_gcd.cpp
       title: Extended Euclidean algorithm
     - icon: ':warning:'
@@ -1772,142 +1778,142 @@ data:
       title: test/aoj/GRL_1_A/main.test.cpp
   - name: test/aoj/GRL_1_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_1_B/main.spfa.test.cpp
       title: test/aoj/GRL_1_B/main.spfa.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_1_B/main.test.cpp
       title: test/aoj/GRL_1_B/main.test.cpp
   - name: test/aoj/GRL_1_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_1_C/main.test.cpp
       title: test/aoj/GRL_1_C/main.test.cpp
   - name: test/aoj/GRL_2_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_2_A/main.boruvka.test.cpp
       title: test/aoj/GRL_2_A/main.boruvka.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_2_A/main.kruskal.test.cpp
       title: test/aoj/GRL_2_A/main.kruskal.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_2_A/main.prim.test.cpp
       title: test/aoj/GRL_2_A/main.prim.test.cpp
   - name: test/aoj/GRL_2_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_2_B/main.test.cpp
       title: test/aoj/GRL_2_B/main.test.cpp
   - name: test/aoj/GRL_3_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_3_A/main.test.cpp
       title: test/aoj/GRL_3_A/main.test.cpp
   - name: test/aoj/GRL_3_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_3_B/main.test.cpp
       title: test/aoj/GRL_3_B/main.test.cpp
   - name: test/aoj/GRL_3_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_3_C/main.test.cpp
       title: test/aoj/GRL_3_C/main.test.cpp
   - name: test/aoj/GRL_5_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_5_A/main.test.cpp
       title: test/aoj/GRL_5_A/main.test.cpp
   - name: test/aoj/GRL_5_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_5_B/main.test.cpp
       title: test/aoj/GRL_5_B/main.test.cpp
   - name: test/aoj/GRL_5_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_5_C/main.doubling.test.cpp
       title: test/aoj/GRL_5_C/main.doubling.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_5_C/main.hld.test.cpp
       title: test/aoj/GRL_5_C/main.hld.test.cpp
   - name: test/aoj/GRL_6_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_6_A/main.dinic.test.cpp
       title: test/aoj/GRL_6_A/main.dinic.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp
       title: test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_6_A/main.push_relabel.test.cpp
       title: test/aoj/GRL_6_A/main.push_relabel.test.cpp
   - name: test/aoj/GRL_6_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_6_B/main.test.cpp
       title: test/aoj/GRL_6_B/main.test.cpp
   - name: test/aoj/GRL_7_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp
       title: test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/GRL_7_A/main.test.cpp
       title: test/aoj/GRL_7_A/main.test.cpp
   - name: test/aoj/ITP1_3_D
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ITP1_3_D/main.test.cpp
       title: test/aoj/ITP1_3_D/main.test.cpp
   - name: test/aoj/ITP2_11_B
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ITP2_11_B/main.asc.test.cpp
       title: test/aoj/ITP2_11_B/main.asc.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ITP2_11_B/main.desc.test.cpp
       title: test/aoj/ITP2_11_B/main.desc.test.cpp
   - name: test/aoj/ITP2_11_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ITP2_11_C/main.asc.test.cpp
       title: test/aoj/ITP2_11_C/main.asc.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ITP2_11_C/main.desc.test.cpp
       title: test/aoj/ITP2_11_C/main.desc.test.cpp
   - name: test/aoj/ITP2_11_D
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/ITP2_11_D/main.test.cpp
       title: test/aoj/ITP2_11_D/main.test.cpp
   - name: test/aoj/NTL_1_A
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/NTL_1_A/main.test.cpp
       title: test/aoj/NTL_1_A/main.test.cpp
   - name: test/aoj/NTL_1_C
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/NTL_1_C/main.test.cpp
       title: test/aoj/NTL_1_C/main.test.cpp
   - name: test/aoj/NTL_1_D
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/NTL_1_D/main.test.cpp
       title: test/aoj/NTL_1_D/main.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/NTL_1_D/main.totient.test.cpp
       title: test/aoj/NTL_1_D/main.totient.test.cpp
   - name: test/aoj/NTL_1_E
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/NTL_1_E/main.test.cpp
       title: test/aoj/NTL_1_E/main.test.cpp
   - name: test/yosupo-judge/assignment
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/assignment/main.test.cpp
       title: test/yosupo-judge/assignment/main.test.cpp
   - name: test/yosupo-judge/bernoulli_number

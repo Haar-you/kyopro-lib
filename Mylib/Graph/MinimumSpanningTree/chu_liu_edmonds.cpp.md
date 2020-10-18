@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Graph/GraphUtils/strongly_connected_components.cpp
     title: Strongly connected components
   - icon: ':question:'
@@ -9,11 +9,11 @@ data:
     title: Basic graph
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_2_B/main.test.cpp
     title: test/aoj/GRL_2_B/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp\"\n\
@@ -129,7 +129,7 @@ data:
   path: Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
   requiredBy: []
   timestamp: '2020-09-21 06:13:54+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/GRL_2_B/main.test.cpp
 documentation_of: Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp

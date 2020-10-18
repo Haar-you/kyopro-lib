@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/ITP2_11_B/main.desc.test.cpp
     title: test/aoj/ITP2_11_B/main.desc.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Bit/enumerate_supersets_desc.cpp\"\n\nnamespace haar_lib\
@@ -24,7 +24,7 @@ data:
   path: Mylib/Bit/enumerate_supersets_desc.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/ITP2_11_B/main.desc.test.cpp
 documentation_of: Mylib/Bit/enumerate_supersets_desc.cpp

@@ -178,7 +178,7 @@ data:
     \ ...}) == N);\n    std::vector<int> ord(N);\n    std::iota(ord.begin(), ord.end(),\
     \ 0);\n    std::sort(ord.begin(), ord.end(), compare);\n\n    (void)std::initializer_list<int>{\n\
     \      (void(sort_simultaneously_impl::sub(N, ord, args)), 0) ...};\n  }\n}\n\
-    #line 3 \"Mylib/DataStructure/SegmentTree/lazy_segment_tree_with_coefficients.cpp\"\
+    #line 4 \"Mylib/DataStructure/SegmentTree/lazy_segment_tree_with_coefficients.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  class lazy_segment_tree_with_coefficients\
     \ {\n  public:\n    using value_type = T;\n\n  private:\n    int depth_, size_,\
     \ hsize_;\n    std::vector<T> data_, lazy_, coeff_;\n\n    void propagate(int\
@@ -200,27 +200,29 @@ data:
     \    coeff_(size_, 0)\n    {\n      for(int i = hsize_; i < size_; ++i) coeff_[i]\
     \ = coeff[i - hsize_];\n      for(int i = hsize_; --i >= 1;) coeff_[i] = coeff_[i\
     \ << 1 | 0] + coeff_[i << 1 | 1];\n    }\n\n    void update(int l, int r, const\
-    \ T &x){update(1, 0, hsize_, l, r, x);}\n    void update(int i, const T &x){update(i,\
-    \ i + 1, x);}\n    T fold(int l, int r){return get(1, 0, hsize_, l, r);}\n   \
-    \ T operator[](int i){return fold(i, i + 1);}\n\n    void init(const T &val){\n\
-    \      init_with_vector(std::vector<T>(hsize_, val));\n    }\n\n    void init_with_vector(const\
-    \ std::vector<T> &val){\n      data_.assign(size_, 0);\n      lazy_.assign(size_,\
-    \ 0);\n      for(int i = 0; i < (int)val.size(); ++i) data_[hsize_ + i] = val[i];\n\
-    \      for(int i = hsize_; --i >= 0;) data_[i] = data_[i << 1 | 0] + data_[i <<\
-    \ 1 | 1];\n    }\n  };\n}\n#line 11 \"test/yukicoder/235/main.test.cpp\"\n\nnamespace\
-    \ hl = haar_lib;\n\nusing mint = hl::modint<1000000007>;\n\nint main(){\n  std::cin.tie(0);\n\
-    \  std::ios::sync_with_stdio(false);\n\n  int N; std::cin >> N;\n  auto S = hl::input_vector<mint>(N);\n\
-    \  auto C = hl::input_vector<mint>(N);\n\n  hl::tree<int> tr(N);\n  tr.read<1,\
-    \ false, false>(N - 1);\n\n  auto hld = hl::hl_decomposition(tr, 0);\n\n  hl::sort_simultaneously(\n\
-    \    [&](int i, int j){return hld.get_id(i) < hld.get_id(j);},\n    S, C\n  );\n\
-    \n  auto seg = hl::lazy_segment_tree_with_coefficients<mint>(N, C);\n  seg.init_with_vector(S);\n\
-    \n  int Q; std::cin >> Q;\n\n  for(auto [type] : hl::input_tuples<int>(Q)){\n\
-    \    if(type == 0){\n      int X, Y, Z; std::cin >> X >> Y >> Z;\n      --X, --Y;\n\
-    \      for(auto [l, r, d] : hld.path_query_vertex(X, Y)){\n        seg.update(l,\
-    \ r, Z);\n      }\n    }else{\n      int X, Y; std::cin >> X >> Y;\n      --X,\
-    \ --Y;\n      mint ans = 0;\n      for(auto [l, r, d] : hld.path_query_vertex(X,\
-    \ Y)){\n        ans += seg.fold(l, r);\n      }\n      std::cout << ans << \"\\\
-    n\";\n    }\n  }\n}\n"
+    \ T &x){\n      assert(0 <= l and l <= r and r <= hsize_);\n      update(1, 0,\
+    \ hsize_, l, r, x);\n    }\n    void update(int i, const T &x){update(i, i + 1,\
+    \ x);}\n\n    T fold(int l, int r){\n      assert(0 <= l and l <= r and r <= hsize_);\n\
+    \      return get(1, 0, hsize_, l, r);\n    }\n    T fold_all(){return fold(0,\
+    \ hsize_);}\n    T operator[](int i){return fold(i, i + 1);}\n\n    void init(const\
+    \ T &val){\n      init_with_vector(std::vector<T>(hsize_, val));\n    }\n\n  \
+    \  void init_with_vector(const std::vector<T> &val){\n      data_.assign(size_,\
+    \ 0);\n      lazy_.assign(size_, 0);\n      for(int i = 0; i < (int)val.size();\
+    \ ++i) data_[hsize_ + i] = val[i];\n      for(int i = hsize_; --i >= 0;) data_[i]\
+    \ = data_[i << 1 | 0] + data_[i << 1 | 1];\n    }\n  };\n}\n#line 11 \"test/yukicoder/235/main.test.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\nusing mint = hl::modint<1000000007>;\n\nint main(){\n\
+    \  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int N; std::cin\
+    \ >> N;\n  auto S = hl::input_vector<mint>(N);\n  auto C = hl::input_vector<mint>(N);\n\
+    \n  hl::tree<int> tr(N);\n  tr.read<1, false, false>(N - 1);\n\n  auto hld = hl::hl_decomposition(tr,\
+    \ 0);\n\n  hl::sort_simultaneously(\n    [&](int i, int j){return hld.get_id(i)\
+    \ < hld.get_id(j);},\n    S, C\n  );\n\n  auto seg = hl::lazy_segment_tree_with_coefficients<mint>(N,\
+    \ C);\n  seg.init_with_vector(S);\n\n  int Q; std::cin >> Q;\n\n  for(auto [type]\
+    \ : hl::input_tuples<int>(Q)){\n    if(type == 0){\n      int X, Y, Z; std::cin\
+    \ >> X >> Y >> Z;\n      --X, --Y;\n      for(auto [l, r, d] : hld.path_query_vertex(X,\
+    \ Y)){\n        seg.update(l, r, Z);\n      }\n    }else{\n      int X, Y; std::cin\
+    \ >> X >> Y;\n      --X, --Y;\n      mint ans = 0;\n      for(auto [l, r, d] :\
+    \ hld.path_query_vertex(X, Y)){\n        ans += seg.fold(l, r);\n      }\n   \
+    \   std::cout << ans << \"\\n\";\n    }\n  }\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/235\"\n\n#include <iostream>\n\
     #include \"Mylib/IO/input_vector.cpp\"\n#include \"Mylib/IO/input_tuples.cpp\"\
     \n#include \"Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/Graph/Template/graph.cpp\"\
@@ -251,7 +253,7 @@ data:
   isVerificationFile: true
   path: test/yukicoder/235/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-10 11:12:55+09:00'
+  timestamp: '2020-10-15 01:51:15+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/235/main.test.cpp

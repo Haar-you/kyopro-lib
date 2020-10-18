@@ -147,35 +147,37 @@ data:
     \        if(head_[u] == head_[v]) return u;\n        v = par_[head_[v]];\n   \
     \   }\n    }\n\n    int get_id(int x) const {\n      return id_[x];\n    }\n \
     \ };\n}\n#line 3 \"Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename Monoid>\n  class segment_tree_both_foldable\
-    \ {\n  public:\n    using value_type = typename Monoid::value_type;\n\n  private:\n\
-    \    Monoid M_;\n    int depth_, size_, hsize_;\n    std::vector<value_type> data_left_,\
-    \ data_right_;\n\n  public:\n    segment_tree_both_foldable(){}\n    segment_tree_both_foldable(int\
-    \ n):\n      depth_(n > 1 ? 32 - __builtin_clz(n - 1) + 1 : 1),\n      size_(1\
-    \ << depth_),\n      hsize_(size_ / 2),\n      data_left_(size_, M_()),\n    \
-    \  data_right_(size_, M_())\n    {}\n\n    auto operator[](int i) const {return\
-    \ data_left_[hsize_ + i];}\n\n    auto fold_left(int x, int y) const {\n     \
-    \ value_type ret_left = M_();\n      value_type ret_right = M_();\n\n      int\
-    \ l = x + hsize_, r = y + hsize_;\n      while(l < r){\n        if(r & 1) ret_right\
-    \ = M_(data_left_[--r], ret_right);\n        if(l & 1) ret_left = M_(ret_left,\
-    \ data_left_[l++]);\n        l >>= 1, r >>= 1;\n      }\n\n      return M_(ret_left,\
-    \ ret_right);\n    }\n\n    auto fold_right(int x, int y) const {\n      value_type\
-    \ ret_left = M_();\n      value_type ret_right = M_();\n\n      int l = x + hsize_,\
-    \ r = y + hsize_;\n      while(l < r){\n        if(r & 1) ret_right = M_(ret_right,\
+    \n#include <cassert>\n\nnamespace haar_lib {\n  template <typename Monoid>\n \
+    \ class segment_tree_both_foldable {\n  public:\n    using value_type = typename\
+    \ Monoid::value_type;\n\n  private:\n    Monoid M_;\n    int depth_, size_, hsize_;\n\
+    \    std::vector<value_type> data_left_, data_right_;\n\n  public:\n    segment_tree_both_foldable(){}\n\
+    \    segment_tree_both_foldable(int n):\n      depth_(n > 1 ? 32 - __builtin_clz(n\
+    \ - 1) + 1 : 1),\n      size_(1 << depth_),\n      hsize_(size_ / 2),\n      data_left_(size_,\
+    \ M_()),\n      data_right_(size_, M_())\n    {}\n\n    auto operator[](int i)\
+    \ const {\n      assert(0 <= i and i < hsize_);\n      return data_left_[hsize_\
+    \ + i];\n    }\n\n    auto fold_left(int l, int r) const {\n      assert(0 <=\
+    \ l and l <= r and r <= hsize_);\n      value_type ret_left = M_();\n      value_type\
+    \ ret_right = M_();\n\n      l += hsize_, r += hsize_;\n      while(l < r){\n\
+    \        if(r & 1) ret_right = M_(data_left_[--r], ret_right);\n        if(l &\
+    \ 1) ret_left = M_(ret_left, data_left_[l++]);\n        l >>= 1, r >>= 1;\n  \
+    \    }\n\n      return M_(ret_left, ret_right);\n    }\n\n    auto fold_right(int\
+    \ l, int r) const {\n      assert(0 <= l and l <= r and r <= hsize_);\n      value_type\
+    \ ret_left = M_();\n      value_type ret_right = M_();\n\n      l += hsize_, r\
+    \ += hsize_;\n      while(l < r){\n        if(r & 1) ret_right = M_(ret_right,\
     \ data_right_[--r]);\n        if(l & 1) ret_left = M_(data_right_[l++], ret_left);\n\
     \        l >>= 1, r >>= 1;\n      }\n\n      return M_(ret_right, ret_left);\n\
-    \    }\n\n    void set(int i, const value_type &x){\n      i += hsize_;\n    \
-    \  data_left_[i] = data_right_[i] = x;\n      while(i > 1){\n        i >>= 1;\n\
-    \        data_left_[i] = M_(data_left_[i << 1 | 0], data_left_[i << 1 | 1]);\n\
-    \        data_right_[i] = M_(data_right_[i << 1 | 1], data_right_[i << 1 | 0]);\n\
-    \      }\n    }\n\n    template <typename T>\n    void init_with_vector(const\
-    \ std::vector<T> &val){\n      data_left_.assign(size_, M_());\n      data_right_.assign(size_,\
-    \ M_());\n\n      for(int i = 0; i < (int)val.size(); ++i){\n        data_left_[hsize_\
-    \ + i] = val[i];\n        data_right_[hsize_ + i] = val[i];\n      }\n      for(int\
-    \ i = hsize_; --i >= 1;){\n        data_left_[i] = M_(data_left_[i << 1 | 0],\
-    \ data_left_[i << 1 | 1]);\n        data_right_[i] = M_(data_right_[i << 1 | 1],\
-    \ data_right_[i << 1 | 0]);\n      }\n    }\n\n    template <typename T>\n   \
-    \ void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize_,\
+    \    }\n\n    void set(int i, const value_type &x){\n      assert(0 <= i and i\
+    \ < hsize_);\n      i += hsize_;\n      data_left_[i] = data_right_[i] = x;\n\
+    \      while(i > 1){\n        i >>= 1;\n        data_left_[i] = M_(data_left_[i\
+    \ << 1 | 0], data_left_[i << 1 | 1]);\n        data_right_[i] = M_(data_right_[i\
+    \ << 1 | 1], data_right_[i << 1 | 0]);\n      }\n    }\n\n    template <typename\
+    \ T>\n    void init_with_vector(const std::vector<T> &val){\n      data_left_.assign(size_,\
+    \ M_());\n      data_right_.assign(size_, M_());\n\n      for(int i = 0; i < (int)val.size();\
+    \ ++i){\n        data_left_[hsize_ + i] = val[i];\n        data_right_[hsize_\
+    \ + i] = val[i];\n      }\n      for(int i = hsize_; --i >= 1;){\n        data_left_[i]\
+    \ = M_(data_left_[i << 1 | 0], data_left_[i << 1 | 1]);\n        data_right_[i]\
+    \ = M_(data_right_[i << 1 | 1], data_right_[i << 1 | 0]);\n      }\n    }\n\n\
+    \    template <typename T>\n    void init(const T &val){\n      init_with_vector(std::vector<value_type>(hsize_,\
     \ val));\n    }\n  };\n}\n#line 3 \"Mylib/AlgebraicStructure/Monoid/affine.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  struct affine_monoid {\n\
     \    using value_type = std::pair<T, T>;\n    value_type operator()() const {return\
@@ -259,7 +261,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-30 07:57:28+09:00'
+  timestamp: '2020-10-15 01:51:15+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/vertex_set_path_composite/main.test.cpp

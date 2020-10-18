@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Flow/ford_fulkerson.cpp
     title: Ford-Fulkerson algorithm
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Matching/bipartite_matching.cpp
     title: Maximum bipartite matching
   - icon: ':question:'
@@ -16,7 +16,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_7_A
@@ -102,7 +102,7 @@ data:
   path: test/aoj/GRL_7_A/main.test.cpp
   requiredBy: []
   timestamp: '2020-10-10 11:12:55+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/GRL_7_A/main.test.cpp
 layout: document

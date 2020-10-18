@@ -150,31 +150,31 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_5_B/main.test.cpp
     title: test/aoj/DSL_5_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_3_C/main.test.cpp
     title: test/aoj/GRL_3_C/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_5_C/main.doubling.test.cpp
     title: test/aoj/GRL_5_C/main.doubling.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_5_C/main.hld.test.cpp
     title: test/aoj/GRL_5_C/main.hld.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_6_A/main.dinic.test.cpp
     title: test/aoj/GRL_6_A/main.dinic.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp
     title: test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_6_A/main.push_relabel.test.cpp
     title: test/aoj/GRL_6_A/main.push_relabel.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_6_B/main.test.cpp
     title: test/aoj/GRL_6_B/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp
     title: test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_7_A/main.test.cpp
     title: test/aoj/GRL_7_A/main.test.cpp
   - icon: ':x:'
