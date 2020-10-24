@@ -34,8 +34,8 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yukicoder/631/main.test.cpp
   - test/yukicoder/1030/main.test.cpp
+  - test/yukicoder/631/main.test.cpp
   - test/aoj/3035/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Monoid/max.cpp
 layout: document

@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: Mylib/LinearAlgebra/Square/square_matrix.cpp
     title: Square matrix
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mint/runtime_mint.cpp
     title: Modint (Runtime mod)
   _extendedRequiredBy: []

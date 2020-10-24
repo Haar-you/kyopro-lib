@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Coloring/chromatic_number.cpp
     title: Graph vertex coloring
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_log.cpp
     title: Mod logarithm
   - icon: ':x:'
@@ -18,7 +18,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2530/main.test.cpp
     title: test/aoj/2530/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
     title: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
   - icon: ':x:'
@@ -43,17 +43,17 @@ data:
   isVerificationFile: false
   path: Mylib/Number/Mod/mod_pow.cpp
   requiredBy:
-  - Mylib/Graph/Coloring/chromatic_number.cpp
-  - Mylib/Number/Mod/mod_log.cpp
   - Mylib/Number/Mod/mod_sqrt.cpp
+  - Mylib/Number/Mod/mod_log.cpp
+  - Mylib/Graph/Coloring/chromatic_number.cpp
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/sqrt_mod/main.test.cpp
-  - test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
-  - test/aoj/2530/main.test.cpp
   - test/aoj/2136/main.test.cpp
+  - test/aoj/2530/main.test.cpp
+  - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
+  - test/yosupo-judge/sqrt_mod/main.test.cpp
 documentation_of: Mylib/Number/Mod/mod_pow.cpp
 layout: document
 title: Mod pow

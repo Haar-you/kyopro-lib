@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
     title: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Mint/montgomery.cpp\"\n#include <iostream>\n\
@@ -107,7 +107,7 @@ data:
   path: Mylib/Number/Mint/montgomery.cpp
   requiredBy: []
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
 documentation_of: Mylib/Number/Mint/montgomery.cpp

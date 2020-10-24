@@ -3,22 +3,22 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/bernoulli_number/main.test.cpp
     title: test/yosupo-judge/bernoulli_number/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
     title: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/log_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/log_of_formal_power_series/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/partition_function/main.fps.test.cpp
     title: test/yosupo-judge/partition_function/main.fps.test.cpp
   - icon: ':x:'
@@ -31,7 +31,7 @@ data:
     path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Math/formal_power_series.cpp\"\n#include <functional>\n\
@@ -195,16 +195,16 @@ data:
   path: Mylib/Math/formal_power_series.cpp
   requiredBy: []
   timestamp: '2020-10-10 16:27:01+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo-judge/bernoulli_number/main.test.cpp
-  - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/partition_function/main.fps.test.cpp
+  - test/yosupo-judge/bernoulli_number/main.test.cpp
   - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
+  - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/log_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
+  - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
 documentation_of: Mylib/Math/formal_power_series.cpp
 layout: document

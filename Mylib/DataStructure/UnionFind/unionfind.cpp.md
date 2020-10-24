@@ -8,7 +8,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/MinimumSpanningTree/boruvka.cpp
     title: "Bor\u016Fvka algorithm"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/MinimumSpanningTree/kruskal.cpp
     title: Kruskal algorithm
   _extendedVerifiedWith:
@@ -27,7 +27,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_2_A/main.kruskal.test.cpp
     title: test/aoj/GRL_2_A/main.kruskal.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/manhattanmst/main.test.cpp
     title: test/yosupo-judge/manhattanmst/main.test.cpp
   - icon: ':x:'
@@ -87,13 +87,13 @@ data:
   timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo-judge/manhattanmst/main.test.cpp
-  - test/yosupo-judge/unionfind/main.test.cpp
   - test/aoj/0575/main.test.cpp
-  - test/aoj/GRL_2_A/main.boruvka.test.cpp
   - test/aoj/GRL_2_A/main.kruskal.test.cpp
+  - test/aoj/GRL_2_A/main.boruvka.test.cpp
   - test/aoj/1337/main.test.cpp
   - test/aoj/2955/main.test.cpp
+  - test/yosupo-judge/unionfind/main.test.cpp
+  - test/yosupo-judge/manhattanmst/main.test.cpp
 documentation_of: Mylib/DataStructure/UnionFind/unionfind.cpp
 layout: document
 title: Union-find

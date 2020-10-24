@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: Mylib/Combinatorics/stirling_number_second_fft.cpp
     title: Stirling numbers of the second kind (FFT)
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
   - icon: ':question:'

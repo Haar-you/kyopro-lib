@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Misc/int128.cpp
     title: 128-bit int
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Prime/miller_rabin.cpp
     title: Primality test (Miller-Rabin algorithm)
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/factorize/main.test.cpp
     title: test/yosupo-judge/factorize/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Prime/pollard_rho.cpp\"\n#include <optional>\n\
@@ -79,7 +79,7 @@ data:
   path: Mylib/Number/Prime/pollard_rho.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/factorize/main.test.cpp
 documentation_of: Mylib/Number/Prime/pollard_rho.cpp

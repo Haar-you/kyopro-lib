@@ -177,31 +177,31 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_7_A/main.test.cpp
     title: test/aoj/GRL_7_A/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/bipartitematching/main.test.cpp
     title: test/yosupo-judge/bipartitematching/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
     title: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
     title: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/factorize/main.test.cpp
     title: test/yosupo-judge/factorize/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/kth_root_integer/main.test.cpp
     title: test/yosupo-judge/kth_root_integer/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/line_add_get_min/main.dynamic.test.cpp
     title: test/yosupo-judge/line_add_get_min/main.dynamic.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/line_add_get_min/main.test.cpp
     title: test/yosupo-judge/line_add_get_min/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/maximum_independent_set/main.test.cpp
     title: test/yosupo-judge/maximum_independent_set/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/persistent_queue/main.test.cpp
     title: test/yosupo-judge/persistent_queue/main.test.cpp
   - icon: ':x:'
@@ -370,112 +370,112 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yukicoder/1069/main.test.cpp
-  - test/yukicoder/658/main.test.cpp
-  - test/yukicoder/117/main.test.cpp
-  - test/yukicoder/1099/main.test.cpp
-  - test/yukicoder/631/main.test.cpp
-  - test/yukicoder/631/main.starry_sky.test.cpp
-  - test/yukicoder/1030/main.test.cpp
   - test/yukicoder/3030/main.test.cpp
+  - test/yukicoder/776/main.test.cpp
   - test/yukicoder/922/main.test.cpp
+  - test/yukicoder/1099/main.test.cpp
+  - test/yukicoder/899/main.test.cpp
+  - test/yukicoder/789/main.test.cpp
+  - test/yukicoder/1069/main.test.cpp
+  - test/yukicoder/235/main.test.cpp
+  - test/yukicoder/658/main.test.cpp
+  - test/yukicoder/1030/main.test.cpp
+  - test/yukicoder/631/main.starry_sky.test.cpp
+  - test/yukicoder/631/main.test.cpp
+  - test/yukicoder/782/main.test.cpp
   - test/yukicoder/510/main.test.cpp
   - test/yukicoder/755/main.test.cpp
-  - test/yukicoder/899/main.test.cpp
-  - test/yukicoder/776/main.test.cpp
+  - test/yukicoder/117/main.test.cpp
   - test/yukicoder/875/main.test.cpp
-  - test/yukicoder/782/main.test.cpp
-  - test/yukicoder/235/main.test.cpp
-  - test/yukicoder/789/main.test.cpp
-  - test/yosupo-judge/queue_operate_all_composite/main.test.cpp
-  - test/yosupo-judge/static_range_sum/main.test.cpp
-  - test/yosupo-judge/vertex_add_path_sum/main.test.cpp
-  - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
-  - test/yosupo-judge/unionfind/main.test.cpp
-  - test/yosupo-judge/line_add_get_min/main.test.cpp
-  - test/yosupo-judge/line_add_get_min/main.dynamic.test.cpp
-  - test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
-  - test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
-  - test/yosupo-judge/sum_of_floor_of_linear/main.test.cpp
-  - test/yosupo-judge/set_xor_min/main.test.cpp
-  - test/yosupo-judge/tetration_mod/main.test.cpp
-  - test/yosupo-judge/range_kth_smallest/main.test.cpp
-  - test/yosupo-judge/two_sat/main.test.cpp
-  - test/yosupo-judge/persistent_queue/main.test.cpp
-  - test/yosupo-judge/sqrt_mod/main.test.cpp
-  - test/yosupo-judge/kth_root_integer/main.test.cpp
-  - test/yosupo-judge/maximum_independent_set/main.test.cpp
-  - test/yosupo-judge/static_range_inversions_query/main.test.cpp
-  - test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
-  - test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
-  - test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp
-  - test/yosupo-judge/segment_add_get_min/main.test.cpp
-  - test/yosupo-judge/segment_add_get_min/main.dynamic.test.cpp
-  - test/yosupo-judge/factorize/main.test.cpp
-  - test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
-  - test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
-  - test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
-  - test/yosupo-judge/point_set_range_composite/main.test.cpp
-  - test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp
-  - test/yosupo-judge/range_affine_range_sum/main.test.cpp
-  - test/yosupo-judge/bipartitematching/main.test.cpp
-  - test/aoj/DSL_1_B/main.test.cpp
-  - test/aoj/0425/main.test.cpp
-  - test/aoj/3035/main.test.cpp
-  - test/aoj/GRL_3_C/main.test.cpp
-  - test/aoj/2444/main.test.cpp
-  - test/aoj/GRL_7_A/main.test.cpp
-  - test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp
-  - test/aoj/CGL_2_D/main.test.cpp
-  - test/aoj/0390/main.test.cpp
-  - test/aoj/ALDS1_14_D/main.test.cpp
-  - test/aoj/CGL_3_C/main.test.cpp
-  - test/aoj/GRL_5_C/main.hld.test.cpp
-  - test/aoj/GRL_5_C/main.doubling.test.cpp
-  - test/aoj/2426/main.test.cpp
-  - test/aoj/1549/main.test.cpp
-  - test/aoj/CGL_1_A/main.test.cpp
-  - test/aoj/CGL_2_A/main.test.cpp
-  - test/aoj/2667/main.test.cpp
-  - test/aoj/CGL_2_B/main.test.cpp
-  - test/aoj/2842/main.segment_tree.test.cpp
-  - test/aoj/2842/main.fenwick_tree.test.cpp
-  - test/aoj/DSL_2_A/main.test.cpp
-  - test/aoj/2674/main.test.cpp
-  - test/aoj/DSL_2_E/main.test.cpp
-  - test/aoj/DSL_2_E/main.dynamic.test.cpp
-  - test/aoj/DSL_2_I/main.test.cpp
-  - test/aoj/CGL_4_C/main.test.cpp
-  - test/aoj/CGL_1_B/main.test.cpp
-  - test/aoj/GRL_6_B/main.test.cpp
-  - test/aoj/3118/main.test.cpp
-  - test/aoj/DSL_5_B/main.test.cpp
-  - test/aoj/ALDS1_10_C/main.test.cpp
-  - test/aoj/DSL_2_C/main.test.cpp
-  - test/aoj/3132/main.test.cpp
-  - test/aoj/CGL_7_D/main.test.cpp
-  - test/aoj/2891/main.test.cpp
-  - test/aoj/3058/main.test.cpp
   - test/aoj/0502/main.test.cpp
-  - test/aoj/DSL_2_F/main.test.cpp
-  - test/aoj/DSL_2_F/main.dynamic.test.cpp
-  - test/aoj/DSL_2_H/main.test.cpp
-  - test/aoj/DSL_2_H/main.starry_sky.test.cpp
-  - test/aoj/DSL_2_B/main.test.cpp
+  - test/aoj/CGL_1_B/main.test.cpp
+  - test/aoj/1549/main.test.cpp
+  - test/aoj/DSL_2_A/main.test.cpp
+  - test/aoj/ALDS1_10_C/main.test.cpp
+  - test/aoj/3132/main.test.cpp
+  - test/aoj/ALDS1_14_D/main.test.cpp
   - test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
-  - test/aoj/DSL_2_G/main.test.cpp
-  - test/aoj/ALDS1_1_C/main.test.cpp
-  - test/aoj/CGL_1_C/main.test.cpp
-  - test/aoj/1508/main.splay_tree.test.cpp
-  - test/aoj/1508/main.treap.test.cpp
-  - test/aoj/DSL_5_A/main.test.cpp
+  - test/aoj/DSL_2_B/main.test.cpp
+  - test/aoj/DSL_2_I/main.test.cpp
+  - test/aoj/CGL_2_B/main.test.cpp
   - test/aoj/3165/main.test.cpp
   - test/aoj/3165/main.test.imos.cpp
+  - test/aoj/0390/main.test.cpp
+  - test/aoj/2842/main.fenwick_tree.test.cpp
+  - test/aoj/2842/main.segment_tree.test.cpp
+  - test/aoj/2674/main.test.cpp
+  - test/aoj/CGL_1_A/main.test.cpp
   - test/aoj/CGL_2_C/main.test.cpp
-  - test/aoj/GRL_6_A/main.dinic.test.cpp
+  - test/aoj/GRL_7_A/main.test.cpp
+  - test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp
+  - test/aoj/GRL_5_C/main.hld.test.cpp
+  - test/aoj/GRL_5_C/main.doubling.test.cpp
+  - test/aoj/DSL_5_B/main.test.cpp
+  - test/aoj/3058/main.test.cpp
+  - test/aoj/DSL_2_G/main.test.cpp
+  - test/aoj/DSL_2_E/main.test.cpp
+  - test/aoj/DSL_2_E/main.dynamic.test.cpp
+  - test/aoj/DSL_5_A/main.test.cpp
+  - test/aoj/2667/main.test.cpp
+  - test/aoj/2444/main.test.cpp
+  - test/aoj/3118/main.test.cpp
+  - test/aoj/0425/main.test.cpp
+  - test/aoj/GRL_6_B/main.test.cpp
+  - test/aoj/DSL_2_H/main.starry_sky.test.cpp
+  - test/aoj/DSL_2_H/main.test.cpp
+  - test/aoj/GRL_3_C/main.test.cpp
   - test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp
   - test/aoj/GRL_6_A/main.push_relabel.test.cpp
+  - test/aoj/GRL_6_A/main.dinic.test.cpp
+  - test/aoj/CGL_1_C/main.test.cpp
+  - test/aoj/CGL_7_D/main.test.cpp
+  - test/aoj/DSL_2_F/main.test.cpp
+  - test/aoj/DSL_2_F/main.dynamic.test.cpp
+  - test/aoj/CGL_3_C/main.test.cpp
+  - test/aoj/2426/main.test.cpp
+  - test/aoj/DSL_2_C/main.test.cpp
+  - test/aoj/DSL_1_B/main.test.cpp
+  - test/aoj/CGL_4_C/main.test.cpp
+  - test/aoj/ALDS1_1_C/main.test.cpp
+  - test/aoj/CGL_2_A/main.test.cpp
+  - test/aoj/CGL_2_D/main.test.cpp
+  - test/aoj/1508/main.splay_tree.test.cpp
+  - test/aoj/1508/main.treap.test.cpp
+  - test/aoj/3035/main.test.cpp
   - test/aoj/DSL_2_D/main.test.cpp
+  - test/aoj/2891/main.test.cpp
+  - test/yosupo-judge/line_add_get_min/main.test.cpp
+  - test/yosupo-judge/line_add_get_min/main.dynamic.test.cpp
+  - test/yosupo-judge/tetration_mod/main.test.cpp
+  - test/yosupo-judge/segment_add_get_min/main.test.cpp
+  - test/yosupo-judge/segment_add_get_min/main.dynamic.test.cpp
+  - test/yosupo-judge/unionfind/main.test.cpp
+  - test/yosupo-judge/two_sat/main.test.cpp
+  - test/yosupo-judge/persistent_queue/main.test.cpp
+  - test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp
+  - test/yosupo-judge/point_set_range_composite/main.test.cpp
+  - test/yosupo-judge/factorize/main.test.cpp
+  - test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
+  - test/yosupo-judge/static_range_inversions_query/main.test.cpp
+  - test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
+  - test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
+  - test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
+  - test/yosupo-judge/maximum_independent_set/main.test.cpp
+  - test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
+  - test/yosupo-judge/vertex_add_path_sum/main.test.cpp
+  - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+  - test/yosupo-judge/kth_root_integer/main.test.cpp
+  - test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
+  - test/yosupo-judge/static_range_sum/main.test.cpp
+  - test/yosupo-judge/sum_of_floor_of_linear/main.test.cpp
+  - test/yosupo-judge/range_kth_smallest/main.test.cpp
+  - test/yosupo-judge/queue_operate_all_composite/main.test.cpp
+  - test/yosupo-judge/range_affine_range_sum/main.test.cpp
+  - test/yosupo-judge/sqrt_mod/main.test.cpp
+  - test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
+  - test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp
+  - test/yosupo-judge/set_xor_min/main.test.cpp
+  - test/yosupo-judge/bipartitematching/main.test.cpp
 documentation_of: Mylib/IO/input_tuples.cpp
 layout: document
 title: Input tuples

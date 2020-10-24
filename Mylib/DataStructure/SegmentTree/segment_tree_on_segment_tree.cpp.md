@@ -141,8 +141,8 @@ data:
   timestamp: '2020-10-15 01:51:15+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
   - test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
+  - test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
 documentation_of: Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp
 layout: document
 title: Segment tree (On segment tree)

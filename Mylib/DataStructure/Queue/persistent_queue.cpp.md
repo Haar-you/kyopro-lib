@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/persistent_queue/main.test.cpp
     title: test/yosupo-judge/persistent_queue/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/DataStructure/Queue/persistent_queue.cpp\"\n#include\
@@ -79,7 +79,7 @@ data:
   path: Mylib/DataStructure/Queue/persistent_queue.cpp
   requiredBy: []
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/persistent_queue/main.test.cpp
 documentation_of: Mylib/DataStructure/Queue/persistent_queue.cpp

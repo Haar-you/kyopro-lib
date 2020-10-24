@@ -6,28 +6,28 @@ data:
     title: Modint
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/bernoulli_number/main.test.cpp
     title: test/yosupo-judge/bernoulli_number/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/convolution_mod/main.test.cpp
     title: test/yosupo-judge/convolution_mod/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
     title: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
     title: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/log_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/log_of_formal_power_series/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/partition_function/main.fps.test.cpp
     title: test/yosupo-judge/partition_function/main.fps.test.cpp
   - icon: ':x:'
@@ -49,7 +49,7 @@ data:
     path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Convolution/ntt_convolution.cpp\"\n#include <vector>\n\
@@ -196,22 +196,22 @@ data:
   path: Mylib/Convolution/ntt_convolution.cpp
   requiredBy: []
   timestamp: '2020-10-18 08:49:48+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo-judge/bernoulli_number/main.test.cpp
-  - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/partition_function/main.fps.test.cpp
+  - test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
+  - test/yosupo-judge/bernoulli_number/main.test.cpp
+  - test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
   - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
+  - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/log_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
-  - test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
   - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
-  - test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
-  - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/convolution_mod/main.test.cpp
+  - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
+  - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
 documentation_of: Mylib/Convolution/ntt_convolution.cpp
 layout: document
 title: Number theoretic transform

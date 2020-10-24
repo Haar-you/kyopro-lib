@@ -149,7 +149,7 @@ data:
       title: Xor-and semiring
   - name: Mylib/Algorithm/CartesianTree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Algorithm/CartesianTree/cartesian_tree.cpp
       title: Cartesian tree
   - name: Mylib/Algorithm/CumulativeSum
@@ -249,7 +249,7 @@ data:
     - icon: ':x:'
       path: Mylib/Combinatorics/bernoulli_number.cpp
       title: Bernoulli number
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Combinatorics/bernoulli_number_fps.cpp
       title: Bernoulli number (FPS)
     - icon: ':warning:'
@@ -261,16 +261,16 @@ data:
     - icon: ':question:'
       path: Mylib/Combinatorics/factorial_table.cpp
       title: Factorial table
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Combinatorics/montmort_number.cpp
       title: Montmort number
     - icon: ':heavy_check_mark:'
       path: Mylib/Combinatorics/partition_number.cpp
       title: Partition number (Enumerate $P(n, k)$)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Combinatorics/partition_number_fps.cpp
       title: Partition number (FPS)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Combinatorics/partition_number_n.cpp
       title: Partition number (Enumerate $P(n, n)$)
     - icon: ':warning:'
@@ -314,7 +314,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/fast_zeta_transform_superset.cpp
       title: Fast Zeta transform (Supersets)
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Convolution/ntt_convolution.cpp
       title: Number theoretic transform
   - name: Mylib/DataStructure/Array
@@ -341,10 +341,10 @@ data:
     - icon: ':warning:'
       path: Mylib/DataStructure/ConvexHullTrick/convex_hull_trick.cpp
       title: Convex hull trick
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/DataStructure/ConvexHullTrick/dynamic_lichao_segment_tree.cpp
       title: Dynamic LiChao segment tree
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp
       title: LiChao segment tree
   - name: Mylib/DataStructure/FenwickTree
@@ -380,12 +380,12 @@ data:
       title: Skew heap
   - name: Mylib/DataStructure/LinkCutTree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp
       title: Link/cut tree
   - name: Mylib/DataStructure/Queue
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/Queue/persistent_queue.cpp
       title: Persistent queue
     - icon: ':x:'
@@ -443,6 +443,11 @@ data:
     - icon: ':question:'
       path: Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp
       title: Starry-sky tree
+  - name: Mylib/DataStructure/Set
+    pages:
+    - icon: ':warning:'
+      path: Mylib/DataStructure/Set/integer_set.cpp
+      title: Integer set
   - name: Mylib/DataStructure/SparseTable
     pages:
     - icon: ':warning:'
@@ -626,7 +631,7 @@ data:
       title: Graph vertex coloring
   - name: Mylib/Graph/Cycle
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/Cycle/detect_cycle.cpp
       title: Detect cycle
     - icon: ':warning:'
@@ -693,7 +698,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Graph/Matching/bipartite_matching.cpp
       title: Maximum bipartite matching
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/Matching/hopcroft_karp.cpp
       title: Hopcroft-Karp algorithm
     - icon: ':heavy_check_mark:'
@@ -707,10 +712,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
       title: Chu-Liu/Edmonds algorithm
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/MinimumSpanningTree/kruskal.cpp
       title: Kruskal algorithm
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp
       title: Manhattan distance MST
     - icon: ':heavy_check_mark:'
@@ -810,13 +815,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Graph/chinese_postman_problem.cpp
       title: Chinese postman problem
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/enumerate_triangles.cpp
       title: Enumerate triangles
     - icon: ':warning:'
       path: Mylib/Graph/lsi.cpp
       title: Linear system incidence
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/maximum_independent_set.cpp
       title: Maximum independent set
     - icon: ':heavy_check_mark:'
@@ -888,7 +893,7 @@ data:
       title: Simultaneous linear equations
   - name: Mylib/LinearAlgebra/Square
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/LinearAlgebra/Square/determinant.cpp
       title: Determinant
     - icon: ':x:'
@@ -905,7 +910,7 @@ data:
     - icon: ':warning:'
       path: Mylib/Math/closed_interval.cpp
       title: Closed interval
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Math/formal_power_series.cpp
       title: Formal power series
     - icon: ':warning:'
@@ -931,7 +936,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Misc/dice.cpp
       title: Dice
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Misc/int128.cpp
       title: 128-bit int
     - icon: ':heavy_check_mark:'
@@ -974,18 +979,18 @@ data:
     - icon: ':warning:'
       path: Mylib/Number/Mint/mint_2.cpp
       title: Modint (mod 2)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Number/Mint/montgomery.cpp
       title: Montgomery multiplication
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Number/Mint/runtime_mint.cpp
       title: Modint (Runtime mod)
   - name: Mylib/Number/Mod
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Number/Mod/mod_inv.cpp
       title: Mod inverse
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Number/Mod/mod_log.cpp
       title: Mod logarithm
     - icon: ':question:'
@@ -1011,10 +1016,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Number/Prime/is_prime.cpp
       title: Primality test (Trial division)
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Number/Prime/miller_rabin.cpp
       title: Primality test (Miller-Rabin algorithm)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Number/Prime/pollard_rho.cpp
       title: Prime factorization (Pollard's rho algorithm)
     - icon: ':heavy_check_mark:'
@@ -1063,7 +1068,7 @@ data:
     - icon: ':warning:'
       path: Mylib/Number/is_square.cpp
       title: Check square number
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Number/kth_root_integer.cpp
       title: Kth root integer
     - icon: ':warning:'
@@ -1094,7 +1099,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/String/knuth_morris_pratt.cpp
       title: Knuth-Morris-Pratt algorithm
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/String/lcp_array.cpp
       title: LCP(Longest Common Prefix) array
     - icon: ':heavy_check_mark:'
@@ -1918,121 +1923,121 @@ data:
       title: test/yosupo-judge/assignment/main.test.cpp
   - name: test/yosupo-judge/bernoulli_number
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/bernoulli_number/main.test.cpp
       title: test/yosupo-judge/bernoulli_number/main.test.cpp
   - name: test/yosupo-judge/bipartitematching
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/bipartitematching/main.test.cpp
       title: test/yosupo-judge/bipartitematching/main.test.cpp
   - name: test/yosupo-judge/cartesian_tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/cartesian_tree/main.test.cpp
       title: test/yosupo-judge/cartesian_tree/main.test.cpp
   - name: test/yosupo-judge/convolution_mod
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/convolution_mod/main.test.cpp
       title: test/yosupo-judge/convolution_mod/main.test.cpp
   - name: test/yosupo-judge/convolution_mod_1000000007
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
       title: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
   - name: test/yosupo-judge/cycle_detection
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/cycle_detection/main.test.cpp
       title: test/yosupo-judge/cycle_detection/main.test.cpp
   - name: test/yosupo-judge/discrete_logarithm_mod
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
       title: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
   - name: test/yosupo-judge/dynamic_tree_vertex_add_path_sum
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
       title: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
   - name: test/yosupo-judge/enumerate_triangles
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/enumerate_triangles/main.test.cpp
       title: test/yosupo-judge/enumerate_triangles/main.test.cpp
   - name: test/yosupo-judge/exp_of_formal_power_series
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
       title: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
       title: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
   - name: test/yosupo-judge/factorize
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/factorize/main.test.cpp
       title: test/yosupo-judge/factorize/main.test.cpp
   - name: test/yosupo-judge/inv_of_formal_power_series
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
       title: test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
   - name: test/yosupo-judge/kth_root_integer
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/kth_root_integer/main.test.cpp
       title: test/yosupo-judge/kth_root_integer/main.test.cpp
   - name: test/yosupo-judge/line_add_get_min
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/line_add_get_min/main.dynamic.test.cpp
       title: test/yosupo-judge/line_add_get_min/main.dynamic.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/line_add_get_min/main.test.cpp
       title: test/yosupo-judge/line_add_get_min/main.test.cpp
   - name: test/yosupo-judge/log_of_formal_power_series
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/log_of_formal_power_series/main.test.cpp
       title: test/yosupo-judge/log_of_formal_power_series/main.test.cpp
   - name: test/yosupo-judge/manhattanmst
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/manhattanmst/main.test.cpp
       title: test/yosupo-judge/manhattanmst/main.test.cpp
   - name: test/yosupo-judge/matrix_det
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/matrix_det/main.test.cpp
       title: test/yosupo-judge/matrix_det/main.test.cpp
   - name: test/yosupo-judge/maximum_independent_set
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/maximum_independent_set/main.test.cpp
       title: test/yosupo-judge/maximum_independent_set/main.test.cpp
   - name: test/yosupo-judge/montmort_number_mod
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/montmort_number_mod/main.test.cpp
       title: test/yosupo-judge/montmort_number_mod/main.test.cpp
   - name: test/yosupo-judge/number_of_substrings
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/number_of_substrings/main.test.cpp
       title: test/yosupo-judge/number_of_substrings/main.test.cpp
   - name: test/yosupo-judge/partition_function
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/partition_function/main.fps.test.cpp
       title: test/yosupo-judge/partition_function/main.fps.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/partition_function/main.test.cpp
       title: test/yosupo-judge/partition_function/main.test.cpp
   - name: test/yosupo-judge/persistent_queue
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/persistent_queue/main.test.cpp
       title: test/yosupo-judge/persistent_queue/main.test.cpp
   - name: test/yosupo-judge/persistent_unionfind

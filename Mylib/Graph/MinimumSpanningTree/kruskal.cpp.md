@@ -12,11 +12,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_2_A/main.kruskal.test.cpp
     title: test/aoj/GRL_2_A/main.kruskal.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/manhattanmst/main.test.cpp
     title: test/yosupo-judge/manhattanmst/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/MinimumSpanningTree/kruskal.cpp\"\n#include\
@@ -85,10 +85,10 @@ data:
   path: Mylib/Graph/MinimumSpanningTree/kruskal.cpp
   requiredBy: []
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo-judge/manhattanmst/main.test.cpp
   - test/aoj/GRL_2_A/main.kruskal.test.cpp
+  - test/yosupo-judge/manhattanmst/main.test.cpp
 documentation_of: Mylib/Graph/MinimumSpanningTree/kruskal.cpp
 layout: document
 title: Kruskal algorithm

@@ -84,8 +84,8 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/CGL_1_A/main.test.cpp
   - test/aoj/CGL_1_B/main.test.cpp
+  - test/aoj/CGL_1_A/main.test.cpp
 documentation_of: Mylib/Geometry/Float/projection.cpp
 layout: document
 title: Projection

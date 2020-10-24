@@ -10,19 +10,19 @@ data:
   - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Misc/int128.cpp
     title: 128-bit int
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Prime/miller_rabin.cpp
     title: Primality test (Miller-Rabin algorithm)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Prime/pollard_rho.cpp
     title: Prime factorization (Pollard's rho algorithm)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/factorize
@@ -118,7 +118,7 @@ data:
   path: test/yosupo-judge/factorize/main.test.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/factorize/main.test.cpp
 layout: document

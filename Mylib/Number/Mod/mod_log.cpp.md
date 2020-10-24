@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_inv.cpp
     title: Mod inverse
   - icon: ':question:'
@@ -9,11 +9,11 @@ data:
     title: Mod pow
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
     title: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Mod/mod_log.cpp\"\n#include <unordered_map>\n\
@@ -61,7 +61,7 @@ data:
   path: Mylib/Number/Mod/mod_log.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
 documentation_of: Mylib/Number/Mod/mod_log.cpp

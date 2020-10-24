@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Misc/int128.cpp
     title: 128-bit int
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Prime/miller_rabin.cpp
     title: Primality test (Miller-Rabin algorithm)
   _extendedRequiredBy: []

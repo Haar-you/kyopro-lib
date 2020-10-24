@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: Mylib/DataStructure/UnionFind/unionfind.cpp
     title: Union-find
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/MinimumSpanningTree/kruskal.cpp
     title: Kruskal algorithm
   - icon: ':question:'

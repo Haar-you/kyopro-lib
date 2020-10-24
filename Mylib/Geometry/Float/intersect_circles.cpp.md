@@ -129,8 +129,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/CGL_7_I/main.test.cpp
-  - test/aoj/CGL_7_A/main.test.cpp
   - test/aoj/CGL_7_E/main.test.cpp
+  - test/aoj/CGL_7_A/main.test.cpp
 documentation_of: Mylib/Geometry/Float/intersect_circles.cpp
 layout: document
 title: Intersection between two circles

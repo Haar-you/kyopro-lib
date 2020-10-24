@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp
     title: Manhattan distance MST
   _extendedVerifiedWith:
@@ -27,7 +27,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_2_H/main.test.cpp
     title: test/aoj/DSL_2_H/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/manhattanmst/main.test.cpp
     title: test/yosupo-judge/manhattanmst/main.test.cpp
   - icon: ':x:'
@@ -57,14 +57,14 @@ data:
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yukicoder/875/main.test.cpp
-  - test/yosupo-judge/manhattanmst/main.test.cpp
-  - test/aoj/3035/main.test.cpp
   - test/aoj/DSL_2_A/main.test.cpp
+  - test/aoj/DSL_2_H/main.test.cpp
   - test/aoj/DSL_2_F/main.test.cpp
   - test/aoj/DSL_2_F/main.dynamic.test.cpp
-  - test/aoj/DSL_2_H/main.test.cpp
   - test/aoj/1508/main.splay_tree.test.cpp
   - test/aoj/1508/main.treap.test.cpp
+  - test/aoj/3035/main.test.cpp
+  - test/yosupo-judge/manhattanmst/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Monoid/min.cpp
 layout: document
 title: Min monoid

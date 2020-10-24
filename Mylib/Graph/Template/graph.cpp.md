@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp
     title: Check bipartite graph
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Cycle/detect_cycle.cpp
     title: Detect cycle
   - icon: ':warning:'
@@ -38,10 +38,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
     title: Chu-Liu/Edmonds algorithm
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/MinimumSpanningTree/kruskal.cpp
     title: Kruskal algorithm
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp
     title: Manhattan distance MST
   - icon: ':heavy_check_mark:'
@@ -122,7 +122,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/chinese_postman_problem.cpp
     title: Chinese postman problem
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/enumerate_triangles.cpp
     title: Enumerate triangles
   - icon: ':warning:'
@@ -219,13 +219,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/GRL_5_C/main.hld.test.cpp
     title: test/aoj/GRL_5_C/main.hld.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/cycle_detection/main.test.cpp
     title: test/yosupo-judge/cycle_detection/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/enumerate_triangles/main.test.cpp
     title: test/yosupo-judge/enumerate_triangles/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/manhattanmst/main.test.cpp
     title: test/yosupo-judge/manhattanmst/main.test.cpp
   - icon: ':x:'
@@ -314,97 +314,97 @@ data:
   isVerificationFile: false
   path: Mylib/Graph/Template/graph.cpp
   requiredBy:
-  - Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp
-  - Mylib/Graph/chinese_postman_problem.cpp
-  - Mylib/Graph/GraphUtils/articulation_points.cpp
-  - Mylib/Graph/GraphUtils/decompose_pseudotree.cpp
-  - Mylib/Graph/GraphUtils/two_edge_connected_components.cpp
-  - Mylib/Graph/GraphUtils/strongly_connected_components.cpp
-  - Mylib/Graph/GraphUtils/biconnected_components.cpp
-  - Mylib/Graph/GraphUtils/bridges.cpp
-  - Mylib/Graph/lsi.cpp
-  - Mylib/Graph/TreeUtils/tree_height.cpp
-  - Mylib/Graph/TreeUtils/tree_distance.cpp
-  - Mylib/Graph/TreeUtils/euler_tour_vertex.cpp
-  - Mylib/Graph/TreeUtils/centroid.cpp
-  - Mylib/Graph/TreeUtils/rerooting.cpp
-  - Mylib/Graph/TreeUtils/tree_diameter.cpp
-  - Mylib/Graph/TreeUtils/centroid_decomposition.cpp
-  - Mylib/Graph/TreeUtils/lca_hld.cpp
-  - Mylib/Graph/TreeUtils/forest.cpp
-  - Mylib/Graph/TreeUtils/rooting.cpp
-  - Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp
-  - Mylib/Graph/TreeUtils/euler_tour_bfs.cpp
-  - Mylib/Graph/TreeUtils/lca_doubling.cpp
-  - Mylib/Graph/MinimumSpanningTree/prim.cpp
-  - Mylib/Graph/MinimumSpanningTree/kruskal.cpp
-  - Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
-  - Mylib/Graph/MinimumSpanningTree/boruvka.cpp
-  - Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp
-  - Mylib/Graph/travelling_salesman_problem.cpp
-  - Mylib/Graph/Cycle/undirected_shortest_cycle.cpp
-  - Mylib/Graph/Cycle/detect_cycle.cpp
-  - Mylib/Graph/Cycle/directed_shortest_cycle.cpp
-  - Mylib/Graph/ShortestPath/bellman_ford.cpp
-  - Mylib/Graph/ShortestPath/dijkstra.cpp
-  - Mylib/Graph/ShortestPath/bfs_0_1.cpp
-  - Mylib/Graph/ShortestPath/bfs_shortest_path.cpp
+  - Mylib/Grid/grid_to_graph.cpp
   - Mylib/Graph/ShortestPath/spfa.cpp
-  - Mylib/Graph/ShortestPath/yen_algorithm.cpp
   - Mylib/Graph/ShortestPath/dial_algorithm.cpp
+  - Mylib/Graph/ShortestPath/dijkstra.cpp
+  - Mylib/Graph/ShortestPath/bfs_shortest_path.cpp
+  - Mylib/Graph/ShortestPath/bellman_ford.cpp
+  - Mylib/Graph/ShortestPath/yen_algorithm.cpp
   - Mylib/Graph/ShortestPath/warshall_floyd.cpp
-  - Mylib/Graph/two_sat.cpp
+  - Mylib/Graph/ShortestPath/bfs_0_1.cpp
+  - Mylib/Graph/TreeUtils/tree_distance.cpp
+  - Mylib/Graph/TreeUtils/forest.cpp
+  - Mylib/Graph/TreeUtils/lca_hld.cpp
+  - Mylib/Graph/TreeUtils/rerooting.cpp
+  - Mylib/Graph/TreeUtils/rooting.cpp
+  - Mylib/Graph/TreeUtils/centroid_decomposition.cpp
+  - Mylib/Graph/TreeUtils/centroid.cpp
+  - Mylib/Graph/TreeUtils/tree_height.cpp
+  - Mylib/Graph/TreeUtils/tree_diameter.cpp
+  - Mylib/Graph/TreeUtils/euler_tour_vertex.cpp
+  - Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp
+  - Mylib/Graph/TreeUtils/lca_doubling.cpp
+  - Mylib/Graph/TreeUtils/euler_tour_bfs.cpp
+  - Mylib/Graph/Cycle/directed_shortest_cycle.cpp
+  - Mylib/Graph/Cycle/detect_cycle.cpp
+  - Mylib/Graph/Cycle/undirected_shortest_cycle.cpp
   - Mylib/Graph/TopologicalSort/topological_sort_lexicographical.cpp
   - Mylib/Graph/TopologicalSort/topological_sort.cpp
-  - Mylib/Graph/Template/range_edge_graph.cpp
+  - Mylib/Graph/GraphUtils/articulation_points.cpp
+  - Mylib/Graph/GraphUtils/bridges.cpp
+  - Mylib/Graph/GraphUtils/two_edge_connected_components.cpp
+  - Mylib/Graph/GraphUtils/decompose_pseudotree.cpp
+  - Mylib/Graph/GraphUtils/strongly_connected_components.cpp
+  - Mylib/Graph/GraphUtils/biconnected_components.cpp
+  - Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp
+  - Mylib/Graph/travelling_salesman_problem.cpp
+  - Mylib/Graph/two_sat.cpp
+  - Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
+  - Mylib/Graph/MinimumSpanningTree/kruskal.cpp
+  - Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp
+  - Mylib/Graph/MinimumSpanningTree/prim.cpp
+  - Mylib/Graph/MinimumSpanningTree/boruvka.cpp
+  - Mylib/Graph/lsi.cpp
   - Mylib/Graph/enumerate_triangles.cpp
-  - Mylib/Grid/grid_to_graph.cpp
+  - Mylib/Graph/chinese_postman_problem.cpp
+  - Mylib/Graph/Template/range_edge_graph.cpp
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yukicoder/1069/main.test.cpp
-  - test/yukicoder/1030/main.test.cpp
   - test/yukicoder/922/main.test.cpp
   - test/yukicoder/899/main.test.cpp
+  - test/yukicoder/1069/main.test.cpp
   - test/yukicoder/235/main.test.cpp
-  - test/yosupo-judge/enumerate_triangles/main.test.cpp
-  - test/yosupo-judge/manhattanmst/main.test.cpp
-  - test/yosupo-judge/vertex_add_path_sum/main.test.cpp
-  - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
-  - test/yosupo-judge/cycle_detection/main.test.cpp
-  - test/yosupo-judge/two_edge_connected_components/main.test.cpp
-  - test/yosupo-judge/scc/main.test.cpp
-  - test/yosupo-judge/two_sat/main.test.cpp
-  - test/yosupo-judge/tree_diameter/main.test.cpp
-  - test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
-  - test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp
-  - test/aoj/GRL_5_B/main.test.cpp
-  - test/aoj/GRL_3_C/main.test.cpp
-  - test/aoj/ALDS1_12_B/main.dial.test.cpp
-  - test/aoj/0575/main.test.cpp
-  - test/aoj/GRL_5_C/main.hld.test.cpp
-  - test/aoj/GRL_5_C/main.doubling.test.cpp
-  - test/aoj/GRL_1_A/main.test.cpp
-  - test/aoj/GRL_3_A/main.test.cpp
-  - test/aoj/GRL_2_A/main.prim.test.cpp
-  - test/aoj/GRL_2_A/main.boruvka.test.cpp
-  - test/aoj/GRL_2_A/main.kruskal.test.cpp
-  - test/aoj/1595/main.test.cpp
-  - test/aoj/2667/main.test.cpp
+  - test/yukicoder/1030/main.test.cpp
   - test/aoj/GRL_5_A/main.test.cpp
-  - test/aoj/DPL_2_A/main.test.cpp
-  - test/aoj/GRL_1_C/main.test.cpp
-  - test/aoj/0558/main.graph.test.cpp
-  - test/aoj/GRL_3_B/main.test.cpp
-  - test/aoj/2891/main.test.cpp
   - test/aoj/GRL_1_B/main.test.cpp
   - test/aoj/GRL_1_B/main.spfa.test.cpp
-  - test/aoj/2370/main.test.cpp
+  - test/aoj/DPL_2_A/main.test.cpp
+  - test/aoj/0575/main.test.cpp
+  - test/aoj/ALDS1_12_B/main.dial.test.cpp
+  - test/aoj/GRL_2_A/main.kruskal.test.cpp
+  - test/aoj/GRL_2_A/main.boruvka.test.cpp
+  - test/aoj/GRL_2_A/main.prim.test.cpp
+  - test/aoj/GRL_3_A/main.test.cpp
   - test/aoj/DPL_2_B/main.test.cpp
-  - test/aoj/2559/main.skew_heap.test.cpp
-  - test/aoj/2559/main.binomial_heap.test.cpp
-  - test/aoj/2559/main.leftist_heap.test.cpp
+  - test/aoj/GRL_5_B/main.test.cpp
+  - test/aoj/1595/main.test.cpp
+  - test/aoj/GRL_5_C/main.hld.test.cpp
+  - test/aoj/GRL_5_C/main.doubling.test.cpp
+  - test/aoj/2667/main.test.cpp
+  - test/aoj/GRL_3_B/main.test.cpp
+  - test/aoj/GRL_3_C/main.test.cpp
+  - test/aoj/2370/main.test.cpp
+  - test/aoj/GRL_1_C/main.test.cpp
   - test/aoj/GRL_2_B/main.test.cpp
+  - test/aoj/0558/main.graph.test.cpp
+  - test/aoj/2559/main.binomial_heap.test.cpp
+  - test/aoj/2559/main.skew_heap.test.cpp
+  - test/aoj/2559/main.leftist_heap.test.cpp
+  - test/aoj/GRL_1_A/main.test.cpp
+  - test/aoj/2891/main.test.cpp
+  - test/yosupo-judge/enumerate_triangles/main.test.cpp
+  - test/yosupo-judge/tree_diameter/main.test.cpp
+  - test/yosupo-judge/two_sat/main.test.cpp
+  - test/yosupo-judge/vertex_add_path_sum/main.test.cpp
+  - test/yosupo-judge/scc/main.test.cpp
+  - test/yosupo-judge/cycle_detection/main.test.cpp
+  - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+  - test/yosupo-judge/manhattanmst/main.test.cpp
+  - test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
+  - test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp
+  - test/yosupo-judge/two_edge_connected_components/main.test.cpp
 documentation_of: Mylib/Graph/Template/graph.cpp
 layout: document
 title: Basic graph

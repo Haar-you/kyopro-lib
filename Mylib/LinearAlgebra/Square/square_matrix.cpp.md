@@ -6,7 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/1327/main.test.cpp
     title: test/aoj/1327/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/matrix_det/main.test.cpp
     title: test/yosupo-judge/matrix_det/main.test.cpp
   - icon: ':x:'
@@ -141,8 +141,8 @@ data:
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yukicoder/194/main.test.cpp
-  - test/yosupo-judge/matrix_det/main.test.cpp
   - test/aoj/1327/main.test.cpp
+  - test/yosupo-judge/matrix_det/main.test.cpp
 documentation_of: Mylib/LinearAlgebra/Square/square_matrix.cpp
 layout: document
 title: Square matrix

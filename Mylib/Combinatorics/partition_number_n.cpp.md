@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/partition_function/main.test.cpp
     title: test/yosupo-judge/partition_function/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Combinatorics/partition_number_n.cpp\"\n#include <cmath>\n\
@@ -30,7 +30,7 @@ data:
   path: Mylib/Combinatorics/partition_number_n.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/partition_function/main.test.cpp
 documentation_of: Mylib/Combinatorics/partition_number_n.cpp

@@ -2,14 +2,14 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/String/lcp_array.cpp
     title: LCP(Longest Common Prefix) array
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/ALDS1_14_D/main.test.cpp
     title: test/aoj/ALDS1_14_D/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/number_of_substrings/main.test.cpp
     title: test/yosupo-judge/number_of_substrings/main.test.cpp
   - icon: ':x:'
@@ -149,9 +149,9 @@ data:
   timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo-judge/suffixarray/main.test.cpp
-  - test/yosupo-judge/number_of_substrings/main.test.cpp
   - test/aoj/ALDS1_14_D/main.test.cpp
+  - test/yosupo-judge/number_of_substrings/main.test.cpp
+  - test/yosupo-judge/suffixarray/main.test.cpp
 documentation_of: Mylib/String/suffix_array.cpp
 layout: document
 title: Suffix array
