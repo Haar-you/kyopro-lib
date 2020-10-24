@@ -78,6 +78,8 @@ int main(){
   while(true){
     try{
       solver::solve();
+      std::cout << std::flush;
+      std::cerr << std::flush;
     }catch(const std::istream::failure &e){
       break;
     }
