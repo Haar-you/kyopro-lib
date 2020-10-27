@@ -4,6 +4,7 @@
 #include <vector>
 #include <functional>
 #include "Mylib/Number/Mint/montgomery.cpp"
+#include "Mylib/Number/Prime/primitive_root.cpp"
 #include "Mylib/Convolution/ntt_convolution.cpp"
 #include "Mylib/Math/formal_power_series.cpp"
 #include "Mylib/IO/input_vector.cpp"
@@ -11,8 +12,10 @@
 
 namespace hl = haar_lib;
 
-using mint = hl::montgomery<998244353>;
-using NTT = hl::number_theoretic_transform<mint, 3, 1 << 21>;
+constexpr int mod = 998244353;
+constexpr int prim_root = hl::primitive_root(mod);
+using mint = hl::montgomery<mod>;
+using NTT = hl::number_theoretic_transform<mint, prim_root, 1 << 21>;
 const static auto ntt = NTT();
 using FPS = hl::formal_power_series<mint, ntt>;
 

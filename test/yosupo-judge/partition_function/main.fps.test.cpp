@@ -3,6 +3,7 @@
 #include <iostream>
 #include <functional>
 #include "Mylib/Number/Mint/mint.cpp"
+#include "Mylib/Number/Prime/primitive_root.cpp"
 #include "Mylib/Combinatorics/partition_number_fps.cpp"
 #include "Mylib/Convolution/ntt_convolution.cpp"
 #include "Mylib/Math/formal_power_series.cpp"
@@ -10,9 +11,10 @@
 
 namespace hl = haar_lib;
 
-constexpr int PRIM = 3;
-using mint = hl::modint<998244353>;
-using NTT = hl::number_theoretic_transform<mint, PRIM, 1 << 20>;
+constexpr int mod = 998244353;
+constexpr int prim_root = hl::primitive_root(mod);
+using mint = hl::modint<mod>;
+using NTT = hl::number_theoretic_transform<mint, prim_root, 1 << 20>;
 const static auto ntt = NTT();
 using FPS = hl::formal_power_series<mint, ntt>;
 
