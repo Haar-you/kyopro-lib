@@ -22,7 +22,7 @@ int main(){
 
   int N; std::cin >> N;
 
-  auto res = hl::stirling_number_of_second_kind_fft<mint>(N, ntt);
+  auto res = hl::stirling_number_of_second_kind_fft<mint, ntt>(N);
   std::cout << hl::join(res.begin(), res.end()) << "\n";
 
   return 0;

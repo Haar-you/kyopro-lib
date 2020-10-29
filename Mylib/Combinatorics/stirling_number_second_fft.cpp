@@ -2,8 +2,8 @@
 #include <vector>
 
 namespace haar_lib {
-  template <typename T, typename Conv>
-  auto stirling_number_of_second_kind_fft(int N, const Conv &convolve){
+  template <typename T, const auto &convolve>
+  auto stirling_number_of_second_kind_fft(int N){
     std::vector<T> a(N + 1), b(N + 1);
 
     std::vector<int> m(N + 1, 0);

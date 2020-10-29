@@ -4,8 +4,8 @@
 #include "Mylib/Math/polynomial_taylor_shift.cpp"
 
 namespace haar_lib {
-  template <typename T, typename Conv>
-  std::vector<T> stirling_number_of_first_kind_fft(int N, const Conv &convolve){
+  template <typename T, const auto &convolve>
+  std::vector<T> stirling_number_of_first_kind_fft(int N){
     if(N == 0) return {1};
 
     std::vector<int> p;
