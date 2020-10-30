@@ -12,21 +12,21 @@ namespace hl = haar_lib;
 
 int main(){
   int n; std::cin >> n;
-  hl::range_tree rt;
+  hl::range_tree_builder builder;
 
   std::map<std::pair<int, int>, int> m;
 
   for(auto [i, x, y] : hl::input_tuples_with_index<int, int>(n)){
-    rt.add(x, y);
+    builder.add(x, y);
     m[{x, y}] = i;
   }
 
-  rt.build();
+  auto rt = builder.build();
 
   int q; std::cin >> q;
 
   for(auto [sx, tx, sy, ty] : hl::input_tuples<int, int, int, int>(q)){
-    auto res = rt.get(sx, sy, tx + 1, ty + 1);
+    auto res = rt.get({sx, sy}, {tx + 1, ty + 1});
 
     std::vector<int> ans;
     for(auto &p : res) ans.push_back(m[p]);
