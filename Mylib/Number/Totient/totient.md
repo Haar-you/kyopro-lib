@@ -1,6 +1,6 @@
 ---
 title: Euler's totient function
-documentation_of: Mylib/Number/euler_totient_function.cpp
+documentation_of: Mylib/Number/Totient/totient.cpp
 ---
 
 ## Operations

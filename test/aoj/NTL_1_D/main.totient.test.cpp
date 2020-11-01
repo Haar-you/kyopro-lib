@@ -1,7 +1,7 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D"
 
 #include <iostream>
-#include "Mylib/Number/euler_totient_function.cpp"
+#include "Mylib/Number/Totient/totient.cpp"
 
 namespace hl = haar_lib;
 
