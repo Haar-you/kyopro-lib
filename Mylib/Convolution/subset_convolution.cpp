@@ -1,24 +1,10 @@
 #pragma once
 #include <vector>
 #include <cassert>
+#include "Mylib/Convolution/fast_zeta_transform_subset.cpp"
 #include "Mylib/Convolution/fast_mobius_transform_subset.cpp"
 
 namespace haar_lib {
-  template <typename T>
-  auto ranked_zeta_transform_subset(std::vector<T> f, int k){
-    const int N = f.size();
-    assert((N & (N - 1)) == 0 && "N must be a power of 2");
-    for(int i = 0; i < N; ++i) if(__builtin_popcount(i) != k) f[i] = 0;
-    for(int i = 1; i < N; i <<= 1){
-      for(int j = 0; j < N; ++j){
-        if((j & i)){
-          f[j] = f[j] + f[j ^ i];
-        }
-      }
-    }
-    return f;
-  }
-
   template <typename T>
   std::vector<T> subset_convolution(std::vector<T> f, std::vector<T> g){
     const int N = f.size();
@@ -30,8 +16,18 @@ namespace haar_lib {
     std::vector<std::vector<T>> F(K + 1), G(K + 1);
 
     for(int i = 0; i <= K; ++i){
-      F[i] = ranked_zeta_transform_subset(f, i);
-      G[i] = ranked_zeta_transform_subset(g, i);
+      F[i].resize(N);
+      G[i].resize(N);
+
+      for(int j = 0; j < N; ++j){
+        if(__builtin_popcount(j) == i){
+          F[i][j] = f[j];
+          G[i][j] = g[j];
+        }
+      }
+
+      F[i] = fast_zeta_transform_subset(F[i]);
+      G[i] = fast_zeta_transform_subset(G[i]);
     }
 
     std::vector<std::vector<T>> H(K + 1, std::vector<T>(N));
