@@ -60,10 +60,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/partition_function/main.test.cpp
     title: test/yosupo-judge/partition_function/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
     title: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
   - icon: ':x:'
@@ -81,6 +81,9 @@ data:
   - icon: ':x:'
     path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/subset_convolution/main.test.cpp
+    title: test/yosupo-judge/subset_convolution/main.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/suffixarray/main.test.cpp
     title: test/yosupo-judge/suffixarray/main.test.cpp
@@ -152,6 +155,7 @@ data:
   - test/yosupo-judge/assignment/main.test.cpp
   - test/yosupo-judge/maximum_independent_set/main.test.cpp
   - test/yosupo-judge/scc/main.test.cpp
+  - test/yosupo-judge/subset_convolution/main.test.cpp
   - test/yosupo-judge/convolution_mod/main.test.cpp
   - test/yosupo-judge/montmort_number_mod/main.test.cpp
   - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp

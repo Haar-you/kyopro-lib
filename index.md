@@ -11,7 +11,7 @@ data:
       title: Sum group
   - name: Mylib/AlgebraicStructure/Monoid
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/AlgebraicStructure/Monoid/affine.cpp
       title: Affine monoid
     - icon: ':warning:'
@@ -32,7 +32,7 @@ data:
     - icon: ':x:'
       path: Mylib/AlgebraicStructure/Monoid/bounded_min.cpp
       title: Bounded min monoid
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/AlgebraicStructure/Monoid/dual.cpp
       title: Dual monoid
     - icon: ':warning:'
@@ -294,6 +294,9 @@ data:
       path: Mylib/Convolution/convolution_and.cpp
       title: Convolution (Index bitwise AND)
     - icon: ':warning:'
+      path: Mylib/Convolution/convolution_gcd.cpp
+      title: Convolution (Index GCD)
+    - icon: ':warning:'
       path: Mylib/Convolution/convolution_or.cpp
       title: Convolution (Index bitwise OR)
     - icon: ':warning:'
@@ -302,13 +305,13 @@ data:
     - icon: ':warning:'
       path: Mylib/Convolution/fast_fourier_transform.cpp
       title: Fast Fourier transform
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Convolution/fast_mobius_transform_subset.cpp
       title: "Fast M\xF6bius transform (Subsets)"
     - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/fast_mobius_transform_superset.cpp
       title: "Fast M\xF6bius transform (Supersets)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Convolution/fast_zeta_transform_subset.cpp
       title: Fast Zeta transform (Subsets)
     - icon: ':heavy_check_mark:'
@@ -317,9 +320,12 @@ data:
     - icon: ':question:'
       path: Mylib/Convolution/ntt_convolution.cpp
       title: Number theoretic transform
+    - icon: ':x:'
+      path: Mylib/Convolution/subset_convolution.cpp
+      title: Subset convolution
   - name: Mylib/DataStructure/Array
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/Array/persistent_array.cpp
       title: Persistent array
     - icon: ':warning:'
@@ -437,7 +443,7 @@ data:
     - icon: ':warning:'
       path: Mylib/DataStructure/SegmentTree/segment_tree_linear_add_range_sum.cpp
       title: Segment tree (Add $ai + b$, Range sum)
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp
       title: Segment tree (On segment tree)
     - icon: ':question:'
@@ -448,6 +454,9 @@ data:
     - icon: ':warning:'
       path: Mylib/DataStructure/Set/integer_set.cpp
       title: Integer set
+    - icon: ':warning:'
+      path: Mylib/DataStructure/Set/wrapped_set.cpp
+      title: Mylib/DataStructure/Set/wrapped_set.cpp
   - name: Mylib/DataStructure/SparseTable
     pages:
     - icon: ':warning:'
@@ -474,7 +483,7 @@ data:
     - icon: ':warning:'
       path: Mylib/DataStructure/UnionFind/partially_persistent_unionfind.cpp
       title: Partially persistent union-find
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/UnionFind/persistent_unionfind.cpp
       title: Persistent union-find
     - icon: ':question:'
@@ -916,7 +925,7 @@ data:
     - icon: ':warning:'
       path: Mylib/Math/polynomial.cpp
       title: Polynomial
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Math/polynomial_taylor_shift.cpp
       title: Polynomial taylor shift
     - icon: ':warning:'
@@ -954,9 +963,6 @@ data:
     - icon: ':warning:'
       path: Mylib/Misc/unzip.cpp
       title: Unzip function
-    - icon: ':warning:'
-      path: Mylib/Misc/wrapped_set.cpp
-      title: Mylib/Misc/wrapped_set.cpp
     - icon: ':warning:'
       path: Mylib/Misc/xor_shift.cpp
       title: Xorshift
@@ -1028,6 +1034,9 @@ data:
     - icon: ':warning:'
       path: Mylib/Number/Prime/prime_factorize_sieve.cpp
       title: Prime factorization (Sieve)
+    - icon: ':question:'
+      path: Mylib/Number/Prime/primitive_root.cpp
+      title: Primitive root
     - icon: ':warning:'
       path: Mylib/Number/Prime/segmented_sieve.cpp
       title: Segmented sieve
@@ -1039,6 +1048,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Number/Rational/stern_brocot_tree.cpp
       title: Stern-Brocot tree
+  - name: Mylib/Number/Totient
+    pages:
+    - icon: ':question:'
+      path: Mylib/Number/Totient/totient.cpp
+      title: Euler's totient function
+    - icon: ':warning:'
+      path: Mylib/Number/Totient/totient_sum.cpp
+      title: Sum of totient function
+    - icon: ':warning:'
+      path: Mylib/Number/Totient/totient_table.cpp
+      title: Euler's totient function (Table)
   - name: Mylib/Number
     pages:
     - icon: ':heavy_check_mark:'
@@ -1047,12 +1067,6 @@ data:
     - icon: ':x:'
       path: Mylib/Number/chinese_remainder_algorithm.cpp
       title: Chinese remainder theorem
-    - icon: ':question:'
-      path: Mylib/Number/euler_totient_function.cpp
-      title: Euler's totient function
-    - icon: ':warning:'
-      path: Mylib/Number/euler_totient_function_table.cpp
-      title: Euler's totient function (Enumerate)
     - icon: ':question:'
       path: Mylib/Number/extended_gcd.cpp
       title: Extended Euclidean algorithm
@@ -2042,27 +2056,27 @@ data:
       title: test/yosupo-judge/persistent_queue/main.test.cpp
   - name: test/yosupo-judge/persistent_unionfind
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/persistent_unionfind/main.test.cpp
       title: test/yosupo-judge/persistent_unionfind/main.test.cpp
   - name: test/yosupo-judge/point_add_rectangle_sum
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
       title: test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
   - name: test/yosupo-judge/point_set_range_composite
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/point_set_range_composite/main.test.cpp
       title: test/yosupo-judge/point_set_range_composite/main.test.cpp
   - name: test/yosupo-judge/polynomial_taylor_shift
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
       title: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
   - name: test/yosupo-judge/pow_of_formal_power_series
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
       title: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
   - name: test/yosupo-judge/queue_operate_all_composite
@@ -2159,6 +2173,11 @@ data:
     - icon: ':x:'
       path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
       title: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
+  - name: test/yosupo-judge/subset_convolution
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/subset_convolution/main.test.cpp
+      title: test/yosupo-judge/subset_convolution/main.test.cpp
   - name: test/yosupo-judge/suffixarray
     pages:
     - icon: ':x:'

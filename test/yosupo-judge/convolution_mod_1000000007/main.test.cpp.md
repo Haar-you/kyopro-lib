@@ -125,7 +125,7 @@ data:
     \ input_vector(int N, int M){\n    std::vector<std::vector<T>> ret(N);\n    for(int\
     \ i = 0; i < N; ++i) ret[i] = input_vector<T>(M);\n    return ret;\n  }\n}\n#line\
     \ 9 \"test/yosupo-judge/convolution_mod_1000000007/main.test.cpp\"\n\nnamespace\
-    \ hl = haar_lib;\n\nconst int mod = 1000000007;\nusing mint = hl::modint<mod>;\n\
+    \ hl = haar_lib;\n\nconstexpr int mod = 1000000007;\nusing mint = hl::modint<mod>;\n\
     \nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int\
     \ n, m; std::cin >> n >> m;\n\n  auto a = hl::input_vector<mint>(n);\n  auto b\
     \ = hl::input_vector<mint>(m);\n\n  auto ans = hl::convolve_general_mod<mint>(a,\
@@ -134,8 +134,8 @@ data:
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\
     \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/Convolution/ntt_convolution.cpp\"\
     \n#include \"Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/IO/join.cpp\"\n#include\
-    \ \"Mylib/IO/input_vector.cpp\"\n\nnamespace hl = haar_lib;\n\nconst int mod =\
-    \ 1000000007;\nusing mint = hl::modint<mod>;\n\nint main(){\n  std::cin.tie(0);\n\
+    \ \"Mylib/IO/input_vector.cpp\"\n\nnamespace hl = haar_lib;\n\nconstexpr int mod\
+    \ = 1000000007;\nusing mint = hl::modint<mod>;\n\nint main(){\n  std::cin.tie(0);\n\
     \  std::ios::sync_with_stdio(false);\n\n  int n, m; std::cin >> n >> m;\n\n  auto\
     \ a = hl::input_vector<mint>(n);\n  auto b = hl::input_vector<mint>(m);\n\n  auto\
     \ ans = hl::convolve_general_mod<mint>(a, b);\n\n  std::cout << hl::join(ans.begin(),\
@@ -148,7 +148,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-18 08:49:48+09:00'
+  timestamp: '2020-10-28 03:22:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp

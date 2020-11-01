@@ -6,14 +6,14 @@ data:
     title: Segment tree
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
     title: test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
     title: test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp\"\
@@ -139,7 +139,7 @@ data:
   path: Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp
   requiredBy: []
   timestamp: '2020-10-15 01:51:15+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
   - test/yosupo-judge/point_add_rectangle_sum/main.test.cpp

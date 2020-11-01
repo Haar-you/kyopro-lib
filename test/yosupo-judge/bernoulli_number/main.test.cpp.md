@@ -19,6 +19,12 @@ data:
   - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
+  - icon: ':question:'
+    path: Mylib/Number/Mod/mod_pow.cpp
+    title: Mod pow
+  - icon: ':question:'
+    path: Mylib/Number/Prime/primitive_root.cpp
+    title: Primitive root
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -76,7 +82,19 @@ data:
     \ &s, const modint &a){s << a.val_; return s;}\n\n    template <int N>\n    static\
     \ auto div(){\n      static auto value = inv(N);\n      return value;\n    }\n\
     \n    explicit operator int32_t() const noexcept {return val_;}\n    explicit\
-    \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 2 \"Mylib/Convolution/ntt_convolution.cpp\"\
+    \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 2 \"Mylib/Number/Mod/mod_pow.cpp\"\
+    \n#include <cstdint>\n\nnamespace haar_lib {\n  constexpr int64_t mod_pow(int64_t\
+    \ n, int64_t p, int64_t m){\n    int64_t ret = 1;\n    while(p > 0){\n      if(p\
+    \ & 1) (ret *= n) %= m;\n      (n *= n) %= m;\n      p >>= 1;\n    }\n    return\
+    \ ret;\n  }\n}\n#line 3 \"Mylib/Number/Prime/primitive_root.cpp\"\n\nnamespace\
+    \ haar_lib {\n  constexpr int primitive_root(int p){\n    int pf[30] = {};\n \
+    \   int k = 0;\n    {\n      int n = p - 1;\n      for(int64_t i = 2; i * i <=\
+    \ p; ++i){\n        if(n % i == 0){\n          pf[k++] = i;\n          while(n\
+    \ % i == 0) n /= i;\n        }\n      }\n      if(n != 1)\n        pf[k++] = n;\n\
+    \    }\n\n    for(int g = 2; g <= p; ++g){\n      bool ok = true;\n      for(int\
+    \ i = 0; i < k; ++i){\n        if(mod_pow(g, (p - 1) / pf[i], p) == 1){\n    \
+    \      ok = false;\n          break;\n        }\n      }\n\n      if(not ok) continue;\n\
+    \n      return g;\n    }\n    return -1;\n  }\n}\n#line 2 \"Mylib/Convolution/ntt_convolution.cpp\"\
     \n#include <vector>\n#include <cassert>\n#line 5 \"Mylib/Convolution/ntt_convolution.cpp\"\
     \n#include <algorithm>\n#line 7 \"Mylib/Convolution/ntt_convolution.cpp\"\n\n\
     namespace haar_lib {\n  template <typename T, int PRIM_ROOT, int MAX_SIZE>\n \
@@ -202,12 +220,12 @@ data:
     \   ret = (ret + f * ret.inv()) * T(2).inv();\n        t <<= 1;\n      }\n\n \
     \     ret.resize(n);\n      ret = ret.shift(k / 2);\n\n      return ret;\n   \
     \ }\n  };\n\n  template <typename T, const auto &convolve>\n  std::function<std::optional<T>(T)>\
-    \ formal_power_series<T, convolve>::get_sqrt;\n}\n#line 4 \"Mylib/Combinatorics/factorial_table.cpp\"\
-    \n#include <cstdint>\n\nnamespace haar_lib {\n  template <typename T>\n  class\
-    \ factorial_table {\n  public:\n    using value_type = T;\n\n  private:\n    int\
-    \ N_;\n    std::vector<T> f_table_, if_table_;\n\n  public:\n    factorial_table(){}\n\
-    \    factorial_table(int N): N_(N){\n      f_table_.assign(N + 1, 1);\n      if_table_.assign(N\
-    \ + 1, 1);\n\n      for(int i = 1; i <= N; ++i){\n        f_table_[i] = f_table_[i\
+    \ formal_power_series<T, convolve>::get_sqrt;\n}\n#line 5 \"Mylib/Combinatorics/factorial_table.cpp\"\
+    \n\nnamespace haar_lib {\n  template <typename T>\n  class factorial_table {\n\
+    \  public:\n    using value_type = T;\n\n  private:\n    int N_;\n    std::vector<T>\
+    \ f_table_, if_table_;\n\n  public:\n    factorial_table(){}\n    factorial_table(int\
+    \ N): N_(N){\n      f_table_.assign(N + 1, 1);\n      if_table_.assign(N + 1,\
+    \ 1);\n\n      for(int i = 1; i <= N; ++i){\n        f_table_[i] = f_table_[i\
     \ - 1] * i;\n      }\n\n      if_table_[N] = f_table_[N].inv();\n\n      for(int\
     \ i = N; --i >= 0;){\n        if_table_[i] = if_table_[i + 1] * (i + 1);\n   \
     \   }\n    }\n\n    T factorial(int64_t i) const {\n      assert(0 <= i and i\
@@ -222,29 +240,33 @@ data:
     \n\nnamespace haar_lib {\n  template <typename Fps, const auto &ft>\n  auto bernoulli_number_fps(int\
     \ N){\n    Fps x(N + 1);\n\n    for(int i = 0; i <= N; ++i) x[i] = ft.inv_factorial(i\
     \ + 1);\n    x = x.inv();\n\n    for(int i = 0; i <= N; ++i) x[i] *= ft.factorial(i);\n\
-    \n    return x;\n  }\n}\n#line 11 \"test/yosupo-judge/bernoulli_number/main.test.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nusing mint = hl::modint<998244353>;\nconstexpr\
-    \ int PRIM_ROOT = 3;\nusing NTT = hl::number_theoretic_transform<mint, PRIM_ROOT,\
-    \ 1 << 20>;\nconst static auto ft = hl::factorial_table<mint>(500001);\nconst\
-    \ static auto ntt = NTT();\nusing FPS = hl::formal_power_series<mint, ntt>;\n\n\
-    int main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int\
-    \ N; std::cin >> N;\n\n  auto res = hl::bernoulli_number_fps<FPS, ft>(N);\n  std::cout\
-    \ << hl::join(res.begin(), res.begin() + N + 1) << \"\\n\";\n\n  return 0;\n}\n"
+    \n    return x;\n  }\n}\n#line 12 \"test/yosupo-judge/bernoulli_number/main.test.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int\
+    \ prim_root = hl::primitive_root(mod);\nusing mint = hl::modint<mod>;\nusing NTT\
+    \ = hl::number_theoretic_transform<mint, prim_root, 1 << 20>;\nconst static auto\
+    \ ft = hl::factorial_table<mint>(500001);\nconst static auto ntt = NTT();\nusing\
+    \ FPS = hl::formal_power_series<mint, ntt>;\n\nint main(){\n  std::cin.tie(0);\n\
+    \  std::ios::sync_with_stdio(false);\n\n  int N; std::cin >> N;\n\n  auto res\
+    \ = hl::bernoulli_number_fps<FPS, ft>(N);\n  std::cout << hl::join(res.begin(),\
+    \ res.begin() + N + 1) << \"\\n\";\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bernoulli_number\"\n\n\
     #include <iostream>\n#include <functional>\n#include \"Mylib/IO/join.cpp\"\n#include\
-    \ \"Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/Convolution/ntt_convolution.cpp\"\
-    \n#include \"Mylib/Math/formal_power_series.cpp\"\n#include \"Mylib/Combinatorics/factorial_table.cpp\"\
-    \n#include \"Mylib/Combinatorics/bernoulli_number_fps.cpp\"\n\nnamespace hl =\
-    \ haar_lib;\n\nusing mint = hl::modint<998244353>;\nconstexpr int PRIM_ROOT =\
-    \ 3;\nusing NTT = hl::number_theoretic_transform<mint, PRIM_ROOT, 1 << 20>;\n\
-    const static auto ft = hl::factorial_table<mint>(500001);\nconst static auto ntt\
-    \ = NTT();\nusing FPS = hl::formal_power_series<mint, ntt>;\n\nint main(){\n \
-    \ std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int N; std::cin >>\
-    \ N;\n\n  auto res = hl::bernoulli_number_fps<FPS, ft>(N);\n  std::cout << hl::join(res.begin(),\
+    \ \"Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/Number/Prime/primitive_root.cpp\"\
+    \n#include \"Mylib/Convolution/ntt_convolution.cpp\"\n#include \"Mylib/Math/formal_power_series.cpp\"\
+    \n#include \"Mylib/Combinatorics/factorial_table.cpp\"\n#include \"Mylib/Combinatorics/bernoulli_number_fps.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int\
+    \ prim_root = hl::primitive_root(mod);\nusing mint = hl::modint<mod>;\nusing NTT\
+    \ = hl::number_theoretic_transform<mint, prim_root, 1 << 20>;\nconst static auto\
+    \ ft = hl::factorial_table<mint>(500001);\nconst static auto ntt = NTT();\nusing\
+    \ FPS = hl::formal_power_series<mint, ntt>;\n\nint main(){\n  std::cin.tie(0);\n\
+    \  std::ios::sync_with_stdio(false);\n\n  int N; std::cin >> N;\n\n  auto res\
+    \ = hl::bernoulli_number_fps<FPS, ft>(N);\n  std::cout << hl::join(res.begin(),\
     \ res.begin() + N + 1) << \"\\n\";\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/IO/join.cpp
   - Mylib/Number/Mint/mint.cpp
+  - Mylib/Number/Prime/primitive_root.cpp
+  - Mylib/Number/Mod/mod_pow.cpp
   - Mylib/Convolution/ntt_convolution.cpp
   - Mylib/Math/formal_power_series.cpp
   - Mylib/Combinatorics/factorial_table.cpp
@@ -252,7 +274,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/bernoulli_number/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-18 08:49:48+09:00'
+  timestamp: '2020-10-28 03:22:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/bernoulli_number/main.test.cpp

@@ -15,10 +15,10 @@ data:
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/Coloring/chromatic_number.cpp\"\n#include <vector>\n\
     #include <cstdint>\n#include <cmath>\n#line 3 \"Mylib/Number/Mod/mod_pow.cpp\"\
-    \n\nnamespace haar_lib {\n  int64_t mod_pow(int64_t n, int64_t p, int64_t m){\n\
-    \    int64_t ret = 1;\n    while(p > 0){\n      if(p & 1) (ret *= n) %= m;\n \
-    \     (n *= n) %= m;\n      p >>= 1;\n    }\n    return ret;\n  }\n}\n#line 6\
-    \ \"Mylib/Graph/Coloring/chromatic_number.cpp\"\n\nnamespace haar_lib {\n  int\
+    \n\nnamespace haar_lib {\n  constexpr int64_t mod_pow(int64_t n, int64_t p, int64_t\
+    \ m){\n    int64_t ret = 1;\n    while(p > 0){\n      if(p & 1) (ret *= n) %=\
+    \ m;\n      (n *= n) %= m;\n      p >>= 1;\n    }\n    return ret;\n  }\n}\n#line\
+    \ 6 \"Mylib/Graph/Coloring/chromatic_number.cpp\"\n\nnamespace haar_lib {\n  int\
     \ chromatic_number(const std::vector<std::vector<int>> &graph){\n    static constexpr\
     \ int mod = 1000000007;\n    const int N = graph.size();\n\n    std::vector<int>\
     \ g(N);\n    for(int i = 0; i < N; ++i){\n      for(auto j : graph[i]){\n    \
@@ -54,7 +54,7 @@ data:
   isVerificationFile: false
   path: Mylib/Graph/Coloring/chromatic_number.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-10-28 03:22:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/2136/main.test.cpp

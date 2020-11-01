@@ -26,9 +26,9 @@ data:
     \ \"https://judge.yosupo.jp/problem/sqrt_mod\"\n\n#include <iostream>\n#line 2\
     \ \"Mylib/Number/Mod/mod_sqrt.cpp\"\n#include <random>\n#include <optional>\n\
     #line 2 \"Mylib/Number/Mod/mod_pow.cpp\"\n#include <cstdint>\n\nnamespace haar_lib\
-    \ {\n  int64_t mod_pow(int64_t n, int64_t p, int64_t m){\n    int64_t ret = 1;\n\
-    \    while(p > 0){\n      if(p & 1) (ret *= n) %= m;\n      (n *= n) %= m;\n \
-    \     p >>= 1;\n    }\n    return ret;\n  }\n}\n#line 5 \"Mylib/Number/Mod/mod_sqrt.cpp\"\
+    \ {\n  constexpr int64_t mod_pow(int64_t n, int64_t p, int64_t m){\n    int64_t\
+    \ ret = 1;\n    while(p > 0){\n      if(p & 1) (ret *= n) %= m;\n      (n *= n)\
+    \ %= m;\n      p >>= 1;\n    }\n    return ret;\n  }\n}\n#line 5 \"Mylib/Number/Mod/mod_sqrt.cpp\"\
     \n\nnamespace haar_lib {\n  std::optional<int64_t> mod_sqrt(int64_t a, int64_t\
     \ p){\n    if(p == 2) return a % 2;\n    if(a == 0) return 0;\n\n    int64_t b\
     \ = mod_pow(a, (p - 1) / 2, p);\n\n    if(b == p - 1) return {};\n    if(p % 4\
@@ -81,7 +81,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/sqrt_mod/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-10-28 03:22:23+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/sqrt_mod/main.test.cpp

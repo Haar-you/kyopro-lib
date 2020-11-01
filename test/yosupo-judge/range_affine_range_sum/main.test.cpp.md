@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/AlgebraicStructure/Monoid/affine.cpp
     title: Affine monoid
   - icon: ':question:'

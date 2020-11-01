@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Convolution/fast_zeta_transform_subset.cpp
     title: Fast Zeta transform (Subsets)
   - icon: ':question:'
@@ -18,19 +18,21 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3134
   bundledCode: "#line 1 \"test/aoj/3134/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3134\"\
     \n\n#include <iostream>\n#include <vector>\n#include <functional>\n#include <algorithm>\n\
-    #line 4 \"Mylib/Convolution/fast_zeta_transform_subset.cpp\"\n\nnamespace haar_lib\
-    \ {\n  template <typename T, typename Func = std::plus<T>>\n  std::vector<T> fast_zeta_transform_subset(std::vector<T>\
-    \ f, const Func &op = std::plus<T>()){\n    for(int i = 0; (1 << i) < (int)f.size();\
-    \ ++i){\n      for(int j = 0; j < (int)f.size(); ++j){\n        if(j & (1 << i))\
-    \ f[j] = op(f[j], f[j ^ (1 << i)]);\n      }\n    }\n    return f;\n  }\n}\n#line\
-    \ 4 \"Mylib/IO/input_vector.cpp\"\n\nnamespace haar_lib {\n  template <typename\
-    \ T>\n  std::vector<T> input_vector(int N){\n    std::vector<T> ret(N);\n    for(int\
-    \ i = 0; i < N; ++i) std::cin >> ret[i];\n    return ret;\n  }\n\n  template <typename\
-    \ T>\n  std::vector<std::vector<T>> input_vector(int N, int M){\n    std::vector<std::vector<T>>\
-    \ ret(N);\n    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);\n    return\
-    \ ret;\n  }\n}\n#line 9 \"test/aoj/3134/main.test.cpp\"\n\nnamespace hl = haar_lib;\n\
-    \nint main(){\n  int N, K; std::cin >> N >> K;\n\n  auto A = hl::input_vector<int>(N);\n\
-    \n  std::vector<int> sum(1 << N);\n\n  for(int i = 0; i < 1 << N; ++i){\n    for(int\
+    #line 4 \"Mylib/Convolution/fast_zeta_transform_subset.cpp\"\n#include <cassert>\n\
+    \nnamespace haar_lib {\n  template <typename T, typename Func = std::plus<T>>\n\
+    \  std::vector<T> fast_zeta_transform_subset(std::vector<T> f, const Func &op\
+    \ = std::plus<T>()){\n    const int N = f.size();\n    assert((N & (N - 1)) ==\
+    \ 0 && \"N must be a power of 2\");\n    for(int i = 1; i < N; i <<= 1){\n   \
+    \   for(int j = 0; j < N; ++j){\n        if(j & i) f[j] = op(f[j], f[j ^ i]);\n\
+    \      }\n    }\n    return f;\n  }\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\n\
+    \nnamespace haar_lib {\n  template <typename T>\n  std::vector<T> input_vector(int\
+    \ N){\n    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i) std::cin >>\
+    \ ret[i];\n    return ret;\n  }\n\n  template <typename T>\n  std::vector<std::vector<T>>\
+    \ input_vector(int N, int M){\n    std::vector<std::vector<T>> ret(N);\n    for(int\
+    \ i = 0; i < N; ++i) ret[i] = input_vector<T>(M);\n    return ret;\n  }\n}\n#line\
+    \ 9 \"test/aoj/3134/main.test.cpp\"\n\nnamespace hl = haar_lib;\n\nint main(){\n\
+    \  int N, K; std::cin >> N >> K;\n\n  auto A = hl::input_vector<int>(N);\n\n \
+    \ std::vector<int> sum(1 << N);\n\n  for(int i = 0; i < 1 << N; ++i){\n    for(int\
     \ j = 0; j < N; ++j){\n      if(not (i & (1 << j))){\n        sum[i | (1 << j)]\
     \ = sum[i] + A[j];\n      }\n    }\n  }\n\n  std::vector<int> f(1 << N);\n  for(int\
     \ i = 0; i < 1 << N; ++i){\n    if(sum[i] == K) f[i] = true;\n  }\n\n  f = hl::fast_zeta_transform_subset(f,\
@@ -55,7 +57,7 @@ data:
   isVerificationFile: true
   path: test/aoj/3134/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-10-30 23:28:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/3134/main.test.cpp

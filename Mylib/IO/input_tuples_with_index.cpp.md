@@ -27,10 +27,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
     title: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/persistent_unionfind/main.test.cpp
     title: test/yosupo-judge/persistent_unionfind/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/point_set_range_composite/main.test.cpp
     title: test/yosupo-judge/point_set_range_composite/main.test.cpp
   - icon: ':x:'

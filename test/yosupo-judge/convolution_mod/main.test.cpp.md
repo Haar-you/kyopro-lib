@@ -13,6 +13,12 @@ data:
   - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
+  - icon: ':question:'
+    path: Mylib/Number/Mod/mod_pow.cpp
+    title: Mod pow
+  - icon: ':question:'
+    path: Mylib/Number/Prime/primitive_root.cpp
+    title: Primitive root
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -113,7 +119,19 @@ data:
     \ (int64_t)res2[i], (int64_t)res3[i]};\n\n      const int64_t t0 = r[0] % M1;\n\
     \      const int64_t t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2\
     \ = ((r[2] - t0 + M3) * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0)\
-    \ + T(t1) * M1 + T(t2) * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 3 \"\
+    \ + T(t1) * M1 + T(t2) * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 2 \"\
+    Mylib/Number/Mod/mod_pow.cpp\"\n#include <cstdint>\n\nnamespace haar_lib {\n \
+    \ constexpr int64_t mod_pow(int64_t n, int64_t p, int64_t m){\n    int64_t ret\
+    \ = 1;\n    while(p > 0){\n      if(p & 1) (ret *= n) %= m;\n      (n *= n) %=\
+    \ m;\n      p >>= 1;\n    }\n    return ret;\n  }\n}\n#line 3 \"Mylib/Number/Prime/primitive_root.cpp\"\
+    \n\nnamespace haar_lib {\n  constexpr int primitive_root(int p){\n    int pf[30]\
+    \ = {};\n    int k = 0;\n    {\n      int n = p - 1;\n      for(int64_t i = 2;\
+    \ i * i <= p; ++i){\n        if(n % i == 0){\n          pf[k++] = i;\n       \
+    \   while(n % i == 0) n /= i;\n        }\n      }\n      if(n != 1)\n        pf[k++]\
+    \ = n;\n    }\n\n    for(int g = 2; g <= p; ++g){\n      bool ok = true;\n   \
+    \   for(int i = 0; i < k; ++i){\n        if(mod_pow(g, (p - 1) / pf[i], p) ==\
+    \ 1){\n          ok = false;\n          break;\n        }\n      }\n\n      if(not\
+    \ ok) continue;\n\n      return g;\n    }\n    return -1;\n  }\n}\n#line 3 \"\
     Mylib/IO/join.cpp\"\n#include <sstream>\n#include <string>\n\nnamespace haar_lib\
     \ {\n  template <typename Iter>\n  std::string join(Iter first, Iter last, std::string\
     \ delim = \" \"){\n    std::stringstream s;\n\n    for(auto it = first; it !=\
@@ -124,34 +142,36 @@ data:
     \    return ret;\n  }\n\n  template <typename T>\n  std::vector<std::vector<T>>\
     \ input_vector(int N, int M){\n    std::vector<std::vector<T>> ret(N);\n    for(int\
     \ i = 0; i < N; ++i) ret[i] = input_vector<T>(M);\n    return ret;\n  }\n}\n#line\
-    \ 9 \"test/yosupo-judge/convolution_mod/main.test.cpp\"\n\nnamespace hl = haar_lib;\n\
-    \nconst int mod = 998244353;\nconst int PRIM_ROOT = 3;\n\nusing mint = hl::modint<mod>;\n\
-    using NTT = hl::number_theoretic_transform<mint, PRIM_ROOT, 1 << 20>;\nconst static\
-    \ auto ntt = NTT();\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
-    \n  int n, m; std::cin >> n >> m;\n\n  auto a = hl::input_vector<int64_t>(n);\n\
-    \  auto b = hl::input_vector<int64_t>(m);\n\n  auto ans = ntt(a, b);\n\n  std::cout\
-    \ << hl::join(ans.begin(), ans.begin() + n + m - 1) << \"\\n\";\n\n  return 0;\n\
-    }\n"
+    \ 10 \"test/yosupo-judge/convolution_mod/main.test.cpp\"\n\nnamespace hl = haar_lib;\n\
+    \nconstexpr int mod = 998244353;\nconstexpr int prim_root = hl::primitive_root(mod);\n\
+    \nusing mint = hl::modint<mod>;\nusing NTT = hl::number_theoretic_transform<mint,\
+    \ prim_root, 1 << 20>;\nconst static auto ntt = NTT();\n\nint main(){\n  std::cin.tie(0);\n\
+    \  std::ios::sync_with_stdio(false);\n\n  int n, m; std::cin >> n >> m;\n\n  auto\
+    \ a = hl::input_vector<int64_t>(n);\n  auto b = hl::input_vector<int64_t>(m);\n\
+    \n  auto ans = ntt(a, b);\n\n  std::cout << hl::join(ans.begin(), ans.begin()\
+    \ + n + m - 1) << \"\\n\";\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n\n#include\
     \ <iostream>\n#include <vector>\n#include \"Mylib/Convolution/ntt_convolution.cpp\"\
-    \n#include \"Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/IO/join.cpp\"\n#include\
-    \ \"Mylib/IO/input_vector.cpp\"\n\nnamespace hl = haar_lib;\n\nconst int mod =\
-    \ 998244353;\nconst int PRIM_ROOT = 3;\n\nusing mint = hl::modint<mod>;\nusing\
-    \ NTT = hl::number_theoretic_transform<mint, PRIM_ROOT, 1 << 20>;\nconst static\
-    \ auto ntt = NTT();\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
-    \n  int n, m; std::cin >> n >> m;\n\n  auto a = hl::input_vector<int64_t>(n);\n\
-    \  auto b = hl::input_vector<int64_t>(m);\n\n  auto ans = ntt(a, b);\n\n  std::cout\
-    \ << hl::join(ans.begin(), ans.begin() + n + m - 1) << \"\\n\";\n\n  return 0;\n\
-    }\n"
+    \n#include \"Mylib/Number/Prime/primitive_root.cpp\"\n#include \"Mylib/Number/Mint/mint.cpp\"\
+    \n#include \"Mylib/IO/join.cpp\"\n#include \"Mylib/IO/input_vector.cpp\"\n\nnamespace\
+    \ hl = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int prim_root =\
+    \ hl::primitive_root(mod);\n\nusing mint = hl::modint<mod>;\nusing NTT = hl::number_theoretic_transform<mint,\
+    \ prim_root, 1 << 20>;\nconst static auto ntt = NTT();\n\nint main(){\n  std::cin.tie(0);\n\
+    \  std::ios::sync_with_stdio(false);\n\n  int n, m; std::cin >> n >> m;\n\n  auto\
+    \ a = hl::input_vector<int64_t>(n);\n  auto b = hl::input_vector<int64_t>(m);\n\
+    \n  auto ans = ntt(a, b);\n\n  std::cout << hl::join(ans.begin(), ans.begin()\
+    \ + n + m - 1) << \"\\n\";\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Convolution/ntt_convolution.cpp
   - Mylib/Number/Mint/mint.cpp
+  - Mylib/Number/Prime/primitive_root.cpp
+  - Mylib/Number/Mod/mod_pow.cpp
   - Mylib/IO/join.cpp
   - Mylib/IO/input_vector.cpp
   isVerificationFile: true
   path: test/yosupo-judge/convolution_mod/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-18 08:49:48+09:00'
+  timestamp: '2020-10-28 03:22:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/convolution_mod/main.test.cpp

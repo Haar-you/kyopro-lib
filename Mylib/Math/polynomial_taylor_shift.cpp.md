@@ -6,14 +6,14 @@ data:
     path: Mylib/Combinatorics/stirling_number_first_fft.cpp
     title: Stirling numbers of the first kind (FFT)
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
     title: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Math/polynomial_taylor_shift.cpp\"\n#include <vector>\n\
@@ -42,7 +42,7 @@ data:
   requiredBy:
   - Mylib/Combinatorics/stirling_number_first_fft.cpp
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
   - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp

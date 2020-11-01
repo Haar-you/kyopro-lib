@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp
     title: Segment tree (On segment tree)
   - icon: ':heavy_check_mark:'
@@ -27,10 +27,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/manhattanmst/main.test.cpp
     title: test/yosupo-judge/manhattanmst/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
     title: test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/point_set_range_composite/main.test.cpp
     title: test/yosupo-judge/point_set_range_composite/main.test.cpp
   - icon: ':x:'

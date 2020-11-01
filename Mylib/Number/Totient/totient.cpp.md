@@ -16,7 +16,7 @@ data:
   _verificationStatusIcon: ':question:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Number/euler_totient_function.cpp\"\n#include <cstdint>\n\
+  bundledCode: "#line 2 \"Mylib/Number/Totient/totient.cpp\"\n#include <cstdint>\n\
     \nnamespace haar_lib {\n  int64_t totient(int64_t n){\n    int64_t ret = n;\n\n\
     \    for(int64_t i = 2; i * i <= n; ++i){\n      if(n % i == 0){\n        ret\
     \ -= ret / i;\n        while(n % i == 0) n /= i;\n      }\n    }\n\n    if(n !=\
@@ -27,15 +27,15 @@ data:
     \      }\n    }\n\n    if(n != 1) ret -= ret / n;\n\n    return ret;\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/Number/euler_totient_function.cpp
+  path: Mylib/Number/Totient/totient.cpp
   requiredBy:
   - Mylib/Number/tetration.cpp
-  timestamp: '2020-09-25 03:54:08+09:00'
+  timestamp: '2020-11-01 20:53:57+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/NTL_1_D/main.totient.test.cpp
   - test/yosupo-judge/tetration_mod/main.test.cpp
-documentation_of: Mylib/Number/euler_totient_function.cpp
+documentation_of: Mylib/Number/Totient/totient.cpp
 layout: document
 title: Euler's totient function
 ---

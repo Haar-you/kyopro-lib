@@ -22,6 +22,9 @@ data:
   - icon: ':x:'
     path: Mylib/Number/Mod/mod_sqrt.cpp
     title: Mod sqrt
+  - icon: ':question:'
+    path: Mylib/Number/Prime/primitive_root.cpp
+    title: Primitive root
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -75,27 +78,35 @@ data:
     \ &s, const modint &a){s << a.val_; return s;}\n\n    template <int N>\n    static\
     \ auto div(){\n      static auto value = inv(N);\n      return value;\n    }\n\
     \n    explicit operator int32_t() const noexcept {return val_;}\n    explicit\
-    \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 2 \"Mylib/Number/Mod/mod_sqrt.cpp\"\
-    \n#include <random>\n#include <optional>\n#line 2 \"Mylib/Number/Mod/mod_pow.cpp\"\
-    \n#include <cstdint>\n\nnamespace haar_lib {\n  int64_t mod_pow(int64_t n, int64_t\
-    \ p, int64_t m){\n    int64_t ret = 1;\n    while(p > 0){\n      if(p & 1) (ret\
-    \ *= n) %= m;\n      (n *= n) %= m;\n      p >>= 1;\n    }\n    return ret;\n\
-    \  }\n}\n#line 5 \"Mylib/Number/Mod/mod_sqrt.cpp\"\n\nnamespace haar_lib {\n \
-    \ std::optional<int64_t> mod_sqrt(int64_t a, int64_t p){\n    if(p == 2) return\
-    \ a % 2;\n    if(a == 0) return 0;\n\n    int64_t b = mod_pow(a, (p - 1) / 2,\
-    \ p);\n\n    if(b == p - 1) return {};\n    if(p % 4 == 3) return mod_pow(a, (p\
-    \ + 1) / 4, p);\n\n    int64_t q = p - 1, s = 0;\n    while(q % 2 == 0){\n   \
-    \   q /= 2;\n      s += 1;\n    }\n\n    static std::mt19937_64 rand(time(0));\n\
-    \    std::uniform_int_distribution<> dist(0, p - 1);\n\n    int64_t z;\n    while(1){\n\
-    \      z = dist(rand);\n      if(mod_pow(z, (p - 1) / 2, p) == p - 1) break;\n\
-    \    }\n\n    int64_t m = s;\n    int64_t c = mod_pow(z, q, p);\n    int64_t t\
-    \ = mod_pow(a, q, p);\n    int64_t r = mod_pow(a, (q + 1) / 2, p);\n\n    while(1){\n\
-    \      if(t == 0) return 0;\n      if(t == 1) return r;\n\n      int i = 1;\n\
-    \      for(int64_t T = t; i < m; ++i){\n        (T *= T) %= p;\n        if(T ==\
-    \ 1) break;\n      }\n\n      int64_t b = mod_pow(c, 1LL << (m - i - 1), p);\n\
-    \n      m = i;\n      c = b * b % p;\n      (t *= b * b % p) %= p;\n      (r *=\
-    \ b) %= p;\n    }\n  }\n}\n#line 3 \"Mylib/Convolution/ntt_convolution.cpp\"\n\
-    #include <cassert>\n#line 5 \"Mylib/Convolution/ntt_convolution.cpp\"\n#include\
+    \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 2 \"Mylib/Number/Mod/mod_pow.cpp\"\
+    \n#include <cstdint>\n\nnamespace haar_lib {\n  constexpr int64_t mod_pow(int64_t\
+    \ n, int64_t p, int64_t m){\n    int64_t ret = 1;\n    while(p > 0){\n      if(p\
+    \ & 1) (ret *= n) %= m;\n      (n *= n) %= m;\n      p >>= 1;\n    }\n    return\
+    \ ret;\n  }\n}\n#line 3 \"Mylib/Number/Prime/primitive_root.cpp\"\n\nnamespace\
+    \ haar_lib {\n  constexpr int primitive_root(int p){\n    int pf[30] = {};\n \
+    \   int k = 0;\n    {\n      int n = p - 1;\n      for(int64_t i = 2; i * i <=\
+    \ p; ++i){\n        if(n % i == 0){\n          pf[k++] = i;\n          while(n\
+    \ % i == 0) n /= i;\n        }\n      }\n      if(n != 1)\n        pf[k++] = n;\n\
+    \    }\n\n    for(int g = 2; g <= p; ++g){\n      bool ok = true;\n      for(int\
+    \ i = 0; i < k; ++i){\n        if(mod_pow(g, (p - 1) / pf[i], p) == 1){\n    \
+    \      ok = false;\n          break;\n        }\n      }\n\n      if(not ok) continue;\n\
+    \n      return g;\n    }\n    return -1;\n  }\n}\n#line 2 \"Mylib/Number/Mod/mod_sqrt.cpp\"\
+    \n#include <random>\n#include <optional>\n#line 5 \"Mylib/Number/Mod/mod_sqrt.cpp\"\
+    \n\nnamespace haar_lib {\n  std::optional<int64_t> mod_sqrt(int64_t a, int64_t\
+    \ p){\n    if(p == 2) return a % 2;\n    if(a == 0) return 0;\n\n    int64_t b\
+    \ = mod_pow(a, (p - 1) / 2, p);\n\n    if(b == p - 1) return {};\n    if(p % 4\
+    \ == 3) return mod_pow(a, (p + 1) / 4, p);\n\n    int64_t q = p - 1, s = 0;\n\
+    \    while(q % 2 == 0){\n      q /= 2;\n      s += 1;\n    }\n\n    static std::mt19937_64\
+    \ rand(time(0));\n    std::uniform_int_distribution<> dist(0, p - 1);\n\n    int64_t\
+    \ z;\n    while(1){\n      z = dist(rand);\n      if(mod_pow(z, (p - 1) / 2, p)\
+    \ == p - 1) break;\n    }\n\n    int64_t m = s;\n    int64_t c = mod_pow(z, q,\
+    \ p);\n    int64_t t = mod_pow(a, q, p);\n    int64_t r = mod_pow(a, (q + 1) /\
+    \ 2, p);\n\n    while(1){\n      if(t == 0) return 0;\n      if(t == 1) return\
+    \ r;\n\n      int i = 1;\n      for(int64_t T = t; i < m; ++i){\n        (T *=\
+    \ T) %= p;\n        if(T == 1) break;\n      }\n\n      int64_t b = mod_pow(c,\
+    \ 1LL << (m - i - 1), p);\n\n      m = i;\n      c = b * b % p;\n      (t *= b\
+    \ * b % p) %= p;\n      (r *= b) %= p;\n    }\n  }\n}\n#line 3 \"Mylib/Convolution/ntt_convolution.cpp\"\
+    \n#include <cassert>\n#line 5 \"Mylib/Convolution/ntt_convolution.cpp\"\n#include\
     \ <algorithm>\n#line 7 \"Mylib/Convolution/ntt_convolution.cpp\"\n\nnamespace\
     \ haar_lib {\n  template <typename T, int PRIM_ROOT, int MAX_SIZE>\n  class number_theoretic_transform\
     \ {\n  public:\n    using value_type = T;\n    constexpr static int primitive_root\
@@ -230,22 +241,25 @@ data:
     \ haar_lib {\n  template <typename Iter>\n  std::string join(Iter first, Iter\
     \ last, std::string delim = \" \"){\n    std::stringstream s;\n\n    for(auto\
     \ it = first; it != last; ++it){\n      if(it != first) s << delim;\n      s <<\
-    \ *it;\n    }\n\n    return s.str();\n  }\n}\n#line 12 \"test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nusing mint = hl::modint<998244353>;\nusing NTT\
-    \ = hl::number_theoretic_transform<mint, 3, 1 << 21>;\nconst static auto ntt =\
-    \ NTT();\nusing FPS = hl::formal_power_series<mint, ntt>;\n\nint main(){\n  std::cin.tie(0);\n\
-    \  std::ios::sync_with_stdio(false);\n\n  FPS::get_sqrt = [&](const auto &a){return\
-    \ hl::mod_sqrt((int64_t)a, mint::mod());};\n\n  int N; std::cin >> N;\n  auto\
-    \ a = hl::input_vector<mint>(N);\n  auto ans = FPS(a).sqrt();\n\n  if(ans){\n\
-    \    std::cout << hl::join((*ans).begin(), (*ans).begin() + N) << \"\\n\";\n \
-    \ }else{\n    std::cout << -1 << \"\\n\";\n  }\n\n  return 0;\n}\n"
+    \ *it;\n    }\n\n    return s.str();\n  }\n}\n#line 13 \"test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int\
+    \ prim_root = hl::primitive_root(mod);\nusing mint = hl::modint<mod>;\nusing NTT\
+    \ = hl::number_theoretic_transform<mint, prim_root, 1 << 21>;\nconst static auto\
+    \ ntt = NTT();\nusing FPS = hl::formal_power_series<mint, ntt>;\n\nint main(){\n\
+    \  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  FPS::get_sqrt =\
+    \ [&](const auto &a){return hl::mod_sqrt((int64_t)a, mint::mod());};\n\n  int\
+    \ N; std::cin >> N;\n  auto a = hl::input_vector<mint>(N);\n  auto ans = FPS(a).sqrt();\n\
+    \n  if(ans){\n    std::cout << hl::join((*ans).begin(), (*ans).begin() + N) <<\
+    \ \"\\n\";\n  }else{\n    std::cout << -1 << \"\\n\";\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sqrt_of_formal_power_series\"\
     \n\n#include <iostream>\n#include <vector>\n#include <functional>\n#include \"\
-    Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/Number/Mod/mod_sqrt.cpp\"\n#include\
-    \ \"Mylib/Convolution/ntt_convolution.cpp\"\n#include \"Mylib/Math/formal_power_series.cpp\"\
-    \n#include \"Mylib/IO/input_vector.cpp\"\n#include \"Mylib/IO/join.cpp\"\n\nnamespace\
-    \ hl = haar_lib;\n\nusing mint = hl::modint<998244353>;\nusing NTT = hl::number_theoretic_transform<mint,\
-    \ 3, 1 << 21>;\nconst static auto ntt = NTT();\nusing FPS = hl::formal_power_series<mint,\
+    Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/Number/Prime/primitive_root.cpp\"\
+    \n#include \"Mylib/Number/Mod/mod_sqrt.cpp\"\n#include \"Mylib/Convolution/ntt_convolution.cpp\"\
+    \n#include \"Mylib/Math/formal_power_series.cpp\"\n#include \"Mylib/IO/input_vector.cpp\"\
+    \n#include \"Mylib/IO/join.cpp\"\n\nnamespace hl = haar_lib;\n\nconstexpr int\
+    \ mod = 998244353;\nconstexpr int prim_root = hl::primitive_root(mod);\nusing\
+    \ mint = hl::modint<mod>;\nusing NTT = hl::number_theoretic_transform<mint, prim_root,\
+    \ 1 << 21>;\nconst static auto ntt = NTT();\nusing FPS = hl::formal_power_series<mint,\
     \ ntt>;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  FPS::get_sqrt = [&](const auto &a){return hl::mod_sqrt((int64_t)a, mint::mod());};\n\
     \n  int N; std::cin >> N;\n  auto a = hl::input_vector<mint>(N);\n  auto ans =\
@@ -254,8 +268,9 @@ data:
     \ 0;\n}\n"
   dependsOn:
   - Mylib/Number/Mint/mint.cpp
-  - Mylib/Number/Mod/mod_sqrt.cpp
+  - Mylib/Number/Prime/primitive_root.cpp
   - Mylib/Number/Mod/mod_pow.cpp
+  - Mylib/Number/Mod/mod_sqrt.cpp
   - Mylib/Convolution/ntt_convolution.cpp
   - Mylib/Math/formal_power_series.cpp
   - Mylib/IO/input_vector.cpp
@@ -263,7 +278,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-18 08:49:48+09:00'
+  timestamp: '2020-10-28 03:22:23+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp

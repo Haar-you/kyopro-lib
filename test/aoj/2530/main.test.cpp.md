@@ -21,10 +21,10 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2530
   bundledCode: "#line 1 \"test/aoj/2530/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2530\"\
     \n\n#include <iostream>\n#include <vector>\n#include <bitset>\n#line 2 \"Mylib/Number/Mod/mod_pow.cpp\"\
-    \n#include <cstdint>\n\nnamespace haar_lib {\n  int64_t mod_pow(int64_t n, int64_t\
-    \ p, int64_t m){\n    int64_t ret = 1;\n    while(p > 0){\n      if(p & 1) (ret\
-    \ *= n) %= m;\n      (n *= n) %= m;\n      p >>= 1;\n    }\n    return ret;\n\
-    \  }\n}\n#line 3 \"Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp\"\
+    \n#include <cstdint>\n\nnamespace haar_lib {\n  constexpr int64_t mod_pow(int64_t\
+    \ n, int64_t p, int64_t m){\n    int64_t ret = 1;\n    while(p > 0){\n      if(p\
+    \ & 1) (ret *= n) %= m;\n      (n *= n) %= m;\n      p >>= 1;\n    }\n    return\
+    \ ret;\n  }\n}\n#line 3 \"Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp\"\
     \n#include <optional>\n#include <utility>\n#line 6 \"Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp\"\
     \n\nnamespace haar_lib {\n  namespace binary_simultaneous_linear_equations_impl\
     \ {\n    template <size_t N>\n    struct result {\n      int rank, dim;\n    \
@@ -82,7 +82,7 @@ data:
   isVerificationFile: true
   path: test/aoj/2530/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-10-28 03:22:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/2530/main.test.cpp

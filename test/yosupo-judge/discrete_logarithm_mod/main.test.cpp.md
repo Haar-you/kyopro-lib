@@ -29,11 +29,11 @@ data:
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\n\
     \n#include <iostream>\n#line 2 \"Mylib/Number/Mod/mod_log.cpp\"\n#include <unordered_map>\n\
     #include <optional>\n#include <numeric>\n#include <cmath>\n#line 2 \"Mylib/Number/Mod/mod_pow.cpp\"\
-    \n#include <cstdint>\n\nnamespace haar_lib {\n  int64_t mod_pow(int64_t n, int64_t\
-    \ p, int64_t m){\n    int64_t ret = 1;\n    while(p > 0){\n      if(p & 1) (ret\
-    \ *= n) %= m;\n      (n *= n) %= m;\n      p >>= 1;\n    }\n    return ret;\n\
-    \  }\n}\n#line 2 \"Mylib/Number/Mod/mod_inv.cpp\"\n#include <utility>\n#line 4\
-    \ \"Mylib/Number/Mod/mod_inv.cpp\"\n\nnamespace haar_lib {\n  int64_t mod_inv(int64_t\
+    \n#include <cstdint>\n\nnamespace haar_lib {\n  constexpr int64_t mod_pow(int64_t\
+    \ n, int64_t p, int64_t m){\n    int64_t ret = 1;\n    while(p > 0){\n      if(p\
+    \ & 1) (ret *= n) %= m;\n      (n *= n) %= m;\n      p >>= 1;\n    }\n    return\
+    \ ret;\n  }\n}\n#line 2 \"Mylib/Number/Mod/mod_inv.cpp\"\n#include <utility>\n\
+    #line 4 \"Mylib/Number/Mod/mod_inv.cpp\"\n\nnamespace haar_lib {\n  int64_t mod_inv(int64_t\
     \ a, int64_t m){\n    int64_t b = m, u = 1, v = 0;\n\n    while(b){\n      int64_t\
     \ t = a / b;\n      a -= t * b; std::swap(a, b);\n      u -= t * v; std::swap(u,\
     \ v);\n    }\n\n    u %= m;\n    if(u < 0) u += m;\n\n    return u;\n  }\n}\n\
@@ -90,7 +90,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-10-28 03:22:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp

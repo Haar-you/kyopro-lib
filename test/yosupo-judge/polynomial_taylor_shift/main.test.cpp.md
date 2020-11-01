@@ -10,16 +10,22 @@ data:
   - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Math/polynomial_taylor_shift.cpp
     title: Polynomial taylor shift
   - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
+  - icon: ':question:'
+    path: Mylib/Number/Mod/mod_pow.cpp
+    title: Mod pow
+  - icon: ':question:'
+    path: Mylib/Number/Prime/primitive_root.cpp
+    title: Primitive root
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/polynomial_taylor_shift
@@ -79,7 +85,19 @@ data:
     \ &s, const modint &a){s << a.val_; return s;}\n\n    template <int N>\n    static\
     \ auto div(){\n      static auto value = inv(N);\n      return value;\n    }\n\
     \n    explicit operator int32_t() const noexcept {return val_;}\n    explicit\
-    \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 3 \"Mylib/Convolution/ntt_convolution.cpp\"\
+    \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 2 \"Mylib/Number/Mod/mod_pow.cpp\"\
+    \n#include <cstdint>\n\nnamespace haar_lib {\n  constexpr int64_t mod_pow(int64_t\
+    \ n, int64_t p, int64_t m){\n    int64_t ret = 1;\n    while(p > 0){\n      if(p\
+    \ & 1) (ret *= n) %= m;\n      (n *= n) %= m;\n      p >>= 1;\n    }\n    return\
+    \ ret;\n  }\n}\n#line 3 \"Mylib/Number/Prime/primitive_root.cpp\"\n\nnamespace\
+    \ haar_lib {\n  constexpr int primitive_root(int p){\n    int pf[30] = {};\n \
+    \   int k = 0;\n    {\n      int n = p - 1;\n      for(int64_t i = 2; i * i <=\
+    \ p; ++i){\n        if(n % i == 0){\n          pf[k++] = i;\n          while(n\
+    \ % i == 0) n /= i;\n        }\n      }\n      if(n != 1)\n        pf[k++] = n;\n\
+    \    }\n\n    for(int g = 2; g <= p; ++g){\n      bool ok = true;\n      for(int\
+    \ i = 0; i < k; ++i){\n        if(mod_pow(g, (p - 1) / pf[i], p) == 1){\n    \
+    \      ok = false;\n          break;\n        }\n      }\n\n      if(not ok) continue;\n\
+    \n      return g;\n    }\n    return -1;\n  }\n}\n#line 3 \"Mylib/Convolution/ntt_convolution.cpp\"\
     \n#include <cassert>\n#line 5 \"Mylib/Convolution/ntt_convolution.cpp\"\n#include\
     \ <algorithm>\n#line 7 \"Mylib/Convolution/ntt_convolution.cpp\"\n\nnamespace\
     \ haar_lib {\n  template <typename T, int PRIM_ROOT, int MAX_SIZE>\n  class number_theoretic_transform\
@@ -137,10 +155,11 @@ data:
     \ (i + 1);\n\n    std::vector<T> B(2 * N - 1);\n    for(int i = 0; i < N; ++i){\n\
     \      B[N - i - 1] = d * g[i];\n      d *= c;\n    }\n\n    auto C = convolve(A,\
     \ B);\n\n    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i) ret[i] = C[(N\
-    \ - 1) * 2 + i] * g[i];\n\n    return ret;\n  }\n}\n#line 10 \"test/yosupo-judge/polynomial_taylor_shift/main.test.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nusing mint = hl::modint<998244353>;\nusing NTT\
-    \ = hl::number_theoretic_transform<mint, 3, 1 << 21>;\n\nint main(){\n  using\
-    \ namespace std::placeholders;\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
+    \ - 1) * 2 + i] * g[i];\n\n    return ret;\n  }\n}\n#line 11 \"test/yosupo-judge/polynomial_taylor_shift/main.test.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int\
+    \ prim_root = hl::primitive_root(mod);\nusing mint = hl::modint<mod>;\nusing NTT\
+    \ = hl::number_theoretic_transform<mint, prim_root, 1 << 21>;\n\nint main(){\n\
+    \  using namespace std::placeholders;\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  int N, c; std::cin >> N >> c;\n  auto a = hl::input_vector<mint>(N);\n\n \
     \ auto ntt = NTT();\n  auto convolve = std::bind(&NTT::convolve<mint>, &ntt, _1,\
     \ _2);\n  auto ans = hl::polynomial_taylor_shift(a, mint(c), convolve);\n\n  std::cout\
@@ -148,25 +167,29 @@ data:
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/polynomial_taylor_shift\"\
     \n\n#include <iostream>\n#include <functional>\n#include \"Mylib/IO/input_vector.cpp\"\
     \n#include \"Mylib/IO/join.cpp\"\n#include \"Mylib/Number/Mint/mint.cpp\"\n#include\
-    \ \"Mylib/Convolution/ntt_convolution.cpp\"\n#include \"Mylib/Math/polynomial_taylor_shift.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nusing mint = hl::modint<998244353>;\nusing NTT\
-    \ = hl::number_theoretic_transform<mint, 3, 1 << 21>;\n\nint main(){\n  using\
-    \ namespace std::placeholders;\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
-    \n  int N, c; std::cin >> N >> c;\n  auto a = hl::input_vector<mint>(N);\n\n \
-    \ auto ntt = NTT();\n  auto convolve = std::bind(&NTT::convolve<mint>, &ntt, _1,\
-    \ _2);\n  auto ans = hl::polynomial_taylor_shift(a, mint(c), convolve);\n\n  std::cout\
-    \ << hl::join(ans.begin(), ans.end()) << \"\\n\";\n\n  return 0;\n}\n"
+    \ \"Mylib/Number/Prime/primitive_root.cpp\"\n#include \"Mylib/Convolution/ntt_convolution.cpp\"\
+    \n#include \"Mylib/Math/polynomial_taylor_shift.cpp\"\n\nnamespace hl = haar_lib;\n\
+    \nconstexpr int mod = 998244353;\nconstexpr int prim_root = hl::primitive_root(mod);\n\
+    using mint = hl::modint<mod>;\nusing NTT = hl::number_theoretic_transform<mint,\
+    \ prim_root, 1 << 21>;\n\nint main(){\n  using namespace std::placeholders;\n\
+    \  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int N, c; std::cin\
+    \ >> N >> c;\n  auto a = hl::input_vector<mint>(N);\n\n  auto ntt = NTT();\n \
+    \ auto convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);\n  auto ans =\
+    \ hl::polynomial_taylor_shift(a, mint(c), convolve);\n\n  std::cout << hl::join(ans.begin(),\
+    \ ans.end()) << \"\\n\";\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/IO/input_vector.cpp
   - Mylib/IO/join.cpp
   - Mylib/Number/Mint/mint.cpp
+  - Mylib/Number/Prime/primitive_root.cpp
+  - Mylib/Number/Mod/mod_pow.cpp
   - Mylib/Convolution/ntt_convolution.cpp
   - Mylib/Math/polynomial_taylor_shift.cpp
   isVerificationFile: true
   path: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-18 08:49:48+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2020-10-28 03:22:23+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
 layout: document

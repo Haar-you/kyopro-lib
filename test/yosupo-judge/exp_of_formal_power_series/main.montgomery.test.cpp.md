@@ -19,6 +19,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mint/montgomery.cpp
     title: Montgomery multiplication
+  - icon: ':question:'
+    path: Mylib/Number/Mod/mod_pow.cpp
+    title: Mod pow
+  - icon: ':question:'
+    path: Mylib/Number/Prime/primitive_root.cpp
+    title: Primitive root
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
@@ -76,7 +82,19 @@ data:
     \    }\n\n    friend std::istream& operator>>(std::istream& s, montgomery &a){\n\
     \      int64_t t; s >> t;\n      a = montgomery(t);\n      return s;\n    }\n\n\
     \    explicit operator int32_t() const {return reduce(val_);}\n    explicit operator\
-    \ int64_t() const {return reduce(val_);}\n  };\n}\n#line 3 \"Mylib/Convolution/ntt_convolution.cpp\"\
+    \ int64_t() const {return reduce(val_);}\n  };\n}\n#line 2 \"Mylib/Number/Mod/mod_pow.cpp\"\
+    \n#include <cstdint>\n\nnamespace haar_lib {\n  constexpr int64_t mod_pow(int64_t\
+    \ n, int64_t p, int64_t m){\n    int64_t ret = 1;\n    while(p > 0){\n      if(p\
+    \ & 1) (ret *= n) %= m;\n      (n *= n) %= m;\n      p >>= 1;\n    }\n    return\
+    \ ret;\n  }\n}\n#line 3 \"Mylib/Number/Prime/primitive_root.cpp\"\n\nnamespace\
+    \ haar_lib {\n  constexpr int primitive_root(int p){\n    int pf[30] = {};\n \
+    \   int k = 0;\n    {\n      int n = p - 1;\n      for(int64_t i = 2; i * i <=\
+    \ p; ++i){\n        if(n % i == 0){\n          pf[k++] = i;\n          while(n\
+    \ % i == 0) n /= i;\n        }\n      }\n      if(n != 1)\n        pf[k++] = n;\n\
+    \    }\n\n    for(int g = 2; g <= p; ++g){\n      bool ok = true;\n      for(int\
+    \ i = 0; i < k; ++i){\n        if(mod_pow(g, (p - 1) / pf[i], p) == 1){\n    \
+    \      ok = false;\n          break;\n        }\n      }\n\n      if(not ok) continue;\n\
+    \n      return g;\n    }\n    return -1;\n  }\n}\n#line 3 \"Mylib/Convolution/ntt_convolution.cpp\"\
     \n#include <cassert>\n#include <utility>\n#include <algorithm>\n#line 4 \"Mylib/Number/Mint/mint.cpp\"\
     \n\nnamespace haar_lib {\n  template <int32_t M>\n  class modint {\n    uint32_t\
     \ val_;\n\n  public:\n    constexpr static auto mod(){return M;}\n\n    constexpr\
@@ -253,26 +271,31 @@ data:
     \ haar_lib {\n  template <typename Iter>\n  std::string join(Iter first, Iter\
     \ last, std::string delim = \" \"){\n    std::stringstream s;\n\n    for(auto\
     \ it = first; it != last; ++it){\n      if(it != first) s << delim;\n      s <<\
-    \ *it;\n    }\n\n    return s.str();\n  }\n}\n#line 11 \"test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nusing mint = hl::montgomery<998244353>;\nusing\
-    \ NTT = hl::number_theoretic_transform<mint, 3, 1 << 21>;\nconst static auto ntt\
-    \ = NTT();\nusing FPS = hl::formal_power_series<mint, ntt>;\n\nint main(){\n \
-    \ std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int N; std::cin >>\
-    \ N;\n  auto a = hl::input_vector<mint>(N);\n  auto ans = FPS(a).exp();\n\n  std::cout\
-    \ << hl::join(ans.begin(), ans.begin() + N) << \"\\n\";\n\n  return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\
-    \n\n#include <iostream>\n#include <vector>\n#include <functional>\n#include \"\
-    Mylib/Number/Mint/montgomery.cpp\"\n#include \"Mylib/Convolution/ntt_convolution.cpp\"\
-    \n#include \"Mylib/Math/formal_power_series.cpp\"\n#include \"Mylib/IO/input_vector.cpp\"\
-    \n#include \"Mylib/IO/join.cpp\"\n\nnamespace hl = haar_lib;\n\nusing mint = hl::montgomery<998244353>;\n\
-    using NTT = hl::number_theoretic_transform<mint, 3, 1 << 21>;\nconst static auto\
-    \ ntt = NTT();\nusing FPS = hl::formal_power_series<mint, ntt>;\n\nint main(){\n\
+    \ *it;\n    }\n\n    return s.str();\n  }\n}\n#line 12 \"test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int\
+    \ prim_root = hl::primitive_root(mod);\nusing mint = hl::montgomery<mod>;\nusing\
+    \ NTT = hl::number_theoretic_transform<mint, prim_root, 1 << 21>;\nconst static\
+    \ auto ntt = NTT();\nusing FPS = hl::formal_power_series<mint, ntt>;\n\nint main(){\n\
     \  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int N; std::cin\
     \ >> N;\n  auto a = hl::input_vector<mint>(N);\n  auto ans = FPS(a).exp();\n\n\
     \  std::cout << hl::join(ans.begin(), ans.begin() + N) << \"\\n\";\n\n  return\
     \ 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\
+    \n\n#include <iostream>\n#include <vector>\n#include <functional>\n#include \"\
+    Mylib/Number/Mint/montgomery.cpp\"\n#include \"Mylib/Number/Prime/primitive_root.cpp\"\
+    \n#include \"Mylib/Convolution/ntt_convolution.cpp\"\n#include \"Mylib/Math/formal_power_series.cpp\"\
+    \n#include \"Mylib/IO/input_vector.cpp\"\n#include \"Mylib/IO/join.cpp\"\n\nnamespace\
+    \ hl = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int prim_root =\
+    \ hl::primitive_root(mod);\nusing mint = hl::montgomery<mod>;\nusing NTT = hl::number_theoretic_transform<mint,\
+    \ prim_root, 1 << 21>;\nconst static auto ntt = NTT();\nusing FPS = hl::formal_power_series<mint,\
+    \ ntt>;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
+    \n  int N; std::cin >> N;\n  auto a = hl::input_vector<mint>(N);\n  auto ans =\
+    \ FPS(a).exp();\n\n  std::cout << hl::join(ans.begin(), ans.begin() + N) << \"\
+    \\n\";\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Number/Mint/montgomery.cpp
+  - Mylib/Number/Prime/primitive_root.cpp
+  - Mylib/Number/Mod/mod_pow.cpp
   - Mylib/Convolution/ntt_convolution.cpp
   - Mylib/Number/Mint/mint.cpp
   - Mylib/Math/formal_power_series.cpp
@@ -281,7 +304,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
   requiredBy: []
-  timestamp: '2020-10-18 08:49:48+09:00'
+  timestamp: '2020-10-28 03:22:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp

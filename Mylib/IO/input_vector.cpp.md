@@ -147,10 +147,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/matrix_det/main.test.cpp
     title: test/yosupo-judge/matrix_det/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
     title: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
   - icon: ':x:'
@@ -177,6 +177,9 @@ data:
   - icon: ':x:'
     path: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
     title: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/subset_convolution/main.test.cpp
+    title: test/yosupo-judge/subset_convolution/main.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/system_of_linear_equations/main.test.cpp
     title: test/yosupo-judge/system_of_linear_equations/main.test.cpp
@@ -318,6 +321,7 @@ data:
   - test/yosupo-judge/static_range_inversions_query/main.test.cpp
   - test/yosupo-judge/vertex_add_path_sum/main.test.cpp
   - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+  - test/yosupo-judge/subset_convolution/main.test.cpp
   - test/yosupo-judge/convolution_mod/main.test.cpp
   - test/yosupo-judge/static_range_sum/main.test.cpp
   - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp

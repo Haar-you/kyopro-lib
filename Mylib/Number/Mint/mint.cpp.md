@@ -57,13 +57,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/partition_function/main.test.cpp
     title: test/yosupo-judge/partition_function/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/point_set_range_composite/main.test.cpp
     title: test/yosupo-judge/point_set_range_composite/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
     title: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
   - icon: ':x:'
@@ -84,6 +84,9 @@ data:
   - icon: ':x:'
     path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/subset_convolution/main.test.cpp
+    title: test/yosupo-judge/subset_convolution/main.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/system_of_linear_equations/main.test.cpp
     title: test/yosupo-judge/system_of_linear_equations/main.test.cpp
@@ -236,6 +239,7 @@ data:
   - test/yosupo-judge/matrix_det/main.test.cpp
   - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
   - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+  - test/yosupo-judge/subset_convolution/main.test.cpp
   - test/yosupo-judge/convolution_mod/main.test.cpp
   - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp

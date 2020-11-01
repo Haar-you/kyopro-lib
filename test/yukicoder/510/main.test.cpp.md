@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/AlgebraicStructure/Monoid/dual.cpp
     title: Dual monoid
   - icon: ':x:'

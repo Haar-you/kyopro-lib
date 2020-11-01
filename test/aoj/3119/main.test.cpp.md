@@ -66,17 +66,18 @@ data:
     \ auto div(){\n      static auto value = inv(N);\n      return value;\n    }\n\
     \n    explicit operator int32_t() const noexcept {return val_;}\n    explicit\
     \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 3 \"Mylib/Convolution/fast_zeta_transform_superset.cpp\"\
-    \n#include <functional>\n\nnamespace haar_lib {\n  template <typename T, typename\
-    \ Func = std::plus<T>>\n  std::vector<T> fast_zeta_transform_superset(std::vector<T>\
-    \ f, const Func &op = std::plus<T>()){\n    for(int i = 0; (1 << i) < (int)f.size();\
-    \ ++i){\n      for(int j = 0; j < (int)f.size(); ++j){\n        if(not (j & (1\
-    \ << i))) f[j] = op(f[j], f[j ^ (1 << i)]);\n      }\n    }\n    return f;\n \
-    \ }\n}\n#line 4 \"Mylib/Convolution/fast_mobius_transform_superset.cpp\"\n\nnamespace\
-    \ haar_lib {\n  template <typename T, typename Func = std::minus<T>>\n  std::vector<T>\
-    \ fast_mobius_transform_superset(std::vector<T> f, const Func &op = std::minus<T>()){\n\
-    \    for(int i = 0; (1 << i) < (int)f.size(); ++i){\n      for(int j = 0; j <\
-    \ (int)f.size(); ++j){\n        if(not (j & (1 << i))) f[j] = op(f[j], f[j ^ (1\
-    \ << i)]);\n      }\n    }\n    return f;\n  }\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\
+    \n#include <functional>\n#include <cassert>\n\nnamespace haar_lib {\n  template\
+    \ <typename T, typename Func = std::plus<T>>\n  std::vector<T> fast_zeta_transform_superset(std::vector<T>\
+    \ f, const Func &op = std::plus<T>()){\n    const int N = f.size();\n    assert((N\
+    \ & (N - 1)) == 0 && \"N must be a power of 2\");\n    for(int i = 1; i < N; i\
+    \ <<= 1){\n      for(int j = 0; j < N; ++j){\n        if(not (j & i)) f[j] = op(f[j],\
+    \ f[j ^ i]);\n      }\n    }\n    return f;\n  }\n}\n#line 5 \"Mylib/Convolution/fast_mobius_transform_superset.cpp\"\
+    \n\nnamespace haar_lib {\n  template <typename T, typename Func = std::minus<T>>\n\
+    \  std::vector<T> fast_mobius_transform_superset(std::vector<T> f, const Func\
+    \ &op = std::minus<T>()){\n    const int N = f.size();\n    assert((N & (N - 1))\
+    \ == 0 && \"N must be a power of 2\");\n    for(int i = 1; i < N; i <<= 1){\n\
+    \      for(int j = 0; j < N; ++j){\n        if(not (j & i)) f[j] = op(f[j], f[j\
+    \ ^ i]);\n      }\n    }\n    return f;\n  }\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  std::vector<T> input_vector(int\
     \ N){\n    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i) std::cin >>\
     \ ret[i];\n    return ret;\n  }\n\n  template <typename T>\n  std::vector<std::vector<T>>\
@@ -107,7 +108,7 @@ data:
   isVerificationFile: true
   path: test/aoj/3119/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-30 07:57:28+09:00'
+  timestamp: '2020-10-30 23:28:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/3119/main.test.cpp
