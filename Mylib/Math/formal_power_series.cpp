@@ -255,7 +255,7 @@ namespace haar_lib {
       formal_power_series ret({*x});
 
       while(t <= m * 2){
-        formal_power_series f(std::vector(it, it + std::min(t, m)));
+        formal_power_series f(std::vector<T>(it, it + std::min(t, m)));
         ret.resize(t);
         f.resize(t);
         ret = (ret + f * ret.inv()) * T(2).inv();
