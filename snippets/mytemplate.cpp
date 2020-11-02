@@ -51,6 +51,20 @@ std::istream& operator>>(std::istream &s, std::vector<T> &a){
   return s;
 }
 
+std::string YesNo(bool value){return value ? "Yes" : "No";}
+std::string YESNO(bool value){return value ? "YES" : "NO";}
+std::string yesno(bool value){return value ? "yes" : "no";}
+
+template <typename T>
+void putl(const T &value){
+  std::cout << value << "\n";
+}
+
+template <typename Head, typename ... Tail>
+void putl(const Head head, const Tail &... tail){
+  std::cout << head << " ";
+  putl(tail ...);
+}
 
 namespace haar_lib {}
 
@@ -81,6 +95,8 @@ int main(){
       std::cout << std::flush;
       std::cerr << std::flush;
     }catch(const std::istream::failure &e){
+      break;
+    }catch(...){
       break;
     }
   }
