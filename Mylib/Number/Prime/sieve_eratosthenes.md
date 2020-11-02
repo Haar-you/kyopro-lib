@@ -1,6 +1,6 @@
 ---
 title: Sieve of Eratosthenes
-documentation_of: Mylib/Number/Prime/eratosthenes_sieve.cpp
+documentation_of: Mylib/Number/Prime/sieve_eratosthenes.cpp
 ---
 
 ## Operations
