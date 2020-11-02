@@ -66,13 +66,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/queue_operate_all_composite/main.test.cpp
     title: test/yosupo-judge/queue_operate_all_composite/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/range_affine_range_sum/main.test.cpp
     title: test/yosupo-judge/range_affine_range_sum/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
     title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
   - icon: ':x:'
@@ -87,6 +87,9 @@ data:
   - icon: ':x:'
     path: test/yosupo-judge/subset_convolution/main.test.cpp
     title: test/yosupo-judge/subset_convolution/main.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/sum_of_totient_function/main.test.cpp
+    title: test/yosupo-judge/sum_of_totient_function/main.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/system_of_linear_equations/main.test.cpp
     title: test/yosupo-judge/system_of_linear_equations/main.test.cpp
@@ -238,6 +241,7 @@ data:
   - test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
   - test/yosupo-judge/matrix_det/main.test.cpp
   - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+  - test/yosupo-judge/sum_of_totient_function/main.test.cpp
   - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
   - test/yosupo-judge/subset_convolution/main.test.cpp
   - test/yosupo-judge/convolution_mod/main.test.cpp

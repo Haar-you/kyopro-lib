@@ -34,6 +34,12 @@ data:
     path: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
     title: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo-judge/enumerate_primes/main.atkin.test.cpp
+    title: test/yosupo-judge/enumerate_primes/main.atkin.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo-judge/enumerate_primes/main.eratosthenes.test.cpp
+    title: test/yosupo-judge/enumerate_primes/main.eratosthenes.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
     title: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
   - icon: ':heavy_check_mark:'
@@ -66,10 +72,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/scc/main.test.cpp
     title: test/yosupo-judge/scc/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
     title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
   - icon: ':x:'
@@ -160,6 +166,8 @@ data:
   - test/yosupo-judge/montmort_number_mod/main.test.cpp
   - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
+  - test/yosupo-judge/enumerate_primes/main.eratosthenes.test.cpp
+  - test/yosupo-judge/enumerate_primes/main.atkin.test.cpp
   - test/yosupo-judge/suffixarray/main.test.cpp
   - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/two_edge_connected_components/main.test.cpp

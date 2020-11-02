@@ -8,7 +8,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_log.cpp
     title: Mod logarithm
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_sqrt.cpp
     title: Mod sqrt
   - icon: ':question:'
@@ -51,10 +51,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
     title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sqrt_mod/main.test.cpp
     title: test/yosupo-judge/sqrt_mod/main.test.cpp
   - icon: ':x:'

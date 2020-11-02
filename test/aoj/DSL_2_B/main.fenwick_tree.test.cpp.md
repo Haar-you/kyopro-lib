@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/AlgebraicStructure/Group/sum.cpp
     title: Sum group
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/FenwickTree/fenwick_tree.cpp
     title: Fenwick tree
   - icon: ':question:'

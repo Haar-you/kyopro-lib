@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: Mylib/DataStructure/SegmentTree/segment_tree.cpp
     title: Segment tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp
     title: Segment tree (On segment tree)
   - icon: ':question:'

@@ -6,7 +6,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/Group/dihedral.cpp
       title: Dihedral group
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/Group/sum.cpp
       title: Sum group
   - name: Mylib/AlgebraicStructure/Monoid
@@ -29,7 +29,7 @@ data:
     - icon: ':warning:'
       path: Mylib/AlgebraicStructure/Monoid/bounded_max.cpp
       title: Bounded max monoid
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/Monoid/bounded_min.cpp
       title: Bounded min monoid
     - icon: ':question:'
@@ -121,7 +121,7 @@ data:
     - icon: ':warning:'
       path: Mylib/AlgebraicStructure/MonoidAction/affine_min_max.cpp
       title: Range affine / Range min-max
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp
       title: Range affine / Range sum
     - icon: ':warning:'
@@ -154,7 +154,7 @@ data:
       title: Cartesian tree
   - name: Mylib/Algorithm/CumulativeSum
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp
       title: 1D cumulative sum
     - icon: ':x:'
@@ -173,7 +173,7 @@ data:
       title: 1D Imos algorithm (Linear addition)
   - name: Mylib/Algorithm/Mo
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Algorithm/Mo/mo_algorithm.cpp
       title: Mo's algorithm
   - name: Mylib/Algorithm/Search
@@ -347,24 +347,24 @@ data:
     - icon: ':warning:'
       path: Mylib/DataStructure/ConvexHullTrick/convex_hull_trick.cpp
       title: Convex hull trick
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/ConvexHullTrick/dynamic_lichao_segment_tree.cpp
       title: Dynamic LiChao segment tree
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp
       title: LiChao segment tree
   - name: Mylib/DataStructure/FenwickTree
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/FenwickTree/fenwick_tree.cpp
       title: Fenwick tree
     - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp
       title: Fenwick tree (2D)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
       title: Fenwick tree (Add)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp
       title: Fenwick tree (On Fenwick tree)
   - name: Mylib/DataStructure/Heap
@@ -394,7 +394,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/Queue/persistent_queue.cpp
       title: Persistent queue
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/Queue/sliding_window_aggregation.cpp
       title: Sliding window aggregation
   - name: Mylib/DataStructure/RangeTree
@@ -422,7 +422,7 @@ data:
     - icon: ':x:'
       path: Mylib/DataStructure/SegmentTree/lazy_segment_tree_with_coefficients.cpp
       title: Lazy segment tree (Range sum, Range add, With coefficients)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp
       title: Persistent segment tree
     - icon: ':question:'
@@ -431,7 +431,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/SegmentTree/segment_tree_2d.cpp
       title: Segment tree (2D)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/SegmentTree/segment_tree_beats.cpp
       title: Segment tree beats
     - icon: ':x:'
@@ -443,7 +443,7 @@ data:
     - icon: ':warning:'
       path: Mylib/DataStructure/SegmentTree/segment_tree_linear_add_range_sum.cpp
       title: Segment tree (Add $ai + b$, Range sum)
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp
       title: Segment tree (On segment tree)
     - icon: ':question:'
@@ -462,7 +462,7 @@ data:
     - icon: ':warning:'
       path: Mylib/DataStructure/SparseTable/disjoint_sparse_table.cpp
       title: Disjoint sparse table
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/SparseTable/sparse_table.cpp
       title: Sparse table
     - icon: ':warning:'
@@ -475,7 +475,7 @@ data:
       title: Persistent stack
   - name: Mylib/DataStructure/Trie
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/Trie/binary_trie.cpp
       title: Binary trie
   - name: Mylib/DataStructure/UnionFind
@@ -1002,20 +1002,14 @@ data:
     - icon: ':question:'
       path: Mylib/Number/Mod/mod_pow.cpp
       title: Mod pow
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/Number/Mod/mod_sqrt.cpp
       title: Mod sqrt
   - name: Mylib/Number/Prime
     pages:
-    - icon: ':x:'
-      path: Mylib/Number/Prime/atkin_sieve.cpp
-      title: Sieve of Atkin
     - icon: ':heavy_check_mark:'
       path: Mylib/Number/Prime/count_coprime.cpp
       title: Count coprime
-    - icon: ':x:'
-      path: Mylib/Number/Prime/eratosthenes_sieve.cpp
-      title: Sieve of Eratosthenes
     - icon: ':warning:'
       path: Mylib/Number/Prime/factorial_prime_factorization.cpp
       title: Count number of prime factor p of $a!$
@@ -1040,6 +1034,12 @@ data:
     - icon: ':warning:'
       path: Mylib/Number/Prime/segmented_sieve.cpp
       title: Segmented sieve
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Number/Prime/sieve_atkin.cpp
+      title: Sieve of Atkin
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Number/Prime/sieve_eratosthenes.cpp
+      title: Sieve of Eratosthenes
   - name: Mylib/Number/Rational
     pages:
     - icon: ':heavy_check_mark:'
@@ -1053,10 +1053,10 @@ data:
     - icon: ':question:'
       path: Mylib/Number/Totient/totient.cpp
       title: Euler's totient function
-    - icon: ':warning:'
+    - icon: ':x:'
       path: Mylib/Number/Totient/totient_sum.cpp
       title: Sum of totient function
-    - icon: ':warning:'
+    - icon: ':x:'
       path: Mylib/Number/Totient/totient_table.cpp
       title: Euler's totient function (Table)
   - name: Mylib/Number
@@ -1134,7 +1134,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/String/rolling_hash_2d.cpp
       title: Rolling hash (2D)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/String/run_enumerate.cpp
       title: Run enumerate
     - icon: ':heavy_check_mark:'
@@ -1149,7 +1149,7 @@ data:
     - icon: ':warning:'
       path: Mylib/String/trie.cpp
       title: Trie
-    - icon: ':x:'
+    - icon: ':question:'
       path: Mylib/String/z_algorithm.cpp
       title: Z-algorithm
   - name: Mylib/Typical/IntervalSchedulingProblem
@@ -1168,7 +1168,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Typical/InversionNumber/inversion_number.cpp
       title: Inversion number
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Typical/InversionNumber/range_inversions_query.cpp
       title: Range inversions query
   - name: Mylib/Typical/KnapsackProblem
@@ -1219,7 +1219,7 @@ data:
     - icon: ':warning:'
       path: Mylib/Typical/SubsetSumProblem/subset_sum_count.cpp
       title: Subset sum problem (Count)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Typical/SubsetSumProblem/subset_sum_count_fps.cpp
       title: Subset sum problem (Count, FPS)
     - icon: ':heavy_check_mark:'
@@ -1230,7 +1230,7 @@ data:
       title: Subset sum problem (Minimum)
   - name: Mylib/Utils
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Utils/compressor.cpp
       title: Compressor
     - icon: ':heavy_check_mark:'
@@ -1975,6 +1975,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
       title: test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
+  - name: test/yosupo-judge/enumerate_primes
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo-judge/enumerate_primes/main.atkin.test.cpp
+      title: test/yosupo-judge/enumerate_primes/main.atkin.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo-judge/enumerate_primes/main.eratosthenes.test.cpp
+      title: test/yosupo-judge/enumerate_primes/main.eratosthenes.test.cpp
   - name: test/yosupo-judge/enumerate_triangles
     pages:
     - icon: ':heavy_check_mark:'
@@ -2081,66 +2089,66 @@ data:
       title: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
   - name: test/yosupo-judge/queue_operate_all_composite
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/queue_operate_all_composite/main.test.cpp
       title: test/yosupo-judge/queue_operate_all_composite/main.test.cpp
   - name: test/yosupo-judge/range_affine_range_sum
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/range_affine_range_sum/main.test.cpp
       title: test/yosupo-judge/range_affine_range_sum/main.test.cpp
   - name: test/yosupo-judge/range_chmin_chmax_add_range_sum
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp
       title: test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp
   - name: test/yosupo-judge/range_kth_smallest
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/range_kth_smallest/main.test.cpp
       title: test/yosupo-judge/range_kth_smallest/main.test.cpp
   - name: test/yosupo-judge/rectangle_sum
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
       title: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
       title: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
       title: test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
   - name: test/yosupo-judge/runenumerate
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/runenumerate/main.test.cpp
       title: test/yosupo-judge/runenumerate/main.test.cpp
   - name: test/yosupo-judge/scc
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/scc/main.test.cpp
       title: test/yosupo-judge/scc/main.test.cpp
   - name: test/yosupo-judge/segment_add_get_min
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/segment_add_get_min/main.dynamic.test.cpp
       title: test/yosupo-judge/segment_add_get_min/main.dynamic.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/segment_add_get_min/main.test.cpp
       title: test/yosupo-judge/segment_add_get_min/main.test.cpp
   - name: test/yosupo-judge/set_xor_min
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/set_xor_min/main.test.cpp
       title: test/yosupo-judge/set_xor_min/main.test.cpp
   - name: test/yosupo-judge/sharp_p_subset_sum
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
       title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
   - name: test/yosupo-judge/sqrt_mod
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/sqrt_mod/main.test.cpp
       title: test/yosupo-judge/sqrt_mod/main.test.cpp
   - name: test/yosupo-judge/sqrt_of_formal_power_series
@@ -2150,17 +2158,17 @@ data:
       title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   - name: test/yosupo-judge/static_range_inversions_query
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/static_range_inversions_query/main.test.cpp
       title: test/yosupo-judge/static_range_inversions_query/main.test.cpp
   - name: test/yosupo-judge/static_range_sum
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/static_range_sum/main.test.cpp
       title: test/yosupo-judge/static_range_sum/main.test.cpp
   - name: test/yosupo-judge/staticrmq
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
       title: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
   - name: test/yosupo-judge/stirling_number_of_the_first_kind
@@ -2188,6 +2196,11 @@ data:
     - icon: ':x:'
       path: test/yosupo-judge/sum_of_floor_of_linear/main.test.cpp
       title: test/yosupo-judge/sum_of_floor_of_linear/main.test.cpp
+  - name: test/yosupo-judge/sum_of_totient_function
+    pages:
+    - icon: ':x:'
+      path: test/yosupo-judge/sum_of_totient_function/main.test.cpp
+      title: test/yosupo-judge/sum_of_totient_function/main.test.cpp
   - name: test/yosupo-judge/system_of_linear_equations
     pages:
     - icon: ':x:'
@@ -2357,14 +2370,6 @@ data:
     - icon: ':x:'
       path: test/yukicoder/789/main.test.cpp
       title: test/yukicoder/789/main.test.cpp
-  - name: test/yukicoder/843
-    pages:
-    - icon: ':x:'
-      path: test/yukicoder/843/main.atkin.test.cpp
-      title: test/yukicoder/843/main.atkin.test.cpp
-    - icon: ':x:'
-      path: test/yukicoder/843/main.eratosthenes.test.cpp
-      title: test/yukicoder/843/main.eratosthenes.test.cpp
   - name: test/yukicoder/875
     pages:
     - icon: ':x:'

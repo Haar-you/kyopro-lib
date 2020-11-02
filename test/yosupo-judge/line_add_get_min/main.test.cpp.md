@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp
     title: LiChao segment tree
   - icon: ':question:'

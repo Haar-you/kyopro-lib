@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp
     title: Segment tree (On segment tree)
   - icon: ':heavy_check_mark:'
@@ -33,7 +33,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/point_set_range_composite/main.test.cpp
     title: test/yosupo-judge/point_set_range_composite/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
     title: test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
   - icon: ':x:'

@@ -2,18 +2,18 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Typical/InversionNumber/range_inversions_query.cpp
     title: Range inversions query
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/0425/main.test.cpp
     title: test/aoj/0425/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/static_range_inversions_query/main.test.cpp
     title: test/yosupo-judge/static_range_inversions_query/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Algorithm/Mo/mo_algorithm.cpp\"\n#include <vector>\n\
@@ -73,7 +73,7 @@ data:
   requiredBy:
   - Mylib/Typical/InversionNumber/range_inversions_query.cpp
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/0425/main.test.cpp
   - test/yosupo-judge/static_range_inversions_query/main.test.cpp

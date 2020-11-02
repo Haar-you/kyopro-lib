@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/range_affine_range_sum/main.test.cpp
     title: test/yosupo-judge/range_affine_range_sum/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp\"\n\
@@ -28,7 +28,7 @@ data:
   path: Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp
   requiredBy: []
   timestamp: '2020-10-02 17:13:14+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/range_affine_range_sum/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp

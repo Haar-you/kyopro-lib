@@ -6,11 +6,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/1337/main.test.cpp
     title: test/aoj/1337/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
     title: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Utils/compressor.cpp\"\n#include <vector>\n#include\
@@ -68,7 +68,7 @@ data:
   path: Mylib/Utils/compressor.cpp
   requiredBy: []
   timestamp: '2020-10-11 03:06:10+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/1337/main.test.cpp
   - test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp

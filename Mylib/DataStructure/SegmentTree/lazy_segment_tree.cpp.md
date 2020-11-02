@@ -21,7 +21,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_2_I/main.test.cpp
     title: test/aoj/DSL_2_I/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/range_affine_range_sum/main.test.cpp
     title: test/yosupo-judge/range_affine_range_sum/main.test.cpp
   - icon: ':x:'

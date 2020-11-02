@@ -3,14 +3,14 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/yukicoder/843/main.atkin.test.cpp
-    title: test/yukicoder/843/main.atkin.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo-judge/enumerate_primes/main.atkin.test.cpp
+    title: test/yosupo-judge/enumerate_primes/main.atkin.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Number/Prime/atkin_sieve.cpp\"\n#include <vector>\n\
+  bundledCode: "#line 2 \"Mylib/Number/Prime/sieve_atkin.cpp\"\n#include <vector>\n\
     #include <cstdint>\n\nnamespace haar_lib {\n  class atkin_sieve {\n    std::vector<bool>\
     \ is_prime_;\n\n  public:\n    atkin_sieve(){}\n    atkin_sieve(int MAX): is_prime_(MAX\
     \ + 1){\n      for(int64_t i = 1; i * i <= MAX; ++i){\n        for(int64_t j =\
@@ -44,13 +44,13 @@ data:
     \ i) const {\n      return is_prime_[i];\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/Number/Prime/atkin_sieve.cpp
+  path: Mylib/Number/Prime/sieve_atkin.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2020-11-02 12:22:25+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yukicoder/843/main.atkin.test.cpp
-documentation_of: Mylib/Number/Prime/atkin_sieve.cpp
+  - test/yosupo-judge/enumerate_primes/main.atkin.test.cpp
+documentation_of: Mylib/Number/Prime/sieve_atkin.cpp
 layout: document
 title: Sieve of Atkin
 ---

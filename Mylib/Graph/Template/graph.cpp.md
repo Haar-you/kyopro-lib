@@ -228,7 +228,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/manhattanmst/main.test.cpp
     title: test/yosupo-judge/manhattanmst/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/scc/main.test.cpp
     title: test/yosupo-judge/scc/main.test.cpp
   - icon: ':x:'

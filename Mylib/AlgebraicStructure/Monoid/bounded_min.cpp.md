@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
     title: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/bounded_min.cpp\"\n#include\
@@ -26,7 +26,7 @@ data:
   path: Mylib/AlgebraicStructure/Monoid/bounded_min.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Monoid/bounded_min.cpp

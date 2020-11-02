@@ -10,13 +10,13 @@ data:
   - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_sqrt.cpp
     title: Mod sqrt
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sqrt_mod
@@ -82,7 +82,7 @@ data:
   path: test/yosupo-judge/sqrt_mod/main.test.cpp
   requiredBy: []
   timestamp: '2020-10-28 03:22:23+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/sqrt_mod/main.test.cpp
 layout: document

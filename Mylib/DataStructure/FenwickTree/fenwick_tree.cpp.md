@@ -2,18 +2,18 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp
     title: Fenwick tree (On Fenwick tree)
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
     title: test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
     title: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/DataStructure/FenwickTree/fenwick_tree.cpp\"\n#include\
@@ -51,7 +51,7 @@ data:
   requiredBy:
   - Mylib/DataStructure/FenwickTree/fenwick_tree_on_fenwick_tree.cpp
   timestamp: '2020-10-10 11:12:55+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
   - test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp

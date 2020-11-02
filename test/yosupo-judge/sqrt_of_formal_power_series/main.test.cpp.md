@@ -19,7 +19,7 @@ data:
   - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_sqrt.cpp
     title: Mod sqrt
   - icon: ':question:'

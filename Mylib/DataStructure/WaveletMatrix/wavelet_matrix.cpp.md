@@ -15,7 +15,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2674/main.test.cpp
     title: test/aoj/2674/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/range_kth_smallest/main.test.cpp
     title: test/yosupo-judge/range_kth_smallest/main.test.cpp
   - icon: ':x:'

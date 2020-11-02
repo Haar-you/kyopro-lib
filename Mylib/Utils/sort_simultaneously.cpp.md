@@ -6,7 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2426/main.test.cpp
     title: test/aoj/2426/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
     title: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
   - icon: ':x:'

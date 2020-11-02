@@ -22,13 +22,13 @@ data:
   - icon: ':question:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Typical/SubsetSumProblem/subset_sum_count_fps.cpp
     title: Subset sum problem (Count, FPS)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sharp_p_subset_sum
@@ -268,7 +268,7 @@ data:
   path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
   requiredBy: []
   timestamp: '2020-10-28 03:22:23+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
 layout: document

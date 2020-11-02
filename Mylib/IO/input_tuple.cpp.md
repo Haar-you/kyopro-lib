@@ -216,46 +216,46 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/point_set_range_composite/main.test.cpp
     title: test/yosupo-judge/point_set_range_composite/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/queue_operate_all_composite/main.test.cpp
     title: test/yosupo-judge/queue_operate_all_composite/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/range_affine_range_sum/main.test.cpp
     title: test/yosupo-judge/range_affine_range_sum/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp
     title: test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/range_kth_smallest/main.test.cpp
     title: test/yosupo-judge/range_kth_smallest/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
     title: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
     title: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
     title: test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/segment_add_get_min/main.dynamic.test.cpp
     title: test/yosupo-judge/segment_add_get_min/main.dynamic.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/segment_add_get_min/main.test.cpp
     title: test/yosupo-judge/segment_add_get_min/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/set_xor_min/main.test.cpp
     title: test/yosupo-judge/set_xor_min/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sqrt_mod/main.test.cpp
     title: test/yosupo-judge/sqrt_mod/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/static_range_inversions_query/main.test.cpp
     title: test/yosupo-judge/static_range_inversions_query/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/static_range_sum/main.test.cpp
     title: test/yosupo-judge/static_range_sum/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
     title: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
   - icon: ':x:'
