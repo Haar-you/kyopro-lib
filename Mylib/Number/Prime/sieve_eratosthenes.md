@@ -12,3 +12,5 @@ documentation_of: Mylib/Number/Prime/sieve_eratosthenes.cpp
 ## Problems
 
 ## References
+
+- [https://qiita.com/peria/items/a4ff4ddb3336f7b81d50](https://qiita.com/peria/items/a4ff4ddb3336f7b81d50)
