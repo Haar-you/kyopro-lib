@@ -5,6 +5,10 @@
 namespace haar_lib {
   template <typename T, const auto &convolve>
   class polynomial {
+  public:
+    using value_type = T;
+
+  private:
     std::vector<T> data_;
 
   public:
@@ -15,6 +19,11 @@ namespace haar_lib {
     auto& data(){return data_;}
     const auto& data() const {return data_;}
     int size() const {return data_.size();}
+    auto begin(){return data_.begin();}
+    auto end(){return data_.end();}
+
+    const auto& operator[](size_t i) const {return data_[i];}
+    auto& operator[](size_t i){return data_[i];}
 
     auto& operator+=(const polynomial &that){
       if(data_.size() < that.data_.size()) data_.resize(that.data_.size());

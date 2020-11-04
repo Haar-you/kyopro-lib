@@ -2,10 +2,11 @@
 #include <vector>
 
 namespace haar_lib {
-  template <typename T, typename Conv>
-  auto polynomial_taylor_shift(std::vector<T> a, T c, const Conv &convolve){
+  template <typename T, const auto &convolve>
+  auto polynomial_taylor_shift(std::vector<T> a, T c){
     const int N = a.size();
     T f = 1;
+
     std::vector<T> A(2 * N - 1);
     for(int i = 0; i < N; ++i){
       if(i) f *= i;

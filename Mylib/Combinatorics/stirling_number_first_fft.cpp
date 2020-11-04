@@ -30,7 +30,7 @@ namespace haar_lib {
 
         t += 1;
       }else{
-        auto s = polynomial_taylor_shift<T>(ret, -t, convolve);
+        auto s = polynomial_taylor_shift<T, convolve>(ret, -t);
         ret = convolve(ret, s);
         ret.resize(t * 2 + 1);
 
