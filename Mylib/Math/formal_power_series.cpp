@@ -10,8 +10,6 @@ namespace haar_lib {
   public:
     using value_type = T;
 
-    static std::function<std::optional<T>(T)> get_sqrt;
-
   private:
     std::vector<T> data_;
 
@@ -23,7 +21,7 @@ namespace haar_lib {
     formal_power_series(const formal_power_series &a): data_(a.data_){}
     formal_power_series(formal_power_series &&a) noexcept {*this = std::move(a);}
 
-    int size() const {
+    size_t size() const {
       return data_.size();
     }
 
@@ -236,39 +234,6 @@ namespace haar_lib {
       return ret;
     }
 
-    std::optional<formal_power_series> sqrt() const {
-      const int n = data_.size();
-      int k = 0;
-      for(; k < n; ++k) if(data_[k] != 0) break;
-
-      if(k >= n) return *this;
-      if(k % 2 != 0) return {};
-
-      int t = 1;
-      auto x = get_sqrt(data_[k]);
-
-      if(not x) return {};
-
-      const int m = n - k;
-
-      auto it = data_.begin() + k;
-      formal_power_series ret({*x});
-
-      while(t <= m * 2){
-        formal_power_series f(std::vector<T>(it, it + std::min(t, m)));
-        ret.resize(t);
-        f.resize(t);
-        ret = (ret + f * ret.inv()) * T(2).inv();
-        t <<= 1;
-      }
-
-      ret.resize(n);
-      ret = ret.shift(k / 2);
-
-      return ret;
-    }
+    std::optional<formal_power_series> sqrt() const;
   };
-
-  template <typename T, const auto &convolve>
-  std::function<std::optional<T>(T)> formal_power_series<T, convolve>::get_sqrt;
 }

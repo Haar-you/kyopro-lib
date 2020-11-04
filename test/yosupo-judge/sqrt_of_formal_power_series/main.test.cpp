@@ -8,6 +8,7 @@
 #include "Mylib/Number/Mod/mod_sqrt.cpp"
 #include "Mylib/Convolution/ntt_convolution.cpp"
 #include "Mylib/Math/formal_power_series.cpp"
+#include "Mylib/Math/fps_sqrt.cpp"
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/join.cpp"
 
@@ -23,8 +24,6 @@ using FPS = hl::formal_power_series<mint, ntt>;
 int main(){
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
-
-  FPS::get_sqrt = [&](const auto &a){return hl::mod_sqrt((int64_t)a, mint::mod());};
 
   int N; std::cin >> N;
   auto a = hl::input_vector<mint>(N);
