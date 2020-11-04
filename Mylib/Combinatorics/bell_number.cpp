@@ -5,7 +5,7 @@
 
 namespace haar_lib {
   template <const auto &ft>
-  auto bell_number(int64_t n, int64_t k){
+  auto bell_number(int n, int k){
     using T = typename std::remove_reference_t<decltype(ft)>::value_type;
     if(n == 0) return T(1);
 

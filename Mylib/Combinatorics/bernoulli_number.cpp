@@ -5,7 +5,7 @@
 
 namespace haar_lib {
   template <const auto &ft>
-  auto bernoulli_number(int64_t n){
+  auto bernoulli_number(int n){
     using T = typename std::remove_reference_t<decltype(ft)>::value_type;
     std::vector<T> ret(n + 1);
 

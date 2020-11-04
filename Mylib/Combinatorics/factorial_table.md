@@ -5,7 +5,7 @@ documentation_of: Mylib/Combinatorics/factorial_table.cpp
 
 ## Operations
 
-- `FactorialTable(int N)`
+- `factorial_table(int N)`
 	- $0!$ ~ $N!$とその逆数を計算する。
 	- Time complexity $O(N)$
 - `factorial(int i)` : return $i!$

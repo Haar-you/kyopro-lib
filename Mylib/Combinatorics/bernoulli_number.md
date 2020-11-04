@@ -5,7 +5,7 @@ documentation_of: Mylib/Combinatorics/bernoulli_number.cpp
 
 ## Operations
 
-- `bernoulli_number(Ft, int n)`
+- `bernoulli_number<ft>(int n) -> [T]`
 	- $B_0$ ~ $B_n$を列挙する。
 	- Time complexity $O(N^2)$
 
