@@ -110,5 +110,45 @@ namespace haar_lib {
 
       return ret;
     }
+
+    auto inv(int n) const {
+      polynomial ret({data_[0].inv()});
+      int t = 1;
+
+      while(t <= n * 2){
+        ret = ret * T(2) - ret * ret * (*this);
+        ret.data_.resize(t);
+        t *= 2;
+      }
+
+      return ret;
+    }
+
+    std::pair<polynomial, polynomial> divmod(const polynomial &that) const {
+      if(data_.size() < that.size()) return {{0}, *this};
+
+      const int m = data_.size() - that.size();
+
+      auto g = *this;
+      std::reverse(g.begin(), g.end());
+
+      auto f = that;
+      const int d = (int)that.size() - 1;
+      std::reverse(f.begin(), f.end());
+
+      f = f.inv(m);
+
+      f.data_.resize(m + 1);
+
+      auto q = f * g;
+      q.data_.resize(m + 1);
+
+      std::reverse(q.begin(), q.end());
+
+      auto r = (*this) - that * q;
+      r.data_.resize(d);
+
+      return {q, r};
+    }
   };
 }
