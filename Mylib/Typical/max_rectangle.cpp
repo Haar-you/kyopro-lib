@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <algorithm>
-#include "Mylib/Typical/MaxRectangleProblem/max_rectangle_in_histogram.cpp"
+#include "Mylib/Typical/max_rectangle_in_histogram.cpp"
 
 namespace haar_lib {
   template <typename T>

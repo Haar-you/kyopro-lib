@@ -6,14 +6,14 @@
 
 namespace haar_lib {
   template <typename T>
-  class range_count_query {
+  class range_set_query {
     std::vector<int> a_;
     std::vector<std::tuple<int, int, int>> qs_;
     int N_;
 
   public:
-    range_count_query(){}
-    range_count_query(std::vector<T> a): N_(a.size()){
+    range_set_query(){}
+    range_set_query(std::vector<T> a): N_(a.size()){
       auto temp = a;
       std::sort(temp.begin(), temp.end());
       temp.erase(std::unique(temp.begin(), temp.end()), temp.end());

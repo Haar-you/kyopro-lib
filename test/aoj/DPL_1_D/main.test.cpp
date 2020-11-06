@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/Typical/LongestSubsequence/longest_increasing_subsequence.cpp"
+#include "Mylib/Typical/longest_increasing_subsequence.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 namespace hl = haar_lib;

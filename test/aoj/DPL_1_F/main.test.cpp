@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/Typical/KnapsackProblem/knapsack_small_value.cpp"
+#include "Mylib/Typical/knapsack_small_value.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 
 namespace hl = haar_lib;

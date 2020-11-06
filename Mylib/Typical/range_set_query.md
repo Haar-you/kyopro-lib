@@ -1,6 +1,6 @@
 ---
-title: Range count query
-documentation_of: ./range_count_query.cpp
+title: Range set query
+documentation_of: ./range_set_query.cpp
 ---
 
 ## Operations

@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/Typical/IntervalSchedulingProblem/interval_scheduling_k.cpp"
+#include "Mylib/Typical/interval_scheduling_k.cpp"
 
 namespace hl = haar_lib;
 

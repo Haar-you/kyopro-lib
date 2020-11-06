@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/Typical/MaxRectangleProblem/max_rectangle.cpp"
+#include "Mylib/Typical/max_rectangle.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 namespace hl = haar_lib;
