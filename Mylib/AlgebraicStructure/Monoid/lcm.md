@@ -1,6 +1,6 @@
 ---
 title: LCM monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/lcm.cpp
+documentation_of: ./lcm.cpp
 ---
 
 ## Operations

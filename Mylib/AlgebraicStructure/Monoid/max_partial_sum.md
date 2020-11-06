@@ -1,6 +1,6 @@
 ---
 title: Max partial sum monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp
+documentation_of: ./max_partial_sum.cpp
 ---
 
 ## Operations

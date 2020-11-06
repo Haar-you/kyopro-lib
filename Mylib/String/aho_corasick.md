@@ -1,6 +1,6 @@
 ---
 title: Aho-Corasick algorithm
-documentation_of: Mylib/String/aho_corasick.cpp
+documentation_of: ./aho_corasick.cpp
 ---
 
 ## Operations

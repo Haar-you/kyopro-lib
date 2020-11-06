@@ -1,6 +1,6 @@
 ---
 title: Longest increasing subsequence
-documentation_of: Mylib/Typical/LongestSubsequence/longest_increasing_subsequence.cpp
+documentation_of: ./longest_increasing_subsequence.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Cartesian tree
-documentation_of: Mylib/Algorithm/CartesianTree/cartesian_tree.cpp
+documentation_of: ./cartesian_tree.cpp
 ---
 
 ## Operations

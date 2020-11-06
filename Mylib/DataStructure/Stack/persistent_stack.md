@@ -1,6 +1,6 @@
 ---
 title: Persistent stack
-documentation_of: Mylib/DataStructure/Stack/persistent_stack.cpp
+documentation_of: ./persistent_stack.cpp
 ---
 
 ## Operations

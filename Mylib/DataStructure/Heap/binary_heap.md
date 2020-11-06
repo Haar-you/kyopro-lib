@@ -1,6 +1,6 @@
 ---
 title: Binary heap
-documentation_of: Mylib/DataStructure/Heap/binary_heap.cpp
+documentation_of: ./binary_heap.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Enumerate divisors
-documentation_of: Mylib/Number/Divisor/enumerate_divisors.cpp
+documentation_of: ./enumerate_divisors.cpp
 ---
 
 ## Operations

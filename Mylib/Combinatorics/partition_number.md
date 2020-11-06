@@ -1,6 +1,6 @@
 ---
 title: Partition number (Enumerate $P(n, k)$)
-documentation_of: Mylib/Combinatorics/partition_number.cpp
+documentation_of: ./partition_number.cpp
 ---
 
 ## Operations

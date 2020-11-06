@@ -1,6 +1,6 @@
 ---
 title: Longest path on DAG
-documentation_of: Mylib/Graph/DAG/dag_longest_path.cpp
+documentation_of: ./dag_longest_path.cpp
 ---
 
 ## Operations

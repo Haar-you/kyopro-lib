@@ -1,6 +1,6 @@
 ---
 title: Topological sort
-documentation_of: Mylib/Graph/TopologicalSort/topological_sort.cpp
+documentation_of: ./topological_sort.cpp
 ---
 
 ## Operations

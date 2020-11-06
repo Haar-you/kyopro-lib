@@ -1,6 +1,6 @@
 ---
 title: Binomial coefficients table
-documentation_of: Mylib/Combinatorics/binomial_coefficients_table.cpp
+documentation_of: ./binomial_coefficients_table.cpp
 ---
 
 ## Operations

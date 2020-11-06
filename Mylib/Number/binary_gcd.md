@@ -1,6 +1,6 @@
 ---
 title: Binary GCD
-documentation_of: Mylib/Number/binary_gcd.cpp
+documentation_of: ./binary_gcd.cpp
 ---
 
 ## Operations

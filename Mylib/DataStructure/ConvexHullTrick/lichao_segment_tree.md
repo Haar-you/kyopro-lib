@@ -1,6 +1,6 @@
 ---
 title: LiChao segment tree
-documentation_of: Mylib/DataStructure/ConvexHullTrick/lichao_segment_tree.cpp
+documentation_of: ./lichao_segment_tree.cpp
 ---
 
 ## Operations

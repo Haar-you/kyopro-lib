@@ -1,6 +1,6 @@
 ---
 title: Chinese postman problem
-documentation_of: Mylib/Graph/chinese_postman_problem.cpp
+documentation_of: ./chinese_postman_problem.cpp
 ---
 
 ## Operations

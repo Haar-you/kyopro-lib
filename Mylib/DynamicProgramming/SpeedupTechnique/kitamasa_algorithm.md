@@ -1,6 +1,6 @@
 ---
 title: Kitamasa algorithm
-documentation_of: Mylib/DynamicProgramming/SpeedupTechnique/kitamasa_algorithm.cpp
+documentation_of: ./kitamasa_algorithm.cpp
 ---
 
 ## Operations

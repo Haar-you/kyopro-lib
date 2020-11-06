@@ -1,6 +1,6 @@
 ---
 title: Treap
-documentation_of: Mylib/DataStructure/BBST/treap.cpp
+documentation_of: ./treap.cpp
 ---
 
 ## Operations

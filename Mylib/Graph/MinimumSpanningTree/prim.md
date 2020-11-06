@@ -1,6 +1,6 @@
 ---
 title: Prim algorithm
-documentation_of: Mylib/Graph/MinimumSpanningTree/prim.cpp
+documentation_of: ./prim.cpp
 ---
 
 ## Operations

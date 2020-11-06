@@ -1,6 +1,6 @@
 ---
 title: Euler tour (BFS)
-documentation_of: Mylib/Graph/TreeUtils/euler_tour_bfs.cpp
+documentation_of: ./euler_tour_bfs.cpp
 ---
 
 ## Operations

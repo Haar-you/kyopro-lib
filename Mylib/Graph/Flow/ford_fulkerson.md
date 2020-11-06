@@ -1,6 +1,6 @@
 ---
 title: Ford-Fulkerson algorithm
-documentation_of: Mylib/Graph/Flow/ford_fulkerson.cpp
+documentation_of: ./ford_fulkerson.cpp
 ---
 
 ## Operations

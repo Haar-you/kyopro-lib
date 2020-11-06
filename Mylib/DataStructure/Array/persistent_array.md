@@ -1,6 +1,6 @@
 ---
 title: Persistent array
-documentation_of: Mylib/DataStructure/Array/persistent_array.cpp
+documentation_of: ./persistent_array.cpp
 ---
 
 ## Operations

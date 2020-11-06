@@ -1,6 +1,6 @@
 ---
 title: Fast Möbius transform (Supersets)
-documentation_of: Mylib/Convolution/fast_mobius_transform_superset.cpp
+documentation_of: ./fast_mobius_transform_superset.cpp
 ---
 
 ## Operations

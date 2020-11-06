@@ -1,6 +1,6 @@
 ---
 title: Range tree
-documentation_of: Mylib/DataStructure/RangeTree/range_tree.cpp
+documentation_of: ./range_tree.cpp
 ---
 
 ## Operations

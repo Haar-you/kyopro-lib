@@ -1,6 +1,6 @@
 ---
 title: Common tangents of two circles
-documentation_of: Mylib/Geometry/Float/common_tangent_of_circles.cpp
+documentation_of: ./common_tangent_of_circles.cpp
 ---
 
 ## Operations

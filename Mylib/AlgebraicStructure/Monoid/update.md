@@ -1,6 +1,6 @@
 ---
 title: Update monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/update.cpp
+documentation_of: ./update.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: starts_with
-documentation_of: Mylib/String/starts_with.cpp
+documentation_of: ./starts_with.cpp
 ---
 
 ## Operations

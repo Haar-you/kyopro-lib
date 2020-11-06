@@ -1,6 +1,6 @@
 ---
 title: Unzip function
-documentation_of: Mylib/Misc/unzip.cpp
+documentation_of: ./unzip.cpp
 ---
 
 ## Operations

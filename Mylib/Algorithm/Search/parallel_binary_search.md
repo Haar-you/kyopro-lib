@@ -1,6 +1,6 @@
 ---
 title: Parallel binary search
-documentation_of: Mylib/Algorithm/Search/parallel_binary_search.cpp
+documentation_of: ./parallel_binary_search.cpp
 ---
 
 ## Operations

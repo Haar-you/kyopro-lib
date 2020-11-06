@@ -1,6 +1,6 @@
 ---
 title: Segment tree (Add $ai + b$, Range sum)
-documentation_of: Mylib/DataStructure/SegmentTree/segment_tree_linear_add_range_sum.cpp
+documentation_of: ./segment_tree_linear_add_range_sum.cpp
 ---
 
 ## Operations

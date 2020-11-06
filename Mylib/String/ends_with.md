@@ -1,6 +1,6 @@
 ---
 title: ends_with
-documentation_of: Mylib/String/ends_with.cpp
+documentation_of: ./ends_with.cpp
 ---
 
 ## Operations

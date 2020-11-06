@@ -1,6 +1,6 @@
 ---
 title: Polynomial taylor shift
-documentation_of: Mylib/Math/polynomial_taylor_shift.cpp
+documentation_of: ./polynomial_taylor_shift.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Check square number
-documentation_of: Mylib/Number/is_square.cpp
+documentation_of: ./is_square.cpp
 ---
 
 ## Operations

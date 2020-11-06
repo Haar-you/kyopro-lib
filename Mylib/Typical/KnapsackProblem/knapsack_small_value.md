@@ -1,6 +1,6 @@
 ---
 title: 0-1 Knapsack problem (Small value)
-documentation_of: Mylib/Typical/KnapsackProblem/knapsack_small_value.cpp
+documentation_of: ./knapsack_small_value.cpp
 ---
 
 ## Operations

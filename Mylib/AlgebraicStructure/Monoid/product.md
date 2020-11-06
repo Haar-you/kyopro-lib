@@ -1,6 +1,6 @@
 ---
 title: Product monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/product.cpp
+documentation_of: ./product.cpp
 ---
 
 ## Operations

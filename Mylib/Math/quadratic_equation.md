@@ -1,6 +1,6 @@
 ---
 title: Real solutions of quadratic equation
-documentation_of: Mylib/Math/quadratic_equation.cpp
+documentation_of: ./quadratic_equation.cpp
 ---
 
 ## Operations

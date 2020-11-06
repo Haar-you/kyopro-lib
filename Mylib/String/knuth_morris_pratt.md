@@ -1,6 +1,6 @@
 ---
 title: Knuth-Morris-Pratt algorithm
-documentation_of: Mylib/String/knuth_morris_pratt.cpp
+documentation_of: ./knuth_morris_pratt.cpp
 ---
 
 ## Operations

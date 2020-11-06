@@ -1,6 +1,6 @@
 ---
 title: Modint
-documentation_of: Mylib/Number/Mint/mint.cpp
+documentation_of: ./mint.cpp
 ---
 
 ## Operations

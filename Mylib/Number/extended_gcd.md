@@ -1,6 +1,6 @@
 ---
 title: Extended Euclidean algorithm
-documentation_of: Mylib/Number/extended_gcd.cpp
+documentation_of: ./extended_gcd.cpp
 ---
 
 ## Operations

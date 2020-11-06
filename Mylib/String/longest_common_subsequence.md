@@ -1,6 +1,6 @@
 ---
 title: Longest common subsequence
-documentation_of: Mylib/String/longest_common_subsequence.cpp
+documentation_of: ./longest_common_subsequence.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Persistent queue
-documentation_of: Mylib/DataStructure/Queue/persistent_queue.cpp
+documentation_of: ./persistent_queue.cpp
 ---
 
 ## Operations

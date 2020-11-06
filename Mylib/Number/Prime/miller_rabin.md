@@ -1,6 +1,6 @@
 ---
 title: Primality test (Miller-Rabin algorithm)
-documentation_of: Mylib/Number/Prime/miller_rabin.cpp
+documentation_of: ./miller_rabin.cpp
 ---
 
 ## Operations

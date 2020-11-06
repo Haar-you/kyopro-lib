@@ -1,6 +1,6 @@
 ---
 title: Interval heap
-documentation_of: Mylib/DataStructure/Heap/interval_heap.cpp
+documentation_of: ./interval_heap.cpp
 ---
 
 ## Operations

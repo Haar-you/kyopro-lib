@@ -1,6 +1,6 @@
 ---
 title: Tree height
-documentation_of: Mylib/Graph/TreeUtils/tree_height.cpp
+documentation_of: ./tree_height.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Closest pair
-documentation_of: Mylib/Geometry/Float/closest_pair.cpp
+documentation_of: ./closest_pair.cpp
 ---
 
 ## Operations

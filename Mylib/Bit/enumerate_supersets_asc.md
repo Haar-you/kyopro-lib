@@ -1,6 +1,6 @@
 ---
 title: Enumerate supersets (Ascending order)
-documentation_of: Mylib/Bit/enumerate_supersets_asc.cpp
+documentation_of: ./enumerate_supersets_asc.cpp
 ---
 
 ## Operations

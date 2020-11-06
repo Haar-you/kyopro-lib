@@ -1,6 +1,6 @@
 ---
 title: Mod logarithm
-documentation_of: Mylib/Number/Mod/mod_log.cpp
+documentation_of: ./mod_log.cpp
 ---
 
 ## Operations

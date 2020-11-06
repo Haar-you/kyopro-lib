@@ -1,6 +1,6 @@
 ---
 title: Run length encoding
-documentation_of: Mylib/Utils/run_length_encoding.cpp
+documentation_of: ./run_length_encoding.cpp
 ---
 
 ## Operations

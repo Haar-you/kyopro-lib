@@ -1,6 +1,6 @@
 ---
 title: Convex hull
-documentation_of: Mylib/Geometry/Float/convex_hull.cpp
+documentation_of: ./convex_hull.cpp
 ---
 
 ## Operations

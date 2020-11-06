@@ -1,6 +1,6 @@
 ---
 title: Intersection between two circles
-documentation_of: Mylib/Geometry/Float/intersect_circles.cpp
+documentation_of: ./intersect_circles.cpp
 ---
 
 ## Operations

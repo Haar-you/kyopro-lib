@@ -1,6 +1,6 @@
 ---
 title: Parsing
-documentation_of: Mylib/Parser/parser.cpp
+documentation_of: ./parser.cpp
 ---
 
 ## Operations

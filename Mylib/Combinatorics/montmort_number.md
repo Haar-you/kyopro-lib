@@ -1,6 +1,6 @@
 ---
 title: Montmort number
-documentation_of: Mylib/Combinatorics/montmort_number.cpp
+documentation_of: ./montmort_number.cpp
 ---
 
 ## Operations

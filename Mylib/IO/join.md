@@ -1,6 +1,6 @@
 ---
 title: join function
-documentation_of: Mylib/IO/join.cpp
+documentation_of: ./join.cpp
 ---
 
 ## Operations

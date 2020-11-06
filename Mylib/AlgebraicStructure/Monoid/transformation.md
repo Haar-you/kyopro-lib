@@ -1,6 +1,6 @@
 ---
 title: Transformation monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/transformation.cpp
+documentation_of: ./transformation.cpp
 ---
 
 ## Operations

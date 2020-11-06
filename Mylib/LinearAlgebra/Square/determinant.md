@@ -1,6 +1,6 @@
 ---
 title: Determinant
-documentation_of: Mylib/LinearAlgebra/Square/determinant.cpp
+documentation_of: ./determinant.cpp
 ---
 
 ## Operations

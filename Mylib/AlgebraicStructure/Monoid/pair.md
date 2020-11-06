@@ -1,6 +1,6 @@
 ---
 title: Pair monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/pair.cpp
+documentation_of: ./pair.cpp
 ---
 
 ## Operations

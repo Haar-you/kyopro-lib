@@ -1,6 +1,6 @@
 ---
 title: 2D Imos algorithm
-documentation_of: Mylib/Algorithm/Imos/imos_2d.cpp
+documentation_of: ./imos_2d.cpp
 ---
 
 ## Operations

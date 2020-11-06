@@ -1,6 +1,6 @@
 ---
 title: Chinese remainder theorem
-documentation_of: Mylib/Number/chinese_remainder_algorithm.cpp
+documentation_of: ./chinese_remainder_algorithm.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Affine monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/affine.cpp
+documentation_of: ./affine.cpp
 ---
 
 ## Operations

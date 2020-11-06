@@ -1,6 +1,6 @@
 ---
 title: Sliding window maximum
-documentation_of: Mylib/Algorithm/SlidingWindow/sliding_maximum.cpp
+documentation_of: ./sliding_maximum.cpp
 ---
 
 ## Operations

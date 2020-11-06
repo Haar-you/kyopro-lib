@@ -1,6 +1,6 @@
 ---
 title: Segmented sieve
-documentation_of: Mylib/Number/Prime/segmented_sieve.cpp
+documentation_of: ./segmented_sieve.cpp
 ---
 
 ## Operations

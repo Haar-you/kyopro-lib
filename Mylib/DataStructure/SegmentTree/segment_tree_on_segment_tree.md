@@ -1,6 +1,6 @@
 ---
 title: Segment tree (On segment tree)
-documentation_of: Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp
+documentation_of: ./segment_tree_on_segment_tree.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Rerooting DP
-documentation_of: Mylib/Graph/TreeUtils/rerooting.cpp
+documentation_of: ./rerooting.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Tree diameter
-documentation_of: Mylib/Graph/TreeUtils/tree_diameter.cpp
+documentation_of: ./tree_diameter.cpp
 ---
 
 ## Operations

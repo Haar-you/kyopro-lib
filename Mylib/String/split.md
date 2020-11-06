@@ -1,6 +1,6 @@
 ---
 title: split
-documentation_of: Mylib/String/split.cpp
+documentation_of: ./split.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Bellman-Ford algorithm
-documentation_of: Mylib/Graph/ShortestPath/bellman_ford.cpp
+documentation_of: ./bellman_ford.cpp
 ---
 
 ## Operations

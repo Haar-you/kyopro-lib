@@ -1,6 +1,6 @@
 ---
 title: Skew heap
-documentation_of: Mylib/DataStructure/Heap/skew_heap.cpp
+documentation_of: ./skew_heap.cpp
 ---
 
 ## Operations

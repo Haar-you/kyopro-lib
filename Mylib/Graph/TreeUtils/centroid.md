@@ -1,6 +1,6 @@
 ---
 title: Enumerate centroids
-documentation_of: Mylib/Graph/TreeUtils/centroid.cpp
+documentation_of: ./centroid.cpp
 ---
 
 ## Operations

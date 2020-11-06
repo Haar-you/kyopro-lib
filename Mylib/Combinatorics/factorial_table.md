@@ -1,6 +1,6 @@
 ---
 title: Factorial table
-documentation_of: Mylib/Combinatorics/factorial_table.cpp
+documentation_of: ./factorial_table.cpp
 ---
 
 ## Operations

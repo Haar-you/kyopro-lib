@@ -1,6 +1,6 @@
 ---
 title: Dinic algorithm
-documentation_of: Mylib/Graph/Flow/dinic.cpp
+documentation_of: ./dinic.cpp
 ---
 
 ## Operations

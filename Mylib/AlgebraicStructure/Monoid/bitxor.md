@@ -1,6 +1,6 @@
 ---
 title: Bitxor monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/bitxor.cpp
+documentation_of: ./bitxor.cpp
 ---
 
 ## Operations

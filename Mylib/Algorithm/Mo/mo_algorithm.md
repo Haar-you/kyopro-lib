@@ -1,6 +1,6 @@
 ---
 title: Mo's algorithm
-documentation_of: Mylib/Algorithm/Mo/mo_algorithm.cpp
+documentation_of: ./mo_algorithm.cpp
 ---
 
 ## Operations

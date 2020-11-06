@@ -1,6 +1,6 @@
 ---
 title: Maximum bipartite matching
-documentation_of: Mylib/Graph/Matching/bipartite_matching.cpp
+documentation_of: ./bipartite_matching.cpp
 ---
 
 ## Operations

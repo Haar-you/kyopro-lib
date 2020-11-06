@@ -1,6 +1,6 @@
 ---
 title: Levenshtein distance / Edit distance
-documentation_of: Mylib/String/levenshtein_distance.cpp
+documentation_of: ./levenshtein_distance.cpp
 ---
 
 ## Operations

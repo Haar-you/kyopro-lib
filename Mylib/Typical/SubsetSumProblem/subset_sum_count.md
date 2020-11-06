@@ -1,6 +1,6 @@
 ---
 title: Subset sum problem (Count)
-documentation_of: Mylib/Typical/SubsetSumProblem/subset_sum_count.cpp
+documentation_of: ./subset_sum_count.cpp
 ---
 
 ## Operations

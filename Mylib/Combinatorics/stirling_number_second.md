@@ -1,6 +1,6 @@
 ---
 title: Stirling numbers of the second kind
-documentation_of: Mylib/Combinatorics/stirling_number_second.cpp
+documentation_of: ./stirling_number_second.cpp
 ---
 
 ## Operations

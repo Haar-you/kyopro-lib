@@ -1,6 +1,6 @@
 ---
 title: Binomial heap
-documentation_of: Mylib/DataStructure/Heap/binomial_heap.cpp
+documentation_of: ./binomial_heap.cpp
 ---
 
 ## Operations

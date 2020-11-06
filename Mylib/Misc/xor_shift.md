@@ -1,6 +1,6 @@
 ---
 title: Xorshift
-documentation_of: Mylib/Misc/xor_shift.cpp
+documentation_of: ./xor_shift.cpp
 ---
 
 ## Operations

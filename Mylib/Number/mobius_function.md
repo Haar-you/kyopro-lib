@@ -1,6 +1,6 @@
 ---
 title: Möbius function
-documentation_of: Mylib/Number/mobius_function.cpp
+documentation_of: ./mobius_function.cpp
 ---
 
 ## Operations

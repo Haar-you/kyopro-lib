@@ -1,6 +1,6 @@
 ---
 title: Range multiply / Range sum
-documentation_of: Mylib/AlgebraicStructure/MonoidAction/multiply_sum.cpp
+documentation_of: ./multiply_sum.cpp
 ---
 
 ## Operations

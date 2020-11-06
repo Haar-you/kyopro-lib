@@ -1,6 +1,6 @@
 ---
 title: Dijkstra algorithm
-documentation_of: Mylib/Graph/ShortestPath/dijkstra.cpp
+documentation_of: ./dijkstra.cpp
 ---
 
 ## Operations

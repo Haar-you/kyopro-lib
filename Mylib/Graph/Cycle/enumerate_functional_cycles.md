@@ -1,6 +1,6 @@
 ---
 title: Enumerate cycles in functional graph
-documentation_of: Mylib/Graph/Cycle/enumerate_functional_cycles.cpp
+documentation_of: ./enumerate_functional_cycles.cpp
 ---
 
 ## Operations

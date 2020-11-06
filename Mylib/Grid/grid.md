@@ -1,6 +1,6 @@
 ---
 title: Grid template
-documentation_of: Mylib/Grid/grid.cpp
+documentation_of: ./grid.cpp
 ---
 
 ## Operations

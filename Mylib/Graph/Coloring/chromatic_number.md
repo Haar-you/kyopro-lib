@@ -1,6 +1,6 @@
 ---
 title: Graph vertex coloring
-documentation_of: Mylib/Graph/Coloring/chromatic_number.cpp
+documentation_of: ./chromatic_number.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Lowest common ancestor (Doubling)
-documentation_of: Mylib/Graph/TreeUtils/lca_doubling.cpp
+documentation_of: ./lca_doubling.cpp
 ---
 
 ## Operations

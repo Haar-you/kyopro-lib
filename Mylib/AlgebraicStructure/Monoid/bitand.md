@@ -1,6 +1,6 @@
 ---
 title: Bitand monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/bitand.cpp
+documentation_of: ./bitand.cpp
 ---
 
 ## Operations

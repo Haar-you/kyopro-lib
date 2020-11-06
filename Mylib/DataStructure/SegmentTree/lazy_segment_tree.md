@@ -1,6 +1,6 @@
 ---
 title: Lazy segment tree
-documentation_of: Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp
+documentation_of: ./lazy_segment_tree.cpp
 ---
 
 ## Operations

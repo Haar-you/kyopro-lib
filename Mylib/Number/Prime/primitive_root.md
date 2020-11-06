@@ -1,6 +1,6 @@
 ---
 title: Primitive root
-documentation_of: Mylib/Number/Prime/primitive_root.cpp
+documentation_of: ./primitive_root.cpp
 ---
 
 ## Operations

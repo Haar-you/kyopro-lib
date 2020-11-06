@@ -1,6 +1,6 @@
 ---
 title: Sparse table (2D)
-documentation_of: Mylib/DataStructure/SparseTable/sparse_table_2d.cpp
+documentation_of: ./sparse_table_2d.cpp
 ---
 
 ## Operations

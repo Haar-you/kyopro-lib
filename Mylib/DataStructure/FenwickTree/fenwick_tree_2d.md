@@ -1,6 +1,6 @@
 ---
 title: Fenwick tree (2D)
-documentation_of: Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp
+documentation_of: ./fenwick_tree_2d.cpp
 ---
 
 ## Operations

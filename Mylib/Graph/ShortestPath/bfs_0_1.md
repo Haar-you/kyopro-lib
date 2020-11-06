@@ -1,6 +1,6 @@
 ---
 title: 0-1 BFS
-documentation_of: Mylib/Graph/ShortestPath/bfs_0_1.cpp
+documentation_of: ./bfs_0_1.cpp
 ---
 
 ## Operations

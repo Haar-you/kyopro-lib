@@ -1,6 +1,6 @@
 ---
 title: Push-relabel
-documentation_of: Mylib/Graph/Flow/push_relabel.cpp
+documentation_of: ./push_relabel.cpp
 ---
 
 ## Operations

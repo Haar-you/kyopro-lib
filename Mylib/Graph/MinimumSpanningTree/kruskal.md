@@ -1,6 +1,6 @@
 ---
 title: Kruskal algorithm
-documentation_of: Mylib/Graph/MinimumSpanningTree/kruskal.cpp
+documentation_of: ./kruskal.cpp
 ---
 
 ## Operations

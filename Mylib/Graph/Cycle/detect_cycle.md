@@ -1,6 +1,6 @@
 ---
 title: Detect cycle
-documentation_of: Mylib/Graph/Cycle/detect_cycle.cpp
+documentation_of: ./detect_cycle.cpp
 ---
 
 ## Operations

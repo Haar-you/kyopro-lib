@@ -1,6 +1,6 @@
 ---
 title: Min monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/min.cpp
+documentation_of: ./min.cpp
 ---
 
 ## Operations

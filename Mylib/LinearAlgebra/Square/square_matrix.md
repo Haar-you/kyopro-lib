@@ -1,6 +1,6 @@
 ---
 title: Square matrix
-documentation_of: Mylib/LinearAlgebra/Square/square_matrix.cpp
+documentation_of: ./square_matrix.cpp
 ---
 
 ## Operations

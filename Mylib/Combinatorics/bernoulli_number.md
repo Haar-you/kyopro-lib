@@ -1,6 +1,6 @@
 ---
 title: Bernoulli number
-documentation_of: Mylib/Combinatorics/bernoulli_number.cpp
+documentation_of: ./bernoulli_number.cpp
 ---
 
 ## Operations

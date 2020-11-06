@@ -1,6 +1,6 @@
 ---
 title: Orthogonal
-documentation_of: Mylib/Geometry/Float/orthogonal.cpp
+documentation_of: ./orthogonal.cpp
 ---
 
 ## Operations

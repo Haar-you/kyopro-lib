@@ -1,6 +1,6 @@
 ---
 title: Maximum flow with lower bound
-documentation_of: Mylib/Graph/Flow/max_flow_with_lower_bound.cpp
+documentation_of: ./max_flow_with_lower_bound.cpp
 ---
 
 ## Operations

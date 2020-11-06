@@ -1,6 +1,6 @@
 ---
 title: Tetration
-documentation_of: Mylib/Number/tetration.cpp
+documentation_of: ./tetration.cpp
 ---
 
 ## Operations

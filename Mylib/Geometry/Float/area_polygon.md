@@ -1,6 +1,6 @@
 ---
 title: Area of polygon
-documentation_of: Mylib/Geometry/Float/area_polygon.cpp
+documentation_of: ./area_polygon.cpp
 ---
 
 ## Operations

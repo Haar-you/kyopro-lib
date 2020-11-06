@@ -1,6 +1,6 @@
 ---
 title: SPFA
-documentation_of: Mylib/Graph/ShortestPath/spfa.cpp
+documentation_of: ./spfa.cpp
 ---
 
 ## Operations

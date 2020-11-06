@@ -1,6 +1,6 @@
 ---
 title: Inversion number
-documentation_of: Mylib/Typical/InversionNumber/inversion_number.cpp
+documentation_of: ./inversion_number.cpp
 ---
 
 ## Operations

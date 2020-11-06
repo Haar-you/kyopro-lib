@@ -1,6 +1,6 @@
 ---
 title: Check convex
-documentation_of: Mylib/Geometry/Float/is_convex.cpp
+documentation_of: ./is_convex.cpp
 ---
 
 ## Operations

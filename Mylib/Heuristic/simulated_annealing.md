@@ -1,6 +1,6 @@
 ---
 title: Simulated annealing
-documentation_of: Mylib/Heuristic/simulated_annealing.cpp
+documentation_of: ./simulated_annealing.cpp
 ---
 
 ## Operations

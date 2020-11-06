@@ -1,6 +1,6 @@
 ---
 title: Convolution (Index GCD)
-documentation_of: Mylib/Convolution/convolution_gcd.cpp
+documentation_of: ./convolution_gcd.cpp
 ---
 
 ## Operations

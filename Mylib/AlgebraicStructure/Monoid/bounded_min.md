@@ -1,6 +1,6 @@
 ---
 title: Bounded min monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/bounded_min.cpp
+documentation_of: ./bounded_min.cpp
 ---
 
 ## Operations

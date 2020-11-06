@@ -1,6 +1,6 @@
 ---
 title: Wavelet matrix
-documentation_of: Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp
+documentation_of: ./wavelet_matrix.cpp
 ---
 
 ## Operations

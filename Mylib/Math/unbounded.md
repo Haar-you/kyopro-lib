@@ -1,6 +1,6 @@
 ---
 title: Number with infinity
-documentation_of: Mylib/Math/unbounded.cpp
+documentation_of: ./unbounded.cpp
 ---
 
 ## Operations

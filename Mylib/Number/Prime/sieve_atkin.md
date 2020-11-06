@@ -1,6 +1,6 @@
 ---
 title: Sieve of Atkin
-documentation_of: Mylib/Number/Prime/sieve_atkin.cpp
+documentation_of: ./sieve_atkin.cpp
 ---
 
 ## Operations

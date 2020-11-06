@@ -1,6 +1,6 @@
 ---
 title: Polynomial
-documentation_of: Mylib/Math/polynomial.cpp
+documentation_of: ./polynomial.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Sum of totient function
-documentation_of: Mylib/Number/Totient/totient_sum.cpp
+documentation_of: ./totient_sum.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Range add / Range max with count
-documentation_of: Mylib/AlgebraicStructure/MonoidAction/add_max_with_count.cpp
+documentation_of: ./add_max_with_count.cpp
 ---
 
 ## Operations

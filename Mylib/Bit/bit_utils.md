@@ -1,6 +1,6 @@
 ---
 title: Bit utils
-documentation_of: Mylib/Bit/bit_utils.cpp
+documentation_of: ./bit_utils.cpp
 ---
 
 ## Operations

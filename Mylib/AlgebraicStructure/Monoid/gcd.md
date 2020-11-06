@@ -1,6 +1,6 @@
 ---
 title: GCD monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/gcd.cpp
+documentation_of: ./gcd.cpp
 ---
 
 ## Operations

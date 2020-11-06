@@ -1,6 +1,6 @@
 ---
 title: Gray code
-documentation_of: Mylib/Bit/gray_code.cpp
+documentation_of: ./gray_code.cpp
 ---
 
 ## Operations

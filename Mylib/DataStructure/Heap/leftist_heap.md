@@ -1,6 +1,6 @@
 ---
 title: Leftist heap
-documentation_of: Mylib/DataStructure/Heap/leftist_heap.cpp
+documentation_of: ./leftist_heap.cpp
 ---
 
 ## Operations

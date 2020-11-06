@@ -1,6 +1,6 @@
 ---
 title: Directed Eulerian path
-documentation_of: Mylib/Graph/EulerianPath/directed_eulerian_path.cpp
+documentation_of: ./directed_eulerian_path.cpp
 ---
 
 ## Operations

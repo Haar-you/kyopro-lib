@@ -1,6 +1,6 @@
 ---
 title: Trie
-documentation_of: Mylib/String/trie.cpp
+documentation_of: ./trie.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Hopcroft-Karp algorithm
-documentation_of: Mylib/Graph/Matching/hopcroft_karp.cpp
+documentation_of: ./hopcroft_karp.cpp
 ---
 
 ## Operations

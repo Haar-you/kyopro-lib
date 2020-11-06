@@ -1,6 +1,6 @@
 ---
 title: Travelling salesman problem
-documentation_of: Mylib/Graph/travelling_salesman_problem.cpp
+documentation_of: ./travelling_salesman_problem.cpp
 ---
 
 ## Operations

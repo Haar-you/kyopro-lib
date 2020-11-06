@@ -1,6 +1,6 @@
 ---
 title: Mod pow
-documentation_of: Mylib/Number/Mod/mod_pow.cpp
+documentation_of: ./mod_pow.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Projection
-documentation_of: Mylib/Geometry/Float/projection.cpp
+documentation_of: ./projection.cpp
 ---
 
 ## Operations

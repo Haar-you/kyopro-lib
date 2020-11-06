@@ -1,6 +1,6 @@
 ---
 title: Fenwick tree (Add)
-documentation_of: Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
+documentation_of: ./fenwick_tree_add.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Bounded max monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/bounded_max.cpp
+documentation_of: ./bounded_max.cpp
 ---
 
 ## Operations

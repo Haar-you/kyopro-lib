@@ -1,6 +1,6 @@
 ---
 title: Decompose forest
-documentation_of: Mylib/Graph/TreeUtils/forest.cpp
+documentation_of: ./forest.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Fast Zeta transform (Subsets)
-documentation_of: Mylib/Convolution/fast_zeta_transform_subset.cpp
+documentation_of: ./fast_zeta_transform_subset.cpp
 ---
 
 ## Operations

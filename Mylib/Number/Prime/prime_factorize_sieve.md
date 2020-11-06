@@ -1,6 +1,6 @@
 ---
 title: Prime factorization (Sieve)
-documentation_of: Mylib/Number/Prime/prime_factorize_sieve.cpp
+documentation_of: ./prime_factorize_sieve.cpp
 ---
 
 ## Operations

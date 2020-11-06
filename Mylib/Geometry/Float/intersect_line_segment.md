@@ -1,6 +1,6 @@
 ---
 title: Intersection between a line and a segment
-documentation_of: Mylib/Geometry/Float/intersect_line_segment.cpp
+documentation_of: ./intersect_line_segment.cpp
 ---
 
 ## Operations

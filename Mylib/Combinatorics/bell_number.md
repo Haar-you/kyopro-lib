@@ -1,6 +1,6 @@
 ---
 title: Bell number
-documentation_of: Mylib/Combinatorics/bell_number.cpp
+documentation_of: ./bell_number.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Segment tree (Both foldable)
-documentation_of: Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp
+documentation_of: ./segment_tree_both_foldable.cpp
 ---
 
 ## Operations

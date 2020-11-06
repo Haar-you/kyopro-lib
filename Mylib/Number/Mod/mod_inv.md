@@ -1,6 +1,6 @@
 ---
 title: Mod inverse
-documentation_of: Mylib/Number/Mod/mod_inv.cpp
+documentation_of: ./mod_inv.cpp
 ---
 
 ## Operations

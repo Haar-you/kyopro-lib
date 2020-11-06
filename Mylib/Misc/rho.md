@@ -1,6 +1,6 @@
 ---
 title: 
-documentation_of: Mylib/Misc/rho.cpp
+documentation_of: ./rho.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Garner algorithm
-documentation_of: Mylib/Number/garner.cpp
+documentation_of: ./garner.cpp
 ---
 
 ## Operations

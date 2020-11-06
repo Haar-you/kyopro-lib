@@ -1,6 +1,6 @@
 ---
 title: Segment tree (Add $ai + b$)
-documentation_of: Mylib/DataStructure/SegmentTree/segment_tree_linear_add.cpp
+documentation_of: ./segment_tree_linear_add.cpp
 ---
 
 ## Operations

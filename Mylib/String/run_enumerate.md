@@ -1,6 +1,6 @@
 ---
 title: Run enumerate
-documentation_of: Mylib/String/run_enumerate.cpp
+documentation_of: ./run_enumerate.cpp
 ---
 
 ## Operations

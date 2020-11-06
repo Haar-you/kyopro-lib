@@ -1,6 +1,6 @@
 ---
 title: Count divisors
-documentation_of: Mylib/Number/Divisor/count_divisors.cpp
+documentation_of: ./count_divisors.cpp
 ---
 
 ## Operations

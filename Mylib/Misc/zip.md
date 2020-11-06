@@ -1,6 +1,6 @@
 ---
 title: Zip function
-documentation_of: Mylib/Misc/zip.cpp
+documentation_of: ./zip.cpp
 ---
 
 ## Operations

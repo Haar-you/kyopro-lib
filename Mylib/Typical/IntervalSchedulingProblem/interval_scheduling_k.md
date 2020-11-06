@@ -1,6 +1,6 @@
 ---
 title: Interval scheduling problem (Allow no more than k intervals to overlap)
-documentation_of: Mylib/Typical/IntervalSchedulingProblem/interval_scheduling_k.cpp
+documentation_of: ./interval_scheduling_k.cpp
 ---
 
 ## Operations

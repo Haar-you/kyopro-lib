@@ -1,6 +1,6 @@
 ---
 title: Strongly connected components
-documentation_of: Mylib/Graph/GraphUtils/strongly_connected_components.cpp
+documentation_of: ./strongly_connected_components.cpp
 ---
 
 ## Operations

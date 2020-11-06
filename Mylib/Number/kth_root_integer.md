@@ -1,6 +1,6 @@
 ---
 title: Kth root integer
-documentation_of: Mylib/Number/kth_root_integer.cpp
+documentation_of: ./kth_root_integer.cpp
 ---
 
 ## Operations

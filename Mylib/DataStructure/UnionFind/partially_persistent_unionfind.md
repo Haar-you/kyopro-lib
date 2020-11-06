@@ -1,6 +1,6 @@
 ---
 title: Partially persistent union-find
-documentation_of: Mylib/DataStructure/UnionFind/partially_persistent_unionfind.cpp
+documentation_of: ./partially_persistent_unionfind.cpp
 ---
 
 ## Operations

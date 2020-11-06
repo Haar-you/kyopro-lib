@@ -1,6 +1,6 @@
 ---
 title: Bridges
-documentation_of: Mylib/Graph/GraphUtils/bridges.cpp
+documentation_of: ./bridges.cpp
 ---
 
 ## Operations

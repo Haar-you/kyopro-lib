@@ -1,6 +1,6 @@
 ---
 title: Compressor
-documentation_of: Mylib/Utils/compressor.cpp
+documentation_of: ./compressor.cpp
 ---
 
 ## Operations

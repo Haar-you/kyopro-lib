@@ -1,6 +1,6 @@
 ---
 title: Linear system incidence
-documentation_of: Mylib/Graph/lsi.cpp
+documentation_of: ./lsi.cpp
 ---
 
 ## Operations

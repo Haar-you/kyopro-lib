@@ -1,6 +1,6 @@
 ---
 title: Sliding window minimum
-documentation_of: Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp
+documentation_of: ./sliding_minimum.cpp
 ---
 
 ## Operations

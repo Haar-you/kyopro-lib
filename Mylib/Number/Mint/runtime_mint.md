@@ -1,6 +1,6 @@
 ---
 title: Modint (Runtime mod)
-documentation_of: Mylib/Number/Mint/runtime_mint.cpp
+documentation_of: ./runtime_mint.cpp
 ---
 
 ## Operations

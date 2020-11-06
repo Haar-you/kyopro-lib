@@ -1,6 +1,6 @@
 ---
 title: Subset convolution
-documentation_of: Mylib/Convolution/subset_convolution.cpp
+documentation_of: ./subset_convolution.cpp
 ---
 
 ## Operations

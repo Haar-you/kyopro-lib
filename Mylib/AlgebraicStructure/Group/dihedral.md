@@ -1,6 +1,6 @@
 ---
 title: Dihedral group
-documentation_of: Mylib/AlgebraicStructure/Group/dihedral.cpp
+documentation_of: ./dihedral.cpp
 ---
 
 ## Operations

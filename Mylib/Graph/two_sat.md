@@ -1,6 +1,6 @@
 ---
 title: 2-SAT
-documentation_of: Mylib/Graph/two_sat.cpp
+documentation_of: ./two_sat.cpp
 ---
 
 ## Operations

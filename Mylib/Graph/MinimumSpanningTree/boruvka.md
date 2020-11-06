@@ -1,6 +1,6 @@
 ---
 title: Borůvka algorithm
-documentation_of: Mylib/Graph/MinimumSpanningTree/boruvka.cpp
+documentation_of: ./boruvka.cpp
 ---
 
 ## Operations

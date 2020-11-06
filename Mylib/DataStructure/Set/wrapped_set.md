@@ -1,6 +1,6 @@
 ---
 title: 
-documentation_of: Mylib/Misc/wrapped_set.cpp
+documentation_of: ./wrapped_set.cpp
 ---
 
 ## Operations

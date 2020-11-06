@@ -1,6 +1,6 @@
 ---
 title: Ternary search (Convex upwards)
-documentation_of: Mylib/Algorithm/Search/ternary_search_upwards.cpp
+documentation_of: ./ternary_search_upwards.cpp
 ---
 
 ## Operations

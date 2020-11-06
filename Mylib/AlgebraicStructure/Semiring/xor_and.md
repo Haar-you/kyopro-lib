@@ -1,6 +1,6 @@
 ---
 title: Xor-and semiring
-documentation_of: Mylib/AlgebraicStructure/Semiring/xor_and.cpp
+documentation_of: ./xor_and.cpp
 ---
 
 ## Operations

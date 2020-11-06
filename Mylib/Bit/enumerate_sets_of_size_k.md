@@ -1,6 +1,6 @@
 ---
 title: Enumerate sets of size k
-documentation_of: Mylib/Bit/enumerate_sets_of_size_k.cpp
+documentation_of: ./enumerate_sets_of_size_k.cpp
 ---
 
 ## Operations

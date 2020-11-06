@@ -1,6 +1,6 @@
 ---
 title: Inverse matrix
-documentation_of: Mylib/LinearAlgebra/Square/inverse_matrix.cpp
+documentation_of: ./inverse_matrix.cpp
 ---
 
 ## Operations

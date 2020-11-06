@@ -1,6 +1,6 @@
 ---
 title: Rational number
-documentation_of: Mylib/Number/Rational/rational.cpp
+documentation_of: ./rational.cpp
 ---
 
 ## Operations

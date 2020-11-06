@@ -1,6 +1,6 @@
 ---
 title: Bitor monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/bitor.cpp
+documentation_of: ./bitor.cpp
 ---
 
 ## Operations

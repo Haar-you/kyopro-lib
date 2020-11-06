@@ -1,6 +1,6 @@
 ---
 title: Centroid decomposition
-documentation_of: Mylib/Graph/TreeUtils/centroid_decomposition.cpp
+documentation_of: ./centroid_decomposition.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Closed interval
-documentation_of: Mylib/Math/closed_interval.cpp
+documentation_of: ./closed_interval.cpp
 ---
 
 ## Operations

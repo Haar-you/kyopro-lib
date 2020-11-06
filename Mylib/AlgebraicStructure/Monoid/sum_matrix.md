@@ -1,6 +1,6 @@
 ---
 title: Sum matrix monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/sum_matrix.cpp
+documentation_of: ./sum_matrix.cpp
 ---
 
 ## Operations

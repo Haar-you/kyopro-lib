@@ -1,6 +1,6 @@
 ---
 title: Warshall-Floyd algorithm
-documentation_of: Mylib/Graph/ShortestPath/warshall_floyd.cpp
+documentation_of: ./warshall_floyd.cpp
 ---
 
 ## Operations

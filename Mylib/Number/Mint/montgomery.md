@@ -1,6 +1,6 @@
 ---
 title: Montgomery multiplication
-documentation_of: Mylib/Number/Mint/montgomery.cpp
+documentation_of: ./montgomery.cpp
 ---
 
 ## Operations

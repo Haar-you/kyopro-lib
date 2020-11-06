@@ -1,6 +1,6 @@
 ---
 title: Suffix array
-documentation_of: Mylib/String/suffix_array.cpp
+documentation_of: ./suffix_array.cpp
 ---
 
 ## Operations

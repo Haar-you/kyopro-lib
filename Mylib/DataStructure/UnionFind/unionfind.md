@@ -1,6 +1,6 @@
 ---
 title: Union-find
-documentation_of: Mylib/DataStructure/UnionFind/unionfind.cpp
+documentation_of: ./unionfind.cpp
 ---
 
 ## Operations

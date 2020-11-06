@@ -1,6 +1,6 @@
 ---
 title: Number theoretic transform
-documentation_of: Mylib/Convolution/ntt_convolution.cpp
+documentation_of: ./ntt_convolution.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: 
-documentation_of: Mylib/Debug/grid_viewer.cpp
+documentation_of: ./grid_viewer.cpp
 ---
 
 ## Operations

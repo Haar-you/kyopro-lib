@@ -1,6 +1,6 @@
 ---
 title: Inscribed circle of a triangle
-documentation_of: Mylib/Geometry/Float/inscribed_circle_of_triangle.cpp
+documentation_of: ./inscribed_circle_of_triangle.cpp
 ---
 
 ## Operations

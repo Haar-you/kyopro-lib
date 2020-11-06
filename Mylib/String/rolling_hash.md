@@ -1,6 +1,6 @@
 ---
 title: Rolling hash
-documentation_of: Mylib/String/rolling_hash.cpp
+documentation_of: ./rolling_hash.cpp
 ---
 
 ## Operations

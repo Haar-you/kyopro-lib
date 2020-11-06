@@ -1,6 +1,6 @@
 ---
 title: Timer
-documentation_of: Mylib/Misc/timer.cpp
+documentation_of: ./timer.cpp
 ---
 
 ## Operations

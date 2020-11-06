@@ -1,6 +1,6 @@
 ---
 title: 
-documentation_of: Mylib/Debug/debug.cpp
+documentation_of: ./debug.cpp
 ---
 
 ## Operations

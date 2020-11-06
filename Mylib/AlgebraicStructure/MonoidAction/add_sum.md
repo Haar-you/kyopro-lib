@@ -1,6 +1,6 @@
 ---
 title: Range add / Range sum
-documentation_of: Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp
+documentation_of: ./add_sum.cpp
 ---
 
 ## Operations

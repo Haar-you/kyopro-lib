@@ -1,6 +1,6 @@
 ---
 title: Memory dump
-documentation_of: Mylib/Debug/memory_dump.cpp
+documentation_of: ./memory_dump.cpp
 ---
 
 ## Operations

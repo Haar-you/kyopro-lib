@@ -1,6 +1,6 @@
 ---
 title: Catalan number
-documentation_of: Mylib/Combinatorics/catalan_number.cpp
+documentation_of: ./catalan_number.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Directed shortest cycle
-documentation_of: Mylib/Graph/Cycle/directed_shortest_cycle.cpp
+documentation_of: ./directed_shortest_cycle.cpp
 ---
 
 ## Operations

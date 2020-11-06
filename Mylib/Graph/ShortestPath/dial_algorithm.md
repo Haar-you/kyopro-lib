@@ -1,6 +1,6 @@
 ---
 title: Dial's algorithm
-documentation_of: Mylib/Graph/ShortestPath/dial_algorithm.cpp
+documentation_of: ./dial_algorithm.cpp
 ---
 
 ## Operations

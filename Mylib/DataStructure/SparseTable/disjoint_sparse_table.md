@@ -1,6 +1,6 @@
 ---
 title: Disjoint sparse table
-documentation_of: Mylib/DataStructure/SparseTable/disjoint_sparse_table.cpp
+documentation_of: ./disjoint_sparse_table.cpp
 ---
 
 ## Operations

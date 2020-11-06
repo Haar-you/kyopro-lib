@@ -1,6 +1,6 @@
 ---
 title: Integer set
-documentation_of: Mylib/DataStructure/Set/integer_set.cpp
+documentation_of: ./integer_set.cpp
 ---
 
 ## Operations

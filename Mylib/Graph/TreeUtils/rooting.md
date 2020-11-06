@@ -1,6 +1,6 @@
 ---
 title: Rooting
-documentation_of: Mylib/Graph/TreeUtils/rooting.cpp
+documentation_of: ./rooting.cpp
 ---
 
 ## Operations

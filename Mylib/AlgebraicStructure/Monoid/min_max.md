@@ -1,6 +1,6 @@
 ---
 title: Min-Max monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/min_max.cpp
+documentation_of: ./min_max.cpp
 ---
 
 ## Operations

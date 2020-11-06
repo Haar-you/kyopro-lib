@@ -1,6 +1,6 @@
 ---
 title: Tree distance
-documentation_of: Mylib/Graph/TreeUtils/tree_distance.cpp
+documentation_of: ./tree_distance.cpp
 ---
 
 ## Operations

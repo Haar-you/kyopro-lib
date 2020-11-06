@@ -1,6 +1,6 @@
 ---
 title: Dual monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/dual.cpp
+documentation_of: ./dual.cpp
 ---
 
 ## Operations

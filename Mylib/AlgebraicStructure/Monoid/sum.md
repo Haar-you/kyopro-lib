@@ -1,6 +1,6 @@
 ---
 title: Sum monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/sum.cpp
+documentation_of: ./sum.cpp
 ---
 
 ## Operations

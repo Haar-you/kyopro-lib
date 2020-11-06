@@ -1,6 +1,6 @@
 ---
 title: Max contiguous monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/max_contiguous.cpp
+documentation_of: ./max_contiguous.cpp
 ---
 
 ## Operations

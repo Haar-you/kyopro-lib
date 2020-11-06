@@ -1,6 +1,6 @@
 ---
 title: Merge technique
-documentation_of: Mylib/Misc/merge_technique.cpp
+documentation_of: ./merge_technique.cpp
 ---
 
 ## Operations

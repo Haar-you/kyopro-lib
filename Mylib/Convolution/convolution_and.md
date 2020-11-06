@@ -1,6 +1,6 @@
 ---
 title: Convolution (Index bitwise AND)
-documentation_of: Mylib/Convolution/convolution_and.cpp
+documentation_of: ./convolution_and.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Rollbackable vector
-documentation_of: Mylib/DataStructure/Array/rollbackable_vector.cpp
+documentation_of: ./rollbackable_vector.cpp
 ---
 
 ## Operations

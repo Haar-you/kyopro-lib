@@ -1,6 +1,6 @@
 ---
 title: Bitonic tour
-documentation_of: Mylib/DynamicProgramming/bitonic_tour.cpp
+documentation_of: ./bitonic_tour.cpp
 ---
 
 ## Operations

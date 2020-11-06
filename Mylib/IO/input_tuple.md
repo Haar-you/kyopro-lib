@@ -1,6 +1,6 @@
 ---
 title: Input tuple
-documentation_of: Mylib/IO/input_tuple.cpp
+documentation_of: ./input_tuple.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Floor function / Ceiling function
-documentation_of: Mylib/Number/floor_ceil.cpp
+documentation_of: ./floor_ceil.cpp
 ---
 
 ## Operations

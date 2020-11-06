@@ -1,6 +1,6 @@
 ---
 title: Dynamic dual segment tree
-documentation_of: Mylib/DataStructure/SegmentTree/dynamic_dual_segment_tree.cpp
+documentation_of: ./dynamic_dual_segment_tree.cpp
 ---
 
 ## Operations

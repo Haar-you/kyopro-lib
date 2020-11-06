@@ -1,6 +1,6 @@
 ---
 title: Range affine / Range sum
-documentation_of: Mylib/AlgebraicStructure/MonoidAction/affine_sum.cpp
+documentation_of: ./affine_sum.cpp
 ---
 
 ## Operations

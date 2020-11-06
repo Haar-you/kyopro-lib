@@ -1,6 +1,6 @@
 ---
 title: Greatest common divisor / Least common multiple
-documentation_of: Mylib/Number/gcd_lcm.cpp
+documentation_of: ./gcd_lcm.cpp
 ---
 
 ## Operations

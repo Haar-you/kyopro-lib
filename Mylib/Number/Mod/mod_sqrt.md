@@ -1,6 +1,6 @@
 ---
 title: Mod sqrt
-documentation_of: Mylib/Number/Mod/mod_sqrt.cpp
+documentation_of: ./mod_sqrt.cpp
 ---
 
 ## Operations

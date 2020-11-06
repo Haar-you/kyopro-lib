@@ -1,6 +1,6 @@
 ---
 title: Succinct dictionary
-documentation_of: Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp
+documentation_of: ./succinct_dictionary.cpp
 ---
 
 ## Operations

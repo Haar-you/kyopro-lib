@@ -1,6 +1,6 @@
 ---
 title: Rolling hash monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/rolling_hash.cpp
+documentation_of: ./rolling_hash.cpp
 ---
 
 ## Operations

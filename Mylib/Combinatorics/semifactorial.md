@@ -1,6 +1,6 @@
 ---
 title: Semifactorial
-documentation_of: Mylib/Combinatorics/semifactorial.cpp
+documentation_of: ./semifactorial.cpp
 ---
 
 ## Operations

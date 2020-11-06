@@ -1,6 +1,6 @@
 ---
 title: Dual segment tree
-documentation_of: Mylib/DataStructure/SegmentTree/dual_segment_tree.cpp
+documentation_of: ./dual_segment_tree.cpp
 ---
 
 ## Operations

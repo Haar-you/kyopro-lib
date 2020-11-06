@@ -1,6 +1,6 @@
 ---
 title: Enumerate points satisfying conditions
-documentation_of: Mylib/Grid/grid_find.cpp
+documentation_of: ./grid_find.cpp
 ---
 
 ## Operations

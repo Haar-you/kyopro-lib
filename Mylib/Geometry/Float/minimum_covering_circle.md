@@ -1,6 +1,6 @@
 ---
 title: Minimum covering circle
-documentation_of: Mylib/Geometry/Float/minimum_covering_circle.cpp
+documentation_of: ./minimum_covering_circle.cpp
 ---
 
 ## Operations

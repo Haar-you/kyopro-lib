@@ -1,6 +1,6 @@
 ---
 title: Range multiply / Range product
-documentation_of: Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp
+documentation_of: ./multiply_product.cpp
 ---
 
 ## Operations

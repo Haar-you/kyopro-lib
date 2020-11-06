@@ -1,6 +1,6 @@
 ---
 title: Enumerate subsets (Ascending order)
-documentation_of: Mylib/Bit/enumerate_subsets_asc.cpp
+documentation_of: ./enumerate_subsets_asc.cpp
 ---
 
 ## Operations

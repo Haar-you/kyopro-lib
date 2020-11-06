@@ -1,6 +1,6 @@
 ---
 title: Minimum cost flow
-documentation_of: Mylib/Graph/Flow/minimum_cost_flow.cpp
+documentation_of: ./minimum_cost_flow.cpp
 ---
 
 ## Operations

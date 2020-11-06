@@ -1,6 +1,6 @@
 ---
 title: Area of intersection between two circles
-documentation_of: Mylib/Geometry/Float/area_intersection_of_circles.cpp
+documentation_of: ./area_intersection_of_circles.cpp
 ---
 
 ## Operations

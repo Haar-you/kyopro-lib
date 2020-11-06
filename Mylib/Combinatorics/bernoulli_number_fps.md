@@ -1,6 +1,6 @@
 ---
 title: Bernoulli number (FPS)
-documentation_of: Mylib/Combinatorics/bernoulli_number_fps.cpp
+documentation_of: ./bernoulli_number_fps.cpp
 ---
 
 ## Operations

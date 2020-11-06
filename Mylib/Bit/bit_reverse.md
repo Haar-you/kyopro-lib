@@ -1,6 +1,6 @@
 ---
 title: Bit reverse
-documentation_of: Mylib/Bit/bit_reverse.cpp
+documentation_of: ./bit_reverse.cpp
 ---
 
 ## Operations

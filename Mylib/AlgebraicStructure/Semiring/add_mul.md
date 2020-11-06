@@ -1,6 +1,6 @@
 ---
 title: Add-mul semiring
-documentation_of: Mylib/AlgebraicStructure/Semiring/add_mul.cpp
+documentation_of: ./add_mul.cpp
 ---
 
 ## Operations

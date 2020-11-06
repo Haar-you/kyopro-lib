@@ -1,6 +1,6 @@
 ---
 title: Manhattan segments intersections
-documentation_of: Mylib/Geometry/Float/manhattan_segments_intersections.cpp
+documentation_of: ./manhattan_segments_intersections.cpp
 ---
 
 ## Operations

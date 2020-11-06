@@ -1,6 +1,6 @@
 ---
 title: Parallel
-documentation_of: Mylib/Geometry/Float/parallel.cpp
+documentation_of: ./parallel.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Persistent union-find
-documentation_of: Mylib/DataStructure/UnionFind/persistent_unionfind.cpp
+documentation_of: ./persistent_unionfind.cpp
 ---
 
 ## Operations

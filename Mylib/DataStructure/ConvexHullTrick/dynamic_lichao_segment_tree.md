@@ -1,6 +1,6 @@
 ---
 title: Dynamic LiChao segment tree
-documentation_of: Mylib/DataStructure/ConvexHullTrick/dynamic_lichao_segment_tree.cpp
+documentation_of: ./dynamic_lichao_segment_tree.cpp
 ---
 
 ## Operations

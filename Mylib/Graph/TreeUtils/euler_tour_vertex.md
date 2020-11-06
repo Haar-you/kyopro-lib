@@ -1,6 +1,6 @@
 ---
 title: Euler tour (Vertex)
-documentation_of: Mylib/Graph/TreeUtils/euler_tour_vertex.cpp
+documentation_of: ./euler_tour_vertex.cpp
 ---
 
 ## Operations

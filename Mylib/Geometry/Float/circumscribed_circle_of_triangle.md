@@ -1,6 +1,6 @@
 ---
 title: Circumscribed circle of a triangle
-documentation_of: Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp
+documentation_of: ./circumscribed_circle_of_triangle.cpp
 ---
 
 ## Operations

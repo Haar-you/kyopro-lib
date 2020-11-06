@@ -1,6 +1,6 @@
 ---
 title: With min index
-documentation_of: Mylib/AlgebraicStructure/Monoid/with_min_index.cpp
+documentation_of: ./with_min_index.cpp
 ---
 
 ## Operations

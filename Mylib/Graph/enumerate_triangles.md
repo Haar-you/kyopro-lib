@@ -1,6 +1,6 @@
 ---
 title: Enumerate triangles
-documentation_of: Mylib/Graph/enumerate_triangles.cpp
+documentation_of: ./enumerate_triangles.cpp
 ---
 
 ## Operations

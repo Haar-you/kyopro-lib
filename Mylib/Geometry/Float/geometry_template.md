@@ -1,6 +1,6 @@
 ---
 title: Geometry template
-documentation_of: Mylib/Geometry/Float/geometry_template.cpp
+documentation_of: ./geometry_template.cpp
 ---
 
 ## Operations

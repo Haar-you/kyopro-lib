@@ -1,6 +1,6 @@
 ---
 title: Persistent segment tree
-documentation_of: Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp
+documentation_of: ./persistent_segment_tree.cpp
 ---
 
 ## Operations

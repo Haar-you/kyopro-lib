@@ -1,6 +1,6 @@
 ---
 title: Array monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/array.cpp
+documentation_of: ./array.cpp
 ---
 
 ## Operations

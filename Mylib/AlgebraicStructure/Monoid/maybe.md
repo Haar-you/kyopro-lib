@@ -1,6 +1,6 @@
 ---
 title: Maybe monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/maybe.cpp
+documentation_of: ./maybe.cpp
 ---
 
 ## Operations

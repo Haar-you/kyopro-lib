@@ -1,6 +1,6 @@
 ---
 title: Product matrix monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/product_matrix.cpp
+documentation_of: ./product_matrix.cpp
 ---
 
 ## Operations

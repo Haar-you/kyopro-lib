@@ -1,6 +1,6 @@
 ---
 title: Subset sum problem (Minimum)
-documentation_of: Mylib/Typical/SubsetSumProblem/subset_sum_minimum.cpp
+documentation_of: ./subset_sum_minimum.cpp
 ---
 
 ## Operations

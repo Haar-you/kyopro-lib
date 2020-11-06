@@ -1,6 +1,6 @@
 ---
 title: Formal power series
-documentation_of: Mylib/Math/formal_power_series.cpp
+documentation_of: ./formal_power_series.cpp
 ---
 
 ## Operations

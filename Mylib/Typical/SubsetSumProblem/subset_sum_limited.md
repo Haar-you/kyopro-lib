@@ -1,6 +1,6 @@
 ---
 title: Subset sum problem (With quantity limitations)
-documentation_of: Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp
+documentation_of: ./subset_sum_limited.cpp
 ---
 
 ## Operations

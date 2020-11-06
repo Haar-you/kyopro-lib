@@ -1,6 +1,6 @@
 ---
 title: Min-add semiring
-documentation_of: Mylib/AlgebraicStructure/Semiring/min_add.cpp
+documentation_of: ./min_add.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Chu-Liu/Edmonds algorithm
-documentation_of: Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp
+documentation_of: ./chu_liu_edmonds.cpp
 ---
 
 ## Operations

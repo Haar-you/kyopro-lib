@@ -1,6 +1,6 @@
 ---
 title: With count
-documentation_of: Mylib/AlgebraicStructure/Monoid/with_count.cpp
+documentation_of: ./with_count.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Range mode query
-documentation_of: Mylib/Typical/RangeModeQuery/range_mode_query.cpp
+documentation_of: ./range_mode_query.cpp
 ---
 
 ## Operations

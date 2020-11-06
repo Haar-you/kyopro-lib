@@ -1,6 +1,6 @@
 ---
 title: Basic graph
-documentation_of: Mylib/Graph/Template/graph.cpp
+documentation_of: ./graph.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Tangent of circle
-documentation_of: Mylib/Geometry/Float/tangent_of_circle.cpp
+documentation_of: ./tangent_of_circle.cpp
 ---
 
 ## Operations

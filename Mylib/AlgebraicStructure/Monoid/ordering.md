@@ -1,6 +1,6 @@
 ---
 title: Ordering monoid
-documentation_of: Mylib/AlgebraicStructure/Monoid/ordering.cpp
+documentation_of: ./ordering.cpp
 ---
 
 ## Operations

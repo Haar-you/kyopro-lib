@@ -1,6 +1,6 @@
 ---
 title: Undirected shortest cycle
-documentation_of: Mylib/Graph/Cycle/undirected_shortest_cycle.cpp
+documentation_of: ./undirected_shortest_cycle.cpp
 ---
 
 ## Operations

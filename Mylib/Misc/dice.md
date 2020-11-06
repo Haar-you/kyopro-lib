@@ -1,6 +1,6 @@
 ---
 title: Dice
-documentation_of: Mylib/Misc/dice.cpp
+documentation_of: ./dice.cpp
 ---
 
 ## Operations

@@ -1,6 +1,6 @@
 ---
 title: Sum group
-documentation_of: Mylib/AlgebraicStructure/Group/sum.cpp
+documentation_of: ./sum.cpp
 ---
 
 ## Operations

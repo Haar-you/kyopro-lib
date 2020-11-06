@@ -1,6 +1,6 @@
 ---
 title: Stirling numbers of the second kind (FFT)
-documentation_of: Mylib/Combinatorics/stirling_number_second_fft.cpp
+documentation_of: ./stirling_number_second_fft.cpp
 ---
 
 ## Operations

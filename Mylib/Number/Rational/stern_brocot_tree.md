@@ -1,6 +1,6 @@
 ---
 title: Stern-Brocot tree
-documentation_of: Mylib/Number/Rational/stern_brocot_tree.cpp
+documentation_of: ./stern_brocot_tree.cpp
 ---
 
 ## Operations
