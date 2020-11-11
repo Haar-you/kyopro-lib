@@ -148,6 +148,9 @@ data:
     path: test/yosupo-judge/matrix_det/main.test.cpp
     title: test/yosupo-judge/matrix_det/main.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo-judge/multipoint_evaluation/main.test.cpp
+    title: test/yosupo-judge/multipoint_evaluation/main.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
     title: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
   - icon: ':heavy_check_mark:'
@@ -162,13 +165,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/range_kth_smallest/main.test.cpp
     title: test/yosupo-judge/range_kth_smallest/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
     title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/static_range_inversions_query/main.test.cpp
     title: test/yosupo-judge/static_range_inversions_query/main.test.cpp
   - icon: ':heavy_check_mark:'
@@ -310,6 +313,7 @@ data:
   - test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
   - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
   - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/multipoint_evaluation/main.test.cpp
   - test/yosupo-judge/log_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/range_chmin_chmax_add_range_sum/main.test.cpp
   - test/yosupo-judge/cartesian_tree/main.test.cpp

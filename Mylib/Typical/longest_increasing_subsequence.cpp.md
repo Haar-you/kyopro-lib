@@ -10,13 +10,13 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Typical/LongestSubsequence/longest_increasing_subsequence.cpp\"\
-    \n#include <vector>\n#include <algorithm>\n\nnamespace haar_lib {\n  template\
-    \ <typename Container>\n  std::vector<int> longest_increasing_subsequence(const\
-    \ Container &a){\n    using T = typename Container::value_type;\n\n    const int\
-    \ N = a.size();\n\n    std::vector<T> dp;\n    dp.reserve(N);\n    std::vector<int>\
-    \ prev(N, -1), pos, ret;\n    pos.reserve(N);\n\n    for(int i = 0; i < N; ++i){\n\
-    \      auto x = a[i];\n      if(dp.empty() or dp.back() < x){\n        dp.push_back(x);\n\
+  bundledCode: "#line 2 \"Mylib/Typical/longest_increasing_subsequence.cpp\"\n#include\
+    \ <vector>\n#include <algorithm>\n\nnamespace haar_lib {\n  template <typename\
+    \ Container>\n  std::vector<int> longest_increasing_subsequence(const Container\
+    \ &a){\n    using T = typename Container::value_type;\n\n    const int N = a.size();\n\
+    \n    std::vector<T> dp;\n    dp.reserve(N);\n    std::vector<int> prev(N, -1),\
+    \ pos, ret;\n    pos.reserve(N);\n\n    for(int i = 0; i < N; ++i){\n      auto\
+    \ x = a[i];\n      if(dp.empty() or dp.back() < x){\n        dp.push_back(x);\n\
     \        if(pos.size()) prev[i] = pos.back();\n        pos.push_back(i);\n   \
     \   }else{\n        const int k = std::lower_bound(dp.begin(), dp.end(), x) -\
     \ dp.begin();\n        dp[k] = x;\n        if(k > 0) prev[i] = pos[k - 1];\n \
@@ -37,13 +37,13 @@ data:
     \ ret.end());\n\n    return ret;\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/Typical/LongestSubsequence/longest_increasing_subsequence.cpp
+  path: Mylib/Typical/longest_increasing_subsequence.cpp
   requiredBy: []
-  timestamp: '2020-09-22 23:38:39+09:00'
+  timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/DPL_1_D/main.test.cpp
-documentation_of: Mylib/Typical/LongestSubsequence/longest_increasing_subsequence.cpp
+documentation_of: Mylib/Typical/longest_increasing_subsequence.cpp
 layout: document
 title: Longest increasing subsequence
 ---

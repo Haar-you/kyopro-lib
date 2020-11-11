@@ -2,9 +2,6 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp
-    title: Check bipartite graph (Using union-find)
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/MinimumSpanningTree/boruvka.cpp
     title: "Bor\u016Fvka algorithm"
@@ -81,7 +78,6 @@ data:
   isVerificationFile: false
   path: Mylib/DataStructure/UnionFind/unionfind.cpp
   requiredBy:
-  - Mylib/Graph/BipartiteGraph/construct_bipartite_graph.cpp
   - Mylib/Graph/MinimumSpanningTree/kruskal.cpp
   - Mylib/Graph/MinimumSpanningTree/boruvka.cpp
   timestamp: '2020-09-28 09:27:15+09:00'

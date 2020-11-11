@@ -8,7 +8,7 @@ data:
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
   - icon: ':heavy_check_mark:'
-    path: Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp
+    path: Mylib/Typical/subset_sum_limited.cpp
     title: Subset sum problem (With quantity limitations)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -57,7 +57,7 @@ data:
     \       }\n\n                st.push(e.to);\n              }\n            }\n\
     \          }\n\n          return true;\n        }();\n\n      if(res){\n     \
     \   ret.emplace_back(std::make_pair(a, b));\n      }else{\n        ret.emplace_back();\n\
-    \      }\n    }\n\n    return ret;\n  }\n}\n#line 3 \"Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp\"\
+    \      }\n    }\n\n    return ret;\n  }\n}\n#line 3 \"Mylib/Typical/subset_sum_limited.cpp\"\
     \n#include <cassert>\n\nnamespace haar_lib {\n  auto subset_sum_limited(int N,\
     \ int K, const std::vector<int> &a, const std::vector<int> &m){\n    assert((int)a.size()\
     \ == N and (int)m.size() == N);\n    std::vector<int> dp(K + 1, -1);\n\n    dp[0]\
@@ -81,27 +81,27 @@ data:
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2370\"\
     \n\n#include <iostream>\n#include <vector>\n#include <map>\n#include <algorithm>\n\
     #include \"Mylib/Graph/Template/graph.cpp\"\n#include \"Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp\"\
-    \n#include \"Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp\"\n\nnamespace\
-    \ hl = haar_lib;\n\nint main(){\n  int V, E; std::cin >> V >> E;\n\n  hl::graph<int>\
-    \ g(V);\n  g.read<1, false, false>(E);\n\n  auto res = hl::check_bipartite_graph(g);\n\
-    \n  if(std::all_of(res.begin(), res.end(), [](const auto &a){return (bool)a;})){\n\
-    \    int k = 0;\n\n    std::map<int, int> c;\n\n    for(auto &x : res){\n    \
-    \  int a = (*x).first.size();\n      int b = (*x).second.size();\n\n      k +=\
-    \ std::min(a, b);\n\n      c[std::abs(a - b)] += 1;\n    }\n\n    std::vector<int>\
-    \ a, m;\n    for(auto &p : c){\n      a.push_back(p.first);\n      m.push_back(p.second);\n\
-    \    }\n\n    auto r = hl::subset_sum_limited(c.size(), V, a, m);\n\n    int64_t\
-    \ ans = 0;\n\n    for(int i = 0; i <= V; ++i){\n      if(r[i]){\n        int64_t\
-    \ a = k + i;\n        ans = std::max(ans, a * (V - a));\n      }\n    }\n\n  \
-    \  ans -= E;\n    std::cout << ans << \"\\n\";\n  }else{\n    std::cout << -1\
-    \ << \"\\n\";\n  }\n\n  return 0;\n}\n"
+    \n#include \"Mylib/Typical/subset_sum_limited.cpp\"\n\nnamespace hl = haar_lib;\n\
+    \nint main(){\n  int V, E; std::cin >> V >> E;\n\n  hl::graph<int> g(V);\n  g.read<1,\
+    \ false, false>(E);\n\n  auto res = hl::check_bipartite_graph(g);\n\n  if(std::all_of(res.begin(),\
+    \ res.end(), [](const auto &a){return (bool)a;})){\n    int k = 0;\n\n    std::map<int,\
+    \ int> c;\n\n    for(auto &x : res){\n      int a = (*x).first.size();\n     \
+    \ int b = (*x).second.size();\n\n      k += std::min(a, b);\n\n      c[std::abs(a\
+    \ - b)] += 1;\n    }\n\n    std::vector<int> a, m;\n    for(auto &p : c){\n  \
+    \    a.push_back(p.first);\n      m.push_back(p.second);\n    }\n\n    auto r\
+    \ = hl::subset_sum_limited(c.size(), V, a, m);\n\n    int64_t ans = 0;\n\n   \
+    \ for(int i = 0; i <= V; ++i){\n      if(r[i]){\n        int64_t a = k + i;\n\
+    \        ans = std::max(ans, a * (V - a));\n      }\n    }\n\n    ans -= E;\n\
+    \    std::cout << ans << \"\\n\";\n  }else{\n    std::cout << -1 << \"\\n\";\n\
+    \  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Graph/Template/graph.cpp
   - Mylib/Graph/BipartiteGraph/check_bipartite_graph.cpp
-  - Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp
+  - Mylib/Typical/subset_sum_limited.cpp
   isVerificationFile: true
   path: test/aoj/2370/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-10 11:12:55+09:00'
+  timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/2370/main.test.cpp

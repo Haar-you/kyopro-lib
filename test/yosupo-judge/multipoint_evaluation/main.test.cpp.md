@@ -1,18 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
-    path: Mylib/Combinatorics/stirling_number_first_fft.cpp
-    title: Stirling numbers of the first kind (FFT)
   - icon: ':question:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
   - icon: ':question:'
+    path: Mylib/IO/input_vector.cpp
+    title: Input vector
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':question:'
-    path: Mylib/Math/polynomial_taylor_shift.cpp
-    title: Polynomial taylor shift
+  - icon: ':heavy_check_mark:'
+    path: Mylib/Math/multipoint_evaluation.cpp
+    title: Multipoint evaluation
+  - icon: ':heavy_check_mark:'
+    path: Mylib/Math/polynomial.cpp
+    title: Polynomial
   - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
@@ -25,15 +28,15 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind
+    PROBLEM: https://judge.yosupo.jp/problem/multipoint_evaluation
     links:
-    - https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind
-  bundledCode: "#line 1 \"test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind\"\
-    \n\n#include <iostream>\n#line 3 \"Mylib/Number/Mint/mint.cpp\"\n#include <utility>\n\
+    - https://judge.yosupo.jp/problem/multipoint_evaluation
+  bundledCode: "#line 1 \"test/yosupo-judge/multipoint_evaluation/main.test.cpp\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/multipoint_evaluation\"\n\n\
+    #include <iostream>\n#line 3 \"Mylib/Number/Mint/mint.cpp\"\n#include <utility>\n\
     \nnamespace haar_lib {\n  template <int32_t M>\n  class modint {\n    uint32_t\
     \ val_;\n\n  public:\n    constexpr static auto mod(){return M;}\n\n    constexpr\
     \ modint(): val_(0){}\n    constexpr modint(int64_t n){\n      if(n >= M) val_\
@@ -136,67 +139,111 @@ data:
     \      const int64_t t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2\
     \ = ((r[2] - t0 + M3) * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0)\
     \ + T(t1) * M1 + T(t2) * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 3 \"\
-    Mylib/Math/polynomial_taylor_shift.cpp\"\n\nnamespace haar_lib {\n  template <typename\
-    \ T, const auto &convolve>\n  auto polynomial_taylor_shift(std::vector<T> a, T\
-    \ c){\n    const int N = a.size();\n    T f = 1;\n\n    std::vector<T> A(2 * N\
-    \ - 1);\n    for(int i = 0; i < N; ++i){\n      if(i) f *= i;\n      A[i + N -\
-    \ 1] = a[i] * f;\n    }\n\n    T d = 1;\n\n    std::vector<T> g(N);\n    g[N -\
-    \ 1] = f.inv();\n    for(int i = N - 2; i >= 0; --i) g[i] = g[i + 1] * (i + 1);\n\
-    \n    std::vector<T> B(2 * N - 1);\n    for(int i = 0; i < N; ++i){\n      B[N\
-    \ - i - 1] = d * g[i];\n      d *= c;\n    }\n\n    auto C = convolve(A, B);\n\
-    \n    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i) ret[i] = C[(N - 1)\
-    \ * 2 + i] * g[i];\n\n    return ret;\n  }\n}\n#line 5 \"Mylib/Combinatorics/stirling_number_first_fft.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T, const auto &convolve>\n  std::vector<T>\
-    \ stirling_number_of_first_kind_fft(int N){\n    if(N == 0) return {1};\n\n  \
-    \  std::vector<int> p;\n    {\n      int a = N;\n\n      while(a > 0){\n     \
-    \   if(a & 1) p.push_back(1);\n        p.push_back(2);\n        a >>= 1;\n   \
-    \   }\n    }\n\n    std::vector<T> ret = {1};\n\n    std::reverse(p.begin(), p.end());\n\
-    \    int t = 0;\n    for(int x : p){\n      if(x == 1){\n        std::vector<T>\
-    \ a = {-t, 1};\n        ret = convolve(ret, a);\n\n        t += 1;\n      }else{\n\
-    \        auto s = polynomial_taylor_shift<T, convolve>(ret, -t);\n        ret\
-    \ = convolve(ret, s);\n        ret.resize(t * 2 + 1);\n\n        t *= 2;\n   \
-    \   }\n    }\n\n    ret.resize(N + 1);\n\n    return ret;\n  }\n}\n#line 3 \"\
-    Mylib/IO/join.cpp\"\n#include <sstream>\n#include <string>\n\nnamespace haar_lib\
-    \ {\n  template <typename Iter>\n  std::string join(Iter first, Iter last, std::string\
-    \ delim = \" \"){\n    std::stringstream s;\n\n    for(auto it = first; it !=\
-    \ last; ++it){\n      if(it != first) s << delim;\n      s << *it;\n    }\n\n\
-    \    return s.str();\n  }\n}\n#line 9 \"test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int\
-    \ prim_root = hl::primitive_root(mod);\n\nusing mint = hl::modint<mod>;\nusing\
-    \ NTT = hl::number_theoretic_transform<mint, prim_root, 1 << 20>;\nconst auto\
-    \ ntt = NTT();\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
-    \n  int N; std::cin >> N;\n\n  auto res = hl::stirling_number_of_first_kind_fft<mint,\
-    \ ntt>(N);\n  std::cout << hl::join(res.begin(), res.end()) << \"\\n\";\n\n  return\
-    \ 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind\"\
+    Mylib/Math/polynomial.cpp\"\n#include <initializer_list>\n\nnamespace haar_lib\
+    \ {\n  template <typename T, const auto &convolve>\n  class polynomial {\n  public:\n\
+    \    using value_type = T;\n\n  private:\n    std::vector<T> data_;\n\n  public:\n\
+    \    explicit polynomial(int N): data_(N){}\n    polynomial(std::vector<T> data):\
+    \ data_(data){}\n    polynomial(std::initializer_list<T> data): data_(data.begin(),\
+    \ data.end()){}\n\n    auto& data(){return data_;}\n    const auto& data() const\
+    \ {return data_;}\n    int size() const {return data_.size();}\n    auto begin(){return\
+    \ data_.begin();}\n    auto end(){return data_.end();}\n\n    const auto& operator[](size_t\
+    \ i) const {return data_[i];}\n    auto& operator[](size_t i){return data_[i];}\n\
+    \n    auto& operator+=(const polynomial &that){\n      if(data_.size() < that.data_.size())\
+    \ data_.resize(that.data_.size());\n      for(size_t i = 0; i < that.data_.size();\
+    \ ++i) data_[i] += that.data_[i];\n      return *this;\n    }\n\n    auto& operator-=(const\
+    \ polynomial &that){\n      if(data_.size() < that.data_.size()) data_.resize(that.data_.size());\n\
+    \      for(size_t i = 0; i < that.data_.size(); ++i) data_[i] -= that.data_[i];\n\
+    \      return *this;\n    }\n\n    auto& operator*=(T k){\n      for(auto &x :\
+    \ data_) x *= k;\n      return *this;\n    }\n\n    auto& operator/=(T k){\n \
+    \     for(auto &x : data_) x /= k;\n      return *this;\n    }\n\n    auto& operator*=(const\
+    \ polynomial &that){\n      const int k = data_.size() + that.data_.size() - 1;\n\
+    \      data_ = convolve(data_, that.data_);\n      data_.resize(k);\n      return\
+    \ *this;\n    }\n\n    auto operator+(const polynomial &that) const {\n      return\
+    \ polynomial(*this) += that;\n    }\n\n    auto operator-(const polynomial &that)\
+    \ const {\n      return polynomial(*this) -= that;\n    }\n\n    auto operator*(T\
+    \ k) const {\n      return polynomial(*this) *= k;\n    }\n\n    auto operator/(T\
+    \ k) const {\n      return polynomial(*this) /= k;\n    }\n\n    auto operator*(const\
+    \ polynomial &that) const {\n      return polynomial(*this) *= that;\n    }\n\n\
+    \    auto differentiate() const {\n      polynomial ret((int)data_.size() - 1);\n\
+    \      for(int i = 0; i < (int)ret.data_.size(); ++i){\n        ret.data_[i] =\
+    \ data_[i + 1] * (i + 1);\n      }\n      return ret;\n    }\n\n    auto integrate()\
+    \ const {\n      polynomial ret((int)data_.size() + 1);\n      for(int i = 1;\
+    \ i < (int)ret.data_.size(); ++i){\n        ret.data_[i] = data_[i - 1] / i;\n\
+    \      }\n\n      return ret;\n    }\n\n    auto integrate(T lb, T ub) const {\n\
+    \      T ret = 0, x1 = 1, x2 = 1;\n      for(int i = 0; i < (int)data_.size();\
+    \ ++i){\n        x1 *= lb;\n        x2 *= ub;\n        ret += data_[i] / (i +\
+    \ 1) * (x2 - x1);\n      }\n\n      return ret;\n    }\n\n    auto shift(int k)\
+    \ const {\n      polynomial ret((int)data_.size() + k);\n      for(int i = 0;\
+    \ i < (int)data_.size(); ++i){\n        ret.data_[i + k] = data_[i];\n      }\n\
+    \n      return ret;\n    }\n\n    auto inv(int n) const {\n      polynomial ret({data_[0].inv()});\n\
+    \      int t = 1;\n\n      while(t <= n * 2){\n        ret = ret * T(2) - ret\
+    \ * ret * (*this);\n        ret.data_.resize(t);\n        t *= 2;\n      }\n\n\
+    \      return ret;\n    }\n\n    std::pair<polynomial, polynomial> divmod(const\
+    \ polynomial &that) const {\n      if(data_.size() < that.size()) return {{0},\
+    \ *this};\n\n      const int m = data_.size() - that.size();\n\n      auto g =\
+    \ *this;\n      std::reverse(g.begin(), g.end());\n\n      auto f = that;\n  \
+    \    const int d = (int)that.size() - 1;\n      std::reverse(f.begin(), f.end());\n\
+    \n      f = f.inv(m);\n\n      f.data_.resize(m + 1);\n\n      auto q = f * g;\n\
+    \      q.data_.resize(m + 1);\n\n      std::reverse(q.begin(), q.end());\n\n \
+    \     auto r = (*this) - that * q;\n      r.data_.resize(d);\n\n      return {q,\
+    \ r};\n    }\n  };\n}\n#line 3 \"Mylib/Math/multipoint_evaluation.cpp\"\n\nnamespace\
+    \ haar_lib {\n  template <typename T, typename Poly>\n  auto multipoint_evaluation(Poly\
+    \ a, std::vector<T> p){\n    const int M = p.size();\n    std::vector<T> ret(M);\n\
+    \n    int k = 1;\n    while(k < M) k *= 2;\n\n    std::vector<Poly> f(k * 2, {1});\n\
+    \n    for(int i = 0; i < M; ++i) f[i + k] = {-p[i], 1};\n    for(int i = k - 1;\
+    \ i >= 1; --i) f[i] = f[i << 1 | 0] * f[i << 1 | 1];\n\n    f[1] = a.divmod(f[1]).second;\n\
+    \n    for(int i = 2; i < k + M; ++i) f[i] = f[i >> 1].divmod(f[i]).second;\n \
+    \   for(int i = 0; i < M; ++i) ret[i] = f[k + i][0];\n\n    return ret;\n  }\n\
+    }\n#line 3 \"Mylib/IO/join.cpp\"\n#include <sstream>\n#include <string>\n\nnamespace\
+    \ haar_lib {\n  template <typename Iter>\n  std::string join(Iter first, Iter\
+    \ last, std::string delim = \" \"){\n    std::stringstream s;\n\n    for(auto\
+    \ it = first; it != last; ++it){\n      if(it != first) s << delim;\n      s <<\
+    \ *it;\n    }\n\n    return s.str();\n  }\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\
+    \n\nnamespace haar_lib {\n  template <typename T>\n  std::vector<T> input_vector(int\
+    \ N){\n    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i) std::cin >>\
+    \ ret[i];\n    return ret;\n  }\n\n  template <typename T>\n  std::vector<std::vector<T>>\
+    \ input_vector(int N, int M){\n    std::vector<std::vector<T>> ret(N);\n    for(int\
+    \ i = 0; i < N; ++i) ret[i] = input_vector<T>(M);\n    return ret;\n  }\n}\n#line\
+    \ 11 \"test/yosupo-judge/multipoint_evaluation/main.test.cpp\"\n\nnamespace hl\
+    \ = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int prim_root = hl::primitive_root(mod);\n\
+    using mint = hl::modint<mod>;\nconst static auto ntt = hl::number_theoretic_transform<mint,\
+    \ prim_root, 1 << 20>();\nusing poly = hl::polynomial<mint, ntt>;\n\nint main(){\n\
+    \  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int N, M; std::cin\
+    \ >> N >> M;\n  auto c = hl::input_vector<mint>(N);\n  auto p = hl::input_vector<mint>(M);\n\
+    \n  auto ans = hl::multipoint_evaluation(poly(c), p);\n\n  std::cout << hl::join(ans.begin(),\
+    \ ans.end()) << \"\\n\";\n\n  return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/multipoint_evaluation\"\
     \n\n#include <iostream>\n#include \"Mylib/Number/Mint/mint.cpp\"\n#include \"\
     Mylib/Number/Prime/primitive_root.cpp\"\n#include \"Mylib/Convolution/ntt_convolution.cpp\"\
-    \n#include \"Mylib/Combinatorics/stirling_number_first_fft.cpp\"\n#include \"\
-    Mylib/IO/join.cpp\"\n\nnamespace hl = haar_lib;\n\nconstexpr int mod = 998244353;\n\
-    constexpr int prim_root = hl::primitive_root(mod);\n\nusing mint = hl::modint<mod>;\n\
-    using NTT = hl::number_theoretic_transform<mint, prim_root, 1 << 20>;\nconst auto\
-    \ ntt = NTT();\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
-    \n  int N; std::cin >> N;\n\n  auto res = hl::stirling_number_of_first_kind_fft<mint,\
-    \ ntt>(N);\n  std::cout << hl::join(res.begin(), res.end()) << \"\\n\";\n\n  return\
+    \n#include \"Mylib/Math/polynomial.cpp\"\n#include \"Mylib/Math/multipoint_evaluation.cpp\"\
+    \n#include \"Mylib/IO/join.cpp\"\n#include \"Mylib/IO/input_vector.cpp\"\n\nnamespace\
+    \ hl = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int prim_root =\
+    \ hl::primitive_root(mod);\nusing mint = hl::modint<mod>;\nconst static auto ntt\
+    \ = hl::number_theoretic_transform<mint, prim_root, 1 << 20>();\nusing poly =\
+    \ hl::polynomial<mint, ntt>;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
+    \n  int N, M; std::cin >> N >> M;\n  auto c = hl::input_vector<mint>(N);\n  auto\
+    \ p = hl::input_vector<mint>(M);\n\n  auto ans = hl::multipoint_evaluation(poly(c),\
+    \ p);\n\n  std::cout << hl::join(ans.begin(), ans.end()) << \"\\n\";\n\n  return\
     \ 0;\n}\n"
   dependsOn:
   - Mylib/Number/Mint/mint.cpp
   - Mylib/Number/Prime/primitive_root.cpp
   - Mylib/Number/Mod/mod_pow.cpp
   - Mylib/Convolution/ntt_convolution.cpp
-  - Mylib/Combinatorics/stirling_number_first_fft.cpp
-  - Mylib/Math/polynomial_taylor_shift.cpp
+  - Mylib/Math/polynomial.cpp
+  - Mylib/Math/multipoint_evaluation.cpp
   - Mylib/IO/join.cpp
+  - Mylib/IO/input_vector.cpp
   isVerificationFile: true
-  path: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+  path: test/yosupo-judge/multipoint_evaluation/main.test.cpp
   requiredBy: []
-  timestamp: '2020-11-04 17:40:49+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2020-11-05 01:04:29+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+documentation_of: test/yosupo-judge/multipoint_evaluation/main.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
-- /verify/test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp.html
-title: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+- /verify/test/yosupo-judge/multipoint_evaluation/main.test.cpp
+- /verify/test/yosupo-judge/multipoint_evaluation/main.test.cpp.html
+title: test/yosupo-judge/multipoint_evaluation/main.test.cpp
 ---

@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':x:'
-    path: Mylib/Typical/IntervalSchedulingProblem/interval_scheduling_k.cpp
+    path: Mylib/Typical/interval_scheduling_k.cpp
     title: Interval scheduling problem (Allow no more than k intervals to overlap)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -14,7 +14,7 @@ data:
     links:
     - https://yukicoder.me/problems/no/580
   bundledCode: "#line 1 \"test/yukicoder/580/main.test.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/580\"\
-    \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/Typical/IntervalSchedulingProblem/interval_scheduling_k.cpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/Typical/interval_scheduling_k.cpp\"\
     \n#include <set>\n#include <iterator>\n#include <algorithm>\n#include <utility>\n\
     #include <numeric>\n\nnamespace haar_lib {\n  auto interval_scheduling_k(std::vector<int>\
     \ l, std::vector<int> r, int k){\n    const int N = l.size();\n\n    std::vector<int>\
@@ -34,8 +34,8 @@ data:
     \  auto res = hl::interval_scheduling_k(l, r, n);\n  std::cout << res.size() <<\
     \ \"\\n\";\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/580\"\n\n#include <iostream>\n\
-    #include <vector>\n#include \"Mylib/Typical/IntervalSchedulingProblem/interval_scheduling_k.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
+    #include <vector>\n#include \"Mylib/Typical/interval_scheduling_k.cpp\"\n\nnamespace\
+    \ hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  int n, m; std::cin >> n >> m;\n\n  std::vector<int> l(m), r(m);\n\n  for(int\
     \ i = 0; i < m; ++i){\n    int d; std::cin >> d;\n    int h1, m1; std::cin >>\
     \ h1; std::cin.ignore(); std::cin >> m1;\n\n    int o; std::cin >> o;\n    int\
@@ -44,11 +44,11 @@ data:
     \  auto res = hl::interval_scheduling_k(l, r, n);\n  std::cout << res.size() <<\
     \ \"\\n\";\n\n  return 0;\n}\n"
   dependsOn:
-  - Mylib/Typical/IntervalSchedulingProblem/interval_scheduling_k.cpp
+  - Mylib/Typical/interval_scheduling_k.cpp
   isVerificationFile: true
   path: test/yukicoder/580/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-21 02:36:12+09:00'
+  timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/580/main.test.cpp

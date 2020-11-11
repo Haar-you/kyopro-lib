@@ -13,9 +13,9 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp\"\n\
-    #include <vector>\n#include <cassert>\n\nnamespace haar_lib {\n  auto subset_sum_limited(int\
-    \ N, int K, const std::vector<int> &a, const std::vector<int> &m){\n    assert((int)a.size()\
+  bundledCode: "#line 2 \"Mylib/Typical/subset_sum_limited.cpp\"\n#include <vector>\n\
+    #include <cassert>\n\nnamespace haar_lib {\n  auto subset_sum_limited(int N, int\
+    \ K, const std::vector<int> &a, const std::vector<int> &m){\n    assert((int)a.size()\
     \ == N and (int)m.size() == N);\n    std::vector<int> dp(K + 1, -1);\n\n    dp[0]\
     \ = 0;\n    for(int i = 0; i < N; ++i){\n      for(int j = 0; j <= K; ++j){\n\
     \        if(dp[j] >= 0){\n          dp[j] = m[i];\n        }else if(j < a[i] or\
@@ -33,14 +33,14 @@ data:
     \n    return dp;\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp
+  path: Mylib/Typical/subset_sum_limited.cpp
   requiredBy: []
-  timestamp: '2020-10-10 11:12:55+09:00'
+  timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/2955/main.test.cpp
   - test/aoj/2370/main.test.cpp
-documentation_of: Mylib/Typical/SubsetSumProblem/subset_sum_limited.cpp
+documentation_of: Mylib/Typical/subset_sum_limited.cpp
 layout: document
 title: Subset sum problem (With quantity limitations)
 ---

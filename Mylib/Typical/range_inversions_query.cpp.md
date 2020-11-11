@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Algorithm/Mo/mo_algorithm.cpp
     title: Mo's algorithm
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
     title: Fenwick tree (Add)
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/static_range_inversions_query/main.test.cpp
     title: test/yosupo-judge/static_range_inversions_query/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Typical/InversionNumber/range_inversions_query.cpp\"\
-    \n#include <vector>\n#include <utility>\n#include <algorithm>\n#line 3 \"Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp\"\
+  bundledCode: "#line 2 \"Mylib/Typical/range_inversions_query.cpp\"\n#include <vector>\n\
+    #include <utility>\n#include <algorithm>\n#line 3 \"Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp\"\
     \n#include <cassert>\n\nnamespace haar_lib {\n  template <typename T>\n  class\
     \ fenwick_tree_add {\n  public:\n    using value_type = T;\n\n  private:\n   \
     \ int size_;\n    std::vector<value_type> data_;\n\n  public:\n    fenwick_tree_add(){}\n\
@@ -54,8 +54,8 @@ data:
     \          if(l > left_[id]) append_left_(--l);\n          if(l < left_[id]) remove_left_(l++);\n\
     \          if(r < right_[id]) append_right_(r++);\n          if(r > right_[id])\
     \ remove_right_(--r);\n        }\n\n        query_(id);\n      }\n    }\n  };\n\
-    }\n#line 7 \"Mylib/Typical/InversionNumber/range_inversions_query.cpp\"\n\nnamespace\
-    \ haar_lib {\n  template <typename T>\n  class range_inversions_query {\n    std::vector<int>\
+    }\n#line 7 \"Mylib/Typical/range_inversions_query.cpp\"\n\nnamespace haar_lib\
+    \ {\n  template <typename T>\n  class range_inversions_query {\n    std::vector<int>\
     \ data_;\n    int N_;\n    std::vector<std::pair<int, int>> qs_;\n\n  public:\n\
     \    range_inversions_query(){}\n    range_inversions_query(std::vector<T> a):\
     \ N_(a.size()){\n      auto b = a;\n      std::sort(b.begin(), b.end());\n   \
@@ -102,13 +102,13 @@ data:
   - Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
   - Mylib/Algorithm/Mo/mo_algorithm.cpp
   isVerificationFile: false
-  path: Mylib/Typical/InversionNumber/range_inversions_query.cpp
+  path: Mylib/Typical/range_inversions_query.cpp
   requiredBy: []
-  timestamp: '2020-10-10 11:12:55+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2020-11-07 03:03:04+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/static_range_inversions_query/main.test.cpp
-documentation_of: Mylib/Typical/InversionNumber/range_inversions_query.cpp
+documentation_of: Mylib/Typical/range_inversions_query.cpp
 layout: document
 title: Range inversions query
 ---

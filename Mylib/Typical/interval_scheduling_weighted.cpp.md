@@ -7,9 +7,9 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Typical/IntervalSchedulingProblem/weighted_interval_scheduling.cpp\"\
-    \n#include <vector>\n#include <algorithm>\n#include <utility>\n\nnamespace haar_lib\
-    \ {\n  template <typename T, typename U>\n  U weighted_interval_scheduling(std::vector<T>\
+  bundledCode: "#line 2 \"Mylib/Typical/interval_scheduling_weighted.cpp\"\n#include\
+    \ <vector>\n#include <algorithm>\n#include <utility>\n\nnamespace haar_lib {\n\
+    \  template <typename T, typename U>\n  U weighted_interval_scheduling(std::vector<T>\
     \ from, std::vector<T> to, std::vector<U> value){\n    int n = from.size();\n\n\
     \    std::vector<T> c(from);\n    c.insert(c.end(), to.begin(), to.end());\n\n\
     \    std::sort(c.begin(), c.end());\n    c.erase(std::unique(c.begin(), c.end()),\
@@ -36,12 +36,12 @@ data:
     \      }\n    }\n\n    return dp[m];\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/Typical/IntervalSchedulingProblem/weighted_interval_scheduling.cpp
+  path: Mylib/Typical/interval_scheduling_weighted.cpp
   requiredBy: []
-  timestamp: '2020-09-21 02:36:12+09:00'
+  timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: Mylib/Typical/IntervalSchedulingProblem/weighted_interval_scheduling.cpp
+documentation_of: Mylib/Typical/interval_scheduling_weighted.cpp
 layout: document
 title: Weighted interval scheduling problem
 ---

@@ -22,13 +22,13 @@ data:
   - icon: ':question:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Typical/SubsetSumProblem/subset_sum_count_fps.cpp
+  - icon: ':x:'
+    path: Mylib/Typical/subset_sum_count_fps.cpp
     title: Subset sum problem (Count, FPS)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sharp_p_subset_sum
@@ -152,13 +152,12 @@ data:
     Mylib/Math/formal_power_series.cpp\"\n#include <initializer_list>\n#line 6 \"\
     Mylib/Math/formal_power_series.cpp\"\n\nnamespace haar_lib {\n  template <typename\
     \ T, const auto &convolve>\n  class formal_power_series {\n  public:\n    using\
-    \ value_type = T;\n\n    static std::function<std::optional<T>(T)> get_sqrt;\n\
-    \n  private:\n    std::vector<T> data_;\n\n  public:\n    formal_power_series(){}\n\
+    \ value_type = T;\n\n  private:\n    std::vector<T> data_;\n\n  public:\n    formal_power_series(){}\n\
     \    explicit formal_power_series(int N): data_(N){}\n    formal_power_series(const\
     \ std::vector<T> &data_): data_(data_){}\n    formal_power_series(std::initializer_list<T>\
     \ init): data_(init.begin(), init.end()){}\n    formal_power_series(const formal_power_series\
     \ &a): data_(a.data_){}\n    formal_power_series(formal_power_series &&a) noexcept\
-    \ {*this = std::move(a);}\n\n    int size() const {\n      return data_.size();\n\
+    \ {*this = std::move(a);}\n\n    size_t size() const {\n      return data_.size();\n\
     \    }\n\n    const T& operator[](int i) const {\n      return data_[i];\n   \
     \ }\n\n    T& operator[](int i){\n      return data_[i];\n    }\n\n    auto begin()\
     \ {return data_.begin();}\n    auto end() {return data_.end();}\n\n    void resize(int\
@@ -216,17 +215,7 @@ data:
     \ >= n) return *this;\n\n      T a = data_[k];\n\n      formal_power_series ret\
     \ = *this;\n      ret = (ret.shift(-k)) * a.inv();\n      ret = (ret.log() * (T)M).exp();\n\
     \      ret = (ret * a.pow(M)).shift(M * k);\n\n      return ret;\n    }\n\n  \
-    \  std::optional<formal_power_series> sqrt() const {\n      const int n = data_.size();\n\
-    \      int k = 0;\n      for(; k < n; ++k) if(data_[k] != 0) break;\n\n      if(k\
-    \ >= n) return *this;\n      if(k % 2 != 0) return {};\n\n      int t = 1;\n \
-    \     auto x = get_sqrt(data_[k]);\n\n      if(not x) return {};\n\n      const\
-    \ int m = n - k;\n\n      auto it = data_.begin() + k;\n      formal_power_series\
-    \ ret({*x});\n\n      while(t <= m * 2){\n        formal_power_series f(std::vector(it,\
-    \ it + std::min(t, m)));\n        ret.resize(t);\n        f.resize(t);\n     \
-    \   ret = (ret + f * ret.inv()) * T(2).inv();\n        t <<= 1;\n      }\n\n \
-    \     ret.resize(n);\n      ret = ret.shift(k / 2);\n\n      return ret;\n   \
-    \ }\n  };\n\n  template <typename T, const auto &convolve>\n  std::function<std::optional<T>(T)>\
-    \ formal_power_series<T, convolve>::get_sqrt;\n}\n#line 3 \"Mylib/Typical/SubsetSumProblem/subset_sum_count_fps.cpp\"\
+    \  std::optional<formal_power_series> sqrt() const;\n  };\n}\n#line 3 \"Mylib/Typical/subset_sum_count_fps.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename Fps>\n  auto subset_sum_count_fps(std::vector<int>\
     \ s, int t){\n    using T = typename Fps::value_type;\n\n    std::vector<int>\
     \ c(t + 1);\n    for(int i : s) c[i] += 1;\n\n    Fps ret(t + 1);\n\n    for(int\
@@ -246,7 +235,7 @@ data:
     #include <iostream>\n#include <functional>\n#include \"Mylib/IO/input_vector.cpp\"\
     \n#include \"Mylib/IO/join.cpp\"\n#include \"Mylib/Number/Mint/mint.cpp\"\n#include\
     \ \"Mylib/Number/Prime/primitive_root.cpp\"\n#include \"Mylib/Convolution/ntt_convolution.cpp\"\
-    \n#include \"Mylib/Math/formal_power_series.cpp\"\n#include \"Mylib/Typical/SubsetSumProblem/subset_sum_count_fps.cpp\"\
+    \n#include \"Mylib/Math/formal_power_series.cpp\"\n#include \"Mylib/Typical/subset_sum_count_fps.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int\
     \ prim_root = hl::primitive_root(mod);\nusing mint = hl::modint<mod>;\nusing NTT\
     \ = hl::number_theoretic_transform<mint, prim_root, 1 << 21>;\nconst static auto\
@@ -263,12 +252,12 @@ data:
   - Mylib/Number/Mod/mod_pow.cpp
   - Mylib/Convolution/ntt_convolution.cpp
   - Mylib/Math/formal_power_series.cpp
-  - Mylib/Typical/SubsetSumProblem/subset_sum_count_fps.cpp
+  - Mylib/Typical/subset_sum_count_fps.cpp
   isVerificationFile: true
   path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-28 03:22:23+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2020-11-07 03:03:04+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
 layout: document

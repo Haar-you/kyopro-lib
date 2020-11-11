@@ -32,14 +32,14 @@ data:
     \ P(n, k) * inv_factorial(k);\n    }\n\n    T H(int64_t n, int64_t k) const {\n\
     \      if(n == 0 and k == 0) return 1;\n      return C(n + k - 1, k);\n    }\n\
     \  };\n}\n#line 5 \"Mylib/Combinatorics/bernoulli_number.cpp\"\n\nnamespace haar_lib\
-    \ {\n  template <const auto &ft>\n  auto bernoulli_number(int64_t n){\n    using\
-    \ T = typename std::remove_reference_t<decltype(ft)>::value_type;\n    std::vector<T>\
+    \ {\n  template <const auto &ft>\n  auto bernoulli_number(int n){\n    using T\
+    \ = typename std::remove_reference_t<decltype(ft)>::value_type;\n    std::vector<T>\
     \ ret(n + 1);\n\n    ret[0] = 1;\n\n    for(int64_t i = 1; i <= n; ++i){\n   \
     \   for(int k = 0; k <= i - 1; ++k){\n        ret[i] += ft.C(i + 1, k) * ret[k];\n\
     \      }\n      ret[i] /= i + 1;\n      ret[i] = -ret[i];\n    }\n\n    return\
     \ ret;\n  }\n}\n"
   code: "#pragma once\n#include <vector>\n#include <cstdint>\n#include \"Mylib/Combinatorics/factorial_table.cpp\"\
-    \n\nnamespace haar_lib {\n  template <const auto &ft>\n  auto bernoulli_number(int64_t\
+    \n\nnamespace haar_lib {\n  template <const auto &ft>\n  auto bernoulli_number(int\
     \ n){\n    using T = typename std::remove_reference_t<decltype(ft)>::value_type;\n\
     \    std::vector<T> ret(n + 1);\n\n    ret[0] = 1;\n\n    for(int64_t i = 1; i\
     \ <= n; ++i){\n      for(int k = 0; k <= i - 1; ++k){\n        ret[i] += ft.C(i\
@@ -50,7 +50,7 @@ data:
   isVerificationFile: false
   path: Mylib/Combinatorics/bernoulli_number.cpp
   requiredBy: []
-  timestamp: '2020-10-10 12:47:45+09:00'
+  timestamp: '2020-11-04 18:00:18+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yukicoder/665/main.test.cpp
@@ -61,7 +61,7 @@ title: Bernoulli number
 
 ## Operations
 
-- `bernoulli_number(Ft, int n)`
+- `bernoulli_number<ft>(int n) -> [T]`
 	- $B_0$ ~ $B_n$を列挙する。
 	- Time complexity $O(N^2)$
 

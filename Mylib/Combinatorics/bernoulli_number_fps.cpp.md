@@ -34,6 +34,7 @@ title: Bernoulli number (FPS)
 ---
 
 ## Operations
+- `bernoulli_number_fps<Fps, ft>(int N) -> Fps`
 
 ## Requirements
 

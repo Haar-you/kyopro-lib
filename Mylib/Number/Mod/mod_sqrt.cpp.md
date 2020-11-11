@@ -4,7 +4,10 @@ data:
   - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: Mylib/Math/fps_sqrt.cpp
+    title: Formal power series (Sqrt)
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sqrt_mod/main.test.cpp
@@ -55,7 +58,8 @@ data:
   - Mylib/Number/Mod/mod_pow.cpp
   isVerificationFile: false
   path: Mylib/Number/Mod/mod_sqrt.cpp
-  requiredBy: []
+  requiredBy:
+  - Mylib/Math/fps_sqrt.cpp
   timestamp: '2020-10-28 03:22:23+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:

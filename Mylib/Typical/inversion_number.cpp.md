@@ -10,8 +10,8 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Typical/InversionNumber/inversion_number.cpp\"\n#include\
-    \ <vector>\n#include <cstdint>\n\nnamespace haar_lib {\n  namespace inversion_number_impl\
+  bundledCode: "#line 2 \"Mylib/Typical/inversion_number.cpp\"\n#include <vector>\n\
+    #include <cstdint>\n\nnamespace haar_lib {\n  namespace inversion_number_impl\
     \ {\n    template <typename T, typename Compare>\n    int64_t rec(std::vector<T>\
     \ &a, const Compare &compare){\n      const int n = a.size();\n      if(n <= 1)\
     \ return 0;\n\n      int64_t ret = 0;\n\n      std::vector<T> b(a.begin(), a.begin()\
@@ -39,13 +39,13 @@ data:
     \ inversion_number_impl::rec(a, compare);\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/Typical/InversionNumber/inversion_number.cpp
+  path: Mylib/Typical/inversion_number.cpp
   requiredBy: []
-  timestamp: '2020-09-21 02:36:12+09:00'
+  timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/ALDS1_5_D/main.test.cpp
-documentation_of: Mylib/Typical/InversionNumber/inversion_number.cpp
+documentation_of: Mylib/Typical/inversion_number.cpp
 layout: document
 title: Inversion number
 ---

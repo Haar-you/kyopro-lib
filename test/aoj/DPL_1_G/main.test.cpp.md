@@ -5,7 +5,7 @@ data:
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
   - icon: ':heavy_check_mark:'
-    path: Mylib/Typical/KnapsackProblem/knapsack_limited.cpp
+    path: Mylib/Typical/knapsack_limited.cpp
     title: Knapsack problem (With quantity limitations)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -17,7 +17,7 @@ data:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G
   bundledCode: "#line 1 \"test/aoj/DPL_1_G/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G\"\
-    \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/Typical/KnapsackProblem/knapsack_limited.cpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/Typical/knapsack_limited.cpp\"\
     \n#include <algorithm>\n\nnamespace haar_lib {\n  template <typename Weight, typename\
     \ Value>\n  Value knapsack_limited(int N, Weight cap, const std::vector<Weight>\
     \ &w, const std::vector<Value> &v, const std::vector<int> &m){\n    std::vector<Value>\
@@ -41,18 +41,18 @@ data:
     \ hl::knapsack_limited(N, W, w, v, m);\n  std::cout << ans << std::endl;\n\n \
     \ return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G\"\
-    \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/Typical/KnapsackProblem/knapsack_limited.cpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/Typical/knapsack_limited.cpp\"\
     \n#include \"Mylib/IO/input_tuple_vector.cpp\"\n\nnamespace hl = haar_lib;\n\n\
     int main(){\n  int N, W; std::cin >> N >> W;\n\n  auto [v, w, m] = hl::input_tuple_vector<int,\
     \ int, int>(N);\n\n  auto ans = hl::knapsack_limited(N, W, w, v, m);\n  std::cout\
     \ << ans << std::endl;\n\n  return 0;\n}\n"
   dependsOn:
-  - Mylib/Typical/KnapsackProblem/knapsack_limited.cpp
+  - Mylib/Typical/knapsack_limited.cpp
   - Mylib/IO/input_tuple_vector.cpp
   isVerificationFile: true
   path: test/aoj/DPL_1_G/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-21 02:36:12+09:00'
+  timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DPL_1_G/main.test.cpp

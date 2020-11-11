@@ -5,7 +5,7 @@ data:
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   - icon: ':heavy_check_mark:'
-    path: Mylib/Typical/MaxRectangleProblem/max_rectangle_in_histogram.cpp
+    path: Mylib/Typical/max_rectangle_in_histogram.cpp
     title: Largest rectangle in histogram
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -17,7 +17,7 @@ data:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_C
   bundledCode: "#line 1 \"test/aoj/DPL_3_C/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_C\"\
-    \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/Typical/MaxRectangleProblem/max_rectangle_in_histogram.cpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/Typical/max_rectangle_in_histogram.cpp\"\
     \n#include <stack>\n#include <utility>\n\nnamespace haar_lib {\n  template <typename\
     \ T>\n  T max_rectangle_in_histogram(const std::vector<T> &h){\n    std::stack<std::pair<T,\
     \ int>> st;\n    T ret = 0;\n\n    for(size_t i = 0; i < h.size(); ++i){\n   \
@@ -39,18 +39,18 @@ data:
     \ ans = hl::max_rectangle_in_histogram(h);\n\n  std::cout << ans << std::endl;\n\
     \n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_C\"\
-    \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/Typical/MaxRectangleProblem/max_rectangle_in_histogram.cpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/Typical/max_rectangle_in_histogram.cpp\"\
     \n#include \"Mylib/IO/input_vector.cpp\"\n\nnamespace hl = haar_lib;\n\nint main(){\n\
     \  int N; std::cin >> N;\n\n  auto h = hl::input_vector<int64_t>(N);\n\n  auto\
     \ ans = hl::max_rectangle_in_histogram(h);\n\n  std::cout << ans << std::endl;\n\
     \n  return 0;\n}\n"
   dependsOn:
-  - Mylib/Typical/MaxRectangleProblem/max_rectangle_in_histogram.cpp
+  - Mylib/Typical/max_rectangle_in_histogram.cpp
   - Mylib/IO/input_vector.cpp
   isVerificationFile: true
   path: test/aoj/DPL_3_C/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-21 02:36:12+09:00'
+  timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DPL_3_C/main.test.cpp

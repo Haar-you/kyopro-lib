@@ -249,7 +249,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sqrt_mod/main.test.cpp
     title: test/yosupo-judge/sqrt_mod/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/static_range_inversions_query/main.test.cpp
     title: test/yosupo-judge/static_range_inversions_query/main.test.cpp
   - icon: ':heavy_check_mark:'

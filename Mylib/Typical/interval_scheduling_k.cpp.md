@@ -10,9 +10,9 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Typical/IntervalSchedulingProblem/interval_scheduling_k.cpp\"\
-    \n#include <vector>\n#include <set>\n#include <iterator>\n#include <algorithm>\n\
-    #include <utility>\n#include <numeric>\n\nnamespace haar_lib {\n  auto interval_scheduling_k(std::vector<int>\
+  bundledCode: "#line 2 \"Mylib/Typical/interval_scheduling_k.cpp\"\n#include <vector>\n\
+    #include <set>\n#include <iterator>\n#include <algorithm>\n#include <utility>\n\
+    #include <numeric>\n\nnamespace haar_lib {\n  auto interval_scheduling_k(std::vector<int>\
     \ l, std::vector<int> r, int k){\n    const int N = l.size();\n\n    std::vector<int>\
     \ ord(N);\n    std::iota(ord.begin(), ord.end(), 0);\n    std::sort(ord.begin(),\
     \ ord.end(), [&](int i, int j){return r[i] < r[j];});\n\n    std::multiset<int>\
@@ -33,13 +33,13 @@ data:
     \ r[i]);\n      }\n    }\n\n    return ret;\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/Typical/IntervalSchedulingProblem/interval_scheduling_k.cpp
+  path: Mylib/Typical/interval_scheduling_k.cpp
   requiredBy: []
-  timestamp: '2020-09-21 02:36:12+09:00'
+  timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yukicoder/580/main.test.cpp
-documentation_of: Mylib/Typical/IntervalSchedulingProblem/interval_scheduling_k.cpp
+documentation_of: Mylib/Typical/interval_scheduling_k.cpp
 layout: document
 title: Interval scheduling problem (Allow no more than k intervals to overlap)
 ---

@@ -31,16 +31,16 @@ data:
     \      return P(n, k) * inv_factorial(k);\n    }\n\n    T H(int64_t n, int64_t\
     \ k) const {\n      if(n == 0 and k == 0) return 1;\n      return C(n + k - 1,\
     \ k);\n    }\n  };\n}\n#line 5 \"Mylib/Combinatorics/bell_number.cpp\"\n\nnamespace\
-    \ haar_lib {\n  template <const auto &ft>\n  auto bell_number(int64_t n, int64_t\
-    \ k){\n    using T = typename std::remove_reference_t<decltype(ft)>::value_type;\n\
-    \    if(n == 0) return T(1);\n\n    k = std::min(k, n);\n\n    std::vector<T>\
-    \ t(k, 1);\n\n    for(int i = 1; i < k; ++i){\n      if(i % 2 == 0) t[i] = t[i\
-    \ - 1] + ft.inv_factorial(i);\n      else t[i] = t[i - 1] - ft.inv_factorial(i);\n\
+    \ haar_lib {\n  template <const auto &ft>\n  auto bell_number(int n, int k){\n\
+    \    using T = typename std::remove_reference_t<decltype(ft)>::value_type;\n \
+    \   if(n == 0) return T(1);\n\n    k = std::min(k, n);\n\n    std::vector<T> t(k,\
+    \ 1);\n\n    for(int i = 1; i < k; ++i){\n      if(i % 2 == 0) t[i] = t[i - 1]\
+    \ + ft.inv_factorial(i);\n      else t[i] = t[i - 1] - ft.inv_factorial(i);\n\
     \    }\n\n    T ret = 0;\n    for(int i = 1; i <= k; ++i){\n      ret += t[k -\
     \ i] * T::pow(i, n) * ft.inv_factorial(i);\n    }\n\n    return ret;\n  }\n}\n"
   code: "#pragma once\n#include <vector>\n#include <algorithm>\n#include \"Mylib/Combinatorics/factorial_table.cpp\"\
-    \n\nnamespace haar_lib {\n  template <const auto &ft>\n  auto bell_number(int64_t\
-    \ n, int64_t k){\n    using T = typename std::remove_reference_t<decltype(ft)>::value_type;\n\
+    \n\nnamespace haar_lib {\n  template <const auto &ft>\n  auto bell_number(int\
+    \ n, int k){\n    using T = typename std::remove_reference_t<decltype(ft)>::value_type;\n\
     \    if(n == 0) return T(1);\n\n    k = std::min(k, n);\n\n    std::vector<T>\
     \ t(k, 1);\n\n    for(int i = 1; i < k; ++i){\n      if(i % 2 == 0) t[i] = t[i\
     \ - 1] + ft.inv_factorial(i);\n      else t[i] = t[i - 1] - ft.inv_factorial(i);\n\
@@ -51,7 +51,7 @@ data:
   isVerificationFile: false
   path: Mylib/Combinatorics/bell_number.cpp
   requiredBy: []
-  timestamp: '2020-10-10 12:47:45+09:00'
+  timestamp: '2020-11-04 18:00:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/DPL_5_G/main.test.cpp
@@ -62,8 +62,7 @@ title: Bell number
 
 ## Operations
 
-- `bell_number(Ft, int n, int k)`
-	- n個の区別するボールをk個の区別しない箱に分配するような方法の総数。
+- `bell_number<ft>(int n, int k) -> T`
 	- Time complexity $O(\min(k, n)\ \log n)$
 
 ## Requirements

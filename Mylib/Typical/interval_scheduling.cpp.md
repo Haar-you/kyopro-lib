@@ -10,11 +10,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Typical/IntervalSchedulingProblem/interval_scheduling.cpp\"\
-    \n#include <vector>\n#include <numeric>\n#include <algorithm>\n#include <limits>\n\
-    #include <utility>\n\nnamespace haar_lib {\n  template <typename T>\n  std::vector<std::pair<T,\
-    \ T>> interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){\n\
-    \    const int N = l.size();\n    std::vector<std::pair<T, T>> ret;\n    std::vector<int>\
+  bundledCode: "#line 2 \"Mylib/Typical/interval_scheduling.cpp\"\n#include <vector>\n\
+    #include <numeric>\n#include <algorithm>\n#include <limits>\n#include <utility>\n\
+    \nnamespace haar_lib {\n  template <typename T>\n  std::vector<std::pair<T, T>>\
+    \ interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){\n   \
+    \ const int N = l.size();\n    std::vector<std::pair<T, T>> ret;\n    std::vector<int>\
     \ ord(N);\n    std::iota(ord.begin(), ord.end(), 0);\n    std::sort(ord.begin(),\
     \ ord.end(), [&](int i, int j){return r[i] < r[j];});\n\n    auto b = std::numeric_limits<T>::lowest();\n\
     \n    for(int i : ord){\n      if(l[i] >= b){\n        ret.emplace_back(l[i],\
@@ -30,13 +30,13 @@ data:
     \      }\n    }\n\n    return ret;\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/Typical/IntervalSchedulingProblem/interval_scheduling.cpp
+  path: Mylib/Typical/interval_scheduling.cpp
   requiredBy: []
-  timestamp: '2020-09-21 02:36:12+09:00'
+  timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/ALDS1_15_C/main.test.cpp
-documentation_of: Mylib/Typical/IntervalSchedulingProblem/interval_scheduling.cpp
+documentation_of: Mylib/Typical/interval_scheduling.cpp
 layout: document
 title: Interval scheduling problem
 ---

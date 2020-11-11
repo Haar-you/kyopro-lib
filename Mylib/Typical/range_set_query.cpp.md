@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
     title: Fenwick tree (Add)
   _extendedRequiredBy: []
@@ -10,8 +10,8 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Typical/RangeCountQuery/range_count_query.cpp\"\n\
-    #include <vector>\n#include <tuple>\n#include <algorithm>\n#line 3 \"Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp\"\
+  bundledCode: "#line 2 \"Mylib/Typical/range_set_query.cpp\"\n#include <vector>\n\
+    #include <tuple>\n#include <algorithm>\n#line 3 \"Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp\"\
     \n#include <cassert>\n\nnamespace haar_lib {\n  template <typename T>\n  class\
     \ fenwick_tree_add {\n  public:\n    using value_type = T;\n\n  private:\n   \
     \ int size_;\n    std::vector<value_type> data_;\n\n  public:\n    fenwick_tree_add(){}\n\
@@ -24,10 +24,10 @@ data:
     \      }\n\n      return ret;\n    }\n\n    value_type fold(int l, int r) const\
     \ { // [l, r)\n      assert(0 <= l and l <= r and r <= size_);\n      return fold(r)\
     \ - fold(l);\n    }\n\n    value_type operator[](int x) const {\n      return\
-    \ fold(x, x + 1);\n    }\n  };\n}\n#line 6 \"Mylib/Typical/RangeCountQuery/range_count_query.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T>\n  class range_count_query {\n\
+    \ fold(x, x + 1);\n    }\n  };\n}\n#line 6 \"Mylib/Typical/range_set_query.cpp\"\
+    \n\nnamespace haar_lib {\n  template <typename T>\n  class range_set_query {\n\
     \    std::vector<int> a_;\n    std::vector<std::tuple<int, int, int>> qs_;\n \
-    \   int N_;\n\n  public:\n    range_count_query(){}\n    range_count_query(std::vector<T>\
+    \   int N_;\n\n  public:\n    range_set_query(){}\n    range_set_query(std::vector<T>\
     \ a): N_(a.size()){\n      auto temp = a;\n      std::sort(temp.begin(), temp.end());\n\
     \      temp.erase(std::unique(temp.begin(), temp.end()), temp.end());\n\n    \
     \  for(auto x : a){\n        const int i = std::lower_bound(temp.begin(), temp.end(),\
@@ -43,9 +43,9 @@ data:
     \     return ret;\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <tuple>\n#include <algorithm>\n\
     #include \"Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp\"\n\nnamespace\
-    \ haar_lib {\n  template <typename T>\n  class range_count_query {\n    std::vector<int>\
+    \ haar_lib {\n  template <typename T>\n  class range_set_query {\n    std::vector<int>\
     \ a_;\n    std::vector<std::tuple<int, int, int>> qs_;\n    int N_;\n\n  public:\n\
-    \    range_count_query(){}\n    range_count_query(std::vector<T> a): N_(a.size()){\n\
+    \    range_set_query(){}\n    range_set_query(std::vector<T> a): N_(a.size()){\n\
     \      auto temp = a;\n      std::sort(temp.begin(), temp.end());\n      temp.erase(std::unique(temp.begin(),\
     \ temp.end()), temp.end());\n\n      for(auto x : a){\n        const int i = std::lower_bound(temp.begin(),\
     \ temp.end(), x) - temp.begin();\n        a_.push_back(i);\n      }\n    }\n\n\
@@ -61,14 +61,14 @@ data:
   dependsOn:
   - Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
   isVerificationFile: false
-  path: Mylib/Typical/RangeCountQuery/range_count_query.cpp
+  path: Mylib/Typical/range_set_query.cpp
   requiredBy: []
-  timestamp: '2020-10-10 11:12:55+09:00'
+  timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: Mylib/Typical/RangeCountQuery/range_count_query.cpp
+documentation_of: Mylib/Typical/range_set_query.cpp
 layout: document
-title: Range count query
+title: Range set query
 ---
 
 ## Operations

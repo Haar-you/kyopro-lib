@@ -10,12 +10,12 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Typical/KnapsackProblem/knapsack_unlimited.cpp\"\n\
-    #include <vector>\n#include <algorithm>\n\nnamespace haar_lib {\n  template <typename\
-    \ Weight, typename Value>\n  Value knapsack_unlimited(int N, Weight cap, const\
-    \ std::vector<Weight> &w, const std::vector<Value> &v){\n    std::vector<std::vector<Value>>\
-    \ dp(N + 1, std::vector<Value>(cap + 1));\n\n    for(int i = 0; i < N; ++i){\n\
-    \      for(int j = 0; j <= cap; ++j){\n        if(j < w[i]) dp[i + 1][j] = dp[i][j];\n\
+  bundledCode: "#line 2 \"Mylib/Typical/knapsack_unlimited.cpp\"\n#include <vector>\n\
+    #include <algorithm>\n\nnamespace haar_lib {\n  template <typename Weight, typename\
+    \ Value>\n  Value knapsack_unlimited(int N, Weight cap, const std::vector<Weight>\
+    \ &w, const std::vector<Value> &v){\n    std::vector<std::vector<Value>> dp(N\
+    \ + 1, std::vector<Value>(cap + 1));\n\n    for(int i = 0; i < N; ++i){\n    \
+    \  for(int j = 0; j <= cap; ++j){\n        if(j < w[i]) dp[i + 1][j] = dp[i][j];\n\
     \        else dp[i + 1][j] = std::max(dp[i][j], dp[i + 1][j - w[i]] + v[i]);\n\
     \      }\n    }\n\n    return dp[N][cap];\n  }\n}\n"
   code: "#pragma once\n#include <vector>\n#include <algorithm>\n\nnamespace haar_lib\
@@ -28,13 +28,13 @@ data:
     }\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/Typical/KnapsackProblem/knapsack_unlimited.cpp
+  path: Mylib/Typical/knapsack_unlimited.cpp
   requiredBy: []
-  timestamp: '2020-09-21 02:36:12+09:00'
+  timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/DPL_1_C/main.test.cpp
-documentation_of: Mylib/Typical/KnapsackProblem/knapsack_unlimited.cpp
+documentation_of: Mylib/Typical/knapsack_unlimited.cpp
 layout: document
 title: Knapsack problem (Without quantity limitations)
 ---

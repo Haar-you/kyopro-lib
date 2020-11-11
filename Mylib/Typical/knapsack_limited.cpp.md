@@ -10,9 +10,9 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Typical/KnapsackProblem/knapsack_limited.cpp\"\n#include\
-    \ <vector>\n#include <algorithm>\n\nnamespace haar_lib {\n  template <typename\
-    \ Weight, typename Value>\n  Value knapsack_limited(int N, Weight cap, const std::vector<Weight>\
+  bundledCode: "#line 2 \"Mylib/Typical/knapsack_limited.cpp\"\n#include <vector>\n\
+    #include <algorithm>\n\nnamespace haar_lib {\n  template <typename Weight, typename\
+    \ Value>\n  Value knapsack_limited(int N, Weight cap, const std::vector<Weight>\
     \ &w, const std::vector<Value> &v, const std::vector<int> &m){\n    std::vector<Value>\
     \ dp(cap + 1);\n\n    for(int i = 0; i < N; ++i){\n      for(int64_t a = 1, x\
     \ = m[i], k; k = std::min(x, a), x > 0; x -= k, a *= 2){\n        for(int j =\
@@ -30,13 +30,13 @@ data:
     }\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/Typical/KnapsackProblem/knapsack_limited.cpp
+  path: Mylib/Typical/knapsack_limited.cpp
   requiredBy: []
-  timestamp: '2020-09-21 02:36:12+09:00'
+  timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/DPL_1_G/main.test.cpp
-documentation_of: Mylib/Typical/KnapsackProblem/knapsack_limited.cpp
+documentation_of: Mylib/Typical/knapsack_limited.cpp
 layout: document
 title: Knapsack problem (With quantity limitations)
 ---

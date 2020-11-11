@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Algorithm/Mo/mo_algorithm.cpp
     title: Mo's algorithm
   - icon: ':question:'

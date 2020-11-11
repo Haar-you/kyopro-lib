@@ -25,11 +25,12 @@ data:
     \ delim;\n      s << *it;\n    }\n\n    return s.str();\n  }\n}\n#line 3 \"Mylib/Number/Prime/sieve_eratosthenes.cpp\"\
     \n\nnamespace haar_lib {\n  class eratosthenes_sieve {\n    std::vector<bool>\
     \ is_prime_;\n\n  public:\n    eratosthenes_sieve(){}\n    eratosthenes_sieve(int\
-    \ MAX): is_prime_(MAX + 1){\n      is_prime_.flip();\n      is_prime_[0] = is_prime_[1]\
-    \ = false;\n\n      for(int i = 2; i * i <= MAX; ++i){\n        if(is_prime_[i]){\n\
-    \          for(int j = i * i; j <= MAX; j += i){\n            is_prime_[j] = false;\n\
-    \          }\n        }\n      }\n    }\n\n    bool operator()(int i) const {\n\
-    \      return is_prime_[i];\n    }\n  };\n}\n#line 7 \"test/yosupo-judge/enumerate_primes/main.eratosthenes.test.cpp\"\
+    \ MAX): is_prime_((MAX + 1) / 2, true){\n      is_prime_[0] = false;\n\n     \
+    \ for(int i = 3; i * i <= MAX; i += 2){\n        if(not is_prime_[i / 2]) continue;\n\
+    \n        for(int j = i * i; j <= MAX; j += 2 * i){\n          is_prime_[j / 2]\
+    \ = false;\n        }\n      }\n    }\n\n    bool operator()(int i) const {\n\
+    \      if(i == 2) return true;\n      if(i % 2 == 0) return false;\n      return\
+    \ is_prime_[i / 2];\n    }\n  };\n}\n#line 7 \"test/yosupo-judge/enumerate_primes/main.eratosthenes.test.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  int N, A, B; std::cin >> N >> A >> B;\n\n  const auto is_prime = hl::eratosthenes_sieve(N);\n\
     \n  int pi = 0;\n  std::vector<int> ans;\n\n  for(int i = 2; i <= N; ++i){\n \
@@ -53,7 +54,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/enumerate_primes/main.eratosthenes.test.cpp
   requiredBy: []
-  timestamp: '2020-11-02 13:08:20+09:00'
+  timestamp: '2020-11-05 03:06:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/enumerate_primes/main.eratosthenes.test.cpp

@@ -147,13 +147,12 @@ data:
     Mylib/Math/formal_power_series.cpp\"\n#include <initializer_list>\n#line 6 \"\
     Mylib/Math/formal_power_series.cpp\"\n\nnamespace haar_lib {\n  template <typename\
     \ T, const auto &convolve>\n  class formal_power_series {\n  public:\n    using\
-    \ value_type = T;\n\n    static std::function<std::optional<T>(T)> get_sqrt;\n\
-    \n  private:\n    std::vector<T> data_;\n\n  public:\n    formal_power_series(){}\n\
+    \ value_type = T;\n\n  private:\n    std::vector<T> data_;\n\n  public:\n    formal_power_series(){}\n\
     \    explicit formal_power_series(int N): data_(N){}\n    formal_power_series(const\
     \ std::vector<T> &data_): data_(data_){}\n    formal_power_series(std::initializer_list<T>\
     \ init): data_(init.begin(), init.end()){}\n    formal_power_series(const formal_power_series\
     \ &a): data_(a.data_){}\n    formal_power_series(formal_power_series &&a) noexcept\
-    \ {*this = std::move(a);}\n\n    int size() const {\n      return data_.size();\n\
+    \ {*this = std::move(a);}\n\n    size_t size() const {\n      return data_.size();\n\
     \    }\n\n    const T& operator[](int i) const {\n      return data_[i];\n   \
     \ }\n\n    T& operator[](int i){\n      return data_[i];\n    }\n\n    auto begin()\
     \ {return data_.begin();}\n    auto end() {return data_.end();}\n\n    void resize(int\
@@ -211,17 +210,7 @@ data:
     \ >= n) return *this;\n\n      T a = data_[k];\n\n      formal_power_series ret\
     \ = *this;\n      ret = (ret.shift(-k)) * a.inv();\n      ret = (ret.log() * (T)M).exp();\n\
     \      ret = (ret * a.pow(M)).shift(M * k);\n\n      return ret;\n    }\n\n  \
-    \  std::optional<formal_power_series> sqrt() const {\n      const int n = data_.size();\n\
-    \      int k = 0;\n      for(; k < n; ++k) if(data_[k] != 0) break;\n\n      if(k\
-    \ >= n) return *this;\n      if(k % 2 != 0) return {};\n\n      int t = 1;\n \
-    \     auto x = get_sqrt(data_[k]);\n\n      if(not x) return {};\n\n      const\
-    \ int m = n - k;\n\n      auto it = data_.begin() + k;\n      formal_power_series\
-    \ ret({*x});\n\n      while(t <= m * 2){\n        formal_power_series f(std::vector(it,\
-    \ it + std::min(t, m)));\n        ret.resize(t);\n        f.resize(t);\n     \
-    \   ret = (ret + f * ret.inv()) * T(2).inv();\n        t <<= 1;\n      }\n\n \
-    \     ret.resize(n);\n      ret = ret.shift(k / 2);\n\n      return ret;\n   \
-    \ }\n  };\n\n  template <typename T, const auto &convolve>\n  std::function<std::optional<T>(T)>\
-    \ formal_power_series<T, convolve>::get_sqrt;\n}\n#line 3 \"Mylib/IO/join.cpp\"\
+    \  std::optional<formal_power_series> sqrt() const;\n  };\n}\n#line 3 \"Mylib/IO/join.cpp\"\
     \n#include <sstream>\n#include <string>\n\nnamespace haar_lib {\n  template <typename\
     \ Iter>\n  std::string join(Iter first, Iter last, std::string delim = \" \"){\n\
     \    std::stringstream s;\n\n    for(auto it = first; it != last; ++it){\n   \
@@ -257,7 +246,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/partition_function/main.fps.test.cpp
   requiredBy: []
-  timestamp: '2020-10-28 03:22:23+09:00'
+  timestamp: '2020-11-04 22:26:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/partition_function/main.fps.test.cpp

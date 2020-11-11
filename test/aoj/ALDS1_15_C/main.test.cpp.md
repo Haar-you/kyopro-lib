@@ -5,7 +5,7 @@ data:
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
   - icon: ':heavy_check_mark:'
-    path: Mylib/Typical/IntervalSchedulingProblem/interval_scheduling.cpp
+    path: Mylib/Typical/interval_scheduling.cpp
     title: Interval scheduling problem
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -18,7 +18,7 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_15_C
   bundledCode: "#line 1 \"test/aoj/ALDS1_15_C/main.test.cpp\"\n#define PROBLEM \"\
     http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_15_C\"\n\n#include\
-    \ <iostream>\n#include <vector>\n#line 3 \"Mylib/Typical/IntervalSchedulingProblem/interval_scheduling.cpp\"\
+    \ <iostream>\n#include <vector>\n#line 3 \"Mylib/Typical/interval_scheduling.cpp\"\
     \n#include <numeric>\n#include <algorithm>\n#include <limits>\n#include <utility>\n\
     \nnamespace haar_lib {\n  template <typename T>\n  std::vector<std::pair<T, T>>\
     \ interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){\n   \
@@ -43,18 +43,18 @@ data:
     \ x += 1;\n\n  auto ans = hl::interval_scheduling(left, right);\n\n  std::cout\
     \ << ans.size() << std::endl;\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_15_C\"\
-    \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/Typical/IntervalSchedulingProblem/interval_scheduling.cpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/Typical/interval_scheduling.cpp\"\
     \n#include \"Mylib/IO/input_tuple_vector.cpp\"\n\nnamespace hl = haar_lib;\n\n\
     int main(){\n  int n; std::cin >> n;\n\n  auto [left, right] = hl::input_tuple_vector<int,\
     \ int>(n);\n  for(auto &x : right) x += 1;\n\n  auto ans = hl::interval_scheduling(left,\
     \ right);\n\n  std::cout << ans.size() << std::endl;\n\n  return 0;\n}\n"
   dependsOn:
-  - Mylib/Typical/IntervalSchedulingProblem/interval_scheduling.cpp
+  - Mylib/Typical/interval_scheduling.cpp
   - Mylib/IO/input_tuple_vector.cpp
   isVerificationFile: true
   path: test/aoj/ALDS1_15_C/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-21 02:36:12+09:00'
+  timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/ALDS1_15_C/main.test.cpp

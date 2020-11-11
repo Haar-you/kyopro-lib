@@ -33,7 +33,7 @@ title: Binomial coefficients table
 
 ## Operations
 
-- `binomial_coefficients_table(int n, int k)`
+- `binomial_coefficients_table<T>(int n, int k) -> [[T]]`
 	- $\binom{0}{0}$ ~ $\binom{n}{k}$を列挙する。
 	- Time complexity $O(nk)$
 

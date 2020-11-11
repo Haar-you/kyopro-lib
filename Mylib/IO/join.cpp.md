@@ -61,6 +61,9 @@ data:
     path: test/yosupo-judge/montmort_number_mod/main.test.cpp
     title: test/yosupo-judge/montmort_number_mod/main.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo-judge/multipoint_evaluation/main.test.cpp
+    title: test/yosupo-judge/multipoint_evaluation/main.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/partition_function/main.fps.test.cpp
     title: test/yosupo-judge/partition_function/main.fps.test.cpp
   - icon: ':heavy_check_mark:'
@@ -75,7 +78,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/scc/main.test.cpp
     title: test/yosupo-judge/scc/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
     title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
   - icon: ':x:'
@@ -114,6 +117,9 @@ data:
   - icon: ':x:'
     path: test/yukicoder/782/main.test.cpp
     title: test/yukicoder/782/main.test.cpp
+  - icon: ':x:'
+    path: test/yukicoder/931/main.test.cpp
+    title: test/yukicoder/931/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':question:'
   attributes:
@@ -135,6 +141,7 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/yukicoder/931/main.test.cpp
   - test/yukicoder/782/main.test.cpp
   - test/yukicoder/499/main.test.cpp
   - test/aoj/DSL_3_D/main.test.cpp
@@ -151,6 +158,7 @@ data:
   - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
   - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/two_sat/main.test.cpp
+  - test/yosupo-judge/multipoint_evaluation/main.test.cpp
   - test/yosupo-judge/log_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/zalgorithm/main.test.cpp
   - test/yosupo-judge/factorize/main.test.cpp

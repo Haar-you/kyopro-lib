@@ -52,6 +52,9 @@ data:
     path: test/yosupo-judge/matrix_det/main.test.cpp
     title: test/yosupo-judge/matrix_det/main.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo-judge/multipoint_evaluation/main.test.cpp
+    title: test/yosupo-judge/multipoint_evaluation/main.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/partition_function/main.fps.test.cpp
     title: test/yosupo-judge/partition_function/main.fps.test.cpp
   - icon: ':heavy_check_mark:'
@@ -72,7 +75,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/range_affine_range_sum/main.test.cpp
     title: test/yosupo-judge/range_affine_range_sum/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
     title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
   - icon: ':x:'
@@ -117,6 +120,9 @@ data:
   - icon: ':x:'
     path: test/yukicoder/665/main.test.cpp
     title: test/yukicoder/665/main.test.cpp
+  - icon: ':x:'
+    path: test/yukicoder/931/main.test.cpp
+    title: test/yukicoder/931/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':question:'
   attributes:
@@ -214,6 +220,7 @@ data:
   timestamp: '2020-09-30 07:57:28+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/yukicoder/931/main.test.cpp
   - test/yukicoder/235/main.test.cpp
   - test/yukicoder/658/main.test.cpp
   - test/yukicoder/660/main.test.cpp
@@ -235,6 +242,7 @@ data:
   - test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
   - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
   - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/multipoint_evaluation/main.test.cpp
   - test/yosupo-judge/log_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/point_set_range_composite/main.test.cpp
   - test/yosupo-judge/exp_of_formal_power_series/main.test.cpp

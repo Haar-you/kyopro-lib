@@ -53,7 +53,7 @@ title: Catalan number
 
 ## Operations
 
-- `catalan_number(Ft, int n)`
+- `catalan_number<ft>(int n) -> T`
 	-  $c_0 = 1, c_{n+1} = \sum_{i=0}^n c_i * c_{n-i}$ を満たす数列の第n項を返す。
 
 ## Requirements

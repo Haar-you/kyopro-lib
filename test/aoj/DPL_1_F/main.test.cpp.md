@@ -5,7 +5,7 @@ data:
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
   - icon: ':heavy_check_mark:'
-    path: Mylib/Typical/KnapsackProblem/knapsack_small_value.cpp
+    path: Mylib/Typical/knapsack_small_value.cpp
     title: 0-1 Knapsack problem (Small value)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -17,7 +17,7 @@ data:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_F
   bundledCode: "#line 1 \"test/aoj/DPL_1_F/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_F\"\
-    \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/Typical/KnapsackProblem/knapsack_small_value.cpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/Typical/knapsack_small_value.cpp\"\
     \n#include <algorithm>\n#include <numeric>\n#include <climits>\n\nnamespace haar_lib\
     \ {\n  template <typename Weight, typename Value>\n  Value knapsack_small_value(int\
     \ N, Weight cap, const std::vector<Weight> &w, const std::vector<Value> &v){\n\
@@ -44,18 +44,18 @@ data:
     \n  auto ans = hl::knapsack_small_value(N, W, w, v);\n\n  std::cout << ans <<\
     \ std::endl;\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_F\"\
-    \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/Typical/KnapsackProblem/knapsack_small_value.cpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/Typical/knapsack_small_value.cpp\"\
     \n#include \"Mylib/IO/input_tuple_vector.cpp\"\n\nnamespace hl = haar_lib;\n\n\
     int main(){\n  int N; std::cin >> N;\n  int64_t W; std::cin >> W;\n\n  auto [v,\
     \ w] = hl::input_tuple_vector<int64_t, int64_t>(N);\n\n  auto ans = hl::knapsack_small_value(N,\
     \ W, w, v);\n\n  std::cout << ans << std::endl;\n\n  return 0;\n}\n"
   dependsOn:
-  - Mylib/Typical/KnapsackProblem/knapsack_small_value.cpp
+  - Mylib/Typical/knapsack_small_value.cpp
   - Mylib/IO/input_tuple_vector.cpp
   isVerificationFile: true
   path: test/aoj/DPL_1_F/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-21 02:36:12+09:00'
+  timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DPL_1_F/main.test.cpp

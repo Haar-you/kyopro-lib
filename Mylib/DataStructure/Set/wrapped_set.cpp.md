@@ -37,8 +37,15 @@ data:
   verifiedWith: []
 documentation_of: Mylib/DataStructure/Set/wrapped_set.cpp
 layout: document
-redirect_from:
-- /library/Mylib/DataStructure/Set/wrapped_set.cpp
-- /library/Mylib/DataStructure/Set/wrapped_set.cpp.html
-title: Mylib/DataStructure/Set/wrapped_set.cpp
+title: null
 ---
+
+## Operations
+
+## Requirements
+
+## Notes
+
+## Problems
+
+## References

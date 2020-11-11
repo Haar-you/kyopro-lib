@@ -33,15 +33,15 @@ data:
     - https://judge.yosupo.jp/problem/polynomial_taylor_shift
   bundledCode: "#line 1 \"test/yosupo-judge/polynomial_taylor_shift/main.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/polynomial_taylor_shift\"\n\
-    \n#include <iostream>\n#include <functional>\n#line 3 \"Mylib/IO/input_vector.cpp\"\
-    \n#include <vector>\n\nnamespace haar_lib {\n  template <typename T>\n  std::vector<T>\
-    \ input_vector(int N){\n    std::vector<T> ret(N);\n    for(int i = 0; i < N;\
-    \ ++i) std::cin >> ret[i];\n    return ret;\n  }\n\n  template <typename T>\n\
-    \  std::vector<std::vector<T>> input_vector(int N, int M){\n    std::vector<std::vector<T>>\
-    \ ret(N);\n    for(int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);\n    return\
-    \ ret;\n  }\n}\n#line 3 \"Mylib/IO/join.cpp\"\n#include <sstream>\n#include <string>\n\
-    \nnamespace haar_lib {\n  template <typename Iter>\n  std::string join(Iter first,\
-    \ Iter last, std::string delim = \" \"){\n    std::stringstream s;\n\n    for(auto\
+    \n#include <iostream>\n#line 3 \"Mylib/IO/input_vector.cpp\"\n#include <vector>\n\
+    \nnamespace haar_lib {\n  template <typename T>\n  std::vector<T> input_vector(int\
+    \ N){\n    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i) std::cin >>\
+    \ ret[i];\n    return ret;\n  }\n\n  template <typename T>\n  std::vector<std::vector<T>>\
+    \ input_vector(int N, int M){\n    std::vector<std::vector<T>> ret(N);\n    for(int\
+    \ i = 0; i < N; ++i) ret[i] = input_vector<T>(M);\n    return ret;\n  }\n}\n#line\
+    \ 3 \"Mylib/IO/join.cpp\"\n#include <sstream>\n#include <string>\n\nnamespace\
+    \ haar_lib {\n  template <typename Iter>\n  std::string join(Iter first, Iter\
+    \ last, std::string delim = \" \"){\n    std::stringstream s;\n\n    for(auto\
     \ it = first; it != last; ++it){\n      if(it != first) s << delim;\n      s <<\
     \ *it;\n    }\n\n    return s.str();\n  }\n}\n#line 3 \"Mylib/Number/Mint/mint.cpp\"\
     \n#include <utility>\n\nnamespace haar_lib {\n  template <int32_t M>\n  class\
@@ -147,35 +147,32 @@ data:
     \ = ((r[2] - t0 + M3) * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0)\
     \ + T(t1) * M1 + T(t2) * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 3 \"\
     Mylib/Math/polynomial_taylor_shift.cpp\"\n\nnamespace haar_lib {\n  template <typename\
-    \ T, typename Conv>\n  auto polynomial_taylor_shift(std::vector<T> a, T c, const\
-    \ Conv &convolve){\n    const int N = a.size();\n    T f = 1;\n    std::vector<T>\
-    \ A(2 * N - 1);\n    for(int i = 0; i < N; ++i){\n      if(i) f *= i;\n      A[i\
-    \ + N - 1] = a[i] * f;\n    }\n\n    T d = 1;\n\n    std::vector<T> g(N);\n  \
-    \  g[N - 1] = f.inv();\n    for(int i = N - 2; i >= 0; --i) g[i] = g[i + 1] *\
-    \ (i + 1);\n\n    std::vector<T> B(2 * N - 1);\n    for(int i = 0; i < N; ++i){\n\
-    \      B[N - i - 1] = d * g[i];\n      d *= c;\n    }\n\n    auto C = convolve(A,\
-    \ B);\n\n    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i) ret[i] = C[(N\
-    \ - 1) * 2 + i] * g[i];\n\n    return ret;\n  }\n}\n#line 11 \"test/yosupo-judge/polynomial_taylor_shift/main.test.cpp\"\
+    \ T, const auto &convolve>\n  auto polynomial_taylor_shift(std::vector<T> a, T\
+    \ c){\n    const int N = a.size();\n    T f = 1;\n\n    std::vector<T> A(2 * N\
+    \ - 1);\n    for(int i = 0; i < N; ++i){\n      if(i) f *= i;\n      A[i + N -\
+    \ 1] = a[i] * f;\n    }\n\n    T d = 1;\n\n    std::vector<T> g(N);\n    g[N -\
+    \ 1] = f.inv();\n    for(int i = N - 2; i >= 0; --i) g[i] = g[i + 1] * (i + 1);\n\
+    \n    std::vector<T> B(2 * N - 1);\n    for(int i = 0; i < N; ++i){\n      B[N\
+    \ - i - 1] = d * g[i];\n      d *= c;\n    }\n\n    auto C = convolve(A, B);\n\
+    \n    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i) ret[i] = C[(N - 1)\
+    \ * 2 + i] * g[i];\n\n    return ret;\n  }\n}\n#line 10 \"test/yosupo-judge/polynomial_taylor_shift/main.test.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int\
     \ prim_root = hl::primitive_root(mod);\nusing mint = hl::modint<mod>;\nusing NTT\
-    \ = hl::number_theoretic_transform<mint, prim_root, 1 << 21>;\n\nint main(){\n\
-    \  using namespace std::placeholders;\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
+    \ = hl::number_theoretic_transform<mint, prim_root, 1 << 21>;\nconst static auto\
+    \ ntt = NTT();\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  int N, c; std::cin >> N >> c;\n  auto a = hl::input_vector<mint>(N);\n\n \
-    \ auto ntt = NTT();\n  auto convolve = std::bind(&NTT::convolve<mint>, &ntt, _1,\
-    \ _2);\n  auto ans = hl::polynomial_taylor_shift(a, mint(c), convolve);\n\n  std::cout\
-    \ << hl::join(ans.begin(), ans.end()) << \"\\n\";\n\n  return 0;\n}\n"
+    \ auto ans = hl::polynomial_taylor_shift<mint, ntt>(a, c);\n  std::cout << hl::join(ans.begin(),\
+    \ ans.end()) << \"\\n\";\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/polynomial_taylor_shift\"\
-    \n\n#include <iostream>\n#include <functional>\n#include \"Mylib/IO/input_vector.cpp\"\
-    \n#include \"Mylib/IO/join.cpp\"\n#include \"Mylib/Number/Mint/mint.cpp\"\n#include\
-    \ \"Mylib/Number/Prime/primitive_root.cpp\"\n#include \"Mylib/Convolution/ntt_convolution.cpp\"\
-    \n#include \"Mylib/Math/polynomial_taylor_shift.cpp\"\n\nnamespace hl = haar_lib;\n\
-    \nconstexpr int mod = 998244353;\nconstexpr int prim_root = hl::primitive_root(mod);\n\
-    using mint = hl::modint<mod>;\nusing NTT = hl::number_theoretic_transform<mint,\
-    \ prim_root, 1 << 21>;\n\nint main(){\n  using namespace std::placeholders;\n\
-    \  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int N, c; std::cin\
-    \ >> N >> c;\n  auto a = hl::input_vector<mint>(N);\n\n  auto ntt = NTT();\n \
-    \ auto convolve = std::bind(&NTT::convolve<mint>, &ntt, _1, _2);\n  auto ans =\
-    \ hl::polynomial_taylor_shift(a, mint(c), convolve);\n\n  std::cout << hl::join(ans.begin(),\
+    \n\n#include <iostream>\n#include \"Mylib/IO/input_vector.cpp\"\n#include \"Mylib/IO/join.cpp\"\
+    \n#include \"Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/Number/Prime/primitive_root.cpp\"\
+    \n#include \"Mylib/Convolution/ntt_convolution.cpp\"\n#include \"Mylib/Math/polynomial_taylor_shift.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int\
+    \ prim_root = hl::primitive_root(mod);\nusing mint = hl::modint<mod>;\nusing NTT\
+    \ = hl::number_theoretic_transform<mint, prim_root, 1 << 21>;\nconst static auto\
+    \ ntt = NTT();\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
+    \n  int N, c; std::cin >> N >> c;\n  auto a = hl::input_vector<mint>(N);\n\n \
+    \ auto ans = hl::polynomial_taylor_shift<mint, ntt>(a, c);\n  std::cout << hl::join(ans.begin(),\
     \ ans.end()) << \"\\n\";\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/IO/input_vector.cpp
@@ -188,7 +185,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-28 03:22:23+09:00'
+  timestamp: '2020-11-04 17:40:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/polynomial_taylor_shift/main.test.cpp

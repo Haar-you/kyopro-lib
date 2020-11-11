@@ -2,20 +2,26 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo-judge/multipoint_evaluation/main.test.cpp
+    title: test/yosupo-judge/multipoint_evaluation/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Math/polynomial.cpp\"\n#include <vector>\n#include\
     \ <initializer_list>\n\nnamespace haar_lib {\n  template <typename T, const auto\
-    \ &convolve>\n  class polynomial {\n    std::vector<T> data_;\n\n  public:\n \
-    \   explicit polynomial(int N): data_(N){}\n    polynomial(std::vector<T> data):\
-    \ data_(data){}\n    polynomial(std::initializer_list<T> data): data_(data.begin(),\
-    \ data.end()){}\n\n    auto& data(){return data_;}\n    const auto& data() const\
-    \ {return data_;}\n    int size() const {return data_.size();}\n\n    auto& operator+=(const\
-    \ polynomial &that){\n      if(data_.size() < that.data_.size()) data_.resize(that.data_.size());\n\
-    \      for(size_t i = 0; i < that.data_.size(); ++i) data_[i] += that.data_[i];\n\
+    \ &convolve>\n  class polynomial {\n  public:\n    using value_type = T;\n\n \
+    \ private:\n    std::vector<T> data_;\n\n  public:\n    explicit polynomial(int\
+    \ N): data_(N){}\n    polynomial(std::vector<T> data): data_(data){}\n    polynomial(std::initializer_list<T>\
+    \ data): data_(data.begin(), data.end()){}\n\n    auto& data(){return data_;}\n\
+    \    const auto& data() const {return data_;}\n    int size() const {return data_.size();}\n\
+    \    auto begin(){return data_.begin();}\n    auto end(){return data_.end();}\n\
+    \n    const auto& operator[](size_t i) const {return data_[i];}\n    auto& operator[](size_t\
+    \ i){return data_[i];}\n\n    auto& operator+=(const polynomial &that){\n    \
+    \  if(data_.size() < that.data_.size()) data_.resize(that.data_.size());\n   \
+    \   for(size_t i = 0; i < that.data_.size(); ++i) data_[i] += that.data_[i];\n\
     \      return *this;\n    }\n\n    auto& operator-=(const polynomial &that){\n\
     \      if(data_.size() < that.data_.size()) data_.resize(that.data_.size());\n\
     \      for(size_t i = 0; i < that.data_.size(); ++i) data_[i] -= that.data_[i];\n\
@@ -41,13 +47,27 @@ data:
     \ 1) * (x2 - x1);\n      }\n\n      return ret;\n    }\n\n    auto shift(int k)\
     \ const {\n      polynomial ret((int)data_.size() + k);\n      for(int i = 0;\
     \ i < (int)data_.size(); ++i){\n        ret.data_[i + k] = data_[i];\n      }\n\
-    \n      return ret;\n    }\n  };\n}\n"
+    \n      return ret;\n    }\n\n    auto inv(int n) const {\n      polynomial ret({data_[0].inv()});\n\
+    \      int t = 1;\n\n      while(t <= n * 2){\n        ret = ret * T(2) - ret\
+    \ * ret * (*this);\n        ret.data_.resize(t);\n        t *= 2;\n      }\n\n\
+    \      return ret;\n    }\n\n    std::pair<polynomial, polynomial> divmod(const\
+    \ polynomial &that) const {\n      if(data_.size() < that.size()) return {{0},\
+    \ *this};\n\n      const int m = data_.size() - that.size();\n\n      auto g =\
+    \ *this;\n      std::reverse(g.begin(), g.end());\n\n      auto f = that;\n  \
+    \    const int d = (int)that.size() - 1;\n      std::reverse(f.begin(), f.end());\n\
+    \n      f = f.inv(m);\n\n      f.data_.resize(m + 1);\n\n      auto q = f * g;\n\
+    \      q.data_.resize(m + 1);\n\n      std::reverse(q.begin(), q.end());\n\n \
+    \     auto r = (*this) - that * q;\n      r.data_.resize(d);\n\n      return {q,\
+    \ r};\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <initializer_list>\n\nnamespace\
     \ haar_lib {\n  template <typename T, const auto &convolve>\n  class polynomial\
-    \ {\n    std::vector<T> data_;\n\n  public:\n    explicit polynomial(int N): data_(N){}\n\
-    \    polynomial(std::vector<T> data): data_(data){}\n    polynomial(std::initializer_list<T>\
-    \ data): data_(data.begin(), data.end()){}\n\n    auto& data(){return data_;}\n\
-    \    const auto& data() const {return data_;}\n    int size() const {return data_.size();}\n\
+    \ {\n  public:\n    using value_type = T;\n\n  private:\n    std::vector<T> data_;\n\
+    \n  public:\n    explicit polynomial(int N): data_(N){}\n    polynomial(std::vector<T>\
+    \ data): data_(data){}\n    polynomial(std::initializer_list<T> data): data_(data.begin(),\
+    \ data.end()){}\n\n    auto& data(){return data_;}\n    const auto& data() const\
+    \ {return data_;}\n    int size() const {return data_.size();}\n    auto begin(){return\
+    \ data_.begin();}\n    auto end(){return data_.end();}\n\n    const auto& operator[](size_t\
+    \ i) const {return data_[i];}\n    auto& operator[](size_t i){return data_[i];}\n\
     \n    auto& operator+=(const polynomial &that){\n      if(data_.size() < that.data_.size())\
     \ data_.resize(that.data_.size());\n      for(size_t i = 0; i < that.data_.size();\
     \ ++i) data_[i] += that.data_[i];\n      return *this;\n    }\n\n    auto& operator-=(const\
@@ -75,14 +95,26 @@ data:
     \ 1) * (x2 - x1);\n      }\n\n      return ret;\n    }\n\n    auto shift(int k)\
     \ const {\n      polynomial ret((int)data_.size() + k);\n      for(int i = 0;\
     \ i < (int)data_.size(); ++i){\n        ret.data_[i + k] = data_[i];\n      }\n\
-    \n      return ret;\n    }\n  };\n}\n"
+    \n      return ret;\n    }\n\n    auto inv(int n) const {\n      polynomial ret({data_[0].inv()});\n\
+    \      int t = 1;\n\n      while(t <= n * 2){\n        ret = ret * T(2) - ret\
+    \ * ret * (*this);\n        ret.data_.resize(t);\n        t *= 2;\n      }\n\n\
+    \      return ret;\n    }\n\n    std::pair<polynomial, polynomial> divmod(const\
+    \ polynomial &that) const {\n      if(data_.size() < that.size()) return {{0},\
+    \ *this};\n\n      const int m = data_.size() - that.size();\n\n      auto g =\
+    \ *this;\n      std::reverse(g.begin(), g.end());\n\n      auto f = that;\n  \
+    \    const int d = (int)that.size() - 1;\n      std::reverse(f.begin(), f.end());\n\
+    \n      f = f.inv(m);\n\n      f.data_.resize(m + 1);\n\n      auto q = f * g;\n\
+    \      q.data_.resize(m + 1);\n\n      std::reverse(q.begin(), q.end());\n\n \
+    \     auto r = (*this) - that * q;\n      r.data_.resize(d);\n\n      return {q,\
+    \ r};\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Math/polynomial.cpp
   requiredBy: []
-  timestamp: '2020-10-18 10:24:18+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2020-11-05 01:04:29+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yosupo-judge/multipoint_evaluation/main.test.cpp
 documentation_of: Mylib/Math/polynomial.cpp
 layout: document
 title: Polynomial

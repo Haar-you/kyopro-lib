@@ -13,6 +13,9 @@ data:
   - icon: ':question:'
     path: Mylib/Math/formal_power_series.cpp
     title: Formal power series
+  - icon: ':x:'
+    path: Mylib/Math/fps_sqrt.cpp
+    title: Formal power series (Sqrt)
   - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
@@ -157,13 +160,12 @@ data:
     Mylib/Math/formal_power_series.cpp\"\n#include <initializer_list>\n#line 6 \"\
     Mylib/Math/formal_power_series.cpp\"\n\nnamespace haar_lib {\n  template <typename\
     \ T, const auto &convolve>\n  class formal_power_series {\n  public:\n    using\
-    \ value_type = T;\n\n    static std::function<std::optional<T>(T)> get_sqrt;\n\
-    \n  private:\n    std::vector<T> data_;\n\n  public:\n    formal_power_series(){}\n\
+    \ value_type = T;\n\n  private:\n    std::vector<T> data_;\n\n  public:\n    formal_power_series(){}\n\
     \    explicit formal_power_series(int N): data_(N){}\n    formal_power_series(const\
     \ std::vector<T> &data_): data_(data_){}\n    formal_power_series(std::initializer_list<T>\
     \ init): data_(init.begin(), init.end()){}\n    formal_power_series(const formal_power_series\
     \ &a): data_(a.data_){}\n    formal_power_series(formal_power_series &&a) noexcept\
-    \ {*this = std::move(a);}\n\n    int size() const {\n      return data_.size();\n\
+    \ {*this = std::move(a);}\n\n    size_t size() const {\n      return data_.size();\n\
     \    }\n\n    const T& operator[](int i) const {\n      return data_[i];\n   \
     \ }\n\n    T& operator[](int i){\n      return data_[i];\n    }\n\n    auto begin()\
     \ {return data_.begin();}\n    auto end() {return data_.end();}\n\n    void resize(int\
@@ -221,17 +223,18 @@ data:
     \ >= n) return *this;\n\n      T a = data_[k];\n\n      formal_power_series ret\
     \ = *this;\n      ret = (ret.shift(-k)) * a.inv();\n      ret = (ret.log() * (T)M).exp();\n\
     \      ret = (ret * a.pow(M)).shift(M * k);\n\n      return ret;\n    }\n\n  \
-    \  std::optional<formal_power_series> sqrt() const {\n      const int n = data_.size();\n\
-    \      int k = 0;\n      for(; k < n; ++k) if(data_[k] != 0) break;\n\n      if(k\
-    \ >= n) return *this;\n      if(k % 2 != 0) return {};\n\n      int t = 1;\n \
-    \     auto x = get_sqrt(data_[k]);\n\n      if(not x) return {};\n\n      const\
-    \ int m = n - k;\n\n      auto it = data_.begin() + k;\n      formal_power_series\
-    \ ret({*x});\n\n      while(t <= m * 2){\n        formal_power_series f(std::vector(it,\
-    \ it + std::min(t, m)));\n        ret.resize(t);\n        f.resize(t);\n     \
-    \   ret = (ret + f * ret.inv()) * T(2).inv();\n        t <<= 1;\n      }\n\n \
-    \     ret.resize(n);\n      ret = ret.shift(k / 2);\n\n      return ret;\n   \
-    \ }\n  };\n\n  template <typename T, const auto &convolve>\n  std::function<std::optional<T>(T)>\
-    \ formal_power_series<T, convolve>::get_sqrt;\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\
+    \  std::optional<formal_power_series> sqrt() const;\n  };\n}\n#line 4 \"Mylib/Math/fps_sqrt.cpp\"\
+    \n\nnamespace haar_lib {\n  template <typename T, const auto &convolve>\n  auto\
+    \ formal_power_series<T, convolve>::sqrt() const ->\n    std::optional<formal_power_series<T,\
+    \ convolve>> {\n    constexpr int mod = value_type::mod();\n\n    const int n\
+    \ = data_.size();\n    int k = 0;\n    for(; k < n; ++k) if(data_[k] != 0) break;\n\
+    \n    if(k >= n) return *this;\n    if(k % 2 != 0) return {};\n\n    auto x =\
+    \ mod_sqrt((int64_t)data_[k], mod);\n\n    if(not x) return {};\n\n    const int\
+    \ m = n - k;\n\n    auto it = data_.begin() + k;\n    formal_power_series ret({*x});\n\
+    \n    int t = 1;\n    while(t <= m * 2){\n      formal_power_series f(std::vector<T>(it,\
+    \ it + std::min(t, m)));\n      ret.resize(t);\n      f.resize(t);\n      ret\
+    \ = (ret + f * ret.inv()) * T(2).inv();\n      t <<= 1;\n    }\n\n    ret.resize(n);\n\
+    \    ret = ret.shift(k / 2);\n\n    return ret;\n  }\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  std::vector<T> input_vector(int\
     \ N){\n    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i) std::cin >>\
     \ ret[i];\n    return ret;\n  }\n\n  template <typename T>\n  std::vector<std::vector<T>>\
@@ -241,27 +244,25 @@ data:
     \ haar_lib {\n  template <typename Iter>\n  std::string join(Iter first, Iter\
     \ last, std::string delim = \" \"){\n    std::stringstream s;\n\n    for(auto\
     \ it = first; it != last; ++it){\n      if(it != first) s << delim;\n      s <<\
-    \ *it;\n    }\n\n    return s.str();\n  }\n}\n#line 13 \"test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp\"\
+    \ *it;\n    }\n\n    return s.str();\n  }\n}\n#line 14 \"test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int\
     \ prim_root = hl::primitive_root(mod);\nusing mint = hl::modint<mod>;\nusing NTT\
     \ = hl::number_theoretic_transform<mint, prim_root, 1 << 21>;\nconst static auto\
     \ ntt = NTT();\nusing FPS = hl::formal_power_series<mint, ntt>;\n\nint main(){\n\
-    \  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  FPS::get_sqrt =\
-    \ [&](const auto &a){return hl::mod_sqrt((int64_t)a, mint::mod());};\n\n  int\
-    \ N; std::cin >> N;\n  auto a = hl::input_vector<mint>(N);\n  auto ans = FPS(a).sqrt();\n\
-    \n  if(ans){\n    std::cout << hl::join((*ans).begin(), (*ans).begin() + N) <<\
+    \  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int N; std::cin\
+    \ >> N;\n  auto a = hl::input_vector<mint>(N);\n  auto ans = FPS(a).sqrt();\n\n\
+    \  if(ans){\n    std::cout << hl::join((*ans).begin(), (*ans).begin() + N) <<\
     \ \"\\n\";\n  }else{\n    std::cout << -1 << \"\\n\";\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sqrt_of_formal_power_series\"\
     \n\n#include <iostream>\n#include <vector>\n#include <functional>\n#include \"\
     Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/Number/Prime/primitive_root.cpp\"\
     \n#include \"Mylib/Number/Mod/mod_sqrt.cpp\"\n#include \"Mylib/Convolution/ntt_convolution.cpp\"\
-    \n#include \"Mylib/Math/formal_power_series.cpp\"\n#include \"Mylib/IO/input_vector.cpp\"\
-    \n#include \"Mylib/IO/join.cpp\"\n\nnamespace hl = haar_lib;\n\nconstexpr int\
-    \ mod = 998244353;\nconstexpr int prim_root = hl::primitive_root(mod);\nusing\
-    \ mint = hl::modint<mod>;\nusing NTT = hl::number_theoretic_transform<mint, prim_root,\
-    \ 1 << 21>;\nconst static auto ntt = NTT();\nusing FPS = hl::formal_power_series<mint,\
+    \n#include \"Mylib/Math/formal_power_series.cpp\"\n#include \"Mylib/Math/fps_sqrt.cpp\"\
+    \n#include \"Mylib/IO/input_vector.cpp\"\n#include \"Mylib/IO/join.cpp\"\n\nnamespace\
+    \ hl = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int prim_root =\
+    \ hl::primitive_root(mod);\nusing mint = hl::modint<mod>;\nusing NTT = hl::number_theoretic_transform<mint,\
+    \ prim_root, 1 << 21>;\nconst static auto ntt = NTT();\nusing FPS = hl::formal_power_series<mint,\
     \ ntt>;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
-    \n  FPS::get_sqrt = [&](const auto &a){return hl::mod_sqrt((int64_t)a, mint::mod());};\n\
     \n  int N; std::cin >> N;\n  auto a = hl::input_vector<mint>(N);\n  auto ans =\
     \ FPS(a).sqrt();\n\n  if(ans){\n    std::cout << hl::join((*ans).begin(), (*ans).begin()\
     \ + N) << \"\\n\";\n  }else{\n    std::cout << -1 << \"\\n\";\n  }\n\n  return\
@@ -273,12 +274,13 @@ data:
   - Mylib/Number/Mod/mod_sqrt.cpp
   - Mylib/Convolution/ntt_convolution.cpp
   - Mylib/Math/formal_power_series.cpp
+  - Mylib/Math/fps_sqrt.cpp
   - Mylib/IO/input_vector.cpp
   - Mylib/IO/join.cpp
   isVerificationFile: true
   path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-28 03:22:23+09:00'
+  timestamp: '2020-11-04 22:26:40+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp

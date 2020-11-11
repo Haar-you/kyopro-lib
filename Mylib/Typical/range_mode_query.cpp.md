@@ -7,10 +7,10 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Typical/RangeModeQuery/range_mode_query.cpp\"\n#include\
-    \ <vector>\n#include <algorithm>\n#include <utility>\n#include <cmath>\n\nnamespace\
-    \ haar_lib {\n  template <typename T>\n  class range_mode_query {\n    std::vector<T>\
-    \ a_, D_;\n    std::vector<int> b_, b_index_;\n    int N_, block_size_, block_num_,\
+  bundledCode: "#line 2 \"Mylib/Typical/range_mode_query.cpp\"\n#include <vector>\n\
+    #include <algorithm>\n#include <utility>\n#include <cmath>\n\nnamespace haar_lib\
+    \ {\n  template <typename T>\n  class range_mode_query {\n    std::vector<T> a_,\
+    \ D_;\n    std::vector<int> b_, b_index_;\n    int N_, block_size_, block_num_,\
     \ K_;\n    std::vector<std::vector<int>> index_, mode_, freq_;\n\n  public:\n\
     \    range_mode_query(){}\n    range_mode_query(std::vector<T> a):\n      a_(a),\
     \ D_(a), N_(a.size()), block_size_(std::sqrt(N_)),\n      block_num_((N_ + block_size_\
@@ -92,12 +92,12 @@ data:
     \      return ret;\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/Typical/RangeModeQuery/range_mode_query.cpp
+  path: Mylib/Typical/range_mode_query.cpp
   requiredBy: []
-  timestamp: '2020-10-03 19:28:56+09:00'
+  timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: Mylib/Typical/RangeModeQuery/range_mode_query.cpp
+documentation_of: Mylib/Typical/range_mode_query.cpp
 layout: document
 title: Range mode query
 ---

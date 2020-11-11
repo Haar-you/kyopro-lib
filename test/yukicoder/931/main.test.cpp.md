@@ -2,17 +2,14 @@
 data:
   _extendedDependsOn:
   - icon: ':x:'
-    path: Mylib/Combinatorics/stirling_number_first_fft.cpp
-    title: Stirling numbers of the first kind (FFT)
+    path: Mylib/Convolution/convolution_multiply.cpp
+    title: Convolution (Index multiplication mod P)
   - icon: ':question:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
   - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':question:'
-    path: Mylib/Math/polynomial_taylor_shift.cpp
-    title: Polynomial taylor shift
   - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
@@ -28,11 +25,10 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind
+    PROBLEM: https://yukicoder.me/problems/no/931
     links:
-    - https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind
-  bundledCode: "#line 1 \"test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind\"\
+    - https://yukicoder.me/problems/no/931
+  bundledCode: "#line 1 \"test/yukicoder/931/main.test.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/931\"\
     \n\n#include <iostream>\n#line 3 \"Mylib/Number/Mint/mint.cpp\"\n#include <utility>\n\
     \nnamespace haar_lib {\n  template <int32_t M>\n  class modint {\n    uint32_t\
     \ val_;\n\n  public:\n    constexpr static auto mod(){return M;}\n\n    constexpr\
@@ -135,68 +131,61 @@ data:
     \ (int64_t)res2[i], (int64_t)res3[i]};\n\n      const int64_t t0 = r[0] % M1;\n\
     \      const int64_t t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2\
     \ = ((r[2] - t0 + M3) * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0)\
-    \ + T(t1) * M1 + T(t2) * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 3 \"\
-    Mylib/Math/polynomial_taylor_shift.cpp\"\n\nnamespace haar_lib {\n  template <typename\
-    \ T, const auto &convolve>\n  auto polynomial_taylor_shift(std::vector<T> a, T\
-    \ c){\n    const int N = a.size();\n    T f = 1;\n\n    std::vector<T> A(2 * N\
-    \ - 1);\n    for(int i = 0; i < N; ++i){\n      if(i) f *= i;\n      A[i + N -\
-    \ 1] = a[i] * f;\n    }\n\n    T d = 1;\n\n    std::vector<T> g(N);\n    g[N -\
-    \ 1] = f.inv();\n    for(int i = N - 2; i >= 0; --i) g[i] = g[i + 1] * (i + 1);\n\
-    \n    std::vector<T> B(2 * N - 1);\n    for(int i = 0; i < N; ++i){\n      B[N\
-    \ - i - 1] = d * g[i];\n      d *= c;\n    }\n\n    auto C = convolve(A, B);\n\
-    \n    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i) ret[i] = C[(N - 1)\
-    \ * 2 + i] * g[i];\n\n    return ret;\n  }\n}\n#line 5 \"Mylib/Combinatorics/stirling_number_first_fft.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T, const auto &convolve>\n  std::vector<T>\
-    \ stirling_number_of_first_kind_fft(int N){\n    if(N == 0) return {1};\n\n  \
-    \  std::vector<int> p;\n    {\n      int a = N;\n\n      while(a > 0){\n     \
-    \   if(a & 1) p.push_back(1);\n        p.push_back(2);\n        a >>= 1;\n   \
-    \   }\n    }\n\n    std::vector<T> ret = {1};\n\n    std::reverse(p.begin(), p.end());\n\
-    \    int t = 0;\n    for(int x : p){\n      if(x == 1){\n        std::vector<T>\
-    \ a = {-t, 1};\n        ret = convolve(ret, a);\n\n        t += 1;\n      }else{\n\
-    \        auto s = polynomial_taylor_shift<T, convolve>(ret, -t);\n        ret\
-    \ = convolve(ret, s);\n        ret.resize(t * 2 + 1);\n\n        t *= 2;\n   \
-    \   }\n    }\n\n    ret.resize(N + 1);\n\n    return ret;\n  }\n}\n#line 3 \"\
-    Mylib/IO/join.cpp\"\n#include <sstream>\n#include <string>\n\nnamespace haar_lib\
-    \ {\n  template <typename Iter>\n  std::string join(Iter first, Iter last, std::string\
-    \ delim = \" \"){\n    std::stringstream s;\n\n    for(auto it = first; it !=\
-    \ last; ++it){\n      if(it != first) s << delim;\n      s << *it;\n    }\n\n\
-    \    return s.str();\n  }\n}\n#line 9 \"test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp\"\
+    \ + T(t1) * M1 + T(t2) * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 4 \"\
+    Mylib/Convolution/convolution_multiply.cpp\"\n\nnamespace haar_lib {\n  template\
+    \ <typename T, const auto &convolve>\n  auto convolution_multiply(const std::vector<T>\
+    \ &A, const std::vector<T> &B, int P){\n    const int p_root = primitive_root(P);\n\
+    \n    std::vector<int> index(P);\n\n    {\n      int64_t s = 1;\n\n      for(int\
+    \ i = 0; i < P; ++i){\n        index[s] = i;\n        s *= p_root;\n        if(s\
+    \ >= P) s %= P;\n      }\n    }\n\n    std::vector<T> a(P), b(P);\n    for(int\
+    \ i = 0; i < (int)A.size(); ++i) a[index[i % P]] = A[i];\n    for(int i = 0; i\
+    \ < (int)B.size(); ++i) b[index[i % P]] = B[i];\n\n    auto c = convolve(a, b);\n\
+    \    std::vector<T> ret(P);\n\n    {\n      int64_t s = 1;\n\n      for(auto x\
+    \ : c){\n        ret[s] += x;\n        s *= p_root;\n        if(s >= P) s %= P;\n\
+    \      }\n    }\n\n    return ret;\n  }\n};\n#line 3 \"Mylib/IO/join.cpp\"\n#include\
+    \ <sstream>\n#include <string>\n\nnamespace haar_lib {\n  template <typename Iter>\n\
+    \  std::string join(Iter first, Iter last, std::string delim = \" \"){\n    std::stringstream\
+    \ s;\n\n    for(auto it = first; it != last; ++it){\n      if(it != first) s <<\
+    \ delim;\n      s << *it;\n    }\n\n    return s.str();\n  }\n}\n#line 10 \"test/yukicoder/931/main.test.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int\
-    \ prim_root = hl::primitive_root(mod);\n\nusing mint = hl::modint<mod>;\nusing\
-    \ NTT = hl::number_theoretic_transform<mint, prim_root, 1 << 20>;\nconst auto\
+    \ prim_root = hl::primitive_root(mod);\nusing mint = hl::modint<mod>;\nusing NTT\
+    \ = hl::number_theoretic_transform<mint, prim_root, 1 << 20>;\nconst static auto\
     \ ntt = NTT();\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
-    \n  int N; std::cin >> N;\n\n  auto res = hl::stirling_number_of_first_kind_fft<mint,\
-    \ ntt>(N);\n  std::cout << hl::join(res.begin(), res.end()) << \"\\n\";\n\n  return\
-    \ 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind\"\
-    \n\n#include <iostream>\n#include \"Mylib/Number/Mint/mint.cpp\"\n#include \"\
-    Mylib/Number/Prime/primitive_root.cpp\"\n#include \"Mylib/Convolution/ntt_convolution.cpp\"\
-    \n#include \"Mylib/Combinatorics/stirling_number_first_fft.cpp\"\n#include \"\
-    Mylib/IO/join.cpp\"\n\nnamespace hl = haar_lib;\n\nconstexpr int mod = 998244353;\n\
-    constexpr int prim_root = hl::primitive_root(mod);\n\nusing mint = hl::modint<mod>;\n\
-    using NTT = hl::number_theoretic_transform<mint, prim_root, 1 << 20>;\nconst auto\
+    \n  int P; std::cin >> P;\n  std::vector<mint> A(P), B(P);\n  for(int i = 1; i\
+    \ < P; ++i) std::cin >> A[i];\n  for(int i = 1; i < P; ++i) std::cin >> B[i];\n\
+    \n  std::vector<mint> ans = hl::convolution_multiply<mint, ntt>(A, B, P);\n\n\
+    \  std::cout << hl::join(ans.begin() + 1, ans.end()) << \"\\n\";\n\n  return 0;\n\
+    }\n"
+  code: "#define PROBLEM \"https://yukicoder.me/problems/no/931\"\n\n#include <iostream>\n\
+    #include \"Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/Number/Prime/primitive_root.cpp\"\
+    \n#include \"Mylib/Number/Mod/mod_pow.cpp\"\n#include \"Mylib/Convolution/ntt_convolution.cpp\"\
+    \n#include \"Mylib/Convolution/convolution_multiply.cpp\"\n#include \"Mylib/IO/join.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int\
+    \ prim_root = hl::primitive_root(mod);\nusing mint = hl::modint<mod>;\nusing NTT\
+    \ = hl::number_theoretic_transform<mint, prim_root, 1 << 20>;\nconst static auto\
     \ ntt = NTT();\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
-    \n  int N; std::cin >> N;\n\n  auto res = hl::stirling_number_of_first_kind_fft<mint,\
-    \ ntt>(N);\n  std::cout << hl::join(res.begin(), res.end()) << \"\\n\";\n\n  return\
-    \ 0;\n}\n"
+    \n  int P; std::cin >> P;\n  std::vector<mint> A(P), B(P);\n  for(int i = 1; i\
+    \ < P; ++i) std::cin >> A[i];\n  for(int i = 1; i < P; ++i) std::cin >> B[i];\n\
+    \n  std::vector<mint> ans = hl::convolution_multiply<mint, ntt>(A, B, P);\n\n\
+    \  std::cout << hl::join(ans.begin() + 1, ans.end()) << \"\\n\";\n\n  return 0;\n\
+    }\n"
   dependsOn:
   - Mylib/Number/Mint/mint.cpp
   - Mylib/Number/Prime/primitive_root.cpp
   - Mylib/Number/Mod/mod_pow.cpp
   - Mylib/Convolution/ntt_convolution.cpp
-  - Mylib/Combinatorics/stirling_number_first_fft.cpp
-  - Mylib/Math/polynomial_taylor_shift.cpp
+  - Mylib/Convolution/convolution_multiply.cpp
   - Mylib/IO/join.cpp
   isVerificationFile: true
-  path: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+  path: test/yukicoder/931/main.test.cpp
   requiredBy: []
-  timestamp: '2020-11-04 17:40:49+09:00'
+  timestamp: '2020-11-09 03:20:21+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+documentation_of: test/yukicoder/931/main.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
-- /verify/test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp.html
-title: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+- /verify/test/yukicoder/931/main.test.cpp
+- /verify/test/yukicoder/931/main.test.cpp.html
+title: test/yukicoder/931/main.test.cpp
 ---

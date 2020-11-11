@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Algorithm/Mo/mo_algorithm.cpp
     title: Mo's algorithm
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
     title: Fenwick tree (Add)
   - icon: ':question:'
@@ -16,13 +16,13 @@ data:
   - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Typical/InversionNumber/range_inversions_query.cpp
+  - icon: ':x:'
+    path: Mylib/Typical/range_inversions_query.cpp
     title: Range inversions query
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_inversions_query
@@ -56,8 +56,8 @@ data:
     \    InputTuples(int N): N(N){}\n\n    iter begin() const {return iter(N);}\n\
     \    iter end() const {return iter(N);}\n  };\n\n  template <typename ... Args>\n\
     \  auto input_tuples(int N){\n    return InputTuples<Args ...>(N);\n  }\n}\n#line\
-    \ 4 \"Mylib/Typical/InversionNumber/range_inversions_query.cpp\"\n#include <algorithm>\n\
-    #line 3 \"Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp\"\n#include <cassert>\n\
+    \ 4 \"Mylib/Typical/range_inversions_query.cpp\"\n#include <algorithm>\n#line\
+    \ 3 \"Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp\"\n#include <cassert>\n\
     \nnamespace haar_lib {\n  template <typename T>\n  class fenwick_tree_add {\n\
     \  public:\n    using value_type = T;\n\n  private:\n    int size_;\n    std::vector<value_type>\
     \ data_;\n\n  public:\n    fenwick_tree_add(){}\n    fenwick_tree_add(int size):\
@@ -94,8 +94,8 @@ data:
     \          if(l > left_[id]) append_left_(--l);\n          if(l < left_[id]) remove_left_(l++);\n\
     \          if(r < right_[id]) append_right_(r++);\n          if(r > right_[id])\
     \ remove_right_(--r);\n        }\n\n        query_(id);\n      }\n    }\n  };\n\
-    }\n#line 7 \"Mylib/Typical/InversionNumber/range_inversions_query.cpp\"\n\nnamespace\
-    \ haar_lib {\n  template <typename T>\n  class range_inversions_query {\n    std::vector<int>\
+    }\n#line 7 \"Mylib/Typical/range_inversions_query.cpp\"\n\nnamespace haar_lib\
+    \ {\n  template <typename T>\n  class range_inversions_query {\n    std::vector<int>\
     \ data_;\n    int N_;\n    std::vector<std::pair<int, int>> qs_;\n\n  public:\n\
     \    range_inversions_query(){}\n    range_inversions_query(std::vector<T> a):\
     \ N_(a.size()){\n      auto b = a;\n      std::sort(b.begin(), b.end());\n   \
@@ -123,7 +123,7 @@ data:
     \ << x << \"\\n\";\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_inversions_query\"\
     \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/IO/input_vector.cpp\"\
-    \n#include \"Mylib/IO/input_tuples.cpp\"\n#include \"Mylib/Typical/InversionNumber/range_inversions_query.cpp\"\
+    \n#include \"Mylib/IO/input_tuples.cpp\"\n#include \"Mylib/Typical/range_inversions_query.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  int N, Q; std::cin >> N >> Q;\n  auto A = hl::input_vector<int>(N);\n\n  hl::range_inversions_query\
     \ riq(A);\n\n  for(auto [l, r] : hl::input_tuples<int, int>(Q)){\n    riq.add(l,\
@@ -133,14 +133,14 @@ data:
   - Mylib/IO/input_vector.cpp
   - Mylib/IO/input_tuples.cpp
   - Mylib/IO/input_tuple.cpp
-  - Mylib/Typical/InversionNumber/range_inversions_query.cpp
+  - Mylib/Typical/range_inversions_query.cpp
   - Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
   - Mylib/Algorithm/Mo/mo_algorithm.cpp
   isVerificationFile: true
   path: test/yosupo-judge/static_range_inversions_query/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-10 11:12:55+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2020-11-07 03:03:04+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/static_range_inversions_query/main.test.cpp
 layout: document

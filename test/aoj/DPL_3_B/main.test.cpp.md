@@ -5,10 +5,10 @@ data:
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   - icon: ':heavy_check_mark:'
-    path: Mylib/Typical/MaxRectangleProblem/max_rectangle.cpp
+    path: Mylib/Typical/max_rectangle.cpp
     title: Largest rectangle
   - icon: ':heavy_check_mark:'
-    path: Mylib/Typical/MaxRectangleProblem/max_rectangle_in_histogram.cpp
+    path: Mylib/Typical/max_rectangle_in_histogram.cpp
     title: Largest rectangle in histogram
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -20,8 +20,8 @@ data:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_B
   bundledCode: "#line 1 \"test/aoj/DPL_3_B/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_B\"\
-    \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/Typical/MaxRectangleProblem/max_rectangle.cpp\"\
-    \n#include <algorithm>\n#line 3 \"Mylib/Typical/MaxRectangleProblem/max_rectangle_in_histogram.cpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/Typical/max_rectangle.cpp\"\
+    \n#include <algorithm>\n#line 3 \"Mylib/Typical/max_rectangle_in_histogram.cpp\"\
     \n#include <stack>\n#include <utility>\n\nnamespace haar_lib {\n  template <typename\
     \ T>\n  T max_rectangle_in_histogram(const std::vector<T> &h){\n    std::stack<std::pair<T,\
     \ int>> st;\n    T ret = 0;\n\n    for(size_t i = 0; i < h.size(); ++i){\n   \
@@ -32,8 +32,8 @@ data:
     \         j = st.top().second;\n          st.pop();\n        }\n        st.emplace(h[i],\
     \ j);\n      }\n    }\n\n    while(not st.empty()){\n      ret = std::max(ret,\
     \ st.top().first * ((T)h.size() - st.top().second));\n      st.pop();\n    }\n\
-    \n    return ret;\n  }\n}\n#line 5 \"Mylib/Typical/MaxRectangleProblem/max_rectangle.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T>\n  int max_rectangle(const std::vector<std::vector<T>>\
+    \n    return ret;\n  }\n}\n#line 5 \"Mylib/Typical/max_rectangle.cpp\"\n\nnamespace\
+    \ haar_lib {\n  template <typename T>\n  int max_rectangle(const std::vector<std::vector<T>>\
     \ &d, T value){\n    const int H = d.size();\n    const int W = d[0].size();\n\
     \n    std::vector<std::vector<int>> c(H, std::vector<int>(W));\n    for(int i\
     \ = 0; i < H; ++i){\n      for(int j = 0; j < W; ++j){\n        if(d[i][j] ==\
@@ -52,19 +52,19 @@ data:
     \  auto ans = hl::max_rectangle(c, 0);\n  std::cout << ans << std::endl;\n\n \
     \ return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_3_B\"\
-    \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/Typical/MaxRectangleProblem/max_rectangle.cpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/Typical/max_rectangle.cpp\"\
     \n#include \"Mylib/IO/input_vector.cpp\"\n\nnamespace hl = haar_lib;\n\nint main(){\n\
     \  int H, W; std::cin >> H >> W;\n\n  auto c = hl::input_vector<int>(H, W);\n\n\
     \  auto ans = hl::max_rectangle(c, 0);\n  std::cout << ans << std::endl;\n\n \
     \ return 0;\n}\n"
   dependsOn:
-  - Mylib/Typical/MaxRectangleProblem/max_rectangle.cpp
-  - Mylib/Typical/MaxRectangleProblem/max_rectangle_in_histogram.cpp
+  - Mylib/Typical/max_rectangle.cpp
+  - Mylib/Typical/max_rectangle_in_histogram.cpp
   - Mylib/IO/input_vector.cpp
   isVerificationFile: true
   path: test/aoj/DPL_3_B/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-21 02:36:12+09:00'
+  timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DPL_3_B/main.test.cpp

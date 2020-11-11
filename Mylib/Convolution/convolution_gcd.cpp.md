@@ -53,6 +53,9 @@ title: Convolution (Index GCD)
 
 ## Operations
 
+- `convolution_gcd(f, g)`
+  - $h_k = \sum_{k = gcd(i, j)} f_i * g_j$
+
 ## Requirements
 
 ## Notes
