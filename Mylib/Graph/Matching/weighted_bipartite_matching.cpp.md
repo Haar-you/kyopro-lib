@@ -55,8 +55,8 @@ data:
   timestamp: '2020-10-10 11:12:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/2293/main.test.cpp
   - test/yosupo-judge/assignment/main.test.cpp
+  - test/aoj/2293/main.test.cpp
 documentation_of: Mylib/Graph/Matching/weighted_bipartite_matching.cpp
 layout: document
 title: Weighted maximum bipartite matching

@@ -27,11 +27,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/manhattanmst/main.test.cpp
     title: test/yosupo-judge/manhattanmst/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/unionfind/main.test.cpp
     title: test/yosupo-judge/unionfind/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/DataStructure/UnionFind/unionfind.cpp\"\n#include\
@@ -78,18 +78,18 @@ data:
   isVerificationFile: false
   path: Mylib/DataStructure/UnionFind/unionfind.cpp
   requiredBy:
-  - Mylib/Graph/MinimumSpanningTree/kruskal.cpp
   - Mylib/Graph/MinimumSpanningTree/boruvka.cpp
+  - Mylib/Graph/MinimumSpanningTree/kruskal.cpp
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/0575/main.test.cpp
-  - test/aoj/GRL_2_A/main.kruskal.test.cpp
-  - test/aoj/GRL_2_A/main.boruvka.test.cpp
-  - test/aoj/1337/main.test.cpp
-  - test/aoj/2955/main.test.cpp
   - test/yosupo-judge/unionfind/main.test.cpp
   - test/yosupo-judge/manhattanmst/main.test.cpp
+  - test/aoj/0575/main.test.cpp
+  - test/aoj/1337/main.test.cpp
+  - test/aoj/2955/main.test.cpp
+  - test/aoj/GRL_2_A/main.kruskal.test.cpp
+  - test/aoj/GRL_2_A/main.boruvka.test.cpp
 documentation_of: Mylib/DataStructure/UnionFind/unionfind.cpp
 layout: document
 title: Union-find

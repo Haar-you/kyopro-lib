@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/String/lcp_array.cpp
     title: LCP(Longest Common Prefix) array
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/String/suffix_array.cpp
     title: Suffix array
   _extendedRequiredBy: []

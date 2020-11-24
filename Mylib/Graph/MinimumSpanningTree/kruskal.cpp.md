@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/UnionFind/unionfind.cpp
     title: Union-find
   - icon: ':question:'
@@ -87,8 +87,8 @@ data:
   timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/GRL_2_A/main.kruskal.test.cpp
   - test/yosupo-judge/manhattanmst/main.test.cpp
+  - test/aoj/GRL_2_A/main.kruskal.test.cpp
 documentation_of: Mylib/Graph/MinimumSpanningTree/kruskal.cpp
 layout: document
 title: Kruskal algorithm

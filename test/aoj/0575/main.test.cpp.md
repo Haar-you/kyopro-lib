@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Algorithm/Search/parallel_binary_search.cpp
     title: Parallel binary search
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/UnionFind/unionfind.cpp
     title: Union-find
   - icon: ':heavy_check_mark:'
@@ -13,7 +13,7 @@ data:
   - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
   - icon: ':question:'

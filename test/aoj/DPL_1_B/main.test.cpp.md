@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
   - icon: ':heavy_check_mark:'

@@ -92,8 +92,8 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/CGL_7_C/main.test.cpp
   - test/aoj/3034/main.test.cpp
+  - test/aoj/CGL_7_C/main.test.cpp
 documentation_of: Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp
 layout: document
 title: Circumscribed circle of a triangle

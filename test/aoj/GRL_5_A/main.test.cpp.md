@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/tree_diameter.cpp
     title: Tree diameter
   _extendedRequiredBy: []

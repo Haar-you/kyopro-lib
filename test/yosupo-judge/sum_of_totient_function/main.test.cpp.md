@@ -4,16 +4,16 @@ data:
   - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Totient/totient_sum.cpp
     title: Sum of totient function
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Totient/totient_table.cpp
     title: Euler's totient function (Table)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sum_of_totient_function
@@ -99,7 +99,7 @@ data:
   path: test/yosupo-judge/sum_of_totient_function/main.test.cpp
   requiredBy: []
   timestamp: '2020-11-02 00:02:30+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/sum_of_totient_function/main.test.cpp
 layout: document

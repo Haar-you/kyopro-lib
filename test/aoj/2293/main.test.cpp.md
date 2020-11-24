@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Matching/weighted_bipartite_matching.cpp
     title: Weighted maximum bipartite matching
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
   _extendedRequiredBy: []

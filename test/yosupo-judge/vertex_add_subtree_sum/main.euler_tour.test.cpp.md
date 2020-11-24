@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/euler_tour_vertex.cpp
     title: Euler tour (Vertex)
   - icon: ':question:'
@@ -25,7 +25,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_subtree_sum
@@ -175,7 +175,7 @@ data:
   path: test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp
   requiredBy: []
   timestamp: '2020-10-15 01:51:15+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp
 layout: document

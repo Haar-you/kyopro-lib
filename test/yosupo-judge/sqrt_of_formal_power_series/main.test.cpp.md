@@ -10,10 +10,10 @@ data:
   - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Math/formal_power_series.cpp
     title: Formal power series
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Math/fps_sqrt.cpp
     title: Formal power series (Sqrt)
   - icon: ':question:'
@@ -22,7 +22,7 @@ data:
   - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_sqrt.cpp
     title: Mod sqrt
   - icon: ':question:'
@@ -31,7 +31,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sqrt_of_formal_power_series
@@ -281,7 +281,7 @@ data:
   path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   requiredBy: []
   timestamp: '2020-11-04 22:26:40+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
 layout: document

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/stirling_number_second_fft.cpp
     title: Stirling numbers of the second kind (FFT)
   - icon: ':question:'
@@ -22,7 +22,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/stirling_number_of_the_second_kind
@@ -178,7 +178,7 @@ data:
   path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
   requiredBy: []
   timestamp: '2020-10-29 09:04:29+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
 layout: document

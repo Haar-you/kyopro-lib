@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Totient/totient.cpp
     title: Euler's totient function
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/tetration_mod/main.test.cpp
     title: test/yosupo-judge/tetration_mod/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Totient/totient.cpp\"\n#include <cstdint>\n\
@@ -51,7 +51,7 @@ data:
   path: Mylib/Number/tetration.cpp
   requiredBy: []
   timestamp: '2020-11-01 20:53:57+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/tetration_mod/main.test.cpp
 documentation_of: Mylib/Number/tetration.cpp

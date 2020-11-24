@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Totient/totient_table.cpp
     title: Euler's totient function (Table)
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sum_of_totient_function/main.test.cpp
     title: test/yosupo-judge/sum_of_totient_function/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Totient/totient_sum.cpp\"\n#include <vector>\n\
@@ -52,7 +52,7 @@ data:
   path: Mylib/Number/Totient/totient_sum.cpp
   requiredBy: []
   timestamp: '2020-11-01 20:59:28+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/sum_of_totient_function/main.test.cpp
 documentation_of: Mylib/Number/Totient/totient_sum.cpp

@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/AlgebraicStructure/Monoid/affine.cpp
     title: Affine monoid
   - icon: ':question:'
     path: Mylib/AlgebraicStructure/Monoid/dual.cpp
     title: Dual monoid
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp
     title: Segment tree (Both foldable)
   - icon: ':question:'
@@ -31,7 +31,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_set_path_composite
@@ -262,7 +262,7 @@ data:
   path: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
   requiredBy: []
   timestamp: '2020-10-15 01:51:15+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
 layout: document

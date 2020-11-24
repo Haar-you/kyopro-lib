@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Algorithm/Mo/mo_algorithm.cpp
     title: Mo's algorithm
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
     title: Fenwick tree (Add)
   - icon: ':question:'
@@ -16,13 +16,13 @@ data:
   - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Typical/range_inversions_query.cpp
     title: Range inversions query
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_inversions_query
@@ -140,7 +140,7 @@ data:
   path: test/yosupo-judge/static_range_inversions_query/main.test.cpp
   requiredBy: []
   timestamp: '2020-11-07 03:03:04+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/static_range_inversions_query/main.test.cpp
 layout: document

@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Math/formal_power_series.cpp
     title: Formal power series
   - icon: ':question:'
@@ -22,13 +22,13 @@ data:
   - icon: ':question:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Typical/subset_sum_count_fps.cpp
     title: Subset sum problem (Count, FPS)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sharp_p_subset_sum
@@ -257,7 +257,7 @@ data:
   path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
   requiredBy: []
   timestamp: '2020-11-07 03:03:04+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
 layout: document

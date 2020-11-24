@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Combinatorics/stirling_number_second_fft.cpp\"\n#include\
@@ -38,7 +38,7 @@ data:
   path: Mylib/Combinatorics/stirling_number_second_fft.cpp
   requiredBy: []
   timestamp: '2020-10-29 09:04:29+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
 documentation_of: Mylib/Combinatorics/stirling_number_second_fft.cpp

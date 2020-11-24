@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Algorithm/Search/golden_section_search_upwards.cpp
     title: Golden section search (Convex upwards)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
   _extendedRequiredBy: []

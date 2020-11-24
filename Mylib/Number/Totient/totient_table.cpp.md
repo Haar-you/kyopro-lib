@@ -2,15 +2,15 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Totient/totient_sum.cpp
     title: Sum of totient function
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sum_of_totient_function/main.test.cpp
     title: test/yosupo-judge/sum_of_totient_function/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Totient/totient_table.cpp\"\n#include <vector>\n\
@@ -30,7 +30,7 @@ data:
   requiredBy:
   - Mylib/Number/Totient/totient_sum.cpp
   timestamp: '2020-11-01 20:53:57+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/sum_of_totient_function/main.test.cpp
 documentation_of: Mylib/Number/Totient/totient_table.cpp

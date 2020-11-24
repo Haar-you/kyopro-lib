@@ -7,13 +7,13 @@ data:
   - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Math/sum_of_floor_of_linear.cpp
     title: Sum of floor of linear
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sum_of_floor_of_linear
@@ -67,7 +67,7 @@ data:
   path: test/yosupo-judge/sum_of_floor_of_linear/main.test.cpp
   requiredBy: []
   timestamp: '2020-09-27 07:43:10+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/sum_of_floor_of_linear/main.test.cpp
 layout: document

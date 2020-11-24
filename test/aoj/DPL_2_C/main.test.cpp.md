@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/DynamicProgramming/bitonic_tour.cpp
     title: Bitonic tour
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
   _extendedRequiredBy: []

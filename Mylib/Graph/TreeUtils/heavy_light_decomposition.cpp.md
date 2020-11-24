@@ -9,16 +9,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2667/main.test.cpp
     title: test/aoj/2667/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/vertex_add_path_sum/main.test.cpp
     title: test/yosupo-judge/vertex_add_path_sum/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
     title: test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
     title: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/1030/main.test.cpp
     title: test/yukicoder/1030/main.test.cpp
   - icon: ':x:'
@@ -149,12 +149,12 @@ data:
   timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
+  - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+  - test/yosupo-judge/vertex_add_path_sum/main.test.cpp
   - test/yukicoder/235/main.test.cpp
   - test/yukicoder/1030/main.test.cpp
   - test/aoj/2667/main.test.cpp
-  - test/yosupo-judge/vertex_add_path_sum/main.test.cpp
-  - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
-  - test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
 documentation_of: Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp
 layout: document
 title: Heavy-light decomposition

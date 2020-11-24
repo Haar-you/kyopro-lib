@@ -16,7 +16,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/117
@@ -132,7 +132,7 @@ data:
   path: test/yukicoder/117/main.test.cpp
   requiredBy: []
   timestamp: '2020-10-10 12:47:45+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yukicoder/117/main.test.cpp
 layout: document

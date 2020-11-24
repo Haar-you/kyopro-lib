@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Algorithm/Mo/mo_algorithm.cpp
     title: Mo's algorithm
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
     title: Fenwick tree (Add)
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/static_range_inversions_query/main.test.cpp
     title: test/yosupo-judge/static_range_inversions_query/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Typical/range_inversions_query.cpp\"\n#include <vector>\n\
@@ -105,7 +105,7 @@ data:
   path: Mylib/Typical/range_inversions_query.cpp
   requiredBy: []
   timestamp: '2020-11-07 03:03:04+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/static_range_inversions_query/main.test.cpp
 documentation_of: Mylib/Typical/range_inversions_query.cpp

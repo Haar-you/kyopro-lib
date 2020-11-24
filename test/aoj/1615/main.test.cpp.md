@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Flow/max_flow_with_lower_bound.cpp
     title: Maximum flow with lower bound
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
   _extendedRequiredBy: []

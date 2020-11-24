@@ -114,9 +114,9 @@ data:
   timestamp: '2020-10-10 11:12:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/GRL_6_B/main.test.cpp
-  - test/aoj/2293/main.test.cpp
   - test/yosupo-judge/assignment/main.test.cpp
+  - test/aoj/2293/main.test.cpp
+  - test/aoj/GRL_6_B/main.test.cpp
 documentation_of: Mylib/Graph/Flow/minimum_cost_flow.cpp
 layout: document
 title: Minimum cost flow

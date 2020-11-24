@@ -90,8 +90,8 @@ data:
   timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/1327/main.test.cpp
   - test/yosupo-judge/montmort_number_mod/main.test.cpp
+  - test/aoj/1327/main.test.cpp
 documentation_of: Mylib/Number/Mint/runtime_mint.cpp
 layout: document
 title: Modint (Runtime mod)

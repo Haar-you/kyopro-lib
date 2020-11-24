@@ -4,13 +4,13 @@ data:
   - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/LinearAlgebra/GaussianElimination/binary_gaussian_elimination.cpp
     title: Gaussian elimination (Mod2)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/184
@@ -49,7 +49,7 @@ data:
   path: test/yukicoder/184/main.test.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yukicoder/184/main.test.cpp
 layout: document

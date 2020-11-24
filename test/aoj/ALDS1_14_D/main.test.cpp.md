@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/String/suffix_array.cpp
     title: Suffix array
   _extendedRequiredBy: []

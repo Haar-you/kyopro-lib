@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp
     title: Segment tree (On segment tree)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
   _extendedRequiredBy: []

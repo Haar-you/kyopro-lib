@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/fast_zeta_transform_subset.cpp
     title: Fast Zeta transform (Subsets)
   - icon: ':question:'

@@ -7,16 +7,16 @@ data:
   - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Totient/totient.cpp
     title: Euler's totient function
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/tetration.cpp
     title: Tetration
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/tetration_mod
@@ -80,7 +80,7 @@ data:
   path: test/yosupo-judge/tetration_mod/main.test.cpp
   requiredBy: []
   timestamp: '2020-11-01 20:53:57+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/tetration_mod/main.test.cpp
 layout: document

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/GraphUtils/strongly_connected_components.cpp
     title: Strongly connected components
   - icon: ':question:'
@@ -9,11 +9,11 @@ data:
     title: Basic graph
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/two_sat/main.test.cpp
     title: test/yosupo-judge/two_sat/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/two_sat.cpp\"\n#include <vector>\n#include <optional>\n\
@@ -93,7 +93,7 @@ data:
   path: Mylib/Graph/two_sat.cpp
   requiredBy: []
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/two_sat/main.test.cpp
 documentation_of: Mylib/Graph/two_sat.cpp

@@ -5,18 +5,18 @@ data:
   - icon: ':warning:'
     path: Mylib/Convolution/convolution_or.cpp
     title: Convolution (Index bitwise OR)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/subset_convolution.cpp
     title: Subset convolution
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2446/main.test.cpp
     title: test/aoj/2446/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/subset_convolution/main.test.cpp
     title: test/yosupo-judge/subset_convolution/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Convolution/fast_mobius_transform_subset.cpp\"\n#include\
@@ -37,13 +37,13 @@ data:
   isVerificationFile: false
   path: Mylib/Convolution/fast_mobius_transform_subset.cpp
   requiredBy:
-  - Mylib/Convolution/convolution_or.cpp
   - Mylib/Convolution/subset_convolution.cpp
+  - Mylib/Convolution/convolution_or.cpp
   timestamp: '2020-10-30 23:28:24+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/2446/main.test.cpp
   - test/yosupo-judge/subset_convolution/main.test.cpp
+  - test/aoj/2446/main.test.cpp
 documentation_of: Mylib/Convolution/fast_mobius_transform_subset.cpp
 layout: document
 title: "Fast M\xF6bius transform (Subsets)"

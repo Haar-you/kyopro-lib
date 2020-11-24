@@ -12,11 +12,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/range_affine_range_sum/main.test.cpp
     title: test/yosupo-judge/range_affine_range_sum/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
     title: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/affine.cpp\"\n#include <utility>\n\
@@ -35,12 +35,12 @@ data:
   path: Mylib/AlgebraicStructure/Monoid/affine.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yosupo-judge/range_affine_range_sum/main.test.cpp
   - test/yosupo-judge/point_set_range_composite/main.test.cpp
   - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
   - test/yosupo-judge/queue_operate_all_composite/main.test.cpp
-  - test/yosupo-judge/range_affine_range_sum/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Monoid/affine.cpp
 layout: document
 title: Affine monoid

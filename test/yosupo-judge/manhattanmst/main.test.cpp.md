@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: Mylib/DataStructure/SegmentTree/segment_tree.cpp
     title: Segment tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/UnionFind/unionfind.cpp
     title: Union-find
   - icon: ':heavy_check_mark:'
@@ -19,7 +19,7 @@ data:
   - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
   _extendedRequiredBy: []

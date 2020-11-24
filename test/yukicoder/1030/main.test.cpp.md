@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: Mylib/AlgebraicStructure/Monoid/max.cpp
     title: Max monoid
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/AlgebraicStructure/Monoid/maybe.cpp
     title: Maybe monoid
   - icon: ':question:'
@@ -28,7 +28,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/1030
@@ -230,7 +230,7 @@ data:
   path: test/yukicoder/1030/main.test.cpp
   requiredBy: []
   timestamp: '2020-10-15 01:51:15+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yukicoder/1030/main.test.cpp
 layout: document

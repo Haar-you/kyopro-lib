@@ -11,7 +11,7 @@ data:
       title: Sum group
   - name: Mylib/AlgebraicStructure/Monoid
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/Monoid/affine.cpp
       title: Affine monoid
     - icon: ':warning:'
@@ -50,7 +50,7 @@ data:
     - icon: ':x:'
       path: Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp
       title: Max partial sum monoid
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/Monoid/maybe.cpp
       title: Maybe monoid
     - icon: ':question:'
@@ -112,7 +112,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/MonoidAction/add_min_with_count.cpp
       title: Range add / Range min with count
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/AlgebraicStructure/MonoidAction/add_square_sum.cpp
       title: Range add / Range square sum
     - icon: ':heavy_check_mark:'
@@ -173,7 +173,7 @@ data:
       title: 1D Imos algorithm (Linear addition)
   - name: Mylib/Algorithm/Mo
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Algorithm/Mo/mo_algorithm.cpp
       title: Mo's algorithm
   - name: Mylib/Algorithm/Search
@@ -276,13 +276,13 @@ data:
     - icon: ':warning:'
       path: Mylib/Combinatorics/semifactorial.cpp
       title: Semifactorial
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Combinatorics/stirling_number_first_fft.cpp
       title: Stirling numbers of the first kind (FFT)
     - icon: ':heavy_check_mark:'
       path: Mylib/Combinatorics/stirling_number_second.cpp
       title: Stirling numbers of the second kind
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Combinatorics/stirling_number_second_fft.cpp
       title: Stirling numbers of the second kind (FFT)
     - icon: ':heavy_check_mark:'
@@ -308,13 +308,13 @@ data:
     - icon: ':warning:'
       path: Mylib/Convolution/fast_fourier_transform.cpp
       title: Fast Fourier transform
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/fast_mobius_transform_subset.cpp
       title: "Fast M\xF6bius transform (Subsets)"
     - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/fast_mobius_transform_superset.cpp
       title: "Fast M\xF6bius transform (Supersets)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/fast_zeta_transform_subset.cpp
       title: Fast Zeta transform (Subsets)
     - icon: ':heavy_check_mark:'
@@ -323,7 +323,7 @@ data:
     - icon: ':question:'
       path: Mylib/Convolution/ntt_convolution.cpp
       title: Number theoretic transform
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/subset_convolution.cpp
       title: Subset convolution
   - name: Mylib/DataStructure/Array
@@ -364,7 +364,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/FenwickTree/fenwick_tree_2d.cpp
       title: Fenwick tree (2D)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
       title: Fenwick tree (Add)
     - icon: ':heavy_check_mark:'
@@ -437,7 +437,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/SegmentTree/segment_tree_beats.cpp
       title: Segment tree beats
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/SegmentTree/segment_tree_both_foldable.cpp
       title: Segment tree (Both foldable)
     - icon: ':heavy_check_mark:'
@@ -492,7 +492,7 @@ data:
     - icon: ':warning:'
       path: Mylib/DataStructure/UnionFind/rollbackable_unionfind.cpp
       title: Rollbackable union-find
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/UnionFind/unionfind.cpp
       title: Union-find
     - icon: ':heavy_check_mark:'
@@ -702,10 +702,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Graph/GraphUtils/decompose_pseudotree.cpp
       title: Decompose pseudotree
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/GraphUtils/strongly_connected_components.cpp
       title: Strongly connected components
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/GraphUtils/two_edge_connected_components.cpp
       title: Two edge connected components
   - name: Mylib/Graph/Matching
@@ -762,7 +762,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp
       title: Warshall-Floyd algorithm (For adjacency matrix graph)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/ShortestPath/yen_algorithm.cpp
       title: Yen's algorithm
   - name: Mylib/Graph/Template
@@ -795,7 +795,7 @@ data:
     - icon: ':x:'
       path: Mylib/Graph/TreeUtils/euler_tour_bfs.cpp
       title: Euler tour (BFS)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/TreeUtils/euler_tour_vertex.cpp
       title: Euler tour (Vertex)
     - icon: ':x:'
@@ -816,7 +816,7 @@ data:
     - icon: ':warning:'
       path: Mylib/Graph/TreeUtils/rooting.cpp
       title: Rooting
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/TreeUtils/tree_diameter.cpp
       title: Tree diameter
     - icon: ':question:'
@@ -845,7 +845,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Graph/travelling_salesman_problem.cpp
       title: Travelling salesman problem
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Graph/two_sat.cpp
       title: 2-SAT
   - name: Mylib/Grid
@@ -875,7 +875,7 @@ data:
     - icon: ':question:'
       path: Mylib/IO/input_tuple.cpp
       title: Input tuple
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/IO/input_tuple_vector.cpp
       title: Input tuple vector
     - icon: ':question:'
@@ -892,7 +892,7 @@ data:
       title: join function
   - name: Mylib/LinearAlgebra/GaussianElimination
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/LinearAlgebra/GaussianElimination/binary_gaussian_elimination.cpp
       title: Gaussian elimination (Mod2)
     - icon: ':heavy_check_mark:'
@@ -906,7 +906,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp
       title: Simultaneous linear equations (Floating point number)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp
       title: Simultaneous linear equations
   - name: Mylib/LinearAlgebra/Square
@@ -928,10 +928,10 @@ data:
     - icon: ':warning:'
       path: Mylib/Math/closed_interval.cpp
       title: Closed interval
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Math/formal_power_series.cpp
       title: Formal power series
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Math/fps_sqrt.cpp
       title: Formal power series (Sqrt)
     - icon: ':heavy_check_mark:'
@@ -940,13 +940,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Math/polynomial.cpp
       title: Polynomial
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Math/polynomial_taylor_shift.cpp
       title: Polynomial taylor shift
     - icon: ':warning:'
       path: Mylib/Math/quadratic_equation.cpp
       title: Real solutions of quadratic equation
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Math/sum_of_floor_of_linear.cpp
       title: Sum of floor of linear
     - icon: ':heavy_check_mark:'
@@ -1017,7 +1017,7 @@ data:
     - icon: ':question:'
       path: Mylib/Number/Mod/mod_pow.cpp
       title: Mod pow
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Number/Mod/mod_sqrt.cpp
       title: Mod sqrt
   - name: Mylib/Number/Prime
@@ -1065,13 +1065,13 @@ data:
       title: Stern-Brocot tree
   - name: Mylib/Number/Totient
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Number/Totient/totient.cpp
       title: Euler's totient function
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Number/Totient/totient_sum.cpp
       title: Sum of totient function
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Number/Totient/totient_table.cpp
       title: Euler's totient function (Table)
   - name: Mylib/Number
@@ -1109,7 +1109,7 @@ data:
     - icon: ':warning:'
       path: Mylib/Number/sign_function.cpp
       title: Sign function
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Number/tetration.cpp
       title: Tetration
   - name: Mylib/Parser
@@ -1158,13 +1158,13 @@ data:
     - icon: ':warning:'
       path: Mylib/String/starts_with.cpp
       title: starts_with
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/String/suffix_array.cpp
       title: Suffix array
     - icon: ':warning:'
       path: Mylib/String/trie.cpp
       title: Trie
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/String/z_algorithm.cpp
       title: Z-algorithm
   - name: Mylib/Typical
@@ -1181,6 +1181,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Typical/inversion_number.cpp
       title: Inversion number
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Typical/knapsack_branch_and_bound.cpp
+      title: 0-1 Knapsack problem (Branch and bound)
     - icon: ':heavy_check_mark:'
       path: Mylib/Typical/knapsack_limited.cpp
       title: Knapsack problem (With quantity limitations)
@@ -1205,7 +1208,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Typical/max_rectangle_in_histogram.cpp
       title: Largest rectangle in histogram
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Typical/range_inversions_query.cpp
       title: Range inversions query
     - icon: ':warning:'
@@ -1220,7 +1223,7 @@ data:
     - icon: ':warning:'
       path: Mylib/Typical/subset_sum_count.cpp
       title: Subset sum problem (Count)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Mylib/Typical/subset_sum_count_fps.cpp
       title: Subset sum problem (Count, FPS)
     - icon: ':heavy_check_mark:'
@@ -1665,6 +1668,9 @@ data:
       title: test/aoj/DPL_1_G/main.test.cpp
   - name: test/aoj/DPL_1_H
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/DPL_1_H/main.test.bb.cpp
+      title: test/aoj/DPL_1_H/main.test.bb.cpp
     - icon: ':heavy_check_mark:'
       path: test/aoj/DPL_1_H/main.test.cpp
       title: test/aoj/DPL_1_H/main.test.cpp
@@ -2149,7 +2155,7 @@ data:
       title: test/yosupo-judge/set_xor_min/main.test.cpp
   - name: test/yosupo-judge/sharp_p_subset_sum
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
       title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
   - name: test/yosupo-judge/sqrt_mod
@@ -2159,12 +2165,12 @@ data:
       title: test/yosupo-judge/sqrt_mod/main.test.cpp
   - name: test/yosupo-judge/sqrt_of_formal_power_series
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
       title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   - name: test/yosupo-judge/static_range_inversions_query
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/static_range_inversions_query/main.test.cpp
       title: test/yosupo-judge/static_range_inversions_query/main.test.cpp
   - name: test/yosupo-judge/static_range_sum
@@ -2179,110 +2185,110 @@ data:
       title: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
   - name: test/yosupo-judge/stirling_number_of_the_first_kind
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
       title: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
   - name: test/yosupo-judge/stirling_number_of_the_second_kind
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
       title: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
   - name: test/yosupo-judge/subset_convolution
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/subset_convolution/main.test.cpp
       title: test/yosupo-judge/subset_convolution/main.test.cpp
   - name: test/yosupo-judge/suffixarray
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/suffixarray/main.test.cpp
       title: test/yosupo-judge/suffixarray/main.test.cpp
   - name: test/yosupo-judge/sum_of_floor_of_linear
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/sum_of_floor_of_linear/main.test.cpp
       title: test/yosupo-judge/sum_of_floor_of_linear/main.test.cpp
   - name: test/yosupo-judge/sum_of_totient_function
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/sum_of_totient_function/main.test.cpp
       title: test/yosupo-judge/sum_of_totient_function/main.test.cpp
   - name: test/yosupo-judge/system_of_linear_equations
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/system_of_linear_equations/main.test.cpp
       title: test/yosupo-judge/system_of_linear_equations/main.test.cpp
   - name: test/yosupo-judge/tetration_mod
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/tetration_mod/main.test.cpp
       title: test/yosupo-judge/tetration_mod/main.test.cpp
   - name: test/yosupo-judge/tree_diameter
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/tree_diameter/main.test.cpp
       title: test/yosupo-judge/tree_diameter/main.test.cpp
   - name: test/yosupo-judge/two_edge_connected_components
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/two_edge_connected_components/main.test.cpp
       title: test/yosupo-judge/two_edge_connected_components/main.test.cpp
   - name: test/yosupo-judge/two_sat
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/two_sat/main.test.cpp
       title: test/yosupo-judge/two_sat/main.test.cpp
   - name: test/yosupo-judge/unionfind
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/unionfind/main.test.cpp
       title: test/yosupo-judge/unionfind/main.test.cpp
   - name: test/yosupo-judge/vertex_add_path_sum
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/vertex_add_path_sum/main.test.cpp
       title: test/yosupo-judge/vertex_add_path_sum/main.test.cpp
   - name: test/yosupo-judge/vertex_add_subtree_sum
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp
       title: test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
       title: test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
   - name: test/yosupo-judge/vertex_set_path_composite
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
       title: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
   - name: test/yosupo-judge/zalgorithm
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/zalgorithm/main.test.cpp
       title: test/yosupo-judge/zalgorithm/main.test.cpp
   - name: test/yukicoder/1030
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yukicoder/1030/main.test.cpp
       title: test/yukicoder/1030/main.test.cpp
   - name: test/yukicoder/1069
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yukicoder/1069/main.test.cpp
       title: test/yukicoder/1069/main.test.cpp
   - name: test/yukicoder/1099
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yukicoder/1099/main.test.cpp
       title: test/yukicoder/1099/main.test.cpp
   - name: test/yukicoder/117
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yukicoder/117/main.test.cpp
       title: test/yukicoder/117/main.test.cpp
   - name: test/yukicoder/184
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yukicoder/184/main.test.cpp
       title: test/yukicoder/184/main.test.cpp
   - name: test/yukicoder/186

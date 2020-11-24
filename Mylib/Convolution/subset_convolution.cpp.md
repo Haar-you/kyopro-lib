@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/fast_mobius_transform_subset.cpp
     title: "Fast M\xF6bius transform (Subsets)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/fast_zeta_transform_subset.cpp
     title: Fast Zeta transform (Subsets)
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/subset_convolution/main.test.cpp
     title: test/yosupo-judge/subset_convolution/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Convolution/subset_convolution.cpp\"\n#include <vector>\n\
@@ -70,7 +70,7 @@ data:
   path: Mylib/Convolution/subset_convolution.cpp
   requiredBy: []
   timestamp: '2020-11-01 13:12:15+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/subset_convolution/main.test.cpp
 documentation_of: Mylib/Convolution/subset_convolution.cpp

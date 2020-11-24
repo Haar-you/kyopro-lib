@@ -12,11 +12,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/number_of_substrings/main.test.cpp
     title: test/yosupo-judge/number_of_substrings/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/suffixarray/main.test.cpp
     title: test/yosupo-judge/suffixarray/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/String/suffix_array.cpp\"\n#include <string>\n#include\
@@ -147,11 +147,11 @@ data:
   requiredBy:
   - Mylib/String/lcp_array.cpp
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/ALDS1_14_D/main.test.cpp
   - test/yosupo-judge/number_of_substrings/main.test.cpp
   - test/yosupo-judge/suffixarray/main.test.cpp
+  - test/aoj/ALDS1_14_D/main.test.cpp
 documentation_of: Mylib/String/suffix_array.cpp
 layout: document
 title: Suffix array

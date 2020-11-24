@@ -80,8 +80,8 @@ data:
   timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp
   - test/yosupo-judge/bipartitematching/main.test.cpp
+  - test/aoj/GRL_7_A/main.hopcroft_karp.test.cpp
 documentation_of: Mylib/Graph/Matching/hopcroft_karp.cpp
 layout: document
 title: Hopcroft-Karp algorithm

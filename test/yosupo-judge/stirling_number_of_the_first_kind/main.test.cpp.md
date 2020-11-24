@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/stirling_number_first_fft.cpp
     title: Stirling numbers of the first kind (FFT)
   - icon: ':question:'
@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Math/polynomial_taylor_shift.cpp
     title: Polynomial taylor shift
   - icon: ':question:'
@@ -25,7 +25,7 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind
@@ -191,7 +191,7 @@ data:
   path: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
   requiredBy: []
   timestamp: '2020-11-04 17:40:49+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
 layout: document

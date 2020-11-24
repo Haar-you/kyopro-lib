@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/system_of_linear_equations/main.test.cpp
     title: test/yosupo-judge/system_of_linear_equations/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp\"\
@@ -74,7 +74,7 @@ data:
   path: Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/system_of_linear_equations/main.test.cpp
 documentation_of: Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp

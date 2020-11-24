@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Math/formal_power_series.cpp
     title: Formal power series
   - icon: ':question:'
