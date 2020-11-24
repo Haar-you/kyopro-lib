@@ -58,11 +58,10 @@ namespace haar_lib {
 
       for(int i = 0; i < n_; ++i){
         if(in_loop_[i]){
+          group_[i] = i;
           for(auto &e : g[i]){
             if(not in_loop_[e.to]){
-              group_[i] = i;
               dfs(e.to, i, g);
-              break;
             }
           }
         }
