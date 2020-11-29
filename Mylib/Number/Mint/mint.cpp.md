@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
   _extendedVerifiedWith:
@@ -102,29 +102,29 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/117/main.test.cpp
     title: test/yukicoder/117/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/194/main.test.cpp
     title: test/yukicoder/194/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/235/main.test.cpp
     title: test/yukicoder/235/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/510/main.test.cpp
     title: test/yukicoder/510/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/658/main.test.cpp
     title: test/yukicoder/658/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/660/main.test.cpp
     title: test/yukicoder/660/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/665/main.test.cpp
     title: test/yukicoder/665/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/931/main.test.cpp
     title: test/yukicoder/931/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Mint/mint.cpp\"\n#include <iostream>\n#include\
@@ -218,7 +218,7 @@ data:
   requiredBy:
   - Mylib/Convolution/ntt_convolution.cpp
   timestamp: '2020-09-30 07:57:28+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/range_affine_range_sum/main.test.cpp
   - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp

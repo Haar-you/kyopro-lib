@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/306/main.ternary.test.cpp
     title: test/yukicoder/306/main.ternary.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Algorithm/Search/ternary_search_downwards.cpp\"\n\
@@ -28,7 +28,7 @@ data:
   path: Mylib/Algorithm/Search/ternary_search_downwards.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/306/main.ternary.test.cpp
 documentation_of: Mylib/Algorithm/Search/ternary_search_downwards.cpp

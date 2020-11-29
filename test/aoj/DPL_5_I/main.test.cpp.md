@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/factorial_table.cpp
     title: Factorial table
   - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/stirling_number_second.cpp
     title: Stirling numbers of the second kind
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

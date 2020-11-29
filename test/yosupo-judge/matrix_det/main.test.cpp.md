@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   - icon: ':heavy_check_mark:'
     path: Mylib/LinearAlgebra/Square/determinant.cpp
     title: Determinant
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/LinearAlgebra/Square/square_matrix.cpp
     title: Square matrix
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/AlgebraicStructure/Monoid/sum.cpp
     title: Sum monoid
   - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp
     title: Link/cut tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples_with_index.cpp
     title: Input tuples with index
   _extendedRequiredBy: []

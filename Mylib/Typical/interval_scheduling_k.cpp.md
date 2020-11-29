@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/580/main.test.cpp
     title: test/yukicoder/580/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Typical/interval_scheduling_k.cpp\"\n#include <vector>\n\
@@ -36,7 +36,7 @@ data:
   path: Mylib/Typical/interval_scheduling_k.cpp
   requiredBy: []
   timestamp: '2020-11-07 03:03:04+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/580/main.test.cpp
 documentation_of: Mylib/Typical/interval_scheduling_k.cpp

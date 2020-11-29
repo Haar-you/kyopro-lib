@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/factorial_table.cpp
     title: Factorial table
   _extendedRequiredBy: []

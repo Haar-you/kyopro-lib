@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
   _extendedRequiredBy: []
@@ -285,47 +285,47 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/117/main.test.cpp
     title: test/yukicoder/117/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/235/main.test.cpp
     title: test/yukicoder/235/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/3030/main.test.cpp
     title: test/yukicoder/3030/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/510/main.test.cpp
     title: test/yukicoder/510/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/631/main.starry_sky.test.cpp
     title: test/yukicoder/631/main.starry_sky.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/631/main.test.cpp
     title: test/yukicoder/631/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/658/main.test.cpp
     title: test/yukicoder/658/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/755/main.test.cpp
     title: test/yukicoder/755/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/776/main.test.cpp
     title: test/yukicoder/776/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/782/main.test.cpp
     title: test/yukicoder/782/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/789/main.test.cpp
     title: test/yukicoder/789/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/875/main.test.cpp
     title: test/yukicoder/875/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/899/main.test.cpp
     title: test/yukicoder/899/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/922/main.test.cpp
     title: test/yukicoder/922/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/IO/input_tuples.cpp\"\n#include <iostream>\n#include\
@@ -368,7 +368,7 @@ data:
   path: Mylib/IO/input_tuples.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/range_affine_range_sum/main.test.cpp
   - test/yosupo-judge/set_xor_min/main.test.cpp

@@ -1,31 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/forest.cpp
     title: Decompose forest
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/lca_doubling.cpp
     title: Lowest common ancestor (Doubling)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/rerooting.cpp
     title: Rerooting DP
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/tree_distance.cpp
     title: Tree distance
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/922
@@ -215,7 +215,7 @@ data:
   path: test/yukicoder/922/main.test.cpp
   requiredBy: []
   timestamp: '2020-10-03 19:28:56+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yukicoder/922/main.test.cpp
 layout: document

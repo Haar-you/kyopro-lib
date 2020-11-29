@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Misc/int128.cpp
     title: 128-bit int
   _extendedRequiredBy:
@@ -12,11 +12,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/factorize/main.test.cpp
     title: test/yosupo-judge/factorize/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/3030/main.test.cpp
     title: test/yukicoder/3030/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Prime/miller_rabin.cpp\"\n#include <cstdint>\n\
@@ -62,7 +62,7 @@ data:
   requiredBy:
   - Mylib/Number/Prime/pollard_rho.cpp
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/factorize/main.test.cpp
   - test/yukicoder/3030/main.test.cpp

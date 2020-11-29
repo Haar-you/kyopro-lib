@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/631/main.test.cpp
     title: test/yukicoder/631/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/MonoidAction/add_max.cpp\"\n\n\
@@ -28,7 +28,7 @@ data:
   path: Mylib/AlgebraicStructure/MonoidAction/add_max.cpp
   requiredBy: []
   timestamp: '2020-10-02 17:13:14+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/631/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/MonoidAction/add_max.cpp

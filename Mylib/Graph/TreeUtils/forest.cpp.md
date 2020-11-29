@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/922/main.test.cpp
     title: test/yukicoder/922/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/TreeUtils/forest.cpp\"\n#include <vector>\n\
@@ -88,7 +88,7 @@ data:
   path: Mylib/Graph/TreeUtils/forest.cpp
   requiredBy: []
   timestamp: '2020-10-03 19:28:56+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/922/main.test.cpp
 documentation_of: Mylib/Graph/TreeUtils/forest.cpp

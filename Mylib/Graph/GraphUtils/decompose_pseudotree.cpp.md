@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
   _extendedRequiredBy: []
@@ -49,11 +49,11 @@ data:
     \n        for(auto &e : g[cur]){\n          if(not visited[e.to]){\n         \
     \   --indeg[e.to];\n            if(indeg[e.to] == 1){\n              q.push(e.to);\n\
     \            }\n          }\n        }\n      }\n\n      for(int i = 0; i < n_;\
-    \ ++i){\n        if(in_loop_[i]){\n          for(auto &e : g[i]){\n          \
-    \  if(not in_loop_[e.to]){\n              group_[i] = i;\n              dfs(e.to,\
-    \ i, g);\n              break;\n            }\n          }\n        }\n      }\n\
-    \    }\n\n    bool in_loop(int i) const {return in_loop_[i];}\n    int group(int\
-    \ i) const {return group_[i];}\n  };\n}\n"
+    \ ++i){\n        if(in_loop_[i]){\n          group_[i] = i;\n          for(auto\
+    \ &e : g[i]){\n            if(not in_loop_[e.to]){\n              dfs(e.to, i,\
+    \ g);\n            }\n          }\n        }\n      }\n    }\n\n    bool in_loop(int\
+    \ i) const {return in_loop_[i];}\n    int group(int i) const {return group_[i];}\n\
+    \  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <queue>\n#include \"Mylib/Graph/Template/graph.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  class pseudo_tree {\n   \
     \ int n_;\n    std::vector<bool> in_loop_;\n    std::vector<int> group_;\n\n \
@@ -70,17 +70,17 @@ data:
     \n        for(auto &e : g[cur]){\n          if(not visited[e.to]){\n         \
     \   --indeg[e.to];\n            if(indeg[e.to] == 1){\n              q.push(e.to);\n\
     \            }\n          }\n        }\n      }\n\n      for(int i = 0; i < n_;\
-    \ ++i){\n        if(in_loop_[i]){\n          for(auto &e : g[i]){\n          \
-    \  if(not in_loop_[e.to]){\n              group_[i] = i;\n              dfs(e.to,\
-    \ i, g);\n              break;\n            }\n          }\n        }\n      }\n\
-    \    }\n\n    bool in_loop(int i) const {return in_loop_[i];}\n    int group(int\
-    \ i) const {return group_[i];}\n  };\n}\n"
+    \ ++i){\n        if(in_loop_[i]){\n          group_[i] = i;\n          for(auto\
+    \ &e : g[i]){\n            if(not in_loop_[e.to]){\n              dfs(e.to, i,\
+    \ g);\n            }\n          }\n        }\n      }\n    }\n\n    bool in_loop(int\
+    \ i) const {return in_loop_[i];}\n    int group(int i) const {return group_[i];}\n\
+    \  };\n}\n"
   dependsOn:
   - Mylib/Graph/Template/graph.cpp
   isVerificationFile: false
   path: Mylib/Graph/GraphUtils/decompose_pseudotree.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2020-11-25 02:11:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/2891/main.test.cpp

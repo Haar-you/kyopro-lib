@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/lca_doubling.cpp
     title: Lowest common ancestor (Doubling)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples_with_index.cpp
     title: Input tuples with index
   _extendedRequiredBy: []

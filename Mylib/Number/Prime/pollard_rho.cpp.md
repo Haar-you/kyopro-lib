@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Misc/int128.cpp
     title: 128-bit int
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Prime/miller_rabin.cpp
     title: Primality test (Miller-Rabin algorithm)
   _extendedRequiredBy: []

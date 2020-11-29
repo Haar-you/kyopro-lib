@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/GraphUtils/decompose_pseudotree.cpp
     title: Decompose pseudotree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
   _extendedRequiredBy: []
@@ -78,17 +78,16 @@ data:
     \n        for(auto &e : g[cur]){\n          if(not visited[e.to]){\n         \
     \   --indeg[e.to];\n            if(indeg[e.to] == 1){\n              q.push(e.to);\n\
     \            }\n          }\n        }\n      }\n\n      for(int i = 0; i < n_;\
-    \ ++i){\n        if(in_loop_[i]){\n          for(auto &e : g[i]){\n          \
-    \  if(not in_loop_[e.to]){\n              group_[i] = i;\n              dfs(e.to,\
-    \ i, g);\n              break;\n            }\n          }\n        }\n      }\n\
-    \    }\n\n    bool in_loop(int i) const {return in_loop_[i];}\n    int group(int\
-    \ i) const {return group_[i];}\n  };\n}\n#line 7 \"test/aoj/2891/main.test.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nint main(){\n  int N; std::cin >> N;\n\n  hl::graph<int>\
-    \ g(N);\n  g.read<1, false, false>(N);\n\n  auto res = hl::pseudo_tree<int>(g);\n\
-    \n  int Q; std::cin >> Q;\n  for(auto [a, b] : hl::input_tuples<int, int>(Q)){\n\
-    \    --a, --b;\n\n    if(res.in_loop(a) and res.in_loop(b)){\n      std::cout\
-    \ << 2 << \"\\n\";\n    }else{\n      std::cout << 1 << \"\\n\";\n    }\n  }\n\
-    \n  return 0;\n}\n"
+    \ ++i){\n        if(in_loop_[i]){\n          group_[i] = i;\n          for(auto\
+    \ &e : g[i]){\n            if(not in_loop_[e.to]){\n              dfs(e.to, i,\
+    \ g);\n            }\n          }\n        }\n      }\n    }\n\n    bool in_loop(int\
+    \ i) const {return in_loop_[i];}\n    int group(int i) const {return group_[i];}\n\
+    \  };\n}\n#line 7 \"test/aoj/2891/main.test.cpp\"\n\nnamespace hl = haar_lib;\n\
+    \nint main(){\n  int N; std::cin >> N;\n\n  hl::graph<int> g(N);\n  g.read<1,\
+    \ false, false>(N);\n\n  auto res = hl::pseudo_tree<int>(g);\n\n  int Q; std::cin\
+    \ >> Q;\n  for(auto [a, b] : hl::input_tuples<int, int>(Q)){\n    --a, --b;\n\n\
+    \    if(res.in_loop(a) and res.in_loop(b)){\n      std::cout << 2 << \"\\n\";\n\
+    \    }else{\n      std::cout << 1 << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2891\"\
     \n\n#include <iostream>\n#include \"Mylib/IO/input_tuples.cpp\"\n#include \"Mylib/Graph/Template/graph.cpp\"\
     \n#include \"Mylib/Graph/GraphUtils/decompose_pseudotree.cpp\"\n\nnamespace hl\
@@ -106,7 +105,7 @@ data:
   isVerificationFile: true
   path: test/aoj/2891/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2020-11-25 02:11:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/2891/main.test.cpp

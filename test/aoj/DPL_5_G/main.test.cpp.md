@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/bell_number.cpp
     title: Bell number
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/factorial_table.cpp
     title: Factorial table
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

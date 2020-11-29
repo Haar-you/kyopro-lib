@@ -57,17 +57,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/1099/main.test.cpp
     title: test/yukicoder/1099/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/631/main.test.cpp
     title: test/yukicoder/631/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/789/main.test.cpp
     title: test/yukicoder/789/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/899/main.test.cpp
     title: test/yukicoder/899/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/sum.cpp\"\n\nnamespace haar_lib\
@@ -83,7 +83,7 @@ data:
   path: Mylib/AlgebraicStructure/Monoid/sum.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/range_affine_range_sum/main.test.cpp
   - test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp

@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/776/main.test.cpp
     title: test/yukicoder/776/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp\"\n\
@@ -56,7 +56,7 @@ data:
   path: Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp
   requiredBy: []
   timestamp: '2020-09-18 01:14:06+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/776/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp

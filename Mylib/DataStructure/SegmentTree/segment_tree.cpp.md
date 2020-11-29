@@ -48,17 +48,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/1030/main.test.cpp
     title: test/yukicoder/1030/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/510/main.test.cpp
     title: test/yukicoder/510/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/776/main.test.cpp
     title: test/yukicoder/776/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/875/main.test.cpp
     title: test/yukicoder/875/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/DataStructure/SegmentTree/segment_tree.cpp\"\n#include\
@@ -153,7 +153,7 @@ data:
   - Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp
   - Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp
   timestamp: '2020-10-15 01:51:15+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
   - test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp

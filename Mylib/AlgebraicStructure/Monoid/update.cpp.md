@@ -15,11 +15,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_2_I/main.test.cpp
     title: test/aoj/DSL_2_I/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/899/main.test.cpp
     title: test/yukicoder/899/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/update.cpp\"\n#include <optional>\n\
@@ -36,7 +36,7 @@ data:
   path: Mylib/AlgebraicStructure/Monoid/update.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/899/main.test.cpp
   - test/aoj/DSL_2_I/main.test.cpp

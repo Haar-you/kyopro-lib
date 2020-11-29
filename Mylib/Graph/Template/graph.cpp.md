@@ -86,25 +86,25 @@ data:
   - icon: ':warning:'
     path: Mylib/Graph/TreeUtils/centroid_decomposition.cpp
     title: Centroid decomposition
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/euler_tour_bfs.cpp
     title: Euler tour (BFS)
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/euler_tour_vertex.cpp
     title: Euler tour (Vertex)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/forest.cpp
     title: Decompose forest
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp
     title: Heavy-light decomposition
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/lca_doubling.cpp
     title: Lowest common ancestor (Doubling)
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/lca_hld.cpp
     title: Lowest common ancestor (HLD)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/rerooting.cpp
     title: Rerooting DP
   - icon: ':warning:'
@@ -113,7 +113,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/tree_diameter.cpp
     title: Tree diameter
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/tree_distance.cpp
     title: Tree distance
   - icon: ':heavy_check_mark:'
@@ -258,17 +258,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/1069/main.test.cpp
     title: test/yukicoder/1069/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/235/main.test.cpp
     title: test/yukicoder/235/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/899/main.test.cpp
     title: test/yukicoder/899/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/922/main.test.cpp
     title: test/yukicoder/922/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/Template/graph.cpp\"\n#include <vector>\n#include\
@@ -360,7 +360,7 @@ data:
   - Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp
   - Mylib/Graph/Template/range_edge_graph.cpp
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/two_edge_connected_components/main.test.cpp
   - test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp

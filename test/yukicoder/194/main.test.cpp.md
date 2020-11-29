@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/LinearAlgebra/Square/inverse_matrix.cpp
     title: Inverse matrix
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/LinearAlgebra/Square/square_matrix.cpp
     title: Square matrix
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/194
@@ -189,7 +189,7 @@ data:
   path: test/yukicoder/194/main.test.cpp
   requiredBy: []
   timestamp: '2020-09-30 07:57:28+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yukicoder/194/main.test.cpp
 layout: document

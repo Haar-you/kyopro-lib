@@ -207,35 +207,35 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/184/main.test.cpp
     title: test/yukicoder/184/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/194/main.test.cpp
     title: test/yukicoder/194/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/235/main.test.cpp
     title: test/yukicoder/235/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/430/main.aho_corasick.test.cpp
     title: test/yukicoder/430/main.aho_corasick.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/631/main.starry_sky.test.cpp
     title: test/yukicoder/631/main.starry_sky.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/631/main.test.cpp
     title: test/yukicoder/631/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/755/main.test.cpp
     title: test/yukicoder/755/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/776/main.test.cpp
     title: test/yukicoder/776/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/899/main.test.cpp
     title: test/yukicoder/899/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/919/main.test.cpp
     title: test/yukicoder/919/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/IO/input_vector.cpp\"\n#include <iostream>\n#include\
@@ -256,7 +256,7 @@ data:
   path: Mylib/IO/input_vector.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/range_affine_range_sum/main.test.cpp
   - test/yosupo-judge/range_kth_smallest/main.test.cpp

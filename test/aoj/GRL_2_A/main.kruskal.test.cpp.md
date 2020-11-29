@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/MinimumSpanningTree/kruskal.cpp
     title: Kruskal algorithm
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
   _extendedRequiredBy: []

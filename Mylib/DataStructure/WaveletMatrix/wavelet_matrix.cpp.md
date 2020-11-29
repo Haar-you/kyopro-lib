@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp
     title: Succinct dictionary
   _extendedRequiredBy: []
@@ -18,11 +18,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/range_kth_smallest/main.test.cpp
     title: test/yosupo-judge/range_kth_smallest/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/919/main.test.cpp
     title: test/yukicoder/919/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp\"\n\
@@ -242,7 +242,7 @@ data:
   path: Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp
   requiredBy: []
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/range_kth_smallest/main.test.cpp
   - test/yukicoder/919/main.test.cpp

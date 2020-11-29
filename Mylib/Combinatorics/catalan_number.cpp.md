@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/factorial_table.cpp
     title: Factorial table
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/660/main.test.cpp
     title: test/yukicoder/660/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Combinatorics/catalan_number.cpp\"\n#include <cstdint>\n\
@@ -43,7 +43,7 @@ data:
   path: Mylib/Combinatorics/catalan_number.cpp
   requiredBy: []
   timestamp: '2020-10-10 12:47:45+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/660/main.test.cpp
 documentation_of: Mylib/Combinatorics/catalan_number.cpp

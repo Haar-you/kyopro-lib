@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/GraphUtils/two_edge_connected_components.cpp
     title: Two edge connected components
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/join.cpp
     title: join function
   _extendedRequiredBy: []

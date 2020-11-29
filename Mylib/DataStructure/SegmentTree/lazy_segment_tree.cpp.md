@@ -27,14 +27,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/1099/main.test.cpp
     title: test/yukicoder/1099/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/631/main.test.cpp
     title: test/yukicoder/631/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/899/main.test.cpp
     title: test/yukicoder/899/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp\"\n\
@@ -136,7 +136,7 @@ data:
   path: Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp
   requiredBy: []
   timestamp: '2020-10-15 01:51:15+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/range_affine_range_sum/main.test.cpp
   - test/yukicoder/899/main.test.cpp

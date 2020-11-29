@@ -9,11 +9,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/matrix_det/main.test.cpp
     title: test/yosupo-judge/matrix_det/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/194/main.test.cpp
     title: test/yukicoder/194/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/LinearAlgebra/Square/square_matrix.cpp\"\n#include\
@@ -138,7 +138,7 @@ data:
   path: Mylib/LinearAlgebra/Square/square_matrix.cpp
   requiredBy: []
   timestamp: '2020-09-29 07:58:04+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/matrix_det/main.test.cpp
   - test/yukicoder/194/main.test.cpp

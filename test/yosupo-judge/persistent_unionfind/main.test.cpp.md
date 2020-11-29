@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/UnionFind/persistent_unionfind.cpp
     title: Persistent union-find
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples_with_index.cpp
     title: Input tuples with index
   _extendedRequiredBy: []

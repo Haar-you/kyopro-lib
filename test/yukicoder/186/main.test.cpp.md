@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/chinese_remainder_algorithm.cpp
     title: Chinese remainder theorem
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/extended_gcd.cpp
     title: Extended Euclidean algorithm
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/447
@@ -54,7 +54,7 @@ data:
   path: test/yukicoder/186/main.test.cpp
   requiredBy: []
   timestamp: '2020-10-10 11:12:55+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yukicoder/186/main.test.cpp
 layout: document

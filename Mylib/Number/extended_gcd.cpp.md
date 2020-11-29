@@ -2,18 +2,18 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/chinese_remainder_algorithm.cpp
     title: Chinese remainder theorem
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/NTL_1_E/main.test.cpp
     title: test/aoj/NTL_1_E/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/186/main.test.cpp
     title: test/yukicoder/186/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/extended_gcd.cpp\"\n#include <tuple>\n\nnamespace\
@@ -31,7 +31,7 @@ data:
   requiredBy:
   - Mylib/Number/chinese_remainder_algorithm.cpp
   timestamp: '2020-09-25 03:22:21+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/186/main.test.cpp
   - test/aoj/NTL_1_E/main.test.cpp

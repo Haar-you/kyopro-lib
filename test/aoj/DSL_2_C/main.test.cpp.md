@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/RangeTree/range_tree.cpp
     title: Range tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples_with_index.cpp
     title: Input tuples with index
   _extendedRequiredBy: []
