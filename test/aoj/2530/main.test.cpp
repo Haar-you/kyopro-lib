@@ -4,7 +4,7 @@
 #include <vector>
 #include <bitset>
 #include "Mylib/Number/Mod/mod_pow.cpp"
-#include "Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp"
+#include "Mylib/LinearAlgebra/SimultaneousLinearEquations/binary.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 namespace hl = haar_lib;

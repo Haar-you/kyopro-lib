@@ -6,7 +6,7 @@
 #include <vector>
 #include "Mylib/Parser/parser.cpp"
 #include "Mylib/Number/Rational/rational.cpp"
-#include "Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp"
+#include "Mylib/LinearAlgebra/GaussianElimination/generic.cpp"
 #include "Mylib/String/split.cpp"
 #include "Mylib/IO/join.cpp"
 

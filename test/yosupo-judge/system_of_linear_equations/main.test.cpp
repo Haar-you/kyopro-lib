@@ -2,7 +2,7 @@
 
 #include <vector>
 #include "Mylib/Number/Mint/mint.cpp"
-#include "Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp"
+#include "Mylib/LinearAlgebra/SimultaneousLinearEquations/generic.cpp"
 #include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_vector.cpp"
 

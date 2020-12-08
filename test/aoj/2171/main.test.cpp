@@ -5,7 +5,7 @@
 #include <vector>
 #include <iomanip>
 #include "Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp"
-#include "Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp"
+#include "Mylib/LinearAlgebra/SimultaneousLinearEquations/float.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 namespace hl = haar_lib;
