@@ -1,6 +1,6 @@
 ---
 title: Gaussian elimination
-documentation_of: ./generic.cpp
+documentation_of: ./gaussian_elimination.cpp
 ---
 
 ## Operations

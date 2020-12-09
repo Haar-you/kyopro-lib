@@ -1,6 +1,6 @@
 ---
 title: Simultaneous linear equations
-documentation_of: ./generic.cpp
+documentation_of: ./simultaneous_linear_equations.cpp
 ---
 
 ## Operations

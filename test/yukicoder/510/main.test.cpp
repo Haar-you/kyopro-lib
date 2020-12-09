@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/Number/Mint/mint.cpp"
-#include "Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp"
+#include "Mylib/LinearAlgebra/square_matrix_const_size.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/product_matrix.cpp"
 #include "Mylib/AlgebraicStructure/Monoid/dual.cpp"

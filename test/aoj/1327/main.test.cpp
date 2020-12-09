@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/Number/Mint/runtime_mint.cpp"
-#include "Mylib/LinearAlgebra/Square/square_matrix.cpp"
+#include "Mylib/LinearAlgebra/square_matrix.cpp"
 #include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_vector.cpp"
 

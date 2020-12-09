@@ -1,6 +1,6 @@
 ---
 title: Simultaneous linear equations (Mod2)
-documentation_of: ./binary.cpp
+documentation_of: ./simultaneous_linear_equations_binary.cpp
 ---
 
 ## Operations

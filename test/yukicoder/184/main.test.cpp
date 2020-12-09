@@ -4,7 +4,7 @@
 #include <bitset>
 #include <vector>
 #include "Mylib/IO/input_vector.cpp"
-#include "Mylib/LinearAlgebra/GaussianElimination/binary.cpp"
+#include "Mylib/LinearAlgebra/gaussian_elimination_binary.cpp"
 
 namespace hl = haar_lib;
 

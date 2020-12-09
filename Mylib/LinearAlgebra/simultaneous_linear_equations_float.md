@@ -1,6 +1,6 @@
 ---
 title: Simultaneous linear equations (Floating point number)
-documentation_of: ./float.cpp
+documentation_of: ./simultaneous_linear_equations_float.cpp
 ---
 
 ## Operations

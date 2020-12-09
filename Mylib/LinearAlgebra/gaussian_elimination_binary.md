@@ -1,6 +1,6 @@
 ---
 title: Gaussian elimination (Mod2)
-documentation_of: ./binary.cpp
+documentation_of: ./gaussian_elimination_binary.cpp
 ---
 
 ## Operations

@@ -5,8 +5,8 @@
 #include <algorithm>
 #include <numeric>
 #include "Mylib/Number/Mint/mint.cpp"
-#include "Mylib/LinearAlgebra/Square/square_matrix.cpp"
-#include "Mylib/LinearAlgebra/Square/inverse_matrix.cpp"
+#include "Mylib/LinearAlgebra/square_matrix.cpp"
+#include "Mylib/LinearAlgebra/inverse_matrix.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 namespace hl = haar_lib;

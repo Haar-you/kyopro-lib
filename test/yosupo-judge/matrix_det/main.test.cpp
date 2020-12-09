@@ -2,8 +2,8 @@
 
 #include <iostream>
 #include "Mylib/Number/Mint/mint.cpp"
-#include "Mylib/LinearAlgebra/Square/square_matrix.cpp"
-#include "Mylib/LinearAlgebra/Square/determinant.cpp"
+#include "Mylib/LinearAlgebra/square_matrix.cpp"
+#include "Mylib/LinearAlgebra/determinant.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 namespace hl = haar_lib;
