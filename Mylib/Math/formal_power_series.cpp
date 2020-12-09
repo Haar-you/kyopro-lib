@@ -36,6 +36,8 @@ namespace haar_lib {
     auto begin() {return data_.begin();}
     auto end() {return data_.end();}
 
+    const auto& data() const {return data_;}
+
     void resize(int n){
       data_.resize(n);
     }
