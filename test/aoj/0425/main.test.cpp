@@ -7,7 +7,7 @@
 #include <utility>
 #include "Mylib/IO/input_tuple_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
-#include "Mylib/Algorithm/Mo/mo_algorithm.cpp"
+#include "Mylib/Algorithm/mo_algorithm.cpp"
 
 namespace hl = haar_lib;
 

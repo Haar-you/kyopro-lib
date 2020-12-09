@@ -5,7 +5,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <cmath>
-#include "Mylib/Algorithm/Search/ternary_search_upwards.cpp"
+#include "Mylib/Algorithm/ternary_search_upwards.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 
 namespace hl = haar_lib;

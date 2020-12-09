@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp"
+#include "Mylib/Algorithm/sliding_minimum.cpp"
 #include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_vector.cpp"
 

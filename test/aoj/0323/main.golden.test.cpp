@@ -5,7 +5,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <cmath>
-#include "Mylib/Algorithm/Search/golden_section_search_upwards.cpp"
+#include "Mylib/Algorithm/golden_section_search_upwards.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 
 namespace hl = haar_lib;

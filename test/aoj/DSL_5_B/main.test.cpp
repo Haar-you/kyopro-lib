@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <algorithm>
-#include "Mylib/Algorithm/Imos/imos_2d.cpp"
+#include "Mylib/Algorithm/imos_2d.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 
 namespace hl = haar_lib;

@@ -3,7 +3,7 @@
 #include <utility>
 #include <algorithm>
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp"
-#include "Mylib/Algorithm/Mo/mo_algorithm.cpp"
+#include "Mylib/Algorithm/mo_algorithm.cpp"
 
 namespace haar_lib {
   template <typename T>

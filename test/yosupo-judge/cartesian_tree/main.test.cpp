@@ -5,7 +5,7 @@
 #include <functional>
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/join.cpp"
-#include "Mylib/Algorithm/CartesianTree/cartesian_tree.cpp"
+#include "Mylib/Algorithm/cartesian_tree.cpp"
 
 namespace hl = haar_lib;
 

@@ -4,12 +4,12 @@
 #include <vector>
 #include <utility>
 #include <algorithm>
+#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/ShortestPath/dijkstra.cpp"
 #include "Mylib/DataStructure/UnionFind/unionfind.cpp"
-#include "Mylib/Algorithm/Search/parallel_binary_search.cpp"
+#include "Mylib/Algorithm/parallel_binary_search.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 #include "Mylib/IO/input_vector.cpp"
-#include "Mylib/Graph/Template/graph.cpp"
 
 namespace hl = haar_lib;
 

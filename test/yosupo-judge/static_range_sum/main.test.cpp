@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/static_range_sum"
 
 #include <iostream>
-#include "Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp"
+#include "Mylib/Algorithm/cumulative_sum_1d.cpp"
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 

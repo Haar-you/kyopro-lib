@@ -7,7 +7,7 @@
 #include <climits>
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
-#include "Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp"
+#include "Mylib/Algorithm/sqrt_decomposition.cpp"
 
 namespace hl = haar_lib;
 

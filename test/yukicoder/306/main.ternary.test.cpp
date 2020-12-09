@@ -4,7 +4,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
-#include "Mylib/Algorithm/Search/ternary_search_downwards.cpp"
+#include "Mylib/Algorithm/ternary_search_downwards.cpp"
 
 namespace hl = haar_lib;
 

@@ -1,7 +1,7 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3165"
 
 #include <iostream>
-#include "Mylib/Algorithm/Imos/linear_imos_1d.cpp"
+#include "Mylib/Algorithm/linear_imos_1d.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/IO/join.cpp"
 

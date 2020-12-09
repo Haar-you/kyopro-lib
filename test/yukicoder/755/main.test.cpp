@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp"
+#include "Mylib/Algorithm/cumulative_sum_2d.cpp"
 #include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
 

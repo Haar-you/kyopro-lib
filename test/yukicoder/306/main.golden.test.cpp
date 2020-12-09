@@ -4,7 +4,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
-#include "Mylib/Algorithm/Search/golden_section_search_downwards.cpp"
+#include "Mylib/Algorithm/golden_section_search_downwards.cpp"
 
 namespace hl = haar_lib;
 
