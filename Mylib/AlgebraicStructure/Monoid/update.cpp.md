@@ -39,10 +39,10 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/899/main.test.cpp
-  - test/aoj/DSL_2_I/main.test.cpp
   - test/aoj/DSL_2_D/main.test.cpp
   - test/aoj/DSL_2_F/main.test.cpp
   - test/aoj/DSL_2_F/main.dynamic.test.cpp
+  - test/aoj/DSL_2_I/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Monoid/update.cpp
 layout: document
 title: Update monoid

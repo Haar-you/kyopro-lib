@@ -4,16 +4,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/AlgebraicStructure/Monoid/max_partial_sum.cpp
     title: Max partial sum monoid
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/DataStructure/SegmentTree/segment_tree.cpp
     title: Segment tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   _extendedRequiredBy: []

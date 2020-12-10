@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Mylib/Algorithm/Search/parallel_binary_search.cpp
+    path: Mylib/Algorithm/parallel_binary_search.cpp
     title: Parallel binary search
   - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/UnionFind/unionfind.cpp
@@ -16,7 +16,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   _extendedRequiredBy: []
@@ -30,8 +30,6 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0575
   bundledCode: "#line 1 \"test/aoj/0575/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0575\"\
     \n\n#include <iostream>\n#include <vector>\n#include <utility>\n#include <algorithm>\n\
-    #line 3 \"Mylib/Graph/ShortestPath/dijkstra.cpp\"\n#include <optional>\n#include\
-    \ <queue>\n#line 6 \"Mylib/Graph/ShortestPath/dijkstra.cpp\"\n#include <functional>\n\
     #line 4 \"Mylib/Graph/Template/graph.cpp\"\n\nnamespace haar_lib {\n  template\
     \ <typename T>\n  struct edge {\n    int from, to;\n    T cost;\n    int index\
     \ = -1;\n    edge(){}\n    edge(int from, int to, T cost): from(from), to(to),\
@@ -50,8 +48,10 @@ data:
     \ u, v; std::cin >> u >> v;\n        u -= I;\n        v -= I;\n        T w = 1;\n\
     \        if(WEIGHTED) std::cin >> w;\n        if(DIRECTED) add_edge(u, v, w, i);\n\
     \        else add_undirected(u, v, w, i);\n      }\n    }\n  };\n\n  template\
-    \ <typename T>\n  using tree = graph<T>;\n}\n#line 8 \"Mylib/Graph/ShortestPath/dijkstra.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T>\n  auto dijkstra(const graph<T>\
+    \ <typename T>\n  using tree = graph<T>;\n}\n#line 3 \"Mylib/Graph/ShortestPath/dijkstra.cpp\"\
+    \n#include <optional>\n#include <queue>\n#line 6 \"Mylib/Graph/ShortestPath/dijkstra.cpp\"\
+    \n#include <functional>\n#line 8 \"Mylib/Graph/ShortestPath/dijkstra.cpp\"\n\n\
+    namespace haar_lib {\n  template <typename T>\n  auto dijkstra(const graph<T>\
     \ &graph, std::vector<int> src){\n    using P = std::pair<T, int>;\n\n    const\
     \ int n = graph.size();\n    std::vector<std::optional<T>> dist(n);\n\n    std::vector<bool>\
     \ check(n, false);\n    std::priority_queue<P, std::vector<P>, std::greater<P>>\
@@ -82,7 +82,7 @@ data:
     \ n_; ++i){\n        ret[root_of(i)].push_back(i);\n      }\n\n      ret.erase(\n\
     \        std::remove_if(\n          ret.begin(), ret.end(),\n          [](const\
     \ auto &a){return a.empty();}\n        ),\n        ret.end()\n      );\n\n   \
-    \   return ret;\n    }\n  };\n}\n#line 3 \"Mylib/Algorithm/Search/parallel_binary_search.cpp\"\
+    \   return ret;\n    }\n  };\n}\n#line 3 \"Mylib/Algorithm/parallel_binary_search.cpp\"\
     \n#include <cmath>\n\nnamespace haar_lib {\n  template <typename Init, typename\
     \ Process, typename Checker>\n  auto parallel_binary_search(int M, int Q, Init\
     \ init, Process process, Checker checker){\n    std::vector<int> lb(Q, -1), ub(Q,\
@@ -129,38 +129,38 @@ data:
     \ - x - 1] << \"\\n\";\n  }\n\n  return 0;\n}\n\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0575\"\
     \n\n#include <iostream>\n#include <vector>\n#include <utility>\n#include <algorithm>\n\
-    #include \"Mylib/Graph/ShortestPath/dijkstra.cpp\"\n#include \"Mylib/DataStructure/UnionFind/unionfind.cpp\"\
-    \n#include \"Mylib/Algorithm/Search/parallel_binary_search.cpp\"\n#include \"\
-    Mylib/IO/input_tuple_vector.cpp\"\n#include \"Mylib/IO/input_vector.cpp\"\n#include\
-    \ \"Mylib/Graph/Template/graph.cpp\"\n\nnamespace hl = haar_lib;\n\nint main(){\n\
-    \  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int N, M, K, Q;\
-    \ std::cin >> N >> M >> K >> Q;\n\n  hl::graph<int> g(N);\n  g.read<1, false>(M);\n\
-    \n  auto F = hl::input_vector<int>(K);\n  for(auto &x : F) x -= 1;\n\n  auto [S,\
-    \ T] = hl::input_tuple_vector<int, int>(Q);\n  for(auto &x : S) x -= 1;\n  for(auto\
-    \ &x : T) x -= 1;\n\n  auto dist = hl::dijkstra(g, {F});\n\n  std::vector<int>\
-    \ dist_list;\n  for(auto &x : dist){\n    dist_list.push_back(*x);\n  }\n\n  std::sort(dist_list.begin(),\
-    \ dist_list.end());\n  dist_list.erase(std::unique(dist_list.begin(), dist_list.end()),\
-    \ dist_list.end());\n\n  const int C = dist_list.size();\n\n  std::vector<std::vector<std::pair<int,\
-    \ int>>> edges(C);\n  for(int i = 0; i < N; ++i){\n    for(auto &e : g[i]){\n\
-    \      if(*dist[e.from] <= *dist[e.to]){\n        int x = std::lower_bound(dist_list.begin(),\
-    \ dist_list.end(), *dist[e.from]) - dist_list.begin();\n        edges[x].emplace_back(e.from,\
-    \ e.to);\n      }\n    }\n  }\n\n  hl::unionfind uf;\n\n  auto res =\n    hl::parallel_binary_search(\n\
+    #include \"Mylib/Graph/Template/graph.cpp\"\n#include \"Mylib/Graph/ShortestPath/dijkstra.cpp\"\
+    \n#include \"Mylib/DataStructure/UnionFind/unionfind.cpp\"\n#include \"Mylib/Algorithm/parallel_binary_search.cpp\"\
+    \n#include \"Mylib/IO/input_tuple_vector.cpp\"\n#include \"Mylib/IO/input_vector.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
+    \n  int N, M, K, Q; std::cin >> N >> M >> K >> Q;\n\n  hl::graph<int> g(N);\n\
+    \  g.read<1, false>(M);\n\n  auto F = hl::input_vector<int>(K);\n  for(auto &x\
+    \ : F) x -= 1;\n\n  auto [S, T] = hl::input_tuple_vector<int, int>(Q);\n  for(auto\
+    \ &x : S) x -= 1;\n  for(auto &x : T) x -= 1;\n\n  auto dist = hl::dijkstra(g,\
+    \ {F});\n\n  std::vector<int> dist_list;\n  for(auto &x : dist){\n    dist_list.push_back(*x);\n\
+    \  }\n\n  std::sort(dist_list.begin(), dist_list.end());\n  dist_list.erase(std::unique(dist_list.begin(),\
+    \ dist_list.end()), dist_list.end());\n\n  const int C = dist_list.size();\n\n\
+    \  std::vector<std::vector<std::pair<int, int>>> edges(C);\n  for(int i = 0; i\
+    \ < N; ++i){\n    for(auto &e : g[i]){\n      if(*dist[e.from] <= *dist[e.to]){\n\
+    \        int x = std::lower_bound(dist_list.begin(), dist_list.end(), *dist[e.from])\
+    \ - dist_list.begin();\n        edges[x].emplace_back(e.from, e.to);\n      }\n\
+    \    }\n  }\n\n  hl::unionfind uf;\n\n  auto res =\n    hl::parallel_binary_search(\n\
     \      C,\n      Q,\n      [&](){uf = hl::unionfind(N);},\n      [&](int i){\n\
     \        for(auto [x, y] : edges[C - 1 - i]){\n          uf.merge(x, y);\n   \
     \     }\n      },\n      [&](int i) -> bool {\n        return uf.is_same(S[i],\
     \ T[i]);\n      }\n    );\n\n  for(auto x : res){\n    std::cout << dist_list[C\
     \ - x - 1] << \"\\n\";\n  }\n\n  return 0;\n}\n\n"
   dependsOn:
-  - Mylib/Graph/ShortestPath/dijkstra.cpp
   - Mylib/Graph/Template/graph.cpp
+  - Mylib/Graph/ShortestPath/dijkstra.cpp
   - Mylib/DataStructure/UnionFind/unionfind.cpp
-  - Mylib/Algorithm/Search/parallel_binary_search.cpp
+  - Mylib/Algorithm/parallel_binary_search.cpp
   - Mylib/IO/input_tuple_vector.cpp
   - Mylib/IO/input_vector.cpp
   isVerificationFile: true
   path: test/aoj/0575/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2020-12-09 10:43:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/0575/main.test.cpp

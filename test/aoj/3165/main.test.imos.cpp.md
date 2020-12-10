@@ -2,15 +2,15 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Mylib/Algorithm/Imos/linear_imos_1d.cpp
+    path: Mylib/Algorithm/linear_imos_1d.cpp
     title: 1D Imos algorithm (Linear addition)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
   _extendedRequiredBy: []
@@ -23,9 +23,9 @@ data:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3165
   bundledCode: "#line 1 \"test/aoj/3165/main.test.imos.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3165\"\
-    \n\n#include <iostream>\n#line 2 \"Mylib/Algorithm/Imos/linear_imos_1d.cpp\"\n\
-    #include <vector>\n#include <cassert>\n\nnamespace haar_lib {\n  template <typename\
-    \ T>\n  class linear_imos_1d {\n  public:\n    using value_type = T;\n\n  private:\n\
+    \n\n#include <iostream>\n#line 2 \"Mylib/Algorithm/linear_imos_1d.cpp\"\n#include\
+    \ <vector>\n#include <cassert>\n\nnamespace haar_lib {\n  template <typename T>\n\
+    \  class linear_imos_1d {\n  public:\n    using value_type = T;\n\n  private:\n\
     \    int n_;\n    std::vector<T> vec_a_, vec_a_end_, vec_b_;\n\n  public:\n  \
     \  linear_imos_1d(int n):\n      n_(n), vec_a_(n_ + 1), vec_a_end_(n_ + 1), vec_b_(n_\
     \ + 1){}\n\n    void update(int s, int t, const T &a, const T &b){\n      assert(0\
@@ -68,22 +68,22 @@ data:
     \ l + k, 1, 1);\n  }\n\n  const auto res = imos.build();\n\n  std::cout << hl::join(res.begin(),\
     \ res.end()) << \"\\n\";\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3165\"\
-    \n\n#include <iostream>\n#include \"Mylib/Algorithm/Imos/linear_imos_1d.cpp\"\n\
-    #include \"Mylib/IO/input_tuples.cpp\"\n#include \"Mylib/IO/join.cpp\"\n\nnamespace\
-    \ hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
+    \n\n#include <iostream>\n#include \"Mylib/Algorithm/linear_imos_1d.cpp\"\n#include\
+    \ \"Mylib/IO/input_tuples.cpp\"\n#include \"Mylib/IO/join.cpp\"\n\nnamespace hl\
+    \ = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  int N, Q; std::cin >> N >> Q;\n\n  auto imos = hl::linear_imos_1d<int64_t>(N);\n\
     \n  for(auto [l, k] : hl::input_tuples<int, int>(Q)){\n    --l;\n    imos.update(l,\
     \ l + k, 1, 1);\n  }\n\n  const auto res = imos.build();\n\n  std::cout << hl::join(res.begin(),\
     \ res.end()) << \"\\n\";\n\n  return 0;\n}\n"
   dependsOn:
-  - Mylib/Algorithm/Imos/linear_imos_1d.cpp
+  - Mylib/Algorithm/linear_imos_1d.cpp
   - Mylib/IO/input_tuples.cpp
   - Mylib/IO/input_tuple.cpp
   - Mylib/IO/join.cpp
   isVerificationFile: true
   path: test/aoj/3165/main.test.imos.cpp
   requiredBy: []
-  timestamp: '2020-10-29 12:10:55+09:00'
+  timestamp: '2020-12-09 10:43:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/3165/main.test.imos.cpp

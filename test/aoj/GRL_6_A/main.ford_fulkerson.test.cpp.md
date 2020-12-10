@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Flow/ford_fulkerson.cpp
     title: Ford-Fulkerson algorithm
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
   _extendedRequiredBy: []

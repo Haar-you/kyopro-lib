@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/UnionFind/unionfind.cpp
     title: Union-find
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   - icon: ':heavy_check_mark:'

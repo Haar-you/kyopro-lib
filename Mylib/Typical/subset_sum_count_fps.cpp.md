@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
     title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Typical/subset_sum_count_fps.cpp\"\n#include <vector>\n\
@@ -31,7 +31,7 @@ data:
   path: Mylib/Typical/subset_sum_count_fps.cpp
   requiredBy: []
   timestamp: '2020-11-07 03:03:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
 documentation_of: Mylib/Typical/subset_sum_count_fps.cpp

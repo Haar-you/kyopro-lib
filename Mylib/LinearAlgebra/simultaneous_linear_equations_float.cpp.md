@@ -10,7 +10,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp\"\
+  bundledCode: "#line 2 \"Mylib/LinearAlgebra/simultaneous_linear_equations_float.cpp\"\
     \n#include <vector>\n#include <optional>\n#include <utility>\n\nnamespace haar_lib\
     \ {\n  namespace float_simultaneous_linear_equations_impl {\n    template <typename\
     \ T>\n    struct result {\n      int rank, dim;\n      std::vector<T> solution;\n\
@@ -53,13 +53,13 @@ data:
     \    return ret;\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp
+  path: Mylib/LinearAlgebra/simultaneous_linear_equations_float.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-12-09 11:11:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/2171/main.test.cpp
-documentation_of: Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp
+documentation_of: Mylib/LinearAlgebra/simultaneous_linear_equations_float.cpp
 layout: document
 title: Simultaneous linear equations (Floating point number)
 ---

@@ -2,18 +2,18 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/Typical/range_inversions_query.cpp
     title: Range inversions query
   - icon: ':warning:'
     path: Mylib/Typical/range_set_query.cpp
     title: Range set query
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/static_range_inversions_query/main.test.cpp
     title: test/yosupo-judge/static_range_inversions_query/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp\"\n\
@@ -50,7 +50,7 @@ data:
   - Mylib/Typical/range_inversions_query.cpp
   - Mylib/Typical/range_set_query.cpp
   timestamp: '2020-10-10 11:12:55+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/static_range_inversions_query/main.test.cpp
 documentation_of: Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp

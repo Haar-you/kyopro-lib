@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp
+  - icon: ':x:'
+    path: Mylib/Algorithm/cumulative_sum_1d.cpp
     title: 1D cumulative sum
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_sum
@@ -24,14 +24,14 @@ data:
     - https://judge.yosupo.jp/problem/static_range_sum
   bundledCode: "#line 1 \"test/yosupo-judge/static_range_sum/main.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n\n#include <iostream>\n\
-    #line 2 \"Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp\"\n#include <vector>\n\
-    #include <functional>\n#include <cassert>\n\nnamespace haar_lib {\n  template\
-    \ <typename T>\n  class cumulative_sum_1d {\n  public:\n    using value_type =\
-    \ T;\n\n  private:\n    template <typename> friend class cumulative_sum_1d_builder;\n\
-    \    int N_;\n    std::vector<T> data_;\n\n  public:\n    T fold(int l, int r)\
-    \ const {\n      assert(0 <= l and l <= r and r <= N_);\n      return data_[r]\
-    \ - data_[l];\n    }\n  };\n\n  template <typename T>\n  class cumulative_sum_1d_builder\
-    \ {\n    int N_;\n    std::vector<T> data_;\n\n  public:\n    cumulative_sum_1d_builder(){}\n\
+    #line 2 \"Mylib/Algorithm/cumulative_sum_1d.cpp\"\n#include <vector>\n#include\
+    \ <functional>\n#include <cassert>\n\nnamespace haar_lib {\n  template <typename\
+    \ T>\n  class cumulative_sum_1d {\n  public:\n    using value_type = T;\n\n  private:\n\
+    \    template <typename> friend class cumulative_sum_1d_builder;\n    int N_;\n\
+    \    std::vector<T> data_;\n\n  public:\n    T fold(int l, int r) const {\n  \
+    \    assert(0 <= l and l <= r and r <= N_);\n      return data_[r] - data_[l];\n\
+    \    }\n  };\n\n  template <typename T>\n  class cumulative_sum_1d_builder {\n\
+    \    int N_;\n    std::vector<T> data_;\n\n  public:\n    cumulative_sum_1d_builder(){}\n\
     \    cumulative_sum_1d_builder(int N): N_(N), data_(N + 1){}\n\n    auto& update(const\
     \ std::vector<T> &a){\n      for(int i = 0; i < N_; ++i) data_[i + 1] += a[i];\n\
     \      return *this;\n    }\n\n    auto& update(int i, const T &val){\n      assert(0\
@@ -71,23 +71,23 @@ data:
     \ [l, r] : hl::input_tuples<int, int>(Q)){\n    std::cout << c.fold(l, r) << \"\
     \\n\";\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n\n\
-    #include <iostream>\n#include \"Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp\"\
-    \n#include \"Mylib/IO/input_vector.cpp\"\n#include \"Mylib/IO/input_tuples.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
+    #include <iostream>\n#include \"Mylib/Algorithm/cumulative_sum_1d.cpp\"\n#include\
+    \ \"Mylib/IO/input_vector.cpp\"\n#include \"Mylib/IO/input_tuples.cpp\"\n\nnamespace\
+    \ hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  int N, Q; std::cin >> N >> Q;\n\n  auto a = hl::input_vector<int64_t>(N);\n\
     \n  auto c = hl::cumulative_sum_1d_builder<int64_t>(N).update(a).build();\n\n\
     \  for(auto [l, r] : hl::input_tuples<int, int>(Q)){\n    std::cout << c.fold(l,\
     \ r) << \"\\n\";\n  }\n\n  return 0;\n}\n"
   dependsOn:
-  - Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp
+  - Mylib/Algorithm/cumulative_sum_1d.cpp
   - Mylib/IO/input_vector.cpp
   - Mylib/IO/input_tuples.cpp
   - Mylib/IO/input_tuple.cpp
   isVerificationFile: true
   path: test/yosupo-judge/static_range_sum/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-11 03:06:10+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2020-12-09 10:43:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/static_range_sum/main.test.cpp
 layout: document

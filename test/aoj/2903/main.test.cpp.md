@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/project_selection_problem.cpp
     title: Project selection problem
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   _extendedRequiredBy: []

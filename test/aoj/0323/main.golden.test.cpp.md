@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Mylib/Algorithm/Search/golden_section_search_upwards.cpp
+    path: Mylib/Algorithm/golden_section_search_upwards.cpp
     title: Golden section search (Convex upwards)
   - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple_vector.cpp
@@ -20,9 +20,9 @@ data:
   bundledCode: "#line 1 \"test/aoj/0323/main.golden.test.cpp\"\n#define PROBLEM \"\
     http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0323\"\n#define ERROR\
     \ 0.001\n\n#include <iostream>\n#include <iomanip>\n#include <algorithm>\n#include\
-    \ <cmath>\n#line 2 \"Mylib/Algorithm/Search/golden_section_search_upwards.cpp\"\
-    \n#include <functional>\n#line 4 \"Mylib/Algorithm/Search/golden_section_search_upwards.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T = double, typename Func = std::function<T(T)>>\n\
+    \ <cmath>\n#line 2 \"Mylib/Algorithm/golden_section_search_upwards.cpp\"\n#include\
+    \ <functional>\n#line 4 \"Mylib/Algorithm/golden_section_search_upwards.cpp\"\n\
+    \nnamespace haar_lib {\n  template <typename T = double, typename Func = std::function<T(T)>>\n\
     \  T golden_section_search_upwards(T lb, T ub, const Func &f, int LOOP_COUNT =\
     \ 100){\n    static const T phi = (1.0 + std::sqrt(5)) / 2;\n\n    T t1 = 0, t2\
     \ = 0;\n\n    while(LOOP_COUNT--){\n      t1 = (lb * phi + ub) / (phi + 1.0);\n\
@@ -53,7 +53,7 @@ data:
     \ std::endl;\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0323\"\
     \n#define ERROR 0.001\n\n#include <iostream>\n#include <iomanip>\n#include <algorithm>\n\
-    #include <cmath>\n#include \"Mylib/Algorithm/Search/golden_section_search_upwards.cpp\"\
+    #include <cmath>\n#include \"Mylib/Algorithm/golden_section_search_upwards.cpp\"\
     \n#include \"Mylib/IO/input_tuple_vector.cpp\"\n\nnamespace hl = haar_lib;\n\n\
     int main(){\n  int N; std::cin >> N;\n\n  auto [x, r] = hl::input_tuple_vector<int64_t,\
     \ int64_t>(N);\n\n  std::vector<std::pair<int64_t, int>> p;\n  for(int i = 0;\
@@ -68,12 +68,12 @@ data:
     \ << std::fixed << std::setprecision(12) << f(a) << std::endl;\n\n  return 0;\n\
     }\n"
   dependsOn:
-  - Mylib/Algorithm/Search/golden_section_search_upwards.cpp
+  - Mylib/Algorithm/golden_section_search_upwards.cpp
   - Mylib/IO/input_tuple_vector.cpp
   isVerificationFile: true
   path: test/aoj/0323/main.golden.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-12-09 10:43:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/0323/main.golden.test.cpp

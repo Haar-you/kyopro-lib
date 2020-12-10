@@ -16,16 +16,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Coloring/chromatic_number.cpp
     title: Graph vertex coloring
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
   - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples_with_index.cpp
     title: Input tuples with index
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
   _extendedRequiredBy: []

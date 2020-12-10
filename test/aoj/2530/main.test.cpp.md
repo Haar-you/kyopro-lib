@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   - icon: ':heavy_check_mark:'
-    path: Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp
+    path: Mylib/LinearAlgebra/simultaneous_linear_equations_binary.cpp
     title: Simultaneous linear equations (Mod2)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
   _extendedRequiredBy: []
@@ -24,8 +24,8 @@ data:
     \n#include <cstdint>\n\nnamespace haar_lib {\n  constexpr int64_t mod_pow(int64_t\
     \ n, int64_t p, int64_t m){\n    int64_t ret = 1;\n    while(p > 0){\n      if(p\
     \ & 1) (ret *= n) %= m;\n      (n *= n) %= m;\n      p >>= 1;\n    }\n    return\
-    \ ret;\n  }\n}\n#line 3 \"Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp\"\
-    \n#include <optional>\n#include <utility>\n#line 6 \"Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp\"\
+    \ ret;\n  }\n}\n#line 3 \"Mylib/LinearAlgebra/simultaneous_linear_equations_binary.cpp\"\
+    \n#include <optional>\n#include <utility>\n#line 6 \"Mylib/LinearAlgebra/simultaneous_linear_equations_binary.cpp\"\
     \n\nnamespace haar_lib {\n  namespace binary_simultaneous_linear_equations_impl\
     \ {\n    template <size_t N>\n    struct result {\n      int rank, dim;\n    \
     \  std::vector<bool> solution;\n    };\n  }\n\n  template <size_t N>\n  auto binary_simultaneous_linear_equations(std::vector<std::bitset<N>>\
@@ -61,8 +61,8 @@ data:
     \ mod);\n  }\n\n  std::cout << ans << std::endl;\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2530\"\
     \n\n#include <iostream>\n#include <vector>\n#include <bitset>\n#include \"Mylib/Number/Mod/mod_pow.cpp\"\
-    \n#include \"Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp\"\
-    \n#include \"Mylib/IO/input_vector.cpp\"\n\nnamespace hl = haar_lib;\n\nconstexpr\
+    \n#include \"Mylib/LinearAlgebra/simultaneous_linear_equations_binary.cpp\"\n\
+    #include \"Mylib/IO/input_vector.cpp\"\n\nnamespace hl = haar_lib;\n\nconstexpr\
     \ int64_t mod = 1000000009;\nusing B = std::bitset<2500>;\n\nint main(){\n  int\
     \ R, C; std::cin >> R >> C;\n\n  auto f = hl::input_vector<int>(R, C);\n\n  std::vector<std::vector<int>>\
     \ index(R, std::vector<int>(C));\n  {\n    int c = 0;\n    for(int i = 0; i <\
@@ -77,12 +77,12 @@ data:
     \ mod);\n  }\n\n  std::cout << ans << std::endl;\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Number/Mod/mod_pow.cpp
-  - Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp
+  - Mylib/LinearAlgebra/simultaneous_linear_equations_binary.cpp
   - Mylib/IO/input_vector.cpp
   isVerificationFile: true
   path: test/aoj/2530/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-28 03:22:23+09:00'
+  timestamp: '2020-12-09 11:11:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/2530/main.test.cpp

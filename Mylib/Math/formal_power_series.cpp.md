@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/Math/fps_sqrt.cpp
     title: Formal power series (Sqrt)
   _extendedVerifiedWith:
@@ -27,14 +27,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
     title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Math/formal_power_series.cpp\"\n#include <functional>\n\
@@ -49,10 +49,11 @@ data:
     \n    size_t size() const {\n      return data_.size();\n    }\n\n    const T&\
     \ operator[](int i) const {\n      return data_[i];\n    }\n\n    T& operator[](int\
     \ i){\n      return data_[i];\n    }\n\n    auto begin() {return data_.begin();}\n\
-    \    auto end() {return data_.end();}\n\n    void resize(int n){\n      data_.resize(n);\n\
-    \    }\n\n    auto& operator=(formal_power_series &&rhs) noexcept {\n      if(this\
-    \ != &rhs){\n        data_ = std::move(rhs.data_);\n      }\n      return *this;\n\
-    \    }\n\n    auto& operator+=(const formal_power_series &rhs){\n      if(data_.size()\
+    \    auto end() {return data_.end();}\n\n    const auto& data() const {return\
+    \ data_;}\n\n    void resize(int n){\n      data_.resize(n);\n    }\n\n    auto&\
+    \ operator=(formal_power_series &&rhs) noexcept {\n      if(this != &rhs){\n \
+    \       data_ = std::move(rhs.data_);\n      }\n      return *this;\n    }\n\n\
+    \    auto& operator+=(const formal_power_series &rhs){\n      if(data_.size()\
     \ < rhs.size()) data_.resize(rhs.size());\n      for(int i = 0; i < rhs.size();\
     \ ++i) data_[i] += rhs[i];\n      return *this;\n    }\n\n    auto& operator+=(T\
     \ rhs){\n      data_[0] += rhs;\n      return *this;\n    }\n\n    auto operator+(T\
@@ -116,18 +117,19 @@ data:
     \ {*this = std::move(a);}\n\n    size_t size() const {\n      return data_.size();\n\
     \    }\n\n    const T& operator[](int i) const {\n      return data_[i];\n   \
     \ }\n\n    T& operator[](int i){\n      return data_[i];\n    }\n\n    auto begin()\
-    \ {return data_.begin();}\n    auto end() {return data_.end();}\n\n    void resize(int\
-    \ n){\n      data_.resize(n);\n    }\n\n    auto& operator=(formal_power_series\
-    \ &&rhs) noexcept {\n      if(this != &rhs){\n        data_ = std::move(rhs.data_);\n\
-    \      }\n      return *this;\n    }\n\n    auto& operator+=(const formal_power_series\
+    \ {return data_.begin();}\n    auto end() {return data_.end();}\n\n    const auto&\
+    \ data() const {return data_;}\n\n    void resize(int n){\n      data_.resize(n);\n\
+    \    }\n\n    auto& operator=(formal_power_series &&rhs) noexcept {\n      if(this\
+    \ != &rhs){\n        data_ = std::move(rhs.data_);\n      }\n      return *this;\n\
+    \    }\n\n    auto& operator+=(const formal_power_series &rhs){\n      if(data_.size()\
+    \ < rhs.size()) data_.resize(rhs.size());\n      for(int i = 0; i < rhs.size();\
+    \ ++i) data_[i] += rhs[i];\n      return *this;\n    }\n\n    auto& operator+=(T\
+    \ rhs){\n      data_[0] += rhs;\n      return *this;\n    }\n\n    auto operator+(T\
+    \ rhs) const {\n      auto ret = *this;\n      return ret += rhs;\n    }\n\n \
+    \   auto operator+(const formal_power_series &rhs) const {\n      auto ret = *this;\n\
+    \      return ret += rhs;\n    }\n\n    auto& operator-=(const formal_power_series\
     \ &rhs){\n      if(data_.size() < rhs.size()) data_.resize(rhs.size());\n    \
-    \  for(int i = 0; i < rhs.size(); ++i) data_[i] += rhs[i];\n      return *this;\n\
-    \    }\n\n    auto& operator+=(T rhs){\n      data_[0] += rhs;\n      return *this;\n\
-    \    }\n\n    auto operator+(T rhs) const {\n      auto ret = *this;\n      return\
-    \ ret += rhs;\n    }\n\n    auto operator+(const formal_power_series &rhs) const\
-    \ {\n      auto ret = *this;\n      return ret += rhs;\n    }\n\n    auto& operator-=(const\
-    \ formal_power_series &rhs){\n      if(data_.size() < rhs.size()) data_.resize(rhs.size());\n\
-    \      for(int i = 0; i < rhs.size(); ++i) data_[i] -= rhs[i];\n      return *this;\n\
+    \  for(int i = 0; i < rhs.size(); ++i) data_[i] -= rhs[i];\n      return *this;\n\
     \    }\n\n    auto& operator-=(T rhs){\n      data_[0] -= rhs;\n      return *this;\n\
     \    }\n\n    auto operator-(T rhs) const {\n      auto ret = *this;\n      return\
     \ ret -= rhs;\n    }\n\n    auto operator-(const formal_power_series &rhs) const\
@@ -177,18 +179,18 @@ data:
   path: Mylib/Math/formal_power_series.cpp
   requiredBy:
   - Mylib/Math/fps_sqrt.cpp
-  timestamp: '2020-11-04 22:26:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2020-12-09 11:17:21+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
-  - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
-  - test/yosupo-judge/log_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/partition_function/main.fps.test.cpp
   - test/yosupo-judge/bernoulli_number/main.test.cpp
   - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/partition_function/main.fps.test.cpp
+  - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
+  - test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
+  - test/yosupo-judge/log_of_formal_power_series/main.test.cpp
 documentation_of: Mylib/Math/formal_power_series.cpp
 layout: document
 title: Formal power series

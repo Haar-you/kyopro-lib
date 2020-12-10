@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':heavy_check_mark:'
-    path: Mylib/LinearAlgebra/Square/inverse_matrix.cpp
+  - icon: ':x:'
+    path: Mylib/LinearAlgebra/inverse_matrix.cpp
     title: Inverse matrix
-  - icon: ':heavy_check_mark:'
-    path: Mylib/LinearAlgebra/Square/square_matrix.cpp
+  - icon: ':question:'
+    path: Mylib/LinearAlgebra/square_matrix.cpp
     title: Square matrix
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/194
@@ -65,14 +65,14 @@ data:
     \ &s, const modint &a){s << a.val_; return s;}\n\n    template <int N>\n    static\
     \ auto div(){\n      static auto value = inv(N);\n      return value;\n    }\n\
     \n    explicit operator int32_t() const noexcept {return val_;}\n    explicit\
-    \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 4 \"Mylib/LinearAlgebra/Square/square_matrix.cpp\"\
-    \n#include <cstdint>\n#line 6 \"Mylib/LinearAlgebra/Square/square_matrix.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T, int &N>\n  class vector_dyn\
-    \ {\n  public:\n    using value_type = T;\n\n  private:\n    std::vector<T> data_;\n\
-    \n  public:\n    vector_dyn(): data_(N){}\n    vector_dyn(T value): data_(N, value){}\n\
-    \    vector_dyn(std::initializer_list<T> list): data_(N){\n      int i = 0;\n\
-    \      for(auto it = list.begin(); it != list.end(); ++it) data_[i++] = *it;\n\
-    \    }\n    vector_dyn(const vector_dyn &that): data_(that.data_){}\n\n    template\
+    \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 4 \"Mylib/LinearAlgebra/square_matrix.cpp\"\
+    \n#include <cstdint>\n#line 6 \"Mylib/LinearAlgebra/square_matrix.cpp\"\n\nnamespace\
+    \ haar_lib {\n  template <typename T, int &N>\n  class vector_dyn {\n  public:\n\
+    \    using value_type = T;\n\n  private:\n    std::vector<T> data_;\n\n  public:\n\
+    \    vector_dyn(): data_(N){}\n    vector_dyn(T value): data_(N, value){}\n  \
+    \  vector_dyn(std::initializer_list<T> list): data_(N){\n      int i = 0;\n  \
+    \    for(auto it = list.begin(); it != list.end(); ++it) data_[i++] = *it;\n \
+    \   }\n    vector_dyn(const vector_dyn &that): data_(that.data_){}\n\n    template\
     \ <typename U>\n    vector_dyn(const std::vector<U> &that): data_(that.begin(),\
     \ that.end()){}\n\n    bool operator==(const vector_dyn &that){return data_ ==\
     \ that.data_;}\n    bool operator!=(const vector_dyn &that){return !(*this ==\
@@ -123,7 +123,7 @@ data:
     \ > 0){\n        if(p & 1) ret *= a;\n        a *= a;\n        p >>= 1;\n    \
     \  }\n\n      return ret;\n    }\n\n    auto operator*(const vector_type &that){\n\
     \      vector_type ret;\n      for(int i = 0; i < N; ++i) ret[i] = dot(data_[i],\
-    \ that);\n      return ret;\n    }\n  };\n}\n#line 3 \"Mylib/LinearAlgebra/Square/inverse_matrix.cpp\"\
+    \ that);\n      return ret;\n    }\n  };\n}\n#line 3 \"Mylib/LinearAlgebra/inverse_matrix.cpp\"\
     \n#include <optional>\n\nnamespace haar_lib {\n  template <typename M>\n  std::optional<M>\
     \ inverse_matrix(M m){\n    using T = typename M::value_type;\n    const int N\
     \ = m.size();\n    M ret = M::unit();\n\n    for(int i = 0; i < N; ++i){\n   \
@@ -161,7 +161,7 @@ data:
     \ 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/194\"\n\n#include <iostream>\n\
     #include <vector>\n#include <algorithm>\n#include <numeric>\n#include \"Mylib/Number/Mint/mint.cpp\"\
-    \n#include \"Mylib/LinearAlgebra/Square/square_matrix.cpp\"\n#include \"Mylib/LinearAlgebra/Square/inverse_matrix.cpp\"\
+    \n#include \"Mylib/LinearAlgebra/square_matrix.cpp\"\n#include \"Mylib/LinearAlgebra/inverse_matrix.cpp\"\
     \n#include \"Mylib/IO/input_vector.cpp\"\n\nnamespace hl = haar_lib;\n\nusing\
     \ mint = hl::modint<1000000007>;\n\nstatic int N;\nusing M = hl::square_matrix_dyn<mint,\
     \ N>;\n\nstd::pair<mint, mint> solve1(int64_t N, int64_t K, std::vector<int> A){\n\
@@ -182,14 +182,14 @@ data:
     \ 0;\n}\n"
   dependsOn:
   - Mylib/Number/Mint/mint.cpp
-  - Mylib/LinearAlgebra/Square/square_matrix.cpp
-  - Mylib/LinearAlgebra/Square/inverse_matrix.cpp
+  - Mylib/LinearAlgebra/square_matrix.cpp
+  - Mylib/LinearAlgebra/inverse_matrix.cpp
   - Mylib/IO/input_vector.cpp
   isVerificationFile: true
   path: test/yukicoder/194/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-30 07:57:28+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2020-12-09 11:11:37+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/194/main.test.cpp
 layout: document

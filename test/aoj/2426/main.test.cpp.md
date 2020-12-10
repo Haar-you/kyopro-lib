@@ -7,13 +7,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp
     title: Wavelet matrix
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
   - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
   - icon: ':heavy_check_mark:'

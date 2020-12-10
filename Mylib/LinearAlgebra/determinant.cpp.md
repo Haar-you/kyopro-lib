@@ -10,7 +10,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/LinearAlgebra/Square/determinant.cpp\"\n#include <utility>\n\
+  bundledCode: "#line 2 \"Mylib/LinearAlgebra/determinant.cpp\"\n#include <utility>\n\
     \nnamespace haar_lib {\n  template <typename M, typename T = typename M::value_type>\n\
     \  T determinant(M m){\n    const int N = m.size();\n\n    int s = 0;\n    for(int\
     \ i = 0; i < N; ++i){\n      if(m[i][i] == 0){\n        for(int j = i + 1; j <\
@@ -32,13 +32,13 @@ data:
     \  }\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/LinearAlgebra/Square/determinant.cpp
+  path: Mylib/LinearAlgebra/determinant.cpp
   requiredBy: []
-  timestamp: '2020-09-29 07:58:04+09:00'
+  timestamp: '2020-12-09 11:11:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/matrix_det/main.test.cpp
-documentation_of: Mylib/LinearAlgebra/Square/determinant.cpp
+documentation_of: Mylib/LinearAlgebra/determinant.cpp
 layout: document
 title: Determinant
 ---

@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':heavy_check_mark:'
-    path: Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp
+  - icon: ':x:'
+    path: Mylib/LinearAlgebra/simultaneous_linear_equations.cpp
     title: Simultaneous linear equations
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/system_of_linear_equations
@@ -66,8 +66,8 @@ data:
     \ &s, const modint &a){s << a.val_; return s;}\n\n    template <int N>\n    static\
     \ auto div(){\n      static auto value = inv(N);\n      return value;\n    }\n\
     \n    explicit operator int32_t() const noexcept {return val_;}\n    explicit\
-    \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 3 \"Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp\"\
-    \n#include <optional>\n#line 5 \"Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp\"\
+    \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 3 \"Mylib/LinearAlgebra/simultaneous_linear_equations.cpp\"\
+    \n#include <optional>\n#line 5 \"Mylib/LinearAlgebra/simultaneous_linear_equations.cpp\"\
     \n\nnamespace haar_lib {\n  namespace simulaneous_linear_equations_impl {\n  \
     \  template <typename T>\n    struct result {\n      int rank, dim;\n      std::vector<T>\
     \ solution;\n      std::vector<std::vector<T>> basis;\n    };\n  }\n\n  template\
@@ -115,7 +115,7 @@ data:
     n\";\n\n    for(auto &b : (*res).basis){\n      std::cout << hl::join(b.begin(),\
     \ b.end()) << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/system_of_linear_equations\"\
-    \n\n#include <vector>\n#include \"Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp\"\
+    \n\n#include <vector>\n#include \"Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/LinearAlgebra/simultaneous_linear_equations.cpp\"\
     \n#include \"Mylib/IO/join.cpp\"\n#include \"Mylib/IO/input_vector.cpp\"\n\nnamespace\
     \ hl = haar_lib;\n\nusing mint = hl::modint<998244353>;\n\nint main(){\n  std::cin.tie(0);\n\
     \  std::ios::sync_with_stdio(false);\n\n  int N, M; std::cin >> N >> M;\n\n  auto\
@@ -127,14 +127,14 @@ data:
     \ b.end()) << \"\\n\";\n    }\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Number/Mint/mint.cpp
-  - Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp
+  - Mylib/LinearAlgebra/simultaneous_linear_equations.cpp
   - Mylib/IO/join.cpp
   - Mylib/IO/input_vector.cpp
   isVerificationFile: true
   path: test/yosupo-judge/system_of_linear_equations/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-30 07:57:28+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2020-12-09 11:11:37+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/system_of_linear_equations/main.test.cpp
 layout: document

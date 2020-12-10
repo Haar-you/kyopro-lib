@@ -75,16 +75,16 @@ data:
   isVerificationFile: false
   path: Mylib/Combinatorics/factorial_table.cpp
   requiredBy:
-  - Mylib/Combinatorics/stirling_number_second.cpp
-  - Mylib/Combinatorics/catalan_number.cpp
-  - Mylib/Combinatorics/bell_number.cpp
   - Mylib/Combinatorics/bernoulli_number.cpp
+  - Mylib/Combinatorics/catalan_number.cpp
+  - Mylib/Combinatorics/stirling_number_second.cpp
+  - Mylib/Combinatorics/bell_number.cpp
   timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/bernoulli_number/main.test.cpp
-  - test/yukicoder/117/main.test.cpp
   - test/yukicoder/660/main.test.cpp
+  - test/yukicoder/117/main.test.cpp
   - test/yukicoder/665/main.test.cpp
   - test/aoj/DPL_5_G/main.test.cpp
   - test/aoj/DPL_5_I/main.test.cpp

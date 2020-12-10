@@ -246,9 +246,9 @@ data:
   verifiedWith:
   - test/yosupo-judge/range_kth_smallest/main.test.cpp
   - test/yukicoder/919/main.test.cpp
+  - test/aoj/2426/main.test.cpp
   - test/aoj/1549/main.test.cpp
   - test/aoj/2674/main.test.cpp
-  - test/aoj/2426/main.test.cpp
 documentation_of: Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp
 layout: document
 title: Wavelet matrix

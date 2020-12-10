@@ -1,25 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Math/formal_power_series.cpp
     title: Formal power series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
   _extendedRequiredBy: []
@@ -147,18 +147,19 @@ data:
     \ {*this = std::move(a);}\n\n    size_t size() const {\n      return data_.size();\n\
     \    }\n\n    const T& operator[](int i) const {\n      return data_[i];\n   \
     \ }\n\n    T& operator[](int i){\n      return data_[i];\n    }\n\n    auto begin()\
-    \ {return data_.begin();}\n    auto end() {return data_.end();}\n\n    void resize(int\
-    \ n){\n      data_.resize(n);\n    }\n\n    auto& operator=(formal_power_series\
-    \ &&rhs) noexcept {\n      if(this != &rhs){\n        data_ = std::move(rhs.data_);\n\
-    \      }\n      return *this;\n    }\n\n    auto& operator+=(const formal_power_series\
+    \ {return data_.begin();}\n    auto end() {return data_.end();}\n\n    const auto&\
+    \ data() const {return data_;}\n\n    void resize(int n){\n      data_.resize(n);\n\
+    \    }\n\n    auto& operator=(formal_power_series &&rhs) noexcept {\n      if(this\
+    \ != &rhs){\n        data_ = std::move(rhs.data_);\n      }\n      return *this;\n\
+    \    }\n\n    auto& operator+=(const formal_power_series &rhs){\n      if(data_.size()\
+    \ < rhs.size()) data_.resize(rhs.size());\n      for(int i = 0; i < rhs.size();\
+    \ ++i) data_[i] += rhs[i];\n      return *this;\n    }\n\n    auto& operator+=(T\
+    \ rhs){\n      data_[0] += rhs;\n      return *this;\n    }\n\n    auto operator+(T\
+    \ rhs) const {\n      auto ret = *this;\n      return ret += rhs;\n    }\n\n \
+    \   auto operator+(const formal_power_series &rhs) const {\n      auto ret = *this;\n\
+    \      return ret += rhs;\n    }\n\n    auto& operator-=(const formal_power_series\
     \ &rhs){\n      if(data_.size() < rhs.size()) data_.resize(rhs.size());\n    \
-    \  for(int i = 0; i < rhs.size(); ++i) data_[i] += rhs[i];\n      return *this;\n\
-    \    }\n\n    auto& operator+=(T rhs){\n      data_[0] += rhs;\n      return *this;\n\
-    \    }\n\n    auto operator+(T rhs) const {\n      auto ret = *this;\n      return\
-    \ ret += rhs;\n    }\n\n    auto operator+(const formal_power_series &rhs) const\
-    \ {\n      auto ret = *this;\n      return ret += rhs;\n    }\n\n    auto& operator-=(const\
-    \ formal_power_series &rhs){\n      if(data_.size() < rhs.size()) data_.resize(rhs.size());\n\
-    \      for(int i = 0; i < rhs.size(); ++i) data_[i] -= rhs[i];\n      return *this;\n\
+    \  for(int i = 0; i < rhs.size(); ++i) data_[i] -= rhs[i];\n      return *this;\n\
     \    }\n\n    auto& operator-=(T rhs){\n      data_[0] -= rhs;\n      return *this;\n\
     \    }\n\n    auto operator-(T rhs) const {\n      auto ret = *this;\n      return\
     \ ret -= rhs;\n    }\n\n    auto operator-(const formal_power_series &rhs) const\
@@ -244,7 +245,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/log_of_formal_power_series/main.test.cpp
   requiredBy: []
-  timestamp: '2020-11-04 22:26:40+09:00'
+  timestamp: '2020-12-09 11:17:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/log_of_formal_power_series/main.test.cpp

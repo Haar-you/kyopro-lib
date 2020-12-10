@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':heavy_check_mark:'
-    path: Mylib/LinearAlgebra/Square/square_matrix.cpp
+  - icon: ':question:'
+    path: Mylib/LinearAlgebra/square_matrix.cpp
     title: Square matrix
   - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mint/runtime_mint.cpp
@@ -58,36 +58,36 @@ data:
     \ / b;}\n\n    friend std::istream& operator>>(std::istream &is, runtime_modint\
     \ &a){is >> a.val_; return is;}\n    friend std::ostream& operator<<(std::ostream\
     \ &os, const runtime_modint &a){os << a.val_; return os;}\n  };\n}\n#line 4 \"\
-    Mylib/LinearAlgebra/Square/square_matrix.cpp\"\n#include <cstdint>\n#line 6 \"\
-    Mylib/LinearAlgebra/Square/square_matrix.cpp\"\n\nnamespace haar_lib {\n  template\
-    \ <typename T, int &N>\n  class vector_dyn {\n  public:\n    using value_type\
-    \ = T;\n\n  private:\n    std::vector<T> data_;\n\n  public:\n    vector_dyn():\
-    \ data_(N){}\n    vector_dyn(T value): data_(N, value){}\n    vector_dyn(std::initializer_list<T>\
-    \ list): data_(N){\n      int i = 0;\n      for(auto it = list.begin(); it !=\
-    \ list.end(); ++it) data_[i++] = *it;\n    }\n    vector_dyn(const vector_dyn\
-    \ &that): data_(that.data_){}\n\n    template <typename U>\n    vector_dyn(const\
-    \ std::vector<U> &that): data_(that.begin(), that.end()){}\n\n    bool operator==(const\
-    \ vector_dyn &that){return data_ == that.data_;}\n    bool operator!=(const vector_dyn\
-    \ &that){return !(*this == that);}\n\n    auto& operator=(const vector_dyn &that){\n\
-    \      data_ = that.data_;\n      return *this;\n    }\n\n    auto& operator+=(const\
-    \ vector_dyn &that){\n      for(int i = 0; i < N; ++i) data_[i] += that.data_[i];\n\
-    \      return *this;\n    }\n\n    auto& operator-=(const vector_dyn &that){\n\
-    \      for(int i = 0; i < N; ++i) data_[i] -= that.data_[i];\n      return *this;\n\
-    \    }\n\n    friend auto dot(const vector_dyn &a, const vector_dyn &b){\n   \
-    \   T ret = 0;\n      for(int i = 0; i < N; ++i) ret += a.data_[i] * b.data_[i];\n\
-    \      return ret;\n    }\n\n    auto operator+(const vector_dyn &that) const\
-    \ {\n      return vector(*this) += that;\n    }\n\n    auto operator-(const vector_dyn\
-    \ &that) const {\n      return vector(*this) -= that;\n    }\n\n    auto& operator[](int\
-    \ i){return data_[i];}\n    const auto& operator[](int i) const {return data_[i];}\n\
-    \    auto begin() const {return data_.begin();}\n    auto end() const {return\
-    \ data_.end();}\n\n    int size() const {return N;}\n\n    friend std::ostream&\
-    \ operator<<(std::ostream &s, const vector_dyn &a){\n      s << \"{\";\n     \
-    \ for(auto it = a.data_.begin(); it != a.data_.end(); ++it){\n        if(it !=\
-    \ a.data_.begin()) s << \",\";\n        s << *it;\n      }\n      s << \"}\";\n\
-    \      return s;\n    }\n  };\n\n\n  template <typename T, int &N>\n  class square_matrix_dyn\
-    \ {\n  public:\n    using value_type = T;\n    using vector_type = vector_dyn<T,\
-    \ N>;\n\n  private:\n    std::vector<vector_type> data_;\n\n  public:\n    square_matrix_dyn():\
-    \ data_(N, vector_type()){}\n    square_matrix_dyn(const T &val): data_(N, vector_type(val)){}\n\
+    Mylib/LinearAlgebra/square_matrix.cpp\"\n#include <cstdint>\n#line 6 \"Mylib/LinearAlgebra/square_matrix.cpp\"\
+    \n\nnamespace haar_lib {\n  template <typename T, int &N>\n  class vector_dyn\
+    \ {\n  public:\n    using value_type = T;\n\n  private:\n    std::vector<T> data_;\n\
+    \n  public:\n    vector_dyn(): data_(N){}\n    vector_dyn(T value): data_(N, value){}\n\
+    \    vector_dyn(std::initializer_list<T> list): data_(N){\n      int i = 0;\n\
+    \      for(auto it = list.begin(); it != list.end(); ++it) data_[i++] = *it;\n\
+    \    }\n    vector_dyn(const vector_dyn &that): data_(that.data_){}\n\n    template\
+    \ <typename U>\n    vector_dyn(const std::vector<U> &that): data_(that.begin(),\
+    \ that.end()){}\n\n    bool operator==(const vector_dyn &that){return data_ ==\
+    \ that.data_;}\n    bool operator!=(const vector_dyn &that){return !(*this ==\
+    \ that);}\n\n    auto& operator=(const vector_dyn &that){\n      data_ = that.data_;\n\
+    \      return *this;\n    }\n\n    auto& operator+=(const vector_dyn &that){\n\
+    \      for(int i = 0; i < N; ++i) data_[i] += that.data_[i];\n      return *this;\n\
+    \    }\n\n    auto& operator-=(const vector_dyn &that){\n      for(int i = 0;\
+    \ i < N; ++i) data_[i] -= that.data_[i];\n      return *this;\n    }\n\n    friend\
+    \ auto dot(const vector_dyn &a, const vector_dyn &b){\n      T ret = 0;\n    \
+    \  for(int i = 0; i < N; ++i) ret += a.data_[i] * b.data_[i];\n      return ret;\n\
+    \    }\n\n    auto operator+(const vector_dyn &that) const {\n      return vector(*this)\
+    \ += that;\n    }\n\n    auto operator-(const vector_dyn &that) const {\n    \
+    \  return vector(*this) -= that;\n    }\n\n    auto& operator[](int i){return\
+    \ data_[i];}\n    const auto& operator[](int i) const {return data_[i];}\n   \
+    \ auto begin() const {return data_.begin();}\n    auto end() const {return data_.end();}\n\
+    \n    int size() const {return N;}\n\n    friend std::ostream& operator<<(std::ostream\
+    \ &s, const vector_dyn &a){\n      s << \"{\";\n      for(auto it = a.data_.begin();\
+    \ it != a.data_.end(); ++it){\n        if(it != a.data_.begin()) s << \",\";\n\
+    \        s << *it;\n      }\n      s << \"}\";\n      return s;\n    }\n  };\n\
+    \n\n  template <typename T, int &N>\n  class square_matrix_dyn {\n  public:\n\
+    \    using value_type = T;\n    using vector_type = vector_dyn<T, N>;\n\n  private:\n\
+    \    std::vector<vector_type> data_;\n\n  public:\n    square_matrix_dyn(): data_(N,\
+    \ vector_type()){}\n    square_matrix_dyn(const T &val): data_(N, vector_type(val)){}\n\
     \    square_matrix_dyn(std::initializer_list<std::initializer_list<T>> list):\
     \ data_(N){\n      int i = 0;\n      for(auto it = list.begin(); it != list.end();\
     \ ++it){\n        data_[i++] = vector_type(*it);\n      }\n    }\n    square_matrix_dyn(const\
@@ -135,7 +135,7 @@ data:
     \ hl::join(ans.begin(), ans.end()) << \"\\n\";\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1327\"\
     \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/Number/Mint/runtime_mint.cpp\"\
-    \n#include \"Mylib/LinearAlgebra/Square/square_matrix.cpp\"\n#include \"Mylib/IO/join.cpp\"\
+    \n#include \"Mylib/LinearAlgebra/square_matrix.cpp\"\n#include \"Mylib/IO/join.cpp\"\
     \n#include \"Mylib/IO/input_vector.cpp\"\n\nnamespace hl = haar_lib;\n\nstatic\
     \ int n, m;\nusing mint = hl::runtime_modint<m>;\nusing M = hl::square_matrix_dyn<mint,\
     \ n>;\n\nint main(){\n  int a, b, c, t;\n\n  while(std::cin >> n >> m >> a >>\
@@ -146,13 +146,13 @@ data:
     \ hl::join(ans.begin(), ans.end()) << \"\\n\";\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Number/Mint/runtime_mint.cpp
-  - Mylib/LinearAlgebra/Square/square_matrix.cpp
+  - Mylib/LinearAlgebra/square_matrix.cpp
   - Mylib/IO/join.cpp
   - Mylib/IO/input_vector.cpp
   isVerificationFile: true
   path: test/aoj/1327/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-29 07:58:04+09:00'
+  timestamp: '2020-12-09 11:11:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/1327/main.test.cpp

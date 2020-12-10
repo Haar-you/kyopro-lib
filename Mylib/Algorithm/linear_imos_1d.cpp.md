@@ -10,7 +10,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Algorithm/Imos/linear_imos_1d.cpp\"\n#include <vector>\n\
+  bundledCode: "#line 2 \"Mylib/Algorithm/linear_imos_1d.cpp\"\n#include <vector>\n\
     #include <cassert>\n\nnamespace haar_lib {\n  template <typename T>\n  class linear_imos_1d\
     \ {\n  public:\n    using value_type = T;\n\n  private:\n    int n_;\n    std::vector<T>\
     \ vec_a_, vec_a_end_, vec_b_;\n\n  public:\n    linear_imos_1d(int n):\n     \
@@ -40,13 +40,13 @@ data:
     \    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/Algorithm/Imos/linear_imos_1d.cpp
+  path: Mylib/Algorithm/linear_imos_1d.cpp
   requiredBy: []
-  timestamp: '2020-10-29 12:10:55+09:00'
+  timestamp: '2020-12-09 10:43:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/3165/main.test.imos.cpp
-documentation_of: Mylib/Algorithm/Imos/linear_imos_1d.cpp
+documentation_of: Mylib/Algorithm/linear_imos_1d.cpp
 layout: document
 title: 1D Imos algorithm (Linear addition)
 ---

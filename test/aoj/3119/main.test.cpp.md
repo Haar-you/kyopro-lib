@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/fast_zeta_transform_superset.cpp
     title: Fast Zeta transform (Supersets)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

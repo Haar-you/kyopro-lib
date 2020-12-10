@@ -13,7 +13,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp\"\
+  bundledCode: "#line 2 \"Mylib/LinearAlgebra/simultaneous_linear_equations_binary.cpp\"\
     \n#include <vector>\n#include <optional>\n#include <utility>\n#include <bitset>\n\
     \nnamespace haar_lib {\n  namespace binary_simultaneous_linear_equations_impl\
     \ {\n    template <size_t N>\n    struct result {\n      int rank, dim;\n    \
@@ -48,14 +48,14 @@ data:
     \    return ret;\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp
+  path: Mylib/LinearAlgebra/simultaneous_linear_equations_binary.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-12-09 11:11:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/2530/main.test.cpp
   - test/aoj/1308/main.test.cpp
-documentation_of: Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp
+documentation_of: Mylib/LinearAlgebra/simultaneous_linear_equations_binary.cpp
 layout: document
 title: Simultaneous linear equations (Mod2)
 ---

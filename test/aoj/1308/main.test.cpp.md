@@ -1,11 +1,11 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   - icon: ':heavy_check_mark:'
-    path: Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp
+    path: Mylib/LinearAlgebra/simultaneous_linear_equations_binary.cpp
     title: Simultaneous linear equations (Mod2)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -17,8 +17,8 @@ data:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1308
   bundledCode: "#line 1 \"test/aoj/1308/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1308\"\
-    \n\n#include <iostream>\n#include <vector>\n#include <bitset>\n#line 3 \"Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp\"\
-    \n#include <optional>\n#include <utility>\n#line 6 \"Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#include <bitset>\n#line 3 \"Mylib/LinearAlgebra/simultaneous_linear_equations_binary.cpp\"\
+    \n#include <optional>\n#include <utility>\n#line 6 \"Mylib/LinearAlgebra/simultaneous_linear_equations_binary.cpp\"\
     \n\nnamespace haar_lib {\n  namespace binary_simultaneous_linear_equations_impl\
     \ {\n    template <size_t N>\n    struct result {\n      int rank, dim;\n    \
     \  std::vector<bool> solution;\n    };\n  }\n\n  template <size_t N>\n  auto binary_simultaneous_linear_equations(std::vector<std::bitset<N>>\
@@ -53,7 +53,7 @@ data:
     \ << (bool)(hl::binary_simultaneous_linear_equations(a, b)) << std::endl;\n  }\n\
     \n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1308\"\
-    \n\n#include <iostream>\n#include <vector>\n#include <bitset>\n#include \"Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#include <bitset>\n#include \"Mylib/LinearAlgebra/simultaneous_linear_equations_binary.cpp\"\
     \n#include \"Mylib/IO/input_vector.cpp\"\n\nnamespace hl = haar_lib;\n\nint main(){\n\
     \  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int m, n, d;\n \
     \ while(std::cin >> m >> n >> d, m){\n    auto s = hl::input_vector<int>(n, m);\n\
@@ -69,12 +69,12 @@ data:
     \ << (bool)(hl::binary_simultaneous_linear_equations(a, b)) << std::endl;\n  }\n\
     \n  return 0;\n}\n"
   dependsOn:
-  - Mylib/LinearAlgebra/SimultaneousLinearEquations/binary_simultaneous_linear_equations.cpp
+  - Mylib/LinearAlgebra/simultaneous_linear_equations_binary.cpp
   - Mylib/IO/input_vector.cpp
   isVerificationFile: true
   path: test/aoj/1308/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-12-09 11:11:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/1308/main.test.cpp

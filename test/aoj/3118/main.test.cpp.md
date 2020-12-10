@@ -2,15 +2,15 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp
+    path: Mylib/Algorithm/sqrt_decomposition.cpp
     title: Sqrt decomposition
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
   - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
   _extendedRequiredBy: []
@@ -53,7 +53,7 @@ data:
     \ auto input_tuple_vector(int N){\n    std::tuple<std::vector<Args> ...> ret;\n\
     \n    input_tuple_vector_init(ret, N, std::make_index_sequence<sizeof ... (Args)>());\n\
     \    for(int i = 0; i < N; ++i){\n      input_tuple_vector_helper(ret, i, std::make_index_sequence<sizeof\
-    \ ... (Args)>());\n    }\n\n    return ret;\n  }\n}\n#line 3 \"Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp\"\
+    \ ... (Args)>());\n    }\n\n    return ret;\n  }\n}\n#line 3 \"Mylib/Algorithm/sqrt_decomposition.cpp\"\
     \n#include <cmath>\n\nnamespace haar_lib {\n  class sqrt_decomposition {\n   \
     \ int N_, BLOCK_SIZE_, BLOCK_NUM_;\n\n  public:\n    sqrt_decomposition(int N):\n\
     \      N_(N), BLOCK_SIZE_((int)std::sqrt(N)), BLOCK_NUM_((N + BLOCK_SIZE_ - 1)\
@@ -101,10 +101,10 @@ data:
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=3118\"\
     \n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <numeric>\n\
     #include <climits>\n#include \"Mylib/IO/input_tuples.cpp\"\n#include \"Mylib/IO/input_tuple_vector.cpp\"\
-    \n#include \"Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp\"\n\nnamespace\
-    \ hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
-    \n  int N, Q; std::cin >> N >> Q;\n\n  hl::sqrt_decomposition sd(N);\n\n  auto\
-    \ [A, B] = hl::input_tuple_vector<int64_t, int64_t>(N);\n\n  const int NUM = sd.block_num();\n\
+    \n#include \"Mylib/Algorithm/sqrt_decomposition.cpp\"\n\nnamespace hl = haar_lib;\n\
+    \nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int\
+    \ N, Q; std::cin >> N >> Q;\n\n  hl::sqrt_decomposition sd(N);\n\n  auto [A, B]\
+    \ = hl::input_tuple_vector<int64_t, int64_t>(N);\n\n  const int NUM = sd.block_num();\n\
     \n  std::vector<std::vector<int64_t>> s(NUM);\n  std::vector<std::vector<int64_t>>\
     \ left(NUM), right(NUM);\n  std::vector<int64_t> sum(NUM);\n\n  auto f =\n   \
     \ [&](int i, int l, int r){\n      const int size = r - l;\n\n      std::vector<int64_t>\
@@ -135,11 +135,11 @@ data:
   - Mylib/IO/input_tuples.cpp
   - Mylib/IO/input_tuple.cpp
   - Mylib/IO/input_tuple_vector.cpp
-  - Mylib/Algorithm/SqrtDecomposition/sqrt_decomposition.cpp
+  - Mylib/Algorithm/sqrt_decomposition.cpp
   isVerificationFile: true
   path: test/aoj/3118/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-03 19:28:56+09:00'
+  timestamp: '2020-12-09 10:43:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/3118/main.test.cpp

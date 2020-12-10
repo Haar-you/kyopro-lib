@@ -4,22 +4,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/stirling_number_first_fft.cpp
     title: Stirling numbers of the first kind (FFT)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
   - icon: ':heavy_check_mark:'
     path: Mylib/Math/polynomial_taylor_shift.cpp
     title: Polynomial taylor shift
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
   _extendedRequiredBy: []

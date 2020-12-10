@@ -10,9 +10,9 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Algorithm/Imos/imos_2d.cpp\"\n#include <vector>\n\
-    #include <cassert>\n\nnamespace haar_lib {\n  template <typename T>\n  struct\
-    \ imos_2d {\n    using value_type = T;\n\n  private:\n    std::vector<std::vector<T>>\
+  bundledCode: "#line 2 \"Mylib/Algorithm/imos_2d.cpp\"\n#include <vector>\n#include\
+    \ <cassert>\n\nnamespace haar_lib {\n  template <typename T>\n  struct imos_2d\
+    \ {\n    using value_type = T;\n\n  private:\n    std::vector<std::vector<T>>\
     \ data_;\n    int n_, m_;\n\n  public:\n    imos_2d(){}\n    imos_2d(int n, int\
     \ m): data_(n, std::vector<T>(m)), n_(n), m_(m){}\n\n    void update(std::pair<int,\
     \ int> p1, std::pair<int, int> p2, T val){\n      const auto [x1, y1] = p1;\n\
@@ -42,13 +42,13 @@ data:
     \ }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/Algorithm/Imos/imos_2d.cpp
+  path: Mylib/Algorithm/imos_2d.cpp
   requiredBy: []
-  timestamp: '2020-10-11 03:06:10+09:00'
+  timestamp: '2020-12-09 10:43:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/DSL_5_B/main.test.cpp
-documentation_of: Mylib/Algorithm/Imos/imos_2d.cpp
+documentation_of: Mylib/Algorithm/imos_2d.cpp
 layout: document
 title: 2D Imos algorithm
 ---

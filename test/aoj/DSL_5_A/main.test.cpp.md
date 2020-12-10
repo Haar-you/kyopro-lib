@@ -2,12 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Mylib/Algorithm/Imos/imos_1d.cpp
+    path: Mylib/Algorithm/imos_1d.cpp
     title: 1D Imos algorithm
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
   _extendedRequiredBy: []
@@ -20,7 +20,7 @@ data:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_A
   bundledCode: "#line 1 \"test/aoj/DSL_5_A/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_A\"\
-    \n\n#include <iostream>\n#include <algorithm>\n#line 2 \"Mylib/Algorithm/Imos/imos_1d.cpp\"\
+    \n\n#include <iostream>\n#include <algorithm>\n#line 2 \"Mylib/Algorithm/imos_1d.cpp\"\
     \n#include <vector>\n#include <cassert>\n\nnamespace haar_lib {\n  template <typename\
     \ T>\n  struct imos_1d {\n    using value_type = T;\n\n  private:\n    std::vector<T>\
     \ data_;\n    int n_;\n\n  public:\n    imos_1d(){}\n    imos_1d(int n): data_(n),\
@@ -54,20 +54,20 @@ data:
     \ r, 1);\n  }\n\n  const auto res = imos.build();\n\n  int ans = *std::max_element(res.begin(),\
     \ res.end());\n\n  std::cout << ans << std::endl;\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_A\"\
-    \n\n#include <iostream>\n#include <algorithm>\n#include \"Mylib/Algorithm/Imos/imos_1d.cpp\"\
+    \n\n#include <iostream>\n#include <algorithm>\n#include \"Mylib/Algorithm/imos_1d.cpp\"\
     \n#include \"Mylib/IO/input_tuples.cpp\"\n\nnamespace hl = haar_lib;\n\nint main(){\n\
     \  int N, T; std::cin >> N >> T;\n  hl::imos_1d<int> imos(T + 1);\n\n  for(auto\
     \ [l, r] : hl::input_tuples<int, int>(N)){\n    imos.update(l, r, 1);\n  }\n\n\
     \  const auto res = imos.build();\n\n  int ans = *std::max_element(res.begin(),\
     \ res.end());\n\n  std::cout << ans << std::endl;\n\n  return 0;\n}\n"
   dependsOn:
-  - Mylib/Algorithm/Imos/imos_1d.cpp
+  - Mylib/Algorithm/imos_1d.cpp
   - Mylib/IO/input_tuples.cpp
   - Mylib/IO/input_tuple.cpp
   isVerificationFile: true
   path: test/aoj/DSL_5_A/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-11 03:06:10+09:00'
+  timestamp: '2020-12-09 10:43:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DSL_5_A/main.test.cpp

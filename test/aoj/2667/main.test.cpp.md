@@ -16,10 +16,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp
     title: Heavy-light decomposition
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
   _extendedRequiredBy: []

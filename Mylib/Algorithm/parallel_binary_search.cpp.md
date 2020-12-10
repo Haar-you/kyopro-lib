@@ -10,11 +10,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Algorithm/Search/parallel_binary_search.cpp\"\n#include\
-    \ <vector>\n#include <cmath>\n\nnamespace haar_lib {\n  template <typename Init,\
-    \ typename Process, typename Checker>\n  auto parallel_binary_search(int M, int\
-    \ Q, Init init, Process process, Checker checker){\n    std::vector<int> lb(Q,\
-    \ -1), ub(Q, M);\n\n    while(1){\n      bool check = true;\n      std::vector<std::vector<int>>\
+  bundledCode: "#line 2 \"Mylib/Algorithm/parallel_binary_search.cpp\"\n#include <vector>\n\
+    #include <cmath>\n\nnamespace haar_lib {\n  template <typename Init, typename\
+    \ Process, typename Checker>\n  auto parallel_binary_search(int M, int Q, Init\
+    \ init, Process process, Checker checker){\n    std::vector<int> lb(Q, -1), ub(Q,\
+    \ M);\n\n    while(1){\n      bool check = true;\n      std::vector<std::vector<int>>\
     \ mids(M);\n      for(int i = 0; i < Q; ++i){\n        if(std::abs(lb[i] - ub[i])\
     \ > 1){\n          check = false;\n          int mid = (lb[i] + ub[i]) / 2;\n\
     \          mids[mid].push_back(i);\n        }\n      }\n\n      if(check) break;\n\
@@ -35,13 +35,13 @@ data:
     \   }\n\n    return ub;\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/Algorithm/Search/parallel_binary_search.cpp
+  path: Mylib/Algorithm/parallel_binary_search.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-12-09 10:43:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/0575/main.test.cpp
-documentation_of: Mylib/Algorithm/Search/parallel_binary_search.cpp
+documentation_of: Mylib/Algorithm/parallel_binary_search.cpp
 layout: document
 title: Parallel binary search
 ---

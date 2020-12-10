@@ -4,11 +4,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp
     title: Warshall-Floyd algorithm (For adjacency matrix graph)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   - icon: ':heavy_check_mark:'
-    path: Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp
+    path: Mylib/LinearAlgebra/simultaneous_linear_equations_float.cpp
     title: Simultaneous linear equations (Floating point number)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -39,7 +39,7 @@ data:
     \            }\n          }\n        }\n      }\n    }\n\n    bool has_negative_cycle\
     \ = false;\n    for(int i = 0; i < n; ++i) if(*dist[i][i] < 0) has_negative_cycle\
     \ = true;\n\n    return warshall_floyd_for_matrix_impl::result<T>{dist, has_negative_cycle};\n\
-    \  }\n}\n#line 4 \"Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp\"\
+    \  }\n}\n#line 4 \"Mylib/LinearAlgebra/simultaneous_linear_equations_float.cpp\"\
     \n#include <utility>\n\nnamespace haar_lib {\n  namespace float_simultaneous_linear_equations_impl\
     \ {\n    template <typename T>\n    struct result {\n      int rank, dim;\n  \
     \    std::vector<T> solution;\n    };\n  }\n\n  template <typename T>\n  auto\
@@ -88,11 +88,11 @@ data:
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2171\"\
     \n#define ERROR 1e-8\n\n#include <iostream>\n#include <vector>\n#include <iomanip>\n\
     #include \"Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp\"\n#include\
-    \ \"Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp\"\
-    \n#include \"Mylib/IO/input_vector.cpp\"\n\nnamespace hl = haar_lib;\n\nint main(){\n\
-    \  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int n, s, t;\n \
-    \ while(std::cin >> n >> s >> t, n){\n    --s, --t;\n\n    auto q = hl::input_vector<int>(n);\n\
-    \    auto g = hl::input_vector<int>(n, n);\n\n    auto dist = hl::warshall_floyd_for_matrix<int,\
+    \ \"Mylib/LinearAlgebra/simultaneous_linear_equations_float.cpp\"\n#include \"\
+    Mylib/IO/input_vector.cpp\"\n\nnamespace hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n\
+    \  std::ios::sync_with_stdio(false);\n\n  int n, s, t;\n  while(std::cin >> n\
+    \ >> s >> t, n){\n    --s, --t;\n\n    auto q = hl::input_vector<int>(n);\n  \
+    \  auto g = hl::input_vector<int>(n, n);\n\n    auto dist = hl::warshall_floyd_for_matrix<int,\
     \ 0>(g);\n\n    if(not dist[s][t]){\n      std::cout << \"impossible\" << std::endl;\n\
     \      continue;\n    }\n\n    std::vector<std::vector<double>> a(n, std::vector<double>(n));\n\
     \    std::vector<double> b(n);\n\n    for(int i = 0; i < n; ++i){\n      if(i\
@@ -111,12 +111,12 @@ data:
     \ << std::fixed << ans << std::endl;\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp
-  - Mylib/LinearAlgebra/SimultaneousLinearEquations/float_simultaneous_linear_equations.cpp
+  - Mylib/LinearAlgebra/simultaneous_linear_equations_float.cpp
   - Mylib/IO/input_vector.cpp
   isVerificationFile: true
   path: test/aoj/2171/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-12-09 11:11:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/2171/main.test.cpp

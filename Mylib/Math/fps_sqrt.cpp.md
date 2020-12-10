@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Math/formal_power_series.cpp
     title: Formal power series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_sqrt.cpp
     title: Mod sqrt
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Math/formal_power_series.cpp\"\n#include <functional>\n\
@@ -31,10 +31,11 @@ data:
     \n    size_t size() const {\n      return data_.size();\n    }\n\n    const T&\
     \ operator[](int i) const {\n      return data_[i];\n    }\n\n    T& operator[](int\
     \ i){\n      return data_[i];\n    }\n\n    auto begin() {return data_.begin();}\n\
-    \    auto end() {return data_.end();}\n\n    void resize(int n){\n      data_.resize(n);\n\
-    \    }\n\n    auto& operator=(formal_power_series &&rhs) noexcept {\n      if(this\
-    \ != &rhs){\n        data_ = std::move(rhs.data_);\n      }\n      return *this;\n\
-    \    }\n\n    auto& operator+=(const formal_power_series &rhs){\n      if(data_.size()\
+    \    auto end() {return data_.end();}\n\n    const auto& data() const {return\
+    \ data_;}\n\n    void resize(int n){\n      data_.resize(n);\n    }\n\n    auto&\
+    \ operator=(formal_power_series &&rhs) noexcept {\n      if(this != &rhs){\n \
+    \       data_ = std::move(rhs.data_);\n      }\n      return *this;\n    }\n\n\
+    \    auto& operator+=(const formal_power_series &rhs){\n      if(data_.size()\
     \ < rhs.size()) data_.resize(rhs.size());\n      for(int i = 0; i < rhs.size();\
     \ ++i) data_[i] += rhs[i];\n      return *this;\n    }\n\n    auto& operator+=(T\
     \ rhs){\n      data_[0] += rhs;\n      return *this;\n    }\n\n    auto operator+(T\
@@ -137,8 +138,8 @@ data:
   isVerificationFile: false
   path: Mylib/Math/fps_sqrt.cpp
   requiredBy: []
-  timestamp: '2020-11-04 22:26:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2020-12-09 11:17:21+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
 documentation_of: Mylib/Math/fps_sqrt.cpp

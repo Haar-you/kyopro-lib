@@ -47,8 +47,8 @@ data:
   timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/DPL_3_B/main.test.cpp
   - test/aoj/DPL_3_C/main.test.cpp
+  - test/aoj/DPL_3_B/main.test.cpp
 documentation_of: Mylib/Typical/max_rectangle_in_histogram.cpp
 layout: document
 title: Largest rectangle in histogram

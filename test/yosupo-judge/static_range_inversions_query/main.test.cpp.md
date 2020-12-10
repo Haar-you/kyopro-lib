@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Algorithm/Mo/mo_algorithm.cpp
+  - icon: ':question:'
+    path: Mylib/Algorithm/mo_algorithm.cpp
     title: Mo's algorithm
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
     title: Fenwick tree (Add)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/Typical/range_inversions_query.cpp
     title: Range inversions query
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_inversions_query
@@ -70,8 +70,8 @@ data:
     \    }\n\n    value_type fold(int l, int r) const { // [l, r)\n      assert(0\
     \ <= l and l <= r and r <= size_);\n      return fold(r) - fold(l);\n    }\n\n\
     \    value_type operator[](int x) const {\n      return fold(x, x + 1);\n    }\n\
-    \  };\n}\n#line 5 \"Mylib/Algorithm/Mo/mo_algorithm.cpp\"\n#include <cmath>\n\n\
-    namespace haar_lib {\n  template <typename AppendLeft, typename AppendRight, typename\
+    \  };\n}\n#line 5 \"Mylib/Algorithm/mo_algorithm.cpp\"\n#include <cmath>\n\nnamespace\
+    \ haar_lib {\n  template <typename AppendLeft, typename AppendRight, typename\
     \ RemoveLeft, typename RemoveRight, typename Query>\n  class mo_algorithm {\n\
     \    int N_, Q_, index_, width_;\n    std::vector<int> left_, right_, ord_;\n\n\
     \    AppendLeft append_left_;\n    AppendRight append_right_;\n    RemoveLeft\
@@ -135,12 +135,12 @@ data:
   - Mylib/IO/input_tuple.cpp
   - Mylib/Typical/range_inversions_query.cpp
   - Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
-  - Mylib/Algorithm/Mo/mo_algorithm.cpp
+  - Mylib/Algorithm/mo_algorithm.cpp
   isVerificationFile: true
   path: test/yosupo-judge/static_range_inversions_query/main.test.cpp
   requiredBy: []
-  timestamp: '2020-11-07 03:03:04+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2020-12-09 10:43:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/static_range_inversions_query/main.test.cpp
 layout: document

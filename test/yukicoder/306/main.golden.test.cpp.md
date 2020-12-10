@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Algorithm/Search/golden_section_search_downwards.cpp
+  - icon: ':x:'
+    path: Mylib/Algorithm/golden_section_search_downwards.cpp
     title: Golden section search (Convex downwards)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: 1e-6
@@ -16,8 +16,8 @@ data:
     - https://yukicoder.me/problems/no/306
   bundledCode: "#line 1 \"test/yukicoder/306/main.golden.test.cpp\"\n#define PROBLEM\
     \ \"https://yukicoder.me/problems/no/306\"\n#define ERROR 1e-6\n\n#include <iostream>\n\
-    #include <iomanip>\n#include <cmath>\n#line 2 \"Mylib/Algorithm/Search/golden_section_search_downwards.cpp\"\
-    \n#include <functional>\n#line 4 \"Mylib/Algorithm/Search/golden_section_search_downwards.cpp\"\
+    #include <iomanip>\n#include <cmath>\n#line 2 \"Mylib/Algorithm/golden_section_search_downwards.cpp\"\
+    \n#include <functional>\n#line 4 \"Mylib/Algorithm/golden_section_search_downwards.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T = double, typename Func = std::function<T(T)>>\n\
     \  T golden_section_search_downwards(T lb, T ub, const Func &f, int LOOP_COUNT\
     \ = 100){\n    static const T phi = (1.0 + std::sqrt(5)) / 2;\n\n    T t1 = 0,\
@@ -31,19 +31,19 @@ data:
     \ double>(-1000, 1000, f);\n\n  std::cout << std::fixed << std::setprecision(12)\
     \ << ans << std::endl;\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/306\"\n#define ERROR 1e-6\n\
-    \n#include <iostream>\n#include <iomanip>\n#include <cmath>\n#include \"Mylib/Algorithm/Search/golden_section_search_downwards.cpp\"\
+    \n#include <iostream>\n#include <iomanip>\n#include <cmath>\n#include \"Mylib/Algorithm/golden_section_search_downwards.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nint main(){\n  int xa, xb, ya, yb; std::cin >>\
     \ xa >> ya >> xb >> yb;\n\n  auto f =\n    [&](long double p){\n      return std::hypot(xa,\
     \ ya - p) + std::hypot(xb, yb - p);\n    };\n\n  auto ans = hl::golden_section_search_downwards<long\
     \ double>(-1000, 1000, f);\n\n  std::cout << std::fixed << std::setprecision(12)\
     \ << ans << std::endl;\n\n  return 0;\n}\n"
   dependsOn:
-  - Mylib/Algorithm/Search/golden_section_search_downwards.cpp
+  - Mylib/Algorithm/golden_section_search_downwards.cpp
   isVerificationFile: true
   path: test/yukicoder/306/main.golden.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2020-12-09 10:43:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/306/main.golden.test.cpp
 layout: document

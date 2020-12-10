@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp
+  - icon: ':x:'
+    path: Mylib/Algorithm/cumulative_sum_2d.cpp
     title: 2D cumulative sum
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/755
     links:
     - https://yukicoder.me/problems/no/755
   bundledCode: "#line 1 \"test/yukicoder/755/main.test.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/755\"\
-    \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/Algorithm/cumulative_sum_2d.cpp\"\
     \n#include <functional>\n#include <cassert>\n\nnamespace haar_lib {\n  template\
     \ <typename T>\n  class cumulative_sum_2d {\n  public:\n    using value_type =\
     \ T;\n\n  private:\n    template <typename> friend class cumulative_sum_2d_builder;\n\
@@ -80,9 +80,9 @@ data:
     \ + 1, y2 + 1}) == 0) ++ans;\n          }\n        }\n      }\n    }\n\n    std::cout\
     \ << ans << std::endl;\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/755\"\n\n#include <iostream>\n\
-    #include <vector>\n#include \"Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp\"\
-    \n#include \"Mylib/IO/input_vector.cpp\"\n#include \"Mylib/IO/input_tuples.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
+    #include <vector>\n#include \"Mylib/Algorithm/cumulative_sum_2d.cpp\"\n#include\
+    \ \"Mylib/IO/input_vector.cpp\"\n#include \"Mylib/IO/input_tuples.cpp\"\n\nnamespace\
+    \ hl = haar_lib;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
     \n  int N, M; std::cin >> N >> M;\n\n  auto A = hl::input_vector<int64_t>(M, M);\n\
     \n  auto c = hl::cumulative_sum_2d_builder<int64_t>(M, M).update(A).build();\n\
     \n  for(auto [x, y] : hl::input_tuples<int, int>(N)){\n    --x, --y;\n\n    int\
@@ -92,15 +92,15 @@ data:
     \          }\n        }\n      }\n    }\n\n    std::cout << ans << std::endl;\n\
     \  }\n\n  return 0;\n}\n"
   dependsOn:
-  - Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp
+  - Mylib/Algorithm/cumulative_sum_2d.cpp
   - Mylib/IO/input_vector.cpp
   - Mylib/IO/input_tuples.cpp
   - Mylib/IO/input_tuple.cpp
   isVerificationFile: true
   path: test/yukicoder/755/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-11 03:06:10+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2020-12-09 10:43:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/755/main.test.cpp
 layout: document

@@ -1,11 +1,11 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
   - icon: ':heavy_check_mark:'
-    path: Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp
+    path: Mylib/LinearAlgebra/gaussian_elimination.cpp
     title: Gaussian elimination
   - icon: ':heavy_check_mark:'
     path: Mylib/Number/Rational/rational.cpp
@@ -87,8 +87,8 @@ data:
     \ const rational &b){return !(a <= b);}\n    friend bool operator>=(const rational\
     \ &a, const rational &b){return !(a < b);}\n\n    friend auto abs(const rational\
     \ &a){\n      return rational(std::abs(a.nume_), std::abs(a.deno_));\n    }\n\
-    \  };\n}\n#line 3 \"Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp\"\
-    \n#include <utility>\n\nnamespace haar_lib {\n  template <typename T>\n  int gaussian_elimination(std::vector<std::vector<T>>\
+    \  };\n}\n#line 3 \"Mylib/LinearAlgebra/gaussian_elimination.cpp\"\n#include <utility>\n\
+    \nnamespace haar_lib {\n  template <typename T>\n  int gaussian_elimination(std::vector<std::vector<T>>\
     \ &a){\n    const int h = a.size();\n    const int w = a[0].size();\n    int rank\
     \ = 0;\n\n    for(int j = 0; j < w; ++j){\n      int pivot = -1;\n\n      for(int\
     \ i = rank; i < h; ++i){\n        if(a[i][j] != 0){\n          pivot = i;\n  \
@@ -146,26 +146,25 @@ data:
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1300\"\
     \n\n#include <iostream>\n#include <map>\n#include <string>\n#include <vector>\n\
     #include \"Mylib/Parser/parser.cpp\"\n#include \"Mylib/Number/Rational/rational.cpp\"\
-    \n#include \"Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp\"\
-    \n#include \"Mylib/String/split.cpp\"\n#include \"Mylib/IO/join.cpp\"\n\nnamespace\
-    \ hl = haar_lib;\n\nusing result = std::map<std::string, int>;\n\nstruct parser\
-    \ : hl::parser {\n  parser(const std::string &s): hl::parser(s){}\n\n  std::string\
-    \ atom(){\n    std::string ret;\n    ret += get_char();\n    if(lower()) ret +=\
-    \ get_char();\n\n    return ret;\n  }\n\n  result factor(){\n    result ret;\n\
-    \    if(check_and_ignore('(')){\n      ret = expression();\n      ignore(')');\n\
-    \    }else{\n      ret[atom()] = 1;\n    }\n\n    if(digit()){\n      int n =\
-    \ get_number<int>();\n\n      for(auto &kv : ret){\n        kv.second *= n;\n\
-    \      }\n    }\n\n    return ret;\n  }\n\n  result expression(){\n    result\
-    \ ret = factor();\n\n    while(1){\n      if(digit() or alpha() or check('(')){\n\
-    \        result temp = factor();\n\n        for(auto &[k, v] : temp){\n      \
-    \    ret[k] += v;\n        }\n      }else{\n        break;\n      }\n    }\n\n\
-    \    return ret;\n  }\n\n  result run(){\n    return expression();\n  }\n};\n\n\
-    int main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  std::string\
-    \ s;\n  while(std::cin >> s){\n    if(s == \".\") break;\n\n    s.pop_back();\
-    \ // pop period\n    auto a = hl::split(s, \"->\");\n    auto b = hl::split(a[0],\
-    \ \"+\");\n    auto c = hl::split(a[1], \"+\");\n\n    std::map<std::string, int>\
-    \ atoms;\n\n    std::vector<result> ress;\n    for(auto &x : b){\n      auto r\
-    \ = parser(x).run();\n      for(auto &kv : r){\n        atoms[kv.first] = 0;\n\
+    \n#include \"Mylib/LinearAlgebra/gaussian_elimination.cpp\"\n#include \"Mylib/String/split.cpp\"\
+    \n#include \"Mylib/IO/join.cpp\"\n\nnamespace hl = haar_lib;\n\nusing result =\
+    \ std::map<std::string, int>;\n\nstruct parser : hl::parser {\n  parser(const\
+    \ std::string &s): hl::parser(s){}\n\n  std::string atom(){\n    std::string ret;\n\
+    \    ret += get_char();\n    if(lower()) ret += get_char();\n\n    return ret;\n\
+    \  }\n\n  result factor(){\n    result ret;\n    if(check_and_ignore('(')){\n\
+    \      ret = expression();\n      ignore(')');\n    }else{\n      ret[atom()]\
+    \ = 1;\n    }\n\n    if(digit()){\n      int n = get_number<int>();\n\n      for(auto\
+    \ &kv : ret){\n        kv.second *= n;\n      }\n    }\n\n    return ret;\n  }\n\
+    \n  result expression(){\n    result ret = factor();\n\n    while(1){\n      if(digit()\
+    \ or alpha() or check('(')){\n        result temp = factor();\n\n        for(auto\
+    \ &[k, v] : temp){\n          ret[k] += v;\n        }\n      }else{\n        break;\n\
+    \      }\n    }\n\n    return ret;\n  }\n\n  result run(){\n    return expression();\n\
+    \  }\n};\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
+    \n  std::string s;\n  while(std::cin >> s){\n    if(s == \".\") break;\n\n   \
+    \ s.pop_back(); // pop period\n    auto a = hl::split(s, \"->\");\n    auto b\
+    \ = hl::split(a[0], \"+\");\n    auto c = hl::split(a[1], \"+\");\n\n    std::map<std::string,\
+    \ int> atoms;\n\n    std::vector<result> ress;\n    for(auto &x : b){\n      auto\
+    \ r = parser(x).run();\n      for(auto &kv : r){\n        atoms[kv.first] = 0;\n\
     \      }\n      ress.push_back(r);\n    }\n    for(auto &x : c){\n      auto r\
     \ = parser(x).run();\n      for(auto &kv : r){\n        atoms[kv.first] = 0;\n\
     \        kv.second = -kv.second;\n      }\n      ress.push_back(r);\n    }\n\n\
@@ -186,13 +185,13 @@ data:
   dependsOn:
   - Mylib/Parser/parser.cpp
   - Mylib/Number/Rational/rational.cpp
-  - Mylib/LinearAlgebra/GaussianElimination/gaussian_elimination.cpp
+  - Mylib/LinearAlgebra/gaussian_elimination.cpp
   - Mylib/String/split.cpp
   - Mylib/IO/join.cpp
   isVerificationFile: true
   path: test/aoj/1300/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-29 00:55:13+09:00'
+  timestamp: '2020-12-09 11:11:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/1300/main.test.cpp

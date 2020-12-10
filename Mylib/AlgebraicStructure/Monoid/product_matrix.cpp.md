@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/510/main.test.cpp
     title: test/yukicoder/510/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/product_matrix.cpp\"\n\n\
@@ -24,7 +24,7 @@ data:
   path: Mylib/AlgebraicStructure/Monoid/product_matrix.cpp
   requiredBy: []
   timestamp: '2020-09-21 01:58:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yukicoder/510/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Monoid/product_matrix.cpp

@@ -108,30 +108,30 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
-  - test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
-  - test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
-  - test/yosupo-judge/manhattanmst/main.test.cpp
   - test/yosupo-judge/point_add_rectangle_sum/main.test.cpp
+  - test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
+  - test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
+  - test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
+  - test/yosupo-judge/manhattanmst/main.test.cpp
   - test/yukicoder/1069/main.test.cpp
-  - test/aoj/DPL_2_C/main.test.cpp
+  - test/aoj/2426/main.test.cpp
   - test/aoj/3118/main.test.cpp
-  - test/aoj/DPL_1_F/main.test.cpp
-  - test/aoj/2293/main.test.cpp
-  - test/aoj/0575/main.test.cpp
-  - test/aoj/DPL_1_H/main.test.cpp
-  - test/aoj/DPL_1_H/main.test.bb.cpp
-  - test/aoj/DPL_1_C/main.test.cpp
-  - test/aoj/ALDS1_15_C/main.test.cpp
-  - test/aoj/1615/main.test.cpp
-  - test/aoj/DPL_1_B/main.test.cpp
-  - test/aoj/0323/main.ternary.test.cpp
-  - test/aoj/0323/main.golden.test.cpp
   - test/aoj/3132/main.test.cpp
   - test/aoj/0425/main.test.cpp
   - test/aoj/1337/main.test.cpp
+  - test/aoj/DPL_1_C/main.test.cpp
+  - test/aoj/2293/main.test.cpp
+  - test/aoj/1615/main.test.cpp
+  - test/aoj/DPL_1_B/main.test.cpp
+  - test/aoj/DPL_2_C/main.test.cpp
   - test/aoj/DPL_1_G/main.test.cpp
-  - test/aoj/2426/main.test.cpp
+  - test/aoj/ALDS1_15_C/main.test.cpp
+  - test/aoj/0575/main.test.cpp
+  - test/aoj/DPL_1_F/main.test.cpp
+  - test/aoj/DPL_1_H/main.test.bb.cpp
+  - test/aoj/DPL_1_H/main.test.cpp
+  - test/aoj/0323/main.ternary.test.cpp
+  - test/aoj/0323/main.golden.test.cpp
 documentation_of: Mylib/IO/input_tuple_vector.cpp
 layout: document
 title: Input tuple vector

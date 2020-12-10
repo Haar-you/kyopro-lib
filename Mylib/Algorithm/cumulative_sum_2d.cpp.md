@@ -3,17 +3,17 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/755/main.test.cpp
     title: test/yukicoder/755/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp\"\n\
-    #include <vector>\n#include <functional>\n#include <cassert>\n\nnamespace haar_lib\
-    \ {\n  template <typename T>\n  class cumulative_sum_2d {\n  public:\n    using\
-    \ value_type = T;\n\n  private:\n    template <typename> friend class cumulative_sum_2d_builder;\n\
+  bundledCode: "#line 2 \"Mylib/Algorithm/cumulative_sum_2d.cpp\"\n#include <vector>\n\
+    #include <functional>\n#include <cassert>\n\nnamespace haar_lib {\n  template\
+    \ <typename T>\n  class cumulative_sum_2d {\n  public:\n    using value_type =\
+    \ T;\n\n  private:\n    template <typename> friend class cumulative_sum_2d_builder;\n\
     \    int N_, M_;\n    std::vector<std::vector<T>> data_;\n\n  public:\n    T fold(std::pair<int,\
     \ int> p1, std::pair<int, int> p2) const {\n      const auto [x1, y1] = p1;\n\
     \      const auto [x2, y2] = p2;\n      assert(0 <= x1 and x1 <= x2 and x2 <=\
@@ -56,13 +56,13 @@ data:
     \  return ret;\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp
+  path: Mylib/Algorithm/cumulative_sum_2d.cpp
   requiredBy: []
-  timestamp: '2020-10-11 03:06:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2020-12-09 10:43:13+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yukicoder/755/main.test.cpp
-documentation_of: Mylib/Algorithm/CumulativeSum/cumulative_sum_2d.cpp
+documentation_of: Mylib/Algorithm/cumulative_sum_2d.cpp
 layout: document
 title: 2D cumulative sum
 ---

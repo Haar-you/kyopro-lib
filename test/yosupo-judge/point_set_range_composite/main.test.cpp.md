@@ -4,22 +4,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/AlgebraicStructure/Monoid/affine.cpp
     title: Affine monoid
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/AlgebraicStructure/Monoid/dual.cpp
     title: Dual monoid
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/DataStructure/SegmentTree/segment_tree.cpp
     title: Segment tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
   - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples_with_index.cpp
     title: Input tuples with index
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

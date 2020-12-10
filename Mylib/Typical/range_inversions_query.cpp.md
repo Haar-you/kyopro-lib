@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: Mylib/Algorithm/Mo/mo_algorithm.cpp
+  - icon: ':question:'
+    path: Mylib/Algorithm/mo_algorithm.cpp
     title: Mo's algorithm
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
     title: Fenwick tree (Add)
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/static_range_inversions_query/main.test.cpp
     title: test/yosupo-judge/static_range_inversions_query/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Typical/range_inversions_query.cpp\"\n#include <vector>\n\
@@ -30,7 +30,7 @@ data:
     \      }\n\n      return ret;\n    }\n\n    value_type fold(int l, int r) const\
     \ { // [l, r)\n      assert(0 <= l and l <= r and r <= size_);\n      return fold(r)\
     \ - fold(l);\n    }\n\n    value_type operator[](int x) const {\n      return\
-    \ fold(x, x + 1);\n    }\n  };\n}\n#line 5 \"Mylib/Algorithm/Mo/mo_algorithm.cpp\"\
+    \ fold(x, x + 1);\n    }\n  };\n}\n#line 5 \"Mylib/Algorithm/mo_algorithm.cpp\"\
     \n#include <cmath>\n\nnamespace haar_lib {\n  template <typename AppendLeft, typename\
     \ AppendRight, typename RemoveLeft, typename RemoveRight, typename Query>\n  class\
     \ mo_algorithm {\n    int N_, Q_, index_, width_;\n    std::vector<int> left_,\
@@ -77,7 +77,7 @@ data:
     \ r);\n      }\n\n      mo.run();\n\n      return ans;\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <utility>\n#include <algorithm>\n\
     #include \"Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp\"\n#include \"\
-    Mylib/Algorithm/Mo/mo_algorithm.cpp\"\n\nnamespace haar_lib {\n  template <typename\
+    Mylib/Algorithm/mo_algorithm.cpp\"\n\nnamespace haar_lib {\n  template <typename\
     \ T>\n  class range_inversions_query {\n    std::vector<int> data_;\n    int N_;\n\
     \    std::vector<std::pair<int, int>> qs_;\n\n  public:\n    range_inversions_query(){}\n\
     \    range_inversions_query(std::vector<T> a): N_(a.size()){\n      auto b = a;\n\
@@ -100,12 +100,12 @@ data:
     \      mo.run();\n\n      return ans;\n    }\n  };\n}\n"
   dependsOn:
   - Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
-  - Mylib/Algorithm/Mo/mo_algorithm.cpp
+  - Mylib/Algorithm/mo_algorithm.cpp
   isVerificationFile: false
   path: Mylib/Typical/range_inversions_query.cpp
   requiredBy: []
-  timestamp: '2020-11-07 03:03:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2020-12-09 10:43:13+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/static_range_inversions_query/main.test.cpp
 documentation_of: Mylib/Typical/range_inversions_query.cpp

@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/system_of_linear_equations/main.test.cpp
     title: test/yosupo-judge/system_of_linear_equations/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp\"\
-    \n#include <vector>\n#include <optional>\n#include <utility>\n\nnamespace haar_lib\
+  bundledCode: "#line 2 \"Mylib/LinearAlgebra/simultaneous_linear_equations.cpp\"\n\
+    #include <vector>\n#include <optional>\n#include <utility>\n\nnamespace haar_lib\
     \ {\n  namespace simulaneous_linear_equations_impl {\n    template <typename T>\n\
     \    struct result {\n      int rank, dim;\n      std::vector<T> solution;\n \
     \     std::vector<std::vector<T>> basis;\n    };\n  }\n\n  template <typename\
@@ -71,13 +71,13 @@ data:
     \  }\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp
+  path: Mylib/LinearAlgebra/simultaneous_linear_equations.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2020-12-09 11:11:37+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/system_of_linear_equations/main.test.cpp
-documentation_of: Mylib/LinearAlgebra/SimultaneousLinearEquations/simultaneous_linear_equations.cpp
+documentation_of: Mylib/LinearAlgebra/simultaneous_linear_equations.cpp
 layout: document
 title: Simultaneous linear equations
 ---

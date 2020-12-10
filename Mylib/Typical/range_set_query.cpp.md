@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
     title: Fenwick tree (Add)
   _extendedRequiredBy: []

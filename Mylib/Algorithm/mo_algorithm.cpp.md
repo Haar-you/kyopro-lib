@@ -2,21 +2,21 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/Typical/range_inversions_query.cpp
     title: Range inversions query
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/0425/main.test.cpp
     title: test/aoj/0425/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/static_range_inversions_query/main.test.cpp
     title: test/yosupo-judge/static_range_inversions_query/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Algorithm/Mo/mo_algorithm.cpp\"\n#include <vector>\n\
+  bundledCode: "#line 2 \"Mylib/Algorithm/mo_algorithm.cpp\"\n#include <vector>\n\
     #include <algorithm>\n#include <cassert>\n#include <cmath>\n\nnamespace haar_lib\
     \ {\n  template <typename AppendLeft, typename AppendRight, typename RemoveLeft,\
     \ typename RemoveRight, typename Query>\n  class mo_algorithm {\n    int N_, Q_,\
@@ -69,15 +69,15 @@ data:
     }\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/Algorithm/Mo/mo_algorithm.cpp
+  path: Mylib/Algorithm/mo_algorithm.cpp
   requiredBy:
   - Mylib/Typical/range_inversions_query.cpp
-  timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2020-12-09 10:43:13+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo-judge/static_range_inversions_query/main.test.cpp
   - test/aoj/0425/main.test.cpp
-documentation_of: Mylib/Algorithm/Mo/mo_algorithm.cpp
+documentation_of: Mylib/Algorithm/mo_algorithm.cpp
 layout: document
 title: Mo's algorithm
 ---

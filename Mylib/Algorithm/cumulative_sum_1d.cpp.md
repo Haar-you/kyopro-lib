@@ -3,17 +3,17 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/static_range_sum/main.test.cpp
     title: test/yosupo-judge/static_range_sum/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp\"\n\
-    #include <vector>\n#include <functional>\n#include <cassert>\n\nnamespace haar_lib\
-    \ {\n  template <typename T>\n  class cumulative_sum_1d {\n  public:\n    using\
-    \ value_type = T;\n\n  private:\n    template <typename> friend class cumulative_sum_1d_builder;\n\
+  bundledCode: "#line 2 \"Mylib/Algorithm/cumulative_sum_1d.cpp\"\n#include <vector>\n\
+    #include <functional>\n#include <cassert>\n\nnamespace haar_lib {\n  template\
+    \ <typename T>\n  class cumulative_sum_1d {\n  public:\n    using value_type =\
+    \ T;\n\n  private:\n    template <typename> friend class cumulative_sum_1d_builder;\n\
     \    int N_;\n    std::vector<T> data_;\n\n  public:\n    T fold(int l, int r)\
     \ const {\n      assert(0 <= l and l <= r and r <= N_);\n      return data_[r]\
     \ - data_[l];\n    }\n  };\n\n  template <typename T>\n  class cumulative_sum_1d_builder\
@@ -42,13 +42,13 @@ data:
     \      return ret;\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp
+  path: Mylib/Algorithm/cumulative_sum_1d.cpp
   requiredBy: []
-  timestamp: '2020-10-11 03:06:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2020-12-09 10:43:13+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/static_range_sum/main.test.cpp
-documentation_of: Mylib/Algorithm/CumulativeSum/cumulative_sum_1d.cpp
+documentation_of: Mylib/Algorithm/cumulative_sum_1d.cpp
 layout: document
 title: 1D cumulative sum
 ---

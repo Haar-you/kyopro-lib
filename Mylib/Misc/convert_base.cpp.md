@@ -38,8 +38,8 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yukicoder/782/main.test.cpp
   - test/yukicoder/499/main.test.cpp
+  - test/yukicoder/782/main.test.cpp
 documentation_of: Mylib/Misc/convert_base.cpp
 layout: document
 title: Convert base

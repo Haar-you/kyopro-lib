@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/184/main.test.cpp
     title: test/yukicoder/184/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/LinearAlgebra/GaussianElimination/binary_gaussian_elimination.cpp\"\
-    \n#include <vector>\n#include <bitset>\n#include <utility>\n\nnamespace haar_lib\
+  bundledCode: "#line 2 \"Mylib/LinearAlgebra/gaussian_elimination_binary.cpp\"\n\
+    #include <vector>\n#include <bitset>\n#include <utility>\n\nnamespace haar_lib\
     \ {\n  template <size_t N>\n  int gaussian_elimination(std::vector<std::bitset<N>>\
     \ &m){\n    const int n = m.size();\n    int rank = 0;\n\n    for(size_t j = 0;\
     \ j < N; ++j){\n      int pivot = -1;\n\n      for(int i = rank; i < n; ++i){\n\
@@ -33,13 +33,13 @@ data:
     \   return gaussian_elimination(m);\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/LinearAlgebra/GaussianElimination/binary_gaussian_elimination.cpp
+  path: Mylib/LinearAlgebra/gaussian_elimination_binary.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2020-12-09 11:11:37+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yukicoder/184/main.test.cpp
-documentation_of: Mylib/LinearAlgebra/GaussianElimination/binary_gaussian_elimination.cpp
+documentation_of: Mylib/LinearAlgebra/gaussian_elimination_binary.cpp
 layout: document
 title: Gaussian elimination (Mod2)
 ---

@@ -34,8 +34,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
-  - test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
   - test/aoj/2842/main.fenwick_tree.test.cpp
+  - test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Group/sum.cpp
 layout: document
 title: Sum group

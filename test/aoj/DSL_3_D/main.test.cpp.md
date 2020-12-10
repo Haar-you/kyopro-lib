@@ -2,12 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp
+    path: Mylib/Algorithm/sliding_minimum.cpp
     title: Sliding window minimum
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
   _extendedRequiredBy: []
@@ -20,7 +20,7 @@ data:
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_3_D
   bundledCode: "#line 1 \"test/aoj/DSL_3_D/main.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_3_D\"\
-    \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#line 3 \"Mylib/Algorithm/sliding_minimum.cpp\"\
     \n#include <deque>\n\nnamespace haar_lib {\n  template <typename T>\n  std::vector<T>\
     \ sliding_minimum(const std::vector<T> &a, int k){\n    const int n = a.size();\n\
     \    std::deque<int> dq;\n    std::vector<T> ret;\n\n    for(int i = 0; i < k;\
@@ -44,19 +44,19 @@ data:
     \ auto ans = hl::sliding_minimum(a, L);\n\n  std::cout << hl::join(ans.begin(),\
     \ ans.end()) << std::endl;\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_3_D\"\
-    \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#include \"Mylib/Algorithm/sliding_minimum.cpp\"\
     \n#include \"Mylib/IO/join.cpp\"\n#include \"Mylib/IO/input_vector.cpp\"\n\nnamespace\
     \ hl = haar_lib;\n\nint main(){\n  int N, L; std::cin >> N >> L;\n\n  auto a =\
     \ hl::input_vector<int>(N);\n\n  auto ans = hl::sliding_minimum(a, L);\n\n  std::cout\
     \ << hl::join(ans.begin(), ans.end()) << std::endl;\n\n  return 0;\n}\n"
   dependsOn:
-  - Mylib/Algorithm/SlidingWindow/sliding_minimum.cpp
+  - Mylib/Algorithm/sliding_minimum.cpp
   - Mylib/IO/join.cpp
   - Mylib/IO/input_vector.cpp
   isVerificationFile: true
   path: test/aoj/DSL_3_D/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2020-12-09 10:43:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DSL_3_D/main.test.cpp

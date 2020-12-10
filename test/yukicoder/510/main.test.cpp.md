@@ -1,31 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/AlgebraicStructure/Monoid/dual.cpp
     title: Dual monoid
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/AlgebraicStructure/Monoid/product_matrix.cpp
     title: Product matrix monoid
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/DataStructure/SegmentTree/segment_tree.cpp
     title: Segment tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':heavy_check_mark:'
-    path: Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp
+  - icon: ':x:'
+    path: Mylib/LinearAlgebra/square_matrix_const_size.cpp
     title: Square matrix (Const size)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/510
@@ -74,8 +74,8 @@ data:
     \ &s, const modint &a){s << a.val_; return s;}\n\n    template <int N>\n    static\
     \ auto div(){\n      static auto value = inv(N);\n      return value;\n    }\n\
     \n    explicit operator int32_t() const noexcept {return val_;}\n    explicit\
-    \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 2 \"Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp\"\
-    \n#include <array>\n#include <initializer_list>\n#line 6 \"Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp\"\
+    \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 2 \"Mylib/LinearAlgebra/square_matrix_const_size.cpp\"\
+    \n#include <array>\n#include <initializer_list>\n#line 6 \"Mylib/LinearAlgebra/square_matrix_const_size.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T, int N>\n  class vector_const\
     \ {\n  public:\n    using value_type = T;\n\n  private:\n    std::array<T, N>\
     \ data_;\n\n  public:\n    vector_const(){data_.fill(0);}\n    vector_const(T\
@@ -217,7 +217,7 @@ data:
     \ 1, 1, 1}));\n      std::cout << ans << \"\\n\";\n    }\n  }\n\n  return 0;\n\
     }\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/510\"\n\n#include <iostream>\n\
-    #include <vector>\n#include \"Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp\"\
+    #include <vector>\n#include \"Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/LinearAlgebra/square_matrix_const_size.cpp\"\
     \n#include \"Mylib/DataStructure/SegmentTree/segment_tree.cpp\"\n#include \"Mylib/AlgebraicStructure/Monoid/product_matrix.cpp\"\
     \n#include \"Mylib/AlgebraicStructure/Monoid/dual.cpp\"\n#include \"Mylib/IO/input_tuples.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nusing mint = hl::modint<1000000007>;\nusing Mat\
@@ -235,7 +235,7 @@ data:
     \  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Number/Mint/mint.cpp
-  - Mylib/LinearAlgebra/Square/square_matrix_const_size.cpp
+  - Mylib/LinearAlgebra/square_matrix_const_size.cpp
   - Mylib/DataStructure/SegmentTree/segment_tree.cpp
   - Mylib/AlgebraicStructure/Monoid/product_matrix.cpp
   - Mylib/AlgebraicStructure/Monoid/dual.cpp
@@ -244,8 +244,8 @@ data:
   isVerificationFile: true
   path: test/yukicoder/510/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-15 01:51:15+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2020-12-09 11:11:37+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/510/main.test.cpp
 layout: document

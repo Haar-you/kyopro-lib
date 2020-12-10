@@ -270,63 +270,63 @@ data:
   isVerificationFile: false
   path: Mylib/Geometry/Float/geometry_template.cpp
   requiredBy:
-  - Mylib/Geometry/Float/reflection.cpp
-  - Mylib/Geometry/Float/intersect_segments.cpp
-  - Mylib/Geometry/Float/convex_hull.cpp
-  - Mylib/Geometry/Float/intersect_circle_line.cpp
-  - Mylib/Geometry/Float/minimum_covering_circle.cpp
-  - Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp
-  - Mylib/Geometry/Float/closest_pair.cpp
-  - Mylib/Geometry/Float/tangent_of_circle.cpp
-  - Mylib/Geometry/Float/distance_line_point.cpp
-  - Mylib/Geometry/Float/intersect_circles.cpp
-  - Mylib/Geometry/Float/is_point_in_polygon.cpp
-  - Mylib/Geometry/Float/area_intersection_of_circles.cpp
-  - Mylib/Geometry/Float/manhattan_segments_intersections.cpp
-  - Mylib/Geometry/Float/parallel.cpp
   - Mylib/Geometry/Float/orthogonal.cpp
-  - Mylib/Geometry/Float/distance_segment_point.cpp
   - Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp
-  - Mylib/Geometry/Float/inscribed_circle_of_triangle.cpp
-  - Mylib/Geometry/Float/area_polygon.cpp
-  - Mylib/Geometry/Float/projection.cpp
+  - Mylib/Geometry/Float/distance_segment_point.cpp
+  - Mylib/Geometry/Float/convex_hull.cpp
+  - Mylib/Geometry/Float/parallel.cpp
+  - Mylib/Geometry/Float/reflection.cpp
+  - Mylib/Geometry/Float/area_intersection_of_circles.cpp
+  - Mylib/Geometry/Float/tangent_of_circle.cpp
   - Mylib/Geometry/Float/intersect_circle_segment.cpp
-  - Mylib/Geometry/Float/distance_segments.cpp
-  - Mylib/Geometry/Float/intersect_line_segment.cpp
+  - Mylib/Geometry/Float/is_point_in_polygon.cpp
   - Mylib/Geometry/Float/common_tangent_of_circles.cpp
   - Mylib/Geometry/Float/convex_diameter.cpp
+  - Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp
+  - Mylib/Geometry/Float/closest_pair.cpp
+  - Mylib/Geometry/Float/intersect_circles.cpp
+  - Mylib/Geometry/Float/distance_segments.cpp
+  - Mylib/Geometry/Float/projection.cpp
+  - Mylib/Geometry/Float/manhattan_segments_intersections.cpp
+  - Mylib/Geometry/Float/distance_line_point.cpp
+  - Mylib/Geometry/Float/minimum_covering_circle.cpp
   - Mylib/Geometry/Float/ccw.cpp
-  - Mylib/Geometry/Float/convex_cut.cpp
   - Mylib/Geometry/Float/is_convex.cpp
+  - Mylib/Geometry/Float/intersect_line_segment.cpp
+  - Mylib/Geometry/Float/area_polygon.cpp
+  - Mylib/Geometry/Float/intersect_circle_line.cpp
+  - Mylib/Geometry/Float/convex_cut.cpp
+  - Mylib/Geometry/Float/inscribed_circle_of_triangle.cpp
+  - Mylib/Geometry/Float/intersect_segments.cpp
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/CGL_1_B/main.test.cpp
-  - test/aoj/CGL_7_D/main.test.cpp
-  - test/aoj/CGL_7_A/main.test.cpp
-  - test/aoj/CGL_2_D/main.test.cpp
-  - test/aoj/2136/main.test.cpp
-  - test/aoj/CGL_7_G/main.test.cpp
-  - test/aoj/CGL_7_I/main.test.cpp
-  - test/aoj/CGL_3_C/main.test.cpp
-  - test/aoj/CGL_7_B/main.test.cpp
-  - test/aoj/CGL_7_H/main.test.cpp
-  - test/aoj/CGL_2_B/main.test.cpp
-  - test/aoj/3034/main.test.cpp
-  - test/aoj/CGL_7_C/main.test.cpp
-  - test/aoj/CGL_1_C/main.test.cpp
   - test/aoj/CGL_4_A/main.test.cpp
-  - test/aoj/CGL_2_C/main.test.cpp
-  - test/aoj/CGL_7_E/main.test.cpp
   - test/aoj/CGL_3_A/main.test.cpp
-  - test/aoj/CGL_2_A/main.test.cpp
-  - test/aoj/CGL_4_B/main.test.cpp
-  - test/aoj/CGL_4_C/main.test.cpp
-  - test/aoj/CGL_1_A/main.test.cpp
-  - test/aoj/CGL_5_A/main.test.cpp
+  - test/aoj/CGL_1_B/main.test.cpp
+  - test/aoj/CGL_7_H/main.test.cpp
+  - test/aoj/CGL_7_C/main.test.cpp
+  - test/aoj/2136/main.test.cpp
+  - test/aoj/CGL_2_C/main.test.cpp
   - test/aoj/CGL_6_A/main.test.cpp
+  - test/aoj/CGL_7_D/main.test.cpp
+  - test/aoj/CGL_4_C/main.test.cpp
+  - test/aoj/CGL_7_B/main.test.cpp
+  - test/aoj/CGL_2_B/main.test.cpp
+  - test/aoj/CGL_4_B/main.test.cpp
   - test/aoj/CGL_7_F/main.test.cpp
+  - test/aoj/CGL_1_A/main.test.cpp
+  - test/aoj/CGL_1_C/main.test.cpp
+  - test/aoj/CGL_7_E/main.test.cpp
+  - test/aoj/CGL_7_A/main.test.cpp
   - test/aoj/CGL_3_B/main.test.cpp
+  - test/aoj/CGL_2_D/main.test.cpp
+  - test/aoj/3034/main.test.cpp
+  - test/aoj/CGL_3_C/main.test.cpp
+  - test/aoj/CGL_2_A/main.test.cpp
+  - test/aoj/CGL_7_G/main.test.cpp
+  - test/aoj/CGL_5_A/main.test.cpp
+  - test/aoj/CGL_7_I/main.test.cpp
 documentation_of: Mylib/Geometry/Float/geometry_template.cpp
 layout: document
 title: Geometry template

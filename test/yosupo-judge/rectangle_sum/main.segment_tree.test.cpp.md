@@ -4,19 +4,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/AlgebraicStructure/Monoid/sum.cpp
     title: Sum monoid
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/DataStructure/SegmentTree/segment_tree.cpp
     title: Segment tree
   - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/SegmentTree/segment_tree_on_segment_tree.cpp
     title: Segment tree (On segment tree)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
   - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
   _extendedRequiredBy: []
