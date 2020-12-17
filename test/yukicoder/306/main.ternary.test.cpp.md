@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Algorithm/ternary_search_downwards.cpp
     title: Ternary search (Convex downwards)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: 1e-6
@@ -41,7 +41,7 @@ data:
   path: test/yukicoder/306/main.ternary.test.cpp
   requiredBy: []
   timestamp: '2020-12-09 10:43:13+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yukicoder/306/main.ternary.test.cpp
 layout: document

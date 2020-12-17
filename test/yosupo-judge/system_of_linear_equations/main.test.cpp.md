@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/LinearAlgebra/simultaneous_linear_equations.cpp
     title: Simultaneous linear equations
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/system_of_linear_equations
@@ -134,7 +134,7 @@ data:
   path: test/yosupo-judge/system_of_linear_equations/main.test.cpp
   requiredBy: []
   timestamp: '2020-12-09 11:11:37+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/system_of_linear_equations/main.test.cpp
 layout: document

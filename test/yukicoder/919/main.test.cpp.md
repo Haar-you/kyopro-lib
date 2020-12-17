@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp
     title: Wavelet matrix
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   _extendedRequiredBy: []

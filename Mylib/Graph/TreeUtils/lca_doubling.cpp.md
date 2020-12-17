@@ -84,8 +84,8 @@ data:
   timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yukicoder/922/main.test.cpp
   - test/aoj/GRL_5_C/main.doubling.test.cpp
+  - test/yukicoder/922/main.test.cpp
 documentation_of: Mylib/Graph/TreeUtils/lca_doubling.cpp
 layout: document
 title: Lowest common ancestor (Doubling)

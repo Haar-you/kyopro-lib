@@ -1,31 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/AlgebraicStructure/Monoid/dual.cpp
     title: Dual monoid
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/AlgebraicStructure/Monoid/product_matrix.cpp
     title: Product matrix monoid
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/SegmentTree/segment_tree.cpp
     title: Segment tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/LinearAlgebra/square_matrix_const_size.cpp
     title: Square matrix (Const size)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/510
@@ -245,7 +245,7 @@ data:
   path: test/yukicoder/510/main.test.cpp
   requiredBy: []
   timestamp: '2020-12-09 11:11:37+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yukicoder/510/main.test.cpp
 layout: document

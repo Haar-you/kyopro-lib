@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/convolution_or.cpp
     title: Convolution (Index bitwise OR)
   - icon: ':heavy_check_mark:'
@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2446/main.test.cpp
     title: test/aoj/2446/main.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo-judge/bitwise_and_convolution/main.or.test.cpp
+    title: test/yosupo-judge/bitwise_and_convolution/main.or.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/subset_convolution/main.test.cpp
     title: test/yosupo-judge/subset_convolution/main.test.cpp
@@ -43,6 +46,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/subset_convolution/main.test.cpp
+  - test/yosupo-judge/bitwise_and_convolution/main.or.test.cpp
   - test/aoj/2446/main.test.cpp
 documentation_of: Mylib/Convolution/fast_mobius_transform_subset.cpp
 layout: document

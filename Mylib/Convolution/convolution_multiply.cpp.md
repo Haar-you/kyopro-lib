@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
   _extendedRequiredBy: []

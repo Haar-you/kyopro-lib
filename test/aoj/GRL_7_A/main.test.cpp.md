@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Matching/bipartite_matching.cpp
     title: Maximum bipartite matching
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
   _extendedRequiredBy: []

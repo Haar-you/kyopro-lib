@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Math/fps_sqrt.cpp
     title: Formal power series (Sqrt)
   _extendedVerifiedWith:
@@ -27,14 +27,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
     title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Math/formal_power_series.cpp\"\n#include <functional>\n\
@@ -180,17 +180,17 @@ data:
   requiredBy:
   - Mylib/Math/fps_sqrt.cpp
   timestamp: '2020-12-09 11:17:21+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo-judge/bernoulli_number/main.test.cpp
-  - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/partition_function/main.fps.test.cpp
-  - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
-  - test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
   - test/yosupo-judge/log_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
+  - test/yosupo-judge/bernoulli_number/main.test.cpp
+  - test/yosupo-judge/partition_function/main.fps.test.cpp
+  - test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
+  - test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
 documentation_of: Mylib/Math/formal_power_series.cpp
 layout: document
 title: Formal power series

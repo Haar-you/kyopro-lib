@@ -57,14 +57,14 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/manhattanmst/main.test.cpp
-  - test/yukicoder/875/main.test.cpp
+  - test/aoj/DSL_2_A/main.test.cpp
   - test/aoj/3035/main.test.cpp
   - test/aoj/DSL_2_H/main.test.cpp
-  - test/aoj/DSL_2_F/main.test.cpp
-  - test/aoj/DSL_2_F/main.dynamic.test.cpp
-  - test/aoj/DSL_2_A/main.test.cpp
   - test/aoj/1508/main.splay_tree.test.cpp
   - test/aoj/1508/main.treap.test.cpp
+  - test/aoj/DSL_2_F/main.test.cpp
+  - test/aoj/DSL_2_F/main.dynamic.test.cpp
+  - test/yukicoder/875/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Monoid/min.cpp
 layout: document
 title: Min monoid

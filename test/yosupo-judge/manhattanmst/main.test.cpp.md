@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/AlgebraicStructure/Monoid/min.cpp
     title: Min monoid
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/SegmentTree/segment_tree.cpp
     title: Segment tree
   - icon: ':heavy_check_mark:'

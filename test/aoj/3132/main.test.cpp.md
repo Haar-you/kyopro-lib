@@ -4,16 +4,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/AlgebraicStructure/Monoid/product.cpp
     title: Product monoid
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/SegmentTree/segment_tree.cpp
     title: Segment tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
   - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
   _extendedRequiredBy: []

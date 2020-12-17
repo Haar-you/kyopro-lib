@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/510/main.test.cpp
     title: test/yukicoder/510/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/LinearAlgebra/square_matrix_const_size.cpp\"\n#include\
@@ -131,7 +131,7 @@ data:
   path: Mylib/LinearAlgebra/square_matrix_const_size.cpp
   requiredBy: []
   timestamp: '2020-12-09 11:11:37+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/510/main.test.cpp
 documentation_of: Mylib/LinearAlgebra/square_matrix_const_size.cpp

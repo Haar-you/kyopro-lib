@@ -8,9 +8,12 @@ data:
     path: Mylib/Convolution/fast_zeta_transform_superset.cpp
     title: Fast Zeta transform (Supersets)
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo-judge/bitwise_and_convolution/main.test.cpp
+    title: test/yosupo-judge/bitwise_and_convolution/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Convolution/convolution_and.cpp\"\n#include <vector>\n\
@@ -44,8 +47,9 @@ data:
   path: Mylib/Convolution/convolution_and.cpp
   requiredBy: []
   timestamp: '2020-10-30 23:28:24+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yosupo-judge/bitwise_and_convolution/main.test.cpp
 documentation_of: Mylib/Convolution/convolution_and.cpp
 layout: document
 title: Convolution (Index bitwise AND)

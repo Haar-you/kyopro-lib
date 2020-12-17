@@ -80,8 +80,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/GRL_6_A/main.ford_fulkerson.test.cpp
-  - test/aoj/3058/main.test.cpp
   - test/aoj/2903/main.test.cpp
+  - test/aoj/3058/main.test.cpp
   - test/aoj/GRL_7_A/main.test.cpp
 documentation_of: Mylib/Graph/Flow/ford_fulkerson.cpp
 layout: document

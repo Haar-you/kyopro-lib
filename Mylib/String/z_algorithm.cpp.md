@@ -40,8 +40,8 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo-judge/zalgorithm/main.test.cpp
   - test/yosupo-judge/runenumerate/main.test.cpp
+  - test/yosupo-judge/zalgorithm/main.test.cpp
 documentation_of: Mylib/String/z_algorithm.cpp
 layout: document
 title: Z-algorithm

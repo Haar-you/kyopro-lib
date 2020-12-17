@@ -139,8 +139,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/2136/main.test.cpp
-  - test/aoj/CGL_2_C/main.test.cpp
   - test/aoj/CGL_2_B/main.test.cpp
+  - test/aoj/CGL_2_C/main.test.cpp
 documentation_of: Mylib/Geometry/Float/intersect_segments.cpp
 layout: document
 title: Intersection between two segments

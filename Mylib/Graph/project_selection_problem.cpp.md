@@ -88,8 +88,8 @@ data:
   timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/3058/main.test.cpp
   - test/aoj/2903/main.test.cpp
+  - test/aoj/3058/main.test.cpp
 documentation_of: Mylib/Graph/project_selection_problem.cpp
 layout: document
 title: Project selection problem

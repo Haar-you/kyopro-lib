@@ -2,9 +2,12 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo-judge/bitwise_xor_convolution/main.test.cpp
+    title: test/yosupo-judge/bitwise_xor_convolution/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Convolution/convolution_xor.cpp\"\n#include <vector>\n\
@@ -42,8 +45,9 @@ data:
   path: Mylib/Convolution/convolution_xor.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yosupo-judge/bitwise_xor_convolution/main.test.cpp
 documentation_of: Mylib/Convolution/convolution_xor.cpp
 layout: document
 title: Convolution (Index bitwise XOR)

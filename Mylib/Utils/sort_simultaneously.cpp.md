@@ -47,8 +47,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
-  - test/yukicoder/235/main.test.cpp
   - test/aoj/2426/main.test.cpp
+  - test/yukicoder/235/main.test.cpp
 documentation_of: Mylib/Utils/sort_simultaneously.cpp
 layout: document
 title: Sort simultaneously

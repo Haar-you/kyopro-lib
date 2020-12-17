@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_sqrt.cpp
     title: Mod sqrt
   _extendedRequiredBy: []

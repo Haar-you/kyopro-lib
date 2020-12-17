@@ -12,11 +12,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
     title: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/510/main.test.cpp
     title: test/yukicoder/510/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Monoid/dual.cpp\"\n\nnamespace\
@@ -34,11 +34,11 @@ data:
   path: Mylib/AlgebraicStructure/Monoid/dual.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
-  - test/yosupo-judge/queue_operate_all_composite/main.test.cpp
   - test/yosupo-judge/point_set_range_composite/main.test.cpp
+  - test/yosupo-judge/queue_operate_all_composite/main.test.cpp
+  - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
   - test/yukicoder/510/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Monoid/dual.cpp
 layout: document

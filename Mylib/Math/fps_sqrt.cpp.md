@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Math/formal_power_series.cpp
     title: Formal power series
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_sqrt.cpp
     title: Mod sqrt
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Math/formal_power_series.cpp\"\n#include <functional>\n\
@@ -139,7 +139,7 @@ data:
   path: Mylib/Math/fps_sqrt.cpp
   requiredBy: []
   timestamp: '2020-12-09 11:17:21+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
 documentation_of: Mylib/Math/fps_sqrt.cpp

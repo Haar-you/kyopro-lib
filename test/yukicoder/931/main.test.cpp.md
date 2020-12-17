@@ -4,19 +4,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/convolution_multiply.cpp
     title: Convolution (Index multiplication mod P)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
   _extendedRequiredBy: []

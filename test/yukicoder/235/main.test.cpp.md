@@ -10,16 +10,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp
     title: Heavy-light decomposition
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   - icon: ':heavy_check_mark:'

@@ -8,9 +8,12 @@ data:
     path: Mylib/Convolution/fast_zeta_transform_subset.cpp
     title: Fast Zeta transform (Subsets)
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo-judge/bitwise_and_convolution/main.or.test.cpp
+    title: test/yosupo-judge/bitwise_and_convolution/main.or.test.cpp
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Convolution/convolution_or.cpp\"\n#include <vector>\n\
@@ -44,8 +47,9 @@ data:
   path: Mylib/Convolution/convolution_or.cpp
   requiredBy: []
   timestamp: '2020-10-30 23:28:24+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yosupo-judge/bitwise_and_convolution/main.or.test.cpp
 documentation_of: Mylib/Convolution/convolution_or.cpp
 layout: document
 title: Convolution (Index bitwise OR)

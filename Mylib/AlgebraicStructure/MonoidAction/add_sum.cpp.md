@@ -33,8 +33,8 @@ data:
   timestamp: '2020-10-02 17:13:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/DSL_2_G/main.test.cpp
   - test/aoj/2667/main.test.cpp
+  - test/aoj/DSL_2_G/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/MonoidAction/add_sum.cpp
 layout: document
 title: Range add / Range sum

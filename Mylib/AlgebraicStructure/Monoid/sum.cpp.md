@@ -90,22 +90,22 @@ data:
   - test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
   - test/yosupo-judge/rectangle_sum/main.segment_tree.test.cpp
   - test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
+  - test/yosupo-judge/range_affine_range_sum/main.test.cpp
   - test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp
   - test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
-  - test/yosupo-judge/range_affine_range_sum/main.test.cpp
-  - test/yukicoder/631/main.test.cpp
-  - test/yukicoder/899/main.test.cpp
-  - test/yukicoder/789/main.test.cpp
-  - test/yukicoder/1099/main.test.cpp
+  - test/aoj/2667/main.test.cpp
+  - test/aoj/DSL_2_B/main.test.cpp
+  - test/aoj/3035/main.test.cpp
+  - test/aoj/DSL_2_H/main.test.cpp
   - test/aoj/DSL_2_E/main.test.cpp
   - test/aoj/DSL_2_E/main.dynamic.test.cpp
-  - test/aoj/3035/main.test.cpp
-  - test/aoj/2842/main.segment_tree.test.cpp
-  - test/aoj/DSL_2_H/main.test.cpp
-  - test/aoj/DSL_2_B/main.test.cpp
-  - test/aoj/DSL_2_G/main.test.cpp
   - test/aoj/DSL_2_I/main.test.cpp
-  - test/aoj/2667/main.test.cpp
+  - test/aoj/2842/main.segment_tree.test.cpp
+  - test/aoj/DSL_2_G/main.test.cpp
+  - test/yukicoder/1099/main.test.cpp
+  - test/yukicoder/899/main.test.cpp
+  - test/yukicoder/789/main.test.cpp
+  - test/yukicoder/631/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Monoid/sum.cpp
 layout: document
 title: Sum monoid

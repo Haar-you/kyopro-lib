@@ -2,13 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/convolution_and.cpp
     title: Convolution (Index bitwise AND)
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/3119/main.test.cpp
     title: test/aoj/3119/main.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo-judge/bitwise_and_convolution/main.test.cpp
+    title: test/yosupo-judge/bitwise_and_convolution/main.test.cpp
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -35,6 +38,7 @@ data:
   timestamp: '2020-10-30 23:28:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yosupo-judge/bitwise_and_convolution/main.test.cpp
   - test/aoj/3119/main.test.cpp
 documentation_of: Mylib/Convolution/fast_zeta_transform_superset.cpp
 layout: document
