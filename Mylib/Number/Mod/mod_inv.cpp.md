@@ -8,6 +8,9 @@ data:
   - icon: ':warning:'
     path: Mylib/Number/garner.cpp
     title: Garner algorithm
+  - icon: ':warning:'
+    path: Mylib/Number/linear_congruence_equation.cpp
+    title: Linear congruence equation
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
@@ -32,6 +35,7 @@ data:
   requiredBy:
   - Mylib/Number/garner.cpp
   - Mylib/Number/Mod/mod_log.cpp
+  - Mylib/Number/linear_congruence_equation.cpp
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

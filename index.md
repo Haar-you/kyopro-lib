@@ -995,6 +995,9 @@ data:
       title: Modint (Runtime mod)
   - name: Mylib/Number/Mod
     pages:
+    - icon: ':warning:'
+      path: Mylib/Number/Mod/enumerate_mod_inv.cpp
+      title: Enumerate mod inv
     - icon: ':heavy_check_mark:'
       path: Mylib/Number/Mod/mod_inv.cpp
       title: Mod inverse
@@ -1087,6 +1090,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Number/kth_root_integer.cpp
       title: Kth root integer
+    - icon: ':warning:'
+      path: Mylib/Number/linear_congruence_equation.cpp
+      title: Linear congruence equation
     - icon: ':warning:'
       path: Mylib/Number/mobius_function.cpp
       title: "M\xF6bius function"
