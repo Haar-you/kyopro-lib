@@ -30,7 +30,7 @@ data:
     \ i, i + pattern.size())) ret.push_back(i);\n      }\n\n      return ret;\n  \
     \  }\n  };\n\n  auto make_rh(int size, int MOD, int seed = 0){\n    std::mt19937\
     \ rnd(seed);\n    std::uniform_int_distribution<> dist(2, MOD - 2);\n    return\
-    \ rolling_hash(size, dist(rnd), MOD);\n  }\n}\n"
+    \ rolling_hash(size, MOD, dist(rnd));\n  }\n}\n"
   code: "#pragma once\n#include <vector>\n#include <random>\n\nnamespace haar_lib\
     \ {\n  class rolling_hash {\n    std::vector<int64_t> pow_;\n    int64_t MOD_,\
     \ BASE_;\n\n  public:\n    rolling_hash(){}\n    rolling_hash(int size, int MOD,\
@@ -50,12 +50,12 @@ data:
     \ ++i){\n        if(hp == get(hs, i, i + pattern.size())) ret.push_back(i);\n\
     \      }\n\n      return ret;\n    }\n  };\n\n  auto make_rh(int size, int MOD,\
     \ int seed = 0){\n    std::mt19937 rnd(seed);\n    std::uniform_int_distribution<>\
-    \ dist(2, MOD - 2);\n    return rolling_hash(size, dist(rnd), MOD);\n  }\n}\n"
+    \ dist(2, MOD - 2);\n    return rolling_hash(size, MOD, dist(rnd));\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/String/rolling_hash.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2021-01-03 21:45:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/ALDS1_14_B/main.test.cpp

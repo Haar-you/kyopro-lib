@@ -35,7 +35,7 @@ data:
     \ i, i + pattern.size())) ret.push_back(i);\n      }\n\n      return ret;\n  \
     \  }\n  };\n\n  auto make_rh(int size, int MOD, int seed = 0){\n    std::mt19937\
     \ rnd(seed);\n    std::uniform_int_distribution<> dist(2, MOD - 2);\n    return\
-    \ rolling_hash(size, dist(rnd), MOD);\n  }\n}\n#line 6 \"test/aoj/ALDS1_14_B/main.test.cpp\"\
+    \ rolling_hash(size, MOD, dist(rnd));\n  }\n}\n#line 6 \"test/aoj/ALDS1_14_B/main.test.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nint main(){\n  auto rh = hl::make_rh(1000000,\
     \ 1000000007);\n\n  std::string t, p; std::cin >> t >> p;\n\n  auto res = rh.find(t,\
     \ p);\n  for(auto i : res) std::cout << i << \"\\n\";\n\n  return 0;\n}\n"
@@ -49,7 +49,7 @@ data:
   isVerificationFile: true
   path: test/aoj/ALDS1_14_B/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2021-01-03 21:45:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/ALDS1_14_B/main.test.cpp

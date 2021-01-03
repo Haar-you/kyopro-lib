@@ -45,7 +45,7 @@ data:
     \ j);\n        }\n      }\n\n      return ret;\n    }\n  };\n\n  auto make_rh_2d(int\
     \ width, int height, int MOD, int seed = 0){\n    std::mt19937 rnd(seed);\n  \
     \  std::uniform_int_distribution<> dist(2, MOD - 2);\n    return rolling_hash_2d(width,\
-    \ height, dist(rnd), dist(rnd), MOD);\n  }\n}\n"
+    \ height, MOD, dist(rnd), dist(rnd));\n  }\n}\n"
   code: "#pragma once\n#include <vector>\n#include <random>\n\nnamespace haar_lib\
     \ {\n  class rolling_hash_2d {\n    std::vector<int64_t> pow_w_, pow_h_;\n   \
     \ int64_t MOD_, BASEW_, BASEH_;\n\n  public:\n    rolling_hash_2d(){}\n    rolling_hash_2d(int\
@@ -81,12 +81,12 @@ data:
     \ j);\n        }\n      }\n\n      return ret;\n    }\n  };\n\n  auto make_rh_2d(int\
     \ width, int height, int MOD, int seed = 0){\n    std::mt19937 rnd(seed);\n  \
     \  std::uniform_int_distribution<> dist(2, MOD - 2);\n    return rolling_hash_2d(width,\
-    \ height, dist(rnd), dist(rnd), MOD);\n  }\n}\n"
+    \ height, MOD, dist(rnd), dist(rnd));\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/String/rolling_hash_2d.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2021-01-03 21:45:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/ALDS1_14_C/main.test.cpp

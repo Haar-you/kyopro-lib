@@ -53,7 +53,7 @@ data:
     \ j);\n        }\n      }\n\n      return ret;\n    }\n  };\n\n  auto make_rh_2d(int\
     \ width, int height, int MOD, int seed = 0){\n    std::mt19937 rnd(seed);\n  \
     \  std::uniform_int_distribution<> dist(2, MOD - 2);\n    return rolling_hash_2d(width,\
-    \ height, dist(rnd), dist(rnd), MOD);\n  }\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\
+    \ height, MOD, dist(rnd), dist(rnd));\n  }\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  std::vector<T> input_vector(int\
     \ N){\n    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i) std::cin >>\
     \ ret[i];\n    return ret;\n  }\n\n  template <typename T>\n  std::vector<std::vector<T>>\
@@ -79,7 +79,7 @@ data:
   isVerificationFile: true
   path: test/aoj/ALDS1_14_C/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2021-01-03 21:45:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/ALDS1_14_C/main.test.cpp
