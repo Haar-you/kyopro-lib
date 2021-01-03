@@ -51,6 +51,6 @@ namespace haar_lib {
   auto make_rh(int size, int MOD, int seed = 0){
     std::mt19937 rnd(seed);
     std::uniform_int_distribution<> dist(2, MOD - 2);
-    return rolling_hash(size, dist(rnd), MOD);
+    return rolling_hash(size, MOD, dist(rnd));
   }
 }

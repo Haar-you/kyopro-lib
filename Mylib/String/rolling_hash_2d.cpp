@@ -87,6 +87,6 @@ namespace haar_lib {
   auto make_rh_2d(int width, int height, int MOD, int seed = 0){
     std::mt19937 rnd(seed);
     std::uniform_int_distribution<> dist(2, MOD - 2);
-    return rolling_hash_2d(width, height, dist(rnd), dist(rnd), MOD);
+    return rolling_hash_2d(width, height, MOD, dist(rnd), dist(rnd));
   }
 }
