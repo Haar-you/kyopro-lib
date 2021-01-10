@@ -17,8 +17,8 @@ namespace haar_lib {
 
     void update(int l, int r, T val){ // [l, r)
       assert(0 <= l and l <= r and r <= n_);
-      data_[l] += 1;
-      if(r < n_) data_[r] -= 1;
+      data_[l] += val;
+      if(r < n_) data_[r] -= val;
     }
 
     auto build() const {
