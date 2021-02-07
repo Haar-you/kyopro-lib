@@ -6,6 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
     title: test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

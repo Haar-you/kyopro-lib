@@ -15,6 +15,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
     title: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -34,8 +35,8 @@ data:
   path: Mylib/Number/Mod/mod_inv.cpp
   requiredBy:
   - Mylib/Number/garner.cpp
-  - Mylib/Number/Mod/mod_log.cpp
   - Mylib/Number/linear_congruence_equation.cpp
+  - Mylib/Number/Mod/mod_log.cpp
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

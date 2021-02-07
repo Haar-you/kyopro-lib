@@ -12,6 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/NTL_1_D/main.test.cpp
     title: test/aoj/NTL_1_D/main.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -37,8 +38,8 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/NTL_1_D/main.test.cpp
   - test/aoj/NTL_1_A/main.test.cpp
+  - test/aoj/NTL_1_D/main.test.cpp
 documentation_of: Mylib/Number/Prime/prime_factorize.cpp
 layout: document
 title: Prime factorization

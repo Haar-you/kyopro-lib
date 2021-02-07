@@ -12,6 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
     title: test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -34,8 +35,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/rectangle_sum/main.fenwick_tree.test.cpp
-  - test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
   - test/aoj/2842/main.fenwick_tree.test.cpp
+  - test/aoj/DSL_2_B/main.fenwick_tree.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Group/sum.cpp
 layout: document
 title: Sum group

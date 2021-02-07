@@ -21,6 +21,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_7_H/main.test.cpp
     title: test/aoj/CGL_7_H/main.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -88,14 +89,14 @@ data:
   isVerificationFile: false
   path: Mylib/Geometry/Float/distance_segment_point.cpp
   requiredBy:
+  - Mylib/Geometry/Float/intersect_circle_segment.cpp
   - Mylib/Geometry/Float/distance_segments.cpp
   - Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp
-  - Mylib/Geometry/Float/intersect_circle_segment.cpp
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/CGL_7_H/main.test.cpp
   - test/aoj/CGL_2_D/main.test.cpp
+  - test/aoj/CGL_7_H/main.test.cpp
 documentation_of: Mylib/Geometry/Float/distance_segment_point.cpp
 layout: document
 title: Distance between a segment and a point

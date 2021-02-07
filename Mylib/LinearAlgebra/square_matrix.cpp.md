@@ -12,6 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/194/main.test.cpp
     title: test/yukicoder/194/main.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -140,8 +141,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/matrix_det/main.test.cpp
-  - test/aoj/1327/main.test.cpp
   - test/yukicoder/194/main.test.cpp
+  - test/aoj/1327/main.test.cpp
 documentation_of: Mylib/LinearAlgebra/square_matrix.cpp
 layout: document
 title: Square matrix

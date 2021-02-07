@@ -78,6 +78,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/931/main.test.cpp
     title: test/yukicoder/931/main.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -94,34 +95,34 @@ data:
   isVerificationFile: false
   path: Mylib/Number/Mod/mod_pow.cpp
   requiredBy:
-  - Mylib/Convolution/convolution_multiply.cpp
   - Mylib/Math/fps_sqrt.cpp
-  - Mylib/Graph/Coloring/chromatic_number.cpp
+  - Mylib/Convolution/convolution_multiply.cpp
   - Mylib/Number/Prime/primitive_root.cpp
   - Mylib/Number/Mod/mod_sqrt.cpp
   - Mylib/Number/Mod/mod_log.cpp
+  - Mylib/Graph/Coloring/chromatic_number.cpp
   timestamp: '2020-10-28 03:22:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
-  - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/sqrt_mod/main.test.cpp
-  - test/yosupo-judge/convolution_mod/main.test.cpp
   - test/yosupo-judge/log_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/multipoint_evaluation/main.test.cpp
-  - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
-  - test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
-  - test/yosupo-judge/bernoulli_number/main.test.cpp
   - test/yosupo-judge/partition_function/main.fps.test.cpp
+  - test/yosupo-judge/multipoint_evaluation/main.test.cpp
+  - test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
+  - test/yosupo-judge/sqrt_mod/main.test.cpp
+  - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
+  - test/yosupo-judge/bernoulli_number/main.test.cpp
+  - test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
+  - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+  - test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
+  - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/convolution_mod/main.test.cpp
+  - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
   - test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
-  - test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
-  - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
-  - test/aoj/2136/main.test.cpp
-  - test/aoj/2530/main.test.cpp
   - test/yukicoder/931/main.test.cpp
+  - test/aoj/2530/main.test.cpp
+  - test/aoj/2136/main.test.cpp
 documentation_of: Mylib/Number/Mod/mod_pow.cpp
 layout: document
 title: Mod pow

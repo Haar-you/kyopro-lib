@@ -12,6 +12,7 @@ data:
     title: Subset sum problem (With quantity limitations)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

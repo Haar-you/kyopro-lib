@@ -6,6 +6,7 @@ data:
     path: Mylib/AlgebraicStructure/MonoidAction/multiply_product.cpp
     title: Range multiply / Range product
   _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:

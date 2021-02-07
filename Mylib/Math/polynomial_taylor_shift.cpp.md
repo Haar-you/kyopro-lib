@@ -12,6 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -45,8 +46,8 @@ data:
   timestamp: '2020-11-04 17:40:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
   - test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
+  - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
 documentation_of: Mylib/Math/polynomial_taylor_shift.cpp
 layout: document
 title: Polynomial taylor shift

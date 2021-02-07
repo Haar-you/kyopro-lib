@@ -6,6 +6,7 @@ data:
     title: Interval scheduling problem (Allow no more than k intervals to overlap)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

@@ -21,6 +21,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/919/main.test.cpp
     title: test/yukicoder/919/main.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -105,10 +106,10 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/range_kth_smallest/main.test.cpp
-  - test/aoj/2426/main.test.cpp
-  - test/aoj/2674/main.test.cpp
-  - test/aoj/1549/main.test.cpp
   - test/yukicoder/919/main.test.cpp
+  - test/aoj/2426/main.test.cpp
+  - test/aoj/1549/main.test.cpp
+  - test/aoj/2674/main.test.cpp
 documentation_of: Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp
 layout: document
 title: Succinct dictionary

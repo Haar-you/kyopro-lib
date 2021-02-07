@@ -12,6 +12,7 @@ data:
     title: Input tuples
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -25,8 +26,8 @@ data:
     \ T>\n  struct imos_1d {\n    using value_type = T;\n\n  private:\n    std::vector<T>\
     \ data_;\n    int n_;\n\n  public:\n    imos_1d(){}\n    imos_1d(int n): data_(n),\
     \ n_(n){}\n\n    void update(int l, int r, T val){ // [l, r)\n      assert(0 <=\
-    \ l and l <= r and r <= n_);\n      data_[l] += 1;\n      if(r < n_) data_[r]\
-    \ -= 1;\n    }\n\n    auto build() const {\n      std::vector<T> ret(data_);\n\
+    \ l and l <= r and r <= n_);\n      data_[l] += val;\n      if(r < n_) data_[r]\
+    \ -= val;\n    }\n\n    auto build() const {\n      std::vector<T> ret(data_);\n\
     \      for(int i = 1; i < n_; ++i){\n        ret[i] += ret[i - 1];\n      }\n\
     \      return ret;\n    }\n  };\n}\n#line 4 \"Mylib/IO/input_tuples.cpp\"\n#include\
     \ <tuple>\n#include <utility>\n#include <initializer_list>\n#line 6 \"Mylib/IO/input_tuple.cpp\"\
@@ -67,7 +68,7 @@ data:
   isVerificationFile: true
   path: test/aoj/DSL_5_A/main.test.cpp
   requiredBy: []
-  timestamp: '2020-12-09 10:43:13+09:00'
+  timestamp: '2021-01-11 01:26:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DSL_5_A/main.test.cpp

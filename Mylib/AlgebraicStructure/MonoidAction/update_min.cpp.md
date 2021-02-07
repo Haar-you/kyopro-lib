@@ -9,6 +9,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/DSL_2_F/main.test.cpp
     title: test/aoj/DSL_2_F/main.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -33,8 +34,8 @@ data:
   timestamp: '2020-10-02 17:13:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/DSL_2_F/main.test.cpp
   - test/aoj/DSL_2_F/main.dynamic.test.cpp
+  - test/aoj/DSL_2_F/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/MonoidAction/update_min.cpp
 layout: document
 title: Range update / Range min

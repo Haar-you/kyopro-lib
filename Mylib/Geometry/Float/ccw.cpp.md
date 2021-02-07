@@ -39,6 +39,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_4_C/main.test.cpp
     title: test/aoj/CGL_4_C/main.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -134,20 +135,20 @@ data:
   isVerificationFile: false
   path: Mylib/Geometry/Float/ccw.cpp
   requiredBy:
-  - Mylib/Geometry/Float/intersect_segments.cpp
-  - Mylib/Geometry/Float/is_point_in_polygon.cpp
   - Mylib/Geometry/Float/is_convex.cpp
+  - Mylib/Geometry/Float/is_point_in_polygon.cpp
+  - Mylib/Geometry/Float/intersect_segments.cpp
   - Mylib/Geometry/Float/convex_cut.cpp
   timestamp: '2020-09-19 20:03:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/2136/main.test.cpp
-  - test/aoj/CGL_1_C/main.test.cpp
-  - test/aoj/CGL_2_B/main.test.cpp
   - test/aoj/CGL_2_C/main.test.cpp
-  - test/aoj/CGL_3_B/main.test.cpp
+  - test/aoj/CGL_2_B/main.test.cpp
   - test/aoj/CGL_4_C/main.test.cpp
+  - test/aoj/CGL_1_C/main.test.cpp
   - test/aoj/CGL_3_C/main.test.cpp
+  - test/aoj/CGL_3_B/main.test.cpp
+  - test/aoj/2136/main.test.cpp
 documentation_of: Mylib/Geometry/Float/ccw.cpp
 layout: document
 title: Check clockwise-counterclockwise

@@ -9,6 +9,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp
     title: test/yosupo-judge/vertex_add_subtree_sum/main.euler_tour.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

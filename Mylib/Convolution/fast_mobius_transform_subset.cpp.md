@@ -18,6 +18,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/subset_convolution/main.test.cpp
     title: test/yosupo-judge/subset_convolution/main.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -45,8 +46,8 @@ data:
   timestamp: '2020-10-30 23:28:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo-judge/subset_convolution/main.test.cpp
   - test/yosupo-judge/bitwise_and_convolution/main.or.test.cpp
+  - test/yosupo-judge/subset_convolution/main.test.cpp
   - test/aoj/2446/main.test.cpp
 documentation_of: Mylib/Convolution/fast_mobius_transform_subset.cpp
 layout: document

@@ -18,6 +18,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/0558/main.test.cpp
     title: test/aoj/0558/main.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -58,9 +59,9 @@ data:
   isVerificationFile: false
   path: Mylib/Grid/grid.cpp
   requiredBy:
+  - Mylib/Grid/grid_find.cpp
   - Mylib/Grid/grid_bfs.cpp
   - Mylib/Grid/grid_to_graph.cpp
-  - Mylib/Grid/grid_find.cpp
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -947,6 +947,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Misc/dice.cpp
       title: Dice
+    - icon: ':warning:'
+      path: Mylib/Misc/get_decimal.cpp
+      title: Input decimal
     - icon: ':heavy_check_mark:'
       path: Mylib/Misc/int128.cpp
       title: 128-bit int

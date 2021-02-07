@@ -12,6 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/922/main.test.cpp
     title: test/yukicoder/922/main.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -105,8 +106,8 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/1595/main.test.cpp
   - test/yukicoder/922/main.test.cpp
+  - test/aoj/1595/main.test.cpp
 documentation_of: Mylib/Graph/TreeUtils/rerooting.cpp
 layout: document
 title: Rerooting DP

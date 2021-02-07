@@ -18,6 +18,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/899/main.test.cpp
     title: test/yukicoder/899/main.test.cpp
+  _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -38,11 +39,11 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/DSL_2_D/main.test.cpp
-  - test/aoj/DSL_2_I/main.test.cpp
-  - test/aoj/DSL_2_F/main.test.cpp
-  - test/aoj/DSL_2_F/main.dynamic.test.cpp
   - test/yukicoder/899/main.test.cpp
+  - test/aoj/DSL_2_I/main.test.cpp
+  - test/aoj/DSL_2_D/main.test.cpp
+  - test/aoj/DSL_2_F/main.dynamic.test.cpp
+  - test/aoj/DSL_2_F/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Monoid/update.cpp
 layout: document
 title: Update monoid
