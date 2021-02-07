@@ -8,11 +8,18 @@ require "pathname"
 opts = OptionParser.new
 
 $exec_only = false
+$compile_only = false
+
 $debug = true
 $cpp_version = "c++1z"
-$boost = nil
-$compile_only = false
+
 $use_atcoder_lib = false
+$atcoder_lib_path = nil
+
+$use_boost = false
+$boost_path = nil
+
+$sanitize = false
 
 opts.on("-e", "--exec-only"){
   $exec_only = true
@@ -35,13 +42,31 @@ opts.on("--atcoder"){
   $atcoder_lib_path = ENV["ATCODER_LIB_PATH"]
 }
 
+opts.on("--boost"){
+  $use_boost_lib = true
+  $boost_path = ENV["BOOST_PATH"]
+}
+
+opts.on("--sanitize"){
+  $sanitize = true
+}
+
 $mylib = Pathname.new(__dir__).parent
 
 opts.parse!(ARGV)
 source_file, input_file = ARGV
 
 if not $exec_only
-  puts "\e[33;1m compiling ... \e[m"
+  STDERR.puts "\e[33;1m bundling ... \e[m"
+  bundled_file = "#{source_file}.bundle.cpp"
+  o, e, s = Open3.capture3("oj-bundle #{source_file} -I #{$mylib} > #{bundled_file}")
+
+  unless s.success?
+    STDERR.print e
+    exit(1)
+  end
+
+  STDERR.puts "\e[33;1m compiling ... \e[m"
 
   cmd = [
     "g++",
@@ -51,25 +76,25 @@ if not $exec_only
     "-Wall",
     "-Wextra",
     "-I#{$mylib}",
-    $boost.nil? ? "" : "-I#{$boost}",
     $debug ? "-DDEBUG" : "",
     $debug ? "-D_GLIBCXX_DEBUG" : "",
-    #"-fsanitize=undefined",
+    ($debug and $sanitize) ? "-fsanitize=undefined" : "",
     $debug ? "-g" : "",
+    $use_boost ? "-I#{$boost_path}" : "",
     $use_atcoder_lib ? "-I#{$atcoder_lib_path}" : "",
     "-o a.out"
   ]
 
-  puts cmd.join(" ")
+  STDERR.puts cmd.join(" ")
 
   o, e, s = Open3.capture3(cmd.join(" "))
 
   print o
-  print e
+  STDERR.print e
 
   exit(1) unless s.success?
 
-  puts "\e[33;1m compiled \e[m"
+  STDERR.puts "\e[33;1m compiled \e[m"
 end
 
 if not $compile_only

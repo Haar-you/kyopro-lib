@@ -30,16 +30,26 @@ Dir.glob("#{path}/Mylib/**/*.cpp").each do |fp|
 
   Dir.mkdir("snippet") unless Dir.exist?("snippet")
 
-  File.open("snippet/#{path}", "w") do |f|
-
+  File.open("snippet/#{name}.cpp", "w") do |f|
     f.write <<EOS
 # -*- mode: snippet -*-
 # name: #{name}
 # key: #{key}
 # --
 
+#include "Mylib/#{path.gsub("__", "/")}"
 EOS
-    
+  end
+
+  File.open("snippet/#{name}__source.cpp", "w") do |f|
+    f.write <<EOS
+# -*- mode: snippet -*-
+# name: #{name}__source
+# key: #{key}__source
+# --
+
+EOS
+
     contents.each do |line|
       f.write line
     end
