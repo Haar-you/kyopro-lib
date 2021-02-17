@@ -75,28 +75,33 @@ namespace haar_lib {
     }
 
     template <typename U>
-    std::vector<T> convolve(std::vector<U> f, std::vector<U> g) const {
+    std::vector<T> convolve(std::vector<U> f, std::vector<U> g, bool is_same = false) const {
       const int m = f.size() + g.size() - 1;
       int n = 1;
       while(n < m) n *= 2;
 
-      std::vector<T> f2(n), g2(n);
-
+      std::vector<T> f2(n);
       for(int i = 0; i < (int)f.size(); ++i) f2[i] = (int64_t)f[i];
-      for(int i = 0; i < (int)g.size(); ++i) g2[i] = (int64_t)g[i];
-
       run(f2);
-      run(g2);
 
-      for(int i = 0; i < n; ++i) f2[i] *= g2[i];
-      run(f2, true);
+      if(is_same){
+        for(int i = 0; i < n; ++i) f2[i] *= f2[i];
+        run(f2, true);
+      }else{
+        std::vector<T> g2(n);
+        for(int i = 0; i < (int)g.size(); ++i) g2[i] = (int64_t)g[i];
+        run(g2);
+
+        for(int i = 0; i < n; ++i) f2[i] *= g2[i];
+        run(f2, true);
+      }
 
       return f2;
     }
 
     template <typename U>
-    std::vector<T> operator()(std::vector<U> f, std::vector<U> g) const {
-      return convolve(f, g);
+    std::vector<T> operator()(std::vector<U> f, std::vector<U> g, bool is_same = false) const {
+      return convolve(f, g, is_same);
     }
   };
 
