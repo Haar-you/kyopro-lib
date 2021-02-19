@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <initializer_list>
+#include <algorithm>
 
 namespace haar_lib {
   template <typename T, const auto &convolve>
@@ -18,12 +19,23 @@ namespace haar_lib {
 
     auto& data(){return data_;}
     const auto& data() const {return data_;}
-    int size() const {return data_.size();}
+    size_t size() const {return data_.size();}
     auto begin(){return data_.begin();}
     auto end(){return data_.end();}
 
     const auto& operator[](size_t i) const {return data_[i];}
     auto& operator[](size_t i){return data_[i];}
+
+    auto get(int n) const {
+      return polynomial(std::vector(data_.begin(), data_.begin() + std::min<int>(n, data_.size())));
+    }
+
+    int shrink(){
+      while(not data_.empty() and data_.back() == 0){
+        data_.pop_back();
+      }
+      return data_.size();
+    }
 
     auto& operator+=(const polynomial &that){
       if(data_.size() < that.data_.size()) data_.resize(that.data_.size());
@@ -111,13 +123,20 @@ namespace haar_lib {
       return ret;
     }
 
+    auto square() const {
+      const int k = data_.size() * 2 - 1;
+      auto ret = convolve(data_, data_, true);
+      ret.resize(k);
+      return polynomial(ret);
+    }
+
     auto inv(int n) const {
       polynomial ret({data_[0].inv()});
       int t = 1;
 
       while(t <= n * 2){
-        ret = ret * T(2) - ret * ret * (*this);
-        ret.data_.resize(t);
+        ret = ret * T(2) - ret.square().get(t) * (*this).get(t);
+        if((int)ret.data_.size() > t) ret.data_.resize(t);
         t *= 2;
       }
 
@@ -148,7 +167,28 @@ namespace haar_lib {
       auto r = (*this) - that * q;
       r.data_.resize(d);
 
+      r.shrink();
+      q.shrink();
+
       return {q, r};
+    }
+
+    auto& operator/=(const polynomial &that){
+      *this = divmod(that).first;
+      return *this;
+    }
+
+    auto& operator%=(const polynomial &that){
+      *this = divmod(that).second;
+      return *this;
+    }
+
+    auto operator/(const polynomial &that) const {
+      return polynomial(*this) /= that;
+    }
+
+    auto operator%(const polynomial &that) const {
+      return polynomial(*this) %= that;
     }
   };
 }
