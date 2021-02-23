@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
   _extendedRequiredBy: []
@@ -100,57 +100,60 @@ data:
     \ + b] * w;\n\n              f[i + j] = s + t;\n              f[i + j + b] = s\
     \ - t;\n            }\n            w *= BASE_[__builtin_ctz(k)];\n          }\n\
     \        }\n      }\n    }\n\n    template <typename U>\n    std::vector<T> convolve(std::vector<U>\
-    \ f, std::vector<U> g) const {\n      const int m = f.size() + g.size() - 1;\n\
-    \      int n = 1;\n      while(n < m) n *= 2;\n\n      std::vector<T> f2(n), g2(n);\n\
-    \n      for(int i = 0; i < (int)f.size(); ++i) f2[i] = (int64_t)f[i];\n      for(int\
-    \ i = 0; i < (int)g.size(); ++i) g2[i] = (int64_t)g[i];\n\n      run(f2);\n  \
-    \    run(g2);\n\n      for(int i = 0; i < n; ++i) f2[i] *= g2[i];\n      run(f2,\
-    \ true);\n\n      return f2;\n    }\n\n    template <typename U>\n    std::vector<T>\
-    \ operator()(std::vector<U> f, std::vector<U> g) const {\n      return convolve(f,\
-    \ g);\n    }\n  };\n\n  template <typename T>\n  std::vector<T> convolve_general_mod(std::vector<T>\
-    \ f, std::vector<T> g){\n    static constexpr int M1 = 167772161, P1 = 3;\n  \
-    \  static constexpr int M2 = 469762049, P2 = 3;\n    static constexpr int M3 =\
-    \ 1224736769, P3 = 3;\n\n    auto res1 = number_theoretic_transform<modint<M1>,\
-    \ P1, 1 << 20>().convolve(f, g);\n    auto res2 = number_theoretic_transform<modint<M2>,\
-    \ P2, 1 << 20>().convolve(f, g);\n    auto res3 = number_theoretic_transform<modint<M3>,\
-    \ P3, 1 << 20>().convolve(f, g);\n\n    const int n = res1.size();\n\n    std::vector<T>\
-    \ ret(n);\n\n    const int64_t M12 = (int64_t)modint<M2>::inv(M1);\n    const\
-    \ int64_t M13 = (int64_t)modint<M3>::inv(M1);\n    const int64_t M23 = (int64_t)modint<M3>::inv(M2);\n\
-    \n    for(int i = 0; i < n; ++i){\n      const int64_t r[3] = {(int64_t)res1[i],\
-    \ (int64_t)res2[i], (int64_t)res3[i]};\n\n      const int64_t t0 = r[0] % M1;\n\
-    \      const int64_t t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2\
-    \ = ((r[2] - t0 + M3) * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0)\
-    \ + T(t1) * M1 + T(t2) * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 2 \"\
-    Mylib/Number/Mod/mod_pow.cpp\"\n#include <cstdint>\n\nnamespace haar_lib {\n \
-    \ constexpr int64_t mod_pow(int64_t n, int64_t p, int64_t m){\n    int64_t ret\
-    \ = 1;\n    while(p > 0){\n      if(p & 1) (ret *= n) %= m;\n      (n *= n) %=\
-    \ m;\n      p >>= 1;\n    }\n    return ret;\n  }\n}\n#line 3 \"Mylib/Number/Prime/primitive_root.cpp\"\
-    \n\nnamespace haar_lib {\n  constexpr int primitive_root(int p){\n    int pf[30]\
-    \ = {};\n    int k = 0;\n    {\n      int n = p - 1;\n      for(int64_t i = 2;\
-    \ i * i <= p; ++i){\n        if(n % i == 0){\n          pf[k++] = i;\n       \
-    \   while(n % i == 0) n /= i;\n        }\n      }\n      if(n != 1)\n        pf[k++]\
-    \ = n;\n    }\n\n    for(int g = 2; g <= p; ++g){\n      bool ok = true;\n   \
-    \   for(int i = 0; i < k; ++i){\n        if(mod_pow(g, (p - 1) / pf[i], p) ==\
-    \ 1){\n          ok = false;\n          break;\n        }\n      }\n\n      if(not\
-    \ ok) continue;\n\n      return g;\n    }\n    return -1;\n  }\n}\n#line 3 \"\
-    Mylib/IO/join.cpp\"\n#include <sstream>\n#include <string>\n\nnamespace haar_lib\
-    \ {\n  template <typename Iter>\n  std::string join(Iter first, Iter last, std::string\
-    \ delim = \" \"){\n    std::stringstream s;\n\n    for(auto it = first; it !=\
-    \ last; ++it){\n      if(it != first) s << delim;\n      s << *it;\n    }\n\n\
-    \    return s.str();\n  }\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\n\nnamespace\
-    \ haar_lib {\n  template <typename T>\n  std::vector<T> input_vector(int N){\n\
-    \    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i) std::cin >> ret[i];\n\
-    \    return ret;\n  }\n\n  template <typename T>\n  std::vector<std::vector<T>>\
-    \ input_vector(int N, int M){\n    std::vector<std::vector<T>> ret(N);\n    for(int\
-    \ i = 0; i < N; ++i) ret[i] = input_vector<T>(M);\n    return ret;\n  }\n}\n#line\
-    \ 10 \"test/yosupo-judge/convolution_mod/main.test.cpp\"\n\nnamespace hl = haar_lib;\n\
-    \nconstexpr int mod = 998244353;\nconstexpr int prim_root = hl::primitive_root(mod);\n\
-    \nusing mint = hl::modint<mod>;\nusing NTT = hl::number_theoretic_transform<mint,\
-    \ prim_root, 1 << 20>;\nconst static auto ntt = NTT();\n\nint main(){\n  std::cin.tie(0);\n\
-    \  std::ios::sync_with_stdio(false);\n\n  int n, m; std::cin >> n >> m;\n\n  auto\
-    \ a = hl::input_vector<int64_t>(n);\n  auto b = hl::input_vector<int64_t>(m);\n\
-    \n  auto ans = ntt(a, b);\n\n  std::cout << hl::join(ans.begin(), ans.begin()\
-    \ + n + m - 1) << \"\\n\";\n\n  return 0;\n}\n"
+    \ f, std::vector<U> g, bool is_same = false) const {\n      const int m = f.size()\
+    \ + g.size() - 1;\n      int n = 1;\n      while(n < m) n *= 2;\n\n      std::vector<T>\
+    \ f2(n);\n      for(int i = 0; i < (int)f.size(); ++i) f2[i] = (int64_t)f[i];\n\
+    \      run(f2);\n\n      if(is_same){\n        for(int i = 0; i < n; ++i) f2[i]\
+    \ *= f2[i];\n        run(f2, true);\n      }else{\n        std::vector<T> g2(n);\n\
+    \        for(int i = 0; i < (int)g.size(); ++i) g2[i] = (int64_t)g[i];\n     \
+    \   run(g2);\n\n        for(int i = 0; i < n; ++i) f2[i] *= g2[i];\n        run(f2,\
+    \ true);\n      }\n\n      return f2;\n    }\n\n    template <typename U>\n  \
+    \  std::vector<T> operator()(std::vector<U> f, std::vector<U> g, bool is_same\
+    \ = false) const {\n      return convolve(f, g, is_same);\n    }\n  };\n\n  template\
+    \ <typename T>\n  std::vector<T> convolve_general_mod(std::vector<T> f, std::vector<T>\
+    \ g){\n    static constexpr int M1 = 167772161, P1 = 3;\n    static constexpr\
+    \ int M2 = 469762049, P2 = 3;\n    static constexpr int M3 = 1224736769, P3 =\
+    \ 3;\n\n    auto res1 = number_theoretic_transform<modint<M1>, P1, 1 << 20>().convolve(f,\
+    \ g);\n    auto res2 = number_theoretic_transform<modint<M2>, P2, 1 << 20>().convolve(f,\
+    \ g);\n    auto res3 = number_theoretic_transform<modint<M3>, P3, 1 << 20>().convolve(f,\
+    \ g);\n\n    const int n = res1.size();\n\n    std::vector<T> ret(n);\n\n    const\
+    \ int64_t M12 = (int64_t)modint<M2>::inv(M1);\n    const int64_t M13 = (int64_t)modint<M3>::inv(M1);\n\
+    \    const int64_t M23 = (int64_t)modint<M3>::inv(M2);\n\n    for(int i = 0; i\
+    \ < n; ++i){\n      const int64_t r[3] = {(int64_t)res1[i], (int64_t)res2[i],\
+    \ (int64_t)res3[i]};\n\n      const int64_t t0 = r[0] % M1;\n      const int64_t\
+    \ t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2 = ((r[2] - t0 + M3)\
+    \ * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0) + T(t1) * M1 + T(t2)\
+    \ * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 2 \"Mylib/Number/Mod/mod_pow.cpp\"\
+    \n#include <cstdint>\n\nnamespace haar_lib {\n  constexpr int64_t mod_pow(int64_t\
+    \ n, int64_t p, int64_t m){\n    int64_t ret = 1;\n    while(p > 0){\n      if(p\
+    \ & 1) (ret *= n) %= m;\n      (n *= n) %= m;\n      p >>= 1;\n    }\n    return\
+    \ ret;\n  }\n}\n#line 3 \"Mylib/Number/Prime/primitive_root.cpp\"\n\nnamespace\
+    \ haar_lib {\n  constexpr int primitive_root(int p){\n    int pf[30] = {};\n \
+    \   int k = 0;\n    {\n      int n = p - 1;\n      for(int64_t i = 2; i * i <=\
+    \ p; ++i){\n        if(n % i == 0){\n          pf[k++] = i;\n          while(n\
+    \ % i == 0) n /= i;\n        }\n      }\n      if(n != 1)\n        pf[k++] = n;\n\
+    \    }\n\n    for(int g = 2; g <= p; ++g){\n      bool ok = true;\n      for(int\
+    \ i = 0; i < k; ++i){\n        if(mod_pow(g, (p - 1) / pf[i], p) == 1){\n    \
+    \      ok = false;\n          break;\n        }\n      }\n\n      if(not ok) continue;\n\
+    \n      return g;\n    }\n    return -1;\n  }\n}\n#line 3 \"Mylib/IO/join.cpp\"\
+    \n#include <sstream>\n#include <string>\n\nnamespace haar_lib {\n  template <typename\
+    \ Iter>\n  std::string join(Iter first, Iter last, std::string delim = \" \"){\n\
+    \    std::stringstream s;\n\n    for(auto it = first; it != last; ++it){\n   \
+    \   if(it != first) s << delim;\n      s << *it;\n    }\n\n    return s.str();\n\
+    \  }\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\n\nnamespace haar_lib {\n  template\
+    \ <typename T>\n  std::vector<T> input_vector(int N){\n    std::vector<T> ret(N);\n\
+    \    for(int i = 0; i < N; ++i) std::cin >> ret[i];\n    return ret;\n  }\n\n\
+    \  template <typename T>\n  std::vector<std::vector<T>> input_vector(int N, int\
+    \ M){\n    std::vector<std::vector<T>> ret(N);\n    for(int i = 0; i < N; ++i)\
+    \ ret[i] = input_vector<T>(M);\n    return ret;\n  }\n}\n#line 10 \"test/yosupo-judge/convolution_mod/main.test.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\nconstexpr int mod = 998244353;\nconstexpr int\
+    \ prim_root = hl::primitive_root(mod);\n\nusing mint = hl::modint<mod>;\nusing\
+    \ NTT = hl::number_theoretic_transform<mint, prim_root, 1 << 20>;\nconst static\
+    \ auto ntt = NTT();\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
+    \n  int n, m; std::cin >> n >> m;\n\n  auto a = hl::input_vector<int64_t>(n);\n\
+    \  auto b = hl::input_vector<int64_t>(m);\n\n  auto ans = ntt(a, b);\n\n  std::cout\
+    \ << hl::join(ans.begin(), ans.begin() + n + m - 1) << \"\\n\";\n\n  return 0;\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n\n#include\
     \ <iostream>\n#include <vector>\n#include \"Mylib/Convolution/ntt_convolution.cpp\"\
     \n#include \"Mylib/Number/Prime/primitive_root.cpp\"\n#include \"Mylib/Number/Mint/mint.cpp\"\
@@ -172,7 +175,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/convolution_mod/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-28 03:22:23+09:00'
+  timestamp: '2021-02-17 18:32:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/convolution_mod/main.test.cpp

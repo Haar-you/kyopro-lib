@@ -19,7 +19,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/LinearAlgebra/square_matrix_const_size.cpp
     title: Square matrix (Const size)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

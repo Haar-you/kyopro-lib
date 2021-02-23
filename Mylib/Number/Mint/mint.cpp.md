@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
   _extendedVerifiedWith:
@@ -55,6 +55,9 @@ data:
     path: test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo-judge/kth_term_of_linearly_recurrent_sequence/main.test.cpp
+    title: test/yosupo-judge/kth_term_of_linearly_recurrent_sequence/main.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/log_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/log_of_formal_power_series/main.test.cpp
   - icon: ':heavy_check_mark:'
@@ -87,13 +90,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
     title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
   - icon: ':heavy_check_mark:'
@@ -129,12 +132,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/665/main.test.cpp
     title: test/yukicoder/665/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/931/main.test.cpp
     title: test/yukicoder/931/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Mint/mint.cpp\"\n#include <iostream>\n#include\
@@ -228,50 +231,51 @@ data:
   requiredBy:
   - Mylib/Convolution/ntt_convolution.cpp
   timestamp: '2020-09-30 07:57:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo-judge/range_affine_range_sum/main.test.cpp
-  - test/yosupo-judge/log_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/sum_of_totient_function/main.test.cpp
-  - test/yosupo-judge/matrix_det/main.test.cpp
-  - test/yosupo-judge/partition_function/main.fps.test.cpp
-  - test/yosupo-judge/partition_function/main.test.cpp
-  - test/yosupo-judge/multipoint_evaluation/main.test.cpp
-  - test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
-  - test/yosupo-judge/system_of_linear_equations/main.test.cpp
-  - test/yosupo-judge/bitwise_and_convolution/main.or.test.cpp
-  - test/yosupo-judge/bitwise_and_convolution/main.test.cpp
-  - test/yosupo-judge/point_set_range_composite/main.test.cpp
-  - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
-  - test/yosupo-judge/bernoulli_number/main.test.cpp
-  - test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
-  - test/yosupo-judge/subset_convolution/main.test.cpp
-  - test/yosupo-judge/queue_operate_all_composite/main.test.cpp
-  - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
-  - test/yosupo-judge/enumerate_triangles/main.test.cpp
-  - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
-  - test/yosupo-judge/convolution_mod/main.test.cpp
-  - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
-  - test/yosupo-judge/bitwise_xor_convolution/main.test.cpp
-  - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
-  - test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
-  - test/yukicoder/194/main.test.cpp
+  - test/yukicoder/235/main.test.cpp
+  - test/yukicoder/931/main.test.cpp
   - test/yukicoder/658/main.test.cpp
   - test/yukicoder/660/main.test.cpp
   - test/yukicoder/665/main.test.cpp
-  - test/yukicoder/510/main.test.cpp
-  - test/yukicoder/235/main.test.cpp
+  - test/yukicoder/194/main.test.cpp
   - test/yukicoder/117/main.test.cpp
-  - test/yukicoder/931/main.test.cpp
+  - test/yukicoder/510/main.test.cpp
+  - test/aoj/DPL_5_I/main.table.test.cpp
+  - test/aoj/DPL_5_I/main.test.cpp
+  - test/aoj/DPL_5_J/main.test.cpp
   - test/aoj/3119/main.test.cpp
   - test/aoj/DPL_5_G/main.table.test.cpp
   - test/aoj/DPL_5_G/main.test.cpp
-  - test/aoj/DPL_5_J/main.test.cpp
-  - test/aoj/DPL_5_I/main.table.test.cpp
-  - test/aoj/DPL_5_I/main.test.cpp
+  - test/yosupo-judge/range_affine_range_sum/main.test.cpp
+  - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
+  - test/yosupo-judge/enumerate_triangles/main.test.cpp
+  - test/yosupo-judge/sum_of_totient_function/main.test.cpp
+  - test/yosupo-judge/multipoint_evaluation/main.test.cpp
+  - test/yosupo-judge/system_of_linear_equations/main.test.cpp
+  - test/yosupo-judge/bitwise_and_convolution/main.or.test.cpp
+  - test/yosupo-judge/bitwise_and_convolution/main.test.cpp
+  - test/yosupo-judge/kth_term_of_linearly_recurrent_sequence/main.test.cpp
+  - test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
+  - test/yosupo-judge/convolution_mod/main.test.cpp
+  - test/yosupo-judge/matrix_det/main.test.cpp
+  - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/point_set_range_composite/main.test.cpp
+  - test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
+  - test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
+  - test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/partition_function/main.fps.test.cpp
+  - test/yosupo-judge/partition_function/main.test.cpp
+  - test/yosupo-judge/queue_operate_all_composite/main.test.cpp
+  - test/yosupo-judge/bitwise_xor_convolution/main.test.cpp
+  - test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
+  - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+  - test/yosupo-judge/log_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/bernoulli_number/main.test.cpp
+  - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+  - test/yosupo-judge/subset_convolution/main.test.cpp
 documentation_of: Mylib/Number/Mint/mint.cpp
 layout: document
 title: Modint

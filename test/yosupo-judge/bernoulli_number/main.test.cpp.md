@@ -7,22 +7,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/factorial_table.cpp
     title: Factorial table
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Math/formal_power_series.cpp
     title: Formal power series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
   _extendedRequiredBy: []
@@ -123,34 +123,37 @@ data:
     \ + b] * w;\n\n              f[i + j] = s + t;\n              f[i + j + b] = s\
     \ - t;\n            }\n            w *= BASE_[__builtin_ctz(k)];\n          }\n\
     \        }\n      }\n    }\n\n    template <typename U>\n    std::vector<T> convolve(std::vector<U>\
-    \ f, std::vector<U> g) const {\n      const int m = f.size() + g.size() - 1;\n\
-    \      int n = 1;\n      while(n < m) n *= 2;\n\n      std::vector<T> f2(n), g2(n);\n\
-    \n      for(int i = 0; i < (int)f.size(); ++i) f2[i] = (int64_t)f[i];\n      for(int\
-    \ i = 0; i < (int)g.size(); ++i) g2[i] = (int64_t)g[i];\n\n      run(f2);\n  \
-    \    run(g2);\n\n      for(int i = 0; i < n; ++i) f2[i] *= g2[i];\n      run(f2,\
-    \ true);\n\n      return f2;\n    }\n\n    template <typename U>\n    std::vector<T>\
-    \ operator()(std::vector<U> f, std::vector<U> g) const {\n      return convolve(f,\
-    \ g);\n    }\n  };\n\n  template <typename T>\n  std::vector<T> convolve_general_mod(std::vector<T>\
-    \ f, std::vector<T> g){\n    static constexpr int M1 = 167772161, P1 = 3;\n  \
-    \  static constexpr int M2 = 469762049, P2 = 3;\n    static constexpr int M3 =\
-    \ 1224736769, P3 = 3;\n\n    auto res1 = number_theoretic_transform<modint<M1>,\
-    \ P1, 1 << 20>().convolve(f, g);\n    auto res2 = number_theoretic_transform<modint<M2>,\
-    \ P2, 1 << 20>().convolve(f, g);\n    auto res3 = number_theoretic_transform<modint<M3>,\
-    \ P3, 1 << 20>().convolve(f, g);\n\n    const int n = res1.size();\n\n    std::vector<T>\
-    \ ret(n);\n\n    const int64_t M12 = (int64_t)modint<M2>::inv(M1);\n    const\
-    \ int64_t M13 = (int64_t)modint<M3>::inv(M1);\n    const int64_t M23 = (int64_t)modint<M3>::inv(M2);\n\
-    \n    for(int i = 0; i < n; ++i){\n      const int64_t r[3] = {(int64_t)res1[i],\
-    \ (int64_t)res2[i], (int64_t)res3[i]};\n\n      const int64_t t0 = r[0] % M1;\n\
-    \      const int64_t t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2\
-    \ = ((r[2] - t0 + M3) * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0)\
-    \ + T(t1) * M1 + T(t2) * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 4 \"\
-    Mylib/Math/formal_power_series.cpp\"\n#include <initializer_list>\n#line 6 \"\
-    Mylib/Math/formal_power_series.cpp\"\n\nnamespace haar_lib {\n  template <typename\
-    \ T, const auto &convolve>\n  class formal_power_series {\n  public:\n    using\
-    \ value_type = T;\n\n  private:\n    std::vector<T> data_;\n\n  public:\n    formal_power_series(){}\n\
-    \    explicit formal_power_series(int N): data_(N){}\n    formal_power_series(const\
-    \ std::vector<T> &data_): data_(data_){}\n    formal_power_series(std::initializer_list<T>\
-    \ init): data_(init.begin(), init.end()){}\n    formal_power_series(const formal_power_series\
+    \ f, std::vector<U> g, bool is_same = false) const {\n      const int m = f.size()\
+    \ + g.size() - 1;\n      int n = 1;\n      while(n < m) n *= 2;\n\n      std::vector<T>\
+    \ f2(n);\n      for(int i = 0; i < (int)f.size(); ++i) f2[i] = (int64_t)f[i];\n\
+    \      run(f2);\n\n      if(is_same){\n        for(int i = 0; i < n; ++i) f2[i]\
+    \ *= f2[i];\n        run(f2, true);\n      }else{\n        std::vector<T> g2(n);\n\
+    \        for(int i = 0; i < (int)g.size(); ++i) g2[i] = (int64_t)g[i];\n     \
+    \   run(g2);\n\n        for(int i = 0; i < n; ++i) f2[i] *= g2[i];\n        run(f2,\
+    \ true);\n      }\n\n      return f2;\n    }\n\n    template <typename U>\n  \
+    \  std::vector<T> operator()(std::vector<U> f, std::vector<U> g, bool is_same\
+    \ = false) const {\n      return convolve(f, g, is_same);\n    }\n  };\n\n  template\
+    \ <typename T>\n  std::vector<T> convolve_general_mod(std::vector<T> f, std::vector<T>\
+    \ g){\n    static constexpr int M1 = 167772161, P1 = 3;\n    static constexpr\
+    \ int M2 = 469762049, P2 = 3;\n    static constexpr int M3 = 1224736769, P3 =\
+    \ 3;\n\n    auto res1 = number_theoretic_transform<modint<M1>, P1, 1 << 20>().convolve(f,\
+    \ g);\n    auto res2 = number_theoretic_transform<modint<M2>, P2, 1 << 20>().convolve(f,\
+    \ g);\n    auto res3 = number_theoretic_transform<modint<M3>, P3, 1 << 20>().convolve(f,\
+    \ g);\n\n    const int n = res1.size();\n\n    std::vector<T> ret(n);\n\n    const\
+    \ int64_t M12 = (int64_t)modint<M2>::inv(M1);\n    const int64_t M13 = (int64_t)modint<M3>::inv(M1);\n\
+    \    const int64_t M23 = (int64_t)modint<M3>::inv(M2);\n\n    for(int i = 0; i\
+    \ < n; ++i){\n      const int64_t r[3] = {(int64_t)res1[i], (int64_t)res2[i],\
+    \ (int64_t)res3[i]};\n\n      const int64_t t0 = r[0] % M1;\n      const int64_t\
+    \ t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2 = ((r[2] - t0 + M3)\
+    \ * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0) + T(t1) * M1 + T(t2)\
+    \ * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 4 \"Mylib/Math/formal_power_series.cpp\"\
+    \n#include <initializer_list>\n#line 6 \"Mylib/Math/formal_power_series.cpp\"\n\
+    \nnamespace haar_lib {\n  template <typename T, const auto &convolve>\n  class\
+    \ formal_power_series {\n  public:\n    using value_type = T;\n\n  private:\n\
+    \    std::vector<T> data_;\n\n  public:\n    formal_power_series(){}\n    explicit\
+    \ formal_power_series(int N): data_(N){}\n    formal_power_series(const std::vector<T>\
+    \ &data_): data_(data_){}\n    formal_power_series(std::initializer_list<T> init):\
+    \ data_(init.begin(), init.end()){}\n    formal_power_series(const formal_power_series\
     \ &a): data_(a.data_){}\n    formal_power_series(formal_power_series &&a) noexcept\
     \ {*this = std::move(a);}\n\n    size_t size() const {\n      return data_.size();\n\
     \    }\n\n    const T& operator[](int i) const {\n      return data_[i];\n   \
@@ -183,15 +186,20 @@ data:
     \      std::vector<T> ret(n - 1);\n      for(int i = 0; i < n - 1; ++i){\n   \
     \     ret[i] = data_[i + 1] * (i + 1);\n      }\n\n      return formal_power_series(ret);\n\
     \    }\n\n    auto integrate() const {\n      const int n = data_.size();\n  \
-    \    std::vector<T> ret(n + 1);\n      for(int i = 0; i < n; ++i){\n        ret[i\
-    \ + 1] = data_[i] / (i + 1);\n      }\n\n      return formal_power_series(ret);\n\
-    \    }\n\n    auto inv() const {\n      assert(data_[0] != 0);\n      const int\
-    \ n = data_.size();\n\n      int t = 1;\n      std::vector<T> ret = {data_[0].inv()};\n\
-    \      ret.reserve(n * 2);\n\n      while(t <= n * 2){\n        std::vector<T>\
-    \ c(data_.begin(), data_.begin() + std::min(t, n));\n        c = convolve(c, convolve(ret,\
-    \ ret));\n\n        c.resize(t);\n        ret.resize(t);\n\n        for(int i\
-    \ = 0; i < t; ++i){\n          ret[i] = ret[i] * 2 - c[i];\n        }\n\n    \
-    \    t <<= 1;\n      }\n\n      ret.resize(n);\n\n      return formal_power_series(ret);\n\
+    \    std::vector<T> ret(n + 1), invs(n + 1, 1);\n      const int p = T::mod();\n\
+    \      for(int i = 2; i <= n; ++i) invs[i] = -invs[p % i] * (p / i);\n      for(int\
+    \ i = 0; i < n; ++i){\n        ret[i + 1] = data_[i] * invs[i + 1];\n      }\n\
+    \n      return formal_power_series(ret);\n    }\n\n    auto inv() const {\n  \
+    \    assert(data_[0] != 0);\n      const int n = data_.size();\n\n      int t\
+    \ = 1;\n      std::vector<T> ret = {data_[0].inv()};\n      ret.reserve(n * 2);\n\
+    \n      while(t <= n * 2){\n        std::vector<T> c(data_.begin(), data_.begin()\
+    \ + std::min(t, n));\n        auto a = convolve(ret, ret, true);\n        if((int)a.size()\
+    \ > t) a.resize(t);\n\n        c = convolve(c, a);\n\n        if((int)c.size()\
+    \ > t) c.resize(t);\n        if((int)ret.size() > t) ret.resize(t);\n\n      \
+    \  for(int i = 0; i < (int)ret.size(); ++i) ret[i] = ret[i] * 2;\n\n        if(ret.size()\
+    \ < c.size()) ret.resize(std::min<int>(c.size(), t));\n\n        for(int i = 0;\
+    \ i < (int)c.size(); ++i){\n          ret[i] -= c[i];\n        }\n\n        t\
+    \ <<= 1;\n      }\n\n      ret.resize(n);\n\n      return formal_power_series(ret);\n\
     \    }\n\n    auto log() const {\n      assert(data_[0] == 1);\n      const int\
     \ n = data_.size();\n      auto ret = (differentiate() * inv()).integrate();\n\
     \      ret.resize(n);\n      return ret;\n    }\n\n    auto exp() const {\n  \
@@ -265,7 +273,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/bernoulli_number/main.test.cpp
   requiredBy: []
-  timestamp: '2020-12-09 11:17:21+09:00'
+  timestamp: '2021-02-23 11:22:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/bernoulli_number/main.test.cpp

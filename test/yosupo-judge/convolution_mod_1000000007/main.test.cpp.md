@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []
@@ -94,42 +94,44 @@ data:
     \ + b] * w;\n\n              f[i + j] = s + t;\n              f[i + j + b] = s\
     \ - t;\n            }\n            w *= BASE_[__builtin_ctz(k)];\n          }\n\
     \        }\n      }\n    }\n\n    template <typename U>\n    std::vector<T> convolve(std::vector<U>\
-    \ f, std::vector<U> g) const {\n      const int m = f.size() + g.size() - 1;\n\
-    \      int n = 1;\n      while(n < m) n *= 2;\n\n      std::vector<T> f2(n), g2(n);\n\
-    \n      for(int i = 0; i < (int)f.size(); ++i) f2[i] = (int64_t)f[i];\n      for(int\
-    \ i = 0; i < (int)g.size(); ++i) g2[i] = (int64_t)g[i];\n\n      run(f2);\n  \
-    \    run(g2);\n\n      for(int i = 0; i < n; ++i) f2[i] *= g2[i];\n      run(f2,\
-    \ true);\n\n      return f2;\n    }\n\n    template <typename U>\n    std::vector<T>\
-    \ operator()(std::vector<U> f, std::vector<U> g) const {\n      return convolve(f,\
-    \ g);\n    }\n  };\n\n  template <typename T>\n  std::vector<T> convolve_general_mod(std::vector<T>\
-    \ f, std::vector<T> g){\n    static constexpr int M1 = 167772161, P1 = 3;\n  \
-    \  static constexpr int M2 = 469762049, P2 = 3;\n    static constexpr int M3 =\
-    \ 1224736769, P3 = 3;\n\n    auto res1 = number_theoretic_transform<modint<M1>,\
-    \ P1, 1 << 20>().convolve(f, g);\n    auto res2 = number_theoretic_transform<modint<M2>,\
-    \ P2, 1 << 20>().convolve(f, g);\n    auto res3 = number_theoretic_transform<modint<M3>,\
-    \ P3, 1 << 20>().convolve(f, g);\n\n    const int n = res1.size();\n\n    std::vector<T>\
-    \ ret(n);\n\n    const int64_t M12 = (int64_t)modint<M2>::inv(M1);\n    const\
-    \ int64_t M13 = (int64_t)modint<M3>::inv(M1);\n    const int64_t M23 = (int64_t)modint<M3>::inv(M2);\n\
-    \n    for(int i = 0; i < n; ++i){\n      const int64_t r[3] = {(int64_t)res1[i],\
-    \ (int64_t)res2[i], (int64_t)res3[i]};\n\n      const int64_t t0 = r[0] % M1;\n\
-    \      const int64_t t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2\
-    \ = ((r[2] - t0 + M3) * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0)\
-    \ + T(t1) * M1 + T(t2) * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 3 \"\
-    Mylib/IO/join.cpp\"\n#include <sstream>\n#include <string>\n\nnamespace haar_lib\
-    \ {\n  template <typename Iter>\n  std::string join(Iter first, Iter last, std::string\
-    \ delim = \" \"){\n    std::stringstream s;\n\n    for(auto it = first; it !=\
-    \ last; ++it){\n      if(it != first) s << delim;\n      s << *it;\n    }\n\n\
-    \    return s.str();\n  }\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\n\nnamespace\
-    \ haar_lib {\n  template <typename T>\n  std::vector<T> input_vector(int N){\n\
-    \    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i) std::cin >> ret[i];\n\
-    \    return ret;\n  }\n\n  template <typename T>\n  std::vector<std::vector<T>>\
-    \ input_vector(int N, int M){\n    std::vector<std::vector<T>> ret(N);\n    for(int\
-    \ i = 0; i < N; ++i) ret[i] = input_vector<T>(M);\n    return ret;\n  }\n}\n#line\
-    \ 9 \"test/yosupo-judge/convolution_mod_1000000007/main.test.cpp\"\n\nnamespace\
-    \ hl = haar_lib;\n\nconstexpr int mod = 1000000007;\nusing mint = hl::modint<mod>;\n\
-    \nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int\
-    \ n, m; std::cin >> n >> m;\n\n  auto a = hl::input_vector<mint>(n);\n  auto b\
-    \ = hl::input_vector<mint>(m);\n\n  auto ans = hl::convolve_general_mod<mint>(a,\
+    \ f, std::vector<U> g, bool is_same = false) const {\n      const int m = f.size()\
+    \ + g.size() - 1;\n      int n = 1;\n      while(n < m) n *= 2;\n\n      std::vector<T>\
+    \ f2(n);\n      for(int i = 0; i < (int)f.size(); ++i) f2[i] = (int64_t)f[i];\n\
+    \      run(f2);\n\n      if(is_same){\n        for(int i = 0; i < n; ++i) f2[i]\
+    \ *= f2[i];\n        run(f2, true);\n      }else{\n        std::vector<T> g2(n);\n\
+    \        for(int i = 0; i < (int)g.size(); ++i) g2[i] = (int64_t)g[i];\n     \
+    \   run(g2);\n\n        for(int i = 0; i < n; ++i) f2[i] *= g2[i];\n        run(f2,\
+    \ true);\n      }\n\n      return f2;\n    }\n\n    template <typename U>\n  \
+    \  std::vector<T> operator()(std::vector<U> f, std::vector<U> g, bool is_same\
+    \ = false) const {\n      return convolve(f, g, is_same);\n    }\n  };\n\n  template\
+    \ <typename T>\n  std::vector<T> convolve_general_mod(std::vector<T> f, std::vector<T>\
+    \ g){\n    static constexpr int M1 = 167772161, P1 = 3;\n    static constexpr\
+    \ int M2 = 469762049, P2 = 3;\n    static constexpr int M3 = 1224736769, P3 =\
+    \ 3;\n\n    auto res1 = number_theoretic_transform<modint<M1>, P1, 1 << 20>().convolve(f,\
+    \ g);\n    auto res2 = number_theoretic_transform<modint<M2>, P2, 1 << 20>().convolve(f,\
+    \ g);\n    auto res3 = number_theoretic_transform<modint<M3>, P3, 1 << 20>().convolve(f,\
+    \ g);\n\n    const int n = res1.size();\n\n    std::vector<T> ret(n);\n\n    const\
+    \ int64_t M12 = (int64_t)modint<M2>::inv(M1);\n    const int64_t M13 = (int64_t)modint<M3>::inv(M1);\n\
+    \    const int64_t M23 = (int64_t)modint<M3>::inv(M2);\n\n    for(int i = 0; i\
+    \ < n; ++i){\n      const int64_t r[3] = {(int64_t)res1[i], (int64_t)res2[i],\
+    \ (int64_t)res3[i]};\n\n      const int64_t t0 = r[0] % M1;\n      const int64_t\
+    \ t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2 = ((r[2] - t0 + M3)\
+    \ * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0) + T(t1) * M1 + T(t2)\
+    \ * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 3 \"Mylib/IO/join.cpp\"\n\
+    #include <sstream>\n#include <string>\n\nnamespace haar_lib {\n  template <typename\
+    \ Iter>\n  std::string join(Iter first, Iter last, std::string delim = \" \"){\n\
+    \    std::stringstream s;\n\n    for(auto it = first; it != last; ++it){\n   \
+    \   if(it != first) s << delim;\n      s << *it;\n    }\n\n    return s.str();\n\
+    \  }\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\n\nnamespace haar_lib {\n  template\
+    \ <typename T>\n  std::vector<T> input_vector(int N){\n    std::vector<T> ret(N);\n\
+    \    for(int i = 0; i < N; ++i) std::cin >> ret[i];\n    return ret;\n  }\n\n\
+    \  template <typename T>\n  std::vector<std::vector<T>> input_vector(int N, int\
+    \ M){\n    std::vector<std::vector<T>> ret(N);\n    for(int i = 0; i < N; ++i)\
+    \ ret[i] = input_vector<T>(M);\n    return ret;\n  }\n}\n#line 9 \"test/yosupo-judge/convolution_mod_1000000007/main.test.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\nconstexpr int mod = 1000000007;\nusing mint =\
+    \ hl::modint<mod>;\n\nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
+    \n  int n, m; std::cin >> n >> m;\n\n  auto a = hl::input_vector<mint>(n);\n \
+    \ auto b = hl::input_vector<mint>(m);\n\n  auto ans = hl::convolve_general_mod<mint>(a,\
     \ b);\n\n  std::cout << hl::join(ans.begin(), ans.begin() + n + m - 1) << \"\\\
     n\";\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\
@@ -149,7 +151,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-28 03:22:23+09:00'
+  timestamp: '2021-02-17 18:32:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/convolution_mod_1000000007/main.test.cpp

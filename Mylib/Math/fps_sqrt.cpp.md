@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Math/formal_power_series.cpp
     title: Formal power series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_sqrt.cpp
     title: Mod sqrt
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Math/formal_power_series.cpp\"\n#include <functional>\n\
@@ -60,15 +60,20 @@ data:
     \      std::vector<T> ret(n - 1);\n      for(int i = 0; i < n - 1; ++i){\n   \
     \     ret[i] = data_[i + 1] * (i + 1);\n      }\n\n      return formal_power_series(ret);\n\
     \    }\n\n    auto integrate() const {\n      const int n = data_.size();\n  \
-    \    std::vector<T> ret(n + 1);\n      for(int i = 0; i < n; ++i){\n        ret[i\
-    \ + 1] = data_[i] / (i + 1);\n      }\n\n      return formal_power_series(ret);\n\
-    \    }\n\n    auto inv() const {\n      assert(data_[0] != 0);\n      const int\
-    \ n = data_.size();\n\n      int t = 1;\n      std::vector<T> ret = {data_[0].inv()};\n\
-    \      ret.reserve(n * 2);\n\n      while(t <= n * 2){\n        std::vector<T>\
-    \ c(data_.begin(), data_.begin() + std::min(t, n));\n        c = convolve(c, convolve(ret,\
-    \ ret));\n\n        c.resize(t);\n        ret.resize(t);\n\n        for(int i\
-    \ = 0; i < t; ++i){\n          ret[i] = ret[i] * 2 - c[i];\n        }\n\n    \
-    \    t <<= 1;\n      }\n\n      ret.resize(n);\n\n      return formal_power_series(ret);\n\
+    \    std::vector<T> ret(n + 1), invs(n + 1, 1);\n      const int p = T::mod();\n\
+    \      for(int i = 2; i <= n; ++i) invs[i] = -invs[p % i] * (p / i);\n      for(int\
+    \ i = 0; i < n; ++i){\n        ret[i + 1] = data_[i] * invs[i + 1];\n      }\n\
+    \n      return formal_power_series(ret);\n    }\n\n    auto inv() const {\n  \
+    \    assert(data_[0] != 0);\n      const int n = data_.size();\n\n      int t\
+    \ = 1;\n      std::vector<T> ret = {data_[0].inv()};\n      ret.reserve(n * 2);\n\
+    \n      while(t <= n * 2){\n        std::vector<T> c(data_.begin(), data_.begin()\
+    \ + std::min(t, n));\n        auto a = convolve(ret, ret, true);\n        if((int)a.size()\
+    \ > t) a.resize(t);\n\n        c = convolve(c, a);\n\n        if((int)c.size()\
+    \ > t) c.resize(t);\n        if((int)ret.size() > t) ret.resize(t);\n\n      \
+    \  for(int i = 0; i < (int)ret.size(); ++i) ret[i] = ret[i] * 2;\n\n        if(ret.size()\
+    \ < c.size()) ret.resize(std::min<int>(c.size(), t));\n\n        for(int i = 0;\
+    \ i < (int)c.size(); ++i){\n          ret[i] -= c[i];\n        }\n\n        t\
+    \ <<= 1;\n      }\n\n      ret.resize(n);\n\n      return formal_power_series(ret);\n\
     \    }\n\n    auto log() const {\n      assert(data_[0] == 1);\n      const int\
     \ n = data_.size();\n      auto ret = (differentiate() * inv()).integrate();\n\
     \      ret.resize(n);\n      return ret;\n    }\n\n    auto exp() const {\n  \
@@ -139,8 +144,8 @@ data:
   isVerificationFile: false
   path: Mylib/Math/fps_sqrt.cpp
   requiredBy: []
-  timestamp: '2020-12-09 11:17:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-02-23 11:22:48+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
 documentation_of: Mylib/Math/fps_sqrt.cpp

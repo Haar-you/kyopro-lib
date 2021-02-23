@@ -47,9 +47,9 @@ data:
   timestamp: '2020-10-10 11:12:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
   - test/yukicoder/235/main.test.cpp
   - test/aoj/2426/main.test.cpp
+  - test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
 documentation_of: Mylib/Utils/sort_simultaneously.cpp
 layout: document
 title: Sort simultaneously

@@ -76,8 +76,8 @@ data:
   timestamp: '2020-12-09 10:43:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo-judge/static_range_inversions_query/main.test.cpp
   - test/aoj/0425/main.test.cpp
+  - test/yosupo-judge/static_range_inversions_query/main.test.cpp
 documentation_of: Mylib/Algorithm/mo_algorithm.cpp
 layout: document
 title: Mo's algorithm

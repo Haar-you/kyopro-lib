@@ -74,8 +74,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/GRL_2_A/main.prim.test.cpp
-  - test/aoj/2559/main.leftist_heap.test.cpp
   - test/aoj/2559/main.binomial_heap.test.cpp
+  - test/aoj/2559/main.leftist_heap.test.cpp
   - test/aoj/2559/main.skew_heap.test.cpp
 documentation_of: Mylib/Graph/MinimumSpanningTree/prim.cpp
 layout: document

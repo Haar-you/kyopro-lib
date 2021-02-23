@@ -34,8 +34,8 @@ data:
   timestamp: '2020-11-01 20:53:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo-judge/tetration_mod/main.test.cpp
   - test/aoj/NTL_1_D/main.totient.test.cpp
+  - test/yosupo-judge/tetration_mod/main.test.cpp
 documentation_of: Mylib/Number/Totient/totient.cpp
 layout: document
 title: Euler's totient function

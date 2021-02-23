@@ -140,9 +140,9 @@ data:
   timestamp: '2020-12-09 11:11:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo-judge/matrix_det/main.test.cpp
   - test/yukicoder/194/main.test.cpp
   - test/aoj/1327/main.test.cpp
+  - test/yosupo-judge/matrix_det/main.test.cpp
 documentation_of: Mylib/LinearAlgebra/square_matrix.cpp
 layout: document
 title: Square matrix

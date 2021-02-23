@@ -264,13 +264,13 @@ data:
     - icon: ':warning:'
       path: Mylib/Combinatorics/semifactorial.cpp
       title: Semifactorial
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/Combinatorics/stirling_number_first_fft.cpp
       title: Stirling numbers of the first kind (FFT)
     - icon: ':heavy_check_mark:'
       path: Mylib/Combinatorics/stirling_number_second.cpp
       title: Stirling numbers of the second kind
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/Combinatorics/stirling_number_second_fft.cpp
       title: Stirling numbers of the second kind (FFT)
     - icon: ':heavy_check_mark:'
@@ -284,7 +284,7 @@ data:
     - icon: ':warning:'
       path: Mylib/Convolution/convolution_gcd.cpp
       title: Convolution (Index GCD)
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/Convolution/convolution_multiply.cpp
       title: Convolution (Index multiplication mod P)
     - icon: ':heavy_check_mark:'
@@ -308,7 +308,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/fast_zeta_transform_superset.cpp
       title: Fast Zeta transform (Supersets)
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Convolution/ntt_convolution.cpp
       title: Number theoretic transform
     - icon: ':heavy_check_mark:'
@@ -872,10 +872,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/IO/input_tuples_with_index.cpp
       title: Input tuples with index
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/IO/input_vector.cpp
       title: Input vector
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/IO/join.cpp
       title: join function
   - name: Mylib/LinearAlgebra
@@ -912,12 +912,15 @@ data:
     - icon: ':warning:'
       path: Mylib/Math/closed_interval.cpp
       title: Closed interval
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Math/formal_power_series.cpp
       title: Formal power series
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/Math/fps_sqrt.cpp
       title: Formal power series (Sqrt)
+    - icon: ':heavy_check_mark:'
+      path: Mylib/Math/linearly_recurrent_sequence.cpp
+      title: Kth term of linearly recurrent sequence
     - icon: ':heavy_check_mark:'
       path: Mylib/Math/multipoint_evaluation.cpp
       title: Multipoint evaluation
@@ -927,7 +930,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Math/polynomial.cpp
       title: Polynomial
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Math/polynomial_taylor_shift.cpp
       title: Polynomial taylor shift
     - icon: ':warning:'
@@ -984,7 +987,7 @@ data:
       title: Enumerate divisors
   - name: Mylib/Number/Mint
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Number/Mint/mint.cpp
       title: Modint
     - icon: ':warning:'
@@ -1007,10 +1010,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Number/Mod/mod_log.cpp
       title: Mod logarithm
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Number/Mod/mod_pow.cpp
       title: Mod pow
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Number/Mod/mod_sqrt.cpp
       title: Mod sqrt
   - name: Mylib/Number/Prime
@@ -1036,7 +1039,7 @@ data:
     - icon: ':warning:'
       path: Mylib/Number/Prime/prime_factorize_sieve.cpp
       title: Prime factorization (Sieve)
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Number/Prime/primitive_root.cpp
       title: Primitive root
     - icon: ':warning:'
@@ -2032,6 +2035,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/kth_root_integer/main.test.cpp
       title: test/yosupo-judge/kth_root_integer/main.test.cpp
+  - name: test/yosupo-judge/kth_term_of_linearly_recurrent_sequence
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo-judge/kth_term_of_linearly_recurrent_sequence/main.test.cpp
+      title: test/yosupo-judge/kth_term_of_linearly_recurrent_sequence/main.test.cpp
   - name: test/yosupo-judge/line_add_get_min
     pages:
     - icon: ':heavy_check_mark:'
@@ -2179,7 +2187,7 @@ data:
       title: test/yosupo-judge/sqrt_mod/main.test.cpp
   - name: test/yosupo-judge/sqrt_of_formal_power_series
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
       title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   - name: test/yosupo-judge/static_range_inversions_query
@@ -2199,12 +2207,12 @@ data:
       title: test/yosupo-judge/staticrmq/main.sparse_table.test.cpp
   - name: test/yosupo-judge/stirling_number_of_the_first_kind
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
       title: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
   - name: test/yosupo-judge/stirling_number_of_the_second_kind
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
       title: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
   - name: test/yosupo-judge/subset_convolution
@@ -2423,7 +2431,7 @@ data:
       title: test/yukicoder/922/main.test.cpp
   - name: test/yukicoder/931
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yukicoder/931/main.test.cpp
       title: test/yukicoder/931/main.test.cpp
 layout: toppage
