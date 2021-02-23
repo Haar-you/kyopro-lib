@@ -129,9 +129,11 @@ namespace haar_lib {
 
     auto integrate() const {
       const int n = data_.size();
-      std::vector<T> ret(n + 1);
+      std::vector<T> ret(n + 1), invs(n + 1, 1);
+      const int p = T::mod();
+      for(int i = 2; i <= n; ++i) invs[i] = -invs[p % i] * (p / i);
       for(int i = 0; i < n; ++i){
-        ret[i + 1] = data_[i] / (i + 1);
+        ret[i + 1] = data_[i] * invs[i + 1];
       }
 
       return formal_power_series(ret);
@@ -147,13 +149,20 @@ namespace haar_lib {
 
       while(t <= n * 2){
         std::vector<T> c(data_.begin(), data_.begin() + std::min(t, n));
-        c = convolve(c, convolve(ret, ret));
+        auto a = convolve(ret, ret, true);
+        if((int)a.size() > t) a.resize(t);
 
-        c.resize(t);
-        ret.resize(t);
+        c = convolve(c, a);
 
-        for(int i = 0; i < t; ++i){
-          ret[i] = ret[i] * 2 - c[i];
+        if((int)c.size() > t) c.resize(t);
+        if((int)ret.size() > t) ret.resize(t);
+
+        for(int i = 0; i < (int)ret.size(); ++i) ret[i] = ret[i] * 2;
+
+        if(ret.size() < c.size()) ret.resize(std::min<int>(c.size(), t));
+
+        for(int i = 0; i < (int)c.size(); ++i){
+          ret[i] -= c[i];
         }
 
         t <<= 1;
