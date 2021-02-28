@@ -26,6 +26,8 @@ namespace haar_lib {
     const auto& operator[](size_t i) const {return data_[i];}
     auto& operator[](size_t i){return data_[i];}
 
+    void resize(size_t n){data_.resize(n);}
+
     auto get(int n) const {
       return polynomial(std::vector(data_.begin(), data_.begin() + std::min<int>(n, data_.size())));
     }
