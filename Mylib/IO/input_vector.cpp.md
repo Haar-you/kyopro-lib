@@ -180,7 +180,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
     title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   - icon: ':heavy_check_mark:'
@@ -246,9 +246,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/919/main.test.cpp
     title: test/yukicoder/919/main.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/IO/input_vector.cpp\"\n#include <iostream>\n#include\
@@ -269,7 +269,7 @@ data:
   path: Mylib/IO/input_vector.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/184/main.test.cpp
   - test/yukicoder/919/main.test.cpp

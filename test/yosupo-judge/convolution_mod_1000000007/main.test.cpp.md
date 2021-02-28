@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

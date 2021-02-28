@@ -19,7 +19,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples_with_index.cpp
     title: Input tuples with index
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

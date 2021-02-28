@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   - icon: ':heavy_check_mark:'
     path: Mylib/LinearAlgebra/simultaneous_linear_equations_binary.cpp
     title: Simultaneous linear equations (Mod2)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
   _extendedRequiredBy: []

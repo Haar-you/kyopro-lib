@@ -21,15 +21,17 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Mod/mod_inv.cpp\"\n#include <utility>\n#include\
-    \ <cstdint>\n\nnamespace haar_lib {\n  int64_t mod_inv(int64_t a, int64_t m){\n\
-    \    int64_t b = m, u = 1, v = 0;\n\n    while(b){\n      int64_t t = a / b;\n\
-    \      a -= t * b; std::swap(a, b);\n      u -= t * v; std::swap(u, v);\n    }\n\
-    \n    u %= m;\n    if(u < 0) u += m;\n\n    return u;\n  }\n}\n"
+    \ <cstdint>\n\nnamespace haar_lib {\n  constexpr int64_t mod_inv(int64_t a, int64_t\
+    \ m){\n    int64_t b = m, u = 1, v = 0;\n\n    while(b){\n      int64_t t = a\
+    \ / b;\n      a -= t * b;\n      a = a ^ b; b = a ^ b; a = a ^ b;\n\n      u -=\
+    \ t * v;\n      u = u ^ v; v = u ^ v; u = u ^ v;\n    }\n\n    u %= m;\n    if(u\
+    \ < 0) u += m;\n\n    return u;\n  }\n}\n"
   code: "#pragma once\n#include <utility>\n#include <cstdint>\n\nnamespace haar_lib\
-    \ {\n  int64_t mod_inv(int64_t a, int64_t m){\n    int64_t b = m, u = 1, v = 0;\n\
-    \n    while(b){\n      int64_t t = a / b;\n      a -= t * b; std::swap(a, b);\n\
-    \      u -= t * v; std::swap(u, v);\n    }\n\n    u %= m;\n    if(u < 0) u +=\
-    \ m;\n\n    return u;\n  }\n}\n"
+    \ {\n  constexpr int64_t mod_inv(int64_t a, int64_t m){\n    int64_t b = m, u\
+    \ = 1, v = 0;\n\n    while(b){\n      int64_t t = a / b;\n      a -= t * b;\n\
+    \      a = a ^ b; b = a ^ b; a = a ^ b;\n\n      u -= t * v;\n      u = u ^ v;\
+    \ v = u ^ v; u = u ^ v;\n    }\n\n    u %= m;\n    if(u < 0) u += m;\n\n    return\
+    \ u;\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Number/Mod/mod_inv.cpp
@@ -37,7 +39,7 @@ data:
   - Mylib/Number/garner.cpp
   - Mylib/Number/Mod/mod_log.cpp
   - Mylib/Number/linear_congruence_equation.cpp
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2021-02-28 17:48:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/discrete_logarithm_mod/main.test.cpp

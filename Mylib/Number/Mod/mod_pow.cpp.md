@@ -2,22 +2,22 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/convolution_multiply.cpp
     title: Convolution (Index multiplication mod P)
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/Coloring/chromatic_number.cpp
     title: Graph vertex coloring
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Math/fps_sqrt.cpp
     title: Formal power series (Sqrt)
   - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_log.cpp
     title: Mod logarithm
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_sqrt.cpp
     title: Mod sqrt
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
   _extendedVerifiedWith:
@@ -69,21 +69,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sqrt_mod/main.test.cpp
     title: test/yosupo-judge/sqrt_mod/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/931/main.test.cpp
     title: test/yukicoder/931/main.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Mod/mod_pow.cpp\"\n#include <cstdint>\n\nnamespace\
@@ -105,7 +105,7 @@ data:
   - Mylib/Number/Mod/mod_log.cpp
   - Mylib/Number/Prime/primitive_root.cpp
   timestamp: '2020-10-28 03:22:23+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/931/main.test.cpp
   - test/aoj/2530/main.test.cpp

@@ -12,17 +12,17 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Prime/is_prime.cpp\"\n\nnamespace haar_lib\
-    \ {\n  bool is_prime(int n){\n    if(n <= 1) return false;\n    for(int i = 2;\
-    \ i * i <= n; ++i){\n      if(n % i == 0) return false;\n    }\n    return true;\n\
-    \  }\n}\n"
-  code: "#pragma once\n\nnamespace haar_lib {\n  bool is_prime(int n){\n    if(n <=\
-    \ 1) return false;\n    for(int i = 2; i * i <= n; ++i){\n      if(n % i == 0)\
-    \ return false;\n    }\n    return true;\n  }\n}\n"
+    \ {\n  constexpr bool is_prime(int n){\n    if(n <= 1) return false;\n    for(int\
+    \ i = 2; i * i <= n; ++i){\n      if(n % i == 0) return false;\n    }\n    return\
+    \ true;\n  }\n}\n"
+  code: "#pragma once\n\nnamespace haar_lib {\n  constexpr bool is_prime(int n){\n\
+    \    if(n <= 1) return false;\n    for(int i = 2; i * i <= n; ++i){\n      if(n\
+    \ % i == 0) return false;\n    }\n    return true;\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Number/Prime/is_prime.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2021-02-28 17:48:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/ALDS1_1_C/main.test.cpp

@@ -93,13 +93,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
     title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
   - icon: ':heavy_check_mark:'
@@ -129,12 +129,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/782/main.test.cpp
     title: test/yukicoder/782/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/931/main.test.cpp
     title: test/yukicoder/931/main.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/IO/join.cpp\"\n#include <iostream>\n#include <sstream>\n\
@@ -152,7 +152,7 @@ data:
   path: Mylib/IO/join.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/782/main.test.cpp
   - test/yukicoder/931/main.test.cpp

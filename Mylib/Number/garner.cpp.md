@@ -13,11 +13,12 @@ data:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/garner.cpp\"\n#include <vector>\n#include <cassert>\n\
     #line 2 \"Mylib/Number/Mod/mod_inv.cpp\"\n#include <utility>\n#include <cstdint>\n\
-    \nnamespace haar_lib {\n  int64_t mod_inv(int64_t a, int64_t m){\n    int64_t\
-    \ b = m, u = 1, v = 0;\n\n    while(b){\n      int64_t t = a / b;\n      a -=\
-    \ t * b; std::swap(a, b);\n      u -= t * v; std::swap(u, v);\n    }\n\n    u\
-    \ %= m;\n    if(u < 0) u += m;\n\n    return u;\n  }\n}\n#line 5 \"Mylib/Number/garner.cpp\"\
-    \n\nnamespace haar_lib {\n  int64_t garner_algorithm(std::vector<int64_t> r, std::vector<int64_t>\
+    \nnamespace haar_lib {\n  constexpr int64_t mod_inv(int64_t a, int64_t m){\n \
+    \   int64_t b = m, u = 1, v = 0;\n\n    while(b){\n      int64_t t = a / b;\n\
+    \      a -= t * b;\n      a = a ^ b; b = a ^ b; a = a ^ b;\n\n      u -= t * v;\n\
+    \      u = u ^ v; v = u ^ v; u = u ^ v;\n    }\n\n    u %= m;\n    if(u < 0) u\
+    \ += m;\n\n    return u;\n  }\n}\n#line 5 \"Mylib/Number/garner.cpp\"\n\nnamespace\
+    \ haar_lib {\n  int64_t garner_algorithm(std::vector<int64_t> r, std::vector<int64_t>\
     \ m, const int64_t mod){\n    assert(r.size() == m.size());\n    m.push_back(mod);\n\
     \n    int n = r.size();\n    std::vector<int64_t> coeffs(n + 1, 1);\n    std::vector<int64_t>\
     \ constants(n + 1, 0);\n\n    for(int k = 0; k < n; ++k){\n      int64_t t = ((r[k]\
@@ -39,7 +40,7 @@ data:
   isVerificationFile: false
   path: Mylib/Number/garner.cpp
   requiredBy: []
-  timestamp: '2020-10-10 11:12:55+09:00'
+  timestamp: '2021-02-28 17:48:38+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/Number/garner.cpp

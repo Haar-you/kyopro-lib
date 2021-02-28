@@ -4,22 +4,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/partition_number_fps.cpp
     title: Partition number (FPS)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Math/formal_power_series.cpp
     title: Formal power series
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
   _extendedRequiredBy: []

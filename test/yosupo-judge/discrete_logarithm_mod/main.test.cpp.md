@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_log.cpp
     title: Mod logarithm
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
   _extendedRequiredBy: []
@@ -34,11 +34,12 @@ data:
     \ n, int64_t p, int64_t m){\n    int64_t ret = 1;\n    while(p > 0){\n      if(p\
     \ & 1) (ret *= n) %= m;\n      (n *= n) %= m;\n      p >>= 1;\n    }\n    return\
     \ ret;\n  }\n}\n#line 2 \"Mylib/Number/Mod/mod_inv.cpp\"\n#include <utility>\n\
-    #line 4 \"Mylib/Number/Mod/mod_inv.cpp\"\n\nnamespace haar_lib {\n  int64_t mod_inv(int64_t\
-    \ a, int64_t m){\n    int64_t b = m, u = 1, v = 0;\n\n    while(b){\n      int64_t\
-    \ t = a / b;\n      a -= t * b; std::swap(a, b);\n      u -= t * v; std::swap(u,\
-    \ v);\n    }\n\n    u %= m;\n    if(u < 0) u += m;\n\n    return u;\n  }\n}\n\
-    #line 8 \"Mylib/Number/Mod/mod_log.cpp\"\n\nnamespace haar_lib {\n  std::optional<int64_t>\
+    #line 4 \"Mylib/Number/Mod/mod_inv.cpp\"\n\nnamespace haar_lib {\n  constexpr\
+    \ int64_t mod_inv(int64_t a, int64_t m){\n    int64_t b = m, u = 1, v = 0;\n\n\
+    \    while(b){\n      int64_t t = a / b;\n      a -= t * b;\n      a = a ^ b;\
+    \ b = a ^ b; a = a ^ b;\n\n      u -= t * v;\n      u = u ^ v; v = u ^ v; u =\
+    \ u ^ v;\n    }\n\n    u %= m;\n    if(u < 0) u += m;\n\n    return u;\n  }\n\
+    }\n#line 8 \"Mylib/Number/Mod/mod_log.cpp\"\n\nnamespace haar_lib {\n  std::optional<int64_t>\
     \ mod_log(int64_t a, int64_t b, int64_t m){\n    if(b == 1) return 0;\n\n    int64_t\
     \ d = 0;\n\n    while(1){\n      if(auto g = std::gcd(a, m); g != 1){\n      \
     \  if(b % g != 0) return {};\n\n        d += 1;\n        m /= g;\n        b /=\
@@ -91,7 +92,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-28 03:22:23+09:00'
+  timestamp: '2021-02-28 17:48:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp

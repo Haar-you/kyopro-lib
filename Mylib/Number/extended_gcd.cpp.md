@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: Mylib/Number/bezout_identity.cpp
+    title: "B\xE9zout's identity"
   - icon: ':heavy_check_mark:'
     path: Mylib/Number/chinese_remainder_algorithm.cpp
     title: Chinese remainder theorem
@@ -30,6 +33,7 @@ data:
   isVerificationFile: false
   path: Mylib/Number/extended_gcd.cpp
   requiredBy:
+  - Mylib/Number/bezout_identity.cpp
   - Mylib/Number/chinese_remainder_algorithm.cpp
   timestamp: '2020-09-25 03:22:21+09:00'
   verificationStatus: LIBRARY_ALL_AC

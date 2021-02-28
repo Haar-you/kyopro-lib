@@ -13,12 +13,12 @@ data:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/linear_congruence_equation.cpp\"\n#include\
     \ <optional>\n#include <numeric>\n#line 2 \"Mylib/Number/Mod/mod_inv.cpp\"\n#include\
-    \ <utility>\n#include <cstdint>\n\nnamespace haar_lib {\n  int64_t mod_inv(int64_t\
+    \ <utility>\n#include <cstdint>\n\nnamespace haar_lib {\n  constexpr int64_t mod_inv(int64_t\
     \ a, int64_t m){\n    int64_t b = m, u = 1, v = 0;\n\n    while(b){\n      int64_t\
-    \ t = a / b;\n      a -= t * b; std::swap(a, b);\n      u -= t * v; std::swap(u,\
-    \ v);\n    }\n\n    u %= m;\n    if(u < 0) u += m;\n\n    return u;\n  }\n}\n\
-    #line 5 \"Mylib/Number/linear_congruence_equation.cpp\"\n\nnamespace haar_lib\
-    \ {\n  // ax + b = 0 (mod m)\n  std::optional<int64_t> linear_congruence_equation(int64_t\
+    \ t = a / b;\n      a -= t * b;\n      a = a ^ b; b = a ^ b; a = a ^ b;\n\n  \
+    \    u -= t * v;\n      u = u ^ v; v = u ^ v; u = u ^ v;\n    }\n\n    u %= m;\n\
+    \    if(u < 0) u += m;\n\n    return u;\n  }\n}\n#line 5 \"Mylib/Number/linear_congruence_equation.cpp\"\
+    \n\nnamespace haar_lib {\n  // ax + b = 0 (mod m)\n  std::optional<int64_t> linear_congruence_equation(int64_t\
     \ a, int64_t b, int64_t m){\n    if(a >= m) a %= m;\n    if(b >= m) b %= m;\n\
     \    if(a < 0) (a += m) %= m;\n    if(b < 0) (b += m) %= m;\n\n    auto g = std::gcd(a,\
     \ m);\n    if(b % g == 0){\n      a /= g;\n      b /= g;\n      m /= g;\n    }\n\
@@ -36,7 +36,7 @@ data:
   isVerificationFile: false
   path: Mylib/Number/linear_congruence_equation.cpp
   requiredBy: []
-  timestamp: '2020-12-27 03:49:09+09:00'
+  timestamp: '2021-02-28 17:48:38+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/Number/linear_congruence_equation.cpp

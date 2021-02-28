@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   - icon: ':heavy_check_mark:'
     path: Mylib/Math/linearly_recurrent_sequence.cpp
     title: Kth term of linearly recurrent sequence
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
   _extendedRequiredBy: []
@@ -136,7 +136,7 @@ data:
     \ (int64_t)res3[i]};\n\n      const int64_t t0 = r[0] % M1;\n      const int64_t\
     \ t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2 = ((r[2] - t0 + M3)\
     \ * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0) + T(t1) * M1 + T(t2)\
-    \ * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 4 \"Mylib/Math/linearly_recurrent_sequence.cpp\"\
+    \ * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 5 \"Mylib/Math/linearly_recurrent_sequence.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T, auto &convolve>\n  T linearly_recurrent_sequence(const\
     \ std::vector<T> &a, const std::vector<T> &c, int64_t k){\n    assert(a.size()\
     \ == c.size());\n\n    const int d = a.size();\n\n    std::vector<T> Q(d + 1);\n\
@@ -184,7 +184,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/kth_term_of_linearly_recurrent_sequence/main.test.cpp
   requiredBy: []
-  timestamp: '2021-02-23 19:33:34+09:00'
+  timestamp: '2021-02-28 17:34:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/kth_term_of_linearly_recurrent_sequence/main.test.cpp
