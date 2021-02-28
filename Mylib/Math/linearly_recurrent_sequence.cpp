@@ -1,6 +1,7 @@
 #pragma once
 #include <cassert>
 #include <vector>
+#include <cstdint>
 
 namespace haar_lib {
   template <typename T, auto &convolve>

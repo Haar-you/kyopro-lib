@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <cstdint>
 
 std::vector<int64_t> enumerate_mod_inv(int n, int64_t p){
   std::vector<int64_t> ret(n + 1);
