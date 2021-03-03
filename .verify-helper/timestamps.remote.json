@@ -29,6 +29,7 @@
 "test/aoj/2530/main.test.cpp": "2020-12-09 11:11:37 +0900",
 "test/aoj/2559/main.binomial_heap.test.cpp": "2020-09-28 09:27:15 +0900",
 "test/aoj/2559/main.leftist_heap.test.cpp": "2020-09-28 09:27:15 +0900",
+"test/aoj/2559/main.pairing_heap.test.cpp": "2021-03-04 03:07:16 +0900",
 "test/aoj/2559/main.skew_heap.test.cpp": "2020-09-28 09:27:15 +0900",
 "test/aoj/2667/main.test.cpp": "2020-10-15 01:51:15 +0900",
 "test/aoj/2674/main.test.cpp": "2020-09-28 09:27:15 +0900",
