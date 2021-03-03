@@ -10,6 +10,9 @@ data:
     path: test/aoj/2559/main.leftist_heap.test.cpp
     title: test/aoj/2559/main.leftist_heap.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/aoj/2559/main.pairing_heap.test.cpp
+    title: test/aoj/2559/main.pairing_heap.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/aoj/2559/main.skew_heap.test.cpp
     title: test/aoj/2559/main.skew_heap.test.cpp
   - icon: ':heavy_check_mark:'
@@ -44,10 +47,11 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/3034/main.test.cpp
   - test/aoj/2559/main.binomial_heap.test.cpp
-  - test/aoj/2559/main.leftist_heap.test.cpp
+  - test/aoj/2559/main.pairing_heap.test.cpp
   - test/aoj/2559/main.skew_heap.test.cpp
+  - test/aoj/2559/main.leftist_heap.test.cpp
+  - test/aoj/3034/main.test.cpp
 documentation_of: Mylib/Utils/fix_point.cpp
 layout: document
 title: Fixed point combinator

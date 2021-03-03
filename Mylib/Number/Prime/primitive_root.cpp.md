@@ -94,21 +94,21 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/931/main.test.cpp
-  - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
-  - test/yosupo-judge/multipoint_evaluation/main.test.cpp
-  - test/yosupo-judge/kth_term_of_linearly_recurrent_sequence/main.test.cpp
-  - test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
-  - test/yosupo-judge/convolution_mod/main.test.cpp
   - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
-  - test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/partition_function/main.fps.test.cpp
-  - test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
-  - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/log_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/bernoulli_number/main.test.cpp
+  - test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
   - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+  - test/yosupo-judge/convolution_mod/main.test.cpp
+  - test/yosupo-judge/partition_function/main.fps.test.cpp
+  - test/yosupo-judge/log_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/kth_term_of_linearly_recurrent_sequence/main.test.cpp
+  - test/yosupo-judge/multipoint_evaluation/main.test.cpp
+  - test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
+  - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
+  - test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
 documentation_of: Mylib/Number/Prime/primitive_root.cpp
 layout: document
 title: Primitive root

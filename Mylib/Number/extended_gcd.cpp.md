@@ -33,8 +33,8 @@ data:
   isVerificationFile: false
   path: Mylib/Number/extended_gcd.cpp
   requiredBy:
-  - Mylib/Number/bezout_identity.cpp
   - Mylib/Number/chinese_remainder_algorithm.cpp
+  - Mylib/Number/bezout_identity.cpp
   timestamp: '2020-09-25 03:22:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -373,6 +373,9 @@ data:
       path: Mylib/DataStructure/Heap/leftist_heap.cpp
       title: Leftist heap
     - icon: ':heavy_check_mark:'
+      path: Mylib/DataStructure/Heap/pairing_heap.cpp
+      title: Pairing heap
+    - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/Heap/skew_heap.cpp
       title: Skew heap
   - name: Mylib/DataStructure/LinkCutTree
@@ -380,11 +383,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/LinkCutTree/link_cut_tree.cpp
       title: Link/cut tree
-  - name: Mylib/DataStructure/Map
-    pages:
-    - icon: ':warning:'
-      path: Mylib/DataStructure/Map/wrapped_map.cpp
-      title: Mylib/DataStructure/Map/wrapped_map.cpp
   - name: Mylib/DataStructure/Queue
     pages:
     - icon: ':heavy_check_mark:'
@@ -450,9 +448,6 @@ data:
     - icon: ':warning:'
       path: Mylib/DataStructure/Set/integer_set.cpp
       title: Integer set
-    - icon: ':warning:'
-      path: Mylib/DataStructure/Set/wrapped_set.cpp
-      title: Mylib/DataStructure/Set/wrapped_set.cpp
   - name: Mylib/DataStructure/SparseTable
     pages:
     - icon: ':warning:'
@@ -1256,6 +1251,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Utils/sort_simultaneously.cpp
       title: Sort simultaneously
+  - name: Mylib/Wrapper
+    pages:
+    - icon: ':warning:'
+      path: Mylib/Wrapper/rotate.cpp
+      title: Mylib/Wrapper/rotate.cpp
+    - icon: ':warning:'
+      path: Mylib/Wrapper/wrapped_map.cpp
+      title: Mylib/Wrapper/wrapped_map.cpp
+    - icon: ':warning:'
+      path: Mylib/Wrapper/wrapped_set.cpp
+      title: Mylib/Wrapper/wrapped_set.cpp
   verificationCategories:
   - name: test/aoj/0323
     pages:
@@ -1399,6 +1405,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/2559/main.leftist_heap.test.cpp
       title: test/aoj/2559/main.leftist_heap.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/2559/main.pairing_heap.test.cpp
+      title: test/aoj/2559/main.pairing_heap.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/aoj/2559/main.skew_heap.test.cpp
       title: test/aoj/2559/main.skew_heap.test.cpp

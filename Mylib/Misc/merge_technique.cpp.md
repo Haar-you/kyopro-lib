@@ -10,6 +10,9 @@ data:
     path: test/aoj/2559/main.leftist_heap.test.cpp
     title: test/aoj/2559/main.leftist_heap.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/aoj/2559/main.pairing_heap.test.cpp
+    title: test/aoj/2559/main.pairing_heap.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/aoj/2559/main.skew_heap.test.cpp
     title: test/aoj/2559/main.skew_heap.test.cpp
   _isVerificationFailed: false
@@ -35,8 +38,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/2559/main.binomial_heap.test.cpp
-  - test/aoj/2559/main.leftist_heap.test.cpp
+  - test/aoj/2559/main.pairing_heap.test.cpp
   - test/aoj/2559/main.skew_heap.test.cpp
+  - test/aoj/2559/main.leftist_heap.test.cpp
 documentation_of: Mylib/Misc/merge_technique.cpp
 layout: document
 title: Merge technique

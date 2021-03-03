@@ -46,9 +46,9 @@ data:
   timestamp: '2020-10-30 23:28:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/3134/main.test.cpp
-  - test/yosupo-judge/bitwise_and_convolution/main.or.test.cpp
   - test/yosupo-judge/subset_convolution/main.test.cpp
+  - test/yosupo-judge/bitwise_and_convolution/main.or.test.cpp
+  - test/aoj/3134/main.test.cpp
 documentation_of: Mylib/Convolution/fast_zeta_transform_subset.cpp
 layout: document
 title: Fast Zeta transform (Subsets)

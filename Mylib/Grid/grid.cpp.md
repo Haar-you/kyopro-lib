@@ -65,8 +65,8 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/0558/main.test.cpp
   - test/aoj/0558/main.graph.test.cpp
+  - test/aoj/0558/main.test.cpp
 documentation_of: Mylib/Grid/grid.cpp
 layout: document
 title: Grid template

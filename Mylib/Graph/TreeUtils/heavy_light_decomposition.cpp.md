@@ -152,10 +152,10 @@ data:
   verifiedWith:
   - test/yukicoder/235/main.test.cpp
   - test/yukicoder/1030/main.test.cpp
-  - test/aoj/2667/main.test.cpp
-  - test/yosupo-judge/vertex_add_path_sum/main.test.cpp
-  - test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
   - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
+  - test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
+  - test/yosupo-judge/vertex_add_path_sum/main.test.cpp
+  - test/aoj/2667/main.test.cpp
 documentation_of: Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp
 layout: document
 title: Heavy-light decomposition

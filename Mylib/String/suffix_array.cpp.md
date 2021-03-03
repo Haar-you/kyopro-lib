@@ -150,9 +150,9 @@ data:
   timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/ALDS1_14_D/main.test.cpp
   - test/yosupo-judge/number_of_substrings/main.test.cpp
   - test/yosupo-judge/suffixarray/main.test.cpp
+  - test/aoj/ALDS1_14_D/main.test.cpp
 documentation_of: Mylib/String/suffix_array.cpp
 layout: document
 title: Suffix array

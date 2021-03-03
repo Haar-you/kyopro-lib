@@ -8,9 +8,9 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/DataStructure/Map/wrapped_map.cpp\"\n#include <map>\n\
-    #include <functional>\n#include <algorithm>\n\nnamespace haar_lib {\n  template\
-    \ <typename Key, typename Value, typename Compare = std::less<Key>>\n  class wrapped_map\
+  bundledCode: "#line 2 \"Mylib/Wrapper/wrapped_map.cpp\"\n#include <map>\n#include\
+    \ <functional>\n#include <algorithm>\n\nnamespace haar_lib {\n  template <typename\
+    \ Key, typename Value, typename Compare = std::less<Key>>\n  class wrapped_map\
     \ : public std::map<Key, Value, Compare> {\n    using super = std::map<Key, Value,\
     \ Compare>;\n\n  public:\n    const auto& max_key() const {\n      assert(not\
     \ super::empty());\n      return *super::rbegin();\n    }\n\n    const auto& min_key()\
@@ -45,12 +45,12 @@ data:
     \        else ++it;\n      }\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
-  path: Mylib/DataStructure/Map/wrapped_map.cpp
+  path: Mylib/Wrapper/wrapped_map.cpp
   requiredBy: []
-  timestamp: '2021-02-28 04:48:12+09:00'
+  timestamp: '2021-03-04 02:55:52+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: Mylib/DataStructure/Map/wrapped_map.cpp
+documentation_of: Mylib/Wrapper/wrapped_map.cpp
 layout: document
 title: null
 ---

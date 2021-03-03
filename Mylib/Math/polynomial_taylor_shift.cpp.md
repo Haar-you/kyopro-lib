@@ -46,8 +46,8 @@ data:
   timestamp: '2020-11-04 17:40:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
   - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
+  - test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
 documentation_of: Mylib/Math/polynomial_taylor_shift.cpp
 layout: document
 title: Polynomial taylor shift

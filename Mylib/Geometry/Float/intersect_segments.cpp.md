@@ -139,9 +139,9 @@ data:
   timestamp: '2020-09-19 20:03:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/CGL_2_B/main.test.cpp
   - test/aoj/CGL_2_C/main.test.cpp
   - test/aoj/2136/main.test.cpp
+  - test/aoj/CGL_2_B/main.test.cpp
 documentation_of: Mylib/Geometry/Float/intersect_segments.cpp
 layout: document
 title: Intersection between two segments

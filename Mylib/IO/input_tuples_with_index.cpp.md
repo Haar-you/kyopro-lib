@@ -87,15 +87,15 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/875/main.test.cpp
-  - test/aoj/1508/main.splay_tree.test.cpp
-  - test/aoj/1508/main.treap.test.cpp
-  - test/aoj/GRL_5_C/main.doubling.test.cpp
-  - test/aoj/GRL_5_C/main.hld.test.cpp
-  - test/aoj/2136/main.test.cpp
-  - test/aoj/DSL_2_C/main.test.cpp
   - test/yosupo-judge/point_set_range_composite/main.test.cpp
   - test/yosupo-judge/persistent_unionfind/main.test.cpp
   - test/yosupo-judge/dynamic_tree_vertex_add_path_sum/main.link_cut_tree.test.cpp
+  - test/aoj/GRL_5_C/main.doubling.test.cpp
+  - test/aoj/GRL_5_C/main.hld.test.cpp
+  - test/aoj/DSL_2_C/main.test.cpp
+  - test/aoj/1508/main.splay_tree.test.cpp
+  - test/aoj/1508/main.treap.test.cpp
+  - test/aoj/2136/main.test.cpp
 documentation_of: Mylib/IO/input_tuples_with_index.cpp
 layout: document
 title: Input tuples with index

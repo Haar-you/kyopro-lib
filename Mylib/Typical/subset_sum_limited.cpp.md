@@ -39,8 +39,8 @@ data:
   timestamp: '2020-11-07 03:03:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/2370/main.test.cpp
   - test/aoj/2955/main.test.cpp
+  - test/aoj/2370/main.test.cpp
 documentation_of: Mylib/Typical/subset_sum_limited.cpp
 layout: document
 title: Subset sum problem (With quantity limitations)
