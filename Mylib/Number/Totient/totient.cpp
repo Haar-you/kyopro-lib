@@ -2,7 +2,7 @@
 #include <cstdint>
 
 namespace haar_lib {
-  int64_t totient(int64_t n){
+  constexpr int64_t totient(int64_t n){
     int64_t ret = n;
 
     for(int64_t i = 2; i * i <= n; ++i){
