@@ -4,7 +4,7 @@
 #include <cstdint>
 
 namespace haar_lib {
-  auto prime_factorize(int64_t n){
+  auto prime_factorize(int64_t n) -> std::vector<std::pair<int64_t, int64_t>> {
     std::vector<std::pair<int64_t, int64_t>> ret;
     for(int64_t i = 2LL; i * i <= n; ++i){
       if(n % i == 0){

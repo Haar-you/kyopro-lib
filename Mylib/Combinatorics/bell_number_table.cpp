@@ -3,7 +3,7 @@
 
 namespace haar_lib {
   template <typename T>
-  auto bell_number_table(int n){
+  auto bell_number_table(int n) -> std::vector<std::vector<T>> {
     std::vector<std::vector<T>> ret(n + 1, std::vector<T>(n + 1));
 
     ret[0][0] = 1;

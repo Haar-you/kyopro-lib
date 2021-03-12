@@ -3,7 +3,7 @@
 #include <numeric>
 
 namespace haar_lib {
-  auto totient_table(int n){
+  std::vector<int> totient_table(int n){
     std::vector<int> ret(n + 1);
     std::iota(ret.begin(), ret.end(), 0);
 

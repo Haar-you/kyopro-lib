@@ -9,7 +9,7 @@
 namespace haar_lib {
   namespace sort_simultaneously_impl {
     template <typename T>
-    void sub(int N, const std::vector<int> &ord, std::vector<T> &a){
+    void helper(int N, const std::vector<int> &ord, std::vector<T> &a){
       std::vector<T> temp(N);
       for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];
       std::swap(temp, a);
@@ -25,6 +25,6 @@ namespace haar_lib {
     std::sort(ord.begin(), ord.end(), compare);
 
     (void)std::initializer_list<int>{
-      (void(sort_simultaneously_impl::sub(N, ord, args)), 0) ...};
+      (void(sort_simultaneously_impl::helper(N, ord, args)), 0) ...};
   }
 }

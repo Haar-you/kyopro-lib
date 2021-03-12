@@ -3,7 +3,7 @@
 
 namespace haar_lib {
   template <typename T>
-  auto partition_number(int n, int k){
+  auto partition_number(int n, int k) -> std::vector<std::vector<T>> {
     std::vector<std::vector<T>> dp(n + 1, std::vector<T>(k + 1));
     dp[0][0] = 1;
 

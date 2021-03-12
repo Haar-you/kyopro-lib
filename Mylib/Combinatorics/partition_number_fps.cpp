@@ -4,7 +4,7 @@
 
 namespace haar_lib {
   template <typename Fps>
-  auto partition_number_fps(int N){
+  Fps partition_number_fps(int N){
     using T = typename Fps::value_type;
 
     std::vector<T> f(N + 1);

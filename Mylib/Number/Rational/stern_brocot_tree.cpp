@@ -4,7 +4,13 @@
 
 namespace haar_lib {
   template <typename Checker>
-  void stern_brocot_tree(const Checker &check, int n, std::pair<int, int> &lower, std::pair<int, int> &upper, int64_t pl = 0, int64_t ql = 1, int64_t pr = 1, int64_t qr = 0){
+  void stern_brocot_tree(
+    const Checker &check,
+    int n,
+    std::pair<int, int> &lower,
+    std::pair<int, int> &upper,
+    int64_t pl = 0, int64_t ql = 1, int64_t pr = 1, int64_t qr = 0
+  ){
     int64_t pm = pl + pr;
     int64_t qm = ql + qr;
 

@@ -3,7 +3,7 @@
 
 namespace haar_lib {
   template <typename T>
-  auto binomial_coefficients_table(int n, int k){
+  auto binomial_coefficients_table(int n, int k) -> std::vector<std::vector<T>> {
     std::vector<std::vector<T>> ret(n + 1, std::vector<T>(k + 1));
     ret[0][0] = 1;
 

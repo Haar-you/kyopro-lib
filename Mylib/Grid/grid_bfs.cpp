@@ -11,7 +11,8 @@ namespace haar_lib {
     const std::vector<cell> &starting_points,
     const Directions &dir,
     const Checker &check_passable
-  ){
+  ) -> std::vector<std::vector<std::optional<int>>>
+  {
     std::vector<std::vector<std::optional<int>>> dist(H, std::vector<std::optional<int>>(W));
     std::vector<std::vector<bool>> visited(H, std::vector<bool>(W));
 

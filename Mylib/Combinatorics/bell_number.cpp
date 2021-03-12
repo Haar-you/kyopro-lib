@@ -4,9 +4,11 @@
 #include "Mylib/Combinatorics/factorial_table.cpp"
 
 namespace haar_lib {
-  template <const auto &ft>
-  auto bell_number(int n, int k){
-    using T = typename std::remove_reference_t<decltype(ft)>::value_type;
+  template <
+    const auto &ft,
+    typename T = typename std::remove_reference_t<decltype(ft)>::value_type
+    >
+  T bell_number(int n, int k){
     if(n == 0) return T(1);
 
     k = std::min(k, n);

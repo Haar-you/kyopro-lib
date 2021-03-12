@@ -17,7 +17,7 @@ namespace haar_lib {
       }
     }
 
-    auto factorize(int N){
+    std::vector<int64_t> factorize(int N) const {
       std::vector<int64_t> ret;
 
       while(N > 1){

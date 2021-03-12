@@ -4,7 +4,7 @@
 
 namespace haar_lib {
   template <typename Init, typename Process, typename Checker>
-  auto parallel_binary_search(int M, int Q, Init init, Process process, Checker checker){
+  std::vector<int> parallel_binary_search(int M, int Q, Init init, Process process, Checker checker){
     std::vector<int> lb(Q, -1), ub(Q, M);
 
     while(1){

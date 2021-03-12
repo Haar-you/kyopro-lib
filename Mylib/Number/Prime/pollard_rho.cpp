@@ -28,7 +28,7 @@ namespace haar_lib {
     }
   }
 
-  auto pollard_rho(int64_t n){
+  auto pollard_rho(int64_t n) -> std::vector<std::pair<int64_t, int64_t>> {
     std::vector<std::pair<int64_t, int64_t>> ret;
 
     for(int i = 2; i <= 1000000; ++i){

@@ -5,7 +5,14 @@
 
 namespace haar_lib {
   template <typename T, typename Compare>
-  auto cartesian_tree(const std::vector<T> &a, Compare compare){
+  auto cartesian_tree(const std::vector<T> &a, Compare compare) ->
+    std::tuple<
+      int, // root
+      std::vector<std::optional<int>>, // parent nodes
+      std::vector<std::optional<int>>, // left nodes
+      std::vector<std::optional<int>> // right nodes
+      >
+  {
     const int n = a.size();
     std::vector<std::optional<int>> p(n), l(n), r(n);
     int root = 0;

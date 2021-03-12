@@ -34,7 +34,7 @@ namespace haar_lib {
   }
 
   template <typename T>
-  auto convolution_gcd(std::vector<T> f, std::vector<T> g){
+  std::vector<T> convolution_gcd(std::vector<T> f, std::vector<T> g){
     const int N = f.size();
     assert(f.size() == g.size());
 

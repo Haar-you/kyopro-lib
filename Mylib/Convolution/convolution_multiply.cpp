@@ -4,7 +4,7 @@
 
 namespace haar_lib {
   template <typename T, const auto &convolve>
-  auto convolution_multiply(const std::vector<T> &A, const std::vector<T> &B, int P){
+  std::vector<T> convolution_multiply(const std::vector<T> &A, const std::vector<T> &B, int P){
     const int p_root = primitive_root(P);
 
     std::vector<int> index(P);

@@ -6,7 +6,7 @@
 
 namespace haar_lib {
   template <typename T = double, bool INVERSE = false>
-  auto fast_fourier_transform(std::vector<std::complex<T>> f){
+  std::vector<std::complex<T>> fast_fourier_transform(std::vector<std::complex<T>> f){
     const int n = f.size();
     assert((n & (n - 1)) == 0); // データ数は2の冪乗個
 

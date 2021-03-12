@@ -4,7 +4,7 @@
 
 namespace haar_lib {
   template <typename C, typename T = typename C::value_type>
-  auto grid_find(const std::vector<C> &A, T value){
+  std::vector<cell> grid_find(const std::vector<C> &A, T value){
     const int H = A.size(), W = A[0].size();
 
     std::vector<cell> ret;

@@ -4,10 +4,8 @@
 #include <cstdint>
 
 namespace haar_lib {
-  template <typename Container>
-  auto run_length_encoding(const Container &v){
-    using T = typename Container::value_type;
-
+  template <typename Container, typename T = typename Container::value_type>
+  auto run_length_encoding(const Container &v) -> std::vector<std::pair<T, int64_t>> {
     std::vector<std::pair<T, int64_t>> ret;
 
     for(auto &x : v){
