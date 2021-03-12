@@ -5,16 +5,16 @@
 namespace haar_lib {
   namespace min_max_monoid_impl {
     template <typename T>
-    struct inner_value {
+    struct internal_value {
       std::optional<T> min, max;
-      inner_value(): min(std::nullopt), max(std::nullopt){}
-      inner_value(T value): min(value), max(value){}
+      internal_value(): min(std::nullopt), max(std::nullopt){}
+      internal_value(T value): min(value), max(value){}
     };
   }
 
   template <typename T>
   struct min_max_monoid {
-    using value_type = min_max_monoid_impl::inner_value<T>;
+    using value_type = min_max_monoid_impl::internal_value<T>;
 
     value_type operator()() const {
       return {};

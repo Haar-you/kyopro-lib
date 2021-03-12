@@ -4,17 +4,17 @@
 
 namespace haar_lib {
   namespace max_contiguous_monoid_impl {
-    struct inner_value {
+    struct internal_value {
       int count, left, right, length;
-      inner_value(){}
-      inner_value(int count, int left, int right, int length):
+      internal_value(){}
+      internal_value(int count, int left, int right, int length):
         count(count), left(left), right(right), length(length){}
-      inner_value(int x): count(x ? 1 : 0), left(x ? 1 : 0), right(x ? 1 : 0), length(1){}
+      internal_value(int x): count(x ? 1 : 0), left(x ? 1 : 0), right(x ? 1 : 0), length(1){}
     };
   }
 
   struct max_contiguous_monoid {
-    using value_type = max_contiguous_monoid_impl::inner_value;
+    using value_type = max_contiguous_monoid_impl::internal_value;
 
     value_type operator()() const {
       return {0, 0, 0, 0};
