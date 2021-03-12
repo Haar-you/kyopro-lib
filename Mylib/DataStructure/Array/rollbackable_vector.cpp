@@ -70,14 +70,6 @@ namespace haar_lib {
     const T& back() const {return data_.back();}
     const T& front() const {return data_.front();}
 
-    friend std::ostream& operator<<(std::ostream &s, const rollbackable_vector &a){
-      s << "{";
-      for(auto it = a.cbegin(); it != a.cend(); ++it){
-        if(it != a.cbegin()) s << ", ";
-        s << *it;
-      }
-      s << "}";
-      return s;
-    }
+    const auto& data() const {return data_;}
   };
 }

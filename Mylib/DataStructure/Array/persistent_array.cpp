@@ -136,21 +136,10 @@ namespace haar_lib {
     }
 
   public:
-    std::vector<T> traverse() const {
+    std::vector<T> data() const {
       std::vector<T> ret;
       traverse(root_, ret);
       return ret;
-    }
-
-    friend std::ostream& operator<<(std::ostream &s, const persistent_array &a){
-      auto v = a.traverse();
-      s << "{";
-      for(auto it = v.begin(); it != v.end(); ++it){
-        if(it != v.begin()) s << ", ";
-        s << *it;
-      }
-      s << "}";
-      return s;
     }
   };
 }

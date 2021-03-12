@@ -35,17 +35,15 @@ namespace haar_lib {
       return persistent_stack(t);
     }
 
-    friend std::ostream& operator<<(std::ostream &s, const persistent_stack &a){
-      s << "{";
-      node *t = a.root_;
+    std::vector<T> data() const {
+      std::vector<T> ret;
+      node *t = root_;
       while(t){
-        if(t != a.root_) s << ", ";
-        s << t->value;
+        ret.push_back(t->value);
         t = t->next;
       }
 
-      s << "}";
-      return s;
+      return ret;
     }
   };
 }

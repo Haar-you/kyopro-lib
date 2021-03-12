@@ -2,6 +2,7 @@
 #include <array>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 namespace haar_lib {
   template <typename T>
@@ -84,26 +85,21 @@ namespace haar_lib {
       return front_node_ ? back_node_->depth - front_node_->depth + 1 : 0;
     }
 
-    friend std::ostream& operator<<(std::ostream &s, const persistent_queue &a){
-      s << "{";
-      std::vector<T> temp;
-      node *t = a.back_node_;
+    std::vector<T> data() const {
+      std::vector<T> ret;
+      node *t = back_node_;
       while(t){
-        if(t == a.front_node_){
-          temp.push_back(t->value);
+        if(t == front_node_){
+          ret.push_back(t->value);
           break;
         }
-        temp.push_back(t->value);
+        ret.push_back(t->value);
         t = t->ancestors[0];
       }
 
-      for(auto it = temp.begin(); it != temp.end(); ++it){
-        if(it != temp.begin()) s << ", ";
-        s << *it;
-      }
+      std::reverse(ret.begin(), ret.end());
 
-      s << "}";
-      return s;
+      return ret;
     }
   };
 }
