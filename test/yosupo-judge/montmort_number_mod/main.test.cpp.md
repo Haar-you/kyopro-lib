@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/montmort_number.cpp
     title: Montmort number
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
   - icon: ':heavy_check_mark:'
@@ -57,17 +57,17 @@ data:
     \ operator>>(std::istream &is, runtime_modint &a){is >> a.val_; return is;}\n\
     \    friend std::ostream& operator<<(std::ostream &os, const runtime_modint &a){os\
     \ << a.val_; return os;}\n  };\n}\n#line 2 \"Mylib/Combinatorics/montmort_number.cpp\"\
-    \n#include <vector>\n\nnamespace haar_lib {\n  template <typename T>\n  auto montmort_number(int\
-    \ n){\n    std::vector<T> ret(n + 1);\n\n    ret[0] = 1;\n    ret[1] = 0;\n  \
-    \  ret[2] = 1;\n\n    for(int i = 3; i <= n; ++i){\n      ret[i] = (ret[i - 1]\
-    \ + ret[i - 2]) * (i - 1);\n    }\n\n    return ret;\n  }\n}\n#line 3 \"Mylib/IO/join.cpp\"\
-    \n#include <sstream>\n#include <string>\n\nnamespace haar_lib {\n  template <typename\
-    \ Iter>\n  std::string join(Iter first, Iter last, std::string delim = \" \"){\n\
-    \    std::stringstream s;\n\n    for(auto it = first; it != last; ++it){\n   \
-    \   if(it != first) s << delim;\n      s << *it;\n    }\n\n    return s.str();\n\
-    \  }\n}\n#line 7 \"test/yosupo-judge/montmort_number_mod/main.test.cpp\"\n\nnamespace\
-    \ hl = haar_lib;\n\n\nstatic int M;\nusing mint = hl::runtime_modint<M>;\n\nint\
-    \ main(){\n  int N; std::cin >> N >> M;\n\n  auto ans = hl::montmort_number<mint>(1000000);\n\
+    \n#include <vector>\n\nnamespace haar_lib {\n  template <typename T>\n  std::vector<T>\
+    \ montmort_number(int n){\n    std::vector<T> ret(n + 1);\n\n    ret[0] = 1;\n\
+    \    ret[1] = 0;\n    ret[2] = 1;\n\n    for(int i = 3; i <= n; ++i){\n      ret[i]\
+    \ = (ret[i - 1] + ret[i - 2]) * (i - 1);\n    }\n\n    return ret;\n  }\n}\n#line\
+    \ 3 \"Mylib/IO/join.cpp\"\n#include <sstream>\n#include <string>\n\nnamespace\
+    \ haar_lib {\n  template <typename Iter>\n  std::string join(Iter first, Iter\
+    \ last, std::string delim = \" \"){\n    std::stringstream s;\n\n    for(auto\
+    \ it = first; it != last; ++it){\n      if(it != first) s << delim;\n      s <<\
+    \ *it;\n    }\n\n    return s.str();\n  }\n}\n#line 7 \"test/yosupo-judge/montmort_number_mod/main.test.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\n\nstatic int M;\nusing mint = hl::runtime_modint<M>;\n\
+    \nint main(){\n  int N; std::cin >> N >> M;\n\n  auto ans = hl::montmort_number<mint>(1000000);\n\
     \n  std::cout << hl::join(ans.begin() + 1, ans.begin() + N + 1) << \"\\n\";\n\n\
     \  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/montmort_number_mod\"\n\
@@ -84,7 +84,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/montmort_number_mod/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/montmort_number_mod/main.test.cpp

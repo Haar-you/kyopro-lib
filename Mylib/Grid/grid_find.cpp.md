@@ -35,22 +35,24 @@ data:
     \ RIGHT, UP, DOWN};\n  const std::array<cell, 8> dir8 = {LEFT, RIGHT, UP, DOWN,\
     \ LEFT + UP, LEFT + DOWN, RIGHT + UP, RIGHT + DOWN};\n}\n#line 4 \"Mylib/Grid/grid_find.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename C, typename T = typename C::value_type>\n\
-    \  auto grid_find(const std::vector<C> &A, T value){\n    const int H = A.size(),\
-    \ W = A[0].size();\n\n    std::vector<cell> ret;\n    for(int i = 0; i < H; ++i){\n\
-    \      for(int j = 0; j < W; ++j){\n        if(A[i][j] == value){\n          ret.emplace_back(i,\
-    \ j);\n        }\n      }\n    }\n\n    return ret;\n  }\n}\n"
+    \  std::vector<cell> grid_find(const std::vector<C> &A, T value){\n    const int\
+    \ H = A.size(), W = A[0].size();\n\n    std::vector<cell> ret;\n    for(int i\
+    \ = 0; i < H; ++i){\n      for(int j = 0; j < W; ++j){\n        if(A[i][j] ==\
+    \ value){\n          ret.emplace_back(i, j);\n        }\n      }\n    }\n\n  \
+    \  return ret;\n  }\n}\n"
   code: "#pragma once\n#include <vector>\n#include \"Mylib/Grid/grid.cpp\"\n\nnamespace\
     \ haar_lib {\n  template <typename C, typename T = typename C::value_type>\n \
-    \ auto grid_find(const std::vector<C> &A, T value){\n    const int H = A.size(),\
-    \ W = A[0].size();\n\n    std::vector<cell> ret;\n    for(int i = 0; i < H; ++i){\n\
-    \      for(int j = 0; j < W; ++j){\n        if(A[i][j] == value){\n          ret.emplace_back(i,\
-    \ j);\n        }\n      }\n    }\n\n    return ret;\n  }\n}\n"
+    \ std::vector<cell> grid_find(const std::vector<C> &A, T value){\n    const int\
+    \ H = A.size(), W = A[0].size();\n\n    std::vector<cell> ret;\n    for(int i\
+    \ = 0; i < H; ++i){\n      for(int j = 0; j < W; ++j){\n        if(A[i][j] ==\
+    \ value){\n          ret.emplace_back(i, j);\n        }\n      }\n    }\n\n  \
+    \  return ret;\n  }\n}\n"
   dependsOn:
   - Mylib/Grid/grid.cpp
   isVerificationFile: false
   path: Mylib/Grid/grid_find.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/0558/main.graph.test.cpp

@@ -34,42 +34,42 @@ data:
     \ + DOWN};\n}\n#line 6 \"Mylib/Grid/grid_bfs.cpp\"\n\nnamespace haar_lib {\n \
     \ template <typename Directions, typename Checker>\n  auto grid_bfs(\n    const\
     \ int H, const int W,\n    const std::vector<cell> &starting_points,\n    const\
-    \ Directions &dir,\n    const Checker &check_passable\n  ){\n    std::vector<std::vector<std::optional<int>>>\
-    \ dist(H, std::vector<std::optional<int>>(W));\n    std::vector<std::vector<bool>>\
-    \ visited(H, std::vector<bool>(W));\n\n    std::queue<cell> q;\n    for(auto &p\
-    \ : starting_points){\n      dist[p.x][p.y] = 0;\n      q.push(p);\n    }\n\n\
-    \    while(not q.empty()){\n      auto cur = q.front(); q.pop();\n\n      if(visited[cur.x][cur.y])\
-    \ continue;\n      visited[cur.x][cur.y] = true;\n\n      for(auto &d : dir){\n\
-    \        auto nxt = cur + d;\n\n        if(nxt.x < 0 or nxt.x >= H or nxt.y <\
-    \ 0 or nxt.y >= W or not check_passable(cur, nxt)) continue;\n\n        if(not\
-    \ dist[nxt.x][nxt.y]){\n          dist[nxt.x][nxt.y] = *dist[cur.x][cur.y] + 1;\n\
-    \          q.push(nxt);\n        }else{\n          if(*dist[nxt.x][nxt.y] > *dist[cur.x][cur.y]\
-    \ + 1){\n            dist[nxt.x][nxt.y] = *dist[cur.x][cur.y] + 1;\n         \
-    \   q.push(nxt);\n          }\n        }\n      }\n    }\n\n    return dist;\n\
-    \  }\n}\n"
+    \ Directions &dir,\n    const Checker &check_passable\n  ) -> std::vector<std::vector<std::optional<int>>>\n\
+    \  {\n    std::vector<std::vector<std::optional<int>>> dist(H, std::vector<std::optional<int>>(W));\n\
+    \    std::vector<std::vector<bool>> visited(H, std::vector<bool>(W));\n\n    std::queue<cell>\
+    \ q;\n    for(auto &p : starting_points){\n      dist[p.x][p.y] = 0;\n      q.push(p);\n\
+    \    }\n\n    while(not q.empty()){\n      auto cur = q.front(); q.pop();\n\n\
+    \      if(visited[cur.x][cur.y]) continue;\n      visited[cur.x][cur.y] = true;\n\
+    \n      for(auto &d : dir){\n        auto nxt = cur + d;\n\n        if(nxt.x <\
+    \ 0 or nxt.x >= H or nxt.y < 0 or nxt.y >= W or not check_passable(cur, nxt))\
+    \ continue;\n\n        if(not dist[nxt.x][nxt.y]){\n          dist[nxt.x][nxt.y]\
+    \ = *dist[cur.x][cur.y] + 1;\n          q.push(nxt);\n        }else{\n       \
+    \   if(*dist[nxt.x][nxt.y] > *dist[cur.x][cur.y] + 1){\n            dist[nxt.x][nxt.y]\
+    \ = *dist[cur.x][cur.y] + 1;\n            q.push(nxt);\n          }\n        }\n\
+    \      }\n    }\n\n    return dist;\n  }\n}\n"
   code: "#pragma once\n#include <vector>\n#include <queue>\n#include <optional>\n\
     #include \"Mylib/Grid/grid.cpp\"\n\nnamespace haar_lib {\n  template <typename\
     \ Directions, typename Checker>\n  auto grid_bfs(\n    const int H, const int\
     \ W,\n    const std::vector<cell> &starting_points,\n    const Directions &dir,\n\
-    \    const Checker &check_passable\n  ){\n    std::vector<std::vector<std::optional<int>>>\
-    \ dist(H, std::vector<std::optional<int>>(W));\n    std::vector<std::vector<bool>>\
-    \ visited(H, std::vector<bool>(W));\n\n    std::queue<cell> q;\n    for(auto &p\
-    \ : starting_points){\n      dist[p.x][p.y] = 0;\n      q.push(p);\n    }\n\n\
-    \    while(not q.empty()){\n      auto cur = q.front(); q.pop();\n\n      if(visited[cur.x][cur.y])\
-    \ continue;\n      visited[cur.x][cur.y] = true;\n\n      for(auto &d : dir){\n\
-    \        auto nxt = cur + d;\n\n        if(nxt.x < 0 or nxt.x >= H or nxt.y <\
-    \ 0 or nxt.y >= W or not check_passable(cur, nxt)) continue;\n\n        if(not\
-    \ dist[nxt.x][nxt.y]){\n          dist[nxt.x][nxt.y] = *dist[cur.x][cur.y] + 1;\n\
-    \          q.push(nxt);\n        }else{\n          if(*dist[nxt.x][nxt.y] > *dist[cur.x][cur.y]\
-    \ + 1){\n            dist[nxt.x][nxt.y] = *dist[cur.x][cur.y] + 1;\n         \
-    \   q.push(nxt);\n          }\n        }\n      }\n    }\n\n    return dist;\n\
-    \  }\n}\n"
+    \    const Checker &check_passable\n  ) -> std::vector<std::vector<std::optional<int>>>\n\
+    \  {\n    std::vector<std::vector<std::optional<int>>> dist(H, std::vector<std::optional<int>>(W));\n\
+    \    std::vector<std::vector<bool>> visited(H, std::vector<bool>(W));\n\n    std::queue<cell>\
+    \ q;\n    for(auto &p : starting_points){\n      dist[p.x][p.y] = 0;\n      q.push(p);\n\
+    \    }\n\n    while(not q.empty()){\n      auto cur = q.front(); q.pop();\n\n\
+    \      if(visited[cur.x][cur.y]) continue;\n      visited[cur.x][cur.y] = true;\n\
+    \n      for(auto &d : dir){\n        auto nxt = cur + d;\n\n        if(nxt.x <\
+    \ 0 or nxt.x >= H or nxt.y < 0 or nxt.y >= W or not check_passable(cur, nxt))\
+    \ continue;\n\n        if(not dist[nxt.x][nxt.y]){\n          dist[nxt.x][nxt.y]\
+    \ = *dist[cur.x][cur.y] + 1;\n          q.push(nxt);\n        }else{\n       \
+    \   if(*dist[nxt.x][nxt.y] > *dist[cur.x][cur.y] + 1){\n            dist[nxt.x][nxt.y]\
+    \ = *dist[cur.x][cur.y] + 1;\n            q.push(nxt);\n          }\n        }\n\
+    \      }\n    }\n\n    return dist;\n  }\n}\n"
   dependsOn:
   - Mylib/Grid/grid.cpp
   isVerificationFile: false
   path: Mylib/Grid/grid_bfs.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/0558/main.test.cpp

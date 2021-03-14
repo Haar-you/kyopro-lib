@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/Combinatorics/bernoulli_number.cpp
     title: Bernoulli number
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Combinatorics/factorial_table.cpp
     title: Factorial table
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/665
@@ -80,12 +80,12 @@ data:
     \  if(n < k or n < 0 or k < 0) return 0;\n      return P(n, k) * inv_factorial(k);\n\
     \    }\n\n    T H(int64_t n, int64_t k) const {\n      if(n == 0 and k == 0) return\
     \ 1;\n      return C(n + k - 1, k);\n    }\n  };\n}\n#line 5 \"Mylib/Combinatorics/bernoulli_number.cpp\"\
-    \n\nnamespace haar_lib {\n  template <const auto &ft>\n  auto bernoulli_number(int\
-    \ n){\n    using T = typename std::remove_reference_t<decltype(ft)>::value_type;\n\
-    \    std::vector<T> ret(n + 1);\n\n    ret[0] = 1;\n\n    for(int64_t i = 1; i\
-    \ <= n; ++i){\n      for(int k = 0; k <= i - 1; ++k){\n        ret[i] += ft.C(i\
-    \ + 1, k) * ret[k];\n      }\n      ret[i] /= i + 1;\n      ret[i] = -ret[i];\n\
-    \    }\n\n    return ret;\n  }\n}\n#line 7 \"test/yukicoder/665/main.test.cpp\"\
+    \n\nnamespace haar_lib {\n  template <\n    const auto &ft,\n    typename T =\
+    \ typename std::remove_reference_t<decltype(ft)>::value_type\n    >\n  std::vector<T>\
+    \ bernoulli_number(int n){\n    std::vector<T> ret(n + 1);\n\n    ret[0] = 1;\n\
+    \n    for(int64_t i = 1; i <= n; ++i){\n      for(int k = 0; k <= i - 1; ++k){\n\
+    \        ret[i] += ft.C(i + 1, k) * ret[k];\n      }\n      ret[i] /= i + 1;\n\
+    \      ret[i] = -ret[i];\n    }\n\n    return ret;\n  }\n}\n#line 7 \"test/yukicoder/665/main.test.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nusing mint = hl::modint<1000000007>;\nconst static\
     \ auto ft = hl::factorial_table<mint>(30000);\n\nint main(){\n  std::cin.tie(0);\n\
     \  std::ios::sync_with_stdio(false);\n\n  int64_t n, k; std::cin >> n >> k;\n\n\
@@ -109,8 +109,8 @@ data:
   isVerificationFile: true
   path: test/yukicoder/665/main.test.cpp
   requiredBy: []
-  timestamp: '2020-11-04 18:00:18+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-03-13 04:56:32+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/665/main.test.cpp
 layout: document

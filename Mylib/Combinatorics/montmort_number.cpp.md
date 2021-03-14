@@ -12,20 +12,20 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Combinatorics/montmort_number.cpp\"\n#include <vector>\n\
-    \nnamespace haar_lib {\n  template <typename T>\n  auto montmort_number(int n){\n\
-    \    std::vector<T> ret(n + 1);\n\n    ret[0] = 1;\n    ret[1] = 0;\n    ret[2]\
-    \ = 1;\n\n    for(int i = 3; i <= n; ++i){\n      ret[i] = (ret[i - 1] + ret[i\
-    \ - 2]) * (i - 1);\n    }\n\n    return ret;\n  }\n}\n"
+    \nnamespace haar_lib {\n  template <typename T>\n  std::vector<T> montmort_number(int\
+    \ n){\n    std::vector<T> ret(n + 1);\n\n    ret[0] = 1;\n    ret[1] = 0;\n  \
+    \  ret[2] = 1;\n\n    for(int i = 3; i <= n; ++i){\n      ret[i] = (ret[i - 1]\
+    \ + ret[i - 2]) * (i - 1);\n    }\n\n    return ret;\n  }\n}\n"
   code: "#pragma once\n#include <vector>\n\nnamespace haar_lib {\n  template <typename\
-    \ T>\n  auto montmort_number(int n){\n    std::vector<T> ret(n + 1);\n\n    ret[0]\
-    \ = 1;\n    ret[1] = 0;\n    ret[2] = 1;\n\n    for(int i = 3; i <= n; ++i){\n\
-    \      ret[i] = (ret[i - 1] + ret[i - 2]) * (i - 1);\n    }\n\n    return ret;\n\
-    \  }\n}\n"
+    \ T>\n  std::vector<T> montmort_number(int n){\n    std::vector<T> ret(n + 1);\n\
+    \n    ret[0] = 1;\n    ret[1] = 0;\n    ret[2] = 1;\n\n    for(int i = 3; i <=\
+    \ n; ++i){\n      ret[i] = (ret[i - 1] + ret[i - 2]) * (i - 1);\n    }\n\n   \
+    \ return ret;\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Combinatorics/montmort_number.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/montmort_number_mod/main.test.cpp

@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/DataStructure/SegmentTree/lazy_segment_tree_with_coefficients.cpp
     title: Lazy segment tree (Range sum, Range add, With coefficients)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp
     title: Heavy-light decomposition
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Utils/sort_simultaneously.cpp
     title: Sort simultaneously
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/235
@@ -171,15 +171,15 @@ data:
     \ };\n}\n#line 5 \"Mylib/Utils/sort_simultaneously.cpp\"\n#include <numeric>\n\
     #line 7 \"Mylib/Utils/sort_simultaneously.cpp\"\n#include <cassert>\n\nnamespace\
     \ haar_lib {\n  namespace sort_simultaneously_impl {\n    template <typename T>\n\
-    \    void sub(int N, const std::vector<int> &ord, std::vector<T> &a){\n      std::vector<T>\
-    \ temp(N);\n      for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];\n      std::swap(temp,\
-    \ a);\n    }\n  }\n\n  template <typename Compare, typename ... Args>\n  void\
-    \ sort_simultaneously(const Compare &compare, std::vector<Args> &... args){\n\
-    \    const int N = std::max({args.size() ...});\n    assert((int)std::min({args.size()\
+    \    void helper(int N, const std::vector<int> &ord, std::vector<T> &a){\n   \
+    \   std::vector<T> temp(N);\n      for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];\n\
+    \      std::swap(temp, a);\n    }\n  }\n\n  template <typename Compare, typename\
+    \ ... Args>\n  void sort_simultaneously(const Compare &compare, std::vector<Args>\
+    \ &... args){\n    const int N = std::max({args.size() ...});\n    assert((int)std::min({args.size()\
     \ ...}) == N);\n    std::vector<int> ord(N);\n    std::iota(ord.begin(), ord.end(),\
     \ 0);\n    std::sort(ord.begin(), ord.end(), compare);\n\n    (void)std::initializer_list<int>{\n\
-    \      (void(sort_simultaneously_impl::sub(N, ord, args)), 0) ...};\n  }\n}\n\
-    #line 4 \"Mylib/DataStructure/SegmentTree/lazy_segment_tree_with_coefficients.cpp\"\
+    \      (void(sort_simultaneously_impl::helper(N, ord, args)), 0) ...};\n  }\n\
+    }\n#line 4 \"Mylib/DataStructure/SegmentTree/lazy_segment_tree_with_coefficients.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  class lazy_segment_tree_with_coefficients\
     \ {\n  public:\n    using value_type = T;\n\n  private:\n    int depth_, size_,\
     \ hsize_;\n    std::vector<T> data_, lazy_, coeff_;\n\n    void propagate(int\
@@ -254,8 +254,8 @@ data:
   isVerificationFile: true
   path: test/yukicoder/235/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-15 01:51:15+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-03-13 04:56:32+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/235/main.test.cpp
 layout: document

@@ -10,22 +10,23 @@ data:
     links: []
   bundledCode: "#line 2 \"Mylib/Utils/run_length_encoding.cpp\"\n#include <vector>\n\
     #include <utility>\n#include <cstdint>\n\nnamespace haar_lib {\n  template <typename\
-    \ Container>\n  auto run_length_encoding(const Container &v){\n    using T = typename\
-    \ Container::value_type;\n\n    std::vector<std::pair<T, int64_t>> ret;\n\n  \
-    \  for(auto &x : v){\n      if(ret.empty()) ret.emplace_back(x, 1);\n      else\
-    \ if(ret.back().first == x) ++ret.back().second;\n      else ret.emplace_back(x,\
-    \ 1);\n    }\n\n    return ret;\n  }\n}\n"
-  code: "#pragma once\n#include <vector>\n#include <utility>\n#include <cstdint>\n\
-    \nnamespace haar_lib {\n  template <typename Container>\n  auto run_length_encoding(const\
-    \ Container &v){\n    using T = typename Container::value_type;\n\n    std::vector<std::pair<T,\
+    \ Container, typename T = typename Container::value_type>\n  auto run_length_encoding(const\
+    \ Container &v) -> std::vector<std::pair<T, int64_t>> {\n    std::vector<std::pair<T,\
     \ int64_t>> ret;\n\n    for(auto &x : v){\n      if(ret.empty()) ret.emplace_back(x,\
     \ 1);\n      else if(ret.back().first == x) ++ret.back().second;\n      else ret.emplace_back(x,\
     \ 1);\n    }\n\n    return ret;\n  }\n}\n"
+  code: "#pragma once\n#include <vector>\n#include <utility>\n#include <cstdint>\n\
+    \nnamespace haar_lib {\n  template <typename Container, typename T = typename\
+    \ Container::value_type>\n  auto run_length_encoding(const Container &v) -> std::vector<std::pair<T,\
+    \ int64_t>> {\n    std::vector<std::pair<T, int64_t>> ret;\n\n    for(auto &x\
+    \ : v){\n      if(ret.empty()) ret.emplace_back(x, 1);\n      else if(ret.back().first\
+    \ == x) ++ret.back().second;\n      else ret.emplace_back(x, 1);\n    }\n\n  \
+    \  return ret;\n  }\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Utils/run_length_encoding.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/Utils/run_length_encoding.cpp

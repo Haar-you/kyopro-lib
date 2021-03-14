@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/Convolution/convolution_multiply.cpp
     title: Convolution (Index multiplication mod P)
   - icon: ':heavy_check_mark:'
@@ -17,7 +17,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Number/Mod/mod_sqrt.cpp
     title: Mod sqrt
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
   _extendedVerifiedWith:
@@ -30,6 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/bernoulli_number/main.test.cpp
     title: test/yosupo-judge/bernoulli_number/main.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo-judge/chromatic_number/main.test.cpp
+    title: test/yosupo-judge/chromatic_number/main.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/convolution_mod/main.test.cpp
     title: test/yosupo-judge/convolution_mod/main.test.cpp
@@ -78,12 +81,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/931/main.test.cpp
     title: test/yukicoder/931/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Mod/mod_pow.cpp\"\n#include <cstdint>\n\nnamespace\
@@ -105,7 +108,7 @@ data:
   - Mylib/Graph/Coloring/chromatic_number.cpp
   - Mylib/Math/fps_sqrt.cpp
   timestamp: '2020-10-28 03:22:23+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yukicoder/931/main.test.cpp
   - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
@@ -122,6 +125,7 @@ data:
   - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
+  - test/yosupo-judge/chromatic_number/main.test.cpp
   - test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
   - test/yosupo-judge/sqrt_mod/main.test.cpp

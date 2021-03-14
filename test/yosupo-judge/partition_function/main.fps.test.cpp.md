@@ -4,22 +4,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/partition_number_fps.cpp
     title: Partition number (FPS)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
   - icon: ':heavy_check_mark:'
     path: Mylib/Math/formal_power_series.cpp
     title: Formal power series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
   _extendedRequiredBy: []
@@ -90,7 +90,7 @@ data:
     \      ok = false;\n          break;\n        }\n      }\n\n      if(not ok) continue;\n\
     \n      return g;\n    }\n    return -1;\n  }\n}\n#line 2 \"Mylib/Combinatorics/partition_number_fps.cpp\"\
     \n#include <vector>\n#include <cmath>\n\nnamespace haar_lib {\n  template <typename\
-    \ Fps>\n  auto partition_number_fps(int N){\n    using T = typename Fps::value_type;\n\
+    \ Fps>\n  Fps partition_number_fps(int N){\n    using T = typename Fps::value_type;\n\
     \n    std::vector<T> f(N + 1);\n    f[0] = 1;\n\n    {\n      const int M = (std::sqrt(1\
     \ + 24 * N) - 1) / 6;\n      for(int i = 1; i <= M; ++i){\n        f[i * (3 *\
     \ i + 1) / 2] += (i % 2 == 0 ? 1 : -1);\n      }\n    }\n\n    {\n      const\
@@ -256,7 +256,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/partition_function/main.fps.test.cpp
   requiredBy: []
-  timestamp: '2021-02-23 11:22:48+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/partition_function/main.fps.test.cpp

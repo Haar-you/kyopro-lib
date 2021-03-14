@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/bell_number.cpp
     title: Bell number
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/Combinatorics/bernoulli_number.cpp
     title: Bernoulli number
   - icon: ':heavy_check_mark:'
@@ -30,12 +30,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/660/main.test.cpp
     title: test/yukicoder/660/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/665/main.test.cpp
     title: test/yukicoder/665/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Combinatorics/factorial_table.cpp\"\n#include <vector>\n\
@@ -81,7 +81,7 @@ data:
   - Mylib/Combinatorics/stirling_number_second.cpp
   - Mylib/Combinatorics/bell_number.cpp
   timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yukicoder/117/main.test.cpp
   - test/yukicoder/660/main.test.cpp

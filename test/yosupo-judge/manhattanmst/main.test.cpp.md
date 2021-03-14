@@ -16,7 +16,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/MinimumSpanningTree/manhattan_minimum_spanning_tree.cpp
     title: Manhattan distance MST
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
   - icon: ':heavy_check_mark:'

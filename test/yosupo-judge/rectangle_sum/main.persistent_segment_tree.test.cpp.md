@@ -7,19 +7,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp
     title: Persistent segment tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
   - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
   - icon: ':heavy_check_mark:'
     path: Mylib/Utils/compressor.cpp
     title: Compressor
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Utils/sort_simultaneously.cpp
     title: Sort simultaneously
   _extendedRequiredBy: []
@@ -37,14 +37,14 @@ data:
     \ <iostream>\n#include <vector>\n#line 3 \"Mylib/Utils/sort_simultaneously.cpp\"\
     \n#include <utility>\n#include <algorithm>\n#include <numeric>\n#include <initializer_list>\n\
     #include <cassert>\n\nnamespace haar_lib {\n  namespace sort_simultaneously_impl\
-    \ {\n    template <typename T>\n    void sub(int N, const std::vector<int> &ord,\
-    \ std::vector<T> &a){\n      std::vector<T> temp(N);\n      for(int i = 0; i <\
-    \ N; ++i) temp[i] = a[ord[i]];\n      std::swap(temp, a);\n    }\n  }\n\n  template\
-    \ <typename Compare, typename ... Args>\n  void sort_simultaneously(const Compare\
-    \ &compare, std::vector<Args> &... args){\n    const int N = std::max({args.size()\
+    \ {\n    template <typename T>\n    void helper(int N, const std::vector<int>\
+    \ &ord, std::vector<T> &a){\n      std::vector<T> temp(N);\n      for(int i =\
+    \ 0; i < N; ++i) temp[i] = a[ord[i]];\n      std::swap(temp, a);\n    }\n  }\n\
+    \n  template <typename Compare, typename ... Args>\n  void sort_simultaneously(const\
+    \ Compare &compare, std::vector<Args> &... args){\n    const int N = std::max({args.size()\
     \ ...});\n    assert((int)std::min({args.size() ...}) == N);\n    std::vector<int>\
     \ ord(N);\n    std::iota(ord.begin(), ord.end(), 0);\n    std::sort(ord.begin(),\
-    \ ord.end(), compare);\n\n    (void)std::initializer_list<int>{\n      (void(sort_simultaneously_impl::sub(N,\
+    \ ord.end(), compare);\n\n    (void)std::initializer_list<int>{\n      (void(sort_simultaneously_impl::helper(N,\
     \ ord, args)), 0) ...};\n  }\n}\n#line 4 \"Mylib/DataStructure/SegmentTree/persistent_segment_tree.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename Monoid>\n  class persistent_segment_tree\
     \ {\n  public:\n    using value_type = typename Monoid::value_type;\n\n  private:\n\
@@ -180,7 +180,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2020-10-15 01:51:15+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/rectangle_sum/main.persistent_segment_tree.test.cpp

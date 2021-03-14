@@ -54,26 +54,22 @@ data:
     \    }\n\n  protected:\n    void traverse(node *t, std::vector<T> &ret) const\
     \ {\n      if(not t) return;\n\n      if(t->is_terminal){\n        ret.push_back(*(t->value));\n\
     \        return;\n      }\n\n      traverse(t->left, ret);\n      traverse(t->right,\
-    \ ret);\n    }\n\n  public:\n    std::vector<T> traverse() const {\n      std::vector<T>\
-    \ ret;\n      traverse(root_, ret);\n      return ret;\n    }\n\n    friend std::ostream&\
-    \ operator<<(std::ostream &s, const persistent_array &a){\n      auto v = a.traverse();\n\
-    \      s << \"{\";\n      for(auto it = v.begin(); it != v.end(); ++it){\n   \
-    \     if(it != v.begin()) s << \", \";\n        s << *it;\n      }\n      s <<\
-    \ \"}\";\n      return s;\n    }\n  };\n}\n#line 4 \"Mylib/DataStructure/UnionFind/persistent_unionfind.cpp\"\
-    \n\nnamespace haar_lib {\n  class persistent_unionfind {\n    persistent_array<int>\
-    \ par_;\n\n    persistent_unionfind(persistent_array<int> par): par_(par){}\n\n\
-    \  public:\n    persistent_unionfind(){}\n    persistent_unionfind(int n): par_(persistent_array<int>(std::vector<int>(n,\
-    \ -1))){}\n\n    int root_of(int i) const {\n      const int p = par_[i];\n  \
-    \    if(p < 0) return i;\n      return root_of(p);\n    }\n\n    bool is_same(int\
-    \ i, int j) const {\n      return root_of(i) == root_of(j);\n    }\n\n    int\
-    \ size_of(int i) const {\n      return -par_[root_of(i)];\n    }\n\n    persistent_unionfind\
-    \ merge(int i, int j) const {\n      const int ri = root_of(i), rj = root_of(j);\n\
-    \      if(ri == rj) return *this;\n\n      const int size_i = -par_[ri];\n   \
-    \   const int size_j = -par_[rj];\n\n      persistent_array<int> ret = par_;\n\
-    \n      if(size_i > size_j){\n        ret = ret.set(ri, -(size_i + size_j));\n\
-    \        ret = ret.set(rj, ri);\n      }else{\n        ret = ret.set(rj, -(size_i\
-    \ + size_j));\n        ret = ret.set(ri, rj);\n      }\n\n      return persistent_unionfind(ret);\n\
-    \    }\n  };\n}\n"
+    \ ret);\n    }\n\n  public:\n    std::vector<T> data() const {\n      std::vector<T>\
+    \ ret;\n      traverse(root_, ret);\n      return ret;\n    }\n  };\n}\n#line\
+    \ 4 \"Mylib/DataStructure/UnionFind/persistent_unionfind.cpp\"\n\nnamespace haar_lib\
+    \ {\n  class persistent_unionfind {\n    persistent_array<int> par_;\n\n    persistent_unionfind(persistent_array<int>\
+    \ par): par_(par){}\n\n  public:\n    persistent_unionfind(){}\n    persistent_unionfind(int\
+    \ n): par_(persistent_array<int>(std::vector<int>(n, -1))){}\n\n    int root_of(int\
+    \ i) const {\n      const int p = par_[i];\n      if(p < 0) return i;\n      return\
+    \ root_of(p);\n    }\n\n    bool is_same(int i, int j) const {\n      return root_of(i)\
+    \ == root_of(j);\n    }\n\n    int size_of(int i) const {\n      return -par_[root_of(i)];\n\
+    \    }\n\n    persistent_unionfind merge(int i, int j) const {\n      const int\
+    \ ri = root_of(i), rj = root_of(j);\n      if(ri == rj) return *this;\n\n    \
+    \  const int size_i = -par_[ri];\n      const int size_j = -par_[rj];\n\n    \
+    \  persistent_array<int> ret = par_;\n\n      if(size_i > size_j){\n        ret\
+    \ = ret.set(ri, -(size_i + size_j));\n        ret = ret.set(rj, ri);\n      }else{\n\
+    \        ret = ret.set(rj, -(size_i + size_j));\n        ret = ret.set(ri, rj);\n\
+    \      }\n\n      return persistent_unionfind(ret);\n    }\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include \"Mylib/DataStructure/Array/persistent_array.cpp\"\
     \n\nnamespace haar_lib {\n  class persistent_unionfind {\n    persistent_array<int>\
     \ par_;\n\n    persistent_unionfind(persistent_array<int> par): par_(par){}\n\n\
@@ -94,7 +90,7 @@ data:
   isVerificationFile: false
   path: Mylib/DataStructure/UnionFind/persistent_unionfind.cpp
   requiredBy: []
-  timestamp: '2020-09-30 02:01:30+09:00'
+  timestamp: '2021-03-12 18:33:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/persistent_unionfind/main.test.cpp

@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/Convolution/convolution_multiply.cpp
     title: Convolution (Index multiplication mod P)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/931
@@ -136,7 +136,7 @@ data:
     \ t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2 = ((r[2] - t0 + M3)\
     \ * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0) + T(t1) * M1 + T(t2)\
     \ * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 4 \"Mylib/Convolution/convolution_multiply.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T, const auto &convolve>\n  auto\
+    \n\nnamespace haar_lib {\n  template <typename T, const auto &convolve>\n  std::vector<T>\
     \ convolution_multiply(const std::vector<T> &A, const std::vector<T> &B, int P){\n\
     \    const int p_root = primitive_root(P);\n\n    std::vector<int> index(P);\n\
     \n    {\n      int64_t s = 1;\n\n      for(int i = 0; i < P; ++i){\n        index[s]\
@@ -183,8 +183,8 @@ data:
   isVerificationFile: true
   path: test/yukicoder/931/main.test.cpp
   requiredBy: []
-  timestamp: '2021-02-17 18:32:23+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-03-13 04:56:32+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yukicoder/931/main.test.cpp
 layout: document

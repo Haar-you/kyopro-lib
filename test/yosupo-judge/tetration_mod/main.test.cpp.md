@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Totient/totient.cpp
     title: Euler's totient function
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/Number/tetration.cpp
     title: Tetration
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/tetration_mod
@@ -46,10 +46,10 @@ data:
     \ {return iter(N);}\n    iter end() const {return iter(N);}\n  };\n\n  template\
     \ <typename ... Args>\n  auto input_tuples(int N){\n    return InputTuples<Args\
     \ ...>(N);\n  }\n}\n#line 2 \"Mylib/Number/Totient/totient.cpp\"\n#include <cstdint>\n\
-    \nnamespace haar_lib {\n  int64_t totient(int64_t n){\n    int64_t ret = n;\n\n\
-    \    for(int64_t i = 2; i * i <= n; ++i){\n      if(n % i == 0){\n        ret\
-    \ -= ret / i;\n        while(n % i == 0) n /= i;\n      }\n    }\n\n    if(n !=\
-    \ 1) ret -= ret / n;\n\n    return ret;\n  }\n}\n#line 3 \"Mylib/Number/tetration.cpp\"\
+    \nnamespace haar_lib {\n  constexpr int64_t totient(int64_t n){\n    int64_t ret\
+    \ = n;\n\n    for(int64_t i = 2; i * i <= n; ++i){\n      if(n % i == 0){\n  \
+    \      ret -= ret / i;\n        while(n % i == 0) n /= i;\n      }\n    }\n\n\
+    \    if(n != 1) ret -= ret / n;\n\n    return ret;\n  }\n}\n#line 3 \"Mylib/Number/tetration.cpp\"\
     \n\nnamespace haar_lib {\n  namespace tetration_impl {\n    int rec(int64_t a,\
     \ int64_t b, int64_t m){\n      if(b == 1) return a % m;\n      if(b == 0) return\
     \ 1 % m;\n      if(b == 2){\n        bool c = a >= m;\n        int64_t ret = 1;\n\
@@ -80,8 +80,8 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/tetration_mod/main.test.cpp
   requiredBy: []
-  timestamp: '2020-11-01 20:53:57+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-03-13 04:04:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo-judge/tetration_mod/main.test.cpp
 layout: document

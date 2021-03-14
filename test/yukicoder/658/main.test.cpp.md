@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/DynamicProgramming/SpeedupTechnique/kitamasa_algorithm.cpp
     title: Kitamasa algorithm
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

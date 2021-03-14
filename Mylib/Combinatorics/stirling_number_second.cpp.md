@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Combinatorics/factorial_table.cpp
     title: Factorial table
   _extendedRequiredBy: []
@@ -33,25 +33,25 @@ data:
     \ P(n, k) * inv_factorial(k);\n    }\n\n    T H(int64_t n, int64_t k) const {\n\
     \      if(n == 0 and k == 0) return 1;\n      return C(n + k - 1, k);\n    }\n\
     \  };\n}\n#line 4 \"Mylib/Combinatorics/stirling_number_second.cpp\"\n\nnamespace\
-    \ haar_lib {\n  template <const auto &ft>\n  auto stirling_number_of_second_kind(int64_t\
-    \ n, int64_t k){\n    using T = typename std::remove_reference_t<decltype(ft)>::value_type;\n\
-    \n    if(n == 0 and k == 0) return T(1);\n\n    T ret = 0;\n    for(int i = 1;\
-    \ i <= k; ++i){\n      if((k - i) % 2 == 0) ret += ft.C(k, i) * T::pow(i, n);\n\
-    \      else ret -= ft.C(k, i) * T::pow(i, n);\n    }\n    ret *= ft.inv_factorial(k);\n\
-    \    return ret;\n  }\n}\n"
+    \ haar_lib {\n  template <\n    const auto &ft,\n    typename T = typename std::remove_reference_t<decltype(ft)>::value_type\n\
+    \    >\n  T stirling_number_of_second_kind(int64_t n, int64_t k){\n    if(n ==\
+    \ 0 and k == 0) return T(1);\n\n    T ret = 0;\n    for(int i = 1; i <= k; ++i){\n\
+    \      if((k - i) % 2 == 0) ret += ft.C(k, i) * T::pow(i, n);\n      else ret\
+    \ -= ft.C(k, i) * T::pow(i, n);\n    }\n    ret *= ft.inv_factorial(k);\n    return\
+    \ ret;\n  }\n}\n"
   code: "#pragma once\n#include <cstdint>\n#include \"Mylib/Combinatorics/factorial_table.cpp\"\
-    \n\nnamespace haar_lib {\n  template <const auto &ft>\n  auto stirling_number_of_second_kind(int64_t\
-    \ n, int64_t k){\n    using T = typename std::remove_reference_t<decltype(ft)>::value_type;\n\
-    \n    if(n == 0 and k == 0) return T(1);\n\n    T ret = 0;\n    for(int i = 1;\
-    \ i <= k; ++i){\n      if((k - i) % 2 == 0) ret += ft.C(k, i) * T::pow(i, n);\n\
-    \      else ret -= ft.C(k, i) * T::pow(i, n);\n    }\n    ret *= ft.inv_factorial(k);\n\
-    \    return ret;\n  }\n}\n"
+    \n\nnamespace haar_lib {\n  template <\n    const auto &ft,\n    typename T =\
+    \ typename std::remove_reference_t<decltype(ft)>::value_type\n    >\n  T stirling_number_of_second_kind(int64_t\
+    \ n, int64_t k){\n    if(n == 0 and k == 0) return T(1);\n\n    T ret = 0;\n \
+    \   for(int i = 1; i <= k; ++i){\n      if((k - i) % 2 == 0) ret += ft.C(k, i)\
+    \ * T::pow(i, n);\n      else ret -= ft.C(k, i) * T::pow(i, n);\n    }\n    ret\
+    \ *= ft.inv_factorial(k);\n    return ret;\n  }\n}\n"
   dependsOn:
   - Mylib/Combinatorics/factorial_table.cpp
   isVerificationFile: false
   path: Mylib/Combinatorics/stirling_number_second.cpp
   requiredBy: []
-  timestamp: '2020-10-10 12:47:45+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/DPL_5_I/main.test.cpp

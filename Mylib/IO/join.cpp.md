@@ -129,12 +129,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/782/main.test.cpp
     title: test/yukicoder/782/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/931/main.test.cpp
     title: test/yukicoder/931/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/IO/join.cpp\"\n#include <iostream>\n#include <sstream>\n\
@@ -152,7 +152,7 @@ data:
   path: Mylib/IO/join.cpp
   requiredBy: []
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yukicoder/499/main.test.cpp
   - test/yukicoder/931/main.test.cpp

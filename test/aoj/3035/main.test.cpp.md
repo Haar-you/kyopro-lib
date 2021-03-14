@@ -22,13 +22,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp
     title: Lazy segment tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   _extendedRequiredBy: []
@@ -83,16 +83,16 @@ data:
     \ {\n      if(not a) return b;\n      if(not b) return a;\n      return {std::min(*a,\
     \ *b)};\n    }\n  };\n}\n#line 3 \"Mylib/AlgebraicStructure/Monoid/with_count.cpp\"\
     \n#include <cstdint>\n\nnamespace haar_lib {\n  namespace with_count_impl {\n\
-    \    template <typename T>\n    struct inner_value {\n      T value;\n      int64_t\
-    \ count;\n      inner_value(): value(T()), count(0){}\n      inner_value(T value):\
-    \ value(value), count(1){}\n      inner_value(T value, int64_t count): value(value),\
-    \ count(count){}\n    };\n  }\n\n  template <typename Monoid>\n  struct with_count\
-    \ {\n    using value_type = with_count_impl::inner_value<typename Monoid::value_type>;\n\
-    \    const static Monoid M;\n\n    value_type operator()() const {\n      return\
-    \ {M(), 0};\n    }\n\n    value_type operator()(const value_type &a, const value_type\
-    \ &b) const {\n      if(a.value == b.value) return {a.value, a.count + b.count};\n\
-    \      if(M(a.value, b.value) == a.value) return a;\n      return b;\n    }\n\
-    \  };\n}\n#line 2 \"Mylib/AlgebraicStructure/MonoidAction/add_max_with_count.cpp\"\
+    \    template <typename T>\n    struct internal_value {\n      T value;\n    \
+    \  int64_t count;\n      internal_value(): value(T()), count(0){}\n      internal_value(T\
+    \ value): value(value), count(1){}\n      internal_value(T value, int64_t count):\
+    \ value(value), count(count){}\n    };\n  }\n\n  template <typename Monoid>\n\
+    \  struct with_count {\n    using value_type = with_count_impl::internal_value<typename\
+    \ Monoid::value_type>;\n    const static Monoid M;\n\n    value_type operator()()\
+    \ const {\n      return {M(), 0};\n    }\n\n    value_type operator()(const value_type\
+    \ &a, const value_type &b) const {\n      if(a.value == b.value) return {a.value,\
+    \ a.count + b.count};\n      if(M(a.value, b.value) == a.value) return a;\n  \
+    \    return b;\n    }\n  };\n}\n#line 2 \"Mylib/AlgebraicStructure/MonoidAction/add_max_with_count.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename MonoidUpdate, typename MonoidGet>\n\
     \  struct add_max_with_count {\n    using monoid_get = MonoidGet;\n    using monoid_update\
     \ = MonoidUpdate;\n    using value_type_get = typename MonoidGet::value_type;\n\
@@ -257,7 +257,7 @@ data:
   isVerificationFile: true
   path: test/aoj/3035/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-15 01:51:15+09:00'
+  timestamp: '2021-03-13 05:23:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/3035/main.test.cpp

@@ -4,19 +4,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/stirling_number_second_fft.cpp
     title: Stirling numbers of the second kind (FFT)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
   _extendedRequiredBy: []
@@ -137,7 +137,7 @@ data:
     \ t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2 = ((r[2] - t0 + M3)\
     \ * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0) + T(t1) * M1 + T(t2)\
     \ * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n#line 3 \"Mylib/Combinatorics/stirling_number_second_fft.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T, const auto &convolve>\n  auto\
+    \n\nnamespace haar_lib {\n  template <typename T, const auto &convolve>\n  std::vector<T>\
     \ stirling_number_of_second_kind_fft(int N){\n    std::vector<T> a(N + 1), b(N\
     \ + 1);\n\n    std::vector<int> m(N + 1, 0);\n    for(int i = 2; i <= N; ++i){\n\
     \      if(m[i] != 0) continue;\n      for(int j = 2 * i; j <= N; j += i){\n  \
@@ -180,7 +180,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
   requiredBy: []
-  timestamp: '2021-02-17 18:32:23+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp

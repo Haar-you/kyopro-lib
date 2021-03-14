@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/ShortestPath/bfs_shortest_path.cpp
     title: BFS shortest path
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
   - icon: ':heavy_check_mark:'
@@ -16,7 +16,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Grid/grid_to_graph.cpp
     title: Convert grid to graph
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   _extendedRequiredBy: []
@@ -76,10 +76,10 @@ data:
     \ < 0 or q.y >= W or not check_passable(p, q)) continue;\n\n          ret.add_edge(index(p.x,\
     \ p.y), index(q.x, q.y), generate_edge_cost(p, q));\n        }\n      }\n    }\n\
     \n    return ret;\n  }\n}\n#line 4 \"Mylib/Grid/grid_find.cpp\"\n\nnamespace haar_lib\
-    \ {\n  template <typename C, typename T = typename C::value_type>\n  auto grid_find(const\
-    \ std::vector<C> &A, T value){\n    const int H = A.size(), W = A[0].size();\n\
-    \n    std::vector<cell> ret;\n    for(int i = 0; i < H; ++i){\n      for(int j\
-    \ = 0; j < W; ++j){\n        if(A[i][j] == value){\n          ret.emplace_back(i,\
+    \ {\n  template <typename C, typename T = typename C::value_type>\n  std::vector<cell>\
+    \ grid_find(const std::vector<C> &A, T value){\n    const int H = A.size(), W\
+    \ = A[0].size();\n\n    std::vector<cell> ret;\n    for(int i = 0; i < H; ++i){\n\
+    \      for(int j = 0; j < W; ++j){\n        if(A[i][j] == value){\n          ret.emplace_back(i,\
     \ j);\n        }\n      }\n    }\n\n    return ret;\n  }\n}\n#line 3 \"Mylib/Graph/ShortestPath/bfs_shortest_path.cpp\"\
     \n#include <optional>\n#include <queue>\n#line 6 \"Mylib/Graph/ShortestPath/bfs_shortest_path.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  std::vector<std::optional<int64_t>>\
@@ -133,7 +133,7 @@ data:
   isVerificationFile: true
   path: test/aoj/0558/main.graph.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/0558/main.graph.test.cpp

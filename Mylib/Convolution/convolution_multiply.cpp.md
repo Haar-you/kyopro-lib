@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/931/main.test.cpp
     title: test/yukicoder/931/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Convolution/convolution_multiply.cpp\"\n#include <vector>\n\
@@ -31,18 +31,18 @@ data:
     \ 1){\n          ok = false;\n          break;\n        }\n      }\n\n      if(not\
     \ ok) continue;\n\n      return g;\n    }\n    return -1;\n  }\n}\n#line 4 \"\
     Mylib/Convolution/convolution_multiply.cpp\"\n\nnamespace haar_lib {\n  template\
-    \ <typename T, const auto &convolve>\n  auto convolution_multiply(const std::vector<T>\
-    \ &A, const std::vector<T> &B, int P){\n    const int p_root = primitive_root(P);\n\
-    \n    std::vector<int> index(P);\n\n    {\n      int64_t s = 1;\n\n      for(int\
-    \ i = 0; i < P; ++i){\n        index[s] = i;\n        s *= p_root;\n        if(s\
-    \ >= P) s %= P;\n      }\n    }\n\n    std::vector<T> a(P), b(P);\n    for(int\
-    \ i = 0; i < (int)A.size(); ++i) a[index[i % P]] = A[i];\n    for(int i = 0; i\
-    \ < (int)B.size(); ++i) b[index[i % P]] = B[i];\n\n    auto c = convolve(a, b);\n\
-    \    std::vector<T> ret(P);\n\n    {\n      int64_t s = 1;\n\n      for(auto x\
-    \ : c){\n        ret[s] += x;\n        s *= p_root;\n        if(s >= P) s %= P;\n\
-    \      }\n    }\n\n    return ret;\n  }\n};\n"
+    \ <typename T, const auto &convolve>\n  std::vector<T> convolution_multiply(const\
+    \ std::vector<T> &A, const std::vector<T> &B, int P){\n    const int p_root =\
+    \ primitive_root(P);\n\n    std::vector<int> index(P);\n\n    {\n      int64_t\
+    \ s = 1;\n\n      for(int i = 0; i < P; ++i){\n        index[s] = i;\n       \
+    \ s *= p_root;\n        if(s >= P) s %= P;\n      }\n    }\n\n    std::vector<T>\
+    \ a(P), b(P);\n    for(int i = 0; i < (int)A.size(); ++i) a[index[i % P]] = A[i];\n\
+    \    for(int i = 0; i < (int)B.size(); ++i) b[index[i % P]] = B[i];\n\n    auto\
+    \ c = convolve(a, b);\n    std::vector<T> ret(P);\n\n    {\n      int64_t s =\
+    \ 1;\n\n      for(auto x : c){\n        ret[s] += x;\n        s *= p_root;\n \
+    \       if(s >= P) s %= P;\n      }\n    }\n\n    return ret;\n  }\n};\n"
   code: "#pragma once\n#include <vector>\n#include \"Mylib/Number/Prime/primitive_root.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T, const auto &convolve>\n  auto\
+    \n\nnamespace haar_lib {\n  template <typename T, const auto &convolve>\n  std::vector<T>\
     \ convolution_multiply(const std::vector<T> &A, const std::vector<T> &B, int P){\n\
     \    const int p_root = primitive_root(P);\n\n    std::vector<int> index(P);\n\
     \n    {\n      int64_t s = 1;\n\n      for(int i = 0; i < P; ++i){\n        index[s]\
@@ -59,8 +59,8 @@ data:
   isVerificationFile: false
   path: Mylib/Convolution/convolution_multiply.cpp
   requiredBy: []
-  timestamp: '2020-11-09 03:20:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-03-13 04:56:32+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yukicoder/931/main.test.cpp
 documentation_of: Mylib/Convolution/convolution_multiply.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Totient/totient.cpp
     title: Euler's totient function
   _extendedRequiredBy: []
@@ -17,10 +17,10 @@ data:
   bundledCode: "#line 1 \"test/aoj/NTL_1_D/main.totient.test.cpp\"\n#define PROBLEM\
     \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D\"\n\n#include\
     \ <iostream>\n#line 2 \"Mylib/Number/Totient/totient.cpp\"\n#include <cstdint>\n\
-    \nnamespace haar_lib {\n  int64_t totient(int64_t n){\n    int64_t ret = n;\n\n\
-    \    for(int64_t i = 2; i * i <= n; ++i){\n      if(n % i == 0){\n        ret\
-    \ -= ret / i;\n        while(n % i == 0) n /= i;\n      }\n    }\n\n    if(n !=\
-    \ 1) ret -= ret / n;\n\n    return ret;\n  }\n}\n#line 5 \"test/aoj/NTL_1_D/main.totient.test.cpp\"\
+    \nnamespace haar_lib {\n  constexpr int64_t totient(int64_t n){\n    int64_t ret\
+    \ = n;\n\n    for(int64_t i = 2; i * i <= n; ++i){\n      if(n % i == 0){\n  \
+    \      ret -= ret / i;\n        while(n % i == 0) n /= i;\n      }\n    }\n\n\
+    \    if(n != 1) ret -= ret / n;\n\n    return ret;\n  }\n}\n#line 5 \"test/aoj/NTL_1_D/main.totient.test.cpp\"\
     \n\nnamespace hl = haar_lib;\n\nint main(){\n  int n; std::cin >> n;\n\n  std::cout\
     \ << hl::totient(n) << std::endl;\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D\"\
@@ -32,7 +32,7 @@ data:
   isVerificationFile: true
   path: test/aoj/NTL_1_D/main.totient.test.cpp
   requiredBy: []
-  timestamp: '2020-11-01 20:53:57+09:00'
+  timestamp: '2021-03-13 04:04:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/NTL_1_D/main.totient.test.cpp

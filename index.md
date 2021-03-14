@@ -234,7 +234,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Combinatorics/bell_number_table.cpp
       title: Bell number (Table)
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/Combinatorics/bernoulli_number.cpp
       title: Bernoulli number
     - icon: ':heavy_check_mark:'
@@ -246,7 +246,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Combinatorics/catalan_number.cpp
       title: Catalan number
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Combinatorics/factorial_table.cpp
       title: Factorial table
     - icon: ':heavy_check_mark:'
@@ -284,7 +284,7 @@ data:
     - icon: ':warning:'
       path: Mylib/Convolution/convolution_gcd.cpp
       title: Convolution (Index GCD)
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/Convolution/convolution_multiply.cpp
       title: Convolution (Index multiplication mod P)
     - icon: ':heavy_check_mark:'
@@ -308,7 +308,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Convolution/fast_zeta_transform_superset.cpp
       title: Fast Zeta transform (Supersets)
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Convolution/ntt_convolution.cpp
       title: Number theoretic transform
     - icon: ':heavy_check_mark:'
@@ -413,7 +413,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp
       title: Lazy segment tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/DataStructure/SegmentTree/lazy_segment_tree_with_coefficients.cpp
       title: Lazy segment tree (Range sum, Range add, With coefficients)
     - icon: ':heavy_check_mark:'
@@ -755,7 +755,7 @@ data:
       title: Yen's algorithm
   - name: Mylib/Graph/Template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Graph/Template/graph.cpp
       title: Basic graph
     - icon: ':warning:'
@@ -789,7 +789,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Graph/TreeUtils/forest.cpp
       title: Decompose forest
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp
       title: Heavy-light decomposition
     - icon: ':heavy_check_mark:'
@@ -860,22 +860,22 @@ data:
       title: TSP 2-opt
   - name: Mylib/IO
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/IO/input_tuple.cpp
       title: Input tuple
     - icon: ':heavy_check_mark:'
       path: Mylib/IO/input_tuple_vector.cpp
       title: Input tuple vector
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/IO/input_tuples.cpp
       title: Input tuples
     - icon: ':heavy_check_mark:'
       path: Mylib/IO/input_tuples_with_index.cpp
       title: Input tuples with index
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/IO/input_vector.cpp
       title: Input vector
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/IO/join.cpp
       title: join function
   - name: Mylib/LinearAlgebra
@@ -990,7 +990,7 @@ data:
       title: Enumerate divisors
   - name: Mylib/Number/Mint
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Number/Mint/mint.cpp
       title: Modint
     - icon: ':warning:'
@@ -1013,7 +1013,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Number/Mod/mod_log.cpp
       title: Mod logarithm
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Number/Mod/mod_pow.cpp
       title: Mod pow
     - icon: ':heavy_check_mark:'
@@ -1042,7 +1042,7 @@ data:
     - icon: ':warning:'
       path: Mylib/Number/Prime/prime_factorize_sieve.cpp
       title: Prime factorization (Sieve)
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Number/Prime/primitive_root.cpp
       title: Primitive root
     - icon: ':warning:'
@@ -1064,7 +1064,7 @@ data:
       title: Stern-Brocot tree
   - name: Mylib/Number/Totient
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Number/Totient/totient.cpp
       title: Euler's totient function
     - icon: ':heavy_check_mark:'
@@ -1081,10 +1081,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Mylib/Number/binary_gcd.cpp
       title: Binary GCD
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/Number/chinese_remainder_algorithm.cpp
       title: Chinese remainder theorem
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Number/extended_gcd.cpp
       title: Extended Euclidean algorithm
     - icon: ':warning:'
@@ -1114,7 +1114,7 @@ data:
     - icon: ':warning:'
       path: Mylib/Number/sign_function.cpp
       title: Sign function
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Mylib/Number/tetration.cpp
       title: Tetration
   - name: Mylib/Parser
@@ -1248,7 +1248,7 @@ data:
     - icon: ':warning:'
       path: Mylib/Utils/run_length_encoding.cpp
       title: Run length encoding
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Mylib/Utils/sort_simultaneously.cpp
       title: Sort simultaneously
   - name: Mylib/Wrapper
@@ -1989,6 +1989,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo-judge/cartesian_tree/main.test.cpp
       title: test/yosupo-judge/cartesian_tree/main.test.cpp
+  - name: test/yosupo-judge/chromatic_number
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo-judge/chromatic_number/main.test.cpp
+      title: test/yosupo-judge/chromatic_number/main.test.cpp
   - name: test/yosupo-judge/convolution_mod
     pages:
     - icon: ':heavy_check_mark:'
@@ -2262,7 +2267,7 @@ data:
       title: test/yosupo-judge/system_of_linear_equations/main.test.cpp
   - name: test/yosupo-judge/tetration_mod
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo-judge/tetration_mod/main.test.cpp
       title: test/yosupo-judge/tetration_mod/main.test.cpp
   - name: test/yosupo-judge/tree_diameter
@@ -2340,7 +2345,7 @@ data:
       title: test/yukicoder/184/main.test.cpp
   - name: test/yukicoder/186
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yukicoder/186/main.test.cpp
       title: test/yukicoder/186/main.test.cpp
   - name: test/yukicoder/194
@@ -2350,7 +2355,7 @@ data:
       title: test/yukicoder/194/main.test.cpp
   - name: test/yukicoder/235
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yukicoder/235/main.test.cpp
       title: test/yukicoder/235/main.test.cpp
   - name: test/yukicoder/3030
@@ -2406,7 +2411,7 @@ data:
       title: test/yukicoder/660/main.test.cpp
   - name: test/yukicoder/665
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yukicoder/665/main.test.cpp
       title: test/yukicoder/665/main.test.cpp
   - name: test/yukicoder/755
@@ -2451,7 +2456,7 @@ data:
       title: test/yukicoder/922/main.test.cpp
   - name: test/yukicoder/931
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yukicoder/931/main.test.cpp
       title: test/yukicoder/931/main.test.cpp
 layout: toppage

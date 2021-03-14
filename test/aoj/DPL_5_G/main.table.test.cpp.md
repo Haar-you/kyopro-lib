@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/bell_number_table.cpp
     title: Bell number (Table)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []
@@ -62,16 +62,16 @@ data:
     \n    explicit operator int32_t() const noexcept {return val_;}\n    explicit\
     \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 2 \"Mylib/Combinatorics/bell_number_table.cpp\"\
     \n#include <vector>\n\nnamespace haar_lib {\n  template <typename T>\n  auto bell_number_table(int\
-    \ n){\n    std::vector<std::vector<T>> ret(n + 1, std::vector<T>(n + 1));\n\n\
-    \    ret[0][0] = 1;\n\n    for(int i = 1; i <= n; ++i) ret[i][1] = ret[i][i] =\
-    \ 1;\n\n    for(int i = 3; i <= n; ++i){\n      for(int j = 2; j < i; ++j){\n\
-    \        ret[i][j] = ret[i - 1][j - 1] + j * ret[i - 1][j];\n      }\n    }\n\n\
-    \    for(int i = 0; i <= n; ++i){\n      for(int j = 1; j <= n; ++j){\n      \
-    \  ret[i][j] += ret[i][j - 1];\n      }\n    }\n\n    return ret;\n  }\n}\n#line\
-    \ 6 \"test/aoj/DPL_5_G/main.table.test.cpp\"\n\nnamespace hl = haar_lib;\n\nusing\
-    \ mint = hl::modint<1000000007>;\n\nint main(){\n  int N, K; std::cin >> N >>\
-    \ K;\n\n  auto table = hl::bell_number_table<mint>(std::max(N, K));\n\n  std::cout\
-    \ << table[N][K] << std::endl;\n\n  return 0;\n}\n"
+    \ n) -> std::vector<std::vector<T>> {\n    std::vector<std::vector<T>> ret(n +\
+    \ 1, std::vector<T>(n + 1));\n\n    ret[0][0] = 1;\n\n    for(int i = 1; i <=\
+    \ n; ++i) ret[i][1] = ret[i][i] = 1;\n\n    for(int i = 3; i <= n; ++i){\n   \
+    \   for(int j = 2; j < i; ++j){\n        ret[i][j] = ret[i - 1][j - 1] + j * ret[i\
+    \ - 1][j];\n      }\n    }\n\n    for(int i = 0; i <= n; ++i){\n      for(int\
+    \ j = 1; j <= n; ++j){\n        ret[i][j] += ret[i][j - 1];\n      }\n    }\n\n\
+    \    return ret;\n  }\n}\n#line 6 \"test/aoj/DPL_5_G/main.table.test.cpp\"\n\n\
+    namespace hl = haar_lib;\n\nusing mint = hl::modint<1000000007>;\n\nint main(){\n\
+    \  int N, K; std::cin >> N >> K;\n\n  auto table = hl::bell_number_table<mint>(std::max(N,\
+    \ K));\n\n  std::cout << table[N][K] << std::endl;\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_G\"\
     \n\n#include <iostream>\n#include \"Mylib/Number/Mint/mint.cpp\"\n#include \"\
     Mylib/Combinatorics/bell_number_table.cpp\"\n\nnamespace hl = haar_lib;\n\nusing\
@@ -84,7 +84,7 @@ data:
   isVerificationFile: true
   path: test/aoj/DPL_5_G/main.table.test.cpp
   requiredBy: []
-  timestamp: '2020-09-30 07:57:28+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DPL_5_G/main.table.test.cpp

@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
   - icon: ':heavy_check_mark:'
@@ -82,19 +82,19 @@ data:
     \ n){\n      int64_t x = 2, y = 2, d = 1;\n\n      while(d == 1){\n        x =\
     \ f(x) % n;\n        y = f(f(y) % n) % n;\n        d = std::gcd(std::abs(x - y),\
     \ n);\n        if(d == n) return {};\n      }\n\n      return {d};\n    }\n  }\n\
-    \n  auto pollard_rho(int64_t n){\n    std::vector<std::pair<int64_t, int64_t>>\
-    \ ret;\n\n    for(int i = 2; i <= 1000000; ++i){\n      if(n % i == 0){\n    \
-    \    int c = 0;\n        while(n % i == 0){\n          n /= i;\n          ++c;\n\
-    \        }\n        ret.emplace_back(i, c);\n      }\n      if(i > n) break;\n\
-    \    }\n\n    while(n > 1){\n      if(miller_rabin(n)){\n        ret.emplace_back(n,\
-    \ 1);\n        break;\n      }\n\n      auto res = pollard_rho_impl::rho(n);\n\
-    \      if(not res){\n        assert(false);\n      }\n\n      auto r = *res;\n\
-    \      if(r == 1) break;\n\n      int c = 0;\n      while(n % r == 0){\n     \
-    \   n /= r;\n        ++c;\n      }\n\n      ret.emplace_back(r, c);\n    }\n\n\
-    \    std::sort(ret.begin(), ret.end());\n\n    return ret;\n  }\n}\n#line 7 \"\
-    test/yosupo-judge/factorize/main.test.cpp\"\n\nnamespace hl = haar_lib;\n\nint\
-    \ main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int Q;\
-    \ std::cin >> Q;\n\n  for(auto [a] : hl::input_tuples<int64_t>(Q)){\n    auto\
+    \n  auto pollard_rho(int64_t n) -> std::vector<std::pair<int64_t, int64_t>> {\n\
+    \    std::vector<std::pair<int64_t, int64_t>> ret;\n\n    for(int i = 2; i <=\
+    \ 1000000; ++i){\n      if(n % i == 0){\n        int c = 0;\n        while(n %\
+    \ i == 0){\n          n /= i;\n          ++c;\n        }\n        ret.emplace_back(i,\
+    \ c);\n      }\n      if(i > n) break;\n    }\n\n    while(n > 1){\n      if(miller_rabin(n)){\n\
+    \        ret.emplace_back(n, 1);\n        break;\n      }\n\n      auto res =\
+    \ pollard_rho_impl::rho(n);\n      if(not res){\n        assert(false);\n    \
+    \  }\n\n      auto r = *res;\n      if(r == 1) break;\n\n      int c = 0;\n  \
+    \    while(n % r == 0){\n        n /= r;\n        ++c;\n      }\n\n      ret.emplace_back(r,\
+    \ c);\n    }\n\n    std::sort(ret.begin(), ret.end());\n\n    return ret;\n  }\n\
+    }\n#line 7 \"test/yosupo-judge/factorize/main.test.cpp\"\n\nnamespace hl = haar_lib;\n\
+    \nint main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int\
+    \ Q; std::cin >> Q;\n\n  for(auto [a] : hl::input_tuples<int64_t>(Q)){\n    auto\
     \ res = hl::pollard_rho(a);\n\n    std::vector<int64_t> ans;\n    for(auto [x,\
     \ k] : res){\n      while(k--) ans.push_back(x);\n    }\n\n    std::cout << ans.size()\
     \ << \" \" << hl::join(ans.begin(), ans.end()) << \"\\n\";\n  }\n\n  return 0;\n\
@@ -118,7 +118,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/factorize/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/factorize/main.test.cpp

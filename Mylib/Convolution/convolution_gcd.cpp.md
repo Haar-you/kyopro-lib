@@ -18,8 +18,8 @@ data:
     \    std::vector<bool> check(N, true);\n    for(int i = 2; i < N; ++i){\n    \
     \  if(check[i]){\n        for(int j = 1; j * i < N; ++j){\n          check[j *\
     \ i] = false;\n          f[j] -= f[j * i];\n        }\n      }\n    }\n    return\
-    \ f;\n  }\n\n  template <typename T>\n  auto convolution_gcd(std::vector<T> f,\
-    \ std::vector<T> g){\n    const int N = f.size();\n    assert(f.size() == g.size());\n\
+    \ f;\n  }\n\n  template <typename T>\n  std::vector<T> convolution_gcd(std::vector<T>\
+    \ f, std::vector<T> g){\n    const int N = f.size();\n    assert(f.size() == g.size());\n\
     \n    std::vector<T> ret(N);\n    for(int i = 1; i < N; ++i) ret[i] += f[i] +\
     \ g[i];\n\n    f = divisor_zeta_transform(f);\n    g = divisor_zeta_transform(g);\n\
     \    for(int i = 0; i < N; ++i) f[i] *= g[i];\n    f = divisor_mobius_transform(f);\n\
@@ -34,8 +34,8 @@ data:
     \   std::vector<bool> check(N, true);\n    for(int i = 2; i < N; ++i){\n     \
     \ if(check[i]){\n        for(int j = 1; j * i < N; ++j){\n          check[j *\
     \ i] = false;\n          f[j] -= f[j * i];\n        }\n      }\n    }\n    return\
-    \ f;\n  }\n\n  template <typename T>\n  auto convolution_gcd(std::vector<T> f,\
-    \ std::vector<T> g){\n    const int N = f.size();\n    assert(f.size() == g.size());\n\
+    \ f;\n  }\n\n  template <typename T>\n  std::vector<T> convolution_gcd(std::vector<T>\
+    \ f, std::vector<T> g){\n    const int N = f.size();\n    assert(f.size() == g.size());\n\
     \n    std::vector<T> ret(N);\n    for(int i = 1; i < N; ++i) ret[i] += f[i] +\
     \ g[i];\n\n    f = divisor_zeta_transform(f);\n    g = divisor_zeta_transform(g);\n\
     \    for(int i = 0; i < N; ++i) f[i] *= g[i];\n    f = divisor_mobius_transform(f);\n\
@@ -44,7 +44,7 @@ data:
   isVerificationFile: false
   path: Mylib/Convolution/convolution_gcd.cpp
   requiredBy: []
-  timestamp: '2020-10-31 12:39:43+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/Convolution/convolution_gcd.cpp

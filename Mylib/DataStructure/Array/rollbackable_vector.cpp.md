@@ -32,10 +32,7 @@ data:
     \    auto cend() const {return data_.cend();}\n\n    int size() const {return\
     \ data_.size();}\n    bool empty() const {return data_.empty();}\n\n    const\
     \ T& back() const {return data_.back();}\n    const T& front() const {return data_.front();}\n\
-    \n    friend std::ostream& operator<<(std::ostream &s, const rollbackable_vector\
-    \ &a){\n      s << \"{\";\n      for(auto it = a.cbegin(); it != a.cend(); ++it){\n\
-    \        if(it != a.cbegin()) s << \", \";\n        s << *it;\n      }\n     \
-    \ s << \"}\";\n      return s;\n    }\n  };\n}\n"
+    \n    const auto& data() const {return data_;}\n  };\n}\n"
   code: "#pragma once\n#include <vector>\n#include <variant>\n#include <initializer_list>\n\
     #include <utility>\n#include <iostream>\n\nnamespace haar_lib {\n  template <typename\
     \ T>\n  class rollbackable_vector {\n  public:\n    using value_type = T;\n\n\
@@ -59,15 +56,12 @@ data:
     \    auto cend() const {return data_.cend();}\n\n    int size() const {return\
     \ data_.size();}\n    bool empty() const {return data_.empty();}\n\n    const\
     \ T& back() const {return data_.back();}\n    const T& front() const {return data_.front();}\n\
-    \n    friend std::ostream& operator<<(std::ostream &s, const rollbackable_vector\
-    \ &a){\n      s << \"{\";\n      for(auto it = a.cbegin(); it != a.cend(); ++it){\n\
-    \        if(it != a.cbegin()) s << \", \";\n        s << *it;\n      }\n     \
-    \ s << \"}\";\n      return s;\n    }\n  };\n}\n"
+    \n    const auto& data() const {return data_;}\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/DataStructure/Array/rollbackable_vector.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
+  timestamp: '2021-03-12 18:33:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/DataStructure/Array/rollbackable_vector.cpp

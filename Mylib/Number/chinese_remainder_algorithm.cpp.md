@@ -1,25 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/extended_gcd.cpp
     title: Extended Euclidean algorithm
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/186/main.test.cpp
     title: test/yukicoder/186/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/chinese_remainder_algorithm.cpp\"\n#include\
     \ <vector>\n#include <optional>\n#include <cassert>\n#line 2 \"Mylib/Number/extended_gcd.cpp\"\
-    \n#include <tuple>\n\nnamespace haar_lib {\n  std::tuple<int64_t, int64_t, int64_t>\
-    \ ext_gcd(int64_t a, int64_t b){\n    if(b == 0) return std::make_tuple(a, 1,\
-    \ 0);\n    const auto [d, q, p] = ext_gcd(b, (a + b) % b);\n    return std::make_tuple(d,\
-    \ p, q - a / b * p);\n  }\n}\n#line 6 \"Mylib/Number/chinese_remainder_algorithm.cpp\"\
+    \n#include <tuple>\n\nnamespace haar_lib {\n  auto ext_gcd(int64_t a, int64_t\
+    \ b) ->\n    std::tuple<\n      int64_t, // gcd\n      int64_t, // p\n      int64_t\
+    \  // q\n      >\n  {\n    if(b == 0) return std::make_tuple(a, 1, 0);\n    const\
+    \ auto [d, q, p] = ext_gcd(b, (a + b) % b);\n    return std::make_tuple(d, p,\
+    \ q - a / b * p);\n  }\n}\n#line 6 \"Mylib/Number/chinese_remainder_algorithm.cpp\"\
     \n\nnamespace haar_lib {\n  std::optional<std::pair<int64_t, int64_t>> chinese_remainder_algorithm(\n\
     \    int64_t b1, int64_t m1,\n    int64_t b2, int64_t m2\n  ){\n    const auto\
     \ [d, p, q] = ext_gcd(m1, m2);\n    if((b2 - b1) % d != 0) return std::nullopt;\n\
@@ -50,8 +51,8 @@ data:
   isVerificationFile: false
   path: Mylib/Number/chinese_remainder_algorithm.cpp
   requiredBy: []
-  timestamp: '2020-10-10 11:12:55+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-03-13 04:56:32+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yukicoder/186/main.test.cpp
 documentation_of: Mylib/Number/chinese_remainder_algorithm.cpp

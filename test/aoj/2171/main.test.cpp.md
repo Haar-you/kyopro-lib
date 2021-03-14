@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/ShortestPath/warshall_floyd_for_matrix_graph.cpp
     title: Warshall-Floyd algorithm (For adjacency matrix graph)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   - icon: ':heavy_check_mark:'

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/partition_number.cpp
     title: Partition number (Enumerate $P(n, k)$)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []
@@ -62,14 +62,14 @@ data:
     \n    explicit operator int32_t() const noexcept {return val_;}\n    explicit\
     \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 2 \"Mylib/Combinatorics/partition_number.cpp\"\
     \n#include <vector>\n\nnamespace haar_lib {\n  template <typename T>\n  auto partition_number(int\
-    \ n, int k){\n    std::vector<std::vector<T>> dp(n + 1, std::vector<T>(k + 1));\n\
-    \    dp[0][0] = 1;\n\n    for(int i = 0; i <= n; ++i){\n      for(int j = 1; j\
-    \ <= k; ++j){\n        if(i - j >= 0) dp[i][j] = dp[i][j - 1] + dp[i - j][j];\n\
-    \        else dp[i][j] = dp[i][j - 1];\n      }\n    }\n\n    return dp;\n  }\n\
-    }\n#line 6 \"test/aoj/DPL_5_J/main.test.cpp\"\n\nnamespace hl = haar_lib;\n\n\
-    using mint = hl::modint<1000000007>;\n\nint main(){\n  int N, K; std::cin >> N\
-    \ >> K;\n\n  auto p = hl::partition_number<mint>(N, K);\n\n  std::cout << p[N][K]\
-    \ << std::endl;\n\n  return 0;\n}\n"
+    \ n, int k) -> std::vector<std::vector<T>> {\n    std::vector<std::vector<T>>\
+    \ dp(n + 1, std::vector<T>(k + 1));\n    dp[0][0] = 1;\n\n    for(int i = 0; i\
+    \ <= n; ++i){\n      for(int j = 1; j <= k; ++j){\n        if(i - j >= 0) dp[i][j]\
+    \ = dp[i][j - 1] + dp[i - j][j];\n        else dp[i][j] = dp[i][j - 1];\n    \
+    \  }\n    }\n\n    return dp;\n  }\n}\n#line 6 \"test/aoj/DPL_5_J/main.test.cpp\"\
+    \n\nnamespace hl = haar_lib;\n\nusing mint = hl::modint<1000000007>;\n\nint main(){\n\
+    \  int N, K; std::cin >> N >> K;\n\n  auto p = hl::partition_number<mint>(N, K);\n\
+    \n  std::cout << p[N][K] << std::endl;\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_J\"\
     \n\n#include <iostream>\n#include \"Mylib/Number/Mint/mint.cpp\"\n#include \"\
     Mylib/Combinatorics/partition_number.cpp\"\n\nnamespace hl = haar_lib;\n\nusing\
@@ -82,7 +82,7 @@ data:
   isVerificationFile: true
   path: test/aoj/DPL_5_J/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-30 07:57:28+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DPL_5_J/main.test.cpp

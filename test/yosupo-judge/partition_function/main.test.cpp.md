@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/partition_number_n.cpp
     title: Partition number (Enumerate $P(n, n)$)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []
@@ -65,18 +65,19 @@ data:
     \n    explicit operator int32_t() const noexcept {return val_;}\n    explicit\
     \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 2 \"Mylib/Combinatorics/partition_number_n.cpp\"\
     \n#include <cmath>\n#include <vector>\n\nnamespace haar_lib {\n  template <typename\
-    \ T>\n  auto partition_number_n(int N){\n    std::vector<T> p(N + 1);\n\n    p[0]\
-    \ = 1;\n\n    for(int i = 1; i <= N; ++i){\n      int s = std::sqrt(1 + 24 * i);\n\
-    \n      for(int j = 1; j <= (1 + s) / 6; ++j){\n        p[i] += p[i - j * (3 *\
-    \ j - 1) / 2] * (j % 2 ? 1 : -1);\n      }\n\n      for(int j = 1; j <= (-1 +\
-    \ s) / 6; ++j){\n        p[i] += p[i - j * (3 * j + 1) / 2] * (j % 2 ? 1 : -1);\n\
-    \      }\n    }\n\n    return p;\n  }\n}\n#line 3 \"Mylib/IO/join.cpp\"\n#include\
-    \ <sstream>\n#include <string>\n\nnamespace haar_lib {\n  template <typename Iter>\n\
-    \  std::string join(Iter first, Iter last, std::string delim = \" \"){\n    std::stringstream\
-    \ s;\n\n    for(auto it = first; it != last; ++it){\n      if(it != first) s <<\
-    \ delim;\n      s << *it;\n    }\n\n    return s.str();\n  }\n}\n#line 7 \"test/yosupo-judge/partition_function/main.test.cpp\"\
-    \n\nnamespace hl = haar_lib;\n\nusing mint = hl::modint<998244353>;\n\nint main(){\n\
-    \  int N; std::cin >> N;\n\n  auto p = hl::partition_number_n<mint>(N);\n\n  std::cout\
+    \ T>\n  std::vector<T> partition_number_n(int N){\n    std::vector<T> p(N + 1);\n\
+    \n    p[0] = 1;\n\n    for(int i = 1; i <= N; ++i){\n      int s = std::sqrt(1\
+    \ + 24 * i);\n\n      for(int j = 1; j <= (s + 1) / 6; ++j){\n        p[i] +=\
+    \ p[i - j * (3 * j - 1) / 2] * (j % 2 ? 1 : -1);\n      }\n\n      for(int j =\
+    \ 1; j <= (s - 1) / 6; ++j){\n        p[i] += p[i - j * (3 * j + 1) / 2] * (j\
+    \ % 2 ? 1 : -1);\n      }\n    }\n\n    return p;\n  }\n}\n#line 3 \"Mylib/IO/join.cpp\"\
+    \n#include <sstream>\n#include <string>\n\nnamespace haar_lib {\n  template <typename\
+    \ Iter>\n  std::string join(Iter first, Iter last, std::string delim = \" \"){\n\
+    \    std::stringstream s;\n\n    for(auto it = first; it != last; ++it){\n   \
+    \   if(it != first) s << delim;\n      s << *it;\n    }\n\n    return s.str();\n\
+    \  }\n}\n#line 7 \"test/yosupo-judge/partition_function/main.test.cpp\"\n\nnamespace\
+    \ hl = haar_lib;\n\nusing mint = hl::modint<998244353>;\n\nint main(){\n  int\
+    \ N; std::cin >> N;\n\n  auto p = hl::partition_number_n<mint>(N);\n\n  std::cout\
     \ << hl::join(p.begin(), p.end()) << std::endl;\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/partition_function\"\n\n\
     #include <iostream>\n#include \"Mylib/Number/Mint/mint.cpp\"\n#include \"Mylib/Combinatorics/partition_number_n.cpp\"\
@@ -90,7 +91,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/partition_function/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-30 07:57:28+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/partition_function/main.test.cpp

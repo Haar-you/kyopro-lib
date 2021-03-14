@@ -52,12 +52,8 @@ data:
     \    }\n\n  protected:\n    void traverse(node *t, std::vector<T> &ret) const\
     \ {\n      if(not t) return;\n\n      if(t->is_terminal){\n        ret.push_back(*(t->value));\n\
     \        return;\n      }\n\n      traverse(t->left, ret);\n      traverse(t->right,\
-    \ ret);\n    }\n\n  public:\n    std::vector<T> traverse() const {\n      std::vector<T>\
-    \ ret;\n      traverse(root_, ret);\n      return ret;\n    }\n\n    friend std::ostream&\
-    \ operator<<(std::ostream &s, const persistent_array &a){\n      auto v = a.traverse();\n\
-    \      s << \"{\";\n      for(auto it = v.begin(); it != v.end(); ++it){\n   \
-    \     if(it != v.begin()) s << \", \";\n        s << *it;\n      }\n      s <<\
-    \ \"}\";\n      return s;\n    }\n  };\n}\n"
+    \ ret);\n    }\n\n  public:\n    std::vector<T> data() const {\n      std::vector<T>\
+    \ ret;\n      traverse(root_, ret);\n      return ret;\n    }\n  };\n}\n"
   code: "#pragma once\n#include <memory>\n#include <vector>\n#include <iostream>\n\
     \nnamespace haar_lib {\n  template <typename T>\n  class persistent_array {\n\
     \  public:\n    using value_type = T;\n\n  private:\n    struct node {\n     \
@@ -96,18 +92,14 @@ data:
     \    }\n\n  protected:\n    void traverse(node *t, std::vector<T> &ret) const\
     \ {\n      if(not t) return;\n\n      if(t->is_terminal){\n        ret.push_back(*(t->value));\n\
     \        return;\n      }\n\n      traverse(t->left, ret);\n      traverse(t->right,\
-    \ ret);\n    }\n\n  public:\n    std::vector<T> traverse() const {\n      std::vector<T>\
-    \ ret;\n      traverse(root_, ret);\n      return ret;\n    }\n\n    friend std::ostream&\
-    \ operator<<(std::ostream &s, const persistent_array &a){\n      auto v = a.traverse();\n\
-    \      s << \"{\";\n      for(auto it = v.begin(); it != v.end(); ++it){\n   \
-    \     if(it != v.begin()) s << \", \";\n        s << *it;\n      }\n      s <<\
-    \ \"}\";\n      return s;\n    }\n  };\n}\n"
+    \ ret);\n    }\n\n  public:\n    std::vector<T> data() const {\n      std::vector<T>\
+    \ ret;\n      traverse(root_, ret);\n      return ret;\n    }\n  };\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/DataStructure/Array/persistent_array.cpp
   requiredBy:
   - Mylib/DataStructure/UnionFind/persistent_unionfind.cpp
-  timestamp: '2020-09-30 02:01:30+09:00'
+  timestamp: '2021-03-12 18:33:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/persistent_unionfind/main.test.cpp

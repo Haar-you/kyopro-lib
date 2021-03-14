@@ -7,16 +7,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/WaveletMatrix/wavelet_matrix.cpp
     title: Wavelet matrix
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
   - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Utils/sort_simultaneously.cpp
     title: Sort simultaneously
   _extendedRequiredBy: []
@@ -155,16 +155,16 @@ data:
     \ wavelet_matrix<uint32_t, 32>(data);\n  }\n}\n#line 4 \"Mylib/Utils/sort_simultaneously.cpp\"\
     \n#include <algorithm>\n#include <numeric>\n#include <initializer_list>\n#line\
     \ 8 \"Mylib/Utils/sort_simultaneously.cpp\"\n\nnamespace haar_lib {\n  namespace\
-    \ sort_simultaneously_impl {\n    template <typename T>\n    void sub(int N, const\
-    \ std::vector<int> &ord, std::vector<T> &a){\n      std::vector<T> temp(N);\n\
+    \ sort_simultaneously_impl {\n    template <typename T>\n    void helper(int N,\
+    \ const std::vector<int> &ord, std::vector<T> &a){\n      std::vector<T> temp(N);\n\
     \      for(int i = 0; i < N; ++i) temp[i] = a[ord[i]];\n      std::swap(temp,\
     \ a);\n    }\n  }\n\n  template <typename Compare, typename ... Args>\n  void\
     \ sort_simultaneously(const Compare &compare, std::vector<Args> &... args){\n\
     \    const int N = std::max({args.size() ...});\n    assert((int)std::min({args.size()\
     \ ...}) == N);\n    std::vector<int> ord(N);\n    std::iota(ord.begin(), ord.end(),\
     \ 0);\n    std::sort(ord.begin(), ord.end(), compare);\n\n    (void)std::initializer_list<int>{\n\
-    \      (void(sort_simultaneously_impl::sub(N, ord, args)), 0) ...};\n  }\n}\n\
-    #line 7 \"Mylib/IO/input_tuple_vector.cpp\"\n\nnamespace haar_lib {\n  template\
+    \      (void(sort_simultaneously_impl::helper(N, ord, args)), 0) ...};\n  }\n\
+    }\n#line 7 \"Mylib/IO/input_tuple_vector.cpp\"\n\nnamespace haar_lib {\n  template\
     \ <typename T, size_t ... I>\n  void input_tuple_vector_init(T &val, int N, std::index_sequence<I\
     \ ...>){\n    (void)std::initializer_list<int>{(void(std::get<I>(val).resize(N)),\
     \ 0) ...};\n  }\n\n  template <typename T, size_t ... I>\n  void input_tuple_vector_helper(T\
@@ -227,7 +227,7 @@ data:
   isVerificationFile: true
   path: test/aoj/2426/main.test.cpp
   requiredBy: []
-  timestamp: '2020-10-10 11:12:55+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/2426/main.test.cpp

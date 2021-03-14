@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/bell_number.cpp
     title: Bell number
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Combinatorics/factorial_table.cpp
     title: Factorial table
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []
@@ -81,17 +81,17 @@ data:
     \    }\n\n    T H(int64_t n, int64_t k) const {\n      if(n == 0 and k == 0) return\
     \ 1;\n      return C(n + k - 1, k);\n    }\n  };\n}\n#line 3 \"Mylib/Combinatorics/bell_number.cpp\"\
     \n#include <algorithm>\n#line 5 \"Mylib/Combinatorics/bell_number.cpp\"\n\nnamespace\
-    \ haar_lib {\n  template <const auto &ft>\n  auto bell_number(int n, int k){\n\
-    \    using T = typename std::remove_reference_t<decltype(ft)>::value_type;\n \
-    \   if(n == 0) return T(1);\n\n    k = std::min(k, n);\n\n    std::vector<T> t(k,\
-    \ 1);\n\n    for(int i = 1; i < k; ++i){\n      if(i % 2 == 0) t[i] = t[i - 1]\
-    \ + ft.inv_factorial(i);\n      else t[i] = t[i - 1] - ft.inv_factorial(i);\n\
-    \    }\n\n    T ret = 0;\n    for(int i = 1; i <= k; ++i){\n      ret += t[k -\
-    \ i] * T::pow(i, n) * ft.inv_factorial(i);\n    }\n\n    return ret;\n  }\n}\n\
-    #line 7 \"test/aoj/DPL_5_G/main.test.cpp\"\n\nnamespace hl = haar_lib;\n\nusing\
-    \ mint = hl::modint<1000000007>;\nconst static auto ft = hl::factorial_table<mint>(3000);\n\
-    \nint main(){\n  int N, K; std::cin >> N >> K;\n\n  std::cout << hl::bell_number<ft>(N,\
-    \ K) << std::endl;\n\n  return 0;\n}\n"
+    \ haar_lib {\n  template <\n    const auto &ft,\n    typename T = typename std::remove_reference_t<decltype(ft)>::value_type\n\
+    \    >\n  T bell_number(int n, int k){\n    if(n == 0) return T(1);\n\n    k =\
+    \ std::min(k, n);\n\n    std::vector<T> t(k, 1);\n\n    for(int i = 1; i < k;\
+    \ ++i){\n      if(i % 2 == 0) t[i] = t[i - 1] + ft.inv_factorial(i);\n      else\
+    \ t[i] = t[i - 1] - ft.inv_factorial(i);\n    }\n\n    T ret = 0;\n    for(int\
+    \ i = 1; i <= k; ++i){\n      ret += t[k - i] * T::pow(i, n) * ft.inv_factorial(i);\n\
+    \    }\n\n    return ret;\n  }\n}\n#line 7 \"test/aoj/DPL_5_G/main.test.cpp\"\n\
+    \nnamespace hl = haar_lib;\n\nusing mint = hl::modint<1000000007>;\nconst static\
+    \ auto ft = hl::factorial_table<mint>(3000);\n\nint main(){\n  int N, K; std::cin\
+    \ >> N >> K;\n\n  std::cout << hl::bell_number<ft>(N, K) << std::endl;\n\n  return\
+    \ 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_5_G\"\
     \n\n#include <iostream>\n#include \"Mylib/Number/Mint/mint.cpp\"\n#include \"\
     Mylib/Combinatorics/factorial_table.cpp\"\n#include \"Mylib/Combinatorics/bell_number.cpp\"\
@@ -106,7 +106,7 @@ data:
   isVerificationFile: true
   path: test/aoj/DPL_5_G/main.test.cpp
   requiredBy: []
-  timestamp: '2020-11-04 18:00:18+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/DPL_5_G/main.test.cpp

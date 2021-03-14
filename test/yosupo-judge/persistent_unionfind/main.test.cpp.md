@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/DataStructure/UnionFind/persistent_unionfind.cpp
     title: Persistent union-find
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
   - icon: ':heavy_check_mark:'
@@ -64,40 +64,37 @@ data:
     \    }\n\n  protected:\n    void traverse(node *t, std::vector<T> &ret) const\
     \ {\n      if(not t) return;\n\n      if(t->is_terminal){\n        ret.push_back(*(t->value));\n\
     \        return;\n      }\n\n      traverse(t->left, ret);\n      traverse(t->right,\
-    \ ret);\n    }\n\n  public:\n    std::vector<T> traverse() const {\n      std::vector<T>\
-    \ ret;\n      traverse(root_, ret);\n      return ret;\n    }\n\n    friend std::ostream&\
-    \ operator<<(std::ostream &s, const persistent_array &a){\n      auto v = a.traverse();\n\
-    \      s << \"{\";\n      for(auto it = v.begin(); it != v.end(); ++it){\n   \
-    \     if(it != v.begin()) s << \", \";\n        s << *it;\n      }\n      s <<\
-    \ \"}\";\n      return s;\n    }\n  };\n}\n#line 4 \"Mylib/DataStructure/UnionFind/persistent_unionfind.cpp\"\
-    \n\nnamespace haar_lib {\n  class persistent_unionfind {\n    persistent_array<int>\
-    \ par_;\n\n    persistent_unionfind(persistent_array<int> par): par_(par){}\n\n\
-    \  public:\n    persistent_unionfind(){}\n    persistent_unionfind(int n): par_(persistent_array<int>(std::vector<int>(n,\
-    \ -1))){}\n\n    int root_of(int i) const {\n      const int p = par_[i];\n  \
-    \    if(p < 0) return i;\n      return root_of(p);\n    }\n\n    bool is_same(int\
-    \ i, int j) const {\n      return root_of(i) == root_of(j);\n    }\n\n    int\
-    \ size_of(int i) const {\n      return -par_[root_of(i)];\n    }\n\n    persistent_unionfind\
-    \ merge(int i, int j) const {\n      const int ri = root_of(i), rj = root_of(j);\n\
-    \      if(ri == rj) return *this;\n\n      const int size_i = -par_[ri];\n   \
-    \   const int size_j = -par_[rj];\n\n      persistent_array<int> ret = par_;\n\
-    \n      if(size_i > size_j){\n        ret = ret.set(ri, -(size_i + size_j));\n\
-    \        ret = ret.set(rj, ri);\n      }else{\n        ret = ret.set(rj, -(size_i\
-    \ + size_j));\n        ret = ret.set(ri, rj);\n      }\n\n      return persistent_unionfind(ret);\n\
-    \    }\n  };\n}\n#line 4 \"Mylib/IO/input_tuples_with_index.cpp\"\n#include <tuple>\n\
-    #include <utility>\n#include <initializer_list>\n#line 6 \"Mylib/IO/input_tuple.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename T, size_t ... I>\n  static void\
-    \ input_tuple_helper(std::istream &s, T &val, std::index_sequence<I ...>){\n \
-    \   (void)std::initializer_list<int>{(void(s >> std::get<I>(val)), 0) ...};\n\
-    \  }\n\n  template <typename T, typename U>\n  std::istream& operator>>(std::istream\
-    \ &s, std::pair<T, U> &value){\n    s >> value.first >> value.second;\n    return\
-    \ s;\n  }\n\n  template <typename ... Args>\n  std::istream& operator>>(std::istream\
-    \ &s, std::tuple<Args ...> &value){\n    input_tuple_helper(s, value, std::make_index_sequence<sizeof\
-    \ ... (Args)>());\n    return s;\n  }\n}\n#line 8 \"Mylib/IO/input_tuples_with_index.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename ... Args>\n  class InputTuplesWithIndex\
-    \ {\n    struct iter {\n      using value_type = std::tuple<int, Args ...>;\n\
-    \      value_type value;\n      bool fetched = false;\n      int N;\n      int\
-    \ c = 0;\n\n      value_type operator*(){\n        if(not fetched){\n        \
-    \  std::tuple<Args ...> temp; std::cin >> temp;\n          value = std::tuple_cat(std::make_tuple(c),\
+    \ ret);\n    }\n\n  public:\n    std::vector<T> data() const {\n      std::vector<T>\
+    \ ret;\n      traverse(root_, ret);\n      return ret;\n    }\n  };\n}\n#line\
+    \ 4 \"Mylib/DataStructure/UnionFind/persistent_unionfind.cpp\"\n\nnamespace haar_lib\
+    \ {\n  class persistent_unionfind {\n    persistent_array<int> par_;\n\n    persistent_unionfind(persistent_array<int>\
+    \ par): par_(par){}\n\n  public:\n    persistent_unionfind(){}\n    persistent_unionfind(int\
+    \ n): par_(persistent_array<int>(std::vector<int>(n, -1))){}\n\n    int root_of(int\
+    \ i) const {\n      const int p = par_[i];\n      if(p < 0) return i;\n      return\
+    \ root_of(p);\n    }\n\n    bool is_same(int i, int j) const {\n      return root_of(i)\
+    \ == root_of(j);\n    }\n\n    int size_of(int i) const {\n      return -par_[root_of(i)];\n\
+    \    }\n\n    persistent_unionfind merge(int i, int j) const {\n      const int\
+    \ ri = root_of(i), rj = root_of(j);\n      if(ri == rj) return *this;\n\n    \
+    \  const int size_i = -par_[ri];\n      const int size_j = -par_[rj];\n\n    \
+    \  persistent_array<int> ret = par_;\n\n      if(size_i > size_j){\n        ret\
+    \ = ret.set(ri, -(size_i + size_j));\n        ret = ret.set(rj, ri);\n      }else{\n\
+    \        ret = ret.set(rj, -(size_i + size_j));\n        ret = ret.set(ri, rj);\n\
+    \      }\n\n      return persistent_unionfind(ret);\n    }\n  };\n}\n#line 4 \"\
+    Mylib/IO/input_tuples_with_index.cpp\"\n#include <tuple>\n#include <utility>\n\
+    #include <initializer_list>\n#line 6 \"Mylib/IO/input_tuple.cpp\"\n\nnamespace\
+    \ haar_lib {\n  template <typename T, size_t ... I>\n  static void input_tuple_helper(std::istream\
+    \ &s, T &val, std::index_sequence<I ...>){\n    (void)std::initializer_list<int>{(void(s\
+    \ >> std::get<I>(val)), 0) ...};\n  }\n\n  template <typename T, typename U>\n\
+    \  std::istream& operator>>(std::istream &s, std::pair<T, U> &value){\n    s >>\
+    \ value.first >> value.second;\n    return s;\n  }\n\n  template <typename ...\
+    \ Args>\n  std::istream& operator>>(std::istream &s, std::tuple<Args ...> &value){\n\
+    \    input_tuple_helper(s, value, std::make_index_sequence<sizeof ... (Args)>());\n\
+    \    return s;\n  }\n}\n#line 8 \"Mylib/IO/input_tuples_with_index.cpp\"\n\nnamespace\
+    \ haar_lib {\n  template <typename ... Args>\n  class InputTuplesWithIndex {\n\
+    \    struct iter {\n      using value_type = std::tuple<int, Args ...>;\n    \
+    \  value_type value;\n      bool fetched = false;\n      int N;\n      int c =\
+    \ 0;\n\n      value_type operator*(){\n        if(not fetched){\n          std::tuple<Args\
+    \ ...> temp; std::cin >> temp;\n          value = std::tuple_cat(std::make_tuple(c),\
     \ temp);\n        }\n        return value;\n      }\n\n      void operator++(){\n\
     \        ++c;\n        fetched = false;\n      }\n\n      bool operator!=(iter\
     \ &) const {\n        return c < N;\n      }\n\n      iter(int N): N(N){}\n  \
@@ -128,7 +125,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/persistent_unionfind/main.test.cpp
   requiredBy: []
-  timestamp: '2020-09-30 02:01:30+09:00'
+  timestamp: '2021-03-12 18:33:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/persistent_unionfind/main.test.cpp

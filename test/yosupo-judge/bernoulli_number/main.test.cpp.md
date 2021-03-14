@@ -4,25 +4,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Combinatorics/bernoulli_number_fps.cpp
     title: Bernoulli number (FPS)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Combinatorics/factorial_table.cpp
     title: Factorial table
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
   - icon: ':heavy_check_mark:'
     path: Mylib/Math/formal_power_series.cpp
     title: Formal power series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mod/mod_pow.cpp
     title: Mod pow
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Prime/primitive_root.cpp
     title: Primitive root
   _extendedRequiredBy: []
@@ -236,7 +236,7 @@ data:
     \      return P(n, k) * inv_factorial(k);\n    }\n\n    T H(int64_t n, int64_t\
     \ k) const {\n      if(n == 0 and k == 0) return 1;\n      return C(n + k - 1,\
     \ k);\n    }\n  };\n}\n#line 2 \"Mylib/Combinatorics/bernoulli_number_fps.cpp\"\
-    \n\nnamespace haar_lib {\n  template <typename Fps, const auto &ft>\n  auto bernoulli_number_fps(int\
+    \n\nnamespace haar_lib {\n  template <typename Fps, const auto &ft>\n  Fps bernoulli_number_fps(int\
     \ N){\n    Fps x(N + 1);\n\n    for(int i = 0; i <= N; ++i) x[i] = ft.inv_factorial(i\
     \ + 1);\n    x = x.inv();\n\n    for(int i = 0; i <= N; ++i) x[i] *= ft.factorial(i);\n\
     \n    return x;\n  }\n}\n#line 12 \"test/yosupo-judge/bernoulli_number/main.test.cpp\"\
@@ -273,7 +273,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/bernoulli_number/main.test.cpp
   requiredBy: []
-  timestamp: '2021-02-23 11:22:48+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/bernoulli_number/main.test.cpp

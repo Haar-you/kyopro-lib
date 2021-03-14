@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
   - icon: ':heavy_check_mark:'
@@ -261,7 +261,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/sum_of_floor_of_linear/main.test.cpp
     title: test/yosupo-judge/sum_of_floor_of_linear/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/tetration_mod/main.test.cpp
     title: test/yosupo-judge/tetration_mod/main.test.cpp
   - icon: ':heavy_check_mark:'
@@ -294,7 +294,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/117/main.test.cpp
     title: test/yukicoder/117/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/235/main.test.cpp
     title: test/yukicoder/235/main.test.cpp
   - icon: ':heavy_check_mark:'
@@ -333,9 +333,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/922/main.test.cpp
     title: test/yukicoder/922/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/IO/input_tuple.cpp\"\n#include <iostream>\n#include\
@@ -364,7 +364,7 @@ data:
   - Mylib/IO/input_tuples.cpp
   - Mylib/IO/input_tuples_with_index.cpp
   timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yukicoder/510/main.test.cpp
   - test/yukicoder/235/main.test.cpp

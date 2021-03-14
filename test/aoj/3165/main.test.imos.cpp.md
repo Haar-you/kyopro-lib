@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Algorithm/linear_imos_1d.cpp
     title: 1D Imos algorithm (Linear addition)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
   _extendedRequiredBy: []

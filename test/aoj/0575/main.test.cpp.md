@@ -10,13 +10,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Graph/ShortestPath/dijkstra.cpp
     title: Dijkstra algorithm
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
   - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple_vector.cpp
     title: Input tuple vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   _extendedRequiredBy: []
@@ -85,9 +85,9 @@ data:
     \ auto &a){return a.empty();}\n        ),\n        ret.end()\n      );\n\n   \
     \   return ret;\n    }\n  };\n}\n#line 3 \"Mylib/Algorithm/parallel_binary_search.cpp\"\
     \n#include <cmath>\n\nnamespace haar_lib {\n  template <typename Init, typename\
-    \ Process, typename Checker>\n  auto parallel_binary_search(int M, int Q, Init\
-    \ init, Process process, Checker checker){\n    std::vector<int> lb(Q, -1), ub(Q,\
-    \ M);\n\n    while(1){\n      bool check = true;\n      std::vector<std::vector<int>>\
+    \ Process, typename Checker>\n  std::vector<int> parallel_binary_search(int M,\
+    \ int Q, Init init, Process process, Checker checker){\n    std::vector<int> lb(Q,\
+    \ -1), ub(Q, M);\n\n    while(1){\n      bool check = true;\n      std::vector<std::vector<int>>\
     \ mids(M);\n      for(int i = 0; i < Q; ++i){\n        if(std::abs(lb[i] - ub[i])\
     \ > 1){\n          check = false;\n          int mid = (lb[i] + ub[i]) / 2;\n\
     \          mids[mid].push_back(i);\n        }\n      }\n\n      if(check) break;\n\
@@ -161,7 +161,7 @@ data:
   isVerificationFile: true
   path: test/aoj/0575/main.test.cpp
   requiredBy: []
-  timestamp: '2020-12-09 10:43:13+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/0575/main.test.cpp

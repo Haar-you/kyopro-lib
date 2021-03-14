@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   - icon: ':heavy_check_mark:'
@@ -66,11 +66,11 @@ data:
     \n    explicit operator int32_t() const noexcept {return val_;}\n    explicit\
     \ operator int64_t() const noexcept {return val_;}\n  };\n}\n#line 2 \"Mylib/Number/Totient/totient_sum.cpp\"\
     \n#include <vector>\n#include <unordered_map>\n#include <cmath>\n#line 3 \"Mylib/Number/Totient/totient_table.cpp\"\
-    \n#include <numeric>\n\nnamespace haar_lib {\n  auto totient_table(int n){\n \
-    \   std::vector<int> ret(n + 1);\n    std::iota(ret.begin(), ret.end(), 0);\n\n\
-    \    for(int i = 2; i <= n; ++i){\n      if(ret[i] == i){\n        for(int j =\
-    \ i; j <= n; j += i){\n          ret[j] = ret[j] / i * (i - 1);\n        }\n \
-    \     }\n    }\n\n    return ret;\n  }\n}\n#line 6 \"Mylib/Number/Totient/totient_sum.cpp\"\
+    \n#include <numeric>\n\nnamespace haar_lib {\n  std::vector<int> totient_table(int\
+    \ n){\n    std::vector<int> ret(n + 1);\n    std::iota(ret.begin(), ret.end(),\
+    \ 0);\n\n    for(int i = 2; i <= n; ++i){\n      if(ret[i] == i){\n        for(int\
+    \ j = i; j <= n; j += i){\n          ret[j] = ret[j] / i * (i - 1);\n        }\n\
+    \      }\n    }\n\n    return ret;\n  }\n}\n#line 6 \"Mylib/Number/Totient/totient_sum.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  T totient_sum(int64_t N){\n\
     \    const int64_t K = (int64_t)pow(N, 0.66);\n\n    std::vector<T> memo1(K +\
     \ 1);\n    auto table = totient_table(K);\n    T sum = 0;\n    for(int i = 1;\
@@ -99,7 +99,7 @@ data:
   isVerificationFile: true
   path: test/yosupo-judge/sum_of_totient_function/main.test.cpp
   requiredBy: []
-  timestamp: '2020-11-02 00:02:30+09:00'
+  timestamp: '2021-03-13 04:56:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo-judge/sum_of_totient_function/main.test.cpp
