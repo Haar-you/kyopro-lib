@@ -193,15 +193,15 @@ data:
   timestamp: '2021-02-23 11:22:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/bernoulli_number/main.test.cpp
-  - test/yosupo-judge/partition_function/main.fps.test.cpp
   - test/yosupo-judge/log_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-  - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
-  - test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/exp_of_formal_power_series/main.montgomery.test.cpp
+  - test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/partition_function/main.fps.test.cpp
+  - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
+  - test/yosupo-judge/bernoulli_number/main.test.cpp
 documentation_of: Mylib/Math/formal_power_series.cpp
 layout: document
 title: Formal power series

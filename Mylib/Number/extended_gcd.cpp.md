@@ -5,19 +5,19 @@ data:
   - icon: ':warning:'
     path: Mylib/Number/bezout_identity.cpp
     title: "B\xE9zout's identity"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Number/chinese_remainder_algorithm.cpp
     title: Chinese remainder theorem
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/NTL_1_E/main.test.cpp
     title: test/aoj/NTL_1_E/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yukicoder/186/main.test.cpp
     title: test/yukicoder/186/main.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/extended_gcd.cpp\"\n#include <tuple>\n\nnamespace\
@@ -37,7 +37,7 @@ data:
   - Mylib/Number/chinese_remainder_algorithm.cpp
   - Mylib/Number/bezout_identity.cpp
   timestamp: '2021-03-13 04:56:32+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yukicoder/186/main.test.cpp
   - test/aoj/NTL_1_E/main.test.cpp

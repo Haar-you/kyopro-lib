@@ -80,9 +80,9 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/aoj/1102/main.test.cpp
   - test/aoj/2401/main.test.cpp
   - test/aoj/1300/main.test.cpp
-  - test/aoj/1102/main.test.cpp
 documentation_of: Mylib/Parser/parser.cpp
 layout: document
 title: Parsing

@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Grid/grid_find.cpp
     title: Enumerate points satisfying conditions
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   _extendedRequiredBy: []

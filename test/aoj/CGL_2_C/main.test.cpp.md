@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/intersect_segments.cpp
     title: Intersection between two segments
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
   _extendedRequiredBy: []

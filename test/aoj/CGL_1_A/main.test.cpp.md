@@ -10,10 +10,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/projection.cpp
     title: Projection
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuple.cpp
     title: Input tuple
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_tuples.cpp
     title: Input tuples
   _extendedRequiredBy: []

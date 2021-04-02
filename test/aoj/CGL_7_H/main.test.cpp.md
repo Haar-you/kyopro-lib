@@ -16,7 +16,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/intersect_circle_segment.cpp
     title: Intersection between a circle and a segment
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
   _extendedRequiredBy: []

@@ -38,9 +38,9 @@ data:
   timestamp: '2020-09-16 17:10:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo-judge/point_set_range_composite/main.test.cpp
   - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
   - test/yosupo-judge/range_affine_range_sum/main.test.cpp
+  - test/yosupo-judge/point_set_range_composite/main.test.cpp
   - test/yosupo-judge/queue_operate_all_composite/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Monoid/affine.cpp
 layout: document

@@ -79,18 +79,18 @@ data:
   isVerificationFile: false
   path: Mylib/DataStructure/UnionFind/unionfind.cpp
   requiredBy:
-  - Mylib/Graph/MinimumSpanningTree/boruvka.cpp
   - Mylib/Graph/MinimumSpanningTree/kruskal.cpp
+  - Mylib/Graph/MinimumSpanningTree/boruvka.cpp
   timestamp: '2020-09-28 09:27:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo-judge/unionfind/main.test.cpp
   - test/yosupo-judge/manhattanmst/main.test.cpp
+  - test/aoj/2955/main.test.cpp
   - test/aoj/0575/main.test.cpp
   - test/aoj/1337/main.test.cpp
-  - test/aoj/2955/main.test.cpp
-  - test/aoj/GRL_2_A/main.boruvka.test.cpp
   - test/aoj/GRL_2_A/main.kruskal.test.cpp
+  - test/aoj/GRL_2_A/main.boruvka.test.cpp
 documentation_of: Mylib/DataStructure/UnionFind/unionfind.cpp
 layout: document
 title: Union-find
