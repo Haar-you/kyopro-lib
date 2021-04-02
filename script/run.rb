@@ -21,6 +21,8 @@ $boost_path = nil
 
 $sanitize = false
 
+$bundle = false
+
 opts.on("-e", "--exec-only"){
   $exec_only = true
 }
@@ -51,19 +53,26 @@ opts.on("--sanitize"){
   $sanitize = true
 }
 
+opts.on("-b", "--bundle"){
+  $bundle = true
+}
+
 $mylib = Pathname.new(__dir__).parent
 
 opts.parse!(ARGV)
 source_file, input_file = ARGV
 
 if not $exec_only
-  STDERR.puts "\e[33;1m bundling ... \e[m"
-  bundled_file = "#{source_file}.bundle.cpp"
-  o, e, s = Open3.capture3("oj-bundle #{source_file} -I #{$mylib} > #{bundled_file}")
+  if $bundle
+    STDERR.puts "\e[33;1m bundling ... \e[m"
+    bundled_file = "#{source_file}.bundle.cpp"
 
-  unless s.success?
-    STDERR.print e
-    exit(1)
+    o, e, s = Open3.capture3("oj-bundle #{source_file} -I #{$mylib} > #{bundled_file}")
+
+    unless s.success?
+      STDERR.print e
+      exit(1)
+    end
   end
 
   STDERR.puts "\e[33;1m compiling ... \e[m"
