@@ -24,6 +24,7 @@ namespace haar_lib {
       INV_BASE_(MAX_POWER_ + 1)
     {
       static_assert((MAX_SIZE & (MAX_SIZE - 1)) == 0, "MAX_SIZE must be power of 2.");
+      static_assert((T::mod() - 1) % MAX_SIZE == 0);
 
       T t = T::pow(PRIM_ROOT, (T::mod() - 1) >> (MAX_POWER_ + 2));
       T s = t.inv();
