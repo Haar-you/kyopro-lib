@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <vector>
 
 namespace haar_lib {
   template <typename T>
