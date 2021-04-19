@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Math/polynomial_taylor_shift.cpp
     title: Polynomial taylor shift
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Combinatorics/stirling_number_first_fft.cpp\"\n#include\
@@ -53,7 +53,7 @@ data:
   path: Mylib/Combinatorics/stirling_number_first_fft.cpp
   requiredBy: []
   timestamp: '2020-11-04 17:40:49+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
 documentation_of: Mylib/Combinatorics/stirling_number_first_fft.cpp

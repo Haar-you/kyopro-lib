@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Convolution/ntt_convolution.cpp
     title: Number theoretic transform
   _extendedVerifiedWith:
@@ -52,6 +52,9 @@ data:
     path: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/exp_of_formal_power_series/main.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo-judge/find_linear_recurrence/main.test.cpp
+    title: test/yosupo-judge/find_linear_recurrence/main.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/inv_of_formal_power_series/main.test.cpp
   - icon: ':heavy_check_mark:'
@@ -63,6 +66,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/matrix_det/main.test.cpp
     title: test/yosupo-judge/matrix_det/main.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo-judge/matrix_product/main.test.cpp
+    title: test/yosupo-judge/matrix_product/main.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/multipoint_evaluation/main.test.cpp
     title: test/yosupo-judge/multipoint_evaluation/main.test.cpp
@@ -87,16 +93,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/range_affine_range_sum/main.test.cpp
     title: test/yosupo-judge/range_affine_range_sum/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
     title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
   - icon: ':heavy_check_mark:'
@@ -132,12 +138,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yukicoder/665/main.test.cpp
     title: test/yukicoder/665/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/931/main.test.cpp
     title: test/yukicoder/931/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Mint/mint.cpp\"\n#include <iostream>\n#include\
@@ -231,7 +237,7 @@ data:
   requiredBy:
   - Mylib/Convolution/ntt_convolution.cpp
   timestamp: '2020-09-30 07:57:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yukicoder/658/main.test.cpp
   - test/yukicoder/510/main.test.cpp
@@ -248,6 +254,7 @@ data:
   - test/yosupo-judge/range_affine_range_sum/main.test.cpp
   - test/yosupo-judge/enumerate_triangles/main.test.cpp
   - test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
+  - test/yosupo-judge/find_linear_recurrence/main.test.cpp
   - test/yosupo-judge/matrix_det/main.test.cpp
   - test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
   - test/yosupo-judge/subset_convolution/main.test.cpp
@@ -264,6 +271,7 @@ data:
   - test/yosupo-judge/bitwise_and_convolution/main.or.test.cpp
   - test/yosupo-judge/bitwise_and_convolution/main.test.cpp
   - test/yosupo-judge/polynomial_taylor_shift/main.test.cpp
+  - test/yosupo-judge/matrix_product/main.test.cpp
   - test/yosupo-judge/convolution_mod/main.test.cpp
   - test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/queue_operate_all_composite/main.test.cpp

@@ -10,13 +10,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Convolution/fast_zeta_transform_subset.cpp
     title: Fast Zeta transform (Subsets)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

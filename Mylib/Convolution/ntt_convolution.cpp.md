@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []
@@ -42,24 +42,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/pow_of_formal_power_series/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
     title: test/yosupo-judge/sharp_p_subset_sum/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
     title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_first_kind/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
     title: test/yosupo-judge/stirling_number_of_the_second_kind/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/931/main.test.cpp
     title: test/yukicoder/931/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Convolution/ntt_convolution.cpp\"\n#include <vector>\n\
@@ -112,49 +112,49 @@ data:
     \ max_size = MAX_SIZE;\n\n  private:\n    const int MAX_POWER_;\n    std::vector<T>\
     \ BASE_, INV_BASE_;\n\n  public:\n    number_theoretic_transform():\n      MAX_POWER_(__builtin_ctz(MAX_SIZE)),\n\
     \      BASE_(MAX_POWER_ + 1),\n      INV_BASE_(MAX_POWER_ + 1)\n    {\n      static_assert((MAX_SIZE\
-    \ & (MAX_SIZE - 1)) == 0, \"MAX_SIZE must be power of 2.\");\n\n      T t = T::pow(PRIM_ROOT,\
-    \ (T::mod() - 1) >> (MAX_POWER_ + 2));\n      T s = t.inv();\n\n      for(int\
-    \ i = MAX_POWER_; --i >= 0;){\n        t *= t;\n        s *= s;\n        BASE_[i]\
-    \ = -t;\n        INV_BASE_[i] = -s;\n      }\n    }\n\n    void run(std::vector<T>\
-    \ &f, bool INVERSE = false) const {\n      const int n = f.size();\n      assert((n\
-    \ & (n - 1)) == 0 and n <= MAX_SIZE); // \u30C7\u30FC\u30BF\u6570\u306F2\u306E\
-    \u51AA\u4E57\u500B\n\n      if(INVERSE){\n        for(int b = 1; b < n; b <<=\
-    \ 1){\n          T w = 1;\n          for(int j = 0, k = 1; j < n; j += 2 * b,\
-    \ ++k){\n            for(int i = 0; i < b; ++i){\n              const auto s =\
-    \ f[i + j];\n              const auto t = f[i + j + b];\n\n              f[i +\
-    \ j] = s + t;\n              f[i + j + b] = (s - t) * w;\n            }\n    \
-    \        w *= INV_BASE_[__builtin_ctz(k)];\n          }\n        }\n\n       \
-    \ const T t = T::inv(n);\n        for(auto &x : f) x *= t;\n      }else{\n   \
-    \     for(int b = n >> 1; b; b >>= 1){\n          T w = 1;\n          for(int\
-    \ j = 0, k = 1; j < n; j += 2 * b, ++k){\n            for(int i = 0; i < b; ++i){\n\
-    \              const auto s = f[i + j];\n              const auto t = f[i + j\
-    \ + b] * w;\n\n              f[i + j] = s + t;\n              f[i + j + b] = s\
-    \ - t;\n            }\n            w *= BASE_[__builtin_ctz(k)];\n          }\n\
-    \        }\n      }\n    }\n\n    template <typename U>\n    std::vector<T> convolve(std::vector<U>\
-    \ f, std::vector<U> g, bool is_same = false) const {\n      const int m = f.size()\
-    \ + g.size() - 1;\n      int n = 1;\n      while(n < m) n *= 2;\n\n      std::vector<T>\
-    \ f2(n);\n      for(int i = 0; i < (int)f.size(); ++i) f2[i] = (int64_t)f[i];\n\
-    \      run(f2);\n\n      if(is_same){\n        for(int i = 0; i < n; ++i) f2[i]\
-    \ *= f2[i];\n        run(f2, true);\n      }else{\n        std::vector<T> g2(n);\n\
-    \        for(int i = 0; i < (int)g.size(); ++i) g2[i] = (int64_t)g[i];\n     \
-    \   run(g2);\n\n        for(int i = 0; i < n; ++i) f2[i] *= g2[i];\n        run(f2,\
-    \ true);\n      }\n\n      return f2;\n    }\n\n    template <typename U>\n  \
-    \  std::vector<T> operator()(std::vector<U> f, std::vector<U> g, bool is_same\
-    \ = false) const {\n      return convolve(f, g, is_same);\n    }\n  };\n\n  template\
-    \ <typename T>\n  std::vector<T> convolve_general_mod(std::vector<T> f, std::vector<T>\
-    \ g){\n    static constexpr int M1 = 167772161, P1 = 3;\n    static constexpr\
-    \ int M2 = 469762049, P2 = 3;\n    static constexpr int M3 = 1224736769, P3 =\
-    \ 3;\n\n    auto res1 = number_theoretic_transform<modint<M1>, P1, 1 << 20>().convolve(f,\
-    \ g);\n    auto res2 = number_theoretic_transform<modint<M2>, P2, 1 << 20>().convolve(f,\
-    \ g);\n    auto res3 = number_theoretic_transform<modint<M3>, P3, 1 << 20>().convolve(f,\
-    \ g);\n\n    const int n = res1.size();\n\n    std::vector<T> ret(n);\n\n    const\
-    \ int64_t M12 = (int64_t)modint<M2>::inv(M1);\n    const int64_t M13 = (int64_t)modint<M3>::inv(M1);\n\
-    \    const int64_t M23 = (int64_t)modint<M3>::inv(M2);\n\n    for(int i = 0; i\
-    \ < n; ++i){\n      const int64_t r[3] = {(int64_t)res1[i], (int64_t)res2[i],\
-    \ (int64_t)res3[i]};\n\n      const int64_t t0 = r[0] % M1;\n      const int64_t\
-    \ t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2 = ((r[2] - t0 + M3)\
-    \ * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0) + T(t1) * M1 + T(t2)\
-    \ * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n"
+    \ & (MAX_SIZE - 1)) == 0, \"MAX_SIZE must be power of 2.\");\n      static_assert((T::mod()\
+    \ - 1) % MAX_SIZE == 0);\n\n      T t = T::pow(PRIM_ROOT, (T::mod() - 1) >> (MAX_POWER_\
+    \ + 2));\n      T s = t.inv();\n\n      for(int i = MAX_POWER_; --i >= 0;){\n\
+    \        t *= t;\n        s *= s;\n        BASE_[i] = -t;\n        INV_BASE_[i]\
+    \ = -s;\n      }\n    }\n\n    void run(std::vector<T> &f, bool INVERSE = false)\
+    \ const {\n      const int n = f.size();\n      assert((n & (n - 1)) == 0 and\
+    \ n <= MAX_SIZE); // \u30C7\u30FC\u30BF\u6570\u306F2\u306E\u51AA\u4E57\u500B\n\
+    \n      if(INVERSE){\n        for(int b = 1; b < n; b <<= 1){\n          T w =\
+    \ 1;\n          for(int j = 0, k = 1; j < n; j += 2 * b, ++k){\n            for(int\
+    \ i = 0; i < b; ++i){\n              const auto s = f[i + j];\n              const\
+    \ auto t = f[i + j + b];\n\n              f[i + j] = s + t;\n              f[i\
+    \ + j + b] = (s - t) * w;\n            }\n            w *= INV_BASE_[__builtin_ctz(k)];\n\
+    \          }\n        }\n\n        const T t = T::inv(n);\n        for(auto &x\
+    \ : f) x *= t;\n      }else{\n        for(int b = n >> 1; b; b >>= 1){\n     \
+    \     T w = 1;\n          for(int j = 0, k = 1; j < n; j += 2 * b, ++k){\n   \
+    \         for(int i = 0; i < b; ++i){\n              const auto s = f[i + j];\n\
+    \              const auto t = f[i + j + b] * w;\n\n              f[i + j] = s\
+    \ + t;\n              f[i + j + b] = s - t;\n            }\n            w *= BASE_[__builtin_ctz(k)];\n\
+    \          }\n        }\n      }\n    }\n\n    template <typename U>\n    std::vector<T>\
+    \ convolve(std::vector<U> f, std::vector<U> g, bool is_same = false) const {\n\
+    \      const int m = f.size() + g.size() - 1;\n      int n = 1;\n      while(n\
+    \ < m) n *= 2;\n\n      std::vector<T> f2(n);\n      for(int i = 0; i < (int)f.size();\
+    \ ++i) f2[i] = (int64_t)f[i];\n      run(f2);\n\n      if(is_same){\n        for(int\
+    \ i = 0; i < n; ++i) f2[i] *= f2[i];\n        run(f2, true);\n      }else{\n \
+    \       std::vector<T> g2(n);\n        for(int i = 0; i < (int)g.size(); ++i)\
+    \ g2[i] = (int64_t)g[i];\n        run(g2);\n\n        for(int i = 0; i < n; ++i)\
+    \ f2[i] *= g2[i];\n        run(f2, true);\n      }\n\n      return f2;\n    }\n\
+    \n    template <typename U>\n    std::vector<T> operator()(std::vector<U> f, std::vector<U>\
+    \ g, bool is_same = false) const {\n      return convolve(f, g, is_same);\n  \
+    \  }\n  };\n\n  template <typename T>\n  std::vector<T> convolve_general_mod(std::vector<T>\
+    \ f, std::vector<T> g){\n    static constexpr int M1 = 167772161, P1 = 3;\n  \
+    \  static constexpr int M2 = 469762049, P2 = 3;\n    static constexpr int M3 =\
+    \ 1224736769, P3 = 3;\n\n    auto res1 = number_theoretic_transform<modint<M1>,\
+    \ P1, 1 << 20>().convolve(f, g);\n    auto res2 = number_theoretic_transform<modint<M2>,\
+    \ P2, 1 << 20>().convolve(f, g);\n    auto res3 = number_theoretic_transform<modint<M3>,\
+    \ P3, 1 << 20>().convolve(f, g);\n\n    const int n = res1.size();\n\n    std::vector<T>\
+    \ ret(n);\n\n    const int64_t M12 = (int64_t)modint<M2>::inv(M1);\n    const\
+    \ int64_t M13 = (int64_t)modint<M3>::inv(M1);\n    const int64_t M23 = (int64_t)modint<M3>::inv(M2);\n\
+    \n    for(int i = 0; i < n; ++i){\n      const int64_t r[3] = {(int64_t)res1[i],\
+    \ (int64_t)res2[i], (int64_t)res3[i]};\n\n      const int64_t t0 = r[0] % M1;\n\
+    \      const int64_t t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2\
+    \ = ((r[2] - t0 + M3) * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0)\
+    \ + T(t1) * M1 + T(t2) * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n"
   code: "#pragma once\n#include <vector>\n#include <cassert>\n#include <utility>\n\
     #include <algorithm>\n#include \"Mylib/Number/Mint/mint.cpp\"\n\nnamespace haar_lib\
     \ {\n  template <typename T, int PRIM_ROOT, int MAX_SIZE>\n  class number_theoretic_transform\
@@ -163,56 +163,56 @@ data:
     \    const int MAX_POWER_;\n    std::vector<T> BASE_, INV_BASE_;\n\n  public:\n\
     \    number_theoretic_transform():\n      MAX_POWER_(__builtin_ctz(MAX_SIZE)),\n\
     \      BASE_(MAX_POWER_ + 1),\n      INV_BASE_(MAX_POWER_ + 1)\n    {\n      static_assert((MAX_SIZE\
-    \ & (MAX_SIZE - 1)) == 0, \"MAX_SIZE must be power of 2.\");\n\n      T t = T::pow(PRIM_ROOT,\
-    \ (T::mod() - 1) >> (MAX_POWER_ + 2));\n      T s = t.inv();\n\n      for(int\
-    \ i = MAX_POWER_; --i >= 0;){\n        t *= t;\n        s *= s;\n        BASE_[i]\
-    \ = -t;\n        INV_BASE_[i] = -s;\n      }\n    }\n\n    void run(std::vector<T>\
-    \ &f, bool INVERSE = false) const {\n      const int n = f.size();\n      assert((n\
-    \ & (n - 1)) == 0 and n <= MAX_SIZE); // \u30C7\u30FC\u30BF\u6570\u306F2\u306E\
-    \u51AA\u4E57\u500B\n\n      if(INVERSE){\n        for(int b = 1; b < n; b <<=\
-    \ 1){\n          T w = 1;\n          for(int j = 0, k = 1; j < n; j += 2 * b,\
-    \ ++k){\n            for(int i = 0; i < b; ++i){\n              const auto s =\
-    \ f[i + j];\n              const auto t = f[i + j + b];\n\n              f[i +\
-    \ j] = s + t;\n              f[i + j + b] = (s - t) * w;\n            }\n    \
-    \        w *= INV_BASE_[__builtin_ctz(k)];\n          }\n        }\n\n       \
-    \ const T t = T::inv(n);\n        for(auto &x : f) x *= t;\n      }else{\n   \
-    \     for(int b = n >> 1; b; b >>= 1){\n          T w = 1;\n          for(int\
-    \ j = 0, k = 1; j < n; j += 2 * b, ++k){\n            for(int i = 0; i < b; ++i){\n\
-    \              const auto s = f[i + j];\n              const auto t = f[i + j\
-    \ + b] * w;\n\n              f[i + j] = s + t;\n              f[i + j + b] = s\
-    \ - t;\n            }\n            w *= BASE_[__builtin_ctz(k)];\n          }\n\
-    \        }\n      }\n    }\n\n    template <typename U>\n    std::vector<T> convolve(std::vector<U>\
-    \ f, std::vector<U> g, bool is_same = false) const {\n      const int m = f.size()\
-    \ + g.size() - 1;\n      int n = 1;\n      while(n < m) n *= 2;\n\n      std::vector<T>\
-    \ f2(n);\n      for(int i = 0; i < (int)f.size(); ++i) f2[i] = (int64_t)f[i];\n\
-    \      run(f2);\n\n      if(is_same){\n        for(int i = 0; i < n; ++i) f2[i]\
-    \ *= f2[i];\n        run(f2, true);\n      }else{\n        std::vector<T> g2(n);\n\
-    \        for(int i = 0; i < (int)g.size(); ++i) g2[i] = (int64_t)g[i];\n     \
-    \   run(g2);\n\n        for(int i = 0; i < n; ++i) f2[i] *= g2[i];\n        run(f2,\
-    \ true);\n      }\n\n      return f2;\n    }\n\n    template <typename U>\n  \
-    \  std::vector<T> operator()(std::vector<U> f, std::vector<U> g, bool is_same\
-    \ = false) const {\n      return convolve(f, g, is_same);\n    }\n  };\n\n  template\
-    \ <typename T>\n  std::vector<T> convolve_general_mod(std::vector<T> f, std::vector<T>\
-    \ g){\n    static constexpr int M1 = 167772161, P1 = 3;\n    static constexpr\
-    \ int M2 = 469762049, P2 = 3;\n    static constexpr int M3 = 1224736769, P3 =\
-    \ 3;\n\n    auto res1 = number_theoretic_transform<modint<M1>, P1, 1 << 20>().convolve(f,\
-    \ g);\n    auto res2 = number_theoretic_transform<modint<M2>, P2, 1 << 20>().convolve(f,\
-    \ g);\n    auto res3 = number_theoretic_transform<modint<M3>, P3, 1 << 20>().convolve(f,\
-    \ g);\n\n    const int n = res1.size();\n\n    std::vector<T> ret(n);\n\n    const\
-    \ int64_t M12 = (int64_t)modint<M2>::inv(M1);\n    const int64_t M13 = (int64_t)modint<M3>::inv(M1);\n\
-    \    const int64_t M23 = (int64_t)modint<M3>::inv(M2);\n\n    for(int i = 0; i\
-    \ < n; ++i){\n      const int64_t r[3] = {(int64_t)res1[i], (int64_t)res2[i],\
-    \ (int64_t)res3[i]};\n\n      const int64_t t0 = r[0] % M1;\n      const int64_t\
-    \ t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2 = ((r[2] - t0 + M3)\
-    \ * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0) + T(t1) * M1 + T(t2)\
-    \ * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n"
+    \ & (MAX_SIZE - 1)) == 0, \"MAX_SIZE must be power of 2.\");\n      static_assert((T::mod()\
+    \ - 1) % MAX_SIZE == 0);\n\n      T t = T::pow(PRIM_ROOT, (T::mod() - 1) >> (MAX_POWER_\
+    \ + 2));\n      T s = t.inv();\n\n      for(int i = MAX_POWER_; --i >= 0;){\n\
+    \        t *= t;\n        s *= s;\n        BASE_[i] = -t;\n        INV_BASE_[i]\
+    \ = -s;\n      }\n    }\n\n    void run(std::vector<T> &f, bool INVERSE = false)\
+    \ const {\n      const int n = f.size();\n      assert((n & (n - 1)) == 0 and\
+    \ n <= MAX_SIZE); // \u30C7\u30FC\u30BF\u6570\u306F2\u306E\u51AA\u4E57\u500B\n\
+    \n      if(INVERSE){\n        for(int b = 1; b < n; b <<= 1){\n          T w =\
+    \ 1;\n          for(int j = 0, k = 1; j < n; j += 2 * b, ++k){\n            for(int\
+    \ i = 0; i < b; ++i){\n              const auto s = f[i + j];\n              const\
+    \ auto t = f[i + j + b];\n\n              f[i + j] = s + t;\n              f[i\
+    \ + j + b] = (s - t) * w;\n            }\n            w *= INV_BASE_[__builtin_ctz(k)];\n\
+    \          }\n        }\n\n        const T t = T::inv(n);\n        for(auto &x\
+    \ : f) x *= t;\n      }else{\n        for(int b = n >> 1; b; b >>= 1){\n     \
+    \     T w = 1;\n          for(int j = 0, k = 1; j < n; j += 2 * b, ++k){\n   \
+    \         for(int i = 0; i < b; ++i){\n              const auto s = f[i + j];\n\
+    \              const auto t = f[i + j + b] * w;\n\n              f[i + j] = s\
+    \ + t;\n              f[i + j + b] = s - t;\n            }\n            w *= BASE_[__builtin_ctz(k)];\n\
+    \          }\n        }\n      }\n    }\n\n    template <typename U>\n    std::vector<T>\
+    \ convolve(std::vector<U> f, std::vector<U> g, bool is_same = false) const {\n\
+    \      const int m = f.size() + g.size() - 1;\n      int n = 1;\n      while(n\
+    \ < m) n *= 2;\n\n      std::vector<T> f2(n);\n      for(int i = 0; i < (int)f.size();\
+    \ ++i) f2[i] = (int64_t)f[i];\n      run(f2);\n\n      if(is_same){\n        for(int\
+    \ i = 0; i < n; ++i) f2[i] *= f2[i];\n        run(f2, true);\n      }else{\n \
+    \       std::vector<T> g2(n);\n        for(int i = 0; i < (int)g.size(); ++i)\
+    \ g2[i] = (int64_t)g[i];\n        run(g2);\n\n        for(int i = 0; i < n; ++i)\
+    \ f2[i] *= g2[i];\n        run(f2, true);\n      }\n\n      return f2;\n    }\n\
+    \n    template <typename U>\n    std::vector<T> operator()(std::vector<U> f, std::vector<U>\
+    \ g, bool is_same = false) const {\n      return convolve(f, g, is_same);\n  \
+    \  }\n  };\n\n  template <typename T>\n  std::vector<T> convolve_general_mod(std::vector<T>\
+    \ f, std::vector<T> g){\n    static constexpr int M1 = 167772161, P1 = 3;\n  \
+    \  static constexpr int M2 = 469762049, P2 = 3;\n    static constexpr int M3 =\
+    \ 1224736769, P3 = 3;\n\n    auto res1 = number_theoretic_transform<modint<M1>,\
+    \ P1, 1 << 20>().convolve(f, g);\n    auto res2 = number_theoretic_transform<modint<M2>,\
+    \ P2, 1 << 20>().convolve(f, g);\n    auto res3 = number_theoretic_transform<modint<M3>,\
+    \ P3, 1 << 20>().convolve(f, g);\n\n    const int n = res1.size();\n\n    std::vector<T>\
+    \ ret(n);\n\n    const int64_t M12 = (int64_t)modint<M2>::inv(M1);\n    const\
+    \ int64_t M13 = (int64_t)modint<M3>::inv(M1);\n    const int64_t M23 = (int64_t)modint<M3>::inv(M2);\n\
+    \n    for(int i = 0; i < n; ++i){\n      const int64_t r[3] = {(int64_t)res1[i],\
+    \ (int64_t)res2[i], (int64_t)res3[i]};\n\n      const int64_t t0 = r[0] % M1;\n\
+    \      const int64_t t1 = (r[1] - t0 + M2) * M12 % M2;\n      const int64_t t2\
+    \ = ((r[2] - t0 + M3) * M13 % M3 - t1 + M3) * M23 % M3;\n\n      ret[i] = T(t0)\
+    \ + T(t1) * M1 + T(t2) * M1 * M2;\n    }\n\n    return ret;\n  }\n}\n"
   dependsOn:
   - Mylib/Number/Mint/mint.cpp
   isVerificationFile: false
   path: Mylib/Convolution/ntt_convolution.cpp
   requiredBy: []
-  timestamp: '2021-02-17 18:32:23+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-04-03 11:02:40+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yukicoder/931/main.test.cpp
   - test/yosupo-judge/log_of_formal_power_series/main.test.cpp
