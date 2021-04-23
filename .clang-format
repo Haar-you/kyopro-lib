@@ -1,0 +1,15 @@
+BasedOnStyle: "Google"
+AccessModifierOffset: -2
+AlignConsecutiveAssignments: true
+AlignTrailingComments: true
+AllowShortBlocksOnASingleLine: true
+AllowShortCaseLabelsOnASingleLine: true
+AlwaysBreakTemplateDeclarations: true
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+Cpp11BracedListStyle: true
+NamespaceIndentation: "All"
+SpaceAfterCStyleCast: true
+SpaceAfterTemplateKeyword: true
+IndentWidth: 2
+Standard: "Cpp11"
+ColumnLimit: 0
