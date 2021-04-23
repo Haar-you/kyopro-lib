@@ -5,13 +5,14 @@
 
 namespace hl = haar_lib;
 
-int main(){
-  int a, b, c; std::cin >> a >> b >> c;
+int main() {
+  int a, b, c;
+  std::cin >> a >> b >> c;
 
   int ans = 0;
 
-  for(auto d : hl::enumerate_divisors(c)){
-    if(a <= d and d <= b) ++ans;
+  for (auto d : hl::enumerate_divisors(c)) {
+    if (a <= d and d <= b) ++ans;
   }
 
   std::cout << ans << std::endl;

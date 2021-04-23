@@ -2,33 +2,34 @@
 
 #include <iostream>
 #include <variant>
-#include "Mylib/IO/input_vector.cpp"
-#include "Mylib/IO/input_tuples.cpp"
 #include "Mylib/AlgebraicStructure/Group/dihedral.cpp"
 #include "Mylib/DataStructure/SegmentTree/segment_tree.cpp"
+#include "Mylib/IO/input_tuples.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 namespace hl = haar_lib;
 
 static int K;
 using M = hl::dihedral_group<K>;
 
-int main(){
-  int N, Q; std::cin >> K >> N >> Q;
+int main() {
+  int N, Q;
+  std::cin >> K >> N >> Q;
   auto A = hl::input_vector<int>(N);
 
   hl::segment_tree<M> seg(N);
 
-  for(int i = 0; i < N; ++i){
-    if(A[i] > 0){
+  for (int i = 0; i < N; ++i) {
+    if (A[i] > 0) {
       seg.set(i, M::R({A[i] % K}));
-    }else if(A[i] < 0){
+    } else if (A[i] < 0) {
       seg.set(i, M::R({A[i] % K + K}));
-    }else{
+    } else {
       seg.set(i, M::S({0}));
     }
   }
 
-  for(auto [L, R] : hl::input_tuples<int, int>(Q)){
+  for (auto [L, R] : hl::input_tuples<int, int>(Q)) {
     --L, --R;
 
     auto x = seg[L];
@@ -38,10 +39,10 @@ int main(){
 
     auto res = seg.fold_all();
 
-    if(std::holds_alternative<M::R>(res)){
+    if (std::holds_alternative<M::R>(res)) {
       int ans = (K - std::get<M::R>(res).value) % K + 1;
       std::cout << ans << "\n";
-    }else{
+    } else {
       int ans = -(std::get<M::S>(res).value + 1);
       std::cout << ans << "\n";
     }

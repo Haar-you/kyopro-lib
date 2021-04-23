@@ -1,33 +1,33 @@
 #pragma once
+#include <functional>
 #include <iostream>
 #include <string>
-#include <functional>
 #include <vector>
 
 template <typename C>
-void grid_viewer([[maybe_unused]] const C &A, [[maybe_unused]] int width = 10){
+void grid_viewer([[maybe_unused]] const C &A, [[maybe_unused]] int width = 10) {
 #ifdef DEBUG
   const int H = A.size();
   const int W = A[0].size();
 
   std::cerr << "    ";
-  for(int j = 0; j < W; ++j){
+  for (int j = 0; j < W; ++j) {
     std::cerr << "\e[1;32m" << std::left << std::setw(width) << j << "\e[m";
   }
   std::cerr << "\n";
   std::cerr << std::right;
 
-  for(int i = 0; i < H; ++i){
+  for (int i = 0; i < H; ++i) {
     std::cerr << "\e[1;32m" << std::setw(2) << i << "|\e[m ";
 
-    for(int j = 0; j < W; ++j){
+    for (int j = 0; j < W; ++j) {
       std::stringstream ss;
       ss << A[i][j];
       auto s = ss.str();
-      if(s.size() > width){
+      if (s.size() > width) {
         s.resize(width);
-      }else{
-        while(s.size() < width) s.push_back(' ');
+      } else {
+        while (s.size() < width) s.push_back(' ');
       }
 
       std::cerr << s << "";

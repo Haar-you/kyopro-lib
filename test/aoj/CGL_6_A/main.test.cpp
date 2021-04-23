@@ -7,13 +7,14 @@
 
 namespace hl = haar_lib;
 
-int main(){
+int main() {
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  int n; std::cin >> n;
+  int n;
+  std::cin >> n;
   std::vector<hl::segment<int>> s(n);
-  for(int i = 0; i < n; ++i){
+  for (int i = 0; i < n; ++i) {
     std::cin >> s[i].from >> s[i].to;
   }
 

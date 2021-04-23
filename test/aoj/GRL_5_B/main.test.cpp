@@ -6,15 +6,16 @@
 
 namespace hl = haar_lib;
 
-int main(){
-  int n; std::cin >> n;
+int main() {
+  int n;
+  std::cin >> n;
 
   hl::tree<int> tree(n);
   tree.read<0, false>(n - 1);
 
   auto ans = hl::tree_height(tree);
 
-  for(auto x : ans) std::cout << x << std::endl;
+  for (auto x : ans) std::cout << x << std::endl;
 
   return 0;
 }

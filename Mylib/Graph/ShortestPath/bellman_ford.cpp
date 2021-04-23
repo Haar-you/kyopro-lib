@@ -1,13 +1,13 @@
 #pragma once
-#include <vector>
 #include <algorithm>
 #include <cassert>
+#include <vector>
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Math/unbounded.cpp"
 
 namespace haar_lib {
   template <typename T>
-  auto bellman_ford(const graph<T> &g, int src){
+  auto bellman_ford(const graph<T> &g, int src) {
     using type = unbounded<T>;
 
     const int n = g.size();
@@ -15,21 +15,21 @@ namespace haar_lib {
 
     dist[src] = 0;
 
-    for(int i = 0; i < n; ++i){
-      for(int s = 0; s < n; ++s){
-        for(auto &e : g[s]){
+    for (int i = 0; i < n; ++i) {
+      for (int s = 0; s < n; ++s) {
+        for (auto &e : g[s]) {
           int t = e.to;
-          T d = e.cost;
+          T d   = e.cost;
 
-          if(dist[s].is_finite() and
-             dist[t].is_finite() and
-             dist[s].value() + d < dist[t].value() and i == n - 1){
+          if (dist[s].is_finite() and
+              dist[t].is_finite() and
+              dist[s].value() + d < dist[t].value() and i == n - 1) {
             dist[t] = type::negative_inf();
-          }else{
-            if(dist[s].is_finite()){
-              if(dist[t].is_positive_inf()){
+          } else {
+            if (dist[s].is_finite()) {
+              if (dist[t].is_positive_inf()) {
                 dist[t] = dist[s].value() + d;
-              }else if(dist[t].is_finite()){
+              } else if (dist[t].is_finite()) {
                 dist[t] = std::min(dist[t].value(), dist[s].value() + d);
               }
             }
@@ -38,10 +38,10 @@ namespace haar_lib {
       }
     }
 
-    for(int i = 0; i < n; ++i){
-      for(int s = 0; s < n; ++s){
-        for(auto &e : g[s]){
-          if(dist[s].is_negative_inf()){
+    for (int i = 0; i < n; ++i) {
+      for (int s = 0; s < n; ++s) {
+        for (auto &e : g[s]) {
+          if (dist[s].is_negative_inf()) {
             dist[e.to] = type::negative_inf();
           }
         }
@@ -50,4 +50,4 @@ namespace haar_lib {
 
     return dist;
   }
-}
+}  // namespace haar_lib

@@ -5,8 +5,9 @@
 
 namespace hl = haar_lib;
 
-int main(){
-  int a, b; std::cin >> a >> b;
+int main() {
+  int a, b;
+  std::cin >> a >> b;
 
   int x, y;
   std::tie(std::ignore, x, y) = hl::ext_gcd(a, b);

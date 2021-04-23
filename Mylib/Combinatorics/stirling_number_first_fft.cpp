@@ -1,19 +1,19 @@
 #pragma once
-#include <vector>
 #include <algorithm>
+#include <vector>
 #include "Mylib/Math/polynomial_taylor_shift.cpp"
 
 namespace haar_lib {
   template <typename T, const auto &convolve>
-  std::vector<T> stirling_number_of_first_kind_fft(int N){
-    if(N == 0) return {1};
+  std::vector<T> stirling_number_of_first_kind_fft(int N) {
+    if (N == 0) return {1};
 
     std::vector<int> p;
     {
       int a = N;
 
-      while(a > 0){
-        if(a & 1) p.push_back(1);
+      while (a > 0) {
+        if (a & 1) p.push_back(1);
         p.push_back(2);
         a >>= 1;
       }
@@ -23,15 +23,15 @@ namespace haar_lib {
 
     std::reverse(p.begin(), p.end());
     int t = 0;
-    for(int x : p){
-      if(x == 1){
+    for (int x : p) {
+      if (x == 1) {
         std::vector<T> a = {-t, 1};
-        ret = convolve(ret, a);
+        ret              = convolve(ret, a);
 
         t += 1;
-      }else{
+      } else {
         auto s = polynomial_taylor_shift<T, convolve>(ret, -t);
-        ret = convolve(ret, s);
+        ret    = convolve(ret, s);
         ret.resize(t * 2 + 1);
 
         t *= 2;
@@ -42,4 +42,4 @@ namespace haar_lib {
 
     return ret;
   }
-}
+}  // namespace haar_lib

@@ -1,7 +1,7 @@
 #pragma once
-#include <vector>
-#include <initializer_list>
 #include <algorithm>
+#include <initializer_list>
+#include <vector>
 
 namespace haar_lib {
   template <typename T, const auto &convolve>
@@ -13,57 +13,57 @@ namespace haar_lib {
     std::vector<T> data_;
 
   public:
-    explicit polynomial(int N): data_(N){}
-    polynomial(std::vector<T> data): data_(data){}
-    polynomial(std::initializer_list<T> data): data_(data.begin(), data.end()){}
+    explicit polynomial(int N) : data_(N) {}
+    polynomial(std::vector<T> data) : data_(data) {}
+    polynomial(std::initializer_list<T> data) : data_(data.begin(), data.end()) {}
 
-    auto& data(){return data_;}
-    const auto& data() const {return data_;}
-    size_t size() const {return data_.size();}
-    auto begin(){return data_.begin();}
-    auto end(){return data_.end();}
+    auto &data() { return data_; }
+    const auto &data() const { return data_; }
+    size_t size() const { return data_.size(); }
+    auto begin() { return data_.begin(); }
+    auto end() { return data_.end(); }
 
-    const auto& operator[](size_t i) const {return data_[i];}
-    auto& operator[](size_t i){return data_[i];}
+    const auto &operator[](size_t i) const { return data_[i]; }
+    auto &operator[](size_t i) { return data_[i]; }
 
-    void resize(size_t n){data_.resize(n);}
+    void resize(size_t n) { data_.resize(n); }
 
     auto get(int n) const {
       return polynomial(std::vector(data_.begin(), data_.begin() + std::min<int>(n, data_.size())));
     }
 
-    int shrink(){
-      while(not data_.empty() and data_.back() == 0){
+    int shrink() {
+      while (not data_.empty() and data_.back() == 0) {
         data_.pop_back();
       }
       return data_.size();
     }
 
-    auto& operator+=(const polynomial &that){
-      if(data_.size() < that.data_.size()) data_.resize(that.data_.size());
-      for(size_t i = 0; i < that.data_.size(); ++i) data_[i] += that.data_[i];
+    auto &operator+=(const polynomial &that) {
+      if (data_.size() < that.data_.size()) data_.resize(that.data_.size());
+      for (size_t i = 0; i < that.data_.size(); ++i) data_[i] += that.data_[i];
       return *this;
     }
 
-    auto& operator-=(const polynomial &that){
-      if(data_.size() < that.data_.size()) data_.resize(that.data_.size());
-      for(size_t i = 0; i < that.data_.size(); ++i) data_[i] -= that.data_[i];
+    auto &operator-=(const polynomial &that) {
+      if (data_.size() < that.data_.size()) data_.resize(that.data_.size());
+      for (size_t i = 0; i < that.data_.size(); ++i) data_[i] -= that.data_[i];
       return *this;
     }
 
-    auto& operator*=(T k){
-      for(auto &x : data_) x *= k;
+    auto &operator*=(T k) {
+      for (auto &x : data_) x *= k;
       return *this;
     }
 
-    auto& operator/=(T k){
-      for(auto &x : data_) x /= k;
+    auto &operator/=(T k) {
+      for (auto &x : data_) x /= k;
       return *this;
     }
 
-    auto& operator*=(const polynomial &that){
+    auto &operator*=(const polynomial &that) {
       const int k = data_.size() + that.data_.size() - 1;
-      data_ = convolve(data_, that.data_);
+      data_       = convolve(data_, that.data_);
       data_.resize(k);
       return *this;
     }
@@ -89,16 +89,16 @@ namespace haar_lib {
     }
 
     auto differentiate() const {
-      polynomial ret((int)data_.size() - 1);
-      for(int i = 0; i < (int)ret.data_.size(); ++i){
+      polynomial ret((int) data_.size() - 1);
+      for (int i = 0; i < (int) ret.data_.size(); ++i) {
         ret.data_[i] = data_[i + 1] * (i + 1);
       }
       return ret;
     }
 
     auto integrate() const {
-      polynomial ret((int)data_.size() + 1);
-      for(int i = 1; i < (int)ret.data_.size(); ++i){
+      polynomial ret((int) data_.size() + 1);
+      for (int i = 1; i < (int) ret.data_.size(); ++i) {
         ret.data_[i] = data_[i - 1] / i;
       }
 
@@ -107,7 +107,7 @@ namespace haar_lib {
 
     auto integrate(T lb, T ub) const {
       T ret = 0, x1 = 1, x2 = 1;
-      for(int i = 0; i < (int)data_.size(); ++i){
+      for (int i = 0; i < (int) data_.size(); ++i) {
         x1 *= lb;
         x2 *= ub;
         ret += data_[i] / (i + 1) * (x2 - x1);
@@ -117,8 +117,8 @@ namespace haar_lib {
     }
 
     auto shift(int k) const {
-      polynomial ret((int)data_.size() + k);
-      for(int i = 0; i < (int)data_.size(); ++i){
+      polynomial ret((int) data_.size() + k);
+      for (int i = 0; i < (int) data_.size(); ++i) {
         ret.data_[i + k] = data_[i];
       }
 
@@ -127,7 +127,7 @@ namespace haar_lib {
 
     auto square() const {
       const int k = data_.size() * 2 - 1;
-      auto ret = convolve(data_, data_, true);
+      auto ret    = convolve(data_, data_, true);
       ret.resize(k);
       return polynomial(ret);
     }
@@ -136,9 +136,9 @@ namespace haar_lib {
       polynomial ret({data_[0].inv()});
       int t = 1;
 
-      while(t <= n * 2){
+      while (t <= n * 2) {
         ret = ret * T(2) - ret.square().get(t) * (*this).get(t);
-        if((int)ret.data_.size() > t) ret.data_.resize(t);
+        if ((int) ret.data_.size() > t) ret.data_.resize(t);
         t *= 2;
       }
 
@@ -146,15 +146,15 @@ namespace haar_lib {
     }
 
     std::pair<polynomial, polynomial> divmod(const polynomial &that) const {
-      if(data_.size() < that.size()) return {{0}, *this};
+      if (data_.size() < that.size()) return {{0}, *this};
 
       const int m = data_.size() - that.size();
 
       auto g = *this;
       std::reverse(g.begin(), g.end());
 
-      auto f = that;
-      const int d = (int)that.size() - 1;
+      auto f      = that;
+      const int d = (int) that.size() - 1;
       std::reverse(f.begin(), f.end());
 
       f = f.inv(m);
@@ -175,12 +175,12 @@ namespace haar_lib {
       return {q, r};
     }
 
-    auto& operator/=(const polynomial &that){
+    auto &operator/=(const polynomial &that) {
       *this = divmod(that).first;
       return *this;
     }
 
-    auto& operator%=(const polynomial &that){
+    auto &operator%=(const polynomial &that) {
       *this = divmod(that).second;
       return *this;
     }
@@ -193,4 +193,4 @@ namespace haar_lib {
       return polynomial(*this) %= that;
     }
   };
-}
+}  // namespace haar_lib

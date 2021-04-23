@@ -1,8 +1,8 @@
 #pragma once
-#include <vector>
+#include <bitset>
 #include <optional>
 #include <utility>
-#include <bitset>
+#include <vector>
 
 namespace haar_lib {
   namespace binary_simultaneous_linear_equations_impl {
@@ -11,31 +11,31 @@ namespace haar_lib {
       int rank, dim;
       std::vector<bool> solution;
     };
-  }
+  }  // namespace binary_simultaneous_linear_equations_impl
 
   template <size_t N>
-  auto binary_simultaneous_linear_equations(std::vector<std::bitset<N>> a, std::vector<bool> b){
+  auto binary_simultaneous_linear_equations(std::vector<std::bitset<N>> a, std::vector<bool> b) {
     using result = binary_simultaneous_linear_equations_impl::result<N>;
     std::optional<result> ret;
 
     const int n = a.size(), m = N;
     int rank = 0;
 
-    for(int j = 0; j < m; ++j){
+    for (int j = 0; j < m; ++j) {
       int pivot = -1;
-      for(int i = rank; i < n; ++i){
-        if(a[i][j]){
+      for (int i = rank; i < n; ++i) {
+        if (a[i][j]) {
           pivot = i;
           break;
         }
       }
 
-      if(pivot == -1) continue;
+      if (pivot == -1) continue;
       std::swap(a[pivot], a[rank]);
       swap(b[pivot], b[rank]);
 
-      for(int i = 0; i < n; ++i){
-        if(i != rank and a[i][j]){
+      for (int i = 0; i < n; ++i) {
+        if (i != rank and a[i][j]) {
           a[i] ^= a[rank];
           b[i] = b[i] ^ b[rank];
         }
@@ -44,8 +44,8 @@ namespace haar_lib {
       ++rank;
     }
 
-    for(int i = rank; i < n; ++i){
-      if(b[i]){
+    for (int i = rank; i < n; ++i) {
+      if (b[i]) {
         return ret;
       }
     }
@@ -53,9 +53,9 @@ namespace haar_lib {
     const int dim = m - rank;
 
     std::vector<bool> solution(m);
-    for(int i = 0; i < rank; ++i) solution[i] = b[i];
+    for (int i = 0; i < rank; ++i) solution[i] = b[i];
 
     ret = result({rank, dim, solution});
     return ret;
   }
-}
+}  // namespace haar_lib

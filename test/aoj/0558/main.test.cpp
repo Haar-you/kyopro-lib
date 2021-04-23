@@ -9,11 +9,12 @@
 
 namespace hl = haar_lib;
 
-int main(){
+int main() {
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  int H, W, N; std::cin >> H >> W >> N;
+  int H, W, N;
+  std::cin >> H >> W >> N;
 
   auto s = hl::input_vector<std::string>(H);
 
@@ -21,20 +22,19 @@ int main(){
 
   ps[0] = hl::grid_find(s, 'S')[0];
 
-  for(int i = 1; i <= N; ++i) ps[i] = hl::grid_find(s, (char)('0' + i))[0];
+  for (int i = 1; i <= N; ++i) ps[i] = hl::grid_find(s, (char) ('0' + i))[0];
 
   int ans = 0;
-  for(int i = 0; i < N; ++i){
+  for (int i = 0; i < N; ++i) {
     auto dist =
-      hl::grid_bfs(
-        H,
-        W,
-        {ps[i]},
-        hl::dir4,
-        [&](const auto &, const auto &p){
-          return s[p.x][p.y] != 'X';
-        }
-      );
+        hl::grid_bfs(
+            H,
+            W,
+            {ps[i]},
+            hl::dir4,
+            [&](const auto &, const auto &p) {
+              return s[p.x][p.y] != 'X';
+            });
 
     ans += *dist[ps[i + 1].x][ps[i + 1].y];
   }

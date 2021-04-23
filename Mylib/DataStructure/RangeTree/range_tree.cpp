@@ -1,8 +1,8 @@
 #pragma once
-#include <vector>
-#include <utility>
 #include <algorithm>
 #include <iterator>
+#include <utility>
+#include <vector>
 
 namespace haar_lib {
   class range_tree {
@@ -26,14 +26,14 @@ namespace haar_lib {
       L += size_ / 2;
       R += size_ / 2;
 
-      while(L < R){
-        if(R & 1){
+      while (L < R) {
+        if (R & 1) {
           auto &a = data_[--R];
 
           auto it = std::lower_bound(a.begin(), a.end(), std::make_pair(sy, 0));
 
-          while(it != a.end()){
-            if(it->first >= ty) break;
+          while (it != a.end()) {
+            if (it->first >= ty) break;
 
             ret.emplace_back(c_xs_[it->second], it->first);
 
@@ -41,13 +41,13 @@ namespace haar_lib {
           }
         }
 
-        if(L & 1){
+        if (L & 1) {
           auto &a = data_[L++];
 
           auto it = std::lower_bound(a.begin(), a.end(), std::make_pair(sy, 0));
 
-          while(it != a.end()){
-            if(it->first >= ty) break;
+          while (it != a.end()) {
+            if (it->first >= ty) break;
 
             ret.emplace_back(c_xs_[it->second], it->first);
 
@@ -68,9 +68,9 @@ namespace haar_lib {
     std::vector<int64_t> xs_, ys_;
 
   public:
-    range_tree_builder(){}
+    range_tree_builder() {}
 
-    void add(int64_t x, int64_t y){
+    void add(int64_t x, int64_t y) {
       ++N_;
       xs_.push_back(x);
       ys_.push_back(y);
@@ -82,21 +82,21 @@ namespace haar_lib {
       std::sort(ret.c_xs_.begin(), ret.c_xs_.end());
       ret.c_xs_.erase(std::unique(ret.c_xs_.begin(), ret.c_xs_.end()), ret.c_xs_.end());
 
-      int M = ret.c_xs_.size();
+      int M     = ret.c_xs_.size();
       ret.size_ = 1 << (M > 1 ? 32 - __builtin_clz(M - 1) + 1 : 1);
 
       ret.data_.resize(ret.size_);
 
-      for(int i = 0; i < N_; ++i){
+      for (int i = 0; i < N_; ++i) {
         int j = std::lower_bound(ret.c_xs_.begin(), ret.c_xs_.end(), xs_[i]) - ret.c_xs_.begin();
         ret.data_[ret.size_ / 2 + j].emplace_back(ys_[i], j);
       }
 
-      for(int i = ret.size_ / 2; i < ret.size_; ++i){
+      for (int i = ret.size_ / 2; i < ret.size_; ++i) {
         std::sort(ret.data_[i].begin(), ret.data_[i].end());
       }
 
-      for(int i = ret.size_ / 2 - 1; i > 0; --i){
+      for (int i = ret.size_ / 2 - 1; i > 0; --i) {
         auto &a = ret.data_[i << 1 | 0];
         auto &b = ret.data_[i << 1 | 1];
 
@@ -106,4 +106,4 @@ namespace haar_lib {
       return ret;
     }
   };
-}
+}  // namespace haar_lib

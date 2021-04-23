@@ -1,15 +1,16 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D"
 
+#include <functional>
 #include <iostream>
 #include <vector>
-#include <functional>
-#include "Mylib/Typical/inversion_number.cpp"
 #include "Mylib/IO/input_vector.cpp"
+#include "Mylib/Typical/inversion_number.cpp"
 
 namespace hl = haar_lib;
 
-int main(){
-  int n; std::cin >> n;
+int main() {
+  int n;
+  std::cin >> n;
 
   auto a = hl::input_vector<int>(n);
 

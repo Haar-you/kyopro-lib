@@ -1,6 +1,6 @@
 #pragma once
-#include <utility>
 #include <cstdint>
+#include <utility>
 
 namespace haar_lib {
   namespace with_count_impl {
@@ -8,11 +8,11 @@ namespace haar_lib {
     struct internal_value {
       T value;
       int64_t count;
-      internal_value(): value(T()), count(0){}
-      internal_value(T value): value(value), count(1){}
-      internal_value(T value, int64_t count): value(value), count(count){}
+      internal_value() : value(T()), count(0) {}
+      internal_value(T value) : value(value), count(1) {}
+      internal_value(T value, int64_t count) : value(value), count(count) {}
     };
-  }
+  }  // namespace with_count_impl
 
   template <typename Monoid>
   struct with_count {
@@ -24,9 +24,9 @@ namespace haar_lib {
     }
 
     value_type operator()(const value_type &a, const value_type &b) const {
-      if(a.value == b.value) return {a.value, a.count + b.count};
-      if(M(a.value, b.value) == a.value) return a;
+      if (a.value == b.value) return {a.value, a.count + b.count};
+      if (M(a.value, b.value) == a.value) return a;
       return b;
     }
   };
-}
+}  // namespace haar_lib

@@ -7,11 +7,12 @@
 
 namespace hl = haar_lib;
 
-int main(){
+int main() {
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  int N; std::cin >> N;
+  int N;
+  std::cin >> N;
 
   hl::tree<int64_t> tree(N);
   tree.read<0, false>(N - 1);
@@ -19,8 +20,8 @@ int main(){
   auto [cost, path] = hl::tree_diameter(tree);
 
   std::cout
-    << cost << " " << path.size() << "\n"
-    << hl::join(path.begin(), path.end()) << "\n";
+      << cost << " " << path.size() << "\n"
+      << hl::join(path.begin(), path.end()) << "\n";
 
   return 0;
 }

@@ -1,6 +1,6 @@
 #pragma once
-#include <vector>
 #include <utility>
+#include <vector>
 
 namespace haar_lib {
   class rollbackable_unionfind {
@@ -9,11 +9,11 @@ namespace haar_lib {
     std::vector<std::pair<int, int>> history_;
 
   public:
-    rollbackable_unionfind(){}
-    rollbackable_unionfind(int n): n_(n), parent_(n, -1), size_(n, 1){}
+    rollbackable_unionfind() {}
+    rollbackable_unionfind(int n) : n_(n), parent_(n, -1), size_(n, 1) {}
 
     int root_of(int i) const {
-      if(parent_[i] == -1) return i;
+      if (parent_[i] == -1) return i;
       return root_of(parent_[i]);
     }
 
@@ -21,30 +21,30 @@ namespace haar_lib {
       return root_of(i) == root_of(j);
     }
 
-    int merge(int i, int j){
+    int merge(int i, int j) {
       const int ri = root_of(i), rj = root_of(j);
 
       history_.emplace_back(ri, size_[i]);
       history_.emplace_back(rj, size_[rj]);
 
-      if(ri == rj) return ri;
+      if (ri == rj) return ri;
 
-      if(size_[ri] < size_[rj]){
+      if (size_[ri] < size_[rj]) {
         parent_[ri] = rj;
         size_[rj] += size_[ri];
         return rj;
-      }else{
+      } else {
         parent_[rj] = ri;
         size_[ri] += size_[rj];
         return ri;
       }
     }
 
-    void roll_back(){
-      for(int k = 0; k < 2; ++k){
+    void roll_back() {
+      for (int k = 0; k < 2; ++k) {
         auto [i, s] = history_.back();
-        parent_[i] = -1;
-        size_[i] = s;
+        parent_[i]  = -1;
+        size_[i]    = s;
         history_.pop_back();
       }
     }
@@ -57,8 +57,8 @@ namespace haar_lib {
       return size_[root_of(i)];
     }
 
-    void set_base(){
+    void set_base() {
       history_.clear();
     }
   };
-}
+}  // namespace haar_lib

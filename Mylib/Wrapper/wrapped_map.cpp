@@ -1,7 +1,7 @@
 #pragma once
-#include <map>
-#include <functional>
 #include <algorithm>
+#include <functional>
+#include <map>
 
 namespace haar_lib {
   template <typename Key, typename Value, typename Compare = std::less<Key>>
@@ -9,12 +9,12 @@ namespace haar_lib {
     using super = std::map<Key, Value, Compare>;
 
   public:
-    const auto& max_key() const {
+    const auto &max_key() const {
       assert(not super::empty());
       return *super::rbegin();
     }
 
-    const auto& min_key() const {
+    const auto &min_key() const {
       assert(not super::empty());
       return *super::begin();
     }
@@ -23,28 +23,28 @@ namespace haar_lib {
       return super::find(x) != super::end();
     }
 
-    const auto& max_value() const {
+    const auto &max_value() const {
       assert(not super::empty());
       return *std::max_element(
-        super::begin(), super::end(),
-        [](const auto &a, const auto &b){return a.second < b.second;}
-      );
+          super::begin(), super::end(),
+          [](const auto &a, const auto &b) { return a.second < b.second; });
     }
 
-    const auto& min_value() const {
+    const auto &min_value() const {
       assert(not super::empty());
       return *std::min_element(
-        super::begin(), super::end(),
-        [](const auto &a, const auto &b){return a.second < b.second;}
-      );
+          super::begin(), super::end(),
+          [](const auto &a, const auto &b) { return a.second < b.second; });
     }
 
     template <typename Predicate>
-    void erase_if(Predicate pred){
-      for(auto it = super::begin(); it != super::end();){
-        if(pred(it->first, it->second)) it = super::erase(it);
-        else ++it;
+    void erase_if(Predicate pred) {
+      for (auto it = super::begin(); it != super::end();) {
+        if (pred(it->first, it->second))
+          it = super::erase(it);
+        else
+          ++it;
       }
     }
   };
-}
+}  // namespace haar_lib

@@ -7,15 +7,16 @@
 
 namespace hl = haar_lib;
 
-int main(){
+int main() {
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  int N, Q; std::cin >> N >> Q;
+  int N, Q;
+  std::cin >> N >> Q;
 
   auto seg = hl::segment_tree_linear_add<int64_t>(N);
 
-  for(auto [l, k] : hl::input_tuples<int, int>(Q)){
+  for (auto [l, k] : hl::input_tuples<int, int>(Q)) {
     --l;
     seg.update(l, l + k, 1, 1);
   }

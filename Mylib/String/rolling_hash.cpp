@@ -1,6 +1,6 @@
 #pragma once
-#include <vector>
 #include <random>
+#include <vector>
 
 namespace haar_lib {
   class rolling_hash {
@@ -8,23 +8,23 @@ namespace haar_lib {
     int64_t MOD_, BASE_;
 
   public:
-    rolling_hash(){}
-    rolling_hash(int size, int MOD, int BASE): MOD_(MOD), BASE_(BASE){
+    rolling_hash() {}
+    rolling_hash(int size, int MOD, int BASE) : MOD_(MOD), BASE_(BASE) {
       pow_.assign(size + 1, 1);
-      for(int i = 1; i <= size; ++i) pow_[i] = pow_[i - 1] * BASE_ % MOD_;
+      for (int i = 1; i <= size; ++i) pow_[i] = pow_[i - 1] * BASE_ % MOD_;
     }
 
     template <typename T>
     auto gen_hash_table(const T &s) const {
       std::vector<int64_t> ret(s.size() + 1);
-      for(int i = 0; i < (int)s.size(); ++i) ret[i + 1] = (ret[i] * BASE_ + s[i]) % MOD_;
+      for (int i = 0; i < (int) s.size(); ++i) ret[i + 1] = (ret[i] * BASE_ + s[i]) % MOD_;
       return ret;
     }
 
     template <typename T>
     auto gen_hash(const T &s) const {
       int64_t ret = 0;
-      for(int i = 0; i < (int)s.size(); ++i) ret = (ret * BASE_ + s[i]) % MOD_;
+      for (int i = 0; i < (int) s.size(); ++i) ret = (ret * BASE_ + s[i]) % MOD_;
       return ret;
     }
 
@@ -40,17 +40,17 @@ namespace haar_lib {
       auto hp = gen_hash(pattern);
       auto hs = gen_hash_table(s);
       std::vector<int> ret;
-      for(int i = 0; i <= ((int)s.size() - (int)pattern.size()); ++i){
-        if(hp == get(hs, i, i + pattern.size())) ret.push_back(i);
+      for (int i = 0; i <= ((int) s.size() - (int) pattern.size()); ++i) {
+        if (hp == get(hs, i, i + pattern.size())) ret.push_back(i);
       }
 
       return ret;
     }
   };
 
-  auto make_rh(int size, int MOD, int seed = 0){
+  auto make_rh(int size, int MOD, int seed = 0) {
     std::mt19937 rnd(seed);
     std::uniform_int_distribution<> dist(2, MOD - 2);
     return rolling_hash(size, MOD, dist(rnd));
   }
-}
+}  // namespace haar_lib

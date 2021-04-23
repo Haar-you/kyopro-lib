@@ -1,11 +1,11 @@
 #pragma once
-#include <vector>
 #include <stack>
+#include <vector>
 #include "Mylib/Graph/Template/graph.cpp"
 
 namespace haar_lib {
   template <typename T>
-  std::vector<T> tree_distance(const tree<T> &tr, int root){
+  std::vector<T> tree_distance(const tree<T> &tr, int root) {
     const int n = tr.size();
     std::vector<T> ret(n);
     std::vector<bool> visited(n);
@@ -14,12 +14,13 @@ namespace haar_lib {
     st.push(root);
     ret[root] = 0;
 
-    while(not st.empty()){
-      int cur = st.top(); st.pop();
+    while (not st.empty()) {
+      int cur = st.top();
+      st.pop();
       visited[cur] = true;
 
-      for(auto &e : tr[cur]){
-        if(not visited[e.to]){
+      for (auto &e : tr[cur]) {
+        if (not visited[e.to]) {
           ret[e.to] = ret[cur] + e.cost;
           st.push(e.to);
         }
@@ -28,4 +29,4 @@ namespace haar_lib {
 
     return ret;
   }
-}
+}  // namespace haar_lib

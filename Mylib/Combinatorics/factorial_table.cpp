@@ -1,7 +1,7 @@
 #pragma once
-#include <vector>
 #include <cassert>
 #include <cstdint>
+#include <vector>
 
 namespace haar_lib {
   template <typename T>
@@ -14,18 +14,18 @@ namespace haar_lib {
     std::vector<T> f_table_, if_table_;
 
   public:
-    factorial_table(){}
-    factorial_table(int N): N_(N){
+    factorial_table() {}
+    factorial_table(int N) : N_(N) {
       f_table_.assign(N + 1, 1);
       if_table_.assign(N + 1, 1);
 
-      for(int i = 1; i <= N; ++i){
+      for (int i = 1; i <= N; ++i) {
         f_table_[i] = f_table_[i - 1] * i;
       }
 
       if_table_[N] = f_table_[N].inv();
 
-      for(int i = N; --i >= 0;){
+      for (int i = N; --i >= 0;) {
         if_table_[i] = if_table_[i + 1] * (i + 1);
       }
     }
@@ -41,18 +41,18 @@ namespace haar_lib {
     }
 
     T P(int64_t n, int64_t k) const {
-      if(n < k or n < 0 or k < 0) return 0;
+      if (n < k or n < 0 or k < 0) return 0;
       return factorial(n) * inv_factorial(n - k);
     }
 
     T C(int64_t n, int64_t k) const {
-      if(n < k or n < 0 or k < 0) return 0;
+      if (n < k or n < 0 or k < 0) return 0;
       return P(n, k) * inv_factorial(k);
     }
 
     T H(int64_t n, int64_t k) const {
-      if(n == 0 and k == 0) return 1;
+      if (n == 0 and k == 0) return 1;
       return C(n + k - 1, k);
     }
   };
-}
+}  // namespace haar_lib

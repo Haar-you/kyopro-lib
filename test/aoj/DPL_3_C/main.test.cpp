@@ -2,13 +2,14 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/Typical/max_rectangle_in_histogram.cpp"
 #include "Mylib/IO/input_vector.cpp"
+#include "Mylib/Typical/max_rectangle_in_histogram.cpp"
 
 namespace hl = haar_lib;
 
-int main(){
-  int N; std::cin >> N;
+int main() {
+  int N;
+  std::cin >> N;
 
   auto h = hl::input_vector<int64_t>(N);
 

@@ -1,23 +1,22 @@
 #pragma once
-#include <vector>
-#include <utility>
+#include <functional>
 #include <optional>
 #include <queue>
-#include <functional>
+#include <utility>
+#include <vector>
 #include "Mylib/Graph/Template/graph.cpp"
 
 namespace haar_lib {
   namespace yen_algorithm_impl {
     template <typename T>
     auto shortest_path(
-      const graph<T> &g,
-      int from,
-      int t,
-      const std::vector<bool> &usable,
-      const std::vector<std::vector<bool>> &valid
-    ){
+        const graph<T> &g,
+        int from,
+        int t,
+        const std::vector<bool> &usable,
+        const std::vector<std::vector<bool>> &valid) {
       using Path = std::pair<T, std::vector<int>>;
-      using P = std::pair<T, int>;
+      using P    = std::pair<T, int>;
 
       const int N = g.size();
       std::vector<bool> visited(N, false);
@@ -29,31 +28,32 @@ namespace haar_lib {
       dist[from] = 0;
       pq.emplace(0, from);
 
-      while(not pq.empty()){
-        auto [d, i] = pq.top(); pq.pop();
+      while (not pq.empty()) {
+        auto [d, i] = pq.top();
+        pq.pop();
 
-        if(visited[i]) continue;
+        if (visited[i]) continue;
         visited[i] = true;
 
-        for(int k = 0; k < (int)g[i].size(); ++k){
-          if(not valid[i][k] or not usable[g[i][k].to]) continue;
+        for (int k = 0; k < (int) g[i].size(); ++k) {
+          if (not valid[i][k] or not usable[g[i][k].to]) continue;
           auto &e = g[i][k];
 
-          if(not dist[e.to] or *dist[e.to] > d + e.cost){
-            dist[e.to] = d + e.cost;
+          if (not dist[e.to] or *dist[e.to] > d + e.cost) {
+            dist[e.to]    = d + e.cost;
             restore[e.to] = std::make_pair(i, k);
-            if(not visited[e.to]) pq.emplace(*dist[e.to], e.to);
+            if (not visited[e.to]) pq.emplace(*dist[e.to], e.to);
           }
         }
       }
 
       std::optional<Path> ret;
 
-      if(dist[t]){
+      if (dist[t]) {
         std::vector<int> p;
 
         int cur = t;
-        while(cur != from){
+        while (cur != from) {
           auto [i, j] = restore[cur];
           p.push_back(j);
           cur = i;
@@ -66,10 +66,10 @@ namespace haar_lib {
 
       return ret;
     }
-  }
+  }  // namespace yen_algorithm_impl
 
   template <typename T>
-  auto yen_algorithm(const graph<T> &g, int s, int t, int K){
+  auto yen_algorithm(const graph<T> &g, int s, int t, int K) {
     using Path = std::pair<T, std::vector<int>>;
 
     const int N = g.size();
@@ -78,20 +78,20 @@ namespace haar_lib {
     std::vector<std::optional<Path>> result(K);
     std::priority_queue<Path, std::vector<Path>, std::greater<Path>> stock;
 
-    for(int i = 0; i < N; ++i){
+    for (int i = 0; i < N; ++i) {
       valid[i].assign(g[i].size(), true);
     }
 
-    for(int i = 0; i < K; ++i){
-      if(i == 0){
+    for (int i = 0; i < K; ++i) {
+      if (i == 0) {
         std::vector<bool> usable(N, true);
-        if(auto res = yen_algorithm_impl::shortest_path(g, s, t, usable, valid); res) stock.push(*res);
-      }else{
+        if (auto res = yen_algorithm_impl::shortest_path(g, s, t, usable, valid); res) stock.push(*res);
+      } else {
         std::vector<int> prev_path;
 
         {
           int cur = s;
-          for(auto u : result[i - 1]->second){
+          for (auto u : result[i - 1]->second) {
             prev_path.push_back(cur);
             cur = g[cur][u].to;
           }
@@ -101,20 +101,20 @@ namespace haar_lib {
         std::vector<bool> check(i, true);
         std::vector<bool> usable(N, true);
 
-        for(int k = 0; k < (int)prev_path.size() - 1; ++k){
+        for (int k = 0; k < (int) prev_path.size() - 1; ++k) {
           const int u = prev_path[k];
 
-          for(int j = 0; j < i; ++j){
-            if(check[j]){
+          for (int j = 0; j < i; ++j) {
+            if (check[j]) {
               valid[prev_path[k]][result[j]->second[k]] = false;
             }
           }
 
-          if(auto res = yen_algorithm_impl::shortest_path(g, u, t, usable, valid); res){
+          if (auto res = yen_algorithm_impl::shortest_path(g, u, t, usable, valid); res) {
             auto [c, p] = *res;
 
             std::vector<int> temp;
-            for(int j = 0; j < k; ++j){
+            for (int j = 0; j < k; ++j) {
               int v = result[i - 1]->second[j];
 
               c += g[prev_path[j]][v].cost;
@@ -127,15 +127,15 @@ namespace haar_lib {
 
           usable[u] = false;
 
-          for(int j = 0; j < i; ++j){
-            if(check[j]){
+          for (int j = 0; j < i; ++j) {
+            if (check[j]) {
               valid[prev_path[k]][result[j]->second[k]] = true;
             }
           }
 
-          for(int j = 0; j < i; ++j){
-            if(check[j]){
-              if(prev_path[k + 1] != g[prev_path[k]][result[j]->second[k]].to){
+          for (int j = 0; j < i; ++j) {
+            if (check[j]) {
+              if (prev_path[k + 1] != g[prev_path[k]][result[j]->second[k]].to) {
                 check[j] = false;
               }
             }
@@ -143,15 +143,16 @@ namespace haar_lib {
         }
       }
 
-      if(stock.empty()) break;
+      if (stock.empty()) break;
 
-      result[i] = stock.top(); stock.pop();
+      result[i] = stock.top();
+      stock.pop();
 
-      while(not stock.empty() and stock.top() == result[i]){
+      while (not stock.empty() and stock.top() == result[i]) {
         stock.pop();
       }
     }
 
     return result;
   }
-}
+}  // namespace haar_lib

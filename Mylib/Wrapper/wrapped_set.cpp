@@ -1,6 +1,6 @@
 #pragma once
-#include <set>
 #include <functional>
+#include <set>
 
 namespace haar_lib {
   template <typename T, typename Compare = std::less<T>>
@@ -18,16 +18,18 @@ namespace haar_lib {
       return *super::begin();
     }
 
-    bool contains(const T &x) const {
+    bool contains(const T& x) const {
       return super::find(x) != super::end();
     }
 
     template <typename Predicate>
-    void erase_if(Predicate pred){
-      for(auto it = super::begin(); it != super::end();){
-        if(pred(*it)) it = super::erase(it);
-        else ++it;
+    void erase_if(Predicate pred) {
+      for (auto it = super::begin(); it != super::end();) {
+        if (pred(*it))
+          it = super::erase(it);
+        else
+          ++it;
       }
     }
   };
-}
+}  // namespace haar_lib

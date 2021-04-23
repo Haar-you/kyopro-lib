@@ -2,17 +2,18 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
 #include "Mylib/Graph/Flow/minimum_cost_flow.cpp"
+#include "Mylib/Graph/Matching/weighted_bipartite_matching.cpp"
 #include "Mylib/IO/input_tuple_vector.cpp"
 
 namespace hl = haar_lib;
 
-int main(){
+int main() {
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  int n; std::cin >> n;
+  int n;
+  std::cin >> n;
 
   auto [A, B] = hl::input_tuple_vector<int, int>(n);
 
@@ -24,7 +25,7 @@ int main(){
 
   hl::weighted_bipartite_matching<int, hl::minimum_cost_flow<int, int>> m(n, ls.size(), true);
 
-  for(int i = 0; i < n; ++i){
+  for (int i = 0; i < n; ++i) {
     m.add_edge(i, std::lower_bound(ls.begin(), ls.end(), A[i]) - ls.begin(), B[i]);
     m.add_edge(i, std::lower_bound(ls.begin(), ls.end(), B[i]) - ls.begin(), A[i]);
   }

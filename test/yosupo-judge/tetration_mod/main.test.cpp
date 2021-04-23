@@ -6,10 +6,11 @@
 
 namespace hl = haar_lib;
 
-int main(){
-  int T; std::cin >> T;
+int main() {
+  int T;
+  std::cin >> T;
 
-  for(auto [A, B, M] : hl::input_tuples<int, int, int>(T)){
+  for (auto [A, B, M] : hl::input_tuples<int, int, int>(T)) {
     auto ans = hl::tetration(A, B, M);
     std::cout << ans << "\n";
   }

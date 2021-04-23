@@ -1,20 +1,21 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A"
 #define ERROR 0.000001
 
-#include <iostream>
 #include <iomanip>
+#include <iostream>
+#include "Mylib/Geometry/Float/closest_pair.cpp"
 #include "Mylib/Geometry/Float/double_eps.cpp"
 #include "Mylib/Geometry/Float/geometry_template.cpp"
-#include "Mylib/Geometry/Float/closest_pair.cpp"
 #include "Mylib/IO/input_vector.cpp"
 
 namespace hl = haar_lib;
 
 static constexpr double eps = ERROR;
-using D = hl::double_eps<double, eps>;
+using D                     = hl::double_eps<double, eps>;
 
-int main(){
-  int n; std::cin >> n;
+int main() {
+  int n;
+  std::cin >> n;
 
   auto p = hl::input_vector<hl::point<D>>(n);
 

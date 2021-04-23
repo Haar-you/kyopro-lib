@@ -1,13 +1,14 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_B"
 
 #include <iostream>
-#include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/MinimumSpanningTree/chu_liu_edmonds.cpp"
+#include "Mylib/Graph/Template/graph.cpp"
 
 namespace hl = haar_lib;
 
-int main(){
-  int V, E, r; std::cin >> V >> E >> r;
+int main() {
+  int V, E, r;
+  std::cin >> V >> E >> r;
 
   hl::graph<int> g(V);
   g.read<0>(E);
@@ -16,7 +17,7 @@ int main(){
 
   int ans = 0;
 
-  for(auto &e : res){
+  for (auto &e : res) {
     ans += e.cost;
   }
 

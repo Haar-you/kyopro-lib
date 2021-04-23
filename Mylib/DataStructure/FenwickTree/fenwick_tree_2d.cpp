@@ -1,6 +1,6 @@
 #pragma once
-#include <vector>
 #include <cassert>
+#include <vector>
 
 namespace haar_lib {
   template <typename AbelianGroup>
@@ -17,7 +17,7 @@ namespace haar_lib {
   private:
     value_type get_w(int i, int y) const {
       value_type ret = G_();
-      while(i > 0){
+      while (i > 0) {
         ret = G_(ret, data_[i][y]);
         i -= i & (-i);
       }
@@ -30,7 +30,7 @@ namespace haar_lib {
 
     value_type get(int x1, int x2, int y) const {
       value_type ret = G_();
-      while(y > 0){
+      while (y > 0) {
         ret = G_(ret, get_w(x1, x2, y));
         y -= y & (-y);
       }
@@ -38,9 +38,8 @@ namespace haar_lib {
     }
 
   public:
-    fenwick_tree_2d(){}
-    fenwick_tree_2d(int width, int height):
-      w_(width), h_(height), data_(w_ + 1, std::vector<value_type>(h_ + 1, G_())){}
+    fenwick_tree_2d() {}
+    fenwick_tree_2d(int width, int height) : w_(width), h_(height), data_(w_ + 1, std::vector<value_type>(h_ + 1, G_())) {}
 
     value_type fold(std::pair<int, int> p1, std::pair<int, int> p2) const {
       const auto [x1, y1] = p1;
@@ -55,18 +54,18 @@ namespace haar_lib {
       return fold({x, y}, {x + 1, y + 1});
     }
 
-    void update(std::pair<int, int> p, const value_type &val){
+    void update(std::pair<int, int> p, const value_type &val) {
       auto [x, y] = p;
       assert(0 <= x and x < w_);
       assert(0 <= y and y < h_);
       x += 1;
       y += 1;
 
-      for(int i = x; i <= w_; i += i & (-i)){
-        for(int j = y; j <= h_; j += j & (-j)){
+      for (int i = x; i <= w_; i += i & (-i)) {
+        for (int j = y; j <= h_; j += j & (-j)) {
           data_[i][j] = G_(data_[i][j], val);
         }
       }
     }
   };
-}
+}  // namespace haar_lib

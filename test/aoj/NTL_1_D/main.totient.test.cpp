@@ -5,8 +5,9 @@
 
 namespace hl = haar_lib;
 
-int main(){
-  int n; std::cin >> n;
+int main() {
+  int n;
+  std::cin >> n;
 
   std::cout << hl::totient(n) << std::endl;
 

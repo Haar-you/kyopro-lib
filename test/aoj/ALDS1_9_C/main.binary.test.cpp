@@ -6,20 +6,21 @@
 
 namespace hl = haar_lib;
 
-int main(){
+int main() {
   hl::binary_heap<int> heap;
   std::string s;
 
-  while(1){
+  while (1) {
     std::cin >> s;
 
-    if(s == "insert"){
-      int k; std::cin >> k;
+    if (s == "insert") {
+      int k;
+      std::cin >> k;
       heap.push(k);
-    }else if(s == "extract"){
+    } else if (s == "extract") {
       std::cout << heap.top() << "\n";
       heap.pop();
-    }else{
+    } else {
       break;
     }
   }

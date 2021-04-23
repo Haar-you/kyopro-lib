@@ -8,41 +8,45 @@
 
 namespace hl = haar_lib;
 
-int main(){
+int main() {
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  int N, Q; std::cin >> N >> Q;
+  int N, Q;
+  std::cin >> N >> Q;
 
   hl::link_cut_tree<hl::sum_monoid<int64_t>> lct(N);
 
-  for(auto [i, a] : hl::input_tuples_with_index<int64_t>(N)){
+  for (auto [i, a] : hl::input_tuples_with_index<int64_t>(N)) {
     lct.set(i, a);
   }
 
-  for(auto [u, v] : hl::input_tuples<int, int>(N - 1)){
+  for (auto [u, v] : hl::input_tuples<int, int>(N - 1)) {
     lct.link(u, v);
   }
 
-  for(auto [type] : hl::input_tuples<int>(Q)){
-    switch(type){
-    case 0: {
-      int u, v, w, x; std::cin >> u >> v >> w >> x;
-      lct.cut(u, v);
-      lct.link(w, x);
-      break;
-    }
-    case 1: {
-      int p, x; std::cin >> p >> x;
-      lct.update(p, x);
-      break;
-    }
-    case 2: {
-      int u, v; std::cin >> u >> v;
-      auto ans = lct.fold(u, v);
-      std::cout << ans << std::endl;
-      break;
-    }
+  for (auto [type] : hl::input_tuples<int>(Q)) {
+    switch (type) {
+      case 0: {
+        int u, v, w, x;
+        std::cin >> u >> v >> w >> x;
+        lct.cut(u, v);
+        lct.link(w, x);
+        break;
+      }
+      case 1: {
+        int p, x;
+        std::cin >> p >> x;
+        lct.update(p, x);
+        break;
+      }
+      case 2: {
+        int u, v;
+        std::cin >> u >> v;
+        auto ans = lct.fold(u, v);
+        std::cout << ans << std::endl;
+        break;
+      }
     }
   }
 

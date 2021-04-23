@@ -5,15 +5,16 @@
 
 namespace hl = haar_lib;
 
-int main(){
-  int n; std::cin >> n;
+int main() {
+  int n;
+  std::cin >> n;
 
   auto res = hl::prime_factorize(n);
 
   std::cout << n << ":";
 
-  for(auto &[x, c] : res){
-    for(int i = 0; i < c; ++i){
+  for (auto& [x, c] : res) {
+    for (int i = 0; i < c; ++i) {
       std::cout << " " << x;
     }
   }

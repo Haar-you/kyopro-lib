@@ -1,7 +1,7 @@
 #pragma once
-#include <vector>
-#include <functional>
 #include <cassert>
+#include <functional>
+#include <vector>
 
 namespace haar_lib {
   template <typename T>
@@ -10,7 +10,8 @@ namespace haar_lib {
     using value_type = T;
 
   private:
-    template <typename> friend class cumulative_sum_1d_builder;
+    template <typename>
+    friend class cumulative_sum_1d_builder;
     int N_;
     std::vector<T> data_;
 
@@ -27,15 +28,15 @@ namespace haar_lib {
     std::vector<T> data_;
 
   public:
-    cumulative_sum_1d_builder(){}
-    cumulative_sum_1d_builder(int N): N_(N), data_(N + 1){}
+    cumulative_sum_1d_builder() {}
+    cumulative_sum_1d_builder(int N) : N_(N), data_(N + 1) {}
 
-    auto& update(const std::vector<T> &a){
-      for(int i = 0; i < N_; ++i) data_[i + 1] += a[i];
+    auto& update(const std::vector<T>& a) {
+      for (int i = 0; i < N_; ++i) data_[i + 1] += a[i];
       return *this;
     }
 
-    auto& update(int i, const T &val){
+    auto& update(int i, const T& val) {
       assert(0 <= i and i < N_);
       data_[i + 1] += val;
       return *this;
@@ -44,9 +45,9 @@ namespace haar_lib {
     auto build() const {
       cumulative_sum_1d<T> ret;
       ret.data_ = data_;
-      ret.N_ = N_;
-      for(int i = 0; i < N_; ++i) ret.data_[i + 1] += ret.data_[i];
+      ret.N_    = N_;
+      for (int i = 0; i < N_; ++i) ret.data_[i + 1] += ret.data_[i];
       return ret;
     }
   };
-}
+}  // namespace haar_lib

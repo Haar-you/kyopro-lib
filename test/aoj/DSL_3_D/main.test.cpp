@@ -3,13 +3,14 @@
 #include <iostream>
 #include <vector>
 #include "Mylib/Algorithm/sliding_minimum.cpp"
-#include "Mylib/IO/join.cpp"
 #include "Mylib/IO/input_vector.cpp"
+#include "Mylib/IO/join.cpp"
 
 namespace hl = haar_lib;
 
-int main(){
-  int N, L; std::cin >> N >> L;
+int main() {
+  int N, L;
+  std::cin >> N >> L;
 
   auto a = hl::input_vector<int>(N);
 

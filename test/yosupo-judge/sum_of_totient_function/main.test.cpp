@@ -8,11 +8,12 @@ namespace hl = haar_lib;
 
 using mint = hl::modint<998244353>;
 
-int main(){
+int main() {
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  int64_t N; std::cin >> N;
+  int64_t N;
+  std::cin >> N;
 
   std::cout << hl::totient_sum<mint>(N) << "\n";
 

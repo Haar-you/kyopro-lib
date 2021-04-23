@@ -5,9 +5,8 @@ namespace haar_lib {
   struct dice {
     int top, bottom, front, back, right, left;
 
-    dice(): top(), bottom(), front(), back(), right(), left(){}
-    dice(int top, int bottom, int front, int back, int right, int left):
-      top(top), bottom(bottom), front(front), back(back), right(right), left(left){}
+    dice() : top(), bottom(), front(), back(), right(), left() {}
+    dice(int top, int bottom, int front, int back, int right, int left) : top(top), bottom(bottom), front(front), back(back), right(right), left(left) {}
 
     dice rot_left() const {
       return dice(right, left, front, back, bottom, top);
@@ -33,7 +32,7 @@ namespace haar_lib {
       return dice(top, bottom, left, right, front, back);
     }
 
-    friend std::ostream& operator<<(std::ostream &s, const dice &a){
+    friend std::ostream &operator<<(std::ostream &s, const dice &a) {
       s << "("
         << a.top << ", "
         << a.bottom << ", "
@@ -44,4 +43,4 @@ namespace haar_lib {
       return s;
     }
   };
-}
+}  // namespace haar_lib

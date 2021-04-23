@@ -1,14 +1,15 @@
 #define PROBLEM "https://yukicoder.me/problems/no/499"
 
-#include <iostream>
 #include <algorithm>
-#include "Mylib/Misc/convert_base.cpp"
+#include <iostream>
 #include "Mylib/IO/join.cpp"
+#include "Mylib/Misc/convert_base.cpp"
 
 namespace hl = haar_lib;
 
-int main(){
-  int N; std::cin >> N;
+int main() {
+  int N;
+  std::cin >> N;
 
   auto res = hl::convert_base_to(N, 7);
 

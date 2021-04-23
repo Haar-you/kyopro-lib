@@ -1,6 +1,6 @@
 #pragma once
-#include <vector>
 #include <cassert>
+#include <vector>
 
 namespace haar_lib {
   template <typename T>
@@ -13,10 +13,9 @@ namespace haar_lib {
     std::vector<T> vec_a_, vec_a_end_, vec_b_;
 
   public:
-    linear_imos_1d(int n):
-      n_(n), vec_a_(n_ + 1), vec_a_end_(n_ + 1), vec_b_(n_ + 1){}
+    linear_imos_1d(int n) : n_(n), vec_a_(n_ + 1), vec_a_end_(n_ + 1), vec_b_(n_ + 1) {}
 
-    void update(int s, int t, const T &a, const T &b){
+    void update(int s, int t, const T &a, const T &b) {
       assert(0 <= s and s <= t and t <= n_);
       vec_a_[s + 1] += a;
       vec_a_[t] -= a;
@@ -29,17 +28,17 @@ namespace haar_lib {
 
     auto build() const {
       std::vector<T> ret(vec_a_);
-      for(int i = 0; i < n_; ++i) ret[i + 1] += ret[i];
-      for(int i = 0; i < n_; ++i) ret[i] += vec_a_end_[i];
-      for(int i = 0; i < n_; ++i) ret[i + 1] += ret[i];
+      for (int i = 0; i < n_; ++i) ret[i + 1] += ret[i];
+      for (int i = 0; i < n_; ++i) ret[i] += vec_a_end_[i];
+      for (int i = 0; i < n_; ++i) ret[i + 1] += ret[i];
 
       std::vector<T> temp(vec_b_);
-      for(int i = 0; i < n_; ++i) temp[i + 1] += temp[i];
-      for(int i = 0; i < n_; ++i) ret[i] += temp[i];
+      for (int i = 0; i < n_; ++i) temp[i + 1] += temp[i];
+      for (int i = 0; i < n_; ++i) ret[i] += temp[i];
 
       ret.pop_back();
 
       return ret;
     }
   };
-}
+}  // namespace haar_lib

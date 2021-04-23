@@ -7,16 +7,18 @@
 
 namespace hl = haar_lib;
 
-int main(){
+int main() {
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  std::string T; std::cin >> T;
-  int Q; std::cin >> Q;
+  std::string T;
+  std::cin >> T;
+  int Q;
+  std::cin >> Q;
 
   auto sa = hl::suffix_array(T);
 
-  for(auto [P] : hl::input_tuples<std::string>(Q)){
+  for (auto [P] : hl::input_tuples<std::string>(Q)) {
     bool ans = sa.upper_bound(P) - sa.lower_bound(P) > 0;
     std::cout << ans << "\n";
   }

@@ -9,27 +9,28 @@
 
 namespace hl = haar_lib;
 
-int main(){
+int main() {
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  int N, Q; std::cin >> N >> Q;
+  int N, Q;
+  std::cin >> N >> Q;
 
   auto [x, y, w] = hl::input_tuple_vector<int64_t, int64_t, int64_t>(N);
 
   hl::segment_tree_on_segment_tree<hl::sum_monoid<int64_t>> seg;
 
-  for(int i = 0; i < N; ++i){
+  for (int i = 0; i < N; ++i) {
     seg.add(x[i], y[i]);
   }
 
   seg.build();
 
-  for(int i = 0; i < N; ++i){
+  for (int i = 0; i < N; ++i) {
     seg.update({x[i], y[i]}, w[i]);
   }
 
-  for(auto [l, d, r, u] : hl::input_tuples<int64_t, int64_t, int64_t, int64_t>(Q)){
+  for (auto [l, d, r, u] : hl::input_tuples<int64_t, int64_t, int64_t, int64_t>(Q)) {
     auto ans = seg.fold({l, d}, {r, u});
     std::cout << ans << std::endl;
   }

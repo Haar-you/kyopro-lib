@@ -2,16 +2,17 @@
 
 #include <iostream>
 #include <string>
-#include "Mylib/String/manacher.cpp"
 #include "Mylib/IO/join.cpp"
+#include "Mylib/String/manacher.cpp"
 
 namespace hl = haar_lib;
 
-int main(){
+int main() {
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  std::string S; std::cin >> S;
+  std::string S;
+  std::cin >> S;
 
   auto ans = hl::manacher_all(S);
   std::cout << hl::join(ans.begin(), ans.end()) << "\n";

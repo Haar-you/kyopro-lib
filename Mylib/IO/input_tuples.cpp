@@ -1,28 +1,28 @@
 #pragma once
+#include <initializer_list>
 #include <iostream>
-#include <vector>
 #include <tuple>
 #include <utility>
-#include <initializer_list>
+#include <vector>
 #include "Mylib/IO/input_tuple.cpp"
 
 namespace haar_lib {
-  template <typename ... Args>
+  template <typename... Args>
   class InputTuples {
     struct iter {
-      using value_type = std::tuple<Args ...>;
+      using value_type = std::tuple<Args...>;
       value_type value;
       bool fetched = false;
       int N, c = 0;
 
-      value_type operator*(){
-        if(not fetched){
+      value_type operator*() {
+        if (not fetched) {
           std::cin >> value;
         }
         return value;
       }
 
-      void operator++(){
+      void operator++() {
         ++c;
         fetched = false;
       }
@@ -31,20 +31,20 @@ namespace haar_lib {
         return c < N;
       }
 
-      iter(int N): N(N){}
+      iter(int N) : N(N) {}
     };
 
     int N;
 
   public:
-    InputTuples(int N): N(N){}
+    InputTuples(int N) : N(N) {}
 
-    iter begin() const {return iter(N);}
-    iter end() const {return iter(N);}
+    iter begin() const { return iter(N); }
+    iter end() const { return iter(N); }
   };
 
-  template <typename ... Args>
-  auto input_tuples(int N){
-    return InputTuples<Args ...>(N);
+  template <typename... Args>
+  auto input_tuples(int N) {
+    return InputTuples<Args...>(N);
   }
-}
+}  // namespace haar_lib

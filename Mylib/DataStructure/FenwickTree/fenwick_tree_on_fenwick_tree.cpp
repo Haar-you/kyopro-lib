@@ -1,8 +1,8 @@
 #pragma once
-#include <vector>
-#include <numeric>
-#include <algorithm>
 #include "Mylib/DataStructure/FenwickTree/fenwick_tree.cpp"
+#include <algorithm>
+#include <numeric>
+#include <vector>
 
 namespace haar_lib {
   template <typename AbelianGroup>
@@ -21,15 +21,15 @@ namespace haar_lib {
     std::vector<fenwick_tree<AbelianGroup>> segs_;
 
   public:
-    fenwick_tree_on_fenwick_tree(){}
+    fenwick_tree_on_fenwick_tree() {}
 
-    void add(int64_t x, int64_t y){
+    void add(int64_t x, int64_t y) {
       xs_.push_back(x);
       ys_.push_back(y);
       ++N_;
     }
 
-    void build(){
+    void build() {
       c_xs_.insert(c_xs_.end(), xs_.begin(), xs_.end());
 
       std::sort(c_xs_.begin(), c_xs_.end());
@@ -42,16 +42,16 @@ namespace haar_lib {
 
       std::vector<int> ord(N_);
       std::iota(ord.begin(), ord.end(), 0);
-      std::sort(ord.begin(), ord.end(), [&](int i, int j){return ys_[i] < ys_[j];});
-      for(auto i : ord){
+      std::sort(ord.begin(), ord.end(), [&](int i, int j) { return ys_[i] < ys_[j]; });
+      for (auto i : ord) {
         int x = std::lower_bound(c_xs_.begin(), c_xs_.end(), xs_[i]) - c_xs_.begin();
 
-        for(x += 1; x <= x_size_; x += x & (-x)){
+        for (x += 1; x <= x_size_; x += x & (-x)) {
           c_ys_[x].emplace_back(ys_[i]);
         }
       }
 
-      for(int i = 1; i <= x_size_; ++i){
+      for (int i = 1; i <= x_size_; ++i) {
         auto &a = c_ys_[i];
         a.erase(std::unique(a.begin(), a.end()), a.end());
 
@@ -59,11 +59,11 @@ namespace haar_lib {
       }
     }
 
-    void update(std::pair<int, int> p, const value_type &val){
+    void update(std::pair<int, int> p, const value_type &val) {
       const auto [x, y] = p;
-      int i = std::lower_bound(c_xs_.begin(), c_xs_.end(), x) - c_xs_.begin();
+      int i             = std::lower_bound(c_xs_.begin(), c_xs_.end(), x) - c_xs_.begin();
 
-      for(i += 1; i <= x_size_; i += i & (-i)){
+      for (i += 1; i <= x_size_; i += i & (-i)) {
         int j = std::lower_bound(c_ys_[i].begin(), c_ys_[i].end(), y) - c_ys_[i].begin();
         segs_[i].update(j, val);
       }
@@ -72,10 +72,10 @@ namespace haar_lib {
   private:
     value_type get(int i, int64_t y1, int64_t y2) const {
       value_type ret = G_();
-      for(; i > 0; i -= i & (-i)){
+      for (; i > 0; i -= i & (-i)) {
         int l = std::lower_bound(c_ys_[i].begin(), c_ys_[i].end(), y1) - c_ys_[i].begin();
         int r = std::lower_bound(c_ys_[i].begin(), c_ys_[i].end(), y2) - c_ys_[i].begin();
-        ret = G_(ret, segs_[i].fold(l, r));
+        ret   = G_(ret, segs_[i].fold(l, r));
       }
       return ret;
     }
@@ -85,9 +85,9 @@ namespace haar_lib {
     value_type fold(std::pair<int64_t, int64_t> p1, std::pair<int64_t, int64_t> p2) const {
       const auto [x1, y1] = p1;
       const auto [x2, y2] = p2;
-      int l = std::lower_bound(c_xs_.begin(), c_xs_.end(), x1) - c_xs_.begin();
-      int r = std::lower_bound(c_xs_.begin(), c_xs_.end(), x2) - c_xs_.begin();
+      int l               = std::lower_bound(c_xs_.begin(), c_xs_.end(), x1) - c_xs_.begin();
+      int r               = std::lower_bound(c_xs_.begin(), c_xs_.end(), x2) - c_xs_.begin();
       return G_(get(r, y1, y2), G_.inv(get(l, y1, y2)));
     }
   };
-}
+}  // namespace haar_lib

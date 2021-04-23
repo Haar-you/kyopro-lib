@@ -8,21 +8,23 @@
 
 namespace hl = haar_lib;
 
-int main(){
-  int n; std::cin >> n;
+int main() {
+  int n;
+  std::cin >> n;
 
   hl::tree<int> tree(n);
-  for(auto [i, k] : hl::input_tuples_with_index<int>(n)){
-    for(auto [c] : hl::input_tuples<int>(k)){
+  for (auto [i, k] : hl::input_tuples_with_index<int>(n)) {
+    for (auto [c] : hl::input_tuples<int>(k)) {
       tree.add_edge(i, c, 1);
     }
   }
 
   auto lca = hl::lowest_common_ancestor_doubling(tree, 0);
 
-  int q; std::cin >> q;
+  int q;
+  std::cin >> q;
 
-  for(auto [u, v] : hl::input_tuples<int, int>(q)){
+  for (auto [u, v] : hl::input_tuples<int, int>(q)) {
     std::cout << lca(u, v) << std::endl;
   }
 

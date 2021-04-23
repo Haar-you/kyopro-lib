@@ -7,44 +7,48 @@
 namespace hl = haar_lib;
 
 struct parser : hl::parser {
-  parser(const std::string &s): hl::parser(s){}
+  parser(const std::string &s) : hl::parser(s) {}
 
-  bool constant(){
+  bool constant() {
     bool ret = check('T');
     ignore();
     return ret;
   }
 
-  bool negate(){
+  bool negate() {
     ignore('-');
     return !expression();
   }
 
-  std::string get_op(){
-    if(check_and_ignore('*')) return "*";
-    if(check_and_ignore('+')) return "+";
-    ignore("->"); return "->";
+  std::string get_op() {
+    if (check_and_ignore('*')) return "*";
+    if (check_and_ignore('+')) return "+";
+    ignore("->");
+    return "->";
   }
 
-  bool term(){
+  bool term() {
     ignore('(');
-    bool left = expression();
-    auto op = get_op();
+    bool left  = expression();
+    auto op    = get_op();
     bool right = expression();
     ignore(')');
 
-    if(op == "*") return left && right;
-    else if(op == "+") return left || right;
-    else return !left || right;
+    if (op == "*")
+      return left && right;
+    else if (op == "+")
+      return left || right;
+    else
+      return !left || right;
   }
 
-  bool expression(){
-    if(check('(')) return term();
-    if(check('-')) return negate();
+  bool expression() {
+    if (check('(')) return term();
+    if (check('-')) return negate();
     return constant();
   }
 
-  bool run(){
+  bool run() {
     bool left = expression();
     ignore('=');
     bool right = expression();
@@ -52,22 +56,22 @@ struct parser : hl::parser {
   }
 };
 
-int main(){
+int main() {
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
   std::string s;
-  while(std::cin >> s){
-    if(s == "#") break;
+  while (std::cin >> s) {
+    if (s == "#") break;
 
     bool ans = true;
 
-    for(int i = 0; i < 1 << 11; ++i){
+    for (int i = 0; i < 1 << 11; ++i) {
       std::string t(s);
 
-      for(auto &ch : t){
-        if(ch >= 'a' and ch <= 'k'){
-          ch = i & (1 << (ch-'a')) ? 'T' : 'F';
+      for (auto &ch : t) {
+        if (ch >= 'a' and ch <= 'k') {
+          ch = i & (1 << (ch - 'a')) ? 'T' : 'F';
         }
       }
 

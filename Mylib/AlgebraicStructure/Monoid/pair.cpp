@@ -16,4 +16,4 @@ namespace haar_lib {
       return {M1(a.first, b.first), M2(a.second, b.second)};
     }
   };
-}
+}  // namespace haar_lib

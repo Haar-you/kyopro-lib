@@ -7,20 +7,21 @@
 
 namespace hl = haar_lib;
 
-int main(){
+int main() {
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  int N, A, B; std::cin >> N >> A >> B;
+  int N, A, B;
+  std::cin >> N >> A >> B;
 
   const auto is_prime = hl::atkin_sieve(N);
 
   int pi = 0;
   std::vector<int> ans;
 
-  for(int i = 2; i <= N; ++i){
-    if(is_prime(i)){
-      if((pi - B) % A == 0){
+  for (int i = 2; i <= N; ++i) {
+    if (is_prime(i)) {
+      if ((pi - B) % A == 0) {
         ans.push_back(i);
       }
       ++pi;

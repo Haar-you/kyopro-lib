@@ -6,13 +6,14 @@
 
 namespace hl = haar_lib;
 
-int main(){
+int main() {
   auto rh = hl::make_rh(1000000, 1000000007);
 
-  std::string t, p; std::cin >> t >> p;
+  std::string t, p;
+  std::cin >> t >> p;
 
   auto res = rh.find(t, p);
-  for(auto i : res) std::cout << i << "\n";
+  for (auto i : res) std::cout << i << "\n";
 
   return 0;
 }

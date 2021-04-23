@@ -6,15 +6,17 @@
 
 namespace hl = haar_lib;
 
-int main(){
+int main() {
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  int N, M; std::cin >> N >> M;
+  int N, M;
+  std::cin >> N >> M;
   std::vector<std::vector<int>> g(N);
 
-  for(int i = 0; i < M; ++i){
-    int u, v; std::cin >> u >> v;
+  for (int i = 0; i < M; ++i) {
+    int u, v;
+    std::cin >> u >> v;
     g[u].push_back(v);
     g[v].push_back(u);
   }

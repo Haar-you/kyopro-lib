@@ -7,8 +7,9 @@
 
 namespace hl = haar_lib;
 
-int main(){
-  int n; std::cin >> n;
+int main() {
+  int n;
+  std::cin >> n;
 
   hl::tree<int> tree(n);
   tree.read<0, false>(n - 1);

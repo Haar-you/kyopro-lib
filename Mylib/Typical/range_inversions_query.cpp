@@ -1,9 +1,9 @@
 #pragma once
-#include <vector>
-#include <utility>
 #include <algorithm>
-#include "Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp"
+#include <utility>
+#include <vector>
 #include "Mylib/Algorithm/mo_algorithm.cpp"
+#include "Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp"
 
 namespace haar_lib {
   template <typename T>
@@ -13,23 +13,23 @@ namespace haar_lib {
     std::vector<std::pair<int, int>> qs_;
 
   public:
-    range_inversions_query(){}
-    range_inversions_query(std::vector<T> a): N_(a.size()){
+    range_inversions_query() {}
+    range_inversions_query(std::vector<T> a) : N_(a.size()) {
       auto b = a;
       std::sort(b.begin(), b.end());
       b.erase(std::unique(b.begin(), b.end()), b.end());
 
-      for(auto x : a){
+      for (auto x : a) {
         const int i = std::lower_bound(b.begin(), b.end(), x) - b.begin();
         data_.push_back(i);
       }
     }
 
-    void add(int l, int r){ // [l, r)
+    void add(int l, int r) {  // [l, r)
       qs_.emplace_back(l, r);
     }
 
-    auto solve(){
+    auto solve() {
       const int Q = qs_.size();
       fenwick_tree_add<int64_t> b(N_);
 
@@ -37,37 +37,36 @@ namespace haar_lib {
       std::vector<int64_t> ans(Q);
 
       auto append_left =
-        [&](int i){
-          t += b.fold(0, data_[i]);
-          b.update(data_[i], 1);
-        };
+          [&](int i) {
+            t += b.fold(0, data_[i]);
+            b.update(data_[i], 1);
+          };
 
       auto append_right =
-        [&](int i){
-          t += b.fold(data_[i] + 1, N_);
-          b.update(data_[i], 1);
-        };
+          [&](int i) {
+            t += b.fold(data_[i] + 1, N_);
+            b.update(data_[i], 1);
+          };
 
       auto remove_left =
-        [&](int i){
-          t -= b.fold(0, data_[i]);
-          b.update(data_[i], -1);
-        };
+          [&](int i) {
+            t -= b.fold(0, data_[i]);
+            b.update(data_[i], -1);
+          };
 
       auto remove_right =
-        [&](int i){
-          t -= b.fold(data_[i] + 1, N_);
-          b.update(data_[i], -1);
-        };
+          [&](int i) {
+            t -= b.fold(data_[i] + 1, N_);
+            b.update(data_[i], -1);
+          };
 
-      auto query = [&](int i){ans[i] = t;};
+      auto query = [&](int i) { ans[i] = t; };
 
       auto mo =
-        mo_algorithm(
-          N_, Q, append_left, append_right, remove_left, remove_right, query
-        );
+          mo_algorithm(
+              N_, Q, append_left, append_right, remove_left, remove_right, query);
 
-      for(auto [l, r] : qs_){
+      for (auto [l, r] : qs_) {
         mo.add(l, r);
       }
 
@@ -76,4 +75,4 @@ namespace haar_lib {
       return ans;
     }
   };
-}
+}  // namespace haar_lib

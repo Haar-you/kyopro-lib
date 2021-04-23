@@ -2,18 +2,19 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/Number/binary_gcd.cpp"
 #include "Mylib/IO/input_vector.cpp"
+#include "Mylib/Number/binary_gcd.cpp"
 
 namespace hl = haar_lib;
 
-int main(){
-  int n; std::cin >> n;
+int main() {
+  int n;
+  std::cin >> n;
 
   auto a = hl::input_vector<int>(n);
 
   int l = 1;
-  for(auto x : a){
+  for (auto x : a) {
     l = l / hl::binary_gcd(l, x) * x;
   }
 

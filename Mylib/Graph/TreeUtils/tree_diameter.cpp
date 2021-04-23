@@ -1,13 +1,13 @@
 #pragma once
-#include <vector>
-#include <utility>
-#include <stack>
 #include <algorithm>
+#include <stack>
+#include <utility>
+#include <vector>
 #include "Mylib/Graph/Template/graph.cpp"
 
 namespace haar_lib {
   template <typename T>
-  std::pair<T, std::vector<int>> tree_diameter(const tree<T> &tr){
+  std::pair<T, std::vector<int>> tree_diameter(const tree<T> &tr) {
     const int N = tr.size();
 
     std::vector<bool> check(N);
@@ -15,13 +15,14 @@ namespace haar_lib {
     std::stack<int> st;
 
     st.push(0);
-    while(st.size()){
-      int i = st.top(); st.pop();
+    while (st.size()) {
+      int i = st.top();
+      st.pop();
 
       check[i] = true;
 
-      for(const auto &e : tr[i]){
-        if(not check[e.to]){
+      for (const auto &e : tr[i]) {
+        if (not check[e.to]) {
           dp[e.to] = dp[i] + e.cost;
           st.push(e.to);
         }
@@ -36,13 +37,14 @@ namespace haar_lib {
     std::vector<int> prev(N);
 
     st.push(u);
-    while(st.size()){
-      int i = st.top(); st.pop();
+    while (st.size()) {
+      int i = st.top();
+      st.pop();
 
       check[i] = true;
 
-      for(const auto &e : tr[i]){
-        if(not check[e.to]){
+      for (const auto &e : tr[i]) {
+        if (not check[e.to]) {
           dp[e.to] = dp[i] + e.cost;
           st.push(e.to);
           prev[e.to] = i;
@@ -55,12 +57,12 @@ namespace haar_lib {
     std::vector<int> ret;
 
     int cur = v;
-    while(1){
+    while (1) {
       ret.push_back(cur);
-      if(cur == u) break;
+      if (cur == u) break;
       cur = prev[cur];
     }
 
     return std::make_pair(dp[v], ret);
   }
-}
+}  // namespace haar_lib

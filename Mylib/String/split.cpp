@@ -3,13 +3,13 @@
 #include <vector>
 
 namespace haar_lib {
-  auto split(const std::string &s, const std::string &delim){
+  auto split(const std::string &s, const std::string &delim) {
     std::vector<std::string> ret;
 
     size_t i = 0;
-    while(1){
+    while (1) {
       size_t j = s.find(delim, i);
-      if(j == std::string::npos) break;
+      if (j == std::string::npos) break;
 
       ret.push_back(s.substr(i, j - i));
 
@@ -20,4 +20,4 @@ namespace haar_lib {
 
     return ret;
   }
-}
+}  // namespace haar_lib

@@ -6,17 +6,18 @@
 
 namespace hl = haar_lib;
 
-int main(){
+int main() {
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  std::string s; std::cin >> s;
+  std::string s;
+  std::cin >> s;
 
   auto ans = hl::run_enumerate(s);
 
   std::cout << ans.size() << "\n";
 
-  for(auto &[t, l, r] : ans){
+  for (auto& [t, l, r] : ans) {
     std::cout << t << " " << l << " " << r << "\n";
   }
 

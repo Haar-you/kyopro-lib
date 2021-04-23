@@ -6,13 +6,14 @@
 
 namespace hl = haar_lib;
 
-int main(){
+int main() {
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  int T; std::cin >> T;
+  int T;
+  std::cin >> T;
 
-  for(auto [A, K] : hl::input_tuples<uint64_t, uint64_t>(T)){
+  for (auto [A, K] : hl::input_tuples<uint64_t, uint64_t>(T)) {
     std::cout << hl::kth_root(A, K) << "\n";
   }
 

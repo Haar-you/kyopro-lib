@@ -2,8 +2,8 @@
 
 namespace haar_lib {
   template <typename T>
-  constexpr bool is_square(T n){
+  constexpr bool is_square(T n) {
     T rt = sqrt(n);
     return rt * rt == n;
   }
-}
+}  // namespace haar_lib

@@ -1,7 +1,7 @@
 #pragma once
-#include <vector>
-#include <stack>
 #include <optional>
+#include <stack>
+#include <vector>
 
 namespace haar_lib {
   template <typename Semigroup>
@@ -16,12 +16,16 @@ namespace haar_lib {
     std::vector<value_type> front_sum_, back_sum_;
 
     std::optional<value_type> f(std::optional<value_type> a, std::optional<value_type> b) const {
-      if(a){
-        if(b) return {S_(*a, *b)};
-        else return {*a};
-      }else{
-        if(b) return {*b};
-        else return std::nullopt;
+      if (a) {
+        if (b)
+          return {S_(*a, *b)};
+        else
+          return {*a};
+      } else {
+        if (b)
+          return {*b};
+        else
+          return std::nullopt;
       }
     }
 
@@ -30,23 +34,24 @@ namespace haar_lib {
     }
 
   public:
-    sliding_window_aggregation(){}
+    sliding_window_aggregation() {}
 
     std::optional<value_type> fold() const {
       return f(g(front_sum_), g(back_sum_));
     }
 
-    void push(const value_type &value){
+    void push(const value_type &value) {
       back_stack_.push(value);
       back_sum_.push_back(f(g(back_sum_), value).value());
     }
 
-    void pop(){
-      if(front_stack_.empty()){
+    void pop() {
+      if (front_stack_.empty()) {
         back_sum_.clear();
 
-        while(not back_stack_.empty()){
-          const auto value = back_stack_.top(); back_stack_.pop();
+        while (not back_stack_.empty()) {
+          const auto value = back_stack_.top();
+          back_stack_.pop();
           front_stack_.push(value);
           front_sum_.push_back(f(value, g(front_sum_)).value());
         }
@@ -56,4 +61,4 @@ namespace haar_lib {
       front_sum_.pop_back();
     }
   };
-}
+}  // namespace haar_lib

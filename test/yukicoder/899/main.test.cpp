@@ -1,25 +1,26 @@
 #define PROBLEM "https://yukicoder.me/problems/no/899"
 
 #include <iostream>
+#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
+#include "Mylib/AlgebraicStructure/Monoid/update.cpp"
+#include "Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp"
+#include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
 #include "Mylib/Graph/Template/graph.cpp"
 #include "Mylib/Graph/TreeUtils/euler_tour_bfs.cpp"
-#include "Mylib/DataStructure/SegmentTree/lazy_segment_tree.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/update.cpp"
-#include "Mylib/AlgebraicStructure/Monoid/sum.cpp"
-#include "Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp"
-#include "Mylib/IO/input_vector.cpp"
 #include "Mylib/IO/input_tuples.cpp"
+#include "Mylib/IO/input_vector.cpp"
 
 namespace hl = haar_lib;
 
 using update = hl::update_monoid<int64_t>;
-using sum = hl::sum_monoid<int64_t>;
+using sum    = hl::sum_monoid<int64_t>;
 
-int main(){
+int main() {
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  int N; std::cin >> N;
+  int N;
+  std::cin >> N;
 
   hl::tree<int> tree(N);
   tree.read<0, false, false>(N - 1);
@@ -29,20 +30,21 @@ int main(){
   auto A = hl::input_vector<int64_t>(N);
   hl::lazy_segment_tree<hl::update_sum<update, sum>> seg(N);
 
-  for(int i = 0; i < N; ++i){
-    res.query_at(i, [&](int l, int r){seg.update(l, r, A[i]);});
+  for (int i = 0; i < N; ++i) {
+    res.query_at(i, [&](int l, int r) { seg.update(l, r, A[i]); });
   }
 
-  int Q; std::cin >> Q;
+  int Q;
+  std::cin >> Q;
 
-  for(auto [x] : hl::input_tuples<int>(Q)){
+  for (auto [x] : hl::input_tuples<int>(Q)) {
     int64_t ans = 0;
 
     auto f =
-      [&](int l, int r){
-        ans += seg.fold(l, r);
-        seg.update(l, r, 0);
-      };
+        [&](int l, int r) {
+          ans += seg.fold(l, r);
+          seg.update(l, r, 0);
+        };
 
     // 親の親
     res.query_at(res.get_ancestor(x, 2), f);
@@ -63,11 +65,10 @@ int main(){
     res.query_children(x, 2, f);
 
     res.query_at(
-      x,
-      [&](int l, int r){
-        seg.update(l, r, ans);
-      }
-    );
+        x,
+        [&](int l, int r) {
+          seg.update(l, r, ans);
+        });
 
     std::cout << ans << std::endl;
   }

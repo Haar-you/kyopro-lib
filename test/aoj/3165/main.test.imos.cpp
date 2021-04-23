@@ -7,15 +7,16 @@
 
 namespace hl = haar_lib;
 
-int main(){
+int main() {
   std::cin.tie(0);
   std::ios::sync_with_stdio(false);
 
-  int N, Q; std::cin >> N >> Q;
+  int N, Q;
+  std::cin >> N >> Q;
 
   auto imos = hl::linear_imos_1d<int64_t>(N);
 
-  for(auto [l, k] : hl::input_tuples<int, int>(Q)){
+  for (auto [l, k] : hl::input_tuples<int, int>(Q)) {
     --l;
     imos.update(l, l + k, 1, 1);
   }

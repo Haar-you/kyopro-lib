@@ -13,16 +13,16 @@ namespace haar_lib {
 
     node *root_;
 
-    persistent_stack(node *root): root_(root){}
+    persistent_stack(node *root) : root_(root) {}
 
   public:
-    persistent_stack(): root_(nullptr){}
+    persistent_stack() : root_(nullptr) {}
 
     bool empty() const {
       return not root_;
     }
 
-    const T& top() const {
+    const T &top() const {
       return root_->value;
     }
 
@@ -39,7 +39,7 @@ namespace haar_lib {
     std::vector<T> data() const {
       std::vector<T> ret;
       node *t = root_;
-      while(t){
+      while (t) {
         ret.push_back(t->value);
         t = t->next;
       }
@@ -47,4 +47,4 @@ namespace haar_lib {
       return ret;
     }
   };
-}
+}  // namespace haar_lib

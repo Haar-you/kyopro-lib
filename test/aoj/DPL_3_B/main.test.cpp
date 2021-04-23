@@ -2,13 +2,14 @@
 
 #include <iostream>
 #include <vector>
-#include "Mylib/Typical/max_rectangle.cpp"
 #include "Mylib/IO/input_vector.cpp"
+#include "Mylib/Typical/max_rectangle.cpp"
 
 namespace hl = haar_lib;
 
-int main(){
-  int H, W; std::cin >> H >> W;
+int main() {
+  int H, W;
+  std::cin >> H >> W;
 
   auto c = hl::input_vector<int>(H, W);
 

@@ -1,8 +1,8 @@
 #pragma once
+#include <algorithm>
 #include <array>
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 namespace haar_lib {
   template <typename T>
@@ -11,24 +11,23 @@ namespace haar_lib {
     using value_type = T;
 
   private:
-    constexpr static int MAX_SIZE_2 = 20; // size <= 2 ^ MAX_SIZE_2
+    constexpr static int MAX_SIZE_2 = 20;  // size <= 2 ^ MAX_SIZE_2
 
     struct node {
       T value;
-      std::array<node*, MAX_SIZE_2> ancestors;
+      std::array<node *, MAX_SIZE_2> ancestors;
       int depth = 0;
     };
 
     node *front_node_ = nullptr, *back_node_ = nullptr;
 
-    persistent_queue(node* front_node, node* back_node):
-      front_node_(front_node), back_node_(back_node){}
+    persistent_queue(node *front_node, node *back_node) : front_node_(front_node), back_node_(back_node) {}
 
   public:
-    persistent_queue(){}
-    persistent_queue(const T &value){
-      node *t = new node();
-      t->value = value;
+    persistent_queue() {}
+    persistent_queue(const T &value) {
+      node *t    = new node();
+      t->value   = value;
       back_node_ = front_node_ = t;
     }
 
@@ -38,10 +37,12 @@ namespace haar_lib {
       t->value = value;
 
       t->ancestors[0] = back_node_;
-      for(int i = 1; i < MAX_SIZE_2; ++i){
+      for (int i = 1; i < MAX_SIZE_2; ++i) {
         node *s = t->ancestors[i - 1];
-        if(s) t->ancestors[i] = s->ancestors[i - 1];
-        else break;
+        if (s)
+          t->ancestors[i] = s->ancestors[i - 1];
+        else
+          break;
       }
 
       t->depth = back_node_ ? back_node_->depth + 1 : 0;
@@ -50,7 +51,7 @@ namespace haar_lib {
     }
 
     persistent_queue pop() const {
-      if(back_node_->depth == front_node_->depth){
+      if (back_node_->depth == front_node_->depth) {
         return persistent_queue(nullptr, nullptr);
       }
 
@@ -58,12 +59,12 @@ namespace haar_lib {
 
       node *t = back_node_;
 
-      for(int i = MAX_SIZE_2 - 1; i >= 0; --i){
-        if(d >= (1 << i)){
+      for (int i = MAX_SIZE_2 - 1; i >= 0; --i) {
+        if (d >= (1 << i)) {
           d -= (1 << i);
           t = t->ancestors[i];
         }
-        if(d == 0) break;
+        if (d == 0) break;
       }
 
       return persistent_queue(t, back_node_);
@@ -88,8 +89,8 @@ namespace haar_lib {
     std::vector<T> data() const {
       std::vector<T> ret;
       node *t = back_node_;
-      while(t){
-        if(t == front_node_){
+      while (t) {
+        if (t == front_node_) {
           ret.push_back(t->value);
           break;
         }
@@ -102,4 +103,4 @@ namespace haar_lib {
       return ret;
     }
   };
-}
+}  // namespace haar_lib

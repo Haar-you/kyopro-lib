@@ -1,13 +1,13 @@
 #define PROBLEM "https://yukicoder.me/problems/no/194"
 
-#include <iostream>
-#include <vector>
 #include <algorithm>
+#include <iostream>
 #include <numeric>
-#include "Mylib/Number/Mint/mint.cpp"
-#include "Mylib/LinearAlgebra/square_matrix.cpp"
-#include "Mylib/LinearAlgebra/inverse_matrix.cpp"
+#include <vector>
 #include "Mylib/IO/input_vector.cpp"
+#include "Mylib/LinearAlgebra/inverse_matrix.cpp"
+#include "Mylib/LinearAlgebra/square_matrix.cpp"
+#include "Mylib/Number/Mint/mint.cpp"
 
 namespace hl = haar_lib;
 
@@ -16,11 +16,11 @@ using mint = hl::modint<1000000007>;
 static int N;
 using M = hl::square_matrix_dyn<mint, N>;
 
-std::pair<mint, mint> solve1(int64_t N, int64_t K, std::vector<int> A){
+std::pair<mint, mint> solve1(int64_t N, int64_t K, std::vector<int> A) {
   M m;
 
-  for(int i = 0; i < N; ++i) m[0][i] = 1;
-  for(int i = 0; i < N - 1; ++i) m[i + 1][i] = 1;
+  for (int i = 0; i < N; ++i) m[0][i] = 1;
+  for (int i = 0; i < N - 1; ++i) m[i + 1][i] = 1;
 
   std::reverse(A.begin(), A.end());
 
@@ -28,13 +28,13 @@ std::pair<mint, mint> solve1(int64_t N, int64_t K, std::vector<int> A){
 
   {
     auto m2 = m.pow(K - N);
-    for(int i = 0; i < N; ++i) f += m2[0][i] * A[i];
+    for (int i = 0; i < N; ++i) f += m2[0][i] * A[i];
   }
 
   mint s = std::accumulate(A.begin(), A.end(), mint(0));
 
   {
-    auto c = hl::inverse_matrix(M::unit() - m).value();
+    auto c    = hl::inverse_matrix(M::unit() - m).value();
     auto temp = (M::unit() - m.pow(K - N + 1)) * c - M::unit();
 
     s += dot(temp[0], M::vector_type(A));
@@ -43,16 +43,16 @@ std::pair<mint, mint> solve1(int64_t N, int64_t K, std::vector<int> A){
   return {f, s};
 }
 
-std::pair<mint, mint> solve2(int64_t N, int64_t K, std::vector<int> A){
+std::pair<mint, mint> solve2(int64_t N, int64_t K, std::vector<int> A) {
   std::vector<mint> v(K);
 
   mint temp = 0;
-  for(int i = 0; i < N; ++i){
+  for (int i = 0; i < N; ++i) {
     temp += A[i];
     v[i] = A[i];
   }
 
-  for(int i = N; i < K; ++i){
+  for (int i = N; i < K; ++i) {
     v[i] = temp;
     temp += v[i];
     temp -= v[i - N];
@@ -64,8 +64,9 @@ std::pair<mint, mint> solve2(int64_t N, int64_t K, std::vector<int> A){
   return {f, s};
 }
 
-int main(){
-  int64_t K; std::cin >> N >> K;
+int main() {
+  int64_t K;
+  std::cin >> N >> K;
 
   auto A = hl::input_vector<int>(N);
 
