@@ -2,5 +2,4 @@
 # name: all
 # key: all
 # --
-
 $1.begin(), $1.end()$0

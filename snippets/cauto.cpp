@@ -2,5 +2,4 @@
 # name: cauto
 # key: cauto
 # --
-
 const auto &

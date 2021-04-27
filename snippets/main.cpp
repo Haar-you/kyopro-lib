@@ -2,8 +2,7 @@
 # name: main
 # key: main
 # --
-
-int main(){
+int main() {
   $0
 
   return 0;
