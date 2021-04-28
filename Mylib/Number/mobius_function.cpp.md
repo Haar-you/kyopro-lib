@@ -10,23 +10,25 @@ data:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/mobius_function.cpp\"\n#include <vector>\n\n\
     namespace haar_lib {\n  template <typename Checker>\n  std::vector<int> mobius_function(int\
-    \ n, Checker is_prime){\n    std::vector<int> ret(n + 1), ps;\n\n    ret[1] =\
-    \ 1;\n\n    for(int i = 2; i <= n; ++i){\n      if(is_prime(i)){\n        ps.push_back(i);\n\
-    \        ret[i] = -1;\n      }\n      for(auto &j : ps){\n        if(i * j > n)\
-    \ break;\n        if(i % j == 0) ret[i * j] = 0;\n        else ret[i * j] = ret[i]\
-    \ * ret[j];\n      }\n    }\n\n    return ret;\n  }\n}\n"
+    \ n, Checker is_prime) {\n    std::vector<int> ret(n + 1), ps;\n\n    ret[1] =\
+    \ 1;\n\n    for (int i = 2; i <= n; ++i) {\n      if (is_prime(i)) {\n       \
+    \ ps.push_back(i);\n        ret[i] = -1;\n      }\n      for (auto &j : ps) {\n\
+    \        if (i * j > n) break;\n        if (i % j == 0)\n          ret[i * j]\
+    \ = 0;\n        else\n          ret[i * j] = ret[i] * ret[j];\n      }\n    }\n\
+    \n    return ret;\n  }\n}  // namespace haar_lib\n"
   code: "#pragma once\n#include <vector>\n\nnamespace haar_lib {\n  template <typename\
-    \ Checker>\n  std::vector<int> mobius_function(int n, Checker is_prime){\n   \
-    \ std::vector<int> ret(n + 1), ps;\n\n    ret[1] = 1;\n\n    for(int i = 2; i\
-    \ <= n; ++i){\n      if(is_prime(i)){\n        ps.push_back(i);\n        ret[i]\
-    \ = -1;\n      }\n      for(auto &j : ps){\n        if(i * j > n) break;\n   \
-    \     if(i % j == 0) ret[i * j] = 0;\n        else ret[i * j] = ret[i] * ret[j];\n\
-    \      }\n    }\n\n    return ret;\n  }\n}\n"
+    \ Checker>\n  std::vector<int> mobius_function(int n, Checker is_prime) {\n  \
+    \  std::vector<int> ret(n + 1), ps;\n\n    ret[1] = 1;\n\n    for (int i = 2;\
+    \ i <= n; ++i) {\n      if (is_prime(i)) {\n        ps.push_back(i);\n       \
+    \ ret[i] = -1;\n      }\n      for (auto &j : ps) {\n        if (i * j > n) break;\n\
+    \        if (i % j == 0)\n          ret[i * j] = 0;\n        else\n          ret[i\
+    \ * j] = ret[i] * ret[j];\n      }\n    }\n\n    return ret;\n  }\n}  // namespace\
+    \ haar_lib\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Number/mobius_function.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/Number/mobius_function.cpp

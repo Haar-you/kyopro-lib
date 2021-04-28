@@ -3,41 +3,42 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/580/main.test.cpp
     title: test/yukicoder/580/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Typical/interval_scheduling_k.cpp\"\n#include <vector>\n\
-    #include <set>\n#include <iterator>\n#include <algorithm>\n#include <utility>\n\
-    #include <numeric>\n\nnamespace haar_lib {\n  auto interval_scheduling_k(std::vector<int>\
-    \ l, std::vector<int> r, int k){\n    const int N = l.size();\n\n    std::vector<int>\
+  bundledCode: "#line 2 \"Mylib/Typical/interval_scheduling_k.cpp\"\n#include <algorithm>\n\
+    #include <iterator>\n#include <numeric>\n#include <set>\n#include <utility>\n\
+    #include <vector>\n\nnamespace haar_lib {\n  auto interval_scheduling_k(std::vector<int>\
+    \ l, std::vector<int> r, int k) {\n    const int N = l.size();\n\n    std::vector<int>\
     \ ord(N);\n    std::iota(ord.begin(), ord.end(), 0);\n    std::sort(ord.begin(),\
-    \ ord.end(), [&](int i, int j){return r[i] < r[j];});\n\n    std::multiset<int>\
-    \ a;\n    std::vector<std::pair<int, int>> ret;\n\n    for(int i : ord){\n   \
-    \   auto it = a.upper_bound(l[i]);\n\n      if(it != a.begin()){\n        it =\
-    \ std::prev(it);\n        a.erase(it);\n      }\n\n      if((int)a.size() < k){\n\
-    \        a.insert(r[i]);\n        ret.emplace_back(l[i], r[i]);\n      }\n   \
-    \ }\n\n    return ret;\n  }\n}\n"
-  code: "#pragma once\n#include <vector>\n#include <set>\n#include <iterator>\n#include\
-    \ <algorithm>\n#include <utility>\n#include <numeric>\n\nnamespace haar_lib {\n\
-    \  auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k){\n\
+    \ ord.end(), [&](int i, int j) { return r[i] < r[j]; });\n\n    std::multiset<int>\
+    \ a;\n    std::vector<std::pair<int, int>> ret;\n\n    for (int i : ord) {\n \
+    \     auto it = a.upper_bound(l[i]);\n\n      if (it != a.begin()) {\n       \
+    \ it = std::prev(it);\n        a.erase(it);\n      }\n\n      if ((int) a.size()\
+    \ < k) {\n        a.insert(r[i]);\n        ret.emplace_back(l[i], r[i]);\n   \
+    \   }\n    }\n\n    return ret;\n  }\n}  // namespace haar_lib\n"
+  code: "#pragma once\n#include <algorithm>\n#include <iterator>\n#include <numeric>\n\
+    #include <set>\n#include <utility>\n#include <vector>\n\nnamespace haar_lib {\n\
+    \  auto interval_scheduling_k(std::vector<int> l, std::vector<int> r, int k) {\n\
     \    const int N = l.size();\n\n    std::vector<int> ord(N);\n    std::iota(ord.begin(),\
-    \ ord.end(), 0);\n    std::sort(ord.begin(), ord.end(), [&](int i, int j){return\
-    \ r[i] < r[j];});\n\n    std::multiset<int> a;\n    std::vector<std::pair<int,\
-    \ int>> ret;\n\n    for(int i : ord){\n      auto it = a.upper_bound(l[i]);\n\n\
-    \      if(it != a.begin()){\n        it = std::prev(it);\n        a.erase(it);\n\
-    \      }\n\n      if((int)a.size() < k){\n        a.insert(r[i]);\n        ret.emplace_back(l[i],\
-    \ r[i]);\n      }\n    }\n\n    return ret;\n  }\n}\n"
+    \ ord.end(), 0);\n    std::sort(ord.begin(), ord.end(), [&](int i, int j) { return\
+    \ r[i] < r[j]; });\n\n    std::multiset<int> a;\n    std::vector<std::pair<int,\
+    \ int>> ret;\n\n    for (int i : ord) {\n      auto it = a.upper_bound(l[i]);\n\
+    \n      if (it != a.begin()) {\n        it = std::prev(it);\n        a.erase(it);\n\
+    \      }\n\n      if ((int) a.size() < k) {\n        a.insert(r[i]);\n       \
+    \ ret.emplace_back(l[i], r[i]);\n      }\n    }\n\n    return ret;\n  }\n}  //\
+    \ namespace haar_lib\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Typical/interval_scheduling_k.cpp
   requiredBy: []
-  timestamp: '2020-11-07 03:03:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-04-23 23:44:44+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yukicoder/580/main.test.cpp
 documentation_of: Mylib/Typical/interval_scheduling_k.cpp

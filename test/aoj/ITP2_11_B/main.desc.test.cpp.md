@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/Bit/enumerate_supersets_desc.cpp
     title: Enumerate supersets (Descending order)
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: Input vector
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_B
@@ -19,44 +19,44 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_B
   bundledCode: "#line 1 \"test/aoj/ITP2_11_B/main.desc.test.cpp\"\n#define PROBLEM\
     \ \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_B\"\n\n#include\
-    \ <iostream>\n#include <vector>\n#include <map>\n#line 2 \"Mylib/Bit/enumerate_supersets_desc.cpp\"\
+    \ <iostream>\n#include <map>\n#include <vector>\n#line 2 \"Mylib/Bit/enumerate_supersets_desc.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename Func>\n  void enumerate_supersets_desc(int\
-    \ a, int n, const Func &f){\n    const int x = (1 << n) - 1, y = x ^ (a & x);\n\
-    \    for(int t = y; ; t = (t - 1) & y){\n      if(not f(t | a)) break;\n     \
-    \ if(t == 0) break;\n    }\n  }\n}\n#line 4 \"Mylib/IO/input_vector.cpp\"\n\n\
-    namespace haar_lib {\n  template <typename T>\n  std::vector<T> input_vector(int\
-    \ N){\n    std::vector<T> ret(N);\n    for(int i = 0; i < N; ++i) std::cin >>\
+    \ a, int n, const Func &f) {\n    const int x = (1 << n) - 1, y = x ^ (a & x);\n\
+    \    for (int t = y;; t = (t - 1) & y) {\n      if (not f(t | a)) break;\n   \
+    \   if (t == 0) break;\n    }\n  }\n}  // namespace haar_lib\n#line 4 \"Mylib/IO/input_vector.cpp\"\
+    \n\nnamespace haar_lib {\n  template <typename T>\n  std::vector<T> input_vector(int\
+    \ N) {\n    std::vector<T> ret(N);\n    for (int i = 0; i < N; ++i) std::cin >>\
     \ ret[i];\n    return ret;\n  }\n\n  template <typename T>\n  std::vector<std::vector<T>>\
-    \ input_vector(int N, int M){\n    std::vector<std::vector<T>> ret(N);\n    for(int\
-    \ i = 0; i < N; ++i) ret[i] = input_vector<T>(M);\n    return ret;\n  }\n}\n#line\
-    \ 8 \"test/aoj/ITP2_11_B/main.desc.test.cpp\"\n\nnamespace hl = haar_lib;\n\n\
-    int main(){\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int\
-    \ n, k; std::cin >> n >> k;\n\n  int t = 0;\n  for(auto b : hl::input_vector<int>(k)){\n\
-    \    t |= 1 << b;\n  }\n\n  std::map<int, std::vector<int>> ans;\n  hl::enumerate_supersets_desc(\n\
-    \    t, n,\n    [&](int d){\n      ans[d];\n      for(int i = 0; i < n; ++i){\n\
-    \        if(d & (1 << i)) ans[d].push_back(i);\n      }\n      return true;\n\
-    \    }\n  );\n\n  for(auto &[m, v] : ans){\n    std::cout << m << \":\";\n   \
-    \ for(auto x : v) std::cout << \" \" << x;\n    std::cout << \"\\n\";\n  }\n\n\
-    \  return 0;\n}\n"
+    \ input_vector(int N, int M) {\n    std::vector<std::vector<T>> ret(N);\n    for\
+    \ (int i = 0; i < N; ++i) ret[i] = input_vector<T>(M);\n    return ret;\n  }\n\
+    }  // namespace haar_lib\n#line 8 \"test/aoj/ITP2_11_B/main.desc.test.cpp\"\n\n\
+    namespace hl = haar_lib;\n\nint main() {\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\
+    \n  int n, k;\n  std::cin >> n >> k;\n\n  int t = 0;\n  for (auto b : hl::input_vector<int>(k))\
+    \ {\n    t |= 1 << b;\n  }\n\n  std::map<int, std::vector<int>> ans;\n  hl::enumerate_supersets_desc(\n\
+    \      t, n,\n      [&](int d) {\n        ans[d];\n        for (int i = 0; i <\
+    \ n; ++i) {\n          if (d & (1 << i)) ans[d].push_back(i);\n        }\n   \
+    \     return true;\n      });\n\n  for (auto& [m, v] : ans) {\n    std::cout <<\
+    \ m << \":\";\n    for (auto x : v) std::cout << \" \" << x;\n    std::cout <<\
+    \ \"\\n\";\n  }\n\n  return 0;\n}\n"
   code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP2_11_B\"\
-    \n\n#include <iostream>\n#include <vector>\n#include <map>\n#include \"Mylib/Bit/enumerate_supersets_desc.cpp\"\
-    \n#include \"Mylib/IO/input_vector.cpp\"\n\nnamespace hl = haar_lib;\n\nint main(){\n\
-    \  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int n, k; std::cin\
-    \ >> n >> k;\n\n  int t = 0;\n  for(auto b : hl::input_vector<int>(k)){\n    t\
-    \ |= 1 << b;\n  }\n\n  std::map<int, std::vector<int>> ans;\n  hl::enumerate_supersets_desc(\n\
-    \    t, n,\n    [&](int d){\n      ans[d];\n      for(int i = 0; i < n; ++i){\n\
-    \        if(d & (1 << i)) ans[d].push_back(i);\n      }\n      return true;\n\
-    \    }\n  );\n\n  for(auto &[m, v] : ans){\n    std::cout << m << \":\";\n   \
-    \ for(auto x : v) std::cout << \" \" << x;\n    std::cout << \"\\n\";\n  }\n\n\
-    \  return 0;\n}\n"
+    \n\n#include <iostream>\n#include <map>\n#include <vector>\n#include \"Mylib/Bit/enumerate_supersets_desc.cpp\"\
+    \n#include \"Mylib/IO/input_vector.cpp\"\n\nnamespace hl = haar_lib;\n\nint main()\
+    \ {\n  std::cin.tie(0);\n  std::ios::sync_with_stdio(false);\n\n  int n, k;\n\
+    \  std::cin >> n >> k;\n\n  int t = 0;\n  for (auto b : hl::input_vector<int>(k))\
+    \ {\n    t |= 1 << b;\n  }\n\n  std::map<int, std::vector<int>> ans;\n  hl::enumerate_supersets_desc(\n\
+    \      t, n,\n      [&](int d) {\n        ans[d];\n        for (int i = 0; i <\
+    \ n; ++i) {\n          if (d & (1 << i)) ans[d].push_back(i);\n        }\n   \
+    \     return true;\n      });\n\n  for (auto& [m, v] : ans) {\n    std::cout <<\
+    \ m << \":\";\n    for (auto x : v) std::cout << \" \" << x;\n    std::cout <<\
+    \ \"\\n\";\n  }\n\n  return 0;\n}\n"
   dependsOn:
   - Mylib/Bit/enumerate_supersets_desc.cpp
   - Mylib/IO/input_vector.cpp
   isVerificationFile: true
   path: test/aoj/ITP2_11_B/main.desc.test.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-04-23 23:44:44+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/aoj/ITP2_11_B/main.desc.test.cpp
 layout: document

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
   _extendedRequiredBy: []
@@ -9,152 +9,157 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2667/main.test.cpp
     title: test/aoj/2667/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/vertex_add_path_sum/main.test.cpp
     title: test/yosupo-judge/vertex_add_path_sum/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
     title: test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
     title: test/yosupo-judge/vertex_set_path_composite/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/1030/main.test.cpp
     title: test/yukicoder/1030/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yukicoder/235/main.test.cpp
     title: test/yukicoder/235/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp\"\n\
-    #include <vector>\n#include <utility>\n#include <algorithm>\n#line 3 \"Mylib/Graph/Template/graph.cpp\"\
-    \n#include <iostream>\n\nnamespace haar_lib {\n  template <typename T>\n  struct\
-    \ edge {\n    int from, to;\n    T cost;\n    int index = -1;\n    edge(){}\n\
-    \    edge(int from, int to, T cost): from(from), to(to), cost(cost){}\n    edge(int\
-    \ from, int to, T cost, int index): from(from), to(to), cost(cost), index(index){}\n\
-    \  };\n\n  template <typename T>\n  struct graph {\n    using weight_type = T;\n\
-    \    using edge_type = edge<T>;\n\n    std::vector<std::vector<edge<T>>> data;\n\
-    \n    auto& operator[](size_t i){return data[i];}\n    const auto& operator[](size_t\
-    \ i) const {return data[i];}\n\n    auto begin() const {return data.begin();}\n\
-    \    auto end() const {return data.end();}\n\n    graph(){}\n    graph(int N):\
-    \ data(N){}\n\n    bool empty() const {return data.empty();}\n    int size() const\
-    \ {return data.size();}\n\n    void add_edge(int i, int j, T w, int index = -1){\n\
-    \      data[i].emplace_back(i, j, w, index);\n    }\n\n    void add_undirected(int\
-    \ i, int j, T w, int index = -1){\n      add_edge(i, j, w, index);\n      add_edge(j,\
+    #include <algorithm>\n#include <utility>\n#include <vector>\n#line 2 \"Mylib/Graph/Template/graph.cpp\"\
+    \n#include <iostream>\n#line 4 \"Mylib/Graph/Template/graph.cpp\"\n\nnamespace\
+    \ haar_lib {\n  template <typename T>\n  struct edge {\n    int from, to;\n  \
+    \  T cost;\n    int index = -1;\n    edge() {}\n    edge(int from, int to, T cost)\
+    \ : from(from), to(to), cost(cost) {}\n    edge(int from, int to, T cost, int\
+    \ index) : from(from), to(to), cost(cost), index(index) {}\n  };\n\n  template\
+    \ <typename T>\n  struct graph {\n    using weight_type = T;\n    using edge_type\
+    \   = edge<T>;\n\n    std::vector<std::vector<edge<T>>> data;\n\n    auto& operator[](size_t\
+    \ i) { return data[i]; }\n    const auto& operator[](size_t i) const { return\
+    \ data[i]; }\n\n    auto begin() const { return data.begin(); }\n    auto end()\
+    \ const { return data.end(); }\n\n    graph() {}\n    graph(int N) : data(N) {}\n\
+    \n    bool empty() const { return data.empty(); }\n    int size() const { return\
+    \ data.size(); }\n\n    void add_edge(int i, int j, T w, int index = -1) {\n \
+    \     data[i].emplace_back(i, j, w, index);\n    }\n\n    void add_undirected(int\
+    \ i, int j, T w, int index = -1) {\n      add_edge(i, j, w, index);\n      add_edge(j,\
     \ i, w, index);\n    }\n\n    template <size_t I, bool DIRECTED = true, bool WEIGHTED\
-    \ = true>\n    void read(int M){\n      for(int i = 0; i < M; ++i){\n        int\
-    \ u, v; std::cin >> u >> v;\n        u -= I;\n        v -= I;\n        T w = 1;\n\
-    \        if(WEIGHTED) std::cin >> w;\n        if(DIRECTED) add_edge(u, v, w, i);\n\
-    \        else add_undirected(u, v, w, i);\n      }\n    }\n  };\n\n  template\
-    \ <typename T>\n  using tree = graph<T>;\n}\n#line 6 \"Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp\"\
+    \ = true>\n    void read(int M) {\n      for (int i = 0; i < M; ++i) {\n     \
+    \   int u, v;\n        std::cin >> u >> v;\n        u -= I;\n        v -= I;\n\
+    \        T w = 1;\n        if (WEIGHTED) std::cin >> w;\n        if (DIRECTED)\n\
+    \          add_edge(u, v, w, i);\n        else\n          add_undirected(u, v,\
+    \ w, i);\n      }\n    }\n  };\n\n  template <typename T>\n  using tree = graph<T>;\n\
+    }  // namespace haar_lib\n#line 6 \"Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  class hl_decomposition {\n\
-    \    int n_;\n\n    std::vector<int> sub_, // subtree size\n      par_, // parent\
-    \ id\n      head_, // chain head id\n      id_, // id[original id] = hld id\n\
-    \      rid_, // rid[hld id] = original id\n      next_, // next node in a chain\n\
-    \      end_; //\n\n    int dfs_sub(tree<T> &tr, int cur, int p){\n      par_[cur]\
-    \ = p;\n      int t = 0;\n      for(auto &e : tr[cur]){\n        if(e.to == p)\
-    \ continue;\n        sub_[cur] += dfs_sub(tr, e.to, cur);\n        if(sub_[e.to]\
-    \ > t){\n          t = sub_[e.to];\n          next_[cur] = e.to;\n          std::swap(e,\
-    \ tr[cur][0]);\n        }\n      }\n      return sub_[cur];\n    }\n\n    void\
-    \ dfs_build(const tree<T> &tr, int cur, int &i){\n      id_[cur] = i;\n      rid_[i]\
-    \ = cur;\n      ++i;\n\n      for(auto &e : tr[cur]){\n        if(e.to == par_[cur])\
-    \ continue;\n        head_[e.to] = (e.to == tr[cur][0].to ? head_[cur] : e.to);\n\
-    \        dfs_build(tr, e.to, i);\n      }\n\n      end_[cur] = i;\n    }\n\n \
-    \ public:\n    hl_decomposition(){}\n    hl_decomposition(tree<T> tr, int root):\n\
-    \      n_(tr.size()), sub_(n_, 1), par_(n_, -1), head_(n_), id_(n_), rid_(n_),\
-    \ next_(n_, -1), end_(n_, -1){\n      dfs_sub(tr, root, -1);\n      int i = 0;\n\
-    \      dfs_build(tr, root, i);\n    }\n\n    std::vector<std::tuple<int, int,\
-    \ bool>> path_query_vertex(int x, int y) const {\n      std::vector<std::tuple<int,\
-    \ int, bool>> ret;\n      const int w = lca(x, y);\n\n      {\n        int y =\
-    \ w;\n        bool d = true;\n        while(1){\n          if(id_[x] > id_[y])\
-    \ std::swap(x, y), d = not d;\n          int l = std::max(id_[head_[y]], id_[x]),\
-    \ r = id_[y] + 1;\n          if(l != r) ret.emplace_back(l, r, d);\n         \
-    \ if(head_[x] == head_[y]) break;\n          y = par_[head_[y]];\n        }\n\
-    \      }\n\n      x = y;\n      y = w;\n\n      {\n        std::vector<std::tuple<int,\
-    \ int, bool>> temp;\n        bool d = false;\n        while(1){\n          if(id_[x]\
-    \ > id_[y]) std::swap(x, y), d = not d;\n          int l = std::max({id_[head_[y]],\
-    \ id_[x], id_[w] + 1}), r = id_[y] + 1;\n          if(l != r) temp.emplace_back(l,\
-    \ r, d);\n          if(head_[x] == head_[y]) break;\n          y = par_[head_[y]];\n\
+    \    int n_;\n\n    std::vector<int> sub_,  // subtree size\n        par_,   \
+    \            // parent id\n        head_,              // chain head id\n    \
+    \    id_,                // id[original id] = hld id\n        rid_,          \
+    \     // rid[hld id] = original id\n        next_,              // next node in\
+    \ a chain\n        end_;               //\n\n    int dfs_sub(tree<T> &tr, int\
+    \ cur, int p) {\n      par_[cur] = p;\n      int t     = 0;\n      for (auto &e\
+    \ : tr[cur]) {\n        if (e.to == p) continue;\n        sub_[cur] += dfs_sub(tr,\
+    \ e.to, cur);\n        if (sub_[e.to] > t) {\n          t          = sub_[e.to];\n\
+    \          next_[cur] = e.to;\n          std::swap(e, tr[cur][0]);\n        }\n\
+    \      }\n      return sub_[cur];\n    }\n\n    void dfs_build(const tree<T> &tr,\
+    \ int cur, int &i) {\n      id_[cur] = i;\n      rid_[i]  = cur;\n      ++i;\n\
+    \n      for (auto &e : tr[cur]) {\n        if (e.to == par_[cur]) continue;\n\
+    \        head_[e.to] = (e.to == tr[cur][0].to ? head_[cur] : e.to);\n        dfs_build(tr,\
+    \ e.to, i);\n      }\n\n      end_[cur] = i;\n    }\n\n  public:\n    hl_decomposition()\
+    \ {}\n    hl_decomposition(tree<T> tr, int root) : n_(tr.size()), sub_(n_, 1),\
+    \ par_(n_, -1), head_(n_), id_(n_), rid_(n_), next_(n_, -1), end_(n_, -1) {\n\
+    \      dfs_sub(tr, root, -1);\n      int i = 0;\n      dfs_build(tr, root, i);\n\
+    \    }\n\n    std::vector<std::tuple<int, int, bool>> path_query_vertex(int x,\
+    \ int y) const {\n      std::vector<std::tuple<int, int, bool>> ret;\n      const\
+    \ int w = lca(x, y);\n\n      {\n        int y  = w;\n        bool d = true;\n\
+    \        while (1) {\n          if (id_[x] > id_[y]) std::swap(x, y), d = not\
+    \ d;\n          int l = std::max(id_[head_[y]], id_[x]), r = id_[y] + 1;\n   \
+    \       if (l != r) ret.emplace_back(l, r, d);\n          if (head_[x] == head_[y])\
+    \ break;\n          y = par_[head_[y]];\n        }\n      }\n\n      x = y;\n\
+    \      y = w;\n\n      {\n        std::vector<std::tuple<int, int, bool>> temp;\n\
+    \        bool d = false;\n        while (1) {\n          if (id_[x] > id_[y])\
+    \ std::swap(x, y), d = not d;\n          int l = std::max({id_[head_[y]], id_[x],\
+    \ id_[w] + 1}), r = id_[y] + 1;\n          if (l != r) temp.emplace_back(l, r,\
+    \ d);\n          if (head_[x] == head_[y]) break;\n          y = par_[head_[y]];\n\
     \        }\n\n        std::reverse(temp.begin(), temp.end());\n        ret.insert(ret.end(),\
     \ temp.begin(), temp.end());\n      }\n\n      return ret;\n    }\n\n    std::vector<std::pair<int,\
     \ int>> path_query_edge(int x, int y) const {\n      std::vector<std::pair<int,\
-    \ int>> ret;\n      while(1){\n        if(id_[x] > id_[y]) std::swap(x, y);\n\
-    \        if(head_[x] == head_[y]){\n          if(x != y) ret.emplace_back(id_[x]\
+    \ int>> ret;\n      while (1) {\n        if (id_[x] > id_[y]) std::swap(x, y);\n\
+    \        if (head_[x] == head_[y]) {\n          if (x != y) ret.emplace_back(id_[x]\
     \ + 1, id_[y] + 1);\n          break;\n        }\n        ret.emplace_back(id_[head_[y]],\
     \ id_[y] + 1);\n        y = par_[head_[y]];\n      }\n      return ret;\n    }\n\
     \n    std::pair<int, int> subtree_query_edge(int x) const {\n      return {id_[x]\
     \ + 1, end_[x]};\n    }\n\n    std::pair<int, int> subtree_query_vertex(int x)\
     \ const {\n      return {id_[x], end_[x]};\n    }\n\n    int get_edge_id(int u,\
-    \ int v) const { // \u8FBA\u306B\u5BFE\u5FDC\u3059\u308Bid\n      if(par_[u] ==\
-    \ v) return id_[u];\n      if(par_[v] == u) return id_[v];\n      return -1;\n\
-    \    }\n\n    int parent(int x) const {return par_[x];};\n\n    int lca(int u,\
-    \ int v) const {\n      while(1){\n        if(id_[u] > id_[v]) std::swap(u, v);\n\
-    \        if(head_[u] == head_[v]) return u;\n        v = par_[head_[v]];\n   \
-    \   }\n    }\n\n    int get_id(int x) const {\n      return id_[x];\n    }\n \
-    \ };\n}\n"
-  code: "#pragma once\n#include <vector>\n#include <utility>\n#include <algorithm>\n\
+    \ int v) const {  // \u8FBA\u306B\u5BFE\u5FDC\u3059\u308Bid\n      if (par_[u]\
+    \ == v) return id_[u];\n      if (par_[v] == u) return id_[v];\n      return -1;\n\
+    \    }\n\n    int parent(int x) const { return par_[x]; };\n\n    int lca(int\
+    \ u, int v) const {\n      while (1) {\n        if (id_[u] > id_[v]) std::swap(u,\
+    \ v);\n        if (head_[u] == head_[v]) return u;\n        v = par_[head_[v]];\n\
+    \      }\n    }\n\n    int get_id(int x) const {\n      return id_[x];\n    }\n\
+    \  };\n}  // namespace haar_lib\n"
+  code: "#pragma once\n#include <algorithm>\n#include <utility>\n#include <vector>\n\
     #include \"Mylib/Graph/Template/graph.cpp\"\n\nnamespace haar_lib {\n  template\
     \ <typename T>\n  class hl_decomposition {\n    int n_;\n\n    std::vector<int>\
-    \ sub_, // subtree size\n      par_, // parent id\n      head_, // chain head\
-    \ id\n      id_, // id[original id] = hld id\n      rid_, // rid[hld id] = original\
-    \ id\n      next_, // next node in a chain\n      end_; //\n\n    int dfs_sub(tree<T>\
-    \ &tr, int cur, int p){\n      par_[cur] = p;\n      int t = 0;\n      for(auto\
-    \ &e : tr[cur]){\n        if(e.to == p) continue;\n        sub_[cur] += dfs_sub(tr,\
-    \ e.to, cur);\n        if(sub_[e.to] > t){\n          t = sub_[e.to];\n      \
-    \    next_[cur] = e.to;\n          std::swap(e, tr[cur][0]);\n        }\n    \
-    \  }\n      return sub_[cur];\n    }\n\n    void dfs_build(const tree<T> &tr,\
-    \ int cur, int &i){\n      id_[cur] = i;\n      rid_[i] = cur;\n      ++i;\n\n\
-    \      for(auto &e : tr[cur]){\n        if(e.to == par_[cur]) continue;\n    \
-    \    head_[e.to] = (e.to == tr[cur][0].to ? head_[cur] : e.to);\n        dfs_build(tr,\
-    \ e.to, i);\n      }\n\n      end_[cur] = i;\n    }\n\n  public:\n    hl_decomposition(){}\n\
-    \    hl_decomposition(tree<T> tr, int root):\n      n_(tr.size()), sub_(n_, 1),\
-    \ par_(n_, -1), head_(n_), id_(n_), rid_(n_), next_(n_, -1), end_(n_, -1){\n \
-    \     dfs_sub(tr, root, -1);\n      int i = 0;\n      dfs_build(tr, root, i);\n\
-    \    }\n\n    std::vector<std::tuple<int, int, bool>> path_query_vertex(int x,\
-    \ int y) const {\n      std::vector<std::tuple<int, int, bool>> ret;\n      const\
-    \ int w = lca(x, y);\n\n      {\n        int y = w;\n        bool d = true;\n\
-    \        while(1){\n          if(id_[x] > id_[y]) std::swap(x, y), d = not d;\n\
-    \          int l = std::max(id_[head_[y]], id_[x]), r = id_[y] + 1;\n        \
-    \  if(l != r) ret.emplace_back(l, r, d);\n          if(head_[x] == head_[y]) break;\n\
-    \          y = par_[head_[y]];\n        }\n      }\n\n      x = y;\n      y =\
-    \ w;\n\n      {\n        std::vector<std::tuple<int, int, bool>> temp;\n     \
-    \   bool d = false;\n        while(1){\n          if(id_[x] > id_[y]) std::swap(x,\
-    \ y), d = not d;\n          int l = std::max({id_[head_[y]], id_[x], id_[w] +\
-    \ 1}), r = id_[y] + 1;\n          if(l != r) temp.emplace_back(l, r, d);\n   \
-    \       if(head_[x] == head_[y]) break;\n          y = par_[head_[y]];\n     \
-    \   }\n\n        std::reverse(temp.begin(), temp.end());\n        ret.insert(ret.end(),\
+    \ sub_,  // subtree size\n        par_,               // parent id\n        head_,\
+    \              // chain head id\n        id_,                // id[original id]\
+    \ = hld id\n        rid_,               // rid[hld id] = original id\n       \
+    \ next_,              // next node in a chain\n        end_;               //\n\
+    \n    int dfs_sub(tree<T> &tr, int cur, int p) {\n      par_[cur] = p;\n     \
+    \ int t     = 0;\n      for (auto &e : tr[cur]) {\n        if (e.to == p) continue;\n\
+    \        sub_[cur] += dfs_sub(tr, e.to, cur);\n        if (sub_[e.to] > t) {\n\
+    \          t          = sub_[e.to];\n          next_[cur] = e.to;\n          std::swap(e,\
+    \ tr[cur][0]);\n        }\n      }\n      return sub_[cur];\n    }\n\n    void\
+    \ dfs_build(const tree<T> &tr, int cur, int &i) {\n      id_[cur] = i;\n     \
+    \ rid_[i]  = cur;\n      ++i;\n\n      for (auto &e : tr[cur]) {\n        if (e.to\
+    \ == par_[cur]) continue;\n        head_[e.to] = (e.to == tr[cur][0].to ? head_[cur]\
+    \ : e.to);\n        dfs_build(tr, e.to, i);\n      }\n\n      end_[cur] = i;\n\
+    \    }\n\n  public:\n    hl_decomposition() {}\n    hl_decomposition(tree<T> tr,\
+    \ int root) : n_(tr.size()), sub_(n_, 1), par_(n_, -1), head_(n_), id_(n_), rid_(n_),\
+    \ next_(n_, -1), end_(n_, -1) {\n      dfs_sub(tr, root, -1);\n      int i = 0;\n\
+    \      dfs_build(tr, root, i);\n    }\n\n    std::vector<std::tuple<int, int,\
+    \ bool>> path_query_vertex(int x, int y) const {\n      std::vector<std::tuple<int,\
+    \ int, bool>> ret;\n      const int w = lca(x, y);\n\n      {\n        int y \
+    \ = w;\n        bool d = true;\n        while (1) {\n          if (id_[x] > id_[y])\
+    \ std::swap(x, y), d = not d;\n          int l = std::max(id_[head_[y]], id_[x]),\
+    \ r = id_[y] + 1;\n          if (l != r) ret.emplace_back(l, r, d);\n        \
+    \  if (head_[x] == head_[y]) break;\n          y = par_[head_[y]];\n        }\n\
+    \      }\n\n      x = y;\n      y = w;\n\n      {\n        std::vector<std::tuple<int,\
+    \ int, bool>> temp;\n        bool d = false;\n        while (1) {\n          if\
+    \ (id_[x] > id_[y]) std::swap(x, y), d = not d;\n          int l = std::max({id_[head_[y]],\
+    \ id_[x], id_[w] + 1}), r = id_[y] + 1;\n          if (l != r) temp.emplace_back(l,\
+    \ r, d);\n          if (head_[x] == head_[y]) break;\n          y = par_[head_[y]];\n\
+    \        }\n\n        std::reverse(temp.begin(), temp.end());\n        ret.insert(ret.end(),\
     \ temp.begin(), temp.end());\n      }\n\n      return ret;\n    }\n\n    std::vector<std::pair<int,\
     \ int>> path_query_edge(int x, int y) const {\n      std::vector<std::pair<int,\
-    \ int>> ret;\n      while(1){\n        if(id_[x] > id_[y]) std::swap(x, y);\n\
-    \        if(head_[x] == head_[y]){\n          if(x != y) ret.emplace_back(id_[x]\
+    \ int>> ret;\n      while (1) {\n        if (id_[x] > id_[y]) std::swap(x, y);\n\
+    \        if (head_[x] == head_[y]) {\n          if (x != y) ret.emplace_back(id_[x]\
     \ + 1, id_[y] + 1);\n          break;\n        }\n        ret.emplace_back(id_[head_[y]],\
     \ id_[y] + 1);\n        y = par_[head_[y]];\n      }\n      return ret;\n    }\n\
     \n    std::pair<int, int> subtree_query_edge(int x) const {\n      return {id_[x]\
     \ + 1, end_[x]};\n    }\n\n    std::pair<int, int> subtree_query_vertex(int x)\
     \ const {\n      return {id_[x], end_[x]};\n    }\n\n    int get_edge_id(int u,\
-    \ int v) const { // \u8FBA\u306B\u5BFE\u5FDC\u3059\u308Bid\n      if(par_[u] ==\
-    \ v) return id_[u];\n      if(par_[v] == u) return id_[v];\n      return -1;\n\
-    \    }\n\n    int parent(int x) const {return par_[x];};\n\n    int lca(int u,\
-    \ int v) const {\n      while(1){\n        if(id_[u] > id_[v]) std::swap(u, v);\n\
-    \        if(head_[u] == head_[v]) return u;\n        v = par_[head_[v]];\n   \
-    \   }\n    }\n\n    int get_id(int x) const {\n      return id_[x];\n    }\n \
-    \ };\n}\n"
+    \ int v) const {  // \u8FBA\u306B\u5BFE\u5FDC\u3059\u308Bid\n      if (par_[u]\
+    \ == v) return id_[u];\n      if (par_[v] == u) return id_[v];\n      return -1;\n\
+    \    }\n\n    int parent(int x) const { return par_[x]; };\n\n    int lca(int\
+    \ u, int v) const {\n      while (1) {\n        if (id_[u] > id_[v]) std::swap(u,\
+    \ v);\n        if (head_[u] == head_[v]) return u;\n        v = par_[head_[v]];\n\
+    \      }\n    }\n\n    int get_id(int x) const {\n      return id_[x];\n    }\n\
+    \  };\n}  // namespace haar_lib\n"
   dependsOn:
   - Mylib/Graph/Template/graph.cpp
   isVerificationFile: false
   path: Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp
   requiredBy: []
-  timestamp: '2020-09-28 09:27:15+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-04-23 23:44:44+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yukicoder/1030/main.test.cpp
   - test/yukicoder/235/main.test.cpp
   - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
-  - test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
   - test/yosupo-judge/vertex_add_path_sum/main.test.cpp
+  - test/yosupo-judge/vertex_add_subtree_sum/main.hld.test.cpp
   - test/aoj/2667/main.test.cpp
 documentation_of: Mylib/Graph/TreeUtils/heavy_light_decomposition.cpp
 layout: document

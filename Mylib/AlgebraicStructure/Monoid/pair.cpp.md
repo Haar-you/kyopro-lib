@@ -18,19 +18,19 @@ data:
     \ Monoid2 M2;\n\n    value_type operator()() const {\n      return {M1(), M2()};\n\
     \    }\n\n    value_type operator()(const value_type &a, const value_type &b)\
     \ const {\n      return {M1(a.first, b.first), M2(a.second, b.second)};\n    }\n\
-    \  };\n}\n"
+    \  };\n}  // namespace haar_lib\n"
   code: "#pragma once\n#include <utility>\n\nnamespace haar_lib {\n  template <typename\
     \ Monoid1, typename Monoid2>\n  struct pair_monoid {\n    using value_type = std::pair<typename\
     \ Monoid1::value_type, typename Monoid2::value_type>;\n    const static Monoid1\
     \ M1;\n    const static Monoid2 M2;\n\n    value_type operator()() const {\n \
     \     return {M1(), M2()};\n    }\n\n    value_type operator()(const value_type\
     \ &a, const value_type &b) const {\n      return {M1(a.first, b.first), M2(a.second,\
-    \ b.second)};\n    }\n  };\n}\n"
+    \ b.second)};\n    }\n  };\n}  // namespace haar_lib\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/AlgebraicStructure/Monoid/pair.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/2444/main.test.cpp

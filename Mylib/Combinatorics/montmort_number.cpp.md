@@ -3,30 +3,31 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/montmort_number_mod/main.test.cpp
     title: test/yosupo-judge/montmort_number_mod/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Combinatorics/montmort_number.cpp\"\n#include <vector>\n\
     \nnamespace haar_lib {\n  template <typename T>\n  std::vector<T> montmort_number(int\
-    \ n){\n    std::vector<T> ret(n + 1);\n\n    ret[0] = 1;\n    ret[1] = 0;\n  \
-    \  ret[2] = 1;\n\n    for(int i = 3; i <= n; ++i){\n      ret[i] = (ret[i - 1]\
-    \ + ret[i - 2]) * (i - 1);\n    }\n\n    return ret;\n  }\n}\n"
+    \ n) {\n    std::vector<T> ret(n + 1);\n\n    ret[0] = 1;\n    ret[1] = 0;\n \
+    \   ret[2] = 1;\n\n    for (int i = 3; i <= n; ++i) {\n      ret[i] = (ret[i -\
+    \ 1] + ret[i - 2]) * (i - 1);\n    }\n\n    return ret;\n  }\n}  // namespace\
+    \ haar_lib\n"
   code: "#pragma once\n#include <vector>\n\nnamespace haar_lib {\n  template <typename\
-    \ T>\n  std::vector<T> montmort_number(int n){\n    std::vector<T> ret(n + 1);\n\
-    \n    ret[0] = 1;\n    ret[1] = 0;\n    ret[2] = 1;\n\n    for(int i = 3; i <=\
-    \ n; ++i){\n      ret[i] = (ret[i - 1] + ret[i - 2]) * (i - 1);\n    }\n\n   \
-    \ return ret;\n  }\n}\n"
+    \ T>\n  std::vector<T> montmort_number(int n) {\n    std::vector<T> ret(n + 1);\n\
+    \n    ret[0] = 1;\n    ret[1] = 0;\n    ret[2] = 1;\n\n    for (int i = 3; i <=\
+    \ n; ++i) {\n      ret[i] = (ret[i - 1] + ret[i - 2]) * (i - 1);\n    }\n\n  \
+    \  return ret;\n  }\n}  // namespace haar_lib\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Combinatorics/montmort_number.cpp
   requiredBy: []
-  timestamp: '2021-03-13 04:56:32+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-04-23 23:44:44+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/montmort_number_mod/main.test.cpp
 documentation_of: Mylib/Combinatorics/montmort_number.cpp

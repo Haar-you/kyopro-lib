@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/Number/extended_gcd.cpp
     title: Extended Euclidean algorithm
   _extendedRequiredBy: []
@@ -11,39 +11,42 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Number/bezout_identity.cpp\"\n#include <utility>\n\
-    #include <optional>\n#line 2 \"Mylib/Number/extended_gcd.cpp\"\n#include <tuple>\n\
-    \nnamespace haar_lib {\n  auto ext_gcd(int64_t a, int64_t b) ->\n    std::tuple<\n\
-    \      int64_t, // gcd\n      int64_t, // p\n      int64_t  // q\n      >\n  {\n\
-    \    if(b == 0) return std::make_tuple(a, 1, 0);\n    const auto [d, q, p] = ext_gcd(b,\
-    \ (a + b) % b);\n    return std::make_tuple(d, p, q - a / b * p);\n  }\n}\n#line\
-    \ 5 \"Mylib/Number/bezout_identity.cpp\"\n\nnamespace haar_lib {\n  struct bezout_generator\
-    \ {\n    int64_t a, b, c, x, y, dx, dy;\n\n    auto value() const {return std::make_pair(x,\
-    \ y);}\n    auto next(int64_t n = 1){x += dx * n, y -= dy * n; return std::make_pair(x,\
-    \ y);}\n    auto prev(int64_t n = 1){x -= dx * n, y += dy * n; return std::make_pair(x,\
-    \ y);}\n  };\n\n  std::optional<bezout_generator> bezout_identity(int64_t a, int64_t\
-    \ b, int64_t c){\n    auto [g, x, y] = ext_gcd(a, b);\n\n    if(c % g != 0) return\
-    \ std::nullopt;\n\n    int64_t dx = b / g;\n    int64_t dy = a / g;\n    int64_t\
-    \ dc = c / g;\n\n    x %= dx;\n    if(x < 0){\n      x += std::abs(dx);\n    }\n\
-    \n    x *= dc;\n    dx *= dc;\n    dy *= dc;\n\n    y = (c - a * x) / b;\n\n \
-    \   return bezout_generator({a, b, c, x, y, dx, dy});\n  }\n}\n"
-  code: "#pragma once\n#include <utility>\n#include <optional>\n#include \"Mylib/Number/extended_gcd.cpp\"\
+  bundledCode: "#line 2 \"Mylib/Number/bezout_identity.cpp\"\n#include <optional>\n\
+    #include <utility>\n#line 2 \"Mylib/Number/extended_gcd.cpp\"\n#include <tuple>\n\
+    \nnamespace haar_lib {\n  auto ext_gcd(int64_t a, int64_t b) -> std::tuple<\n\
+    \      int64_t,  // gcd\n      int64_t,  // p\n      int64_t   // q\n      > {\n\
+    \    if (b == 0) return std::make_tuple(a, 1, 0);\n    const auto [d, q, p] =\
+    \ ext_gcd(b, (a + b) % b);\n    return std::make_tuple(d, p, q - a / b * p);\n\
+    \  }\n}  // namespace haar_lib\n#line 5 \"Mylib/Number/bezout_identity.cpp\"\n\
+    \nnamespace haar_lib {\n  struct bezout_generator {\n    int64_t a, b, c, x, y,\
+    \ dx, dy;\n\n    auto value() const { return std::make_pair(x, y); }\n    auto\
+    \ next(int64_t n = 1) {\n      x += dx * n, y -= dy * n;\n      return std::make_pair(x,\
+    \ y);\n    }\n    auto prev(int64_t n = 1) {\n      x -= dx * n, y += dy * n;\n\
+    \      return std::make_pair(x, y);\n    }\n  };\n\n  std::optional<bezout_generator>\
+    \ bezout_identity(int64_t a, int64_t b, int64_t c) {\n    auto [g, x, y] = ext_gcd(a,\
+    \ b);\n\n    if (c % g != 0) return std::nullopt;\n\n    int64_t dx = b / g;\n\
+    \    int64_t dy = a / g;\n    int64_t dc = c / g;\n\n    x %= dx;\n    if (x <\
+    \ 0) {\n      x += std::abs(dx);\n    }\n\n    x *= dc;\n    dx *= dc;\n    dy\
+    \ *= dc;\n\n    y = (c - a * x) / b;\n\n    return bezout_generator({a, b, c,\
+    \ x, y, dx, dy});\n  }\n}  // namespace haar_lib\n"
+  code: "#pragma once\n#include <optional>\n#include <utility>\n#include \"Mylib/Number/extended_gcd.cpp\"\
     \n\nnamespace haar_lib {\n  struct bezout_generator {\n    int64_t a, b, c, x,\
-    \ y, dx, dy;\n\n    auto value() const {return std::make_pair(x, y);}\n    auto\
-    \ next(int64_t n = 1){x += dx * n, y -= dy * n; return std::make_pair(x, y);}\n\
-    \    auto prev(int64_t n = 1){x -= dx * n, y += dy * n; return std::make_pair(x,\
-    \ y);}\n  };\n\n  std::optional<bezout_generator> bezout_identity(int64_t a, int64_t\
-    \ b, int64_t c){\n    auto [g, x, y] = ext_gcd(a, b);\n\n    if(c % g != 0) return\
-    \ std::nullopt;\n\n    int64_t dx = b / g;\n    int64_t dy = a / g;\n    int64_t\
-    \ dc = c / g;\n\n    x %= dx;\n    if(x < 0){\n      x += std::abs(dx);\n    }\n\
-    \n    x *= dc;\n    dx *= dc;\n    dy *= dc;\n\n    y = (c - a * x) / b;\n\n \
-    \   return bezout_generator({a, b, c, x, y, dx, dy});\n  }\n}\n"
+    \ y, dx, dy;\n\n    auto value() const { return std::make_pair(x, y); }\n    auto\
+    \ next(int64_t n = 1) {\n      x += dx * n, y -= dy * n;\n      return std::make_pair(x,\
+    \ y);\n    }\n    auto prev(int64_t n = 1) {\n      x -= dx * n, y += dy * n;\n\
+    \      return std::make_pair(x, y);\n    }\n  };\n\n  std::optional<bezout_generator>\
+    \ bezout_identity(int64_t a, int64_t b, int64_t c) {\n    auto [g, x, y] = ext_gcd(a,\
+    \ b);\n\n    if (c % g != 0) return std::nullopt;\n\n    int64_t dx = b / g;\n\
+    \    int64_t dy = a / g;\n    int64_t dc = c / g;\n\n    x %= dx;\n    if (x <\
+    \ 0) {\n      x += std::abs(dx);\n    }\n\n    x *= dc;\n    dx *= dc;\n    dy\
+    \ *= dc;\n\n    y = (c - a * x) / b;\n\n    return bezout_generator({a, b, c,\
+    \ x, y, dx, dy});\n  }\n}  // namespace haar_lib\n"
   dependsOn:
   - Mylib/Number/extended_gcd.cpp
   isVerificationFile: false
   path: Mylib/Number/bezout_identity.cpp
   requiredBy: []
-  timestamp: '2021-03-13 04:56:32+09:00'
+  timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/Number/bezout_identity.cpp

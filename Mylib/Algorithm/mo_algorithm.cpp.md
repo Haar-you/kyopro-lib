@@ -2,79 +2,81 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/Typical/range_inversions_query.cpp
     title: Range inversions query
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/0425/main.test.cpp
     title: test/aoj/0425/main.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/static_range_inversions_query/main.test.cpp
     title: test/yosupo-judge/static_range_inversions_query/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Algorithm/mo_algorithm.cpp\"\n#include <vector>\n\
-    #include <algorithm>\n#include <cassert>\n#include <cmath>\n\nnamespace haar_lib\
+  bundledCode: "#line 2 \"Mylib/Algorithm/mo_algorithm.cpp\"\n#include <algorithm>\n\
+    #include <cassert>\n#include <cmath>\n#include <vector>\n\nnamespace haar_lib\
     \ {\n  template <typename AppendLeft, typename AppendRight, typename RemoveLeft,\
     \ typename RemoveRight, typename Query>\n  class mo_algorithm {\n    int N_, Q_,\
     \ index_, width_;\n    std::vector<int> left_, right_, ord_;\n\n    AppendLeft\
     \ append_left_;\n    AppendRight append_right_;\n    RemoveLeft remove_left_;\n\
     \    RemoveRight remove_right_;\n    Query query_;\n\n    bool is_built_ = false;\n\
-    \n  public:\n    mo_algorithm(){}\n    mo_algorithm(\n      int N, int Q,\n  \
-    \    const AppendLeft &append_left, const AppendRight &append_right,\n      const\
-    \ RemoveLeft &remove_left, const RemoveRight &remove_right,\n      const Query\
-    \ &query\n    ):\n      N_(N), Q_(Q), index_(0), width_(std::sqrt(N)),\n     \
-    \ left_(Q), right_(Q), ord_(Q),\n      append_left_(append_left), append_right_(append_right),\n\
-    \      remove_left_(remove_left), remove_right_(remove_right),\n      query_(query)\n\
-    \    {}\n\n    // [l, r)\n    void add(int l, int r){\n      left_[index_] = l;\n\
-    \      right_[index_] = r;\n      ord_[index_] = index_;\n      ++index_;\n  \
-    \  }\n\n    void run(){\n      std::sort(\n        ord_.begin(), ord_.end(),\n\
-    \        [&](int i, int j){\n          const int a = left_[i] / width_, b = left_[j]\
-    \ / width_;\n          if(a == b){\n            if(a & 1) return right_[i] < right_[j];\n\
-    \            else return right_[i] > right_[j];\n          }else{\n          \
-    \  return a < b;\n          }\n        }\n      );\n\n      int q = 0;\n     \
-    \ int l = left_[ord_[0]], r = left_[ord_[0]];\n\n      for(int i = 0; i < Q_;\
-    \ ++i){\n        int id = ord_[q++];\n\n        while(l != left_[id] or r != right_[id]){\n\
-    \          if(l > left_[id]) append_left_(--l);\n          if(l < left_[id]) remove_left_(l++);\n\
-    \          if(r < right_[id]) append_right_(r++);\n          if(r > right_[id])\
+    \n  public:\n    mo_algorithm() {}\n    mo_algorithm(\n        int N, int Q,\n\
+    \        const AppendLeft &append_left, const AppendRight &append_right,\n   \
+    \     const RemoveLeft &remove_left, const RemoveRight &remove_right,\n      \
+    \  const Query &query) : N_(N), Q_(Q), index_(0), width_(std::sqrt(N)), left_(Q),\
+    \ right_(Q), ord_(Q), append_left_(append_left), append_right_(append_right),\
+    \ remove_left_(remove_left), remove_right_(remove_right), query_(query) {}\n\n\
+    \    // [l, r)\n    void add(int l, int r) {\n      left_[index_]  = l;\n    \
+    \  right_[index_] = r;\n      ord_[index_]   = index_;\n      ++index_;\n    }\n\
+    \n    void run() {\n      std::sort(\n          ord_.begin(), ord_.end(),\n  \
+    \        [&](int i, int j) {\n            const int a = left_[i] / width_, b =\
+    \ left_[j] / width_;\n            if (a == b) {\n              if (a & 1)\n  \
+    \              return right_[i] < right_[j];\n              else\n           \
+    \     return right_[i] > right_[j];\n            } else {\n              return\
+    \ a < b;\n            }\n          });\n\n      int q = 0;\n      int l = left_[ord_[0]],\
+    \ r = left_[ord_[0]];\n\n      for (int i = 0; i < Q_; ++i) {\n        int id\
+    \ = ord_[q++];\n\n        while (l != left_[id] or r != right_[id]) {\n      \
+    \    if (l > left_[id]) append_left_(--l);\n          if (l < left_[id]) remove_left_(l++);\n\
+    \          if (r < right_[id]) append_right_(r++);\n          if (r > right_[id])\
     \ remove_right_(--r);\n        }\n\n        query_(id);\n      }\n    }\n  };\n\
-    }\n"
-  code: "#pragma once\n#include <vector>\n#include <algorithm>\n#include <cassert>\n\
-    #include <cmath>\n\nnamespace haar_lib {\n  template <typename AppendLeft, typename\
+    }  // namespace haar_lib\n"
+  code: "#pragma once\n#include <algorithm>\n#include <cassert>\n#include <cmath>\n\
+    #include <vector>\n\nnamespace haar_lib {\n  template <typename AppendLeft, typename\
     \ AppendRight, typename RemoveLeft, typename RemoveRight, typename Query>\n  class\
     \ mo_algorithm {\n    int N_, Q_, index_, width_;\n    std::vector<int> left_,\
     \ right_, ord_;\n\n    AppendLeft append_left_;\n    AppendRight append_right_;\n\
     \    RemoveLeft remove_left_;\n    RemoveRight remove_right_;\n    Query query_;\n\
-    \n    bool is_built_ = false;\n\n  public:\n    mo_algorithm(){}\n    mo_algorithm(\n\
-    \      int N, int Q,\n      const AppendLeft &append_left, const AppendRight &append_right,\n\
-    \      const RemoveLeft &remove_left, const RemoveRight &remove_right,\n     \
-    \ const Query &query\n    ):\n      N_(N), Q_(Q), index_(0), width_(std::sqrt(N)),\n\
-    \      left_(Q), right_(Q), ord_(Q),\n      append_left_(append_left), append_right_(append_right),\n\
-    \      remove_left_(remove_left), remove_right_(remove_right),\n      query_(query)\n\
-    \    {}\n\n    // [l, r)\n    void add(int l, int r){\n      left_[index_] = l;\n\
-    \      right_[index_] = r;\n      ord_[index_] = index_;\n      ++index_;\n  \
-    \  }\n\n    void run(){\n      std::sort(\n        ord_.begin(), ord_.end(),\n\
-    \        [&](int i, int j){\n          const int a = left_[i] / width_, b = left_[j]\
-    \ / width_;\n          if(a == b){\n            if(a & 1) return right_[i] < right_[j];\n\
-    \            else return right_[i] > right_[j];\n          }else{\n          \
-    \  return a < b;\n          }\n        }\n      );\n\n      int q = 0;\n     \
-    \ int l = left_[ord_[0]], r = left_[ord_[0]];\n\n      for(int i = 0; i < Q_;\
-    \ ++i){\n        int id = ord_[q++];\n\n        while(l != left_[id] or r != right_[id]){\n\
-    \          if(l > left_[id]) append_left_(--l);\n          if(l < left_[id]) remove_left_(l++);\n\
-    \          if(r < right_[id]) append_right_(r++);\n          if(r > right_[id])\
+    \n    bool is_built_ = false;\n\n  public:\n    mo_algorithm() {}\n    mo_algorithm(\n\
+    \        int N, int Q,\n        const AppendLeft &append_left, const AppendRight\
+    \ &append_right,\n        const RemoveLeft &remove_left, const RemoveRight &remove_right,\n\
+    \        const Query &query) : N_(N), Q_(Q), index_(0), width_(std::sqrt(N)),\
+    \ left_(Q), right_(Q), ord_(Q), append_left_(append_left), append_right_(append_right),\
+    \ remove_left_(remove_left), remove_right_(remove_right), query_(query) {}\n\n\
+    \    // [l, r)\n    void add(int l, int r) {\n      left_[index_]  = l;\n    \
+    \  right_[index_] = r;\n      ord_[index_]   = index_;\n      ++index_;\n    }\n\
+    \n    void run() {\n      std::sort(\n          ord_.begin(), ord_.end(),\n  \
+    \        [&](int i, int j) {\n            const int a = left_[i] / width_, b =\
+    \ left_[j] / width_;\n            if (a == b) {\n              if (a & 1)\n  \
+    \              return right_[i] < right_[j];\n              else\n           \
+    \     return right_[i] > right_[j];\n            } else {\n              return\
+    \ a < b;\n            }\n          });\n\n      int q = 0;\n      int l = left_[ord_[0]],\
+    \ r = left_[ord_[0]];\n\n      for (int i = 0; i < Q_; ++i) {\n        int id\
+    \ = ord_[q++];\n\n        while (l != left_[id] or r != right_[id]) {\n      \
+    \    if (l > left_[id]) append_left_(--l);\n          if (l < left_[id]) remove_left_(l++);\n\
+    \          if (r < right_[id]) append_right_(r++);\n          if (r > right_[id])\
     \ remove_right_(--r);\n        }\n\n        query_(id);\n      }\n    }\n  };\n\
-    }\n"
+    }  // namespace haar_lib\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Algorithm/mo_algorithm.cpp
   requiredBy:
   - Mylib/Typical/range_inversions_query.cpp
-  timestamp: '2020-12-09 10:43:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-04-23 23:44:44+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo-judge/static_range_inversions_query/main.test.cpp
   - test/aoj/0425/main.test.cpp

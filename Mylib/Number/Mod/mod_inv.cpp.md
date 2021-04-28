@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/Number/Mod/mod_log.cpp
     title: Mod logarithm
   - icon: ':warning:'
@@ -12,35 +12,36 @@ data:
     path: Mylib/Number/linear_congruence_equation.cpp
     title: Linear congruence equation
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
     title: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Number/Mod/mod_inv.cpp\"\n#include <utility>\n#include\
-    \ <cstdint>\n\nnamespace haar_lib {\n  constexpr int64_t mod_inv(int64_t a, int64_t\
-    \ m){\n    int64_t b = m, u = 1, v = 0;\n\n    while(b){\n      int64_t t = a\
-    \ / b;\n      a -= t * b;\n      a = a ^ b; b = a ^ b; a = a ^ b;\n\n      u -=\
-    \ t * v;\n      u = u ^ v; v = u ^ v; u = u ^ v;\n    }\n\n    u %= m;\n    if(u\
-    \ < 0) u += m;\n\n    return u;\n  }\n}\n"
-  code: "#pragma once\n#include <utility>\n#include <cstdint>\n\nnamespace haar_lib\
-    \ {\n  constexpr int64_t mod_inv(int64_t a, int64_t m){\n    int64_t b = m, u\
-    \ = 1, v = 0;\n\n    while(b){\n      int64_t t = a / b;\n      a -= t * b;\n\
-    \      a = a ^ b; b = a ^ b; a = a ^ b;\n\n      u -= t * v;\n      u = u ^ v;\
-    \ v = u ^ v; u = u ^ v;\n    }\n\n    u %= m;\n    if(u < 0) u += m;\n\n    return\
-    \ u;\n  }\n}\n"
+  bundledCode: "#line 2 \"Mylib/Number/Mod/mod_inv.cpp\"\n#include <cstdint>\n#include\
+    \ <utility>\n\nnamespace haar_lib {\n  constexpr int64_t mod_inv(int64_t a, int64_t\
+    \ m) {\n    int64_t b = m, u = 1, v = 0;\n\n    while (b) {\n      int64_t t =\
+    \ a / b;\n      a -= t * b;\n      a = a ^ b;\n      b = a ^ b;\n      a = a ^\
+    \ b;\n\n      u -= t * v;\n      u = u ^ v;\n      v = u ^ v;\n      u = u ^ v;\n\
+    \    }\n\n    u %= m;\n    if (u < 0) u += m;\n\n    return u;\n  }\n}  // namespace\
+    \ haar_lib\n"
+  code: "#pragma once\n#include <cstdint>\n#include <utility>\n\nnamespace haar_lib\
+    \ {\n  constexpr int64_t mod_inv(int64_t a, int64_t m) {\n    int64_t b = m, u\
+    \ = 1, v = 0;\n\n    while (b) {\n      int64_t t = a / b;\n      a -= t * b;\n\
+    \      a = a ^ b;\n      b = a ^ b;\n      a = a ^ b;\n\n      u -= t * v;\n \
+    \     u = u ^ v;\n      v = u ^ v;\n      u = u ^ v;\n    }\n\n    u %= m;\n \
+    \   if (u < 0) u += m;\n\n    return u;\n  }\n}  // namespace haar_lib\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Number/Mod/mod_inv.cpp
   requiredBy:
-  - Mylib/Number/garner.cpp
-  - Mylib/Number/Mod/mod_log.cpp
   - Mylib/Number/linear_congruence_equation.cpp
-  timestamp: '2021-02-28 17:48:38+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  - Mylib/Number/Mod/mod_log.cpp
+  - Mylib/Number/garner.cpp
+  timestamp: '2021-04-23 23:44:44+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
 documentation_of: Mylib/Number/Mod/mod_inv.cpp

@@ -10,20 +10,20 @@ data:
     links: []
   bundledCode: "#line 2 \"Mylib/AlgebraicStructure/Semiring/xor_and.cpp\"\n\nnamespace\
     \ haar_lib {\n  template <typename T>\n  struct xor_and_semiring {\n    using\
-    \ value_type = T;\n    value_type id_add() const {return 0;}\n    value_type id_mul()\
-    \ const {return ~(T)0;}\n    value_type add(value_type a, value_type b) const\
-    \ {return a ^ b;}\n    value_type mul(value_type a, value_type b) const {return\
-    \ a & b;}\n  };\n}\n"
+    \ value_type = T;\n    value_type id_add() const { return 0; }\n    value_type\
+    \ id_mul() const { return ~(T) 0; }\n    value_type add(value_type a, value_type\
+    \ b) const { return a ^ b; }\n    value_type mul(value_type a, value_type b) const\
+    \ { return a & b; }\n  };\n}  // namespace haar_lib\n"
   code: "#pragma once\n\nnamespace haar_lib {\n  template <typename T>\n  struct xor_and_semiring\
-    \ {\n    using value_type = T;\n    value_type id_add() const {return 0;}\n  \
-    \  value_type id_mul() const {return ~(T)0;}\n    value_type add(value_type a,\
-    \ value_type b) const {return a ^ b;}\n    value_type mul(value_type a, value_type\
-    \ b) const {return a & b;}\n  };\n}\n"
+    \ {\n    using value_type = T;\n    value_type id_add() const { return 0; }\n\
+    \    value_type id_mul() const { return ~(T) 0; }\n    value_type add(value_type\
+    \ a, value_type b) const { return a ^ b; }\n    value_type mul(value_type a, value_type\
+    \ b) const { return a & b; }\n  };\n}  // namespace haar_lib\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/AlgebraicStructure/Semiring/xor_and.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
+  timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/AlgebraicStructure/Semiring/xor_and.cpp

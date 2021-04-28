@@ -15,43 +15,43 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2559/main.skew_heap.test.cpp
     title: test/aoj/2559/main.skew_heap.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/aoj/3034/main.test.cpp
     title: test/aoj/3034/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Utils/fix_point.cpp\"\n#include <utility>\n\nnamespace\
     \ haar_lib {\n  template <typename F>\n  struct fix_point : F {\n    explicit\
-    \ constexpr fix_point(F &&f) noexcept : F(std::forward<F>(f)){}\n\n    template\
-    \ <typename ... Args>\n    constexpr auto operator()(Args &&... args) const {\n\
-    \      return F::operator()(*this, std::forward<Args>(args) ...);\n    }\n  };\n\
-    \n  template <typename F>\n  inline constexpr auto make_fix_point(F &&f){\n  \
-    \  return fix_point<F>(std::forward<F>(f));\n  }\n\n  template <typename F>\n\
-    \  inline constexpr auto make_fix_point(F &f){\n    return fix_point<F>(std::forward<F>(f));\n\
-    \  }\n}\n"
+    \ constexpr fix_point(F &&f) noexcept : F(std::forward<F>(f)) {}\n\n    template\
+    \ <typename... Args>\n    constexpr auto operator()(Args &&... args) const {\n\
+    \      return F::operator()(*this, std::forward<Args>(args)...);\n    }\n  };\n\
+    \n  template <typename F>\n  inline constexpr auto make_fix_point(F &&f) {\n \
+    \   return fix_point<F>(std::forward<F>(f));\n  }\n\n  template <typename F>\n\
+    \  inline constexpr auto make_fix_point(F &f) {\n    return fix_point<F>(std::forward<F>(f));\n\
+    \  }\n}  // namespace haar_lib\n"
   code: "#pragma once\n#include <utility>\n\nnamespace haar_lib {\n  template <typename\
     \ F>\n  struct fix_point : F {\n    explicit constexpr fix_point(F &&f) noexcept\
-    \ : F(std::forward<F>(f)){}\n\n    template <typename ... Args>\n    constexpr\
+    \ : F(std::forward<F>(f)) {}\n\n    template <typename... Args>\n    constexpr\
     \ auto operator()(Args &&... args) const {\n      return F::operator()(*this,\
-    \ std::forward<Args>(args) ...);\n    }\n  };\n\n  template <typename F>\n  inline\
-    \ constexpr auto make_fix_point(F &&f){\n    return fix_point<F>(std::forward<F>(f));\n\
-    \  }\n\n  template <typename F>\n  inline constexpr auto make_fix_point(F &f){\n\
-    \    return fix_point<F>(std::forward<F>(f));\n  }\n}\n"
+    \ std::forward<Args>(args)...);\n    }\n  };\n\n  template <typename F>\n  inline\
+    \ constexpr auto make_fix_point(F &&f) {\n    return fix_point<F>(std::forward<F>(f));\n\
+    \  }\n\n  template <typename F>\n  inline constexpr auto make_fix_point(F &f)\
+    \ {\n    return fix_point<F>(std::forward<F>(f));\n  }\n}  // namespace haar_lib\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Utils/fix_point.cpp
   requiredBy: []
-  timestamp: '2020-09-16 17:10:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-04-23 23:44:44+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/aoj/3034/main.test.cpp
-  - test/aoj/2559/main.skew_heap.test.cpp
   - test/aoj/2559/main.pairing_heap.test.cpp
+  - test/aoj/2559/main.skew_heap.test.cpp
   - test/aoj/2559/main.leftist_heap.test.cpp
   - test/aoj/2559/main.binomial_heap.test.cpp
+  - test/aoj/3034/main.test.cpp
 documentation_of: Mylib/Utils/fix_point.cpp
 layout: document
 title: Fixed point combinator

@@ -11,21 +11,21 @@ data:
   bundledCode: "#line 2 \"Mylib/Combinatorics/binomial_coefficients_table.cpp\"\n\
     #include <vector>\n\nnamespace haar_lib {\n  template <typename T>\n  auto binomial_coefficients_table(int\
     \ n, int k) -> std::vector<std::vector<T>> {\n    std::vector<std::vector<T>>\
-    \ ret(n + 1, std::vector<T>(k + 1));\n    ret[0][0] = 1;\n\n    for(int i = 1;\
-    \ i <= n; ++i){\n      ret[i][0] = 1;\n\n      for(int j = 1; j <= k; ++j){\n\
+    \ ret(n + 1, std::vector<T>(k + 1));\n    ret[0][0] = 1;\n\n    for (int i = 1;\
+    \ i <= n; ++i) {\n      ret[i][0] = 1;\n\n      for (int j = 1; j <= k; ++j) {\n\
     \        ret[i][j] = ret[i - 1][j - 1] + ret[i - 1][j];\n      }\n    }\n\n  \
-    \  return ret;\n  }\n}\n"
+    \  return ret;\n  }\n}  // namespace haar_lib\n"
   code: "#pragma once\n#include <vector>\n\nnamespace haar_lib {\n  template <typename\
     \ T>\n  auto binomial_coefficients_table(int n, int k) -> std::vector<std::vector<T>>\
     \ {\n    std::vector<std::vector<T>> ret(n + 1, std::vector<T>(k + 1));\n    ret[0][0]\
-    \ = 1;\n\n    for(int i = 1; i <= n; ++i){\n      ret[i][0] = 1;\n\n      for(int\
-    \ j = 1; j <= k; ++j){\n        ret[i][j] = ret[i - 1][j - 1] + ret[i - 1][j];\n\
-    \      }\n    }\n\n    return ret;\n  }\n}\n"
+    \ = 1;\n\n    for (int i = 1; i <= n; ++i) {\n      ret[i][0] = 1;\n\n      for\
+    \ (int j = 1; j <= k; ++j) {\n        ret[i][j] = ret[i - 1][j - 1] + ret[i -\
+    \ 1][j];\n      }\n    }\n\n    return ret;\n  }\n}  // namespace haar_lib\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Combinatorics/binomial_coefficients_table.cpp
   requiredBy: []
-  timestamp: '2021-03-13 04:56:32+09:00'
+  timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/Combinatorics/binomial_coefficients_table.cpp

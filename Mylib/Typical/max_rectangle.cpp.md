@@ -1,58 +1,61 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Mylib/Typical/max_rectangle_in_histogram.cpp
     title: Largest rectangle in histogram
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/aoj/DPL_3_B/main.test.cpp
     title: test/aoj/DPL_3_B/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Typical/max_rectangle.cpp\"\n#include <vector>\n#include\
-    \ <algorithm>\n#line 3 \"Mylib/Typical/max_rectangle_in_histogram.cpp\"\n#include\
-    \ <stack>\n#include <utility>\n\nnamespace haar_lib {\n  template <typename T>\n\
-    \  T max_rectangle_in_histogram(const std::vector<T> &h){\n    std::stack<std::pair<T,\
-    \ int>> st;\n    T ret = 0;\n\n    for(size_t i = 0; i < h.size(); ++i){\n   \
-    \   if(st.empty()){\n        st.emplace(h[i], i);\n      }else if(st.top().first\
-    \ < h[i]){\n        st.emplace(h[i], i);\n      }else if(st.top().first > h[i]){\n\
-    \        int j = i;\n        while(not st.empty() and st.top().first > h[i]){\n\
-    \          ret = std::max(ret, st.top().first * ((T)i - st.top().second));\n \
-    \         j = st.top().second;\n          st.pop();\n        }\n        st.emplace(h[i],\
-    \ j);\n      }\n    }\n\n    while(not st.empty()){\n      ret = std::max(ret,\
-    \ st.top().first * ((T)h.size() - st.top().second));\n      st.pop();\n    }\n\
-    \n    return ret;\n  }\n}\n#line 5 \"Mylib/Typical/max_rectangle.cpp\"\n\nnamespace\
-    \ haar_lib {\n  template <typename T>\n  int max_rectangle(const std::vector<std::vector<T>>\
-    \ &d, T value){\n    const int H = d.size();\n    const int W = d[0].size();\n\
-    \n    std::vector<std::vector<int>> c(H, std::vector<int>(W));\n    for(int i\
-    \ = 0; i < H; ++i){\n      for(int j = 0; j < W; ++j){\n        if(d[i][j] ==\
-    \ value) c[i][j] = 1;\n      }\n    }\n\n    for(int i = 1; i < H; ++i){\n   \
-    \   for(int j = 0; j < W; ++j){\n        if(c[i][j]){\n          c[i][j] += c[i\
-    \ - 1][j];\n        }\n      }\n    }\n\n    int ret = 0;\n    for(int i = 0;\
-    \ i < H; ++i){\n      int t = max_rectangle_in_histogram<int>(c[i]);\n      ret\
-    \ = std::max(ret, t);\n    }\n\n    return ret;\n  }\n}\n"
-  code: "#pragma once\n#include <vector>\n#include <algorithm>\n#include \"Mylib/Typical/max_rectangle_in_histogram.cpp\"\
+  bundledCode: "#line 2 \"Mylib/Typical/max_rectangle.cpp\"\n#include <algorithm>\n\
+    #include <vector>\n#line 2 \"Mylib/Typical/max_rectangle_in_histogram.cpp\"\n\
+    #include <stack>\n#include <utility>\n#line 5 \"Mylib/Typical/max_rectangle_in_histogram.cpp\"\
+    \n\nnamespace haar_lib {\n  template <typename T>\n  T max_rectangle_in_histogram(const\
+    \ std::vector<T> &h) {\n    std::stack<std::pair<T, int>> st;\n    T ret = 0;\n\
+    \n    for (size_t i = 0; i < h.size(); ++i) {\n      if (st.empty()) {\n     \
+    \   st.emplace(h[i], i);\n      } else if (st.top().first < h[i]) {\n        st.emplace(h[i],\
+    \ i);\n      } else if (st.top().first > h[i]) {\n        int j = i;\n       \
+    \ while (not st.empty() and st.top().first > h[i]) {\n          ret = std::max(ret,\
+    \ st.top().first * ((T) i - st.top().second));\n          j   = st.top().second;\n\
+    \          st.pop();\n        }\n        st.emplace(h[i], j);\n      }\n    }\n\
+    \n    while (not st.empty()) {\n      ret = std::max(ret, st.top().first * ((T)\
+    \ h.size() - st.top().second));\n      st.pop();\n    }\n\n    return ret;\n \
+    \ }\n}  // namespace haar_lib\n#line 5 \"Mylib/Typical/max_rectangle.cpp\"\n\n\
+    namespace haar_lib {\n  template <typename T>\n  int max_rectangle(const std::vector<std::vector<T>>\
+    \ &d, T value) {\n    const int H = d.size();\n    const int W = d[0].size();\n\
+    \n    std::vector<std::vector<int>> c(H, std::vector<int>(W));\n    for (int i\
+    \ = 0; i < H; ++i) {\n      for (int j = 0; j < W; ++j) {\n        if (d[i][j]\
+    \ == value) c[i][j] = 1;\n      }\n    }\n\n    for (int i = 1; i < H; ++i) {\n\
+    \      for (int j = 0; j < W; ++j) {\n        if (c[i][j]) {\n          c[i][j]\
+    \ += c[i - 1][j];\n        }\n      }\n    }\n\n    int ret = 0;\n    for (int\
+    \ i = 0; i < H; ++i) {\n      int t = max_rectangle_in_histogram<int>(c[i]);\n\
+    \      ret   = std::max(ret, t);\n    }\n\n    return ret;\n  }\n}  // namespace\
+    \ haar_lib\n"
+  code: "#pragma once\n#include <algorithm>\n#include <vector>\n#include \"Mylib/Typical/max_rectangle_in_histogram.cpp\"\
     \n\nnamespace haar_lib {\n  template <typename T>\n  int max_rectangle(const std::vector<std::vector<T>>\
-    \ &d, T value){\n    const int H = d.size();\n    const int W = d[0].size();\n\
-    \n    std::vector<std::vector<int>> c(H, std::vector<int>(W));\n    for(int i\
-    \ = 0; i < H; ++i){\n      for(int j = 0; j < W; ++j){\n        if(d[i][j] ==\
-    \ value) c[i][j] = 1;\n      }\n    }\n\n    for(int i = 1; i < H; ++i){\n   \
-    \   for(int j = 0; j < W; ++j){\n        if(c[i][j]){\n          c[i][j] += c[i\
-    \ - 1][j];\n        }\n      }\n    }\n\n    int ret = 0;\n    for(int i = 0;\
-    \ i < H; ++i){\n      int t = max_rectangle_in_histogram<int>(c[i]);\n      ret\
-    \ = std::max(ret, t);\n    }\n\n    return ret;\n  }\n}\n"
+    \ &d, T value) {\n    const int H = d.size();\n    const int W = d[0].size();\n\
+    \n    std::vector<std::vector<int>> c(H, std::vector<int>(W));\n    for (int i\
+    \ = 0; i < H; ++i) {\n      for (int j = 0; j < W; ++j) {\n        if (d[i][j]\
+    \ == value) c[i][j] = 1;\n      }\n    }\n\n    for (int i = 1; i < H; ++i) {\n\
+    \      for (int j = 0; j < W; ++j) {\n        if (c[i][j]) {\n          c[i][j]\
+    \ += c[i - 1][j];\n        }\n      }\n    }\n\n    int ret = 0;\n    for (int\
+    \ i = 0; i < H; ++i) {\n      int t = max_rectangle_in_histogram<int>(c[i]);\n\
+    \      ret   = std::max(ret, t);\n    }\n\n    return ret;\n  }\n}  // namespace\
+    \ haar_lib\n"
   dependsOn:
   - Mylib/Typical/max_rectangle_in_histogram.cpp
   isVerificationFile: false
   path: Mylib/Typical/max_rectangle.cpp
   requiredBy: []
-  timestamp: '2020-11-07 03:03:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-04-23 23:44:44+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/DPL_3_B/main.test.cpp
 documentation_of: Mylib/Typical/max_rectangle.cpp

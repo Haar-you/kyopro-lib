@@ -9,7 +9,7 @@ data:
     path: Mylib/Math/fps_sqrt.cpp
     title: Formal power series (Sqrt)
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo-judge/sqrt_mod/main.test.cpp
     title: test/yosupo-judge/sqrt_mod/main.test.cpp
   - icon: ':x:'
@@ -17,52 +17,53 @@ data:
     title: test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Number/Mod/mod_sqrt.cpp\"\n#include <random>\n#include\
-    \ <optional>\n#line 2 \"Mylib/Number/Mod/mod_pow.cpp\"\n#include <cstdint>\n\n\
-    namespace haar_lib {\n  constexpr int64_t mod_pow(int64_t n, int64_t p, int64_t\
-    \ m){\n    int64_t ret = 1;\n    while(p > 0){\n      if(p & 1) (ret *= n) %=\
-    \ m;\n      (n *= n) %= m;\n      p >>= 1;\n    }\n    return ret;\n  }\n}\n#line\
-    \ 5 \"Mylib/Number/Mod/mod_sqrt.cpp\"\n\nnamespace haar_lib {\n  std::optional<int64_t>\
-    \ mod_sqrt(int64_t a, int64_t p){\n    if(p == 2) return a % 2;\n    if(a == 0)\
-    \ return 0;\n\n    int64_t b = mod_pow(a, (p - 1) / 2, p);\n\n    if(b == p -\
-    \ 1) return {};\n    if(p % 4 == 3) return mod_pow(a, (p + 1) / 4, p);\n\n   \
-    \ int64_t q = p - 1, s = 0;\n    while(q % 2 == 0){\n      q /= 2;\n      s +=\
-    \ 1;\n    }\n\n    static std::mt19937_64 rand(time(0));\n    std::uniform_int_distribution<>\
-    \ dist(0, p - 1);\n\n    int64_t z;\n    while(1){\n      z = dist(rand);\n  \
-    \    if(mod_pow(z, (p - 1) / 2, p) == p - 1) break;\n    }\n\n    int64_t m =\
-    \ s;\n    int64_t c = mod_pow(z, q, p);\n    int64_t t = mod_pow(a, q, p);\n \
-    \   int64_t r = mod_pow(a, (q + 1) / 2, p);\n\n    while(1){\n      if(t == 0)\
-    \ return 0;\n      if(t == 1) return r;\n\n      int i = 1;\n      for(int64_t\
-    \ T = t; i < m; ++i){\n        (T *= T) %= p;\n        if(T == 1) break;\n   \
-    \   }\n\n      int64_t b = mod_pow(c, 1LL << (m - i - 1), p);\n\n      m = i;\n\
-    \      c = b * b % p;\n      (t *= b * b % p) %= p;\n      (r *= b) %= p;\n  \
-    \  }\n  }\n}\n"
-  code: "#pragma once\n#include <random>\n#include <optional>\n#include \"Mylib/Number/Mod/mod_pow.cpp\"\
+  bundledCode: "#line 2 \"Mylib/Number/Mod/mod_sqrt.cpp\"\n#include <optional>\n#include\
+    \ <random>\n#line 2 \"Mylib/Number/Mod/mod_pow.cpp\"\n#include <cstdint>\n\nnamespace\
+    \ haar_lib {\n  constexpr int64_t mod_pow(int64_t n, int64_t p, int64_t m) {\n\
+    \    int64_t ret = 1;\n    while (p > 0) {\n      if (p & 1) (ret *= n) %= m;\n\
+    \      (n *= n) %= m;\n      p >>= 1;\n    }\n    return ret;\n  }\n}  // namespace\
+    \ haar_lib\n#line 5 \"Mylib/Number/Mod/mod_sqrt.cpp\"\n\nnamespace haar_lib {\n\
+    \  std::optional<int64_t> mod_sqrt(int64_t a, int64_t p) {\n    if (p == 2) return\
+    \ a % 2;\n    if (a == 0) return 0;\n\n    int64_t b = mod_pow(a, (p - 1) / 2,\
+    \ p);\n\n    if (b == p - 1) return {};\n    if (p % 4 == 3) return mod_pow(a,\
+    \ (p + 1) / 4, p);\n\n    int64_t q = p - 1, s = 0;\n    while (q % 2 == 0) {\n\
+    \      q /= 2;\n      s += 1;\n    }\n\n    static std::mt19937_64 rand(time(0));\n\
+    \    std::uniform_int_distribution<> dist(0, p - 1);\n\n    int64_t z;\n    while\
+    \ (1) {\n      z = dist(rand);\n      if (mod_pow(z, (p - 1) / 2, p) == p - 1)\
+    \ break;\n    }\n\n    int64_t m = s;\n    int64_t c = mod_pow(z, q, p);\n   \
+    \ int64_t t = mod_pow(a, q, p);\n    int64_t r = mod_pow(a, (q + 1) / 2, p);\n\
+    \n    while (1) {\n      if (t == 0) return 0;\n      if (t == 1) return r;\n\n\
+    \      int i = 1;\n      for (int64_t T = t; i < m; ++i) {\n        (T *= T) %=\
+    \ p;\n        if (T == 1) break;\n      }\n\n      int64_t b = mod_pow(c, 1LL\
+    \ << (m - i - 1), p);\n\n      m = i;\n      c = b * b % p;\n      (t *= b * b\
+    \ % p) %= p;\n      (r *= b) %= p;\n    }\n  }\n}  // namespace haar_lib\n"
+  code: "#pragma once\n#include <optional>\n#include <random>\n#include \"Mylib/Number/Mod/mod_pow.cpp\"\
     \n\nnamespace haar_lib {\n  std::optional<int64_t> mod_sqrt(int64_t a, int64_t\
-    \ p){\n    if(p == 2) return a % 2;\n    if(a == 0) return 0;\n\n    int64_t b\
-    \ = mod_pow(a, (p - 1) / 2, p);\n\n    if(b == p - 1) return {};\n    if(p % 4\
-    \ == 3) return mod_pow(a, (p + 1) / 4, p);\n\n    int64_t q = p - 1, s = 0;\n\
-    \    while(q % 2 == 0){\n      q /= 2;\n      s += 1;\n    }\n\n    static std::mt19937_64\
+    \ p) {\n    if (p == 2) return a % 2;\n    if (a == 0) return 0;\n\n    int64_t\
+    \ b = mod_pow(a, (p - 1) / 2, p);\n\n    if (b == p - 1) return {};\n    if (p\
+    \ % 4 == 3) return mod_pow(a, (p + 1) / 4, p);\n\n    int64_t q = p - 1, s = 0;\n\
+    \    while (q % 2 == 0) {\n      q /= 2;\n      s += 1;\n    }\n\n    static std::mt19937_64\
     \ rand(time(0));\n    std::uniform_int_distribution<> dist(0, p - 1);\n\n    int64_t\
-    \ z;\n    while(1){\n      z = dist(rand);\n      if(mod_pow(z, (p - 1) / 2, p)\
-    \ == p - 1) break;\n    }\n\n    int64_t m = s;\n    int64_t c = mod_pow(z, q,\
-    \ p);\n    int64_t t = mod_pow(a, q, p);\n    int64_t r = mod_pow(a, (q + 1) /\
-    \ 2, p);\n\n    while(1){\n      if(t == 0) return 0;\n      if(t == 1) return\
-    \ r;\n\n      int i = 1;\n      for(int64_t T = t; i < m; ++i){\n        (T *=\
-    \ T) %= p;\n        if(T == 1) break;\n      }\n\n      int64_t b = mod_pow(c,\
-    \ 1LL << (m - i - 1), p);\n\n      m = i;\n      c = b * b % p;\n      (t *= b\
-    \ * b % p) %= p;\n      (r *= b) %= p;\n    }\n  }\n}\n"
+    \ z;\n    while (1) {\n      z = dist(rand);\n      if (mod_pow(z, (p - 1) / 2,\
+    \ p) == p - 1) break;\n    }\n\n    int64_t m = s;\n    int64_t c = mod_pow(z,\
+    \ q, p);\n    int64_t t = mod_pow(a, q, p);\n    int64_t r = mod_pow(a, (q + 1)\
+    \ / 2, p);\n\n    while (1) {\n      if (t == 0) return 0;\n      if (t == 1)\
+    \ return r;\n\n      int i = 1;\n      for (int64_t T = t; i < m; ++i) {\n   \
+    \     (T *= T) %= p;\n        if (T == 1) break;\n      }\n\n      int64_t b =\
+    \ mod_pow(c, 1LL << (m - i - 1), p);\n\n      m = i;\n      c = b * b % p;\n \
+    \     (t *= b * b % p) %= p;\n      (r *= b) %= p;\n    }\n  }\n}  // namespace\
+    \ haar_lib\n"
   dependsOn:
   - Mylib/Number/Mod/mod_pow.cpp
   isVerificationFile: false
   path: Mylib/Number/Mod/mod_sqrt.cpp
   requiredBy:
   - Mylib/Math/fps_sqrt.cpp
-  timestamp: '2020-10-28 03:22:23+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2021-04-23 23:44:44+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/sqrt_mod/main.test.cpp

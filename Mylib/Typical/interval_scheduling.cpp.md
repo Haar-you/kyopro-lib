@@ -3,38 +3,39 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/aoj/ALDS1_15_C/main.test.cpp
     title: test/aoj/ALDS1_15_C/main.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Mylib/Typical/interval_scheduling.cpp\"\n#include <vector>\n\
-    #include <numeric>\n#include <algorithm>\n#include <limits>\n#include <utility>\n\
+  bundledCode: "#line 2 \"Mylib/Typical/interval_scheduling.cpp\"\n#include <algorithm>\n\
+    #include <limits>\n#include <numeric>\n#include <utility>\n#include <vector>\n\
     \nnamespace haar_lib {\n  template <typename T>\n  std::vector<std::pair<T, T>>\
-    \ interval_scheduling(const std::vector<T> &l, const std::vector<T> &r){\n   \
-    \ const int N = l.size();\n    std::vector<std::pair<T, T>> ret;\n    std::vector<int>\
+    \ interval_scheduling(const std::vector<T> &l, const std::vector<T> &r) {\n  \
+    \  const int N = l.size();\n    std::vector<std::pair<T, T>> ret;\n    std::vector<int>\
     \ ord(N);\n    std::iota(ord.begin(), ord.end(), 0);\n    std::sort(ord.begin(),\
-    \ ord.end(), [&](int i, int j){return r[i] < r[j];});\n\n    auto b = std::numeric_limits<T>::lowest();\n\
-    \n    for(int i : ord){\n      if(l[i] >= b){\n        ret.emplace_back(l[i],\
-    \ r[i]);\n        b = r[i];\n      }\n    }\n\n    return ret;\n  }\n}\n"
-  code: "#pragma once\n#include <vector>\n#include <numeric>\n#include <algorithm>\n\
-    #include <limits>\n#include <utility>\n\nnamespace haar_lib {\n  template <typename\
+    \ ord.end(), [&](int i, int j) { return r[i] < r[j]; });\n\n    auto b = std::numeric_limits<T>::lowest();\n\
+    \n    for (int i : ord) {\n      if (l[i] >= b) {\n        ret.emplace_back(l[i],\
+    \ r[i]);\n        b = r[i];\n      }\n    }\n\n    return ret;\n  }\n}  // namespace\
+    \ haar_lib\n"
+  code: "#pragma once\n#include <algorithm>\n#include <limits>\n#include <numeric>\n\
+    #include <utility>\n#include <vector>\n\nnamespace haar_lib {\n  template <typename\
     \ T>\n  std::vector<std::pair<T, T>> interval_scheduling(const std::vector<T>\
-    \ &l, const std::vector<T> &r){\n    const int N = l.size();\n    std::vector<std::pair<T,\
+    \ &l, const std::vector<T> &r) {\n    const int N = l.size();\n    std::vector<std::pair<T,\
     \ T>> ret;\n    std::vector<int> ord(N);\n    std::iota(ord.begin(), ord.end(),\
-    \ 0);\n    std::sort(ord.begin(), ord.end(), [&](int i, int j){return r[i] < r[j];});\n\
-    \n    auto b = std::numeric_limits<T>::lowest();\n\n    for(int i : ord){\n  \
-    \    if(l[i] >= b){\n        ret.emplace_back(l[i], r[i]);\n        b = r[i];\n\
-    \      }\n    }\n\n    return ret;\n  }\n}\n"
+    \ 0);\n    std::sort(ord.begin(), ord.end(), [&](int i, int j) { return r[i] <\
+    \ r[j]; });\n\n    auto b = std::numeric_limits<T>::lowest();\n\n    for (int\
+    \ i : ord) {\n      if (l[i] >= b) {\n        ret.emplace_back(l[i], r[i]);\n\
+    \        b = r[i];\n      }\n    }\n\n    return ret;\n  }\n}  // namespace haar_lib\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Typical/interval_scheduling.cpp
   requiredBy: []
-  timestamp: '2020-11-07 03:03:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-04-23 23:44:44+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/ALDS1_15_C/main.test.cpp
 documentation_of: Mylib/Typical/interval_scheduling.cpp

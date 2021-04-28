@@ -12,51 +12,54 @@ data:
     \ <functional>\n#include <utility>\n\nnamespace haar_lib {\n  template <typename\
     \ T, class Compare = std::less<T>>\n  class lazy_skew_heap {\n  public:\n    using\
     \ value_type = T;\n\n  private:\n    struct node {\n      T val, lazy;\n     \
-    \ node *left, *right;\n      int size;\n      node(const T &val): val(val), lazy(0),\
-    \ left(nullptr), right(nullptr), size(1){}\n    };\n\n    node *root_;\n    Compare\
-    \ compare_;\n\n  public:\n    lazy_skew_heap(): root_(nullptr), compare_(Compare()){}\n\
-    \    lazy_skew_heap(const Compare &compare_): root_(nullptr), compare_(compare_){}\n\
-    \n  protected:\n    node* propagate(node *a){\n      if(a){\n        a->val +=\
-    \ a->lazy;\n        if(a->left) a->left->lazy += a->lazy;\n        if(a->right)\
-    \ a->right->lazy += a->lazy;\n        a->lazy = 0;\n      }\n\n      return a;\n\
-    \    }\n\n    node* meld(node *a, node *b){\n      if(not a) return propagate(b);\n\
-    \      if(not b) return propagate(a);\n\n      propagate(a);\n      propagate(b);\n\
-    \n      if(compare_(a->val, b->val)) std::swap(a, b);\n\n      a->size += b->size;\n\
-    \      a->right = meld(a->right, b);\n      std::swap(a->left, a->right);\n\n\
-    \      return a;\n    }\n\n  public:\n    void meld(lazy_skew_heap &heap){root_\
-    \ = meld(root_, heap.root_); heap.root_ = nullptr;}\n    void push(const T &val){root_\
-    \ = meld(root_, new node(val));}\n    const T& top() const {return root_->val;}\n\
-    \    void pop(){propagate(root_); node *temp = root_; root_ = meld(root_->left,\
-    \ root_->right); delete temp;}\n    bool empty() const {return root_ == nullptr;}\n\
-    \    size_t size() const {return root_ ? root_->size : 0;}\n    void add(T v){if(root_){root_->lazy\
-    \ += v; propagate(root_);}}\n  };\n}\n"
+    \ node *left, *right;\n      int size;\n      node(const T &val) : val(val), lazy(0),\
+    \ left(nullptr), right(nullptr), size(1) {}\n    };\n\n    node *root_;\n    Compare\
+    \ compare_;\n\n  public:\n    lazy_skew_heap() : root_(nullptr), compare_(Compare())\
+    \ {}\n    lazy_skew_heap(const Compare &compare_) : root_(nullptr), compare_(compare_)\
+    \ {}\n\n  protected:\n    node *propagate(node *a) {\n      if (a) {\n       \
+    \ a->val += a->lazy;\n        if (a->left) a->left->lazy += a->lazy;\n       \
+    \ if (a->right) a->right->lazy += a->lazy;\n        a->lazy = 0;\n      }\n\n\
+    \      return a;\n    }\n\n    node *meld(node *a, node *b) {\n      if (not a)\
+    \ return propagate(b);\n      if (not b) return propagate(a);\n\n      propagate(a);\n\
+    \      propagate(b);\n\n      if (compare_(a->val, b->val)) std::swap(a, b);\n\
+    \n      a->size += b->size;\n      a->right = meld(a->right, b);\n      std::swap(a->left,\
+    \ a->right);\n\n      return a;\n    }\n\n  public:\n    void meld(lazy_skew_heap\
+    \ &heap) {\n      root_      = meld(root_, heap.root_);\n      heap.root_ = nullptr;\n\
+    \    }\n    void push(const T &val) { root_ = meld(root_, new node(val)); }\n\
+    \    const T &top() const { return root_->val; }\n    void pop() {\n      propagate(root_);\n\
+    \      node *temp = root_;\n      root_      = meld(root_->left, root_->right);\n\
+    \      delete temp;\n    }\n    bool empty() const { return root_ == nullptr;\
+    \ }\n    size_t size() const { return root_ ? root_->size : 0; }\n    void add(T\
+    \ v) {\n      if (root_) {\n        root_->lazy += v;\n        propagate(root_);\n\
+    \      }\n    }\n  };\n}  // namespace haar_lib\n"
   code: "#pragma once\n#include <functional>\n#include <utility>\n\nnamespace haar_lib\
     \ {\n  template <typename T, class Compare = std::less<T>>\n  class lazy_skew_heap\
     \ {\n  public:\n    using value_type = T;\n\n  private:\n    struct node {\n \
     \     T val, lazy;\n      node *left, *right;\n      int size;\n      node(const\
-    \ T &val): val(val), lazy(0), left(nullptr), right(nullptr), size(1){}\n    };\n\
-    \n    node *root_;\n    Compare compare_;\n\n  public:\n    lazy_skew_heap():\
-    \ root_(nullptr), compare_(Compare()){}\n    lazy_skew_heap(const Compare &compare_):\
-    \ root_(nullptr), compare_(compare_){}\n\n  protected:\n    node* propagate(node\
-    \ *a){\n      if(a){\n        a->val += a->lazy;\n        if(a->left) a->left->lazy\
-    \ += a->lazy;\n        if(a->right) a->right->lazy += a->lazy;\n        a->lazy\
-    \ = 0;\n      }\n\n      return a;\n    }\n\n    node* meld(node *a, node *b){\n\
-    \      if(not a) return propagate(b);\n      if(not b) return propagate(a);\n\n\
-    \      propagate(a);\n      propagate(b);\n\n      if(compare_(a->val, b->val))\
+    \ T &val) : val(val), lazy(0), left(nullptr), right(nullptr), size(1) {}\n   \
+    \ };\n\n    node *root_;\n    Compare compare_;\n\n  public:\n    lazy_skew_heap()\
+    \ : root_(nullptr), compare_(Compare()) {}\n    lazy_skew_heap(const Compare &compare_)\
+    \ : root_(nullptr), compare_(compare_) {}\n\n  protected:\n    node *propagate(node\
+    \ *a) {\n      if (a) {\n        a->val += a->lazy;\n        if (a->left) a->left->lazy\
+    \ += a->lazy;\n        if (a->right) a->right->lazy += a->lazy;\n        a->lazy\
+    \ = 0;\n      }\n\n      return a;\n    }\n\n    node *meld(node *a, node *b)\
+    \ {\n      if (not a) return propagate(b);\n      if (not b) return propagate(a);\n\
+    \n      propagate(a);\n      propagate(b);\n\n      if (compare_(a->val, b->val))\
     \ std::swap(a, b);\n\n      a->size += b->size;\n      a->right = meld(a->right,\
     \ b);\n      std::swap(a->left, a->right);\n\n      return a;\n    }\n\n  public:\n\
-    \    void meld(lazy_skew_heap &heap){root_ = meld(root_, heap.root_); heap.root_\
-    \ = nullptr;}\n    void push(const T &val){root_ = meld(root_, new node(val));}\n\
-    \    const T& top() const {return root_->val;}\n    void pop(){propagate(root_);\
-    \ node *temp = root_; root_ = meld(root_->left, root_->right); delete temp;}\n\
-    \    bool empty() const {return root_ == nullptr;}\n    size_t size() const {return\
-    \ root_ ? root_->size : 0;}\n    void add(T v){if(root_){root_->lazy += v; propagate(root_);}}\n\
-    \  };\n}\n"
+    \    void meld(lazy_skew_heap &heap) {\n      root_      = meld(root_, heap.root_);\n\
+    \      heap.root_ = nullptr;\n    }\n    void push(const T &val) { root_ = meld(root_,\
+    \ new node(val)); }\n    const T &top() const { return root_->val; }\n    void\
+    \ pop() {\n      propagate(root_);\n      node *temp = root_;\n      root_   \
+    \   = meld(root_->left, root_->right);\n      delete temp;\n    }\n    bool empty()\
+    \ const { return root_ == nullptr; }\n    size_t size() const { return root_ ?\
+    \ root_->size : 0; }\n    void add(T v) {\n      if (root_) {\n        root_->lazy\
+    \ += v;\n        propagate(root_);\n      }\n    }\n  };\n}  // namespace haar_lib\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/DataStructure/Heap/lazy_skew_heap.cpp
   requiredBy: []
-  timestamp: '2021-03-24 21:07:01+09:00'
+  timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Mylib/DataStructure/Heap/lazy_skew_heap.cpp

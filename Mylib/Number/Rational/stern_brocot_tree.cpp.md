@@ -12,31 +12,31 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Number/Rational/stern_brocot_tree.cpp\"\n#include\
-    \ <utility>\n#include <cstdint>\n\nnamespace haar_lib {\n  template <typename\
-    \ Checker>\n  void stern_brocot_tree(\n    const Checker &check,\n    int n,\n\
-    \    std::pair<int, int> &lower,\n    std::pair<int, int> &upper,\n    int64_t\
-    \ pl = 0, int64_t ql = 1, int64_t pr = 1, int64_t qr = 0\n  ){\n    int64_t pm\
-    \ = pl + pr;\n    int64_t qm = ql + qr;\n\n    if(pm > n or qm > n) return;\n\n\
-    \    auto t = check(pm, qm);\n\n    if(t < 0){\n      lower = {pm, qm};\n    \
-    \  stern_brocot_tree(check, n, lower, upper, pm, qm, pr, qr);\n    }else if(t\
-    \ > 0){\n      upper = {pm, qm};\n      stern_brocot_tree(check, n, lower, upper,\
-    \ pl, ql, pm, qm);\n    }else{\n      lower = {pm, qm};\n      upper = {pm, qm};\n\
-    \    }\n  }\n}\n"
-  code: "#pragma once\n#include <utility>\n#include <cstdint>\n\nnamespace haar_lib\
-    \ {\n  template <typename Checker>\n  void stern_brocot_tree(\n    const Checker\
-    \ &check,\n    int n,\n    std::pair<int, int> &lower,\n    std::pair<int, int>\
-    \ &upper,\n    int64_t pl = 0, int64_t ql = 1, int64_t pr = 1, int64_t qr = 0\n\
-    \  ){\n    int64_t pm = pl + pr;\n    int64_t qm = ql + qr;\n\n    if(pm > n or\
-    \ qm > n) return;\n\n    auto t = check(pm, qm);\n\n    if(t < 0){\n      lower\
-    \ = {pm, qm};\n      stern_brocot_tree(check, n, lower, upper, pm, qm, pr, qr);\n\
-    \    }else if(t > 0){\n      upper = {pm, qm};\n      stern_brocot_tree(check,\
-    \ n, lower, upper, pl, ql, pm, qm);\n    }else{\n      lower = {pm, qm};\n   \
-    \   upper = {pm, qm};\n    }\n  }\n}\n"
+    \ <cstdint>\n#include <utility>\n\nnamespace haar_lib {\n  template <typename\
+    \ Checker>\n  void stern_brocot_tree(\n      const Checker &check,\n      int\
+    \ n,\n      std::pair<int, int> &lower,\n      std::pair<int, int> &upper,\n \
+    \     int64_t pl = 0, int64_t ql = 1, int64_t pr = 1, int64_t qr = 0) {\n    int64_t\
+    \ pm = pl + pr;\n    int64_t qm = ql + qr;\n\n    if (pm > n or qm > n) return;\n\
+    \n    auto t = check(pm, qm);\n\n    if (t < 0) {\n      lower = {pm, qm};\n \
+    \     stern_brocot_tree(check, n, lower, upper, pm, qm, pr, qr);\n    } else if\
+    \ (t > 0) {\n      upper = {pm, qm};\n      stern_brocot_tree(check, n, lower,\
+    \ upper, pl, ql, pm, qm);\n    } else {\n      lower = {pm, qm};\n      upper\
+    \ = {pm, qm};\n    }\n  }\n}  // namespace haar_lib\n"
+  code: "#pragma once\n#include <cstdint>\n#include <utility>\n\nnamespace haar_lib\
+    \ {\n  template <typename Checker>\n  void stern_brocot_tree(\n      const Checker\
+    \ &check,\n      int n,\n      std::pair<int, int> &lower,\n      std::pair<int,\
+    \ int> &upper,\n      int64_t pl = 0, int64_t ql = 1, int64_t pr = 1, int64_t\
+    \ qr = 0) {\n    int64_t pm = pl + pr;\n    int64_t qm = ql + qr;\n\n    if (pm\
+    \ > n or qm > n) return;\n\n    auto t = check(pm, qm);\n\n    if (t < 0) {\n\
+    \      lower = {pm, qm};\n      stern_brocot_tree(check, n, lower, upper, pm,\
+    \ qm, pr, qr);\n    } else if (t > 0) {\n      upper = {pm, qm};\n      stern_brocot_tree(check,\
+    \ n, lower, upper, pl, ql, pm, qm);\n    } else {\n      lower = {pm, qm};\n \
+    \     upper = {pm, qm};\n    }\n  }\n}  // namespace haar_lib\n"
   dependsOn: []
   isVerificationFile: false
   path: Mylib/Number/Rational/stern_brocot_tree.cpp
   requiredBy: []
-  timestamp: '2021-03-13 04:56:32+09:00'
+  timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/1208/main.test.cpp
