@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 
 namespace haar_lib {
   namespace nimber_impl {
