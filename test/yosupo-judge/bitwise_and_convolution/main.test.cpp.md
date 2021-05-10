@@ -4,10 +4,10 @@ data:
   - icon: ':x:'
     path: Mylib/Convolution/convolution_and.cpp
     title: Convolution (Index bitwise AND)
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Convolution/fast_mobius_transform_superset.cpp
     title: "Fast M\xF6bius transform (Supersets)"
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Convolution/fast_zeta_transform_superset.cpp
     title: Fast Zeta transform (Supersets)
   - icon: ':question:'
@@ -16,7 +16,7 @@ data:
   - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

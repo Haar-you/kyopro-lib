@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Geometry/Float/distance_segment_point.cpp
     title: Distance between a segment and a point
   - icon: ':question:'

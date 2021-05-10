@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Mylib/Misc/merge_technique.cpp
     title: Merge technique
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Utils/fix_point.cpp
     title: Fixed point combinator
   _extendedRequiredBy: []

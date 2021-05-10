@@ -16,7 +16,7 @@ data:
   - icon: ':x:'
     path: Mylib/Math/fps_sqrt.cpp
     title: Formal power series (Sqrt)
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   - icon: ':question:'

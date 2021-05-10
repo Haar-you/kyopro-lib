@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: Mylib/Geometry/Float/geometry_template.cpp
     title: Geometry template
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/projection.cpp
     title: Projection
   - icon: ':question:'
@@ -18,9 +18,9 @@ data:
     title: Input tuples
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.00000001'
@@ -170,7 +170,7 @@ data:
   path: test/aoj/CGL_1_A/main.test.cpp
   requiredBy: []
   timestamp: '2021-04-23 23:44:44+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/CGL_1_A/main.test.cpp
 layout: document

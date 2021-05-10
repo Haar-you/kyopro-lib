@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: Mylib/Combinatorics/bell_number_table.cpp
     title: Bell number (Table)
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

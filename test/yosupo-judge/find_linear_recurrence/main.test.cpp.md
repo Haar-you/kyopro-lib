@@ -10,7 +10,7 @@ data:
   - icon: ':x:'
     path: Mylib/Math/berlekamp_massey.cpp
     title: Berlekamp-Massey
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

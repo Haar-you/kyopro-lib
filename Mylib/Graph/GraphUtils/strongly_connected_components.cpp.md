@@ -95,8 +95,8 @@ data:
   verifiedWith:
   - test/yosupo-judge/scc/main.test.cpp
   - test/yosupo-judge/two_sat/main.test.cpp
-  - test/aoj/GRL_3_C/main.test.cpp
   - test/aoj/GRL_2_B/main.test.cpp
+  - test/aoj/GRL_3_C/main.test.cpp
 documentation_of: Mylib/Graph/GraphUtils/strongly_connected_components.cpp
 layout: document
 title: Strongly connected components

@@ -78,9 +78,9 @@ data:
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/aoj/2559/main.leftist_heap.test.cpp
   - test/aoj/2559/main.pairing_heap.test.cpp
   - test/aoj/2559/main.skew_heap.test.cpp
-  - test/aoj/2559/main.leftist_heap.test.cpp
   - test/aoj/2559/main.binomial_heap.test.cpp
   - test/aoj/GRL_2_A/main.prim.test.cpp
 documentation_of: Mylib/Graph/MinimumSpanningTree/prim.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Geometry/Float/distance_segment_point.cpp
     title: Distance between a segment and a point
   - icon: ':question:'
@@ -9,12 +9,12 @@ data:
     title: Geometry template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_2_D/main.test.cpp
     title: test/aoj/CGL_2_D/main.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/distance_segments.cpp\"\n#include <algorithm>\n\
@@ -98,7 +98,7 @@ data:
   path: Mylib/Geometry/Float/distance_segments.cpp
   requiredBy: []
   timestamp: '2021-04-23 23:44:44+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/CGL_2_D/main.test.cpp
 documentation_of: Mylib/Geometry/Float/distance_segments.cpp

@@ -68,8 +68,8 @@ data:
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/yukicoder/922/main.test.cpp
   - test/aoj/GRL_5_B/main.test.cpp
+  - test/yukicoder/922/main.test.cpp
 documentation_of: Mylib/Graph/TreeUtils/tree_distance.cpp
 layout: document
 title: Tree distance

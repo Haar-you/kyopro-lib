@@ -5,11 +5,11 @@ data:
     path: Mylib/Geometry/Float/geometry_template.cpp
     title: Geometry template
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/minimum_covering_circle.cpp
     title: Minimum covering circle
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/3034/main.test.cpp
     title: test/aoj/3034/main.test.cpp
   - icon: ':x:'
@@ -17,7 +17,7 @@ data:
     title: test/aoj/CGL_7_C/main.test.cpp
   _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/geometry_template.cpp\"\n#include <cmath>\n\
@@ -94,7 +94,7 @@ data:
   requiredBy:
   - Mylib/Geometry/Float/minimum_covering_circle.cpp
   timestamp: '2021-04-23 23:44:44+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/3034/main.test.cpp
   - test/aoj/CGL_7_C/main.test.cpp

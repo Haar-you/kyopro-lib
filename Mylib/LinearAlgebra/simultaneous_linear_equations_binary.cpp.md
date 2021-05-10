@@ -58,8 +58,8 @@ data:
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/2530/main.test.cpp
   - test/aoj/1308/main.test.cpp
+  - test/aoj/2530/main.test.cpp
 documentation_of: Mylib/LinearAlgebra/simultaneous_linear_equations_binary.cpp
 layout: document
 title: Simultaneous linear equations (Mod2)

@@ -15,7 +15,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/1337/main.test.cpp
     title: test/aoj/1337/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/2955/main.test.cpp
     title: test/aoj/2955/main.test.cpp
   - icon: ':x:'
@@ -79,16 +79,16 @@ data:
   isVerificationFile: false
   path: Mylib/DataStructure/UnionFind/unionfind.cpp
   requiredBy:
-  - Mylib/Graph/MinimumSpanningTree/kruskal.cpp
   - Mylib/Graph/MinimumSpanningTree/boruvka.cpp
+  - Mylib/Graph/MinimumSpanningTree/kruskal.cpp
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo-judge/manhattanmst/main.test.cpp
   - test/yosupo-judge/unionfind/main.test.cpp
-  - test/aoj/1337/main.test.cpp
   - test/aoj/0575/main.test.cpp
   - test/aoj/2955/main.test.cpp
+  - test/aoj/1337/main.test.cpp
   - test/aoj/GRL_2_A/main.kruskal.test.cpp
   - test/aoj/GRL_2_A/main.boruvka.test.cpp
 documentation_of: Mylib/DataStructure/UnionFind/unionfind.cpp

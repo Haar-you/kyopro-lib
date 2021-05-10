@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: Mylib/Geometry/Float/area_intersection_of_circle_and_polygon.cpp
     title: Area of intersection between a circle and a polygon
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Geometry/Float/distance_segment_point.cpp
     title: Distance between a segment and a point
   - icon: ':question:'

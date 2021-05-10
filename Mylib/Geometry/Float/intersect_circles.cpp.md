@@ -138,9 +138,9 @@ data:
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/aoj/CGL_7_I/main.test.cpp
-  - test/aoj/CGL_7_E/main.test.cpp
   - test/aoj/CGL_7_A/main.test.cpp
+  - test/aoj/CGL_7_E/main.test.cpp
+  - test/aoj/CGL_7_I/main.test.cpp
 documentation_of: Mylib/Geometry/Float/intersect_circles.cpp
 layout: document
 title: Intersection between two circles

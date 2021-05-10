@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: Mylib/Graph/Template/graph.cpp
     title: Basic graph
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Typical/subset_sum_limited.cpp
     title: Subset sum problem (With quantity limitations)
   _extendedRequiredBy: []

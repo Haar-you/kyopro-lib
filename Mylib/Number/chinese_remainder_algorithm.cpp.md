@@ -4,8 +4,14 @@ data:
   - icon: ':x:'
     path: Mylib/Number/extended_gcd.cpp
     title: Extended Euclidean algorithm
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: Mylib/Combinatorics/binomial_coefficient.cpp
+    title: Binomial coefficient
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/yosupo-judge/binomial_coefficient/main.test.cpp
+    title: test/yosupo-judge/binomial_coefficient/main.test.cpp
   - icon: ':x:'
     path: test/yukicoder/186/main.test.cpp
     title: test/yukicoder/186/main.test.cpp
@@ -51,10 +57,12 @@ data:
   - Mylib/Number/extended_gcd.cpp
   isVerificationFile: false
   path: Mylib/Number/chinese_remainder_algorithm.cpp
-  requiredBy: []
+  requiredBy:
+  - Mylib/Combinatorics/binomial_coefficient.cpp
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
+  - test/yosupo-judge/binomial_coefficient/main.test.cpp
   - test/yukicoder/186/main.test.cpp
 documentation_of: Mylib/Number/chinese_remainder_algorithm.cpp
 layout: document

@@ -38,10 +38,10 @@ data:
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/yosupo-judge/queue_operate_all_composite/main.test.cpp
-  - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
   - test/yosupo-judge/point_set_range_composite/main.test.cpp
+  - test/yosupo-judge/queue_operate_all_composite/main.test.cpp
   - test/yosupo-judge/range_affine_range_sum/main.test.cpp
+  - test/yosupo-judge/vertex_set_path_composite/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/Monoid/affine.cpp
 layout: document
 title: Affine monoid

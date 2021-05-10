@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: Mylib/Convolution/fast_mobius_transform_subset.cpp
     title: "Fast M\xF6bius transform (Subsets)"
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Convolution/fast_zeta_transform_subset.cpp
     title: Fast Zeta transform (Subsets)
   - icon: ':question:'
@@ -16,7 +16,7 @@ data:
   - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

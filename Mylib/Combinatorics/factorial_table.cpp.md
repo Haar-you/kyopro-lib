@@ -77,18 +77,18 @@ data:
   path: Mylib/Combinatorics/factorial_table.cpp
   requiredBy:
   - Mylib/Combinatorics/bell_number.cpp
+  - Mylib/Combinatorics/catalan_number.cpp
   - Mylib/Combinatorics/stirling_number_second.cpp
   - Mylib/Combinatorics/bernoulli_number.cpp
-  - Mylib/Combinatorics/catalan_number.cpp
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/yukicoder/117/main.test.cpp
-  - test/yukicoder/660/main.test.cpp
-  - test/yukicoder/665/main.test.cpp
   - test/yosupo-judge/bernoulli_number/main.test.cpp
   - test/aoj/DPL_5_I/main.test.cpp
   - test/aoj/DPL_5_G/main.test.cpp
+  - test/yukicoder/665/main.test.cpp
+  - test/yukicoder/117/main.test.cpp
+  - test/yukicoder/660/main.test.cpp
 documentation_of: Mylib/Combinatorics/factorial_table.cpp
 layout: document
 title: Factorial table

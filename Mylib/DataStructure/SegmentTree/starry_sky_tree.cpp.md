@@ -84,8 +84,8 @@ data:
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/yukicoder/631/main.starry_sky.test.cpp
   - test/aoj/DSL_2_H/main.starry_sky.test.cpp
+  - test/yukicoder/631/main.starry_sky.test.cpp
 documentation_of: Mylib/DataStructure/SegmentTree/starry_sky_tree.cpp
 layout: document
 title: Starry-sky tree

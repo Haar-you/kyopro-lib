@@ -65,8 +65,8 @@ data:
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
   - test/yosupo-judge/sqrt_mod/main.test.cpp
+  - test/yosupo-judge/sqrt_of_formal_power_series/main.test.cpp
 documentation_of: Mylib/Number/Mod/mod_sqrt.cpp
 layout: document
 title: Mod sqrt

@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':x:'
+    path: Mylib/Combinatorics/binomial_coefficient.cpp
+    title: Binomial coefficient
+  - icon: ':x:'
     path: Mylib/Number/Mod/mod_log.cpp
     title: Mod logarithm
   - icon: ':warning:'
@@ -12,6 +15,9 @@ data:
     path: Mylib/Number/linear_congruence_equation.cpp
     title: Linear congruence equation
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/yosupo-judge/binomial_coefficient/main.test.cpp
+    title: test/yosupo-judge/binomial_coefficient/main.test.cpp
   - icon: ':x:'
     path: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
     title: test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
@@ -37,6 +43,7 @@ data:
   isVerificationFile: false
   path: Mylib/Number/Mod/mod_inv.cpp
   requiredBy:
+  - Mylib/Combinatorics/binomial_coefficient.cpp
   - Mylib/Number/linear_congruence_equation.cpp
   - Mylib/Number/Mod/mod_log.cpp
   - Mylib/Number/garner.cpp
@@ -44,6 +51,7 @@ data:
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo-judge/discrete_logarithm_mod/main.test.cpp
+  - test/yosupo-judge/binomial_coefficient/main.test.cpp
 documentation_of: Mylib/Number/Mod/mod_inv.cpp
 layout: document
 title: Mod inverse

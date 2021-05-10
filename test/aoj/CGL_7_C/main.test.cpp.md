@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp
     title: Circumscribed circle of a triangle
   - icon: ':question:'

@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':x:'
+    path: Mylib/Combinatorics/binomial_coefficient.cpp
+    title: Binomial coefficient
   - icon: ':warning:'
     path: Mylib/Number/bezout_identity.cpp
     title: "B\xE9zout's identity"
@@ -12,6 +15,9 @@ data:
   - icon: ':x:'
     path: test/aoj/NTL_1_E/main.test.cpp
     title: test/aoj/NTL_1_E/main.test.cpp
+  - icon: ':x:'
+    path: test/yosupo-judge/binomial_coefficient/main.test.cpp
+    title: test/yosupo-judge/binomial_coefficient/main.test.cpp
   - icon: ':x:'
     path: test/yukicoder/186/main.test.cpp
     title: test/yukicoder/186/main.test.cpp
@@ -35,13 +41,15 @@ data:
   isVerificationFile: false
   path: Mylib/Number/extended_gcd.cpp
   requiredBy:
+  - Mylib/Combinatorics/binomial_coefficient.cpp
   - Mylib/Number/bezout_identity.cpp
   - Mylib/Number/chinese_remainder_algorithm.cpp
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/yukicoder/186/main.test.cpp
+  - test/yosupo-judge/binomial_coefficient/main.test.cpp
   - test/aoj/NTL_1_E/main.test.cpp
+  - test/yukicoder/186/main.test.cpp
 documentation_of: Mylib/Number/extended_gcd.cpp
 layout: document
 title: Extended Euclidean algorithm

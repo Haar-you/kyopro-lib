@@ -10,7 +10,7 @@ data:
   - icon: ':x:'
     path: Mylib/LinearAlgebra/matrix.cpp
     title: Matrix
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

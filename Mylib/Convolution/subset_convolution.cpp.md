@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: Mylib/Convolution/fast_mobius_transform_subset.cpp
     title: "Fast M\xF6bius transform (Subsets)"
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Convolution/fast_zeta_transform_subset.cpp
     title: Fast Zeta transform (Subsets)
   _extendedRequiredBy: []

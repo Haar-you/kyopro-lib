@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2370/main.test.cpp
     title: test/aoj/2370/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/2955/main.test.cpp
     title: test/aoj/2955/main.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Typical/subset_sum_limited.cpp\"\n#include <cassert>\n\
@@ -38,10 +38,10 @@ data:
   path: Mylib/Typical/subset_sum_limited.cpp
   requiredBy: []
   timestamp: '2021-04-23 23:44:44+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/2370/main.test.cpp
   - test/aoj/2955/main.test.cpp
+  - test/aoj/2370/main.test.cpp
 documentation_of: Mylib/Typical/subset_sum_limited.cpp
 layout: document
 title: Subset sum problem (With quantity limitations)

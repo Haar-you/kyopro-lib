@@ -7,10 +7,10 @@ data:
   - icon: ':question:'
     path: Mylib/Geometry/Float/geometry_template.cpp
     title: Geometry template
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/orthogonal.cpp
     title: Orthogonal
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/parallel.cpp
     title: Parallel
   - icon: ':question:'
@@ -21,9 +21,9 @@ data:
     title: Input tuples
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_A
@@ -177,7 +177,7 @@ data:
   path: test/aoj/CGL_2_A/main.test.cpp
   requiredBy: []
   timestamp: '2021-04-23 23:44:44+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/CGL_2_A/main.test.cpp
 layout: document

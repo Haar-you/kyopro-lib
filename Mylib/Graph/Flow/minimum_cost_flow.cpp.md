@@ -119,8 +119,8 @@ data:
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo-judge/assignment/main.test.cpp
-  - test/aoj/2293/main.test.cpp
   - test/aoj/GRL_6_B/main.test.cpp
+  - test/aoj/2293/main.test.cpp
 documentation_of: Mylib/Graph/Flow/minimum_cost_flow.cpp
 layout: document
 title: Minimum cost flow

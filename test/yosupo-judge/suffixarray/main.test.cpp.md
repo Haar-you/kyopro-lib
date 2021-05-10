@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: Mylib/IO/join.cpp
     title: join function
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/String/suffix_array.cpp
     title: Suffix array
   _extendedRequiredBy: []

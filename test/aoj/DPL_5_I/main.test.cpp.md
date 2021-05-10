@@ -7,7 +7,7 @@ data:
   - icon: ':x:'
     path: Mylib/Combinatorics/stirling_number_second.cpp
     title: Stirling numbers of the second kind
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   _extendedRequiredBy: []

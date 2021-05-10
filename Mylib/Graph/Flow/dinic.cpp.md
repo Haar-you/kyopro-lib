@@ -87,8 +87,8 @@ data:
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/aoj/1615/main.test.cpp
   - test/aoj/GRL_6_A/main.dinic.test.cpp
+  - test/aoj/1615/main.test.cpp
 documentation_of: Mylib/Graph/Flow/dinic.cpp
 layout: document
 title: Dinic algorithm

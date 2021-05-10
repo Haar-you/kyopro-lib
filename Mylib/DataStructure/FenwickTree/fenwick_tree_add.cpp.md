@@ -49,8 +49,8 @@ data:
   isVerificationFile: false
   path: Mylib/DataStructure/FenwickTree/fenwick_tree_add.cpp
   requiredBy:
-  - Mylib/Typical/range_set_query.cpp
   - Mylib/Typical/range_inversions_query.cpp
+  - Mylib/Typical/range_set_query.cpp
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:

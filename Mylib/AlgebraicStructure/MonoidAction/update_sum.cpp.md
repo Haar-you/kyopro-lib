@@ -34,8 +34,8 @@ data:
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/yukicoder/899/main.test.cpp
   - test/aoj/DSL_2_I/main.test.cpp
+  - test/yukicoder/899/main.test.cpp
 documentation_of: Mylib/AlgebraicStructure/MonoidAction/update_sum.cpp
 layout: document
 title: Range update / Range sum

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Bit/enumerate_subsets_asc.cpp
     title: Enumerate subsets (Ascending order)
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Geometry/Float/circumscribed_circle_of_triangle.cpp
     title: Circumscribed circle of a triangle
   - icon: ':question:'
@@ -13,20 +13,20 @@ data:
   - icon: ':question:'
     path: Mylib/Geometry/Float/geometry_template.cpp
     title: Geometry template
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Geometry/Float/minimum_covering_circle.cpp
     title: Minimum covering circle
   - icon: ':question:'
     path: Mylib/IO/input_vector.cpp
     title: Input vector
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Mylib/Utils/fix_point.cpp
     title: Fixed point combinator
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: 1e-3
@@ -218,7 +218,7 @@ data:
   path: test/aoj/3034/main.test.cpp
   requiredBy: []
   timestamp: '2021-04-23 23:44:44+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/3034/main.test.cpp
 layout: document

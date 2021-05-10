@@ -16,7 +16,7 @@ data:
   - icon: ':x:'
     path: Mylib/Math/polynomial.cpp
     title: Polynomial
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   - icon: ':question:'

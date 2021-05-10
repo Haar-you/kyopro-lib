@@ -13,7 +13,7 @@ data:
   - icon: ':x:'
     path: Mylib/Math/polynomial_taylor_shift.cpp
     title: Polynomial taylor shift
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   - icon: ':question:'

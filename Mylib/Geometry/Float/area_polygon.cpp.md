@@ -6,15 +6,15 @@ data:
     title: Geometry template
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_3_A/main.test.cpp
     title: test/aoj/CGL_3_A/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/CGL_4_C/main.test.cpp
     title: test/aoj/CGL_4_C/main.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Geometry/Float/geometry_template.cpp\"\n#include <cmath>\n\
@@ -86,10 +86,10 @@ data:
   path: Mylib/Geometry/Float/area_polygon.cpp
   requiredBy: []
   timestamp: '2021-04-23 23:44:44+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/CGL_4_C/main.test.cpp
   - test/aoj/CGL_3_A/main.test.cpp
+  - test/aoj/CGL_4_C/main.test.cpp
 documentation_of: Mylib/Geometry/Float/area_polygon.cpp
 layout: document
 title: Area of polygon

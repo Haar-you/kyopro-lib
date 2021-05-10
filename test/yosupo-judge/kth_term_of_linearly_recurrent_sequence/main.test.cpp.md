@@ -10,7 +10,7 @@ data:
   - icon: ':x:'
     path: Mylib/Math/linearly_recurrent_sequence.cpp
     title: Kth term of linearly recurrent sequence
-  - icon: ':x:'
+  - icon: ':question:'
     path: Mylib/Number/Mint/mint.cpp
     title: Modint
   - icon: ':question:'

@@ -75,8 +75,8 @@ data:
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/aoj/0575/main.test.cpp
   - test/aoj/GRL_1_A/main.test.cpp
+  - test/aoj/0575/main.test.cpp
 documentation_of: Mylib/Graph/ShortestPath/dijkstra.cpp
 layout: document
 title: Dijkstra algorithm

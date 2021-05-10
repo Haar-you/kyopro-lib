@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/ALDS1_9_C/main.binary.test.cpp
     title: test/aoj/ALDS1_9_C/main.binary.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/DataStructure/Heap/binary_heap.cpp\"\n#include <functional>\n\
@@ -62,7 +62,7 @@ data:
   path: Mylib/DataStructure/Heap/binary_heap.cpp
   requiredBy: []
   timestamp: '2021-04-23 23:44:44+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/ALDS1_9_C/main.binary.test.cpp
 documentation_of: Mylib/DataStructure/Heap/binary_heap.cpp

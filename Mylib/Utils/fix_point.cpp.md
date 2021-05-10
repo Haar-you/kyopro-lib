@@ -15,12 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2559/main.skew_heap.test.cpp
     title: test/aoj/2559/main.skew_heap.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/3034/main.test.cpp
     title: test/aoj/3034/main.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Utils/fix_point.cpp\"\n#include <utility>\n\nnamespace\
@@ -45,11 +45,11 @@ data:
   path: Mylib/Utils/fix_point.cpp
   requiredBy: []
   timestamp: '2021-04-23 23:44:44+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/aoj/2559/main.leftist_heap.test.cpp
   - test/aoj/2559/main.pairing_heap.test.cpp
   - test/aoj/2559/main.skew_heap.test.cpp
-  - test/aoj/2559/main.leftist_heap.test.cpp
   - test/aoj/2559/main.binomial_heap.test.cpp
   - test/aoj/3034/main.test.cpp
 documentation_of: Mylib/Utils/fix_point.cpp

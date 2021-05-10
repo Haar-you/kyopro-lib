@@ -6,7 +6,7 @@ data:
     path: Mylib/String/lcp_array.cpp
     title: LCP(Longest Common Prefix) array
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/ALDS1_14_D/main.test.cpp
     title: test/aoj/ALDS1_14_D/main.test.cpp
   - icon: ':x:'
@@ -17,7 +17,7 @@ data:
     title: test/yosupo-judge/suffixarray/main.test.cpp
   _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/String/suffix_array.cpp\"\n#include <algorithm>\n\
@@ -158,7 +158,7 @@ data:
   requiredBy:
   - Mylib/String/lcp_array.cpp
   timestamp: '2021-04-23 23:44:44+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo-judge/number_of_substrings/main.test.cpp
   - test/yosupo-judge/suffixarray/main.test.cpp

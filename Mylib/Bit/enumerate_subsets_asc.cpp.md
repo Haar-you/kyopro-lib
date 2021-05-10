@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/3034/main.test.cpp
     title: test/aoj/3034/main.test.cpp
   - icon: ':x:'
@@ -11,7 +11,7 @@ data:
     title: test/aoj/ITP2_11_C/main.asc.test.cpp
   _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Bit/enumerate_subsets_asc.cpp\"\n\nnamespace haar_lib\
@@ -27,7 +27,7 @@ data:
   path: Mylib/Bit/enumerate_subsets_asc.cpp
   requiredBy: []
   timestamp: '2021-04-23 23:44:44+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/3034/main.test.cpp
   - test/aoj/ITP2_11_C/main.asc.test.cpp

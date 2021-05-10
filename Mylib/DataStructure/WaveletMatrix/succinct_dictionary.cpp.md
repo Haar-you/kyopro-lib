@@ -12,7 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/2426/main.test.cpp
     title: test/aoj/2426/main.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/2674/main.test.cpp
     title: test/aoj/2674/main.test.cpp
   - icon: ':x:'
@@ -107,11 +107,11 @@ data:
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yukicoder/919/main.test.cpp
   - test/yosupo-judge/range_kth_smallest/main.test.cpp
   - test/aoj/2674/main.test.cpp
   - test/aoj/1549/main.test.cpp
   - test/aoj/2426/main.test.cpp
+  - test/yukicoder/919/main.test.cpp
 documentation_of: Mylib/DataStructure/WaveletMatrix/succinct_dictionary.cpp
 layout: document
 title: Succinct dictionary

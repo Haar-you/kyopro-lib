@@ -40,8 +40,8 @@ data:
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/aoj/NTL_1_D/main.test.cpp
   - test/aoj/NTL_1_A/main.test.cpp
+  - test/aoj/NTL_1_D/main.test.cpp
 documentation_of: Mylib/Number/Prime/prime_factorize.cpp
 layout: document
 title: Prime factorization

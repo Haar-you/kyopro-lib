@@ -110,8 +110,8 @@ data:
   timestamp: '2021-04-23 23:44:44+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yukicoder/922/main.test.cpp
   - test/aoj/1595/main.test.cpp
+  - test/yukicoder/922/main.test.cpp
 documentation_of: Mylib/Graph/TreeUtils/rerooting.cpp
 layout: document
 title: Rerooting DP

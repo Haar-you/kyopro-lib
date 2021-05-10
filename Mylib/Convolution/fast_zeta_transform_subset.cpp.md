@@ -9,7 +9,7 @@ data:
     path: Mylib/Convolution/subset_convolution.cpp
     title: Subset convolution
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/3134/main.test.cpp
     title: test/aoj/3134/main.test.cpp
   - icon: ':x:'
@@ -20,7 +20,7 @@ data:
     title: test/yosupo-judge/subset_convolution/main.test.cpp
   _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Mylib/Convolution/fast_zeta_transform_subset.cpp\"\n#include\
@@ -44,7 +44,7 @@ data:
   - Mylib/Convolution/subset_convolution.cpp
   - Mylib/Convolution/convolution_or.cpp
   timestamp: '2021-04-23 23:44:44+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo-judge/subset_convolution/main.test.cpp
   - test/yosupo-judge/bitwise_and_convolution/main.or.test.cpp
